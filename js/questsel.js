@@ -8,3 +8,21 @@ $(function () {
 		sel.appendChild(opt);
 	}
 });
+
+function optsel() {
+	var sel = document.getElementById('QstSel');
+	var desc = $("#Qstdesc");
+	var selval = sel.options[sel.selectedIndex].value;
+	var ct = 0;
+	if (selval != "") {
+		for (ct in Quests) {
+			if (Quests[ct].id == selval) {
+				desc.text(Quests[ct].desc);
+				desc.fadeIn("slow");
+			}
+		}
+	} else {
+		desc.text("");
+		desc.fadeOut("slow");
+	}
+};

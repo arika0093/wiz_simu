@@ -86,6 +86,14 @@ select{
 	font-family: Meiryo;
 }
 
+p.desc{
+	font-size: 8pt;
+	color: #606060;
+	margin: 0;
+	padding: 0;
+	text-align: right;
+}
+
 input.DeckSel{
 	margin: 0.5ex 0em;
 	width: 100%;

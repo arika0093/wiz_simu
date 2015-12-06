@@ -18,7 +18,7 @@
             <!-- What's this -->
             <dt>Wiz Quest Simulator</dt>
             <dd>
-                「魔法使いと黒猫のウィズ」支援用のWebアプリです。<br/>
+                「魔法使いと黒猫のウィズ」の攻略を支援するWebアプリです。<br/>
                 お好みのデッキでクエストや段位の試走を行うことができます。<br/>
                 このサイトはGithubのサイト公開機能を利用して公開しています。詳しくはこちらをご覧ください。
                 <noscript>
@@ -43,19 +43,26 @@
                 <!-- Select Quest -->
                 <div class="SelField">
                     <p class="Info">試走するクエストを指定します。</p>
-                    <select class="Selbox" id="QstSel">
+                    <select class="Selbox" id="QstSel" onchange="optsel()">
                         <option value="">(未選択)</option>
                     </select>
+                    <p class="desc" id="Qstdesc"></p>
                 </div>
 
                 <!-- Select Deck -->
                 <div class="SelField">
                     <p class="Info">試走するデッキを設定します。</p>
-                    <input class="DeckSel" id="deck01" />
-                    <input class="DeckSel" id="deck02" />
-                    <input class="DeckSel" id="deck03" />
-                    <input class="DeckSel" id="deck04" />
-                    <input class="DeckSel" id="deck05" />
+                    <input class="DeckSel" id="deck01" onchange="decksel('deck01', 'Deckdesc1')"/>
+                    <p class="desc" id="Deckdesc1"></p>
+                    <input class="DeckSel" id="deck02" onchange="decksel('deck02', 'Deckdesc2')" />
+                    <p class="desc" id="Deckdesc2"></p>
+                    <input class="DeckSel" id="deck03" onchange="decksel('deck03', 'Deckdesc3')" />
+                    <p class="desc" id="Deckdesc3"></p>
+                    <input class="DeckSel" id="deck04" onchange="decksel('deck04', 'Deckdesc4')" />
+                    <p class="desc" id="Deckdesc4"></p>
+                    <input class="DeckSel" id="deck05" onchange="decksel('deck05', 'Deckdesc5')" />
+                    <p class="desc" id="Deckdesc5"></p>
+
                     <button type="button" id="Start">開始</button>
                 </div>
             </dd>
