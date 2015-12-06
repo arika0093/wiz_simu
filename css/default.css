@@ -1,3 +1,99 @@
-﻿body
-{
+﻿/* Base */
+html{
+	background-color: #FAFAFF;
+}
+
+body{
+	font-family: Meiryo;
+	width: 800px;
+	margin: auto;
+	/*padding: 0ex 1em;*/
+	border-left: 1px solid #A0A0FF;
+	border-right: 1px solid #A0A0FF;
+	color: #404040;
+	background-color: #FFFFFF;
+}
+
+/* Header */
+div#Header{
+	border-bottom: 1px solid #40A0FF;
+}
+
+a.toplink{
+	/*display: block;*/
+	padding: 0.5ex 0.5em 0ex;
+	font-family: 'Times New Roman', Times, serif;
+	font-style: italic;
+	font-size: 40px;
+	text-decoration: none;
+	/*border-bottom: 1px solid #808080;*/
+	color: #0040FF;
+	display: block;
+}
+
+div.otherlinks{
+	padding: 0.5ex 0.5em 1ex;
+	display: block;
+	text-align: right;
+}
+
+div.otherlinks a{
+	font-style: italic;
+	margin: 0ex 0.5em 0ex 0em;
+	color: #2080FF;
+}
+
+/* Main */
+div.Main dl{
+	padding: 1ex 2em;
+}
+
+dl dt{
+	margin: 0.5ex 0em;
+	padding: 0.5ex 1em;
+	border-left: 4px solid #606060;
+	border-bottom: 1px solid #909090;
+}
+
+dl dd{
+	margin-left: 2em;
+	padding: 1.5ex 0em 3ex;
+}
+
+ol{
+	padding-left: 1.5em;
+}
+
+/* Select Field */
+div.SelField{
+	margin: 0.5ex 0.5em 1.5ex 0em;
+	padding: 1ex 1.5em;
+	border: 1px dashed #40A0FF;
+	border-radius: 10px;
+	background-color: #F0FAFF;
+}
+
+p.Info{
+	font-size: 9.5pt;
+	color: #606060;
+	margin: 0;
+	padding: 0;
+}
+
+select{
+	margin: 0.5ex 0em;
+	width: 100%;
+	font-family: Meiryo;
+}
+
+input.DeckSel{
+	margin: 0.5ex 0em;
+	width: 100%;
+	font-family: Meiryo;
+}
+
+button#Start{
+	margin: 1.5ex auto 0 auto;
+	width: 200px;
+	font-family: Meiryo;
 }

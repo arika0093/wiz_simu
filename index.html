@@ -2,8 +2,11 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="./css/default.css">
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
     <!-- Top Page -->
-    <title>Wiz Quest Simurator</title>
+    <title>Wiz Quest Simulator</title>
 </head>
 <body>
     <!-- Header -->
@@ -11,14 +14,65 @@
 
     <!-- Main Contents -->
     <div class="Main">
-        Main Contents...
+        <dl class="List">
+            <!-- What's this -->
+            <dt>Wiz Quest Simulator</dt>
+            <dd>
+                「魔法使いと黒猫のウィズ」支援用のWebアプリです。<br/>
+                お好みのデッキでクエストや段位の試走を行うことができます。<br/>
+                このサイトはGithubのサイト公開機能を利用して公開しています。詳しくはこちらをご覧ください。
+                <noscript>
+                    ※このサイトはjavascriptを使用しています。<br />
+                    恐れ入りますが設定でjavascriptを有効にした後、再度読み込みください。
+                </noscript>
+            </dd>
+
+            <!-- How to use -->
+            <dt>使い方</dt>
+            <dd>
+                <ol>
+                    <li>試走を行うクエストや段位を選択します。</li>
+                    <li>デッキを編集します。</li>
+                    <li>[開始]ボタンを押して試走を行うことができます。デッキ構築にご利用ください。</li>
+                </ol>
+            </dd>
+
+            <!-- Set Value -->
+            <dt>クエスト/デッキ選択</dt>
+            <dd>
+                <!-- Select Quest -->
+                <div class="SelField">
+                    <p class="Info">試走するクエストを指定します。</p>
+                    <select class="Selbox" id="QstSel">
+                        <option value="">(未選択)</option>
+                    </select>
+                </div>
+
+                <!-- Select Deck -->
+                <div class="SelField">
+                    <p class="Info">試走するデッキを設定します。</p>
+                    <input class="DeckSel" id="deck01" />
+                    <input class="DeckSel" id="deck02" />
+                    <input class="DeckSel" id="deck03" />
+                    <input class="DeckSel" id="deck04" />
+                    <input class="DeckSel" id="deck05" />
+                    <button type="button" id="Start">開始</button>
+                </div>
+            </dd>
+        </dl>
     </div>
 
     <!-- Footer -->
     <div id="Footer"></div>
 
     <!-- Javascript -->
-    <script type="text/javascript" src="./js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./data/templateskills.js"></script>
+    <script type="text/javascript" src="./data/quests.js"></script>
+    <script type="text/javascript" src="./data/cards.js"></script>
     <script type="text/javascript" src="./js/pagetemp.js"></script>
+    <script type="text/javascript" src="./js/decksuggest.js"></script>
+    <script type="text/javascript" src="./js/questsel.js"></script>
 </body>
 </html>

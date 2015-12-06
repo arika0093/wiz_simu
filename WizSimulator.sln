@@ -5,8 +5,9 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{20D7A7D8-822B-4D68-AEF0-9127E62A819F}"
 	ProjectSection(SolutionItems) = preProject
-		js\jquery-1.11.3.min.js = js\jquery-1.11.3.min.js
+		js\decksuggest.js = js\decksuggest.js
 		js\pagetemp.js = js\pagetemp.js
+		js\questsel.js = js\questsel.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "template", "template", "{BA48140E-6DCE-46F7-BC02-D48AB34F0CF6}"
@@ -25,9 +26,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{85B9F527-E14
 		css\default.css = css\default.css
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pages", "pages", "{40525925-6332-4AD9-9B9C-6954855C1E6D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{D7F5FD15-0EDA-4EC8-A7FE-62566A0FF4FA}"
 	ProjectSection(SolutionItems) = preProject
-		pages\noscript.html = pages\noscript.html
+		data\cards.js = data\cards.js
+		data\quests.js = data\quests.js
+		data\templateskills.js = data\templateskills.js
 	EndProjectSection
 EndProject
 Global
@@ -48,6 +51,6 @@ Global
 		{20D7A7D8-822B-4D68-AEF0-9127E62A819F} = {54D72F80-1342-4A3D-B559-339A01E32933}
 		{BA48140E-6DCE-46F7-BC02-D48AB34F0CF6} = {54D72F80-1342-4A3D-B559-339A01E32933}
 		{85B9F527-E148-41E4-A8C0-04BBF26A1A24} = {54D72F80-1342-4A3D-B559-339A01E32933}
-		{40525925-6332-4AD9-9B9C-6954855C1E6D} = {54D72F80-1342-4A3D-B559-339A01E32933}
+		{D7F5FD15-0EDA-4EC8-A7FE-62566A0FF4FA} = {54D72F80-1342-4A3D-B559-339A01E32933}
 	EndGlobalSection
 EndGlobal
