@@ -4,8 +4,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{20D7A7D8-822B-4D68-AEF0-9127E62A819F}"
+	ProjectSection(SolutionItems) = preProject
+		js\pagetemp.js = js\pagetemp.js
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "template", "template", "{BA48140E-6DCE-46F7-BC02-D48AB34F0CF6}"
+	ProjectSection(SolutionItems) = preProject
+		template\footer.html = template\footer.html
+		template\header.html = template\header.html
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WizSimulator", "WizSimulator", "{54D72F80-1342-4A3D-B559-339A01E32933}"
 	ProjectSection(SolutionItems) = preProject
@@ -15,6 +22,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{85B9F527-E148-41E4-A8C0-04BBF26A1A24}"
 	ProjectSection(SolutionItems) = preProject
 		css\default.css = css\default.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pages", "pages", "{40525925-6332-4AD9-9B9C-6954855C1E6D}"
+	ProjectSection(SolutionItems) = preProject
+		pages\noscript.html = pages\noscript.html
 	EndProjectSection
 EndProject
 Global
@@ -35,5 +47,6 @@ Global
 		{20D7A7D8-822B-4D68-AEF0-9127E62A819F} = {54D72F80-1342-4A3D-B559-339A01E32933}
 		{BA48140E-6DCE-46F7-BC02-D48AB34F0CF6} = {54D72F80-1342-4A3D-B559-339A01E32933}
 		{85B9F527-E148-41E4-A8C0-04BBF26A1A24} = {54D72F80-1342-4A3D-B559-339A01E32933}
+		{40525925-6332-4AD9-9B9C-6954855C1E6D} = {54D72F80-1342-4A3D-B559-339A01E32933}
 	EndGlobalSection
 EndGlobal
