@@ -5,6 +5,7 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{20D7A7D8-822B-4D68-AEF0-9127E62A819F}"
 	ProjectSection(SolutionItems) = preProject
+		js\jquery-1.11.3.min.js = js\jquery-1.11.3.min.js
 		js\pagetemp.js = js\pagetemp.js
 	EndProjectSection
 EndProject
