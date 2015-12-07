@@ -23,7 +23,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WizSimulator", "WizSimulato
 		index.html = index.html
 		info.html = info.html
 		simulator.html = simulator.html
-		update.txt = update.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{85B9F527-E148-41E4-A8C0-04BBF26A1A24}"

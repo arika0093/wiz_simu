@@ -1,5 +1,6 @@
 // ?以下のURLを生成する(check: 必要項目が入力されているか確認する)
-function create_url(check){
+function create_url(check) {
+	var hasvalue = false;
 	// 精霊Noの配列
 	var nolists = new Array();
 	// チェックする文字入力欄(ID)
@@ -16,12 +17,13 @@ function create_url(check){
 		})[0];
 		var number = card !== undefined ? card.cardno : 0;
 		nolists.push(number);
-	}
-	// checkする必要があるなら問題ないかチェック
-	if (check && (nolists.length <= 0 || quest_id == "")) {
-		return null;
+		hasvalue = hasvalue || number != 0;
 	}
 	// questのid取得
 	var quest_id = $("#QstSel").val();
+	// checkする必要があるなら問題ないかチェック
+	if (check && (!hasvalue || quest_id == "")) {
+		return null;
+	}
 	return "?" + nolists.toString() + "," + quest_id;
 }

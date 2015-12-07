@@ -39,7 +39,7 @@ function optsel() {
 function sim_start() {
 	// redirect
 	var query = create_url(true);
-	if (query == "") {
+	if (query == null) {
 		alert("入力内容に漏れがあります。クエストを指定して、精霊を最低一体以上指定してください。");
 		return;
 	}
