@@ -37,31 +37,12 @@ function optsel() {
 
 // シミュ開始
 function sim_start() {
-	// 精霊Noの配列
-	var nolists = new Array();
-	// チェックする文字入力欄(ID)
-	var input_ids = ["deck01", "deck02", "deck03", "deck04", "deck05"];
-	// No列挙
-	for (var ct = 0; ct < 5; ct++) {
-		var input = $("#" + input_ids[ct]).val();
-		if (input == "") {
-			nolists.push(0);
-			continue;
-		}
-		var card = $.grep(Cards, function (e, i) {
-			return e.name == input;
-		})[0];
-		var number = card !== undefined ? card.cardno : 0;
-		nolists.push(number);
-	}
-	// questのid取得
-	var quest_id = $("#QstSel").val();
-	// 問題ないかチェック
-	if (nolists.length <= 0 || quest_id == "") {
+	// redirect
+	var query = create_url(true);
+	if (query == "") {
 		alert("入力内容に漏れがあります。クエストを指定して、精霊を最低一体以上指定してください。");
 		return;
 	}
-	// redirect
-	var redirect_url = './simulator.html?' + nolists.toString() + "," + quest_id;
+	var redirect_url = './simulator.html' + query;
 	location.href = redirect_url;
 }
