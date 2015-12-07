@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{20D7A7D8-822B-4D68-AEF0-9127E62A819F}"
 	ProjectSection(SolutionItems) = preProject
 		js\decksuggest.js = js\decksuggest.js
+		js\loaddeck.js = js\loaddeck.js
 		js\pagetemp.js = js\pagetemp.js
 		js\questsel.js = js\questsel.js
 	EndProjectSection
@@ -20,6 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WizSimulator", "WizSimulato
 	ProjectSection(SolutionItems) = preProject
 		index.html = index.html
 		info.html = info.html
+		simulator.html = simulator.html
 		update.txt = update.txt
 	EndProjectSection
 EndProject
