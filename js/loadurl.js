@@ -1,4 +1,4 @@
-// URL‚Ìno‚©‚çƒfƒbƒL‚ğ“Ç‚İ‚Ş
+ï»¿// URLã®noã‹ã‚‰ãƒ‡ãƒƒã‚­ã‚’èª­ã¿è¾¼ã‚€
 function loaddeck_from_url() {
 	var cds = new Array();
 	var q = getquery();
@@ -17,7 +17,19 @@ function loaddeck_from_url() {
 	return cds;
 }
 
-// URL‚Ìno‚ğ”z—ñ‚É‚µ‚Ä•Ô‹p‚·‚é
+// URLã®idã‹ã‚‰questã‚’èª­ã¿è¾¼ã‚€
+function loadquest_from_url() {
+	var q = getquery();
+
+	if (q.length >= 6) {
+		return $.grep(Quests, function (e, i) {
+			return e.id == q[5];
+		})[0];
+	}
+	return undefined;
+}
+
+// URLã®noã‚’é…åˆ—ã«ã—ã¦è¿”å´ã™ã‚‹
 function getquery() {
 	var result = [];
 	if (1 < window.location.search.length) {
