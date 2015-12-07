@@ -25,7 +25,7 @@ function decksel(base, descp) {
 				} else {
 					var b = " / ";
 				}
-				desc.html("AS: " + assc + b + "SS: " + ssdc);
+				desc.html("AS: " + asdc + b + "SS: " + ssdc);
 				desc.fadeIn("slow");
 				return;
 			}

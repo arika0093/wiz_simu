@@ -5,6 +5,7 @@ html{
 
 body{
 	font-family: Meiryo;
+	font-size: 10.5pt;
 	width: 800px;
 	margin: auto;
 	/*padding: 0ex 1em;*/
@@ -16,7 +17,7 @@ body{
 
 /* Header */
 div#Header{
-	border-bottom: 1px solid #40A0FF;
+	border-bottom: 1px solid #A0A0FF;
 }
 
 a.toplink{
@@ -49,7 +50,7 @@ div.Main dl{
 }
 
 dl dt{
-	margin: 0.5ex 0em;
+	margin: 0;
 	padding: 0.5ex 1em;
 	border-left: 4px solid #606060;
 	border-bottom: 1px solid #909090;
@@ -61,7 +62,27 @@ dl dd{
 }
 
 ol{
+	margin: 0;
 	padding-left: 1.5em;
+}
+
+a.itemhidden{
+	font-size: 8.5pt;
+	margin-left: 1em;
+	color: #0040FF;
+	vertical-align: bottom;
+}
+
+div#Updatelog{
+	border: solid 1px #808080;
+	height: 200px;
+	margin: 0.5ex 0em;
+	padding: 0.5em;
+	overflow: scroll;
+}
+
+span.secretly{
+	color: #C0C0C0;
 }
 
 /* Select Field */
@@ -104,4 +125,21 @@ button#Start{
 	margin: 1.5ex auto 0 auto;
 	width: 200px;
 	font-family: Meiryo;
+}
+
+li.ui-menu-item{
+	font-family: Meiryo !important;
+}
+
+/* Footer */
+div.copyright{
+	border-top: 1px solid #A0A0FF;
+	border-bottom: 1px solid #A0A0FF;
+}
+
+div.copyright p{
+	margin: 1ex 1em;
+	padding: 0;
+	color: #606060;
+	text-align: right;
 }

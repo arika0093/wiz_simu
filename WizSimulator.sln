@@ -19,6 +19,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WizSimulator", "WizSimulator", "{54D72F80-1342-4A3D-B559-339A01E32933}"
 	ProjectSection(SolutionItems) = preProject
 		index.html = index.html
+		info.html = info.html
+		update.txt = update.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{85B9F527-E148-41E4-A8C0-04BBF26A1A24}"
