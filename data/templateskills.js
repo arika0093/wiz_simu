@@ -2,7 +2,7 @@
 // スキル(AS)
 // -------------------------
 // 基本構造(AS)
-// type: 1(攻撃), 2(回復)
+// type: 1(攻撃), 2(エンハンス), 3(回復)
 // isall: [攻撃時のみ参照]true(全体), false(単体)
 // atkn: [攻撃時のみ参照](攻撃回数)
 // rate: 攻撃or回復倍率
@@ -108,7 +108,7 @@ function ChainAllAttack(rate, ch) {
 function Heal(rate, attr) {
 	return [
 		{
-			type: 2,
+			type: 3,
 			rate: rate,
 			chain: 0,
 			attr: attr,
