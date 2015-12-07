@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="./css/default.css">
+    <!-- Top Page -->
+    <title>About - Wiz Quest Simulator</title>
+</head>
+<body>
+    <!-- Header -->
+    <div id="Header"></div>
+
+    <!-- Main Contents -->
+    <div class="Main">
+        <dl class="List">
+            <!-- What's this -->
+            <dt>このサイトについて</dt>
+            <dd>
+                「魔法使いと黒猫のウィズ」の攻略を支援するWebアプリです。<br />
+                お好みのデッキでクエストや段位の試走を行うことができます。
+            </dd>
+
+            <!-- How to use -->
+            <dt>使い方</dt>
+            <dd>
+                <ol>
+                    <li>試走を行うクエストや段位を選択します。</li>
+                    <li>デッキを編集します。</li>
+                    <li>[開始]ボタンを押して試走を行うことができます。デッキ構築にご利用ください。</li>
+                </ol>
+            </dd>
+
+            <!-- How to use -->
+            <dt>開発</dt>
+            <dd>
+                このサイトはGithubを利用して開発および公開しています。<br/>
+                現状では精霊やクエストの追加は手動で行っておりますので遅れる可能性があります。<br/>
+                協力者などいらっしゃいましたらぜひ私宛にリプライかDMをお願いします。<br/>
+                <span class="secretly">というかせっかくGithubでやってるんだしpull request投げてくれてもいいのよ。</span>
+            </dd>
+
+            <!-- Update -->
+            <dt>更新履歴</dt>
+            <dd>
+                <div id="Updatelog"></div>
+            </dd>
+
+        </dl>
+    </div>
+
+    <!-- Footer -->
+    <div id="Footer"></div>
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="./js/pagetemp.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.get("update.txt", function (data) {
+                var log = data.replace(/\n/g, "<br/>\n");
+                $("#Updatelog").html(log);
+            }, "text");
+        });
+    </script>
+</body>
+</html>
