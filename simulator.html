@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="./css/default.css">
+    <link rel="stylesheet" type="text/css" href="./css/default.css" />
     <link type="text/css" rel="stylesheet"
           href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
     <!-- sim page -->
@@ -12,9 +12,88 @@
     <!-- Header -->
     <div id="Header"></div>
 
-    <!-- Main Contents -->
-    <div class="Main">
+    <!-- Simulator -->
+    <div class="Simulator">
+		<div class="sim_info">
+			<p id="sim_turn"></p>
+			<p id="sim_status"></p>
+		</div>
+		<div class="sim_ally">
+			<div class="ally" id="ally01">
+				<div class="attr_0" id="ally01_attr_main"></div>
+				<div class="attr_1" id="ally01_attr_sub"></div>
+				<p class="ally_name" id="ally01_name">牡丹微睡む夕月夜 ミコト・ウタヨミ</p>
+				<p class="ally_stat" id="ally01_status">HP: 2241/2241, ATK: 3834</p>
+				<div class="ally_ss" id="ally01_ss">
+					<button type="button" id="ally01_ss_button">SS1: 残り3t / SS2: 残り6t</button>
+				</div>
+			</div>
+			<div class="ally" id="ally02">
+				<div id="ally02_attr_main"></div>
+				<div id="ally02_attr_sub"></div>
+				<p class="ally_name" id="ally02_name"></p>
+				<p class="ally_stat" id="ally02_status"></p>
+				<div class="ally_ss" id="ally02_ss">
+					<button type="button" id="ally02_ss_button"></button>
+				</div>
+			</div>
+			<div class="ally" id="ally03">
+				<div id="ally03_attr_main"></div>
+				<div id="ally03_attr_sub"></div>
+				<p class="ally_name" id="ally03_name"></p>
+				<p class="ally_stat" id="ally03_status"></p>
+				<div class="ally_ss" id="ally03_ss">
+					<button type="button" id="ally03_ss_button"></button>
+				</div>
+			</div>
+			<div class="ally" id="ally04">
+				<div id="ally04_attr_main"></div>
+				<div id="ally04_attr_sub"></div>
+				<p class="ally_name" id="ally04_name"></p>
+				<p class="ally_stat" id="ally04_status"></p>
+				<div class="ally_ss" id="ally04_ss">
+					<button type="button" id="ally04_ss_button"></button>
+				</div>
+			</div>
+			<div class="ally" id="ally05">
+				<div id="ally05_attr_main"></div>
+				<div id="ally05_attr_sub"></div>
+				<p class="ally_name" id="ally05_name"></p>
+				<p class="ally_stat" id="ally05_status"></p>
+				<div class="ally_ss" id="ally05_ss">
+					<button type="button" id="ally05_ss_button"></button>
+				</div>
+			</div>
+		</div>
+		<div class="sim_enemy">
+			<div class="enemy" id="enemy01">
+				<div id="enemy01_attr_main"></div>
+				<div id="enemy01_attr_sub"></div>
+				<p class="enemy_name" id="enemy01_name"></p>
+				<p class="enemy_stat" id="enemy01_hp"></p>
+				<div class="enemy_ss" id="enemy01_stats"></div>
+			</div>
+			<div class="enemy" id="enemy02">
+				<div id="enemy02_attr_main"></div>
+				<div id="enemy02_attr_sub"></div>
+				<p class="enemy_name" id="enemy02_name"></p>
+				<p class="enemy_stat" id="enemy02_hp"></p>
+				<div class="enemy_ss" id="enemy02_stats"></div>
+			</div>
+			<div class="enemy" id="enemy03">
+				<div id="enemy03_attr_main"></div>
+				<div id="enemy03_attr_sub"></div>
+				<p class="enemy_name" id="enemy03_name"></p>
+				<p class="enemy_stat" id="enemy03_hp"></p>
+				<div class="enemy_ss" id="enemy03_stats"></div>
+			</div>
+		</div>
+		<div class="sim_panel">
 
+		</div>
+		<div class="sim_log">
+
+		</div>
     </div>
 
     <!-- Footer -->
