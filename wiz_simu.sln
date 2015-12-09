@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{20D7A7D8-822B-4D68-AEF0-9127E62A819F}"
 	ProjectSection(SolutionItems) = preProject
 		js\createurl.js = js\createurl.js
@@ -18,17 +16,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "template", "template", "{BA
 		template\header.html = template\header.html
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WizSimulator", "WizSimulator", "{54D72F80-1342-4A3D-B559-339A01E32933}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wiz_simu", "wiz_simu", "{54D72F80-1342-4A3D-B559-339A01E32933}"
 	ProjectSection(SolutionItems) = preProject
 		index.html = index.html
 		info.html = info.html
 		simulator.html = simulator.html
-		update.txt = update.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{85B9F527-E148-41E4-A8C0-04BBF26A1A24}"
 	ProjectSection(SolutionItems) = preProject
 		css\default.css = css\default.css
+		css\simulator.css = css\simulator.css
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{D7F5FD15-0EDA-4EC8-A7FE-62566A0FF4FA}"
@@ -44,25 +42,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "text", "text", "{FEDAC185-D
 		update.txt = update.txt
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "simulator", "simulator", "{0B5CF5D7-96AD-4EED-8363-750FF402B468}"
+	ProjectSection(SolutionItems) = preProject
+		js\simulator\initialize.js = js\simulator\initialize.js
+		js\simulator\show.js = js\simulator\show.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "codetest", "codetest", "{0A56A8F5-7D1B-4E2E-A0D9-43CA2EEBFF13}"
+	ProjectSection(SolutionItems) = preProject
+		test\code.js = test\code.js
+		test\loader.html = test\loader.html
+	EndProjectSection
+EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Debug|ARM = Debug|ARM
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|Any CPU = Release|Any CPU
-		Release|ARM = Release|ARM
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{20D7A7D8-822B-4D68-AEF0-9127E62A819F} = {54D72F80-1342-4A3D-B559-339A01E32933}
 		{BA48140E-6DCE-46F7-BC02-D48AB34F0CF6} = {54D72F80-1342-4A3D-B559-339A01E32933}
+		{20D7A7D8-822B-4D68-AEF0-9127E62A819F} = {54D72F80-1342-4A3D-B559-339A01E32933}
 		{85B9F527-E148-41E4-A8C0-04BBF26A1A24} = {54D72F80-1342-4A3D-B559-339A01E32933}
 		{D7F5FD15-0EDA-4EC8-A7FE-62566A0FF4FA} = {54D72F80-1342-4A3D-B559-339A01E32933}
 		{FEDAC185-D019-43F3-BE3D-70929AAAE89F} = {54D72F80-1342-4A3D-B559-339A01E32933}
+		{0A56A8F5-7D1B-4E2E-A0D9-43CA2EEBFF13} = {54D72F80-1342-4A3D-B559-339A01E32933}
+		{0B5CF5D7-96AD-4EED-8363-750FF402B468} = {20D7A7D8-822B-4D68-AEF0-9127E62A819F}
 	EndGlobalSection
 EndGlobal

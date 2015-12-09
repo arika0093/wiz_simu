@@ -6,7 +6,7 @@ html{
 body{
 	font-family: Meiryo;
 	font-size: 10.5pt;
-	width: 800px;
+	width: 	800px;
 	margin: auto;
 	/*padding: 0ex 1em;*/
 	border-left: 1px solid #A0A0FF;
@@ -130,38 +130,6 @@ button#Start{
 li.ui-menu-item{
 	font-family: Meiryo !important;
 }
-
-/* Simulator */
-div.ally div.attr_0{
-	color: #FF4000;
-	width: 8px;
-	float: left;
-}
-
-div.ally div.attr_1{
-	color: #40A0FF;
-	width: 8px;
-	float: left;
-}
-
-div.ally div.attr_2{
-	color: #FFC080;
-	width: 8px;
-	float: left;
-}
-
-div.ally div.attr_3{
-	color: #e5e5e5;
-	width: 8px;
-	float: left;
-}
-
-div.ally div.attr_4{
-	color: #9d00a9;
-	width: 8px;
-	float: left;
-}
-
 
 
 

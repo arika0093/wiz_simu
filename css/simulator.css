@@ -1,0 +1,177 @@
+/* Simulator Style */
+/* --------------------------------- */
+/* Clearfix */
+.clearfix {
+	/*display: inline-table;*/
+}
+.clearfix:after {
+	content: " ";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+/* Main Frame */
+div.Simulator {
+	padding: 2ex 1.5em;
+}
+
+/* Simulator Information */
+div.sim_info {
+	margin: 0.5ex 0.5em;
+	border: 1px solid #606060;
+	border-radius: 10px;
+}
+
+p#sim_info_status {
+	display: inline;
+	width: 45%;
+	margin: 0;
+	padding: 1ex 1em;
+	float: left;
+}
+
+p#sim_turns {
+	display: inline;
+	width: 45%;
+	margin: 0;
+	padding: 1ex 1em;
+	text-align: right;
+	float: right;
+}
+
+
+/* Simulator Allys & Enemys*/
+div.sim_ally{
+	width: 50%;
+	margin: 1ex 0em 1ex 0.5em;
+	float: left;
+	border: 1px solid #606060;
+	border-radius: 10px;
+}
+
+div.sim_enemy {
+	width: 45%;
+	margin: 1ex 0.5em 1ex 0em;
+	float: right;
+	border: 1px solid #606060;
+	border-radius: 10px;
+}
+
+div.ally, div.enemy{
+	position: relative;
+	border-bottom: 1px solid #606060;
+}
+div.ally:first-child, div.enemy:first-child{
+	margin-top: 15px;
+	border-top: 1px solid #606060;
+}
+div.ally:last-child, div.enemy:last-child{
+	margin-bottom: 15px;
+}
+
+p.ally_name, p.enemy_name{
+	margin: 0 0 0 0.5em;
+	padding-top: 0.5ex;
+	width: 250px;
+	float: left;
+}
+
+p.ally_stat, p.enemy_hp{
+	margin: 0px 0.5em 0 0;
+	padding: 0;
+	width: 250px;
+	text-align: right;
+	float: right;
+	font-size: 9pt;
+}
+
+div.ally_ss {
+	/*float: right;*/
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+}
+
+div.ally_ss button {
+	width: 200px;
+	font-family: Meiryo;
+	font-size: 9.5pt;
+	margin: 0;
+	border-width: 1px 0px 0px 1px;
+	border-style: solid;
+	border-color: #606060;
+	background-color: transparent;
+}
+
+div.ally_ss button:hover {
+	border-color: #40A0FF;
+	background-color: #aef3ff;
+}
+
+
+/* Attribute */
+div.attr_0{
+	background-color: #FF4000;
+	width: 4px;
+	height: 64px;
+	float: left;
+	text-indent: -9999px;
+}
+
+div.attr_1{
+	background-color: #40A0FF;
+	width: 4px;
+	height: 64px;
+	float: left;
+	text-indent: -9999px;
+}
+
+div.attr_2{
+	background-color: #FFD000;
+	width: 4px;
+	height: 64px;
+	float: left;
+	text-indent: -9999px;
+}
+
+div.attr_3{
+	background-color: #e5e5e5;
+	width: 4px;
+	height: 64px;
+	float: left;
+	text-indent: -9999px;
+}
+
+div.attr_4{
+	background-color: #9d00a9;
+	width: 4px;
+	height: 64px;
+	float: left;
+	text-indent: -9999px;
+}
+
+div.attr_none{
+	background-color: #A0A0A0;
+	width: 4px;
+	height: 64px;
+	float: left;
+	text-indent: -9999px;
+}
+
+/* Image */
+img.chara_img {
+	width: 64px;
+	height: 64px;
+	float: left;
+	border-width: 0px 1px;
+	border-style: solid;
+	border-color: #606060;
+}
+
+
+
+
+
+
