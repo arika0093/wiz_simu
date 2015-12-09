@@ -2,7 +2,8 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="./css/default.css">
+    <link rel="stylesheet" type="text/css" href="./css/default.css" />
+    <link rel="stylesheet" type="text/css" href="./css/simulator.css" />
     <link type="text/css" rel="stylesheet"
           href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
     <!-- sim page -->
@@ -12,9 +13,96 @@
     <!-- Header -->
     <div id="Header"></div>
 
-    <!-- Main Contents -->
-    <div class="Main">
+    <!-- Simulator -->
+    <div class="Simulator clearfix">
+		<div class="sim_info clearfix">
+			<p id="sim_info_status"></p>
+			<p id="sim_turns"></p>
+		</div>
+		<div class="sim_ally">
+			<div class="ally clearfix" id="ally01">
+				<div class="attr_none" id="ally01_attr_main">.</div>
+				<div class="attr_none" id="ally01_attr_sub">.</div>
+				<img class="chara_img" id="ally01_img" src="./image/dummy.png"/>
+				<p class="ally_name" id="ally01_name"></p>
+				<p class="ally_stat" id="ally01_status"></p>
+				<div class="ally_ss" id="ally01_ss">
+					<button type="button" id="ally01_ss_button"></button>
+				</div>
+			</div>
+			<div class="ally clearfix" id="ally02">
+				<div class="attr_none" id="ally02_attr_main">.</div>
+				<div class="attr_none" id="ally02_attr_sub">.</div>
+				<img class="chara_img" id="ally02_img" src="./image/dummy.png"/>
+				<p class="ally_name" id="ally02_name"></p>
+				<p class="ally_stat" id="ally02_status"></p>
+				<div class="ally_ss" id="ally02_ss">
+					<button type="button" id="ally02_ss_button"></button>
+				</div>
+			</div>
+			<div class="ally clearfix" id="ally03">
+				<div class="attr_none" id="ally03_attr_main">.</div>
+				<div class="attr_none" id="ally03_attr_sub">.</div>
+				<img class="chara_img" id="ally03_img" src="./image/dummy.png"/>
+				<p class="ally_name" id="ally03_name"></p>
+				<p class="ally_stat" id="ally03_status"></p>
+				<div class="ally_ss" id="ally03_ss">
+					<button type="button" id="ally03_ss_button"></button>
+				</div>
+			</div>
+			<div class="ally clearfix" id="ally04">
+				<div class="attr_none" id="ally04_attr_main">.</div>
+				<div class="attr_none" id="ally04_attr_sub">.</div>
+				<img class="chara_img" id="ally04_img" src="./image/dummy.png"/>
+				<p class="ally_name" id="ally04_name"></p>
+				<p class="ally_stat" id="ally04_status"></p>
+				<div class="ally_ss" id="ally04_ss">
+					<button type="button" id="ally04_ss_button"></button>
+				</div>
+			</div>
+			<div class="ally clearfix" id="ally05">
+				<div class="attr_none" id="ally05_attr_main">.</div>
+				<div class="attr_none" id="ally05_attr_sub">.</div>
+				<img class="chara_img" id="ally05_img" src="./image/dummy.png"/>
+				<p class="ally_name" id="ally05_name"></p>
+				<p class="ally_stat" id="ally05_status"></p>
+				<div class="ally_ss" id="ally05_ss">
+					<button type="button" id="ally05_ss_button"></button>
+				</div>
+			</div>
+		</div>
+		<div class="sim_enemy">
+			<div class="enemy clearfix" id="enemy01">
+				<div class="attr_none" id="enemy01_attr_main"></div>
+				<div class="attr_none" id="enemy01_attr_sub"></div>
+				<img class="chara_img" id="enemy01_img" src="./image/dummy.png"/>
+				<p class="enemy_name" id="enemy01_name"></p>
+				<p class="enemy_hp" id="enemy01_hp"></p>
+				<div class="enemy_stat" id="enemy01_stats"></div>
+			</div>
+			<div class="enemy clearfix" id="enemy02">
+				<div class="attr_none" id="enemy02_attr_main"></div>
+				<div class="attr_none" id="enemy02_attr_sub"></div>
+				<img class="chara_img" id="enemy02_img" src="./image/dummy.png"/>
+				<p class="enemy_name" id="enemy02_name"></p>
+				<p class="enemy_hp" id="enemy02_hp"></p>
+				<div class="enemy_stat" id="enemy02_stats"></div>
+			</div>
+			<div class="enemy clearfix" id="enemy03">
+				<div class="attr_none" id="enemy03_attr_main"></div>
+				<div class="attr_none" id="enemy03_attr_sub"></div>
+				<img class="chara_img" id="enemy03_img" src="./image/dummy.png"/>
+				<p class="enemy_name" id="enemy03_name"></p>
+				<p class="enemy_hp" id="enemy03_hp"></p>
+				<div class="enemy_stat" id="enemy03_stats"></div>
+			</div>
+		</div>
+		<div class="sim_panel">
 
+		</div>
+		<div class="sim_log">
+
+		</div>
     </div>
 
     <!-- Footer -->
@@ -28,5 +116,7 @@
     <script type="text/javascript" src="./data/cards.js"></script>
     <script type="text/javascript" src="./js/pagetemp.js"></script>
     <script type="text/javascript" src="./js/loadurl.js"></script>
+    <!-- Javascript/Simulator -->
+    <script type="text/javascript" src="./js/simulator/initialize.js"></script>
 </body>
 </html>
