@@ -64,24 +64,27 @@ div.ally, div.enemy{
 	border-bottom: 1px solid #606060;
 }
 div.ally:first-child, div.enemy:first-child{
-	margin-top: 15px;
+	margin-top: 20px;
 	border-top: 1px solid #606060;
 }
 div.ally:last-child, div.enemy:last-child{
-	margin-bottom: 15px;
+	margin-bottom: 20px;
 }
 
 p.ally_name, p.enemy_name{
 	margin: 0 0 0 0.5em;
 	padding-top: 0.5ex;
-	width: 250px;
+	width: 290px;
 	float: left;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 p.ally_stat, p.enemy_hp{
 	margin: 0px 0.5em 0 0;
 	padding: 0;
-	width: 250px;
+	width: 290px;
 	text-align: right;
 	float: right;
 	font-size: 9pt;
