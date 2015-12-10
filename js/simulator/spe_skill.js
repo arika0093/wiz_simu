@@ -1,0 +1,16 @@
+// SSが残り何ターンで打てるかを配列で返す
+function get_ssturn(card, ally_n) {
+	// SS1 default
+	var ss1_def = card.ss1.turn;
+	// SS2 default
+	var ss2_def = (card.islegend ? card.ss2.turn : undefined);
+	// SSチャージターン
+	var cg = ally_n.ss_current;
+	// 発動してないかどうか
+	var fst = ally_n.ss_isfirst;
+	// 計算
+	var ss1 = Math.max(ss1_def - cg - (fst ? has_fastnum(card) : 0), 0);
+	var ss2 = ss2_def !== undefined ? (Math.max(ss2_def - cg - (fst ? has_fastnum(card) : 0), 0)) : undefined;
+	// 返却
+	return [ss1, ss2];
+}

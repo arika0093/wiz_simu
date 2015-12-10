@@ -15,7 +15,7 @@ var Allys = {
 // 敵データ
 var Enemys = {
 	// クエストデータ
-	Quest: [],
+	Quest: {},
 	// 敵の出現順
 	Popuplist: [],
 	// 敵ステータス管理
@@ -50,10 +50,11 @@ $(function () {
 		for (var i = 0; i < Enemys.Popuplist.length; i++) {
 			var popup_enemys = simQuest.enemys[Enemys.Popuplist[i]];
 			// 敵ステ
-			for (var j = 0; j < popup_enemys.length; j++) {
-				Enemys.Data[i].enemy = [];
-				Enemys.Data[i].enemy[j] = popup_enemys;
-				Enemys.Data[i].enemy[j].nowhp = popup_enemys.hp;
+			Enemys.Data[i] = {};
+			Enemys.Data[i].enemy = [];
+			for (var j = 0; j < popup_enemys.data.length; j++) {
+				Enemys.Data[i].enemy[j] = popup_enemys.data[j];
+				Enemys.Data[i].enemy[j].nowhp = popup_enemys.data[j].hp;
 			}
 		}
 		// 表示

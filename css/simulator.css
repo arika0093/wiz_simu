@@ -21,7 +21,7 @@ div.Simulator {
 div.sim_info {
 	margin: 0.5ex 0.5em;
 	border: 1px solid #606060;
-	border-radius: 10px;
+	border-radius: 5px;
 }
 
 p#sim_info_status {
@@ -48,7 +48,7 @@ div.sim_ally{
 	margin: 1ex 0em 1ex 0.5em;
 	float: left;
 	border: 1px solid #606060;
-	border-radius: 10px;
+	border-radius: 5px;
 }
 
 div.sim_enemy {
@@ -56,7 +56,7 @@ div.sim_enemy {
 	margin: 1ex 0.5em 1ex 0em;
 	float: right;
 	border: 1px solid #606060;
-	border-radius: 10px;
+	border-radius: 5px;
 }
 
 div.ally, div.enemy{
@@ -74,7 +74,6 @@ div.ally:last-child, div.enemy:last-child{
 p.ally_name, p.enemy_name{
 	margin: 0 0 0 0.5em;
 	padding-top: 0.5ex;
-	width: 290px;
 	float: left;
 	overflow: hidden;
 	white-space: nowrap;
@@ -82,36 +81,52 @@ p.ally_name, p.enemy_name{
 }
 
 p.ally_stat, p.enemy_hp{
-	margin: 0px 0.5em 0 0;
+	margin: -2px 0.5em 0 0;
 	padding: 0;
-	width: 290px;
 	text-align: right;
 	float: right;
 	font-size: 9pt;
 }
 
+p.ally_name, p.ally_stat{
+	width: 298px;
+}
+p.enemy_name, p.enemy_stat{
+	width: 260px;
+}
+
+
+
 div.ally_ss {
-	/*float: right;*/
 	position: absolute;
 	bottom: 0px;
 	right: 0px;
 }
 
-div.ally_ss button {
+div.ally_ss button{
 	width: 200px;
 	font-family: Meiryo;
 	font-size: 9.5pt;
 	margin: 0;
 	border-width: 1px 0px 0px 1px;
 	border-style: solid;
+}
+
+button.ally_ss_button {
+	color: #303030;
 	border-color: #606060;
 	background-color: transparent;
 }
 
-div.ally_ss button:hover {
+button.ally_ss_button:hover {
 	border-color: #40A0FF;
 	background-color: #aef3ff;
 }
+
+button.ally_ss_button_disabled{
+	border-color: #C0C0C0;
+}
+
 
 
 /* Attribute */
@@ -170,7 +185,7 @@ img.chara_img {
 	float: left;
 	border-width: 0px 1px;
 	border-style: solid;
-	border-color: #606060;
+	border-color: #A0A0A0;
 }
 
 
