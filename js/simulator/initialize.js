@@ -4,8 +4,12 @@ var Allys = {
 	Deck: [],
 	// 現在のステータス(maxhp, nowhp, atk, mana)
 	Now: [],
-	// かかったターン
-	Turns: [],
+	// 現在の状況管理
+	Status: {
+		durturn: [],	// 過去の経過ターン数
+		nowturn: 1,		// 現在の経過ターン数
+		nowbattle: 1,	// 現在の戦闘数
+	},
 };
 
 // 敵データ
@@ -43,7 +47,6 @@ $(function () {
 		Enemys.Quest = simQuest;
 		// 出現順番
 		Enemys.Popuplist = CreateEnemypopup(simQuest);
-		alert(Enemys.Popuplist);
 		for (var i = 0; i < Enemys.Popuplist.length; i++) {
 			var popup_enemys = simQuest.enemys[Enemys.Popuplist[i]];
 			// 敵ステ
