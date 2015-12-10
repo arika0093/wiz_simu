@@ -22,7 +22,9 @@ div#Header{
 
 a.toplink{
 	/*display: block;*/
-	padding: 0.5ex 0.5em 0ex;
+	width: 45%;
+	float: left;
+	padding: 0.5ex 0.5em 0.8ex;
 	font-family: 'Times New Roman', Times, serif;
 	font-style: italic;
 	font-size: 40px;
@@ -33,8 +35,9 @@ a.toplink{
 }
 
 div.otherlinks{
-	padding: 0.5ex 0.5em 1ex;
-	display: block;
+	width: 45%;
+	float: right;
+	padding: 0.5ex 0.5em;
 	text-align: right;
 }
 
