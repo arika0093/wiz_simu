@@ -26,6 +26,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{D7F5FD15-0
 	ProjectSection(SolutionItems) = preProject
 		data\cards.js = data\cards.js
 		data\quests.js = data\quests.js
+		data\skill_ans.js = data\skill_ans.js
+		data\skill_awake.js = data\skill_awake.js
+		data\skill_spe.js = data\skill_spe.js
 		data\templateskills.js = data\templateskills.js
 	EndProjectSection
 EndProject
@@ -37,12 +40,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "text", "text", "{FEDAC185-D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "simulator", "simulator", "{0B5CF5D7-96AD-4EED-8363-750FF402B468}"
 	ProjectSection(SolutionItems) = preProject
-		js\simulator\ans_skill.js = js\simulator\ans_skill.js
 		js\simulator\answer.js = js\simulator\answer.js
 		js\simulator\awake.js = js\simulator\awake.js
 		js\simulator\initialize.js = js\simulator\initialize.js
 		js\simulator\show.js = js\simulator\show.js
-		js\simulator\spe_skill.js = js\simulator\spe_skill.js
+		js\simulator\special.js = js\simulator\special.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "codetest", "codetest", "{0A56A8F5-7D1B-4E2E-A0D9-43CA2EEBFF13}"

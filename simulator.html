@@ -120,7 +120,14 @@
 				<button class="panel_button" id="pnl_attr_01" onclick="panel([0,1])">火水</button>
 				<button class="panel_button" id="pnl_attr_12" onclick="panel([1,2])">水雷</button>
 				<button class="panel_button" id="pnl_attr_02" onclick="panel([0,2])">火雷</button>
-				<button class="panel_button" id="pnl_attr_012" onclick="panel([0,1,2])">三色</button>
+				<button class="panel_button" id="pnl_attr_012" onclick="panel([0,1,2])">3色</button>
+				<button class="panel_button" id="pnl_attr_03" onclick="panel([0,3])">火光</button>
+				<button class="panel_button" id="pnl_attr_13" onclick="panel([1,3])">水光</button>
+				<button class="panel_button" id="pnl_attr_23" onclick="panel([2,3])">雷光</button>
+				<button class="panel_button" id="pnl_attr_04" onclick="panel([0,4])">火闇</button>
+				<button class="panel_button" id="pnl_attr_14" onclick="panel([1,4])">水闇</button>
+				<button class="panel_button" id="pnl_attr_24" onclick="panel([2,4])">火闇</button>
+				<button class="panel_button" id="pnl_attr_miss" onclick="panel([])">誤答</button>
 			</div>
 		</div>
 		<div class="sim_log textlog">
@@ -135,7 +142,9 @@
     <!-- Javascript -->
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="./data/templateskills.js"></script>
+    <script type="text/javascript" src="./data/skill_ans.js"></script>
+    <script type="text/javascript" src="./data/skill_spe.js"></script>
+    <script type="text/javascript" src="./data/skill_awake.js"></script>
     <script type="text/javascript" src="./data/quests.js"></script>
     <script type="text/javascript" src="./data/cards.js"></script>
     <script type="text/javascript" src="./js/pagetemp.js"></script>
@@ -144,8 +153,7 @@
     <script type="text/javascript" src="./js/simulator/initialize.js"></script>
     <script type="text/javascript" src="./js/simulator/show.js"></script>
     <script type="text/javascript" src="./js/simulator/answer.js"></script>
-    <script type="text/javascript" src="./js/simulator/ans_skill.js"></script>
-    <script type="text/javascript" src="./js/simulator/spe_skill.js"></script>
+    <script type="text/javascript" src="./js/simulator/special.js"></script>
     <script type="text/javascript" src="./js/simulator/awake.js"></script>
 </body>
 </html>

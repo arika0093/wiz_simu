@@ -45,7 +45,7 @@ p#sim_turns {
 /* Simulator Allys & Enemys*/
 div.sim_ally{
 	width: 50%;
-	margin: 1ex 0em 2ex 0.5em;
+	margin: 1ex 0em 1ex 0.5em;
 	float: left;
 	border: 1px solid #606060;
 	border-radius: 5px;
@@ -149,6 +149,7 @@ p.enemy_stat{
 /* Panels */
 div.sim_panel {
 	width: 45%;
+	height: 300px;
 	margin: 1ex 0.5em 2ex 0em;
 	padding: 0px;
 	float: right;
@@ -175,7 +176,6 @@ select#panel_add_sel, select#attack_target_sel {
 div.panel_list {
 	border-top: 1px solid #606060;
 	border-bottom: 1px solid #606060;
-	margin-bottom: 21px;
 	padding: 0 0.5em 1ex;
 	clear: both;
 }
@@ -190,10 +190,10 @@ button.panel_button {
 
 /* Logs */
 div.sim_log {
-	/*width: 50%;*/
-	height: 100px;
-	margin: 0.5ex 0.5em;
-	clear: both;
+	width: 50%;
+	height: 150px;
+	margin: 1ex 0.5em 0.5ex;
+	float: left;
 }
 
 div.sim_log_inner {
