@@ -76,12 +76,15 @@ a.itemhidden{
 	vertical-align: bottom;
 }
 
-div#Updatelog{
-	border: solid 1px #808080;
-	height: 200px;
+div#Updatelog {
 	margin: 0.5ex 0em;
 	padding: 0.5em;
-	overflow: scroll;
+	height: 200px;
+}
+
+div.textlog{
+	border: solid 1px #808080;
+	overflow: auto;
 }
 
 span.secretly{
@@ -133,8 +136,6 @@ button#Start{
 li.ui-menu-item{
 	font-family: Meiryo !important;
 }
-
-
 
 /* Footer */
 div.copyright{

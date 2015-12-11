@@ -11,8 +11,8 @@ function sim_show() {
 		}
 	}
 	$("#sim_turns").text(
-		"turn: " + Allys.Status.nowturn + " / " + Allys.Status.nowbattle + "戦目 " +
-		popupstr + ")"
+		"turn: " + Allys.Status.totalturn + " / chain: " + Allys.Status.chain + " / "
+			+ Allys.Status.nowbattle + "戦目 " + popupstr + ")"
 	);
 
 	// sim_ally
@@ -32,6 +32,7 @@ function sim_show() {
 				// SS発動可能
 				$("#ally0" + (i + 1) + "_ss_button").attr("class", "ally_ss_button");
 				$("#ally0" + (i + 1) + "_ss_button").text(ss_remain_text(sst));
+				$("#ally0" + (i + 1) + "_ss_button").attr("disabled", false);
 			} else {
 				// SS発動不可
 				$("#ally0" + (i + 1) + "_ss_button").attr("class", "ally_ss_button_disabled");
@@ -42,7 +43,7 @@ function sim_show() {
 			// 無効化
 			$("#ally0" + (i + 1) + "_attr_main").attr("class", "attr_none");
 			$("#ally0" + (i + 1) + "_attr_sub").attr("class", "attr_none");
-			$("#ally0" + (i + 1) + "_img").attr("src", "./image/dummy.png");
+			$("#ally0" + (i + 1) + "_img").attr("src", "./image/noimage.png");
 			$("#ally0" + (i + 1) + "_ss_button").text("(未選択)");
 			$("#ally0" + (i + 1) + "_ss_button").attr("class", "ally_ss_button_disabled");
 			$("#ally0" + (i + 1) + "_ss_button").attr("disabled", "disabled");
@@ -63,15 +64,23 @@ function sim_show() {
 			// 無効化
 			$("#enemy0" + (i + 1) + "_attr_main").attr("class", "attr_none");
 			$("#enemy0" + (i + 1) + "_attr_sub").attr("class", "attr_none");
-			$("#enemy0" + (i + 1) + "_img").attr("src", "./image/dummy.png");
+			$("#enemy0" + (i + 1) + "_img").attr("src", "./image/noimage.png");
 		}
 	}
+	// sim_panel
+
+	// sim_log
+	var logtext = "";
+	for (var i = 0; i < Allys.Status.log.length; i++) {
+		logtext += Allys.Status.log[i];
+	}
+	$(".sim_log_inner").text(logtext);
 }
 
 // 画像のURLを返却する
 function get_image_url(no) {
 	if (no < 0) {
-		return "./image/dummy.png";
+		return "./image/noimage.png";
 	}
 	return "http://i.quiz.colopl.jp/img/card/small/card_" + ("0000" + no).slice(-5) + "_0.png"
 }

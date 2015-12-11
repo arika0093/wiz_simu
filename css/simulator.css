@@ -45,7 +45,7 @@ p#sim_turns {
 /* Simulator Allys & Enemys*/
 div.sim_ally{
 	width: 50%;
-	margin: 1ex 0em 1ex 0.5em;
+	margin: 1ex 0em 2ex 0.5em;
 	float: left;
 	border: 1px solid #606060;
 	border-radius: 5px;
@@ -120,10 +120,14 @@ button.ally_ss_button {
 	border-color: #606060;
 	background-color: transparent;
 }
-
 button.ally_ss_button:hover {
 	border-color: #40A0FF;
 	background-color: #aef3ff;
+}
+button.ally_ss_button:active{
+	color: #000000;
+	border-color: #138aff;
+	background-color: #67e8ff;
 }
 
 button.ally_ss_button_disabled{
@@ -142,6 +146,59 @@ p.enemy_stat{
 	text-overflow: ellipsis;
 }
 
+/* Panels */
+div.sim_panel {
+	width: 45%;
+	margin: 1ex 0.5em 2ex 0em;
+	padding: 0px;
+	float: right;
+	border: 1px solid #606060;
+	border-radius: 0px 0px 5px 5px;
+}
+
+div.panel_addition {
+	width: 70%;
+	padding: 3px 0px 3px 0.5em;
+	float: left;
+}
+
+div.attack_target{
+	width: 25%;
+	padding: 3px 0.5em 3px 3px;
+	float: right;
+}
+
+select#panel_add_sel, select#attack_target_sel {
+	margin-top: 0px;
+}
+
+div.panel_list {
+	border-top: 1px solid #606060;
+	border-bottom: 1px solid #606060;
+	margin-bottom: 21px;
+	padding: 0 0.5em 1ex;
+	clear: both;
+}
+
+button.panel_button {
+	font-family: Meiryo;
+	font-size: 9pt;
+	margin-top: 1ex;
+	width: 42px;
+	height: 42px;
+}
+
+/* Logs */
+div.sim_log {
+	/*width: 50%;*/
+	height: 100px;
+	margin: 0.5ex 0.5em;
+	clear: both;
+}
+
+div.sim_log_inner {
+	padding: 0.5ex 0.5em;
+}
 
 /* Attribute */
 div.attr_0{
@@ -201,9 +258,3 @@ img.chara_img {
 	border-style: solid;
 	border-color: #A0A0A0;
 }
-
-
-
-
-
-

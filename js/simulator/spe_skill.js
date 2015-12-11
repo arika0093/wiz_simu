@@ -1,3 +1,13 @@
+// SSを発動する
+function ss_push(n) {
+
+	// SSターンをリセット
+	Allys.Now[n].ss_current = 0;
+	Allys.Now[n].ss_isfirst = false;
+	// 再表示
+	sim_show();
+}
+
 // SSが残り何ターンで打てるかを配列で返す
 function get_ssturn(card, ally_n) {
 	// SS1 default

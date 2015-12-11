@@ -23,51 +23,51 @@
 			<div class="ally clearfix" id="ally01">
 				<div class="attr_none" id="ally01_attr_main">.</div>
 				<div class="attr_none" id="ally01_attr_sub">.</div>
-				<img class="chara_img" id="ally01_img" src="./image/dummy.png"/>
+				<img class="chara_img" id="ally01_img" src="./image/noimage.png"/>
 				<p class="ally_name" id="ally01_name"></p>
 				<p class="ally_stat" id="ally01_status"></p>
 				<div class="ally_ss" id="ally01_ss">
-					<button type="button" id="ally01_ss_button"></button>
+					<button type="button" id="ally01_ss_button" onclick="ss_push(0)"></button>
 				</div>
 			</div>
 			<div class="ally clearfix" id="ally02">
 				<div class="attr_none" id="ally02_attr_main">.</div>
 				<div class="attr_none" id="ally02_attr_sub">.</div>
-				<img class="chara_img" id="ally02_img" src="./image/dummy.png"/>
+				<img class="chara_img" id="ally02_img" src="./image/noimage.png"/>
 				<p class="ally_name" id="ally02_name"></p>
 				<p class="ally_stat" id="ally02_status"></p>
 				<div class="ally_ss" id="ally02_ss">
-					<button type="button" id="ally02_ss_button"></button>
+					<button type="button" id="ally02_ss_button" onclick="ss_push(1)"></button>
 				</div>
 			</div>
 			<div class="ally clearfix" id="ally03">
 				<div class="attr_none" id="ally03_attr_main">.</div>
 				<div class="attr_none" id="ally03_attr_sub">.</div>
-				<img class="chara_img" id="ally03_img" src="./image/dummy.png"/>
+				<img class="chara_img" id="ally03_img" src="./image/noimage.png"/>
 				<p class="ally_name" id="ally03_name"></p>
 				<p class="ally_stat" id="ally03_status"></p>
 				<div class="ally_ss" id="ally03_ss">
-					<button type="button" id="ally03_ss_button"></button>
+					<button type="button" id="ally03_ss_button" onclick="ss_push(2)"></button>
 				</div>
 			</div>
 			<div class="ally clearfix" id="ally04">
 				<div class="attr_none" id="ally04_attr_main">.</div>
 				<div class="attr_none" id="ally04_attr_sub">.</div>
-				<img class="chara_img" id="ally04_img" src="./image/dummy.png"/>
+				<img class="chara_img" id="ally04_img" src="./image/noimage.png"/>
 				<p class="ally_name" id="ally04_name"></p>
 				<p class="ally_stat" id="ally04_status"></p>
 				<div class="ally_ss" id="ally04_ss">
-					<button type="button" id="ally04_ss_button"></button>
+					<button type="button" id="ally04_ss_button" onclick="ss_push(3)"></button>
 				</div>
 			</div>
 			<div class="ally clearfix" id="ally05">
 				<div class="attr_none" id="ally05_attr_main">.</div>
 				<div class="attr_none" id="ally05_attr_sub">.</div>
-				<img class="chara_img" id="ally05_img" src="./image/dummy.png"/>
+				<img class="chara_img" id="ally05_img" src="./image/noimage.png"/>
 				<p class="ally_name" id="ally05_name"></p>
 				<p class="ally_stat" id="ally05_status"></p>
 				<div class="ally_ss" id="ally05_ss">
-					<button type="button" id="ally05_ss_button"></button>
+					<button type="button" id="ally05_ss_button" onclick="ss_push(4)"></button>
 				</div>
 			</div>
 		</div>
@@ -75,7 +75,7 @@
 			<div class="enemy clearfix" id="enemy01">
 				<div class="attr_none" id="enemy01_attr_main"></div>
 				<div class="attr_none" id="enemy01_attr_sub"></div>
-				<img class="chara_img" id="enemy01_img" src="./image/dummy.png"/>
+				<img class="chara_img" id="enemy01_img" src="./image/noimage.png"/>
 				<p class="enemy_name" id="enemy01_name"></p>
 				<p class="enemy_hp" id="enemy01_hp"></p>
 				<p class="enemy_stat" id="enemy01_stats"></p>
@@ -83,7 +83,7 @@
 			<div class="enemy clearfix" id="enemy02">
 				<div class="attr_none" id="enemy02_attr_main"></div>
 				<div class="attr_none" id="enemy02_attr_sub"></div>
-				<img class="chara_img" id="enemy02_img" src="./image/dummy.png"/>
+				<img class="chara_img" id="enemy02_img" src="./image/noimage.png"/>
 				<p class="enemy_name" id="enemy02_name"></p>
 				<p class="enemy_hp" id="enemy02_hp"></p>
 				<p class="enemy_stat" id="enemy02_stats"></p>
@@ -91,17 +91,41 @@
 			<div class="enemy clearfix" id="enemy03">
 				<div class="attr_none" id="enemy03_attr_main"></div>
 				<div class="attr_none" id="enemy03_attr_sub"></div>
-				<img class="chara_img" id="enemy03_img" src="./image/dummy.png"/>
+				<img class="chara_img" id="enemy03_img" src="./image/noimage.png"/>
 				<p class="enemy_name" id="enemy03_name"></p>
 				<p class="enemy_hp" id="enemy03_hp"></p>
 				<p class="enemy_stat" id="enemy03_stats"></p>
 			</div>
 		</div>
 		<div class="sim_panel">
-
+			<div class="panel_addition">
+				<label for="panel_add_sel">パネル付与効果</label>
+				<select id="panel_add_sel">
+                    <option value="">(未選択)</option>
+				</select>
+			</div>
+			<div class="attack_target">
+				<label for="attack_target_sel">攻撃順</label>
+				<select id="attack_target_sel">
+                    <option value="auto">自動</option>
+                    <option value="0">左</option>
+                    <option value="1">中央</option>
+                    <option value="2">右</option>
+				</select>
+			</div>
+			<div class="panel_list">
+				<button class="panel_button" id="pnl_attr_0" onclick="panel([0])">火</button>
+				<button class="panel_button" id="pnl_attr_1" onclick="panel([1])">水</button>
+				<button class="panel_button" id="pnl_attr_2" onclick="panel([2])">雷</button>
+				<button class="panel_button" id="pnl_attr_01" onclick="panel([0,1])">火水</button>
+				<button class="panel_button" id="pnl_attr_12" onclick="panel([1,2])">水雷</button>
+				<button class="panel_button" id="pnl_attr_02" onclick="panel([0,2])">火雷</button>
+				<button class="panel_button" id="pnl_attr_012" onclick="panel([0,1,2])">三色</button>
+			</div>
 		</div>
-		<div class="sim_log">
-
+		<div class="sim_log textlog">
+			<div class="sim_log_inner">
+			</div>
 		</div>
     </div>
 
@@ -119,6 +143,7 @@
     <!-- Javascript/Simulator -->
     <script type="text/javascript" src="./js/simulator/initialize.js"></script>
     <script type="text/javascript" src="./js/simulator/show.js"></script>
+    <script type="text/javascript" src="./js/simulator/answer.js"></script>
     <script type="text/javascript" src="./js/simulator/ans_skill.js"></script>
     <script type="text/javascript" src="./js/simulator/spe_skill.js"></script>
     <script type="text/javascript" src="./js/simulator/awake.js"></script>

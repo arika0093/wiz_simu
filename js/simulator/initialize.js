@@ -6,9 +6,12 @@ var Allys = {
 	Now: [],
 	// 現在の状況管理
 	Status: {
+		chain: 0,		// 現在のチェイン数
 		durturn: [],	// 過去の経過ターン数
 		nowturn: 1,		// 現在の経過ターン数
+		totalturn: 1,	// 累計の経過ターン数
 		nowbattle: 1,	// 現在の戦闘数
+		log: [],		// ログ
 	},
 };
 
@@ -61,6 +64,7 @@ $(function () {
 		sim_show();
 	} else {
 		$("#sim_info_status").html("#ERROR: URLが正しくありません。");
+		$(".panel_button").attr("disabled", "disabled");
 	}
 });
 
