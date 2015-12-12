@@ -23,7 +23,15 @@ function ChainAttack(rate, ch) {
 			rate: rate,
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
+<<<<<<< HEAD
+<<<<<<< HEAD
+			spec: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+=======
 			spec: create_specs(1),
+>>>>>>> e22626d... 潜在能力関連の整備
+=======
+			spec: create_specs(1),
+>>>>>>> 447b73f... 潜在能力枠組み作成,
 		}
 	];
 }
@@ -38,7 +46,15 @@ function ChainDualAttack(rate, ch, n) {
 			rate: rate,
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
+<<<<<<< HEAD
+<<<<<<< HEAD
+			spec: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+=======
 			spec: create_specs(1),
+>>>>>>> e22626d... 潜在能力関連の整備
+=======
+			spec: create_specs(1),
+>>>>>>> 447b73f... 潜在能力枠組み作成,
 		}
 	];
 }
@@ -53,7 +69,15 @@ function ChainAttrAttack(rate, ch, attr) {
 			rate: rate,
 			chain: ch,
 			attr: attr,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			spec: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+=======
 			spec: create_specs(1),
+>>>>>>> e22626d... 潜在能力関連の整備
+=======
+			spec: create_specs(1),
+>>>>>>> 447b73f... 潜在能力枠組み作成,
 		}
 	];
 }
@@ -83,7 +107,15 @@ function ChainDualAttrAttack(rate, ch, n, attr) {
 			rate: rate,
 			chain: ch,
 			attr: attr,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			spec: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+=======
 			spec: create_specs(1),
+>>>>>>> e22626d... 潜在能力関連の整備
+=======
+			spec: create_specs(1),
+>>>>>>> 447b73f... 潜在能力枠組み作成,
 		}
 	];
 }
@@ -98,7 +130,15 @@ function ChainAllAttack(rate, ch) {
 			rate: rate,
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
+<<<<<<< HEAD
+<<<<<<< HEAD
+			spec: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+=======
 			spec: create_specs(1),
+>>>>>>> e22626d... 潜在能力関連の整備
+=======
+			spec: create_specs(1),
+>>>>>>> 447b73f... 潜在能力枠組み作成,
 		}
 	];
 }
@@ -112,7 +152,15 @@ function Heal(rate, attr) {
 			rate: rate,
 			chain: 0,
 			attr: attr,
+<<<<<<< HEAD
+<<<<<<< HEAD
+			spec: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+=======
 			spec: create_specs(1),
+>>>>>>> e22626d... 潜在能力関連の整備
+=======
+			spec: create_specs(1),
+>>>>>>> 447b73f... 潜在能力枠組み作成,
 		}
 	];
 }

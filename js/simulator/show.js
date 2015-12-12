@@ -75,6 +75,20 @@ function sim_show() {
 		logtext += Allys.Status.log[i];
 	}
 	$(".sim_log_inner").text(logtext);
+<<<<<<< HEAD
+<<<<<<< HEAD
+}
+
+// 画像のURLを返却する
+function get_image_url(no) {
+	if (no < 0) {
+		return "./image/noimage.png";
+	}
+	return "http://i.quiz.colopl.jp/img/card/small/card_" + ("0000" + no).slice(-5) + "_0.png"
+=======
+>>>>>>> e22626d... 潜在能力関連の整備
+=======
+>>>>>>> 447b73f... 潜在能力枠組み作成,
 }
 
 // SSの残り表記を返却する
