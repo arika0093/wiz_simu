@@ -1,17 +1,5 @@
 /* Simulator Style */
 /* --------------------------------- */
-/* Clearfix */
-.clearfix {
-	/*display: inline-table;*/
-}
-.clearfix:after {
-	content: " ";
-	display: block;
-	height: 0;
-	clear: both;
-	visibility: hidden;
-}
-
 /* Main Frame */
 div.Simulator {
 	padding: 2ex 1.5em;
@@ -149,7 +137,7 @@ p.enemy_stat{
 /* Panels */
 div.sim_panel {
 	width: 45%;
-	height: 300px;
+	height: 250px;
 	margin: 1ex 0.5em 2ex 0em;
 	padding: 0px;
 	float: right;
@@ -158,18 +146,24 @@ div.sim_panel {
 }
 
 div.panel_addition {
-	width: 70%;
+	width: 50%;
 	padding: 3px 0px 3px 0.5em;
 	float: left;
 }
 
 div.attack_target{
-	width: 25%;
-	padding: 3px 0.5em 3px 3px;
-	float: right;
+	width: 18%;
+	padding: 3px 3px 3px 3px;
+	float: left;
 }
 
-select#panel_add_sel, select#attack_target_sel {
+div.attack_rand{
+	width: 25%;
+	padding: 3px 0.5em 3px 3px;
+	float: left;
+}
+
+select#panel_add_sel, select#attack_target_sel, select#attack_rand_sel{
 	margin-top: 0px;
 }
 
@@ -183,15 +177,16 @@ div.panel_list {
 button.panel_button {
 	font-family: Meiryo;
 	font-size: 9pt;
+	white-space: nowrap;
 	margin-top: 1ex;
 	width: 42px;
-	height: 42px;
+	height: 36px;
 }
 
 /* Logs */
 div.sim_log {
 	width: 50%;
-	height: 150px;
+	height: 100px;
 	margin: 1ex 0.5em 0.5ex;
 	float: left;
 }

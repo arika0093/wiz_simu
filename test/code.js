@@ -3,12 +3,8 @@ $(function () {
 		name: "icecream",
 		price: 100,
 	};
-	var test2 = {
-		item: [],
-		tag: ["cold", "sweets",],
-	}
+	var test2 = test1;
 
-	test2.item = test1;
-	test2.item.short = "ice";
-	$(".show").text(test2.item.short);
+	test2.name = "ice";
+	$(".show").text(test1.name);
 });

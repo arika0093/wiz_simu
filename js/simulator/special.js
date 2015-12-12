@@ -1,31 +1,34 @@
-// SS‚ğ”­“®‚·‚é
+ï»¿// SSã‚’ç™ºå‹•ã™ã‚‹
 function ss_push(n) {
 
-	// SSƒ^[ƒ“‚ğƒŠƒZƒbƒg
+
+	// SSã‚¿ãƒ¼ãƒ³ã‚’ãƒªã‚»ãƒƒãƒˆ
 	Allys.Now[n].ss_current = 0;
 	Allys.Now[n].ss_isfirst = false;
-	// Ä•\¦
+	// å†è¡¨ç¤º
 	sim_show();
 }
 
-// Lƒ‚[ƒh‚É“ü‚Á‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é
+// Lãƒ¢ãƒ¼ãƒ‰ã«å…¥ã£ã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹
 function is_legendmode(card, ally_n) {
 	return get_ssturn(card, ally_n)[1] == 0;
 }
 
-// SS‚ªc‚è‰½ƒ^[ƒ“‚Å‘Å‚Ä‚é‚©‚ğ”z—ñ‚Å•Ô‚·
+// SSãŒæ®‹ã‚Šä½•ã‚¿ãƒ¼ãƒ³ã§æ‰“ã¦ã‚‹ã‹ã‚’é…åˆ—ã§è¿”ã™
 function get_ssturn(card, ally_n) {
 	// SS1 default
 	var ss1_def = card.ss1.turn;
 	// SS2 default
 	var ss2_def = (card.islegend ? card.ss2.turn : undefined);
-	// SSƒ`ƒƒ[ƒWƒ^[ƒ“
+	// SSãƒãƒ£ãƒ¼ã‚¸ã‚¿ãƒ¼ãƒ³
 	var cg = ally_n.ss_current;
-	// ”­“®‚µ‚Ä‚È‚¢‚©‚Ç‚¤‚©
+	// ç™ºå‹•ã—ã¦ãªã„ã‹ã©ã†ã‹
 	var fst = ally_n.ss_isfirst;
-	// ŒvZ
-	var ss1 = Math.max(ss1_def - cg - (fst ? has_fastnum(card) : 0), 0);
-	var ss2 = ss2_def !== undefined ? (Math.max(ss2_def - cg - (fst ? has_fastnum(card) : 0), 0)) : undefined;
-	// •Ô‹p
+	// ãƒ•ã‚¡ã‚¹ãƒˆã‚’ã„ãã¤æŒã£ã¦ã„ã‚‹ã‹
+	var fast_num = has_fastnum(card);
+	// è¨ˆç®—
+	var ss1 = Math.max(ss1_def - cg - (fst ? fast_num : 0), 0);
+	var ss2 = ss2_def !== undefined ? (Math.max(ss2_def - cg - (fst ? fast_num : 0), 0)) : undefined;
+	// è¿”å´
 	return [ss1, ss2];
 }

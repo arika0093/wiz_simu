@@ -1,65 +1,65 @@
-// ‰ğ“š‚µ‚½‚Æ‚«‚Ìˆ—
+ï»¿// è§£ç­”ã—ãŸã¨ãã®å‡¦ç†
 function panel(attr) {
 	var is_allkill = true;
-	// ‚à‚µŒë“š‚µ‚Ä‚½‚È‚çƒ`ƒFƒCƒ“‚ğØ‚é
+	// ã‚‚ã—èª¤ç­”ã—ã¦ãŸãªã‚‰ãƒã‚§ã‚¤ãƒ³ã‚’åˆ‡ã‚‹
 	if (attr.length <= 0) {
 		Allys.Status.chain = 0;
 	} else {
-		// ‘S‘Ì‚É‚Â‚¢‚Äˆ—
+		// å…¨ä½“ã«ã¤ã„ã¦å‡¦ç†
 		Allys.Status.chain += 1;
-		// Še¸—ì‚É‚Â‚¢‚Äˆ—
+		// å„ç²¾éœŠã«ã¤ã„ã¦å‡¦ç†
 		for (var i = 0; i < Allys.Deck.length; i++) {
-			// ASˆ—
+			// ASå‡¦ç†
 			answer_skill(i, attr);
-			// SSƒ`ƒƒ[ƒW‚ğ1‘‚â‚·
+			// SSãƒãƒ£ãƒ¼ã‚¸ã‚’1å¢—ã‚„ã™
 			Allys.Now[i].ss_current += 1;
 		}
 	}
-	// “G‚Ìˆ—
+	// æ•µã®å‡¦ç†
 	for (var i = 0; i < Enemys.Data[Allys.Status.nowbattle - 1].enemy.length; i++) {
-		// ‘S•”‚Ì“G‚ğ“|‚µ‚Ä‚é‚©‚Ç‚¤‚©”»’è‚·‚é
+		// å…¨éƒ¨ã®æ•µã‚’å€’ã—ã¦ã‚‹ã‹ã©ã†ã‹åˆ¤å®šã™ã‚‹
 		is_allkill = (is_allkill && Enemys.Data[Allys.Status.nowbattle - 1].enemy[i].nowhp == 0);
 	}
-	// ‘S‚Ä‚Ì“G‚ğ“|‚µ‚Ä‚¢‚½‚ç
+	// å…¨ã¦ã®æ•µã‚’å€’ã—ã¦ã„ãŸã‚‰
 	if (is_allkill) {
-		// Ÿ‚Éi‚Ş
+		// æ¬¡ã«é€²ã‚€
 		Allys.Status.nowbattle += 1;
 		Allys.Status.durturn.push(Allys.Status.nowturn);
 		Allys.Status.nowturn = 0;
 	}
-	// ƒ^[ƒ“’Ç‰Á
+	// ã‚¿ãƒ¼ãƒ³è¿½åŠ 
 	Allys.Status.nowturn += 1;
 	Allys.Status.totalturn += 1;
-	// •\¦
+	// è¡¨ç¤º
 	sim_show();
 }
 
-// ƒAƒ“ƒT[ƒXƒLƒ‹‚Ìˆ—
+// ã‚¢ãƒ³ã‚µãƒ¼ã‚¹ã‚­ãƒ«ã®å‡¦ç†
 function answer_skill(no, attr) {
-	// ƒJ[ƒhí—Ş
+	// ã‚«ãƒ¼ãƒ‰ç¨®é¡
 	var card = Allys.Deck[no];
 	var al_now = Allys.Now[no];
-	// ASæ“¾
+	// ASå–å¾—
 	var ASkill = is_legendmode(card, al_now) ? card.AS2 : card.AS1;
-	// “¥‚ñ‚¾ƒpƒlƒ‹F‚Æ‘®«‚Ì‚Ç‚ê‚©‚ªˆê’v‚µ‚Ä‚¢‚é‚©Šm”F
+	// è¸ã‚“ã ãƒ‘ãƒãƒ«è‰²ã¨å±æ€§ã®ã©ã‚Œã‹ãŒä¸€è‡´ã—ã¦ã„ã‚‹ã‹ç¢ºèª
 	var is_match_attr = $.grep(attr, function (e) {
 		return e == card.attr[0] || e == card.attr[1];
 	}).length != 0;
 	if (is_match_attr) {
-		// ƒGƒ“ƒn‚Ìˆ—
+		// ã‚¨ãƒ³ãƒã®å‡¦ç†
 
-		// UŒ‚ƒXƒLƒ‹‚Ìˆ—
+		// æ”»æ’ƒã‚¹ã‚­ãƒ«ã®å‡¦ç†
 
-		// ‰ñ•œƒXƒLƒ‹‚Ìˆ—
+		// å›å¾©ã‚¹ã‚­ãƒ«ã®å‡¦ç†
 
 	}
 }
 
-// UŒ‚ƒXƒLƒ‹‚Ìˆ—
+// æ”»æ’ƒã‚¹ã‚­ãƒ«ã®å‡¦ç†
 function answer_attack(card, now, as, attr) {
-	// ‚»‚ê‚¼‚ê‚Ì‘®«‚É‚Â‚¢‚Äˆ—‚ğs‚¤
+	// ãã‚Œãã‚Œã®å±æ€§ã«ã¤ã„ã¦å‡¦ç†ã‚’è¡Œã†
 	for (var i = 0; i < 2; i++) {
-		// ‘®«–³‚µ‚È‚çˆ—‚µ‚È‚¢
+		// å±æ€§ç„¡ã—ãªã‚‰å‡¦ç†ã—ãªã„
 		if (card.attr[i] === undefined) {
 			continue;
 		}

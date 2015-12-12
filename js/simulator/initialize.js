@@ -34,18 +34,26 @@ $(function () {
 	if ((simDeck.length > 0 && simQuest !== undefined)) {
 		// 味方データを読み込む
 		Allys.Deck = simDeck;
+		Allys.Now = new Array({},{},{},{},{});
 		for (var i = 0; i < simDeck.length; i++) {
-			// マナプラス
+			var card = simDeck[i];
+			var now = Allys.Now[i];
 			var mana = 200;
+			// SS状態をリセット
+			now.ss_current = 0;		// SSチャージターン
+			now.ss_isfirst = true;	// SSをまだ発動していないかどうか
 			// 現在のステ
-			Allys.Now[i] = {};
-			Allys.Now[i].maxhp = simDeck[i].hp + mana;
-			Allys.Now[i].nowhp = simDeck[i].hp + mana;
-			Allys.Now[i].atk = simDeck[i].atk + mana;
-			Allys.Now[i].mana = mana;
-			Allys.Now[i].ss_current = 0;	// SSチャージターン
-			Allys.Now[i].ss_isfirst = true; // SSをまだ発動していないかどうか
+			now.enable = true;
+			now.mana = mana;
+			now.maxhp = card.hp + mana;
+			now.nowhp = card.hp + mana;
+			now.atk = card.atk + mana;
 		}
+		// 潜在を反映させる
+		for (var i = 0; i < simDeck.length; i++) {
+			add_awake_ally(Allys.Deck, Allys.Now, i, is_legendmode(card, now));
+		}
+
 		// 敵データを読み込む
 		Enemys.Quest = simQuest;
 		// 出現順番
@@ -54,10 +62,11 @@ $(function () {
 			var popup_enemys = simQuest.enemys[Enemys.Popuplist[i]];
 			// 敵ステ
 			Enemys.Data[i] = {};
-			Enemys.Data[i].enemy = [];
+			var data = Enemys.Data[i];
+			data.enemy = [];
 			for (var j = 0; j < popup_enemys.data.length; j++) {
-				Enemys.Data[i].enemy[j] = popup_enemys.data[j];
-				Enemys.Data[i].enemy[j].nowhp = popup_enemys.data[j].hp;
+				data.enemy[j] = popup_enemys.data[j];
+				data.enemy[j].nowhp = popup_enemys.data[j].hp;
 			}
 		}
 		// 表示

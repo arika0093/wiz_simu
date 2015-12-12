@@ -15,6 +15,18 @@ body{
 	background-color: #FFFFFF;
 }
 
+/* Clearfix */
+.clearfix {
+	/*display: inline-table;*/
+}
+.clearfix:after {
+	content: " ";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
 /* Header */
 div#Header{
 	border-bottom: 1px solid #A0A0FF;

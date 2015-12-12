@@ -77,14 +77,6 @@ function sim_show() {
 	$(".sim_log_inner").text(logtext);
 }
 
-// 画像のURLを返却する
-function get_image_url(no) {
-	if (no < 0) {
-		return "./image/noimage.png";
-	}
-	return "http://i.quiz.colopl.jp/img/card/small/card_" + ("0000" + no).slice(-5) + "_0.png"
-}
-
 // SSの残り表記を返却する
 function ss_remain_text(rem_turn) {
 	// SS1, SS2
@@ -104,3 +96,12 @@ function ss_remain_text(rem_turn) {
 		return "SS: " + SS_text;
 	}
 }
+
+// 画像のURLを返却する
+function get_image_url(no) {
+	if (no < 0) {
+		return "./image/noimage.png";
+	}
+	return "http://i.quiz.colopl.jp/img/card/small/card_" + ("0000" + no).slice(-5) + "_0.png"
+}
+
