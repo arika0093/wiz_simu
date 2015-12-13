@@ -2,23 +2,24 @@
 function sim_show() {
 	// sim_info
 	var popupstr = "(";
-	$("#sim_info_status").text(Enemys.Quest.name);
-	for (var i = 0; i < Enemys.Popuplist.length; i++) {
-		var t = Allys.Status.durturn[i] !== undefined ? Allys.Status.durturn[i].toString() : "?";
+	$("#sim_info_status").text(Field.Quest.name);
+	for (var i = 0; i < Field.Enemys.Popuplist.length; i++) {
+		var tu = Field.Status.durturn[i]
+		var t = tu !== undefined ? (tu == 0 ? "SS" : tu.toString()) : "?";
 		popupstr += t;
-		if (i != Enemys.Popuplist.length - 1) {
+		if (i != Field.Enemys.Popuplist.length - 1) {
 			popupstr += "-";
 		}
 	}
 	$("#sim_turns").text(
-		"turn: " + Allys.Status.totalturn + " / chain: " + Allys.Status.chain + " / "
-			+ Allys.Status.nowbattle + "戦目 " + popupstr + ")"
+		"turn: " + Field.Status.totalturn + " / chain: " + Field.Status.chain + " / "
+			+ Field.Status.nowbattle + "戦目 " + popupstr + ")"
 	);
 
 	// sim_ally
 	for (var i = 0; i < 5; i++) {
-		var dec = Allys.Deck[i];
-		var now = Allys.Now[i];
+		var dec = Field.Allys.Deck[i];
+		var now = Field.Allys.Now[i];
 		if (dec !== undefined) {
 			// 指定
 			$("#ally0" + (i + 1) + "_attr_main").attr("class", "attr_" + dec.attr[0]);
@@ -50,8 +51,8 @@ function sim_show() {
 		}
 	}
 	// sim_enemy
-	var enemys_dat = Enemys.Data[Allys.Status.nowbattle - 1].enemy;
-	for (var i = 0; i < enemys_dat.length; i++) {
+	var enemys_dat = Field.Enemys.Data[Field.Status.nowbattle - 1].enemy;
+	for (var i = 0; i < 3; i++) {
 		var e = enemys_dat[i];
 		if (e !== undefined) {
 			// 指定
@@ -65,16 +66,23 @@ function sim_show() {
 			$("#enemy0" + (i + 1) + "_attr_main").attr("class", "attr_none");
 			$("#enemy0" + (i + 1) + "_attr_sub").attr("class", "attr_none");
 			$("#enemy0" + (i + 1) + "_img").attr("src", "./image/noimage.png");
+			$("#enemy0" + (i + 1) + "_name").text("");
+			$("#enemy0" + (i + 1) + "_hp").text("");
 		}
 	}
 	// sim_panel
 
 	// sim_log
 	var logtext = "";
-	for (var i = 0; i < Allys.Status.log.length; i++) {
-		logtext += Allys.Status.log[i];
+	for (var i = (Field.Status.totalturn - 2) ; i >= 0; i--) {
+		logtext += "--- turn: " + (i + 1) + " ------------" + "<br/>";
+		if (Field.Status.log[i] !== undefined) {
+			for (var j = 0; j < Field.Status.log[i].length; j++) {
+				logtext += Field.Status.log[i][j] + "<br/>";
+			}
+		}
 	}
-	$(".sim_log_inner").text(logtext);
+	$(".sim_log_inner").html(logtext);
 }
 
 // 画像のURLを返却する

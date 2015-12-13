@@ -1,9 +1,45 @@
-﻿// 味方データ
-var Allys = {
-	// カードデータ
-	Deck: [],
-	// 現在のステータス(maxhp, nowhp, atk, mana)
-	Now: [],
+﻿// 全データ
+var Field = {
+	// 各種定数(主に表示用)
+	Constants: {
+		Attr: [
+			"火",
+			"水",
+			"雷",
+			"光",
+			"闇",
+		],
+		Species: [
+			"龍族",
+			"神族",
+			"魔族",
+			"天使",
+			"妖精",
+			"亜人",
+			"物質",
+			"魔法生物",
+			"戦士",
+			"術士",
+			"アイテム",
+			"AbCd",
+		],
+	},
+	// クエストデータ
+	Quest: {},
+	// 味方データ
+	Allys: {
+		// カードデータ
+		Deck: [],
+		// 現在のステータス(maxhp, nowhp, atk, mana, ...)
+		Now: [],
+	},
+	// 敵データ
+	Enemys: {
+		// 敵の出現順
+		Popuplist: [],
+		// 敵ステータス管理
+		Data: [],
+	},
 	// 現在の状況管理
 	Status: {
 		chain: 0,		// 現在のチェイン数
@@ -13,17 +49,14 @@ var Allys = {
 		nowbattle: 1,	// 現在の戦闘数
 		log: [],		// ログ
 	},
-};
+	log_push: function (text) {
+		if (Field.Status.log[Field.Status.totalturn - 1] === undefined) {
+			Field.Status.log[Field.Status.totalturn - 1] = [];
+		}
+		Field.Status.log[Field.Status.totalturn - 1].push(text);
+	}
+}
 
-// 敵データ
-var Enemys = {
-	// クエストデータ
-	Quest: {},
-	// 敵の出現順
-	Popuplist: [],
-	// 敵ステータス管理
-	Data: [],
-};
 
 // URLからデッキ/クエストを読み込む
 $(function () {
@@ -33,17 +66,17 @@ $(function () {
 	// check
 	if ((simDeck.length > 0 && simQuest !== undefined)) {
 		// 味方データを読み込む
-		Allys.Deck = simDeck;
-		Allys.Now = new Array({},{},{},{},{});
+		Field.Allys.Deck = simDeck;
+		Field.Allys.Now = new Array({},{},{},{},{});
 		for (var i = 0; i < simDeck.length; i++) {
 			var card = simDeck[i];
-			var now = Allys.Now[i];
+			var now = Field.Allys.Now[i];
 			var mana = 200;
 			// SS状態をリセット
 			now.ss_current = 0;		// SSチャージターン
 			now.ss_isfirst = true;	// SSをまだ発動していないかどうか
+			now.islegend = false;
 			// 現在のステ
-			now.enable = true;
 			now.mana = mana;
 			now.maxhp = card.hp + mana;
 			now.nowhp = card.hp + mana;
@@ -51,21 +84,23 @@ $(function () {
 		}
 		// 潜在を反映させる
 		for (var i = 0; i < simDeck.length; i++) {
-			add_awake_ally(Allys.Deck, Allys.Now, i, is_legendmode(card, now));
+			add_awake_ally(Field.Allys.Deck, Field.Allys.Now, i, is_legendmode(card, now));
+			// (0tレジェンドに入る精霊が出たらコメントアウト(ここでL時の潜在反映を同時に行うため))
+			// now.islegend = legend_timing_check(card, now);
 		}
 
 		// 敵データを読み込む
-		Enemys.Quest = simQuest;
+		Field.Quest = simQuest;
 		// 出現順番
-		Enemys.Popuplist = CreateEnemypopup(simQuest);
-		for (var i = 0; i < Enemys.Popuplist.length; i++) {
-			var popup_enemys = simQuest.enemys[Enemys.Popuplist[i]];
+		Field.Enemys.Popuplist = CreateEnemypopup(simQuest);
+		for (var i = 0; i < Field.Enemys.Popuplist.length; i++) {
+			var popup_enemys = simQuest.enemys[Field.Enemys.Popuplist[i]];
 			// 敵ステ
-			Enemys.Data[i] = {};
-			var data = Enemys.Data[i];
+			Field.Enemys.Data[i] = {};
+			var data = Field.Enemys.Data[i];
 			data.enemy = [];
 			for (var j = 0; j < popup_enemys.data.length; j++) {
-				data.enemy[j] = popup_enemys.data[j];
+				data.enemy[j] = $.extend(true, {}, popup_enemys.data[j]);
 				data.enemy[j].nowhp = popup_enemys.data[j].hp;
 			}
 		}

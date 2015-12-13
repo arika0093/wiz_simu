@@ -107,7 +107,7 @@
 			<div class="attack_target">
 				<label for="attack_target_sel">攻撃順</label>
 				<select id="attack_target_sel">
-                    <option value="auto">自動</option>
+                    <option value="-1">自動</option>
                     <option value="0">左</option>
                     <option value="1">中央</option>
                     <option value="2">右</option>
@@ -116,7 +116,7 @@
             <div class="attack_rand">
                 <label for="attack_rand_sel">乱数</label>
                 <select id="attack_rand_sel">
-                    <option value="auto">ランダム</option>
+                    <option value="-1">ランダム</option>
                     <option value="0.9">0.9倍</option>
                     <option value="0.95">0.95倍</option>
                     <option value="1">1.0倍</option>
@@ -137,7 +137,7 @@
 				<button class="panel_button" id="pnl_attr_23" onclick="panel([2,3])">雷光</button>
 				<button class="panel_button" id="pnl_attr_04" onclick="panel([0,4])">火闇</button>
 				<button class="panel_button" id="pnl_attr_14" onclick="panel([1,4])">水闇</button>
-				<button class="panel_button" id="pnl_attr_24" onclick="panel([2,4])">火闇</button>
+				<button class="panel_button" id="pnl_attr_24" onclick="panel([2,4])">雷闇</button>
 				<button class="panel_button" id="pnl_attr_miss" onclick="panel([])">誤答</button>
 			</div>
 		</div>
@@ -153,21 +153,22 @@
     <!-- Javascript -->
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="./js/pagetemp.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./js/pagetemp.js"></script>
     <!-- 他jsに依存しない基礎関数群 -->
-    <script type="text/javascript" src="./js/simulator/awake.js"></script>
-    <script type="text/javascript" src="./js/simulator/species.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./js/simulator/awake.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./js/simulator/species.js"></script>
     <!-- データ群(基礎関数に依存する) -->
-    <script type="text/javascript" src="./data/skill_ans.js"></script>
-    <script type="text/javascript" src="./data/skill_spe.js"></script>
-    <script type="text/javascript" src="./data/skill_awake.js"></script>
-    <script type="text/javascript" src="./data/quests.js"></script>
-    <script type="text/javascript" src="./data/cards.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./data/skill_ans.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./data/skill_spe.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./data/skill_awake.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./data/quests.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./data/cards.js"></script>
     <!-- 処理群(データ群に依存する) -->
-    <script type="text/javascript" src="./js/loadurl.js"></script>
-    <script type="text/javascript" src="./js/simulator/initialize.js"></script>
-    <script type="text/javascript" src="./js/simulator/show.js"></script>
-    <script type="text/javascript" src="./js/simulator/answer.js"></script>
-    <script type="text/javascript" src="./js/simulator/special.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./js/loadurl.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./js/simulator/initialize.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./js/simulator/show.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./js/simulator/damage.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./js/simulator/answer.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./js/simulator/special.js"></script>
 </body>
 </html>

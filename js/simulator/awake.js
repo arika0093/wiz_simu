@@ -1,14 +1,15 @@
 ﻿// 潜在能力から特定要素のみを抜き出す
-// (L時の潜在を含める場合は第三引数をtrueにする。正確性について保証しないため注意)
-function pickup_awakes(card, type, contain_legend) {
-	var awakes = new Array();
-	awakes = awakes.concat($.grep(card.awakes, function (e) {
-		return e.type == type;
-	}));
-	if (contain_legend) {
-		awakes = awakes.concat($.grep(card.Lawake, function (e) {
+// (L時の潜在のみ取り出す場合は第三引数をtrueにする。正確性について保証しないため注意)
+function pickup_awakes(card, type, l_awakes) {
+	var awakes = [];
+	if (l_awakes) {
+		awakes = $.grep(card.Lawake, function (e) {
 			return e.type == type;
-		}));
+		});
+	} else {
+		awakes = $.grep(card.awakes, function (e) {
+			return e.type == type;
+		});
 	}
 	return awakes;
 }
@@ -38,9 +39,28 @@ function add_awake_ally(cards, nows, own_no, legend_skill) {
 }
 
 // L時の潜在能力を解除する
-function minus_legend_awake(card, nows) {
-
-
+function minus_legend_awake(cards, nows, own_no) {
+	// 自身ステアップ(L)
+	var own_statups = pickup_awakes(cards[own_no], "own_status_up", true);
+	// 味方ステアップ(L)
+	var ally_statups = pickup_awakes(cards[own_no], "status_up", true);
+	// 増加分を減らす
+	$.each(own_statups, function (n, e) {
+		var now = nows[own_no];
+		now.maxhp -= e.up_hp;
+		now.nowhp = Math.min(now.maxhp, now.nowhp);
+		now.atk -= e.up_atk;
+	});
+	$.each(ally_statups, function (n, e) {
+		for (var t = 0; t < cards.length; t++) {
+			if (e.attr[cards[t].attr[0]] > 0 && check_spec_inarray(e.spec, cards[t].species)) {
+				var now = nows[own_no];
+				now.maxhp -= e.up_hp;
+				now.nowhp = Math.min(now.maxhp, now.nowhp);
+				now.atk -= e.up_atk;
+			}
+		}
+	});
 }
 
 // ファストがいくつついているかを返却する

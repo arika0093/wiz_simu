@@ -30,7 +30,7 @@ p#sim_turns {
 }
 
 
-/* Simulator Allys & Enemys*/
+/* Simulator Allys & Enemys */
 div.sim_ally{
 	width: 50%;
 	margin: 1ex 0em 1ex 0.5em;
@@ -137,7 +137,7 @@ p.enemy_stat{
 /* Panels */
 div.sim_panel {
 	width: 45%;
-	height: 250px;
+	height: 350px;
 	margin: 1ex 0.5em 2ex 0em;
 	padding: 0px;
 	float: right;
@@ -186,12 +186,13 @@ button.panel_button {
 /* Logs */
 div.sim_log {
 	width: 50%;
-	height: 100px;
+	height: 200px;
 	margin: 1ex 0.5em 0.5ex;
 	float: left;
 }
 
 div.sim_log_inner {
+	font-size: 8.5pt;
 	padding: 0.5ex 0.5em;
 }
 
@@ -205,7 +206,7 @@ div.attr_0{
 }
 
 div.attr_1{
-	background-color: #40A0FF;
+	background-color: #3060FF;
 	width: 4px;
 	height: 64px;
 	float: left;
@@ -249,7 +250,7 @@ img.chara_img {
 	width: 64px;
 	height: 64px;
 	float: left;
-	border-width: 0px 1px;
+	border-width: 0px 1px 0px 0px;
 	border-style: solid;
 	border-color: #A0A0A0;
 }

@@ -26,8 +26,13 @@ function specific_specs(spec) {
 // 種族配列の中に自身の属する種族が存在するかどうか
 function check_spec_inarray(arr, spec) {
 	var rst = false;
-	for (var i = 0; i < spec.length; i++) {
-		rst = rst || arr[spec[i]] > 0;
+	// specが配列なら順次処理
+	if (spec.length !== undefined) {
+		for (var i = 0; i < spec.length; i++) {
+			rst = rst || arr[spec[i]] > 0;
+		}
+	} else {
+		rst = rst || arr[spec] > 0;
 	}
 	return rst;
 }

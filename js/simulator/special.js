@@ -1,16 +1,39 @@
 // SSを発動する
 function ss_push(n) {
-
+	var card = Field.Allys.Deck[n];
+	var now = Field.Allys.Now[n];
+	var is_l = is_legendmode(card, now);
+	// SSを打つ
+	var ss = is_l ? card.ss2 : card.ss1;
+	if (ss.proc != null) {
+		ss.proc(Field);
+	}
+	// L状態ならL潜在を解除
+	if (is_l) {
+		minus_legend_awake(Field.Allys.Deck, Field.Allys.Now, n);
+		now.islegend = false;
+	}
 	// SSターンをリセット
-	Allys.Now[n].ss_current = 0;
-	Allys.Now[n].ss_isfirst = false;
+	now.ss_current = 0;
+	now.ss_isfirst = false;
 	// 再表示
 	sim_show();
 }
 
+// Lモードに入ったタイミングかどうかを判定する
+function legend_timing_check(cards, nows, index) {
+	var is_l = is_legendmode(cards[index], nows[index]);
+	var rst = is_l && !nows[index].islegend;
+	if (rst) {
+		nows[index].islegend = true;
+		// L時の潜在を反映させる
+		add_awake_ally(cards, nows, index, true);
+	}
+}
+
 // Lモードに入っているかどうかを判定する
-function is_legendmode(card, ally_n) {
-	return get_ssturn(card, ally_n)[1] == 0;
+function is_legendmode(card, now) {
+	return get_ssturn(card, now)[1] == 0;
 }
 
 // SSが残り何ターンで打てるかを配列で返す
