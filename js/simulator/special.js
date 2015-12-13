@@ -3,23 +3,31 @@ function ss_push(n) {
 	var card = Field.Allys.Deck[n];
 	var now = Field.Allys.Now[n];
 	var is_l = is_legendmode(card, now);
+	var ss = is_l ? card.ss2 : card.ss1;
+	var ss_rst = true;
 	// SSを打つ
 	Field.log_push("Unit[" + (n + 1) + "]: SS発動");
-	var ss = is_l ? card.ss2 : card.ss1;
 	if (ss.proc != null) {
-		ss.proc(Field);
+		ss_rst = ss.proc(Field, n);
 	}
-	// L状態ならL潜在を解除
-	if (is_l) {
-		minus_legend_awake(Field.Allys.Deck, Field.Allys.Now, n);
-		now.islegend = false;
-		Field.log_push("Unit[" + (n + 1) + "]: Lモード解除");
+	// 発動成功なら
+	if (ss_rst) {
+		// L状態ならL潜在を解除
+		if (is_l) {
+			minus_legend_awake(Field.Allys.Deck, Field.Allys.Now, n);
+			now.islegend = false;
+			Field.log_push("Unit[" + (n + 1) + "]: Lモード解除");
+		}
+		// SSターンをリセット
+		now.ss_current = 0;
+		now.ss_isfirst = false;
+		now.ss_isboost = false;
+		// 再表示
+		sim_show();
+	} else {
+		// failed
+		alert("SSを発動しても効果を得られません。");
 	}
-	// SSターンをリセット
-	now.ss_current = 0;
-	now.ss_isfirst = false;
-	// 再表示
-	sim_show();
 }
 
 // Lモードに入ったタイミングかどうかを判定する

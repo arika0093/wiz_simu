@@ -76,6 +76,7 @@ $(function () {
 			// SS状態をリセット
 			now.ss_current = 0;		// SSチャージターン
 			now.ss_isfirst = true;	// SSをまだ発動していないかどうか
+			now.ss_isboost = false;	// スキブを受けたかどうか
 			now.islegend = false;
 			// 現在のステ
 			now.mana = mana;
@@ -95,14 +96,14 @@ $(function () {
 		// 出現順番
 		Field.Enemys.Popuplist = CreateEnemypopup(simQuest);
 		for (var i = 0; i < Field.Enemys.Popuplist.length; i++) {
-			var popup_enemys = simQuest.enemys[Field.Enemys.Popuplist[i]];
+			var popup_enemys = simQuest.data[Field.Enemys.Popuplist[i]];
 			// 敵ステ
 			Field.Enemys.Data[i] = {};
 			var data = Field.Enemys.Data[i];
 			data.enemy = [];
-			for (var j = 0; j < popup_enemys.data.length; j++) {
-				data.enemy[j] = $.extend(true, {}, popup_enemys.data[j]);
-				data.enemy[j].nowhp = popup_enemys.data[j].hp;
+			for (var j = 0; j < popup_enemys.enemy.length; j++) {
+				data.enemy[j] = $.extend(true, {}, popup_enemys.enemy[j]);
+				data.enemy[j].nowhp = popup_enemys.enemy[j].hp;
 			}
 		}
 		// 表示
@@ -118,7 +119,7 @@ function CreateEnemypopup(qst) {
 	var poplist = [];
 	var pop_i = [];
 	for (var t = 0; t < qst.aprnum; t++) {
-		pop_i.push($.map(qst.enemys, function (e, i, c) {
+		pop_i.push($.map(qst.data, function (e, i, c) {
 			// 配列内に現在見てるターン数の数字があったら現在の配列番号を返す
 			var aprt_i = $.inArray(t + 1, e.appearance);
 			if (aprt_i >= 0) {
