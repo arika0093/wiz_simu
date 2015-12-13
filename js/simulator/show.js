@@ -1,8 +1,21 @@
 ﻿// 現在の状況を表示する
 function sim_show() {
-	// sim_info
+	// sim_log
+	var logtext = "";
+	var totalturn = Field.Status.totalturn;
+	var log_stat = Field.Status.log[totalturn] !== undefined ? totalturn : totalturn - 1;
+	for (var i = log_stat ; i >= 0; i--) {
+		logtext += "--- turn: " + (i + 1) + " ------------" + "<br/>";
+		if (Field.Status.log[i] !== undefined) {
+			for (var j = 0; j < Field.Status.log[i].length; j++) {
+				logtext += Field.Status.log[i][j] + "<br/>";
+			}
+		}
+	}
+	$(".sim_log_inner").html(logtext);
+
+	// sim_info_turn
 	var popupstr = "(";
-	$("#sim_info_status").text(Field.Quest.name);
 	for (var i = 0; i < Field.Enemys.Popuplist.length; i++) {
 		var tu = Field.Status.durturn[i]
 		var t = tu !== undefined ? (tu == 0 ? "SS" : tu.toString()) : "?";
@@ -16,6 +29,10 @@ function sim_show() {
 			+ Field.Status.nowbattle + "戦目 " + popupstr + ")"
 	);
 
+	// sim_info_status
+	$("#sim_info_status").text(Field.Quest.name);
+
+	// ----------------
 	// sim_ally
 	for (var i = 0; i < 5; i++) {
 		var dec = Field.Allys.Deck[i];
@@ -29,7 +46,7 @@ function sim_show() {
 			$("#ally0" + (i + 1) + "_status").text("HP: " + now.nowhp + "/" + now.maxhp + ", ATK: " + now.atk);
 			// SSターン取得
 			var sst = get_ssturn(dec, now);
-			if (sst[0] == 0) {
+			if (sst[0] == 0 && !Field.Status.finish) {
 				// SS発動可能
 				$("#ally0" + (i + 1) + "_ss_button").attr("class", "ally_ss_button");
 				$("#ally0" + (i + 1) + "_ss_button").text(ss_remain_text(sst));
@@ -71,18 +88,11 @@ function sim_show() {
 		}
 	}
 	// sim_panel
-
-	// sim_log
-	var logtext = "";
-	for (var i = (Field.Status.totalturn - 2) ; i >= 0; i--) {
-		logtext += "--- turn: " + (i + 1) + " ------------" + "<br/>";
-		if (Field.Status.log[i] !== undefined) {
-			for (var j = 0; j < Field.Status.log[i].length; j++) {
-				logtext += Field.Status.log[i][j] + "<br/>";
-			}
-		}
+	if (Field.Status.finish) {
+		$(".panel_button").attr("disabled", "disabled");
+	} else {
+		$(".panel_button").attr("disabled", false);
 	}
-	$(".sim_log_inner").html(logtext);
 }
 
 // 画像のURLを返却する

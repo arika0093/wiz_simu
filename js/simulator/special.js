@@ -4,6 +4,7 @@ function ss_push(n) {
 	var now = Field.Allys.Now[n];
 	var is_l = is_legendmode(card, now);
 	// SSを打つ
+	Field.log_push("Unit[" + (n + 1) + "]: SS発動");
 	var ss = is_l ? card.ss2 : card.ss1;
 	if (ss.proc != null) {
 		ss.proc(Field);
@@ -12,6 +13,7 @@ function ss_push(n) {
 	if (is_l) {
 		minus_legend_awake(Field.Allys.Deck, Field.Allys.Now, n);
 		now.islegend = false;
+		Field.log_push("Unit[" + (n + 1) + "]: Lモード解除");
 	}
 	// SSターンをリセット
 	now.ss_current = 0;
@@ -28,6 +30,7 @@ function legend_timing_check(cards, nows, index) {
 		nows[index].islegend = true;
 		// L時の潜在を反映させる
 		add_awake_ally(cards, nows, index, true);
+		Field.log_push("Unit[" + (index + 1) + "]: Lモード");
 	}
 }
 

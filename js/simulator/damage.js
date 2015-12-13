@@ -1,7 +1,7 @@
 // 指定属性で相手を攻撃
 //	enemy: 敵データ, now: 自身のデータ, atk_atr: 攻撃属性, as: 攻撃AS,
-//	pn: 踏んだパネル, ch: チェイン数, rnd: 乱数
-function as_attack_enemy(enemy, now, atk_atr, as, pn, ch, rnd) {
+//	pn: 踏んだパネル, ch: チェイン数, rnd: 乱数, i: 味方の番号, e: 敵の番号
+function as_attack_enemy(enemy, now, atk_atr, as, pn, ch, rnd, i, e) {
 	var d = 0;
 	// エンハ
 	var as_enh = now.as_enhance !== undefined ? now.as_enhance : 0;
@@ -17,9 +17,12 @@ function as_attack_enemy(enemy, now, atk_atr, as, pn, ch, rnd) {
 	// 切り捨て
 	d = Math.floor(d);
 
-	// HPから削る
+	// NowHPから削る
 	enemy.nowhp = Math.max(enemy.nowhp - d, 0);
 
+	Field.log_push("Unit[" + (i + 1) + "]: 敵[" + (e + 1) + "]へ" +
+		Field.Constants.Attr[atk_atr] + "攻撃( " + d +
+		"ダメージ)(残: " + enemy.nowhp + "/" + enemy.hp + ")");
 	return d;
 }
 
@@ -38,4 +41,22 @@ function attr_magnification(atk_atr, def_atr) {
 	else {
 		return 1;
 	}
+}
+
+// 攻撃順序を自動で指定する
+function auto_attack_order(enemys, attr) {
+	var enemy_copy = enemys.concat();
+	enemy_copy.sort(function (a, b) {
+		// 属性有利: 降順 / HP: 昇順
+		if (a.nowhp <= 0) { return +1; }
+		if (b.nowhp <= 0) { return -1; }
+		var mgn_a = attr_magnification(attr, a.attr);
+		var mgn_b = attr_magnification(attr, b.attr);
+		if (mgn_a < mgn_b) { return +1; }
+		if (mgn_a > mgn_b) { return -1; }
+		if (a.nowhp < b.nowhp) { return -1; }
+		if (a.nowhp > b.nowhp) { return +1; }
+		return 0;
+	});
+	return enemys.indexOf(enemy_copy[0]);
 }

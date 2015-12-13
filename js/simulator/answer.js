@@ -4,6 +4,7 @@ function panel(attr) {
 	// もし誤答してたならチェインを切る
 	if (attr.length <= 0) {
 		Field.Status.chain = 0;
+		Field.log_push("誤答(chain reset)");
 	} else {
 		// チェイン+1
 		Field.Status.chain += 1;
@@ -36,14 +37,22 @@ function panel(attr) {
 	}
 	// 全ての敵を倒していたら
 	if (is_allkill) {
-		// 次に進む
-		Field.Status.nowbattle += 1;
+		// 全終了確認
+		if (Field.Enemys.Popuplist.length <= Field.Status.nowbattle) {
+			// 終了処理開始
+			Field.Status.finish = true;
+			Field.log_push(Field.Status.nowbattle + "戦目突破(" + Field.Status.nowturn + "ターン)");
+			Field.log_push("QUEST CLEARED! (Total: " + (Field.Status.totalturn + 1) + "turn)");
+		} else {
+			Field.log_push(Field.Status.nowbattle + "戦目突破(" + Field.Status.nowturn + "ターン)");
+			// 次に進む
+			Field.Status.nowbattle += 1;
+		}
 		Field.Status.durturn.push(Field.Status.nowturn);
 		Field.Status.nowturn = 0;
 	}
-	// ターン追加
-	Field.Status.nowturn += 1;
 	Field.Status.totalturn += 1;
+	Field.Status.nowturn += 1;
 	// 表示
 	sim_show();
 }
@@ -131,7 +140,8 @@ function answer_attack(card, now, enemy, as, attr, t, r, index) {
 				continue;
 			}
 			// どの敵を攻撃するか
-			var targ = ((t != -1 && enemy[t] !== undefined && enemy[t].nowhp > 0) ? t : 0);
+			var targ = ((t != -1 && enemy[t] !== undefined && enemy[t].nowhp > 0) ?
+				t : auto_attack_order(enemy, atk_attr[at]));
 			// 各種情報
 			var atr = atk_attr[at];
 			var atk_as = as[as_pos[targ]]
@@ -144,21 +154,14 @@ function answer_attack(card, now, enemy, as, attr, t, r, index) {
 					// 乱数
 					var rnd = (r != -1 ? r : 0.9 + (Math.random() * 0.2))
 					// ダメージ計算
-					var damage = as_attack_enemy(enemy[tg], now, atr, atk_as, attr, ch, rnd);
-					Field.log_push("Unit[" + (index + 1) + "]: 敵[" + (tg + 1) + "]へ" +
-						Field.Constants.Attr[atr] + "攻撃( " + damage +
-						"ダメージ)(残: " + enemy[tg].nowhp + "/" + enemy[tg].hp + ")");
+					var damage = as_attack_enemy(enemy[tg], now, atr, atk_as, attr, ch, rnd, index, tg);
 				}
 			} else {
 				// 乱数
 				var rnd = (r != -1 ? r : 0.9 + (Math.random() * 0.2))
 				// ダメージ計算
-				var damage = as_attack_enemy(en, now, atr, atk_as, attr, ch, rnd);
-				Field.log_push("Unit[" + (index + 1) + "]: 敵[" + (targ + 1) + "]へ" +
-					Field.Constants.Attr[atr] + "攻撃( " + damage +
-					"ダメージ)(残: " + en.nowhp + "/" + en.hp + ")");
+				var damage = as_attack_enemy(en, now, atr, atk_as, attr, ch, rnd, index, targ);
 			}
-
 		}
 	}
 }

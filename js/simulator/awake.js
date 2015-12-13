@@ -54,7 +54,7 @@ function minus_legend_awake(cards, nows, own_no) {
 	$.each(ally_statups, function (n, e) {
 		for (var t = 0; t < cards.length; t++) {
 			if (e.attr[cards[t].attr[0]] > 0 && check_spec_inarray(e.spec, cards[t].species)) {
-				var now = nows[own_no];
+				var now = nows[t];
 				now.maxhp -= e.up_hp;
 				now.nowhp = Math.min(now.maxhp, now.nowhp);
 				now.atk -= e.up_atk;

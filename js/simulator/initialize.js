@@ -45,15 +45,16 @@ var Field = {
 		chain: 0,		// 現在のチェイン数
 		durturn: [],	// 過去の経過ターン数
 		nowturn: 1,		// 現在の経過ターン数
-		totalturn: 1,	// 累計の経過ターン数
+		totalturn: 0,	// 累計の経過ターン数
 		nowbattle: 1,	// 現在の戦闘数
+		finish: false,	// すべて終わったかどうか
 		log: [],		// ログ
 	},
 	log_push: function (text) {
-		if (Field.Status.log[Field.Status.totalturn - 1] === undefined) {
-			Field.Status.log[Field.Status.totalturn - 1] = [];
+		if (Field.Status.log[Field.Status.totalturn] === undefined) {
+			Field.Status.log[Field.Status.totalturn] = [];
 		}
-		Field.Status.log[Field.Status.totalturn - 1].push(text);
+		Field.Status.log[Field.Status.totalturn].push(text);
 	}
 }
 
