@@ -42,13 +42,18 @@ var Field = {
 	},
 	// 現在の状況管理
 	Status: {
-		chain: 0,		// 現在のチェイン数
-		durturn: [],	// 過去の経過ターン数
-		nowturn: 1,		// 現在の経過ターン数
-		totalturn: 0,	// 累計の経過ターン数
-		nowbattle: 1,	// 現在の戦闘数
-		finish: false,	// すべて終わったかどうか
-		log: [],		// ログ
+		// チェイン関連
+		chain: 0,
+		chain_status: 0,
+		// パネル付与関連
+		panel_add: [],
+		// ターンetc関連
+		durturn: [],
+		nowturn: 1,
+		totalturn: 0,
+		nowbattle: 1,
+		finish: false,
+		log: [],
 	},
 	log_push: function (text) {
 		if (Field.Status.log[Field.Status.totalturn] === undefined) {
@@ -149,12 +154,16 @@ $(function () {
 		Field_log.save(0, Field);
 		// 表示
 		sim_show();
-		// Simulatorの位置に移動する
-		scrollTo(0, $(".Simulator").offset().top);
 	} else {
 		$("#sim_info_status").html("#ERROR: URLが正しくありません。");
 		$(".panel_button").attr("disabled", "disabled");
 	}
+});
+
+// 全読み込みが終わってから実行
+$(window).load(function () {
+	// Simulatorの位置に移動する
+	scrollTo(0, $("#sim_top").offset().top + 1);
 });
 
 // 敵を全滅させたか確認し、全滅してたら次の敵を出現させる
@@ -180,6 +189,8 @@ function allkill_check(is_ssfinish) {
 			// 次に進む
 			Field.Status.nowbattle += 1;
 		}
+		// パネル付与効果を全部リセット
+		Field.Status.panel_add = [];
 		Field.Status.durturn.push(is_ssfinish ? ntrun - 1 : ntrun);
 		Field.Status.nowturn = 0;
 	}
@@ -196,8 +207,6 @@ function CreateEnemypopup(qst) {
 			var aprt_i = $.inArray(t + 1, e.appearance);
 			if (aprt_i >= 0) {
 				return i;
-			} else {
-
 			}
 		}));
 		var rand = Math.floor(Math.random() * pop_i[t].length);

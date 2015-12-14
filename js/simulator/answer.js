@@ -1,12 +1,21 @@
 // 解答したときの処理
 function panel(attr) {
-	// もし誤答してたならチェインを切る
 	if (attr.length <= 0) {
-		Field.Status.chain = 0;
-		Field.log_push("誤答(chain reset)");
+		// 誤答処理
+		if (Field.Status.chain_status <= 0) {
+			Field.Status.chain = 0;
+		}
+		Field.log_push("誤答");
 	} else {
 		// チェイン+1
-		Field.Status.chain += 1;
+		if (Field.Status.chain_status >= 0) {
+			Field.Status.chain += 1;
+		}
+		// 付与効果実行
+		var pnladd = Number($("#panel_add_sel").val());
+		if (pnladd != 0) {
+			Field.Status.panel_add[pnladd - 1].func(Field);
+		}
 		// エンハ処理
 		answer_skill(pickup_answerskills(attr, "support"), attr);
 		// 攻撃
@@ -23,9 +32,11 @@ function panel(attr) {
 		// 各精霊のSSチャージを1増やす
 		for (var i = 0; i < Field.Allys.Deck.length; i++) {
 			var now = Field.Allys.Now[i];
-			now.ss_current += 1;
-			// L処理
-			legend_timing_check(Field.Allys.Deck, Field.Allys.Now, i);
+			if (now.nowhp > 0) {
+				now.ss_current += 1;
+				// L処理
+				legend_timing_check(Field.Allys.Deck, Field.Allys.Now, i);
+			}
 		}
 	}
 	// 敵の処理

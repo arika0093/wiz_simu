@@ -43,7 +43,7 @@ function sim_show() {
 			$("#ally0" + (i + 1) + "_status").text("HP: " + now.nowhp + "/" + now.maxhp + ", ATK: " + now.atk);
 			// SSターン取得
 			var sst = get_ssturn(dec, now);
-			if (sst[0] == 0 && !Field.Status.finish) {
+			if (sst[0] == 0 && now.nowhp > 0 && !Field.Status.finish) {
 				// SS発動可能
 				$("#ally0" + (i + 1) + "_ss_button").attr("class", "ally_ss_button");
 				$("#ally0" + (i + 1) + "_ss_button").text(ss_remain_text(sst));
@@ -85,6 +85,18 @@ function sim_show() {
 		}
 	}
 
+	// panel_addition
+	// 全削除
+	$('#panel_add_sel option').remove();
+	// 未選択
+	$("#panel_add_sel").append($('<option>').val(0).text("(未選択)"));
+	// 追加していく
+	for (var i = 0; i < Field.Status.panel_add.length; i++) {
+		var opt = $('<option>').val(i + 1)
+			.text(Field.Status.panel_add[i].desc)
+			.attr("selected", i == Field.Status.panel_add.length - 1);
+		$("#panel_add_sel").append(opt);
+	}
 	// sim_panel
 	$(".panel_button").attr("disabled", Field.Status.finish);
 	// sim_field_move

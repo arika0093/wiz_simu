@@ -8,7 +8,9 @@ function ss_push(n) {
 	// SS‚ð‘Å‚Â
 	Field.log_push("Unit[" + (n + 1) + "]: SS”­“®");
 	if (ss.proc != null) {
-		ss_rst = ss.proc(Field, n);
+		for (var i = 0; i < ss.proc.length; i++) {
+			ss_rst = ss.proc[i](Field, n);
+		}
 	}
 	// ”­“®¬Œ÷‚È‚ç
 	if (ss_rst) {

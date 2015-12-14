@@ -40,32 +40,7 @@ function ChainAttack(rate, ch) {
 // チェインアタッカー/一定チェインでさらにアップ
 //	(rate: 割合, ch: 発動チェイン数, rate_a: 割合2, ch_a: 発動チェイン2)
 function ChainAttack_plus(rate, ch, rate_a, ch_a) {
-	return [
-		{
-			type: "attack",
-			isall: false,
-			atkn: 1,
-			rate: rate,
-			chain: ch,
-			attr: [1, 1, 1, 1, 1],
-			spec: create_specs(1),
-			cond: function (fld, oi, ei) {
-				return true;
-			},
-		},
-		{
-			type: "attack",
-			isall: false,
-			atkn: 1,
-			rate: rate_a,
-			chain: ch_a,
-			attr: [1, 1, 1, 1, 1],
-			spec: create_specs(1),
-			cond: function (fld, oi, ei) {
-				return true;
-			},
-		}
-	];
+	return ChainAttack(rate, ch).concat(ChainAttack(rate_a, ch_a));
 }
 
 // チェイン連撃アタッカー(rate: 割合, ch: 発動チェイン数, n: 攻撃回数)
