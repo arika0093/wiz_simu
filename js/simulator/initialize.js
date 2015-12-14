@@ -69,11 +69,7 @@ var Field_log = {
 		this.Enemys_data[index] = $.extend(true, [], fld.Enemys.Data);
 		this.Status[index] = $.extend(true, {}, fld.Status);
 		// 保存indexより先の要素は消す
-		for (var i = index + 1; i < this.length(); i++) {
-			this.Allys_now[i] = [];
-			this.Enemys_data[i] = [];
-			this.Status[i] = {};
-		}
+		this._removeover(index);
 	},
 	// 読み込み関数
 	load: function (index) {
@@ -91,6 +87,14 @@ var Field_log = {
 			}
 		}
 		return this.Status.length;
+	},
+	// indexから先の余計な要素を消す
+	_removeover: function (index) {
+		for (var i = index + 1; i < this.length() ; i++) {
+			this.Allys_now[i] = [];
+			this.Enemys_data[i] = [];
+			this.Status[i] = {};
+		}
 	}
 }
 

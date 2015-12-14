@@ -24,6 +24,8 @@ function ss_push(n) {
 		now.ss_isboost = false;
 		// 全滅確認
 		allkill_check();
+		// [進む]を使えないように
+		Field_log._removeover(Field.Status.totalturn);
 		// 再表示
 		sim_show();
 	} else {

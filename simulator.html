@@ -18,12 +18,10 @@
 		<div class="sim_info clearfix">
 			<p id="sim_info_status"></p>
 			<p id="sim_turns"></p>
-		</div>
-		<div class="sim_result">
-			<p id="sim_result_title"></p>
-			<p id="sim_result_info"></p>
 			<div class="sim_result_links">
-				<a id="sim_restart" href="#">もう一度始めから試走する</a>
+				<a id="sim_share" onclick="tweet_result()">結果をツイートする</a>
+				<a id="sim_restart" onclick="load_field(0)">もう一度始めから試走する</a>
+				<a id="sim_decksel" onclick="back_decksel()">デッキ選択画面に戻る</a>
 			</div>
 		</div>
 		<div class="sim_ally">

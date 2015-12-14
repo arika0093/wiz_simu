@@ -16,7 +16,7 @@ p#sim_info_status {
 	display: inline;
 	width: 45%;
 	margin: 0;
-	padding: 1ex 1em;
+	padding: 1ex 1em 0.5ex;
 	float: left;
 }
 
@@ -24,16 +24,28 @@ p#sim_turns {
 	display: inline;
 	width: 45%;
 	margin: 0;
-	padding: 1ex 1em;
+	padding: 1ex 1em 0.5ex;
 	text-align: right;
 	float: right;
 }
 
 /* sim_result */
-div.sim_result {
+div.sim_result_links {
+	width: 90%;
+	float: right;
+	padding: 0 0.5em 0.5ex;
+	border-radius: 5px;
+	text-align: right;
 	display: none;
 }
 
+div.sim_result_links a {
+	margin: 0 3px;
+	display: inline;
+	color: #0040FF;
+	text-decoration: underline;
+	cursor: pointer;
+}
 
 /* Simulator Allys & Enemys */
 div.sim_ally{
@@ -41,7 +53,7 @@ div.sim_ally{
 	margin: 1ex 0em 1ex 0.5em;
 	float: left;
 	border: 1px solid #606060;
-	border-radius: 5px;
+	border-radius: 5px 5px 0px 0px;
 }
 
 div.sim_enemy {
@@ -60,10 +72,8 @@ div.ally:first-child, div.enemy:first-child{
 	margin-top: 20px;
 	border-top: 1px solid #606060;
 }
-div.ally:last-child{
-	margin-bottom: 20px;
-}
-div.enemy:last-child{
+div.ally:last-child, div.enemy:last-child{
+	/*margin-bottom: 20px;*/
 	border-bottom: 0px none;
 	margin-bottom: 0px;
 }
@@ -111,20 +121,7 @@ button.ally_ss_button {
 	color: #303030;
 	border-color: #606060;
 	background-color: transparent;
-}
-button.ally_ss_button:hover {
-	border-color: #40A0FF;
-	background-color: #aef3ff;
-}
-button.ally_ss_button:active{
-	color: #000000;
-	border-color: #138aff;
-	background-color: #67e8ff;
-}
-
-button.ally_ss_button_disabled{
-	border-color: #C0C0C0;
-	background-color: #F0F0F0;
+	cursor: pointer;
 }
 
 p.enemy_stat{
@@ -148,7 +145,6 @@ div.sim_panel {
 	padding: 0px;
 	float: right;
 	border: 1px solid #606060;
-	border-radius: 0px 0px 5px 5px;
 }
 
 div.panel_addition {
@@ -187,6 +183,9 @@ button.panel_button {
 	margin-top: 1ex;
 	width: 42px;
 	height: 36px;
+	border: 1px solid #606060;
+	background-color: transparent;
+	cursor: pointer;
 }
 
 div.sim_option {
@@ -208,22 +207,7 @@ button.field_mov_button {
 	color: #303030;
 	border-color: #606060;
 	background-color: transparent;
-}
-button.field_mov_button:hover {
-	border-color: #40A0FF;
-	background-color: #aef3ff;
-}
-button.field_mov_button:active{
-	color: #000000;
-	border-color: #138aff;
-	background-color: #67e8ff;
-}
-button.field_mov_button:disabled {
-	border-color: #606060;
-	background-color: #F0F0F0;
-}
-button.field_mov_button:disabled:hover {
-	border-color: #606060;
+	cursor: pointer;
 }
 button#fld_move_before {
 	border-width: 1px 1px 0px 0px;
@@ -238,7 +222,7 @@ button#fld_move_after {
 /* Logs */
 div.sim_log {
 	width: 50%;
-	height: 150px;
+	height: 170px;
 	margin: 1ex 0.5em 0.5ex;
 	float: left;
 }
@@ -258,7 +242,7 @@ div.attr_0{
 }
 
 div.attr_1{
-	background-color: #3060FF;
+	background-color: #30b3ff;
 	width: 4px;
 	height: 64px;
 	float: left;
@@ -305,4 +289,21 @@ img.chara_img {
 	border-width: 0px 1px 0px 0px;
 	border-style: solid;
 	border-color: #A0A0A0;
+}
+
+/* Buttons */
+button:hover {
+	border-color: #40A0FF;
+	background-color: #aef3ff;
+	cursor: pointer;
+}
+button:active{
+	color: #000000;
+	border-color: #138aff;
+	background-color: #67e8ff;
+}
+button:disabled, button:disabled:hover {
+	background-color: #EAEAEA;
+	cursor: default;
+	border-color: #C0C0C0;
 }

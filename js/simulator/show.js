@@ -15,23 +15,20 @@ function sim_show() {
 	$(".sim_log_inner").html(logtext);
 
 	// sim_info_turn
-	var popupstr = "(";
-	for (var i = 0; i < Field.Enemys.Popuplist.length; i++) {
-		var tu = Field.Status.durturn[i]
-		var t = tu !== undefined ? (tu == 0 ? "SS" : tu.toString()) : "?";
-		popupstr += t;
-		if (i != Field.Enemys.Popuplist.length - 1) {
-			popupstr += "-";
-		}
-	}
 	$("#sim_turns").text(
 		"turn: " + Field.Status.totalturn + " / chain: " + Field.Status.chain + " / "
-			+ Field.Status.nowbattle + "戦目 " + popupstr + ")"
+			+ Field.Status.nowbattle + "戦目 (" + durturn_string() + ")"
 	);
-
 	// sim_info_status
 	$("#sim_info_status").text(Field.Quest.name);
 
+	// sim_result
+	if (Field.Status.finish) {
+		$(".sim_result_links").fadeIn("slow");
+
+	} else {
+		$(".sim_result_links").fadeOut("slow");
+	}
 	// ----------------
 	// sim_ally
 	for (var i = 0; i < 5; i++) {
@@ -123,12 +120,53 @@ function ss_remain_text(rem_turn) {
 	}
 }
 
+// 累計ターンの表記を返却する
+function durturn_string() {
+	var popupstr = "";
+	for (var i = 0; i < Field.Enemys.Popuplist.length; i++) {
+		var tu = Field.Status.durturn[i]
+		var t = tu !== undefined ? tu.toString() : "?";
+		popupstr += t;
+		if (i != Field.Enemys.Popuplist.length - 1) {
+			popupstr += "-";
+		}
+	}
+	return popupstr;
+}
+
+// ツイート
+function tweet_result() {
+	// URL生成
+	var url = absolutePath("./index.html" + location.search);
+	var nam = Field.Quest.name;
+	var trn = durturn_string();
+	var tot = Field.Status.totalturn;
+	var text = "「" + nam + "」を" + tot + "ターン(" + trn + ")で突破！%0A" + url;
+	var tweeturl = "https://twitter.com/intent/tweet?hashtags=wiz_simu" + "&text=" + text;
+	// 開く
+	window.open(tweeturl, "Simulator result - Tweet");
+}
+
 // fieldのログを読む
 function load_field(i) {
-	var load_index = i + Field.Status.totalturn;
+	var load_index = (i != 0 ? i + Field.Status.totalturn: 0);
 	if (load_index <= Field_log.length()) {
 		Field = Field_log.load(load_index);
 		// 再表示
 		sim_show();
 	}
+}
+
+// デッキ選択に戻る
+function back_decksel() {
+	var param = location.search;
+	// 移動
+	location.href = "./index.html" + param;
+}
+
+// 相対パス → 絶対パス
+function absolutePath(path) {
+	var e = document.createElement('span');
+	e.insertAdjacentHTML('beforeend', '<a href="' + path + '" />');
+	return e.firstChild.href;
 }
