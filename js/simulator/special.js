@@ -22,6 +22,8 @@ function ss_push(n) {
 		now.ss_current = 0;
 		now.ss_isfirst = false;
 		now.ss_isboost = false;
+		// 全滅確認
+		allkill_check();
 		// 再表示
 		sim_show();
 	} else {

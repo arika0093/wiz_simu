@@ -87,12 +87,12 @@ function sim_show() {
 			$("#enemy0" + (i + 1) + "_hp").text("");
 		}
 	}
+
 	// sim_panel
-	if (Field.Status.finish) {
-		$(".panel_button").attr("disabled", "disabled");
-	} else {
-		$(".panel_button").attr("disabled", false);
-	}
+	$(".panel_button").attr("disabled", Field.Status.finish);
+	// sim_field_move
+	$("#fld_move_before").attr("disabled", (Field.Status.totalturn == 0));
+	$("#fld_move_after").attr("disabled", (Field.Status.totalturn == Field_log.length() - 1));
 }
 
 // 画像のURLを返却する
@@ -123,11 +123,12 @@ function ss_remain_text(rem_turn) {
 	}
 }
 
-// 画像のURLを返却する
-function get_image_url(no) {
-	if (no < 0) {
-		return "./image/noimage.png";
+// fieldのログを読む
+function load_field(i) {
+	var load_index = i + Field.Status.totalturn;
+	if (load_index <= Field_log.length()) {
+		Field = Field_log.load(load_index);
+		// 再表示
+		sim_show();
 	}
-	return "http://i.quiz.colopl.jp/img/card/small/card_" + ("0000" + no).slice(-5) + "_0.png"
 }
-

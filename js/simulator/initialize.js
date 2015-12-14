@@ -58,6 +58,41 @@ var Field = {
 	}
 }
 
+// Field変数のログ(値が変わるallys.now, enemys.data, statusのみ入れておく)
+var Field_log = {
+	Allys_now: [],
+	Enemys_data: [],
+	Status: [],
+	// 保存関数
+	save: function (index, fld) {
+		this.Allys_now[index] = $.extend(true, [], fld.Allys.Now);
+		this.Enemys_data[index] = $.extend(true, [], fld.Enemys.Data);
+		this.Status[index] = $.extend(true, {}, fld.Status);
+		// 保存indexより先の要素は消す
+		for (var i = index + 1; i < this.length(); i++) {
+			this.Allys_now[i] = [];
+			this.Enemys_data[i] = [];
+			this.Status[i] = {};
+		}
+	},
+	// 読み込み関数
+	load: function (index) {
+		var fld_reset = $.extend(true, {}, Field);
+		fld_reset.Allys.Now = $.extend(true, [], this.Allys_now[index]);
+		fld_reset.Enemys.Data = $.extend(true, [], this.Enemys_data[index]);
+		fld_reset.Status = $.extend(true, {}, this.Status[index]);
+		return fld_reset;
+	},
+	// サイズ
+	length: function () {
+		for (var i = 0; i < this.Status.length; i++) {
+			if (!this.Status[i] || this.Status[i].chain === undefined) {
+				return i;
+			}
+		}
+		return this.Status.length;
+	}
+}
 
 // URLからデッキ/クエストを読み込む
 $(function () {
@@ -106,13 +141,45 @@ $(function () {
 				data.enemy[j].nowhp = popup_enemys.enemy[j].hp;
 			}
 		}
+		// 初期状態を保存
+		Field_log.save(0, Field);
 		// 表示
 		sim_show();
+		// Simulatorの位置に移動する
+		scrollTo(0, $(".Simulator").offset().top);
 	} else {
 		$("#sim_info_status").html("#ERROR: URLが正しくありません。");
 		$(".panel_button").attr("disabled", "disabled");
 	}
 });
+
+// 敵を全滅させたか確認し、全滅してたら次の敵を出現させる
+function allkill_check() {
+	var is_allkill = true;
+	var data = Field.Enemys.Data[Field.Status.nowbattle - 1];
+
+	for (var i = 0; i < data.enemy.length; i++) {
+		// 全部の敵を倒してるかどうか判定する
+		is_allkill = (is_allkill && data.enemy[i].nowhp == 0);
+	}
+	// 全ての敵を倒していたら
+	if (is_allkill) {
+		// 全終了確認
+		if (Field.Enemys.Popuplist.length <= Field.Status.nowbattle) {
+			// 終了処理開始
+			Field.Status.finish = true;
+			Field.log_push(Field.Status.nowbattle + "戦目突破(" + Field.Status.nowturn + "ターン)");
+			Field.log_push("QUEST CLEARED! (Total: " + (Field.Status.totalturn + 1) + "turn)");
+		} else {
+			Field.log_push(Field.Status.nowbattle + "戦目突破(" + Field.Status.nowturn + "ターン)");
+			// 次に進む
+			Field.Status.nowbattle += 1;
+		}
+		Field.Status.durturn.push(Field.Status.nowturn);
+		Field.Status.nowturn = 0;
+	}
+	return is_allkill;
+}
 
 // 敵出現順番生成
 function CreateEnemypopup(qst) {

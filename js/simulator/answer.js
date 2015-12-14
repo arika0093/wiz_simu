@@ -1,6 +1,5 @@
 // 解答したときの処理
 function panel(attr) {
-	var is_allkill = true;
 	// もし誤答してたならチェインを切る
 	if (attr.length <= 0) {
 		Field.Status.chain = 0;
@@ -30,29 +29,13 @@ function panel(attr) {
 		}
 	}
 	// 敵の処理
-	var data = Field.Enemys.Data[Field.Status.nowbattle - 1];
-	for (var i = 0; i < data.enemy.length; i++) {
-		// 全部の敵を倒してるかどうか判定する
-		is_allkill = (is_allkill && data.enemy[i].nowhp == 0);
-	}
-	// 全ての敵を倒していたら
-	if (is_allkill) {
-		// 全終了確認
-		if (Field.Enemys.Popuplist.length <= Field.Status.nowbattle) {
-			// 終了処理開始
-			Field.Status.finish = true;
-			Field.log_push(Field.Status.nowbattle + "戦目突破(" + Field.Status.nowturn + "ターン)");
-			Field.log_push("QUEST CLEARED! (Total: " + (Field.Status.totalturn + 1) + "turn)");
-		} else {
-			Field.log_push(Field.Status.nowbattle + "戦目突破(" + Field.Status.nowturn + "ターン)");
-			// 次に進む
-			Field.Status.nowbattle += 1;
-		}
-		Field.Status.durturn.push(Field.Status.nowturn);
-		Field.Status.nowturn = 0;
-	}
+	
+	// 全滅確認
+	allkill_check();
 	Field.Status.totalturn += 1;
 	Field.Status.nowturn += 1;
+	// Fieldログ出力
+	Field_log.save(Field.Status.totalturn, Field);
 	// 表示
 	sim_show();
 }
