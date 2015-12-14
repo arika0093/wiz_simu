@@ -16,7 +16,7 @@ function sim_show() {
 
 	// sim_info_turn
 	$("#sim_turns").text(
-		"turn: " + Field.Status.totalturn + " / chain: " + Field.Status.chain + " / "
+		"turn: " + totalturn_string() + " / chain: " + Field.Status.chain + " / "
 			+ Field.Status.nowbattle + "戦目 (" + durturn_string() + ")"
 	);
 	// sim_info_status
@@ -120,12 +120,20 @@ function ss_remain_text(rem_turn) {
 	}
 }
 
+// 合計ターンの表記を返却する
+function totalturn_string() {
+	var finish_ss = Field.Status.finish && Field.Status.durturn[Field.Quest.aprnum - 1] == 0;
+	return (finish_ss ? "(" : "")
+		+ String(Field.Status.totalturn)
+		+ (finish_ss ? "+SS)" : "")
+}
+
 // 累計ターンの表記を返却する
 function durturn_string() {
 	var popupstr = "";
 	for (var i = 0; i < Field.Enemys.Popuplist.length; i++) {
 		var tu = Field.Status.durturn[i]
-		var t = tu !== undefined ? tu.toString() : "?";
+		var t = tu !== undefined ? (tu != 0 ? tu.toString() : "SS") : "?";
 		popupstr += t;
 		if (i != Field.Enemys.Popuplist.length - 1) {
 			popupstr += "-";
@@ -140,7 +148,7 @@ function tweet_result() {
 	var url = absolutePath("./index.html" + location.search);
 	var nam = Field.Quest.name;
 	var trn = durturn_string();
-	var tot = Field.Status.totalturn;
+	var tot = totalturn_string().replace("+", "%2B");
 	var text = "「" + nam + "」を" + tot + "ターン(" + trn + ")で突破！%0A" + url;
 	var tweeturl = "https://twitter.com/intent/tweet?hashtags=wiz_simu" + "&text=" + text;
 	// 開く

@@ -158,8 +158,9 @@ $(function () {
 });
 
 // 敵を全滅させたか確認し、全滅してたら次の敵を出現させる
-function allkill_check() {
+function allkill_check(is_ssfinish) {
 	var is_allkill = true;
+	var ntrun = Field.Status.nowturn;
 	var data = Field.Enemys.Data[Field.Status.nowbattle - 1];
 
 	for (var i = 0; i < data.enemy.length; i++) {
@@ -172,14 +173,14 @@ function allkill_check() {
 		if (Field.Enemys.Popuplist.length <= Field.Status.nowbattle) {
 			// 終了処理開始
 			Field.Status.finish = true;
-			Field.log_push(Field.Status.nowbattle + "戦目突破(" + Field.Status.nowturn + "ターン)");
+			Field.log_push(Field.Status.nowbattle + "戦目突破(" + ntrun + "ターン)");
 			Field.log_push("QUEST CLEARED! (Total: " + (Field.Status.totalturn + 1) + "turn)");
 		} else {
-			Field.log_push(Field.Status.nowbattle + "戦目突破(" + Field.Status.nowturn + "ターン)");
+			Field.log_push(Field.Status.nowbattle + "戦目突破(" + ntrun + "ターン)");
 			// 次に進む
 			Field.Status.nowbattle += 1;
 		}
-		Field.Status.durturn.push(Field.Status.nowturn);
+		Field.Status.durturn.push(is_ssfinish ? ntrun - 1 : ntrun);
 		Field.Status.nowturn = 0;
 	}
 	return is_allkill;

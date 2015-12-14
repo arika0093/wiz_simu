@@ -31,7 +31,7 @@ function panel(attr) {
 	// 敵の処理
 	
 	// 全滅確認
-	allkill_check();
+	allkill_check(false);
 	Field.Status.totalturn += 1;
 	Field.Status.nowturn += 1;
 	// Fieldログ出力

@@ -23,7 +23,9 @@ function ss_push(n) {
 		now.ss_isfirst = false;
 		now.ss_isboost = false;
 		// 全滅確認
-		allkill_check();
+		if (allkill_check(true)) {
+			Field.Status.nowturn += 1;
+		}
 		// [進む]を使えないように
 		Field_log._removeover(Field.Status.totalturn);
 		// 再表示
