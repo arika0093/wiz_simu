@@ -1,20 +1,20 @@
 ﻿<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="./css/default.css" />
-    <link rel="stylesheet" type="text/css" href="./css/simulator.css" />
-    <link type="text/css" rel="stylesheet"
-          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
-    <!-- sim page -->
-    <title>Simulator - Wiz Quest Simulator</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="./css/default.css" />
+	<link rel="stylesheet" type="text/css" href="./css/simulator.css" />
+	<link type="text/css" rel="stylesheet"
+		  href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+	<!-- sim page -->
+	<title>Simulator - Wiz Quest Simulator</title>
 </head>
 <body>
-    <!-- Header -->
-    <div id="Header"></div>
+	<!-- Header -->
+	<div id="Header"></div>
 
-    <!-- Simulator -->
-    <div id="sim_top" class="Simulator clearfix">
+	<!-- Simulator -->
+	<div id="sim_top" class="Simulator clearfix">
 		<div class="sim_info clearfix">
 			<p id="sim_info_status"></p>
 			<p id="sim_turns"></p>
@@ -111,23 +111,23 @@
 			<div class="attack_target">
 				<label for="attack_target_sel">攻撃順</label>
 				<select id="attack_target_sel">
-                    <option value="-1">自動</option>
-                    <option value="0">左</option>
-                    <option value="1">中央</option>
-                    <option value="2">右</option>
+					<option value="-1">自動</option>
+					<option value="0">左</option>
+					<option value="1">中央</option>
+					<option value="2">右</option>
 				</select>
 			</div>
-            <div class="attack_rand">
-                <label for="attack_rand_sel">乱数</label>
-                <select id="attack_rand_sel">
-                    <option value="-1">ランダム</option>
-                    <option value="0.9">0.9倍</option>
-                    <option value="0.95">0.95倍</option>
-                    <option value="1">1.0倍</option>
-                    <option value="1.05">1.05倍</option>
-                    <option value="1.1">1.1倍</option>
-                </select>
-            </div>
+			<div class="attack_rand">
+				<label for="attack_rand_sel">乱数</label>
+				<select id="attack_rand_sel">
+					<option value="-1">ランダム</option>
+					<option value="0.9">0.9倍</option>
+					<option value="0.95">0.95倍</option>
+					<option value="1">1.0倍</option>
+					<option value="1.05">1.05倍</option>
+					<option value="1.1">1.1倍</option>
+				</select>
+			</div>
 			<div class="panel_list">
 				<button class="panel_button" id="pnl_attr_0" onclick="panel([0])">火</button>
 				<button class="panel_button" id="pnl_attr_1" onclick="panel([1])">水</button>
@@ -148,38 +148,38 @@
 
 			</div>
 			<div class="field_move clearfix">
-				<button class="field_mov_button" id="fld_move_before" onclick="load_field(-1)">1ターン前に戻る</button>
-				<button class="field_mov_button" id="fld_move_after" onclick="load_field(1)">1ターン先に進む</button>
+				<button disabled="disabled" class="field_mov_button" id="fld_move_before" onclick="load_field(-1)">1ターン前に戻る</button>
+				<button disabled="disabled" class="field_mov_button" id="fld_move_after" onclick="load_field(1)">1ターン先に進む</button>
 			</div>
 		</div>
 		<div class="sim_log textlog">
 			<div class="sim_log_inner">
 			</div>
 		</div>
-    </div>
+	</div>
 
-    <!-- Footer -->
-    <div id="Footer"></div>
+	<!-- Footer -->
+	<div id="Footer"></div>
 
-    <!-- Javascript -->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
-    <script type="text/javascript" charset="Shift-JIS" src="./js/pagetemp.js"></script>
-    <!-- 他jsに依存しない基礎関数群 -->
-    <script type="text/javascript" charset="Shift-JIS" src="./js/simulator/awake.js"></script>
-    <script type="text/javascript" charset="Shift-JIS" src="./js/simulator/species.js"></script>
-    <!-- データ群(基礎関数に依存する) -->
-    <script type="text/javascript" charset="Shift-JIS" src="./data/skill_ans.js"></script>
-    <script type="text/javascript" charset="Shift-JIS" src="./data/skill_spe.js"></script>
-    <script type="text/javascript" charset="Shift-JIS" src="./data/skill_awake.js"></script>
-    <script type="text/javascript" charset="Shift-JIS" src="./data/quests.js"></script>
-    <script type="text/javascript" charset="Shift-JIS" src="./data/cards.js"></script>
-    <!-- 処理群(データ群に依存する) -->
-    <script type="text/javascript" charset="Shift-JIS" src="./js/loadurl.js"></script>
-    <script type="text/javascript" charset="Shift-JIS" src="./js/simulator/initialize.js"></script>
-    <script type="text/javascript" charset="Shift-JIS" src="./js/simulator/show.js"></script>
-    <script type="text/javascript" charset="Shift-JIS" src="./js/simulator/damage.js"></script>
-    <script type="text/javascript" charset="Shift-JIS" src="./js/simulator/answer.js"></script>
-    <script type="text/javascript" charset="Shift-JIS" src="./js/simulator/special.js"></script>
+	<!-- Javascript -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./js/pagetemp.js"></script>
+	<!-- 他jsに依存しない基礎関数群 -->
+	<script type="text/javascript" charset="Shift-JIS" src="./js/simulator/awake.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./js/simulator/species.js"></script>
+	<!-- データ群(基礎関数に依存する) -->
+	<script type="text/javascript" charset="Shift-JIS" src="./data/skill_ans.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./data/skill_spe.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./data/skill_awake.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./data/quests.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./data/cards.js"></script>
+	<!-- 処理群(データ群に依存する) -->
+	<script type="text/javascript" charset="Shift-JIS" src="./js/loadurl.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./js/simulator/initialize.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./js/simulator/show.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./js/simulator/damage.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./js/simulator/answer.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./js/simulator/special.js"></script>
 </body>
 </html>
