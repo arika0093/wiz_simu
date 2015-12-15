@@ -14,17 +14,17 @@ div.sim_info {
 
 p#sim_info_status {
 	display: inline;
-	width: 45%;
+	width: 40%;
 	margin: 0;
-	padding: 1ex 1em 0.5ex;
+	padding: 1ex 0 0.5ex 1em;
 	float: left;
 }
 
 p#sim_turns {
 	display: inline;
-	width: 45%;
+	width: 55%;
 	margin: 0;
-	padding: 1ex 1em 0.5ex;
+	padding: 1ex 1em 0.5ex 0;
 	text-align: right;
 	float: right;
 }

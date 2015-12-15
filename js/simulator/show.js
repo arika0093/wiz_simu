@@ -2,8 +2,8 @@
 function sim_show() {
 	// sim_log
 	var logtext = "";
-	var totalturn = Field.Status.totalturn;
-	var log_stat = Field.Status.log[totalturn] !== undefined ? totalturn : totalturn - 1;
+	var tt = Field.Status.totalturn;
+	var log_stat = Field.Status.log[tt] !== undefined ? tt : tt - 1;
 	for (var i = log_stat ; i >= 0; i--) {
 		logtext += "--- turn: " + (i + 1) + " ------------" + "<br/>";
 		if (Field.Status.log[i] !== undefined) {
@@ -25,7 +25,6 @@ function sim_show() {
 	// sim_result
 	if (Field.Status.finish) {
 		$(".sim_result_links").fadeIn("slow");
-
 	} else {
 		$(".sim_result_links").fadeOut("slow");
 	}
@@ -134,18 +133,20 @@ function ss_remain_text(rem_turn) {
 
 // 合計ターンの表記を返却する
 function totalturn_string() {
-	var finish_ss = Field.Status.finish && Field.Status.durturn[Field.Quest.aprnum - 1] == 0;
-	return (finish_ss ? "(" : "")
-		+ String(Field.Status.totalturn)
-		+ (finish_ss ? "+SS)" : "")
+	var finish_ss = Field.Status.finish && Field.Status.durturn[Field.Quest.aprnum - 1].ssfin;
+	return (finish_ss ? (Field.Status.totalturn - 1) + "+SS" : Field.Status.totalturn.toString());
 }
 
 // 累計ターンの表記を返却する
 function durturn_string() {
 	var popupstr = "";
 	for (var i = 0; i < Field.Enemys.Popuplist.length; i++) {
-		var tu = Field.Status.durturn[i]
-		var t = tu !== undefined ? (tu != 0 ? tu.toString() : "SS") : "?";
+		var tu = Field.Status.durturn[i];
+		var t = tu ?
+			(tu.ssfin ?
+				((tu.turn-1 != 0) ? (tu.turn - 1).toString() + "+SS" : "SS") :
+				tu.turn.toString()
+			) : "?";
 		popupstr += t;
 		if (i != Field.Enemys.Popuplist.length - 1) {
 			popupstr += "-";
@@ -159,9 +160,9 @@ function tweet_result() {
 	// URL生成
 	var url = absolutePath("./" + location.search);
 	var nam = Field.Quest.name;
-	var trn = durturn_string();
+	var trn = durturn_string().replace("+", "%2B");
 	var tot = totalturn_string().replace("+", "%2B");
-	var text = "「" + nam + "」を" + tot + "ターン(" + trn + ")で突破！%0A" + url;
+	var text = "「" + nam + "」を " + tot + " ターン(" + trn + ")で突破！%0A" + url;
 	var tweeturl = "https://twitter.com/intent/tweet?hashtags=wiz_simu" + "&text=" + text;
 	// 開く
 	window.open(tweeturl, "Simulator result - Tweet");

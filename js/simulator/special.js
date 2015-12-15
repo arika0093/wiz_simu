@@ -29,6 +29,9 @@ function ss_push(n) {
 		// 全滅確認
 		if (allkill_check(true)) {
 			nextturn();
+			Field.Status.totalturn += 1;
+			// Fieldログ出力
+			Field_log.save(Field.Status.totalturn, Field);
 		}
 		// [進む]を使えないように
 		Field_log._removeover(Field.Status.totalturn);

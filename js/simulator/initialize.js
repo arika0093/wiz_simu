@@ -206,7 +206,7 @@ function allkill_check(is_ssfinish) {
 		}
 		// パネル付与効果を全部リセット
 		Field.Status.panel_add = [];
-		Field.Status.durturn.push(is_ssfinish ? ntrun - 1 : ntrun);
+		Field.Status.durturn.push({ ssfin: is_ssfinish, turn: ntrun});
 		Field.Status.nowturn = 0;
 	}
 	return is_allkill;
