@@ -1,15 +1,15 @@
 // 指定属性で相手を攻撃
-//	enemy: 敵データ, now: 自身のデータ, atk_atr: 攻撃属性, as: 攻撃AS,
-//	pn: 踏んだパネル, ch: チェイン数, rnd: 乱数, i: 味方の番号, e: 敵の番号
-function as_attack_enemy(enemy, now, atk_atr, as, pn, ch, rnd, i, e) {
+//	enemy: 敵データ, now: 自身のデータ, atk_atr: 攻撃属性, rate: 倍率, atkn: 攻撃回数,
+//	pn: 踏んだパネル, ch: チェイン数, rnd: 乱数, i: 味方の番号, e: 敵の番号, is_ss: SSかどうか
+function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss) {
 	var d = 0;
 	// エンハ
-	var as_enh = now.as_enhance !== undefined ? now.as_enhance : 0;
-	var ss_enh = now.ss_enhance !== undefined ? now.ss_enhance : 0;
+	var as_enh = now.as_enhance ? now.as_enhance : 0;
+	var ss_enh = now.ss_enhance ? now.ss_enhance : 0;
 	// 攻撃
-	d = (now.atk / 2) * (1 + ch / 100) * rnd / as.atkn;
+	d = (now.atk / (!is_ss ? 2 : 1)) * (1 + ch / 100) * rnd / atkn;
 	// AS倍率、エンハ
-	d *= (as.rate + as_enh + ss_enh);
+	d *= (rate + as_enh + ss_enh);
 	// パネル
 	d *= (pn.indexOf(atk_atr) >= 0 ? 1 : 0.5);
 	// 属性考慮
@@ -44,7 +44,12 @@ function attr_magnification(atk_atr, def_atr) {
 }
 
 // 攻撃順序を自動で指定する
-function auto_attack_order(enemys, attr) {
+function auto_attack_order(enemys, attr, own_index) {
+	// 攻撃順序が指定されているならそっちを優先
+	var tg = Number($("#attack_target_sel").val());
+	if (tg != -1 && enemys[tg].nowhp > 0) {
+		return tg;
+	}
 	var enemy_copy = enemys.concat();
 	enemy_copy.sort(function (a, b) {
 		// 属性有利: 降順 / HP: 昇順
@@ -59,4 +64,10 @@ function auto_attack_order(enemys, attr) {
 		return 0;
 	});
 	return enemys.indexOf(enemy_copy[0]);
+}
+
+// 乱数を生成する
+function damage_rand() {
+	r = Number($("#attack_rand_sel").val());
+	return (r != -1 ? r : 0.9 + (Math.random() * 0.2));
 }

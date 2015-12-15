@@ -112,8 +112,9 @@ $(function () {
 	if ((simDeck.length > 0 && simQuest !== undefined)) {
 		// 味方データを読み込む
 		Field.Allys.Deck = simDeck;
-		Field.Allys.Now = new Array({},{},{},{},{});
+		Field.Allys.Now = new Array();
 		for (var i = 0; i < simDeck.length; i++) {
+			Field.Allys.Now[i] = {};
 			var card = simDeck[i];
 			var now = Field.Allys.Now[i];
 			var mana = 200;
@@ -127,6 +128,7 @@ $(function () {
 			now.maxhp = card.hp + mana;
 			now.nowhp = card.hp + mana;
 			now.atk = card.atk + mana;
+			now.turn_effect = [];
 		}
 		// 潜在を反映させる
 		for (var i = 0; i < simDeck.length; i++) {
@@ -165,6 +167,19 @@ $(window).load(function () {
 	// Simulatorの位置に移動する
 	scrollTo(0, $("#sim_top").offset().top + 1);
 });
+
+// 次のターンに進む
+function nextturn() {
+	// ターンエフェクト減算処理
+	for (var i = 0; i < Field.Allys.Deck.length; i++) {
+		for (var j = 0; j < Field.Allys.Now[i].turn_effect.length; j++) {
+			Field.Allys.Now[i].turn_effect[j].lim_turn -= 1;
+		}
+	}
+	// SS確認
+	ss_effect_check(true);
+	Field.Status.nowturn += 1;
+}
 
 // 敵を全滅させたか確認し、全滅してたら次の敵を出現させる
 function allkill_check(is_ssfinish) {

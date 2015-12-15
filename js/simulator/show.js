@@ -157,7 +157,7 @@ function durturn_string() {
 // ツイート
 function tweet_result() {
 	// URL生成
-	var url = absolutePath("./index.html" + location.search);
+	var url = absolutePath("./" + location.search);
 	var nam = Field.Quest.name;
 	var trn = durturn_string();
 	var tot = totalturn_string().replace("+", "%2B");

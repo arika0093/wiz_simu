@@ -43,8 +43,8 @@ function panel(attr) {
 	
 	// 全滅確認
 	allkill_check(false);
+	nextturn();
 	Field.Status.totalturn += 1;
-	Field.Status.nowturn += 1;
 	// Fieldログ出力
 	Field_log.save(Field.Status.totalturn, Field);
 	// 表示
@@ -91,12 +91,10 @@ function answer_skill(as_arr, panel) {
 		var card = Field.Allys.Deck[i];
 		var now = Field.Allys.Now[i];
 		var enemy_dat = Field.Enemys.Data[Field.Status.nowbattle - 1].enemy;
-		var targ = Number($("#attack_target_sel").val());
-		var rnd = Number($("#attack_rand_sel").val());
 		// 種類で分岐
 		switch (as_arr[i][0].type) {
 			case "attack":
-				answer_attack(card, now, enemy_dat, as_arr[i], panel, targ, rnd, i);
+				answer_attack(card, now, enemy_dat, as_arr[i], panel, i);
 				break;
 			case "support":
 				answer_enhance(as_arr[i]);
@@ -109,7 +107,7 @@ function answer_skill(as_arr, panel) {
 }
 
 // 攻撃の処理
-function answer_attack(card, now, enemy, as, attr, t, r, index) {
+function answer_attack(card, now, enemy, as, attr, index) {
 	// 敵それぞれに対して有効なASのindexの配列
 	var as_pos = [];
 	// 敵それぞれについて条件の良いASを取り出す
@@ -134,8 +132,7 @@ function answer_attack(card, now, enemy, as, attr, t, r, index) {
 				continue;
 			}
 			// どの敵を攻撃するか
-			var targ = ((t != -1 && enemy[t] !== undefined && enemy[t].nowhp > 0) ?
-				t : auto_attack_order(enemy, atk_attr[at]));
+			var targ = auto_attack_order(enemy, atk_attr[at], index);
 			// 各種情報
 			var atr = atk_attr[at];
 			var atk_as = as[as_pos[targ]]
@@ -146,15 +143,17 @@ function answer_attack(card, now, enemy, as, attr, t, r, index) {
 				for (var tg = 0; tg < enemy.length; tg++) {
 					if (enemy[tg].nowhp <= 0) { continue; }
 					// 乱数
-					var rnd = (r != -1 ? r : 0.9 + (Math.random() * 0.2))
+					var rnd = damage_rand();
 					// ダメージ計算
-					var damage = as_attack_enemy(enemy[tg], now, atr, atk_as, attr, ch, rnd, index, tg);
+					var damage = as_attack_enemy(enemy[tg], now, atr,
+						atk_as.rate, atk_as.atkn, attr, ch, rnd, index, tg, false);
 				}
 			} else {
 				// 乱数
-				var rnd = (r != -1 ? r : 0.9 + (Math.random() * 0.2))
+				var rnd = damage_rand();
 				// ダメージ計算
-				var damage = as_attack_enemy(en, now, atr, atk_as, attr, ch, rnd, index, targ);
+				var damage = attack_enemy(en, now, atr, atk_as.rate,
+					atk_as.atkn, attr, ch, rnd, index, targ, false);
 			}
 		}
 	}
