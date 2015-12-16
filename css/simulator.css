@@ -1,0 +1,309 @@
+/* Simulator Style */
+/* --------------------------------- */
+/* Main Frame */
+div.Simulator {
+	padding: 2ex 1.5em;
+}
+
+/* Simulator Information */
+div.sim_info {
+	margin: 0.5ex 0.5em;
+	border: 1px solid #606060;
+	border-radius: 5px;
+}
+
+p#sim_info_status {
+	display: inline;
+	width: 40%;
+	margin: 0;
+	padding: 1ex 0 0.5ex 1em;
+	float: left;
+}
+
+p#sim_turns {
+	display: inline;
+	width: 55%;
+	margin: 0;
+	padding: 1ex 1em 0.5ex 0;
+	text-align: right;
+	float: right;
+}
+
+/* sim_result */
+div.sim_result_links {
+	width: 90%;
+	float: right;
+	padding: 0 0.5em 0.5ex;
+	border-radius: 5px;
+	text-align: right;
+	display: none;
+}
+
+div.sim_result_links a {
+	margin: 0 3px;
+	display: inline;
+	color: #0040FF;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+/* Simulator Allys & Enemys */
+div.sim_ally{
+	width: 50%;
+	margin: 1ex 0em 1ex 0.5em;
+	float: left;
+	border: 1px solid #606060;
+	border-radius: 5px 5px 0px 0px;
+}
+
+div.sim_enemy {
+	width: 45%;
+	margin: 1ex 0.5em 1ex 0em;
+	float: right;
+	border: 1px solid #606060;
+	border-radius: 5px 5px 0px 0px;
+}
+
+div.ally, div.enemy{
+	position: relative;
+	border-bottom: 1px solid #606060;
+}
+div.ally:first-child, div.enemy:first-child{
+	margin-top: 20px;
+	border-top: 1px solid #606060;
+}
+div.ally:last-child, div.enemy:last-child{
+	/*margin-bottom: 20px;*/
+	border-bottom: 0px none;
+	margin-bottom: 0px;
+}
+
+p.ally_name, p.enemy_name{
+	margin: 0 0 0 0.5em;
+	padding-top: 0.5ex;
+	float: left;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+p.ally_stat, p.enemy_hp{
+	margin: -2px 0.5em 0 0;
+	padding: 0;
+	text-align: right;
+	float: right;
+	font-size: 9pt;
+}
+
+p.ally_name, p.ally_stat{
+	width: 298px;
+}
+p.enemy_name, p.enemy_stat{
+	width: 260px;
+}
+
+div.ally_ss {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+}
+
+div.ally_ss button{
+	width: 200px;
+	font-family: Meiryo;
+	font-size: 9.5pt;
+	margin: 0;
+	border-width: 1px 0px 0px 1px;
+	border-style: solid;
+}
+
+button.ally_ss_button {
+	color: #303030;
+	border-color: #606060;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+p.enemy_stat{
+	width: 240px;
+	font-size: 9pt;
+	margin: 2px 0.5em 0 0;
+	padding: 0;
+	float: right;
+	text-align: right;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/* Panels */
+div.sim_panel {
+	width: 45%;
+	height: 300px;
+	position: relative;
+	margin: 1ex 0.5em 2ex 0em;
+	padding: 0px;
+	float: right;
+	border: 1px solid #606060;
+}
+
+div.panel_addition {
+	width: 50%;
+	padding: 3px 0px 3px 0.5em;
+	float: left;
+}
+
+div.attack_target{
+	width: 18%;
+	padding: 3px 3px 3px 3px;
+	float: left;
+}
+
+div.attack_rand{
+	width: 25%;
+	padding: 3px 0.5em 3px 3px;
+	float: left;
+}
+
+select#panel_add_sel, select#attack_target_sel, select#attack_rand_sel{
+	margin-top: 0px;
+}
+
+div.panel_list {
+	border-top: 1px solid #606060;
+	border-bottom: 1px solid #606060;
+	padding: 0 0.5em 1ex;
+	clear: both;
+}
+
+button.panel_button {
+	font-family: Meiryo;
+	font-size: 9pt;
+	white-space: nowrap;
+	margin-top: 1ex;
+	width: 42px;
+	height: 36px;
+	border: 1px solid #606060;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+div.sim_option {
+	overflow: auto;
+}
+
+div.field_move {
+	position: absolute;
+	bottom: 0px;
+}
+
+button.field_mov_button {
+	font-family: Meiryo;
+	font-size: 9.5pt;
+	width: 170px;
+	margin: auto;
+	padding: 1ex 0;
+	border-style: solid;
+	color: #303030;
+	border-color: #606060;
+	background-color: transparent;
+	cursor: pointer;
+}
+button#fld_move_before {
+	border-width: 1px 1px 0px 0px;
+	float: left;
+}
+button#fld_move_after {
+	border-width: 1px 0px 0px 0px;
+	float: right;
+}
+
+
+/* Logs */
+div.sim_log {
+	width: 50%;
+	height: 170px;
+	margin: 1ex 0.5em 0.5ex;
+	float: left;
+}
+
+div.sim_log_inner {
+	font-size: 8.5pt;
+	padding: 0.5ex 0.5em;
+}
+
+/* Attribute */
+div.attr_0{
+	background-color: #FF4000;
+	width: 4px;
+	height: 64px;
+	float: left;
+	text-indent: -9999px;
+}
+
+div.attr_1{
+	background-color: #30b3ff;
+	width: 4px;
+	height: 64px;
+	float: left;
+	text-indent: -9999px;
+}
+
+div.attr_2{
+	background-color: #FFD000;
+	width: 4px;
+	height: 64px;
+	float: left;
+	text-indent: -9999px;
+}
+
+div.attr_3{
+	background-color: #e5e5e5;
+	width: 4px;
+	height: 64px;
+	float: left;
+	text-indent: -9999px;
+}
+
+div.attr_4{
+	background-color: #9d00a9;
+	width: 4px;
+	height: 64px;
+	float: left;
+	text-indent: -9999px;
+}
+
+div.attr_none{
+	background-color: #A0A0A0;
+	width: 4px;
+	height: 64px;
+	float: left;
+	text-indent: -9999px;
+}
+
+/* Image */
+img.chara_img {
+	width: 64px;
+	height: 64px;
+	float: left;
+	border-width: 0px 1px 0px 0px;
+	border-style: solid;
+	border-color: #A0A0A0;
+}
+
+/* Buttons */
+button:hover {
+	border-color: #40A0FF;
+	background-color: #aef3ff;
+	cursor: pointer;
+}
+button:active{
+	color: #000000;
+	border-color: #138aff;
+	background-color: #67e8ff;
+}
+button:disabled, button:disabled:hover {
+	background-color: #EAEAEA;
+	cursor: default;
+	border-color: #C0C0C0;
+}

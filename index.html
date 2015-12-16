@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="./css/default.css" />
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <!-- Top Page -->
+    <title>Wiz Quest Simulator</title>
+</head>
+<body>
+    <!-- Header -->
+    <div id="Header"></div>
+
+    <!-- Main Contents -->
+    <div class="Main">
+        <dl class="List">
+            <!-- Set Value -->
+            <dt>クエスト/デッキ選択</dt>
+            <dd>
+                <!-- Select Quest -->
+                <div class="SelField">
+                    <p class="Info">試走するクエストを指定します。</p>
+                    <select class="Selbox" id="QstSel" onchange="optsel()">
+                        <option value="">(未選択)</option>
+                    </select>
+                    <p class="desc" id="Qstdesc"></p>
+                </div>
+
+                <!-- Select Deck -->
+                <div class="SelField">
+                    <p class="Info">試走するデッキを設定します。</p>
+                    <input class="DeckSel" id="deck01" onchange="decksel('deck01', 'Deckdesc1')" />
+                    <p class="desc" id="Deckdesc1"></p>
+                    <input class="DeckSel" id="deck02" onchange="decksel('deck02', 'Deckdesc2')" />
+                    <p class="desc" id="Deckdesc2"></p>
+                    <input class="DeckSel" id="deck03" onchange="decksel('deck03', 'Deckdesc3')" />
+                    <p class="desc" id="Deckdesc3"></p>
+                    <input class="DeckSel" id="deck04" onchange="decksel('deck04', 'Deckdesc4')" />
+                    <p class="desc" id="Deckdesc4"></p>
+                    <input class="DeckSel" id="deck05" onchange="decksel('deck05', 'Deckdesc5')" />
+                    <p class="desc" id="Deckdesc5"></p>
+
+                    <button type="button" id="Start" onclick="sim_start()">開始</button>
+                </div>
+            </dd>
+        </dl>
+    </div>
+
+    <!-- Footer -->
+    <div id="Footer"></div>
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./js/pagetemp.js"></script>
+    <!-- 他jsに依存しない基礎関数群 -->
+    <script type="text/javascript" charset="Shift-JIS" src="./js/simulator/awake.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./js/simulator/species.js"></script>
+    <!-- データ群(基礎関数に依存する) -->
+    <script type="text/javascript" charset="Shift-JIS" src="./data/skill_ans.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./data/skill_spe.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./data/skill_awake.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./data/quests.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./data/cards.js"></script>
+    <!-- 処理群(データ群に依存する) -->
+    <script type="text/javascript" charset="Shift-JIS" src="./js/createurl.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./js/loadurl.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./js/decksuggest.js"></script>
+    <script type="text/javascript" charset="Shift-JIS" src="./js/questsel.js"></script>
+</body>
+</html>

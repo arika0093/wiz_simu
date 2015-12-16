@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="./css/default.css" />
+	<link rel="stylesheet" type="text/css" href="./css/simulator.css" />
+	<link type="text/css" rel="stylesheet"
+		  href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+	<!-- sim page -->
+	<title>Simulator - Wiz Quest Simulator</title>
+</head>
+<body>
+	<!-- Header -->
+	<div id="Header"></div>
+
+	<!-- Simulator -->
+	<div id="sim_top" class="Simulator clearfix">
+		<div class="sim_info clearfix">
+			<p id="sim_info_status"></p>
+			<p id="sim_turns"></p>
+			<div class="sim_result_links">
+				<a id="sim_share" onclick="tweet_result()">結果をツイートする</a>
+				<a id="sim_restart" onclick="load_field(0)">もう一度始めから試走する</a>
+				<a id="sim_decksel" onclick="back_decksel()">デッキ選択画面に戻る</a>
+			</div>
+		</div>
+		<div class="sim_ally">
+			<div class="ally clearfix" id="ally01">
+				<div class="attr_none" id="ally01_attr_main">.</div>
+				<div class="attr_none" id="ally01_attr_sub">.</div>
+				<img class="chara_img" id="ally01_img" src="./image/noimage.png"/>
+				<p class="ally_name" id="ally01_name"></p>
+				<p class="ally_stat" id="ally01_status"></p>
+				<div class="ally_ss" id="ally01_ss">
+					<button type="button" id="ally01_ss_button" onclick="ss_push(0)"></button>
+				</div>
+			</div>
+			<div class="ally clearfix" id="ally02">
+				<div class="attr_none" id="ally02_attr_main">.</div>
+				<div class="attr_none" id="ally02_attr_sub">.</div>
+				<img class="chara_img" id="ally02_img" src="./image/noimage.png"/>
+				<p class="ally_name" id="ally02_name"></p>
+				<p class="ally_stat" id="ally02_status"></p>
+				<div class="ally_ss" id="ally02_ss">
+					<button type="button" id="ally02_ss_button" onclick="ss_push(1)"></button>
+				</div>
+			</div>
+			<div class="ally clearfix" id="ally03">
+				<div class="attr_none" id="ally03_attr_main">.</div>
+				<div class="attr_none" id="ally03_attr_sub">.</div>
+				<img class="chara_img" id="ally03_img" src="./image/noimage.png"/>
+				<p class="ally_name" id="ally03_name"></p>
+				<p class="ally_stat" id="ally03_status"></p>
+				<div class="ally_ss" id="ally03_ss">
+					<button type="button" id="ally03_ss_button" onclick="ss_push(2)"></button>
+				</div>
+			</div>
+			<div class="ally clearfix" id="ally04">
+				<div class="attr_none" id="ally04_attr_main">.</div>
+				<div class="attr_none" id="ally04_attr_sub">.</div>
+				<img class="chara_img" id="ally04_img" src="./image/noimage.png"/>
+				<p class="ally_name" id="ally04_name"></p>
+				<p class="ally_stat" id="ally04_status"></p>
+				<div class="ally_ss" id="ally04_ss">
+					<button type="button" id="ally04_ss_button" onclick="ss_push(3)"></button>
+				</div>
+			</div>
+			<div class="ally clearfix" id="ally05">
+				<div class="attr_none" id="ally05_attr_main">.</div>
+				<div class="attr_none" id="ally05_attr_sub">.</div>
+				<img class="chara_img" id="ally05_img" src="./image/noimage.png"/>
+				<p class="ally_name" id="ally05_name"></p>
+				<p class="ally_stat" id="ally05_status"></p>
+				<div class="ally_ss" id="ally05_ss">
+					<button type="button" id="ally05_ss_button" onclick="ss_push(4)"></button>
+				</div>
+			</div>
+		</div>
+		<div class="sim_enemy">
+			<div class="enemy clearfix" id="enemy01">
+				<div class="attr_none" id="enemy01_attr_main"></div>
+				<div class="attr_none" id="enemy01_attr_sub"></div>
+				<img class="chara_img" id="enemy01_img" src="./image/noimage.png"/>
+				<p class="enemy_name" id="enemy01_name"></p>
+				<p class="enemy_hp" id="enemy01_hp"></p>
+				<p class="enemy_stat" id="enemy01_stats"></p>
+			</div>
+			<div class="enemy clearfix" id="enemy02">
+				<div class="attr_none" id="enemy02_attr_main"></div>
+				<div class="attr_none" id="enemy02_attr_sub"></div>
+				<img class="chara_img" id="enemy02_img" src="./image/noimage.png"/>
+				<p class="enemy_name" id="enemy02_name"></p>
+				<p class="enemy_hp" id="enemy02_hp"></p>
+				<p class="enemy_stat" id="enemy02_stats"></p>
+			</div>
+			<div class="enemy clearfix" id="enemy03">
+				<div class="attr_none" id="enemy03_attr_main"></div>
+				<div class="attr_none" id="enemy03_attr_sub"></div>
+				<img class="chara_img" id="enemy03_img" src="./image/noimage.png"/>
+				<p class="enemy_name" id="enemy03_name"></p>
+				<p class="enemy_hp" id="enemy03_hp"></p>
+				<p class="enemy_stat" id="enemy03_stats"></p>
+			</div>
+		</div>
+		<div class="sim_panel">
+			<div class="panel_addition">
+				<label for="panel_add_sel">パネル付与効果</label>
+				<select id="panel_add_sel">
+				</select>
+			</div>
+			<div class="attack_target">
+				<label for="attack_target_sel">攻撃順</label>
+				<select id="attack_target_sel">
+					<option value="-1">自動</option>
+					<option value="0">左</option>
+					<option value="1">中央</option>
+					<option value="2">右</option>
+				</select>
+			</div>
+			<div class="attack_rand">
+				<label for="attack_rand_sel">乱数</label>
+				<select id="attack_rand_sel">
+					<option value="-1">ランダム</option>
+					<option value="0.9">0.9倍</option>
+					<option value="0.95">0.95倍</option>
+					<option value="1">1.0倍</option>
+					<option value="1.05">1.05倍</option>
+					<option value="1.1">1.1倍</option>
+				</select>
+			</div>
+			<div class="panel_list">
+				<button class="panel_button" id="pnl_attr_0" onclick="panel([0])">火</button>
+				<button class="panel_button" id="pnl_attr_1" onclick="panel([1])">水</button>
+				<button class="panel_button" id="pnl_attr_2" onclick="panel([2])">雷</button>
+				<button class="panel_button" id="pnl_attr_01" onclick="panel([0,1])">火水</button>
+				<button class="panel_button" id="pnl_attr_12" onclick="panel([1,2])">水雷</button>
+				<button class="panel_button" id="pnl_attr_02" onclick="panel([0,2])">火雷</button>
+				<button class="panel_button" id="pnl_attr_012" onclick="panel([0,1,2])">3色</button>
+				<button class="panel_button" id="pnl_attr_03" onclick="panel([0,3])">火光</button>
+				<button class="panel_button" id="pnl_attr_13" onclick="panel([1,3])">水光</button>
+				<button class="panel_button" id="pnl_attr_23" onclick="panel([2,3])">雷光</button>
+				<button class="panel_button" id="pnl_attr_04" onclick="panel([0,4])">火闇</button>
+				<button class="panel_button" id="pnl_attr_14" onclick="panel([1,4])">水闇</button>
+				<button class="panel_button" id="pnl_attr_24" onclick="panel([2,4])">雷闇</button>
+				<button class="panel_button" id="pnl_attr_miss" onclick="panel([])">誤答</button>
+			</div>
+			<div class="sim_option">
+
+			</div>
+			<div class="field_move clearfix">
+				<button disabled="disabled" class="field_mov_button" id="fld_move_before" onclick="load_field(-1)">1ターン前に戻る</button>
+				<button disabled="disabled" class="field_mov_button" id="fld_move_after" onclick="load_field(1)">1ターン先に進む</button>
+			</div>
+		</div>
+		<div class="sim_log textlog">
+			<div class="sim_log_inner">
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<div id="Footer"></div>
+
+	<!-- Javascript -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./js/pagetemp.js"></script>
+	<!-- 他jsに依存しない基礎関数群 -->
+	<script type="text/javascript" charset="Shift-JIS" src="./js/simulator/awake.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./js/simulator/species.js"></script>
+	<!-- データ群(基礎関数に依存する) -->
+	<script type="text/javascript" charset="Shift-JIS" src="./data/skill_ans.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./data/skill_spe.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./data/skill_awake.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./data/quests.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./data/cards.js"></script>
+	<!-- 処理群(データ群に依存する) -->
+	<script type="text/javascript" charset="Shift-JIS" src="./js/loadurl.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./js/simulator/initialize.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./js/simulator/show.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./js/simulator/damage.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./js/simulator/answer.js"></script>
+	<script type="text/javascript" charset="Shift-JIS" src="./js/simulator/special.js"></script>
+</body>
+</html>
