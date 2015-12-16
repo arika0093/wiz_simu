@@ -1,6 +1,6 @@
-// -------------------------
-// スキル(AS)
-// -------------------------
+// ------------------------------------------------------
+// 基本スキル
+// ------------------------------------------------------
 // 通常攻撃
 function Default_as() {
 	return [
@@ -19,6 +19,29 @@ function Default_as() {
 	];
 }
 
+// 複数ASをまとめる
+function multi_as(as1) {
+	for (var i = 1; i < arguments.length; i++) {
+		as1.concat(arguments[i]);
+	}
+	return as1;
+}
+
+// 条件付与
+function add_cond(as, obj) {
+	for (var i = 0; i < as.length; i++) {
+		for (var key in obj) {
+			if (obj[key]) {
+				as[i][key] = obj[key];
+			}
+		}
+	}
+	return as;
+}
+
+// ------------------------------------------------------
+// 基本攻撃
+// ------------------------------------------------------
 // チェインアタッカー(rate: 割合, ch: 発動チェイン数)
 function ChainAttack(rate, ch) {
 	return [
@@ -37,10 +60,42 @@ function ChainAttack(rate, ch) {
 	];
 }
 
-// チェインアタッカー/一定チェインでさらにアップ
-//	(rate: 割合, ch: 発動チェイン数, rate_a: 割合2, ch_a: 発動チェイン2)
-function ChainAttack_plus(rate, ch, rate_a, ch_a) {
-	return ChainAttack(rate, ch).concat(ChainAttack(rate_a, ch_a));
+// HPを消費して攻撃するチェインアタッカー
+// (rate: 割合, ch: 発動チェイン数, hp: 消費HPの割合)
+function ChainAttack_ConsumeHP(rate, ch, hp) {
+	return [
+		{
+			type: "attack",
+			isall: false,
+			atkn: 1,
+			rate: rate,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: create_specs(1),
+			cond: function (fld, oi, ei) {
+				return true;
+			},
+		}
+	];
+}
+
+// リーダー時に発動するチェインアタッカー
+// (rate: 割合, ch: 発動チェイン数)
+function ChainAttack_Leader(rate, ch) {
+	return [
+		{
+			type: "attack",
+			isall: false,
+			atkn: 1,
+			rate: rate,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: create_specs(1),
+			cond: function (fld, oi, ei) {
+				return oi == 0;
+			},
+		}
+	];
 }
 
 // チェイン連撃アタッカー(rate: 割合, ch: 発動チェイン数, n: 攻撃回数)
@@ -89,7 +144,7 @@ function ChainSpecAttack(rate, ch, spec) {
 			rate: rate,
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
-			spec: spec,
+			spec: specific_specs(spec),
 			cond: function (fld, oi, ei) {
 				return true;
 			},
@@ -133,7 +188,7 @@ function ChainAllAttack(rate, ch) {
 	];
 }
 
-// -------
+// ------------------------------------------------------
 // チェインエンハンス(rate: 割合, attr: 対象属性, ch: チェイン)
 function ChainEnhance(rate, attr, ch) {
 	return [
@@ -151,7 +206,7 @@ function ChainEnhance(rate, attr, ch) {
 	];
 }
 
-// -------
+// ------------------------------------------------------
 // 回復(rate: 割合, attr: 対象属性)
 function Heal(rate, attr) {
 	return [
@@ -166,4 +221,36 @@ function Heal(rate, attr) {
 			},
 		}
 	];
+}
+
+// ------------------------------------------------------
+// 各種条件
+// ------------------------------------------------------
+// リーダー時
+function when_leader() {
+	return function (fld, oi, ei) {
+		return index == 0;
+	}
+}
+
+// 全体自傷スキル
+function ConsumeHP_all(hp) {
+	return function (fld, oi, fst) {
+		if (fst) {
+			for (var i = 0; i < fld.Allys.Deck.length; i++) {
+				var now = fld.Allys.Now[i];
+				now.nowhp = Math.max(Math.floor(now.nowhp - (now.maxhp * hp)), 0);
+			}
+		}
+	}
+}
+
+// 単体自傷スキル
+function ConsumeHP_own(hp) {
+	return function (fld, oi, fst) {
+		if (fst) {
+			var now = fld.Allys.Now[oi];
+			now.nowhp = Math.max(Math.floor(now.nowhp - (now.maxhp * hp)), 0);
+		}
+	}
 }

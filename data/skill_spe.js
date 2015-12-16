@@ -181,7 +181,7 @@ function panel_chainplus(p) {
 // デメリット系
 // -----------------------------------
 // 自分に割合pのダメージを与える
-function damage_own(p) {
+function consume_own(p) {
 	return function (fld, n) {
 		var now = fld.Allys.Now[n];
 		var dmg = Math.floor(p * now.maxhp);
@@ -192,13 +192,18 @@ function damage_own(p) {
 }
 
 // 味方全体に割合pのダメージを与える
-function damage_ally_all(p) {
+function consume_all(p) {
 	return function (fld, n) {
+		var ct = 0;
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
 			var dmg = Math.floor(p * now.maxhp);
-			now.nowhp = Math.max(now.nowhp - dmg, 0);
+			if (now.nowhp > 0) {
+				now.nowhp = Math.max(now.nowhp - dmg, 0);
+				ct++;
+			}
 		}
 		fld.log_push("全体自傷(" + (p * 100) + "%)");
+		return ct;
 	};
 }

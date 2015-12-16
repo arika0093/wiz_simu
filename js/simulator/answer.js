@@ -97,10 +97,10 @@ function answer_skill(as_arr, panel) {
 				answer_attack(card, now, enemy_dat, as_arr[i], panel, i);
 				break;
 			case "support":
-				answer_enhance(as_arr[i]);
+				answer_enhance(as_arr[i], i);
 				break;
 			case "heal":
-				answer_heal(as_arr[i]);
+				answer_heal(as_arr[i], i);
 				break;
 		}
 	}
@@ -145,7 +145,7 @@ function answer_attack(card, now, enemy, as, attr, index) {
 					// 乱数
 					var rnd = damage_rand();
 					// ダメージ計算
-					var damage = as_attack_enemy(enemy[tg], now, atr,
+					var damage = attack_enemy(enemy[tg], now, atr,
 						atk_as.rate, atk_as.atkn, attr, ch, rnd, index, tg, false);
 				}
 			} else {
@@ -155,48 +155,64 @@ function answer_attack(card, now, enemy, as, attr, index) {
 				var damage = attack_enemy(en, now, atr, atk_as.rate,
 					atk_as.atkn, attr, ch, rnd, index, targ, false);
 			}
+			// 攻撃後処理
+			if (atk_as.after) {
+				atk_as.after(Field, index, (ati == 0 && at == 0));
+			}
 		}
 	}
 }
 
 // エンハスキルの処理
-function answer_enhance(as) {
+function answer_enhance(as, i) {
 	for (var ci = 0; ci < Field.Allys.Deck.length; ci++) {
-		var rate = 0;
+		var ass = {rate: 0};
 		var card = Field.Allys.Deck[ci];
 		var now = Field.Allys.Now[ci];
 		var chain = Field.Status.chain;
 		// 最大の値を取り出す
 		for (var ai = 0; ai < as.length; ai++) {
-			rate = Math.max(rate,
-				(is_answer_target(as[ai], chain, card.attr[0], card.species, ci) ? as[ai].rate : 0)
-			);
+			var as_t = { rate: 0 };
+			if (is_answer_target(as[ai], chain, card.attr[0], card.species, ci)) {
+				as_t = as[ai];
+			}
+			ass = ass.rate < as_t.rate ? as_t : ass;
 		}
 		// エンハ値追加
 		var bef_enh = now.as_enhance ? now.as_enhance : 0;
-		now.as_enhance = bef_enh + rate;
+		now.as_enhance = bef_enh + ass.rate;
+		// 攻撃後処理
+		if (ass.after && ci == i) {
+			ass.after(Field, i, true);
+		}
 	}
 }
 
 // 回復スキルの処理
-function answer_heal(as) {
+function answer_heal(as, i) {
 	for (var ci = 0; ci < Field.Allys.Deck.length; ci++) {
-		var rate = 0;
+		var ass = {rate: 0};
 		var card = Field.Allys.Deck[ci];
 		var now = Field.Allys.Now[ci];
 		var chain = Field.Status.chain;
 		// 最大の値を取り出す
 		for (var ai = 0; ai < as.length; ai++) {
-			rate = Math.max(rate,
-				(is_answer_target(as[ai], chain, card.attr[0], card.species, ci) ? as[ai].rate : 0)
-			);
+			var as_t = {rate: 0};
+			if(is_answer_target(as[ai], chain, card.attr[0], card.species, ci)){
+				as_t = as[ai];
+			}
+			ass = ass.rate < as_t.rate ? as_t : ass;
 		}
 		if (rate > 0) {
 			// 回復
-			var heal_val = Math.floor(rate * now.maxhp);
+			var heal_val = Math.floor(ass.rate * now.maxhp);
 			var before = now.nowhp;
 			now.nowhp = Math.min(now.maxhp, now.nowhp + heal_val);
 			Field.log_push("Unit[" + (ci + 1) + "]: HP回復(HP: " + before + "→" + now.nowhp + ")");
+			// 攻撃後処理
+			if (ass.after && ci == i) {
+				ass.after(Field, i, true);
+			}
 		}
 	}
 }
