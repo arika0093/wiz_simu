@@ -1,58 +1,58 @@
-// w’è‘®«‚Å‘Šè‚ğUŒ‚
-//	enemy: “Gƒf[ƒ^, now: ©g‚Ìƒf[ƒ^, atk_atr: UŒ‚‘®«, rate: ”{—¦, atkn: UŒ‚‰ñ”,
-//	pn: “¥‚ñ‚¾ƒpƒlƒ‹, ch: ƒ`ƒFƒCƒ“”, rnd: —”, i: –¡•û‚Ì”Ô†, e: “G‚Ì”Ô†, is_ss: SS‚©‚Ç‚¤‚©
+ï»¿// æŒ‡å®šå±æ€§ã§ç›¸æ‰‹ã‚’æ”»æ’ƒ
+//	enemy: æ•µãƒ‡ãƒ¼ã‚¿, now: è‡ªèº«ã®ãƒ‡ãƒ¼ã‚¿, atk_atr: æ”»æ’ƒå±æ€§, rate: å€ç‡, atkn: æ”»æ’ƒå›æ•°,
+//	pn: è¸ã‚“ã ãƒ‘ãƒãƒ«, ch: ãƒã‚§ã‚¤ãƒ³æ•°, rnd: ä¹±æ•°, i: å‘³æ–¹ã®ç•ªå·, e: æ•µã®ç•ªå·, is_ss: SSã‹ã©ã†ã‹
 function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss) {
 	var d = 0;
-	// ƒGƒ“ƒn
+	// ã‚¨ãƒ³ãƒ
 	var as_enh = now.as_enhance ? now.as_enhance : 0;
 	var ss_enh = now.ss_enhance ? now.ss_enhance : 0;
-	// UŒ‚
+	// æ”»æ’ƒ
 	d = (now.atk / (!is_ss ? 2 : 1)) * (1 + ch / 100) * rnd / atkn;
-	// AS”{—¦AƒGƒ“ƒn
+	// ASå€ç‡ã€ã‚¨ãƒ³ãƒ
 	d *= (rate + as_enh + ss_enh);
-	// ƒpƒlƒ‹
+	// ãƒ‘ãƒãƒ«
 	d *= (pn.indexOf(atk_atr) >= 0 ? 1 : 0.5);
-	// ‘®«l—¶
+	// å±æ€§è€ƒæ…®
 	d *= attr_magnification(atk_atr, enemy.attr);
-	// Ø‚èÌ‚Ä
+	// åˆ‡ã‚Šæ¨ã¦
 	d = Math.floor(d);
 
-	// NowHP‚©‚çí‚é
+	// NowHPã‹ã‚‰å‰Šã‚‹
 	enemy.nowhp = Math.max(enemy.nowhp - d, 0);
 
-	Field.log_push("Unit[" + (i + 1) + "]: “G[" + (e + 1) + "]‚Ö" +
-		Field.Constants.Attr[atk_atr] + "UŒ‚( " + d +
-		"ƒ_ƒ[ƒW)(c: " + enemy.nowhp + "/" + enemy.hp + ")");
+	Field.log_push("Unit[" + (i + 1) + "]: æ•µ[" + (e + 1) + "]ã¸" +
+		Field.Constants.Attr[atk_atr] + "æ”»æ’ƒ( " + d +
+		"ãƒ€ãƒ¡ãƒ¼ã‚¸)(æ®‹: " + enemy.nowhp + "/" + enemy.hp + ")");
 	return d;
 }
 
-// ‘®«—L—˜ŒW”‚ğ•Ô‚·
+// å±æ€§æœ‰åˆ©ä¿‚æ•°ã‚’è¿”ã™
 function attr_magnification(atk_atr, def_atr) {
-	// —¼•û‚Æ‚à‰Î…—‹
+	// ä¸¡æ–¹ã¨ã‚‚ç«æ°´é›·
 	if (atk_atr <= 2 && def_atr <= 2) {
 		var magn = [1, 1.5, 0.5];
 		return magn[(atk_atr - def_atr + 3)%3];
 	}
-	// —¼•û‚Æ‚àŒõˆÅ
+	// ä¸¡æ–¹ã¨ã‚‚å…‰é—‡
 	else if (atk_atr >= 3 && def_atr >= 3) {
 		return (atk_atr != def_atr ? 1.5 : 1);
 	}
-	// ‚»‚êˆÈŠO‚È‚ç1
+	// ãã‚Œä»¥å¤–ãªã‚‰1
 	else {
 		return 1;
 	}
 }
 
-// UŒ‚‡˜‚ğ©“®‚Åw’è‚·‚é
+// æ”»æ’ƒé †åºã‚’è‡ªå‹•ã§æŒ‡å®šã™ã‚‹
 function auto_attack_order(enemys, attr, own_index) {
-	// UŒ‚‡˜‚ªw’è‚³‚ê‚Ä‚¢‚é‚È‚ç‚»‚Á‚¿‚ğ—Dæ
+	// æ”»æ’ƒé †åºãŒæŒ‡å®šã•ã‚Œã¦ã„ã‚‹ãªã‚‰ãã£ã¡ã‚’å„ªå…ˆ
 	var tg = Number($("#attack_target_sel").val());
 	if (tg != -1 && enemys[tg].nowhp > 0) {
 		return tg;
 	}
 	var enemy_copy = enemys.concat();
 	enemy_copy.sort(function (a, b) {
-		// ‘®«—L—˜: ~‡ / HP: ¸‡
+		// å±æ€§æœ‰åˆ©: é™é † / HP: æ˜‡é †
 		if (a.nowhp <= 0) { return +1; }
 		if (b.nowhp <= 0) { return -1; }
 		var mgn_a = attr_magnification(attr, a.attr);
@@ -66,7 +66,7 @@ function auto_attack_order(enemys, attr, own_index) {
 	return enemys.indexOf(enemy_copy[0]);
 }
 
-// —”‚ğ¶¬‚·‚é
+// ä¹±æ•°ã‚’ç”Ÿæˆã™ã‚‹
 function damage_rand() {
 	r = Number($("#attack_rand_sel").val());
 	return (r != -1 ? r : 0.9 + (Math.random() * 0.2));

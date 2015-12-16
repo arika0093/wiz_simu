@@ -1,89 +1,89 @@
-// SS‚ğ”­“®‚·‚é
+// SSã‚’ç™ºå‹•ã™ã‚‹
 function ss_push(n) {
 	var card = Field.Allys.Deck[n];
 	var now = Field.Allys.Now[n];
 	var is_l = is_legendmode(card, now);
 	var ss = is_l ? card.ss2 : card.ss1;
 	var ss_rst = true;
-	// SS‚ğ‘Å‚Â
-	Field.log_push("Unit[" + (n + 1) + "]: SS”­“®");
+	// SSã‚’æ‰“ã¤
+	Field.log_push("Unit[" + (n + 1) + "]: SSç™ºå‹•");
 	if (ss.proc != null) {
 		for (var i = 0; i < ss.proc.length; i++) {
 			ss_rst = ss.proc[i](Field, n);
 		}
 	}
-	// ”­“®¬Œ÷‚È‚ç
+	// ç™ºå‹•æˆåŠŸãªã‚‰
 	if (ss_rst) {
-		// SSŒø‰ÊŠm”F
+		// SSåŠ¹æœç¢ºèª
 		ss_effect_check(false);
-		// Ló‘Ô‚È‚çLöİ‚ğ‰ğœ
+		// LçŠ¶æ…‹ãªã‚‰Læ½œåœ¨ã‚’è§£é™¤
 		if (is_l) {
 			minus_legend_awake(Field.Allys.Deck, Field.Allys.Now, n);
 			now.islegend = false;
-			Field.log_push("Unit[" + (n + 1) + "]: Lƒ‚[ƒh‰ğœ");
+			Field.log_push("Unit[" + (n + 1) + "]: Lãƒ¢ãƒ¼ãƒ‰è§£é™¤");
 		}
-		// SSƒ^[ƒ“‚ğƒŠƒZƒbƒg
+		// SSã‚¿ãƒ¼ãƒ³ã‚’ãƒªã‚»ãƒƒãƒˆ
 		now.ss_current = 0;
 		now.ss_isfirst = false;
 		now.ss_isboost = false;
-		// ‘S–ÅŠm”F
+		// å…¨æ»…ç¢ºèª
 		if (allkill_check(true)) {
 			nextturn();
 			Field.Status.totalturn += 1;
-			// FieldƒƒOo—Í
+			// Fieldãƒ­ã‚°å‡ºåŠ›
 			Field_log.save(Field.Status.totalturn, Field);
 		}
-		// [i‚Ş]‚ğg‚¦‚È‚¢‚æ‚¤‚É
+		// [é€²ã‚€]ã‚’ä½¿ãˆãªã„ã‚ˆã†ã«
 		Field_log._removeover(Field.Status.totalturn);
-		// Ä•\¦
+		// å†è¡¨ç¤º
 		sim_show();
 	} else {
 		// failed
-		alert("SS‚ğ”­“®‚µ‚Ä‚àŒø‰Ê‚ğ“¾‚ç‚ê‚Ü‚¹‚ñB");
+		alert("SSã‚’ç™ºå‹•ã—ã¦ã‚‚åŠ¹æœã‚’å¾—ã‚‰ã‚Œã¾ã›ã‚“ã€‚");
 	}
 }
 
-// Lƒ‚[ƒh‚É“ü‚Á‚½ƒ^ƒCƒ~ƒ“ƒO‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é
+// Lãƒ¢ãƒ¼ãƒ‰ã«å…¥ã£ãŸã‚¿ã‚¤ãƒŸãƒ³ã‚°ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹
 function legend_timing_check(cards, nows, index) {
 	var is_l = is_legendmode(cards[index], nows[index]);
 	var rst = is_l && !nows[index].islegend;
 	if (rst) {
 		nows[index].islegend = true;
-		// L‚Ìöİ‚ğ”½‰f‚³‚¹‚é
+		// Læ™‚ã®æ½œåœ¨ã‚’åæ˜ ã•ã›ã‚‹
 		add_awake_ally(cards, nows, index, true);
-		Field.log_push("Unit[" + (index + 1) + "]: Lƒ‚[ƒh");
+		Field.log_push("Unit[" + (index + 1) + "]: Lãƒ¢ãƒ¼ãƒ‰");
 	}
 }
 
-// Lƒ‚[ƒh‚É“ü‚Á‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ”»’è‚·‚é
+// Lãƒ¢ãƒ¼ãƒ‰ã«å…¥ã£ã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’åˆ¤å®šã™ã‚‹
 function is_legendmode(card, now) {
 	return get_ssturn(card, now)[1] == 0;
 }
 
-// SS‚ªc‚è‰½ƒ^[ƒ“‚Å‘Å‚Ä‚é‚©‚ğ”z—ñ‚Å•Ô‚·
+// SSãŒæ®‹ã‚Šä½•ã‚¿ãƒ¼ãƒ³ã§æ‰“ã¦ã‚‹ã‹ã‚’é…åˆ—ã§è¿”ã™
 function get_ssturn(card, ally_n) {
 	// SS1 default
 	var ss1_def = card.ss1.turn;
 	// SS2 default
 	var ss2_def = (card.islegend ? card.ss2.turn : undefined);
-	// SSƒ`ƒƒ[ƒWƒ^[ƒ“
+	// SSãƒãƒ£ãƒ¼ã‚¸ã‚¿ãƒ¼ãƒ³
 	var cg = ally_n.ss_current;
-	// ”­“®‚µ‚Ä‚È‚¢‚©‚Ç‚¤‚©
+	// ç™ºå‹•ã—ã¦ãªã„ã‹ã©ã†ã‹
 	var fst = ally_n.ss_isfirst;
-	// ŒvZ
+	// è¨ˆç®—
 	var ss1 = Math.max(ss1_def - cg - (fst ? has_fastnum(card) : 0), 0);
 	var ss2 = ss2_def !== undefined ? (Math.max(ss2_def - cg - (fst ? has_fastnum(card) : 0), 0)) : undefined;
-	// •Ô‹p
+	// è¿”å´
 	return [ss1, ss2];
 }
 
-// Œø‰Ê‚ÌŒp‘±Šm”F‚ğs‚¤
+// åŠ¹æœã®ç¶™ç¶šç¢ºèªã‚’è¡Œã†
 function ss_effect_check(is_turn_move) {
 	for (var i = 0; i < Field.Allys.Deck.length; i++) {
 		var now = Field.Allys.Now[i];
 		for (var te = 0; te < now.turn_effect.length; te++) {
 			var turneff = now.turn_effect[te];
-			// “¯ˆêtype‚ª•¡”‘¶İ‚µV‚µ‚¢•û‚ªd•¡•s‰Â‚È‚çÅ‰‚Ì—v‘f‚ğÁ‚·
+			// åŒä¸€typeãŒè¤‡æ•°å­˜åœ¨ã—æ–°ã—ã„æ–¹ãŒé‡è¤‡ä¸å¯ãªã‚‰æœ€åˆã®è¦ç´ ã‚’æ¶ˆã™
 			var duals = $.grep(now.turn_effect, function (e) {
 				return (e.type == turneff.type) && (!turneff.isdual);
 			});
@@ -92,13 +92,13 @@ function ss_effect_check(is_turn_move) {
 				continue;
 			}
 			if (turneff.lim_turn >= 0 && (!turneff._notfirst || is_turn_move)) {
-				// ”­“®
+				// ç™ºå‹•
 				var prm = (!turneff._notfirst ? 1 : Math.min(turneff.lim_turn - 1, 0));
 				turneff.effect(Field, prm, i);
 				turneff._notfirst = true;
 			}
 			if (turneff.lim_turn == 0) {
-				// c‚èƒ^[ƒ“‚ª0‚È‚çœŠO
+				// æ®‹ã‚Šã‚¿ãƒ¼ãƒ³ãŒ0ãªã‚‰é™¤å¤–
 				now.turn_effect.splice(te, 1);
 				te--;
 			}

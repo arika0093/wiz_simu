@@ -1,69 +1,69 @@
-// ‰ğ“š‚µ‚½‚Æ‚«‚Ìˆ—
+// è§£ç­”ã—ãŸã¨ãã®å‡¦ç†
 function panel(attr) {
 	if (attr.length <= 0) {
-		// Œë“šˆ—
+		// èª¤ç­”å‡¦ç†
 		if (Field.Status.chain_status <= 0) {
 			Field.Status.chain = 0;
 		}
-		Field.log_push("Œë“š");
+		Field.log_push("èª¤ç­”");
 	} else {
-		// ƒ`ƒFƒCƒ“+1
+		// ãƒã‚§ã‚¤ãƒ³+1
 		if (Field.Status.chain_status >= 0) {
 			Field.Status.chain += 1;
 		}
-		// •t—^Œø‰ÊÀs
+		// ä»˜ä¸åŠ¹æœå®Ÿè¡Œ
 		var pnladd = Number($("#panel_add_sel").val());
 		if (pnladd != 0) {
 			Field.Status.panel_add[pnladd - 1].func(Field);
 		}
-		// ƒGƒ“ƒnˆ—
+		// ã‚¨ãƒ³ãƒå‡¦ç†
 		answer_skill(pickup_answerskills(attr, "support"), attr);
-		// UŒ‚
+		// æ”»æ’ƒ
 		var atk_skill = pickup_answerskills(attr, "attack");
-		// ƒfƒtƒH‚ÌAS‚ğ’Ç‰Á‚·‚é
+		// ãƒ‡ãƒ•ã‚©ã®ASã‚’è¿½åŠ ã™ã‚‹
 		$.each(atk_skill, function (i, e) {
 			if (e != null) {
 				atk_skill[i].unshift(Default_as()[0]);
 			}
 		});
 		answer_skill(atk_skill, attr);
-		// ‰ñ•œ
+		// å›å¾©
 		answer_skill(pickup_answerskills(attr, "heal"), attr);
-		// Še¸—ì‚ÌSSƒ`ƒƒ[ƒW‚ğ1‘‚â‚·
+		// å„ç²¾éœŠã®SSãƒãƒ£ãƒ¼ã‚¸ã‚’1å¢—ã‚„ã™
 		for (var i = 0; i < Field.Allys.Deck.length; i++) {
 			var now = Field.Allys.Now[i];
 			if (now.nowhp > 0) {
 				now.ss_current += 1;
-				// Lˆ—
+				// Lå‡¦ç†
 				legend_timing_check(Field.Allys.Deck, Field.Allys.Now, i);
 			}
 		}
 	}
-	// “G‚Ìˆ—
+	// æ•µã®å‡¦ç†
 	
-	// ‘S–ÅŠm”F
+	// å…¨æ»…ç¢ºèª
 	allkill_check(false);
 	nextturn();
 	Field.Status.totalturn += 1;
-	// FieldƒƒOo—Í
+	// Fieldãƒ­ã‚°å‡ºåŠ›
 	Field_log.save(Field.Status.totalturn, Field);
-	// •\¦
+	// è¡¨ç¤º
 	sim_show();
 }
 
-// ƒAƒ“ƒT[ƒXƒLƒ‹‚©‚ç“¥‚ñ‚¾ƒpƒlƒ‹‚É‰‚¶‚½“Á’è—v‘f‚Ì‚İ‚ğ”²‚«o‚·
+// ã‚¢ãƒ³ã‚µãƒ¼ã‚¹ã‚­ãƒ«ã‹ã‚‰è¸ã‚“ã ãƒ‘ãƒãƒ«ã«å¿œã˜ãŸç‰¹å®šè¦ç´ ã®ã¿ã‚’æŠœãå‡ºã™
 function pickup_answerskills(attr, type, subtype) {
 	var result = [];
 	for (var i = 0; i < Field.Allys.Deck.length; i++) {
-		// ƒJ[ƒhí—Ş
+		// ã‚«ãƒ¼ãƒ‰ç¨®é¡
 		var card = Field.Allys.Deck[i];
 		var al_now = Field.Allys.Now[i];
-		// €‚ñ‚Å‚¢‚½‚çnull‚ğ“ü‚ê‚é
+		// æ­»ã‚“ã§ã„ãŸã‚‰nullã‚’å…¥ã‚Œã‚‹
 		if (al_now.nowhp <= 0) {
 			result.push(null);
 			continue;
 		}
-		// “¥‚ñ‚¾ƒpƒlƒ‹F‚Æ‘®«‚Ì‚Ç‚ê‚©‚Æ‚Åˆê’v‚µ‚È‚¢ê‡null‚ğ“ü‚ê‚é
+		// è¸ã‚“ã ãƒ‘ãƒãƒ«è‰²ã¨å±æ€§ã®ã©ã‚Œã‹ã¨ã§ä¸€è‡´ã—ãªã„å ´åˆnullã‚’å…¥ã‚Œã‚‹
 		var is_match_attr = $.grep(attr, function (t) {
 			return t == card.attr[0] || t == card.attr[1];
 		}).length != 0;
@@ -72,9 +72,9 @@ function pickup_answerskills(attr, type, subtype) {
 			continue;
 		}
 
-		// ASæ“¾
+		// ASå–å¾—
 		var ASkill = is_legendmode(card, al_now) ? card.as2 : card.as1;
-		// ”²‚«o‚µ
+		// æŠœãå‡ºã—
 		result.push($.grep(ASkill.proc, function (e) {
 			return (e.type == type) && (subtype !== undefined ? e.subtype == subtype : true);
 		}));
@@ -82,16 +82,16 @@ function pickup_answerskills(attr, type, subtype) {
 	return result;
 }
 
-// ƒAƒ“ƒT[ƒXƒLƒ‹‚Ìˆ—
+// ã‚¢ãƒ³ã‚µãƒ¼ã‚¹ã‚­ãƒ«ã®å‡¦ç†
 function answer_skill(as_arr, panel) {
 	for (var i = 0; i < as_arr.length; i++) {
-		// AS‚ª‚È‚¢‚È‚çˆ—‚µ‚È‚¢
+		// ASãŒãªã„ãªã‚‰å‡¦ç†ã—ãªã„
 		if (as_arr[i] == null || as_arr[i].length <= 0) { continue; }
 
 		var card = Field.Allys.Deck[i];
 		var now = Field.Allys.Now[i];
 		var enemy_dat = Field.Enemys.Data[Field.Status.nowbattle - 1].enemy;
-		// í—Ş‚Å•ªŠò
+		// ç¨®é¡ã§åˆ†å²
 		switch (as_arr[i][0].type) {
 			case "attack":
 				answer_attack(card, now, enemy_dat, as_arr[i], panel, i);
@@ -106,11 +106,11 @@ function answer_skill(as_arr, panel) {
 	}
 }
 
-// UŒ‚‚Ìˆ—
+// æ”»æ’ƒã®å‡¦ç†
 function answer_attack(card, now, enemy, as, attr, index) {
-	// “G‚»‚ê‚¼‚ê‚É‘Î‚µ‚Ä—LŒø‚ÈAS‚Ìindex‚Ì”z—ñ
+	// æ•µãã‚Œãã‚Œã«å¯¾ã—ã¦æœ‰åŠ¹ãªASã®indexã®é…åˆ—
 	var as_pos = [];
-	// “G‚»‚ê‚¼‚ê‚É‚Â‚¢‚ÄğŒ‚Ì—Ç‚¢AS‚ğæ‚èo‚·
+	// æ•µãã‚Œãã‚Œã«ã¤ã„ã¦æ¡ä»¶ã®è‰¯ã„ASã‚’å–ã‚Šå‡ºã™
 	for (var ai = 0; ai < as.length; ai++) {
 		var chain = Field.Status.chain;
 		for (var ei = 0; ei < enemy.length; ei++) {
@@ -119,43 +119,43 @@ function answer_attack(card, now, enemy, as, attr, index) {
 			as_pos[ei] = (rate_n >= rate_b ? ai : as_pos[ei]);
 		}
 	}
-	// UŒ‚‡‚Ì‘®«(…‰Š‘®«‚Ì¸—ì‚ª‰Šƒpƒlƒ‹‚ğ“¥‚ñ‚¾‚É‰Š‚©‚çUŒ‚‚·‚é“I‚ÈƒAƒŒ)
+	// æ”»æ’ƒé †ã®å±æ€§(æ°´ç‚å±æ€§ã®ç²¾éœŠãŒç‚ãƒ‘ãƒãƒ«ã‚’è¸ã‚“ã æ™‚ã«ç‚ã‹ã‚‰æ”»æ’ƒã™ã‚‹çš„ãªã‚¢ãƒ¬)
 	var atk_attr = [];
 	atk_attr[0] = (attr.indexOf(card.attr[0]) >= 0) ? card.attr[0] : card.attr[1];
 	atk_attr[1] = (attr.indexOf(card.attr[0]) >= 0) ? card.attr[1] : card.attr[0];
-	// ˜AŒ‚‰ñ”•ªŒJ‚è•Ô‚·
+	// é€£æ’ƒå›æ•°åˆ†ç¹°ã‚Šè¿”ã™
 	for (var ati = 0; ati < as[as_pos[0]].atkn; ati++) {
-		// ©g‚Ì‚»‚ê‚¼‚ê‚Ì‘®«‚É‚Â‚¢‚Äˆ—‚ğs‚¤
+		// è‡ªèº«ã®ãã‚Œãã‚Œã®å±æ€§ã«ã¤ã„ã¦å‡¦ç†ã‚’è¡Œã†
 		for (var at = 0; at < 2; at++) {
-			// ‘®«–³‚µ‚È‚çˆ—‚µ‚È‚¢
+			// å±æ€§ç„¡ã—ãªã‚‰å‡¦ç†ã—ãªã„
 			if (atk_attr[at] === undefined || atk_attr[at] == -1) {
 				continue;
 			}
-			// ‚Ç‚Ì“G‚ğUŒ‚‚·‚é‚©
+			// ã©ã®æ•µã‚’æ”»æ’ƒã™ã‚‹ã‹
 			var targ = auto_attack_order(enemy, atk_attr[at], index);
-			// Šeíî•ñ
+			// å„ç¨®æƒ…å ±
 			var atr = atk_attr[at];
 			var atk_as = as[as_pos[targ]]
 			var en = enemy[targ];
 			var ch = Field.Status.chain;
-			// ‘S‘ÌUŒ‚‚È‚ç“G‘S‘Ì‚Éƒ_ƒ[ƒWŒvZ
+			// å…¨ä½“æ”»æ’ƒãªã‚‰æ•µå…¨ä½“ã«ãƒ€ãƒ¡ãƒ¼ã‚¸è¨ˆç®—
 			if (atk_as.isall) {
 				for (var tg = 0; tg < enemy.length; tg++) {
 					if (enemy[tg].nowhp <= 0) { continue; }
-					// —”
+					// ä¹±æ•°
 					var rnd = damage_rand();
-					// ƒ_ƒ[ƒWŒvZ
+					// ãƒ€ãƒ¡ãƒ¼ã‚¸è¨ˆç®—
 					var damage = attack_enemy(enemy[tg], now, atr,
 						atk_as.rate, atk_as.atkn, attr, ch, rnd, index, tg, false);
 				}
 			} else {
-				// —”
+				// ä¹±æ•°
 				var rnd = damage_rand();
-				// ƒ_ƒ[ƒWŒvZ
+				// ãƒ€ãƒ¡ãƒ¼ã‚¸è¨ˆç®—
 				var damage = attack_enemy(en, now, atr, atk_as.rate,
 					atk_as.atkn, attr, ch, rnd, index, targ, false);
 			}
-			// UŒ‚Œãˆ—
+			// æ”»æ’ƒå¾Œå‡¦ç†
 			if (atk_as.after) {
 				atk_as.after(Field, index, (ati == 0 && at == 0));
 			}
@@ -163,14 +163,14 @@ function answer_attack(card, now, enemy, as, attr, index) {
 	}
 }
 
-// ƒGƒ“ƒnƒXƒLƒ‹‚Ìˆ—
+// ã‚¨ãƒ³ãƒã‚¹ã‚­ãƒ«ã®å‡¦ç†
 function answer_enhance(as, i) {
 	for (var ci = 0; ci < Field.Allys.Deck.length; ci++) {
 		var ass = {rate: 0};
 		var card = Field.Allys.Deck[ci];
 		var now = Field.Allys.Now[ci];
 		var chain = Field.Status.chain;
-		// Å‘å‚Ì’l‚ğæ‚èo‚·
+		// æœ€å¤§ã®å€¤ã‚’å–ã‚Šå‡ºã™
 		for (var ai = 0; ai < as.length; ai++) {
 			var as_t = { rate: 0 };
 			if (is_answer_target(as[ai], chain, card.attr[0], card.species, ci)) {
@@ -178,24 +178,24 @@ function answer_enhance(as, i) {
 			}
 			ass = ass.rate < as_t.rate ? as_t : ass;
 		}
-		// ƒGƒ“ƒn’l’Ç‰Á
+		// ã‚¨ãƒ³ãƒå€¤è¿½åŠ 
 		var bef_enh = now.as_enhance ? now.as_enhance : 0;
 		now.as_enhance = bef_enh + ass.rate;
-		// UŒ‚Œãˆ—
+		// æ”»æ’ƒå¾Œå‡¦ç†
 		if (ass.after && ci == i) {
 			ass.after(Field, i, true);
 		}
 	}
 }
 
-// ‰ñ•œƒXƒLƒ‹‚Ìˆ—
+// å›å¾©ã‚¹ã‚­ãƒ«ã®å‡¦ç†
 function answer_heal(as, i) {
 	for (var ci = 0; ci < Field.Allys.Deck.length; ci++) {
 		var ass = {rate: 0};
 		var card = Field.Allys.Deck[ci];
 		var now = Field.Allys.Now[ci];
 		var chain = Field.Status.chain;
-		// Å‘å‚Ì’l‚ğæ‚èo‚·
+		// æœ€å¤§ã®å€¤ã‚’å–ã‚Šå‡ºã™
 		for (var ai = 0; ai < as.length; ai++) {
 			var as_t = {rate: 0};
 			if(is_answer_target(as[ai], chain, card.attr[0], card.species, ci)){
@@ -204,12 +204,12 @@ function answer_heal(as, i) {
 			ass = ass.rate < as_t.rate ? as_t : ass;
 		}
 		if (rate > 0) {
-			// ‰ñ•œ
+			// å›å¾©
 			var heal_val = Math.floor(ass.rate * now.maxhp);
 			var before = now.nowhp;
 			now.nowhp = Math.min(now.maxhp, now.nowhp + heal_val);
-			Field.log_push("Unit[" + (ci + 1) + "]: HP‰ñ•œ(HP: " + before + "¨" + now.nowhp + ")");
-			// UŒ‚Œãˆ—
+			Field.log_push("Unit[" + (ci + 1) + "]: HPå›å¾©(HP: " + before + "â†’" + now.nowhp + ")");
+			// æ”»æ’ƒå¾Œå‡¦ç†
 			if (ass.after && ci == i) {
 				ass.after(Field, i, true);
 			}
@@ -217,16 +217,16 @@ function answer_heal(as, i) {
 	}
 }
 
-// AS‚Ì‘ÎÛ‚É‚È‚é‚©‚Ç‚¤‚©‚ğŠm”F‚·‚é
+// ASã®å¯¾è±¡ã«ãªã‚‹ã‹ã©ã†ã‹ã‚’ç¢ºèªã™ã‚‹
 function is_answer_target(as, ch, tg_attr, tg_spec, own_i, enm_i) {
 	var rst = true;
-	// ƒ`ƒFƒCƒ“Šm”F
+	// ãƒã‚§ã‚¤ãƒ³ç¢ºèª
 	rst = rst && (ch >= as.chain);
-	// ‘®«Šm”F
+	// å±æ€§ç¢ºèª
 	rst = rst && (as.attr[tg_attr] == 1);
-	// í‘°Šm”F
+	// ç¨®æ—ç¢ºèª
 	rst = rst && (check_spec_inarray(as.spec, tg_spec));
-	// ğŒŠm”F
+	// æ¡ä»¶ç¢ºèª
 	rst = rst && (as.cond(Field, own_i, enm_i));
 	return rst;
 }
