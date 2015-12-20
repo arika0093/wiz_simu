@@ -8,11 +8,13 @@
 // -----------------------------------
 // 敵にSSダメージ
 function ss_damage(fld, r, atr, atkn, own, tg) {
-	var enemy = fld.Enemys.Data[fld.Status.nowbattle - 1].enemy[tg];
+	var enemy = GetNowBattleEnemys(tg);
 	var now = fld.Allys.Now[own];
 	var rnd = damage_rand();
 	attack_enemy(enemy, now, atr, r, atkn, [atr],
 		fld.Status.chain, rnd, own, tg, true);
+	// SSフラグを立てる
+	enemy.flags.is_ss_attack = true;
 }
 
 // 敵全体に指定属性のダメージ
@@ -20,7 +22,7 @@ function ss_damage_all(r, attrs) {
 	return function (fld, n) {
 		for (var a = 0; a < attrs.length; a++) {
 			var atr = attrs[a];
-			for (var i = 0; i < fld.Enemys.Data[fld.Status.nowbattle - 1].enemy.length; i++) {
+			for (var i = 0; i < GetNowBattleEnemys().length; i++) {
 				// 攻撃
 				ss_damage(fld, r, atr, 1, n, i);
 			}
@@ -32,7 +34,7 @@ function ss_damage_all(r, attrs) {
 // 敵単体に指定属性のダメージ
 function ss_damage_s(r, attrs, atkn) {
 	return function (fld, n) {
-		var enemys = fld.Enemys.Data[fld.Status.nowbattle - 1].enemy;
+		var enemys = GetNowBattleEnemys();
 		for (var an = 0; an < atkn; an++) {
 			for (var a = 0; a < attrs.length; a++) {
 				var atr = attrs[a];
@@ -53,6 +55,7 @@ function ss_enhance_all(p, t) {
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
 			now.turn_effect.push({
+				desc: "攻撃力アップ",
 				type: "ss_enhance",
 				isdual: false,
 				turn: t,
@@ -77,6 +80,7 @@ function ss_enhance_own(p, t) {
 	return function (fld, n) {
 		var now = fld.Allys.Now[n];
 		now.turn_effect.push({
+			desc: "攻撃力アップ",
 			type: "ss_enhance",
 			isdual: false,
 			turn: t,
@@ -101,6 +105,7 @@ function ss_statusup_all(hu, atku, t) {
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
 			now.turn_effect.push({
+				desc: "ステータスアップ",
 				type: "ss_statusup",
 				isdual: true,
 				turn: t,
@@ -185,8 +190,8 @@ function consume_own(p) {
 	return function (fld, n) {
 		var now = fld.Allys.Now[n];
 		var dmg = Math.floor(p * now.maxhp);
-		now.nowhp = Math.max(now.nowhp - dmg, 0);
-		fld.log_push("Unit[" + (n+1) + "]: 自傷(" + (p * 100) + "%)");
+		fld.log_push("Unit[" + (n + 1) + "]: 自傷(" + (p * 100) + "%)");
+		damage_ally(dmg, n);
 		return true;
 	};
 }
@@ -195,15 +200,15 @@ function consume_own(p) {
 function consume_all(p) {
 	return function (fld, n) {
 		var ct = 0;
+		fld.log_push("全体自傷(" + (p * 100) + "%)");
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
 			var dmg = Math.floor(p * now.maxhp);
 			if (now.nowhp > 0) {
-				now.nowhp = Math.max(now.nowhp - dmg, 0);
+				damage_ally(dmg, i);
 				ct++;
 			}
 		}
-		fld.log_push("全体自傷(" + (p * 100) + "%)");
 		return ct;
 	};
 }

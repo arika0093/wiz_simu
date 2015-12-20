@@ -241,9 +241,10 @@ function when_leader() {
 function ConsumeHP_all(hp) {
 	return function (fld, oi, fst) {
 		if (fst) {
+			fld.log_push("全体自傷(" + (hp * 100) + "%)");
 			for (var i = 0; i < fld.Allys.Deck.length; i++) {
 				var now = fld.Allys.Now[i];
-				now.nowhp = Math.max(Math.floor(now.nowhp - (now.maxhp * hp)), 0);
+				damage_ally(Math.floor(now.maxhp * hp), i);
 			}
 		}
 	}
@@ -253,8 +254,9 @@ function ConsumeHP_all(hp) {
 function ConsumeHP_own(hp) {
 	return function (fld, oi, fst) {
 		if (fst) {
+			fld.log_push("Unit[" + (oi+1) + "]: 自傷(" + (hp * 100) + "%)");
 			var now = fld.Allys.Now[oi];
-			now.nowhp = Math.max(Math.floor(now.nowhp - (now.maxhp * hp)), 0);
+			damage_ally(Math.floor(now.maxhp * hp), oi);
 		}
 	}
 }

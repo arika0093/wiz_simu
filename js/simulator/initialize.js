@@ -128,6 +128,7 @@ $(function () {
 			now.maxhp = card.hp + mana;
 			now.nowhp = card.hp + mana;
 			now.atk = card.atk + mana;
+			now.flags = {};
 			now.turn_effect = [];
 		}
 		// 潜在を反映させる
@@ -150,8 +151,13 @@ $(function () {
 			for (var j = 0; j < popup_enemys.enemy.length; j++) {
 				data.enemy[j] = $.extend(true, {}, popup_enemys.enemy[j]);
 				data.enemy[j].nowhp = popup_enemys.enemy[j].hp;
+				data.enemy[j].flags = {};
+				data.enemy[j].flags.is_as_attack = [];
+				data.enemy[j].turn_effect = [];
 			}
 		}
+		// 敵の処理
+		enemy_popup_proc();
 		// 初期状態を保存
 		Field_log.save(0, Field);
 		// 表示
@@ -169,63 +175,25 @@ $(window).load(function () {
 });
 
 // 次のターンに進む
-function nextturn() {
+function nextturn(is_newpopup) {
 	// ターンエフェクト減算処理
 	for (var i = 0; i < Field.Allys.Deck.length; i++) {
 		for (var j = 0; j < Field.Allys.Now[i].turn_effect.length; j++) {
 			Field.Allys.Now[i].turn_effect[j].lim_turn -= 1;
 		}
 	}
-	// SS確認
-	ss_effect_check(true);
-	Field.Status.nowturn += 1;
-}
-
-// 敵を全滅させたか確認し、全滅してたら次の敵を出現させる
-function allkill_check(is_ssfinish) {
-	var is_allkill = true;
-	var ntrun = Field.Status.nowturn;
-	var data = Field.Enemys.Data[Field.Status.nowbattle - 1];
-
-	for (var i = 0; i < data.enemy.length; i++) {
-		// 全部の敵を倒してるかどうか判定する
-		is_allkill = (is_allkill && data.enemy[i].nowhp == 0);
-	}
-	// 全ての敵を倒していたら
-	if (is_allkill) {
-		// 全終了確認
-		if (Field.Enemys.Popuplist.length <= Field.Status.nowbattle) {
-			// 終了処理開始
-			Field.Status.finish = true;
-			Field.log_push(Field.Status.nowbattle + "戦目突破(" + ntrun + "ターン)");
-			Field.log_push("QUEST CLEARED! (Total: " + (Field.Status.totalturn + 1) + "turn)");
-		} else {
-			Field.log_push(Field.Status.nowbattle + "戦目突破(" + ntrun + "ターン)");
-			// 次に進む
-			Field.Status.nowbattle += 1;
+	var enemys = GetNowBattleEnemys();
+	for (var i = 0; i < enemys.length; i++) {
+		for (var j = 0; j < enemys[i].turn_effect.length; j++) {
+			enemys[i].turn_effect[j].lim_turn -= 1;
 		}
-		// パネル付与効果を全部リセット
-		Field.Status.panel_add = [];
-		Field.Status.durturn.push({ ssfin: is_ssfinish, turn: ntrun});
-		Field.Status.nowturn = 0;
 	}
-	return is_allkill;
-}
-
-// 敵出現順番生成
-function CreateEnemypopup(qst) {
-	var poplist = [];
-	var pop_i = [];
-	for (var t = 0; t < qst.aprnum; t++) {
-		pop_i.push($.map(qst.data, function (e, i, c) {
-			// 配列内に現在見てるターン数の数字があったら現在の配列番号を返す
-			var aprt_i = $.inArray(t + 1, e.appearance);
-			if (aprt_i >= 0) {
-				return i;
-			}
-		}));
-		var rand = Math.floor(Math.random() * pop_i[t].length);
-		poplist.push(pop_i[t][rand]);
+	// 効果の継続確認
+	turn_effect_check(true);
+	enemy_turn_effect_check(true);
+	// 新しい敵ならここで追加処理を行う
+	if (is_newpopup && !Field.Status.finish) {
+		enemy_popup_proc();
 	}
-	return poplist;
+	Field.Status.nowturn += 1;
 }

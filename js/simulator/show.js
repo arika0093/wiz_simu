@@ -64,7 +64,7 @@ function sim_show() {
 		}
 	}
 	// sim_enemy
-	var enemys_dat = Field.Enemys.Data[Field.Status.nowbattle - 1].enemy;
+	var enemys_dat = GetNowBattleEnemys();
 	for (var i = 0; i < 3; i++) {
 		var e = enemys_dat[i];
 		if (e !== undefined) {
@@ -74,6 +74,16 @@ function sim_show() {
 			$("#enemy0" + (i + 1) + "_img").attr("src", get_image_url(e.imageno));
 			$("#enemy0" + (i + 1) + "_name").text(e.name);
 			$("#enemy0" + (i + 1) + "_hp").text("HP: " + e.nowhp + "/" + e.hp);
+			// 継続中の効果を並べる
+			var eff_text = "";
+			for (var l = 0; l < e.turn_effect.length; l++) {
+				eff_text += e.turn_effect[l].desc + "(" + e.turn_effect[l].lim_turn + "t)";
+				if (l != e.turn_effect.length - 1) {
+					eff_text += ", ";
+				}
+			}
+			$("#enemy0" + (i + 1) + "_stats").text(eff_text);
+			$("#enemy0" + (i + 1) + "_stats").attr("title", eff_text);
 		} else {
 			// 無効化
 			$("#enemy0" + (i + 1) + "_attr_main").attr("class", "attr_none");
@@ -81,6 +91,8 @@ function sim_show() {
 			$("#enemy0" + (i + 1) + "_img").attr("src", "./image/noimage.png");
 			$("#enemy0" + (i + 1) + "_name").text("");
 			$("#enemy0" + (i + 1) + "_hp").text("");
+			$("#enemy0" + (i + 1) + "_stats").text("");
+			$("#enemy0" + (i + 1) + "_stats").attr("title", "");
 		}
 	}
 

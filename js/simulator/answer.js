@@ -29,6 +29,23 @@ function panel(attr) {
 		answer_skill(atk_skill, attr);
 		// 回復
 		answer_skill(pickup_answerskills(attr, "heal"), attr);
+		// 物理カウンター処理
+		{
+			var enemys = GetNowBattleEnemys();
+			$.each(enemys, function (i, e) {
+				for (var n = 0; n < Field.Allys.Deck.length; n++) {
+					if (e.flags.is_as_attack[n] && e.turn_effect.length > 0) {
+						var skillct = $.grep(e.turn_effect, function (g) {
+							return g.on_attack_damage !== undefined;
+						});
+						for (var j = 0; j < skillct.length; j++) {
+							skillct[j].on_attack_damage(Field, i, n);
+						}
+						e.flags.is_as_attack[n] = false;
+					}
+				}
+			});
+		}
 		// 各精霊のSSチャージを1増やす
 		for (var i = 0; i < Field.Allys.Deck.length; i++) {
 			var now = Field.Allys.Now[i];
@@ -42,8 +59,8 @@ function panel(attr) {
 	// 敵の処理
 	
 	// 全滅確認
-	allkill_check(false);
-	nextturn();
+	var killed = allkill_check(false);
+	nextturn(killed);
 	Field.Status.totalturn += 1;
 	// Fieldログ出力
 	Field_log.save(Field.Status.totalturn, Field);
@@ -95,7 +112,7 @@ function answer_skill(as_arr, panel) {
 
 		var card = Field.Allys.Deck[i];
 		var now = Field.Allys.Now[i];
-		var enemy_dat = Field.Enemys.Data[Field.Status.nowbattle - 1].enemy;
+		var enemy_dat = GetNowBattleEnemys();
 		// 種類で分岐
 		switch (as_arr[i][0].type) {
 			case "attack":
@@ -152,6 +169,7 @@ function answer_attack(card, now, enemy, as, attr, index) {
 					// ダメージ計算
 					var damage = attack_enemy(enemy[tg], now, atr,
 						atk_as.rate, atk_as.atkn, attr, ch, rnd, index, tg, false);
+					enemy[tg].flags.is_as_attack[index] = true;
 				}
 			} else {
 				// 乱数
@@ -159,6 +177,7 @@ function answer_attack(card, now, enemy, as, attr, index) {
 				// ダメージ計算
 				var damage = attack_enemy(en, now, atr, atk_as.rate,
 					atk_as.atkn, attr, ch, rnd, index, targ, false);
+				en.flags.is_as_attack[index] = true;
 			}
 			// 攻撃後処理
 			if (atk_as.after) {

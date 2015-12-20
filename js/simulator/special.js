@@ -14,8 +14,21 @@ function ss_push(n) {
 	}
 	// 発動成功なら
 	if (ss_rst) {
-		// SS効果確認
-		ss_effect_check(false);
+		// ターン効果確認
+		turn_effect_check(false);
+		// スキル反射確認
+		var enemys = GetNowBattleEnemys();
+		$.each(enemys, function (i, e) {
+			if (e.flags.is_ss_attack && e.turn_effect.length > 0) {
+				var skillct = $.grep(e.turn_effect, function (g) {
+					return g.on_ss_damage !== undefined;
+				});
+				for (var j = 0; j < skillct.length; j++) {
+					skillct[j].on_ss_damage(Field, i, n);
+				}
+				e.flags.is_ss_attack = false;
+			}
+		});
 		// L状態ならL潜在を解除
 		if (is_l) {
 			minus_legend_awake(Field.Allys.Deck, Field.Allys.Now, n);
@@ -28,7 +41,7 @@ function ss_push(n) {
 		now.ss_isboost = false;
 		// 全滅確認
 		if (allkill_check(true)) {
-			nextturn();
+			nextturn(true);
 			Field.Status.totalturn += 1;
 			// Fieldログ出力
 			Field_log.save(Field.Status.totalturn, Field);
@@ -78,7 +91,7 @@ function get_ssturn(card, ally_n) {
 }
 
 // 効果の継続確認を行う
-function ss_effect_check(is_turn_move) {
+function turn_effect_check(is_turn_move) {
 	for (var i = 0; i < Field.Allys.Deck.length; i++) {
 		var now = Field.Allys.Now[i];
 		for (var te = 0; te < now.turn_effect.length; te++) {
