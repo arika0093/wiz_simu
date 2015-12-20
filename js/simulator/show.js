@@ -1,4 +1,4 @@
-﻿// 現在の状況を表示する
+// 現在の状況を表示する
 function sim_show() {
 	// sim_log
 	var logtext = "";

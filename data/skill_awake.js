@@ -1,12 +1,20 @@
-// ƒtƒ@ƒXƒgƒXƒLƒ‹
-function Fastskill(t) {
+// ã‚³ã‚¹ãƒˆãƒ€ã‚¦ãƒ³
+function Costdown(d) {
 	return {
-		type: "ss_fast",
-		turn: t,			// ’Zkƒ^[ƒ“”
+		type: "costdown",
+		down: d,
 	}
 }
 
-// ƒXƒe[ƒ^ƒXƒAƒbƒv
+// ãƒ•ã‚¡ã‚¹ãƒˆã‚¹ã‚­ãƒ«
+function Fastskill(t) {
+	return {
+		type: "ss_fast",
+		turn: t,			// çŸ­ç¸®ã‚¿ãƒ¼ãƒ³æ•°
+	}
+}
+
+// ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚¢ãƒƒãƒ—
 function Statusup(hp, atk) {
 	return {
 		type: "own_status_up",
@@ -15,7 +23,7 @@ function Statusup(hp, atk) {
 	};
 }
 
-// –¡•û‘®«ƒXƒeƒAƒbƒv
+// å‘³æ–¹å±æ€§ã‚¹ãƒ†ã‚¢ãƒƒãƒ—
 function Attr_statusup(hp, atk, attrs) {
 	return {
 		type: "status_up",
@@ -26,7 +34,7 @@ function Attr_statusup(hp, atk, attrs) {
 	};
 }
 
-// –¡•ûí‘°ƒXƒeƒAƒbƒv
+// å‘³æ–¹ç¨®æ—ã‚¹ãƒ†ã‚¢ãƒƒãƒ—
 function Spec_statusup(hp, atk, specs) {
 	return {
 		type: "status_up",
@@ -37,7 +45,7 @@ function Spec_statusup(hp, atk, specs) {
 	};
 }
 
-// ‹ã€ˆê¶(Narrow escape from the jaw of death)
+// ä¹æ­»ä¸€ç”Ÿ(Narrow escape from the jaw of death)
 function NEFTJOD(perc) {
 	return {
 		type: "neftjod",
@@ -45,7 +53,7 @@ function NEFTJOD(perc) {
 	};
 }
 
-// ƒpƒlƒ‹ƒu[ƒXƒg
+// ãƒ‘ãƒãƒ«ãƒ–ãƒ¼ã‚¹ãƒˆ
 function Panel_boost(attrs, efv) {
 	return {
 		type: "panel_boost",
@@ -54,7 +62,7 @@ function Panel_boost(attrs, efv) {
 	};
 }
 
-// ‘®«ŒyŒ¸
+// å±æ€§è»½æ¸›
 function Attr_relief(attrs, perc) {
 	return {
 		type: "attr_relief",
@@ -63,7 +71,7 @@ function Attr_relief(attrs, perc) {
 	};
 }
 
-// íŒã‰ñ•œ
+// æˆ¦å¾Œå›å¾©
 function Heal_afterbattle(perc) {
 	return {
 		type: "heal_after_battle",

@@ -1,4 +1,4 @@
-﻿// クエスト選択肢追加, URLからquest選択
+// クエスト選択肢追加, URLからquest選択
 $(function () {
 	var ct = 0;
 	for (ct in Quests) {

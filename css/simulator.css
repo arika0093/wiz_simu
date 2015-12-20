@@ -283,7 +283,8 @@ div.attr_none{
 
 /* Image */
 img.chara_img {
-	width: 64px;
+	width: 0px;
+	/*width: 64px;*/
 	height: 64px;
 	float: left;
 	border-width: 0px 1px 0px 0px;

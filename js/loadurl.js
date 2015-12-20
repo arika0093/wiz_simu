@@ -1,4 +1,4 @@
-﻿// URLのnoからデッキを読み込む
+// URLのnoからデッキを読み込む
 function loaddeck_from_url() {
 	var cds = new Array();
 	var q = getquery();

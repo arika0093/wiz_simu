@@ -1,7 +1,7 @@
 // ------------------------------------------------------
-// Šî–{ƒXƒLƒ‹
+// åŸºæœ¬ã‚¹ã‚­ãƒ«
 // ------------------------------------------------------
-// ’ÊíUŒ‚
+// é€šå¸¸æ”»æ’ƒ
 function Default_as() {
 	return [
 		{
@@ -12,14 +12,12 @@ function Default_as() {
 			chain: 0,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
-			cond: function (fld, oi, ei) {
-				return true;
-			},
+			cond: always_true(),
 		}
 	];
 }
 
-// •¡”AS‚ğ‚Ü‚Æ‚ß‚é
+// è¤‡æ•°ASã‚’ã¾ã¨ã‚ã‚‹
 function multi_as(as1) {
 	for (var i = 1; i < arguments.length; i++) {
 		as1.concat(arguments[i]);
@@ -27,7 +25,7 @@ function multi_as(as1) {
 	return as1;
 }
 
-// ğŒ•t—^
+// æ¡ä»¶ä»˜ä¸
 function add_cond(as, obj) {
 	for (var i = 0; i < as.length; i++) {
 		for (var key in obj) {
@@ -40,9 +38,9 @@ function add_cond(as, obj) {
 }
 
 // ------------------------------------------------------
-// Šî–{UŒ‚
+// åŸºæœ¬æ”»æ’ƒ
 // ------------------------------------------------------
-// ƒ`ƒFƒCƒ“ƒAƒ^ƒbƒJ[(rate: Š„‡, ch: ”­“®ƒ`ƒFƒCƒ“”)
+// ãƒã‚§ã‚¤ãƒ³ã‚¢ã‚¿ãƒƒã‚«ãƒ¼(rate: å‰²åˆ, ch: ç™ºå‹•ãƒã‚§ã‚¤ãƒ³æ•°)
 function ChainAttack(rate, ch) {
 	return [
 		{
@@ -53,16 +51,14 @@ function ChainAttack(rate, ch) {
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
-			cond: function (fld, oi, ei) {
-				return true;
-			},
+			cond: always_true(),
 		}
 	];
 }
 
-// HP‚ğÁ”ï‚µ‚ÄUŒ‚‚·‚éƒ`ƒFƒCƒ“ƒAƒ^ƒbƒJ[
-// (rate: Š„‡, ch: ”­“®ƒ`ƒFƒCƒ“”, hp: Á”ïHP‚ÌŠ„‡)
-function ChainAttack_ConsumeHP(rate, ch, hp) {
+// HPã‚’æ¶ˆè²»ã—ã¦æ”»æ’ƒã™ã‚‹ãƒã‚§ã‚¤ãƒ³ã‚¢ã‚¿ãƒƒã‚«ãƒ¼
+// (rate: å‰²åˆ, ch: ç™ºå‹•ãƒã‚§ã‚¤ãƒ³æ•°, hp: æ¶ˆè²»HPã®å‰²åˆ)
+function ChainAttack_ConsumeHP_own(rate, ch, hp) {
 	return [
 		{
 			type: "attack",
@@ -72,15 +68,14 @@ function ChainAttack_ConsumeHP(rate, ch, hp) {
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
-			cond: function (fld, oi, ei) {
-				return true;
-			},
+			cond: always_true(),
+			after: ConsumeHP_own(hp),
 		}
 	];
 }
 
-// ƒŠ[ƒ_[‚É”­“®‚·‚éƒ`ƒFƒCƒ“ƒAƒ^ƒbƒJ[
-// (rate: Š„‡, ch: ”­“®ƒ`ƒFƒCƒ“”)
+// ãƒªãƒ¼ãƒ€ãƒ¼æ™‚ã«ç™ºå‹•ã™ã‚‹ãƒã‚§ã‚¤ãƒ³ã‚¢ã‚¿ãƒƒã‚«ãƒ¼
+// (rate: å‰²åˆ, ch: ç™ºå‹•ãƒã‚§ã‚¤ãƒ³æ•°)
 function ChainAttack_Leader(rate, ch) {
 	return [
 		{
@@ -91,14 +86,12 @@ function ChainAttack_Leader(rate, ch) {
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
-			cond: function (fld, oi, ei) {
-				return oi == 0;
-			},
+			cond: when_leader(),
 		}
 	];
 }
 
-// ƒ`ƒFƒCƒ“˜AŒ‚ƒAƒ^ƒbƒJ[(rate: Š„‡, ch: ”­“®ƒ`ƒFƒCƒ“”, n: UŒ‚‰ñ”)
+// ãƒã‚§ã‚¤ãƒ³é€£æ’ƒã‚¢ã‚¿ãƒƒã‚«ãƒ¼(rate: å‰²åˆ, ch: ç™ºå‹•ãƒã‚§ã‚¤ãƒ³æ•°, n: æ”»æ’ƒå›æ•°)
 function ChainDualAttack(rate, ch, n) {
 	return [
 		{
@@ -109,14 +102,12 @@ function ChainDualAttack(rate, ch, n) {
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
-			cond: function (fld, oi, ei) {
-				return true;
-			},
+			cond: always_true(),
 		}
 	];
 }
 
-// ‘®«“ÁU(rate: Š„‡, ch: ”­“®ƒ`ƒFƒCƒ“”, attr: ‘ÎÛ‘®«)
+// å±æ€§ç‰¹æ”»(rate: å‰²åˆ, ch: ç™ºå‹•ãƒã‚§ã‚¤ãƒ³æ•°, attr: å¯¾è±¡å±æ€§)
 function ChainAttrAttack(rate, ch, attr) {
 	return [
 		{
@@ -127,14 +118,12 @@ function ChainAttrAttack(rate, ch, attr) {
 			chain: ch,
 			attr: attr,
 			spec: create_specs(1),
-			cond: function (fld, oi, ei) {
-				return true;
-			},
+			cond: always_true(),
 		}
 	];
 }
 
-// í‘°“ÁU(rate: Š„‡, ch: ”­“®ƒ`ƒFƒCƒ“”, spec: ‘ÎÛí‘°)
+// ç¨®æ—ç‰¹æ”»(rate: å‰²åˆ, ch: ç™ºå‹•ãƒã‚§ã‚¤ãƒ³æ•°, spec: å¯¾è±¡ç¨®æ—)
 function ChainSpecAttack(rate, ch, spec) {
 	return [
 		{
@@ -145,14 +134,12 @@ function ChainSpecAttack(rate, ch, spec) {
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: specific_specs(spec),
-			cond: function (fld, oi, ei) {
-				return true;
-			},
+			cond: always_true(),
 		}
 	];
 }
 
-// ‘®«“ÁU˜AŒ‚(rate: Š„‡, ch: ”­“®ƒ`ƒFƒCƒ“”, n: UŒ‚‰ñ”, attr: ‘ÎÛ‘®«)
+// å±æ€§ç‰¹æ”»é€£æ’ƒ(rate: å‰²åˆ, ch: ç™ºå‹•ãƒã‚§ã‚¤ãƒ³æ•°, n: æ”»æ’ƒå›æ•°, attr: å¯¾è±¡å±æ€§)
 function ChainDualAttrAttack(rate, ch, n, attr) {
 	return [
 		{
@@ -163,14 +150,12 @@ function ChainDualAttrAttack(rate, ch, n, attr) {
 			chain: ch,
 			attr: attr,
 			spec: create_specs(1),
-			cond: function (fld, oi, ei) {
-				return true;
-			},
+			cond: always_true(),
 		}
 	];
 }
 
-// ƒ`ƒFƒCƒ“‘S‘ÌUŒ‚(rate: Š„‡, ch: ”­“®ƒ`ƒFƒCƒ“”)
+// ãƒã‚§ã‚¤ãƒ³å…¨ä½“æ”»æ’ƒ(rate: å‰²åˆ, ch: ç™ºå‹•ãƒã‚§ã‚¤ãƒ³æ•°)
 function ChainAllAttack(rate, ch) {
 	return [
 		{
@@ -181,15 +166,13 @@ function ChainAllAttack(rate, ch) {
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
-			cond: function (fld, oi, ei) {
-				return true;
-			},
+			cond: always_true(),
 		}
 	];
 }
 
 // ------------------------------------------------------
-// ƒ`ƒFƒCƒ“ƒGƒ“ƒnƒ“ƒX(rate: Š„‡, attr: ‘ÎÛ‘®«, ch: ƒ`ƒFƒCƒ“)
+// ãƒã‚§ã‚¤ãƒ³ã‚¨ãƒ³ãƒãƒ³ã‚¹(rate: å‰²åˆ, attr: å¯¾è±¡å±æ€§, ch: ãƒã‚§ã‚¤ãƒ³)
 function ChainEnhance(rate, attr, ch) {
 	return [
 		{
@@ -199,15 +182,28 @@ function ChainEnhance(rate, attr, ch) {
 			chain: ch,
 			attr: attr,
 			spec: create_specs(1),
-			cond: function (fld, i) {
-				return true;
-			},
+			cond: always_true(),
+		}
+	];
+}
+
+// å±æ€§ãƒã‚§ã‚¤ãƒ³ã‚¨ãƒ³ãƒãƒ³ã‚¹(rate: å‰²åˆ, attr: å¯¾è±¡å±æ€§, ch: ãƒã‚§ã‚¤ãƒ³)
+function ChainSpecEnhance(rate, attr, spec, ch) {
+	return [
+		{
+			type: "support",
+			subtype: "enhance",
+			rate: rate,
+			chain: ch,
+			attr: attr,
+			spec: specific_specs(spec),
+			cond: always_true(),
 		}
 	];
 }
 
 // ------------------------------------------------------
-// ‰ñ•œ(rate: Š„‡, attr: ‘ÎÛ‘®«)
+// å›å¾©(rate: å‰²åˆ, attr: å¯¾è±¡å±æ€§)
 function Heal(rate, attr) {
 	return [
 		{
@@ -216,24 +212,32 @@ function Heal(rate, attr) {
 			chain: 0,
 			attr: attr,
 			spec: create_specs(1),
-			cond: function (fld, i) {
-				return true;
-			},
+			cond: always_true(),
 		}
 	];
 }
 
 // ------------------------------------------------------
-// ŠeíğŒ
+// å„ç¨®æ¡ä»¶
 // ------------------------------------------------------
-// ƒŠ[ƒ_[
-function when_leader() {
-	return function (fld, oi, ei) {
-		return index == 0;
+// å¸¸ã«true
+function always_true() {
+	return function () {
+		return true;
 	}
 }
 
-// ‘S‘Ì©ƒXƒLƒ‹
+// ãƒªãƒ¼ãƒ€ãƒ¼æ™‚
+function when_leader() {
+	return function (fld, oi, ei) {
+		return oi == 0;
+	}
+}
+
+// ------------------------------------------------------
+// æ”»æ’ƒå¾Œå‡¦ç†
+// ------------------------------------------------------
+// å…¨ä½“è‡ªå‚·ã‚¹ã‚­ãƒ«
 function ConsumeHP_all(hp) {
 	return function (fld, oi, fst) {
 		if (fst) {
@@ -245,7 +249,7 @@ function ConsumeHP_all(hp) {
 	}
 }
 
-// ’P‘Ì©ƒXƒLƒ‹
+// å˜ä½“è‡ªå‚·ã‚¹ã‚­ãƒ«
 function ConsumeHP_own(hp) {
 	return function (fld, oi, fst) {
 		if (fst) {

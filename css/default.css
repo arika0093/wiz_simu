@@ -1,4 +1,4 @@
-﻿/* Base */
+/* Base */
 html{
 	background-color: #FAFAFF;
 }
@@ -34,7 +34,7 @@ div#Header{
 
 a.toplink{
 	/*display: block;*/
-	width: 45%;
+	width: 55%;
 	float: left;
 	padding: 0.5ex 0.5em 0.8ex;
 	font-family: 'Times New Roman', Times, serif;
@@ -47,7 +47,7 @@ a.toplink{
 }
 
 div.otherlinks{
-	width: 45%;
+	width: 35%;
 	float: right;
 	padding: 0.5ex 0.5em;
 	text-align: right;
@@ -150,9 +150,29 @@ li.ui-menu-item{
 }
 
 /* Footer */
-div.copyright{
+div.footerbase{
 	border-top: 1px solid #A0A0FF;
 	border-bottom: 1px solid #A0A0FF;
+}
+
+div.github{
+	width: 60%;
+	float: left;
+	color: #A0A0A0;
+}
+
+div.github p{
+	margin: 1ex 1em;
+	padding: 0;
+}
+
+div.github a{
+	color: #A0A0A0;
+}
+
+div.copyright{
+	width: 35%;
+	float: right;
 }
 
 div.copyright p{

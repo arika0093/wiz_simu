@@ -1,12 +1,12 @@
-// g‚¢•û
-// ex1) 10%ASƒGƒ“ƒn
+// ä½¿ã„æ–¹
+// ex1) 10%ASã‚¨ãƒ³ãƒ
 // proc: [ss_enhance(0.1)],
-// ex2) 50%‘S‘Ì©‚µ‚Ä100%ƒGƒ“ƒn
+// ex2) 50%å…¨ä½“è‡ªå‚·ã—ã¦100%ã‚¨ãƒ³ãƒ
 // proc: [damage_ally_all(0.5), ss_enhance(1)]
 // -----------------------------------
-// UŒ‚Œn
+// æ”»æ’ƒç³»
 // -----------------------------------
-// “G‚ÉSSƒ_ƒ[ƒW
+// æ•µã«SSãƒ€ãƒ¡ãƒ¼ã‚¸
 function ss_damage(fld, r, atr, atkn, own, tg) {
 	var enemy = fld.Enemys.Data[fld.Status.nowbattle - 1].enemy[tg];
 	var now = fld.Allys.Now[own];
@@ -15,13 +15,13 @@ function ss_damage(fld, r, atr, atkn, own, tg) {
 		fld.Status.chain, rnd, own, tg, true);
 }
 
-// “G‘S‘Ì‚Éw’è‘®«‚Ìƒ_ƒ[ƒW
+// æ•µå…¨ä½“ã«æŒ‡å®šå±æ€§ã®ãƒ€ãƒ¡ãƒ¼ã‚¸
 function ss_damage_all(r, attrs) {
 	return function (fld, n) {
 		for (var a = 0; a < attrs.length; a++) {
 			var atr = attrs[a];
 			for (var i = 0; i < fld.Enemys.Data[fld.Status.nowbattle - 1].enemy.length; i++) {
-				// UŒ‚
+				// æ”»æ’ƒ
 				ss_damage(fld, r, atr, 1, n, i);
 			}
 		}
@@ -29,14 +29,14 @@ function ss_damage_all(r, attrs) {
 	};
 }
 
-// “G’P‘Ì‚Éw’è‘®«‚Ìƒ_ƒ[ƒW
+// æ•µå˜ä½“ã«æŒ‡å®šå±æ€§ã®ãƒ€ãƒ¡ãƒ¼ã‚¸
 function ss_damage_s(r, attrs, atkn) {
 	return function (fld, n) {
 		var enemys = fld.Enemys.Data[fld.Status.nowbattle - 1].enemy;
 		for (var an = 0; an < atkn; an++) {
 			for (var a = 0; a < attrs.length; a++) {
 				var atr = attrs[a];
-				// UŒ‚
+				// æ”»æ’ƒ
 				ss_damage(fld, r, atr, atkn, n, auto_attack_order(enemys, atr, n));
 			}
 		}
@@ -45,9 +45,9 @@ function ss_damage_s(r, attrs, atkn) {
 }
 
 // -----------------------------------
-// –¡•ûƒTƒ|[ƒgŒn
+// å‘³æ–¹ã‚µãƒãƒ¼ãƒˆç³»
 // -----------------------------------
-// ‘S‘ÌƒGƒ“ƒn
+// å…¨ä½“ã‚¨ãƒ³ãƒ
 function ss_enhance_all(p, t) {
 	return function (fld, n) {
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
@@ -67,12 +67,12 @@ function ss_enhance_all(p, t) {
 				},
 			});
 		}
-		fld.log_push("–¡•û‘S‘ÌUŒ‚—ÍUp(" + (p*100) + "%, " + t + "t)");
+		fld.log_push("å‘³æ–¹å…¨ä½“æ”»æ’ƒåŠ›Up(" + (p*100) + "%, " + t + "t)");
 		return true;
 	};
 }
 
-// ’P‘ÌƒGƒ“ƒn
+// å˜ä½“ã‚¨ãƒ³ãƒ
 function ss_enhance_own(p, t) {
 	return function (fld, n) {
 		var now = fld.Allys.Now[n];
@@ -90,12 +90,12 @@ function ss_enhance_own(p, t) {
 				}
 			},
 		});
-		fld.log_push("Unit[" + (n + 1) + "]: UŒ‚—ÍUp(" + (p * 100) + "%, " + t + "t)");
+		fld.log_push("Unit[" + (n + 1) + "]: æ”»æ’ƒåŠ›Up(" + (p * 100) + "%, " + t + "t)");
 		return true;
 	}
 }
 
-// ‘S‘ÌƒXƒeƒAƒbƒv
+// å…¨ä½“ã‚¹ãƒ†ã‚¢ãƒƒãƒ—
 function ss_statusup_all(hu, atku, t) {
 	return function (fld, n) {
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
@@ -120,13 +120,13 @@ function ss_statusup_all(hu, atku, t) {
 				},
 			});
 		}
-		fld.log_push("–¡•û‘S‘ÌƒXƒe[ƒ^ƒXUp(HP:" + hu + ", ATK: " + atku +
+		fld.log_push("å‘³æ–¹å…¨ä½“ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹Up(HP:" + hu + ", ATK: " + atku +
 			(t != -1 ? (", " + t + "t") : "") + ")");
 		return true;
 	};
 }
 
-// ’Pƒ‰ñ•œ
+// å˜ç´”å›å¾©
 function ss_heal(p) {
 	return function (fld, n) {
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
@@ -135,15 +135,15 @@ function ss_heal(p) {
 				now.nowhp = Math.min(now.nowhp + (now.maxhp * p), now.maxhp);
 			}
 		}
-		fld.log_push("–¡•û‘S‘ÌHP‰ñ•œ(" + (p * 100) + "%)");
+		fld.log_push("å‘³æ–¹å…¨ä½“HPå›å¾©(" + (p * 100) + "%)");
 		return true;
 	};
 }
 
 // -----------------------------------
-// ‚»‚Ì‘¼•â•Œn
+// ãã®ä»–è£œåŠ©ç³»
 // -----------------------------------
-// ƒpƒlƒ‹•t—^Œø‰Ê
+// ãƒ‘ãƒãƒ«ä»˜ä¸åŠ¹æœ
 function panel_addition(dsc, fc) {
 	return function (fld, n) {
 		fld.Status.panel_add.push({
@@ -154,44 +154,44 @@ function panel_addition(dsc, fc) {
 	};
 }
 
-// UŒ‚—ÍƒAƒbƒvƒpƒlƒ‹•t—^Œø‰Ê
+// æ”»æ’ƒåŠ›ã‚¢ãƒƒãƒ—ãƒ‘ãƒãƒ«ä»˜ä¸åŠ¹æœ
 function panel_attackup(p) {
-	var dsc = "UŒ‚—ÍƒAƒbƒv(" + (p * 100) + "%)";
+	var dsc = "æ”»æ’ƒåŠ›ã‚¢ãƒƒãƒ—(" + (p * 100) + "%)";
 	return panel_addition(dsc, function (fld) {
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
 			now.as_enhance = (now.as_enhance ? now.as_enhance : 0) + p;
 		}
-		fld.log_push("ƒpƒlƒ‹•t—^Œø‰Ê: " + dsc);
+		fld.log_push("ãƒ‘ãƒãƒ«ä»˜ä¸åŠ¹æœ: " + dsc);
 	});
 }
 
-// ƒ`ƒFƒCƒ“ƒvƒ‰ƒXƒpƒlƒ‹•t—^Œø‰Ê
+// ãƒã‚§ã‚¤ãƒ³ãƒ—ãƒ©ã‚¹ãƒ‘ãƒãƒ«ä»˜ä¸åŠ¹æœ
 function panel_chainplus(p) {
-	var dsc = "ƒ`ƒFƒCƒ“ƒvƒ‰ƒX(+" + p + ")";
+	var dsc = "ãƒã‚§ã‚¤ãƒ³ãƒ—ãƒ©ã‚¹(+" + p + ")";
 	return panel_addition(dsc, function (fld) {
 		if (Field.Status.chain_status >= 0) {
 			fld.Status.chain += p;
-			fld.log_push("ƒpƒlƒ‹•t—^Œø‰Ê: " + dsc);
+			fld.log_push("ãƒ‘ãƒãƒ«ä»˜ä¸åŠ¹æœ: " + dsc);
 		}
 	});
 }
 
 // -----------------------------------
-// ƒfƒƒŠƒbƒgŒn
+// ãƒ‡ãƒ¡ãƒªãƒƒãƒˆç³»
 // -----------------------------------
-// ©•ª‚ÉŠ„‡p‚Ìƒ_ƒ[ƒW‚ğ—^‚¦‚é
+// è‡ªåˆ†ã«å‰²åˆpã®ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’ä¸ãˆã‚‹
 function consume_own(p) {
 	return function (fld, n) {
 		var now = fld.Allys.Now[n];
 		var dmg = Math.floor(p * now.maxhp);
 		now.nowhp = Math.max(now.nowhp - dmg, 0);
-		fld.log_push("Unit[" + (n+1) + "]: ©(" + (p * 100) + "%)");
+		fld.log_push("Unit[" + (n+1) + "]: è‡ªå‚·(" + (p * 100) + "%)");
 		return true;
 	};
 }
 
-// –¡•û‘S‘Ì‚ÉŠ„‡p‚Ìƒ_ƒ[ƒW‚ğ—^‚¦‚é
+// å‘³æ–¹å…¨ä½“ã«å‰²åˆpã®ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’ä¸ãˆã‚‹
 function consume_all(p) {
 	return function (fld, n) {
 		var ct = 0;
@@ -203,7 +203,7 @@ function consume_all(p) {
 				ct++;
 			}
 		}
-		fld.log_push("‘S‘Ì©(" + (p * 100) + "%)");
+		fld.log_push("å…¨ä½“è‡ªå‚·(" + (p * 100) + "%)");
 		return ct;
 	};
 }

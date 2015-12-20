@@ -74,6 +74,11 @@ function pickup_answerskills(attr, type, subtype) {
 
 		// AS取得
 		var ASkill = is_legendmode(card, al_now) ? card.as2 : card.as1;
+		// ASがない場合抜き出さない
+		if (!ASkill || !ASkill.proc) {
+			result.push([]);
+			continue;
+		}
 		// 抜き出し
 		result.push($.grep(ASkill.proc, function (e) {
 			return (e.type == type) && (subtype !== undefined ? e.subtype == subtype : true);

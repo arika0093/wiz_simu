@@ -1,4 +1,4 @@
-﻿// 名前サジェスト用
+// 名前サジェスト用
 var CardSuggNames = new Array();
 
 // autocomplete指定 / deckload
