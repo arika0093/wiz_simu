@@ -29,8 +29,9 @@ function panel(attr) {
 		answer_skill(atk_skill, attr);
 		// 回復
 		answer_skill(pickup_answerskills(attr, "heal"), attr);
-		// 物理カウンター処理
+		// 敵スキル処理
 		{
+			// 物理カウンター
 			var enemys = GetNowBattleEnemys();
 			$.each(enemys, function (i, e) {
 				for (var n = 0; n < Field.Allys.Deck.length; n++) {
@@ -45,6 +46,8 @@ function panel(attr) {
 					}
 				}
 			});
+			// 敵ダメージ反応系
+			enemy_damage_switch_check();
 		}
 		// 各精霊のSSチャージを1増やす
 		for (var i = 0; i < Field.Allys.Deck.length; i++) {

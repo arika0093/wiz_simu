@@ -77,6 +77,8 @@ function sim_show() {
 			// 継続中の効果を並べる
 			var eff_text = "";
 			for (var l = 0; l < e.turn_effect.length; l++) {
+				// 非表示要素は飛ばす
+				if (e.turn_effect[l].desc == null) { continue; }
 				eff_text += e.turn_effect[l].desc + "(" + e.turn_effect[l].lim_turn + "t)";
 				if (l != e.turn_effect.length - 1) {
 					eff_text += ", ";

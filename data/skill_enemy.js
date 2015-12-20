@@ -41,8 +41,25 @@ function attack_counter(damage, t) {
 	};
 }
 
+// ダメージに反応してあれこれする
+function damage_switch(cond, func) {
+	return function (fld, n) {
+		var enemy = GetNowBattleEnemys(n);
+		enemy.turn_effect.push({
+			desc: null,
+			type: "damage_switch",
+			isdual: true,
+			turn: -1,
+			lim_turn: -1,
+			effect: function () { },
+			cond: cond,
+			on_cond: func,
+		});
+	};
+}
+
 // -----------------------------------
-// ダメブロ・鉄壁関係
+// ダメージ関係
 // -----------------------------------
 // ダメージブロック(自身)
 function damage_block_own(bl, t) {
@@ -99,4 +116,29 @@ function impregnable(t) {
 			}
 		});
 	};
+}
+
+// -----------------------------------
+// 敵状態変化
+// -----------------------------------
+// 属性変化
+function attr_change(after) {
+	return function (fld, n) {
+		var e = GetNowBattleEnemys(n);
+		var bef = e.attr;
+		e.attr = after;
+		Field.log_push("Enemy[" + (n + 1) + "]: 属性変化("
+			+ fld.Constants.Attr[bef] + "→" + fld.Constants.Attr[after] + ")");
+	}
+}
+
+// -----------------------------------
+// 基本
+// -----------------------------------
+// HPが指定%以下になったら実行
+function when_hpdown(rate) {
+	return function (fld, n) {
+		var e = GetNowBattleEnemys(n);
+		return e.nowhp <= Math.floor(e.hp * rate);
+	}
 }

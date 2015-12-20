@@ -16,19 +16,24 @@ function ss_push(n) {
 	if (ss_rst) {
 		// ターン効果確認
 		turn_effect_check(false);
-		// スキル反射確認
-		var enemys = GetNowBattleEnemys();
-		$.each(enemys, function (i, e) {
-			if (e.flags.is_ss_attack && e.turn_effect.length > 0) {
-				var skillct = $.grep(e.turn_effect, function (g) {
-					return g.on_ss_damage !== undefined;
-				});
-				for (var j = 0; j < skillct.length; j++) {
-					skillct[j].on_ss_damage(Field, i, n);
+		// 敵スキル関係の処理
+		{
+			// スキル反射確認
+			var enemys = GetNowBattleEnemys();
+			$.each(enemys, function (i, e) {
+				if (e.flags.is_ss_attack && e.turn_effect.length > 0) {
+					var skillct = $.grep(e.turn_effect, function (g) {
+						return g.on_ss_damage !== undefined;
+					});
+					for (var j = 0; j < skillct.length; j++) {
+						skillct[j].on_ss_damage(Field, i, n);
+					}
+					e.flags.is_ss_attack = false;
 				}
-				e.flags.is_ss_attack = false;
-			}
-		});
+			});
+			// 敵ダメージ反応系
+			enemy_damage_switch_check();
+		}
 		// L状態ならL潜在を解除
 		if (is_l) {
 			minus_legend_awake(Field.Allys.Deck, Field.Allys.Now, n);

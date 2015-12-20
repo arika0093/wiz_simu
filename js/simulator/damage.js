@@ -33,6 +33,8 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss)
 
 	// NowHPから削る
 	enemy.nowhp = Math.max(enemy.nowhp - d, 0);
+	// ダメージフラグ
+	enemy.flags.on_damage = true;
 	// HPが0ならターン効果を全て消す
 	if (enemy.nowhp <= 0) {
 		enemy.turn_effect = [];
@@ -43,6 +45,24 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss)
 		Field.Constants.Attr[atk_atr] + "攻撃( " + d +
 		"ダメージ)(残: " + enemy.nowhp + "/" + enemy.hp + ")");
 	return d;
+}
+
+// 敵ダメージに反応するあれこれの制御
+function enemy_damage_switch_check() {
+	var enemys = GetNowBattleEnemys();
+	$.each(enemys, function (i, e) {
+		if (e.flags.on_damage && e.turn_effect.length > 0) {
+			var skillct = $.grep(e.turn_effect, function (g) {
+				return g.type == "damage_switch";
+			});
+			for (var j = 0; j < skillct.length; j++) {
+				if (skillct[j].cond(Field, i)) {
+					skillct[j].on_cond(Field, i);
+				}
+			}
+			e.flags.on_damage = false;
+		}
+	});
 }
 
 // 味方にダメージを与える
