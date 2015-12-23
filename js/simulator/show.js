@@ -24,10 +24,17 @@ function sim_show() {
 
 	// sim_result
 	if (Field.Status.finish) {
-		$(".sim_result_links").fadeIn("slow");
+		$("#sim_share").fadeIn("slow");
 	} else {
-		$(".sim_result_links").fadeOut("slow");
+		$("#sim_share").fadeOut("slow");
 	}
+	// sim_restart
+	if (Field.Status.totalturn > 0) {
+		$("#sim_restart").fadeIn("slow");
+	} else {
+		$("#sim_restart").fadeOut("slow");
+	}
+
 	// ----------------
 	// sim_ally
 	for (var i = 0; i < 5; i++) {
@@ -79,10 +86,10 @@ function sim_show() {
 			for (var l = 0; l < e.turn_effect.length; l++) {
 				// 非表示要素は飛ばす
 				if (e.turn_effect[l].desc == null) { continue; }
-				eff_text += e.turn_effect[l].desc + "(" + e.turn_effect[l].lim_turn + "t)";
-				if (l != e.turn_effect.length - 1) {
+				if (eff_text != "") {
 					eff_text += ", ";
 				}
+				eff_text += e.turn_effect[l].desc + "(" + e.turn_effect[l].lim_turn + "t)";
 			}
 			$("#enemy0" + (i + 1) + "_stats").text(eff_text);
 			$("#enemy0" + (i + 1) + "_stats").attr("title", eff_text);
@@ -115,14 +122,6 @@ function sim_show() {
 	// sim_field_move
 	$("#fld_move_before").attr("disabled", (Field.Status.totalturn == 0));
 	$("#fld_move_after").attr("disabled", (Field.Status.totalturn == Field_log.length() - 1));
-}
-
-// 画像のURLを返却する
-function get_image_url(no) {
-	if (no < 0) {
-		return "./image/noimage.png";
-	}
-	return "http://i.quiz.colopl.jp/img/card/small/card_" + ("0000" + no).slice(-5) + "_0.png"
 }
 
 // SSの残り表記を返却する

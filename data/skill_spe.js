@@ -31,6 +31,14 @@ function ss_damage_all(r, attrs) {
 	};
 }
 
+// 味方全体にダメージを与え敵全体に指定属性のダメージ
+function ss_damageall_consumeall(r, attr, p) {
+	return function (fld, n) {
+		var num = consume_all(p)(fld, n);
+		ss_damage_all(r * p, attr)(fld, n);
+	};
+}
+
 // 敵単体に指定属性のダメージ
 function ss_damage_s(r, attrs, atkn) {
 	return function (fld, n) {
@@ -43,6 +51,15 @@ function ss_damage_s(r, attrs, atkn) {
 			}
 		}
 		return true;
+	};
+}
+
+// 味方全体にダメージを与え敵単体に指定属性のダメージ
+function ss_damage_consumeall(r, attr, p, atkn) {
+	return function (fld, n) {
+		if (!atkn) { atkn = 1; }
+		var num = consume_all(p)(fld, n);
+		ss_damage_s(r * p, attr, atkn)(fld, n);
 	};
 }
 

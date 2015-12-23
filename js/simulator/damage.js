@@ -116,7 +116,11 @@ function attr_magnification(atk_atr, def_atr) {
 function auto_attack_order(enemys, attr, own_index) {
 	// 攻撃順序が指定されているならそっちを優先
 	var tg = Number($("#attack_target_sel").val());
-	if (tg != -1 && enemys[tg].nowhp > 0) {
+	for (var i = tg; i > 0; i--) {
+		if (enemys[i]) { break; }
+		else { tg--; }
+	}
+	if (tg != -1 && enemys[tg] && enemys[tg].nowhp > 0) {
 		return tg;
 	}
 	var enemy_copy = enemys.concat();

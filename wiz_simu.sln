@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "template", "template", "{BA
 	ProjectSection(SolutionItems) = preProject
 		template\footer.html = template\footer.html
 		template\header.html = template\header.html
+		template\siminfo.html = template\siminfo.html
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wiz_simu", "wiz_simu", "{54D72F80-1342-4A3D-B559-339A01E32933}"
@@ -19,6 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wiz_simu", "wiz_simu", "{54
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{85B9F527-E148-41E4-A8C0-04BBF26A1A24}"
 	ProjectSection(SolutionItems) = preProject
+		css\deck.css = css\deck.css
 		css\default.css = css\default.css
 		css\simulator.css = css\simulator.css
 	EndProjectSection

@@ -1,54 +1,79 @@
-// 名前サジェスト用
-var CardSuggNames = new Array();
-
 // autocomplete指定 / deckload
 $(function () {
-	var input_ids = ["deck01", "deck02", "deck03", "deck04", "deck05"];
-	var desc_ids = ["Deckdesc1", "Deckdesc2", "Deckdesc3", "Deckdesc4", "Deckdesc5"];
-	var ct = 0;
-
-	for (ct in Cards) {
-		CardSuggNames.push(Cards[ct].name);
+	for (var i = 1; i <= 5; i++) {
+		set_autocmp(i)();
 	}
-	$(".DeckSel").autocomplete({
-		source: CardSuggNames,
-	});
 
 	var cds = loaddeck_from_url();
 	if (cds.length > 0) {
-		for (ct = 0; ct < cds.length; ct++) {
-			$("#" + input_ids[ct]).val(cds[ct].name);
-			$("#" + desc_ids[ct]).html(create_deschtml(cds[ct]));
+		for (var idx = 1; idx <= cds.length; idx++) {
+			decksel_show(idx, cds[idx-1]);
 		}
 	}
 });
 
+// autocompleteを指定する
+function set_autocmp(i) {
+	var idx = i;
+	return function () {
+		$("#deck0" + i).autocomplete({
+			appendTo: "#Suggests",
+			minLength: 3,
+			source: function (req, resp) {
+				resp($.map(Cards, function (value, key) {
+					if (value.name.toLowerCase().indexOf(req.term.toLowerCase()) >= 0) {
+						return {
+							label: value.name,
+							value: value.cardid,
+							data: value,
+						}
+					}
+				}));
+			},
+			select: function (e, dec) {
+				decksel_show(idx, dec.item.data);
+				return false;
+			}
+		})
+		.autocomplete("instance")._renderItem = function (ul, dec) {
+			return $("<li class='clearfix'>")
+				.append("<img src='" + get_image_url(dec.data.imageno) + "' /><a>" + dec.label
+					+ "</a><br/><p>" + dec.data.as1.desc + "</p>")
+				.appendTo(ul);
+		};
+	}
+}
+
 // カード指定した時のAS/SS表示
-function decksel(base, descp) {
-	var selval = document.getElementById(base).value;
-	var desc = $("#" + descp);
-	var ct = 0;
+function decksel(i) {
+	var ct;
+	var selval = document.getElementById("#deck0" + i).value;
 	if (selval != "") {
 		for (ct in CardSuggNames) {
 			if (CardSuggNames[ct] == selval) {
-				desc.html(create_deschtml(Cards[ct]));
-				desc.fadeIn("slow");
+				decksel_show(i, Cards[ct]);
 				return;
 			}
 		}
 	}
-	desc.text("");
-	desc.fadeOut("slow");
+	decksel_show(i);
 }
 
-// descriptionを生成する
-function create_deschtml(cd) {
-	var asdc = cd.as1.desc;
-	var ssdc = cd.ss1.desc;
-	if (asdc.length >= 30 | ssdc.length >= 30) {
-		var b = "<br/>";
+// 精霊情報から表示を行う
+function decksel_show(idx, c) {
+	if (c) {
+		$("#ally0" + idx + "_attr_main").attr("class", "attr_" + c.attr[0]);
+		$("#ally0" + idx + "_attr_sub").attr("class", "attr_" + (c.attr[1] != -1 ? c.attr[1] : c.attr[0]));
+		$("#ally0" + idx + "_img").attr("src", get_image_url(c.imageno));
+		$("#deck0" + idx).val(c.name);
+		$("#ally0" + idx + "_as").text("AS: " + c.as1.desc);
+		$("#ally0" + idx + "_ss").text("SS: " + c.ss1.desc);
 	} else {
-		var b = " / ";
+		$("#ally0" + idx + "_attr_main").attr("class", "attr_none");
+		$("#ally0" + idx + "_attr_sub").attr("class", "attr_none");
+		$("#ally0" + idx + "_img").attr("src", get_image_url(-1));
+		$("#deck0" + idx).val("");
+		$("#ally0" + idx + "_as").text("");
+		$("#ally0" + idx + "_ss").text("");
 	}
-	return "AS: " + asdc + b + "SS: " + ssdc;
 }
