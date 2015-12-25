@@ -31,11 +31,11 @@ function ss_damage_all(r, attrs) {
 	};
 }
 
-// 味方全体にダメージを与え敵全体に指定属性のダメージ
-function ss_damageall_consumeall(r, attr, p) {
+// 敵全体に指定属性のダメージ(条件によってダメージが変動する場合)
+function ss_damage_all_withfunc(func, attr) {
 	return function (fld, n) {
-		var num = consume_all(p)(fld, n);
-		ss_damage_all(r * p, attr)(fld, n);
+		ss_damage_all(func(fld, n), attr)(fld, n);
+		return true;
 	};
 }
 
@@ -54,13 +54,41 @@ function ss_damage_s(r, attrs, atkn) {
 	};
 }
 
-// 味方全体にダメージを与え敵単体に指定属性のダメージ
-function ss_damage_consumeall(r, attr, p, atkn) {
+// 敵単体に指定属性のダメージ(条件によってダメージが変動する場合)
+function ss_damage_s_withfunc(func, attr, atkn) {
 	return function (fld, n) {
 		if (!atkn) { atkn = 1; }
-		var num = consume_all(p)(fld, n);
-		ss_damage_s(r * p, attr, atkn)(fld, n);
+		ss_damage_s(func(fld, n), attr, atkn)(fld, n);
+		return true;
 	};
+}
+
+// -----------------------------------
+// 敵関連系
+// -----------------------------------
+// 毒ダメージを与える
+function poison(dm, t) {
+	return function (fld, n) {
+		var enemys = GetNowBattleEnemys();
+		for (var i = 0; i < enemys.length; i++) {
+			(function () {
+				var indx = i;
+				var e = enemys[indx];
+				e.turn_effect.push({
+					desc: "毒(" + dm + ")",
+					type: "poison",
+					isdual: false,
+					turn: t,
+					lim_turn: t,
+					effect: function () {
+						e.nowhp = Math.max(e.nowhp - dm, 0);
+						fld.log_push("Enemy[" + (indx + 1) + "]: 毒(" + dm + "ダメージ)");
+					},
+				});
+			})();
+		}
+		return true;
+	}
 }
 
 // -----------------------------------
@@ -200,13 +228,35 @@ function panel_chainplus(p) {
 }
 
 // -----------------------------------
+// 条件/効果値分岐系
+// -----------------------------------
+// 味方全体自傷
+function ss_consume_all_cond(base, p) {
+	return function (fld, n) {
+		return base * ss_consume_all(p)(fld, n);
+	}
+}
+
+// チェイン消費
+function chain_cost(ch, a, b) {
+	return function (fld, n) {
+		if (fld.Status.chain >= ch) {
+			fld.Status.chain -= ch;
+			fld.log_push("チェイン消費: " + ch);
+			return a;
+		}
+		return b;
+	}
+}
+
+// -----------------------------------
 // デメリット系
 // -----------------------------------
 // 自分に割合pのダメージを与える
-function consume_own(p) {
+function ss_consume_own(p) {
 	return function (fld, n) {
 		var now = fld.Allys.Now[n];
-		var dmg = Math.floor(p * now.maxhp);
+		var dmg = Math.round(p * now.maxhp);
 		fld.log_push("Unit[" + (n + 1) + "]: 自傷(" + (p * 100) + "%)");
 		damage_ally(dmg, n);
 		return true;
@@ -214,13 +264,13 @@ function consume_own(p) {
 }
 
 // 味方全体に割合pのダメージを与える
-function consume_all(p) {
+function ss_consume_all(p) {
 	return function (fld, n) {
 		var ct = 0;
 		fld.log_push("全体自傷(" + (p * 100) + "%)");
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
-			var dmg = Math.floor(p * now.maxhp);
+			var dmg = Math.round(p * now.maxhp);
 			if (now.nowhp > 0) {
 				damage_ally(dmg, i);
 				ct++;

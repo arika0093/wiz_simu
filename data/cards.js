@@ -50,7 +50,7 @@ Cards = [
     }, {
     	name: "鎮まぬ魂の救い手 アカリ・ヨトバリ",
     	cardno: 4684,
-    	imageno: -1,
+    	imageno: 6443,
     	hp: 2916,
     	atk: 2892,
     	cost: 42,
@@ -70,12 +70,12 @@ Cards = [
     	],
     	as1: {
     		desc: "火属性の味方の攻撃力をアップ、術士はさらにアップ(火：+30％ / 火+種族：+45％)",
-    		proc: null
+    		proc: multi_as(ChainEnhance(0.3, [1,0,0,0,0], 0), ChainSpecEnhance(0.45, [1,0,0,0,0], [9], 0)),
     	},
     	ss1: {
     		desc: "2ターン火属性の味方の攻撃力をアップ(+40％)",
     		turn: 6,
-    		proc: null
+    		proc: [ss_enhance_all(0.4, 2)]
     	},
     	islegend: true,
     	Lawake: [
@@ -84,12 +84,12 @@ Cards = [
     	],
     	as2: {
     		desc: "火属性の味方の攻撃力をアップ、術士はさらにアップ(火：+30％ / 火+種族：+65％)",
-    		proc: null
+    		proc: multi_as(ChainEnhance(0.3, [1,0,0,0,0], 0), ChainSpecEnhance(0.65, [1,0,0,0,0], [9], 0)),
     	},
     	ss2: {
     		desc: "4ターン火属性の味方の攻撃力をアップ(+60％)",
     		turn: 9,
-    		proc: null
+    		proc: [ss_enhance_all(0.6, 2)]
     	},
     }, {
     	name: "燃える屋台魂 アキラ・マスグレイヴ",
@@ -577,7 +577,7 @@ Cards = [
     }, {
     	name: "終に導く焔 ヴィヴィ・ナイトメア",
     	cardno: 4140,
-    	imageno: -1,
+    	imageno: 5818,
     	hp: 2776,
     	atk: 2556,
     	cost: 41,
@@ -597,7 +597,7 @@ Cards = [
     	],
     	as1: {
     		desc: "火属性の味方の攻撃力をアップ、魔族・術士はさらにアップ(火：+20％ / 火+種族：+40％)",
-    		proc: null
+    		proc: multi_as(ChainEnhance(0.2, [1,0,0,0,0], 0), ChainSpecEnhance(0.4, [1,0,0,0,0], [0,9], 0)),
     	},
     	ss1: {
     		desc: "ジャンルパネルをシャッフル",
@@ -611,12 +611,12 @@ Cards = [
     	],
     	as2: {
     		desc: "火属性の味方の攻撃力をアップ、魔族・術士はさらにアップ(火：+30％ / 火+種族：+60％)",
-    		proc: null
+    		proc: multi_as(ChainEnhance(0.3, [1,0,0,0,0], 0), ChainSpecEnhance(0.6, [1,0,0,0,0], [0,9], 0)),
     	},
     	ss2: {
     		desc: "ジャンルパネルを火属性化し、チェインがプラス1の効果を付与",
     		turn: 5,
-    		proc: null
+    		proc: [panel_chainplus(1)],
     	},
     }, {
     	name: "死界の焔 ヴィヴィ＆イザヴェリ",
@@ -929,7 +929,7 @@ Cards = [
     }, {
     	name: "甦りし古の災厄 エターナル・ロア",
     	cardno: 4715,
-    	imageno: -1,
+    	imageno: 6377,
     	hp: 2681,
     	atk: 3098,
     	cost: 48,
@@ -949,12 +949,12 @@ Cards = [
     	],
     	as1: {
     		desc: "種族が術士・物質の敵単体へ特効ダメージ/600％",
-    		proc: null
+    		proc: ChainSpecAttack(6.0, 0, [6, 9]),
     	},
     	ss1: {
     		desc: "敵全体に火属性ダメージ、5チェインを消費しさらにダメージアップ(通常：180％ / 5チェイン消費：230％)",
     		turn: 8,
-    		proc: null
+    		proc: [ss_damage_all_withfunc(chain_cost(5, 2.3, 1.8), [0])],
     	},
     	islegend: true,
     	Lawake: [
@@ -963,12 +963,12 @@ Cards = [
     	],
     	as2: {
     		desc: "種族が術士・物質の敵単体へ特効ダメージ/700％",
-    		proc: null
+    		proc: ChainSpecAttack(6.0, 0, [6, 9]),
     	},
     	ss2: {
     		desc: "敵全体に火属性ダメージ、5チェインを消費しさらにダメージアップ(通常：260％ / 5チェイン消費：310％)",
     		turn: 12,
-    		proc: null
+    		proc: [ss_damage_all_withfunc(chain_cost(5, 3.1, 2.6), [0])],
     	},
     }, {
     	name: "「妹」の極み エミリア・トドロキ",
@@ -2331,12 +2331,12 @@ Cards = [
     }, {
     	name: "其は終焉の起源なり",
     	cardno: 4021,
-    	imageno: -1,
+    	imageno: 5726,
     	hp: 2789,
     	atk: 3654,
     	cost: 72,
     	attr: [0, -1],
-    	species: [-1],
+    	species: [0],
     	awakes: [
             Panel_boost([1, 0, 0, 0, 0, ], 1),
             Attr_statusup(100, 0, [1, 0, 0, 0, 0, ]),
@@ -2351,12 +2351,12 @@ Cards = [
     	],
     	as1: {
     		desc: "5チェインで敵単体を3回連続攻撃、10チェインで更にダメージアップ(5チェイン：計450％ / 10チェイン：計750％)",
-    		proc: null
+    		proc: multi_as(ChainDualAttack(4.5, 5, 3), ChainDualAttack(7.5, 10, 3)),
     	},
     	ss1: {
     		desc: "味方全体のMAXHPの50%を使い敵全体へダメージ(130％×味方の人数)",
     		turn: 10,
-    		proc: null
+    		proc: [ss_damage_all_withfunc(ss_consume_all_cond(1.3, 0.5), [0])],
     	},
     	islegend: true,
     	Lawake: [
@@ -2365,12 +2365,12 @@ Cards = [
     	],
     	as2: {
     		desc: "5チェインで敵単体を3回連続攻撃、10チェインで更にダメージアップ(5チェイン：計550％ / 10チェイン：計850％)",
-    		proc: null
+    		proc: multi_as(ChainDualAttack(5.5, 5, 3), ChainDualAttack(8.5, 10, 3)),
     	},
     	ss2: {
     		desc: "味方全体のMAXHPの50%を使い敵全体へダメージ(160％×味方の人数)",
     		turn: 12,
-    		proc: null
+    		proc: [ss_damage_all_withfunc(ss_consume_all_cond(1.6, 0.5), [0])],
     	},
     }, {
     	name: "時海の航海者 ダム・リフリス",
@@ -3667,7 +3667,7 @@ Cards = [
     		proc: null
     	},
     	ss1: {
-    		desc: "変更後：スティック・トゥ・ファン♪5ターン雷属性ダメージを25％軽減する",
+    		desc: "5ターン雷属性ダメージを25％軽減する",
     		turn: 7,
     		proc: null
     	},
@@ -3680,7 +3680,7 @@ Cards = [
     		proc: null
     	},
     	ss2: {
-    		desc: "変更後：スティック・トゥ・ファン♪5ターン水・雷属性ダメージを25％軽減する",
+    		desc: "5ターン水・雷属性ダメージを25％軽減する",
     		turn: 9,
     		proc: null
     	},
@@ -4038,12 +4038,12 @@ Cards = [
     }, {
     	name: "煌る命の確率論 レウィス・ジェメル",
     	cardno: 4966,
-    	imageno: -1,
+    	imageno: 6701,
     	hp: 2778,
     	atk: 2253,
     	cost: 35,
     	attr: [0, -1],
-    	species: [-1],
+    	species: [9],
     	awakes: [
             Fastskill(1),
             Panel_boost([1, 0, 0, 0, 0, ], 1),
@@ -4058,7 +4058,7 @@ Cards = [
     	],
     	as1: {
     		desc: "火属性の味方の攻撃力をアップ/+30％",
-    		proc: null
+    		proc: ChainEnhance(0.3, [1,0,0,0,0], 0)
     	},
     	ss1: {
     		desc: "3ターンの間、アンサースキル発動時間を5秒延長する",
@@ -4072,7 +4072,7 @@ Cards = [
     	],
     	as2: {
     		desc: "火属性の味方の攻撃力をアップ/+60％",
-    		proc: null
+    		proc: ChainEnhance(0.6, [1,0,0,0,0], 0)
     	},
     	ss2: {
     		desc: "解答を見破る",
@@ -4655,7 +4655,7 @@ Cards = [
     }, {
     	name: "超越の大魔道怪獣 アリエッタ・トワ",
     	cardno: 4691,
-    	imageno: -1,
+    	imageno: 6361,
     	hp: 2302,
     	atk: 3038,
     	cost: 46,
@@ -4675,12 +4675,12 @@ Cards = [
     	],
     	as1: {
     		desc: "3チェインで敵全体へダメージ/180％",
-    		proc: null
+    		proc: ChainAllAttack(1.8, 3),
     	},
     	ss1: {
     		desc: "敵全体へ火・水属性のダメージ、5チェインを消費しさらにダメージアップ(通常：150％ / 5チェイン消費：230％)",
     		turn: 6,
-    		proc: null
+    		proc: [ss_damage_all_withfunc(chain_cost(5, 2.3, 1.5), [0,1])],
     	},
     	islegend: true,
     	Lawake: [
@@ -4689,12 +4689,12 @@ Cards = [
     	],
     	as2: {
     		desc: "3チェインで敵全体へダメージ/220％",
-    		proc: null
+    		proc: ChainAllAttack(2.2, 3),
     	},
     	ss2: {
     		desc: "敵全体へ火・水属性のダメージ、5チェインを消費しさらにダメージアップ(通常：220％ / 5チェイン消費：300％)",
     		turn: 9,
-    		proc: null
+    		proc: [ss_damage_all_withfunc(chain_cost(5, 3.0, 2.2), [0, 1])],
     	},
     }, {
     	name: "神戦に導く使徒 エアリル・セレ",
@@ -8343,7 +8343,7 @@ Cards = [
     }, {
     	name: "凍てついた孤毒 フリーレ・ギフト",
     	cardno: 5053,
-    	imageno: -1,
+    	imageno: 6793,
     	hp: 3491,
     	atk: 2638,
     	cost: 45,
@@ -8363,12 +8363,12 @@ Cards = [
     	],
     	as1: {
     		desc: "水属性の味方を回復/13％",
-    		proc: null
+    		proc: Heal(0.13, [0,1,0,0,0]),
     	},
     	ss1: {
     		desc: "4ターン敵全体に毒のダメージを与える(5000ダメージ)",
     		turn: 7,
-    		proc: null
+    		proc: [poison(5000, 4)],
     	},
     	islegend: true,
     	Lawake: [
@@ -8377,12 +8377,12 @@ Cards = [
     	],
     	as2: {
     		desc: "水属性の味方を回復/16％",
-    		proc: null
+    		proc: Heal(0.16, [0, 1, 0, 0, 0]),
     	},
     	ss2: {
     		desc: "5ターン敵全体に毒のダメージを与える(9999ダメージ)",
     		turn: 11,
-    		proc: null
+    		proc: [poison(9999, 4)],
     	},
     }, {
     	name: "天空の蒼刃 プルミエ・シエル",

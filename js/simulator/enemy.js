@@ -25,18 +25,25 @@ function CreateEnemypopup(qst) {
 	return poplist;
 }
 
+// 全滅確認
+function is_allkill() {
+	var i_allkill = true;
+	var enemys = GetNowBattleEnemys();
+	for (var i = 0; i < enemys.length; i++) {
+		// 全部の敵を倒してるかどうか判定する
+		i_allkill = (i_allkill && enemys[i].nowhp == 0);
+	}
+	return i_allkill;
+}
+
 // 敵を全滅させたか確認し、全滅してたら次の敵を出現させる
 function allkill_check(is_ssfinish) {
-	var is_allkill = true;
 	var ntrun = Field.Status.nowturn;
 	var enemy = GetNowBattleEnemys();
-
-	for (var i = 0; i < enemy.length; i++) {
-		// 全部の敵を倒してるかどうか判定する
-		is_allkill = (is_allkill && enemy[i].nowhp == 0);
-	}
+	// 敵全滅確認
+	var e_ak = is_allkill();
 	// 全ての敵を倒していたら
-	if (is_allkill) {
+	if (e_ak) {
 		// 全終了確認
 		if (Field.Enemys.Popuplist.length <= Field.Status.nowbattle) {
 			// 終了処理開始
@@ -53,7 +60,7 @@ function allkill_check(is_ssfinish) {
 		Field.Status.durturn.push({ ssfin: is_ssfinish, turn: ntrun });
 		Field.Status.nowturn = 0;
 	}
-	return is_allkill;
+	return e_ak;
 }
 
 // 敵出現時の処理を行う

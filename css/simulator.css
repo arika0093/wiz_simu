@@ -154,3 +154,31 @@ div.sim_log_inner {
 	font-size: 8.5pt;
 	padding: 0.5ex 0.5em;
 }
+
+/* Panel Button */
+/*
+button#pnl_attr_0{
+	text-indent: -9999px;
+	background: #df1111;
+}
+
+button#pnl_attr_1{
+	text-indent: -9999px;
+	background: #38b2f8;
+}
+
+button#pnl_attr_2{
+	text-indent: -9999px;
+	background: #f2ea54;
+}
+
+button#pnl_attr_01{
+	text-indent: -9999px;
+	background: #df1111;
+	background: -moz-linear-gradient(left,  #df1111 50%, #38b2f8 51%);
+	background: -webkit-linear-gradient(left,  #df1111 50%,#38b2f8 51%);
+	background: linear-gradient(to right,  #df1111 50%,#38b2f8 51%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#df1111', endColorstr='#38b2f8',GradientType=1 );
+}
+
+*/

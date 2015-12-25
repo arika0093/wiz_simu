@@ -22,11 +22,14 @@
             <dt>クエスト/デッキ選択</dt>
             <dd>
                 <div class="SelField">
-                    <select class="selbox" id="QstSel">
-                        <option value="">(未選択)</option>
-                    </select>
                     <div class="deck_and_menu clearfix">
                         <div class="ally_deck">
+                            <div class="selbox_field">
+                                <select class="selbox" id="QstSel">
+                                    <option value="">(クエスト未選択)</option>
+                                </select>
+                                <button type="button" class="deck_reset" id="Reset" onclick="deck_reset()">リセット</button>
+                            </div>
                             <div class="ally clearfix" id="ally01">
                                 <div class="attr_none" id="ally01_attr_main">.</div>
                                 <div class="attr_none" id="ally01_attr_sub">.</div>
@@ -69,24 +72,20 @@
                             </div>
                         </div>
                         <div class="deckmenu">
-                            <button type="button" class="deck_saveload" id="Deckload">読み込み</button>
-                            <button type="button" class="deck_saveload" id="Decksave">保存</button>
+                            <button type="button" class="deck_saveload" id="Deckload">デッキ読み込み</button>
+                            <button type="button" class="deck_saveload" id="Decksave">デッキ保存</button>
+                        </div>
+                        <div class="twitter">
+                            <a class="twitter-timeline" href="https://twitter.com/hashtag/wiz_simu" data-widget-id="679640455609368576">#wiz_simu のツイート</a>
+                            <script>
+                                !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");
+                            </script>
+                        </div>
+                        <div class="sim_start">
+                            <button type="button" id="Start" onclick="sim_start()">開始</button>
                         </div>
                     </div>
-                    <div class="sim_start">
-                        <button type="button" id="Start" onclick="sim_start()">開始</button>
-                    </div>
                 </div>
-            </dd>
-
-            <dt>他の人の試走結果</dt>
-            <dd>
-                <!--
-                <a class="twitter-timeline" href="https://twitter.com/hashtag/wiz_simu" data-widget-id="679640455609368576">#wiz_simu のツイート</a>
-                <script>
-                    !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");
-                </script>
-                -->
             </dd>
         </dl>
     </div>
@@ -124,7 +123,7 @@
                     setTimeout(setcss_twitter, 300);
                 }
             }
-            setcss_twitter();
+            //setcss_twitter();
         });
     </script>
 </body>

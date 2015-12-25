@@ -29,13 +29,18 @@ function panel(attr) {
 		answer_skill(atk_skill, attr);
 		// 回復
 		answer_skill(pickup_answerskills(attr, "heal"), attr);
+		// ASエンハ値リセット
+		for (var i = 0; i < Field.Allys.Deck.length; i++) {
+			var now = Field.Allys.Now[i];
+			now.as_enhance = 0;
+		}
 		// 敵スキル処理
 		{
 			// 物理カウンター
 			var enemys = GetNowBattleEnemys();
 			$.each(enemys, function (i, e) {
 				for (var n = 0; n < Field.Allys.Deck.length; n++) {
-					if (e.flags.is_as_attack[n] && e.turn_effect.length > 0) {
+					if (e.flags.is_as_attack[n] > 0 && e.turn_effect.length > 0) {
 						var skillct = $.grep(e.turn_effect, function (g) {
 							return g.on_attack_damage !== undefined;
 						});
@@ -61,12 +66,8 @@ function panel(attr) {
 	}
 	// 敵の処理
 	
-	// 全滅確認
-	var killed = allkill_check(false);
-	nextturn(killed);
-	Field.Status.totalturn += 1;
-	// Fieldログ出力
-	Field_log.save(Field.Status.totalturn, Field);
+	// 次のターンへ進む
+	nextturn(false);
 	// 表示
 	sim_show();
 }
@@ -230,9 +231,9 @@ function answer_heal(as, i) {
 			}
 			ass = ass.rate < as_t.rate ? as_t : ass;
 		}
-		if (rate > 0) {
+		if (ass.rate > 0) {
 			// 回復
-			var heal_val = Math.floor(ass.rate * now.maxhp);
+			var heal_val = Math.round(ass.rate * now.maxhp);
 			var before = now.nowhp;
 			now.nowhp = Math.min(now.maxhp, now.nowhp + heal_val);
 			Field.log_push("Unit[" + (ci + 1) + "]: HP回復(HP: " + before + "→" + now.nowhp + ")");

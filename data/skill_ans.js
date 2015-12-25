@@ -20,7 +20,9 @@ function Default_as() {
 // 複数ASをまとめる
 function multi_as(as1) {
 	for (var i = 1; i < arguments.length; i++) {
-		as1.concat(arguments[i]);
+		for (var j = 0; j < arguments[i].length; j++) {
+			as1.push(arguments[i][j]);
+		}
 	}
 	return as1;
 }
@@ -58,7 +60,7 @@ function ChainAttack(rate, ch) {
 
 // HPを消費して攻撃するチェインアタッカー
 // (rate: 割合, ch: 発動チェイン数, hp: 消費HPの割合)
-function ChainAttack_ConsumeHP_own(rate, ch, hp) {
+function ChainAttack_as_consume_own(rate, ch, hp) {
 	return [
 		{
 			type: "attack",
@@ -69,7 +71,7 @@ function ChainAttack_ConsumeHP_own(rate, ch, hp) {
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
 			cond: always_true(),
-			after: ConsumeHP_own(hp),
+			after: as_consume_own(hp),
 		}
 	];
 }
@@ -238,25 +240,25 @@ function when_leader() {
 // 攻撃後処理
 // ------------------------------------------------------
 // 全体自傷スキル
-function ConsumeHP_all(hp) {
+function as_consume_all(hp) {
 	return function (fld, oi, fst) {
 		if (fst) {
 			fld.log_push("全体自傷(" + (hp * 100) + "%)");
 			for (var i = 0; i < fld.Allys.Deck.length; i++) {
 				var now = fld.Allys.Now[i];
-				damage_ally(Math.floor(now.maxhp * hp), i);
+				damage_ally(Math.round(now.maxhp * hp), i);
 			}
 		}
 	}
 }
 
 // 単体自傷スキル
-function ConsumeHP_own(hp) {
+function as_consume_own(hp) {
 	return function (fld, oi, fst) {
 		if (fst) {
 			fld.log_push("Unit[" + (oi+1) + "]: 自傷(" + (hp * 100) + "%)");
 			var now = fld.Allys.Now[oi];
-			damage_ally(Math.floor(now.maxhp * hp), oi);
+			damage_ally(Math.round(now.maxhp * hp), oi);
 		}
 	}
 }

@@ -109,12 +109,6 @@ span.secretly{
 	color: #C0C0C0;
 }
 
-/* Twitter */
-iframe#twitter-widget-0{
-	max-width: 100% !important;
-	height: 300px !important;
-}
-
 /* Footer */
 div.footerbase{
 	border-top: 1px solid #A0A0FF;

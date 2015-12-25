@@ -44,12 +44,9 @@ function ss_push(n) {
 		now.ss_current = 0;
 		now.ss_isfirst = false;
 		now.ss_isboost = false;
-		// 全滅確認
-		if (allkill_check(true)) {
+		// 全滅していたら次のターンへ進む
+		if (is_allkill()) {
 			nextturn(true);
-			Field.Status.totalturn += 1;
-			// Fieldログ出力
-			Field_log.save(Field.Status.totalturn, Field);
 		}
 		// [進む]を使えないように
 		Field_log._removeover(Field.Status.totalturn);

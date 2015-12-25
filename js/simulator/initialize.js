@@ -175,7 +175,7 @@ $(window).load(function () {
 });
 
 // 次のターンに進む
-function nextturn(is_newpopup) {
+function nextturn(is_ssfin) {
 	// ターンエフェクト減算処理
 	for (var i = 0; i < Field.Allys.Deck.length; i++) {
 		for (var j = 0; j < Field.Allys.Now[i].turn_effect.length; j++) {
@@ -191,9 +191,17 @@ function nextturn(is_newpopup) {
 	// 効果の継続確認
 	turn_effect_check(true);
 	enemy_turn_effect_check(true);
-	// 新しい敵ならここで追加処理を行う
-	if (is_newpopup && !Field.Status.finish) {
+	// 全滅確認を行う
+	var killed = allkill_check(is_ssfin);
+	// 全滅していたらここで新しい敵の追加処理を行う
+	if (killed && !Field.Status.finish) {
 		enemy_popup_proc();
 	}
+	// SSで全滅 or パネルを踏んでる
+	if (!is_ssfin || killed) {
+		Field.Status.totalturn += 1;
+	}
 	Field.Status.nowturn += 1;
+	// ログ保存
+	Field_log.save(Field.Status.totalturn, Field);
 }

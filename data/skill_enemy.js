@@ -139,6 +139,6 @@ function attr_change(after) {
 function when_hpdown(rate) {
 	return function (fld, n) {
 		var e = GetNowBattleEnemys(n);
-		return e.nowhp <= Math.floor(e.hp * rate);
+		return e.nowhp <= Math.round(e.hp * rate);
 	}
 }

@@ -5,10 +5,22 @@ $(function () {
 	}
 
 	var cds = loaddeck_from_url();
-	if (cds.length > 0) {
-		for (var idx = 1; idx <= cds.length; idx++) {
-			decksel_show(idx, cds[idx-1]);
-		}
+	for (var idx = 1; idx <= 5; idx++) {
+		$("#deck0" + idx).focus(function () {
+			if ($(this).val() == "《精霊名を入力します》") {
+				$(this).val("");
+				$(this).css("color", "#000");
+			}
+		})
+		.blur(function () {
+			if ($(this).val().length == 0) {
+				$(this).val('《精霊名を入力します》');
+				$(this).css("color", "#888");
+			}
+		})
+		.blur();
+
+		decksel_show(idx, cds ? cds[idx-1] : null);
 	}
 });
 
@@ -17,11 +29,12 @@ function set_autocmp(i) {
 	var idx = i;
 	return function () {
 		$("#deck0" + i).autocomplete({
-			appendTo: "#Suggests",
-			minLength: 3,
+			minLength: 2,
+			delay: 500,
 			source: function (req, resp) {
 				resp($.map(Cards, function (value, key) {
-					if (value.name.toLowerCase().indexOf(req.term.toLowerCase()) >= 0) {
+					if (value.name.toLowerCase().indexOf(req.term.toLowerCase()) >= 0 ||
+					    req.term.indexOf(".*") == 0) {
 						return {
 							label: value.name,
 							value: value.cardid,
@@ -29,6 +42,10 @@ function set_autocmp(i) {
 						}
 					}
 				}));
+			},
+			focus: function(e, dec) {
+				decksel_show(idx, dec.item.data);
+				return false;
 			},
 			select: function (e, dec) {
 				decksel_show(idx, dec.item.data);
@@ -47,10 +64,10 @@ function set_autocmp(i) {
 // カード指定した時のAS/SS表示
 function decksel(i) {
 	var ct;
-	var selval = document.getElementById("#deck0" + i).value;
+	var selval = $("#deck0" + i).val();
 	if (selval != "") {
-		for (ct in CardSuggNames) {
-			if (CardSuggNames[ct] == selval) {
+		for (ct in Cards) {
+			if (Cards[ct].name == selval) {
 				decksel_show(i, Cards[ct]);
 				return;
 			}
@@ -66,14 +83,23 @@ function decksel_show(idx, c) {
 		$("#ally0" + idx + "_attr_sub").attr("class", "attr_" + (c.attr[1] != -1 ? c.attr[1] : c.attr[0]));
 		$("#ally0" + idx + "_img").attr("src", get_image_url(c.imageno));
 		$("#deck0" + idx).val(c.name);
+		$("#deck0" + idx).css("color", "#000");
 		$("#ally0" + idx + "_as").text("AS: " + c.as1.desc);
 		$("#ally0" + idx + "_ss").text("SS: " + c.ss1.desc);
 	} else {
 		$("#ally0" + idx + "_attr_main").attr("class", "attr_none");
 		$("#ally0" + idx + "_attr_sub").attr("class", "attr_none");
 		$("#ally0" + idx + "_img").attr("src", get_image_url(-1));
-		$("#deck0" + idx).val("");
+		$("#deck0" + idx).val("《精霊名を入力します》");
+		$("#deck0" + idx).css("color", "#888");
 		$("#ally0" + idx + "_as").text("");
 		$("#ally0" + idx + "_ss").text("");
+	}
+}
+
+// デッキ情報をリセットする
+function deck_reset() {
+	for (var i = 1; i <= 5; i++) {
+		decksel_show(i, null);
 	}
 }

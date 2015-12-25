@@ -15,7 +15,7 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss)
 	// 属性考慮
 	d *= attr_magnification(atk_atr, enemy.attr);
 	// 切り捨て
-	d = Math.floor(d);
+	d = Math.round(d);
 
 	// 攻撃時スキル確認
 	if (enemy.turn_effect.length > 0) {
@@ -34,7 +34,7 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss)
 	// NowHPから削る
 	enemy.nowhp = Math.max(enemy.nowhp - d, 0);
 	// ダメージフラグ
-	enemy.flags.on_damage = true;
+	enemy.flags.on_damage = (enemy.flags.on_damage ? enemy.flags.on_damage+1 : 1);
 	// HPが0ならターン効果を全て消す
 	if (enemy.nowhp <= 0) {
 		enemy.turn_effect = [];
@@ -69,9 +69,9 @@ function enemy_damage_switch_check() {
 function damage_ally(dmg, index, neft_check) {
 	var now = Field.Allys.Now[index];
 	var bef = now.nowhp;
-	now.nowhp = Math.max(Math.floor(bef - dmg), 0);
+	now.nowhp = Math.max(Math.round(bef - dmg), 0);
 	// 九死一生の判定
-	if (neft_check && bef >= Math.floor(now.maxhp / 10) && now.nowhp <= 0) {
+	if (neft_check && bef >= Math.round(now.maxhp / 10) && now.nowhp <= 0) {
 		var neft = pickup_awakes(Field.Allys.Deck[index], "neftjod", false);
 		if (is_legendmode(Field.Allys.Deck[index], now)) {
 			neft.concat(pickup_awakes(Field.Allys.Deck[index]), "neftjod", true);
