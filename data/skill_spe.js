@@ -241,7 +241,7 @@ function ss_resurrection(p) {
 
 
 // ------------------------------------------------------
-// その他補助系
+// パネル付与系
 // ------------------------------------------------------
 // パネル付与効果
 function panel_addition(dsc, fc) {
@@ -275,6 +275,24 @@ function panel_chainplus(p) {
 			fld.log_push("パネル付与効果: " + dsc);
 		}
 	});
+}
+
+// ------------------------------------------------------
+// その他
+// ------------------------------------------------------
+// SSコピー
+function ss_latest_copy() {
+	return function (fld, n) {
+		if (fld.Status.latest_ss) {
+			var ss = fld.Status.latest_ss;
+			for (var i = 0; i < ss.proc.length; i++) {
+				ss_rst = ss.proc[i](fld, n);
+			}
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 
 // ------------------------------------------------------

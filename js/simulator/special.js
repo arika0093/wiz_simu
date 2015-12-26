@@ -14,6 +14,8 @@ function ss_push(n) {
 	}
 	// 発動成功なら
 	if (ss_rst) {
+		// SSを保存しておく
+		Field.Status.latest_ss = ss;
 		// ターン効果確認
 		turn_effect_check(false);
 		// 敵スキル関係の処理

@@ -33,8 +33,8 @@ function set_autocmp(i) {
 			delay: 500,
 			source: function (req, resp) {
 				resp($.map(Cards, function (value, key) {
-					if (value.name.toLowerCase().indexOf(req.term.toLowerCase()) >= 0 ||
-					    req.term.indexOf(".*") == 0) {
+					if (value.name.toLowerCase().indexOf(req.term.replace("*", "").toLowerCase()) >= 0 &&
+						(value.as1.proc != null || req.term.indexOf("*") >= 0)){
 						return {
 							label: value.name,
 							value: value.cardid,

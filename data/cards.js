@@ -6981,7 +6981,7 @@ Cards = [
     }, {
     	name: "夏夢航路の女神様 シール・サンテ",
     	cardno: 4162,
-    	imageno: -1,
+    	imageno: 5891,
     	hp: 1865,
     	atk: 3834,
     	cost: 47,
@@ -7001,12 +7001,12 @@ Cards = [
     	],
     	as1: {
     		desc: "5チェインで火属性の敵単体へダメージ/650％",
-    		proc: null
+    		proc: ChainAttrAttack(6.5, 5, [1,0,0,0,0])
     	},
     	ss1: {
     		desc: "直前に発動したスペシャルスキルを発動する",
     		turn: 9,
-    		proc: null
+    		proc: [ss_latest_copy()]
     	},
     	islegend: true,
     	Lawake: [
@@ -7015,12 +7015,12 @@ Cards = [
     	],
     	as2: {
     		desc: "5チェインで火属性の敵単体へダメージ/750％",
-    		proc: null
+    		proc: ChainAttrAttack(7.5, 5, [1,0,0,0,0])
     	},
     	ss2: {
     		desc: "直前に発動したスペシャルスキルを発動する",
     		turn: 9,
-    		proc: null
+    		proc: [ss_latest_copy()]
     	},
     }, {
     	name: "極美の刃 ステファーヌ・ライリー",
@@ -8563,12 +8563,12 @@ Cards = [
     }, {
     	name: "貫く心のド真中 マトイ・ナヒサコ",
     	cardno: 4130,
-    	imageno: -1,
+    	imageno: 5804,
     	hp: 2321,
     	atk: 3122,
     	cost: 48,
     	attr: [1, -1],
-    	species: [-1],
+    	species: [1],
     	awakes: [
             Fastskill(1),
             Statusup(0, 200),
@@ -8583,12 +8583,12 @@ Cards = [
     	],
     	as1: {
     		desc: "8チェインでダメージアップ/600％",
-    		proc: null
+    		proc: ChainAttack(6.0, 8)
     	},
     	ss1: {
     		desc: "ジャンルパネルにチェインがプラス2の効果を付与",
     		turn: 5,
-    		proc: null
+    		proc: [panel_chainplus(2)]
     	},
     	islegend: true,
     	Lawake: [
@@ -8597,12 +8597,12 @@ Cards = [
     	],
     	as2: {
     		desc: "8チェインでダメージアップ/700％",
-    		proc: null
+    		proc: ChainAttack(7.0, 8)
     	},
     	ss2: {
     		desc: "ジャンルパネルにチェインがプラス3の効果を付与",
     		turn: 8,
-    		proc: null
+    		proc: [panel_chainplus(3)]
     	},
     }, {
     	name: "いつでも学園のヒロイン 初音ミク",
@@ -9698,6 +9698,50 @@ Cards = [
     		desc: "味方全体のスペシャルスキルの発動ターンを3早める、5チェインを消費してさらに1早める",
     		turn: 11,
     		proc: null
+    	},
+    }, {
+    	name: "海風流るる焔々と セイ＆スオウ",
+    	cardno: 5064,
+    	imageno: 6804,
+    	hp: 2650,
+    	atk: 3323,
+    	cost: 45,
+    	attr: [1, 0],
+    	species: [1],
+    	awakes: [
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Fastskill(1),
+            Spec_statusup(0, 200, [1]),
+            NEFTJOD(30),
+            Attr_statusup(0, 200, [1, 1, 0, 0, 0, ]),
+            Panel_boost([0, 1, 0, 0, 0, ], 2),
+            Fastskill(2),
+            Panel_boost([0, 1, 0, 0, 0, ], 2),
+            Attr_statusup(200, 0, [1, 1, 0, 0, 0, ]),
+            Spec_statusup(200, 0, [1]),
+    	],
+    	as1: {
+    		desc: "10チェインでダメージアップ(700％)",
+    		proc: ChainAttack(7.0, 10)
+    	},
+    	ss1: {
+    		desc: "味方全体のMAXHPの50%を使い敵単体へ水属性ダメージ(240%×味方数)",
+    		turn: 6,
+    		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.5), [1], 1)]
+    	},
+    	islegend: true,
+    	Lawake: [
+            Statusup(500, 0),
+            Statusup(0, 500),
+    	],
+    	as2: {
+    		desc: "10チェインでダメージアップ(800％)",
+    		proc: ChainAttack(8.0, 10)
+    	},
+    	ss2: {
+    		desc: "味方全体のMAXHPの50%を使い敵単体へダメージ(300%×味方数)",
+    		turn: 8,
+    		proc: [ss_damage_s(ss_consume_all_cond(3.0, 0.5), [1], 1)]
     	},
     }, {
     	name: "南国バーチャルシンガー ミク＆ルカ",

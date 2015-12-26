@@ -50,7 +50,7 @@ div.twitter{
 }
 iframe#twitter-widget-0{
 	max-width: 100% !important;
-	height: 320px !important;
+	height: 368px !important;
 }
 
 div.sim_start{
@@ -106,7 +106,7 @@ p.ally_skill{
 }
 
 button.deck_saveload{
-	width: 100%;
+	width: 48%;
 	margin: 1ex auto;
 	padding: 0.5ex;
 	font-family: Meiryo;

@@ -47,12 +47,15 @@ var Field = {
 		chain_status: 0,
 		// パネル付与関連
 		panel_add: [],
+		// 最後に使用したSS
+		latest_ss: null,
 		// ターンetc関連
 		durturn: [],
 		nowturn: 1,
 		totalturn: 0,
 		nowbattle: 1,
 		finish: false,
+		// ログ
 		log: [],
 	},
 	log_push: function (text) {
