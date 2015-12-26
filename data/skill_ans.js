@@ -12,7 +12,7 @@ function Default_as() {
 			chain: 0,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
-			cond: always_true(),
+			cond: always_true().cond,
 		}
 	];
 }
@@ -53,7 +53,7 @@ function ChainAttack(rate, ch) {
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
-			cond: always_true(),
+			cond: always_true().cond,
 		}
 	];
 }
@@ -70,8 +70,8 @@ function ChainAttack_as_consume_own(rate, ch, hp) {
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
-			cond: always_true(),
-			after: as_consume_own(hp),
+			cond: always_true().cond,
+			after: as_consume_own(hp).after,
 		}
 	];
 }
@@ -88,7 +88,7 @@ function ChainAttack_Leader(rate, ch) {
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
-			cond: when_leader(),
+			cond: when_leader().cond,
 		}
 	];
 }
@@ -104,7 +104,7 @@ function ChainDualAttack(rate, ch, n) {
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
-			cond: always_true(),
+			cond: always_true().cond,
 		}
 	];
 }
@@ -120,7 +120,7 @@ function ChainAttrAttack(rate, ch, attr) {
 			chain: ch,
 			attr: attr,
 			spec: create_specs(1),
-			cond: always_true(),
+			cond: always_true().cond,
 		}
 	];
 }
@@ -136,7 +136,7 @@ function ChainSpecAttack(rate, ch, spec) {
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: specific_specs(spec),
-			cond: always_true(),
+			cond: always_true().cond,
 		}
 	];
 }
@@ -152,7 +152,7 @@ function ChainDualAttrAttack(rate, ch, n, attr) {
 			chain: ch,
 			attr: attr,
 			spec: create_specs(1),
-			cond: always_true(),
+			cond: always_true().cond,
 		}
 	];
 }
@@ -168,7 +168,54 @@ function ChainAllAttack(rate, ch) {
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
-			cond: always_true(),
+			cond: always_true().cond,
+		}
+	];
+}
+
+// チェイン分散攻撃(r: 割合(1体の時), ch: 発動チェイン数)
+function ChainVarianceAttack(r, ch) {
+	return [
+		{
+			type: "attack",
+			isall: true,
+			atkn: 1,
+			rate: r,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: create_specs(1),
+			cond: function () {
+				var enemys = GetNowBattleEnemys();
+				var count = 0;
+				for (var i = 0; i < enemys.length; i++) {
+					if (enemys && enemys[i].nowhp > 0) {
+						count++;
+					}
+				}
+				this.rate = r / count;
+				return true;
+			},
+		}
+	];
+}
+
+// パネル依存攻撃(r1: 単色割合, r2: 二色割合, r3: 三色以上割合, ch: 発動チェイン数)
+//   例: 3chain二色以上でダメージアップ(250%)なら ChainPanelsAttack(0, 2.5, 2.5, 3)
+function ChainPanelsAttack(r1, r2, r3, ch) {
+	return [
+		{
+			type: "attack",
+			isall: true,
+			atkn: 1,
+			rate: r1,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: create_specs(1),
+			cond: function (fld, oi, ei, panels) {
+				var rates = [r1, r2, r3];
+				this.rate = rates[Math.min(panels.length - 1, 2)];
+				return true;
+			},
 		}
 	];
 }
@@ -184,7 +231,7 @@ function ChainEnhance(rate, attr, ch) {
 			chain: ch,
 			attr: attr,
 			spec: create_specs(1),
-			cond: always_true(),
+			cond: always_true().cond,
 		}
 	];
 }
@@ -199,7 +246,27 @@ function ChainSpecEnhance(rate, attr, spec, ch) {
 			chain: ch,
 			attr: attr,
 			spec: specific_specs(spec),
-			cond: always_true(),
+			cond: always_true().cond,
+		}
+	];
+}
+
+// パネル依存エンハンス
+// (r1: 単色割合, r2: 二色割合, r3: 三色以上割合, attr: 対象属性, ch: 発動チェイン数)
+function ChainPanelsEnhance(r1, r2, r3, attr, ch) {
+	return [
+		{
+			type: "support",
+			subtype: "enhance",
+			rate: r1,
+			chain: ch,
+			attr: attr,
+			spec: create_specs(1),
+			cond: function (fld, oi, ei, panels) {
+				var rates = [r1, r2, r3];
+				this.rate = rates[Math.min(panels.length - 1, 2)];
+				return true;
+			},
 		}
 	];
 }
@@ -214,39 +281,65 @@ function Heal(rate, attr) {
 			chain: 0,
 			attr: attr,
 			spec: create_specs(1),
-			cond: always_true(),
+			cond: always_true().cond,
 		}
 	];
 }
 
+
+// パネル依存回復
+// (r1: 単色割合, r2: 二色割合, r3: 三色以上割合, attr: 対象属性, ch: 発動チェイン数)
+function ChainPanelsHeal(r1, r2, r3, attr) {
+	return [
+		{
+			type: "heal",
+			rate: r1,
+			chain: 0,
+			attr: attr,
+			cond: function (fld, oi, ei, panels) {
+				var rates = [r1, r2, r3];
+				this.rate = rates[Math.min(panels.length - 1, 2)];
+				return true;
+			},
+		}
+	];
+}
 // ------------------------------------------------------
 // 各種条件
 // ------------------------------------------------------
 // 常にtrue
 function always_true() {
-	return function () {
-		return true;
+	return {
+		cond: function () {
+			return true;
+		}
 	}
 }
 
 // リーダー時
 function when_leader() {
-	return function (fld, oi, ei) {
-		return oi == 0;
+	return {
+		cond: function (fld, oi, ei) {
+			return oi == 0;
+		}
 	}
 }
+
+// HP一定以上 / 以下 / 超過 / 未満
 
 // ------------------------------------------------------
 // 攻撃後処理
 // ------------------------------------------------------
 // 全体自傷スキル
 function as_consume_all(hp) {
-	return function (fld, oi, fst) {
-		if (fst) {
-			fld.log_push("全体自傷(" + (hp * 100) + "%)");
-			for (var i = 0; i < fld.Allys.Deck.length; i++) {
-				var now = fld.Allys.Now[i];
-				damage_ally(Math.round(now.maxhp * hp), i);
+	return {
+		after: function (fld, oi, fst) {
+			if (fst) {
+				fld.log_push("全体自傷(" + (hp * 100) + "%)");
+				for (var i = 0; i < fld.Allys.Deck.length; i++) {
+					var now = fld.Allys.Now[i];
+					damage_ally(Math.round(now.maxhp * hp), i);
+				}
 			}
 		}
 	}
@@ -254,11 +347,13 @@ function as_consume_all(hp) {
 
 // 単体自傷スキル
 function as_consume_own(hp) {
-	return function (fld, oi, fst) {
-		if (fst) {
-			fld.log_push("Unit[" + (oi+1) + "]: 自傷(" + (hp * 100) + "%)");
-			var now = fld.Allys.Now[oi];
-			damage_ally(Math.round(now.maxhp * hp), oi);
+	return {
+		after: function (fld, oi, fst) {
+			if (fst) {
+				fld.log_push("Unit[" + (oi + 1) + "]: 自傷(" + (hp * 100) + "%)");
+				var now = fld.Allys.Now[oi];
+				damage_ally(Math.round(now.maxhp * hp), oi);
+			}
 		}
 	}
 }

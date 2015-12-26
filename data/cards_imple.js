@@ -119,7 +119,7 @@ Cards.Imples = [
 		ss1: {
 			desc: "敵全体に火属性ダメージ、5チェインを消費しさらにダメージアップ(通常：180％ / 5チェイン消費：230％)",
 			turn: 8,
-			proc: [ss_damage_all_withfunc(chain_cost(5, 2.3, 1.8), [0])],
+			proc: [ss_damage_all(ss_chain_cost(5, 2.3, 1.8), [0])],
 		},
 		islegend: true,
 		Lawake: [
@@ -133,7 +133,7 @@ Cards.Imples = [
 		ss2: {
 			desc: "敵全体に火属性ダメージ、5チェインを消費しさらにダメージアップ(通常：260％ / 5チェイン消費：310％)",
 			turn: 12,
-			proc: [ss_damage_all_withfunc(chain_cost(5, 3.1, 2.6), [0])],
+			proc: [ss_damage_all(ss_chain_cost(5, 3.1, 2.6), [0])],
 		},
 	}, {
 		name: "其は終焉の起源なり",
@@ -163,7 +163,7 @@ Cards.Imples = [
 		ss1: {
 			desc: "味方全体のMAXHPの50%を使い敵全体へダメージ(130％×味方の人数)",
 			turn: 10,
-			proc: [ss_damage_all_withfunc(ss_consume_all_cond(1.3, 0.5), [0])],
+			proc: [ss_damage_all(ss_consume_all_cond(1.3, 0.5), [0])],
 		},
 		islegend: true,
 		Lawake: [
@@ -177,7 +177,7 @@ Cards.Imples = [
 		ss2: {
 			desc: "味方全体のMAXHPの50%を使い敵全体へダメージ(160％×味方の人数)",
 			turn: 12,
-			proc: [ss_damage_all_withfunc(ss_consume_all_cond(1.6, 0.5), [0])],
+			proc: [ss_damage_all(ss_consume_all_cond(1.6, 0.5), [0])],
 		},
 	}, {
     	name: "超越の大魔道怪獣 アリエッタ・トワ",
@@ -207,7 +207,7 @@ Cards.Imples = [
     	ss1: {
     		desc: "敵全体へ火・水属性のダメージ、5チェインを消費しさらにダメージアップ(通常：150％ / 5チェイン消費：230％)",
     		turn: 6,
-    		proc: [ss_damage_all_withfunc(chain_cost(5, 2.3, 1.5), [0,1])],
+    		proc: [ss_damage_all(ss_chain_cost(5, 2.3, 1.5), [0,1])],
     	},
     	islegend: true,
     	Lawake: [
@@ -221,7 +221,7 @@ Cards.Imples = [
     	ss2: {
     		desc: "敵全体へ火・水属性のダメージ、5チェインを消費しさらにダメージアップ(通常：220％ / 5チェイン消費：300％)",
     		turn: 9,
-    		proc: [ss_damage_all_withfunc(chain_cost(5, 3.0, 2.2), [0, 1])],
+    		proc: [ss_damage_all(ss_chain_cost(5, 3.0, 2.2), [0, 1])],
     	},
 	}, {
 		name: "凍てついた孤毒 フリーレ・ギフト",
@@ -310,6 +310,94 @@ Cards.Imples = [
 			desc: "敵単体へ水・火属性の5回連続ダメージ(計380％)",
 			turn: 8,
 			proc: [ss_damage_s(3.8, [1, 0], 5)],
+		},
+	}, {
+		name: "黎明天無獄帝 アスモデウス・トビト",
+		cardno: 4751,
+		imageno: 6573,
+		hp: 3456,
+		atk: 2744,
+		cost: 78,
+		attr: [0, 4],
+		species: [2],
+		awakes: [
+            Panel_boost([1, 0, 0, 0, 0, ], 1),
+            Attr_statusup(100, 0, [1, 0, 0, 0, 0, ]),
+            Fastskill(1),
+            NEFTJOD(30),
+            Panel_boost([1, 0, 0, 0, 0, ], 1),
+            Statusup(200, 0),
+            NEFTJOD(30),
+            Panel_boost([1, 0, 0, 0, 0, ], 1),
+            Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+            Fastskill(2),
+		],
+		as1: {
+			desc: "3チェインで敵全体へ分散攻撃/400％÷対象数",
+			proc: ChainVarianceAttack(4.0, 3)
+		},
+		ss1: {
+			desc: "味方全体のMAXHPの50％を使い、2ターン火属性の味方の攻撃力をアップ(+70％)",
+			turn: 5,
+			proc: [ss_consume_all(0.5), ss_enhance_all(0.7, 2)]
+		},
+		islegend: true,
+		Lawake: [
+            Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+            Statusup(0, 500),
+		],
+		as2: {
+			desc: "3チェインで敵全体へ分散攻撃/500％÷対象数",
+			proc: ChainVarianceAttack(5.0, 3)
+		},
+		ss2: {
+			desc: "味方全体のMAXHPの50％を使い、4ターン火属性の味方の攻撃力をアップ(+100％)",
+			turn: 8,
+			proc: [ss_consume_all(0.5), ss_enhance_all(1.0, 4)]
+		},
+	}, {
+		name: "導かれる白馬姫 リミーラ・ネール",
+		cardno: 4742,
+		imageno: 6462,
+		hp: 1878,
+		atk: 3733,
+		cost: 42,
+		attr: [2, 1],
+		species: [9],
+		awakes: [
+            Statusup(0, 200),
+            Panel_boost([0, 0, 1, 0, 0, ], 1),
+            Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+            Fastskill(1),
+            Statusup(0, 200),
+            Panel_boost([0, 0, 1, 0, 0, ], 1),
+            Attr_statusup(100, 0, [0, 1, 1, 0, 0, ]),
+            Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+            Fastskill(2),
+            Panel_boost([0, 0, 1, 0, 0, ], 2),
+		],
+		as1: {
+			desc: "3チェインで敵単体を3回連続攻撃/計350％",
+			proc: ChainDualAttack(3.5, 3, 3)
+		},
+		ss1: {
+			desc: "敵単体のHPを20％減少させる、5チェインを消費しさらに15％減少させる",
+			turn: 9,
+			proc: [ss_ratiodamage_s(ss_chain_cost(5, 0.35, 0.20))]
+		},
+		islegend: true,
+		Lawake: [
+            Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+            Statusup(0, 500),
+		],
+		as2: {
+			desc: "3チェインで敵単体を3回連続攻撃/計450％",
+			proc: ChainDualAttack(4.5, 3, 3)
+		},
+		ss2: {
+			desc: "敵単体のHPを25％減少させる、5チェインを消費しさらに15％減少させる",
+			turn: 12,
+			proc: [ss_ratiodamage_s(ss_chain_cost(5, 0.40, 0.25))]
 		},
 	},
 ];
