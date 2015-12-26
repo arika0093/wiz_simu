@@ -236,7 +236,7 @@ function ChainEnhance(rate, attr, ch) {
 	];
 }
 
-// 属性チェインエンハンス(rate: 割合, attr: 対象属性, ch: チェイン)
+// 種族チェインエンハンス(rate: 割合, attr: 対象属性, spec: 対象種族, ch: チェイン)
 function ChainSpecEnhance(rate, attr, spec, ch) {
 	return [
 		{
@@ -286,6 +286,19 @@ function Heal(rate, attr) {
 	];
 }
 
+// 種族回復(rate: 割合, attr: 対象属性, spec: 対象種族, ch: チェイン)
+function SpecHeal(rate, attr, spec) {
+	return [
+		{
+			type: "heal",
+			rate: rate,
+			chain: 0,
+			attr: attr,
+			spec: specific_specs(spec),
+			cond: always_true().cond,
+		}
+	];
+}
 
 // パネル依存回復
 // (r1: 単色割合, r2: 二色割合, r3: 三色以上割合, attr: 対象属性, ch: 発動チェイン数)
@@ -325,7 +338,33 @@ function when_leader() {
 	}
 }
 
-// HP一定以上 / 以下 / 超過 / 未満
+// HP一定以上
+function when_hp_more(p) {
+	return {
+		cond: function (fld, oi, ei) {
+			var now = fld.Allys.Now[i];
+			return now[oi].nowhp >= now[oi].maxhp * p;
+		}
+	}
+}
+// HP一定以下
+function when_hp_less(p) {
+	return {
+		cond: function (fld, oi, ei) {
+			var now = fld.Allys.Now[i];
+			return now[oi].nowhp <= now[oi].maxhp * p;
+		}
+	}
+}
+// HP一定未満
+function when_hp_under(p) {
+	return {
+		cond: function (fld, oi, ei) {
+			var now = fld.Allys.Now[i];
+			return now[oi].nowhp < now[oi].maxhp * p;
+		}
+	}
+}
 
 // ------------------------------------------------------
 // 攻撃後処理

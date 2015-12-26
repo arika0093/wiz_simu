@@ -1,15 +1,10 @@
-// 使い方
-// ex1) 5t10%SSエンハ
-// proc: [ss_enhance_all(0.1, 5)],
-// ex2) 50%全体自傷して自身を3t100%エンハ
-// proc: [damage_ally_all(0.5), ss_enhance_own(1.0, 3)]
 // ------------------------------------------------------
 // 基本系
 // ------------------------------------------------------
-// 関数なら実行、普通の値ならそのまま帰す
-function ss_ratedo(r, fld, n) {
+// 関数なら実行、普通の値ならそのまま返す
+function ss_ratedo(r, fld, oi, ei) {
 	if (r && r.caller !== undefined) {
-		return r(fld, n);
+		return r(fld, oi, ei);
 	} else {
 		return r;
 	}
@@ -23,7 +18,7 @@ function ss_damage(fld, r, atr, atkn, own, tg) {
 	var enemy = GetNowBattleEnemys(tg);
 	var now = fld.Allys.Now[own];
 	var rnd = damage_rand();
-	attack_enemy(enemy, now, atr, ss_ratedo(r, fld, own), atkn, [atr],
+	attack_enemy(enemy, now, atr, ss_ratedo(r, fld, own, tg), atkn, [atr],
 		fld.Status.chain, rnd, own, tg, true);
 	// SSフラグを立てる
 	enemy.flags.is_ss_attack = true;
@@ -251,10 +246,9 @@ function ss_resurrection(p) {
 // パネル付与効果
 function panel_addition(dsc, fc) {
 	return function (fld, n) {
-		var fc_f = ss_ratedo(fc, fld, n);
 		fld.Status.panel_add.push({
 			desc: dsc,
-			func: fc_f,
+			func: fc,
 		});
 		return true;
 	};
@@ -276,7 +270,7 @@ function panel_attackup(p) {
 function panel_chainplus(p) {
 	var dsc = "チェインプラス(+" + p + ")";
 	return panel_addition(dsc, function (fld) {
-		if (Field.Status.chain_status >= 0) {
+		if (fld.Status.chain_status >= 0) {
 			fld.Status.chain += p;
 			fld.log_push("パネル付与効果: " + dsc);
 		}
@@ -286,6 +280,14 @@ function panel_chainplus(p) {
 // ------------------------------------------------------
 // 条件/効果値分岐系
 // ------------------------------------------------------
+// 属性特攻
+function special_attr(attrs, a, b) {
+	return function (fld, oi, ei) {
+		var e = GetNowBattleEnemys(ei);
+		return (attrs[e.attr] > 0) ? a : b;
+	}
+}
+
 // 味方全体自傷して自傷した数だけ効果値を増やす
 function ss_consume_all_cond(base, p) {
 	return function (fld, n) {
