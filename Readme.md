@@ -1,6 +1,6 @@
 wiz_simu
 ====
-![](https://raw.githubusercontent.com/Arika0093/image/demo.gif)
+![](https://raw.githubusercontent.com/Arika0093/wiz_simu/master/image/demo.gif)
 
 ## License
 GNU GPL Version 3で開発しています。
