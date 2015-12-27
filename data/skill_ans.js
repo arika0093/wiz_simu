@@ -17,16 +17,6 @@ function Default_as() {
 	];
 }
 
-// 複数ASをまとめる
-function multi_as(as1) {
-	for (var i = 1; i < arguments.length; i++) {
-		for (var j = 0; j < arguments[i].length; j++) {
-			as1.push(arguments[i][j]);
-		}
-	}
-	return as1;
-}
-
 // 条件付与
 function add_cond(as, obj) {
 	for (var i = 0; i < as.length; i++) {
@@ -37,6 +27,17 @@ function add_cond(as, obj) {
 		}
 	}
 	return as;
+}
+
+// 複数ASをまとめる
+// (内部用/旧関数のため使用しないでください)
+function multi_as(as1) {
+	for (var i = 1; i < arguments.length; i++) {
+		for (var j = 0; j < arguments[i].length; j++) {
+			as1.push(arguments[i][j]);
+		}
+	}
+	return as1;
 }
 
 // ------------------------------------------------------
@@ -205,7 +206,7 @@ function ChainPanelsAttack(r1, r2, r3, ch) {
 	return [
 		{
 			type: "attack",
-			isall: true,
+			isall: false,
 			atkn: 1,
 			rate: r1,
 			chain: ch,
@@ -214,6 +215,67 @@ function ChainPanelsAttack(r1, r2, r3, ch) {
 			cond: function (fld, oi, ei, panels) {
 				var rates = [r1, r2, r3];
 				this.rate = rates[Math.min(panels.length - 1, 2)];
+				return true;
+			},
+		}
+	];
+}
+
+// デッキ属性数依存攻撃(r1: 単色割合, r2: 二色割合, r3: 三色以上割合, ch: 発動チェイン数)
+function ChainDeckAttrsAttack(r1, r2, r3, ch) {
+	return [
+		{
+			type: "attack",
+			isall: false,
+			atkn: 1,
+			rate: r1,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: create_specs(1),
+			cond: function (fld, oi, ei) {
+				var rates = [r1, r2, r3];
+				var count = 0;
+				var deck_attr = [0, 0, 0, 0, 0];
+				// 属性カウント
+				for (var i = 0; i < fld.Allys.Deck.length; i++) {
+					var cd = fld.Allys.Deck[i];
+					deck_attr[cd.attr[0]] = 1;
+				}
+				for (var i = 0; i < 5; i++) {
+					if (deck_attr[i] > 0) { count++; }
+				}
+				this.rate = rates[Math.min(count, 2)];
+				return true;
+			},
+		}
+	];
+}
+
+// デッキ特定種族数依存攻撃
+// (base: 種族が1体の時の割合, specs: 対象種族(例: [8,9]), ch: 発動チェイン数)
+function ChainDeckSpecsAttack(base, specs, ch) {
+	return [
+		{
+			type: "attack",
+			isall: false,
+			atkn: 1,
+			rate: base,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: create_specs(1),
+			cond: function (fld, oi, ei) {
+				var rates = [r1, r2, r3];
+				var count = 0;
+				// 属性カウント
+				for (var i = 0; i < fld.Allys.Deck.length; i++) {
+					var cd = fld.Allys.Deck[i];
+					for (var s = 0; s < cd.species.length; s++) {
+						if (specs.indexOf(cd.species[s]) >= 0) {
+							count++;
+						}
+					}
+				}
+				this.rate = base * count;
 				return true;
 			},
 		}

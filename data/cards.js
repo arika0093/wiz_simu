@@ -70,7 +70,7 @@ Cards = [
     	],
     	as1: {
     		desc: "火属性の味方の攻撃力をアップ、術士はさらにアップ(火：+30％ / 火+種族：+45％)",
-    		proc: multi_as(ChainEnhance(0.3, [1,0,0,0,0], 0), ChainSpecEnhance(0.45, [1,0,0,0,0], [9], 0)),
+    		proc: [ChainEnhance(0.3, [1,0,0,0,0], 0), ChainSpecEnhance(0.45, [1,0,0,0,0], [9], 0)],
     	},
     	ss1: {
     		desc: "2ターン火属性の味方の攻撃力をアップ(+40％)",
@@ -84,7 +84,7 @@ Cards = [
     	],
     	as2: {
     		desc: "火属性の味方の攻撃力をアップ、術士はさらにアップ(火：+30％ / 火+種族：+65％)",
-    		proc: multi_as(ChainEnhance(0.3, [1,0,0,0,0], 0), ChainSpecEnhance(0.65, [1,0,0,0,0], [9], 0)),
+    		proc: [ChainEnhance(0.3, [1,0,0,0,0], 0), ChainSpecEnhance(0.65, [1,0,0,0,0], [9], 0)],
     	},
     	ss2: {
     		desc: "4ターン火属性の味方の攻撃力をアップ(+60％)",
@@ -597,7 +597,7 @@ Cards = [
     	],
     	as1: {
     		desc: "火属性の味方の攻撃力をアップ、魔族・術士はさらにアップ(火：+20％ / 火+種族：+40％)",
-    		proc: multi_as(ChainEnhance(0.2, [1,0,0,0,0], 0), ChainSpecEnhance(0.4, [1,0,0,0,0], [0,9], 0)),
+    		proc: [ChainEnhance(0.2, [1,0,0,0,0], 0), ChainSpecEnhance(0.4, [1,0,0,0,0], [0,9], 0)],
     	},
     	ss1: {
     		desc: "ジャンルパネルをシャッフル",
@@ -611,7 +611,7 @@ Cards = [
     	],
     	as2: {
     		desc: "火属性の味方の攻撃力をアップ、魔族・術士はさらにアップ(火：+30％ / 火+種族：+60％)",
-    		proc: multi_as(ChainEnhance(0.3, [1,0,0,0,0], 0), ChainSpecEnhance(0.6, [1,0,0,0,0], [0,9], 0)),
+    		proc: [ChainEnhance(0.3, [1,0,0,0,0], 0), ChainSpecEnhance(0.6, [1,0,0,0,0], [0,9], 0)],
     	},
     	ss2: {
     		desc: "ジャンルパネルを火属性化し、チェインがプラス1の効果を付与",
@@ -2351,7 +2351,7 @@ Cards = [
     	],
     	as1: {
     		desc: "5チェインで敵単体を3回連続攻撃、10チェインで更にダメージアップ(5チェイン：計450％ / 10チェイン：計750％)",
-    		proc: multi_as(ChainDualAttack(4.5, 5, 3), ChainDualAttack(7.5, 10, 3)),
+    		proc: [ChainDualAttack(4.5, 5, 3), ChainDualAttack(7.5, 10, 3)],
     	},
     	ss1: {
     		desc: "味方全体のMAXHPの50%を使い敵全体へダメージ(130％×味方の人数)",
@@ -2365,7 +2365,7 @@ Cards = [
     	],
     	as2: {
     		desc: "5チェインで敵単体を3回連続攻撃、10チェインで更にダメージアップ(5チェイン：計550％ / 10チェイン：計850％)",
-    		proc: multi_as(ChainDualAttack(5.5, 5, 3), ChainDualAttack(8.5, 10, 3)),
+    		proc: [ChainDualAttack(5.5, 5, 3), ChainDualAttack(8.5, 10, 3)],
     	},
     	ss2: {
     		desc: "味方全体のMAXHPの50%を使い敵全体へダメージ(160％×味方の人数)",
@@ -6019,7 +6019,7 @@ Cards = [
     }, {
     	name: "蒼の指揮官 イツキ・マスグレイヴ",
     	cardno: 4508,
-    	imageno: -1,
+    	imageno: 6248,
     	hp: 2532,
     	atk: 2467,
     	cost: 38,
@@ -6039,12 +6039,12 @@ Cards = [
     	],
     	as1: {
     		desc: "3チェインで敵全体へダメージ/180％",
-    		proc: null
+    		proc: ChainAllAttack(1.8, 3)
     	},
     	ss1: {
     		desc: "3ターン味方全体を徐々に回復する(15％×3T)",
     		turn: 6,
-    		proc: null
+    		proc: [ss_regenerate(0.15, 3)]
     	},
     	islegend: true,
     	Lawake: [
@@ -6053,12 +6053,12 @@ Cards = [
     	],
     	as2: {
     		desc: "敵全体へダメージ/180％",
-    		proc: null
+    		proc: ChainAllAttack(1.8, 0)
     	},
     	ss2: {
     		desc: "5ターン味方全体を徐々に回復する(20％×5T)",
     		turn: 9,
-    		proc: null
+    		proc: [ss_regenerate(0.2, 5)]
     	},
     }, {
     	name: "私だけの笑顔 イツキ・マスグレイヴ",
@@ -15046,12 +15046,12 @@ Cards = [
     }, {
     	name: "傷だらけの銃爪 スミオ＆トキオ",
     	cardno: 4243,
-    	imageno: -1,
+    	imageno: 5949,
     	hp: 2567,
     	atk: 3005,
     	cost: 46,
     	attr: [2, 0],
-    	species: [-1],
+    	species: [8],
     	awakes: [
             Fastskill(1),
             Statusup(0, 200),
@@ -15066,12 +15066,12 @@ Cards = [
     	],
     	as1: {
     		desc: "5チェインで水属性の敵単体へ特効ダメージ/650％",
-    		proc: null
+    		proc: ChainAttrAttack(6.5, 5, [0,1,0,0,0])
     	},
     	ss1: {
     		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
     		turn: 8,
-    		proc: null
+    		proc: [ss_skillboost(2)]
     	},
     	islegend: true,
     	Lawake: [
@@ -15080,12 +15080,12 @@ Cards = [
     	],
     	as2: {
     		desc: "5チェインで水属性の敵単体へ特効ダメージ/750％",
-    		proc: null
+    		proc: ChainAttrAttack(7.5, 5, [0,1,0,0,0])
     	},
     	ss2: {
     		desc: "味方全体のスペシャルスキルの発動ターンを3早める",
     		turn: 11,
-    		proc: null
+    		proc: [ss_skillboost(3)]
     	},
     }, {
     	name: "幻想に共鳴するメロディ 初音ミク",
@@ -15311,7 +15311,7 @@ Cards = [
     }, {
     	name: "夢を描く箒星 ソフィ・ハーネット",
     	cardno: 4697,
-    	imageno: -1,
+    	imageno: 6367,
     	hp: 2956,
     	atk: 2280,
     	cost: 46,
@@ -15331,12 +15331,12 @@ Cards = [
     	],
     	as1: {
     		desc: "3チェインで敵単体を3回連続攻撃/計350％",
-    		proc: null
+    		proc: ChainDualAttack(3.5, 3, 3)
     	},
     	ss1: {
     		desc: "直前に発動したスペシャルスキルを発動する",
     		turn: 9,
-    		proc: null
+    		proc: [ss_latest_copy()],
     	},
     	islegend: true,
     	Lawake: [
@@ -15345,12 +15345,12 @@ Cards = [
     	],
     	as2: {
     		desc: "3チェインで敵単体を3回連続攻撃/計450％",
-    		proc: null
+    		proc: ChainDualAttack(4.5, 3, 3)
     	},
     	ss2: {
     		desc: "直前に発動したスペシャルスキルを発動する",
     		turn: 9,
-    		proc: null
+    		proc: [ss_latest_copy()],
     	},
     }, {
     	name: "時空を超えた絆 Wセーラームーン",

@@ -100,8 +100,18 @@ function pickup_answerskills(attr, type, subtype) {
 			result.push([]);
 			continue;
 		}
+		// 二重配列の場合1つにまとめる
+		var as_proc = [];
+		if (ASkill.proc[0].length) {
+			for (var a = 0; a < ASkill.proc.length; a++) {
+				multi_as(as_proc, ASkill.proc[a]);
+			}
+		} else {
+			as_proc = ASkill.proc;
+		}
+
 		// 抜き出し
-		result.push($.grep(ASkill.proc, function (e) {
+		result.push($.grep(as_proc, function (e) {
 			return (e.type == type) && (subtype !== undefined ? e.subtype == subtype : true);
 		}));
 	}
@@ -168,7 +178,6 @@ function answer_attack(card, now, enemy, as, attr, index) {
 			// 全体攻撃なら敵全体にダメージ計算
 			if (atk_as.isall) {
 				for (var tg = 0; tg < enemy.length; tg++) {
-					if (enemy[tg].nowhp <= 0) { continue; }
 					// 乱数
 					var rnd = damage_rand();
 					// ダメージ計算

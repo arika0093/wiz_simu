@@ -98,6 +98,13 @@ function get_ssturn(card, ally_n) {
 function turn_effect_check(is_turn_move) {
 	for (var i = 0; i < Field.Allys.Deck.length; i++) {
 		var now = Field.Allys.Now[i];
+		// Sort
+		now.turn_effect = now.turn_effect.sort(function (a, b) {
+			var a_pr = a.priority ? a.priority : 0;
+			var b_pr = b.priority ? b.priority : 0;
+			if (a_pr > b_pr) return +1;
+			if (a_pr < b_pr) return -1;
+		})
 		for (var te = 0; te < now.turn_effect.length; te++) {
 			var turneff = now.turn_effect[te];
 			// 同一typeが複数存在し新しい方が重複不可なら最初の要素を消す
