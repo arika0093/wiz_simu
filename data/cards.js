@@ -797,7 +797,7 @@ Cards = [
     }, {
     	name: "収穫者 ウシュガ＆ウィアノーヴァ",
     	cardno: 4274,
-    	imageno: -1,
+    	imageno: 5961,
     	hp: 2533,
     	atk: 2433,
     	cost: 53,
@@ -817,12 +817,12 @@ Cards = [
     	],
     	as1: {
     		desc: "雷属性の敵単体へ特効ダメージ、HP50％以下でさらにダメージアップ(通常：300％ / HP50％以下：1300％)",
-    		proc: null
+    		proc: [ChainAttrAttack(3, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(13, 0, [0,0,1,0,0]), when_hp_less(0.5))]
     	},
     	ss1: {
     		desc: "1ターン、致死ダメージを受けたら一度だけHP15％で起死回生",
     		turn: 8,
-    		proc: null
+    		proc: [ss_revival(0.15, 1)]
     	},
     	islegend: true,
     	Lawake: [
@@ -831,12 +831,12 @@ Cards = [
     	],
     	as2: {
     		desc: "雷属性の敵単体へ特効ダメージ、HP50％以下でさらにダメージアップ(通常：400％ / HP50％以下：1900％)",
-    		proc: null
+    		proc: [ChainAttrAttack(4, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(19, 0, [0,0,1,0,0]), when_hp_less(0.5))]
     	},
     	ss2: {
     		desc: "2ターン、致死ダメージを受けたら一度だけHP15％で起死回生",
     		turn: 10,
-    		proc: null
+    		proc: [ss_revival(0.15, 2)]
     	},
     }, {
     	name: "大地を穿つ竜魔獣 エスタロス",
@@ -2637,12 +2637,12 @@ Cards = [
     }, {
     	name: "炎の鋼鉄剣 ノア・アームストロング",
     	cardno: 4461,
-    	imageno: -1,
+    	imageno: 6186,
     	hp: 1952,
     	atk: 3248,
     	cost: 42,
     	attr: [0, -1],
-    	species: [-1],
+    	species: [8],
     	awakes: [
             Fastskill(1),
             Costdown(2),
@@ -2656,7 +2656,7 @@ Cards = [
     	],
     	as1: {
     		desc: "残りHPが80％以上でダメージアップ、リーダー時さらにアップ(HP80％以上：250％ / リーダー時：300％)",
-    		proc: null
+    		proc: [add_cond(ChainAttack(2.5, 0), when_hp_more(0.8)), add_cond(ChainAttack(3, 0), when_leader(), when_hp_more(0.8))]
     	},
     	ss1: {
     		desc: "敵全体へ火属性のダメージ(180％)",
@@ -3031,7 +3031,7 @@ Cards = [
     }, {
     	name: "天地分かつ姉弟 ミカエラ＆イザーク",
     	cardno: 4744,
-    	imageno: -1,
+    	imageno: 6580,
     	hp: 2213,
     	atk: 3142,
     	cost: 43,
@@ -3051,12 +3051,12 @@ Cards = [
     	],
     	as1: {
     		desc: "3チェインかつパネルが2色でダメージアップ、3色で更にアップ(2色：400％ / 3色：550％)",
-    		proc: null
+    		proc: ChainPanelsAttack(0, 4, 5.5, 3)
     	},
     	ss1: {
     		desc: "敵全体へ火・雷属性のダメージ(180％)",
     		turn: 8,
-    		proc: null
+    		proc: [ss_damage_all(1.8, [0,2])]
     	},
     	islegend: true,
     	Lawake: [
@@ -3065,12 +3065,12 @@ Cards = [
     	],
     	as2: {
     		desc: "MAXHP15％を使い、3チェインかつパネルが2色でダメージアップ、3色で更にアップ(2色：500％ / 3色：900％)",
-    		proc: null
+    		proc: add_cond(ChainPanelsAttack(0, 5, 9, 3), as_consume_own(0.15), as_consume_all(0.1))
     	},
     	ss2: {
     		desc: "敵全体へ火・雷属性のダメージ(260％)",
     		turn: 12,
-    		proc: null
+    		proc: [ss_damage_all(2.6, [0,2])]
     	},
     }, {
     	name: "眩き天使の夏 ミカエラ・セラフィム",
@@ -3970,12 +3970,12 @@ Cards = [
     	],
     	as1: {
     		desc: "3チェインでダメージアップ、HP80%以上でさらにダメージアップ(通常：300％：HP80％以上：400％)",
-    		proc: null
+    		proc: [ChainAttack(3, 3), add_cond(ChainAttack(4, 3), when_hp_more(0.8))]
     	},
     	ss1: {
     		desc: "敵単体へ火属性の5回連続ダメージ(計180％)",
     		turn: 6,
-    		proc: null
+    		proc: [ss_damage_s(1.8, [0], 5)]
     	},
     	islegend: true,
     	Lawake: [
@@ -3984,12 +3984,12 @@ Cards = [
     	],
     	as2: {
     		desc: "3チェインでダメージアップ、HP80%以上でさらにダメージアップ(通常：400％：HP80％以上：500％)",
-    		proc: null
+    		proc: [ChainAttack(4, 3), add_cond(ChainAttack(5, 3), when_hp_more(0.8))]
     	},
     	ss2: {
     		desc: "敵単体へ火属性の5回連続ダメージ、10チェインで10回連続攻撃に(計380％)",
     		turn: 9,
-    		proc: null
+    		proc: [ss_damage_s(3.8, [0], ss_chain_cond(10, 10, 5))]
     	},
     }, {
     	name: "闇の中で微笑む邪神 ルルベル",
@@ -4943,7 +4943,7 @@ Cards = [
     	ss1: {
     		desc: "味方全体のMAXHPの50％を使い、2ターン火属性の味方の攻撃力をアップ(+70％)",
     		turn: 5,
-    		proc: [ss_consume_all(0.5), ss_enhance_all(0.7, 2)]
+    		proc: [ss_consume_all(0.5), ss_enhance_all(0.7, 2, [1,0,0,0,0])]
     	},
     	islegend: true,
     	Lawake: [
@@ -4957,7 +4957,7 @@ Cards = [
     	ss2: {
     		desc: "味方全体のMAXHPの50％を使い、4ターン火属性の味方の攻撃力をアップ(+100％)",
     		turn: 8,
-    		proc: [ss_consume_all(0.5), ss_enhance_all(1.0, 4)]
+    		proc: [ss_consume_all(0.5), ss_enhance_all(1.0, 4, [1,0,0,0,0])]
     	},
     }, {
     	name: "AbCd-X:《闇鎧の虐帝 ウラガーン》",

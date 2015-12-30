@@ -10,11 +10,11 @@ Quests = [
 		name: "テスト用クエスト",
 		category: "test",
 		desc: "1戦しかありません。",
+		overlap: false,
 		aprnum: 1,
 		data: [
 			{
 				appearance: [1],
-				overlap: false,
 				enemy: [
 					{
 						name: "火ハーピィ",
@@ -22,18 +22,35 @@ Quests = [
 						imageno: 1,
 						attr: 0,
 						spec: 5,
-						on_popup: [
-							attack_counter(10000, 1),
-						],
+						move: {
+							// 先制行動
+							on_popup: [
+								attack_counter(10000, 2),
+							],
+							// 通常行動(ターンの値は1多くすること)
+							// 1ターン中に複数行動させたいなら配列で並べて記載
+							on_move: [
+								impregnable(5),
+								damage_block_own(2000, 5),
+							],
+							// ランダム行動
+							atrandom: true,
+							// 初期待機ターン
+							turn: 1,
+							// 行動周期
+							wait: 2,
+						},
 					}, {
 						name: "水ハーピィ",
 						hp: 10,
 						imageno: 3,
 						attr: 1,
 						spec: 5,
-						on_popup: [
-							impregnable(99),
-						],
+						move: {
+							on_popup: [
+								impregnable(99),
+							],
+						},
 					},
 				],
 			},
@@ -48,11 +65,11 @@ Quests = [
 		name: "賢王【朧】肆式(トーナメント14段)",
 		category: "tornament",
 		desc: "雷推奨のトーナメントです。1位入賞時4232pt。",
+		overlap: false,
 		aprnum: 5,
 		data: [
 			{
 				appearance: [1],
-				overlap: false,
 				enemy: [
 					{
 						name: "水魔族",
@@ -76,7 +93,6 @@ Quests = [
 				],
 			}, {
 				appearance: [2],
-				overlap: false,
 				enemy: [
 					{
 						name: "水龍族",
@@ -103,7 +119,6 @@ Quests = [
 				],
 			}, {
 				appearance: [3],
-				overlap: false,
 				enemy: [
 					{
 						name: "水亜人",
@@ -123,14 +138,15 @@ Quests = [
 						imageno: -1,
 						attr: 1,
 						spec: 5,
-						on_popup: [
-							damage_block_own(30000, 99),
-						]
+						move: {
+							on_popup: [
+								damage_block_own(30000, 99),
+							],
+						},
 					},
 				],
 			}, {
 				appearance: [4],
-				overlap: false,
 				enemy: [
 					{
 						name: "水亜人",
@@ -154,7 +170,6 @@ Quests = [
 				],
 			}, {
 				appearance: [5],
-				overlap: false,
 				enemy: [
 					{
 						name: "ロレッタ",
@@ -193,7 +208,6 @@ Quests = [
 			{
 				// 火龍 / 火龍
 				appearance: [1, 2],
-				overlap: false,
 				enemy: [
 					{
 						name: "火龍",
@@ -212,7 +226,6 @@ Quests = [
 			}, {
 				// 水龍 / 火龍
 				appearance: [1, 2],
-				overlap: false,
 				enemy: [
 					{
 						name: "水龍",
@@ -231,7 +244,6 @@ Quests = [
 			}, {
 				// 水魔族 / 雷魔族 / 火亜人
 				appearance: [3],
-				overlap: false,
 				enemy: [
 					{
 						name: "水魔族",
@@ -251,15 +263,16 @@ Quests = [
 						imageno: -1,
 						attr: 0,
 						spec: 5,
-						on_popup: [
-							attack_counter(2000, 99),
-						]
+						move: {
+							on_popup: [
+								attack_counter(2000, 99),
+							]
+						}
 					},
 				],
 			}, {
 				// 火魔法生物
 				appearance: [4],
-				overlap: false,
 				enemy: [
 					{
 						name: "火魔法生物",
@@ -267,15 +280,16 @@ Quests = [
 						imageno: -1,
 						attr: 0,
 						spec: 7,
-						on_popup: [
-							impregnable(99),
-						]
+						move: {
+							on_popup: [
+								impregnable(99),
+							]
+						}
 					},
 				],
 			}, {
 				// (ボス)火魔法生物 / ティア
 				appearance: [5],
-				overlap: false,
 				enemy: [
 					{
 						name: "火魔法生物",
@@ -283,19 +297,23 @@ Quests = [
 						imageno: -1,
 						attr: 0,
 						spec: 7,
-						on_popup: [
-							damage_block_own(9000, 99),
-						]
+						move: {
+							on_popup: [
+								damage_block_own(9000, 99),
+							]
+						}
 					}, {
 						name: "ティア",
 						imageno: -1,
 						hp: 360000,
 						attr: 0,
 						spec: 9,
-						on_popup: [
-							skill_counter(999999, 99),
-							damage_switch(when_hpdown(0.5), attr_change(1)),
-						]
+						move: {
+							on_popup: [
+								skill_counter(999999, 99),
+								damage_switch(s_enemy_when_hpdown(0.5), attr_change(1)),
+							]
+						}
 					},
 				],
 			},
@@ -311,11 +329,11 @@ Quests = [
 		category: "tornament",
 		desc: "火推奨のトーナメントです。1位入賞時2600pt。入賞確実: 5-6t / タイム勝負: 7t-",
 		aprnum: 5,
+		overlap: false,
 		data: [
 			{
 				// 雷牛 / 火タービン
 				appearance: [1, 2, 3, 4],
-				overlap: false,
 				enemy: [
 					{
 						name: "雷牛",
@@ -334,7 +352,6 @@ Quests = [
 			}, {
 				// 雷タービン / 火カーバンクル
 				appearance: [1, 2, 3, 4],
-				overlap: false,
 				enemy: [
 					{
 						name: "雷タービン",
@@ -353,7 +370,6 @@ Quests = [
 			}, {
 				// 雷カーバンクル / 水タービン
 				appearance: [1, 2, 3, 4],
-				overlap: false,
 				enemy: [
 					{
 						name: "雷カーバンクル",
@@ -372,7 +388,6 @@ Quests = [
 			}, {
 				// 雷タービン / 雷カーバンクル
 				appearance: [1, 2, 3, 4],
-				overlap: false,
 				enemy: [
 					{
 						name: "雷タービン",
@@ -391,7 +406,6 @@ Quests = [
 			}, {
 				// 火タービン / 火タービン
 				appearance: [1, 2, 3, 4],
-				overlap: false,
 				enemy: [
 					{
 						name: "火タービン",
@@ -410,7 +424,6 @@ Quests = [
 			}, {
 				// 雷牛 / 水牛
 				appearance: [1, 2, 3, 4],
-				overlap: false,
 				enemy: [
 					{
 						name: "雷牛",
@@ -429,7 +442,6 @@ Quests = [
 			}, {
 				// (ボス)火タービン / オルネ / 水カーバンクル
 				appearance: [5],
-				overlap: false,
 				enemy: [
 					{
 						name: "火タービン",
@@ -437,9 +449,11 @@ Quests = [
 						hp: 35000,
 						attr: 0,
 						spec: 6,
-						on_popup: [
-							skill_counter(9999, 99),
-						],
+						move: {
+							on_popup: [
+								skill_counter(9999, 99),
+							],
+						}
 					}, {
 						name: "オルネ",
 						imageno: 4091,

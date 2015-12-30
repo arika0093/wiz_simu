@@ -20,7 +20,6 @@ function panel(attr) {
 		answer_skill(pickup_answerskills(attr, "support"), attr);
 		// 攻撃
 		var atk_skill = pickup_answerskills(attr, "attack");
-		// デフォのASを追加する
 		$.each(atk_skill, function (i, e) {
 			if (e != null) {
 				atk_skill[i].unshift(Default_as()[0]);
@@ -33,6 +32,15 @@ function panel(attr) {
 		for (var i = 0; i < Field.Allys.Deck.length; i++) {
 			var now = Field.Allys.Now[i];
 			now.as_enhance = 0;
+		}
+		// 各精霊のSSチャージを1増やす
+		for (var i = 0; i < Field.Allys.Deck.length; i++) {
+			var now = Field.Allys.Now[i];
+			if (now.nowhp > 0) {
+				now.ss_current += 1;
+				// L処理
+				legend_timing_check(Field.Allys.Deck, Field.Allys.Now, i);
+			}
 		}
 		// 敵スキル処理
 		{
@@ -54,18 +62,9 @@ function panel(attr) {
 			// 敵ダメージ反応系
 			enemy_damage_switch_check();
 		}
-		// 各精霊のSSチャージを1増やす
-		for (var i = 0; i < Field.Allys.Deck.length; i++) {
-			var now = Field.Allys.Now[i];
-			if (now.nowhp > 0) {
-				now.ss_current += 1;
-				// L処理
-				legend_timing_check(Field.Allys.Deck, Field.Allys.Now, i);
-			}
-		}
 	}
 	// 敵の処理
-	
+	enemy_move();
 	// 次のターンへ進む
 	nextturn(false);
 	// 表示
@@ -178,6 +177,7 @@ function answer_attack(card, now, enemy, as, attr, index) {
 			// 全体攻撃なら敵全体にダメージ計算
 			if (atk_as.isall) {
 				for (var tg = 0; tg < enemy.length; tg++) {
+					if (enemy[tg].nowhp <= 0) { continue; }
 					// 乱数
 					var rnd = damage_rand();
 					// ダメージ計算
@@ -243,9 +243,9 @@ function answer_heal(as, i) {
 		}
 		if (ass.rate > 0) {
 			// 回復
-			var heal_val = Math.round(ass.rate * now.maxhp);
+			var heal_val = Math.floor(ass.rate * now.maxhp);
 			var before = now.nowhp;
-			now.nowhp = Math.min(now.maxhp, now.nowhp + heal_val);
+			heal_ally(heal_val, true);
 			Field.log_push("Unit[" + (ci + 1) + "]: HP回復(HP: " + before + "→" + now.nowhp + ")");
 			// 攻撃後処理
 			if (ass.after && ci == i) {

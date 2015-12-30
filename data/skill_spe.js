@@ -4,7 +4,7 @@
 // 関数なら実行、普通の値ならそのまま返す
 function ss_ratedo(r, fld, oi, ti, is_fst) {
 	if (r && r.caller !== undefined) {
-		return r(fld, oi, ti, is_fst);
+		return r(fld, oi, ti, (is_fst !== false));
 	} else {
 		return r;
 	}
@@ -31,7 +31,7 @@ function ss_damage_all(r, attrs) {
 			var atr = attrs[a];
 			for (var i = 0; i < GetNowBattleEnemys().length; i++) {
 				// 攻撃
-				var rt = ss_ratedo(r, fld, n, i, (i == 0));
+				var rt = ss_ratedo(r, fld, n, i, (a == 0) && (i == 0));
 				ss_damage(fld, rt, atr, 1, n, i);
 			}
 		}
@@ -43,6 +43,7 @@ function ss_damage_all(r, attrs) {
 function ss_damage_s(r, attrs, atkn) {
 	return function (fld, n) {
 		var enemys = GetNowBattleEnemys();
+		atkn = ss_ratedo(atkn, fld, n);
 		for (var an = 0; an < atkn; an++) {
 			for (var a = 0; a < attrs.length; a++) {
 				var atr = attrs[a];
@@ -61,7 +62,7 @@ function ss_ratiodamage_all(r) {
 		var enemys = GetNowBattleEnemys();
 		for (var i = 0; i < enemys.length; i++) {
 			var e = enemys[i];
-			var dmg = Math.round(e.nowhp * ratio);
+			var dmg = Math.floor(e.nowhp * ratio);
 			e.nowhp = Math.max(e.nowhp - dmg, 0);
 			// SSフラグを立てる
 			e.flags.is_ss_attack = true;
@@ -78,7 +79,7 @@ function ss_ratiodamage_s(r) {
 		var enemys = GetNowBattleEnemys();
 		var tg = auto_attack_order(enemys, -1, n);
 		var e = enemys[tg];
-		var dmg = Math.round(e.nowhp * ratio);
+		var dmg = Math.floor(e.nowhp * ratio);
 		e.nowhp = Math.max(e.nowhp - dmg, 0);
 		// SSフラグを立てる
 		e.flags.is_ss_attack = true;
@@ -122,26 +123,33 @@ function poison(dm, t) {
 // 味方サポート系
 // ------------------------------------------------------
 // 全体エンハ
-function ss_enhance_all(p, t) {
+function ss_enhance_all(p, t, attr) {
 	return function (fld, n) {
+		if (!attr) {
+			// 属性未指定なら全属性Up
+			attr = [1,1,1,1,1];
+		}
+		var rate = ss_ratedo(p, fld, n);
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
-			var rate = ss_ratedo(p, fld, n);
+			var cd = fld.Allys.Card[i];
 			var now = fld.Allys.Now[i];
-			now.turn_effect.push({
-				desc: "攻撃力アップ(" + (rate * 100) + "%)",
-				type: "ss_enhance",
-				isdual: false,
-				turn: t,
-				lim_turn: t,
-				effect: function (f, v, tg) {
-					if (v == 1) {
-						f.Allys.Now[tg].ss_enhance = rate;
-					}
-					else if (v == -1) {
-						f.Allys.Now[tg].ss_enhance = 0;
-					}
-				},
-			});
+			if (attr[cd.attr[0]] > 0) {
+				now.turn_effect.push({
+					desc: "攻撃力アップ(" + (rate * 100) + "%)",
+					type: "ss_enhance",
+					isdual: false,
+					turn: t,
+					lim_turn: t,
+					effect: function (f, v, tg) {
+						if (v == 1) {
+							f.Allys.Now[tg].ss_enhance = rate;
+						}
+						else if (v == -1) {
+							f.Allys.Now[tg].ss_enhance = 0;
+						}
+					},
+				});
+			}
 		}
 		fld.log_push("味方全体攻撃力Up(" + (rate * 100) + "%, " + t + "t)");
 		return true;
@@ -207,6 +215,30 @@ function ss_statusup_all(up_arr, t) {
 	};
 }
 
+// 起死回生(ターン数)
+function ss_revival(r, t) {
+	return function (fld, n) {
+		var rate = ss_ratedo(r, fld, n);
+		for (var i = 0; i < fld.Allys.Deck.length; i++) {
+			var now = fld.Allys.Now[i];
+			now.turn_effect.push({
+				desc: "起死回生",
+				type: "ss_revival",
+				isdual: false,
+				turn: t,
+				lim_turn: t,
+				effect: function () {},
+				before_dead: function (fld, oi) {
+					var now = fld.Allys.Now[oi];
+					now.nowhp = Math.floor(now.maxhp * rate);
+					fld.log_push("Unit[" + (oi+1) + "]: 起死回生発動");
+				}
+			});
+		}
+		return true;
+	}
+}
+
 // スキルブースト(早めるターン数)
 function ss_skillboost(f) {
 	return function (fld, n) {
@@ -237,9 +269,8 @@ function ss_heal(p) {
 		var rate = ss_ratedo(p, fld, n);
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
-			if (now.nowhp > 0) {
-				now.nowhp = Math.min(now.nowhp + (now.maxhp * rate), now.maxhp);
-			}
+			var hr = now.maxhp * rate;
+			heal_ally(hr);
 		}
 		fld.log_push("味方全体HP回復(" + (rate * 100) + "%)");
 		return true;
@@ -262,8 +293,8 @@ function ss_regenerate(p, t) {
 				effect: function (f, v, tg) {
 					if (v == 0) {
 						var nd = f.Allys.Now[tg];
-						var hr = Math.round(nd.maxhp * rate);
-						nd.nowhp = Math.min(nd.nowhp + hr, nd.maxhp);
+						var hr = Math.floor(nd.maxhp * rate);
+						heal_ally(hr, false);
 						fld.log_push("Unit[" + (tg + 1) + "]: HP徐々に回復(+" + hr + ")");
 					}
 				},
@@ -275,9 +306,9 @@ function ss_regenerate(p, t) {
 }
 
 // 蘇生
-function ss_resurrection(p) {
+function ss_resurrection(r, p) {
 	return function (fld, n) {
-		var rate = ss_ratedo(p, fld, n);
+		var rate = ss_ratedo(r, fld, n);
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
 			if (now.nowhp <= 0) {
@@ -332,7 +363,7 @@ function panel_chainplus(p) {
 // ------------------------------------------------------
 // SSコピー
 function ss_latest_copy() {
-	return function (fld, n) {
+	var func = function (fld, n) {
 		if (fld.Status.latest_ss) {
 			var ss = fld.Status.latest_ss;
 			for (var i = 0; i < ss.proc.length; i++) {
@@ -342,12 +373,50 @@ function ss_latest_copy() {
 		} else {
 			return false;
 		}
-	}
+	};
+	func.is_skillcopy = true;
+	return func;
 }
 
 // ------------------------------------------------------
 // 条件/効果値分岐系
 // ------------------------------------------------------
+// (内部用)初回値を取得するタイプの関数の場合に使用
+function get_fstval(f) {
+	var rate = 0;
+	return function (fld, oi, ei, is_fst) {
+		if (is_fst) {
+			rate = f(fld, oi, ei);
+		}
+		return rate;
+	}
+}
+
+// HP条件(一定以上)
+// 例: HP20%以上で5, それ以外で2の時は ss_hp_more(0.2, 5, 2)
+function ss_hp_more(cond, a, b) {
+	return function (fld, oi, ei) {
+		var now = fld.Allys.Now[i];
+		return (now.nowhp >= (now.maxhp * cond)) ? a : b;
+	}
+}
+
+// HP条件(一定以下)
+function ss_hp_less(cond, a, b) {
+	return function (fld, oi, ei) {
+		var now = fld.Allys.Now[i];
+		return (now.nowhp <= (now.maxhp * cond)) ? a : b;
+	}
+}
+
+// HP条件(一定未満)
+function ss_hp_under(cond, a, b) {
+	return function (fld, oi, ei) {
+		var now = fld.Allys.Now[i];
+		return (now.nowhp < (now.maxhp * cond)) ? a : b;
+	}
+}
+
 // 属性特攻
 function special_attr(attrs, a, b) {
 	return function (fld, oi, ei) {
@@ -358,25 +427,31 @@ function special_attr(attrs, a, b) {
 
 // 味方全体自傷して自傷した数だけ効果値を増やす
 function ss_consume_all_cond(base, p) {
-	var rate = 0;
-	return function (fld, oi, emp, is_fst) {
-		if (is_fst !== false) {
-			rate = base * ss_consume_all(p)(fld, oi);
+	return get_fstval(function (fld, oi) {
+		return base * ss_consume_all(p)(fld, oi);
+	});
+}
+
+// チェイン分岐
+function ss_chain_cond(ch, a, b) {
+	return function (fld) {
+		if (fld.Status.chain >= ch) {
+			return a;
 		}
-		return rate;
-	}
+		return b;
+	};
 }
 
 // チェイン消費
 function ss_chain_cost(ch, a, b) {
-	return function (fld) {
+	return get_fstval(function (fld) {
 		if (fld.Status.chain >= ch) {
 			fld.Status.chain -= ch;
 			fld.log_push("チェイン消費: " + ch);
 			return a;
 		}
 		return b;
-	}
+	});
 }
 
 // ------------------------------------------------------
@@ -386,7 +461,7 @@ function ss_chain_cost(ch, a, b) {
 function ss_consume_own(p) {
 	return function (fld, n) {
 		var now = fld.Allys.Now[n];
-		var dmg = Math.round(p * now.maxhp);
+		var dmg = Math.floor(p * now.maxhp);
 		fld.log_push("Unit[" + (n + 1) + "]: 自傷(" + (p * 100) + "%)");
 		damage_ally(dmg, n);
 		return true;
@@ -400,7 +475,7 @@ function ss_consume_all(p) {
 		fld.log_push("全体自傷(" + (p * 100) + "%)");
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
-			var dmg = Math.round(p * now.maxhp);
+			var dmg = Math.floor(p * now.maxhp);
 			if (now.nowhp > 0) {
 				damage_ally(dmg, i);
 				ct++;

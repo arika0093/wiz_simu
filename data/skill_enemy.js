@@ -1,4 +1,24 @@
 // -----------------------------------
+// 攻撃
+// -----------------------------------
+// 普通の攻撃(単発ダメージ, 攻撃対象数, 攻撃回数)
+function s_enemy_attack(dmg, tnum, atkn) {
+	return function (fld, n) {
+	}
+}
+
+// -----------------------------------
+// 状態異常攻撃
+// -----------------------------------
+// 毒(効果値, 対象数, 継続ターン)
+function s_enemy_poison(r, tnum, t) {
+	return function (fld, n) {
+
+	}
+}
+
+
+// -----------------------------------
 // 反射/カウンター関係
 // -----------------------------------
 // スキル反射
@@ -136,9 +156,9 @@ function attr_change(after) {
 // 基本
 // -----------------------------------
 // HPが指定%以下になったら実行
-function when_hpdown(rate) {
+function s_enemy_when_hpdown(rate) {
 	return function (fld, n) {
 		var e = GetNowBattleEnemys(n);
-		return e.nowhp <= Math.round(e.hp * rate);
+		return e.nowhp <= Math.floor(e.hp * rate);
 	}
 }

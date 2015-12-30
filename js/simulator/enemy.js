@@ -19,6 +19,15 @@ function CreateEnemypopup(qst) {
 				return i;
 			}
 		}));
+		if (!qst.overlap && poplist.length > 0) {
+			// 重複回避
+			for (var i = 0; i < pop_i[t].length; i++) {
+				if (poplist.indexOf(pop_i[t][i]) >= 0) {
+					pop_i[t].splice(pop_i[t].indexOf(pop_i[t][i]), 1);
+					i--;
+				}
+			}
+		}
 		var rand = Math.floor(Math.random() * pop_i[t].length);
 		poplist.push(pop_i[t][rand]);
 	}
@@ -63,13 +72,85 @@ function allkill_check(is_ssfinish) {
 	return e_ak;
 }
 
-// 敵出現時の処理を行う
+// 敵攻撃の対象配列を生成する
+function gen_enemytarget_array(tnum, atkn) {
+	var gen_ar = [[]];
+	var gen_l = Math.min(tnum, Field.Allys.Deck.length);
+	for (var an = 0; an < atkn; an++) {
+		var tg_arr = [0,1,2,3,4];
+		tg_arr.splice(gen_l, 5 - gen_l);
+		for (var i = 0; i < gen_l; i++) {
+			var a = tg_arr.concat();
+			var t = [];
+			var r = [];
+			var l = a.length;
+			var n = gen_l < l ? gen_l : l;
+			while (n-- > 0) {
+				var i = Math.floor(Math.random() * l);
+				r[n] = t[i] || a[i];
+				--l;
+				t[i] = t[l] || a[l];
+			}
+			gen_ar[an].push(r);
+		}
+	}
+	return gen_ar;
+}
+
+// 敵の攻撃処理を行う
+function enemy_move() {
+	var enemys = GetNowBattleEnemys();
+	var e_moves = [];
+	for (var i = 0; i < enemys.length; i++) {
+		// 行動が定義されてないなら飛ばす
+		var e = enemys[i];
+		if (!e.move || !e.move.on_move) { continue; }
+		// 怒り時は怒りスキルを参照する
+		var em = e.move.isangry ? e.move.on_move_angey : e.move.on_move;
+		// ターンカウントを1減らす
+		e.move.turn -= 1;
+		// ターンカウントが0なら行動
+		if (e.move.turn <= 0) {
+			// 行動番号が定義されてないなら最初に
+			if (e.move.m_index === undefined) {
+				e.move.m_index = 0;
+			}
+			// ターンカウントを戻す
+			e.move.turn = e.move.wait;
+			// ランダム取得ならランダムに、そうでないなら順番に取得
+			if (e.move.atrandom) {
+				e_moves[i] = em[Math.floor(Math.random() * em.length)];
+			} else {
+				e_moves[i] = em[e.move.m_index];
+				e.move.m_index = (e.move.m_index + 1)%(em.length);
+			}
+		} else {
+			e_moves[i] = null;
+		}
+	}
+	// 実行
+	for (var i = 0; i < e_moves.length; i++) {
+		if (e_moves[i] == null) {
+			continue;
+		}
+		// e_moves[i]が関数でない(=配列である)場合
+		if (e_moves[i].caller === undefined) {
+			for (var mi = 0; mi < e_moves[i].length; mi++) {
+				e_moves[i][mi](Field, i);
+			}
+		} else {
+			e_moves[i](Field, i);
+		}
+	}
+}
+
+// 敵出現時の先制攻撃処理を行う
 function enemy_popup_proc(){
 	var enemys = GetNowBattleEnemys();
 	for (var i = 0; i < enemys.length; i++) {
-		if (enemys[i].on_popup) {
-			for (var j = 0; j < enemys[i].on_popup.length; j++) {
-				enemys[i].on_popup[j](Field, i);
+		if (enemys[i].move && enemys[i].move.on_popup) {
+			for (var j = 0; j < enemys[i].move.on_popup.length; j++) {
+				enemys[i].move.on_popup[j](Field, i);
 			}
 		}
 	}
@@ -86,7 +167,7 @@ function enemy_turn_effect_check(is_turn_move) {
 				return (e.type == turneff.type) && (!turneff.isdual);
 			});
 			if (duals.length >= 2) {
-				now.turn_effect.splice(now.turn_effect.indexOf(duals[0]), 1);
+				enemys[i].turn_effect.splice(enemys[i].turn_effect.indexOf(duals[0]), 1);
 				continue;
 			}
 			if (turneff.lim_turn >= 0 && (!turneff._notfirst || is_turn_move)) {

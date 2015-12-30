@@ -18,11 +18,30 @@ function Default_as() {
 }
 
 // 条件付与
-function add_cond(as, obj) {
+function add_cond(as) {
 	for (var i = 0; i < as.length; i++) {
-		for (var key in obj) {
-			if (obj[key]) {
-				as[i][key] = obj[key];
+		for (var j = 1; j < arguments.length; j++) {
+			var obj = arguments[j];
+			for (var key in obj) {
+				if (obj[key]) {
+					if (as[i][key]) {
+						// 複数条件時の処理
+						var fc = function () {
+							var oj = obj;
+							var ky = key;
+							var bef_as = $.extend(true, {}, as[i]);
+							return function (a, b, c) {
+								var rst = true;
+								rst = rst && bef_as[ky](a, b, c);
+								rst = rst && oj[ky](a, b, c);
+								return rst;
+							};
+						}();
+					} else {
+						var fc = obj[key];
+					}
+					as[i][key] = fc;
+				}
 			}
 		}
 	}
@@ -334,13 +353,14 @@ function ChainPanelsEnhance(r1, r2, r3, attr, ch) {
 }
 
 // ------------------------------------------------------
-// 回復(rate: 割合, attr: 対象属性)
-function Heal(rate, attr) {
+// 回復(rate: 割合, attr: 対象属性, ch: チェイン)
+function Heal(rate, attr, ch) {
+	chain = ch ? ch : 0;
 	return [
 		{
 			type: "heal",
 			rate: rate,
-			chain: 0,
+			chain: chain,
 			attr: attr,
 			spec: create_specs(1),
 			cond: always_true().cond,
@@ -349,12 +369,13 @@ function Heal(rate, attr) {
 }
 
 // 種族回復(rate: 割合, attr: 対象属性, spec: 対象種族, ch: チェイン)
-function SpecHeal(rate, attr, spec) {
+function SpecHeal(rate, attr, spec, ch) {
+	chain = ch ? ch : 0;
 	return [
 		{
 			type: "heal",
 			rate: rate,
-			chain: 0,
+			chain: chain,
 			attr: attr,
 			spec: specific_specs(spec),
 			cond: always_true().cond,
@@ -364,12 +385,13 @@ function SpecHeal(rate, attr, spec) {
 
 // パネル依存回復
 // (r1: 単色割合, r2: 二色割合, r3: 三色以上割合, attr: 対象属性, ch: 発動チェイン数)
-function ChainPanelsHeal(r1, r2, r3, attr) {
+function ChainPanelsHeal(r1, r2, r3, attr, ch) {
+	chain = ch ? ch : 0;
 	return [
 		{
 			type: "heal",
 			rate: r1,
-			chain: 0,
+			chain: chain,
 			attr: attr,
 			cond: function (fld, oi, ei, panels) {
 				var rates = [r1, r2, r3];
@@ -404,8 +426,8 @@ function when_leader() {
 function when_hp_more(p) {
 	return {
 		cond: function (fld, oi, ei) {
-			var now = fld.Allys.Now[i];
-			return now[oi].nowhp >= now[oi].maxhp * p;
+			var now = fld.Allys.Now[oi];
+			return now.nowhp >= now.maxhp * p;
 		}
 	}
 }
@@ -413,8 +435,8 @@ function when_hp_more(p) {
 function when_hp_less(p) {
 	return {
 		cond: function (fld, oi, ei) {
-			var now = fld.Allys.Now[i];
-			return now[oi].nowhp <= now[oi].maxhp * p;
+			var now = fld.Allys.Now[oi];
+			return now.nowhp <= now.maxhp * p;
 		}
 	}
 }
@@ -422,8 +444,8 @@ function when_hp_less(p) {
 function when_hp_under(p) {
 	return {
 		cond: function (fld, oi, ei) {
-			var now = fld.Allys.Now[i];
-			return now[oi].nowhp < now[oi].maxhp * p;
+			var now = fld.Allys.Now[oi];
+			return now.nowhp < now.maxhp * p;
 		}
 	}
 }
@@ -439,7 +461,7 @@ function as_consume_all(hp) {
 				fld.log_push("全体自傷(" + (hp * 100) + "%)");
 				for (var i = 0; i < fld.Allys.Deck.length; i++) {
 					var now = fld.Allys.Now[i];
-					damage_ally(Math.round(now.maxhp * hp), i);
+					damage_ally(Math.floor(now.maxhp * hp), i);
 				}
 			}
 		}
@@ -453,7 +475,7 @@ function as_consume_own(hp) {
 			if (fst) {
 				fld.log_push("Unit[" + (oi + 1) + "]: 自傷(" + (hp * 100) + "%)");
 				var now = fld.Allys.Now[oi];
-				damage_ally(Math.round(now.maxhp * hp), oi);
+				damage_ally(Math.floor(now.maxhp * hp), oi);
 			}
 		}
 	}

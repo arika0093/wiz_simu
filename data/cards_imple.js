@@ -339,7 +339,7 @@ Cards.Imples = [
 		ss1: {
 			desc: "味方全体のMAXHPの50％を使い、2ターン火属性の味方の攻撃力をアップ(+70％)",
 			turn: 5,
-			proc: [ss_consume_all(0.5), ss_enhance_all(0.7, 2)]
+			proc: [ss_consume_all(0.5), ss_enhance_all(0.7, 2, [1, 0, 0, 0, 0])]
 		},
 		islegend: true,
 		Lawake: [
@@ -353,7 +353,7 @@ Cards.Imples = [
 		ss2: {
 			desc: "味方全体のMAXHPの50％を使い、4ターン火属性の味方の攻撃力をアップ(+100％)",
 			turn: 8,
-			proc: [ss_consume_all(0.5), ss_enhance_all(1.0, 4)]
+			proc: [ss_consume_all(0.5), ss_enhance_all(1.0, 4, [1, 0, 0, 0, 0])]
 		},
 	}, {
 		name: "導かれる白馬姫 リミーラ・ネール",
@@ -443,6 +443,226 @@ Cards.Imples = [
 			desc: "敵全体へ雷属性のダメージ(300)、さらに水属性の敵には特攻ダメージ(900)",
 			turn: 9,
 			proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 9.0, 2.0), [2])]
+		},
+	}, {
+		name: "炯眼冷徹 ルートヴィッヒ・ロメオ",
+		cardno: 4598,
+		imageno: -1,
+		hp: 2564,
+		atk: 3052,
+		cost: 46,
+		attr: [0, -1],
+		species: [-1],
+		awakes: [
+            Costdown(2),
+            Panel_boost([1, 0, 0, 0, 0, ], 1),
+            Fastskill(1),
+            Statusup(0, 200),
+            Panel_boost([1, 0, 0, 0, 0, ], 1),
+            Fastskill(2),
+            Statusup(0, 200),
+            Spec_statusup(100, 0, [8, ]),
+            Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+            Spec_statusup(0, 200, [8, ]),
+		],
+		as1: {
+			desc: "3チェインでダメージアップ、HP80%以上でさらにダメージアップ(通常：300％：HP80％以上：400％)",
+			proc: [ChainAttack(3, 3), add_cond(ChainAttack(4, 3), when_hp_more(0.8))]
+		},
+		ss1: {
+			desc: "敵単体へ火属性の5回連続ダメージ(計180％)",
+			turn: 6,
+			proc: [ss_damage_s(1.8, [0], 5)]
+		},
+		islegend: true,
+		Lawake: [
+            Statusup(0, 500),
+            Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		],
+		as2: {
+			desc: "3チェインでダメージアップ、HP80%以上でさらにダメージアップ(通常：400％：HP80％以上：500％)",
+			proc: [ChainAttack(4, 3), add_cond(ChainAttack(5, 3), when_hp_more(0.8))]
+		},
+		ss2: {
+			desc: "敵単体へ火属性の5回連続ダメージ、10チェインで10回連続攻撃に(計380％)",
+			turn: 9,
+			proc: [ss_damage_s(3.8, [0], ss_chain_cond(10, 10, 5))]
+		},
+	}, {
+		name: "蒼の指揮官 イツキ・マスグレイヴ",
+		cardno: 4508,
+		imageno: 6248,
+		hp: 2532,
+		atk: 2467,
+		cost: 38,
+		attr: [1, -1],
+		species: [8],
+		awakes: [
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Heal_afterbattle(10),
+            Fastskill(1),
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+            Fastskill(2),
+            Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+			{ /* 経験値取得量アップⅠ */ },
+		],
+		as1: {
+			desc: "3チェインで敵全体へダメージ/180％",
+			proc: ChainAllAttack(1.8, 3)
+		},
+		ss1: {
+			desc: "3ターン味方全体を徐々に回復する(15％×3T)",
+			turn: 6,
+			proc: [ss_regenerate(0.15, 3)]
+		},
+		islegend: true,
+		Lawake: [
+            Statusup(0, 400),
+            Statusup(400, 0),
+		],
+		as2: {
+			desc: "敵全体へダメージ/180％",
+			proc: ChainAllAttack(1.8, 0)
+		},
+		ss2: {
+			desc: "5ターン味方全体を徐々に回復する(20％×5T)",
+			turn: 9,
+			proc: [ss_regenerate(0.2, 5)]
+		},
+	}, {
+		name: "夏夢航路の女神様 シール・サンテ",
+		cardno: 4162,
+		imageno: 5891,
+		hp: 1865,
+		atk: 3834,
+		cost: 47,
+		attr: [1, -1],
+		species: [8],
+		awakes: [
+            Statusup(0, 200),
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Statusup(200, 0),
+            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+            Fastskill(1),
+            Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+            Spec_statusup(200, 0, [8, ]),
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Spec_statusup(0, 200, [8, ]),
+		],
+		as1: {
+			desc: "5チェインで火属性の敵単体へダメージ/650％",
+			proc: ChainAttrAttack(6.5, 5, [1, 0, 0, 0, 0])
+		},
+		ss1: {
+			desc: "直前に発動したスペシャルスキルを発動する",
+			turn: 9,
+			proc: [ss_latest_copy()]
+		},
+		islegend: true,
+		Lawake: [
+            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+            Statusup(0, 500),
+		],
+		as2: {
+			desc: "5チェインで火属性の敵単体へダメージ/750％",
+			proc: ChainAttrAttack(7.5, 5, [1, 0, 0, 0, 0])
+		},
+		ss2: {
+			desc: "直前に発動したスペシャルスキルを発動する",
+			turn: 9,
+			proc: [ss_latest_copy()]
+		},
+	}, {
+		name: "傷だらけの銃爪 スミオ＆トキオ",
+		cardno: 4243,
+		imageno: 5949,
+		hp: 2567,
+		atk: 3005,
+		cost: 46,
+		attr: [2, 0],
+		species: [8],
+		awakes: [
+            Fastskill(1),
+            Statusup(0, 200),
+            Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+            Panel_boost([0, 0, 1, 0, 0, ], 1),
+            Attr_relief([1, 0, 1, 0, 0, ], 10),
+            Attr_statusup(100, 0, [1, 0, 1, 0, 0, ]),
+            Statusup(200, 0),
+            Fastskill(2),
+            Spec_statusup(0, 200, [8, ]),
+            Spec_statusup(200, 0, [8, ]),
+		],
+		as1: {
+			desc: "5チェインで水属性の敵単体へ特効ダメージ/650％",
+			proc: ChainAttrAttack(6.5, 5, [0, 1, 0, 0, 0])
+		},
+		ss1: {
+			desc: "味方全体のスペシャルスキルの発動ターンを2早める",
+			turn: 8,
+			proc: [ss_skillboost(2)]
+		},
+		islegend: true,
+		Lawake: [
+            Statusup(400, 0),
+            Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+		],
+		as2: {
+			desc: "5チェインで水属性の敵単体へ特効ダメージ/750％",
+			proc: ChainAttrAttack(7.5, 5, [0, 1, 0, 0, 0])
+		},
+		ss2: {
+			desc: "味方全体のスペシャルスキルの発動ターンを3早める",
+			turn: 11,
+			proc: [ss_skillboost(3)]
+		},
+	}, {
+		name: "収穫者 ウシュガ＆ウィアノーヴァ",
+		cardno: 4274,
+		imageno: 5961,
+		hp: 2533,
+		atk: 2433,
+		cost: 53,
+		attr: [0, -1],
+		species: [2],
+		awakes: [
+            Fastskill(1),
+            Statusup(0, 200),
+            Panel_boost([1, 0, 0, 0, 0, ], 1),
+            Statusup(200, 0),
+            Panel_boost([1, 0, 0, 0, 0, ], 1),
+            Fastskill(1),
+            Attr_statusup(100, 0, [1, 0, 0, 0, 0, ]),
+            Spec_statusup(200, 0, [2, ]),
+            Spec_statusup(0, 200, [2, ]),
+            Spec_statusup(0, 200, [2, ]),
+		],
+		as1: {
+			desc: "雷属性の敵単体へ特効ダメージ、HP50％以下でさらにダメージアップ(通常：300％ / HP50％以下：1300％)",
+			proc: [ChainAttrAttack(3, 0, [0, 0, 1, 0, 0]), add_cond(ChainAttrAttack(13, 0, [0, 0, 1, 0, 0]), when_hp_less(0.5))]
+		},
+		ss1: {
+			desc: "1ターン、致死ダメージを受けたら一度だけHP15％で起死回生",
+			turn: 8,
+			proc: [ss_revival(0.15, 1)]
+		},
+		islegend: true,
+		Lawake: [
+            Statusup(0, 400),
+            NEFTJOD(30),
+		],
+		as2: {
+			desc: "雷属性の敵単体へ特効ダメージ、HP50％以下でさらにダメージアップ(通常：400％ / HP50％以下：1900％)",
+			proc: [ChainAttrAttack(4, 0, [0, 0, 1, 0, 0]), add_cond(ChainAttrAttack(19, 0, [0, 0, 1, 0, 0]), when_hp_less(0.5))]
+		},
+		ss2: {
+			desc: "2ターン、致死ダメージを受けたら一度だけHP15％で起死回生",
+			turn: 10,
+			proc: [ss_revival(0.15, 2)]
 		},
 	},
 ];

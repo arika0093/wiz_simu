@@ -6,20 +6,7 @@ $(function () {
 
 	var cds = loaddeck_from_url();
 	for (var idx = 1; idx <= 5; idx++) {
-		$("#deck0" + idx).focus(function () {
-			if ($(this).val() == "《精霊名を入力します》") {
-				$(this).val("");
-				$(this).css("color", "#000");
-			}
-		})
-		.blur(function () {
-			if ($(this).val().length == 0) {
-				$(this).val('《精霊名を入力します》');
-				$(this).css("color", "#888");
-			}
-		})
-		.blur();
-
+		$("#deck0" + idx).attr("placeholder", "《精霊名を入力します》");
 		decksel_show(idx, cds ? cds[idx-1] : null);
 	}
 });
@@ -83,15 +70,15 @@ function decksel_show(idx, c) {
 		$("#ally0" + idx + "_attr_sub").attr("class", "attr_" + (c.attr[1] != -1 ? c.attr[1] : c.attr[0]));
 		$("#ally0" + idx + "_img").attr("src", get_image_url(c.imageno));
 		$("#deck0" + idx).val(c.name);
-		$("#deck0" + idx).css("color", "#000");
+		//$("#deck0" + idx).css("color", "#000");
 		$("#ally0" + idx + "_as").text("AS: " + c.as1.desc);
 		$("#ally0" + idx + "_ss").text("SS: " + c.ss1.desc);
 	} else {
 		$("#ally0" + idx + "_attr_main").attr("class", "attr_none");
 		$("#ally0" + idx + "_attr_sub").attr("class", "attr_none");
 		$("#ally0" + idx + "_img").attr("src", get_image_url(-1));
-		$("#deck0" + idx).val("《精霊名を入力します》");
-		$("#deck0" + idx).css("color", "#888");
+		$("#deck0" + idx).val("");
+		//$("#deck0" + idx).css("color", "#888");
 		$("#ally0" + idx + "_as").text("");
 		$("#ally0" + idx + "_ss").text("");
 	}

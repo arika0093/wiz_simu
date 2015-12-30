@@ -15,7 +15,7 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss)
 	// 属性考慮
 	d *= attr_magnification(atk_atr, enemy.attr);
 	// 切り捨て
-	d = Math.round(d);
+	d = Math.floor(d);
 
 	// 攻撃時スキル確認
 	if (enemy.turn_effect.length > 0) {
@@ -69,9 +69,21 @@ function enemy_damage_switch_check() {
 function damage_ally(dmg, index, neft_check) {
 	var now = Field.Allys.Now[index];
 	var bef = now.nowhp;
-	now.nowhp = Math.max(Math.round(bef - dmg), 0);
+	var aft = Math.floor(bef - dmg);
+	var minhp = 0;
+	// 死亡寸前発動スキル(e.g.起死回生)の判定
+	if (aft <= 0) {
+		$.each(now.turn_effect, function (i, e) {
+			if (e.before_dead) {
+				e.before_dead(Field, index);
+				minhp = now.nowhp;
+				// 発動したら取り除く
+				now.turn_effect.splice(i, 1);
+			}
+		});
+	}
 	// 九死一生の判定
-	if (neft_check && bef >= Math.round(now.maxhp / 10) && now.nowhp <= 0) {
+	if (neft_check && bef >= Math.floor(now.maxhp / 10) && aft <= 0 && minhp == 0) {
 		var neft = pickup_awakes(Field.Allys.Deck[index], "neftjod", false);
 		if (is_legendmode(Field.Allys.Deck[index], now)) {
 			neft.concat(pickup_awakes(Field.Allys.Deck[index]), "neftjod", true);
@@ -83,16 +95,27 @@ function damage_ally(dmg, index, neft_check) {
 			});
 			if (Math.random() <= neft_total) {
 				// 九死一生発動
-				now.nowhp = 1;
+				minhp = 1;
 				Field.log_push("Unit[" + (index + 1) + "]: 九死一生発動");
 			}
 		}
 	}
+	now.nowhp = Math.max(aft, minhp);
 	Field.log_push("Unit[" + (index + 1) + "]: " + dmg + "ダメージ(残: " + now.nowhp + "/" + now.maxhp + ")");
 	// HPが0なら全効果を消す
 	if (now.nowhp <= 0) {
 		now.turn_effect = [];
 	}
+}
+
+// 味方を回復する
+function heal_ally(value, index) {
+	var now = Field.Allys.Now[index];
+	if (now.nowhp > 0) {
+		now.nowhp = Math.min(now.maxhp, now.nowhp + value);
+		return true;
+	}
+	return false;
 }
 
 // 属性有利係数を返す

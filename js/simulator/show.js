@@ -178,7 +178,7 @@ function tweet_result() {
 	var text = "「" + nam + "」を " + tot + " ターン(" + trn + ")で突破！%0A" + url;
 	var tweeturl = "https://twitter.com/intent/tweet?hashtags=wiz_simu" + "&text=" + text;
 	// 開く
-	window.open(tweeturl, "Simulator result - Tweet");
+	window.open(tweeturl, "", "menubar=no,toolbar=no,resizable=yes,scrollbars=no,width=720px,height=280px,top=40px,left=40px");
 }
 
 // fieldのログを読む
