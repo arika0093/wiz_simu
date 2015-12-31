@@ -59,12 +59,12 @@ function panel(attr) {
 					}
 				}
 			});
-			// 敵ダメージ反応系
-			enemy_damage_switch_check();
 		}
 	}
 	// 敵の処理
 	enemy_move();
+	// 敵ダメージ反応系
+	enemy_damage_switch_check();
 	// 次のターンへ進む
 	nextturn(false);
 	// 表示
@@ -170,6 +170,7 @@ function answer_attack(card, now, enemy, as, attr, index) {
 			// どの敵を攻撃するか
 			var targ = auto_attack_order(enemy, atk_attr[at], index);
 			// 各種情報
+			var g_dmg = 0;
 			var atr = atk_attr[at];
 			var atk_as = as[as_pos[targ]]
 			var en = enemy[targ];
@@ -181,7 +182,7 @@ function answer_attack(card, now, enemy, as, attr, index) {
 					// 乱数
 					var rnd = damage_rand();
 					// ダメージ計算
-					var damage = attack_enemy(enemy[tg], now, atr,
+					g_dmg += attack_enemy(enemy[tg], now, atr,
 						atk_as.rate, atk_as.atkn, attr, ch, rnd, index, tg, false);
 					enemy[tg].flags.is_as_attack[index] = true;
 				}
@@ -189,13 +190,13 @@ function answer_attack(card, now, enemy, as, attr, index) {
 				// 乱数
 				var rnd = damage_rand();
 				// ダメージ計算
-				var damage = attack_enemy(en, now, atr, atk_as.rate,
+				g_dmg = attack_enemy(en, now, atr, atk_as.rate,
 					atk_as.atkn, attr, ch, rnd, index, targ, false);
 				en.flags.is_as_attack[index] = true;
 			}
 			// 攻撃後処理
 			if (atk_as.after) {
-				atk_as.after(Field, index, (ati == 0 && at == 0));
+				atk_as.after(Field, index, (ati == 0 && at == 0), g_dmg);
 			}
 		}
 	}
@@ -245,7 +246,7 @@ function answer_heal(as, i) {
 			// 回復
 			var heal_val = Math.floor(ass.rate * now.maxhp);
 			var before = now.nowhp;
-			heal_ally(heal_val, true);
+			heal_ally(heal_val, ci, true);
 			Field.log_push("Unit[" + (ci + 1) + "]: HP回復(HP: " + before + "→" + now.nowhp + ")");
 			// 攻撃後処理
 			if (ass.after && ci == i) {

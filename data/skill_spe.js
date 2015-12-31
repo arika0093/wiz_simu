@@ -100,6 +100,7 @@ function poison(dm, t) {
 			(function () {
 				var indx = i;
 				var e = enemys[indx];
+				if (e.nowhp <= 0) { return; }
 				e.turn_effect.push({
 					desc: "毒(" + dm + ")",
 					type: "poison",
@@ -260,6 +261,14 @@ function ss_skillboost(f) {
 	}
 }
 
+// チェイン直接追加
+function ss_addchain(ch) {
+	return function (fld, n) {
+		fld.Status.chain += ch;
+		return true;
+	}
+}
+
 // ------------------------------------------------------
 // 味方回復系
 // ------------------------------------------------------
@@ -308,10 +317,11 @@ function ss_regenerate(p, t) {
 // 蘇生
 function ss_resurrection(r, p) {
 	return function (fld, n) {
-		var rate = ss_ratedo(r, fld, n);
+		var rate = ss_ratedo(p, fld, n);
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
+			var cd = fld.Allys.Card[i];
 			var now = fld.Allys.Now[i];
-			if (now.nowhp <= 0) {
+			if (now.nowhp <= 0 && r[cd.attr[0]]) {
 				now.nowhp = Math.min((now.maxhp * rate), now.maxhp);
 			}
 		}
@@ -355,6 +365,18 @@ function panel_chainplus(p) {
 			fld.Status.chain += p;
 			fld.log_push("パネル付与効果: " + dsc);
 		}
+	});
+}
+
+// 回復パネル付与効果
+function panel_healally(r) {
+	var dsc = "味方回復(" + (r * 100) + "%)";
+	return panel_addition(dsc, function (fld) {
+		for (var i = 0; i < fld.Allys.Deck.length; i++) {
+			var now = fld.Allys.Now[i];
+			heal_ally(now.maxhp * r, i);
+		}
+		fld.log_push("パネル付与効果: " + dsc);
 	});
 }
 

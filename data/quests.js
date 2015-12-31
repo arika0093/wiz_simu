@@ -25,20 +25,21 @@ Quests = [
 						move: {
 							// 先制行動
 							on_popup: [
-								attack_counter(10000, 2),
+								attack_counter(10000, 3),
 							],
 							// 通常行動(ターンの値は1多くすること)
 							// 1ターン中に複数行動させたいなら配列で並べて記載
 							on_move: [
+								s_enemy_attack(400, 3, 5, true),
 								impregnable(5),
 								damage_block_own(2000, 5),
 							],
 							// ランダム行動
-							atrandom: true,
+							atrandom: false,
 							// 初期待機ターン
-							turn: 1,
+							turn: 2,
 							// 行動周期
-							wait: 2,
+							wait: 1,
 						},
 					}, {
 						name: "水ハーピィ",
@@ -58,7 +59,7 @@ Quests = [
 	},
 
 	// -------------------------
-	// トーナメント: 参式
+	// トーナメント: 肆式
 	// -------------------------
 	{
 		id: "grade14",
@@ -312,7 +313,13 @@ Quests = [
 							on_popup: [
 								skill_counter(999999, 99),
 								damage_switch(s_enemy_when_hpdown(0.5), attr_change(1)),
-							]
+							],
+							on_move: [
+								s_enemy_attack(1300, 1, 2, true)
+							],
+							atrandom: false,
+							turn: 2,
+							wait: 2,
 						}
 					},
 				],
@@ -467,6 +474,147 @@ Quests = [
 						attr: 1,
 						spec: 7,
 					},
+				],
+			},
+		],
+	},
+
+	// -------------------------
+	// トーナメント: 壱式
+	// -------------------------
+	{
+		id: "grade11",
+		name: "賢王【暁】壱式(トーナメント11段)",
+		category: "tornament",
+		desc: "雷推奨のトーナメントです。1位入賞時2500pt。",
+		aprnum: 5,
+		overlap: false,
+		data: [
+			{
+				appearance: [1, 2, 3, 4],
+				enemy: [
+					{
+						name: "雷魔法生物",
+						hp: 18000,
+						imageno: -1,
+						attr: 2,
+						spec: 7,
+					},
+				],
+			}, {
+				appearance: [1, 2, 3, 4],
+				enemy: [
+					{
+						name: "水魔法生物",
+						hp: 30000,
+						imageno: -1,
+						attr: 1,
+						spec: 7,
+					},
+				],
+			}, {
+				appearance: [1, 2, 3, 4],
+				enemy: [
+					{
+						name: "水亜人",
+						hp: 17000,
+						imageno: -1,
+						attr: 1,
+						spec: 5,
+					}, {
+						name: "水魔族",
+						hp: 17000,
+						imageno: -1,
+						attr: 1,
+						spec: 2,
+					},
+
+				],
+			}, {
+				appearance: [1, 2, 3, 4],
+				enemy: [
+					{
+						name: "水魔法生物",
+						hp: 17000,
+						imageno: -1,
+						attr: 1,
+						spec: 7,
+					}, {
+						name: "雷魔族",
+						hp: 9000,
+						imageno: -1,
+						attr: 2,
+						spec: 2,
+					},
+
+				],
+			}, {
+				appearance: [1, 2, 3, 4],
+				enemy: [
+					{
+						name: "雷亜人",
+						hp: 9000,
+						imageno: -1,
+						attr: 2,
+						spec: 5,
+					}, {
+						name: "火魔族",
+						hp: 8000,
+						imageno: -1,
+						attr: 0,
+						spec: 2,
+					},
+
+				],
+			}, {
+				appearance: [1, 2, 3, 4],
+				enemy: [
+					{
+						name: "水亜人",
+						hp: 17000,
+						imageno: -1,
+						attr: 1,
+						spec: 5,
+					}, {
+						name: "火亜人",
+						hp: 8000,
+						imageno: -1,
+						attr: 0,
+						spec: 5,
+					},
+
+				],
+			}, {
+				appearance: [5],
+				enemy: [
+					{
+						name: "ファントム",
+						hp: 20000,
+						imageno: -1,
+						attr: 2,
+						spec: 2,
+						move: {
+							on_popup: [
+								attack_counter(99999, 99),
+							],
+						},
+					}, {
+						name: "ベルナデッタ",
+						hp: 200000,
+						imageno: -1,
+						attr: 1,
+						spec: 9,
+						move: {
+							on_move: [
+								s_enemy_attack(1300, 1, 1),
+								null, // HP全体回復(25%)
+							],
+							atrandom: false,
+							turn: 2,
+							wait: 2,
+						},
+					},
+
 				],
 			},
 		],

@@ -75,7 +75,7 @@ Cards = [
     	ss1: {
     		desc: "2ターン火属性の味方の攻撃力をアップ(+40％)",
     		turn: 6,
-    		proc: [ss_enhance_all(0.4, 2)]
+    		proc: [ss_enhance_all(0.4, 2, [1,0,0,0,0])]
     	},
     	islegend: true,
     	Lawake: [
@@ -89,7 +89,7 @@ Cards = [
     	ss2: {
     		desc: "4ターン火属性の味方の攻撃力をアップ(+60％)",
     		turn: 9,
-    		proc: [ss_enhance_all(0.6, 2)]
+    		proc: [ss_enhance_all(0.6, 2, [1, 0, 0, 0, 0])]
     	},
     }, {
     	name: "燃える屋台魂 アキラ・マスグレイヴ",

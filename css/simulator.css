@@ -150,9 +150,15 @@ div.sim_log {
 	float: left;
 }
 
-div.sim_log_inner {
+div#sim_log_inner {
 	font-size: 8.5pt;
 	padding: 0.5ex 0.5em;
+}
+
+div#sim_log_inner div {
+	font-family: Meiryo;
+	padding: 1ex 0.5em;
+	line-height: normal;
 }
 
 /* Panel Button */

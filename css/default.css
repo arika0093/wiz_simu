@@ -166,3 +166,30 @@ button:disabled, button:disabled:hover {
 	cursor: default;
 	border-color: #C0C0C0;
 }
+
+/* Dialogs */
+div.dialog_div{
+	display: none;
+}
+
+.ui-dialog{
+	font-family: Meiryo !important;
+	font-size: 10.5pt !important;
+}
+.ui-button-text{
+	font-family: Meiryo !important;
+	font-size: 10.5pt !important;
+}
+
+select.sel_indialog{
+	font-family: Meiryo !important;
+	width: 100%;
+}
+select.sel_indialog option:nth-child(even){
+	background-color: #F0F0F0;
+}
+
+input.edit_indialog{
+	font-family: Meiryo !important;
+	width: 100%;
+}

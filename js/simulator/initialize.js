@@ -164,6 +164,12 @@ $(function () {
 		// 初期状態を保存
 		Field_log.save(0, Field);
 		// 表示
+		$("#sim_log_inner").accordion({
+			active: false,
+			animate: false,
+			heightStyle: "content",
+			collapsible: true
+		});
 		sim_show();
 	} else {
 		$("#sim_info_status").html("#ERROR: URLが正しくありません。");

@@ -73,26 +73,29 @@ function allkill_check(is_ssfinish) {
 }
 
 // 敵攻撃の対象配列を生成する
-function gen_enemytarget_array(tnum, atkn) {
-	var gen_ar = [[]];
-	var gen_l = Math.min(tnum, Field.Allys.Deck.length);
+function gen_enemytarget_array(tnum, atkn, isallrnd) {
+	var gen_ar = [];
+	var deck_n = Field.Allys.Deck.length;
+	var gen_l = Math.min(tnum, deck_n);
 	for (var an = 0; an < atkn; an++) {
-		var tg_arr = [0,1,2,3,4];
-		tg_arr.splice(gen_l, 5 - gen_l);
-		for (var i = 0; i < gen_l; i++) {
-			var a = tg_arr.concat();
-			var t = [];
-			var r = [];
-			var l = a.length;
-			var n = gen_l < l ? gen_l : l;
-			while (n-- > 0) {
-				var i = Math.floor(Math.random() * l);
-				r[n] = t[i] || a[i];
-				--l;
-				t[i] = t[l] || a[l];
-			}
-			gen_ar[an].push(r);
+		if (!isallrnd && an > 0) {
+			gen_ar[an] = gen_ar[0];
+			continue;
 		}
+		var tg_arr = [0, 1, 2, 3, 4];
+		tg_arr.splice(deck_n, 5 - deck_n);
+		var a = tg_arr.concat();
+		var t = [];
+		var r = [];
+		var l = a.length;
+		var n = gen_l < l ? gen_l : l;
+		while (n-- > 0) {
+			var i = Math.floor(Math.random() * l);
+			r[n] = t[i] || a[i];
+			--l;
+			t[i] = t[l] || a[l];
+		}
+		gen_ar[an] = r;
 	}
 	return gen_ar;
 }
@@ -104,7 +107,7 @@ function enemy_move() {
 	for (var i = 0; i < enemys.length; i++) {
 		// 行動が定義されてないなら飛ばす
 		var e = enemys[i];
-		if (!e.move || !e.move.on_move) { continue; }
+		if (e.nowhp <= 0 || !e.move || !e.move.on_move) { continue; }
 		// 怒り時は怒りスキルを参照する
 		var em = e.move.isangry ? e.move.on_move_angey : e.move.on_move;
 		// ターンカウントを1減らす
@@ -167,7 +170,9 @@ function enemy_turn_effect_check(is_turn_move) {
 				return (e.type == turneff.type) && (!turneff.isdual);
 			});
 			if (duals.length >= 2) {
-				enemys[i].turn_effect.splice(enemys[i].turn_effect.indexOf(duals[0]), 1);
+				var ix = enemys[i].turn_effect.indexOf(duals[0]);
+				enemys[i].turn_effect.splice(ix, 1);
+				te = (ix <= te ? te - 1 : te);
 				continue;
 			}
 			if (turneff.lim_turn >= 0 && (!turneff._notfirst || is_turn_move)) {

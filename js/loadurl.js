@@ -1,8 +1,7 @@
 // URLのnoからデッキを読み込む
-function loaddeck_from_url() {
+function loaddeck_from_url(qr) {
 	var cds = new Array();
-	var q = getquery();
-
+	var q = getquery(qr);
 	if (q.length > 0) {
 		for (var ct = 0; ct < 5; ct++) {
 			if (q[ct] == 0) { continue; }
@@ -18,22 +17,22 @@ function loaddeck_from_url() {
 }
 
 // URLのidからquestを読み込む
-function loadquest_from_url() {
-	var q = getquery();
-
+function loadquest_from_url(qr) {
+	var q = getquery(qr);
 	if (q.length >= 6) {
 		return $.grep(Quests, function (e, i) {
 			return e.id == q[5];
 		})[0];
 	}
-	return undefined;
+	return null;
 }
 
 // URLのnoを配列にして返却する
-function getquery() {
+function getquery(qr) {
 	var result = [];
-	if (1 < window.location.search.length) {
-		var query = window.location.search.substring(1);
+	var q = qr ? qr : window.location.search;
+	if (1 < q.length) {
+		var query = q.substring(1);
 		var parameters = query.split(',');
 		for (var i = 0; i < parameters.length; i++) {
 			var param = decodeURIComponent(parameters[i]);

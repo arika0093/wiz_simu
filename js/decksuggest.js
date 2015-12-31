@@ -1,14 +1,110 @@
-// autocomplete指定 / deckload
+// autocomplete指定 / deckload / Dialog
 $(function () {
 	for (var i = 1; i <= 5; i++) {
 		set_autocmp(i)();
 	}
-
+	// Load
 	var cds = loaddeck_from_url();
 	for (var idx = 1; idx <= 5; idx++) {
 		$("#deck0" + idx).attr("placeholder", "《精霊名を入力します》");
 		decksel_show(idx, cds ? cds[idx-1] : null);
 	}
+	// Dialog
+	$("#dialog_deck_reset").dialog({
+		autoOpen: false,
+		width: 450,
+		modal: true,
+		buttons: {
+			"OK": function () {
+				deck_reset();
+				$("#deckload_cookie").val("");
+				$(this).dialog("close");
+			},
+			"Cancel": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
+	var deckload_open = function (e, ui) {
+		// Load
+		var ds = $.cookie("SavedDecks");
+		ds = ds ? JSON.parse(ds) : [];
+		// Listup
+		var opts = "";
+		for (var i = 0; i < ds.length; i++) {
+			opts += "<option value='" + ds[i].query + "'>" + ds[i].name + "</option>";
+		}
+		$("#deckload_cookie").html(opts);
+	};
+	$("#dialog_deck_load").dialog({
+		autoOpen: false,
+		width: 450,
+		modal: true,
+		open: deckload_open,
+		buttons: {
+			"読み込み": function () {
+				// Apply
+				sel_q = $("#deckload_cookie").val();
+				if (sel_q && sel_q != "") {
+					var dc = loaddeck_from_url(sel_q);
+					var qst = loadquest_from_url(sel_q);
+					for (var i = 0; i < dc.length; i++) {
+						decksel_show(i + 1, dc[i]);
+					}
+					$("#QstSel").val(qst.id);
+					$(this).dialog("close");
+				} else {
+					alert("項目を選択してください。");
+				}
+			},
+			"選択デッキを削除": function () {
+				// Load
+				var ds = $.cookie("SavedDecks");
+				ds = ds ? JSON.parse(ds) : [];
+				// Remove
+				sel_name = $("#deckload_cookie option:selected").text();
+				if (sel_name && sel_name != "") {
+					ds = $.grep(ds, function (e) {
+						return e.name != sel_name;
+					});
+					$.cookie("SavedDecks", JSON.stringify(ds), {
+						expires: 1095,
+					});
+					deckload_open();
+				} else {
+					alert("項目を選択してください。");
+				}
+			},
+			"Cancel": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
+	$("#dialog_deck_save").dialog({
+		autoOpen: false,
+		width: 450,
+		modal: true,
+		buttons: {
+			"保存": function () {
+				// Load
+				var ds = $.cookie("SavedDecks");
+				ds = ds ? JSON.parse(ds) : [];
+				// Add
+				ds.push({
+					name: $("#decksave_name").val(),
+					query: create_url(false),
+				});
+				// Save
+				$.cookie("SavedDecks", JSON.stringify(ds), {
+					expires: 1095,
+				});
+				$(this).dialog("close");
+			},
+			"Cancel": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
 });
 
 // autocompleteを指定する
@@ -85,8 +181,20 @@ function decksel_show(idx, c) {
 }
 
 // デッキ情報をリセットする
+function deck_reset_ready() {
+	$("#dialog_deck_reset").dialog("open");
+}
 function deck_reset() {
 	for (var i = 1; i <= 5; i++) {
 		decksel_show(i, null);
 	}
+}
+
+// デッキ読み込み、保存
+function deck_load_ready() {
+	$("#dialog_deck_load").dialog("open");
+}
+function deck_save_ready() {
+	$("#decksave_name").val("");
+	$("#dialog_deck_save").dialog("open");
 }

@@ -1,9 +1,29 @@
 // -----------------------------------
 // 攻撃
 // -----------------------------------
-// 普通の攻撃(単発ダメージ, 攻撃対象数, 攻撃回数)
-function s_enemy_attack(dmg, tnum, atkn) {
+// (内部用)攻撃
+function s_enemy_attack_base(fld, dmg, ei, ai) {
+	var e = GetNowBattleEnemys(ei);
+	var cd = fld.Allys.Deck[ai];
+	var now = fld.Allys.Now[ai];
+	var rate = attr_magnification(e.attr, cd.attr[0]);
+	var rnd = damage_rand();
+	var l_dmg = Math.floor(dmg * rnd * rate);
+	damage_ally(l_dmg, ai, true);
+}
+
+// 普通の攻撃(不利属性相手への単発ダメージ, 攻撃対象数, 攻撃回数, 連撃時攻撃対象を毎回変えるかどうか)
+function s_enemy_attack(dmg, tnum, atkn, is_allrandom) {
 	return function (fld, n) {
+		Field.log_push("Enemy[" + (n + 1) + "]: " + tnum + "体" +
+			(atkn > 1 ? atkn + "連撃(" : "攻撃(") +
+			dmg + ")");
+		var tg = gen_enemytarget_array(tnum, atkn, is_allrandom);
+		for (var i = 0; i < tg.length; i++) {
+			for (var j = 0; j < tg[i].length; j++) {
+				s_enemy_attack_base(fld, dmg * 2, n, tg[i][j]);
+			}
+		}
 	}
 }
 

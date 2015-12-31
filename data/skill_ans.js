@@ -402,7 +402,7 @@ function ChainPanelsHeal(r1, r2, r3, attr, ch) {
 	];
 }
 // ------------------------------------------------------
-// 各種条件
+// 各種条件(add_condで足す)
 // ------------------------------------------------------
 // 常にtrue
 function always_true() {
@@ -451,8 +451,20 @@ function when_hp_under(p) {
 }
 
 // ------------------------------------------------------
-// 攻撃後処理
+// 攻撃後処理(add_condで足す)
 // ------------------------------------------------------
+// HP吸収
+function as_hp_absorption(r) {
+	return {
+		after: function (fld, oi, fst, g_dmg) {
+			var now = fld.Allys.Now[oi];
+			var hl = 0;
+			heal_ally(hl, oi);
+			fld.log_push("Unit[" + (oi + 1) + "]: HP吸収(+" + hr + ")");
+		}
+	}
+}
+
 // 全体自傷スキル
 function as_consume_all(hp) {
 	return {

@@ -58,7 +58,7 @@ function ss_push(n) {
 		sim_show();
 	} else {
 		// failed
-		alert("SSを発動しても効果を得られません。");
+		$("#dialog_ss_noaction").dialog("open");
 	}
 }
 

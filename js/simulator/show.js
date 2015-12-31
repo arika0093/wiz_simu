@@ -5,14 +5,16 @@ function sim_show() {
 	var tt = Field.Status.totalturn;
 	var log_stat = Field.Status.log[tt] !== undefined ? tt : tt - 1;
 	for (var i = log_stat ; i >= 0; i--) {
-		logtext += "--- turn: " + (i + 1) + " ------------" + "<br/>";
+		logtext += "<h3>turn: " + (i + 1) + "" + "</h3><div>";
 		if (Field.Status.log[i] !== undefined) {
 			for (var j = 0; j < Field.Status.log[i].length; j++) {
 				logtext += Field.Status.log[i][j] + "<br/>";
 			}
 		}
+		logtext += "</div>";
 	}
-	$(".sim_log_inner").html(logtext);
+	$("#sim_log_inner").html(logtext);
+	$("#sim_log_inner").accordion("refresh");
 
 	// sim_info_turn
 	$("#sim_turns").text(
@@ -122,6 +124,18 @@ function sim_show() {
 	// sim_field_move
 	$("#fld_move_before").attr("disabled", (Field.Status.totalturn == 0));
 	$("#fld_move_after").attr("disabled", (Field.Status.totalturn == Field_log.length() - 1));
+
+	// dialog
+	$("#dialog_ss_noaction").dialog({
+		autoOpen: false,
+		modal: true,
+		width: 450,
+		buttons: {
+			"OK": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
 }
 
 // SSの残り表記を返却する
@@ -178,7 +192,7 @@ function tweet_result() {
 	var text = "「" + nam + "」を " + tot + " ターン(" + trn + ")で突破！%0A" + url;
 	var tweeturl = "https://twitter.com/intent/tweet?hashtags=wiz_simu" + "&text=" + text;
 	// 開く
-	window.open(tweeturl, "", "menubar=no,toolbar=no,resizable=yes,scrollbars=no,width=720px,height=280px,top=40px,left=40px");
+	window.open(tweeturl, "", "menubar=no,toolbar=no,resizable=yes,scrollbars=no,width=720px,height=320px,top=40px,left=40px");
 }
 
 // fieldのログを読む

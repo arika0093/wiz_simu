@@ -28,7 +28,7 @@
                                 <select class="selbox" id="QstSel">
                                     <option value="">(クエスト未選択)</option>
                                 </select>
-                                <button type="button" class="deck_reset" id="Reset" onclick="deck_reset()">リセット</button>
+                                <button type="button" class="deck_reset" id="Reset" onclick="deck_reset_ready()">リセット</button>
                             </div>
                             <div class="ally clearfix" id="ally01">
                                 <div class="attr_none" id="ally01_attr_main">.</div>
@@ -72,8 +72,8 @@
                             </div>
                         </div>
                         <div class="deckmenu">
-                            <button type="button" class="deck_saveload" id="Deckload">デッキ読込</button>
-                            <button type="button" class="deck_saveload" id="Decksave">デッキ保存</button>
+                            <button type="button" class="deck_saveload" id="Deckload" onclick="deck_load_ready()">デッキ読込</button>
+                            <button type="button" class="deck_saveload" id="Decksave" onclick="deck_save_ready()">デッキ保存</button>
                         </div>
                         <div class="twitter">
                             <a class="twitter-timeline" href="https://twitter.com/hashtag/wiz_simu" data-widget-id="679640455609368576">#wiz_simu のツイート</a>
@@ -93,9 +93,24 @@
     <!-- Footer -->
     <div id="Footer"></div>
 
+    <!-- Dialog Contents -->
+    <div class="dialog_div" id="dialog_deck_reset" title="Deck Reset">
+        <p>編集中のデッキをリセットしてよろしいですか？</p>
+    </div>
+    <div class="dialog_div" id="dialog_deck_load" title="Deck Load">
+        <p>デッキを読み込みます。</p>
+        <select class="sel_indialog" id="deckload_cookie" size="8">
+        </select>
+    </div>
+    <div class="dialog_div" id="dialog_deck_save" title="Deck Save">
+        <p>現在のデッキを保存します。</p>
+        <input class="edit_indialog" id="decksave_name" placeholder="《保存したいデッキ名を入力》"/>
+    </div>
+
     <!-- Javascript -->
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script type="text/javascript" charset="UTF-8" src="./js/pagetemp.js"></script>
     <!-- 他jsに依存しない基礎関数群 -->
     <script type="text/javascript" charset="UTF-8" src="./js/simulator/awake.js"></script>
@@ -112,19 +127,5 @@
     <script type="text/javascript" charset="UTF-8" src="./js/loadurl.js"></script>
     <script type="text/javascript" charset="UTF-8" src="./js/decksuggest.js"></script>
     <script type="text/javascript" charset="UTF-8" src="./js/questsel.js"></script>
-    <!-- Twitter処理 -->
-    <script>
-        $(window).load(function () {
-            function setcss_twitter() {
-                var ifr = $('iframe');
-                if (ifr.length > 0) {
-                    $('iframe').contents().find('div').css('max-width', '100%');
-                } else {
-                    setTimeout(setcss_twitter, 300);
-                }
-            }
-            //setcss_twitter();
-        });
-    </script>
 </body>
 </html>
