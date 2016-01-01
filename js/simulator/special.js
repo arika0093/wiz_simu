@@ -145,6 +145,7 @@ function turn_effect_check(is_turn_move, is_battle_move) {
 		if (turneff.lim_turn == 0) {
 			// 残りターンが0なら除外
 			now.turn_effect.splice(all_turneff[te].positon, 1);
+			all_turneff.splice(te, 1);
 			te--;
 		}
 	}
