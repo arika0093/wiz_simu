@@ -19,7 +19,7 @@ function ss_push(n) {
 			Field.Status.latest_ss = ss;
 		}
 		// ターン効果確認
-		turn_effect_check(false);
+		turn_effect_check(false, is_allkill());
 		// 敵スキル関係の処理
 		{
 			// スキル反射確認
@@ -97,37 +97,55 @@ function get_ssturn(card, ally_n) {
 }
 
 // 効果の継続確認を行う
-function turn_effect_check(is_turn_move) {
+function turn_effect_check(is_turn_move, is_battle_move) {
+	// 全効果をまとめる
+	var all_turneff = [];
+	var ct = 0;
 	for (var i = 0; i < Field.Allys.Deck.length; i++) {
 		var now = Field.Allys.Now[i];
-		// Sort
-		now.turn_effect = now.turn_effect.sort(function (a, b) {
-			var a_pr = a.priority ? a.priority : 0;
-			var b_pr = b.priority ? b.priority : 0;
-			if (a_pr > b_pr) return +1;
-			if (a_pr < b_pr) return -1;
-		})
-		for (var te = 0; te < now.turn_effect.length; te++) {
-			var turneff = now.turn_effect[te];
-			// 同一typeが複数存在し新しい方が重複不可なら最初の要素を消す
-			var duals = $.grep(now.turn_effect, function (e) {
-				return (e.type == turneff.type) && (!turneff.isdual);
-			});
-			if (duals.length >= 2) {
-				now.turn_effect.splice(now.turn_effect.indexOf(duals[0]), 1);
-				continue;
+		for (var j = 0; j < now.turn_effect.length; j++) {
+			all_turneff[ct] = {
+				index: i,
+				positon: j,
+				effect: Field.Allys.Now[i].turn_effect[j],
+			};
+			ct++;
+		}
+	}
+	// Sort
+	all_turneff = all_turneff.sort(function (a, b) {
+		var a_pr = a.effect.priority ? a.effect.priority : 0;
+		var b_pr = b.effect.priority ? b.effect.priority : 0;
+		if (a_pr < b_pr) return +1;
+		if (a_pr > b_pr) return -1;
+	})
+	for (var te = 0; te < all_turneff.length; te++) {
+		var now = Field.Allys.Now[all_turneff[te].index];
+		var turneff = all_turneff[te].effect;
+		// 同一typeが複数存在し新しい方が重複不可なら最初の要素を消す
+		var duals = $.grep(now.turn_effect, function (e) {
+			return (e.type == turneff.type) && (!turneff.isdual);
+		});
+		if (duals.length >= 2) {
+			now.turn_effect.splice(now.turn_effect.indexOf(duals[0]), 1);
+			continue;
+		}
+		if (turneff.lim_turn >= 0 && (!turneff._notfirst || is_turn_move)) {
+			// 発動
+			if (!turneff._notfirst) {
+				var state = "first";
+			} else if (turneff.lim_turn == 0) {
+				var state = "end";
+			} else {
+				var state = "";
 			}
-			if (turneff.lim_turn >= 0 && (!turneff._notfirst || is_turn_move)) {
-				// 発動
-				var prm = (!turneff._notfirst ? 1 : Math.min(turneff.lim_turn - 1, 0));
-				turneff.effect(Field, prm, i);
-				turneff._notfirst = true;
-			}
-			if (turneff.lim_turn == 0) {
-				// 残りターンが0なら除外
-				now.turn_effect.splice(te, 1);
-				te--;
-			}
+			turneff.effect(Field, all_turneff[te].index, turneff, state, is_turn_move, is_allkill());
+			turneff._notfirst = true;
+		}
+		if (turneff.lim_turn == 0) {
+			// 残りターンが0なら除外
+			now.turn_effect.splice(all_turneff[te].positon, 1);
+			te--;
 		}
 	}
 }

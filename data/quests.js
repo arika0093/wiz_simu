@@ -26,6 +26,7 @@ Quests = [
 							// 先制行動
 							on_popup: [
 								attack_counter(10000, 3),
+								s_enemy_all_sealed(2, 1),
 							],
 							// 通常行動(ターンの値は1多くすること)
 							// 1ターン中に複数行動させたいなら配列で並べて記載
@@ -60,6 +61,7 @@ Quests = [
 
 	// -------------------------
 	// トーナメント: 肆式
+	//   敵行動:. 要検証
 	// -------------------------
 	{
 		id: "grade14",
@@ -78,6 +80,15 @@ Quests = [
 						imageno: -1,
 						attr: 1,
 						spec: 2,
+						move: {
+							on_move: [
+								s_enemy_chain_sealed(5),
+								null,
+							],
+							atrandom: false,
+							turn: 1,
+							wait: 1,
+						},
 					}, {
 						name: "水亜人",
 						hp: 9500,
@@ -107,9 +118,11 @@ Quests = [
 						imageno: -1,
 						attr: 1,
 						spec: 7,
-						on_popup: [
-							impregnable(99),
-						]
+						move: {
+							on_popup: [
+								impregnable(99),
+							]
+						}
 					}, {
 						name: "水亜人",
 						hp: 36300,
@@ -161,6 +174,15 @@ Quests = [
 						imageno: -1,
 						attr: 1,
 						spec: 6,
+						move: {
+							on_move: [
+								s_enemy_chain_break(),
+								null,
+							],
+							atrandom: false,
+							turn: 1,
+							wait: 1,
+						},
 					}, {
 						name: "水亜人",
 						hp: 36300,
@@ -184,12 +206,31 @@ Quests = [
 						imageno: -1,
 						attr: 1,
 						spec: 0,
+						move: {
+							on_move: [
+								// 要検証
+								s_enemy_poison(500, 5, 5),
+								s_enemy_attack(1400, 1, 1),
+							],
+							atrandom: false,
+							turn: 1,
+							wait: 1,
+						},
 					}, {
 						name: "ベルナデッタ",
 						hp: 100000,
 						imageno: -1,
 						attr: 1,
 						spec: 9,
+						move: {
+							on_move: [
+								s_enemy_as_sealed(500, 5, 3),
+								s_enemy_attack(1400, 1, 1),
+							],
+							atrandom: false,
+							turn: 1,
+							wait: 1,
+						},
 					},
 				],
 			},
@@ -198,6 +239,7 @@ Quests = [
 
 	// -------------------------
 	// トーナメント: 参式
+	//   敵行動:. 要検証
 	// -------------------------
 	{
 		id: "grade13",
@@ -329,6 +371,7 @@ Quests = [
 
 	// -------------------------
 	// トーナメント: 弐式
+	//   敵行動:. 要検証
 	// -------------------------
 	{
 		id: "grade12",
@@ -473,6 +516,15 @@ Quests = [
 						hp: 25000,
 						attr: 1,
 						spec: 7,
+						move: {
+							on_move: [
+								s_enemy_ss_sealed(5, 2),
+								null,
+							],
+							atrandom: false,
+							turn: 1,
+							wait: 1,
+						}
 					},
 				],
 			},
@@ -481,6 +533,7 @@ Quests = [
 
 	// -------------------------
 	// トーナメント: 壱式
+	//   敵行動:. 要検証
 	// -------------------------
 	{
 		id: "grade11",

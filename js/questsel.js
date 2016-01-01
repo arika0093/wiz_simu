@@ -22,7 +22,7 @@ $(function () {
 	}
 
 	var q = loadquest_from_url();
-	if (q !== undefined) {
+	if (q) {
 		$("select[id='QstSel'] option[value=" + q.id + "]").prop('selected', true);
 		//$("#Qstdesc").text(q.desc);
 	}
@@ -52,7 +52,7 @@ function sim_start() {
 	// redirect
 	var query = create_url(true);
 	if (query == null) {
-		alert("入力内容に漏れがあります。クエストを指定して、精霊を最低一体以上指定してください。");
+		$("#dialog_sim_error").dialog("open");
 		return;
 	}
 	var redirect_url = './simulator.html' + query;

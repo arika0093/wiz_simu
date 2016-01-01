@@ -177,8 +177,7 @@ function enemy_turn_effect_check(is_turn_move) {
 			}
 			if (turneff.lim_turn >= 0 && (!turneff._notfirst || is_turn_move)) {
 				// 発動
-				var prm = (!turneff._notfirst ? 1 : Math.min(turneff.lim_turn - 1, 0));
-				turneff.effect(Field, prm, i);
+				turneff.effect(Field, i, turneff, turneff.lim_turn == 0, is_turn_move, is_allkill());
 				turneff._notfirst = true;
 			}
 			if (turneff.lim_turn == 0) {

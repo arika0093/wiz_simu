@@ -81,7 +81,7 @@
 			<div class="enemy clearfix" id="enemy01">
 				<div class="attr_none" id="enemy01_attr_main"></div>
 				<div class="attr_none" id="enemy01_attr_sub"></div>
-				<img class="chara_img" id="enemy01_img" src="./image/noimage.png"/>
+				<img class="chara_img" id="enemy01_img" src="./image/noimage.png" ondblclick="target_allselect(0)" />
 				<p class="enemy_name" id="enemy01_name"></p>
 				<p class="enemy_hp" id="enemy01_hp"></p>
 				<p class="enemy_stat" id="enemy01_stats"></p>
@@ -89,7 +89,7 @@
 			<div class="enemy clearfix" id="enemy02">
 				<div class="attr_none" id="enemy02_attr_main"></div>
 				<div class="attr_none" id="enemy02_attr_sub"></div>
-				<img class="chara_img" id="enemy02_img" src="./image/noimage.png"/>
+                <img class="chara_img" id="enemy02_img" src="./image/noimage.png" ondblclick="target_allselect(1)" />
 				<p class="enemy_name" id="enemy02_name"></p>
 				<p class="enemy_hp" id="enemy02_hp"></p>
 				<p class="enemy_stat" id="enemy02_stats"></p>
@@ -97,7 +97,7 @@
 			<div class="enemy clearfix" id="enemy03">
 				<div class="attr_none" id="enemy03_attr_main"></div>
 				<div class="attr_none" id="enemy03_attr_sub"></div>
-				<img class="chara_img" id="enemy03_img" src="./image/noimage.png"/>
+                <img class="chara_img" id="enemy03_img" src="./image/noimage.png" ondblclick="target_allselect(2)" />
 				<p class="enemy_name" id="enemy03_name"></p>
 				<p class="enemy_hp" id="enemy03_hp"></p>
 				<p class="enemy_stat" id="enemy03_stats"></p>
@@ -143,7 +143,7 @@
 				<button class="panel_button" id="pnl_attr_04" onclick="panel([0,4])">火闇</button>
 				<button class="panel_button" id="pnl_attr_14" onclick="panel([1,4])">水闇</button>
 				<button class="panel_button" id="pnl_attr_24" onclick="panel([2,4])">雷闇</button>
-				<button class="panel_button" id="pnl_attr_miss" onclick="panel([])">誤答</button>
+				<button class="panel_button" id="pnl_attr_miss" onclick="answer_miss()">誤答</button>
 			</div>
 			<div class="sim_option">
 
@@ -183,6 +183,7 @@
 	<script type="text/javascript" charset="UTF-8" src="./data/quests.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="./data/cards.js"></script>
 	<!-- 処理群(データ群に依存する) -->
+    <script type="text/javascript" charset="UTF-8" src="./js/createurl.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="./js/loadurl.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="./js/simulator/initialize.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="./js/simulator/show.js"></script>

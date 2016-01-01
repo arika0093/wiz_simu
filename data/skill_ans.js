@@ -7,6 +7,7 @@ function Default_as() {
 		{
 			type: "attack",
 			isall: false,
+			isdefault: true,
 			atkn: 1,
 			rate: 1,
 			chain: 0,
@@ -278,7 +279,7 @@ function ChainDeckSpecsAttack(base, specs, ch) {
 			type: "attack",
 			isall: false,
 			atkn: 1,
-			rate: base,
+			rate: 1 + base,
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),

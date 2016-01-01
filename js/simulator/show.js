@@ -17,9 +17,17 @@ function sim_show() {
 	$("#sim_log_inner").accordion("refresh");
 
 	// sim_info_turn
+	if (Field.Status.chain_status == 1) {
+		var chain_state = "(保護)";
+	} else if (Field.Status.chain_status == -1) {
+		var chain_state = "(封印)";
+	} else {
+		var chain_state = "";
+	}
+
 	$("#sim_turns").text(
-		"turn: " + totalturn_string() + " / chain: " + Field.Status.chain + " / "
-			+ Field.Status.nowbattle + "戦目 (" + durturn_string() + ")"
+		"turn: " + totalturn_string() + " / chain: " + Field.Status.chain
+			+ chain_state + " / " + Field.Status.nowbattle + "戦目 (" + durturn_string() + ")"
 	);
 	// sim_info_status
 	$("#sim_info_status").text(Field.Quest.name);
@@ -49,9 +57,12 @@ function sim_show() {
 			$("#ally0" + (i + 1) + "_img").attr("src", get_image_url(dec.imageno));
 			$("#ally0" + (i + 1) + "_name").text(dec.name);
 			$("#ally0" + (i + 1) + "_status").text("HP: " + now.nowhp + "/" + now.maxhp + ", ATK: " + now.atk);
-			// SSターン取得
+			// SSが発動可能かどうか
 			var sst = get_ssturn(dec, now);
-			if (sst[0] == 0 && now.nowhp > 0 && !Field.Status.finish) {
+			var ss_disabled = $.grep(now.turn_effect, function (e) {
+				return e.ss_disabled;
+			}).length > 0;
+			if (!ss_disabled && sst[0] == 0 && now.nowhp > 0 && !Field.Status.finish) {
 				// SS発動可能
 				$("#ally0" + (i + 1) + "_ss_button").attr("class", "ally_ss_button");
 				$("#ally0" + (i + 1) + "_ss_button").text(ss_remain_text(sst));
@@ -184,15 +195,8 @@ function durturn_string() {
 
 // ツイート
 function tweet_result() {
-	// URL生成
-	var url = absolutePath("./" + location.search);
-	var nam = Field.Quest.name;
-	var trn = durturn_string().replace("+", "%2B");
-	var tot = totalturn_string().replace("+", "%2B");
-	var text = "「" + nam + "」を " + tot + " ターン(" + trn + ")で突破！%0A" + url;
-	var tweeturl = "https://twitter.com/intent/tweet?hashtags=wiz_simu" + "&text=" + text;
-	// 開く
-	window.open(tweeturl, "", "menubar=no,toolbar=no,resizable=yes,scrollbars=no,width=720px,height=320px,top=40px,left=40px");
+	// URL生成して開く
+	create_tweeturl(Field.Quest.name, durturn_string(), totalturn_string());
 }
 
 // fieldのログを読む
@@ -210,6 +214,11 @@ function back_decksel() {
 	var param = location.search;
 	// 移動
 	location.href = "./index.html" + param;
+}
+
+// タゲ選択
+function target_allselect(n) {
+	$("#attack_target_sel").val(n + "");
 }
 
 // 相対パス → 絶対パス

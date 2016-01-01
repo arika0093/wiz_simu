@@ -1,66 +1,71 @@
 // 解答したときの処理
 function panel(attr) {
-	if (attr.length <= 0) {
-		// 誤答処理
-		if (Field.Status.chain_status <= 0) {
-			Field.Status.chain = 0;
+	// チェイン+1
+	if (Field.Status.chain_status >= 0) {
+		Field.Status.chain += 1;
+	}
+	// 付与効果実行
+	var pnladd = Number($("#panel_add_sel").val());
+	if (pnladd != 0) {
+		Field.Status.panel_add[pnladd - 1].func(Field);
+	}
+	// エンハ処理
+	answer_skill(pickup_answerskills(attr, "support"), attr);
+	// 攻撃
+	var atk_skill = pickup_answerskills(attr, "attack");
+	$.each(atk_skill, function (i, e) {
+		if (e != null) {
+			atk_skill[i].unshift(Default_as()[0]);
 		}
-		Field.log_push("誤答");
-	} else {
-		// チェイン+1
-		if (Field.Status.chain_status >= 0) {
-			Field.Status.chain += 1;
-		}
-		// 付与効果実行
-		var pnladd = Number($("#panel_add_sel").val());
-		if (pnladd != 0) {
-			Field.Status.panel_add[pnladd - 1].func(Field);
-		}
-		// エンハ処理
-		answer_skill(pickup_answerskills(attr, "support"), attr);
-		// 攻撃
-		var atk_skill = pickup_answerskills(attr, "attack");
-		$.each(atk_skill, function (i, e) {
-			if (e != null) {
-				atk_skill[i].unshift(Default_as()[0]);
-			}
-		});
-		answer_skill(atk_skill, attr);
-		// 回復
-		answer_skill(pickup_answerskills(attr, "heal"), attr);
-		// ASエンハ値リセット
-		for (var i = 0; i < Field.Allys.Deck.length; i++) {
-			var now = Field.Allys.Now[i];
-			now.as_enhance = 0;
-		}
-		// 各精霊のSSチャージを1増やす
-		for (var i = 0; i < Field.Allys.Deck.length; i++) {
-			var now = Field.Allys.Now[i];
-			if (now.nowhp > 0) {
-				now.ss_current += 1;
-				// L処理
-				legend_timing_check(Field.Allys.Deck, Field.Allys.Now, i);
-			}
-		}
-		// 敵スキル処理
-		{
-			// 物理カウンター
-			var enemys = GetNowBattleEnemys();
-			$.each(enemys, function (i, e) {
-				for (var n = 0; n < Field.Allys.Deck.length; n++) {
-					if (e.flags.is_as_attack[n] > 0 && e.turn_effect.length > 0) {
-						var skillct = $.grep(e.turn_effect, function (g) {
-							return g.on_attack_damage !== undefined;
-						});
-						for (var j = 0; j < skillct.length; j++) {
-							skillct[j].on_attack_damage(Field, i, n);
-						}
-						e.flags.is_as_attack[n] = false;
-					}
-				}
-			});
+	});
+	answer_skill(atk_skill, attr);
+	// 回復
+	answer_skill(pickup_answerskills(attr, "heal"), attr);
+	// 各精霊のSSチャージを1増やす
+	for (var i = 0; i < Field.Allys.Deck.length; i++) {
+		var now = Field.Allys.Now[i];
+		if (now.nowhp > 0) {
+			now.ss_current += 1;
+			// L処理
+			legend_timing_check(Field.Allys.Deck, Field.Allys.Now, i);
 		}
 	}
+	// 敵スキル処理
+	{
+		// 物理カウンター
+		var enemys = GetNowBattleEnemys();
+		$.each(enemys, function (i, e) {
+			for (var n = 0; n < Field.Allys.Deck.length; n++) {
+				if (e.flags.is_as_attack[n] > 0 && e.turn_effect.length > 0) {
+					var skillct = $.grep(e.turn_effect, function (g) {
+						return g.on_attack_damage;
+					});
+					for (var j = 0; j < skillct.length; j++) {
+						skillct[j].on_attack_damage(Field, i, n);
+					}
+					e.flags.is_as_attack[n] = false;
+				}
+			}
+		});
+	}
+	// 敵の処理
+	enemy_move();
+	// 敵ダメージ反応系
+	enemy_damage_switch_check();
+	// 次のターンへ進む
+	nextturn(false);
+	// 表示
+	sim_show();
+}
+
+// 誤答
+function answer_miss()
+{
+	// 誤答処理
+	if (Field.Status.chain_status <= 0) {
+		Field.Status.chain = 0;
+	}
+	Field.log_push("誤答");
 	// 敵の処理
 	enemy_move();
 	// 敵ダメージ反応系
@@ -120,12 +125,23 @@ function pickup_answerskills(attr, type, subtype) {
 // アンサースキルの処理
 function answer_skill(as_arr, panel) {
 	for (var i = 0; i < as_arr.length; i++) {
-		// ASがないなら処理しない
-		if (as_arr[i] == null || as_arr[i].length <= 0) { continue; }
-
 		var card = Field.Allys.Deck[i];
 		var now = Field.Allys.Now[i];
 		var enemy_dat = GetNowBattleEnemys();
+		// 攻撃前処理
+		$.each(now.turn_effect, function (_i, e) {
+			if (e.bef_answer) {
+				for (var ali = 0; ali < as_arr[i].length; ali++) {
+					// 攻撃前処理を行い、戻り値がfalseなら除去する
+					if (!e.bef_answer(Field, as_arr[i][ali])) {
+						as_arr[i].splice(ali, 1);
+						ali--;
+					}
+				}
+			}
+		})
+		// ASがないなら処理しない
+		if (as_arr[i] == null || as_arr[i].length <= 0) { continue; }
 		// 種類で分岐
 		switch (as_arr[i][0].type) {
 			case "attack":
@@ -200,6 +216,8 @@ function answer_attack(card, now, enemy, as, attr, index) {
 			}
 		}
 	}
+	// ASエンハを消去
+	now.as_enhance = 0;
 }
 
 // エンハスキルの処理

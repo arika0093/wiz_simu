@@ -45,6 +45,7 @@ var Field = {
 		// チェイン関連
 		chain: 0,
 		chain_status: 0,
+		chainstat_turn: 0,
 		// パネル付与関連
 		panel_add: [],
 		// 最後に使用したSS
@@ -132,6 +133,7 @@ $(function () {
 			now.nowhp = card.hp + mana;
 			now.atk = card.atk + mana;
 			now.flags = {};
+			now.flags.skill_counter = [];
 			now.turn_effect = [];
 		}
 		// 潜在を反映させる
@@ -185,32 +187,45 @@ $(window).load(function () {
 
 // 次のターンに進む
 function nextturn(is_ssfin) {
-	// ターンエフェクト減算処理
-	for (var i = 0; i < Field.Allys.Deck.length; i++) {
-		for (var j = 0; j < Field.Allys.Now[i].turn_effect.length; j++) {
-			Field.Allys.Now[i].turn_effect[j].lim_turn -= 1;
+	var f_st = Field.Status;
+	// 全滅していなかったら効果ターンを減少
+	var killed = is_allkill();
+	if (!killed) {
+		// 味方ターンエフェクト減算処理
+		for (var i = 0; i < Field.Allys.Deck.length; i++) {
+			for (var j = 0; j < Field.Allys.Now[i].turn_effect.length; j++) {
+				Field.Allys.Now[i].turn_effect[j].lim_turn -= 1;
+			}
 		}
-	}
-	var enemys = GetNowBattleEnemys();
-	for (var i = 0; i < enemys.length; i++) {
-		for (var j = 0; j < enemys[i].turn_effect.length; j++) {
-			enemys[i].turn_effect[j].lim_turn -= 1;
+		// 敵ターンエフェクト減算処理
+		var enemys = GetNowBattleEnemys();
+		for (var i = 0; i < enemys.length; i++) {
+			for (var j = 0; j < enemys[i].turn_effect.length; j++) {
+				enemys[i].turn_effect[j].lim_turn -= 1;
+			}
 		}
 	}
 	// 効果の継続確認
 	turn_effect_check(true);
 	enemy_turn_effect_check(true);
-	// 全滅確認を行う
-	var killed = allkill_check(is_ssfin);
-	// 全滅していたらここで新しい敵の追加処理を行う
-	if (killed && !Field.Status.finish) {
+	// チェイン状態の確認
+	if (f_st.chain_status != 0) {
+		f_st.chainstat_turn -= 1;
+		if (f_st.chainstat_turn == 0) {
+			f_st.chain_status = 0;
+			Field.log_push("Status: チェイン状態解除");
+		}
+	}
+	// 全滅していたらここで新しい敵の処理を行う
+	killed = allkill_check(is_ssfin);
+	if (killed && !f_st.finish) {
 		enemy_popup_proc();
 	}
 	// SSで全滅 or パネルを踏んでる
 	if (!is_ssfin || killed) {
-		Field.Status.totalturn += 1;
+		f_st.totalturn += 1;
 	}
-	Field.Status.nowturn += 1;
+	f_st.nowturn += 1;
 	// ログ保存
-	Field_log.save(Field.Status.totalturn, Field);
+	Field_log.save(f_st.totalturn, Field);
 }

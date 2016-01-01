@@ -40,10 +40,10 @@ function ss_damage_all(r, attrs) {
 }
 
 // 敵単体に指定属性のダメージ
-function ss_damage_s(r, attrs, atkn) {
+function ss_damage_s(r, attrs, atn) {
 	return function (fld, n) {
 		var enemys = GetNowBattleEnemys();
-		atkn = ss_ratedo(atkn, fld, n);
+		atkn = ss_ratedo(atn, fld, n);
 		for (var an = 0; an < atkn; an++) {
 			for (var a = 0; a < attrs.length; a++) {
 				var atr = attrs[a];
@@ -88,6 +88,43 @@ function ss_ratiodamage_s(r) {
 	}
 }
 
+// スキルカウンター待機(効果値, ターン数)
+function ss_skillcounter(r, t) {
+	return function (fld, n) {
+		var rate = ss_ratedo(r, fld, n);
+		for (var i = 0; i < fld.Allys.Deck.length; i++) {
+			var now = fld.Allys.Now[i];
+			now.turn_effect.push({
+				desc: "スキルカウンター待機(効果値: " + (rate * 100) + ")",
+				type: "ss_skillcounter",
+				isdual: false,
+				turn: t,
+				lim_turn: t,
+				priority: 99,
+				effect: function (f, oi, teff, state, is_t, is_b) {
+					var card = f.Allys.Deck[oi];
+					var now_e = f.Allys.Now[oi];
+					var sc_flag = now_e.flags.skill_counter;
+					if (is_t && !is_b && sc_flag.length > 0) {
+						// スキルカウンター対象の敵の数だけ繰り返す
+						for (var sci = 0; sci < sc_flag.length; sci++) {
+							if (!sc_flag[sci]) { continue; }
+							for (var atri = 0; atri < card.attr.length; atri++) {
+								// 攻撃
+								if (card.attr[atri] >= 0) {
+									ss_damage(f, rate, card.attr[atri], 1, oi, sci);
+								}
+							}
+						}
+					}
+				},
+			});
+		}
+		fld.log_push("スキルカウンター待機(" + (rate * 100) + "%, " + t + "t)");
+		return true;
+	}
+}
+
 // ------------------------------------------------------
 // 敵関連系
 // ------------------------------------------------------
@@ -107,9 +144,12 @@ function poison(dm, t) {
 					isdual: false,
 					turn: t,
 					lim_turn: t,
-					effect: function () {
-						e.nowhp = Math.max(e.nowhp - dmg, 0);
-						fld.log_push("Enemy[" + (indx + 1) + "]: 毒(" + dmg + "ダメージ)");
+					is_poison: true,
+					effect: function (f, ei, teff, state, is_t, is_b) {
+						if (is_t && !is_b) {
+							e.nowhp = Math.max(e.nowhp - dmg, 0);
+							fld.log_push("Enemy[" + (indx + 1) + "]: 毒(" + dmg + "ダメージ)");
+						}
 					},
 				});
 			})();
@@ -132,24 +172,10 @@ function ss_enhance_all(p, t, attr) {
 		}
 		var rate = ss_ratedo(p, fld, n);
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
-			var cd = fld.Allys.Card[i];
+			var cd = fld.Allys.Deck[i];
 			var now = fld.Allys.Now[i];
 			if (attr[cd.attr[0]] > 0) {
-				now.turn_effect.push({
-					desc: "攻撃力アップ(" + (rate * 100) + "%)",
-					type: "ss_enhance",
-					isdual: false,
-					turn: t,
-					lim_turn: t,
-					effect: function (f, v, tg) {
-						if (v == 1) {
-							f.Allys.Now[tg].ss_enhance = rate;
-						}
-						else if (v == -1) {
-							f.Allys.Now[tg].ss_enhance = 0;
-						}
-					},
-				});
+				ss_enhance_own(p, t, true)(fld, i);
 			}
 		}
 		fld.log_push("味方全体攻撃力Up(" + (rate * 100) + "%, " + t + "t)");
@@ -158,7 +184,7 @@ function ss_enhance_all(p, t, attr) {
 }
 
 // 単体エンハ
-function ss_enhance_own(p, t) {
+function ss_enhance_own(p, t, _nolog) {
 	return function (fld, n) {
 		var rate = ss_ratedo(p, fld, n);
 		var now = fld.Allys.Now[n];
@@ -168,16 +194,18 @@ function ss_enhance_own(p, t) {
 			isdual: false,
 			turn: t,
 			lim_turn: t,
-			effect: function (f, v, tg) {
-				if (v == 1) {
-					f.Allys.Now[tg].ss_enhance = rate;
+			effect: function (f, oi, teff, state) {
+				if (state == "first") {
+					f.Allys.Now[oi].ss_enhance = rate;
 				}
-				else if (v == -1) {
-					f.Allys.Now[tg].ss_enhance = 0;
+				else if (state == "end") {
+					f.Allys.Now[oi].ss_enhance = 0;
 				}
 			},
 		});
-		fld.log_push("Unit[" + (n + 1) + "]: 攻撃力Up(" + (rate * 100) + "%, " + t + "t)");
+		if (!_nolog) {
+			fld.log_push("Unit[" + (n + 1) + "]: 攻撃力Up(" + (rate * 100) + "%, " + t + "t)");
+		}
 		return true;
 	}
 }
@@ -195,14 +223,14 @@ function ss_statusup_all(up_arr, t) {
 				isdual: true,
 				turn: t,
 				lim_turn: t,
-				effect: function (f, v, tg) {
-					var nowtg = f.Allys.Now[tg];
-					if (v == 1) {
+				effect: function (f, oi, teff, state) {
+					var nowtg = f.Allys.Now[oi];
+					if (state == "first") {
 						nowtg.maxhp += up_arrs[0];
 						nowtg.nowhp += up_arrs[0];
 						nowtg.atk += up_arrs[1];
 					}
-					else if (v == -1) {
+					else if (state == "end") {
 						nowtg.maxhp -= up_arrs[0];
 						nowtg.nowhp = Math.min(f.Allys.Now[tg].nowhp, f.Allys.Now[tg].maxhp);
 						nowtg.atk -= up_arrs[1];
@@ -214,6 +242,28 @@ function ss_statusup_all(up_arr, t) {
 			(t != -1 ? (", " + t + "t") : "") + ")");
 		return true;
 	};
+}
+
+// 全体状態異常無効(ターン数)
+function ss_absattack_disable(t) {
+	return function (fld, n) {
+		var rate = ss_ratedo(r, fld, n);
+		for (var i = 0; i < fld.Allys.Deck.length; i++) {
+			var now = fld.Allys.Now[i];
+			now.turn_effect.push({
+				desc: "状態異常無効",
+				type: "ss_absattack_disable",
+				isdual: false,
+				turn: t,
+				lim_turn: t,
+				effect: function () { },
+				bef_absattack: function (fld, oi, ei) {
+					return false;
+				}
+			});
+		}
+		return true;
+	}
 }
 
 // 起死回生(ターン数)
@@ -261,10 +311,23 @@ function ss_skillboost(f) {
 	}
 }
 
+// ------------------------------------------------------
+// チェイン関連系
+// ------------------------------------------------------
 // チェイン直接追加
 function ss_addchain(ch) {
 	return function (fld, n) {
 		fld.Status.chain += ch;
+		return true;
+	}
+}
+
+// チェイン保護
+function ss_chain_protect(t) {
+	return function (fld, n) {
+		fld.Status.chain_status = 1;
+		fld.Status.chainstat_turn = t;
+		Field.log_push("Enemy[" + (n + 1) + "]: チェイン保護(" + t + "t)");
 		return true;
 	}
 }
@@ -282,6 +345,23 @@ function ss_heal(p) {
 			heal_ally(hr);
 		}
 		fld.log_push("味方全体HP回復(" + (rate * 100) + "%)");
+		return true;
+	};
+}
+
+// 状態異常回復
+function ss_abstate_cure() {
+	return function (fld, n) {
+		for (var i = 0; i < fld.Allys.Deck.length; i++) {
+			var now = fld.Allys.Now[i];
+			for (var te = 0; te < now.turn_effect.length; te++) {
+				if (now.turn_effect[te].isabstate) {
+					now.turn_effect.splice(te, 1);
+					te--;
+				}
+			}
+		}
+		fld.log_push("味方全体異常回復");
 		return true;
 	};
 }

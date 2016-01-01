@@ -10,6 +10,16 @@ $(function () {
 		decksel_show(idx, cds ? cds[idx-1] : null);
 	}
 	// Dialog
+	$("#dialog_sim_error").dialog({
+		autoOpen: false,
+		width: 450,
+		modal: true,
+		buttons: {
+			"OK": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
 	$("#dialog_deck_reset").dialog({
 		autoOpen: false,
 		width: 450,
