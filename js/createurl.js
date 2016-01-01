@@ -1,11 +1,11 @@
-// ?ˆÈ‰º‚ÌURL‚ğ¶¬‚·‚é(check: •K—v€–Ú‚ª“ü—Í‚³‚ê‚Ä‚¢‚é‚©Šm”F‚·‚é)
+// ?ä»¥ä¸‹ã®URLã‚’ç”Ÿæˆã™ã‚‹(check: å¿…è¦é …ç›®ãŒå…¥åŠ›ã•ã‚Œã¦ã„ã‚‹ã‹ç¢ºèªã™ã‚‹)
 function create_url(check) {
 	var hasvalue = false;
-	// ¸—ìNo‚Ì”z—ñ
+	// ç²¾éœŠNoã®é…åˆ—
 	var nolists = new Array();
-	// ƒ`ƒFƒbƒN‚·‚é•¶š“ü—Í—“(ID)
+	// ãƒã‚§ãƒƒã‚¯ã™ã‚‹æ–‡å­—å…¥åŠ›æ¬„(ID)
 	var input_ids = ["deck01", "deck02", "deck03", "deck04", "deck05"];
-	// No—ñ‹“
+	// Noåˆ—æŒ™
 	for (var ct = 0; ct < 5; ct++) {
 		var input = $("#" + input_ids[ct]).val();
 		if (input == "") {
@@ -19,11 +19,49 @@ function create_url(check) {
 		nolists.push(number);
 		hasvalue = hasvalue || number != 0;
 	}
-	// quest‚Ìidæ“¾
+	// questã®idå–å¾—
 	var quest_id = $("#QstSel").val();
-	// check‚·‚é•K—v‚ª‚ ‚é‚È‚ç–â‘è‚È‚¢‚©ƒ`ƒFƒbƒN
+	// checkã™ã‚‹å¿…è¦ãŒã‚ã‚‹ãªã‚‰å•é¡Œãªã„ã‹ãƒã‚§ãƒƒã‚¯
 	if (check && (!hasvalue || quest_id == "")) {
 		return null;
 	}
 	return "?" + nolists.toString() + "," + quest_id;
+}
+
+// tweetç”¨ã®URLã‚’ç”Ÿæˆã—ã¦é–‹ã
+function create_tweeturl(name, durt, tot) {
+	// URLç”Ÿæˆ
+	var url = absolutePath("./" + location.search);
+	var nam = Field.Quest.name;
+	var trn = durt.replace("+", "%2B");
+	var tot = tot.replace("+", "%2B");
+	var text = "ã€Œ" + nam + "ã€ã‚’ " + tot + " ã‚¿ãƒ¼ãƒ³(" + trn + ")ã§çªç ´ï¼%0A" + url;
+	var tweeturl = "https://twitter.com/intent/tweet?hashtags=wiz_simu" + "&text=" + text;
+	return create_shorturl(url, tweeturl);
+}
+
+// çŸ­ç¸®URLã‚’ç”Ÿæˆ
+function create_shorturl(url, twurl) {
+	var login = "o_4ru705ravj";
+	var apikey = "R_9978afe5408747fa92c36eaae09e767a";
+	var encUrl = encodeURIComponent(url);
+	var bitly = "https://api-ssl.bitly.com/v3/shorten?login=" + login +
+			"&apiKey=" + apikey + "&longUrl=" + encUrl;
+	var win_opt = "menubar=no,toolbar=no,resizable=yes,scrollbars=no,width=640px,height=360px,top=40px,left=40px";
+	// Send request
+	$.ajax({
+		type: "get",
+		url: bitly,
+		async: false,
+		dataType: "jsonp",
+		processData: false,
+		contentType: false,
+		success: function (d) {
+			var s_url = d.data.url || url;
+			twurl = twurl.replace(url, s_url);
+			// é–‹ã
+			window.open(twurl, "tweet_result", win_opt);
+		},
+	});
+	window.open("", "tweet_result", win_opt);
 }

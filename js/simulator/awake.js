@@ -1,4 +1,4 @@
-﻿// 潜在能力から特定要素のみを抜き出す
+// 潜在能力から特定要素のみを抜き出す
 // (L時の潜在のみ取り出す場合は第三引数をtrueにする。正確性について保証しないため注意)
 function pickup_awakes(card, type, l_awakes) {
 	var awakes = [];

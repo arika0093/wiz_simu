@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" type="text/css" href="./css/default.css" />
+    <link rel="stylesheet" type="text/css" href="./css/deck.css" />
 	<link rel="stylesheet" type="text/css" href="./css/simulator.css" />
 	<link type="text/css" rel="stylesheet"
 		  href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
@@ -20,7 +21,7 @@
 			<p id="sim_turns"></p>
 			<div class="sim_result_links">
 				<a id="sim_share" onclick="tweet_result()">結果をツイートする</a>
-				<a id="sim_restart" onclick="load_field(0)">もう一度始めから試走する</a>
+				<a id="sim_restart" onclick="load_field(0)">始めからやり直す</a>
 				<a id="sim_decksel" onclick="back_decksel()">デッキ選択画面に戻る</a>
 			</div>
 		</div>
@@ -80,7 +81,7 @@
 			<div class="enemy clearfix" id="enemy01">
 				<div class="attr_none" id="enemy01_attr_main"></div>
 				<div class="attr_none" id="enemy01_attr_sub"></div>
-				<img class="chara_img" id="enemy01_img" src="./image/noimage.png"/>
+				<img class="chara_img" id="enemy01_img" src="./image/noimage.png" ondblclick="target_allselect(0)" />
 				<p class="enemy_name" id="enemy01_name"></p>
 				<p class="enemy_hp" id="enemy01_hp"></p>
 				<p class="enemy_stat" id="enemy01_stats"></p>
@@ -88,7 +89,7 @@
 			<div class="enemy clearfix" id="enemy02">
 				<div class="attr_none" id="enemy02_attr_main"></div>
 				<div class="attr_none" id="enemy02_attr_sub"></div>
-				<img class="chara_img" id="enemy02_img" src="./image/noimage.png"/>
+                <img class="chara_img" id="enemy02_img" src="./image/noimage.png" ondblclick="target_allselect(1)" />
 				<p class="enemy_name" id="enemy02_name"></p>
 				<p class="enemy_hp" id="enemy02_hp"></p>
 				<p class="enemy_stat" id="enemy02_stats"></p>
@@ -96,7 +97,7 @@
 			<div class="enemy clearfix" id="enemy03">
 				<div class="attr_none" id="enemy03_attr_main"></div>
 				<div class="attr_none" id="enemy03_attr_sub"></div>
-				<img class="chara_img" id="enemy03_img" src="./image/noimage.png"/>
+                <img class="chara_img" id="enemy03_img" src="./image/noimage.png" ondblclick="target_allselect(2)" />
 				<p class="enemy_name" id="enemy03_name"></p>
 				<p class="enemy_hp" id="enemy03_hp"></p>
 				<p class="enemy_stat" id="enemy03_stats"></p>
@@ -142,7 +143,7 @@
 				<button class="panel_button" id="pnl_attr_04" onclick="panel([0,4])">火闇</button>
 				<button class="panel_button" id="pnl_attr_14" onclick="panel([1,4])">水闇</button>
 				<button class="panel_button" id="pnl_attr_24" onclick="panel([2,4])">雷闇</button>
-				<button class="panel_button" id="pnl_attr_miss" onclick="panel([])">誤答</button>
+				<button class="panel_button" id="pnl_attr_miss" onclick="answer_miss()">誤答</button>
 			</div>
 			<div class="sim_option">
 
@@ -153,13 +154,18 @@
 			</div>
 		</div>
 		<div class="sim_log textlog">
-			<div class="sim_log_inner">
+			<div id="sim_log_inner">
 			</div>
 		</div>
 	</div>
 
 	<!-- Footer -->
 	<div id="Footer"></div>
+
+    <!-- Dialog Contents -->
+    <div class="dialog_div" id="dialog_ss_noaction" title="No Effect">
+        <p>SSを発動しても効果が得られません。</p>
+    </div>
 
 	<!-- Javascript -->
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -168,13 +174,16 @@
 	<!-- 他jsに依存しない基礎関数群 -->
 	<script type="text/javascript" charset="UTF-8" src="./js/simulator/awake.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="./js/simulator/species.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="./js/simulator/enemy.js"></script>
 	<!-- データ群(基礎関数に依存する) -->
 	<script type="text/javascript" charset="UTF-8" src="./data/skill_ans.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="./data/skill_spe.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="./data/skill_awake.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="./data/skill_enemy.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="./data/quests.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="./data/cards.js"></script>
 	<!-- 処理群(データ群に依存する) -->
+    <script type="text/javascript" charset="UTF-8" src="./js/createurl.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="./js/loadurl.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="./js/simulator/initialize.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="./js/simulator/show.js"></script>

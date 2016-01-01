@@ -1,52 +1,77 @@
 // 解答したときの処理
 function panel(attr) {
-	if (attr.length <= 0) {
-		// 誤答処理
-		if (Field.Status.chain_status <= 0) {
-			Field.Status.chain = 0;
+	// チェイン+1
+	if (Field.Status.chain_status >= 0) {
+		Field.Status.chain += 1;
+	}
+	// 付与効果実行
+	var pnladd = Number($("#panel_add_sel").val());
+	if (pnladd != 0) {
+		Field.Status.panel_add[pnladd - 1].func(Field);
+	}
+	// エンハ処理
+	answer_skill(pickup_answerskills(attr, "support"), attr);
+	// 攻撃
+	var atk_skill = pickup_answerskills(attr, "attack");
+	$.each(atk_skill, function (i, e) {
+		if (e != null) {
+			atk_skill[i].unshift(Default_as()[0]);
 		}
-		Field.log_push("誤答");
-	} else {
-		// チェイン+1
-		if (Field.Status.chain_status >= 0) {
-			Field.Status.chain += 1;
-		}
-		// 付与効果実行
-		var pnladd = Number($("#panel_add_sel").val());
-		if (pnladd != 0) {
-			Field.Status.panel_add[pnladd - 1].func(Field);
-		}
-		// エンハ処理
-		answer_skill(pickup_answerskills(attr, "support"), attr);
-		// 攻撃
-		var atk_skill = pickup_answerskills(attr, "attack");
-		// デフォのASを追加する
-		$.each(atk_skill, function (i, e) {
-			if (e != null) {
-				atk_skill[i].unshift(Default_as()[0]);
-			}
-		});
-		answer_skill(atk_skill, attr);
-		// 回復
-		answer_skill(pickup_answerskills(attr, "heal"), attr);
-		// 各精霊のSSチャージを1増やす
-		for (var i = 0; i < Field.Allys.Deck.length; i++) {
-			var now = Field.Allys.Now[i];
-			if (now.nowhp > 0) {
-				now.ss_current += 1;
-				// L処理
-				legend_timing_check(Field.Allys.Deck, Field.Allys.Now, i);
-			}
+	});
+	answer_skill(atk_skill, attr);
+	// 回復
+	answer_skill(pickup_answerskills(attr, "heal"), attr);
+	// 各精霊のSSチャージを1増やす
+	for (var i = 0; i < Field.Allys.Deck.length; i++) {
+		var now = Field.Allys.Now[i];
+		if (now.nowhp > 0) {
+			now.ss_current += 1;
+			// L処理
+			legend_timing_check(Field.Allys.Deck, Field.Allys.Now, i);
 		}
 	}
+	// 敵スキル処理
+	{
+		// 物理カウンター
+		var enemys = GetNowBattleEnemys();
+		$.each(enemys, function (i, e) {
+			for (var n = 0; n < Field.Allys.Deck.length; n++) {
+				if (e.flags.is_as_attack[n] > 0 && e.turn_effect.length > 0) {
+					var skillct = $.grep(e.turn_effect, function (g) {
+						return g.on_attack_damage;
+					});
+					for (var j = 0; j < skillct.length; j++) {
+						skillct[j].on_attack_damage(Field, i, n);
+					}
+					e.flags.is_as_attack[n] = false;
+				}
+			}
+		});
+	}
 	// 敵の処理
-	
-	// 全滅確認
-	allkill_check(false);
-	nextturn();
-	Field.Status.totalturn += 1;
-	// Fieldログ出力
-	Field_log.save(Field.Status.totalturn, Field);
+	enemy_move();
+	// 敵ダメージ反応系
+	enemy_damage_switch_check();
+	// 次のターンへ進む
+	nextturn(false);
+	// 表示
+	sim_show();
+}
+
+// 誤答
+function answer_miss()
+{
+	// 誤答処理
+	if (Field.Status.chain_status <= 0) {
+		Field.Status.chain = 0;
+	}
+	Field.log_push("誤答");
+	// 敵の処理
+	enemy_move();
+	// 敵ダメージ反応系
+	enemy_damage_switch_check();
+	// 次のターンへ進む
+	nextturn(false);
 	// 表示
 	sim_show();
 }
@@ -74,8 +99,23 @@ function pickup_answerskills(attr, type, subtype) {
 
 		// AS取得
 		var ASkill = is_legendmode(card, al_now) ? card.as2 : card.as1;
+		// ASがない場合抜き出さない
+		if (!ASkill || !ASkill.proc) {
+			result.push([]);
+			continue;
+		}
+		// 二重配列の場合1つにまとめる
+		var as_proc = [];
+		if (ASkill.proc[0].length) {
+			for (var a = 0; a < ASkill.proc.length; a++) {
+				multi_as(as_proc, ASkill.proc[a]);
+			}
+		} else {
+			as_proc = ASkill.proc;
+		}
+
 		// 抜き出し
-		result.push($.grep(ASkill.proc, function (e) {
+		result.push($.grep(as_proc, function (e) {
 			return (e.type == type) && (subtype !== undefined ? e.subtype == subtype : true);
 		}));
 	}
@@ -85,12 +125,23 @@ function pickup_answerskills(attr, type, subtype) {
 // アンサースキルの処理
 function answer_skill(as_arr, panel) {
 	for (var i = 0; i < as_arr.length; i++) {
-		// ASがないなら処理しない
-		if (as_arr[i] == null || as_arr[i].length <= 0) { continue; }
-
 		var card = Field.Allys.Deck[i];
 		var now = Field.Allys.Now[i];
-		var enemy_dat = Field.Enemys.Data[Field.Status.nowbattle - 1].enemy;
+		var enemy_dat = GetNowBattleEnemys();
+		// 攻撃前処理
+		$.each(now.turn_effect, function (_i, e) {
+			if (e.bef_answer) {
+				for (var ali = 0; ali < as_arr[i].length; ali++) {
+					// 攻撃前処理を行い、戻り値がfalseなら除去する
+					if (!e.bef_answer(Field, as_arr[i][ali])) {
+						as_arr[i].splice(ali, 1);
+						ali--;
+					}
+				}
+			}
+		})
+		// ASがないなら処理しない
+		if (as_arr[i] == null || as_arr[i].length <= 0) { continue; }
 		// 種類で分岐
 		switch (as_arr[i][0].type) {
 			case "attack":
@@ -114,7 +165,8 @@ function answer_attack(card, now, enemy, as, attr, index) {
 	for (var ai = 0; ai < as.length; ai++) {
 		var chain = Field.Status.chain;
 		for (var ei = 0; ei < enemy.length; ei++) {
-			var rate_n = (is_answer_target(as[ai], chain, enemy[ei].attr, enemy[ei].spec, index, ei) ? as[ai].rate : 0);
+			var rate_n =
+				(is_answer_target(as[ai], chain, enemy[ei].attr, enemy[ei].spec, index, ei, attr) ? as[ai].rate : 0);
 			var rate_b = (as_pos[ei] !== undefined ? as[as_pos[ei]].rate : 0);
 			as_pos[ei] = (rate_n >= rate_b ? ai : as_pos[ei]);
 		}
@@ -134,6 +186,7 @@ function answer_attack(card, now, enemy, as, attr, index) {
 			// どの敵を攻撃するか
 			var targ = auto_attack_order(enemy, atk_attr[at], index);
 			// 各種情報
+			var g_dmg = 0;
 			var atr = atk_attr[at];
 			var atk_as = as[as_pos[targ]]
 			var en = enemy[targ];
@@ -145,22 +198,26 @@ function answer_attack(card, now, enemy, as, attr, index) {
 					// 乱数
 					var rnd = damage_rand();
 					// ダメージ計算
-					var damage = attack_enemy(enemy[tg], now, atr,
+					g_dmg += attack_enemy(enemy[tg], now, atr,
 						atk_as.rate, atk_as.atkn, attr, ch, rnd, index, tg, false);
+					enemy[tg].flags.is_as_attack[index] = true;
 				}
 			} else {
 				// 乱数
 				var rnd = damage_rand();
 				// ダメージ計算
-				var damage = attack_enemy(en, now, atr, atk_as.rate,
+				g_dmg = attack_enemy(en, now, atr, atk_as.rate,
 					atk_as.atkn, attr, ch, rnd, index, targ, false);
+				en.flags.is_as_attack[index] = true;
 			}
 			// 攻撃後処理
 			if (atk_as.after) {
-				atk_as.after(Field, index, (ati == 0 && at == 0));
+				atk_as.after(Field, index, (ati == 0 && at == 0), g_dmg);
 			}
 		}
 	}
+	// ASエンハを消去
+	now.as_enhance = 0;
 }
 
 // エンハスキルの処理
@@ -203,11 +260,11 @@ function answer_heal(as, i) {
 			}
 			ass = ass.rate < as_t.rate ? as_t : ass;
 		}
-		if (rate > 0) {
+		if (ass.rate > 0) {
 			// 回復
 			var heal_val = Math.floor(ass.rate * now.maxhp);
 			var before = now.nowhp;
-			now.nowhp = Math.min(now.maxhp, now.nowhp + heal_val);
+			heal_ally(heal_val, ci, true);
 			Field.log_push("Unit[" + (ci + 1) + "]: HP回復(HP: " + before + "→" + now.nowhp + ")");
 			// 攻撃後処理
 			if (ass.after && ci == i) {
@@ -218,7 +275,7 @@ function answer_heal(as, i) {
 }
 
 // ASの対象になるかどうかを確認する
-function is_answer_target(as, ch, tg_attr, tg_spec, own_i, enm_i) {
+function is_answer_target(as, ch, tg_attr, tg_spec, own_i, enm_i, panels) {
 	var rst = true;
 	// チェイン確認
 	rst = rst && (ch >= as.chain);
@@ -227,6 +284,6 @@ function is_answer_target(as, ch, tg_attr, tg_spec, own_i, enm_i) {
 	// 種族確認
 	rst = rst && (check_spec_inarray(as.spec, tg_spec));
 	// 条件確認
-	rst = rst && (as.cond(Field, own_i, enm_i));
+	rst = rst && (as.cond(Field, own_i, enm_i, panels));
 	return rst;
 }

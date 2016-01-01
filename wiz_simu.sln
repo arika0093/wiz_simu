@@ -1,4 +1,3 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
@@ -9,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "template", "template", "{BA
 	ProjectSection(SolutionItems) = preProject
 		template\footer.html = template\footer.html
 		template\header.html = template\header.html
+		template\siminfo.html = template\siminfo.html
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wiz_simu", "wiz_simu", "{54D72F80-1342-4A3D-B559-339A01E32933}"
@@ -20,6 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wiz_simu", "wiz_simu", "{54
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{85B9F527-E148-41E4-A8C0-04BBF26A1A24}"
 	ProjectSection(SolutionItems) = preProject
+		css\deck.css = css\deck.css
 		css\default.css = css\default.css
 		css\simulator.css = css\simulator.css
 	EndProjectSection
@@ -27,14 +28,17 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{D7F5FD15-0EDA-4EC8-A7FE-62566A0FF4FA}"
 	ProjectSection(SolutionItems) = preProject
 		data\cards.js = data\cards.js
+		data\cards_all.js = data\cards_all.js
 		data\quests.js = data\quests.js
 		data\skill_ans.js = data\skill_ans.js
 		data\skill_awake.js = data\skill_awake.js
+		data\skill_enemy.js = data\skill_enemy.js
 		data\skill_spe.js = data\skill_spe.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "text", "text", "{FEDAC185-D019-43F3-BE3D-70929AAAE89F}"
 	ProjectSection(SolutionItems) = preProject
+		Readme.md = Readme.md
 		specification.txt = specification.txt
 		update.txt = update.txt
 	EndProjectSection
@@ -44,16 +48,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "simulator", "simulator", "{
 		js\simulator\answer.js = js\simulator\answer.js
 		js\simulator\awake.js = js\simulator\awake.js
 		js\simulator\damage.js = js\simulator\damage.js
+		js\simulator\enemy.js = js\simulator\enemy.js
 		js\simulator\initialize.js = js\simulator\initialize.js
 		js\simulator\show.js = js\simulator\show.js
 		js\simulator\special.js = js\simulator\special.js
 		js\simulator\species.js = js\simulator\species.js
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "codetest", "codetest", "{0A56A8F5-7D1B-4E2E-A0D9-43CA2EEBFF13}"
-	ProjectSection(SolutionItems) = preProject
-		test\code.js = test\code.js
-		test\loader.html = test\loader.html
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "select", "select", "{068E2C1D-35BD-43A6-826C-B09E82790769}"
@@ -76,7 +75,6 @@ Global
 		{D7F5FD15-0EDA-4EC8-A7FE-62566A0FF4FA} = {54D72F80-1342-4A3D-B559-339A01E32933}
 		{FEDAC185-D019-43F3-BE3D-70929AAAE89F} = {54D72F80-1342-4A3D-B559-339A01E32933}
 		{0B5CF5D7-96AD-4EED-8363-750FF402B468} = {20D7A7D8-822B-4D68-AEF0-9127E62A819F}
-		{0A56A8F5-7D1B-4E2E-A0D9-43CA2EEBFF13} = {54D72F80-1342-4A3D-B559-339A01E32933}
 		{068E2C1D-35BD-43A6-826C-B09E82790769} = {20D7A7D8-822B-4D68-AEF0-9127E62A819F}
 	EndGlobalSection
 EndGlobal

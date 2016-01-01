@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="./css/default.css" />
+    <link rel="stylesheet" type="text/css" href="./css/deck.css" />
     <link type="text/css" rel="stylesheet"
           href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
     <!-- Top Page -->
@@ -15,33 +16,75 @@
     <!-- Main Contents -->
     <div class="Main">
         <dl class="List">
-            <!-- Set Value -->
+            <dt>お知らせ</dt>
+            <dd id="Simu_info"></dd>
+
             <dt>クエスト/デッキ選択</dt>
             <dd>
-                <!-- Select Quest -->
                 <div class="SelField">
-                    <p class="Info">試走するクエストを指定します。</p>
-                    <select class="Selbox" id="QstSel" onchange="optsel()">
-                        <option value="">(未選択)</option>
-                    </select>
-                    <p class="desc" id="Qstdesc"></p>
-                </div>
-
-                <!-- Select Deck -->
-                <div class="SelField">
-                    <p class="Info">試走するデッキを設定します。</p>
-                    <input class="DeckSel" id="deck01" onchange="decksel('deck01', 'Deckdesc1')" />
-                    <p class="desc" id="Deckdesc1"></p>
-                    <input class="DeckSel" id="deck02" onchange="decksel('deck02', 'Deckdesc2')" />
-                    <p class="desc" id="Deckdesc2"></p>
-                    <input class="DeckSel" id="deck03" onchange="decksel('deck03', 'Deckdesc3')" />
-                    <p class="desc" id="Deckdesc3"></p>
-                    <input class="DeckSel" id="deck04" onchange="decksel('deck04', 'Deckdesc4')" />
-                    <p class="desc" id="Deckdesc4"></p>
-                    <input class="DeckSel" id="deck05" onchange="decksel('deck05', 'Deckdesc5')" />
-                    <p class="desc" id="Deckdesc5"></p>
-
-                    <button type="button" id="Start" onclick="sim_start()">開始</button>
+                    <div class="deck_and_menu clearfix">
+                        <div class="ally_deck">
+                            <div class="selbox_field">
+                                <select class="selbox" id="QstSel">
+                                    <option value="">(クエスト未選択)</option>
+                                </select>
+                                <button type="button" class="deck_reset" id="Reset" onclick="deck_reset_ready()">リセット</button>
+                            </div>
+                            <div class="ally clearfix" id="ally01">
+                                <div class="attr_none" id="ally01_attr_main">.</div>
+                                <div class="attr_none" id="ally01_attr_sub">.</div>
+                                <img class="chara_img" id="ally01_img" src="./image/noimage.png" />
+                                <input class="decksel" id="deck01" onchange="decksel(1)" />
+                                <p class="ally_skill" id="ally01_as"></p>
+                                <p class="ally_skill" id="ally01_ss"></p>
+                            </div>
+                            <div class="ally clearfix" id="ally02">
+                                <div class="attr_none" id="ally02_attr_main">.</div>
+                                <div class="attr_none" id="ally02_attr_sub">.</div>
+                                <img class="chara_img" id="ally02_img" src="./image/noimage.png" />
+                                <input class="decksel" id="deck02" onchange="decksel(2)" />
+                                <p class="ally_skill" id="ally02_as"></p>
+                                <p class="ally_skill" id="ally02_ss"></p>
+                            </div>
+                            <div class="ally clearfix" id="ally03">
+                                <div class="attr_none" id="ally03_attr_main">.</div>
+                                <div class="attr_none" id="ally03_attr_sub">.</div>
+                                <img class="chara_img" id="ally03_img" src="./image/noimage.png" />
+                                <input class="decksel" id="deck03" onchange="decksel(3)" />
+                                <p class="ally_skill" id="ally03_as"></p>
+                                <p class="ally_skill" id="ally03_ss"></p>
+                            </div>
+                            <div class="ally clearfix" id="ally04">
+                                <div class="attr_none" id="ally04_attr_main">.</div>
+                                <div class="attr_none" id="ally04_attr_sub">.</div>
+                                <img class="chara_img" id="ally04_img" src="./image/noimage.png" />
+                                <input class="decksel" id="deck04" onchange="decksel(4)" />
+                                <p class="ally_skill" id="ally04_as"></p>
+                                <p class="ally_skill" id="ally04_ss"></p>
+                            </div>
+                            <div class="ally clearfix" id="ally05">
+                                <div class="attr_none" id="ally05_attr_main">.</div>
+                                <div class="attr_none" id="ally05_attr_sub">.</div>
+                                <img class="chara_img" id="ally05_img" src="./image/noimage.png" />
+                                <input class="decksel" id="deck05" onchange="decksel(5)" />
+                                <p class="ally_skill" id="ally05_as"></p>
+                                <p class="ally_skill" id="ally05_ss"></p>
+                            </div>
+                        </div>
+                        <div class="deckmenu">
+                            <button type="button" class="deck_saveload" id="Deckload" onclick="deck_load_ready()">デッキ読込</button>
+                            <button type="button" class="deck_saveload" id="Decksave" onclick="deck_save_ready()">デッキ保存</button>
+                        </div>
+                        <div class="twitter">
+                            <a class="twitter-timeline" href="https://twitter.com/hashtag/wiz_simu" data-widget-id="679640455609368576">#wiz_simu のツイート</a>
+                            <script>
+                                !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");
+                            </script>
+                        </div>
+                        <div class="sim_start">
+                            <button type="button" id="Start" onclick="sim_start()">開始</button>
+                        </div>
+                    </div>
                 </div>
             </dd>
         </dl>
@@ -50,9 +93,27 @@
     <!-- Footer -->
     <div id="Footer"></div>
 
+    <!-- Dialog Contents -->
+    <div class="dialog_div" id="dialog_sim_error" title="Error">
+        <p>入力内容に漏れがあります。クエストを指定して、精霊を最低一体以上指定してください。</p>
+    </div>
+    <div class="dialog_div" id="dialog_deck_reset" title="Deck Reset">
+        <p>編集中のデッキをリセットしてよろしいですか？</p>
+    </div>
+    <div class="dialog_div" id="dialog_deck_load" title="Deck Load">
+        <p>デッキを読み込みます。</p>
+        <select class="sel_indialog" id="deckload_cookie" size="8">
+        </select>
+    </div>
+    <div class="dialog_div" id="dialog_deck_save" title="Deck Save">
+        <p>現在のデッキを保存します。</p>
+        <input class="edit_indialog" id="decksave_name" placeholder="《保存したいデッキ名を入力》"/>
+    </div>
+
     <!-- Javascript -->
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script type="text/javascript" charset="UTF-8" src="./js/pagetemp.js"></script>
     <!-- 他jsに依存しない基礎関数群 -->
     <script type="text/javascript" charset="UTF-8" src="./js/simulator/awake.js"></script>
@@ -61,6 +122,7 @@
     <script type="text/javascript" charset="UTF-8" src="./data/skill_ans.js"></script>
     <script type="text/javascript" charset="UTF-8" src="./data/skill_spe.js"></script>
     <script type="text/javascript" charset="UTF-8" src="./data/skill_awake.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="./data/skill_enemy.js"></script>
     <script type="text/javascript" charset="UTF-8" src="./data/quests.js"></script>
     <script type="text/javascript" charset="UTF-8" src="./data/cards.js"></script>
     <!-- 処理群(データ群に依存する) -->

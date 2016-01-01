@@ -54,13 +54,5 @@
     <!-- Javascript -->
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" charset="UTF-8" src="./js/pagetemp.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            $.get("update.txt", function (data) {
-                var log = data.replace(/\n/g, "<br/>\n");
-                $("#Updatelog").html(log);
-            }, "text");
-        });
-    </script>
 </body>
 </html>

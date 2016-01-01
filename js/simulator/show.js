@@ -1,33 +1,50 @@
-﻿// 現在の状況を表示する
+// 現在の状況を表示する
 function sim_show() {
 	// sim_log
 	var logtext = "";
 	var tt = Field.Status.totalturn;
 	var log_stat = Field.Status.log[tt] !== undefined ? tt : tt - 1;
 	for (var i = log_stat ; i >= 0; i--) {
-		logtext += "--- turn: " + (i + 1) + " ------------" + "<br/>";
+		logtext += "<h3>turn: " + (i + 1) + "" + "</h3><div>";
 		if (Field.Status.log[i] !== undefined) {
 			for (var j = 0; j < Field.Status.log[i].length; j++) {
 				logtext += Field.Status.log[i][j] + "<br/>";
 			}
 		}
+		logtext += "</div>";
 	}
-	$(".sim_log_inner").html(logtext);
+	$("#sim_log_inner").html(logtext);
+	$("#sim_log_inner").accordion("refresh");
 
 	// sim_info_turn
+	if (Field.Status.chain_status == 1) {
+		var chain_state = "(保護)";
+	} else if (Field.Status.chain_status == -1) {
+		var chain_state = "(封印)";
+	} else {
+		var chain_state = "";
+	}
+
 	$("#sim_turns").text(
-		"turn: " + totalturn_string() + " / chain: " + Field.Status.chain + " / "
-			+ Field.Status.nowbattle + "戦目 (" + durturn_string() + ")"
+		"turn: " + totalturn_string() + " / chain: " + Field.Status.chain
+			+ chain_state + " / " + Field.Status.nowbattle + "戦目 (" + durturn_string() + ")"
 	);
 	// sim_info_status
 	$("#sim_info_status").text(Field.Quest.name);
 
 	// sim_result
 	if (Field.Status.finish) {
-		$(".sim_result_links").fadeIn("slow");
+		$("#sim_share").fadeIn("slow");
 	} else {
-		$(".sim_result_links").fadeOut("slow");
+		$("#sim_share").fadeOut("slow");
 	}
+	// sim_restart
+	if (Field.Status.totalturn > 0) {
+		$("#sim_restart").fadeIn("slow");
+	} else {
+		$("#sim_restart").fadeOut("slow");
+	}
+
 	// ----------------
 	// sim_ally
 	for (var i = 0; i < 5; i++) {
@@ -40,9 +57,12 @@ function sim_show() {
 			$("#ally0" + (i + 1) + "_img").attr("src", get_image_url(dec.imageno));
 			$("#ally0" + (i + 1) + "_name").text(dec.name);
 			$("#ally0" + (i + 1) + "_status").text("HP: " + now.nowhp + "/" + now.maxhp + ", ATK: " + now.atk);
-			// SSターン取得
+			// SSが発動可能かどうか
 			var sst = get_ssturn(dec, now);
-			if (sst[0] == 0 && now.nowhp > 0 && !Field.Status.finish) {
+			var ss_disabled = $.grep(now.turn_effect, function (e) {
+				return e.ss_disabled;
+			}).length > 0;
+			if (!ss_disabled && sst[0] == 0 && now.nowhp > 0 && !Field.Status.finish) {
 				// SS発動可能
 				$("#ally0" + (i + 1) + "_ss_button").attr("class", "ally_ss_button");
 				$("#ally0" + (i + 1) + "_ss_button").text(ss_remain_text(sst));
@@ -64,7 +84,7 @@ function sim_show() {
 		}
 	}
 	// sim_enemy
-	var enemys_dat = Field.Enemys.Data[Field.Status.nowbattle - 1].enemy;
+	var enemys_dat = GetNowBattleEnemys();
 	for (var i = 0; i < 3; i++) {
 		var e = enemys_dat[i];
 		if (e !== undefined) {
@@ -74,6 +94,18 @@ function sim_show() {
 			$("#enemy0" + (i + 1) + "_img").attr("src", get_image_url(e.imageno));
 			$("#enemy0" + (i + 1) + "_name").text(e.name);
 			$("#enemy0" + (i + 1) + "_hp").text("HP: " + e.nowhp + "/" + e.hp);
+			// 継続中の効果を並べる
+			var eff_text = "";
+			for (var l = 0; l < e.turn_effect.length; l++) {
+				// 非表示要素は飛ばす
+				if (e.turn_effect[l].desc == null) { continue; }
+				if (eff_text != "") {
+					eff_text += ", ";
+				}
+				eff_text += e.turn_effect[l].desc + "(" + e.turn_effect[l].lim_turn + "t)";
+			}
+			$("#enemy0" + (i + 1) + "_stats").text(eff_text);
+			$("#enemy0" + (i + 1) + "_stats").attr("title", eff_text);
 		} else {
 			// 無効化
 			$("#enemy0" + (i + 1) + "_attr_main").attr("class", "attr_none");
@@ -81,6 +113,8 @@ function sim_show() {
 			$("#enemy0" + (i + 1) + "_img").attr("src", "./image/noimage.png");
 			$("#enemy0" + (i + 1) + "_name").text("");
 			$("#enemy0" + (i + 1) + "_hp").text("");
+			$("#enemy0" + (i + 1) + "_stats").text("");
+			$("#enemy0" + (i + 1) + "_stats").attr("title", "");
 		}
 	}
 
@@ -101,14 +135,18 @@ function sim_show() {
 	// sim_field_move
 	$("#fld_move_before").attr("disabled", (Field.Status.totalturn == 0));
 	$("#fld_move_after").attr("disabled", (Field.Status.totalturn == Field_log.length() - 1));
-}
 
-// 画像のURLを返却する
-function get_image_url(no) {
-	if (no < 0) {
-		return "./image/noimage.png";
-	}
-	return "http://i.quiz.colopl.jp/img/card/small/card_" + ("0000" + no).slice(-5) + "_0.png"
+	// dialog
+	$("#dialog_ss_noaction").dialog({
+		autoOpen: false,
+		modal: true,
+		width: 450,
+		buttons: {
+			"OK": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
 }
 
 // SSの残り表記を返却する
@@ -157,15 +195,8 @@ function durturn_string() {
 
 // ツイート
 function tweet_result() {
-	// URL生成
-	var url = absolutePath("./" + location.search);
-	var nam = Field.Quest.name;
-	var trn = durturn_string().replace("+", "%2B");
-	var tot = totalturn_string().replace("+", "%2B");
-	var text = "「" + nam + "」を " + tot + " ターン(" + trn + ")で突破！%0A" + url;
-	var tweeturl = "https://twitter.com/intent/tweet?hashtags=wiz_simu" + "&text=" + text;
-	// 開く
-	window.open(tweeturl, "Simulator result - Tweet");
+	// URL生成して開く
+	create_tweeturl(Field.Quest.name, durturn_string(), totalturn_string());
 }
 
 // fieldのログを読む
@@ -183,6 +214,11 @@ function back_decksel() {
 	var param = location.search;
 	// 移動
 	location.href = "./index.html" + param;
+}
+
+// タゲ選択
+function target_allselect(n) {
+	$("#attack_target_sel").val(n + "");
 }
 
 // 相対パス → 絶対パス

@@ -1,18 +1,30 @@
-﻿// クエスト選択肢追加, URLからquest選択
+// クエスト選択肢追加, URLからquest選択
 $(function () {
-	var ct = 0;
-	for (ct in Quests) {
-		var sel = document.getElementById('QstSel');
+	var qsort = Quests;//.sort(function (a, b) {
+	//	if (a.category > b.category) return +1;
+	//	if (a.category < b.category) return -1;
+	//})
+
+	var sel = document.getElementById('QstSel');
+	var seld = sel;
+	for (var i = 0; i < qsort.length; i++) {
+		if (i == 0 || qsort[i].category != qsort[i - 1].category) {
+			var opg = document.createElement('optgroup');
+			opg.label = qsort[i].category;
+			sel.appendChild(opg);
+			seld = opg;
+		}
 		var opt = document.createElement('option');
-		opt.value = Quests[ct].id;
-		opt.appendChild(document.createTextNode(Quests[ct].name));
-		sel.appendChild(opt);
+		opt.label = qsort[i].name;
+		opt.value = qsort[i].id;
+		opt.appendChild(document.createTextNode(qsort[i].name));
+		seld.appendChild(opt);
 	}
 
 	var q = loadquest_from_url();
-	if (q !== undefined) {
+	if (q) {
 		$("select[id='QstSel'] option[value=" + q.id + "]").prop('selected', true);
-		$("#Qstdesc").text(q.desc);
+		//$("#Qstdesc").text(q.desc);
 	}
 });
 
@@ -40,7 +52,7 @@ function sim_start() {
 	// redirect
 	var query = create_url(true);
 	if (query == null) {
-		alert("入力内容に漏れがあります。クエストを指定して、精霊を最低一体以上指定してください。");
+		$("#dialog_sim_error").dialog("open");
 		return;
 	}
 	var redirect_url = './simulator.html' + query;

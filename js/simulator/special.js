@@ -14,8 +14,30 @@ function ss_push(n) {
 	}
 	// 発動成功なら
 	if (ss_rst) {
-		// SS効果確認
-		ss_effect_check(false);
+		// SSを保存しておく
+		if (ss.proc && !ss.proc[0].is_skillcopy) {
+			Field.Status.latest_ss = ss;
+		}
+		// ターン効果確認
+		turn_effect_check(false, is_allkill());
+		// 敵スキル関係の処理
+		{
+			// スキル反射確認
+			var enemys = GetNowBattleEnemys();
+			$.each(enemys, function (i, e) {
+				if (e.flags.is_ss_attack && e.turn_effect.length > 0) {
+					var skillct = $.grep(e.turn_effect, function (g) {
+						return g.on_ss_damage !== undefined;
+					});
+					for (var j = 0; j < skillct.length; j++) {
+						skillct[j].on_ss_damage(Field, i, n);
+					}
+					e.flags.is_ss_attack = false;
+				}
+			});
+			// 敵ダメージ反応系
+			enemy_damage_switch_check();
+		}
 		// L状態ならL潜在を解除
 		if (is_l) {
 			minus_legend_awake(Field.Allys.Deck, Field.Allys.Now, n);
@@ -26,12 +48,9 @@ function ss_push(n) {
 		now.ss_current = 0;
 		now.ss_isfirst = false;
 		now.ss_isboost = false;
-		// 全滅確認
-		if (allkill_check(true)) {
-			nextturn();
-			Field.Status.totalturn += 1;
-			// Fieldログ出力
-			Field_log.save(Field.Status.totalturn, Field);
+		// 全滅していたら次のターンへ進む
+		if (is_allkill()) {
+			nextturn(true);
 		}
 		// [進む]を使えないように
 		Field_log._removeover(Field.Status.totalturn);
@@ -39,7 +58,7 @@ function ss_push(n) {
 		sim_show();
 	} else {
 		// failed
-		alert("SSを発動しても効果を得られません。");
+		$("#dialog_ss_noaction").dialog("open");
 	}
 }
 
@@ -78,30 +97,55 @@ function get_ssturn(card, ally_n) {
 }
 
 // 効果の継続確認を行う
-function ss_effect_check(is_turn_move) {
+function turn_effect_check(is_turn_move, is_battle_move) {
+	// 全効果をまとめる
+	var all_turneff = [];
+	var ct = 0;
 	for (var i = 0; i < Field.Allys.Deck.length; i++) {
 		var now = Field.Allys.Now[i];
-		for (var te = 0; te < now.turn_effect.length; te++) {
-			var turneff = now.turn_effect[te];
-			// 同一typeが複数存在し新しい方が重複不可なら最初の要素を消す
-			var duals = $.grep(now.turn_effect, function (e) {
-				return (e.type == turneff.type) && (!turneff.isdual);
-			});
-			if (duals.length >= 2) {
-				now.turn_effect.splice(now.turn_effect.indexOf(duals[0]), 1);
-				continue;
+		for (var j = 0; j < now.turn_effect.length; j++) {
+			all_turneff[ct] = {
+				index: i,
+				positon: j,
+				effect: Field.Allys.Now[i].turn_effect[j],
+			};
+			ct++;
+		}
+	}
+	// Sort
+	all_turneff = all_turneff.sort(function (a, b) {
+		var a_pr = a.effect.priority ? a.effect.priority : 0;
+		var b_pr = b.effect.priority ? b.effect.priority : 0;
+		if (a_pr < b_pr) return +1;
+		if (a_pr > b_pr) return -1;
+	})
+	for (var te = 0; te < all_turneff.length; te++) {
+		var now = Field.Allys.Now[all_turneff[te].index];
+		var turneff = all_turneff[te].effect;
+		// 同一typeが複数存在し新しい方が重複不可なら最初の要素を消す
+		var duals = $.grep(now.turn_effect, function (e) {
+			return (e.type == turneff.type) && (!turneff.isdual);
+		});
+		if (duals.length >= 2) {
+			now.turn_effect.splice(now.turn_effect.indexOf(duals[0]), 1);
+			continue;
+		}
+		if (turneff.lim_turn >= 0 && (!turneff._notfirst || is_turn_move)) {
+			// 発動
+			if (!turneff._notfirst) {
+				var state = "first";
+			} else if (turneff.lim_turn == 0) {
+				var state = "end";
+			} else {
+				var state = "";
 			}
-			if (turneff.lim_turn >= 0 && (!turneff._notfirst || is_turn_move)) {
-				// 発動
-				var prm = (!turneff._notfirst ? 1 : Math.min(turneff.lim_turn - 1, 0));
-				turneff.effect(Field, prm, i);
-				turneff._notfirst = true;
-			}
-			if (turneff.lim_turn == 0) {
-				// 残りターンが0なら除外
-				now.turn_effect.splice(te, 1);
-				te--;
-			}
+			turneff.effect(Field, all_turneff[te].index, turneff, state, is_turn_move, is_allkill());
+			turneff._notfirst = true;
+		}
+		if (turneff.lim_turn == 0) {
+			// 残りターンが0なら除外
+			now.turn_effect.splice(all_turneff[te].positon, 1);
+			te--;
 		}
 	}
 }

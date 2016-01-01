@@ -1,4 +1,4 @@
-﻿// 全データ
+// 全データ
 var Field = {
 	// 各種定数(主に表示用)
 	Constants: {
@@ -45,14 +45,18 @@ var Field = {
 		// チェイン関連
 		chain: 0,
 		chain_status: 0,
+		chainstat_turn: 0,
 		// パネル付与関連
 		panel_add: [],
+		// 最後に使用したSS
+		latest_ss: null,
 		// ターンetc関連
 		durturn: [],
 		nowturn: 1,
 		totalturn: 0,
 		nowbattle: 1,
 		finish: false,
+		// ログ
 		log: [],
 	},
 	log_push: function (text) {
@@ -128,6 +132,8 @@ $(function () {
 			now.maxhp = card.hp + mana;
 			now.nowhp = card.hp + mana;
 			now.atk = card.atk + mana;
+			now.flags = {};
+			now.flags.skill_counter = [];
 			now.turn_effect = [];
 		}
 		// 潜在を反映させる
@@ -150,11 +156,22 @@ $(function () {
 			for (var j = 0; j < popup_enemys.enemy.length; j++) {
 				data.enemy[j] = $.extend(true, {}, popup_enemys.enemy[j]);
 				data.enemy[j].nowhp = popup_enemys.enemy[j].hp;
+				data.enemy[j].flags = {};
+				data.enemy[j].flags.is_as_attack = [];
+				data.enemy[j].turn_effect = [];
 			}
 		}
+		// 敵の処理
+		enemy_popup_proc();
 		// 初期状態を保存
 		Field_log.save(0, Field);
 		// 表示
+		$("#sim_log_inner").accordion({
+			active: false,
+			animate: false,
+			heightStyle: "content",
+			collapsible: true
+		});
 		sim_show();
 	} else {
 		$("#sim_info_status").html("#ERROR: URLが正しくありません。");
@@ -169,63 +186,46 @@ $(window).load(function () {
 });
 
 // 次のターンに進む
-function nextturn() {
-	// ターンエフェクト減算処理
-	for (var i = 0; i < Field.Allys.Deck.length; i++) {
-		for (var j = 0; j < Field.Allys.Now[i].turn_effect.length; j++) {
-			Field.Allys.Now[i].turn_effect[j].lim_turn -= 1;
-		}
-	}
-	// SS確認
-	ss_effect_check(true);
-	Field.Status.nowturn += 1;
-}
-
-// 敵を全滅させたか確認し、全滅してたら次の敵を出現させる
-function allkill_check(is_ssfinish) {
-	var is_allkill = true;
-	var ntrun = Field.Status.nowturn;
-	var data = Field.Enemys.Data[Field.Status.nowbattle - 1];
-
-	for (var i = 0; i < data.enemy.length; i++) {
-		// 全部の敵を倒してるかどうか判定する
-		is_allkill = (is_allkill && data.enemy[i].nowhp == 0);
-	}
-	// 全ての敵を倒していたら
-	if (is_allkill) {
-		// 全終了確認
-		if (Field.Enemys.Popuplist.length <= Field.Status.nowbattle) {
-			// 終了処理開始
-			Field.Status.finish = true;
-			Field.log_push(Field.Status.nowbattle + "戦目突破(" + ntrun + "ターン)");
-			Field.log_push("QUEST CLEARED! (Total: " + (Field.Status.totalturn + 1) + "turn)");
-		} else {
-			Field.log_push(Field.Status.nowbattle + "戦目突破(" + ntrun + "ターン)");
-			// 次に進む
-			Field.Status.nowbattle += 1;
-		}
-		// パネル付与効果を全部リセット
-		Field.Status.panel_add = [];
-		Field.Status.durturn.push({ ssfin: is_ssfinish, turn: ntrun});
-		Field.Status.nowturn = 0;
-	}
-	return is_allkill;
-}
-
-// 敵出現順番生成
-function CreateEnemypopup(qst) {
-	var poplist = [];
-	var pop_i = [];
-	for (var t = 0; t < qst.aprnum; t++) {
-		pop_i.push($.map(qst.data, function (e, i, c) {
-			// 配列内に現在見てるターン数の数字があったら現在の配列番号を返す
-			var aprt_i = $.inArray(t + 1, e.appearance);
-			if (aprt_i >= 0) {
-				return i;
+function nextturn(is_ssfin) {
+	var f_st = Field.Status;
+	// 全滅していなかったら効果ターンを減少
+	var killed = is_allkill();
+	if (!killed) {
+		// 味方ターンエフェクト減算処理
+		for (var i = 0; i < Field.Allys.Deck.length; i++) {
+			for (var j = 0; j < Field.Allys.Now[i].turn_effect.length; j++) {
+				Field.Allys.Now[i].turn_effect[j].lim_turn -= 1;
 			}
-		}));
-		var rand = Math.floor(Math.random() * pop_i[t].length);
-		poplist.push(pop_i[t][rand]);
+		}
+		// 敵ターンエフェクト減算処理
+		var enemys = GetNowBattleEnemys();
+		for (var i = 0; i < enemys.length; i++) {
+			for (var j = 0; j < enemys[i].turn_effect.length; j++) {
+				enemys[i].turn_effect[j].lim_turn -= 1;
+			}
+		}
 	}
-	return poplist;
+	// 効果の継続確認
+	turn_effect_check(true);
+	enemy_turn_effect_check(true);
+	// チェイン状態の確認
+	if (f_st.chain_status != 0) {
+		f_st.chainstat_turn -= 1;
+		if (f_st.chainstat_turn == 0) {
+			f_st.chain_status = 0;
+			Field.log_push("Status: チェイン状態解除");
+		}
+	}
+	// 全滅していたらここで新しい敵の処理を行う
+	killed = allkill_check(is_ssfin);
+	if (killed && !f_st.finish) {
+		enemy_popup_proc();
+	}
+	// SSで全滅 or パネルを踏んでる
+	if (!is_ssfin || killed) {
+		f_st.totalturn += 1;
+	}
+	f_st.nowturn += 1;
+	// ログ保存
+	Field_log.save(f_st.totalturn, Field);
 }
