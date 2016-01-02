@@ -5,8 +5,8 @@
 	<link rel="stylesheet" type="text/css" href="./css/default.css" />
     <link rel="stylesheet" type="text/css" href="./css/deck.css" />
 	<link rel="stylesheet" type="text/css" href="./css/simulator.css" />
-	<link type="text/css" rel="stylesheet"
-		  href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
 	<!-- sim page -->
 	<title>Simulator - Wiz Quest Simulator</title>
 </head>
@@ -22,6 +22,7 @@
 			<div class="sim_result_links">
 				<a id="sim_share" onclick="tweet_result()">結果をツイートする</a>
 				<a id="sim_restart" onclick="load_field(0)">始めからやり直す</a>
+                <a id="sim_logview" onclick="log_view()">ログを確認する</a>
 				<a id="sim_decksel" onclick="back_decksel()">デッキ選択画面に戻る</a>
 			</div>
 		</div>
@@ -29,7 +30,7 @@
 			<div class="ally clearfix" id="ally01">
 				<div class="attr_none" id="ally01_attr_main">.</div>
 				<div class="attr_none" id="ally01_attr_sub">.</div>
-				<img class="chara_img" id="ally01_img" src="./image/noimage.png"/>
+				<img class="chara_img" id="ally01_img" src="./image/noimage.png" onclick="show_allystat(0)"/>
 				<p class="ally_name" id="ally01_name"></p>
 				<p class="ally_stat" id="ally01_status"></p>
 				<div class="ally_ss" id="ally01_ss">
@@ -39,7 +40,7 @@
 			<div class="ally clearfix" id="ally02">
 				<div class="attr_none" id="ally02_attr_main">.</div>
 				<div class="attr_none" id="ally02_attr_sub">.</div>
-				<img class="chara_img" id="ally02_img" src="./image/noimage.png"/>
+                <img class="chara_img" id="ally02_img" src="./image/noimage.png" onclick="show_allystat(1)" />
 				<p class="ally_name" id="ally02_name"></p>
 				<p class="ally_stat" id="ally02_status"></p>
 				<div class="ally_ss" id="ally02_ss">
@@ -49,7 +50,7 @@
 			<div class="ally clearfix" id="ally03">
 				<div class="attr_none" id="ally03_attr_main">.</div>
 				<div class="attr_none" id="ally03_attr_sub">.</div>
-				<img class="chara_img" id="ally03_img" src="./image/noimage.png"/>
+                <img class="chara_img" id="ally03_img" src="./image/noimage.png" onclick="show_allystat(2)" />
 				<p class="ally_name" id="ally03_name"></p>
 				<p class="ally_stat" id="ally03_status"></p>
 				<div class="ally_ss" id="ally03_ss">
@@ -59,7 +60,7 @@
 			<div class="ally clearfix" id="ally04">
 				<div class="attr_none" id="ally04_attr_main">.</div>
 				<div class="attr_none" id="ally04_attr_sub">.</div>
-				<img class="chara_img" id="ally04_img" src="./image/noimage.png"/>
+                <img class="chara_img" id="ally04_img" src="./image/noimage.png" onclick="show_allystat(3)" />
 				<p class="ally_name" id="ally04_name"></p>
 				<p class="ally_stat" id="ally04_status"></p>
 				<div class="ally_ss" id="ally04_ss">
@@ -69,7 +70,7 @@
 			<div class="ally clearfix" id="ally05">
 				<div class="attr_none" id="ally05_attr_main">.</div>
 				<div class="attr_none" id="ally05_attr_sub">.</div>
-				<img class="chara_img" id="ally05_img" src="./image/noimage.png"/>
+                <img class="chara_img" id="ally05_img" src="./image/noimage.png" onclick="show_allystat(4)" />
 				<p class="ally_name" id="ally05_name"></p>
 				<p class="ally_stat" id="ally05_status"></p>
 				<div class="ally_ss" id="ally05_ss">
@@ -111,7 +112,7 @@
 			</div>
 			<div class="attack_target">
 				<label for="attack_target_sel">攻撃順</label>
-				<select id="attack_target_sel">
+				<select id="attack_target_sel" onchange="target_allselect()">
 					<option value="-1">自動</option>
 					<option value="0">左</option>
 					<option value="1">中央</option>
@@ -153,16 +154,46 @@
 				<button disabled="disabled" class="field_mov_button" id="fld_move_after" onclick="load_field(1)">1ターン先に進む</button>
 			</div>
 		</div>
-		<div class="sim_log textlog">
-			<div id="sim_log_inner">
-			</div>
-		</div>
+        <div class="ally_info">
+            <p id="ally_info_text"></p>
+        </div>
 	</div>
 
 	<!-- Footer -->
 	<div id="Footer"></div>
 
     <!-- Dialog Contents -->
+    <div class="dialog_div" id="dialog_allystatus" title="精霊ステータス">
+        <div id="allystat_index"></div>
+        <div id="allystat_name"></div>
+        <div id="allystat_teff">
+            <ul id ="ally_tefflist"></ul>
+        </div>
+        <div class="allystat_target">
+            <span id="allystat_tg_1">
+                <label for="atarget_sel_1">主属性: </label>
+                <select id="atarget_sel_1">
+                    <option value="-1">自動</option>
+                    <option value="0">左</option>
+                    <option value="1">中央</option>
+                    <option value="2">右</option>
+                </select>
+            </span>
+            <span id="allystat_tg_2">
+                <label for="atarget_sel_2">副属性: </label>
+                <select id="atarget_sel_2">
+                    <option value="-1">自動</option>
+                    <option value="0">左</option>
+                    <option value="1">中央</option>
+                    <option value="2">右</option>
+                </select>
+            </span>
+        </div>
+    </div>
+    <div class="dialog_div" id="dialog_simlog" title="ログ表示">
+        <div id="sim_log_inner">
+        </div>
+    </div>
     <div class="dialog_div" id="dialog_ss_noaction" title="No Effect">
         <p>SSを発動しても効果が得られません。</p>
     </div>

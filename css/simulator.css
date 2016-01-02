@@ -16,7 +16,7 @@ p#sim_info_status {
 	display: inline;
 	width: 40%;
 	margin: 0;
-	padding: 1ex 0 0.5ex 1em;
+	padding: 1ex 0 0.5ex 0.5em;
 	float: left;
 }
 
@@ -24,21 +24,20 @@ p#sim_turns {
 	display: inline;
 	width: 55%;
 	margin: 0;
-	padding: 1ex 1em 0.5ex 0;
+	padding: 1ex 0.5em 0.5ex 0;
 	text-align: right;
 	float: right;
 }
 
 /* sim_result */
 div.sim_result_links {
-	width: 90%;
+	width: 70%;
 	float: right;
 	padding: 0 0.5em 0.5ex;
-	border-radius: 5px;
 	text-align: right;
 }
 
-div.sim_result_links a {
+div.sim_result_links a{
 	margin: 0 3px;
 	display: inline;
 	color: #0040FF;
@@ -46,11 +45,33 @@ div.sim_result_links a {
 	cursor: pointer;
 }
 
-#sim_share, #sim_restart{
+#sim_share, #sim_restart, #sim_logview {
 	display: none;
 }
 
 /* Simulator Allys & Enemys */
+div.sim_ally{
+	width: 50%;
+	margin: 1ex 0em 1ex 0.5em;
+	padding: 20px 0;
+	float: left;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #606060;
+	border-radius: 5px;
+}
+
+div.sim_enemy {
+	width: 45%;
+	margin: 1ex 0.5em 1ex 0em;
+	padding-top: 20px;
+	float: right;
+	border-width: 1px 1px 0px;
+	border-style: solid;
+	border-color: #606060;
+	border-radius: 5px 5px 0px 0px;
+}
+
 div.ally_ss {
 	position: absolute;
 	bottom: 0px;
@@ -65,10 +86,24 @@ div.ally_ss button{
 	border-width: 1px 0px 0px 1px;
 }
 
+/* Ally info */
+div.ally_info{
+	width: 50%;
+	margin: 1ex 0em 1ex 0.5em;
+	float: left;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #606060;
+}
+
+div.ally_info p{
+	margin: 1.5ex 0.5em;
+}
+
 /* Panels */
 div.sim_panel {
 	width: 45%;
-	height: 300px;
+	/*height: 300px;*/
 	position: relative;
 	margin: 1ex 0.5em 2ex 0em;
 	padding: 0px;
@@ -103,7 +138,7 @@ div.attack_rand{
 div.panel_list {
 	border-top: 1px solid #606060;
 	border-bottom: 1px solid #606060;
-	padding: 0 0.5em 1ex;
+	padding: 0.5ex 0.5em 1.5ex;
 	clear: both;
 }
 
@@ -121,8 +156,8 @@ div.sim_option {
 }
 
 div.field_move {
-	position: absolute;
-	bottom: 0px;
+	/*position: absolute;*/
+	/*bottom: 0px;*/
 }
 
 button.field_mov_button {
@@ -134,11 +169,11 @@ button.field_mov_button {
 	color: #303030;
 }
 button#fld_move_before {
-	border-width: 1px 1px 0px 0px;
+	border-width: 0px 1px 0px 0px;
 	float: left;
 }
 button#fld_move_after {
-	border-width: 1px 0px 0px 0px;
+	border-width: 0px 0px 0px 0px;
 	float: right;
 }
 
@@ -160,6 +195,31 @@ div#sim_log_inner div {
 	padding: 1ex 0.5em;
 	line-height: normal;
 }
+
+/* Ally Status */
+div#allystat_index{
+	display: none;
+}
+
+div#allystat_teff {
+	height: 100px;
+	overflow-y: auto;
+}
+div#allystat_teff ul{
+	list-style-type: square;
+	padding-left: 2em;
+	margin: 1ex 0;
+}
+
+div#dialog_allystatus #allystat_tg_1{
+	margin-right: 1em;
+}
+
+div#dialog_allystatus .allystat_target {
+	padding: 1.5ex 0 0 0.5em;
+	border-top: 1px solid #AAA;
+}
+
 
 /* Panel Button */
 /*

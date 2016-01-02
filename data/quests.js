@@ -197,13 +197,13 @@ Quests = [
 					{
 						name: "ロレッタ",
 						hp: 100000,
-						imageno: -1,
+						imageno: 5482,
 						attr: 1,
 						spec: 9,
 					}, {
 						name: "ルシェ",
 						hp: 600000,
-						imageno: -1,
+						imageno: 5486,
 						attr: 1,
 						spec: 0,
 						move: {
@@ -219,7 +219,7 @@ Quests = [
 					}, {
 						name: "ベルナデッタ",
 						hp: 100000,
-						imageno: -1,
+						imageno: 5494,
 						attr: 1,
 						spec: 9,
 						move: {

@@ -115,13 +115,13 @@ $(function () {
 	// check
 	if ((simDeck.length > 0 && simQuest !== undefined)) {
 		// 味方データを読み込む
-		Field.Allys.Deck = simDeck;
+		Field.Allys.Deck = [];
 		Field.Allys.Now = new Array();
 		for (var i = 0; i < simDeck.length; i++) {
-			Field.Allys.Now[i] = {};
-			var card = simDeck[i];
-			var now = Field.Allys.Now[i];
-			var mana = 200;
+			Field.Allys.Deck[i] = simDeck[i].card;
+			var card = simDeck[i].card;
+			var now = Field.Allys.Now[i] = {};
+			var mana = simDeck[i].mana;
 			// SS状態をリセット
 			now.ss_current = 0;		// SSチャージターン
 			now.ss_isfirst = true;	// SSをまだ発動していないかどうか
@@ -132,6 +132,7 @@ $(function () {
 			now.maxhp = card.hp + mana;
 			now.nowhp = card.hp + mana;
 			now.atk = card.atk + mana;
+			now.target = [];
 			now.flags = {};
 			now.flags.skill_counter = [];
 			now.turn_effect = [];
@@ -163,12 +164,13 @@ $(function () {
 		}
 		// 敵の処理
 		enemy_popup_proc();
+		// タゲリセット
+		target_allselect(-1);
 		// 初期状態を保存
 		Field_log.save(0, Field);
 		// 表示
 		$("#sim_log_inner").accordion({
 			active: false,
-			animate: false,
 			heightStyle: "content",
 			collapsible: true
 		});

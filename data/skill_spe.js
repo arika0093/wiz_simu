@@ -95,7 +95,7 @@ function ss_skillcounter(r, t) {
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
 			now.turn_effect.push({
-				desc: "スキルカウンター待機(効果値: " + (rate * 100) + ")",
+				desc: "スキルカウンター待機(" + (rate * 100) + ")",
 				type: "ss_skillcounter",
 				isdual: false,
 				turn: t,
@@ -105,7 +105,12 @@ function ss_skillcounter(r, t) {
 					var card = f.Allys.Deck[oi];
 					var now_e = f.Allys.Now[oi];
 					var sc_flag = now_e.flags.skill_counter;
-					if (is_t && !is_b && sc_flag.length > 0) {
+					// スキルカウンター前行動
+					var is_sc_cancel = $.grep(now_e.turn_effect, function (e) {
+						return e.bef_skillcounter && !e.bef_skillcounter(f, oi);
+					}).length > 0;
+					if (is_t && !is_b && sc_flag.length > 0 && !is_sc_cancel) {
+						fld.log_push("Unit[" + (oi + 1) + "]: スキルカウンター発動(" + (rate * 100) + "%)");
 						// スキルカウンター対象の敵の数だけ繰り返す
 						for (var sci = 0; sci < sc_flag.length; sci++) {
 							if (!sc_flag[sci]) { continue; }
@@ -117,6 +122,7 @@ function ss_skillcounter(r, t) {
 							}
 						}
 					}
+					sc_flag = [];
 				},
 			});
 		}

@@ -1,21 +1,5 @@
 // 現在の状況を表示する
 function sim_show() {
-	// sim_log
-	var logtext = "";
-	var tt = Field.Status.totalturn;
-	var log_stat = Field.Status.log[tt] !== undefined ? tt : tt - 1;
-	for (var i = log_stat ; i >= 0; i--) {
-		logtext += "<h3>turn: " + (i + 1) + "" + "</h3><div>";
-		if (Field.Status.log[i] !== undefined) {
-			for (var j = 0; j < Field.Status.log[i].length; j++) {
-				logtext += Field.Status.log[i][j] + "<br/>";
-			}
-		}
-		logtext += "</div>";
-	}
-	$("#sim_log_inner").html(logtext);
-	$("#sim_log_inner").accordion("refresh");
-
 	// sim_info_turn
 	if (Field.Status.chain_status == 1) {
 		var chain_state = "(保護)";
@@ -24,11 +8,11 @@ function sim_show() {
 	} else {
 		var chain_state = "";
 	}
-
 	$("#sim_turns").text(
 		"turn: " + totalturn_string() + " / chain: " + Field.Status.chain
 			+ chain_state + " / " + Field.Status.nowbattle + "戦目 (" + durturn_string() + ")"
 	);
+
 	// sim_info_status
 	$("#sim_info_status").text(Field.Quest.name);
 
@@ -38,11 +22,13 @@ function sim_show() {
 	} else {
 		$("#sim_share").fadeOut("slow");
 	}
-	// sim_restart
+	// sim_restart / logview
 	if (Field.Status.totalturn > 0) {
 		$("#sim_restart").fadeIn("slow");
+		$("#sim_logview").fadeIn("slow");
 	} else {
 		$("#sim_restart").fadeOut("slow");
+		$("#sim_logview").fadeOut("slow");
 	}
 
 	// ----------------
@@ -136,7 +122,103 @@ function sim_show() {
 	$("#fld_move_before").attr("disabled", (Field.Status.totalturn == 0));
 	$("#fld_move_after").attr("disabled", (Field.Status.totalturn == Field_log.length() - 1));
 
+	// ally_info
+	var cost_total = 0;
+	var paneb_total = [0, 0, 0, 0, 0];
+	var paneb_total_str = "";
+	for (var i = 0; i < Field.Allys.Deck.length; i++) {
+		cost_total += card_cost(Field.Allys.Deck[i]);
+		var paneb_aw = card_paneb(Field.Allys.Deck[i]);
+		for (var j = 0; j < 5; j++) {
+			paneb_total[j] += paneb_aw[j];
+		}
+	}
+	for (var j = 0; j < 5; j++) {
+		if (paneb_total[j] <= 0) { continue; }
+		if (paneb_total_str != "") {
+			paneb_total_str += ", ";
+		}
+		paneb_total_str += Field.Constants.Attr[j] + ": " + paneb_total[j];
+	}
+	$("#ally_info_text").text("Cost: " + cost_total + " / Panel Boost: [" + paneb_total_str + "]");
+
 	// dialog
+	// log
+	$("#dialog_simlog").dialog({
+		autoOpen: false,
+		modal: true,
+		width: 450,
+		height: 480,
+		open: function(e, ui){
+			// sim_log
+			var logtext = "";
+			var tt = Field.Status.totalturn;
+			var log_stat = Field.Status.log[tt] !== undefined ? tt : tt - 1;
+			for (var i = 0 ; i <= log_stat; i++) {
+				logtext += create_log(i);
+			}
+			$("#sim_log_inner").html(logtext);
+			$("#sim_log_inner").accordion("refresh");
+		},
+		buttons: {
+			"閉じる": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
+	// ally status
+	$("#dialog_allystatus").dialog({
+		autoOpen: false,
+		modal: true,
+		width: 450,
+		open: function () {
+			// hide
+			$(".ui-dialog-titlebar").hide();
+			// listup turn effect
+			var li_t = "";
+			var n = Number($("#allystat_index").text());
+			var card = Field.Allys.Deck[n];
+			var now = Field.Allys.Now[n];
+			var teff = now.turn_effect;
+			for (var i = 0; i < teff.length; i++) {
+				if (teff[i].desc != null) {
+					li_t += "<li>" + teff[i].desc + "(残り: " + teff[i].lim_turn + "t)</li>";
+				}
+			}
+			if (teff.length <= 0) {
+				li_t = "<li>(現在継続中の効果はありません)</li>";
+			}
+			$("#allystat_name").text((n+1) + ": " + card.name);
+			$("#ally_tefflist").html(li_t);
+			// target select
+			if (card.attr[1] != -1) {
+				$("#allystat_tg_2").show();
+			} else {
+				$("#allystat_tg_2").hide();
+			}
+			$("#atarget_sel_1").val(now.target[0] + "");
+			$("#atarget_sel_2").val(now.target[1] + "");
+			// close when click dialog outside
+			$('.ui-widget-overlay').bind('click', function () {
+				$("#dialog_allystatus").dialog('close');
+			});
+		},
+		close: function () {
+			// target set
+			var n = Number($("#allystat_index").text());
+			var now = Field.Allys.Now[n];
+			now.target[0] = Number($("#atarget_sel_1").val());
+			now.target[1] = Number($("#atarget_sel_2").val());
+			// title show
+			$(".ui-dialog-titlebar").show();
+		},
+		buttons: {
+			"閉じる": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
+	// no effect
 	$("#dialog_ss_noaction").dialog({
 		autoOpen: false,
 		modal: true,
@@ -147,6 +229,18 @@ function sim_show() {
 			},
 		},
 	});
+}
+
+// logを生成する
+function create_log(i) {
+	var logtext = "<h3>turn: " + (i + 1) + "" + "</h3><div>";
+	if (Field.Status.log[i] !== undefined) {
+		for (var j = 0; j < Field.Status.log[i].length; j++) {
+			logtext += Field.Status.log[i][j] + "<br/>";
+		}
+	}
+	logtext += "</div>";
+	return logtext;
 }
 
 // SSの残り表記を返却する
@@ -193,10 +287,31 @@ function durturn_string() {
 	return popupstr;
 }
 
+// ログ表示
+function log_view() {
+	$("#dialog_simlog").dialog("open");
+}
+
+// 味方精霊情報表示
+function show_allystat(n) {
+	if (!Field.Status.finish && n < Field.Allys.Deck.length) {
+		$("#allystat_index").text(n + "");
+		$("#dialog_allystatus").dialog("open");
+	}
+}
+
 // ツイート
 function tweet_result() {
+	var win_opt = "menubar=no,toolbar=no,resizable=yes,scrollbars=no,width=640px,height=360px,top=40px,left=40px";
 	// URL生成して開く
-	create_tweeturl(Field.Quest.name, durturn_string(), totalturn_string());
+	create_tweeturl(Field.Quest.name, durturn_string(), totalturn_string(), function (d) {
+		var s_url = d.data.url || url;
+		twurl = twurl.replace(url, s_url);
+		// 開く
+		window.open(twurl, "tweet_result", win_opt);
+	});
+	// popup block対策
+	window.open("", "tweet_result", win_opt);
 }
 
 // fieldのログを読む
@@ -218,7 +333,15 @@ function back_decksel() {
 
 // タゲ選択
 function target_allselect(n) {
-	$("#attack_target_sel").val(n + "");
+	n = (n !== undefined ? n : $("#attack_target_sel").val());
+	if (n < GetNowBattleEnemys().length) {
+		$("#attack_target_sel").val(n + "");
+		for (var i = 0; i < Field.Allys.Deck.length; i++) {
+			var now = Field.Allys.Now[i];
+			now.target[0] = n;
+			now.target[1] = n;
+		}
+	}
 }
 
 // 相対パス → 絶対パス

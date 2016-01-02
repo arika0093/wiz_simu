@@ -138,7 +138,9 @@ function attr_magnification(atk_atr, def_atr) {
 // 攻撃順序を自動で指定する
 function auto_attack_order(enemys, attr, own_index) {
 	// 攻撃順序が指定されているならそっちを優先
-	var tg = Number($("#attack_target_sel").val());
+	var fst_attr = Field.Allys.Deck[own_index].attr[0];
+	var now = Field.Allys.Now[own_index];
+	var tg = (attr == fst_attr ? now.target[0] : now.target[1]);
 	for (var i = tg; i > 0; i--) {
 		if (enemys[i]) { break; }
 		else { tg--; }
@@ -148,13 +150,20 @@ function auto_attack_order(enemys, attr, own_index) {
 	}
 	var enemy_copy = enemys.concat();
 	enemy_copy.sort(function (a, b) {
+		var pri_hp = 1000;
 		// 属性有利: 降順 / HP: 昇順
+		// 死んでたら優先度最後
 		if (a.nowhp <= 0) { return +1; }
 		if (b.nowhp <= 0) { return -1; }
+		// 死にかけなら優先度最高
+		if (a.nowhp <= pri_hp) { return -1; }
+		if (b.nowhp <= pri_hp) { return +1; }
 		var mgn_a = attr_magnification(attr, a.attr);
 		var mgn_b = attr_magnification(attr, b.attr);
+		// 属性有利の方が優先度高
 		if (mgn_a < mgn_b) { return +1; }
 		if (mgn_a > mgn_b) { return -1; }
+		// HPが低い方が優先度高
 		if (a.nowhp < b.nowhp) { return -1; }
 		if (a.nowhp > b.nowhp) { return +1; }
 		return 0;

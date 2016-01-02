@@ -15,6 +15,18 @@ body{
 	background-color: #FFFFFF;
 }
 
+span.uline{
+	text-decoration: underline;
+}
+span.strong{
+	color: #FF4040;
+	font-weight: bolder;
+}
+span.secretly{
+	color: #C0C0C0;
+}
+
+
 /* Clearfix */
 .clearfix {
 	/*display: inline-table;*/
@@ -32,10 +44,14 @@ div#Header{
 	border-bottom: 1px solid #A0A0FF;
 }
 
+div.headerbase{
+	position: relative;
+}
+
 a.toplink{
-	/*display: block;*/
-	width: 55%;
-	float: left;
+	display: block;
+	width: 65%;
+	/*float: left;*/
 	padding: 0.5ex 0.5em 0.8ex;
 	font-family: 'Times New Roman', Times, serif;
 	font-style: italic;
@@ -43,14 +59,16 @@ a.toplink{
 	text-decoration: none;
 	/*border-bottom: 1px solid #808080;*/
 	color: #0040FF;
-	display: block;
 }
 
 div.otherlinks{
 	width: 35%;
-	float: right;
+	/*float: right;*/
 	padding: 0.5ex 0.5em;
 	text-align: right;
+	position: absolute;
+	right: 0;
+	bottom: 0;
 }
 
 div.otherlinks a{
@@ -82,6 +100,13 @@ dl dd{
 	padding: 1.5ex 0em 3ex;
 }
 
+dd dl{
+	padding-top: 1.5ex;
+}
+dd dl dd:last-child{
+	padding: 1.5ex 0em 0ex;
+}
+
 ol{
 	margin: 0;
 	padding-left: 1.5em;
@@ -103,10 +128,6 @@ div#Updatelog {
 div.textlog{
 	border: solid 1px #808080;
 	overflow: auto;
-}
-
-span.secretly{
-	color: #C0C0C0;
 }
 
 /* Footer */

@@ -136,32 +136,11 @@ button#Start:hover{
 }
 
 /* Deck UI */
-div.sim_ally{
-	width: 50%;
-	margin: 1ex 0em 1ex 0.5em;
-	padding-top: 20px;
-	float: left;
-	border-width: 1px 1px 0px;
-	border-style: solid;
-	border-color: #606060;
-	border-radius: 5px 5px 0px 0px;
-}
-
-div.sim_enemy {
-	width: 45%;
-	margin: 1ex 0.5em 1ex 0em;
-	padding-top: 20px;
-	float: right;
-	border-width: 1px 1px 0px;
-	border-style: solid;
-	border-color: #606060;
-	border-radius: 5px 5px 0px 0px;
-}
-
 div.ally, div.enemy{
 	position: relative;
 	border-bottom: 1px solid #606060;
 }
+
 div.ally:first-child, div.enemy:first-child{
 	/*margin-top: 20px;*/
 	border-top: 1px solid #606060;

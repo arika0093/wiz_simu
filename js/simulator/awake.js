@@ -73,3 +73,25 @@ function has_fastnum(card) {
 	}
 	return turn;
 }
+
+// コストを返す
+function card_cost(card) {
+	var cost = card.cost;
+	var cd_awakes = pickup_awakes(card, "costdown", false);
+	for (var i = 0; i < cd_awakes.length; i++) {
+		cost -= cd_awakes[i].d;
+	}
+	return cost;
+}
+
+// パネブを返す
+function card_paneb(card) {
+	var paneb = [0, 0, 0, 0, 0];
+	var pb_awakes = pickup_awakes(card, "panel_boost", false);
+	for (var i = 0; i < pb_awakes.length; i++) {
+		for (var j = 0; j < 5; j++) {
+			paneb[j] += pb_awakes[i].attr[j];
+		}
+	}
+	return paneb;
+}
