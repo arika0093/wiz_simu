@@ -1,15 +1,21 @@
 // URLのnoからデッキを読み込む
 function loaddeck_from_url(qr) {
-	var cds = new Array();
+	var cds = [];
 	var q = getquery(qr);
 	if (q.length > 0) {
 		for (var ct = 0; ct < 5; ct++) {
-			if (q[ct] == 0) { continue; }
+			var spl_idx = q[ct].indexOf("|");
+			var cno = q[ct].substr(0, spl_idx >= 0 ? spl_idx : undefined);
+			var cmana = spl_idx >= 0 ? Number(q[ct].substr(spl_idx+1)) : 200;
+			if (cno == 0) { continue; }
 			var card = $.grep(Cards, function (e, i) {
-				return e.cardno == q[ct];
+				return e.cardno == cno;
 			})[0];
-			if (card !== undefined) {
-				cds.push(card);
+			if (card) {
+				cds.push({
+					card: card,
+					mana: cmana,
+				});
 			}
 		}
 	}

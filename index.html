@@ -33,7 +33,7 @@
                             <div class="ally clearfix" id="ally01">
                                 <div class="attr_none" id="ally01_attr_main">.</div>
                                 <div class="attr_none" id="ally01_attr_sub">.</div>
-                                <img class="chara_img" id="ally01_img" src="./image/noimage.png" />
+                                <img class="chara_img" id="ally01_img" src="./image/noimage.png" onclick="open_manaedit(0)" />
                                 <input class="decksel" id="deck01" onchange="decksel(1)" />
                                 <p class="ally_skill" id="ally01_as"></p>
                                 <p class="ally_skill" id="ally01_ss"></p>
@@ -41,7 +41,7 @@
                             <div class="ally clearfix" id="ally02">
                                 <div class="attr_none" id="ally02_attr_main">.</div>
                                 <div class="attr_none" id="ally02_attr_sub">.</div>
-                                <img class="chara_img" id="ally02_img" src="./image/noimage.png" />
+                                <img class="chara_img" id="ally02_img" src="./image/noimage.png" onclick="open_manaedit(1)" />
                                 <input class="decksel" id="deck02" onchange="decksel(2)" />
                                 <p class="ally_skill" id="ally02_as"></p>
                                 <p class="ally_skill" id="ally02_ss"></p>
@@ -49,7 +49,7 @@
                             <div class="ally clearfix" id="ally03">
                                 <div class="attr_none" id="ally03_attr_main">.</div>
                                 <div class="attr_none" id="ally03_attr_sub">.</div>
-                                <img class="chara_img" id="ally03_img" src="./image/noimage.png" />
+                                <img class="chara_img" id="ally03_img" src="./image/noimage.png" onclick="open_manaedit(2)" />
                                 <input class="decksel" id="deck03" onchange="decksel(3)" />
                                 <p class="ally_skill" id="ally03_as"></p>
                                 <p class="ally_skill" id="ally03_ss"></p>
@@ -57,7 +57,7 @@
                             <div class="ally clearfix" id="ally04">
                                 <div class="attr_none" id="ally04_attr_main">.</div>
                                 <div class="attr_none" id="ally04_attr_sub">.</div>
-                                <img class="chara_img" id="ally04_img" src="./image/noimage.png" />
+                                <img class="chara_img" id="ally04_img" src="./image/noimage.png" onclick="open_manaedit(3)" />
                                 <input class="decksel" id="deck04" onchange="decksel(4)" />
                                 <p class="ally_skill" id="ally04_as"></p>
                                 <p class="ally_skill" id="ally04_ss"></p>
@@ -65,7 +65,7 @@
                             <div class="ally clearfix" id="ally05">
                                 <div class="attr_none" id="ally05_attr_main">.</div>
                                 <div class="attr_none" id="ally05_attr_sub">.</div>
-                                <img class="chara_img" id="ally05_img" src="./image/noimage.png" />
+                                <img class="chara_img" id="ally05_img" src="./image/noimage.png" onclick="open_manaedit(4)" />
                                 <input class="decksel" id="deck05" onchange="decksel(5)" />
                                 <p class="ally_skill" id="ally05_as"></p>
                                 <p class="ally_skill" id="ally05_ss"></p>
@@ -97,6 +97,12 @@
     <div class="dialog_div" id="dialog_sim_error" title="Error">
         <p>入力内容に漏れがあります。クエストを指定して、精霊を最低一体以上指定してください。</p>
     </div>
+    <div class="dialog_div" id="dialog_manaset" title="マナ値指定">
+        <div class="dialog_div" id="d_mana_index"></div>
+        <div class="dialog_div" id="d_mana_dindex"></div>
+        <p id="d_mana_text">マナプラスの値を指定します。</p>
+        <input class="edit_indialog" id="d_mana_edit" placeholder="《マナプラスの値を指定》" />
+    </div>
     <div class="dialog_div" id="dialog_deck_reset" title="Deck Reset">
         <p>編集中のデッキをリセットしてよろしいですか？</p>
     </div>
@@ -110,7 +116,7 @@
         <input class="edit_indialog" id="decksave_name" placeholder="《保存したいデッキ名を入力》"/>
     </div>
     <div class="dialog_div" id="dialog_deletedeck" title="確認">
-        <p>このデッキを削除してよろしいですか？この動作は元に戻せません。</p>
+        <p>このデッキを削除してよろしいですか？<br/>この動作は元に戻せません。</p>
         <div class="dialog_div" id="_data_passing"></div>
     </div>
     <div class="dialog_div" id="dialog_noselect" title="未選択">

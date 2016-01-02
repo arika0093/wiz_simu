@@ -1,3 +1,6 @@
+// マナプラス管理用global変数
+var Manaplus = [200, 200, 200, 200, 200];
+
 // autocomplete指定 / deckload / Dialog
 $(function () {
 	for (var i = 1; i <= 5; i++) {
@@ -7,7 +10,12 @@ $(function () {
 	var cds = loaddeck_from_url();
 	for (var idx = 1; idx <= 5; idx++) {
 		$("#deck0" + idx).attr("placeholder", "《精霊名を入力します》");
-		decksel_show(idx, cds ? cds[idx-1] : null);
+		if((cds && cds[idx-1])){
+			decksel_show(idx, cds[idx-1].card);
+			Manaplus[idx-1] = cds[idx-1].mana;
+		} else {
+			decksel_show(idx, null);
+		}
 	}
 	// Dialog
 	$("#dialog_sim_error").dialog({
@@ -16,6 +24,57 @@ $(function () {
 		modal: true,
 		buttons: {
 			"OK": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
+	$("#dialog_manaset").dialog({
+		autoOpen: false,
+		width: 450,
+		modal: true,
+		open: function(){
+			// get value
+			var n = Number($("#d_mana_index").text());
+			var ni = Number($("#d_mana_dindex").text());
+			var cd = Cards[n];
+			// set value
+			$("#d_mana_edit").spinner({
+				spin: function( event, ui ) {
+					if ( ui.value > 200 ) {
+						$( this ).spinner( "value", 200 );
+						return false;
+					} else if ( ui.value < 0 ) {
+						$( this ).spinner( "value", 0 );
+						return false;
+					}
+				}
+			});
+			$("#d_mana_edit").spinner("value", Manaplus[ni]);
+			var p_t = (ni+1) + ": " + cd.name + "<br/>マナの値を0-200の間で指定してください。(HP: " + cd.hp + ")";
+			$("#d_mana_text").html(p_t);
+		},
+		buttons: {
+			"偶数調整": function () {
+				var n = $("#d_mana_index").text();
+				var cd = Cards[n];
+				var mp = cd.hp % 2 == 0 ? 200 : 199;
+				$("#d_mana_edit").spinner("value", mp);
+			},
+			"奇数調整": function () {
+				var n = $("#d_mana_index").text();
+				var cd = Cards[n];
+				var mp = cd.hp % 2 == 1 ? 200 : 199;
+				$("#d_mana_edit").spinner("value", mp);
+			},
+			"OK": function () {
+				var n = $("#d_mana_index").text();
+				var ni = $("#d_mana_dindex").text();
+				var cd = Cards[n];
+				var val = $("#d_mana_edit").spinner("value");
+				Manaplus[ni] = val ? val : 0;
+				$(this).dialog("close");
+			},
+			"Cancel": function () {
 				$(this).dialog("close");
 			},
 		},
@@ -58,7 +117,7 @@ $(function () {
 					var dc = loaddeck_from_url(sel_q);
 					var qst = loadquest_from_url(sel_q);
 					for (var i = 0; i < dc.length; i++) {
-						decksel_show(i + 1, dc[i]);
+						decksel_show(i + 1, dc[i].card);
 					}
 					if (qst) {
 						$("#QstSel").val(qst.id);
@@ -229,6 +288,20 @@ function decksel_show(idx, c) {
 	}
 }
 
+// マナプラス指定ダイアログを開く
+function open_manaedit(n) {
+	var input = $("#deck0" + (n+1)).val();
+	var cards = $.grep(Cards, function (e, i) {
+		return e.name == input;
+	});
+	if (cards && cards[0]) {
+		var cd = cards[0];
+		$("#d_mana_index").text(Cards.indexOf(cd));
+		$("#d_mana_dindex").text(n + "");
+		$("#dialog_manaset").dialog("open");
+	}
+}
+
 // デッキ情報をリセットする
 function deck_reset_ready() {
 	$("#dialog_deck_reset").dialog("open");
@@ -237,6 +310,7 @@ function deck_reset() {
 	for (var i = 1; i <= 5; i++) {
 		decksel_show(i, null);
 		$("#deck0" + i).val("");
+		Manaplus[i] = 200;
 	}
 }
 

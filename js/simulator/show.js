@@ -294,7 +294,7 @@ function log_view() {
 
 // 味方精霊情報表示
 function show_allystat(n) {
-	if (!Field.Status.finish) {
+	if (!Field.Status.finish && n < Field.Allys.Deck.length) {
 		$("#allystat_index").text(n + "");
 		$("#dialog_allystatus").dialog("open");
 	}
@@ -334,11 +334,13 @@ function back_decksel() {
 // タゲ選択
 function target_allselect(n) {
 	n = (n !== undefined ? n : $("#attack_target_sel").val());
-	$("#attack_target_sel").val(n + "");
-	for (var i = 0; i < Field.Allys.Deck.length; i++) {
-		var now = Field.Allys.Now[i];
-		now.target[0] = n;
-		now.target[1] = n;
+	if (n < GetNowBattleEnemys().length) {
+		$("#attack_target_sel").val(n + "");
+		for (var i = 0; i < Field.Allys.Deck.length; i++) {
+			var now = Field.Allys.Now[i];
+			now.target[0] = n;
+			now.target[1] = n;
+		}
 	}
 }
 

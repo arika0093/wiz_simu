@@ -16,7 +16,11 @@ function create_url(check) {
 			return e.name == input;
 		})[0];
 		var number = card !== undefined ? card.cardno : 0;
-		nolists.push(number);
+		if (number != 0) {
+			nolists.push(number + "|" + Manaplus[ct]);
+		} else {
+			nolists.push(number);
+		}
 		hasvalue = hasvalue || number != 0;
 	}
 	// questのid取得
