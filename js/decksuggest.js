@@ -35,22 +35,21 @@ $(function () {
 			},
 		},
 	});
-	var deckload_open = function (e, ui) {
-		// Load
-		var ds = $.cookie("SavedDecks");
-		ds = ds ? JSON.parse(ds) : [];
-		// Listup
-		var opts = "";
-		for (var i = 0; i < ds.length; i++) {
-			opts += "<option value='" + ds[i].query + "'>" + ds[i].name + "</option>";
-		}
-		$("#deckload_cookie").html(opts);
-	};
 	$("#dialog_deck_load").dialog({
 		autoOpen: false,
 		width: 450,
 		modal: true,
-		open: deckload_open,
+		open: function (e, ui) {
+			// Load
+			var ds = $.cookie("savedecks");
+			ds = ds ? JSON.parse(ds) : [];
+			// Listup
+			var opts = "";
+			for (var i = 0; i < ds.length; i++) {
+				opts += "<option value='" + ds[i].query + "'>" + ds[i].name + "</option>";
+			}
+			$("#deckload_cookie").html(opts);
+		},
 		buttons: {
 			"読み込み": function () {
 				// Apply
@@ -61,31 +60,24 @@ $(function () {
 					for (var i = 0; i < dc.length; i++) {
 						decksel_show(i + 1, dc[i]);
 					}
-					$("#QstSel").val(qst.id);
-					$(this).dialog("close");
+					if (qst) {
+						$("#QstSel").val(qst.id);
+					}
 				} else {
-					alert("項目を選択してください。");
+					$("#dialog_noselect").dialog("open");
 				}
 			},
 			"選択デッキを削除": function () {
-				// Load
-				var ds = $.cookie("SavedDecks");
-				ds = ds ? JSON.parse(ds) : [];
 				// Remove
 				sel_name = $("#deckload_cookie option:selected").text();
 				if (sel_name && sel_name != "") {
-					ds = $.grep(ds, function (e) {
-						return e.name != sel_name;
-					});
-					$.cookie("SavedDecks", JSON.stringify(ds), {
-						expires: 1095,
-					});
-					deckload_open();
+					$("#_data_passing").text(sel_name);
+					$("#dialog_deletedeck").dialog("open");
 				} else {
-					alert("項目を選択してください。");
+					$("#dialog_noselect").dialog("open");
 				}
 			},
-			"Cancel": function () {
+			"閉じる": function () {
 				$(this).dialog("close");
 			},
 		},
@@ -96,8 +88,12 @@ $(function () {
 		modal: true,
 		buttons: {
 			"保存": function () {
+				if ($("#decksave_name").val() == "") {
+					$("#dialog_noname").dialog("open");
+					return;
+				}
 				// Load
-				var ds = $.cookie("SavedDecks");
+				var ds = $.cookie("savedecks");
 				ds = ds ? JSON.parse(ds) : [];
 				// Add
 				ds.push({
@@ -105,12 +101,57 @@ $(function () {
 					query: create_url(false),
 				});
 				// Save
-				$.cookie("SavedDecks", JSON.stringify(ds), {
+				$.cookie("savedecks", JSON.stringify(ds), {
 					expires: 1095,
 				});
 				$(this).dialog("close");
 			},
 			"Cancel": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
+	$("#dialog_deletedeck").dialog({
+		autoOpen: false,
+		width: 300,
+		modal: true,
+		buttons: {
+			"削除する": function () {
+				// Load
+				var ds = $.cookie("savedecks");
+				ds = ds ? JSON.parse(ds) : [];
+				sel_name = $("#_data_passing").text();
+				ds = $.grep(ds, function (e) {
+					return e.name != sel_name;
+				});
+				// Save
+				$.cookie("savedecks", JSON.stringify(ds), {
+					expires: 1095,
+				});
+				$(this).dialog("close");
+				$("#dialog_deck_load").dialog("option", "open")();
+			},
+			"Cancel": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
+	$("#dialog_noselect").dialog({
+		autoOpen: false,
+		width: 300,
+		modal: true,
+		buttons: {
+			"OK": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
+	$("#dialog_noname").dialog({
+		autoOpen: false,
+		width: 300,
+		modal: true,
+		buttons: {
+			"OK": function () {
 				$(this).dialog("close");
 			},
 		},
@@ -176,15 +217,13 @@ function decksel_show(idx, c) {
 		$("#ally0" + idx + "_attr_sub").attr("class", "attr_" + (c.attr[1] != -1 ? c.attr[1] : c.attr[0]));
 		$("#ally0" + idx + "_img").attr("src", get_image_url(c.imageno));
 		$("#deck0" + idx).val(c.name);
-		//$("#deck0" + idx).css("color", "#000");
 		$("#ally0" + idx + "_as").text("AS: " + c.as1.desc);
 		$("#ally0" + idx + "_ss").text("SS: " + c.ss1.desc);
 	} else {
 		$("#ally0" + idx + "_attr_main").attr("class", "attr_none");
 		$("#ally0" + idx + "_attr_sub").attr("class", "attr_none");
 		$("#ally0" + idx + "_img").attr("src", get_image_url(-1));
-		$("#deck0" + idx).val("");
-		//$("#deck0" + idx).css("color", "#888");
+		//$("#deck0" + idx).val("");
 		$("#ally0" + idx + "_as").text("");
 		$("#ally0" + idx + "_ss").text("");
 	}
@@ -197,6 +236,7 @@ function deck_reset_ready() {
 function deck_reset() {
 	for (var i = 1; i <= 5; i++) {
 		decksel_show(i, null);
+		$("#deck0" + i).val("");
 	}
 }
 

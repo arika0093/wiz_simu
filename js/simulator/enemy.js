@@ -63,6 +63,8 @@ function allkill_check(is_ssfinish) {
 			Field.log_push(Field.Status.nowbattle + "戦目突破(" + ntrun + "ターン)");
 			// 次に進む
 			Field.Status.nowbattle += 1;
+			// タゲ全リセット
+			target_allselect(-1);
 		}
 		// パネル付与効果を全部リセット
 		Field.Status.panel_add = [];

@@ -117,6 +117,9 @@ function s_enemy_all_sealed(tnum, t) {
 				bef_answer: function(fld, as) {
 					return false;
 				},
+				bef_skillcounter: function(fld, ai) {
+					return false;
+				},
 				ss_disabled: true,
 			}
 		);

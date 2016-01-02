@@ -132,6 +132,7 @@ $(function () {
 			now.maxhp = card.hp + mana;
 			now.nowhp = card.hp + mana;
 			now.atk = card.atk + mana;
+			now.target = [];
 			now.flags = {};
 			now.flags.skill_counter = [];
 			now.turn_effect = [];
@@ -163,12 +164,13 @@ $(function () {
 		}
 		// 敵の処理
 		enemy_popup_proc();
+		// タゲリセット
+		target_allselect(-1);
 		// 初期状態を保存
 		Field_log.save(0, Field);
 		// 表示
 		$("#sim_log_inner").accordion({
 			active: false,
-			animate: false,
 			heightStyle: "content",
 			collapsible: true
 		});
