@@ -315,12 +315,13 @@ function show_allystat(n) {
 function tweet_result() {
 	var win_opt = "menubar=no,toolbar=no,resizable=yes,scrollbars=no,width=640px,height=360px,top=40px,left=40px";
 	// URL生成して開く
-	create_tweeturl(Field.Quest.name, durturn_string(), totalturn_string(), function (d) {
-		var s_url = d.data.url || url;
-		twurl = twurl.replace(url, s_url);
+	var fc = function (d) {
+		var s_url = d.data.url || encodeURIComponent(fc.url);
+		fc.twurl = fc.twurl.replace(fc.url, s_url);
 		// 開く
-		window.open(twurl, "tweet_result", win_opt);
-	});
+		window.open(fc.twurl, "tweet_result", win_opt);
+	};
+	create_tweeturl(Field.Quest.name, durturn_string(), totalturn_string(), fc);
 	// popup block対策
 	window.open("", "tweet_result", win_opt);
 }

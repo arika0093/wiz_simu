@@ -41,11 +41,13 @@ function create_tweeturl(name, durt, tot, func) {
 	var tot = tot.replace("+", "%2B");
 	var text = "「" + nam + "」を " + tot + " ターン(" + trn + ")で突破！%0A" + url;
 	var tweeturl = "https://twitter.com/intent/tweet?hashtags=wiz_simu" + "&text=" + text;
-	return create_shorturl(url, tweeturl, func);
+	func.url = url;
+	func.twurl = tweeturl;
+	return create_shorturl(url, func);
 }
 
 // 短縮URLを生成
-function create_shorturl(url, twurl, func) {
+function create_shorturl(url, func) {
 	var login = "o_4ru705ravj";
 	var apikey = "R_9978afe5408747fa92c36eaae09e767a";
 	var encUrl = encodeURIComponent(url);
