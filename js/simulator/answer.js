@@ -130,7 +130,7 @@ function answer_skill(as_arr, panel) {
 		var enemy_dat = GetNowBattleEnemys();
 		// 攻撃前処理
 		$.each(now.turn_effect, function (_i, e) {
-			if (e.bef_answer) {
+			if (e.bef_answer && as_arr[i]) {
 				for (var ali = 0; ali < as_arr[i].length; ali++) {
 					// 攻撃前処理を行い、戻り値がfalseなら除去する
 					if (!e.bef_answer(Field, as_arr[i][ali])) {

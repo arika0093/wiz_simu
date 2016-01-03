@@ -127,10 +127,12 @@ function turn_effect_check(is_turn_move, is_battle_move) {
 			return (e.type == turneff.type) && (!turneff.isdual);
 		});
 		if (duals.length >= 2) {
+			// 消す前に終了時関数をcallする
+			turneff.effect(Field, all_turneff[te].index, turneff, "end", is_turn_move, is_allkill());
 			now.turn_effect.splice(now.turn_effect.indexOf(duals[0]), 1);
 			continue;
 		}
-		if (turneff.lim_turn >= 0 && (!turneff._notfirst || is_turn_move)) {
+		if (turneff.lim_turn != 0 && (!turneff._notfirst || is_turn_move)) {
 			// 発動
 			if (!turneff._notfirst) {
 				var state = "first";

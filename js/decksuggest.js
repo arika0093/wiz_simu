@@ -11,12 +11,24 @@ $(function () {
 	for (var idx = 1; idx <= 5; idx++) {
 		$("#deck0" + idx).attr("placeholder", "《精霊名を入力します》");
 		if((cds && cds[idx-1])){
-			decksel_show(idx, cds[idx-1].card);
-			Manaplus[idx-1] = cds[idx-1].mana;
+			Manaplus[idx - 1] = cds[idx - 1].mana;
+			decksel_show(idx, cds[idx - 1].card);
 		} else {
-			decksel_show(idx, null);
+			var itx = $("#deck0" + idx).val();
+			var cd = $.grep(Cards, function (e) {
+				return e.name == itx;
+			})[0];
+			decksel_show(idx, cd);
 		}
 	}
+	// Manaplus blink
+	var blink_interval = 3300;
+	setInterval(function () {
+		$('p.ally_mana').fadeOut(blink_interval / 3, function () {
+			$(this).fadeIn(blink_interval / 3);
+		});
+	}, blink_interval);
+
 	// Dialog
 	$("#dialog_sim_error").dialog({
 		autoOpen: false,
@@ -39,15 +51,25 @@ $(function () {
 			var cd = Cards[n];
 			// set value
 			$("#d_mana_edit").spinner({
-				spin: function( event, ui ) {
-					if ( ui.value > 200 ) {
-						$( this ).spinner( "value", 200 );
+				change: function () {
+					var value = $("#d_mana_edit").spinner("value");
+					if (value > 200) {
+						$(this).spinner("value", 200);
 						return false;
-					} else if ( ui.value < 0 ) {
-						$( this ).spinner( "value", 0 );
+					} else if (value < 0) {
+						$(this).spinner("value", 0);
 						return false;
 					}
-				}
+				},
+				spin: function (event, ui) {
+					if (ui.value > 200) {
+						$(this).spinner("value", 200);
+						return false;
+					} else if (ui.value < 0) {
+						$(this).spinner("value", 0);
+						return false;
+					}
+				},
 			});
 			$("#d_mana_edit").spinner("value", Manaplus[ni]);
 			var p_t = (ni+1) + ": " + cd.name + "<br/>マナの値を0-200の間で指定してください。(HP: " + cd.hp + ")";
@@ -68,10 +90,11 @@ $(function () {
 			},
 			"OK": function () {
 				var n = $("#d_mana_index").text();
-				var ni = $("#d_mana_dindex").text();
+				var ni = Number($("#d_mana_dindex").text());
 				var cd = Cards[n];
 				var val = $("#d_mana_edit").spinner("value");
 				Manaplus[ni] = val ? val : 0;
+				$("#ally0" + (ni+1) + "_mana").text("+" + Manaplus[ni]);
 				$(this).dialog("close");
 			},
 			"Cancel": function () {
@@ -117,6 +140,7 @@ $(function () {
 					var dc = loaddeck_from_url(sel_q);
 					var qst = loadquest_from_url(sel_q);
 					for (var i = 0; i < dc.length; i++) {
+						Manaplus[i] = dc[i].mana;
 						decksel_show(i + 1, dc[i].card);
 					}
 					if (qst) {
@@ -246,9 +270,10 @@ function set_autocmp(i) {
 			}
 		})
 		.autocomplete("instance")._renderItem = function (ul, dec) {
+			var AS = dec.data.as2 ? dec.data.as2 : dec.data.as1;
 			return $("<li class='clearfix'>")
 				.append("<img src='" + get_image_url(dec.data.imageno) + "' /><a>" + dec.label
-					+ "</a><br/><p>" + dec.data.as1.desc + "</p>")
+					+ "</a><br/><p>" + AS.desc + "</p>")
 				.appendTo(ul);
 		};
 	}
@@ -272,16 +297,20 @@ function decksel(i) {
 // 精霊情報から表示を行う
 function decksel_show(idx, c) {
 	if (c) {
+		var AS = c.as2 ? c.as2 : c.as1;
+		var SS = c.ss2 ? c.ss2 : c.ss1;
 		$("#ally0" + idx + "_attr_main").attr("class", "attr_" + c.attr[0]);
 		$("#ally0" + idx + "_attr_sub").attr("class", "attr_" + (c.attr[1] != -1 ? c.attr[1] : c.attr[0]));
 		$("#ally0" + idx + "_img").attr("src", get_image_url(c.imageno));
+		$("#ally0" + idx + "_mana").text("+" + Manaplus[idx-1]);
 		$("#deck0" + idx).val(c.name);
-		$("#ally0" + idx + "_as").text("AS: " + c.as1.desc);
-		$("#ally0" + idx + "_ss").text("SS: " + c.ss1.desc);
+		$("#ally0" + idx + "_as").text("AS: " + AS.desc);
+		$("#ally0" + idx + "_ss").text("SS: " + SS.desc);
 	} else {
 		$("#ally0" + idx + "_attr_main").attr("class", "attr_none");
 		$("#ally0" + idx + "_attr_sub").attr("class", "attr_none");
 		$("#ally0" + idx + "_img").attr("src", get_image_url(-1));
+		$("#ally0" + idx + "_mana").text("");
 		//$("#deck0" + idx).val("");
 		$("#ally0" + idx + "_as").text("");
 		$("#ally0" + idx + "_ss").text("");
@@ -312,6 +341,7 @@ function deck_reset() {
 		$("#deck0" + i).val("");
 		Manaplus[i] = 200;
 	}
+	$("#QstSel").val("");
 }
 
 // デッキ読み込み、保存

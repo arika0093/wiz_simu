@@ -37,6 +37,12 @@ function sim_show() {
 		var dec = Field.Allys.Deck[i];
 		var now = Field.Allys.Now[i];
 		if (dec !== undefined) {
+			// 死んでたらグレースケール化
+			if (now.nowhp <= 0) {
+				$("#ally0" + (i + 1) + "_img").attr("class", "chara_img_dead");
+			} else {
+				$("#ally0" + (i + 1) + "_img").attr("class", "chara_img");
+			}
 			// 指定
 			$("#ally0" + (i + 1) + "_attr_main").attr("class", "attr_" + dec.attr[0]);
 			$("#ally0" + (i + 1) + "_attr_sub").attr("class", "attr_" + (dec.attr[1] != -1 ? dec.attr[1] : dec.attr[0]));
@@ -74,6 +80,12 @@ function sim_show() {
 	for (var i = 0; i < 3; i++) {
 		var e = enemys_dat[i];
 		if (e !== undefined) {
+			// 死んでたらグレースケール化
+			if (e.nowhp <= 0) {
+				$("#enemy0" + (i + 1) + "_img").attr("class", "chara_img_dead");
+			} else {
+				$("#enemy0" + (i + 1) + "_img").attr("class", "chara_img");
+			}
 			// 指定
 			$("#enemy0" + (i + 1) + "_attr_main").attr("class", "attr_" + e.attr);
 			$("#enemy0" + (i + 1) + "_attr_sub").attr("class", "attr_" + e.attr);
@@ -182,7 +194,11 @@ function sim_show() {
 			var teff = now.turn_effect;
 			for (var i = 0; i < teff.length; i++) {
 				if (teff[i].desc != null) {
-					li_t += "<li>" + teff[i].desc + "(残り: " + teff[i].lim_turn + "t)</li>";
+					li_t += "<li>" + teff[i].desc;
+					if (teff[i].lim_turn > 0) {
+						li_t += "(残り: " + teff[i].lim_turn + "t)";
+					}
+					li_t += "</li>";
 				}
 			}
 			if (teff.length <= 0) {
@@ -211,11 +227,6 @@ function sim_show() {
 			now.target[1] = Number($("#atarget_sel_2").val());
 			// title show
 			$(".ui-dialog-titlebar").show();
-		},
-		buttons: {
-			"閉じる": function () {
-				$(this).dialog("close");
-			},
 		},
 	});
 	// no effect
@@ -321,6 +332,7 @@ function load_field(i) {
 		Field = Field_log.load(load_index);
 		// 再表示
 		sim_show();
+		$("#attack_target_sel").val("");
 	}
 }
 

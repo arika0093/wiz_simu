@@ -97,7 +97,7 @@ div.ally_info{
 }
 
 div.ally_info p{
-	margin: 1.5ex 0.5em;
+	margin: 1.0ex 0.5em;
 }
 
 /* Panels */
@@ -216,8 +216,19 @@ div#dialog_allystatus #allystat_tg_1{
 }
 
 div#dialog_allystatus .allystat_target {
-	padding: 1.5ex 0 0 0.5em;
+	padding: 1.5ex 0 1ex 0.5em;
 	border-top: 1px solid #AAA;
+}
+div#dialog_allystatus .allystat_target select {
+	font-family: Meiryo !important;
+}
+
+/* Images */
+img.chara_img_dead{
+	-webkit-filter: saturate(80%) brightness(60%);
+	-moz-filter: saturate(80%) brightness(60%);
+	-o-filter: saturate(80%) brightness(60%);
+	filter: saturate(80%) brightness(60%);
 }
 
 

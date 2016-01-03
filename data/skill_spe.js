@@ -46,9 +46,11 @@ function ss_damage_s(r, attrs, atn) {
 		atkn = ss_ratedo(atn, fld, n);
 		for (var an = 0; an < atkn; an++) {
 			for (var a = 0; a < attrs.length; a++) {
-				var atr = attrs[a];
 				// 攻撃
-				ss_damage(fld, r, atr, atkn, n, auto_attack_order(enemys, atr, n));
+				var atr = attrs[a];
+				var atk_order = auto_attack_order(enemys, atr, n);
+				var rt = ss_ratedo(r, fld, n, atk_order, (a == 0) && (an == 0));
+				ss_damage(fld, rt, atr, atkn, n, atk_order);
 			}
 		}
 		return true;
@@ -94,6 +96,7 @@ function ss_skillcounter(r, t) {
 		var rate = ss_ratedo(r, fld, n);
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
+			if (now.nowhp <= 0) { continue; }
 			now.turn_effect.push({
 				desc: "スキルカウンター待機(" + (rate * 100) + ")",
 				type: "ss_skillcounter",
@@ -180,7 +183,7 @@ function ss_enhance_all(p, t, attr) {
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var cd = fld.Allys.Deck[i];
 			var now = fld.Allys.Now[i];
-			if (attr[cd.attr[0]] > 0) {
+			if (now.nowhp > 0 && attr[cd.attr[0]] > 0) {
 				ss_enhance_own(p, t, true)(fld, i);
 			}
 		}
@@ -217,34 +220,51 @@ function ss_enhance_own(p, t, _nolog) {
 }
 
 // 全体ステアップ
-//   例: ss_statusup_all([500, 500], -1)
-function ss_statusup_all(up_arr, t) {
+//   例: ss_statusup_all([500, 500], [2000, 2000], -1)
+function ss_statusup_all(up_arr, up_limit, t) {
 	return function (fld, n) {
-		var up_arrs = ss_ratedo(up_arr, fld, n);
+		var up_arrs_b = ss_ratedo(up_arr, fld, n);
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
+			if (now.nowhp <= 0) { continue; }
+
+			var up_arrs = $.extend([], up_arrs_b);
+			// 既にかかってるステアップの値を取得する
+			$.each(now.turn_effect, function (i, e) {
+				if (e.type == "ss_statusup") {
+					up_arrs[0] += e.up_hp;
+					up_arrs[1] += e.up_atk;
+				}
+			});
+			// 上限に達してたら上限に合わせる
+			up_arrs[0] = Math.min(up_arrs[0], up_limit[0]);
+			up_arrs[1] = Math.min(up_arrs[1], up_limit[1]);
+			// 出力
 			now.turn_effect.push({
 				desc: "ステータスアップ(HP: " + up_arrs[0] + "/ATK: " + up_arrs[1] + ")",
 				type: "ss_statusup",
-				isdual: true,
+				isdual: false,
 				turn: t,
 				lim_turn: t,
+				up_hp: up_arrs[0],
+				up_atk: up_arrs[1],
 				effect: function (f, oi, teff, state) {
+					var card = f.Allys.Deck[oi];
 					var nowtg = f.Allys.Now[oi];
 					if (state == "first") {
-						nowtg.maxhp += up_arrs[0];
-						nowtg.nowhp += up_arrs[0];
-						nowtg.atk += up_arrs[1];
+						nowtg.maxhp += teff.up_hp;
+						nowtg.nowhp += teff.up_hp;
+						nowtg.atk += teff.up_atk;
 					}
 					else if (state == "end") {
-						nowtg.maxhp -= up_arrs[0];
-						nowtg.nowhp = Math.min(f.Allys.Now[tg].nowhp, f.Allys.Now[tg].maxhp);
-						nowtg.atk -= up_arrs[1];
+						nowtg.maxhp -= teff.up_hp;
+						nowtg.nowhp = Math.min(nowtg.nowhp, nowtg.maxhp);
+						nowtg.atk -= teff.up_atk;
 					}
 				},
 			});
 		}
-		fld.log_push("味方全体ステータスUp(HP:" + hu + ", ATK: " + atku +
+		fld.log_push("味方全体ステータスUp(HP:" + up_arrs[0] + ", ATK: " + up_arrs[1] +
 			(t != -1 ? (", " + t + "t") : "") + ")");
 		return true;
 	};
@@ -256,6 +276,7 @@ function ss_absattack_disable(t) {
 		var rate = ss_ratedo(r, fld, n);
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
+			if (now.nowhp <= 0) { continue; }
 			now.turn_effect.push({
 				desc: "状態異常無効",
 				type: "ss_absattack_disable",
@@ -278,6 +299,7 @@ function ss_revival(r, t) {
 		var rate = ss_ratedo(r, fld, n);
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
+			if (now.nowhp <= 0) { continue; }
 			now.turn_effect.push({
 				desc: "起死回生",
 				type: "ss_revival",
@@ -307,6 +329,7 @@ function ss_skillboost(f) {
 			// スキブ処理
 			var card = fld.Allys.Deck[i];
 			var now = fld.Allys.Now[i];
+			if (now.nowhp <= 0) { continue; }
 			if (!now.ss_isboost && !is_legendmode(card, now)) {
 				now.ss_current += f_rate;
 				now.ss_isboost = true;
@@ -529,7 +552,8 @@ function ss_hp_under(cond, a, b) {
 function special_attr(attrs, a, b) {
 	return function (fld, oi, ei) {
 		var e = GetNowBattleEnemys(ei);
-		return (attrs[e.attr] > 0) ? a : b;
+		// 表記値+100%(バグ？)
+		return ((attrs[e.attr] > 0) ? a : b) + 1;
 	}
 }
 
@@ -538,6 +562,20 @@ function ss_consume_all_cond(base, p) {
 	return get_fstval(function (fld, oi) {
 		return base * ss_consume_all(p)(fld, oi);
 	});
+}
+
+// 自身が毒かどうか
+function ss_is_poison_own(a, b) {
+	return function (fld, oi) {
+		var now = fld.Allys.Now[oi];
+		var is_poison = $.grep(now.turn_effect, function (e) {
+			return e.type == "poison";
+		}).length > 0;
+		if (is_poison) {
+			return a;
+		}
+		return b;
+	};
 }
 
 // チェイン分岐

@@ -20,13 +20,13 @@ div.selbox_field{
 }
 
 select.selbox{
-	width: 78%;
+	width: 60%;
 	font-family: Meiryo;
 }
 
-button.deck_reset{
-	width: 18%;
-	padding: 0 0.5em;
+button.deck_saveload, button.deck_reset{
+	width: 11.5%;
+	padding: 0 0.25em;
 	font-family: Meiryo;
 }
 
@@ -50,7 +50,7 @@ div.twitter{
 }
 iframe#twitter-widget-0{
 	max-width: 100% !important;
-	height: 368px !important;
+	height: 445px !important;
 }
 
 div.sim_start{
@@ -94,10 +94,10 @@ input.decksel{
 }
 
 p.ally_skill{
-	width: 65%;
+	width: 70%;
 	margin: -2px 0.5em 0 0;
 	padding: 0;
-	text-align: right;
+	text-align: left;
 	float: right;
 	font-size: 8.5pt;
 	overflow: hidden;
@@ -105,12 +105,12 @@ p.ally_skill{
 	text-overflow: ellipsis;
 }
 
-button.deck_saveload{
+/*button.deck_saveload{
 	width: 48%;
 	margin: 1ex auto;
 	padding: 0.5ex;
 	font-family: Meiryo;
-}
+}*/
 
 button#Start{
 	width: 100%;
@@ -237,12 +237,31 @@ div.attr_none{
 }
 
 /* Image */
-img.chara_img {
-	/*width: 0px;*/
+div.ally_image, div.enemy_image{
 	width: 64px;
 	height: 64px;
 	float: left;
 	border-width: 0px 1px 0px 0px;
 	border-style: solid;
 	border-color: #A0A0A0;
+	position: relative;
+}
+
+img.chara_img, img.chara_img_dead {
+	/*width: 0px;*/
+	width: 64px;
+	height: 64px;
+}
+
+p.ally_mana{
+	font-size: 9pt;
+	color: #FFFFFF;
+	text-shadow: 2px  2px 3px #000,
+				-2px  2px 3px #000,
+				 2px -2px 3px #000,
+				-2px -2px 3px #000;
+	margin: 0;
+	position: absolute;
+	top: 0px;
+	right: 1px;
 }
