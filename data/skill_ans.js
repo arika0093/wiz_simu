@@ -241,6 +241,26 @@ function ChainPanelsAttack(r1, r2, r3, ch) {
 	];
 }
 
+// パネル依存種族特攻攻撃(r1: 単色割合, r2: 二色割合, r3: 三色以上割合, spec: 種族, ch: 発動チェイン数)
+function ChainPanelsSpecAttack(r1, r2, r3, spec, ch) {
+	return [
+		{
+			type: "attack",
+			isall: false,
+			atkn: 1,
+			rate: r1,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: specific_specs(spec),
+			cond: function (fld, oi, ei, panels) {
+				var rates = [r1, r2, r3];
+				this.rate = rates[Math.min(panels.length - 1, 2)];
+				return true;
+			},
+		}
+	];
+}
+
 // デッキ属性数依存攻撃(r1: 単色割合, r2: 二色割合, r3: 三色以上割合, ch: 発動チェイン数)
 function ChainDeckAttrsAttack(r1, r2, r3, ch) {
 	return [
@@ -296,6 +316,25 @@ function ChainDeckSpecsAttack(base, specs, ch) {
 					}
 				}
 				this.rate = base * count;
+				return true;
+			},
+		}
+	];
+}
+
+// イチかバチか攻撃(最低値, 最高値, チェイン)
+function ChainStakesAttack(u, t, ch) {
+	return [
+		{
+			type: "attack",
+			isall: false,
+			atkn: 1,
+			rate: t,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: create_specs(1),
+			cond: function (fld, oi, ei) {
+				this.rate = Math.floor(Math.random() * (t-u) + u);
 				return true;
 			},
 		}

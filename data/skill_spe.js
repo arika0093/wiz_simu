@@ -1,7 +1,7 @@
 // ------------------------------------------------------
 // 基本系
 // ------------------------------------------------------
-// 関数なら実行、普通の値ならそのまま返す
+// (内部用)関数なら実行、普通の値ならそのまま返す
 function ss_ratedo(r, fld, oi, ti, is_fst) {
 	if (r && r.caller !== undefined) {
 		return r(fld, oi, ti, (is_fst !== false));
@@ -13,7 +13,7 @@ function ss_ratedo(r, fld, oi, ti, is_fst) {
 // ------------------------------------------------------
 // 攻撃系
 // ------------------------------------------------------
-// 敵にSSダメージ
+// (内部用)敵にSSダメージ
 function ss_damage(fld, r, atr, atkn, own, tg) {
 	var enemy = GetNowBattleEnemys(tg);
 	var now = fld.Allys.Now[own];
@@ -450,7 +450,7 @@ function ss_resurrection(r, p) {
 // ------------------------------------------------------
 // パネル付与系
 // ------------------------------------------------------
-// パネル付与効果
+// (内部用)パネル付与効果
 function panel_addition(dsc, fc) {
 	return function (fld, n) {
 		fld.Status.panel_add.push({
@@ -494,6 +494,59 @@ function panel_healally(r) {
 		}
 		fld.log_push("パネル付与効果: " + dsc);
 	});
+}
+
+// ------------------------------------------------------
+// 解除系
+// ------------------------------------------------------
+// 敵スキル解除系テンプレ
+function ss_break_template(target, type, logtext) {
+	var _break_temp_fc = function (fld, oi, ei) {
+		var is_break = false;
+		var em = GetNowBattleEnemys(ei);
+		for (var i = 0; i < em.turn_effect.length; i++) {
+			var eff = em.turn_effect[i];
+			// typeを含んでいる場合除く
+			// (attack_counterが指定されてたら多段カウンターも除く)
+			if (eff.type.indexOf(type) >= 0) {
+				eff.splice(i, 1);
+				i--;
+				is_break = true;
+			}
+		}
+		return is_break;
+	};
+	return function (fld, n) {
+		var cd = fld.Allys.Deck[n];
+		var es = GetNowBattleEnemys();
+		if (target == "all") {
+			for (var i = 0; i < es.length; i++) {
+				_break_temp_fc(fld, n, i);
+			}
+		} else {
+			_break_temp_fc(fld, n, auto_attack_order(es, cd.attr[0], n));
+		}
+	}
+}
+
+// カウンター解除(target: 対象["all":全体, その他:単体])
+function ss_break_attackcounter(target) {
+	return ss_break_template(target, "attack_counter");
+}
+
+// スキル反射解除(target: 対象["all":全体, その他:単体])
+function ss_break_skillcounter(target) {
+	return ss_break_template(target, "skill_counter");
+}
+
+// ガード解除(target: 対象["all":全体, その他:単体])
+function ss_break_attrguard(target) {
+	return ss_break_template(target, "attr_guard");
+}
+
+// ダメブロ解除(target: 対象["all":全体, その他:単体])
+function ss_break_dblock(target) {
+	return ss_break_template(target, "damage_block");
 }
 
 // ------------------------------------------------------
@@ -576,6 +629,20 @@ function ss_is_poison_own(a, b) {
 	return function (fld, oi) {
 		var now = fld.Allys.Now[oi];
 		var is_poison = $.grep(now.turn_effect, function (e) {
+			return e.type == "poison";
+		}).length > 0;
+		if (is_poison) {
+			return a;
+		}
+		return b;
+	};
+}
+
+// 相手が毒かどうか
+function ss_is_poison_enemy(a, b) {
+	return function (fld, oi, ei) {
+		var edat = GetNowBattleEnemys[ei];
+		var is_poison = $.grep(edat.turn_effect, function (e) {
 			return e.type == "poison";
 		}).length > 0;
 		if (is_poison) {
