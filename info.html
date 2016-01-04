@@ -3,6 +3,8 @@
 <head>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" type="text/css" href="./css/default.css" />
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
 	<!-- About Page -->
 	<title>About - Wiz Quest Simulator</title>
 </head>
@@ -20,6 +22,7 @@
 			</dd>
 			<dt>基本の使い方</dt>
 			<dd>
+                <p class="highlight"><span class="link_like" onclick="popup_demomovie();">こちらのgif動画</span>で基本的な操作を確認することができます。</p>
 				<ol>
 					<li>試走を行うクエスト/段位を選択します。</li>
 					<li>
@@ -40,6 +43,11 @@
 					</li>
 				</ol>
 			</dd>
+            <dt>注意点</dt>
+            <dd>
+                敵行動は最低限実装しましたが完全に再現できていない部分も多々あります。<br/>
+                後々しっかりと整備しますのでご了承ください。
+            </dd>
 			<dt>閲覧推奨環境</dt>
 			<dd>
 				<span class="uline">Firefox</span>か<span class="uline">Google Chrome</span>での閲覧をオススメします。
@@ -56,14 +64,16 @@
 					<dd>
 						<a href="http://xn--n8jvdsa6soa5jz01vtb9bg6lk11hdbi.jp/">クイズRPG 魔法使いと黒猫のウィズ 攻略・裏ワザ情報</a><br />
 						<a href="http://xn--u9jvfi5fv563byzsc.gamewith.jp/">GameWith 魔法使いと黒猫のウィズ攻略</a><br />
+                        <a href="http://blog.livedoor.jp/ronowiz61/">ロノの黒猫のウィズ研究所</a><br />
 					</dd>
 					<dt>精霊データ実装</dt>
 					<dd>
 						<a href="https://twitter.com/rinshandream">@rinshandream</a><br />
 					</dd>
-					<dt>サイトアイコン</dt>
+					<dt>画像提供</dt>
 					<dd>
 						<a href="https://twitter.com/tsunahori">@tsunahori</a><br />
+                        <a href="https://twitter.com/alumina_wiz">@alumina_wiz</a><br />
 					</dd>
 			   </dl>
 			</dd>
@@ -78,8 +88,40 @@
 	<!-- Footer -->
 	<div id="Footer"></div>
 
+    <!-- Dialog Contents -->
+    <div class="dialog_div" id="dialog_sim_use" title="Error">
+        <img src="./image/demo.gif" style="max-width: 100%;"/>
+    </div>
+
 	<!-- Javascript -->
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="./js/pagetemp.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#dialog_sim_use").dialog({
+                autoOpen: false,
+                show: "blind",
+                hide: "blind",
+                width: 850,
+                modal: true,
+                open: function () {
+                    // hide
+                    $(".ui-dialog-titlebar").hide();
+                    // close when click dialog outside
+                    $('.ui-widget-overlay').bind('click', function () {
+                        $("#dialog_sim_use").dialog('close');
+                    });
+                },
+                close: function () {
+                    // title show
+                    $(".ui-dialog-titlebar").show();
+                },
+            });
+        });
+        function popup_demomovie() {
+            $("#dialog_sim_use").dialog("open");
+        }
+    </script>
 </body>
 </html>

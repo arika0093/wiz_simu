@@ -6,8 +6,15 @@ function _s_enemy_attack(fld, dmg, ei, ai) {
 	var e = GetNowBattleEnemys(ei);
 	var cd = fld.Allys.Deck[ai];
 	var now = fld.Allys.Now[ai];
+	// 属性倍率
 	var rate = attr_magnification(e.attr, cd.attr[0]);
+	// 攻撃前スキル(主に弱体化)確認
+	$.each(now.turn_effect, function (i, e) {
+		e.bef_damage ? rate = e.bef_damage(fld, rate) : false;
+	});
+	// 乱数
 	var rnd = damage_rand();
+	// 最終ダメ
 	var l_dmg = Math.floor(dmg * rnd * rate);
 	damage_ally(l_dmg, ai, true);
 }
@@ -15,7 +22,8 @@ function _s_enemy_attack(fld, dmg, ei, ai) {
 // 普通の攻撃(不利属性相手への単発ダメージ, 攻撃対象数, 攻撃回数, 連撃時攻撃対象を毎回変えるかどうか)
 function s_enemy_attack(dmg, tnum, atkn, is_allrandom) {
 	return function (fld, n) {
-		Field.log_push("Enemy[" + (n + 1) + "]: " + tnum + "体" +
+		Field.log_push("Enemy[" + (n + 1) + "]: " +
+			(atkn < fld.Allys.Deck.length ? tnum : "全") + "体" +
 			(atkn > 1 ? atkn + "連撃(" : "攻撃(") + dmg + ")");
 		var tg = gen_enemytarget_array(tnum, atkn, is_allrandom);
 		for (var i = 0; i < tg.length; i++) {
@@ -39,6 +47,7 @@ function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f
 		var eff_obj = $.extend(true, {}, {
 			desc: desc,
 			type: type,
+			icon: type,
 			isabstate: true,
 			isdual: false,
 			turn: turn,
@@ -67,8 +76,7 @@ function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f
 function s_enemy_poison(d, tnum, t) {
 	return function (fld, n, is_counter) {
 		s_enemy_abstate_attack(
-			fld, "毒(" + d + ")", "poison", t, tnum, n, is_counter,
-			{
+			fld, "毒(" + d + ")", "poison", t, tnum, n, is_counter, {
 				is_poison: true,
 				effect: function (f, oi, teff, state, is_t, is_b) {
 					if (is_t && !is_b) {
@@ -82,12 +90,34 @@ function s_enemy_poison(d, tnum, t) {
 	}
 }
 
+// 弱体化(対象属性, 効果値(ダメージ2倍なら2.0), 対象数, 継続ターン)
+function s_enemy_attr_weaken(attr, rate, tnum, t) {
+	return function (fld, n, is_counter) {
+		var wattr_str = "";
+		for (var i = 0; i < 5; i++) {
+			if (attr[i] > 0) {
+				if (wattr_str != "") {
+					wattr_str += "/";
+				}
+				wattr_str += fld.Constants.Attr[i];
+			}
+		}
+		s_enemy_abstate_attack(
+			fld, "属性弱体化[" + wattr_str + "](" + rate + "倍)",
+			"attr_weaken", t, tnum, n, is_counter, {
+				bef_damage: function (fld, bef_rate) {
+					return bef_rate * rate;
+				},
+			}
+		);
+	}
+}
+
 // AS封印(対象数, 継続ターン)
 function s_enemy_as_sealed(tnum, t) {
 	return function (fld, n, is_counter) {
 		s_enemy_abstate_attack(
-			fld, "AS封印", "as_sealed", t, tnum, n, is_counter,
-			{
+			fld, "AS封印", "as_sealed", t, tnum, n, is_counter, {
 				bef_answer: function(fld, as) {
 					return as.isdefault === true;
 				}
@@ -100,8 +130,7 @@ function s_enemy_as_sealed(tnum, t) {
 function s_enemy_ss_sealed(tnum, t) {
 	return function (fld, n, is_counter) {
 		s_enemy_abstate_attack(
-			fld, "SS封印", "ss_sealed", t, tnum, n, is_counter,
-			{
+			fld, "SS封印", "ss_sealed", t, tnum, n, is_counter, {
 				ss_disabled: true,
 			}
 		);
@@ -112,8 +141,7 @@ function s_enemy_ss_sealed(tnum, t) {
 function s_enemy_all_sealed(tnum, t) {
 	return function (fld, n, is_counter) {
 		s_enemy_abstate_attack(
-			fld, "封印", "all_sealed", t, tnum, n, false,
-			{
+			fld, "封印", "all_sealed", t, tnum, n, false, {
 				bef_answer: function(fld, as) {
 					return false;
 				},
@@ -138,6 +166,7 @@ function skill_counter(damage, t) {
 		enemy.turn_effect.push({
 			desc: "スキル反射(" + damage + ")",
 			type: "skill_counter",
+			icon: "skill_counter",
 			isdual: false,
 			turn: t,
 			lim_turn: t,
@@ -158,6 +187,7 @@ function attack_counter(damage, t) {
 		enemy.turn_effect.push({
 			desc: "物理カウンター(" + damage + ")",
 			type: "attack_counter",
+			icon: "attack_counter",
 			isdual: false,
 			turn: t,
 			lim_turn: t,
@@ -198,6 +228,7 @@ function damage_block_own(bl, t) {
 		enemy.turn_effect.push({
 			desc: "ダメージブロック(" + bl + ")",
 			type: "damage_block",
+			icon: "damage_block",
 			isdual: false,
 			turn: t,
 			lim_turn: t,
@@ -232,6 +263,7 @@ function impregnable(t) {
 		enemy.turn_effect.push({
 			desc: "鉄壁防御",
 			type: "impregnable",
+			icon: "impregnable",
 			isdual: false,
 			turn: t,
 			lim_turn: t,

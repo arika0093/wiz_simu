@@ -98,8 +98,9 @@ function ss_skillcounter(r, t) {
 			var now = fld.Allys.Now[i];
 			if (now.nowhp <= 0) { continue; }
 			now.turn_effect.push({
-				desc: "スキルカウンター待機(" + (rate * 100) + ")",
-				type: "ss_skillcounter",
+				desc: "スキルカウンター待機(" + (rate * 100) + "%)",
+				type: "ss_skill_counter",
+				icon: "skill_counter",
 				isdual: false,
 				turn: t,
 				lim_turn: t,
@@ -124,8 +125,8 @@ function ss_skillcounter(r, t) {
 								}
 							}
 						}
+						now_e.flags.skill_counter = [];
 					}
-					sc_flag = [];
 				},
 			});
 		}
@@ -150,6 +151,7 @@ function poison(dm, t) {
 				e.turn_effect.push({
 					desc: "毒(" + dm + ")",
 					type: "poison",
+					icon: "poison",
 					isdual: false,
 					turn: t,
 					lim_turn: t,
@@ -200,6 +202,7 @@ function ss_enhance_own(p, t, _nolog) {
 		now.turn_effect.push({
 			desc: "攻撃力アップ(" + (rate * 100) + "%)",
 			type: "ss_enhance",
+			icon: "enhance",
 			isdual: false,
 			turn: t,
 			lim_turn: t,
@@ -243,6 +246,7 @@ function ss_statusup_all(up_arr, up_limit, t) {
 			now.turn_effect.push({
 				desc: "ステータスアップ(HP: " + up_arrs[0] + "/ATK: " + up_arrs[1] + ")",
 				type: "ss_statusup",
+				icon: "statusup",
 				isdual: false,
 				turn: t,
 				lim_turn: t,
@@ -280,37 +284,13 @@ function ss_absattack_disable(t) {
 			now.turn_effect.push({
 				desc: "状態異常無効",
 				type: "ss_absattack_disable",
+				icon: "absattack_disable",
 				isdual: false,
 				turn: t,
 				lim_turn: t,
 				effect: function () { },
 				bef_absattack: function (fld, oi, ei) {
 					return false;
-				}
-			});
-		}
-		return true;
-	}
-}
-
-// 起死回生(ターン数)
-function ss_revival(r, t) {
-	return function (fld, n) {
-		var rate = ss_ratedo(r, fld, n);
-		for (var i = 0; i < fld.Allys.Deck.length; i++) {
-			var now = fld.Allys.Now[i];
-			if (now.nowhp <= 0) { continue; }
-			now.turn_effect.push({
-				desc: "起死回生",
-				type: "ss_revival",
-				isdual: false,
-				turn: t,
-				lim_turn: t,
-				effect: function () {},
-				before_dead: function (fld, oi) {
-					var now = fld.Allys.Now[oi];
-					now.nowhp = Math.floor(now.maxhp * rate);
-					fld.log_push("Unit[" + (oi+1) + "]: 起死回生発動");
 				}
 			});
 		}
@@ -371,7 +351,7 @@ function ss_heal(p) {
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
 			var hr = now.maxhp * rate;
-			heal_ally(hr);
+			heal_ally(hr, i);
 		}
 		fld.log_push("味方全体HP回復(" + (rate * 100) + "%)");
 		return true;
@@ -404,21 +384,48 @@ function ss_regenerate(p, t) {
 			now.turn_effect.push({
 				desc: "HPを徐々に回復(" + (rate * 100) + "%)",
 				type: "ss_regenerate",
+				icon: "regenerate",
 				isdual: false,
 				priority: 1,
 				turn: t,
 				lim_turn: t,
-				effect: function (f, v, tg) {
-					if (v == 0) {
-						var nd = f.Allys.Now[tg];
+				effect: function (f, oi, teff, state, is_t) {
+					if (is_t) {
+						var nd = f.Allys.Now[oi];
 						var hr = Math.floor(nd.maxhp * rate);
-						heal_ally(hr, false);
-						fld.log_push("Unit[" + (tg + 1) + "]: HP徐々に回復(+" + hr + ")");
+						heal_ally(hr, oi);
+						fld.log_push("Unit[" + (oi + 1) + "]: HP徐々に回復(+" + hr + ")");
 					}
 				},
 			});
 		}
 		fld.log_push("味方全体リジェネ(" + (rate * 100) + "%, " + t + "t)");
+		return true;
+	}
+}
+
+// 起死回生(ターン数)
+function ss_revival(r, t) {
+	return function (fld, n) {
+		var rate = ss_ratedo(r, fld, n);
+		for (var i = 0; i < fld.Allys.Deck.length; i++) {
+			var now = fld.Allys.Now[i];
+			if (now.nowhp <= 0) { continue; }
+			now.turn_effect.push({
+				desc: "起死回生",
+				type: "ss_revival",
+				icon: "revival",
+				isdual: false,
+				turn: t,
+				lim_turn: t,
+				effect: function () { },
+				before_dead: function (f, oi) {
+					var now = f.Allys.Now[oi];
+					now.nowhp = Math.floor(now.maxhp * rate);
+					f.log_push("Unit[" + (oi + 1) + "]: 起死回生発動");
+				}
+			});
+		}
 		return true;
 	}
 }

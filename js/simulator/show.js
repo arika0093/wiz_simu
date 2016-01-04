@@ -1,5 +1,13 @@
+// for timer
+var _Timer = undefined;
+
 // 現在の状況を表示する
 function sim_show() {
+	// timer reset
+	if (_Timer) {
+		clearInterval(_Timer);
+	}
+
 	// sim_info_turn
 	if (Field.Status.chain_status == 1) {
 		var chain_state = "(保護)";
@@ -115,6 +123,52 @@ function sim_show() {
 			$("#enemy0" + (i + 1) + "_stats").attr("title", "");
 		}
 	}
+	// 発動中の効果を点滅表示
+	if (!Field.Status.finish) {
+		var blink_onetime = 2500;
+		var b_vis = [-1, -1, -1, -1, -1, -1, -1, -1];
+		var blink = function () {
+			// 味方
+			for (var i = 0; i < Field.Allys.Deck.length; i++) {
+				var now = Field.Allys.Now[i];
+				var teffs = $.grep(now.turn_effect, function (e) {
+					return e.desc && e.icon;
+				});
+				if (teffs.length <= 0 || now.nowhp <= 0) {
+					b_vis[i] = -1;
+					$("#ally0" + (i + 1) + "_teff").attr("src", "./image/noimage.png");
+				} else {
+					b_vis[i] = b_vis[i] != -1 ? (b_vis[i] + 1) % (teffs.length) : 0;
+					$("#ally0" + (i + 1) + "_teff").attr("src",
+						"./image/icon/" + teffs[b_vis[i]].icon + ".png");
+					$("#ally0" + (i + 1) + "_teff").fadeIn(blink_onetime / 3, function () {
+						$(this).fadeOut(blink_onetime / 2);
+					});
+				}
+			}
+			// 敵
+			var es = GetNowBattleEnemys();
+			for (var i = 5; i < es.length + 5; i++) {
+				var edat = es[i - 5];
+				var teffs = $.grep(edat.turn_effect, function (e) {
+					return e.desc && e.icon;
+				});
+				if (teffs.length <= 0 || edat.nowhp <= 0) {
+					b_vis[i] = -1;
+					$("#enemy0" + (i - 4) + "_teff").attr("src", "./image/noimage.png");
+				} else {
+					b_vis[i] = b_vis[i] != -1 ? (b_vis[i] + 1) % (teffs.length) : 0;
+					$("#enemy0" + (i - 4) + "_teff").attr("src",
+						"./image/icon/" + teffs[b_vis[i]].icon + ".png");
+					$("#enemy0" + (i - 4) + "_teff").fadeIn(blink_onetime / 3, function () {
+						$(this).fadeOut(blink_onetime / 2);
+					});
+				}
+			}
+		};
+		blink();
+		_Timer = setInterval(blink, blink_onetime);
+	}
 
 	// panel_addition
 	// 全削除
@@ -171,6 +225,10 @@ function sim_show() {
 			}
 			$("#sim_log_inner").html(logtext);
 			$("#sim_log_inner").accordion("refresh");
+			// close when click dialog outside
+			$('.ui-widget-overlay').bind('click', function () {
+				$("#dialog_simlog").dialog('close');
+			});
 		},
 		buttons: {
 			"閉じる": function () {
@@ -194,7 +252,12 @@ function sim_show() {
 			var teff = now.turn_effect;
 			for (var i = 0; i < teff.length; i++) {
 				if (teff[i].desc != null) {
-					li_t += "<li>" + teff[i].desc;
+					if (teff[i].icon) {
+						li_t += "<li><img class='teff_icon' src='./image/icon/" + teff[i].icon + ".png' />";
+					} else {
+						li_t += "<li class='no_icon'>";
+					}
+					li_t += teff[i].desc;
 					if (teff[i].lim_turn > 0) {
 						li_t += "(残り: " + teff[i].lim_turn + "t)";
 					}
@@ -202,7 +265,7 @@ function sim_show() {
 				}
 			}
 			if (teff.length <= 0) {
-				li_t = "<li>(現在継続中の効果はありません)</li>";
+				li_t = "<li class='no_icon'>(現在継続中の効果はありません)</li>";
 			}
 			$("#allystat_name").text((n+1) + ": " + card.name);
 			$("#ally_tefflist").html(li_t);

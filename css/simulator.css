@@ -72,6 +72,14 @@ div.sim_enemy {
 	border-radius: 5px 5px 0px 0px;
 }
 
+img.chara_teff{
+	width: 28px;
+	position: absolute;
+	display: none;
+	top: 1px;
+	right: 1px;
+}
+
 div.ally_ss {
 	position: absolute;
 	bottom: 0px;
@@ -202,13 +210,25 @@ div#allystat_index{
 }
 
 div#allystat_teff {
-	height: 100px;
+	height: 150px;
 	overflow-y: auto;
 }
 div#allystat_teff ul{
-	list-style-type: square;
-	padding-left: 2em;
+	list-style-type: none;
+	padding-left: 1em;
 	margin: 1ex 0;
+}
+div#allystat_teff ul li{
+	margin-bottom: 2px;
+}
+div#allystat_teff ul img.teff_icon{
+	vertical-align: text-bottom;
+	width: 24px;
+	margin-right: 2px;
+	-webkit-filter: contrast(115%);
+	-moz-filter: contrast(115%);
+	-o-filter: contrast(115%);
+	filter: contrast(115%);
 }
 
 div#dialog_allystatus #allystat_tg_1{

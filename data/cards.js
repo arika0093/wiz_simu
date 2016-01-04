@@ -7,7 +7,7 @@ Cards = [{
 	// -------------------------
 	name: "燃える屋台魂 アキラ・マスグレイヴ",
 	cardno: 4455,
-	imageno: -1,
+	imageno: 6148,
 	hp: 2214,
 	atk: 2535,
 	cost: 40,
@@ -51,7 +51,7 @@ Cards = [{
 }, {
 	name: "浄き炎神の剣 アイリス・ランティア",
 	cardno: 4575,
-	imageno: -1,
+	imageno: 6293,
 	hp: 1722,
 	atk: 3651,
 	cost: 42,
@@ -95,7 +95,7 @@ Cards = [{
 }, {
 	name: "鳳凰迅将 アルル・アーガイル",
 	cardno: 5056,
-	imageno: -1,
+	imageno: 6796,
 	hp: 2729,
 	atk: 3292,
 	cost: 43,
@@ -227,7 +227,7 @@ Cards = [{
 }, {
 	name: "炎彗騎士 イグニス・ヴォルガノン",
 	cardno: 3626,
-	imageno: -1,
+	imageno: 5207,
 	hp: 2232,
 	atk: 2432,
 	cost: 35,
@@ -270,7 +270,7 @@ Cards = [{
 }, {
 	name: "死喰の黒滅者 イザヴェリ・ヘイズ",
 	cardno: 3989,
-	imageno: -1,
+	imageno: 5670,
 	hp: 2642,
 	atk: 2647,
 	cost: 46,
@@ -314,7 +314,7 @@ Cards = [{
 }, {
 	name: "極獄の殲炎 アスモデウス・トビト",
 	cardno: 4648,
-	imageno: -1,
+	imageno: 6113,
 	hp: 3110,
 	atk: 2870,
 	cost: 70,
@@ -358,7 +358,7 @@ Cards = [{
 }, {
 	name: "絶華却竜姫 アリューゼ・ヴェローナ",
 	cardno: 5112,
-	imageno: -1,
+	imageno: 6860,
 	hp: 2556,
 	atk: 4654,
 	cost: 44,
@@ -402,7 +402,7 @@ Cards = [{
 }, {
 	name: "美しく舞う勝利の翼 アンジェリカ",
 	cardno: 4335,
-	imageno: -1,
+	imageno: 6119,
 	hp: 2880,
 	atk: 2644,
 	cost: 43,
@@ -446,7 +446,7 @@ Cards = [{
 }, {
 	name: "明日を見つめるふたり 犬夜叉＆かごめ",
 	cardno: 4174,
-	imageno: -1,
+	imageno: 5862,
 	hp: 2502,
 	atk: 2731,
 	cost: 46,
@@ -489,7 +489,7 @@ Cards = [{
 }, {
 	name: "死界の焔 ヴィヴィ＆イザヴェリ",
 	cardno: 4438,
-	imageno: -1,
+	imageno: 6132,
 	hp: 3468,
 	atk: 2554,
 	cost: 46,
@@ -533,7 +533,7 @@ Cards = [{
 }, {
 	name: "大地を穿つ竜魔獣 エスタロス",
 	cardno: 4666,
-	imageno: -1,
+	imageno: 6424,
 	hp: 1781,
 	atk: 3898,
 	cost: 50,
@@ -577,7 +577,7 @@ Cards = [{
 }, {
 	name: "覚醒の天元魔道士 エステル・モカ",
 	cardno: 4596,
-	imageno: -1,
+	imageno: 6301,
 	hp: 2694,
 	atk: 2929,
 	cost: 43,
@@ -621,7 +621,7 @@ Cards = [{
 }, {
 	name: "甦りし古の災厄 エターナル・ロア",
 	cardno: 4715,
-	imageno: -1,
+	imageno: 6377,
 	hp: 2681,
 	atk: 3098,
 	cost: 48,
@@ -665,7 +665,7 @@ Cards = [{
 }, {
 	name: "「妹」の極み エミリア・トドロキ",
 	cardno: 4454,
-	imageno: -1,
+	imageno: 6147,
 	hp: 3238,
 	atk: 2662,
 	cost: 48,
@@ -709,7 +709,7 @@ Cards = [{
 }, {
 	name: "ロード・オブ・ラグナロク・ゼロ",
 	cardno: 4016,
-	imageno: -1,
+	imageno: 5719,
 	hp: 3189,
 	atk: 4004,
 	cost: 71,
@@ -798,7 +798,7 @@ Cards = [{
 }, {
 	name: "威風の魔銃斬 オーギュスト・ランゲ",
 	cardno: 4688,
-	imageno: -1,
+	imageno: 6447,
 	hp: 2431,
 	atk: 3273,
 	cost: 45,
@@ -842,7 +842,7 @@ Cards = [{
 }, {
 	name: "繚焔の魔紅 カスミ・キサラギ",
 	cardno: 4134,
-	imageno: -1,
+	imageno: 5812,
 	hp: 2467,
 	atk: 2531,
 	cost: 34,
@@ -886,7 +886,7 @@ Cards = [{
 }, {
 	name: "奪魂の怪炎 カーナ・リリ",
 	cardno: 4852,
-	imageno: -1,
+	imageno: 6587,
 	hp: 3073,
 	atk: 2732,
 	cost: 41,
@@ -930,7 +930,7 @@ Cards = [{
 }, {
 	name: "炎竜の進撃者 キャナル・エアガイツ",
 	cardno: 4763,
-	imageno: -1,
+	imageno: 6478,
 	hp: 1453,
 	atk: 4802,
 	cost: 45,
@@ -974,7 +974,7 @@ Cards = [{
 }, {
 	name: "蒼焔風馳の鎌鼬 鬼狩りキュウマ",
 	cardno: 5054,
-	imageno: -1,
+	imageno: 6794,
 	hp: 1621,
 	atk: 4029,
 	cost: 46,
@@ -1018,7 +1018,7 @@ Cards = [{
 }, {
 	name: "猛き獣の統率者 ヴォルフ・ロイ",
 	cardno: 4448,
-	imageno: -1,
+	imageno: 6141,
 	hp: 3406,
 	atk: 2599,
 	cost: 47,
@@ -1105,7 +1105,7 @@ Cards = [{
 }, {
 	name: "焔騎士の忠誠 エルト・ファレンツ",
 	cardno: 3890,
-	imageno: -1,
+	imageno: 5568,
 	hp: 2894,
 	atk: 2443,
 	cost: 45,
@@ -1148,7 +1148,7 @@ Cards = [{
 }, {
 	name: "世界断絶 キャンディーⅩⅢ",
 	cardno: 4137,
-	imageno: -1,
+	imageno: 5815,
 	hp: 2280,
 	atk: 2763,
 	cost: 34,
@@ -1192,7 +1192,7 @@ Cards = [{
 }, {
 	name: "不滅の主従 キワム＆アウデアムス",
 	cardno: 3730,
-	imageno: -1,
+	imageno: 5284,
 	hp: 2457,
 	atk: 3031,
 	cost: 47,
@@ -1235,7 +1235,7 @@ Cards = [{
 }, {
 	name: "其は深淵の災い キワム＆鋼鉄の獣",
 	cardno: 4237,
-	imageno: -1,
+	imageno: 5943,
 	hp: 2344,
 	atk: 3120,
 	cost: 47,
@@ -1279,7 +1279,7 @@ Cards = [{
 }, {
 	name: "滅屍冥刃 グリード・サクリファイス",
 	cardno: 5114,
-	imageno: -1,
+	imageno: 6857,
 	hp: 3674,
 	atk: 3576,
 	cost: 48,
@@ -1323,7 +1323,7 @@ Cards = [{
 }, {
 	name: "隔世の傍観者 サジェ・カムラナ",
 	cardno: 3696,
-	imageno: -1,
+	imageno: 5356,
 	hp: 2665,
 	atk: 2723,
 	cost: 40,
@@ -1366,7 +1366,7 @@ Cards = [{
 }, {
 	name: "陽光の綺麗石 サティサ・テオトリ",
 	cardno: -1,
-	imageno: -1,
+	imageno: 5373,
 	hp: 2402,
 	atk: 3023,
 	cost: 49,
@@ -1410,7 +1410,7 @@ Cards = [{
 }, {
 	name: "絶門魔道の終端 シド・ハーロック",
 	cardno: 4680,
-	imageno: -1,
+	imageno: 6439,
 	hp: 2582,
 	atk: 3021,
 	cost: 41,
@@ -1454,7 +1454,7 @@ Cards = [{
 }, {
 	name: "拒絶の完全世界 シェイナ・メイヴ",
 	cardno: 4158,
-	imageno: -1,
+	imageno: 5897,
 	hp: 1483,
 	atk: 4479,
 	cost: 47,
@@ -1498,7 +1498,7 @@ Cards = [{
 }, {
 	name: "妖しき夜行の領袖 シド・ハーロック",
 	cardno: 4629,
-	imageno: -1,
+	imageno: 6405,
 	hp: 2762,
 	atk: 3251,
 	cost: 46,
@@ -1542,7 +1542,7 @@ Cards = [{
 }, {
 	name: "命絶つ葬爪の華 シャミア・ルゥ",
 	cardno: 4142,
-	imageno: -1,
+	imageno: 5820,
 	hp: 2003,
 	atk: 3212,
 	cost: 38,
@@ -1585,7 +1585,7 @@ Cards = [{
 }, {
 	name: "剛腕熱血番長 ジョージ・トドロキ",
 	cardno: 4456,
-	imageno: -1,
+	imageno: 6149,
 	hp: 2352,
 	atk: 2433,
 	cost: 57,
@@ -1628,7 +1628,7 @@ Cards = [{
 }, {
 	name: "チョコ滾る アキラ・マスグレイヴ",
 	cardno: 4473,
-	imageno: -1,
+	imageno: 6166,
 	hp: 2409,
 	atk: 2371,
 	cost: 43,
@@ -1672,7 +1672,7 @@ Cards = [{
 }, {
 	name: "鬼モテコーデ ジョージ・トドロキ",
 	cardno: 4471,
-	imageno: -1,
+	imageno: 6164,
 	hp: 2850,
 	atk: 2830,
 	cost: 54,
@@ -1716,7 +1716,7 @@ Cards = [{
 }, {
 	name: "燃える拳と鉄板 ジョージ＆アキラ",
 	cardno: 4495,
-	imageno: -1,
+	imageno: 6190,
 	hp: 2005,
 	atk: 3053,
 	cost: 34,
@@ -1760,7 +1760,7 @@ Cards = [{
 }, {
 	name: "悠の照神 ステイシー・マーキュリー",
 	cardno: -1,
-	imageno: -1,
+	imageno: 5418,
 	hp: 2521,
 	atk: 2934,
 	cost: 41,
@@ -1803,7 +1803,7 @@ Cards = [{
 }, {
 	name: "時を呼ぶ ステイシー・マーキュリー",
 	cardno: -1,
-	imageno: -1,
+	imageno: 5403,
 	hp: 2431,
 	atk: 3142,
 	cost: 43,
@@ -1846,7 +1846,7 @@ Cards = [{
 }, {
 	name: "灼角の破壊者 ズローヴァ・ヤガダ",
 	cardno: 3893,
-	imageno: -1,
+	imageno: 5571,
 	hp: 2258,
 	atk: 3181,
 	cost: 46,
@@ -1890,7 +1890,7 @@ Cards = [{
 }, {
 	name: "終へ誘う死霊術 セリナ・ナイトメア",
 	cardno: 4859,
-	imageno: -1,
+	imageno: 6594,
 	hp: 2825,
 	atk: 2997,
 	cost: 47,
@@ -1934,7 +1934,7 @@ Cards = [{
 }, {
 	name: "叡智の編纂者 ティア・ソピア",
 	cardno: -1,
-	imageno: -1,
+	imageno: 5223,
 	hp: 3003,
 	atk: 2543,
 	cost: 48,
@@ -1978,7 +1978,7 @@ Cards = [{
 }, {
 	name: "炎の鋼鉄剣 ノア・アームストロング",
 	cardno: 4461,
-	imageno: -1,
+	imageno: 6150,
 	hp: 1952,
 	atk: 3248,
 	cost: 42,
@@ -2021,7 +2021,7 @@ Cards = [{
 }, {
 	name: "全力の恋天使 マーガレット・リル",
 	cardno: 4033,
-	imageno: -1,
+	imageno: 5703,
 	hp: 2404,
 	atk: 2965,
 	cost: 45,
@@ -2065,7 +2065,7 @@ Cards = [{
 }, {
 	name: "黄金の双翼輪 ミカエラ・セラフィム",
 	cardno: 3986,
-	imageno: -1,
+	imageno: 5667,
 	hp: 2663,
 	atk: 2673,
 	cost: 43,
@@ -2109,7 +2109,7 @@ Cards = [{
 }, {
 	name: "天地分かつ姉弟 ミカエラ＆イザーク",
 	cardno: 4744,
-	imageno: -1,
+	imageno: 6580,
 	hp: 2213,
 	atk: 3142,
 	cost: 43,
@@ -2153,7 +2153,7 @@ Cards = [{
 }, {
 	name: "眩き天使の夏 ミカエラ・セラフィム",
 	cardno: 4626,
-	imageno: -1,
+	imageno: 6404,
 	hp: 2835,
 	atk: 3192,
 	cost: 44,
@@ -2197,7 +2197,7 @@ Cards = [{
 }, {
 	name: "追憶の聖王 ミカエラ・セラフィム",
 	cardno: 5026,
-	imageno: -1,
+	imageno: 6781,
 	hp: 2543,
 	atk: 4583,
 	cost: 43,
@@ -2241,7 +2241,7 @@ Cards = [{
 }, {
 	name: "ぼんぼり金魚と舞う夜空 初音ミク",
 	cardno: 4883,
-	imageno: -1,
+	imageno: 6627,
 	hp: 3521,
 	atk: 2421,
 	cost: 46,
@@ -2285,7 +2285,7 @@ Cards = [{
 }, {
 	name: "深淵の女王 ミュール＆レベリオー",
 	cardno: 4249,
-	imageno: -1,
+	imageno: 5958,
 	hp: 2905,
 	atk: 2323,
 	cost: 47,
@@ -2329,7 +2329,7 @@ Cards = [{
 }, {
 	name: "時空の聖鎚 ユッカ・エンデ",
 	cardno: 3796,
-	imageno: -1,
+	imageno: 5400,
 	hp: 2747,
 	atk: 2841,
 	cost: 43,
@@ -2372,7 +2372,7 @@ Cards = [{
 }, {
 	name: "蓋天の神罰者 ラト・ファルネーゼ",
 	cardno: 3637,
-	imageno: -1,
+	imageno: 4357,
 	hp: 2508,
 	atk: 2649,
 	cost: 47,
@@ -2416,7 +2416,7 @@ Cards = [{
 }, {
 	name: "煌眼覇軍の女帝 リヴェータ・イレ",
 	cardno: 4292,
-	imageno: -1,
+	imageno: 5885,
 	hp: 2459,
 	atk: 2843,
 	cost: 45,
@@ -2460,7 +2460,7 @@ Cards = [{
 }, {
 	name: "超ビッグ魔道少女 リルム・ロロット",
 	cardno: 4422,
-	imageno: -1,
+	imageno: 6167,
 	hp: 2328,
 	atk: 2971,
 	cost: 44,
@@ -2504,7 +2504,7 @@ Cards = [{
 }, {
 	name: "夏の日の涼風 リンカ・ワイアット",
 	cardno: 4457,
-	imageno: -1,
+	imageno: 6151,
 	hp: 2921,
 	atk: 3060,
 	cost: 45,
@@ -2548,7 +2548,7 @@ Cards = [{
 }, {
 	name: "胸焦がす乙女心 リンカ・ワイアット",
 	cardno: 4464,
-	imageno: -1,
+	imageno: 6158,
 	hp: 2718,
 	atk: 3393,
 	cost: 46,
@@ -2592,7 +2592,7 @@ Cards = [{
 }, {
 	name: "心優しき黄泉の使者 六道りんね",
 	cardno: 4196,
-	imageno: -1,
+	imageno: 5870,
 	hp: 2085,
 	atk: 2133,
 	cost: 34,
@@ -2636,7 +2636,7 @@ Cards = [{
 }, {
 	name: "不思議な時に薫る歌 巡音ルカ",
 	cardno: 4895,
-	imageno: -1,
+	imageno: 6609,
 	hp: 3102,
 	atk: 3003,
 	cost: 32,
@@ -2680,7 +2680,7 @@ Cards = [{
 }, {
 	name: "煌る命の確率論 レウィス・ジェメル",
 	cardno: 4966,
-	imageno: -1,
+	imageno: 6701,
 	hp: 2778,
 	atk: 2253,
 	cost: 35,
@@ -2724,7 +2724,7 @@ Cards = [{
 }, {
 	name: "改新の大華焔 レナ・イラプション",
 	cardno: 4738,
-	imageno: -1,
+	imageno: 6577,
 	hp: 2238,
 	atk: 4362,
 	cost: 45,
@@ -2768,7 +2768,7 @@ Cards = [{
 }, {
 	name: "恋と炎の大爆裂 レナ・イラプション",
 	cardno: 4739,
-	imageno: -1,
+	imageno: 6578,
 	hp: 3024,
 	atk: 3476,
 	cost: 47,
@@ -2812,7 +2812,7 @@ Cards = [{
 }, {
 	name: "漆黒の極巨星 アルドベリク・ゴドー",
 	cardno: 4579,
-	imageno: -1,
+	imageno: 6305,
 	hp: 2341,
 	atk: 2531,
 	cost: 48,
@@ -2856,7 +2856,7 @@ Cards = [{
 }, {
 	name: "二心一閃の太刀筋 ウッド＆リーリ",
 	cardno: 4658,
-	imageno: -1,
+	imageno: 6416,
 	hp: 2189,
 	atk: 2051,
 	cost: 52,
@@ -2900,7 +2900,7 @@ Cards = [{
 }, {
 	name: "空の昏き英雄 ディートリヒ・ベルク",
 	cardno: 4754,
-	imageno: -1,
+	imageno: 6469,
 	hp: 2104,
 	atk: 3893,
 	cost: 46,
@@ -2944,7 +2944,7 @@ Cards = [{
 }, {
 	name: "クィーン・オブ・アーモンド ファム",
 	cardno: 4341,
-	imageno: -1,
+	imageno: 6097,
 	hp: 2323,
 	atk: 2288,
 	cost: 50,
@@ -2987,7 +2987,7 @@ Cards = [{
 }, {
 	name: "シェアハピネスな魔法 リコ＆グリ",
 	cardno: 4309,
-	imageno: -1,
+	imageno: 6023,
 	hp: 2436,
 	atk: 1414,
 	cost: 40,
@@ -3031,7 +3031,7 @@ Cards = [{
 }, {
 	name: "大海の獣と戯れる ヴォルフ・ロイ",
 	cardno: 4459,
-	imageno: -1,
+	imageno: 6153,
 	hp: 3038,
 	atk: 2920,
 	cost: 46,
@@ -3075,7 +3075,7 @@ Cards = [{
 }, {
 	name: "収穫者 ウシュガ＆ウィアノーヴァ",
 	cardno: 4274,
-	imageno: -1,
+	imageno: 5961,
 	hp: 2533,
 	atk: 2433,
 	cost: 53,
@@ -3119,7 +3119,7 @@ Cards = [{
 }, {
 	name: "恋☆メガトン エミリア・トドロキ",
 	cardno: 4468,
-	imageno: -1,
+	imageno: 6162,
 	hp: 3064,
 	atk: 2928,
 	cost: 43,
@@ -3164,7 +3164,7 @@ Cards = [{
 }, {
 	name: "迸る竜炎の朱 キャナル・エアガイツ",
 	cardno: 4571,
-	imageno: -1,
+	imageno: 6295,
 	hp: 2965,
 	atk: 3031,
 	cost: 44,
@@ -3208,7 +3208,7 @@ Cards = [{
 }, {
 	name: "燃盛る不尽焔嶺 スオウ・カグツチ",
 	cardno: 4124,
-	imageno: -1,
+	imageno: 5798,
 	hp: 2532,
 	atk: 2821,
 	cost: 46,
@@ -3252,7 +3252,7 @@ Cards = [{
 }, {
 	name: "逆襲に染まった忘却 ゼノン",
 	cardno: 4681,
-	imageno: -1,
+	imageno: 6440,
 	hp: 2612,
 	atk: 3113,
 	cost: 38,
@@ -3339,7 +3339,7 @@ Cards = [{
 }, {
 	name: "野生の獣撃 ドゥンバ・バ",
 	cardno: 4221,
-	imageno: -1,
+	imageno: 5915,
 	hp: 2032,
 	atk: 3035,
 	cost: 44,
@@ -3383,7 +3383,7 @@ Cards = [{
 }, {
 	name: "蛇骨の真王 トキオ＆エクスアルバ",
 	cardno: 3739,
-	imageno: -1,
+	imageno: 5290,
 	hp: 2357,
 	atk: 3131,
 	cost: 48,
@@ -3426,7 +3426,7 @@ Cards = [{
 }, {
 	name: "鉄剣開票係 ノア・アームストロング",
 	cardno: 4516,
-	imageno: -1,
+	imageno: 6186,
 	hp: 2227,
 	atk: 3432,
 	cost: 46,
@@ -3469,7 +3469,7 @@ Cards = [{
 }, {
 	name: "己の道を進む ライ・ハナビシ",
 	cardno: 4625,
-	imageno: -1,
+	imageno: 6352,
 	hp: 2521,
 	atk: 2392,
 	cost: 31,
@@ -3512,7 +3512,7 @@ Cards = [{
 }, {
 	name: "愛ゆえの暴虐 リヴェータ・イレ",
 	cardno: 5027,
-	imageno: -1,
+	imageno: 6782,
 	hp: 2702,
 	atk: 4199,
 	cost: 43,
@@ -3557,7 +3557,7 @@ Cards = [{
 }, {
 	name: "ポッキー大好き魔法使い リコ",
 	cardno: 4331,
-	imageno: -1,
+	imageno: 6044,
 	hp: 2129,
 	atk: 2803,
 	cost: 37,
@@ -3599,7 +3599,7 @@ Cards = [{
 }, {
 	name: "真・猫族勇者 ルディ・レッドソル",
 	cardno: 3901,
-	imageno: -1,
+	imageno: 5581,
 	hp: 2645,
 	atk: 2627,
 	cost: 43,
@@ -3642,7 +3642,7 @@ Cards = [{
 }, {
 	name: "炯眼冷徹 ルートヴィッヒ・ロメオ",
 	cardno: 4598,
-	imageno: -1,
+	imageno: 6300,
 	hp: 2564,
 	atk: 3052,
 	cost: 46,
@@ -3686,7 +3686,7 @@ Cards = [{
 }, {
 	name: "常時共闘戦線 エミリア＆カエデ",
 	cardno: 4534,
-	imageno: -1,
+	imageno: 6212,
 	hp: 2331,
 	atk: 2389,
 	cost: 46,
@@ -3729,7 +3729,7 @@ Cards = [{
 }, {
 	name: "大人だけの秘密の魅力 チーザ",
 	cardno: 4363,
-	imageno: -1,
+	imageno: 6007,
 	hp: 3332,
 	atk: 2111,
 	cost: 44,
@@ -3773,7 +3773,7 @@ Cards = [{
 }, {
 	name: "上質な愛の時 アーモンドプレミオ",
 	cardno: 4391,
-	imageno: -1,
+	imageno: 6064,
 	hp: 2332,
 	atk: 2997,
 	cost: 46,
@@ -3817,7 +3817,7 @@ Cards = [{
 }, {
 	name: "信頼と絆に結ばれる りんね＆桜",
 	cardno: 4170,
-	imageno: -1,
+	imageno: 5846,
 	hp: 2867,
 	atk: 1832,
 	cost: 46,
@@ -3860,7 +3860,7 @@ Cards = [{
 }, {
 	name: "夢と愛の結晶 アーモンドピーク",
 	cardno: 4387,
-	imageno: -1,
+	imageno: 6060,
 	hp: 2536,
 	atk: 2017,
 	cost: 51,
@@ -3948,7 +3948,7 @@ Cards = [{
 }, {
 	name: "神戦に導く使徒 エアリル・セレ",
 	cardno: 4024,
-	imageno: -1,
+	imageno: 5699,
 	hp: 2302,
 	atk: 2129,
 	cost: 45,
@@ -3992,7 +3992,7 @@ Cards = [{
 }, {
 	name: "竜迅百騎将軍 ライサ・ナトゥル",
 	cardno: 4760,
-	imageno: -1,
+	imageno: 6475,
 	hp: 3654,
 	atk: 2532,
 	cost: 48,
@@ -4036,7 +4036,7 @@ Cards = [{
 }, {
 	name: "覇眼戦線 リヴェータ＆ルドヴィカ",
 	cardno: 4434,
-	imageno: -1,
+	imageno: 6128,
 	hp: 2283,
 	atk: 2575,
 	cost: 52,
@@ -4080,7 +4080,7 @@ Cards = [{
 }, {
 	name: "誓いの凛炎 リンカ・ワイアット",
 	cardno: 4519,
-	imageno: -1,
+	imageno: 6197,
 	hp: 2429,
 	atk: 2435,
 	cost: 49,
@@ -4124,7 +4124,7 @@ Cards = [{
 }, {
 	name: "黎明天無獄帝 アスモデウス・トビト",
 	cardno: 4751,
-	imageno: -1,
+	imageno: 6573,
 	hp: 3456,
 	atk: 2744,
 	cost: 78,
@@ -4168,7 +4168,7 @@ Cards = [{
 }, {
 	name: "AbCd-X:《闇鎧の虐帝 ウラガーン》",
 	cardno: 5048,
-	imageno: -1,
+	imageno: 6783,
 	hp: 4513,
 	atk: 500,
 	cost: 60,
@@ -4212,7 +4212,7 @@ Cards = [{
 }, {
 	name: "全てをいただく交渉術 覚醒のすじこ",
 	cardno: 4677,
-	imageno: -1,
+	imageno: 6436,
 	hp: 2304,
 	atk: 2224,
 	cost: 36,
@@ -4254,7 +4254,7 @@ Cards = [{
 }, {
 	name: "AbCd-M:《孤独の囚人 テルミド》",
 	cardno: 5044,
-	imageno: -1,
+	imageno: 6786,
 	hp: 4210,
 	atk: 2433,
 	cost: 48,
@@ -4298,7 +4298,7 @@ Cards = [{
 }, {
 	name: "AbCd-Μμ:《輝煌を拒絶する テルミド》",
 	cardno: -1,
-	imageno: -1,
+	imageno: 6770,
 	hp: 2778,
 	atk: 3132,
 	cost: 48,
@@ -4342,7 +4342,7 @@ Cards = [{
 }, {
 	name: "AbCd-Λ:《冥黙の白鴉 ニレイヌ》",
 	cardno: 5047,
-	imageno: -1,
+	imageno: 6792,
 	hp: 2603,
 	atk: 3534,
 	cost: 49,
@@ -4386,7 +4386,7 @@ Cards = [{
 }, {
 	name: "AbCd-Λλ:《甘く朽ち果てる闇 ニレイヌ》",
 	cardno: 5040,
-	imageno: -1,
+	imageno: 6779,
 	hp: 3632,
 	atk: 2710,
 	cost: 49,
@@ -4430,7 +4430,7 @@ Cards = [{
 }, {
 	name: "ぷるぷるの王 ペンプッチン",
 	cardno: 4325,
-	imageno: -1,
+	imageno: 6039,
 	hp: 2431,
 	atk: 2446,
 	cost: 47,
@@ -4474,7 +4474,7 @@ Cards = [{
 }, {
 	name: "あらぶる森の王様 ポポル",
 	cardno: 4856,
-	imageno: -1,
+	imageno: 6591,
 	hp: 3522,
 	atk: 3309,
 	cost: 44,
@@ -4518,7 +4518,7 @@ Cards = [{
 }, {
 	name: "復活の紅蓮道士 フー・シャオラン",
 	cardno: 3992,
-	imageno: -1,
+	imageno: 5673,
 	hp: 2582,
 	atk: 2322,
 	cost: 36,
@@ -4562,7 +4562,7 @@ Cards = [{
 }, {
 	name: "太陽ノ現身 ナユタ・ヒノカミ",
 	cardno: 4682,
-	imageno: -1,
+	imageno: 6441,
 	hp: 3043,
 	atk: 2661,
 	cost: 39,
@@ -4606,7 +4606,7 @@ Cards = [{
 }, {
 	name: "愛で繋いだ心の架け橋 ミミ＆ララ",
 	cardno: 5110,
-	imageno: -1,
+	imageno: 6861,
 	hp: 4558,
 	atk: 2345,
 	cost: 44,
@@ -4650,7 +4650,7 @@ Cards = [{
 }, {
 	name: "煌きの艶麗華月 ユウギリ・アメノ",
 	cardno: 4150,
-	imageno: -1,
+	imageno: 5874,
 	hp: 2433,
 	atk: 2543,
 	cost: 40,
@@ -4693,7 +4693,7 @@ Cards = [{
 }, {
 	name: "魔巧技匠 ユニコ・ランドハイア",
 	cardno: 3786,
-	imageno: -1,
+	imageno: 4394,
 	hp: 2531,
 	atk: 2521,
 	cost: 42,
@@ -4737,7 +4737,7 @@ Cards = [{
 }, {
 	name: "闇の中で微笑む邪神 ルルベル",
 	cardno: 4637,
-	imageno: -1,
+	imageno: 6400,
 	hp: 3676,
 	atk: 2453,
 	cost: 49,
@@ -4781,7 +4781,7 @@ Cards = [{
 }, {
 	name: "想いを翼に乗せて 初音ミク",
 	cardno: 4866,
-	imageno: -1,
+	imageno: 6615,
 	hp: 4030,
 	atk: 1998,
 	cost: 45,
@@ -4825,7 +4825,7 @@ Cards = [{
 }, {
 	name: "輝く笑顔に魅せられて 初音ミク",
 	cardno: 4958,
-	imageno: -1,
+	imageno: 6693,
 	hp: 2702,
 	atk: 1832,
 	cost: 26,
@@ -4869,7 +4869,7 @@ Cards = [{
 }, {
 	name: "飛天の神獣皇 ラオ・イーシェン",
 	cardno: 4425,
-	imageno: -1,
+	imageno: 6170,
 	hp: 2697,
 	atk: 2623,
 	cost: 45,
@@ -4913,7 +4913,7 @@ Cards = [{
 }, {
 	name: "紅き黄昏 クルス・ドラク",
 	cardno: 4576,
-	imageno: -1,
+	imageno: 6294,
 	hp: 2701,
 	atk: 2821,
 	cost: 43,
@@ -4957,7 +4957,7 @@ Cards = [{
 }, {
 	name: "破槍の獄炎帝 ブリューダイン・ギア",
 	cardno: 4651,
-	imageno: -1,
+	imageno: 6114,
 	hp: 3183,
 	atk: 2801,
 	cost: 70,
@@ -5001,7 +5001,7 @@ Cards = [{
 }, {
 	name: "伝説の装備！ ギザ勇者しょこたん",
 	cardno: 3899,
-	imageno: -1,
+	imageno: 5579,
 	hp: 2333,
 	atk: 1735,
 	cost: 34,
@@ -5044,7 +5044,7 @@ Cards = [{
 }, {
 	name: "悪徳の飛翼 ディール・ロクスビー",
 	cardno: 4606,
-	imageno: -1,
+	imageno: 6334,
 	hp: 2500,
 	atk: 1769,
 	cost: 42,
@@ -5088,7 +5088,7 @@ Cards = [{
 }, {
 	name: "儚き闇の夜に 初音ミク",
 	cardno: 4871,
-	imageno: -1,
+	imageno: 6618,
 	hp: 2003,
 	atk: 3731,
 	cost: 50,
@@ -5178,50 +5178,446 @@ Cards = [{
 		proc: [poison(9999, 4)],
 	},
 }, {
-	name: "流星滑降少女 サクヤ・クランブル",
-	cardno: 4861,
-	imageno: 6596,
-	hp: 2058,
-	atk: 3420,
-	cost: 43,
-	attr: [1, -1],
-	species: [8],
-	awakes: [
-		Statusup(200, 0),
-		Statusup(0, 200),
-		Statusup(0, 400),
-		Costdown(2),
-		Panel_boost([0, 1, 0, 0, 0, ], 2),
-		NEFTJOD(30),
-		Panel_boost([0, 1, 0, 0, 0, ], 1),
-		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
-		Fastskill(2),
-		Spec_statusup(0, 200, [8, ]),
-	],
-	as1: {
-		desc: "火属性の敵単体へ特効3連撃/計400％",
-		proc: ChainDualAttrAttack(4, 0, 3, [1,0,0,0,0])
-	},
-	ss1: {
-		desc: "ジャンルパネルにチェインがプラス1の効果を付与",
-		turn: 3,
-		proc: [panel_chainplus(1)]
-	},
-	islegend: true,
-	Lawake: [
-		Statusup(0, 700),
-		Statusup(300, 0),
-	],
-	as2: {
-		desc: "火属性の敵単体へ特効3連撃/計500％",
-		proc: ChainDualAttrAttack(5, 0, 3, [1,0,0,0,0])
-	},
-	ss2: {
-		desc: "チェインがプラス1の効果、さらに敵全体へ水属性のダメージ(150％)",
-		turn: 7,
-		proc: [panel_chainplus(1), ss_damage_all(1.8, [1])]
-	},
-}, {
+    	name: "優しき神々の冷酷 アウラ・アマタ",
+    	cardno: 4644,
+    	imageno: 6109,
+    	hp: 3162,
+    	atk: 2839,
+    	cost: 46,
+    	attr: [1, -1],
+    	species: [3],
+    	awakes: [
+            Costdown(2),
+            Fastskill(1),
+            Statusup(200, 0),
+            Fastskill(1),
+            Statusup(0, 200),
+            Costdown(2),
+            Fastskill(1),
+            Panel_boost([0, 1, 0, 0, 0, ], 2),
+            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+            Spec_statusup(0, 200, [3, ]),
+    	],
+    	as1: {
+    		desc: "3チェインで水属性の味方の攻撃力をアップ/+50％",
+    		proc: ChainEnhance(0.50, [0,1,0,0,0], 0.5),
+    	},
+    	ss1: {
+    		desc: "3ターン全属性のダメージを25％軽減する",
+    		turn: 5,
+    		proc: null
+    	},
+    	islegend: true,
+    	Lawake: [
+            Statusup(500, 0),
+            Statusup(0, 500),
+    	],
+    	as2: {
+    		desc: "3チェインで水属性の味方の攻撃力をアップ/+70％",
+    		proc: ChainEnhance(0.50, [0,1,0,0,0], 0.7),
+    	},
+    	ss2: {
+    		desc: "3ターン全属性のダメージを50％軽減する",
+    		turn: 9,
+    		proc: null
+    	},
+    }, {
+    	name: "虹色の恋模様 アーシア・ベネット",
+    	cardno: 4469,
+    	imageno: 6163,
+    	hp: 3425,
+    	atk: 2579,
+    	cost: 48,
+    	attr: [1, -1],
+    	species: [9],
+    	awakes: [
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+            Fastskill(1),
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Heal_afterbattle(10),
+            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Spec_statusup(200, 0, [9, ]),
+            Fastskill(2),
+            Spec_statusup(0, 200, [9, ]),
+    	],
+    	as1: {
+    		desc: "水属性の味方の攻撃力をアップ、パネルの色が増す度さらにアップ(1色：+30％ / 2色：+50％ / 3色：+80％)",
+    		proc: ChainPanelsEnhance(0.3, 0.5, 0.8, [0,1,0,0,0], 1),
+    	},
+    	ss1: {
+    		desc: "3ターンの間、アンサースキル発動時間を10秒延長する",
+    		turn: 5,
+    		proc: null
+    	},
+    	islegend: true,
+    	Lawake: [
+            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+            Statusup(500, 0),
+    	],
+    	as2: {
+    		desc: "水属性の味方の攻撃力をアップ、パネルの色が増す度さらにアップ(1色：+50％ / 2色：+70％ / 3色：+100％)",
+    		proc: ChainPanelsEnhance(0.5, 0.7, 1.0, [0,1,0,0,0], 1),
+    	},
+    	ss2: {
+    		desc: "解答を見破る",
+    		turn: 6,
+    		proc: null
+    	},
+    }, {
+    	name: "神話に記された英雄 アスカ・イズモ",
+    	cardno: 4683,
+    	imageno: 6442,
+    	hp: 2739,
+    	atk: 2862,
+    	cost: 42,
+    	attr: [1, -1],
+    	species: [8],
+    	awakes: [
+            Statusup(200, 0),
+            Statusup(0, 200),
+            Statusup(0, 100),
+            Costdown(2),
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Spec_statusup(0, 200, [8, ]),
+            Fastskill(2),
+            Spec_statusup(200, 0, [8, ]),
+    	],
+    	as1: {
+    		desc: "火属性の敵単体へ特効ダメージ/400％",
+    		proc: ChainAttrAttack(4.0, 1, [1,0,0,0,0]),
+    	},
+    	ss1: {
+    		desc: "ジャンルパネルを水属性化",
+    		turn: 5,
+    		proc: null
+    	},
+    	islegend: true,
+    	Lawake: [
+            Statusup(0, 400),
+            Statusup(400, 0),
+    	],
+    	as2: {
+    		desc: "火属性の敵単体へ特効ダメージ/500％",
+    		proc: ChainAttrAttack(5.0, 1, [1,0,0,0,0]),
+    	},
+    	ss2: {
+    		desc: "ジャンルパネルを水属性化し、攻撃力アップの効果を付与(+20％)",
+    		turn: 8,
+    		proc: [panel_attackup(0.2)],
+    	},
+    }, {
+    	name: "僕を見つめる瞳 アーシア・ベネット",
+    	cardno: 4621,
+    	imageno: 6345,
+    	hp: 3328,
+    	atk: 2713,
+    	cost: 48,
+    	attr: [1, -1],
+    	species: [9],
+    	awakes: [
+            Fastskill(1),
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+            Heal_afterbattle(10),
+            Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+            Attr_relief([0, 0, 1, 0, 0, ], 20),
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Fastskill(2),
+            Spec_statusup(200, 0, [9, ]),
+            Spec_statusup(0, 200, [9, ]),
+    	],
+    	as1: {
+    		desc: "水属性の味方を回復/14％",
+    		proc: Heal(0.14, [0,1,0,0,0], 1),
+    	},
+    	ss1: {
+    		desc: "敵単体の攻撃ターンを1遅らせる",
+    		turn: 6,
+    		proc: null
+    	},
+    	islegend: true,
+    	Lawake: [
+            Statusup(500, 0),
+            Statusup(0, 500),
+    	],
+    	as2: {
+    		desc: "水属性の味方を回復/17％",
+    		proc: Heal(0.17, [0,1,0,0,0], 1),
+    	},
+    	ss2: {
+    		desc: "敵単体の攻撃ターンを2遅らせる",
+    		turn: 7,
+    		proc: null
+    	},
+    }, {
+    	name: "撃砕の鉄腕 アトヤ＆リベルタス",
+    	cardno: 4246,
+    	imageno: 5952,
+    	hp: 3134,
+    	atk: 2327,
+    	cost: 49,
+    	attr: [1, -1],
+    	species: [8],
+    	awakes: [
+            Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+            Fastskill(1),
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+            Fastskill(2),
+            Spec_statusup(200, 0, [8, ]),
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Spec_statusup(0, 200, [8, ]),
+    	],
+    	as1: {
+    		desc: "5チェインでダメージアップ/450％",
+    		proc: ChainAttack(4.5, 5),
+    	},
+    	ss1: {
+    		desc: "ジャンルパネルにダメージ25％軽減の効果を付与",
+    		turn: 6,
+    		proc: null
+    	},
+    	islegend: true,
+    	Lawake: [
+            NEFTJOD(30),
+            Statusup(500, 0),
+    	],
+    	as2: {
+    		desc: "敵単体へのダメージアップ/450％",
+    		proc: ChainAttack(4.5, 1),
+    	},
+    	ss2: {
+    		desc: "ジャンルパネルにダメージ50％軽減の効果を付与",
+    		turn: 10,
+    		proc: null
+    	},
+    }, {
+    	name: "輝ける星霜の剣 アネモネ・フラル",
+    	cardno: 4594,
+    	imageno: 6299,
+    	hp: 3048,
+    	atk: 2684,
+    	cost: 45,
+    	attr: [1, -1],
+    	species: [8],
+    	awakes: [
+            Costdown(2),
+            Panel_boost([0, 1, 0, 0, 0, ], 2),
+            Statusup(0, 200),
+            Fastskill(1),
+            NEFTJOD(30),
+            Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+            Spec_statusup(200, 0, [8, ]),
+            Fastskill(2),
+            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+            Spec_statusup(0, 200, [8, ]),
+    	],
+    	as1: {
+    		desc: "水属性の味方の攻撃力をアップ、戦士はさらにアップ(通常：+20％ / 水+種族：+45％)",
+    		proc: [ChainEnhance(0.20, [0,1,0,0,0], 1), ChainSpecEnhance(0.45, [0,1,0,0,0], [8], 1)],
+    	},
+    	ss1: {
+    		desc: "2ターン水属性の味方の攻撃力をアップ(+40％)",
+    		turn: 6,
+    		proc: [ss_enhance_all(0.4, 2, [0,1,0,0,0])], 
+    	},
+    	islegend: true,
+    	Lawake: [
+            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+            Statusup(0, 500),
+    	],
+    	as2: {
+    		desc: "水属性の味方の攻撃力をアップ、戦士はさらにアップ(通常：+20％ / 水+種族：+65％)",
+    		proc: [ChainEnhance(0.20, [0,1,0,0,0], 1), ChainSpecEnhance(0.65, [0,1,0,0,0], [8], 1)],
+    	},
+    	ss2: {
+    		desc: "4ターン水属性の味方の攻撃力をアップ(+60％)",
+    		turn: 9,
+    		proc: [ss_enhance_all(0.6, 4, [0,1,0,0,0])], 
+    	},
+    }, {
+    	name: "鋼鉄の管理者 アムベル・ケイ",
+    	cardno: 4499,
+    	imageno: 6224,
+    	hp: 2350,
+    	atk: 2942,
+    	cost: 45,
+    	attr: [1, -1],
+    	species: [9],
+    	awakes: [
+            Fastskill(1),
+            Statusup(200, 0),
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Spec_statusup(0, 200, [9, ]),
+            Spec_statusup(200, 0, [9, ]),
+            Fastskill(1),
+            Spec_statusup(0, 200, [9, ]),
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Fastskill(1),
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+    	],
+    	as1: {
+    		desc: "火属性の敵単体へ特効ダメージ/350％",
+    		proc: ChainAttrAttack(3.5, 1, [1,0,0,0,0]),
+    	},
+    	ss1: {
+    		desc: "ジャンルパネルに攻撃力アップの効果を付与(+40％)",
+    		turn: 6,
+    		proc: [panel_attackup(0.4)],
+    	},
+    	islegend: true,
+    	Lawake: [
+            Statusup(0, 200),
+            Statusup(700, 0),
+    	],
+    	as2: {
+    		desc: "MAXHP20％を使い、火属性の敵単体へ特効ダメージ/500％",
+    		proc: add_cond(ChainAttrAttack(5.0, 1, [1,0,0,0,0]), as_consume_own(0.20)),
+    	},
+    	ss2: {
+    		desc: "ジャンルパネルに攻撃力アップの効果を付与(+80％)",
+    		turn: 9,
+    		proc: [panel_attackup(0.8)],
+    	},
+    }, {
+    	name: "残酷な世界の覚醒 アンジェリカ",
+    	cardno: 5111,
+    	imageno: 6862,
+    	hp: 4056,
+    	atk: 4132,
+    	cost: 43,
+    	attr: [1, -1],
+    	species: [1],
+    	awakes: [
+            Spec_statusup(0, 200, [1, ]),
+            Fastskill(1),
+            Statusup(0, 100),
+            Spec_statusup(200, 0, [1, ]),
+            Costdown(4),
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Panel_boost([0, 1, 0, 0, 0, ], 2),
+            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+            Fastskill(2),
+            Spec_statusup(0, 200, [1, ]),
+    	],
+    	as1: {
+    		desc: "3チェインかつパネルが2色でダメージアップ、3色でさらにアップ(2色：400％ / 3色：550％)",
+    		proc: ChainPanelsAttack(1.0, 4.0, 5.5, 3),
+    	},
+    	ss1: {
+    		desc: "敵全体へ水属性のダメージ、さらに味方全体を回復(攻撃：200％ / 回復：50％)",
+    		turn: 6,
+    		proc: [ss_damage_all(2.0, [1]), ss_heal(0.5)],
+    	},
+    	islegend: true,
+    	Lawake: [
+            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+            Statusup(0, 600),
+    	],
+    	as2: {
+    		desc: "3チェインかつパネルが2色でダメージアップ、3色でさらにアップ(2色：550％ / 3色：700％)",
+    		proc: ChainPanelsAttack(1.0, 5.5, 7.0, 3),
+    	},
+    	ss2: {
+    		desc: "敵全体へ水属性のダメージ、さらに味方全体を全回復(攻撃：200％)",
+    		turn: 9,
+    		proc: [ss_damage_all(2.0, [1]), ss_heal(1)],
+    	},
+    }, {
+    	name: "攻究魔法の最終形 イズロム・ガドラ",
+    	cardno: 4850,
+    	imageno: 6585,
+    	hp: 2524,
+    	atk: 3132,
+    	cost: 41,
+    	attr: [1, -1],
+    	species: [9],
+    	awakes: [
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Fastskill(1),
+            Statusup(0, 200),
+            Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+            Attr_relief([1, 0, 0, 0, 0, ], 10),
+            Fastskill(1),
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+            Spec_statusup(200, 0, [9, ]),
+            Fastskill(2),
+    	],
+    	as1: {
+    		desc: "5チェインでダメージアップ/450％",
+    		proc: ChainAttack(4.5, 5),
+    	},
+    	ss1: {
+    		desc: "敵単体へ水属性の5回連続ダメージ(計180％)",
+    		turn: 5,
+    		proc: [ss_damage_s(1.8, [1], 5)],
+    	},
+    	islegend: true,
+    	Lawake: [
+            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+            Statusup(0, 500),
+    	],
+    	as2: {
+    		desc: "5チェインでダメージアップ/550％",
+    		proc: ChainAttack(5.5, 5),
+    	},
+    	ss2: {
+    		desc: "敵単体へ水属性の5回連続ダメージ(計380％)",
+    		turn: 8,
+    		proc: [ss_damage_s(3.8, [1], 5)],
+    	},
+    }, {
+    	name: "決意の蒼覇剣 イツキ・マスグレイヴ",
+    	cardno: 4445,
+    	imageno: 6139,
+    	hp: 2222,
+    	atk: 3288,
+    	cost: 40,
+    	attr: [1, -1],
+    	species: [8],
+    	awakes: [
+            Statusup(0, 400),
+            Statusup(400, 0),
+            Costdown(2),
+            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Panel_boost([0, 1, 0, 0, 0, ], 1),
+            Heal_afterbattle(10),
+            Fastskill(2),
+            Spec_statusup(0, 200, [8, ]),
+            Spec_statusup(200, 0, [8, ]),
+    	],
+    	as1: {
+    		desc: "3チェインで敵単体を3回連続攻撃、リーダー時さらにアップ(通常：計300％ / リーダー時：計350％)",
+    		proc: [ChainDualAttack(3.0, 3, 3), add_cond(ChainDualAttack(3.5, 3, 3), when_leader())],
+    	},
+    	ss1: {
+    		desc: "ジャンルパネルを水属性化",
+    		turn: 5,
+    		proc: null
+    	},
+    	islegend: true,
+    	Lawake: [
+            Statusup(0, 500),
+            Statusup(500, 0),
+    	],
+    	as2: {
+    		desc: "3チェインで敵単体を3回連続攻撃、リーダー時さらにアップ(通常：計400％ / リーダー時：計450％)",
+    		proc: [ChainDualAttack(4.0, 3, 3), add_cond(ChainDualAttack(4.5, 3, 3), when_leader())],
+    	},
+    	ss2: {
+    		desc: "ジャンルパネルを水属性化し、チェインがプラス1の効果を付与",
+    		turn: 7,
+    		proc: [panel_chainplus(1)],
+    	},
+    }, {
 	name: "激烈大魔法使い アリエッタ・トワ",
 	cardno: 4156,
 	imageno: 5900,
@@ -5308,6 +5704,50 @@ Cards = [{
 		desc: "5ターンの間、スキルカウンター待機(200%)",
 		turn: 10,
 		proc: [ss_skillcounter(2, 5)]
+	},
+}, {
+	name: "流星滑降少女 サクヤ・クランブル",
+	cardno: 4861,
+	imageno: 6596,
+	hp: 2058,
+	atk: 3420,
+	cost: 43,
+	attr: [1, -1],
+	species: [8],
+	awakes: [
+		Statusup(200, 0),
+		Statusup(0, 200),
+		Statusup(0, 400),
+		Costdown(2),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		NEFTJOD(30),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Fastskill(2),
+		Spec_statusup(0, 200, [8, ]),
+	],
+	as1: {
+		desc: "火属性の敵単体へ特効3連撃/計400％",
+		proc: ChainDualAttrAttack(4, 0, 3, [1,0,0,0,0])
+	},
+	ss1: {
+		desc: "ジャンルパネルにチェインがプラス1の効果を付与",
+		turn: 3,
+		proc: [panel_chainplus(1)]
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 700),
+		Statusup(300, 0),
+	],
+	as2: {
+		desc: "火属性の敵単体へ特効3連撃/計500％",
+		proc: ChainDualAttrAttack(5, 0, 3, [1,0,0,0,0])
+	},
+	ss2: {
+		desc: "チェインがプラス1の効果、さらに敵全体へ水属性のダメージ(150％)",
+		turn: 7,
+		proc: [panel_chainplus(1), ss_damage_all(1.8, [1])]
 	},
 }, {
 	name: "蒼の指揮官 イツキ・マスグレイヴ",

@@ -25,6 +25,17 @@ span.strong{
 span.secretly{
 	color: #C0C0C0;
 }
+span.link_like{
+	color: #0040FF;
+	text-decoration: underline;
+	cursor: pointer;
+}
+p.highlight{
+	margin-top: 0.5ex;
+	border: 1px dashed #2080FF;
+	border-radius: 5px;
+	padding: 1ex 1em;
+}
 
 
 /* Clearfix */

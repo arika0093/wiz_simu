@@ -23,11 +23,13 @@ $(function () {
 	}
 	// Manaplus blink
 	var blink_interval = 3300;
-	setInterval(function () {
+	var mana_blink = function () {
 		$('p.ally_mana').fadeOut(blink_interval / 3, function () {
 			$(this).fadeIn(blink_interval / 3);
 		});
-	}, blink_interval);
+	};
+	mana_blink()
+	setInterval(mana_blink, blink_interval);
 
 	// Dialog
 	$("#dialog_sim_error").dialog({
@@ -74,6 +76,10 @@ $(function () {
 			$("#d_mana_edit").spinner("value", Manaplus[ni]);
 			var p_t = (ni+1) + ": " + cd.name + "<br/>マナの値を0-200の間で指定してください。(HP: " + cd.hp + ")";
 			$("#d_mana_text").html(p_t);
+			// close when click dialog outside
+			$('.ui-widget-overlay').bind('click', function () {
+				$("#dialog_manaset").dialog('close');
+			});
 		},
 		buttons: {
 			"偶数調整": function () {

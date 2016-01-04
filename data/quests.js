@@ -26,14 +26,12 @@ Quests = [
 							// 先制行動
 							on_popup: [
 								attack_counter(10000, 3),
-								s_enemy_all_sealed(2, 1),
 							],
 							// 通常行動(ターンの値は1多くすること)
 							// 1ターン中に複数行動させたいなら配列で並べて記載
 							on_move: [
-								s_enemy_attack(400, 3, 5, true),
+								damage_block_all(2000, 2),
 								impregnable(5),
-								damage_block_own(2000, 5),
 							],
 							// ランダム行動
 							atrandom: false,
@@ -41,17 +39,6 @@ Quests = [
 							turn: 2,
 							// 行動周期
 							wait: 1,
-						},
-					}, {
-						name: "水ハーピィ",
-						hp: 10,
-						imageno: 3,
-						attr: 1,
-						spec: 5,
-						move: {
-							on_popup: [
-								impregnable(99),
-							],
 						},
 					},
 				],
@@ -82,8 +69,8 @@ Quests = [
 						spec: 2,
 						move: {
 							on_move: [
-								s_enemy_chain_sealed(5),
-								null,
+								s_enemy_chain_sealed(7),
+								s_enemy_attack(350, 5, 1, false),
 							],
 							atrandom: false,
 							turn: 1,
@@ -177,6 +164,7 @@ Quests = [
 						move: {
 							on_move: [
 								s_enemy_chain_break(),
+								s_enemy_attack(70, 3, 5, true),
 								null,
 							],
 							atrandom: false,
@@ -200,6 +188,15 @@ Quests = [
 						imageno: 5482,
 						attr: 1,
 						spec: 9,
+						move: {
+							on_move: [
+								s_enemy_attr_weaken([0,1,0,0,0], 1.5, 5, 4),
+								s_enemy_attack(1400, 1, 1),
+							],
+							atrandom: false,
+							turn: 1,
+							wait: 1,
+						},
 					}, {
 						name: "ルシェ",
 						hp: 600000,
@@ -208,7 +205,6 @@ Quests = [
 						spec: 0,
 						move: {
 							on_move: [
-								// 要検証
 								s_enemy_poison(500, 5, 5),
 								s_enemy_attack(1400, 1, 1),
 							],
@@ -224,7 +220,7 @@ Quests = [
 						spec: 9,
 						move: {
 							on_move: [
-								s_enemy_as_sealed(500, 5, 3),
+								s_enemy_as_sealed(5, 4),
 								s_enemy_attack(1400, 1, 1),
 							],
 							atrandom: false,
