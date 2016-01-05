@@ -5881,6 +5881,50 @@ Cards = [{
 		proc: [panel_chainplus(3)]
 	},
 }, {
+	name: "時忘れの新感覚 ユッカ",
+	cardno: 4346,
+	imageno: 6103,
+	hp: 3494,
+	atk: 2212,
+	cost: 48,
+	attr: [1, -1],
+	species: [9],
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Fastskill(1),
+		Spec_statusup(200, 0, [9, ]),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		NEFTJOD(30),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Spec_statusup(0, 200, [9, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "5チェインで水属性の味方の攻撃力をアップ/+60％",
+		proc: ChainEnhance(0.6, [0,1,0,0,0], 5)
+	},
+	ss1: {
+		desc: "ジャンルパネルにチェインがプラス1の効果を付与",
+		turn: 3,
+		proc: [panel_chainplus(1)]
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "5チェインで水属性の味方の攻撃力をアップ/+90％",
+		proc: ChainEnhance(0.9, [0,1,0,0,0], 5)
+	},
+	ss2: {
+		desc: "ジャンルパネルにチェインがプラス2の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(2)]
+	},
+}, {
 	name: "海風流るる焔々と セイ＆スオウ",
 	cardno: 5064,
 	imageno: 6804,
@@ -6055,6 +6099,50 @@ Cards = [{
 		desc: "敵全体へ雷属性のダメージ(300%)、さらに水属性の敵には特攻ダメージ(900%)",
 		turn: 8,
 		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 9.0, 2.0), [1])]
+	},
+}, {
+	name: "開かれた夏への扉 ヤチヨ＆アッカ",
+	cardno: 4240,
+	imageno: 5946,
+	hp: 2929,
+	atk: 2457,
+	cost: 48,
+	attr: [1, 2],
+	species: [8],
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+		NEFTJOD(30),
+		Attr_statusup(100, 0, [0, 1, 1, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		{ /* 経験値取得量アップⅠ */ },
+		Spec_statusup(200, 0, [8, ]),
+		Spec_statusup(0, 200, [8, ]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "5チェインで水・雷属性の味方の攻撃力をアップ/+60％",
+		proc: ChainEnhance(0.6, [0,1,1,0,0], 5)
+	},
+	ss1: {
+		desc: "ジャンルパネルにチェインプラス2の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(2)]
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 400),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "5チェインで水・雷属性の味方の攻撃力をアップ/+90％",
+		proc: ChainEnhance(0.9, [0,1,1,0,0], 5)
+	},
+	ss2: {
+		desc: "攻撃ターンを3遅らせる",
+		turn: 10,
+		proc: null
 	},
 }, {
 	// -------------------------
@@ -6234,6 +6322,50 @@ Cards = [{
 		desc: "ジャンルパネルにチェインがプラス2の効果を付与",
 		turn: 5,
 		proc: [panel_chainplus(2)]
+	},
+}, {
+	name: "双星、芽生えたココロ アイ＆アイ",
+	cardno: 4432,
+	imageno: 6126,
+	hp: 2328,
+	atk: 2432,
+	cost: 48,
+	attr: [2, 0],
+	species: [6],
+	awakes: [
+		Fastskill(1),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Spec_statusup(200, 0, [6, ]),
+		Spec_statusup(200, 0, [6, ]),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Spec_statusup(0, 200, [6, ]),
+		Spec_statusup(0, 200, [6, ]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "5チェインでダメージアップ/450％",
+		proc: ChainAttack(4.5, 5)
+	},
+	ss1: {
+		desc: "ジャンルパネルにチェインがプラス2の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(2)]
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(500, 0),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "5チェインでMAXHP15％を使い、ダメージアップ/650％",
+		proc: ChainAttack(5.5, 5)
+	},
+	ss2: {
+		desc: "ジャンルパネルにチェインがプラス3の効果を付与",
+		turn: 8,
+		proc: [panel_chainplus(3)]
 	},
 }, {
 	name: "傷だらけの銃爪 スミオ＆トキオ",
@@ -6455,6 +6587,50 @@ Cards = [{
 		desc: "敵単体のHPを25％減少させる、5チェインを消費しさらに15％減少させる",
 		turn: 12,
 		proc: [ss_ratiodamage_s(ss_chain_cost(5, 0.40, 0.25))]
+	},
+}, {
+	name: "境界の幻視者 ルピラ・ヴィム",
+	cardno: 4654,
+	imageno: 6412,
+	hp: 2419,
+	atk: 2048,
+	cost: 49,
+	attr: [2, 1],
+	species: [9],
+	awakes: [
+		Fastskill(1),
+		Statusup(0, 200),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+		NEFTJOD(30),
+		Attr_statusup(100, 0, [0, 1, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(2),
+		Spec_statusup(0, 200, [9, ]),
+		Spec_statusup(200, 0, [9, ]),
+	],
+	as1: {
+		desc: "5チェインで水・雷属性の味方の攻撃力をアップ/+60％",
+		proc: ChainEnhance(0.6, [0,1,1,0,0], 5)
+	},
+	ss1: {
+		desc: "3ターンの間、スキルカウンター待機(200%)",
+		turn: 7,
+		proc: [ss_skillcounter(2, 3)]
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "5チェインで水・雷属性の味方の攻撃力をアップ、さらに水・雷属性の味方のHPを回復(攻撃：+60％ / 回復：5％)",
+		proc: [ChainEnhance(0.6, [0,1,1,0,0], 5), Heal(0.05, [0,1,1,0,0], 5)]
+	},
+	ss2: {
+		desc: "5ターンの間、スキルカウンター待機(200%)",
+		turn: 10,
+		proc: [ss_skillcounter(2, 5)]
 	},
 }, {
 	name: "☆夜明けの巫女☆ キシャラ・オロル",
