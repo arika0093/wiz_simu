@@ -187,6 +187,23 @@ function sim_show() {
 	// sim_field_move
 	$("#fld_move_before").attr("disabled", (Field.Status.totalturn == 0));
 	$("#fld_move_after").attr("disabled", (Field.Status.totalturn == Field_log.length() - 1));
+	// 敵の数に応じてattack_target_selの中身を変える
+	var eleng = GetNowBattleEnemys().length;
+	if (eleng == 2) {
+		// 2体(中央を消す)
+		$("#attack_target_sel option[value=1]").hide();
+		$("#atarget_sel_1 option[value=1]").hide();
+		$("#atarget_sel_2 option[value=1]").hide();
+	} else {
+		// 3体(全て表示)
+		$("#attack_target_sel option").show();
+		$("#atarget_sel_1 option").show();
+		$("#atarget_sel_2 option").show();
+	}
+	// 1体なら選択を無効化
+	$("#attack_target_sel").attr("disabled", eleng <= 1);
+	$("#atarget_sel_1").attr("disabled", eleng <= 1);
+	$("#atarget_sel_2").attr("disabled", eleng <= 1);
 
 	// ally_info
 	var cost_total = 0;
@@ -410,13 +427,11 @@ function back_decksel() {
 // タゲ選択
 function target_allselect(n) {
 	n = (n !== undefined ? n : $("#attack_target_sel").val());
-	if (n < GetNowBattleEnemys().length) {
-		$("#attack_target_sel").val(n + "");
-		for (var i = 0; i < Field.Allys.Deck.length; i++) {
-			var now = Field.Allys.Now[i];
-			now.target[0] = n;
-			now.target[1] = n;
-		}
+	$("#attack_target_sel").val(n + "");
+	for (var i = 0; i < Field.Allys.Deck.length; i++) {
+		var now = Field.Allys.Now[i];
+		now.target[0] = n;
+		now.target[1] = n;
 	}
 }
 

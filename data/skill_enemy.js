@@ -1,4 +1,51 @@
 // -----------------------------------
+// 敵行動制御
+// -----------------------------------
+// 初回のみ行動
+function m_enemy_once(e_skl) {
+	return m_enemy_nturn(e_skl, 999);
+}
+
+// nターンに1回行動
+function m_enemy_nturn(e_skl, n) {
+	e_skl.interval = n;
+	e_skl.count = 0;
+	return e_skl;
+}
+
+
+// 現在HPが最も高い味方を狙う
+function m_enemy_tgtype_maxhp() {
+	return function (nows, tnum) {
+		var nowhp_list = [];
+		var tg = [];
+		// listup
+		for (var i = 0; i < nows.length; i++) {
+			nowhp_list[i] = {
+				hp: nows[i].nowhp,
+				index: i,
+			};
+		}
+		// sort
+		nowhp_list.sort(function (a, b) {
+			return b.hp - a.hp;
+		});
+		// push
+		for (var i = 0; i < Math.min(tnum, nows.length); i++) {
+			tg[i] = nowhp_list[i].index;
+		}
+		return tg;
+	}
+}
+
+// 現在HPが最も低い味方を狙う
+function m_enemy_tgtype_minhp() {
+	return function (nows, tnum) {
+		return m_enemy_tgtype_maxhp()(nows, 5).reverse().slice(0, tnum);
+	}
+}
+
+// -----------------------------------
 // 攻撃
 // -----------------------------------
 // (内部用)攻撃
@@ -19,13 +66,17 @@ function _s_enemy_attack(fld, dmg, ei, ai) {
 	damage_ally(l_dmg, ai, true);
 }
 
-// 普通の攻撃(不利属性相手への単発ダメージ, 攻撃対象数, 攻撃回数, 連撃時攻撃対象を毎回変えるかどうか)
-function s_enemy_attack(dmg, tnum, atkn, is_allrandom) {
-	return function (fld, n) {
+// 普通の攻撃(不利属性相手への単発ダメージ, 攻撃対象数, 攻撃回数, 攻撃対象詳細)
+//   攻撃対象詳細: true: 連撃時攻撃対象を毎回変える / false: 変えない / func(): 条件指定
+function s_enemy_attack(dmg, tnum, atkn, tgtype) {
+	return function (fld, n, nows) {
+		// ログ出力
 		Field.log_push("Enemy[" + (n + 1) + "]: " +
 			(atkn < fld.Allys.Deck.length ? tnum : "全") + "体" +
 			(atkn > 1 ? atkn + "連撃(" : "攻撃(") + dmg + ")");
-		var tg = gen_enemytarget_array(tnum, atkn, is_allrandom);
+		// 攻撃対象取得
+		var tg = gen_enemytarget_array(tnum, atkn, tgtype, nows);
+		// 攻撃
 		for (var i = 0; i < tg.length; i++) {
 			for (var j = 0; j < tg[i].length; j++) {
 				_s_enemy_attack(fld, dmg * 2, n, tg[i][j]);
@@ -37,7 +88,8 @@ function s_enemy_attack(dmg, tnum, atkn, is_allrandom) {
 // -----------------------------------
 // 状態異常攻撃
 // -----------------------------------
-// 状態異常攻撃テンプレ(Field, 説明, 種類, ターン数, 対象, 発動敵番号, カウンター攻撃かどうか, 追加内容, 異常無効貫通)
+// 状態異常攻撃テンプレ
+// (Field, 説明, 種類, ターン数, 対象, 発動敵番号, カウンター攻撃かどうか, 追加内容, 異常無効貫通)
 function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f_obj, disable_guard) {
 	var tg = !target.length ? gen_enemytarget_array(target, 1, false)[0] : target;
 	f_obj = f_obj || {};
@@ -79,10 +131,14 @@ function s_enemy_poison(d, tnum, t) {
 			fld, "毒(" + d + ")", "poison", t, tnum, n, is_counter, {
 				is_poison: true,
 				effect: function (f, oi, teff, state, is_t, is_b) {
-					if (is_t && !is_b) {
-						var now = fld.Allys.Now[oi];
+					if (is_t && !is_b && state != "overlay") {
+						var now = f.Allys.Now[oi];
 						now.nowhp = Math.max(now.nowhp - d, 0);
-						fld.log_push("Unit[" + (oi + 1) + "]: 毒(" + d + "ダメージ)");
+						if (now.nowhp <= 0) {
+							// 毒で死んだら全効果を解除
+							now.turn_effect = [];
+						}
+						f.log_push("Unit[" + (oi + 1) + "]: 毒(" + d + "ダメージ)");
 					}
 				},
 			}
@@ -118,7 +174,7 @@ function s_enemy_as_sealed(tnum, t) {
 	return function (fld, n, is_counter) {
 		s_enemy_abstate_attack(
 			fld, "AS封印", "as_sealed", t, tnum, n, is_counter, {
-				bef_answer: function(fld, as) {
+				bef_answer: function(f, as) {
 					return as.isdefault === true;
 				}
 			}
@@ -142,10 +198,10 @@ function s_enemy_all_sealed(tnum, t) {
 	return function (fld, n, is_counter) {
 		s_enemy_abstate_attack(
 			fld, "封印", "all_sealed", t, tnum, n, false, {
-				bef_answer: function(fld, as) {
+				bef_answer: function(f, as) {
 					return false;
 				},
-				bef_skillcounter: function(fld, ai) {
+				bef_skillcounter: function(f, ai) {
 					return false;
 				},
 				ss_disabled: true,

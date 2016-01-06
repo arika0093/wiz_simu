@@ -190,7 +190,7 @@ Quests = [
 						spec: 9,
 						move: {
 							on_move: [
-								s_enemy_attr_weaken([0,1,0,0,0], 1.5, 5, 4),
+								m_enemy_once(s_enemy_attr_weaken([0, 1, 0, 0, 0], 1.5, 5, 4)),
 								s_enemy_attack(1400, 1, 1),
 							],
 							atrandom: false,
@@ -205,8 +205,8 @@ Quests = [
 						spec: 0,
 						move: {
 							on_move: [
-								s_enemy_poison(500, 5, 5),
-								s_enemy_attack(1400, 1, 1),
+								m_enemy_once(s_enemy_poison(500, 5, 5)),
+								s_enemy_attack(1400, 1, 1, m_enemy_tgtype_maxhp()),
 							],
 							atrandom: false,
 							turn: 1,
@@ -220,8 +220,8 @@ Quests = [
 						spec: 9,
 						move: {
 							on_move: [
-								s_enemy_as_sealed(5, 4),
-								s_enemy_attack(1400, 1, 1),
+								m_enemy_once(s_enemy_as_sealed(5, 4)),
+								s_enemy_attack(1400, 1, 1, m_enemy_tgtype_minhp()),
 							],
 							atrandom: false,
 							turn: 1,

@@ -191,22 +191,7 @@ $(window).load(function () {
 function nextturn(is_ssfin) {
 	var f_st = Field.Status;
 	// 全滅していなかったら効果ターンを減少
-	var killed = is_allkill();
-	if (!killed) {
-		// 味方ターンエフェクト減算処理
-		for (var i = 0; i < Field.Allys.Deck.length; i++) {
-			for (var j = 0; j < Field.Allys.Now[i].turn_effect.length; j++) {
-				Field.Allys.Now[i].turn_effect[j].lim_turn -= 1;
-			}
-		}
-		// 敵ターンエフェクト減算処理
-		var enemys = GetNowBattleEnemys();
-		for (var i = 0; i < enemys.length; i++) {
-			for (var j = 0; j < enemys[i].turn_effect.length; j++) {
-				enemys[i].turn_effect[j].lim_turn -= 1;
-			}
-		}
-	}
+	reduce_turneffect();
 	// 効果の継続確認
 	turn_effect_check(true);
 	enemy_turn_effect_check(true);
@@ -219,7 +204,7 @@ function nextturn(is_ssfin) {
 		}
 	}
 	// 全滅していたらここで新しい敵の処理を行う
-	killed = allkill_check(is_ssfin);
+	var killed = allkill_check(is_ssfin);
 	if (killed && !f_st.finish) {
 		enemy_popup_proc();
 	}

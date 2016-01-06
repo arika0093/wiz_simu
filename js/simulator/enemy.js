@@ -75,27 +75,35 @@ function allkill_check(is_ssfinish) {
 }
 
 // 敵攻撃の対象配列を生成する
-function gen_enemytarget_array(tnum, atkn, isallrnd) {
+function gen_enemytarget_array(tnum, atkn, tgtype, nows) {
 	var gen_ar = [];
 	var deck_n = Field.Allys.Deck.length;
 	var gen_l = Math.min(tnum, deck_n);
+	var tgtype_isfunc = (tgtype !== true && tgtype);
 	for (var an = 0; an < atkn; an++) {
-		if (!isallrnd && an > 0) {
+		// 攻撃対象を毎回変えないなら最初の要素をコピーする
+		if (tgtype !== true && an > 0) {
 			gen_ar[an] = gen_ar[0];
 			continue;
 		}
 		var tg_arr = [0, 1, 2, 3, 4];
 		tg_arr.splice(deck_n, 5 - deck_n);
-		var a = tg_arr.concat();
-		var t = [];
-		var r = [];
-		var l = a.length;
-		var n = gen_l < l ? gen_l : l;
-		while (n-- > 0) {
-			var i = Math.floor(Math.random() * l);
-			r[n] = t[i] || a[i];
-			--l;
-			t[i] = t[l] || a[l];
+		// 攻撃対象関数が指定されているならそれを実行
+		if (tgtype_isfunc) {
+			var r = tgtype(nows, tnum);
+		} else {
+			// ランダム取得
+			var a = tg_arr.concat();
+			var t = [];
+			var r = [];
+			var l = a.length;
+			var n = gen_l < l ? gen_l : l;
+			while (n-- > 0) {
+				var i = Math.floor(Math.random() * l);
+				r[n] = t[i] || a[i];
+				--l;
+				t[i] = t[l] || a[l];
+			}
 		}
 		gen_ar[an] = r;
 	}
@@ -104,31 +112,24 @@ function gen_enemytarget_array(tnum, atkn, isallrnd) {
 
 // 敵の攻撃処理を行う
 function enemy_move() {
+	// 敵行動開始時の味方の状況を取得
+	var nows_smove = $.extend(true, [], Field.Allys.Now);
 	var enemys = GetNowBattleEnemys();
 	var e_moves = [];
 	for (var i = 0; i < enemys.length; i++) {
 		// 行動が定義されてないなら飛ばす
 		var e = enemys[i];
 		if (e.nowhp <= 0 || !e.move || !e.move.on_move) { continue; }
-		// 怒り時は怒りスキルを参照する
-		var em = e.move.isangry ? e.move.on_move_angey : e.move.on_move;
 		// ターンカウントを1減らす
 		e.move.turn -= 1;
 		// ターンカウントが0なら行動
 		if (e.move.turn <= 0) {
-			// 行動番号が定義されてないなら最初に
-			if (e.move.m_index === undefined) {
-				e.move.m_index = 0;
-			}
 			// ターンカウントを戻す
 			e.move.turn = e.move.wait;
-			// ランダム取得ならランダムに、そうでないなら順番に取得
-			if (e.move.atrandom) {
-				e_moves[i] = em[Math.floor(Math.random() * em.length)];
-			} else {
-				e_moves[i] = em[e.move.m_index];
-				e.move.m_index = (e.move.m_index + 1)%(em.length);
-			}
+			// 遅延解除
+			e.flags.isdelay = false;
+			// 取得
+			e_moves[i] = get_enemy_move_skill(e);
 		} else {
 			e_moves[i] = null;
 		}
@@ -141,12 +142,44 @@ function enemy_move() {
 		// e_moves[i]が関数でない(=配列である)場合
 		if (e_moves[i].caller === undefined) {
 			for (var mi = 0; mi < e_moves[i].length; mi++) {
-				e_moves[i][mi](Field, i);
+				e_moves[i][mi](Field, i, nows_smove);
 			}
 		} else {
-			e_moves[i](Field, i);
+			e_moves[i](Field, i, nows_smove);
 		}
 	}
+}
+
+// 条件に適した敵スキルを取得する
+function get_enemy_move_skill(e) {
+	// 怒り時は怒りスキルを参照する
+	var em = e.move.isangry ? e.move.on_move_angey : e.move.on_move;
+	// 行動番号が定義されてないなら最初に
+	if (e.move.m_index === undefined) {
+		e.move.m_index = 0;
+	}
+	// 使用可能なスキルを抜き出す(countが未定義または0)
+	var uskils = $.grep(em, function (eskl) {
+		if (eskl.count === undefined || eskl.count <= 0) {
+			return true;
+		} else {
+			// count残存が残ってる場合-1する
+			eskl.count--;
+		}
+	});
+	// 攻撃スキルが抽出出来なかった場合行動しない
+	if (uskils.length <= 0) { return null; }
+	// ランダム取得ならランダムに、そうでないなら順番に取得
+	if (e.move.atrandom) {
+		var rst = uskils[Math.floor(Math.random() * uskils.length)];
+	} else {
+		var call_index = Math.min(e.move.m_index, uskils.length-1);
+		var rst = uskils[call_index];
+		e.move.m_index = (call_index + 1) % (em.length);
+	}
+	// count値をintervalの値にする
+	rst.count = rst.interval || 0;
+	return rst;
 }
 
 // 敵出現時の先制攻撃処理を行う
@@ -156,36 +189,6 @@ function enemy_popup_proc(){
 		if (enemys[i].move && enemys[i].move.on_popup) {
 			for (var j = 0; j < enemys[i].move.on_popup.length; j++) {
 				enemys[i].move.on_popup[j](Field, i);
-			}
-		}
-	}
-}
-
-// ターン継続効果の確認(敵版)
-function enemy_turn_effect_check(is_turn_move) {
-	var enemys = GetNowBattleEnemys();
-	for (var i = 0; i < enemys.length; i++) {
-		for (var te = 0; te < enemys[i].turn_effect.length; te++) {
-			var turneff = enemys[i].turn_effect[te];
-			// 同一typeが複数存在し新しい方が重複不可なら最初の要素を消す
-			var duals = $.grep(enemys[i].turn_effect, function (e) {
-				return (e.type == turneff.type) && (!turneff.isdual);
-			});
-			if (duals.length >= 2) {
-				var ix = enemys[i].turn_effect.indexOf(duals[0]);
-				enemys[i].turn_effect.splice(ix, 1);
-				te = (ix <= te ? te - 1 : te);
-				continue;
-			}
-			if (turneff.lim_turn >= 0 && (!turneff._notfirst || is_turn_move)) {
-				// 発動
-				turneff.effect(Field, i, turneff, turneff.lim_turn == 0, is_turn_move, is_allkill());
-				turneff._notfirst = true;
-			}
-			if (turneff.lim_turn == 0) {
-				// 残りターンが0なら除外
-				enemys[i].turn_effect.splice(te, 1);
-				te--;
 			}
 		}
 	}

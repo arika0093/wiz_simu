@@ -115,6 +115,10 @@ function heal_ally(value, index) {
 		now.nowhp = Math.min(now.maxhp, now.nowhp + value);
 		return true;
 	}
+	if (now.nowhp <= 0) {
+		// 死んだら全効果を解除
+		now.turn_effect = [];
+	}
 	return false;
 }
 

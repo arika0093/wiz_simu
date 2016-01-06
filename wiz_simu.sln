@@ -53,6 +53,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "simulator", "simulator", "{
 		js\simulator\show.js = js\simulator\show.js
 		js\simulator\special.js = js\simulator\special.js
 		js\simulator\species.js = js\simulator\species.js
+		js\simulator\turneffect.js = js\simulator\turneffect.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "select", "select", "{068E2C1D-35BD-43A6-826C-B09E82790769}"

@@ -159,6 +159,10 @@ function poison(dm, t) {
 					effect: function (f, ei, teff, state, is_t, is_b) {
 						if (is_t && !is_b) {
 							e.nowhp = Math.max(e.nowhp - dmg, 0);
+							if (e.nowhp <= 0) {
+								// HPが0になったら敵スキルを全て解除
+								e.turn_effect = [];
+							}
 							fld.log_push("Enemy[" + (indx + 1) + "]: 毒(" + dmg + "ダメージ)");
 						}
 					},
@@ -210,7 +214,7 @@ function ss_enhance_own(p, t, _nolog) {
 				if (state == "first") {
 					f.Allys.Now[oi].ss_enhance = rate;
 				}
-				else if (state == "end") {
+				else if (state == "end" || state == "overlay") {
 					f.Allys.Now[oi].ss_enhance = 0;
 				}
 			},
@@ -260,7 +264,7 @@ function ss_statusup_all(up_arr, up_limit, t) {
 						nowtg.nowhp += teff.up_hp;
 						nowtg.atk += teff.up_atk;
 					}
-					else if (state == "end") {
+					else if (state == "end" || state == "overlay") {
 						nowtg.maxhp -= teff.up_hp;
 						nowtg.nowhp = Math.min(nowtg.nowhp, nowtg.maxhp);
 						nowtg.atk -= teff.up_atk;
