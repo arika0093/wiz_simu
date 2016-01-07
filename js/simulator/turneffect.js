@@ -104,3 +104,15 @@ function enemy_turn_effect_check(is_turn_move) {
 		}
 	}
 }
+
+// ターン継続効果の全解除
+function turneff_allbreak(teffs, overlay_call) {
+	while (teffs.length > 0) {
+		var teff = teffs[0];
+		// 除外時効果
+		if (overlay_call) {
+			teff.effect(Field, 0, teff, "overlay", false, false);
+		}
+		teffs.splice(0, 1);
+	}
+}

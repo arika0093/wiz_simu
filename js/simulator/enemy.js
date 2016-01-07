@@ -160,7 +160,7 @@ function get_enemy_move_skill(e) {
 	}
 	// 使用可能なスキルを抜き出す(countが未定義または0)
 	var uskils = $.grep(em, function (eskl) {
-		if (eskl.count === undefined || eskl.count <= 0) {
+		if (!eskl.count) {
 			return true;
 		} else {
 			// count残存が残ってる場合-1する
@@ -179,7 +179,7 @@ function get_enemy_move_skill(e) {
 	}
 	// count値をintervalの値にする
 	rst.count = rst.interval || 0;
-	return rst;
+	return rst.move;
 }
 
 // 敵出現時の先制攻撃処理を行う
@@ -188,7 +188,7 @@ function enemy_popup_proc(){
 	for (var i = 0; i < enemys.length; i++) {
 		if (enemys[i].move && enemys[i].move.on_popup) {
 			for (var j = 0; j < enemys[i].move.on_popup.length; j++) {
-				enemys[i].move.on_popup[j](Field, i);
+				enemys[i].move.on_popup[j].move(Field, i);
 			}
 		}
 	}

@@ -161,7 +161,7 @@ function poison(dm, t) {
 							e.nowhp = Math.max(e.nowhp - dmg, 0);
 							if (e.nowhp <= 0) {
 								// HPが0になったら敵スキルを全て解除
-								e.turn_effect = [];
+								turneff_allbreak(e.turn_effect, false);
 							}
 							fld.log_push("Enemy[" + (indx + 1) + "]: 毒(" + dmg + "ダメージ)");
 						}

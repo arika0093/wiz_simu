@@ -37,7 +37,7 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss)
 	enemy.flags.on_damage = (enemy.flags.on_damage ? enemy.flags.on_damage+1 : 1);
 	// HPが0ならターン効果を全て消す
 	if (enemy.nowhp <= 0) {
-		enemy.turn_effect = [];
+		turneff_allbreak(enemy.turn_effect, false);
 	}
 
 	// log
@@ -104,7 +104,7 @@ function damage_ally(dmg, index, neft_check) {
 	Field.log_push("Unit[" + (index + 1) + "]: " + dmg + "ダメージ(残: " + now.nowhp + "/" + now.maxhp + ")");
 	// HPが0なら全効果を消す
 	if (now.nowhp <= 0) {
-		now.turn_effect = [];
+		turneff_allbreak(now.turn_effect, true);
 	}
 }
 
@@ -117,7 +117,7 @@ function heal_ally(value, index) {
 	}
 	if (now.nowhp <= 0) {
 		// 死んだら全効果を解除
-		now.turn_effect = [];
+		turneff_allbreak(now.turn_effect, true);
 	}
 	return false;
 }

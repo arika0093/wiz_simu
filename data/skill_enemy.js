@@ -1,4 +1,16 @@
 // -----------------------------------
+// 基本
+// -----------------------------------
+// (内部用)Create enemy move object
+function m_create_enemy_move(f) {
+	return {
+		move: f,
+		interval: 0,
+		count: 0,
+	};
+}
+
+// -----------------------------------
 // 敵行動制御
 // -----------------------------------
 // 初回のみ行動
@@ -9,7 +21,6 @@ function m_enemy_once(e_skl) {
 // nターンに1回行動
 function m_enemy_nturn(e_skl, n) {
 	e_skl.interval = n;
-	e_skl.count = 0;
 	return e_skl;
 }
 
@@ -69,7 +80,7 @@ function _s_enemy_attack(fld, dmg, ei, ai) {
 // 普通の攻撃(不利属性相手への単発ダメージ, 攻撃対象数, 攻撃回数, 攻撃対象詳細)
 //   攻撃対象詳細: true: 連撃時攻撃対象を毎回変える / false: 変えない / func(): 条件指定
 function s_enemy_attack(dmg, tnum, atkn, tgtype) {
-	return function (fld, n, nows) {
+	return m_create_enemy_move(function (fld, n, nows) {
 		// ログ出力
 		Field.log_push("Enemy[" + (n + 1) + "]: " +
 			(atkn < fld.Allys.Deck.length ? tnum : "全") + "体" +
@@ -82,7 +93,7 @@ function s_enemy_attack(dmg, tnum, atkn, tgtype) {
 				_s_enemy_attack(fld, dmg * 2, n, tg[i][j]);
 			}
 		}
-	}
+	});
 }
 
 // -----------------------------------
@@ -126,7 +137,7 @@ function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f
 
 // 毒(効果値, 対象数, 継続ターン)
 function s_enemy_poison(d, tnum, t) {
-	return function (fld, n, is_counter) {
+	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 		s_enemy_abstate_attack(
 			fld, "毒(" + d + ")", "poison", t, tnum, n, is_counter, {
 				is_poison: true,
@@ -136,19 +147,19 @@ function s_enemy_poison(d, tnum, t) {
 						now.nowhp = Math.max(now.nowhp - d, 0);
 						if (now.nowhp <= 0) {
 							// 毒で死んだら全効果を解除
-							now.turn_effect = [];
+							turneff_allbreak(now.turn_effect, true);
 						}
 						f.log_push("Unit[" + (oi + 1) + "]: 毒(" + d + "ダメージ)");
 					}
 				},
 			}
 		);
-	}
+	});
 }
 
 // 弱体化(対象属性, 効果値(ダメージ2倍なら2.0), 対象数, 継続ターン)
 function s_enemy_attr_weaken(attr, rate, tnum, t) {
-	return function (fld, n, is_counter) {
+	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 		var wattr_str = "";
 		for (var i = 0; i < 5; i++) {
 			if (attr[i] > 0) {
@@ -166,48 +177,48 @@ function s_enemy_attr_weaken(attr, rate, tnum, t) {
 				},
 			}
 		);
-	}
+	});
 }
 
 // AS封印(対象数, 継続ターン)
 function s_enemy_as_sealed(tnum, t) {
-	return function (fld, n, is_counter) {
+	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 		s_enemy_abstate_attack(
 			fld, "AS封印", "as_sealed", t, tnum, n, is_counter, {
-				bef_answer: function(f, as) {
+				bef_answer: function (f, as) {
 					return as.isdefault === true;
 				}
 			}
 		);
-	}
+	});
 }
 
 // SS封印(対象数, 継続ターン)
 function s_enemy_ss_sealed(tnum, t) {
-	return function (fld, n, is_counter) {
+	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 		s_enemy_abstate_attack(
 			fld, "SS封印", "ss_sealed", t, tnum, n, is_counter, {
 				ss_disabled: true,
 			}
 		);
-	}
+	});
 }
 
 // 封印(対象数, 継続ターン)
 function s_enemy_all_sealed(tnum, t) {
-	return function (fld, n, is_counter) {
+	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 		s_enemy_abstate_attack(
 			fld, "封印", "all_sealed", t, tnum, n, false, {
-				bef_answer: function(f, as) {
+				bef_answer: function (f, as) {
 					return false;
 				},
-				bef_skillcounter: function(f, ai) {
+				bef_skillcounter: function (f, ai) {
 					return false;
 				},
 				ss_disabled: true,
 			}
 		);
-	}
+	});
 }
 
 
@@ -216,7 +227,7 @@ function s_enemy_all_sealed(tnum, t) {
 // -----------------------------------
 // スキル反射(単発ダメージ)
 function skill_counter(damage, t) {
-	return function(fld, n){
+	return m_create_enemy_move(function(fld, n){
 		var enemy = GetNowBattleEnemys(n);
 		Field.log_push("Enemy[" + (n + 1) + "]: スキル反射待機");
 		enemy.turn_effect.push({
@@ -232,12 +243,12 @@ function skill_counter(damage, t) {
 				damage_ally(damage, ai, true);
 			}
 		});
-	};
+	});
 }
 
 // 物理カウンター(単発ダメージ)
 function attack_counter(damage, t) {
-	return function (fld, n) {
+	return m_create_enemy_move(function (fld, n) {
 		var enemy = GetNowBattleEnemys(n);
 		Field.log_push("Enemy[" + (n + 1) + "]: 物理カウンター");
 		enemy.turn_effect.push({
@@ -253,12 +264,12 @@ function attack_counter(damage, t) {
 				damage_ally(damage, ai, true);
 			}
 		});
-	};
+	});
 }
 
 // ダメージに反応してあれこれする
 function damage_switch(cond, func) {
-	return function (fld, n) {
+	return m_create_enemy_move(function (fld, n) {
 		var enemy = GetNowBattleEnemys(n);
 		enemy.turn_effect.push({
 			desc: null,
@@ -270,7 +281,7 @@ function damage_switch(cond, func) {
 			cond: cond,
 			on_cond: func,
 		});
-	};
+	});
 }
 
 // -----------------------------------
@@ -278,7 +289,7 @@ function damage_switch(cond, func) {
 // -----------------------------------
 // ダメージブロック(自身)
 function damage_block_own(bl, t) {
-	return function (fld, n) {
+	return m_create_enemy_move(function (fld, n) {
 		var enemy = GetNowBattleEnemys(n);
 		Field.log_push("Enemy[" + (n + 1) + "]: ダメージブロック(" + bl + ")");
 		enemy.turn_effect.push({
@@ -298,22 +309,22 @@ function damage_block_own(bl, t) {
 				}
 			}
 		});
-	};
+	});
 }
 
 // ダメージブロック(全体)
 function damage_block_all(bl, t) {
-	return function (fld, n) {
+	return m_create_enemy_move(function (fld, n) {
 		var enemys = GetNowBattleEnemys();
 		for (var i = 0; i < enemys.length; i++) {
 			damage_block_own(bl, t)(fld, i);
 		}
-	};
+	});
 }
 
 // 鉄壁防御
 function impregnable(t) {
-	return function (fld, n) {
+	return m_create_enemy_move(function (fld, n) {
 		var enemy = GetNowBattleEnemys(n);
 		Field.log_push("Enemy[" + (n + 1) + "]: 鉄壁防御");
 		enemy.turn_effect.push({
@@ -332,7 +343,7 @@ function impregnable(t) {
 				return 1;
 			}
 		});
-	};
+	});
 }
 
 // -----------------------------------
@@ -340,13 +351,13 @@ function impregnable(t) {
 // -----------------------------------
 // 属性変化
 function attr_change(after) {
-	return function (fld, n) {
+	return m_create_enemy_move(function (fld, n) {
 		var e = GetNowBattleEnemys(n);
 		var bef = e.attr;
 		e.attr = after;
 		Field.log_push("Enemy[" + (n + 1) + "]: 属性変化("
 			+ fld.Constants.Attr[bef] + "→" + fld.Constants.Attr[after] + ")");
-	}
+	});
 }
 
 // -----------------------------------
@@ -354,19 +365,19 @@ function attr_change(after) {
 // -----------------------------------
 // チェイン解除
 function s_enemy_chain_break() {
-	return function (fld, n) {
+	return m_create_enemy_move(function (fld, n) {
 		if (fld.Status.chain_status <= 0) {
 			fld.Status.chain = 0;
 			Field.log_push("Enemy[" + (n + 1) + "]: チェイン解除");
 		} else {
 			Field.log_push("Enemy[" + (n + 1) + "]: チェイン解除(無効)");
 		}
-	}
+	});
 }
 
 // チェイン封印
 function s_enemy_chain_sealed(t) {
-	return function (fld, n) {
+	return m_create_enemy_move(function (fld, n) {
 		if (fld.Status.chain_status <= 0) {
 			fld.Status.chain_status = -1;
 			fld.Status.chainstat_turn = t;
@@ -374,7 +385,7 @@ function s_enemy_chain_sealed(t) {
 		} else {
 			Field.log_push("Enemy[" + (n + 1) + "]: チェイン封印(無効)");
 		}
-	}
+	});
 }
 
 // -----------------------------------
