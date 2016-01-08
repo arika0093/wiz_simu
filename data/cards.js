@@ -5132,492 +5132,448 @@ Cards = [{
 	},
 }, {
 	// -------------------------
-	// 水属性
+	// 水属性 (thanks @rinshandream)
 	// -------------------------
-	name: "凍てついた孤毒 フリーレ・ギフト",
-	cardno: 5053,
-	imageno: 6793,
-	hp: 3491,
-	atk: 2638,
+	name: "優しき神々の冷酷 アウラ・アマタ",
+	cardno: 4644,
+	imageno: 6109,
+	hp: 3162,
+	atk: 2839,
+	cost: 46,
+	attr: [1, -1],
+	species: [3],
+	awakes: [
+        Costdown(2),
+        Fastskill(1),
+        Statusup(200, 0),
+        Fastskill(1),
+        Statusup(0, 200),
+        Costdown(2),
+        Fastskill(1),
+        Panel_boost([0, 1, 0, 0, 0, ], 2),
+        Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+        Spec_statusup(0, 200, [3, ]),
+	],
+	as1: {
+		desc: "3チェインで水属性の味方の攻撃力をアップ/+50％",
+		proc: ChainEnhance(0.50, [0,1,0,0,0], 0.5),
+	},
+	ss1: {
+		desc: "3ターン全属性のダメージを25％軽減する",
+		turn: 5,
+		proc: null
+	},
+	islegend: true,
+	Lawake: [
+        Statusup(500, 0),
+        Statusup(0, 500),
+	],
+	as2: {
+		desc: "3チェインで水属性の味方の攻撃力をアップ/+70％",
+		proc: ChainEnhance(0.50, [0,1,0,0,0], 0.7),
+	},
+	ss2: {
+		desc: "3ターン全属性のダメージを50％軽減する",
+		turn: 9,
+		proc: null
+	},
+}, {
+	name: "虹色の恋模様 アーシア・ベネット",
+	cardno: 4469,
+	imageno: 6163,
+	hp: 3425,
+	atk: 2579,
+	cost: 48,
+	attr: [1, -1],
+	species: [9],
+	awakes: [
+        Panel_boost([0, 1, 0, 0, 0, ], 1),
+        Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+        Fastskill(1),
+        Panel_boost([0, 1, 0, 0, 0, ], 1),
+        Heal_afterbattle(10),
+        Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+        Panel_boost([0, 1, 0, 0, 0, ], 1),
+        Spec_statusup(200, 0, [9, ]),
+        Fastskill(2),
+        Spec_statusup(0, 200, [9, ]),
+	],
+	as1: {
+		desc: "水属性の味方の攻撃力をアップ、パネルの色が増す度さらにアップ(1色：+30％ / 2色：+50％ / 3色：+80％)",
+		proc: ChainPanelsEnhance(0.3, 0.5, 0.8, [0,1,0,0,0], 1),
+	},
+	ss1: {
+		desc: "3ターンの間、アンサースキル発動時間を10秒延長する",
+		turn: 5,
+		proc: null
+	},
+	islegend: true,
+	Lawake: [
+        Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+        Statusup(500, 0),
+	],
+	as2: {
+		desc: "水属性の味方の攻撃力をアップ、パネルの色が増す度さらにアップ(1色：+50％ / 2色：+70％ / 3色：+100％)",
+		proc: ChainPanelsEnhance(0.5, 0.7, 1.0, [0,1,0,0,0], 1),
+	},
+	ss2: {
+		desc: "解答を見破る",
+		turn: 6,
+		proc: null
+	},
+}, {
+	name: "神話に記された英雄 アスカ・イズモ",
+	cardno: 4683,
+	imageno: 6442,
+	hp: 2739,
+	atk: 2862,
+	cost: 42,
+	attr: [1, -1],
+	species: [8],
+	awakes: [
+        Statusup(200, 0),
+        Statusup(0, 200),
+        Statusup(0, 100),
+        Costdown(2),
+        Panel_boost([0, 1, 0, 0, 0, ], 1),
+        Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+        Panel_boost([0, 1, 0, 0, 0, ], 1),
+        Spec_statusup(0, 200, [8, ]),
+        Fastskill(2),
+        Spec_statusup(200, 0, [8, ]),
+	],
+	as1: {
+		desc: "火属性の敵単体へ特効ダメージ/400％",
+		proc: ChainAttrAttack(4.0, 1, [1,0,0,0,0]),
+	},
+	ss1: {
+		desc: "ジャンルパネルを水属性化",
+		turn: 5,
+		proc: null
+	},
+	islegend: true,
+	Lawake: [
+        Statusup(0, 400),
+        Statusup(400, 0),
+	],
+	as2: {
+		desc: "火属性の敵単体へ特効ダメージ/500％",
+		proc: ChainAttrAttack(5.0, 1, [1,0,0,0,0]),
+	},
+	ss2: {
+		desc: "ジャンルパネルを水属性化し、攻撃力アップの効果を付与(+20％)",
+		turn: 8,
+		proc: [panel_attackup(0.2)],
+	},
+}, {
+	name: "僕を見つめる瞳 アーシア・ベネット",
+	cardno: 4621,
+	imageno: 6345,
+	hp: 3328,
+	atk: 2713,
+	cost: 48,
+	attr: [1, -1],
+	species: [9],
+	awakes: [
+        Fastskill(1),
+        Panel_boost([0, 1, 0, 0, 0, ], 1),
+        Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+        Heal_afterbattle(10),
+        Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+        Attr_relief([0, 0, 1, 0, 0, ], 20),
+        Panel_boost([0, 1, 0, 0, 0, ], 1),
+        Fastskill(2),
+        Spec_statusup(200, 0, [9, ]),
+        Spec_statusup(0, 200, [9, ]),
+	],
+	as1: {
+		desc: "水属性の味方を回復/14％",
+		proc: Heal(0.14, [0,1,0,0,0], 1),
+	},
+	ss1: {
+		desc: "敵単体の攻撃ターンを1遅らせる",
+		turn: 6,
+		proc: null
+	},
+	islegend: true,
+	Lawake: [
+        Statusup(500, 0),
+        Statusup(0, 500),
+	],
+	as2: {
+		desc: "水属性の味方を回復/17％",
+		proc: Heal(0.17, [0,1,0,0,0], 1),
+	},
+	ss2: {
+		desc: "敵単体の攻撃ターンを2遅らせる",
+		turn: 7,
+		proc: null
+	},
+}, {
+	name: "撃砕の鉄腕 アトヤ＆リベルタス",
+	cardno: 4246,
+	imageno: 5952,
+	hp: 3134,
+	atk: 2327,
+	cost: 49,
+	attr: [1, -1],
+	species: [8],
+	awakes: [
+        Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+        Panel_boost([0, 1, 0, 0, 0, ], 1),
+        Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+        Fastskill(1),
+        Panel_boost([0, 1, 0, 0, 0, ], 1),
+        Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+        Fastskill(2),
+        Spec_statusup(200, 0, [8, ]),
+        Panel_boost([0, 1, 0, 0, 0, ], 1),
+        Spec_statusup(0, 200, [8, ]),
+	],
+	as1: {
+		desc: "5チェインでダメージアップ/450％",
+		proc: ChainAttack(4.5, 5),
+	},
+	ss1: {
+		desc: "ジャンルパネルにダメージ25％軽減の効果を付与",
+		turn: 6,
+		proc: null
+	},
+	islegend: true,
+	Lawake: [
+        NEFTJOD(30),
+        Statusup(500, 0),
+	],
+	as2: {
+		desc: "敵単体へのダメージアップ/450％",
+		proc: ChainAttack(4.5, 1),
+	},
+	ss2: {
+		desc: "ジャンルパネルにダメージ50％軽減の効果を付与",
+		turn: 10,
+		proc: null
+	},
+}, {
+	name: "輝ける星霜の剣 アネモネ・フラル",
+	cardno: 4594,
+	imageno: 6299,
+	hp: 3048,
+	atk: 2684,
+	cost: 45,
+	attr: [1, -1],
+	species: [8],
+	awakes: [
+        Costdown(2),
+        Panel_boost([0, 1, 0, 0, 0, ], 2),
+        Statusup(0, 200),
+        Fastskill(1),
+        NEFTJOD(30),
+        Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+        Spec_statusup(200, 0, [8, ]),
+        Fastskill(2),
+        Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+        Spec_statusup(0, 200, [8, ]),
+	],
+	as1: {
+		desc: "水属性の味方の攻撃力をアップ、戦士はさらにアップ(通常：+20％ / 水+種族：+45％)",
+		proc: [ChainEnhance(0.20, [0,1,0,0,0], 1), ChainSpecEnhance(0.45, [0,1,0,0,0], [8], 1)],
+	},
+	ss1: {
+		desc: "2ターン水属性の味方の攻撃力をアップ(+40％)",
+		turn: 6,
+		proc: [ss_enhance_all(0.4, 2, [0,1,0,0,0])], 
+	},
+	islegend: true,
+	Lawake: [
+        Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+        Statusup(0, 500),
+	],
+	as2: {
+		desc: "水属性の味方の攻撃力をアップ、戦士はさらにアップ(通常：+20％ / 水+種族：+65％)",
+		proc: [ChainEnhance(0.20, [0,1,0,0,0], 1), ChainSpecEnhance(0.65, [0,1,0,0,0], [8], 1)],
+	},
+	ss2: {
+		desc: "4ターン水属性の味方の攻撃力をアップ(+60％)",
+		turn: 9,
+		proc: [ss_enhance_all(0.6, 4, [0,1,0,0,0])], 
+	},
+}, {
+	name: "鋼鉄の管理者 アムベル・ケイ",
+	cardno: 4499,
+	imageno: 6224,
+	hp: 2350,
+	atk: 2942,
 	cost: 45,
 	attr: [1, -1],
 	species: [9],
 	awakes: [
-		Fastskill(1),
-		Attr_relief([1, 0, 1, 0, 0], 20),
-		Costdown(2),
-		Fastskill(1),
-		Statusup(200, 0),
-		Fastskill(1),
-		Panel_boost([0, 1, 0, 0, 0], 2),
-		Attr_statusup(100, 0, [0, 1, 0, 0, 0]),
-		Heal_afterbattle(10),
-		Spec_statusup(200, 0, [9]),
+        Fastskill(1),
+        Statusup(200, 0),
+        Panel_boost([0, 1, 0, 0, 0, ], 1),
+        Spec_statusup(0, 200, [9, ]),
+        Spec_statusup(200, 0, [9, ]),
+        Fastskill(1),
+        Spec_statusup(0, 200, [9, ]),
+        Panel_boost([0, 1, 0, 0, 0, ], 1),
+        Fastskill(1),
+        Panel_boost([0, 1, 0, 0, 0, ], 1),
 	],
 	as1: {
-		desc: "水属性の味方を回復/13％",
-		proc: Heal(0.13, [0, 1, 0, 0, 0]),
+		desc: "火属性の敵単体へ特効ダメージ/350％",
+		proc: ChainAttrAttack(3.5, 1, [1,0,0,0,0]),
 	},
 	ss1: {
-		desc: "4ターン敵全体に毒のダメージを与える(5000ダメージ)",
-		turn: 7,
-		proc: [poison(5000, 4)],
+		desc: "ジャンルパネルに攻撃力アップの効果を付与(+40％)",
+		turn: 6,
+		proc: [panel_attackup(0.4)],
 	},
 	islegend: true,
 	Lawake: [
-		Statusup(700, 0),
-		Statusup(0, 300),
+        Statusup(0, 200),
+        Statusup(700, 0),
 	],
 	as2: {
-		desc: "水属性の味方を回復/16％",
-		proc: Heal(0.16, [0, 1, 0, 0, 0]),
+		desc: "MAXHP20％を使い、火属性の敵単体へ特効ダメージ/500％",
+		proc: add_cond(ChainAttrAttack(5.0, 1, [1,0,0,0,0]), as_consume_own(0.20)),
 	},
 	ss2: {
-		desc: "5ターン敵全体に毒のダメージを与える(9999ダメージ)",
-		turn: 11,
-		proc: [poison(9999, 4)],
+		desc: "ジャンルパネルに攻撃力アップの効果を付与(+80％)",
+		turn: 9,
+		proc: [panel_attackup(0.8)],
 	},
 }, {
-    	name: "優しき神々の冷酷 アウラ・アマタ",
-    	cardno: 4644,
-    	imageno: 6109,
-    	hp: 3162,
-    	atk: 2839,
-    	cost: 46,
-    	attr: [1, -1],
-    	species: [3],
-    	awakes: [
-            Costdown(2),
-            Fastskill(1),
-            Statusup(200, 0),
-            Fastskill(1),
-            Statusup(0, 200),
-            Costdown(2),
-            Fastskill(1),
-            Panel_boost([0, 1, 0, 0, 0, ], 2),
-            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
-            Spec_statusup(0, 200, [3, ]),
-    	],
-    	as1: {
-    		desc: "3チェインで水属性の味方の攻撃力をアップ/+50％",
-    		proc: ChainEnhance(0.50, [0,1,0,0,0], 0.5),
-    	},
-    	ss1: {
-    		desc: "3ターン全属性のダメージを25％軽減する",
-    		turn: 5,
-    		proc: null
-    	},
-    	islegend: true,
-    	Lawake: [
-            Statusup(500, 0),
-            Statusup(0, 500),
-    	],
-    	as2: {
-    		desc: "3チェインで水属性の味方の攻撃力をアップ/+70％",
-    		proc: ChainEnhance(0.50, [0,1,0,0,0], 0.7),
-    	},
-    	ss2: {
-    		desc: "3ターン全属性のダメージを50％軽減する",
-    		turn: 9,
-    		proc: null
-    	},
-    }, {
-    	name: "虹色の恋模様 アーシア・ベネット",
-    	cardno: 4469,
-    	imageno: 6163,
-    	hp: 3425,
-    	atk: 2579,
-    	cost: 48,
-    	attr: [1, -1],
-    	species: [9],
-    	awakes: [
-            Panel_boost([0, 1, 0, 0, 0, ], 1),
-            Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
-            Fastskill(1),
-            Panel_boost([0, 1, 0, 0, 0, ], 1),
-            Heal_afterbattle(10),
-            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
-            Panel_boost([0, 1, 0, 0, 0, ], 1),
-            Spec_statusup(200, 0, [9, ]),
-            Fastskill(2),
-            Spec_statusup(0, 200, [9, ]),
-    	],
-    	as1: {
-    		desc: "水属性の味方の攻撃力をアップ、パネルの色が増す度さらにアップ(1色：+30％ / 2色：+50％ / 3色：+80％)",
-    		proc: ChainPanelsEnhance(0.3, 0.5, 0.8, [0,1,0,0,0], 1),
-    	},
-    	ss1: {
-    		desc: "3ターンの間、アンサースキル発動時間を10秒延長する",
-    		turn: 5,
-    		proc: null
-    	},
-    	islegend: true,
-    	Lawake: [
-            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
-            Statusup(500, 0),
-    	],
-    	as2: {
-    		desc: "水属性の味方の攻撃力をアップ、パネルの色が増す度さらにアップ(1色：+50％ / 2色：+70％ / 3色：+100％)",
-    		proc: ChainPanelsEnhance(0.5, 0.7, 1.0, [0,1,0,0,0], 1),
-    	},
-    	ss2: {
-    		desc: "解答を見破る",
-    		turn: 6,
-    		proc: null
-    	},
-    }, {
-    	name: "神話に記された英雄 アスカ・イズモ",
-    	cardno: 4683,
-    	imageno: 6442,
-    	hp: 2739,
-    	atk: 2862,
-    	cost: 42,
-    	attr: [1, -1],
-    	species: [8],
-    	awakes: [
-            Statusup(200, 0),
-            Statusup(0, 200),
-            Statusup(0, 100),
-            Costdown(2),
-            Panel_boost([0, 1, 0, 0, 0, ], 1),
-            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
-            Panel_boost([0, 1, 0, 0, 0, ], 1),
-            Spec_statusup(0, 200, [8, ]),
-            Fastskill(2),
-            Spec_statusup(200, 0, [8, ]),
-    	],
-    	as1: {
-    		desc: "火属性の敵単体へ特効ダメージ/400％",
-    		proc: ChainAttrAttack(4.0, 1, [1,0,0,0,0]),
-    	},
-    	ss1: {
-    		desc: "ジャンルパネルを水属性化",
-    		turn: 5,
-    		proc: null
-    	},
-    	islegend: true,
-    	Lawake: [
-            Statusup(0, 400),
-            Statusup(400, 0),
-    	],
-    	as2: {
-    		desc: "火属性の敵単体へ特効ダメージ/500％",
-    		proc: ChainAttrAttack(5.0, 1, [1,0,0,0,0]),
-    	},
-    	ss2: {
-    		desc: "ジャンルパネルを水属性化し、攻撃力アップの効果を付与(+20％)",
-    		turn: 8,
-    		proc: [panel_attackup(0.2)],
-    	},
-    }, {
-    	name: "僕を見つめる瞳 アーシア・ベネット",
-    	cardno: 4621,
-    	imageno: 6345,
-    	hp: 3328,
-    	atk: 2713,
-    	cost: 48,
-    	attr: [1, -1],
-    	species: [9],
-    	awakes: [
-            Fastskill(1),
-            Panel_boost([0, 1, 0, 0, 0, ], 1),
-            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
-            Heal_afterbattle(10),
-            Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
-            Attr_relief([0, 0, 1, 0, 0, ], 20),
-            Panel_boost([0, 1, 0, 0, 0, ], 1),
-            Fastskill(2),
-            Spec_statusup(200, 0, [9, ]),
-            Spec_statusup(0, 200, [9, ]),
-    	],
-    	as1: {
-    		desc: "水属性の味方を回復/14％",
-    		proc: Heal(0.14, [0,1,0,0,0], 1),
-    	},
-    	ss1: {
-    		desc: "敵単体の攻撃ターンを1遅らせる",
-    		turn: 6,
-    		proc: null
-    	},
-    	islegend: true,
-    	Lawake: [
-            Statusup(500, 0),
-            Statusup(0, 500),
-    	],
-    	as2: {
-    		desc: "水属性の味方を回復/17％",
-    		proc: Heal(0.17, [0,1,0,0,0], 1),
-    	},
-    	ss2: {
-    		desc: "敵単体の攻撃ターンを2遅らせる",
-    		turn: 7,
-    		proc: null
-    	},
-    }, {
-    	name: "撃砕の鉄腕 アトヤ＆リベルタス",
-    	cardno: 4246,
-    	imageno: 5952,
-    	hp: 3134,
-    	atk: 2327,
-    	cost: 49,
-    	attr: [1, -1],
-    	species: [8],
-    	awakes: [
-            Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
-            Panel_boost([0, 1, 0, 0, 0, ], 1),
-            Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
-            Fastskill(1),
-            Panel_boost([0, 1, 0, 0, 0, ], 1),
-            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
-            Fastskill(2),
-            Spec_statusup(200, 0, [8, ]),
-            Panel_boost([0, 1, 0, 0, 0, ], 1),
-            Spec_statusup(0, 200, [8, ]),
-    	],
-    	as1: {
-    		desc: "5チェインでダメージアップ/450％",
-    		proc: ChainAttack(4.5, 5),
-    	},
-    	ss1: {
-    		desc: "ジャンルパネルにダメージ25％軽減の効果を付与",
-    		turn: 6,
-    		proc: null
-    	},
-    	islegend: true,
-    	Lawake: [
-            NEFTJOD(30),
-            Statusup(500, 0),
-    	],
-    	as2: {
-    		desc: "敵単体へのダメージアップ/450％",
-    		proc: ChainAttack(4.5, 1),
-    	},
-    	ss2: {
-    		desc: "ジャンルパネルにダメージ50％軽減の効果を付与",
-    		turn: 10,
-    		proc: null
-    	},
-    }, {
-    	name: "輝ける星霜の剣 アネモネ・フラル",
-    	cardno: 4594,
-    	imageno: 6299,
-    	hp: 3048,
-    	atk: 2684,
-    	cost: 45,
-    	attr: [1, -1],
-    	species: [8],
-    	awakes: [
-            Costdown(2),
-            Panel_boost([0, 1, 0, 0, 0, ], 2),
-            Statusup(0, 200),
-            Fastskill(1),
-            NEFTJOD(30),
-            Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
-            Spec_statusup(200, 0, [8, ]),
-            Fastskill(2),
-            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
-            Spec_statusup(0, 200, [8, ]),
-    	],
-    	as1: {
-    		desc: "水属性の味方の攻撃力をアップ、戦士はさらにアップ(通常：+20％ / 水+種族：+45％)",
-    		proc: [ChainEnhance(0.20, [0,1,0,0,0], 1), ChainSpecEnhance(0.45, [0,1,0,0,0], [8], 1)],
-    	},
-    	ss1: {
-    		desc: "2ターン水属性の味方の攻撃力をアップ(+40％)",
-    		turn: 6,
-    		proc: [ss_enhance_all(0.4, 2, [0,1,0,0,0])], 
-    	},
-    	islegend: true,
-    	Lawake: [
-            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
-            Statusup(0, 500),
-    	],
-    	as2: {
-    		desc: "水属性の味方の攻撃力をアップ、戦士はさらにアップ(通常：+20％ / 水+種族：+65％)",
-    		proc: [ChainEnhance(0.20, [0,1,0,0,0], 1), ChainSpecEnhance(0.65, [0,1,0,0,0], [8], 1)],
-    	},
-    	ss2: {
-    		desc: "4ターン水属性の味方の攻撃力をアップ(+60％)",
-    		turn: 9,
-    		proc: [ss_enhance_all(0.6, 4, [0,1,0,0,0])], 
-    	},
-    }, {
-    	name: "鋼鉄の管理者 アムベル・ケイ",
-    	cardno: 4499,
-    	imageno: 6224,
-    	hp: 2350,
-    	atk: 2942,
-    	cost: 45,
-    	attr: [1, -1],
-    	species: [9],
-    	awakes: [
-            Fastskill(1),
-            Statusup(200, 0),
-            Panel_boost([0, 1, 0, 0, 0, ], 1),
-            Spec_statusup(0, 200, [9, ]),
-            Spec_statusup(200, 0, [9, ]),
-            Fastskill(1),
-            Spec_statusup(0, 200, [9, ]),
-            Panel_boost([0, 1, 0, 0, 0, ], 1),
-            Fastskill(1),
-            Panel_boost([0, 1, 0, 0, 0, ], 1),
-    	],
-    	as1: {
-    		desc: "火属性の敵単体へ特効ダメージ/350％",
-    		proc: ChainAttrAttack(3.5, 1, [1,0,0,0,0]),
-    	},
-    	ss1: {
-    		desc: "ジャンルパネルに攻撃力アップの効果を付与(+40％)",
-    		turn: 6,
-    		proc: [panel_attackup(0.4)],
-    	},
-    	islegend: true,
-    	Lawake: [
-            Statusup(0, 200),
-            Statusup(700, 0),
-    	],
-    	as2: {
-    		desc: "MAXHP20％を使い、火属性の敵単体へ特効ダメージ/500％",
-    		proc: add_cond(ChainAttrAttack(5.0, 1, [1,0,0,0,0]), as_consume_own(0.20)),
-    	},
-    	ss2: {
-    		desc: "ジャンルパネルに攻撃力アップの効果を付与(+80％)",
-    		turn: 9,
-    		proc: [panel_attackup(0.8)],
-    	},
-    }, {
-    	name: "残酷な世界の覚醒 アンジェリカ",
-    	cardno: 5111,
-    	imageno: 6862,
-    	hp: 4056,
-    	atk: 4132,
-    	cost: 43,
-    	attr: [1, -1],
-    	species: [1],
-    	awakes: [
-            Spec_statusup(0, 200, [1, ]),
-            Fastskill(1),
-            Statusup(0, 100),
-            Spec_statusup(200, 0, [1, ]),
-            Costdown(4),
-            Panel_boost([0, 1, 0, 0, 0, ], 1),
-            Panel_boost([0, 1, 0, 0, 0, ], 2),
-            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
-            Fastskill(2),
-            Spec_statusup(0, 200, [1, ]),
-    	],
-    	as1: {
-    		desc: "3チェインかつパネルが2色でダメージアップ、3色でさらにアップ(2色：400％ / 3色：550％)",
-    		proc: ChainPanelsAttack(1.0, 4.0, 5.5, 3),
-    	},
-    	ss1: {
-    		desc: "敵全体へ水属性のダメージ、さらに味方全体を回復(攻撃：200％ / 回復：50％)",
-    		turn: 6,
-    		proc: [ss_damage_all(2.0, [1]), ss_heal(0.5)],
-    	},
-    	islegend: true,
-    	Lawake: [
-            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
-            Statusup(0, 600),
-    	],
-    	as2: {
-    		desc: "3チェインかつパネルが2色でダメージアップ、3色でさらにアップ(2色：550％ / 3色：700％)",
-    		proc: ChainPanelsAttack(1.0, 5.5, 7.0, 3),
-    	},
-    	ss2: {
-    		desc: "敵全体へ水属性のダメージ、さらに味方全体を全回復(攻撃：200％)",
-    		turn: 9,
-    		proc: [ss_damage_all(2.0, [1]), ss_heal(1)],
-    	},
-    }, {
-    	name: "攻究魔法の最終形 イズロム・ガドラ",
-    	cardno: 4850,
-    	imageno: 6585,
-    	hp: 2524,
-    	atk: 3132,
-    	cost: 41,
-    	attr: [1, -1],
-    	species: [9],
-    	awakes: [
-            Panel_boost([0, 1, 0, 0, 0, ], 1),
-            Fastskill(1),
-            Statusup(0, 200),
-            Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
-            Attr_relief([1, 0, 0, 0, 0, ], 10),
-            Fastskill(1),
-            Panel_boost([0, 1, 0, 0, 0, ], 1),
-            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
-            Spec_statusup(200, 0, [9, ]),
-            Fastskill(2),
-    	],
-    	as1: {
-    		desc: "5チェインでダメージアップ/450％",
-    		proc: ChainAttack(4.5, 5),
-    	},
-    	ss1: {
-    		desc: "敵単体へ水属性の5回連続ダメージ(計180％)",
-    		turn: 5,
-    		proc: [ss_damage_s(1.8, [1], 5)],
-    	},
-    	islegend: true,
-    	Lawake: [
-            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
-            Statusup(0, 500),
-    	],
-    	as2: {
-    		desc: "5チェインでダメージアップ/550％",
-    		proc: ChainAttack(5.5, 5),
-    	},
-    	ss2: {
-    		desc: "敵単体へ水属性の5回連続ダメージ(計380％)",
-    		turn: 8,
-    		proc: [ss_damage_s(3.8, [1], 5)],
-    	},
-    }, {
-    	name: "決意の蒼覇剣 イツキ・マスグレイヴ",
-    	cardno: 4445,
-    	imageno: 6139,
-    	hp: 2222,
-    	atk: 3288,
-    	cost: 40,
-    	attr: [1, -1],
-    	species: [8],
-    	awakes: [
-            Statusup(0, 400),
-            Statusup(400, 0),
-            Costdown(2),
-            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
-            Panel_boost([0, 1, 0, 0, 0, ], 1),
-            Panel_boost([0, 1, 0, 0, 0, ], 1),
-            Heal_afterbattle(10),
-            Fastskill(2),
-            Spec_statusup(0, 200, [8, ]),
-            Spec_statusup(200, 0, [8, ]),
-    	],
-    	as1: {
-    		desc: "3チェインで敵単体を3回連続攻撃、リーダー時さらにアップ(通常：計300％ / リーダー時：計350％)",
-    		proc: [ChainDualAttack(3.0, 3, 3), add_cond(ChainDualAttack(3.5, 3, 3), when_leader())],
-    	},
-    	ss1: {
-    		desc: "ジャンルパネルを水属性化",
-    		turn: 5,
-    		proc: null
-    	},
-    	islegend: true,
-    	Lawake: [
-            Statusup(0, 500),
-            Statusup(500, 0),
-    	],
-    	as2: {
-    		desc: "3チェインで敵単体を3回連続攻撃、リーダー時さらにアップ(通常：計400％ / リーダー時：計450％)",
-    		proc: [ChainDualAttack(4.0, 3, 3), add_cond(ChainDualAttack(4.5, 3, 3), when_leader())],
-    	},
-    	ss2: {
-    		desc: "ジャンルパネルを水属性化し、チェインがプラス1の効果を付与",
-    		turn: 7,
-    		proc: [panel_chainplus(1)],
-    	},
-    }, {
+	name: "残酷な世界の覚醒 アンジェリカ",
+	cardno: 5111,
+	imageno: 6862,
+	hp: 4056,
+	atk: 4132,
+	cost: 43,
+	attr: [1, -1],
+	species: [1],
+	awakes: [
+        Spec_statusup(0, 200, [1, ]),
+        Fastskill(1),
+        Statusup(0, 100),
+        Spec_statusup(200, 0, [1, ]),
+        Costdown(4),
+        Panel_boost([0, 1, 0, 0, 0, ], 1),
+        Panel_boost([0, 1, 0, 0, 0, ], 2),
+        Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+        Fastskill(2),
+        Spec_statusup(0, 200, [1, ]),
+	],
+	as1: {
+		desc: "3チェインかつパネルが2色でダメージアップ、3色でさらにアップ(2色：400％ / 3色：550％)",
+		proc: ChainPanelsAttack(1.0, 4.0, 5.5, 3),
+	},
+	ss1: {
+		desc: "敵全体へ水属性のダメージ、さらに味方全体を回復(攻撃：200％ / 回復：50％)",
+		turn: 6,
+		proc: [ss_damage_all(2.0, [1]), ss_heal(0.5)],
+	},
+	islegend: true,
+	Lawake: [
+        Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+        Statusup(0, 600),
+	],
+	as2: {
+		desc: "3チェインかつパネルが2色でダメージアップ、3色でさらにアップ(2色：550％ / 3色：700％)",
+		proc: ChainPanelsAttack(1.0, 5.5, 7.0, 3),
+	},
+	ss2: {
+		desc: "敵全体へ水属性のダメージ、さらに味方全体を全回復(攻撃：200％)",
+		turn: 9,
+		proc: [ss_damage_all(2.0, [1]), ss_heal(1)],
+	},
+}, {
+	name: "攻究魔法の最終形 イズロム・ガドラ",
+	cardno: 4850,
+	imageno: 6585,
+	hp: 2524,
+	atk: 3132,
+	cost: 41,
+	attr: [1, -1],
+	species: [9],
+	awakes: [
+        Panel_boost([0, 1, 0, 0, 0, ], 1),
+        Fastskill(1),
+        Statusup(0, 200),
+        Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+        Attr_relief([1, 0, 0, 0, 0, ], 10),
+        Fastskill(1),
+        Panel_boost([0, 1, 0, 0, 0, ], 1),
+        Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+        Spec_statusup(200, 0, [9, ]),
+        Fastskill(2),
+	],
+	as1: {
+		desc: "5チェインでダメージアップ/450％",
+		proc: ChainAttack(4.5, 5),
+	},
+	ss1: {
+		desc: "敵単体へ水属性の5回連続ダメージ(計180％)",
+		turn: 5,
+		proc: [ss_damage_s(1.8, [1], 5)],
+	},
+	islegend: true,
+	Lawake: [
+        Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+        Statusup(0, 500),
+	],
+	as2: {
+		desc: "5チェインでダメージアップ/550％",
+		proc: ChainAttack(5.5, 5),
+	},
+	ss2: {
+		desc: "敵単体へ水属性の5回連続ダメージ(計380％)",
+		turn: 8,
+		proc: [ss_damage_s(3.8, [1], 5)],
+	},
+}, {
+	name: "決意の蒼覇剣 イツキ・マスグレイヴ",
+	cardno: 4445,
+	imageno: 6139,
+	hp: 2222,
+	atk: 3288,
+	cost: 40,
+	attr: [1, -1],
+	species: [8],
+	awakes: [
+        Statusup(0, 400),
+        Statusup(400, 0),
+        Costdown(2),
+        Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+        Panel_boost([0, 1, 0, 0, 0, ], 1),
+        Panel_boost([0, 1, 0, 0, 0, ], 1),
+        Heal_afterbattle(10),
+        Fastskill(2),
+        Spec_statusup(0, 200, [8, ]),
+        Spec_statusup(200, 0, [8, ]),
+	],
+	as1: {
+		desc: "3チェインで敵単体を3回連続攻撃、リーダー時さらにアップ(通常：計300％ / リーダー時：計350％)",
+		proc: [ChainDualAttack(3.0, 3, 3), add_cond(ChainDualAttack(3.5, 3, 3), when_leader())],
+	},
+	ss1: {
+		desc: "ジャンルパネルを水属性化",
+		turn: 5,
+		proc: null
+	},
+	islegend: true,
+	Lawake: [
+        Statusup(0, 500),
+        Statusup(500, 0),
+	],
+	as2: {
+		desc: "3チェインで敵単体を3回連続攻撃、リーダー時さらにアップ(通常：計400％ / リーダー時：計450％)",
+		proc: [ChainDualAttack(4.0, 3, 3), add_cond(ChainDualAttack(4.5, 3, 3), when_leader())],
+	},
+	ss2: {
+		desc: "ジャンルパネルを水属性化し、チェインがプラス1の効果を付与",
+		turn: 7,
+		proc: [panel_chainplus(1)],
+	},
+}, {
 	name: "激烈大魔法使い アリエッタ・トワ",
 	cardno: 4156,
 	imageno: 5900,
@@ -5837,6 +5793,50 @@ Cards = [{
 		proc: [ss_latest_copy()]
 	},
 }, {
+	name: "凍てついた孤毒 フリーレ・ギフト",
+	cardno: 5053,
+	imageno: 6793,
+	hp: 3491,
+	atk: 2638,
+	cost: 45,
+	attr: [1, -1],
+	species: [9],
+	awakes: [
+		Fastskill(1),
+		Attr_relief([1, 0, 1, 0, 0], 20),
+		Costdown(2),
+		Fastskill(1),
+		Statusup(200, 0),
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0], 2),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0]),
+		Heal_afterbattle(10),
+		Spec_statusup(200, 0, [9]),
+	],
+	as1: {
+		desc: "水属性の味方を回復/13％",
+		proc: Heal(0.13, [0, 1, 0, 0, 0]),
+	},
+	ss1: {
+		desc: "4ターン敵全体に毒のダメージを与える(5000ダメージ)",
+		turn: 7,
+		proc: [poison(5000, 4)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(700, 0),
+		Statusup(0, 300),
+	],
+	as2: {
+		desc: "水属性の味方を回復/16％",
+		proc: Heal(0.16, [0, 1, 0, 0, 0]),
+	},
+	ss2: {
+		desc: "5ターン敵全体に毒のダメージを与える(9999ダメージ)",
+		turn: 11,
+		proc: [poison(9999, 4)],
+	},
+}, {
 	name: "貫く心のド真中 マトイ・ナヒサコ",
 	cardno: 4130,
 	imageno: 5804,
@@ -5923,182 +5923,6 @@ Cards = [{
 		desc: "ジャンルパネルにチェインがプラス2の効果を付与",
 		turn: 5,
 		proc: [panel_chainplus(2)]
-	},
-}, {
-	name: "海風流るる焔々と セイ＆スオウ",
-	cardno: 5064,
-	imageno: 6804,
-	hp: 2650,
-	atk: 3323,
-	cost: 45,
-	attr: [1, 0],
-	species: [1],
-	awakes: [
-		Panel_boost([0, 1, 0, 0, 0], 1),
-		Fastskill(1),
-		Spec_statusup(0, 200, [1]),
-		NEFTJOD(30),
-		Attr_statusup(0, 200, [1, 1, 0, 0, 0]),
-		Panel_boost([0, 1, 0, 0, 0], 2),
-		Fastskill(2),
-		Panel_boost([0, 1, 0, 0, 0], 2),
-		Attr_statusup(200, 0, [1, 1, 0, 0, 0]),
-		Spec_statusup(200, 0, [1]),
-	],
-	as1: {
-		desc: "10チェインでダメージアップ(700％)",
-		proc: ChainAttack(7.0, 10)
-	},
-	ss1: {
-		desc: "味方全体のMAXHPの50%を使い敵単体へ水属性ダメージ(240%×味方数)",
-		turn: 6,
-		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.5), [1], 1)]
-	},
-	islegend: true,
-	Lawake: [
-		Statusup(500, 0),
-		Statusup(0, 500),
-	],
-	as2: {
-		desc: "10チェインでダメージアップ(800％)",
-		proc: ChainAttack(8.0, 10)
-	},
-	ss2: {
-		desc: "味方全体のMAXHPの50%を使い敵単体へダメージ(300%×味方数)",
-		turn: 8,
-		proc: [ss_damage_s(ss_consume_all_cond(3.0, 0.5), [1], 1)]
-	},
-}, {
-	name: "誅戮の告別者 ハクア・デスサイス",
-	cardno: 3980,
-	imageno: 5678,
-	hp: 2856,
-	atk: 1654,
-	cost: 47,
-	attr: [1, 2],
-	species: [8],
-	awakes: [
-		Attr_statusup(100, 0, [0, 1, 1, 0, 0]),
-		Attr_statusup(0, 100, [0, 1, 1, 0, 0]),
-		Statusup(0, 200),
-		Panel_boost([0, 1, 0, 0, 0], 2),
-		Attr_statusup(200, 0, [0, 1, 1, 0, 0]),
-		Fastskill(1),
-		Attr_statusup(0, 200, [0, 1, 1, 0, 0]),
-		Fastskill(2),
-		NEFTJOD(30),
-		Panel_boost([0, 1, 0, 0, 0], 2),
-	],
-	as1: {
-		desc: "3チェインで水・雷属性の味方の攻撃力をアップ、戦士は更にアップ(30%/60%)",
-		proc: [ChainEnhance(0.3, [0,1,1,0,0], 3), ChainSpecEnhance(0.3, [0,1,1,0,0], [8], 3),]
-	},
-	ss1: {
-		desc: "2ターン水・雷属性の味方の攻撃力をアップ(40%)",
-		turn: 5,
-		proc: [ss_enhance_all(0.4, 2, [0,1,1,0,0])]
-	},
-	islegend: true,
-	Lawake: [
-		Statusup(500, 0),
-		Statusup(0, 500),
-	],
-	as2: {
-		desc: "3チェインで水・雷属性の味方の攻撃をアップ、戦士は更にアップ(40%/80%)",
-		proc: [ChainEnhance(0.4, [0,1,1,0,0], 3), ChainSpecEnhance(0.8, [0,1,1,0,0], [8], 3),]
-	},
-	ss2: {
-		desc: "4ターン水・雷属性の味方の攻撃力をアップ(60%)",
-		turn: 6,
-		proc: [ss_enhance_all(0.6, 4, [0, 1, 1, 0, 0])]
-	},
-}, {
-	name: "想いを告げるロンドンの夜 工藤新一",
-	cardno: 5240,
-	imageno: 6935,
-	hp: 2001,
-	atk: 4001,
-	cost: 45,
-	attr: [1, 2],
-	species: [8],
-	awakes: [
-		Attr_statusup(100, 0, [0, 1, 1, 0, 0]),
-		Attr_statusup(0, 100, [0, 1, 1, 0, 0]),
-		Statusup(0, 200),
-		Panel_boost([0, 1, 0, 0, 0], 2),
-		Attr_statusup(200, 0, [0, 1, 1, 0, 0]),
-		Fastskill(1),
-		Attr_statusup(0, 200, [0, 1, 1, 0, 0]),
-		Fastskill(2),
-		NEFTJOD(30),
-		Panel_boost([0, 1, 0, 0, 0], 2),
-	],
-	as1: {
-		desc: "7チェインでダメージアップ(550%)",
-		proc: ChainAttack(5.5, 7)
-	},
-	ss1: {
-		desc: "ジャンルパネルを水・雷属性化",
-		turn: 3,
-		proc: null
-	},
-	islegend: true,
-	Lawake: [
-		Statusup(500, 0),
-		Statusup(0, 500),
-	],
-	as2: {
-		desc: "7チェインでダメージアップ(650%)",
-		proc: ChainAttack(6.5, 7)
-	},
-	ss2: {
-		desc: "ジャンルパネルを水・雷属性化し、攻撃力アップの効果を付与(50%)",
-		turn: 6,
-		proc: [panel_attackup(0.5)]
-	},
-}, {
-	name: "黄昏の空戦記 ディートリヒ・ベルク",
-	cardno: 5443,
-	imageno: 7097,
-	hp: 2001,
-	atk: 4001,
-	cost: 45,
-	attr: [1, 2],
-	species: [8],
-	awakes: [
-		Fastskill(1),
-		Panel_boost([0, 1, 0, 0, 0], 2),
-		Attr_statusup(0, 100, [0, 1, 1, 0, 0]),
-		NEFTJOD(30),
-		Statusup(0, 200),
-		Attr_statusup(100, 0, [0, 1, 1, 0, 0]),
-		Attr_relief([0,0,1,0,0], 20),
-		Fastskill(2),
-		Attr_statusup(200, 0, [0, 1, 1, 0, 0]),
-		Attr_statusup(0, 200, [0, 1, 1, 0, 0]),
-	],
-	as1: {
-		desc: "6チェインで敵単体を3回連続攻撃(400％)",
-		proc: ChainDualAttack(4, 6, 3)
-	},
-	ss1: {
-		desc: "敵全体へ雷属性のダメージ(300%)、さらに水属性の敵には特攻ダメージ(500%)",
-		turn: 6,
-		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 5.0, 2.0), [1])]
-	},
-	islegend: true,
-	Lawake: [
-		Attr_statusup(0, 100, [0, 1, 1, 0, 0]),
-		Statusup(0, 500),
-	],
-	as2: {
-		desc: "6チェインで敵単体を3回連続攻撃(500％)",
-		proc: ChainDualAttack(5, 6, 3)
-	},
-	ss2: {
-		desc: "敵全体へ雷属性のダメージ(300%)、さらに水属性の敵には特攻ダメージ(900%)",
-		turn: 8,
-		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 9.0, 2.0), [1])]
 	},
 }, {
 	name: "開かれた夏への扉 ヤチヨ＆アッカ",
@@ -6236,50 +6060,6 @@ Cards = [{
 		proc: [ss_ratiodamage_all(0.25)],
 	},
 }, {
-	name: "侠宴の覇者 ドゥーガ・ザムンタール",
-	cardno: 5368,
-	imageno: 7209,
-	hp: 2279,
-	atk: 3101,
-	cost: 42,
-	attr: [2, -1],
-	species: [9],
-	awakes: [
-		Statusup(0, 200),
-		Fastskill(1),
-		Costdown(2),
-		NEFTJOD(30),
-		Statusup(0, 200),
-		Panel_boost([0, 0, 1, 0, 0], 2),
-		Fastskill(2),
-		Attr_statusup(100, 0, [0, 0, 1, 0, 0]),
-		Spec_statusup(0, 200, [9]),
-		Attr_statusup(0, 100, [0, 0, 1, 0, 0]),
-	],
-	as1: {
-		desc: "5チェインで敵単体を5回連続攻撃(400%)",
-		proc: ChainDualAttack(4.0, 5, 5),
-	},
-	ss1: {
-		desc: "3ターン自分の攻撃力をアップ(150%)",
-		turn: 7,
-		proc: [ss_enhance_own(1.5, 3)],
-	},
-	islegend: true,
-	Lawake: [
-		Attr_statusup(0, 100, [0, 0, 1, 0, 0]),
-		Statusup(0, 300),
-	],
-	as2: {
-		desc: "5チェインで敵単体を5回連続攻撃(500%)",
-		proc: ChainDualAttack(5.0, 5, 5),
-	},
-	ss2: {
-		desc: "4ターン自分の攻撃力をアップ。毒状態の時、さらに自分の攻撃力をアップ(200%/1200%)",
-		turn: 9,
-		proc: [ss_enhance_own(ss_is_poison_own(12, 2), 4)],
-	},
-}, {
 	name: "継承と雷霆の レナ・イラプション",
 	cardno: 4700,
 	imageno: 6370,
@@ -6412,93 +6192,48 @@ Cards = [{
 		proc: [ss_skillboost(3)]
 	},
 }, {
-		name: "幻想に共鳴するメロディ 初音ミク",
-		cardno: 4880,
-		imageno: 6633,
-		hp: 2754,
-		atk: 2649,
-		cost: 48,
-		attr: [2, 0],
-		species: [8],
-		awakes: [
-			Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
-			Fastskill(1),
-			Attr_statusup(100, 0, [1, 0, 1, 0, 0, ]),
-			Panel_boost([0, 0, 1, 0, 0, ], 1),
-			Attr_relief([0, 1, 0, 0, 0, ], 20),
-			Attr_statusup(100, 0, [1, 0, 1, 0, 0, ]),
-			Fastskill(2),
-			NEFTJOD(30),
-			Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
-			Panel_boost([0, 0, 1, 0, 0, ], 2),
-		],
-		as1: {
-			desc: "5チェインでダメージアップ/450％",
-			proc: ChainAttack(4.5, 5)
-		},
-		ss1: {
-			desc: "味方全体の攻撃力とHPを500アップ(上限値：2000)",
-			turn: 5,
-			proc: [ss_statusup_all([500,500], [2000,2000], -1)]
-		},
-		islegend: true,
-		Lawake: [
-			Statusup(500, 0),
-			Statusup(0, 500),
-		],
-		as2: {
-			desc: "5チェインでダメージアップ/550％",
-			proc: ChainAttack(5.5, 5)
-		},
-		ss2: {
-			desc: "味方全体の攻撃力とHPを1000アップ(上限値：2000)",
-			turn: 8,
-			proc: [ss_statusup_all([1000,1000], [2000,2000], -1)]
-		},
-	}, {
-	name: "牡丹微睡む夕月夜 ミコト・ウタヨミ",
-	cardno: 5061,
-	imageno: 6801,
-	hp: 2241,
-	atk: 3834,
-	cost: 46,
-	islegend: true,
-	attr: [2, 1],
-	species: [1],
+	name: "幻想に共鳴するメロディ 初音ミク",
+	cardno: 4880,
+	imageno: 6633,
+	hp: 2754,
+	atk: 2649,
+	cost: 48,
+	attr: [2, 0],
+	species: [8],
 	awakes: [
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
 		Fastskill(1),
-		{ /* 経験値取得量アップⅠ */ },
-		Attr_statusup(0, 200, [0, 1, 1, 0, 0]),
-		Panel_boost([0, 0, 1, 0, 0], 1),
-		NEFTJOD(30),
-		Spec_statusup(0, 200, [1]),
-		Panel_boost([0, 0, 1, 0, 0], 2),
-		Attr_statusup(200, 0, [0, 1, 1, 0, 0]),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Attr_relief([0, 1, 0, 0, 0, ], 20),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0, ]),
 		Fastskill(2),
-		Spec_statusup(200, 0, [1]),
-	],
-	Lawake: [
-		Statusup(300, 0),
-		Statusup(0, 700),
 		NEFTJOD(30),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
 	],
 	as1: {
-		desc: "5チェインで敵単体を3回連続攻撃(450%)",
-		proc: ChainDualAttack(4.5, 5, 3)
+		desc: "5チェインでダメージアップ/450％",
+		proc: ChainAttack(4.5, 5)
 	},
 	ss1: {
-		desc: "敵全体へ雷属性のダメージ(300%)、さらに水属性の敵には特攻ダメージ(500%)",
-		turn: 6,
-		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 5.0, 2.0), [2])]
+		desc: "味方全体の攻撃力とHPを500アップ(上限値：2000)",
+		turn: 5,
+		proc: [ss_statusup_all([500,500], [2000,2000], -1)]
 	},
+	islegend: true,
+	Lawake: [
+		Statusup(500, 0),
+		Statusup(0, 500),
+	],
 	as2: {
-		desc: "5チェインで敵単体を3回連続攻撃(550%)",
-		proc: ChainDualAttack(5.5, 5, 3)
+		desc: "5チェインでダメージアップ/550％",
+		proc: ChainAttack(5.5, 5)
 	},
 	ss2: {
-		desc: "敵全体へ雷属性のダメージ(300%)、さらに水属性の敵には特攻ダメージ(900%)",
-		turn: 9,
-		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 9.0, 2.0), [2])]
+		desc: "味方全体の攻撃力とHPを1000アップ(上限値：2000)",
+		turn: 8,
+		proc: [ss_statusup_all([1000,1000], [2000,2000], -1)]
 	},
 }, {
 	name: "夢を描く箒星 ソフィ・ハーネット",
@@ -6633,50 +6368,148 @@ Cards = [{
 		proc: [ss_skillcounter(2, 5)]
 	},
 }, {
-	name: "☆夜明けの巫女☆ キシャラ・オロル",
-	cardno: 5449,
-	imageno: 7103,
-	hp: 2208,
-	atk: 3801,
-	cost: 45,
-	attr: [2, 3],
-	species: [9],
+	// -------------------------
+	// 抜け補完: 2015GW
+	// -------------------------
+	name: "誅戮の告別者 ハクア・デスサイス",
+	cardno: 3980,
+	imageno: 5678,
+	hp: 2856,
+	atk: 1654,
+	cost: 47,
+	attr: [1, 2],
+	species: [8],
 	awakes: [
-		Panel_boost([0, 0, 1, 0, 0], 2),
-		Attr_statusup(100, 0, [0, 0, 1, 0, 0]),
-		Fastskill(1),
-		NEFTJOD(30),
+		Attr_statusup(100, 0, [0, 1, 1, 0, 0]),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0]),
 		Statusup(0, 200),
-		Attr_statusup(0, 100, [0, 0, 1, 0, 0]),
-		Attr_relief([1, 0, 0, 0, 0, ], 20),
-		Attr_statusup(200, 0, [0, 0, 1, 0, 0]),
+		Panel_boost([0, 1, 0, 0, 0], 2),
+		Attr_statusup(200, 0, [0, 1, 1, 0, 0]),
+		Fastskill(1),
+		Attr_statusup(0, 200, [0, 1, 1, 0, 0]),
 		Fastskill(2),
-		Attr_statusup(0, 200, [0, 0, 1, 0, 0]),
+		NEFTJOD(30),
+		Panel_boost([0, 1, 0, 0, 0], 2),
 	],
 	as1: {
-		desc: "4チェインで水属性の敵単体へ特攻ダメージ/600％",
-		proc: ChainAttrAttack(6, 4, [0,1,0,0,0])
+		desc: "3チェインで水・雷属性の味方の攻撃力をアップ、戦士は更にアップ(30%/60%)",
+		proc: [ChainEnhance(0.3, [0, 1, 1, 0, 0], 3), ChainSpecEnhance(0.3, [0, 1, 1, 0, 0], [8], 3), ]
 	},
 	ss1: {
-		desc: "敵単体へ雷・光属性の5回連続ダメージ(180%)",
+		desc: "2ターン水・雷属性の味方の攻撃力をアップ(40%)",
 		turn: 5,
-		proc: [ss_damage_s(1.8, [2,3], 5)]
+		proc: [ss_enhance_all(0.4, 2, [0, 1, 1, 0, 0])]
 	},
 	islegend: true,
 	Lawake: [
-		Attr_statusup(0, 100, [0, 0, 1, 0, 0]),
+		Statusup(500, 0),
 		Statusup(0, 500),
 	],
 	as2: {
-		desc: "4チェインで水属性の敵単体へ特攻ダメージ/700％",
-		proc: ChainAttrAttack(7, 4, [0,1,0,0,0])
+		desc: "3チェインで水・雷属性の味方の攻撃をアップ、戦士は更にアップ(40%/80%)",
+		proc: [ChainEnhance(0.4, [0, 1, 1, 0, 0], 3), ChainSpecEnhance(0.8, [0, 1, 1, 0, 0], [8], 3), ]
 	},
 	ss2: {
-		desc: "敵単体へ雷・光属性の5回連続ダメージ(380%)、5チェインを消費しさらにダメージアップ(720%)",
-		turn: 8,
-		proc: [ss_damage_s(ss_chain_cost(5, 7.2, 3.8), [2, 3], 5)]
+		desc: "4ターン水・雷属性の味方の攻撃力をアップ(60%)",
+		turn: 6,
+		proc: [ss_enhance_all(0.6, 4, [0, 1, 1, 0, 0])]
 	},
 }, {
+	// -------------------------
+	// 追加: 八百万神秘譚Ⅱ
+	// -------------------------
+	name: "牡丹微睡む夕月夜 ミコト・ウタヨミ",
+	cardno: 5061,
+	imageno: 6801,
+	hp: 2241,
+	atk: 3834,
+	cost: 46,
+	islegend: true,
+	attr: [2, 1],
+	species: [1],
+	awakes: [
+		Fastskill(1),
+		{ /* 経験値取得量アップⅠ */ },
+		Attr_statusup(0, 200, [0, 1, 1, 0, 0]),
+		Panel_boost([0, 0, 1, 0, 0], 1),
+		NEFTJOD(30),
+		Spec_statusup(0, 200, [1]),
+		Panel_boost([0, 0, 1, 0, 0], 2),
+		Attr_statusup(200, 0, [0, 1, 1, 0, 0]),
+		Fastskill(2),
+		Spec_statusup(200, 0, [1]),
+	],
+	Lawake: [
+		Statusup(300, 0),
+		Statusup(0, 700),
+		NEFTJOD(30),
+	],
+	as1: {
+		desc: "5チェインで敵単体を3回連続攻撃(450%)",
+		proc: ChainDualAttack(4.5, 5, 3)
+	},
+	ss1: {
+		desc: "敵全体へ雷属性のダメージ(300%)、さらに水属性の敵には特攻ダメージ(500%)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 5.0, 2.0), [2])]
+	},
+	as2: {
+		desc: "5チェインで敵単体を3回連続攻撃(550%)",
+		proc: ChainDualAttack(5.5, 5, 3)
+	},
+	ss2: {
+		desc: "敵全体へ雷属性のダメージ(300%)、さらに水属性の敵には特攻ダメージ(900%)",
+		turn: 9,
+		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 9.0, 2.0), [2])]
+	},
+}, {
+	name: "海風流るる焔々と セイ＆スオウ",
+	cardno: 5064,
+	imageno: 6804,
+	hp: 2650,
+	atk: 3323,
+	cost: 45,
+	attr: [1, 0],
+	species: [1],
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0], 1),
+		Fastskill(1),
+		Spec_statusup(0, 200, [1]),
+		NEFTJOD(30),
+		Attr_statusup(0, 200, [1, 1, 0, 0, 0]),
+		Panel_boost([0, 1, 0, 0, 0], 2),
+		Fastskill(2),
+		Panel_boost([0, 1, 0, 0, 0], 2),
+		Attr_statusup(200, 0, [1, 1, 0, 0, 0]),
+		Spec_statusup(200, 0, [1]),
+	],
+	as1: {
+		desc: "10チェインでダメージアップ(700％)",
+		proc: ChainAttack(7.0, 10)
+	},
+	ss1: {
+		desc: "味方全体のMAXHPの50%を使い敵単体へ水属性ダメージ(240%×味方数)",
+		turn: 6,
+		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.5), [1], 1)]
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(500, 0),
+		Statusup(0, 500),
+	],
+	as2: {
+		desc: "10チェインでダメージアップ(800％)",
+		proc: ChainAttack(8.0, 10)
+	},
+	ss2: {
+		desc: "味方全体のMAXHPの50%を使い敵単体へダメージ(300%×味方数)",
+		turn: 8,
+		proc: [ss_damage_s(ss_consume_all_cond(3.0, 0.5), [1], 1)]
+	},
+}, {
+	// -------------------------
+	// 追加: 天界のロストエデン
+	// -------------------------
 	name: "悲劇の螺旋 サッド・アルドベリク",
 	cardno: 5159,
 	imageno: 6902,
@@ -6703,7 +6536,7 @@ Cards = [{
 	ss1: {
 		desc: "味方のMAXHP50%を使い、敵全体へ雷属性のダメージ(200%)、さらに水属性の敵には特攻ダメージ(500%)",
 		turn: 6,
-		proc: [ss_damage_all(special_attr([0,1,0,0,0], 5.0, 2.0), [2]), ss_consume_all(0.5)]
+		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 5.0, 2.0), [2]), ss_consume_all(0.5)]
 	},
 	islegend: true,
 	Lawake: [
@@ -6717,7 +6550,54 @@ Cards = [{
 	ss2: {
 		desc: "味方のMAXHP50%を使い、敵全体へ雷属性のダメージ(200%)、さらに水属性の敵には特攻ダメージ(900%)",
 		turn: 9,
-		proc: [ss_damage_all(special_attr([0,1,0,0,0], 9.0, 2.0), [2]), ss_consume_all(0.5)]
+		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 9.0, 2.0), [2]), ss_consume_all(0.5)]
+	},
+}, {
+	// -------------------------
+	// 追加: コナンコラボ
+	// -------------------------
+	name: "想いを告げるロンドンの夜 工藤新一",
+	cardno: 5240,
+	imageno: 6935,
+	hp: 2001,
+	atk: 4001,
+	cost: 45,
+	attr: [1, 2],
+	species: [8],
+	awakes: [
+		Attr_statusup(100, 0, [0, 1, 1, 0, 0]),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0]),
+		Statusup(0, 200),
+		Panel_boost([0, 1, 0, 0, 0], 2),
+		Attr_statusup(200, 0, [0, 1, 1, 0, 0]),
+		Fastskill(1),
+		Attr_statusup(0, 200, [0, 1, 1, 0, 0]),
+		Fastskill(2),
+		NEFTJOD(30),
+		Panel_boost([0, 1, 0, 0, 0], 2),
+	],
+	as1: {
+		desc: "7チェインでダメージアップ(550%)",
+		proc: ChainAttack(5.5, 7)
+	},
+	ss1: {
+		desc: "ジャンルパネルを水・雷属性化",
+		turn: 3,
+		proc: null
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(500, 0),
+		Statusup(0, 500),
+	],
+	as2: {
+		desc: "7チェインでダメージアップ(650%)",
+		proc: ChainAttack(6.5, 7)
+	},
+	ss2: {
+		desc: "ジャンルパネルを水・雷属性化し、攻撃力アップの効果を付与(50%)",
+		turn: 6,
+		proc: [panel_attackup(0.5)]
 	},
 }, {
 	name: "組織の男 コードネーム:ジン",
@@ -6762,5 +6642,283 @@ Cards = [{
 		desc: "味方全体のMAXHPの80%を使い敵全体へダメージ(160%×人数)",
 		turn: 10,
 		proc: [ss_damage_all(ss_consume_all_cond(1.6, 0.8), [2])],
+	},
+}, {
+	// -------------------------
+	// 追加: 2015X-masギルマス
+	// -------------------------
+	name: "侠宴の覇者 ドゥーガ・ザムンタール",
+	cardno: 5368,
+	imageno: 7209,
+	hp: 2279,
+	atk: 3101,
+	cost: 42,
+	attr: [2, -1],
+	species: [9],
+	awakes: [
+		Statusup(0, 200),
+		Fastskill(1),
+		Costdown(2),
+		NEFTJOD(30),
+		Statusup(0, 200),
+		Panel_boost([0, 0, 1, 0, 0], 2),
+		Fastskill(2),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0]),
+		Spec_statusup(0, 200, [9]),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0]),
+	],
+	as1: {
+		desc: "5チェインで敵単体を5回連続攻撃(400%)",
+		proc: ChainDualAttack(4.0, 5, 5),
+	},
+	ss1: {
+		desc: "3ターン自分の攻撃力をアップ(150%)",
+		turn: 7,
+		proc: [ss_enhance_own(1.5, 3)],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0]),
+		Statusup(0, 300),
+	],
+	as2: {
+		desc: "5チェインで敵単体を5回連続攻撃(500%)",
+		proc: ChainDualAttack(5.0, 5, 5),
+	},
+	ss2: {
+		desc: "4ターン自分の攻撃力をアップ。毒状態の時、さらに自分の攻撃力をアップ(200%/1200%)",
+		turn: 9,
+		proc: [ss_enhance_own(ss_is_poison_own(12, 2), 4)],
+	},
+}, {
+	// -------------------------
+	// 追加: 2015クリスマス精霊
+	// -------------------------
+
+
+	// -------------------------
+	// 追加: 2015クリスマス聖夜精霊
+	// -------------------------
+	name: "いま花開く世界 シャロン・イェルグ",
+	cardno: 5362,
+	imageno: 7116,
+	hp: 2945,
+	atk: 3356,
+	cost: 47,
+	attr: [2, 3],
+	species: [3],
+	awakes: [
+		Attr_relief([0, 0, 0, 1, 1, ], 30),
+		Panel_boost([0, 0, 1, 0, 0], 2),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0]),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0], 2),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0]),
+		Heal_afterbattle(10),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0]),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "4チェインでダメージアップ(350％)、10チェインでさらにアップ(550%)",
+		proc: [ChainAttack(3.5, 4), ChainAttack(5.5, 10)]
+	},
+	ss1: {
+		desc: "5ターンの間スキルカウンター待機(300%)",
+		turn: 12,
+		proc: [ss_skillcounter(3, 5)]
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(500, 0),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0]),
+	],
+	as2: {
+		desc: "4チェインでダメージアップ(450％)、10チェインでさらにアップ(650%)",
+		proc: [ChainAttack(4.5, 4), ChainAttack(6.5, 10)]
+	},
+	ss2: {
+		desc: "5ターンの間スキルカウンター待機(400%)",
+		turn: 15,
+		proc: [ss_skillcounter(4, 5)]
+	},
+}, {
+	// -------------------------
+	// 追加: 2016正月精霊
+	// -------------------------
+	name: "黄昏の空戦記 ディートリヒ・ベルク",
+	cardno: 5443,
+	imageno: 7097,
+	hp: 2001,
+	atk: 4001,
+	cost: 45,
+	attr: [1, 2],
+	species: [8],
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0], 2),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0]),
+		NEFTJOD(30),
+		Statusup(0, 200),
+		Attr_statusup(100, 0, [0, 1, 1, 0, 0]),
+		Attr_relief([0, 0, 1, 0, 0], 20),
+		Fastskill(2),
+		Attr_statusup(200, 0, [0, 1, 1, 0, 0]),
+		Attr_statusup(0, 200, [0, 1, 1, 0, 0]),
+	],
+	as1: {
+		desc: "6チェインで敵単体を3回連続攻撃(400％)",
+		proc: ChainDualAttack(4, 6, 3)
+	},
+	ss1: {
+		desc: "敵全体へ雷属性のダメージ(300%)、さらに水属性の敵には特攻ダメージ(500%)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 5.0, 2.0), [1])]
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0]),
+		Statusup(0, 500),
+	],
+	as2: {
+		desc: "6チェインで敵単体を3回連続攻撃(500％)",
+		proc: ChainDualAttack(5, 6, 3)
+	},
+	ss2: {
+		desc: "敵全体へ雷属性のダメージ(300%)、さらに水属性の敵には特攻ダメージ(900%)",
+		turn: 8,
+		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 9.0, 2.0), [1])]
+	},
+}, {
+	name: "前代未聞の大奇術 マギカ・ルーシュ",
+	cardno: 5446,
+	imageno: 7100,
+	hp: 2701,
+	atk: 4651,
+	cost: 45,
+	attr: [1, -1],
+	species: [9],
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0], 2),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0]),
+		Fastskill(2),
+		Panel_boost([0, 1, 0, 0, 0], 2),
+		Attr_relief([0, 1, 0, 0, 0], 20),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0]),
+		NEFTJOD(30),
+		Attr_statusup(200, 0, [0, 1, 0, 0, 0]),
+		Attr_statusup(0, 200, [0, 1, 0, 0, 0]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "3チェインで火属性の敵単体へ特攻ダメージ(525％)",
+		proc: ChainAttrAttack(5.25, 3, [1,0,0,0,0])
+	},
+	ss1: {
+		desc: "5ターンの間スキルカウンター待機(300%)",
+		turn: 12,
+		proc: [ss_skillcounter(3, 5)]
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0]),
+	],
+	as2: {
+		desc: "3チェインで火属性の敵単体へ特攻ダメージ(625％)",
+		proc: ChainAttrAttack(6.25, 3, [1, 0, 0, 0, 0])
+	},
+	ss2: {
+		desc: "5ターンの間スキルカウンター待機(400%)",
+		turn: 15,
+		proc: [ss_skillcounter(4, 5)]
+	},
+}, {
+	name: "☆夜明けの巫女☆ キシャラ・オロル",
+	cardno: 5449,
+	imageno: 7103,
+	hp: 2208,
+	atk: 3801,
+	cost: 45,
+	attr: [2, 3],
+	species: [9],
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0], 2),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0]),
+		Attr_relief([1, 0, 0, 0, 0, ], 20),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0]),
+		Fastskill(2),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0]),
+	],
+	as1: {
+		desc: "4チェインで水属性の敵単体へ特攻ダメージ/600％",
+		proc: ChainAttrAttack(6, 4, [0,1,0,0,0])
+	},
+	ss1: {
+		desc: "敵単体へ雷・光属性の5回連続ダメージ(180%)",
+		turn: 5,
+		proc: [ss_damage_s(1.8, [2,3], 5)]
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0]),
+		Statusup(0, 500),
+	],
+	as2: {
+		desc: "4チェインで水属性の敵単体へ特攻ダメージ/700％",
+		proc: ChainAttrAttack(7, 4, [0,1,0,0,0])
+	},
+	ss2: {
+		desc: "敵単体へ雷・光属性の5回連続ダメージ(380%)、5チェインを消費しさらにダメージアップ(720%)",
+		turn: 8,
+		proc: [ss_damage_s(ss_chain_cost(5, 7.2, 3.8), [2, 3], 5)]
+	},
+}, {
+	name: "兄妹正月 クィントゥス＆レノックス",
+	cardno: 5452,
+	imageno: 7106,
+	hp: 2654,
+	atk: 3890,
+	cost: 44,
+	attr: [0, 2],
+	species: [2],
+	awakes: [
+		{ /* 経験値取得量アップⅠ */}, 
+		Panel_boost([1, 0, 0, 0, 0], 2),
+		Statusup(0, 200),
+		Statusup(200, 0),
+		NEFTJOD(30),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0]),
+		NEFTJOD(30),
+		Panel_boost([1, 0, 0, 0, 0], 2),
+		Fastskill(2),
+		Attr_statusup(0, 200, [1, 0, 1, 0, 0]),
+	],
+	as1: {
+		desc: "5チェインでダメージアップ(500％)",
+		proc: ChainAttack(5, 5)
+	},
+	ss1: {
+		desc: "敵全体へ火属性ダメージ(500%)、自身に1t封印",
+		turn: 3,
+		proc: [ss_damage_all(5, [0]), ss_allsealed_own(1)]
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(500, 0),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
+	],
+	as2: {
+		desc: "5チェインでダメージアップ(600％)",
+		proc: ChainAttack(6, 5)
+	},
+	ss2: {
+		desc: "敵全体へ火属性ダメージ(600%)、自身に1t封印",
+		turn: 5,
+		proc: [ss_damage_all(6, [0]), ss_allsealed_own(1)]
 	},
 }, ];

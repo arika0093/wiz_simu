@@ -66,6 +66,8 @@ function _s_enemy_attack(fld, dmg, ei, ai) {
 	var now = fld.Allys.Now[ai];
 	// 属性倍率
 	var rate = attr_magnification(e.attr, cd.attr[0]);
+	// 属性軽減取得
+	var relief = card_attr_relief(cd, now, e.attr);
 	// 攻撃前スキル(主に弱体化)確認
 	$.each(now.turn_effect, function (i, e) {
 		e.bef_damage ? rate = e.bef_damage(fld, rate) : false;
@@ -73,7 +75,7 @@ function _s_enemy_attack(fld, dmg, ei, ai) {
 	// 乱数
 	var rnd = damage_rand();
 	// 最終ダメ
-	var l_dmg = Math.floor(dmg * rnd * rate);
+	var l_dmg = Math.floor(dmg * (1 - relief) * rnd * rate);
 	damage_ally(l_dmg, ai, true);
 }
 
@@ -106,6 +108,7 @@ function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f
 	f_obj = f_obj || {};
 	// effect add
 	for (var i = 0; i < tg.length; i++) {
+		var logtext = "";
 		var now = fld.Allys.Now[tg[i]];
 		var eff_obj = $.extend(true, {}, {
 			desc: desc,
@@ -124,10 +127,17 @@ function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f
 		if (!is_abs_guard && !disable_guard) {
 			// Push
 			now.turn_effect.push(eff_obj);
-			fld.log_push("Enemy[" + (ei + 1) + "]: " + desc + "(" + turn + "t)(対象: Unit[" + (tg[i] + 1) + "])");
+			if (ei >= 0) {
+				logtext += "Enemy[" + (ei + 1) + "]: ";
+			}
+			logtext += desc + "(" + turn + "t)(対象: Unit[" + (tg[i] + 1) + "])";
 		} else {
-			fld.log_push("Enemy[" + (ei + 1) + "]: " + desc + "(対象: Unit[" + (tg[i] + 1) + "])(無効)");
+			if (ei >= 0) {
+				logtext += "Enemy[" + (ei + 1) + "]: ";
+			}
+			logtext += desc + "(" + turn + "t)(対象: Unit[" + (tg[i] + 1) + "])(無効)";
 		}
+		fld.log_push(logtext);
 		if (!is_counter) {
 			// スキルカウンターを有効に
 			now.flags.skill_counter[ei] = true;
@@ -317,7 +327,7 @@ function damage_block_all(bl, t) {
 	return m_create_enemy_move(function (fld, n) {
 		var enemys = GetNowBattleEnemys();
 		for (var i = 0; i < enemys.length; i++) {
-			damage_block_own(bl, t)(fld, i);
+			damage_block_own(bl, t).move(fld, i);
 		}
 	});
 }

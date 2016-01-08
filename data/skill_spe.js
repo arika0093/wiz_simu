@@ -708,3 +708,23 @@ function ss_consume_all(p) {
 		return ct;
 	};
 }
+
+// 自身を封印状態にする
+function ss_allsealed_own(t) {
+	return function (fld, n) {
+		var tnum = [n, ];
+		// 封印攻撃を呼ぶ
+		s_enemy_abstate_attack(
+			fld, "封印", "all_sealed", t, tnum, -1, true, {
+				bef_answer: function (f, as) {
+					return false;
+				},
+				bef_skillcounter: function (f, ai) {
+					return false;
+				},
+				ss_disabled: true,
+			}
+		);
+		return true;
+	}
+}

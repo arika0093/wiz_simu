@@ -95,3 +95,31 @@ function card_paneb(card) {
 	}
 	return paneb;
 }
+
+// 属性軽減値を返す
+function card_attr_relief(card, now, t_attr) {
+	var r = 0;
+	var ar_awakes = pickup_awakes(card, "attr_relief", false);
+	if (is_legendmode(card, now)) {
+		ar_awakes.concat(pickup_awakes(card, "attr_relief", true));
+	}
+	for (var i = 0; i < pb_awakes.length; i++) {
+		if (pb_awakes[i].attr[t_attr] > 0) {
+			r += pb_awakes[i].perc;
+		}
+	}
+	return r / 100;
+}
+
+// 戦後回復値を返す
+function cards_heal_afterbattle(cards) {
+	var r = 0;
+	for (var i = 0; i < cards.length; i++) {
+		var c = cards[i];
+		var abh_awakes = pickup_awakes(c, "heal_after_battle", false);
+		for (var j = 0; j < abh_awakes.length; j++) {
+			r += abh_awakes[j].perc;
+		}
+	}
+	return r / 100;
+}

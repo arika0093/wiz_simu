@@ -203,9 +203,17 @@ function nextturn(is_ssfin) {
 			Field.log_push("Status: チェイン状態解除");
 		}
 	}
-	// 全滅していたらここで新しい敵の処理を行う
+	// 全滅確認
 	var killed = allkill_check(is_ssfin);
 	if (killed && !f_st.finish) {
+		// 戦後回復処理
+		var abh = cards_heal_afterbattle(Field.Allys.Deck);
+		for (var i = 0; i < Field.Allys.Deck.length; i++) {
+			var now = Field.Allys.Now[i];
+			heal_ally(Math.floor(now.maxhp * abh), i);
+		}
+		Field.log_push("戦後回復: " + (abh*100) + "%");
+		// ここで新しい敵の処理を行う
 		enemy_popup_proc();
 	}
 	// SSで全滅 or パネルを踏んでる
