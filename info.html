@@ -15,12 +15,12 @@
 	<!-- Main Contents -->
 	<div class="Main">
 		<dl class="List">
-			<dt>このサイトについて</dt>
+			<dt id="about">このサイトについて</dt>
 			<dd>
 				「魔法使いと黒猫のウィズ」の攻略を支援するWebアプリです。<br />
 				お好みのデッキでクエストや段位の試走を行うことができます。
 			</dd>
-			<dt>基本の使い方</dt>
+			<dt id="use">基本の使い方</dt>
 			<dd>
                 <p class="highlight"><span class="link_like" onclick="popup_demomovie();">こちらのgif動画</span>で基本的な操作を確認することができます。</p>
 				<ol>
@@ -33,7 +33,8 @@
 					<li>[開始]ボタンを押して試走を開始します。</li>
 					<li>
 						パネルをクリックすると攻撃を行います。<br/>
-						状態異常やエンハンスの状況を確認したい時はアイコンをクリックしてください。
+						状態異常やエンハンスの状況を確認したい時は味方アイコンをクリックしてください。<br/>
+                        敵アイコンをダブルクリックするとその敵にターゲッティングすることができます。
 					</li>
 					<li>
 						試走結果をこんな感じでツイートすることができます。<br/>
@@ -43,12 +44,12 @@
 					</li>
 				</ol>
 			</dd>
-            <dt>注意点</dt>
+            <dt id="warn">注意点</dt>
             <dd>
                 敵行動は最低限実装しましたが完全に再現できていない部分も多々あります。<br/>
                 後々しっかりと整備しますのでご了承ください。
             </dd>
-			<dt>閲覧推奨環境</dt>
+			<dt id="recommend">閲覧推奨環境</dt>
 			<dd>
 				<span class="uline">Firefox</span>か<span class="uline">Google Chrome</span>での閲覧をオススメします。
 				多分Operaも大丈夫だと思います。<span class="strong">IEは非推奨です。</span><br />
@@ -56,7 +57,7 @@
 				そのうち対応するかもしれませんが、今のところはPCでの動作確認のみ行います。<br/>
 				また、デッキ情報を保存するためにCookieを有効にすることをオススメします。
 			</dd>
-			<dt>お世話になったサイト/人物</dt>
+			<dt id="thanks">お世話になったサイト/人物</dt>
 			<dd>
 				データ確認や実装などでお世話になりました。ありがとうございます。
 				<dl>
@@ -77,7 +78,7 @@
 					</dd>
 			   </dl>
 			</dd>
-			<dt>更新履歴</dt>
+			<dt id="update">更新履歴</dt>
 			<dd>
 				<div class="textlog" id="Updatelog"></div>
 			</dd>
@@ -103,7 +104,8 @@
                 autoOpen: false,
                 show: "blind",
                 hide: "blind",
-                width: 850,
+                width: 805,
+                height: 585,
                 modal: true,
                 open: function () {
                     // hide

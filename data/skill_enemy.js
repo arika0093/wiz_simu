@@ -279,7 +279,7 @@ function attack_counter(damage, t) {
 
 // ダメージに反応してあれこれする
 function damage_switch(cond, func) {
-	return m_create_enemy_move(function (fld, n) {
+	var rst = m_create_enemy_move(function (fld, n) {
 		var enemy = GetNowBattleEnemys(n);
 		enemy.turn_effect.push({
 			desc: null,
@@ -292,6 +292,7 @@ function damage_switch(cond, func) {
 			on_cond: func,
 		});
 	});
+	return m_enemy_once(rst);
 }
 
 // -----------------------------------
@@ -359,6 +360,23 @@ function impregnable(t) {
 // -----------------------------------
 // 敵状態変化
 // -----------------------------------
+// 怒り状態
+function m_enemy_angry() {
+	return m_create_enemy_move(function (fld, n) {
+		var e = GetNowBattleEnemys(n);
+		// 怒り状態にする
+		e.move.isangry = true;
+		// log
+		Field.log_push("Enemy[" + (n + 1) + "]: 怒り");
+		// 怒り時のスキルを発動
+		if (e.move.on_angry) {
+			for (var i = 0; i < e.move.on_angry.length; i++) {
+				e.move.on_angry[i].move(Field, n);
+			}
+		}
+	});
+}
+
 // 属性変化
 function attr_change(after) {
 	return m_create_enemy_move(function (fld, n) {

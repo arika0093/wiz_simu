@@ -103,9 +103,9 @@ function card_attr_relief(card, now, t_attr) {
 	if (is_legendmode(card, now)) {
 		ar_awakes.concat(pickup_awakes(card, "attr_relief", true));
 	}
-	for (var i = 0; i < pb_awakes.length; i++) {
-		if (pb_awakes[i].attr[t_attr] > 0) {
-			r += pb_awakes[i].perc;
+	for (var i = 0; i < ar_awakes.length; i++) {
+		if (ar_awakes[i].attr[t_attr] > 0) {
+			r += ar_awakes[i].perc;
 		}
 	}
 	return r / 100;

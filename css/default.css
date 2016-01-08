@@ -36,6 +36,16 @@ p.highlight{
 	border-radius: 5px;
 	padding: 1ex 1em;
 }
+a.blocklink{
+	display: block;
+	width: 59%;
+	margin: 1ex 0.5em;
+	padding: 1ex 1em;
+	text-align: center;
+	color: #2080FF;
+	border: 1px solid #60C0FF;
+	border-radius: 5px;
+}
 
 
 /* Clearfix */
@@ -63,7 +73,7 @@ a.toplink{
 	display: block;
 	width: 65%;
 	/*float: left;*/
-	padding: 0.5ex 0.5em 0.8ex;
+	padding: 0.4ex 0.5em 0.6ex;
 	font-family: 'Times New Roman', Times, serif;
 	font-style: italic;
 	font-size: 40px;
@@ -121,6 +131,10 @@ dd dl dd:last-child{
 ol{
 	margin: 0;
 	padding-left: 1.5em;
+}
+
+ol li{
+	margin-bottom: 4px;
 }
 
 a.itemhidden{

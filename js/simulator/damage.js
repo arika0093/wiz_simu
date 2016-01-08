@@ -56,8 +56,10 @@ function enemy_damage_switch_check() {
 				return g.type == "damage_switch";
 			});
 			for (var j = 0; j < skillct.length; j++) {
-				if (skillct[j].cond(Field, i)) {
-					skillct[j].on_cond(Field, i);
+				var s = skillct[j];
+				if (s.cond(Field, i) && --s.on_cond.count <= 0) {
+					s.on_cond.move(Field, i);
+					s.on_cond.count = s.on_cond.interval;
 				}
 			}
 			e.flags.on_damage = false;

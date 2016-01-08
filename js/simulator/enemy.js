@@ -153,13 +153,14 @@ function enemy_move() {
 // 条件に適した敵スキルを取得する
 function get_enemy_move_skill(e) {
 	// 怒り時は怒りスキルを参照する
-	var em = e.move.isangry ? e.move.on_move_angey : e.move.on_move;
+	var em = e.move.isangry ? e.move.on_move_angry : e.move.on_move;
 	// 行動番号が定義されてないなら最初に
 	if (e.move.m_index === undefined) {
 		e.move.m_index = 0;
 	}
 	// 使用可能なスキルを抜き出す(countが未定義または0)
 	var uskils = $.grep(em, function (eskl) {
+		if (!eskl) { return false; }
 		if (!eskl.count) {
 			return true;
 		} else {

@@ -5,6 +5,7 @@ Quests = [
 	// -------------------------
 	// test
 	// -------------------------
+	/*
 	{
 		id: "test",
 		name: "テスト用クエスト",
@@ -45,10 +46,9 @@ Quests = [
 			},
 		],
 	},
-
+	*/
 	// -------------------------
 	// トーナメント: 肆式
-	//   敵行動:. 要検証
 	// -------------------------
 	{
 		id: "grade14",
@@ -62,9 +62,9 @@ Quests = [
 				appearance: [1],
 				enemy: [
 					{
-						name: "水魔族",
+						name: "スクワルボーン",
 						hp: 21000,
-						imageno: -1,
+						imageno: 5249,
 						attr: 1,
 						spec: 2,
 						move: {
@@ -77,72 +77,137 @@ Quests = [
 							wait: 1,
 						},
 					}, {
-						name: "水亜人",
+						name: "リラソハウスバウンサー",
 						hp: 9500,
-						imageno: -1,
+						imageno: 5242,
 						attr: 1,
 						spec: 5,
+						move: {
+							on_move: [
+								s_enemy_attack(70, 3, 5, true),
+								s_enemy_attack(200, 5, 1, false),
+							],
+							atrandom: false,
+							turn: 1,
+							wait: 1,
+						},
 					}, {
-						name: "水亜人",
+						name: "リラソハウスバウンサー",
 						hp: 9500,
-						imageno: -1,
+						imageno: 5242,
 						attr: 1,
 						spec: 5,
+						move: {
+							on_move: [
+								s_enemy_attack(70, 3, 5, true),
+								s_enemy_attack(200, 5, 1, false),
+							],
+							atrandom: false,
+							turn: 1,
+							wait: 1,
+						},
 					},
 				],
 			}, {
 				appearance: [2],
 				enemy: [
 					{
-						name: "水龍族",
+						name: "ターコイズレンジャー",
 						hp: 75000,
-						imageno: -1,
+						imageno: 5231,
 						attr: 1,
 						spec: 0,
+						move: {
+							on_move: [
+								s_enemy_attack(70, 3, 5, true),		// 要検証
+								s_enemy_attack(200, 5, 1, false),
+							],
+							atrandom: false,
+							turn: 1,
+							wait: 1,
+						},
 					}, {
-						name: "水魔法生物",
+						name: "木負いガメ",
 						hp: 15,
-						imageno: -1,
+						imageno: 3743,
 						attr: 1,
 						spec: 7,
 						move: {
 							on_popup: [
 								impregnable(99),
-							]
+							],
+							on_move: [
+								s_enemy_attack(100, 3, 5, true),
+								s_enemy_attack(200, 5, 1, false),
+							],
+							atrandom: false,
+							turn: 1,
+							wait: 1,
 						}
 					}, {
-						name: "水亜人",
+						name: "リラソハウスバウンサー",
 						hp: 36300,
-						imageno: -1,
+						imageno: 5242,
 						attr: 1,
 						spec: 5,
+						move: {
+							on_move: [
+								s_enemy_attack(70, 3, 5, true),
+								s_enemy_attack(200, 5, 1, false),
+							],
+							atrandom: false,
+							turn: 1,
+							wait: 1,
+						}
 					},
 				],
 			}, {
 				appearance: [3],
 				enemy: [
 					{
-						name: "水亜人",
+						name: "ターコイズサハギン",
 						hp: 58000,
-						imageno: -1,
-						attr: 1,
-						spec: 5,
-					}, {
-						name: "水亜人",
-						hp: 29000,
-						imageno: -1,
-						attr: 1,
-						spec: 5,
-					}, {
-						name: "水魔法生物",
-						hp: 36300,
-						imageno: -1,
+						imageno: 2544,
 						attr: 1,
 						spec: 5,
 						move: {
-							on_popup: [
-								damage_block_own(30000, 99),
+							on_move: [
+								m_enemy_once(s_enemy_attack(500, 5, 1, true)),
+								s_enemy_attack(250, 5, 1, false),
 							],
+							atrandom: false,
+							turn: 1,
+							wait: 1,
+						}
+					}, {
+						name: "ターコイズサハギン",
+						hp: 29000,
+						imageno: 2544,
+						attr: 1,
+						spec: 5,
+						move: {
+							on_move: [
+								m_enemy_once(s_enemy_attack(500, 5, 1, true)),
+								s_enemy_attack(250, 5, 1, false),
+							],
+							atrandom: false,
+							turn: 1,
+							wait: 1,
+						}
+					}, {
+						name: "クリフゴート",
+						hp: 36300,
+						imageno: 3737,
+						attr: 1,
+						spec: 5,
+						move: {
+							on_move: [
+								m_enemy_once(damage_block_own(30000, 99)),
+								s_enemy_attack(250, 5, 1, false),
+							],
+							atrandom: false,
+							turn: 1,
+							wait: 1,
 						},
 					},
 				],
@@ -150,33 +215,48 @@ Quests = [
 				appearance: [4],
 				enemy: [
 					{
-						name: "水亜人",
+						name: "リラソハウスバウンサー",
 						hp: 10000,
-						imageno: -1,
+						imageno: 5242,
 						attr: 1,
 						spec: 5,
-					}, {
-						name: "水物質",
-						hp: 63000,
-						imageno: -1,
-						attr: 1,
-						spec: 6,
 						move: {
 							on_move: [
-								s_enemy_chain_break(),
-								s_enemy_attack(70, 3, 5, true),
-								null,
+								s_enemy_attack(250, 5, 1, true),
 							],
 							atrandom: false,
 							turn: 1,
 							wait: 1,
 						},
 					}, {
-						name: "水亜人",
+						name: "蒼鏡 サーチャー",
+						hp: 63000,
+						imageno: 3731,
+						attr: 1,
+						spec: 6,
+						move: {
+							on_move: [
+								m_enemy_once(s_enemy_chain_break()),
+								s_enemy_attack(70, 3, 5, true),
+							],
+							atrandom: false,
+							turn: 1,
+							wait: 1,
+						},
+					}, {
+						name: "リラソハウスバウンサー",
 						hp: 36300,
-						imageno: -1,
+						imageno: 5242,
 						attr: 1,
 						spec: 5,
+						move: {
+							on_move: [
+								s_enemy_attack(250, 5, 1, true),
+							],
+							atrandom: false,
+							turn: 1,
+							wait: 1,
+						},
 					},
 				],
 			}, {
@@ -249,15 +329,15 @@ Quests = [
 				appearance: [1, 2],
 				enemy: [
 					{
-						name: "火龍",
+						name: "アッガローグ",
 						hp: 35000,
-						imageno: -1,
+						imageno: 5228,
 						attr: 0,
 						spec: 0,
 					}, {
-						name: "火龍",
+						name: "アッガローグ",
 						hp: 35000,
-						imageno: -1,
+						imageno: 5228,
 						attr: 0,
 						spec: 0,
 					},
@@ -267,15 +347,15 @@ Quests = [
 				appearance: [1, 2],
 				enemy: [
 					{
-						name: "水龍",
+						name: "水甲ウォーターリザード",
 						hp: 21000,
-						imageno: -1,
+						imageno: 5254,
 						attr: 1,
 						spec: 0,
 					}, {
-						name: "火龍",
+						name: "アッガローグ",
 						hp: 35000,
-						imageno: -1,
+						imageno: 5228,
 						attr: 0,
 						spec: 0,
 					},
@@ -285,21 +365,21 @@ Quests = [
 				appearance: [3],
 				enemy: [
 					{
-						name: "水魔族",
+						name: "ボーンソルジャー・フリーズ",
 						hp: 24000,
-						imageno: -1,
+						imageno: 5248,
 						attr: 1,
 						spec: 2,
 					}, {
-						name: "雷魔族",
+						name: "ボーンソルジャー・チャード",
 						hp: 16000,
-						imageno: -1,
+						imageno: 5250,
 						attr: 2,
 						spec: 2,
 					}, {
-						name: "火亜人",
+						name: "アクトハウスバウンサー",
 						hp: 100000,
-						imageno: -1,
+						imageno: 5240,
 						attr: 0,
 						spec: 5,
 						move: {
@@ -314,9 +394,9 @@ Quests = [
 				appearance: [4],
 				enemy: [
 					{
-						name: "火魔法生物",
+						name: "杓岩のラーヴァスピリット",
 						hp: 25,
-						imageno: -1,
+						imageno: 5259,
 						attr: 0,
 						spec: 7,
 						move: {
@@ -331,9 +411,9 @@ Quests = [
 				appearance: [5],
 				enemy: [
 					{
-						name: "火魔法生物",
+						name: "杓岩のラーヴァスピリット",
 						hp: 100000,
-						imageno: -1,
+						imageno: 5259,
 						attr: 0,
 						spec: 7,
 						move: {
@@ -343,17 +423,23 @@ Quests = [
 						}
 					}, {
 						name: "ティア",
-						imageno: -1,
+						imageno: 5223,
 						hp: 360000,
 						attr: 0,
 						spec: 9,
 						move: {
 							on_popup: [
 								skill_counter(999999, 99),
-								damage_switch(s_enemy_when_hpdown(0.5), attr_change(1)),
+								damage_switch(s_enemy_when_hpdown(0.5), m_enemy_angry()),
 							],
 							on_move: [
 								s_enemy_attack(1300, 1, 2, true)
+							],
+							on_angry: [
+								attr_change(1),
+							],
+							on_move_angry: [
+								s_enemy_attack(325, 4, 4, true)
 							],
 							atrandom: false,
 							turn: 2,
@@ -382,15 +468,15 @@ Quests = [
 				appearance: [1, 2, 3, 4],
 				enemy: [
 					{
-						name: "雷牛",
+						name: "黄毛クリフゴート",
 						hp: 19800,
-						imageno: -1,
+						imageno: 3738,
 						attr: 2,
 						spec: 7,
 					}, {
-						name: "火タービン",
+						name: "紅鏡サーチャー",
 						hp: 13200,
-						imageno: -1,
+						imageno: 3728,
 						attr: 0,
 						spec: 6,
 					},
@@ -400,15 +486,15 @@ Quests = [
 				appearance: [1, 2, 3, 4],
 				enemy: [
 					{
-						name: "雷タービン",
+						name: "黄鏡サーチャー",
 						hp: 19800,
-						imageno: -1,
+						imageno: 3732,
 						attr: 2,
 						spec: 6,
 					}, {
-						name: "火カーバンクル",
+						name: "柘榴フライングカーバンクル",
 						hp: 13200,
-						imageno: -1,
+						imageno: 3746,
 						attr: 0,
 						spec: 4,
 					},
@@ -418,15 +504,15 @@ Quests = [
 				appearance: [1, 2, 3, 4],
 				enemy: [
 					{
-						name: "雷カーバンクル",
+						name: "黄晶フライングカーバンクル",
 						hp: 19800,
-						imageno: -1,
+						imageno: 3750,
 						attr: 2,
 						spec: 4,
 					}, {
-						name: "水タービン",
+						name: "水鏡サーチャー",
 						hp: 6600,
-						imageno: -1,
+						imageno: 3730,
 						attr: 1,
 						spec: 6,
 					},
@@ -436,15 +522,15 @@ Quests = [
 				appearance: [1, 2, 3, 4],
 				enemy: [
 					{
-						name: "雷タービン",
+						name: "黄鏡サーチャー",
 						hp: 19800,
-						imageno: -1,
+						imageno: 3732,
 						attr: 2,
 						spec: 6,
 					}, {
-						name: "雷カーバンクル",
+						name: "黄晶フライングカーバンクル",
 						hp: 19800,
-						imageno: -1,
+						imageno: 3750,
 						attr: 2,
 						spec: 4,
 					},
@@ -454,15 +540,15 @@ Quests = [
 				appearance: [1, 2, 3, 4],
 				enemy: [
 					{
-						name: "火タービン",
+						name: "紅鏡サーチャー",
 						hp: 13200,
-						imageno: -1,
+						imageno: 3728,
 						attr: 0,
 						spec: 6,
 					}, {
-						name: "火タービン",
+						name: "紅鏡サーチャー",
 						hp: 13200,
-						imageno: -1,
+						imageno: 3728,
 						attr: 0,
 						spec: 6,
 					},
@@ -472,15 +558,15 @@ Quests = [
 				appearance: [1, 2, 3, 4],
 				enemy: [
 					{
-						name: "雷牛",
+						name: "黄毛クリフゴート",
 						hp: 19800,
-						imageno: -1,
+						imageno: 3738,
 						attr: 2,
 						spec: 7,
 					}, {
-						name: "水牛",
-						imageno: -1,
+						name: "青冠クリフゴート",
 						hp: 6600,
+						imageno: 3736,
 						attr: 1,
 						spec: 7,
 					},
@@ -490,8 +576,8 @@ Quests = [
 				appearance: [5],
 				enemy: [
 					{
-						name: "火タービン",
-						imageno: -1,
+						name: "焔嵐タービネックス",
+						imageno: 3723,
 						hp: 35000,
 						attr: 0,
 						spec: 6,
@@ -507,8 +593,8 @@ Quests = [
 						attr: 2,
 						spec: 9,
 					}, {
-						name: "水カーバンクル",
-						imageno: -1,
+						name: "蒼玉フライングカーバンクル",
+						imageno: 3749,
 						hp: 25000,
 						attr: 1,
 						spec: 7,
@@ -543,9 +629,9 @@ Quests = [
 				appearance: [1, 2, 3, 4],
 				enemy: [
 					{
-						name: "雷魔法生物",
+						name: "燐光の骨狼",
 						hp: 18000,
-						imageno: -1,
+						imageno: 2527,
 						attr: 2,
 						spec: 7,
 					},
@@ -554,9 +640,9 @@ Quests = [
 				appearance: [1, 2, 3, 4],
 				enemy: [
 					{
-						name: "水魔法生物",
+						name: "氷雨の骨狼",
 						hp: 30000,
-						imageno: -1,
+						imageno: 2525,
 						attr: 1,
 						spec: 7,
 					},
@@ -565,15 +651,15 @@ Quests = [
 				appearance: [1, 2, 3, 4],
 				enemy: [
 					{
-						name: "水亜人",
+						name: "ブルーサハギン",
 						hp: 17000,
-						imageno: -1,
+						imageno: 2543,
 						attr: 1,
 						spec: 5,
 					}, {
-						name: "水魔族",
+						name: "濁流のコカトリス",
 						hp: 17000,
-						imageno: -1,
+						imageno: 2537,
 						attr: 1,
 						spec: 2,
 					},
@@ -583,15 +669,15 @@ Quests = [
 				appearance: [1, 2, 3, 4],
 				enemy: [
 					{
-						name: "水魔法生物",
+						name: "氷毒のキラービー",
 						hp: 17000,
-						imageno: -1,
+						imageno: 2549,
 						attr: 1,
 						spec: 7,
 					}, {
-						name: "雷魔族",
+						name: "帯電するコカトリス",
 						hp: 9000,
-						imageno: -1,
+						imageno: 2539,
 						attr: 2,
 						spec: 2,
 					},
@@ -601,15 +687,15 @@ Quests = [
 				appearance: [1, 2, 3, 4],
 				enemy: [
 					{
-						name: "雷亜人",
+						name: "イエローハーピー",
 						hp: 9000,
-						imageno: -1,
+						imageno: 2533,
 						attr: 2,
 						spec: 5,
 					}, {
-						name: "火魔族",
+						name: "火吹きのコカトリス",
 						hp: 8000,
-						imageno: -1,
+						imageno: 2535,
 						attr: 0,
 						spec: 2,
 					},
@@ -619,15 +705,15 @@ Quests = [
 				appearance: [1, 2, 3, 4],
 				enemy: [
 					{
-						name: "水亜人",
+						name: "ブルーサハギン",
 						hp: 17000,
-						imageno: -1,
+						imageno: 2543,
 						attr: 1,
 						spec: 5,
 					}, {
-						name: "火亜人",
+						name: "レッドハーピー",
 						hp: 8000,
-						imageno: -1,
+						imageno: 2529,
 						attr: 0,
 						spec: 5,
 					},
@@ -637,9 +723,9 @@ Quests = [
 				appearance: [5],
 				enemy: [
 					{
-						name: "ファントム",
+						name: "プラズマファントム",
 						hp: 20000,
-						imageno: -1,
+						imageno: 2522,
 						attr: 2,
 						spec: 2,
 						move: {
@@ -650,7 +736,7 @@ Quests = [
 					}, {
 						name: "ベルナデッタ",
 						hp: 200000,
-						imageno: -1,
+						imageno: 2556,
 						attr: 1,
 						spec: 9,
 						move: {

@@ -45,7 +45,7 @@ function sim_show() {
 		var dec = Field.Allys.Deck[i];
 		var now = Field.Allys.Now[i];
 		if (dec !== undefined) {
-			// 死んでたらグレースケール化
+			// 死んでたら薄暗く表示	
 			if (now.nowhp <= 0) {
 				$("#ally0" + (i + 1) + "_img").attr("class", "chara_img_dead");
 			} else {
@@ -88,9 +88,14 @@ function sim_show() {
 	for (var i = 0; i < 3; i++) {
 		var e = enemys_dat[i];
 		if (e !== undefined) {
-			// 死んでたらグレースケール化
+			// 死んでたら薄暗く表示、鉄壁が貼ってあるならグレースケールで表示
+			var is_impregnable = $.grep(e.turn_effect, function (eff) {
+				return eff.type == "impregnable";
+			}).length > 0;
 			if (e.nowhp <= 0) {
 				$("#enemy0" + (i + 1) + "_img").attr("class", "chara_img_dead");
+			} else if (is_impregnable) {
+				$("#enemy0" + (i + 1) + "_img").attr("class", "chara_img_impregnable");
 			} else {
 				$("#enemy0" + (i + 1) + "_img").attr("class", "chara_img");
 			}
