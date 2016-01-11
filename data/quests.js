@@ -323,6 +323,7 @@ Quests = [
 		category: "tornament",
 		desc: "水推奨のトーナメントです。1位入賞時3640pt。",
 		aprnum: 5,
+		overlap: false,
 		data: [
 			{
 				// 火龍 / 火龍
@@ -439,6 +440,7 @@ Quests = [
 								attr_change(1),
 							],
 							on_move_angry: [
+								// 要: 攻撃属性の検証
 								s_enemy_attack(325, 4, 4, true)
 							],
 							atrandom: false,

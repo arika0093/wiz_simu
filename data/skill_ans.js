@@ -31,10 +31,10 @@ function add_cond(as) {
 							var oj = obj;
 							var ky = key;
 							var bef_as = $.extend(true, {}, as[i]);
-							return function (a, b, c) {
+							return function (a, b, c, d) {
 								var rst = true;
-								rst = rst && bef_as[ky](a, b, c);
-								rst = rst && oj[ky](a, b, c);
+								rst = rst && bef_as[ky](a, b, c, d);
+								rst = rst && oj[ky](a, b, c, d);
 								return rst;
 							};
 						}();
@@ -252,12 +252,28 @@ function ChainPanelsSpecAttack(r1, r2, r3, spec, ch) {
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: specific_specs(spec),
-			cond: function (fld, oi, ei, panels) {
-				var rates = [r1, r2, r3];
-				this.rate = rates[Math.min(panels.length - 1, 2)];
-				return true;
-			},
-		}
+			cond: always_true().cond,
+		},
+		{
+			type: "attack",
+			isall: false,
+			atkn: 1,
+			rate: r2,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: specific_specs(spec),
+			cond: as_panel_over2().cond,
+		},
+		{
+			type: "attack",
+			isall: false,
+			atkn: 1,
+			rate: r3,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: specific_specs(spec),
+			cond: as_panel_over3().cond,
+		},
 	];
 }
 
@@ -383,12 +399,26 @@ function ChainPanelsEnhance(r1, r2, r3, attr, ch) {
 			chain: ch,
 			attr: attr,
 			spec: create_specs(1),
-			cond: function (fld, oi, ei, panels) {
-				var rates = [r1, r2, r3];
-				this.rate = rates[Math.min(panels.length - 1, 2)];
-				return true;
-			},
-		}
+			cond: always_true().cond,
+		},
+		{
+			type: "support",
+			subtype: "enhance",
+			rate: r2,
+			chain: ch,
+			attr: attr,
+			spec: create_specs(1),
+			cond: as_panel_over2().cond,
+		},
+		{
+			type: "support",
+			subtype: "enhance",
+			rate: r3,
+			chain: ch,
+			attr: attr,
+			spec: create_specs(1),
+			cond: as_panel_over3().cond,
+		},
 	];
 }
 
@@ -433,12 +463,22 @@ function ChainPanelsHeal(r1, r2, r3, attr, ch) {
 			rate: r1,
 			chain: chain,
 			attr: attr,
-			cond: function (fld, oi, ei, panels) {
-				var rates = [r1, r2, r3];
-				this.rate = rates[Math.min(panels.length - 1, 2)];
-				return true;
-			},
-		}
+			cond: always_true().cond,
+		},
+		{
+			type: "heal",
+			rate: r2,
+			chain: chain,
+			attr: attr,
+			cond: as_panel_over2().cond,
+		},
+		{
+			type: "heal",
+			rate: r3,
+			chain: chain,
+			attr: attr,
+			cond: as_panel_over3().cond,
+		},
 	];
 }
 // ------------------------------------------------------
@@ -452,6 +492,25 @@ function always_true() {
 		}
 	}
 }
+
+// パネル色が二色以上
+function as_panel_over2() {
+	return {
+		cond: function (fld, oi, ei, panels) {
+			return panels.length >= 2;
+		}
+	}
+}
+
+// パネル色が三色以上
+function as_panel_over3() {
+	return {
+		cond: function (fld, oi, ei, panels) {
+			return panels.length >= 3;
+		}
+	}
+}
+
 
 // リーダー時
 function when_leader() {

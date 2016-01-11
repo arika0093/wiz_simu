@@ -6367,7 +6367,12 @@ Cards = [{
 		turn: 10,
 		proc: [ss_skillcounter(2, 5)]
 	},
-}, {
+},
+	// -------------------------
+	// 抜け補完: レジェンド化精霊
+	// -------------------------
+
+{
 	// -------------------------
 	// 抜け補完: 2015GW
 	// -------------------------
@@ -6416,6 +6421,95 @@ Cards = [{
 	},
 }, {
 	// -------------------------
+	// 抜け補完: クロマグⅤ
+	// -------------------------
+	name: "静かに燃える決意 イツキ&リンカ",
+	cardno: 4510,
+	imageno: 6192,
+	hp: 2438,
+	atk: 2015,
+	cost: 0,
+	attr: [0,1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "5チェインでダメージアップ(400%)",
+		proc: ChainAttack(4, 5),
+	},
+	ss1: {
+		desc: "敵全体へ火・水属性のダメージ(150%)",
+		turn: 8,
+		proc: [ss_damage_all(1.5, [1,0])],
+	},
+	awakes: [
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(1),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+	],
+	as2: {
+		desc: "5チェインでダメージアップ(500%)",
+		proc: ChainAttack(5, 5),
+	},
+	ss2: {
+		desc: "敵全体へ火・水属性のダメージ(220%)",
+		turn: 11,
+		proc: [ss_damage_all(2.2, [1,0])],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Statusup(0,400),
+	],
+}, {
+	name: "夢の兄弟屋台 イツキ＆アキラ",
+	cardno: 4509,
+	imageno: 6191,
+	hp: 1777,
+	atk: 2323,
+	cost: 36,
+	attr: [0,1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "3チェインで敵単体を3回連続攻撃、ジャンルパネルが3色だと6回連続攻撃(300%)",
+		proc: [ChainDualAttack(3, 3, 3), add_cond(ChainDualAttack(3,3,6), as_panel_over3())],
+	},
+	ss1: {
+		desc: "敵単体へ火・水属性の5回連続ダメージ(150%)更に味方のHPを回復(25%)",
+		turn: 6,
+		proc: [ss_damage_all(1.5, [1,0]), ss_heal(0.25)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],1),
+	],
+	as2: {
+		desc: "3チェインで敵単体を3回連続攻撃、ジャンルパネルが3色だと6回連続攻撃(400%)",
+		proc: [ChainDualAttack(4, 3, 3), add_cond(ChainDualAttack(4,3,6), as_panel_over3())],
+	},
+	ss2: {
+		desc: "敵単体へ火・水属性の5回連続ダメージ(300%)更に味方のHPを回復(25%)",
+		turn: 9,
+		proc: [ss_damage_all(3.0, [1,0]), ss_heal(0.25)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}, {
+	// -------------------------
 	// 追加: 八百万神秘譚Ⅱ
 	// -------------------------
 	name: "牡丹微睡む夕月夜 ミコト・ウタヨミ",
@@ -6449,7 +6543,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 5, 3)
 	},
 	ss1: {
-		desc: "敵全体へ雷属性のダメージ(300%)、さらに水属性の敵には特攻ダメージ(500%)",
+		desc: "敵全体へ雷属性のダメージ(200%)、さらに水属性の敵には特攻ダメージ(500%)",
 		turn: 6,
 		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 5.0, 2.0), [2])]
 	},
@@ -6458,7 +6552,7 @@ Cards = [{
 		proc: ChainDualAttack(5.5, 5, 3)
 	},
 	ss2: {
-		desc: "敵全体へ雷属性のダメージ(300%)、さらに水属性の敵には特攻ダメージ(900%)",
+		desc: "敵全体へ雷属性のダメージ(200%)、さらに水属性の敵には特攻ダメージ(900%)",
 		turn: 9,
 		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 9.0, 2.0), [2])]
 	},
@@ -6507,9 +6601,97 @@ Cards = [{
 		proc: [ss_damage_s(ss_consume_all_cond(3.0, 0.5), [1], 1)]
 	},
 }, {
+	name: "求む声に辿り着き コノハ・ヨリヒメ",
+	cardno: 5073,
+	imageno: 6813,
+	hp: 3432,
+	atk: 2558,
+	cost: 45,
+	attr: [1, 0],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "5チェインで火・水属性の味方の攻撃力をアップ、パネルの色が2色以上でさらにアップ(60%/90%)",
+		proc: [ChainPanelsEnhance(0.6,0.9,0.9,[1,1,0,0,0],5)],
+	},
+	ss1: {
+		desc: "味方全体のMAXHPの50%を使い、ジャンルパネルにチェインがプラス3の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(3), ss_consume_all(0.5)],
+	},
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		NEFTJOD(30),
+		Fastskill(1),
+		Statusup(200, 0),
+		Attr_statusup(200, 0, [1, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_relief([0, 0, 1, 0, 0, ], 20),
+		Fastskill(2),
+		Attr_statusup(200, 0, [1, 1, 0, 0, 0, ]),
+		Spec_statusup(200, 0, [1, 4, 9, ]),
+	],
+	as2: {
+		desc: "5チェインで火・水属性の味方の攻撃力をアップ、パネルの色が2色以上でさらにアップ(90%/120%)",
+		proc: [ChainPanelsEnhance(0.9, 1.2, 1.2, [1, 1, 0, 0, 0], 5)],
+	},
+	ss2: {
+		desc: "味方全体のMAXHPの50%を使い、ジャンルパネルにチェインがプラス4の効果を付与",
+		turn: 8,
+		proc: [panel_chainplus(4), ss_consume_all(0.5)],
+	},
+	Lawake: [
+		Statusup(500, 0),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+	],
+}, {
 	// -------------------------
 	// 追加: 天界のロストエデン
 	// -------------------------
+	name: "闇に響く哄笑 イザーク・セラフィム",
+	cardno: 5136,
+	imageno: 6879,
+	hp: 2656,
+	atk: 4554,
+	cost: 47,
+	attr: [0, -1],
+	species: [3],
+	islegend: true,
+	as1: {
+		desc: "3チェインで雷属性の敵単体へ特効ダメージ(525%)",
+		proc: ChainAttrAttack(5.25, 3, [0,0,1,0,0]),
+	},
+	ss1: {
+		desc: "敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(200%/500%)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([0, 0, 1, 0, 0], 5.0, 2.0), [0])]
+	},
+	awakes: [
+		Statusup(0, 200),
+		Fastskill(1),
+		Panel_boost([1, 0, 0, 0, 0, ], 1),
+		Attr_statusup(100, 0, [1, 0, 0, 0, 0, ]),
+		NEFTJOD(30),
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Attr_statusup(100, 0, [1, 0, 0, 0, 0, ]),
+		Fastskill(2),
+		Attr_statusup(0, 200, [1, 0, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "3チェインで雷属性の敵単体へ特効ダメージ(625%)",
+		proc: ChainAttrAttack(6.25, 3, [0,0,1,0,0]),
+	},
+	ss2: {
+		desc: "敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(200%/900%)",
+		turn: 9,
+		proc: [ss_damage_all(special_attr([0, 0, 1, 0, 0], 9.0, 2.0), [0])]
+	},
+	Lawake: [
+		Statusup(0, 700),
+		Statusup(400, 0),
+	],
+}, {
 	name: "悲劇の螺旋 サッド・アルドベリク",
 	cardno: 5159,
 	imageno: 6902,
@@ -6694,8 +6876,226 @@ Cards = [{
 	// -------------------------
 	// 追加: 2015クリスマス精霊
 	// -------------------------
-
-
+	name: "永劫の白翼 アルドベリク＆ルシエラ",
+	cardno: 5197,
+	imageno: 7079,
+	hp: 3329,
+	atk: 3321,
+	cost: 43,
+	attr: [0, 3],
+	species: [3],
+	awakes: [
+		Attr_statusup(100, 0, [1, 0, 0, 0, 0]),
+		Panel_boost([1, 0, 0, 0, 0], 1),
+		NEFTJOD(30),
+		Fastskill(1),
+		Statusup(0, 200),
+		Heal_afterbattle(10),
+		Panel_boost([1, 0, 0, 0, 0], 2),
+		Attr_statusup(100, 0, [1, 0, 0, 0, 0]),
+		Fastskill(2),
+		Attr_statusup(0, 200, [1, 0, 0, 0, 0]),
+	],
+	as1: {
+		desc: "4チェインでダメージアップ(350％)、10チェインでさらにアップ(550%)",
+		proc: [ChainAttack(3.5, 4), ChainAttack(5.5, 10)]
+	},
+	ss1: {
+		desc: "3ターンの間チェインを保護する",
+		turn: 5,
+		proc: [ss_chain_protect(3)]
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "4チェインでダメージアップ(450％)、10チェインでさらにアップ(650%)",
+		proc: [ChainAttack(4.5, 4), ChainAttack(6.5, 10)]
+	},
+	ss2: {
+		desc: "スペシャルスキルの発動ターンを2早め、敵単体の行動ターンを2遅らせる",
+		turn: 9,
+		proc: [ss_skillboost(2)]
+	},
+}, {
+	name: "夢色の心贈る キワム＆クロ",
+	cardno: 5200,
+	imageno: 7082,
+	hp: 3221,
+	atk: 3541,
+	cost: 47,
+	attr: [0, 2],
+	species: [8],
+	awakes: [
+		Panel_boost([1, 0, 0, 0, 0], 1),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0]),
+		Heal_afterbattle(10),
+		Statusup(0, 200),
+		Panel_boost([1, 0, 0, 0, 0], 2),
+		Attr_statusup(0, 200, [1, 0, 1, 0, 0]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "4チェインで敵単体を4回連続攻撃(400%)",
+		proc: [ChainDualAttack(4, 4, 4)]
+	},
+	ss1: {
+		desc: "2ターン敵の状態異常攻撃を無効化し、さらに味方全体のHPを回復(50%)",
+		turn: 7,
+		proc: [ss_absattack_disable(2), ss_heal(0.5)]
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "4チェインで敵単体を4回連続攻撃(500%)",
+		proc: [ChainDualAttack(5, 4, 4)]
+	},
+	ss2: {
+		desc: "3ターン敵の状態異常攻撃を無効化し、さらに味方全体のHPを回復(50%)",
+		turn: 9,
+		proc: [ss_absattack_disable(3), ss_heal(0.5)]
+	},
+}, {
+	name: "聖夜航路の女神様 シール・サンテ",
+	cardno: 5203,
+	imageno: 7085,
+	hp: 2456,
+	atk: 4754,
+	cost: 49,
+	attr: [1, -1],
+	species: [8],
+	awakes: [
+		NEFTJOD(30),
+		Panel_boost([0, 1, 0, 0, 0], 1),
+		Fastskill(1),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0]),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0]),
+		Panel_boost([0, 1, 0, 0, 0], 2),
+		Attr_statusup(200, 0, [0, 1, 0, 0, 0]),
+		Attr_statusup(0, 200, [0, 1, 0, 0, 0]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "3チェインで火属性の敵単体へ特攻ダメージ(525%)",
+		proc: [ChainAttrAttack(5.25, 3, [1,0,0,0,0])]
+	},
+	ss1: {
+		desc: "敵全体へ水属性のダメージ(200%)、さらに火属性の敵には特攻ダメージ(500%)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 5.0, 2.0), [1])]
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 800),
+		Statusup(200, 0),
+	],
+	as2: {
+		desc: "3チェインで火属性の敵単体へ特攻ダメージ(625%)",
+		proc: [ChainAttrAttack(6.25, 3, [1, 0, 0, 0, 0])]
+	},
+	ss2: {
+		desc: "敵全体へ水属性のダメージ(200%)、さらに火属性の敵には特攻ダメージ(500%)",
+		turn: 9,
+		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 9.0, 2.0), [1])]
+	},
+}, {
+	name: "綺光と焔の絆 ベアトリーゼ＆エルト",
+	cardno: 5206,
+	imageno: 7088,
+	hp: 4139,
+	atk: 2421,
+	cost: 45,
+	attr: [1, 0],
+	species: [8],
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0], 1),
+		NEFTJOD(30),
+		Attr_statusup(100, 0, [1, 1, 1, 1, 1]),
+		Fastskill(1),
+		Attr_statusup(0, 100, [1, 1, 1, 1, 1]),
+		Statusup(0, 200),
+		Panel_boost([0, 1, 0, 0, 0], 2),
+		Fastskill(2),
+		Attr_statusup(0, 200, [1, 1, 1, 1, 1]),
+		Heal_afterbattle(10),
+	],
+	as1: {
+		desc: "味方全体のHPを回復(11%)、HP50%以下でさらに回復(20%)",
+		proc: [Heal(0.11, [1,1,1,1,1], 0), add_cond(Heal(0.20, [1,1,1,1,1], 0), when_hp_less(0.5))]
+	},
+	ss1: {
+		desc: "ジャンルパネルにチェインがプラス1の効果を付与",
+		turn: 3,
+		proc: [panel_chainplus(1)]
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1, 1, 1, 1, 1]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "味方全体のHPを回復(13%)、HP50%以下でさらに回復(22%)",
+		proc: [Heal(0.13, [1,1,1,1,1], 0), add_cond(Heal(0.22, [1,1,1,1,1], 0), when_hp_less(0.5))]
+	},
+	ss2: {
+		desc: "4ターン味方全体の攻撃力をアップ(120%)、5チェイン消費しさらにアップ(180%)",
+		turn: 12,
+		proc: [ss_enhance_all(ss_chain_cost(5, 1.8, 1.2), 4, [1,1,1,1,1])]
+	},
+}, {
+	name: "師匠サンタ登場 リンリン＆ポンタン",
+	cardno: 5365,
+	imageno: 7091,
+	hp: 1856,
+	atk: 4004,
+	cost: 48,
+	attr: [2, 1],
+	species: [8],
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0], 1),
+		Fastskill(1),
+		NEFTJOD(30),
+		Attr_statusup(100, 0, [0, 1, 1, 0, 0]),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0]),
+		Panel_boost([0, 0, 1, 0, 0], 2),
+		Statusup(0, 200),
+		Attr_statusup(0, 200, [0, 1, 1, 0, 0]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "HP80%以上で水属性の敵単体へ特攻ダメージ(525%)",
+		proc: [add_cond(ChainAttrAttack(5.25, 0, [0,1,0,0,0]), when_hp_more(0.8))]
+	},
+	ss1: {
+		desc: "ジャンルパネルを水・雷属性化",
+		turn: 3,
+		proc: null
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "HP80%以上で水属性の敵単体へ特攻ダメージ(625%)",
+		proc: [add_cond(ChainAttrAttack(6.25, 0, [0,1,0,0,0]), when_hp_more(0.8))]
+	},
+	ss2: {
+		desc: "ジャンルパネルを水・雷属性化し、攻撃力アップの効果を付与",
+		turn: 6,
+		proc: [panel_attackup(0.5)]
+	},
+}, {
 	// -------------------------
 	// 追加: 2015クリスマス聖夜精霊
 	// -------------------------
@@ -6771,7 +7171,7 @@ Cards = [{
 		proc: ChainDualAttack(4, 6, 3)
 	},
 	ss1: {
-		desc: "敵全体へ雷属性のダメージ(300%)、さらに水属性の敵には特攻ダメージ(500%)",
+		desc: "敵全体へ水属性のダメージ(200%)、さらに火属性の敵には特攻ダメージ(500%)",
 		turn: 6,
 		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 5.0, 2.0), [1])]
 	},
@@ -6785,7 +7185,7 @@ Cards = [{
 		proc: ChainDualAttack(5, 6, 3)
 	},
 	ss2: {
-		desc: "敵全体へ雷属性のダメージ(300%)、さらに水属性の敵には特攻ダメージ(900%)",
+		desc: "敵全体へ水属性のダメージ(200%)、さらに火属性の敵には特攻ダメージ(900%)",
 		turn: 8,
 		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 9.0, 2.0), [1])]
 	},

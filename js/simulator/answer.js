@@ -148,10 +148,10 @@ function answer_skill(as_arr, panel) {
 				answer_attack(card, now, enemy_dat, as_arr[i], panel, i);
 				break;
 			case "support":
-				answer_enhance(as_arr[i], i);
+				answer_enhance(as_arr[i], i, panel);
 				break;
 			case "heal":
-				answer_heal(as_arr[i], i);
+				answer_heal(as_arr[i], i, panel);
 				break;
 		}
 	}
@@ -221,7 +221,7 @@ function answer_attack(card, now, enemy, as, attr, index) {
 }
 
 // エンハスキルの処理
-function answer_enhance(as, i) {
+function answer_enhance(as, i, p) {
 	for (var ci = 0; ci < Field.Allys.Deck.length; ci++) {
 		var ass = {rate: 0};
 		var card = Field.Allys.Deck[ci];
@@ -230,7 +230,7 @@ function answer_enhance(as, i) {
 		// 最大の値を取り出す
 		for (var ai = 0; ai < as.length; ai++) {
 			var as_t = { rate: 0 };
-			if (is_answer_target(as[ai], chain, card.attr[0], card.species, ci)) {
+			if (is_answer_target(as[ai], chain, card.attr[0], card.species, ci, -1, p)) {
 				as_t = as[ai];
 			}
 			ass = ass.rate < as_t.rate ? as_t : ass;
@@ -246,7 +246,7 @@ function answer_enhance(as, i) {
 }
 
 // 回復スキルの処理
-function answer_heal(as, i) {
+function answer_heal(as, i, p) {
 	for (var ci = 0; ci < Field.Allys.Deck.length; ci++) {
 		var ass = {rate: 0};
 		var card = Field.Allys.Deck[ci];
@@ -255,7 +255,7 @@ function answer_heal(as, i) {
 		// 最大の値を取り出す
 		for (var ai = 0; ai < as.length; ai++) {
 			var as_t = {rate: 0};
-			if(is_answer_target(as[ai], chain, card.attr[0], card.species, ci)){
+			if(is_answer_target(as[ai], chain, card.attr[0], card.species, ci, -1, p)){
 				as_t = as[ai];
 			}
 			ass = ass.rate < as_t.rate ? as_t : ass;

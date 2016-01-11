@@ -348,7 +348,7 @@ function ss_chain_protect(t) {
 // ------------------------------------------------------
 // 味方回復系
 // ------------------------------------------------------
-// 単純回復
+// 全体単純回復
 function ss_heal(p) {
 	return function (fld, n) {
 		var rate = ss_ratedo(p, fld, n);
@@ -358,6 +358,19 @@ function ss_heal(p) {
 			heal_ally(hr, i);
 		}
 		fld.log_push("味方全体HP回復(" + (rate * 100) + "%)");
+		return true;
+	};
+}
+
+// 指定値だけ全体回復(1000回復, etc)
+function ss_heal_absolute(p) {
+	return function (fld, n) {
+		var rate = ss_ratedo(p, fld, n);
+		for (var i = 0; i < fld.Allys.Deck.length; i++) {
+			var now = fld.Allys.Now[i];
+			heal_ally(rate, i);
+		}
+		fld.log_push("味方全体HP回復(" + rate + "%)");
 		return true;
 	};
 }
