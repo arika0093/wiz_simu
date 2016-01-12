@@ -1,6 +1,6 @@
 wiz_simu
 ====
-![](https://raw.githubusercontent.com/Arika0093/wiz_simu/gh_pages/image/demo.gif)
+![](https://raw.githubusercontent.com/Arika0093/wiz_simu/master/image/demo.gif)
 
 ## Simulator
 <http://arika0093.github.io/wiz_simu/>

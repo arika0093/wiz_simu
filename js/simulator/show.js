@@ -113,7 +113,10 @@ function sim_show() {
 				if (eff_text != "") {
 					eff_text += ", ";
 				}
-				eff_text += e.turn_effect[l].desc + "(" + e.turn_effect[l].lim_turn + "t)";
+				eff_text += e.turn_effect[l].desc;
+				if (e.turn_effect[l].lim_turn >= 0) {
+					 eff_text += "(" + e.turn_effect[l].lim_turn + "t)"
+				}
 			}
 			$("#enemy0" + (i + 1) + "_stats").text(eff_text);
 			$("#enemy0" + (i + 1) + "_stats").attr("title", eff_text);

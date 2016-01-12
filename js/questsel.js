@@ -8,6 +8,9 @@ $(function () {
 	var sel = document.getElementById('QstSel');
 	var seld = sel;
 	for (var i = 0; i < qsort.length; i++) {
+		if (qsort[i].hidden) {
+			continue;
+		}
 		if (i == 0 || qsort[i].category != qsort[i - 1].category) {
 			var opg = document.createElement('optgroup');
 			opg.label = qsort[i].category;

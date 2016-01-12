@@ -51,13 +51,14 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss)
 function enemy_damage_switch_check() {
 	var enemys = GetNowBattleEnemys();
 	$.each(enemys, function (i, e) {
-		if (e.flags.on_damage && e.turn_effect.length > 0) {
+		if (e.turn_effect.length > 0) {
 			var skillct = $.grep(e.turn_effect, function (g) {
 				return g.type == "damage_switch";
 			});
 			for (var j = 0; j < skillct.length; j++) {
 				var s = skillct[j];
-				if (s.cond(Field, i) && --s.on_cond.count <= 0) {
+				var ischeck = e.flags.on_damage || s.oncond_anytime;
+				if (ischeck && s.cond(Field, i) && --s.on_cond.count <= 0) {
 					s.on_cond.move(Field, i);
 					s.on_cond.count = s.on_cond.interval;
 				}

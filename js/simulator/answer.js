@@ -195,20 +195,22 @@ function answer_attack(card, now, enemy, as, attr, index) {
 			if (atk_as.isall) {
 				for (var tg = 0; tg < enemy.length; tg++) {
 					if (enemy[tg].nowhp <= 0) { continue; }
+					var is_as = enemy[tg].flags.is_as_attack;
 					// 乱数
 					var rnd = damage_rand();
 					// ダメージ計算
 					g_dmg += attack_enemy(enemy[tg], now, atr,
 						atk_as.rate, atk_as.atkn, attr, ch, rnd, index, tg, false);
-					enemy[tg].flags.is_as_attack[index] = true;
+					is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
 				}
 			} else {
 				// 乱数
 				var rnd = damage_rand();
+				var is_as = enemy[targ].flags.is_as_attack;
 				// ダメージ計算
 				g_dmg = attack_enemy(en, now, atr, atk_as.rate,
 					atk_as.atkn, attr, ch, rnd, index, targ, false);
-				en.flags.is_as_attack[index] = true;
+				is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
 			}
 			// 攻撃後処理
 			if (atk_as.after) {
