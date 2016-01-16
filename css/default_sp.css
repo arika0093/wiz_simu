@@ -78,6 +78,10 @@ a.blocklink{
 	margin-left: -40px; /* widthの半分のマイナス値 */
 	z-index: 100;
 }
+#loader img{
+	width: 40px;
+	height: 40px;
+}
 #loadnoscr{
 	width: 100%;
 	display: block;
