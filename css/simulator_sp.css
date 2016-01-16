@@ -98,12 +98,21 @@ div.ally_ss button{
 	font-size: 9.5pt;
 	margin: 0;
 	border-width: 1px 0px 0px 1px;
+	padding: 1ex 0em;
 }
 
 p.ally_name, p.ally_stat, p.enemy_name, p.enemy_hp, p.enemy_stat{
 	width: 220px;
 	white-space: nowrap;
 	overflow: hidden;
+}
+
+p.ally_stat, p.enemy_hp{
+	margin: 0 0 0 0.5em;
+	padding: 0;
+	text-align: right;
+	float: right;
+	font-size: 9pt;
 }
 
 /* Ally info */
@@ -168,8 +177,8 @@ button.panel_button {
 	font-size: 9pt;
 	white-space: nowrap;
 	margin-top: 1ex;
-	width: 42px;
-	height: 36px;
+	width: 46px;
+	height: 40px;
 }
 
 div.sim_option {
@@ -187,7 +196,7 @@ button.field_mov_button {
 	box-sizing: border-box;
 	width: 50%;
 	margin: auto;
-	padding: 1ex 0;
+	padding: 1.5ex 0;
 	color: #303030;
 }
 button#fld_move_before {

@@ -74,8 +74,8 @@ a.blocklink{
 	_position: absolute; /* IE6対策 */
 	top: 50%;
 	left: 50%;
-	margin-top: -40px; /* heightの半分のマイナス値 */
-	margin-left: -40px; /* widthの半分のマイナス値 */
+	margin-top: -20px; /* heightの半分のマイナス値 */
+	margin-left: -20px; /* widthの半分のマイナス値 */
 	z-index: 100;
 }
 #loader img{
@@ -89,7 +89,7 @@ a.blocklink{
 	_position: absolute; /* IE6対策 */
 	top: 50%;
 	left: 0;
-	margin-top: 50px;
+	margin-top: 30px;
 	text-align: center;
 	z-index: 100;
 }
@@ -365,7 +365,7 @@ button{
 	border-width: 1px;
 	border-style: solid;
 	border-color: #808080;
-	background-color: transparent;
+	background-color: #FFFFFF;
 }
 button:hover {
 	border-width: 1px;
