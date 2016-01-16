@@ -200,12 +200,7 @@ function s_enemy_poison(d, tnum, t) {
 				is_poison: true,
 				effect: function (f, oi, teff, state, is_t, is_b) {
 					if (is_t && !is_b && state != "overlay") {
-						var now = f.Allys.Now[oi];
-						now.nowhp = Math.max(now.nowhp - d, 0);
-						if (now.nowhp <= 0) {
-							// 毒で死んだら全効果を解除
-							turneff_allbreak(now.turn_effect, true);
-						}
+						damage_ally(d, oi, false);
 						f.log_push("Unit[" + (oi + 1) + "]: 毒(" + d + "ダメージ)");
 					}
 				},

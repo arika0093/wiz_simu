@@ -2,9 +2,12 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" type="text/css" href="./css/default.css" />
-	<link rel="stylesheet" type="text/css" href="./css/deck.css" />
-	<link rel="stylesheet" type="text/css" href="./css/simulator.css" />
+    <link rel="stylesheet" type="text/css" href="./css/deck.css" />
+    <link rel="stylesheet" type="text/css" href="./css/default_sp.css" media="screen and (max-width: 599px)" />
+    <link rel="stylesheet" type="text/css" href="./css/default.css" media="screen and (min-width: 600px)" />
+    <link rel="stylesheet" type="text/css" href="./css/simulator_sp.css" media="screen and (max-width: 599px)" />
+    <link rel="stylesheet" type="text/css" href="./css/simulator.css" media="screen and (min-width: 600px)" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link type="text/css" rel="stylesheet"
 		  href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
     <!-- Search -->
@@ -249,5 +252,21 @@
 	<script type="text/javascript" charset="UTF-8" src="./js/simulator/answer.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="./js/simulator/special.js"></script>
     <script type="text/javascript" charset="UTF-8" src="./js/simulator/turneffect.js"></script>
+    <!-- スマホで閲覧時に要素を入れ替える -->
+    <script type="text/javascript">
+        $(function () {
+            var w_width = window.innerWidth;
+            if (w_width <= 640) {
+                var s_info = $("div.sim_info");
+                var s_ally = $("div.sim_ally");
+                var s_enem = $("div.sim_enemy");
+                var s_panl = $("div.sim_panel");
+                var a_info = $("div.ally_info");
+
+                s_enem.insertBefore(s_ally);
+                s_panl.insertBefore(s_ally);
+            }
+        });
+    </script>
 </body>
 </html>

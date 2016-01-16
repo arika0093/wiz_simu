@@ -4,6 +4,7 @@ html{
 }
 
 body{
+	box-sizing: border-box;
 	font-family: Meiryo;
 	font-size: 10.5pt;
 	width: 800px;
@@ -38,7 +39,7 @@ p.highlight{
 }
 a.blocklink{
 	display: block;
-	width: 59%;
+	width: 60%;
 	margin: 1ex 0.5em;
 	padding: 1ex 1em;
 	text-align: center;
@@ -46,7 +47,9 @@ a.blocklink{
 	border: 1px solid #60C0FF;
 	border-radius: 5px;
 }
-
+.sp_only{
+	display: none;
+}
 
 /* Clearfix */
 .clearfix {
@@ -153,6 +156,143 @@ div#Updatelog {
 div.textlog{
 	border: solid 1px #808080;
 	overflow: auto;
+}
+
+/* Deck Edit */
+div.SelField{
+	margin-right: 1em;
+}
+
+div.ally_deck{
+	width: 65%;
+	float: left;
+	margin: 1ex 0;
+	padding-bottom: 20px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #0060C0;
+	border-radius: 5px;
+}
+
+div.selbox_field{
+	padding: 1ex 0em 1.5ex 1em;
+	border-bottom: 1px solid #606060;
+}
+
+select.selbox{
+	width: 60%;
+	font-family: Meiryo;
+}
+
+button.deck_saveload, button.deck_reset{
+	width: 11.5%;
+	padding: 0 0.25em;
+	font-family: Meiryo;
+}
+
+div.sim_start{
+	width: 65%;
+	float: left;
+	margin: 0 0 1ex 1px;
+}
+
+div.deckmenu{
+	width: 28.5%;
+	float: right;
+	margin: 1ex 0;
+	padding: 1ex 1em;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #606060;
+	border-radius: 5px;
+	text-align: center;
+}
+
+input.decksel{
+	width: 75%;
+	margin: 4px;
+	padding: 0px 2px;
+	float: left;
+	font-family: Meiryo;
+}
+
+.ui-autocomplete{
+	font-family: Meiryo !important;
+	max-height: 250px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+.ui-autocomplete img{
+	width: 48px;
+	float: left;
+}
+.ui-autocomplete a{
+	margin-left: 1em;
+	float: left;
+}
+.ui-autocomplete p{
+	width: 250px;
+	color: #303030;
+	font-size: 8pt;
+	margin: 0;
+	padding: 0;
+	float: right;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+p.ally_skill{
+	width: 70%;
+	margin: -2px 0.5em 0 0;
+	padding: 0;
+	text-align: left;
+	float: right;
+	font-size: 8.5pt;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/*button.deck_saveload{
+	width: 48%;
+	margin: 1ex auto;
+	padding: 0.5ex;
+	font-family: Meiryo;
+}*/
+
+button#Start{
+	width: 100%;
+	padding: 1.5ex 0;
+	font-family: Meiryo;
+	border: 1px solid #606060;
+	background: #ffffff;
+	background: -moz-linear-gradient(top,  #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%);
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%);
+	background: linear-gradient(to bottom,  #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 );
+}
+button#Start:hover{
+	background: #e0f3fa;
+	background: -moz-linear-gradient(top,  #e0f3fa 0%, #d8f0fc 50%, #b8e2f6 51%, #b6dffd 100%);
+	background: -webkit-linear-gradient(top,  #e0f3fa 0%,#d8f0fc 50%,#b8e2f6 51%,#b6dffd 100%);
+	background: linear-gradient(to bottom,  #e0f3fa 0%,#d8f0fc 50%,#b8e2f6 51%,#b6dffd 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e0f3fa', endColorstr='#b6dffd',GradientType=0 );
+}
+
+button#Start:hover{
+	border-color: #138aff;
+}
+
+/* Twitter */
+div.twitter{
+	width: 32%;
+	margin-top: 1ex;
+	float: right;
+}
+iframe#twitter-widget-0{
+	max-width: 100% !important;
+	height: 445px !important;
 }
 
 /* Footer */

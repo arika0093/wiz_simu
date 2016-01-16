@@ -431,7 +431,7 @@ Quests = [
 						spec: 9,
 						move: {
 							on_popup: [
-								skill_counter(-1 - 1 - 1, -1),
+								skill_counter(9999, -1),
 								damage_switch(s_enemy_when_hpdown(0.5), m_enemy_angry()),
 							],
 							on_move: [
@@ -586,7 +586,7 @@ Quests = [
 						spec: 6,
 						move: {
 							on_popup: [
-								skill_counter(-1 - 1, -1),
+								skill_counter(9999, -1),
 							],
 						}
 					}, {
@@ -733,7 +733,7 @@ Quests = [
 						spec: 2,
 						move: {
 							on_popup: [
-								attack_counter(-1 - 19, -1),
+								attack_counter(9999, -1),
 							],
 						},
 					}, {

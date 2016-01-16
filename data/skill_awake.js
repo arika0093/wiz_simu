@@ -46,10 +46,14 @@ function Spec_statusup(hp, atk, specs) {
 }
 
 // 九死一生(Narrow escape from the jaw of death)
-function NEFTJOD(perc) {
+function NEFTJOD(perc, hpcond) {
+	if (!hpcond) {
+		hpcond = 10;
+	}
 	return {
 		type: "neftjod",
 		perc: perc,
+		hpcond: hpcond,
 	};
 }
 

@@ -2,7 +2,12 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" type="text/css" href="./css/default.css" />
+    <!--[if lt IE 9]>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="./css/default_sp.css" media="screen and (max-width: 599px)" />
+    <link rel="stylesheet" type="text/css" href="./css/default.css" media="screen and (min-width: 600px)" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link type="text/css" rel="stylesheet"
           href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
 	<!-- About Page -->
@@ -22,7 +27,7 @@
 			</dd>
 			<dt id="use">基本の使い方</dt>
 			<dd>
-                <p class="highlight"><span class="link_like" onclick="popup_demomovie();">こちらのgif動画</span>で基本的な操作を確認することができます。</p>
+                <p class="highlight sp_hidden"><span class="link_like" onclick="popup_demomovie();">こちらのgif動画</span>で基本的な操作を確認することができます。</p>
 				<ol>
 					<li>試走を行うクエスト/段位を選択します。</li>
 					<li>

@@ -1,0 +1,270 @@
+/* Simulator Style */
+/* --------------------------------- */
+/* Main Frame */
+div.Simulator {
+	padding: 2ex 1.5em;
+}
+
+/* Simulator Information */
+div.sim_info {
+	margin: 0.5ex 0em;
+	border: 1px solid #606060;
+	border-radius: 5px;
+}
+
+p#sim_info_status {
+	display: inline;
+	box-sizing: border-box;
+	width: 100%;
+	margin: 0;
+	padding: 1ex 0 0.5ex 0.5em;
+	float: left;
+}
+
+p#sim_turns {
+	display: inline;
+	box-sizing: border-box;
+	width: 100%;
+	margin: 0;
+	padding: 0ex 0.5em 0.5ex 0;
+	text-align: right;
+	float: right;
+}
+
+/* sim_result */
+div.sim_result_links {
+	box-sizing: border-box;
+	width: 100%;
+	float: right;
+	padding: 0 0.5em 0.5ex;
+	text-align: right;
+}
+
+div.sim_result_links a{
+	margin: 0 3px;
+	display: inline;
+	color: #0040FF;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#sim_share, #sim_restart, #sim_logview {
+	display: none;
+	font-size: 0;
+}
+
+/* Simulator Allys & Enemys */
+div.sim_ally{
+	box-sizing: border-box;
+	width: 100%;
+	margin: 1ex 0em 1ex 0em;
+	padding: 20px 0;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #606060;
+	border-radius: 5px;
+}
+
+div.sim_enemy {
+	box-sizing: border-box;
+	width: 100%;
+	margin: 1ex 0em 1ex 0em;
+	padding-top: 20px;
+	border-width: 1px 1px 0px;
+	border-style: solid;
+	border-color: #606060;
+	border-radius: 5px 5px 0px 0px;
+}
+
+img.chara_teff{
+	width: 28px;
+	position: absolute;
+	display: none;
+	top: 1px;
+	right: 1px;
+}
+
+div.ally_ss {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+}
+
+div.ally_ss button{
+	width: 200px;
+	font-family: Meiryo;
+	font-size: 9.5pt;
+	margin: 0;
+	border-width: 1px 0px 0px 1px;
+}
+
+p.ally_name, p.ally_stat, p.enemy_name, p.enemy_hp, p.enemy_stat{
+	width: 220px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+/* Ally info */
+div.ally_info{
+	box-sizing: border-box;
+	width: 100%;
+	margin: 1ex 0em 1ex 0em;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #606060;
+}
+
+div.ally_info p{
+	margin: 1.0ex 0.5em;
+}
+
+/* Panels */
+div.sim_panel {
+	box-sizing: border-box;
+	width: 100%;
+	/*height: 300px;*/
+	position: relative;
+	margin: 1ex 0.5em 2ex 0em;
+	padding: 0px;
+	border: 1px solid #606060;
+}
+
+div.sim_panel select{
+	width: 100%;
+	margin-bottom: 0.5ex;
+	font-family: Meiryo;
+}
+
+div.panel_addition {
+	width: 40%;
+	padding: 3px 0px 3px 0.5em;
+	float: left;
+}
+
+div.attack_target{
+	width: 18%;
+	padding: 3px 3px 3px 3px;
+	float: left;
+}
+
+div.attack_rand{
+	width: 25%;
+	padding: 3px 0.5em 3px 3px;
+	float: left;
+}
+
+div.panel_list {
+	border-top: 1px solid #606060;
+	border-bottom: 1px solid #606060;
+	padding: 0.5ex 0.5em 1.5ex;
+	clear: both;
+}
+
+button.panel_button {
+	font-family: Meiryo;
+	font-size: 9pt;
+	white-space: nowrap;
+	margin-top: 1ex;
+	width: 42px;
+	height: 36px;
+}
+
+div.sim_option {
+	overflow: auto;
+}
+
+div.field_move {
+	/*position: absolute;*/
+	/*bottom: 0px;*/
+}
+
+button.field_mov_button {
+	font-family: Meiryo;
+	font-size: 9.5pt;
+	box-sizing: border-box;
+	width: 50%;
+	margin: auto;
+	padding: 1ex 0;
+	color: #303030;
+}
+button#fld_move_before {
+	border-width: 0px 1px 0px 0px;
+	float: left;
+}
+button#fld_move_after {
+	border-width: 0px 0px 0px 0px;
+	float: right;
+}
+
+/* Logs */
+div.sim_log {
+	width: 50%;
+	height: 170px;
+	margin: 1ex 0.5em 0.5ex;
+	float: left;
+}
+
+div#sim_log_inner {
+	font-size: 8.5pt;
+	padding: 0.5ex 0.5em;
+}
+
+div#sim_log_inner div {
+	font-family: Meiryo;
+	padding: 1ex 0.5em;
+	line-height: normal;
+}
+
+/* Ally Status */
+div#allystat_index{
+	display: none;
+}
+
+div#allystat_teff {
+	height: 150px;
+	overflow-y: auto;
+}
+div#allystat_teff ul{
+	list-style-type: none;
+	padding-left: 1em;
+	margin: 1ex 0;
+}
+div#allystat_teff ul li{
+	margin-bottom: 2px;
+}
+div#allystat_teff ul img.teff_icon{
+	vertical-align: text-bottom;
+	width: 24px;
+	margin-right: 2px;
+	-webkit-filter: contrast(115%);
+	-moz-filter: contrast(115%);
+	-o-filter: contrast(115%);
+	filter: contrast(115%);
+}
+
+div#dialog_allystatus #allystat_tg_1{
+	margin-right: 1em;
+}
+
+div#dialog_allystatus .allystat_target {
+	padding: 1.5ex 0 1ex 0.5em;
+	border-top: 1px solid #AAA;
+}
+div#dialog_allystatus .allystat_target select {
+	font-family: Meiryo !important;
+}
+
+/* Images */
+img.chara_img_dead{
+	-webkit-filter: saturate(80%) brightness(60%);
+	-moz-filter: saturate(80%) brightness(60%);
+	-o-filter: saturate(80%) brightness(60%);
+	filter: saturate(80%) brightness(60%);
+}
+
+img.chara_img_impregnable{
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-o-filter: grayscale(100%);
+	filter: grayscale(100%);
+}
