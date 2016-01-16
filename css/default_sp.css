@@ -1,0 +1,376 @@
+/* Base */
+html{
+	background-color: #FAFAFF;
+}
+
+body{
+	box-sizing: border-box;
+	font-family: Meiryo;
+	font-size: 10pt;
+	width: 98%;
+	min-width: 360px;
+	margin: auto;
+	/*padding: 0ex 1em;*/
+	border-left: 1px solid #A0A0FF;
+	border-right: 1px solid #A0A0FF;
+	color: #303030;
+	background-color: #FFFFFF;
+}
+
+span.uline{
+	text-decoration: underline;
+}
+span.strong{
+	color: #FF4040;
+	font-weight: bolder;
+}
+span.secretly{
+	color: #C0C0C0;
+}
+span.link_like{
+	color: #0040FF;
+	text-decoration: underline;
+	cursor: pointer;
+}
+p.highlight{
+	margin-top: 0.5ex;
+	border: 1px dashed #2080FF;
+	border-radius: 5px;
+	padding: 1ex 1em;
+}
+a.blocklink{
+	box-sizing: border-box;
+	display: block;
+	max-width: 445px;
+	width: 100%;
+	margin: 1ex 0.5em;
+	padding: 1ex 1em;
+	text-align: center;
+	color: #2080FF;
+	border: 1px solid #60C0FF;
+	border-radius: 5px;
+}
+.sp_hidden{
+	display: none;
+}
+
+
+/* Clearfix */
+.clearfix {
+	/*display: inline-table;*/
+}
+.clearfix:after {
+	content: " ";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+/* Header */
+div#Header{
+	border-bottom: 1px solid #A0A0FF;
+}
+
+div.headerbase{
+	overflow: hidden;
+}
+
+a.toplink{
+	box-sizing: border-box;
+	display: block;
+	width: 100%;
+	/*float: left;*/
+	padding: 0.4ex 0.5em 0.6ex;
+	font-family: 'Times New Roman', Times, serif;
+	font-style: italic;
+	font-size: 36px;
+	text-decoration: none;
+	border-bottom: 1px solid #A0A0FF;
+	color: #0040FF;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+div.otherlinks{
+	box-sizing: border-box;
+	width: 100%;
+	/*float: right;*/
+	text-align: right;
+}
+
+div.otherlinks a{
+	display: inline-block;
+	font-style: italic;
+	padding: 0.5ex 1em;
+	color: #2080FF;
+	border-left: 1px solid #A0A0FF;
+}
+
+/* Main */
+div.Main, div.Simulator{
+	padding: 2ex 0.5em;
+}
+
+div.Main dl{
+	margin: 0;
+}
+
+dl dt{
+	margin: 0;
+	padding: 0.75ex 1em;
+	border-left: 4px solid #606060;
+	border-bottom: 1px solid #909090;
+}
+
+dl dd{
+	margin-left: 0.5em;
+	padding: 1.5ex 0em 3ex;
+}
+
+dd dl{
+	padding-top: 1.5ex;
+}
+dd dl dd:last-child{
+	padding: 1.5ex 0em 0ex;
+}
+
+ol{
+	margin: 0;
+	padding-left: 1.5em;
+}
+
+ol li{
+	margin-bottom: 4px;
+}
+
+a.itemhidden{
+	font-size: 8.5pt;
+	margin-left: 1em;
+	color: #0040FF;
+	vertical-align: bottom;
+}
+
+div#Updatelog {
+	margin: 0.5ex 0em;
+	padding: 0.5em;
+	height: 200px;
+}
+
+div.textlog{
+	border: solid 1px #808080;
+	overflow: auto;
+}
+
+/* Deck Edit */
+div.SelField{
+	margin-right: 0em;
+}
+
+div.ally_deck{
+	box-sizing: border-box;
+	width: 100%;
+	margin: 1ex 0;
+	padding-bottom: 20px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #0060C0;
+	border-radius: 5px;
+}
+
+div.selbox_field{
+	padding: 1ex 1em 1.5ex 1em;
+	border-bottom: 1px solid #606060;
+}
+
+select.selbox{
+	box-sizing: border-box;
+	width: 100%;
+	font-family: Meiryo;
+}
+
+button.deck_saveload, button.deck_reset{
+	width: 30%;
+	margin: 1ex 0.25em 0 0;
+	font-family: Meiryo;
+}
+
+div.deckmenu{
+	box-sizing: border-box;
+	width: 100%;
+	margin: 1ex 0;
+	padding: 1ex 1em;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #606060;
+	border-radius: 5px;
+	text-align: center;
+}
+
+div.sim_start{
+	box-sizing: border-box;
+	width: 100%;
+	margin: 0 0 1ex 1px;
+}
+
+input.decksel{
+	margin: 4px;
+	padding: 0px 2px;
+	float: left;
+	width: 70%;
+	max-width: 450px;
+	font-family: Meiryo;
+}
+
+.ui-autocomplete{
+	font-family: Meiryo !important;
+	width: 70%;
+	max-height: 250px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+.ui-autocomplete img{
+	width: 48px;
+	float: left;
+}
+.ui-autocomplete a{
+	min-width: 80%;
+	font-size: smaller;
+	float: left;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.ui-autocomplete p{
+	display: none;
+}
+
+p.ally_skill{
+	width: 65%;
+	margin: -2px 0.5em 0 0;
+	padding: 0;
+	text-align: left;
+	float: right;
+	font-size: 10pt;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+p.ally_skill:last-child{
+	display: none;
+}
+
+button#Start{
+	width: 100%;
+	padding: 1.5ex 0;
+	font-family: Meiryo;
+	border: 1px solid #606060;
+	background: #ffffff;
+	background: -moz-linear-gradient(top,  #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%);
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%);
+	background: linear-gradient(to bottom,  #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 );
+}
+
+button#Start:hover{
+	border-color: #138aff;
+}
+
+/* Twitter */
+div.twitter{
+	box-sizing: border-box;
+	width: 100%;
+	margin-top: 1ex;
+	display: none;
+}
+iframe#twitter-widget-0{
+	max-width: 100% !important;
+}
+
+/* Footer */
+div.footerbase{
+	border-top: 1px solid #A0A0FF;
+	border-bottom: 1px solid #A0A0FF;
+}
+
+div.github{
+	box-sizing: border-box;
+	width: 100%;
+	float: left;
+	color: #A0A0A0;
+}
+
+div.github p{
+	margin: 1ex 1em 0ex;
+	padding: 0;
+}
+
+div.github a{
+	color: #A0A0A0;
+}
+
+div.copyright{
+	box-sizing: border-box;
+	width: 100%;
+	float: right;
+}
+
+div.copyright p{
+	margin: 0ex 1em 1ex;
+	padding: 0;
+	color: #606060;
+	text-align: right;
+}
+
+/* Buttons */
+button{
+	border-width: 1px;
+	border-style: solid;
+	border-color: #808080;
+	background-color: transparent;
+}
+button:hover {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #40A0FF;
+	background-color: #aef3ff;
+	cursor: pointer;
+}
+button:active{
+	color: #000000;
+	border-color: #138aff;
+	background-color: #67e8ff;
+}
+button:disabled, button:disabled:hover {
+	background-color: #EAEAEA;
+	cursor: default;
+	border-color: #C0C0C0;
+}
+
+/* Dialogs */
+div.dialog_div{
+	display: none;
+}
+
+.ui-dialog{
+	font-family: Meiryo !important;
+	font-size: 10.5pt !important;
+	max-width: 96%;
+}
+.ui-button-text{
+	font-family: Meiryo !important;
+	font-size: 10.5pt !important;
+}
+
+select.sel_indialog{
+	font-family: Meiryo !important;
+	width: 100%;
+}
+select.sel_indialog option:nth-child(even){
+	background-color: #F0F0F0;
+}
+
+input.edit_indialog{
+	font-family: Meiryo !important;
+	width: 100%;
+}
