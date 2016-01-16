@@ -16472,6 +16472,140 @@ Cards = [{
 	},
 }, {
 	// -------------------------
+	// 追加: ウィズセレ(戦え！魔轟三鉄傑)
+	// -------------------------
+	name: "鬼装妖幻術師 ダムザ・イナ",
+	cardno: 5466,
+	imageno: 7259,
+	hp: 2467,
+	atk: 3299,
+	cost: 46,
+	attr: [0,1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "残りHPが80%以上でダメージアップ(350%)",
+		proc: add_cond(ChainAttack(3.5, 0), when_hp_more(0.8)),
+	},
+	ss1: {
+		desc: "敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(200%/500%)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([0, 0, 1, 0, 0], 5.0, 2.0), [0])],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],1),
+		NEFTJOD(30),
+		Spec_statusup(0,200, [9,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Fastskill(2),
+		Spec_statusup(200,0, [9,]),
+	],
+	as2: {
+		desc: "残りHPが80%以上でダメージアップ(450%)",
+		proc: add_cond(ChainAttack(4.5, 0), when_hp_more(0.8)),
+	},
+	ss2: {
+		desc: "敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ。3チェインを消費し雷属性の敵にはさらにダメージアップ(200%/500%/900%)",
+		turn: 9,
+		proc: [ss_damage_all(special_attr([0, 0, 1, 0, 0], ss_chain_cost(3, 9.0, 5.0), 2.0), [0])],
+	},
+	Lawake: [
+		Statusup(300,0),
+		Statusup(0,700),
+	],
+}, {
+	name: "レジェンドナース ガトリン・G・U",
+	cardno: 5469,
+	imageno: 7262,
+	hp: 2554,
+	atk: 3765,
+	cost: 45,
+	attr: [1,2],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "3チェインで敵単体を3回連続攻撃(350%)",
+		proc: ChainDualAttack(3.5, 3, 3),
+	},
+	ss1: {
+		desc: "敵全体へ水属性のダメージ(300%)(1t封印)",
+		turn: 3,
+		proc: [ss_damage_all(3, [1]), ss_allsealed_own(1)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],2),
+		Statusup(200,0),
+		NEFTJOD(30),
+		Statusup(0,200),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+	],
+	as2: {
+		desc: "3チェインで敵単体を3回連続攻撃(450%)",
+		proc: ChainDualAttack(4.5, 3, 3),
+	},
+	ss2: {
+		desc: "敵全体へ水属性のダメージ(500%)(1t封印)",
+		turn: 5,
+		proc: [ss_damage_all(5, [1]), ss_allsealed_own(1)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+	],
+}, {
+	name: "煉獄華 リエン・ユー",
+	cardno: 5463,
+	imageno: 7256,
+	hp: 3054,
+	atk: 2849,
+	cost: 43,
+	attr: [2,0],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "4チェインで敵単体を3回連続攻撃(400%)",
+		proc: ChainDualAttack(4, 4, 3),
+	},
+	ss1: {
+		desc: "味方全体のHPを750ダウンし、攻撃力を1000アップ(上限値2000)",
+		turn: 5,
+		proc: [ss_statusup_all([-750, 1000], [2000, 2000], -1)],
+	},
+	awakes: [
+		Fastskill(1),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_relief([0,0,1,0,0,],20),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		NEFTJOD(30),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "4チェインで敵単体を3回連続攻撃(500%)",
+		proc: ChainDualAttack(5, 4, 3),
+	},
+	ss2: {
+		desc: "味方全体のMAXHP50%を使い敵全体へ雷属性のダメージ(人数×130%)",
+		turn: 10,
+		proc: [ss_damage_all(ss_consume_all_cond(1.3, 0.5), [2])],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Statusup(0,500),
+	],
+},{
+	// -------------------------
 	// 追加: 天井岬1
 	// -------------------------
 	name: "小麦のプリンス ブレド・クラフツ",
@@ -16844,7 +16978,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削り、3チェインを消費し解答を見破る",
 		turn: 3,
-		proc: [ss_chain_cost(3, 1, 0)],
+		proc: [function (f) { ss_chain_cost(3, 1, 0)(f,-1,-1,true); return true; }],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
