@@ -63,6 +63,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "select", "select", "{068E2C
 	ProjectSection(SolutionItems) = preProject
 		js\createurl.js = js\createurl.js
 		js\decksuggest.js = js\decksuggest.js
+		js\loader.js = js\loader.js
 		js\loadurl.js = js\loadurl.js
 		js\pagetemp.js = js\pagetemp.js
 		js\questsel.js = js\questsel.js
