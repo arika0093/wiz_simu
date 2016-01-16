@@ -42,9 +42,9 @@ a.blocklink{
 	box-sizing: border-box;
 	display: block;
 	max-width: 445px;
-	width: 100%;
+	width: 98%;
 	margin: 1ex 0.5em;
-	padding: 1ex 1em;
+	padding: 2ex 1em;
 	text-align: center;
 	color: #2080FF;
 	border: 1px solid #60C0FF;
@@ -67,6 +67,29 @@ a.blocklink{
 	visibility: hidden;
 }
 
+/* Loader */
+#loader {
+	display: none;
+	position: fixed;
+	_position: absolute; /* IE6対策 */
+	top: 50%;
+	left: 50%;
+	margin-top: -40px; /* heightの半分のマイナス値 */
+	margin-left: -40px; /* widthの半分のマイナス値 */
+	z-index: 100;
+}
+
+#fade {
+	width: 100%;
+	height: 100%;
+	display: none;
+	background-color: #FFFFFF;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 50;
+}
+
 /* Header */
 div#Header{
 	border-bottom: 1px solid #A0A0FF;
@@ -84,7 +107,7 @@ a.toplink{
 	padding: 0.4ex 0.5em 0.6ex;
 	font-family: 'Times New Roman', Times, serif;
 	font-style: italic;
-	font-size: 36px;
+	font-size: 32px;
 	text-decoration: none;
 	border-bottom: 1px solid #A0A0FF;
 	color: #0040FF;
@@ -102,7 +125,7 @@ div.otherlinks{
 div.otherlinks a{
 	display: inline-block;
 	font-style: italic;
-	padding: 0.5ex 1em;
+	padding: 1ex 1em;
 	color: #2080FF;
 	border-left: 1px solid #A0A0FF;
 }
@@ -185,6 +208,7 @@ div.selbox_field{
 
 select.selbox{
 	box-sizing: border-box;
+	padding: 1ex 0em;
 	width: 100%;
 	font-family: Meiryo;
 }
@@ -192,6 +216,7 @@ select.selbox{
 button.deck_saveload, button.deck_reset{
 	width: 30%;
 	margin: 1ex 0.25em 0 0;
+	padding: 0.5ex 0em;
 	font-family: Meiryo;
 }
 
@@ -215,7 +240,6 @@ div.sim_start{
 
 input.decksel{
 	margin: 4px;
-	padding: 0px 2px;
 	float: left;
 	width: 70%;
 	max-width: 450px;
