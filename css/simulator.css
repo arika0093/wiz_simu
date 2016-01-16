@@ -243,6 +243,11 @@ div#dialog_allystatus .allystat_target select {
 	font-family: Meiryo !important;
 }
 
+/* Adsense */
+div.simu_ads{
+	margin-top: 1ex;
+}
+
 /* Images */
 img.chara_img_dead{
 	-webkit-filter: saturate(80%) brightness(60%);

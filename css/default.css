@@ -195,6 +195,11 @@ div.textlog{
 	overflow: auto;
 }
 
+/* Adsense */
+div#adsense{
+	margin: 0.5ex 0;
+}
+
 /* Deck Edit */
 div.SelField{
 	margin-right: 1em;
