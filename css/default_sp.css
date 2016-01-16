@@ -68,8 +68,8 @@ a.blocklink{
 }
 
 /* Loader */
-#loader {
-	display: none;
+#loader{
+	display: block;
 	position: fixed;
 	_position: absolute; /* IE6対策 */
 	top: 50%;
@@ -78,11 +78,21 @@ a.blocklink{
 	margin-left: -40px; /* widthの半分のマイナス値 */
 	z-index: 100;
 }
-
+#loadnoscr{
+	width: 100%;
+	display: block;
+	position: fixed;
+	_position: absolute; /* IE6対策 */
+	top: 50%;
+	left: 0;
+	margin-top: 50px;
+	text-align: center;
+	z-index: 100;
+}
 #fade {
 	width: 100%;
 	height: 100%;
-	display: none;
+	display: block;
 	background-color: #FFFFFF;
 	position: absolute;
 	top: 0px;
