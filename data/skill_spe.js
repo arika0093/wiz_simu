@@ -1,4 +1,4 @@
-// ------------------------------------------------------
+﻿// ------------------------------------------------------
 // 基本系
 // ------------------------------------------------------
 // (内部用)関数なら実行、普通の値ならそのまま返す
@@ -604,7 +604,7 @@ function get_fstval(f) {
 // 例: HP20%以上で5, それ以外で2の時は ss_hp_more(0.2, 5, 2)
 function ss_hp_more(cond, a, b) {
 	return function (fld, oi, ei) {
-		var now = fld.Allys.Now[i];
+		var now = fld.Allys.Now[oi];
 		return (now.nowhp >= (now.maxhp * cond)) ? a : b;
 	}
 }
@@ -612,7 +612,7 @@ function ss_hp_more(cond, a, b) {
 // HP条件(一定以下)
 function ss_hp_less(cond, a, b) {
 	return function (fld, oi, ei) {
-		var now = fld.Allys.Now[i];
+		var now = fld.Allys.Now[oi];
 		return (now.nowhp <= (now.maxhp * cond)) ? a : b;
 	}
 }
@@ -620,7 +620,7 @@ function ss_hp_less(cond, a, b) {
 // HP条件(一定未満)
 function ss_hp_under(cond, a, b) {
 	return function (fld, oi, ei) {
-		var now = fld.Allys.Now[i];
+		var now = fld.Allys.Now[oi];
 		return (now.nowhp < (now.maxhp * cond)) ? a : b;
 	}
 }

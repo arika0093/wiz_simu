@@ -1,4 +1,4 @@
-// -------------------------
+﻿// -------------------------
 // クエストデータ
 // -------------------------
 Quests = [
@@ -124,7 +124,7 @@ Quests = [
 								s_enemy_attack(200, 5, 1, false),
 							],
 							atrandom: false,
-							turn: 1,
+							turn: 2,
 							wait: 1,
 						},
 					}, {
@@ -157,7 +157,7 @@ Quests = [
 								s_enemy_attack(200, 5, 1, false),
 							],
 							atrandom: false,
-							turn: 1,
+							turn: 2,
 							wait: 1,
 						}
 					},
