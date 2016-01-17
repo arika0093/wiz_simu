@@ -8,7 +8,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "template", "template", "{BA
 	ProjectSection(SolutionItems) = preProject
 		template\footer.html = template\footer.html
 		template\header.html = template\header.html
-		template\siminfo.html = template\siminfo.html
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wiz_simu", "wiz_simu", "{54D72F80-1342-4A3D-B559-339A01E32933}"
@@ -30,7 +29,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{D7F5FD15-0EDA-4EC8-A7FE-62566A0FF4FA}"
 	ProjectSection(SolutionItems) = preProject
 		data\cards.js = data\cards.js
-		data\cards_all.js = data\cards_all.js
 		data\dynamic.js = data\dynamic.js
 		data\quests.js = data\quests.js
 		data\skill_ans.js = data\skill_ans.js

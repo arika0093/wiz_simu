@@ -513,6 +513,24 @@ function panel_healally(r) {
 	});
 }
 
+// スキルブーストパネル付与効果
+function panel_skillboost(t) {
+	var dsc = "スキルブースト(+" + t + ")";
+	return panel_addition(dsc, function (fld) {
+		for (var i = 0; i < fld.Allys.Deck.length; i++) {
+			// スキブ処理
+			var card = fld.Allys.Deck[i];
+			var now = fld.Allys.Now[i];
+			if (now.nowhp <= 0) { continue; }
+			if (!now.ss_isboost && !is_legendmode(card, now)) {
+				now.ss_current += t;
+				now.ss_isboost = true;
+			}
+		}
+		fld.log_push("パネル付与効果: " + dsc);
+	});
+}
+
 // ------------------------------------------------------
 // 解除系
 // ------------------------------------------------------

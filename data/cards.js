@@ -17046,7 +17046,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水・雷属性化し、ダメージ軽減(25%)・スキルチャージ(1)・チェイン(2)・攻撃力アップ(50%)の効果をランダムで付与",
 		turn: 7,
-		proc: [/*軽減(25%), スキブ(1t), */panel_chainplus(2), panel_attackup(0.5)],
+		proc: [/*軽減(25%),*/panel_skillboost(1), panel_chainplus(2), panel_attackup(0.5)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,1,1,0,0,]),

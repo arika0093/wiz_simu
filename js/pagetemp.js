@@ -8,7 +8,4 @@ $(function () {
 			$("#Updatelog").html(log);
 		}, "text");
 	}
-	if ($("#Simu_info")) {
-		$("#Simu_info").load("./template/siminfo.html");
-	}
 })

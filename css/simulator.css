@@ -38,7 +38,7 @@ div.sim_result_links {
 }
 
 div.sim_result_links a{
-	margin: 0 3px;
+	margin: 0 3px 0.5ex;
 	display: inline;
 	color: #0040FF;
 	text-decoration: underline;
