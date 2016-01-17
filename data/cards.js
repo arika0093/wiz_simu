@@ -1479,7 +1479,7 @@ Cards = [{
 	ss1: {
 		desc: "MAXHPの50％を使い敵単体へダメージ(380％)",
 		turn: 7,
-		proc: [ss_damage_s(3.8, [0]), ss_consume_own(0.5)],
+		proc: [ss_damage_s(3.8, [0], 1), ss_consume_own(0.5)],
 	},
 	islegend: true,
 	Lawake: [
@@ -1493,7 +1493,7 @@ Cards = [{
 	ss2: {
 		desc: "MAXHPの50％を使い敵単体へダメージ(500％)",
 		turn: 9,
-		proc: [ss_damage_s(5.0, [0]), ss_consume_own(0.5)],
+		proc: [ss_damage_s(5.0, [0], 1), ss_consume_own(0.5)],
 	},
 }, {
 	name: "妖しき夜行の領袖 シド・ハーロック",
@@ -5245,7 +5245,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、スキルカウンター待機",
 		turn: 7,
-		proc: [ss_skillcounter(1.0, 3)],
+		proc: [ss_skillcounter(2.0, 3)],
 	},
 	islegend: true,
 	Lawake: [
@@ -5260,7 +5260,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、スキルカウンター待機",
 		turn: 10,
-		proc: [ss_skillcounter(1.0, 5)],
+		proc: [ss_skillcounter(2.0, 5)],
 	},
 }, {
 	name: "AbCd-Θ:《万象焦尽天 ラヒルメ》",
@@ -15235,7 +15235,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、スキルカウンター待機",
 		turn: 7,
-		proc: [ss_skillcounter(1.0, 3)],
+		proc: [ss_skillcounter(2.0, 3)],
 	},
 	islegend: true,
 	Lawake: [
@@ -15249,7 +15249,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、スキルカウンター待機",
 		turn: 10,
-		proc: [ss_skillcounter(1.0, 5)],
+		proc: [ss_skillcounter(2.0, 5)],
 	},
 }, {
 	name: "AbCd-γ:《絶望の聖地 スビェート》",
@@ -17022,7 +17022,7 @@ Cards = [{
 	ss1: {
 		desc: "全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/900%)",
 		turn: 9,
-		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 9.0, 2.0))],
+		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 9.0, 2.0), [2])],
 	},
 	awakes: [
 		NEFTJOD(30),
@@ -17043,7 +17043,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/1200%)",
 		turn: 12,
-		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 12.0, 2.0))],
+		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 12.0, 2.0), [2])],
 	},
 	Lawake: [
 		Statusup(0,800),
