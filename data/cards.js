@@ -15841,6 +15841,50 @@ Cards = [{
 		Statusup(400, 0),
 	],
 }, {
+	name: "静かに祈り願う クリネア・マキア",
+	cardno: 5139,
+	imageno: 6882,
+	hp: 4558,
+	atk: 1876,
+	cost: 46,
+	attr: [1,0],
+	species: [3],
+	islegend: true,
+	as1: {
+		desc: "火・水属性の味方を回復、7チェインで更に回復(10%/17%)",
+		proc: [Heal(0.10, [1,1,0,0,0], 0), Heal(0.17, [1,1,0,0,0], 7)],
+	},
+	ss1: {
+		desc: "味方全体のHPを500アップ(上限値:2000)、さらにHPを回復(50%)",
+		turn: 5,
+		proc: [ss_statusup_all([500, 0], [2000, 2000], -1), ss_heal(0.5)],
+	},
+	awakes: [
+		Statusup(200,0),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],1),
+		Heal_afterbattle(10),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		NEFTJOD(30),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+	],
+	as2: {
+		desc: "火・水属性の味方を回復、7チェインで更に回復(13%/20%)",
+		proc: [Heal(0.13, [1,1,0,0,0], 0), Heal(0.20, [1,1,0,0,0], 7)],
+	},
+	ss2: {
+		desc: "味方全体のHPを1000アップ(上限値:2000)、さらにHPを完全回復",
+		turn: 8,
+		proc: [ss_statusup_all([1000, 0], [2000, 2000], -1), ss_heal(1)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}, {
 	name: "悲劇の螺旋 サッド・アルドベリク",
 	cardno: 5159,
 	imageno: 6902,
@@ -16604,7 +16648,54 @@ Cards = [{
 		Attr_statusup(0,100, [1,0,1,0,0,]),
 		Statusup(0,500),
 	],
-},{
+}, {
+	// -------------------------
+	// 追加: L実装(2016/01)
+	// -------------------------
+	name: "千色麗香の調香師シーラ・フリール",
+	cardno: 5491,
+	imageno: -1,
+	hp: 2438,
+	atk: 2259,
+	cost: 42,
+	attr: [2,1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "水・雷属性の味方の攻撃力をアップ、術士はさらにアップ(30%/45%)",
+		proc: [ChainEnhance(0.3, [0,1,1,0,0], 0), ChainSpecEnhance(0.45, [0,1,1,0,0], [9], 0)],
+	},
+	ss1: {
+		desc: "ジャンルパネルにチェインがプラス1の効果を付与",
+		turn: 4,
+		proc: [panel_chainplus(1)],
+	},
+	awakes: [
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(1),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		Spec_statusup(200,0, [9,]),
+		Spec_statusup(0,200, [9,]),
+	],
+	as2: {
+		desc: "水・雷属性の味方の攻撃力をアップ、術士はさらにアップ(30%/65%)",
+		proc: [ChainEnhance(0.3, [0,1,1,0,0], 0), ChainSpecEnhance(0.65, [0,1,1,0,0], [9], 0)],
+	},
+	ss2: {
+		desc: "ジャンルパネルを水・雷属性化し、チェインがプラス1の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(1)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+	],
+}, {
 	// -------------------------
 	// 追加: 天井岬1
 	// -------------------------
