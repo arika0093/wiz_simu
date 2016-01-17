@@ -4,7 +4,7 @@
 // (内部用)関数なら実行、普通の値ならそのまま返す
 function ss_ratedo(r, fld, oi, ti, is_fst) {
 	if (r && r.caller !== undefined) {
-		return r(fld, oi, ti, (is_fst !== false));
+		return ss_ratedo(r(fld, oi, ti, (is_fst !== false)), fld, oi, ti, (is_fst !== false));
 	} else {
 		return r;
 	}
@@ -260,9 +260,9 @@ function ss_statusup_all(up_arr, up_limit, t) {
 					var card = f.Allys.Deck[oi];
 					var nowtg = f.Allys.Now[oi];
 					if (state == "first") {
-						nowtg.maxhp += teff.up_hp;
-						nowtg.nowhp += teff.up_hp;
-						nowtg.atk += teff.up_atk;
+						nowtg.maxhp += Math.max(teff.up_hp, 1);
+						nowtg.nowhp += Math.max(teff.up_hp, 1);
+						nowtg.atk += Math.max(teff.up_atk, 0);
 					}
 					else if (state == "end" || state == "overlay") {
 						nowtg.maxhp -= teff.up_hp;
@@ -630,7 +630,7 @@ function special_attr(attrs, a, b) {
 	return function (fld, oi, ei) {
 		var e = GetNowBattleEnemys(ei);
 		// 表記値+100%(バグ？)
-		return ((attrs[e.attr] > 0) ? a : b) + 1;
+		return ((attrs[e.attr] > 0) ? ss_ratedo(a, fld, oi, ei, true) : b) + 1;
 	}
 }
 

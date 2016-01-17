@@ -60,22 +60,26 @@ function m_enemy_tgtype_minhp() {
 // 攻撃
 // -----------------------------------
 // (内部用)攻撃
-function _s_enemy_attack(fld, dmg, ei, ai) {
+function _s_enemy_attack(fld, dmg, ei, ai, is_dmg_const) {
 	var e = GetNowBattleEnemys(ei);
 	var cd = fld.Allys.Deck[ai];
 	var now = fld.Allys.Now[ai];
-	// 属性倍率
-	var rate = attr_magnification(e.attr, cd.attr[0]);
-	// 属性軽減取得
-	var relief = card_attr_relief(cd, now, e.attr);
-	// 攻撃前スキル(主に弱体化)確認
-	$.each(now.turn_effect, function (i, e) {
-		e.bef_damage ? rate = e.bef_damage(fld, rate) : false;
-	});
-	// 乱数
-	var rnd = damage_rand();
-	// 最終ダメ
-	var l_dmg = Math.floor(dmg * (1 - relief) * rnd * rate);
+	if (!is_dmg_const) {
+		// 属性倍率
+		var rate = attr_magnification(e.attr, cd.attr[0]);
+		// 属性軽減取得
+		var relief = card_attr_relief(cd, now, e.attr);
+		// 攻撃前スキル(主に弱体化)確認
+		$.each(now.turn_effect, function (i, e) {
+			e.bef_damage ? rate = e.bef_damage(fld, rate) : false;
+		});
+		// 乱数
+		var rnd = damage_rand();
+		// 最終ダメ
+		var l_dmg = Math.floor(dmg * (1 - relief) * rnd * rate);
+	} else {
+		var l_dmg = Math.floor(dmg);
+	}
 	damage_ally(l_dmg, ai, true);
 }
 
@@ -85,7 +89,7 @@ function s_enemy_attack(dmg, tnum, atkn, tgtype) {
 	return m_create_enemy_move(function (fld, n, nows) {
 		// ログ出力
 		Field.log_push("Enemy[" + (n + 1) + "]: " +
-			(atkn < fld.Allys.Deck.length ? tnum : "全") + "体" +
+			(tnum < fld.Allys.Deck.length ? tnum : "全") + "体" +
 			(atkn > 1 ? atkn + "連撃(" : "攻撃(") + dmg + ")");
 		// 攻撃対象取得
 		var tg = gen_enemytarget_array(tnum, atkn, tgtype, nows);
@@ -93,6 +97,49 @@ function s_enemy_attack(dmg, tnum, atkn, tgtype) {
 		for (var i = 0; i < tg.length; i++) {
 			for (var j = 0; j < tg[i].length; j++) {
 				_s_enemy_attack(fld, dmg * 2, n, tg[i][j]);
+			}
+		}
+	});
+}
+
+// 有利属性特攻(有利属性時ダメ, 不利属性時ダメ, 攻撃対象数, 攻撃回数, 対象詳細)
+function s_enemy_attack_attrsp(dmg_s, dmg_n, attr, tnum, atkn, tgtype) {
+	return m_create_enemy_move(function (fld, n, nows) {
+		// ログ出力
+		Field.log_push("Enemy[" + (n + 1) + "]: " +
+			(tnum < fld.Allys.Deck.length ? tnum : "全") + "体属性特攻" +
+			(atkn > 1 ? atkn + "連撃(" : "攻撃(") + dmg + ")");
+		// 攻撃対象取得
+		var tg = gen_enemytarget_array(tnum, atkn, tgtype, nows);
+		// 攻撃
+		for (var i = 0; i < tg.length; i++) {
+			for (var j = 0; j < tg[i].length; j++) {
+				var targ = tg[i][j];
+				var e = GetNowBattleEnemys(n);
+				var cd = fld.Allys.Deck[targ];
+				var dmg = attr_magnification(e.attr, cd.attr[0]) == 2 ? dmg_s / 2 : dmg_n * 2;
+				_s_enemy_attack(fld, dmg, n, targ);
+			}
+		}
+	});
+}
+
+// 割合ダメージ(削り幅, 攻撃対象数, 対象詳細)
+function s_enemy_attack_ratio(rate, tnum, tgtype) {
+	return m_create_enemy_move(function (fld, n, nows) {
+		// ログ出力
+		Field.log_push("Enemy[" + (n + 1) + "]: " +
+			(tnum < fld.Allys.Deck.length ? tnum : "全") + "体割合攻撃(" +
+			(rate * 100) + "%)");
+		// 攻撃対象取得
+		var tg = gen_enemytarget_array(tnum, 1, tgtype, nows);
+		// 攻撃
+		for (var i = 0; i < tg.length; i++) {
+			for (var j = 0; j < tg[i].length; j++) {
+				var targ = tg[i][j];
+				var nw = fld.Allys.Now[targ];
+				var dmg = nw.nowhp * rate;
+				_s_enemy_attack(fld, dmg, n, targ, true);
 			}
 		}
 	});
@@ -153,12 +200,7 @@ function s_enemy_poison(d, tnum, t) {
 				is_poison: true,
 				effect: function (f, oi, teff, state, is_t, is_b) {
 					if (is_t && !is_b && state != "overlay") {
-						var now = f.Allys.Now[oi];
-						now.nowhp = Math.max(now.nowhp - d, 0);
-						if (now.nowhp <= 0) {
-							// 毒で死んだら全効果を解除
-							turneff_allbreak(now.turn_effect, true);
-						}
+						damage_ally(d, oi, false);
 						f.log_push("Unit[" + (oi + 1) + "]: 毒(" + d + "ダメージ)");
 					}
 				},
@@ -248,9 +290,31 @@ function skill_counter(damage, t) {
 			turn: t,
 			lim_turn: t,
 			effect: function (){},
-			on_ss_damage: function (fld, ei, ai) {
-				Field.log_push("Enemy[" + (ei + 1) + "]: スキル反射発動(対象: Unit[" + (ai + 1) + "])");
+			on_ss_damage: function (f, ei, ai) {
+				f.log_push("Enemy[" + (ei + 1) + "]: スキル反射発動(対象: Unit[" + (ai + 1) + "])");
 				damage_ally(damage, ai, true);
+			}
+		});
+	});
+}
+
+// スキル反射(スキル実行)
+function skill_counter_func(skill, t, is_tgonly) {
+	return m_create_enemy_move(function (fld, n) {
+		var enemy = GetNowBattleEnemys(n);
+		Field.log_push("Enemy[" + (n + 1) + "]: スキル反射待機");
+		enemy.turn_effect.push({
+			desc: "スキル反射(" + damage + ")",
+			type: "skill_counter",
+			icon: "skill_counter",
+			isdual: false,
+			turn: t,
+			lim_turn: t,
+			effect: function () { },
+			on_ss_damage: function (f, ei, ai) {
+				f.log_push("Enemy[" + (ei + 1) + "]: スキル反射発動" + 
+					is_tgonly ? "(対象: Unit[" + (ai + 1) + "])" : "");
+				skill.move(f, ei);
 			}
 		});
 	});
@@ -269,16 +333,40 @@ function attack_counter(damage, t) {
 			turn: t,
 			lim_turn: t,
 			effect: function () { },
-			on_attack_damage: function (fld, ei, ai) {
-				Field.log_push("Enemy[" + (ei + 1) + "]: 物理カウンター発動(対象: Unit[" + (ai + 1) + "])");
+			on_attack_damage: function (f, ei, ai) {
+				f.log_push("Enemy[" + (ei + 1) + "]: 物理カウンター発動(対象: Unit[" + (ai + 1) + "])");
 				damage_ally(damage, ai, true);
 			}
 		});
 	});
 }
 
-// ダメージに反応してあれこれする
-function damage_switch(cond, func) {
+// 物理カウンター(多段式ダメージ)
+function attack_counter_dual(damage, t) {
+	return m_create_enemy_move(function (fld, n) {
+		var enemy = GetNowBattleEnemys(n);
+		Field.log_push("Enemy[" + (n + 1) + "]: 物理カウンター");
+		enemy.turn_effect.push({
+			desc: "多段式カウンター(" + damage + ")",
+			type: "attack_counter",
+			icon: "attack_counter_dual",
+			isdual: false,
+			turn: t,
+			lim_turn: t,
+			effect: function () { },
+			on_attack_damage: function (f, ei, ai) {
+				f.log_push("Enemy[" + (ei + 1) + "]: 多段式カウンター発動(対象: Unit[" + (ai + 1) + "])");
+				var atk_ct = enemy.flags.is_as_attack[ai];
+				for (var i = 0; i < atk_ct; i++) {
+					damage_ally(damage, ai, true);
+				}
+			}
+		});
+	});
+}
+
+// ダメージに反応してあれこれする(条件関数, 実行関数, ダメージフラグに関わらず常に実行するかどうか)
+function damage_switch(cond, func, is_always) {
 	var rst = m_create_enemy_move(function (fld, n) {
 		var enemy = GetNowBattleEnemys(n);
 		enemy.turn_effect.push({
@@ -290,6 +378,7 @@ function damage_switch(cond, func) {
 			effect: function () { },
 			cond: cond,
 			on_cond: func,
+			oncond_anytime: is_always === true,
 		});
 	});
 	return m_enemy_once(rst);
@@ -419,6 +508,20 @@ function s_enemy_chain_sealed(t) {
 // -----------------------------------
 // 条件
 // -----------------------------------
+// 指定した敵が倒れる
+function s_enemy_when_dead(i1, i2) {
+	return function (fld, n) {
+		var rst = true;
+		var e = GetNowBattleEnemys(i1);
+		rst = rst && e.nowhp <= 0;
+		if (i2 !== undefined) {
+			e = GetNowBattleEnemys(i2);
+			rst = rst && e.nowhp <= 0;
+		}
+		return rst;
+	}
+}
+
 // HPが指定%以下になったら実行
 function s_enemy_when_hpdown(rate) {
 	return function (fld, n) {

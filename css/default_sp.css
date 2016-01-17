@@ -6,8 +6,9 @@ html{
 body{
 	box-sizing: border-box;
 	font-family: Meiryo;
-	font-size: 10.5pt;
-	width: 800px;
+	font-size: 10pt;
+	width: 98%;
+	min-width: 360px;
 	margin: auto;
 	/*padding: 0ex 1em;*/
 	border-left: 1px solid #A0A0FF;
@@ -38,18 +39,21 @@ p.highlight{
 	padding: 1ex 1em;
 }
 a.blocklink{
+	box-sizing: border-box;
 	display: block;
-	width: 60%;
+	max-width: 445px;
+	width: 98%;
 	margin: 1ex 0.5em;
-	padding: 1ex 1em;
+	padding: 2ex 1em;
 	text-align: center;
 	color: #2080FF;
 	border: 1px solid #60C0FF;
 	border-radius: 5px;
 }
-.sp_only{
+.sp_hidden{
 	display: none;
 }
+
 
 /* Clearfix */
 .clearfix {
@@ -70,13 +74,13 @@ a.blocklink{
 	_position: absolute; /* IE6対策 */
 	top: 50%;
 	left: 50%;
-	margin-top: -40px; /* heightの半分のマイナス値 */
-	margin-left: -40px; /* widthの半分のマイナス値 */
+	margin-top: -20px; /* heightの半分のマイナス値 */
+	margin-left: -20px; /* widthの半分のマイナス値 */
 	z-index: 100;
 }
 #loader img{
-	width: 80px;
-	height: 80px;
+	width: 40px;
+	height: 40px;
 }
 #loadnoscr{
 	width: 100%;
@@ -85,7 +89,7 @@ a.blocklink{
 	_position: absolute; /* IE6対策 */
 	top: 50%;
 	left: 0;
-	margin-top: 50px;
+	margin-top: 30px;
 	text-align: center;
 	z-index: 100;
 }
@@ -106,43 +110,43 @@ div#Header{
 }
 
 div.headerbase{
-	position: relative;
+	overflow: hidden;
 }
 
 a.toplink{
+	box-sizing: border-box;
 	display: block;
-	width: 65%;
+	width: 100%;
 	/*float: left;*/
 	padding: 0.4ex 0.5em 0.6ex;
 	font-family: 'Times New Roman', Times, serif;
 	font-style: italic;
-	font-size: 40px;
+	font-size: 32px;
 	text-decoration: none;
-	/*border-bottom: 1px solid #808080;*/
+	border-bottom: 1px solid #A0A0FF;
 	color: #0040FF;
+	overflow: hidden;
+	white-space: nowrap;
 }
 
 div.otherlinks{
-	width: 35%;
+	box-sizing: border-box;
+	width: 100%;
 	/*float: right;*/
-	padding: 0.5ex 0.5em;
 	text-align: right;
-	position: absolute;
-	right: 0;
-	bottom: 0;
 }
 
 div.otherlinks a{
+	display: inline-block;
 	font-style: italic;
-	margin: 0ex 0.5em 0ex 0em;
+	padding: 1ex 1em;
 	color: #2080FF;
+	border-left: 1px solid #A0A0FF;
 }
 
 /* Main */
 div.Main, div.Simulator{
-	/*width: 800px;*/
-	/*border-right: 1px solid #A0A0FF;*/
-	padding: 2ex 1em;
+	padding: 2ex 0.5em;
 }
 
 div.Main dl{
@@ -157,7 +161,7 @@ dl dt{
 }
 
 dl dd{
-	margin-left: 2em;
+	margin-left: 0.5em;
 	padding: 1.5ex 0em 3ex;
 }
 
@@ -197,17 +201,17 @@ div.textlog{
 
 /* Adsense */
 div#Adsense{
-	margin: 3ex 0 -1ex;
+	margin: 4ex 0 -1ex;
 }
 
 /* Deck Edit */
 div.SelField{
-	margin-right: 1em;
+	margin-right: 0em;
 }
 
 div.ally_deck{
-	width: 65%;
-	float: left;
+	box-sizing: border-box;
+	width: 100%;
 	margin: 1ex 0;
 	padding-bottom: 20px;
 	border-width: 1px;
@@ -217,30 +221,27 @@ div.ally_deck{
 }
 
 div.selbox_field{
-	padding: 1ex 0em 1.5ex 1em;
+	padding: 1ex 1em 1.5ex 1em;
 	border-bottom: 1px solid #606060;
 }
 
 select.selbox{
-	width: 60%;
+	box-sizing: border-box;
+	padding: 1ex 0em;
+	width: 100%;
 	font-family: Meiryo;
 }
 
 button.deck_saveload, button.deck_reset{
-	width: 11.5%;
-	padding: 0 0.25em;
+	width: 30%;
+	margin: 1ex 0.25em 0 0;
+	padding: 0.5ex 0em;
 	font-family: Meiryo;
 }
 
-div.sim_start{
-	width: 65%;
-	float: left;
-	margin: 0 0 1ex 1px;
-}
-
 div.deckmenu{
-	width: 28.5%;
-	float: right;
+	box-sizing: border-box;
+	width: 100%;
 	margin: 1ex 0;
 	padding: 1ex 1em;
 	border-width: 1px;
@@ -250,16 +251,23 @@ div.deckmenu{
 	text-align: center;
 }
 
+div.sim_start{
+	box-sizing: border-box;
+	width: 100%;
+	margin: 0 0 1ex 1px;
+}
+
 input.decksel{
-	width: 75%;
 	margin: 4px;
-	padding: 0px 2px;
 	float: left;
+	width: 70%;
+	max-width: 450px;
 	font-family: Meiryo;
 }
 
 .ui-autocomplete{
 	font-family: Meiryo !important;
+	width: 70%;
 	max-height: 250px;
 	overflow-x: hidden;
 	overflow-y: scroll;
@@ -269,39 +277,31 @@ input.decksel{
 	float: left;
 }
 .ui-autocomplete a{
-	margin-left: 1em;
+	min-width: 80%;
+	font-size: smaller;
 	float: left;
-}
-.ui-autocomplete p{
-	width: 250px;
-	color: #303030;
-	font-size: 8pt;
-	margin: 0;
-	padding: 0;
-	float: right;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
+.ui-autocomplete p{
+	display: none;
+}
 
 p.ally_skill{
-	width: 70%;
+	width: 65%;
 	margin: -2px 0.5em 0 0;
 	padding: 0;
 	text-align: left;
 	float: right;
-	font-size: 8.5pt;
+	font-size: 10pt;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
-
-/*button.deck_saveload{
-	width: 48%;
-	margin: 1ex auto;
-	padding: 0.5ex;
-	font-family: Meiryo;
-}*/
+p.ally_skill:last-child{
+	display: none;
+}
 
 button#Start{
 	width: 100%;
@@ -314,13 +314,6 @@ button#Start{
 	background: linear-gradient(to bottom,  #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 );
 }
-button#Start:hover{
-	background: #e0f3fa;
-	background: -moz-linear-gradient(top,  #e0f3fa 0%, #d8f0fc 50%, #b8e2f6 51%, #b6dffd 100%);
-	background: -webkit-linear-gradient(top,  #e0f3fa 0%,#d8f0fc 50%,#b8e2f6 51%,#b6dffd 100%);
-	background: linear-gradient(to bottom,  #e0f3fa 0%,#d8f0fc 50%,#b8e2f6 51%,#b6dffd 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e0f3fa', endColorstr='#b6dffd',GradientType=0 );
-}
 
 button#Start:hover{
 	border-color: #138aff;
@@ -328,13 +321,13 @@ button#Start:hover{
 
 /* Twitter */
 div.twitter{
-	width: 32%;
+	box-sizing: border-box;
+	width: 100%;
 	margin-top: 1ex;
-	float: right;
+	display: none;
 }
 iframe#twitter-widget-0{
 	max-width: 100% !important;
-	height: 445px !important;
 }
 
 /* Footer */
@@ -344,13 +337,14 @@ div.footerbase{
 }
 
 div.github{
-	width: 60%;
+	box-sizing: border-box;
+	width: 100%;
 	float: left;
 	color: #A0A0A0;
 }
 
 div.github p{
-	margin: 1ex 1em;
+	margin: 1ex 1em 0ex;
 	padding: 0;
 }
 
@@ -359,12 +353,13 @@ div.github a{
 }
 
 div.copyright{
-	width: 35%;
+	box-sizing: border-box;
+	width: 100%;
 	float: right;
 }
 
 div.copyright p{
-	margin: 1ex 1em;
+	margin: 0ex 1em 1ex;
 	padding: 0;
 	color: #606060;
 	text-align: right;
@@ -375,7 +370,7 @@ button{
 	border-width: 1px;
 	border-style: solid;
 	border-color: #808080;
-	background-color: transparent;
+	background-color: #FFFFFF;
 }
 button:hover {
 	border-width: 1px;
@@ -403,6 +398,7 @@ div.dialog_div{
 .ui-dialog{
 	font-family: Meiryo !important;
 	font-size: 10.5pt !important;
+	max-width: 96%;
 }
 .ui-button-text{
 	font-family: Meiryo !important;

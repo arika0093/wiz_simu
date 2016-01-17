@@ -7,14 +7,15 @@ div.Simulator {
 
 /* Simulator Information */
 div.sim_info {
-	margin: 0.5ex 0.5em;
+	margin: 0.5ex 0em;
 	border: 1px solid #606060;
 	border-radius: 5px;
 }
 
 p#sim_info_status {
 	display: inline;
-	width: 40%;
+	box-sizing: border-box;
+	width: 100%;
 	margin: 0;
 	padding: 1ex 0 0.5ex 0.5em;
 	float: left;
@@ -22,16 +23,18 @@ p#sim_info_status {
 
 p#sim_turns {
 	display: inline;
-	width: 55%;
+	box-sizing: border-box;
+	width: 100%;
 	margin: 0;
-	padding: 1ex 0.5em 0.5ex 0;
+	padding: 0ex 0.5em 0.5ex 0;
 	text-align: right;
 	float: right;
 }
 
 /* sim_result */
 div.sim_result_links {
-	width: 70%;
+	box-sizing: border-box;
+	width: 100%;
 	float: right;
 	padding: 0 0.5em 0.5ex;
 	text-align: right;
@@ -48,13 +51,16 @@ div.sim_result_links a{
 #sim_share, #sim_restart, #sim_logview {
 	display: none;
 }
+#sim_restart, #sim_logview {
+	font-size: 0;
+}
 
 /* Simulator Allys & Enemys */
 div.sim_ally{
-	width: 50%;
-	margin: 1ex 0em 1ex 0.5em;
+	box-sizing: border-box;
+	width: 100%;
+	margin: 1ex 0em 1ex 0em;
 	padding: 20px 0;
-	float: left;
 	border-width: 1px;
 	border-style: solid;
 	border-color: #606060;
@@ -62,10 +68,10 @@ div.sim_ally{
 }
 
 div.sim_enemy {
-	width: 45%;
-	margin: 1ex 0.5em 1ex 0em;
+	box-sizing: border-box;
+	width: 100%;
+	margin: 1ex 0em 1ex 0em;
 	padding-top: 20px;
-	float: right;
 	border-width: 1px 1px 0px;
 	border-style: solid;
 	border-color: #606060;
@@ -92,13 +98,28 @@ div.ally_ss button{
 	font-size: 9.5pt;
 	margin: 0;
 	border-width: 1px 0px 0px 1px;
+	padding: 1ex 0em;
+}
+
+p.ally_name, p.ally_stat, p.enemy_name, p.enemy_hp, p.enemy_stat{
+	width: 220px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+p.ally_stat, p.enemy_hp{
+	margin: 0 0 0 0.5em;
+	padding: 0;
+	text-align: right;
+	float: right;
+	font-size: 9pt;
 }
 
 /* Ally info */
 div.ally_info{
-	width: 50%;
-	margin: 1ex 0em 1ex 0.5em;
-	float: left;
+	box-sizing: border-box;
+	width: 100%;
+	margin: 1ex 0em 1ex 0em;
 	border-width: 1px;
 	border-style: solid;
 	border-color: #606060;
@@ -110,23 +131,24 @@ div.ally_info p{
 
 /* Panels */
 div.sim_panel {
-	width: 45%;
+	box-sizing: border-box;
+	width: 100%;
 	/*height: 300px;*/
 	position: relative;
 	margin: 1ex 0.5em 2ex 0em;
 	padding: 0px;
-	float: right;
 	border: 1px solid #606060;
 }
 
 div.sim_panel select{
 	width: 100%;
 	margin-bottom: 0.5ex;
+	padding: 1ex 0em;
 	font-family: Meiryo;
 }
 
 div.panel_addition {
-	width: 50%;
+	width: 40%;
 	padding: 3px 0px 3px 0.5em;
 	float: left;
 }
@@ -155,8 +177,8 @@ button.panel_button {
 	font-size: 9pt;
 	white-space: nowrap;
 	margin-top: 1ex;
-	width: 42px;
-	height: 36px;
+	width: 46px;
+	height: 40px;
 }
 
 div.sim_option {
@@ -171,9 +193,10 @@ div.field_move {
 button.field_mov_button {
 	font-family: Meiryo;
 	font-size: 9.5pt;
-	width: 170px;
+	box-sizing: border-box;
+	width: 50%;
 	margin: auto;
-	padding: 1ex 0;
+	padding: 1.5ex 0;
 	color: #303030;
 }
 button#fld_move_before {
@@ -245,7 +268,7 @@ div#dialog_allystatus .allystat_target select {
 
 /* Adsense */
 div.simu_ads{
-	margin: 0 1em 2ex;
+	margin: 0 0.5em 3ex;
 }
 
 /* Images */
@@ -262,31 +285,3 @@ img.chara_img_impregnable{
 	-o-filter: grayscale(100%);
 	filter: grayscale(100%);
 }
-
-/* Panel Button */
-/*
-button#pnl_attr_0{
-	text-indent: -9999px;
-	background: #df1111;
-}
-
-button#pnl_attr_1{
-	text-indent: -9999px;
-	background: #38b2f8;
-}
-
-button#pnl_attr_2{
-	text-indent: -9999px;
-	background: #f2ea54;
-}
-
-button#pnl_attr_01{
-	text-indent: -9999px;
-	background: #df1111;
-	background: -moz-linear-gradient(left,  #df1111 50%, #38b2f8 51%);
-	background: -webkit-linear-gradient(left,  #df1111 50%,#38b2f8 51%);
-	background: linear-gradient(to right,  #df1111 50%,#38b2f8 51%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#df1111', endColorstr='#38b2f8',GradientType=1 );
-}
-
-*/

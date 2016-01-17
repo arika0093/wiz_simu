@@ -2,7 +2,12 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" type="text/css" href="./css/default.css" />
+    <!--[if lt IE 9]>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="./css/default_sp.css" media="screen and (max-width: 599px)" />
+    <link rel="stylesheet" type="text/css" href="./css/default.css" media="screen and (min-width: 600px)" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link type="text/css" rel="stylesheet"
           href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
 	<!-- About Page -->
@@ -22,7 +27,7 @@
 			</dd>
 			<dt id="use">基本の使い方</dt>
 			<dd>
-                <p class="highlight"><span class="link_like" onclick="popup_demomovie();">こちらのgif動画</span>で基本的な操作を確認することができます。</p>
+                <p class="highlight sp_hidden"><span class="link_like" onclick="popup_demomovie();">こちらのgif動画</span>で基本的な操作を確認することができます。</p>
 				<ol>
 					<li>試走を行うクエスト/段位を選択します。</li>
 					<li>
@@ -47,15 +52,14 @@
             <dt id="warn">注意点</dt>
             <dd>
                 軽減・遅延スキルの実装は今のところ行っていません。<br/>
-                また、敵行動は最低限実装しましたが完全に再現できていない部分も多々あります。<br/>
-                そのうち整備しますのでご了承ください。
+                また、敵行動は最低限実装しましたが再現できていない部分も多々あります。<br/>
+                後ほど整備しますのでご了承ください。
             </dd>
 			<dt id="recommend">閲覧推奨環境</dt>
 			<dd>
 				<span class="uline">Firefox</span>か<span class="uline">Google Chrome</span>での閲覧をオススメします。
 				多分Operaも大丈夫だと思います。<span class="strong">IEは非推奨です。</span><br />
-				スマートフォンでも動きはします(Xperia Z3 SOL26/Google Chromeで確認)。ですが非常に重いです。<br/>
-				そのうち対応するかもしれませんが、今のところはPCでの動作確認のみ行います。<br/>
+				スマートフォンへの仮対応を行いました。縦画面で閲覧することを推奨します。<br/>
 				また、デッキ情報を保存するためにCookieを有効にすることをオススメします。
 			</dd>
 			<dt id="thanks">お世話になった方/サイト</dt>
@@ -75,7 +79,7 @@
 					<dt>画像提供</dt>
 					<dd>
 						<a href="https://twitter.com/tsunahori">@tsunahori</a><br />
-                        <a href="https://twitter.com/alumina_wiz">@alumina_wiz</a><br />
+                        <a href="https://twitter.com/alumina_wiz">@alumina_wiz</a><br /> 
 					</dd>
 			   </dl>
 			</dd>
@@ -122,8 +126,8 @@
                 autoOpen: false,
                 show: "blind",
                 hide: "blind",
-                width: 805,
-                height: 585,
+                width: 820,
+                height: 600,
                 modal: true,
                 open: function () {
                     // hide

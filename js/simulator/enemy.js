@@ -105,6 +105,11 @@ function gen_enemytarget_array(tnum, atkn, tgtype, nows) {
 				t[i] = t[l] || a[l];
 			}
 		}
+		r.sort(function (a, b) {
+			if (a < b) return -1;
+			if (a > b) return 1;
+			return 0;
+		});
 		gen_ar[an] = r;
 	}
 	return gen_ar;
@@ -160,7 +165,7 @@ function get_enemy_move_skill(e) {
 	}
 	// 使用可能なスキルを抜き出す(countが未定義または0)
 	var uskils = $.grep(em, function (eskl) {
-		if (!eskl) { return false; }
+		if (!eskl) { return true; }
 		if (!eskl.count) {
 			return true;
 		} else {
@@ -178,6 +183,7 @@ function get_enemy_move_skill(e) {
 		var rst = uskils[call_index];
 		e.move.m_index = (call_index + 1) % (em.length);
 	}
+	if (rst == null) { return null; }
 	// count値をintervalの値にする
 	rst.count = rst.interval || 0;
 	return rst.move;

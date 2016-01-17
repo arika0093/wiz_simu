@@ -338,6 +338,35 @@ function ChainDeckSpecsAttack(base, specs, ch) {
 	];
 }
 
+// 戦闘不能味方数依存攻撃
+// (base: 戦闘不能味方が1体の時の割合, ch: 発動チェイン数)
+function ChainDeckSpecsAttack(base, ch) {
+	return [
+		{
+			type: "attack",
+			isall: false,
+			atkn: 1,
+			rate: 1 + base,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: create_specs(1),
+			cond: function (fld, oi, ei) {
+				var rates = [r1, r2, r3];
+				var count = 0;
+				// カウント
+				for (var i = 0; i < fld.Allys.Deck.length; i++) {
+					var nw = fld.Allys.Now[i];
+					if (nw.nowhp <= 0) {
+						count++;
+					}
+				}
+				this.rate = base * count;
+				return true;
+			},
+		}
+	];
+}
+
 // イチかバチか攻撃(最低値, 最高値, チェイン)
 function ChainStakesAttack(u, t, ch) {
 	return [

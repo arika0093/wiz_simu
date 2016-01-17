@@ -51,13 +51,14 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss)
 function enemy_damage_switch_check() {
 	var enemys = GetNowBattleEnemys();
 	$.each(enemys, function (i, e) {
-		if (e.flags.on_damage && e.turn_effect.length > 0) {
+		if (e.turn_effect.length > 0) {
 			var skillct = $.grep(e.turn_effect, function (g) {
 				return g.type == "damage_switch";
 			});
 			for (var j = 0; j < skillct.length; j++) {
 				var s = skillct[j];
-				if (s.cond(Field, i) && --s.on_cond.count <= 0) {
+				var ischeck = e.flags.on_damage || s.oncond_anytime;
+				if (ischeck && s.cond(Field, i) && --s.on_cond.count <= 0) {
 					s.on_cond.move(Field, i);
 					s.on_cond.count = s.on_cond.interval;
 				}
@@ -85,7 +86,7 @@ function damage_ally(dmg, index, neft_check) {
 		});
 	}
 	// 九死一生の判定
-	if (neft_check && bef >= Math.floor(now.maxhp / 10) && aft <= 0 && minhp == 0) {
+	if (neft_check && aft <= 0 && minhp == 0) {
 		var neft = pickup_awakes(Field.Allys.Deck[index], "neftjod", false);
 		if (is_legendmode(Field.Allys.Deck[index], now)) {
 			neft.concat(pickup_awakes(Field.Allys.Deck[index]), "neftjod", true);
@@ -95,7 +96,7 @@ function damage_ally(dmg, index, neft_check) {
 			$.each(neft, function (i, e) {
 				neft_total += e.perc / 100;
 			});
-			if (Math.random() <= neft_total) {
+			if (bef >= Math.floor(now.maxhp * neft[0].hpcond / 100) && Math.random() <= neft_total) {
 				// 九死一生発動
 				minhp = 1;
 				Field.log_push("Unit[" + (index + 1) + "]: 九死一生発動");

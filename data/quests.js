@@ -12,6 +12,7 @@ Quests = [
 		category: "test",
 		desc: "1戦しかありません。",
 		overlap: false,
+		hidden: true,
 		aprnum: 1,
 		data: [
 			{
@@ -26,7 +27,7 @@ Quests = [
 						move: {
 							// 先制行動
 							on_popup: [
-								attack_counter(10000, 3),
+								attack_counter_dual(1000, 3),
 							],
 							// 通常行動(ターンの値は1多くすること)
 							// 1ターン中に複数行動させたいなら配列で並べて記載
@@ -134,7 +135,7 @@ Quests = [
 						spec: 7,
 						move: {
 							on_popup: [
-								impregnable(99),
+								impregnable(-1),
 							],
 							on_move: [
 								s_enemy_attack(100, 3, 5, true),
@@ -202,7 +203,7 @@ Quests = [
 						spec: 5,
 						move: {
 							on_move: [
-								m_enemy_once(damage_block_own(30000, 99)),
+								m_enemy_once(damage_block_own(30000, -1)),
 								s_enemy_attack(250, 5, 1, false),
 							],
 							atrandom: false,
@@ -385,7 +386,7 @@ Quests = [
 						spec: 5,
 						move: {
 							on_popup: [
-								attack_counter(2000, 99),
+								attack_counter(2000, -1),
 							]
 						}
 					},
@@ -402,7 +403,7 @@ Quests = [
 						spec: 7,
 						move: {
 							on_popup: [
-								impregnable(99),
+								impregnable(-1),
 							]
 						}
 					},
@@ -419,7 +420,7 @@ Quests = [
 						spec: 7,
 						move: {
 							on_popup: [
-								damage_block_own(9000, 99),
+								damage_block_own(9000, -1),
 							]
 						}
 					}, {
@@ -430,7 +431,7 @@ Quests = [
 						spec: 9,
 						move: {
 							on_popup: [
-								skill_counter(999999, 99),
+								skill_counter(9999, -1),
 								damage_switch(s_enemy_when_hpdown(0.5), m_enemy_angry()),
 							],
 							on_move: [
@@ -585,7 +586,7 @@ Quests = [
 						spec: 6,
 						move: {
 							on_popup: [
-								skill_counter(9999, 99),
+								skill_counter(9999, -1),
 							],
 						}
 					}, {
@@ -732,7 +733,7 @@ Quests = [
 						spec: 2,
 						move: {
 							on_popup: [
-								attack_counter(99999, 99),
+								attack_counter(9999, -1),
 							],
 						},
 					}, {
@@ -751,9 +752,125 @@ Quests = [
 							wait: 2,
 						},
 					},
-
 				],
 			},
+		],
+	},
+
+	// -------------------------
+	// AbCd01 normal
+	// -------------------------
+	{
+		id: "abcd01_n",
+		name: "AbyssCode01 黒殻の王『黒業級』",
+		category: "abysscode",
+		desc: "",
+		aprnum: 4,
+		overlap: false,
+		hidden: true,
+		data: [
+			{
+				appearance: [1],
+				enemy: [
+					{
+						name: "ファハシュヴァイル",
+						hp: 30000,
+						imageno: 4067,
+						attr: 0,
+						spec: 0,
+					}, {
+						name: "ウラガーン",
+						hp: 40000,
+						imageno: 3706,
+						attr: 0,
+						spec: 11,
+					}, {
+						name: "ファングサーラ",
+						hp: 20000,
+						imageno: 4068,
+						attr: 0,
+						spec: 7,
+					},
+				],
+			}, {
+				appearance: [2],
+				enemy: [
+					{
+						name: "ルインコンダクター",
+						hp: 15000,
+						imageno: 4070,
+						attr: 2,
+						spec: 0,
+						move: {
+							on_popup: [
+								skill_counter(9999, -1),
+							]
+						}
+					}, {
+						name: "ウラガーン",
+						hp: 60000,
+						imageno: 3707,
+						attr: 0,
+						spec: 11,
+					},
+				],
+			}, {
+				appearance: [3],
+				enemy: [
+					{
+						name: "ファングサーラ",
+						hp: 25000,
+						imageno: 4068,
+						attr: 0,
+						spec: 7,
+					}, {
+						name: "ウラガーン",
+						hp: 90000,
+						imageno: 3708,
+						attr: 0,
+						spec: 11,
+					}, {
+						name: "リジョンディッシェル",
+						hp: 60000,
+						imageno: 4069,
+						attr: 0,
+						spec: 5,
+					},
+				],
+			}, {
+				appearance: [4],
+				enemy: [
+					{
+						name: "ファハシュヴァイル",
+						hp: 60000,
+						imageno: 4067,
+						attr: 0,
+						spec: 0,
+						move: {
+							on_popup: [
+								skill_counter(9999, -1),
+							]
+						}
+					}, {
+						name: "ウラガーン",
+						hp: 180000,
+						imageno: 4066,
+						attr: 0,
+						spec: 11,
+					}, {
+						name: "ファングサーラ",
+						hp: 35000,
+						imageno: 4068,
+						attr: 0,
+						spec: 7,
+						move: {
+							on_popup: [
+								skill_counter(9999, -1),
+							]
+						}
+					},
+				],
+			}
 		],
 	},
 ];
