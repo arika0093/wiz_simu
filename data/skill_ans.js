@@ -174,6 +174,15 @@ function ChainDualAttrAttack(rate, ch, n, attr) {
 			attr: attr,
 			spec: create_specs(1),
 			cond: always_true().cond,
+		}, {
+			type: "attack",
+			isall: false,
+			atkn: n,
+			rate: 1,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: create_specs(1),
+			cond: always_true().cond,
 		}
 	];
 }
