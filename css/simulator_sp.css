@@ -2,12 +2,13 @@
 /* --------------------------------- */
 /* Main Frame */
 div.Simulator {
-	padding: 0ex 1.5em 2ex;
+	padding: 0ex 0.5em 2ex;
 }
 
 /* Adsense */
 div.simu_ads{
-	margin: 2ex 1em -0ex;
+	margin: 2ex 0.5em 0.5ex;
+	border-bottom: 1px solid #A0A0FF;
 	text-align: center;
 }
 
