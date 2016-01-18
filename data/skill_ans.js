@@ -174,6 +174,15 @@ function ChainDualAttrAttack(rate, ch, n, attr) {
 			attr: attr,
 			spec: create_specs(1),
 			cond: always_true().cond,
+		}, {
+			type: "attack",
+			isall: false,
+			atkn: n,
+			rate: 1,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: create_specs(1),
+			cond: always_true().cond,
 		}
 	];
 }
@@ -320,13 +329,12 @@ function ChainDeckSpecsAttack(base, specs, ch) {
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
 			cond: function (fld, oi, ei) {
-				var rates = [r1, r2, r3];
 				var count = 0;
 				// 属性カウント
 				for (var i = 0; i < fld.Allys.Deck.length; i++) {
 					var cd = fld.Allys.Deck[i];
 					for (var s = 0; s < cd.species.length; s++) {
-						if (specs.indexOf(cd.species[s]) >= 0) {
+						if (cd.indexOf(specs.species[s]) >= 0) {
 							count++;
 						}
 					}

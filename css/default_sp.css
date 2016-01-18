@@ -6,7 +6,7 @@ html{
 body{
 	box-sizing: border-box;
 	font-family: Meiryo;
-	font-size: 10pt;
+	font-size: 11pt;
 	width: 98%;
 	min-width: 360px;
 	margin: auto;
@@ -201,7 +201,7 @@ div.textlog{
 
 /* Adsense */
 div#Adsense{
-	margin: 2.5ex 0 0ex;
+	margin: 4ex 0 -1ex;
 }
 
 /* Deck Edit */
