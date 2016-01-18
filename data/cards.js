@@ -1365,7 +1365,7 @@ Cards = [{
 	},
 }, {
 	name: "陽光の綺麗石 サティサ・テオトリ",
-	cardno: -1,
+	cardno: 80001,
 	imageno: 5373,
 	hp: 2402,
 	atk: 3023,
@@ -1759,7 +1759,7 @@ Cards = [{
 	},
 }, {
 	name: "悠の照神 ステイシー・マーキュリー",
-	cardno: -1,
+	cardno: 80002,
 	imageno: 5418,
 	hp: 2521,
 	atk: 2934,
@@ -1802,7 +1802,7 @@ Cards = [{
 	},
 }, {
 	name: "時を呼ぶ ステイシー・マーキュリー",
-	cardno: -1,
+	cardno: 80003,
 	imageno: 5403,
 	hp: 2431,
 	atk: 3142,
@@ -1933,7 +1933,7 @@ Cards = [{
 	},
 }, {
 	name: "叡智の編纂者 ティア・ソピア",
-	cardno: -1,
+	cardno: 80004,
 	imageno: 5223,
 	hp: 3003,
 	atk: 2543,
@@ -4297,7 +4297,7 @@ Cards = [{
 	},
 }, {
 	name: "AbCd-Μμ:《輝煌を拒絶する テルミド》",
-	cardno: -1,
+	cardno: 80005,
 	imageno: 6770,
 	hp: 2778,
 	atk: 3132,
@@ -10790,7 +10790,7 @@ Cards = [{
 	},
 }, {
 	// -------------------------
-	// 雷属性
+	// 雷属性 (thanks @rinshandream)
 	// -------------------------
 	name: "儚きとこしえ エリアナ・グロス",
 	cardno: 4291,
@@ -11402,6 +11402,50 @@ Cards = [{
 		desc: "ジャンルパネルをALL属性化し、回復の効果を付与(5％)",
 		turn: 7,
 		proc: [panel_healally(0.05)],
+	},
+}, {
+	name: "真紅の降魔剣 イザーク・セラフィム",
+	cardno: 3987,
+	imageno: 5668,
+	hp: 2339,
+	atk: 2832,
+	cost: 43,
+	attr: [2, -1],
+	species: [3],
+	awakes: [
+		Costdown(2),
+		Statusup(0, 200),
+		Fastskill(1),
+		Costdown(2),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0]),
+		Statusup(0, 200),
+		Panel_boost([0, 0, 1, 0, 0], 1),
+		Fastskill(1),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0]),
+		Spec_statusup(0, 200, [3]),
+	],
+	as1: {
+		desc: "3チェインでダメージアップ/350％",
+		proc: ChainAttack(3.5, 3),
+	},
+	ss1: {
+		desc: "敵全体のHPを20％減少させる",
+		turn: 9,
+		proc: [ss_ratiodamage_all(0.2)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 400),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0]),
+	],
+	as2: {
+		desc: "3チェインでダメージアップ/450％",
+		proc: ChainAttack(4.5, 3),
+	},
+	ss2: {
+		desc: "敵全体のHPを25％減少させる",
+		turn: 12,
+		proc: [ss_ratiodamage_all(0.25)],
 	},
 }, {
 	name: "嬌艶幻夢 イルメイア・サニエ",
@@ -15363,7 +15407,7 @@ Cards = [{
 	],
 	as1: {
 		desc: "15チェインでダメージアップ/1000％",
-		proc: ChainAttack(10.0, 5),
+		proc: ChainAttack(10.0, 15),
 	},
 	ss1: {
 		desc: "味方全体のスペシャルスキルの発動ターンを3早める",
@@ -15377,7 +15421,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "15チェインでダメージアップ/1100％",
-		proc: ChainAttack(11.0, 5),
+		proc: ChainAttack(11.0, 15),
 	},
 	ss2: {
 		desc: "味方全体のスペシャルスキルの発動ターンを4早める",
@@ -16104,6 +16148,50 @@ Cards = [{
 	// -------------------------
 	// 追加: コナンコラボ
 	// -------------------------
+	name: "真実を暴く鋭い推理 江戸川コナン",
+	cardno: 5237,
+	imageno: 6932,
+	hp: 4530,
+	atk: 2004,
+	cost: 45,
+	attr: [2, 3],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "雷属性の味方のHPを回復(13%)",
+		proc: Heal(0.12, [0, 0, 1, 0, 0], 0),
+	},
+	ss1: {
+		desc: "ジャンルパネルにチェインがプラス1の効果を付与",
+		turn: 3,
+		proc: [panel_chainplus(1)],
+	},
+	awakes: [
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(1),
+		Statusup(0, 200),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Heal_afterbattle(0),
+		Fastskill(2),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "雷属性の味方のHPを回復(16%)、さらに雷属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.16, [0, 0, 1, 0, 0], 0), ChainEnhance(0.30, [0, 0, 1, 0, 0], 0)],
+	},
+	ss2: {
+		desc: "ジャンルパネルを雷&光属性化し、チェインがプラス1の効果を付与",
+		turn: 6,
+		proc: [panel_chainplus(1)],
+	},
+	Lawake: [
+		Statusup(500, 0),
+		Attr_statusup(0, 100, [0, 0, 0, 0, 0, ]),
+	],
+}, {
 	name: "現代のホームズ コナン&新一",
 	cardno: 90003,
 	imageno: 6941,
@@ -16816,7 +16904,7 @@ Cards = [{
 	},
 	ss2: {
 		desc: "敵全体へ水属性のダメージ(200%)、さらに火属性の敵には特攻ダメージ(900%)",
-		turn: 8,
+		turn: 9,
 		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 9.0, 2.0), [1])]
 	},
 }, {

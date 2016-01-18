@@ -326,7 +326,7 @@ div.twitter{
 	margin-top: 1ex;
 	display: none;
 }
-iframe#twitter-widget-0{
+iframe.twitter-timeline{
 	max-width: 100% !important;
 }
 

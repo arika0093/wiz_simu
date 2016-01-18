@@ -183,8 +183,14 @@ $(function () {
 
 // 全読み込みが終わってから実行
 $(window).load(function () {
-	// Simulatorの位置に移動する
-	scrollTo(0, $("#sim_top").offset().top + 1);
+	// スマホ版でなければ
+	if (window.innerWidth >= 600) {
+		// Simulatorの位置に移動する
+		scrollTo(0, $("#sim_top").offset().top + 1);
+	} else {
+		// 広告の位置に移動する
+		scrollTo(0, $("div.simu_ads").offset().top + 1);
+	}
 });
 
 // 次のターンに進む

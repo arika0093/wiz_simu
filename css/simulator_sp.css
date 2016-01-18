@@ -269,6 +269,7 @@ div#dialog_allystatus .allystat_target select {
 /* Adsense */
 div.simu_ads{
 	margin: 0 0.5em 3ex;
+	text-align: center;
 }
 
 /* Images */

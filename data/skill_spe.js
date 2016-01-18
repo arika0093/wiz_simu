@@ -261,7 +261,7 @@ function ss_statusup_all(up_arr, up_limit, t) {
 					var nowtg = f.Allys.Now[oi];
 					if (state == "first") {
 						nowtg.maxhp = Math.max(teff.up_hp + nowtg.maxhp, 1);
-						nowtg.nowhp = Math.max(teff.up_hp + nowtg.nowhp, 1);
+						nowtg.nowhp = Math.max(teff.up_hp + nowtg.nowhp, nowtg.nowhp);
 						nowtg.atk = Math.max(teff.up_atk + nowtg.atk, 0);
 					}
 					else if (state == "end" || state == "overlay") {

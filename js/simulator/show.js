@@ -411,7 +411,8 @@ function tweet_result() {
 	};
 	create_tweeturl(Field.Quest.name, durturn_string(), totalturn_string(), fc);
 	// popup block対策
-	window.open("", "tweet_result", win_opt);
+	var w = window.open("", "tweet_result", win_opt);
+	w.document.write("loading...");
 }
 
 // fieldのログを読む

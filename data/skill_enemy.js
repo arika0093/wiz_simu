@@ -126,7 +126,7 @@ function s_enemy_attack_attrsp(dmg_s, dmg_n, attr, tnum, atkn, tgtype) {
 
 // 割合ダメージ(削り幅, 攻撃対象数, 対象詳細)
 function s_enemy_attack_ratio(rate, tnum, tgtype) {
-	return m_create_enemy_move(function (fld, n, nows) {
+	return m_create_enemy_move(function (fld, n, nows, is_counter) {
 		// ログ出力
 		Field.log_push("Enemy[" + (n + 1) + "]: " +
 			(tnum < fld.Allys.Deck.length ? tnum : "全") + "体割合攻撃(" +
@@ -140,6 +140,10 @@ function s_enemy_attack_ratio(rate, tnum, tgtype) {
 				var nw = fld.Allys.Now[targ];
 				var dmg = nw.nowhp * rate;
 				_s_enemy_attack(fld, dmg, n, targ, true);
+				if (!is_counter) {
+					// スキルカウンターを有効に
+					nw.flags.skill_counter[n] = true;
+				}
 			}
 		}
 	});
