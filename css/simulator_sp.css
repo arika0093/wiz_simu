@@ -2,7 +2,13 @@
 /* --------------------------------- */
 /* Main Frame */
 div.Simulator {
-	padding: 2ex 1.5em;
+	padding: 0ex 1.5em 2ex;
+}
+
+/* Adsense */
+div.simu_ads{
+	margin: 2ex 1em -0ex;
+	text-align: center;
 }
 
 /* Simulator Information */
@@ -264,12 +270,6 @@ div#dialog_allystatus .allystat_target {
 }
 div#dialog_allystatus .allystat_target select {
 	font-family: Meiryo !important;
-}
-
-/* Adsense */
-div.simu_ads{
-	margin: 0 0.5em 3ex;
-	text-align: center;
 }
 
 /* Images */
