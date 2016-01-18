@@ -3,11 +3,12 @@
 /* Main Frame */
 div.Simulator {
 	padding: 0ex 1.5em 2ex;
+	font-size: 10pt;
 }
 
 /* Adsense */
 div.simu_ads{
-	margin: 2ex 1em -0ex;
+	margin: 2ex 1em 2ex;
 	text-align: center;
 }
 
@@ -16,6 +17,7 @@ div.sim_info {
 	margin: 0.5ex 0em;
 	border: 1px solid #606060;
 	border-radius: 5px;
+	font-size: 11pt;
 }
 
 p#sim_info_status {
@@ -94,7 +96,7 @@ img.chara_teff{
 
 div.ally_ss {
 	position: absolute;
-	bottom: 0px;
+	bottom: 1px;
 	right: 0px;
 }
 
