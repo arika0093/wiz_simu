@@ -245,7 +245,8 @@ div#dialog_allystatus .allystat_target select {
 
 /* Adsense */
 div.simu_ads{
-	margin: 0 1em 2ex;
+	padding: 2ex 0.5em;
+	border-top: 1px solid #A0A0FF;
 }
 
 /* Images */
