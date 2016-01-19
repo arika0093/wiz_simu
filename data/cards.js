@@ -8055,7 +8055,7 @@ Cards = [{
 	ss1: {
 		desc: "2ターン水属性の味方の攻撃力をアップ(+40％)",
 		turn: 6,
-		proc: [ss_enhance_own(0.4, 2)],
+		proc: [ss_enhance_all(0.4, 2, [0,1,0,0,0])],
 	},
 	islegend: true,
 	Lawake: [
@@ -8069,7 +8069,7 @@ Cards = [{
 	ss2: {
 		desc: "4ターン水属性の味方の攻撃力をアップ(+60％)",
 		turn: 9,
-		proc: [ss_enhance_own(0.6, 4)],
+		proc: [ss_enhance_all(0.6, 4, [0,1,0,0,0])],
 	},
 }, {
 	name: "浮遊島の守護者 ピエラ・サバタ",
@@ -11420,7 +11420,7 @@ Cards = [{
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0]),
 		Statusup(0, 200),
 		Panel_boost([0, 0, 1, 0, 0], 1),
-		Fastskill(1),
+		Fastskill(2),
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0]),
 		Spec_statusup(0, 200, [3]),
 	],
@@ -15949,7 +15949,7 @@ Cards = [{
 	},
 	ss1: {
 		desc: "味方全体のMAXHPの50%を使い敵単体へ水属性ダメージ(240%×味方数)",
-		turn: 6,
+		turn: 10,
 		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.5), [1], 1)]
 	},
 	islegend: true,
@@ -15963,7 +15963,7 @@ Cards = [{
 	},
 	ss2: {
 		desc: "味方全体のMAXHPの50%を使い敵単体へダメージ(300%×味方数)",
-		turn: 8,
+		turn: 12,
 		proc: [ss_damage_s(ss_consume_all_cond(3.0, 0.5), [1], 1)]
 	},
 }, {
@@ -16829,7 +16829,7 @@ Cards = [{
 		Attr_relief([0, 0, 0, 1, 1, ], 30),
 		Panel_boost([0, 0, 1, 0, 0], 2),
 		Attr_statusup(100, 0, [0, 0, 1, 0, 0]),
-		Fastskill(1),
+		Fastskill(2),
 		Panel_boost([0, 0, 1, 0, 0], 2),
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0]),
 		Heal_afterbattle(10),
