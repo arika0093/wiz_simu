@@ -266,7 +266,7 @@ function ss_statusup_all(up_arr, up_limit, t) {
 					}
 					else if (state == "end" || state == "overlay") {
 						nowtg.maxhp -= teff.up_hp;
-						nowtg.nowhp = Math.min(nowtg.nowhp, nowtg.maxhp);
+						nowtg.nowhp = Math.min(nowtg.nowhp - teff.up_hp, nowtg.maxhp);
 						nowtg.atk -= teff.up_atk;
 					}
 				},
