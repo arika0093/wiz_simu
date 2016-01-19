@@ -204,6 +204,13 @@ div#sim_log_inner div {
 	line-height: normal;
 }
 
+div.tweet_preview {
+	padding: 0.5ex 0.5em;
+	border: 1px solid #C0C0C0;
+	height: 100px;
+	overflow-y: scroll;
+}
+
 /* Ally Status */
 div#allystat_index{
 	display: none;

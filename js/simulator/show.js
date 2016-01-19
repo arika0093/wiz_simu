@@ -27,6 +27,7 @@ function sim_show() {
 	// sim_result
 	if (Field.Status.finish) {
 		$("#sim_share").fadeIn("slow");
+		$("#dialog_simfinish_popup").dialog("open");
 	} else {
 		$("#sim_share").fadeOut("slow");
 	}
@@ -315,6 +316,41 @@ function sim_show() {
 			now.target[1] = Number($("#atarget_sel_2").val());
 			// title show
 			$(".ui-dialog-titlebar").show();
+		},
+	});
+	// tweet result
+	$("#dialog_simfinish_popup").dialog({
+		autoOpen: false,
+		modal: true,
+		width: 450,
+		show: "blind",
+		hide: "blind",
+		open: function () {
+			var nam = Field.Quest.name;
+			var trn = durturn_string();
+			var tot = totalturn_string();
+			var text = "このデッキを使って " + nam + " を " + tot + " ターン(" + trn + ") で突破！";
+			// hide
+			$(".ui-dialog-titlebar").hide();
+			// tweet data
+			$("#simfinish_tweettext").text(text);
+			// close when click dialog outside
+			$('.ui-widget-overlay').bind('click', function () {
+				$("#dialog_simfinish_popup").dialog('close');
+			});
+		},
+		close: function() {
+			// title show
+			$(".ui-dialog-titlebar").show();
+		},
+		buttons: {
+			"結果をツイートする": function () {
+				tweet_result();
+				$(this).dialog("close");
+			},
+			"閉じる": function () {
+				$(this).dialog("close");
+			},
 		},
 	});
 	// no effect

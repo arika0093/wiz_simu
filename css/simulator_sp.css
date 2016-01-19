@@ -58,8 +58,6 @@ div.sim_result_links a{
 
 #sim_share, #sim_restart, #sim_logview {
 	display: none;
-}
-#sim_restart, #sim_logview {
 	font-size: 0;
 }
 
@@ -233,6 +231,13 @@ div#sim_log_inner div {
 	font-family: Meiryo;
 	padding: 1ex 0.5em;
 	line-height: normal;
+}
+
+div.tweet_preview {
+	padding: 0.5ex 0.5em;
+	border: 1px solid #C0C0C0;
+	height: 100px;
+	overflow-y: scroll;
 }
 
 /* Ally Status */

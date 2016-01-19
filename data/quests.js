@@ -53,7 +53,7 @@ Quests = [
 	// -------------------------
 	{
 		id: "grade14",
-		name: "賢王【朧】肆式(トーナメント14段)",
+		name: "肆式(トーナメント14段)",
 		category: "tornament",
 		desc: "雷推奨のトーナメントです。1位入賞時4232pt。",
 		overlap: false,
@@ -320,7 +320,7 @@ Quests = [
 	// -------------------------
 	{
 		id: "grade13",
-		name: "賢王【煉】参式(トーナメント13段)",
+		name: "参式(トーナメント13段)",
 		category: "tornament",
 		desc: "水推奨のトーナメントです。1位入賞時3640pt。",
 		aprnum: 5,
@@ -460,7 +460,7 @@ Quests = [
 	// -------------------------
 	{
 		id: "grade12",
-		name: "賢王【瞬】弐式(トーナメント12段)",
+		name: "弐式(トーナメント12段)",
 		category: "tornament",
 		desc: "火推奨のトーナメントです。1位入賞時2600pt。入賞確実: 5-6t / タイム勝負: 7t-",
 		aprnum: 5,
@@ -622,7 +622,7 @@ Quests = [
 	// -------------------------
 	{
 		id: "grade11",
-		name: "賢王【暁】壱式(トーナメント11段)",
+		name: "壱式(トーナメント11段)",
 		category: "tornament",
 		desc: "雷推奨のトーナメントです。1位入賞時2500pt。",
 		aprnum: 5,
@@ -757,120 +757,4 @@ Quests = [
 		],
 	},
 
-	// -------------------------
-	// AbCd01 normal
-	// -------------------------
-	{
-		id: "abcd01_n",
-		name: "AbyssCode01 黒殻の王『黒業級』",
-		category: "abysscode",
-		desc: "",
-		aprnum: 4,
-		overlap: false,
-		hidden: true,
-		data: [
-			{
-				appearance: [1],
-				enemy: [
-					{
-						name: "ファハシュヴァイル",
-						hp: 30000,
-						imageno: 4067,
-						attr: 0,
-						spec: 0,
-					}, {
-						name: "ウラガーン",
-						hp: 40000,
-						imageno: 3706,
-						attr: 0,
-						spec: 11,
-					}, {
-						name: "ファングサーラ",
-						hp: 20000,
-						imageno: 4068,
-						attr: 0,
-						spec: 7,
-					},
-				],
-			}, {
-				appearance: [2],
-				enemy: [
-					{
-						name: "ルインコンダクター",
-						hp: 15000,
-						imageno: 4070,
-						attr: 2,
-						spec: 0,
-						move: {
-							on_popup: [
-								skill_counter(9999, -1),
-							]
-						}
-					}, {
-						name: "ウラガーン",
-						hp: 60000,
-						imageno: 3707,
-						attr: 0,
-						spec: 11,
-					},
-				],
-			}, {
-				appearance: [3],
-				enemy: [
-					{
-						name: "ファングサーラ",
-						hp: 25000,
-						imageno: 4068,
-						attr: 0,
-						spec: 7,
-					}, {
-						name: "ウラガーン",
-						hp: 90000,
-						imageno: 3708,
-						attr: 0,
-						spec: 11,
-					}, {
-						name: "リジョンディッシェル",
-						hp: 60000,
-						imageno: 4069,
-						attr: 0,
-						spec: 5,
-					},
-				],
-			}, {
-				appearance: [4],
-				enemy: [
-					{
-						name: "ファハシュヴァイル",
-						hp: 60000,
-						imageno: 4067,
-						attr: 0,
-						spec: 0,
-						move: {
-							on_popup: [
-								skill_counter(9999, -1),
-							]
-						}
-					}, {
-						name: "ウラガーン",
-						hp: 180000,
-						imageno: 4066,
-						attr: 0,
-						spec: 11,
-					}, {
-						name: "ファングサーラ",
-						hp: 35000,
-						imageno: 4068,
-						attr: 0,
-						spec: 7,
-						move: {
-							on_popup: [
-								skill_counter(9999, -1),
-							]
-						}
-					},
-				],
-			}
-		],
-	},
 ];

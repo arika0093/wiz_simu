@@ -10,13 +10,13 @@
     <link rel="stylesheet" type="text/css" href="./css/simulator.css" media="screen and (min-width: 600px)" />
     <link type="text/css" rel="stylesheet"
           href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
-    <meta name="viewport" content="initial-scale=1.0">
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
     <!-- Cache -->
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Cache-Control" content="no-cache">
-    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <!-- Search -->
-    <meta name="robots" content="none">
+    <meta name="robots" content="none" />
     <!-- sim page -->
     <title>Simulator - Wiz Quest Simulator</title>
 </head>
@@ -242,6 +242,10 @@
 				</select>
 			</span>
 		</div>
+	</div>
+	<div class="dialog_div" id="dialog_simfinish_popup" title="試走終了">
+		<p>試走が終了しました！</p>
+		<div class="tweet_preview" id="simfinish_tweettext"></div>
 	</div>
 	<div class="dialog_div" id="dialog_simlog" title="ログ表示">
 		<div id="sim_log_inner">
