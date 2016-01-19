@@ -251,10 +251,6 @@ function sim_show() {
 			}
 			$("#sim_log_inner").html(logtext);
 			$("#sim_log_inner").accordion("refresh");
-			// close when click dialog outside
-			$('.ui-widget-overlay').bind('click', function () {
-				$("#dialog_simlog").dialog('close');
-			});
 		},
 		buttons: {
 			"Open debug log": function() {
