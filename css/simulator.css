@@ -193,7 +193,7 @@ div.sim_log {
 	float: left;
 }
 
-div#sim_log_inner {
+div#sim_log_inner{
 	font-size: 8.5pt;
 	padding: 0.5ex 0.5em;
 }
@@ -204,11 +204,25 @@ div#sim_log_inner div {
 	line-height: normal;
 }
 
+div#sim_dlog_inner {
+	font-size: 8.5pt;
+	padding: 0.5ex 0.5em;
+	height: 600px;
+	overflow-y: auto;
+}
+
 div.tweet_preview {
 	padding: 0.5ex 0.5em;
 	border: 1px solid #C0C0C0;
 	height: 100px;
 	overflow-y: scroll;
+}
+
+div.tweet_preview div.sh_url {
+	overflow-x: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 100%;
 }
 
 /* Ally Status */

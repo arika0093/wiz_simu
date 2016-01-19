@@ -39,7 +39,7 @@ function create_tweeturl(name, durt, tot, func) {
 	var nam = Field.Quest.name;
 	var trn = durt.replace("+", "%2B");
 	var tot = tot.replace("+", "%2B");
-	var text = "このデッキを使って " + nam + " を " + tot + " ターン(" + trn + ") で突破！%0A" + url;
+	var text = "このデッキで " + nam + " を " + tot + " ターン(" + trn + ") で突破！%0A" + url;
 	var tweeturl = "https://twitter.com/intent/tweet?hashtags=wiz_simu" + "&text=" + text;
 	func.url = url;
 	func.twurl = tweeturl;

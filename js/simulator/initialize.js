@@ -58,12 +58,21 @@ var Field = {
 		finish: false,
 		// ログ
 		log: [],
+		d_log: [],
 	},
 	log_push: function (text) {
-		if (Field.Status.log[Field.Status.totalturn] === undefined) {
-			Field.Status.log[Field.Status.totalturn] = [];
+		var fs = Field.Status;
+		if (fs.log[fs.totalturn] === undefined) {
+			fs.log[fs.totalturn] = [];
 		}
-		Field.Status.log[Field.Status.totalturn].push(text);
+		fs.log[fs.totalturn].push(text);
+	},
+	detail_log: function (fc, title, text) {
+		var fs = Field.Status;
+		fs.d_log.push("#" + fc + "(battle: " + fs.nowbattle +
+			", turn: " + (fs.totalturn+1) +
+			"): {" + title + ": " + text + "}"
+		);
 	}
 }
 

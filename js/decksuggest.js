@@ -272,6 +272,7 @@ function set_autocmp(i) {
 			},
 			select: function (e, dec) {
 				decksel_show(idx, dec.item.data);
+				$(".selector").autocomplete("close");
 				return false;
 			}
 		})

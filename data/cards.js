@@ -16014,6 +16014,94 @@ Cards = [{
 	// -------------------------
 	// 追加: 天界のロストエデン
 	// -------------------------
+	name: "永劫を超えて アルドベリク・ゴドー",
+	cardno: 5116,
+	imageno: 6868,
+	hp: 3034,
+	atk: 3053,
+	cost: 49,
+	attr: [2, 4],
+	species: [2],
+	islegend: true,
+	as1: {
+		desc: "4チェインでダメージアップ、天使の敵へさらにダメージアップ(400%/600%)",
+		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [3])],
+	},
+	ss1: {
+		desc: "4ターン雷属性の味方の攻撃力をアップ、5チェインを消費しさらにアップ(60%/100%)",
+		turn: 9,
+		proc: [ss_enhance_all(ss_chain_cost(5, 1.0, 0.60), 4, [0, 0, 1, 0, 0])],
+	},
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Statusup(0, 200),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		NEFTJOD(30),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
+		Fastskill(2),
+		Spec_statusup(0, 200, [2, 3, ]),
+	],
+	as2: {
+		desc: "4チェインでダメージアップ、天使の敵へさらにダメージアップ(500%/700%)",
+		proc: [ChainAttack(5.0, 4), ChainSpecAttack(7.0, 4, [3])],
+	},
+	ss2: {
+		desc: "4ターン雷属性の味方の攻撃力をアップ、5チェインを消費しさらにアップ(120%/180%)",
+		turn: 12,
+		proc: [ss_enhance_all(ss_chain_cost(5, 1.8, 1.2), 4, [0, 0, 1, 0, 0])],
+	},
+	Lawake: [
+		Statusup(500, 0),
+		Statusup(0, 500),
+	],
+}, {
+	name: "輝く永劫の翼 アルドベリク・ゴドー",
+	cardno: 5125,
+	imageno: 6867,
+	hp: 3554,
+	atk: 2733,
+	cost: 49,
+	attr: [2, 3],
+	species: [2],
+	islegend: true,
+	as1: {
+		desc: "4チェインでダメージアップ、魔族の敵へさらにダメージアップ(400%/600%)",
+		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [2])],
+	},
+	ss1: {
+		desc: "スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
+		turn: 9,
+		proc: [ss_skillboost(2)],
+	},
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Statusup(0, 200),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		NEFTJOD(30),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
+		Fastskill(2),
+		Spec_statusup(0, 200, [2, 3, ]),
+	],
+	as2: {
+		desc: "4チェインでダメージアップ、魔族の敵へさらにダメージアップ(500%/700%)",
+		proc: [ChainAttack(5.0, 4), ChainSpecAttack(7.0, 4, [2])],
+	},
+	ss2: {
+		desc: "スペシャルスキルの発動ターンを3早め、敵単体の攻撃ターンを3遅らせる",
+		turn: 12,
+		proc: [ss_skillboost(3)],
+	},
+	Lawake: [
+		Statusup(500, 0),
+		Statusup(0, 500),
+	],
+}, {
 	name: "闇に響く哄笑 イザーク・セラフィム",
 	cardno: 5136,
 	imageno: 6879,
@@ -17177,6 +17265,50 @@ Cards = [{
 	// -------------------------
 	// 追加: L実装(2016/01)
 	// -------------------------
+	name: "時と薫りを紡ぐ蝶姫 ファム・リリー",
+	cardno: 5470,
+	imageno: -1,
+	hp: 2509,
+	atk: 4890,
+	cost: 45,
+	attr: [2, -1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "水属性の敵単体へ特効ダメージ、リーダー時さらにアップ(350%/450%)",
+		proc: [ChainAttrAttack(3.5, 0, [0, 1, 0, 0, 0]), add_cond(ChainAttrAttack(4.5, 0, [0, 1, 0, 0, 0]), when_leader())],
+	},
+	ss1: {
+		desc: "攻撃ターンを3遅らせる",
+		turn: 10,
+		proc: null,
+	},
+	awakes: [
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Costdown(2),
+		Fastskill(1),
+		Panel_boost([0, 0, 0, 0, 0, ], 1),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		NEFTJOD(30),
+		Fastskill(2),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+	],
+	as2: {
+		desc: "水属性の敵単体へ特効ダメージ、リーダー時さらにアップ(450%/550%)",
+		proc: [ChainAttrAttack(4.5, 0, [0, 1, 0, 0, 0]), add_cond(ChainAttrAttack(5.5, 0, [0, 1, 0, 0, 0]), when_leader())],
+	},
+	ss2: {
+		desc: "攻撃ターンを3遅らせ、敵全体へ雷属性のダメージ(180%)",
+		turn: 15,
+		proc: [ss_damage_all(1.8, [2])],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Statusup(500, 0),
+	],
+}, {
 	name: "千色麗香の調香師 シーラ・フリール",
 	cardno: 5491,
 	imageno: 7334,

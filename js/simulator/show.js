@@ -257,7 +257,30 @@ function sim_show() {
 			});
 		},
 		buttons: {
+			"Open debug log": function() {
+				$("#dialog_simlog_detail").dialog("open");
+			},
 			"閉じる": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
+	// detail log
+	$("#dialog_simlog_detail").dialog({
+		autoOpen: false,
+		modal: true,
+		width: 1000,
+		open: function (e, ui) {
+			// sim_log
+			var logtext = "";
+			var dl = Field.Status.d_log;
+			for (var i = 0 ; i < dl.length; i++) {
+				logtext += dl[i] + "<br/>";
+			}
+			$("#sim_dlog_inner").html(logtext);
+		},
+		buttons: {
+			"Close": function () {
 				$(this).dialog("close");
 			},
 		},
@@ -323,17 +346,17 @@ function sim_show() {
 		autoOpen: false,
 		modal: true,
 		width: 450,
-		show: "blind",
-		hide: "blind",
 		open: function () {
 			var nam = Field.Quest.name;
 			var trn = durturn_string();
 			var tot = totalturn_string();
-			var text = "このデッキを使って " + nam + " を " + tot + " ターン(" + trn + ") で突破！";
+			var text = nam + " を " + tot + " ターン(" + trn + ") で突破！";
 			// hide
 			$(".ui-dialog-titlebar").hide();
 			// tweet data
-			$("#simfinish_tweettext").text(text);
+			$("#simfinish_tweettext").html(
+				text + "<br/><div class='sh_url'>" + absolutePath("./" + location.search) + "</div> #wiz_simu"
+			);
 			// close when click dialog outside
 			$('.ui-widget-overlay').bind('click', function () {
 				$("#dialog_simfinish_popup").dialog('close');
@@ -458,6 +481,8 @@ function load_field(i) {
 		Field = Field_log.load(load_index);
 		// 再表示
 		sim_show();
+		// 詳細ログ追加
+		Field.detail_log("load_field", "move", "loaded turn " + (load_index + 1));
 		$("#attack_target_sel").val("");
 	}
 }

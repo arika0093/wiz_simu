@@ -4,16 +4,22 @@
 function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss) {
 	var d = 0;
 	// エンハ
-	var as_enh = now.as_enhance ? now.as_enhance : 0;
-	var ss_enh = now.ss_enhance ? now.ss_enhance : 0;
-	// 攻撃
-	d = (now.atk / (!is_ss ? 2 : 1)) * (1 + ch / 100) * rnd / atkn;
+	var as_enh = now.as_enhance ? Number(now.as_enhance.toFixed(2)) : 0;
+	var ss_enh = now.ss_enhance ? Number(now.ss_enhance.toFixed(2)) : 0;
+	// 攻撃力
+	d = now.atk / (!is_ss ? 2 : 1);
 	// AS倍率、エンハ
 	d *= (rate + as_enh + ss_enh);
+	// チェイン数考慮
+	d *= Number((1 + ch / 100).toFixed(2));
 	// パネル
 	d *= (pn.indexOf(atk_atr) >= 0 ? 1 : 0.5);
 	// 属性考慮
 	d *= attr_magnification(atk_atr, enemy.attr);
+	// 乱数考慮
+	d *= rnd;
+	// 攻撃回数考慮
+	d /= atkn;
 	// 切り捨て
 	d = Math.floor(d);
 
@@ -40,10 +46,23 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss)
 		turneff_allbreak(enemy.turn_effect, false);
 	}
 
-	// log
-	Field.log_push("Unit[" + (i + 1) + "]: 敵[" + (e + 1) + "]へ" +
+	// ログ
+	var l_t = "Unit[" + (i + 1) + "]: 敵[" + (e + 1) + "]へ" +
 		Field.Constants.Attr[atk_atr] + "攻撃( " + d +
-		"ダメージ)(残: " + enemy.nowhp + "/" + enemy.hp + ")");
+		"ダメージ)(残: " + enemy.nowhp + "/" + enemy.hp + ")";
+	Field.log_push(l_t);
+	// 詳細ログ
+	Field.detail_log("attack_enemy", "calculate",
+		"攻撃力(" + now.atk + (!is_ss ? "/2" : "") + ")" +
+		" * 倍率(" + rate + "+" + as_enh + "+" + ss_enh + ")" +
+		" * チェイン(" + (1 + ch / 100) + ")" +
+		" * パネル(" + (pn.indexOf(atk_atr) >= 0 ? 1 : 0.5) + ")" +
+		" * 属性相性(" + attr_magnification(atk_atr, enemy.attr) + ")" +
+		" * 乱数(" + rnd + ")" +
+		(atkn > 1 ? " / 攻撃回数(" + atkn + ")" : "")
+	);
+	Field.detail_log("attack_enemy", "damage", l_t);
+
 	return d;
 }
 
@@ -180,6 +199,10 @@ function auto_attack_order(enemys, attr, own_index) {
 
 // 乱数を生成する
 function damage_rand() {
-	r = Number($("#attack_rand_sel").val());
-	return (r != -1 ? r : 0.9 + (Math.random() * 0.2));
+	var r = Number($("#attack_rand_sel").val());
+	if (r != -1) {
+		return r;
+	}
+	var rnd = Math.floor((Math.random() * 20)) / 100;
+	return (0.9 + rnd).toFixed(2);
 }

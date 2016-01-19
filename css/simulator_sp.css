@@ -240,6 +240,14 @@ div.tweet_preview {
 	overflow-y: scroll;
 }
 
+div.tweet_preview div.sh_url {
+	overflow-x: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 100%;
+}
+
+
 /* Ally Status */
 div#allystat_index{
 	display: none;
