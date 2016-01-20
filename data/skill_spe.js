@@ -68,6 +68,8 @@ function ss_ratiodamage_all(r) {
 			e.nowhp = Math.max(e.nowhp - dmg, 0);
 			// SSフラグを立てる
 			e.flags.is_ss_attack = true;
+			// ダメージを与えた
+			e.flags.on_damage = true;
 			fld.log_push("Enemy[" + (i + 1) + "]: 割合ダメージ(" + (ratio * 100) + "%)(" + dmg + "ダメージ)");
 		}
 		// 敵ダメージ反応系
@@ -89,6 +91,7 @@ function ss_ratiodamage_s(r) {
 		e.flags.is_ss_attack = true;
 		fld.log_push("Enemy[" + (tg + 1) + "]: 割合ダメージ(" + (ratio * 100) + "%)(" + dmg + "ダメージ)");
 		// 敵ダメージ反応系
+		e.flags.on_damage = true;
 		enemy_damage_switch_check();
 		return true;
 	}
@@ -126,16 +129,17 @@ function ss_skillcounter(r, t) {
 								// 攻撃
 								if (card.attr[atri] >= 0) {
 									ss_damage(f, rate, card.attr[atri], 1, oi, sci);
+									GetNowBattleEnemys(sci).flags.on_damage = true;
 								}
 							}
 						}
+						// 敵ダメージ反応系
+						enemy_damage_switch_check();
 						now_e.flags.skill_counter = [];
 					}
 				},
 			});
 		}
-		// 敵ダメージ反応系
-		enemy_damage_switch_check();
 		fld.log_push("スキルカウンター待機(" + (rate * 100) + "%, " + t + "t)");
 		return true;
 	}
@@ -165,6 +169,7 @@ function poison(dm, t) {
 					effect: function (f, ei, teff, state, is_t, is_b) {
 						if (is_t && !is_b) {
 							e.nowhp = Math.max(e.nowhp - dmg, 0);
+							e.flags.on_damage = true;
 							if (e.nowhp <= 0) {
 								// HPが0になったら敵スキルを全て解除
 								turneff_allbreak(e.turn_effect, false);

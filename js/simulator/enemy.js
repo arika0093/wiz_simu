@@ -200,3 +200,24 @@ function enemy_popup_proc(){
 		}
 	}
 }
+
+// 敵ダメージに反応するあれこれの制御
+function enemy_damage_switch_check() {
+	var enemys = GetNowBattleEnemys();
+	$.each(enemys, function (i, e) {
+		if (e.turn_effect.length > 0) {
+			var skillct = $.grep(e.turn_effect, function (g) {
+				return g.type == "damage_switch";
+			});
+			for (var j = 0; j < skillct.length; j++) {
+				var s = skillct[j];
+				var ischeck = e.flags.on_damage || s.oncond_anytime;
+				if (ischeck && s.cond(Field, i) && --s.on_cond.count <= 0) {
+					s.on_cond.move(Field, i);
+					s.on_cond.count = s.on_cond.interval;
+				}
+			}
+			e.flags.on_damage = false;
+		}
+	});
+}
