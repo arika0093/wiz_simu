@@ -12,7 +12,7 @@ Quests = [
 		category: "test",
 		desc: "1戦しかありません。",
 		overlap: false,
-		hidden: true,
+		hidden: false,
 		aprnum: 1,
 		data: [
 			{
@@ -20,27 +20,27 @@ Quests = [
 				enemy: [
 					{
 						name: "火ハーピィ",
-						hp: 19800,
+						hp: 80000,
 						imageno: 1,
 						attr: 0,
 						spec: 5,
 						move: {
 							// 先制行動
 							on_popup: [
-								attack_counter_dual(1000, 3),
+								s_enemy_division(),
+								skill_counter_func(s_enemy_ss_sealed, "SS封印", -1, true, null, 5),
 							],
 							// 通常行動(ターンの値は1多くすること)
 							// 1ターン中に複数行動させたいなら配列で並べて記載
 							on_move: [
-								damage_block_all(2000, 2),
-								impregnable(5),
+								s_enemy_cursed(500, 5, 5),
 							],
 							// ランダム行動
 							atrandom: false,
 							// 初期待機ターン
-							turn: 2,
+							turn: 1,
 							// 行動周期
-							wait: 1,
+							wait: 3,
 						},
 					},
 				],
@@ -48,6 +48,7 @@ Quests = [
 		],
 	},
 	*/
+
 	// -------------------------
 	// トーナメント: 肆式
 	// -------------------------
@@ -172,6 +173,9 @@ Quests = [
 						attr: 1,
 						spec: 5,
 						move: {
+							on_popup: [
+								s_enemy_force_reservoir(),
+							],
 							on_move: [
 								m_enemy_once(s_enemy_attack(500, 5, 1, true)),
 								s_enemy_attack(250, 5, 1, false),
@@ -187,6 +191,9 @@ Quests = [
 						attr: 1,
 						spec: 5,
 						move: {
+							on_popup: [
+								s_enemy_force_reservoir(),
+							],
 							on_move: [
 								m_enemy_once(s_enemy_attack(500, 5, 1, true)),
 								s_enemy_attack(250, 5, 1, false),
@@ -372,12 +379,28 @@ Quests = [
 						imageno: 5248,
 						attr: 1,
 						spec: 2,
+						move: {
+							on_move: [
+								s_enemy_attack(175, 1, 1)
+							],
+							atrandom: false,
+							turn: 2,
+							wait: 1,
+						}
 					}, {
 						name: "ボーンソルジャー・チャード",
 						hp: 16000,
 						imageno: 5250,
 						attr: 2,
 						spec: 2,
+						move: {
+							on_move: [
+								s_enemy_attack(250, 1, 1)
+							],
+							atrandom: false,
+							turn: 2,
+							wait: 1,
+						}
 					}, {
 						name: "アクトハウスバウンサー",
 						hp: 100000,
@@ -387,7 +410,13 @@ Quests = [
 						move: {
 							on_popup: [
 								attack_counter(2000, -1),
-							]
+							],
+							on_move: [
+								s_enemy_attack(700, 1, 1)
+							],
+							atrandom: false,
+							turn: 2,
+							wait: 1,
 						}
 					},
 				],

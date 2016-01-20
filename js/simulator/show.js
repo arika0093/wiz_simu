@@ -194,7 +194,7 @@ function sim_show() {
 	// sim_panel
 	$(".panel_button").attr("disabled", Field.Status.finish);
 	// sim_field_move
-	$("#fld_move_before").attr("disabled", (Field.Status.log.length == 0));
+	$("#fld_move_before").attr("disabled", (Field.Status.totalturn == 0));
 	$("#fld_move_after").attr("disabled", (Field.Status.totalturn == Field_log.length() - 1));
 	// 敵の数に応じてattack_target_selの中身を変える
 	var eleng = GetNowBattleEnemys().length;
@@ -473,7 +473,11 @@ function tweet_result() {
 // fieldのログを読む
 function load_field(i) {
 	var load_index = (i != 0 ? i + Field.Status.log.length : 0);
-	if (load_index < Field_log.length()) {
+	if (Field.Status.totalturn == 0 && Field.Status.log.length > 0) {
+		load_index -= 1;
+	}
+
+	if (load_index <= Field_log.length()) {
 		Field = Field_log.load(load_index);
 		// 再表示
 		sim_show();

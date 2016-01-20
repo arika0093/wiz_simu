@@ -109,6 +109,7 @@ function ss_skillcounter(r, t) {
 				type: "ss_skill_counter",
 				icon: "skill_counter",
 				isdual: false,
+				iscursebreak: true,
 				turn: t,
 				lim_turn: t,
 				priority: 99,
@@ -172,7 +173,7 @@ function poison(dm, t) {
 							e.flags.on_damage = true;
 							if (e.nowhp <= 0) {
 								// HPが0になったら敵スキルを全て解除
-								turneff_allbreak(e.turn_effect, false);
+								turneff_allbreak(e.turn_effect, ei, false);
 							}
 							fld.log_push("Enemy[" + (indx + 1) + "]: 毒(" + dmg + "ダメージ)");
 						}
@@ -221,6 +222,7 @@ function ss_enhance_own(p, t, _nolog) {
 			type: "ss_enhance",
 			icon: "enhance",
 			isdual: false,
+			iscursebreak: true,
 			turn: t,
 			lim_turn: t,
 			effect: function (f, oi, teff, state) {
@@ -265,12 +267,12 @@ function ss_statusup_all(up_arr, up_limit, t) {
 				type: "ss_statusup",
 				icon: "statusup",
 				isdual: false,
+				iscursebreak: true,
 				turn: t,
 				lim_turn: t,
 				up_hp: up_arrs[0],
 				up_atk: up_arrs[1],
 				effect: function (f, oi, teff, state) {
-					var card = f.Allys.Deck[oi];
 					var nowtg = f.Allys.Now[oi];
 					if (state == "first") {
 						nowtg.maxhp = Math.max(teff.up_hp + nowtg.maxhp, 1);
@@ -303,6 +305,7 @@ function ss_absattack_disable(t) {
 				type: "ss_absattack_disable",
 				icon: "absattack_disable",
 				isdual: false,
+				iscursebreak: true,
 				turn: t,
 				lim_turn: t,
 				effect: function () { },
@@ -416,6 +419,7 @@ function ss_regenerate(p, t) {
 				type: "ss_regenerate",
 				icon: "regenerate",
 				isdual: false,
+				iscursebreak: true,
 				priority: 1,
 				turn: t,
 				lim_turn: t,
@@ -446,6 +450,7 @@ function ss_revival(r, t) {
 				type: "ss_revival",
 				icon: "revival",
 				isdual: false,
+				iscursebreak: true,
 				turn: t,
 				lim_turn: t,
 				effect: function () { },

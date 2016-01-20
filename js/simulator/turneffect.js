@@ -24,6 +24,8 @@ function turn_effect_check(is_turn_move, is_battle_move) {
 	var ct = 0;
 	for (var i = 0; i < Field.Allys.Deck.length; i++) {
 		var now = Field.Allys.Now[i];
+		// 重複効果を削除
+		turneff_break_dual(now.turn_effect, i, is_turn_move);
 		for (var j = 0; j < now.turn_effect.length; j++) {
 			all_turneff[ct] = {
 				index: i,
@@ -43,16 +45,6 @@ function turn_effect_check(is_turn_move, is_battle_move) {
 	for (var te = 0; te < all_turneff.length; te++) {
 		var now = Field.Allys.Now[all_turneff[te].index];
 		var turneff = all_turneff[te].effect;
-		// 同一typeが複数存在し新しい方が重複不可なら最初の要素を消す
-		var duals = $.grep(now.turn_effect, function (e) {
-			return (e.type == turneff.type) && (!turneff.isdual);
-		});
-		if (duals.length >= 2) {
-			// 消す前に終了時関数をcallする(state: overlay)
-			turneff.effect(Field, all_turneff[te].index, turneff, "overlay", is_turn_move, is_allkill());
-			now.turn_effect.splice(now.turn_effect.indexOf(duals[0]), 1);
-			continue;
-		}
 		if (!turneff._notfirst || is_turn_move) {
 			// 発動時状況を決める(初回呼び出し時: first, 終了時: end)
 			if (!turneff._notfirst) {
@@ -79,18 +71,10 @@ function turn_effect_check(is_turn_move, is_battle_move) {
 function enemy_turn_effect_check(is_turn_move) {
 	var enemys = GetNowBattleEnemys();
 	for (var i = 0; i < enemys.length; i++) {
+		// 重複効果を削除
+		turneff_break_dual(enemys[i].turn_effect, i, is_turn_move);
 		for (var te = 0; te < enemys[i].turn_effect.length; te++) {
 			var turneff = enemys[i].turn_effect[te];
-			// 同一typeが複数存在し新しい方が重複不可なら最初の要素を消す
-			var duals = $.grep(enemys[i].turn_effect, function (e) {
-				return (e.type == turneff.type) && (!turneff.isdual);
-			});
-			if (duals.length >= 2) {
-				var ix = enemys[i].turn_effect.indexOf(duals[0]);
-				enemys[i].turn_effect.splice(ix, 1);
-				te = (ix <= te ? te - 1 : te);
-				continue;
-			}
 			if (!turneff._notfirst || is_turn_move) {
 				// 発動
 				turneff.effect(Field, i, turneff, turneff.lim_turn == 0, is_turn_move, is_allkill());
@@ -105,14 +89,62 @@ function enemy_turn_effect_check(is_turn_move) {
 	}
 }
 
+// 重複しているターン継続効果の解除
+function turneff_break_dual(teffs, index, is_turn_move) {
+	for (var t = 0; t < teffs.length; t++) {
+		// 同一typeが複数存在し新しい方が重複不可なら最初の要素を消す
+		var duals = $.grep(teffs, function (e) {
+			return (e.type == teffs[t].type) && (!teffs[t].isdual);
+		});
+		if (duals.length >= 2) {
+			for (var i = 0; i < duals.length - 1; i++) {
+				// 消す前に終了時関数をcallする(state: overlay)
+				var pos = teffs.indexOf(duals[i]);
+				duals[i].effect(Field, index, duals[i], "overlay", is_turn_move, is_allkill());
+				teffs.splice(pos, 1);
+				t = (pos <= t ? t - 1 : t);
+			}
+		}
+	}
+}
+
 // ターン継続効果の全解除
-function turneff_allbreak(teffs, overlay_call) {
+function turneff_allbreak(teffs, index, overlay_call) {
 	while (teffs.length > 0) {
 		var teff = teffs[0];
 		// 除外時効果
 		if (overlay_call) {
-			teff.effect(Field, 0, teff, "overlay", false, false);
+			teff.effect(Field, index, teff, "overlay", false, false);
 		}
 		teffs.splice(0, 1);
+	}
+}
+
+// 指定したターン継続効果の解除
+function turneff_break(teffs, index, type, overlay_call) {
+	for (var i = 0; i < teffs.length; i++) {
+		var teff = teffs[i];
+		if (teff.type != type) {
+			continue;
+		}
+		// 除外時効果
+		if (overlay_call) {
+			teff.effect(Field, index, teff, "overlay", false, false);
+		}
+		teffs.splice(i, 1);
+		i--;
+	}
+}
+
+// ターン継続効果の解除(条件)
+function turneff_break_cond(teffs, index, func) {
+	for (var i = 0; i < teffs.length; i++) {
+		var teff = teffs[i];
+		if (!func(teff)) {
+			continue;
+		}
+		teff.effect(Field, index, teff, "overlay", false, false);
+		teffs.splice(i, 1);
+		i--;
 	}
 }

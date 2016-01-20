@@ -144,6 +144,8 @@ function enemy_move() {
 		if (e_moves[i] == null) {
 			continue;
 		}
+		// 力溜め状態解除
+		turneff_break(GetNowBattleEnemys(i).turn_effect, i, "force_reservoir");
 		// e_moves[i]が関数でない(=配列である)場合
 		if (e_moves[i].caller === undefined) {
 			for (var mi = 0; mi < e_moves[i].length; mi++) {
@@ -201,13 +203,14 @@ function enemy_popup_proc(){
 	}
 }
 
-// 敵ダメージに反応するあれこれの制御
-function enemy_damage_switch_check() {
+// 敵ダメージなどに反応するあれこれの制御
+function enemy_damage_switch_check(type) {
 	var enemys = GetNowBattleEnemys();
+	var type = type || "damage_switch";
 	$.each(enemys, function (i, e) {
 		if (e.turn_effect.length > 0) {
 			var skillct = $.grep(e.turn_effect, function (g) {
-				return g.type == "damage_switch";
+				return g.type == type;
 			});
 			for (var j = 0; j < skillct.length; j++) {
 				var s = skillct[j];

@@ -18,13 +18,11 @@ function ss_push(n) {
 		if (ss.proc && !ss.proc[0].is_skillcopy) {
 			Field.Status.latest_ss = ss;
 		}
-		// ターン効果確認
-		turn_effect_check(false, is_allkill());
 		// 敵スキル関係の処理
 		{
-			// スキル反射確認
 			var enemys = GetNowBattleEnemys();
 			$.each(enemys, function (i, e) {
+				// スキル反射確認
 				if (e.flags.is_ss_attack && e.turn_effect.length > 0) {
 					var skillct = $.grep(e.turn_effect, function (g) {
 						return g.on_ss_damage !== undefined;
@@ -34,10 +32,19 @@ function ss_push(n) {
 					}
 					e.flags.is_ss_attack = false;
 				}
+				// スキル反応確認
+				$.each(e.turn_effect, function (g) {
+					if (g.type == "skill_response") {
+						g.on_ss_invoke(Field, i);
+					}
+				});
 			});
 			// 敵ダメージ反応系
 			enemy_damage_switch_check();
 		}
+		// ターン効果確認
+		turn_effect_check(false, is_allkill());
+		enemy_turn_effect_check(false);
 		// L状態ならL潜在を解除
 		if (is_l) {
 			minus_legend_awake(Field.Allys.Deck, Field.Allys.Now, n);
