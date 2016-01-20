@@ -17798,9 +17798,9 @@ Cards = [{
 		Statusup(200,0),
 	],
 }, {
-	name: "AbCd-A: 《異暁の忌神 バシレイデ》",
+	name: "AbCd-A:《異暁の忌神 バシレイデ》",
 	cardno: 5539,
-	imageno: -1,
+	imageno: 7250,
 	hp: 3317,
 	atk: 3176,
 	cost: 77,
