@@ -70,6 +70,8 @@ function ss_ratiodamage_all(r) {
 			e.flags.is_ss_attack = true;
 			fld.log_push("Enemy[" + (i + 1) + "]: 割合ダメージ(" + (ratio * 100) + "%)(" + dmg + "ダメージ)");
 		}
+		// 敵ダメージ反応系
+		enemy_damage_switch_check();
 		return true;
 	}
 }
@@ -86,6 +88,8 @@ function ss_ratiodamage_s(r) {
 		// SSフラグを立てる
 		e.flags.is_ss_attack = true;
 		fld.log_push("Enemy[" + (tg + 1) + "]: 割合ダメージ(" + (ratio * 100) + "%)(" + dmg + "ダメージ)");
+		// 敵ダメージ反応系
+		enemy_damage_switch_check();
 		return true;
 	}
 }
@@ -130,6 +134,8 @@ function ss_skillcounter(r, t) {
 				},
 			});
 		}
+		// 敵ダメージ反応系
+		enemy_damage_switch_check();
 		fld.log_push("スキルカウンター待機(" + (rate * 100) + "%, " + t + "t)");
 		return true;
 	}
@@ -165,6 +171,8 @@ function poison(dm, t) {
 							}
 							fld.log_push("Enemy[" + (indx + 1) + "]: 毒(" + dmg + "ダメージ)");
 						}
+						// 敵ダメージ反応系
+						enemy_damage_switch_check();
 					},
 				});
 			})();
@@ -190,7 +198,7 @@ function ss_enhance_all(p, t, attr) {
 			var cd = fld.Allys.Deck[i];
 			var now = fld.Allys.Now[i];
 			if (now.nowhp > 0 && attr[cd.attr[0]] > 0) {
-				ss_enhance_own(p, t, true)(fld, i);
+				ss_enhance_own(rate, t, true)(fld, i);
 			}
 		}
 		fld.log_push("味方全体攻撃力Up(" + (rate * 100) + "%, " + t + "t)");
