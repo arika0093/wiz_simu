@@ -107,7 +107,7 @@ Quests = [
 						s_enemy_attack(600, 1, 1, false),
 					],
 					atrandom: false,
-					turn: 1,
+					turn: 2,
 					wait: 1,
 				},
 			}, {
@@ -194,7 +194,7 @@ Quests = [
 						s_enemy_attack(1200, 1, 1, false),
 					],
 					atrandom: false,
-					turn: 1,
+					turn: 2,
 					wait: 1,
 				},
 			}, ],
