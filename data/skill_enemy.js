@@ -305,16 +305,9 @@ function s_enemy_cursed(hpdown, tnum, t) {
 		var tg = !tnum.length ? gen_enemytarget_array(tnum, 1, false)[0] : tnum;
 		for (var i = 0; i < tg.length; i++) {
 			var now = fld.Allys.Now[tg[i]];
-			var hdown = hpdown;
-			// 既にかかってる呪いの値を取得する
-			$.each(now.turn_effect, function (i, e) {
-				if (e.type == "curse") {
-					hdown += e.hpdown;
-				}
-			});
 			// 追加
 			var eff_obj = $.extend(true, {}, {
-				desc: "呪い(HP: " + (-hdown) + ")",
+				desc: "呪い(HP: " + (-hpdown) + ")",
 				type: "curse",
 				icon: "curse",
 				isabstate: false,
@@ -322,28 +315,28 @@ function s_enemy_cursed(hpdown, tnum, t) {
 				isdual: false,
 				turn: t,
 				lim_turn: t,
-				hpdown: hdown,
+				hpdown: hpdown,
 				effect: function (f, oi, teff, state) {
 					var nowtg = f.Allys.Now[oi];
 					if (state == "first") {
 						// HP低下
-						nowtg.maxhp = Math.max(-hdown + nowtg.maxhp, 1);
-						nowtg.nowhp = Math.max(-hdown + nowtg.nowhp, 1);
+						nowtg.maxhp = Math.max(-hpdown + nowtg.maxhp, 1);
+						nowtg.nowhp = Math.max(-hpdown + nowtg.nowhp, 1);
 						// 効果解除
 						turneff_break_cond(nowtg.turn_effect, oi, function (teff) {
 							return teff.iscursebreak;
 						});
 					}
 					else if (state == "end" || state == "overlay") {
-						nowtg.maxhp += hdown;
-						nowtg.nowhp = Math.min(nowtg.nowhp + hdown, nowtg.maxhp);
+						nowtg.maxhp += hpdown;
+						nowtg.nowhp = Math.min(nowtg.nowhp + hpdown, nowtg.maxhp);
 					}
 				},
 			});
 			now.turn_effect.push(eff_obj);
 			// スキル重複確認
 			turn_effect_check(false);
-			fld.log_push("Enemy[" + (n + 1) + "]: 呪い(HP:" + (-hdown) + "|" + t + "t)(対象: Unit[" + (tg[i] + 1) + "])");
+			fld.log_push("Enemy[" + (n + 1) + "]: 呪い(HP:" + (-hpdown) + "|" + t + "t)(対象: Unit[" + (tg[i] + 1) + "])");
 		}
 	});
 }

@@ -727,6 +727,20 @@ function ss_chain_cost(ch, a, b) {
 	});
 }
 
+// チェイン消費SS分岐(ch: 消費チェイン, ss1: 消費して発動するSS, ss2: 消費せず発動するSS)
+function ss_chain_cost_skill(ch, ss1, ss2) {
+	return function (fld, n) {
+		if (fld.Status.chain >= ch) {
+			fld.Status.chain -= ch;
+			fld.log_push("チェイン消費: " + ch);
+			ss1(fld, n);
+		} else {
+			ss2(fld, n);
+		}
+	};
+}
+
+
 // ------------------------------------------------------
 // デメリット系
 // ------------------------------------------------------

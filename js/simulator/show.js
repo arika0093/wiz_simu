@@ -478,12 +478,14 @@ function load_field(i) {
 	}
 
 	if (load_index <= Field_log.length()) {
+		// 読み込み
 		Field = Field_log.load(load_index);
 		// 再表示
 		sim_show();
 		// 詳細ログ追加
 		Field.detail_log("load_field", "move", "loaded turn " + (load_index + 1));
-		$("#attack_target_sel").val("");
+		// タゲリセット
+		target_allselect(-1);
 	}
 }
 

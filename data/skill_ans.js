@@ -250,6 +250,42 @@ function ChainPanelsAttack(r1, r2, r3, ch) {
 	];
 }
 
+// パネル依存属性特攻攻撃(r1: 単色割合, r2: 二色割合, r3: 三色以上割合, attr: 属性, ch: 発動チェイン数)
+function ChainPanelsAttrAttack(r1, r2, r3, attr, ch) {
+	return [
+		{
+			type: "attack",
+			isall: false,
+			atkn: 1,
+			rate: r1,
+			chain: ch,
+			attr: attr,
+			spec: create_specs(1),
+			cond: always_true().cond,
+		},
+		{
+			type: "attack",
+			isall: false,
+			atkn: 1,
+			rate: r2,
+			chain: ch,
+			attr: attr,
+			spec: create_specs(1),
+			cond: as_panel_over2().cond,
+		},
+		{
+			type: "attack",
+			isall: false,
+			atkn: 1,
+			rate: r3,
+			chain: ch,
+			attr: attr,
+			spec: create_specs(1),
+			cond: as_panel_over3().cond,
+		},
+	];
+}
+
 // パネル依存種族特攻攻撃(r1: 単色割合, r2: 二色割合, r3: 三色以上割合, spec: 種族, ch: 発動チェイン数)
 function ChainPanelsSpecAttack(r1, r2, r3, spec, ch) {
 	return [
@@ -406,6 +442,33 @@ function ChainEnhance(rate, attr, ch) {
 			attr: attr,
 			spec: create_specs(1),
 			cond: always_true().cond,
+		}
+	];
+}
+
+// チェインエンハンス(副属性でさらにアップ)(r1, r2: 割合, attr: 対象属性, sub: 対象副属性, ch: チェイン)
+// 例: ChainEnhance_SubAttr(0.5, 0.3, [1,0,0,0,0], 2, 3)
+function ChainEnhance_SubAttr(r1, r2, attr, sub, ch) {
+	return [
+		{
+			type: "support",
+			subtype: "enhance",
+			rate: r1,
+			chain: ch,
+			attr: attr,
+			spec: create_specs(1),
+			cond: always_true().cond,
+		}, {
+			type: "support",
+			subtype: "enhance",
+			rate: r2,
+			chain: ch,
+			attr: attr,
+			spec: create_specs(1),
+			cond: function (fld, oi, ei) {
+				var cd = fld.Allys.Deck[oi];
+				return cd.attr[1] == sub;
+			},
 		}
 	];
 }
@@ -593,10 +656,12 @@ function when_hp_under(p) {
 function as_hp_absorption(r) {
 	return {
 		after: function (fld, oi, fst, g_dmg) {
-			var now = fld.Allys.Now[oi];
-			var hl = 0;
-			heal_ally(hl, oi);
-			fld.log_push("Unit[" + (oi + 1) + "]: HP吸収(+" + hr + ")");
+			return function () {
+				var now = fld.Allys.Now[oi];
+				var hl = Math.floor(g_dmg * r);
+				heal_ally(hl, oi);
+				fld.log_push("Unit[" + (oi + 1) + "]: HP吸収(+" + hl + ")");
+			}
 		}
 	}
 }
@@ -605,11 +670,13 @@ function as_hp_absorption(r) {
 function as_consume_all(hp) {
 	return {
 		after: function (fld, oi, fst) {
-			if (fst) {
-				fld.log_push("全体自傷(" + (hp * 100) + "%)");
-				for (var i = 0; i < fld.Allys.Deck.length; i++) {
-					var now = fld.Allys.Now[i];
-					damage_ally(Math.floor(now.maxhp * hp), i);
+			return function () {
+				if (fst) {
+					fld.log_push("全体自傷(" + (hp * 100) + "%)");
+					for (var i = 0; i < fld.Allys.Deck.length; i++) {
+						var now = fld.Allys.Now[i];
+						damage_ally(Math.floor(now.maxhp * hp), i);
+					}
 				}
 			}
 		}
@@ -620,10 +687,12 @@ function as_consume_all(hp) {
 function as_consume_own(hp) {
 	return {
 		after: function (fld, oi, fst) {
-			if (fst) {
-				fld.log_push("Unit[" + (oi + 1) + "]: 自傷(" + (hp * 100) + "%)");
-				var now = fld.Allys.Now[oi];
-				damage_ally(Math.floor(now.maxhp * hp), oi);
+			return function () {
+				if (fst) {
+					fld.log_push("Unit[" + (oi + 1) + "]: 自傷(" + (hp * 100) + "%)");
+					var now = fld.Allys.Now[oi];
+					damage_ally(Math.floor(now.maxhp * hp), oi);
+				}
 			}
 		}
 	}
