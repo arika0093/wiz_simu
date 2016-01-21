@@ -296,7 +296,7 @@ function ss_statusup_all(up_arr, up_limit, t) {
 // 全体状態異常無効(ターン数)
 function ss_absattack_disable(t) {
 	return function (fld, n) {
-		var rate = ss_ratedo(r, fld, n);
+		var turn = ss_ratedo(t, fld, n);
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
 			if (now.nowhp <= 0) { continue; }
@@ -306,8 +306,8 @@ function ss_absattack_disable(t) {
 				icon: "absattack_disable",
 				isdual: false,
 				iscursebreak: true,
-				turn: t,
-				lim_turn: t,
+				turn: turn,
+				lim_turn: turn,
 				effect: function () { },
 				bef_absattack: function (fld, oi, ei) {
 					return false;

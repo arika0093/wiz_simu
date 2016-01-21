@@ -5970,50 +5970,6 @@ Cards = [{
 		proc: [panel_chainplus(3)]
 	},
 }, {
-	name: "海風流るる焔々と セイ＆スオウ",
-	cardno: 5064,
-	imageno: 6804,
-	hp: 2650,
-	atk: 3323,
-	cost: 45,
-	attr: [1, 0],
-	species: [1],
-	awakes: [
-		Panel_boost([0, 1, 0, 0, 0], 1),
-		Fastskill(1),
-		Spec_statusup(0, 200, [1]),
-		NEFTJOD(30),
-		Attr_statusup(0, 200, [1, 1, 0, 0, 0]),
-		Panel_boost([0, 1, 0, 0, 0], 2),
-		Fastskill(2),
-		Panel_boost([0, 1, 0, 0, 0], 2),
-		Attr_statusup(200, 0, [1, 1, 0, 0, 0]),
-		Spec_statusup(200, 0, [1]),
-	],
-	as1: {
-		desc: "10チェインでダメージアップ(700％)",
-		proc: ChainAttack(7.0, 10)
-	},
-	ss1: {
-		desc: "味方全体のMAXHPの50%を使い敵単体へ水属性ダメージ(240%×味方数)",
-		turn: 6,
-		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.5), [1], 1)]
-	},
-	islegend: true,
-	Lawake: [
-		Statusup(500, 0),
-		Statusup(0, 500),
-	],
-	as2: {
-		desc: "10チェインでダメージアップ(800％)",
-		proc: ChainAttack(8.0, 10)
-	},
-	ss2: {
-		desc: "味方全体のMAXHPの50%を使い敵単体へダメージ(300%×味方数)",
-		turn: 8,
-		proc: [ss_damage_s(ss_consume_all_cond(3.0, 0.5), [1], 1)]
-	},
-}, {
 	name: "蒼天の奔流 アヴィン・シュミット",
 	cardno: 4647,
 	imageno: 6108,
@@ -8740,14 +8696,14 @@ Cards = [{
 	attr: [1, -1],
 	species: [9],
 	awakes: [
-		Attr_relief([0, 0, 0, 0, 0, ], 10),
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
 		Statusup(200, 0),
 		Statusup(0, 200),
 		Costdown(4),
 		Panel_boost([0, 1, 0, 0, 0, ], 2),
 		Attr_statusup(300, 0, [0, 0, 0, 0, 0, ]),
 		NEFTJOD(30),
-		Attr_relief([0, 0, 0, 0, 0, ], 10),
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
 		Fastskill(1),
 		Fastskill(2),
 	],
@@ -8762,7 +8718,7 @@ Cards = [{
 	},
 	islegend: true,
 	Lawake: [
-		Attr_relief([0, 0, 0, 0, 0, ], 10),
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
 		NEFTJOD(30),
 		Statusup(400, 0),
 	],
@@ -10353,8 +10309,8 @@ Cards = [{
 	name: "AbCd-A:《廃絶の鬼神バシレイデ》",
 	cardno: 5050,
 	imageno: 6790,
-	hp: 0,
-	atk: 0,
+	hp: 3431,
+	atk: 2202,
 	cost: 60,
 	attr: [1, 3],
 	species: [11],
@@ -10365,7 +10321,7 @@ Cards = [{
 		Statusup(200, 0),
 		NEFTJOD(30),
 		Fastskill(2),
-		Attr_relief([0, 0, 0, 0, 0, ], 10),
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
 		Panel_boost([0, 1, 0, 0, 0, ], 2),
 		Attr_statusup(0, 200, [0, 1, 0, 0, 0, ]),
 		Attr_statusup(200, 0, [0, 1, 0, 0, 0, ]),
@@ -10381,7 +10337,7 @@ Cards = [{
 	},
 	islegend: true,
 	Lawake: [
-		Attr_relief([0, 0, 0, 0, 0, ], 10),
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
 		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
 	],
 	as2: {
@@ -10509,7 +10465,7 @@ Cards = [{
 	ss1: {
 		desc: "味方全体のMAXHPの60％を使い敵単体へダメージ(240％×味方の人数)",
 		turn: 12,
-		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.6), [1])],
+		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.6), [1], 1)],
 	},
 	islegend: true,
 	Lawake: [
@@ -10523,7 +10479,7 @@ Cards = [{
 	ss2: {
 		desc: "味方全体のMAXHPの60％を使い敵単体へダメージ(300％×味方の人数)",
 		turn: 14,
-		proc: [ss_damage_s(ss_consume_all_cond(3.0, 0.6), [1])],
+		proc: [ss_damage_s(ss_consume_all_cond(3.0, 0.6), [1], 1)],
 	},
 }, {
 	name: "黒厄の災闇王剣 オディルン・バナド",
@@ -12557,7 +12513,7 @@ Cards = [{
 		Statusup(0, 200),
 		Panel_boost([0, 0, 1, 0, 0, ], 1),
 		Spec_statusup(200, 0, [8, ]),
-		Attr_relief([0, 0, 0, 0, 0, ], 10),
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
 	],
 	as1: {
 		desc: "敵全体へダメージ/130％",
@@ -14622,7 +14578,7 @@ Cards = [{
 	ss1: {
 		desc: "味方全体のMAXHPの50%を使い敵単体へダメージ(240％×味方の人数)",
 		turn: 11,
-		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.5), [2])],
+		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.5), [2], 1)],
 	},
 	islegend: true,
 	Lawake: [
@@ -14636,7 +14592,7 @@ Cards = [{
 	ss2: {
 		desc: "味方全体のMAXHPの50%を使い敵単体へダメージ(300％×味方の人数)",
 		turn: 13,
-		proc: [ss_damage_s(ss_consume_all_cond(3.0, 0.5), [2])],
+		proc: [ss_damage_s(ss_consume_all_cond(3.0, 0.5), [2], 1)],
 	},
 }, {
 	name: "求めたのは本当の「自分」 アイ",
@@ -15306,15 +15262,15 @@ Cards = [{
 	species: [11],
 	awakes: [
 		Costdown(6),
-		Attr_relief([0, 0, 0, 0, 0, ], 10),
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
 		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
-		Attr_relief([0, 0, 0, 0, 0, ], 10),
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
 		NEFTJOD(30),
-		Attr_relief([0, 0, 0, 0, 0, ], 10),
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
 		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
-		Attr_relief([0, 0, 0, 0, 0, ], 10),
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
 		NEFTJOD(30),
-		Attr_relief([0, 0, 0, 0, 0, ], 10),
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
 	],
 	as1: {
 		desc: "残りHPが90％以上でダメージアップ＆敵HPを吸収(攻撃：360％ / 吸収：12％)",
