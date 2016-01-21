@@ -644,6 +644,19 @@ function s_enemy_when_dead(i1, i2) {
 	}
 }
 
+// 敵1体が倒れる
+function s_enemy_when_dead_s() {
+	return function (fld, n) {
+		var rst = false;
+		var es = GetNowBattleEnemys();
+		for (var i = 0; i < es.length; i++) {
+			if (i == n) { continue; }
+			rst = rst || es[i].nowhp <= 0;
+		}
+		return rst;
+	}
+}
+
 // 敵自身以外が倒れる
 function s_enemy_when_dead_l() {
 	return function (fld, n) {

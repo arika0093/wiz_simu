@@ -204,9 +204,8 @@ function enemy_popup_proc(){
 }
 
 // 敵ダメージなどに反応するあれこれの制御
-function enemy_damage_switch_check(type) {
+function enemy_damage_switch_check(type, reset) {
 	var enemys = GetNowBattleEnemys();
-	var type = type || "damage_switch";
 	$.each(enemys, function (i, e) {
 		if (e.turn_effect.length > 0) {
 			var skillct = $.grep(e.turn_effect, function (g) {
@@ -220,7 +219,9 @@ function enemy_damage_switch_check(type) {
 					s.on_cond.count = s.on_cond.interval;
 				}
 			}
-			e.flags.on_damage = false;
+			if (reset) {
+				e.flags.on_damage = false;
+			}
 		}
 	});
 }
