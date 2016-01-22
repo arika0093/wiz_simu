@@ -199,7 +199,7 @@ Quests = [
 				},
 			}, ],
 		}, {
-			appearance: [1],
+			appearance: [4],
 			enemy: [{
 				name: "火妖精",
 				hp: 25000,
