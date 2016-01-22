@@ -4,17 +4,27 @@ function loaddeck_from_url(qr) {
 	var q = getquery(qr);
 	if (q.length > 0) {
 		for (var ct = 0; ct < 5; ct++) {
-			var spl_idx = q[ct].indexOf("|");
-			var cno = q[ct].substr(0, spl_idx >= 0 ? spl_idx : undefined);
-			var cmana = spl_idx >= 0 ? Number(q[ct].substr(spl_idx+1)) : 200;
+			// | で区切る
+			var q_spl = q[ct].split("|");
+			// 精霊番号
+			var cno = Number(q_spl[0]);
 			if (cno == 0) { continue; }
-			var card = $.grep(Cards, function (e, i) {
+			var card = $.extend(true, {}, $.grep(Cards, function (e, i) {
 				return e.cardno == cno;
-			})[0];
+			})[0]);
+			// マナ数
+			var cmana = Number(q_spl[1]) || 200;
+			// 覚醒数考慮
+			var awake_num = card.awakes.length;
+			if (q_spl[2]) {
+				card.awakes = card.awakes.slice(0, Number(q_spl[2]));
+			}
 			if (card) {
 				cds.push({
 					card: card,
 					mana: cmana,
+					awake: q_spl[2] || awake_num,
+					awake_def: awake_num,
 				});
 			}
 		}

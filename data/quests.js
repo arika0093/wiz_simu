@@ -53,7 +53,7 @@ Quests = [
 	// -------------------------
 	{
 		id: "1601ev_z",
-		name: "2016/01 イベントトーナメント(絶級)",
+		name: "[2016/01]イベントトーナメント(絶級)",
 		category: "event tornament",
 		desc: "イベ絶",
 		overlap: false,

@@ -321,7 +321,7 @@ function s_enemy_cursed(hpdown, tnum, t) {
 					if (state == "first") {
 						// HP低下
 						nowtg.maxhp = Math.max(-hpdown + nowtg.maxhp, 1);
-						nowtg.nowhp = Math.max(-hpdown + nowtg.nowhp, 1);
+						nowtg.nowhp = Math.min(nowtg.nowhp, nowtg.maxhp);
 						// 効果解除
 						turneff_break_cond(nowtg.turn_effect, oi, function (teff) {
 							return teff.iscursebreak;

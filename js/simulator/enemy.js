@@ -78,7 +78,6 @@ function allkill_check(is_ssfinish) {
 function gen_enemytarget_array(tnum, atkn, tgtype, nows) {
 	var gen_ar = [];
 	var deck_n = Field.Allys.Deck.length;
-	var gen_l = Math.min(tnum, deck_n);
 	var tgtype_isfunc = (tgtype !== true && tgtype);
 	for (var an = 0; an < atkn; an++) {
 		// 攻撃対象を毎回変えないなら最初の要素をコピーする
@@ -94,12 +93,12 @@ function gen_enemytarget_array(tnum, atkn, tgtype, nows) {
 				tg_arr.push(i);
 			}
 		}
-		tg_arr.splice(deck_n, 5 - deck_n);
 		// 攻撃対象関数が指定されているならそれを実行
 		if (tgtype_isfunc) {
 			var r = tgtype(nows, tnum);
 		} else {
 			// ランダム取得
+			var gen_l = Math.min(tnum, tg_arr.length, deck_n);
 			var a = tg_arr.concat();
 			var t = [];
 			var r = [];

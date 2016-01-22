@@ -10039,7 +10039,7 @@ Cards = [{
 	ss2: {
 		desc: "味方全体のHPを完全回復し、6ターン自分の攻撃力をアップ。HP20％未満の時、さらに自分の攻撃力をアップ(通常：+100％ / HP20％未満：+1000％)",
 		turn: 10,
-		proc: [ss_heal(1.0), ss_enhance_own(ss_hp_less(0.20, 10, 1.0), 6)],
+		proc: [ss_enhance_own(ss_hp_less(0.20, 10, 1.0), 6), ss_heal(1.0)],
 	},
 }, {
 	name: "黒猫と魔法の世界へ 初音ミク",
@@ -15804,7 +15804,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体へ火・水属性の5回連続ダメージ(150%)更に味方のHPを回復(25%)",
 		turn: 6,
-		proc: [ss_damage_all(1.5, [1,0]), ss_heal(0.25)],
+		proc: [ss_damage_s(1.5, [1,0], 5), ss_heal(0.25)],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],1),
@@ -15824,7 +15824,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体へ火・水属性の5回連続ダメージ(300%)更に味方のHPを回復(25%)",
 		turn: 9,
-		proc: [ss_damage_all(3.0, [1,0]), ss_heal(0.25)],
+		proc: [ss_damage_s(3.0, [1,0], 5), ss_heal(0.25)],
 	},
 	Lawake: [
 		Statusup(0,400),
@@ -18324,4 +18324,106 @@ Cards = [{
 		Statusup(0,500),
 		Attr_statusup(0,100, [1,0,0,0,0,]),
 	],
-}, ];
+}, {
+	name: "聖刻に祈りを捧げる セティエ・レー",
+	cardno: 5373,
+	imageno: 7216,
+	hp: 4357,
+	atk: 2676,
+	cost: 45,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "雷属性の味方のHPを回復、リーダー時さらに回復(13%/17%)",
+		proc: [Heal(0.13, [0,0,1,0,0], 0), add_cond(Heal(0.17, [0,0,1,0,0], 0), when_leader())],
+	},
+	ss1: {
+		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
+		turn: 7,
+		proc: [ss_skillboost(2)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(1),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Heal_afterbattle(10),
+		Fastskill(2),
+		Spec_statusup(300,0, [9,]),
+		Panel_boost([0,0,1,0,0,],2),
+	],
+	as2: {
+		desc: "雷属性の味方のHPを回復、リーダー時さらに回復(16%/20%)",
+		proc: [Heal(0.16, [0,0,1,0,0], 0), add_cond(Heal(0.20, [0,0,1,0,0], 0), when_leader())],
+	},
+	ss2: {
+		desc: "味方全体のスペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
+		turn: 9,
+		proc: [ss_skillboost(2)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}, 
+{
+	name: "逆巻の花車旋風 ナゴミ・オソドリ",
+	cardno: 4087,
+	imageno: 5736,
+	hp: 1792,
+	atk: 2321,
+	cost: 30,
+	attr: [1,-1],
+	species: [1],
+	islegend: false,
+	as1: {
+		desc: "3チェインで敵単体を3回連続攻撃(300%)",
+		proc: ChainDualAttack(3.0, 3, 3),
+	},
+	ss1: {
+		desc: "ジャンルパネルにチェインプラス2の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(2)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],1),
+		Spec_statusup(0,200, [1,]),
+	],
+}, {
+	name: "イグノビリウムの青の装兵",
+	cardno: 4817,
+	imageno: 6562,
+	hp: 2010,
+	atk: 2413,
+	cost: 25,
+	attr: [1,-1],
+	species: [6],
+	islegend: false,
+	as1: {
+		desc: "ダメージがイチかバチかアップ(0%~500%)",
+		proc: ChainStakesAttack(0, 5.0, 0),
+	},
+	ss1: {
+		desc: "3ターン敵全体に毒のダメージを与える(2500)",
+		turn: 5,
+		proc: [poison(2500, 3)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Statusup(100,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Statusup(0,200),
+	],
+},];

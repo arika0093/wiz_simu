@@ -17,7 +17,14 @@ function create_url(check) {
 		})[0];
 		var number = card !== undefined ? card.cardno : 0;
 		if (number != 0) {
-			nolists.push(number + "|" + Manaplus[ct]);
+			var add_tx = String(number);
+			if (Manaplus[ct] != 200 || AwakeNum[ct] != -1) {
+				add_tx += "|" + Manaplus[ct];
+			}
+			if (AwakeNum[ct] != -1) {
+				add_tx += "|" + AwakeNum[ct];
+			}
+			nolists.push(add_tx);
 		} else {
 			nolists.push(number);
 		}

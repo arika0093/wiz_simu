@@ -1,5 +1,7 @@
 // マナプラス管理用global変数
 var Manaplus = [200, 200, 200, 200, 200];
+// 潜在個数管理用(ry
+var AwakeNum = [-1, -1, -1, -1, -1];
 
 // autocomplete指定 / deckload / Dialog
 $(function () {
@@ -11,8 +13,9 @@ $(function () {
 	for (var idx = 1; idx <= 5; idx++) {
 		$("#deck0" + idx).attr("placeholder", "《精霊名を入力します》");
 		if((cds && cds[idx-1])){
-			Manaplus[idx - 1] = cds[idx - 1].mana;
-			decksel_show(idx, cds[idx - 1].card);
+			Manaplus[idx-1] = cds[idx-1].mana;
+			AwakeNum[idx-1] = (cds[idx-1].awake != cds[idx-1].awake_def ? cds[idx-1].awake : -1);
+			decksel_show(idx, cds[idx-1].card);
 		} else {
 			var itx = $("#deck0" + idx).val();
 			var cd = $.grep(Cards, function (e) {
@@ -51,7 +54,8 @@ $(function () {
 			var n = Number($("#d_mana_index").text());
 			var ni = Number($("#d_mana_dindex").text());
 			var cd = Cards[n];
-			// set value
+			var cd_aws = cd.awakes.length;
+			// set value(mana)
 			$("#d_mana_edit").spinner({
 				change: function () {
 					var value = $("#d_mana_edit").spinner("value");
@@ -76,6 +80,30 @@ $(function () {
 			$("#d_mana_edit").spinner("value", Manaplus[ni]);
 			var p_t = (ni+1) + ": " + cd.name + "<br/>マナの値を0-200の間で指定してください。(HP: " + cd.hp + ")";
 			$("#d_mana_text").html(p_t);
+
+			// set value(awake)
+			$("#d_awake_edit").spinner({
+				change: function () {
+					var value = $("#d_awake_edit").spinner("value");
+					if (value > cd_aws) {
+						$(this).spinner("value", cd_aws);
+						return false;
+					} else if (value < 0) {
+						$(this).spinner("value", 0);
+						return false;
+					}
+				},
+				spin: function (event, ui) {
+					if (ui.value > cd_aws) {
+						$(this).spinner("value", cd_aws);
+						return false;
+					} else if (ui.value < 0) {
+						$(this).spinner("value", 0);
+						return false;
+					}
+				},
+			});
+			$("#d_awake_edit").spinner("value", AwakeNum[ni] != -1 ? AwakeNum[ni] : cd_aws);
 			// close when click dialog outside
 			$('.ui-widget-overlay').bind('click', function () {
 				$("#dialog_manaset").dialog('close');
@@ -98,8 +126,11 @@ $(function () {
 				var n = $("#d_mana_index").text();
 				var ni = Number($("#d_mana_dindex").text());
 				var cd = Cards[n];
+				var cd_aws = cd.awakes.length;
 				var val = $("#d_mana_edit").spinner("value");
-				Manaplus[ni] = val ? val : 0;
+				var aws = $("#d_awake_edit").spinner("value");
+				Manaplus[ni] = val ? val : 200;
+				AwakeNum[ni] = aws != cd_aws ? aws : -1;
 				$("#ally0" + (ni+1) + "_mana").text("+" + Manaplus[ni]);
 				$(this).dialog("close");
 			},

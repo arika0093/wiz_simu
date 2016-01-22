@@ -253,7 +253,7 @@ function sim_show() {
 			$("#sim_log_inner").accordion("refresh");
 		},
 		buttons: {
-			"Open debug log": function() {
+			"DebugLog": function() {
 				$("#dialog_simlog_detail").dialog("open");
 			},
 			"閉じる": function () {
@@ -341,7 +341,7 @@ function sim_show() {
 	$("#dialog_simfinish_popup").dialog({
 		autoOpen: false,
 		modal: true,
-		width: 450,
+		width: 600,
 		open: function () {
 			var nam = Field.Quest.name;
 			var trn = durturn_string();
