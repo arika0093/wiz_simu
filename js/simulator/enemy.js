@@ -86,7 +86,13 @@ function gen_enemytarget_array(tnum, atkn, tgtype, nows) {
 			gen_ar[an] = gen_ar[0];
 			continue;
 		}
-		var tg_arr = [0, 1, 2, 3, 4];
+		var tg_arr = [];
+		// 生きてる味方を追加
+		for (var i = 0; i < nows.length; i++) {
+			if (nows[i].nowhp > 0) {
+				tg_arr.push(i);
+			}
+		}
 		tg_arr.splice(deck_n, 5 - deck_n);
 		// 攻撃対象関数が指定されているならそれを実行
 		if (tgtype_isfunc) {
