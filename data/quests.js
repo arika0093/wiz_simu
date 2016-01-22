@@ -61,7 +61,7 @@ Quests = [
 		data: [{
 			appearance: [1],
 			enemy: [{
-				name: "火妖精",
+				name: "朝日の妖精",
 				hp: 25000,
 				imageno: 7304,
 				attr: 0,
@@ -76,7 +76,7 @@ Quests = [
 					wait: 2,
 				},
 			}, {
-				name: "火妖精",
+				name: "朝日の妖精",
 				hp: 25000,
 				imageno: 7304,
 				attr: 0,
@@ -93,7 +93,7 @@ Quests = [
 		}, {
 			appearance: [2],
 			enemy: [{
-				name: "水世界樹A",
+				name: "翡翠のドライアド",
 				hp: 25000,
 				imageno: 413,
 				attr: 1,
@@ -111,7 +111,7 @@ Quests = [
 					wait: 1,
 				},
 			}, {
-				name: "火妖精",
+				name: "暁のフェアリー",
 				hp: 30000,
 				imageno: 7305,
 				attr: 0,
@@ -128,7 +128,7 @@ Quests = [
 					wait: 2,
 				},
 			}, {
-				name: "火妖精",
+				name: "朝日の妖精",
 				hp: 35000,
 				imageno: 7304,
 				attr: 0,
@@ -145,7 +145,7 @@ Quests = [
 		}, {
 			appearance: [3],
 			enemy: [{
-				name: "火妖精(鉄壁)",
+				name: "暁のフェアリー",
 				hp: 20,
 				imageno: 7305,
 				attr: 0,
@@ -162,7 +162,7 @@ Quests = [
 					wait: 1,
 				},
 			}, {
-				name: "火世界樹A",
+				name: "緋色のドライアド",
 				hp: 40000,
 				imageno: 410,
 				attr: 0,
@@ -180,7 +180,7 @@ Quests = [
 					wait: 2,
 				},
 			}, {
-				name: "火世界樹A",
+				name: "緋色のドライアド",
 				hp: 40000,
 				imageno: 410,
 				attr: 0,
@@ -201,7 +201,7 @@ Quests = [
 		}, {
 			appearance: [4],
 			enemy: [{
-				name: "火妖精",
+				name: "朝日の妖精",
 				hp: 25000,
 				imageno: 7304,
 				attr: 0,
@@ -216,7 +216,7 @@ Quests = [
 					wait: 2,
 				},
 			}, {
-				name: "火妖精",
+				name: "朝日の妖精",
 				hp: 25000,
 				imageno: 7304,
 				attr: 0,
@@ -233,7 +233,7 @@ Quests = [
 		}, {
 			appearance: [5],
 			enemy: [{
-				name: "水妖精",
+				name: "湖畔のフェアリー",
 				hp: 30000,
 				imageno: 7307,
 				attr: 1,
@@ -251,7 +251,7 @@ Quests = [
 					wait: 2,
 				},
 			}, {
-				name: "火戦士",
+				name: "非業背負いし宿星 エリーク・ハネス",
 				hp: 120000,
 				imageno: 7300,
 				attr: 0,
@@ -279,7 +279,7 @@ Quests = [
 					wait: 1,
 				},
 			}, {
-				name: "火妖精",
+				name: "暁のフェアリー",
 				hp: 50000,
 				imageno: 7305,
 				attr: 0,
