@@ -52,7 +52,7 @@ Quests = [
 	// イベントトーナメント
 	// -------------------------
 	{
-		id: "tjm2_z",
+		id: "1601ev_z",
 		name: "2016/01 イベントトーナメント(絶級)",
 		category: "event tornament",
 		desc: "イベ絶",
@@ -63,7 +63,7 @@ Quests = [
 			enemy: [{
 				name: "火妖精",
 				hp: 25000,
-				imageno: -1,
+				imageno: 7304,
 				attr: 0,
 				spec: 4,
 				move: {
@@ -78,7 +78,7 @@ Quests = [
 			}, {
 				name: "火妖精",
 				hp: 25000,
-				imageno: -1,
+				imageno: 7304,
 				attr: 0,
 				spec: 4,
 				move: {
@@ -95,7 +95,7 @@ Quests = [
 			enemy: [{
 				name: "水世界樹A",
 				hp: 25000,
-				imageno: -1,
+				imageno: 413,
 				attr: 1,
 				spec: 7,
 				move: {
@@ -113,7 +113,7 @@ Quests = [
 			}, {
 				name: "火妖精",
 				hp: 30000,
-				imageno: -1,
+				imageno: 7305,
 				attr: 0,
 				spec: 4,
 				move: {
@@ -130,7 +130,7 @@ Quests = [
 			}, {
 				name: "火妖精",
 				hp: 35000,
-				imageno: -1,
+				imageno: 7304,
 				attr: 0,
 				spec: 4,
 				move: {
@@ -147,7 +147,7 @@ Quests = [
 			enemy: [{
 				name: "火妖精(鉄壁)",
 				hp: 20,
-				imageno: -1,
+				imageno: 7305,
 				attr: 0,
 				spec: 4,
 				move: {
@@ -164,7 +164,7 @@ Quests = [
 			}, {
 				name: "火世界樹A",
 				hp: 40000,
-				imageno: -1,
+				imageno: 410,
 				attr: 0,
 				spec: 7,
 				move: {
@@ -182,7 +182,7 @@ Quests = [
 			}, {
 				name: "火世界樹A",
 				hp: 40000,
-				imageno: -1,
+				imageno: 410,
 				attr: 0,
 				spec: 7,
 				move: {
@@ -203,7 +203,7 @@ Quests = [
 			enemy: [{
 				name: "火妖精",
 				hp: 25000,
-				imageno: -1,
+				imageno: 7304,
 				attr: 0,
 				spec: 4,
 				move: {
@@ -218,7 +218,7 @@ Quests = [
 			}, {
 				name: "火妖精",
 				hp: 25000,
-				imageno: -1,
+				imageno: 7304,
 				attr: 0,
 				spec: 4,
 				move: {
@@ -235,7 +235,7 @@ Quests = [
 			enemy: [{
 				name: "水妖精",
 				hp: 30000,
-				imageno: -1,
+				imageno: 7307,
 				attr: 1,
 				spec: 4,
 				move: {
@@ -253,7 +253,7 @@ Quests = [
 			}, {
 				name: "火戦士",
 				hp: 120000,
-				imageno: -1,
+				imageno: 7300,
 				attr: 0,
 				spec: 8,
 				move: {
@@ -281,7 +281,7 @@ Quests = [
 			}, {
 				name: "火妖精",
 				hp: 50000,
-				imageno: -1,
+				imageno: 7305,
 				attr: 0,
 				spec: 4,
 				move: {
