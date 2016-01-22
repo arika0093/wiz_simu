@@ -88,8 +88,9 @@ function gen_enemytarget_array(tnum, atkn, tgtype, nows) {
 		}
 		var tg_arr = [];
 		// 生きてる味方を追加
-		for (var i = 0; i < nows.length; i++) {
-			if (nows[i].nowhp > 0) {
+		for (var i = 0; i < deck_n; i++) {
+			var nw = nows ? nows[i] : Field.Allys.Now[i];
+			if (nw.nowhp > 0) {
 				tg_arr.push(i);
 			}
 		}

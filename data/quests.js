@@ -49,15 +49,15 @@ Quests = [
 	*/
 
 	// -------------------------
-	// イベントクエスト: 天井岬2 絶級
+	// イベントトーナメント
 	// -------------------------
 	{
 		id: "tjm2_z",
-		name: "天井岬2(絶級)",
-		category: "event",
-		desc: "イベ絶用",
+		name: "2016/01 イベントトーナメント(絶級)",
+		category: "event tornament",
+		desc: "イベ絶",
 		overlap: false,
-		aprnum: 4,
+		aprnum: 5,
 		data: [{
 			appearance: [1],
 			enemy: [{
@@ -199,7 +199,39 @@ Quests = [
 				},
 			}, ],
 		}, {
-			appearance: [4],
+			appearance: [1],
+			enemy: [{
+				name: "火妖精",
+				hp: 25000,
+				imageno: -1,
+				attr: 0,
+				spec: 4,
+				move: {
+					on_move: [
+						m_enemy_once(s_enemy_chain_sealed(5)),
+						s_enemy_attack(1200, 1, 1, false),
+					],
+					atrandom: false,
+					turn: 2,
+					wait: 2,
+				},
+			}, {
+				name: "火妖精",
+				hp: 25000,
+				imageno: -1,
+				attr: 0,
+				spec: 4,
+				move: {
+					on_move: [
+						s_enemy_attack(1000, 5, 1, false),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, ],
+		}, {
+			appearance: [5],
 			enemy: [{
 				name: "水妖精",
 				hp: 30000,
