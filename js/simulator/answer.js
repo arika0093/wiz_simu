@@ -9,25 +9,27 @@ function panel(attr) {
 	if (pnladd != 0) {
 		Field.Status.panel_add[pnladd - 1].func(Field);
 	}
-	// エンハ処理
-	answer_skill(pickup_answerskills(attr, "support"), attr);
-	// 攻撃
-	var atk_skill = pickup_answerskills(attr, "attack");
-	$.each(atk_skill, function (i, e) {
-		if (e != null) {
-			atk_skill[i].unshift(Default_as()[0]);
-		}
-	});
-	answer_skill(atk_skill, attr);
-	// 回復
-	answer_skill(pickup_answerskills(attr, "heal"), attr);
-	// 各精霊のSSチャージを1増やす
-	for (var i = 0; i < Field.Allys.Deck.length; i++) {
-		var now = Field.Allys.Now[i];
-		if (now.nowhp > 0) {
-			now.ss_current += 1;
-			// L処理
-			legend_timing_check(Field.Allys.Deck, Field.Allys.Now, i);
+	// 味方攻撃処理
+	{
+		// 使用したASリスト
+		var as_afters = [];
+		// エンハ処理
+		answer_skill(pickup_answerskills(attr, "support"), attr, as_afters);
+		// 攻撃
+		var atk_skill = pickup_answerskills(attr, "attack");
+		$.each(atk_skill, function (i, e) {
+			if (e != null) {
+				atk_skill[i].unshift(Default_as()[0]);
+			}
+		});
+		answer_skill(atk_skill, attr, as_afters);
+		// 回復
+		answer_skill(pickup_answerskills(attr, "heal"), attr, as_afters);
+		// 使用したASの使用後処理
+		for (var i = 0; i < as_afters.length; i++) {
+			if (as_afters[i][0]) {
+				as_afters[i][0]();
+			}
 		}
 	}
 	// 敵スキル処理
@@ -50,10 +52,19 @@ function panel(attr) {
 		// 分裂処理
 		enemy_damage_switch_check("enemy_division");
 	}
+	// 各精霊のSSチャージを1増やす
+	for (var i = 0; i < Field.Allys.Deck.length; i++) {
+		var now = Field.Allys.Now[i];
+		if (now.nowhp > 0) {
+			now.ss_current += 1;
+			// L処理
+			legend_timing_check(Field.Allys.Deck, Field.Allys.Now, i);
+		}
+	}
 	// 敵の処理
 	enemy_move();
 	// 敵ダメージ反応系
-	enemy_damage_switch_check("damage_switch", true);
+	enemy_damage_switch_check();
 	// 次のターンへ進む
 	nextturn(false);
 	// 表示
@@ -125,7 +136,7 @@ function pickup_answerskills(attr, type, subtype) {
 }
 
 // アンサースキルの処理
-function answer_skill(as_arr, panel) {
+function answer_skill(as_arr, panel, as_afters) {
 	for (var i = 0; i < as_arr.length; i++) {
 		var card = Field.Allys.Deck[i];
 		var now = Field.Allys.Now[i];
@@ -145,17 +156,19 @@ function answer_skill(as_arr, panel) {
 		// ASがないなら処理しない
 		if (as_arr[i] == null || as_arr[i].length <= 0) { continue; }
 		// 種類で分岐
+		var rst = [];
 		switch (as_arr[i][0].type) {
 			case "attack":
-				answer_attack(card, now, enemy_dat, as_arr[i], panel, i);
+				rst = answer_attack(card, now, enemy_dat, as_arr[i], panel, i);
 				break;
 			case "support":
-				answer_enhance(as_arr[i], i, panel);
+				rst = answer_enhance(as_arr[i], i, panel);
 				break;
 			case "heal":
-				answer_heal(as_arr[i], i, panel);
+				rst = answer_heal(as_arr[i], i, panel);
 				break;
 		}
+		as_afters.push(rst);
 	}
 }
 
@@ -163,6 +176,7 @@ function answer_skill(as_arr, panel) {
 function answer_attack(card, now, enemy, as, attr, index) {
 	// 敵それぞれに対して有効なASのindexの配列
 	var as_pos = [];
+	var as_afters = [];
 	// 敵それぞれについて条件の良いASを取り出す
 	for (var ai = 0; ai < as.length; ai++) {
 		var chain = Field.Status.chain;
@@ -216,16 +230,18 @@ function answer_attack(card, now, enemy, as, attr, index) {
 			}
 			// 攻撃後処理
 			if (atk_as.after) {
-				atk_as.after(Field, index, (ati == 0 && at == 0), g_dmg);
+				as_afters.push(atk_as.after(Field, index, (ati == 0 && at == 0), g_dmg));
 			}
 		}
 	}
 	// ASエンハを消去
 	now.as_enhance = 0;
+	return as_afters;
 }
 
 // エンハスキルの処理
 function answer_enhance(as, i, p) {
+	var as_afters = [];
 	for (var ci = 0; ci < Field.Allys.Deck.length; ci++) {
 		var ass = {rate: 0};
 		var card = Field.Allys.Deck[ci];
@@ -244,13 +260,15 @@ function answer_enhance(as, i, p) {
 		now.as_enhance = bef_enh + ass.rate;
 		// 攻撃後処理
 		if (ass.after && ci == i) {
-			ass.after(Field, i, true);
+			as_afters.push(ass.after(Field, i, true));
 		}
 	}
+	return as_afters;
 }
 
 // 回復スキルの処理
 function answer_heal(as, i, p) {
+	var as_afters = [];
 	for (var ci = 0; ci < Field.Allys.Deck.length; ci++) {
 		var ass = {rate: 0};
 		var card = Field.Allys.Deck[ci];
@@ -272,10 +290,11 @@ function answer_heal(as, i, p) {
 			Field.log_push("Unit[" + (ci + 1) + "]: HP回復(HP: " + before + "→" + now.nowhp + ")");
 			// 攻撃後処理
 			if (ass.after && ci == i) {
-				ass.after(Field, i, true);
+				as_afters.push(ass.after(Field, i, true));
 			}
 		}
 	}
+	return as_afters;
 }
 
 // ASの対象になるかどうかを確認する
