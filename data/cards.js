@@ -18182,7 +18182,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "火属性の敵単体への特攻ダメージ、パネルの色が増す度さらにアップ(450%/600%/700%)",
-		proc: ChainPanelsAttrAttack(4.5, 6.0, 7.0, [1,0,0,0,0], 0),,
+		proc: ChainPanelsAttrAttack(4.5, 6.0, 7.0, [1,0,0,0,0], 0),
 	},
 	ss2: {
 		desc: "敵全体の攻撃ターンを3遅らせ、20チェインでさらに1遅らせる",
@@ -18205,7 +18205,7 @@ Cards = [{
 	islegend: true,
 	as1: {
 		desc: "火属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(30% / 80%)",
-		proc: ChainPanChainEnhance_SubAttr(0.3, 0.5, [1,0,0,0,0], 2, 0),
+		proc: ChainEnhance_SubAttr(0.3, 0.5, [1,0,0,0,0], 2, 0),
 	},
 	ss1: {
 		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
@@ -18226,7 +18226,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "火属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(60% / 110%)",
-		proc: ChainPanChainEnhance_SubAttr(0.6, 0.5, [1,0,0,0,0], 2, 0),,
+		proc: ChainEnhance_SubAttr(0.6, 0.5, [1, 0, 0, 0, 0], 2, 0),
 	},
 	ss2: {
 		desc: "味方全体のスペシャルスキルの発動ターンを3早める",
@@ -18249,7 +18249,7 @@ Cards = [{
 	islegend: true,
 	as1: {
 		desc: "7チェインで水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(80%/130%)",
-		proc: ChainPanChainEnhance_SubAttr(0.8, 0.5, [0,1,0,0,0], 0, 7),
+		proc: ChainEnhance_SubAttr(0.8, 0.5, [0, 1, 0, 0, 0], 0, 7),
 	},
 	ss1: {
 		desc: "ジャンルパネルをALL属性化",
@@ -18270,7 +18270,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "7チェインで水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(110%/160%)",
-		proc: ChainPanChainEnhance_SubAttr(1.1, 0.5, [0,1,0,0,0], 0, 7),
+		proc: ChainEnhance_SubAttr(1.1, 0.5, [0, 1, 0, 0, 0], 0, 7),
 	},
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し、ダメージ35%軽減の効果を付与",
