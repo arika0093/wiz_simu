@@ -329,6 +329,10 @@ div.twitter{
 iframe.twitter-timeline{
 	max-width: 100% !important;
 }
+iframe.twitter-share-button {
+	vertical-align: sub;
+}
+
 
 /* Footer */
 div.footerbase{
