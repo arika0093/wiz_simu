@@ -163,16 +163,16 @@ function auto_attack_order(enemys, attr, own_index) {
 		// 死にかけなら優先度最高
 		if (a.nowhp <= pri_hp) { return -1; }
 		if (b.nowhp <= pri_hp) { return +1; }
-		// 行動待機ターン数が少なければ優先
-		var wait_a = a.move.turn || 1;
-		var wait_b = b.move.turn || 1;
-		if (wait_a > wait_b) { return +1; }
-		if (wait_a < wait_b) { return -1; }
 		// 属性有利の方が優先度高
 		var mgn_a = attr_magnification(attr, a.attr);
 		var mgn_b = attr_magnification(attr, b.attr);
 		if (mgn_a < mgn_b) { return +1; }
 		if (mgn_a > mgn_b) { return -1; }
+		// 行動待機ターン数が少なければ優先
+		var wait_a = a.move.turn || 1;
+		var wait_b = b.move.turn || 1;
+		if (wait_a > wait_b) { return +1; }
+		if (wait_a < wait_b) { return -1; }
 		// HPが低い方が優先度高
 		if (a.nowhp < b.nowhp) { return -1; }
 		if (a.nowhp > b.nowhp) { return +1; }
