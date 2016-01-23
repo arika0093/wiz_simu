@@ -1,6 +1,6 @@
 // template page loader
 $(function () {
-	var url_b = (window.location.href.indexOf("file:///") >= 0) ? "." : "";
+	var url_b = (window.location.href.indexOf("/pages/") >= 0) ? ".." : "";
 
 	$("#Header").load(url_b + "/template/header.html");
 	$("#Footer").load(url_b + "/template/footer.html");
