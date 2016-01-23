@@ -169,8 +169,8 @@ function auto_attack_order(enemys, attr, own_index) {
 		if (mgn_a < mgn_b) { return +1; }
 		if (mgn_a > mgn_b) { return -1; }
 		// 行動待機ターン数が少なければ優先
-		var wait_a = a.move.turn || 1;
-		var wait_b = b.move.turn || 1;
+		var wait_a = a.move ? a.move.turn : 1;
+		var wait_b = b.move ? b.move.turn : 1;
 		if (wait_a > wait_b) { return +1; }
 		if (wait_a < wait_b) { return -1; }
 		// HPが低い方が優先度高
