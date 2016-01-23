@@ -11,6 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "template", "template", "{BA
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wiz_simu", "wiz_simu", "{54D72F80-1342-4A3D-B559-339A01E32933}"
+	ProjectSection(SolutionItems) = preProject
+		index.html = index.html
+		info.html = info.html
+		simulator.html = simulator.html
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{85B9F527-E148-41E4-A8C0-04BBF26A1A24}"
 	ProjectSection(SolutionItems) = preProject
@@ -62,13 +67,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "select", "select", "{068E2C
 		js\questsel.js = js\questsel.js
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pages", "pages", "{43B788FD-676D-40B1-B1D1-DCCFBE58FE21}"
-	ProjectSection(SolutionItems) = preProject
-		index.html = index.html
-		pages\info.html = pages\info.html
-		simulator.html = simulator.html
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +79,5 @@ Global
 		{FEDAC185-D019-43F3-BE3D-70929AAAE89F} = {54D72F80-1342-4A3D-B559-339A01E32933}
 		{0B5CF5D7-96AD-4EED-8363-750FF402B468} = {20D7A7D8-822B-4D68-AEF0-9127E62A819F}
 		{068E2C1D-35BD-43A6-826C-B09E82790769} = {20D7A7D8-822B-4D68-AEF0-9127E62A819F}
-		{43B788FD-676D-40B1-B1D1-DCCFBE58FE21} = {54D72F80-1342-4A3D-B559-339A01E32933}
 	EndGlobalSection
 EndGlobal
