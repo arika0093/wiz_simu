@@ -40,7 +40,7 @@ function ss_push(n) {
 				});
 			});
 			// 敵ダメージ反応系
-			enemy_damage_switch_check();
+			enemy_damage_switch_check("damage_switch");
 		}
 		// ターン効果確認
 		turn_effect_check(false, is_allkill());

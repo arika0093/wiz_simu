@@ -68,11 +68,11 @@ function damage_switch(cond, func, is_always) {
 			lim_turn: -1,
 			effect: function () { },
 			cond: cond,
-			on_cond: func,
+			on_cond: m_enemy_once(func),
 			oncond_anytime: is_always === true,
 		});
 	});
-	return m_enemy_once(rst);
+	return rst;
 }
 
 // -----------------------------------

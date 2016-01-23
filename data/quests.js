@@ -259,7 +259,7 @@ Quests = [
 				move: {
 					on_popup: [
 						skill_counter_func(s_enemy_cursed, "呪い", -1, false, 2000, 5, 6),
-						damage_switch(s_enemy_when_dead_s(), m_enemy_angry()),
+						damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
 					],
 					on_move: [
 						s_enemy_attack(300, 5, 5, false),
@@ -267,7 +267,7 @@ Quests = [
 					on_angry: [
 						damage_block_own(10000, -1),
 					],
-					on_angry_move: [
+					on_move_angry: [
 						s_enemy_attr_weaken([1, 0, 0, 0, 0], 1.5, 5, 3),
 						s_enemy_attack(300, 5, 5, false),
 						s_enemy_attack(300, 5, 5, false),

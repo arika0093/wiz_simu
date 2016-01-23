@@ -733,9 +733,9 @@ function ss_chain_cost_skill(ch, ss1, ss2) {
 		if (fld.Status.chain >= ch) {
 			fld.Status.chain -= ch;
 			fld.log_push("チェイン消費: " + ch);
-			ss1(fld, n);
+			return ss1(fld, n);
 		} else {
-			ss2(fld, n);
+			return ss2(fld, n);
 		}
 	};
 }

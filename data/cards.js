@@ -8534,7 +8534,7 @@ Cards = [{
 	],
 	as1: {
 		desc: "パネルが2色、3色で火属性の敵単体へ特効ダメージ(2色：550％ / 3色：700％)",
-		proc: null
+		proc: ChainPanelsAttrAttack(0, 5.5, 7.0, [1,0,0,0,0], 0)
 	},
 	ss1: {
 		desc: "味方全体のスペシャルスキルの発動ターンを1早める",
@@ -8548,7 +8548,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "パネルが2色、3色で火属性の敵単体へ特効ダメージ(2色：700％ / 3色：900％)",
-		proc: null
+		proc: ChainPanelsAttrAttack(0, 7.0, 9.0, [1, 0, 0, 0, 0], 0)
 	},
 	ss2: {
 		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
@@ -18108,7 +18108,7 @@ Cards = [{
 }, {
 	name: "迎春の喧嘩花火 ハヅキ・ユメガタリ",
 	cardno: 90015,
-	imageno: -1,
+	imageno: 7336,
 	hp: 3183,
 	atk: 5123,
 	cost: 53,
@@ -18152,7 +18152,7 @@ Cards = [{
 },{
 	name: "初春の御園は花盛り フレイ・エレン",
 	cardno: 90016,
-	imageno: -1,
+	imageno: 7338,
 	hp: 4103,
 	atk: 4004,
 	cost: 49,
@@ -18196,7 +18196,7 @@ Cards = [{
 },{
 	name: "時空激震の年明け ユッカ・エンデ",
 	cardno: 90017,
-	imageno: -1,
+	imageno: 7339,
 	hp: 3978,
 	atk: 2731,
 	cost: 1,
@@ -18240,7 +18240,7 @@ Cards = [{
 },{
 	name: "いつもより幸せな迎春 ルチル・メイ",
 	cardno: 90018,
-	imageno: -1,
+	imageno: 7337,
 	hp: 4254,
 	atk: 2612,
 	cost: 53,
@@ -18426,4 +18426,91 @@ Cards = [{
 		Fastskill(1),
 		Statusup(0,200),
 	],
-},];
+}, {
+	name: "修羅か夜叉か ギンガ・カノン",
+	cardno: 5459,
+	imageno: 7240,
+	hp: 1553,
+	atk: 5873,
+	cost: 52,
+	attr: [2, -1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "4チェインで水属性の敵単体へ特効ダメージ、さらに敵HPを吸収する(600%/6%)",
+		proc: add_cond(ChainAttrAttack(6.0, 4, [0, 1, 0, 0, 0]), as_hp_absorption(0.06)),
+	},
+	ss1: {
+		desc: "味方全体のMAXHPの50%を使い敵単体へダメージ(240%×人数)",
+		turn: 10,
+		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.5), [2], 1)],
+	},
+	awakes: [
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+		Costdown(6),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(1),
+		Fastskill(1),
+		Fastskill(2),
+		NEFTJOD(30),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "4チェインで水属性の敵単体へ特効ダメージ、さらに敵HPを吸収する(700%/6%)",
+		proc: add_cond(ChainAttrAttack(7.0, 4, [0, 1, 0, 0, 0]), as_hp_absorption(0.06)),
+	},
+	ss2: {
+		desc: "味方全体のMAXHPの50%を使い敵単体へダメージ(300%×人数)",
+		turn: 12,
+		proc: [ss_damage_s(ss_consume_all_cond(3.0, 0.5), [2], 1)],
+	},
+	Lawake: [
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+	],
+}, {
+	name: "結晶魔道調香師 グラ・アクステンド",
+	cardno: 5551,
+	imageno: 7346,
+	hp: 2319,
+	atk: 2536,
+	cost: 45,
+	attr: [1, 2],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "5チェインで敵単体へのダメージアップ、パネルの色が増す度さらにアップ(350%/500%/600%)",
+		proc: ChainPanelsAttack(3.5, 5.0, 6.0, 5),
+	},
+	ss1: {
+		desc: "ジャンルパネルを水・雷属性化",
+		turn: 4,
+		proc: null,
+	},
+	awakes: [
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Fastskill(1),
+		Attr_statusup(100, 0, [0, 1, 1, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+		NEFTJOD(30),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Fastskill(2),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "5チェインで敵単体へのダメージアップ、パネルの色が増す度さらにアップ(450%/600%/700%)",
+		proc: ChainPanelsAttack(4.5, 6.0, 7.0, 5),
+	},
+	ss2: {
+		desc: "ジャンルパネルをALL属性化。HP50%以下でさらにダメージ40%軽減の効果を付与",
+		turn: 7,
+		proc: null,
+	},
+	Lawake: [
+		Statusup(0, 400),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+	],
+}, ];
