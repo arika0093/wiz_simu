@@ -1,9 +1,11 @@
 // template page loader
 $(function () {
-	$("#Header").load("./template/header.html");
-	$("#Footer").load("./template/footer.html");
+	var url_b = (window.location.href.indexOf("file:///") >= 0) ? "." : "";
+
+	$("#Header").load(url_b + "/template/header.html");
+	$("#Footer").load(url_b + "/template/footer.html");
 	if ($("#Updatelog")) {
-		$.get("update.txt", function (data) {
+		$.get(url_b + "update.txt", function (data) {
 			var log = data.replace(/\n/g, "<br/>\n");
 			$("#Updatelog").html(log);
 		}, "text");
