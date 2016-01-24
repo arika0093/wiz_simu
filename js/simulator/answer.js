@@ -137,10 +137,12 @@ function pickup_answerskills(attr, type, subtype) {
 
 // アンサースキルの処理
 function answer_skill(as_arr, panel, as_afters) {
+	// 残り連撃回数管理
+	var atk_duals = [1, 1, 1, 1, 1];
+	var rem_duals = [1, 1, 1, 1, 1];
+	// 攻撃前処理
 	for (var i = 0; i < as_arr.length; i++) {
-		var card = Field.Allys.Deck[i];
 		var now = Field.Allys.Now[i];
-		var enemy_dat = GetNowBattleEnemys();
 		// 攻撃前処理
 		$.each(now.turn_effect, function (_i, e) {
 			if (e.bef_answer && as_arr[i]) {
@@ -152,28 +154,94 @@ function answer_skill(as_arr, panel, as_afters) {
 					}
 				}
 			}
-		})
-		// ASがないなら処理しない
-		if (as_arr[i] == null || as_arr[i].length <= 0) { continue; }
-		// 種類で分岐
-		var rst = [];
-		switch (as_arr[i][0].type) {
-			case "attack":
-				rst = answer_attack(card, now, enemy_dat, as_arr[i], panel, i);
-				break;
-			case "support":
-				rst = answer_enhance(as_arr[i], i, panel);
-				break;
-			case "heal":
-				rst = answer_heal(as_arr[i], i, panel);
-				break;
-		}
-		as_afters.push(rst);
+		});
 	}
+	// 各精霊の連撃回数を取得する
+	for (var i = 0; i < as_arr.length; i++) {
+		var chain = Field.Status.chain;
+		// ASがないなら処理せず飛ばす
+		if (as_arr[i] == null || as_arr[i].length <= 0) { continue; }
+		for (var j = 0; j < as_arr[i].length; j++) {
+			var card = Field.Allys.Deck[i];
+			var as = as_arr[i][j];
+			// ASが適用されるならば攻撃数を取得
+			if (as.type == "attack" && is_answer_target(as, chain, -1, -1, i, -1, panel)) {
+				var subattr = (card.attr[1] >= 0) ? 2 : 1;
+				rem_duals[i] = Math.max(rem_duals[i], as.atkn * subattr);
+				atk_duals[i] = rem_duals[i];
+			}
+		}
+	}
+	// 攻撃処理
+	var loop_ct = 0;
+	var dual_chk = false;
+	do {
+		for (var i = 0; i < as_arr.length; i++) {
+			var card = Field.Allys.Deck[i];
+			var now = Field.Allys.Now[i];
+			var subattr = (card.attr[1] && card.attr[1] >= 0) ? 2 : 1;
+			var enemy_dat = GetNowBattleEnemys();
+			// ASがないなら処理せず飛ばす
+			if (as_arr[i] == null || as_arr[i].length <= 0) { continue; }
+			// 参照番を超えてるなら終了
+			if (i > loop_ct) { continue; }
+			// 残攻撃回数が0以下なら飛ばす
+			if (rem_duals[i] <= 0) { continue; }
+			// 攻撃属性(水炎属性の精霊が炎パネルを踏んだ時に炎から攻撃する的なアレ)
+			var atk_attr = -1;
+			if(panel.indexOf(card.attr[0]) >= 0){
+				// 副属性を持っているなら、残り攻撃回数が半分以下なら属性を入れ替え
+				if(card.attr[1] >= 0){
+					atk_attr = (rem_duals[i] > atk_duals[i] / 2) ? card.attr[0] : card.attr[1];
+				} else {
+					atk_attr = card.attr[0];
+				}
+			} else {
+				atk_attr = (rem_duals[i] <= atk_duals[i]/2) ? card.attr[1] : card.attr[0];
+			}
+			// 攻撃属性がないならスルー
+			if (atk_attr < 0) { continue; }
+			// 種類で分岐
+			var rst = [];
+			switch (as_arr[i][0].type) {
+				case "attack":
+					rst = answer_attack(card, now, enemy_dat, as_arr[i], atk_attr, panel, i, rem_duals[i]);
+					break;
+				case "support":
+					rst = answer_enhance(as_arr[i], i, panel);
+					break;
+				case "heal":
+					rst = answer_heal(as_arr[i], i, panel);
+					break;
+			}
+			// 攻撃後処理に追加
+			if (rst.length > 0) {
+				as_afters.push(rst);
+			}
+			// 自身の連撃回数が残っているなら次の精霊まで見る
+			if (dual_chk && rem_duals[i] > 1) {
+				loop_ct++;
+				dual_chk = true;
+			}
+		}
+	} while (function () {
+		// 残攻撃回数を減らして全て0以下なら終了
+		var rst = false;
+		for (var l = 0; l < rem_duals.length; l++) {
+			if (l <= loop_ct) {
+				rem_duals[l]--;
+			}
+			rst = rst || rem_duals[l] > 0;
+		}
+		loop_ct++;
+		dual_chk = false;
+		return rst;
+	}());
 }
 
-// 攻撃の処理
-function answer_attack(card, now, enemy, as, attr, index) {
+// AS攻撃の処理
+// (カード種類, 現在の状況, 敵データ, 自身のAS一覧, 攻撃属性, パネル, 味方番号, 残り攻撃回数)
+function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem) {
 	// 敵それぞれに対して有効なASのindexの配列
 	var as_pos = [];
 	var as_afters = [];
@@ -181,58 +249,41 @@ function answer_attack(card, now, enemy, as, attr, index) {
 	for (var ai = 0; ai < as.length; ai++) {
 		var chain = Field.Status.chain;
 		for (var ei = 0; ei < enemy.length; ei++) {
-			var rate_n =
-				(is_answer_target(as[ai], chain, enemy[ei].attr, enemy[ei].spec, index, ei, attr) ? as[ai].rate : 0);
+			var rate_n = (is_answer_target(as[ai], chain, enemy[ei].attr, enemy[ei].spec, index, ei, attr) ? as[ai].rate : 0);
 			var rate_b = (as_pos[ei] !== undefined ? as[as_pos[ei]].rate : 0);
 			as_pos[ei] = (rate_n >= rate_b ? ai : as_pos[ei]);
 		}
 	}
-	// 攻撃順の属性(水炎属性の精霊が炎パネルを踏んだ時に炎から攻撃する的なアレ)
-	var atk_attr = [];
-	atk_attr[0] = (attr.indexOf(card.attr[0]) >= 0) ? card.attr[0] : card.attr[1];
-	atk_attr[1] = (attr.indexOf(card.attr[0]) >= 0) ? card.attr[1] : card.attr[0];
-	// 連撃回数分繰り返す
-	for (var ati = 0; ati < as[as_pos[0]].atkn; ati++) {
-		// 自身のそれぞれの属性について処理を行う
-		for (var at = 0; at < 2; at++) {
-			// 属性無しなら処理しない
-			if (atk_attr[at] === undefined || atk_attr[at] == -1) {
-				continue;
-			}
-			// どの敵を攻撃するか
-			var targ = auto_attack_order(enemy, atk_attr[at], index);
-			// 各種情報
-			var g_dmg = 0;
-			var atr = atk_attr[at];
-			var atk_as = as[as_pos[targ]]
-			var en = enemy[targ];
-			var ch = Field.Status.chain;
-			// 全体攻撃なら敵全体にダメージ計算
-			if (atk_as.isall) {
-				for (var tg = 0; tg < enemy.length; tg++) {
-					if (enemy[tg].nowhp <= 0) { continue; }
-					var is_as = enemy[tg].flags.is_as_attack;
-					// 乱数
-					var rnd = damage_rand();
-					// ダメージ計算
-					g_dmg += attack_enemy(enemy[tg], now, atr,
-						atk_as.rate, atk_as.atkn, attr, ch, rnd, index, tg, false);
-					is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
-				}
-			} else {
-				// 乱数
-				var rnd = damage_rand();
-				var is_as = enemy[targ].flags.is_as_attack;
-				// ダメージ計算
-				g_dmg = attack_enemy(en, now, atr, atk_as.rate,
-					atk_as.atkn, attr, ch, rnd, index, targ, false);
-				is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
-			}
-			// 攻撃後処理
-			if (atk_as.after) {
-				as_afters.push(atk_as.after(Field, index, (ati == 0 && at == 0), g_dmg));
-			}
+	// どの敵を攻撃するか
+	var targ = auto_attack_order(enemy, attr, index);
+	// 各種情報
+	var g_dmg = 0;
+	var atk_as = as[as_pos[targ]]
+	var en = enemy[targ];
+	var ch = Field.Status.chain;
+	// 全体攻撃なら敵全体にダメージ計算
+	if (atk_as.isall) {
+		for (var tg = 0; tg < enemy.length; tg++) {
+			if (enemy[tg].nowhp <= 0) { continue; }
+			var is_as = enemy[tg].flags.is_as_attack;
+			// 乱数
+			var rnd = damage_rand();
+			// ダメージ計算
+			g_dmg += attack_enemy(enemy[tg], now, attr, atk_as.rate, atk_as.atkn, panel, ch, rnd, index, tg, false);
+			is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
 		}
+	} else {
+		// 乱数
+		var rnd = damage_rand();
+		var is_as = enemy[targ].flags.is_as_attack;
+		// ダメージ計算
+		g_dmg = attack_enemy(en, now, attr, atk_as.rate, atk_as.atkn, panel, ch, rnd, index, targ, false);
+		is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
+	}
+	// 攻撃後処理
+	if (atk_as.after && atk_rem == atk_as.atkn) {
+		as_afters.push(atk_as.after(Field, index, (ati == 0 && at == 0), g_dmg));
+		
 	}
 	// ASエンハを消去
 	now.as_enhance = 0;
@@ -303,9 +354,9 @@ function is_answer_target(as, ch, tg_attr, tg_spec, own_i, enm_i, panels) {
 	// チェイン確認
 	rst = rst && (ch >= as.chain);
 	// 属性確認
-	rst = rst && (as.attr[tg_attr] == 1);
+	rst = rst && (tg_attr < 0 || as.attr[tg_attr] == 1);
 	// 種族確認
-	rst = rst && (check_spec_inarray(as.spec, tg_spec));
+	rst = rst && (tg_spec < 0 || check_spec_inarray(as.spec, tg_spec));
 	// 条件確認
 	rst = rst && (as.cond(Field, own_i, enm_i, panels));
 	return rst;

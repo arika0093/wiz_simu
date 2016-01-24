@@ -700,7 +700,7 @@ function as_consume_all(hp) {
 		after: function (fld, oi, fst) {
 			return function () {
 				if (fst) {
-					fld.log_push("全体自傷(" + (hp * 100) + "%)");
+					fld.log_push("Unit[" + (oi + 1) + "]: 全体自傷(" + (hp * 100) + "%)");
 					for (var i = 0; i < fld.Allys.Deck.length; i++) {
 						var now = fld.Allys.Now[i];
 						damage_ally(Math.floor(now.maxhp * hp), i);
