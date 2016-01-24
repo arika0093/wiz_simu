@@ -129,9 +129,9 @@ $(function () {
 				var cd_aws = cd.awakes.length;
 				var val = $("#d_mana_edit").spinner("value");
 				var aws = $("#d_awake_edit").spinner("value");
-				Manaplus[ni] = val ? val : 200;
+				Manaplus[ni] = val >= 0 ? val : 200;
 				AwakeNum[ni] = aws != cd_aws ? aws : -1;
-				$("#ally0" + (ni+1) + "_mana").text("+" + Manaplus[ni]);
+				$("#ally0" + (ni+1) + "_mana").text(Manaplus[ni] ? "+" + Manaplus[ni] : "");
 				$(this).dialog("close");
 			},
 			"Cancel": function () {

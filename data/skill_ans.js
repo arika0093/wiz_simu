@@ -203,6 +203,22 @@ function ChainAllAttack(rate, ch) {
 	];
 }
 
+// チェイン種族特攻全体攻撃(rate: 割合, ch: 発動チェイン数)
+function ChainAllSpecAttack(rate, spec, ch) {
+	return [
+		{
+			type: "attack",
+			isall: true,
+			atkn: 1,
+			rate: rate,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: specific_specs(spec),
+			cond: always_true().cond,
+		}
+	];
+}
+
 // チェイン分散攻撃(r: 割合(1体の時), ch: 発動チェイン数)
 function ChainVarianceAttack(r, ch) {
 	return [
@@ -241,12 +257,26 @@ function ChainPanelsAttack(r1, r2, r3, ch) {
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
-			cond: function (fld, oi, ei, panels) {
-				var rates = [r1, r2, r3];
-				this.rate = rates[Math.min(panels.length - 1, 2)];
-				return true;
-			},
-		}
+			cond: always_true().cond,
+		}, {
+			type: "attack",
+			isall: false,
+			atkn: 1,
+			rate: r2,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: create_specs(1),
+			cond: as_panel_over2().cond,
+		}, {
+			type: "attack",
+			isall: false,
+			atkn: 1,
+			rate: r3,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: create_specs(1),
+			cond: as_panel_over3().cond,
+		},
 	];
 }
 
@@ -262,8 +292,7 @@ function ChainPanelsAttrAttack(r1, r2, r3, attr, ch) {
 			attr: attr,
 			spec: create_specs(1),
 			cond: always_true().cond,
-		},
-		{
+		}, {
 			type: "attack",
 			isall: false,
 			atkn: 1,
@@ -272,8 +301,7 @@ function ChainPanelsAttrAttack(r1, r2, r3, attr, ch) {
 			attr: attr,
 			spec: create_specs(1),
 			cond: as_panel_over2().cond,
-		},
-		{
+		}, {
 			type: "attack",
 			isall: false,
 			atkn: 1,

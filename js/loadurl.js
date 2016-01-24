@@ -13,7 +13,7 @@ function loaddeck_from_url(qr) {
 				return e.cardno == cno;
 			})[0]);
 			// マナ数
-			var cmana = Number(q_spl[1]) || 200;
+			var cmana = q_spl[1] ? Number(q_spl[1]) : 200;
 			// 覚醒数考慮
 			var awake_num = card.awakes.length;
 			if (q_spl[2]) {
