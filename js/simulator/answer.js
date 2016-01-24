@@ -135,7 +135,7 @@ function pickup_answerskills(attr, type, subtype) {
 	return result;
 }
 
-// アンサースキルの処理
+// アンサースキルの前処理
 function answer_skill(as_arr, panel, as_afters) {
 	// 残り連撃回数管理
 	var atk_duals = [1, 1, 1, 1, 1];
@@ -174,55 +174,15 @@ function answer_skill(as_arr, panel, as_afters) {
 	}
 	// 攻撃処理
 	var loop_ct = 0;
-	var dual_chk = false;
 	do {
+		// 現在の参照精霊を優先して処理
+		if (loop_ct < as_arr.length) {
+			answer_skill_proc(as_arr, panel, loop_ct, atk_duals, rem_duals, loop_ct, as_afters);
+		}
+		// それ以外を処理
 		for (var i = 0; i < as_arr.length; i++) {
-			var card = Field.Allys.Deck[i];
-			var now = Field.Allys.Now[i];
-			var subattr = (card.attr[1] && card.attr[1] >= 0) ? 2 : 1;
-			var enemy_dat = GetNowBattleEnemys();
-			// ASがないなら処理せず飛ばす
-			if (as_arr[i] == null || as_arr[i].length <= 0) { continue; }
-			// 参照番を超えてるなら終了
-			if (i > loop_ct) { continue; }
-			// 残攻撃回数が0以下なら飛ばす
-			if (rem_duals[i] <= 0) { continue; }
-			// 攻撃属性(水炎属性の精霊が炎パネルを踏んだ時に炎から攻撃する的なアレ)
-			var atk_attr = -1;
-			if(panel.indexOf(card.attr[0]) >= 0){
-				// 副属性を持っているなら、残り攻撃回数が半分以下なら属性を入れ替え
-				if(card.attr[1] >= 0){
-					atk_attr = (rem_duals[i] > atk_duals[i] / 2) ? card.attr[0] : card.attr[1];
-				} else {
-					atk_attr = card.attr[0];
-				}
-			} else {
-				atk_attr = (rem_duals[i] <= atk_duals[i]/2) ? card.attr[1] : card.attr[0];
-			}
-			// 攻撃属性がないならスルー
-			if (atk_attr < 0) { continue; }
-			// 種類で分岐
-			var rst = [];
-			switch (as_arr[i][0].type) {
-				case "attack":
-					rst = answer_attack(card, now, enemy_dat, as_arr[i], atk_attr, panel, i, rem_duals[i]);
-					break;
-				case "support":
-					rst = answer_enhance(as_arr[i], i, panel);
-					break;
-				case "heal":
-					rst = answer_heal(as_arr[i], i, panel);
-					break;
-			}
-			// 攻撃後処理に追加
-			if (rst.length > 0) {
-				as_afters.push(rst);
-			}
-			// 自身の連撃回数が残っているなら次の精霊まで見る
-			if (dual_chk && rem_duals[i] > 1) {
-				loop_ct++;
-				dual_chk = true;
-			}
+			if (i == loop_ct) { continue; }
+			answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, loop_ct, as_afters);
 		}
 	} while (function () {
 		// 残攻撃回数を減らして全て0以下なら終了
@@ -234,9 +194,53 @@ function answer_skill(as_arr, panel, as_afters) {
 			rst = rst || rem_duals[l] > 0;
 		}
 		loop_ct++;
-		dual_chk = false;
 		return rst;
 	}());
+}
+
+// アンサースキルの処理
+function answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, loop_ct, as_afters) {
+	var card = Field.Allys.Deck[i];
+	var now = Field.Allys.Now[i];
+	var subattr = (card.attr[1] && card.attr[1] >= 0) ? 2 : 1;
+	var enemy_dat = GetNowBattleEnemys();
+	// ASがないなら処理せず飛ばす
+	if (as_arr[i] == null || as_arr[i].length <= 0) { return; }
+	// 参照番を超えてるなら終了
+	if (i > loop_ct) { return; }
+	// 残攻撃回数が0以下なら飛ばす
+	if (rem_duals[i] <= 0) { return; }
+	// 攻撃属性(水炎属性の精霊が炎パネルを踏んだ時に炎から攻撃する的なアレ)
+	var atk_attr = -1;
+	if(panel.indexOf(card.attr[0]) >= 0){
+		// 副属性を持っているなら、残り攻撃回数が半分以下なら属性を入れ替え
+		if(card.attr[1] >= 0){
+			atk_attr = (rem_duals[i] > atk_duals[i] / 2) ? card.attr[0] : card.attr[1];
+		} else {
+			atk_attr = card.attr[0];
+		}
+	} else {
+		atk_attr = (rem_duals[i] <= atk_duals[i]/2) ? card.attr[1] : card.attr[0];
+	}
+	// 攻撃属性がないならスルー
+	if (atk_attr < 0) { return; }
+	// 種類で分岐
+	var rst = [];
+	switch (as_arr[i][0].type) {
+		case "attack":
+			rst = answer_attack(card, now, enemy_dat, as_arr[i], atk_attr, panel, i, rem_duals[i]);
+			break;
+		case "support":
+			rst = answer_enhance(as_arr[i], i, panel);
+			break;
+		case "heal":
+			rst = answer_heal(as_arr[i], i, panel);
+			break;
+	}
+	// 攻撃後処理に追加
+	if (rst.length > 0) {
+		as_afters.push(rst);
+	}
 }
 
 // AS攻撃の処理
