@@ -227,7 +227,7 @@ function answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, loop_ct, as_a
 			atk_attr = card.attr[0];
 		}
 	} else {
-		atk_attr = (rem_duals[i] <= atk_duals[i]/2) ? card.attr[1] : card.attr[0];
+		atk_attr = (rem_duals[i] > atk_duals[i]/2) ? card.attr[1] : card.attr[0];
 	}
 	// 攻撃属性がないならスルー
 	if (atk_attr < 0) { return; }
