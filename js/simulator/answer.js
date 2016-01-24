@@ -1,5 +1,12 @@
 // 解答したときの処理
 function panel(attr) {
+	// ログ出力
+	var p_str = "";
+	for (var ar = 0; ar < attr.length; ar++) {
+		if (p_str != "") { p_str += "/"; }
+		p_str += Field.Constants.Attr[attr[ar]];
+	}
+	Field.log_push("【パネル: " + p_str + "】");
 	// チェイン+1
 	if (Field.Status.chain_status >= 0) {
 		Field.Status.chain += 1;
@@ -74,11 +81,11 @@ function panel(attr) {
 // 誤答
 function answer_miss()
 {
+	Field.log_push("【誤答】");
 	// 誤答処理
 	if (Field.Status.chain_status <= 0) {
 		Field.Status.chain = 0;
 	}
-	Field.log_push("誤答");
 	// 敵の処理
 	enemy_move();
 	// 敵ダメージ反応系
