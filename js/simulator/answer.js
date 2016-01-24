@@ -1,5 +1,12 @@
 // 解答したときの処理
 function panel(attr) {
+	// ログ出力
+	var p_str = "";
+	for (var ar = 0; ar < attr.length; ar++) {
+		if (p_str != "") { p_str += "/"; }
+		p_str += Field.Constants.Attr[attr[ar]];
+	}
+	Field.log_push("【パネル: " + p_str + "】");
 	// チェイン+1
 	if (Field.Status.chain_status >= 0) {
 		Field.Status.chain += 1;
@@ -74,11 +81,11 @@ function panel(attr) {
 // 誤答
 function answer_miss()
 {
+	Field.log_push("【誤答】");
 	// 誤答処理
 	if (Field.Status.chain_status <= 0) {
 		Field.Status.chain = 0;
 	}
-	Field.log_push("誤答");
 	// 敵の処理
 	enemy_move();
 	// 敵ダメージ反応系
@@ -224,19 +231,19 @@ function answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, loop_ct, as_a
 	}
 	// 攻撃属性がないならスルー
 	if (atk_attr < 0) { return; }
-	// 種類で分岐
-	var rst = [];
-	switch (as_arr[i][0].type) {
-		case "attack":
+		// 種類で分岐
+		var rst = [];
+		switch (as_arr[i][0].type) {
+			case "attack":
 			rst = answer_attack(card, now, enemy_dat, as_arr[i], atk_attr, panel, i, rem_duals[i]);
-			break;
-		case "support":
-			rst = answer_enhance(as_arr[i], i, panel);
-			break;
-		case "heal":
-			rst = answer_heal(as_arr[i], i, panel);
-			break;
-	}
+				break;
+			case "support":
+				rst = answer_enhance(as_arr[i], i, panel);
+				break;
+			case "heal":
+				rst = answer_heal(as_arr[i], i, panel);
+				break;
+		}
 	// 攻撃後処理に追加
 	if (rst.length > 0) {
 		as_afters.push(rst);
@@ -257,36 +264,36 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem) {
 			var rate_b = (as_pos[ei] !== undefined ? as[as_pos[ei]].rate : 0);
 			as_pos[ei] = (rate_n >= rate_b ? ai : as_pos[ei]);
 		}
-	}
-	// どの敵を攻撃するか
+			}
+			// どの敵を攻撃するか
 	var targ = auto_attack_order(enemy, attr, index);
-	// 各種情報
-	var g_dmg = 0;
-	var atk_as = as[as_pos[targ]]
-	var en = enemy[targ];
-	var ch = Field.Status.chain;
-	// 全体攻撃なら敵全体にダメージ計算
-	if (atk_as.isall) {
-		for (var tg = 0; tg < enemy.length; tg++) {
-			if (enemy[tg].nowhp <= 0) { continue; }
-			var is_as = enemy[tg].flags.is_as_attack;
-			// 乱数
-			var rnd = damage_rand();
-			// ダメージ計算
+			// 各種情報
+			var g_dmg = 0;
+			var atk_as = as[as_pos[targ]]
+			var en = enemy[targ];
+			var ch = Field.Status.chain;
+			// 全体攻撃なら敵全体にダメージ計算
+			if (atk_as.isall) {
+				for (var tg = 0; tg < enemy.length; tg++) {
+					if (enemy[tg].nowhp <= 0) { continue; }
+					var is_as = enemy[tg].flags.is_as_attack;
+					// 乱数
+					var rnd = damage_rand();
+					// ダメージ計算
 			g_dmg += attack_enemy(enemy[tg], now, attr, atk_as.rate, atk_as.atkn, panel, ch, rnd, index, tg, false);
-			is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
-		}
-	} else {
-		// 乱数
-		var rnd = damage_rand();
-		var is_as = enemy[targ].flags.is_as_attack;
-		// ダメージ計算
+					is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
+				}
+			} else {
+				// 乱数
+				var rnd = damage_rand();
+				var is_as = enemy[targ].flags.is_as_attack;
+				// ダメージ計算
 		g_dmg = attack_enemy(en, now, attr, atk_as.rate, atk_as.atkn, panel, ch, rnd, index, targ, false);
-		is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
-	}
-	// 攻撃後処理
+				is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
+			}
+			// 攻撃後処理
 	if (atk_as.after && atk_rem == atk_as.atkn) {
-		as_afters.push(atk_as.after(Field, index, (ati == 0 && at == 0), g_dmg));
+				as_afters.push(atk_as.after(Field, index, (ati == 0 && at == 0), g_dmg));
 		
 	}
 	// ASエンハを消去
