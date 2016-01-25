@@ -683,7 +683,7 @@ function when_hp_under(p) {
 // HP吸収
 function as_hp_absorption(r) {
 	return {
-		after: function (fld, oi, fst, g_dmg) {
+		after: function (fld, oi, g_dmg) {
 			return function () {
 				var now = fld.Allys.Now[oi];
 				var hl = Math.floor(g_dmg * r);
@@ -697,14 +697,12 @@ function as_hp_absorption(r) {
 // 全体自傷スキル
 function as_consume_all(hp) {
 	return {
-		after: function (fld, oi, fst) {
+		after: function (fld, oi) {
 			return function () {
-				if (fst) {
-					fld.log_push("Unit[" + (oi + 1) + "]: 全体自傷(" + (hp * 100) + "%)");
-					for (var i = 0; i < fld.Allys.Deck.length; i++) {
-						var now = fld.Allys.Now[i];
-						damage_ally(Math.floor(now.maxhp * hp), i);
-					}
+				fld.log_push("Unit[" + (oi + 1) + "]: 全体自傷(" + (hp * 100) + "%)");
+				for (var i = 0; i < fld.Allys.Deck.length; i++) {
+					var now = fld.Allys.Now[i];
+					damage_ally(Math.floor(now.maxhp * hp), i);
 				}
 			}
 		}
@@ -714,13 +712,11 @@ function as_consume_all(hp) {
 // 単体自傷スキル
 function as_consume_own(hp) {
 	return {
-		after: function (fld, oi, fst) {
+		after: function (fld, oi) {
 			return function () {
-				if (fst) {
-					fld.log_push("Unit[" + (oi + 1) + "]: 自傷(" + (hp * 100) + "%)");
-					var now = fld.Allys.Now[oi];
-					damage_ally(Math.floor(now.maxhp * hp), oi);
-				}
+				fld.log_push("Unit[" + (oi + 1) + "]: 自傷(" + (hp * 100) + "%)");
+				var now = fld.Allys.Now[oi];
+				damage_ally(Math.floor(now.maxhp * hp), oi);
 			}
 		}
 	}

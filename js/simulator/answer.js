@@ -38,6 +38,10 @@ function panel(attr) {
 				as_afters[i][0]();
 			}
 		}
+		// ASエンハ値リセット
+		for (var i = 0; i < atk_skill.length; i++) {
+			Field.Allys.Now[i].as_enhance = 0;
+		}
 	}
 	// 敵スキル処理
 	{
@@ -235,7 +239,7 @@ function answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, loop_ct, as_a
 		var rst = [];
 		switch (as_arr[i][0].type) {
 			case "attack":
-			rst = answer_attack(card, now, enemy_dat, as_arr[i], atk_attr, panel, i, rem_duals[i]);
+				rst = answer_attack(card, now, enemy_dat, as_arr[i], atk_attr, panel, i, rem_duals[i]);
 				break;
 			case "support":
 				rst = answer_enhance(as_arr[i], i, panel);
@@ -264,40 +268,37 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem) {
 			var rate_b = (as_pos[ei] !== undefined ? as[as_pos[ei]].rate : 0);
 			as_pos[ei] = (rate_n >= rate_b ? ai : as_pos[ei]);
 		}
-			}
-			// どの敵を攻撃するか
-	var targ = auto_attack_order(enemy, attr, index);
-			// 各種情報
-			var g_dmg = 0;
-			var atk_as = as[as_pos[targ]]
-			var en = enemy[targ];
-			var ch = Field.Status.chain;
-			// 全体攻撃なら敵全体にダメージ計算
-			if (atk_as.isall) {
-				for (var tg = 0; tg < enemy.length; tg++) {
-					if (enemy[tg].nowhp <= 0) { continue; }
-					var is_as = enemy[tg].flags.is_as_attack;
-					// 乱数
-					var rnd = damage_rand();
-					// ダメージ計算
-			g_dmg += attack_enemy(enemy[tg], now, attr, atk_as.rate, atk_as.atkn, panel, ch, rnd, index, tg, false);
-					is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
-				}
-			} else {
-				// 乱数
-				var rnd = damage_rand();
-				var is_as = enemy[targ].flags.is_as_attack;
-				// ダメージ計算
-		g_dmg = attack_enemy(en, now, attr, atk_as.rate, atk_as.atkn, panel, ch, rnd, index, targ, false);
-				is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
-			}
-			// 攻撃後処理
-	if (atk_as.after && atk_rem == atk_as.atkn) {
-				as_afters.push(atk_as.after(Field, index, (ati == 0 && at == 0), g_dmg));
-		
 	}
-	// ASエンハを消去
-	now.as_enhance = 0;
+	// どの敵を攻撃するか
+	var targ = auto_attack_order(enemy, attr, index);
+	// 各種情報
+	var g_dmg = 0;
+	var atk_as = as[as_pos[targ]]
+	var en = enemy[targ];
+	var ch = Field.Status.chain;
+	// 全体攻撃なら敵全体にダメージ計算
+	if (atk_as.isall) {
+		for (var tg = 0; tg < enemy.length; tg++) {
+			if (enemy[tg].nowhp <= 0) { continue; }
+			var is_as = enemy[tg].flags.is_as_attack;
+			// 乱数
+			var rnd = damage_rand();
+			// ダメージ計算
+			g_dmg += attack_enemy(enemy[tg], now, attr, atk_as.rate, atk_as.atkn, panel, ch, rnd, index, tg, false);
+			is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
+		}
+	} else {
+		// 乱数
+		var rnd = damage_rand();
+		var is_as = enemy[targ].flags.is_as_attack;
+		// ダメージ計算
+		g_dmg = attack_enemy(en, now, attr, atk_as.rate, atk_as.atkn, panel, ch, rnd, index, targ, false);
+		is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
+	}
+	// 攻撃後処理
+	if (atk_as.after && atk_rem == atk_as.atkn) {
+		as_afters.push(atk_as.after(Field, index, g_dmg));
+	}
 	return as_afters;
 }
 
