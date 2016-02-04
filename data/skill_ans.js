@@ -475,7 +475,7 @@ function ChainEnhance(rate, attr, ch) {
 }
 
 // チェインエンハンス(副属性でさらにアップ)(r1, r2: 割合, attr: 対象属性, sub: 対象副属性, ch: チェイン)
-// 例: ChainEnhance_SubAttr(0.5, 0.3, [1,0,0,0,0], 2, 3)
+// 例: ChainEnhance_SubAttr(0.5, 0.3, [1,0,0,0,0], [0,0,1,0,0], 3)
 function ChainEnhance_SubAttr(r1, r2, attr, sub, ch) {
 	return [
 		{
@@ -495,7 +495,7 @@ function ChainEnhance_SubAttr(r1, r2, attr, sub, ch) {
 			spec: create_specs(1),
 			cond: function (fld, oi, ei) {
 				var cd = fld.Allys.Deck[oi];
-				return cd.attr[1] == sub;
+				return sub[cd.attr[1]] > 0;
 			},
 		}
 	];

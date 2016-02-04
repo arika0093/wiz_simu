@@ -1,30 +1,30 @@
 ﻿<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
-    <!-- StyleSheet -->
-    <link rel="stylesheet" type="text/css" href="./css/deck.css" />
-    <link rel="stylesheet" type="text/css" href="./css/default_sp.css" media="screen and (max-width: 599px)" />
-    <link rel="stylesheet" type="text/css" href="./css/default.css" media="screen and (min-width: 600px)" />
-    <link rel="stylesheet" type="text/css" href="./css/simulator_sp.css" media="screen and (max-width: 599px)" />
-    <link rel="stylesheet" type="text/css" href="./css/simulator.css" media="screen and (min-width: 600px)" />
-    <link type="text/css" rel="stylesheet"
-          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
-    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
-    <!-- Cache -->
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Cache-Control" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <!-- Search -->
-    <meta name="robots" content="none" />
-    <!-- sim page -->
-    <title>Simulator - Wiz Quest Simulator</title>
+	<meta charset="utf-8" />
+	<!-- StyleSheet -->
+	<link rel="stylesheet" type="text/css" href="/css/deck.css" />
+	<link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
+	<link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px)" />
+	<link rel="stylesheet" type="text/css" href="/css/simulator_sp.css" media="screen and (max-width: 599px)" />
+	<link rel="stylesheet" type="text/css" href="/css/simulator.css" media="screen and (min-width: 600px)" />
+	<link type="text/css" rel="stylesheet"
+		  href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+	<meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+	<!-- Cache -->
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Cache-Control" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<!-- Search -->
+	<meta name="robots" content="none" />
+	<!-- sim page -->
+	<title>Simulator - Wiz Quest Simulator</title>
 </head>
 <body>
-    <!-- Loader -->
-    <div id="loader"><img src="./image/loading.gif" alt="Loading..." /></div>
-    <noscript id="loadnoscr">このページはjavascriptを使用しています。有効にしたのち再度アクセスしてください。</noscript>
-    <div id="fade"></div>
+	<!-- Loader -->
+	<div id="loader"><img src="/image/loading.gif" alt="Loading..." /></div>
+	<noscript id="loadnoscr">このページはjavascriptを使用しています。有効にしたのち再度アクセスしてください。</noscript>
+	<div id="fade"></div>
 
 	<!-- Header -->
 	<div id="Header"></div>
@@ -35,7 +35,7 @@
 			<p id="sim_info_status"></p>
 			<p id="sim_turns"></p>
 			<div class="sim_result_links">
-                <a id="sim_share" onclick="tweet_result()">結果をツイートする</a>
+				<a id="sim_share" onclick="tweet_result()">結果をツイートする</a>
 				<a id="sim_restart" onclick="load_field(0)">始めからやり直す</a>
 				<a id="sim_logview" onclick="log_view()">ログを確認する</a>
 				<a id="sim_decksel" onclick="back_decksel()">デッキ選択画面に戻る</a>
@@ -45,10 +45,10 @@
 			<div class="ally clearfix" id="ally01">
 				<div class="attr_none" id="ally01_attr_main">.</div>
 				<div class="attr_none" id="ally01_attr_sub">.</div>
-                <div class="ally_image" onclick="show_allystat(0)">
-                    <img class="chara_img" id="ally01_img" src="./image/noimage.png" />
-                    <img class="chara_teff" id="ally01_teff" src="./image/noimage.png" />
-                </div>
+				<div class="ally_image" onclick="show_allystat(0)">
+					<img class="chara_img" id="ally01_img" src="/image/noimage.png" />
+					<img class="chara_teff" id="ally01_teff" src="/image/noimage.png" />
+				</div>
 				<p class="ally_name" id="ally01_name"></p>
 				<p class="ally_stat" id="ally01_status"></p>
 				<div class="ally_ss" id="ally01_ss">
@@ -58,10 +58,10 @@
 			<div class="ally clearfix" id="ally02">
 				<div class="attr_none" id="ally02_attr_main">.</div>
 				<div class="attr_none" id="ally02_attr_sub">.</div>
-                <div class="ally_image" onclick="show_allystat(1)">
-                    <img class="chara_img" id="ally02_img" src="./image/noimage.png" />
-                    <img class="chara_teff" id="ally02_teff" src="./image/noimage.png" />
-                </div>
+				<div class="ally_image" onclick="show_allystat(1)">
+					<img class="chara_img" id="ally02_img" src="/image/noimage.png" />
+					<img class="chara_teff" id="ally02_teff" src="/image/noimage.png" />
+				</div>
 				<p class="ally_name" id="ally02_name"></p>
 				<p class="ally_stat" id="ally02_status"></p>
 				<div class="ally_ss" id="ally02_ss">
@@ -71,10 +71,10 @@
 			<div class="ally clearfix" id="ally03">
 				<div class="attr_none" id="ally03_attr_main">.</div>
 				<div class="attr_none" id="ally03_attr_sub">.</div>
-                <div class="ally_image" onclick="show_allystat(2)">
-                    <img class="chara_img" id="ally03_img" src="./image/noimage.png" />
-                    <img class="chara_teff" id="ally03_teff" src="./image/noimage.png" />
-                </div>
+				<div class="ally_image" onclick="show_allystat(2)">
+					<img class="chara_img" id="ally03_img" src="/image/noimage.png" />
+					<img class="chara_teff" id="ally03_teff" src="/image/noimage.png" />
+				</div>
 				<p class="ally_name" id="ally03_name"></p>
 				<p class="ally_stat" id="ally03_status"></p>
 				<div class="ally_ss" id="ally03_ss">
@@ -84,10 +84,10 @@
 			<div class="ally clearfix" id="ally04">
 				<div class="attr_none" id="ally04_attr_main">.</div>
 				<div class="attr_none" id="ally04_attr_sub">.</div>
-                <div class="ally_image" onclick="show_allystat(3)">
-                    <img class="chara_img" id="ally04_img" src="./image/noimage.png" />
-                    <img class="chara_teff" id="ally04_teff" src="./image/noimage.png" />
-                </div>
+				<div class="ally_image" onclick="show_allystat(3)">
+					<img class="chara_img" id="ally04_img" src="/image/noimage.png" />
+					<img class="chara_teff" id="ally04_teff" src="/image/noimage.png" />
+				</div>
 				<p class="ally_name" id="ally04_name"></p>
 				<p class="ally_stat" id="ally04_status"></p>
 				<div class="ally_ss" id="ally04_ss">
@@ -97,10 +97,10 @@
 			<div class="ally clearfix" id="ally05">
 				<div class="attr_none" id="ally05_attr_main">.</div>
 				<div class="attr_none" id="ally05_attr_sub">.</div>
-                <div class="ally_image" onclick="show_allystat(4)">
-                    <img class="chara_img" id="ally05_img" src="./image/noimage.png" />
-                    <img class="chara_teff" id="ally05_teff" src="./image/noimage.png" />
-                </div>
+				<div class="ally_image" onclick="show_allystat(4)">
+					<img class="chara_img" id="ally05_img" src="/image/noimage.png" />
+					<img class="chara_teff" id="ally05_teff" src="/image/noimage.png" />
+				</div>
 				<p class="ally_name" id="ally05_name"></p>
 				<p class="ally_stat" id="ally05_status"></p>
 				<div class="ally_ss" id="ally05_ss">
@@ -112,10 +112,10 @@
 			<div class="enemy clearfix" id="enemy01">
 				<div class="attr_none" id="enemy01_attr_main"></div>
 				<div class="attr_none" id="enemy01_attr_sub"></div>
-                <div class="enemy_image" ondblclick="target_allselect(0)">
-                    <img class="chara_img" id="enemy01_img" src="./image/noimage.png" />
-                    <img class="chara_teff" id="enemy01_teff" src="./image/noimage.png" />
-                </div>
+				<div class="enemy_image" ondblclick="target_allselect(0)">
+					<img class="chara_img" id="enemy01_img" src="/image/noimage.png" />
+					<img class="chara_teff" id="enemy01_teff" src="/image/noimage.png" />
+				</div>
 				<p class="enemy_name" id="enemy01_name"></p>
 				<p class="enemy_hp" id="enemy01_hp"></p>
 				<p class="enemy_stat" id="enemy01_stats"></p>
@@ -123,10 +123,10 @@
 			<div class="enemy clearfix" id="enemy02">
 				<div class="attr_none" id="enemy02_attr_main"></div>
 				<div class="attr_none" id="enemy02_attr_sub"></div>
-                <div class="enemy_image" ondblclick="target_allselect(1)">
-                    <img class="chara_img" id="enemy02_img" src="./image/noimage.png" />
-                    <img class="chara_teff" id="enemy02_teff" src="./image/noimage.png" />
-                </div>
+				<div class="enemy_image" ondblclick="target_allselect(1)">
+					<img class="chara_img" id="enemy02_img" src="/image/noimage.png" />
+					<img class="chara_teff" id="enemy02_teff" src="/image/noimage.png" />
+				</div>
 				<p class="enemy_name" id="enemy02_name"></p>
 				<p class="enemy_hp" id="enemy02_hp"></p>
 				<p class="enemy_stat" id="enemy02_stats"></p>
@@ -134,10 +134,10 @@
 			<div class="enemy clearfix" id="enemy03">
 				<div class="attr_none" id="enemy03_attr_main"></div>
 				<div class="attr_none" id="enemy03_attr_sub"></div>
-                <div class="enemy_image" ondblclick="target_allselect(2)">
-                    <img class="chara_img" id="enemy03_img" src="./image/noimage.png" />
-                    <img class="chara_teff" id="enemy03_teff" src="./image/noimage.png" />
-                </div>
+				<div class="enemy_image" ondblclick="target_allselect(2)">
+					<img class="chara_img" id="enemy03_img" src="/image/noimage.png" />
+					<img class="chara_teff" id="enemy03_teff" src="/image/noimage.png" />
+				</div>
 				<p class="enemy_name" id="enemy03_name"></p>
 				<p class="enemy_hp" id="enemy03_hp"></p>
 				<p class="enemy_stat" id="enemy03_stats"></p>
@@ -198,19 +198,19 @@
 		</div>
 	</div>
 
-    <!-- Adsense -->
-    <div class="simu_ads">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- advertise -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-5156005489853976"
-             data-ad-slot="6536828444"
-             data-ad-format="horizontal"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </div>
+	<!-- Adsense -->
+	<div class="simu_ads">
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- advertise -->
+		<ins class="adsbygoogle"
+			 style="display:block"
+			 data-ad-client="ca-pub-5156005489853976"
+			 data-ad-slot="6536828444"
+			 data-ad-format="horizontal"></ins>
+		<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
 
 	<!-- Footer -->
 	<div id="Footer"></div>
@@ -251,10 +251,10 @@
 		<div id="sim_log_inner">
 		</div>
 	</div>
-    <div class="dialog_div" id="dialog_simlog_detail" title="debug log">
-        <div id="sim_dlog_inner">
-        </div>
-    </div>
+	<div class="dialog_div" id="dialog_simlog_detail" title="debug log">
+		<div id="sim_dlog_inner">
+		</div>
+	</div>
 	<div class="dialog_div" id="dialog_ss_noaction" title="No Effect">
 		<p>SSを発動しても効果が得られません。</p>
 	</div>
@@ -262,57 +262,57 @@
 	<!-- Javascript -->
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="./js/loader.js"></script>
-	<script type="text/javascript" charset="UTF-8" src="./js/pagetemp.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/loader.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js"></script>
 	<!-- 他jsに依存しない基礎関数群 -->
-	<script type="text/javascript" charset="UTF-8" src="./js/simulator/awake.js"></script>
-	<script type="text/javascript" charset="UTF-8" src="./js/simulator/species.js"></script>
-	<script type="text/javascript" charset="UTF-8" src="./js/simulator/enemy.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/simulator/awake.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/simulator/species.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/simulator/enemy.js"></script>
 	<!-- データ群(基礎関数に依存する) -->
-	<script type="text/javascript" charset="UTF-8" src="./data/skill_ans.js"></script>
-	<script type="text/javascript" charset="UTF-8" src="./data/skill_spe.js"></script>
-	<script type="text/javascript" charset="UTF-8" src="./data/skill_awake.js"></script>
-	<script type="text/javascript" charset="UTF-8" src="./data/skill_enemy.js"></script>
-	<script type="text/javascript" charset="UTF-8" src="./data/quests.js"></script>
-	<script type="text/javascript" charset="UTF-8" src="./data/cards.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="./data/dynamic.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/data/skill_ans.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/data/skill_spe.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/data/skill_awake.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/data/skill_enemy.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/data/quests.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/data/cards.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/data/dynamic.js"></script>
 	<!-- 処理群(データ群に依存する) -->
-	<script type="text/javascript" charset="UTF-8" src="./js/createurl.js"></script>
-	<script type="text/javascript" charset="UTF-8" src="./js/loadurl.js"></script>
-	<script type="text/javascript" charset="UTF-8" src="./js/simulator/initialize.js"></script>
-	<script type="text/javascript" charset="UTF-8" src="./js/simulator/show.js"></script>
-	<script type="text/javascript" charset="UTF-8" src="./js/simulator/damage.js"></script>
-	<script type="text/javascript" charset="UTF-8" src="./js/simulator/answer.js"></script>
-	<script type="text/javascript" charset="UTF-8" src="./js/simulator/special.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="./js/simulator/turneffect.js"></script>
-    <!-- スマホで閲覧時に要素を入れ替える -->
-    <script type="text/javascript">
-        $(function () {
-            var w_width = window.innerWidth;
-            if (w_width < 600) {
-                var s_top = $("div#sim_top");
-                var s_ally = $("div.sim_ally");
-                var s_enem = $("div.sim_enemy");
-                var s_panl = $("div.sim_panel");
-                var s_ads = $("div.simu_ads");
+	<script type="text/javascript" charset="UTF-8" src="/js/createurl.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/loadurl.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/simulator/initialize.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/simulator/show.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/simulator/damage.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/simulator/answer.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/simulator/special.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/simulator/turneffect.js"></script>
+	<!-- スマホで閲覧時に要素を入れ替える -->
+	<script type="text/javascript">
+		$(function () {
+			var w_width = window.innerWidth;
+			if (w_width < 600) {
+				var s_top = $("div#sim_top");
+				var s_ally = $("div.sim_ally");
+				var s_enem = $("div.sim_enemy");
+				var s_panl = $("div.sim_panel");
+				var s_ads = $("div.simu_ads");
 
-                s_enem.insertBefore(s_ally);
-                s_panl.insertBefore(s_ally);
-                s_ads.insertBefore(s_top);
-            }
-        });
-    </script>
-    <!-- Google Tracking -->
-    <script type="text/javascript">
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+				s_enem.insertBefore(s_ally);
+				s_panl.insertBefore(s_ally);
+				s_ads.insertBefore(s_top);
+			}
+		});
+	</script>
+	<!-- Google Tracking -->
+	<script type="text/javascript">
+		(function (i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date(); a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-        ga('create', 'UA-72520506-1', 'auto');
-        ga('send', 'pageview');
-    </script>
+		ga('create', 'UA-72520506-1', 'auto');
+		ga('send', 'pageview');
+	</script>
 </body>
 </html>

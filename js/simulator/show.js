@@ -78,7 +78,7 @@ function sim_show() {
 			// 無効化
 			$("#ally0" + (i + 1) + "_attr_main").attr("class", "attr_none");
 			$("#ally0" + (i + 1) + "_attr_sub").attr("class", "attr_none");
-			$("#ally0" + (i + 1) + "_img").attr("src", "./image/noimage.png");
+			$("#ally0" + (i + 1) + "_img").attr("src", "/image/noimage.png");
 			$("#ally0" + (i + 1) + "_ss_button").text("(未選択)");
 			$("#ally0" + (i + 1) + "_ss_button").attr("class", "ally_ss_button_disabled");
 			$("#ally0" + (i + 1) + "_ss_button").attr("disabled", "disabled");
@@ -125,7 +125,7 @@ function sim_show() {
 			// 無効化
 			$("#enemy0" + (i + 1) + "_attr_main").attr("class", "attr_none");
 			$("#enemy0" + (i + 1) + "_attr_sub").attr("class", "attr_none");
-			$("#enemy0" + (i + 1) + "_img").attr("src", "./image/noimage.png");
+			$("#enemy0" + (i + 1) + "_img").attr("src", "/image/noimage.png");
 			$("#enemy0" + (i + 1) + "_name").text("");
 			$("#enemy0" + (i + 1) + "_hp").text("");
 			$("#enemy0" + (i + 1) + "_stats").text("");
@@ -145,11 +145,11 @@ function sim_show() {
 				});
 				if (teffs.length <= 0 || now.nowhp <= 0) {
 					b_vis[i] = -1;
-					$("#ally0" + (i + 1) + "_teff").attr("src", "./image/noimage.png");
+					$("#ally0" + (i + 1) + "_teff").attr("src", "/image/noimage.png");
 				} else {
 					b_vis[i] = b_vis[i] != -1 ? (b_vis[i] + 1) % (teffs.length) : 0;
 					$("#ally0" + (i + 1) + "_teff").attr("src",
-						"./image/icon/" + teffs[b_vis[i]].icon + ".png");
+						"/image/icon/" + teffs[b_vis[i]].icon + ".png");
 					$("#ally0" + (i + 1) + "_teff").fadeIn(blink_onetime / 3, function () {
 						$(this).fadeOut(blink_onetime / 2);
 					});
@@ -164,11 +164,11 @@ function sim_show() {
 				});
 				if (teffs.length <= 0 || edat.nowhp <= 0) {
 					b_vis[i] = -1;
-					$("#enemy0" + (i - 4) + "_teff").attr("src", "./image/noimage.png");
+					$("#enemy0" + (i - 4) + "_teff").attr("src", "/image/noimage.png");
 				} else {
 					b_vis[i] = b_vis[i] != -1 ? (b_vis[i] + 1) % (teffs.length) : 0;
 					$("#enemy0" + (i - 4) + "_teff").attr("src",
-						"./image/icon/" + teffs[b_vis[i]].icon + ".png");
+						"/image/icon/" + teffs[b_vis[i]].icon + ".png");
 					$("#enemy0" + (i - 4) + "_teff").fadeIn(blink_onetime / 3, function () {
 						$(this).fadeOut(blink_onetime / 2);
 					});
@@ -351,7 +351,7 @@ function sim_show() {
 			$(".ui-dialog-titlebar").hide();
 			// tweet data
 			$("#simfinish_tweettext").html(
-				text + "<br/><div class='sh_url'>" + absolutePath("./" + location.search) + "</div> #wiz_simu"
+				text + "<br/><div class='sh_url'>" + absolutePath("/" + location.search) + "</div> #wiz_simu"
 			);
 			// close when click dialog outside
 			$('.ui-widget-overlay').bind('click', function () {
@@ -493,7 +493,7 @@ function load_field(i) {
 function back_decksel() {
 	var param = location.search;
 	// 移動
-	location.href = "./index.html" + param;
+	location.href = "/index.html" + param;
 }
 
 // タゲ選択

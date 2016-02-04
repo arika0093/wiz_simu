@@ -16607,7 +16607,7 @@ Cards = [{
 	ss1: {
 		desc: "チェインプラス1の効果、敵全体へ雷属性のダメージ(100%)",
 		turn: 4,
-		proc: [ss_addchain(1), ss_damage_all(1.0), [2]],
+		proc: [ss_addchain(1), ss_damage_all(1.0, [2])],
 	},
 	awakes: [
 		Fastskill(1),
@@ -18688,5 +18688,36 @@ Cards = [{
 	Lawake: [
 		Statusup(0, 400),
 		Statusup(500, 0),
+	],
+}, {
+	name: "夢色海賊少女 ピレット・チャップ",
+	cardno: 90021,
+	imageno: 5919,
+	hp: 2345,
+	atk: 1989,
+	cost: 34,
+	attr: [1, -1],
+	species: [8],
+	islegend: false,
+	as1: {
+		desc: "5チェインで水属性の味方の攻撃力をアップ(60%)",
+		proc: ChainEnhance(0.60, [0, 1, 0, 0, 0], 5),
+	},
+	ss1: {
+		desc: "ジャンルパネルを水属性化し、チェインがプラス2の効果を付与",
+		turn: 7,
+		proc: [panel_chainplus(2)],
+	},
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Fastskill(1),
+		Costdown(2),
+		Statusup(200, 0),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Spec_statusup(200, 0, [8, ]),
+		Fastskill(2),
+		Spec_statusup(0, 200, [8, ]),
 	],
 }, ];

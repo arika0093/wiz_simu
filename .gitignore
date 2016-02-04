@@ -1,4 +1,8 @@
 test/
+#no_update/
+api/
+blog/
+.htaccess
 
 ## -------------------------------------------
 ## Ignore Visual Studio temporary files, build results, and

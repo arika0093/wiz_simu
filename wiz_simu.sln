@@ -13,8 +13,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wiz_simu", "wiz_simu", "{54D72F80-1342-4A3D-B559-339A01E32933}"
 	ProjectSection(SolutionItems) = preProject
 		index.html = index.html
-		info.html = info.html
-		simulator.html = simulator.html
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{85B9F527-E148-41E4-A8C0-04BBF26A1A24}"
@@ -29,7 +27,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{D7F5FD15-0EDA-4EC8-A7FE-62566A0FF4FA}"
 	ProjectSection(SolutionItems) = preProject
 		data\cards.js = data\cards.js
-		data\dynamic.js = data\dynamic.js
 		data\quests.js = data\quests.js
 		data\skill_ans.js = data\skill_ans.js
 		data\skill_awake.js = data\skill_awake.js
@@ -39,9 +36,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{D7F5FD15-0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "text", "text", "{FEDAC185-D019-43F3-BE3D-70929AAAE89F}"
 	ProjectSection(SolutionItems) = preProject
-		Readme.md = Readme.md
-		specification.txt = specification.txt
-		update.txt = update.txt
+		text\Readme.md = text\Readme.md
+		text\specification.txt = text\specification.txt
+		text\update.txt = text\update.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "simulator", "simulator", "{0B5CF5D7-96AD-4EED-8363-750FF402B468}"
@@ -61,10 +58,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "select", "select", "{068E2C
 	ProjectSection(SolutionItems) = preProject
 		js\createurl.js = js\createurl.js
 		js\decksuggest.js = js\decksuggest.js
+		js\dynamic.js = js\dynamic.js
 		js\loader.js = js\loader.js
 		js\loadurl.js = js\loadurl.js
 		js\pagetemp.js = js\pagetemp.js
 		js\questsel.js = js\questsel.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "simulator", "simulator", "{FBCE4C9C-0BDA-4B34-AC6E-3158CF6D361E}"
+	ProjectSection(SolutionItems) = preProject
+		simulator\index.html = simulator\index.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pages", "pages", "{5738BAEF-BA1D-4206-8CED-09AD35F0B80B}"
+	ProjectSection(SolutionItems) = preProject
+		pages\info.html = pages\info.html
 	EndProjectSection
 EndProject
 Global
@@ -79,5 +87,7 @@ Global
 		{FEDAC185-D019-43F3-BE3D-70929AAAE89F} = {54D72F80-1342-4A3D-B559-339A01E32933}
 		{0B5CF5D7-96AD-4EED-8363-750FF402B468} = {20D7A7D8-822B-4D68-AEF0-9127E62A819F}
 		{068E2C1D-35BD-43A6-826C-B09E82790769} = {20D7A7D8-822B-4D68-AEF0-9127E62A819F}
+		{FBCE4C9C-0BDA-4B34-AC6E-3158CF6D361E} = {54D72F80-1342-4A3D-B559-339A01E32933}
+		{5738BAEF-BA1D-4206-8CED-09AD35F0B80B} = {54D72F80-1342-4A3D-B559-339A01E32933}
 	EndGlobalSection
 EndGlobal

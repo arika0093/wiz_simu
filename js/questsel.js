@@ -58,6 +58,6 @@ function sim_start() {
 		$("#dialog_sim_error").dialog("open");
 		return;
 	}
-	var redirect_url = './simulator.html' + query;
+	var redirect_url = '/simulator/' + query;
 	location.href = redirect_url;
 }
