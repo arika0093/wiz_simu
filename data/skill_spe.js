@@ -472,7 +472,7 @@ function ss_resurrection(r, p) {
 	return function (fld, n) {
 		var rate = ss_ratedo(p, fld, n);
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
-			var cd = fld.Allys.Card[i];
+			var cd = fld.Allys.Deck[i];
 			var now = fld.Allys.Now[i];
 			if (now.nowhp <= 0 && r[cd.attr[0]]) {
 				now.nowhp = Math.min((now.maxhp * rate), now.maxhp);
@@ -584,6 +584,14 @@ function ss_break_template(target, type, logtext) {
 			_break_temp_fc(fld, n, auto_attack_order(es, cd.attr[0], n));
 		}
 	}
+}
+
+// スキル反射無視
+function ss_ignore_skillcounter() {
+	var enemys = GetNowBattleEnemys();
+	$.each(enemys.flag, function (i, e) {
+		e.is_ss_attack = false;
+	});
 }
 
 // カウンター解除(target: 対象["all":全体, その他:単体])

@@ -179,7 +179,7 @@ function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f
 	// effect add
 	for (var i = 0; i < tg.length; i++) {
 		var logtext = "";
-		var card = fld.Allys.Card[tg[i]];
+		var card = fld.Allys.Deck[tg[i]];
 		var now = fld.Allys.Now[tg[i]];
 		var eff_obj = $.extend(true, {}, {
 			desc: desc,
@@ -308,7 +308,7 @@ function s_enemy_cursed(hpdown, tnum, t) {
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 		var tg = !tnum.length ? gen_enemytarget_array(tnum, 1, false)[0] : tnum;
 		for (var i = 0; i < tg.length; i++) {
-			var card = fld.Allys.Card[tg[i]];
+			var card = fld.Allys.Deck[tg[i]];
 			var now = fld.Allys.Now[tg[i]];
 			// 追加
 			var eff_obj = $.extend(true, {}, {

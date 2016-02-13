@@ -90,3 +90,12 @@ function Abstate_invalid(tg_type) {
 		tgtype: tg_type,
 	};
 }
+
+// その他、試走に影響を及ぼさない潜在
+function Awake_noeffect(name, efv) {
+	return {
+		type: "awake_noeffect",
+		name: name,
+		efv: efv,
+	}
+}
