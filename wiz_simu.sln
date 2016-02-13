@@ -83,6 +83,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "run", "run", "{BE62308C-ADD
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "others", "others", "{031B42DC-7DAF-4295-96B4-08D8BB8B77B1}"
 	ProjectSection(SolutionItems) = preProject
+		pages\contact.html = pages\contact.html
 		pages\help_sim.html = pages\help_sim.html
 		pages\info.html = pages\info.html
 	EndProjectSection
