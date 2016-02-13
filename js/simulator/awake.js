@@ -123,3 +123,17 @@ function cards_heal_afterbattle(cards) {
 	}
 	return r / 100;
 }
+
+// 潜在による異常無効を確認する
+function Awake_AbsInvalid(card, type) {
+	var ai_awakes = pickup_awakes(card, "abstate_invalid", false);
+	if (is_legendmode(card, now)) {
+		ai_awakes.concat(pickup_awakes(card, "abstate_invalid", true));
+	}
+	for (var i = 0; i < ai_awakes.length; i++) {
+		if (type === ai_awakes.tgtype) {
+			return true;
+		}
+	}
+	return false;
+}

@@ -179,6 +179,7 @@ function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f
 	// effect add
 	for (var i = 0; i < tg.length; i++) {
 		var logtext = "";
+		var card = fld.Allys.Card[tg[i]];
 		var now = fld.Allys.Now[tg[i]];
 		var eff_obj = $.extend(true, {}, {
 			desc: desc,
@@ -191,18 +192,21 @@ function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f
 			lim_turn: turn,
 			effect: function () { },
 		}, f_obj);
+		// 潜在の状態無効を確認
+		var is_abs_guard_aw = Awake_AbsInvalid(card, type);
 		// 異常攻撃前効果を発動させ、戻り値がfalseのものが1つ以上あったら無効
 		var is_abs_guard = $.grep(now.turn_effect, function (e) {
 			return e.bef_absattack && !e.bef_absattack(fld, tg[i], ei);
 		}).length > 0;
-		if (!is_abs_guard && !disable_guard) {
-			// Push
+		if (!is_abs_guard && !is_abs_guard_aw && !disable_guard) {
+			// 追加
 			now.turn_effect.push(eff_obj);
 			if (ei >= 0) {
 				logtext += "Enemy[" + (ei + 1) + "]: ";
 			}
 			logtext += desc + "(" + turn + "t)(対象: Unit[" + (tg[i] + 1) + "])";
 		} else {
+			// 無効
 			if (ei >= 0) {
 				logtext += "Enemy[" + (ei + 1) + "]: ";
 			}
@@ -304,6 +308,7 @@ function s_enemy_cursed(hpdown, tnum, t) {
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 		var tg = !tnum.length ? gen_enemytarget_array(tnum, 1, false)[0] : tnum;
 		for (var i = 0; i < tg.length; i++) {
+			var card = fld.Allys.Card[tg[i]];
 			var now = fld.Allys.Now[tg[i]];
 			// 追加
 			var eff_obj = $.extend(true, {}, {
@@ -333,9 +338,13 @@ function s_enemy_cursed(hpdown, tnum, t) {
 					}
 				},
 			});
-			now.turn_effect.push(eff_obj);
-			// スキル重複確認
-			turn_effect_check(false);
+			// 潜在の状態無効を確認
+			var is_abs_guard_aw = Awake_AbsInvalid(card, "curse");
+			if (!is_abs_guard_aw) {
+				now.turn_effect.push(eff_obj);
+				// スキル重複確認
+				turn_effect_check(false);
+			}
 			fld.log_push("Enemy[" + (n + 1) + "]: 呪い(HP:" + (-hpdown) + "|" + t + "t)(対象: Unit[" + (tg[i] + 1) + "])");
 		}
 	});

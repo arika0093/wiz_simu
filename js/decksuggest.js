@@ -168,6 +168,10 @@ $(function () {
 				opts += "<option value='" + ds[i].query + "'>" + ds[i].name + "</option>";
 			}
 			$("#deckload_cookie").html(opts);
+			// close when click dialog outside
+			$('.ui-widget-overlay').bind('click', function () {
+				$("#dialog_manaset").dialog('close');
+			});
 		},
 		buttons: {
 			"読み込み": function () {

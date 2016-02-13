@@ -11,9 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "template", "template", "{BA
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wiz_simu", "wiz_simu", "{54D72F80-1342-4A3D-B559-339A01E32933}"
-	ProjectSection(SolutionItems) = preProject
-		index.html = index.html
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{85B9F527-E148-41E4-A8C0-04BBF26A1A24}"
 	ProjectSection(SolutionItems) = preProject
@@ -36,7 +33,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{D7F5FD15-0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "text", "text", "{FEDAC185-D019-43F3-BE3D-70929AAAE89F}"
 	ProjectSection(SolutionItems) = preProject
-		text\Readme.md = text\Readme.md
 		text\specification.txt = text\specification.txt
 		text\update.txt = text\update.txt
 	EndProjectSection
@@ -54,14 +50,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "simulator", "simulator", "{
 		js\simulator\turneffect.js = js\simulator\turneffect.js
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "select", "select", "{068E2C1D-35BD-43A6-826C-B09E82790769}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deck", "deck", "{068E2C1D-35BD-43A6-826C-B09E82790769}"
 	ProjectSection(SolutionItems) = preProject
 		js\createurl.js = js\createurl.js
 		js\decksuggest.js = js\decksuggest.js
-		js\dynamic.js = js\dynamic.js
-		js\loader.js = js\loader.js
 		js\loadurl.js = js\loadurl.js
-		js\pagetemp.js = js\pagetemp.js
 		js\questsel.js = js\questsel.js
 	EndProjectSection
 EndProject
@@ -71,8 +64,36 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "simulator", "simulator", "{
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pages", "pages", "{5738BAEF-BA1D-4206-8CED-09AD35F0B80B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".git", ".git", "{27D58126-6603-4269-835A-6B839CE57676}"
 	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "toppage", "toppage", "{50236DB5-BE11-45AB-B308-DD29121A9303}"
+	ProjectSection(SolutionItems) = preProject
+		index.html = index.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "run", "run", "{BE62308C-ADDF-4FE5-960C-CCE298C9EA52}"
+	ProjectSection(SolutionItems) = preProject
+		simulator\p\index.html = simulator\p\index.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "others", "others", "{031B42DC-7DAF-4295-96B4-08D8BB8B77B1}"
+	ProjectSection(SolutionItems) = preProject
+		pages\help_sim.html = pages\help_sim.html
 		pages\info.html = pages\info.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "useful", "useful", "{F34AC30C-80B0-4B03-A688-A1169FB82C9D}"
+	ProjectSection(SolutionItems) = preProject
+		js\dynamic.js = js\dynamic.js
+		js\googletrc.js = js\googletrc.js
+		js\loader.js = js\loader.js
+		js\pagetemp.js = js\pagetemp.js
+		js\rssreader.js = js\rssreader.js
 	EndProjectSection
 EndProject
 Global
@@ -81,13 +102,18 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{20D7A7D8-822B-4D68-AEF0-9127E62A819F} = {54D72F80-1342-4A3D-B559-339A01E32933}
-		{BA48140E-6DCE-46F7-BC02-D48AB34F0CF6} = {54D72F80-1342-4A3D-B559-339A01E32933}
+		{BA48140E-6DCE-46F7-BC02-D48AB34F0CF6} = {5738BAEF-BA1D-4206-8CED-09AD35F0B80B}
 		{85B9F527-E148-41E4-A8C0-04BBF26A1A24} = {54D72F80-1342-4A3D-B559-339A01E32933}
 		{D7F5FD15-0EDA-4EC8-A7FE-62566A0FF4FA} = {54D72F80-1342-4A3D-B559-339A01E32933}
 		{FEDAC185-D019-43F3-BE3D-70929AAAE89F} = {54D72F80-1342-4A3D-B559-339A01E32933}
 		{0B5CF5D7-96AD-4EED-8363-750FF402B468} = {20D7A7D8-822B-4D68-AEF0-9127E62A819F}
 		{068E2C1D-35BD-43A6-826C-B09E82790769} = {20D7A7D8-822B-4D68-AEF0-9127E62A819F}
-		{FBCE4C9C-0BDA-4B34-AC6E-3158CF6D361E} = {54D72F80-1342-4A3D-B559-339A01E32933}
+		{FBCE4C9C-0BDA-4B34-AC6E-3158CF6D361E} = {5738BAEF-BA1D-4206-8CED-09AD35F0B80B}
 		{5738BAEF-BA1D-4206-8CED-09AD35F0B80B} = {54D72F80-1342-4A3D-B559-339A01E32933}
+		{27D58126-6603-4269-835A-6B839CE57676} = {54D72F80-1342-4A3D-B559-339A01E32933}
+		{50236DB5-BE11-45AB-B308-DD29121A9303} = {5738BAEF-BA1D-4206-8CED-09AD35F0B80B}
+		{BE62308C-ADDF-4FE5-960C-CCE298C9EA52} = {FBCE4C9C-0BDA-4B34-AC6E-3158CF6D361E}
+		{031B42DC-7DAF-4295-96B4-08D8BB8B77B1} = {5738BAEF-BA1D-4206-8CED-09AD35F0B80B}
+		{F34AC30C-80B0-4B03-A688-A1169FB82C9D} = {20D7A7D8-822B-4D68-AEF0-9127E62A819F}
 	EndGlobalSection
 EndGlobal

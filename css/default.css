@@ -16,6 +16,9 @@ body{
 	background-color: #FFFFFF;
 }
 
+a,a:visited{
+	color: #0040FF;
+}
 span.uline{
 	text-decoration: underline;
 }
@@ -39,7 +42,7 @@ p.highlight{
 }
 a.blocklink{
 	display: block;
-	width: 60%;
+	width: 80%;
 	margin: 1ex 0.5em;
 	padding: 1ex 1em;
 	text-align: center;
@@ -47,6 +50,28 @@ a.blocklink{
 	border: 1px solid #60C0FF;
 	border-radius: 5px;
 }
+
+div.linklist{
+	width: 80%;
+	margin: 1ex 0 0;
+}
+div.linklist a{
+	display: block;
+	padding: 1.5ex;
+	border-width: 0px 1px 1px 1px;
+	border-style: solid;
+	border-color: #60C0FF;
+	text-align: center;
+	text-decoration: none;
+	color: #2080FF;
+}
+div.linklist a:hover{
+	background-color: #98efff;
+}
+div.linklist a:first-child{
+	border-width: 1px;
+}
+
 .sp_only{
 	display: none;
 }
@@ -110,39 +135,138 @@ div.headerbase{
 }
 
 a.toplink{
+	box-sizing: border-box;
 	display: block;
-	width: 65%;
-	/*float: left;*/
-	padding: 0.4ex 0.5em 0.6ex;
-	font-family: 'Times New Roman', Times, serif;
-	font-style: italic;
-	font-size: 40px;
-	text-decoration: none;
-	/*border-bottom: 1px solid #808080;*/
+	width: 100%;
+	height: 120px;
+	text-indent: -9999pt;
+	border-bottom: 1px solid #A0A0FF;
 	color: #0040FF;
+	overflow: hidden;
+	white-space: nowrap;
+	background-image: url(/image/wiztools_logo.png);
+	background-position: 10px -10px;
+	background-repeat: no-repeat;
 }
 
-div.otherlinks{
-	width: 35%;
-	/*float: right;*/
-	padding: 0.5ex 0.5em;
-	text-align: right;
+p.sitedetail{
 	position: absolute;
-	right: 0;
-	bottom: 0;
+	top: 0px;
+	right: 0px;
+	margin: 0.5ex 0.5em;
+	color: #4493e5;
+	text-align: right;
 }
 
-div.otherlinks a{
-	font-style: italic;
-	margin: 0ex 0.5em 0ex 0em;
-	color: #2080FF;
+#menu {
+	width:100%;
+	padding:0;
+	margin:0;
+	list-style-type: none;
+}
+#menu li {
+	width:20%;
+	position: relative;
+	float:left;
+	padding:0;
+	margin:0;
+	text-align:center;
+	box-sizing: border-box;
+	border-right: 1px solid #A0A0FF;
+}
+#menu li:last-child {
+	border-right: 0px;
+}
+#menu li a {
+	width:auto;
+	color:#2080FF;
+	padding:10px 0;
+	text-decoration:none;
+	display:block;
+	background:#fff;
+}
+#menu li ul {
+	list-style: none;
+	position: absolute;
+	z-index: 100;
+	top: 100%;
+	left: -2px;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background: #e0faff;
+}
+#menu li ul li {
+	overflow: hidden;
+	width: 100%;
+	height: 0;
+	padding: 0 1px;
+	box-sizing: content-box;
+	transition: .2s;
+}
+#menu li ul li a {
+	width: 100%;
+	padding: 1.8ex 0;
+	color:#2080FF;
+	background: #e0faff;
+	text-align: center;
+	font-weight: normal;
+	border-width: 1px 1px 0px;
+	border-style: solid;
+	border-color: #A0A0FF;
+}
+#menu li ul li:last-child a{
+	border-bottom-width: 1px;
+}
+#menu li:last-child ul li, #menu li:last-child ul li a{
+	border-right: 0px;
+}
+#menu > li:hover > a {
+	background: #e0faff;
+}
+#menu > li:hover li:hover > a {
+	background: #98efff;
+}
+#menu li a:hover {
+	background:#98efff;
+}
+#menu li:hover > ul > li {
+	overflow: initial;
+	height: auto;
+}
+.slicknav_menu {
+	display:none;
+}
+
+/* RSS Show */
+div.rsslist{
+	padding-right: 1em;
+	max-height: 350px;
+	box-sizing: border-box;
+}
+div.rsslist div.article{
+	padding: 1ex 0 2ex 1ex;
+	border-bottom: 1px solid #909090;
+	background-color: transparent;
+}
+div.rsslist div.article:hover{
+	background-color: #EAF0FF;
+}
+div.rsslist div.article:last-child{
+	border-bottom: 0px;
+}
+div.rsslist div.article p, div.rsslist div.article h3{
+	margin: 0;
+}
+div.rsslist div.article p.date {
+	font-size: smaller;
+	color: #606060;
+	text-align: right;
 }
 
 /* Main */
 div.Main, div.Simulator{
-	/*width: 800px;*/
-	/*border-right: 1px solid #A0A0FF;*/
-	padding: 2ex 1em;
+	padding: 3ex 1em 2ex 1em;
 }
 
 div.Main dl{
@@ -423,4 +547,8 @@ select.sel_indialog option:nth-child(even){
 input.edit_indialog{
 	font-family: Meiryo !important;
 	width: 100%;
+}
+
+input, button, select{
+	font-size: 13px;
 }

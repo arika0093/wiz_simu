@@ -333,6 +333,8 @@ function ss_skillboost(f) {
 			if (!now.ss_isboost && !is_legendmode(card, now)) {
 				now.ss_current += f_rate;
 				now.ss_isboost = true;
+				// L化確認
+				legend_timing_check(fld.Allys.Deck, fld.Allys.Now, i);
 				rst = true;
 			}
 		}
@@ -543,6 +545,8 @@ function panel_skillboost(t) {
 			if (!now.ss_isboost && !is_legendmode(card, now)) {
 				now.ss_current += t;
 				now.ss_isboost = true;
+				// L化確認
+				legend_timing_check(fld.Allys.Deck, fld.Allys.Now, i);
 			}
 		}
 		fld.log_push("パネル付与効果: " + dsc);

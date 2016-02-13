@@ -17,6 +17,9 @@ body{
 	background-color: #FFFFFF;
 }
 
+a,a:visited{
+	color: #0040FF;
+}
 span.uline{
 	text-decoration: underline;
 }
@@ -50,6 +53,29 @@ a.blocklink{
 	border: 1px solid #60C0FF;
 	border-radius: 5px;
 }
+
+div.linklist{
+	box-sizing: border-box;
+	width: 100%;
+	margin: 1ex 0 0;
+}
+div.linklist a{
+	display: block;
+	padding: 1.5ex;
+	border-width: 0px 1px 1px 1px;
+	border-style: solid;
+	border-color: #60C0FF;
+	text-align: center;
+	text-decoration: none;
+	color: #2080FF;
+}
+div.linklist a:hover{
+	background-color: #98efff;
+}
+div.linklist a:first-child{
+	border-width: 1px;
+}
+
 .sp_hidden{
 	display: none;
 }
@@ -105,28 +131,32 @@ a.blocklink{
 }
 
 /* Header */
-div#Header{
-	border-bottom: 1px solid #A0A0FF;
-}
-
 div.headerbase{
 	overflow: hidden;
+}
+
+.js #menu {
+	display:none;
+}
+	
+.js .slicknav_menu {
+	display:block;
 }
 
 a.toplink{
 	box-sizing: border-box;
 	display: block;
 	width: 100%;
-	/*float: left;*/
-	padding: 0.4ex 0.5em 0.6ex;
-	font-family: 'Times New Roman', Times, serif;
-	font-style: italic;
-	font-size: 32px;
-	text-decoration: none;
+	padding-top: 20%;
+	text-indent: -9999pt;
 	border-bottom: 1px solid #A0A0FF;
 	color: #0040FF;
 	overflow: hidden;
 	white-space: nowrap;
+	background-image: url(/image/wiztools_logo.png);
+	background-size: cover;
+	background-position: -11px 0px;
+	background-repeat: no-repeat;
 }
 
 div.otherlinks{
@@ -142,6 +172,30 @@ div.otherlinks a{
 	padding: 1ex 1em;
 	color: #2080FF;
 	border-left: 1px solid #A0A0FF;
+}
+
+/* RSS Show */
+div.rsslist{
+	box-sizing: border-box;
+}
+div.rsslist div.article{
+	padding: 2ex 0 3ex;
+	border-bottom: 1px solid #909090;
+	background-color: transparent;
+}
+div.rsslist div.article:hover{
+	background-color: #EAF0FF;
+}
+div.rsslist div.article:last-child{
+	border-bottom: 0px;
+}
+div.rsslist div.article p, div.rsslist div.article h3{
+	margin: 0;
+}
+div.rsslist div.article p.date {
+	font-size: smaller;
+	color: #606060;
+	text-align: right;
 }
 
 /* Main */

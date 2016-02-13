@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px)" />
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="/download/slicknav/slicknav.css" />
+    <!-- About Page -->
+    <title>シミュレーターの使用方法 - WizTools</title>
+</head>
+<body>
+    <!-- Header -->
+    <div id="Header"></div>
+
+    <!-- Main Contents -->
+    <div class="Main">
+        <dl class="List">
+            <dt id="use">基本の使い方</dt>
+            <dd>
+                <p class="highlight sp_hidden"><span class="link_like" onclick="popup_demomovie();">こちらのgif動画</span>で基本的な操作を確認することができます。</p>
+                <ol>
+                    <li>試走を行うクエスト/段位を選択します。</li>
+                    <li>
+                        デッキを編集します。名前を入力すると一覧が出ますのでそこから選択してください。<br />
+                        アイコンをクリックするとマナの値を設定することができます。<br />
+                        デッキに名前をつけて保存をすることが可能です。
+                    </li>
+                    <li>[開始]ボタンを押して試走を開始します。</li>
+                    <li>
+                        パネルをクリックすると攻撃を行います。<br />
+                        状態異常やエンハンスの状況を確認したい時は味方アイコンをクリックしてください。<br />
+                        敵アイコンをダブルクリックするとその敵にターゲッティングすることができます。
+                    </li>
+                    <li>
+                        「ログを確認する」をクリックすると与えたダメージなどを確認することができます(PCのみ)。<br />
+                        さらに「DebugLog」ではより詳細な情報(主にダメージ計算式)を確認することができます。
+                    </li>
+                    <li>
+                        試走結果をこんな感じでツイートすることができます。<br />
+                        リンクをクリックするとデッキを読み込むことができます。<br />
+                        <blockquote class="twitter-tweet" data-cards="hidden" lang="ja"><p lang="ja" dir="ltr">「賢王【朧】肆式(トーナメント14段)」を 8 ターン(2-3-1-1-1)で突破！&#10;<a href="https://t.co/oJPHVbgaBr">https://t.co/oJPHVbgaBr</a> <a href="https://twitter.com/hashtag/wiz_simu?src=hash">#wiz_simu</a></p>&mdash; 春@シーラってます (@rinshandream) <a href="https://twitter.com/rinshandream/status/688595690868486144">2016, 1月 17</a></blockquote>
+                        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </li>
+                </ol>
+            </dd>
+            <dt id="warn">注意点</dt>
+            <dd>
+                軽減・遅延スキルの実装は今のところ行っていません。<br />
+                また、敵行動は最低限実装しましたが再現できていない部分も多々あります。<br />
+                後ほど整備しますのでご了承ください。
+            </dd>
+            <dt id="contact">要望・意見など</dt>
+            <dd>
+                「このサイトについて」の<a href="/pages/info.html#contact">「要望・意見など」</a>をご覧ください。
+            </dd>
+        </dl>
+    </div>
+
+    <!-- Footer -->
+    <div id="Footer"></div>
+
+    <!-- Dialog Contents -->
+    <div class="dialog_div" id="dialog_sim_use" title="Error">
+        <img src="/image/demo.gif" style="max-width: 100%;" />
+    </div>
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+    <script type="text/javascript" src="/download/slicknav/jquery.slicknav.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js"></script>
+    <script type="text/javascript">
+		$(function () {
+			$("#dialog_sim_use").dialog({
+				autoOpen: false,
+				show: "blind",
+				hide: "blind",
+				width: 820,
+				height: 600,
+				modal: true,
+				open: function () {
+					// hide
+					$(".ui-dialog-titlebar").hide();
+					// close when click dialog outside
+					$('.ui-widget-overlay').bind('click', function () {
+						$("#dialog_sim_use").dialog('close');
+					});
+				},
+				close: function () {
+					// title show
+					$(".ui-dialog-titlebar").show();
+				},
+			});
+		});
+		function popup_demomovie() {
+			$("#dialog_sim_use").dialog("open");
+		}
+    </script>
+</body>
+</html>

@@ -61,7 +61,7 @@ function getquery(qr) {
 // 画像のURLを返却する
 function get_image_url(no) {
 	if (no < 0) {
-		return "./image/noimage.png";
+		return "/image/noimage.png";
 	}
 	return "http://i.quiz.colopl.jp/img/card/small/card_" + ("0000" + no).slice(-5) + "_0.png"
 }

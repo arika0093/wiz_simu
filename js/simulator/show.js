@@ -493,7 +493,7 @@ function load_field(i) {
 function back_decksel() {
 	var param = location.search;
 	// 移動
-	location.href = "/index.html" + param;
+	location.href = "/simulator/" + param;
 }
 
 // タゲ選択

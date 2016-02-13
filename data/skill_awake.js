@@ -82,3 +82,11 @@ function Heal_afterbattle(perc) {
 		perc: perc,
 	};
 }
+
+// 異常無効
+function Abstate_invalid(tg_type) {
+	return {
+		type: "abstate_invalid",
+		tgtype: tg_type,
+	};
+}
