@@ -42,7 +42,7 @@ function create_url(check) {
 // tweet用のURLを生成
 function create_tweeturl(name, durt, tot, func) {
 	// URL生成
-	var url = absolutePath("./" + location.search);
+	var url = absolutePath("/" + location.search);
 	var nam = Field.Quest.name;
 	var trn = durt.replace("+", "%2B");
 	var tot = tot.replace("+", "%2B");

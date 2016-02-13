@@ -298,7 +298,7 @@ function sim_show() {
 			for (var i = 0; i < teff.length; i++) {
 				if (teff[i].desc != null) {
 					if (teff[i].icon) {
-						li_t += "<li><img class='teff_icon' src='./image/icon/" + teff[i].icon + ".png' />";
+						li_t += "<li><img class='teff_icon' src='/image/icon/" + teff[i].icon + ".png' />";
 					} else {
 						li_t += "<li class='no_icon'>";
 					}
