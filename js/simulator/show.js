@@ -351,7 +351,7 @@ function sim_show() {
 			$(".ui-dialog-titlebar").hide();
 			// tweet data
 			$("#simfinish_tweettext").html(
-				text + "<br/><div class='sh_url'>" + absolutePath("/" + location.search) + "</div> #wiz_simu"
+				text + "<br/><div class='sh_url'>" + absolutePath("/simulator/" + location.search) + "</div> #wiz_simu"
 			);
 			// close when click dialog outside
 			$('.ui-widget-overlay').bind('click', function () {
