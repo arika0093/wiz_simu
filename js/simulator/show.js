@@ -253,7 +253,7 @@ function sim_show() {
 			$("#sim_log_inner").accordion("refresh");
 		},
 		buttons: {
-			"DebugLog": function() {
+			"ダメージ計算": function() {
 				$("#dialog_simlog_detail").dialog("open");
 			},
 			"閉じる": function () {

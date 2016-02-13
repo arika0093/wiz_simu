@@ -193,7 +193,7 @@ function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f
 			effect: function () { },
 		}, f_obj);
 		// 潜在の状態無効を確認
-		var is_abs_guard_aw = Awake_AbsInvalid(card, type);
+		var is_abs_guard_aw = Awake_AbsInvalid(card, now, type);
 		// 異常攻撃前効果を発動させ、戻り値がfalseのものが1つ以上あったら無効
 		var is_abs_guard = $.grep(now.turn_effect, function (e) {
 			return e.bef_absattack && !e.bef_absattack(fld, tg[i], ei);
@@ -339,7 +339,7 @@ function s_enemy_cursed(hpdown, tnum, t) {
 				},
 			});
 			// 潜在の状態無効を確認
-			var is_abs_guard_aw = Awake_AbsInvalid(card, "curse");
+			var is_abs_guard_aw = Awake_AbsInvalid(card, now, "curse");
 			if (!is_abs_guard_aw) {
 				now.turn_effect.push(eff_obj);
 				// スキル重複確認

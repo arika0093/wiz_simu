@@ -125,7 +125,7 @@ function cards_heal_afterbattle(cards) {
 }
 
 // 潜在による異常無効を確認する
-function Awake_AbsInvalid(card, type) {
+function Awake_AbsInvalid(card, now, type) {
 	var ai_awakes = pickup_awakes(card, "abstate_invalid", false);
 	if (is_legendmode(card, now)) {
 		ai_awakes.concat(pickup_awakes(card, "abstate_invalid", true));
