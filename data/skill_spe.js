@@ -595,6 +595,7 @@ function ss_ignore_skillcounter() {
 				e.flag.is_ss_attack = false;
 			}
 		});
+		return true;
 	}
 }
 
