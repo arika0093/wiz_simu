@@ -588,10 +588,12 @@ function ss_break_template(target, type, logtext) {
 
 // スキル反射無視
 function ss_ignore_skillcounter() {
-	var enemys = GetNowBattleEnemys();
-	$.each(enemys.flag, function (i, e) {
-		e.is_ss_attack = false;
-	});
+	return function (fld, n) {
+		var enemys = GetNowBattleEnemys();
+		$.each(enemys.flag, function (i, e) {
+			e.is_ss_attack = false;
+		});
+	}
 }
 
 // カウンター解除(target: 対象["all":全体, その他:単体])
