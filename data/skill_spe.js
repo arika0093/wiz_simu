@@ -591,8 +591,8 @@ function ss_ignore_skillcounter() {
 	return function (fld, n) {
 		var enemys = GetNowBattleEnemys();
 		$.each(enemys, function (i, e) {
-			if (e.flag) {
-				e.flag.is_ss_attack = false;
+			if (e.flags) {
+				e.flags.is_ss_attack = false;
 			}
 		});
 		return true;
