@@ -60,14 +60,15 @@ function ReadRSS(div, rss_url) {
 google.load("feeds", "1");
 
 var date = new Date();
+var dtquery = date.getMonth() + date.getDay() + date.getHours();
 
 // Update RSS
 var rec = $("#rss_recent");
 if (rec) {
-	ReadRSS(rec, "http://blog.wiztools.net/auther/updatepost/feed/?" + date.getTime());
+	ReadRSS(rec, "http://blog.wiztools.net/author/updatepost/feed/?" + dtquery);
 }
 // Information RSS
 var inf = $("#rss_information");
 if (inf) {
-	ReadRSS(inf, "http://blog.wiztools.net/auther/admin/feed/?" + date.getTime());
+	ReadRSS(inf, "http://blog.wiztools.net/author/admin/feed/?" + dtquery);
 }
