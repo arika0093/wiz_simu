@@ -20089,4 +20089,27 @@ Cards = [{
 		Attr_statusup(0,100, [1,0,0,0,0,]),
 		Statusup(400,0),
 	],
-},];
+}, {
+	name: "バレンタインのチョコレート",
+	cardno: 90022,
+	imageno: 2162,
+	hp: 100,
+	atk: 100,
+	cost: 20,
+	attr: [0, -1],
+	species: [10],
+	islegend: false,
+	as1: {
+		desc: "問答無用でリア充爆発☆/1000%",
+		proc: ChainAttack(10.0, 0),
+	},
+	ss1: {
+		desc: "チョコなんかいらん！(悲しみにより死亡)",
+		turn: 0,
+		proc: [ss_consume_all(1)],
+	},
+	awakes: [
+		Spec_statusup(1940, 0, [10, ]),
+		Spec_statusup(0, 1940, [10, ]),
+	],
+}, ];
