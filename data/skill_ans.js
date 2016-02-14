@@ -280,6 +280,40 @@ function ChainPanelsAttack(r1, r2, r3, ch) {
 	];
 }
 
+// パネル依存連撃攻撃(r1: 単色割合, r2: 二色割合, r3: 三色以上割合, atkn: 攻撃回数, ch: 発動チェイン数)
+function ChainPanelsDualAttack(r1, r2, r3, atkn, ch) {
+	return [
+		{
+			type: "attack",
+			isall: false,
+			atkn: atkn,
+			rate: r1,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: create_specs(1),
+			cond: always_true().cond,
+		}, {
+			type: "attack",
+			isall: false,
+			atkn: atkn,
+			rate: r2,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: create_specs(1),
+			cond: as_panel_over2().cond,
+		}, {
+			type: "attack",
+			isall: false,
+			atkn: atkn,
+			rate: r3,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: create_specs(1),
+			cond: as_panel_over3().cond,
+		},
+	];
+}
+
 // パネル依存属性特攻攻撃(r1: 単色割合, r2: 二色割合, r3: 三色以上割合, attr: 属性, ch: 発動チェイン数)
 function ChainPanelsAttrAttack(r1, r2, r3, attr, ch) {
 	return [
