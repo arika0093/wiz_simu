@@ -59,13 +59,15 @@ function ReadRSS(div, rss_url) {
 // load API
 google.load("feeds", "1");
 
+var date = new Date();
+
 // Update RSS
 var rec = $("#rss_recent");
 if (rec) {
-	ReadRSS(rec, "http://blog.wiztools.net/auther/updatepost/feed/");
+	ReadRSS(rec, "http://blog.wiztools.net/auther/updatepost/feed/?" + date.getTime());
 }
 // Information RSS
 var inf = $("#rss_information");
 if (inf) {
-	ReadRSS(inf, "http://blog.wiztools.net/auther/admin/feed/");
+	ReadRSS(inf, "http://blog.wiztools.net/auther/admin/feed/?" + date.getTime());
 }
