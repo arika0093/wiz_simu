@@ -131,7 +131,7 @@ function Awake_AbsInvalid(card, now, type) {
 		ai_awakes.concat(pickup_awakes(card, "abstate_invalid", true));
 	}
 	for (var i = 0; i < ai_awakes.length; i++) {
-		if (type === ai_awakes.tgtype) {
+		if (type === ai_awakes[i].tgtype) {
 			return true;
 		}
 	}
