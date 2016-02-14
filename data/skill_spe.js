@@ -590,8 +590,10 @@ function ss_break_template(target, type, logtext) {
 function ss_ignore_skillcounter() {
 	return function (fld, n) {
 		var enemys = GetNowBattleEnemys();
-		$.each(enemys.flag, function (i, e) {
-			e.is_ss_attack = false;
+		$.each(enemys, function (i, e) {
+			if (e.flag) {
+				e.flag.is_ss_attack = false;
+			}
 		});
 	}
 }
