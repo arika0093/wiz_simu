@@ -17067,8 +17067,8 @@ Cards = [{
 		Attr_statusup(0, 200, [1, 0, 1, 0, 0]),
 	],
 	as1: {
-		desc: "5チェインでダメージアップ(500％)",
-		proc: ChainAttack(5, 5)
+		desc: "6チェインでダメージアップ(500％)",
+		proc: ChainAttack(5, 6)
 	},
 	ss1: {
 		desc: "敵全体へ火属性ダメージ(500%)、自身に1t封印",
@@ -17081,8 +17081,8 @@ Cards = [{
 		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
 	],
 	as2: {
-		desc: "5チェインでダメージアップ(600％)",
-		proc: ChainAttack(6, 5)
+		desc: "6チェインでダメージアップ(600％)",
+		proc: ChainAttack(6, 6)
 	},
 	ss2: {
 		desc: "敵全体へ火属性ダメージ(600%)、自身に1t封印",
