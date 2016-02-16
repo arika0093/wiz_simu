@@ -2,8 +2,8 @@
 /* --------------------------------- */
 /* Main Frame */
 div.Simulator {
-	padding: 0ex 1.5em 2ex;
-	font-size: 10pt;
+	padding: 0ex 0.5em 2ex;
+	font-size: 11pt;
 }
 
 /* Adsense */
@@ -17,7 +17,6 @@ div.sim_info {
 	margin: 0.5ex 0em;
 	border: 1px solid #606060;
 	border-radius: 5px;
-	font-size: 11pt;
 }
 
 p#sim_info_status {
@@ -100,8 +99,8 @@ div.ally_ss {
 
 div.ally_ss button{
 	width: 200px;
-	font-family: Meiryo;
-	font-size: 9.5pt;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese";
+	font-size: 10pt;
 	margin: 0;
 	border-width: 1px 0px 0px 1px;
 	padding: 0.5ex 0em;
@@ -118,7 +117,7 @@ p.ally_stat, p.enemy_hp{
 	padding: 0;
 	text-align: right;
 	float: right;
-	font-size: 9pt;
+	font-size: 10pt;
 }
 
 /* Ally info */
@@ -150,7 +149,7 @@ div.sim_panel select{
 	width: 100%;
 	margin-bottom: 0.5ex;
 	padding: 1ex 0em;
-	font-family: Meiryo;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese";
 }
 
 div.panel_addition {
@@ -179,11 +178,11 @@ div.panel_list {
 }
 
 button.panel_button {
-	font-family: Meiryo;
-	font-size: 9pt;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese";
+	font-size: 10pt;
 	white-space: nowrap;
 	margin-top: 1ex;
-	width: 46px;
+	width: 50px;
 	height: 40px;
 }
 
@@ -197,8 +196,8 @@ div.field_move {
 }
 
 button.field_mov_button {
-	font-family: Meiryo;
-	font-size: 9.5pt;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese";
+	font-size: 11pt;
 	box-sizing: border-box;
 	width: 50%;
 	margin: auto;
@@ -222,13 +221,8 @@ div.sim_log {
 	float: left;
 }
 
-div#sim_log_inner {
-	font-size: 8.5pt;
-	padding: 0.5ex 0.5em;
-}
-
 div#sim_log_inner div {
-	font-family: Meiryo;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese";
 	padding: 1ex 0.5em;
 	line-height: normal;
 }
@@ -284,7 +278,7 @@ div#dialog_allystatus .allystat_target {
 	border-top: 1px solid #AAA;
 }
 div#dialog_allystatus .allystat_target select {
-	font-family: Meiryo !important;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese" !important;
 }
 
 /* Images */
