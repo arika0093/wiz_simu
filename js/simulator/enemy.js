@@ -40,9 +40,20 @@ function is_allkill() {
 	var enemys = GetNowBattleEnemys();
 	for (var i = 0; i < enemys.length; i++) {
 		// 全部の敵を倒してるかどうか判定する
-		i_allkill = (i_allkill && enemys[i].nowhp == 0);
+		i_allkill = (i_allkill && enemys[i].nowhp <= 0);
 	}
 	return i_allkill;
+}
+
+// 味方全滅確認
+function is_ally_alldeath() {
+	var allyd = true;
+	var nows = Field.Allys.Now;
+	for (var i = 0; i < nows.length; i++) {
+		// 全部の敵を倒してるかどうか判定する
+		allyd = (allyd && nows[i].nowhp <= 0);
+	}
+	return allyd;
 }
 
 // 敵を全滅させたか確認し、全滅してたら次の敵を出現させる

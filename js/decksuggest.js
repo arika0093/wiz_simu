@@ -301,6 +301,9 @@ function set_autocmp(i) {
 					}
 				}));
 			},
+			open: function(e, ui){
+				$('.ui-autocomplete').off('menufocus hover mouseover mouseenter');
+			},
 			focus: function(e, dec) {
 				decksel_show(idx, dec.item.data);
 				return false;

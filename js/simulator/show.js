@@ -28,6 +28,8 @@ function sim_show() {
 	if (Field.Status.finish) {
 		$("#sim_share").fadeIn("slow");
 		$("#dialog_simfinish_popup").dialog("open");
+	} else if (is_ally_alldeath()) {
+		$("#dialog_gameover").dialog("open");
 	} else {
 		$("#sim_share").fadeOut("slow");
 	}
@@ -234,7 +236,9 @@ function sim_show() {
 	}
 	$("#ally_info_text").text("Cost: " + cost_total + " / Panel Boost: [" + paneb_total_str + "]");
 
+	// ---------------------------------------
 	// dialog
+	// ---------------------------------------
 	// log
 	$("#dialog_simlog").dialog({
 		autoOpen: false,
@@ -372,6 +376,22 @@ function sim_show() {
 			},
 		},
 	});
+	// gameover log
+	$("dialog_gameover").dialog({
+		autoOpen: false,
+		modal: true,
+		width: 450,
+		buttons: {
+			"始めからやり直す": function () {
+				load_field(0);
+				$(this).dialog("close");
+			},
+			"デッキ選択画面に戻る": function () {
+				back_decksel();
+				$(this).dialog("close");
+			},
+		},
+	});
 	// no effect
 	$("#dialog_ss_noaction").dialog({
 		autoOpen: false,
@@ -472,6 +492,9 @@ function tweet_result() {
 
 // fieldのログを読む
 function load_field(i) {
+	// 読み込み前の戦闘数
+	var btlct_now = Field.Status.nowbattle;
+	// 読み込み先取得
 	var load_index = (i != 0 ? i + Field.Status.log.length : 0);
 	if (Field.Status.totalturn == 0 && Field.Status.log.length > 0) {
 		load_index -= 1;
@@ -484,8 +507,10 @@ function load_field(i) {
 		sim_show();
 		// 詳細ログ追加
 		Field.detail_log("load_field", "move", "loaded turn " + (load_index + 1));
-		// タゲリセット
-		target_allselect(-1);
+		// 戦闘数が読み込み前と違っていたらタゲリセット
+		if (btlct_now != Field.Status.nowbattle) {
+			target_allselect(-1);
+		}
 	}
 }
 

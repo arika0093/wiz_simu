@@ -138,9 +138,13 @@ div.headerbase{
 .js #menu {
 	display:none;
 }
-	
+
 .js .slicknav_menu {
 	display:block;
+}
+
+.slicknav_menu li a{
+	padding: 0.5ex 10px;
 }
 
 a.toplink{
@@ -281,7 +285,7 @@ div.selbox_field{
 
 select.selbox{
 	box-sizing: border-box;
-	padding: 1ex 0em;
+	padding: 1.5ex 0em;
 	width: 100%;
 	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese";
 }
@@ -289,7 +293,7 @@ select.selbox{
 button.deck_saveload, button.deck_reset{
 	width: 30%;
 	margin: 1ex 0.25em 0 0;
-	padding: 0.5ex 0em;
+	padding: 1ex 0em;
 	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese";
 }
 
@@ -348,7 +352,7 @@ p.ally_skill{
 	padding: 0;
 	text-align: left;
 	float: right;
-	font-size: 12pt;
+	font-size: 10pt;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;

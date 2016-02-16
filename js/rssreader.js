@@ -31,7 +31,7 @@ function CreateHTML_fromRSS(div, result) {
 			if (snip_end <= 0) {
 				snip_end = 120;
 			}
-			ins_html += '<div class="article"><h3><a href="'
+			ins_html += '<div class="article"><h3><a target="_blank" href="'
 				+ entry.link + '"></p>' + entry.title + '</a></h3><p class="date">'
 				+ date
 				+ '</p><div class="content">'
