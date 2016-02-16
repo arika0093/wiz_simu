@@ -377,7 +377,7 @@ function sim_show() {
 		},
 	});
 	// gameover log
-	$("dialog_gameover").dialog({
+	$("#dialog_gameover").dialog({
 		autoOpen: false,
 		modal: true,
 		width: 450,

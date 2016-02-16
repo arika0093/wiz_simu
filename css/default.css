@@ -50,6 +50,10 @@ a.blocklink{
 	border: 1px solid #60C0FF;
 	border-radius: 5px;
 }
+a.blocklink:hover{
+	border: 1px solid #40B0FF;
+	background-color: #98efff;
+}
 
 div.linklist{
 	width: 80%;
@@ -180,7 +184,7 @@ p.sitedetail{
 #menu li a {
 	width:auto;
 	color:#2080FF;
-	padding:10px 0;
+	padding: 1.5ex 0;
 	text-decoration:none;
 	display:block;
 	background:#fff;

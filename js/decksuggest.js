@@ -291,8 +291,8 @@ function set_autocmp(i) {
 			delay: 500,
 			source: function (req, resp) {
 				resp($.map(Cards, function (value, key) {
-					if (value.name.toLowerCase().indexOf(req.term.replace("*", "").toLowerCase()) >= 0 &&
-						(value.as1.proc != null || req.term.indexOf("*") >= 0)){
+					if (value.name.toLowerCase().indexOf(req.term.toLowerCase()) >= 0 &&
+						value.as1.proc != null){
 						return {
 							label: value.name,
 							value: value.cardid,
@@ -311,6 +311,7 @@ function set_autocmp(i) {
 			select: function (e, dec) {
 				decksel_show(idx, dec.item.data);
 				$(".selector").autocomplete("close");
+				$("#deck0" + (i + 1)).focus();
 				return false;
 			}
 		})
@@ -321,6 +322,9 @@ function set_autocmp(i) {
 					+ "</a><br/><p>" + AS.desc + "</p>")
 				.appendTo(ul);
 		};
+		$("#deck0" + i).dblclick(function () {
+			$("#deck0" + i).autocomplete("search");
+		});
 	}
 }
 

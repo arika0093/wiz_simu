@@ -20090,7 +20090,7 @@ Cards = [{
 		Statusup(400,0),
 	],
 }, {
-	name: "バレンタインのチョコレート",
+	name: "【オリジナル】バレンタインのチョコレート",
 	cardno: 90022,
 	imageno: 2162,
 	hp: 100,
@@ -20099,6 +20099,7 @@ Cards = [{
 	attr: [0, -1],
 	species: [10],
 	islegend: false,
+	isorigin: true,
 	as1: {
 		desc: "問答無用でリア充爆発☆/1000%",
 		proc: ChainAttack(10.0, 0),
