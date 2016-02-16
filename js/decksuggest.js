@@ -291,8 +291,11 @@ function set_autocmp(i) {
 			delay: 500,
 			source: function (req, resp) {
 				resp($.map(Cards, function (value, key) {
-					if (value.name.toLowerCase().indexOf(req.term.toLowerCase()) >= 0 &&
-						value.as1.proc != null){
+					var rst = true;
+					rst = rst && value.name.toLowerCase().indexOf(req.term.toLowerCase()) >= 0;
+					rst = rst && value.as1.proc != null;
+					rst = rst || (req.term == "*all*" && !value.isorigin);
+					if (rst){
 						return {
 							label: value.name,
 							value: value.cardid,
@@ -301,9 +304,6 @@ function set_autocmp(i) {
 					}
 				}));
 			},
-			open: function(e, ui){
-				$('.ui-autocomplete').off('menufocus hover mouseover mouseenter');
-			},
 			focus: function(e, dec) {
 				decksel_show(idx, dec.item.data);
 				return false;
@@ -311,9 +311,17 @@ function set_autocmp(i) {
 			select: function (e, dec) {
 				decksel_show(idx, dec.item.data);
 				$(".selector").autocomplete("close");
-				$("#deck0" + (i + 1)).focus();
+				// TABキーで次の要素に移動してないなら移動
+				var next = $("#deck0" + (i + 1));
+				if (e.keyCode !== 9) {
+					next.focus();
+					next.select();
+				}
 				return false;
 			}
+		})
+		.dblclick(function () {
+			$(this).autocomplete("search", "*all*");
 		})
 		.autocomplete("instance")._renderItem = function (ul, dec) {
 			var AS = dec.data.as2 ? dec.data.as2 : dec.data.as1;
@@ -322,9 +330,6 @@ function set_autocmp(i) {
 					+ "</a><br/><p>" + AS.desc + "</p>")
 				.appendTo(ul);
 		};
-		$("#deck0" + i).dblclick(function () {
-			$("#deck0" + i).autocomplete("search");
-		});
 	}
 }
 

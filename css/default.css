@@ -43,8 +43,8 @@ p.highlight{
 a.blocklink{
 	display: block;
 	width: 80%;
-	margin: 1ex 0.5em;
-	padding: 1ex 1em;
+	margin: 1ex 3px;
+	padding: 1.5ex 0.5em;
 	text-align: center;
 	color: #2080FF;
 	border: 1px solid #60C0FF;
@@ -464,6 +464,7 @@ iframe.twitter-timeline{
 	max-width: 100% !important;
 	height: 445px !important;
 }
+
 iframe.twitter-share-button {
 	vertical-align: sub;
 }

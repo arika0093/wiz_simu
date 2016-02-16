@@ -25,11 +25,11 @@ function sim_show() {
 	$("#sim_info_status").text(Field.Quest.name);
 
 	// sim_result
-	if (Field.Status.finish) {
+	if (is_ally_alldeath()) {
+		$("#dialog_gameover").dialog("open");
+	} else if (Field.Status.finish) {
 		$("#sim_share").fadeIn("slow");
 		$("#dialog_simfinish_popup").dialog("open");
-	} else if (is_ally_alldeath()) {
-		$("#dialog_gameover").dialog("open");
 	} else {
 		$("#sim_share").fadeOut("slow");
 	}
