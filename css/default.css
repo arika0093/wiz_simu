@@ -5,7 +5,7 @@ html{
 
 body{
 	box-sizing: border-box;
-	font-family: Meiryo, "ヒラギノ角ゴ Pro W3";
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese", sans-serif;
 	font-size: 10.5pt;
 	width: 800px;
 	margin: auto;

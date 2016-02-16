@@ -32,7 +32,7 @@ p.ally_stat, p.enemy_hp{
 }
 
 p.ally_name, p.ally_stat{
-	width: 298px;
+	/*width: 298px;*/
 }
 p.enemy_name, p.enemy_hp, p.enemy_stat{
 	width: 260px;

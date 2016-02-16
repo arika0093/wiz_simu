@@ -293,6 +293,7 @@ function sim_show() {
 		open: function () {
 			// hide
 			$(".ui-dialog-titlebar").hide();
+			// ----------------------------
 			// listup turn effect
 			var li_t = "";
 			var n = Number($("#allystat_index").text());
@@ -318,6 +319,7 @@ function sim_show() {
 			}
 			$("#allystat_name").text((n+1) + ": " + card.name);
 			$("#ally_tefflist").html(li_t);
+			// ----------------------------
 			// target select
 			if (card.attr[1] != -1) {
 				$("#allystat_tg_2").show();
@@ -326,6 +328,31 @@ function sim_show() {
 			}
 			$("#atarget_sel_1").val(now.target[0] + "");
 			$("#atarget_sel_2").val(now.target[1] + "");
+			// ----------------------------
+			// button of special skill
+			var als_ssbtn = $("#allystat_ss_button");
+			var sst = get_ssturn(card, now);
+			var ss_disabled = $.grep(now.turn_effect, function (e) {
+				return e.ss_disabled;
+			}).length > 0;
+			als_ssbtn.text(ss_remain_text(sst));
+			// 一旦既に定義されてるclickイベントを解除する(解除しないと連続してSSが発動する)
+			als_ssbtn.off("click");
+			als_ssbtn.on("click", function () {
+				// クリックされたらSSを打つ
+				$("#dialog_allystatus").dialog('close');
+				ss_push(n);
+			});
+			if (!ss_disabled && sst[0] == 0 && now.nowhp > 0 && !Field.Status.finish) {
+				// SS発動可能
+				als_ssbtn.attr("class", "ally_ss_button");
+				als_ssbtn.attr("disabled", false);
+			} else {
+				// SS発動不可
+				als_ssbtn.attr("class", "ally_ss_button_disabled");
+				als_ssbtn.attr("disabled", "disabled");
+			}
+			// ----------------------------
 			// close when click dialog outside
 			$('.ui-widget-overlay').bind('click', function () {
 				$("#dialog_allystatus").dialog('close');

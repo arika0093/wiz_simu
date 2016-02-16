@@ -264,6 +264,11 @@ div#dialog_allystatus .allystat_target select {
 	font-family: Meiryo !important;
 }
 
+div#dialog_allystatus .allystat_special {
+	display: none;
+}
+
+
 /* Adsense */
 div.simu_ads{
 	padding: 2ex 0.5em;
