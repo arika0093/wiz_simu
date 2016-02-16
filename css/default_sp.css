@@ -6,7 +6,7 @@ html{
 body{
 	box-sizing: border-box;
 	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese";
-	font-size: 11pt;
+	font-size: 14pt;
 	width: 98%;
 	min-width: 360px;
 	margin: auto;
@@ -236,7 +236,7 @@ ol li{
 }
 
 a.itemhidden{
-	font-size: 8.5pt;
+	font-size: 10pt;
 	margin-left: 1em;
 	color: #0040FF;
 	vertical-align: bottom;
@@ -348,7 +348,7 @@ p.ally_skill{
 	padding: 0;
 	text-align: left;
 	float: right;
-	font-size: 10pt;
+	font-size: 12pt;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
