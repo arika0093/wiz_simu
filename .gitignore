@@ -2,6 +2,7 @@ test/
 [#]no_update/
 api/
 blog/
+local/
 .htaccess
 
 ## -------------------------------------------

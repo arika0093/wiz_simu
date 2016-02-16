@@ -5,7 +5,7 @@ html{
 
 body{
 	box-sizing: border-box;
-	font-family: Meiryo;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese";
 	font-size: 11pt;
 	width: 98%;
 	min-width: 360px;
@@ -283,14 +283,14 @@ select.selbox{
 	box-sizing: border-box;
 	padding: 1ex 0em;
 	width: 100%;
-	font-family: Meiryo;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese";
 }
 
 button.deck_saveload, button.deck_reset{
 	width: 30%;
 	margin: 1ex 0.25em 0 0;
 	padding: 0.5ex 0em;
-	font-family: Meiryo;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese";
 }
 
 div.deckmenu{
@@ -316,11 +316,11 @@ input.decksel{
 	float: left;
 	width: 70%;
 	max-width: 450px;
-	font-family: Meiryo;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese";
 }
 
 .ui-autocomplete{
-	font-family: Meiryo !important;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese" !important;
 	width: 70%;
 	max-height: 250px;
 	overflow-x: hidden;
@@ -360,7 +360,7 @@ p.ally_skill:last-child{
 button#Start{
 	width: 100%;
 	padding: 1.5ex 0;
-	font-family: Meiryo;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese";
 	border: 1px solid #606060;
 	background: #ffffff;
 	background: -moz-linear-gradient(top,  #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%);
@@ -453,17 +453,17 @@ div.dialog_div{
 }
 
 .ui-dialog{
-	font-family: Meiryo !important;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese" !important;
 	font-size: 10.5pt !important;
 	max-width: 96%;
 }
 .ui-button-text{
-	font-family: Meiryo !important;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese" !important;
 	font-size: 10.5pt !important;
 }
 
 select.sel_indialog{
-	font-family: Meiryo !important;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese" !important;
 	width: 100%;
 }
 select.sel_indialog option:nth-child(even){
@@ -471,6 +471,6 @@ select.sel_indialog option:nth-child(even){
 }
 
 input.edit_indialog{
-	font-family: Meiryo !important;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese" !important;
 	width: 100%;
 }

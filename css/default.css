@@ -5,7 +5,7 @@ html{
 
 body{
 	box-sizing: border-box;
-	font-family: Meiryo;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3";
 	font-size: 10.5pt;
 	width: 800px;
 	margin: auto;
@@ -347,13 +347,13 @@ div.selbox_field{
 
 select.selbox{
 	width: 60%;
-	font-family: Meiryo;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3";
 }
 
 button.deck_saveload, button.deck_reset{
 	width: 11.5%;
 	padding: 0 0.25em;
-	font-family: Meiryo;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3";
 }
 
 div.sim_start{
@@ -379,11 +379,11 @@ input.decksel{
 	margin: 4px;
 	padding: 0px 2px;
 	float: left;
-	font-family: Meiryo;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3";
 }
 
 .ui-autocomplete{
-	font-family: Meiryo !important;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3" !important;
 	max-height: 250px;
 	overflow-x: hidden;
 	overflow-y: scroll;
@@ -424,13 +424,13 @@ p.ally_skill{
 	width: 48%;
 	margin: 1ex auto;
 	padding: 0.5ex;
-	font-family: Meiryo;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3";
 }*/
 
 button#Start{
 	width: 100%;
 	padding: 1.5ex 0;
-	font-family: Meiryo;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3";
 	border: 1px solid #606060;
 	background: #ffffff;
 	background: -moz-linear-gradient(top,  #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%);
@@ -528,16 +528,16 @@ div.dialog_div{
 }
 
 .ui-dialog{
-	font-family: Meiryo !important;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3" !important;
 	font-size: 10.5pt !important;
 }
 .ui-button-text{
-	font-family: Meiryo !important;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3" !important;
 	font-size: 10.5pt !important;
 }
 
 select.sel_indialog{
-	font-family: Meiryo !important;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3" !important;
 	width: 100%;
 }
 select.sel_indialog option:nth-child(even){
@@ -545,7 +545,7 @@ select.sel_indialog option:nth-child(even){
 }
 
 input.edit_indialog{
-	font-family: Meiryo !important;
+	font-family: Meiryo, "ヒラギノ角ゴ Pro W3" !important;
 	width: 100%;
 }
 
