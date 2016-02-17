@@ -88,7 +88,7 @@ Quests = [
 				spec: 2,
 				move: {
 					on_move: [
-						m_enemy_once(s_enemy_deathlimit(5, 5)),
+						m_enemy_once(s_enemy_deathlimit(5, 6)),
 						// 攻撃
 					],
 					atrandom: false,
@@ -106,7 +106,7 @@ Quests = [
 				spec: 6,
 				move: {
 					on_popup: [
-						skill_counter_func(s_enemy_attr_weaken, "雷属性弱体化(50%)", -1, false, [0, 0, 1, 0, 0], 2.0, 5, 3),
+						skill_counter_func(s_enemy_attr_weaken, "雷属性弱体化(50%)", -1, false, [0, 0, 1, 0, 0], 1.5, 5, 3),
 					],
 					atrandom: false,
 					turn: 1,
@@ -224,7 +224,7 @@ Quests = [
 					],
 					on_angry: [
 						attr_change(3),
-						s_enemy_attr_weaken([1,1,1,1,1], 25, 5, 1)
+						s_enemy_attr_weaken([1,1,1,1,1], 1.25, 5, 2)
 					],
 					on_move_angry: [
 						// 攻撃

@@ -56,7 +56,7 @@ function panel(attr) {
 					for (var j = 0; j < skillct.length; j++) {
 						skillct[j].on_attack_damage(Field, i, n);
 					}
-					e.flags.is_as_attack[n] = false;
+					e.flags.is_as_attack[n] = 0;
 				}
 			}
 		});

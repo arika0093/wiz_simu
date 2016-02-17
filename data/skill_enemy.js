@@ -497,7 +497,7 @@ function attack_counter_dual(damage, t) {
 			effect: function () { },
 			on_attack_damage: function (f, ei, ai) {
 				f.log_push("Enemy[" + (ei + 1) + "]: 多段式カウンター発動(対象: Unit[" + (ai + 1) + "])");
-				var atk_ct = enemy.flags.is_as_attack[ai];
+				var atk_ct = GetNowBattleEnemys(ei).flags.is_as_attack[ai];
 				for (var i = 0; i < atk_ct; i++) {
 					damage_ally(damage, ai, true);
 				}
