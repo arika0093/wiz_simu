@@ -132,7 +132,7 @@ $(function () {
 			var now = Field.Allys.Now[i] = {};
 			var mana = simDeck[i].mana;
 			// SS状態をリセット
-			now.ss_current = 0;		// SSチャージターン
+			now.ss_current = has_fastnum(card);	// SSチャージターン
 			now.ss_isfirst = true;	// SSをまだ発動していないかどうか
 			now.ss_isboost = false;	// スキブを受けたかどうか
 			now.islegend = false;

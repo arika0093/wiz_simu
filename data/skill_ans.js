@@ -509,7 +509,7 @@ function ChainEnhance(rate, attr, ch) {
 }
 
 // チェインエンハンス(副属性でさらにアップ)(r1, r2: 割合, attr: 対象属性, sub: 対象副属性, ch: チェイン)
-// 例: ChainEnhance_SubAttr(0.5, 0.3, [1,0,0,0,0], [0,0,1,0,0], 3)
+// 例: ChainEnhance_SubAttr(0.3, 0.8, [1,0,0,0,0], [0,0,1,0,0], 3)
 function ChainEnhance_SubAttr(r1, r2, attr, sub, ch) {
 	return [
 		{

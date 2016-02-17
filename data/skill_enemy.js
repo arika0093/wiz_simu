@@ -195,9 +195,14 @@ function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f
 		// 潜在の状態無効を確認
 		var is_abs_guard_aw = Awake_AbsInvalid(card, now, type);
 		// 異常攻撃前効果を発動させ、戻り値がfalseのものが1つ以上あったら無効
+		// ユーザー側の攻撃前効果(ex: 異常無効)
 		var is_abs_guard = $.grep(now.turn_effect, function (e) {
 			return e.bef_absattack && !e.bef_absattack(fld, tg[i], ei);
 		}).length > 0;
+		// 攻撃側の攻撃前効果(ex: 回復反転の光闇除外)
+		if(eff_obj.bef_absattack){
+			is_abs_guard = is_abs_guard || !eff_obj.bef_absattack(fld, tg[i], ei);
+		}
 		if (!is_abs_guard && !is_abs_guard_aw && !disable_guard) {
 			// 追加
 			now.turn_effect.push(eff_obj);
@@ -230,8 +235,8 @@ function s_enemy_poison(d, tnum, t) {
 				is_poison: true,
 				effect: function (f, oi, teff, state, is_t, is_b) {
 					if (is_t && !is_b && state != "overlay") {
-						damage_ally(d, oi, false);
 						f.log_push("Unit[" + (oi + 1) + "]: 毒(" + d + "ダメージ)");
+						damage_ally(d, oi, true);
 					}
 				},
 			}
@@ -302,6 +307,41 @@ function s_enemy_all_sealed(tnum, t) {
 		);
 	});
 }
+
+// 死の秒針(対象数, 残りターン)
+function s_enemy_deathlimit(tnum, limit) {
+	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
+		s_enemy_abstate_attack(
+			fld, "死の秒針", "death_limit", limit, tnum, n, false, {
+				effect: function (f, oi, teff, state) {
+					var nowtg = f.Allys.Now[oi];
+					if (state == "end") {
+						f.log_push("Unit[" + (oi+1) + "]: 死の秒針 - 残り0t");
+						damage_ally(nowtg.maxhp, oi, true);
+					}
+				},
+			}
+		);
+	});
+}
+
+// 回復反転(効果値, 対象数)【未実装】
+function s_enemy_healrebase(rate, tnum) {
+	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
+		s_enemy_abstate_attack(
+			fld, "回復反転(効果値:" + (rate*100) + "%)",
+			"heal_rebase", -1, tnum, n, false, {
+				// 光闇属性なら反転は無効
+				bef_absattack: function (fld, oi, ei) {
+					var card = fld.Allys.Deck[oi];
+					return !(card.attr[1] >= 3 && card.attr[1] <= 4);
+				}
+				// 後で実装
+			}
+		);
+	});
+}
+
 
 // 呪い(HP低下値, 対象数, 継続ターン)
 function s_enemy_cursed(hpdown, tnum, t) {
@@ -532,7 +572,7 @@ function impregnable(t) {
 // 敵状態変化 etc.
 // -----------------------------------
 // 分裂(自分自身が残った場合に発動/何回でも発動)
-function s_enemy_division() {
+function s_enemy_division(copyhp) {
 	return m_create_enemy_move(function (fld, n) {
 		var enemy = GetNowBattleEnemys(n);
 		enemy.turn_effect.push({
@@ -546,9 +586,10 @@ function s_enemy_division() {
 			on_cond: m_create_enemy_move(function (f, i) {
 				// 複製先
 				var copyto = i != 0 ? 0 : 1;
+				var hprate = copyhp ? copyhp : 1;
 				var ens = Field.Enemys.Data[Field.Status.nowbattle - 1].enemy;
 				ens[copyto] = $.extend(true, {}, GetNowBattleEnemys(i));
-				ens[copyto].nowhp = ens[copyto].hp;
+				ens[copyto].nowhp = ens[copyto].hp * hprate;
 				fld.log_push("Enemy[" + (n + 1) + "]: 分裂");
 			}),
 			oncond_anytime: true,
@@ -604,6 +645,20 @@ function attr_change(after) {
 // -----------------------------------
 // その他
 // -----------------------------------
+// スキルディスチャージ
+function s_enemy_discharge(tnum, minus_turn) {
+	return m_create_enemy_move(function (fld, n) {
+		var nows = fld.Allys.Now;
+		$.each(nows, function (i, e) {
+			var card = fld.Allys.Deck[i];
+			var endcharge = card.islegend ? card.ss2.turn : card.ss1.turn;
+			e.ss_current = Math.max(Math.min(endcharge, e.ss_current) - minus_turn, 0);
+			//e.ss_isboost = true;
+		});
+	});
+}
+
+
 // チェイン解除
 function s_enemy_chain_break() {
 	return m_create_enemy_move(function (fld, n) {

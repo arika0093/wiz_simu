@@ -520,7 +520,11 @@ function tweet_result() {
 // fieldのログを読む
 function load_field(i) {
 	// 読み込み前の戦闘数
-	var btlct_now = Field.Status.nowbattle;
+	var target_bef = [];
+	$.each(Field.Allys.Now, function (i, e) {
+		target_bef[i] = { first: e.target[0], second: e.target[1] };
+	});
+	var btlct_bef = Field.Status.nowbattle;
 	// 読み込み先取得
 	var load_index = (i != 0 ? i + Field.Status.log.length : 0);
 	if (Field.Status.totalturn == 0 && Field.Status.log.length > 0) {
@@ -532,11 +536,15 @@ function load_field(i) {
 		Field = Field_log.load(load_index);
 		// 再表示
 		sim_show();
-		// 詳細ログ追加
-		Field.detail_log("load_field", "move", "loaded turn " + (load_index + 1));
 		// 戦闘数が読み込み前と違っていたらタゲリセット
-		if (btlct_now != Field.Status.nowbattle) {
-			target_allselect(-1);
+		if (btlct_bef != Field.Status.nowbattle) {
+			target_allselect();
+		} else {
+			// 同じなら保存したログを読み込む
+			$.each(Field.Allys.Now, function (i, e) {
+				e.target[0] = target_bef[i].first;
+				e.target[1] = target_bef[i].second;
+			});
 		}
 	}
 }
