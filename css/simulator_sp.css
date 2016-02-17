@@ -154,7 +154,7 @@ div.sim_panel select{
 
 div.panel_addition {
 	width: 40%;
-	padding: 3px 0px 3px 0.5em;
+	padding: 3px 1px 3px 0.5em;
 	float: left;
 }
 
@@ -166,7 +166,7 @@ div.attack_target{
 
 div.attack_rand{
 	width: 25%;
-	padding: 3px 0.5em 3px 3px;
+	padding: 3px 0.5em 3px 1px;
 	float: left;
 }
 
