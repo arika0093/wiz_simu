@@ -29,6 +29,9 @@ Quests = [
 					on_popup: [
 						impregnable(-1),
 					],
+					on_move: [
+						s_enemy_attack(250, 5, 1, true)
+					],
 					atrandom: false,
 					turn: 1,
 					wait: 1,
@@ -42,6 +45,9 @@ Quests = [
 				move: {
 					on_popup: [
 						damage_block_own(10000, 3),
+					],
+					on_move: [
+						s_enemy_attack(250, 5, 1, true)
 					],
 					atrandom: false,
 					turn: 1,
@@ -59,7 +65,7 @@ Quests = [
 				move: {
 					on_move: [
 						m_enemy_once(s_enemy_chain_sealed(3)),
-						// 攻撃
+						s_enemy_attack(100, 5, 3, true),
 					],
 					atrandom: false,
 					turn: 2,
@@ -76,6 +82,9 @@ Quests = [
 						skill_counter_func(attack_counter_dual, "多段式カウンター(500)", -1, false, 500, 3),
 						s_enemy_division(),
 					],
+					on_move: [
+						s_enemy_attack(250, 5, 1, true),
+					],
 					atrandom: false,
 					turn: 1,
 					wait: 1,
@@ -89,7 +98,7 @@ Quests = [
 				move: {
 					on_move: [
 						m_enemy_once(s_enemy_deathlimit(5, 6)),
-						// 攻撃
+						s_enemy_attack(100, 5, 3, true),
 					],
 					atrandom: false,
 					turn: 2,
@@ -108,6 +117,9 @@ Quests = [
 					on_popup: [
 						skill_counter_func(s_enemy_attr_weaken, "雷属性弱体化(50%)", -1, false, [0, 0, 1, 0, 0], 1.5, 5, 3),
 					],
+					on_move: [
+						s_enemy_attack(250, 5, 1, true),
+					],
 					atrandom: false,
 					turn: 1,
 					wait: 1,
@@ -122,6 +134,10 @@ Quests = [
 					on_popup: [
 						s_enemy_force_reservoir(),
 					],
+					on_move: [
+						m_enemy_once(s_enemy_attack(2000, 5, 1, true)),
+						s_enemy_attack(1000, 5, 1, true),
+					],
 					atrandom: false,
 					turn: 1,
 					wait: 1,
@@ -135,6 +151,10 @@ Quests = [
 				move: {
 					on_popup: [
 						s_enemy_force_reservoir(),
+					],
+					on_move: [
+						m_enemy_once(s_enemy_attack(2000, 5, 1, true)),
+						s_enemy_attack(1000, 5, 1, true),
 					],
 					atrandom: false,
 					turn: 1,
@@ -153,6 +173,9 @@ Quests = [
 					on_popup: [
 						impregnable(-1),
 					],
+					on_move: [
+						s_enemy_attack(150, 5, 3, true),
+					],
 					atrandom: false,
 					turn: 1,
 					wait: 1,
@@ -166,7 +189,7 @@ Quests = [
 				move: {
 					on_move: [
 						m_enemy_once(s_enemy_poison(500, 5, 3)),
-						// 攻撃
+						s_enemy_attack(200, 5, 3, true),
 					],
 					atrandom: false,
 					turn: 1,
@@ -181,6 +204,9 @@ Quests = [
 				move: {
 					on_popup: [
 						skill_counter_func(s_enemy_discharge, "ディスチャージ(-2t)", -1, false, 5, 2),
+					],
+					on_move: [
+						s_enemy_attack(300, 5, 1, true),
 					],
 					atrandom: false,
 					turn: 1,
@@ -201,8 +227,8 @@ Quests = [
 					],
 					on_move: [
 						m_enemy_once(s_enemy_force_reservoir()),
-						// 力溜め攻撃(m_enemy_once),
-						// 攻撃
+						m_enemy_once(s_enemy_attack(2000, 1, 1, true)),
+						s_enemy_attack(1500, 1, 1, true),
 					],
 					atrandom: false,
 					turn: 1,
@@ -213,6 +239,7 @@ Quests = [
 				hp: 400000,
 				imageno: 7148,
 				attr: 2,
+				subattr: 3,
 				spec: 9,
 				move: {
 					on_popup: [
@@ -220,14 +247,14 @@ Quests = [
 						damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
 					],
 					on_move: [
-						// 攻撃
+						s_enemy_attack(250, 5, 3, true),
 					],
 					on_angry: [
 						attr_change(3),
 						s_enemy_attr_weaken([1,1,1,1,1], 1.25, 5, 2)
 					],
 					on_move_angry: [
-						// 攻撃
+						s_enemy_attack(100, 5, 3, true),
 					],
 					atrandom: false,
 					turn: 1,
@@ -242,6 +269,9 @@ Quests = [
 				move: {
 					on_popup: [
 						attack_counter_dual(700, 3),
+					],
+					on_move: [
+						s_enemy_attack(200, 5, 3, true),
 					],
 					atrandom: false,
 					turn: 1,

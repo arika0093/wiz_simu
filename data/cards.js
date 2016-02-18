@@ -19167,7 +19167,7 @@ Cards = [{
 		Statusup(0,500),
 	],
 },{
-	name: "全力成就ANGEL マーガレット・リル	",
+	name: "全力成就ANGEL マーガレット・リル",
 	cardno: 5675,
 	imageno: 7480,
 	hp: 2410,
