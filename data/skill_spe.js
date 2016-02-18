@@ -678,6 +678,13 @@ function ss_hp_under(cond, a, b) {
 	}
 }
 
+// リーダー時に効果値アップ
+function ss_when_leader(a, b) {
+	return function (fld, oi, ei) {
+		return (oi == 0) ? a : b;
+	}
+}
+
 // 属性特攻
 function special_attr(attrs, a, b) {
 	return function (fld, oi, ei) {
