@@ -248,7 +248,7 @@ div.rsslist{
 	box-sizing: border-box;
 }
 div.rsslist div.article{
-	padding: 1ex 0 2ex 1ex;
+	padding: 1.5ex 0 2.5ex 1ex;
 	border-bottom: 1px solid #909090;
 	background-color: transparent;
 }
