@@ -245,7 +245,6 @@ p.sitedetail{
 /* RSS Show */
 div.rsslist{
 	padding-right: 1em;
-	max-height: 350px;
 	box-sizing: border-box;
 }
 div.rsslist div.article{

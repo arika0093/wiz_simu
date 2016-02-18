@@ -43,12 +43,12 @@ function CreateHTML_fromRSS(div, result) {
 }
 
 // RSSを取得する
-function ReadRSS(div, rss_url) {
+function ReadRSS(div, rss_url, count) {
 	function rss_init() {
 		// load rssfeed
 		var feed = new google.feeds.Feed(rss_url);
 		// load entries num
-		feed.setNumEntries(5);
+		feed.setNumEntries(count);
 		feed.load(function (result) {
 			CreateHTML_fromRSS(div, result);
 		});
@@ -65,10 +65,10 @@ var dtquery = date.getMonth() + date.getDay() + date.getHours();
 // Update RSS
 var rec = $("#rss_recent");
 if (rec) {
-	ReadRSS(rec, "http://blog.wiztools.net/author/updatepost/feed/?" + dtquery);
+	ReadRSS(rec, "http://blog.wiztools.net/author/updatepost/feed/?" + dtquery, 5);
 }
 // Information RSS
 var inf = $("#rss_information");
 if (inf) {
-	ReadRSS(inf, "http://blog.wiztools.net/author/admin/feed/?" + dtquery);
+	ReadRSS(inf, "http://blog.wiztools.net/author/admin/feed/?" + dtquery, 2);
 }
