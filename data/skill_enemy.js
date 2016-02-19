@@ -168,6 +168,22 @@ function s_enemy_attack_ratio(rate, tnum, tgtype) {
 	});
 }
 
+// 亡者の怨念
+function s_enemy_attack_deadgrudge(r1, r2, r3, tgtype) {
+	return m_create_enemy_move(function (fld, n, nows, is_counter) {
+		var rates = [r1, r2, r3, r3];
+		var deadnum = 0;
+		var es = GetNowBattleEnemys();
+		$.each(es, function (i, e) {
+			if (e.nowhp <= 0) {
+				deadnum++;
+			}
+		});
+		fld.log_push("Enemy[" + (n + 1) + "]: 亡者の怨念発動");
+		return s_enemy_attack(rates[deadnum], 1, 1, tgtype).move(fld, n, nows, is_counter);
+	});
+}
+
 // -----------------------------------
 // 状態異常攻撃
 // -----------------------------------
@@ -597,6 +613,30 @@ function s_enemy_division(copyhp) {
 	});
 }
 
+// 敵全体を回復
+function s_enemy_heal_all(rate) {
+	return m_create_enemy_move(function (fld, n) {
+		var es = GetNowBattleEnemys();
+		$.each(es, function (i, e) {
+			if (e.nowhp <= 0) { return; }
+			var heal_v = e.hp * rate;
+			e.nowhp = Math.min(e.nowhp + heal_v, e.hp);
+			fld.log_push("Enemy[" + (i + 1) + "]: HP回復(" + heal_v + ")");
+		})
+	});
+}
+
+// 自分自身を回復
+function s_enemy_heal_own(rate) {
+	return m_create_enemy_move(function (fld, n) {
+		var e = GetNowBattleEnemys(n);
+		if (e.nowhp <= 0) { return; }
+		var heal_v = e.hp * rate;
+		e.nowhp = Math.min(e.nowhp +heal_v, e.hp);
+		fld.log_push("Enemy[" +(i +1) + "]: HP回復(" +heal_v + ")");
+	}); 
+}
+
 // 力溜め
 function s_enemy_force_reservoir() {
 	return m_create_enemy_move(function (fld, n) {
@@ -628,6 +668,8 @@ function m_enemy_angry() {
 				e.move.on_angry[i].move(fld, n);
 			}
 		}
+		// 参照カウントをリセット
+		e.move.m_index = 0;
 	});
 }
 

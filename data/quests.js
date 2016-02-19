@@ -180,7 +180,7 @@ Quests = [
 						s_enemy_attack(100, 5, 1, true)
 					],
 					on_angry: [
-						// 亡者の怨念(1300)
+						s_enemy_attack_deadgrudge(0, 650, 1300, true),
 					],
 					on_move_angry: [
 						s_enemy_attack(100, 5, 3, true)
@@ -285,7 +285,8 @@ Quests = [
 				spec: 4,
 				move: {
 					on_move: [
-						//s_enemy_attack(900, 2, 1, true)
+						m_enemy_once(s_enemy_attack(900, 2, 1, m_enemy_tgtype_minhp())),
+						s_enemy_attack(300, 5, 1, true),
 					],
 					atrandom: false,
 					turn: 1,
@@ -302,7 +303,7 @@ Quests = [
 						impregnable(-1),
 					],
 					on_move: [
-						//s_enemy_attack(225, 3, 1, true)
+						s_enemy_attack(225, 5, 1, true)
 					],
 					atrandom: false,
 					turn: 1,
@@ -319,7 +320,7 @@ Quests = [
 				spec: 4,
 				move: {
 					on_move: [
-						//s_enemy_attack(225, 2, 1, true)
+						s_enemy_attack(225, 1, 1, true)
 					],
 					atrandom: false,
 					turn: 1,
@@ -336,7 +337,7 @@ Quests = [
 						impregnable(-1),
 					],
 					on_move: [
-						//s_enemy_attack(300, 3, 1, true)
+						s_enemy_attack(300, 5, 1, true)
 					],
 					atrandom: false,
 					turn: 1,
@@ -350,7 +351,7 @@ Quests = [
 				spec: 4,
 				move: {
 					on_move: [
-						//s_enemy_attack(300, 3, 1, true)
+						s_enemy_attack(300, 5, 1, true)
 					],
 					atrandom: false,
 					turn: 1,
@@ -390,7 +391,8 @@ Quests = [
 				move: {
 					on_move: [
 						s_enemy_force_reservoir(),
-						s_enemy_attack(600, 2, 1, true)
+						s_enemy_attack(600, 5, 1, true),
+						s_enemy_attack(300, 1, 1, true),
 					],
 					atrandom: false,
 					turn: 2,
@@ -404,7 +406,7 @@ Quests = [
 				spec: 4,
 				move: {
 					on_move: [
-						//s_enemy_attack(300, 2, 1, true)
+						s_enemy_attack(300, 1, 1, true)
 					],
 					atrandom: false,
 					turn: 1,
@@ -444,7 +446,8 @@ Quests = [
 				move: {
 					on_move: [
 						s_enemy_force_reservoir(),
-						s_enemy_attack(600, 2, 1, true)
+						s_enemy_attack(600, 5, 1, true),
+						s_enemy_attack(300, 1, 1, true),
 					],
 					atrandom: false,
 					turn: 2,
@@ -458,7 +461,7 @@ Quests = [
 				spec: 4,
 				move: {
 					on_move: [
-						//s_enemy_attack(300, 2, 1, true)
+						s_enemy_attack(300, 1, 1, true)
 					],
 					atrandom: false,
 					turn: 1,
@@ -475,7 +478,7 @@ Quests = [
 				spec: 4,
 				move: {
 					on_move: [
-						//s_enemy_attack(250, 3, 1, true),
+						s_enemy_attack(250, 5, 1, true),
 					],
 					atrandom: false,
 					turn: 1,
@@ -493,13 +496,13 @@ Quests = [
 					],
 					on_move: [
 						m_enemy_once(skill_counter(9999, 11)),
-						//s_enemy_attack(250, 3, 5, true),
-						//s_enemy_attack(500, 3, 1, true),
+						s_enemy_attack(100, 3, 5, true),
+						s_enemy_attack(500, 3, 1, true),
 					],
 					on_move_angry: [
-						m_enemy_once(s_enemy_ss_sealed()),
-						//s_enemy_attack(250, 3, 5, true),
-						//s_enemy_attack(1200, 1, 1, true),
+						m_enemy_once(s_enemy_ss_sealed(3, 4)),
+						s_enemy_attack(250, 5, 5, true),
+						s_enemy_attack(1200, 5, 1, true),
 					],
 					atrandom: false,
 					turn: 1,
@@ -516,12 +519,12 @@ Quests = [
 						damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
 					],
 					on_move: [
+						s_enemy_attack(500, 5, 1, true),
 						m_enemy_once(attack_counter(800, -1)),
-						// 攻撃
 					],
 					on_move_angry: [
-						// 回復
-						// 攻撃
+						s_enemy_attack(750, 5, 1, true),
+						s_enemy_heal_all(0.1),
 					],
 					atrandom: false,
 					turn: 1,
@@ -1478,7 +1481,7 @@ Quests = [
 				move: {
 					on_move: [
 						s_enemy_attack(1300, 1, 1),
-						null, // HP全体回復(25%)
+						s_enemy_heal_all(0.25),
 					],
 					atrandom: false,
 					turn: 2,
