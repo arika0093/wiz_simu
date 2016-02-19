@@ -367,16 +367,9 @@ Quests = [
 				attr: 1,
 				spec: 4,
 				move: {
-					on_popup: [
-						damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
-					],
 					on_move: [
 						s_enemy_attack(500, 3, 1, true),
 						s_enemy_chain_break(),
-					],
-					on_move_angry: [
-						s_enemy_attack(700, 3, 1, true),
-						s_enemy_as_sealed(5, 3),
 					],
 					atrandom: false,
 					turn: 1,
@@ -422,16 +415,9 @@ Quests = [
 				attr: 1,
 				spec: 4,
 				move: {
-					on_popup: [
-						damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
-					],
 					on_move: [
 						s_enemy_attack(500, 3, 1, true),
 						s_enemy_chain_break(),
-					],
-					on_move_angry: [
-						s_enemy_attack(700, 3, 1, true),
-						s_enemy_as_sealed(5, 3),
 					],
 					atrandom: false,
 					turn: 1,
