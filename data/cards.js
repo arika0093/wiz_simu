@@ -21177,7 +21177,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体へ火属性のダメージ(200%)、さらに3ターンの間、火属性のダメージ(200%)",
 		turn: 7,
-		proc: [ss_damage_all(2.0, [0]), ss_continue_damage(2.0, [0], 3)],
+		proc: [ss_damage_all(3.0, [0]), ss_continue_damage(3.0, [0], 3)],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],1),
@@ -21198,7 +21198,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体へ火属性のダメージ(300%)、さらに3ターンの間、火属性のダメージ(300%)",
 		turn: 9,
-		proc: [ss_damage_all(3.0, [0]), ss_continue_damage(3.0, [0], 3)],
+		proc: [ss_damage_all(4.0, [0]), ss_continue_damage(4.0, [0], 3)],
 	},
 	Lawake: [
 		Statusup(0,600),
