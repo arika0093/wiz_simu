@@ -229,10 +229,14 @@ div.tweet_preview div.sh_url {
 div#allystat_index{
 	display: none;
 }
-
+div#allystat_name{
+	padding: 1ex 0 1.5ex 0.5em;
+}
 div#allystat_teff {
 	height: 150px;
 	overflow-y: auto;
+	border-top: 1px solid #AAA;
+	padding: 0.5ex 0;
 }
 div#allystat_teff ul{
 	list-style-type: none;

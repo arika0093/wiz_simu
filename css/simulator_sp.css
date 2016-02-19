@@ -91,6 +91,10 @@ img.chara_teff{
 	right: 1px;
 }
 
+p.ally_stat{
+	display: none;
+}
+
 div.ally_ss {
 	position: absolute;
 	bottom: 1px;
@@ -98,13 +102,12 @@ div.ally_ss {
 }
 
 div.ally_ss button{
-	display: none;
 	width: 200px;
 	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese";
 	font-size: 10pt;
 	margin: 0;
 	border-width: 1px 0px 0px 1px;
-	padding: 0.5ex 0em;
+	padding: 0.8ex 0em;
 }
 
 p.ally_name, p.ally_stat, p.enemy_name, p.enemy_hp, p.enemy_stat{
@@ -246,10 +249,14 @@ div.tweet_preview div.sh_url {
 div#allystat_index{
 	display: none;
 }
-
+div#allystat_name{
+	padding: 1.5ex 0 1.5ex 0.5em;
+}
 div#allystat_teff {
 	height: 150px;
 	overflow-y: auto;
+	border-top: 1px solid #AAA;
+	padding: 0.5ex 0;
 }
 div#allystat_teff ul{
 	list-style-type: none;
@@ -287,7 +294,7 @@ div#dialog_allystatus .allystat_special {
 	border-top: 1px solid #AAA;
 }
 button#allystat_ss_button {
-	width: 80%;
+	width: 100%;
 	padding: 2ex 0.5em;
 }
 
