@@ -59,8 +59,8 @@ Quests = [
 						s_enemy_attack(225, 5, 3, true),
 					],
 					atrandom: false,
-					wait: 1,
-					turn: 2,
+					wait: 2,
+					turn: 1,
 				},
 			}, {
 				name: "ハイパービターチューカリー",
@@ -76,8 +76,8 @@ Quests = [
 						s_enemy_attack(150, 5, 1, true)
 					],
 					atrandom: false,
-					turn: 1,
-					wait: 2,
+					turn: 2,
+					wait: 1,
 				},
 			}, {
 				name: "青春の苦味を知る とろ～りプリス",
@@ -163,8 +163,8 @@ Quests = [
 						s_enemy_attack(750, 3, 1, true),
 					],
 					atrandom: false,
-					turn: 1,
-					wait: 2,
+					turn: 2,
+					wait: 1,
 				},
 			}, {
 				name: "シャドウおじいさん",
@@ -285,7 +285,7 @@ Quests = [
 				spec: 4,
 				move: {
 					on_move: [
-						m_enemy_once(s_enemy_attack(900, 2, 1, m_enemy_tgtype_minhp())),
+						m_enemy_once(s_enemy_attack(900, 1, 1, m_enemy_tgtype_minhp())),
 						s_enemy_attack(300, 5, 1, true),
 					],
 					atrandom: false,
@@ -306,8 +306,8 @@ Quests = [
 						s_enemy_attack(225, 5, 1, true)
 					],
 					atrandom: false,
-					turn: 1,
-					wait: 3,
+					turn: 3,
+					wait: 1,
 				},
 			}],
 		}, {
@@ -340,8 +340,8 @@ Quests = [
 						s_enemy_attack(300, 5, 1, true)
 					],
 					atrandom: false,
-					turn: 1,
-					wait: 3,
+					turn: 3,
+					wait: 1,
 				},
 			}, {
 				name: "イエローチューカリー",
