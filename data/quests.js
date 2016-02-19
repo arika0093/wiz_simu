@@ -91,7 +91,7 @@ Quests = [
 				}
 			}, {
 				name: "凶暴な炎翼魔のレリーフ",
-				hp: 36300,
+				hp: 20000,
 				imageno: 7162,
 				attr: 0,
 				spec: 2,

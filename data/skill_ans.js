@@ -248,79 +248,26 @@ function ChainVarianceAttack(r, ch) {
 // パネル依存攻撃(r1: 単色割合, r2: 二色割合, r3: 三色以上割合, ch: 発動チェイン数)
 //   例: 3chain二色以上でダメージアップ(250%)なら ChainPanelsAttack(0, 2.5, 2.5, 3)
 function ChainPanelsAttack(r1, r2, r3, ch) {
-	return [
-		{
-			type: "attack",
-			isall: false,
-			atkn: 1,
-			rate: r1,
-			chain: ch,
-			attr: [1, 1, 1, 1, 1],
-			spec: create_specs(1),
-			cond: always_true().cond,
-		}, {
-			type: "attack",
-			isall: false,
-			atkn: 1,
-			rate: r2,
-			chain: ch,
-			attr: [1, 1, 1, 1, 1],
-			spec: create_specs(1),
-			cond: as_panel_over2().cond,
-		}, {
-			type: "attack",
-			isall: false,
-			atkn: 1,
-			rate: r3,
-			chain: ch,
-			attr: [1, 1, 1, 1, 1],
-			spec: create_specs(1),
-			cond: as_panel_over3().cond,
-		},
-	];
+	return ChainPanelsAttrDualAttack(r1, r2, r3, [1,1,1,1,1], 1, ch);
 }
 
 // パネル依存連撃攻撃(r1: 単色割合, r2: 二色割合, r3: 三色以上割合, atkn: 攻撃回数, ch: 発動チェイン数)
 function ChainPanelsDualAttack(r1, r2, r3, atkn, ch) {
-	return [
-		{
-			type: "attack",
-			isall: false,
-			atkn: atkn,
-			rate: r1,
-			chain: ch,
-			attr: [1, 1, 1, 1, 1],
-			spec: create_specs(1),
-			cond: always_true().cond,
-		}, {
-			type: "attack",
-			isall: false,
-			atkn: atkn,
-			rate: r2,
-			chain: ch,
-			attr: [1, 1, 1, 1, 1],
-			spec: create_specs(1),
-			cond: as_panel_over2().cond,
-		}, {
-			type: "attack",
-			isall: false,
-			atkn: atkn,
-			rate: r3,
-			chain: ch,
-			attr: [1, 1, 1, 1, 1],
-			spec: create_specs(1),
-			cond: as_panel_over3().cond,
-		},
-	];
+	return ChainPanelsAttrDualAttack(r1, r2, r3, [1,1,1,1,1], atkn, ch);
 }
 
 // パネル依存属性特攻攻撃(r1: 単色割合, r2: 二色割合, r3: 三色以上割合, attr: 属性, ch: 発動チェイン数)
 function ChainPanelsAttrAttack(r1, r2, r3, attr, ch) {
+	return ChainPanelsAttrDualAttack(r1, r2, r3, attr, 1, ch);
+}
+
+// パネル依存属性特攻連撃(r1: 単色割合, r2: 二色割合, r3: 三色以上割合, attr: 属性, atkn: 攻撃回数, ch: 発動チェイン数)
+function ChainPanelsAttrDualAttack(r1, r2, r3, attr, atkn, ch) {
 	return [
 		{
 			type: "attack",
 			isall: false,
-			atkn: 1,
+			atkn: atkn,
 			rate: r1,
 			chain: ch,
 			attr: attr,
@@ -329,7 +276,7 @@ function ChainPanelsAttrAttack(r1, r2, r3, attr, ch) {
 		}, {
 			type: "attack",
 			isall: false,
-			atkn: 1,
+			atkn: atkn,
 			rate: r2,
 			chain: ch,
 			attr: attr,
@@ -338,7 +285,7 @@ function ChainPanelsAttrAttack(r1, r2, r3, attr, ch) {
 		}, {
 			type: "attack",
 			isall: false,
-			atkn: 1,
+			atkn: atkn,
 			rate: r3,
 			chain: ch,
 			attr: attr,
@@ -526,6 +473,7 @@ function ChainEnhance_SubAttr(r1, r2, attr, sub, ch) {
 			rate: r2,
 			chain: ch,
 			attr: attr,
+			subattr: sub,
 			spec: create_specs(1),
 			cond: function (fld, oi, ei) {
 				var cd = fld.Allys.Deck[oi];

@@ -343,7 +343,7 @@ function ss_skillboost(f) {
 }
 
 // ------------------------------------------------------
-// チェイン関連系
+// フィールド干渉系
 // ------------------------------------------------------
 // チェイン直接追加
 function ss_addchain(ch) {
@@ -361,6 +361,20 @@ function ss_chain_protect(t) {
 		Field.log_push("Enemy[" + (n + 1) + "]: チェイン保護(" + t + "t)");
 		return true;
 	}
+}
+
+// 継続ダメージ
+// 例: ss_continue_damage(3.0, [0], 3);
+function ss_continue_damage(rate, attrs, turn) {
+	return {
+		turn: turn,
+		lim_turn: turn,
+		effect: function (fld, oi, state) {
+			if (state == "overlay") return false;
+			var now = fld.Allys.Now[oi];
+			ss_damage_all(rate, attrs);
+		}
+	};
 }
 
 // ------------------------------------------------------
@@ -556,7 +570,7 @@ function panel_skillboost(t) {
 // ------------------------------------------------------
 // 解除系
 // ------------------------------------------------------
-// 敵スキル解除系テンプレ
+// (内部用)敵スキル解除系テンプレ
 function ss_break_template(target, type, logtext) {
 	var _break_temp_fc = function (fld, oi, ei) {
 		var is_break = false;

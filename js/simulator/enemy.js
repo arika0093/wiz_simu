@@ -218,6 +218,8 @@ function enemy_popup_proc(){
 			}
 		}
 	}
+	// 味方スキル反射の処理を行う
+	turneff_check_skillcounter(Field);
 }
 
 // 敵ダメージなどに反応するあれこれの制御

@@ -108,6 +108,20 @@ function turneff_break_dual(teffs, index, is_turn_move) {
 	}
 }
 
+// 味方スキル反射のみ確認を行う(先制行動時の確認に使用)
+function turneff_check_skillcounter(fld) {
+	var nows = fld.Allys.Now;
+	$.each(nows, function (i, e) {
+		var tf_scs = $.grep(nows[i].turn_effect, function (g) {
+			return g.type == "ss_skill_counter";
+		});
+		for (var c = 0; c < tf_scs.length; c++) {
+			tf_scs[c].effect(fld, i, tf_scs[c], "", true, is_allkill());
+		}
+	});
+}
+
+
 // ターン継続効果の全解除
 function turneff_allbreak(teffs, index, overlay_call) {
 	while (teffs.length > 0) {

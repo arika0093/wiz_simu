@@ -19974,7 +19974,7 @@ Cards = [{
 	ss1: {
 		desc: "5ターンの間、スキルカウンター待機(200%)",
 		turn: 11,
-		proc: [ss_skillcounter(2,0, 5)],
+		proc: [ss_skillcounter(2.0, 5)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -19995,7 +19995,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、スキルカウンター待機(300%)",
 		turn: 14,
-		proc: [ss_skillcounter(3,0, 5)],
+		proc: [ss_skillcounter(3.0, 5)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,0,0,0,]),
@@ -20332,7 +20332,7 @@ Cards = [{
 	islegend: true,
 	as1: {
 		desc: "水属性の敵単体へ特効3連続ダメージ、パネルの色が増す度さらにアップ(350%/450%/550%)",
-		proc: null,
+		proc: ChainPanelsAttrDualAttack(3.5, 4.5, 5.5, [0, 1, 0, 0, 0], 3, 0),
 	},
 	ss1: {
 		desc: "敵単体へ雷属性の10回連続ダメージ(100%)",
@@ -20353,7 +20353,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "水属性の敵単体へ特効3連続ダメージ、パネルの色が増す度さらにアップ(450%/550%/650%)",
-		proc: null,
+		proc: ChainPanelsAttrDualAttack(3.5, 4.5, 5.5, [0, 1, 0, 0, 0], 3, 0),
 	},
 	ss2: {
 		desc: "敵単体へ雷属性の10回連続ダメージ(380%)",

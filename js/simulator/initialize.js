@@ -48,6 +48,8 @@ var Field = {
 		chainstat_turn: 0,
 		// パネル付与関連
 		panel_add: [],
+		// 継続効果関連
+		continue_eff: [],
 		// 最後に使用したSS
 		latest_ss: null,
 		// ターンetc関連
