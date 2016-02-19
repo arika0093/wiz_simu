@@ -573,6 +573,7 @@ function ChainPanelsHeal(r1, r2, r3, attr, ch) {
 			rate: r1,
 			chain: chain,
 			attr: attr,
+			spec: create_specs(1),
 			cond: always_true().cond,
 		},
 		{
@@ -580,6 +581,7 @@ function ChainPanelsHeal(r1, r2, r3, attr, ch) {
 			rate: r2,
 			chain: chain,
 			attr: attr,
+			spec: create_specs(1),
 			cond: as_panel_over2().cond,
 		},
 		{
@@ -587,6 +589,7 @@ function ChainPanelsHeal(r1, r2, r3, attr, ch) {
 			rate: r3,
 			chain: chain,
 			attr: attr,
+			spec: create_specs(1),
 			cond: as_panel_over3().cond,
 		},
 	];
