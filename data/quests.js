@@ -1,5 +1,6 @@
 ﻿// -------------------------
 // クエストデータ
+//	敵行動: turn->現在の待機ターン / wait->行動後の待機ターン
 // -------------------------
 Quests = [
 	// -------------------------
@@ -26,8 +27,8 @@ Quests = [
 						//s_enemy_attack(150, 5, 3, true),
 					],
 					atrandom: false,
-					turn: 1,
-					wait: 2,
+					turn: 2,
+					wait: 1,
 				},
 			}, {
 				name: "青春の苦味を知る とろ～りプリス",
@@ -41,7 +42,7 @@ Quests = [
 					],
 					atrandom: false,
 					turn: 1,
-					wait: 2,
+					wait: 1,
 				},
 			}],
 		}, {
@@ -58,8 +59,8 @@ Quests = [
 						//s_enemy_attack(225, 5, 3, true),
 					],
 					atrandom: false,
-					turn: 1,
-					wait: 2,
+					wait: 1,
+					turn: 2,
 				},
 			}, {
 				name: "ハイパービターチューカリー",
@@ -75,8 +76,8 @@ Quests = [
 						//s_enemy_attack(150, 3, 1, true)
 					],
 					atrandom: false,
-					turn: 2,
-					wait: 1,
+					turn: 1,
+					wait: 2,
 				},
 			}, {
 				name: "青春の苦味を知る とろ～りプリス",
@@ -140,8 +141,8 @@ Quests = [
 						//s_enemy_attack(250, 3, 1, true)
 					],
 					atrandom: false,
-					turn: 1,
-					wait: 2,
+					turn: 2,
+					wait: 1,
 				},
 			}],
 		}, {
@@ -161,8 +162,8 @@ Quests = [
 						//s_enemy_attack(750, 3, 1, true),
 					],
 					atrandom: false,
-					turn: 2,
-					wait: 1,
+					turn: 1,
+					wait: 2,
 				},
 			}, {
 				name: "シャドウおじいさん",
@@ -189,8 +190,8 @@ Quests = [
 						//s_enemy_attack(250, 3, 1, true)
 					],
 					atrandom: false,
-					turn: 1,
-					wait: 2,
+					turn: 2,
+					wait: 1,
 				},
 			}],
 		}, {
@@ -207,8 +208,8 @@ Quests = [
 						//s_enemy_attack(225, 5, 3, true),
 					],
 					atrandom: false,
-					turn: 2,
-					wait: 1,
+					turn: 1,
+					wait: 2,
 				},
 			}, {
 				name: "お菓子は全部おれのもの デザートン",
@@ -239,8 +240,8 @@ Quests = [
 						//s_enemy_attack(250, 3, 1, true)
 					],
 					atrandom: false,
-					turn: 1,
-					wait: 2,
+					turn: 2,
+					wait: 1,
 				},
 			}],
 		}],
@@ -285,8 +286,8 @@ Quests = [
 						//s_enemy_attack(225, 3, 1, true)
 					],
 					atrandom: false,
-					turn: 3,
-					wait: 1,
+					turn: 1,
+					wait: 3,
 				},
 			}],
 		}, {
@@ -319,8 +320,8 @@ Quests = [
 						//s_enemy_attack(300, 3, 1, true)
 					],
 					atrandom: false,
-					turn: 3,
-					wait: 1,
+					turn: 1,
+					wait: 3,
 				},
 			}, {
 				name: "イエローチューカリー",
