@@ -210,6 +210,7 @@ function nextturn(is_ssfin) {
 	// 全滅していなかったら効果ターンを減少
 	reduce_turneffect();
 	// 効果の継続確認
+	ss_continue_effect_check();
 	turn_effect_check(true);
 	enemy_turn_effect_check(true);
 	// チェイン状態の確認

@@ -345,6 +345,26 @@ function ss_skillboost(f) {
 // ------------------------------------------------------
 // フィールド干渉系
 // ------------------------------------------------------
+// 継続ダメージ
+// 例: ss_continue_damage(3.0, [0], 3);
+function ss_continue_damage(r, attrs, turn) {
+	return function (fld, n) {
+		var rate = ss_ratedo(r, fld, n);
+		ss_continue_effect_add({
+			turn: turn,
+			lim_turn: turn,
+			index: n,
+			effect: function (f, oi, ceff) {
+				var now = f.Allys.Now[oi];
+				ss_damage_all(rate, attrs)(f, oi);
+				fld.log_push("Unit[" + (n + 1) + "]: 継続ダメージ発動(" + rate*100 + ")");
+			}
+		});
+		fld.log_push("Unit[" + (n+1) + "]: 継続ダメージSS(威力: " + rate*100 + ")");
+		return true;
+	}
+}
+
 // チェイン直接追加
 function ss_addchain(ch) {
 	return function (fld, n) {
@@ -361,20 +381,6 @@ function ss_chain_protect(t) {
 		Field.log_push("Enemy[" + (n + 1) + "]: チェイン保護(" + t + "t)");
 		return true;
 	}
-}
-
-// 継続ダメージ
-// 例: ss_continue_damage(3.0, [0], 3);
-function ss_continue_damage(rate, attrs, turn) {
-	return {
-		turn: turn,
-		lim_turn: turn,
-		effect: function (fld, oi, state) {
-			if (state == "overlay") return false;
-			var now = fld.Allys.Now[oi];
-			ss_damage_all(rate, attrs);
-		}
-	};
 }
 
 // ------------------------------------------------------

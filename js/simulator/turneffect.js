@@ -162,3 +162,28 @@ function turneff_break_cond(teffs, index, func) {
 		i--;
 	}
 }
+
+// 継続効果追加
+function ss_continue_effect_add(eff_obj) {
+	Field.Status.continue_eff.push(eff_obj);
+}
+
+// 継続効果の確認/発動/除外
+function ss_continue_effect_check() {
+	var cont_effs = Field.Status.continue_eff;
+	for (var i = 0; i < cont_effs.length; i++) {
+		var ceff = cont_effs[i];
+		// 発動
+		ceff.effect(Field, ceff.index, ceff);
+		// 全滅してなかったらターン数を減らす
+		if (!is_allkill()) {
+			ceff.lim_turn--;
+		}
+		Field.log_push("Unit[" + (ceff.index + 1) + "]: 継続ダメージ - 残り" + ceff.lim_turn + "t");
+		// 残りターンが0以下なら除外
+		if (ceff.lim_turn <= 0) {
+			cont_effs.splice(i, 1);
+			i--;
+		}
+	}
+}
