@@ -245,7 +245,6 @@ Quests = [
 			}],
 		}],
 	},
-	/*
 	// -------------------------
 	// イベントトーナメント(絶)
 	// -------------------------
@@ -259,31 +258,258 @@ Quests = [
 		data: [{
 			appearance: [1],
 			enemy: [{
-
+				name: "青いとろ～りプリス",
+				hp: 30000,
+				imageno: 7412,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_move: [
+						//s_enemy_attack(900, 2, 1, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "青いとろ～りプリス",
+				hp: 24,
+				imageno: 7412,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_popup: [
+						impregnable(-1),
+					],
+					on_move: [
+						//s_enemy_attack(225, 3, 1, true)
+					],
+					atrandom: false,
+					turn: 3,
+					wait: 1,
+				},
 			}],
 		}, {
 			appearance: [2],
 			enemy: [{
-
+				name: "碧空のとろ～りプリス",
+				hp: 30000,
+				imageno: 7413,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_move: [
+						//s_enemy_attack(225, 2, 1, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "碧空のとろ～りプリス",
+				hp: 13,
+				imageno: 7413,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_popup: [
+						impregnable(-1),
+					],
+					on_move: [
+						//s_enemy_attack(300, 3, 1, true)
+					],
+					atrandom: false,
+					turn: 3,
+					wait: 1,
+				},
+			}, {
+				name: "イエローチューカリー",
+				hp: 20000,
+				imageno: 7408,
+				attr: 2,
+				spec: 4,
+				move: {
+					on_move: [
+						//s_enemy_attack(300, 3, 1, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
 			}],
 		}, {
 			appearance: [3],
 			enemy: [{
-
+				name: "碧空のとろ～りプリス",
+				hp: 30000,
+				imageno: 7413,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_popup: [
+						damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
+					],
+					on_move: [
+						s_enemy_attack(500, 3, 1, true),
+						s_enemy_chain_break(),
+					],
+					on_move_angry: [
+						s_enemy_attack(700, 3, 1, true),
+						s_enemy_as_sealed(5, 3),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "碧空のとろ～りプリス",
+				hp: 60000,
+				imageno: 7413,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_move: [
+						s_enemy_force_reservoir(),
+						s_enemy_attack(600, 2, 1, true)
+					],
+					atrandom: false,
+					turn: 2,
+					wait: 2,
+				},
+			}, {
+				name: "碧空のとろ～りプリス",
+				hp: 30000,
+				imageno: 7413,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_move: [
+						//s_enemy_attack(300, 2, 1, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
 			}],
 		}, {
 			appearance: [4],
 			enemy: [{
-
+				name: "碧空のとろ～りプリス",
+				hp: 30000,
+				imageno: 7413,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_popup: [
+						damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
+					],
+					on_move: [
+						s_enemy_attack(500, 3, 1, true),
+						s_enemy_chain_break(),
+					],
+					on_move_angry: [
+						s_enemy_attack(700, 3, 1, true),
+						s_enemy_as_sealed(5, 3),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "碧空のとろ～りプリス",
+				hp: 60000,
+				imageno: 7413,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_move: [
+						s_enemy_force_reservoir(),
+						s_enemy_attack(600, 2, 1, true)
+					],
+					atrandom: false,
+					turn: 2,
+					wait: 2,
+				},
+			}, {
+				name: "碧空のとろ～りプリス",
+				hp: 30000,
+				imageno: 7413,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_move: [
+						//s_enemy_attack(300, 2, 1, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
 			}],
 		}, {
 			appearance: [5],
 			enemy: [{
-
+				name: "青いとろ～りプリス",
+				hp: 40000,
+				imageno: 7412,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_move: [
+						//s_enemy_attack(250, 3, 1, true),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "知性は巡る どこまでも ハカセ",
+				hp: 280000,
+				imageno: 7397,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_popup: [
+						damage_switch(s_enemy_when_dead_l(), m_enemy_angry(), true),
+					],
+					on_move: [
+						m_enemy_once(skill_counter(9999, 11)),
+						//s_enemy_attack(250, 3, 5, true),
+						//s_enemy_attack(500, 3, 1, true),
+					],
+					on_move_angry: [
+						m_enemy_once(s_enemy_ss_sealed()),
+						//s_enemy_attack(250, 3, 5, true),
+						//s_enemy_attack(1200, 1, 1, true),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "青いとろ～りプリス",
+				hp: 30000,
+				imageno: 7412,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_popup: [
+						damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
+					],
+					on_move: [
+						m_enemy_once(attack_counter(800, -1)),
+						// 攻撃
+					],
+					on_move_angry: [
+						// 回復
+						// 攻撃
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
 			}],
 		}],
 	},
-	*/
 	// -------------------------
 	// トーナメント: 伍式
 	// -------------------------
