@@ -48,18 +48,34 @@ function sim_show() {
 		var dec = Field.Allys.Deck[i];
 		var now = Field.Allys.Now[i];
 		if (dec !== undefined) {
-			// 死んでたら薄暗く表示	
-			if (now.nowhp <= 0) {
-				$("#ally0" + (i + 1) + "_img").attr("class", "chara_img_dead");
-			} else {
-				$("#ally0" + (i + 1) + "_img").attr("class", "chara_img");
-			}
-			// 指定
+			// 各種指定
 			$("#ally0" + (i + 1) + "_attr_main").attr("class", "attr_" + dec.attr[0]);
 			$("#ally0" + (i + 1) + "_attr_sub").attr("class", "attr_" + (dec.attr[1] != -1 ? dec.attr[1] : dec.attr[0]));
 			$("#ally0" + (i + 1) + "_img").attr("src", get_image_url(dec.imageno));
 			$("#ally0" + (i + 1) + "_name").text(dec.name);
 			$("#ally0" + (i + 1) + "_status").text("HP: " + now.nowhp + "/" + now.maxhp + ", ATK: " + now.atk);
+
+			// タゲ指定
+			$("#ally0" + (i + 1) + "_img").draggable({
+				containment: $("#sim_top"),
+				opacity: 0.75,
+				helper: "clone",
+				distance: 12,
+				zIndex: 100,
+				start: function (event, ui) {
+					$("div.enemy").removeClass("selected_target");
+				}
+			});
+			// タゲ指定を有効/無効化
+			$("#ally0" +(i +1) + "_img").draggable(now.nowhp > 0 ? "enable" : "disable");
+
+			// 生存確認して、死んでたら薄暗く表示
+			if (now.nowhp > 0) {
+				$("#ally0" + (i + 1) + "_img").attr("class", "chara_img");
+			} else {
+				$("#ally0" + (i + 1) + "_img").attr("class", "chara_img_dead");
+			}
+
 			// SSが発動可能かどうか
 			var sst = get_ssturn(dec, now);
 			var ss_disabled = $.grep(now.turn_effect, function (e) {
@@ -91,6 +107,31 @@ function sim_show() {
 	for (var i = 0; i < 3; i++) {
 		var e = enemys_dat[i];
 		if (e !== undefined) {
+			// 各種指定
+			$("#enemy0" + (i + 1) + "_attr_main").attr("class", "attr_" + e.attr);
+			$("#enemy0" + (i + 1) + "_attr_sub").attr("class", "attr_" + e.attr);
+			$("#enemy0" + (i + 1) + "_img").attr("src", get_image_url(e.imageno));
+			$("#enemy0" + (i + 1) + "_name").text(e.name);
+			$("#enemy0" + (i + 1) + "_hp").text("HP: " + e.nowhp + "/" + e.hp);
+
+			// drop able
+			$("#enemy0" + (i + 1)).droppable({
+				accept: $("img.chara_img"),
+				activeClass: "img_accept_active",
+				hoverClass: "img_accept_hover",
+				drop: function (event, ui) {
+					// get index
+					var drg_id = ui.draggable.attr("id");
+					var drg_index = Number(drg_id.replace("ally0", "").replace("_img", "")) - 1;
+					var drp_id = this.id;
+					var drp_index = Number(drp_id.replace("enemy0", "")) - 1;
+					// set target
+					var now = Field.Allys.Now[drg_index];
+					now.target[0] = drp_index;
+					now.target[1] = drp_index;
+				},
+			});
+
 			// 死んでたら薄暗く表示、鉄壁が貼ってあるならグレースケールで表示
 			var is_impregnable = $.grep(e.turn_effect, function (eff) {
 				return eff.type == "impregnable";
@@ -102,27 +143,24 @@ function sim_show() {
 			} else {
 				$("#enemy0" + (i + 1) + "_img").attr("class", "chara_img");
 			}
-			// 指定
-			$("#enemy0" + (i + 1) + "_attr_main").attr("class", "attr_" + e.attr);
-			$("#enemy0" + (i + 1) + "_attr_sub").attr("class", "attr_" + e.attr);
-			$("#enemy0" + (i + 1) + "_img").attr("src", get_image_url(e.imageno));
-			$("#enemy0" + (i + 1) + "_name").text(e.name);
-			$("#enemy0" + (i + 1) + "_hp").text("HP: " + e.nowhp + "/" + e.hp);
+
 			// 継続中の効果を並べる
 			var eff_text = "";
 			for (var l = 0; l < e.turn_effect.length; l++) {
 				// 非表示要素は飛ばす
-				if (e.turn_effect[l].desc == null) { continue; }
+				if (e.turn_effect[l].desc == null) {
+					continue;
+				}
 				if (eff_text != "") {
 					eff_text += ", ";
 				}
 				eff_text += e.turn_effect[l].desc;
 				if (e.turn_effect[l].lim_turn >= 0) {
-					 eff_text += "(" + e.turn_effect[l].lim_turn + "t)"
+					eff_text += "(" +e.turn_effect[l].lim_turn + "t)"
 				}
 			}
-			$("#enemy0" + (i + 1) + "_stats").text(eff_text);
-			$("#enemy0" + (i + 1) + "_stats").attr("title", eff_text);
+			$("#enemy0" + (i +1) + "_stats").text(eff_text);
+			$("#enemy0" + (i +1) + "_stats").attr("title", eff_text);
 		} else {
 			// 無効化
 			$("#enemy0" + (i + 1) + "_attr_main").attr("class", "attr_none");
@@ -561,11 +599,16 @@ function back_decksel() {
 function target_allselect(n) {
 	n = (n !== undefined ? n : $("#attack_target_sel").val());
 	$("#attack_target_sel").val(n + "");
+	$("div.enemy").removeClass("selected_target");
 	for (var i = 0; i < Field.Allys.Deck.length; i++) {
 		var now = Field.Allys.Now[i];
 		now.target[0] = n;
 		now.target[1] = n;
 	}
+	$("#enemy0" + (n + 1)).addClass("selected_target");
+	setTimeout(function () {
+		$("#enemy0" + (n + 1)).removeClass("selected_target");
+	}, 2000);
 }
 
 // 相対パス → 絶対パス
