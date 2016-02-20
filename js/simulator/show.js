@@ -7,6 +7,8 @@ function sim_show() {
 	if (_Timer) {
 		clearInterval(_Timer);
 	}
+	// target-effect reset
+	$("div.enemy").removeClass("selected_target");
 
 	// sim_info_turn
 	if (Field.Status.chain_status == 1) {
