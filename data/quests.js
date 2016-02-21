@@ -556,14 +556,14 @@ Quests = [
 				spec: 5,
 				move: {
 					on_popup: [
-						damage_block_own(10000, 3),
+						damage_block_own(10000, 4),
 					],
 					on_move: [
-						s_enemy_attack(250, 5, 1, true)
+						s_enemy_attack(200, 5, 1, true)
 					],
 					atrandom: false,
-					turn: 1,
-					wait: 2,
+					turn: 2,
+					wait: 1,
 				},
 			}, ],
 		}, {
@@ -580,8 +580,8 @@ Quests = [
 						s_enemy_attack(100, 5, 3, true),
 					],
 					atrandom: false,
-					turn: 2,
-					wait: 1,
+					turn: 1,
+					wait: 2,
 				},
 			}, {
 				name: "肥沃な土地の魔草 プラティー",
@@ -609,7 +609,7 @@ Quests = [
 				spec: 2,
 				move: {
 					on_move: [
-						m_enemy_once(s_enemy_deathlimit(5, 6)),
+						m_enemy_once(s_enemy_deathlimit(1, 7)),
 						s_enemy_attack(100, 5, 3, true),
 					],
 					atrandom: false,
@@ -686,7 +686,7 @@ Quests = [
 						impregnable(-1),
 					],
 					on_move: [
-						s_enemy_attack(150, 5, 3, true),
+						s_enemy_attack(150, 5, 1, true),
 					],
 					atrandom: false,
 					turn: 1,
@@ -743,8 +743,8 @@ Quests = [
 						s_enemy_attack(1500, 1, 1, true),
 					],
 					atrandom: false,
-					turn: 1,
-					wait: 1,
+					turn: 2,
+					wait: 2,
 				},
 			}, {
 				name: "儚き友諠の栞 キーラ・バルバレス",
@@ -759,14 +759,14 @@ Quests = [
 						damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
 					],
 					on_move: [
-						s_enemy_attack(250, 5, 3, true),
+						s_enemy_attack(150, 5, 5, true),
 					],
 					on_angry: [
 						attr_change(3),
-						s_enemy_attr_weaken([1,1,1,1,1], 1.25, 5, 2)
+						s_enemy_attr_weaken([1,1,1,1,1], 1.25, 5, 2),
 					],
 					on_move_angry: [
-						s_enemy_attack(100, 5, 3, true),
+						s_enemy_attack(150, 5, 5, true),
 					],
 					atrandom: false,
 					turn: 1,

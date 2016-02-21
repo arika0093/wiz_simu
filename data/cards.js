@@ -17914,7 +17914,7 @@ Cards = [{
 	],
 	as1: {
 		desc: "戦闘不能の仲間の数だけ攻撃力アップ＆敵HPを吸収(戦闘不能人数×400％+100％ / 吸収：4％)(1体：500%/2体：900%/3体：1300%/4体：1700%：2100％)",
-		proc: add_cond(ChainDeckSpecsAttack(4.0, 0), as_hp_absorption(0.04)),
+		proc: add_cond(ChainDeckDeadsAttack(4.0, 0), as_hp_absorption(0.04)),
 	},
 	ss1: {
 		desc: "味方全体のMAXHPの100％を使い敵全体へダメージ(150％×味方の人数)",
@@ -17928,7 +17928,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "戦闘不能の仲間の数だけ攻撃力アップ＆敵HPを吸収(戦闘不能人数×450％+100％ / 吸収：4％)(1体：550%/2体：1000%/3体：1450%/4体：1900%：2350％)",
-		proc: add_cond(ChainDeckSpecsAttack(4.5, 0), as_hp_absorption(0.04)),
+		proc: add_cond(ChainDeckDeadsAttack(4.5, 0), as_hp_absorption(0.04)),
 	},
 	ss2: {
 		desc: "自分を犠牲に全員をHP75％蘇生",

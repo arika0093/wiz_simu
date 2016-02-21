@@ -276,12 +276,12 @@ function ss_statusup_all(up_arr, up_limit, t) {
 					var nowtg = f.Allys.Now[oi];
 					if (state == "first") {
 						nowtg.maxhp = Math.max(teff.up_hp + nowtg.maxhp, 1);
-						nowtg.nowhp = Math.min(Math.max(teff.up_hp + nowtg.nowhp, nowtg.nowhp), nowtg.maxhp);
 						nowtg.atk = Math.max(teff.up_atk + nowtg.atk, 0);
+						nowtg.nowhp = Math.min(nowtg.nowhp + (up_arrs_b[0] > 0 ? up_arrs_b[0] : 0), nowtg.maxhp);
 					}
 					else if (state == "end" || state == "overlay") {
 						nowtg.maxhp -= teff.up_hp;
-						nowtg.nowhp = Math.min(nowtg.nowhp - teff.up_hp, nowtg.maxhp);
+						nowtg.nowhp = Math.min(nowtg.nowhp, nowtg.maxhp);
 						nowtg.atk -= teff.up_atk;
 					}
 				},
@@ -392,7 +392,7 @@ function ss_heal(p) {
 		var rate = ss_ratedo(p, fld, n);
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
-			var hr = now.maxhp * rate;
+			var hr = Math.floor(now.maxhp * rate);
 			heal_ally(hr, i);
 		}
 		fld.log_push("味方全体HP回復(" + (rate * 100) + "%)");

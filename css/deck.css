@@ -31,8 +31,8 @@ p.ally_stat, p.enemy_hp{
 	font-size: 9.5pt;
 }
 
-p.ally_name, p.ally_stat{
-	/*width: 298px;*/
+/*p.ally_name, */p.ally_stat{
+	width: 240px;
 }
 p.enemy_name, p.enemy_hp, p.enemy_stat{
 	width: 260px;

@@ -379,12 +379,12 @@ function ChainDeckSpecsAttack(base, specs, ch) {
 				for (var i = 0; i < fld.Allys.Deck.length; i++) {
 					var cd = fld.Allys.Deck[i];
 					for (var s = 0; s < cd.species.length; s++) {
-						if (cd.indexOf(specs.species[s]) >= 0) {
+						if (specs.indexOf(cd.species[s]) >= 0) {
 							count++;
 						}
 					}
 				}
-				this.rate = base * count;
+				this.rate = 1 + base * count;
 				return true;
 			},
 		}
@@ -393,7 +393,7 @@ function ChainDeckSpecsAttack(base, specs, ch) {
 
 // 戦闘不能味方数依存攻撃
 // (base: 戦闘不能味方が1体の時の割合, ch: 発動チェイン数)
-function ChainDeckSpecsAttack(base, ch) {
+function ChainDeckDeadsAttack(base, ch) {
 	return [
 		{
 			type: "attack",
