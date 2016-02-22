@@ -27,7 +27,7 @@ Quests = [
 						s_enemy_attr_weaken([1,0,1,0,0], 1.5, 5, 5),
 					],
 					turn: 1,
-					wait: 1,
+					wait: 2,
 				}
 			}, {
 				name: "ウラガーン(S)",
@@ -76,6 +76,9 @@ Quests = [
 						s_enemy_chain_sealed(5),
 						s_enemy_poison(1000, 5, 6),
 					],
+					on_angry: [
+						attr_change(4),
+					],
 					on_move_angry: [
 						s_enemy_attack(600, 3, 5, true),
 					],
@@ -113,7 +116,7 @@ Quests = [
 						m_enemy_once(s_enemy_poison(1000, 5, 6)),
 						s_enemy_attack(2000, 1, 1, m_enemy_tgtype_maxhp()),
 					],
-					turn: 1,
+					turn: 2,
 					wait: 1,
 				},
 			}, {
@@ -129,7 +132,7 @@ Quests = [
 					on_move: [
 						s_enemy_attack(2000, 1, 1, m_enemy_tgtype_maxhp()),
 					],
-					turn: 1,
+					turn: 2,
 					wait: 2,
 				},
 			}, ],
@@ -146,7 +149,7 @@ Quests = [
 						s_enemy_attack_ratio(0.9, 5, true),
 					],
 					on_move: [
-						m_enemy_once(s_enemy_attack(2000, 5, 1, true)),
+						s_enemy_attack(2000, 5, 1, true),
 						s_enemy_attack(1500, 5, 1, true),
 					],
 					turn: 1,
@@ -164,7 +167,7 @@ Quests = [
 						damage_switch(s_enemy_when_hpdown(0.5), m_enemy_angry()),
 					],
 					on_move: [
-						s_enemy_attack(2200, 1, 1, m_enemy_tgtype_maxhp()),
+						s_enemy_attack(2000, 1, 1, m_enemy_tgtype_maxhp()),
 					],
 					on_angry: [
 						attr_change(4),
