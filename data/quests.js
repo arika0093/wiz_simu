@@ -164,7 +164,7 @@ Quests = [
 						damage_switch(s_enemy_when_hpdown(0.5), m_enemy_angry()),
 					],
 					on_move: [
-						s_enemy_attack(2200, 5, 1, m_enemy_tgtype_maxhp()),
+						s_enemy_attack(2200, 1, 1, m_enemy_tgtype_maxhp()),
 					],
 					on_angry: [
 						attr_change(4),
