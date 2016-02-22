@@ -308,7 +308,7 @@ Cards = [{
 	},
 	ss2: {
 		desc: "MAXHPの50％を使い敵全体へダメージ(330％)",
-		turn: 0,
+		turn: 10,
 		proc: [ss_damage_all(3.3, [0]), ss_consume_own(0.5)],
 	},
 }, {
@@ -1099,7 +1099,7 @@ Cards = [{
 	},
 	ss2: {
 		desc: "敵単体のHPを30％減少させる",
-		turn: 0,
+		turn: 12,
 		proc: [ss_ratiodamage_s(0.3)],
 	},
 }, {
@@ -21397,7 +21397,7 @@ Cards = [{
 	},
 	ss1: {
 		desc: "味方全員のHPを回復し、状態異常を回復する(50%)",
-		turn: 0,
+		turn: 7,
 		proc: [ss_heal(0.5), ss_abstate_cure()],
 	},
 	awakes: [
@@ -21418,7 +21418,7 @@ Cards = [{
 	},
 	ss2: {
 		desc: "味方全員のHPを回復し、状態異常を回復、さらに水・雷属性の味方を50%で蘇生(50%)",
-		turn: 0,
+		turn: 11,
 		proc: [ss_heal(0.5), ss_abstate_cure(), ss_resurrection([0,1,1,0,0], 0.50)],
 	},
 	Lawake: [
