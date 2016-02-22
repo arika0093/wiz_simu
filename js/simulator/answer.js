@@ -264,7 +264,7 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem) {
 	for (var ai = 0; ai < as.length; ai++) {
 		var chain = Field.Status.chain;
 		for (var ei = 0; ei < enemy.length; ei++) {
-			var rate_n = (is_answer_target(as[ai], chain, enemy[ei].attr, enemy[ei].spec, index, ei, attr) ? as[ai].rate : 0);
+			var rate_n = (is_answer_target(as[ai], chain, enemy[ei].attr, enemy[ei].spec, index, ei, panel) ? as[ai].rate : 0);
 			var rate_b = (as_pos[ei] !== undefined ? as[as_pos[ei]].rate : 0);
 			as_pos[ei] = (rate_n >= rate_b ? ai : as_pos[ei]);
 		}

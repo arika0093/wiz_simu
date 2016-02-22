@@ -71,9 +71,9 @@ var Field = {
 	},
 	detail_log: function (fc, title, text) {
 		var fs = Field.Status;
-		fs.d_log.push("#" + fc + "(battle: " + fs.nowbattle +
+		fs.d_log.push("#(battle: " + fs.nowbattle +
 			", turn: " + (fs.totalturn+1) +
-			"): {" + title + ": " + text + "}"
+			"):{ " + text + "}"
 		);
 	}
 }

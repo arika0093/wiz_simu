@@ -270,7 +270,7 @@ Quests = [
 					on_move: [
 						s_enemy_poison(500, 5, 3),
 					],
-					turn: 3,
+					turn: 1,
 					wait: 3,
 				},
 			}, {

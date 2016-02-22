@@ -53,15 +53,16 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss)
 	Field.log_push(l_t);
 	// 詳細ログ
 	Field.detail_log("attack_enemy", "calculate",
+		"Unit[" + (i+1) + "]: " +
 		"攻撃力(" + now.atk + (!is_ss ? "/2" : "") + ")" +
 		" * 倍率(" + rate + "+" + as_enh + "+" + ss_enh + ")" +
 		" * チェイン(" + (1 + ch / 100) + ")" +
 		" * パネル(" + (pn.indexOf(atk_atr) >= 0 ? 1 : 0.5) + ")" +
 		" * 属性相性(" + attr_magnification(atk_atr, enemy.attr) + ")" +
 		" * 乱数(" + rnd + ")" +
-		(atkn > 1 ? " / 攻撃回数(" + atkn + ")" : "")
+		(atkn > 1 ? " / 攻撃回数(" + atkn + ")" : "") +
+		" = ダメージ(" + d + ")"
 	);
-	Field.detail_log("attack_enemy", "damage", l_t);
 
 	return d;
 }
