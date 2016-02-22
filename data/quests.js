@@ -16,7 +16,7 @@ Quests = [
 		data: [{
 			appearance: [1],
 			enemy: [{
-				name: "",
+				name: "ファハシュヴァイル",
 				hp: 30000,
 				imageno: 4067,
 				attr: 0,
@@ -27,7 +27,7 @@ Quests = [
 						s_enemy_attr_weaken([1,0,1,0,0], 1.5, 5, 5),
 					],
 					turn: 1,
-					wait: 2,
+					wait: 1,
 				}
 			}, {
 				name: "ウラガーン(S)",
@@ -42,7 +42,7 @@ Quests = [
 						s_enemy_chain_break(),
 					],
 					turn: 1,
-					wait: 2,
+					wait: 1,
 				}
 			}, ],
 		}, {
@@ -86,7 +86,7 @@ Quests = [
 		}, {
 			appearance: [3],
 			enemy: [{
-				name: "",
+				name: "リジョンディッシェル",
 				hp: 50000,
 				imageno: 4069,
 				attr: 1,
@@ -117,7 +117,7 @@ Quests = [
 					wait: 1,
 				},
 			}, {
-				name: "",
+				name: "ファングサーラ",
 				hp: 30000,
 				imageno: 4068,
 				attr: 0,
@@ -136,7 +136,7 @@ Quests = [
 		}, {
 			appearance: [4],
 			enemy: [{
-				name: "",
+				name: "ファハシュヴァイル",
 				hp: 100000,
 				imageno: 4067,
 				attr: 0,
@@ -155,7 +155,7 @@ Quests = [
 			}, {
 				name: "ウラガーン(L)",
 				hp: 500000,
-				imageno: -1,
+				imageno: 6783,
 				attr: 0,
 				spec: 11,
 				move: {
@@ -179,7 +179,7 @@ Quests = [
 				}
 			}, {
 				name: "ファングサーラ",
-				hp: 35000,
+				hp: 80000,
 				imageno: 4068,
 				attr: 0,
 				spec: 7,
@@ -285,7 +285,7 @@ Quests = [
 				name: "リジョンディッシェル",
 				hp: 60000,
 				imageno: 4069,
-				attr: 0,
+				attr: 1,
 				spec: 5,
 			},],
 		}, {

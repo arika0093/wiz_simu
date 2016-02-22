@@ -112,7 +112,7 @@ function turneff_break_dual(teffs, index, is_turn_move) {
 function turneff_check_skillcounter(fld) {
 	var nows = fld.Allys.Now;
 	$.each(nows, function (i, e) {
-		var tf_scs = $.grep(nows[i].turn_effect, function (g) {
+		var tf_scs = $.grep(e.turn_effect, function (g) {
 			return g.type == "ss_skill_counter";
 		});
 		for (var c = 0; c < tf_scs.length; c++) {
@@ -120,7 +120,6 @@ function turneff_check_skillcounter(fld) {
 		}
 	});
 }
-
 
 // ターン継続効果の全解除
 function turneff_allbreak(teffs, index, overlay_call) {

@@ -213,6 +213,8 @@ function nextturn(is_ssfin) {
 	ss_continue_effect_check();
 	turn_effect_check(true);
 	enemy_turn_effect_check(true);
+	// フラグの初期化
+	initialize_allys_flags(Field.Allys.Now);
 	// チェイン状態の確認
 	if (f_st.chain_status != 0) {
 		f_st.chainstat_turn -= 1;
@@ -243,4 +245,11 @@ function nextturn(is_ssfin) {
 	f_st.nowturn += 1;
 	// ログ保存
 	Field_log.save(f_st.totalturn, Field);
+}
+
+// 味方フラグを初期化する
+function initialize_allys_flags(nows) {
+	$.each(nows, function (i, e) {
+		e.flags.skill_counter = [];
+	});
 }

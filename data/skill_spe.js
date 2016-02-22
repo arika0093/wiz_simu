@@ -112,7 +112,9 @@ function ss_skillcounter(r, t) {
 				iscursebreak: true,
 				turn: t,
 				lim_turn: t,
+				// 優先度: 最大
 				priority: 99,
+				// スキルカウンター定義
 				effect: function (f, oi, teff, state, is_t, is_b) {
 					var card = f.Allys.Deck[oi];
 					var now_e = f.Allys.Now[oi];
@@ -122,7 +124,7 @@ function ss_skillcounter(r, t) {
 						return e.bef_skillcounter && !e.bef_skillcounter(f, oi);
 					}).length > 0;
 					if (is_t && !is_b && sc_flag.length > 0 && !is_sc_cancel) {
-						fld.log_push("Unit[" + (oi + 1) + "]: スキルカウンター発動(" + (rate * 100) + "%)");
+						f.log_push("Unit[" + (oi + 1) + "]: スキルカウンター発動(" + (rate * 100) + "%)");
 						// スキルカウンター対象の敵の数だけ繰り返す
 						for (var sci = 0; sci < sc_flag.length; sci++) {
 							if (!sc_flag[sci]) { continue; }
@@ -136,7 +138,8 @@ function ss_skillcounter(r, t) {
 						}
 						// 敵ダメージ反応系
 						enemy_damage_switch_check();
-						now_e.flags.skill_counter = [];
+						// スキル反射フラグを解除
+						f.Allys.Now[oi].flags.skill_counter = [];
 					}
 				},
 			});

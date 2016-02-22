@@ -9344,7 +9344,7 @@ Cards = [{
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all")],
 	},
 }, {
-	name: "私たち、超無敵のソフィ＆リルム",
+	name: "私たち、超無敵の ソフィ＆リルム",
 	cardno: 4440,
 	imageno: 6134,
 	hp: 2203,
