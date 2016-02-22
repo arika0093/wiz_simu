@@ -4,521 +4,329 @@
 // -------------------------
 Quests = [
 	// -------------------------
-	// イベントトーナメント(覇)
+	// AbCd01 hard
 	// -------------------------
 	{
-		id: "1602ev_5",
-		name: "(2016/02)イベントトーナメント 覇級",
-		category: "event tornament",
-		desc: "2016/02に開催された魔道杯:イベントトーナメントのチャレンジクエストです。",
+		id: "abcd01_h",
+		name: "AbyssCode01 黒殻の王『真覇級』",
+		category: "abysscode",
+		desc: "",
+		aprnum: 4,
 		overlap: false,
-		aprnum: 5,
 		data: [{
 			appearance: [1],
 			enemy: [{
-				name: "ハイパービターチューカリー",
+				name: "",
 				hp: 30000,
-				imageno: 7405,
-				attr: 4,
-				spec: 2,
-				move: {
-					on_move: [
-						m_enemy_once(s_enemy_chain_sealed()),
-						s_enemy_attack(150, 5, 3, true),
-					],
-					atrandom: false,
-					turn: 2,
-					wait: 1,
-				},
-			}, {
-				name: "青春の苦味を知る とろ～りプリス",
-				hp: 75000,
-				imageno: 7411,
-				attr: 4,
-				spec: 2,
-				move: {
-					on_move: [
-						s_enemy_attack(75, 5, 3, true),
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}],
-		}, {
-			appearance: [2],
-			enemy: [{
-				name: "燃焼のとろ～りプリス",
-				hp: 25000,
-				imageno: 7411,
+				imageno: 4067,
 				attr: 0,
-				spec: 4,
+				spec: 2,
 				move: {
 					on_move: [
-						m_enemy_once(s_enemy_attr_weaken([1,0,0,0,0], 1.5, 5, 2)),
-						s_enemy_attack(225, 5, 3, true),
+						s_enemy_attack(400, 3, 4, true),
+						s_enemy_attr_weaken([1,0,1,0,0], 1.5, 5, 5),
 					],
-					atrandom: false,
+					turn: 1,
 					wait: 2,
-					turn: 1,
-				},
+				}
 			}, {
-				name: "ハイパービターチューカリー",
-				hp: 25000,
-				imageno: 7405,
-				attr: 4,
-				spec: 2,
-				move: {
-					on_popup: [
-						attack_counter_dual(500, 4),
-					],
-					on_move: [
-						s_enemy_attack(150, 5, 1, true)
-					],
-					atrandom: false,
-					turn: 2,
-					wait: 1,
-				},
-			}, {
-				name: "青春の苦味を知る とろ～りプリス",
-				hp: 65000,
-				imageno: 7411,
-				attr: 4,
-				spec: 2,
-				move: {
-					on_move: [
-						s_enemy_attack(200, 5, 3, true)
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}],
-		}, {
-			appearance: [3],
-			enemy: [{
-				name: "燃焼のとろ～りプリス",
-				hp: 25000,
-				imageno: 7411,
-				attr: 0,
-				spec: 4,
-				move: {
-					on_popup: [
-						damage_block_own(15000, 3),
-					],
-					on_move: [
-						s_enemy_attack(200, 5, 3, true),
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}, {
-				name: "燃焼のとろ～りプリス",
-				hp: 45000,
-				imageno: 7411,
-				attr: 0,
-				spec: 4,
-				move: {
-					on_popup: [
-						skill_counter_func(s_enemy_attack, "全体5連撃", -1, false, 600, 5, 5),
-					],
-					on_move: [
-						s_enemy_attack(500, 5, 1, true)
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}, {
-				name: "青春の苦味を知る とろ～りプリス",
-				hp: 20000,
-				imageno: 7411,
-				attr: 4,
-				spec: 2,
-				move: {
-					on_move: [
-						m_enemy_once(s_enemy_poison(1000, 5, 3)),
-						s_enemy_attack(250, 5, 1, true)
-					],
-					atrandom: false,
-					turn: 2,
-					wait: 1,
-				},
-			}],
-		}, {
-			appearance: [4],
-			enemy: [{
-				name: "ハイパービターチューカリー",
-				hp: 40000,
-				imageno: 7405,
-				attr: 4,
-				spec: 2,
-				move: {
-					on_popup: [
-						s_enemy_force_reservoir(),
-					],
-					on_move: [
-						m_enemy_once(s_enemy_attack(1500, 3, 1, true)),
-						s_enemy_attack(750, 3, 1, true),
-					],
-					atrandom: false,
-					turn: 2,
-					wait: 1,
-				},
-			}, {
-				name: "シャドウおじいさん",
-				hp: 45000,
-				imageno: 7417,
-				attr: 4,
-				spec: 2,
-				move: {
-					on_popup: [
-						damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
-					],
-					on_move: [
-						s_enemy_attack(100, 5, 1, true)
-					],
-					on_angry: [
-						s_enemy_attack_deadgrudge(0, 650, 1300, true),
-					],
-					on_move_angry: [
-						s_enemy_attack(100, 5, 3, true)
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}, {
-				name: "燃焼のとろ～りプリス",
+				name: "ウラガーン(S)",
 				hp: 50000,
-				imageno: 7411,
+				imageno: 3707,
 				attr: 0,
-				spec: 4,
+				spec: 11,
 				move: {
 					on_move: [
-						s_enemy_attack(200, 5, 3, true)
-					],
-					atrandom: false,
-					turn: 2,
-					wait: 1,
-				},
-			}],
-		}, {
-			appearance: [5],
-			enemy: [{
-				name: "シャドウおじいさん",
-				hp: 50000,
-				imageno: 7417,
-				attr: 4,
-				spec: 4,
-				move: {
-					on_move: [
-						m_enemy_once(s_enemy_attr_weaken([1,1,1,1,1], 1.5, 5, 2)),
-						s_enemy_attack(150, 5, 3, true),
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 2,
-				},
-			}, {
-				name: "お菓子は全部おれのもの デザートン",
-				hp: 200000,
-				imageno: 7381,
-				attr: 4,
-				spec: 4,
-				move: {
-					on_popup: [
-						skill_counter_func(s_enemy_deathlimit, "死の秒針", -1, false, 5, 3),
-						damage_switch(s_enemy_when_dead_l(), m_enemy_angry(), true),
-					],
-					on_move: [
-						m_enemy_once(s_enemy_attack(550, 5, 1, true)),
-						s_enemy_attack(350, 5, 1, true),
-					],
-					on_angry: [
-						damage_block_own(8000, 3),
-					],
-					on_move_angry: [
-						m_enemy_once(s_enemy_cursed(1000, 5, 3)),
-						s_enemy_attack(110, 5, 5, true),
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}, {
-				name: "シャドウおじいさん",
-				hp: 50000,
-				imageno: 7417,
-				attr: 4,
-				spec: 4,
-				move: {
-					on_move: [
-						m_enemy_once(s_enemy_discharge(5, 2)),
-						s_enemy_attack(200, 5, 3, true)
-					],
-					atrandom: false,
-					turn: 2,
-					wait: 1,
-				},
-			}],
-		}],
-	},
-	// -------------------------
-	// イベントトーナメント(絶)
-	// -------------------------
-	{
-		id: "1602ev_4",
-		name: "(2016/02)イベントトーナメント 絶級",
-		category: "event tornament",
-		desc: "2016/02に開催された魔道杯:イベントトーナメントのHard:クイズ対決！です。",
-		overlap: false,
-		aprnum: 5,
-		data: [{
-			appearance: [1],
-			enemy: [{
-				name: "青いとろ～りプリス",
-				hp: 30000,
-				imageno: 7412,
-				attr: 1,
-				spec: 4,
-				move: {
-					on_move: [
-						m_enemy_once(s_enemy_attack(900, 1, 1, m_enemy_tgtype_minhp())),
-						s_enemy_attack(300, 5, 1, true),
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}, {
-				name: "青いとろ～りプリス",
-				hp: 24,
-				imageno: 7412,
-				attr: 1,
-				spec: 4,
-				move: {
-					on_popup: [
-						impregnable(-1),
-					],
-					on_move: [
-						s_enemy_attack(225, 5, 1, true)
-					],
-					atrandom: false,
-					turn: 3,
-					wait: 1,
-				},
-			}],
-		}, {
-			appearance: [2],
-			enemy: [{
-				name: "碧空のとろ～りプリス",
-				hp: 30000,
-				imageno: 7413,
-				attr: 1,
-				spec: 4,
-				move: {
-					on_move: [
-						s_enemy_attack(225, 1, 1, true)
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}, {
-				name: "碧空のとろ～りプリス",
-				hp: 13,
-				imageno: 7413,
-				attr: 1,
-				spec: 4,
-				move: {
-					on_popup: [
-						impregnable(-1),
-					],
-					on_move: [
-						s_enemy_attack(300, 5, 1, true)
-					],
-					atrandom: false,
-					turn: 3,
-					wait: 1,
-				},
-			}, {
-				name: "イエローチューカリー",
-				hp: 20000,
-				imageno: 7408,
-				attr: 2,
-				spec: 4,
-				move: {
-					on_move: [
-						s_enemy_attack(300, 5, 1, true)
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}],
-		}, {
-			appearance: [3],
-			enemy: [{
-				name: "碧空のとろ～りプリス",
-				hp: 30000,
-				imageno: 7413,
-				attr: 1,
-				spec: 4,
-				move: {
-					on_move: [
-						s_enemy_attack(500, 3, 1, true),
-						s_enemy_chain_break(),
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}, {
-				name: "碧空のとろ～りプリス",
-				hp: 60000,
-				imageno: 7413,
-				attr: 1,
-				spec: 4,
-				move: {
-					on_move: [
-						s_enemy_force_reservoir(),
-						s_enemy_attack(600, 5, 1, true),
-						s_enemy_attack(300, 1, 1, true),
-					],
-					atrandom: false,
-					turn: 2,
-					wait: 2,
-				},
-			}, {
-				name: "碧空のとろ～りプリス",
-				hp: 30000,
-				imageno: 7413,
-				attr: 1,
-				spec: 4,
-				move: {
-					on_move: [
-						s_enemy_attack(300, 1, 1, true)
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}],
-		}, {
-			appearance: [4],
-			enemy: [{
-				name: "碧空のとろ～りプリス",
-				hp: 30000,
-				imageno: 7413,
-				attr: 1,
-				spec: 4,
-				move: {
-					on_move: [
-						s_enemy_attack(500, 3, 1, true),
-						s_enemy_chain_break(),
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}, {
-				name: "碧空のとろ～りプリス",
-				hp: 60000,
-				imageno: 7413,
-				attr: 1,
-				spec: 4,
-				move: {
-					on_move: [
-						s_enemy_force_reservoir(),
-						s_enemy_attack(600, 5, 1, true),
-						s_enemy_attack(300, 1, 1, true),
-					],
-					atrandom: false,
-					turn: 2,
-					wait: 2,
-				},
-			}, {
-				name: "碧空のとろ～りプリス",
-				hp: 30000,
-				imageno: 7413,
-				attr: 1,
-				spec: 4,
-				move: {
-					on_move: [
-						s_enemy_attack(300, 1, 1, true)
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}],
-		}, {
-			appearance: [5],
-			enemy: [{
-				name: "青いとろ～りプリス",
-				hp: 40000,
-				imageno: 7412,
-				attr: 1,
-				spec: 4,
-				move: {
-					on_move: [
-						s_enemy_attack(250, 5, 1, true),
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}, {
-				name: "知性は巡る どこまでも ハカセ",
-				hp: 280000,
-				imageno: 7397,
-				attr: 1,
-				spec: 4,
-				move: {
-					on_popup: [
-						damage_switch(s_enemy_when_dead_l(), m_enemy_angry(), true),
-					],
-					on_move: [
-						m_enemy_once(skill_counter(9999, 11)),
-						s_enemy_attack(100, 3, 5, true),
-						s_enemy_attack(500, 3, 1, true),
-					],
-					on_move_angry: [
-						m_enemy_once(s_enemy_ss_sealed(3, 4)),
-						s_enemy_attack(250, 5, 5, true),
-						s_enemy_attack(1200, 5, 1, true),
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}, {
-				name: "青いとろ～りプリス",
-				hp: 30000,
-				imageno: 7412,
-				attr: 1,
-				spec: 4,
-				move: {
-					on_popup: [
-						damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
-					],
-					on_move: [
-						s_enemy_attack(500, 5, 1, true),
-						m_enemy_once(attack_counter(800, -1)),
-					],
-					on_move_angry: [
 						s_enemy_attack(750, 5, 1, true),
-						s_enemy_heal_all(0.1),
+						s_enemy_attack(750, 5, 1, true),
+						s_enemy_chain_break(),
 					],
-					atrandom: false,
+					turn: 1,
+					wait: 2,
+				}
+			}, ],
+		}, {
+			appearance: [2],
+			enemy: [{
+				name: "ルインコンダクター",
+				hp: 15000,
+				imageno: 4070,
+				attr: 2,
+				spec: 2,
+				move: {
+					on_move: [
+						// パネルチェンジ(雷)
+						s_enemy_attack_attrsp(3300, 550, [0,1,0,0,0], 5, 1, true),
+					],
+					turn: 2, // 暫定処置
+					wait: 2,
+				}
+			}, {
+				name: "ウラガーン(S+)",
+				hp: 90000,
+				imageno: 3708,
+				attr: 0,
+				spec: 11,
+				move: {
+					on_popup: [
+						s_enemy_attack_ratio(0.9, 5, true),
+						damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
+					],
+					on_move: [
+						s_enemy_chain_sealed(5),
+						s_enemy_poison(1000, 5, 6),
+					],
+					on_move_angry: [
+						s_enemy_attack(600, 3, 5, true),
+					],
+					turn: 1,
+					wait: 1,
+				}
+			}, ],
+		}, {
+			appearance: [3],
+			enemy: [{
+				name: "",
+				hp: 50000,
+				imageno: 4069,
+				attr: 1,
+				spec: 7,
+				move: {
+					on_popup: [
+						skill_counter_func(s_enemy_all_sealed, "全体封印", -1, false, 5, 5),
+					],
+					on_move: [
+						s_enemy_ss_sealed(5, 6),
+						s_enemy_chain_break(),
+					],
 					turn: 1,
 					wait: 1,
 				},
-			}],
-		}],
+			}, {
+				name: "ウラガーン(SS)",
+				hp: 120000,
+				imageno: 4066,
+				attr: 0,
+				spec: 11,
+				move: {
+					on_move: [
+						m_enemy_once(s_enemy_poison(1000, 5, 6)),
+						s_enemy_attack(2000, 1, 1, m_enemy_tgtype_maxhp()),
+					],
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "",
+				hp: 30000,
+				imageno: 4068,
+				attr: 0,
+				spec: 5,
+				move: {
+					on_popup: [
+						damage_block_own(20000, 6)
+					],
+					on_move: [
+						s_enemy_attack(2000, 1, 1, m_enemy_tgtype_maxhp()),
+					],
+					turn: 1,
+					wait: 2,
+				},
+			}, ],
+		}, {
+			appearance: [4],
+			enemy: [{
+				name: "",
+				hp: 100000,
+				imageno: 4067,
+				attr: 0,
+				spec: 2,
+				move: {
+					on_popup: [
+						s_enemy_attack_ratio(0.9, 5, true),
+					],
+					on_move: [
+						m_enemy_once(s_enemy_attack(2000, 5, 1, true)),
+						s_enemy_attack(1500, 5, 1, true),
+					],
+					turn: 1,
+					wait: 1,
+				}
+			}, {
+				name: "ウラガーン(L)",
+				hp: 500000,
+				imageno: -1,
+				attr: 0,
+				spec: 11,
+				move: {
+					on_popup: [
+						skill_counter_func(s_enemy_all_sealed, "全体封印", -1, false, 5, 11),
+						damage_switch(s_enemy_when_hpdown(0.5), m_enemy_angry()),
+					],
+					on_move: [
+						s_enemy_attack(2200, 5, 1, m_enemy_tgtype_maxhp()),
+					],
+					on_angry: [
+						attr_change(4),
+					],
+					on_move_angry: [
+						s_enemy_attack_ratio(0.9, 5, true),
+						/* 全属性ガード */
+						s_enemy_attack_deadgrudge(2400, 3600, 4800, true),
+					],
+					turn: 1,
+					wait: 1,
+				}
+			}, {
+				name: "ファングサーラ",
+				hp: 35000,
+				imageno: 4068,
+				attr: 0,
+				spec: 7,
+				move: {
+					on_popup: [
+						attack_counter_dual(1000, -1),
+					],
+					on_move: [
+						s_enemy_chain_sealed(5),
+						s_enemy_chain_break(),
+					],
+					turn: 1,
+					wait: 1,
+				}
+			}, ],
+		}, ],
 	},
+	// -------------------------
+	// AbCd01 normal
+	// -------------------------
+	{
+		id: "abcd01_n",
+		name: "AbyssCode01 黒殻の王『黒業級』",
+		category: "abysscode",
+		desc: "",
+		aprnum: 4,
+		overlap: false,
+		data: [{
+			appearance: [1],
+			enemy: [{
+				name: "ファハシュヴァイル",
+				hp: 30000,
+				imageno: 4067,
+				attr: 0,
+				spec: 0,
+			}, {
+				name: "ウラガーン",
+				hp: 40000,
+				imageno: 3706,
+				attr: 0,
+				spec: 11,
+			}, {
+				name: "ファングサーラ",
+				hp: 20000,
+				imageno: 4068,
+				attr: 0,
+				spec: 7,
+				move: {
+					on_move: [
+						m_enemy_once(s_enemy_poison(500, 5, 3)),
+					],
+					turn: 1,
+					wait: 1,
+				},
+			},],
+		}, {
+			appearance: [2],
+			enemy: [{
+				name: "ルインコンダクター",
+				hp: 15000,
+				imageno: 4070,
+				attr: 2,
+				spec: 0,
+				move: {
+					on_popup: [
+						skill_counter(9999, -1),
+					]
+				}
+			}, {
+				name: "ウラガーン",
+				hp: 60000,
+				imageno: 3707,
+				attr: 0,
+				spec: 11,
+			},],
+		}, {
+			appearance: [3],
+			enemy: [{
+				name: "ファングサーラ",
+				hp: 35000,
+				imageno: 4068,
+				attr: 0,
+				spec: 7,
+				move: {
+					on_move: [
+						s_enemy_poison(500, 5, 3),
+					],
+					turn: 3,
+					wait: 3,
+				},
+			}, {
+				name: "ウラガーン",
+				hp: 90000,
+				imageno: 3708,
+				attr: 0,
+				spec: 11,
+				move: {
+					on_popup: [
+						s_enemy_force_reservoir(),
+					],
+				},
+			}, {
+				name: "リジョンディッシェル",
+				hp: 60000,
+				imageno: 4069,
+				attr: 0,
+				spec: 5,
+			},],
+		}, {
+			appearance: [4],
+			enemy: [{
+				name: "ファハシュヴァイル",
+				hp: 60000,
+				imageno: 4067,
+				attr: 0,
+				spec: 0,
+				move: {
+					on_popup: [
+						skill_counter(9999, -1),
+					]
+				}
+			}, {
+				name: "ウラガーン",
+				hp: 180000,
+				imageno: 4066,
+				attr: 0,
+				spec: 11,
+				move: {
+					on_popup: [
+						s_enemy_attr_weaken([1,0,0,0,0], 1.25, 5, -1),
+					]
+				}
+			}, {
+				name: "ファングサーラ",
+				hp: 35000,
+				imageno: 4068,
+				attr: 0,
+				spec: 7,
+				move: {
+					on_popup: [
+						skill_counter(9999, -1),
+					]
+				}
+			},],
+		},],
+	},
+
 	// -------------------------
 	// トーナメント: 伍式
 	// -------------------------
@@ -1479,7 +1287,523 @@ Quests = [
 
 
 	// -------------------------
-	// 過去のイベントトーナメント
+	// 過去のイベントトーナメント(2016/02 覇)
+	// -------------------------
+	{
+		id: "1602ev_5",
+		name: "(2016/02)イベントトーナメント 覇級",
+		category: "past event",
+		desc: "2016/02に開催された魔道杯:イベントトーナメントのチャレンジクエストです。",
+		overlap: false,
+		aprnum: 5,
+		data: [{
+			appearance: [1],
+			enemy: [{
+				name: "ハイパービターチューカリー",
+				hp: 30000,
+				imageno: 7405,
+				attr: 4,
+				spec: 2,
+				move: {
+					on_move: [
+						m_enemy_once(s_enemy_chain_sealed()),
+						s_enemy_attack(150, 5, 3, true),
+					],
+					atrandom: false,
+					turn: 2,
+					wait: 1,
+				},
+			}, {
+				name: "青春の苦味を知る とろ～りプリス",
+				hp: 75000,
+				imageno: 7411,
+				attr: 4,
+				spec: 2,
+				move: {
+					on_move: [
+						s_enemy_attack(75, 5, 3, true),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}],
+		}, {
+			appearance: [2],
+			enemy: [{
+				name: "燃焼のとろ～りプリス",
+				hp: 25000,
+				imageno: 7411,
+				attr: 0,
+				spec: 4,
+				move: {
+					on_move: [
+						m_enemy_once(s_enemy_attr_weaken([1, 0, 0, 0, 0], 1.5, 5, 2)),
+						s_enemy_attack(225, 5, 3, true),
+					],
+					atrandom: false,
+					wait: 2,
+					turn: 1,
+				},
+			}, {
+				name: "ハイパービターチューカリー",
+				hp: 25000,
+				imageno: 7405,
+				attr: 4,
+				spec: 2,
+				move: {
+					on_popup: [
+						attack_counter_dual(500, 4),
+					],
+					on_move: [
+						s_enemy_attack(150, 5, 1, true)
+					],
+					atrandom: false,
+					turn: 2,
+					wait: 1,
+				},
+			}, {
+				name: "青春の苦味を知る とろ～りプリス",
+				hp: 65000,
+				imageno: 7411,
+				attr: 4,
+				spec: 2,
+				move: {
+					on_move: [
+						s_enemy_attack(200, 5, 3, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}],
+		}, {
+			appearance: [3],
+			enemy: [{
+				name: "燃焼のとろ～りプリス",
+				hp: 25000,
+				imageno: 7411,
+				attr: 0,
+				spec: 4,
+				move: {
+					on_popup: [
+						damage_block_own(15000, 3),
+					],
+					on_move: [
+						s_enemy_attack(200, 5, 3, true),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "燃焼のとろ～りプリス",
+				hp: 45000,
+				imageno: 7411,
+				attr: 0,
+				spec: 4,
+				move: {
+					on_popup: [
+						skill_counter_func(s_enemy_attack, "全体5連撃", -1, false, 600, 5, 5),
+					],
+					on_move: [
+						s_enemy_attack(500, 5, 1, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "青春の苦味を知る とろ～りプリス",
+				hp: 20000,
+				imageno: 7411,
+				attr: 4,
+				spec: 2,
+				move: {
+					on_move: [
+						m_enemy_once(s_enemy_poison(1000, 5, 3)),
+						s_enemy_attack(250, 5, 1, true)
+					],
+					atrandom: false,
+					turn: 2,
+					wait: 1,
+				},
+			}],
+		}, {
+			appearance: [4],
+			enemy: [{
+				name: "ハイパービターチューカリー",
+				hp: 40000,
+				imageno: 7405,
+				attr: 4,
+				spec: 2,
+				move: {
+					on_popup: [
+						s_enemy_force_reservoir(),
+					],
+					on_move: [
+						m_enemy_once(s_enemy_attack(1500, 3, 1, true)),
+						s_enemy_attack(750, 3, 1, true),
+					],
+					atrandom: false,
+					turn: 2,
+					wait: 1,
+				},
+			}, {
+				name: "シャドウおじいさん",
+				hp: 45000,
+				imageno: 7417,
+				attr: 4,
+				spec: 2,
+				move: {
+					on_popup: [
+						damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
+					],
+					on_move: [
+						s_enemy_attack(100, 5, 1, true)
+					],
+					on_angry: [
+						s_enemy_attack_deadgrudge(0, 650, 1300, true),
+					],
+					on_move_angry: [
+						s_enemy_attack(100, 5, 3, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "燃焼のとろ～りプリス",
+				hp: 50000,
+				imageno: 7411,
+				attr: 0,
+				spec: 4,
+				move: {
+					on_move: [
+						s_enemy_attack(200, 5, 3, true)
+					],
+					atrandom: false,
+					turn: 2,
+					wait: 1,
+				},
+			}],
+		}, {
+			appearance: [5],
+			enemy: [{
+				name: "シャドウおじいさん",
+				hp: 50000,
+				imageno: 7417,
+				attr: 4,
+				spec: 4,
+				move: {
+					on_move: [
+						m_enemy_once(s_enemy_attr_weaken([1, 1, 1, 1, 1], 1.5, 5, 2)),
+						s_enemy_attack(150, 5, 3, true),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 2,
+				},
+			}, {
+				name: "お菓子は全部おれのもの デザートン",
+				hp: 200000,
+				imageno: 7381,
+				attr: 4,
+				spec: 4,
+				move: {
+					on_popup: [
+						skill_counter_func(s_enemy_deathlimit, "死の秒針", -1, false, 5, 3),
+						damage_switch(s_enemy_when_dead_l(), m_enemy_angry(), true),
+					],
+					on_move: [
+						m_enemy_once(s_enemy_attack(550, 5, 1, true)),
+						s_enemy_attack(350, 5, 1, true),
+					],
+					on_angry: [
+						damage_block_own(8000, 3),
+					],
+					on_move_angry: [
+						m_enemy_once(s_enemy_cursed(1000, 5, 3)),
+						s_enemy_attack(110, 5, 5, true),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "シャドウおじいさん",
+				hp: 50000,
+				imageno: 7417,
+				attr: 4,
+				spec: 4,
+				move: {
+					on_move: [
+						m_enemy_once(s_enemy_discharge(5, 2)),
+						s_enemy_attack(200, 5, 3, true)
+					],
+					atrandom: false,
+					turn: 2,
+					wait: 1,
+				},
+			}],
+		}],
+	},
+	// -------------------------
+	// 過去のイベントトーナメント(2016/02 絶)
+	// -------------------------
+	{
+		id: "1602ev_4",
+		name: "(2016/02)イベントトーナメント 絶級",
+		category: "past event",
+		desc: "2016/02に開催された魔道杯:イベントトーナメントのHard:クイズ対決！です。",
+		overlap: false,
+		aprnum: 5,
+		data: [{
+			appearance: [1],
+			enemy: [{
+				name: "青いとろ～りプリス",
+				hp: 30000,
+				imageno: 7412,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_move: [
+						m_enemy_once(s_enemy_attack(900, 1, 1, m_enemy_tgtype_minhp())),
+						s_enemy_attack(300, 5, 1, true),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "青いとろ～りプリス",
+				hp: 24,
+				imageno: 7412,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_popup: [
+						impregnable(-1),
+					],
+					on_move: [
+						s_enemy_attack(225, 5, 1, true)
+					],
+					atrandom: false,
+					turn: 3,
+					wait: 1,
+				},
+			}],
+		}, {
+			appearance: [2],
+			enemy: [{
+				name: "碧空のとろ～りプリス",
+				hp: 30000,
+				imageno: 7413,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_move: [
+						s_enemy_attack(225, 1, 1, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "碧空のとろ～りプリス",
+				hp: 13,
+				imageno: 7413,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_popup: [
+						impregnable(-1),
+					],
+					on_move: [
+						s_enemy_attack(300, 5, 1, true)
+					],
+					atrandom: false,
+					turn: 3,
+					wait: 1,
+				},
+			}, {
+				name: "イエローチューカリー",
+				hp: 20000,
+				imageno: 7408,
+				attr: 2,
+				spec: 4,
+				move: {
+					on_move: [
+						s_enemy_attack(300, 5, 1, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}],
+		}, {
+			appearance: [3],
+			enemy: [{
+				name: "碧空のとろ～りプリス",
+				hp: 30000,
+				imageno: 7413,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_move: [
+						s_enemy_attack(500, 3, 1, true),
+						s_enemy_chain_break(),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "碧空のとろ～りプリス",
+				hp: 60000,
+				imageno: 7413,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_move: [
+						s_enemy_force_reservoir(),
+						s_enemy_attack(600, 5, 1, true),
+						s_enemy_attack(300, 1, 1, true),
+					],
+					atrandom: false,
+					turn: 2,
+					wait: 2,
+				},
+			}, {
+				name: "碧空のとろ～りプリス",
+				hp: 30000,
+				imageno: 7413,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_move: [
+						s_enemy_attack(300, 1, 1, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}],
+		}, {
+			appearance: [4],
+			enemy: [{
+				name: "碧空のとろ～りプリス",
+				hp: 30000,
+				imageno: 7413,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_move: [
+						s_enemy_attack(500, 3, 1, true),
+						s_enemy_chain_break(),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "碧空のとろ～りプリス",
+				hp: 60000,
+				imageno: 7413,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_move: [
+						s_enemy_force_reservoir(),
+						s_enemy_attack(600, 5, 1, true),
+						s_enemy_attack(300, 1, 1, true),
+					],
+					atrandom: false,
+					turn: 2,
+					wait: 2,
+				},
+			}, {
+				name: "碧空のとろ～りプリス",
+				hp: 30000,
+				imageno: 7413,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_move: [
+						s_enemy_attack(300, 1, 1, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}],
+		}, {
+			appearance: [5],
+			enemy: [{
+				name: "青いとろ～りプリス",
+				hp: 40000,
+				imageno: 7412,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_move: [
+						s_enemy_attack(250, 5, 1, true),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "知性は巡る どこまでも ハカセ",
+				hp: 280000,
+				imageno: 7397,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_popup: [
+						damage_switch(s_enemy_when_dead_l(), m_enemy_angry(), true),
+					],
+					on_move: [
+						m_enemy_once(skill_counter(9999, 11)),
+						s_enemy_attack(100, 3, 5, true),
+						s_enemy_attack(500, 3, 1, true),
+					],
+					on_move_angry: [
+						m_enemy_once(s_enemy_ss_sealed(3, 4)),
+						s_enemy_attack(250, 5, 5, true),
+						s_enemy_attack(1200, 5, 1, true),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "青いとろ～りプリス",
+				hp: 30000,
+				imageno: 7412,
+				attr: 1,
+				spec: 4,
+				move: {
+					on_popup: [
+						damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
+					],
+					on_move: [
+						s_enemy_attack(500, 5, 1, true),
+						m_enemy_once(attack_counter(800, -1)),
+					],
+					on_move_angry: [
+						s_enemy_attack(750, 5, 1, true),
+						s_enemy_heal_all(0.1),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}],
+		}],
+	},
+	// -------------------------
+	// 過去のイベントトーナメント(2016/01)
 	// -------------------------
 	{
 		id: "1601ev_z",

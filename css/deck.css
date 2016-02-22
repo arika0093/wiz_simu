@@ -41,9 +41,8 @@ p.enemy_name, p.enemy_hp, p.enemy_stat{
 p.enemy_stat{
 	color: #FF0040;
 	font-size: 9.5pt;
-	margin: 2px 0.5em 0 0;
+	margin: 2px 0 0 0;
 	padding: 0;
-	float: right;
 	text-align: right;
 	overflow: hidden;
 	white-space: nowrap;
