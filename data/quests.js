@@ -13,6 +13,7 @@ Quests = [
 		desc: "",
 		aprnum: 4,
 		overlap: false,
+		hidden: true,
 		data: [{
 			appearance: [1],
 			enemy: [{
@@ -210,6 +211,7 @@ Quests = [
 		desc: "",
 		aprnum: 4,
 		overlap: false,
+		hidden: true,
 		data: [{
 			appearance: [1],
 			enemy: [{
