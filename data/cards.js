@@ -21473,7 +21473,7 @@ Cards = [{
 	ss1: {
 		desc: "MAXHPの70%を使い敵全体へダメージ(260%)",
 		turn: 7,
-		proc: [ss_consume_own(0.7), ss_damage_own(2.6, [0])],
+		proc: [ss_consume_own(0.7), ss_damage_all(2.6, [0])],
 	},
 	awakes: [
 		Statusup(0,200),
