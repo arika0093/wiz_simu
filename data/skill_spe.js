@@ -499,6 +499,7 @@ function ss_resurrection(r, p) {
 			var now = fld.Allys.Now[i];
 			if (now.nowhp <= 0 && r[cd.attr[0]]) {
 				now.nowhp = Math.min((now.maxhp * rate), now.maxhp);
+				now.nowhp = Math.round(now.nowhp);
 			}
 		}
 		fld.log_push("味方全体蘇生(" + (rate * 100) + "%)");
