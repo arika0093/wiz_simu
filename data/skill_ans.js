@@ -404,7 +404,6 @@ function ChainDeckDeadsAttack(base, ch) {
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
 			cond: function (fld, oi, ei) {
-				var rates = [r1, r2, r3];
 				var count = 0;
 				// カウント
 				for (var i = 0; i < fld.Allys.Deck.length; i++) {
@@ -413,7 +412,7 @@ function ChainDeckDeadsAttack(base, ch) {
 						count++;
 					}
 				}
-				this.rate = base * count;
+				this.rate = 1 + base * count;
 				return true;
 			},
 		}
