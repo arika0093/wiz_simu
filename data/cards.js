@@ -21537,7 +21537,7 @@ Cards = [{
 	},
 	ss2: {
 		desc: "ジャンルパネルにスキルチャージ(1)、回復(10%)をランダムで付与",
-		turn: 7,
+		turn: 9,
 		proc: [panel_skillboost(1), panel_healally(0.1)],
 	},
 	Lawake: [
@@ -21581,7 +21581,7 @@ Cards = [{
 	},
 	ss2: {
 		desc: "敵単体のHPを20%減少させる、HP50%以下でさらに20%減少させる",
-		turn: 6,
+		turn: 12,
 		proc: [ss_ratiodamage_s(ss_hp_less(0.5, 0, 0.15))],
 	},
 	Lawake: [
@@ -21604,7 +21604,7 @@ Cards = [{
 	},
 	ss1: {
 		desc: "味方全体のHPを1000ダウンし、攻撃力を1000アップ(上限2000)",
-		turn: 9,
+		turn: 5,
 		proc: [ss_statusup_all([-1000, 1000], [2000, 2000], -1)],
 	},
 	awakes: [
@@ -21625,7 +21625,7 @@ Cards = [{
 	},
 	ss2: {
 		desc: "MAXHPを100%使い敵単体へ雷属性のダメージ、さらに水属性の敵には特攻ダメージ(300%/1200%)",
-		turn: 12,
+		turn: 7,
 		proc: [ss_damage_s(special_attr([0, 1, 0, 0, 0], 12.0, 3.0), [2], 1), ss_consume_own(1)],
 	},
 	Lawake: [
