@@ -9,7 +9,6 @@ body{
 	font-size: 10.5pt;
 	width: 800px;
 	margin: auto;
-	/*padding: 0ex 1em;*/
 	border-left: 1px solid #A0A0FF;
 	border-right: 1px solid #A0A0FF;
 	color: #303030;
@@ -148,12 +147,12 @@ a.toplink{
 	color: #0040FF;
 	overflow: hidden;
 	white-space: nowrap;
-	background-image: url(/image/wiztools_logo.png);
-	background-position: 10px -10px;
+	background-image: url(/image/wiztools_logo_chara.png);
 	background-repeat: no-repeat;
 }
 
 p.sitedetail{
+	display: none;
 	position: absolute;
 	top: 0px;
 	right: 0px;
