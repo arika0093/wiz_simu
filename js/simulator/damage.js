@@ -114,7 +114,7 @@ function damage_ally(dmg, index, neft_check) {
 function heal_ally(value, index) {
 	var now = Field.Allys.Now[index];
 	if (now.nowhp > 0) {
-		now.nowhp = Math.min(now.maxhp, now.nowhp + value);
+		now.nowhp = Math.min(now.maxhp, now.nowhp + Math.floor(value));
 		return true;
 	}
 	if (now.nowhp <= 0) {
