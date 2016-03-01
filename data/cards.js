@@ -21737,7 +21737,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体へ雷属性のダメージ(200%)、さらに3ターンの間、雷属性のダメージ(200%)",
 		turn: 7,
-		proc: [ss_continue_damage(2.0, [2], 3)],
+		proc: [ss_damage_all(3.0, [2]), ss_continue_damage(3.0, [2], 3)],
 	},
 	awakes: [
 		NEFTJOD(30),
@@ -21758,7 +21758,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体へ雷属性のダメージ(300%)、さらに3ターンの間、雷属性のダメージ(300%)",
 		turn: 9,
-		proc: [ss_continue_damage(3.0, [2], 3)],
+		proc: [ss_damage_all(4.0, [2]), ss_continue_damage(4.0, [2], 3)],
 	},
 	Lawake: [
 		Abstate_invalid("as_sealed"),
