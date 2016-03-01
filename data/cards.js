@@ -21639,7 +21639,7 @@ Cards = [{
 	hp: 1987,
 	atk: 4093,
 	cost: 48,
-	attr: [0, 2],
+	attr: [2, 0],
 	species: [9],
 	islegend: true,
 	as1: {
