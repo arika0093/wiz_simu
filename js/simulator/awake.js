@@ -101,10 +101,7 @@ function card_attr_relief(card, now, t_attr) {
 	var r = 0;
 	var ar_awakes = pickup_awakes(card, "attr_relief", false);
 	if (is_legendmode(card, now)) {
-		var ar_awakes_l = pickup_awakes(card, "attr_relief", true);
-		if (ar_awakes_l.length > 0) {
-			ar_awakes.push(ar_awakes_l);
-		}
+		ar_awakes = ar_awakes.concat(pickup_awakes(card, "attr_relief", true));
 	}
 	for (var i = 0; i < ar_awakes.length; i++) {
 		if (ar_awakes[i].attr[t_attr] > 0) {
@@ -112,6 +109,25 @@ function card_attr_relief(card, now, t_attr) {
 		}
 	}
 	return r / 100;
+}
+
+// 九死一生の判定を行う
+function awake_neftjod_check(now) {
+	var neft = pickup_awakes(Field.Allys.Deck[index], "neftjod", false);
+	if (is_legendmode(Field.Allys.Deck[index], now)) {
+		neft = neft.concat(pickup_awakes(Field.Allys.Deck[index]), "neftjod", true);
+	}
+	if (neft.length > 0) {
+		var neft_total = 0;
+		$.each(neft, function (i, e) {
+			neft_total += e.perc / 100;
+		});
+		if (bef >= Math.floor(now.maxhp * neft[0].hpcond / 100) && Math.random() <= neft_total) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 
 // 戦後回復値を返す
@@ -131,10 +147,7 @@ function cards_heal_afterbattle(cards) {
 function Awake_AbsInvalid(card, now, type) {
 	var ai_awakes = pickup_awakes(card, "abstate_invalid", false);
 	if (is_legendmode(card, now)) {
-		var ai_awakes_l = pickup_awakes(card, "abstate_invalid", true);
-		if (ai_awakes_l.length > 0) {
-			ai_awakes.push(ai_awakes_l);
-		}
+		ai_awakes = ai_awakes.concat(pickup_awakes(card, "abstate_invalid", true));
 	}
 	for (var i = 0; i < ai_awakes.length; i++) {
 		if (type === ai_awakes[i].tgtype) {
