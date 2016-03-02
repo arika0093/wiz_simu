@@ -101,7 +101,7 @@ function card_attr_relief(card, now, t_attr) {
 	var r = 0;
 	var ar_awakes = pickup_awakes(card, "attr_relief", false);
 	if (is_legendmode(card, now)) {
-		ar_awakes.concat(pickup_awakes(card, "attr_relief", true));
+		ar_awakes.push(pickup_awakes(card, "attr_relief", true));
 	}
 	for (var i = 0; i < ar_awakes.length; i++) {
 		if (ar_awakes[i].attr[t_attr] > 0) {
@@ -128,7 +128,7 @@ function cards_heal_afterbattle(cards) {
 function Awake_AbsInvalid(card, now, type) {
 	var ai_awakes = pickup_awakes(card, "abstate_invalid", false);
 	if (is_legendmode(card, now)) {
-		ai_awakes.concat(pickup_awakes(card, "abstate_invalid", true));
+		ai_awakes.push(pickup_awakes(card, "abstate_invalid", true));
 	}
 	for (var i = 0; i < ai_awakes.length; i++) {
 		if (type === ai_awakes[i].tgtype) {
