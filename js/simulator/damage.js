@@ -85,22 +85,10 @@ function damage_ally(dmg, index, neft_check) {
 		});
 	}
 	// 九死一生の判定
-	if (neft_check && aft <= 0 && minhp == 0) {
-		var neft = pickup_awakes(Field.Allys.Deck[index], "neftjod", false);
-		if (is_legendmode(Field.Allys.Deck[index], now)) {
-			neft.concat(pickup_awakes(Field.Allys.Deck[index]), "neftjod", true);
-		}
-		if (neft.length > 0) {
-			var neft_total = 0;
-			$.each(neft, function (i, e) {
-				neft_total += e.perc / 100;
-			});
-			if (bef >= Math.floor(now.maxhp * neft[0].hpcond / 100) && Math.random() <= neft_total) {
-				// 九死一生発動
-				minhp = 1;
-				Field.log_push("Unit[" + (index + 1) + "]: 九死一生発動");
-			}
-		}
+	if (neft_check && aft <= 0 && minhp == 0 && awake_neftjod_check(now)) {
+		// 九死一生発動
+		minhp = 1;
+		Field.log_push("Unit[" + (index + 1) + "]: 九死一生発動");
 	}
 	now.nowhp = Math.max(aft, minhp);
 	Field.log_push("Unit[" + (index + 1) + "]: " + dmg + "ダメージ(残: " + now.nowhp + "/" + now.maxhp + ")");
