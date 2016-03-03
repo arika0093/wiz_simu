@@ -112,17 +112,18 @@ function card_attr_relief(card, now, t_attr) {
 }
 
 // 九死一生の判定を行う
-function awake_neftjod_check(now) {
+function awake_neftjod_check(now, index, before_hp) {
 	var neft = pickup_awakes(Field.Allys.Deck[index], "neftjod", false);
 	if (is_legendmode(Field.Allys.Deck[index], now)) {
-		neft = neft.concat(pickup_awakes(Field.Allys.Deck[index]), "neftjod", true);
+		neft = neft.concat(pickup_awakes(Field.Allys.Deck[index], "neftjod", true));
 	}
 	if (neft.length > 0) {
 		var neft_total = 0;
 		$.each(neft, function (i, e) {
 			neft_total += e.perc / 100;
 		});
-		if (bef >= Math.floor(now.maxhp * neft[0].hpcond / 100) && Math.random() <= neft_total) {
+		if ((before_hp >= Math.floor(now.maxhp * neft[0].hpcond / 100))
+		&& (Math.random() <= neft_total)) {
 			return true;
 		} else {
 			return false;
