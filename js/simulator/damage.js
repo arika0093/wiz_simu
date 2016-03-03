@@ -85,7 +85,7 @@ function damage_ally(dmg, index, neft_check) {
 		});
 	}
 	// 九死一生の判定
-	if (neft_check && aft <= 0 && minhp == 0 && awake_neftjod_check(now)) {
+	if (neft_check && aft <= 0 && minhp == 0 && awake_neftjod_check(now, index, bef)) {
 		// 九死一生発動
 		minhp = 1;
 		Field.log_push("Unit[" + (index + 1) + "]: 九死一生発動");

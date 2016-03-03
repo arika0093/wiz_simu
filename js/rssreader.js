@@ -65,10 +65,10 @@ var dtquery = date.getMonth() + date.getDay() + date.getHours();
 // Update RSS
 var rec = $("#rss_recent");
 if (rec) {
-	ReadRSS(rec, "http://blog.wiztools.net/author/updatepost/feed/?" + dtquery, 3);
+	ReadRSS(rec, "http://blog.wiztools.net/archives/author/updatepost/feed/?" + dtquery, 3);
 }
 // Information RSS
 var inf = $("#rss_information");
 if (inf) {
-	ReadRSS(inf, "http://blog.wiztools.net/author/admin/feed/?" + dtquery, 2);
+	ReadRSS(inf, "http://blog.wiztools.net/archives/author/admin/feed/?" + dtquery, 2);
 }
