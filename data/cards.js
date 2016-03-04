@@ -23457,7 +23457,7 @@ Cards = [{
 	islegend: true,
 	as1: {
 		desc: "水属性の敵単体へ特効5連撃、HPが20%以下でさらにダメージアップ(300%/1300%)",
-		proc: [ChainDualAttrAttack(3.0, 0, 5, [0, 1, 0, 0, 0]), add_cond(ChainDualAttrAttack([13.0], 0, 5, [0, 1, 0, 0, 0]), when_hp_less(0.20))],
+		proc: [ChainDualAttrAttack(3.0, 0, 5, [0, 1, 0, 0, 0]), add_cond(ChainDualAttrAttack(13.0, 0, 5, [0, 1, 0, 0, 0]), when_hp_less(0.20))],
 	},
 	ss1: {
 		desc: "3ターン敵の攻撃を自分に集めダメージを50%軽減する",
@@ -23478,7 +23478,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "水属性の敵単体へ特効5連撃、HPが20%以下でさらにダメージアップ(400%/1900%)",
-		proc: [ChainDualAttrAttack(4.0, 0, 5, [0, 1, 0, 0, 0]), add_cond(ChainDualAttrAttack([19.0], 0, 5, [0, 1, 0, 0, 0]), when_hp_less(0.20))],
+		proc: [ChainDualAttrAttack(4.0, 0, 5, [0, 1, 0, 0, 0]), add_cond(ChainDualAttrAttack(19.0, 0, 5, [0, 1, 0, 0, 0]), when_hp_less(0.20))],
 	},
 	ss2: {
 		desc: "3ターン敵の攻撃を自分に集めダメージを75%軽減する、HP50%以下でさらに25%軽減する",
