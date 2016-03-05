@@ -1,12 +1,18 @@
 // turn_effectのターン数減少
 function reduce_turneffect() {
-	if (!is_allkill()) {
-		// 味方ターンエフェクト減算処理
-		for (var i = 0; i < Field.Allys.Deck.length; i++) {
-			for (var j = 0; j < Field.Allys.Now[i].turn_effect.length; j++) {
-				Field.Allys.Now[i].turn_effect[j].lim_turn -= 1;
+	// 全滅確認
+	var allkill = is_allkill();
+	// 味方ターンエフェクト減算処理
+	for (var i = 0; i < Field.Allys.Deck.length; i++) {
+		for (var j = 0; j < Field.Allys.Now[i].turn_effect.length; j++) {
+			var teff = Field.Allys.Now[i].turn_effect[j];
+			// 戦闘を跨ぐ際にターンを減少させる or 未全滅時
+			if (teff.isreduce_stg || !allkill) {
+				teff.lim_turn -= 1;
 			}
 		}
+	}
+	if (!allkill) {
 		// 敵ターンエフェクト減算処理
 		var enemys = GetNowBattleEnemys();
 		for (var i = 0; i < enemys.length; i++) {

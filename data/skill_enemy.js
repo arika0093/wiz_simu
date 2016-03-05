@@ -204,6 +204,7 @@ function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f
 			isabstate: true,
 			iscursebreak: false,
 			isdual: false,
+			isreduce_stg: true,
 			turn: turn,
 			lim_turn: turn,
 			effect: function () { },
@@ -329,6 +330,7 @@ function s_enemy_deathlimit(tnum, limit) {
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 		s_enemy_abstate_attack(
 			fld, "死の秒針", "death_limit", limit, tnum, n, false, {
+				isreduce_stg: false,
 				effect: function (f, oi, teff, state) {
 					var nowtg = f.Allys.Now[oi];
 					if (state == "end") {
@@ -345,7 +347,7 @@ function s_enemy_deathlimit(tnum, limit) {
 function s_enemy_healrebase(rate, tnum) {
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 		s_enemy_abstate_attack(
-			fld, "回復反転(効果値:" + (rate*100) + "%)",
+			fld, "回復反転(" + (rate*100) + "%)",
 			"heal_rebase", -1, tnum, n, false, {
 				// 光闇属性なら反転は無効
 				bef_absattack: function (fld, oi, ei) {
@@ -374,6 +376,7 @@ function s_enemy_cursed(hpdown, tnum, t) {
 				isabstate: false,
 				iscursebreak: false,
 				isdual: false,
+				isreduce_stg: true,
 				turn: t,
 				lim_turn: t,
 				hpdown: hpdown,
