@@ -21,16 +21,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{85B9F527-E14
 		css\simulator_sp.css = css\simulator_sp.css
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{D7F5FD15-0EDA-4EC8-A7FE-62566A0FF4FA}"
-	ProjectSection(SolutionItems) = preProject
-		data\cards.js = data\cards.js
-		data\quests.js = data\quests.js
-		data\skill_ans.js = data\skill_ans.js
-		data\skill_awake.js = data\skill_awake.js
-		data\skill_enemy.js = data\skill_enemy.js
-		data\skill_spe.js = data\skill_spe.js
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "text", "text", "{FEDAC185-D019-43F3-BE3D-70929AAAE89F}"
 	ProjectSection(SolutionItems) = preProject
 		text\specification.txt = text\specification.txt
@@ -52,10 +42,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "simulator", "simulator", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deck", "deck", "{068E2C1D-35BD-43A6-826C-B09E82790769}"
 	ProjectSection(SolutionItems) = preProject
-		js\createurl.js = js\createurl.js
-		js\decksuggest.js = js\decksuggest.js
-		js\loadurl.js = js\loadurl.js
-		js\questsel.js = js\questsel.js
+		js\deck\createurl.js = js\deck\createurl.js
+		js\deck\deckdata.js = js\deck\deckdata.js
+		js\deck\decksuggest.js = js\deck\decksuggest.js
+		js\deck\loadurl.js = js\deck\loadurl.js
+		js\deck\questsel.js = js\deck\questsel.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "simulator", "simulator", "{FBCE4C9C-0BDA-4B34-AC6E-3158CF6D361E}"
@@ -97,6 +88,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "useful", "useful", "{F34AC3
 		js\rssreader.js = js\rssreader.js
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{96B04CAB-98A1-4735-96F8-80788F25C391}"
+	ProjectSection(SolutionItems) = preProject
+		js\data\cards.js = js\data\cards.js
+		js\data\quests.js = js\data\quests.js
+		js\data\skill_ans.js = js\data\skill_ans.js
+		js\data\skill_awake.js = js\data\skill_awake.js
+		js\data\skill_enemy.js = js\data\skill_enemy.js
+		js\data\skill_spe.js = js\data\skill_spe.js
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,7 +106,6 @@ Global
 		{20D7A7D8-822B-4D68-AEF0-9127E62A819F} = {54D72F80-1342-4A3D-B559-339A01E32933}
 		{BA48140E-6DCE-46F7-BC02-D48AB34F0CF6} = {5738BAEF-BA1D-4206-8CED-09AD35F0B80B}
 		{85B9F527-E148-41E4-A8C0-04BBF26A1A24} = {54D72F80-1342-4A3D-B559-339A01E32933}
-		{D7F5FD15-0EDA-4EC8-A7FE-62566A0FF4FA} = {54D72F80-1342-4A3D-B559-339A01E32933}
 		{FEDAC185-D019-43F3-BE3D-70929AAAE89F} = {54D72F80-1342-4A3D-B559-339A01E32933}
 		{0B5CF5D7-96AD-4EED-8363-750FF402B468} = {20D7A7D8-822B-4D68-AEF0-9127E62A819F}
 		{068E2C1D-35BD-43A6-826C-B09E82790769} = {20D7A7D8-822B-4D68-AEF0-9127E62A819F}
@@ -116,5 +116,6 @@ Global
 		{BE62308C-ADDF-4FE5-960C-CCE298C9EA52} = {FBCE4C9C-0BDA-4B34-AC6E-3158CF6D361E}
 		{031B42DC-7DAF-4295-96B4-08D8BB8B77B1} = {5738BAEF-BA1D-4206-8CED-09AD35F0B80B}
 		{F34AC30C-80B0-4B03-A688-A1169FB82C9D} = {20D7A7D8-822B-4D68-AEF0-9127E62A819F}
+		{96B04CAB-98A1-4735-96F8-80788F25C391} = {20D7A7D8-822B-4D68-AEF0-9127E62A819F}
 	EndGlobalSection
 EndGlobal

@@ -16167,6 +16167,7 @@ Cards = [{
 		Statusup(200, 0),
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0]),
 		Panel_boost([0, 0, 1, 0, 0], 2),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0]),
 		Statusup(0, 200),
 		Spec_statusup(0, 200, [2]),
 		Fastskill(2),
