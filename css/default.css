@@ -392,6 +392,7 @@ input.decksel{
 }
 .ui-autocomplete img{
 	width: 48px;
+	height: 48px;
 	float: left;
 }
 .ui-autocomplete a{
