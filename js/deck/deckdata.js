@@ -23,31 +23,59 @@ function deckdata_DataTemplate(size) {
 }
 
 // ------------------------------------
+// 便利関数
+// ------------------------------------
+// クエリを読み込んでdataを引数に取る関数を実行する
+function deckdata_Load(fc) {
+	// get query
+	var q = window.location.search;
+	// type check
+	if (!deckdata_CheckOldUrl(q)) {
+		// new ver
+		deckdata_LoadUrl(function (result) {
+			var js = JSON.parse(result);
+			fc(JSON.parse(js.d));
+		});
+	} else {
+		// old ver
+		var data = deckdata_LoadOldUrl();
+		fc(data);
+	}
+}
+
+// ------------------------------------
 // 各種操作関数
 // ------------------------------------
 // data保存
-function deckdata_Save(data) {
+function deckdata_SaveUrl(data, after) {
 	// AJAXを使ってPHPを呼ぶ
 	$.ajax({
 		type: "POST",
 		url: "/api/shorten.php",
 		data: "t=set&d=" + JSON.stringify(data),
+		success: after,
 	});
 }
 
-// data読み込み
-function deckdata_Load(short) {
+// URL読み込み
+function deckdata_LoadUrl(short, after) {
 	// AJAXを使ってPHPを呼ぶ
 	$.ajax({
 		type: "POST",
 		url: "/api/shorten.php",
 		data: "t=get&d=" + short,
+		success: after,
 	});
 }
 
 // ------------------------------------
 // 互換維持用
 // ------------------------------------
+// 旧版URLかどうか確認する
+function deckdata_CheckOldUrl(query) {
+	return query.indexOf(",") >= 0;
+}
+
 // 旧版URL読み込み
 function deckdata_LoadOldUrl(oldquery) {
 	var data = deckdata_DataTemplate(5);

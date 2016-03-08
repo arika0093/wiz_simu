@@ -1,29 +1,30 @@
-// マナプラス管理用global変数
-var Manaplus = [200, 200, 200, 200, 200];
-// 潜在個数管理用(ry
-var AwakeNum = [-1, -1, -1, -1, -1];
+// 各種情報管理
+var Deckdata = deckdata_DataTemplate();
 
 // autocomplete指定 / deckload / Dialog
 $(function () {
-	for (var i = 1; i <= 5; i++) {
-		set_autocmp(i)();
-	}
 	// Load
-	var cds = loaddeck_from_url();
-	for (var idx = 1; idx <= 5; idx++) {
-		$("#deck0" + idx).attr("placeholder", "《精霊名を入力します》");
-		if((cds && cds[idx-1])){
-			Manaplus[idx-1] = cds[idx-1].mana;
-			AwakeNum[idx-1] = (cds[idx-1].awake != cds[idx-1].awake_def ? cds[idx-1].awake : -1);
-			decksel_show(idx, cds[idx-1].card);
-		} else {
-			var itx = $("#deck0" + idx).val();
-			var cd = $.grep(Cards, function (e) {
-				return e.name == itx;
-			})[0];
-			decksel_show(idx, cd);
+	deckdata_Load(function (data) {
+		Deckdata = data;
+		for (var i = 0; i < 5; i++) {
+			$("#deck0" + (i + 1)).attr("placeholder", "《精霊名を入力します》");
+			set_autocmp(i)();
+			if (Deckdata && Deckdata.deck[i]) {
+				var load = Deckdata.deck[i];
+				var card = load.card_imple
+					|| $.each(Cards, function (i, e) {
+						return e.cardid == load.cardid;
+					});
+				decksel_show(i + 1, card);
+			} else {
+				var pre_name = $("#deck0" + (i + 1)).val();
+				var cd = $.grep(Cards, function (e) {
+					return e.name == pre_name;
+				})[0];
+				decksel_show(idx, cd);
+			}
 		}
-	}
+	});
 	// Manaplus blink
 	var blink_interval = 3300;
 	var mana_blink = function () {
