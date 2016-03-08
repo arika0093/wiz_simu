@@ -1,33 +1,31 @@
 // クエスト選択肢追加, URLからquest選択
 $(function () {
-	var qsort = Quests;//.sort(function (a, b) {
-	//	if (a.category > b.category) return +1;
-	//	if (a.category < b.category) return -1;
-	//})
-
 	var sel = document.getElementById('QstSel');
 	var seld = sel;
-	for (var i = 0; i < qsort.length; i++) {
-		if (qsort[i].hidden) {
+	for (var i = 0; i < Quests.length; i++) {
+		if (Quests[i].hidden) {
 			continue;
 		}
-		if (i == 0 || qsort[i].category != qsort[i - 1].category) {
+		if (i == 0 || Quests[i].category != Quests[i - 1].category) {
 			var opg = document.createElement('optgroup');
-			opg.label = qsort[i].category;
+			opg.label = Quests[i].category;
 			sel.appendChild(opg);
 			seld = opg;
 		}
 		var opt = document.createElement('option');
-		opt.label = qsort[i].name;
-		opt.value = qsort[i].id;
-		opt.appendChild(document.createTextNode(qsort[i].name));
+		opt.label = Quests[i].name;
+		opt.value = Quests[i].id;
+		opt.appendChild(document.createTextNode(Quests[i].name));
 		seld.appendChild(opt);
 	}
 
-	var q = loadquest_from_url();
-	if (q) {
-		$("select[id='QstSel'] option[value=" + q.id + "]").prop('selected', true);
-		//$("#Qstdesc").text(q.desc);
+	var qst_id = "-1";
+	if (Deckdata) {
+		var qst_load = $.grep(Quests, function (e) {
+			return e.id == Deckdata.questdata.id;
+		})[0];
+		qst_id = qst_load ? qst_load.id : -1;
+		var opt = $("select[id='QstSel'] option[value=" + qst_id + "]").prop('selected', true);
 	}
 });
 
@@ -52,12 +50,17 @@ function optsel() {
 
 // シミュ開始
 function sim_start() {
-	// redirect
-	var query = create_url(true);
-	if (query == null) {
-		$("#dialog_sim_error").dialog("open");
-		return;
+	// quest set
+	if (!Deckdata.quest_imple.id) {
+		Deckdata.quest = $("#QstSel").val();
+		if (Deckdata.quest == "") {
+			$("#dialog_sim_error").dialog("open");
+			return;
+		}
 	}
-	var redirect_url = '/simulator/p/' + query;
-	location.href = redirect_url;
+	// redirect
+	deckdata_Create(Deckdata, function (short) {
+		var redirect_url = '/simulator/p/' + short;
+		location.href = redirect_url;
+	});
 }

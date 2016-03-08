@@ -4,24 +4,19 @@ var Deckdata = deckdata_DataTemplate();
 // autocomplete指定 / deckload / Dialog
 $(function () {
 	// Load
-	deckdata_Load(function (data) {
+	deckdata_Load(null, Cards, function (data) {
 		Deckdata = data;
 		for (var i = 0; i < 5; i++) {
 			$("#deck0" + (i + 1)).attr("placeholder", "《精霊名を入力します》");
 			set_autocmp(i)();
-			if (Deckdata && Deckdata.deck[i]) {
-				var load = Deckdata.deck[i];
-				var card = load.card_imple
-					|| $.each(Cards, function (i, e) {
-						return e.cardid == load.cardid;
-					});
-				decksel_show(i + 1, card);
+			if (Deckdata && Deckdata.deck[i].cardno > 0) {
+				decksel_show(i + 1, Deckdata.deck[i].carddata);
 			} else {
 				var pre_name = $("#deck0" + (i + 1)).val();
-				var cd = $.grep(Cards, function (e) {
+				var card = $.grep(Cards, function (e) {
 					return e.name == pre_name;
 				})[0];
-				decksel_show(idx, cd);
+				decksel_show(i + 1, card);
 			}
 		}
 	});
@@ -78,7 +73,7 @@ $(function () {
 					}
 				},
 			});
-			$("#d_mana_edit").spinner("value", Manaplus[ni]);
+			$("#d_mana_edit").spinner("value", Deckdata.deck[ni].mana);
 			var p_t = (ni+1) + ": " + cd.name + "<br/>マナの値を0-200の間で指定してください。(HP: " + cd.hp + ")";
 			$("#d_mana_text").html(p_t);
 
@@ -104,7 +99,8 @@ $(function () {
 					}
 				},
 			});
-			$("#d_awake_edit").spinner("value", AwakeNum[ni] != -1 ? AwakeNum[ni] : cd_aws);
+			$("#d_awake_edit").spinner("value",
+				Deckdata.deck[ni].awake != -1 ? Deckdata.deck[ni].awake : cd_aws);
 			// close when click dialog outside
 			$('.ui-widget-overlay').bind('click', function () {
 				$("#dialog_manaset").dialog('close');
@@ -130,9 +126,10 @@ $(function () {
 				var cd_aws = cd.awakes.length;
 				var val = $("#d_mana_edit").spinner("value");
 				var aws = $("#d_awake_edit").spinner("value");
-				Manaplus[ni] = val >= 0 ? val : 200;
-				AwakeNum[ni] = aws != cd_aws ? aws : -1;
-				$("#ally0" + (ni+1) + "_mana").text(Manaplus[ni] ? "+" + Manaplus[ni] : "");
+				Deckdata.deck[ni].mana = val >= 0 ? val : 200;
+				Deckdata.deck[ni].awake = aws != cd_aws ? aws : -1;
+				$("#ally0" + (ni + 1) + "_mana").text(Deckdata.deck[ni].mana
+					? "+" + Deckdata.deck[ni].mana : "");
 				$(this).dialog("close");
 			},
 			"Cancel": function () {
@@ -357,7 +354,7 @@ function decksel_show(idx, c) {
 		$("#ally0" + idx + "_attr_main").attr("class", "attr_" + c.attr[0]);
 		$("#ally0" + idx + "_attr_sub").attr("class", "attr_" + (c.attr[1] != -1 ? c.attr[1] : c.attr[0]));
 		$("#ally0" + idx + "_img").attr("src", get_image_url(c.imageno));
-		$("#ally0" + idx + "_mana").text("+" + Manaplus[idx-1]);
+		$("#ally0" + idx + "_mana").text("+" + Deckdata.deck[idx-1].mana);
 		$("#deck0" + idx).val(c.name);
 		$("#ally0" + idx + "_as").text("AS: " + AS.desc);
 		$("#ally0" + idx + "_ss").text("SS: " + SS.desc);
@@ -391,12 +388,7 @@ function deck_reset_ready() {
 	$("#dialog_deck_reset").dialog("open");
 }
 function deck_reset() {
-	for (var i = 1; i <= 5; i++) {
-		decksel_show(i, null);
-		$("#deck0" + i).val("");
-		Manaplus[i] = 200;
-	}
-	$("#QstSel").val("");
+	Deckdata = deckdata_DataTemplate();
 }
 
 // デッキ読み込み、保存

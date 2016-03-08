@@ -6,13 +6,13 @@ function deckdata_DataTemplate(size) {
 	size = size || 5;
 	var data = {
 		quest: "",
-		quest_imple: {},
+		questdata: {},
 		deck: [],
 	};
 	for (var i = 0; i < size; i++) {
 		data.deck.push($.extend(true, {}, {
 			cardno: -1,
-			card_imple: {},
+			carddata: {},
 			mana: 200,
 			awake: 0,
 			awake_default: 0,
@@ -25,16 +25,33 @@ function deckdata_DataTemplate(size) {
 // ------------------------------------
 // 便利関数
 // ------------------------------------
+// dataを保存してURLを生成する
+function deckdata_Create(data, fc) {
+	deckdata_SaveUrl(data, function (result) {
+		var js = JSON.parse(result);
+		fc(js.short);
+	});
+}
+
 // クエリを読み込んでdataを引数に取る関数を実行する
-function deckdata_Load(fc) {
+function deckdata_Load(query, cards, fc) {
 	// get query
-	var q = window.location.search;
+	query = query || window.location.search;
 	// type check
-	if (!deckdata_CheckOldUrl(q)) {
+	if (query == "") {
+		fc(deckdata_DataTemplate(5));
+	} else if (!deckdata_CheckOldUrl(query)) {
 		// new ver
-		deckdata_LoadUrl(function (result) {
+		deckdata_LoadUrl(query, function (result) {
 			var js = JSON.parse(result);
-			fc(JSON.parse(js.d));
+			var data = JSON.parse(js.long);
+			for (var i = 0; i < data.deck.length; i++) {
+				var cd = data.deck[i];
+				cd.carddata = $.grep(cards, function (e) {
+					return e.cardno == cd.cardno;
+				})[0];
+			}
+			fc();
 		});
 	} else {
 		// old ver
@@ -46,7 +63,7 @@ function deckdata_Load(fc) {
 // ------------------------------------
 // 各種操作関数
 // ------------------------------------
-// data保存
+// dataを保存
 function deckdata_SaveUrl(data, after) {
 	// AJAXを使ってPHPを呼ぶ
 	$.ajax({
@@ -93,7 +110,8 @@ function deckdata_LoadOldUrl(oldquery) {
 			})[0]);
 			if (card) {
 				var awake_num = card.awakes.length;
-				dd.id = card.cardno;
+				dd.carddata = card;
+				dd.cardno = card.cardno;
 				dd.mana = (q_spl[1] ? Number(q_spl[1]) : 200);
 				dd.awake = awake_num;
 				dd.awake_default = (q_spl[2] ? Number(q_spl[2]) : awake_num);
@@ -121,4 +139,15 @@ function deckdata_GetOldQuery(qr) {
 		}
 	}
 	return result;
+}
+
+// ------------------------------------
+// その他
+// ------------------------------------
+// 画像のURLを返却する
+function get_image_url(no) {
+	if (no < 0) {
+		return "/image/noimage.png";
+	}
+	return "http://i.quiz.colopl.jp/img/card/small/card_" + ("0000" + no).slice(-5) + "_0.png"
 }
