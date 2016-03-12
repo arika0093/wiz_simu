@@ -1,25 +1,39 @@
 // 各種情報管理
 var Deckdata = deckdata_DataTemplate();
 
+// deckdataからデッキを読み込んで指定する関数
+function decksgg_loaddeck(data) {
+	// deck select
+	Deckdata = data;
+	for (var i = 0; i < 5; i++) {
+		$("#deck0" + (i + 1)).attr("placeholder", "《精霊名を入力します》");
+		set_autocmp(i+1)();
+		if (Deckdata && Deckdata.deck[i].cardno > 0) {
+			// Get card
+			var crd = $.grep(Cards, function (e) {
+				return e.cardno == Deckdata.deck[i].cardno;
+			})[0];
+			decksel_show(i + 1, crd);
+		} else {
+			var pre_name = $("#deck0" + (i + 1)).val();
+			var card = $.grep(Cards, function (e) {
+				return e.name == pre_name;
+			})[0];
+			decksel_show(i + 1, card);
+		}
+	}
+	// quest select
+	$("#QstSel").val(data.quest);
+}
+
 // autocomplete指定 / deckload / Dialog
 $(function () {
-	// Load
-	deckdata_Load(null, Cards, function (data) {
-		Deckdata = data;
-		for (var i = 0; i < 5; i++) {
-			$("#deck0" + (i + 1)).attr("placeholder", "《精霊名を入力します》");
-			set_autocmp(i)();
-			if (Deckdata && Deckdata.deck[i].cardno > 0) {
-				decksel_show(i + 1, Deckdata.deck[i].carddata);
-			} else {
-				var pre_name = $("#deck0" + (i + 1)).val();
-				var card = $.grep(Cards, function (e) {
-					return e.name == pre_name;
-				})[0];
-				decksel_show(i + 1, card);
-			}
-		}
+	// Cards sort
+	Cards = Cards.sort(function (a, b) {
+		return a.imageno > b.imageno ? 1 : -1;
 	});
+	// Load
+	deckdata_Load(null, decksgg_loaddeck);
 	// Manaplus blink
 	var blink_interval = 3300;
 	var mana_blink = function () {
@@ -168,7 +182,7 @@ $(function () {
 			$("#deckload_cookie").html(opts);
 			// close when click dialog outside
 			$('.ui-widget-overlay').bind('click', function () {
-				$("#dialog_manaset").dialog('close');
+				$("#dialog_deck_load").dialog('close');
 			});
 		},
 		buttons: {
@@ -176,15 +190,7 @@ $(function () {
 				// Apply
 				sel_q = $("#deckload_cookie").val();
 				if (sel_q && sel_q != "") {
-					var dc = loaddeck_from_url(sel_q);
-					var qst = loadquest_from_url(sel_q);
-					for (var i = 0; i < dc.length; i++) {
-						Manaplus[i] = dc[i].mana;
-						decksel_show(i + 1, dc[i].card);
-					}
-					if (qst) {
-						$("#QstSel").val(qst.id);
-					}
+					deckdata_Load(sel_q, decksgg_loaddeck);
 				} else {
 					$("#dialog_noselect").dialog("open");
 				}
@@ -214,17 +220,20 @@ $(function () {
 					$("#dialog_noname").dialog("open");
 					return;
 				}
-				// Load
-				var ds = $.cookie("savedecks");
-				ds = ds ? JSON.parse(ds) : [];
-				// Add
-				ds.push({
-					name: $("#decksave_name").val(),
-					query: create_url(false),
-				});
-				// Save
-				$.cookie("savedecks", JSON.stringify(ds), {
-					expires: 1095,
+				var dd = deckdata_Apply(Deckdata, true);
+				deckdata_Create(dd, function (short) {
+					// Load
+					var ds = $.cookie("savedecks");
+					ds = ds ? JSON.parse(ds) : [];
+					// Add
+					ds.push({
+						name: $("#decksave_name").val(),
+						query: short,
+					});
+					// Save
+					$.cookie("savedecks", JSON.stringify(ds), {
+						expires: 1095,
+					});
 				});
 				$(this).dialog("close");
 			},
@@ -292,7 +301,7 @@ function set_autocmp(i) {
 					var rst = true;
 					rst = rst && value.name.toLowerCase().indexOf(req.term.toLowerCase()) >= 0;
 					rst = rst && value.as1.proc != null;
-					rst = rst || (req.term == "*all*" && !value.isorigin);
+					rst = rst || (req.term == "*all*" && value.imageno > 0 && !value.isorigin);
 					if (rst){
 						return {
 							label: value.name,
@@ -349,6 +358,7 @@ function decksel(i) {
 // 精霊情報から表示を行う
 function decksel_show(idx, c) {
 	if (c) {
+		// show
 		var AS = c.as2 ? c.as2 : c.as1;
 		var SS = c.ss2 ? c.ss2 : c.ss1;
 		$("#ally0" + idx + "_attr_main").attr("class", "attr_" + c.attr[0]);
@@ -389,6 +399,11 @@ function deck_reset_ready() {
 }
 function deck_reset() {
 	Deckdata = deckdata_DataTemplate();
+	for (var i = 0; i < 5; i++) {
+		decksel_show(i + 1, null);
+		$("#deck0" + (i + 1)).val("");
+	}
+	$("#QstSel").val("");
 }
 
 // デッキ読み込み、保存

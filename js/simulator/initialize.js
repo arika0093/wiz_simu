@@ -121,75 +121,84 @@ var Field_log = {
 // URLからデッキ/クエストを読み込む
 $(function () {
 	// load
-	var simDeck = loaddeck_from_url();
-	var simQuest = loadquest_from_url();
-	// check
-	if ((simDeck.length > 0 && simQuest !== undefined)) {
-		// 味方データを読み込む
-		Field.Allys.Deck = [];
-		Field.Allys.Now = new Array();
-		for (var i = 0; i < simDeck.length; i++) {
-			Field.Allys.Deck[i] = simDeck[i].card;
-			var card = simDeck[i].card;
-			var now = Field.Allys.Now[i] = {};
-			var mana = simDeck[i].mana;
-			// SS状態をリセット
-			now.ss_current = has_fastnum(card);	// SSチャージターン
-			now.ss_isfirst = true;	// SSをまだ発動していないかどうか
-			now.ss_isboost = false;	// スキブを受けたかどうか
-			now.islegend = false;
-			// 現在のステ
-			now.mana = mana;
-			now.maxhp = card.hp + mana;
-			now.nowhp = card.hp + mana;
-			now.atk = card.atk + mana;
-			now.target = [];
-			now.flags = {};
-			now.flags.skill_counter = [];
-			now.turn_effect = [];
-		}
-		// 潜在を反映させる
-		for (var i = 0; i < simDeck.length; i++) {
-			add_awake_ally(Field.Allys.Deck, Field.Allys.Now, i, is_legendmode(card, now));
-			// (0tレジェンドに入る精霊が出たらコメントアウト(ここでL時の潜在反映を同時に行うため))
-			// now.islegend = legend_timing_check(card, now);
-		}
-
-		// 敵データを読み込む
-		Field.Quest = simQuest;
-		// 出現順番
-		Field.Enemys.Popuplist = CreateEnemypopup(simQuest);
-		for (var i = 0; i < Field.Enemys.Popuplist.length; i++) {
-			var popup_enemys = simQuest.data[Field.Enemys.Popuplist[i]];
-			// 敵ステ
-			Field.Enemys.Data[i] = {};
-			var data = Field.Enemys.Data[i];
-			data.enemy = [];
-			for (var j = 0; j < popup_enemys.enemy.length; j++) {
-				data.enemy[j] = $.extend(true, {}, popup_enemys.enemy[j]);
-				data.enemy[j].nowhp = popup_enemys.enemy[j].hp;
-				data.enemy[j].flags = {};
-				data.enemy[j].flags.is_as_attack = [];
-				data.enemy[j].turn_effect = [];
+	var deckdata = deckdata_Load(null, function (data) {
+		// check
+		if (data != null) {
+			var simQuest = $.grep(Quests, function (e, i) {
+				return e.id == data.quest;
+			})[0];
+			// 味方データを読み込む
+			Field.Allys.Deck = [];
+			Field.Allys.Now = new Array();
+			for (var i = 0; i < data.deck.length; i++) {
+				// 精霊読み込み
+				var card = $.grep(Cards, function (e) {
+					return e.cardno == data.deck[i].cardno;
+				})[0];
+				if (!card) { continue; }
+				Field.Allys.Deck[i] = card;
+				// 現在のステ
+				var now = Field.Allys.Now[i] = {};
+				var mana = data.deck[i].mana;
+				now.mana = mana;
+				now.maxhp = card.hp + mana;
+				now.nowhp = card.hp + mana;
+				now.atk = card.atk + mana;
+				now.target = [];
+				now.flags = {};
+				now.flags.skill_counter = [];
+				now.turn_effect = [];
+				// SS状態をリセット
+				now.ss_current = has_fastnum(card);	// SSチャージターン
+				now.ss_isfirst = true;	// SSをまだ発動していないかどうか
+				now.ss_isboost = false;	// スキブを受けたかどうか
+				now.islegend = false;
 			}
+			// 潜在を反映させる
+			var dck = Field.Allys.Deck;
+			for (var i = 0; i < dck.length; i++) {
+				var card = dck[i];
+				add_awake_ally(dck, Field.Allys.Now, i, is_legendmode(card, now));
+				// (0tレジェンドに入る精霊が出たらコメントアウト(ここでL時の潜在反映を同時に行うため))
+				// now.islegend = legend_timing_check(card, now);
+			}
+
+			// 敵データを読み込む
+			Field.Quest = simQuest;
+			// 出現順番
+			Field.Enemys.Popuplist = CreateEnemypopup(simQuest);
+			for (var i = 0; i < Field.Enemys.Popuplist.length; i++) {
+				var popup_enemys = simQuest.data[Field.Enemys.Popuplist[i]];
+				// 敵ステ
+				Field.Enemys.Data[i] = {};
+				var data = Field.Enemys.Data[i];
+				data.enemy = [];
+				for (var j = 0; j < popup_enemys.enemy.length; j++) {
+					data.enemy[j] = $.extend(true, {}, popup_enemys.enemy[j]);
+					data.enemy[j].nowhp = popup_enemys.enemy[j].hp;
+					data.enemy[j].flags = {};
+					data.enemy[j].flags.is_as_attack = [];
+					data.enemy[j].turn_effect = [];
+				}
+			}
+			// 敵の処理
+			enemy_popup_proc();
+			// タゲリセット
+			target_allselect(-1);
+			// 初期状態を保存
+			Field_log.save(0, Field);
+			// 表示
+			$("#sim_log_inner").accordion({
+				active: false,
+				heightStyle: "content",
+				collapsible: true
+			});
+			sim_show();
+		} else {
+			$("#sim_info_status").html("#ERROR: URLが正しくありません。");
+			$(".panel_button").attr("disabled", "disabled");
 		}
-		// 敵の処理
-		enemy_popup_proc();
-		// タゲリセット
-		target_allselect(-1);
-		// 初期状態を保存
-		Field_log.save(0, Field);
-		// 表示
-		$("#sim_log_inner").accordion({
-			active: false,
-			heightStyle: "content",
-			collapsible: true
-		});
-		sim_show();
-	} else {
-		$("#sim_info_status").html("#ERROR: URLが正しくありません。");
-		$(".panel_button").attr("disabled", "disabled");
-	}
+	});
 });
 
 // 全読み込みが終わってから実行

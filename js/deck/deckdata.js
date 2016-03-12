@@ -6,20 +6,23 @@ function deckdata_DataTemplate(size) {
 	size = size || 5;
 	var data = {
 		quest: "",
-		questdata: {},
 		deck: [],
 	};
 	for (var i = 0; i < size; i++) {
-		data.deck.push($.extend(true, {}, {
-			cardno: -1,
-			carddata: {},
-			mana: 200,
-			awake: 0,
-			awake_default: 0,
-			crystal: [],
-		}));
+		data.deck.push(deckdata_DeckCardTemplate());
 	}
 	return data;
+}
+
+// deck内のテンプレートを生成する
+function deckdata_DeckCardTemplate() {
+	return $.extend(true, {}, {
+		cardno: 0,
+		mana: 200,
+		awake: -1,
+		awake_default: -1,
+		crystal: [],
+	});
 }
 
 // ------------------------------------
@@ -27,6 +30,7 @@ function deckdata_DataTemplate(size) {
 // ------------------------------------
 // dataを保存してURLを生成する
 function deckdata_Create(data, fc) {
+	deckdata_Apply(data, true);
 	deckdata_SaveUrl(data, function (result) {
 		var js = JSON.parse(result);
 		fc(js.short);
@@ -34,9 +38,9 @@ function deckdata_Create(data, fc) {
 }
 
 // クエリを読み込んでdataを引数に取る関数を実行する
-function deckdata_Load(query, cards, fc) {
+function deckdata_Load(query, fc) {
 	// get query
-	query = query || window.location.search;
+	query = query || window.location.search.substring(1);
 	// type check
 	if (query == "") {
 		fc(deckdata_DataTemplate(5));
@@ -44,20 +48,42 @@ function deckdata_Load(query, cards, fc) {
 		// new ver
 		deckdata_LoadUrl(query, function (result) {
 			var js = JSON.parse(result);
-			var data = JSON.parse(js.long);
-			for (var i = 0; i < data.deck.length; i++) {
-				var cd = data.deck[i];
-				cd.carddata = $.grep(cards, function (e) {
-					return e.cardno == cd.cardno;
-				})[0];
-			}
-			fc();
+			var data = js.long.length > 0 ? JSON.parse(js.long) : null;
+			fc(data);
 		});
 	} else {
 		// old ver
 		var data = deckdata_LoadOldUrl();
 		fc(data);
 	}
+}
+
+// 状況をdataに入れる
+function deckdata_Apply(data, ignore_check) {
+	var is_valid = false;
+	data = $.extend(true, {}, data || deckdata_DataTemplate(5));
+	// 状況取得(card)
+	for (var i = 0; i < 5; i++) {
+		var inp_name = $("#deck0" + (i + 1)).val();
+		if (inp_name != "") {
+			var crd = $.grep(Cards, function (e, i) {
+				return e.name == inp_name;
+			})[0];
+			data.deck[i].cardno = crd.cardno;
+			data.deck[i].awake_default = crd.awakes.length;
+			data.deck[i].awake = data.deck[i].awakes >= 0 ?
+				data.deck[i].awake : data.deck[i].awake_default;
+			is_valid = is_valid || crd.cardno > 0;
+		} else {
+			data.deck[i] = deckdata_DeckCardTemplate();
+		}
+	}
+	// 状況取得(quest)
+	var qst_name = $("#QstSel").val();
+	data.quest = qst_name;
+	is_valid = is_valid && qst_name.length > 0;
+	// 返却
+	return is_valid || ignore_check ? data : null;
 }
 
 // ------------------------------------
@@ -108,9 +134,8 @@ function deckdata_LoadOldUrl(oldquery) {
 			var card = $.extend(true, {}, $.grep(Cards, function (e, i) {
 				return e.cardno == cno;
 			})[0]);
-			if (card) {
+			if (card.cardno > 0) {
 				var awake_num = card.awakes.length;
-				dd.carddata = card;
 				dd.cardno = card.cardno;
 				dd.mana = (q_spl[1] ? Number(q_spl[1]) : 200);
 				dd.awake = awake_num;
@@ -121,7 +146,7 @@ function deckdata_LoadOldUrl(oldquery) {
 	if (q.length >= 6) {
 		data.quest = $.grep(Quests, function (e, i) {
 			return e.id == q[5];
-		})[0];
+		})[0].id;
 	}
 	return data;
 }

@@ -1,4 +1,4 @@
-// クエスト選択肢追加, URLからquest選択
+// クエスト選択肢追加
 $(function () {
 	var sel = document.getElementById('QstSel');
 	var seld = sel;
@@ -17,15 +17,6 @@ $(function () {
 		opt.value = Quests[i].id;
 		opt.appendChild(document.createTextNode(Quests[i].name));
 		seld.appendChild(opt);
-	}
-
-	var qst_id = "-1";
-	if (Deckdata) {
-		var qst_load = $.grep(Quests, function (e) {
-			return e.id == Deckdata.questdata.id;
-		})[0];
-		qst_id = qst_load ? qst_load.id : -1;
-		var opt = $("select[id='QstSel'] option[value=" + qst_id + "]").prop('selected', true);
 	}
 });
 
@@ -51,16 +42,17 @@ function optsel() {
 // シミュ開始
 function sim_start() {
 	// quest set
-	if (!Deckdata.quest_imple.id) {
-		Deckdata.quest = $("#QstSel").val();
-		if (Deckdata.quest == "") {
-			$("#dialog_sim_error").dialog("open");
-			return;
-		}
+	var dd = deckdata_Apply(Deckdata);
+	if (dd == null) {
+		$("#dialog_sim_error").dialog("open");
+		return false;
+	} else {
+		// redirect
+		deckdata_Create(dd, function (short) {
+			var redirect_url = '/simulator/p/?' + short;
+			location.href = redirect_url;
+		});
+		return true;
 	}
-	// redirect
-	deckdata_Create(Deckdata, function (short) {
-		var redirect_url = '/simulator/p/' + short;
-		location.href = redirect_url;
-	});
 }
+

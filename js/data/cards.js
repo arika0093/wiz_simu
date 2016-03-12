@@ -1062,7 +1062,7 @@ Cards = [{
 }, {
 	name: "マジカルアイドル エリーゼ・ハナエ",
 	cardno: 3646,
-	imageno: -1,
+	imageno: 2894,
 	hp: 2567,
 	atk: 2542,
 	cost: 34,
@@ -3296,7 +3296,7 @@ Cards = [{
 }, {
 	name: "時海の航海者 ダム・リフリス",
 	cardno: 3823,
-	imageno: -1,
+	imageno: 4268,
 	hp: 2422,
 	atk: 2812,
 	cost: 42,
@@ -20452,50 +20452,6 @@ Cards = [{
 	Lawake: [
 		Statusup(0,1000),
 		Statusup(1000,0),
-	],
-},{
-	name: "タフで実直、好青年 咲",
-	cardno: 5666,
-	imageno: 7467,
-	hp: 2702,
-	atk: 2750,
-	cost: 42,
-	attr: [2,-1],
-	species: [9],
-	islegend: true,
-	as1: {
-		desc: "水属性の敵単体へ特効3連撃(350%)",
-		proc: ChainDualAttrAttack(3.5, 0, 3, [0,1,0,0,0]),
-	},
-	ss1: {
-		desc: "敵全体のカウンターを解除する",
-		turn: 8,
-		proc: [ss_break_attackcounter("all")],
-	},
-	awakes: [
-		Panel_boost([0,0,1,0,0,],1),
-		Fastskill(1),
-		Statusup(0,200),
-		Panel_boost([0,0,1,0,0,],2),
-		Statusup(200,0),
-		Attr_statusup(200,0, [0,0,1,0,0,]),
-		Attr_statusup(0,100, [0,0,1,0,0,]),
-		Fastskill(2),
-		Spec_statusup(0,200, [9,]),
-		Spec_statusup(200,0, [9,]),
-	],
-	as2: {
-		desc: "水属性の敵単体へ特効3連撃、HP80%以上でさらにダメージアップ(400%/500%)",
-		proc: [ChainDualAttrAttack(4.0, 0, 3, [0,1,0,0,0]), add_cond(ChainDualAttrAttack(5.0, 0, 3, [0,1,0,0,0]), when_hp_more(0.80))],
-	},
-	ss2: {
-		desc: "敵全体のカウンターを解除し、雷属性のダメージ(180%)",
-		turn: 13,
-		proc: [ss_break_attackcounter("all"), ss_damage_all(1.8, [2])],
-	},
-	Lawake: [
-		Attr_statusup(0,100, [0,0,1,0,0,]),
-		Statusup(400,0),
 	],
 },{
 	name: "〈降臨〉魔晶の邪竜 ティアマト",
