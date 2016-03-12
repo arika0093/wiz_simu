@@ -546,16 +546,14 @@ function show_allystat(n) {
 function tweet_result() {
 	var win_opt = "menubar=no,toolbar=no,resizable=yes,scrollbars=no,width=640px,height=360px,top=40px,left=40px";
 	// URL生成して開く
-	var fc = function (d) {
-		var s_url = d.data.url || encodeURIComponent(fc.url);
-		fc.twurl = fc.twurl.replace(fc.url, s_url);
-		// 開く
-		window.open(fc.twurl, "tweet_result", win_opt);
-	};
-	create_tweeturl(Field.Quest.name, durturn_string(), totalturn_string(), fc);
-	// popup block対策
-	var w = window.open("", "tweet_result", win_opt);
-	w.document.write("loading...");
+	var url = absolutePath("/simulator/" + location.search);
+	var nam = Field.Quest.name;
+	var trn = durturn_string().replace("+", "%2B");
+	var tot = totalturn_string().replace("+", "%2B");
+	var text = "このデッキで " + nam + " を " + tot + " ターン(" + trn + ") で突破！%0A" + url;
+	var tweeturl = "https://twitter.com/intent/tweet?hashtags=wiz_simu" + "&text=" + text;
+	// 開く
+	window.open(tweeturl, "tweet_result", win_opt);
 }
 
 // fieldのログを読む

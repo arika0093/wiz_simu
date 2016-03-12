@@ -42,10 +42,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "simulator", "simulator", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deck", "deck", "{068E2C1D-35BD-43A6-826C-B09E82790769}"
 	ProjectSection(SolutionItems) = preProject
-		js\deck\createurl.js = js\deck\createurl.js
 		js\deck\deckdata.js = js\deck\deckdata.js
 		js\deck\decksuggest.js = js\deck\decksuggest.js
-		js\deck\loadurl.js = js\deck\loadurl.js
 		js\deck\questsel.js = js\deck\questsel.js
 	EndProjectSection
 EndProject
