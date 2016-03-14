@@ -4453,7 +4453,7 @@ Cards = [{
 	],
 	as1: {
 		desc: "5チェインで敵単体を3回連続攻撃、HP50％以下で5回連続攻撃になり更にダメージアップ(5チェイン：計400％ / HP50％以下：計600％)",
-		proc: [ChainDualAttack(4.0, 5, 3), add_cond(ChainDualAttack(6.0, 5, 3), when_hp_less(0.5))],
+		proc: [ChainDualAttack(4.0, 5, 3), add_cond(ChainDualAttack(6.0, 5, 5), when_hp_less(0.5))],
 	},
 	ss1: {
 		desc: "5ターン500以下の全属性ダメージを無効化する",
@@ -4467,7 +4467,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "敵単体を3回連続攻撃、HP50％以下で5回連続攻撃になり更にダメージアップ(通常：計400％ / HP50％以下：計600％)",
-		proc: [ChainDualAttack(4.0, 0, 3), add_cond(ChainDualAttack(6.0, 0, 3), when_hp_less(0.5))],
+		proc: [ChainDualAttack(4.0, 0, 3), add_cond(ChainDualAttack(6.0, 0, 5), when_hp_less(0.5))],
 	},
 	ss2: {
 		desc: "5ターン600以下の全属性ダメージを無効化する",
@@ -22302,7 +22302,7 @@ Cards = [{
 		Panel_boost([0, 0, 1, 0, 0, ], 2),
 		Statusup(200, 0),
 		Fastskill(2),
-		Abstate_invalid("poison"),,
+		Abstate_invalid("poison"),
 		Attr_statusup(200, 0, [1, 0, 1, 0, 0, ]),
 		Statusup(200, 0),
 		Attr_statusup(0, 200, [1, 0, 1, 0, 0, ]),
