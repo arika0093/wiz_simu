@@ -315,12 +315,20 @@ div.sim_start{
 	margin: 0 0 1ex 1px;
 }
 
-input.decksel{
-	margin: 4px;
+div.ally_others{
+	width: 100%;
 	float: left;
-	width: 70%;
-	max-width: 450px;
+	padding: 4px;
+	padding-left: 77px;
+	position: absolute;
+	box-sizing: border-box;
+}
+
+input.decksel{
+	width: 100%;
+	float: left;
 	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese";
+	box-sizing: border-box;
 }
 
 .ui-autocomplete{
@@ -347,8 +355,8 @@ input.decksel{
 }
 
 p.ally_skill{
-	width: 65%;
-	margin: -2px 0.5em 0 0;
+	width: 85%;
+	margin: 0px 0.5em 0 0;
 	padding: 0;
 	text-align: left;
 	float: right;

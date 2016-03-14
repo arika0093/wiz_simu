@@ -91,6 +91,16 @@ function Abstate_invalid(tg_type) {
 	};
 }
 
+// 効果値アップ潜在
+function Awake_SkillRateup(upval, skl_type, costup) {
+	return {
+		type: "awake_rateup",
+		skilltype: skl_type,
+		upvalue: upval,
+		cost: costup,
+	};
+}
+
 // その他、試走に影響を及ぼさない潜在
 function Awake_noeffect(name, efv) {
 	return {
