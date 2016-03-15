@@ -107,7 +107,6 @@ div.ally_image, div.enemy_image{
 	border-style: solid;
 	border-color: #A0A0A0;
 	position: relative;
-	z-index: 10;
 }
 
 img.chara_img, img.chara_img_dead, img.chara_img_impregnable {

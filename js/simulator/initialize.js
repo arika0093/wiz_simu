@@ -217,7 +217,7 @@ $(window).load(function () {
 function nextturn(is_ssfin) {
 	var f_st = Field.Status;
 	// 全滅していなかったら効果ターンを減少
-	reduce_turneffect();
+	reduce_turneffect(is_ssfin);
 	// 効果の継続確認
 	ss_continue_effect_check();
 	turn_effect_check(true);
