@@ -136,6 +136,11 @@ $(function () {
 					return e.cardno == data.deck[i].cardno;
 				})[0];
 				if (!card) { continue; }
+				// 潜在個数を反映
+				var awk_length = data.deck[i].awake;
+				if (awk_length >= 0 && awk_length !== card.awakes.length) {
+					card.awakes = card.awakes.slice(0, awk_length);
+				}
 				Field.Allys.Deck[i] = card;
 				// 現在のステ
 				var now = Field.Allys.Now[i] = {};
@@ -158,9 +163,10 @@ $(function () {
 			var dck = Field.Allys.Deck;
 			for (var i = 0; i < dck.length; i++) {
 				var card = dck[i];
+				var now = Field.Allys.Now[i];
 				add_awake_ally(dck, Field.Allys.Now, i, is_legendmode(card, now));
 				// (0tレジェンドに入る精霊が出たらコメントアウト(ここでL時の潜在反映を同時に行うため))
-				// now.islegend = legend_timing_check(card, now);
+				now.islegend = legend_timing_check(dck, Field.Allys.Now, i);
 			}
 
 			// 敵データを読み込む

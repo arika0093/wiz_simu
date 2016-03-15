@@ -71,8 +71,6 @@ function deckdata_Apply(data, ignore_check) {
 			})[0];
 			data.deck[i].cardno = crd.cardno;
 			data.deck[i].awake_default = crd.awakes.length;
-			data.deck[i].awake = data.deck[i].awakes >= 0 ?
-				data.deck[i].awake : data.deck[i].awake_default;
 			is_valid = is_valid || crd.cardno > 0;
 		} else {
 			data.deck[i] = deckdata_DeckCardTemplate();

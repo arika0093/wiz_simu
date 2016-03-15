@@ -141,7 +141,7 @@ $(function () {
 				var val = $("#d_mana_edit").spinner("value");
 				var aws = $("#d_awake_edit").spinner("value");
 				Deckdata.deck[ni].mana = val >= 0 ? val : 200;
-				Deckdata.deck[ni].awake = aws != cd_aws ? aws : -1;
+				Deckdata.deck[ni].awake = aws != cd_aws ? aws : cd_aws;
 				$("#ally0" + (ni + 1) + "_mana").text(Deckdata.deck[ni].mana
 					? "+" + Deckdata.deck[ni].mana : "");
 				$(this).dialog("close");
