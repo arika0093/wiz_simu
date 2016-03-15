@@ -348,22 +348,30 @@ function ss_skillboost(f) {
 // ------------------------------------------------------
 // フィールド干渉系
 // ------------------------------------------------------
-// 継続ダメージ
-// 例: ss_continue_damage(3.0, [0], 3);
-function ss_continue_damage(r, attrs, turn) {
+// 残滅SS
+// ss_continue_damage(SSでのダメージ率, 継続ダメージ率, ダメージ属性, 継続ターン数);
+function ss_continue_damage(dmg_r, cont_r, attrs, turn) {
 	return function (fld, n) {
-		var rate = ss_ratedo(r, fld, n);
+		// 参照用にコピーを取る
+		var now_state = $.extend(true, {}, fld.Allys.Now[n]);
+		// 効果値+100されている？(要検証)
+		dmg_r += 1;
+		cont_r += 1;
+		// 普通のダメージ
+		ss_damage_all(dmg_r, attrs)(fld, n);
+		// 継続効果追加
 		ss_continue_effect_add({
 			turn: turn,
 			lim_turn: turn,
 			index: n,
 			effect: function (f, oi, ceff) {
-				var now = f.Allys.Now[oi];
-				ss_damage_all(rate, attrs)(f, oi);
-				fld.log_push("Unit[" + (n + 1) + "]: 継続ダメージ発動(" + rate*100 + ")");
+				var f_copy = $.extend(true, {}, f);
+				f_copy.Allys.Now[oi] = now_state;
+				ss_damage_all(cont_r, attrs)(f_copy, oi);
+				fld.log_push("Unit[" + (n + 1) + "]: 継続ダメージ発動(" + cont_r * 100 + ")");
 			}
 		});
-		fld.log_push("Unit[" + (n+1) + "]: 継続ダメージSS(威力: " + rate*100 + ")");
+		fld.log_push("Unit[" + (n + 1) + "]: 継続ダメージSS(威力: " + cont_r * 100 + ")");
 		return true;
 	}
 }

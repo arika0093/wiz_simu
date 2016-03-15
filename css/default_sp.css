@@ -318,8 +318,7 @@ div.sim_start{
 div.ally_others{
 	width: 100%;
 	float: left;
-	padding: 4px;
-	padding-left: 77px;
+	padding: 4px 6px 4px 77px;
 	position: absolute;
 	box-sizing: border-box;
 }
