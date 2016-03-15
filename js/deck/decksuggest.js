@@ -4,7 +4,7 @@ var Deckdata = deckdata_DataTemplate();
 // deckdataからデッキを読み込んで指定する関数
 function decksgg_loaddeck(data) {
 	// deck select
-	Deckdata = data;
+	Deckdata = data || deckdata_DataTemplate();
 	for (var i = 0; i < 5; i++) {
 		$("#deck0" + (i + 1)).attr("placeholder", "《精霊名を入力します》");
 		set_autocmp(i+1)();
@@ -23,7 +23,7 @@ function decksgg_loaddeck(data) {
 		}
 	}
 	// quest select
-	$("#QstSel").val(data.quest);
+	$("#QstSel").val(Deckdata.quest);
 }
 
 // autocomplete指定 / deckload / Dialog
