@@ -365,10 +365,16 @@ function ss_continue_damage(dmg_r, cont_r, attrs, turn) {
 			lim_turn: turn,
 			index: n,
 			effect: function (f, oi, ceff) {
+				// 発動時の攻撃力などをコピーする
 				var f_copy = $.extend(true, {}, f);
 				f_copy.Allys.Now[oi] = now_state;
 				ss_damage_all(cont_r, attrs)(f_copy, oi);
 				fld.log_push("Unit[" + (n + 1) + "]: 継続ダメージ発動(" + cont_r * 100 + ")");
+				// SS状況を解除
+				var es = GetNowBattleEnemys();
+				for (var i = 0; i < es.length; i++) {
+					es[i].flags.is_ss_attack = false;
+				}
 			}
 		});
 		fld.log_push("Unit[" + (n + 1) + "]: 継続ダメージSS(威力: " + cont_r * 100 + ")");
