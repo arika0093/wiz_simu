@@ -385,11 +385,16 @@ div.ally_others{
 }
 
 input.decksel{
-	width: 100%;
+	width: 80%;
 	padding: 0px 2px;
 	float: left;
 	font-family: Meiryo, "ヒラギノ角ゴ Pro W3";
 	box-sizing: border-box;
+}
+
+button.ally_edit{
+	margin-left: 5px;
+	float: left;
 }
 
 .ui-autocomplete{
@@ -420,7 +425,7 @@ input.decksel{
 }
 
 p.ally_skill{
-	width: 85%;
+	width: 90%;
 	margin: 0px 0.5em -1px 0px;
 	padding: 0;
 	text-align: left;

@@ -86,6 +86,7 @@
 								</div>
                                 <div class="ally_others">
                                     <input class="decksel" id="deck01" onchange="decksel(1)" />
+                                    <button class="ally_edit" id="ally01_edit" onclick="open_deckedit(0)">潜在結晶</button>
                                     <p class="ally_skill" id="ally01_as"></p>
                                     <p class="ally_skill" id="ally01_ss"></p>
                                 </div>
@@ -99,6 +100,7 @@
 								</div>
                                 <div class="ally_others">
                                     <input class="decksel" id="deck02" onchange="decksel(2)" />
+                                    <button class="ally_edit" id="ally02_edit" onclick="open_deckedit(1)">潜在結晶</button>
                                     <p class="ally_skill" id="ally02_as"></p>
                                     <p class="ally_skill" id="ally02_ss"></p>
                                 </div>
@@ -112,6 +114,7 @@
 								</div>
                                 <div class="ally_others">
                                     <input class="decksel" id="deck03" onchange="decksel(3)" />
+                                    <button class="ally_edit" id="ally03_edit" onclick="open_deckedit(2)">潜在結晶</button>
                                     <p class="ally_skill" id="ally03_as"></p>
                                     <p class="ally_skill" id="ally03_ss"></p>
                                 </div>
@@ -125,6 +128,7 @@
 								</div>
                                 <div class="ally_others">
                                     <input class="decksel" id="deck04" onchange="decksel(4)" />
+                                    <button class="ally_edit" id="ally04_edit" onclick="open_deckedit(3)">潜在結晶</button>
                                     <p class="ally_skill" id="ally04_as"></p>
                                     <p class="ally_skill" id="ally04_ss"></p>
                                 </div>
@@ -138,6 +142,7 @@
 								</div>
                                 <div class="ally_others">
                                     <input class="decksel" id="deck05" onchange="decksel(5)" />
+                                    <button class="ally_edit" id="ally05_edit" onclick="open_deckedit(4)">潜在結晶</button>
                                     <p class="ally_skill" id="ally05_as"></p>
                                     <p class="ally_skill" id="ally05_ss"></p>
                                 </div>
@@ -186,6 +191,24 @@
 		<p id="d_awake_text">潜在解放の個数を指定してください。</p>
 		<input type=number class="edit_indialog" id="d_awake_edit" placeholder="《潜在の個数を指定》" />
 	</div>
+    <div class="dialog_div" id="dialog_allyedit" title="潜在結晶指定">
+        <div class="dialog_div" id="d_edit_index"></div>
+        <p>
+            潜在結晶の編集を行うことができます。[+]ボタンを押して追加を行ってください。<br/>
+            削除する場合は、項目を選択して[-]ボタンを押してください。
+        </p>
+        <select class="sel_indialog" id="allyedit_awakes" size="8"></select>
+    </div>
+    <div class="dialog_div" id="dialog_allyedit_awakeadd" title="潜在結晶追加">
+        <p>
+            潜在結晶の種類を選択して、効果値とコスト増加値を指定してください。
+        </p>
+        <select class="sel_indialog" id="allyedit_awakeadd_name">
+            <option value="-1">(未選択)</option>
+        </select>
+        <input type=number style="margin:1.6ex 0;" class="edit_indialog" id="ae_awake_value" placeholder="《効果値を指定》" />
+        <input type=number class="edit_indialog" id="ae_awake_cost" placeholder="《コスト増加値を指定：省略可》" />
+    </div>
 	<div class="dialog_div" id="dialog_deck_reset" title="Deck Reset">
 		<p>編集中のデッキをリセットしてよろしいですか？</p>
 	</div>

@@ -45,6 +45,8 @@ $(function () {
 	setInterval(mana_blink, blink_interval);
 
 	// Dialog
+	// ----------------------
+	// Error
 	$("#dialog_sim_error").dialog({
 		autoOpen: false,
 		width: 450,
@@ -55,6 +57,8 @@ $(function () {
 			},
 		},
 	});
+	// ----------------------
+	// Mana & Awake
 	$("#dialog_manaset").dialog({
 		autoOpen: false,
 		width: 450,
@@ -151,6 +155,101 @@ $(function () {
 			},
 		},
 	});
+	// ----------------------
+	// Awake Crystal
+	var allyedit_awake_reload = function () {
+		// show list
+		var n = Number($("#d_edit_index").text());
+		var aws = Deckdata.deck[n].crystal;
+		var opts = "";
+		for (var i = 0; i < aws.length; i++) {
+			opts += "<option value='" + i + "'>" + aws[i].display_text + "</option>";
+		}
+		$("#allyedit_awakes").html(opts);
+	};
+	$("#dialog_allyedit").dialog({
+		autoOpen: false,
+		width: 450,
+		modal: true,
+		open: function () {
+			allyedit_awake_reload();
+			// close when click dialog outside
+			$('.ui-widget-overlay').bind('click', function () {
+				$("#dialog_allyedit").dialog('close');
+			});
+		},
+		buttons: {
+			"+": function(){
+				$("#dialog_allyedit_awakeadd").dialog("open");
+			},
+			"-": function() {
+				sel_q = $("#allyedit_awakes").val();
+				if (sel_q && sel_q != "") {
+					var n = Number($("#d_edit_index").text());
+					var aws = Deckdata.deck[n].crystal;
+					aws.splice(Number(sel_q), 1);
+					allyedit_awake_reload();
+				} else {
+					$("#dialog_noselect").dialog("open");
+				}
+			},
+			"閉じる": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
+	$("#dialog_allyedit_awakeadd").dialog({
+		autoOpen: false,
+		width: 450,
+		modal: true,
+		open: function () {
+			// item add
+			var opts = "<option value='-1'>(未選択)</option>";
+			var aws = Awake_crystal_lists;
+			for (var i = 0; i < aws.length; i++) {
+				opts += "<option value='" + i + "'>" + aws[i].name + "</option>";
+			}
+			$("#allyedit_awakeadd_name").html(opts);
+			// value reset
+			$("#ae_awake_value").val("");
+			$("#ae_awake_cost").val("");
+		},
+		buttons: {
+			"OK": function () {
+				var sel_index = $("#allyedit_awakeadd_name").val();
+				if (sel_index && sel_index != "" && sel_index >= 0) {
+					var idx = Number(sel_index);
+					var awc_data = Awake_crystal_lists[idx];
+					// param replace
+					var pr_1 = typeof awc_data.param1 == "string" ? Number(
+							awc_data.param1.replace("{0}", $("#ae_awake_value").val())
+						) : awc_data.param1;
+					var pr_2 = typeof awc_data.param2 == "string" ? Number(
+							awc_data.param2.replace("{0}", $("#ae_awake_value").val())
+						) : awc_data.param2;
+					var pr_3 = typeof awc_data.param3 == "string" ? Number(
+							awc_data.param3.replace("{0}", $("#ae_awake_value").val())
+						): awc_data.param3;
+					var awake_c = awc_data.imple(pr_1, pr_2, pr_3);
+					// plus item
+					awake_c.display_text = awc_data.name + "(" + $("#ae_awake_value").val() + ")";
+					awake_c.add_cost = Number($("#ae_awake_cost").val());
+					// push
+					var n = Number($("#d_edit_index").text());
+					var aws = Deckdata.deck[n].crystal;
+					aws.push(awake_c);
+					// reload & close
+					allyedit_awake_reload();
+					$(this).dialog("close");
+				}
+			},
+			"Cancel": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
+	// ----------------------
+	// Deck Reset
 	$("#dialog_deck_reset").dialog({
 		autoOpen: false,
 		width: 450,
@@ -166,6 +265,8 @@ $(function () {
 			},
 		},
 	});
+	// ----------------------
+	// Deck Load & Save
 	$("#dialog_deck_load").dialog({
 		autoOpen: false,
 		width: 450,
@@ -242,6 +343,8 @@ $(function () {
 			},
 		},
 	});
+	// ----------------------
+	// Deck Delete
 	$("#dialog_deletedeck").dialog({
 		autoOpen: false,
 		width: 300,
@@ -267,6 +370,8 @@ $(function () {
 			},
 		},
 	});
+	// ----------------------
+	// Select Error
 	$("#dialog_noselect").dialog({
 		autoOpen: false,
 		width: 300,
@@ -391,6 +496,12 @@ function open_manaedit(n) {
 		$("#d_mana_dindex").text(n + "");
 		$("#dialog_manaset").dialog("open");
 	}
+}
+
+// 潜在結晶編集
+function open_deckedit(n) {
+	$("#d_edit_index").text(n + "");
+	$("#dialog_allyedit").dialog("open");
 }
 
 // デッキ情報をリセットする
