@@ -59,7 +59,7 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss)
 		" * チェイン(" + (1 + ch / 100) + ")" +
 		" * パネル(" + (pn.indexOf(atk_atr) >= 0 ? 1 : 0.5) + ")" +
 		" * 属性相性(" + attr_magnification(atk_atr, enemy.attr) + ")" +
-		" * 乱数(" + rnd + ")" +
+		" * 乱数(" + rnd.toFixed(2) + ")" +
 		(atkn > 1 ? " / 攻撃回数(" + atkn + ")" : "") +
 		" = ダメージ(" + d + ")"
 	);
@@ -177,5 +177,5 @@ function damage_rand() {
 		return r;
 	}
 	var rnd = Math.floor((Math.random() * 20)) / 100;
-	return (0.9 + rnd).toFixed(2);
+	return 0.9 + rnd;
 }

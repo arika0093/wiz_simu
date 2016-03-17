@@ -324,10 +324,19 @@ div.ally_others{
 }
 
 input.decksel{
-	width: 100%;
+	width: 70%;
 	float: left;
 	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese";
 	box-sizing: border-box;
+}
+
+button.ally_edit{
+	width: 25%;
+	margin-left: 5px;
+	float: left;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 .ui-autocomplete{

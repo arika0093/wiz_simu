@@ -136,12 +136,15 @@ $(function () {
 					return e.cardno == data.deck[i].cardno;
 				})[0];
 				if (!card) { continue; }
+				// 代入
+				var ally = Field.Allys.Deck[i] = $.extend(true, {}, card);
+				// 潜在結晶を追加
+				ally.crystal = data.deck[i].crystal;
 				// 潜在個数を反映
 				var awk_length = data.deck[i].awake;
-				if (awk_length >= 0 && awk_length !== card.awakes.length) {
-					card.awakes = card.awakes.slice(0, awk_length);
+				if (awk_length >= 0 && awk_length !== ally.awakes.length) {
+					ally.awakes = ally.awakes.slice(0, awk_length);
 				}
-				Field.Allys.Deck[i] = card;
 				// 現在のステ
 				var now = Field.Allys.Now[i] = {};
 				var mana = data.deck[i].mana;

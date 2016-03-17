@@ -10,6 +10,13 @@ function pickup_awakes(card, type, l_awakes) {
 		awakes = $.grep(card.awakes, function (e) {
 			return e.type == type;
 		});
+		// 潜在結晶の分も足す
+		if (card.crystal && card.crystal.length > 0) {
+			var awakes_cr = $.grep(card.crystal, function (e) {
+				return e.type == type;
+			});
+			awakes = awakes.concat(awakes_cr);
+		}
 	}
 	return awakes;
 }
@@ -77,9 +84,16 @@ function has_fastnum(card) {
 // コストを返す
 function card_cost(card) {
 	var cost = card.cost;
+	// cost down
 	var cd_awakes = pickup_awakes(card, "costdown", false);
 	for (var i = 0; i < cd_awakes.length; i++) {
 		cost -= cd_awakes[i].down;
+	}
+	// costup
+	if (card.crystal && card.crystal.length > 0) {
+		for (var i = 0; i < card.crystal.length; i++) {
+			cost += card.crystal[i].add_cost;
+		}
 	}
 	return cost;
 }

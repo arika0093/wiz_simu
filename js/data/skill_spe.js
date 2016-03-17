@@ -16,9 +16,16 @@ function ss_ratedo(r, fld, oi, ti, is_fst) {
 // (内部用)敵にSSダメージ
 function ss_damage(fld, r, atr, atkn, own, tg) {
 	var enemy = GetNowBattleEnemys(tg);
+	var card = fld.Allys.Deck[own];
 	var now = fld.Allys.Now[own];
 	var rnd = damage_rand();
-	attack_enemy(enemy, now, atr, ss_ratedo(r, fld, own, tg), atkn, [atr],
+	var rate = ss_ratedo(r, fld, own, tg);
+	// 潜在結晶考慮
+	var aw_c = pickup_awakes(card, "awake_rateup", false);
+	for (var i = 0; i < aw_c.length; i++) {
+		rate += Math.floor(aw_c[i].upvalue / 100);
+	}
+	attack_enemy(enemy, now, atr, rate, atkn, [atr],
 		fld.Status.chain, rnd, own, tg, true);
 	// SSフラグを立てる
 	enemy.flags.is_ss_attack = true;
