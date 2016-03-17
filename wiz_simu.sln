@@ -90,6 +90,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{96B04CAB-9
 	ProjectSection(SolutionItems) = preProject
 		js\data\cards.js = js\data\cards.js
 		js\data\quests.js = js\data\quests.js
+		js\data\stock\quests_b.js = js\data\stock\quests_b.js
 		js\data\skill_ans.js = js\data\skill_ans.js
 		js\data\skill_awake.js = js\data\skill_awake.js
 		js\data\skill_enemy.js = js\data\skill_enemy.js

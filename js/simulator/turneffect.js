@@ -170,7 +170,14 @@ function turneff_break_cond(teffs, index, func) {
 
 // 継続効果追加
 function ss_continue_effect_add(eff_obj) {
-	Field.Status.continue_eff.push(eff_obj);
+	// 重複してたら削除
+	var cont_effs = Field.Status.continue_eff;
+	cont_effs = cont_effs.filter(function (e) {
+		return e.type != eff_obj.type;
+	});
+	// 追加
+	cont_effs.push(eff_obj);
+	Field.Status.continue_eff = cont_effs;
 }
 
 // 継続効果の確認/発動/除外

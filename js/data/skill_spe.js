@@ -356,18 +356,18 @@ function ss_skillboost(f) {
 // フィールド干渉系
 // ------------------------------------------------------
 // 残滅SS
+// 効果値+100されている？(要検証)
 // ss_continue_damage(SSでのダメージ率, 継続ダメージ率, ダメージ属性, 継続ターン数);
 function ss_continue_damage(dmg_r, cont_r, attrs, turn) {
 	return function (fld, n) {
 		// 参照用にコピーを取る
 		var now_state = $.extend(true, {}, fld.Allys.Now[n]);
-		// 効果値+100されている？(要検証)
-		dmg_r += 1;
-		cont_r += 1;
 		// 普通のダメージ
-		ss_damage_all(dmg_r, attrs)(fld, n);
+		fld.log_push("Unit[" + (n + 1) + "]: 継続ダメージSS(威力: " + dmg_r * 100 + ")");
+		ss_damage_all(dmg_r + 1, attrs)(fld, n);
 		// 継続効果追加
 		ss_continue_effect_add({
+			type: "continue_damage",
 			turn: turn,
 			lim_turn: turn,
 			index: n,
@@ -375,8 +375,9 @@ function ss_continue_damage(dmg_r, cont_r, attrs, turn) {
 				// 発動時の攻撃力などをコピーする
 				var f_copy = $.extend(true, {}, f);
 				f_copy.Allys.Now[oi] = now_state;
-				ss_damage_all(cont_r, attrs)(f_copy, oi);
-				fld.log_push("Unit[" + (n + 1) + "]: 継続ダメージ発動(" + cont_r * 100 + ")");
+				// 継続ダメージ
+				fld.log_push("Unit[" + (n + 1) + "]: 継続ダメージ発動(" + (cont_r + 1) * 100 + ")");
+				ss_damage_all(cont_r + 1, attrs)(f_copy, oi);
 				// SS状況を解除
 				var es = GetNowBattleEnemys();
 				for (var i = 0; i < es.length; i++) {
@@ -384,7 +385,6 @@ function ss_continue_damage(dmg_r, cont_r, attrs, turn) {
 				}
 			}
 		});
-		fld.log_push("Unit[" + (n + 1) + "]: 継続ダメージSS(威力: " + cont_r * 100 + ")");
 		return true;
 	}
 }

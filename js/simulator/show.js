@@ -63,7 +63,7 @@ function sim_show() {
 				opacity: 0.75,
 				helper: "clone",
 				distance: 12,
-				zIndex: 51,
+				zIndex: 10,
 				start: function (event, ui) {
 					$("div.enemy").removeClass("selected_target");
 				}
