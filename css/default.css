@@ -395,6 +395,8 @@ input.decksel{
 button.ally_edit{
 	margin-left: 5px;
 	float: left;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .ui-autocomplete{
