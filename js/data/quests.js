@@ -143,10 +143,8 @@ Quests = [
 				attr: 2,
 				spec: 5,
 				move: {
-					on_popup: [
-						s_enemy_force_reservoir(),
-					],
 					on_move: [
+						m_enemy_once(s_enemy_force_reservoir()),
 						m_enemy_once(s_enemy_attack(2000, 5, 1, true)),
 						s_enemy_attack(1000, 5, 1, true),
 					],

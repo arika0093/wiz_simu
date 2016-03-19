@@ -154,7 +154,7 @@ function deckdata_GetOldQuery(qr) {
 	var result = [];
 	var q = qr ? qr : window.location.search;
 	if (1 < q.length) {
-		var query = q.substring(1);
+		var query = q.indexOf("?") == 0 ? q.substring(1) : q;
 		var parameters = query.split(',');
 		for (var i = 0; i < parameters.length; i++) {
 			var param = decodeURIComponent(parameters[i]);
