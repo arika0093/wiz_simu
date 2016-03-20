@@ -52,9 +52,22 @@
             <dt id="check">所持カードチェック</dt>
             <dd>
                 <div id="checklist"></div>
-                <div class="button" id="check_share" onclick="share_result()">所持状況をツイートする</div>
-                <div class="button" id="check_url" onclick="generate_url()">URL生成</div>
-            </dd>
+                <div class="button" id="check_url" onclick="generate_url()">所持状況をツイートする / URL生成</div>
+                <div class="button" id="reset_check" onclick="reset_check()">リセット</div>
+                <!-- Adsense -->
+                <div class="Adsense">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- advertise -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-5156005489853976"
+                         data-ad-slot="6536828444"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+           </dd>
         </dl>
     </div>
 
@@ -63,7 +76,10 @@
 
     <!-- Dialog Contents -->
     <div class="dialog_div" id="dialog_url_generate" title="URL生成">
-        <p>以下のURLをコピーしてください。</p>
+        <p>
+            以下のURLからアクセスすることで復元を行うことができます。<br/>
+            また、「ツイート」ボタンを押すことでURLをツイートすることができます。
+        </p>
         <input readonly class="edit_indialog" id="edit_generate_url" />
     </div>
 

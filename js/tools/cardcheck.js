@@ -26,7 +26,14 @@ $(function () {
 		width: 450,
 		modal: true,
 		buttons: {
-			"OK": function () {
+			"ツイート": function(){
+				var win_opt = "menubar=no,toolbar=no,resizable=yes,scrollbars=no,width=640px,height=360px,top=40px,left=40px";
+				var url = $("#edit_generate_url").val();
+				var text = "【黒猫のウィズ】所持精霊チェックリスト で手持ち精霊を確認！ " + url;
+				var tweeturl = "https://twitter.com/intent/tweet?" + "text=" + text;
+				window.open(tweeturl, "share_result", win_opt);
+			},
+			"閉じる": function () {
 				$(this).dialog("close");
 			},
 		},
@@ -97,18 +104,6 @@ function card_uncheck(e) {
 	//return false;
 }
 
-// 結果をツイートする
-function share_result() {
-	deckdata_SaveUrl(Mylist, function (result) {
-		var win_opt = "menubar=no,toolbar=no,resizable=yes,scrollbars=no,width=640px,height=360px,top=40px,left=40px";
-		var js = JSON.parse(result);
-		var url = absolutePath("/tools/cardcheck/") + "?" + js.short;
-		var text = "【黒猫のウィズ】所持精霊チェックリスト で手持ち精霊を確認！ " + url;
-		var tweeturl = "https://twitter.com/intent/tweet?" + "text=" + text;
-		window.open(tweeturl, "share_result", win_opt);
-	});
-}
-
 // URL生成
 function generate_url() {
 	deckdata_SaveUrl(Mylist, function (result) {
@@ -116,6 +111,15 @@ function generate_url() {
 		$("#edit_generate_url").val(absolutePath("/tools/cardcheck/") + "?" + js.short);
 		$("#dialog_url_generate").dialog("open");
 	});
+}
+
+// 初期化
+function reset_check() {
+	Mylist = {
+		type: "cardcheck",
+	};
+	// 表示リロード
+	list_reload();
 }
 
 // 相対パス → 絶対パス
