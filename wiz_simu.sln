@@ -14,6 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wiz_simu", "wiz_simu", "{54
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{85B9F527-E148-41E4-A8C0-04BBF26A1A24}"
 	ProjectSection(SolutionItems) = preProject
+		css\cardcheck.css = css\cardcheck.css
 		css\deck.css = css\deck.css
 		css\default.css = css\default.css
 		css\default_sp.css = css\default_sp.css
@@ -97,6 +98,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{96B04CAB-9
 		js\data\skill_spe.js = js\data\skill_spe.js
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{AEC9F07D-08AF-4D00-AC3F-C5ED1357D47A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "checklist", "checklist", "{DFE3E61F-799E-4929-A8EB-C18F25816D3D}"
+	ProjectSection(SolutionItems) = preProject
+		tools\cardcheck\index.html = tools\cardcheck\index.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{A0A97AF9-4ED6-4739-BF95-F6ADF2893576}"
+	ProjectSection(SolutionItems) = preProject
+		js\tools\cardcheck.js = js\tools\cardcheck.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "checklist", "checklist", "{6110B869-4D42-4806-BC9F-A19816DD6CE3}"
+	ProjectSection(SolutionItems) = preProject
+		js\data\checkdata.js = js\data\checkdata.js
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -116,5 +134,9 @@ Global
 		{031B42DC-7DAF-4295-96B4-08D8BB8B77B1} = {5738BAEF-BA1D-4206-8CED-09AD35F0B80B}
 		{F34AC30C-80B0-4B03-A688-A1169FB82C9D} = {20D7A7D8-822B-4D68-AEF0-9127E62A819F}
 		{96B04CAB-98A1-4735-96F8-80788F25C391} = {20D7A7D8-822B-4D68-AEF0-9127E62A819F}
+		{AEC9F07D-08AF-4D00-AC3F-C5ED1357D47A} = {5738BAEF-BA1D-4206-8CED-09AD35F0B80B}
+		{DFE3E61F-799E-4929-A8EB-C18F25816D3D} = {AEC9F07D-08AF-4D00-AC3F-C5ED1357D47A}
+		{A0A97AF9-4ED6-4739-BF95-F6ADF2893576} = {20D7A7D8-822B-4D68-AEF0-9127E62A819F}
+		{6110B869-4D42-4806-BC9F-A19816DD6CE3} = {96B04CAB-98A1-4735-96F8-80788F25C391}
 	EndGlobalSection
 EndGlobal

@@ -40,7 +40,7 @@ function deckdata_Create(data, fc) {
 // クエリを読み込んでdataを引数に取る関数を実行する
 function deckdata_Load(query, fc) {
 	// get query
-	query = query || window.location.search.substring(1);
+	query = (query || window.location.search).substring(1);
 	// type check
 	if (query == "") {
 		fc(deckdata_DataTemplate(5));
@@ -53,7 +53,7 @@ function deckdata_Load(query, fc) {
 		});
 	} else {
 		// old ver
-		var data = deckdata_LoadOldUrl();
+		var data = deckdata_LoadOldUrl(query);
 		fc(data);
 	}
 }

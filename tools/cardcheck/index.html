@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px)" />
+    <link rel="stylesheet" type="text/css" href="/css/cardcheck.css" />
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="/download/slicknav/slicknav.css" />
+    <!-- Search -->
+    <meta name="robots" content="all" />
+    <meta name="keywords" content="黒猫,ウィズ,魔法使いと黒猫のウィズ,チェック,ツール,ガチャ" />
+    <meta name="description" content="「魔法使いと黒猫のウィズ」ガチャ産精霊の所持状況を確認することができるツールです。" />
+    <!-- Top Page -->
+    <title>所持精霊チェックリスト - WizTools</title>
+</head>
+<body>
+    <!-- Loader -->
+    <div id="loader"><img src="/image/loading.gif" alt="Loading..." /></div>
+    <noscript id="loadnoscr">このページはjavascriptを使用しています。有効にしたのち再度アクセスしてください。</noscript>
+    <div id="fade"></div>
+
+   <!-- Header -->
+    <div id="Header"></div>
+
+    <!-- Main Contents -->
+    <div class="Main">
+        <dl class="List">
+            <dt>このツールについて</dt>
+            <dd id="tool_info">
+                <div class="info">
+                    「魔法使いと黒猫のウィズ」ガチャ産精霊の所持状況を確認することができるツールです。<br />
+                    左クリック/タップでチェック状況を切り替えることができます。<br />
+                    <b>※現在ウィズセレ精霊のみに対応しています。</b><br />
+                </div>
+                <!-- Adsense -->
+                <div class="Adsense">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- advertise -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-5156005489853976"
+                         data-ad-slot="6536828444"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </dd>
+            <dt id="check">所持カードチェック</dt>
+            <dd>
+                <div id="checklist"></div>
+                <div class="button" id="check_share" onclick="share_result()">所持状況をツイートする</div>
+                <div class="button" id="check_url" onclick="generate_url()">URL生成</div>
+            </dd>
+        </dl>
+    </div>
+
+    <!-- Footer -->
+    <div id="Footer"></div>
+
+    <!-- Dialog Contents -->
+    <div class="dialog_div" id="dialog_url_generate" title="URL生成">
+        <p>以下のURLをコピーしてください。</p>
+        <input readonly class="edit_indialog" id="edit_generate_url" />
+    </div>
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="/download/slicknav/jquery.slicknav.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/loader.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/deck/deckdata.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/checkdata.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/tools/cardcheck.js"></script>
+</body>
+</html>

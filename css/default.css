@@ -39,6 +39,20 @@ p.highlight{
 	border-radius: 5px;
 	padding: 1ex 1em;
 }
+div.button{
+	display: inline-block;
+	margin: 0 0.3em;
+	padding: 1.5ex 1em;
+	text-align: center;
+	color: #2080FF;
+	border: 1px solid #60C0FF;
+	border-radius: 3px;
+}
+div.button:hover {
+	border: 1px solid #40B0FF;
+	background-color: #98efff;
+	cursor: pointer;
+}
 a.blocklink{
 	display: block;
 	width: 80%;
@@ -52,6 +66,7 @@ a.blocklink{
 a.blocklink:hover{
 	border: 1px solid #40B0FF;
 	background-color: #98efff;
+	cursor: pointer;
 }
 
 div.linklist{

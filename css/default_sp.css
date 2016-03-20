@@ -41,6 +41,15 @@ p.highlight{
 	border-radius: 5px;
 	padding: 1ex 1em;
 }
+div.button{
+	box-sizing: border-box;
+	padding: 2ex 1em;
+	margin-bottom: 1ex;
+	text-align: center;
+	color: #2080FF;
+	border: 1px solid #60C0FF;
+	border-radius: 3px;
+}
 a.blocklink{
 	box-sizing: border-box;
 	display: block;
@@ -53,7 +62,6 @@ a.blocklink{
 	border: 1px solid #60C0FF;
 	border-radius: 5px;
 }
-
 div.linklist{
 	box-sizing: border-box;
 	width: 100%;

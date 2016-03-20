@@ -1,0 +1,50 @@
+﻿div#checklist{
+	margin: 0.5ex 0 1ex 0;
+}
+
+div.type_box{
+	width: 100%;
+	margin: 1ex 0 0.5ex 0;
+	padding-left: 1em;
+	text-align: left;
+	background: #eee;
+	padding: 1ex;
+	box-sizing: border-box;
+}
+
+div.chara_box{
+	display: inline-block;
+	padding: 0.5ex;
+}
+
+div.no_possess{
+	-webkit-filter: brightness(35%) saturate(60%);
+	-moz-filter: brightness(35%) saturate(60%);
+	-o-filter: brightness(35%) saturate(60%);
+	filter: brightness(35%) saturate(60%);
+}
+
+div.possess{
+	position: relative;
+}
+div.possess:after{
+	content: url("/image/check.png");
+	display: block;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+@media screen and (min-width: 600px){
+	img.chara_image{
+		width: 96px;
+		height: 96px;
+	}
+}
+
+@media screen and (max-width: 599px){
+	img.chara_image{
+		width: 72px;
+		height: 72px;
+	}
+}
