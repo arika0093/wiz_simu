@@ -1,0 +1,226 @@
+// --------------------------
+// 定義リスト
+// --------------------------
+var Cardlist = [{
+	// --------------------------
+	// ウィズセレ SSスタート
+	type: "ウィズセレクション SS精霊"
+}, {
+	name: "ラト",
+	imageno: 4357,
+}, {
+	name: "ベアトリーゼ",
+	imageno: 4993,
+}, {
+	name: "タケル",
+	imageno: 5212,
+}, {
+	name: "エルト",
+	imageno: 5568,
+}, {
+	name: "ズローヴァ",
+	imageno: 5571,
+}, {
+	name: "クラヴィル",
+	imageno: 5565,
+}, {
+	name: "カプレイ",
+	imageno: 5562,
+}, {
+	name: "マーガレット",
+	imageno: 5703,
+}, {
+	name: "リツェーレ",
+	imageno: 5695,
+}, {
+	name: "アリエッタ",
+	imageno: 5900,
+}, {
+	name: "シェイナ",
+	imageno: 5897,
+}, {
+	name: "シール",
+	imageno: 5891,
+}, {
+	name: "エリオット",
+	imageno: 5894,
+}, {
+	name: "ルナリィ",
+	imageno: 5888,
+}, {
+	name: "アルドベリグ",
+	imageno: 6306,
+}, {
+	name: "ルシエラ",
+	imageno: 6310,
+}, {
+	name: "リセル",
+	imageno: 6314,
+}, {
+	name: "ミラノ",
+	imageno: 6318,
+}, {
+	name: "リエン",
+	imageno: 7256,
+}, {
+	name: "ダムザ",
+	imageno: 7259,
+}, {
+	name: "ガトリン",
+	imageno: 7262,
+}, {
+	name: "アデレード",
+	imageno: 7502,
+}, {
+	name: "イニュー",
+	imageno: 7505,
+}, {
+	name: "ザハール",
+	imageno: 7508,
+}, {
+	// --------------------------
+	// ウィズセレ Aスタート
+	type: "ウィズセレクション A精霊"
+}, {
+	name: "イザヴェリ",
+	imageno: 5670,
+}, {
+	name: "シャロン",
+	imageno: 5669,
+}, {
+	name: "シャミア",
+	imageno: 5820,
+}, {
+	name: "ソラナ",
+	imageno: 5883,
+}, {
+	name: "ルミィ",
+	imageno: 5671,
+}, {
+	name: "エリアナ",
+	imageno: 5884,
+}, {
+	name: "リヴェータ",
+	imageno: 5885,
+}, {
+	name: "リティカ",
+	imageno: 6169,
+}, {
+	name: "ユウェル",
+	imageno: 6168,
+}, {
+	name: "リルム",
+	imageno: 6167,
+}, {
+	name: "クルス",
+	imageno: 6294,
+}, {
+	name: "セレサ",
+	imageno: 6289,
+}, {
+	name: "ヴァルザイン",
+	imageno: 6251,
+}, {
+	name: "アカリ",
+	imageno: 6443,
+}, {
+	name: "カマラ",
+	imageno: 6444,
+}, {
+	name: "セドリック",
+	imageno: 6298,
+}, {
+	name: "ユピナ",
+	imageno: 6445,
+}, {
+	name: "セティエ",
+	imageno: 6446,
+}, {
+	name: "オーギュスト",
+	imageno: 6447,
+}, {
+	name: "イズロム",
+	imageno: 6585,
+}, {
+	name: "ルフ",
+	imageno: 6586,
+}, {
+	name: "カーナ",
+	imageno: 6587,
+}, {
+	name: "フリーレ",
+	imageno: 6793,
+}, {
+	name: "ヘルミーナ",
+	imageno: 6795,
+}, {
+	name: "キュウマ",
+	imageno: 6794,
+}, {
+	name: "ラーミナ",
+	imageno: 7071,
+}, {
+	name: "ルドヴィカ",
+	imageno: 6174,
+}, {
+	name: "マサキ",
+	imageno: 7371,
+}, {
+	name: "ユペール",
+	imageno: 7372,
+}, {
+	name: "プラーミャ",
+	imageno: 7373,
+}, {
+	name: "クリネア",
+	imageno: 7072,
+}, {
+	name: "グレイス",
+	imageno: 7514,
+}, {
+	name: "ダリオ",
+	imageno: 4099,
+}, {
+	name: "エレクトラ",
+	imageno: 7614,
+}, {
+	name: "ミナカ",
+	imageno: 2980,
+}, {
+	name: "エル",
+	imageno: 2156,
+}, {
+	name: "ラパパ",
+	imageno: 2157,
+}, {
+	name: "キシャラ",
+	imageno: 7234,
+}, {
+	name: "ヒルデ",
+	imageno: 3835,
+}, {
+	name: "ディートリヒ",
+	imageno: 6583,
+}, {
+	name: "チュレ",
+	imageno: 4308,
+}, {
+	name: "ミオ",
+	imageno: 4945,
+}, {
+	name: "ラスル",
+	imageno: 4954,
+}, ];
+
+
+// --------------------------
+// 精霊所持状況(詳細)
+// --------------------------
+var Cardstate = [{
+	state: "未所持",
+	style: "no_possess",
+}, {
+	state: "所持",
+	style: "possess",
+}, ];
+
