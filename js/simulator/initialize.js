@@ -167,9 +167,9 @@ $(function () {
 			for (var i = 0; i < dck.length; i++) {
 				var card = dck[i];
 				var now = Field.Allys.Now[i];
-				add_awake_ally(dck, Field.Allys.Now, i, is_legendmode(card, now));
-				// (0tレジェンドに入る精霊が出たらコメントアウト(ここでL時の潜在反映を同時に行うため))
-				now.islegend = legend_timing_check(dck, Field.Allys.Now, i);
+				add_awake_ally(dck, Field.Allys.Now, i, false);
+				// 0tレジェンド精霊用
+				legend_timing_check(dck, Field.Allys.Now, i);
 			}
 
 			// 敵データを読み込む

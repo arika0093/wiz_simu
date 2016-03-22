@@ -134,7 +134,7 @@ function auto_attack_order(enemys, attr, own_index) {
 	// 攻撃順序が指定されているならそっちを優先
 	var fst_attr = Field.Allys.Deck[own_index].attr[0];
 	var now = Field.Allys.Now[own_index];
-	var tg = (attr == fst_attr ? now.target[0] : now.target[1]);
+	var tg = Number(attr == fst_attr ? now.target[0] : now.target[1]);
 	for (var i = tg; i > 0; i--) {
 		if (enemys[i]) { break; }
 		else { tg--; }

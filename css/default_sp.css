@@ -17,6 +17,10 @@ body{
 	background-color: #FFFFFF;
 }
 
+select{
+	-webkit-appearance:none;
+}
+
 a,a:visited{
 	color: #0040FF;
 }

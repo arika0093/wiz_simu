@@ -60,6 +60,8 @@ function m_enemy_tgtype_minhp() {
 function damage_switch(cond, func, is_always) {
 	var rst = m_create_enemy_move(function (fld, n) {
 		var enemy = GetNowBattleEnemys(n);
+		var on_cond = m_enemy_once(func);
+		on_cond.count = 0;
 		enemy.turn_effect.push({
 			desc: null,
 			type: "damage_switch",
