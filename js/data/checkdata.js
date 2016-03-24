@@ -191,7 +191,7 @@ var Cardlist = [{
 	imageno: 2156,
 }, {
 	name: "ラパパ",
-	imageno: 2157,
+	imageno: 7700,
 }, {
 	name: "キシャラ",
 	imageno: 7234,
@@ -200,7 +200,7 @@ var Cardlist = [{
 	imageno: 3835,
 }, {
 	name: "ディートリヒ",
-	imageno: 6583,
+	imageno: 7702,
 }, {
 	name: "チュレ",
 	imageno: 4308,

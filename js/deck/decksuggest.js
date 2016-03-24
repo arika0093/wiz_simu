@@ -402,11 +402,14 @@ function set_autocmp(i) {
 			minLength: 2,
 			delay: 500,
 			source: function (req, resp) {
+				var term = req.term.toLowerCase();
+				var roma2kana = r2k(req.term);
 				resp($.map(Cards, function (value, key) {
 					var rst = true;
-					rst = rst && value.name.toLowerCase().indexOf(req.term.toLowerCase()) >= 0;
+					rst = rst && value.name.toLowerCase().indexOf(term) >= 0;
+					rst = rst || value.name.indexOf(roma2kana) >= 0;
 					rst = rst && value.as1.proc != null;
-					rst = rst || (req.term == "*all*" && value.imageno > 0 && !value.isorigin);
+					rst = rst || (term == "*all*" && value.imageno > 0 && !value.isorigin);
 					if (rst){
 						return {
 							label: value.name,

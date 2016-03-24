@@ -88,15 +88,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "useful", "useful", "{F34AC3
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{96B04CAB-98A1-4735-96F8-80788F25C391}"
-	ProjectSection(SolutionItems) = preProject
-		js\data\cards.js = js\data\cards.js
-		js\data\quests.js = js\data\quests.js
-		js\data\stock\quests_b.js = js\data\stock\quests_b.js
-		js\data\skill_ans.js = js\data\skill_ans.js
-		js\data\skill_awake.js = js\data\skill_awake.js
-		js\data\skill_enemy.js = js\data\skill_enemy.js
-		js\data\skill_spe.js = js\data\skill_spe.js
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{AEC9F07D-08AF-4D00-AC3F-C5ED1357D47A}"
 EndProject
@@ -113,6 +104,17 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "checklist", "checklist", "{6110B869-4D42-4806-BC9F-A19816DD6CE3}"
 	ProjectSection(SolutionItems) = preProject
 		js\data\checkdata.js = js\data\checkdata.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "simulator", "simulator", "{BCFDD952-DA01-482D-92BB-385F6779CFA3}"
+	ProjectSection(SolutionItems) = preProject
+		js\data\cards.js = js\data\cards.js
+		js\data\quests.js = js\data\quests.js
+		js\data\stock\quests_b.js = js\data\stock\quests_b.js
+		js\data\skill_ans.js = js\data\skill_ans.js
+		js\data\skill_awake.js = js\data\skill_awake.js
+		js\data\skill_enemy.js = js\data\skill_enemy.js
+		js\data\skill_spe.js = js\data\skill_spe.js
 	EndProjectSection
 EndProject
 Global
@@ -138,5 +140,6 @@ Global
 		{DFE3E61F-799E-4929-A8EB-C18F25816D3D} = {AEC9F07D-08AF-4D00-AC3F-C5ED1357D47A}
 		{A0A97AF9-4ED6-4739-BF95-F6ADF2893576} = {20D7A7D8-822B-4D68-AEF0-9127E62A819F}
 		{6110B869-4D42-4806-BC9F-A19816DD6CE3} = {96B04CAB-98A1-4735-96F8-80788F25C391}
+		{BCFDD952-DA01-482D-92BB-385F6779CFA3} = {96B04CAB-98A1-4735-96F8-80788F25C391}
 	EndGlobalSection
 EndGlobal

@@ -426,6 +426,7 @@ button.ally_edit{
 	float: left;
 }
 .ui-autocomplete a{
+	width: 280px;
 	margin-left: 1em;
 	float: left;
 }

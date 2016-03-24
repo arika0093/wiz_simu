@@ -10702,7 +10702,7 @@ Cards = [{
 	ss2: {
 		desc: "チェインがプラス1の効果、さらに敵全体へ水属性のダメージ(150％)",
 		turn: 7,
-		proc: [panel_chainplus(1), ss_damage_all(1.8, [1])]
+		proc: [ss_addchain(1), ss_damage_all(1.8, [1])]
 	},
 }, {
 	name: "時忘れの新感覚 ユッカ",
@@ -17042,9 +17042,9 @@ Cards = [{
 		proc: ChainAttrAttack(7, 4, [0,1,0,0,0])
 	},
 	ss2: {
-		desc: "敵単体へ雷・光属性の5回連続ダメージ(380%)、5チェインを消費しさらにダメージアップ(720%)",
+		desc: "敵単体へ雷・光属性の5回連続ダメージ(380%)、5チェインを消費しさらにダメージアップ(760%)",
 		turn: 8,
-		proc: [ss_damage_s(ss_chain_cost(5, 7.2, 3.8), [2, 3], 5)]
+		proc: [ss_damage_s(ss_chain_cost(5, 7.6, 3.8), [2, 3], 5)]
 	},
 }, {
 	name: "兄妹正月 クィントゥス＆レノックス",
@@ -20046,7 +20046,9 @@ Cards = [{
 		Attr_statusup(0,100, [1,0,0,0,0,]),
 		Statusup(400,0),
 	],
-}, {
+},
+/*
+{
 	name: "バレンタインのチョコレート",
 	cardno: 90022,
 	imageno: 2162,
@@ -20070,7 +20072,9 @@ Cards = [{
 		Spec_statusup(1940, 0, [10, ]),
 		Spec_statusup(0, 1940, [10, ]),
 	],
-}, {
+},
+*/
+{
 	name: "協調の神世界 ミカエラ・セラフィム",
 	cardno: 5132,
 	imageno: 6875,
@@ -25680,7 +25684,8 @@ Cards = [{
 		Panel_boost([0,0,1,0,0,],2),
 		Fastskill(2),
 		Attr_statusup(200,0, [1,0,1,0,0,]),
-		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Attr_statusup(0, 200, [1, 0, 1, 0, 0, ]),
+		Awake_noeffect("ドロップアップ", 1),
 	],
 	as2: {
 		desc: "雷属性の攻撃力をアップ、複属性が火属性だとさらにアップ(60%/100%)",
