@@ -403,7 +403,7 @@ function set_autocmp(i) {
 			delay: 500,
 			source: function (req, resp) {
 				var term = req.term.toLowerCase();
-				var roma2kana = r2k(req.term);
+				var roma2kana = $.trim(r2k(req.term));
 				resp($.map(Cards, function (value, key) {
 					var rst = true;
 					rst = rst && value.name.toLowerCase().indexOf(term) >= 0;

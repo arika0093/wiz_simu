@@ -565,6 +565,52 @@ function damage_block_all(bl, t) {
 	});
 }
 
+// 属性ガード(単体)
+function s_enemy_attrguard_own(attr, rate, turn) {
+	return m_create_enemy_move(function (fld, n) {
+		var enemy = GetNowBattleEnemys(n);
+		// 属性表記
+		var attr_text = "";
+		for (var i = 0; i < attr.length; i++) {
+			if (attr[i] > 0) {
+				if (attr_text != "") {
+					attr_text += "/";
+				}
+				attr_text += fld.Constants.Attr[i];
+			}
+		}
+		// 追加
+		enemy.turn_effect.push({
+			desc: attr_text + "属性ガード(" + (rate * 100) + "%)",
+			type: "attr_guard",
+			icon: "attr_guard",
+			isdual: false,
+			turn: turn,
+			lim_turn: turn,
+			priority: 1,
+			effect: function () { },
+			on_damage: function (fld, dmg, atr_i) {
+				if (attr[atr_i] > 0) {
+					return dmg * rate;
+				} else {
+					return dmg;
+				}
+			}
+		});
+		Field.log_push("Enemy[" + (n + 1) + "]: [" + attr_text + "]属性ガード(" + (rate * 100) + "%)");
+	});
+}
+
+// 属性ガード(全体)
+function s_enemy_attrguard_all(attr, rate, turn) {
+	return m_create_enemy_move(function (fld, n) {
+		var enemys = GetNowBattleEnemys();
+		for (var i = 0; i < enemys.length; i++) {
+			s_enemy_attrguard_own(attr, rate, turn).move(fld, i);
+		}
+	});
+}
+
 // 鉄壁防御
 function impregnable(t) {
 	return m_create_enemy_move(function (fld, n) {
@@ -640,6 +686,20 @@ function s_enemy_heal_own(rate) {
 		e.nowhp = Math.min(e.nowhp +heal_v, e.hp);
 		fld.log_push("Enemy[" +(i +1) + "]: HP回復(" +heal_v + ")");
 	}); 
+}
+
+// 全蘇生
+function s_enemy_resurrection(rate) {
+	return m_create_enemy_move(function (fld, n) {
+		var es = GetNowBattleEnemys();
+		$.each(es, function (i, e) {
+			var heal_v = e.hp * rate;
+			if (e.nowhp <= 0) {
+				e.nowhp = heal_v;
+			}
+			fld.log_push("Enemy[" + (i + 1) + "]: 蘇生(" + rate + "%)");
+		})
+	});
 }
 
 // 力溜め
