@@ -170,10 +170,11 @@ p.sitedetail{
 	display: none;
 	position: absolute;
 	top: 0px;
-	right: 0px;
+	left: 0px;
 	margin: 0.5ex 0.5em;
 	color: #4493e5;
 	text-align: right;
+	opacity: 0.85;
 }
 
 #menu {
