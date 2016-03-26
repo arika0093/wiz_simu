@@ -587,7 +587,7 @@ function s_enemy_attrguard_own(attr, rate, turn) {
 			isdual: false,
 			turn: turn,
 			lim_turn: turn,
-			priority: 1,
+			priority: 3,
 			effect: function () { },
 			on_damage: function (fld, dmg, atr_i) {
 				if (attr[atr_i] > 0) {

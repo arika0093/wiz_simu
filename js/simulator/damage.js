@@ -33,7 +33,7 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss)
 			if (a.priority < b.priority) return +1;
 		})
 		for (var j = 0; j < skillct.length; j++) {
-			d = skillct[j].on_damage(Field, d);
+			d = Math.round(skillct[j].on_damage(Field, d, atk_atr));
 		}
 	}
 
