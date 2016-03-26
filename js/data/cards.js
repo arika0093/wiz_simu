@@ -17745,7 +17745,7 @@ Cards = [{
 		Panel_boost([0,0,1,0,0,],2),
 		Attr_statusup(100,0, [0,0,1,0,0,]),
 		Fastskill(2),
-		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
 	],
 	as2: {
 		desc: "7チェインで水属性の敵単体へ特効ダメージ(875%)",
