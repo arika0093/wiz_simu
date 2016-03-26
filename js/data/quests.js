@@ -391,10 +391,8 @@ Quests = [
 					on_move: [
 						s_enemy_attack(125, 5, 1, true)
 					],
-					on_angry: [
-						s_enemy_resurrection(0.5),
-					],
 					on_move_angry: [
+						m_enemy_once(s_enemy_resurrection(0.5)),
 						s_enemy_attack(60, 3, 5, true),
 					],
 					atrandom: false,
