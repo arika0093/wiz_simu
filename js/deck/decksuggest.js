@@ -404,10 +404,12 @@ function set_autocmp(i) {
 			source: function (req, resp) {
 				var term = req.term.toLowerCase();
 				var roma2kana = $.trim(r2k(req.term));
+				var hira2kana = $.trim(h2k(req.term));
 				resp($.map(Cards, function (value, key) {
 					var rst = true;
 					rst = rst && value.name.toLowerCase().indexOf(term) >= 0;
 					rst = rst || value.name.indexOf(roma2kana) >= 0;
+					rst = rst || value.name.indexOf(hira2kana) >= 0;
 					rst = rst && value.as1.proc != null;
 					rst = rst || (term == "*all*" && value.imageno > 0 && !value.isorigin);
 					if (rst){

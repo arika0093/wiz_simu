@@ -78,3 +78,15 @@ function r2k(roman) {
   }
   return katakana;
 }
+
+// from: https://gist.github.com/kawanet/5553478 (thanks!)
+/** hiragana -> katakana
+ * @param {String} src - hiragana
+ * @returns {String} - katakana
+ */
+function h2k(src) {
+	return src.replace(/[\u3041-\u3096]/g, function(match) {
+		var chr = match.charCodeAt(0) + 0x60;
+		return String.fromCharCode(chr);
+	});
+}

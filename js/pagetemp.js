@@ -1,5 +1,10 @@
 // template page loader
 $(function () {
+	// iframe対策
+	if (window != parent) {
+		top.location.href = document.location.href;
+	}
+	// コンテンツ読み込み
 	$("#Header").load("/template/header.html", function () {
 		$('#menu').slicknav({
 			label: "",
