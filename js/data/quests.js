@@ -4,41 +4,48 @@
 // -------------------------
 Quests = [
 	// -------------------------
-	// (2016/03)イベントトーナメント: 覇級
+	// April fooooool
 	// -------------------------
 	{
-		id: "1603ev_h",
-		name: "(2016/03)イベントトーナメント 覇級",
-		category: "event tornament",
-		desc: "2016/03に開催された魔道杯のイベントトーナメント覇級です。",
+		id: "af_2016",
+		name: "陸式(トーナメント16段)",
+		category: "tornament",
+		desc: "2016年度も頑張りましょう",
 		overlap: false,
 		aprnum: 5,
 		data: [{
 			appearance: [1],
 			enemy: [{
 				name: "花咲ける森の王 ビッグカリフー",
-				hp: 15000,
-				imageno: 7831,
-				attr: 3,
-				spec: 5,
+				hp: 20000,
+				imageno: 7168,
+				attr: 0,
+				spec: 6,
 				move: {
+					on_popup: [
+						s_enemy_division(),
+					],
 					on_move: [
-						m_enemy_once(s_enemy_chain_sealed(3)),
-						s_enemy_attack(500, 5, 1, true),
+						s_enemy_attack(100, 3, 3, true),
+						s_enemy_chain_sealed(5),
 					],
 					atrandom: false,
-					turn: 2,
+					turn: 1,
 					wait: 1,
 				},
 			}, {
-				name: "花咲ける森の王 ビッグカリフー",
-				hp: 30000,
-				imageno: 7831,
-				attr: 3,
+				name: "紅鏡サーチャー",
+				hp: 25000,
+				imageno: 3728,
+				attr: 0,
 				spec: 5,
 				move: {
+					on_popup: [
+						damage_block_own(20000, 2),
+						s_enemy_division(),
+					],
 					on_move: [
-						s_enemy_attack(200, 5, 3, true)
+						s_enemy_attack(300, 5, 1, true)
 					],
 					atrandom: false,
 					turn: 1,
@@ -48,86 +55,64 @@ Quests = [
 		}, {
 			appearance: [2],
 			enemy: [{
-				name: "肥えた大地の魔草 プラティー",
-				hp: 25000,
-				imageno: 7183,
+				name: "レナ(雷)",
+				hp: 15000,
+				imageno: 6370,
 				attr: 2,
-				spec: 7,
+				spec: 9,
 				move: {
+					on_popup: [
+						skill_counter_func(s_enemy_ss_sealed, "SP封印", -1, false, 5, 6),
+					],
 					on_move: [
-						m_enemy_once(s_enemy_attrguard_all([1, 1, 1, 0, 0], 0.5, 4)),
-						s_enemy_attack(300, 5, 3, true),
+						s_enemy_force_reservoir(),
+						s_enemy_attack(5000/3, 5, 1, true),
 					],
 					atrandom: false,
-					turn: 2,
+					turn: 1,
 					wait: 1,
 				},
 			}, {
-				name: "花咲ける森の王 ビッグカリフー",
-				hp: 25000,
-				imageno: 7831,
-				attr: 3,
-				spec: 5,
+				name: "レナ(火)",
+				hp: 25,
+				imageno: 5415,
+				attr: 0,
+				spec: 9,
 				move: {
 					on_popup: [
-						attack_counter_dual(500, 4)
+						impregnable(-1),
+						s_enemy_division(),
 					],
 					on_move: [
-						s_enemy_attack(300, 5, 3, true)
+						m_enemy_once(attack_counter_dual(700, 5)),
+						s_enemy_attack(1000, 5, 1, true),
 					],
 					atrandom: false,
-					turn: 2,
-					wait: 2,
-				},
+					turn: 1,
+					wait: 1,
+				}
 			}, ],
 		}, {
 			appearance: [3],
 			enemy: [{
-				name: "肥えた大地の魔草 プラティー",
-				hp: 10,
-				imageno: 7183,
-				attr: 2,
-				spec: 7,
+				name: "エリス",
+				hp: 90000,
+				imageno: 6373,
+				attr: 1,
+				spec: 9,
 				move: {
 					on_popup: [
-						impregnable(-1),
+						s_enemy_chain_break(),
+						skill_counter_func(s_enemy_chain_break, "チェイン解除", -1, false),
+						damage_switch(s_enemy_when_hpdown(0.8), m_enemy_angry()),
 					],
 					on_move: [
-						s_enemy_attack(300, 5, 1, true),
+						m_enemy_once(s_enemy_as_sealed(5, 7)),
+						m_enemy_once(s_enemy_poison(1000, 5, 4)),
+						s_enemy_attack(2000/2, 5, 1, true),
 					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				}
-			}, {
-				name: "花咲ける森の王 ビッグカリフー",
-				hp: 25000,
-				imageno: 7831,
-				attr: 3,
-				spec: 5,
-				move: {
-					on_popup: [
-						skill_counter_func(s_enemy_attack, "全体400の5連撃", -1, false, 200, 5, 5),
-					],
-					on_move: [
-						s_enemy_attack(500, 5, 1, true),
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				}
-			}, {
-				name: "肥えた大地の魔草 プラティー",
-				hp: 10,
-				imageno: 7183,
-				attr: 2,
-				spec: 7,
-				move: {
-					on_popup: [
-						impregnable(-1),
-					],
-					on_move: [
-						s_enemy_attack(300, 5, 1, true),
+					on_angry: [
+						s_enemy_cursed(2500, 5, 3)
 					],
 					atrandom: false,
 					turn: 1,
@@ -137,342 +122,134 @@ Quests = [
 		}, {
 			appearance: [4],
 			enemy: [{
-				name: "肥えた大地の魔草 プラティー",
-				hp: 60000,
-				imageno: 7183,
-				attr: 2,
-				spec: 7,
+				name: "リルム",
+				hp: 100000,
+				imageno: 6167,
+				attr: 0,
+				spec: 9,
 				move: {
-					on_popup: [
-						s_enemy_force_reservoir(),
-					],
 					on_move: [
-						m_enemy_once(s_enemy_attack(3000, 5, 1, true)),
-						s_enemy_attack(1500, 5, 1, true),
-					],
-					atrandom: false,
-					turn: 2,
-					wait: 2,
-				},
-			}, {
-				name: "遭遇する伝説のスノウフッド",
-				hp: 120000,
-				imageno: 7190,
-				attr: 2,
-				spec: 5,
-				move: {
-					on_popup: [
-						damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
-					],
-					on_move: [
-						s_enemy_attack(300, 5, 3, true),
-						s_enemy_attack(600, 5, 1, true),
-					],
-					on_angry: [
-						attr_change(3),
-					],
-					on_move_angry: [
-						s_enemy_attack(400, 5, 3, true),
+						s_enemy_chain_break(),
+						s_enemy_attack(1000, 5, 1, true),
 					],
 					atrandom: false,
 					turn: 1,
 					wait: 1,
 				},
 			}, {
-				name: "肥えた大地の魔草 プラティー",
-				hp: 60000,
-				imageno: 7183,
-				attr: 2,
-				spec: 7,
+				name: "エターナル・ロア",
+				hp: 160000,
+				imageno: 6377,
+				attr: 0,
+				spec: 9,
 				move: {
+					on_popup: [
+						attack_counter_dual(700, 3),
+						damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
+					],
 					on_move: [
-						s_enemy_force_reservoir(),
-						s_enemy_attack(3000, 5, 1, true),
+						s_enemy_attack(300, 3, 3, true),
+					],
+					on_angry: [
+						attr_change(4)
+					],
+					on_move_angry: [
+						s_enemy_attack(800, 3, 3, true),
 					],
 					atrandom: false,
-					turn: 2,
-					wait: 2,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "ソフィ",
+				hp: 50000,
+				imageno: 6367,
+				attr: 2,
+				spec: 9,
+				move: {
+					on_popup: [
+						damage_switch(s_enemy_when_dead(0), m_enemy_angry(), true),
+					],
+					on_move: [
+						s_enemy_attack(500/2.25, 1, 1, true),
+					],
+					on_angry: [
+						skill_counter_func(s_enemy_attack, "全体6連撃", -1, false, 800/2.25, 5, 6),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
 				},
 			}, ],
 		}, {
 			appearance: [5],
 			enemy: [{
-				name: "肥えた大地の魔草 プラティー",
-				hp: 15,
-				imageno: 7183,
+				name: "アリエッタ(雷)",
+				hp: 40000,
+				imageno: 7576,
 				attr: 2,
-				spec: 7,
+				spec: 9,
 				move: {
 					on_popup: [
-						impregnable(-1),
+						attack_counter_dual(700, 4),
 					],
 					on_move: [
-						s_enemy_attack(300, 1, 1, true),
+						s_enemy_attack(300/2.25, 3, 5, true),
+						s_enemy_chain_break(),
 					],
 					atrandom: false,
 					turn: 1,
 					wait: 1,
 				},
 			}, {
-				name: "遭遇する伝説のスノウフッド",
-				hp: 150000,
-				imageno: 7830,
-				attr: 3,
-				spec: 5,
+				name: "アリエッタ(火)",
+				hp: 600000,
+				imageno: 6361,
+				attr: 0,
+				spec: 9,
 				move: {
 					on_popup: [
-						skill_counter_func(s_enemy_deathlimit, "死の秒針(3T)", -1, false, 5, 3),
-						damage_switch(s_enemy_when_dead_l(), m_enemy_angry(), true),
+						skill_counter_func(s_enemy_healrebase, "回復反転(50%)", -1, false, 0.5, 5),
+						damage_switch(s_enemy_when_hpdown(0.5), m_enemy_angry(), true),
 					],
 					on_move: [
-						s_enemy_attack(350, 5, 3, true),
+						m_enemy_once(s_enemy_attack_ratio(0.9, 5, false)),
+						s_enemy_attack(200, 3, 5, true),
 					],
 					on_angry: [
-						s_enemy_attack_ratio(0.9, 5, false),
+						attr_change(1),
 					],
 					on_move_angry: [
-						s_enemy_attack(350, 5, 5, true),
+						m_enemy_once(s_enemy_attack_ratio(0.9, 5, false)),
+						m_enemy_once(s_enemy_as_sealed(5, 7)),
+						s_enemy_attack(500, 3, 5, true),
 					],
 					atrandom: false,
 					turn: 1,
 					wait: 1,
 				},
 			}, {
-				name: "花咲ける森の王 ビッグカリフー",
-				hp: 30000,
-				imageno: 7831,
-				attr: 3,
-				spec: 5,
+				name: "アリエッタ(水)",
+				hp: 160000,
+				imageno: 5900,
+				attr: 1,
+				spec: 9,
 				move: {
+					on_popup: [
+						skill_counter_func(s_enemy_poison, "毒(1000)", -1, false, 1000, 5, 5),
+					],
 					on_move: [
-						m_enemy_once(s_enemy_healrebase(0.5, 2)),
-						s_enemy_attack(200, 5, 3, true),
+						s_enemy_discharge(5, 2),
+						s_enemy_attack(300/1.5, 3, 5, true),
 					],
 					atrandom: false,
-					turn: 2,
+					turn: 1,
 					wait: 1,
 				},
 			}, ],
 		}, ],
 	},
-	// -------------------------
-	// (2016/03)イベントトーナメント: 絶級
-	// -------------------------
-	{
-		id: "1603ev_z",
-		name: "(2016/03)イベントトーナメント 絶級",
-		category: "event tornament",
-		desc: "2016/03に開催された魔道杯のイベントトーナメント絶級です。",
-		overlap: false,
-		aprnum: 5,
-		data: [{
-			appearance: [1],
-			enemy: [{
-				name: "赤い灯火 シャンデリッパー",
-				hp: 45000,
-				imageno: 7173,
-				attr: 0,
-				spec: 6,
-				move: {
-					on_move: [
-						s_enemy_attack(300, 5, 1, true)
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}, {
-				name: "青い灯火 シャンデリッパー",
-				hp: 37500,
-				imageno: 7175,
-				attr: 1,
-				spec: 6,
-				move: {
-					on_move: [
-						m_enemy_once(s_enemy_attr_weaken([0, 1, 0, 0, 0], 1.5, 5, 4)),
-						s_enemy_attack(200, 5, 1, true)
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}, ],
-		}, {
-			appearance: [2],
-			enemy: [{
-				name: "赤い灯火 シャンデリッパー",
-				hp: 45000,
-				imageno: 7173,
-				attr: 0,
-				spec: 6,
-				move: {
-					on_popup: [
-						s_enemy_healrebase(0.5, 5)
-					],
-					on_move: [
-						s_enemy_attack(300, 5, 1, true)
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}, {
-				name: "血に染まる本 ザップテイル",
-				hp: 30000,
-				imageno: 7149,
-				attr: 0,
-				spec: 6,
-				move: {
-					on_move: [
-						s_enemy_attack(500, 5, 1, true)
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}, ],
-		}, {
-			appearance: [3],
-			enemy: [{
-				name: "赤い灯火 シャンデリッパー",
-				hp: 52500,
-				imageno: 7173,
-				attr: 0,
-				spec: 6,
-				move: {
-					on_move: [
-						s_enemy_attack(500, 1, 1, true)
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}, {
-				name: "赤い灯火 シャンデリッパー",
-				hp: 52500,
-				imageno: 7173,
-				attr: 0,
-				spec: 6,
-				move: {
-					on_move: [
-						s_enemy_attack(500, 1, 1, true)
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}, ],
-		}, {
-			appearance: [4],
-			enemy: [{
-				name: "血に染まる本 ザップテイル",
-				hp: 30000,
-				imageno: 7149,
-				attr: 0,
-				spec: 6,
-				move: {
-					on_popup: [
-						s_enemy_healrebase(0.5, 3)
-					],
-					on_move: [
-						s_enemy_attack(300, 5, 1, true)
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}, {
-				name: "青い灯火 シャンデリッパー",
-				hp: 48800,
-				imageno: 7175,
-				attr: 1,
-				spec: 6,
-				move: {
-					on_popup: [
-						damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
-					],
-					on_move: [
-						s_enemy_attack(125, 5, 1, true)
-					],
-					on_move_angry: [
-						m_enemy_once(s_enemy_resurrection(0.5)),
-						s_enemy_attack(60, 3, 5, true),
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}, {
-				name: "赤い灯火 シャンデリッパー",
-				hp: 45000,
-				imageno: 7173,
-				attr: 0,
-				spec: 6,
-				move: {
-					on_move: [
-						s_enemy_attack(500, 1, 1, true)
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 2,
-				},
-			}, ],
-		}, {
-			appearance: [5],
-			enemy: [{
-				name: "血塗られた物語 ザップテイル",
-				hp: 30,
-				imageno: 7150,
-				attr: 0,
-				spec: 6,
-				move: {
-					on_popup: [
-						impregnable(-1),
-					],
-					on_move: [
-						s_enemy_healrebase(0.5, 2),
-						s_enemy_attack(350, 1, 1, true)
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}, {
-				name: "燃え盛る灯火 シャンデリッパー",
-				hp: 120000,
-				imageno: 7174,
-				attr: 0,
-				spec: 6,
-				move: {
-					on_popup: [
-						skill_counter_func(damage_block_all, "ダメブロ全体(20000)", -1, false, 20000, 10),
-					],
-					on_move: [
-						s_enemy_attack(160, 5, 5, true)
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 1,
-				},
-			}, {
-				name: "血塗られた物語 ザップテイル",
-				hp: 60000,
-				imageno: 7150,
-				attr: 0,
-				spec: 6,
-				move: {
-					on_move: [
-						s_enemy_attrguard_all([0, 1, 0, 0, 0], 0.5, 5),
-						s_enemy_healrebase(0.5, 2),
-						s_enemy_attack(350, 5, 1, true),
-					],
-					atrandom: false,
-					turn: 1,
-					wait: 2,
-				},
-			}, ],
-		}],
-	},
+
 
 	// -------------------------
 	// トーナメント: 伍式
@@ -1428,7 +1205,476 @@ Quests = [
 		}, ],
 	},
 
-
+	// -------------------------
+	// (2016/03)イベントトーナメント: 覇級
+	// -------------------------
+	{
+		id: "1603ev_h",
+		name: "(2016/03)イベントトーナメント 覇級",
+		category: "past event",
+		desc: "2016/03に開催された魔道杯のイベントトーナメント覇級です。",
+		overlap: false,
+		aprnum: 5,
+		data: [{
+			appearance: [1],
+			enemy: [{
+				name: "花咲ける森の王 ビッグカリフー",
+				hp: 15000,
+				imageno: 7831,
+				attr: 3,
+				spec: 5,
+				move: {
+					on_move: [
+						m_enemy_once(s_enemy_chain_sealed(3)),
+						s_enemy_attack(500, 5, 1, true),
+					],
+					atrandom: false,
+					turn: 2,
+					wait: 1,
+				},
+			}, {
+				name: "花咲ける森の王 ビッグカリフー",
+				hp: 30000,
+				imageno: 7831,
+				attr: 3,
+				spec: 5,
+				move: {
+					on_move: [
+						s_enemy_attack(200, 5, 3, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, ],
+		}, {
+			appearance: [2],
+			enemy: [{
+				name: "肥えた大地の魔草 プラティー",
+				hp: 25000,
+				imageno: 7183,
+				attr: 2,
+				spec: 7,
+				move: {
+					on_move: [
+						m_enemy_once(s_enemy_attrguard_all([1, 1, 1, 0, 0], 0.5, 4)),
+						s_enemy_attack(300, 5, 3, true),
+					],
+					atrandom: false,
+					turn: 2,
+					wait: 1,
+				},
+			}, {
+				name: "花咲ける森の王 ビッグカリフー",
+				hp: 25000,
+				imageno: 7831,
+				attr: 3,
+				spec: 5,
+				move: {
+					on_popup: [
+						attack_counter_dual(500, 4)
+					],
+					on_move: [
+						s_enemy_attack(300, 5, 3, true)
+					],
+					atrandom: false,
+					turn: 2,
+					wait: 2,
+				},
+			}, ],
+		}, {
+			appearance: [3],
+			enemy: [{
+				name: "肥えた大地の魔草 プラティー",
+				hp: 10,
+				imageno: 7183,
+				attr: 2,
+				spec: 7,
+				move: {
+					on_popup: [
+						impregnable(-1),
+					],
+					on_move: [
+						s_enemy_attack(300, 5, 1, true),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				}
+			}, {
+				name: "花咲ける森の王 ビッグカリフー",
+				hp: 25000,
+				imageno: 7831,
+				attr: 3,
+				spec: 5,
+				move: {
+					on_popup: [
+						skill_counter_func(s_enemy_attack, "全体400の5連撃", -1, false, 200, 5, 5),
+					],
+					on_move: [
+						s_enemy_attack(500, 5, 1, true),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				}
+			}, {
+				name: "肥えた大地の魔草 プラティー",
+				hp: 10,
+				imageno: 7183,
+				attr: 2,
+				spec: 7,
+				move: {
+					on_popup: [
+						impregnable(-1),
+					],
+					on_move: [
+						s_enemy_attack(300, 5, 1, true),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				}
+			}, ],
+		}, {
+			appearance: [4],
+			enemy: [{
+				name: "肥えた大地の魔草 プラティー",
+				hp: 60000,
+				imageno: 7183,
+				attr: 2,
+				spec: 7,
+				move: {
+					on_popup: [
+						s_enemy_force_reservoir(),
+					],
+					on_move: [
+						m_enemy_once(s_enemy_attack(3000, 5, 1, true)),
+						s_enemy_attack(1500, 5, 1, true),
+					],
+					atrandom: false,
+					turn: 2,
+					wait: 2,
+				},
+			}, {
+				name: "遭遇する伝説のスノウフッド",
+				hp: 120000,
+				imageno: 7190,
+				attr: 2,
+				spec: 5,
+				move: {
+					on_popup: [
+						damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
+					],
+					on_move: [
+						s_enemy_attack(300, 5, 3, true),
+						s_enemy_attack(600, 5, 1, true),
+					],
+					on_angry: [
+						attr_change(3),
+					],
+					on_move_angry: [
+						s_enemy_attack(400, 5, 3, true),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "肥えた大地の魔草 プラティー",
+				hp: 60000,
+				imageno: 7183,
+				attr: 2,
+				spec: 7,
+				move: {
+					on_move: [
+						s_enemy_force_reservoir(),
+						s_enemy_attack(3000, 5, 1, true),
+					],
+					atrandom: false,
+					turn: 2,
+					wait: 2,
+				},
+			}, ],
+		}, {
+			appearance: [5],
+			enemy: [{
+				name: "肥えた大地の魔草 プラティー",
+				hp: 15,
+				imageno: 7183,
+				attr: 2,
+				spec: 7,
+				move: {
+					on_popup: [
+						impregnable(-1),
+					],
+					on_move: [
+						s_enemy_attack(300, 1, 1, true),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "遭遇する伝説のスノウフッド",
+				hp: 150000,
+				imageno: 7830,
+				attr: 3,
+				spec: 5,
+				move: {
+					on_popup: [
+						skill_counter_func(s_enemy_deathlimit, "死の秒針(3T)", -1, false, 5, 3),
+						damage_switch(s_enemy_when_dead_l(), m_enemy_angry(), true),
+					],
+					on_move: [
+						s_enemy_attack(350, 5, 3, true),
+					],
+					on_angry: [
+						s_enemy_attack_ratio(0.9, 5, false),
+					],
+					on_move_angry: [
+						s_enemy_attack(350, 5, 5, true),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "花咲ける森の王 ビッグカリフー",
+				hp: 30000,
+				imageno: 7831,
+				attr: 3,
+				spec: 5,
+				move: {
+					on_move: [
+						m_enemy_once(s_enemy_healrebase(0.5, 2)),
+						s_enemy_attack(200, 5, 3, true),
+					],
+					atrandom: false,
+					turn: 2,
+					wait: 1,
+				},
+			}, ],
+		}, ],
+	},
+	// -------------------------
+	// (2016/03)イベントトーナメント: 絶級
+	// -------------------------
+	{
+		id: "1603ev_z",
+		name: "(2016/03)イベントトーナメント 絶級",
+		category: "past event",
+		desc: "2016/03に開催された魔道杯のイベントトーナメント絶級です。",
+		overlap: false,
+		aprnum: 5,
+		data: [{
+			appearance: [1],
+			enemy: [{
+				name: "赤い灯火 シャンデリッパー",
+				hp: 45000,
+				imageno: 7173,
+				attr: 0,
+				spec: 6,
+				move: {
+					on_move: [
+						s_enemy_attack(300, 5, 1, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "青い灯火 シャンデリッパー",
+				hp: 37500,
+				imageno: 7175,
+				attr: 1,
+				spec: 6,
+				move: {
+					on_move: [
+						m_enemy_once(s_enemy_attr_weaken([0, 1, 0, 0, 0], 1.5, 5, 4)),
+						s_enemy_attack(200, 5, 1, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, ],
+		}, {
+			appearance: [2],
+			enemy: [{
+				name: "赤い灯火 シャンデリッパー",
+				hp: 45000,
+				imageno: 7173,
+				attr: 0,
+				spec: 6,
+				move: {
+					on_popup: [
+						s_enemy_healrebase(0.5, 5)
+					],
+					on_move: [
+						s_enemy_attack(300, 5, 1, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "血に染まる本 ザップテイル",
+				hp: 30000,
+				imageno: 7149,
+				attr: 0,
+				spec: 6,
+				move: {
+					on_move: [
+						s_enemy_attack(500, 5, 1, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, ],
+		}, {
+			appearance: [3],
+			enemy: [{
+				name: "赤い灯火 シャンデリッパー",
+				hp: 52500,
+				imageno: 7173,
+				attr: 0,
+				spec: 6,
+				move: {
+					on_move: [
+						s_enemy_attack(500, 1, 1, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "赤い灯火 シャンデリッパー",
+				hp: 52500,
+				imageno: 7173,
+				attr: 0,
+				spec: 6,
+				move: {
+					on_move: [
+						s_enemy_attack(500, 1, 1, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, ],
+		}, {
+			appearance: [4],
+			enemy: [{
+				name: "血に染まる本 ザップテイル",
+				hp: 30000,
+				imageno: 7149,
+				attr: 0,
+				spec: 6,
+				move: {
+					on_popup: [
+						s_enemy_healrebase(0.5, 3)
+					],
+					on_move: [
+						s_enemy_attack(300, 5, 1, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "青い灯火 シャンデリッパー",
+				hp: 48800,
+				imageno: 7175,
+				attr: 1,
+				spec: 6,
+				move: {
+					on_popup: [
+						damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
+					],
+					on_move: [
+						s_enemy_attack(125, 5, 1, true)
+					],
+					on_move_angry: [
+						m_enemy_once(s_enemy_resurrection(0.5)),
+						s_enemy_attack(60, 3, 5, true),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "赤い灯火 シャンデリッパー",
+				hp: 45000,
+				imageno: 7173,
+				attr: 0,
+				spec: 6,
+				move: {
+					on_move: [
+						s_enemy_attack(500, 1, 1, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 2,
+				},
+			}, ],
+		}, {
+			appearance: [5],
+			enemy: [{
+				name: "血塗られた物語 ザップテイル",
+				hp: 30,
+				imageno: 7150,
+				attr: 0,
+				spec: 6,
+				move: {
+					on_popup: [
+						impregnable(-1),
+					],
+					on_move: [
+						s_enemy_healrebase(0.5, 2),
+						s_enemy_attack(350, 1, 1, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "燃え盛る灯火 シャンデリッパー",
+				hp: 120000,
+				imageno: 7174,
+				attr: 0,
+				spec: 6,
+				move: {
+					on_popup: [
+						skill_counter_func(damage_block_all, "ダメブロ全体(20000)", -1, false, 20000, 10),
+					],
+					on_move: [
+						s_enemy_attack(160, 5, 5, true)
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 1,
+				},
+			}, {
+				name: "血塗られた物語 ザップテイル",
+				hp: 60000,
+				imageno: 7150,
+				attr: 0,
+				spec: 6,
+				move: {
+					on_move: [
+						s_enemy_attrguard_all([0, 1, 0, 0, 0], 0.5, 5),
+						s_enemy_healrebase(0.5, 2),
+						s_enemy_attack(350, 5, 1, true),
+					],
+					atrandom: false,
+					turn: 1,
+					wait: 2,
+				},
+			}, ],
+		}],
+	},
 	// -------------------------
 	// 過去のイベントトーナメント(2016/02 覇)
 	// -------------------------
