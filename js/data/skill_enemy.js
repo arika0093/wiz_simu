@@ -733,8 +733,10 @@ function m_enemy_angry() {
 				e.move.on_angry[i].move(fld, n);
 			}
 		}
-		// 参照カウントをリセット
-		e.move.m_index = 0;
+		// 怒り行動が定義されている場合参照カウントをリセット
+		if (e.move.on_move_angry) {
+			e.move.m_index = 0;
+		}
 	});
 }
 
