@@ -94,20 +94,30 @@ function damage_ally(dmg, index, neft_check) {
 	Field.log_push("Unit[" + (index + 1) + "]: " + dmg + "ダメージ(残: " + now.nowhp + "/" + now.maxhp + ")");
 	// HPが0なら全効果を消す
 	if (now.nowhp <= 0) {
-		turneff_allbreak(now.turn_effect, index, false);
+		turneff_allbreak(now.turn_effect, index, "dead");
 	}
 }
 
 // 味方を回復する
 function heal_ally(value, index) {
 	var now = Field.Allys.Now[index];
+	var h_val = Math.floor(value);
+	// 死んでなかったら回復
 	if (now.nowhp > 0) {
-		now.nowhp = Math.min(now.maxhp, now.nowhp + Math.floor(value));
+		// 回復反転時は回復量を逆転させる
+		var is_rebase = $.grep(now.turn_effect, function (e) {
+			return e.type == "heal_rebase";
+		});
+		if (is_rebase.length > 0) {
+			h_val *= -is_rebase[0].rebase_rate;
+		}
+		// 回復
+		now.nowhp = Math.min(now.maxhp, now.nowhp + h_val);
 		return true;
 	}
 	if (now.nowhp <= 0) {
 		// 死んだら全効果を解除
-		turneff_allbreak(now.turn_effect, index, false);
+		turneff_allbreak(now.turn_effect, index, "dead");
 	}
 	return false;
 }

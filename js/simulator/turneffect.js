@@ -128,27 +128,27 @@ function turneff_check_skillcounter(fld) {
 }
 
 // ターン継続効果の全解除
-function turneff_allbreak(teffs, index, overlay_call) {
+function turneff_allbreak(teffs, index, call_type) {
 	while (teffs.length > 0) {
 		var teff = teffs[0];
 		// 除外時効果
-		if (overlay_call) {
-			teff.effect(Field, index, teff, "overlay", false, false);
+		if (call_type) {
+			teff.effect(Field, index, teff, call_type, false, false);
 		}
 		teffs.splice(0, 1);
 	}
 }
 
 // 指定したターン継続効果の解除
-function turneff_break(teffs, index, type, overlay_call) {
+function turneff_break(teffs, index, type, call_type) {
 	for (var i = 0; i < teffs.length; i++) {
 		var teff = teffs[i];
 		if (teff.type != type) {
 			continue;
 		}
 		// 除外時効果
-		if (overlay_call) {
-			teff.effect(Field, index, teff, "overlay", false, false);
+		if (call_type) {
+			teff.effect(Field, index, teff, call_type, false, false);
 		}
 		teffs.splice(i, 1);
 		i--;
@@ -156,13 +156,14 @@ function turneff_break(teffs, index, type, overlay_call) {
 }
 
 // ターン継続効果の解除(条件)
-function turneff_break_cond(teffs, index, func) {
+function turneff_break_cond(teffs, index, func, call_type) {
+	call_type = call_type || "overlay";
 	for (var i = 0; i < teffs.length; i++) {
 		var teff = teffs[i];
 		if (!func(teff)) {
 			continue;
 		}
-		teff.effect(Field, index, teff, "overlay", false, false);
+		teff.effect(Field, index, teff, call_type, false, false);
 		teffs.splice(i, 1);
 		i--;
 	}

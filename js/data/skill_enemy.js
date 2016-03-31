@@ -355,8 +355,9 @@ function s_enemy_healrebase(rate, tnum) {
 				bef_absattack: function (fld, oi, ei) {
 					var card = fld.Allys.Deck[oi];
 					return !(card.attr[1] >= 3 && card.attr[1] <= 4);
-				}
-				// 後で実装
+				},
+				// 回復反転値
+				rebase_rate: rate,
 			}
 		);
 	});
@@ -396,6 +397,9 @@ function s_enemy_cursed(hpdown, tnum, t) {
 					else if (state == "end" || state == "overlay") {
 						nowtg.maxhp += hpdown;
 						nowtg.nowhp = Math.min(nowtg.nowhp + hpdown, nowtg.maxhp);
+					}
+					else if (state == "dead") {
+						nowtg.maxhp += hpdown;
 					}
 				},
 			});

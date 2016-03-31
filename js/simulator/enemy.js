@@ -185,7 +185,7 @@ function get_enemy_move_skill(e) {
 	// 使用可能なスキルを抜き出す(countが未定義または0)
 	var uskils = $.grep(em, function (eskl) {
 		if (!eskl) { return true; }
-		if (!eskl.count) {
+		if (eskl.count <= 0) {
 			return true;
 		} else {
 			// count残存が残ってる場合-1する
