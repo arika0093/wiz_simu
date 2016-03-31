@@ -14,7 +14,7 @@ function ss_ratedo(r, fld, oi, ti, is_fst) {
 // 攻撃系
 // ------------------------------------------------------
 // (内部用)敵にSSダメージ
-function ss_damage(fld, r, atr, atkn, own, tg) {
+function ss_damage(fld, r, atr, atkn, own, tg, isnot_ss) {
 	var enemy = GetNowBattleEnemys(tg);
 	var card = fld.Allys.Deck[own];
 	var now = fld.Allys.Now[own];
@@ -28,18 +28,18 @@ function ss_damage(fld, r, atr, atkn, own, tg) {
 	attack_enemy(enemy, now, atr, rate, atkn, [atr],
 		fld.Status.chain, rnd, own, tg, true);
 	// SSフラグを立てる
-	enemy.flags.is_ss_attack = true;
+	enemy.flags.is_ss_attack = (isnot_ss == false);
 }
 
 // 敵全体に指定属性のダメージ
-function ss_damage_all(r, attrs) {
+function ss_damage_all(r, attrs, ignore_counter) {
 	return function (fld, n) {
 		for (var a = 0; a < attrs.length; a++) {
 			var atr = attrs[a];
 			for (var i = 0; i < GetNowBattleEnemys().length; i++) {
 				// 攻撃
 				var rt = ss_ratedo(r, fld, n, i, (a == 0) && (i == 0));
-				ss_damage(fld, rt, atr, 1, n, i);
+				ss_damage(fld, rt, atr, 1, n, i, ignore_counter);
 			}
 		}
 		return true;
@@ -47,7 +47,7 @@ function ss_damage_all(r, attrs) {
 }
 
 // 敵単体に指定属性のダメージ
-function ss_damage_s(r, attrs, atn) {
+function ss_damage_s(r, attrs, atn, ignore_counter) {
 	return function (fld, n) {
 		var enemys = GetNowBattleEnemys();
 		atkn = ss_ratedo(atn, fld, n);
@@ -57,7 +57,7 @@ function ss_damage_s(r, attrs, atn) {
 				var atr = attrs[a];
 				var atk_order = auto_attack_order(enemys, atr, n);
 				var rt = ss_ratedo(r, fld, n, atk_order, (a == 0) && (an == 0));
-				ss_damage(fld, rt, atr, atkn, n, atk_order);
+				ss_damage(fld, rt, atr, atkn, n, atk_order, ignore_counter);
 			}
 		}
 		return true;
@@ -138,7 +138,7 @@ function ss_skillcounter(r, t) {
 							for (var atri = 0; atri < card.attr.length; atri++) {
 								// 攻撃
 								if (card.attr[atri] >= 0) {
-									ss_damage(f, rate, card.attr[atri], 1, oi, sci);
+									ss_damage(f, rate, card.attr[atri], 1, oi, sci, true);
 									GetNowBattleEnemys(sci).flags.on_damage = true;
 								}
 							}
@@ -377,7 +377,7 @@ function ss_continue_damage(dmg_r, cont_r, attrs, turn) {
 				f_copy.Allys.Now[oi] = now_state;
 				// 継続ダメージ
 				fld.log_push("Unit[" + (n + 1) + "]: 継続ダメージ発動(" + (cont_r + 1) * 100 + ")");
-				ss_damage_all(cont_r + 1, attrs)(f_copy, oi);
+				ss_damage_all(cont_r + 1, attrs, true)(f_copy, oi);
 				// SS状況を解除
 				var es = GetNowBattleEnemys();
 				for (var i = 0; i < es.length; i++) {
