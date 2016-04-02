@@ -26067,7 +26067,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体のダメージブロックを解除し、敵全体へ雷属性のダメージ(260%)",
 		turn: 12,
-		proc: [ss_break_dblock(target), ss_damage_all(2.6, [2])],
+		proc: [ss_break_dblock("all"), ss_damage_all(2.6, [2])],
 	},
 	Lawake: [
 		Statusup(0, 400),
