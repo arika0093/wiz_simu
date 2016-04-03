@@ -179,16 +179,16 @@ var Cardlist = [{
 	imageno: 7514,
 }, {
 	name: "ダリオ",
-	imageno: 4099,
+	imageno: 7613,
 }, {
 	name: "エレクトラ",
 	imageno: 7614,
 }, {
 	name: "ミナカ",
-	imageno: 2980,
+	imageno: 7832,
 }, {
 	name: "エル",
-	imageno: 2156,
+	imageno: 7833,
 }, {
 	name: "ラパパ",
 	imageno: 7700,

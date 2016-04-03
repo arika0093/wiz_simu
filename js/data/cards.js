@@ -25957,7 +25957,7 @@ Cards = [{
 	ss1: {
 		desc: "スキル反射を無視し、敵全体へ水・光属性のダメージ(120%)",
 		turn: 4,
-		proc: [ss_ignore_skillcounter(), ss_damage_all(1.2, [1, 3])],
+		proc: [ss_damage_all(1.2, [1, 3]), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Costdown(2),
@@ -25978,7 +25978,7 @@ Cards = [{
 	ss2: {
 		desc: "スキル反射を無視し、敵全体へ水・光属性のダメージ(150%)",
 		turn: 6,
-		proc: [ss_ignore_skillcounter(), ss_damage_all(1.5, [1, 3])],
+		proc: [ss_damage_all(1.5, [1, 3]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0, 500),
@@ -26660,7 +26660,7 @@ Cards = [{
 	ss1: {
 		desc: "スキル反射を無視し、敵全体へ雷・光属性のダメージ(120%)",
 		turn: 4,
-		proc: [ss_ignore_skillcounter(), ss_damage_all(1.2, [2,3])],
+		proc: [ss_damage_all(1.2, [2, 3]), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Costdown(2),
@@ -26681,7 +26681,7 @@ Cards = [{
 	ss2: {
 		desc: "スキル反射を無視し、敵全体へ雷・光属性のダメージ(150%)",
 		turn: 6,
-		proc: [ss_ignore_skillcounter(), ss_damage_all(1.5, [2,3])],
+		proc: [ss_damage_all(1.5, [2, 3]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -27260,7 +27260,7 @@ Cards = [{
 	ss1: {
 		desc: "スキル反射を無視し、敵全体へ火・水属性のダメージ(150%)",
 		turn: 7,
-		proc: [ss_ignore_skillcounter(), ss_damage_all(1.5, [0,1])],
+		proc: [ss_damage_all(1.5, [0, 1]), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -27281,7 +27281,7 @@ Cards = [{
 	ss2: {
 		desc: "スキル反射を無視し、敵全体へ火・水属性のダメージ(220%)",
 		turn: 10,
-		proc: [ss_ignore_skillcounter(), ss_damage_all(2.2, [0,1])],
+		proc: [ss_damage_all(2.2, [0, 1]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(400,0),
