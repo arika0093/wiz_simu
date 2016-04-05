@@ -127,11 +127,11 @@ function turneff_chargeskill_check() {
 			if (tf.charge_turn <= 0) {
 				// 残りカウントが0なら関数実行
 				tf.charged_fin(Field);
+				tf.charged_fin = null;
 				// 削除
-				turneff_break_cond(tf_chs, -1, function (tf) {
-					return tf.charge_turn <= 0;
+				turneff_break_cond(e.turn_effect, -1, function (tf) {
+					return !tf.charged_fin && tf.charge_turn <= 0;
 				}, "end");
-				e.turn_effect = tf_chs;
 				// 発動後処理
 				ss_afterproc(i);
 				// 全滅していたら次のターンへ進む
