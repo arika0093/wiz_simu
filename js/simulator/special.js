@@ -7,44 +7,16 @@ function ss_push(n) {
 	var ss_rst = true;
 	// SSを打つ
 	Field.log_push("Unit[" + (n + 1) + "]: SS発動");
-	if (ss.proc != null) {
-		for (var i = 0; i < ss.proc.length; i++) {
-			ss_rst = ss.proc[i](Field, n);
-		}
-	}
+	ss_procdo(ss, now, n);
 	// 発動成功なら
 	if (ss_rst) {
 		// SSを保存しておく
 		if (ss.proc && !ss.proc[0].is_skillcopy) {
 			Field.Status.latest_ss = ss;
 		}
-		// 敵スキル関係の処理
-		{
-			var enemys = GetNowBattleEnemys();
-			$.each(enemys, function (i, e) {
-				// スキル反射確認
-				if (e.flags.is_ss_attack && e.turn_effect.length > 0) {
-					var skillct = $.grep(e.turn_effect, function (g) {
-						return g.on_ss_damage !== undefined;
-					});
-					for (var j = 0; j < skillct.length; j++) {
-						skillct[j].on_ss_damage(Field, i, n);
-					}
-					e.flags.is_ss_attack = false;
-				}
-				// スキル反応確認
-				$.each(e.turn_effect, function (g) {
-					if (g.type == "skill_response") {
-						g.on_ss_invoke(Field, i);
-					}
-				});
-			});
-			// 敵ダメージ反応系
-			enemy_damage_switch_check("damage_switch");
-		}
-		// ターン効果確認
-		turn_effect_check(false, is_allkill());
-		enemy_turn_effect_check(false);
+		// 発動後処理
+		ss_afterproc(n);
+		// ------------------
 		// L状態ならL潜在を解除
 		if (is_l) {
 			minus_legend_awake(Field.Allys.Deck, Field.Allys.Now, n);
@@ -55,18 +27,106 @@ function ss_push(n) {
 		now.ss_current = 0;
 		now.ss_isfirst = false;
 		now.ss_isboost = false;
+		// ------------------
+		// [進む]を使えないように
+		if (!Field_log.is_ssindex) {
+			Field_log.now_index++;
+			Field_log.is_ssindex = true;
+		}
+		Field_log._removeover(Field.Status.totalturn);
 		// 全滅していたら次のターンへ進む
 		if (is_allkill()) {
 			nextturn(true);
 		}
-		// [進む]を使えないように
-		Field_log._removeover(Field.Status.totalturn);
 		// 再表示
 		sim_show();
 	} else {
 		// failed
 		$("#dialog_ss_noaction").dialog("open");
 	}
+}
+
+// SSを順番に発動していく関数
+function ss_procdo(ss, now, index) {
+	var ss_rst = false;
+	if (ss.proc != null) {
+		// チャージスキルの場合turn_effectに追加
+		if (ss.charged > 0) {
+			now.turn_effect.push({
+				desc: "チャージスキル待機",
+				type: "ss_charge",
+				icon: "force_reservior",// 後で変える(?)
+				isdual: false,
+				iscursebreak: false,	// 呪い解除されない
+				isreduce_stg: true,		// ターン跨ぎでカウントが減る
+				priority: 1,
+				charge_turn: ss.charged,
+				turn: -1,
+				lim_turn: -1,
+				ss_disabled: true,		// SS発動不可
+				// 攻撃無効
+				bef_answer: function (f, as) {
+					return false;
+				},
+				// 反射無効
+				bef_skillcounter: function (f, ai) {
+					return false;
+				},
+				// カウント減少
+				effect: function (f, oi, teff, state, is_t, is_b, is_sfin) {
+					// SS以外で戦闘を跨いだ場合カウントを減らす
+					if (is_t || (!is_sfin && is_b)) {
+						teff.charge_turn--;
+						teff.desc = "チャージスキル待機(残り" + teff.charge_turn + "t)";
+					}
+				},
+				// 発動スキル
+				charged_fin: function (fld) {
+					fld.log_push("Unit[" + (index + 1) + "]: チャージスキル発動");
+					for (var i = 0; i < ss.proc.length; i++) {
+						ss.proc[i](fld, index);
+					}
+					return true;
+				},
+			});
+			Field.log_push("Unit[" + (index + 1) + "]: チャージスキル発動待機…");
+			return true;
+		}
+		// 実行
+		for (var i = 0; i < ss.proc.length; i++) {
+			ss_rst = ss_rst || ss.proc[i](Field, index);
+		}
+	}
+	return ss_rst;
+}
+
+// SS発動後処理
+function ss_afterproc(n) {
+	// 敵スキル関係の処理
+	var enemys = GetNowBattleEnemys();
+	$.each(enemys, function (i, e) {
+		// スキル反射確認
+		if (e.flags.is_ss_attack && e.turn_effect.length > 0) {
+			var skillct = $.grep(e.turn_effect, function (g) {
+				return g.on_ss_damage !== undefined;
+			});
+			for (var j = 0; j < skillct.length; j++) {
+				skillct[j].on_ss_damage(Field, i, n);
+			}
+			e.flags.is_ss_attack = false;
+		}
+		// スキル反応確認
+		$.each(e.turn_effect, function (g) {
+			if (g.type == "skill_response") {
+				g.on_ss_invoke(Field, i);
+			}
+		});
+	});
+	// 敵ダメージ反応系
+	enemy_damage_switch_check("damage_switch");
+	// ターン効果確認
+	turn_effect_check(false, is_allkill());
+	enemy_turn_effect_check(false);
 }
 
 // Lモードに入ったタイミングかどうかを判定する

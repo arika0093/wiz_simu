@@ -80,7 +80,10 @@ function allkill_check(is_ssfinish) {
 		// パネル付与効果を全部リセット
 		Field.Status.panel_add = [];
 		Field.Status.durturn.push({ ssfin: is_ssfinish, turn: ntrun });
-		Field.Status.nowturn = 0;
+		Field.Status.nowturn = 1;
+	} else if (!(e_ak && is_ssfinish)) {
+		// ターンカウントを+1する
+		Field.Status.nowturn += 1;
 	}
 	return e_ak;
 }

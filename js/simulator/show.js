@@ -236,8 +236,8 @@ function sim_show() {
 	// sim_panel
 	$(".panel_button").attr("disabled", Field.Status.finish);
 	// sim_field_move
-	$("#fld_move_before").attr("disabled", (Field.Status.totalturn == 0));
-	$("#fld_move_after").attr("disabled", (Field.Status.totalturn == Field_log.length() - 1));
+	$("#fld_move_before").attr("disabled", (Field_log.now_index == 0));
+	$("#fld_move_after").attr("disabled", (Field_log.now_index >= Field_log.length() - 1));
 	// 敵の数に応じてattack_target_selの中身を変える
 	var eleng = GetNowBattleEnemys().length;
 	if (eleng == 2) {
@@ -515,12 +515,20 @@ function totalturn_string() {
 function durturn_string() {
 	var popupstr = "";
 	for (var i = 0; i < Field.Enemys.Popuplist.length; i++) {
+		var t = "";
 		var tu = Field.Status.durturn[i];
-		var t = tu ?
-			(tu.ssfin ?
-				((tu.turn-1 != 0) ? (tu.turn - 1).toString() + "+SS" : "SS") :
-				tu.turn.toString()
-			) : "?";
+		if (!tu) {
+			t = "?";
+		} else if (tu.ssfin){
+			if (tu.turn != 1) {
+				t = (tu.turn - 1).toString() + "+SS";
+			} else {
+				t = "SS";
+			}
+		} else {
+			t = tu.turn.toString();
+		}
+
 		popupstr += t;
 		if (i != Field.Enemys.Popuplist.length - 1) {
 			popupstr += "-";
@@ -565,14 +573,20 @@ function load_field(i) {
 	});
 	var btlct_bef = Field.Status.nowbattle;
 	// 読み込み先取得
-	var load_index = (i != 0 ? i + Field.Status.log.length : 0);
-	if (Field.Status.totalturn == 0 && Field.Status.log.length > 0) {
-		load_index -= 1;
+	var load_index = 0;
+	if (i != 0) {
+		load_index = i + Field_log.now_index;
+		if (Field_log.is_ssindex && Field_log.Status[load_index]) {
+			load_index + i;
+		} else if (!Field_log.Status[load_index]) {
+			load_index = Math.min(load_index, Field_log.length() - 1);
+		}
 	}
 
-	if (load_index <= Field_log.length()) {
+	if (load_index >= 0) {
 		// 読み込み
 		Field = Field_log.load(load_index);
+		Field_log.is_ssindex = false;
 		// 再表示
 		sim_show();
 		// 戦闘数が読み込み前と違っていたらタゲリセット

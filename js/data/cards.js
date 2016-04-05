@@ -19008,6 +19008,7 @@ Cards = [{
 	ss1: {
 		desc: "スキル反射を無視し、敵全体へ雷・光属性のダメージ(150%)",
 		turn: 6,
+		charged: 2,
 		proc: [ss_damage_all(1.5, [2,3]), ss_ignore_skillcounter()],
 	},
 	awakes: [

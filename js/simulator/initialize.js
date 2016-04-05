@@ -58,6 +58,8 @@ var Field = {
 		totalturn: 0,
 		nowbattle: 1,
 		finish: false,
+		// その他
+		is_chargeend: [],
 		// ログ
 		log: [],
 		d_log: [],
@@ -83,11 +85,14 @@ var Field_log = {
 	Allys_now: [],
 	Enemys_data: [],
 	Status: [],
+	now_index: 0,
+	is_ssindex: false,
 	// 保存関数
 	save: function (index, fld) {
 		this.Allys_now[index] = $.extend(true, [], fld.Allys.Now);
 		this.Enemys_data[index] = $.extend(true, [], fld.Enemys.Data);
 		this.Status[index] = $.extend(true, {}, fld.Status);
+		this.now_index = index;
 		// 保存indexより先の要素は消す
 		this._removeover(index);
 	},
@@ -97,6 +102,7 @@ var Field_log = {
 		fld_reset.Allys.Now = $.extend(true, [], this.Allys_now[index]);
 		fld_reset.Enemys.Data = $.extend(true, [], this.Enemys_data[index]);
 		fld_reset.Status = $.extend(true, {}, this.Status[index]);
+		this.now_index = index;
 		return fld_reset;
 	},
 	// サイズ
@@ -229,7 +235,7 @@ function nextturn(is_ssfin) {
 	reduce_turneffect(is_ssfin);
 	// 効果の継続確認
 	ss_continue_effect_check();
-	turn_effect_check(true);
+	turn_effect_check(true, is_ssfin);
 	enemy_turn_effect_check(true);
 	// フラグの初期化
 	initialize_allys_flags(Field.Allys.Now);
@@ -260,9 +266,12 @@ function nextturn(is_ssfin) {
 	if (!is_ssfin || killed) {
 		f_st.totalturn += 1;
 	}
-	f_st.nowturn += 1;
+	// チャージスキル処理
+	turneff_chargeskill_check();
 	// ログ保存
 	Field_log.save(f_st.totalturn, Field);
+	Field_log._removeover(f_st.totalturn);
+	Field_log.is_ssindex = false;
 }
 
 // 味方フラグを初期化する

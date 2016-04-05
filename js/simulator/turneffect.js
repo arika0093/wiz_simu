@@ -24,7 +24,7 @@ function reduce_turneffect(is_ssfin) {
 }
 
 // (味方)効果の継続確認を行う
-function turn_effect_check(is_turn_move, is_battle_move) {
+function turn_effect_check(is_turn_move, is_ssfin) {
 	// 全効果をまとめる
 	var all_turneff = [];
 	var ct = 0;
@@ -61,7 +61,7 @@ function turn_effect_check(is_turn_move, is_battle_move) {
 				var state = "";
 			}
 			// 呼び出し
-			turneff.effect(Field, all_turneff[te].index, turneff, state, is_turn_move, is_allkill());
+			turneff.effect(Field, all_turneff[te].index, turneff, state, is_turn_move, is_allkill(), is_ssfin);
 			turneff._notfirst = true;
 		}
 		if (turneff.lim_turn == 0) {
@@ -112,6 +112,38 @@ function turneff_break_dual(teffs, index, is_turn_move) {
 			}
 		}
 	}
+}
+
+// チャージスキルの確認を行う
+function turneff_chargeskill_check() {
+	var nows = Field.Allys.Now;
+	$.each(nows, function (i, e) {
+		// 抽出
+		var tf_chs = $.grep(e.turn_effect, function (g) {
+			return g.type == "ss_charge";
+		});
+		for (var c = 0; c < tf_chs.length; c++) {
+			var tf = tf_chs[c];
+			if (tf.charge_turn <= 0) {
+				// 残りカウントが0なら関数実行
+				tf.charged_fin(Field);
+				// 削除
+				turneff_break_cond(tf_chs, -1, function (tf) {
+					return tf.charge_turn <= 0;
+				}, "end");
+				e.turn_effect = tf_chs;
+				// 発動後処理
+				ss_afterproc(i);
+				// 全滅していたら次のターンへ進む
+				if (is_allkill()) {
+					var t = Field.Status.totalturn;
+					Field.Status.is_chargeend[t] = true;
+					nextturn(true);
+					return;
+				}
+			}
+		}
+	});
 }
 
 // 味方スキル反射のみ確認を行う(先制行動時の確認に使用)

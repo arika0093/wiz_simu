@@ -671,11 +671,8 @@ function ss_break_dblock(target) {
 function ss_latest_copy() {
 	var func = function (fld, n) {
 		if (fld.Status.latest_ss) {
-			var ss = fld.Status.latest_ss;
-			for (var i = 0; i < ss.proc.length; i++) {
-				ss_rst = ss.proc[i](fld, n);
-			}
-			return true;
+			var now = fld.Allys.Now[n];
+			return ss_procdo(fld.Status.latest_ss, now, n);
 		} else {
 			return false;
 		}
