@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
+	<link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px)" />
+	<link rel="stylesheet" type="text/css" href="/css/crystalpoint.css" />
+	<meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+	<link type="text/css" rel="stylesheet"
+		  href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+	<link rel="stylesheet" href="/download/slicknav/slicknav.css" />
+	<!-- Search -->
+	<meta name="robots" content="all" />
+	<meta name="keywords" content="黒猫,ウィズ,魔法使いと黒猫のウィズ,チェック,魔道杯,クリスタル,効率" />
+	<meta name="description" content="「魔法使いと黒猫のウィズ」魔道杯でのクリスタル収支を予測計算することができます。" />
+	<!-- Top Page -->
+	<title>魔道杯クリスタル収支予測ツール - WizTools</title>
+</head>
+<body>
+	<!-- Loader -->
+	<div id="loader"><img src="/image/loading.gif" alt="Loading..." /></div>
+	<noscript id="loadnoscr">このページはjavascriptを使用しています。有効にしたのち再度アクセスしてください。</noscript>
+	<div id="fade"></div>
+	<!-- Header -->
+	<div id="Header"></div>
+	<!-- Main Contents -->
+	<div class="Main">
+		<dl class="List">
+			<dt>このツールについて</dt>
+			<dd id="tool_info">
+				<div class="info">
+					「魔法使いと黒猫のウィズ」の魔道杯でのクリスタル収支を予測・計算することができます。<br />
+					一回に獲得するpt、現在の最大魔力を入力すると目標ptに応じて最終予想収支を表示します。<br/>
+                    魔道杯前に「どこまで積むか」の計画を立てるのに利用してもらえれば幸いです。<br/>
+                    <b>※魔力最大状態からのスタートを想定しています。</b><br/>
+                    <b>※デイリー/チーム/総合報酬およびレベルアップなどは考慮していません(人によってまちまちなので)。</b><br />
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-related="wiz_tools">Tweet</a>
+                    <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+				</div>
+				<!-- Adsense -->
+				<div class="Adsense">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- advertise -->
+					<ins class="adsbygoogle"
+						 style="display:block"
+						 data-ad-client="ca-pub-5156005489853976"
+						 data-ad-slot="6536828444"
+						 data-ad-format="auto"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</div>
+			</dd>
+			<dt id="check">クリスタル収支予測ツール</dt>
+			<dd>
+				<div id="input_form">
+					<p class="description">1. トーナメント一回(魔力25消費)で得られるポイント数を入力してください。</p>
+					<p class="subcription">※弐式: 2600pt, 参式: 3640pt, 肆式: 4200pt, 伍式: 4800pt。試走は<a href="/simulator/">こちら</a>。</p>
+					<input type="number" class="num_input" id="one_point" placeholder="得られるポイント数"/>
+					<p class="description">2. 現在の最大魔力を入力してください。</p>
+					<input type="number" class="num_input" id="max_stamina" placeholder="最大魔力" />
+                    <label class="checkbox"><input checked type="checkbox" id="autocure" />自然回復を考慮する(魔力1440分追加/優先して自然回復分の魔力を使用)</label><br />
+                    <label class="checkbox"><input type="checkbox" id="p_attemdance" />皆勤賞報酬を考慮する(クリスタル+5個)</label><br />
+                    <!--
+                        <label class="checkbox"><input type="checkbox" id="dailyreward" />デイリー報酬を考慮する(クリスタル+</label>
+                            <input type="number" class="num_input_s" id="dr_crystal" /> 個)<br />
+                        <label class="checkbox"><input type="checkbox" id="teamreward" />チーム報酬を考慮する　(クリスタル+</label>
+                            <input type="number" class="num_input_s" id="tr_crystal" /> 個)<br/>
+                        <label class="checkbox"><input type="checkbox" id="totalreward" />総合報酬を考慮する　　(クリスタル+</label>
+                            <input type="number" class="num_input_s" id="ttr_crystal" /> 個)<br />
+                    -->
+					<button class="cp_calculate" id="Start" onclick="cp_output_result();">計算開始</button>
+				</div>
+				<div id="output_form">
+					
+				</div>
+				<!-- Adsense -->
+				<div class="Adsense">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- advertise -->
+					<ins class="adsbygoogle"
+						 style="display:block"
+						 data-ad-client="ca-pub-5156005489853976"
+						 data-ad-slot="6536828444"
+						 data-ad-format="auto"></ins>
+					<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</div>
+			</dd>
+		</dl>
+	</div>
+	<!-- Footer -->
+	<div id="Footer"></div>
+    <!-- Dialog Contents -->
+    <div class="dialog_div" id="dialog_error" title="Error">
+        <p>入力内容に漏れがあります。得られるポイント数と最大魔力を入力してください。</p>
+    </div>
+	<!-- Javascript -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="/download/slicknav/jquery.slicknav.min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/loader.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/googletrc.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/deck/deckdata.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/tools/data/point_rewards.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/tools/crystalpt.js"></script>
+</body>
+</html>

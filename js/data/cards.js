@@ -26426,7 +26426,7 @@ Cards = [{
 },{
 	name: "銀河の妖精 シェリル・ノーム",
 	cardno: 90044,
-	imageno: 7737,
+	imageno: 7751,
 	hp: 2912,
 	atk: 4326,
 	cost: 46,

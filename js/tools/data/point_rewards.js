@@ -1,0 +1,224 @@
+// 報酬定義データ
+var rewards = [{
+	type: "card",
+	desc: "累計下位報酬(4枚目)",
+	point: 1500,
+}, {
+	type: "crystal",
+	desc: "クリスタル(5個)",
+	point: 3000,
+	crystal: +5,
+	important: true,
+}, {
+	type: "crystal",
+	desc: "クリスタル(5個)",
+	point: 5000,
+	crystal: +5,
+	important: true,
+}, {
+	type: "card",
+	desc: "累計中位報酬(4枚目)",
+	point: 8000,
+}, {
+	type: "card",
+	desc: "累計上位報酬(4枚目)",
+	point: 45000,
+	important: true,
+}, {
+	type: "awake_ct",
+	desc: "潜在結晶<HP>(A+)",
+	point: 50000,
+}, {
+	type: "ether",
+	desc: "シルバーエーテルビーナス",
+	point: 80000,
+}, {
+	type: "awake_ct",
+	desc: "潜在結晶<コストダウン>(A+)",
+	point: 100000,
+}, {
+	type: "ether",
+	desc: "ゴールドエーテルビーナス",
+	point: 150000,
+}, {
+	type: "crystal",
+	desc: "クリスタル(5個)",
+	point: 170000,
+	crystal: +5,
+	important: true,
+}, {
+	type: "awake_ct",
+	desc: "潜在結晶<パネブ火>(A+)",
+	point: 200000,
+}, {
+	type: "crystal",
+	desc: "クリスタル(1個)",
+	point: 250000,
+	crystal: +1,
+}, {
+	type: "awake_ct",
+	desc: "潜在結晶<パネブ水>(A+)",
+	point: 300000,
+}, {
+	type: "crystal",
+	desc: "クリスタル(1個)",
+	point: 325000,
+	crystal: +1,
+}, {
+	type: "crystal",
+	desc: "クリスタル(1個)",
+	point: 350000,
+	crystal: +1,
+}, {
+	type: "crystal",
+	desc: "クリスタル(1個)",
+	point: 375000,
+	crystal: +1,
+}, {
+	type: "awake_ct",
+	desc: "潜在結晶<パネブ雷>(A+)",
+	point: 400000,
+}, {
+	type: "crystal",
+	desc: "クリスタル(1個)",
+	point: 425000,
+	crystal: +1,
+}, {
+	type: "crystal",
+	desc: "クリスタル(1個)",
+	point: 450000,
+	crystal: +1,
+}, {
+	type: "crystal",
+	desc: "クリスタル(1個)",
+	point: 475000,
+	crystal: +1,
+}, {
+	type: "awake_ct",
+	desc: "潜在結晶<自己犠牲>(A)",
+	point: 500000,
+	important: true,
+}, {
+	type: "crystal",
+	desc: "クリスタル(1個)",
+	point: 515000,
+	crystal: +1,
+}, {
+	type: "crystal",
+	desc: "クリスタル(1個)",
+	point: 525000,
+	crystal: +1,
+}, {
+	type: "crystal",
+	desc: "クリスタル(1個)",
+	point: 535000,
+	crystal: +1,
+}, {
+	type: "ether",
+	desc: "フルエーテル",
+	point: 540000,
+}, {
+	type: "crystal",
+	desc: "クリスタル(1個)",
+	point: 545000,
+	crystal: +1,
+}, {
+	type: "ether",
+	desc: "フルエーテル",
+	point: 550000,
+}, {
+	type: "crystal",
+	desc: "クリスタル(1個)",
+	point: 555000,
+	crystal: +1,
+}, {
+	type: "ether",
+	desc: "フルエーテル",
+	point: 560000,
+}, {
+	type: "crystal",
+	desc: "クリスタル(1個)",
+	point: 565000,
+	crystal: +1,
+}, {
+	type: "ether",
+	desc: "フルエーテル",
+	point: 570000,
+}, {
+	type: "crystal",
+	desc: "クリスタル(1個)",
+	point: 575000,
+	crystal: +1,
+}, {
+	type: "ether",
+	desc: "フルエーテル",
+	point: 580000,
+}, {
+	type: "crystal",
+	desc: "クリスタル(1個)",
+	point: 585000,
+	crystal: +1,
+}, {
+	type: "ether",
+	desc: "フルエーテル",
+	point: 590000,
+}, {
+	type: "crystal",
+	desc: "クリスタル(1個)",
+	point: 595000,
+	crystal: +1,
+}, {
+	type: "awake_ct",
+	desc: "潜在結晶<大魔術>(A+)",
+	point: 600000,
+	important: true,
+}, {
+	type: "border",
+	desc: "700,000pt",
+	point: 700000,
+}, {
+	type: "border",
+	desc: "800,000pt",
+	point: 800000,
+}, {
+	type: "border",
+	desc: "900,000pt",
+	point: 900000,
+}, {
+	type: "border",
+	desc: "1,000,000pt",
+	point: 1000000,
+	important: true,
+}, {
+	type: "border",
+	desc: "1,250,000pt",
+	point: 1250000,
+}, {
+	type: "border",
+	desc: "1,500,000pt",
+	point: 1500000,
+}, {
+	type: "border",
+	desc: "1,750,000pt",
+	point: 1750000,
+}, {
+	type: "border",
+	desc: "2,000,000pt",
+	point: 2000000,
+}, {
+	type: "border",
+	desc: "2,500,000pt",
+	point: 2500000,
+}, {
+	type: "border",
+	desc: "3,000,000pt",
+	point: 3000000,
+}, {
+	type: "border",
+	desc: "4,000,000pt",
+	point: 4000000,
+}, {
+	type: "border",
+	desc: "5,000,000pt",
+	point: 5000000,
+}, ];

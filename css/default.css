@@ -466,7 +466,7 @@ button#Start{
 	width: 100%;
 	padding: 1.5ex 0;
 	font-family: Meiryo, "ヒラギノ角ゴ Pro W3";
-	border: 1px solid #606060;
+	border: 1px solid #888;
 	background: #ffffff;
 	background: -moz-linear-gradient(top,  #ffffff 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%);
 	background: -webkit-linear-gradient(top,  #ffffff 0%,#f1f1f1 50%,#e1e1e1 51%,#f6f6f6 100%);
