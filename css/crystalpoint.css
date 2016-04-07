@@ -1,0 +1,76 @@
+div#input_form{
+	padding: 2ex 2em;
+	border: #4fb5ff 1px solid;
+	border-radius: 6px;
+	margin: 1ex 0;
+	max-width: 500px;
+}
+
+p.description{
+	margin: 0;
+}
+p.subcription{
+	text-align: right;
+	margin: 0;
+	font-size: smaller;
+	color: #606060;
+}
+input.num_input{
+	box-sizing: border-box;
+	width: 100%;
+	margin: 0.5ex 0 2ex;
+}
+input.num_input_s{
+	margin: 0.5ex 0;
+}
+
+
+button.cp_calculate{
+	margin-top: 1ex;
+}
+
+div#output_form{
+	display: none;
+	margin: 2ex 0 0;
+	padding: 2ex 1em;
+	border: #444 1px solid;
+	border-radius: 2px;
+}
+
+table#op_table{
+	width: 100%;
+}
+
+tr.important{
+	font-weight: bold;
+}
+tr.crystal{
+	background-color: #ffe5f1;
+}
+tr.ether{
+	background-color: #fff7c9;
+}
+tr.awake_ct{
+	background-color: #b2ffbc;
+}
+tr.card{
+	background-color: #cae9ff;
+}
+
+td.point, td.ct_p{
+	text-align: right;
+}
+td.desc{
+	text-align: center;
+}
+td.crystal_plus, td.diff_plus{
+	font-weight: bolder;
+	color: #0026ff;
+}
+tr.crystal_most td.ct_p{
+	font-size: large;
+}
+td.crystal_minus, td.diff_minus{
+	font-weight: bolder;
+	color: #e81c1c;
+}
