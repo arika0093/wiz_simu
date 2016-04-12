@@ -39,6 +39,7 @@ div#output_form{
 
 table#op_table{
 	width: 100%;
+	border-collapse: collapse;
 }
 
 tr.important{
@@ -67,10 +68,22 @@ td.crystal_plus, td.diff_plus{
 	font-weight: bolder;
 	color: #0026ff;
 }
-tr.crystal_most td.ct_p{
-	font-size: large;
-}
 td.crystal_minus, td.diff_minus{
 	font-weight: bolder;
 	color: #e81c1c;
+}
+
+tr.crystal_most td{
+	border-width: 1px 0px;
+	border-color: #000;
+	border-style: solid;
+}
+tr.crystal_most td:first-child{
+	border-width: 1px 0px 1px 1px;
+}
+tr.crystal_most td:last-child{
+	border-width: 1px 1px 1px 0px;
+}
+tr.crystal_most td.ct_p{
+	font-size: large;
 }
