@@ -94,7 +94,7 @@ function ss_procdo(ss, now, index) {
 		}
 		// 実行
 		for (var i = 0; i < ss.proc.length; i++) {
-			ss_rst = ss_rst || ss.proc[i](Field, index);
+			ss_rst = ss.proc[i](Field, index);
 		}
 	}
 	return ss_rst;
