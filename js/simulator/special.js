@@ -4,10 +4,9 @@ function ss_push(n) {
 	var now = Field.Allys.Now[n];
 	var is_l = is_legendmode(card, now);
 	var ss = is_l ? card.ss2 : card.ss1;
-	var ss_rst = true;
 	// SSを打つ
 	Field.log_push("Unit[" + (n + 1) + "]: SS発動");
-	ss_procdo(ss, now, n);
+	var ss_rst = ss_procdo(ss, now, n);
 	// 発動成功なら
 	if (ss_rst) {
 		// SSを保存しておく
@@ -86,7 +85,7 @@ function ss_procdo(ss, now, index) {
 				charged_fin: function (fld) {
 					fld.log_push("Unit[" + (index + 1) + "]: チャージスキル発動");
 					for (var i = 0; i < ss.proc.length; i++) {
-						ss.proc[i](fld, index);
+						ss_object_done(fld, index, ss.proc[i]);
 					}
 					return true;
 				},
@@ -96,7 +95,7 @@ function ss_procdo(ss, now, index) {
 		}
 		// 実行
 		for (var i = 0; i < ss.proc.length; i++) {
-			ss_rst = ss.proc[i](Field, index);
+			ss_rst = ss_object_done(Field, index, ss.proc[i]);
 		}
 	}
 	return ss_rst;

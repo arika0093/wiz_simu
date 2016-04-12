@@ -25,7 +25,10 @@ function add_cond(as) {
 			var obj = arguments[j];
 			for (var key in obj) {
 				if (obj[key]) {
-					if (as[i][key]) {
+					if (as[i][key] && key.indexOf("desc") >= 0) {
+						// descの合成
+						var fc = as[i][key] + "/" + obj[key];
+					} else if (as[i][key]) {
 						// 複数条件時の処理
 						var fc = function () {
 							var oj = obj;
@@ -92,6 +95,7 @@ function ChainAttack_as_consume_own(rate, ch, hp) {
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
 			cond: always_true().cond,
+			af_desc: as_consume_own(hp).desc,
 			after: as_consume_own(hp).after,
 		}
 	];
@@ -109,6 +113,7 @@ function ChainAttack_Leader(rate, ch) {
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
+			desc: when_leader().desc,
 			cond: when_leader().cond,
 		}
 	];
@@ -230,6 +235,7 @@ function ChainVarianceAttack(r, ch) {
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
+			desc: "分散攻撃(敵が1体の場合)",
 			cond: function () {
 				var enemys = GetNowBattleEnemys();
 				var count = 0;
@@ -281,6 +287,7 @@ function ChainPanelsAttrDualAttack(r1, r2, r3, attr, atkn, ch) {
 			chain: ch,
 			attr: attr,
 			spec: create_specs(1),
+			desc: as_panel_over2().desc,
 			cond: as_panel_over2().cond,
 		}, {
 			type: "attack",
@@ -290,6 +297,7 @@ function ChainPanelsAttrDualAttack(r1, r2, r3, attr, atkn, ch) {
 			chain: ch,
 			attr: attr,
 			spec: create_specs(1),
+			desc: as_panel_over3().desc,
 			cond: as_panel_over3().cond,
 		},
 	];
@@ -316,6 +324,7 @@ function ChainPanelsSpecAttack(r1, r2, r3, spec, ch) {
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: specific_specs(spec),
+			desc: as_panel_over2().desc,
 			cond: as_panel_over2().cond,
 		},
 		{
@@ -326,6 +335,7 @@ function ChainPanelsSpecAttack(r1, r2, r3, spec, ch) {
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: specific_specs(spec),
+			desc: as_panel_over3().desc,
 			cond: as_panel_over3().cond,
 		},
 	];
@@ -342,11 +352,10 @@ function ChainDeckAttrsAttack(r1, r2, r3, ch) {
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
+			desc: "デッキ内の属性数が1つの時",
 			cond: function (fld, oi, ei) {
-				var rates = [r1, r2, r3];
 				var count = 0;
 				var deck_attr = [0, 0, 0, 0, 0];
-				// 属性カウント
 				for (var i = 0; i < fld.Allys.Deck.length; i++) {
 					var cd = fld.Allys.Deck[i];
 					deck_attr[cd.attr[0]] = 1;
@@ -354,8 +363,49 @@ function ChainDeckAttrsAttack(r1, r2, r3, ch) {
 				for (var i = 0; i < 5; i++) {
 					if (deck_attr[i] > 0) { count++; }
 				}
-				this.rate = rates[Math.min(count, 2)];
-				return true;
+				return count <= 1;
+			},
+		}, {
+			type: "attack",
+			isall: false,
+			atkn: 1,
+			rate: r2,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: create_specs(1),
+			desc: "デッキ内の属性数が2つの時",
+			cond: function (fld, oi, ei) {
+				var count = 0;
+				var deck_attr = [0, 0, 0, 0, 0];
+				for (var i = 0; i < fld.Allys.Deck.length; i++) {
+					var cd = fld.Allys.Deck[i];
+					deck_attr[cd.attr[0]] = 1;
+				}
+				for (var i = 0; i < 5; i++) {
+					if (deck_attr[i] > 0) { count++; }
+				}
+				return count == 2;
+			},
+		}, {
+			type: "attack",
+			isall: false,
+			atkn: 1,
+			rate: r2,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: create_specs(1),
+			desc: "デッキ内の属性数が3つの時",
+			cond: function (fld, oi, ei) {
+				var count = 0;
+				var deck_attr = [0, 0, 0, 0, 0];
+				for (var i = 0; i < fld.Allys.Deck.length; i++) {
+					var cd = fld.Allys.Deck[i];
+					deck_attr[cd.attr[0]] = 1;
+				}
+				for (var i = 0; i < 5; i++) {
+					if (deck_attr[i] > 0) { count++; }
+				}
+				return count >= 3;
 			},
 		}
 	];
@@ -369,10 +419,11 @@ function ChainDeckSpecsAttack(base, specs, ch) {
 			type: "attack",
 			isall: false,
 			atkn: 1,
-			rate: 1 + base,
+			rate: 1 + base * 5,
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
+			desc: "デッキ内の特定種族数に依存(最大値)",
 			cond: function (fld, oi, ei) {
 				var count = 0;
 				// 属性カウント
@@ -399,13 +450,13 @@ function ChainDeckDeadsAttack(base, ch) {
 			type: "attack",
 			isall: false,
 			atkn: 1,
-			rate: 1 + base,
+			rate: 1 + base * 5,
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
+			desc: "戦闘不能の味方数に依存(最大値)",
 			cond: function (fld, oi, ei) {
 				var count = 0;
-				// カウント
 				for (var i = 0; i < fld.Allys.Deck.length; i++) {
 					var nw = fld.Allys.Now[i];
 					if (nw.nowhp <= 0) {
@@ -430,6 +481,7 @@ function ChainStakesAttack(u, t, ch) {
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
+			desc: "イチかバチか攻撃(最大値)",
 			cond: function (fld, oi, ei) {
 				this.rate = Math.floor(Math.random() * (t-u) + u);
 				return true;
@@ -474,6 +526,7 @@ function ChainEnhance_SubAttr(r1, r2, attr, sub, ch) {
 			attr: attr,
 			subattr: sub,
 			spec: create_specs(1),
+			desc: "副属性も一致した場合",
 			cond: function (fld, oi, ei) {
 				var cd = fld.Allys.Deck[oi];
 				return sub[cd.attr[1]] > 0;
@@ -517,6 +570,7 @@ function ChainPanelsEnhance(r1, r2, r3, attr, ch) {
 			chain: ch,
 			attr: attr,
 			spec: create_specs(1),
+			desc: as_panel_over2().desc,
 			cond: as_panel_over2().cond,
 		},
 		{
@@ -526,6 +580,7 @@ function ChainPanelsEnhance(r1, r2, r3, attr, ch) {
 			chain: ch,
 			attr: attr,
 			spec: create_specs(1),
+			desc: as_panel_over3().desc,
 			cond: as_panel_over3().cond,
 		},
 	];
@@ -603,6 +658,7 @@ function ChainPanelsHeal(r1, r2, r3, attr, ch) {
 			chain: chain,
 			attr: attr,
 			spec: create_specs(1),
+			desc: as_panel_over2().desc,
 			cond: as_panel_over2().cond,
 		},
 		{
@@ -611,6 +667,7 @@ function ChainPanelsHeal(r1, r2, r3, attr, ch) {
 			chain: chain,
 			attr: attr,
 			spec: create_specs(1),
+			desc: as_panel_over3().desc,
 			cond: as_panel_over3().cond,
 		},
 	];
@@ -630,6 +687,7 @@ function always_true() {
 // パネル色が二色以上
 function as_panel_over2() {
 	return {
+		desc: "パネル色が2色以上",
 		cond: function (fld, oi, ei, panels) {
 			return panels.length >= 2;
 		}
@@ -639,6 +697,7 @@ function as_panel_over2() {
 // パネル色が三色以上
 function as_panel_over3() {
 	return {
+		desc: "パネル色が3色",
 		cond: function (fld, oi, ei, panels) {
 			return panels.length >= 3;
 		}
@@ -649,6 +708,7 @@ function as_panel_over3() {
 // リーダー時
 function when_leader() {
 	return {
+		desc: "リーダー時に発動",
 		cond: function (fld, oi, ei) {
 			return oi == 0;
 		}
@@ -658,6 +718,7 @@ function when_leader() {
 // HP一定以上
 function when_hp_more(p) {
 	return {
+		desc: "HP" + (p*100) + "%以上",
 		cond: function (fld, oi, ei) {
 			var now = fld.Allys.Now[oi];
 			return now.nowhp >= now.maxhp * p;
@@ -667,6 +728,7 @@ function when_hp_more(p) {
 // HP一定以下
 function when_hp_less(p) {
 	return {
+		desc: "HP" + (p * 100) + "%以下",
 		cond: function (fld, oi, ei) {
 			var now = fld.Allys.Now[oi];
 			return now.nowhp <= now.maxhp * p;
@@ -676,6 +738,7 @@ function when_hp_less(p) {
 // HP一定未満
 function when_hp_under(p) {
 	return {
+		desc: "HP" + (p * 100) + "%未満",
 		cond: function (fld, oi, ei) {
 			var now = fld.Allys.Now[oi];
 			return now.nowhp < now.maxhp * p;
@@ -706,6 +769,7 @@ function when_deckattr_less(c_attr, c_num) {
 // HP吸収
 function as_hp_absorption(r) {
 	return {
+		desc: "HP" + (r * 100) + "%吸収",
 		after: function (fld, oi, g_dmg) {
 			return function () {
 				var now = fld.Allys.Now[oi];
@@ -720,6 +784,7 @@ function as_hp_absorption(r) {
 // 全体自傷スキル
 function as_consume_all(hp) {
 	return {
+		desc: "HP" + (hp * 100) + "%全体自傷",
 		after: function (fld, oi) {
 			return function () {
 				fld.log_push("Unit[" + (oi + 1) + "]: 全体自傷(" + (hp * 100) + "%)");
@@ -735,6 +800,7 @@ function as_consume_all(hp) {
 // 単体自傷スキル
 function as_consume_own(hp) {
 	return {
+		desc: "HP" + (hp * 100) + "%自傷",
 		after: function (fld, oi) {
 			return function () {
 				fld.log_push("Unit[" + (oi + 1) + "]: 自傷(" + (hp * 100) + "%)");

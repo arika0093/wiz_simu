@@ -196,6 +196,6 @@ function Awake_dospskill(fld, index) {
 	var ls_awakes = pickup_awakes(card, "awake_spskill", true);
 	for (var i = 0; i < ls_awakes.length; i++) {
 		var ls = ls_awakes[i];
-		ls.skill(ls.p1, ls.p2, ls.p3, ls.p4)(fld, index);
+		SpSkill[ls.skill](ls.p1, ls.p2, ls.p3, ls.p4);
 	}
 }

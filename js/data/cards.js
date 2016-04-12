@@ -28303,7 +28303,7 @@ Cards = [{
 	Lawake: [
 		Attr_statusup(0, 200, [1, 1, 1, 1, 1, ]),
 		// L時 HP50%回復
-		Awake_SpecialSkill(ss_heal, 0.5),
+		Awake_SpecialSkill("ss_heal", 0.5),
 	],
 }, {
 	name: "凛眼に覇道を宿す ルドヴィカ・ロア",
@@ -28347,7 +28347,7 @@ Cards = [{
 	},
 	Lawake: [
 		// L時 ダメージブロック(400/5t)
-		Awake_SpecialSkill(ss_damageblock_all, 400, 5),
+		Awake_SpecialSkill("ss_damageblock_all", 400, 5),
 	],
 }, {
 	name: "守護と断罪の昏眼 アシュタル・ラド",
