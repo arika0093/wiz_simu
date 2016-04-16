@@ -40,6 +40,12 @@ function add_awake_ally(cards, nows, own_no, legend_skill) {
 				nows[t].maxhp += e.up_hp;
 				nows[t].nowhp += e.up_hp;
 				nows[t].atk += e.up_atk;
+				// 副属性一致潜在があったらさらにアップ
+				if (e.sub_attr && e.sub_attr[cards[t].attr[1]] > 0) {
+					nows[t].maxhp += e.up_hp_2;
+					nows[t].nowhp += e.up_hp_2;
+					nows[t].atk += e.up_atk_2;
+				}
 			}
 		}
 	});
@@ -110,15 +116,16 @@ function card_paneb(card) {
 	return paneb;
 }
 
-// 属性軽減値を返す
-function card_attr_relief(card, now, t_attr) {
+// ダメージ軽減値を返す
+function card_dmg_relief(card, now, t_attr) {
 	var r = 0;
-	var ar_awakes = pickup_awakes(card, "attr_relief", false);
+	var ar_awakes = pickup_awakes(card, "damage_relief", false);
 	if (is_legendmode(card, now)) {
-		ar_awakes = ar_awakes.concat(pickup_awakes(card, "attr_relief", true));
+		ar_awakes = ar_awakes.concat(pickup_awakes(card, "damage_relief", true));
 	}
 	for (var i = 0; i < ar_awakes.length; i++) {
-		if (ar_awakes[i].attr[t_attr] > 0) {
+		if (ar_awakes[i].attr[t_attr] > 0 &&
+			check_spec_inarray(ar_awakes[i].spec, card.species)) {
 			r += ar_awakes[i].perc;
 		}
 	}
@@ -170,4 +177,18 @@ function Awake_AbsInvalid(card, now, type) {
 		}
 	}
 	return false;
+}
+
+// L時突入時に潜在SSを発動する
+function Awake_dospskill(fld, index) {
+	var card = fld.Allys.Deck[index];
+	var now = fld.Allys.Now[index];
+	if (!is_legendmode(card, now)) {
+		return false;
+	}
+	var ls_awakes = pickup_awakes(card, "awake_spskill", true);
+	for (var i = 0; i < ai_awakes.length; i++) {
+		var ls = ls_awakes[i];
+		ls.spskill(ls.p1, ls.p2, ls.p3, ls.p4)(fld, index);
+	}
 }

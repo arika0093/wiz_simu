@@ -3233,7 +3233,7 @@ Cards = [{
 	ss1: {
 		desc: "5ターン600以下の全属性ダメージを無効化する",
 		turn: 9,
-		proc: null
+		proc: ss_damageblock_all(600, 5),
 	},
 	islegend: true,
 	Lawake: [
@@ -3247,7 +3247,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターン800以下の全属性ダメージを無効化する",
 		turn: 12,
-		proc: null
+		proc: ss_damageblock_all(800, 5)
 	},
 }, {
 	name: "逆襲に染まった忘却 ゼノン",
@@ -4458,7 +4458,7 @@ Cards = [{
 	ss1: {
 		desc: "5ターン500以下の全属性ダメージを無効化する",
 		turn: 8,
-		proc: null
+		proc: ss_damageblock_all(500, 5)
 	},
 	islegend: true,
 	Lawake: [
@@ -4472,7 +4472,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターン600以下の全属性ダメージを無効化する",
 		turn: 10,
-		proc: null
+		proc: ss_damageblock_all(600, 5)
 	},
 }, {
 	name: "あらぶる森の王様 ポポル",
@@ -9898,7 +9898,7 @@ Cards = [{
 	ss1: {
 		desc: "MAXHPの100％を使い、5ターン800以下の全属性ダメージを無効化する",
 		turn: 9,
-		proc: [ss_consume_own(1)],
+		proc: [ss_consume_own(1), ss_damageblock_all(800, 5)],
 	},
 	islegend: true,
 	Lawake: [
@@ -9911,7 +9911,7 @@ Cards = [{
 	ss2: {
 		desc: "MAXHPの100％を使い、5ターン1000以下の全属性ダメージを無効化する",
 		turn: 12,
-		proc: [ss_consume_own(1)],
+		proc: [ss_consume_own(1), ss_damageblock_all(1000, 5)],
 	},
 }, {
 	name: "争空に舞う天翼 プルミエ・シエル",
@@ -9985,7 +9985,7 @@ Cards = [{
 	ss1: {
 		desc: "5ターン600以下の全属性ダメージを無効化する",
 		turn: 9,
-		proc: null
+		proc: ss_damageblock_all(600, 5),
 	},
 	islegend: true,
 	Lawake: [
@@ -9999,7 +9999,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターン800以下の全属性ダメージを無効化する",
 		turn: 12,
-		proc: null
+		proc: ss_damageblock_all(800, 5),
 	},
 }, {
 	name: "優しい歌声と勇気が合言葉 初音ミク",
@@ -10337,7 +10337,7 @@ Cards = [{
 	ss1: {
 		desc: "5ターン600以下の全属性ダメージを無効化する",
 		turn: 9,
-		proc: null
+		proc: ss_damageblock_all(600, 5),
 	},
 	islegend: true,
 	Lawake: [
@@ -10351,7 +10351,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターン600以下の全属性ダメージを無効化し、HP20％以下の時、1200以下の全属性ダメージを無効化",
 		turn: 12,
-		proc: null
+		proc: ss_damageblock_all(ss_hp_less(0.2, 1200, 600), 5),
 	},
 }, {
 	name: "聖フリーダム騎士 チッタ・レニーノ",
@@ -11957,7 +11957,7 @@ Cards = [{
 	ss1: {
 		desc: "5ターン600以下の全属性ダメージを無効化する",
 		turn: 9,
-		proc: null
+		proc: ss_damageblock_all(600, 5),
 	},
 	islegend: true,
 	Lawake: [
@@ -11971,7 +11971,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターン600以下の全属性ダメージを無効化し、HP20％未満の時、1200以下の全属性ダメージを無効化",
 		turn: 12,
-		proc: null
+		proc: ss_damageblock_all(when_hp_under(0.2, 1200, 600), 5),
 	},
 }, {
 	name: "降り注ぐ月光の奇跡 クラリス・ルナ",
@@ -12526,7 +12526,7 @@ Cards = [{
 	ss1: {
 		desc: "6ターン500以下の全属性ダメージを無効化する",
 		turn: 8,
-		proc: null
+		proc: ss_damageblock_all(600, 6),
 	},
 	islegend: true,
 	Lawake: [
@@ -12540,7 +12540,7 @@ Cards = [{
 	ss2: {
 		desc: "6ターン600以下の全属性ダメージを無効化する",
 		turn: 10,
-		proc: null
+		proc: ss_damageblock_all(600, 6),
 	},
 }, {
 	name: "深き夢の セシーリア・ヴェルレ",
@@ -13620,7 +13620,7 @@ Cards = [{
 	ss1: {
 		desc: "5ターン600以下の全属性ダメージを無効化する",
 		turn: 9,
-		proc: null
+		proc: ss_damageblock_all(600, 5),
 	},
 	islegend: true,
 	Lawake: [
@@ -13634,7 +13634,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターン800以下の全属性ダメージを無効化する",
 		turn: 12,
-		proc: null
+		proc: ss_damageblock_all(800, 5),
 	},
 }, {
 	name: "暴風雷帝 ヘルミーナ・ブリッツ",
@@ -25968,7 +25968,7 @@ Cards = [{
 		Panel_boost([0, 1, 0, 0, 0, ], 2),
 		Fastskill(2),
 		Heal_afterbattle(10),
-		{ /* 魔族ダメージ軽減Ⅲ */ },
+		Spec_relief([2], 30),
 　　　　　Awake_noeffect("心眼", 1),
 	],
 	as2: {
@@ -26408,7 +26408,7 @@ Cards = [{
 		Attr_statusup(0,100, [1,0,1,0,0,]),
 		Attr_statusup(100,0, [1,0,1,0,0,]),
 		Fastskill(2),
-		{ /* 物質ダメージ軽減Ⅲ */ },
+		Spec_relief([6], 30),
 	],
 	as2: {
 		desc: "4チェインでダメージアップ、物質の敵へさらにダメージアップ(500%/800%)",
@@ -27150,7 +27150,7 @@ Cards = [{
 		Statusup(200,0),
 		Attr_statusup(100,0, [1,0,0,0,0,]),
 		Panel_boost([1,0,0,0,0,],2),
-		{ /* 物質ダメージ軽減Ⅱ */ },
+		Spec_relief([6], 20),
 		Statusup(200,0),
 		Attr_statusup(0,100, [1,0,0,0,0,]),
 		Fastskill(2),
@@ -27228,7 +27228,7 @@ Cards = [{
 		Fastskill(2),
 		Attr_statusup(100,0, [0,1,0,0,0,]),
 		Attr_statusup(0,100, [0,1,0,0,0,]),
-		{ /* 物質ダメージ軽減Ⅲ */ },
+		Spec_relief([6], 20),
 	],
 	as2: {
 		desc: "4チェインでダメージアップ(400%)",
@@ -27557,5 +27557,978 @@ Cards = [{
 	Lawake: [
 		Statusup(0, 400),
 		Statusup(400, 0),
+	],
+}, {
+	name: "星座に導かれて　シェリル&ランカ",
+	cardno: 6020,
+	imageno: 7851,
+	hp: 2818,
+	atk: 2554,
+	cost: 30,
+	attr: [2, 0],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "パネルの色が2色以上で火・雷属性の味方を回復(17%)",
+		proc: ChainPanelsHeal(0, 0.17, 0.17, [1, 0, 1, 0, 0], 0),
+	},
+	ss1: {
+		desc: "スキル反射を無視し、敵単体へ火・雷属性の2回連続ダメージ(200%)",
+		turn: 4,
+		proc: [ss_ignore_skillcounter(), ss_damage_s(2.0, [0, 2], 2)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(200, 0),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Statusup(0, 200),
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
+		Attr_statusup(0, 200, [1, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(200, 0, [1, 0, 1, 0, 0, ]),
+		Fastskill(2),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "パネルの色が2色以上で火・雷属性の味方を回復(20%)",
+		proc: ChainPanelsHeal(0, 0.20, 0.20, [1, 0, 1, 0, 0], 0),
+	},
+	ss2: {
+		desc: "スキル反射を無視し、敵単体へ火・雷属性の2回連続ダメージ(400%)",
+		turn: 6,
+		proc: [ss_ignore_skillcounter(), ss_damage_s(4.0, [0, 2], 2)],
+	},
+	Lawake: [
+		Statusup(500, 0),
+		Statusup(0, 500),
+	],
+}, {
+	name: "スカル小隊の双星　アルト&ミハエル",
+	cardno: 6017,
+	imageno: 7854,
+	hp: 2018,
+	atk: 2609,
+	cost: 25,
+	attr: [1, 2],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "4チェインで敵全体へ分散攻撃、HP80%以上でさらにダメージアップ(300%/400%)",
+		proc: [ChainVarianceAttack(3.0, 4), add_cond(ChainVarianceAttack(4.0, 4), when_hp_more(0.8))],
+	},
+	ss1: {
+		desc: "スキル反射を無視し、敵全体へ水・雷属性のダメージ(150%)",
+		turn: 7,
+		proc: [ss_ignore_skillcounter(), ss_damage_all(1.5, [1, 2])],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Statusup(200, 0),
+		NEFTJOD(30),
+		Statusup(0, 200),
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(100, 0, [0, 1, 1, 0, 0, ]),
+		Panel_boost([0, 1, 1, 0, 0, ], 2),
+		Fastskill(2),
+		Attr_statusup(0, 200, [0, 1, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "4チェインで敵全体へ分散攻撃、HP80%以上でさらにダメージアップ(400%/500%)",
+		proc: [ChainVarianceAttack(4.0, 4), add_cond(ChainVarianceAttack(5.0, 4), when_hp_more(0.8))],
+	},
+	ss2: {
+		desc: "スキル反射を無視し、敵全体へ水・雷属性のダメージ(220%)",
+		turn: 10,
+		proc: [ss_ignore_skillcounter(), ss_damage_all(2.2, [1, 2])],
+	},
+	Lawake: [
+		Attr_statusup(0, 200, [0, 1, 1, 0, 0, ]),
+	],
+}, {
+	name: "超時空銀河コラボ ミンメイ&バサラ",
+	cardno: 6014,
+	imageno: 7857,
+	hp: 2218,
+	atk: 2309,
+	cost: 22,
+	attr: [0, 1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "3チェインでダメージアップ(300%)",
+		proc: ChainAttack(3.0, 3),
+	},
+	ss1: {
+		desc: "3ターンの間、アンサースキル発動時間を10秒延長する(上限:20秒)",
+		turn: 5,
+		proc: null,
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1, 0, 0, 0, 0, ], 1),
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Fastskill(1),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Fastskill(2),
+		Attr_statusup(100, 0, [1, 1, 0, 0, 0, ]),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "敵単体へのダメージアップ(300%)、さらに火・水属性の味方のHPを回復(5%)",
+		proc: [ChainAttack(3.0, 0), Heal(0.05, [1, 1, 0, 0, 0], 0)],
+	},
+	ss2: {
+		desc: "5ターンの間、アンサースキル発動時間を15秒延長する(上限:20秒)、さらに味方全体のHPを回復する(25%)",
+		turn: 7,
+		proc: [ss_heal(0.25)],
+	},
+	Lawake: [
+		Statusup(0, 400),
+		Statusup(400, 0),
+	],
+}, {
+	name: "暗黒銀河の女王 バジュラクイーン",
+	cardno: 6031,
+	imageno: 7848,
+	hp: 2658,
+	atk: 2776,
+	cost: 70,
+	attr: [0, 4],
+	species: [6],
+	islegend: true,
+	as1: {
+		desc: "4チェインで雷属性の敵単体へ特効3連撃、パネルの色が増す度さらにアップ(500%/600%/700%)",
+		proc: ChainPanelsAttrDualAttack(5.0, 6.0, 7.0, [0, 0, 1, 0, 0], 3, 4),
+	},
+	ss1: {
+		desc: "2ターン溜めた後、1ターン1000以下の全属性ダメージを無効化する",
+		turn: 8,
+		charged: 2,
+		proc: ss_damageblock_all(1000, 1),
+	},
+	awakes: [
+		Statusup(200, 0),
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
+		Fastskill(2),
+		Statusup(200, 0),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Attr_statusup(200, 0, [1, 0, 0, 0, 0, ]),
+		Attr_statusup(0, 200, [1, 0, 0, 0, 0, ]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "4チェインで雷属性の敵単体へ特効3連撃、パネルの色が増す度さらにアップ(600%/700%/800%)",
+		proc: ChainPanelsAttrDualAttack(6.0, 7.0, 8.0, [0, 0, 1, 0, 0], 3, 4),
+	},
+	ss2: {
+		desc: "2ターン溜めた後、1ターン1500以下の全属性ダメージを無効化する",
+		turn: 11,
+		charged: 2,
+		proc: ss_damageblock_all(1500, 1),
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		Spec_relief([6], 20),
+	],
+}, {
+	name: "巨大な障壁 バトル・ギャラクシー",
+	cardno: 6028,
+	imageno: 7845,
+	hp: 2083,
+	atk: 3064,
+	cost: 65,
+	attr: [2, 1],
+	species: [6],
+	islegend: true,
+	as1: {
+		desc: "HP全快でダメージアップ(450%)",
+		proc: add_cond(ChainAttack(4.5, 0), when_hp_more(1)),
+	},
+	ss1: {
+		desc: "味方のMAXHP60%を使い、スキル反射を無視し、敵全体へ水・雷属性のダメージ(220%)",
+		turn: 7,
+		proc: [ss_ignore_skillcounter(), ss_damage_all(2.2, [1, 2]), ss_consume_own(0.60)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(200, 0, [0, 1, 1, 0, 0, ]),
+		Attr_statusup(0, 200, [0, 1, 1, 0, 0, ]),
+		Fastskill(2),
+		Spec_relief([6], 20),
+　　　　　　　　{ /* 敵スキルのAS封印を無効化 */ },
+	],
+	as2: {
+		desc: "HP全快でダメージアップ(550%)",
+		proc: add_cond(ChainAttack(5.5, 0), when_hp_more(1)),
+	},
+	ss2: {
+		desc: "味方のMAXHP60%を使い、スキル反射を無視し、敵全体へ水・雷属性のダメージ(260%)",
+		turn: 9,
+		proc: [ss_ignore_skillcounter(), ss_damage_all(2.6, [1, 2]), ss_consume_own(0.60)],
+	},
+	Lawake: [
+		Attr_statusup(0, 200, [0, 1, 1, 0, 0, ]),
+	],
+}, {
+	name: "超時空生命体 バジュラ",
+	cardno: 6024,
+	imageno: 7841,
+	hp: 2083,
+	atk: 2664,
+	cost: 40,
+	attr: [1, 4],
+	species: [6],
+	islegend: true,
+	as1: {
+		desc: "種族が物質の敵単体へ特効ダメージ(600%)",
+		proc: ChainSpecAttack(6.0, 0, 6),
+	},
+	ss1: {
+		desc: "ジャンルパネルを水・闇属性化",
+		turn: 4,
+		proc: null,
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_relief([1, 0, 0, 0, 0, ], 10),
+		Statusup(200, 0),
+		Attr_statusup(200, 0, [0, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Statusup(0, 200),
+		Attr_statusup(0, 200, [0, 1, 0, 0, 0, ]),
+		Fastskill(2),
+		Spec_relief([6], 20),
+	],
+	as2: {
+		desc: "種族が物質の敵単体へ特効ダメージ(700%)",
+		proc: ChainSpecAttack(7.0, 0, 6),
+	},
+	ss2: {
+		desc: "ジャンルパネルを水・闇属性化し、攻撃力アップの効果を付与(30%)",
+		turn: 7,
+		proc: [panel_attackup(0.30)],
+	},
+	Lawake: [
+		Statusup(0, 400),
+		Statusup(400, 0),
+	],
+}, {
+	name: "煌炎の白銀狐 ゲルデハイラ・アルバ",
+	cardno: 6034,
+	imageno: 7868,
+	hp: 3689,
+	atk: 4328,
+	cost: 50,
+	attr: [0, -1],
+	species: [5],
+	islegend: true,
+	as1: {
+		desc: "雷属性の敵単体へ特効3連撃(400%)",
+		proc: ChainDualAttrAttack(4.0, 0, 3, [0, 0, 1, 0, 0]),
+	},
+	ss1: {
+		desc: "5ターン味方全体を徐々に回復する(15%)",
+		turn: 6,
+		proc: [ss_regenerate(0.15, 5)],
+	},
+	awakes: [
+		Panel_boost([1, 0, 0, 0, 0, ], 1),
+		Fastskill(1),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Heal_afterbattle(10),
+		Spec_statusup(500, 0, [5, ]),
+		Spec_statusup(0, 500, [5, ]),
+		Fastskill(2),
+		Attr_statusup(200, 0, [1, 0, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "雷属性の敵単体へ特効3連撃(500%)",
+		proc: ChainDualAttrAttack(5.0, 0, 3, [0, 0, 1, 0, 0]),
+	},
+	ss2: {
+		desc: "2ターン溜めた後、味方HPを完全回復し、さらに5ターン味方全体を徐々に回復する(30%)",
+		turn: 8,
+		charged: 2,
+		proc: [ss_heal(1), ss_regenerate(0.30, 5)],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		Statusup(0, 500),
+	],
+}, {
+	name: "煌眼を支えし片腕 ジミー・デヴィス",
+	cardno: 6032,
+	imageno: 7866,
+	hp: 3003,
+	atk: 4998,
+	cost: 49,
+	attr: [0, -1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "3チェインで敵全体へダメージ、10チェインで更にダメージアップ(180%/280%)",
+		proc: [ChainAllAttack(1.8, 3), ChainAllAttack(2.8, 10)],
+	},
+	ss1: {
+		desc: "3ターンの間、アンサースキル発動時間を10秒延長する(上限値:20秒)",
+		turn: 5,
+		proc: null,
+	},
+	awakes: [
+		Statusup(200, 0),
+		Fastskill(2),
+		Attr_relief([1, 0, 0, 0, 0, ], 10),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Fastskill(2),
+		Attr_statusup(0, 200, [1, 0, 0, 0, 0, ]),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Fastskill(2),
+		Spec_statusup(0, 200, [8, ]),
+　　　　　　　　{ /* 心眼 */ },
+	],
+	as2: {
+		desc: "3チェインで敵全体へダメージ、10チェインで更にダメージアップ(220%/320%)",
+		proc: [ChainAllAttack(2.2, 3), ChainAllAttack(3.2, 10)],
+	},
+	ss2: {
+		desc: "5ターンの間、アンサースキル発動時間を15秒延長する(上限値:20秒)",
+		turn: 8,
+		proc: null,
+	},
+	Lawake: [
+		Attr_statusup(0, 200, [1, 0, 0, 0, 0, ]),
+	],
+}, {
+	name: "煌流星の砲撃猫 ガンドゥ・ギギライ",
+	cardno: 6033,
+	imageno: 7867,
+	hp: 4678,
+	atk: 3065,
+	cost: 52,
+	attr: [1, 0],
+	species: [5],
+	islegend: true,
+	as1: {
+		desc: "3チェインかつパネルが2色でダメージアップ、3色でさらにダメージアップ(400%/550%)",
+		proc: ChainPanelsAttack(0, 4.0, 5.5, 3),
+	},
+	ss1: {
+		desc: "解答選択肢を2つ削り、3チェインを消費し解答を見破る",
+		turn: 3,
+		proc: null,
+	},
+	awakes: [
+		Statusup(200, 0),
+		Costdown(2),
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Spec_statusup(0, 500, [5, ]),
+		Fastskill(2),
+		Spec_statusup(500, 0, [5, ]),
+		NEFTJOD(60),
+	],
+	as2: {
+		desc: "3チェインかつパネルが2色でダメージアップ、3色でさらにダメージアップ(550%/700%)",
+		proc: ChainPanelsAttack(0, 5.5, 7.0, 3),
+	},
+	ss2: {
+		desc: "解答を見破る",
+		turn: 6,
+		proc: null,
+	},
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(500, 0),
+	],
+},
+/* {
+	name: "迅雷の煌絶剣　アマカド・ヒメザクロ",
+	cardno: 6035,
+	imageno: 7869,
+	hp: 2876,
+	atk: 5432,
+	cost: 50,
+	attr: [2, -1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "戦士・亜人の仲間の数だけダメージアップ(100%+40%×数)、パネルの色が2色以上でさらにダメージアップ(100%+60%×数)",
+		proc: null,
+	},
+	ss1: {
+		desc: "味方全体のHPを回復する(50%)",
+		turn: 5,
+		proc: [ss_heal(0.5)],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		NEFTJOD(30),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Attr_relief([0, 1, 0, 0, 0, ], 10),
+		Fastskill(2),
+		Spec_statusup(0, 200, [8, ]),
+		Spec_statusup(200, 0, [8, ]),
+	],
+	as2: {
+		desc: "戦士・亜人の仲間の数だけダメージアップ(100%+60%×数)、パネルの色が2色以上でさらにダメージアップ(100%+80%×数)",
+		proc: null,
+	},
+	ss2: {
+		desc: "味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	Lawake: [
+		Statusup(500, 0),
+		Statusup(0, 500),
+	],
+} */
+{
+	name: "紅蓮に燃ゆる煌眼 リヴェータ・イレ",
+	cardno: 6041,
+	imageno: 7865,
+	hp: 3355,
+	atk: 3253,
+	cost: 50,
+	attr: [0, -1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "火属性の味方の攻撃力をアップ、戦士はさらにアップ(20%/40%)",
+		proc: [ChainEnhance(0.20, [1, 0, 0, 0, 0], 0), ChainSpecEnhance(0.40, [1, 0, 0, 0, 0], [8], 0)],
+	},
+	ss1: {
+		desc: "敵単体の攻撃ターンを2遅らせる",
+		turn: 9,
+		proc: null,
+	},
+	awakes: [
+		Statusup(0, 200),
+		Fastskill(1),
+		Statusup(0, 200),
+		Fastskill(2),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Spec_statusup(0, 200, [8, ]),
+		Statusup(200, 0),
+		Attr_statusup(100, 0, [1, 0, 0, 0, 0, ]),
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "火属性の味方のHPを回復し(13%)、さらに攻撃力をアップ、戦士はさらにアップ(20%/40%)",
+		proc: [Heal(0.13, [1, 0, 0, 0, 0], 0), ChainEnhance(0.20, [1, 0, 0, 0, 0], 0), ChainSpecEnhance(0.40, [1, 0, 0, 0, 0], [8], 0)],
+	},
+	ss2: {
+		desc: "敵単体の攻撃ターンを2遅らせ、火属性のダメージ(400%)",
+		turn: 12,
+		proc: [ss_damage_s(4.0, [0], 1)],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		Statusup(0, 500),
+	],
+}, {
+	name: "勝戦の凛腕 ヤーボ・ブラックモア",
+	cardno: 6039,
+	imageno: 7863,
+	hp: 2699,
+	atk: 3095,
+	cost: 46,
+	attr: [1, -1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "5チェインでダメージアップ(400%)",
+		proc: ChainAttack(4.0, 5),
+	},
+	ss1: {
+		desc: "味方全体のHPを回復する(50%)",
+		turn: 6,
+		proc: [ss_heal(0.50)],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Statusup(0, 200),
+		Fastskill(1),
+		Statusup(0, 200),
+		Attr_relief([0, 1, 0, 0, 0, ], 10),
+		Statusup(0, 200),
+		Attr_relief([1, 0, 0, 0, 0, ], 10),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "5チェインでダメージアップ(450%)、さらに水属性の味方のHPを回復(5%)",
+		proc: [ChainAttack(4.5, 5), Heal(0.05, [0, 1, 0, 0, 0], 0)],
+	},
+	ss2: {
+		desc: "チェインプラス2の効果、さらに味方全体のHPを回復する(50%)",
+		turn: 10,
+		proc: [ss_heal(0.50), ss_addchain(2)],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(0, 400),
+	],
+}, {
+	name: "重斬の凛剣 オーリントール・バイア",
+	cardno: 6038,
+	imageno: 7862,
+	hp: 2638,
+	atk: 3021,
+	cost: 38,
+	attr: [2, -1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "水属性の敵単体へ特効ダメージ(350%)",
+		proc: [ChainAttrAttack(3.5, 0, [0, 1, 0, 0, 0])],
+	},
+	ss1: {
+		desc: "1ターン溜めた後、敵単体へ雷属性のダメージ(200%)",
+		turn: 4,
+		charged: 1,
+		proc: [ss_damage_s(2.0, [2], 1)],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Statusup(200, 0),
+		Fastskill(1),
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Statusup(200, 0),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Fastskill(2),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "水属性の敵単体へ特効ダメージ(450%)",
+		proc: [ChainAttrAttack(4.5, 0, [0, 1, 0, 0, 0])],
+	},
+	ss2: {
+		desc: "1ターン溜めた後、敵単体へ雷属性のダメージ(400%)",
+		turn: 7,
+		charged: 1,
+		proc: [ss_damage_s(4.0, [2], 1)],
+	},
+	Lawake: [
+		Statusup(0, 400),
+		Statusup(400, 0),
+	],
+}, {
+	name: "凛歌の金獣 エスメラルダ・アウルム",
+	cardno: 6037,
+	imageno: 7861,
+	hp: 2462,
+	atk: 3066,
+	cost: 30,
+	attr: [0, -1],
+	species: [5],
+	islegend: true,
+	as1: {
+		desc: "敵全体へ分散攻撃(250%)",
+		proc: ChainVarianceAttack(2.5, 0),
+	},
+	ss1: {
+		desc: "3ターン火属性の味方の攻撃力をアップ(50%)",
+		turn: 8,
+		proc: [ss_enhance_all(0.50, 3, [1, 0, 0, 0, 0])],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0, 100),
+		Fastskill(1),
+		Statusup(200, 0),
+		Fastskill(2),
+		Statusup(0, 200),
+		Panel_boost([1, 0, 0, 0, 0, ], 1),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Spec_statusup(0, 500, [5, ]),
+		Spec_statusup(500, 0, [5, ]),
+	],
+	as2: {
+		desc: "敵全体へ分散攻撃(350%)",
+		proc: ChainVarianceAttack(3.5, 0),
+	},
+	ss2: {
+		desc: "4ターン火属性の味方の攻撃力をアップ、5チェインを消費しさらにアップ(120%/180%)",
+		turn: 13,
+		proc: [ss_chain_cost_skill(5, ss_enhance_all(1.80, 4, [1, 0, 0, 0, 0]), ss_enhance_all(1.20, 4, [1, 0, 0, 0, 0]))],
+	},
+	Lawake: [
+		Statusup(0, 500),
+	],
+}, {
+	name: "冷刻の凛刃 イスルギ・ユスラウメ",
+	cardno: 6036,
+	imageno: 7860,
+	hp: 2310,
+	atk: 2921,
+	cost: 25,
+	attr: [1, -1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "敵単体を5回連続攻撃(250%)",
+		proc: ChainDualAttack(2.5, 0, 5),
+	},
+	ss1: {
+		desc: "敵全体へ水属性のダメージ(100%)",
+		turn: 5,
+		proc: [ss_damage_all(1.0, [1])],
+	},
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Statusup(100, 0),
+		Fastskill(1),
+		Statusup(200, 0),
+		Statusup(0, 200),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Fastskill(1),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "敵単体を10回連続攻撃(300%)",
+		proc: ChainDualAttack(3.0, 0, 10),
+	},
+	ss2: {
+		desc: "敵全体へ水属性のダメージ(150%)",
+		turn: 7,
+		proc: [ss_damage_all(1.5, [1])],
+	},
+	Lawake: [
+		Statusup(0, 400),
+		Statusup(400, 0),
+	],
+}, {
+	name: "天下滅穿の烈眼 ギルベイン・ルガ",
+	cardno: 6040,
+	imageno: 7864,
+	hp: 2571,
+	atk: 2526,
+	cost: 51,
+	attr: [2, 1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "デッキに雷属性が3体以下の時、水・雷属性の味方の攻撃力をアップ(80%)",
+		proc: null,
+	},
+	ss1: {
+		desc: "敵全体へ水・雷属性のダメージ(150%)",
+		turn: 7,
+		proc: [ss_damage_all(1.5, [1, 2])],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Fastskill(1),
+		Statusup(0, 400),
+		Statusup(400, 0),
+		Attr_statusup(100, 0, [0, 1, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(2),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+		Spec_statusup(0, 200, [8, ]),
+	],
+	as2: {
+		desc: "デッキに雷属性が3体以下の時、水・雷属性の味方の攻撃力をアップ(110%)",
+		proc: null,
+	},
+	ss2: {
+		desc: "敵全体へ水・雷属性のダメージ(220%)",
+		turn: 10,
+		proc: [ss_damage_all(2.2, [1, 2])],
+	},
+	Lawake: [
+		Statusup(0, 400),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+	],
+}, {
+	name: "煌眼は勝利へ導く リヴェータ・イレ",
+	cardno: 6045,
+	imageno: 7871,
+	hp: 4356,
+	atk: 4345,
+	cost: 49,
+	attr: [0, -1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "火属性の味方の攻撃力をアップし(30%)、6チェインでダメージアップ(400%)",
+		proc: [ChainEnhance(0.30, [1, 0, 0, 0, 0], 0), ChainAttack(4.0, 6)],
+	},
+	ss1: {
+		desc: "敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ、5チェイン消費しさらに特効ダメージ(200%/900%/1200%)",
+		turn: 9,
+		proc: [ss_chain_cost(5, ss_damage_all(special_attr([0, 0, 1, 0, 0], 9.0, 2.0), [0]), special_attr([0, 0, 1, 0, 0], 12.0, 2.0), [0])],
+	},
+	awakes: [
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Statusup(0, 200),
+		Fastskill(1),
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		NEFTJOD(30),
+		Attr_statusup(200, 0, [1, 0, 0, 0, 0, ]),
+		Fastskill(2),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Attr_statusup(0, 200, [1, 0, 0, 0, 0, ]),
+		Awake_noeffect("経験値取得量アップ", 1),
+	],
+	as2: {
+		desc: "火属性の味方の攻撃力をアップし(30%)、6チェインでダメージアップ(500%)",
+		proc: [ChainEnhance(0.30, [1, 0, 0, 0, 0], 0), ChainAttack(5.0, 6)],
+	},
+	ss2: {
+		desc: "敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ、5チェイン消費しさらに特効ダメージ(200%/1200%/1700%)",
+		turn: 12,
+		proc: [ss_chain_cost(5, ss_damage_all(special_attr([0, 0, 1, 0, 0], 12.0, 2.0), [0]), special_attr([0, 0, 1, 0, 0], 17.0, 2.0), [0])],
+	},
+	Lawake: [
+		Attr_statusup(0, 200, [1, 1, 1, 1, 1, ]),
+		// L時 HP50%回復
+		Awake_SpecialSkill(ss_heal, 0.5),
+	],
+}, {
+	name: "凛眼に覇道を宿す ルドヴィカ・ロア",
+	cardno: 6048,
+	imageno: 7875,
+	hp: 3989,
+	atk: 2789,
+	cost: 48,
+	attr: [1, 0],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "4チェインでダメージアップ、戦士の敵へさらにダメージアップ(400%/700%)",
+		proc: [ChainAttack(4.0, 4), ChainSpecAttack(7.0, 4, [8])],
+	},
+	ss1: {
+		desc: "スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
+		turn: 9,
+		proc: [ss_skillboost(2)],
+	},
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(100, 0, [1, 1, 0, 0, 0, ]),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		NEFTJOD(30),
+		Attr_statusup(200, 0, [1, 1, 0, 0, 0, ]),
+		Fastskill(2),
+		Attr_statusup(0, 200, [1, 1, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "4チェインでダメージアップ、戦士の敵へさらにダメージアップ(500%/800%)",
+		proc: [ChainAttack(5.0, 4), ChainSpecAttack(8.0, 4, [8])],
+	},
+	ss2: {
+		desc: "スペシャルスキルの発動ターンを3早め、敵単体の攻撃ターンを3遅らせる",
+		turn: 12,
+		proc: [ss_skillboost(3)],
+	},
+	Lawake: [
+		// L時 ダメージブロック(400/5t)
+		Awake_SpecialSkill(ss_damageblock_all, 400, 5),
+	],
+}, {
+	name: "守護と断罪の昏眼 アシュタル・ラド",
+	cardno: 6060,
+	imageno: 7887,
+	hp: 4256,
+	atk: 4345,
+	cost: 52,
+	attr: [0, -1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "15チェインで雷属性の敵単体へ特効ダメージ(1400%)",
+		proc: ChainAttrAttack(14.0, 15, [0, 0, 1, 0, 0]),
+	},
+	ss1: {
+		desc: "敵全体へ火属性のダメージ(300%)、さらに3ターンの間、火属性のダメージ(300%)",
+		turn: 9,
+		proc: ss_continue_damage(3.0, 3.0, [0], 3),
+	},
+	awakes: [
+		Panel_boost([1, 0, 0, 0, 0, ], 1),
+		Statusup(0, 200),
+		Attr_statusup(100, 0, [1, 0, 0, 0, 0, ]),
+		Fastskill(1),
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Attr_statusup(100, 0, [1, 0, 0, 0, 0, ]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(0, 200, [1, 0, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "15チェインで雷属性の敵単体へ特効ダメージ(1600%)",
+		proc: ChainAttrAttack(16.0, 15, [0, 0, 1, 0, 0]),
+	},
+	ss2: {
+		desc: "敵全体へ火属性のダメージ(300%)、さらに4ターンの間、火属性のダメージ(300%)",
+		turn: 11,
+		proc: ss_continue_damage(3.0, 3.0, [0], 4),
+	},
+	Lawake: [
+		Statusup(0, 600),
+		Statusup(400, 0),
+	],
+}, {
+	name: "ふたつの眼を守る者 セリアル・ノト",
+	cardno: 6057,
+	imageno: 7884,
+	hp: 4693,
+	atk: 2094,
+	cost: 46,
+	attr: [2, 0],
+	species: [5],
+	islegend: true,
+	as1: {
+		desc: "雷属性の味方を回復し(5%)、攻撃力もアップ。複属性が火だとさらに攻撃力アップ(30%/50%)",
+		proc: [Heal(0.05, [0, 0, 1, 0, 0], 0), ChainEnhance_SubAttr(0.30, 0.50, [0, 0, 1, 0, 0], [1, 0, 0, 0, 0], 0)],
+	},
+	ss1: {
+		desc: "5ターン溜めた後、味方HPを完全回復し、さらに10ターン味方全体を徐々に回復する(30%)",
+		turn: 5,
+		charged: 5,
+		proc: [ss_heal(1), ss_regenerate(0.30, 10)],
+	},
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0, ]),
+		Statusup(0, 200),
+		Fastskill(2),
+		NEFTJOD(30),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(3),
+		Heal_afterbattle(10),
+		Spec_statusup(500, 0, [5, ]),
+		Attr_statusup_sattr(200, 0, [0,0,1,0,0], 200, 0, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "雷属性の味方を回復し(5%)、攻撃力もアップ。複属性が火だとさらに攻撃力アップ(60%/80%)",
+		proc: [Heal(0.05, [0, 0, 1, 0, 0], 0), ChainEnhance_SubAttr(0.60, 0.80, [0, 0, 1, 0, 0], [1, 0, 0, 0, 0], 0)],
+	},
+	ss2: {
+		desc: "味方全体のHPを回復し(50%)、状態異常を回復、さらに火・雷属性の味方を50%で蘇生",
+		turn: 10,
+		proc: [ss_heal(0.50), ss_abstate_cure(), ss_resurrection([1, 0, 1, 0, 0], 0.50)],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+		Statusup(500, 0),
+	],
+}, {
+	name: "咎よ惨禍に散れ ハクア・デスサイス",
+	cardno: 6051,
+	imageno: 7878,
+	hp: 3065,
+	atk: 5397,
+	cost: 47,
+	attr: [1, -1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "4チェインで敵全体へ分散攻撃(450%)",
+		proc: ChainVarianceAttack(4.5, 4),
+	},
+	ss1: {
+		desc: "スキル反射を無視し、敵単体のHPを15%減少させる",
+		turn: 8,
+		proc: [ss_ignore_skillcounter(), ss_ratiodamage_s(0.15)],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Fastskill(2),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup(0, 200, [0, 1, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "4チェインで敵全体へ分散攻撃(550%)",
+		proc: ChainVarianceAttack(5.5, 4),
+	},
+	ss2: {
+		desc: "スキル反射を無視し、敵単体のHPを25%減少させる",
+		turn: 10,
+		proc: [ss_ignore_skillcounter(), ss_ratiodamage_s(0.25)],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(0, 500),
+	],
+}, {
+	name: "狂気と怨讐の魔刃 ギンガ・カノン",
+	cardno: 6054,
+	imageno: 7881,
+	hp: 3006,
+	atk: 3502,
+	cost: 50,
+	attr: [2, 4],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "4チェインで水・光属性の敵単体へ特効ダメージ(600%)",
+		proc: ChainAttrAttack(6.0, 4, [0, 0, 1, 0, 1]),
+	},
+	ss1: {
+		desc: "4ターンの間、味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ(150%)、さらに極稀にクリティカル",
+		turn: 7,
+		proc: ss_boost_enhance_all(1.5, 4, 0.1),
+	},
+	awakes: [
+		Statusup(0, 200),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
+		Attr_statusup_sattr(0, 200, [0,0,1,0,0], 0, 200, [0,0,0,0,1]),
+	],
+	as2: {
+		desc: "4チェインで水・光属性の敵単体へ特効ダメージ(700%)",
+		proc: ChainAttrAttack(7.0, 4, [0, 0, 1, 0, 1]),
+	},
+	ss2: {
+		desc: "5ターンの間、味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ(200%)、さらに極稀にクリティカル",
+		turn: 10,
+		proc: ss_boost_enhance_all(2.0, 4, 0.1),
+	},
+	Lawake: [
+		Statusup(500, 0),
+		Statusup(0, 500),
 	],
 }, ];

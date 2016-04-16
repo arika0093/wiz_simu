@@ -6,10 +6,11 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss)
 	// エンハ
 	var as_enh = now.as_enhance ? Number(now.as_enhance.toFixed(2)) : 0;
 	var ss_enh = now.ss_enhance ? Number(now.ss_enhance.toFixed(2)) : 0;
+	var bss_enh = now.ss_boost_enhance ? Number(now.ss_boost_enhance.toFixed(2)) : 0;
 	// 攻撃力
 	d = now.atk / (!is_ss ? 2 : 1);
 	// AS倍率、エンハ
-	d *= (rate + as_enh + ss_enh);
+	d *= (rate + as_enh + ss_enh + bss_enh);
 	// チェイン数考慮
 	d *= Number((1 + ch / 100).toFixed(2));
 	// パネル

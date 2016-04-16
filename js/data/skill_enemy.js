@@ -89,15 +89,23 @@ function _s_enemy_attack(fld, dmg, ei, ai, is_dmg_const) {
 		// 属性倍率
 		var rate = attr_magnification(e.attr, cd.attr[0]);
 		// 属性軽減取得
-		var relief = card_attr_relief(cd, now, e.attr);
+		var relief = card_dmg_relief(cd, now, e.attr);
 		// 攻撃前スキル(主に弱体化)確認
 		$.each(now.turn_effect, function (i, e) {
 			e.bef_damage ? rate = e.bef_damage(fld, rate) : false;
 		});
 		// 乱数
 		var rnd = damage_rand();
-		// 最終ダメ
-		var l_dmg = Math.floor(dmg * (1 - relief) * rnd * rate);
+		// 仮ダメージ
+		var dmg = Math.floor(dmg * (1 - relief) * rnd * rate);
+		// ダメージブロックなどの確認
+		$.each(now.turn_effect, function (i, e) {
+			if (e.on_damage) {
+				dmg = e.on_damage(fld, dmg, e.attr);
+			}
+		});
+		// 最終ダメージ
+		var l_dmg = dmg;
 	} else {
 		var l_dmg = Math.floor(dmg);
 	}

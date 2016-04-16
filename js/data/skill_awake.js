@@ -61,6 +61,20 @@ function Attr_statusup(hp, atk, attrs) {
 	};
 }
 
+// 属性ステアップ/副属性でさらにステアップ
+function Attr_statusup_sattr(hp, atk, attr, hp2, atk2, subattr) {
+	return {
+		type: "status_up",
+		attr: attrs,
+		spec: create_specs(1),
+		up_hp: hp,
+		up_atk: atk,
+		sub_attr: subattr,
+		up_hp_2: hp2,
+		up_atk_2: atk2,
+	};
+}
+
 // 味方種族ステアップ
 function Spec_statusup(hp, atk, specs) {
 	return {
@@ -96,8 +110,19 @@ function Panel_boost(attrs, efv) {
 // 属性軽減
 function Attr_relief(attrs, perc) {
 	return {
-		type: "attr_relief",
+		type: "damage_relief",
 		attr: attrs,
+		spec: create_specs(1),
+		perc: perc,
+	};
+}
+
+// 種族軽減
+function Spec_relief(spec, perc) {
+	return {
+		type: "damage_relief",
+		attr: [1,1,1,1,1],
+		spec: specific_specs(spec),
 		perc: perc,
 	};
 }
@@ -124,6 +149,18 @@ function Awake_SkillRateup(upval, skl_type) {
 		type: "awake_rateup",
 		skilltype: skl_type,
 		upvalue: upval,
+	};
+}
+
+// (L時発動)スペシャルスキルを発動
+function Awake_SpecialSkill(spskill, p1, p2, p3, p4) {
+	return {
+		type: "awake_spskill",
+		skill: spskill,
+		p1: p1,
+		p2: p2,
+		p3: p3,
+		p4: p4,
 	};
 }
 

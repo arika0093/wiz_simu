@@ -137,6 +137,8 @@ function legend_timing_check(cards, nows, index) {
 		nows[index].islegend = true;
 		// L時の潜在を反映させる
 		add_awake_ally(cards, nows, index, true);
+		// L時のSSを発動する
+		Awake_dospskill(Field, index);
 		Field.log_push("Unit[" + (index + 1) + "]: Lモード");
 	}
 }

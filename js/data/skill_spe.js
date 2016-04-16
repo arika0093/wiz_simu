@@ -251,6 +251,53 @@ function ss_enhance_own(p, t, _nolog) {
 	}
 }
 
+/**
+ * ブーストエンハンス(毎ターン自傷を伴うエンハンス)を味方全体にかける
+ * p:	 効果値
+ * t:	 継続ターン数
+ * dmg:	 毎ターン受けるダメージの割合
+ * attr: 対象属性(ex. [1,0,0,0,0] -> 火属性のみ), 未指定で全属性
+**/
+function ss_boost_enhance_all(p, t, dmg, attr) {
+	return function (fld, n) {
+		if (!attr) {
+			// 属性未指定なら全属性Up
+			attr = [1, 1, 1, 1, 1];
+		}
+		var rate = ss_ratedo(p, fld, n);
+		for (var i = 0; i < fld.Allys.Deck.length; i++) {
+			var cd = fld.Allys.Deck[i];
+			var now = fld.Allys.Now[i];
+			if (now.nowhp > 0 && attr[cd.attr[0]] > 0) {
+				now.turn_effect.push({
+					desc: "攻撃力アップ[ブースト](" + (rate * 100) + "%)",
+					type: "ss_boost_enhance",
+					icon: "enhance_boost",
+					isdual: false,
+					iscursebreak: true,
+					turn: t,
+					lim_turn: t,
+					effect: function (f, oi, teff, state) {
+						if (state == "first") {
+							f.Allys.Now[oi].ss_boost_enhance = rate;
+						}
+						else if (state == "end" || state == "overlay") {
+							f.Allys.Now[oi].ss_boost_enhance = 0;
+						}
+						else {
+							// 味方全体を自傷
+							ss_consume_all(dmg)(fld, n);
+						}
+					},
+				});
+			}
+		}
+		fld.log_push("味方全体攻撃力Up[Boost](" +
+			(rate * 100) + "%, " + t + "t, dmg: " + (dmg * 100) + "%)");
+		return true;
+	};
+}
+
 // 全体ステアップ
 //   例: ss_statusup_all([500, 500], [2000, 2000], -1)
 function ss_statusup_all(up_arr, up_limit, t) {
@@ -301,6 +348,43 @@ function ss_statusup_all(up_arr, up_limit, t) {
 			(t != -1 ? (", " + t + "t") : "") + ")");
 		return true;
 	};
+}
+
+/**
+ * 味方全体にダメージブロックをかける
+ * d:	無効ダメージ値
+ * t:	継続ターン数
+**/
+function ss_damageblock_all(d, t) {
+	return function (fld, n) {
+		var rate = ss_ratedo(p, fld, n);
+		for (var i = 0; i < fld.Allys.Deck.length; i++) {
+			var cd = fld.Allys.Deck[i];
+			var now = fld.Allys.Now[i];
+			if (now.nowhp > 0 && attr[cd.attr[0]] > 0) {
+				now.turn_effect.push({
+					desc: "ダメージブロック(" + d + ")",
+					type: "ss_damage_block",
+					icon: "damage_block",
+					isdual: false,
+					iscursebreak: true,
+					turn: t,
+					lim_turn: t,
+					effect: function () { },
+					priority: 1,
+					on_damage: function (fld, dmg, attr) {
+						if (dmg >= bl) {
+							return dmg;
+						} else {
+							return 0;
+						}
+					}
+				});
+			}
+		}
+		fld.log_push("味方全体ダメージブロック(" + d + "/" + t + "t)");
+		return true;
+	}
 }
 
 // 全体状態異常無効(ターン数)
