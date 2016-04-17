@@ -239,7 +239,7 @@ function ss_enhance_own(p, t, _nolog) {
 				if (state == "first") {
 					f.Allys.Now[oi].ss_enhance = rate;
 				}
-				else if (state == "end" || state == "overlay") {
+				else if (state == "end" || state == "dead") {
 					f.Allys.Now[oi].ss_enhance = 0;
 				}
 			},
@@ -277,16 +277,16 @@ function ss_boost_enhance_all(p, t, dmg, attr) {
 					iscursebreak: true,
 					turn: t,
 					lim_turn: t,
-					effect: function (f, oi, teff, state) {
+					effect: function (f, oi, teff, state, is_t) {
 						if (state == "first") {
 							f.Allys.Now[oi].ss_boost_enhance = rate;
 						}
-						else if (state == "end" || state == "overlay") {
+						else if (state == "end" || state == "dead") {
 							f.Allys.Now[oi].ss_boost_enhance = 0;
 						}
-						else {
+						else if (is_t) {
 							// 自傷
-							ss_consume_own(dmg)(fld, n);
+							ss_consume_own(dmg)(fld, oi);
 						}
 					},
 				});

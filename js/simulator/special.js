@@ -53,7 +53,7 @@ function ss_procdo(ss, now, index) {
 		// チャージスキルの場合turn_effectに追加
 		if (ss.charged > 0) {
 			now.turn_effect.push({
-				desc: "チャージスキル待機",
+				desc: "チャージスキル待機(残り" + ss.charged + "t)",
 				type: "ss_charge",
 				icon: "force_reservior",// 後で変える(?)
 				isdual: false,

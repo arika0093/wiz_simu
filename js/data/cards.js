@@ -28282,7 +28282,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ、5チェイン消費しさらに特効ダメージ(200%/900%/1200%)",
 		turn: 9,
-		proc: [ss_chain_cost(5, ss_damage_all(special_attr([0, 0, 1, 0, 0], 9.0, 2.0), [0]), special_attr([0, 0, 1, 0, 0], 12.0, 2.0), [0])],
+		proc: [ss_chain_cost_skill(5, ss_damage_all(special_attr([0, 0, 1, 0, 0], 9.0, 2.0), [0]), special_attr([0, 0, 1, 0, 0], 12.0, 2.0), [0])],
 	},
 	awakes: [
 		Panel_boost([1, 0, 0, 0, 0, ], 2),
@@ -28303,7 +28303,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ、5チェイン消費しさらに特効ダメージ(200%/1200%/1700%)",
 		turn: 12,
-		proc: [ss_chain_cost(5, ss_damage_all(special_attr([0, 0, 1, 0, 0], 12.0, 2.0), [0]), special_attr([0, 0, 1, 0, 0], 17.0, 2.0), [0])],
+		proc: [ss_chain_cost_skill(5, ss_damage_all(special_attr([0, 0, 1, 0, 0], 12.0, 2.0), [0]), special_attr([0, 0, 1, 0, 0], 17.0, 2.0), [0])],
 	},
 	Lawake: [
 		Attr_statusup(0, 200, [1, 1, 1, 1, 1, ]),
