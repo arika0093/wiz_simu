@@ -187,8 +187,8 @@ function Awake_dospskill(fld, index) {
 		return false;
 	}
 	var ls_awakes = pickup_awakes(card, "awake_spskill", true);
-	for (var i = 0; i < ai_awakes.length; i++) {
+	for (var i = 0; i < ls_awakes.length; i++) {
 		var ls = ls_awakes[i];
-		ls.spskill(ls.p1, ls.p2, ls.p3, ls.p4)(fld, index);
+		ls.skill(ls.p1, ls.p2, ls.p3, ls.p4)(fld, index);
 	}
 }

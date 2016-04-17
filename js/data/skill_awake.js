@@ -65,7 +65,7 @@ function Attr_statusup(hp, atk, attrs) {
 function Attr_statusup_sattr(hp, atk, attr, hp2, atk2, subattr) {
 	return {
 		type: "status_up",
-		attr: attrs,
+		attr: attr,
 		spec: create_specs(1),
 		up_hp: hp,
 		up_atk: atk,

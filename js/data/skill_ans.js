@@ -531,6 +531,28 @@ function ChainPanelsEnhance(r1, r2, r3, attr, ch) {
 	];
 }
 
+/**
+ * デッキに特定属性が一定以下の時にエンハンス
+ * rate:	エンハンス値
+ * attr:	エンハンス対象属性
+ * c_attr:	エンハンス発動条件の属性
+ * c_num:	エンハンス発動条件の味方数
+ * ch:		発動チェイン数
+**/
+function ChainEnhance_attrless(rate, attr, c_attr, c_num, ch) {
+	return [{
+		type: "support",
+		subtype: "enhance",
+		rate: rate,
+		chain: ch,
+		attr: attr,
+		spec: create_specs(1),
+		cond: when_deckattr_less(c_attr, c_num).cond,
+	},];
+}
+
+
+
 // ------------------------------------------------------
 // 回復(rate: 割合, attr: 対象属性, ch: チェイン)
 function Heal(rate, attr, ch) {
@@ -660,6 +682,23 @@ function when_hp_under(p) {
 		}
 	}
 }
+
+// デッキ内指定属性数が一定以下
+function when_deckattr_less(c_attr, c_num) {
+	return {
+		cond: function (fld, oi, ei) {
+			var count = 0;
+			var cards = fld.Allys.Deck;
+			for (var i = 0; i < cards.length; i++) {
+				if (c_attr[cards[i].attr[0]] > 0) {
+					count++;
+				}
+			}
+			return count <= c_num;
+		}
+	}
+}
+
 
 // ------------------------------------------------------
 // 攻撃後処理(add_condで足す)

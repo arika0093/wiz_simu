@@ -3233,7 +3233,7 @@ Cards = [{
 	ss1: {
 		desc: "5ターン600以下の全属性ダメージを無効化する",
 		turn: 9,
-		proc: ss_damageblock_all(600, 5),
+		proc: [ss_damageblock_all(600, 5)],
 	},
 	islegend: true,
 	Lawake: [
@@ -3247,7 +3247,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターン800以下の全属性ダメージを無効化する",
 		turn: 12,
-		proc: ss_damageblock_all(800, 5)
+		proc: [ss_damageblock_all(800, 5)]
 	},
 }, {
 	name: "逆襲に染まった忘却 ゼノン",
@@ -4458,7 +4458,7 @@ Cards = [{
 	ss1: {
 		desc: "5ターン500以下の全属性ダメージを無効化する",
 		turn: 8,
-		proc: ss_damageblock_all(500, 5)
+		proc: [ss_damageblock_all(500, 5)]
 	},
 	islegend: true,
 	Lawake: [
@@ -4472,7 +4472,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターン600以下の全属性ダメージを無効化する",
 		turn: 10,
-		proc: ss_damageblock_all(600, 5)
+		proc: [ss_damageblock_all(600, 5)]
 	},
 }, {
 	name: "あらぶる森の王様 ポポル",
@@ -9985,7 +9985,7 @@ Cards = [{
 	ss1: {
 		desc: "5ターン600以下の全属性ダメージを無効化する",
 		turn: 9,
-		proc: ss_damageblock_all(600, 5),
+		proc: [ss_damageblock_all(600, 5)],
 	},
 	islegend: true,
 	Lawake: [
@@ -9999,7 +9999,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターン800以下の全属性ダメージを無効化する",
 		turn: 12,
-		proc: ss_damageblock_all(800, 5),
+		proc: [ss_damageblock_all(800, 5)],
 	},
 }, {
 	name: "優しい歌声と勇気が合言葉 初音ミク",
@@ -10337,7 +10337,7 @@ Cards = [{
 	ss1: {
 		desc: "5ターン600以下の全属性ダメージを無効化する",
 		turn: 9,
-		proc: ss_damageblock_all(600, 5),
+		proc: [ss_damageblock_all(600, 5)],
 	},
 	islegend: true,
 	Lawake: [
@@ -10351,7 +10351,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターン600以下の全属性ダメージを無効化し、HP20％以下の時、1200以下の全属性ダメージを無効化",
 		turn: 12,
-		proc: ss_damageblock_all(ss_hp_less(0.2, 1200, 600), 5),
+		proc: [ss_damageblock_all(ss_hp_less(0.2, 1200, 600), 5)],
 	},
 }, {
 	name: "聖フリーダム騎士 チッタ・レニーノ",
@@ -11957,7 +11957,7 @@ Cards = [{
 	ss1: {
 		desc: "5ターン600以下の全属性ダメージを無効化する",
 		turn: 9,
-		proc: ss_damageblock_all(600, 5),
+		proc: [ss_damageblock_all(600, 5)],
 	},
 	islegend: true,
 	Lawake: [
@@ -11971,7 +11971,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターン600以下の全属性ダメージを無効化し、HP20％未満の時、1200以下の全属性ダメージを無効化",
 		turn: 12,
-		proc: ss_damageblock_all(when_hp_under(0.2, 1200, 600), 5),
+		proc: [ss_damageblock_all(when_hp_under(0.2, 1200, 600), 5)],
 	},
 }, {
 	name: "降り注ぐ月光の奇跡 クラリス・ルナ",
@@ -12526,7 +12526,7 @@ Cards = [{
 	ss1: {
 		desc: "6ターン500以下の全属性ダメージを無効化する",
 		turn: 8,
-		proc: ss_damageblock_all(600, 6),
+		proc: [ss_damageblock_all(600, 6)],
 	},
 	islegend: true,
 	Lawake: [
@@ -12540,7 +12540,7 @@ Cards = [{
 	ss2: {
 		desc: "6ターン600以下の全属性ダメージを無効化する",
 		turn: 10,
-		proc: ss_damageblock_all(600, 6),
+		proc: [ss_damageblock_all(600, 6)],
 	},
 }, {
 	name: "深き夢の セシーリア・ヴェルレ",
@@ -13620,7 +13620,7 @@ Cards = [{
 	ss1: {
 		desc: "5ターン600以下の全属性ダメージを無効化する",
 		turn: 9,
-		proc: ss_damageblock_all(600, 5),
+		proc: [ss_damageblock_all(600, 5)],
 	},
 	islegend: true,
 	Lawake: [
@@ -13634,7 +13634,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターン800以下の全属性ダメージを無効化する",
 		turn: 12,
-		proc: ss_damageblock_all(800, 5),
+		proc: [ss_damageblock_all(800, 5)],
 	},
 }, {
 	name: "暴風雷帝 ヘルミーナ・ブリッツ",
@@ -27707,7 +27707,7 @@ Cards = [{
 		desc: "2ターン溜めた後、1ターン1000以下の全属性ダメージを無効化する",
 		turn: 8,
 		charged: 2,
-		proc: ss_damageblock_all(1000, 1),
+		proc: [ss_damageblock_all(1000, 1)],
 	},
 	awakes: [
 		Statusup(200, 0),
@@ -27729,7 +27729,7 @@ Cards = [{
 		desc: "2ターン溜めた後、1ターン1500以下の全属性ダメージを無効化する",
 		turn: 11,
 		charged: 2,
-		proc: ss_damageblock_all(1500, 1),
+		proc: [ss_damageblock_all(1500, 1)],
 	},
 	Lawake: [
 		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
@@ -27790,7 +27790,7 @@ Cards = [{
 	islegend: true,
 	as1: {
 		desc: "種族が物質の敵単体へ特効ダメージ(600%)",
-		proc: ChainSpecAttack(6.0, 0, 6),
+		proc: ChainSpecAttack(6.0, 0, [6]),
 	},
 	ss1: {
 		desc: "ジャンルパネルを水・闇属性化",
@@ -27811,7 +27811,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "種族が物質の敵単体へ特効ダメージ(700%)",
-		proc: ChainSpecAttack(7.0, 0, 6),
+		proc: ChainSpecAttack(7.0, 0, [6]),
 	},
 	ss2: {
 		desc: "ジャンルパネルを水・闇属性化し、攻撃力アップの効果を付与(30%)",
@@ -28233,7 +28233,7 @@ Cards = [{
 	islegend: true,
 	as1: {
 		desc: "デッキに雷属性が3体以下の時、水・雷属性の味方の攻撃力をアップ(80%)",
-		proc: null,
+		proc: ChainEnhance_attrless(0.8, [0,1,1,0,0], [0,0,1,0,0], 3, 0),
 	},
 	ss1: {
 		desc: "敵全体へ水・雷属性のダメージ(150%)",
@@ -28254,7 +28254,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "デッキに雷属性が3体以下の時、水・雷属性の味方の攻撃力をアップ(110%)",
-		proc: null,
+		proc: ChainEnhance_attrless(1.1, [0,1,1,0,0], [0,0,1,0,0], 3, 0),
 	},
 	ss2: {
 		desc: "敵全体へ水・雷属性のダメージ(220%)",
@@ -28460,7 +28460,7 @@ Cards = [{
 	ss1: {
 		desc: "スキル反射を無視し、敵単体のHPを15%減少させる",
 		turn: 8,
-		proc: [ss_ignore_skillcounter(), ss_ratiodamage_s(0.15)],
+		proc: [ss_ratiodamage_s(0.15), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -28481,7 +28481,7 @@ Cards = [{
 	ss2: {
 		desc: "スキル反射を無視し、敵単体のHPを25%減少させる",
 		turn: 10,
-		proc: [ss_ignore_skillcounter(), ss_ratiodamage_s(0.25)],
+		proc: [ss_ratiodamage_s(0.25), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
@@ -28504,7 +28504,7 @@ Cards = [{
 	ss1: {
 		desc: "4ターンの間、味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ(150%)、さらに極稀にクリティカル",
 		turn: 7,
-		proc: ss_boost_enhance_all(1.5, 4, 0.1),
+		proc: [ss_boost_enhance_all(1.5, 4, 0.1)],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -28525,7 +28525,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ(200%)、さらに極稀にクリティカル",
 		turn: 10,
-		proc: ss_boost_enhance_all(2.0, 4, 0.1),
+		proc: [ss_boost_enhance_all(2.0, 4, 0.1)],
 	},
 	Lawake: [
 		Statusup(500, 0),

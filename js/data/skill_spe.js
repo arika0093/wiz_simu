@@ -285,8 +285,8 @@ function ss_boost_enhance_all(p, t, dmg, attr) {
 							f.Allys.Now[oi].ss_boost_enhance = 0;
 						}
 						else {
-							// 味方全体を自傷
-							ss_consume_all(dmg)(fld, n);
+							// 自傷
+							ss_consume_own(dmg)(fld, n);
 						}
 					},
 				});
@@ -357,11 +357,11 @@ function ss_statusup_all(up_arr, up_limit, t) {
 **/
 function ss_damageblock_all(d, t) {
 	return function (fld, n) {
-		var rate = ss_ratedo(p, fld, n);
+		var rate = ss_ratedo(d, fld, n);
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var cd = fld.Allys.Deck[i];
 			var now = fld.Allys.Now[i];
-			if (now.nowhp > 0 && attr[cd.attr[0]] > 0) {
+			if (now.nowhp > 0) {
 				now.turn_effect.push({
 					desc: "ダメージブロック(" + d + ")",
 					type: "ss_damage_block",
@@ -373,7 +373,7 @@ function ss_damageblock_all(d, t) {
 					effect: function () { },
 					priority: 1,
 					on_damage: function (fld, dmg, attr) {
-						if (dmg >= bl) {
+						if (dmg >= d) {
 							return dmg;
 						} else {
 							return 0;
