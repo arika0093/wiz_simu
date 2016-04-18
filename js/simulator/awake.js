@@ -6,6 +6,13 @@ function pickup_awakes(card, type, l_awakes) {
 		awakes = $.grep(card.Lawake, function (e) {
 			return e.type == type;
 		});
+		// L時発動の潜在結晶の分も足す
+		if (card.crystal && card.crystal.length > 0) {
+			var awakes_cr = $.grep(card.crystal, function (e) {
+				return e.type == type && e.is_legend;
+			});
+			awakes = awakes.concat(awakes_cr);
+		}
 	} else {
 		awakes = $.grep(card.awakes, function (e) {
 			return e.type == type;

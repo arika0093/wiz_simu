@@ -28,7 +28,7 @@ function ss_damage(fld, r, atr, atkn, own, tg, isnot_ss) {
 	attack_enemy(enemy, now, atr, rate, atkn, [atr],
 		fld.Status.chain, rnd, own, tg, true);
 	// SSフラグを立てる
-	enemy.flags.is_ss_attack = (isnot_ss == false);
+	enemy.flags.is_ss_attack = (isnot_ss != true);
 }
 
 // 敵全体に指定属性のダメージ

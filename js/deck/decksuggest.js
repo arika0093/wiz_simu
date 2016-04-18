@@ -234,6 +234,7 @@ $(function () {
 					// plus item
 					awake_c.display_text = awc_data.name + "(" + $("#ae_awake_value").val() + ")";
 					awake_c.add_cost = Number($("#ae_awake_cost").val());
+					awake_c.is_legend = awc_data.is_legend;
 					// push
 					var n = Number($("#d_edit_index").text());
 					var aws = Deckdata.deck[n].crystal;
