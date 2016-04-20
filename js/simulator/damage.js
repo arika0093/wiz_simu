@@ -110,7 +110,7 @@ function heal_ally(value, index) {
 			return e.type == "heal_rebase";
 		});
 		if (is_rebase.length > 0) {
-			h_val *= -is_rebase[0].rebase_rate;
+			h_val = Math.floor(-h_val * is_rebase[0].rebase_rate);
 		}
 		// 回復
 		now.nowhp = Math.min(now.maxhp, now.nowhp + h_val);
