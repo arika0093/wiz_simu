@@ -497,7 +497,7 @@ Quests = [
 				name: "雷:戦士",
 				hp: 90000,
 				imageno: 7924,
-				attr: 0,
+				attr: 2,
 				spec: 8,
 				move: {
 					on_popup: [
