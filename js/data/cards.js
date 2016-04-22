@@ -28268,7 +28268,7 @@ Cards = [{
 }, {
 	name: "煌眼は勝利へ導く リヴェータ・イレ",
 	cardno: 6045,
-	imageno: 7871,
+	imageno: 7872,
 	hp: 4356,
 	atk: 4345,
 	cost: 49,

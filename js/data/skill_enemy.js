@@ -353,19 +353,24 @@ function s_enemy_deathlimit(tnum, limit) {
 	});
 }
 
-// 回復反転(効果値, 対象数)【未実装】
-function s_enemy_healrebase(rate, tnum) {
+// 回復反転(効果値, 対象数)
+function s_enemy_healreverse(rate, tnum) {
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 		s_enemy_abstate_attack(
 			fld, "回復反転(" + (rate*100) + "%)",
-			"heal_rebase", -1, tnum, n, false, {
+			"heal_reverse", -1, tnum, n, false, {
 				// 光闇属性なら反転は無効
 				bef_absattack: function (fld, oi, ei) {
 					var card = fld.Allys.Deck[oi];
 					return !(card.attr[1] >= 3 && card.attr[1] <= 4);
 				},
+				effect: function(f, oi, teff, state, is_t, is_b){
+					if(is_b){
+						teff.lim_turn = 0;
+					}
+				},
 				// 回復反転値
-				rebase_rate: rate,
+				reverse_rate: rate,
 			}
 		);
 	});

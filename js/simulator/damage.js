@@ -106,11 +106,11 @@ function heal_ally(value, index) {
 	// 死んでなかったら回復
 	if (now.nowhp > 0) {
 		// 回復反転時は回復量を逆転させる
-		var is_rebase = $.grep(now.turn_effect, function (e) {
-			return e.type == "heal_rebase";
+		var is_reverse = $.grep(now.turn_effect, function (e) {
+			return e.type == "heal_reverse";
 		});
-		if (is_rebase.length > 0) {
-			h_val = Math.floor(-h_val * is_rebase[0].rebase_rate);
+		if (is_reverse.length > 0) {
+			h_val = Math.floor(-h_val * is_reverse[0].reverse_rate);
 		}
 		// 回復
 		now.nowhp = Math.min(now.maxhp, now.nowhp + h_val);
