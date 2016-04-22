@@ -29054,7 +29054,7 @@ Cards = [{
 	ss2: {
 		desc: "味方のMAXHP50%を使い、敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/900%)",
 		turn: 9,
-		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 9.0, 2.0), [1]), ss_consume_all(0.50)],
+		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 9.0, 2.0), [2]), ss_consume_all(0.50)],
 	},
 	Lawake: [
 		Statusup(0, 500),
