@@ -26523,7 +26523,7 @@ Cards = [{
 	islegend: true,
 	as1: {
 		desc: "火属性の敵単体へ特効ダメージ(400%)",
-		proc: ChainAttrAttack(4.0, 0, [0]),
+		proc: ChainAttrAttack(4.0, 0, [1,0,0,0,0]),
 	},
 	ss1: {
 		desc: "敵全体へ水属性のダメージ、さらに火属性の敵に特効ダメージ(100%/300%)",
@@ -26544,7 +26544,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "火属性の敵単体へ特効ダメージ(500%)",
-		proc: ChainAttrAttack(5.0, 0, [0]),
+		proc: ChainAttrAttack(5.0, 0, [1, 0, 0, 0, 0]),
 	},
 	ss2: {
 		desc: "敵全体へ水属性のダメージ、さらに火属性の敵に特効ダメージ(200%/500%)",
