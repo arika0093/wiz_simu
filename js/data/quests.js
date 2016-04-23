@@ -251,7 +251,7 @@ Quests = [
 				},
 			}, {
 				name: "火:戦士",
-				hp: 40000,
+				hp: 100000,
 				imageno: 7919,
 				attr: 0,
 				spec: 8,
