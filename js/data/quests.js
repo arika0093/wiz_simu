@@ -462,7 +462,7 @@ Quests = [
 				spec: 8,
 				move: {
 					on_move: [
-						m_enemy_once(s_enemy_attack_attrsp(2000, 1000/3, 1, 1, 1, false)),
+						m_enemy_once(s_enemy_attack_attrsp(2000, 1000/3, 1, 5, 1, false)),
 						s_enemy_attack(1000/3, 5, 1, true),
 					],
 					atrandom: false,
