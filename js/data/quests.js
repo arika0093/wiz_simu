@@ -179,11 +179,11 @@ Quests = [
 						s_enemy_ss_sealed(5, 1),
 					],
 					on_move: [
-						null, // パネルシャッフル
+						//null, // パネルシャッフル
 						s_enemy_attack(250, 3, 5, true),
 					],
 					atrandom: false,
-					turn: 1,
+					turn: 2,
 					wait: 1,
 				},
 			}, {
