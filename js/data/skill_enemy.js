@@ -779,8 +779,8 @@ function s_enemy_discharge(tnum, minus_turn) {
 			var card = fld.Allys.Deck[i];
 			var endcharge = card.islegend ? card.ss2.turn : card.ss1.turn;
 			e.ss_current = Math.max(Math.min(endcharge, e.ss_current) - minus_turn, 0);
-			// チャージできないように(仕様？)
-			e.ss_isboost = true;
+			// チャージできないように(修正済)
+			//e.ss_isboost = true;
 			// スキルカウンターを有効に
 			nows[i].flags.skill_counter[n] = true;
 		});
