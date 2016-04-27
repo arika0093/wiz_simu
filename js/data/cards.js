@@ -26858,7 +26858,7 @@ Cards = [{
 	ss1: {
 		desc: "火属性の5連撃(180%)、さらに連撃数分チェインプラス",
 		turn: 9,
-		proc: [ss_damage_s(1.8, [0], 5), panel_chainplus(5)],
+		proc: [ss_damage_s(1.8, [0], 5), ss_addchain(5)],
 	},
 	awakes: [
 		NEFTJOD(30),
