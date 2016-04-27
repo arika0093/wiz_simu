@@ -12,6 +12,7 @@ local/
 # User-specific files
 *.suo
 *.user
+*.sln
 *.sln.docstates
 
 # Build results
