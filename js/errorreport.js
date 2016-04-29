@@ -6,8 +6,11 @@ window.onerror = function(errorMsg, fileName, lineNumber) {
         'urlDispPage': location.href,      // エラー発生時に閲覧していた URL
         'userAgent'  : navigator.userAgent // エラーが発生したクライアントのユーザエージェント
     };
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/errorreport/report.php');
-    xhr.setRequestHeader('Content-Type', 'applicatoin/json;charset=UTF-8');
-    xhr.send(JSON.stringify(errorInfo));
+	// jQueryが読み込まれていることを前提にAJAXで書きます
+	$.ajax({
+		type: "POST",
+		contentType: "application/json;charset=UTF-8",
+		url: "/errorreport/report.php",
+		data: JSON.stringify(errorInfo),
+	});
 };
