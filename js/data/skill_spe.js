@@ -336,6 +336,66 @@ function ss_boost_enhance_s(p, t, dmg) {
 	};
 }
 
+/**
+ * 味方全体に精霊強化効果を付与し、自分は行動不能になる
+ * atkup:	攻撃力上昇効果値
+ * grdup:	属性軽減上昇効果値(未実装だけど今後のために指定)
+ * attr:	強化属性
+ * t:		効果適用ターン数
+**/
+function ss_reinforcement_all(atkup, grdup, attr, t) {
+	return function (fld, n) {
+		// 味方全体に精霊強化効果を付与
+		for (var i = 0; i < fld.Allys.Deck.length; i++) {
+			var cd = fld.Allys.Deck[i];
+			var now = fld.Allys.Now[i];
+			if (now.nowhp > 0 && attr[cd.attr[0]] > 0) {
+				now.turn_effect.push({
+					desc: "精霊強化(攻撃UP:" + (atkup * 100) + "%, 軽減:" + (grdup * 100) +"%)",
+					type: "ss_reinforcement",
+					icon: "enhance",
+					isdual: false,
+					iscursebreak: true,
+					turn: t,
+					lim_turn: t,
+					effect: function (f, oi, teff, state, is_t) {
+						if (state == "first") {
+							f.Allys.Now[oi].ss_reinforcement_atk = atkup;
+						}
+						else if (state == "end" || state == "dead") {
+							f.Allys.Now[oi].ss_reinforcement_atk = 0;
+						}
+					},
+				});
+			}
+		}
+		// 自身に行動不能効果を付与
+		fld.Allys.Now[n].turn_effect.push({
+			desc: "行動不能",
+			type: "ss_reactionaly_noaction",
+			icon: "all_sealed",		// 暫定
+			isdual: false,
+			iscursebreak: true,		// 呪い解除される(?)
+			isreduce_stg: true,		// ターン跨ぎでカウントが減る
+			effect: function () { },
+			priority: 1,
+			turn: t,
+			lim_turn: t,
+			ss_disabled: true,		// SS発動不可
+			// 攻撃無効
+			bef_answer: function (f, as) {
+				return false;
+			},
+			// 反射無効
+			bef_skillcounter: function (f, ai) {
+				return false;
+			},
+		});
+		// ログ出力
+		fld.log_push("味方全体精霊強化(攻撃UP:" + (atkup * 100) + "%, 軽減:" + (grdup * 100) + "%)");
+	}
+}
+
 // 全体ステアップ
 //   例: ss_statusup_all([500, 500], [2000, 2000], -1)
 function ss_statusup_all(up_arr, up_limit, t) {
