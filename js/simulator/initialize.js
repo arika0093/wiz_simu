@@ -133,9 +133,11 @@ $(function () {
 			var simQuest = $.grep(Quests, function (e, i) {
 				return e.id == data.quest;
 			})[0];
+			// -------------------------
 			// 味方データを読み込む
-			Field.Allys.Deck = [];
-			Field.Allys.Now = new Array();
+			var als = Field.Allys;
+			als.Deck = [];
+			als.Now = new Array();
 			for (var i = 0; i < data.deck.length; i++) {
 				// 精霊読み込み
 				var card = $.grep(Cards, function (e) {
@@ -143,7 +145,7 @@ $(function () {
 				})[0];
 				if (!card) { continue; }
 				// 代入
-				var ally = Field.Allys.Deck[i] = $.extend(true, {}, card);
+				var ally = als.Deck[i] = $.extend(true, {}, card);
 				// 潜在結晶を追加
 				ally.crystal = data.deck[i].crystal;
 				// 潜在個数を反映
@@ -152,7 +154,7 @@ $(function () {
 					ally.awakes = ally.awakes.slice(0, awk_length);
 				}
 				// 現在のステ
-				var now = Field.Allys.Now[i] = {};
+				var now = als.Now[i] = {};
 				var mana = data.deck[i].mana;
 				now.mana = mana;
 				now.maxhp = card.hp + mana;
@@ -168,25 +170,29 @@ $(function () {
 				now.ss_isboost = false;	// スキブを受けたかどうか
 				now.islegend = false;
 			}
+			// 空要素を詰める
+			als.Deck = $.grep(als.Deck, function (e) { return e !== undefined; });
+			als.Now = $.grep(als.Now, function (e) { return e !== undefined; });
 			// 潜在を反映させる
-			var dck = Field.Allys.Deck;
+			var dck = als.Deck;
 			for (var i = 0; i < dck.length; i++) {
 				var card = dck[i];
-				var now = Field.Allys.Now[i];
-				add_awake_ally(dck, Field.Allys.Now, i, false);
+				var now = als.Now[i];
+				add_awake_ally(dck, als.Now, i, false);
 				// 0tレジェンド精霊用
-				legend_timing_check(dck, Field.Allys.Now, i);
+				legend_timing_check(dck, als.Now, i);
 			}
-
+			// -------------------------
 			// 敵データを読み込む
 			Field.Quest = simQuest;
 			// 出現順番
-			Field.Enemys.Popuplist = CreateEnemypopup(simQuest);
-			for (var i = 0; i < Field.Enemys.Popuplist.length; i++) {
-				var popup_enemys = simQuest.data[Field.Enemys.Popuplist[i]];
+			var fes = Field.Enemys;
+			fes.Popuplist = CreateEnemypopup(simQuest);
+			for (var i = 0; i < fes.Popuplist.length; i++) {
+				var popup_enemys = simQuest.data[fes.Popuplist[i]];
 				// 敵ステ
-				Field.Enemys.Data[i] = {};
-				var data = Field.Enemys.Data[i];
+				fes.Data[i] = {};
+				var data = fes.Data[i];
 				data.enemy = [];
 				for (var j = 0; j < popup_enemys.enemy.length; j++) {
 					data.enemy[j] = $.extend(true, {}, popup_enemys.enemy[j]);
@@ -198,6 +204,7 @@ $(function () {
 			}
 			// 敵の処理
 			enemy_popup_proc();
+			// -------------------------
 			// タゲリセット
 			target_allselect(-1);
 			// 初期状態を保存
