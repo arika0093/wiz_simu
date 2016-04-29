@@ -298,6 +298,44 @@ function ss_boost_enhance_all(p, t, dmg, attr) {
 	};
 }
 
+/**
+ * ブーストエンハンス(毎ターン自傷を伴うエンハンス)を自身にかける
+ * p:	 効果値
+ * t:	 継続ターン数
+ * dmg:	 毎ターン受けるダメージの割合
+**/
+function ss_boost_enhance_s(p, t, dmg) {
+	return function (fld, n) {
+		var rate = ss_ratedo(p, fld, n);
+		var cd = fld.Allys.Deck[n];
+		var now = fld.Allys.Now[n];
+		now.turn_effect.push({
+			desc: "攻撃力アップ[ブースト](" + (rate * 100) + "%)",
+			type: "ss_boost_enhance",
+			icon: "enhance_boost",
+			isdual: false,
+			iscursebreak: true,
+			turn: t,
+			lim_turn: t,
+			effect: function (f, oi, teff, state, is_t) {
+				if (state == "first") {
+					f.Allys.Now[oi].ss_boost_enhance = rate;
+				}
+				else if (state == "end" || state == "dead") {
+					f.Allys.Now[oi].ss_boost_enhance = 0;
+				}
+				else if (is_t) {
+					// 自傷
+					ss_consume_own(dmg)(fld, oi);
+				}
+			},
+		});
+		fld.log_push("Unit[" + (n+1) + "]: 自身攻撃力Up[Boost](" +
+			(rate * 100) + "%, " + t + "t, dmg: " + (dmg * 100) + "%)");
+		return true;
+	};
+}
+
 // 全体ステアップ
 //   例: ss_statusup_all([500, 500], [2000, 2000], -1)
 function ss_statusup_all(up_arr, up_limit, t) {
@@ -460,7 +498,7 @@ function ss_continue_damage(dmg_r, cont_r, attrs, turn) {
 				var f_copy = $.extend(true, {}, f);
 				f_copy.Allys.Now[oi] = now_state;
 				// 継続ダメージ
-				fld.log_push("Unit[" + (n + 1) + "]: 継続ダメージ発動(" + (cont_r + 1) * 100 + ")");
+				fld.log_push("Unit[" + (n + 1) + "]: 継続ダメージ発動(" + (cont_r * 100) + ")");
 				ss_damage_all(cont_r + 1, attrs, true)(f_copy, oi);
 				// SS状況を解除
 				var es = GetNowBattleEnemys();
@@ -862,6 +900,22 @@ function ss_chain_cond(ch, a, b) {
 			return a;
 		}
 		return b;
+	};
+}
+
+/**
+ * 現在のチェイン数に応じて実行SSを分岐する際に使用する
+ * ch:	条件チェイン
+ * ss1:	条件を満たしていた場合に発動するSS
+ * ss2:	条件を満たしていない場合に発動するSS
+**/
+function ss_chain_cond_skill(ch, ss1, ss2) {
+	return function (fld, n) {
+		if (fld.Status.chain >= ch) {
+			return ss1(fld, n);
+		} else {
+			return ss2(fld, n);
+		}
 	};
 }
 
