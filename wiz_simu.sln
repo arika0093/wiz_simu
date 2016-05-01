@@ -118,7 +118,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "crystal_point", "crystal_po
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{715492B2-2D37-460A-88BD-08ABB4A12AA6}"
 	ProjectSection(SolutionItems) = preProject
-		js\tools\cardcheck.js = js\tools\cardcheck.js
+		js\tools\data\checkdata.js = js\tools\data\checkdata.js
 		js\tools\data\point_rewards.js = js\tools\data\point_rewards.js
 	EndProjectSection
 EndProject
