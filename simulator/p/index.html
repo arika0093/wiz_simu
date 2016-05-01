@@ -280,6 +280,7 @@
     <script type="text/javascript" src="/download/slicknav/jquery.slicknav.min.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="/js/loader.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js"></script>
 	<!-- 他jsに依存しない基礎関数群 -->
 	<script type="text/javascript" charset="UTF-8" src="/js/simulator/awake.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="/js/simulator/species.js"></script>
@@ -297,27 +298,11 @@
     <script type="text/javascript" charset="UTF-8" src="/js/deck/deckdata.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="/js/simulator/initialize.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="/js/simulator/show.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/simulator/show_sp.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="/js/simulator/damage.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="/js/simulator/answer.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="/js/simulator/special.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="/js/simulator/turneffect.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js"></script>
-	<!-- スマホで閲覧時に要素を入れ替える -->
-	<script type="text/javascript">
-		$(function () {
-			var w_width = window.innerWidth;
-			if (w_width < 600) {
-				var s_top = $("div#sim_top");
-				var s_ally = $("div.sim_ally");
-				var s_enem = $("div.sim_enemy");
-				var s_panl = $("div.sim_panel");
-				var s_ads = $("div.simu_ads");
-
-				s_enem.insertBefore(s_ally);
-				s_panl.insertBefore(s_ally);
-				s_ads.insertBefore(s_top);
-			}
-		});
-	</script>
+    <script type="text/javascript" charset="UTF-8" src="/js/simulator/actionlog.js"></script>
 </body>
 </html>

@@ -1,20 +1,23 @@
 // 解答したときの処理
 function panel(attr) {
-	// ログ出力
+	var st = Field.Status;
+	// 文字ログ出力
 	var p_str = "";
 	for (var ar = 0; ar < attr.length; ar++) {
 		if (p_str != "") { p_str += "/"; }
 		p_str += Field.Constants.Attr[attr[ar]];
 	}
 	Field.log_push("【パネル: " + p_str + "】");
+	// 再現用ログ関連
+	actl_save_answer(attr);
 	// チェイン+1
-	if (Field.Status.chain_status >= 0) {
-		Field.Status.chain += 1;
+	if (st.chain_status >= 0) {
+		st.chain += 1;
 	}
 	// 付与効果実行
 	var pnladd = Number($("#panel_add_sel").val());
 	if (pnladd != 0) {
-		Field.Status.panel_add[pnladd - 1].func(Field);
+		st.panel_add[pnladd - 1].func(Field);
 	}
 	// 味方攻撃処理
 	{

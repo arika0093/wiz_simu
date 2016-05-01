@@ -28,6 +28,8 @@ function ss_push(n) {
 		now.ss_isfirst = false;
 		now.ss_isboost = false;
 		// ------------------
+		// 再現用ログ関連
+		actl_save_special(n);
 		// [進む]を使えないように
 		if (!Field_log.is_ssindex) {
 			Field_log.now_index++;

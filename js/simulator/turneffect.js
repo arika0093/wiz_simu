@@ -137,7 +137,6 @@ function turneff_chargeskill_check() {
 				// 全滅していたら次のターンへ進む
 				if (is_allkill()) {
 					var t = Field.Status.totalturn;
-					Field.Status.is_chargeend[t] = true;
 					nextturn(true);
 					return;
 				}

@@ -42,6 +42,8 @@ var Field = {
 	},
 	// 現在の状況管理
 	Status: {
+		// 乱数生成シード(試走結果再現に使用)
+		seed: -1,
 		// チェイン関連
 		chain: 0,
 		chain_status: 0,
@@ -58,9 +60,10 @@ var Field = {
 		totalturn: 0,
 		nowbattle: 1,
 		finish: false,
-		// その他
-		is_chargeend: [],
-		// ログ
+		// 行動ログ
+		act_log: [],
+		is_spanel_only: true,
+		// 文字ログ
 		log: [],
 		d_log: [],
 	},
@@ -273,8 +276,16 @@ function nextturn(is_ssfin) {
 	if (!is_ssfin || killed) {
 		f_st.totalturn += 1;
 	}
+	// 全終了してたらサーバーに結果送信
+	if (Field.Status.finish) {
+		actl_send_result(function (rst) {
+			return true;
+		});
+	}
 	// チャージスキル処理
 	turneff_chargeskill_check();
+	// seedリセット
+	Field.Status.seed = 0;
 	// ログ保存
 	Field_log.save(f_st.totalturn, Field);
 	Field_log._removeover(f_st.totalturn);

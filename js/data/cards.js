@@ -22063,7 +22063,7 @@ Cards = [{
 	atk: 2456,
 	cost: 41,
 	attr: [2, 3],
-	species: [-1],
+	species: [3],
 	islegend: true,
 	as1: {
 		desc: "味方全体のHPを回復(14%)",
@@ -25094,7 +25094,7 @@ Cards = [{
 	atk: 3078,
 	cost: 37,
 	attr: [0,4],
-	species: [-1],
+	species: [0],
 	islegend: true,
 	as1: {
 		desc: "HP80%以上で敵単体を3回連続攻撃(350%)",

@@ -187,6 +187,18 @@ function damage_rand() {
 	if (r != -1) {
 		return r;
 	}
-	var rnd = Math.floor((Math.random() * 20)) / 100;
+	var rnd = dmg_generate_rand(0, 200) / 1000;
 	return 0.9 + rnd;
+}
+
+// 再現性のある乱数を生成する
+function dmg_generate_rand(min, max) {
+	var st = Field.Status;
+	max = max || 1;
+	min = min || 0;
+
+	st.seed = (st.seed * 9301 + 49297) % 233280;
+	var rnd = st.seed / 233280;
+
+	return min + rnd * (max - min);
 }

@@ -58,32 +58,32 @@ function is_ally_alldeath() {
 
 // 敵を全滅させたか確認し、全滅してたら次の敵を出現させる
 function allkill_check(is_ssfinish) {
-	var ntrun = Field.Status.nowturn;
+	var st = Field.Status;
 	var enemy = GetNowBattleEnemys();
 	// 敵全滅確認
 	var e_ak = is_allkill();
 	// 全ての敵を倒していたら
 	if (e_ak) {
 		// 全終了確認
-		if (Field.Enemys.Popuplist.length <= Field.Status.nowbattle) {
+		if (Field.Enemys.Popuplist.length <= st.nowbattle) {
 			// 終了処理開始
-			Field.Status.finish = true;
-			Field.log_push(Field.Status.nowbattle + "戦目突破(" + ntrun + "ターン)");
-			Field.log_push("QUEST CLEARED! (Total: " + (Field.Status.totalturn + 1) + "turn)");
+			st.finish = true;
+			Field.log_push(st.nowbattle + "戦目突破(" + st.nowturn + "ターン)");
+			Field.log_push("QUEST CLEARED! (Total: " + (st.totalturn + 1) + "turn)");
 		} else {
-			Field.log_push(Field.Status.nowbattle + "戦目突破(" + ntrun + "ターン)");
+			Field.log_push(st.nowbattle + "戦目突破(" + st.nowturn + "ターン)");
 			// 次に進む
-			Field.Status.nowbattle += 1;
+			st.nowbattle += 1;
 			// タゲ全リセット
 			target_allselect(-1);
 		}
 		// パネル付与効果を全部リセット
-		Field.Status.panel_add = [];
-		Field.Status.durturn.push({ ssfin: is_ssfinish, turn: ntrun });
-		Field.Status.nowturn = 1;
+		st.panel_add = [];
+		st.durturn.push({ ssfin: is_ssfinish, turn: st.nowturn });
+		st.nowturn = 1;
 	} else if (!(e_ak && is_ssfinish)) {
 		// ターンカウントを+1する
-		Field.Status.nowturn += 1;
+		st.nowturn += 1;
 	}
 	return e_ak;
 }
