@@ -74,7 +74,7 @@ function actl_save_target() {
 		tg[i] = $.extend(true, [], e.target);
 	});
 	// 全て共通の値の場合tgをその値にする(データ量節約)
-	var base_tg = tg[0][0];
+	var base_tg = tg[0][0] !== undefined ? tg[0][0] : -1;
 	var deftg = $.grep(tg, function (e) {
 		return e[0] != base_tg && e[1] != base_tg;
 	});
