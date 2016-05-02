@@ -2714,7 +2714,7 @@ Quests = [
 		desc: "",
 		aprnum: 4,
 		overlap: false,
-		hidden: true,
+		hidden: false,
 		data: [{
 			appearance: [1],
 			enemy: [{
@@ -2912,7 +2912,7 @@ Quests = [
 		desc: "",
 		aprnum: 4,
 		overlap: false,
-		hidden: true,
+		hidden: false,
 		data: [{
 			appearance: [1],
 			enemy: [{
