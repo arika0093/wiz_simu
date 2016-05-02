@@ -72,6 +72,11 @@ function sim_show() {
 			$("#ally0" +(i +1) + "_img").draggable(now.nowhp > 0 ? "enable" : "disable");
 
 			// 生存確認して、死んでたら薄暗く表示
+			if (now.nowhp <= 0) {
+				$("#ally0"+ (i + 1)).addClass("dead")
+			}else{
+				$("#ally0"+ (i + 1)).removeClass("dead")
+			}
 			if (now.nowhp > 0) {
 				$("#ally0" + (i + 1) + "_img").attr("class", "chara_img");
 			} else {
@@ -135,6 +140,11 @@ function sim_show() {
 			});
 
 			// 死んでたら薄暗く表示、鉄壁が貼ってあるならグレースケールで表示
+			if (e.nowhp <= 0) {
+				$("#enemy0"+ (i + 1)).addClass("dead")
+			}else{
+				$("#enemy0"+ (i + 1)).removeClass("dead")
+			}
 			var is_impregnable = $.grep(e.turn_effect, function (eff) {
 				return eff.type == "impregnable";
 			}).length > 0;

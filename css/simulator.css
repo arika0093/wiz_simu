@@ -94,6 +94,10 @@ div.ally_ss button{
 	border-width: 1px 0px 0px 1px;
 }
 
+div.dead{
+	color:#cccccc;
+}
+
 /* Targetting */
 div.enemy{
 	transition: all .5s ease;

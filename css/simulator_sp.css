@@ -110,6 +110,10 @@ div.ally_ss button{
 	padding: 0.8ex 0em;
 }
 
+div.dead{
+	color:#cccccc;
+}
+
 p.ally_name, p.ally_stat, p.enemy_name, p.enemy_hp, p.enemy_stat{
 	white-space: nowrap;
 	overflow: hidden;
