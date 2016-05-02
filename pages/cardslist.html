@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px)" />
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="/download/slicknav/slicknav.css" />
+    <!-- Search -->
+    <meta name="robots" content="all" />
+    <meta name="keywords" content="黒猫,ウィズ,魔法使いと黒猫のウィズ,シミュレーター,シミュ,トーナメント,試走,使用方法" />
+    <meta name="description" content="「魔法使いと黒猫のウィズ」のクエスト・トーナメントシミュレータの使用方法について記載しています。" />
+    <!-- About Page -->
+    <title>精霊リスト - WizTools</title>
+</head>
+<body onload=fillcontents()>
+    <!-- Header -->
+    <div id="Header"></div>
+
+    <!-- Main Contents -->
+    <div class="Main">
+        <dl class="List">
+            <dt id="use">精霊リスト</dt>
+            <dd>
+                <p class="highlight sp_hidden">精霊の追加依頼は<a href="/pages/info.html#contact">「要望・意見など」</a>をご覧ください</p>
+				<div id=contents>読み込み中...</div>
+            </dd>
+        </dl>
+    </div>
+
+
+    <!-- Footer -->
+    <div id="Footer"></div>
+
+    <!-- Dialog Contents -->
+    <div class="dialog_div" id="dialog_sim_use" title="Error">
+        <img src="https://github.com/Arika0093/wiz_simu/raw/master/image/demo.gif" style="max-width: 100%;" />
+    </div>
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+    <script type="text/javascript" src="/download/slicknav/jquery.slicknav.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js"></script>
+
+	<!-- 他jsに依存しない基礎関数群 -->
+	<script type="text/javascript" charset="UTF-8" src="/js/simulator/awake.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/simulator/species.js"></script>
+	<!-- データ群(基礎関数に依存する) -->
+    <script type="text/javascript" charset="UTF-8" src="/js/simulator/initialize.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/deck/deckdata.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/data/skill_ans.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/data/skill_spe.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/data/skill_awake.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/data/cards.js"></script>
+
+
+    <script type="text/javascript">
+		function fillcontents(){
+			Cards.sort(function(a,b){
+			    if(a.imageno < b.imageno) return 1;
+			    if(a.imageno > b.imageno) return -1;
+			    return 0;
+			});
+			// thanks http://qiita.com/PianoScoreJP/items/f0ff7345229871039672
+			tcont="<table class='cardslist'>";
+			tcont=tcont+"<tr class=trhead><td>精霊名</td><td>属性</td><td>種族</td><td>HP</td><td>攻撃力</td></td>";
+			for(n=0;n<Cards.length;n++){
+				aattr=Cards[n]["attr"]
+				myattr=Field["Constants"]["Attr"][aattr[0]];
+				if(aattr[1]>0){
+					myattr=myattr+"/"+Field["Constants"]["Attr"][aattr[1]]
+				}
+				tcont=tcont+"<tr class=trcont>"
+//				tcont=tcont+"<td class=listico><p class=trimicon><!--<img src="+get_image_url(Cards[n]["imageno"])+">--></p></td>";
+//				tcont=tcont+"<td class=listnum>"+Cards[n]["cardno"]+"</td>";
+				tcont=tcont+"<td class=listname>"+Cards[n]["name"]+"</td>";
+				tcont=tcont+"<td class=listattr>"+myattr+"</td>";
+				tcont=tcont+"<td class=listspecies>"+Field["Constants"]["Species"][Cards[n]["species"]]+"</td>";
+				tcont=tcont+"<td class=listhp>"+Cards[n]["hp"]+"</td>";
+				tcont=tcont+"<td class=listatk>"+Cards[n]["atk"]+"</td>";
+				tcont=tcont+"</tr>"
+			}
+			tcont=tcont+"</table>";
+			contents.innerHTML=tcont
+		}
+
+
+	</script>
+
+
+
+
+
+	<style>
+		.listnum, .listattr, .listspecies, .listhp, .listatk, .trhead {
+			text-align:center;
+		}
+		.trhead{
+			font-weight:bold;
+		}
+		.trcont{
+			 overflow: hidden;
+		}
+		.trcont:hover{
+			 background-color:#eeeeff;
+		}
+		.trimicon{
+			width: 60px;
+			height: 35px;
+			overflow: hidden;
+			margin:0px;
+		}
+		.trimicon img{
+			height: 60px;
+		}
+	</style>
+    <script type="text/javascript">
+		$(function () {
+			$("#dialog_sim_use").dialog({
+				autoOpen: false,
+				show: "blind",
+				hide: "blind",
+				width: 820,
+				height: 600,
+				modal: true,
+				open: function () {
+					// hide
+					$(".ui-dialog-titlebar").hide();
+					// close when click dialog outside
+					$('.ui-widget-overlay').bind('click', function () {
+						$("#dialog_sim_use").dialog('close');
+					});
+				},
+				close: function () {
+					// title show
+					$(".ui-dialog-titlebar").show();
+				},
+			});
+		});
+		function popup_demomovie() {
+			$("#dialog_sim_use").dialog("open");
+		}
+    </script>
+</body>
+</html>
