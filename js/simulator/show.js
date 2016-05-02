@@ -450,11 +450,15 @@ function sim_show() {
 		modal: true,
 		width: 450,
 		buttons: {
+			"1T前に戻る": function() {
+				load_field(-1);
+				$(this).dialog("close");
+			},
 			"始めからやり直す": function () {
 				load_field(0);
 				$(this).dialog("close");
 			},
-			"デッキ選択画面に戻る": function () {
+			"デッキ選択に戻る": function () {
 				back_decksel();
 				$(this).dialog("close");
 			},

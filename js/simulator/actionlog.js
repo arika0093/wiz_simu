@@ -79,7 +79,7 @@ function actl_save_target() {
 		return e[0] != base_tg && e[1] != base_tg;
 	});
 	if (deftg.length == 0) {
-		tg = base_tg;
+		tg = Number(base_tg);
 	}
 	// add
 	actl_save_object({
@@ -100,14 +100,14 @@ function actl_save_object(obj) {
 	if (!st.act_log[st.totalturn].seed) {
 		actl_save_seed();
 	}
-	st.act_log[st.totalturn].action.push(obj);
+	st.act_log[st.totalturn].action.push($.extend(true, {}, obj));
 }
 
 // seed記録
 function actl_save_seed() {
 	var st = Field.Status;
 	if (st.seed <= 0) {
-		st.seed = new Date().getMilliseconds();
+		st.seed = new Date().getMilliseconds() + 1;
 	}
 	st.act_log[st.totalturn].seed = st.seed;
 }
