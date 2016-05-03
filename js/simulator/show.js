@@ -72,14 +72,11 @@ function sim_show() {
 			$("#ally0" +(i +1) + "_img").draggable(now.nowhp > 0 ? "enable" : "disable");
 
 			// 生存確認して、死んでたら薄暗く表示
-			if (now.nowhp <= 0) {
-				$("#ally0"+ (i + 1)).addClass("dead")
-			}else{
-				$("#ally0"+ (i + 1)).removeClass("dead")
-			}
 			if (now.nowhp > 0) {
+				$("#ally0" + (i + 1)).removeClass("dead")
 				$("#ally0" + (i + 1) + "_img").attr("class", "chara_img");
 			} else {
+				$("#ally0" + (i + 1)).addClass("dead")
 				$("#ally0" + (i + 1) + "_img").attr("class", "chara_img_dead");
 			}
 
