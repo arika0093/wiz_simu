@@ -22,7 +22,7 @@ function actl_send_result(after) {
 	send += "&sh=" + window.location.search.substring(1);
 	send += "&ac=" + JSON.stringify(st.act_log);
 	send += "&t=" + st.totalturn;
-	send += "&td=" + totalturn_string();
+	send += "&td=" + encodeURIComponent(durturn_string());
 	send += "&st=" + Field.Quest.id;
 	send += "&a1=" + ally[0];
 	send += "&a2=" + ally[1];
@@ -84,10 +84,15 @@ function actl_save_target() {
 		tg = Number(base_tg);
 	}
 	// add
-	actl_save_object({
+	var set_rand = Number($("#attack_rand_sel").val();
+	var add_obj = {
 		type: "target",
 		target: tg,
-	});
+	};
+	if (set_rand != -1) {
+		add_obj.const_rand = set_rand;
+	}
+	actl_save_object(add_obj);
 	return true;
 }
 

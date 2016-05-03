@@ -23,7 +23,7 @@ var Field = {
 			"アイテム",
 			"AbCd",
 		],
-		Actlog_Ver: 101,
+		Actlog_Ver: 102,
 	},
 	// クエストデータ
 	Quest: {},
