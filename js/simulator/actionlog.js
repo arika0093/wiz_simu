@@ -22,6 +22,7 @@ function actl_send_result(after) {
 	send += "&sh=" + window.location.search.substring(1);
 	send += "&ac=" + JSON.stringify(st.act_log);
 	send += "&t=" + st.totalturn;
+	send += "&td=" + totalturn_string();
 	send += "&st=" + Field.Quest.id;
 	send += "&a1=" + ally[0];
 	send += "&a2=" + ally[1];
@@ -30,6 +31,7 @@ function actl_send_result(after) {
 	send += "&a5=" + ally[4];
 	send += "&is_sp=" + Number(st.is_spanel_only);
 	send += "&is_sf=" + Number(st.durturn[Field.Quest.aprnum - 1].ssfin);
+	send += "&ver=" + Field.Constants.Actlog_Ver;
 	// ajaxを使用
 	$.ajax({
 		type: "POST",
