@@ -25094,7 +25094,7 @@ Cards = [{
 	atk: 3078,
 	cost: 37,
 	attr: [0,4],
-	species: [0],
+	species: [2],
 	islegend: true,
 	as1: {
 		desc: "HP80%以上で敵単体を3回連続攻撃(350%)",
