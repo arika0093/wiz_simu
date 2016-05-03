@@ -84,7 +84,7 @@ function actl_save_target() {
 		tg = Number(base_tg);
 	}
 	// add
-	var set_rand = Number($("#attack_rand_sel").val();
+	var set_rand = Number($("#attack_rand_sel").val());
 	var add_obj = {
 		type: "target",
 		target: tg,
