@@ -401,13 +401,13 @@ var SpSkill = {
 	// 味方全体にダメージブロック
 	"ss_damageblock_all": function (fld, n, cobj, params) {
 		var rate = params[0];
-		var t = param[1];
+		var t = params[1];
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var cd = fld.Allys.Deck[i];
 			var now = fld.Allys.Now[i];
 			if (now.nowhp > 0) {
 				now.turn_effect.push({
-					desc: "ダメージブロック(" + d + ")",
+					desc: "ダメージブロック(" + rate + ")",
 					type: "ss_damage_block",
 					icon: "damage_block",
 					isdual: false,
@@ -417,7 +417,7 @@ var SpSkill = {
 					effect: function () { },
 					priority: 1,
 					on_damage: function (fld, dmg, attr) {
-						if (dmg >= d) {
+						if (dmg >= rate) {
 							return dmg;
 						} else {
 							return 0;
