@@ -49,7 +49,7 @@ function ss_push(n) {
 
 // SSを順番に発動していく関数
 function ss_procdo(ss, now, index) {
-	var ss_rst = false;
+	var ss_rst = true;
 	if (ss.proc != null) {
 		// チャージスキルの場合turn_effectに追加
 		if (ss.charged > 0) {

@@ -138,7 +138,7 @@ function sim_show() {
 
 			//生きていたら残りターン表示
 			if (e.nowhp > 0) {
-				$("#enemy0" + (i + 1) + "_turn").text(e.move ? e.move.turn : "--");
+				$("#enemy0" + (i + 1) + "_turn").text((e.move && e.move.turn) ? e.move.turn : "--");
 				$("#enemy0" + (i + 1) + "_turn").removeClass("enemy_turn_disable");
 			}else{
 				$("#enemy0" + (i + 1) + "_turn").addClass("enemy_turn_disable");
