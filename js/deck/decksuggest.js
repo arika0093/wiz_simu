@@ -408,11 +408,12 @@ function set_autocmp(i) {
 				var hira2kana = $.trim(h2k(req.term));
 				resp($.map(Cards, function (value, key) {
 					var rst = true;
-					rst = rst && value.name.toLowerCase().indexOf(term) >= 0;
-					rst = rst || value.name.indexOf(roma2kana) >= 0;
-					rst = rst || value.name.indexOf(hira2kana) >= 0;
-					rst = rst && value.as1.proc != null;
-					rst = rst || (term == "*all*" && value.imageno > 0 && !value.isorigin);
+					rst = rst && value.name.toLowerCase().indexOf(term) >= 0;					// アルファベット大文字小文字の区別をしない
+					rst = rst || value.name.indexOf(roma2kana) >= 0;							// ローマ字からカタカナに変換して比較
+					rst = rst || value.name.indexOf(hira2kana) >= 0;							// 平仮名からカタカナに変換して比較
+					rst = rst && value.as1.proc != null;										// ASが未定義のものは除く
+					rst = rst && !value.disable;												// 無効化されていない(進化後が存在する精霊など)
+					rst = rst || (term == "*all*" && value.imageno > 0 && !value.isorigin);		// 全表示の時はオリジナル精霊は出さない
 					if (rst){
 						return {
 							label: value.name,

@@ -13004,6 +13004,7 @@ Cards = [{
 	cost: 45,
 	attr: [2, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Statusup(200, 0),
 		Panel_boost([0, 0, 1, 0, 0, ], 1),
@@ -20068,35 +20069,7 @@ Cards = [{
 		Attr_statusup(0,100, [1,0,0,0,0,]),
 		Statusup(400,0),
 	],
-},
-/*
-{
-	name: "バレンタインのチョコレート",
-	cardno: 90022,
-	imageno: 2162,
-	hp: 100,
-	atk: 100,
-	cost: 20,
-	attr: [0, -1],
-	species: [10],
-	islegend: false,
-	isorigin: true,
-	as1: {
-		desc: "問答無用でリア充爆発☆/1000%",
-		proc: ChainAttack(10.0, 0),
-	},
-	ss1: {
-		desc: "チョコなんかいらん！(悲しみにより死亡)",
-		turn: 0,
-		proc: [ss_consume_all(1)],
-	},
-	awakes: [
-		Spec_statusup(1940, 0, [10, ]),
-		Spec_statusup(0, 1940, [10, ]),
-	],
-},
-*/
-{
+}, {
 	name: "協調の神世界 ミカエラ・セラフィム",
 	cardno: 5132,
 	imageno: 6875,
