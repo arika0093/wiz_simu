@@ -98,7 +98,7 @@ div.enemy_turn{
 	position:absolute;
 	bottom:0px;
 	left:8px;
-	background-image:url('/image/turn_background.png');
+	background-image:url('/image/parts/turn_bg.png');
 	text-align:center;
 	display:table-cell;
 	vertical-align:middle;
@@ -109,7 +109,6 @@ div.enemy_turn{
 	text-shadow: black 1px 1px 1px, black -1px 1px 1px,
 	             black 1px -1px 2px, black -1px -1px 1px;
 }
-
 div.enemy_turn_disable{
 	display:none;
 }

@@ -123,6 +123,25 @@ p.ally_stat, p.enemy_hp{
 	font-size: 11pt;
 }
 
+div.enemy_turn{
+	position:absolute;
+	bottom:0px;
+	left:8px;
+	background-image:url('/image/parts/turn_bg.png');
+	text-align:center;
+	display:table-cell;
+	vertical-align:middle;
+	width:25px;
+	height:25px;
+	font-weight:bold;
+	color:#fff;
+	text-shadow: black 1px 1px 1px, black -1px 1px 1px,
+	             black 1px -1px 2px, black -1px -1px 1px;
+}
+div.enemy_turn_disable{
+	display:none;
+}
+
 /* Ally info */
 div.ally_info{
 	box-sizing: border-box;
