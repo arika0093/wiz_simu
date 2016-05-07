@@ -354,10 +354,10 @@ var SpSkill = {
 	// -----------------------------
 	// 全体ステアップ
 	"ss_statusup_all": function (fld, n, cobj, params) {
-		var up_arrs = $.extend(true, {}, params[0]);
 		var up_limit = params[1];
 		var t = params[2];
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
+			var up_arrs = $.extend(true, {}, params[0]);
 			var now = fld.Allys.Now[i];
 			if (now.nowhp <= 0) { continue; }
 			// 既にかかってるステアップの値を取得する
@@ -388,7 +388,7 @@ var SpSkill = {
 						nowtg.atk = Math.max(teff.up_atk + nowtg.atk, 0);
 						nowtg.nowhp = Math.min(nowtg.nowhp + (params[0][0] > 0 ? params[0][0] : 0), nowtg.maxhp);
 					}
-					else if (state == "end" || state == "overlay") {
+					else if (state == "end" || state == "overlay" || state == "dead") {
 						nowtg.maxhp -= teff.up_hp;
 						nowtg.nowhp = Math.min(nowtg.nowhp, nowtg.maxhp);
 						nowtg.atk -= teff.up_atk;
