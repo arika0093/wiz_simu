@@ -905,11 +905,11 @@ function ss_object_done(fld, n, c_obj) {
 		if (p.is_cond || p.is_skill) {
 			params[count] = ss_object_done(fld, n, p);
 		}
-			// 関数なら実行
+		// 関数なら実行
 		else if ($.isFunction(p)) {
 			params[count] = p();
 		}
-			// 関数型でないならそのまま
+		// 関数型でないならそのまま
 		else {
 			params[count] = p;
 		}
