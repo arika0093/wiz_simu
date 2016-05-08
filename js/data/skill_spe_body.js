@@ -287,7 +287,7 @@ var SpSkill = {
 				}
 				else if (is_t) {
 					// 自傷
-					// ss_consume_own(dmg)(fld, oi);  //バグ発生のため、とりあえず機能停止
+					SpSkill["ss_consume_own"](fld, n, cobj,[dmg]);
 				}
 			},
 		});
