@@ -179,7 +179,7 @@ function ss_boost_enhance_all(p, t, dmg, attr) {
 **/
 function ss_boost_enhance_s(p, t, dmg) {
 	return ss_template({
-		name: "ss_boost_enhance_own",
+		name: "ss_boost_enhance_s",
 		type: "turn_effect",
 		subtype: "enhance_boost",
 		target: "own",
