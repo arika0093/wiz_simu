@@ -795,6 +795,8 @@ var SpCondSkill = {
 	// -----------------------------
 	// リーダー時に効果値アップ
 	"ss_when_leader": function (fld, oi, cobj, params) {
+		var a = params[0];
+		var b = params[1];
 		return (oi == 0) ? a : b;
 	},
 	// -----------------------------
@@ -857,7 +859,7 @@ var SpCondSkill = {
 		return this["ss_chain_cond"](fld, oi, cobj, params);
 	},
 	// -----------------------------
-	// チェイン消費
+	// チェイン消費して効果値を選択
 	"ss_chain_cost": function (fld, oi, cobj, params) {
 		var ch = params[0];
 		var a = params[1];
@@ -869,8 +871,17 @@ var SpCondSkill = {
 		}
 		return b;
 	},
+	// チェイン消費してスキルを選択
 	"ss_chain_cost_skill": function (fld, oi, cobj, params) {
-		return this["ss_chain_cost"](fld, oi, cobj, params);
+		var ch = params[0];
+		var a = params[1];
+		var b = params[2];
+		if (fld.Status.chain >= ch) {
+			fld.Status.chain -= ch;
+			fld.log_push("チェイン消費: " + ch);
+			return ss_object_done(fld, oi, a);
+		}
+		return ss_object_done(fld, oi, b);
 	},
 
 	/*
@@ -902,7 +913,7 @@ function ss_object_done(fld, n, c_obj) {
 	while (c_obj["p" + (count + 1)]) {
 		var p = c_obj["p" + (count + 1)];
 		// 条件またはスキルなら再帰
-		if (p.is_cond || p.is_skill) {
+		if (c_obj.NoRecursion!=true && (p.is_cond || p.is_skill)) {
 			params[count] = ss_object_done(fld, n, p);
 		}
 		// 関数なら実行

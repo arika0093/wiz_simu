@@ -15,7 +15,7 @@
     <!-- About Page -->
     <title>精霊リスト - WizTools</title>
 </head>
-<body>
+<body onload=fillcontents()>
     <!-- Header -->
     <div id="Header"></div>
 
@@ -25,7 +25,10 @@
             <dt id="use">精霊リスト</dt>
             <dd>
                 <p class="highlight sp_hidden">精霊の追加依頼は<a href="/pages/info.html#contact">「要望・意見など」</a>をご覧ください</p>
-				<div id=contents><input type=button onclick=fillcontents() value=全精霊表示></input></div>
+				SS種別：<select id=ss_kind><option>読み込み中...</option></select>　
+				主属性：<select id=attr_kind><option>指定なし</option><option>火</option><option>水</option><option>雷</option></select>　
+				<input type=button onclick=search_start() value=検索></input>
+				<div id=contents><input type=button onclick=allapper() value=全精霊表示></input></div>
             </dd>
         </dl>
     </div>
@@ -62,6 +65,62 @@
 
     <script type="text/javascript">
 		function fillcontents(){
+			tmp="";
+			for(var key in SpSkill){
+				tmp=tmp+"<option>"+key+"</option>"
+			}
+			ss_kind.innerHTML=tmp;
+/*
+			tmp=""
+			for(n=0;n<3;n++){
+				tmp=tmp+"<option>"+Field.Constants.Attr[n]+"</option>"
+			}
+			attr_kind.innerHTML=tmp;
+*/
+
+
+
+
+
+
+		}
+
+		function search_start(){
+			var sResult=Cards.slice(0);
+
+			//属性検索
+			searchAttr=attr_kind.selectedIndex-1;
+			if( searchAttr >=0 ){
+				sResult=sResult.filter(function(item){ if(item.attr[0]==searchAttr) return true;});
+			}
+
+			//SS検索的なもの
+			searchSs=ss_kind.value;
+			sResult=sResult.filter(function(item){ 
+				ss_search_unit_result=false
+				for(var tc2 in item.ss1.proc){
+					if(item.ss1.proc[tc2].name==searchSs){
+						ss_search_unit_result=true
+					}
+				}
+				if (ss_search_unit_result==false && item.islegend){
+					for(var tc2 in item.ss2.proc){
+						if(item.ss2.proc[tc2].name==searchSs){
+							ss_search_unit_result=true
+						}
+					}
+				}
+				return ss_search_unit_result;
+			});
+						console.log(sResult)
+
+			//結果表示
+			resapper(sResult)
+		}
+
+
+
+		function allapper(){
 			Cards.sort(function(a,b){
 			    if(a.imageno < b.imageno) return 1;
 			    if(a.imageno > b.imageno) return -1;
@@ -84,6 +143,36 @@
 				tcont=tcont+"<td class=listspecies>"+Field["Constants"]["Species"][Cards[n]["species"]]+"</td>";
 				tcont=tcont+"<td class=listhp>"+Cards[n]["hp"]+"</td>";
 				tcont=tcont+"<td class=listatk>"+Cards[n]["atk"]+"</td>";
+				tcont=tcont+"</tr>"
+			}
+			tcont=tcont+"</table>";
+			contents.innerHTML=tcont
+		}
+
+
+		function resapper(sResult){
+			sResult.sort(function(a,b){
+			    if(a.imageno < b.imageno) return 1;
+			    if(a.imageno > b.imageno) return -1;
+			    return 0;
+			});
+			// thanks http://qiita.com/PianoScoreJP/items/f0ff7345229871039672
+			tcont="<table class='sResultlist'>";
+			tcont=tcont+"<tr class=trhead><td>精霊名</td><td>属性</td><td>種族</td><td>HP</td><td>攻撃力</td></td>";
+			for(n=0;n<sResult.length;n++){
+				aattr=sResult[n]["attr"]
+				myattr=Field["Constants"]["Attr"][aattr[0]];
+				if(aattr[1]>0){
+					myattr=myattr+"/"+Field["Constants"]["Attr"][aattr[1]]
+				}
+				tcont=tcont+"<tr class=trcont>"
+//				tcont=tcont+"<td class=listico><p class=trimicon><!--<img src="+get_image_url(sResult[n]["imageno"])+">--></p></td>";
+//				tcont=tcont+"<td class=listnum>"+sResult[n]["cardno"]+"</td>";
+				tcont=tcont+"<td class=listname>"+sResult[n]["name"]+"</td>";
+				tcont=tcont+"<td class=listattr>"+myattr+"</td>";
+				tcont=tcont+"<td class=listspecies>"+Field["Constants"]["Species"][sResult[n]["species"]]+"</td>";
+				tcont=tcont+"<td class=listhp>"+sResult[n]["hp"]+"</td>";
+				tcont=tcont+"<td class=listatk>"+sResult[n]["atk"]+"</td>";
 				tcont=tcont+"</tr>"
 			}
 			tcont=tcont+"</table>";
