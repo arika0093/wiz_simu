@@ -747,5 +747,12 @@ function ss_chain_cost(ch, a, b) {
 
 // チェイン消費SS分岐(ch: 消費チェイン, ss1: 消費して発動するSS, ss2: 消費せず発動するSS)
 function ss_chain_cost_skill(ch, ss1, ss2) {
-	return ss_chain_cost(ch, ss1, ss2);
+	return ss_condition({
+		name: "ss_chain_cost_skill",
+		type: "chain",
+		NoRecursion: true,
+		p1: ch,
+		p2: ss1,
+		p3: ss2,
+	});
 }
