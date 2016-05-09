@@ -795,6 +795,8 @@ var SpCondSkill = {
 	// -----------------------------
 	// リーダー時に効果値アップ
 	"ss_when_leader": function (fld, oi, cobj, params) {
+		var a = params[0];
+		var b = params[1];
 		return (oi == 0) ? a : b;
 	},
 	// -----------------------------
