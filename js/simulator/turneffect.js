@@ -65,10 +65,17 @@ function turn_effect_check(is_turn_move, is_ssfin) {
 			turneff._notfirst = true;
 		}
 		if (turneff.lim_turn == 0) {
+			var tf_index = all_turneff[te].index;
 			// 残りターンが0なら除外
 			now.turn_effect.splice(all_turneff[te].position, 1);
 			all_turneff.splice(te, 1);
 			te--;
+			// 同じindexを持つtfのpositionをずらす
+			$.each(all_turneff, function (i, e) {
+				if (e.index == tf_index) {
+					e.position--;
+				}
+			});
 		}
 	}
 }
