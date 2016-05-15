@@ -45,12 +45,9 @@ var SpSkill = {
 		// 参照用にコピーを取る
 		var now_state = $.extend(true, {}, fld.Allys.Now[n]);
 		// 普通のダメージ
+		var sda = ss_damage_all(dmg_r + 1, attrs, true);
 		fld.log_push("Unit[" + (n + 1) + "]: 継続ダメージSS(威力: " + dmg_r * 100 + ")");
-		SpSkill["ss_damage_all"](fld, n, cobj, [
-			dmg_r + 1,	// damage rate
-			attrs,		// damage attr
-			true,		// ignore counter
-		]);
+		ss_object_done(fld, n, sda);
 		// 継続効果追加
 		ss_continue_effect_add({
 			type: "continue_damage",
@@ -63,11 +60,8 @@ var SpSkill = {
 				f_copy.Allys.Now[oi] = now_state;
 				// 継続ダメージ
 				fld.log_push("Unit[" + (n + 1) + "]: 継続ダメージ発動(" + (cont_r * 100) + ")");
-				SpSkill["ss_damage_all"](fld, n, cobj, [
-					cont_r + 1,	// damage rate
-					attrs,		// damage attr
-					true,		// ignore counter
-				]);
+				var sda = ss_damage_all(cont_r + 1, attrs, true);
+				ss_object_done(fld, n, sda);
 				// SS状況を解除
 				var es = GetNowBattleEnemys();
 				for (var i = 0; i < es.length; i++) {
@@ -258,6 +252,7 @@ var SpSkill = {
 			var cd = fld.Allys.Deck[i];
 			var now = fld.Allys.Now[i];
 			if (now.nowhp > 0 && attr[cd.attr[0]] > 0) {
+
 				SpSkill["ss_boost_enhance_s"](fld, i, cobj, params);
 			}
 		}
@@ -287,7 +282,8 @@ var SpSkill = {
 				}
 				else if (is_t) {
 					// 自傷
-					SpSkill["ss_consume_own"](fld, n, cobj,[dmg]);
+					var sco = ss_consume_own(dmg)
+					ss_object_done(fld, n, sco);
 				}
 			},
 		});
@@ -795,6 +791,8 @@ var SpCondSkill = {
 	// -----------------------------
 	// リーダー時に効果値アップ
 	"ss_when_leader": function (fld, oi, cobj, params) {
+		var a = params[0];
+		var b = params[1];
 		return (oi == 0) ? a : b;
 	},
 	// -----------------------------
@@ -814,7 +812,9 @@ var SpCondSkill = {
 	// 味方全体自傷して自傷した数だけ効果値を増やす
 	"ss_consume_all_cond": function (fld, oi, cobj, params) {
 		var base = params[0];
-		return base * SpSkill["ss_consume_all"](fld, oi, cobj, [params[1]]);
+		var dmg = params[1];
+		var sca = ss_consume_all(dmg);
+		return base * ss_object_done(fld, n, sca);
 	},
 	// -----------------------------
 	// 自身が毒かどうか
@@ -854,7 +854,8 @@ var SpCondSkill = {
 		return (fld.Status.chain >= ch) ? a : b;
 	},
 	"ss_chain_cond_skill": function (fld, oi, cobj, params) {
-		return this["ss_chain_cond"](fld, oi, cobj, params);
+		var scc_rst = this["ss_chain_cond"](fld, oi, cobj, params);
+		return ss_object_done(fld, oi, scc_rst);
 	},
 	// -----------------------------
 	// チェイン消費
@@ -870,7 +871,8 @@ var SpCondSkill = {
 		return b;
 	},
 	"ss_chain_cost_skill": function (fld, oi, cobj, params) {
-		return this["ss_chain_cost"](fld, oi, cobj, params);
+		var scc_rst = this["ss_chain_cost"](fld, oi, cobj, params);
+		return ss_object_done(fld, oi, scc_rst);
 	},
 
 	/*
@@ -901,8 +903,12 @@ function ss_object_done(fld, n, c_obj) {
 	var count = 0;
 	while (c_obj["p" + (count + 1)]) {
 		var p = c_obj["p" + (count + 1)];
+		// 遅延評価関数なら特に何もしない
+		if(c_obj.is_delay){
+			params[count] = p;
+		}
 		// 条件またはスキルなら再帰
-		if (p.is_cond || p.is_skill) {
+		else if (p.is_cond || p.is_skill) {
 			params[count] = ss_object_done(fld, n, p);
 		}
 		// 関数なら実行
