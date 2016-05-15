@@ -137,6 +137,7 @@ div.enemy_turn{
 	vertical-align:middle;
 	width:25px;
 	height:25px;
+	line-height: 25px;
 	font-weight:bold;
 	color:#fff;
 	text-shadow: black 1px 1px 1px, black -1px 1px 1px,
