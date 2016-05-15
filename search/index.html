@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px)" />
+    <link rel="stylesheet" type="text/css" href="/css/search.css" />
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="/download/slicknav/slicknav.css" />
+    <!-- Search -->
+    <meta name="robots" content="all" />
+    <meta name="keywords" content="黒猫,ウィズ,魔法使いと黒猫のウィズ,ツール,検索,スキル" />
+    <meta name="description" content="「魔法使いと黒猫のウィズ」シミュレーター実装精霊から特定のスキル持ちなどを検索します。" />
+    <!-- for Mobile Adsense -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-5156005489853976",
+            enable_page_level_ads: true
+        });
+    </script>
+    <!-- Top Page -->
+    <title>精霊詳細条件検索 - WizTools</title>
+</head>
+<body>
+    <!-- Loader -->
+    <div id="loader"><img src="/image/loading.gif" alt="Loading..." /></div>
+    <noscript id="loadnoscr">このページはjavascriptを使用しています。有効にしたのち再度アクセスしてください。</noscript>
+    <div id="fade"></div>
+
+    <!-- Header -->
+    <div id="Header"></div>
+
+    <!-- Main Contents -->
+    <div class="Main">
+        <dl class="List">
+            <dt>このツールについて</dt>
+            <dd id="tool_info">
+                <div class="info">
+                    「魔法使いと黒猫のウィズ」精霊を条件に応じて検索することができます。<br />
+                    <b>※表示される精霊は<a href="/simulator/" target="_blank">シミュレーター</a>に追加されている精霊のみです。</b><br />
+                </div>
+                <!-- Adsense -->
+                <div class="Adsense">
+                    <!-- advertise -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-5156005489853976"
+                         data-ad-slot="6536828444"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </dd>
+            <dt id="search">精霊検索</dt>
+            <dd>
+                <div id="search_f">
+                    <dl id="search_match_form">
+                        <dt>精霊名</dt>
+                        <dd>
+                            <input type="text" id="s_name" placeholder="《精霊名を入力》" />
+                            <select class="sch_q" id="s_name_q">
+                                <option value="0" selected>部分一致</option>
+                                <option value="1">完全一致</option>
+                            </select>
+                        </dd>
+                        <dt>精霊属性 / 精霊種族</dt>
+                        <dd>
+                            <select id="s_attr_m">
+                                <option value="-2" selected>《主属性を指定》</option>
+                                <option value="0">火</option>
+                                <option value="1">水</option>
+                                <option value="2">雷</option>
+                            </select>
+                            /
+                            <select id="s_attr_s">
+                                <option value="-2" selected>《副属性を指定》</option>
+                                <option value="-1">無し</option>
+                                <option value="0">火</option>
+                                <option value="1">水</option>
+                                <option value="2">雷</option>
+                                <option value="3">光</option>
+                                <option value="4">闇</option>
+                            </select>
+                            /
+                            <select id="s_spec">
+                                <option value="-1" selected>《精霊種族を指定》</option>
+                                <option value="0">龍族</option>
+                                <option value="1">神族</option>
+                                <option value="2">魔族</option>
+                                <option value="3">天使</option>
+                                <option value="4">妖精</option>
+                                <option value="5">亜人</option>
+                                <option value="6">物質</option>
+                                <option value="7">魔法生物</option>
+                                <option value="8">戦士</option>
+                                <option value="9">術士</option>
+                                <option value="10">アイテム</option>
+                                <option value="11">AbCd</option>
+                            </select>
+                        </dd>
+                        <dt>
+                            AS条件検索
+                            <select id="as_schcond">
+                                <option value="0">完全一致(AND)検索</option>
+                                <option value="1">部分一致(OR)検索</option>
+                            </select>
+                            <button id="sch_as_condplus"
+                                    onclick="create_new_combobox('.as_conds', 'sch_as_type', '《ASの条件/項目を指定》', when_add_as_type)">+</button>
+                        </dt>
+                        <dd>
+                            <input type="text" id="s_astext" placeholder="《AS説明文から検索》" />
+                            <input type="number" title="発動チェイン数の上限を指定することができます。" id="sch_as_chain" placeholder="《発動chain数》" /><br />
+                            <div class="as_conds">
+                                <select class="sch_as_type skill_sel">
+                                    <option value="-1">《ASの種類を指定》</option>
+                                </select>
+                            </div>
+                        </dd>
+                        <dt>
+                            SS条件検索
+                            <select id="ss_cond">
+                                <option value="0">完全一致(AND)検索</option>
+                                <option value="1">部分一致(OR)検索</option>
+                            </select>
+                            <button id="sch_ss_condplus"
+                                    onclick="create_new_combobox('.ss_types', 'sch_ss_type', '《SSの種類を指定》', when_add_ss_type)">+</button>
+                        </dt>
+                        <dd>
+                            <input type="text" id="s_sstext" placeholder="《SS説明文から検索》" />
+                            <input type="number" title="発動ターン数の上限を指定することができます。" id="sch_ss_turn" placeholder="《発動ターン数》" />
+                            <input type="checkbox" id="sch_ssturn_fast" checked/><label for="sch_ssturn_fast">FS考慮</label><br/>
+                            <div class="ss_types">
+                                <select class="sch_ss_type skill_sel">
+                                    <option value="-1">《SSの種類を指定》</option>
+                                </select>
+                            </div>
+                        </dd>
+                        <dt>
+                            潜在能力検索
+                            <!--
+                            <button id="sch_aw_condplus"
+                                    onclick="create_new_combobox('.aw_types', 'sch_aw_type', '《潜在能力の種類を指定》', sf_awlist_add)">+</button>
+                                -->
+                        </dt>
+                        <dd>
+                            <div class="aw_types">
+                                <select class="sch_aw_type skill_sel">
+                                    <option value="-1">《潜在能力の種類を指定》</option>
+                                </select>
+                            </div>
+                        </dd>
+                    </dl>
+                </div>
+                <button id="sf_search" onclick="sf_search_start();">検索</button>
+                <button id="sf_reset" onclick="sf_formreset();">Reset</button>
+                <input id="sf_opentab" type="checkbox" checked /><label for="sf_opentab">別タブで開く</label>
+
+                <!-- Adsense -->
+                <div class="Adsense">
+                    <!-- advertise -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-5156005489853976"
+                         data-ad-slot="6536828444"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </dd>
+        </dl>
+    </div>
+
+    <!-- Footer -->
+    <div id="Footer"></div>
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="/download/slicknav/jquery.slicknav.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/loader.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/deck/deckdata.js"></script>
+    <!-- card data -->
+    <script type="text/javascript" charset="UTF-8" src="/js/simulator/species.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_ans.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_spe.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_spe_body.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_awake.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/cards.js"></script>
+    <!-- search script -->
+    <script type="text/javascript" charset="UTF-8" src="/js/search/sch_form_def.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/search/sch_form.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/search/sch_filter.js"></script>
+</body>
+</html>

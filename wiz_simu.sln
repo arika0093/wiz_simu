@@ -19,6 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{85B9F527-E14
 		css\deck.css = css\deck.css
 		css\default.css = css\default.css
 		css\default_sp.css = css\default_sp.css
+		css\search.css = css\search.css
 		css\simulator.css = css\simulator.css
 		css\simulator_sp.css = css\simulator_sp.css
 	EndProjectSection
@@ -129,6 +130,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "script", "script", "{226BE8
 		js\tools\crystalpt.js = js\tools\crystalpt.js
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "search", "search", "{2E6BF4B1-10BD-40DE-BD83-5258C65E96D0}"
+	ProjectSection(SolutionItems) = preProject
+		js\search\sch_filter.js = js\search\sch_filter.js
+		js\search\sch_form.js = js\search\sch_form.js
+		js\search\sch_form_def.js = js\search\sch_form_def.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "search", "search", "{F546FAD9-474F-46A8-B734-545AA08B5821}"
+	ProjectSection(SolutionItems) = preProject
+		search\index.html = search\index.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "result", "result", "{C74DB3D7-4C45-4359-9DC9-04BE6EF4C4D1}"
+	ProjectSection(SolutionItems) = preProject
+		search\s\index.html = search\s\index.html
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -154,5 +172,8 @@ Global
 		{0D1E3309-BC11-437C-A740-D9196C97621E} = {AEC9F07D-08AF-4D00-AC3F-C5ED1357D47A}
 		{715492B2-2D37-460A-88BD-08ABB4A12AA6} = {A0A97AF9-4ED6-4739-BF95-F6ADF2893576}
 		{226BE818-2166-4B4C-B4C1-3398D39A8069} = {A0A97AF9-4ED6-4739-BF95-F6ADF2893576}
+		{2E6BF4B1-10BD-40DE-BD83-5258C65E96D0} = {20D7A7D8-822B-4D68-AEF0-9127E62A819F}
+		{F546FAD9-474F-46A8-B734-545AA08B5821} = {5738BAEF-BA1D-4206-8CED-09AD35F0B80B}
+		{C74DB3D7-4C45-4359-9DC9-04BE6EF4C4D1} = {F546FAD9-474F-46A8-B734-545AA08B5821}
 	EndGlobalSection
 EndGlobal

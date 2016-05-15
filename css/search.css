@@ -1,0 +1,64 @@
+/** search.css **/
+div#search_f{
+	margin: 0.5ex 1em 0 0;
+	padding: 1ex 1em;
+	background-color: #F8FFFF;
+	border: 1px dashed #D0D0FF;
+	transition: transform .5s ease;
+}
+
+dl#search_match_form dt{
+	margin-top: 0.5ex;
+	border-left: 4px solid #44aaff;
+	border-bottom: 1px solid #4499ee;
+}
+
+dl#search_match_form dd{
+	padding: 1.5ex 0 2ex;
+}
+
+dl#search_match_form dd select, dl#search_match_form dd input{
+	padding: 0.5ex;
+	margin-bottom: 1ex;
+}
+
+dl#search_match_form dd input[type="text"]{
+	width: 100%;
+	box-sizing: border-box;
+	max-width: 450px;
+}
+
+ul.ui-widget{
+	max-height: 250px;
+}
+
+select.skill_sel{
+	width: 100%;
+	max-width: 450px;
+}
+
+select#ss_cond{
+	display: none;
+}
+
+select#sch_as_cond, select#as_schcond{
+	display: none;
+}
+
+input#sch_as_chain, input#sch_ss_turn{
+	max-width: 120px;
+}
+
+input#sch_ssturn_fast, label[for="sch_ssturn_fast"]{
+	vertical-align: sub;
+}
+
+button#sf_search, button#sf_reset{
+	margin: 1.5ex 0.5em 0.5ex;
+	padding: 1ex 4em;
+}
+
+img.chara{
+	width: 96px;
+	margin: 1ex 0.5em 0 0;
+}
