@@ -15,7 +15,7 @@
     <!-- About Page -->
     <title>精霊リスト - WizTools</title>
 </head>
-<body onload=fillcontents()>
+<body>
     <!-- Header -->
     <div id="Header"></div>
 
@@ -25,7 +25,7 @@
             <dt id="use">精霊リスト</dt>
             <dd>
                 <p class="highlight sp_hidden">精霊の追加依頼は<a href="/pages/info.html#contact">「要望・意見など」</a>をご覧ください</p>
-				<div id=contents>読み込み中...</div>
+				<div id=contents><input type=button onclick=fillcontents() value=全精霊表示></input></div>
             </dd>
         </dl>
     </div>
@@ -55,6 +55,7 @@
     <script type="text/javascript" charset="UTF-8" src="/js/deck/deckdata.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="/js/data/skill_ans.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="/js/data/skill_spe.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/data/skill_spe_body.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="/js/data/skill_awake.js"></script>
 	<script type="text/javascript" charset="UTF-8" src="/js/data/cards.js"></script>
 

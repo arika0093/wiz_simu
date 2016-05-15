@@ -79,7 +79,7 @@ var Cardlist = [{
 	imageno: 7508,
 }, {
 	name: "ハローラ",
-	imageno: 7968,
+	imageno: 7988,
 }, {
 	name: "リギット",
 	imageno: 7971,

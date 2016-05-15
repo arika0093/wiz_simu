@@ -136,6 +136,13 @@ function sim_show() {
 				},
 			});
 
+			//生きていたら残りターン表示
+			if (e.nowhp > 0) {
+				$("#enemy0" + (i + 1) + "_turn").text((e.move && e.move.turn) ? e.move.turn : "--");
+				$("#enemy0" + (i + 1) + "_turn").removeClass("enemy_turn_disable");
+			}else{
+				$("#enemy0" + (i + 1) + "_turn").addClass("enemy_turn_disable");
+			}
 			// 死んでたら薄暗く表示、鉄壁が貼ってあるならグレースケールで表示
 			if (e.nowhp <= 0) {
 				$("#enemy0"+ (i + 1)).addClass("dead")
@@ -179,6 +186,7 @@ function sim_show() {
 			$("#enemy0" + (i + 1) + "_hp").text("");
 			$("#enemy0" + (i + 1) + "_stats").text("");
 			$("#enemy0" + (i + 1) + "_stats").attr("title", "");
+			$("#enemy0" + (i + 1) + "_turn").addClass("enemy_turn_disable");
 		}
 	}
 	// 発動中の効果を点滅表示
