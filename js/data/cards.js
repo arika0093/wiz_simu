@@ -25075,7 +25075,7 @@ Cards = [{
 	},
 	ss1: {
 		desc: "味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(人数×50%)",
-		turn: 3,
+		turn: 6,
 		proc: [ss_damage_all(ss_consume_all_cond(0.50, 0.50), [0])],
 	},
 	awakes: [
@@ -25096,7 +25096,7 @@ Cards = [{
 	},
 	ss2: {
 		desc: "味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(人数×90%)",
-		turn: 6,
+		turn: 9,
 		proc: [ss_damage_all(ss_consume_all_cond(0.90, 0.50), [0])],
 	},
 	Lawake: [
