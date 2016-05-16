@@ -29442,7 +29442,7 @@ Cards = [{
 	awakes: [
 		Fastskill(1),
 		Panel_boost([1, 0, 0, 0, 0, ], 1),
-                Attr_statusup(100, 0, [1, 0, 0, 0, 0, ]),
+				Attr_statusup(100, 0, [1, 0, 0, 0, 0, ]),
 		Statusup(200, 0),
 		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
 		Panel_boost([1, 0, 0, 0, 0, ], 2),
@@ -29816,9 +29816,9 @@ Cards = [{
 		Fastskill(2),
 		Spec_statusup(500, 0, [6, ]),
 		Attr_statusup(0, 200, [1, 0, 1, 0, 0, ]),
-                Attr_statusup_sattr(200, 0, [0, 0, 1, 0, 0], 200, 0, [1, 0, 0, 0, 0]),
+				Attr_statusup_sattr(200, 0, [0, 0, 1, 0, 0], 200, 0, [1, 0, 0, 0, 0]),
 		Panel_boost([0, 0, 1, 0, 0, ], 2),
-                Attr_statusup_sattr(0, 200, [0, 0, 1, 0, 0], 0, 200, [1, 0, 0, 0, 0]),
+				Attr_statusup_sattr(0, 200, [0, 0, 1, 0, 0], 0, 200, [1, 0, 0, 0, 0]),
 	],
 	as2: {
 		desc: "4チェインで雷属性の攻撃力をアップ、複属性が火属性だとさらにアップ(40%/150%)",
@@ -29858,9 +29858,9 @@ Cards = [{
 		Panel_boost([0, 0, 1, 0, 0, ], 3),
 		Fastskill(2),
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
-                Abstate_invalid("as_sealed"),
-                Abstate_invalid("ss_sealed"),
-                Awake_noeffect("心眼", 1),
+				Abstate_invalid("as_sealed"),
+				Abstate_invalid("ss_sealed"),
+				Awake_noeffect("心眼", 1),
 		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
 	],
 	as2: {
@@ -29992,7 +29992,7 @@ Cards = [{
 		NEFTJOD(30),
 		Fastskill(2),
 		Attr_statusup(200,0, [1,0,1,0,0,]),
-        Attr_statusup_sattr(0, 200, [1,0,0,0,0], 0, 200, [0,0,1,0,0]),
+		Attr_statusup_sattr(0, 200, [1,0,0,0,0], 0, 200, [0,0,1,0,0]),
 	],
 	as2: {
 		desc: "4チェインで敵単体を3回連続攻撃(500%)",
@@ -30122,7 +30122,7 @@ Cards = [{
 		Heal_afterbattle(10),
 		Attr_statusup(0,200, [1,0,0,0,0,]),
 		Attr_statusup(200,0, [1,0,0,0,0,]),
-        Awake_noeffect("心眼", 1),
+		Awake_noeffect("心眼", 1),
 	],
 	as2: {
 		desc: "火属性の味方を回復し(7%)、攻撃力もアップ(60%)",
@@ -30165,8 +30165,8 @@ Cards = [{
 		Attr_statusup(200,0, [0,0,1,0,0,]),
 		Fastskill(2),
 		Attr_statusup(0,200, [0,0,1,0,0,]),
-        Attr_statusup_sattr(0, 200, [0,0,1,0,0], 0, 200, [0,0,0,1,0]),
-        Awake_noeffect("精霊交代", 1),
+		Attr_statusup_sattr(0, 200, [0,0,1,0,0], 0, 200, [0,0,0,1,0]),
+		Awake_noeffect("精霊交代", 1),
 	],
 	as2: {
 		desc: "4チェインで雷属性の攻撃力をアップ、複属性が光属性だとさらにアップ(40%/150%)",
@@ -30209,7 +30209,7 @@ Cards = [{
 		NEFTJOD(30),
 		Fastskill(2),
 		Attr_statusup(200,0, [0,1,0,0,0,]),
-        Attr_statusup_sattr(0, 200, [0,1,0,0,0], 0, 200, [0,0,0,0,1]),
+		Attr_statusup_sattr(0, 200, [0,1,0,0,0], 0, 200, [0,0,0,0,1]),
 	],
 	as2: {
 		desc: "6チェインでダメージアップ、天使の敵へさらにダメージアップ(600%/800%)",
@@ -30244,7 +30244,7 @@ Cards = [{
 		proc: [panel_skillboost(2)],
 	},
 	awakes: [
-        Awake_noeffect("経験値取得量アップ", 1),
+		Awake_noeffect("経験値取得量アップ", 1),
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
 		Statusup(200, 0),
 		Fastskill(2),
@@ -30252,8 +30252,8 @@ Cards = [{
 		Panel_boost([0, 1, 0, 0, 0, ], 2),
 		Attr_statusup(200, 0, [0, 1, 0, 0, 0, ]),
 		Fastskill(2),
-        Abstate_invalid("as_sealed"),
-        Awake_noeffect("難易度ダウン", 1),
+		Abstate_invalid("as_sealed"),
+		Awake_noeffect("難易度ダウン", 1),
 	],
 	as2: {
 		desc: "水属性の味方のHPを回復(12%)し、全属性のダメージを10%軽減。リーダー時さらに10%軽減",
@@ -30343,7 +30343,7 @@ Cards = [{
 		Fastskill(2),
 		Panel_boost([1, 0, 0, 0, 0, ], 2),
 		Attr_statusup(0, 200, [1, 1, 0, 0, 0, ]),
-        Abstate_invalid("ss_sealed"),
+		Abstate_invalid("ss_sealed"),
 	],
 	as2: {
 		desc: "6チェインで敵単体を3回攻撃(600%)",
@@ -30431,8 +30431,7 @@ Cards = [{
 		NEFTJOD(30),
 		Fastskill(2),
 		Attr_statusup(0,200, [1,0,0,0,0,]),
-                Abstate_invalid("死の秒針"),
-
+		Abstate_invalid("death_limit"),
 	],
 	as2: {
 		desc: "4チェインで雷・光属性の敵単体へ特効ダメージ、パネルの色が2色以上でさらにダメージアップ(600%/800%)",
@@ -30445,7 +30444,7 @@ Cards = [{
 	},
 	Lawake: [
 		Attr_statusup(0,200, [1,0,0,0,0,]),
-　　　　　　　　Abstate_invalid("poison"),
+		Abstate_invalid("poison"),
 	],
 },{
 	name: "おてんば邪神ガール ルルベル",
@@ -30512,7 +30511,7 @@ Cards = [{
 		proc: [panel_chainplus(1)],
 	},
 	awakes: [
-                Awake_noeffect("経験値取得量アップ", 1),
+		Awake_noeffect("経験値取得量アップ", 1),
 		Attr_statusup(0,100, [1,0,0,0,0,]),
 		Panel_boost([1,0,0,0,0,],2),
 		NEFTJOD(30),
@@ -30536,7 +30535,9 @@ Cards = [{
 		Statusup(0,500),
 		Attr_statusup(0,100, [1,0,0,0,0,]),
 	],
-},{
+},
+/*
+{
 	name: "終末の白き音色 ウリシラ・ファーレ",
 	cardno: 6194,
 	imageno: 8017,
@@ -30565,7 +30566,7 @@ Cards = [{
 		Panel_boost([0,1,0,0,0,],2),
 		Attr_statusup(0,200, [1,1,0,0,0,]),
 		Attr_statusup(200,0, [1,1,0,0,0,]),
-                Abstate_invalid("ss_sealed"),
+		Abstate_invalid("ss_sealed"),
 	],
 	as2: {
 		desc: "水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(60%/110%)",
@@ -30579,7 +30580,9 @@ Cards = [{
 	Lawake: [
 		Statusup(1000,0),
 	],
-},{
+},
+*/
+{
 	name: "処刑台の麗花 イーディス・キルティ",
 	cardno: 6200,
 	imageno: 8023,
@@ -30608,7 +30611,7 @@ Cards = [{
 		NEFTJOD(30),
 		Attr_statusup(0,200, [0,1,0,0,0,]),
 		Attr_statusup(200,0, [0,1,0,0,0,]),
-                Abstate_invalid("ss_sealed"),
+		Abstate_invalid("ss_sealed"),
 	],
 	as2: {
 		desc: "4チェインでダメージアップ、魔族の敵へさらにダメージアップ(500%/700%)",
@@ -30653,7 +30656,7 @@ Cards = [{
 		Attr_statusup(0,200, [0,1,1,0,0,]),
 		Attr_statusup(100,0, [0,1,1,0,0,]),
 		Fastskill(3),
-                Abstate_invalid("as_sealed"),
+		Abstate_invalid("as_sealed"),
 	],
 	as2: {
 		desc: "5チェインで雷属性の味方を回復(10%)し、攻撃力もアップ、複属性が水属性だとさらに攻撃力アップ(60%/110%)",
@@ -30788,7 +30791,7 @@ Cards = [{
 		Attr_statusup(0,100, [1,0,0,0,0,]),
 		Attr_statusup(100,0, [1,0,0,0,0,]),
 		NEFTJOD(30),
-                Attr_statusup_sattr(200, 0, [1,0,0,0,0], 200, 0, [0,0,0,0,1]),
+		Attr_statusup_sattr(200, 0, [1,0,0,0,0], 200, 0, [0,0,0,0,1]),
 	],
 	as2: {
 		desc: "7チェインで火属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(90%/140%)",
@@ -30955,7 +30958,7 @@ Cards = [{
 		proc: [ss_abstate_cure()],
 	},
 	awakes: [
-                Awake_noeffect("経験値取得量アップ", 1),
+		Awake_noeffect("経験値取得量アップ", 1),
 		Fastskill(1),
 		Statusup(0,200),
 		Statusup(200,0),
