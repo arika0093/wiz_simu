@@ -778,9 +778,14 @@ function s_enemy_discharge(tnum, minus_turn) {
 		$.each(nows, function (i, e) {
 			var card = fld.Allys.Deck[i];
 			var endcharge = card.islegend ? card.ss2.turn : card.ss1.turn;
+			var is_lgmode = card.islegend & endcharge <= e.ss_current;
 			e.ss_current = Math.max(Math.min(endcharge, e.ss_current) - minus_turn, 0);
-			// チャージできないように(修正済)
-			//e.ss_isboost = true;
+			// Lモードなら覚醒解除
+			if (is_lgmode) {
+				minus_legend_awake(Field.Allys.Deck, Field.Allys.Now, i);
+				now.islegend = false;
+				Field.log_push("Unit[" + (i + 1) + "]: Lモード解除");
+			}
 			// スキルカウンターを有効に
 			nows[i].flags.skill_counter[n] = true;
 		});
