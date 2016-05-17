@@ -156,7 +156,7 @@ function schfl_grep_as(obj, as) {
 
 // SS絞り込み検索
 function schfl_grep_ss(obj, ss, card) {
-	if (!ss) {
+	if (!ss || !ss.proc) {
 		return false;
 	}
 	// 条件チェック
@@ -169,7 +169,7 @@ function schfl_grep_ss(obj, ss, card) {
 	var fsturn = obj.ss_fastskl ? has_fastnum(card) : 0;
 	rst = rst && (obj.ss_maxturn < 0 || obj.ss_maxturn >= ss.turn - fsturn);
 	// 各SS定義についてチェック
-	rst = rst && (!ss.proc || $.grep(ss.proc, function (e) {
+	rst = rst && $.grep(ss.proc, function (e) {
 		var grep_rst = true;
 		// 条件SSのそれぞれについて確認
 		if (obj.ss_types && obj.ss_types.length > 0) {
@@ -192,7 +192,7 @@ function schfl_grep_ss(obj, ss, card) {
 		}
 		// grep result
 		return grep_rst;
-	}).length > 0);
+	}).length > 0;
 	// return result
 	return rst;
 }
