@@ -207,6 +207,12 @@ var sfdef_aw_namelist = {
 			return true;
 		}
 	},
+	"属性ステアップ/副属性でさらにアップ": {
+		type: "status_up",
+		check: function (e) {
+			return e.sub_attr;
+		}
+	},
 	"経験値取得量アップ": {
 		type: "awake_noeffect",
 		check: function (e) {

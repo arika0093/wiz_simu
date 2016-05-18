@@ -78,6 +78,7 @@ div.rst_item {
 	margin: 1ex 0.5ex 1.5ex;
 	padding: 0.5ex 0.5em;
 	border-radius: 4px;
+	box-shadow:0px 0px 8px 1px #e6e6e6 inset;
 }
 
 div.head{
