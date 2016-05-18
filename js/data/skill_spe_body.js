@@ -814,7 +814,7 @@ var SpCondSkill = {
 		var base = params[0];
 		var dmg = params[1];
 		var sca = ss_consume_all(dmg);
-		return base * ss_object_done(fld, n, sca);
+		return base * ss_object_done(fld, oi, sca);
 	},
 	// -----------------------------
 	// 自身が毒かどうか
