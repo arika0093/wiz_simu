@@ -58,7 +58,122 @@ button#sf_search, button#sf_reset{
 	padding: 1ex 4em;
 }
 
-img.chara{
+/** search result **/
+span.show_list{
+	text-align: right;
+	float:right;
+	margin: 0.5ex 0;
+	display: block;
+	width: 80%;
+}
+span.show_list button{
+	padding: 0.5ex 1em;
+}
+
+dd.left_pack{
+	margin-left: 0.5ex;
+}
+
+div.rst_item {
+	margin: 1ex 0.5ex 1.5ex;
+	padding: 0.5ex 0.5em;
+	border-radius: 4px;
+}
+
+div.head{
+	padding: 1ex 0.5em;
+	border-bottom: 1px solid #CCC;
+}
+div.head p.c_name{
+	margin: 0;
+	float: left;
+	width: 50%;
+	box-sizing: border-box;
+	font-size: large;
+}
+div.head p.subdata{
+	margin: 1.5ex 0 0 0 ;
+	float: right;
+	text-align: right;
+	width: 50%;
+	box-sizing: border-box;
+	font-size: smaller;
+	color: #888;
+}
+
+div.skl_set{
+	margin: 1ex 0;
+	padding: 0 6px 0 112px;
+	height: 96px;
+}
+div.skill_AS{
+	border-bottom: 1px dashed #CCC;
+}
+p.desc_AS, p.desc_SS, p.turn_SS{
+	margin: 0;
+	padding: 1ex 0;
+	min-height: 30px;
+	height: 100%;
+}
+p.desc_SS{
+	float: left;
+	width: 80%;
+	box-sizing: border-box;
+}
+p.turn_SS{
+	float: right;
+	text-align: right;
+	width: 15%;
+	height: 46px;
+	box-sizing: border-box;
+	border-left: 1px dashed #CCC;
+}
+
+
+/* Attribute */
+div.attr{
+	width: 5px;
+	height: 96px;
+	float: left;
+	text-indent: -9999px;
+}
+div.attr_0{
+	background-color: #E00F0F;
+}
+div.attr_1{
+	background-color: #30b3ff;
+}
+div.attr_2{
+	background-color: #FFD000;
+}
+div.attr_3{
+	background-color: #e5e5e5;
+}
+div.attr_4{
+	background-color: #9d00a9;
+}
+
+div.attr_b0{
+	background-color: #fff1f5;
+	border: 1px solid #ffc9d9;
+}
+div.attr_b1{
+	background-color: #FAFEFF;
+	border: 1px solid #9fccFF;
+}
+div.attr_b2{
+	background-color: #fcffea;
+	border: 1px solid #ffeb9d;
+}
+
+img.ch_img{
 	width: 96px;
-	margin: 1ex 0.5em 0 0;
+	float: left;
+	margin-right: 1ex;
+	margin-bottom: 0.5ex;
+}
+
+img.ch_lists{
+	width: 92px;
+	margin: 0.5ex 0.5em 1ex;
 }

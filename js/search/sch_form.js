@@ -33,7 +33,7 @@ function sf_aslist_add() {
 	var ct = 0, c = 0;
 	for (ak in sfdef_as_namelist) {
 		var at = sfdef_as_namelist[ak];
-		var is_obj = !!at.type;
+		var is_obj = (at.type !== undefined);
 		// genre check
 		if (is_obj && at.genre) {
 			if (ct != 0) {

@@ -3,8 +3,21 @@
 // -------------------------------
 // AS表示名 ←→ AS定義名の相互定義リスト
 var sfdef_as_namelist = {
-	"属性特攻": {
+	// 攻撃系
+	"攻撃関連": {
 		genre: "《攻撃系》",
+		type: "attack",
+		check: function (e) {
+			return true;
+		},
+	},
+	"連続攻撃": {
+		type: "attack",
+		check: function (e) {
+			return e.atkn > 1;
+		},
+	},
+	"属性特攻": {
 		type: "attack",
 		check: function (e) {
 			var ea = e.attr;
@@ -16,10 +29,66 @@ var sfdef_as_namelist = {
 			return false;
 		},
 	},
-
-
-
-
+	"種族特攻": {
+		type: "attack",
+		check: function (e) {
+			var ea = e.spec;
+			for (var ea_s in ea) {
+				if (ea[ea_s] < 1) {
+					return true;
+				}
+			}
+			return false;
+		},
+	},
+	"全体攻撃": {
+		type: "attack",
+		check: function (e) {
+			return e.isall && e.desc.indexOf("分散") > 0;
+		},
+	},
+	// エンハンス系
+	"エンハンス関連": {
+		genre: "《エンハンス系》",
+		type: "support",
+		check: function (e) {
+			return e.subtype == "enhance";
+		},
+	},
+	"副属性考慮エンハンス": {
+		type: "support",
+		check: function (e) {
+			return e.subattr;
+		},
+	},
+	// 回復系
+	"回復関連": {
+		genre: "《回復系》",
+		type: "heal",
+		check: function (e) {
+			return true;
+		},
+	},
+	// 条件/攻撃後処理
+	"リーダー時効果値アップ": {
+		genre: "《条件/攻撃後処理》",
+		type: null,
+		check: function (e) {
+			return e.desc == when_leader().desc;
+		},
+	},
+	"単体自傷攻撃": {
+		type: null,
+		check: function (e) {
+			return e.af_desc == as_consume_own().af_desc;
+		},
+	},
+	"全体自傷攻撃": {
+		type: null,
+		check: function (e) {
+			return e.af_desc == as_consume_all().af_desc;
+		},
+	},
 };
 
 // SS表示名 ←→ SS定義名の相互定義リスト
@@ -116,6 +185,12 @@ var sfdef_ss_namelist = {
 			return p.charged > 0;
 		}
 	},
+	"非チャージスキル": {
+		proc: null,
+		check: function (e, p) {
+			return p.charged === undefined;
+		}
+	},
 };
 
 // 潜在表示名 ←→ 潜在定義内容の相互定義リスト
@@ -188,3 +263,18 @@ var sfdef_aw_namelist = {
 	},
 }
 
+// 種族定義
+Species = [
+	"龍族",
+	"神族",
+	"魔族",
+	"天使",
+	"妖精",
+	"亜人",
+	"物質",
+	"魔法生物",
+	"戦士",
+	"術士",
+	"アイテム",
+	"AbCd",
+];

@@ -63,8 +63,9 @@
                         <dd>
                             <input type="text" id="s_name" placeholder="《精霊名を入力》" />
                             <select class="sch_q" id="s_name_q">
-                                <option value="0" selected>部分一致</option>
-                                <option value="1">完全一致</option>
+                                <option value="0" selected>を含む</option>
+                                <option value="1">と一致する</option>
+                                <option value="2">を含まない</option>
                             </select>
                         </dd>
                         <dt>精霊属性 / 精霊種族</dt>
@@ -136,6 +137,11 @@
                             <div class="ss_types">
                                 <select class="sch_ss_type skill_sel">
                                     <option value="-1">《SSの種類を指定》</option>
+                                </select>
+                                <select id="sch_ss_target">
+                                    <option value="0" selected>SS1/SS2両方含む</option>
+                                    <option value="-1">SS1のみ</option>
+                                    <option value="1">SS2のみ</option>
                                 </select>
                             </div>
                         </dd>

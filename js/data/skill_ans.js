@@ -95,7 +95,7 @@ function ChainAttack_as_consume_own(rate, ch, hp) {
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
 			cond: always_true().cond,
-			af_desc: as_consume_own(hp).desc,
+			af_desc: as_consume_own(hp).af_desc,
 			after: as_consume_own(hp).after,
 		}
 	];
@@ -235,7 +235,7 @@ function ChainVarianceAttack(r, ch) {
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
-			desc: "分散攻撃(敵が1体の場合)",
+			desc: "分散攻撃",
 			cond: function () {
 				var enemys = GetNowBattleEnemys();
 				var count = 0;
@@ -718,7 +718,7 @@ function when_leader() {
 // HP一定以上
 function when_hp_more(p) {
 	return {
-		desc: "HP" + (p*100) + "%以上",
+		desc: "HP特定%以上",
 		cond: function (fld, oi, ei) {
 			var now = fld.Allys.Now[oi];
 			return now.nowhp >= now.maxhp * p;
@@ -728,7 +728,7 @@ function when_hp_more(p) {
 // HP一定以下
 function when_hp_less(p) {
 	return {
-		desc: "HP" + (p * 100) + "%以下",
+		desc: "HP特定%以下",
 		cond: function (fld, oi, ei) {
 			var now = fld.Allys.Now[oi];
 			return now.nowhp <= now.maxhp * p;
@@ -738,7 +738,7 @@ function when_hp_less(p) {
 // HP一定未満
 function when_hp_under(p) {
 	return {
-		desc: "HP" + (p * 100) + "%未満",
+		desc: "HP特定%未満",
 		cond: function (fld, oi, ei) {
 			var now = fld.Allys.Now[oi];
 			return now.nowhp < now.maxhp * p;
@@ -769,7 +769,7 @@ function when_deckattr_less(c_attr, c_num) {
 // HP吸収
 function as_hp_absorption(r) {
 	return {
-		desc: "HP" + (r * 100) + "%吸収",
+		af_desc: "HP吸収",
 		after: function (fld, oi, g_dmg) {
 			return function () {
 				var now = fld.Allys.Now[oi];
@@ -784,7 +784,7 @@ function as_hp_absorption(r) {
 // 全体自傷スキル
 function as_consume_all(hp) {
 	return {
-		desc: "HP" + (hp * 100) + "%全体自傷",
+		af_desc: "HP全体自傷",
 		after: function (fld, oi) {
 			return function () {
 				fld.log_push("Unit[" + (oi + 1) + "]: 全体自傷(" + (hp * 100) + "%)");
@@ -800,7 +800,7 @@ function as_consume_all(hp) {
 // 単体自傷スキル
 function as_consume_own(hp) {
 	return {
-		desc: "HP" + (hp * 100) + "%自傷",
+		af_desc: "HP自傷",
 		after: function (fld, oi) {
 			return function () {
 				fld.log_push("Unit[" + (oi + 1) + "]: 自傷(" + (hp * 100) + "%)");

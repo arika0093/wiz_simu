@@ -1,6 +1,8 @@
 // -------------------------------
 // 検索結果生成用の関数
 // -------------------------------
+var MatchResult = [];
+
 // UIのクエリをObjectにまとめる
 function schfl_create_queryobj() {
 	var rst = {
@@ -25,6 +27,7 @@ function schfl_create_queryobj() {
 	rst.ss_maxturn = ss_mc.length > 0 ? Number(ss_mc) : -1;
 	rst.ss_fastskl = $("#sch_ssturn_fast").prop("checked");
 	rst.ss_search_ao = Number($("#ss_cond").val());
+	rst.ss_target = Number($("#sch_ss_target").val());
 	// Awake
 	rst.awake_types = schfl_textarr_from_msel(".sch_aw_type option:selected");
 
@@ -60,9 +63,8 @@ function schfl_show_result() {
 			return (a.imageno < b.imageno ? 1 : -1);
 		});
 		schfl_grepshow(rst_cards);
+		MatchResult = rst_cards;
 	});
-
-
 }
 
 // 渡されたObjに沿ってCardsから絞り込み
@@ -76,15 +78,41 @@ function schfl_grep(obj) {
 		rst = rst && (!e.disable);
 		// 名前絞り込み
 		if (obj.name.length > 0) {
-			var name_q = obj.name_q;		// 部分一致か完全一致か
-			rst = rst && (name_q == 0 ? e.name.indexOf(obj.name) >= 0 : e.name == obj.name);
+			// 検索条件に応じて振り分け
+			switch (obj.name_q) {
+				case 0:
+					// 部分一致
+					rst = rst && e.name.indexOf(obj.name) >= 0;
+					break;
+				case 1:
+					// 完全一致
+					rst = rst && e.name == obj.name;
+					break;
+				case 2:
+					// 含まない
+					rst = rst && e.name.indexOf(obj.name) < 0;
+					break;
+			}
 		}
 		// 属性/種族絞り込み
-		if (obj.attr_m >= 0) {
-			rst = rst && (e.attr[0] == obj.attr_m);
-		}
-		if (obj.attr_s >= -1) {
-			rst = rst && (e.attr[1] == obj.attr_s);
+		if (obj.attr_m == -2 || obj.attr_m != obj.attr_s) {
+			// 通常時はAND検索
+			if (obj.attr_m >= 0) {
+				rst = rst && (e.attr[0] == obj.attr_m);
+			}
+			if (obj.attr_s >= -1) {
+				rst = rst && (e.attr[1] == obj.attr_s);
+			}
+		} else {
+			// 主属性 = 副属性指定時はOR検索
+			var attr_rst = false;
+			if (obj.attr_m >= 0) {
+				attr_rst = attr_rst || (e.attr[0]== obj.attr_m);
+			}
+			if (obj.attr_s >= -1) {
+				attr_rst = attr_rst || (e.attr[1] == obj.attr_s);
+			}
+			rst = rst && attr_rst;
 		}
 		if (obj.species >= 0) {
 			rst = rst && (e.species[0] == obj.species);
@@ -92,7 +120,16 @@ function schfl_grep(obj) {
 		// AS絞り込み
 		rst = rst && (schfl_grep_as(obj, e.as1) || schfl_grep_as(obj, e.as2));
 		// SS絞り込み
-		rst = rst && (schfl_grep_ss(obj, e.ss1, e) || schfl_grep_ss(obj, e.ss2, e));
+		var ssrst = false;
+		if (obj.ss_target <= 0) {
+			// SS1
+			ssrst = ssrst || schfl_grep_ss(obj, e.ss1, e);
+		}
+		if (obj.ss_target >= 0) {
+			// SS2
+			ssrst = ssrst || schfl_grep_ss(obj, e.ss2, e);
+		}
+		rst = rst && ssrst;
 		// 潜在絞り込み
 		rst = rst && (schfl_grep_awake(obj, e.awakes) || schfl_grep_awake(obj, e.Lawake));
 		// 結果返却
@@ -132,7 +169,7 @@ function schfl_grep_as(obj, as) {
 			var greps = $.grep(obj.as_types, function (as_type) {
 				var ast = sfdef_as_namelist[as_type];
 				// type不一致ならそれ以上見ない
-				if (ast.type && e.type != ast.type) {
+				if (ast.type && e.type != ast.type && ast.type !== null) {
 					return false;
 				}
 				// checkを通す
@@ -169,7 +206,7 @@ function schfl_grep_ss(obj, ss, card) {
 	var fsturn = obj.ss_fastskl ? has_fastnum(card) : 0;
 	rst = rst && (obj.ss_maxturn < 0 || obj.ss_maxturn >= ss.turn - fsturn);
 	// 各SS定義についてチェック
-	rst = rst && $.grep(ss.proc, function (e) {
+	var grp_ss = $.grep(ss.proc, function (e) {
 		var grep_rst = true;
 		// 条件SSのそれぞれについて確認
 		if (obj.ss_types && obj.ss_types.length > 0) {
@@ -181,18 +218,13 @@ function schfl_grep_ss(obj, ss, card) {
 				}
 				return false;
 			});
-			// AND/ORによって処理を変える
-			if (obj.ss_search_ao == 0) {
-				// AND
-				grep_rst = grep_rst && (obj.ss_types.length <= 0 || greps.length == obj.ss_types.length);
-			} else {
-				// OR
-				grep_rst = grep_rst && (obj.ss_types.length <= 0 || greps.length > 0);
-			}
+			grep_rst = grep_rst && (obj.ss_types.length <= 0 || greps.length > 0);
 		}
 		// grep result
 		return grep_rst;
-	}).length > 0;
+	});
+	// AND/ORによって処理を変える
+	rst = rst && grp_ss.length >= (obj.ss_search_ao == 0 ? obj.ss_types.length : 1);
 	// return result
 	return rst;
 }
@@ -215,6 +247,7 @@ function schfl_grep_awake(obj, awake) {
 
 // 得られた結果を表示する関数
 function schfl_grepshow(cs) {
+	cs = cs || MatchResult;
 	var div = $("#search_result");
 	var html = "";
 	if (cs.length <= 0) {
@@ -222,8 +255,65 @@ function schfl_grepshow(cs) {
 	} else {
 		for (var i = 0; i < cs.length; i++) {
 			var c = cs[i];
-			html += "<img class='chara' src='" + get_image_url(c.imageno)
-				+ "' title='" + c.name + "' />";
+			var as = c.islegend ? c.as2 : c.as1;
+			var ss = c.islegend ? c.ss2 : c.ss1;
+			var as_h = schfl_genhtml_skill("AS", as);
+			var ss_h = schfl_genhtml_skill("SS", ss, c, true);
+			html +=
+				"<div class='rst_item attr_b" + c.attr[0] + "'><div class='head clearfix'>"+
+				"<p class='c_name'>" + c.name +
+				"</p><p class='subdata'>HP: " + c.hp + " / ATK: " + c.atk + " / Cost: " + c.cost +
+				" / 種族: " + Species[c.species[0]] + "</p></div><div class='body clearfix'>" +
+				"<div class='attr attr_" + c.attr[0] + "' />" +
+				"<div class='attr attr_" + (c.attr[1] >= 0 ? c.attr[1] : c.attr[0]) + "' />" +
+				"<img class='ch_img' src='" + get_image_url(c.imageno) + "' title='" + c.name + "' />" +
+				"<div class='skl_set'>" + as_h + ss_h + "</div></div></div>";
+		}
+	}
+	div.html(html);
+	return;
+}
+
+// AS/SSの表示HTML生成関数
+function schfl_genhtml_skill(disp, skl, c, is_ss) {
+	var skill_t = "";
+	if (!skl) {
+		return "";
+	}
+	if (is_ss) {
+		// SS
+		var f = has_fastnum(c);
+		if (c.islegend) {
+			skill_t += c.ss1.turn + "-" + c.ss2.turn;
+			if (f > 0) {
+				skill_t += " (" + (c.ss1.turn - f) + "-" + (c.ss2.turn - f) + ")";
+			}
+		} else {
+			skill_t += c.ss1.turn;
+			if (f > 0) {
+				skill_t += " (" + (c.ss1.turn - f) + ")";
+			}
+		}
+	}
+	var rst =
+		"<div class='skill_" + disp + (is_ss ? " clearfix" : " ") + "'><p class='desc_" +
+		disp + "'>" + skl.desc + "</p>" +
+		(is_ss ? "<p class='turn_" + disp + "'>" + skill_t + "</p>" : "") + "</div>";
+	return rst;
+		
+}
+
+// iconのみを並べる
+function schfl_grepshow_icon(cs) {
+	cs = cs || MatchResult;
+	var div = $("#search_result");
+	var html = "";
+	if (cs.length <= 0) {
+		html += "該当結果: 0件";
+	} else {
+		for (var i = 0; i < cs.length; i++) {
+			var c = cs[i];
+			html += "<img class='ch_lists' src='" + get_image_url(c.imageno) + "' />";
 		}
 	}
 	div.html(html);
