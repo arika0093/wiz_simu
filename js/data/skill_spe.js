@@ -542,6 +542,128 @@ function ss_latest_copy() {
 	});
 }
 
+
+// ------------------------------------------------------
+// 未実装系
+/**
+ * パネルシャッフルを行う。
+ * (引数なし)
+**/
+function ss_panel_shuffle() {
+	return ss_template({
+		name: "ss_panel_shuffle",
+		type: "panel_change",
+		target: "panel",
+	});
+}
+
+/**
+ * パネル変換を行う。
+ * attr: 変換属性。(ex: [1,0,0,0,0] -> 火属性)
+**/
+function ss_panel_change(attr) {
+	return ss_template({
+		name: "ss_panel_change",
+		type: "panel_change",
+		target: "panel",
+		p1: attr,
+	});
+}
+
+/**
+ * AS発動時間を延長する。
+ * sec: 延長後のAS適用時間。
+**/
+function ss_astime_ext(sec) {
+	return ss_template({
+		name: "ss_astime_ext",
+		type: "panel_change",
+		p1: sec,
+	});
+}
+
+/**
+ * 問題の選択肢を削る。
+ * num: 削る選択肢の数。
+**/
+function ss_answer_narrow(num) {
+	return ss_template({
+		name: "ss_answer_narrow",
+		type: "panel_change",
+		p1: num,
+	});
+}
+
+/**
+ * 問題の解答を見破る。
+ * (引数なし)
+**/
+function ss_answer_foresight() {
+	return ss_template({
+		name: "ss_answer_foresight",
+		type: "panel_change",
+	});
+}
+
+/**
+ * 軽減スキル
+ * attr: 軽減対象属性。(ex: [1,0,0,0,0] -> 火属性)
+ * rate: 軽減割合。(ex. 0.2 -> 20%)
+ * turn: 軽減継続ターン。
+**/
+function ss_attr_guard(attr, rate, turn) {
+	return ss_template({
+		name: "ss_attr_guard",
+		type: "turn_effect",
+		subtype: "attr_guard",
+		target: "ally",
+		p1: attr,
+		p2: rate,
+		p3: turn,
+	});
+}
+
+/**
+ * 全体遅延スキル
+ * turn: 遅延ターン数。
+**/
+function ss_delay_all(turn) {
+	return ss_template({
+		name: "ss_delay_enemy",
+		type: "delay",
+		target: "all",
+		p1: turn,
+	});
+}
+
+/**
+ * 単体遅延スキル
+ * turn: 遅延ターン数。
+**/
+function ss_delay_s(turn) {
+	return ss_template({
+		name: "ss_delay_enemy",
+		type: "delay",
+		target: "single",
+		p1: turn,
+	});
+}
+
+
+/**
+ * 敵単体に無に帰す効果を付与する
+ * turn: 即死効果発動ターン数
+**/
+function ss_death_limit(turn) {
+	return ss_template({
+		name: "ss_death_limit",
+		type: "turn_effect",
+		subtype: "death_limit",
+		target: "all",
+		p1: turn,
+	});
+}
+
 // ------------------------------------------------------
 // デメリット系
 /**

@@ -16344,7 +16344,7 @@ Cards = [{
 		Panel_boost([1,0,0,0,0,],2),
 		Statusup(0,200),
 		Attr_statusup(0,200, [1,0,0,0,0,]),
-		Fastskill(2),
+		Fastskill(1),
 	],
 	as2: {
 		desc: "3チェインで雷属性の敵単体へ特効ダメージ(625%)",
@@ -16352,7 +16352,7 @@ Cards = [{
 	},
 	ss2: {
 		desc: "直前に発動したスペシャルスキルを発動する",
-		turn: 15,
+		turn: 9,
 		proc: [ss_latest_copy()],
 	},
 	Lawake: [
@@ -30862,7 +30862,7 @@ Cards = [{
 	imageno: 8045,
 	hp: 2393,
 	atk: 4027,
-	cost: 999,
+	cost: 42,
 	attr: [1,-1],
 	species: [2],
 	islegend: true,
