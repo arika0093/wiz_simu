@@ -25126,7 +25126,7 @@ Cards = [{
 	ss1: {
 		desc: "自分を犠牲に全員を50%蘇生",
 		turn: 11,
-		proc: [ss_consume_own(1), ss_resurrection([1,1,1,1,1], 0.50)],
+		proc: [ss_resurrection([1,1,1,1,1], 0.50), ss_consume_own(1)],
 	},
 	awakes: [
 		Statusup(600,0),
@@ -25147,7 +25147,7 @@ Cards = [{
 	ss2: {
 		desc: "自分を犠牲に全員を100%蘇生",
 		turn: 12,
-		proc: [ss_consume_own(1), ss_resurrection([1,1,1,1,1], 1)],
+		proc: [ss_resurrection([1,1,1,1,1], 1), ss_consume_own(1)],
 	},
 	Lawake: [
 		NEFTJOD(30),
