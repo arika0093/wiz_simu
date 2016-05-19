@@ -31120,4 +31120,47 @@ Cards = [{
 		Statusup(500,0),
                 Abstate_invalid("ss_sealed"),
 	],
+},{
+	name: "清かなる天雷鬼神 ミライ・カエラム",
+	cardno: 6243,
+	imageno: 8114,
+	hp: 2832,
+	atk: 5412,
+	cost: 41,
+	attr: [2,-1],
+	species: [5],
+	islegend: true,
+	as1: {
+		desc: "3チェインでダメージアップ、亜人の仲間の数だけさらにダメージアップ(340%/380%/420%/460%/500%)",
+		proc: null,
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
+		turn: 10,
+		proc: [ss_delay_all(3)],
+	},
+	awakes: [
+		Statusup(0,300),
+		Statusup(200,0),
+		Fastskill(2),
+		Attr_relief([1,0,0,0,0,],20),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],1),
+		Spec_statusup(400,0, [5,]),
+		Spec_statusup(0,400, [5,]),
+                Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "3チェインでダメージアップ、亜人の仲間の数だけさらにダメージアップ(440%/480%/520%/560%/600%)",
+		proc: null,
+	},
+	ss2: {
+		desc: "<遅延大魔術>敵全体の攻撃ターンを3遅らせ、雷属性のダメージ、3チェインを消費しさらにダメージアップ(150%/250%)",
+		turn: 12,
+		proc: [ss_delay_all(3), ss_damage_all(ss_chain_cost(3, 2.5, 1.5), [2])],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
 }, ];
