@@ -283,8 +283,8 @@ function ss_continue_damage(dmg_r, cont_r, attrs, turn) {
 		type: "damage",
 		subtype: "continue_damage",
 		target: "all",
-		p1: dmg_r + 1,
-		p2: cont_r + 1,
+		p1: dmg_r,
+		p2: cont_r,
 		p3: attrs,
 		p4: turn,
 	});
