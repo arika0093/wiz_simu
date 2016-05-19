@@ -3,29 +3,47 @@
 function pickup_awakes(card, type, l_awakes) {
 	var awakes = [];
 	if (l_awakes) {
-		awakes = $.grep(card.Lawake, function (e) {
+		awakes = $.grep(open_awake_composite(card.Lawake), function (e) {
 			return e.type == type;
 		});
 		// L時発動の潜在結晶の分も足す
 		if (card.crystal && card.crystal.length > 0) {
-			var awakes_cr = $.grep(card.crystal, function (e) {
+			var awakes_cr = $.grep(open_awake_composite(card.crystal), function (e) {
 				return e.type == type && e.is_legend;
 			});
 			awakes = awakes.concat(awakes_cr);
 		}
 	} else {
-		awakes = $.grep(card.awakes, function (e) {
+		awakes = $.grep(open_awake_composite(card.awakes), function (e) {
 			return e.type == type;
 		});
 		// 潜在結晶の分も足す
 		if (card.crystal && card.crystal.length > 0) {
-			var awakes_cr = $.grep(card.crystal, function (e) {
+			var awakes_cr = $.grep(open_awake_composite(card.crystal), function (e) {
 				return e.type == type && !e.is_legend;
 			});
 			awakes = awakes.concat(awakes_cr);
 		}
 	}
 	return awakes;
+}
+
+// 複合潜在能力を展開する
+function open_awake_composite(awakes_t){
+	var awakes2=[]
+	$.each(awakes_t,function(index,val){
+		if (val != undefined){
+			// 複合潜在能力であるならば再帰的に展開する
+			if (val.type=="awake_composite"){
+				awakes2=awakes2.concat(open_awake_composite(val.proc))
+			}
+			// 単体潜在能力であるならばそのまま出力する
+			else{
+				awakes2=awakes2.concat(val)
+			}
+		}
+	});
+	return awakes2
 }
 
 // 潜在能力を味方に反映させる
