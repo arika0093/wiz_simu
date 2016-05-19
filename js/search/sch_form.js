@@ -13,7 +13,7 @@ $(function () {
 function create_new_combobox(adb, adcls, fstitem, fc){
 	var base = $(adb);
 	var adcls = "<select class='" + adcls + " skill_sel' >" +
-		"<option value='-1'>" + fstitem+ "</option></select>";
+		"<option value='-1'>" + fstitem + "</option></select>";
 	base.append(adcls);
 	if (fc) { fc(); }
 }
@@ -22,7 +22,7 @@ function create_new_combobox(adb, adcls, fstitem, fc){
 function when_add_as_type() {
 	var cond = $("#as_schcond");
 	cond.show();
-	sf_sslist_add();
+	sf_aslist_add();
 }
 
 // AS候補にAS一覧を追加

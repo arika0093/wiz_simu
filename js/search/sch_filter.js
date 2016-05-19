@@ -19,6 +19,7 @@ function schfl_create_queryobj() {
 	rst.as_types = schfl_textarr_from_msel(".sch_as_type option:selected");
 	rst.as_name = $("#s_astext").val();
 	rst.as_maxchain = as_mc.length > 0 ? Number(as_mc) : -1;
+	rst.as_ch_cond = Number($("#sch_asc_cond").val());
 	rst.as_search_ao = Number($("#as_schcond").val());
 	// SS
 	var ss_mc = $("#sch_ss_turn").val()
@@ -62,7 +63,12 @@ function schfl_show_result() {
 		rst_cards.sort(function (a, b) {
 			return (a.imageno < b.imageno ? 1 : -1);
 		});
-		schfl_grepshow(rst_cards);
+		// 件数が少ないなら詳細、多いならアイコンのみ表示
+		if (rst_cards.length <= 3) {
+			schfl_grepshow(rst_cards);
+		} else {
+			schfl_grepshow_icon(rst_cards);
+		}
 		MatchResult = rst_cards;
 	});
 }
@@ -163,7 +169,20 @@ function schfl_grep_as(obj, as) {
 	rst = rst && $.grep(arr_as, function (e) {
 		var grep_rst = true;
 		// 発動最大チェイン数チェック
-		grep_rst = grep_rst && (obj.as_maxchain < 0 || e.chain <= obj.as_maxchain);
+		switch (obj.as_ch_cond) {
+			case 0:
+				// 以下
+				grep_rst = grep_rst && (obj.as_maxchain < 0 || e.chain <= obj.as_maxchain);
+				break;
+			case 1:
+				// 以上
+				grep_rst = grep_rst && (obj.as_maxchain < 0 || e.chain >= obj.as_maxchain);
+				break;
+			case 2:
+				// 一致
+				grep_rst = grep_rst && (obj.as_maxchain < 0 || e.chain == obj.as_maxchain);
+				break;
+		}
 		// 条件ASのそれぞれについて確認
 		if (obj.as_types && obj.as_types.length > 0) {
 			var greps = $.grep(obj.as_types, function (as_type) {
@@ -266,11 +285,14 @@ function schfl_grepshow(cs) {
 				" / 種族: " + Species[c.species[0]] + "</p></div><div class='body clearfix'>" +
 				"<div class='attr attr_" + c.attr[0] + "' />" +
 				"<div class='attr attr_" + (c.attr[1] >= 0 ? c.attr[1] : c.attr[0]) + "' />" +
-				"<img class='ch_img' src='" + get_image_url(c.imageno) + "' title='" + c.name + "' />" +
+				"<img class='ch_img' src='" + get_image_url(c.imageno) + "' />" +
 				"<div class='skl_set'>" + as_h + ss_h + "</div></div></div>";
 		}
 	}
 	div.html(html);
+	// item show/hidden
+	$("#show_d").hide();
+	$("#show_i").show();
 	return;
 }
 
@@ -313,9 +335,12 @@ function schfl_grepshow_icon(cs) {
 	} else {
 		for (var i = 0; i < cs.length; i++) {
 			var c = cs[i];
-			html += "<img class='ch_lists' src='" + get_image_url(c.imageno) + "' />";
+			html += "<img class='ch_lists' src='" + get_image_url(c.imageno) + "' title='" + c.name + "' />";
 		}
 	}
 	div.html(html);
+	// item show/hidden
+	$("#show_i").hide();
+	$("#show_d").show();
 	return;
 }

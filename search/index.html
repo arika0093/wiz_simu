@@ -110,11 +110,16 @@
                                 <option value="1">部分一致(OR)検索</option>
                             </select>
                             <button id="sch_as_condplus"
-                                    onclick="create_new_combobox('.as_conds', 'sch_as_type', '《ASの条件/項目を指定》', when_add_as_type)">+</button>
+                                    onclick="create_new_combobox('.as_conds', 'sch_as_type', '《ASの種類を指定》', when_add_as_type)">+</button>
                         </dt>
                         <dd>
                             <input type="text" id="s_astext" placeholder="《AS説明文から検索》" />
-                            <input type="number" title="発動チェイン数の上限を指定することができます。" id="sch_as_chain" placeholder="《発動chain数》" /><br />
+                            <input type="number" id="sch_as_chain" placeholder="《発動chain数》" />
+                            <select id="sch_asc_cond">
+                                <option value="0" selected>以下</option>
+                                <option value="1">以上</option>
+                                <option value="2">一致</option>
+                            </select>
                             <div class="as_conds">
                                 <select class="sch_as_type skill_sel">
                                     <option value="-1">《ASの種類を指定》</option>

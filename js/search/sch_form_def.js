@@ -11,13 +11,13 @@ var sfdef_as_namelist = {
 			return true;
 		},
 	},
-	"連続攻撃": {
+	"連撃": {
 		type: "attack",
 		check: function (e) {
 			return e.atkn > 1;
 		},
 	},
-	"属性特攻": {
+	"属性特効": {
 		type: "attack",
 		check: function (e) {
 			var ea = e.attr;
@@ -29,7 +29,7 @@ var sfdef_as_namelist = {
 			return false;
 		},
 	},
-	"種族特攻": {
+	"種族特効": {
 		type: "attack",
 		check: function (e) {
 			var ea = e.spec;
@@ -55,7 +55,7 @@ var sfdef_as_namelist = {
 			return e.subtype == "enhance";
 		},
 	},
-	"副属性考慮エンハンス": {
+	"複属性考慮エンハンス": {
 		type: "support",
 		check: function (e) {
 			return e.subattr;
@@ -105,13 +105,13 @@ var sfdef_ss_namelist = {
 			return e.p3 >= 2;
 		}
 	},
-	"敵全体に特攻ダメージ": {
+	"敵全体に特効ダメージ": {
 		proc: "ss_damage_all",
 		check: function (e, p) {
 			return e.p1.is_cond && e.p1.name == "special_attr";
 		}
 	},
-	"敵単体に特攻ダメージ": {
+	"敵単体に特効ダメージ": {
 		proc: "ss_damage_s",
 		check: function (e, p) {
 			return e.p1.is_cond && e.p1.name == "special_attr";
@@ -207,7 +207,7 @@ var sfdef_aw_namelist = {
 			return true;
 		}
 	},
-	"属性ステアップ/副属性でさらにアップ": {
+	"属性ステアップ/複属性でさらにアップ": {
 		type: "status_up",
 		check: function (e) {
 			return e.sub_attr;

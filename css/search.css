@@ -36,7 +36,6 @@ select.skill_sel{
 	width: 100%;
 	max-width: 450px;
 }
-
 select#ss_cond{
 	display: none;
 }
