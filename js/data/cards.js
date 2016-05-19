@@ -26615,7 +26615,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.50, 1.0, [0,1,0,0,0], [0,0,1,0,0], 4),
 	},
 	ss1: {
-		desc: "2ターンの間、チェインを保護。3チェインを消費し、さらに3ターン加護",
+		desc: "<チェインガード>2ターンの間、チェインを保護する、3チェインを消費しさらに3ターンの間保護する",
 		turn: 5,
 		proc: [ss_chain_cost_skill(3, ss_chain_protect(5), ss_chain_protect(2))],
 	},
@@ -26636,7 +26636,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.80, 1.3, [0,1,0,0,0], [0,0,1,0,0], 4),
 	},
 	ss2: {
-		desc: "5ターンの間、チェインを保護。3チェインを消費し、さらに3ターン加護",
+		desc: "<チェインガード>5ターンの間、チェインを保護する、3チェインを消費しさらに3ターンの間保護する",
 		turn: 8,
 		proc: [ss_chain_cost_skill(3, ss_chain_protect(8), ss_chain_protect(5))],
 	},
