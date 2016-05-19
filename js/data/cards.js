@@ -8402,6 +8402,7 @@ Cards = [{
 	cost: 35,
 	attr: [1, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Statusup(0, 200),
 		Statusup(200, 0),
@@ -9061,6 +9062,7 @@ Cards = [{
 	cost: 25,
 	attr: [1, -1],
 	species: [0],
+	disable: true,
 	awakes: [
 		Statusup(0, 200),
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
@@ -9191,6 +9193,7 @@ Cards = [{
 	cost: 25,
 	attr: [1, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Statusup(200, 0),
 		Fastskill(1),
@@ -11694,6 +11697,7 @@ Cards = [{
 	cost: 40,
 	attr: [2, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Statusup(0, 200),
 		Statusup(200, 0),
@@ -13050,6 +13054,7 @@ Cards = [{
 	cost: 29,
 	attr: [2, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Statusup(0, 200),
@@ -13357,6 +13362,7 @@ Cards = [{
 	cost: 17,
 	attr: [2, -1],
 	species: [5],
+	disable: true,
 	awakes: [
 		Awake_noeffect("経験値取得量アップ", 1),
 		Costdown(2),
