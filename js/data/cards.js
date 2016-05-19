@@ -30696,7 +30696,7 @@ Cards = [{
 		desc: "<斬撃大魔術>8ターン溜めた後、スキル反射を無視し、雷属性の20連撃(3000%)、さらに連撃数分チェインプラス",
 		turn: 8,
 		charged: 8,
-		proc: [ss_damage_s(30, [2], 20, true), ss_addchain(20)],
+		proc: [ss_damage_s(30, [2], 20, true), ss_addchain(20), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -30718,7 +30718,7 @@ Cards = [{
 		desc: "<斬撃大魔術>8ターン溜めた後、スキル反射を無視し、雷属性の20連撃(3000%)、さらに連撃数分チェインプラス",
 		turn: 8,
 		charged: 8,
-		proc: [ss_damage_s(30, [2], 20, true), ss_addchain(20)],
+		proc: [ss_damage_s(30, [2], 20, true), ss_addchain(20), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,0,1,0,0,]),
