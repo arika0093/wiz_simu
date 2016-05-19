@@ -32,7 +32,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火・雷属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([1,0,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -46,7 +46,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・雷属性化し、ダメージ25％軽減の効果を付与",
 		turn: 8,
-		proc: null
+		proc: [ss_panel_change([1,0,1,0,0])]
 	},
 }, {
 	name: "浄き炎神の剣 アイリス・ランティア",
@@ -134,7 +134,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・雷属性化し、チェインがプラス1の効果を付与",
 		turn: 5,
-		proc: [panel_chainplus(1)],
+		proc: [ss_panel_change([1,0,1,0,0]), panel_chainplus(1)],
 	},
 }, {
 	name: "鎮まぬ魂の救い手 アカリ・ヨトバリ",
@@ -208,7 +208,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをシャッフル",
 		turn: 3,
-		proc: null
+		proc: [ss_panel_shuffle()]
 	},
 	islegend: true,
 	Lawake: [
@@ -222,7 +222,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火属性化し、チェインがプラス1の効果を付与",
 		turn: 5,
-		proc: [panel_chainplus(1)],
+		proc: [ss_panel_change([1,0,0,0,0]), panel_chainplus(1)],
 	},
 }, {
 	name: "炎彗騎士 イグニス・ヴォルガノン",
@@ -471,7 +471,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを1遅らせる",
 		turn: 5,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -868,7 +868,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([1,0,0,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -882,7 +882,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火属性化し、攻撃力アップの効果を付与(+20％)",
 		turn: 8,
-		proc: [panel_attackup(0.20)],
+		proc: [ss_panel_change([1,0,0,0,0]), panel_attackup(0.20)],
 	},
 }, {
 	name: "奪魂の怪炎 カーナ・リリ",
@@ -912,7 +912,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する",
 		turn: 5,
-		proc: null
+		proc: [ss_astime_ext(10)]
 	},
 	islegend: true,
 	Lawake: [
@@ -926,7 +926,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: null
+		proc: [ss_answer_foresight()]
 	},
 }, {
 	name: "炎竜の進撃者 キャナル・エアガイツ",
@@ -1305,7 +1305,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -1348,7 +1348,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する",
 		turn: 5,
-		proc: null
+		proc: [ss_astime_ext(10)]
 	},
 	islegend: true,
 	Lawake: [
@@ -1362,7 +1362,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、アンサースキル発動時間を15秒延長する",
 		turn: 7,
-		proc: null
+		proc: [ss_astime_ext(15)]
 	},
 }, {
 	name: "陽光の綺麗石 サティサ・テオトリ",
@@ -1392,7 +1392,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([1,0,0,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -1406,7 +1406,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火属性化し、攻撃力アップの効果を付与(30％)",
 		turn: 7,
-		proc: [panel_attackup(0.3)],
+		proc: [ss_panel_change([1,0,0,0,0]), panel_attackup(0.3)],
 	},
 }, {
 	name: "絶門魔道の終端 シド・ハーロック",
@@ -1654,7 +1654,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 9,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -1785,7 +1785,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([1,0,0,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -1799,7 +1799,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火属性化し、攻撃力アップの効果を付与(+30％)",
 		turn: 7,
-		proc: [panel_attackup(0.3)],
+		proc: [ss_panel_change([1,0,0,0,0]), panel_attackup(0.3)],
 	},
 }, {
 	name: "時を呼ぶ ステイシー・マーキュリー",
@@ -1828,7 +1828,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([1,0,0,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -1842,7 +1842,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火属性化し、チェインがプラス2の効果を付与",
 		turn: 7,
-		proc: [panel_chainplus(2)],
+		proc: [ss_panel_change([1,0,0,0,0]), panel_chainplus(2)],
 	},
 }, {
 	name: "灼角の破壊者 ズローヴァ・ヤガダ",
@@ -2354,7 +2354,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -2368,7 +2368,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "蓋天の神罰者 ラト・ファルネーゼ",
@@ -2442,7 +2442,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -2486,7 +2486,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをシャッフル",
 		turn: 3,
-		proc: null
+		proc: [ss_panel_shuffle()]
 	},
 	islegend: true,
 	Lawake: [
@@ -2500,7 +2500,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火属性化し、チェインがプラス1の効果を付与",
 		turn: 5,
-		proc: [panel_chainplus(1)],
+		proc: [ss_panel_change([1,0,0,0,0]), panel_chainplus(1)],
 	},
 }, {
 	name: "夏の日の涼風 リンカ・ワイアット",
@@ -2530,7 +2530,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 6,
-		proc: null
+		proc: [ss_panel_change([1,1,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -2544,7 +2544,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し、チェインがプラス1の効果を付与",
 		turn: 8,
-		proc: [panel_chainplus(1)],
+		proc: [ss_panel_change([1,1,1,0,0]), panel_chainplus(1)],
 	},
 }, {
 	name: "胸焦がす乙女心 リンカ・ワイアット",
@@ -2706,7 +2706,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を5秒延長する",
 		turn: 3,
-		proc: null
+		proc: [ss_astime_ext(5)]
 	},
 	islegend: true,
 	Lawake: [
@@ -2720,7 +2720,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: null
+		proc: [ss_answer_foresight()]
 	},
 }, {
 	name: "改新の大華焔 レナ・イラプション",
@@ -2882,7 +2882,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを1遅らせる",
 		turn: 7,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -2970,7 +2970,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -2984,7 +2984,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを2遅らせ、20チェインで更に2遅らせる",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "シェアハピネスな魔法 リコ＆グリ",
@@ -3058,7 +3058,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火・水属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([1,1,0,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -3072,7 +3072,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・水属性化し、ダメージ25％軽減の効果を付与",
 		turn: 7,
-		proc: null
+		proc: [ss_panel_change([1,1,0,0,0])]
 	},
 }, {
 	name: "収穫者 ウシュガ＆ウィアノーヴァ",
@@ -3146,7 +3146,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性のダメージを25％軽減する",
 		turn: 5,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -3161,7 +3161,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性のダメージを50％軽減する",
 		turn: 9,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "迸る竜炎の朱 キャナル・エアガイツ",
@@ -3191,7 +3191,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性のダメージを25％軽減する",
 		turn: 5,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -3205,7 +3205,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性のダメージを50％軽減する",
 		turn: 9,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "燃盛る不尽焔嶺 スオウ・カグツチ",
@@ -3279,7 +3279,7 @@ Cards = [{
 	ss1: {
 		desc: "2ターン火・水属性のダメージを70％軽減する",
 		turn: 9,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -3293,7 +3293,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン火・水属性のダメージを70％軽減する",
 		turn: 12,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "時海の航海者 ダム・リフリス",
@@ -3322,7 +3322,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火・水属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([1,1,0,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -3336,7 +3336,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 7,
-		proc: null
+		proc: [ss_panel_change([1,1,1,0,0])]
 	},
 }, {
 	name: "野生の獣撃 ドゥンバ・バ",
@@ -3409,7 +3409,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体のガードを解除する",
 		turn: 6,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -3423,7 +3423,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体のガード＆ダメージブロックを解除する",
 		turn: 8,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "鉄剣開票係 ノア・アームストロング",
@@ -3453,7 +3453,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体のガード＆ダメージブロックを解除する",
 		turn: 9,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -3586,7 +3586,7 @@ Cards = [{
 	ss1: {
 		desc: "5ターン雷属性ダメージを25％軽減する",
 		turn: 7,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -3599,7 +3599,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターン水・雷属性ダメージを25％軽減する",
 		turn: 9,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "真・猫族勇者 ルディ・レッドソル",
@@ -3628,7 +3628,7 @@ Cards = [{
 	ss1: {
 		desc: "2ターン水・雷属性のダメージを50％軽減する",
 		turn: 7,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -3642,7 +3642,7 @@ Cards = [{
 	ss2: {
 		desc: "2ターン水・雷属性のダメージを75％軽減する",
 		turn: 9,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "炯眼冷徹 ルートヴィッヒ・ロメオ",
@@ -3716,7 +3716,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルにダメージ25％軽減の効果を付与",
 		turn: 6,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -3730,7 +3730,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルにダメージ50％軽減の効果を付与",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "大人だけの秘密の魅力 チーザ",
@@ -4376,7 +4376,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを2遅らせる。HP20％以下でさらに1遅らせる。",
 		turn: 8,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -4390,7 +4390,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを3遅らせる。HP20％以下でさらに1遅らせる。",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "AbCd-Λλ:《甘く朽ち果てる闇 ニレイヌ》",
@@ -4420,7 +4420,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性のダメージを35％軽減する。HP20％以下でさらに3ターン軽減する。",
 		turn: 6,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -4434,7 +4434,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性のダメージを50％軽減する。HP20％以下でさらに3ターン軽減する。",
 		turn: 9,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "ぷるぷるの王 ペンプッチン",
@@ -4552,7 +4552,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火属性化",
 		turn: 6,
-		proc: null
+		proc: [ss_panel_change([1,0,0,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -4566,7 +4566,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火属性化し、回復の効果を付与(8％)",
 		turn: 8,
-		proc: [panel_healally(0.08)],
+		proc: [ss_panel_change([1,0,0,0,0]), panel_healally(0.08)],
 	},
 }, {
 	name: "太陽ノ現身 ナユタ・ヒノカミ",
@@ -4640,7 +4640,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 4,
-		proc: null
+		proc: [ss_panel_change([1,1,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -4654,7 +4654,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し、ダメージ25％軽減の効果を付与",
 		turn: 6,
-		proc: null
+		proc: [ss_panel_change([1,1,1,0,0])]
 	},
 }, {
 	name: "煌きの艶麗華月 ユウギリ・アメノ",
@@ -4683,7 +4683,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([1,0,0,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -4697,7 +4697,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火属性化し、回復の効果を付与(8％)",
 		turn: 8,
-		proc: [panel_healally(0.08)],
+		proc: [ss_panel_change([1,0,0,0,0]), panel_healally(0.08)],
 	},
 }, {
 	name: "魔巧技匠 ユニコ・ランドハイア",
@@ -4727,7 +4727,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([1,0,0,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -4741,7 +4741,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・雷属性化",
 		turn: 7,
-		proc: null
+		proc: [ss_panel_change([1,0,1,0,0])]
 	},
 }, {
 	name: "闇の中で微笑む邪神 ルルベル",
@@ -4771,7 +4771,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを1遅らせる",
 		turn: 5,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -4785,7 +4785,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを2遅らせ、20チェインで更に2遅らせる",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "想いを翼に乗せて 初音ミク",
@@ -4859,7 +4859,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを1遅らせる",
 		turn: 5,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -4873,7 +4873,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "飛天の神獣皇 ラオ・イーシェン",
@@ -5078,7 +5078,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火・闇属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([1,0,0,0,1])]
 	},
 	islegend: true,
 	Lawake: [
@@ -5092,7 +5092,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・闇属性化し、回復の効果を付与(10％)",
 		turn: 8,
-		proc: [panel_healally(0.10)],
+		proc: [ss_panel_change([1,0,0,0,1]), panel_healally(0.10)],
 	},
 }, {
 	name: "儚き闇の夜に 初音ミク",
@@ -5299,7 +5299,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火・闇属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([1,0,0,0,1])]
 	},
 	islegend: true,
 	Lawake: [
@@ -5314,7 +5314,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・闇属性化し、攻撃力アップかダメージ25％軽減の効果を付与",
 		turn: 7,
-		proc: [panel_attackup(0.4)],
+		proc: [ss_panel_change([1,0,0,0,1]), panel_attackup(0.4)],
 	},
 }, {
 	// -------------------------
@@ -5391,7 +5391,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性のダメージを25％軽減する",
 		turn: 5,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -5405,7 +5405,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性のダメージを50％軽減する",
 		turn: 9,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "虹色の恋模様 アーシア・ベネット",
@@ -5435,7 +5435,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する",
 		turn: 5,
-		proc: null
+		proc: [ss_astime_ext(10)]
 	},
 	islegend: true,
 	Lawake: [
@@ -5449,7 +5449,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: null
+		proc: [ss_answer_foresight()]
 	},
 }, {
 	name: "神話に記された英雄 アスカ・イズモ",
@@ -5479,7 +5479,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,1,0,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -5493,7 +5493,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水属性化し、攻撃力アップの効果を付与(+20％)",
 		turn: 8,
-		proc: [panel_attackup(0.2)],
+		proc: [ss_panel_change([0,1,0,0,0]), panel_attackup(0.2)],
 	},
 }, {
 	name: "僕を見つめる瞳 アーシア・ベネット",
@@ -5523,7 +5523,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを1遅らせる",
 		turn: 6,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -5537,7 +5537,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを2遅らせる",
 		turn: 7,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "撃砕の鉄腕 アトヤ＆リベルタス",
@@ -5567,7 +5567,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルにダメージ25％軽減の効果を付与",
 		turn: 6,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -5581,7 +5581,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルにダメージ50％軽減の効果を付与",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "輝ける星霜の剣 アネモネ・フラル",
@@ -5787,7 +5787,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,1,0,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -5801,7 +5801,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水属性化し、チェインがプラス1の効果を付与",
 		turn: 7,
-		proc: [panel_chainplus(1)],
+		proc: [ss_panel_change([0,1,0,0,0]), panel_chainplus(1)],
 	},
 }, {
 	name: "激烈大魔法使い アリエッタ・トワ",
@@ -6270,7 +6270,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -6284,7 +6284,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "時思う司神 イレーナ・フリエル",
@@ -6313,7 +6313,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,1,0,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -6327,7 +6327,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水属性化し、回復の効果を付与(10％)",
 		turn: 7,
-		proc: [panel_healally(0.10)],
+		proc: [ss_panel_change([0,1,0,0,0]), panel_healally(0.10)],
 	},
 }, {
 	name: "双つ刃の潜行者 エマ・ユーイング",
@@ -6401,7 +6401,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを1遅らせる",
 		turn: 5,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -6454,7 +6454,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "術士の仲間の数だけダメージアップ/100+60％×種族数",
-		proc: null
+		proc: [null]
 	},
 	ss2: {
 		desc: "(必要正解数 10ターン)",
@@ -6533,7 +6533,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火・水属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([1,1,0,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -6547,7 +6547,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 7,
-		proc: null
+		proc: [ss_panel_change([1,1,1,0,0])]
 	},
 }, {
 	name: "式紙舞う花風 キリエ・ユウテンジ",
@@ -6576,7 +6576,7 @@ Cards = [{
 	ss1: {
 		desc: "水・雷属性ダメージを2ターンの間50％軽減する",
 		turn: 7,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -6590,7 +6590,7 @@ Cards = [{
 	ss2: {
 		desc: "水・雷属性ダメージを3ターンの間50％軽減する",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "蒼世界の双牙 クラヴィル・スティ",
@@ -6706,7 +6706,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水属性化",
 		turn: 4,
-		proc: null
+		proc: [ss_panel_change([0,1,0,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -6720,7 +6720,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水・闇属性化し、くじを引く",
 		turn: 10,
-		proc: [panel_attackup(0.10), panel_chainplus(1), panel_healally(0.01), panel_attackup(10.0), panel_chainplus(50), panel_healally(1)],
+		proc: [ss_panel_change([0,1,0,0,1]), panel_attackup(0.10), panel_chainplus(1), panel_healally(0.01), panel_attackup(10.0), panel_chainplus(50), panel_healally(1)],
 	},
 }, {
 	name: "金魚を眺む夏の涼 サーヤ・スズカゼ",
@@ -6794,7 +6794,7 @@ Cards = [{
 	ss1: {
 		desc: "味方全体のMAXHPの50％を使い、解答選択肢を2つ削る",
 		turn: 1,
-		proc: [ss_consume_all(0.5)],
+		proc: [ss_answer_narrow(2), ss_consume_all(0.5)],
 	},
 	islegend: true,
 	Lawake: [
@@ -6808,7 +6808,7 @@ Cards = [{
 	ss2: {
 		desc: "味方全体のMAXHPの50％を使い、解答を見破る",
 		turn: 2,
-		proc: [ss_consume_all(0.5)],
+		proc: [ss_answer_foresight(), ss_consume_all(0.5)],
 	},
 }, {
 	name: "滅龍冥刃 シャドウ・サーヴァント",
@@ -7115,7 +7115,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "真の大妖怪 殺生丸",
@@ -7189,7 +7189,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -7233,7 +7233,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水＆雷属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,1,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -7247,7 +7247,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水＆雷属性化し、攻撃力アップの効果を付与(+20％)",
 		turn: 8,
-		proc: [panel_attackup(0.20)],
+		proc: [ss_panel_change([0,1,1,0,0]), panel_attackup(0.20)],
 	},
 }, {
 	name: "インペリアル・ゾディアーク",
@@ -7321,7 +7321,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する",
 		turn: 5,
-		proc: null
+		proc: [ss_astime_ext(10)]
 	},
 	islegend: true,
 	Lawake: [
@@ -7335,7 +7335,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、アンサースキル発動時間を15秒延長する",
 		turn: 7,
-		proc: null
+		proc: [ss_astime_ext(15)]
 	},
 }, {
 	name: "空飛ぶ大魔道 ソフィ・ハーネット",
@@ -7365,7 +7365,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをシャッフル",
 		turn: 3,
-		proc: null
+		proc: [ss_panel_shuffle()]
 	},
 	islegend: true,
 	Lawake: [
@@ -7453,7 +7453,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水・雷属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,1,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -7467,7 +7467,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し、回復の効果を付与(5％)",
 		turn: 8,
-		proc: [panel_healally(0.05)],
+		proc: [ss_panel_change([1,1,1,0,0]), panel_healally(0.05)],
 	},
 }, {
 	name: "混沌を生む者 ダンケル・アダムス",
@@ -7585,7 +7585,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する",
 		turn: 6,
-		proc: null
+		proc: [ss_astime_ext(10)]
 	},
 	islegend: true,
 	Lawake: [
@@ -7599,7 +7599,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、アンサースキル発動時間を15秒延長する",
 		turn: 8,
-		proc: null
+		proc: [ss_astime_ext(15)]
 	},
 }, {
 	name: "涙色の絶大魔法 チカ・ストロベリ",
@@ -7629,7 +7629,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,1,0,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -7643,7 +7643,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水属性化し、チェインがプラス2の効果を付与",
 		turn: 7,
-		proc: [panel_chainplus(2)],
+		proc: [ss_panel_change([0,1,0,0,0]), panel_chainplus(2)],
 	},
 }, {
 	name: "乱れ咲きの銀吹雪 ツバキ＆ハヅキ",
@@ -7716,7 +7716,7 @@ Cards = [{
 	ss1: {
 		desc: "2ターン火・水属性のダメージを50％軽減する",
 		turn: 7,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -7730,7 +7730,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン火・水属性のダメージを50％軽減する",
 		turn: 9,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "魅惑と銀盤の明星 ティファ・テーナ",
@@ -7760,7 +7760,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削る",
 		turn: 3,
-		proc: null
+		proc: [ss_answer_narrow(2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -7774,7 +7774,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: null
+		proc: [ss_answer_foresight()]
 	},
 }, {
 	name: "託翼の守護聖剣 テオドール・ザザ",
@@ -7848,7 +7848,7 @@ Cards = [{
 	ss1: {
 		desc: "水・雷属性ダメージを50％軽減(継続：2ターン)",
 		turn: 8,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -7862,7 +7862,7 @@ Cards = [{
 	ss2: {
 		desc: "水・雷属性ダメージを75％軽減(継続：2ターン)",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "天郷の輝光 ペガサスロード",
@@ -7892,7 +7892,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水・雷属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,1,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -7906,7 +7906,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 7,
-		proc: null
+		proc: [ss_panel_change([1,1,1,0,0])]
 	},
 }, {
 	name: "嗤う地獄姫 ニル・メルフェゴール",
@@ -8112,7 +8112,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水・雷属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,1,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -8126,7 +8126,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 7,
-		proc: null
+		proc: [ss_panel_change([1,1,1,0,0])]
 	},
 }, {
 	name: "氷をつたう夏の滴 ピノ・マリアンヌ",
@@ -8156,7 +8156,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水・雷属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,1,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -8170,7 +8170,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し、回復の効果を付与(6％)",
 		turn: 7,
-		proc: [panel_healally(0.08)],
+		proc: [ss_panel_change([1,1,1,0,0]), panel_healally(0.08)],
 	},
 }, {
 	name: "怜悧の氷牙 ビルフォード・ロラン",
@@ -8200,7 +8200,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削る",
 		turn: 3,
-		proc: null
+		proc: [ss_answer_narrow(2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -8214,7 +8214,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: null
+		proc: [ss_answer_foresight()]
 	},
 }, {
 	name: "銀色に躍る フィリー・ハイウインド",
@@ -8421,7 +8421,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水属性化",
 		turn: 6,
-		proc: null
+		proc: [ss_panel_change([0,1,0,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -8435,7 +8435,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水属性化し、回復の効果を付与(8％)",
 		turn: 8,
-		proc: [panel_healally(0.08)],
+		proc: [ss_panel_change([0,1,0,0,0]), panel_healally(0.08)],
 	},
 }, {
 	name: "超ふんわりお嬢様 牧場しぼり",
@@ -8597,7 +8597,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -8611,7 +8611,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "蒼星紋章士 メリエル・エクリプス",
@@ -8641,7 +8641,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水・雷属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,1,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -8655,7 +8655,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 7,
-		proc: null
+		proc: [ss_panel_change([1,1,1,0,0])]
 	},
 }, {
 	name: "桜媛と巫女 ヤチヨ＆インフローレ",
@@ -8684,7 +8684,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -8698,7 +8698,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "万物の龍神姫 ヤヨイ・クシナダ",
@@ -8905,7 +8905,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをシャッフル",
 		turn: 3,
-		proc: null
+		proc: [ss_panel_shuffle()]
 	},
 	islegend: true,
 	Lawake: [
@@ -8919,7 +8919,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水属性化し、チェインがプラス1の効果を付与",
 		turn: 5,
-		proc: [panel_chainplus(1)],
+		proc: [ss_panel_change([0,1,0,0,0]), panel_chainplus(1)],
 	},
 }, {
 	name: "氷雨舞う碧光 リクシス・トラオム",
@@ -8949,7 +8949,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削る",
 		turn: 3,
-		proc: null
+		proc: [ss_answer_narrow(2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -8963,7 +8963,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: null
+		proc: [ss_answer_foresight()]
 	},
 }, {
 	name: "墜月咆吼 リュコス・ヴォーダン",
@@ -9080,7 +9080,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン水属性のダメージを25％軽減する",
 		turn: 8,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -9094,7 +9094,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン水属性のダメージを50％軽減する",
 		turn: 12,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "凛眼戦勝の女帝 ルドヴィカ・ロア",
@@ -9168,7 +9168,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火・水属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([1,1,0,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -9182,7 +9182,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 7,
-		proc: null
+		proc: [ss_panel_change([1,1,1,0,0])]
 	},
 }, {
 	name: "妖精巫姫 ロレッタ・ミラージュ",
@@ -9562,7 +9562,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水＆火属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([1,1,0,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -9576,7 +9576,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水＆火属性化し、チェインがプラス1の効果を付与",
 		turn: 9,
-		proc: [panel_chainplus(1)],
+		proc: [ss_panel_change([1,1,0,0,0]), panel_chainplus(1)],
 	},
 }, {
 	name: "無差別格闘早乙女流 早乙女乱馬",
@@ -9957,7 +9957,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水・雷属性化",
 		turn: 3,
-		proc: null
+		proc: [ss_panel_change([0,1,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -9971,7 +9971,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水・雷属性化し、チェインがプラス1の効果を付与",
 		turn: 5,
-		proc: [panel_chainplus(1)],
+		proc: [ss_panel_change([0,1,1,0,0]), panel_chainplus(1)],
 	},
 }, {
 	name: "歌声よ届け、宇宙の果てに 初音ミク",
@@ -10089,7 +10089,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを1遅らせる",
 		turn: 5,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -10148,7 +10148,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "AbCd-Z:《闃寂の地平 カルム》",
@@ -10178,7 +10178,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを2遅らせる。HP20％以下でさらに1遅らせる。",
 		turn: 8,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -10192,7 +10192,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを3遅らせる。HP20％以下でさらに1遅らせる。",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "AbCd-Σζ:《滾ることなき血潮 カルム》",
@@ -10222,7 +10222,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水・光属性化",
 		turn: 3,
-		proc: null
+		proc: [ss_panel_change([0,1,0,1,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -10236,7 +10236,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水・光属性化し、ダメージ25％軽減の効果を付与。HP20％以下でさらにダメージ35％軽減の効果を付与",
 		turn: 6,
-		proc: null
+		proc: [ss_panel_change([0,1,0,1,0])]
 	},
 }, {
 	name: "AbCd-Ψ:《闇照す舞踏 ニティア》",
@@ -10398,7 +10398,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水・光属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,1,0,1,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -10412,7 +10412,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水・光属性化し、攻撃力アップの効果を付与(+30％)",
 		turn: 8,
-		proc: [panel_attackup(0.3)],
+		proc: [ss_panel_change([0,1,0,1,0]), panel_attackup(0.3)],
 	},
 }, {
 	name: "白銀の翼が舞い降りる 初音ミク",
@@ -10796,7 +10796,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 6,
-		proc: null
+		proc: [ss_panel_change([1,1,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -10810,7 +10810,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し、攻撃力アップの効果を付与(+20％)",
 		turn: 8,
-		proc: [panel_attackup(0.2)]
+		proc: [ss_panel_change([1,1,1,0,0]), panel_attackup(0.2)]
 	},
 }, {
 	name: "傷だらけの銃爪 スミオ＆トキオ",
@@ -11103,7 +11103,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを雷属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,0,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -11117,7 +11117,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷属性化し、チェインがプラス2の効果を付与",
 		turn: 7,
-		proc: [panel_chainplus(2)],
+		proc: [ss_panel_change([0,0,1,0,0]), panel_chainplus(2)],
 	},
 }, {
 	name: "時の邂逅 アリス・スチュアート",
@@ -11155,7 +11155,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "雷属性の味方の攻撃力をアップ、神族と術士はさらにアップ(通常：+30％ / 神族・術士：+60％)",
-		proc: null
+		proc: [null]
 	},
 	ss2: {
 		desc: "味方全体のHPを完全回復し、状態異常を回復する",
@@ -11189,7 +11189,7 @@ Cards = [{
 	ss1: {
 		desc: "2ターン火属性ダメージを75％軽減する",
 		turn: 5,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -11203,7 +11203,7 @@ Cards = [{
 	ss2: {
 		desc: "2ターン火属性ダメージを100％軽減する",
 		turn: 8,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "聖樹の守護霊弓 アルティミシア",
@@ -11233,7 +11233,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火＆雷属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([1,0,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -11247,7 +11247,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 7,
-		proc: null
+		proc: [ss_panel_change([1,1,1,0,0])]
 	},
 }, {
 	name: "電脳☆エンジェル アン・D・ロイド",
@@ -11276,7 +11276,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをシャッフル",
 		turn: 3,
-		proc: null
+		proc: [ss_panel_shuffle()]
 	},
 	islegend: true,
 	Lawake: [
@@ -11290,7 +11290,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷属性化",
 		turn: 7,
-		proc: null
+		proc: [ss_panel_change([0,0,1,0,0])]
 	},
 }, {
 	name: "大志を貫く巨剣 アンジュ・エモニエ",
@@ -11320,7 +11320,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを雷属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,0,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -11334,7 +11334,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷属性化し、攻撃力アップの効果を付与(+30％)",
 		turn: 8,
-		proc: [panel_attackup(0.30)],
+		proc: [ss_panel_change([0,0,1,0,0]), panel_attackup(0.30)],
 	},
 }, {
 	name: "永劫に謳う歓びの歌 アンジェリカ",
@@ -11364,7 +11364,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 6,
-		proc: null
+		proc: [ss_panel_change([1,1,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -11378,7 +11378,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し、回復の効果を付与(5％)",
 		turn: 7,
-		proc: [panel_healally(0.05)],
+		proc: [ss_panel_change([1,1,1,0,0]), panel_healally(0.05)],
 	},
 }, {
 	name: "真紅の降魔剣 イザーク・セラフィム",
@@ -11540,7 +11540,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをシャッフル",
 		turn: 3,
-		proc: null
+		proc: [ss_panel_shuffle()]
 	},
 	islegend: true,
 	Lawake: [
@@ -11554,7 +11554,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷属性化し、攻撃力アップの効果を付与(+30％)",
 		turn: 7,
-		proc: [panel_attackup(0.3)],
+		proc: [ss_panel_change([0,0,1,0,0]), panel_attackup(0.3)],
 	},
 }, {
 	name: "不滅への方程式 ヴィラム・オルゲン",
@@ -11584,7 +11584,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを1遅らせる",
 		turn: 5,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -11628,7 +11628,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火＆雷属性化",
 		turn: 6,
-		proc: null
+		proc: [ss_panel_change([1,0,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -11642,7 +11642,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 8,
-		proc: null
+		proc: [ss_panel_change([1,1,1,0,0])]
 	},
 }, {
 	name: "超宇宙究極神輿 オオミコシガミ",
@@ -11672,7 +11672,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを雷属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,0,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -11686,7 +11686,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷属性化し、くじを引く",
 		turn: 7,
-		proc: null
+		proc: [ss_panel_change([0,0,1,0,0])]
 	},
 }, {
 	name: "虹光悠風 オルネ・タンペート",
@@ -11843,7 +11843,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン火属性ダメージを75％軽減する",
 		turn: 5,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -11857,7 +11857,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン火属性ダメージを100％軽減する",
 		turn: 8,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "願いの届け人 カプレイ・シュシュ",
@@ -11887,7 +11887,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを雷属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,0,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -11901,7 +11901,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷属性化し、ダメージ25％軽減の効果を付与",
 		turn: 7,
-		proc: null
+		proc: [ss_panel_change([0,0,1,0,0])]
 	},
 }, {
 	name: "世界のために闘う漢 GABANARIO",
@@ -12107,7 +12107,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを雷属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,0,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -12121,7 +12121,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷属性化し、攻撃力アップの効果を付与(+20％)",
 		turn: 8,
-		proc: [panel_attackup(0.20)],
+		proc: [ss_panel_change([0,0,1,0,0]), panel_attackup(0.20)],
 	},
 }, {
 	name: "雷刃翔星 サイラス・レイン",
@@ -12151,7 +12151,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水・雷属性化",
 		turn: 4,
-		proc: null
+		proc: [ss_panel_change([0,1,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -12165,7 +12165,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水・雷属性化し、チェインがプラス1の効果を付与",
 		turn: 5,
-		proc: [panel_chainplus(1)],
+		proc: [ss_panel_change([0,1,1,0,0]), panel_chainplus(1)],
 	},
 }, {
 	name: "魂を刈り取る廃堕魔神 ザラジュラム",
@@ -12239,7 +12239,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをシャッフル",
 		turn: 3,
-		proc: null
+		proc: [ss_panel_shuffle()]
 	},
 	islegend: true,
 	Lawake: [
@@ -12283,7 +12283,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する",
 		turn: 5,
-		proc: null
+		proc: [ss_astime_ext(10)]
 	},
 	islegend: true,
 	Lawake: [
@@ -12297,7 +12297,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、アンサースキル発動時間を15秒延長する",
 		turn: 7,
-		proc: null
+		proc: [ss_astime_ext(15)]
 	},
 }, {
 	name: "灼けつく大地の帝王 ジン・サイード",
@@ -12327,7 +12327,7 @@ Cards = [{
 	ss1: {
 		desc: "火・雷属性ダメージを2ターンの間50％軽減する",
 		turn: 7,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -12341,7 +12341,7 @@ Cards = [{
 	ss2: {
 		desc: "火・雷属性ダメージを3ターンの間50％軽減する",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "聖光舞姫 シンシア・スターライト",
@@ -12371,7 +12371,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを雷属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,0,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -12385,7 +12385,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷属性化し、回復の効果を付与(8％)",
 		turn: 8,
-		proc: [panel_healally(0.08)],
+		proc: [ss_panel_change([0,0,1,0,0]), panel_healally(0.08)],
 	},
 }, {
 	name: "悠遠の星間を繋ぐ ヒカリ・スフィア",
@@ -12415,7 +12415,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを雷属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,0,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -12429,7 +12429,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷属性化し、チェインプラス2の効果を付与",
 		turn: 7,
-		proc: [panel_chainplus(2)],
+		proc: [ss_panel_change([0,0,1,0,0]), panel_chainplus(2)],
 	},
 }, {
 	name: "機神の操者 スミオ＆エクスマキナ",
@@ -12502,7 +12502,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 6,
-		proc: null
+		proc: [ss_panel_change([1,1,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -12516,7 +12516,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し、チェインがプラス1の効果を付与",
 		turn: 8,
-		proc: [panel_chainplus(1)],
+		proc: [ss_panel_change([1,1,1,0,0]), panel_chainplus(1)],
 	},
 }, {
 	name: "無敵の美少女戦士 セーラームーン",
@@ -12634,7 +12634,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -12678,7 +12678,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを雷属性化",
 		turn: 6,
-		proc: null
+		proc: [ss_panel_change([0,0,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -12692,7 +12692,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷属性化し、回復の効果を付与(8％)",
 		turn: 8,
-		proc: [panel_healally(0.08)],
+		proc: [ss_panel_change([0,0,1,0,0]), panel_healally(0.08)],
 	},
 }, {
 	name: "刻下の光神 セリーヌ・エヴァンス",
@@ -12721,7 +12721,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを雷属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,0,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -12735,7 +12735,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷属性化し、回復の効果を付与(8％)",
 		turn: 7,
-		proc: [panel_healally(0.08)],
+		proc: [ss_panel_change([0,0,1,0,0]), panel_healally(0.08)],
 	},
 }, {
 	name: "刻下の司神 セリーヌ・エヴァンス",
@@ -12764,7 +12764,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性のダメージを25％軽減する",
 		turn: 5,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -12778,7 +12778,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性のダメージを50％軽減する",
 		turn: 9,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "愛の彗星 ターク・シューメイカー",
@@ -12808,7 +12808,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを雷属性化",
 		turn: 6,
-		proc: null
+		proc: [ss_panel_change([0,0,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -12822,7 +12822,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷属性化し、チェインがプラス2の効果を付与",
 		turn: 10,
-		proc: [panel_chainplus(2)],
+		proc: [ss_panel_change([0,0,1,0,0]), panel_chainplus(2)],
 	},
 }, {
 	name: "異邦の轟天大帝 タケル・ホシミ",
@@ -13073,7 +13073,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン敵の攻撃を自分に集めダメージを50％軽減する",
 		turn: 7,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -13087,7 +13087,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン敵の攻撃を自分に集めダメージを75％軽減する",
 		turn: 9,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "光輝く金剛金華 トミ・コトブキ",
@@ -13161,7 +13161,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを雷属性化",
 		turn: 6,
-		proc: null
+		proc: [ss_panel_change([0,0,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -13175,7 +13175,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷属性化し、ダメージ25％軽減の効果を付与",
 		turn: 9,
-		proc: null
+		proc: [ss_panel_change([0,0,1,0,0])]
 	},
 }, {
 	name: "万壊の竜巻姫 ニア・ファルール",
@@ -13248,7 +13248,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -13292,7 +13292,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -13423,7 +13423,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルにダメージ25％軽減の効果を付与",
 		turn: 6,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -13437,7 +13437,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルにダメージ50％軽減の効果を付与",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "収穫者 ヒミカ＆アドミローラ",
@@ -13467,7 +13467,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削る",
 		turn: 3,
-		proc: null
+		proc: [ss_answer_narrow(2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -13481,7 +13481,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: null
+		proc: [ss_answer_foresight()]
 	},
 }, {
 	name: "芳しき天上の姉妹 ファム＆フェルチ",
@@ -13511,7 +13511,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -13525,7 +13525,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせ、20チェインで更に1遅らせる",
 		turn: 13,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "とこしえに薫る想い ファム・リリー",
@@ -13600,7 +13600,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水・雷属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,1,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -13614,7 +13614,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 7,
-		proc: null
+		proc: [ss_panel_change([1,1,1,0,0])]
 	},
 }, {
 	name: "カップの中の恋人 プッチンプリン",
@@ -13688,7 +13688,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削る",
 		turn: 3,
-		proc: null
+		proc: [ss_answer_narrow(2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -13701,7 +13701,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: null
+		proc: [ss_answer_foresight()]
 	},
 }, {
 	name: "お茶目怪盗 ヘレス・ブリリアント",
@@ -14170,7 +14170,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性のダメージを25％軽減する",
 		turn: 6,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -14184,7 +14184,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性のダメージを50％軽減する",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "外天の人形師 リツェーレ・トノラ",
@@ -14478,7 +14478,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを雷属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,0,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -14492,7 +14492,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷属性化し、攻撃力アップの効果を付与(+20％)",
 		turn: 8,
-		proc: [panel_attackup(0.20)],
+		proc: [ss_panel_change([0,0,1,0,0]), panel_attackup(0.20)],
 	},
 }, {
 	name: "スリーツーワンで響く歌声 鏡音レン",
@@ -14522,7 +14522,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: null
+		proc: [null]
 	},
 	islegend: true,
 	Lawake: [
@@ -14536,7 +14536,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null
+		proc: [null]
 	},
 }, {
 	name: "空戦支配の片翼 ローヴィ・フロイセ",
@@ -15050,7 +15050,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火・雷属性化",
 		turn: 4,
-		proc: null
+		proc: [ss_panel_change([1,0,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -15064,7 +15064,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・雷属性化し、チェインがプラス1の効果を付与",
 		turn: 6,
-		proc: [panel_chainplus(1)],
+		proc: [ss_panel_change([1,0,1,0,0]), panel_chainplus(1)],
 	},
 }, {
 	name: "時空を超えた絆 Wセーラームーン",
@@ -15094,7 +15094,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水＆雷属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,1,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -15108,7 +15108,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水＆雷属性化し、回復の効果を付与(5％)",
 		turn: 7,
-		proc: [panel_healally(0.05)],
+		proc: [ss_panel_change([0,1,1,0,0]), panel_healally(0.05)],
 	},
 }, {
 	name: "奇想天外☆大満開 ナナ・クラリィ",
@@ -15138,7 +15138,7 @@ Cards = [{
 	ss1: {
 		desc: "1クエストに1回のみ、ジャンルパネルを水・雷属性化",
 		turn: 5,
-		proc: null
+		proc: [ss_panel_change([0,1,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -15152,7 +15152,7 @@ Cards = [{
 	ss2: {
 		desc: "1クエストに1回のみ、ジャンルパネルを水・雷属性化し、様々な効果を付与",
 		turn: 8,
-		proc: [panel_attackup(0.30), panel_chainplus(3), panel_healally(0.20)],
+		proc: [ss_panel_change([0,1,1,0,0]), panel_attackup(0.30), panel_chainplus(3), panel_healally(0.20)],
 	},
 }, {
 	name: "美味しく目覚める大天使 ミカエラ",
@@ -15359,7 +15359,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを雷・光属性化",
 		turn: 3,
-		proc: null
+		proc: [ss_panel_change([0,0,1,1,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -15373,7 +15373,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷・光属性化し、回復の効果を付与(回復：10％)",
 		turn: 6,
-		proc: [panel_healally(0.10)],
+		proc: [ss_panel_change([0,0,1,1,0]), panel_healally(0.10)],
 	},
 }, {
 	name: "光輪の虚神 エルデステリオ",
@@ -15659,7 +15659,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削る",
 		turn: 3,
-		proc: null,
+		proc: [ss_answer_narrow(2)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -15680,7 +15680,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: null,
+		proc: [ss_answer_foresight()],
 	},
 	Lawake: [
 		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
@@ -16265,7 +16265,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷&光属性化し、チェインがプラス1の効果を付与",
 		turn: 6,
-		proc: [panel_chainplus(1)],
+		proc: [ss_panel_change([0,0,1,1,0]), panel_chainplus(1)],
 	},
 	Lawake: [
 		Statusup(500, 0),
@@ -16376,7 +16376,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],2),
@@ -16397,7 +16397,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -16519,7 +16519,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水・雷属性化",
 		turn: 3,
-		proc: null
+		proc: [ss_panel_change([0,1,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -16533,7 +16533,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水・雷属性化し、攻撃力アップの効果を付与(50%)",
 		turn: 6,
-		proc: [panel_attackup(0.5)]
+		proc: [ss_panel_change([0,1,1,0,0]), panel_attackup(0.5)]
 	},
 }, {
 	name: "組織の男 コードネーム:ジン",
@@ -16877,7 +16877,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水・雷属性化",
 		turn: 3,
-		proc: null
+		proc: [ss_panel_change([0,1,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
@@ -16891,7 +16891,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水・雷属性化し、攻撃力アップの効果を付与",
 		turn: 6,
-		proc: [panel_attackup(0.5)]
+		proc: [ss_panel_change([0,1,1,0,0]), panel_attackup(0.5)]
 	},
 }, {
 	// -------------------------
@@ -17273,7 +17273,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -17338,7 +17338,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水・雷属性化し、チェインがプラス1の効果を付与",
 		turn: 5,
-		proc: [panel_chainplus(1)],
+		proc: [ss_panel_change([0,1,1,0,0]), panel_chainplus(1)],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -17407,7 +17407,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削る",
 		turn: 3,
-		proc: null,
+		proc: [ss_answer_narrow(2)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -17428,7 +17428,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: null,
+		proc: [ss_answer_foresight()],
 	},
 	Lawake: [
 		Statusup(300, 0),
@@ -17451,7 +17451,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを1遅らせる",
 		turn: 4,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Fastskill(2),
@@ -17674,7 +17674,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水・雷属性化",
 		turn: 3,
-		proc: null,
+		proc: [ss_panel_change([0,1,1,0,0])],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],2),
@@ -17695,7 +17695,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水・雷属性化し、ダメージ軽減(25%)・スキルチャージ(1)・チェイン(2)・攻撃力アップ(50%)の効果をランダムで付与",
 		turn: 7,
-		proc: [/*軽減(25%),*/panel_skillboost(1), panel_chainplus(2), panel_attackup(0.5)],
+		proc: [ss_panel_change([0,1,1,0,0]),/*軽減(25%),*/panel_skillboost(1), panel_chainplus(2), panel_attackup(0.5)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,1,1,0,0,]),
@@ -17718,7 +17718,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削り、3チェインを消費し解答を見破る",
 		turn: 3,
-		proc: [function (f) { ss_chain_cost(3, 1, 0)(f,-1,-1,true); return true; }],
+		proc: [ss_chain_cost_skill(3, ss_answer_foresight(), ss_answer_narrow(2))],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
@@ -17739,7 +17739,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: null,
+		proc: [ss_answer_foresight()],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -17850,7 +17850,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水・雷属性化",
 		turn: 3,
-		proc: null,
+		proc: [ss_panel_change([0,1,1,0,0])],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -17871,7 +17871,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水・雷属性化し、チェインがプラス2の効果を付与",
 		turn: 7,
-		proc: [panel_chainplus(2)],
+		proc: [ss_panel_change([0,1,1,0,0]), panel_chainplus(2)],
 	},
 	Lawake: [
 		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
@@ -18202,7 +18202,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Fastskill(1),
@@ -18223,7 +18223,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体の攻撃ターンを3遅らせ、20チェインでさらに1遅らせる",
 		turn: 13,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -18290,7 +18290,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 4,
-		proc: null,
+		proc: [ss_panel_change([1,1,1,0,0])],
 	},
 	awakes: [
 		Fastskill(2),
@@ -18311,7 +18311,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し、ダメージ35%軽減の効果を付与",
 		turn: 7,
-		proc: null,
+		proc: [ss_panel_change([1,1,1,0,0])],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [1,1,1,1,1,]),
@@ -18522,7 +18522,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水・雷属性化",
 		turn: 4,
-		proc: null,
+		proc: [ss_panel_change([0,1,1,0,0])],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -18543,7 +18543,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化。HP50%以下でさらにダメージ40%軽減の効果を付与",
 		turn: 7,
-		proc: null,
+		proc: [ss_panel_change([1,1,1,0,0])],
 	},
 	Lawake: [
 		Statusup(0, 400),
@@ -18654,7 +18654,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを1遅らせる",
 		turn: 6,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Awake_noeffect("経験値取得量アップ", 1),
@@ -18675,7 +18675,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体の攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Statusup(0, 500),
@@ -18742,7 +18742,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水属性化し、チェインがプラス2の効果を付与",
 		turn: 7,
-		proc: [panel_chainplus(2)],
+		proc: [ss_panel_change([0,1,0,0,0]), panel_chainplus(2)],
 	},
 	awakes: [
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
@@ -18949,7 +18949,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン後に敵単体を無に還す(一部敵には無効)",
 		turn: 10,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Statusup(200,0),
@@ -18970,7 +18970,7 @@ Cards = [{
 	ss2: {
 		desc: "2ターン後に敵単体を無に還す(一部敵には無効)",
 		turn: 15,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [1,0,0,0,0,]),
@@ -19014,7 +19014,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・雷属性化し、ダメージ軽減(25%)、スキルチャージ(1)、チェイン(2)、攻撃力アップ(50%)の効果をランダムで付与",
 		turn: 7,
-		proc: [panel_chainplus(2), panel_skillboost(1), panel_attackup(0.5)],
+		proc: [ss_panel_change([1,0,1,0,0]), panel_chainplus(2), panel_skillboost(1), panel_attackup(0.5)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,1,0,0,]),
@@ -19169,7 +19169,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを1遅らせる",
 		turn: 4,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],2),
@@ -19181,7 +19181,7 @@ Cards = [{
 		Attr_statusup(0,200, [1,0,1,0,0,]),
 		Fastskill(2),
 		Panel_boost([1,0,0,0,0,],2),
-　　　　　Awake_noeffect("心眼", 1),
+		Awake_noeffect("心眼", 1),
 	],
 	as2: {
 		desc: "4チェインでダメージアップ、HP50%以上でさらにダメージアップ(400%/600%)",
@@ -19257,7 +19257,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水・光属性化",
 		turn: 3,
-		proc: null,
+		proc: [ss_panel_change([0,1,0,1,0])],
 	},
 	awakes: [
 		Fastskill(1),
@@ -19278,7 +19278,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: null,
+		proc: [ss_answer_foresight()],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [0,1,0,0,0,]),
@@ -19432,7 +19432,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性ダメージを40%軽減する",
 		turn: 8,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Attr_statusup(0,100, [1,0,1,0,0,]),
@@ -19453,7 +19453,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性ダメージを40%軽減する、10チェインを消費しさらに3ターン軽減",
 		turn: 12,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,1,0,0,]),
@@ -19476,7 +19476,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Costdown(2),
@@ -19497,7 +19497,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを2遅らせ、3チェインを消費しさらに1遅らせる",
 		turn: 10,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,0,1,0,0,]),
@@ -19608,7 +19608,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン後に敵単体を無に還す(一部敵には無効)",
 		turn: 10,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Statusup(200,0),
@@ -19629,7 +19629,7 @@ Cards = [{
 	ss2: {
 		desc: "2ターン後に敵単体を無に還す(一部敵には無効)",
 		turn: 15,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,0,1,0,0,]),
@@ -19695,7 +19695,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火・雷属性化",
 		turn: 5,
-		proc: null,
+		proc: [ss_panel_change([1,0,1,0,0])],
 	},
 	awakes: [
 		Fastskill(2),
@@ -19716,7 +19716,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・雷属性化し、回復の効果を付与(10%)",
 		turn: 8,
-		proc: [panel_healally(0.10)],
+		proc: [ss_panel_change([1,0,1,0,0]), panel_healally(0.10)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,0,1,0,0,]),
@@ -19739,7 +19739,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火・雷属性化",
 		turn: 4,
-		proc: null,
+		proc: [ss_panel_change([1,0,1,0,0])],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],1),
@@ -19760,7 +19760,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 6,
-		proc: null,
+		proc: [ss_panel_change([1,1,1,0,0])],
 	},
 	Lawake: [
 		Statusup(0,1500),
@@ -20069,7 +20069,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・闇属性化し、ダメージ軽減(25%)、スキルチャージ(1)、チェイン(2)、攻撃力アップ(50%)の効果をランダムで付与",
 		turn: 8,
-		proc: [panel_chainplus(2), panel_skillboost(1), panel_attackup(0.50)],
+		proc: [ss_panel_change([1,0,0,0,1]), panel_chainplus(2), panel_skillboost(1), panel_attackup(0.50)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,0,0,0,]),
@@ -20431,7 +20431,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削り、3チェインを消費し解答を見破る",
 		turn: 3,
-		proc: [function (f) { ss_chain_cost(3, 1, 0)(f,-1,-1,true); return true; }],
+		proc: [ss_chain_cost_skill(3, ss_answer_foresight(), ss_answer_narrow(2))],
 	},
 	awakes: [
 		Fastskill(1),
@@ -20452,7 +20452,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: null,
+		proc: [ss_answer_foresight()],
 	},
 	Lawake: [
 		Statusup(0,1000),
@@ -20563,7 +20563,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Costdown(2),
@@ -20651,7 +20651,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削る",
 		turn: 3,
-		proc: null,
+		proc: [ss_answer_narrow(2)],
 	},
 	awakes: [
 		Statusup(200,0),
@@ -20672,7 +20672,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: null,
+		proc: [ss_answer_foresight()],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -20739,7 +20739,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Fastskill(1),
@@ -20783,7 +20783,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削る",
 		turn: 3,
-		proc: null,
+		proc: [ss_answer_narrow(2)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -20804,7 +20804,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: null,
+		proc: [ss_answer_foresight()],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [0,1,0,0,0,]),
@@ -21005,7 +21005,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火・雷属性化",
 		turn: 3,
-		proc: null,
+		proc: [ss_panel_change([1,0,1,0,0])],
 	},
 	awakes: [
 		Statusup(200,0),
@@ -21026,7 +21026,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・雷属性化し、チェインがプラス1の効果を付与",
 		turn: 6,
-		proc: [panel_chainplus(1)],
+		proc: [ss_panel_change([1,0,1,0,0]), panel_chainplus(1)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,0,1,0,0,]),
@@ -21534,7 +21534,7 @@ Cards = [{
 		Panel_boost([0,0,1,0,0,],2),
 		Attr_statusup(200,0, [0,0,1,0,0,]),
 		Attr_statusup(0,200, [0,0,1,0,0,]),
-　　　　　Awake_noeffect("心眼", 1),
+		Awake_noeffect("心眼", 1),
 		Spec_statusup(0, 200, [2, ]),
 	],
 	as2: {
@@ -21800,7 +21800,7 @@ Cards = [{
 		Fastskill(2),
 		Attr_statusup(0, 200, [1, 1, 0, 0, 0, ]),
 		Attr_relief([1, 1, 1, 1, 1, ], 10),
-　　　　　Awake_noeffect("心眼", 1),
+		Awake_noeffect("心眼", 1),
 	],
 	as2: {
 		desc: "4チェインで水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(80%/130%)",
@@ -21844,7 +21844,7 @@ Cards = [{
 		Attr_relief([1, 1, 1, 1, 1, ], 10),
 		NEFTJOD(30),
 		Spec_statusup(0, 400, [4, ]),
-　　　　　Awake_noeffect("心眼", 1),
+		Awake_noeffect("心眼", 1),
 	],
 	as2: {
 		desc: "雷属性の味方の味方の攻撃力をアップ、パネルの色が3色でさらにアップ(50%/130%)",
@@ -21875,7 +21875,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをシャッフル",
 		turn: 1,
-		proc: null,
+		proc: [ss_panel_shuffle()],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -21962,7 +21962,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -22019,7 +22019,7 @@ Cards = [{
 		Spec_statusup(0, 200, [2, 3, ]),
 		Spec_statusup(200, 0, [2, 3, ]),
 		Heal_afterbattle(10),
-　　　　　Awake_noeffect("心眼", 1),
+		Awake_noeffect("心眼", 1),
 	],
 	as2: {
 		desc: "水属性の味方のHPを回復、HP20%以下でさらに回復(17%/42%)",
@@ -22095,7 +22095,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを雷・闇属性化",
 		turn: 3,
-		proc: null,
+		proc: [ss_panel_change([0,0,1,0,1])],
 	},
 	awakes: [
 		Panel_boost([0, 0, 1, 0, 0, ], 1),
@@ -22116,7 +22116,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷・闇属性化し、ダメージ35%軽減の効果を付与",
 		turn: 7,
-		proc: null,
+		proc: [ss_panel_change([0,0,1,0,1])],
 	},
 	Lawake: [
 		Statusup(500, 0),
@@ -22419,7 +22419,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -22466,7 +22466,7 @@ Cards = [{
 		Fastskill(1),
 		Statusup(0,200),
 		Attr_statusup(0,200, [0,1,1,0,0,]),
-　　　　　Awake_noeffect("心眼", 1),
+		Awake_noeffect("心眼", 1),
 		Statusup(200,0),
 		Attr_statusup(200,0, [0,1,1,0,0,]),
 		Costdown(2),
@@ -22503,7 +22503,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 4,
-		proc: null,
+		proc: [ss_panel_change([1,1,1,0,0])],
 	},
 	awakes: [
 		Costdown(4),
@@ -22524,7 +22524,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し、チェインプラスが2の効果を付与",
 		turn: 7,
-		proc: [panel_chainplus(2)],
+		proc: [ss_panel_change([1,1,1,0,0]), panel_chainplus(2)],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [1,0,0,0,0,]),
@@ -22546,7 +22546,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火・水属性化",
 		turn: 3,
-		proc: null,
+		proc: [ss_panel_change([1,1,0,0,0])],
 	},
 	awakes: [
 		Statusup(200,0),
@@ -22565,9 +22565,9 @@ Cards = [{
 		proc: [Heal(0.13, [1,1,0,0,0], 0), add_cond(Heal(0.23, [1,1,0,0,0], 0), when_hp_less(0.50))],
 	},
 	ss2: {
-		desc: "ジャンルパネルを火・水属性化し。ダメージ25%軽減の効果を付与。HP20%以下でさらにダメージ35%軽減の効果を付与",
+		desc: "ジャンルパネルを火・水属性化し、ダメージ25%軽減の効果を付与。HP20%以下でさらにダメージ35%軽減の効果を付与",
 		turn: 6,
-		proc: null,
+		proc: [ss_panel_change([1,1,0,0,0])],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [1,1,0,0,0,]),
@@ -22719,7 +22719,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性のダメージを50%軽減する",
 		turn: 8,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -22740,7 +22740,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性のダメージを50%軽減する、5チェインを消費しさらに2ターン軽減",
 		turn: 12,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -22939,7 +22939,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 9,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -22960,7 +22960,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを2遅らせ、HP20%以下でさらに2遅らせる",
 		turn: 12,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,1,0,0,0,]),
@@ -22983,7 +22983,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 9,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -23115,7 +23115,7 @@ Cards = [{
 	ss1: {
 		desc: "2ターン雷属性ダメージを軽減する(50%)",
 		turn: 8,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Statusup(200,0),
@@ -23136,7 +23136,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン雷属性ダメージを軽減する(50%)",
 		turn: 10,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -23159,7 +23159,7 @@ Cards = [{
 	ss1: {
 		desc: "2ターン火属性のダメージを75%軽減する",
 		turn: 8,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Attr_relief([1,0,0,0,0,],10),
@@ -23292,7 +23292,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火・水属性化",
 		turn: 4,
-		proc: null,
+		proc: [ss_panel_change([1,1,0,0,0])],
 	},
 	awakes: [
 		Fastskill(1),
@@ -23313,7 +23313,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・水属性化し、チェインがプラス2の効果を付与",
 		turn: 7,
-		proc: [panel_chainplus(2)],
+		proc: [ss_panel_change([1,1,0,0,0]), panel_chainplus(2)],
 	},
 	Lawake: [
 		Statusup(400, 0),
@@ -23380,7 +23380,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン水属性のダメージを50%軽減する",
 		turn: 7,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -23401,7 +23401,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン水属性のダメージを75%軽減する",
 		turn: 10,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Statusup(0, 400),
@@ -23424,7 +23424,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン敵の攻撃を自分に集めダメージを50%軽減する",
 		turn: 6,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Fastskill(1),
@@ -23445,7 +23445,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン敵の攻撃を自分に集めダメージを75%軽減する、HP50%以下でさらに25%軽減する",
 		turn: 9,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Statusup(0, 400),
@@ -23469,7 +23469,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水・雷属性化",
 		turn: 4,
-		proc: null,
+		proc: [ss_panel_change([0,1,1,0,0])],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -23490,7 +23490,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水・雷属性化し、回復の効果を付与、属性弱体化状態だとさらに回復の効果を付与(8%/50%)",
 		turn: 7,
-		proc: [panel_healally(0.08), panel_healally(0.50)],
+		proc: [ss_panel_change([0,1,1,0,0]), panel_healally(0.08), panel_healally(0.50)],
 	},
 	Lawake: [
 		Statusup(0, 500),
@@ -23557,7 +23557,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火・光属性化",
 		turn: 3,
-		proc: null,
+		proc: [ss_panel_change([1,0,0,1,0])],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -23578,7 +23578,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・光属性化し、攻撃力アップの効果を付与(50%)",
 		turn: 6,
-		proc: [panel_attackup(0.50)],
+		proc: [ss_panel_change([1,0,0,1,0]), panel_attackup(0.50)],
 	},
 	Lawake: [
 		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
@@ -23601,7 +23601,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをシャッフル",
 		turn: 1,
-		proc: null,
+		proc: [ss_panel_shuffle()],
 	},
 	awakes: [
 		Statusup(200, 0),
@@ -23622,7 +23622,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: null,
+		proc: [ss_answer_foresight()],
 	},
 	Lawake: [
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
@@ -23996,7 +23996,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを雷・光属性化",
 		turn: 3,
-		proc: null,
+		proc: [ss_panel_change([0,0,1,1,0])],
 	},
 	awakes: [
 		Fastskill(1),
@@ -24017,7 +24017,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷・光属性化し、攻撃力アップの効果を付与(50%)",
 		turn: 6,
-		proc: [panel_attackup(0.50)],
+		proc: [ss_panel_change([0,0,1,1,0]), panel_attackup(0.50)],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [0,0,1,0,0,]),
@@ -24083,7 +24083,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性のダメージを25%軽減する",
 		turn: 5,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],1),
@@ -24104,7 +24104,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性のダメージを50%軽減する",
 		turn: 9,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Statusup(0,400),
@@ -24127,7 +24127,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを雷属性化",
 		turn: 5,
-		proc: null,
+		proc: [ss_panel_change([0,0,1,0,0])],
 	},
 	awakes: [
 		Statusup(0,100),
@@ -24148,7 +24148,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷属性化し、攻撃力アップの効果を付与(30%)",
 		turn: 7,
-		proc: [panel_attackup(0.30)],
+		proc: [ss_panel_change([0,0,1,0,0]), panel_attackup(0.30)],
 	},
 	Lawake: [
 		Statusup(400,0),
@@ -24171,7 +24171,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火属性化",
 		turn: 5,
-		proc: null,
+		proc: [ss_panel_change([1,0,0,0,0])],
 	},
 	awakes: [
 		NEFTJOD(30),
@@ -24192,7 +24192,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火属性化し、ダメージ25%軽減の効果を付与",
 		turn: 7,
-		proc: null,
+		proc: [ss_panel_change([1,0,0,0,0])],
 	},
 	Lawake: [
 		Statusup(400,0),
@@ -24215,7 +24215,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 7,
-		proc: null,
+		proc: [ss_panel_change([1,1,1,0,0])],
 	},
 	awakes: [
 		Fastskill(1),
@@ -24236,7 +24236,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し、攻撃力アップの効果を付与(20%)",
 		turn: 9,
-		proc: [panel_attackup(0.20)],
+		proc: [ss_panel_change([1,1,1,0,0]), panel_attackup(0.20)],
 	},
 	Lawake: [
 		Statusup(0,300),
@@ -24303,7 +24303,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削る",
 		turn: 3,
-		proc: null,
+		proc: [ss_answer_narrow(2)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -24324,7 +24324,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: null,
+		proc: [ss_answer_foresight()],
 	},
 	Lawake: [
 		Statusup(0,300),
@@ -24435,7 +24435,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを2遅らせ、毒状態でさらに1遅らせる",
 		turn: 8,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -24456,7 +24456,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体の攻撃ターンを3遅らせ、毒状態でさらに1遅らせる",
 		turn: 12,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -24479,7 +24479,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性のダメージを25%軽減する",
 		turn: 5,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -24500,7 +24500,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性のダメージを50%軽減する",
 		turn: 9,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -24523,7 +24523,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 4,
-		proc: null,
+		proc: [ss_panel_change([1,1,1,0,0])],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],2),
@@ -24544,7 +24544,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し、チェインがプラス2の効果を付与",
 		turn: 7,
-		proc: [panel_chainplus(2)],
+		proc: [ss_panel_change([1,1,1,0,0]), panel_chainplus(2)],
 	},
 	Lawake: [
 		Attr_relief([1,1,1,1,1,],10),
@@ -24568,7 +24568,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性のダメージを25%軽減する",
 		turn: 5,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Costdown(2),
@@ -24589,7 +24589,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性のダメージを50%軽減する",
 		turn: 9,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -24656,7 +24656,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],2),
@@ -24700,7 +24700,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 4,
-		proc: null,
+		proc: [ss_panel_change([1,1,1,0,0])],
 	},
 	awakes: [
 		Statusup(200,0),
@@ -24721,7 +24721,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し、ダメージ25%軽減の効果を付与",
 		turn: 6,
-		proc: null,
+		proc: [ss_panel_change([1,1,1,0,0])],
 	},
 	Lawake: [
 		Statusup(700,0),
@@ -24744,7 +24744,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Costdown(2),
@@ -24765,7 +24765,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせ、20チェインで更に1遅らせる",
 		turn: 13,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -24809,7 +24809,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・雷属性化し、スキルチャージプラス1の効果を付与(スキルチャージの効果は、SPスキルを使うまで重複しません)",
 		turn: 8,
-		proc: [panel_skillboost(1)],
+		proc: [ss_panel_change([1,0,1,0,0]), panel_skillboost(1)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,1,0,0,]),
@@ -24832,7 +24832,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをシャッフル",
 		turn: 1,
-		proc: null,
+		proc: [ss_panel_shuffle()],
 	},
 	awakes: [
 		Statusup(200, 0),
@@ -24876,7 +24876,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 4,
-		proc: null,
+		proc: [ss_panel_change([1,1,1,0,0])],
 	},
 	awakes: [
 		Fastskill(1),
@@ -24888,7 +24888,7 @@ Cards = [{
 		Attr_statusup(0, 200, [0, 1, 0, 0, 0, ]),
 		NEFTJOD(30),
 		Panel_boost([0, 1, 0, 0, 0, ], 2),
-　　　　　Awake_noeffect("心眼", 1),
+		Awake_noeffect("心眼", 1),
 	],
 	as2: {
 		desc: "火属性の敵単体へ特効ダメージ、パネルの色が増す度さらにアップ(450%/600%/700%)",
@@ -24897,7 +24897,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し、チェインがプラス2の効果を付与",
 		turn: 7,
-		proc: [panel_chainplus(2)],
+		proc: [ss_panel_change([1,1,1,0,0]), panel_chainplus(2)],
 	},
 	Lawake: [
 		Statusup(0, 500),
@@ -24941,7 +24941,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
@@ -24994,7 +24994,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを2ターン遅らせる",
 		turn: 8,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Costdown(2),
@@ -25015,7 +25015,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体の攻撃ターンを2ターン遅らせ、3チェイン消費しさらに1遅らせる",
 		turn: 10,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,0,0,0,]),
@@ -25126,7 +25126,7 @@ Cards = [{
 	ss1: {
 		desc: "自分を犠牲に全員を50%蘇生",
 		turn: 11,
-		proc: [ss_consume_own(1), ss_resurrection([1,1,1,1,1], 0.50)],
+		proc: [ss_resurrection([1,1,1,1,1], 0.50), ss_consume_own(1)],
 	},
 	awakes: [
 		Statusup(600,0),
@@ -25147,7 +25147,7 @@ Cards = [{
 	ss2: {
 		desc: "自分を犠牲に全員を100%蘇生",
 		turn: 12,
-		proc: [ss_consume_own(1), ss_resurrection([1,1,1,1,1], 1)],
+		proc: [ss_resurrection([1,1,1,1,1], 1), ss_consume_own(1)],
 	},
 	Lawake: [
 		NEFTJOD(30),
@@ -25183,7 +25183,7 @@ Cards = [{
 		NEFTJOD(30),
 		Spec_statusup(500,0, [0,]),
 		Panel_boost([0,1,0,0,0,],2),
-　　　　　Awake_noeffect("心眼", 1),
+		Awake_noeffect("心眼", 1),
 	],
 	as2: {
 		desc: "4チェインでダメージアップ、龍族・戦士の敵へさらにダメージアップ(500%/700%)",
@@ -25481,7 +25481,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火・水属性化",
 		turn: 3,
-		proc: null,
+		proc: [ss_panel_change([1,1,0,0,0])],
 	},
 	awakes: [
 		Statusup(200, 0),
@@ -25502,7 +25502,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・水属性化し、ダメージ軽減(25%)・スキルチャージ(1)・チェイン(2)・攻撃力アップ(50%)の効果をランダムで付与",
 		turn: 7,
-		proc: [panel_skillboost(1), panel_chainplus(2), panel_attackup(0.50)],
+		proc: [ss_panel_change([1,1,0,0,0]), panel_skillboost(1), panel_chainplus(2), panel_attackup(0.50)],
 	},
 	Lawake: [
 		Attr_statusup(0, 200, [1, 1, 0, 0, 0, ]),
@@ -25643,7 +25643,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン後に敵単体を無に還す(一部敵には無効)",
 		turn: 10,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Statusup(200,0),
@@ -25780,7 +25780,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを1遅らせる",
 		turn: 4,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Heal_afterbattle(10),
@@ -25970,7 +25970,7 @@ Cards = [{
 		Fastskill(2),
 		Heal_afterbattle(10),
 		Spec_relief([2], 30),
-　　　　　Awake_noeffect("心眼", 1),
+		Awake_noeffect("心眼", 1),
 	],
 	as2: {
 		desc: "6チェインでダメージアップ、魔族の敵へさらにダメージアップ(600%/800%)",
@@ -26003,7 +26003,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水・雷属性化",
 		turn: 3,
-		proc: null,
+		proc: [ss_panel_change([0,1,1,0,0])],
 	},
 	awakes: [
 		Statusup(0, 400),
@@ -26024,7 +26024,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水・雷属性化し、ダメージ25%軽減の効果を付与。HP10%以下でさらにダメージ45%軽減の効果を付与",
 		turn: 6,
-		proc: null,
+		proc: [ss_panel_change([0,1,1,0,0])],
 	},
 	Lawake: [
 		Statusup(700, 0),
@@ -26136,7 +26136,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Panel_boost([0, 0, 1, 0, 0, ], 1),
@@ -26157,7 +26157,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを3遅らせ、20チェインでさらに1遅らせる",
 		turn: 14,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Statusup(400, 0),
@@ -26180,7 +26180,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火・雷属性化",
 		turn: 4,
-		proc: null,
+		proc: [ss_panel_change([1,0,1,0,0])],
 	},
 	awakes: [
 		Panel_boost([1, 0, 0, 0, 0, ], 1),
@@ -26199,7 +26199,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・雷属性化し、ダメージ25%軽減の効果を付与",
 		turn: 8,
-		proc: null,
+		proc: [ss_panel_change([1,0,1,0,0])],
 	},
 	Lawake: [
 		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
@@ -26309,7 +26309,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 4,
-		proc: null,
+		proc: [ss_panel_change([1,1,1,0,0])],
 	},
 	awakes: [
 		Statusup(200, 0),
@@ -26330,7 +26330,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し、ダメージ35%軽減の効果を付与",
 		turn: 7,
-		proc: null,
+		proc: [ss_panel_change([1,1,1,0,0])],
 	},
 	Lawake: [
 		Statusup(500, 0),
@@ -26353,14 +26353,14 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをシャッフル",
 		turn: 1,
-		proc: null,
+		proc: [ss_panel_shuffle()],
 	},
 	awakes: [
 		Fastskill(3),
 		Costdown(2),
 		Statusup(0, 300),
 		Statusup(300, 0),
-　　　　　Awake_noeffect("心眼", 1),
+		Awake_noeffect("心眼", 1),
 		Panel_boost([0, 0, 1, 0, 0, ], 2),
 		NEFTJOD(30),
 		Spec_statusup(200, 0, [9, ]),
@@ -26573,7 +26573,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを3ターン遅らせる",
 		turn: 10,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],1),
@@ -26615,7 +26615,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.50, 1.0, [0,1,0,0,0], [0,0,1,0,0], 4),
 	},
 	ss1: {
-		desc: "2ターンの間、チェインを保護。3チェインを消費し、さらに3ターン加護",
+		desc: "<チェインガード>2ターンの間、チェインを保護する、3チェインを消費しさらに3ターンの間保護する",
 		turn: 5,
 		proc: [ss_chain_cost_skill(3, ss_chain_protect(5), ss_chain_protect(2))],
 	},
@@ -26636,7 +26636,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.80, 1.3, [0,1,0,0,0], [0,0,1,0,0], 4),
 	},
 	ss2: {
-		desc: "5ターンの間、チェインを保護。3チェインを消費し、さらに3ターン加護",
+		desc: "<チェインガード>5ターンの間、チェインを保護する、3チェインを消費しさらに3ターンの間保護する",
 		turn: 8,
 		proc: [ss_chain_cost_skill(3, ss_chain_protect(8), ss_chain_protect(5))],
 	},
@@ -26749,7 +26749,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを1遅らせる",
 		turn: 4,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Fastskill(1),
@@ -26868,7 +26868,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火・雷属性化し、攻撃力アップの効果を付与(20%)",
 		turn: 8,
-		proc: [panel_attackup(0.20)],
+		proc: [ss_panel_change([1,0,1,0,0]), panel_attackup(0.20)],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],2),
@@ -26964,7 +26964,7 @@ Cards = [{
 		proc: [ss_damage_all(special_attr([0,1,0,0,0], 5.0, 2.0), [2])],
 	},
 	awakes: [
-　　　　　Awake_noeffect("経験値取得量アップ", 1),
+		Awake_noeffect("経験値取得量アップ", 1),
 		Panel_boost([0,0,1,0,0,],1),
 		Fastskill(1),
 		Statusup(0,100),
@@ -27054,7 +27054,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火・雷属性化",
 		turn: 4,
-		proc: null,
+		proc: [ss_panel_change([1,0,1,0,0])],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -27075,7 +27075,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し、ダメージ10%軽減の効果を付与。HP50%以下でさらにダメージ30%軽減の効果を付与",
 		turn: 7,
-		proc: null,
+		proc: [ss_panel_change([1,1,1,0,0])],
 	},
 	Lawake: [
 		Statusup(0, 500),
@@ -27217,7 +27217,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを1遅らせる",
 		turn: 5,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Fastskill(1),
@@ -27663,7 +27663,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する(上限:20秒)",
 		turn: 5,
-		proc: null,
+		proc: [ss_astime_ext(10)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -27684,7 +27684,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、アンサースキル発動時間を15秒延長する(上限:20秒)、さらに味方全体のHPを回復する(25%)",
 		turn: 7,
-		proc: [ss_heal(0.25)],
+		proc: [ss_astime_ext(20), ss_heal(0.25)],
 	},
 	Lawake: [
 		Statusup(0, 400),
@@ -27796,7 +27796,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水・闇属性化",
 		turn: 4,
-		proc: null,
+		proc: [ss_panel_change([0,1,0,0,1])],
 	},
 	awakes: [
 		Fastskill(1),
@@ -27817,7 +27817,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水・闇属性化し、攻撃力アップの効果を付与(30%)",
 		turn: 7,
-		proc: [panel_attackup(0.30)],
+		proc: [ss_panel_change([0,1,0,0,1]), panel_attackup(0.30)],
 	},
 	Lawake: [
 		Statusup(0, 400),
@@ -27885,7 +27885,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する(上限値:20秒)",
 		turn: 5,
-		proc: null,
+		proc: [ss_astime_ext(10)],
 	},
 	awakes: [
 		Statusup(200, 0),
@@ -27897,7 +27897,7 @@ Cards = [{
 		Panel_boost([1, 0, 0, 0, 0, ], 2),
 		Fastskill(2),
 		Spec_statusup(0, 200, [8, ]),
-　　　　　　　　{ /* 心眼 */ },
+		Awake_noeffect("心眼", 1),
 	],
 	as2: {
 		desc: "3チェインで敵全体へダメージ、10チェインで更にダメージアップ(220%/320%)",
@@ -27906,7 +27906,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、アンサースキル発動時間を15秒延長する(上限値:20秒)",
 		turn: 8,
-		proc: null,
+		proc: [ss_astime_ext(15)],
 	},
 	Lawake: [
 		Attr_statusup(0, 200, [1, 0, 0, 0, 0, ]),
@@ -27928,7 +27928,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削り、3チェインを消費し解答を見破る",
 		turn: 3,
-		proc: null,
+		proc: [ss_chain_cost_skill(3, ss_answer_foresight(), ss_answer_narrow(2))],
 	},
 	awakes: [
 		Statusup(200, 0),
@@ -27949,7 +27949,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: null,
+		proc: [ss_answer_foresight()],
 	},
 	Lawake: [
 		Statusup(0, 500),
@@ -27968,7 +27968,7 @@ Cards = [{
 	islegend: true,
 	as1: {
 		desc: "戦士・亜人の仲間の数だけダメージアップ(100%+40%×数)、パネルの色が2色以上でさらにダメージアップ(100%+60%×数)",
-		proc: null,
+		proc: [null],
 	},
 	ss1: {
 		desc: "味方全体のHPを回復する(50%)",
@@ -27989,7 +27989,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "戦士・亜人の仲間の数だけダメージアップ(100%+60%×数)、パネルの色が2色以上でさらにダメージアップ(100%+80%×数)",
-		proc: null,
+		proc: [null],
 	},
 	ss2: {
 		desc: "味方全体のHPを回復し(50%)、状態異常を回復する",
@@ -28018,7 +28018,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを2遅らせる",
 		turn: 9,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -28771,7 +28771,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルに25%軽減の効果を付与",
 		turn: 6,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Awake_noeffect("経験値取得量アップ", 1),
@@ -28792,7 +28792,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルに35%軽減の効果を付与",
 		turn: 8,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -28959,7 +28959,7 @@ Cards = [{
 		Spec_statusup(0, 500, [1, ]),
 		Spec_statusup(500, 0, [1, ]),
 		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
-　　　　　Awake_noeffect("心眼", 1),
+		Awake_noeffect("心眼", 1),
 	],
 	as2: {
 		desc: "3チェインかつパネルが2色でダメージアップ、3色で更にアップ(550%/700%)",
@@ -29105,7 +29105,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを火・水属性化",
 		turn: 3,
-		proc: null,
+		proc: [ss_panel_change([1,1,0,0,0])],
 	},
 	awakes: [
 		Attr_relief([1,1,0,0,0,],20),
@@ -29126,7 +29126,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・水属性化し、ダメージ25%軽減の効果を付与",
 		turn: 7,
-		proc: null,
+		proc: [ss_panel_change([1,1,0,0,0]), null],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,1,0,0,0,]),
@@ -29238,7 +29238,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 4,
-		proc: null,
+		proc: [ss_panel_change([1,1,1,0,0])],
 	},
 	awakes: [
 		NEFTJOD(30),
@@ -29259,7 +29259,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し回復の効果を付与、8チェインを消費しさらに効果を付与(5%/50%)",
 		turn: 7,
-		proc: [ss_chain_cost_skill(8, panel_healally(0.50), panel_healally(0.05))],
+		proc: [ss_panel_change([1,1,1,0,0]), ss_chain_cost_skill(8, panel_healally(0.50), panel_healally(0.05))],
 	},
 	Lawake: [
 		Statusup(0,400),
@@ -29550,7 +29550,7 @@ Cards = [{
 	ss1: {
 		desc: "<ガード>2ターン火・水属性のダメージを75%軽減する",
 		turn: 5,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Fastskill(3),
@@ -29571,7 +29571,7 @@ Cards = [{
 	ss2: {
 		desc: "<ガード>5ターン火・水属性のダメージを75%軽減する",
 		turn: 9,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
@@ -29594,7 +29594,7 @@ Cards = [{
 	ss1: {
 		desc: "<シャッフル>ジャンルパネルをシャッフル",
 		turn: 1,
-		proc: null,
+		proc: [ss_panel_shuffle()],
 	},
 	awakes: [
 		Statusup(200, 0),
@@ -29615,7 +29615,7 @@ Cards = [{
 	ss2: {
 		desc: "<パネル変換>ジャンルパネルを火属性化",
 		turn: 2,
-		proc: null,
+		proc: [ss_panel_change([1,0,0,0,0])],
 	},
 	Lawake: [
 		Statusup(400, 0),
@@ -29681,7 +29681,7 @@ Cards = [{
 	ss1: {
 		desc: "<ガード>7ターン火属性のダメージを50%軽減する",
 		turn: 5,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Statusup(0, 300),
@@ -29702,7 +29702,7 @@ Cards = [{
 	ss2: {
 		desc: "<ガード>4ターン火属性のダメージを50%軽減する",
 		turn: 9,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Statusup(500, 0),
@@ -29769,7 +29769,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを水&雷属性化",
 		turn: 3,
-		proc: null,
+		proc: [ss_panel_change([0,1,1,0,0])],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -29790,7 +29790,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化",
 		turn: 4,
-		proc: null,
+		proc: [ss_panel_change([1,1,1,0,0])],
 	},
 	Lawake: [
 		Attr_statusup(0, 200, [0, 1, 1, 0, 0, ]),
@@ -29812,7 +29812,7 @@ Cards = [{
 	ss1: {
 		desc: "<パネル変換>ジャンルパネルを火・雷属性化",
 		turn: 3,
-		proc: null,
+		proc: [ss_panel_change([1,0,1,0,0])],
 	},
 	awakes: [
 		Fastskill(1),
@@ -29833,7 +29833,7 @@ Cards = [{
 	ss2: {
 		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、攻撃力アップの効果を付与(50%)",
 		turn: 6,
-		proc: [panel_attackup(0.5)],
+		proc: [ss_panel_change([1,0,1,0,0]), panel_attackup(0.5)],
 	},
 	Lawake: [
 		Attr_statusup(0, 200, [1, 0, 1, 0, 0, ]),
@@ -30291,7 +30291,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルを雷・闇属性化",
 		turn: 3,
-		proc: null,
+		proc: [ss_panel_change([0,0,1,0,1])],
 	},
 	awakes: [
 		Panel_boost([0, 0, 1, 0, 0, ], 1),
@@ -30312,7 +30312,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷・闇属性化し、攻撃力アップの効果を付与(50%)",
 		turn: 6,
-		proc: [panel_attackup(0.5)],
+		proc: [ss_panel_change([0,0,1,0,1]), panel_attackup(0.5)],
 	},
 	Lawake: [
 		Statusup(0, 500),
@@ -30382,7 +30382,7 @@ Cards = [{
 	ss1: {
 		desc: "<ガード>2ターン火属性のダメージを25%軽減する、3チェインを消費しさらに2ターン軽減",
 		turn: 6,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Fastskill(1),
@@ -30402,7 +30402,7 @@ Cards = [{
 	ss2: {
 		desc: "<ガード>3ターン火属性のダメージを25%軽減する、3チェインを消費しさらに2ターン軽減",
 		turn: 10,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Attr_statusup(100,0, [0,1,0,0,0,]),
@@ -30560,7 +30560,7 @@ Cards = [{
 	ss1: {
 		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し、ダメージを軽減(20%、10%)◆発動中行動不可",
 		turn: 6,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Statusup(200,0),
@@ -30581,7 +30581,7 @@ Cards = [{
 	ss2: {
 		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し、ダメージを軽減(30%、10%)。5チェインを消費しさらに攻撃力アップ(50%)◆発動中行動不可",
 		turn: 9,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Statusup(1000,0),
@@ -30605,7 +30605,7 @@ Cards = [{
 	ss1: {
 		desc: "<無に還す瞳>3ターン後に敵単体を無に還す(一部敵には無効)",
 		turn: 10,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],1),
@@ -30626,7 +30626,7 @@ Cards = [{
 	ss2: {
 		desc: "<無に還す瞳>2ターン後に敵単体を無に還す(一部敵には無効)",
 		turn: 15,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -30672,7 +30672,7 @@ Cards = [{
 		desc: "<AS発動時間延長>2ターン溜めた後、15ターンの間、アンサースキル発動時間を15秒延長する(上限値:20秒)",
 		turn: 5,
 		charged: 2,
-		proc: null,
+		proc: [ss_astime_ext(15)],
 	},
 	Lawake: [
 		Statusup(500,0),
