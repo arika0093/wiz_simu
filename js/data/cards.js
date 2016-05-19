@@ -912,7 +912,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する",
 		turn: 5,
-		proc: [null]
+		proc: [ss_astime_ext(10)]
 	},
 	islegend: true,
 	Lawake: [
@@ -926,7 +926,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: [null]
+		proc: [ss_answer_foresight()]
 	},
 }, {
 	name: "炎竜の進撃者 キャナル・エアガイツ",
@@ -1348,7 +1348,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する",
 		turn: 5,
-		proc: [null]
+		proc: [ss_astime_ext(10)]
 	},
 	islegend: true,
 	Lawake: [
@@ -1362,7 +1362,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、アンサースキル発動時間を15秒延長する",
 		turn: 7,
-		proc: [null]
+		proc: [ss_astime_ext(15)]
 	},
 }, {
 	name: "陽光の綺麗石 サティサ・テオトリ",
@@ -2706,7 +2706,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を5秒延長する",
 		turn: 3,
-		proc: [null]
+		proc: [ss_astime_ext(5)]
 	},
 	islegend: true,
 	Lawake: [
@@ -2720,7 +2720,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: [null]
+		proc: [ss_answer_foresight()]
 	},
 }, {
 	name: "改新の大華焔 レナ・イラプション",
@@ -5435,7 +5435,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する",
 		turn: 5,
-		proc: [null]
+		proc: [ss_astime_ext(10)]
 	},
 	islegend: true,
 	Lawake: [
@@ -5449,7 +5449,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: [null]
+		proc: [ss_answer_foresight()]
 	},
 }, {
 	name: "神話に記された英雄 アスカ・イズモ",
@@ -6794,7 +6794,7 @@ Cards = [{
 	ss1: {
 		desc: "味方全体のMAXHPの50％を使い、解答選択肢を2つ削る",
 		turn: 1,
-		proc: [ss_consume_all(0.5)],
+		proc: [ss_answer_narrow(2), ss_consume_all(0.5)],
 	},
 	islegend: true,
 	Lawake: [
@@ -6808,7 +6808,7 @@ Cards = [{
 	ss2: {
 		desc: "味方全体のMAXHPの50％を使い、解答を見破る",
 		turn: 2,
-		proc: [ss_consume_all(0.5)],
+		proc: [ss_answer_foresight(), ss_consume_all(0.5)],
 	},
 }, {
 	name: "滅龍冥刃 シャドウ・サーヴァント",
@@ -7321,7 +7321,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する",
 		turn: 5,
-		proc: [null]
+		proc: [ss_astime_ext(10)]
 	},
 	islegend: true,
 	Lawake: [
@@ -7335,7 +7335,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、アンサースキル発動時間を15秒延長する",
 		turn: 7,
-		proc: [null]
+		proc: [ss_astime_ext(15)]
 	},
 }, {
 	name: "空飛ぶ大魔道 ソフィ・ハーネット",
@@ -7585,7 +7585,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する",
 		turn: 6,
-		proc: [null]
+		proc: [ss_astime_ext(10)]
 	},
 	islegend: true,
 	Lawake: [
@@ -7599,7 +7599,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、アンサースキル発動時間を15秒延長する",
 		turn: 8,
-		proc: [null]
+		proc: [ss_astime_ext(15)]
 	},
 }, {
 	name: "涙色の絶大魔法 チカ・ストロベリ",
@@ -7760,7 +7760,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削る",
 		turn: 3,
-		proc: [null]
+		proc: [ss_answer_narrow(2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -7774,7 +7774,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: [null]
+		proc: [ss_answer_foresight()]
 	},
 }, {
 	name: "託翼の守護聖剣 テオドール・ザザ",
@@ -8200,7 +8200,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削る",
 		turn: 3,
-		proc: [null]
+		proc: [ss_answer_narrow(2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -8214,7 +8214,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: [null]
+		proc: [ss_answer_foresight()]
 	},
 }, {
 	name: "銀色に躍る フィリー・ハイウインド",
@@ -8949,7 +8949,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削る",
 		turn: 3,
-		proc: [null]
+		proc: [ss_answer_narrow(2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -8963,7 +8963,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: [null]
+		proc: [ss_answer_foresight()]
 	},
 }, {
 	name: "墜月咆吼 リュコス・ヴォーダン",
@@ -12283,7 +12283,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する",
 		turn: 5,
-		proc: [null]
+		proc: [ss_astime_ext(10)]
 	},
 	islegend: true,
 	Lawake: [
@@ -12297,7 +12297,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、アンサースキル発動時間を15秒延長する",
 		turn: 7,
-		proc: [null]
+		proc: [ss_astime_ext(15)]
 	},
 }, {
 	name: "灼けつく大地の帝王 ジン・サイード",
@@ -13467,7 +13467,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削る",
 		turn: 3,
-		proc: [null]
+		proc: [ss_answer_narrow(2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -13481,7 +13481,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: [null]
+		proc: [ss_answer_foresight()]
 	},
 }, {
 	name: "芳しき天上の姉妹 ファム＆フェルチ",
@@ -13688,7 +13688,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削る",
 		turn: 3,
-		proc: [null]
+		proc: [ss_answer_narrow(2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -13701,7 +13701,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: [null]
+		proc: [ss_answer_foresight()]
 	},
 }, {
 	name: "お茶目怪盗 ヘレス・ブリリアント",
@@ -15659,7 +15659,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削る",
 		turn: 3,
-		proc: [null],
+		proc: [ss_answer_narrow(2)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -15680,7 +15680,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: [null],
+		proc: [ss_answer_foresight()],
 	},
 	Lawake: [
 		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
@@ -17407,7 +17407,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削る",
 		turn: 3,
-		proc: [null],
+		proc: [ss_answer_narrow(2)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -17428,7 +17428,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: [null],
+		proc: [ss_answer_foresight()],
 	},
 	Lawake: [
 		Statusup(300, 0),
@@ -17718,7 +17718,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削り、3チェインを消費し解答を見破る",
 		turn: 3,
-		proc: [function (f) { ss_chain_cost(3, 1, 0)(f,-1,-1,true); return true; }],
+		proc: [ss_chain_cost_skill(3, ss_answer_foresight(), ss_answer_narrow(2))],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
@@ -17739,7 +17739,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: [null],
+		proc: [ss_answer_foresight()],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -19278,7 +19278,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: [null],
+		proc: [ss_answer_foresight()],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [0,1,0,0,0,]),
@@ -20431,7 +20431,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削り、3チェインを消費し解答を見破る",
 		turn: 3,
-		proc: [function (f) { ss_chain_cost(3, 1, 0)(f,-1,-1,true); return true; }],
+		proc: [ss_chain_cost_skill(3, ss_answer_foresight(), ss_answer_narrow(2))],
 	},
 	awakes: [
 		Fastskill(1),
@@ -20452,7 +20452,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: [null],
+		proc: [ss_answer_foresight()],
 	},
 	Lawake: [
 		Statusup(0,1000),
@@ -20651,7 +20651,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削る",
 		turn: 3,
-		proc: [null],
+		proc: [ss_answer_narrow(2)],
 	},
 	awakes: [
 		Statusup(200,0),
@@ -20672,7 +20672,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: [null],
+		proc: [ss_answer_foresight()],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -20783,7 +20783,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削る",
 		turn: 3,
-		proc: [null],
+		proc: [ss_answer_narrow(2)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -20804,7 +20804,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: [null],
+		proc: [ss_answer_foresight()],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [0,1,0,0,0,]),
@@ -23622,7 +23622,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: [null],
+		proc: [ss_answer_foresight()],
 	},
 	Lawake: [
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
@@ -24303,7 +24303,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削る",
 		turn: 3,
-		proc: [null],
+		proc: [ss_answer_narrow(2)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -24324,7 +24324,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: [null],
+		proc: [ss_answer_foresight()],
 	},
 	Lawake: [
 		Statusup(0,300),
@@ -27663,7 +27663,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する(上限:20秒)",
 		turn: 5,
-		proc: [null],
+		proc: [ss_astime_ext(10)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -27684,7 +27684,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、アンサースキル発動時間を15秒延長する(上限:20秒)、さらに味方全体のHPを回復する(25%)",
 		turn: 7,
-		proc: [ss_heal(0.25)],
+		proc: [ss_astime_ext(20), ss_heal(0.25)],
 	},
 	Lawake: [
 		Statusup(0, 400),
@@ -27885,7 +27885,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する(上限値:20秒)",
 		turn: 5,
-		proc: [null],
+		proc: [ss_astime_ext(10)],
 	},
 	awakes: [
 		Statusup(200, 0),
@@ -27906,7 +27906,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、アンサースキル発動時間を15秒延長する(上限値:20秒)",
 		turn: 8,
-		proc: [null],
+		proc: [ss_astime_ext(15)],
 	},
 	Lawake: [
 		Attr_statusup(0, 200, [1, 0, 0, 0, 0, ]),
@@ -27928,7 +27928,7 @@ Cards = [{
 	ss1: {
 		desc: "解答選択肢を2つ削り、3チェインを消費し解答を見破る",
 		turn: 3,
-		proc: [null],
+		proc: [ss_chain_cost_skill(3, ss_answer_foresight(), ss_answer_narrow(2))],
 	},
 	awakes: [
 		Statusup(200, 0),
@@ -27949,7 +27949,7 @@ Cards = [{
 	ss2: {
 		desc: "解答を見破る",
 		turn: 6,
-		proc: [null],
+		proc: [ss_answer_foresight()],
 	},
 	Lawake: [
 		Statusup(0, 500),
@@ -30672,7 +30672,7 @@ Cards = [{
 		desc: "<AS発動時間延長>2ターン溜めた後、15ターンの間、アンサースキル発動時間を15秒延長する(上限値:20秒)",
 		turn: 5,
 		charged: 2,
-		proc: [null],
+		proc: [ss_astime_ext(15)],
 	},
 	Lawake: [
 		Statusup(500,0),
