@@ -27,4 +27,17 @@ var Awake_crystal_lists = [{
 	param2: "{0}",
 	param3: [1, 1, 1, 1, 1],
 	is_legend: true,
+}, {
+	name: "L時ダメージブロック300 4T （効果値は指定できません）",
+	imple: Awake_SpecialSkill,
+	param1: "ss_damageblock_all",
+	param2: 300,
+	param3: 4,
+	is_legend: true,
+}, {
+	name: "L時HP25%回復 （効果値は指定できません）",
+	imple: Awake_SpecialSkill,
+	param1: "ss_heal",
+	param2: 0.25,
+	is_legend: true,
 }, ];
