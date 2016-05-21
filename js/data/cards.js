@@ -471,7 +471,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを1遅らせる",
 		turn: 5,
-		proc: [null]
+		proc: [ss_delay_s(1)]
 	},
 	islegend: true,
 	Lawake: [
@@ -485,7 +485,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを1遅らせ、火属性のダメージ(180％)",
 		turn: 6,
-		proc: [ss_damage_all(1.8, [0])],
+		proc: [ss_damage_all(1.8, [0]), ss_delay_s(1)],
 	},
 }, {
 	name: "死界の焔 ヴィヴィ＆イザヴェリ",
@@ -2882,7 +2882,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを1遅らせる",
 		turn: 7,
-		proc: [null]
+		proc: [ss_delay_s(1)]
 	},
 	islegend: true,
 	Lawake: [
@@ -2896,7 +2896,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを1遅らせ、火属性のダメージ(180％)",
 		turn: 8,
-		proc: [ss_damage_all(1.8, [0])],
+		proc: [ss_damage_all(1.8, [0]), ss_delay_s(1)],
 	},
 }, {
 	name: "空の昏き英雄 ディートリヒ・ベルク",
@@ -4376,7 +4376,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを2遅らせる。HP20％以下でさらに1遅らせる。",
 		turn: 8,
-		proc: [null]
+		proc: [ss_delay_s(ss_hp_under(0.2, 3, 2))]
 	},
 	islegend: true,
 	Lawake: [
@@ -4390,7 +4390,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを3遅らせる。HP20％以下でさらに1遅らせる。",
 		turn: 10,
-		proc: [null]
+		proc: [ss_delay_s(ss_hp_less(0.2, 4, 3))]
 	},
 }, {
 	name: "AbCd-Λλ:《甘く朽ち果てる闇 ニレイヌ》",
@@ -4771,7 +4771,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを1遅らせる",
 		turn: 5,
-		proc: [null]
+		proc: [ss_delay_s(1)]
 	},
 	islegend: true,
 	Lawake: [
@@ -4785,7 +4785,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを2遅らせ、20チェインで更に2遅らせる",
 		turn: 10,
-		proc: [null]
+		proc: [ss_delay_s(ss_chain_cond(20, 4, 2))]
 	},
 }, {
 	name: "想いを翼に乗せて 初音ミク",
@@ -4859,7 +4859,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを1遅らせる",
 		turn: 5,
-		proc: [null]
+		proc: [ss_delay_s(1)]
 	},
 	islegend: true,
 	Lawake: [
@@ -4873,7 +4873,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: [null]
+		proc: [ss_delay_s(2)]
 	},
 }, {
 	name: "飛天の神獣皇 ラオ・イーシェン",
@@ -5523,7 +5523,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを1遅らせる",
 		turn: 6,
-		proc: [null]
+		proc: [ss_delay_s(1)]
 	},
 	islegend: true,
 	Lawake: [
@@ -5537,7 +5537,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを2遅らせる",
 		turn: 7,
-		proc: [null]
+		proc: [ss_delay_s(2)]
 	},
 }, {
 	name: "撃砕の鉄腕 アトヤ＆リベルタス",
@@ -6401,7 +6401,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを1遅らせる",
 		turn: 5,
-		proc: [null]
+		proc: [ss_delay_s(1)]
 	},
 	islegend: true,
 	Lawake: [
@@ -6415,7 +6415,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを1遅らせ、水属性のダメージ(180％)",
 		turn: 6,
-		proc: [ss_damage_s(1.8, [1], 1)],
+		proc: [ss_damage_s(1.8, [1], 1), ss_delay_s(1)],
 	},
 }, {
 	name: "遠き夢の幻 エリカ・オイリン",
@@ -7115,7 +7115,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null]
+		proc: [ss_delay_s(3)]
 	},
 }, {
 	name: "真の大妖怪 殺生丸",
@@ -10178,7 +10178,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを2遅らせる。HP20％以下でさらに1遅らせる。",
 		turn: 8,
-		proc: [null]
+		proc: [ss_delay_s(ss_hp_less(0.2, 3, 2))]
 	},
 	islegend: true,
 	Lawake: [
@@ -10192,7 +10192,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを3遅らせる。HP20％以下でさらに1遅らせる。",
 		turn: 10,
-		proc: [null]
+		proc: [ss_delay_s(ss_hp_less(0.2, 4, 3))]
 	},
 }, {
 	name: "AbCd-Σζ:《滾ることなき血潮 カルム》",
@@ -10310,7 +10310,7 @@ Cards = [{
 	ss1: {
 		desc: "スペシャルスキルの発動ターンを1早め、敵単体の攻撃ターンを1遅らせる",
 		turn: 6,
-		proc: [ss_skillboost(1)],
+		proc: [ss_skillboost(1), ss_delay_s(1)],
 	},
 	islegend: true,
 	Lawake: [
@@ -10324,7 +10324,7 @@ Cards = [{
 	ss2: {
 		desc: "スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
 		turn: 9,
-		proc: [ss_skillboost(2)],
+		proc: [ss_skillboost(2), ss_delay_s(2)],
 	},
 }, {
 	name: "AbCd-A:《廃絶の鬼神バシレイデ》",
@@ -11584,7 +11584,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを1遅らせる",
 		turn: 5,
-		proc: [null]
+		proc: [ss_delay_s(1)]
 	},
 	islegend: true,
 	Lawake: [
@@ -11598,7 +11598,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを1遅らせ、雷属性のダメージ(180％)",
 		turn: 6,
-		proc: [ss_damage_all(1.8, [0,0,1,0,0])],
+		proc: [ss_damage_all(1.8, [0,0,1,0,0]), ss_delay_s(1)],
 	},
 }, {
 	name: "宗匠紋章師 エトワール・ブリュネ",
@@ -13292,7 +13292,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null]
+		proc: [ss_delay_s(3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -13307,7 +13307,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを3遅らせ、単体に雷属性のダメージ(400％)",
 		turn: 15,
-		proc: [ss_damage_s(4.0, [2], 1)],
+		proc: [ss_damage_s(4.0, [2], 1), ss_delay_s(3)],
 	},
 }, {
 	name: "迷走夢想の恋心 ニコラ・モーガン",
@@ -13555,7 +13555,7 @@ Cards = [{
 	ss1: {
 		desc: "スペシャルスキルの発動ターンを1早め、敵単体の攻撃ターンを1遅らせる",
 		turn: 6,
-		proc: [ss_skillboost(1)],
+		proc: [ss_skillboost(1), ss_delay_s(1)],
 	},
 	islegend: true,
 	Lawake: [
@@ -13570,7 +13570,7 @@ Cards = [{
 	ss2: {
 		desc: "スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
 		turn: 9,
-		proc: [ss_skillboost(2)],
+		proc: [ss_skillboost(2), ss_delay_s(2)],
 	},
 }, {
 	name: "芳しき恋の香り フェルチ・リリー",
@@ -14522,7 +14522,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: [null]
+		proc: [ss_delay_s(2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -14536,7 +14536,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null]
+		proc: [ss_delay_s(3)]
 	},
 }, {
 	name: "空戦支配の片翼 ローヴィ・フロイセ",
@@ -16065,7 +16065,7 @@ Cards = [{
 	ss1: {
 		desc: "スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
 		turn: 9,
-		proc: [ss_skillboost(2)],
+		proc: [ss_skillboost(2), ss_delay_s(2)],
 	},
 	awakes: [
 		Panel_boost([0, 0, 1, 0, 0, ], 1),
@@ -16086,7 +16086,7 @@ Cards = [{
 	ss2: {
 		desc: "スペシャルスキルの発動ターンを3早め、敵単体の攻撃ターンを3遅らせる",
 		turn: 12,
-		proc: [ss_skillboost(3)],
+		proc: [ss_skillboost(3), ss_delay_s(3)],
 	},
 	Lawake: [
 		Statusup(500, 0),
@@ -16376,7 +16376,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: [null],
+		proc: [ss_delay_s(2)],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],2),
@@ -16397,7 +16397,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null],
+		proc: [ss_delay_s(3)],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -18397,7 +18397,7 @@ Cards = [{
 	ss2: {
 		desc: "味方全体のスペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
 		turn: 9,
-		proc: [ss_skillboost(2)],
+		proc: [ss_skillboost(2), ss_delay_s(2)],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -22828,7 +22828,7 @@ Cards = [{
 	ss2: {
 		desc: "スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
 		turn: 9,
-		proc: [ss_skillboost(2)],
+		proc: [ss_skillboost(2), ss_delay_s(2)],
 	},
 	Lawake: [
 		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
@@ -25347,7 +25347,7 @@ Cards = [{
 	ss1: {
 		desc: "スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
 		turn: 9,
-		proc: [ss_skillboost(2)],
+		proc: [ss_skillboost(2), ss_delay_s(2)],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -25368,7 +25368,7 @@ Cards = [{
 	ss2: {
 		desc: "スペシャルスキルの発動ターンを3早め、敵単体の攻撃ターンを3遅らせる",
 		turn: 12,
-		proc: [ss_skillboost(3)],
+		proc: [ss_skillboost(3), ss_delay_s(3)],
 	},
 	Lawake: [
 		Statusup(500, 0),
@@ -26136,7 +26136,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null],
+		proc: [ss_delay_s(3)],
 	},
 	awakes: [
 		Panel_boost([0, 0, 1, 0, 0, ], 1),
@@ -26157,7 +26157,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを3遅らせ、20チェインでさらに1遅らせる",
 		turn: 14,
-		proc: [null],
+		proc: [ss_delay_s(ss_chain_cond(20, 4, 3))],
 	},
 	Lawake: [
 		Statusup(400, 0),
@@ -26573,7 +26573,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを3ターン遅らせる",
 		turn: 10,
-		proc: [null],
+		proc: [ss_delay_s(3)],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],1),
@@ -26594,7 +26594,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを3ターン遅らせ、水属性のダメージ(400%)",
 		turn: 12,
-		proc: [ss_damage_s(4.0, [1], 1)],
+		proc: [ss_damage_s(4.0, [1], 1), ss_delay_s(3)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,1,0,0,0,]),
@@ -28018,7 +28018,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを2遅らせる",
 		turn: 9,
-		proc: [null],
+		proc: [ss_delay_s(2)],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -28039,7 +28039,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体の攻撃ターンを2遅らせ、火属性のダメージ(400%)",
 		turn: 12,
-		proc: [ss_damage_s(4.0, [0], 1)],
+		proc: [ss_damage_s(4.0, [0], 1), ss_delay_s(2)],
 	},
 	Lawake: [
 		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
@@ -28328,7 +28328,7 @@ Cards = [{
 	ss1: {
 		desc: "スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
 		turn: 9,
-		proc: [ss_skillboost(2)],
+		proc: [ss_skillboost(2), ss_delay_s(2)],
 	},
 	awakes: [
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
@@ -28349,7 +28349,7 @@ Cards = [{
 	ss2: {
 		desc: "スペシャルスキルの発動ターンを3早め、敵単体の攻撃ターンを3遅らせる",
 		turn: 12,
-		proc: [ss_skillboost(3)],
+		proc: [ss_skillboost(3), ss_delay_s(3)],
 	},
 	Lawake: [
 		// L時 ダメージブロック(400/5t)
