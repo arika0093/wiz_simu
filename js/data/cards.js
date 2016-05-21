@@ -1305,7 +1305,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null]
+		proc: [ss_delay_all(3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -1319,7 +1319,7 @@ Cards = [{
 	ss2: {
 		desc: "スペシャルスキルの発動ターンを3早め、敵全体の攻撃ターンを3遅らせる",
 		turn: 15,
-		proc: [ss_skillboost(3)],
+		proc: [ss_skillboost(3), ss_delay_all(3)],
 	},
 }, {
 	name: "隔世の傍観者 サジェ・カムラナ",
@@ -8068,7 +8068,7 @@ Cards = [{
 	ss1: {
 		desc: "スペシャルスキルの発動ターンを1早め、敵全体の攻撃ターンを1遅らせる",
 		turn: 7,
-		proc: [ss_skillboost(1)],
+		proc: [ss_skillboost(1), ss_delay_all(1)],
 	},
 	islegend: true,
 	Lawake: [
@@ -8082,7 +8082,7 @@ Cards = [{
 	ss2: {
 		desc: "スペシャルスキルの発動ターンを2早め、敵全体の攻撃ターンを2遅らせる",
 		turn: 10,
-		proc: [ss_skillboost(2)],
+		proc: [ss_skillboost(2), ss_delay_all(2)],
 	},
 }, {
 	name: "想い、純色の雪華 ピノ・マリアンヌ",
@@ -9738,7 +9738,7 @@ Cards = [{
 	ss1: {
 		desc: "スペシャルスキルの発動ターンを1早め、敵全体の攻撃ターンを1遅らせる",
 		turn: 6,
-		proc: [ss_skillboost(1)],
+		proc: [ss_skillboost(1), ss_delay_all(1)],
 	},
 	islegend: true,
 	Lawake: [
@@ -9752,7 +9752,7 @@ Cards = [{
 	ss2: {
 		desc: "スペシャルスキルの発動ターンを2早め、敵全体の攻撃ターンを2遅らせる",
 		turn: 9,
-		proc: [ss_skillboost(2)],
+		proc: [ss_skillboost(2), ss_delay_all(2)],
 	},
 }, {
 	name: "縛眼の檻 エリス＝マギア・シャルム",
@@ -10089,7 +10089,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを1遅らせる",
 		turn: 5,
-		proc: [null]
+		proc: [ss_delay_all(1)]
 	},
 	islegend: true,
 	Lawake: [
@@ -10104,7 +10104,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体の攻撃ターンを1遅らせ、水属性のダメージ(120％)",
 		turn: 6,
-		proc: [ss_damage_all(1.2, [1])],
+		proc: [ss_damage_all(1.2, [1]), ss_delay_all(1)],
 	},
 }, {
 	name: "開かれた夏への扉 ヤチヨ＆アッカ",
@@ -14566,7 +14566,7 @@ Cards = [{
 	ss1: {
 		desc: "スペシャルスキルの発動ターンを1早め、敵全体の攻撃ターンを1遅らせる",
 		turn: 6,
-		proc: [ss_skillboost(1)],
+		proc: [ss_skillboost(1), ss_delay_all(1)],
 	},
 	islegend: true,
 	Lawake: [
@@ -14580,7 +14580,7 @@ Cards = [{
 	ss2: {
 		desc: "スペシャルスキルの発動ターンを2早め、敵全体の攻撃ターンを2遅らせる",
 		turn: 9,
-		proc: [ss_skillboost(2)],
+		proc: [ss_skillboost(2), ss_delay_all(2)],
 	},
 }, {
 	name: "唸る激嵐の双舞剣 ロベルト・カウズ",
@@ -17451,7 +17451,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを1遅らせる",
 		turn: 4,
-		proc: [null],
+		proc: [ss_delay_all(1)],
 	},
 	awakes: [
 		Fastskill(2),
@@ -17471,7 +17471,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体の攻撃ターンを1遅らせ、水属性のダメージ(180%)",
 		turn: 9,
-		proc: ss_damage_all(1.8, [1]),
+		proc: [ss_damage_all(1.8, [1]), ss_delay_all(1)],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -18202,7 +18202,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null],
+		proc: [ss_delay_all(3)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -18223,7 +18223,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体の攻撃ターンを3遅らせ、20チェインでさらに1遅らせる",
 		turn: 13,
-		proc: [null],
+		proc: [ss_delay_all(ss_chain_cond(20, 4, 3))],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -18654,7 +18654,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを1遅らせる",
 		turn: 6,
-		proc: [null],
+		proc: [ss_delay_all(1)],
 	},
 	awakes: [
 		Awake_noeffect("経験値取得量アップ", 1),
@@ -18675,7 +18675,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体の攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: [null],
+		proc: [ss_delay_all(2)],
 	},
 	Lawake: [
 		Statusup(0, 500),
@@ -19169,7 +19169,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを1遅らせる",
 		turn: 4,
-		proc: [null],
+		proc: [ss_delay_all(1)],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],2),
@@ -19673,7 +19673,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体の攻撃ターンを1遅らせ、火属性のダメージ(180%)",
 		turn: 10,
-		proc: [ss_damage_all(1.8, [0])],
+		proc: [ss_damage_all(1.8, [0]), ss_delay_all(1)],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [1,0,0,0,0,]),
@@ -24435,7 +24435,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを2遅らせ、毒状態でさらに1遅らせる",
 		turn: 8,
-		proc: [null],
+		proc: [ss_delay_all(ss_is_poison_own(3,2))],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -24456,7 +24456,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体の攻撃ターンを3遅らせ、毒状態でさらに1遅らせる",
 		turn: 12,
-		proc: [null],
+		proc: [ss_delay_all(ss_is_poison_own(4,3))],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -24677,7 +24677,7 @@ Cards = [{
 	ss2: {
 		desc: "スペシャルスキルの発動ターンを3早め、敵全体の攻撃ターンを3遅らせる",
 		turn: 15,
-		proc: [ss_skillboost(3)],
+		proc: [ss_skillboost(3), ss_delay_all(3)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,1,0,0,0,]),
@@ -24994,7 +24994,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを2ターン遅らせる",
 		turn: 8,
-		proc: [null],
+		proc: [ss_delay_all(2)],
 	},
 	awakes: [
 		Costdown(2),
@@ -25015,7 +25015,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体の攻撃ターンを2ターン遅らせ、3チェイン消費しさらに1遅らせる",
 		turn: 10,
-		proc: [null],
+		proc: [ss_delay_all(ss_chain_cost(ch, 3, 2))],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,0,0,0,]),
@@ -25780,7 +25780,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを1遅らせる",
 		turn: 4,
-		proc: [null],
+		proc: [ss_delay_all(1)],
 	},
 	awakes: [
 		Heal_afterbattle(10),
@@ -25801,7 +25801,7 @@ Cards = [{
 	ss2: {
 		desc: "スペシャルスキルの発動ターンを1早め、敵全体の攻撃ターンを1遅らせる",
 		turn: 6,
-		proc: [ss_skillboost(1)],
+		proc: [ss_skillboost(1), ss_delay_all(1)],
 	},
 	Lawake: [
 		Abstate_invalid("ss_sealed"),
@@ -26749,7 +26749,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを1遅らせる",
 		turn: 4,
-		proc: [null],
+		proc: [ss_delay_all(1)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -26770,7 +26770,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体の攻撃ターンを1遅らせ、雷属性のダメージ(120%)",
 		turn: 6,
-		proc: [ss_damage_all(1.2, [2])],
+		proc: [ss_damage_all(1.2, [2]), ss_delay_all(1)],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -26793,7 +26793,7 @@ Cards = [{
 	ss1: {
 		desc: "スペシャルスキルの発動を1ターン早め、敵全体の攻撃ターンを1遅らせる",
 		turn: 6,
-		proc: [ss_skillboost(1)],
+		proc: [ss_skillboost(1), ss_delay_all(1)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -26814,7 +26814,7 @@ Cards = [{
 	ss2: {
 		desc: "スペシャルスキルの発動を2ターン早め、敵全体の攻撃ターンを2遅らせる",
 		turn: 9,
-		proc: [ss_skillboost(2)],
+		proc: [ss_skillboost(2), ss_delay_all(2)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,1,1,0,0,]),
@@ -27217,7 +27217,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体の攻撃ターンを1遅らせる",
 		turn: 5,
-		proc: [null],
+		proc: [ss_delay_all(1)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -27238,7 +27238,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体の攻撃ターンを1遅らせ、水属性のダメージ(120%)",
 		turn: 7,
-		proc: [ss_damage_all(1.2, [1])],
+		proc: [ss_damage_all(1.2, [1]), ss_delay_all(1)],
 	},
 	Lawake: [
 		Statusup(0,400),
