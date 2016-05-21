@@ -30,7 +30,7 @@ function decksgg_loaddeck(data) {
 $(function () {
 	// Cards sort
 	Cards = Cards.sort(function (a, b) {
-		return a.imageno > b.imageno ? 1 : -1;
+		return a.imageno < b.imageno ? 1 : -1;
 	});
 	// Load
 	deckdata_Load(null, decksgg_loaddeck);
