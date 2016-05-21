@@ -965,6 +965,7 @@ Quests = [
 		category: "event tornament",
 		overlap: false,
 		aprnum: 5,
+		panel_effect: panel_chainplus(4),
 		data: [{
 			appearance: [1],
 			enemy: [{
