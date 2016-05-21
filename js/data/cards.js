@@ -25015,7 +25015,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体の攻撃ターンを2ターン遅らせ、3チェイン消費しさらに1遅らせる",
 		turn: 10,
-		proc: [ss_delay_all(ss_chain_cost(ch, 3, 2))],
+		proc: [ss_delay_all(ss_chain_cost(3, 3, 2))],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,0,0,0,]),
