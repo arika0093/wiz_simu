@@ -18949,7 +18949,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン後に敵単体を無に還す(一部敵には無効)",
 		turn: 10,
-		proc: [null],
+		proc: [ss_death_limit(3)],
 	},
 	awakes: [
 		Statusup(200,0),
@@ -18970,7 +18970,7 @@ Cards = [{
 	ss2: {
 		desc: "2ターン後に敵単体を無に還す(一部敵には無効)",
 		turn: 15,
-		proc: [null],
+		proc: [ss_death_limit(2)],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [1,0,0,0,0,]),
@@ -19608,7 +19608,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン後に敵単体を無に還す(一部敵には無効)",
 		turn: 10,
-		proc: [null],
+		proc: [ss_death_limit(3)],
 	},
 	awakes: [
 		Statusup(200,0),
@@ -19629,7 +19629,7 @@ Cards = [{
 	ss2: {
 		desc: "2ターン後に敵単体を無に還す(一部敵には無効)",
 		turn: 15,
-		proc: [null],
+		proc: [ss_death_limit(2)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,0,1,0,0,]),
@@ -25643,7 +25643,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン後に敵単体を無に還す(一部敵には無効)",
 		turn: 10,
-		proc: [null],
+		proc: [ss_death_limit(3)],
 	},
 	awakes: [
 		Statusup(200,0),
@@ -30605,7 +30605,7 @@ Cards = [{
 	ss1: {
 		desc: "<無に還す瞳>3ターン後に敵単体を無に還す(一部敵には無効)",
 		turn: 10,
-		proc: [null],
+		proc: [ss_death_limit(3)],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],1),
@@ -30626,7 +30626,7 @@ Cards = [{
 	ss2: {
 		desc: "<無に還す瞳>2ターン後に敵単体を無に還す(一部敵には無効)",
 		turn: 15,
-		proc: [null],
+		proc: [ss_death_limit(2)],
 	},
 	Lawake: [
 		Statusup(500,0),
