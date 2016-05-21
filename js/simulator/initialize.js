@@ -212,8 +212,11 @@ $(function () {
 			// タゲリセット
 			target_allselect(-1);
 			//クエスト依存パネル効果の設定
-			if(Field.Quest.panel_effect != undefined){
-				ss_object_done(Field, 0, Field.Quest.panel_effect)
+			if (Field.Quest.panel_effect) {
+				var peff = Field.Quest.panel_effect;
+				for (var i = 0; i < peff.length; i++) {
+					ss_object_done(Field, 0, peff[i]);
+				}
 			}
 			// 初期状態を保存
 			Field_log.save(0, Field);
@@ -291,10 +294,6 @@ function nextturn(is_ssfin) {
 	turneff_chargeskill_check();
 	// seedリセット
 	Field.Status.seed = 0;
-	//クエスト依存パネル効果の設定
-	if(Field.Quest.panel_effect != undefined){
-		ss_object_done(Field, 0, Field.Quest.panel_effect)
-	}
 	// ログ保存
 	Field_log.save(f_st.totalturn, Field);
 	Field_log._removeover(f_st.totalturn);

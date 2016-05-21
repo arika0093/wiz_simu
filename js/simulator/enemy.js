@@ -79,6 +79,13 @@ function allkill_check(is_ssfinish) {
 		}
 		// パネル付与効果を全部リセット
 		st.panel_add = [];
+		//クエスト依存パネル効果の設定
+		if (Field.Quest.panel_effect) {
+			var peff = Field.Quest.panel_effect;
+			for (var i = 0; i < peff.length; i++) {
+				ss_object_done(Field, 0, peff[i]);
+			}
+		}
 		st.durturn.push({ ssfin: is_ssfinish, turn: st.nowturn });
 		st.nowturn = 1;
 	} else if (!(e_ak && is_ssfinish)) {
