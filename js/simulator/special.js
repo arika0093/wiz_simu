@@ -10,7 +10,7 @@ function ss_push(n) {
 	// 発動成功なら
 	if (ss_rst) {
 		// SSを保存しておく
-		if (ss.proc && !ss.proc[0].is_skillcopy) {
+		if (ss.proc && ss.proc[0] && !ss.proc[0].is_skillcopy) {
 			Field.Status.latest_ss = ss;
 		}
 		// 発動後処理
@@ -95,10 +95,12 @@ function ss_procdo(ss, now, index) {
 		}
 		// 実行
 		for (var i = 0; i < ss.proc.length; i++) {
-			ss_rst = ss_object_done(Field, index, ss.proc[i]);
+			if (ss.proc[i]) {
+				ss_rst = ss_object_done(Field, index, ss.proc[i]);
+			}
 		}
 	}
-	return ss_rst;
+	return ss_rst !== false;
 }
 
 // SS発動後処理

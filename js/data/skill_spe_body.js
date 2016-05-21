@@ -893,7 +893,7 @@ var SpCondSkill = {
 // (内部用)実行関数
 function ss_object_done(fld, n, c_obj) {
 	// type switch
-	var skl_list = c_obj.is_skill ? SpSkill : SpCondSkill;
+	var skl_list = c_obj.is_skill ? SpSkill: SpCondSkill;
 	// 未定義なら実行しない
 	if (!skl_list || !skl_list[c_obj.name]) {
 		return null;
