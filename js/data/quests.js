@@ -1000,7 +1000,7 @@ Quests = [
 				name: "稲妻の魔狼少女",
 				hp: 15000,
 				imageno: 8066,
-				attr: 4,
+				attr: 2,
 				spec: 2,
 				move: {
 					on_move: [
@@ -1020,6 +1020,9 @@ Quests = [
 				attr: 2,
 				spec: 2,
 				move: {
+					on_popup: [
+						skill_counter(11000, -1),
+					],
 					on_move: [
 						m_enemy_once(s_enemy_chain_break()),
 						s_enemy_attack(250, 3, 5, true),
@@ -1050,9 +1053,6 @@ Quests = [
 				attr: 0,
 				spec: 2,
 				move: {
-					on_popup: [
-						skill_counter(11000, -1),
-					],
 					on_move: [
 						s_enemy_attack(100, 5, 1, true),
 					],
@@ -1141,7 +1141,7 @@ Quests = [
 				},
 			}, {
 				name: "魔界乙女の熱情のしずく",
-				hp: 40000,
+				hp: 30000,
 				imageno: 8053,
 				attr: 0,
 				spec: 2,
@@ -1165,7 +1165,7 @@ Quests = [
 				spec: 2,
 				move: {
 					on_move: [
-						m_enemy_once(s_enemy_all_sealed(5, 1)),
+						m_enemy_once(s_enemy_all_sealed(5, 2)),
 						s_enemy_attack(150, 3, 3, true),
 					],
 					atrandom: false,
@@ -1180,7 +1180,7 @@ Quests = [
 				spec: 2,
 				move: {
 					on_popup: [
-						skill_counter_func(s_enemy_all_sealed, "全体封印(10T)", -1, false, 5, 10),
+						skill_counter_func(s_enemy_all_sealed, "全体封印(11T)", -1, false, 5, 11),
 						damage_switch(s_enemy_when_dead_l(), m_enemy_angry(), true)
 					],
 					on_move: [
