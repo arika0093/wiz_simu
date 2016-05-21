@@ -3146,7 +3146,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性のダメージを25％軽減する",
 		turn: 5,
-		proc: [null]
+		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -3161,7 +3161,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性のダメージを50％軽減する",
 		turn: 9,
-		proc: [null]
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)]
 	},
 }, {
 	name: "迸る竜炎の朱 キャナル・エアガイツ",
@@ -3191,7 +3191,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性のダメージを25％軽減する",
 		turn: 5,
-		proc: [null]
+		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -3205,7 +3205,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性のダメージを50％軽減する",
 		turn: 9,
-		proc: [null]
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)]
 	},
 }, {
 	name: "燃盛る不尽焔嶺 スオウ・カグツチ",
@@ -3279,7 +3279,7 @@ Cards = [{
 	ss1: {
 		desc: "2ターン火・水属性のダメージを70％軽減する",
 		turn: 9,
-		proc: [null]
+		proc: [ss_attr_guard([1,1,0,0,0], 0.7, 2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -3293,7 +3293,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン火・水属性のダメージを70％軽減する",
 		turn: 12,
-		proc: [null]
+		proc: [ss_attr_guard([1,1,0,0,0], 0.7, 3)]
 	},
 }, {
 	name: "時海の航海者 ダム・リフリス",
@@ -3586,7 +3586,7 @@ Cards = [{
 	ss1: {
 		desc: "5ターン雷属性ダメージを25％軽減する",
 		turn: 7,
-		proc: [null]
+		proc: [ss_attr_guard([0,0,1,0,0], 0.25, 5)]
 	},
 	islegend: true,
 	Lawake: [
@@ -3599,7 +3599,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターン水・雷属性ダメージを25％軽減する",
 		turn: 9,
-		proc: [null]
+		proc: [ss_attr_guard([0,1,1,0,0], 0.25, 5)]
 	},
 }, {
 	name: "真・猫族勇者 ルディ・レッドソル",
@@ -3628,7 +3628,7 @@ Cards = [{
 	ss1: {
 		desc: "2ターン水・雷属性のダメージを50％軽減する",
 		turn: 7,
-		proc: [null]
+		proc: [ss_attr_guard([0,1,1,0,0], 0.5, 2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -3642,7 +3642,7 @@ Cards = [{
 	ss2: {
 		desc: "2ターン水・雷属性のダメージを75％軽減する",
 		turn: 9,
-		proc: [null]
+		proc: [ss_attr_guard([0,1,1,0,0], 0.75, 2)]
 	},
 }, {
 	name: "炯眼冷徹 ルートヴィッヒ・ロメオ",
@@ -4420,7 +4420,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性のダメージを35％軽減する。HP20％以下でさらに3ターン軽減する。",
 		turn: 6,
-		proc: [null]
+		proc: [ss_attr_guard([1,1,1,1,1], 0.35, ss_hp_less(0.2, 6, 3))],
 	},
 	islegend: true,
 	Lawake: [
@@ -4434,7 +4434,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性のダメージを50％軽減する。HP20％以下でさらに3ターン軽減する。",
 		turn: 9,
-		proc: [null]
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, ss_hp_less(0.2, 6, 3))]
 	},
 }, {
 	name: "ぷるぷるの王 ペンプッチン",
@@ -5391,7 +5391,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性のダメージを25％軽減する",
 		turn: 5,
-		proc: [null]
+		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -5405,7 +5405,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性のダメージを50％軽減する",
 		turn: 9,
-		proc: [null]
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)]
 	},
 }, {
 	name: "虹色の恋模様 アーシア・ベネット",
@@ -6576,7 +6576,7 @@ Cards = [{
 	ss1: {
 		desc: "水・雷属性ダメージを2ターンの間50％軽減する",
 		turn: 7,
-		proc: [null]
+		proc: [ss_attr_guard([0,1,1,0,0], 0.5, 2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -6590,7 +6590,7 @@ Cards = [{
 	ss2: {
 		desc: "水・雷属性ダメージを3ターンの間50％軽減する",
 		turn: 10,
-		proc: [null]
+		proc: [ss_attr_guard([0,1,1,0,0], 0.5, 3)]
 	},
 }, {
 	name: "蒼世界の双牙 クラヴィル・スティ",
@@ -7716,7 +7716,7 @@ Cards = [{
 	ss1: {
 		desc: "2ターン火・水属性のダメージを50％軽減する",
 		turn: 7,
-		proc: [null]
+		proc: [ss_attr_guard([1,1,0,0,0], 0.5, 2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -7730,7 +7730,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン火・水属性のダメージを50％軽減する",
 		turn: 9,
-		proc: [null]
+		proc: [ss_attr_guard([1,1,0,0,0], 0.5, 3)]
 	},
 }, {
 	name: "魅惑と銀盤の明星 ティファ・テーナ",
@@ -9080,7 +9080,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン水属性のダメージを25％軽減する",
 		turn: 8,
-		proc: [null]
+		proc: [ss_attr_guard([0,1,0,0,0], 0.25, 3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -9094,7 +9094,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン水属性のダメージを50％軽減する",
 		turn: 12,
-		proc: [null]
+		proc: [ss_attr_guard([0,1,0,0,0], 0.5, 3)]
 	},
 }, {
 	name: "凛眼戦勝の女帝 ルドヴィカ・ロア",
@@ -9870,7 +9870,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性のダメージを25％軽減する、さらに味方全体のHPを回復する(25％)",
 		turn: 6,
-		proc: [ss_heal(0.25)],
+		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3), ss_heal(0.25)],
 	},
 	islegend: true,
 	Lawake: [
@@ -9884,7 +9884,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性のダメージを50％軽減する、さらに味方全体のHPを回復する(25％)",
 		turn: 10,
-		proc: [ss_heal(0.25)],
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3), ss_heal(0.25)],
 	},
 }, {
 	name: "凶空の破壊者 旗艦ネフィリムンド",
@@ -11189,7 +11189,7 @@ Cards = [{
 	ss1: {
 		desc: "2ターン火属性ダメージを75％軽減する",
 		turn: 5,
-		proc: [null]
+		proc: [ss_attr_guard([1,0,0,0,0], 0.75, 2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -11203,7 +11203,7 @@ Cards = [{
 	ss2: {
 		desc: "2ターン火属性ダメージを100％軽減する",
 		turn: 8,
-		proc: [null]
+		proc: [ss_attr_guard([1,0,0,0,0], 1, 2)]
 	},
 }, {
 	name: "聖樹の守護霊弓 アルティミシア",
@@ -11843,7 +11843,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン火属性ダメージを75％軽減する",
 		turn: 5,
-		proc: [null]
+		proc: [ss_attr_guard([1,0,0,0,0], 0.75, 3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -11857,7 +11857,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン火属性ダメージを100％軽減する",
 		turn: 8,
-		proc: [null]
+		proc: [ss_attr_guard([1,0,0,0,0], 1, 3)]
 	},
 }, {
 	name: "願いの届け人 カプレイ・シュシュ",
@@ -12327,7 +12327,7 @@ Cards = [{
 	ss1: {
 		desc: "火・雷属性ダメージを2ターンの間50％軽減する",
 		turn: 7,
-		proc: [null]
+		proc: [ss_attr_guard([1,0,1,0,0], 0.5, 2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -12341,7 +12341,7 @@ Cards = [{
 	ss2: {
 		desc: "火・雷属性ダメージを3ターンの間50％軽減する",
 		turn: 10,
-		proc: [null]
+		proc: [ss_attr_guard([1,0,1,0,0], 0.5, 3)]
 	},
 }, {
 	name: "聖光舞姫 シンシア・スターライト",
@@ -12764,7 +12764,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性のダメージを25％軽減する",
 		turn: 5,
-		proc: [null]
+		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -12778,7 +12778,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性のダメージを50％軽減する",
 		turn: 9,
-		proc: [null]
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)]
 	},
 }, {
 	name: "愛の彗星 ターク・シューメイカー",
@@ -13073,7 +13073,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン敵の攻撃を自分に集めダメージを50％軽減する",
 		turn: 7,
-		proc: [null]
+		proc: [/*undef:集める*/ ss_attr_guard([1,1,1,1,1], 0.5, 3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -13087,7 +13087,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン敵の攻撃を自分に集めダメージを75％軽減する",
 		turn: 9,
-		proc: [null]
+		proc: [/*undef:集める*/ ss_attr_guard([1,1,1,1,1], 0.75, 3)]
 	},
 }, {
 	name: "光輝く金剛金華 トミ・コトブキ",
@@ -14170,7 +14170,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性のダメージを25％軽減する",
 		turn: 6,
-		proc: [null]
+		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -14184,7 +14184,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性のダメージを50％軽減する",
 		turn: 10,
-		proc: [null]
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)]
 	},
 }, {
 	name: "外天の人形師 リツェーレ・トノラ",
@@ -19432,7 +19432,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性ダメージを40%軽減する",
 		turn: 8,
-		proc: [null],
+		proc: [ss_attr_guard([1,1,1,1,1], 0.4, 3)],
 	},
 	awakes: [
 		Attr_statusup(0,100, [1,0,1,0,0,]),
@@ -19453,7 +19453,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性ダメージを40%軽減する、10チェインを消費しさらに3ターン軽減",
 		turn: 12,
-		proc: [null],
+		proc: [ss_attr_guard([1,1,1,1,1], 0.4, ss_chain_cost(10, 6, 3))],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,1,0,0,]),
@@ -22719,7 +22719,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性のダメージを50%軽減する",
 		turn: 8,
-		proc: [null],
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -22740,7 +22740,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性のダメージを50%軽減する、5チェインを消費しさらに2ターン軽減",
 		turn: 12,
-		proc: [null],
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, ss_chain_cost(5, 5, 3))],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -23115,7 +23115,7 @@ Cards = [{
 	ss1: {
 		desc: "2ターン雷属性ダメージを軽減する(50%)",
 		turn: 8,
-		proc: [null],
+		proc: [ss_attr_guard([0,0,1,0,0], 0.5, 2)],
 	},
 	awakes: [
 		Statusup(200,0),
@@ -23136,7 +23136,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン雷属性ダメージを軽減する(50%)",
 		turn: 10,
-		proc: [null],
+		proc: [ss_attr_guard([0,0,1,0,0], 0.5, 3)],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -23159,7 +23159,7 @@ Cards = [{
 	ss1: {
 		desc: "2ターン火属性のダメージを75%軽減する",
 		turn: 8,
-		proc: [null],
+		proc: [ss_attr_guard([1,0,0,0,0], 0.75, 2)],
 	},
 	awakes: [
 		Attr_relief([1,0,0,0,0,],10),
@@ -23180,7 +23180,7 @@ Cards = [{
 	ss2: {
 		desc: "2ターン火属性のダメージを75%軽減する、さらに味方全体のHPを回復する(25%)",
 		turn: 11,
-		proc: [ss_heal(0.25)],
+		proc: [ss_attr_guard([1,0,0,0,0], 0.75, 2), ss_heal(0.25)],
 	},
 	Lawake: [
 		Statusup(400,0),
@@ -23380,7 +23380,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン水属性のダメージを50%軽減する",
 		turn: 7,
-		proc: [null],
+		proc: [ss_attr_guard([0,1,0,0,0], 0.5, 3)],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -23401,7 +23401,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン水属性のダメージを75%軽減する",
 		turn: 10,
-		proc: [null],
+		proc: [ss_attr_guard([0,1,0,0,0], 0.75, 3)],
 	},
 	Lawake: [
 		Statusup(0, 400),
@@ -23424,7 +23424,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン敵の攻撃を自分に集めダメージを50%軽減する",
 		turn: 6,
-		proc: [null],
+		proc: [/*undef:集める*/ ss_attr_guard([1,1,1,1,1], 0.5, 3)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -23445,7 +23445,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン敵の攻撃を自分に集めダメージを75%軽減する、HP50%以下でさらに25%軽減する",
 		turn: 9,
-		proc: [null],
+		proc: [/*undef:集める*/ ss_attr_guard([1,1,1,1,1], ss_hp_less(0.5, 1, 075), 3)],
 	},
 	Lawake: [
 		Statusup(0, 400),
@@ -24083,7 +24083,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性のダメージを25%軽減する",
 		turn: 5,
-		proc: [null],
+		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],1),
@@ -24104,7 +24104,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性のダメージを50%軽減する",
 		turn: 9,
-		proc: [null],
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)],
 	},
 	Lawake: [
 		Statusup(0,400),
@@ -24479,7 +24479,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性のダメージを25%軽減する",
 		turn: 5,
-		proc: [null],
+		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -24500,7 +24500,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性のダメージを50%軽減する",
 		turn: 9,
-		proc: [null],
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -24568,7 +24568,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン全属性のダメージを25%軽減する",
 		turn: 5,
-		proc: [null],
+		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)],
 	},
 	awakes: [
 		Costdown(2),
@@ -24589,7 +24589,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン全属性のダメージを50%軽減する",
 		turn: 9,
-		proc: [null],
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -29550,7 +29550,7 @@ Cards = [{
 	ss1: {
 		desc: "<ガード>2ターン火・水属性のダメージを75%軽減する",
 		turn: 5,
-		proc: [null],
+		proc: [ss_attr_guard([1,1,0,0,0], 0.75, 2)],
 	},
 	awakes: [
 		Fastskill(3),
@@ -29571,7 +29571,7 @@ Cards = [{
 	ss2: {
 		desc: "<ガード>5ターン火・水属性のダメージを75%軽減する",
 		turn: 9,
-		proc: [null],
+		proc: [ss_attr_guard([1,1,0,0,0], 0.75, 5)],
 	},
 	Lawake: [
 		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
@@ -29681,7 +29681,7 @@ Cards = [{
 	ss1: {
 		desc: "<ガード>7ターン火属性のダメージを50%軽減する",
 		turn: 5,
-		proc: [null],
+		proc: [ss_attr_guard([1,0,0,0,0], 0.5, 7)],
 	},
 	awakes: [
 		Statusup(0, 300),
@@ -29702,7 +29702,7 @@ Cards = [{
 	ss2: {
 		desc: "<ガード>4ターン火属性のダメージを50%軽減する",
 		turn: 9,
-		proc: [null],
+		proc: [ss_attr_guard([1,0,0,0,0], 0.5, 4)],
 	},
 	Lawake: [
 		Statusup(500, 0),
@@ -30382,7 +30382,7 @@ Cards = [{
 	ss1: {
 		desc: "<ガード>2ターン火属性のダメージを25%軽減する、3チェインを消費しさらに2ターン軽減",
 		turn: 6,
-		proc: [null],
+		proc: [ss_attr_guard([1,0,0,0,0], 0.25, ss_chain_cost(3, 4, 2))],
 	},
 	awakes: [
 		Fastskill(1),
@@ -30402,7 +30402,7 @@ Cards = [{
 	ss2: {
 		desc: "<ガード>3ターン火属性のダメージを25%軽減する、3チェインを消費しさらに2ターン軽減",
 		turn: 10,
-		proc: [null],
+		proc: [ss_attr_guard([1,0,0,0,0], 0.25, ss_chain_cost(3, 5, 3))],
 	},
 	Lawake: [
 		Attr_statusup(100,0, [0,1,0,0,0,]),
