@@ -1175,7 +1175,7 @@ Quests = [
 				name: "たゆたいの幽姫 コレル・シュケル",
 				hp: 190000,
 				imageno: 8048,
-				attr: 2,,
+				attr: 2,
 				spec: 2,
 				move: {
 					on_popup: [
