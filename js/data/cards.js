@@ -7848,7 +7848,7 @@ Cards = [{
 	ss1: {
 		desc: "水・雷属性ダメージを50％軽減(継続：2ターン)",
 		turn: 8,
-		proc: [null]
+		proc: [ss_attr_guard([0,1,1,0,0], 0.5, 2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -7862,7 +7862,7 @@ Cards = [{
 	ss2: {
 		desc: "水・雷属性ダメージを75％軽減(継続：2ターン)",
 		turn: 10,
-		proc: [null]
+		proc: [ss_attr_guard([0,1,1,0,0], 0.75, 2)]
 	},
 }, {
 	name: "天郷の輝光 ペガサスロード",
@@ -11155,7 +11155,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "雷属性の味方の攻撃力をアップ、神族と術士はさらにアップ(通常：+30％ / 神族・術士：+60％)",
-		proc: [null]
+		proc: [ChainEnhance(0.30, [0,0,1,0,0], 0), ChainSpecEnhance(0.60, [0,0,1,0,0], [1,9], 0)]
 	},
 	ss2: {
 		desc: "味方全体のHPを完全回復し、状態異常を回復する",
