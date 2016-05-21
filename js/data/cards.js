@@ -1654,7 +1654,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 9,
-		proc: [null]
+		proc: [ss_delay_all(2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -1668,7 +1668,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを2遅らせる、さらに味方全体のHPを回復する(50％)",
 		turn: 13,
-		proc: [ss_heal(0.5)],
+		proc: [ss_delay_all(2), ss_heal(0.5)],
 	},
 }, {
 	name: "鬼モテコーデ ジョージ・トドロキ",
@@ -2354,7 +2354,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: [null]
+		proc: [ss_delay_all(2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -2368,7 +2368,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null]
+		proc: [ss_delay_all(3)]
 	},
 }, {
 	name: "蓋天の神罰者 ラト・ファルネーゼ",
@@ -2442,7 +2442,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null]
+		proc: [ss_delay_all(3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -2456,7 +2456,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせ、敵全体へ火属性のダメージ(180％)",
 		turn: 15,
-		proc: [ss_damage_all(1.8, [0])],
+		proc: [ss_delay_all(3), ss_damage_all(1.8, [0])],
 	},
 }, {
 	name: "超ビッグ魔道少女 リルム・ロロット",
@@ -2970,7 +2970,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: [null]
+		proc: [ss_delay_all(2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -2984,7 +2984,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを2遅らせ、20チェインで更に2遅らせる",
 		turn: 10,
-		proc: [null]
+		proc: [ss_delay_all(ss_chain_cond(20, 4, 2))]
 	},
 }, {
 	name: "シェアハピネスな魔法 リコ＆グリ",
@@ -6270,7 +6270,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: [null]
+		proc: [ss_delay_all(2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -6284,7 +6284,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null]
+		proc: [ss_delay_all(3)]
 	},
 }, {
 	name: "時思う司神 イレーナ・フリエル",
@@ -6750,7 +6750,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを1遅らせ、敵全体へ水属性のダメージ(150％)",
 		turn: 8,
-		proc: [ss_damage_all(1.5, [1])],
+		proc: [ss_damage_all(1.5, [1]), ss_delay_all(1)],
 	},
 	islegend: true,
 	Lawake: [
@@ -6764,7 +6764,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを1遅らせ、敵全体へ水属性のダメージ、さらに味方全体のHPを回復する(攻撃：150％ / 回復：25％)",
 		turn: 12,
-		proc: [ss_damage_all(1.5, [1]), ss_heal(0.25)],
+		proc: [ss_damage_all(1.5, [1]), ss_heal(0.25), ss_delay_all(1)],
 	},
 }, {
 	name: "海原大魔道教授 ドン・サルーム",
@@ -7189,7 +7189,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null]
+		proc: [ss_delay_all(3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -7203,7 +7203,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせ、敵全体へ水属性のダメージ(180％)",
 		turn: 15,
-		proc: [ss_damage_all(1.8, [1])],
+		proc: [ss_damage_all(1.8, [1]), ss_delay_all(3)],
 	},
 }, {
 	name: "討龍の輝神剣 ゾディアーク",
@@ -8597,7 +8597,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: [null]
+		proc: [ss_delay_all(2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -8611,7 +8611,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null]
+		proc: [ss_delay_all(3)]
 	},
 }, {
 	name: "蒼星紋章士 メリエル・エクリプス",
@@ -8684,7 +8684,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: [null]
+		proc: [ss_delay_all(2)]
 	},
 	islegend: true,
 	Lawake: [
@@ -8698,7 +8698,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null]
+		proc: [ss_delay_all(3)]
 	},
 }, {
 	name: "万物の龍神姫 ヤヨイ・クシナダ",
@@ -10148,7 +10148,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null]
+		proc: [ss_delay_all(3)]
 	},
 }, {
 	name: "AbCd-Z:《闃寂の地平 カルム》",
@@ -12634,7 +12634,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null]
+		proc: [ss_delay_all(3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -12648,7 +12648,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせ、さらに味方全体のHPを回復する(50％)",
 		turn: 13,
-		proc: [ss_heal(0.50)],
+		proc: [ss_heal(0.50), ss_delay_all(3)],
 	},
 }, {
 	name: "御伽夢幻の凛花 セニア・ツァルカ",
@@ -13248,7 +13248,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null]
+		proc: [ss_delay_all(3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -13262,7 +13262,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせる、さらに味方全体のHPを回復する(50％)",
 		turn: 13,
-		proc: [ss_heal(0.5)],
+		proc: [ss_delay_all(3), ss_heal(0.5)],
 	},
 }, {
 	name: "真夏の熱視線 ニコラ・モーガン",
@@ -13511,7 +13511,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null]
+		proc: [ss_delay_all(3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -13525,7 +13525,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせ、20チェインで更に1遅らせる",
 		turn: 13,
-		proc: [null]
+		proc: [ss_delay_all(ss_chain_cond(20, 4, 3))]
 	},
 }, {
 	name: "とこしえに薫る想い ファム・リリー",
@@ -15636,7 +15636,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを1遅らせ、敵全体へ火属性のダメージ(120%)",
 		turn: 6,
-		proc: [ss_damage_all(1.2, [0])],
+		proc: [ss_damage_all(1.2, [0]), ss_delay_all(1)],
 	},
 	Lawake: [
 		Statusup(0, 600),
@@ -16715,7 +16715,7 @@ Cards = [{
 	ss2: {
 		desc: "スペシャルスキルの発動ターンを2早め、敵単体の行動ターンを2遅らせる",
 		turn: 9,
-		proc: [ss_skillboost(2)]
+		proc: [ss_skillboost(2), ss_delay_s(2)]
 	},
 }, {
 	name: "夢色の心贈る キワム＆クロ",
@@ -17273,7 +17273,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null],
+		proc: [ss_delay_all(3)],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -17294,7 +17294,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせ、敵全体へ雷属性のダメージ(180%)",
 		turn: 15,
-		proc: [ss_damage_all(1.8, [2])],
+		proc: [ss_damage_all(1.8, [2]), ss_delay_all(3)],
 	},
 	Lawake: [
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
@@ -18354,7 +18354,7 @@ Cards = [{
 	ss2: {
 		desc: "スペシャルスキルの発動ターンを2早め、敵全体の行動ターンを2遅らせる",
 		turn: 7,
-		proc: [ss_skillboost(2)],
+		proc: [ss_skillboost(2), ss_delay_all(2)],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -19476,7 +19476,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: [null],
+		proc: [ss_delay_all(2)],
 	},
 	awakes: [
 		Costdown(2),
@@ -19497,7 +19497,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを2遅らせ、3チェインを消費しさらに1遅らせる",
 		turn: 10,
-		proc: [null],
+		proc: [ss_delay_all(ss_chain_cost(3, 3, 2))],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,0,1,0,0,]),
@@ -20136,7 +20136,7 @@ Cards = [{
 	ss1: {
 		desc: "味方のMAXHP50%を使い、攻撃ターンを1遅らせる",
 		turn: 3,
-		proc: [ss_consume_all(0.5)],
+		proc: [ss_consume_all(0.5), ss_delay_all(1)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -20157,7 +20157,7 @@ Cards = [{
 	ss2: {
 		desc: "味方のMAXHP50%を使い、攻撃ターンを1遅らせ、敵全体へ火属性のダメージ(300%)",
 		turn: 5,
-		proc: [ss_consume_all(0.5), ss_damage_all(3.0, [0])],
+		proc: [ss_consume_all(0.5), ss_damage_all(3.0, [0]), ss_delay_all(1)],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -20563,7 +20563,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null],
+		proc: [ss_delay_all(3)],
 	},
 	awakes: [
 		Costdown(2),
@@ -20584,7 +20584,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせ、敵全体へ水属性のダメージ(180%)",
 		turn: 15,
-		proc: [ss_damage_all(1.8, [1])],
+		proc: [ss_delay_all(3), ss_damage_all(1.8, [1])],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -20739,7 +20739,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: [null],
+		proc: [ss_delay_all(2)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -20760,7 +20760,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを2遅らせる、さらに味方全体のHPを回復する(50%)",
 		turn: 10,
-		proc: [ss_heal(0.5)],
+		proc: [ss_delay_all(2), ss_heal(0.5)],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -21962,7 +21962,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 8,
-		proc: [null],
+		proc: [ss_delay_all(2)],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -21983,7 +21983,7 @@ Cards = [{
 	ss2: {
 		desc: "チェインプラス3の効果、さらに攻撃ターンを3遅らせる",
 		turn: 12,
-		proc: [ss_addchain(3)],
+		proc: [ss_addchain(3), ss_delay_all(3)],
 	},
 	Lawake: [
 		Statusup(400, 0),
@@ -22419,7 +22419,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null],
+		proc: [ss_delay_all(3)],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -22440,7 +22440,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせる、さらに味方全体のHPを回復する(50%)",
 		turn: 12,
-		proc: [ss_heal(0.50)],
+		proc: [ss_delay_all(3), ss_heal(0.50)],
 	},
 }, {
 	name: "恋そよぐ雅紅華 ツバキ・リンドウ",
@@ -22939,7 +22939,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 9,
-		proc: [null],
+		proc: [ss_delay_all(2)],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -22960,7 +22960,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを2遅らせ、HP20%以下でさらに2遅らせる",
 		turn: 12,
-		proc: [null],
+		proc: [ss_delay_all(ss_hp_less(0.2, 4, 2))],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,1,0,0,0,]),
@@ -22983,7 +22983,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを2遅らせる",
 		turn: 9,
-		proc: [null],
+		proc: [ss_delay_all(2)],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -23004,7 +23004,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを2遅らせ、敵全体へ水属性のダメージ(180%)",
 		turn: 12,
-		proc: [ss_damage_all(1.8, [1])],
+		proc: [ss_delay_all(2), ss_damage_all(1.8, [1])],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,1,0,0,0,]),
@@ -24656,7 +24656,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null],
+		proc: [ss_delay_all(3)],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],2),
@@ -24744,7 +24744,7 @@ Cards = [{
 	ss1: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null],
+		proc: [ss_delay_all(3)],
 	},
 	awakes: [
 		Costdown(2),
@@ -24765,7 +24765,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせ、20チェインで更に1遅らせる",
 		turn: 13,
-		proc: [null],
+		proc: [ss_delay_all(ss_chain_cond(20, 4, 3))],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -24941,7 +24941,7 @@ Cards = [{
 	ss2: {
 		desc: "攻撃ターンを3遅らせる",
 		turn: 10,
-		proc: [null],
+		proc: [ss_delay_all(3)],
 	},
 	Lawake: [
 		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
