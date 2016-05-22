@@ -17630,7 +17630,7 @@ Cards = [{
 	ss1: {
 		desc: "5ターン味方全体を徐々に回復する(20%)",
 		turn: 8,
-		proc: ss_regenerate(0.2, 5),
+		proc: [ss_regenerate(0.2, 5)],
 	},
 	awakes: [
 		Panel_boost([1, 0, 0, 0, 0, ], 2),
@@ -17651,7 +17651,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターン味方全体を徐々に回復する、3チェインを消費しさらに回復(20%/30%)",
 		turn: 10,
-		proc: ss_regenerate(ss_chain_cost(3, 0.3, 0.2), 5),
+		proc: [ss_regenerate(ss_chain_cost(3, 0.3, 0.2), 5)],
 	},
 	Lawake: [
 		Statusup(500, 0),
