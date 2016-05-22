@@ -626,6 +626,21 @@ function ss_attr_guard(attr, rate, turn) {
 }
 
 /**
+ * パネルに軽減効果を付与する
+ * attr: 軽減対象属性。(ex: [1,0,0,0,0] -> 火属性)
+ * rate: 軽減割合。(ex. 0.2 -> 20%)
+**/
+function panel_attr_guard(attr, rate) {
+	return ss_template({
+		name: "panel_attr_guard",
+		type: "panel_add",
+		target: "panel",
+		p1: attr,
+		p2: rate,
+	});
+}
+
+/**
  * 全体遅延スキル
  * turn: 遅延ターン数。
 **/
@@ -651,6 +666,21 @@ function ss_delay_s(turn) {
 	});
 }
 
+/**
+ * 挑発効果を自身に付与する
+ * rate: 軽減割合。(軽減効果がない場合は0を指定)
+ * turn: 効果ターン数
+**/
+function ss_provocate(rate, turn) {
+	return ss_template({
+		name: "ss_provocate",
+		type: "turn_effect",
+		subtype: "provocate",
+		target: "own",
+		p1: rate,
+		p2: turn,
+	});
+}
 
 /**
  * 敵単体に無に帰す効果を付与する
