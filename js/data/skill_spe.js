@@ -572,13 +572,15 @@ function ss_panel_change(attr) {
 
 /**
  * AS発動時間を延長する。
- * sec: 延長後のAS適用時間。
+ * sec:	延長後のAS適用時間。
+ * t:	延長適用ターン数。
 **/
-function ss_astime_ext(sec) {
+function ss_astime_ext(sec, t) {
 	return ss_template({
 		name: "ss_astime_ext",
 		type: "panel_change",
 		p1: sec,
+		p2: t,
 	});
 }
 

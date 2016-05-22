@@ -912,7 +912,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する",
 		turn: 5,
-		proc: [ss_astime_ext(10)]
+		proc: [ss_astime_ext(10, 3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -1348,7 +1348,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する",
 		turn: 5,
-		proc: [ss_astime_ext(10)]
+		proc: [ss_astime_ext(10, 3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -1362,7 +1362,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、アンサースキル発動時間を15秒延長する",
 		turn: 7,
-		proc: [ss_astime_ext(15)]
+		proc: [ss_astime_ext(15, 5)]
 	},
 }, {
 	name: "陽光の綺麗石 サティサ・テオトリ",
@@ -2706,7 +2706,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を5秒延長する",
 		turn: 3,
-		proc: [ss_astime_ext(5)]
+		proc: [ss_astime_ext(5, 3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -5435,7 +5435,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する",
 		turn: 5,
-		proc: [ss_astime_ext(10)]
+		proc: [ss_astime_ext(10, 3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -7321,7 +7321,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する",
 		turn: 5,
-		proc: [ss_astime_ext(10)]
+		proc: [ss_astime_ext(10, 3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -7335,7 +7335,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、アンサースキル発動時間を15秒延長する",
 		turn: 7,
-		proc: [ss_astime_ext(15)]
+		proc: [ss_astime_ext(15, 5)]
 	},
 }, {
 	name: "空飛ぶ大魔道 ソフィ・ハーネット",
@@ -7585,7 +7585,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する",
 		turn: 6,
-		proc: [ss_astime_ext(10)]
+		proc: [ss_astime_ext(10, 3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -7599,7 +7599,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、アンサースキル発動時間を15秒延長する",
 		turn: 8,
-		proc: [ss_astime_ext(15)]
+		proc: [ss_astime_ext(15, 5)]
 	},
 }, {
 	name: "涙色の絶大魔法 チカ・ストロベリ",
@@ -12283,7 +12283,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する",
 		turn: 5,
-		proc: [ss_astime_ext(10)]
+		proc: [ss_astime_ext(10, 3)]
 	},
 	islegend: true,
 	Lawake: [
@@ -12297,7 +12297,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、アンサースキル発動時間を15秒延長する",
 		turn: 7,
-		proc: [ss_astime_ext(15)]
+		proc: [ss_astime_ext(15, 5)]
 	},
 }, {
 	name: "灼けつく大地の帝王 ジン・サイード",
@@ -27663,7 +27663,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する(上限:20秒)",
 		turn: 5,
-		proc: [ss_astime_ext(10)],
+		proc: [ss_astime_ext(10, 3)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -27684,7 +27684,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、アンサースキル発動時間を15秒延長する(上限:20秒)、さらに味方全体のHPを回復する(25%)",
 		turn: 7,
-		proc: [ss_astime_ext(20), ss_heal(0.25)],
+		proc: [ss_astime_ext(20, 5), ss_heal(0.25)],
 	},
 	Lawake: [
 		Statusup(0, 400),
@@ -27885,7 +27885,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターンの間、アンサースキル発動時間を10秒延長する(上限値:20秒)",
 		turn: 5,
-		proc: [ss_astime_ext(10)],
+		proc: [ss_astime_ext(10, 3)],
 	},
 	awakes: [
 		Statusup(200, 0),
@@ -27906,7 +27906,7 @@ Cards = [{
 	ss2: {
 		desc: "5ターンの間、アンサースキル発動時間を15秒延長する(上限値:20秒)",
 		turn: 8,
-		proc: [ss_astime_ext(15)],
+		proc: [ss_astime_ext(15, 5)],
 	},
 	Lawake: [
 		Attr_statusup(0, 200, [1, 0, 0, 0, 0, ]),
@@ -30672,7 +30672,7 @@ Cards = [{
 		desc: "<AS発動時間延長>2ターン溜めた後、15ターンの間、アンサースキル発動時間を15秒延長する(上限値:20秒)",
 		turn: 5,
 		charged: 2,
-		proc: [ss_astime_ext(15)],
+		proc: [ss_astime_ext(15, 15)],
 	},
 	Lawake: [
 		Statusup(500,0),
