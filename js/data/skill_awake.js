@@ -140,11 +140,8 @@ function Awake_SpecialSkill(spskill, p1, p2, p3, p4) {
 	};
 }
 
-function eye_ire(atk,perc){
-	return Awake_composite("eye_ire",Attr_statusup(0, atk, [1, 1, 1, 1, 1, ]),Awake_SpecialSkill("ss_heal", perc))
-}
-
 // 複合潜在能力
+// （煌眼、覇眼等の複数効果を有する潜在能力定義用）
 function Awake_composite(name,p1,p2,p3,p4){
 	return {
 		type: "awake_composite",
@@ -152,7 +149,6 @@ function Awake_composite(name,p1,p2,p3,p4){
 		proc: [p1,p2,p3,p4],
 	};
 }
-
 
 // その他、試走に影響を及ぼさない潜在
 function Awake_noeffect(name, efv) {
