@@ -107,7 +107,7 @@ function schfl_grep(obj) {
 				rst = rst && (e.attr[0] == obj.attr_m);
 			}
 			if (obj.attr_s >= -1) {
-				rst = rst && (e.attr[1] == obj.attr_s);
+				rst = rst && (e.attr[1] == obj.attr_s || (obj.attr_s >= 5 && e.attr[1] >= 0));
 			}
 		} else {
 			// 主属性 = 副属性指定時はOR検索
@@ -227,6 +227,9 @@ function schfl_grep_ss(obj, ss, card) {
 	// 各SS定義についてチェック
 	var grp_ss = $.grep(ss.proc, function (e) {
 		var grep_rst = true;
+		if (!e) {
+			return false;
+		}
 		// 条件SSのそれぞれについて確認
 		if (obj.ss_types && obj.ss_types.length > 0) {
 			var greps = $.grep(obj.ss_types, function (ss_type) {
