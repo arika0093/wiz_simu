@@ -120,7 +120,6 @@ var sfdef_ss_namelist = {
 	"敵全体に残滅大魔術": "ss_continue_damage",
 	"敵全体に割合ダメージ": "ss_ratiodamage_all",
 	"敵単体に割合ダメージ": "ss_ratiodamage_s",
-	"敵に毒を付与": "poison",
 	// --- 補助関連 -------------------------
 	"味方全体攻撃力アップ": {
 		proc: "ss_enhance_all",
@@ -135,6 +134,16 @@ var sfdef_ss_namelist = {
 	"状態異常無効": "ss_absattack_disable",
 	"スキルカウンター待機": "ss_skillcounter",
 	"スキルブースト": "ss_skillboost",
+	"敵ダメージを軽減": "ss_attr_guard",
+	"挑発": "ss_provocate",
+	// --- 敵妨害関連 -----------------------
+	"全体遅延": {
+		proc: "ss_delay_all",
+		genre: "《敵妨害系》",
+	},
+	"単体遅延": "ss_delay_s",
+	"敵に毒を付与": "poison",
+	"無に帰す": "ss_death_limit",
 	// --- 回復関連 -------------------------
 	"全体回復": {
 		proc: "ss_heal",
@@ -151,14 +160,17 @@ var sfdef_ss_namelist = {
 		genre: "《チェイン関連》",
 	},
 	"チェイン保護": "ss_chain_protect",
-	// --- パネル付与関連 --------------------
+	// --- パネル関連 --------------------
+	"パネルシャッフル": "ss_panel_shuffle",
+	"パネル変換": "ss_panel_change",
 	"パネル攻撃力アップ": {
 		proc: "panel_attackup",
-		genre: "《パネル付与系》"
+		genre: "《パネル関連系》"
 	},
 	"チェインプラス": "panel_chainplus",
 	"パネル回復": "panel_healally",
 	"パネルスキルブースト": "panel_skillboost",
+	"パネル軽減": "panel_attr_guard",
 	// --- 効果解除系 ------------------------
 	"敵のカウンター解除": {
 		proc: "ss_break_attackcounter",
@@ -172,6 +184,8 @@ var sfdef_ss_namelist = {
 		proc: "ss_latest_copy",
 		genre: "《その他》",
 	},
+	"AS発動時間延長": "ss_astime_ext",
+	"解答を見破る": "ss_answer_foresight",
 	// --- スキル効果 ---------------------
 	"スキル反射無視": {
 		proc: "ss_ignore_skillcounter",
