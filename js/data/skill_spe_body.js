@@ -108,6 +108,44 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
+	//全体遅延
+	"ss_delay_all": function(fld, n, cobj, params){
+		var turn = params[0];
+		var enemys = GetNowBattleEnemys();
+		for (var i = 0; i < enemys.length; i++) {
+			(function () {
+				var indx = i;
+				var e = enemys[indx];
+				if (e.nowhp <= 0) { return; }
+				if (e.move.turn && !e.flags.isdelay) {
+					e.flags.isdelay=true;
+					e.move.turn=e.move.turn+turn;
+					fld.log_push("Enemy[" + (i + 1) + "]: 遅延(+" + turn + "ターン)");
+				}
+			})();
+			// SSフラグを立てる
+			enemys[i].flags.is_ss_attack = true;
+		}
+		console.log(1)
+		return true;
+	},
+	// -----------------------------
+	// 単体遅延
+	"ss_delay_s": function (fld, n, cobj, params) {
+		var turn = params[0];
+		var enemys = GetNowBattleEnemys();
+		var tg = auto_attack_order(enemys, -1, n);
+		var e = enemys[tg];
+		if (e.move.turn && !e.flags.isdelay) {
+			e.flags.isdelay=true;
+			e.move.turn=e.move.turn+turn;
+			fld.log_push("Enemy[" + (tg + 1) + "]: 遅延(+" + turn + "ターン)");
+		}		
+		// SSフラグを立てる
+		e.flags.is_ss_attack = true;
+		return true;
+	},
+	// -----------------------------
 	// スキルカウンター待機
 	"ss_skillcounter": function (fld, n, cobj, params) {
 		var rate = params[0];

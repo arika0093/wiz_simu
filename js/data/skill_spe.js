@@ -646,7 +646,7 @@ function panel_attr_guard(attr, rate) {
 **/
 function ss_delay_all(turn) {
 	return ss_template({
-		name: "ss_delay_enemy",
+		name: "ss_delay_all",
 		type: "delay",
 		target: "all",
 		p1: turn,
@@ -659,7 +659,7 @@ function ss_delay_all(turn) {
 **/
 function ss_delay_s(turn) {
 	return ss_template({
-		name: "ss_delay_enemy",
+		name: "ss_delay_s",
 		type: "delay",
 		target: "single",
 		p1: turn,
