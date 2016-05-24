@@ -19,6 +19,34 @@ function panel(attr) {
 	if (pnladd != 0) {
 		st.panel_add[pnladd - 1].func(Field);
 	}
+	// 解答した時点で生存している敵にフラグを建てる（タゲ異常パニック用）
+	{
+		var enemys = GetNowBattleEnemys();
+		$.each(enemys, function (i,e) {
+			e.flags.isAliveWhenAnswer = e.nowhp > 0 ? i+1 : false;
+		});		
+	}
+	// 自傷する（ダメージパニック用）
+	{
+		for (var i = 0; i < Field.Allys.Deck.length; i++) {
+			var now = Field.Allys.Now[i];
+			var card = Field.Allys.Deck[i];
+			var is_match_attr = $.grep(attr, function (t) {
+				return t == card.attr[0] || t == card.attr[1];
+			}).length != 0;
+			if (is_match_attr) {
+				$.each(now.turn_effect, function (n,e) {
+					if(e.panic_consume){
+						Field.log_push("Unit["+ (i+1) +"]: 【混乱自傷】");
+						damage_ally(e.panic_damage, i, true);
+						if(card.attr[1] != -1){
+							damage_ally(e.panic_damage, i, true);
+						}
+					}
+				});
+			}
+		}
+	}
 	// 味方攻撃処理
 	{
 		// 使用したASリスト

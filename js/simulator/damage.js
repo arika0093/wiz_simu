@@ -143,6 +143,22 @@ function attr_magnification(atk_atr, def_atr) {
 
 // 攻撃順序を自動で指定する
 function auto_attack_order(enemys, attr, own_index) {
+	// ランダムラーゲット（パニックシャウト）
+	var now = Field.Allys.Now[own_index];
+	var is_rndtarget = $.grep(now.turn_effect, function (e) {
+		return e.panic_target;
+	});
+	if (is_rndtarget.length > 0){
+		var alives = [];
+		$.each(enemys,function(i,e){
+			if(e.flags.isAliveWhenAnswer > 0){
+				alives.push(e.flags.isAliveWhenAnswer-1);
+			}
+		});
+		var tmp = Math.floor(dmg_generate_rand(0, alives.length)) % alives.length;
+		tg = alives[tmp];
+		return tg;
+	}
 	// 攻撃順序が指定されているならそっちを優先
 	var fst_attr = Field.Allys.Deck[own_index].attr[0];
 	var now = Field.Allys.Now[own_index];

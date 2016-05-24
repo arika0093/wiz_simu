@@ -335,6 +335,37 @@ function s_enemy_all_sealed(tnum, t) {
 	});
 }
 
+
+// パニックシャウト(ダメージ, 対象数, 継続ターン)
+// ダメージが0なら、ターゲット異常
+function panicshout(damage, tnum, t) {
+	if (damage){
+		// ダメージパニック
+		return m_create_enemy_move(function (fld, n, pnow, is_counter) {
+			s_enemy_abstate_attack(
+				fld, "混乱("+damage+"ダメージ)", "death_limit", t, tnum, n, false, {
+					ss_disabled: true,
+					bef_answer: function (f, as) {
+						return false;
+					},
+					panic_consume: true,
+					panic_damage: damage,
+				}
+			);
+		});
+	}else{
+		// タゲ異常パニック
+		return m_create_enemy_move(function (fld, n, pnow, is_counter) {
+			s_enemy_abstate_attack(
+				fld, "混乱", "death_limit", t, tnum, n, false, {
+					ss_disabled: true,
+					panic_target: true,
+				}
+			);
+		});
+	}
+}
+
 // 死の秒針(対象数, 残りターン)
 function s_enemy_deathlimit(tnum, limit) {
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
