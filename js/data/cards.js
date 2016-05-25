@@ -31268,7 +31268,7 @@ Cards = [{
 	ss1: {
 		desc: "<状態異常回復&蘇生>自分を犠牲に味方全体のHPを完全回復し、状態異常を回復、さらに水属性の味方を50%で蘇生",
 		turn: 12,
-		proc: [ss_heal(1), ss_abstate_cure(), ss_resurrection([0,1,0,0,0], 0.25), ss_consume_own(1)],
+		proc: [ss_heal(1), ss_abstate_cure(), ss_resurrection([0,1,0,0,0], 0.5), ss_consume_own(1)],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],1),
