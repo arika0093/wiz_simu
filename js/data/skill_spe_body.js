@@ -45,7 +45,7 @@ var SpSkill = {
 		// 参照用にコピーを取る
 		var now_state = $.extend(true, {}, fld.Allys.Now[n]);
 		// 普通のダメージ
-		var sda = ss_damage_all(dmg_r + 1, attrs, true);
+		var sda = ss_damage_all(dmg_r + 1, attrs, false);
 		fld.log_push("Unit[" + (n + 1) + "]: 継続ダメージSS(威力: " + dmg_r * 100 + ")");
 		ss_object_done(fld, n, sda);
 		// 継続効果追加
