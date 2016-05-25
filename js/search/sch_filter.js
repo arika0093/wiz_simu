@@ -157,7 +157,7 @@ function schfl_grep_as(obj, as) {
 	// ASを1次元配列に落としこむ
 	var arr_as = [];
 	for (var i in as.proc) {
-		if (as.proc[i].length > 0) {
+		if (as.proc[i] && as.proc[i].length > 0) {
 			for (var j in as.proc[i]) {
 				arr_as.push(as.proc[i][j]);
 			}
@@ -184,7 +184,7 @@ function schfl_grep_as(obj, as) {
 				break;
 		}
 		// 条件ASのそれぞれについて確認
-		if (obj.as_types && obj.as_types.length > 0) {
+		if (e && obj.as_types && obj.as_types.length > 0) {
 			var greps = $.grep(obj.as_types, function (as_type) {
 				var ast = sfdef_as_namelist[as_type];
 				// type不一致ならそれ以上見ない
