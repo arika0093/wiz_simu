@@ -339,7 +339,7 @@ function s_enemy_all_sealed(tnum, t) {
 // パニックシャウト(ダメージ, 対象数, 継続ターン)
 // ダメージが0なら、ターゲット異常
 function s_enemy_panicshout(damage, tnum, t) {
-	if (damage){
+	if (damage > 0){
 		// ダメージパニック
 		return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 			s_enemy_abstate_attack(
@@ -814,7 +814,7 @@ function s_enemy_discharge(tnum, minus_turn) {
 			// Lモードなら覚醒解除
 			if (is_lgmode) {
 				minus_legend_awake(Field.Allys.Deck, Field.Allys.Now, i);
-				now.islegend = false;
+				nows[i].islegend = false;
 				Field.log_push("Unit[" + (i + 1) + "]: Lモード解除");
 			}
 			// スキルカウンターを有効に
