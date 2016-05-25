@@ -31594,7 +31594,7 @@ Cards = [{
 		Attr_statusup(200,0, [0,0,1,0,0,]),
 		Attr_relief([0,0,0,1,1,],30),
 		Fastskill(3),
-		Awake_noeffect("精霊交替", 1),
+		Awake_noeffect("精霊交代", 1),
 	],
 	as2: {
 		desc: "雷属性の味方を回復、HP20%以下ならさらに回復(17%/42%)",
