@@ -151,7 +151,7 @@ var sfdef_ss_namelist = {
 	},
 	"全体回復(固定値)": "ss_heal_absolute",
 	"状態異常回復": "ss_abstate_cure",
-	"リジェネ": "ss_regenerate",
+	"継続回復": "ss_regenerate",
 	"起死回生": "ss_revival",
 	"蘇生": "ss_resurrection",
 	// --- チェイン関連 ----------------------
