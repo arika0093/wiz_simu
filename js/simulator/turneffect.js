@@ -226,8 +226,8 @@ function ss_continue_effect_check() {
 		var ceff = cont_effs[i];
 		// 発動
 		ceff.effect(Field, ceff.index, ceff);
-		// 全滅してなかったらターン数を減らす
-		if (!is_allkill()) {
+		// 敵が全滅していない場合か、デメリット効果なら、ターン数を減らす
+		if (ceff.isdemerit || !is_allkill()) {
 			ceff.lim_turn--;
 		}
 		// 残りターンが0以下なら除外
