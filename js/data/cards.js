@@ -31166,7 +31166,7 @@ Cards = [{
 },{
 	name: "野薔薇の狂棘 ゲルダ・ティマー",
 	cardno: 6247,
-	imageno: 8069,
+	imageno: 8089,
 	hp: 3565,
 	atk: 2454,
 	cost: 54,
