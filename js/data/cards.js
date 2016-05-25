@@ -31268,7 +31268,7 @@ Cards = [{
 	ss1: {
 		desc: "<状態異常回復&蘇生>自分を犠牲に味方全体のHPを完全回復し、状態異常を回復、さらに水属性の味方を50%で蘇生",
 		turn: 12,
-		proc: [ss_resurrection([1,0,0,0,0], 0.25), ss_consume_own(1), ss_heal(1), ss_abstate_cure()],
+		proc: [ss_consume_own(1), ss_heal(1), ss_abstate_cure(), ss_resurrection([0,1,0,0,0], 0.25)],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],1),
@@ -31344,7 +31344,7 @@ Cards = [{
 	ss1: {
 		desc: "<ダメージブロック>3ターン400以下の全属性ダメージを無効化する。HP50%以下でさらに2ターン無効化",
 		turn: 8,
-		proc: ss_damageblock_all(400, ss_hp_less(0.50, 5, 3)),
+		proc: [ss_damageblock_all(400, ss_hp_less(0.50, 5, 3))],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],2),
@@ -31375,7 +31375,7 @@ Cards = [{
 	ss1: {
 		desc: "<蘇生>味方全体のHPを回復し(25%)、さらに火属性の味方を蘇生(25%)",
 		turn: 9,
-		proc: [ss_heal(0.25), ss_resurrection([1,0,0,0,0], 25)],
+		proc: [ss_heal(0.25), ss_resurrection([1,0,0,0,0], 0.25)],
 	},
 	awakes: [
 		Statusup(0,100),
@@ -31406,7 +31406,7 @@ Cards = [{
 	ss1: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ火・闇属性のダメージ(120%)",
 		turn: 4,
-		proc: [ss_damage_all(1.2, [0,4], true)],
+		proc: [ss_damage_all(1.2, [0, 4]), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -31427,7 +31427,7 @@ Cards = [{
 	ss2: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ火・闇属性のダメージ(150%)",
 		turn: 6,
-		proc: [ss_damage_all(1.5, [0,4], true)],
+		proc: [ss_damage_all(1.5, [0, 4]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -31494,7 +31494,7 @@ Cards = [{
 	ss1: {
 		desc: "<ステータスアップ>味方全体の攻撃力を500アップ(上限値2000)、さらにHPを回復(50%)",
 		turn: 5,
-		proc: [ss_statusup_all([500, 500], [2000, 2000], -1), ss_heal(0.5)],
+		proc: [ss_statusup_all([0, 500], [2000, 2000], -1), ss_heal(0.5)],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -31515,7 +31515,7 @@ Cards = [{
 	ss2: {
 		desc: "<ステータスアップ>味方全体の攻撃力を1000アップ(上限値2000)、さらにHPを完全回復",
 		turn: 8,
-		proc: [ss_statusup_all([1000, 1000], [2000, 2000], -1), ss_heal(1)],
+		proc: [ss_statusup_all([0, 1000], [2000, 2000], -1), ss_heal(1)],
 	},
 	Lawake: [
 		Statusup(0,500),

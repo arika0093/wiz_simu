@@ -552,12 +552,28 @@ Quests = [
 				imageno: 5228,
 				attr: 0,
 				spec: 0,
+				move: {
+					on_move: [
+						s_enemy_attack(400, 3, 3)
+					],
+					atrandom: false,
+					turn: 3,
+					wait: 1,
+				}
 			}, {
 				name: "アッガローグ",
 				hp: 35000,
 				imageno: 5228,
 				attr: 0,
 				spec: 0,
+				move: {
+					on_move: [
+						s_enemy_attack(400, 3, 3)
+					],
+					atrandom: false,
+					turn: 3,
+					wait: 1,
+				}
 			}, ],
 		}, {
 			// 水龍 / 火龍
@@ -568,12 +584,28 @@ Quests = [
 				imageno: 5254,
 				attr: 1,
 				spec: 0,
+				move: {
+					on_move: [
+						s_enemy_attack(200, 1, 1)
+					],
+					atrandom: false,
+					turn: 2,
+					wait: 1,
+				}
 			}, {
 				name: "アッガローグ",
 				hp: 35000,
 				imageno: 5228,
 				attr: 0,
 				spec: 0,
+				move: {
+					on_move: [
+						s_enemy_attack(400, 3, 3)
+					],
+					atrandom: false,
+					turn: 3,
+					wait: 1,
+				}
 			}, ],
 		}, {
 			// 水魔族 / 雷魔族 / 火亜人
