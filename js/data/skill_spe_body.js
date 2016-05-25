@@ -59,7 +59,7 @@ var SpSkill = {
 				var f_copy = $.extend(true, {}, f);
 				f_copy.Allys.Now[oi] = now_state;
 				// 継続ダメージ
-				fld.log_push("Unit[" + (n + 1) + "]: 継続ダメージ発動(" + (cont_r * 100) + ")");
+				fld.log_push("Unit[" + (n + 1) + "]: 継続ダメージ発動(" + (cont_r * 100) + ") - 残り" + ceff.lim_turn + "t");
 				var sda = ss_damage_all(cont_r + 1, attrs, true);
 				ss_object_done(f_copy, n, sda);
 				// SS状況を解除

@@ -230,7 +230,6 @@ function ss_continue_effect_check() {
 		if (!is_allkill()) {
 			ceff.lim_turn--;
 		}
-		Field.log_push("Unit[" + (ceff.index + 1) + "]: 継続ダメージ - 残り" + ceff.lim_turn + "t");
 		// 残りターンが0以下なら除外
 		if (ceff.lim_turn <= 0) {
 			cont_effs.splice(i, 1);
