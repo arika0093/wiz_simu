@@ -110,6 +110,9 @@ function _s_enemy_attack(fld, dmg, ei, ai, is_dmg_const) {
 		var l_dmg = Math.floor(dmg);
 	}
 	damage_ally(l_dmg, ai, true);
+	// ダメージフラグを立てる
+	var n_dhits = now.flags.damage_hits[ei] ? now.flags.damage_hits[ei] : 0;
+	now.flags.damage_hits[ei] = n_dhits + 1;
 }
 
 // 普通の攻撃(不利属性相手への単発ダメージ, 攻撃対象数, 攻撃回数, 攻撃対象詳細)
@@ -506,6 +509,8 @@ function skill_counter_func(skill, desc, t, is_tgonly, p1, p2, p3, p4) {
 				var p_3 = (!is_tgonly || p3 !== null) ? p3 : [ai];
 				var p_4 = (!is_tgonly || p4 !== null) ? p4 : [ai];
 				skill(p_1, p_2, p_3, p_4).move(f, ei);
+				// スキル反射には味方の反射は発動しない
+				initialize_allys_flags(f.Allys.Now);
 			}
 		});
 	});

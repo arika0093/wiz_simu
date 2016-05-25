@@ -31580,9 +31580,9 @@ Cards = [{
 		proc: [Heal(0.13, [0,0,1,0,0], 0), add_cond(Heal(0.38, [0,0,1,0,0], 0), when_hp_less(0.20))],
 	},
 	ss1: {
-		desc: "<カウンター>3ターンの間、スキルカウンター待機(100%)、HP20%以下でさらに多段式カウンター待機(100%)",
+		desc: "<カウンター>3ターンの間、スキルカウンター待機(100%)、HP20%以下でさらに多段式カウンター待機",
 		turn: 7,
-		proc: [ss_skillcounter(1.0, 3)],
+		proc: [ss_skillcounter(1.0, 3), ss_hp_less_skill(0.2, ss_dualcounter(3))],
 	},
 	awakes: [
 		Statusup(200,0),
@@ -31601,9 +31601,9 @@ Cards = [{
 		proc: [Heal(0.17, [0,0,1,0,0], 0), add_cond(Heal(0.42, [0,0,1,0,0], 0), when_hp_less(0.20))],
 	},
 	ss2: {
-		desc: "<カウンター>5ターンの間、スキルカウンター待機(100%)、HP20%以下でさらに多段式カウンター待機(100%)",
+		desc: "<カウンター>5ターンの間、スキルカウンター待機(100%)、HP20%以下でさらに多段式カウンター待機",
 		turn: 10,
-		proc: [ss_skillcounter(1.0, 5)],
+		proc: [ss_skillcounter(1.0, 5), ss_hp_less_skill(0.2, ss_dualcounter(5))],
 	},
 	Lawake: [
 		Statusup(1000,0),

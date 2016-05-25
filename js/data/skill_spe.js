@@ -96,6 +96,20 @@ function ss_skillcounter(r, t) {
 	});
 }
 
+/**
+ * 味方全体多段カウンター待機
+ * t: 継続ターン数
+**/
+function ss_dualcounter(t) {
+	return ss_template({
+		name: "ss_dualcounter",
+		type: "turn_effect",
+		subtype: "dual_counter",
+		target: "ally",
+		p1: t,
+	});
+}
+
 // ------------------------------------------------------
 // 敵関連系
 /**
@@ -906,7 +920,12 @@ function ss_chain_cost(ch, a, b) {
 	});
 }
 
-// チェイン消費SS分岐(ch: 消費チェイン, ss1: 消費して発動するSS, ss2: 消費せず発動するSS)
+/**
+ * (条件実行系)チェイン消費してSS分岐を行う
+ * ch:	消費するチェイン数。
+ * ss1:	消費して発動するSS。
+ * ss2:	消費せず発動するSS。
+**/
 function ss_chain_cost_skill(ch, ss1, ss2) {
 	return ss_condition({
 		name: "ss_chain_cost_skill",
@@ -917,3 +936,21 @@ function ss_chain_cost_skill(ch, ss1, ss2) {
 		is_delay: true,
 	});
 }
+
+
+/**
+ * (条件実行系)自身のHPが指定%以下の時にスキルを実行する
+ * r:	条件HP。
+ * ss:	条件を満たした時に発動するSS。
+**/
+function ss_hp_less_skill(ch, ss) {
+	return ss_condition({
+		name: "ss_hp_less_skill",
+		type: "own_hp",
+		p1: ch,
+		p2: ss,
+		p3: null,
+		is_delay: true,
+	});
+}
+

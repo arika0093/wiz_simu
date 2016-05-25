@@ -167,6 +167,7 @@ $(function () {
 				now.target = [];
 				now.flags = {};
 				now.flags.skill_counter = [];
+				now.flags.damage_hits = [];
 				now.turn_effect = [];
 				// SS状態をリセット
 				now.ss_current = has_fastnum(card);	// SSチャージターン
@@ -304,5 +305,6 @@ function nextturn(is_ssfin) {
 function initialize_allys_flags(nows) {
 	$.each(nows, function (i, e) {
 		e.flags.skill_counter = [];
+		e.flags.damage_hits = [];
 	});
 }

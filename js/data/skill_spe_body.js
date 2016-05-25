@@ -126,7 +126,6 @@ var SpSkill = {
 			// SSフラグを立てる
 			enemys[i].flags.is_ss_attack = true;
 		}
-		console.log(1)
 		return true;
 	},
 	// -----------------------------
@@ -194,6 +193,58 @@ var SpSkill = {
 			});
 		}
 		fld.log_push("スキルカウンター待機(" + (rate * 100) + "%, " + turn + "t)");
+		return true;
+	},
+	// -----------------------------
+	// 多段式カウンター待機
+	"ss_dualcounter": function (fld, n, cobj, params) {
+		var turn = params[1];
+		for (var i = 0; i < fld.Allys.Deck.length; i++) {
+			var now = fld.Allys.Now[i];
+			if (now.nowhp <= 0) { continue; }
+			now.turn_effect.push({
+				desc: "多段式カウンター待機",
+				type: "ss_dual_counter",
+				icon: "attack_counter_dual",
+				isdual: false,
+				iscursebreak: true,
+				turn: turn,
+				lim_turn: turn,
+				// 優先度: 最大
+				priority: 99,
+				// 多段式カウンター定義
+				effect: function (f, oi, teff, state, is_t, is_b) {
+					var card = f.Allys.Deck[oi];
+					var now_e = f.Allys.Now[oi];
+					var dmg_flag = now_e.flags.damage_hits;
+					// 多段式カウンター前行動
+					var is_sc_cancel = $.grep(now_e.turn_effect, function (e) {
+						return e.bef_skillcounter && !e.bef_skillcounter(f, oi);
+					}).length > 0;
+					if (is_t && !is_b && dmg_flag.length > 0 && !is_sc_cancel) {
+						f.log_push("Unit[" + (oi + 1) + "]: 多段式カウンター発動");
+						// 多段カウンター対象の敵の数だけ繰り返す
+						for (var sci = 0; sci < dmg_flag.length; sci++) {
+							if (!dmg_flag[sci]) { continue; }
+							// 攻撃された回数だけ攻撃
+							for (var atk_ct = 0; atk_ct < dmg_flag[sci]; atk_ct++) {
+								for (var atri = 0; atri < card.attr.length; atri++) {
+									if (card.attr[atri]>= 0) {
+										ss_damage(f, 1, card.attr[atri], 1, oi, sci, true);
+									}
+								}
+								GetNowBattleEnemys(sci).flags.on_damage = true;
+							}
+						}
+						// 敵ダメージ反応系
+						enemy_damage_switch_check();
+						// ダメージ反射フラグを解除
+						f.Allys.Now[oi].flags.damage_hits = [];
+					}
+				},
+			});
+		}
+		fld.log_push("多段式カウンター待機(" + turn + "t)");
 		return true;
 	},
 	// -----------------------------
@@ -816,6 +867,13 @@ var SpCondSkill = {
 		var b = params[2];
 		var now = fld.Allys.Now[oi];
 		return (now.nowhp <= (now.maxhp * cond)) ? a : b;
+	},
+	"ss_hp_less_skill": function (fld, oi, cobj, params) {
+		var scc_rst = this["ss_hp_less"](fld, oi, cobj, params);
+		if (scc_rst) {
+			return ss_object_done(fld, oi, scc_rst);
+		}
+		return null;
 	},
 	// -----------------------------
 	// HP条件(一定未満)
