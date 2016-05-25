@@ -61,7 +61,7 @@ var SpSkill = {
 				// 継続ダメージ
 				fld.log_push("Unit[" + (n + 1) + "]: 継続ダメージ発動(" + (cont_r * 100) + ")");
 				var sda = ss_damage_all(cont_r + 1, attrs, true);
-				ss_object_done(fld, n, sda);
+				ss_object_done(f_copy, n, sda);
 				// SS状況を解除
 				var es = GetNowBattleEnemys();
 				for (var i = 0; i < es.length; i++) {
