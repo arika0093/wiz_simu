@@ -161,12 +161,12 @@ var sfdef_ss_namelist = {
 	},
 	"チェイン保護": "ss_chain_protect",
 	// --- パネル関連 --------------------
-	"パネルシャッフル": "ss_panel_shuffle",
-	"パネル変換": "ss_panel_change",
-	"パネル攻撃力アップ": {
-		proc: "panel_attackup",
+	"パネルシャッフル": {
+		proc: "ss_panel_shuffle",
 		genre: "《パネル関連系》"
 	},
+	"パネル変換": "ss_panel_change",
+	"パネル攻撃力アップ": "panel_attackup",
 	"チェインプラス": "panel_chainplus",
 	"パネル回復": "panel_healally",
 	"パネルスキルブースト": "panel_skillboost",
