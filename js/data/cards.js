@@ -31300,7 +31300,7 @@ Cards = [{
 	ss1: {
 		desc: "<解答削り>解答選択肢を1つ削り、4チェインを消費し解答を見破る",
 		turn: 1,
-		proc: [ss_chain_cost_skill(4, ss_answer_foresight(), ss_answer_narrow(1)],
+		proc: [ss_chain_cost_skill(4, ss_answer_foresight(), ss_answer_narrow(1))],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],1),
@@ -31321,7 +31321,7 @@ Cards = [{
 	ss2: {
 		desc: "<解答削り>解答選択肢を1つ削り、3チェインを消費し解答を見破る",
 		turn: 2,
-		proc: [ss_chain_cost_skill(3, ss_answer_foresight(), ss_answer_narrow(1)],
+		proc: [ss_chain_cost_skill(3, ss_answer_foresight(), ss_answer_narrow(1))],
 	},
 	Lawake: [
 		Statusup(0,500),

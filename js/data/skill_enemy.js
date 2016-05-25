@@ -338,12 +338,12 @@ function s_enemy_all_sealed(tnum, t) {
 
 // パニックシャウト(ダメージ, 対象数, 継続ターン)
 // ダメージが0なら、ターゲット異常
-function panicshout(damage, tnum, t) {
+function s_enemy_panicshout(damage, tnum, t) {
 	if (damage){
 		// ダメージパニック
 		return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 			s_enemy_abstate_attack(
-				fld, "混乱("+damage+"ダメージ)", "death_limit", t, tnum, n, false, {
+				fld, "混乱(" + damage + "ダメージ)", "panicshout", t, tnum, n, false, {
 					ss_disabled: true,
 					bef_answer: function (f, as) {
 						return false;
@@ -357,7 +357,7 @@ function panicshout(damage, tnum, t) {
 		// タゲ異常パニック
 		return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 			s_enemy_abstate_attack(
-				fld, "混乱", "death_limit", t, tnum, n, false, {
+				fld, "混乱", "panicshout", t, tnum, n, false, {
 					ss_disabled: true,
 					panic_target: true,
 				}

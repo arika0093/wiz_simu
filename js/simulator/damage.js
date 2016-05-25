@@ -143,7 +143,7 @@ function attr_magnification(atk_atr, def_atr) {
 
 // 攻撃順序を自動で指定する
 function auto_attack_order(enemys, attr, own_index) {
-	// ランダムラーゲット（パニックシャウト）
+	// ランダムターゲット（パニックシャウト）
 	var now = Field.Allys.Now[own_index];
 	var is_rndtarget = $.grep(now.turn_effect, function (e) {
 		return e.panic_target;
