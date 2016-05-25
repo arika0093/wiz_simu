@@ -6454,7 +6454,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "術士の仲間の数だけダメージアップ/100+60％×種族数",
-		proc: [null]
+		proc: ChainDeckSpecsAttack(0.6, [9], 0)
 	},
 	ss2: {
 		desc: "(必要正解数 10ターン)",
