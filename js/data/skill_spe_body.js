@@ -518,6 +518,48 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
+	// 味方全体に軽減
+	"ss_attr_guard": function (fld, n, cobj, params) {
+		var attr = params[0];
+		var rate = params[1];
+		var turn = params[2];
+		var attrstr = "";
+		var tmp = 0;
+		for(var i = 0; i < attr.length; i++){
+			if(attr[i] == 1){
+				if(tmp > 0){
+					attrstr += "・";
+				}
+				attrstr += Field.Constants.Attr[i];
+				tmp ++;
+			}
+			if(tmp == attr.length){
+				attrstr = "全";
+			}
+		}
+		for (var i = 0; i < fld.Allys.Deck.length; i++) {
+			var cd = fld.Allys.Deck[i];
+			var now = fld.Allys.Now[i];
+			if (now.nowhp > 0) {
+				now.turn_effect.push({
+					effect: function () { },
+					desc: attrstr + "属性軽減(" + rate + ")",
+					type: "ss_attr_guard",
+					icon: "attr_guard",
+					isguard: true,
+					isdual: false,
+					iscursebreak: true,
+					turn: turn,
+					lim_turn: turn,
+					attr:attr,
+					rate:rate*100,
+				});
+			}
+		}
+		fld.log_push("味方全体軽減(" + attrstr + "属性/ " + rate * 100 + "%/ " + turn + "t)");
+		return true;
+	},
+	// -----------------------------
 	// 全体状態異常無効
 	"ss_absattack_disable": function (fld, n, cobj, params) {
 		var turn = params[0];
