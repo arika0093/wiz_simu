@@ -523,6 +523,8 @@ var SpSkill = {
 		var attr = params[0];
 		var rate = params[1];
 		var turn = params[2];
+		var type = params[3];
+		var isas = type == "AS" ? true : false
 		var attrstr = "";
 		var tmp = 0;
 		for(var i = 0; i < attr.length; i++){
@@ -544,10 +546,11 @@ var SpSkill = {
 				now.turn_effect.push({
 					effect: function () { },
 					desc: attrstr + "属性軽減(" + rate + ")",
-					type: "ss_attr_guard",
+					type: "ss_attr_guard"+type,
 					icon: "attr_guard",
 					isguard: true,
-					isdual: false,
+					isdual: isas,
+					isreduce_stg: isas,
 					iscursebreak: true,
 					turn: turn,
 					lim_turn: turn,
@@ -556,7 +559,9 @@ var SpSkill = {
 				});
 			}
 		}
-		fld.log_push("味方全体軽減(" + attrstr + "属性/ " + rate * 100 + "%/ " + turn + "t)");
+		if(!isas){
+			fld.log_push("味方全体軽減(" + attrstr + "属性/ " + rate * 100 + "%/ " + turn + "t)");
+		}
 		return true;
 	},
 	// -----------------------------

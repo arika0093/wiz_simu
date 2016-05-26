@@ -672,6 +672,28 @@ function ChainPanelsHeal(r1, r2, r3, attr, ch) {
 		},
 	];
 }
+
+
+// ------------------------------------------------------
+// 軽減(rate: 割合, attr: 対象属性)
+function as_guard(rate, attr, ch) {
+	chain = ch ? ch : 0;
+	return [
+		{
+			type: "as_spskill",
+			skill: ss_attr_guard,
+			p1: attr,
+			p2: rate,
+			p3: 1,
+			p4: "AS",
+			rate: rate,
+			chain: chain,
+			attr: attr,
+			spec: create_specs(1),
+			cond: always_true().cond,
+		}
+	];
+}
 // ------------------------------------------------------
 // 各種条件(add_condで足す)
 // ------------------------------------------------------
