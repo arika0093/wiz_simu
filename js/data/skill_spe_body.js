@@ -387,12 +387,14 @@ var SpSkill = {
 		var grdup = params[1];
 		var attr = params[2];
 		var t = params[3];
+		var sco = ss_attr_guard([1,1,1,1,1], grdup, t, "精霊強化");
+		ss_object_done(fld, n, sco);
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var cd = fld.Allys.Deck[i];
 			var now = fld.Allys.Now[i];
 			if (now.nowhp > 0 && attr[cd.attr[0]] > 0) {
 				now.turn_effect.push({
-					desc: "精霊強化(攻撃UP:" + (atkup * 100) + "%, 軽減:" + (grdup * 100) + "%)",
+					desc: "精霊強化(攻撃UP:" + (atkup * 100) + "%)",
 					type: "ss_reinforcement",
 					icon: "enhance",
 					isdual: false,
@@ -525,6 +527,7 @@ var SpSkill = {
 		var turn = params[2];
 		var type = params[3];
 		var isas = type == "AS" ? true : false
+		var typestr = type == undefined ? "" : "[" + type + "]"
 		var attrstr = "";
 		var tmp = 0;
 		for(var i = 0; i < attr.length; i++){
@@ -545,7 +548,7 @@ var SpSkill = {
 			if (now.nowhp > 0) {
 				now.turn_effect.push({
 					effect: function () { },
-					desc: attrstr + "属性軽減(" + rate + ")",
+					desc: attrstr + "属性軽減" + typestr + "(" + rate * 100 + "%)",
 					type: "ss_attr_guard"+type,
 					icon: "attr_guard",
 					isguard: true,
@@ -560,8 +563,8 @@ var SpSkill = {
 			}
 		}
 		if(!isas){
-			fld.log_push("味方全体軽減(" + attrstr + "属性/ " + rate * 100 + "%/ " + turn + "t)");
-		}
+			fld.log_push("味方全体軽減" + typestr + "(" + attrstr + "属性/ " + rate * 100 + "%/ " + turn + "t)");
+		};
 		return true;
 	},
 	// -----------------------------

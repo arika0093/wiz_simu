@@ -626,7 +626,7 @@ function ss_answer_foresight() {
  * attr: 軽減対象属性。(ex: [1,0,0,0,0] -> 火属性)
  * rate: 軽減割合。(ex. 0.2 -> 20%)
  * turn: 軽減継続ターン。
- * type: 未定義->SS "AS"->AS "RF"->精霊強化
+ * type: 未定義->SS "AS"->AS "精霊強化"->精霊強化
 **/
 function ss_attr_guard(attr, rate, turn, type) {
 	return ss_template({
