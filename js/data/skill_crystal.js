@@ -42,4 +42,9 @@ var Awake_crystal_lists = [{
 	param2: 0.25,
 	is_legend: true,
 	is_readonly: true,
+},  {
+	name: "戦後回復(10%)",
+	imple: Heal_afterbattle,
+	param1: 10,
+	is_readonly: true,
 }, ];
