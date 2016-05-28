@@ -54,7 +54,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deck", "deck", "{068E2C1D-3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "simulator", "simulator", "{FBCE4C9C-0BDA-4B34-AC6E-3158CF6D361E}"
 	ProjectSection(SolutionItems) = preProject
-		simulator\index.html = simulator\index.html
+		simulator\index.shtml = simulator\index.shtml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pages", "pages", "{5738BAEF-BA1D-4206-8CED-09AD35F0B80B}"
@@ -72,7 +72,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "toppage", "toppage", "{5023
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "run", "run", "{BE62308C-ADDF-4FE5-960C-CCE298C9EA52}"
 	ProjectSection(SolutionItems) = preProject
-		simulator\p\index.html = simulator\p\index.html
+		simulator\p\index.shtml = simulator\p\index.shtml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "others", "others", "{031B42DC-7DAF-4295-96B4-08D8BB8B77B1}"
