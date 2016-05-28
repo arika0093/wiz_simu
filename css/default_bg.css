@@ -277,10 +277,10 @@ div.rsslist div.article:hover{
 div.rsslist div.article:last-child{
 	border-bottom: 0px;
 }
-div.rsslist div.article p, div.rsslist div.article h3{
+div.article p, div.article h3{
 	margin: 0;
 }
-div.rsslist div.article p.date {
+div.article p.date {
 	font-size: smaller;
 	color: #606060;
 	text-align: right;

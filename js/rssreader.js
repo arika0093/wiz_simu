@@ -43,14 +43,14 @@ function CreateHTML_fromRSS(div, result) {
 }
 
 // RSSを取得する
-function ReadRSS(div, rss_url, count) {
+function ReadRSS(div, rss_url, count, gen_func) {
 	function rss_init() {
 		// load rssfeed
 		var feed = new google.feeds.Feed(rss_url);
 		// load entries num
 		feed.setNumEntries(count);
 		feed.load(function (result) {
-			CreateHTML_fromRSS(div, result);
+			!gen_func ? CreateHTML_fromRSS(div, result) : gen_func(div, result);
 		});
 	}
 	google.setOnLoadCallback(rss_init);
@@ -71,4 +71,24 @@ if (rec) {
 var inf = $("#rss_information");
 if (inf) {
 	ReadRSS(inf, "http://blog.wiztools.net/archives/author/admin/feed/?" + dtquery, 2);
+}
+// Commit RSS
+var upl = $("#Updatelog");
+if (inf) {
+	ReadRSS(upl, "https://github.com/Arika0093/wiz_simu/commits/master.atom", 15, function (d, r) {
+		if (!r.error) {
+			var ins_html = "";
+			var art_size = r.feed.entries.length;
+			if (art_size <= 0) {
+				ins_html = "現在お知らせはありません。";
+			}
+			for (var i = 0; i < art_size; i++) {
+				// 記事取得
+				var entry = r.feed.entries[i];
+				ins_html += "<div class='article'><p class='title'>" + entry.author + ": " + entry.title + "</p><p class='date'>"
+					+ entry.publishedDate + "</p></div>";
+			}
+			d.html(ins_html);
+		}
+	});
 }
