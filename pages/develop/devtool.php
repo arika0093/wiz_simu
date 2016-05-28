@@ -126,6 +126,7 @@
     //   表示
     //---------------------
     makehead(@$_GET["f"]);
+    $result=makenavi($result);
     echo($result);
     makefoot();
 ?>
@@ -135,6 +136,17 @@
     //   関数定義
     //---------------------
     function makelink($str){
+        // トップ用にリンク作る
         return "<a href=devtool.php?f=".$str.">".$str."</a>";
+    }
+    function makenavi($str){
+        // 各ページtitle1へのリンクを作る
+        $str=preg_replace_callback("/(?<=title1\>).*?(?=\<\/div)/s", function($e){return "<a name=".crc32($e[0]).">".$e[0]."</a><a href=#>▲</a>";}, $str);
+        preg_match_all("/\<a name\=.*?\<\/a\>/s", $str, $links);
+        foreach($links[0] as $k => $v){
+            print "<li>".str_replace("name=","href=#",$v)."</li>";
+        }
+        print "<br>";
+        return $str;
     }
 ?>
