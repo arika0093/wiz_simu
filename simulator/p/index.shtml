@@ -295,6 +295,7 @@
     <script type="text/javascript" src="/download/slicknav/jquery.slicknav.min.js"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/loader.js?                  <!--#flastmod virtual='/js/loader.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js?                <!--#flastmod virtual='/js/pagetemp.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/err_report.js?              <!--#flastmod virtual='/js/err_report.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js?               <!--#flastmod virtual='/js/googletrc.js'-->"></script>
 	<!-- 他jsに依存しない基礎関数群 -->
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/awake.js?         <!--#flastmod virtual='/js/simulator/awake.js'-->"></script>

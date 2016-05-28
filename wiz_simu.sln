@@ -86,6 +86,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "useful", "useful", "{F34AC30C-80B0-4B03-A688-A1169FB82C9D}"
 	ProjectSection(SolutionItems) = preProject
 		js\dynamic.js = js\dynamic.js
+		js\err_report.js = js\err_report.js
 		js\googletrc.js = js\googletrc.js
 		js\loader.js = js\loader.js
 		js\pagetemp.js = js\pagetemp.js
