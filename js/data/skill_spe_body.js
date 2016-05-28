@@ -403,6 +403,8 @@ var SpSkill = {
 		ss_object_done(fld, n, sco);
 		var sco = ss_enhance_all(atkup, t,[1,1,1,1,1],  "RF");
 		ss_object_done(fld, n, sco);
+		var sco = ss_regenerate(.3, t, "RF");
+		ss_object_done(fld, n, sco);
 		
 		// 自身に行動不能効果を付与
 		fld.Allys.Now[n].turn_effect.push({
@@ -663,11 +665,22 @@ var SpSkill = {
 	"ss_regenerate": function (fld, n, cobj, params) {
 		var rate = params[0];
 		var t = params[1];
+		var calltype = params[2];
+		switch(calltype){
+			case "RF":
+				var isreinforce = true
+				var typestr = "[精霊強化]"
+				break;
+			case "SS":
+			default:
+				var typestr = ""
+				break;
+		}
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
 			now.turn_effect.push({
-				desc: "HPを徐々に回復(" + (rate * 100) + "%)",
-				type: "ss_regenerate",
+				desc: "HPを徐々に回復" + typestr + "(" + (rate * 100) + "%)",
+				type: "ss_regenerate" + calltype,
 				icon: "regenerate",
 				isdual: false,
 				iscursebreak: true,
@@ -679,7 +692,7 @@ var SpSkill = {
 						var nd = f.Allys.Now[oi];
 						var hr = Math.floor(nd.maxhp * rate);
 						heal_ally(hr, oi);
-						fld.log_push("Unit[" + (oi + 1) + "]: HP徐々に回復(+" + hr + ")");
+						fld.log_push("Unit[" + (oi + 1) + "]: HP徐々に回復" + typestr + "(+" + hr + ")");
 					}
 				},
 			});

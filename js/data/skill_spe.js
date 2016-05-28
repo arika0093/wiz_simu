@@ -376,7 +376,7 @@ function ss_abstate_cure() {
  * p: 回復割合
  * t: 継続ターン数
 **/
-function ss_regenerate(p, t) {
+function ss_regenerate(p, t, calltype) {
 	return ss_template({
 		name: "ss_regenerate",
 		type: "turn_effect",
@@ -384,6 +384,7 @@ function ss_regenerate(p, t) {
 		target: "ally",
 		p1: p,
 		p2: t,
+		p3: calltype,
 	});
 }
 
