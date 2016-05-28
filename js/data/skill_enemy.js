@@ -804,34 +804,12 @@ function attr_change(after) {
 	});
 }
 
+
+
 // -----------------------------------
-// その他
-// -----------------------------------
-// スキルディスチャージ
-function s_enemy_discharge(tnum, minus_turn) {
-	return m_create_enemy_move(function (fld, n) {
-		var nows = fld.Allys.Now;
-		$.each(nows, function (i, e) {
-			var card = fld.Allys.Deck[i];
-			var endcharge = card.islegend ? card.ss2.turn : card.ss1.turn;
-			var is_lgmode = card.islegend & endcharge <= e.ss_current;
-			e.ss_current = Math.max(Math.min(endcharge, e.ss_current) - minus_turn, 0);
-			// Lモードなら覚醒解除
-			if (is_lgmode) {
-				minus_legend_awake(Field.Allys.Deck, Field.Allys.Now, i);
-				nows[i].islegend = false;
-				Field.log_push("Unit[" + (i + 1) + "]: Lモード解除");
-			}
-			// スキルカウンターを有効に
-			nows[i].flags.skill_counter[n] = true;
-		});
-		fld.log_push("Enemy[" + (n + 1) + "]: スキルディスチャージ(-" + minus_turn + "t)");
-	});
-}
-
-
-
 // フィールド干渉
+// -----------------------------------
+// 継続ダメージ
 function s_enemy_continue_damage(turn, initialdamage, continuedamage){
 	return m_create_enemy_move(function (fld, n) {
 		fld.log_push("Enemy[" + (n + 1) + "]: 継続ダメージ(ダメージ:" + initialdamage+", "+ continuedamage+ ")");
@@ -883,6 +861,31 @@ function s_enemy_chain_sealed(t) {
 		} else {
 			fld.log_push("Enemy[" + (n + 1) + "]: チェイン封印(無効)");
 		}
+	});
+}
+
+// -----------------------------------
+// その他
+// -----------------------------------
+// スキルディスチャージ
+function s_enemy_discharge(tnum, minus_turn) {
+	return m_create_enemy_move(function (fld, n) {
+		var nows = fld.Allys.Now;
+		$.each(nows, function (i, e) {
+			var card = fld.Allys.Deck[i];
+			var endcharge = card.islegend ? card.ss2.turn : card.ss1.turn;
+			var is_lgmode = card.islegend & endcharge <= e.ss_current;
+			e.ss_current = Math.max(Math.min(endcharge, e.ss_current) - minus_turn, 0);
+			// Lモードなら覚醒解除
+			if (is_lgmode) {
+				minus_legend_awake(Field.Allys.Deck, Field.Allys.Now, i);
+				nows[i].islegend = false;
+				Field.log_push("Unit[" + (i + 1) + "]: Lモード解除");
+			}
+			// スキルカウンターを有効に
+			nows[i].flags.skill_counter[n] = true;
+		});
+		fld.log_push("Enemy[" + (n + 1) + "]: スキルディスチャージ(-" + minus_turn + "t)");
 	});
 }
 
