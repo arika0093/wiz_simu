@@ -306,12 +306,24 @@ var SpSkill = {
 	// -----------------------------
 	// 単体エンハ
 	"ss_enhance_own": function (fld, n, cobj, params) {
+		console.log(params)
 		var rate = params[0];
 		var t = params[1];
+		var calltype = params[3];
+		switch(calltype){
+			case "RF":
+				var isreinforce = true
+				var typestr = "[精霊強化]"
+				break;
+			case "SS":
+			default:
+				var typestr = ""
+				break;
+		}
 		var now = fld.Allys.Now[n];
 		now.turn_effect.push({
-			desc: "攻撃力アップ(" + (rate * 100) + "%)",
-			type: "ss_enhance",
+			desc: "攻撃力アップ" + typestr + "(" + (rate * 100) + "%)",
+			type: "ss_enhance" + calltype,
 			icon: "enhance",
 			isdual: false,
 			iscursebreak: true,
@@ -326,7 +338,7 @@ var SpSkill = {
 				}
 			},
 		});
-		fld.log_push("Unit[" + (n + 1) + "]: 攻撃力Up(" + (rate * 100) + "%, " + t + "t)");
+		fld.log_push("Unit[" + (n + 1) + "]: 攻撃力Up" + typestr + "(" + (rate * 100) + "%, " + t + "t)");
 		return true;
 	},
 	// -----------------------------
@@ -389,37 +401,17 @@ var SpSkill = {
 		var t = params[3];
 		var sco = ss_attr_guard([1,1,1,1,1], grdup, t, "RF");
 		ss_object_done(fld, n, sco);
-		for (var i = 0; i < fld.Allys.Deck.length; i++) {
-			var cd = fld.Allys.Deck[i];
-			var now = fld.Allys.Now[i];
-			if (now.nowhp > 0 && attr[cd.attr[0]] > 0) {
-				now.turn_effect.push({
-					desc: "精霊強化(攻撃UP:" + (atkup * 100) + "%)",
-					type: "ss_reinforcement",
-					icon: "enhance",
-					isdual: false,
-					iscursebreak: true,
-					turn: t,
-					lim_turn: t,
-					effect: function (f, oi, teff, state, is_t) {
-						if (state == "first") {
-							f.Allys.Now[oi].ss_reinforcement_atk = atkup;
-						}
-						else if (state == "end" || state == "dead") {
-							f.Allys.Now[oi].ss_reinforcement_atk = 0;
-						}
-					},
-				});
-			}
-		}
+		var sco = ss_enhance_all(atkup, t,[1,1,1,1,1],  "RF");
+		ss_object_done(fld, n, sco);
+		
 		// 自身に行動不能効果を付与
 		fld.Allys.Now[n].turn_effect.push({
-			desc: "行動不能",
+			desc: "行動不能[精霊強化]",
 			type: "ss_reactionaly_noaction",
 			icon: "all_sealed",		// 暫定
 			isdual: false,
 			iscursebreak: true,		// 呪い解除される(?)
-			isreduce_stg: true,		// ターン跨ぎでカウントが減る
+			isreduce_stg: false,		// ターン跨ぎでカウントが減らない
 			effect: function () { },
 			priority: 1,
 			turn: t,
@@ -434,8 +426,6 @@ var SpSkill = {
 				return false;
 			},
 		});
-		// ログ出力
-		fld.log_push("味方全体精霊強化(攻撃UP:" + (atkup * 100) + "%, 軽減:" + (grdup * 100) + "%)");
 		return true;
 	},
 	// -----------------------------
@@ -525,8 +515,8 @@ var SpSkill = {
 		var attr = params[0];
 		var rate = params[1];
 		var turn = params[2];
-		var type = params[3];
-		switch(type){
+		var calltype = params[3];
+		switch(calltype){
 			case "AS":
 				var isdual = true;
 				var isreduce_stg = true;
@@ -550,7 +540,7 @@ var SpSkill = {
 				now.turn_effect.push({
 					effect: function () { },
 					desc: attrstr + "軽減" + typestr + "(" + rate * 100 + "%)",
-					type: "ss_attr_guard" + type,
+					type: "ss_attr_guard" + calltype,
 					icon: "attr_guard",
 					isguard: true,
 					isdual: isdual,

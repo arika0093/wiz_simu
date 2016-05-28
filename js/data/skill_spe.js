@@ -136,7 +136,7 @@ function poison(dm, t) {
  * t:	継続ターン数
  * attr	付与対象の属性(ex; [1,0,0,0,0]	-> 火属性のみに付与)
 **/
-function ss_enhance_all(p, t, attr) {
+function ss_enhance_all(p, t, attr, calltype) {
 	return ss_template({
 		name: "ss_enhance_all",
 		type: "turn_effect",
@@ -145,6 +145,7 @@ function ss_enhance_all(p, t, attr) {
 		p1: p,
 		p2: t,
 		p3: attr,
+		p4: calltype,
 	});
 }
 
@@ -626,9 +627,9 @@ function ss_answer_foresight() {
  * attr: 軽減対象属性。(ex: [1,0,0,0,0] -> 火属性)
  * rate: 軽減割合。(ex. 0.2 -> 20%)
  * turn: 軽減継続ターン。
- * type: 未定義->SS "AS"->AS "精霊強化"->精霊強化
+ * calltype: 未定義->SS "AS"->AS "精霊強化"->精霊強化
 **/
-function ss_attr_guard(attr, rate, turn, type) {
+function ss_attr_guard(attr, rate, turn, calltype) {
 	return ss_template({
 		name: "ss_attr_guard",
 		type: "turn_effect",
@@ -637,7 +638,7 @@ function ss_attr_guard(attr, rate, turn, type) {
 		p1: attr,
 		p2: rate,
 		p3: turn,
-		p4: type,
+		p4: calltype,
 	});
 }
 
