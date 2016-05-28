@@ -170,10 +170,10 @@ p.sitedetail {
 	display: flex;
 	align-items: center;
 	top: 10px;
-	right: 15px;
+	right: 10px;
 	margin: 0.5ex 1ex;
-	padding: 1ex 2ex;
-	width: 290px;
+	padding: 1ex 0.5ex 1ex 2ex;
+	width: 310px;
 	height: 70px;
 	color: #19283C;
 	text-align: left;
