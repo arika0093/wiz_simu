@@ -136,7 +136,7 @@ function poison(dm, t) {
  * t:	継続ターン数
  * attr	付与対象の属性(ex; [1,0,0,0,0]	-> 火属性のみに付与)
 **/
-function ss_enhance_all(p, t, attr) {
+function ss_enhance_all(p, t, attr, calltype) {
 	return ss_template({
 		name: "ss_enhance_all",
 		type: "turn_effect",
@@ -145,6 +145,7 @@ function ss_enhance_all(p, t, attr) {
 		p1: p,
 		p2: t,
 		p3: attr,
+		p4: calltype,
 	});
 }
 
@@ -205,21 +206,18 @@ function ss_boost_enhance_s(p, t, dmg) {
 
 /**
  * 味方全体に精霊強化効果を付与し、自分は行動不能になる
- * atkup:	攻撃力上昇効果値
- * grdup:	属性軽減上昇効果値(未実装だけど今後のために指定)
- * attr:	強化属性
- * t:		効果適用ターン数
+ * t: 行動不能ターン数
+ * sss: ssの配列(ex: [ss_attr_guard([1,1,1,1,1], 0.1, 4, "RF"), ss_enhance_all(1, 4, [1,1,1,1,1], "RF")])
+ * sssで呼び出す継続効果にはcalltype="RF"を付けること
 **/
-function ss_reinforcement_all(atkup, grdup, attr, t) {
+function ss_reinforcement_all(t, sss) {
 	return ss_template({
 		name: "ss_reinforcement_all",
 		type: "turn_effect",
 		subtype: "reinforcement",
 		target: "ally",
-		p1: atkup,
-		p2: grdup,
-		p3: attr,
-		p4: t,
+		p1: t,
+		p2: sss,
 	});
 }
 
@@ -375,7 +373,7 @@ function ss_abstate_cure() {
  * p: 回復割合
  * t: 継続ターン数
 **/
-function ss_regenerate(p, t) {
+function ss_regenerate(p, t, calltype) {
 	return ss_template({
 		name: "ss_regenerate",
 		type: "turn_effect",
@@ -383,6 +381,7 @@ function ss_regenerate(p, t) {
 		target: "ally",
 		p1: p,
 		p2: t,
+		p3: calltype,
 	});
 }
 
@@ -626,8 +625,9 @@ function ss_answer_foresight() {
  * attr: 軽減対象属性。(ex: [1,0,0,0,0] -> 火属性)
  * rate: 軽減割合。(ex. 0.2 -> 20%)
  * turn: 軽減継続ターン。
+ * calltype: 未定義->SS "AS"->AS "精霊強化"->精霊強化
 **/
-function ss_attr_guard(attr, rate, turn) {
+function ss_attr_guard(attr, rate, turn, calltype) {
 	return ss_template({
 		name: "ss_attr_guard",
 		type: "turn_effect",
@@ -636,6 +636,7 @@ function ss_attr_guard(attr, rate, turn) {
 		p1: attr,
 		p2: rate,
 		p3: turn,
+		p4: calltype,
 	});
 }
 

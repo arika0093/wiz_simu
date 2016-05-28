@@ -308,10 +308,21 @@ var SpSkill = {
 	"ss_enhance_own": function (fld, n, cobj, params) {
 		var rate = params[0];
 		var t = params[1];
+		var calltype = params[3];
+		switch(calltype){
+			case "RF":
+				var isreinforce = true
+				var typestr = "[精霊強化]"
+				break;
+			case "SS":
+			default:
+				var typestr = ""
+				break;
+		}
 		var now = fld.Allys.Now[n];
 		now.turn_effect.push({
-			desc: "攻撃力アップ(" + (rate * 100) + "%)",
-			type: "ss_enhance",
+			desc: "攻撃力アップ" + typestr + "(" + (rate * 100) + "%)",
+			type: "ss_enhance" + calltype,
 			icon: "enhance",
 			isdual: false,
 			iscursebreak: true,
@@ -326,7 +337,7 @@ var SpSkill = {
 				}
 			},
 		});
-		fld.log_push("Unit[" + (n + 1) + "]: 攻撃力Up(" + (rate * 100) + "%, " + t + "t)");
+		fld.log_push("Unit[" + (n + 1) + "]: 攻撃力Up" + typestr + "(" + (rate * 100) + "%, " + t + "t)");
 		return true;
 	},
 	// -----------------------------
@@ -382,42 +393,21 @@ var SpSkill = {
 	},
 	// -----------------------------
 	// 精霊強化効果を味方全体に付与する
-	"ss_reinforcement_all": function (fld, n, cobj, params) {
-		var atkup = params[0];
-		var grdup = params[1];
-		var attr = params[2];
-		var t = params[3];
-		for (var i = 0; i < fld.Allys.Deck.length; i++) {
-			var cd = fld.Allys.Deck[i];
-			var now = fld.Allys.Now[i];
-			if (now.nowhp > 0 && attr[cd.attr[0]] > 0) {
-				now.turn_effect.push({
-					desc: "精霊強化(攻撃UP:" + (atkup * 100) + "%, 軽減:" + (grdup * 100) + "%)",
-					type: "ss_reinforcement",
-					icon: "enhance",
-					isdual: false,
-					iscursebreak: true,
-					turn: t,
-					lim_turn: t,
-					effect: function (f, oi, teff, state, is_t) {
-						if (state == "first") {
-							f.Allys.Now[oi].ss_reinforcement_atk = atkup;
-						}
-						else if (state == "end" || state == "dead") {
-							f.Allys.Now[oi].ss_reinforcement_atk = 0;
-						}
-					},
-				});
-			}
+	"ss_reinforcement_all": function (fld, oi, cobj, params) {
+		// paramsにssの配列を書いて、全て実行する
+		var t = params[0]
+		var sss = params[1].concat()
+		for(n=0; n < sss.length; n++){
+			ss_object_done(fld, oi, sss[n]);
 		}
 		// 自身に行動不能効果を付与
-		fld.Allys.Now[n].turn_effect.push({
-			desc: "行動不能",
+		fld.Allys.Now[oi].turn_effect.push({
+			desc: "行動不能[精霊強化]",
 			type: "ss_reactionaly_noaction",
 			icon: "all_sealed",		// 暫定
 			isdual: false,
 			iscursebreak: true,		// 呪い解除される(?)
-			isreduce_stg: true,		// ターン跨ぎでカウントが減る
+			isreduce_stg: false,		// ターン跨ぎでカウントが減らない
 			effect: function () { },
 			priority: 1,
 			turn: t,
@@ -432,8 +422,6 @@ var SpSkill = {
 				return false;
 			},
 		});
-		// ログ出力
-		fld.log_push("味方全体精霊強化(攻撃UP:" + (atkup * 100) + "%, 軽減:" + (grdup * 100) + "%)");
 		return true;
 	},
 	// -----------------------------
@@ -515,6 +503,56 @@ var SpSkill = {
 			}
 		}
 		fld.log_push("味方全体ダメージブロック(" + rate + "/" + t + "t)");
+		return true;
+	},
+	// -----------------------------
+	// 味方全体に軽減
+	"ss_attr_guard": function (fld, n, cobj, params) {
+		var attr = params[0];
+		var rate = params[1];
+		var turn = params[2];
+		var calltype = params[3];
+		switch(calltype){
+			case "AS":
+				var isdual = true;
+				var isreduce_stg = true;
+				var nolog = true;
+				var typestr = "[AS]"
+				break;
+			case "RF":
+				var isreinforce = true
+				var typestr = "[精霊強化]"
+				break;
+			case "SS":
+			default:
+				var typestr = ""
+				break;
+		}
+		var attrstr=get_attr_string(attr);		
+		for (var i = 0; i < fld.Allys.Deck.length; i++) {
+			var cd = fld.Allys.Deck[i];
+			var now = fld.Allys.Now[i];
+			if (now.nowhp > 0) {
+				now.turn_effect.push({
+					effect: function () { },
+					desc: attrstr + "軽減" + typestr + "(" + rate * 100 + "%)",
+					type: "ss_attr_guard" + calltype,
+					icon: "attr_guard",
+					isguard: true,
+					isdual: isdual,
+					isreduce_stg: isreduce_stg,
+					iscursebreak: true,
+					turn: turn,
+					lim_turn: turn,
+					attr: attr,
+					rate: rate*100,
+					isreinforce: isreinforce,
+				});
+			}
+		}
+		if(!nolog){
+			fld.log_push("味方全体軽減" + typestr + "(" + attrstr + "/ " + rate * 100 + "%/ " + turn + "t)");
+		};
 		return true;
 	},
 	// -----------------------------
@@ -621,11 +659,22 @@ var SpSkill = {
 	"ss_regenerate": function (fld, n, cobj, params) {
 		var rate = params[0];
 		var t = params[1];
+		var calltype = params[2];
+		switch(calltype){
+			case "RF":
+				var isreinforce = true
+				var typestr = "[精霊強化]"
+				break;
+			case "SS":
+			default:
+				var typestr = ""
+				break;
+		}
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
 			now.turn_effect.push({
-				desc: "HPを徐々に回復(" + (rate * 100) + "%)",
-				type: "ss_regenerate",
+				desc: "HPを徐々に回復" + typestr + "(" + (rate * 100) + "%)",
+				type: "ss_regenerate" + calltype,
 				icon: "regenerate",
 				isdual: false,
 				iscursebreak: true,
@@ -637,7 +686,7 @@ var SpSkill = {
 						var nd = f.Allys.Now[oi];
 						var hr = Math.floor(nd.maxhp * rate);
 						heal_ally(hr, oi);
-						fld.log_push("Unit[" + (oi + 1) + "]: HP徐々に回復(+" + hr + ")");
+						fld.log_push("Unit[" + (oi + 1) + "]: HP徐々に回復" + typestr + "(+" + hr + ")");
 					}
 				},
 			});
@@ -970,6 +1019,7 @@ var SpCondSkill = {
 		var scc_rst = this["ss_chain_cost"](fld, oi, cobj, params);
 		return ss_object_done(fld, oi, scc_rst);
 	},
+	
 
 	/*
 	// -----------------------------

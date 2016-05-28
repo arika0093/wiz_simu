@@ -63,6 +63,8 @@ function panel(attr) {
 		answer_skill(atk_skill, attr, as_afters);
 		// 回復
 		answer_skill(pickup_answerskills(attr, "heal"), attr, as_afters);
+		// SS効果発動
+		answer_skill(pickup_answerskills(attr, "as_spskill"), attr, as_afters);
 		// 使用したASの使用後処理
 		for (var i = 0; i < as_afters.length; i++) {
 			if (as_afters[i][0]) {
@@ -278,6 +280,9 @@ function answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, loop_ct, as_a
 			case "heal":
 				rst = answer_heal(as_arr[i], i, panel);
 				break;
+			case "as_spskill":
+				rst = answer_spskill(as_arr[i], i, panel);
+				break;
 		}
 	// 攻撃後処理に追加
 	if (rst.length > 0) {
@@ -386,6 +391,23 @@ function answer_heal(as, i, p) {
 			if (ass.after && ci == i) {
 				as_afters.push(ass.after(Field, i, true));
 			}
+		}
+	}
+	return as_afters;
+}
+
+// SP発動スキルの処理
+function answer_spskill(as, i, p) {
+	var as_afters = [];
+	for (var ai = 0; ai < as.length; ai++) {
+		ass = as[ai];
+		if(is_answer_target(ass, chain, -1, -1, i, -1, panel)){
+			var sco = ass.skill(ass.p1, ass.p2, ass.p3, ass.p4);
+			ss_object_done(Field, i, sco);
+		}
+		// 攻撃後処理（いらない？）
+		if (ass.after)  {
+			as_afters.push(ass.after(Field, i, true));
 		}
 	}
 	return as_afters;

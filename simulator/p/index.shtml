@@ -19,7 +19,7 @@
 	<!-- StyleSheet -->
 	<link rel="stylesheet" type="text/css" href="/css/deck.css" />
 	<link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
-    <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px)" />
+	<link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px)" />
     <!-- <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px) and (max-width: 1099px)" />
     <link rel="stylesheet" type="text/css" href="/css/default_bg.css" media="screen and (min-width: 1100px)" /> -->
 	<link rel="stylesheet" type="text/css" href="/css/simulator_sp.css" media="screen and (max-width: 599px)" />
@@ -220,18 +220,18 @@
 		<div class="ally_info">
 			<p id="ally_info_text"></p>
 		</div>
-        <!-- Adsense -->
-        <div class="simu_ads">
-            <!-- advertise -->
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-5156005489853976"
-                 data-ad-slot="6536828444"
-                 data-ad-format="horizontal"></ins>
-            <script>
+	<!-- Adsense -->
+	<div class="simu_ads">
+		<!-- advertise -->
+		<ins class="adsbygoogle"
+			 style="display:block"
+			 data-ad-client="ca-pub-5156005489853976"
+			 data-ad-slot="6536828444"
+			 data-ad-format="horizontal"></ins>
+		<script>
 			(adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
+		</script>
+	</div>
 	</div>
 
 	<!-- Footer -->
@@ -311,6 +311,7 @@
     <script type="text/javascript" charset="UTF-8" src="/js/data/cards.js?              <!--#flastmod virtual='/js/data/cards.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/dynamic.js?                 <!--#flastmod virtual='/js/dynamic.js'-->"></script>
 	<!-- 処理群(データ群に依存する) -->
+    <script type="text/javascript" charset="UTF-8" src="/js/general.js?                 <!--#flastmod virtual='/js/general.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/deck/deckdata.js?           <!--#flastmod virtual='/js/deck/deckdata.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/initialize.js?    <!--#flastmod virtual='/js/simulator/initialize.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/show.js?          <!--#flastmod virtual='/js/simulator/show.js'-->"></script>

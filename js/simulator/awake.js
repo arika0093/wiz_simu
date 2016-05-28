@@ -154,6 +154,12 @@ function card_dmg_relief(card, now, t_attr) {
 			r += ar_awakes[i].perc;
 		}
 	}
+	$.each(now.turn_effect, function (_i, e) {
+		if (e.isguard && e.attr[t_attr]) {
+			r += e.rate;
+		}
+	});
+	r=Math.min(100, r);
 	return r / 100;
 }
 
