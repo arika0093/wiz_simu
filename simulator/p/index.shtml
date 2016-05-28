@@ -1,11 +1,27 @@
 ﻿<!DOCTYPE html>
+<!--
+    ///////////////////////////////////////////////////////////////////////////////
+     _       ___       __              __                  __
+    | |     / (_)___  / /_____  ____  / /____  ____  ___  / /_
+    | | /| / / /_  / / __/ __ |/ __ |/ / ___/ / __ |/ _ |/ __/
+    | |/ |/ / / / /_/ /_/ /_/ / /_/ / (__  ) / / / /  __/ /_
+    |__/|__/_/ /___/|__/|____/|____/_/____(_)_/ /_/|___/|__/
+
+    Welcome to wiztools.net!
+    This project is open source: https://github.com/Arika0093/wiz_simu
+    Author: @arika_nekowiz / @rinshandream / @take_wiz
+    LICENSE: GNU GPL v3
+    ///////////////////////////////////////////////////////////////////////////////
+-->
 <html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8" />
 	<!-- StyleSheet -->
 	<link rel="stylesheet" type="text/css" href="/css/deck.css" />
 	<link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
-	<link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px)" />
+    <!-- <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px) and (max-width: 1099px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default_bg.css" media="screen and (min-width: 1100px)" /> -->
 	<link rel="stylesheet" type="text/css" href="/css/simulator_sp.css" media="screen and (max-width: 599px)" />
 	<link rel="stylesheet" type="text/css" href="/css/simulator.css" media="screen and (min-width: 600px)" />
 	<link type="text/css" rel="stylesheet"
@@ -204,19 +220,18 @@
 		<div class="ally_info">
 			<p id="ally_info_text"></p>
 		</div>
-	</div>
-
-	<!-- Adsense -->
-	<div class="simu_ads">
-		<!-- advertise -->
-		<ins class="adsbygoogle"
-			 style="display:block"
-			 data-ad-client="ca-pub-5156005489853976"
-			 data-ad-slot="6536828444"
-			 data-ad-format="horizontal"></ins>
-		<script>
+        <!-- Adsense -->
+        <div class="simu_ads">
+            <!-- advertise -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5156005489853976"
+                 data-ad-slot="6536828444"
+                 data-ad-format="horizontal"></ins>
+            <script>
 			(adsbygoogle = window.adsbygoogle || []).push({});
-		</script>
+            </script>
+        </div>
 	</div>
 
 	<!-- Footer -->

@@ -7,7 +7,7 @@ body{
 	box-sizing: border-box;
 	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese", sans-serif;
 	font-size: 10.5pt;
-	width: 800px;
+	width: 1150px;
 	margin: auto;
 	border-left: 1px solid #A0A0FF;
 	border-right: 1px solid #A0A0FF;
@@ -165,19 +165,100 @@ a.toplink{
 	background-repeat: no-repeat;
 }
 
-p.sitedetail{
-	display: none;
+p.sitedetail {
 	position: absolute;
-	top: 0px;
-	left: 0px;
-	margin: 0.5ex 0.5em;
-	color: #4493e5;
-	text-align: right;
-	opacity: 0.85;
+	display: flex;
+	align-items: center;
+	top: 10px;
+	right: 15px;
+	margin: 0.5ex 1ex;
+	padding: 1ex 2ex;
+	width: 290px;
+	height: 70px;
+	color: #19283C;
+	text-align: left;
+	border: 1px solid #80C0FF;
+	border-radius: 7px;
+	box-shadow: 0px 0px 10px -1px #2288cc;
+	z-index: 0;
+	background-color: #FCFFFF;
+}
+p.sitedetail:before {
+	content: "";
+	position: absolute;
+	top: 50%; left: -8px;
+	margin-top: -9px;
+	display: block;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 9px 9px 9px 0;
+	border-color: transparent #FCFFFF transparent transparent;
+	z-index: 0;
+}
+p.sitedetail:after {
+	content: "";
+	position: absolute;
+	top: 50%; left: -12px;
+	margin-top: -10px;
+	display: block;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 10px 10px 10px 0;
+	border-color: transparent #80C0FF transparent transparent;
+	z-index: -1;
 }
 
+/* Menu */
 #menu {
-	display: none;
+	width: 298px;
+	margin:0;
+	float:left;
+	list-style-type: none;
+	padding: 2ex 0;
+}
+
+#menu > li{
+	padding: 1ex 1em;
+}
+
+#menu > li > a{
+	display: block;
+	margin-left: 0.5em;
+	padding: 1.4ex 1em;
+	border-left: 8px solid #359cff;
+	background-color: #292b56;
+	text-decoration: none;
+	color: #FFF;
+}
+
+#menu > li > ul{
+	list-style: none;
+	padding-left: 25px;
+}
+
+#menu > li > ul > li{
+	background-image: url("/image/tlicon/default.png");
+	padding-left: 32px;
+	background-size: 32px;
+	background-position: 0px 4px;
+	background-repeat: no-repeat;
+}
+
+#menu > li > ul > li > a{
+	display: block;
+	padding: 1.3ex;
+}
+#menu > li > ul > li > a.new:after{
+	content: " new!";
+	color: #FF0000;
+	text-decoration: none;
+	font-style: italic;
+}
+
+.slicknav_menu {
+	display:none;
 }
 
 /* RSS Show */
@@ -206,11 +287,11 @@ div.rsslist div.article p.date {
 }
 
 /* Main */
-div.Main{
+div.Main, div.Simulator{
 	padding: 3ex 1em 2ex 1em;
-}
-div.Simulator{
-	padding: 2ex 1.5em;
+	width: 800px;
+	float: left;
+	box-sizing: border-box;
 }
 
 div.Main dl{
@@ -427,6 +508,9 @@ iframe.twitter-share-button {
 }
 
 /* Footer */
+div#Footer{
+	clear:both;
+}
 div.footerbase{
 	border-top: 1px solid #A0A0FF;
 	border-bottom: 1px solid #A0A0FF;
@@ -514,3 +598,32 @@ input.edit_indialog{
 input, button, select{
 	font-size: 13.33px;
 }
+
+/* Icon define */
+li#mn_simulator{
+	background-image: url("/image/tlicon/simulator.png") !important;
+}
+
+li#mn_search{
+	background-image: url("/image/tlicon/search.png") !important;
+}
+
+li#mn_check{
+	background-image: url("/image/tlicon/check.png") !important;
+	background-size: 28px !important;
+	background-position: 2px 6px !important;
+}
+
+li#mn_chart{
+	background-image: url("/image/tlicon/chart.png") !important;
+}
+
+li#mn_twitter{
+	background-image: url("/image/tlicon/twitter.png") !important;
+}
+
+li#mn_github{
+	background-image: url("/image/tlicon/github.png") !important;
+}
+
+

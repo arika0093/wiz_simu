@@ -2,7 +2,6 @@
 /* --------------------------------- */
 /* Main Frame */
 div.Simulator {
-	padding: 2ex 1.5em;
 }
 
 /* Simulator Information */
@@ -318,8 +317,8 @@ div#dialog_allystatus .allystat_special {
 
 /* Adsense */
 div.simu_ads{
+	clear: both;
 	padding: 2ex 0.5em;
-	border-top: 1px solid #A0A0FF;
 }
 
 /* Images */
