@@ -387,7 +387,7 @@ var SpSkill = {
 		var grdup = params[1];
 		var attr = params[2];
 		var t = params[3];
-		var sco = ss_attr_guard([1,1,1,1,1], grdup, t, "精霊強化");
+		var sco = ss_attr_guard([1,1,1,1,1], grdup, t, "RF");
 		ss_object_done(fld, n, sco);
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var cd = fld.Allys.Deck[i];
@@ -530,13 +530,16 @@ var SpSkill = {
 			case "AS":
 				var isdual = true;
 				var isreduce_stg = true;
-				var log_inactive = true;
+				var nolog = true;
 				var typestr = "[AS]"
 				break;
 			case "RF":
+				var isreinforce = true
 				var typestr = "[精霊強化]"
 				break;
+			case "SS":
 			default:
+				var typestr = ""
 				break;
 		}
 		var attrstr=get_attr_string(attr);		
@@ -557,10 +560,11 @@ var SpSkill = {
 					lim_turn: turn,
 					attr: attr,
 					rate: rate*100,
+					isreinforce: isreinforce,
 				});
 			}
 		}
-		if(!log_inactive){
+		if(!nolog){
 			fld.log_push("味方全体軽減" + typestr + "(" + attrstr + "/ " + rate * 100 + "%/ " + turn + "t)");
 		};
 		return true;
