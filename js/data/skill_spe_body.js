@@ -526,44 +526,42 @@ var SpSkill = {
 		var rate = params[1];
 		var turn = params[2];
 		var type = params[3];
-		var isas = type == "AS" ? true : false
-		var typestr = type == undefined ? "" : "[" + type + "]"
-		var attrstr = "";
-		var tmp = 0;
-		for(var i = 0; i < attr.length; i++){
-			if(attr[i] == 1){
-				if(tmp > 0){
-					attrstr += "・";
-				}
-				attrstr += Field.Constants.Attr[i];
-				tmp ++;
-			}
-			if(tmp == attr.length){
-				attrstr = "全";
-			}
+		switch(type){
+			case "AS":
+				var isdual = true;
+				var isreduce_stg = true;
+				var log_inactive = true;
+				var typestr = "[AS]"
+				break;
+			case "RF":
+				var typestr = "[精霊強化]"
+				break;
+			default:
+				break;
 		}
+		var attrstr=get_attr_string(attr);		
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var cd = fld.Allys.Deck[i];
 			var now = fld.Allys.Now[i];
 			if (now.nowhp > 0) {
 				now.turn_effect.push({
 					effect: function () { },
-					desc: attrstr + "属性軽減" + typestr + "(" + rate * 100 + "%)",
-					type: "ss_attr_guard"+type,
+					desc: attrstr + "軽減" + typestr + "(" + rate * 100 + "%)",
+					type: "ss_attr_guard" + type,
 					icon: "attr_guard",
 					isguard: true,
-					isdual: isas,
-					isreduce_stg: isas,
+					isdual: isdual,
+					isreduce_stg: isreduce_stg,
 					iscursebreak: true,
 					turn: turn,
 					lim_turn: turn,
-					attr:attr,
-					rate:rate*100,
+					attr: attr,
+					rate: rate*100,
 				});
 			}
 		}
-		if(!isas){
-			fld.log_push("味方全体軽減" + typestr + "(" + attrstr + "属性/ " + rate * 100 + "%/ " + turn + "t)");
+		if(!log_inactive){
+			fld.log_push("味方全体軽減" + typestr + "(" + attrstr + "/ " + rate * 100 + "%/ " + turn + "t)");
 		};
 		return true;
 	},
