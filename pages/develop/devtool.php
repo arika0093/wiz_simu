@@ -79,7 +79,7 @@
         case "skill_ans":
         case "skill_awake":
             //データ読み込み
-            $result=file_get_contents("../js/data/".$_GET["f"].".js");
+            $result=file_get_contents("../../js/data/".$_GET["f"].".js");
             $result=preg_replace('/[\n\r]{3,}/',"\n",$result);
             //説明2（関数）の開始と終了
             $result=preg_replace('/^(function.*\n)/m',"<div class=desc2>$1<input value='開く' type=button onclick=content_open(this)>\n<span class=content_c>",$result);
@@ -95,7 +95,7 @@
             break;
         case "skill_spe":
             //データ読み込み
-            $result=file_get_contents("../js/data/skill_spe.js");
+            $result=file_get_contents("../../js/data/skill_spe.js");
             //functionを非表示にするdivを定義し、ボタン生成
             $result=preg_replace('/^(function.*\n)/m',"<div class=desc2>$1<input value='開く' type=button onclick=content_open(this)>\n<span class=content_c>",$result);
             //divを閉じる
