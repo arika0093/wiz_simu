@@ -30116,7 +30116,7 @@ Cards = [{
 	ss1: {
 		desc: "4ターンの間、味方の攻撃力をアップし(100%)、ダメージを軽減(10%)◆発動中行動不可",
 		turn: 6,
-		proc: [ss_reinforcement_all(1.0, 0.1, [1,1,1,1,1], 4)],
+		proc: [ss_reinforcement_all(4, [ss_attr_guard([1,1,1,1,1], 0.1, 4, "RF"), ss_enhance_all(1, 4, [1,1,1,1,1], "RF")])],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],2),
@@ -30137,7 +30137,9 @@ Cards = [{
 	ss2: {
 		desc: "4ターンの間、味方の攻撃力をアップし(100%)、ダメージを軽減(10%)。5チェインを消費しさらに効果値アップ(200%、20%)◆発動中行動不可",
 		turn: 9,
-		proc: [ss_chain_cost_skill(5, ss_reinforcement_all(2.0, 0.2, [1,1,1,1,1], 4), ss_reinforcement_all(1.0, 0.1, [1,1,1,1,1], 4))],
+		proc: [ss_chain_cost_skill(5,
+		 ss_reinforcement_all(4, [ss_attr_guard([1,1,1,1,1], 0.2, 4, "RF"), ss_enhance_all(2.0, 4, [1,1,1,1,1], "RF")]), ss_reinforcement_all(4, [ss_attr_guard([1,1,1,1,1], 0.1, 4, "RF"), ss_enhance_all(1.0, 4, [1,1,1,1,1], "RF")])
+		 )],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,1,0,0,]),

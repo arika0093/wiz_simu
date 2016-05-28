@@ -206,21 +206,18 @@ function ss_boost_enhance_s(p, t, dmg) {
 
 /**
  * 味方全体に精霊強化効果を付与し、自分は行動不能になる
- * atkup:	攻撃力上昇効果値
- * grdup:	属性軽減上昇効果値(未実装だけど今後のために指定)
- * attr:	強化属性
- * t:		効果適用ターン数
+ * t: 行動不能ターン数
+ * sss: ssの配列(ex: [ss_attr_guard([1,1,1,1,1], 0.1, 4, "RF"), ss_enhance_all(1, 4, [1,1,1,1,1], "RF")])
+ * sssで呼び出す継続効果にはcalltype="RF"を付けること
 **/
-function ss_reinforcement_all(atkup, grdup, attr, t) {
+function ss_reinforcement_all(t, sss) {
 	return ss_template({
 		name: "ss_reinforcement_all",
 		type: "turn_effect",
 		subtype: "reinforcement",
 		target: "ally",
-		p1: atkup,
-		p2: grdup,
-		p3: attr,
-		p4: t,
+		p1: t,
+		p2: sss,
 	});
 }
 

@@ -306,7 +306,6 @@ var SpSkill = {
 	// -----------------------------
 	// 単体エンハ
 	"ss_enhance_own": function (fld, n, cobj, params) {
-		console.log(params)
 		var rate = params[0];
 		var t = params[1];
 		var calltype = params[3];
@@ -394,20 +393,15 @@ var SpSkill = {
 	},
 	// -----------------------------
 	// 精霊強化効果を味方全体に付与する
-	"ss_reinforcement_all": function (fld, n, cobj, params) {
-		var atkup = params[0];
-		var grdup = params[1];
-		var attr = params[2];
-		var t = params[3];
-		var sco = ss_attr_guard([1,1,1,1,1], grdup, t, "RF");
-		ss_object_done(fld, n, sco);
-		var sco = ss_enhance_all(atkup, t,[1,1,1,1,1],  "RF");
-		ss_object_done(fld, n, sco);
-		var sco = ss_regenerate(.3, t, "RF");
-		ss_object_done(fld, n, sco);
-		
+	"ss_reinforcement_all": function (fld, oi, cobj, params) {
+		// paramsにssの配列を書いて、全て実行する
+		var t = params[0]
+		var sss = params[1].concat()
+		for(n=0; n < sss.length; n++){
+			ss_object_done(fld, oi, sss[n]);
+		}
 		// 自身に行動不能効果を付与
-		fld.Allys.Now[n].turn_effect.push({
+		fld.Allys.Now[oi].turn_effect.push({
 			desc: "行動不能[精霊強化]",
 			type: "ss_reactionaly_noaction",
 			icon: "all_sealed",		// 暫定
@@ -1025,6 +1019,7 @@ var SpCondSkill = {
 		var scc_rst = this["ss_chain_cost"](fld, oi, cobj, params);
 		return ss_object_done(fld, oi, scc_rst);
 	},
+	
 
 	/*
 	// -----------------------------
