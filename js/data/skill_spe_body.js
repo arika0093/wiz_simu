@@ -1082,7 +1082,7 @@ function ss_damage(fld, r, atr, atkn, own, tg, isnot_ss) {
 	// 潜在結晶考慮
 	var aw_c = pickup_awakes(card, "awake_rateup", false);
 	for (var i = 0; i < aw_c.length; i++) {
-		rate += Math.floor(aw_c[i].upvalue / 100);
+		rate += Math.floor(aw_c[i].upvalue) / 100;
 	}
 	attack_enemy(enemy, now, atr, rate, atkn, [atr],
 		fld.Status.chain, rnd, own, tg, true);

@@ -205,8 +205,8 @@ p.sitedetail:after {
 	width: 0px;
 	height: 0px;
 	border-style: solid;
-	border-width: 10px 10px 10px 0;
-	border-color: transparent #80C0FF transparent transparent;
+	border-width: 10px 10px 10px .5px;
+	border-color: transparent #80B0FF transparent transparent;
 	z-index: -1;
 }
 
