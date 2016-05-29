@@ -128,6 +128,32 @@ function poison(dm, t) {
 	});
 }
 
+/**
+ * 全体遅延スキル
+ * turn: 遅延ターン数。
+**/
+function ss_delay_all(turn) {
+	return ss_template({
+		name: "ss_delay_all",
+		type: "delay",
+		target: "all",
+		p1: turn,
+	});
+}
+
+/**
+ * 単体遅延スキル
+ * turn: 遅延ターン数。
+**/
+function ss_delay_s(turn) {
+	return ss_template({
+		name: "ss_delay_s",
+		type: "delay",
+		target: "single",
+		p1: turn,
+	});
+}
+
 // ------------------------------------------------------
 // 味方サポート系
 /**
@@ -278,6 +304,26 @@ function ss_skillboost(f) {
 		type: "skillboost",
 		target: "ally",
 		p1: f,
+	});
+}
+
+/**
+ * 軽減スキル
+ * attr: 軽減対象属性。(ex: [1,0,0,0,0] -> 火属性)
+ * rate: 軽減割合。(ex. 0.2 -> 20%)
+ * turn: 軽減継続ターン。
+ * calltype: 未定義->SS "AS"->AS "精霊強化"->精霊強化
+**/
+function ss_attr_guard(attr, rate, turn, calltype) {
+	return ss_template({
+		name: "ss_attr_guard",
+		type: "turn_effect",
+		subtype: "attr_guard",
+		target: "ally",
+		p1: attr,
+		p2: rate,
+		p3: turn,
+		p4: calltype,
 	});
 }
 
@@ -546,6 +592,7 @@ function ss_break_dblock(target) {
 // その他
 /**
  * 前回発動したスキルをコピーする。
+ * 
 **/
 function ss_latest_copy() {
 	return ss_template({
@@ -554,6 +601,8 @@ function ss_latest_copy() {
 		is_skillcopy: true,
 	});
 }
+
+
 
 
 // ------------------------------------------------------
@@ -621,26 +670,6 @@ function ss_answer_foresight() {
 }
 
 /**
- * 軽減スキル
- * attr: 軽減対象属性。(ex: [1,0,0,0,0] -> 火属性)
- * rate: 軽減割合。(ex. 0.2 -> 20%)
- * turn: 軽減継続ターン。
- * calltype: 未定義->SS "AS"->AS "精霊強化"->精霊強化
-**/
-function ss_attr_guard(attr, rate, turn, calltype) {
-	return ss_template({
-		name: "ss_attr_guard",
-		type: "turn_effect",
-		subtype: "attr_guard",
-		target: "ally",
-		p1: attr,
-		p2: rate,
-		p3: turn,
-		p4: calltype,
-	});
-}
-
-/**
  * パネルに軽減効果を付与する
  * attr: 軽減対象属性。(ex: [1,0,0,0,0] -> 火属性)
  * rate: 軽減割合。(ex. 0.2 -> 20%)
@@ -652,32 +681,6 @@ function panel_attr_guard(attr, rate) {
 		target: "panel",
 		p1: attr,
 		p2: rate,
-	});
-}
-
-/**
- * 全体遅延スキル
- * turn: 遅延ターン数。
-**/
-function ss_delay_all(turn) {
-	return ss_template({
-		name: "ss_delay_all",
-		type: "delay",
-		target: "all",
-		p1: turn,
-	});
-}
-
-/**
- * 単体遅延スキル
- * turn: 遅延ターン数。
-**/
-function ss_delay_s(turn) {
-	return ss_template({
-		name: "ss_delay_s",
-		type: "delay",
-		target: "single",
-		p1: turn,
 	});
 }
 
