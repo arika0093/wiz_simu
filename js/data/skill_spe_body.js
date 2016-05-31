@@ -404,10 +404,10 @@ var SpSkill = {
 		fld.Allys.Now[oi].turn_effect.push({
 			desc: "行動不能[精霊強化]",
 			type: "ss_reactionaly_noaction",
-			icon: "all_sealed",		// 暫定
+			icon: "reinforcement",
 			isdual: false,
 			iscursebreak: true,		// 呪い解除される(?)
-			isreduce_stg: false,		// ターン跨ぎでカウントが減らない
+			isreduce_stg: false,	// ターン跨ぎでカウントが減らない
 			effect: function () { },
 			priority: 1,
 			turn: t,
