@@ -260,37 +260,19 @@ var sfdef_aw_namelist = {
 	"AS封印無効": {
 		type: "abstate_invalid",
 		check: function (e) {
-			if ($.isArray(e.tgtype)) {
-				return $.grep(e.tgtype, function (g) {
-					return g == "as_sealed";
-				}).length > 0;
-			} else {
-				return e.tgtype == "as_sealed";
-			}
+			return sfdef_absinvalid(e.tgtype, "as_sealed");
 		}
 	},
 	"SS封印無効": {
 		type: "abstate_invalid",
 		check: function (e) {
-			if ($.isArray(e.tgtype)) {
-				return $.grep(e.tgtype, function (g) {
-					return g == "ss_sealed";
-				}).length > 0;
-			} else {
-				return e.tgtype == "ss_sealed";
-			}
+			return sfdef_absinvalid(e.tgtype, "ss_sealed");
 		}
 	},
 	"毒無効": {
 		type: "abstate_invalid",
 		check: function (e) {
-			if ($.isArray(e.tgtype)) {
-				return $.grep(e.tgtype, function (g) {
-					return g == "poison";
-				}).length > 0;
-			} else {
-				return e.tgtype == "poison";
-			}
+			return sfdef_absinvalid(e.tgtype, "poison");
 		}
 	},
 	"L時スキル発動": {
@@ -316,3 +298,14 @@ Species = [
 	"アイテム",
 	"AbCd",
 ];
+
+// 異常無効確認用の関数
+function sfdef_absinvalid(tgtype, type) {
+	if ($.isArray(tgtype)) {
+		return $.grep(tgtype, function (e) {
+			return e == type;
+		}).length > 0;
+	} else {
+		return tgtype == type;
+	}
+}
