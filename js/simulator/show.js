@@ -526,8 +526,9 @@ function ss_remain_text(rem_turn) {
 
 // 合計ターンの表記を返却する
 function totalturn_string() {
-	var finish_ss = Field.Status.finish && Field.Status.durturn[Field.Quest.aprnum - 1].ssfin;
-	return (finish_ss ? (Field.Status.totalturn - 1) + "+SS" : Field.Status.totalturn.toString());
+	var f_st = Field.Status;
+	var finish_ss = f_st.finish && f_st.durturn[Field.Quest.aprnum - 1].ssfin;
+	return (finish_ss ? (f_st.totalturn - 1) + "+SS" : f_st.totalturn.toString());
 }
 
 // 累計ターンの表記を返却する

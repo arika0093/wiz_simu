@@ -203,7 +203,14 @@ function Awake_AbsInvalid(card, now, type) {
 		ai_awakes = ai_awakes.concat(pickup_awakes(card, "abstate_invalid", true));
 	}
 	for (var i = 0; i < ai_awakes.length; i++) {
-		if (type === ai_awakes[i].tgtype) {
+		// 定義が配列なら全てに対しチェック
+		if ($.isArray(ai_awakes[i].tgtype)) {
+			return $.grep(ai_awakes[i].tgtype, function (e) {
+				return e == type;
+			}).length > 0;
+		}
+		// 単体定義なら1つに対しチェック
+		else if (type === ai_awakes[i].tgtype) {
 			return true;
 		}
 	}

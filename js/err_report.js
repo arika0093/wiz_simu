@@ -1,4 +1,5 @@
-window.onerror = function(errorMsg, fileName, lineNumber) {
+window.onerror = function (errorMsg, fileName, lineNumber) {
+	fileName = fileName.replace(" ", "");
     var errorInfo = {
         'errorMsg'   : errorMsg,           // エラーメッセージ
         'fileName'   : fileName,           // エラーが発生したスクリプトのファイル名
@@ -6,12 +7,14 @@ window.onerror = function(errorMsg, fileName, lineNumber) {
         'urlDispPage': location.href,      // エラー発生時に閲覧していた URL
         'userAgent'  : navigator.userAgent // エラーが発生したクライアントのユーザエージェント
     };
-    $.ajax({
-    	type: "POST",
-    	url: "http://wiztools.net/api/err_report.php",
-    	data: "t=set&d=" + JSON.stringify(errorInfo),
-    	success: function (r) {
-    		return;
-    	},
-    });
+    if (fileName) {
+    	$.ajax({
+    		type: "POST",
+    		url: "http://wiztools.net/api/err_report.php",
+    		data: "t=set&d=" + JSON.stringify(errorInfo),
+    		success: function (r) {
+    			return;
+    		},
+    	});
+    }
 };
