@@ -24,7 +24,6 @@ function m_enemy_nturn(e_skl, n) {
 	return e_skl;
 }
 
-
 // 現在HPが最も高い味方を狙う
 function m_enemy_tgtype_maxhp() {
 	return function (nows, tnum) {
@@ -338,7 +337,6 @@ function s_enemy_all_sealed(tnum, t) {
 	});
 }
 
-
 // パニックシャウト(ダメージ, 対象数, 継続ターン)
 // ダメージが0なら、ターゲット異常
 function s_enemy_panicshout(damage, tnum, t) {
@@ -409,7 +407,6 @@ function s_enemy_healreverse(rate, tnum) {
 		);
 	});
 }
-
 
 // 呪い(HP低下値, 対象数, 継続ターン)
 function s_enemy_cursed(hpdown, tnum, t) {
@@ -867,6 +864,12 @@ function s_enemy_chain_sealed(t) {
 // -----------------------------------
 // その他
 // -----------------------------------
+// 何もしない
+function s_enemy_noeffect() {
+	return m_create_enemy_move(function () {});
+}
+
+
 // スキルディスチャージ
 function s_enemy_discharge(tnum, minus_turn) {
 	return m_create_enemy_move(function (fld, n) {
