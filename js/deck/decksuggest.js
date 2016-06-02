@@ -419,7 +419,7 @@ function set_autocmp(i) {
 					rst = rst || value.name.indexOf(hira2kana) >= 0;							// 平仮名からカタカナに変換して比較
 					rst = rst && value.as1.proc != null;										// ASが未定義のものは除く
 					rst = rst && !value.disable;												// 無効化されていない(進化後が存在する精霊など)
-					rst = rst || (term == "*all*" && value.imageno > 0 && !value.isorigin);		// 全表示の時はオリジナル精霊は出さない
+					rst = rst || (term == "*all*" && value.imageno > 0 && !value.disable);		// 全表示の時も無効化精霊は出さない
 					if (rst){
 						return {
 							label: value.name,
