@@ -908,6 +908,13 @@ var SpCondSkill = {
 		var now = fld.Allys.Now[oi];
 		return (now.nowhp >= (now.maxhp * cond)) ? a : b;
 	},
+	"ss_hp_more_skill": function (fld, oi, cobj, params) {
+		var scc_rst = this["ss_hp_more"](fld, oi, cobj, params);
+		if (scc_rst) {
+			return ss_object_done(fld, oi, scc_rst);
+		}
+		return null;
+	},
 	// -----------------------------
 	// HP条件(一定以下)
 	"ss_hp_less": function (fld, oi, cobj, params) {

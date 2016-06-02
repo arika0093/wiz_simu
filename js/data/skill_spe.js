@@ -892,23 +892,6 @@ function ss_chain_cond(ch, a, b) {
 }
 
 /**
- * (条件系)現在のチェイン数に応じて実行SSを分岐する際に使用する
- * ch:	条件チェイン
- * ss1:	条件を満たしていた場合に発動するSS
- * ss2:	条件を満たしていない場合に発動するSS
-**/
-function ss_chain_cond_skill(ch, ss1, ss2) {
-	return ss_condition({
-		name: "ss_chain_cond",
-		type: "chain",
-		p1: ch,
-		p2: ss1,
-		p3: ss2,
-		is_delay: true,
-	});
-}
-
-/**
  * (条件系)チェインが消費できる場合強制消費してa,そうでない場合bを返す。
  * ch:	消費するチェイン数。
  * a:	条件を満たした時の値。
@@ -941,6 +924,38 @@ function ss_chain_cost_skill(ch, ss1, ss2) {
 	});
 }
 
+/**
+ * (条件実行系)現在のチェイン数に応じて実行SSを分岐する際に使用する
+ * ch:	条件チェイン
+ * ss1:	条件を満たしていた場合に発動するSS
+ * ss2:	条件を満たしていない場合に発動するSS
+**/
+function ss_chain_cond_skill(ch, ss1, ss2) {
+	return ss_condition({
+		name: "ss_chain_cond",
+		type: "chain",
+		p1: ch,
+		p2: ss1,
+		p3: ss2,
+		is_delay: true,
+	});
+}
+
+/**
+ * (条件実行系)自身のHPが指定%以上の時にスキルを実行する
+ * r:	条件HP。
+ * ss:	条件を満たした時に発動するSS。
+**/
+function ss_hp_more_skill(ch, ss) {
+	return ss_condition({
+		name: "ss_hp_more_skill",
+		type: "own_hp",
+		p1: ch,
+		p2: ss,
+		p3: null,
+		is_delay: true,
+	});
+}
 
 /**
  * (条件実行系)自身のHPが指定%以下の時にスキルを実行する
