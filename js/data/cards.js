@@ -32244,7 +32244,7 @@ Cards = [{
 	ss1: {
 		desc: "<解答削り>解答選択肢を2つ削り、HP100%以上なら解答を見破る",
 		turn: 4,
-		proc: [ss_answer_narrow(2), ss_answer_foresight()],
+		proc: [ss_answer_narrow(2), ss_hp_more_skill(1, ss_answer_foresight())],
 	},
 	awakes: [
 		Fastskill(1),
@@ -32434,7 +32434,7 @@ Cards = [{
 		Spec_statusup(200,0, [8,]),
 		Panel_boost([0,0,1,0,0,],2),
 		Spec_statusup(0,200, [8,]),
-		Abstate_invalid("poison"),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
 	],
 	as2: {
 		desc: "7チェインで雷属性属性の味方の攻撃力をアップ(100%)、さらに全属性のダメージを10%軽減",
@@ -32478,7 +32478,7 @@ Cards = [{
 		NEFTJOD(30),
 		Spec_statusup(0,200, [8,]),
 		Fastskill(2),
-		Abstate_invalid("ss_sealed"),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
 	],
 	as2: {
 		desc: "5チェインでダメージアップ(550%)、10チェインで更にダメージアップ(700%)",
@@ -32755,12 +32755,12 @@ Cards = [{
 	ss2: {
 		desc: "<割合削り>敵全体のHPを25%減少させ、10チェインを消費しスキル反射を無視する",
 		turn: 12,
-		proc: [ss_chain_cost_skill(10, ss_ratiodamage_s(0.25), ss_ignore_skillcounter(), ss_ratiodamage_s(0.25))],
+		proc: [ss_ratiodamage_s(0.25),  ss_chain_cost_skill(10, ss_ignore_skillcounter(), null)],
 	},
 	Lawake: [
 		Statusup(0,500),
 		Statusup(500,0),
-		Abstate_invalid("ss_sealed"),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
 	],
 },{
 	name: "我と共に挑め キワム&アウデアムス",
@@ -33161,7 +33161,7 @@ Cards = [{
 	ss2: {
 		desc: "<特殊パネル変換>ジャンルパネルを雷・光属性化し、ダメージ25%軽減の効果を付与。HP20%以下でさらにダメージ35%軽減の効果を付与。",
 		turn: 6,
-		proc: [ss_panel_change([0,0,1,1,0]), panel_attr_guard([1,1,1,1,1], 0.25), ss_hp_less_skill(0.20, panel_attr_guard([1,1,1,1,1], 0.35))],
+		proc: [ss_panel_change([0,0,1,1,0]), panel_attr_guard([1,1,1,1,1], ss_hp_less(0.20, 0.60, 0.25))],
 	},
 	Lawake: [
 		Statusup(500,0),

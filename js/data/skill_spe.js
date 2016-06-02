@@ -946,11 +946,11 @@ function ss_chain_cond_skill(ch, ss1, ss2) {
  * r:	条件HP。
  * ss:	条件を満たした時に発動するSS。
 **/
-function ss_hp_more_skill(ch, ss) {
+function ss_hp_more_skill(r, ss) {
 	return ss_condition({
 		name: "ss_hp_more_skill",
 		type: "own_hp",
-		p1: ch,
+		p1: r,
 		p2: ss,
 		p3: null,
 		is_delay: true,
@@ -962,11 +962,11 @@ function ss_hp_more_skill(ch, ss) {
  * r:	条件HP。
  * ss:	条件を満たした時に発動するSS。
 **/
-function ss_hp_less_skill(ch, ss) {
+function ss_hp_less_skill(r, ss) {
 	return ss_condition({
 		name: "ss_hp_less_skill",
 		type: "own_hp",
-		p1: ch,
+		p1: r,
 		p2: ss,
 		p3: null,
 		is_delay: true,
