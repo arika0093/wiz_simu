@@ -70,7 +70,7 @@ function deckdata_Apply(data, ignore_check) {
 		var inp_name = $("#deck0" + (i + 1)).val();
 		if (inp_name != "") {
 			var crd = $.grep(Cards, function (e, i) {
-				return e.name == inp_name;
+				return e.name == inp_name && !e.disable;
 			})[0];
 			data.deck[i].cardno = crd.cardno;
 			data.deck[i].awake_default = crd.awakes.length;

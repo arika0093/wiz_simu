@@ -1199,6 +1199,7 @@ Cards = [{
 	cost: 47,
 	attr: [0, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Panel_boost([1,0,0,0,0], 1),
 		Statusup(0, 200),
@@ -1242,6 +1243,7 @@ Cards = [{
 	cost: 47,
 	attr: [0, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		NEFTJOD(30),
@@ -2292,6 +2294,7 @@ Cards = [{
 	cost: 47,
 	attr: [0, -1],
 	species: [2],
+	disable: true,
 	awakes: [
 		NEFTJOD(30),
 		Spec_statusup(0, 100, [2]),
@@ -3391,6 +3394,7 @@ Cards = [{
 	cost: 48,
 	attr: [0, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		NEFTJOD(30),
@@ -5540,7 +5544,7 @@ Cards = [{
 		proc: [ss_delay_s(2)]
 	},
 }, {
-	name: "撃砕の鉄腕 アトヤ＆リベルタス",
+	name: "撃砕の鉄腕 アトヤ&リベルタス",
 	cardno: 4246,
 	imageno: 5952,
 	hp: 3134,
@@ -5548,6 +5552,7 @@ Cards = [{
 	cost: 49,
 	attr: [1, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
@@ -8666,6 +8671,7 @@ Cards = [{
 	cost: 44,
 	attr: [1, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Attr_relief([0, 1, 0, 0, 0, ], 20),
@@ -10115,6 +10121,7 @@ Cards = [{
 	cost: 48,
 	attr: [1, 2],
 	species: [8],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
@@ -10813,7 +10820,7 @@ Cards = [{
 		proc: [ss_panel_change([1,1,1,0,0]), panel_attackup(0.2)]
 	},
 }, {
-	name: "傷だらけの銃爪 スミオ＆トキオ",
+	name: "傷だらけの銃爪 スミオ&トキオ",
 	cardno: 4243,
 	imageno: 5949,
 	hp: 2567,
@@ -10821,6 +10828,7 @@ Cards = [{
 	cost: 46,
 	attr: [2, 0],
 	species: [8],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Statusup(0, 200),
@@ -11041,6 +11049,7 @@ Cards = [{
 	cost: 48,
 	attr: [2, -1],
 	species: [1],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Spec_statusup(0, 200, [1, ]),
@@ -11085,6 +11094,7 @@ Cards = [{
 	cost: 45,
 	attr: [2, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Statusup(200, 0),
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
@@ -12440,6 +12450,7 @@ Cards = [{
 	cost: 45,
 	attr: [2, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Attr_relief([0, 0, 1, 0, 0, ], 20),
@@ -21299,7 +21310,7 @@ Cards = [{
 		Statusup(0,500),
 	],
 },{
-	name: "波間彩る月の音 ツクヨ・オトエヒナ	",
+	name: "波間彩る月の音 ツクヨ・オトエヒナ",
 	cardno: 5070,
 	imageno: 6810,
 	hp: 4552,
@@ -31613,7 +31624,7 @@ Cards = [{
 		Attr_relief([1,1,1,1,1,],10),
 	],
 }, {
-	name: "幽玄朧月の霊託 ウルーリカ・モレノ	",
+	name: "幽玄朧月の霊託 ウルーリカ・モレノ",
 	cardno: 6288,
 	imageno: 8135,
 	hp: 5803,
@@ -31789,7 +31800,7 @@ Cards = [{
 		Attr_statusup(0,100, [0,0,1,0,0,]),
 	],
 },{
-	name: "八卦陰陽頭 トウマ・アマノ	",
+	name: "八卦陰陽頭 トウマ・アマノ",
 	cardno: 6289,
 	imageno: 8136,
 	hp: 3004,
@@ -32300,8 +32311,7 @@ Cards = [{
 		Spec_statusup(200,0, [8,]),
 		Fastskill(2),
 		Spec_statusup(0,200, [8,]),
-		Awake_noeffect("ドロップアップ", 1),
-
+		Awake_noeffect("難易度ダウン", 1),
 	],
 	as2: {
 		desc: "5チェインで雷属性の攻撃力をアップ、複属性が水属性だとさらにアップ(90%/140%)",
