@@ -19433,7 +19433,7 @@ Cards = [{
 	hp: 2638,
 	atk: 2134,
 	cost: 35,
-	attr: [2,0],
+	attr: [0,2],
 	species: [4],
 	islegend: true,
 	as1: {
@@ -31788,7 +31788,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "4チェインでダメージアップ、HP80%以上でさらにダメージアップ(400%/650%)",
-		proc: [ChainAttack(3.0, 4), add_cond(ChainAttack(5.5, 4), when_hp_more(0.8))],
+		proc: [ChainAttack(4.0, 4), add_cond(ChainAttack(6.5, 4), when_hp_more(0.8))],
 	},
 	ss2: {
 		desc: "<ブースト>5ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ(1500%)。さらに極稀にクリティカル",
