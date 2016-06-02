@@ -155,7 +155,7 @@ div.headerbase{
 a.toplink{
 	box-sizing: border-box;
 	display: block;
-	width: 100%;
+	width: 800px;
 	height: 120px;
 	text-indent: -9999pt;
 	color: #0040FF;
@@ -231,6 +231,7 @@ p.sitedetail:after {
 	background-color: #292b56;
 	text-decoration: none;
 	color: #FFF;
+	cursor: default;
 }
 
 #menu > li > ul{
@@ -244,6 +245,10 @@ p.sitedetail:after {
 	background-size: 32px;
 	background-position: 0px 4px;
 	background-repeat: no-repeat;
+	transition-duration: .15s;
+}
+#menu > li > ul > li:hover{
+	background-color: #CCF;
 }
 
 #menu > li > ul > li > a{

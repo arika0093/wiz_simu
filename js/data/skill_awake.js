@@ -140,16 +140,6 @@ function Awake_SpecialSkill(spskill, p1, p2, p3, p4) {
 	};
 }
 
-// 複合潜在能力
-// （煌眼、覇眼等の複数効果を有する潜在能力定義用）
-function Awake_composite(name,p1,p2,p3,p4){
-	return {
-		type: "awake_composite",
-		desc:name,
-		proc: [p1,p2,p3,p4],
-	};
-}
-
 // その他、試走に影響を及ぼさない潜在
 function Awake_noeffect(name, efv) {
 	return {

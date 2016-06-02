@@ -8,6 +8,10 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss)
 	var ss_enh = now.ss_enhance ? Number(now.ss_enhance.toFixed(2)) : 0;
 	var bss_enh = now.ss_boost_enhance ? Number(now.ss_boost_enhance.toFixed(2)) : 0;
 	var rfm_enh = now.ss_reinforcement_atk ? Number(now.ss_reinforcement_atk.toFixed(2)) : 0;
+	// 最終補正値
+	var card = Field.Allys.Deck[i];
+	var lst_multi = Awake_get_multiple(card, now);
+
 	// 攻撃力
 	d = now.atk / (!is_ss ? 2 : 1);
 	// AS倍率、エンハ
@@ -18,6 +22,8 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss)
 	d *= (pn.indexOf(atk_atr) >= 0 ? 1 : 0.5);
 	// 属性考慮
 	d *= attr_magnification(atk_atr, enemy.attr);
+	// 補正値
+	d *= lst_multi;
 	// 乱数考慮
 	d *= rnd;
 	// 攻撃回数考慮
@@ -61,6 +67,7 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss)
 		" * チェイン(" + (1 + ch / 100) + ")" +
 		" * パネル(" + (pn.indexOf(atk_atr) >= 0 ? 1 : 0.5) + ")" +
 		" * 属性相性(" + attr_magnification(atk_atr, enemy.attr) + ")" +
+		(lst_multi != 1 ? " * 補正値(" + lst_multi + ")" : "") +
 		" * 乱数(" + rnd.toFixed(2) + ")" +
 		(atkn > 1 ? " / 攻撃回数(" + atkn + ")" : "") +
 		" = ダメージ(" + d + ")"

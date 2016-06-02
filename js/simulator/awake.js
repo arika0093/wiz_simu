@@ -30,8 +30,8 @@ function pickup_awakes(card, type, l_awakes) {
 
 // 複合潜在能力を展開する
 function open_awake_composite(awakes_t){
-	var awakes2=[]
-	$.each(awakes_t,function(index,val){
+	var awakes2 = [];
+	$.each(awakes_t, function(index,val){
 		if (val != undefined){
 			// 複合潜在能力であるならば再帰的に展開する
 			if (val.type=="awake_composite"){
@@ -43,7 +43,7 @@ function open_awake_composite(awakes_t){
 			}
 		}
 	});
-	return awakes2
+	return awakes2;
 }
 
 // 潜在能力を味方に反映させる
@@ -215,6 +215,21 @@ function Awake_AbsInvalid(card, now, type) {
 		}
 	}
 	return false;
+}
+
+// 最終補正値を取得する
+function Awake_get_multiple(card, now) {
+	var rate = 1;
+	var type = "awake_damage_multiple";
+	var dm_awakes = pickup_awakes(card, type, false);
+	if (is_legendmode(card, now)) {
+		dm_awakes = dm_awakes.concat(pickup_awakes(card, type, true));
+	}
+	for (var i = 0; i < dm_awakes.length; i++) {
+		var dm = dm_awakes[i];
+		rate *= dm.rate;
+	}
+	return rate;
 }
 
 // L時突入時に潜在SSを発動する

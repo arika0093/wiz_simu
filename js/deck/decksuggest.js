@@ -236,7 +236,9 @@ $(function () {
 						awake_c = awc_data.imple(pr_1, pr_2, pr_3);
 					}
 					// plus item
-					awake_c.display_text = awc_data.name + "(" + $("#ae_awake_value").val() + ")";
+					var aw_value = $("#ae_awake_value").val();
+					awake_c.display_text = awc_data.name
+						+ (Number(aw_value) > 0 ? "(" + aw_value + ")" : "");
 					awake_c.add_cost = Number($("#ae_awake_cost").val());
 					awake_c.is_legend = awc_data.is_legend;
 					// push

@@ -869,7 +869,6 @@ function s_enemy_noeffect() {
 	return m_create_enemy_move(function () {});
 }
 
-
 // スキルディスチャージ
 function s_enemy_discharge(tnum, minus_turn) {
 	return m_create_enemy_move(function (fld, n) {
