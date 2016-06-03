@@ -2,11 +2,13 @@
 // 基本
 // -----------------------------------
 // (内部用)Create enemy move object
-function m_create_enemy_move(f) {
+function m_create_enemy_move(f, mdesc) {
 	return {
 		move: f,
 		interval: 0,
 		count: 0,
+		argObj:getParentArg(),
+		mdesc:mdesc
 	};
 }
 
@@ -15,12 +17,20 @@ function m_create_enemy_move(f) {
 // -----------------------------------
 // 初回のみ行動
 function m_enemy_once(e_skl) {
+	var mdesc = e_skl.mdesc
+	mdesc = mdesc.slice(-1) == "）" ? mdesc.slice(0, -1)+"、" : mdesc+"（"
+	e_skl.mdesc =　mdesc + "初回のみ）"
 	return m_enemy_nturn(e_skl, 999);
 }
 
 // nターンに1回行動
 function m_enemy_nturn(e_skl, n) {
 	e_skl.interval = n;
+	if(arguments.callee.caller.name!="m_enemy_once"){
+		var mdesc=e_skl.mdesc
+		mdesc = mdesc.slice(-1) == "）" ? mdesc.slice(0, -1)+"、" : mdesc+"（"
+		e_skl.mdesc =　mdesc + n + "ターンに１回）"
+	}
 	return e_skl;
 }
 
@@ -68,11 +78,11 @@ function damage_switch(cond, func, is_always) {
 			turn: -1,
 			lim_turn: -1,
 			effect: function () { },
-			cond: cond,
+			cond: cond.func,
 			on_cond: m_enemy_once(func),
 			oncond_anytime: is_always === true,
 		});
-	});
+	}, "行動予約：" + cond.desc + func.mdesc);
 	return rst;
 }
 
@@ -130,7 +140,7 @@ function s_enemy_attack(dmg, tnum, atkn, tgtype) {
 				_s_enemy_attack(fld, dmg * 2, n, tg[i][j]);
 			}
 		}
-	});
+	}, makeDesc("攻撃"));
 }
 
 // 属性特攻(有利属性時ダメ, 不利属性時ダメ, 特攻属性, 攻撃対象数, 攻撃回数, 対象詳細)
@@ -152,7 +162,7 @@ function s_enemy_attack_attrsp(dmg_s, dmg_n, attr, tnum, atkn, tgtype) {
 				_s_enemy_attack(fld, dmg, n, targ);
 			}
 		}
-	});
+	}, makeDesc("属性特攻",{attr:0,dmg_s:0,dmg_n:0,tnum:0,atkn:0}));
 }
 
 // 割合ダメージ(削り幅, 攻撃対象数, 対象詳細)
@@ -177,7 +187,7 @@ function s_enemy_attack_ratio(rate, tnum, tgtype) {
 				}
 			}
 		}
-	});
+	}, makeDesc("割合ダメージ"));
 }
 
 // 亡者の怨念
@@ -193,7 +203,7 @@ function s_enemy_attack_deadgrudge(r1, r2, r3, tgtype) {
 		});
 		fld.log_push("Enemy[" + (n + 1) + "]: 亡者の怨念発動");
 		return s_enemy_attack(rates[deadnum], 1, 1, tgtype).move(fld, n, nows, is_counter);
-	});
+	}, makeDesc("亡者の怨念"));
 }
 
 // -----------------------------------
@@ -270,7 +280,7 @@ function s_enemy_poison(d, tnum, t) {
 				},
 			}
 		);
-	});
+	}, makeDesc("毒"));
 }
 
 // 弱体化(対象属性, 効果値(ダメージ2倍なら2.0), 対象数, 継続ターン)
@@ -293,7 +303,7 @@ function s_enemy_attr_weaken(attr, rate, tnum, t) {
 				},
 			}
 		);
-	});
+	}, makeDesc("弱体化"));
 }
 
 // AS封印(対象数, 継続ターン)
@@ -306,7 +316,7 @@ function s_enemy_as_sealed(tnum, t) {
 				}
 			}
 		);
-	});
+	}, makeDesc("AS封印"));
 }
 
 // SS封印(対象数, 継続ターン)
@@ -317,7 +327,7 @@ function s_enemy_ss_sealed(tnum, t) {
 				ss_disabled: true,
 			}
 		);
-	});
+	}, makeDesc("SS封印"));
 }
 
 // 封印(対象数, 継続ターン)
@@ -334,7 +344,7 @@ function s_enemy_all_sealed(tnum, t) {
 				ss_disabled: true,
 			}
 		);
-	});
+	}, makeDesc("封印"));
 }
 
 // パニックシャウト(ダメージ, 対象数, 継続ターン)
@@ -353,7 +363,7 @@ function s_enemy_panicshout(damage, tnum, t) {
 					panic_damage: damage,
 				}
 			);
-		});
+		}, makeDesc("パニックシャウト 自傷"));
 	}else{
 		// タゲ異常パニック
 		return m_create_enemy_move(function (fld, n, pnow, is_counter) {
@@ -363,7 +373,7 @@ function s_enemy_panicshout(damage, tnum, t) {
 					panic_target: true,
 				}
 			);
-		});
+		}, makeDesc("パニックシャウト タゲ異常"));
 	}
 }
 
@@ -382,7 +392,7 @@ function s_enemy_deathlimit(tnum, limit) {
 				},
 			}
 		);
-	});
+	}, makeDesc("死の秒針"));
 }
 
 // 回復反転(効果値, 対象数)
@@ -405,7 +415,7 @@ function s_enemy_healreverse(rate, tnum) {
 				reverse_rate: rate,
 			}
 		);
-	});
+	}, makeDesc("回復反転"));
 }
 
 // 呪い(HP低下値, 対象数, 継続ターン)
@@ -456,7 +466,7 @@ function s_enemy_cursed(hpdown, tnum, t) {
 			}
 			fld.log_push("Enemy[" + (n + 1) + "]: 呪い(HP:" + (-hpdown) + "|" + t + "t)(対象: Unit[" + (tg[i] + 1) + "])");
 		}
-	});
+	}, makeDesc("呪い"));
 }
 
 // -----------------------------------
@@ -480,7 +490,7 @@ function skill_counter(damage, t) {
 				damage_ally(damage, ai, true);
 			}
 		});
-	});
+	}, makeDesc("スキル反射"));
 }
 
 // スキル反射(スキル実行)
@@ -510,7 +520,7 @@ function skill_counter_func(skill, desc, t, is_tgonly, p1, p2, p3, p4) {
 				initialize_allys_flags(f.Allys.Now);
 			}
 		});
-	});
+	}, makeDesc("スキル反射"));
 }
 
 // SS反応(味方スキルに反応する)
@@ -529,7 +539,7 @@ function skill_response(skill) {
 				skill.move(f, ei);
 			}
 		});
-	});
+	}, makeDesc("SS反応"));
 }
 
 // 物理カウンター(単発ダメージ)
@@ -550,7 +560,7 @@ function attack_counter(damage, t) {
 				damage_ally(damage, ai, true);
 			}
 		});
-	});
+	}, makeDesc("物理カウンター"));
 }
 
 // 物理カウンター(多段式ダメージ)
@@ -574,7 +584,7 @@ function attack_counter_dual(damage, t) {
 				}
 			}
 		});
-	});
+	}, makeDesc("多段式カウンター"));
 }
 
 // -----------------------------------
@@ -602,7 +612,7 @@ function damage_block_own(bl, t) {
 				}
 			}
 		});
-	});
+	}, makeDesc("単体ダメブロ"));
 }
 
 // ダメージブロック(全体)
@@ -612,7 +622,7 @@ function damage_block_all(bl, t) {
 		for (var i = 0; i < enemys.length; i++) {
 			damage_block_own(bl, t).move(fld, i);
 		}
-	});
+	}, makeDesc("全体ダメブロ"));
 }
 
 // 属性ガード(単体)
@@ -648,7 +658,7 @@ function s_enemy_attrguard_own(attr, rate, turn) {
 			}
 		});
 		Field.log_push("Enemy[" + (n + 1) + "]: [" + attr_text + "]属性ガード(" + (rate * 100) + "%)");
-	});
+	}, makeDesc("単体軽減"));
 }
 
 // 属性ガード(全体)
@@ -658,7 +668,7 @@ function s_enemy_attrguard_all(attr, rate, turn) {
 		for (var i = 0; i < enemys.length; i++) {
 			s_enemy_attrguard_own(attr, rate, turn).move(fld, i);
 		}
-	});
+	}, makeDesc("全体軽減"));
 }
 
 // 鉄壁防御
@@ -682,7 +692,7 @@ function impregnable(t) {
 				return 1;
 			}
 		});
-	});
+	}, makeDesc("鉄壁"));
 }
 
 // -----------------------------------
@@ -699,7 +709,7 @@ function s_enemy_division(copyhp) {
 			turn: -1,
 			lim_turn: -1,
 			effect: function () { },
-			cond: s_enemy_when_dead_l(),
+			cond: s_enemy_when_dead_l.func(),
 			on_cond: m_create_enemy_move(function (f, i) {
 				// 複製先
 				var copyto = i != 0 ? 0 : 1;
@@ -711,7 +721,7 @@ function s_enemy_division(copyhp) {
 			}),
 			oncond_anytime: true,
 		});
-	});
+	}, makeDesc("分裂待機"));
 }
 
 // 敵全体を回復
@@ -724,7 +734,7 @@ function s_enemy_heal_all(rate) {
 			e.nowhp = Math.min(e.nowhp + heal_v, e.hp);
 			fld.log_push("Enemy[" + (i + 1) + "]: HP回復(" + heal_v + ")");
 		})
-	});
+	}, makeDesc("全体回復"));
 }
 
 // 自分自身を回復
@@ -735,7 +745,7 @@ function s_enemy_heal_own(rate) {
 		var heal_v = e.hp * rate;
 		e.nowhp = Math.min(e.nowhp +heal_v, e.hp);
 		fld.log_push("Enemy[" +(i +1) + "]: HP回復(" +heal_v + ")");
-	}); 
+	}, makeDesc("単体回復")); 
 }
 
 // 全蘇生
@@ -749,7 +759,7 @@ function s_enemy_resurrection(rate) {
 			}
 			fld.log_push("Enemy[" + (i + 1) + "]: 蘇生(" + rate + "%)");
 		})
-	});
+	}, makeDesc("蘇生"));
 }
 
 // 力溜め
@@ -766,7 +776,7 @@ function s_enemy_force_reservoir() {
 			lim_turn: -1,
 			effect: function () { },
 		});
-	});
+	}, makeDesc("力溜め"));
 }
 
 // 怒り状態
@@ -787,18 +797,18 @@ function m_enemy_angry() {
 		if (e.move.on_move_angry) {
 			e.move.m_index = 0;
 		}
-	});
+	}, makeDesc("怒り"));
 }
 
 // 属性変化
-function attr_change(after) {
+function attr_change(attr) {
 	return m_create_enemy_move(function (fld, n) {
 		var e = GetNowBattleEnemys(n);
 		var bef = e.attr;
-		e.attr = after;
+		e.attr = attr;
 		fld.log_push("Enemy[" + (n + 1) + "]: 属性変化("
-			+ fld.Constants.Attr[bef] + "→" + fld.Constants.Attr[after] + ")");
-	});
+			+ fld.Constants.Attr[bef] + "→" + fld.Constants.Attr[attr] + ")");
+	}, makeDesc("属性変化"));
 }
 
 
@@ -832,7 +842,7 @@ function s_enemy_continue_damage(turn, initialdamage, continuedamage){
 				}
 			}
 		});
-	});
+	}, makeDesc("残滅大魔術"));
 }
 
 
@@ -845,7 +855,7 @@ function s_enemy_chain_break() {
 		} else {
 			fld.log_push("Enemy[" + (n + 1) + "]: チェイン解除(無効)");
 		}
-	});
+	}, makeDesc("チェイン解除"));
 }
 
 // チェイン封印
@@ -858,15 +868,15 @@ function s_enemy_chain_sealed(t) {
 		} else {
 			fld.log_push("Enemy[" + (n + 1) + "]: チェイン封印(無効)");
 		}
-	});
+	}, makeDesc("チェイン封印"));
 }
 
 // -----------------------------------
 // その他
 // -----------------------------------
 // 何もしない
-function s_enemy_noeffect() {
-	return m_create_enemy_move(function () {});
+function s_enemy_noeffect(mdesc) {
+	return m_create_enemy_move(function () {}, mdesc);
 }
 
 // スキルディスチャージ
@@ -888,7 +898,7 @@ function s_enemy_discharge(tnum, minus_turn) {
 			nows[i].flags.skill_counter[n] = true;
 		});
 		fld.log_push("Enemy[" + (n + 1) + "]: スキルディスチャージ(-" + minus_turn + "t)");
-	});
+	}, makeDesc("スキルディスチャージ"));
 }
 
 // -----------------------------------
@@ -896,7 +906,7 @@ function s_enemy_discharge(tnum, minus_turn) {
 // -----------------------------------
 // 指定した敵が倒れる
 function s_enemy_when_dead(i1, i2) {
-	return function (fld, n) {
+	return {func: function (fld, n) {
 		var rst = true;
 		var e = GetNowBattleEnemys(i1);
 		rst = rst && e.nowhp <= 0;
@@ -905,12 +915,12 @@ function s_enemy_when_dead(i1, i2) {
 			rst = rst && e.nowhp <= 0;
 		}
 		return rst;
-	}
+	}, desc: "敵"+(i1+1)+(i2 == undefined ?"" : "もしくは敵"+(i2+1))+"が倒れたら"};
 }
 
 // 敵1体が倒れる
 function s_enemy_when_dead_s() {
-	return function (fld, n) {
+	return {func: function (fld, n) {
 		var rst = false;
 		var es = GetNowBattleEnemys();
 		for (var i = 0; i < es.length; i++) {
@@ -918,12 +928,12 @@ function s_enemy_when_dead_s() {
 			rst = rst || es[i].nowhp <= 0;
 		}
 		return rst;
-	}
+	}, desc: "敵1体が倒れたら"};
 }
 
 // 敵自身以外が倒れる
 function s_enemy_when_dead_l() {
-	return function (fld, n) {
+	return {func: function (fld, n) {
 		var rst = true;
 		var es = GetNowBattleEnemys();
 		for (var i = 0; i < es.length; i++) {
@@ -931,13 +941,56 @@ function s_enemy_when_dead_l() {
 			rst = rst && es[i].nowhp <= 0;
 		}
 		return rst;
-	}
+	}, desc: "自身以外全員が倒れたら"};
 }
 
 // HPが指定%以下
 function s_enemy_when_hpdown(rate) {
-	return function (fld, n) {
+	return {func: function (fld, n) {
 		var e = GetNowBattleEnemys(n);
 		return e.nowhp <= Math.floor(e.hp * rate);
+	}, desc: "HPが" + rate * 100 + "％以下になったら"};
+}
+
+
+// enemy_skillのDescを作る
+// 表示順を変えたいとき、属性特攻を参考にorderを指定してください。
+function makeDesc(mystr, order){
+	argObj=getParentArg()
+	var outpStr = mystr
+	var toStr
+	var flag = 1;
+	order = order != undefined ? order : argObj
+	for (var prop in order){
+		toStr = argObj[prop]
+		if(prop != "__fname__" && toStr != undefined && typeof(toStr)!= "function"){
+			toStr = comma3(toStr)
+			toStr = prop != "tnum" ? toStr : toStr == 5 ? "全体" : toStr == 1 ? "単体" : toStr+"体"
+			toStr = prop != "attr" ? toStr : get_attr_string(toStr) 
+			toStr = prop != "rate" ? toStr : toStr * 100 + "％"
+			toStr = ["turn","t"].indexOf(prop)==-1 ? toStr : toStr != -1 ? toStr : "永続"
+			toStr = ["turn","t","minus_turn"].indexOf(prop)==-1 ? toStr : typeof(toStr)!="number" ? toStr : toStr+"T"
+			toStr = prop != "atkn" ? toStr : toStr == 1 ? "" : toStr + "連撃"
+			toStr = ["d","dmg","damage","bl"].indexOf(prop)==-1 ? toStr : toStr + "ダメージ"
+			toStr = prop != "dmg_s" ? toStr : "@BS@特攻/" + toStr + ""
+			toStr = prop != "dmg_n" ? toStr : "通常/" + toStr + ""
+			toStr = prop != "initialdamage" ? toStr : "初回" + toStr + ""
+			toStr = prop != "continuedamage" ? toStr : "継続" + toStr + ""
+			toStr = prop != "r1" ? toStr : "0体/" + toStr
+			toStr = prop != "r2" ? toStr : "1体/" + toStr
+			toStr = prop != "r3" ? toStr : "2体/" + toStr
+			toStr = prop != "limit" ? toStr : "残り" + toStr + "T"
+			toStr = prop != "copyhp" ? toStr : "分裂時HP："+toStr
+			toStr = prop != "hpdown" ? toStr : "HP-" + toStr
+			toStr = prop != "desc" ? toStr : toStr+" "
+			toStr = ["tgtype","p1","p2","p3","p4"].indexOf(prop)==-1 ? toStr : ""
+			outpStr += toStr == "" ? "" : flag==1 ? " （" : "、"
+			toStr = toStr == "" ? "" : toStr != comma3(argObj[prop]) ? toStr : "<font color=red>#DEF!</font>" + prop
+			flag = toStr == "" ? flag :  0
+			outpStr += toStr
+		}
 	}
+	outpStr = outpStr.replace(/.@BS@/g,"")
+	outpStr += flag==0 ? "）" : ""
+	return outpStr
 }

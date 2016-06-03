@@ -21,6 +21,13 @@ function get_attr_string(attr) {
 		"光",
 		"闇",
 	]
+	if (typeof(attr)=="number"){
+		if (attr < Attr.length){
+			return Attr[attr] + "属性"
+		}{
+			return false;
+		}
+	}
 	if (attr == undefined || attr.length < 1){
 		return false;
 	}else{
@@ -83,6 +90,13 @@ function get_spec_string(spec) {
 		"アイテム",
 		"AbCd",
 	]
+	if (typeof(spec)=="number"){
+		if (spec < Species.length){
+			return Species[spec]
+		}{
+			return false;
+		}
+	}
 	if (spec == undefined || spec.length < 1){
 		return false;
 	}else{
@@ -105,3 +119,40 @@ function get_spec_string(spec) {
 		return specstr
 	}
 }
+
+
+
+
+// 関数のargumentsを受け取りargObj={__fname__: 関数名, 変数名: 値}を返す
+function getArgA(args){
+	var oCallFunc = args.callee
+	var mFilter = RegExp(oCallFunc.name + "\\\(\(.*?\)\\\)")
+	var argNameStr = oCallFunc.toString().match(mFilter)[1]
+	var argNameArray = argNameStr.replace(/ /g,"").split(",")
+	var argObj = {__fname__: oCallFunc.name}
+	argNameArray.forEach(function(e, n){
+		argObj[e] = args[n]
+	})
+	return argObj
+}
+
+// 呼び出し元関数のargObj={__fname__: 関数名, 変数名: 値}を返す
+function getArg(){
+	return getArgA(arguments.callee.caller.arguments)
+}
+
+// 呼び出し元関数の呼び出し元関数のargObj={__fname__: 関数名, 変数名: 値}を返す
+function getParentArg(){
+	return getArgA(arguments.callee.caller.caller.arguments)
+}
+
+
+// 数字を3桁ごとにカンマで区切る
+function comma3(myNum){
+	if (typeof(myNum)=="number" && myNum>=1000 && myNum%1==0){
+		return myNum.toString().replace(/(\d)(?=(\d{3})+$)/g , '$1,');
+	}else{
+		return myNum
+	}
+}
+
