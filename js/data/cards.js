@@ -27764,7 +27764,7 @@ Cards = [{
 	ss1: {
 		desc: "味方のMAXHP60%を使い、スキル反射を無視し、敵全体へ水・雷属性のダメージ(220%)",
 		turn: 7,
-		proc: [ss_damage_all(2.2, [1, 2]), ss_ignore_skillcounter(), ss_consume_own(0.60)],
+		proc: [ss_damage_all(2.2, [1, 2]), ss_ignore_skillcounter(), ss_consume_all(0.60)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -27785,7 +27785,7 @@ Cards = [{
 	ss2: {
 		desc: "味方のMAXHP60%を使い、スキル反射を無視し、敵全体へ水・雷属性のダメージ(260%)",
 		turn: 9,
-		proc: [ss_damage_all(2.6, [1, 2]), ss_ignore_skillcounter(), ss_consume_own(0.60)],
+		proc: [ss_damage_all(2.6, [1, 2]), ss_ignore_skillcounter(), ss_consume_all(0.60)],
 	},
 	Lawake: [
 		Attr_statusup(0, 200, [0, 1, 1, 0, 0, ]),
@@ -32744,7 +32744,7 @@ Cards = [{
 	ss1: {
 		desc: "<割合削り>敵全体のHPを20%減少させる",
 		turn: 9,
-		proc: [ss_ratiodamage_s(0.2)],
+		proc: [ss_ratiodamage_all(0.2)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -32765,7 +32765,7 @@ Cards = [{
 	ss2: {
 		desc: "<割合削り>敵全体のHPを25%減少させ、10チェインを消費しスキル反射を無視する",
 		turn: 12,
-		proc: [ss_ratiodamage_s(0.25),  ss_chain_cost_skill(10, ss_ignore_skillcounter(), null)],
+		proc: [ss_ratiodamage_all(0.25),  ss_chain_cost_skill(10, ss_ignore_skillcounter(), null)],
 	},
 	Lawake: [
 		Statusup(0,500),
