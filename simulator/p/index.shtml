@@ -298,6 +298,7 @@
     <script type="text/javascript" charset="UTF-8" src="/js/err_report.js?              <!--#flastmod virtual='/js/err_report.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js?               <!--#flastmod virtual='/js/googletrc.js'-->"></script>
 	<!-- 他jsに依存しない基礎関数群 -->
+    <script type="text/javascript" charset="UTF-8" src="/js/general.js?                 <!--#flastmod virtual='/js/general.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/awake.js?         <!--#flastmod virtual='/js/simulator/awake.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/species.js?       <!--#flastmod virtual='/js/simulator/species.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/enemy.js?         <!--#flastmod virtual='/js/simulator/enemy.js'-->"></script>
@@ -312,7 +313,6 @@
     <script type="text/javascript" charset="UTF-8" src="/js/data/cards.js?              <!--#flastmod virtual='/js/data/cards.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/dynamic.js?                 <!--#flastmod virtual='/js/dynamic.js'-->"></script>
 	<!-- 処理群(データ群に依存する) -->
-    <script type="text/javascript" charset="UTF-8" src="/js/general.js?                 <!--#flastmod virtual='/js/general.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/deck/deckdata.js?           <!--#flastmod virtual='/js/deck/deckdata.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/initialize.js?    <!--#flastmod virtual='/js/simulator/initialize.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/show.js?          <!--#flastmod virtual='/js/simulator/show.js'-->"></script>
