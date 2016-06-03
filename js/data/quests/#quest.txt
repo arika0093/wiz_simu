@@ -1,0 +1,23 @@
+default: 通常クエスト/素材クエスト etc.
+  例1: default/velta/15_4.js
+  例2: default/material/book_wh.js
+
+
+event: 各種イベント
+  例1: event/suzaku3/05.js
+
+
+evtorn: イベントトーナメント
+  例1: evtorn/1605ev_h.js
+
+
+grade: 通常トーナメント
+  例1: grade/grade15.js
+
+
+other: その他
+  例1: other/af_2016.js
+
+
+single: 単発クエスト(AbCdなど)
+  例1: single/abcd/01_n.js
