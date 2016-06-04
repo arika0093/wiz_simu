@@ -1,5 +1,5 @@
 <?php
-	$orderPath = "quests/order.js";
+	$orderPath = "quests/#order.js";
 	$output = "";
 	// file open function
 	function dir_open($loaddir){
@@ -8,10 +8,8 @@
 			while( ($file = readdir($handle)) !== false ) {
 				if( strpos($file, "#") !== false){ continue; }
 				if( filetype( $path = $loaddir . $file ) == "file" ) {
-					if( strcmp($path, $orderPath)!= 0){
-						$output = $output.file_get_contents($path);
-						$output = $output.",";
-					}
+					$output = $output.file_get_contents($path);
+					$output = $output.",";
 				} else if(strpos($file, ".") === false){
 					dir_open($loaddir.$file."/");
 				}
