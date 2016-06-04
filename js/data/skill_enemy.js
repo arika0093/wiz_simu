@@ -964,14 +964,14 @@ function makeDesc(mystr, order){
 	for (var prop in order){
 		toStr = argObj[prop]
 		if(prop != "__fname__" && toStr != undefined && typeof(toStr)!= "function"){
-			toStr = comma3(toStr)
+			//toStr = comma3(toStr)
 			toStr = prop != "tnum" ? toStr : toStr == 5 ? "全体" : toStr == 1 ? "単体" : toStr+"体"
 			toStr = prop != "attr" ? toStr : get_attr_string(toStr) 
 			toStr = prop != "rate" ? toStr : toStr * 100 + "％"
 			toStr = ["turn","t"].indexOf(prop)==-1 ? toStr : toStr != -1 ? toStr : "永続"
 			toStr = ["turn","t","minus_turn"].indexOf(prop)==-1 ? toStr : typeof(toStr)!="number" ? toStr : toStr+"T"
 			toStr = prop != "atkn" ? toStr : toStr == 1 ? "" : toStr + "連撃"
-			toStr = ["d","dmg","damage","bl"].indexOf(prop)==-1 ? toStr : toStr + "ダメージ"
+			toStr = ["d","dmg","damage","bl"].indexOf(prop)==-1 ? toStr : Math.floor(toStr) + "ダメージ"
 			toStr = prop != "dmg_s" ? toStr : "@BS@特攻/" + toStr + ""
 			toStr = prop != "dmg_n" ? toStr : "通常/" + toStr + ""
 			toStr = prop != "initialdamage" ? toStr : "初回" + toStr + ""

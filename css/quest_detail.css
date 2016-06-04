@@ -1,0 +1,84 @@
+dd.left_min{
+	margin-left: 0.5em;
+	padding-bottom: 0.5ex;
+	font-size: 0.9em;
+}
+
+p.battle_num {
+	font-size: larger;
+	padding: .7ex 1em;
+	margin: 1ex 0;
+	color: #FFF;
+	background-color: #44C;
+}
+
+div.etd{
+	/* width: 32%;
+	float:left; */
+	margin: 1ex 2px;
+	padding: 1ex 1.5ex;
+	box-sizing: border-box;
+	border: 1px solid #DDD;
+	border-radius: 7px;
+	background-color: #FAFFFF;
+	box-shadow:0px 0px 8px 1px #e6e6e6 inset;
+}
+
+img.eico{
+	width: 158px;
+	height: 200px;
+	float: left;
+	margin-right: 1em;
+}
+
+div.e_name{
+	width: 350px;
+	padding: 1ex 0;
+	font-size: 1.4em;
+	line-height: 1.3;
+	color: #4a2d00;
+	text-decoration: underline;
+	box-sizing: border-box;
+	float: left;
+}
+
+p.e_hp{
+	width: 350px;
+	margin: 0;
+	font-size: 1.2em;
+	box-sizing: border-box;
+	float: left;
+}
+
+p.e_attrspec{
+	float: right;
+	color: #444;
+	line-height: 1.3;
+	margin: 0;
+	padding: 3ex 0 1ex;
+}
+
+p.em_fst{
+	float: right;
+	margin: 0;
+}
+
+div.e_move{
+	margin-top: 1.5ex;
+	padding: 1ex 0;
+	width: 530px;
+	min-height: 115px;
+	float: left;
+	column-count: 2;
+	column-rule: 1px solid #DDD;
+	border-top: 1px dashed #888;
+}
+
+div.e_move > div.clmn{
+	break-inside: avoid-column;
+	margin-bottom: 1.5ex;
+}
+
+div.e_move b{
+	font-size: 1.1em;
+}

@@ -20,6 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{85B9F527-E14
 		css\default.css = css\default.css
 		css\default_bg.css = css\default_bg.css
 		css\default_sp.css = css\default_sp.css
+		css\quest_detail.css = css\quest_detail.css
 		css\search.css = css\search.css
 		css\simulator.css = css\simulator.css
 		css\simulator_sp.css = css\simulator_sp.css
@@ -39,6 +40,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "simulator", "simulator", "{
 		js\simulator\damage.js = js\simulator\damage.js
 		js\simulator\enemy.js = js\simulator\enemy.js
 		js\simulator\initialize.js = js\simulator\initialize.js
+		js\simulator\quest_detail.js = js\simulator\quest_detail.js
 		js\simulator\show.js = js\simulator\show.js
 		js\simulator\show_sp.js = js\simulator\show_sp.js
 		js\simulator\special.js = js\simulator\special.js
@@ -148,6 +150,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "result", "result", "{C74DB3
 		search\s\index.html = search\s\index.html
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "quest", "quest", "{C87981AE-0C6C-4519-AD61-F7127F461E6E}"
+	ProjectSection(SolutionItems) = preProject
+		simulator\quest\index.shtml = simulator\quest\index.shtml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -176,5 +183,6 @@ Global
 		{2E6BF4B1-10BD-40DE-BD83-5258C65E96D0} = {20D7A7D8-822B-4D68-AEF0-9127E62A819F}
 		{F546FAD9-474F-46A8-B734-545AA08B5821} = {5738BAEF-BA1D-4206-8CED-09AD35F0B80B}
 		{C74DB3D7-4C45-4359-9DC9-04BE6EF4C4D1} = {F546FAD9-474F-46A8-B734-545AA08B5821}
+		{C87981AE-0C6C-4519-AD61-F7127F461E6E} = {FBCE4C9C-0BDA-4B34-AC6E-3158CF6D361E}
 	EndGlobalSection
 EndGlobal

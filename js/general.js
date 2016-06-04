@@ -11,6 +11,14 @@ function get_image_url(no) {
 	return "http://i.quiz.colopl.jp/img/card/small/card_" + ("0000" + no).slice(-5) + "_0.png"
 }
 
+// 大きい画像のURLを返却する
+function get_image_url_b(no) {
+	if (no < 0) {
+		return "/image/noimage.png";
+	}
+	return "http://i.quiz.colopl.jp/img/card/middle/card_" + ("0000" + no).slice(-5) + "_1.png"
+}
+
 
 // 属性配列を属性文字列に変換する
 function get_attr_string(attr) {
