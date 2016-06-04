@@ -219,6 +219,13 @@ $(function () {
 					ss_object_done(Field, 0, peff[i]);
 				}
 			}
+			// 戦闘開始前処理
+			if (Field.Quest.battle_before) {
+				var bbef = Field.Quest.battle_before;
+				for (var i = 0; i < bbef.length; i++) {
+					ss_object_done(Field, -1, bbef[i]);
+				}
+			}
 			// 初期状態を保存
 			Field_log.save(0, Field);
 			// 表示
