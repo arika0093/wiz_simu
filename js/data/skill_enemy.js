@@ -79,7 +79,7 @@ function damage_switch(cond, func, is_always) {
 			lim_turn: -1,
 			effect: function () { },
 			cond: cond.func,
-			on_cond: m_enemy_once(func),
+			on_cond: on_cond,
 			oncond_anytime: is_always === true,
 		});
 	}, "行動予約：" + cond.desc + func.mdesc);
@@ -702,6 +702,17 @@ function impregnable(t) {
 function s_enemy_division(copyhp) {
 	return m_create_enemy_move(function (fld, n) {
 		var enemy = GetNowBattleEnemys(n);
+		var push_oncond = m_create_enemy_move(function (f, i) {
+			// 複製先
+			var copyto = i != 0 ? 0 : 1;
+			var hprate = copyhp ? copyhp : 1;
+			var ens = f.Enemys.Data[f.Status.nowbattle - 1].enemy;
+			ens[copyto] = $.extend(true, {}, GetNowBattleEnemys(i));
+			ens[copyto].nowhp = ens[copyto].hp * hprate;
+			fld.log_push("Enemy[" + (n + 1) + "]: 分裂");
+		});
+		delete push_oncond.argObj;
+
 		enemy.turn_effect.push({
 			desc: null,
 			type: "enemy_division",
@@ -709,16 +720,8 @@ function s_enemy_division(copyhp) {
 			turn: -1,
 			lim_turn: -1,
 			effect: function () { },
-			cond: s_enemy_when_dead_l.func(),
-			on_cond: m_create_enemy_move(function (f, i) {
-				// 複製先
-				var copyto = i != 0 ? 0 : 1;
-				var hprate = copyhp ? copyhp : 1;
-				var ens = Field.Enemys.Data[Field.Status.nowbattle - 1].enemy;
-				ens[copyto] = $.extend(true, {}, GetNowBattleEnemys(i));
-				ens[copyto].nowhp = ens[copyto].hp * hprate;
-				fld.log_push("Enemy[" + (n + 1) + "]: 分裂");
-			}),
+			cond: s_enemy_when_dead_l().func,
+			on_cond: push_oncond,
 			oncond_anytime: true,
 		});
 	}, makeDesc("分裂待機"));
