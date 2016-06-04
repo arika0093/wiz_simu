@@ -225,6 +225,7 @@ function schfl_grep_ss(obj, ss, card) {
 	var fsturn = obj.ss_fastskl ? has_fastnum(card) : 0;
 	rst = rst && (obj.ss_maxturn < 0 || obj.ss_maxturn >= ss.turn - fsturn);
 	// 各SS定義についてチェック
+	var checksheet = $.extend(true, [], obj.ss_types);
 	var grp_ss = $.grep(ss.proc, function (e) {
 		var grep_rst = true;
 		if (!e) {
@@ -233,10 +234,25 @@ function schfl_grep_ss(obj, ss, card) {
 		// 条件SSのそれぞれについて確認
 		if (obj.ss_types && obj.ss_types.length > 0) {
 			var greps = $.grep(obj.ss_types, function (ss_type) {
+				if (obj.ss_types.length <= 0) {
+					return true;
+				}
 				var sst = sfdef_ss_namelist[ss_type];
+				var ischeck = false;
 				// type一致ならcheck関数を通す
-				if (e.name == sst.proc || (e.name == sst && !sst.proc) || sst.proc === null) {
-					return !sst.check || sst.check(e, ss);
+				if (!$.isArray(sst.proc)) {
+					ischeck = (e.name == sst.proc || (e.name == sst && !sst.proc) || sst.proc === null);
+				} else {
+					ischeck = $.grep(sst.proc, function (f) {
+						return e.name == f;
+					}).length > 0;
+				}
+				if (ischeck) {
+					var rst = !sst.check || sst.check(e, ss);
+					if (rst) {
+						checksheet.splice(checksheet.indexOf(ss_type), 1);
+					}
+					return rst;
 				}
 				return false;
 			});
@@ -246,7 +262,7 @@ function schfl_grep_ss(obj, ss, card) {
 		return grep_rst;
 	});
 	// AND/ORによって処理を変える
-	rst = rst && grp_ss.length >= (obj.ss_search_ao == 0 ? obj.ss_types.length : 1);
+	rst = rst && checksheet.length <= (obj.ss_search_ao == 0 ? 0 : obj.ss_types.length);
 	// return result
 	return rst;
 }

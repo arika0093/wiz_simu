@@ -192,7 +192,18 @@ var sfdef_ss_namelist = {
 		genre: "《付与効果系》",
 	},
 	"自身自傷": "ss_consume_own",
-	"全体自傷": "ss_consume_all",
+	"全体自傷": {
+		proc: null,
+		check: function (e, p) {
+			var ps = [e.p1, e.p2, e.p3, e.p4];
+			if (e.name == "ss_consume_all") {
+				return true;
+			}
+			return $.grep(ps, function (p) {
+				return p && p.is_cond && p.name == "ss_consume_all_cond";
+			}).length > 0;
+		}
+	},
 	"チャージスキル": {
 		proc: null,
 		check: function (e, p) {
