@@ -179,10 +179,10 @@ $(function () {
 			});
 		},
 		buttons: {
-			"+": function(){
+			"結晶追加": function(){
 				$("#dialog_allyedit_awakeadd").dialog("open");
 			},
-			"-": function() {
+			"結晶削除": function() {
 				sel_q = $("#allyedit_awakes").val();
 				if (sel_q && sel_q != "") {
 					var n = Number($("#d_edit_index").text());

@@ -608,25 +608,26 @@ input, button, select{
 li#mn_simulator{
 	background-image: url("/image/tlicon/simulator.png") !important;
 }
-
 li#mn_search{
 	background-image: url("/image/tlicon/search.png") !important;
 }
-
 li#mn_check{
 	background-image: url("/image/tlicon/check.png") !important;
 	background-size: 28px !important;
 	background-position: 2px 6px !important;
 }
-
 li#mn_chart{
 	background-image: url("/image/tlicon/chart.png") !important;
+}
+li.mn_db{
+	background-image: url("/image/tlicon/folder.png") !important;
+	background-size: 30px !important;
+	background-position: 3px 5px !important;
 }
 
 li#mn_twitter{
 	background-image: url("/image/tlicon/twitter.png") !important;
 }
-
 li#mn_github{
 	background-image: url("/image/tlicon/github.png") !important;
 }

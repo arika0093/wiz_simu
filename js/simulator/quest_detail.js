@@ -53,9 +53,10 @@ function makeQD(id, genre, tag) {
 		return true;
 	});
 	if (rst.length > 0) {
-		result.innerHTML = resStr;
+		$("#result").html(resStr);
 	} else {
-		result.innerHTML = "<dl class='List'><dt>ERROR OCCURRED.</dt><dd>存在しないクエストが指定されました。</dd></dl>";
+		var h = "<dl class='List'><dt>ERROR OCCURRED.</dt><dd>存在しないクエストが指定されました。</dd></dl>";
+		$("#result").html(h);
 	}
 }
 
