@@ -31,8 +31,15 @@ img.eico{
 	margin-right: 1em;
 }
 
+img.impregnable{
+	-webkit-filter: grayscale(90%);
+	-moz-filter: grayscale(90%);
+	-o-filter: grayscale(90%);
+	filter: grayscale(90%);
+}
+
 div.e_name{
-	width: 350px;
+	width: 50%;
 	padding: 1ex 0;
 	font-size: 1.4em;
 	line-height: 1.3;
@@ -43,11 +50,15 @@ div.e_name{
 }
 
 p.e_hp{
-	width: 350px;
+	width: 50%;
 	margin: 0;
 	font-size: 1.2em;
 	box-sizing: border-box;
-	float: left;
+}
+@media screen and (min-width: 425px){
+	p.e_hp{
+		float: left;
+	}
 }
 
 p.e_attrspec{
@@ -55,7 +66,11 @@ p.e_attrspec{
 	color: #444;
 	line-height: 1.3;
 	margin: 0;
-	padding: 3ex 0 0ex;
+}
+@media screen and (min-width: 600px){
+	p.e_attrspec{
+		padding: 3ex 0 0ex;
+	}
 }
 
 p.em_fst{
@@ -66,16 +81,20 @@ p.em_fst{
 div.e_move{
 	margin-top: 1.5ex;
 	padding: 1ex 0;
-	width: 530px;
 	min-height: 115px;
 	float: left;
 	column-count: 2;
 	column-rule: 1px solid #DDD;
 	border-top: 1px dashed #888;
 }
+@media screen and (min-width: 600px){
+	div.e_move{
+		width: 75%;
+	}
+}
 
 div.e_move > div.clmn{
-	min-width: 100px;
+	min-width: 150px;
 	break-inside: avoid-column;
 	margin: 0 0 1.5ex;
 	display: inline-block;
@@ -86,7 +105,7 @@ div.e_move b{
 }
 
 div.e_move b.on_popup{
-	color: #0b6900;
+	color: #109800;
 }
 div.e_move b.on_move{
 	color: #1a00c2;
@@ -95,3 +114,6 @@ div.e_move b.on_angry, div.e_move b.on_move_angry{
 	color: #d00000;
 }
 
+b.imp_move{
+	text-decoration: underline;
+}

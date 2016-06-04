@@ -18,8 +18,8 @@ function m_create_enemy_move(f, mdesc) {
 // 初回のみ行動
 function m_enemy_once(e_skl) {
 	var mdesc = e_skl.mdesc
-	mdesc = mdesc.slice(-1) == "）" ? mdesc.slice(0, -1)+"、" : mdesc+"（"
-	e_skl.mdesc =　mdesc + "初回のみ）"
+	mdesc = mdesc.slice(-1) == ")" ? mdesc.slice(0, -1)+"、" : mdesc+"("
+	e_skl.mdesc =　mdesc + "初回のみ)"
 	return m_enemy_nturn(e_skl, 999);
 }
 
@@ -28,8 +28,8 @@ function m_enemy_nturn(e_skl, n) {
 	e_skl.interval = n;
 	if(arguments.callee.caller.name!="m_enemy_once"){
 		var mdesc=e_skl.mdesc
-		mdesc = mdesc.slice(-1) == "）" ? mdesc.slice(0, -1)+"、" : mdesc+"（"
-		e_skl.mdesc =　mdesc + n + "ターンに１回）"
+		mdesc = mdesc.slice(-1) == ")" ? mdesc.slice(0, -1)+"、" : mdesc+"("
+		e_skl.mdesc =　mdesc + n + "ターンに１回)"
 	}
 	return e_skl;
 }
@@ -984,13 +984,13 @@ function makeDesc(mystr, order){
 			toStr = prop != "hpdown" ? toStr : "HP-" + toStr
 			toStr = prop != "desc" ? toStr : toStr+" "
 			toStr = ["tgtype","p1","p2","p3","p4"].indexOf(prop)==-1 ? toStr : ""
-			outpStr += toStr == "" ? "" : flag==1 ? " （" : "、"
+			outpStr += toStr == "" ? "" : flag==1 ? " (" : "、"
 			toStr = toStr == "" ? "" : toStr != comma3(argObj[prop]) ? toStr : "<font color=red>#DEF!</font>" + prop
 			flag = toStr == "" ? flag :  0
 			outpStr += toStr
 		}
 	}
 	outpStr = outpStr.replace(/.@BS@/g,"")
-	outpStr += flag==0 ? "）" : ""
+	outpStr += flag==0 ? ")" : ""
 	return outpStr
 }

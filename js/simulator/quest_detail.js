@@ -30,10 +30,11 @@ function makeQD(id, genre, tag) {
 				// add main
 				var myid = "Q" + QuestNum + "B" + BattleNum;
 				resStr += "<div class='etd clearfix' id=" + myid + ">";
-				resStr += "<img class='eico' src=" + get_image_url_b(Enemy.imageno) + ">";
+				resStr += "<img class='eico" + (Enemy.hp < 100 ? " impregnable" : "") +
+					"' src=" + get_image_url_b(Enemy.imageno) + ">";
 				resStr += "<div class='e_name'>" + Enemy.name + "</div>";
 				resStr += "<p class='e_attrspec'>" + get_attr_string(Enemy.attr) +
-					"/" + get_spec_string(Enemy.spec) + "</p>";
+					" / " + get_spec_string(Enemy.spec) + "</p>";
 				resStr += "<p class='e_hp'>" + addform("HP", comma3(Enemy.hp)) + "</p>";
 				// add move
 				if (move != undefined) {
@@ -61,12 +62,18 @@ function makeQD(id, genre, tag) {
 // on_hogehogeの全行動を返す
 function moveappear(moveObj, key, title) {
 	var tmpObj = moveObj[key]
+	var impTag = ["分裂待機", "鉄壁", "スキル反射", "チェイン解除", "AS封印", "怒り", "属性変化"];
 	var strBody = ""
 	var strTitle = title == undefined ? "" : "<b class='em_title " + key +"'>" + title + "：</b><br>"
 	if (tmpObj != undefined) {
 		tmpObj.forEach(function (ss) {
 			if (ss != undefined) {
-				strBody += ss.mdesc + "<br>";
+				var isimp = $.grep(impTag, function (e) {
+					return ss.mdesc.indexOf(e) >= 0;
+				}).length > 0;
+
+				strBody += (isimp ? "<b class='imp_move'>" : "") + ss.mdesc +
+					(isimp ? "</b>" : "") + "<br>";
 			}
 		})
 	}
