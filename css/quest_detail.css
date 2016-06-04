@@ -20,7 +20,7 @@ div.etd{
 	box-sizing: border-box;
 	border: 1px solid #DDD;
 	border-radius: 7px;
-	background-color: #FAFFFF;
+	background-color: #FFF;
 	box-shadow:0px 0px 8px 1px #e6e6e6 inset;
 }
 
@@ -55,7 +55,7 @@ p.e_attrspec{
 	color: #444;
 	line-height: 1.3;
 	margin: 0;
-	padding: 3ex 0 1ex;
+	padding: 3ex 0 0ex;
 }
 
 p.em_fst{
@@ -75,10 +75,23 @@ div.e_move{
 }
 
 div.e_move > div.clmn{
+	min-width: 100px;
 	break-inside: avoid-column;
-	margin-bottom: 1.5ex;
+	margin: 0 0 1.5ex;
+	display: inline-block;
 }
 
 div.e_move b{
 	font-size: 1.1em;
 }
+
+div.e_move b.on_popup{
+	color: #0b6900;
+}
+div.e_move b.on_move{
+	color: #1a00c2;
+}
+div.e_move b.on_angry, div.e_move b.on_move_angry{
+	color: #d00000;
+}
+

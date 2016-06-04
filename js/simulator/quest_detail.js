@@ -39,14 +39,10 @@ function makeQD(id, genre, tag) {
 				if (move != undefined) {
 					resStr += "<p class='em_fst'>" + addform("初回", move.turn, "T") +
 						" / " + addform("行動周期", move.wait, "T") + "</p>"
-					resStr += "<div class='e_move'><div class='clmn em_popup'>"
-						+ moveappear(move, "on_popup", "先制攻撃") + "</div>"
-					resStr += "<div class='clmn em_move'>"
-						+ moveappear(move, "on_move", "通常時") + "</div>"
-					resStr += "<div class='clmn em_angry'>"
-						+ moveappear(move, "on_angry", "怒った時") + "</div>"
-					resStr += "<div class='clmn em_move_angry'>"
-						+ moveappear(move, "on_move_angry", "怒り後") + "</div></div>"
+					resStr += "<div class='e_move'>" + moveappear(move, "on_popup", "先制攻撃")
+					resStr += moveappear(move, "on_move", "通常時")
+					resStr += moveappear(move, "on_angry", "怒った時")
+					resStr += moveappear(move, "on_move_angry", "怒り後") +"</div>"
 				}
 				resStr += "</div>"
 			})
@@ -66,15 +62,16 @@ function makeQD(id, genre, tag) {
 function moveappear(moveObj, key, title) {
 	var tmpObj = moveObj[key]
 	var strBody = ""
-	var strTitle = title == undefined ? "" : "<b>" + title + "：</b><br>"
+	var strTitle = title == undefined ? "" : "<b class='em_title " + key +"'>" + title + "：</b><br>"
 	if (tmpObj != undefined) {
 		tmpObj.forEach(function (ss) {
 			if (ss != undefined) {
-				strBody += ss.mdesc + "<br>"
+				strBody += ss.mdesc + "<br>";
 			}
 		})
 	}
-	return strBody == "" ? "" : strTitle + strBody
+	return strBody == "" ? "" :
+		"<div class='clmn " + key + "'>" + strTitle + strBody + "</div>";
 }
 
 // テキストを成形する
