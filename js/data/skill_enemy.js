@@ -752,7 +752,7 @@ function s_enemy_heal_own(rate) {
 		if (e.nowhp <= 0) { return; }
 		var heal_v = e.hp * rate;
 		e.nowhp = Math.min(e.nowhp +heal_v, e.hp);
-		fld.log_push("Enemy[" +(i +1) + "]: HP回復(" +heal_v + ")");
+		fld.log_push("Enemy[" +(n +1) + "]: HP回復(" +heal_v + ")");
 	}, makeDesc("単体回復")); 
 }
 
