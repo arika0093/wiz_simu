@@ -23,7 +23,7 @@
                      m_enemy_once(impregnable(99))
                   ],
                   on_move: [
-                     impregnable(99)
+                     s_enemy_attack(750, 1, 1, true)/* Warning: Action8の正確な挙動は不明です */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -58,7 +58,7 @@
                      m_enemy_once(impregnable(99))
                   ],
                   on_move: [
-                     s_enemy_attack(750, 5, 1, true)/* Warning: SPの解釈に失敗したため通常攻撃を挿入します */
+                     s_enemy_attack(750, 5, 1, true)
                   ],
                   atrandom: false,
                   turn: 1,
@@ -153,14 +153,14 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     skill_counter_func(damage_block_own, "自分のみダメージブロック20000DMG×5T", 100, false, 20000, 6)/* Warning: 仮実装のため、十分に内容を精査してください */
+                     skill_counter_func(damage_block_own, "自分のみダメージブロック20000DMG×5T", 100, false, 20000, 6)
                   ],
                   on_move: [
                      s_enemy_attack(300, 3, 3, true),
                      s_enemy_attack(300, 3, 3, true),
                      s_enemy_attack(300, 3, 3, true),
                      s_enemy_attack(300, 3, 3, true),
-                     skill_counter_func(damage_block_own, "自分のみダメージブロック20000DMG×5T", 100, false, 20000, 6)/* Warning: 仮実装のため、十分に内容を精査してください *//* Info: 1回限りでなく怒り条件でない先制行動を再使用します */
+                     skill_counter_func(damage_block_own, "自分のみダメージブロック20000DMG×5T", 100, false, 20000, 6)/* Info: 先制行動を再使用します */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -176,11 +176,11 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     s_enemy_attr_weaken([0,0,1,0,0], 1.75, 5, 4)/* Warning: 属性が正しいか確認してください： 雷属性弱体化75%（3T） */
+                     s_enemy_attr_weaken([0,0,1,0,0], 1.75, 5, 4)/* Warning: 属性要確認： 雷属性弱体化75%（3T） */
                   ],
                   on_move: [
                      s_enemy_attack(200, 3, 3, true),
-                     s_enemy_attr_weaken([0,0,1,0,0], 1.75, 5, 4)/* Warning: 属性が正しいか確認してください： 雷属性弱体化75%（3T） *//* Info: 1回限りでなく怒り条件でない先制行動を再使用します */
+                     s_enemy_attr_weaken([0,0,1,0,0], 1.75, 5, 4)/* Warning: 属性要確認： 雷属性弱体化75%（3T） *//* Info: 先制行動を再使用します */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -206,7 +206,7 @@
                      m_enemy_once(impregnable(99))
                   ],
                   on_move: [
-                     impregnable(99)
+                     s_enemy_attack(1250, 5, 1, true)/* Warning: Action8の正確な挙動は不明です */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -251,14 +251,14 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     skill_counter_func(s_enemy_attack, "通常攻撃 （625ダメージ、単体）", 100, false, 625, 1, 1, true)/* Warning: 仮実装のため、十分に内容を精査してください */
+                     skill_counter_func(s_enemy_attack, "通常攻撃 （625ダメージ、単体）", 100, false, 625, 1, 1, true)
                   ],
                   on_move: [
                      s_enemy_attack(250, 3, 5, true),
                      s_enemy_attack(250, 3, 5, true),
                      s_enemy_attack(250, 3, 5, true),
                      s_enemy_attack(250, 3, 5, true),
-                     skill_counter_func(s_enemy_attack, "通常攻撃 （625ダメージ、単体）", 100, false, 625, 1, 1, true)/* Warning: 仮実装のため、十分に内容を精査してください *//* Info: 1回限りでなく怒り条件でない先制行動を再使用します */
+                     skill_counter_func(s_enemy_attack, "通常攻撃 （625ダメージ、単体）", 100, false, 625, 1, 1, true)/* Info: 先制行動を再使用します */
                   ],
                   atrandom: false,
                   turn: 1,
