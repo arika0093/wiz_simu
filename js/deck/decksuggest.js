@@ -221,13 +221,13 @@ $(function () {
 					var idx = Number(sel_index);
 					var awc_data = Awake_crystal_lists[idx];
 					// param replace
-					var pr_1 = typeof awc_data.param1 == "string" ? Number(
+					var pr_1 = typeof awc_data.param1 == "string" ? ifNumThenStr2Num(
 							awc_data.param1.replace("{0}", $("#ae_awake_value").val())
 						) : awc_data.param1;
-					var pr_2 = typeof awc_data.param2 == "string" ? Number(
+					var pr_2 = typeof awc_data.param2 == "string" ? ifNumThenStr2Num(
 							awc_data.param2.replace("{0}", $("#ae_awake_value").val())
 						) : awc_data.param2;
-					var pr_3 = typeof awc_data.param3 == "string" ? Number(
+					var pr_3 = typeof awc_data.param3 == "string" ? ifNumThenStr2Num(
 							awc_data.param3.replace("{0}", $("#ae_awake_value").val())
 						): awc_data.param3;
 					var awake_c = awc_data.imple(pr_1, pr_2, pr_3);

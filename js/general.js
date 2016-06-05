@@ -154,6 +154,10 @@ function getParentArg(){
 	return getArgA(arguments.callee.caller.caller.arguments)
 }
 
+// 引数が数値に変換可能なら変換する、無理ならそのまま返す
+function ifNumThenStr2Num(myStr){
+	return isFinite(myStr) ? Number(myStr) : myStr
+}
 
 // 数字を3桁ごとにカンマで区切る
 function comma3(myNum){
