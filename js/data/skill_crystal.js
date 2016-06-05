@@ -26,7 +26,6 @@ var Awake_crystal_lists = [{
 	type: "覇眼戦線2",
 	name: "煌眼の欠片(L時味方ATK+100/25%回復)",
 	imple: Awake_composite,
-	param1: this.name,
 	param2: {
 		name: "L時味方攻撃力アップ",
 		type: "status_up",
@@ -46,7 +45,6 @@ var Awake_crystal_lists = [{
 }, {
 	name: "凛眼の欠片(L時ダメブロ300,4T)",
 	imple: Awake_composite,
-	param1: this.name,
 	param2: {
 		name: "L時ダメージブロック(300/4T)",
 		type: "awake_spskill",
@@ -58,7 +56,6 @@ var Awake_crystal_lists = [{
 }, {
 	name: "烈眼の欠片(L時味方ATK+500)",
 	imple: Awake_composite,
-	param1: this.name,
 	param2: {
 		name: "L時味方攻撃力アップ",
 		type: "status_up",
@@ -72,29 +69,38 @@ var Awake_crystal_lists = [{
 	genre: "聖サタニック女学院",
 	name: "PTA印の成績表(反転無効)",
 	imple: Awake_composite,
-	param1: this.name,
-	param2: Abstate_invalid("heal_rebase"),
+	param2: Abstate_invalid("heal_reverse"),
 }, {
 	genre: "幻魔特区スザクⅢ",
 	name: "インフローレ(戦士ATK+200)",
 	imple: Awake_composite,
-	param1: this.name,
 	param2: Spec_statusup(0, 200, [9]),
 }, {
 	name: "エクスマキナ(毒,弱体化,死の秒針無効)",
 	imple: Awake_composite,
-	param1: this.name,
 	param2: Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
 }, {
 	name: "アドヴェリタス(ダメージ1.2倍/HP-1000)",
 	imple: Awake_composite,
-	param1: this.name,
 	param2: Statusup(-1000, 0),
 	param3: Awake_damage_multiple(1.2),
 }
 
 ];
 
+
+// ------------------------------------
+// 潜在結晶読み込み後処理
+// ------------------------------------
+//　Awake_compositeのdesc埋め
+//　（オブジェクト内で他のプロパティは参照できないのでここでいれる）
+(function(){
+	Awake_crystal_lists.forEach(function(e){
+		if(e.imple == Awake_composite){
+			e.param1 = e.name;
+		}
+	})
+})()
 
 // ------------------------------------
 // 潜在結晶用 関数
