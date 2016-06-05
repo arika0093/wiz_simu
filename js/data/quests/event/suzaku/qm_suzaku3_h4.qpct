@@ -43,7 +43,7 @@
                      s_enemy_attack(375, 3, 4, true),
                      s_enemy_attack(375, 3, 4, true),
                      s_enemy_attack(375, 3, 4, true),
-                     s_enemy_healreverse(0.5, 5)/* Info: 1回限りでなく怒り条件でない先制行動を再使用します */
+                     s_enemy_healreverse(0.5, 5)/* Info: 先制行動を再使用します */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -104,7 +104,7 @@
                      m_enemy_once(s_enemy_attack_ratio(0.5, 5, true))
                   ],
                   on_move: [
-                     s_enemy_attack(750, 5, 1, true)/* Warning: SPの解釈に失敗したため通常攻撃を挿入します */
+                     s_enemy_attack(750, 5, 1, true)
                   ],
                   atrandom: false,
                   turn: 1,
@@ -120,7 +120,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_continue_damage/* Warning: 相当動作が怪しいので必ず実機検証してください。:継続大魔術（固定値：1000）3T */, "継続大魔術（固定値：1000）3T", 100, false, 1, 250, 250)/* Warning: 仮実装のため、十分に内容を精査してください */)
+                     m_enemy_once(skill_counter_func(s_enemy_continue_damage/* Warning: 相当動作が怪しいので必ず実機検証してください。:継続大魔術（固定値：1000）3T */, "継続大魔術（固定値：1000）3T", 100, false, 1, 250, 250))
                   ],
                   on_move: [
                      s_enemy_attack(250, 3, 5, true)
@@ -146,7 +146,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_continue_damage/* Warning: 相当動作が怪しいので必ず実機検証してください。:継続大魔術（固定値：1000）3T */, "継続大魔術（固定値：1000）3T", 100, false, 1, 250, 250)/* Warning: 仮実装のため、十分に内容を精査してください */)
+                     m_enemy_once(skill_counter_func(s_enemy_continue_damage/* Warning: 相当動作が怪しいので必ず実機検証してください。:継続大魔術（固定値：1000）3T */, "継続大魔術（固定値：1000）3T", 100, false, 1, 250, 250))
                   ],
                   on_move: [
                      s_enemy_attack(600, 5, 1, true)
@@ -197,9 +197,9 @@
                      m_enemy_once(s_enemy_force_reservoir())
                   ],
                   on_move: [
-                     s_enemy_attack(2000, 1, 1, true)/* Info: 力溜め後のため通常攻撃を挿入します */,
-                     s_enemy_force_reservoir(),
-                     s_enemy_attack(2000, 1, 1, true)/* Info: 力溜め後のため通常攻撃を挿入します */
+                     m_enemy_once(s_enemy_attack(2000, 1, 1, true)),
+                     s_enemy_attack(1000, 1, 1, true),
+                     s_enemy_attack(1000, 1, 1, true)
                   ],
                   atrandom: false,
                   turn: 1,
@@ -239,7 +239,7 @@
                isStrong: true,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_continue_damage/* Warning: 相当動作が怪しいので必ず実機検証してください。:継続大魔術（固定値：1000）3T */, "継続大魔術（固定値：1000）3T", 100, false, 1, 250, 250)/* Warning: 仮実装のため、十分に内容を精査してください */),
+                     m_enemy_once(skill_counter_func(s_enemy_continue_damage/* Warning: 相当動作が怪しいので必ず実機検証してください。:継続大魔術（固定値：1000）3T */, "継続大魔術（固定値：1000）3T", 100, false, 1, 250, 250)),
                      damage_switch(s_enemy_when_hpdown(0.5), m_enemy_angry(), true)
                   ],
                   on_move: [
