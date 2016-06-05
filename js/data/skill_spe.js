@@ -269,14 +269,17 @@ function ss_statusup_all(up_arr, up_limit, t) {
  * 味方全体にダメージブロックをかける
  * d:	無効ダメージ値
  * t:	継続ターン数
+ * calltype: 未定義->SS "ringan"->凛眼
 **/
-function ss_damageblock_all(d, t) {
+function ss_damageblock_all(d, t, calltype) {
 	return ss_template({
 		name: "ss_damageblock_all",
 		type: "turn_effect",
 		subtype: "damageblock",
 		target: "ally",
-		p1: t,
+		p1: d,
+		p2: t,
+		p3: calltype,
 	});
 }
 

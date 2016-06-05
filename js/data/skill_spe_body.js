@@ -478,13 +478,23 @@ var SpSkill = {
 	"ss_damageblock_all": function (fld, n, cobj, params) {
 		var rate = params[0];
 		var t = params[1];
+		var calltype = params[2];
+		switch(calltype){
+			case "ringan":
+				var typestr = "[凛眼]"
+				break;
+			case "SS":
+			default:
+				var typestr = ""
+				break;
+		}
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var cd = fld.Allys.Deck[i];
 			var now = fld.Allys.Now[i];
 			if (now.nowhp > 0) {
 				now.turn_effect.push({
-					desc: "ダメージブロック(" + rate + ")",
-					type: "ss_damage_block",
+					desc: "ダメージブロック" + typestr + "(" + rate + ")",
+					type: "ss_damage_block" + calltype,
 					icon: "damage_block",
 					isdual: false,
 					iscursebreak: true,

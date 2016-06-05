@@ -51,6 +51,7 @@ var Awake_crystal_lists = [{
 		skill: "ss_damageblock_all",
 		p1: 300,
 		p2: 4,
+		p3: "ringan",
 		is_legend: true,
 	},
 }, {

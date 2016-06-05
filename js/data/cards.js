@@ -28364,7 +28364,7 @@ Cards = [{
 	},
 	Lawake: [
 		// L時 ダメージブロック(400/5t)
-		Awake_SpecialSkill("ss_damageblock_all", 400, 5),
+		Awake_SpecialSkill("ss_damageblock_all", 400, 5, "ringan"),
 	],
 }, {
 	name: "守護と断罪の昏眼 アシュタル・ラド",
