@@ -960,6 +960,14 @@ function s_enemy_when_hpdown(rate) {
 	}, desc: "HPが" + rate * 100 + "％以下になったら"};
 }
 
+// ターン経過
+function s_enemy_when_after_turn(t) {
+	return {func: function (fld, n) {
+		console.log(fld.Status.nowturn)
+		return t == fld.Status.nowturn;
+	}, desc: t + "ターン経過したら"};
+}
+
 
 // enemy_skillのDescを作る
 // 表示順を変えたいとき、属性特攻を参考にorderを指定してください。
