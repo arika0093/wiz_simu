@@ -111,7 +111,7 @@
                      m_enemy_once(damage_block_own(25000, 3))
                   ],
                   on_move: [
-                     s_enemy_attack(1000, 5, 1, true)/* Warning: SPの解釈に失敗したため通常攻撃を挿入します */
+                     s_enemy_attack(1000, 5, 1, true)
                   ],
                   atrandom: false,
                   turn: 1,
@@ -134,7 +134,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_attr_weaken/* Warning: 属性が正しいか確認してください： 火属性弱体化100%（3T） */, "火属性弱体化100%（3T）", 100, false, [1,0,0,0,0], 2, 5, 4)/* Warning: 仮実装のため、十分に内容を精査してください */)
+                     m_enemy_once(skill_counter_func(s_enemy_attr_weaken/* Warning: 属性要確認： 火属性弱体化100%（3T） */, "火属性弱体化100%（3T）", 100, false, [1,0,0,0,0], 2, 5, 4))
                   ],
                   on_move: [
                      s_enemy_attack(300, 3, 4, true)
@@ -156,7 +156,7 @@
                      m_enemy_once(s_enemy_panicshout(0, 5, 2))
                   ],
                   on_move: [
-                     s_enemy_attack_attrsp(500, 250, [0,1,0,0,0], 5, 1, false)/* Warning: argが多いので注意して確認してください（主に属性）： 水属性5体に対して、特効ダメージ（+100%） */
+                     s_enemy_attack_attrsp(500, 250, [0,1,0,0,0], 5, 1, false)
                   ],
                   atrandom: false,
                   turn: 1,
@@ -226,7 +226,7 @@
                isStrong: true,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(damage_block_all, "全体ダメージブロック30000DMG×5T", 100, false, 30000, 6)/* Warning: 仮実装のため、十分に内容を精査してください */),
+                     m_enemy_once(skill_counter_func(s_enemy_attack, "通常攻撃 （700ダメージ、単体）", 100, false, 700, 1, 1, true)),
                      damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true)
                   ],
                   on_move: [
@@ -257,7 +257,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_panicshout, "混乱（ターゲット対象敵のみ） 5体×5T", 100, false, 0, 5, 6)/* Warning: 仮実装のため、十分に内容を精査してください */)
+                     m_enemy_once(skill_counter_func(s_enemy_panicshout, "混乱（ターゲット対象敵のみ） 5体×5T", 100, false, 0, 5, 6))
                   ],
                   on_move: [
                      s_enemy_attack(583.3333333333334, 3, 3, true),
