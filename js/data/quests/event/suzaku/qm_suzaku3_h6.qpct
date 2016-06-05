@@ -102,7 +102,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_attrguard_all([1,0,0,0,0], 0.5, 6)/* Warning: 属性が正しいか確認してください： 火属性防御50%（5T） */)
+                     m_enemy_once(s_enemy_attrguard_all([1,0,0,0,0], 0.5, 6)/* Warning: 属性要確認： 火属性防御50%（5T） */)
                   ],
                   on_move: [
                      s_enemy_attack(250, 3, 3, true)
@@ -124,12 +124,12 @@
                      s_enemy_force_reservoir()
                   ],
                   on_move: [
-                     s_enemy_attack(1875, 1, 1, true)/* Info: 力溜め後のため通常攻撃を挿入します */,
+                     s_enemy_attack(1875, 1, 1, true),
                      s_enemy_attack(250, 3, 3, true),
                      s_enemy_attack(250, 3, 3, true),
                      s_enemy_attack(250, 3, 3, true),
                      s_enemy_attack(250, 3, 3, true),
-                     s_enemy_force_reservoir()/* Info: 1回限りでなく怒り条件でない先制行動を再使用します */
+                     s_enemy_force_reservoir()/* Info: 先制行動を再使用します */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -159,7 +159,7 @@
                      s_enemy_attack(250, 3, 3, true),
                      s_enemy_attack(250, 3, 3, true),
                      s_enemy_attack(250, 3, 3, true),
-                     s_enemy_chain_break()/* Info: 1回限りでなく怒り条件でない先制行動を再使用します */
+                     s_enemy_chain_break()/* Info: 先制行動を再使用します */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -195,7 +195,7 @@
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attr_weaken([0,0,1,0,0], 1.5, 5, 4)/* Warning: 属性が正しいか確認してください： 雷属性弱体化50%（3T） */,
+                     s_enemy_attr_weaken([0,0,1,0,0], 1.5, 5, 4)/* Warning: 属性要確認： 雷属性弱体化50%（3T） */,
                      s_enemy_attack(366.6666666666667, 3, 3, true),
                      s_enemy_attack(366.6666666666667, 3, 3, true),
                      s_enemy_attack(366.6666666666667, 3, 3, true),
@@ -241,7 +241,7 @@
                isStrong: true,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_attack, "5体に10連撃", 100, false, 600, 5, 10, true)/* Warning: 仮実装のため、十分に内容を精査してください */),
+                     m_enemy_once(skill_counter_func(s_enemy_attack, "5体に10連撃", 100, false, 600, 5, 10, true)),
                      damage_switch(s_enemy_when_after_turn(3), m_enemy_angry(), true)
                   ],
                   on_move: [
@@ -269,7 +269,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_attrguard_all([1,0,0,0,0], 0.75, 6)/* Warning: 属性が正しいか確認してください： 火属性防御75%（5T） */)
+                     m_enemy_once(s_enemy_attrguard_all([1,0,0,0,0], 0.75, 6)/* Warning: 属性要確認： 火属性防御75%（5T） */)
                   ],
                   on_move: [
                      s_enemy_attack(400, 3, 3, true)
