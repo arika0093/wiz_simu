@@ -20,7 +20,8 @@
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(300, 3, 4, true)
+                     s_enemy_attack(300, 3, 4, true),
+					s_enemy_division(0.5)
                   ],
                   atrandom: false,
                   turn: 2,
@@ -55,7 +56,8 @@
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(300, 3, 4, true)
+                     s_enemy_attack(300, 3, 4, true),
+					s_enemy_division(0.5)
                   ],
                   atrandom: false,
                   turn: 2,
