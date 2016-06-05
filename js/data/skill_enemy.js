@@ -407,12 +407,17 @@ function s_enemy_healreverse(rate, tnum) {
 					return !(card.attr[1] >= 3 && card.attr[1] <= 4);
 				},
 				effect: function(f, oi, teff, state, is_t, is_b){
+					if(f.Enemys.Data[teff.receveButtle].enemy[teff.fromEnemy].nowhp <= 0){
+						teff.lim_turn = 0;
+					}
 					if(is_b){
 						teff.lim_turn = 0;
 					}
 				},
 				// 回復反転値
 				reverse_rate: rate,
+				fromEnemy: n,
+				receveButtle: fld.Status.nowbattle-1,
 			}
 		);
 	}, makeDesc("回復反転"));
