@@ -39,7 +39,7 @@
                      m_enemy_once(impregnable(99))
                   ],
                   on_move: [
-                     s_enemy_attack(1200, 5, 1, true)/* Warning:SPの解釈に失敗したため通常攻撃を挿入します */
+                     s_enemy_attack(1200, 5, 1, true)
                   ],
                   atrandom: false,
                   turn: 1,
@@ -81,7 +81,7 @@
                      m_enemy_once(s_enemy_ss_sealed(5, 2))
                   ],
                   on_move: [
-                     s_enemy_attack(875, 5, 1, true)/* Warning:SPの解釈に失敗したため通常攻撃を挿入します */
+                     s_enemy_attack(875, 5, 1, true)
                   ],
                   atrandom: false,
                   turn: 1,
@@ -149,7 +149,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_poison, "毒ダメージ 5体×3000DMG×5T", 100, false, 3000, 5, 6)/* Warning:仮実装のため、十分に内容を精査してください */)
+                     m_enemy_once(skill_counter_func(s_enemy_poison, "毒ダメージ 5体×3000DMG×5T", 100, false, 3000, 5, 6))
                   ],
                   on_move: [
                      s_enemy_attack(1200, 5, 1, true)
@@ -202,17 +202,17 @@
                      damage_switch(s_enemy_when_hpdown(0.5), m_enemy_angry(), true)
                   ],
                   on_move: [
-                     s_enemy_attack(800, 5, 1, true)/* Warning:SPの解釈に失敗したため通常攻撃を挿入します */
+                     s_enemy_attack(800, 5, 1, true)
                   ],
                   on_angry: [
                      s_enemy_heal_own(0.5)
                   ],
                   on_move_angry: [
-                     s_enemy_attack(400, 3, 4, true),
-                     s_enemy_attack(400, 3, 4, true),
-                     s_enemy_attack(400, 3, 4, true),
-                     s_enemy_attack(400, 3, 4, true),
-                     s_enemy_attack(400, 3, 4, true)
+                     s_enemy_attack(800, 5, 1, true),
+                     s_enemy_attack(800, 5, 1, true),
+                     s_enemy_attack(800, 5, 1, true),
+                     s_enemy_attack(800, 5, 1, true),
+                     s_enemy_attack(800, 5, 1, true)
                   ],
                   atrandom: false,
                   turn: 1,
@@ -265,14 +265,14 @@
                isStrong: true,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_all_sealed/* Warning:ターン数を確認してください： 5体を完全に封印する（5T） */, "5体を完全に封印する（5T）", 100, false, 5, 6)/* Warning:仮実装のため、十分に内容を精査してください */),
+                     m_enemy_once(skill_counter_func(s_enemy_all_sealed/* Warning: ターン数を確認してください： 5体を完全に封印する（5T） */, "5体を完全に封印する（5T）", 100, false, 5, 6)),
                      damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true)
                   ],
                   on_move: [
                      s_enemy_attack(500, 3, 5, true)
                   ],
                   on_angry: [
-                     s_enemy_attr_weaken([0,1,0,0,0], 1.5, 5, 6)/* Warning:属性が正しいか確認してください： 水属性弱体化50%（5T） */
+                     s_enemy_attr_weaken([0,1,0,0,0], 1.5, 5, 6)/* Warning: 属性要確認： 水属性弱体化50%（5T） */
                   ],
                   on_move_angry: [
                      s_enemy_attack(500, 3, 5, true),
