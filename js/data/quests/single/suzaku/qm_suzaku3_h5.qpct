@@ -1,8 +1,8 @@
 {
    id: "qm_suzaku3_h5",
-   name: "name",
+   name: "帰郷級 想いの怪物",
    category: "スザクⅢ",
-   desc: "帰郷級 想いの怪物",
+   desc: "",
    overlap: false,
    aprnum: 4,
    data: [
