@@ -324,7 +324,7 @@ function sim_show() {
 	$("#dialog_simlog_detail").dialog({
 		autoOpen: false,
 		modal: true,
-		width: 1000,
+		width: 1200,
 		open: function (e, ui) {
 			// sim_log
 			var logtext = "";

@@ -3,6 +3,7 @@
 //	pn: 踏んだパネル, ch: チェイン数, rnd: 乱数, i: 味方の番号, e: 敵の番号, is_ss: SSかどうか
 function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss) {
 	var d = 0;
+	var bef_ond = 0;
 	// エンハ
 	var as_enh = now.as_enhance ? Number(now.as_enhance.toFixed(2)) : 0;
 	var ss_enh = now.ss_enhance ? Number(now.ss_enhance.toFixed(2)) : 0;
@@ -17,7 +18,7 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss)
 	// AS倍率、エンハ
 	d *= (rate + as_enh + ss_enh + bss_enh + rfm_enh);
 	// チェイン数考慮
-	d *= Number((1 + ch / 100).toFixed(2));
+	d *= Number((1 + ch / 100)).toFixed(2);
 	// パネル
 	d *= (pn.indexOf(atk_atr) >= 0 ? 1 : 0.5);
 	// 属性考慮
@@ -30,12 +31,14 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss)
 	d /= atkn;
 	// 切り捨て
 	d = Math.floor(d);
+	bef_ond = d;
 
 	// 攻撃時スキル確認
 	if (enemy.turn_effect.length > 0) {
 		var skillct = $.grep(enemy.turn_effect, function (g) {
 			return g.on_damage !== undefined;
 		});
+		is_ondamage = true;
 		skillct.sort(function (a, b) {
 			if (a.priority > b.priority) return -1;
 			if (a.priority < b.priority) return +1;
@@ -64,12 +67,13 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss)
 		"Unit[" + (i+1) + "]: " +
 		"攻撃力(" + now.atk + (!is_ss ? "/2" : "") + ")" +
 		" * 倍率(" + rate + "+" + as_enh + "+" + (ss_enh + bss_enh + rfm_enh) + ")" +
-		" * チェイン(" + (1 + ch / 100) + ")" +
+		" * チェイン(" + (1 + ch / 100).toFixed(2) + ")" +
 		" * パネル(" + (pn.indexOf(atk_atr) >= 0 ? 1 : 0.5) + ")" +
 		" * 属性相性(" + attr_magnification(atk_atr, enemy.attr) + ")" +
 		(lst_multi != 1 ? " * 補正値(" + lst_multi + ")" : "") +
 		" * 乱数(" + rnd.toFixed(2) + ")" +
 		(atkn > 1 ? " / 攻撃回数(" + atkn + ")" : "") +
+		((d / bef_ond) != 1 ? " : 攻撃時処理[*" + (d / bef_ond).toFixed(2) + "]" : "") +
 		" = ダメージ(" + d + ")"
 	);
 
