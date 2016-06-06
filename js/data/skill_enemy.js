@@ -206,6 +206,37 @@ function s_enemy_attack_deadgrudge(r1, r2, r3, tgtype) {
 	}, makeDesc("亡者の怨念"));
 }
 
+
+// 吸収(削り幅, 回復値, 攻撃対象数)
+function s_enemy_absorb(ratiorate, tnum, healvalue) {
+	return m_create_enemy_move(function (fld, n, nows, is_counter) {
+		// ログ出力
+		Field.log_push("Enemy[" + (n + 1) + "]: " +
+			(tnum < fld.Allys.Deck.length ? tnum : "全") + "体割合攻撃(" +
+			(ratiorate * 100) + "%)");
+		// 攻撃対象取得
+		var tg = gen_enemytarget_array(tnum, 1, false, nows);
+		// 攻撃
+		for (var i = 0; i < tg.length; i++) {
+			for (var j = 0; j < tg[i].length; j++) {
+				var targ = tg[i][j];
+				var nw = fld.Allys.Now[targ];
+				var dmg = nw.nowhp * ratiorate;
+				_s_enemy_attack(fld, dmg, n, targ, true);
+				if (!is_counter) {
+					// スキルカウンターを有効に
+					nw.flags.skill_counter[n] = true;
+				}
+			}
+		}
+		var e = GetNowBattleEnemys(n);
+		if (e.nowhp <= 0) { return; }
+		var heal_v = healvalue;
+		e.nowhp = Math.min(e.nowhp +heal_v, e.hp);
+		fld.log_push("Enemy[" +(n +1) + "]: HP回復(" +heal_v + ")");
+	}, makeDesc("吸収"));
+}
+
 // -----------------------------------
 // 状態異常攻撃
 // -----------------------------------
@@ -999,6 +1030,8 @@ function makeDesc(mystr, order){
 			toStr = prop != "copyhp" ? toStr : "分裂時HP："+toStr
 			toStr = prop != "hpdown" ? toStr : "HP-" + toStr
 			toStr = prop != "desc" ? toStr : toStr+" "
+			toStr = prop != "healvalue" ? toStr : toStr+"回復"
+			toStr = prop != "ratiorate" ? toStr : toStr * 100 + "％削り"
 			toStr = ["tgtype","p1","p2","p3","p4"].indexOf(prop)==-1 ? toStr : ""
 			outpStr += toStr == "" ? "" : flag==1 ? " (" : "、"
 			toStr = toStr == "" ? "" : toStr != comma3(argObj[prop]) ? toStr : "<font color=red>#DEF!</font>" + prop
