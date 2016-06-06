@@ -690,7 +690,7 @@ function s_enemy_attrguard_own(attr, rate, turn) {
 			effect: function () { },
 			on_damage: function (fld, dmg, atr_i) {
 				if (attr[atr_i] > 0) {
-					return dmg * rate;
+					return dmg * (1 - rate);
 				} else {
 					return dmg;
 				}
