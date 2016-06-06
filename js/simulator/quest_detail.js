@@ -7,7 +7,7 @@ $(function () {
 
 	if (id) {
 		makeQD(id);
-	} else if (genre) {
+	} else {
 		makeList(genre);
 	}
 });
@@ -15,7 +15,7 @@ $(function () {
 // クエスト一覧を表示
 function makeList(genre) {
 	// match and generate html
-	var rst_html = "<dt>Category: " + genre + "</dt><dd class='left_min'>";
+	var rst_html = "<dt>Category: " + (genre || "ALL QUEST") + "</dt><dd class='left_min'>";
 	var rst = $.grep(Quests, function (Quest, QuestNum) {
 		// match check
 		if (genre && Quest.category != genre) {
