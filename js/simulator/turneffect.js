@@ -66,13 +66,14 @@ function turn_effect_check(is_turn_move, is_ssfin) {
 		}
 		if (turneff.lim_turn == 0) {
 			var tf_index = all_turneff[te].index;
+			var tf_pos = all_turneff[te].position;
 			// 残りターンが0なら除外
-			now.turn_effect.splice(all_turneff[te].position, 1);
-			all_turneff.splice(te, 1);
+			turneff_remove_pos(now.turn_effect, all_turneff[te].position);
+			turneff_remove_pos(all_turneff, te);
 			te--;
 			// 同じindexを持つtfのpositionをずらす
 			$.each(all_turneff, function (i, e) {
-				if (e.index == tf_index) {
+				if (e.index == tf_index && e.position >= tf_pos) {
 					e.position--;
 				}
 			});
@@ -95,8 +96,8 @@ function enemy_turn_effect_check(is_turn_move) {
 			}
 			if (turneff.lim_turn == 0) {
 				// 残りターンが0なら除外
-				enemys[i].turn_effect.splice(te, 1);
-				te--;
+				turneff_remove_pos(enemys[i].turn_effect, te)
+				te -= 1;
 			}
 		}
 	}
@@ -112,12 +113,26 @@ function turneff_break_dual(teffs, index, is_turn_move) {
 		if (duals.length >= 2) {
 			for (var i = 0; i < duals.length - 1; i++) {
 				// 消す前に終了時関数をcallする(state: overlay)
-				var pos = teffs.indexOf(duals[i]);
 				duals[i].effect(Field, index, duals[i], "overlay", is_turn_move, is_allkill());
-				teffs.splice(pos, 1);
-				t = (pos <= t ? t - 1 : t);
+				turneff_remove_pos(teffs, teffs.indexOf(duals[i]));
+				t -= 1;
+				//t = (pos <= t ? t - 1 : t);
 			}
 		}
+	}
+}
+
+// 指定位置のturneffectを削除して返す
+// pos: 削除対象のindex or 削除対象のturn_effect
+function turneff_remove_pos(teffs, pos) {
+	if (pos >= 0) {
+		// remove
+		teffs.splice(pos, 1);
+	} else {
+		var idx = teffs.indexOf(pos);
+		// for debug
+		console.log(pos.desc + "/index:" + idx);
+		teffs.splice(idx, 1);
 	}
 }
 
@@ -173,7 +188,7 @@ function turneff_allbreak(teffs, index, call_type) {
 		if (call_type) {
 			teff.effect(Field, index, teff, call_type, false, false);
 		}
-		teffs.splice(0, 1);
+		turneff_remove_pos(teffs, 0);
 	}
 }
 
@@ -188,7 +203,7 @@ function turneff_break(teffs, index, type, call_type) {
 		if (call_type) {
 			teff.effect(Field, index, teff, call_type, false, false);
 		}
-		teffs.splice(i, 1);
+		turneff_remove_pos(teffs, i);
 		i--;
 	}
 }
@@ -202,7 +217,7 @@ function turneff_break_cond(teffs, index, func, call_type) {
 			continue;
 		}
 		teff.effect(Field, index, teff, call_type, false, false);
-		teffs.splice(i, 1);
+		turneff_remove_pos(teffs, i);
 		i--;
 	}
 }
@@ -232,7 +247,7 @@ function ss_continue_effect_check() {
 		}
 		// 残りターンが0以下なら除外
 		if (ceff.lim_turn <= 0) {
-			cont_effs.splice(i, 1);
+			turneff_remove_pos(cont_effs, i);
 			i--;
 		}
 	}

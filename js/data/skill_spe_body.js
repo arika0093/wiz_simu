@@ -822,19 +822,19 @@ var SpSkill = {
 	// -----------------------------
 	// カウンター解除
 	"ss_break_attackcounter": function (fld, n, cobj, params) {
-		return ss_break_template(cobj.target, "attack_counter");
+		return ss_break_template(cobj.target, "attack_counter")(fld, n);
 	},
 	// スキル反射解除
 	"ss_break_skillcounter": function (fld, n, cobj, params) {
-		return ss_break_template(cobj.target, "skill_counter");
+		return ss_break_template(cobj.target, "skill_counter")(fld, n);
 	},
 	// ガード解除
 	"ss_break_attrguard": function (fld, n, cobj, params) {
-		return ss_break_template(cobj.target, "attr_guard");
+		return ss_break_template(cobj.target, "attr_guard")(fld, n);
 	},
 	// ダメブロ解除
 	"ss_break_dblock": function (fld, n, cobj, params) {
-		return ss_break_template(cobj.target, "damage_block");
+		return ss_break_template(cobj.target, "damage_block")(fld, n);
 	},
 	// -----------------------------
 	// SSコピー
@@ -1117,7 +1117,7 @@ function panel_addition(dsc, fc) {
 }
 
 // (内部用)敵スキル解除系テンプレ
-function ss_break_template(target, type, logtext) {
+function ss_break_template(target, type) {
 	var _break_temp_fc = function (fld, oi, ei) {
 		var is_break = false;
 		var em = GetNowBattleEnemys(ei);
@@ -1126,7 +1126,7 @@ function ss_break_template(target, type, logtext) {
 			// typeを含んでいる場合除く
 			// (attack_counterが指定されてたら多段カウンターも除く)
 			if (eff.type.indexOf(type) >= 0) {
-				eff.splice(i, 1);
+				turneff_remove_pos(em.turn_effect, i);
 				i--;
 				is_break = true;
 			}
@@ -1136,13 +1136,20 @@ function ss_break_template(target, type, logtext) {
 	return function (fld, n) {
 		var cd = fld.Allys.Deck[n];
 		var es = GetNowBattleEnemys();
+		var rsts = false;
 		if (target == "all") {
 			for (var i = 0; i < es.length; i++) {
-				_break_temp_fc(fld, n, i);
+				var rst = _break_temp_fc(fld, n, i);
+				es[i].flags.is_ss_attack = rst;
+				rsts = rsts || rst;
 			}
 		} else {
-			_break_temp_fc(fld, n, auto_attack_order(es, cd.attr[0], n));
+			var tg = auto_attack_order(es, cd.attr[0], n);
+			var rst = _break_temp_fc(fld, n, tg);
+			es[tg].flags.is_ss_attack = rst;
+			rsts = rsts || rst;
 		}
+		return rsts;
 	}
 }
 

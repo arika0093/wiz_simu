@@ -33630,7 +33630,7 @@ Cards = [{
     	ss1: {
     		desc: "敵全体のカウンターを解除する",
     		turn: 8,
-    		proc: [ss_break_attackcounter(all)],
+    		proc: [ss_break_attackcounter("all")],
     	},
     	islegend: true,
     	Lawake: [
@@ -33644,7 +33644,7 @@ Cards = [{
     	ss2: {
     		desc: "敵全体のカウンターを解除し、雷属性のダメージ。HP20％以下でさらにスキル反射を解除し、ダメージアップ(通常：180％ / HP20％以下：300％)",
     		turn: 13,
-    		proc: [ss_break_attackcounter(all), ss_damage_all(ss_hp_less(0.20, 3.0, 1.8), ss_hp_less_skill(0.2, ss_break_skillcounter(all))],
+    		proc: [ss_break_attackcounter("all"), ss_damage_all(ss_hp_less(0.20, 3.0, 1.8), ss_hp_less_skill(0.2, ss_break_skillcounter("all")))],
     	},
 },{
 	name: "或る魔王 ミカエラ・セラフィム",
@@ -33663,7 +33663,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体のカウンターを解除する",
 		turn: 8,
-		proc: [ss_break_attackcounter(all)],
+		proc: [ss_break_attackcounter("all")],
 	},
 	awakes: [
 		Fastskill(2),
@@ -33684,7 +33684,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体のカウンターを解除し、火属性のダメージ。HP20%以下でさらにスキル反射を解除し、ダメージアップ(180%/300%)",
 		turn: 13,
-		proc: [ss_break_attackcounter(all), ss_damage_all(ss_hp_less(0.20, 3.0, 1.8), [0]), ss_hp_less_skill(0.2, ss_break_skillcounter(all))],
+		proc: [ss_break_attackcounter("all"), ss_damage_all(ss_hp_less(0.20, 3.0, 1.8), [0]), ss_hp_less_skill(0.2, ss_break_skillcounter("all"))],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -34220,7 +34220,7 @@ Cards = [{
 	ss1: {
 		desc: "<効果解除>敵全体のガード&ダメージブロックを解除する",
 		turn: 8,
-		proc: [ss_break_attrguard(all), ss_break_dblock(all)],
+		proc: [ss_break_attrguard("all"), ss_break_dblock("all")],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),

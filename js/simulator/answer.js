@@ -55,6 +55,7 @@ function panel(attr) {
 		answer_skill(pickup_answerskills(attr, "support"), attr, as_afters);
 		// 攻撃
 		var atk_skill = pickup_answerskills(attr, "attack");
+		// 攻撃不可状況を除きデフォASを追加する
 		$.each(atk_skill, function (i, e) {
 			if (e != null) {
 				atk_skill[i].unshift(Default_as()[0]);
