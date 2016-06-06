@@ -21,7 +21,8 @@ function makeList(genre) {
 		if (genre && Quest.category != genre) {
 			return false;
 		}
-		rst_html += "<a class='genre_link' href='/simulator/quest/?id=" + Quest.id + "'>" + Quest.name + "</a>";
+		rst_html += "<a class='genre_link' href='/simulator/quest/?id=" + Quest.id + "'><img src=" +
+		get_image_url(Quest.data[Quest.data.length-1].enemy[1].imageno) +" width=50>" + Quest.name + "</a>";
 		return true;
 	});
 	rst_html += "</dd>";
