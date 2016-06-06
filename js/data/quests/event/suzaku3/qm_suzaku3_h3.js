@@ -1,7 +1,8 @@
 {
    id: "suzaku3_h3",
    name: "予兆級 謎めいた不安",
-   category: "スザクⅢ",
+   category: "suzaku3",
+   category_jp: "スザクⅢ",
    desc: "",
    overlap: false,
    aprnum: 4,

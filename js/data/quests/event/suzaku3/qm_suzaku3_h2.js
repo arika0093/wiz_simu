@@ -1,7 +1,8 @@
 {
    id: "suzaku3_h2",
    name: "調査級 カリュプスの成長",
-   category: "スザクⅢ",
+   category: "suzaku3",
+   category_jp: "スザクⅢ",
    desc: "",
    overlap: false,
    aprnum: 4,

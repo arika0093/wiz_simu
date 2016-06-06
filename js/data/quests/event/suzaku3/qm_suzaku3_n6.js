@@ -1,7 +1,8 @@
 {
    id: "suzaku3_n6",
    name: "んんー！？級 縫合列車再臨",
-   category: "スザクⅢ",
+   category: "suzaku3",
+   category_jp: "スザクⅢ",
    desc: "",
    overlap: false,
    aprnum: 4,

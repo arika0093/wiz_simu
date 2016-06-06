@@ -1,7 +1,8 @@
 {
 	id: "1602ev_4",
 	name: "(2016/02)イベントトーナメント 絶級",
-	category: "past event",
+	category: "past_event",
+   category_jp: "過去のイベトナメ",
 	desc: "2016/02に開催された魔道杯:イベントトーナメントのHard:クイズ対決！です。",
 	overlap: false,
 	aprnum: 5,

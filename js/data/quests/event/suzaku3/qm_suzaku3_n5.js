@@ -1,7 +1,8 @@
 {
    id: "suzaku3_n5",
    name: "絶級 AUDEAMUS",
-   category: "スザクⅢ",
+   category: "suzaku3",
+   category_jp: "スザクⅢ",
    desc: "",
    overlap: false,
    aprnum: 4,

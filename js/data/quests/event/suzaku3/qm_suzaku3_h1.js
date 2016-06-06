@@ -1,7 +1,8 @@
 {
    id: "suzaku3_h1",
    name: "歴戦級 スザクロッド自警団",
-   category: "スザクⅢ",
+   category: "suzaku3",
+   category_jp: "スザクⅢ",
    desc: "",
    overlap: false,
    aprnum: 4,

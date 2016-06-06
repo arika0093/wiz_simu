@@ -2,6 +2,7 @@
 	id: "af_2016",
 	name: "仮想陸式(エイプリルフール)",
 	category: "other",
+   category_jp: "その他",
 	desc: "2016年度も頑張りましょう",
 	overlap: false,
 	aprnum: 5,

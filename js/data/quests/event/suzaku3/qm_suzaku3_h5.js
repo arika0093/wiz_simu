@@ -1,7 +1,8 @@
 {
    id: "suzaku3_h5",
    name: "帰郷級 想いの怪物",
-   category: "スザクⅢ",
+   category: "suzaku3",
+   category_jp: "スザクⅢ",
    desc: "",
    overlap: false,
    aprnum: 4,

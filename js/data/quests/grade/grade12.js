@@ -2,6 +2,7 @@
 	id: "grade12",
 	name: "弐式(トーナメント12段)",
 	category: "tornament",
+   category_jp: "通常トーナメント",
 	desc: "火推奨のトーナメントです。1位入賞時2600pt。入賞確実: 5-6t / タイム勝負: 7t-",
 	aprnum: 5,
 	overlap: false,

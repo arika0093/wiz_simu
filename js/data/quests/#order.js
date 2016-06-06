@@ -1,7 +1,7 @@
 Quests.forEach(function(e){
     // 配置の定義
     var QuestOrder = {
-        category:["tornament", "past event", "other"],
+        category:["tornament", "past_event", "other"],
     }
     
     // カテゴリ順
@@ -12,7 +12,7 @@ Quests.forEach(function(e){
     // past eventは前8文字で並べる
     if(e.category == "tornament"){
         e.sortKey[1] = e.name.slice(-4)
-    }else if(e.category == "past event"){
+    }else if(e.category == "past_event"){
         e.sortKey[1] = e.name.slice(0,8)
     }else{
         e.sortKey[1] = 0

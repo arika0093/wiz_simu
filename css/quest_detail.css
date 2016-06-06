@@ -84,7 +84,9 @@ div.e_move{
 	min-height: 115px;
 	float: left;
 	column-count: 2;
+	-moz-column-count: 2;
 	column-rule: 1px solid #DDD;
+	-moz-column-rule: 1px solid #DDD;
 	border-top: 1px dashed #888;
 }
 @media screen and (min-width: 600px){
@@ -116,4 +118,22 @@ div.e_move b.on_angry, div.e_move b.on_move_angry{
 
 b.imp_move{
 	text-decoration: underline;
+}
+
+a.back_category{
+	display:block;
+	text-align: right;
+}
+
+a.genre_link {
+    display: block;
+    padding: 2ex 1em;
+    margin: 2ex 0;
+    border: 1px solid #CCC;
+    background: #FAFAFA;
+    border-radius: 6px;
+}
+a.genre_link:hover{
+	box-shadow:0px 0px 8px 1px #e6e6e6 inset;
+    background: #FFF;
 }

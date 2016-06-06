@@ -1,7 +1,8 @@
 {
    id: "suzaku3_h4",
    name: "異形級 古き悪夢の目覚め",
-   category: "スザクⅢ",
+   category: "suzaku3",
+   category_jp: "スザクⅢ",
    desc: "",
    overlap: false,
    aprnum: 4,

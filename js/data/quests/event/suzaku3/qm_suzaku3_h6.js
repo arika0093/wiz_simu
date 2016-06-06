@@ -1,7 +1,8 @@
 {
    id: "suzaku3_h6",
    name: "共闘級 信じあう絆のもとに",
-   category: "スザクⅢ",
+   category: "suzaku3",
+   category_jp: "スザクⅢ",
    desc: "",
    overlap: false,
    aprnum: 4,

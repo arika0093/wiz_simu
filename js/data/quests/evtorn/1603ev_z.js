@@ -1,7 +1,8 @@
 {
 	id: "1603ev_z",
 	name: "(2016/03)イベントトーナメント 絶級",
-	category: "past event",
+	category: "past_event",
+   category_jp: "過去のイベトナメ",
 	desc: "2016/03に開催された魔道杯のイベントトーナメント絶級です。",
 	overlap: false,
 	aprnum: 5,

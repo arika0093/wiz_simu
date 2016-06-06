@@ -2,6 +2,7 @@
 	id: "grade13",
 	name: "参式(トーナメント13段)",
 	category: "tornament",
+   category_jp: "通常トーナメント",
 	desc: "水推奨のトーナメントです。1位入賞時3640pt。",
 	aprnum: 5,
 	overlap: false,

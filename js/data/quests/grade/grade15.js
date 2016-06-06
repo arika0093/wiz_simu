@@ -2,6 +2,7 @@
 	id: "grade15",
 	name: "伍式(トーナメント15段)",
 	category: "tornament",
+   category_jp: "通常トーナメント",
 	desc: "火推奨のトーナメントです。1位入賞時4800pt。",
 	overlap: false,
 	aprnum: 5,

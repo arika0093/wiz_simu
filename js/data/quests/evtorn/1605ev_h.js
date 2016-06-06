@@ -1,7 +1,8 @@
 {
 	id: "1605ev_h",
 	name: "(2016/05)イベントトーナメント 覇級",
-	category: "past event",
+	category: "past_event",
+   category_jp: "過去のイベトナメ",
 	overlap: false,
 	aprnum: 5,
 	panel_effect: [panel_chainplus(4)],

@@ -8,7 +8,8 @@ $(function () {
 		}
 		if (i == 0 || Quests[i].category != Quests[i - 1].category) {
 			var opg = document.createElement('optgroup');
-			opg.label = Quests[i].category;
+			var ct = Quests[i].category_jp ? Quests[i].category_jp : Quests[i].category;
+			opg.label = ct;
 			sel.appendChild(opg);
 			seld = opg;
 		}

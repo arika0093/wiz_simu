@@ -2,6 +2,7 @@
 	id: "grade14",
 	name: "肆式(トーナメント14段)",
 	category: "tornament",
+   category_jp: "通常トーナメント",
 	desc: "雷推奨のトーナメントです。1位入賞時4200pt。",
 	overlap: false,
 	aprnum: 5,

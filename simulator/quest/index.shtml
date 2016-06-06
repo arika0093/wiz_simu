@@ -38,7 +38,7 @@
 
     <!-- Main Contents -->
     <div class="Main">
-        <div id="result">Now loading...</div>
+        <dl class='List' id="result">Now loading...</dl>
 
         <!-- Adsense -->
         <div class="Adsense">

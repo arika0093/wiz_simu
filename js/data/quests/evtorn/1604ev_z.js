@@ -1,7 +1,8 @@
 {
 	id: "1604ev_z",
 	name: "(2016/04)イベントトーナメント 邪眼級",
-	category: "past event",
+	category: "past_event",
+   category_jp: "過去のイベトナメ",
 	overlap: false,
 	aprnum: 5,
 	data: [{

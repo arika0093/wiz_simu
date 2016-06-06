@@ -2,6 +2,7 @@
 	id: "abcd01_n",
 	name: "AbyssCode01 黒殻の王『黒業級』",
 	category: "other",
+   category_jp: "その他",
 	desc: "",
 	aprnum: 4,
 	overlap: false,

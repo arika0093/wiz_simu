@@ -5,26 +5,47 @@ $(function () {
 	var genre = location.search.indexOf("?genre=") == 0 ?	location.search.substr(7) : null;
 	var tag = location.search.indexOf("?tag=") == 0 ?		location.search.substr(5) : null;
 
-	makeQD(id, genre, tag);
+	if (id) {
+		makeQD(id);
+	} else if (genre) {
+		makeList(genre);
+	}
 });
 
-// 全クエストの詳細を表示
-function makeQD(id, genre, tag) {
-	var resStr = ""
+// クエスト一覧を表示
+function makeList(genre) {
+	// match and generate html
+	var rst_html = "<dt>Category: " + genre + "</dt><dd class='left_min'>";
 	var rst = $.grep(Quests, function (Quest, QuestNum) {
-		// param check
-		if (!id && !genre && !tag) {
+		// match check
+		if (genre && Quest.category != genre) {
 			return false;
 		}
+		rst_html += "<a class='genre_link' href='/simulator/quest/?id=" + Quest.id + "'>" + Quest.name + "</a>";
+		return true;
+	});
+	rst_html += "</dd>";
+	if (rst.length > 0) {
+		$("#result").html(rst_html);
+	} else {
+		var h = "<dl class='List'><dt>ERROR OCCURRED.</dt><dd>存在しないクエストが指定されました。</dd></dl>";
+		$("#result").html(h);
+	}
+}
+
+// クエストの詳細を表示
+function makeQD(id) {
+	var resStr = ""
+	var rst = $.grep(Quests, function (Quest, QuestNum) {
 		// match check
 		if (id && Quest.id != id) {
 			return false;
 		}
 		// generate html
-		resStr += "<dl class='List'><dt>" + Quest.name + "</dt>"
+		resStr += "<dt>" + Quest.name + "</dt>"
 		Quest.data.forEach(function (Battle, BattleNum) {
-			resStr += "<dd class='left_min'><p class='battle_num'>" +
-				Battle.appearance + "戦目</p><div class='battle_d'>"
+			resStr += "<dd class='left_min'>" +
+				"<p class='battle_num'>" + Battle.appearance + "戦目</p><div class='battle_d'>"
 			Battle.enemy.forEach(function (Enemy, EnemyNum) {
 				var move = Enemy.move;
 				// add main
@@ -48,8 +69,10 @@ function makeQD(id, genre, tag) {
 				resStr += "</div>"
 			})
 			resStr += "</div>"
+			resStr += "<a class='back_category' href='/simulator/quest/?genre=" +
+				Quest.category + "'>カテゴリ一覧に戻る</a>";
 		})
-		resStr += "</dd></dl>";
+		resStr += "</dd>";
 		return true;
 	});
 	if (rst.length > 0) {

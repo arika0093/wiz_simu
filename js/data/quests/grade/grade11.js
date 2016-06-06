@@ -2,6 +2,7 @@
 	id: "grade11",
 	name: "壱式(トーナメント11段)",
 	category: "tornament",
+   category_jp: "通常トーナメント",
 	desc: "雷推奨のトーナメントです。1位入賞時2500pt。",
 	aprnum: 5,
 	overlap: false,
