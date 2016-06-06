@@ -223,7 +223,7 @@ $(function () {
 			if (Field.Quest.battle_before) {
 				var bbef = Field.Quest.battle_before;
 				for (var i = 0; i < bbef.length; i++) {
-					ss_object_done(Field, -1, bbef[i]);
+					ss_object_done(Field, -1, bbef[i].proc);
 				}
 			}
 			// 初期状態を保存
