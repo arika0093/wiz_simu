@@ -82,7 +82,7 @@ function damage_switch(cond, func, is_always) {
 			on_cond: on_cond,
 			oncond_anytime: is_always === true,
 		});
-	}, "行動予約：" + cond.desc + func.mdesc);
+	}, "怒り条件：" + cond.desc);
 	return rst;
 }
 
@@ -533,6 +533,7 @@ function skill_counter(damage, t) {
 // (反射スキル関数「の関数」, 説明, ターン数, 反射が単体か, 反射スキル関数の引数1-4(単体反射の場合tnumの部分をnullに))
 // (※実装を間違えてすごく雑な対応になってしまった)
 function skill_counter_func(skill, desc, t, is_tgonly, p1, p2, p3, p4) {
+	desc = skill(p1,p2,p3,p4).mdesc != undefined ? skill(p1,p2,p3,p4).mdesc : desc
 	return m_create_enemy_move(function (fld, n) {
 		var enemy = GetNowBattleEnemys(n);
 		Field.log_push("Enemy[" + (n + 1) + "]: スキル反射待機");
@@ -556,7 +557,7 @@ function skill_counter_func(skill, desc, t, is_tgonly, p1, p2, p3, p4) {
 				initialize_allys_flags(f.Allys.Now);
 			}
 		});
-	}, makeDesc("スキル反射"));
+	}, "スキル反射 :"+desc);
 }
 
 // SS反応(味方スキルに反応する)
@@ -967,7 +968,7 @@ function s_enemy_when_dead_s() {
 			rst = rst || es[i].nowhp <= 0;
 		}
 		return rst;
-	}, desc: "敵1体が倒れたら"};
+	}, desc: "敵1体が倒れる"};
 }
 
 // 敵自身以外が倒れる
@@ -980,7 +981,7 @@ function s_enemy_when_dead_l() {
 			rst = rst && es[i].nowhp <= 0;
 		}
 		return rst;
-	}, desc: "自身以外全員が倒れたら"};
+	}, desc: "自身以外全員が倒れる"};
 }
 
 // HPが指定%以下
@@ -988,7 +989,7 @@ function s_enemy_when_hpdown(rate) {
 	return {func: function (fld, n) {
 		var e = GetNowBattleEnemys(n);
 		return e.nowhp <= Math.floor(e.hp * rate);
-	}, desc: "HPが" + rate * 100 + "％以下になったら"};
+	}, desc: "HPが" + rate * 100 + "％以下"};
 }
 
 // ターン経過
@@ -996,7 +997,7 @@ function s_enemy_when_after_turn(t) {
 	return {func: function (fld, n) {
 		console.log(fld.Status.nowturn)
 		return t == fld.Status.nowturn;
-	}, desc: t + "ターン経過したら"};
+	}, desc: t + "ターン経過"};
 }
 
 
