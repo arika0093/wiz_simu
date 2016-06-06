@@ -18,8 +18,10 @@ function m_create_enemy_move(f, mdesc) {
 // 初回のみ行動
 function m_enemy_once(e_skl) {
 	var mdesc = e_skl.mdesc
-	mdesc = mdesc.slice(-1) == ")" ? mdesc.slice(0, -1)+"、" : mdesc+"("
-	e_skl.mdesc =　mdesc + "初回のみ)"
+	if(mdesc.indexOf("反射")==-1){
+		mdesc = mdesc.slice(-1) == ")" ? mdesc.slice(0, -1)+"、" : mdesc+"("
+		e_skl.mdesc =　mdesc + "初回のみ)"
+	}
 	return m_enemy_nturn(e_skl, 999);
 }
 
