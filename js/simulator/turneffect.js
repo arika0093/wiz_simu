@@ -115,8 +115,7 @@ function turneff_break_dual(teffs, index, is_turn_move) {
 				// 消す前に終了時関数をcallする(state: overlay)
 				duals[i].effect(Field, index, duals[i], "overlay", is_turn_move, is_allkill());
 				turneff_remove_pos(teffs, teffs.indexOf(duals[i]));
-				t -= 1;
-				//t = (pos <= t ? t - 1 : t);
+				t = (pos <= t ? t - 1 : t);
 			}
 		}
 	}
