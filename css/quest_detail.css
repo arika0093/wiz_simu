@@ -131,8 +131,8 @@ dd#category_view{
 
 a.genre_link {
     display: inline-block;
-    padding: 2ex 1em 0;
-    margin: 2ex .5em;
+    padding: 2ex 1em;
+    margin: 2ex .5em 0;
     border: 1px solid #CCC;
     background: #FAFAFA;
     border-radius: 6px;
