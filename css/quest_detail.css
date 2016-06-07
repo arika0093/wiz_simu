@@ -125,15 +125,37 @@ a.back_category{
 	text-align: right;
 }
 
+dd#category_view{
+
+}
+
 a.genre_link {
-    display: block;
+    display: inline-block;
     padding: 2ex 1em;
-    margin: 2ex 0;
+    margin: 2ex .5em;
     border: 1px solid #CCC;
     background: #FAFAFA;
     border-radius: 6px;
+	width: 48%;
+	box-sizing: border-box;
+}
+@media screen and (min-width: 600px){
+	a.genre_link {
+		width: 48%;
+	}
+}
+@media screen and (max-width: 599px){
+	a.genre_link {
+		width: 98%;
+	}
 }
 a.genre_link:hover{
 	box-shadow:0px 0px 8px 1px #e6e6e6 inset;
     background: #FFF;
+}
+
+img.boss_img {
+	width: 56px;
+	padding-right: 1.5ex;
+	vertical-align: middle;
 }

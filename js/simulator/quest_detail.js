@@ -15,14 +15,16 @@ $(function () {
 // クエスト一覧を表示
 function makeList(genre) {
 	// match and generate html
-	var rst_html = "<dt>Category: " + (genre || "ALL QUEST") + "</dt><dd class='left_min'>";
+	var rst_html = "<dt>Category: " + (genre || "ALL QUEST") + "</dt><dd class='left_min ' id='category_view'>";
 	var rst = $.grep(Quests, function (Quest, QuestNum) {
 		// match check
 		if (genre && Quest.category != genre) {
 			return false;
 		}
+		var boss_enms = Quest.data[Quest.data.length - 1].enemy;
+		var boss_enm = boss_enms.length >= 2 ? 1 : 0;
 		rst_html += "<a class='genre_link' href='/simulator/quest/?id=" + Quest.id + "'><img src=" +
-		get_image_url(Quest.data[Quest.data.length-1].enemy[1].imageno) +" width=50>" + Quest.name + "</a>";
+		get_image_url(boss_enms[boss_enm].imageno) + " class='boss_img'>" + Quest.name + "</a>";
 		return true;
 	});
 	rst_html += "</dd>";
