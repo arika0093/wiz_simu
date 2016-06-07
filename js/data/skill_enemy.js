@@ -396,7 +396,7 @@ function s_enemy_panicshout(damage, tnum, t) {
 					panic_damage: damage,
 				}
 			);
-		}, makeDesc("パニックシャウト 自傷"));
+		}, makeDesc("パニックシャウト"));
 	}else{
 		// タゲ異常パニック
 		return m_create_enemy_move(function (fld, n, pnow, is_counter) {
