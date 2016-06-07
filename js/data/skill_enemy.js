@@ -1013,7 +1013,7 @@ function makeDesc(mystr, order){
 	order = order != undefined ? order : argObj
 	for (var prop in order){
 		toStr = argObj[prop]
-		if(prop != "__fname__" && toStr != undefined && typeof(toStr)!= "function"){
+		if(prop != "__fname__" && toStr != undefined && typeof(toStr)!= "function" && toStr != 0){
 			//toStr = comma3(toStr)
 			toStr = prop != "tnum" ? toStr : toStr == 5 ? "全体" : toStr == 1 ? "単体" : toStr+"体"
 			toStr = prop != "attr" ? toStr : get_attr_string(toStr) 
