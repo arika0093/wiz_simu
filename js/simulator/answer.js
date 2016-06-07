@@ -315,13 +315,16 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem) {
 	var ch = Field.Status.chain;
 	// 全体攻撃なら敵全体にダメージ計算
 	if (atk_as.isall) {
+		// 分散攻撃なら敵の数取得
+		var var_num = atk_as.isvariance ? enemy.length : 0;
+		// それぞれに攻撃
 		for (var tg = 0; tg < enemy.length; tg++) {
 			if (enemy[tg].nowhp <= 0) { continue; }
 			var is_as = enemy[tg].flags.is_as_attack;
 			// 乱数
 			var rnd = damage_rand();
 			// ダメージ計算
-			g_dmg += attack_enemy(enemy[tg], now, attr, atk_as.rate, atk_as.atkn, panel, ch, rnd, index, tg, false);
+			g_dmg += attack_enemy(enemy[tg], now, attr, atk_as.rate, atk_as.atkn, panel, ch, rnd, index, tg, false, var_num);
 			is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
 		}
 	} else {

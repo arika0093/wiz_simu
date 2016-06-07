@@ -1,7 +1,8 @@
 // 指定属性で相手を攻撃
-//	enemy: 敵データ, now: 自身のデータ, atk_atr: 攻撃属性, rate: 倍率, atkn: 攻撃回数,
-//	pn: 踏んだパネル, ch: チェイン数, rnd: 乱数, i: 味方の番号, e: 敵の番号, is_ss: SSかどうか
-function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss) {
+//	enemy: 敵データ, now: 自身のデータ, atk_atr: 攻撃属性,
+//	rate: 倍率, atkn: 攻撃回数, pn: 踏んだパネル, ch: チェイン数, rnd: 乱数, 
+//	i: 味方の番号, e: 敵の番号, is_ss: SSかどうか, var_num: 分散対象数(未指定なら通常)
+function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num) {
 	var d = 0;
 	var bef_ond = 0;
 	// エンハ
@@ -29,6 +30,8 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss)
 	d *= rnd;
 	// 攻撃回数考慮
 	d /= atkn;
+	// 分散考慮
+	d /= (var_num || 1);
 	// 切り捨て
 	d = Math.floor(d);
 	bef_ond = d;
@@ -73,6 +76,7 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss)
 		(lst_multi != 1 ? " * 補正値(" + lst_multi + ")" : "") +
 		" * 乱数(" + rnd.toFixed(2) + ")" +
 		(atkn > 1 ? " / 攻撃回数(" + atkn + ")" : "") +
+		(var_num ? " / 分散(" + var_num + ")" : "") +
 		((d / bef_ond) != 1 ? " : 攻撃時処理[*" + (d / bef_ond).toFixed(2) + "]" : "") +
 		" = ダメージ(" + d + ")"
 	);

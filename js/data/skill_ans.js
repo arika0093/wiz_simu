@@ -230,23 +230,13 @@ function ChainVarianceAttack(r, ch) {
 		{
 			type: "attack",
 			isall: true,
+			isvariance: true,
 			atkn: 1,
 			rate: r,
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
-			desc: "分散攻撃",
-			cond: function () {
-				var enemys = GetNowBattleEnemys();
-				var count = 0;
-				for (var i = 0; i < enemys.length; i++) {
-					if (enemys && enemys[i].nowhp > 0) {
-						count++;
-					}
-				}
-				this.rate = r / count;
-				return true;
-			},
+			cond: always_true().cond,
 		}
 	];
 }
