@@ -262,7 +262,7 @@ function schfl_grep_ss(obj, ss, card) {
 		return grep_rst;
 	});
 	// AND/ORによって処理を変える
-	rst = rst && checksheet.length <= (obj.ss_search_ao == 0 ? 0 : obj.ss_types.length);
+	rst = rst && checksheet.length <= (obj.ss_search_ao == 0 ? 0 : Math.max(obj.ss_types.length - 1, 0));
 	// return result
 	return rst;
 }
@@ -327,12 +327,12 @@ function schfl_genhtml_skill(disp, skl, c, is_ss) {
 		if (c.islegend) {
 			skill_t += c.ss1.turn + "-" + c.ss2.turn;
 			if (f > 0) {
-				skill_t += " (" + (c.ss1.turn - f) + "-" + (c.ss2.turn - f) + ")";
+				skill_t += " (" + Math.max(c.ss1.turn - f, 0) + "-" + Math.max(c.ss2.turn - f, 0) + ")";
 			}
 		} else {
 			skill_t += c.ss1.turn;
 			if (f > 0) {
-				skill_t += " (" + (c.ss1.turn - f) + ")";
+				skill_t += " (" + Math.max(c.ss1.turn - f, 0) + ")";
 			}
 		}
 	}

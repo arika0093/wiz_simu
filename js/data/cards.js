@@ -18343,7 +18343,7 @@ Cards = [{
 	},
 	ss1: {
 		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
-		turn: 4,
+		turn: 7,
 		proc: [ss_skillboost(2)],
 	},
 	awakes: [
@@ -18364,7 +18364,7 @@ Cards = [{
 	},
 	ss2: {
 		desc: "スペシャルスキルの発動ターンを2早め、敵全体の行動ターンを2遅らせる",
-		turn: 7,
+		turn: 9,
 		proc: [ss_skillboost(2), ss_delay_all(2)],
 	},
 	Lawake: [
@@ -27542,7 +27542,7 @@ Cards = [{
 		desc: "4ターン溜めた後、敵単体へ雷属性のダメージ(1500%)◆スキル使用後、1ターン封印状態に",
 		turn: 4,
 		charged: 4,
-		proc: [ss_damage_all(15.0, [2]), ss_allsealed_own(1)],
+		proc: [ss_damage_s(15.0, [2]), ss_allsealed_own(1)],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -27564,7 +27564,7 @@ Cards = [{
 		desc: "4ターン溜めた後、敵単体へ雷属性のダメージ(2500%)◆スキル使用後、1ターン封印状態に",
 		turn: 7,
 		charged: 4,
-		proc: [ss_damage_all(25.0, [2]), ss_allsealed_own(1)],
+		proc: [ss_damage_s(25.0, [2]), ss_allsealed_own(1)],
 	},
 	Lawake: [
 		Statusup(0, 400),
