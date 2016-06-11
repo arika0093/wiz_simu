@@ -7,6 +7,11 @@
 	$questsPath = "quests/";
 
 	//------------
+	// grobal args
+	//------------
+	$categoryJps = getCategoryJps();
+
+	//------------
 	// main
 	//------------
 	// header export
@@ -34,11 +39,13 @@
 					if(strlen(preg_replace('/\s/s', "", $oneQuest)) != 0){
 						$oneQuest = $oneQuest . ",";
 						if(strpos($loaddir . $file, "#") !== false){
-							$oneQuest = setProperty("hidden: true,", $oneQuest);
+							$oneQuest = setProperty("hidden","true", $oneQuest);
 						}
 						$category = getDirectoryName($loaddir);
-						$oneQuest = setProperty("category: \"".$category."\",", $oneQuest);
-
+						$oneQuest = setProperty("category", "\"" . $category . "\"", $oneQuest);
+						$category_jp = getCategoryJp($category);
+						$oneQuest = setProperty("category_jp", "\"" . $category_jp . "\"", $oneQuest);
+						
 						$output = $output . $oneQuest;
 					}
 				} else if(strpos($file, ".") === false){
@@ -50,12 +57,12 @@
 	}
 
 	// $propertyのプロパティ名があれば上書き、なければ追加
-	function setProperty($property, $mystring){
-		$propertyName = preg_replace("/\:.*$/", "", $property);
+	function setProperty($propertyName, $propertyValue, $mystring){
+		$putstr = $propertyName . ": " . $propertyValue . ",";
 		if(preg_match("/$propertyName.*,/", $mystring)){
-			$string2 = preg_replace("/$propertyName\:.*,/", $property, $mystring);
+			$string2 = preg_replace("/$propertyName\:.*,/", $putstr, $mystring);
 		}else{
-			$string2 = preg_replace('/^(.*)(data)/m', "$1".$property."\n$1$2", $mystring);
+			$string2 = preg_replace('/^(.*)(data)/m', "$1" . $putstr . "\n$1$2", $mystring);
 		}
 		return $string2;
 	}
@@ -67,5 +74,24 @@
 		$directoryName = preg_replace('/\/.*/', "", $latestpath);
 		$directoryName = str_replace("#", "", $directoryName);
 		return $directoryName;
+	}
+
+	// php起動時にカテゴリ名の日本語対応一覧を取得する
+	function getCategoryJps(){
+		$categoryJpJson = file_get_contents("quests/##category_jp.js");
+		$categoryJpJson = preg_replace("/^.*\{/s", "{", $categoryJpJson);
+		$categoryJpJson = preg_replace("/,\s*\}.*/s", "}", $categoryJpJson);
+		$categoryJps = json_decode($categoryJpJson, true);
+		return $categoryJps;
+	}
+
+	// カテゴリ名が一覧に載っていれば日本語を返し、なければそのまま返す
+	function getCategoryJp($key){
+		global $categoryJps;
+		if(array_key_exists($key, $categoryJps)){
+			return $categoryJps[$key];
+		}else{
+			return $key;
+		}
 	}
 ?>
