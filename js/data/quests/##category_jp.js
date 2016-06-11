@@ -9,7 +9,7 @@ category_jp = {
     "suzaku2":"スザクⅡ",
     "suzaku3":"スザクⅢ",
     "abcd":"アビスコード",
-    "barningtower":"バーニングタワー",
+    "burningtower":"バーニングタワー",
 }
 
 // 登録方法: "カテゴリ(英語)":"カテゴリ(日本語),"

@@ -1,11 +1,14 @@
 {
    id: "bani1",
    name: "超魔道バーニングタワー 第1階 超",
-   category: "burning",
+   category: "burningtower",
    desc: "",
    overlap: false,
    aprnum: 1,
-   battle_before: [{desc:"SPスキルが使用できる状態で開始",proc:ss_skillboost(99)},{proc:ss_consume_all(1)},{proc:ss_consume_all(1)}, {proc:ss_resurrection([1,1,1,1,1], 1)}],
+   battle_before: [{
+      desc: "SPスキルが使用できる状態で開始",
+	  proc: spskill_maxcharge()
+   }],
    data: [
       {
          appearance: [

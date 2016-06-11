@@ -891,7 +891,20 @@ var SpSkill = {
 		);
 		return true;
 	},
-
+	// -----------------------------
+	// (バーニング用)SPスキル使用可能化
+	"spskill_maxcharge": function (fld, n, cobj, params) {
+		nows = fld.Allys.Now;
+		$.each(nows, function (i, e) {
+			e.ss_current = 999;
+			// スキブ処理
+			var card = fld.Allys.Deck[i];
+			if (!is_legendmode(card, e)) {
+				legend_timing_check(fld.Allys.Deck, nows, i);
+			}
+		})
+		return true;
+	},
 	/*
 	// -----------------------------
 	// テンプレート
@@ -1152,4 +1165,3 @@ function ss_break_template(target, type) {
 		return rsts;
 	}
 }
-

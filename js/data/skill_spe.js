@@ -976,3 +976,14 @@ function ss_hp_less_skill(r, ss) {
 	});
 }
 
+// ------------------------------------------------------
+// 内部用
+/**
+ * 全員のスキルを使用可能にする
+**/
+function spskill_maxcharge() {
+	return ss_template({
+		name: "spskill_maxcharge",
+		type: "for_internal",
+	});
+}
