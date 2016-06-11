@@ -4,6 +4,7 @@
 	// config
 	//------------
 	$orderPath = "quests/##order.js";
+	$categoryJpPath = "quests/##category_jp.js";
 	$questsPath = "quests/";
 
 	//------------
@@ -24,6 +25,7 @@
 	
 	//order
 	echo "\n\n".file_get_contents($orderPath);
+	echo "\n\n".file_get_contents($categoryJpPath);
 	
 	//------------
 	// functions

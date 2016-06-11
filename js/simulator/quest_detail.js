@@ -15,7 +15,7 @@ $(function () {
 // クエスト一覧を表示
 function makeList(genre) {
 	// match and generate html
-	var rst_html = "<dt>Category: " + (genre || "ALL QUEST") + "</dt><dd class='left_min ' id='category_view'>";
+	var rst_html = "<dt>Category: " + getCategoryJp(genre || "ALL QUEST") + "</dt><dd class='left_min ' id='category_view'>";
 	var rst = $.grep(Quests, function (Quest, QuestNum) {
 		// match check
 		if (genre && Quest.category != genre) {
@@ -34,6 +34,10 @@ function makeList(genre) {
 		var h = "<dl class='List'><dt>ERROR OCCURRED.</dt><dd>存在しないクエストが指定されました。</dd></dl>";
 		$("#result").html(h);
 	}
+}
+
+function getCategoryJp(key){
+	return category_jp[key] != undefined ? category_jp[key] : key
 }
 
 // クエストの詳細を表示
