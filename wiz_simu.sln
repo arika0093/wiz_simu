@@ -160,6 +160,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "quest_view", "quest_view", 
 		js\simulator\quest_detail.js = js\simulator\quest_detail.js
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "quests", "quests", "{64FB46EC-C184-4D6A-9B24-E976EB277B1B}"
+	ProjectSection(SolutionItems) = preProject
+		js\data\quests\#category_jp.js = js\data\quests\#category_jp.js
+		js\data\quests\#order.js = js\data\quests\#order.js
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -190,5 +196,6 @@ Global
 		{C74DB3D7-4C45-4359-9DC9-04BE6EF4C4D1} = {F546FAD9-474F-46A8-B734-545AA08B5821}
 		{C87981AE-0C6C-4519-AD61-F7127F461E6E} = {FBCE4C9C-0BDA-4B34-AC6E-3158CF6D361E}
 		{8B9ACD64-350B-49DA-95B0-EB4388CCE61F} = {0B5CF5D7-96AD-4EED-8363-750FF402B468}
+		{64FB46EC-C184-4D6A-9B24-E976EB277B1B} = {96B04CAB-98A1-4735-96F8-80788F25C391}
 	EndGlobalSection
 EndGlobal

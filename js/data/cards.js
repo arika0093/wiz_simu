@@ -31714,7 +31714,7 @@ Cards = [{
 		Costdown(2),
 		Attr_statusup(0,100, [0,1,1,0,0,]),
 		Fastskill(1),
-		Panel_boost([0,1,1,0,0,],2),
+		Panel_boost([0,1,0,0,0,],2),
 		Spec_statusup(0,500, [5,]),
 		Spec_statusup(500,0, [5,]),
 	],

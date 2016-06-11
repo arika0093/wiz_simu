@@ -3,14 +3,14 @@
 	//------------
 	// config
 	//------------
-	$orderPath = "quests/##order.js";
-	$categoryJpPath = "quests/##category_jp.js";
+	$orderPath = "quests/#order.js";
+	$categoryJpPath = "quests/#category_jp.js";
 	$questsPath = "quests/";
 
 	//------------
 	// grobal args
 	//------------
-	$categoryJps = getCategoryJps();
+	//$categoryJps = getCategoryJps();
 
 	//------------
 	// main
@@ -24,8 +24,8 @@
 	echo "]";
 	
 	//order
-	echo "\n\n".file_get_contents($orderPath);
 	echo "\n\n".file_get_contents($categoryJpPath);
+	echo "\n\n".file_get_contents($orderPath);
 	
 	//------------
 	// functions
@@ -35,18 +35,18 @@
 		static $output = "";
 		if( is_dir( $loaddir ) && $handle = opendir( $loaddir ) ) {
 			while( ($file = readdir($handle)) !== false ) {
-				if(strpos($file, "##") !== false){continue;}
+				if(strpos($file, "#") !== false){continue;}
 				if( filetype( $path = $loaddir . $file ) == "file" ) {
 					$oneQuest = file_get_contents($path);
 					if(strlen(preg_replace('/\s/s', "", $oneQuest)) != 0){
 						$oneQuest = $oneQuest . ",";
-						if(strpos($loaddir . $file, "#") !== false){
-							$oneQuest = setProperty("hidden","true", $oneQuest);
-						}
+//						if(strpos($loaddir . $file, "#") !== false){
+//							$oneQuest = setProperty("hidden","true", $oneQuest);
+//						}
 						$category = getDirectoryName($loaddir);
 						$oneQuest = setProperty("category", "\"" . $category . "\"", $oneQuest);
-						$category_jp = getCategoryJp($category);
-						$oneQuest = setProperty("category_jp", "\"" . $category_jp . "\"", $oneQuest);
+//						$category_jp = getCategoryJp($category);
+//						$oneQuest = setProperty("category_jp", "\"" . $category_jp . "\"", $oneQuest);
 						
 						$output = $output . $oneQuest;
 					}
@@ -80,7 +80,7 @@
 
 	// php起動時にカテゴリ名の日本語対応一覧を取得する
 	function getCategoryJps(){
-		$categoryJpJson = file_get_contents("quests/##category_jp.js");
+		$categoryJpJson = file_get_contents("quests/#category_jp.js");
 		$categoryJpJson = preg_replace("/^.*\{/s", "{", $categoryJpJson);
 		$categoryJpJson = preg_replace("/,\s*\}.*/s", "}", $categoryJpJson);
 		$categoryJps = json_decode($categoryJpJson, true);
@@ -91,8 +91,8 @@
 	function getCategoryJp($key){
 		global $categoryJps;
 		if(array_key_exists($key, $categoryJps)){
-			return $categoryJps[$key];
-		}else{
+			return $categoryJps[$key].jp;
+		} else {
 			return $key;
 		}
 	}

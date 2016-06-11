@@ -3,7 +3,7 @@ $(function () {
 	var sel = document.getElementById('QstSel');
 	var seld = sel;
 	for (var i = 0; i < Quests.length; i++) {
-		if (Quests[i].hidden) {
+		if (!Quests[i].is_dispsim) {
 			continue;
 		}
 		if (i == 0 || Quests[i].category != Quests[i - 1].category) {
