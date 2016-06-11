@@ -10,7 +10,6 @@
     <link rel="stylesheet" type="text/css" href="/css/quest_detail.css" />
     <link type="text/css" rel="stylesheet"
           href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
-    <link rel="stylesheet" href="/download/slicknav/slicknav.css" />
     <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
     <!-- Cache -->
     <meta http-equiv="Pragma" content="no-cache" />
@@ -64,9 +63,7 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
-    <script type="text/javascript" src="/download/slicknav/jquery.slicknav.min.js"></script>
-    <script type="text/javascript" src="/download/romaji.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>    <script type="text/javascript" src="/download/romaji.js"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/loader.js?                  <!--#flastmod virtual='/js/loader.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js?                <!--#flastmod virtual='/js/pagetemp.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/err_report.js?              <!--#flastmod virtual='/js/err_report.js'-->"></script>

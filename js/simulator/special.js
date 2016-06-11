@@ -165,3 +165,11 @@ function get_ssturn(card, ally_n) {
 	// 返却
 	return [ss1, ss2];
 }
+
+// (バーニング用)SPスキル使用可能化
+// 引数: Field.Allys.Now
+function spskill_maxcharge(nows) {
+	$.each(nows, function (i, e) {
+		e.ss_current = 999;
+	})
+}

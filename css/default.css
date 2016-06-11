@@ -157,6 +157,7 @@ span.spmenu_toggle{
 	display: block;
 	width: 850px;
 	margin: auto;
+	cursor: pointer;
 }
 div.centered{
 	display: none;

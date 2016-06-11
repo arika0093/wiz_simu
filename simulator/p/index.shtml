@@ -25,9 +25,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/simulator_sp.css" media="screen and (max-width: 599px)" />
 	<link rel="stylesheet" type="text/css" href="/css/simulator.css" media="screen and (min-width: 600px)" />
 	<link type="text/css" rel="stylesheet"
-		  href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
-    <link rel="stylesheet" href="/download/slicknav/slicknav.css" />
-	<meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+		  href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />	<meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
 	<!-- Search -->
 	<meta name="robots" content="none" />
     <!-- for Mobile Adsense -->
@@ -293,9 +291,7 @@
     <!--#config timefmt="%Y%m%d_%H%M%S" -->
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
-    <script type="text/javascript" src="/download/slicknav/jquery.slicknav.min.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/loader.js?                  <!--#flastmod virtual='/js/loader.js'-->"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>    <script type="text/javascript" charset="UTF-8" src="/js/loader.js?                  <!--#flastmod virtual='/js/loader.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js?                <!--#flastmod virtual='/js/pagetemp.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/err_report.js?              <!--#flastmod virtual='/js/err_report.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js?               <!--#flastmod virtual='/js/googletrc.js'-->"></script>
