@@ -3,7 +3,7 @@
 	//------------
 	// config
 	//------------
-	$orderPath = "quests/#order.js";
+	$orderPath = "quests/##order.js";
 	$questsPath = "quests/";
 
 	//------------
@@ -28,9 +28,16 @@
 		static $output = "";
 		if( is_dir( $loaddir ) && $handle = opendir( $loaddir ) ) {
 			while( ($file = readdir($handle)) !== false ) {
-				if( strpos($file, "#") !== false){ continue; }
+				if(strpos($file, "##") !== false){continue;}
 				if( filetype( $path = $loaddir . $file ) == "file" ) {
-					$output = $output . file_get_contents($path).",";
+					$oneQuest = file_get_contents($path);
+					if(strlen(preg_replace('/\s/s', "", $oneQuest)) != 0){
+						$oneQuest = $oneQuest . ",";
+						if(strpos($loaddir . $file, "#") !== false){
+							$oneQuest = addProperty("hidden:true,", $oneQuest);
+						}
+						$output = $output . $oneQuest;
+					}
 				} else if(strpos($file, ".") === false){
 					dir_open($loaddir.$file."/");
 				}
@@ -39,6 +46,10 @@
 		return $output;
 	}
 
+	function addProperty($property, $mystring){
+		$string2 =  preg_replace('/^(.*)(data\:\ \[)/m', "$1".$property."\n$1$2", $mystring);
+		return $string2;
+	}
 	function getDirectoryName($fullpath){
 		preg_match_all('/.*?\//', $fullpath, $pathArray);
 		$latestpath = $pathArray[0][count($pathArray[0])-1];
