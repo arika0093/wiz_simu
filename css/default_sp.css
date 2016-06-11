@@ -150,7 +150,7 @@ div.topitem{
 }
 span.spmenu_toggle{
 	display: block;
-	padding: 1.3ex;
+	padding: 3ex 2em;
 }
 div.centered{
 	display: none;
@@ -181,6 +181,9 @@ div.headerbase{
 	border-right: 1px solid #888;
 	overflow-y: auto;
 	cursor: pointer;
+}
+#menu.mn_opened:active{
+	background-color: #FFF;
 }
 #menu > ul{
 	width: 98%;
