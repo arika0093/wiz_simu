@@ -38,4 +38,10 @@
 		}
 	}
 
+	function getDirectoryName($fullpath){
+		preg_match_all('/.*?\//', $fullpath, $pathArray);
+		$latestpath = $pathArray[0][count($pathArray[0])-1];
+		$directoryName = preg_replace('/\/.*/', "", $latestpath);
+		return $directoryName;
+	}
 ?>
