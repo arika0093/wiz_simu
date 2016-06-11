@@ -5,6 +5,7 @@
 function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num) {
 	var d = 0;
 	var bef_ond = 0;
+	var bef_hp = enemy.nowhp;
 	// エンハ
 	var as_enh = now.as_enhance ? Number(now.as_enhance.toFixed(2)) : 0;
 	var ss_enh = now.ss_enhance ? Number(now.ss_enhance.toFixed(2)) : 0;
@@ -61,10 +62,13 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 	}
 
 	// ログ
+	var log_cc = (enemy.nowhp <= 0) && (bef_hp >= 1);
 	var l_t = "Unit[" + (i + 1) + "]: 敵[" + (e + 1) + "]へ" +
 		Field.Constants.Attr[atk_atr] + "攻撃( " + d +
-		"ダメージ)(残: " + enemy.nowhp + "/" + enemy.hp + ")";
-	Field.log_push(l_t);
+		"ダメージ)(残: " + enemy.nowhp + "/" + enemy.hp + ")" + 
+		(log_cc ? "[超過: " + (d - bef_hp) + "]" : "");
+	Field.log_push(l_t, (log_cc ? "blue" : null));
+
 	// 詳細ログ
 	Field.detail_log("attack_enemy", "calculate",
 		"Unit[" + (i+1) + "]: " +
@@ -78,7 +82,7 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 		(atkn > 1 ? " / 攻撃回数(" + atkn + ")" : "") +
 		(var_num ? " / 分散(" + var_num + ")" : "") +
 		((d / bef_ond) != 1 ? " : 攻撃時処理[*" + (d / bef_ond).toFixed(2) + "]" : "") +
-		" = ダメージ(" + d + ")"
+		" = ダメージ(" + d + ") "
 	);
 
 	return d;

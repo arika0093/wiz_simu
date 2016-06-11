@@ -42,6 +42,8 @@
 	<title>トーナメント試走 - WizTools</title>
 </head>
 <body>
+<div id='Top'></div>
+<div id="wrap">
 	<!-- Loader -->
 	<div id="loader"><img src="/image/loading.gif" alt="Loading..." /></div>
 	<noscript id="loadnoscr">このページはjavascriptを使用しています。有効にしたのち再度アクセスしてください。</noscript>
@@ -322,5 +324,6 @@
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/special.js?       <!--#flastmod virtual='/js/simulator/special.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/turneffect.js?    <!--#flastmod virtual='/js/simulator/turneffect.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/actionlog.js?     <!--#flastmod virtual='/js/simulator/actionlog.js'-->"></script>
+</div>
 </body>
 </html>

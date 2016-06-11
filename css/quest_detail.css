@@ -83,15 +83,17 @@ div.e_move{
 	padding: 1ex 0;
 	min-height: 115px;
 	float: left;
-	column-count: 2;
-	-moz-column-count: 2;
-	column-rule: 1px solid #DDD;
-	-moz-column-rule: 1px solid #DDD;
+	column-count: 1;
+	-moz-column-count: 1;
 	border-top: 1px dashed #888;
 }
 @media screen and (min-width: 600px){
 	div.e_move{
 		width: 75%;
+		column-count: 2;
+		-moz-column-count: 2;
+		column-rule: 1px solid #DDD;
+		-moz-column-rule: 1px solid #DDD;
 	}
 }
 
@@ -100,6 +102,11 @@ div.e_move > div.clmn{
 	break-inside: avoid-column;
 	margin: 0 0 1.5ex;
 	display: inline-block;
+}
+@media screen and (max-width: 599px){
+	div.e_move > div.clmn{
+		width: 80%;
+	}
 }
 
 div.e_move b{
@@ -133,8 +140,8 @@ a.genre_link {
     display: inline-block;
     padding: 2ex 1em;
     margin: 2ex .5em 0;
-    border: 1px solid #CCC;
-    background: #FAFAFA;
+    border: 1px solid #AAA;
+    background: #EEE;
     border-radius: 6px;
 	width: 48%;
 	box-sizing: border-box;

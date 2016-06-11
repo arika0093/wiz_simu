@@ -300,15 +300,22 @@ function sim_show() {
 	$("#dialog_simlog").dialog({
 		autoOpen: false,
 		modal: true,
-		width: 450,
-		height: 480,
+		width: 550,
+		height: 580,
 		open: function(e, ui){
 			// sim_log
 			var logtext = "";
 			var tt = Field.Status.totalturn;
 			var log_stat = Field.Status.log[tt] !== undefined ? tt : tt - 1;
 			for (var i = 0 ; i <= log_stat; i++) {
-				logtext += create_log(i);
+				var l_t = create_log(i);
+				if (l_t.indexOf("//{blue}") >= 0) {
+					l_t = l_t.replace(/\/\/{blue}/g, "<span class='blue'>");
+					l_t = l_t.replace(/{}\/\//g, "</span>");
+					logtext += l_t;
+				} else {
+					logtext += l_t;
+				}
 			}
 			$("#sim_log_inner").html(logtext);
 			$("#sim_log_inner").accordion("refresh");

@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "template", "template", "{BA
 	ProjectSection(SolutionItems) = preProject
 		template\footer.html = template\footer.html
 		template\header.html = template\header.html
+		template\top.html = template\top.html
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wiz_simu", "wiz_simu", "{54D72F80-1342-4A3D-B559-339A01E32933}"

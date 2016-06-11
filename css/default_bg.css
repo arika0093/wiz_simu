@@ -1,9 +1,10 @@
 /* Base */
-html{
+body{
 	background-color: #FAFAFF;
+	margin: 0 auto;
 }
 
-body{
+#wrap{
 	box-sizing: border-box;
 	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese", sans-serif;
 	font-size: 10.5pt;
@@ -143,6 +144,24 @@ div.linklist a:first-child{
 	z-index: 50;
 }
 
+/* Top */
+div.topitem{
+	color: #FFF;
+	background-color: #333;
+	box-shadow: #AAA 0 0 10px 6px;
+	padding: 1ex 2em;
+	z-index: 30;
+	display:none;
+}
+div.centered{
+	width: 1150px;
+	margin: auto;
+}
+.spmenu_toggle {
+	display:none;
+}
+
+
 /* Header */
 div#Header{
 	border-bottom: 1px solid #A0A0FF;
@@ -211,7 +230,7 @@ p.sitedetail:after {
 }
 
 /* Menu */
-#menu {
+#menu > ul{
 	width: 298px;
 	margin:0;
 	float:left;
@@ -219,14 +238,14 @@ p.sitedetail:after {
 	padding: 2ex 0;
 }
 
-#menu > li{
+#menu > ul > li{
 	padding: 1ex 1em;
 }
 
-#menu > li > a{
+#menu > ul > li > span{
 	display: block;
 	margin-left: 0.5em;
-	padding: 1.4ex 1em;
+	padding: 1.2ex 1em;
 	border-left: 8px solid #359cff;
 	background-color: #292b56;
 	text-decoration: none;
@@ -234,12 +253,12 @@ p.sitedetail:after {
 	cursor: default;
 }
 
-#menu > li > ul{
+#menu > ul > li > ul{
 	list-style: none;
 	padding-left: 25px;
 }
 
-#menu > li > ul > li{
+#menu > ul > li > ul > li{
 	background-image: url("/image/tlicon/default.png");
 	padding-left: 32px;
 	background-size: 32px;
@@ -247,23 +266,19 @@ p.sitedetail:after {
 	background-repeat: no-repeat;
 	transition-duration: .15s;
 }
-#menu > li > ul > li:hover{
+#menu > ul > li > ul > li:hover{
 	background-color: #CCF;
 }
 
-#menu > li > ul > li > a{
+#menu > ul > li > ul > li > a{
 	display: block;
 	padding: 1.3ex;
 }
-#menu > li > ul > li > a.new:after{
+#menu > ul > li > ul > li > a.new:after{
 	content: " new!";
 	color: #FF0000;
 	text-decoration: none;
 	font-style: italic;
-}
-
-.slicknav_menu {
-	display:none;
 }
 
 /* RSS Show */

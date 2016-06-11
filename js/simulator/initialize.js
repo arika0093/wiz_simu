@@ -68,11 +68,12 @@ var Field = {
 		log: [],
 		d_log: [],
 	},
-	log_push: function (text) {
+	log_push: function (text, color) {
 		var fs = Field.Status;
 		if (fs.log[fs.totalturn] === undefined) {
 			fs.log[fs.totalturn] = [];
 		}
+		text = color ? "//{" + color + "}" + text + "{}//" : text;
 		fs.log[fs.totalturn].push(text);
 	},
 	detail_log: function (fc, title, text) {

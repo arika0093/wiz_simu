@@ -1,9 +1,10 @@
 /* Base */
-html{
+body{
 	background-color: #FAFAFF;
+	margin: 0 auto;
 }
 
-body{
+#wrap{
 	box-sizing: border-box;
 	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese";
 	font-size: 12pt;
@@ -138,21 +139,98 @@ div.linklist a:first-child{
 	z-index: 50;
 }
 
+/* Top */
+div.topitem{
+	position: fixed;
+	color: #FFF;
+	background-color: #333;
+	box-shadow: #CCC 0 0 10px;
+	z-index: 30;
+	margin: 1ex;
+}
+span.spmenu_toggle{
+	display: block;
+	padding: 1.3ex;
+}
+div.centered{
+	display: none;
+}
+
 /* Header */
 div.headerbase{
 	overflow: hidden;
 }
 
-.js #menu {
-	display:none;
+/* Menu */
+#menu{
+	position: fixed;
+    top: 0px;
+	left: 0;
+	width: 100%;
+    height: 100%;
+	opacity: 0;
+	z-index: -1;
+	transition: .5s;
 }
-
-.js .slicknav_menu {
-	display:block;
+#menu.mn_opened{
+	padding-top: 40px;
+	opacity: .95;
+	z-index: 20;
+	transform: none;
+	background-color: #FFF;
+	border-right: 1px solid #888;
+	overflow-y: auto;
+	cursor: pointer;
 }
-
-.slicknav_menu li a{
-	padding: 1.2ex 10px;
+#menu > ul{
+	width: 98%;
+	margin:0;
+	margin-bottom: 20px;
+	float:left;
+	list-style-type: none;
+	padding: 2ex 0;
+}
+#menu > ul > li{
+	padding: 1ex 1em;
+	break-inside: avoid-column;
+}
+#menu > ul > li > span{
+	display: block;
+	margin-left: 0.5em;
+	padding: 1.2ex 1em;
+	border-left: 8px solid #359cff;
+	background-color: #292b56;
+	text-decoration: none;
+	color: #FFF;
+	cursor: default;
+}
+#menu > ul > li > ul{
+	list-style: none;
+	padding-left: 25px;
+}
+#menu > ul > li > ul > li{
+	background-image: url("/image/tlicon/default.png");
+	padding-left: 32px;
+	background-size: 32px;
+	background-position: 0px 4px;
+	background-repeat: no-repeat;
+	transition-duration: .15s;
+}
+#menu > ul > li > ul > li:hover{
+	background-color: #CCF;
+}
+#menu > ul > li > ul > li > a{
+	display: block;
+	padding: 1.3ex;
+}
+#menu > ul > li > ul > li > a.new:after{
+	content: " new!";
+	color: #FF0000;
+	text-decoration: none;
+	font-style: italic;
+}
+body.mn_opened{
+	overflow-y: hidden;
 }
 
 a.toplink{

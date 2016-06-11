@@ -1,5 +1,5 @@
 window.onerror = function (errorMsg, fileName, lineNumber) {
-	fileName = fileName.replace(" ", "");
+	fileName = fileName.replace(/\s+/g, '');
     var errorInfo = {
         'errorMsg'   : errorMsg,           // エラーメッセージ
         'fileName'   : fileName,           // エラーが発生したスクリプトのファイル名

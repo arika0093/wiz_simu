@@ -28,6 +28,8 @@
     <title>クエスト詳細 - WizTools</title>
 </head>
 <body>
+<div id='Top'></div>
+<div id="wrap">
     <!-- Loader -->
     <div id="loader"><img src="/image/loading.gif" alt="Loading..." /></div>
     <noscript id="loadnoscr">このページはjavascriptを使用しています。有効にしたのち再度アクセスしてください。</noscript>
@@ -82,5 +84,6 @@
     <script type="text/javascript" charset="UTF-8" src="/js/data/skill_enemy.js?        <!--#flastmod virtual='/js/data/skill_enemy.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/data/quests.php"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/quest_detail.js"></script>
+</div>
 </body>
 </html>

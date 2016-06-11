@@ -6,12 +6,26 @@ $(function () {
 		return;
 	}
 	// コンテンツ読み込み
-	$("#Header").load("/template/header.html", function () {
-		$('#menu').slicknav({
-			label: "",
-			duration: 500,
-			prependTo: "#mobile_menu",
+	$("#Top").load("/template/top.html", function () {
+		var tgl_tg = $(".spmenu_toggle");
+		tgl_tg.click(function () {
+			var tg = [
+				$("#menu"),
+				$("body")
+			];
+			$.each(tg, function (i, e) {
+				e.toggleClass("mn_opened");
+			});
+			$("#menu").click(function () {
+				$.each(tg, function (i, e) {
+					e.removeClass("mn_opened");
+				});
+			})
 		});
+	});
+	$("#Header").load("/template/header.html", function () {
+
+
 	});
 	$("#Footer").load("/template/footer.html");
 })
