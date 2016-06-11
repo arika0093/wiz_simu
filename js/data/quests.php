@@ -14,7 +14,7 @@
 
 	// main
 	echo "Quests = [";
-	dir_open($questsPath);
+	echo dir_open($questsPath);
 	echo "]";
 	
 	//order
@@ -25,16 +25,18 @@
 	//------------
 	// file open function
 	function dir_open($loaddir){
+		static $output = "";
 		if( is_dir( $loaddir ) && $handle = opendir( $loaddir ) ) {
 			while( ($file = readdir($handle)) !== false ) {
 				if( strpos($file, "#") !== false){ continue; }
 				if( filetype( $path = $loaddir . $file ) == "file" ) {
-					echo file_get_contents($path).",";
+					$output = $output . file_get_contents($path).",";
 				} else if(strpos($file, ".") === false){
 					dir_open($loaddir.$file."/");
 				}
 			}
 		}
+		return $output;
 	}
 
 	function getDirectoryName($fullpath){
