@@ -36,6 +36,9 @@
 						if(strpos($loaddir . $file, "#") !== false){
 							$oneQuest = setProperty("hidden: true,", $oneQuest);
 						}
+						$category = getDirectoryName($loaddir);
+						$oneQuest = setProperty("category: \"".$category."\",", $oneQuest);
+
 						$output = $output . $oneQuest;
 					}
 				} else if(strpos($file, ".") === false){
@@ -50,7 +53,7 @@
 	function setProperty($property, $mystring){
 		$propertyName = preg_replace("/\:.*$/", "", $property);
 		if(preg_match("/$propertyName.*,/", $mystring)){
-			$string2 = preg_replace("/$propertyName.*,/", $property, $mystring);
+			$string2 = preg_replace("/$propertyName\:.*,/", $property, $mystring);
 		}else{
 			$string2 = preg_replace('/^(.*)(data)/m', "$1".$property."\n$1$2", $mystring);
 		}
@@ -62,6 +65,7 @@
 		preg_match_all('/.*?\//', $fullpath, $pathArray);
 		$latestpath = $pathArray[0][count($pathArray[0])-1];
 		$directoryName = preg_replace('/\/.*/', "", $latestpath);
+		$directoryName = str_replace("#", "", $directoryName);
 		return $directoryName;
 	}
 ?>
