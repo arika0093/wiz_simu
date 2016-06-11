@@ -79,6 +79,10 @@ function turn_effect_check(is_turn_move, is_ssfin) {
 			});
 		}
 	}
+	// スキカン確認
+	if (is_turn_move && !is_ssfin) {
+		turneff_check_skillcounter(Field);
+	}
 }
 
 // ターン継続効果の確認(敵版)
@@ -167,15 +171,15 @@ function turneff_chargeskill_check() {
 	});
 }
 
-// 味方スキル反射のみ確認を行う(先制行動時の確認に使用)
+// スキル反射のみ確認を行う(先制行動時などの確認に使用)
 function turneff_check_skillcounter(fld) {
 	var nows = fld.Allys.Now;
 	$.each(nows, function (i, e) {
 		var tf_scs = $.grep(e.turn_effect, function (g) {
-			return g.type == "ss_skill_counter";
+			return g.type == "ss_skill_counter" || g.type == "ss_dual_counter";
 		});
 		for (var c = 0; c < tf_scs.length; c++) {
-			tf_scs[c].effect(fld, i, tf_scs[c], "", true, is_allkill());
+			tf_scs[c].counter(fld, i, tf_scs[c], "", true, is_allkill());
 		}
 	});
 }

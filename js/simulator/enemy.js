@@ -182,6 +182,8 @@ function enemy_move() {
 			e_moves[i](Field, i, nows_smove);
 		}
 	}
+	// スキカン確認
+	turneff_check_skillcounter(Field);
 }
 
 // 条件に適した敵スキルを取得する
@@ -239,6 +241,7 @@ function enemy_popup_proc(){
 // 敵ダメージなどに反応するあれこれの制御
 function enemy_damage_switch_check(type, reset) {
 	var enemys = GetNowBattleEnemys();
+	type = type || "damage_switch";
 	$.each(enemys, function (i, e) {
 		if (e.turn_effect.length > 0) {
 			var skillct = $.grep(e.turn_effect, function (g) {

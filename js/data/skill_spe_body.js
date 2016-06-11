@@ -160,10 +160,9 @@ var SpSkill = {
 				iscursebreak: true,
 				turn: turn,
 				lim_turn: turn,
-				// 優先度: 最大
-				priority: 99,
 				// スキルカウンター定義
-				effect: function (f, oi, teff, state, is_t, is_b) {
+				effect: function(){},
+				counter: function (f, oi, teff, state, is_t, is_b) {
 					var card = f.Allys.Deck[oi];
 					var now_e = f.Allys.Now[oi];
 					var sc_flag = now_e.flags.skill_counter;
@@ -179,7 +178,7 @@ var SpSkill = {
 							for (var atri = 0; atri < card.attr.length; atri++) {
 								// 攻撃
 								if (card.attr[atri] >= 0) {
-									ss_damage(f, rate, card.attr[atri], 1, oi, sci, true);
+									ss_damage(f, rate, card.attr[atri], 1, oi, sci, true, true);
 									GetNowBattleEnemys(sci).flags.on_damage = true;
 								}
 							}
@@ -210,10 +209,9 @@ var SpSkill = {
 				iscursebreak: true,
 				turn: turn,
 				lim_turn: turn,
-				// 優先度: 最大
-				priority: 99,
 				// 多段式カウンター定義
-				effect: function (f, oi, teff, state, is_t, is_b) {
+				effect: function(){},
+				counter: function (f, oi, teff, state, is_t, is_b) {
 					var card = f.Allys.Deck[oi];
 					var now_e = f.Allys.Now[oi];
 					var dmg_flag = now_e.flags.damage_hits;
@@ -230,7 +228,7 @@ var SpSkill = {
 							for (var atk_ct = 0; atk_ct < dmg_flag[sci]; atk_ct++) {
 								for (var atri = 0; atri < card.attr.length; atri++) {
 									if (card.attr[atri]>= 0) {
-										ss_damage(f, 1, card.attr[atri], 1, oi, sci, true);
+										ss_damage(f, 1, card.attr[atri], 1, oi, sci, true, true);
 									}
 								}
 								GetNowBattleEnemys(sci).flags.on_damage = true;
@@ -1102,7 +1100,7 @@ function ss_object_done(fld, n, c_obj) {
 }
 
 // (内部用)敵にSSダメージ
-function ss_damage(fld, r, atr, atkn, own, tg, isnot_ss) {
+function ss_damage(fld, r, atr, atkn, own, tg, isnot_ss, ignore_crs) {
 	var enemy = GetNowBattleEnemys(tg);
 	var card = fld.Allys.Deck[own];
 	var now = fld.Allys.Now[own];
@@ -1110,9 +1108,11 @@ function ss_damage(fld, r, atr, atkn, own, tg, isnot_ss) {
 	// 威力が配列で渡されたら取り出す
 	var rate = $.isArray(r) ? r[tg] : r;
 	// 潜在結晶考慮
-	var aw_c = pickup_awakes(card, "awake_rateup", false);
-	for (var i = 0; i < aw_c.length; i++) {
-		rate += Math.floor(aw_c[i].upvalue) / 100;
+	if (!ignore_crs) {
+		var aw_c = pickup_awakes(card, "awake_rateup", false);
+		for (var i = 0; i < aw_c.length; i++) {
+			rate += Math.floor(aw_c[i].upvalue) / 100;
+		}
 	}
 	attack_enemy(enemy, now, atr, rate, atkn, [atr],
 		fld.Status.chain, rnd, own, tg, true);
