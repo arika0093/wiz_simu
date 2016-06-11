@@ -34,7 +34,7 @@
 					if(strlen(preg_replace('/\s/s', "", $oneQuest)) != 0){
 						$oneQuest = $oneQuest . ",";
 						if(strpos($loaddir . $file, "#") !== false){
-							$oneQuest = addProperty("hidden:true,", $oneQuest);
+							$oneQuest = setProperty("hidden: true,", $oneQuest);
 						}
 						$output = $output . $oneQuest;
 					}
@@ -46,10 +46,18 @@
 		return $output;
 	}
 
-	function addProperty($property, $mystring){
-		$string2 =  preg_replace('/^(.*)(data\:\ \[)/m', "$1".$property."\n$1$2", $mystring);
+	// $propertyのプロパティ名があれば上書き、なければ追加
+	function setProperty($property, $mystring){
+		$propertyName = preg_replace("/\:.*$/", "", $property);
+		if(preg_match("/$propertyName.*,/", $mystring)){
+			$string2 = preg_replace("/$propertyName.*,/", $property, $mystring);
+		}else{
+			$string2 = preg_replace('/^(.*)(data)/m', "$1".$property."\n$1$2", $mystring);
+		}
 		return $string2;
 	}
+
+	// $fullpathに含まれる最後のフォルダの名前を返す
 	function getDirectoryName($fullpath){
 		preg_match_all('/.*?\//', $fullpath, $pathArray);
 		$latestpath = $pathArray[0][count($pathArray[0])-1];
