@@ -14,6 +14,10 @@ div.ally:last-child, div.enemy:last-child{
 	margin-bottom: 0px;
 }
 
+li.ui-menu-item{
+	font-size: 0.9em !important;
+}
+
 p.ally_name, p.enemy_name{
 	margin: 0 0 0 0.5em;
 	padding-top: 0.5ex;
