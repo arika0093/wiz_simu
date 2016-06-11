@@ -15,7 +15,7 @@
 	// main
 	echo "Quests = [";
 	dir_open($questsPath);
-	echo $output."]";
+	echo "]";
 	
 	//order
 	echo "\n\n".file_get_contents($orderPath);
@@ -25,7 +25,6 @@
 	//------------
 	// file open function
 	function dir_open($loaddir){
-		global $output;
 		if( is_dir( $loaddir ) && $handle = opendir( $loaddir ) ) {
 			while( ($file = readdir($handle)) !== false ) {
 				if( strpos($file, "#") !== false){ continue; }
