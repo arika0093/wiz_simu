@@ -182,6 +182,8 @@ function turneff_check_skillcounter(fld) {
 			tf_scs[c].counter(fld, i, tf_scs[c], "", true, is_allkill());
 		}
 	});
+	// 敵ダメージ反応系
+	enemy_damage_switch_check();
 }
 
 // ターン継続効果の全解除

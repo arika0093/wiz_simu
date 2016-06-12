@@ -183,8 +183,6 @@ var SpSkill = {
 								}
 							}
 						}
-						// 敵ダメージ反応系
-						enemy_damage_switch_check();
 						// スキル反射フラグを解除
 						f.Allys.Now[oi].flags.skill_counter = [];
 					}
@@ -197,7 +195,7 @@ var SpSkill = {
 	// -----------------------------
 	// 多段式カウンター待機
 	"ss_dualcounter": function (fld, n, cobj, params) {
-		var turn = params[1];
+		var turn = params[0];
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
 			if (now.nowhp <= 0) { continue; }
@@ -234,8 +232,6 @@ var SpSkill = {
 								GetNowBattleEnemys(sci).flags.on_damage = true;
 							}
 						}
-						// 敵ダメージ反応系
-						enemy_damage_switch_check();
 						// ダメージ反射フラグを解除
 						f.Allys.Now[oi].flags.damage_hits = [];
 					}
