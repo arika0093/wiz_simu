@@ -1,13 +1,12 @@
 // 解答したときの処理
 function panel(attr) {
 	var st = Field.Status;
+	var cnst_rnd = Number($("#attack_rand_sel").val());
 	// 文字ログ出力
-	var p_str = "";
-	for (var ar = 0; ar < attr.length; ar++) {
-		if (p_str != "") { p_str += "/"; }
-		p_str += Field.Constants.Attr[attr[ar]];
-	}
-	Field.log_push("【パネル: " + p_str + "】");
+	Field.log_push("【パネル: " + get_attr_string(attr, ",") + " / チェイン数: " +
+		st.chain + "→" + (st.chain + 1) +
+		" / 乱数: " + (cnst_rnd == -1 ? "Random" : cnst_rnd.toFixed(2)) +
+	 " 】", "orange");
 	// 再現用ログ関連
 	actl_save_answer(attr);
 	// チェイン+1

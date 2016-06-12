@@ -1,5 +1,5 @@
 {
-   id: "material_kameon_sinpa_thnder",
+   id: "material_kameon_sinpa_thunder",
    name: "カメオン真覇（雷）",
    desc: "",
    overlap: false,

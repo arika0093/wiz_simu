@@ -309,14 +309,10 @@ function sim_show() {
 			var log_stat = Field.Status.log[tt] !== undefined ? tt : tt - 1;
 			for (var i = 0 ; i <= log_stat; i++) {
 				var l_t = create_log(i);
-				if (l_t.indexOf("//{blue}") >= 0) {
-					l_t = l_t.replace(/\/\/{blue}/g, "<span class='blue'>");
-					l_t = l_t.replace(/\/\/{orange}/g, "<span class='orange'>");
-					l_t = l_t.replace(/{}\/\//g, "</span>");
-					logtext += l_t;
-				} else {
-					logtext += l_t;
-				}
+				l_t = l_t.replace(/\/\/{blue}/g, "<span class='blue'>");
+				l_t = l_t.replace(/\/\/{orange}/g, "<span class='orange'>");
+				l_t = l_t.replace(/{}\/\//g, "</span>");
+				logtext += l_t;
 			}
 			$("#sim_log_inner").html(logtext);
 			$("#sim_log_inner").accordion("refresh");

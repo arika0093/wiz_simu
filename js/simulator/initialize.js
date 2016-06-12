@@ -266,7 +266,7 @@ function nextturn(is_ssfin) {
 	turn_effect_check(true, is_ssfin);
 	enemy_turn_effect_check(true);
 	// 総ダメージ出力
-	Field.log_push("TURN TOTAL DAMAGE: " + Field.Status.turn_dmg, "orange");
+	Field.log_push("TURN TOTAL DAMAGE: " + Field.Status.turn_dmg, "blue");
 	Field.Status.turn_dmg = 0;
 
 	// フラグの初期化

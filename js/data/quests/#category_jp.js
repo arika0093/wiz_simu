@@ -42,11 +42,12 @@ category_jp = {
 	},
     "burningtower": {
 		jp: "バーニングタワー",
-		is_dispsim: true,
+		is_dispsim: false,
 		sim_index: 10,
 	},
     "material": {
 		jp: "素材クエスト",
-		is_dispsim: false,
+		is_dispsim: true,
+		sim_index: 30,
 	}
 }

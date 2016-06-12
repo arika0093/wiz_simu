@@ -21,7 +21,8 @@ function get_image_url_b(no) {
 
 
 // 属性配列を属性文字列に変換する
-function get_attr_string(attr) {
+function get_attr_string(attr, spl_char) {
+	spl_char = spl_char || "・";
 	Attr= [
 		"火",
 		"水",
@@ -45,7 +46,7 @@ function get_attr_string(attr) {
 		if(attr.length >= 5){
 			for(var i = 0; i < 5; i++){
 				if(attr[i] == 1){
-					attrstr += attrstr != "" ? "・" : ""
+					attrstr += attrstr != "" ? spl_char : ""
 					attrstr += Attr[i];
 				}else if(attr[i] != 0){
 					isBIN = false;
@@ -67,7 +68,7 @@ function get_attr_string(attr) {
 				if(oldnum == attr[i] || attr[i] > Attr.length - 1){
 					return false;
 				}else{
-					attrstr += attrstr != "" ? "・" : ""
+					attrstr += attrstr != "" ? spl_char : ""
 					attrstr += Attr[attr[i]];
 					oldnum = attr[i];
 				}

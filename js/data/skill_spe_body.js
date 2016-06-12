@@ -754,7 +754,7 @@ var SpSkill = {
 				var now = fld.Allys.Now[i];
 				now.as_enhance = (now.as_enhance ? now.as_enhance : 0) + p;
 			}
-			fld.log_push("パネル付与効果: " + dsc);
+			fld.log_push("パネル付与効果発動: " + dsc);
 		});
 		return true;
 	},
@@ -766,7 +766,7 @@ var SpSkill = {
 		return panel_addition(dsc, function (fld) {
 			if (fld.Status.chain_status >= 0) {
 				fld.Status.chain += p;
-				fld.log_push("パネル付与効果: " + dsc);
+				fld.log_push("パネル付与効果発動: " + dsc);
 			}
 		});
 		return true;
@@ -781,7 +781,7 @@ var SpSkill = {
 				var now = fld.Allys.Now[i];
 				heal_ally(now.maxhp * r, i);
 			}
-			fld.log_push("パネル付与効果: " + dsc);
+			fld.log_push("パネル付与効果発動: " + dsc);
 		});
 		return true;
 	},
@@ -803,7 +803,7 @@ var SpSkill = {
 					legend_timing_check(fld.Allys.Deck, fld.Allys.Now, i);
 				}
 			}
-			fld.log_push("パネル付与効果: " + dsc);
+			fld.log_push("パネル付与効果発動: " + dsc);
 		});
 	},
 	// -----------------------------
