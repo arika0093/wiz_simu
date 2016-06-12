@@ -311,6 +311,7 @@ function sim_show() {
 				var l_t = create_log(i);
 				if (l_t.indexOf("//{blue}") >= 0) {
 					l_t = l_t.replace(/\/\/{blue}/g, "<span class='blue'>");
+					l_t = l_t.replace(/\/\/{orange}/g, "<span class='orange'>");
 					l_t = l_t.replace(/{}\/\//g, "</span>");
 					logtext += l_t;
 				} else {
@@ -333,7 +334,7 @@ function sim_show() {
 	$("#dialog_simlog_detail").dialog({
 		autoOpen: false,
 		modal: true,
-		width: 1200,
+		width: 1100,
 		open: function (e, ui) {
 			// sim_log
 			var logtext = "";

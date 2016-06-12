@@ -1114,7 +1114,7 @@ function ss_damage(fld, r, atr, atkn, own, tg, isnot_ss, ignore_crs) {
 			rate += Math.floor(aw_c[i].upvalue) / 100;
 		}
 	}
-	attack_enemy(enemy, now, atr, rate, atkn, [atr],
+	Field.Status.turn_dmg += attack_enemy(enemy, now, atr, rate, atkn, [atr],
 		fld.Status.chain, rnd, own, tg, true);
 	// SSフラグを立てる
 	enemy.flags.is_ss_attack = (isnot_ss != true);

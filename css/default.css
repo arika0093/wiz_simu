@@ -2,6 +2,7 @@
 body{
 	background-color: #FAFAFF;
 	margin: 0 auto;
+	max-width: 100%;
 }
 
 #wrap{
@@ -150,12 +151,11 @@ div.topitem{
 	background-color: #333;
 	box-shadow: #AAA 0 0 10px 6px;
 	z-index: 30;
-	width: 100%;
+	min-width: 736px;
 	padding: 1ex 2em;
 }
 span.spmenu_toggle{
 	display: block;
-	width: 850px;
 	margin: auto;
 	cursor: pointer;
 }

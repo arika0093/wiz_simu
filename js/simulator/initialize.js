@@ -64,6 +64,7 @@ var Field = {
 		// 行動ログ
 		act_log: [],
 		is_spanel_only: true,
+		turn_dmg: 0,
 		// 文字ログ
 		log: [],
 		d_log: [],
@@ -264,6 +265,10 @@ function nextturn(is_ssfin) {
 	ss_continue_effect_check();
 	turn_effect_check(true, is_ssfin);
 	enemy_turn_effect_check(true);
+	// 総ダメージ出力
+	Field.log_push("TURN TOTAL DAMAGE: " + Field.Status.turn_dmg, "orange");
+	Field.Status.turn_dmg = 0;
+
 	// フラグの初期化
 	initialize_allys_flags(Field.Allys.Now);
 	// チェイン状態の確認
@@ -301,7 +306,7 @@ function nextturn(is_ssfin) {
 	}
 	// チャージスキル処理
 	turneff_chargeskill_check();
-	// seedリセット
+	// seed リセット
 	Field.Status.seed = 0;
 	// ログ保存
 	Field_log.save(f_st.totalturn, Field);

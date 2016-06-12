@@ -13,7 +13,6 @@ div.sim_info {
 
 p#sim_info_status {
 	display: inline;
-	width: 55%;
 	margin: 0;
 	padding: 1ex 0 0.5ex 0.5em;
 	float: left;
@@ -21,7 +20,6 @@ p#sim_info_status {
 
 p#sim_turns {
 	display: inline;
-	width: 40%;
 	margin: 0;
 	padding: 1ex 0.5em 0.5ex 0;
 	text-align: right;
@@ -364,6 +362,13 @@ button#pnl_attr_01{
 
 */
 
+/* log text */
 span.blue{
 	color: #00F;
+	font-size: 1.1em;
+}
+
+span.orange{
+	color: #F60;
+	font-size: 1.1em;
 }

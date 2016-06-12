@@ -336,3 +336,14 @@ img.chara_img_impregnable{
 	-o-filter: grayscale(100%);
 	filter: grayscale(100%);
 }
+
+/* log text */
+span.blue{
+	color: #00F;
+	font-size: 1.1em;
+}
+
+span.orange{
+	color: #F80;
+	font-size: 1.1em;
+}

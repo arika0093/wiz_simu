@@ -75,7 +75,7 @@ var Awake_crystal_lists = [{
 	genre: "幻魔特区スザクⅢ",
 	name: "インフローレ(戦士ATK+200)",
 	imple: Awake_composite,
-	param2: Spec_statusup(0, 200, [9]),
+	param2: Spec_statusup(0, 200, [8]),
 }, {
 	name: "エクスマキナ(毒,弱体化,死の秒針無効)",
 	imple: Awake_composite,

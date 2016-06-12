@@ -339,6 +339,7 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem) {
 	if (atk_as.after && atk_rem == atk_as.atkn) {
 		as_afters.push(atk_as.after(Field, index, g_dmg));
 	}
+	Field.Status.turn_dmg += g_dmg;
 	return as_afters;
 }
 
