@@ -59,6 +59,8 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 	// HPが0ならターン効果を全て消す
 	if (enemy.nowhp <= 0) {
 		turneff_allbreak(enemy.turn_effect, e, false);
+		// 撃破カウント
+		Field.Status.total_kill += 1;
 	}
 
 	// ログ
