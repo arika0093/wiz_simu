@@ -308,6 +308,8 @@ var SpSkill = {
 				var isreinforce = true
 				var typestr = "[精霊強化]"
 				break;
+			case "null":
+				return null;
 			case "SS":
 			default:
 				var typestr = ""

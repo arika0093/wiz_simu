@@ -36160,7 +36160,7 @@ Cards = [{
 	ss2: {
 		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し、ダメージを軽減(30%、10%)、5チェインを消費しさらに攻撃力アップ(50%)◆発動中行動不可",
 		turn: 9,
-		proc: [ss_reinforcement_all(4, [ss_regenerate(0.30, 4, "RF"), ss_attr_guard([1,1,1,1,1], 0.10, 4, "RF"), ss_chain_cond_skill(5, ss_enhance_all(0.5, 4, [1,1,1,1,1], "RF"), null)])],
+		proc: [ss_reinforcement_all(4, [ss_regenerate(0.30, 4, "RF"), ss_attr_guard([1,1,1,1,1], 0.10, 4, "RF"), ss_enhance_all(0.5, 4, [1,1,1,1,1], ss_chain_cost(5,"RF","null"))])],
 	},
 	Lawake: [
 		Statusup(500,0),
