@@ -177,3 +177,10 @@ img.ch_lists{
 	width: 92px;
 	margin: 0.5ex 0.5em 1ex;
 }
+@media screen and (max-width: 599px){
+	img.ch_lists{
+		width: 68px;
+		margin: 0.5ex;
+	}
+}
+

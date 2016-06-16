@@ -1001,6 +1001,10 @@ var SpCondSkill = {
 		}
 		return b;
 	},
+	"ss_is_poison_own_skill": function (fld, oi, cobj, params) {
+		var scp_rst = this["ss_is_poison_own"](fld, oi, cobj, params);
+		return ss_object_done(fld, oi, scp_rst);
+	},
 	// -----------------------------
 	// 相手が毒かどうか
 	"ss_is_poison_enemy": function (fld, oi, cobj, params) {
