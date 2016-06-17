@@ -895,7 +895,7 @@ var SpSkill = {
 			e.ss_current = 999;
 			// スキブ処理
 			var card = fld.Allys.Deck[i];
-			if (!is_legendmode(card, e)) {
+			if (is_legendmode(card, e)) {
 				legend_timing_check(fld.Allys.Deck, nows, i);
 			}
 		})
