@@ -976,6 +976,20 @@ function ss_hp_less_skill(r, ss) {
 	});
 }
 
+/**
+ * (条件実行系)自身が毒の場合にスキルを実行する。
+ * ss: 条件を満たした時に発動するSS。
+**/
+function ss_is_poison_own_skill(ss) {
+	return ss_condition({
+		name: "ss_is_poison_own_skill",
+		type: "is_abstate_own",
+		p1: ss,
+		p2: null,
+		is_delay: true,
+	});
+}
+
 // ------------------------------------------------------
 // 内部用
 /**

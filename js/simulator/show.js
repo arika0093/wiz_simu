@@ -439,7 +439,7 @@ function sim_show() {
 			var nam = Field.Quest.name;
 			var trn = durturn_string();
 			var tot = totalturn_string();
-			var text = nam + " を " + tot + " ターン(" + trn + ") で突破！";
+			var text = simshow_create_fintext();
 			// hide
 			$(".ui-dialog-titlebar").hide();
 			// tweet data
@@ -533,18 +533,34 @@ function ss_remain_text(rem_turn) {
 // 合計ターンの表記を返却する
 function totalturn_string() {
 	var f_st = Field.Status;
-	var finish_ss = f_st.finish && f_st.durturn[Field.Quest.aprnum - 1].ssfin;
+	if (f_st.finish && !f_st.fin_timeup) {
+		var finish_ss = f_st.durturn[Field.Quest.aprnum - 1].ssfin
+	} else {
+		var finish_ss = false;
+	}
 	return (finish_ss ? (f_st.totalturn - 1) + "+SS" : f_st.totalturn.toString());
 }
 
 // 累計ターンの表記を返却する
 function durturn_string() {
 	var popupstr = "";
+	var disable_after = false;
 	for (var i = 0; i < Field.Enemys.Popuplist.length; i++) {
 		var t = "";
-		var tu = Field.Status.durturn[i];
-		if (!tu) {
-			t = "?";
+		var fs = Field.Status;
+		var tu = fs.durturn[i];
+		if (disable_after) {
+			t = "X";
+		} else if (!tu) {
+			if (is_ally_alldeath()) {
+				t = "DD"; // DeaD
+				disable_after = true;
+			} else if (fs.fin_timeup) {
+				t = "TU"; // TimeUp
+				disable_after = true;
+			} else {
+				t = "?";
+			}
 		} else if (tu.ssfin){
 			if (tu.turn != 1) {
 				t = (tu.turn - 1).toString() + "+SS";
@@ -561,6 +577,27 @@ function durturn_string() {
 		}
 	}
 	return popupstr;
+}
+
+// 試走完了時のテキストを生成する
+function simshow_create_fintext(is_replace) {
+	var rst = "";
+	var nam = Field.Quest.name;
+	var trn = durturn_string().replace("+", is_replace ? "%2B" : "+");
+	var tot = totalturn_string().replace("+", is_replace ? "%2B" : "+");
+	var is_fintimeup = Field.Status.fin_timeup;
+	var kill_c = Field.Status.total_kill;
+	var limit = Field.Status.limit_turn;
+	var limitn = Field.Status.limit_now;
+
+	if (!(limit > 0)) {
+		rst = nam + " を " + tot + " ターン(" + trn + ") で突破！";
+	} else if (is_fintimeup) {
+		rst = nam + " で敵を " + kill_c + " 体撃破！[ 残り: 0/" + limit + " T ]";
+	} else {
+		rst = nam + " で敵を全て撃破！[ 残り: " + limitn + "/" + limit + " T ]";
+	}
+	return rst;
 }
 
 // ログ表示
@@ -581,10 +618,8 @@ function tweet_result() {
 	var win_opt = "menubar=no,toolbar=no,resizable=yes,scrollbars=no,width=640px,height=360px,top=40px,left=40px";
 	// URL生成して開く
 	var url = absolutePath("/simulator/" + location.search);
-	var nam = Field.Quest.name;
-	var trn = durturn_string().replace("+", "%2B");
-	var tot = totalturn_string().replace("+", "%2B");
-	var text = "このデッキで " + nam + " を " + tot + " ターン(" + trn + ") で突破！%0A" + url;
+	var text = //"このデッキを使って " +
+			simshow_create_fintext(true) + "%0A" + url;
 	var tweeturl = "https://twitter.com/intent/tweet?hashtags=wiz_simu" + "&text=" + text;
 	// 開く
 	window.open(tweeturl, "tweet_result", win_opt);

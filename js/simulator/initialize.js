@@ -61,10 +61,13 @@ var Field = {
 		totalturn: 0,
 		nowbattle: 1,
 		finish: false,
+		limit_turn: -1,
+		limit_now: -1,
 		// 行動ログ
 		act_log: [],
 		is_spanel_only: true,
 		turn_dmg: 0,
+		total_kill: 0,
 		// 文字ログ
 		log: [],
 		d_log: [],
@@ -221,6 +224,11 @@ $(function () {
 					ss_object_done(Field, 0, peff[i]);
 				}
 			}
+			// 魔道杯乱舞方式なら処理を変更
+			if (Field.Quest.limitturn) {
+				var fs = Field.Status;
+				fs.limit_turn = fs.limit_now = Field.Quest.limitturn;
+			}
 			// 戦闘開始前処理
 			if (Field.Quest.battle_before) {
 				var bbef = Field.Quest.battle_before;
@@ -271,14 +279,6 @@ function nextturn(is_ssfin) {
 
 	// フラグの初期化
 	initialize_allys_flags(Field.Allys.Now);
-	// チェイン状態の確認
-	if (f_st.chain_status != 0) {
-		f_st.chainstat_turn -= 1;
-		if (f_st.chainstat_turn == 0) {
-			f_st.chain_status = 0;
-			Field.log_push("Status: チェイン状態解除");
-		}
-	}
 	// 全滅確認
 	var killed = allkill_check(is_ssfin);
 	if (killed && !f_st.finish) {
@@ -294,12 +294,31 @@ function nextturn(is_ssfin) {
 		// ここで新しい敵の処理を行う
 		enemy_popup_proc();
 	}
-	// SSで全滅 or パネルを踏んでる
+	// チェイン状態の確認
+	if (f_st.chain_status != 0) {
+		if (f_st.chain_status >= 2 || !killed) {
+			f_st.chainstat_turn -= 1;
+		}
+		if (f_st.chainstat_turn == 0) {
+			f_st.chain_status = 0;
+			Field.log_push("Status: チェイン状態解除");
+		}
+	}
+	// SSで全滅させてない or 全ての敵を全滅
 	if (!is_ssfin || killed) {
 		f_st.totalturn += 1;
 	}
+	// 魔道杯乱舞の終了処理
+	if (!is_ssfin && !killed) {
+		f_st.limit_now -= 1;
+		// 残りターンが0になったら終了フラグを立てる
+		if (!killed && f_st.limit_turn > 0 && f_st.limit_now <= 0) {
+			f_st.finish = true;
+			f_st.fin_timeup = true;
+		}
+	}
 	// 全終了してたらサーバーに結果送信
-	if (Field.Status.finish) {
+	if (Field.Status.finish && !Field.Status.fin_timeup) {
 		actl_send_result(function (rst) {
 			return true;
 		});
