@@ -14,7 +14,7 @@ category_jp = {
 		sim_index: 2,
 	},
     "evtornament": {
-		jp: "トーナメント",
+		jp: "イベントトーナメント",
 		is_dispsim: true,
 		sim_index: 1,
 	},
