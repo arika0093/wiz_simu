@@ -1,0 +1,25 @@
+/* table format */
+table{
+	border-collapse: collapse;
+	margin-top: 2ex;
+	width: 100%;
+}
+
+#dt_key{
+	width: 20%;
+	text-align: center;
+}
+
+table tr{
+	border-width: 1px 0;
+	border-style: solid;
+	border-color: #CCC;
+}
+table tr:first-child{
+	border-width: 0 0 3px;
+	border-style: double;
+	border-color: #555;
+}
+table tr:last-child{
+	border-color: #555;
+}
