@@ -712,7 +712,7 @@ function ss_death_limit(turn) {
 		name: "ss_death_limit",
 		type: "turn_effect",
 		subtype: "death_limit",
-		target: "all",
+		target: "single",
 		p1: turn,
 	});
 }
