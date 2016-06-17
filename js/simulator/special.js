@@ -83,11 +83,22 @@ function ss_procdo(ss, now, index) {
 				},
 				// 発動スキル
 				charged_fin: function (fld) {
-					fld.log_push("Unit[" + (index + 1) + "]: チャージスキル発動");
-					for (var i = 0; i < ss.proc.length; i++) {
-						ss_object_done(fld, index, ss.proc[i]);
+					// SS発動可能かチェック
+					var ss_disabled = $.grep(now.turn_effect, function (e) {
+						return e.ss_disabled;
+					}).length > 0;
+					// 発動可能なら自動発動
+					if (!ss_disabled) {
+						fld.log_push("Unit[" + (index + 1) + "]: チャージスキル発動");
+						for (var i = 0; i < ss.proc.length; i++) {
+							ss_object_done(fld, index, ss.proc[i]);
+						}
+						return true;
+					} else {
+						fld.log_push("Unit[" + (index + 1) + "]: チャージスキル発動[不発]");
+						return false;
 					}
-					return true;
+
 				},
 			});
 			Field.log_push("Unit[" + (index + 1) + "]: チャージスキル発動待機…");
