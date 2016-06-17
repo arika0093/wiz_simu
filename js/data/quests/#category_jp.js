@@ -6,9 +6,14 @@ category_jp = {
     "past_event": {
 		jp: "過去のイベントトーナメント",	// jp: カテゴリ名
 		is_dispsim: true,			// is_dispsim: 試走クエスト選択に表示させるかどうか
-		sim_index: 2,				// sim_index: 表示させる場合の表示順(昇順)
+		sim_index: 3,				// sim_index: 表示させる場合の表示順(昇順)
 	},
     "tornament": {
+		jp: "トーナメント",
+		is_dispsim: true,
+		sim_index: 2,
+	},
+    "evtornament": {
 		jp: "トーナメント",
 		is_dispsim: true,
 		sim_index: 1,
