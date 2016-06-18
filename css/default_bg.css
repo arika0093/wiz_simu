@@ -626,6 +626,11 @@ li#mn_simulator{
 li#mn_search{
 	background-image: url("/image/tlicon/search.png") !important;
 }
+li#mn_detail{
+	background-image: url("/image/tlicon/data.png") !important;
+	background-size: 36px !important;
+	background-position: -3px 1px !important;
+}
 li#mn_check{
 	background-image: url("/image/tlicon/check.png") !important;
 	background-size: 28px !important;
