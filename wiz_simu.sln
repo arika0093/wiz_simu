@@ -135,6 +135,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "script", "script", "{226BE8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "search", "search", "{2E6BF4B1-10BD-40DE-BD83-5258C65E96D0}"
 	ProjectSection(SolutionItems) = preProject
+		js\search\sch_detail.js = js\search\sch_detail.js
 		js\search\sch_filter.js = js\search\sch_filter.js
 		js\search\sch_form.js = js\search\sch_form.js
 		js\search\sch_form_def.js = js\search\sch_form_def.js
@@ -164,6 +165,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "quests", "quests", "{64FB46
 	ProjectSection(SolutionItems) = preProject
 		js\data\quests\#category_jp.js = js\data\quests\#category_jp.js
 		js\data\quests\#order.js = js\data\quests\#order.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "detail", "detail", "{9390570F-08F0-4BB5-8705-4723B0C1D1FC}"
+	ProjectSection(SolutionItems) = preProject
+		search\detail\index.html = search\detail\index.html
 	EndProjectSection
 EndProject
 Global
@@ -197,5 +203,6 @@ Global
 		{C87981AE-0C6C-4519-AD61-F7127F461E6E} = {FBCE4C9C-0BDA-4B34-AC6E-3158CF6D361E}
 		{8B9ACD64-350B-49DA-95B0-EB4388CCE61F} = {0B5CF5D7-96AD-4EED-8363-750FF402B468}
 		{64FB46EC-C184-4D6A-9B24-E976EB277B1B} = {96B04CAB-98A1-4735-96F8-80788F25C391}
+		{9390570F-08F0-4BB5-8705-4723B0C1D1FC} = {F546FAD9-474F-46A8-B734-545AA08B5821}
 	EndGlobalSection
 EndGlobal

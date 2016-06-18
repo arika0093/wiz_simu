@@ -85,7 +85,7 @@ function ss_procdo(ss, now, index) {
 				charged_fin: function (fld) {
 					// SS発動可能かチェック
 					var ss_disabled = $.grep(now.turn_effect, function (e) {
-						return e.ss_disabled;
+						return e.ss_disabled && e.charge_turn === undefined;
 					}).length > 0;
 					// 発動可能なら自動発動
 					if (!ss_disabled) {

@@ -84,12 +84,13 @@ div.head{
 	padding: 1ex 0.5em;
 	border-bottom: 1px solid #CCC;
 }
-div.head p.c_name{
+div.head a.c_name{
 	margin: 0;
 	float: left;
 	width: 50%;
 	box-sizing: border-box;
 	font-size: large;
+	color: #333;
 }
 div.head p.subdata{
 	margin: 1.5ex 0 0 0 ;
@@ -176,6 +177,9 @@ img.ch_img{
 img.ch_lists{
 	width: 92px;
 	margin: 0.5ex 0.5em 1ex;
+}
+img.ch_lists:hover{
+	opacity: 0.6;
 }
 @media screen and (max-width: 599px){
 	img.ch_lists{

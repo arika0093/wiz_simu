@@ -299,8 +299,8 @@ function schfl_grepshow(cs) {
 			var ss_h = schfl_genhtml_skill("SS", ss, c, true);
 			html +=
 				"<div class='rst_item attr_b" + c.attr[0] + "'><div class='head clearfix'>"+
-				"<p class='c_name'>" + c.name +
-				"</p><p class='subdata'>HP: " + c.hp + " / ATK: " + c.atk + " / Cost: " + c.cost +
+				"<a class='c_name' href='/search/detail/?id=" + c.cardno + "'>" + c.name +
+				"</a><p class='subdata'>HP: " + c.hp + " / ATK: " + c.atk + " / Cost: " + c.cost +
 				" / 種族: " + Species[c.species[0]] + "</p></div><div class='body clearfix'>" +
 				"<div class='attr attr_" + c.attr[0] + "' />" +
 				"<div class='attr attr_" + (c.attr[1] >= 0 ? c.attr[1] : c.attr[0]) + "' />" +
@@ -354,7 +354,8 @@ function schfl_grepshow_icon(cs) {
 	} else {
 		for (var i = 0; i < cs.length; i++) {
 			var c = cs[i];
-			html += "<img class='ch_lists' src='" + get_image_url(c.imageno) + "' title='" + c.name + "' />";
+			html += "<a href='/search/detail/?id=" + c.cardno + "'>" +
+				"<img class='ch_lists' src='" + get_image_url(c.imageno) + "' title='" + c.name + "' /></a>";
 		}
 	}
 	div.html(html);

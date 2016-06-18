@@ -15752,6 +15752,7 @@ Cards = [{
 	cost: 47,
 	attr: [1, 2],
 	species: [8],
+	disable: true,
 	awakes: [
 		Attr_statusup(100, 0, [0, 1, 1, 0, 0]),
 		Attr_statusup(0, 100, [0, 1, 1, 0, 0]),
@@ -17988,6 +17989,7 @@ Cards = [{
 	attr: [1, -1],
 	species: [4],
 	islegend: true,
+	disable: true,
 	as1: {
 		desc: "残りHPが80%以上でダメージアップ(300%)",
 		proc: add_cond(ChainAttack(3.0, 0), when_hp_more(0.8)),
@@ -24045,6 +24047,7 @@ Cards = [{
 	attr: [2,1],
 	species: [8],
 	islegend: true,
+	disable: true,
 	as1: {
 		desc: "5チェインでダメージアップ(450%)",
 		proc: ChainAttack(4.5, 5),
@@ -24089,6 +24092,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
+	disable: true,
 	as1: {
 		desc: "3チェインかつパネルが2色でダメージアップ、3色でさらにアップ(400%/550%)",
 		proc: ChainPanelsAttack(0, 4.0, 5.5, 3),
@@ -24133,6 +24137,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [4],
 	islegend: true,
+	disable: true,
 	as1: {
 		desc: "3チェインで雷属性の味方の攻撃力をアップ、神族・妖精は更にアップ(40%/70%)",
 		proc: [ChainEnhance(0.40, [0,0,1,0,0], 3), ChainSpecEnhance(0.70, [0,0,1,0,0], [1,4], 3)],
@@ -24177,6 +24182,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
+	disable: true,
 	as1: {
 		desc: "火属性の味方のHPを回復(13%)",
 		proc: Heal(0.13, [1,0,0,0,0], 0),
