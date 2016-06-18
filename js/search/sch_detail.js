@@ -1,13 +1,18 @@
 ﻿var Detail_view = false;
 
 function sch_show_detail() {
-	// ID蜿門ｾ・
+	// クエリ取得
 	var id_q = location.search;
 	if (!id_q || id_q == "") {
+		// 指定されていなかったらランダム取得してリダイレクト
+		var rand_ix = Math.floor(Math.random() * Cards.length);
+		var rand_id = Cards[rand_ix].cardno;
+
+		document.location = "/search/detail/?id=" + rand_id;
 		return false;
 	}
 	var id = id_q.indexOf("?id=") == 0 ? id_q.substr(4) : -10;
-	// 蟇ｾ雎｡邊ｾ髴雁叙蠕・
+	// 抽出
 	var cs = $.grep(Cards, function (e) {
 		return e.cardno == id;
 	});
@@ -32,13 +37,20 @@ function sch_show_detail() {
 	$("#c_breed").text("種族: " + get_spec_string(c.species[0]));
 	// awakes
 	$("#awakes").html(schfl_genhtml_awake(c.awakes));
-	$("#Lawakes").html(schfl_genhtml_awake(c.Lawake));
 	// as
 	$("#as_1").html("AS1: " + schfl_genhtml_skill("as1", c.as1, c, false));
-	$("#as_2").html("AS2: " + schfl_genhtml_skill("as2", c.as2, c, false));
 	// ss
-	$("#ss_1").html("SS1: " + schfl_genhtml_skill("ss1", c.ss1, c, false));
-	$("#ss_2").html("SS2: " + schfl_genhtml_skill("ss2", c.ss2, c, true));
+	$("#ss_1").html("SS1: " + schfl_genhtml_skill("ss1", c.ss1, c, !c.islegend));
+	// legend
+	if (c.islegend) {
+		$("#Lawakes").html(schfl_genhtml_awake(c.Lawake));
+		$("#as_2").html("AS2: " + schfl_genhtml_skill("as2", c.as2, c, false));
+		$("#ss_2").html("SS2: " + schfl_genhtml_skill("ss2", c.ss2, c, true));
+	} else {
+		$("#Lawakes").hide();
+		$("#as_2").hide();
+		$("#ss_2").hide();
+	}
 
 
 

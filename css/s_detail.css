@@ -84,8 +84,8 @@ div#sskills:after{
 div#as_1, div#as_2, div#ss_1, div#ss_2{
 	padding: 1ex 2em 1ex 0;
 }
-div#as_1, div#ss_1{
-	border-bottom: 1px solid #BBB;
+div#as_2, div#ss_2{
+	border-top: 1px solid #BBB;
 }
 div#ss_2{
 	padding-bottom: 2.5ex;
@@ -95,7 +95,7 @@ div.skill_as1, div.skill_as2, div.skill_ss1, div.skill_ss2{
 	display: inline-table;
 }
 
-p.turn_ss2{
+p.turn_ss1, p.turn_ss2{
 	position: absolute;
     bottom: 2px;
     right: 3px;

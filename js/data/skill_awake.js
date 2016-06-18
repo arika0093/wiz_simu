@@ -130,8 +130,8 @@ function Heal_afterbattle(perc) {
 	return {
 		type: "heal_after_battle",
 		perc: perc,
-		name: "バトル終了後にHP回復" + int2roman(perc*10),
-		desc: "バトル終了後に味方全体のHPを" + (perc*10) + "%回復",
+		name: "バトル終了後にHP回復" + int2roman(perc/10),
+		desc: "バトル終了後に味方全体のHPを" + perc + "%回復",
 	};
 }
 
