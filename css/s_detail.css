@@ -1,0 +1,135 @@
+/* basicview format */
+p{
+	margin: 0;
+	display: block;
+}
+
+img#bs_image{
+	width: 305px;
+	height: 386px;
+	float: left;
+}
+
+p#c_name{
+	width: 420px;
+	float: right;
+	font-size: 1.5em;
+	text-decoration: underline;
+	color: #4d3600;
+	margin-top: 1ex;
+}
+
+div#bs_data{
+	width: 420px;
+	float: right;
+	text-align: right;
+	margin: 2ex 0 1ex;
+	padding-right: 1ex;
+	font-size: 0.9em;
+	border-right: 6px solid #292b56;
+}
+
+div#awakes, div#Lawakes{
+	position: relative;
+	width: 420px;
+	float: right;
+	margin-bottom: 1.25ex;
+	padding: 1ex 1em;
+	border-width: 1px 6px 1px 1px;
+	border-style: solid;
+	border-color: #292b56;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+
+div#askills, div#sskills{
+	position: relative;
+	width: 100%;
+	float: left;
+	margin-top: 1.5ex;
+	padding: 1ex 1.5em 1ex 1em;
+	border-width: 1px 6px 1px 1px;
+	border-style: solid;
+	border-color: #292b56;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+
+div#awakes:after, div#Lawakes:after, div#askills:after, div#sskills:after{
+	display: block;
+	position: absolute;
+	top: 2px;
+	right: 5px;
+	font-size: 1.1em;
+	opacity: 0.9;
+	color: #292b56;
+}
+
+div#awakes:after{
+	content: "潜在能力";
+}
+
+div#Lawakes:after{
+	content: "L時潜在";
+}
+
+div#askills:after{
+	content: "AS";
+}
+
+div#sskills:after{
+	content: "SS";
+}
+
+div#as_1, div#as_2, div#ss_1, div#ss_2{
+	padding: 1ex 2em 1ex 0;
+}
+div#as_2, div#ss_2{
+	border-top: 1px solid #BBB;
+}
+div#ss_2{
+	padding-bottom: 2.5ex;
+}
+
+div.skill_as1, div.skill_as2, div.skill_ss1, div.skill_ss2{
+	display: inline-table;
+}
+
+p.turn_ss1, p.turn_ss2{
+	position: absolute;
+    bottom: 2px;
+    right: 3px;
+}
+
+@media screen and (max-width: 599px){
+	p#c_name, div#bs_data, div#awakes, div#Lawakes{
+		width: 100%;
+	}
+}
+
+
+/* table format */
+table{
+	border-collapse: collapse;
+	margin-top: 2ex;
+	width: 100%;
+}
+
+#dt_key{
+	width: 20%;
+	text-align: center;
+}
+
+table tr{
+	border-width: 1px 0;
+	border-style: solid;
+	border-color: #CCC;
+}
+table tr:first-child{
+	border-width: 0 0 3px;
+	border-style: double;
+	border-color: #555;
+}
+table tr:last-child{
+	border-color: #555;
+}

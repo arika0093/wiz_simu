@@ -344,6 +344,16 @@ function schfl_genhtml_skill(disp, skl, c, is_ss) {
 		
 }
 
+// 潜在能力の表示HTML生成関数
+function schfl_genhtml_awake(aws) {
+	var rst = "";
+	for (var i = 0; i < aws.length; i++) {
+		rst += "<p class='aw'>" + aws[i].name + "</p>";
+	}
+	return rst;
+}
+
+
 // iconのみを並べる
 function schfl_grepshow_icon(cs) {
 	cs = cs || MatchResult;
