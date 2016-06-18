@@ -240,6 +240,7 @@ function enemy_popup_proc(){
 
 // 敵ダメージなどに反応するあれこれの制御
 function enemy_damage_switch_check(type, reset) {
+	var rst = false;
 	var enemys = GetNowBattleEnemys();
 	type = type || "damage_switch";
 	$.each(enemys, function (i, e) {
@@ -253,6 +254,7 @@ function enemy_damage_switch_check(type, reset) {
 				if (ischeck && s.cond(Field, i) && --s.on_cond.count <= 0) {
 					s.on_cond.move(Field, i);
 					s.on_cond.count = s.on_cond.interval;
+					rst = true;
 				}
 			}
 			if (reset) {
@@ -260,4 +262,8 @@ function enemy_damage_switch_check(type, reset) {
 			}
 		}
 	});
+	if (rst) {
+		turneff_check_skillcounter(Field);
+	}
+	return rst;
 }

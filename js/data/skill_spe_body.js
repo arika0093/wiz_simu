@@ -86,8 +86,6 @@ var SpSkill = {
 			e.flags.on_damage = true;
 			fld.log_push("Enemy[" + (i + 1) + "]: 割合ダメージ(" + (ratio * 100) + "%)(" + dmg + "ダメージ)");
 		}
-		// 敵ダメージ反応系
-		enemy_damage_switch_check();
 		return true;
 	},
 	// -----------------------------
@@ -104,7 +102,6 @@ var SpSkill = {
 		fld.log_push("Enemy[" + (tg + 1) + "]: 割合ダメージ(" + (ratio * 100) + "%)(" + dmg + "ダメージ)");
 		// 敵ダメージ反応系
 		e.flags.on_damage = true;
-		enemy_damage_switch_check();
 		return true;
 	},
 	// -----------------------------
@@ -242,42 +239,68 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
-	// 毒ダメージを与える
+	// 敵全体に毒ダメージを与える
 	"poison": function (fld, n, cobj, params) {
 		var dmg = params[0];
 		var t = params[1];
 		var enemys = GetNowBattleEnemys();
 		for (var i = 0; i < enemys.length; i++) {
-			(function () {
-				var indx = i;
-				var e = enemys[indx];
-				if (e.nowhp <= 0) { return; }
-				e.turn_effect.push({
-					desc: "毒(" + dmg + ")",
-					type: "poison",
-					icon: "poison",
-					isdual: false,
-					turn: t,
-					lim_turn: t,
-					is_poison: true,
-					effect: function (f, ei, teff, state, is_t, is_b) {
-						if (is_t && !is_b) {
-							e.nowhp = Math.max(e.nowhp - dmg, 0);
-							e.flags.on_damage = true;
-							if (e.nowhp <= 0) {
-								// HPが0になったら敵スキルを全て解除
-								turneff_allbreak(e.turn_effect, ei, false);
-							}
-							fld.log_push("Enemy[" + (indx + 1) + "]: 毒(" + dmg + "ダメージ)");
+			var en = enemys[i];
+			if (en.nowhp <= 0) { return; }
+			en.turn_effect.push({
+				desc: "毒(" + dmg + ")",
+				type: "poison",
+				icon: "poison",
+				isdual: false,
+				turn: t,
+				lim_turn: t,
+				is_poison: true,
+				effect: function (f, ei, teff, is_end, is_t, is_b) {
+					var e = GetNowBattleEnemys(ei);
+					if (is_t && !is_b) {
+						e.nowhp = Math.max(e.nowhp - dmg, 0);
+						e.flags.on_damage = true;
+						if (e.nowhp <= 0) {
+							// HPが0になったら敵スキルを全て解除
+							turneff_allbreak(e.turn_effect, ei, false);
 						}
-						// 敵ダメージ反応系
-						enemy_damage_switch_check();
-					},
-				});
-			})();
+						fld.log_push("Enemy[" + (ei + 1) + "]: 毒(" + dmg + "ダメージ)");
+					}
+				},
+			});
 			// SSフラグを立てる
-			enemys[i].flags.is_ss_attack = true;
+			en.flags.is_ss_attack = true;
 		}
+		return true;
+	},
+	// -----------------------------
+	// 敵単体に無に還す瞳
+	"ss_death_limit": function (fld, n, cobj, params) {
+		var t = params[0];
+		var enemys = GetNowBattleEnemys();
+		var tg = auto_attack_order(enemys, -1, n);
+		var en = enemys[tg];
+		if (en.nowhp <= 0) { return; }
+		en.turn_effect.push({
+			desc: "無に還す瞳",
+			type: "death_limit",
+			icon: "death_limit",
+			isdual: false,
+			turn: t,
+			lim_turn: t,
+			effect: function (f, ei, teff, is_end, is_t, is_b) {
+				var e = GetNowBattleEnemys(ei);
+				// 残りターンが0ならHPを0に
+				if (is_end) {
+					f.log_push("Enemy[" + (ei + 1) + "]: 無に還す瞳 - 残り0t");
+					e.nowhp = 0;
+					// HPが0になったら敵スキルを全て解除
+					turneff_allbreak(e.turn_effect, ei, false);
+				}
+			},
+		});
+		// SSフラグを立てる
+		en.flags.is_ss_attack = true;
 		return true;
 	},
 	// -----------------------------
@@ -895,7 +918,7 @@ var SpSkill = {
 			e.ss_current = 999;
 			// スキブ処理
 			var card = fld.Allys.Deck[i];
-			if (!is_legendmode(card, e)) {
+			if (is_legendmode(card, e)) {
 				legend_timing_check(fld.Allys.Deck, nows, i);
 			}
 		})

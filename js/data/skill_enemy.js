@@ -997,11 +997,9 @@ function s_enemy_when_hpdown(rate) {
 // ターン経過
 function s_enemy_when_after_turn(t) {
 	return {func: function (fld, n) {
-		console.log(fld.Status.nowturn)
 		return t == fld.Status.nowturn;
 	}, desc: t + "ターン経過"};
 }
-
 
 // enemy_skillのDescを作る
 // 表示順を変えたいとき、属性特攻を参考にorderを指定してください。
