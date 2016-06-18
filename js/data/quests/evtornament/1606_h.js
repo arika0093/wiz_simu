@@ -26,6 +26,9 @@
                      m_enemy_once(skill_counter_func(s_enemy_continue_damage, "継続大魔術（固定値：6000）3T ", 100, false, 3, 1500, 1500)),
                      damage_switch(s_enemy_when_after_turn(3), m_enemy_angry(), true)
                   ],
+				  on_move: [
+                     s_enemy_attack(250, 5, 1, true),
+				  ],
                   on_angry: [
                      s_enemy_attack_ratio(0.99, 5, true)
                   ],

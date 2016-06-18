@@ -136,12 +136,12 @@ function ss_afterproc(n) {
 			}
 		});
 	});
-	// 敵ダメージ反応系
-	enemy_damage_switch_check("damage_switch");
-	turneff_check_skillcounter(Field);
 	// ターン効果確認
+	turneff_check_skillcounter(Field);
 	turn_effect_check(false, is_allkill());
 	enemy_turn_effect_check(false);
+	// 敵ダメージ反応系
+	enemy_damage_switch_check("damage_switch");
 }
 
 // Lモードに入ったタイミングかどうかを判定する

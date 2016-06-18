@@ -36880,7 +36880,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体のガード&ダメージブロックを解除する",
 		turn: 10,
-		proc: [ss_break_attrguard(all), ss_break_dblock(all)],
+		proc: [ss_break_attrguard("all"), ss_break_dblock("all")],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -36901,7 +36901,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体のガード&ダメージブロックを解除し、火属性のダメージ(180%)。毒状態でさらにスキル反射待機を解除する",
 		turn: 14,
-		proc: [ss_break_attrguard(all), ss_break_dblock(all), ss_damage_all(1.8, [0]), ss_is_poison_own_skill(ss_break_skillcounter(all))],
+		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(1.8, [0]), ss_is_poison_own_skill(ss_break_skillcounter("all"))],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,0,0,0,]),

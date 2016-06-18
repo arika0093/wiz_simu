@@ -107,8 +107,6 @@ function panel(attr) {
 	}
 	// 敵の処理
 	enemy_move();
-	// 敵ダメージ反応系
-	enemy_damage_switch_check("damage_switch");
 	// 次のターンへ進む
 	nextturn(false);
 	// 表示
@@ -126,7 +124,7 @@ function answer_miss()
 	// 敵の処理
 	enemy_move();
 	// 敵ダメージ反応系
-	enemy_damage_switch_check();
+	//enemy_damage_switch_check();
 	// 次のターンへ進む
 	nextturn(false);
 	// 表示

@@ -86,8 +86,6 @@ var SpSkill = {
 			e.flags.on_damage = true;
 			fld.log_push("Enemy[" + (i + 1) + "]: 割合ダメージ(" + (ratio * 100) + "%)(" + dmg + "ダメージ)");
 		}
-		// 敵ダメージ反応系
-		enemy_damage_switch_check();
 		return true;
 	},
 	// -----------------------------
@@ -104,7 +102,6 @@ var SpSkill = {
 		fld.log_push("Enemy[" + (tg + 1) + "]: 割合ダメージ(" + (ratio * 100) + "%)(" + dmg + "ダメージ)");
 		// 敵ダメージ反応系
 		e.flags.on_damage = true;
-		enemy_damage_switch_check();
 		return true;
 	},
 	// -----------------------------
@@ -269,8 +266,6 @@ var SpSkill = {
 						}
 						fld.log_push("Enemy[" + (ei + 1) + "]: 毒(" + dmg + "ダメージ)");
 					}
-					// 敵ダメージ反応系
-					// enemy_damage_switch_check();
 				},
 			});
 			// SSフラグを立てる
@@ -301,8 +296,6 @@ var SpSkill = {
 					e.nowhp = 0;
 					// HPが0になったら敵スキルを全て解除
 					turneff_allbreak(e.turn_effect, ei, false);
-					// 敵ダメージ反応系
-					// enemy_damage_switch_check();
 				}
 			},
 		});
