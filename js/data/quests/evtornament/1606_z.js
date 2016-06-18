@@ -111,6 +111,9 @@
                      m_enemy_once(skill_counter_func(s_enemy_all_sealed/* Warning: ターン数を確認してください： 5体を完全に封印する（5T） */, "5体を完全に封印する（5T）", 100, false, 5, 6)),
                      damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true)
                   ],
+                  on_move: [
+                     s_enemy_attack(100, 1, 5, true)
+                  ],
                   on_angry: [
                      attr_change(3)/* Warning: 属性に十分注意してください */,
                      damage_block_own(10000, 4)
