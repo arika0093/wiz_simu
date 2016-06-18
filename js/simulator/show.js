@@ -378,8 +378,9 @@ function sim_show() {
 			if (teff.length <= 0) {
 				li_t = "<li class='no_icon'>(現在継続中の効果はありません)</li>";
 			}
-			$("#allystat_name").html((n + 1) + ": " + card.name
-				+ "<br/><div style='text-align: right;'>HP: " + now.nowhp + "/" + now.maxhp + ", ATK: " + now.atk + "</div>");
+			$("#allystat_name").html((n + 1) + ": " +
+				"<a target='_blank' href='/search/detail/?id=" + card.cardno + "'>" + card.name +
+				"<br/><div style='text-align: right;'>HP: " + now.nowhp + "/" + now.maxhp + ", ATK: " + now.atk + "</div>");
 			$("#ally_tefflist").html(li_t);
 			// ----------------------------
 			// target select

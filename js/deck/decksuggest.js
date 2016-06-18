@@ -92,7 +92,9 @@ $(function () {
 				},
 			});
 			$("#d_mana_edit").spinner("value", Deckdata.deck[ni].mana);
-			var p_t = (ni+1) + ": " + cd.name + "<br/>マナの値を0-200の間で指定してください。(HP: " + cd.hp + ")";
+			var p_t = (ni + 1) + ": " +
+				"<a target='_blank' href='/search/detail/?id=" + cd.cardno + "'>" + cd.name +
+				"</a><br/>マナの値を0-200の間で指定してください。(HP: " + cd.hp + ")";
 			$("#d_mana_text").html(p_t);
 
 			// set value(awake)
