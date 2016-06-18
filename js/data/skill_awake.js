@@ -56,7 +56,7 @@ function Attr_statusup_sattr(hp, atk, attr, hp2, atk2, subattr) {
 		sub_attr: subattr,
 		up_hp_2: hp2,
 		up_atk_2: atk2,
-		name: 	get_attr_string(attr) + (hp != 0 ? "HP" : "攻撃力") + "アップ" + int2roman(Math.max(hp, atk)/100) + "＋" + 
+		name: 	get_attr_string(attr) + (hp != 0 ? "HP" : "攻撃力") + "アップ" + int2roman(Math.max(hp, atk)/100) + "＋(副)" + 
 				get_attr_string(subattr) + (hp2 != 0 ? "HP" : "攻撃力") + "アップ" + int2roman(Math.max(hp2, atk2)/100),
 		desc: 	get_attr_string(attr) + "の味方" + (hp != 0 ? "HP" : "攻撃力") + "を" + Math.max(hp, atk) + "アップ、" + 
 				"複属性が" + get_attr_string(subattr).replace("属性", "") + "だとさらに" + Math.max(hp2, atk2) + "アップ" 
@@ -85,7 +85,7 @@ function NEFTJOD(perc, hpcond) {
 		type: "neftjod",
 		perc: perc,
 		hpcond: hpcond,
-		name: "九死一生" + hpcond==90 ? "Ξ" : int2roman(perc/30),
+		name: "九死一生" + (hpcond==90 ? "Ξ" : int2roman(perc/30) + ""),
 		desc: "HP" + hpcond + "%以上で致死ダメージを受けても確率" + perc +"%で生存",
 	};
 }

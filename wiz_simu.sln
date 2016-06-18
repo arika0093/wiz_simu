@@ -22,6 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{85B9F527-E14
 		css\default_bg.css = css\default_bg.css
 		css\default_sp.css = css\default_sp.css
 		css\quest_detail.css = css\quest_detail.css
+		css\s_detail.css = css\s_detail.css
 		css\search.css = css\search.css
 		css\simulator.css = css\simulator.css
 		css\simulator_sp.css = css\simulator_sp.css

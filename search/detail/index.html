@@ -34,26 +34,51 @@
         <!-- Main Contents -->
         <div class="Main">
             <dl class="List">
-                <dt id="dt_title"></dt>
+                <dt>基本データ</dt>
                 <dd>
+                    <div id="maindata" class="clearfix">
+                        <img id="bs_image" src="/image/noimage.png" />
+                        <p id="c_name"></p>
+                        <div id="bs_data">
+                            <p id="c_attr"></p>
+                            <span id="c_hp"></span> /
+                            <span id="c_atk"></span> /
+                            <span id="c_cost"></span> /
+                            <span id="c_breed"></span>
+                        </div>
+                        <div id="awakes"></div>
+                        <div id="Lawakes"></div>
+                        <div id="askills">
+                            <div id="as_1"></div>
+                            <div id="as_2"></div>
+                        </div>
+                        <div id="sskills">
+                            <div id="ss_1"></div>
+                            <div id="ss_2"></div>
+                        </div>
+                    </div>
 
-
-
-
+                    <!-- Adsense -->
+                    <div class="Adsense">
+                        <!-- advertise -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5156005489853976"
+                             data-ad-slot="6536828444"
+                             data-ad-format="auto"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </dd>
+                <dt>
+                    定義データ
+                    <button id="toggle_data" onclick="toggledata_push()">表示切り替え</button>
+                </dt>
+                <dd>
+                    <table id="datatable"></table>
                 </dd>
             </dl>
-            <!-- Adsense -->
-            <div class="Adsense">
-                <!-- advertise -->
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-5156005489853976"
-                     data-ad-slot="6536828444"
-                     data-ad-format="auto"></ins>
-                <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
         </div>
 
         <!-- Footer -->
@@ -78,6 +103,7 @@
         <script type="text/javascript" charset="UTF-8" src="/js/data/skill_awake.js"></script>
         <script type="text/javascript" charset="UTF-8" src="/js/data/cards.js"></script>
         <!-- search script -->
+        <script type="text/javascript" charset="UTF-8" src="/js/search/sch_filter.js"></script>
         <script type="text/javascript" charset="UTF-8" src="/js/search/sch_detail.js"></script>
         <script>
             // 表示時に実行

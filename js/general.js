@@ -171,7 +171,21 @@ function comma3(myNum){
 
 
 // アラビア数字をローマ数字に変換
-function int2roman(n){
-	var roman=[false, "Ⅰ", "Ⅱ", "Ⅲ", "Ⅳ", "Ⅴ", "Ⅵ", "Ⅶ", "Ⅷ", "Ⅸ"];
+function int2roman(n) {
+	var roman = {
+		0: false,
+		1: "Ⅰ",
+		2: "Ⅱ",
+		3: "Ⅲ", 
+		4: "Ⅳ", 
+		5: "Ⅴ", 
+		6: "Ⅵ", 
+		7: "Ⅶ", 
+		8: "Ⅷ", 
+		9: "Ⅸ",
+		10: "Ⅹ",
+		20: "ⅩⅩ",
+		30: "ⅩⅩⅩ",
+	}
 	return roman[n]
 }
