@@ -4,14 +4,14 @@ function sch_show_detail() {
 	// クエリ取得
 	var id_q = location.search;
 	if (!id_q || id_q == "") {
-		// 指定されていなかったらランダム取得してリダイレクト
+		// 指定されていなかったらランダム取得
 		var rand_ix = Math.floor(Math.random() * Cards.length);
-		var rand_id = Cards[rand_ix].cardno;
+		var id = Cards[rand_ix].cardno;
 
-		document.location = "/search/detail/?id=" + rand_id;
-		return false;
+		history.replaceState('', '', "/search/detail/?id=" + id);
+	} else {
+		var id = id_q.indexOf("?id=") == 0 ? id_q.substr(4) : -10;
 	}
-	var id = id_q.indexOf("?id=") == 0 ? id_q.substr(4) : -10;
 	// 抽出
 	var cs = $.grep(Cards, function (e) {
 		return e.cardno == id;

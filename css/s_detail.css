@@ -101,6 +101,12 @@ p.turn_ss1, p.turn_ss2{
     right: 3px;
 }
 
+@media screen and (max-width: 599px){
+	p#c_name, div#bs_data, div#awakes, div#Lawakes{
+		width: 100%;
+	}
+}
+
 
 /* table format */
 table{
