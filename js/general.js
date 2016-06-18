@@ -169,3 +169,9 @@ function comma3(myNum){
 	}
 }
 
+
+// アラビア数字をローマ数字に変換
+function int2roman(n){
+	var roman=[false, "Ⅰ", "Ⅱ", "Ⅲ", "Ⅳ", "Ⅴ", "Ⅵ", "Ⅶ", "Ⅷ", "Ⅸ"];
+	return roman[n]
+}
