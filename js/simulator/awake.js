@@ -85,7 +85,7 @@ function minus_legend_awake(cards, nows, own_no) {
 	// 増加分を減らす
 	$.each(own_statups, function (n, e) {
 		var now = nows[own_no];
-		now.maxhp -= e.up_hp;
+		now.maxhp = Math.max(now.maxhp - e.up_hp, 1);
 		now.nowhp = Math.min(now.maxhp, now.nowhp);
 		now.atk -= e.up_atk;
 	});
