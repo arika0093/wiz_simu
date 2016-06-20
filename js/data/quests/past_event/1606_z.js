@@ -1,6 +1,6 @@
 {
    id: "1606_z",
-   name: "イベントトーナメント 絶級",
+   name: "(2016/06)イベントトーナメント 絶級",
    desc: "",
    overlap: false,
    aprnum: 2,
