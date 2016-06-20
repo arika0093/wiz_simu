@@ -935,7 +935,7 @@ function ss_chain_cost_skill(ch, ss1, ss2) {
 **/
 function ss_chain_cond_skill(ch, ss1, ss2) {
 	return ss_condition({
-		name: "ss_chain_cond",
+		name: "ss_chain_cond_skill",
 		type: "chain",
 		p1: ch,
 		p2: ss1,
