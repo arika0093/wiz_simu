@@ -36924,6 +36924,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "魔道杯　爆",
+	is_dist: true
 	as1: {
 		desc: "水・雷属性の味方を回復、20チェインで更に回復(10%/25%)",
 		proc: [Heal(0.10, [0,1,1,0,0], 10), Heal(0.25, [0,1,1,0,0], 20)],
@@ -36969,6 +36970,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "魔道杯　爆",
+	is_dist: true
 	as1: {
 		desc: "水属性の味方を回復(12%)",
 		proc: Heal(0.12, [0,1,0,0,0], 0),
@@ -37014,6 +37016,7 @@ Cards = [{
 	species: [9],
 	islegend: false,
 	ape: "魔道杯　爆",
+	is_dist: true
 	as1: {
 		desc: "雷属性の敵単体へ特効5連撃(350%)",
 		proc: ChainDualAttrAttack(3.5, 0, 5, [0,0,1,0,0]),
@@ -37046,6 +37049,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "魔道杯　爆",
+	is_dist: true
 	as1: {
 		desc: "雷属性の敵単体へ特効ダメージ(400%)",
 		proc: ChainAttrAttack(4.0, 0, [0,0,1,0,0]),
@@ -37093,6 +37097,7 @@ Cards = [{
 	species: [9],
 	islegend: false,
 	ape: "魔道杯　爆",
+	is_dist: true
 	as1: {
 		desc: "3チェインで水属性の敵単体へ特効ダメージ(425%)",
 		proc: ChainAttrAttack(4.25, 3, [0,1,0,0,0]),
@@ -37125,6 +37130,7 @@ Cards = [{
 	species: [9],
 	islegend: false,
 	ape: "魔道杯　爆",
+	is_dist: true
 	as1: {
 		desc: "水属性の味方を回復(11%)",
 		proc: Heal(0.11, [0,1,0,0,0], 0),
