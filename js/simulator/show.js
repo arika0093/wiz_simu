@@ -419,7 +419,7 @@ function sim_show() {
 			}
 			$("#allystat_name").html((n + 1) + ": " +
 				"<a target='_blank' href='/search/detail/?id=" + card.cardno + "'>" + card.name +
-				"<br/><div style='text-align: right;'>HP: " + now.nowhp + "/" + now.maxhp + ", ATK: " + now.atk + "</div>");
+				"</a><br/><div style='text-align: right;'>HP: " + now.nowhp + "/" + now.maxhp + ", ATK: " + now.atk + "</div>");
 			$("#ally_tefflist").html(li_t);
 			// ----------------------------
 			// target select
