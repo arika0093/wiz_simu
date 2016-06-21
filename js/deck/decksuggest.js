@@ -434,7 +434,7 @@ $(function () {
 						+ e.name + "\")'>" + e.name + "</p> <a href='/search/detail/?id=" + e.cardno
 						+ "' target='_blank'>[詳細]</a></div>";
 				});
-				$("#search_result").html(rst_html);
+				$("#src_result").html(rst_html);
 			},
 			"閉じる": function () {
 				$(this).dialog("close");
@@ -600,7 +600,7 @@ function search_apply(name) {
 	$("#dialog_search select").map(function (i, e) {
 		e.selectedIndex = 0;
 	});
-	$("#search_result").html("");
+	$("#src_result").html("");
 	// close
 	$("#dialog_search").dialog('close');
 }

@@ -457,7 +457,7 @@ select.skill_sel{
 	padding: 0.25ex 0;
 	box-sizing: border-box;
 }
-div#search_result{
+div#src_result{
 	margin-top: .5ex;
 	border: 1px solid #BBB;
 	border-radius: 4px;

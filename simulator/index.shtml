@@ -278,7 +278,7 @@
         <select class="sch_ss_type skill_sel">
             <option value="-1">《SSの種類を指定》</option>
         </select>
-        <div id="search_result"></div>
+        <div id="src_result"></div>
     </div>
 	<div class="dialog_div" id="dialog_noselect" title="未選択">
 		<p>項目を選択してください。</p>
