@@ -420,12 +420,63 @@ div.ally_others{
 	box-sizing: border-box;
 }
 
+div.input_div{
+    position: relative;
+    float: left;
+    width: 80%;
+}
+
 input.decksel{
-	width: 80%;
+	width: 100%;
 	padding: 0px 2px;
-	float: left;
 	font-family: Meiryo, "ヒラギノ角ゴ Pro W3";
 	box-sizing: border-box;
+}
+
+img.srchimg{
+	position: absolute;
+    right: 2px;
+    top: 0px;
+    padding: 4px;
+}
+
+select#s_attr_m, select#s_attr_s{
+	padding: 0.25ex 0;
+	margin: 1ex 0.25ex;
+}
+select.skill_sel{
+	width: 100%;
+	margin: .5ex 0;
+	padding: 0.25ex 0;
+	box-sizing: border-box;
+}
+div#search_result{
+	margin-top: .5ex;
+	border: 1px solid #BBB;
+	border-radius: 4px;
+	height: 240px;
+	overflow-y: scroll;
+}
+div.item{
+	padding: 0.5ex 0;
+	margin: 0.5ex;
+	border-bottom: 1px solid #CCC;
+}
+div.item:hover{
+	background: #D0F0FF;
+}
+div.item:last-child{
+	border-bottom: 0px;
+}
+img.item_img{
+	width: 42px;
+	vertical-align: middle;
+}
+p.item_name{
+	display: inline;
+	margin: 0 .5ex;
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 button.ally_edit{

@@ -96,7 +96,10 @@
 								<div class="attr_none" id="ally01_attr_main">.</div>
 								<div class="attr_none" id="ally01_attr_sub">.</div>
                                 <div class="ally_others">
-                                    <input class="decksel" id="deck01" onchange="decksel(1)" />
+                                    <div class="input_div">
+                                        <input class="decksel" id="deck01" onchange="decksel(1)" />
+                                        <img onclick="search_click(1);" class="srchimg" src="/image/parts/search_tip.png" />
+                                    </div>
                                     <button class="ally_edit" tabindex="-1" id="ally01_edit" onclick="open_deckedit(0)">潜在結晶</button>
                                     <p class="ally_skill" id="ally01_as"></p>
                                     <p class="ally_skill" id="ally01_ss"></p>
@@ -110,11 +113,14 @@
 								<div class="attr_none" id="ally02_attr_main">.</div>
 								<div class="attr_none" id="ally02_attr_sub">.</div>
                                 <div class="ally_others">
-                                    <input class="decksel" id="deck02" onchange="decksel(2)" />
+                                    <div class="input_div">
+                                        <input class="decksel" id="deck02" onchange="decksel(2)" />
+                                        <img onclick="search_click(2);" class="srchimg" src="/image/parts/search_tip.png" />
+                                    </div>
                                     <button class="ally_edit" tabindex="-1" id="ally02_edit" onclick="open_deckedit(1)">潜在結晶</button>
                                     <p class="ally_skill" id="ally02_as"></p>
                                     <p class="ally_skill" id="ally02_ss"></p>
-                                </div>
+                                    </div>
 								<div class="ally_image">
 									<img class="chara_img" id="ally02_img" src="/image/noimage.png" onclick="open_manaedit(1)" />
 									<p class="ally_mana" id="ally02_mana"></p>
@@ -124,7 +130,10 @@
 								<div class="attr_none" id="ally03_attr_main">.</div>
 								<div class="attr_none" id="ally03_attr_sub">.</div>
                                 <div class="ally_others">
-                                    <input class="decksel" id="deck03" onchange="decksel(3)" />
+                                    <div class="input_div">
+                                        <input class="decksel" id="deck03" onchange="decksel(3)" />
+                                        <img onclick="search_click(3);" class="srchimg" src="/image/parts/search_tip.png" />
+                                    </div>
                                     <button class="ally_edit" tabindex="-1" id="ally03_edit" onclick="open_deckedit(2)">潜在結晶</button>
                                     <p class="ally_skill" id="ally03_as"></p>
                                     <p class="ally_skill" id="ally03_ss"></p>
@@ -138,11 +147,14 @@
 								<div class="attr_none" id="ally04_attr_main">.</div>
 								<div class="attr_none" id="ally04_attr_sub">.</div>
                                 <div class="ally_others">
-                                    <input class="decksel" id="deck04" onchange="decksel(4)" />
+                                    <div class="input_div">
+                                        <input class="decksel" id="deck04" onchange="decksel(4)" />
+                                        <img onclick="search_click(4);" class=" srchimg" src="/image/parts/search_tip.png" />
+                                    </div>
                                     <button class="ally_edit" tabindex="-1" id="ally04_edit" onclick="open_deckedit(3)">潜在結晶</button>
                                     <p class="ally_skill" id="ally04_as"></p>
                                     <p class="ally_skill" id="ally04_ss"></p>
-                                </div>
+                                    </div>
 								<div class="ally_image">
 									<img class="chara_img" id="ally04_img" src="/image/noimage.png" onclick="open_manaedit(3)" />
 									<p class="ally_mana" id="ally04_mana"></p>
@@ -152,11 +164,14 @@
 								<div class="attr_none" id="ally05_attr_main">.</div>
 								<div class="attr_none" id="ally05_attr_sub">.</div>
                                 <div class="ally_others">
-                                    <input class="decksel" id="deck05" onchange="decksel(5)" />
+                                    <div class="input_div">
+                                        <input class="decksel" id="deck05" onchange="decksel(5)" />
+                                        <img onclick="search_click(5);" class="srchimg" src="/image/parts/search_tip.png" />
+                                    </div>
                                     <button class="ally_edit" tabindex="-1" id="ally05_edit" onclick="open_deckedit(4)">潜在結晶</button>
                                     <p class="ally_skill" id="ally05_as"></p>
                                     <p class="ally_skill" id="ally05_ss"></p>
-                                </div>
+                                    </div>
 								<div class="ally_image">
 									<img class="chara_img" id="ally05_img" src="/image/noimage.png" onclick="open_manaedit(4)" />
 									<p class="ally_mana" id="ally05_mana"></p>
@@ -239,6 +254,32 @@
 		<p>このデッキを削除してよろしいですか？<br/>この動作は元に戻せません。</p>
 		<div class="dialog_div" id="_data_passing"></div>
 	</div>
+    <div class="dialog_div" id="dialog_search" title="精霊簡易検索">
+        <div id="search_target_no" class="dialog_div"></div>
+        <select id="s_attr_m">
+            <option value="-2" selected>《主属性を指定》</option>
+            <option value="0">火</option>
+            <option value="1">水</option>
+            <option value="2">雷</option>
+        </select> / 
+        <select id="s_attr_s">
+            <option value="-2" selected>《副属性を指定》</option>
+            <option value="-1">無し</option>
+            <option value="99">有り</option>
+            <option value="0">火</option>
+            <option value="1">水</option>
+            <option value="2">雷</option>
+            <option value="3">光</option>
+            <option value="4">闇</option>
+        </select>
+        <select class="sch_as_type skill_sel">
+            <option value="-1">《ASの種類を指定》</option>
+        </select>
+        <select class="sch_ss_type skill_sel">
+            <option value="-1">《SSの種類を指定》</option>
+        </select>
+        <div id="search_result"></div>
+    </div>
 	<div class="dialog_div" id="dialog_noselect" title="未選択">
 		<p>項目を選択してください。</p>
 	</div>
@@ -273,6 +314,10 @@
     <script type="text/javascript" charset="UTF-8" src="/js/deck/deckdata.js?           <!--#flastmod virtual='/js/deck/deckdata.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/deck/decksuggest.js?        <!--#flastmod virtual='/js/deck/decksuggest.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/deck/questsel.js?           <!--#flastmod virtual='/js/deck/questsel.js'-->"></script>
+    <!-- search script -->
+    <script type="text/javascript" charset="UTF-8" src="/js/search/sch_form_def.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/search/sch_form.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/search/sch_filter.js"></script>
 </div>
 </body>
 </html>

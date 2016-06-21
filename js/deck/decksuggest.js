@@ -380,6 +380,68 @@ $(function () {
 		},
 	});
 	// ----------------------
+	// Search Dialog
+	$("#dialog_search").dialog({
+		autoOpen: false,
+		width: 450,
+		modal: true,
+		open: function (e, ui) {
+			// close when click dialog outside
+			$('.ui-widget-overlay').bind('click', function () {
+				$("#dialog_search").dialog('close');
+			});
+			/* -- for position change
+			$("#dialog_search").parent().css({
+				position: "fixed",
+				top: "15px",
+			});
+			*/
+		},
+		buttons: {
+			"検索": function () {
+				var rst_html = "";
+				// 選択状況を取得
+				var m_attr = Number($("#s_attr_m").val());
+				var s_attr = Number($("#s_attr_s").val());
+				var as = schfl_textarr_from_msel(".sch_as_type option:selected");
+				var ss = schfl_textarr_from_msel(".sch_ss_type option:selected");
+				// obj生成
+				var obj = {
+					obj_type: "search/query",
+					attr_m: m_attr,
+					attr_s: s_attr,
+					as_types: as,
+					ss_types: ss,
+					// default value
+					name: "",
+					as_maxchain: -1,
+					as_ch_cond: 0,
+					ss_maxturn: -1,
+					ss_target: 0,
+					ss_search_ao: 0,
+					awake_types: [],
+				}
+				// Cardsの中から絞り込み検索
+				var rst_cards = schfl_grep(obj);
+				// imageno順にソート
+				rst_cards.sort(function (a, b) {
+					return (a.imageno < b.imageno ? 1 : -1);
+				});
+				// HTMLに変換,反映
+				$.each(rst_cards, function (i, e) {
+					rst_html += "<div class='item'><img class='item_img' src='"
+						+ get_image_url(e.imageno) + "' /><p class='item_name' onclick='search_apply(\""
+						+ e.name + "\")'>" + e.name + "</p> <a href='/search/detail/?id=" + e.cardno
+						+ "' target='_blank'>[詳細]</a></div>";
+				});
+				$("#search_result").html(rst_html);
+			},
+			"閉じる": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
+	// ----------------------
 	// Select Error
 	$("#dialog_noselect").dialog({
 		autoOpen: false,
@@ -519,6 +581,32 @@ function open_deckedit(n) {
 	$("#dialog_allyedit").dialog("open");
 }
 
+// 検索画面を開く
+function search_click(n) {
+	// index save
+	$("#search_target_no").text(n + "");
+	// open
+	$("#dialog_search").dialog("open");
+}
+// 精霊を指定する
+function search_apply(name) {
+	// get index
+	var no = Number($("#search_target_no").text());
+	// set
+	var apply_txb = $("#deck0" + no);
+	apply_txb.val(name);
+	decksel(no);
+	// selected reset
+	$("#dialog_search select").map(function (i, e) {
+		e.selectedIndex = 0;
+	});
+	$("#search_result").html("");
+	// close
+	$("#dialog_search").dialog('close');
+}
+
+
+
 // デッキ情報をリセットする
 function deck_reset_ready() {
 	$("#dialog_deck_reset").dialog("open");
@@ -540,3 +628,4 @@ function deck_save_ready() {
 	$("#decksave_name").val("");
 	$("#dialog_deck_save").dialog("open");
 }
+
