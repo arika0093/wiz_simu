@@ -119,7 +119,7 @@ function sim_show() {
 			var barWidth = 199 *hprate ;
 			var barColor
 			if(hprate>0.5){
-				barColor="lightblue"
+				barColor="lightgreen"
 			}else if(hprate>0.2){
 				barColor="orange"
 			}else{

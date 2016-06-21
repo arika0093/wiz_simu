@@ -44,7 +44,13 @@ var sfdef_as_namelist = {
 	"全体攻撃": {
 		type: "attack",
 		check: function (e) {
-			return e.isall && e.desc.indexOf("分散") > 0;
+			return e.isall && !e.isvariance;
+		},
+	},
+	"分散攻撃": {
+		type: "attack",
+		check: function (e) {
+			return e.isall && e.isvariance;
 		},
 	},
 	// エンハンス系
