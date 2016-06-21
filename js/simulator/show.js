@@ -108,6 +108,45 @@ function sim_show() {
 			$("#ally0" + (i + 1) + "_ss_button").attr("disabled", "disabled");
 		}
 	}
+	// make HPBar
+	var stats=document.getElementsByClassName("ally_stat")
+	for(var n=0; n<stats.length; n++){
+		if(stats[n].innerHTML!=""){
+			// 値の取得
+			var myStr = stats[n].innerHTML
+			var HpnowHpmaxAtk = myStr.match(/[0-9]{1,5}/g);
+			var hprate = HpnowHpmaxAtk[0] / HpnowHpmaxAtk[1];
+			var barWidth = 199 *hprate ;
+			var barColor
+			if(hprate>0.5){
+				barColor="lightblue"
+			}else if(hprate>0.2){
+				barColor="orange"
+			}else{
+				barColor="red"
+			}
+			// 表示エリアの再定義
+			stats[n].style.position="relative";
+			if(HpnowHpmaxAtk[0]==0){
+				stats[n].style.borderTop="1px solid #cccccc"
+				stats[n].style.borderLeft="1px solid #cccccc"
+			}else{
+				stats[n].style.borderTop="1px solid gray"
+				stats[n].style.borderLeft="1px solid gray"
+			}
+			stats[n].style.width="199px";
+			stats[n].style.height="17px";
+			stats[n].style.margin=0;
+			stats[n].style.textAlign="center";
+			stats[n].style.borderRadius ="2px";
+			stats[n].style.backgroundColor ="";
+			stats[n].innerText="";
+			// 棒グラフの棒の部分の表示
+			stats[n].innerHTML += "<div style=position:absolute;top:0px;left:0px;width:"+barWidth+"px;height:17px;background-color:"+barColor+";></div>"
+			// 元々の文字の表示
+			stats[n].innerHTML += "<div style=position:absolute;top:0px;left:0px;width:199px;height:17px;background-color:transparent;>"+myStr+"</div>"
+		}
+	}
 	// sim_enemy
 	var enemys_dat = GetNowBattleEnemys();
 	for (var i = 0; i < 3; i++) {
