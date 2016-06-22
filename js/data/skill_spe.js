@@ -53,6 +53,23 @@ function ss_damage_s(r, attrs, atn, ignore_counter) {
 }
 
 /**
+ * 敵単体に指定属性の連撃＆連撃数だけチェイン数プラス
+ * r:		攻撃威力(ex: 1.0		-> 効果値100)
+ * attrs:	攻撃属性(ex: [0,1]	-> 火,水)
+ * atn:		攻撃回数(ex: 3		-> 3連撃)
+**/
+function ss_damage_slash(r, attrs, atn) {
+	return ss_template({
+		name: "ss_damage_slash",
+		type: "damage",
+		target: "single",
+		p1: r,
+		p2: attrs,
+		p3: atn,
+	});
+}
+
+/**
  * 敵全体に割合ダメージ
  * r: ダメージ割合(ex: 0.25 -> 25%)
 **/

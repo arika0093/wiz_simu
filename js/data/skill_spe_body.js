@@ -36,6 +36,29 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
+	// 敵単体に連撃&チェインプラス
+	"ss_damage_slash": function (fld, n, cobj, params) {
+		var r = params[0];
+		var attrs = params[1];
+		var atkn = params[2];
+
+		var enemys = GetNowBattleEnemys();
+		for (var an = 0; an < atkn; an++) {
+			for (var a = 0; a < attrs.length; a++) {
+				// 攻撃
+				var atr = attrs[a];
+				var atk_order = auto_attack_order(enemys, atr, n);
+				ss_damage(fld, r, atr, atkn, n, atk_order, false);
+				// チェイン封印されてなければチェインプラス
+				if (fld.Status.chain_status != 2) {
+					fld.Status.chain += 1;
+					fld.log_push("チェインプラス(+1)");
+				}
+			}
+		}
+		return true;
+	},
+	// -----------------------------
 	// 敵全体にダメージ&残滅ダメージ
 	"ss_continue_damage": function (fld, n, cobj, params) {
 		var dmg_r = params[0];
@@ -634,6 +657,7 @@ var SpSkill = {
 	"ss_addchain": function (fld, n, cobj, params) {
 		var ch = params[0];
 		fld.Status.chain += ch;
+		fld.log_push("チェインプラス(+" + ch + ")");
 		return true;
 	},
 	// -----------------------------
@@ -642,7 +666,7 @@ var SpSkill = {
 		var t = params[0];
 		fld.Status.chain_status = 1;
 		fld.Status.chainstat_turn = t;
-		Field.log_push("Enemy[" + (n + 1) + "]: チェイン保護(" + t + "t)");
+		fld.log_push("Enemy[" + (n + 1) + "]: チェイン保護(" + t + "t)");
 		return true;
 	},
 	// -----------------------------
