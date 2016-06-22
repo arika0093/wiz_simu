@@ -5,9 +5,10 @@ p{
 }
 
 img#bs_image{
-	width: 305px;
+	width: 297px;
 	height: 386px;
 	float: left;
+	padding-left: 7px;
 }
 
 p#c_name{
@@ -27,6 +28,12 @@ div#bs_data{
 	padding-right: 1ex;
 	font-size: 0.9em;
 	border-right: 6px solid #292b56;
+}
+@media screen and (max-width: 599px){
+	div#bs_data{
+		width: 100%;
+		font-size: 0.8em;
+	}
 }
 
 div#awakes, div#Lawakes{

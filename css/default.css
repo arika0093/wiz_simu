@@ -428,7 +428,7 @@ div.input_div{
 
 input.decksel{
 	width: 100%;
-	padding: 0px 2px;
+	padding: 0px 20px 0px 2px;
 	font-family: Meiryo, "ヒラギノ角ゴ Pro W3";
 	box-sizing: border-box;
 }

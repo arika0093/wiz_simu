@@ -175,7 +175,7 @@ $(function () {
 				now.flags.damage_hits = [];
 				now.turn_effect = [];
 				// SS状態をリセット
-				now.ss_current = has_fastnum(card);	// SSチャージターン
+				now.ss_current = has_fastnum(ally);	// SSチャージターン
 				now.ss_isfirst = true;	// SSをまだ発動していないかどうか
 				now.ss_isboost = false;	// スキブを受けたかどうか
 				now.islegend = false;

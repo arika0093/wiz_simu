@@ -91,6 +91,12 @@ div.ally_ss button{
 	border-width: 1px 0px 0px 1px;
 	background-color: #FFF;
 }
+div.ally_ss button:hover{
+	background-color: #aef3ff;
+}
+div.ally_ss button:disabled{
+	background-color: #EAEAEA;
+}
 
 div.dead{
 	color:#cccccc;

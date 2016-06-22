@@ -421,6 +421,7 @@ div.input_div{
 
 input.decksel{
 	width: 100%;
+	padding-right: 24px;
 	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese";
 	box-sizing: border-box;
 }
