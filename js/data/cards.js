@@ -35991,7 +35991,7 @@ Cards = [{
 		Attr_statusup_sattr(0, 100, [1,0,0,0,0], 0, 100, [0,0,0,1,0]),
 	],
 },{
-	name: "純黒の象徴 アルドべリク・ゴドー",
+	name: "純黒の象徴 アルドベリク・ゴドー",
 	cardno: 6412,
 	imageno: 8267,
 	hp: 3256,
@@ -36009,7 +36009,7 @@ Cards = [{
 		desc: "<斬撃大魔術>8ターン溜めた後、スキル反射を無視し、水・闇属性の10連撃、さらに連撃数分チェインプラス(2000%)",
 		turn: 8,
 		charged: 8,
-		proc: [ss_damage_s(30, [1,4], 10, true), ss_addchain(20), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(20, [1,4], 10, true), ss_addchain(20), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -36031,7 +36031,7 @@ Cards = [{
 		desc: "<斬撃大魔術>8ターン溜めた後、スキル反射を無視し、水・闇属性の10連撃、さらに連撃数分チェインプラス(2000%)",
 		turn: 8,
 		charged: 8,
-		proc: [ss_damage_s(30, [1,4], 10, true), ss_addchain(20), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(20, [1,4], 10, true), ss_addchain(20), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,500),
