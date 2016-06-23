@@ -54,5 +54,10 @@ category_jp = {
 		jp: "素材クエスト",
 		is_dispsim: true,
 		sim_index: 30,
+	},
+    "normal": {
+		jp: "ノーマルクエスト",
+		is_dispsim: true,
+		sim_index: 30,
 	}
 }
