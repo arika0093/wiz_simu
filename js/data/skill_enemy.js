@@ -1047,7 +1047,7 @@ function makeDesc(mystr, order){
 			toStr = prop != "r2" ? toStr : "1体/" + toStr
 			toStr = prop != "r3" ? toStr : "2体/" + toStr
 			toStr = prop != "limit" ? toStr : "残り" + toStr + "T"
-			toStr = prop != "copyhp" ? toStr : "分裂時HP："+toStr
+			toStr = prop != "copyhp" ? toStr : "分裂時HP：" + (toStr * 100) + "％"
 			toStr = prop != "hpdown" ? toStr : "HP-" + toStr
 			toStr = prop != "desc" ? toStr : toStr+" "
 			toStr = prop != "healvalue" ? toStr : toStr+"回復"
