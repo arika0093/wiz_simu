@@ -18,10 +18,16 @@
                spec: 2,
                isStrong: false,
                move: {
+                  on_popup: [
+                     damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
+                  ],
                   on_move: [
                      s_enemy_attack(300, 3, 5, true),
                      s_enemy_attack(300, 3, 5, true)/* Error: 未定義のActionです： 6 */
                   ],
+				  on_move_angry: [
+                     s_enemy_attack(2000, 5, 1, true)
+				  ],
                   atrandom: false,
                   turn: 3,
                   wait: 1
@@ -52,10 +58,16 @@
                spec: 2,
                isStrong: false,
                move: {
+                  on_popup: [
+                     damage_switch(s_enemy_when_dead(0), m_enemy_angry(), true),
+                  ],
                   on_move: [
                      s_enemy_attack(300, 3, 5, true),
                      s_enemy_attack(300, 3, 5, true)/* Error: 未定義のActionです： 6 */
                   ],
+				  on_move_angry: [
+                     s_enemy_attack(3000, 5, 1, true)
+				  ],
                   atrandom: false,
                   turn: 3,
                   wait: 1
@@ -78,9 +90,14 @@
                move: {
                   on_popup: [
                      m_enemy_once(s_enemy_attack_ratio(0.9, 5, true))
+                     damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
                   ],
                   on_move: [
                      s_enemy_attack(200, 3, 5, true)
+                     s_enemy_attack(500, 5, 1, true),
+                  ],
+                  on_move_angry: [
+                     s_enemy_attack(2000, 5, 1, true),
                   ],
                   atrandom: false,
                   turn: 1,
@@ -97,9 +114,16 @@
                move: {
                   on_popup: [
                      m_enemy_once(skill_counter_func(s_enemy_all_sealed/* Warning: ターン数を確認してください： 3×3封印 */, "3体を3T封印", 100, false, 3, 4))
+                     damage_switch(s_enemy_when_after_turn(5), m_enemy_angry(), true)
                   ],
                   on_move: [
                      s_enemy_attack(300, 3, 5, true)
+                  ],
+                  on_angry: [
+                     s_enemy_poison(1000, 5, 5/*要検証*/),
+                  ],
+                  on_move_angry: [
+                     s_enemy_attack(400, 5, 1, true),
                   ],
                   atrandom: false,
                   turn: 1,
@@ -122,11 +146,16 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(damage_block_own(10000, 5))
+                     m_enemy_once(damage_block_own(10000, 5)),
+                     damage_switch(s_enemy_when_dead_l(), m_enemy_angry(), true),
                   ],
                   on_move: [
                      s_enemy_attack(400, 3, 5, true)
                   ],
+				  on_move_angry: [
+                     m_enemy_once(s_enemy_resurrection(1)),
+					 damage_block_own(10000, 5)
+				  ],
                   atrandom: false,
                   turn: 1,
                   wait: 1
@@ -187,10 +216,17 @@
                move: {
                   on_popup: [
                      m_enemy_once(s_enemy_attack_ratio(0.9, 5, true))
+                     damage_switch(s_enemy_when_after_turn(3), m_enemy_angry(), true)
                   ],
                   on_move: [
                      s_enemy_attack(500, 3, 5, true)
                   ],
+				  on_angry: [
+                     s_enemy_ss_sealed(5, 4),
+				  ],
+				  on_move_angry: [
+                     s_enemy_attack(650, 3, 5, true)
+				  ]
                   atrandom: false,
                   turn: 1,
                   wait: 1
@@ -206,9 +242,17 @@
                move: {
                   on_popup: [
                      m_enemy_once(skill_counter_func(s_enemy_attack, "3体に5回連続攻撃", 100, false, 714.2857142857143, 3, 7, true))
+                     damage_switch(s_enemy_when_hpdown(0.5), m_enemy_angry(), true)
                   ],
                   on_move: [
                      s_enemy_attack(1000, 3, 5, true)
+                  ],
+                  on_move_angry: [
+                     s_enemy_attack(1000, 5, 5, true),
+                     s_enemy_attack(1000, 5, 5, true),
+                     s_enemy_attack(1000, 5, 5, true),
+                     s_enemy_attack(1000, 5, 5, true),
+                     s_enemy_attack(1000, 5, 5, true)
                   ],
                   atrandom: false,
                   turn: 2,
