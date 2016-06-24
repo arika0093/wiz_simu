@@ -115,6 +115,7 @@ function _s_enemy_attack(fld, dmg, ei, ai, is_dmg_const) {
 				dmg = e.on_damage(fld, dmg, e.attr);
 			}
 		});
+		dmg *= e.statusup ? e.statusup : 1;
 		// 最終ダメージ
 		var l_dmg = dmg;
 	} else {
@@ -840,6 +841,24 @@ function m_enemy_angry() {
 			e.move.m_index = 0;
 		}
 	}, makeDesc("怒り"));
+}
+
+// ステータスアップ(効果値分だけダメージ増加)
+function s_enemy_statusup(isall, up_rate, turn) {
+	return m_create_enemy_move(function (fld, n) {
+		if (isall) {
+			var es = GetNowBattleEnemys();
+			for (var i = 0; i < es.length; i++) {
+				var e = es[i];
+				e.statusup = (e.statusup ? e.statusup + up_rate : e.statusup);
+				fld.log_push("Enemy[" + (n + 1) + "]: 敵ステータスアップ(" + up_rate + ")");
+			}
+		} else {
+			var e = GetNowBattleEnemys(n);
+			e.statusup = (e.statusup ? e.statusup + up_rate : e.statusup);
+			fld.log_push("Enemy[" + (n + 1) + "]: 敵ステータスアップ(" + up_rate + ")");
+		}
+	}, makeDesc("敵ステータスアップ"));
 }
 
 // 属性変化
