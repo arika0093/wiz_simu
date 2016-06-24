@@ -226,7 +226,7 @@
                      m_enemy_once(s_enemy_continue_damage(1, 500, 500))
                   ],
                   on_angry: [
-                     s_enemy_noeffect('s_enemy_statusup',(3, 1, 5))/* Warning: シミュレータのほう実装してください・・ */
+                     s_enemy_statusup(false, 1, 5)/* Warning: シミュレータのほう実装してください ← OK */
                   ],
                   on_move_angry: [
                      s_enemy_attack(600, 3, 5, true),

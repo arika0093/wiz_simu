@@ -53,9 +53,15 @@
                spec: 6,
                isStrong: false,
                move: {
+			      on_popup: [
+                     damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
+				  ],
                   on_move: [
-                     s_enemy_resurrection(1)
+                     s_enemy_attack(300, 5, 1, true)
                   ],
+				  on_angry_move: [
+                     s_enemy_resurrection(1)
+				  ],
                   atrandom: false,
                   turn: 2,
                   wait: 1
@@ -94,11 +100,19 @@
                move: {
                   on_popup: [
                      m_enemy_once(attack_counter(1500, 100)/* Warning: かなり怪しい物理カウンター */)
+                     damage_switch(s_enemy_when_dead_l(), m_enemy_angry(), true),
                   ],
                   on_move: [
                      s_enemy_ss_sealed(3, 4),
                      s_enemy_as_sealed(5, 4)
                   ],
+				  on_angry: [
+				     damage_block_own(10000, 3),
+				  ],
+				  on_move_angry: [
+                     s_enemy_attack(1500, 3, 1, true)
+                     s_enemy_attack(1000, 1, 1, true)
+				  ],
                   atrandom: false,
                   turn: 2,
                   wait: 2
@@ -136,12 +150,12 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(attack_counter(250, 3)/* Warning: かなり怪しい物理カウンター */)
+                     m_enemy_once(attack_counter(2800, 3))
                   ],
                   on_move: [
                      s_enemy_attack(100, 5, 5, true),
                      s_enemy_ss_sealed(3, 4),
-                     attack_counter(250, 3)/* Error: 未定義のActionです： 6 *//* Warning: かなり怪しい物理カウンター */
+                     s_enemy_attack(1000, 1, 1, true),
                   ],
                   atrandom: false,
                   turn: 2,
@@ -202,10 +216,20 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(attack_counter(1250, 3)/* Warning: かなり怪しい物理カウンター */)
+                     m_enemy_once(attack_counter(3000, 3))
                   ],
                   on_move: [
                      s_enemy_attack(500, 3, 5, true)
+                  ],
+				  on_angry: [
+				     attack_counter(3000, 3),
+				  ],
+                  on_move_angry: [
+                     s_enemy_attr_weaken([1,0,0,0,0], 2, 4),
+                     s_enemy_attack(600, 3, 5, true),
+                     s_enemy_attack(600, 3, 5, true),
+                     s_enemy_attack(600, 3, 5, true),
+                     s_enemy_attack(600, 3, 5, true)
                   ],
                   atrandom: false,
                   turn: 2,
