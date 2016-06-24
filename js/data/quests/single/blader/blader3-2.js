@@ -93,7 +93,7 @@
                      damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
                   ],
                   on_move: [
-                     s_enemy_attack(200, 3, 5, true)
+                     s_enemy_attack(200, 3, 5, true),
                      s_enemy_attack(500, 5, 1, true),
                   ],
                   on_move_angry: [
