@@ -110,7 +110,7 @@
 				     damage_block_own(10000, 3),
 				  ],
 				  on_move_angry: [
-                     s_enemy_attack(1500, 3, 1, true)
+                     s_enemy_attack(1500, 3, 1, true),
                      s_enemy_attack(1000, 1, 1, true)
 				  ],
                   atrandom: false,
