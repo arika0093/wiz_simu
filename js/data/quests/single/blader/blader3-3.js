@@ -258,7 +258,7 @@
             {
                name: "墜月咆吼 リュコス・ヴォーダン",
                hp: 1000000,
-               imageno: 06112,
+               imageno: 6112,
                attr: 1,
                spec: 1,
                isStrong: false,
