@@ -45,6 +45,11 @@ category_jp = {
 		is_dispsim: true,
 		sim_index: 20,
 	},
+    "blader": {
+		jp: "ブレイダー",
+		is_dispsim: true,
+		sim_index: 20,
+	},
     "burningtower": {
 		jp: "バーニングタワー",
 		is_dispsim: false,
