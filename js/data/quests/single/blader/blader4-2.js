@@ -99,7 +99,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(attack_counter(1500, 100)/* Warning: かなり怪しい物理カウンター */)
+                     m_enemy_once(attack_counter(1500, 100)/* Warning: かなり怪しい物理カウンター */),
                      damage_switch(s_enemy_when_dead_l(), m_enemy_angry(), true),
                   ],
                   on_move: [
