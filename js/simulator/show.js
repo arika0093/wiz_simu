@@ -26,7 +26,7 @@ function sim_show() {
 	// sim_info_status
 	$("#sim_info_status").html(Field.Quest.name +
 		" [<a target='_blank' href='/simulator/quest/?id=" +
-		Field.Quest.id +"'>敵行動</a>]");
+		Field.Quest.id +"'>敵行動データ</a>]");
 
 	// sim_result
 	if (is_ally_alldeath()) {
