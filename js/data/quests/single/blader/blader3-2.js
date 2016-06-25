@@ -89,7 +89,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_attack_ratio(0.9, 5, true))
+                     m_enemy_once(s_enemy_attack_ratio(0.9, 5, true)),
                      damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
                   ],
                   on_move: [
@@ -113,7 +113,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_all_sealed/* Warning: ターン数を確認してください： 3×3封印 */, "3体を3T封印", 100, false, 3, 4))
+                     m_enemy_once(skill_counter_func(s_enemy_all_sealed/* Warning: ターン数を確認してください： 3×3封印 */, "3体を3T封印", 100, false, 3, 4)),
                      damage_switch(s_enemy_when_after_turn(5), m_enemy_angry(), true)
                   ],
                   on_move: [
@@ -215,7 +215,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_attack_ratio(0.9, 5, true))
+                     m_enemy_once(s_enemy_attack_ratio(0.9, 5, true)),
                      damage_switch(s_enemy_when_after_turn(3), m_enemy_angry(), true)
                   ],
                   on_move: [
@@ -226,7 +226,7 @@
 				  ],
 				  on_move_angry: [
                      s_enemy_attack(650, 3, 5, true)
-				  ]
+				  ],
                   atrandom: false,
                   turn: 1,
                   wait: 1
@@ -241,7 +241,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_attack, "3体に5回連続攻撃", 100, false, 714.2857142857143, 3, 7, true))
+                     m_enemy_once(skill_counter_func(s_enemy_attack, "3体に5回連続攻撃", 100, false, 714.2857142857143, 3, 7, true)),
                      damage_switch(s_enemy_when_hpdown(0.5), m_enemy_angry(), true)
                   ],
                   on_move: [
