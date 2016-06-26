@@ -84,9 +84,6 @@
                   ],
                   on_move_angry: [
                      s_enemy_attack(450, 3, 5, true),
-                     s_enemy_attack(450, 3, 5, true),
-                     s_enemy_attack(450, 3, 5, true),
-                     s_enemy_attack(450, 3, 5, true),
                      s_enemy_attack(450, 3, 5, true)
                   ],
                   atrandom: false,
@@ -103,7 +100,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_continue_damage, "継続大魔術（固定値：6000）3T ", 100, false, 3, 1500, 1500)),
+                     m_enemy_once(skill_counter_func(s_enemy_continue_damage, "-", 100, false, 3, 1500, 1500)),
                      damage_switch(s_enemy_when_after_turn(3), m_enemy_angry(), true)
                   ],
                   on_move: [
@@ -113,9 +110,6 @@
                      s_enemy_chain_break()
                   ],
                   on_move_angry: [
-                     s_enemy_attack(600, 3, 5, true),
-                     s_enemy_attack(600, 3, 5, true),
-                     s_enemy_attack(600, 3, 5, true),
                      s_enemy_attack(600, 3, 5, true),
                      s_enemy_attack(600, 3, 5, true)
                   ],
@@ -139,9 +133,6 @@
                      damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true)
                   ],
                   on_move_angry: [
-                     s_enemy_attack(450, 3, 5, true),
-                     s_enemy_attack(450, 3, 5, true),
-                     s_enemy_attack(450, 3, 5, true),
                      s_enemy_attack(450, 3, 5, true),
                      s_enemy_attack(450, 3, 5, true)
                   ],
@@ -177,9 +168,6 @@
                   ],
                   on_move_angry: [
                      s_enemy_attack(600, 3, 5, true),
-                     s_enemy_attack(600, 3, 5, true),
-                     s_enemy_attack(600, 3, 5, true),
-                     s_enemy_attack(600, 3, 5, true),
                      s_enemy_attack(600, 3, 5, true)
                   ],
                   atrandom: false,
@@ -196,7 +184,10 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_continue_damage, "継続大魔術（固定値：4000）3T ", 100, false, 3, 1000, 1000))
+                     m_enemy_once(skill_counter_func(s_enemy_continue_damage, "-", 100, false, 3, 1000, 1000))
+                  ],
+                  on_move: [
+                     s_enemy_attack(750, 5, 1, true)
                   ],
                   atrandom: false,
                   turn: 1,
@@ -212,7 +203,10 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_ss_sealed, "5体のSPスキルを封印する（3T）", 100, false, 5, 4))
+                     m_enemy_once(skill_counter_func(s_enemy_ss_sealed, "-", 100, false, 5, 4))
+                  ],
+                  on_move: [
+                     s_enemy_attack(750, 5, 1, true)
                   ],
                   atrandom: false,
                   turn: 1,
@@ -245,9 +239,6 @@
                   ],
                   on_move_angry: [
                      s_enemy_attack(1200, 5, 5, true),
-                     s_enemy_attack(1200, 5, 5, true),
-                     s_enemy_attack(1200, 5, 5, true),
-                     s_enemy_attack(1200, 5, 5, true),
                      s_enemy_attack(1200, 5, 5, true)
                   ],
                   atrandom: false,
@@ -264,7 +255,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_attack, "5体に5連撃（DMG+100%）", 100, false, 1000, 5, 5, true)),
+                     m_enemy_once(skill_counter_func(s_enemy_attack, "-", 100, false, 1000, 5, 5, true)),
                      damage_switch(s_enemy_when_hpdown(0.5), m_enemy_angry(), true)
                   ],
                   on_move: [
@@ -274,9 +265,6 @@
                      s_enemy_attack_ratio(0.9, 5, true)
                   ],
                   on_move_angry: [
-                     s_enemy_attack(1000, 5, 5, true),
-                     s_enemy_attack(1000, 5, 5, true),
-                     s_enemy_attack(1000, 5, 5, true),
                      s_enemy_attack(1000, 5, 5, true),
                      s_enemy_attack(1000, 5, 5, true)
                   ],
