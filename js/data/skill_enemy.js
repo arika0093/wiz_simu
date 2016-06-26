@@ -28,7 +28,7 @@ function m_enemy_once(e_skl) {
 // nターンに1回行動
 function m_enemy_nturn(e_skl, n) {
 	e_skl.interval = n;
-	if(arguments.callee.caller.name!="m_enemy_once"){
+	if(n!=999){
 		var mdesc=e_skl.mdesc
 		mdesc = mdesc.slice(-1) == ")" ? mdesc.slice(0, -1)+"、" : mdesc+"("
 		e_skl.mdesc =　mdesc + n + "ターンに１回)"

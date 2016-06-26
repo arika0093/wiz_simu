@@ -35,6 +35,8 @@
                isStrong: false,
                move: {
                   on_move: [
+                     s_enemy_attack(750, 5, 1, true),
+                     s_enemy_attack(750, 5, 1, true),
                      s_enemy_chain_sealed(4)
                   ],
                   atrandom: false,
@@ -51,6 +53,7 @@
                isStrong: false,
                move: {
                   on_move: [
+                     s_enemy_attack(1000, 5, 1, true),
                      s_enemy_chain_break()
                   ],
                   atrandom: false,
@@ -74,7 +77,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_panicshout, "混乱（ターゲット対象味方のみ： 600ダメージ） 5体×3T", 100, false, 600, 5, 4))
+                     m_enemy_once(skill_counter_func(s_enemy_panicshout, "-", 100, false, 600, 5, 3))
                   ],
                   on_move: [
                      s_enemy_attack(300, 3, 5, true)
@@ -94,7 +97,7 @@
                move: {
                   on_move: [
                      m_enemy_once(s_enemy_poison(700, 5, 4)),
-                     s_enemy_poison(700, 5, 4)
+                     s_enemy_attack(750, 5, 1, true)
                   ],
                   atrandom: false,
                   turn: 1,
@@ -113,7 +116,7 @@
                      m_enemy_once(damage_block_own(10000, 4))
                   ],
                   on_move: [
-                     damage_block_own(10000, 4)
+                     s_enemy_attack(1000, 5, 1, true)
                   ],
                   atrandom: false,
                   turn: 2,
@@ -136,7 +139,7 @@
                isStrong: true,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_all_sealed/* Warning: ターン数を確認してください： 5体を完全に封印する（3T） */, "5体を完全に封印する（3T）", 100, false, 5, 4))
+                     m_enemy_once(skill_counter_func(s_enemy_all_sealed, "-", 100, false, 5, 4))
                   ],
                   on_move: [
                      s_enemy_force_reservoir(),
@@ -157,7 +160,7 @@
                move: {
                   on_move: [
                      m_enemy_once(s_enemy_continue_damage(3, 1000, 1000)),
-                     s_enemy_continue_damage(3, 1000, 1000)
+                     s_enemy_attack(1000, 5, 1, true)
                   ],
                   atrandom: false,
                   turn: 1,
@@ -203,7 +206,7 @@
                      m_enemy_once(damage_block_own(30000, 3))
                   ],
                   on_move: [
-                     damage_block_own(30000, 3)
+                     s_enemy_attack(1000, 5, 1, true)
                   ],
                   atrandom: false,
                   turn: 1,
@@ -219,25 +222,22 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_panicshout, "混乱（ターゲット対象味方のみ： 900ダメージ） 5体×3T", 100, false, 900, 5, 4)),
+                     m_enemy_once(skill_counter_func(s_enemy_panicshout, "-", 100, false, 900, 5, 3)),
                      damage_switch(s_enemy_when_hpdown(0.6), m_enemy_angry(), true)
                   ],
                   on_move: [
+                     s_enemy_attack(1500, 5, 1, true),
                      m_enemy_once(s_enemy_continue_damage(1, 500, 500))
-                  ],
-                  on_angry: [
-                     s_enemy_statusup(false, 1, 5)/* Warning: シミュレータのほう実装してください ← OK */
-                  ],
-                  on_move_angry: [
-                     s_enemy_attack(600, 3, 5, true),
-                     s_enemy_attack(600, 3, 5, true),
-                     s_enemy_attack(600, 3, 5, true),
-                     s_enemy_attack(600, 3, 5, true),
-                     s_enemy_attack(600, 3, 5, true)
                   ],
                   atrandom: false,
                   turn: 1,
-                  wait: 1
+                  wait: 1,
+                  on_angry: [
+                     s_enemy_statusup(true, 100, 5)
+                  ],
+                  on_move_angry: [
+                     s_enemy_attack(600, 3, 5, true)
+                  ]
                }
             },
             {
@@ -249,11 +249,12 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_discharge, "スペシャルスキルの発動ターンを99遅める", 100, false, 5, 99))
+                     m_enemy_once(skill_counter_func(s_enemy_discharge, "-", 100, false, 5, 99))
                   ],
                   on_move: [
-                     s_enemy_panicshout(900, 5, 3),
+                     s_enemy_panicshout(900, 5, 2),
                      s_enemy_poison(1000, 5, 4),
+                     s_enemy_attack(500, 5, 1, true),
                      s_enemy_attack(500, 5, 1, true)
                   ],
                   atrandom: false,
