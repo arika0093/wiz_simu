@@ -37,8 +37,6 @@
                move: {
                   on_move: [
                      m_enemy_once(s_enemy_force_reservoir()),
-                     m_enemy_once(s_enemy_attack(4000, 5, 1, true)),
-                     s_enemy_force_reservoir(),
                      s_enemy_attack(4000, 5, 1, true)
                   ],
                   atrandom: false,
@@ -99,16 +97,12 @@
                      damage_switch(s_enemy_when_dead_l(), m_enemy_angry(), true)
                   ],
                   on_move: [
-                     attack_counter(1000, 4)
+                     s_enemy_attack(300, 5, 1, true)
                   ],
                   on_angry: [
                      s_enemy_deathlimit(5, 4)
                   ],
                   on_move_angry: [
-                     s_enemy_attack(120, 3, 5, true),
-                     s_enemy_attack(120, 3, 5, true),
-                     s_enemy_attack(120, 3, 5, true),
-                     s_enemy_attack_deadgrudge(300, 600, 900)/* Warning: ダメージについて十分検証してください */,
                      s_enemy_attack(120, 3, 5, true)
                   ],
                   atrandom: false,
@@ -149,7 +143,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_continue_damage, "継続大魔術（固定値：4000）3T ", 100, false, 3, 1000, 1000))
+                     m_enemy_once(skill_counter_func(s_enemy_continue_damage, "-", 100, false, 3, 1000, 1000))
                   ],
                   on_move: [
                      s_enemy_attack(230, 3, 5, true)
@@ -168,7 +162,7 @@
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(500, 5, 1, true)/*case2*/
+                     s_enemy_attack(500, 5, 1, true)/* Warning: 分裂待機があるはずです。 */
                   ],
                   on_popup: [
                      damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true),
@@ -178,9 +172,6 @@
                      s_enemy_ss_sealed(3, 4)
                   ],
                   on_move_angry: [
-                     s_enemy_attack(200, 3, 5, true),
-                     s_enemy_attack(200, 3, 5, true),
-                     s_enemy_attack(200, 3, 5, true),
                      s_enemy_attack(200, 3, 5, true),
                      s_enemy_attack(200, 3, 5, true)
                   ],
@@ -221,16 +212,13 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_attack, "5体に10連撃（DMG+500%）", 100, false, 750, 5, 10, true)),
+                     m_enemy_once(skill_counter_func(s_enemy_attack, "-", 100, false, 750, 5, 10, true)),
                      damage_switch(s_enemy_when_hpdown(0.5), m_enemy_angry(), true)
                   ],
                   on_move: [
                      s_enemy_attack(300, 5, 5, true)
                   ],
                   on_move_angry: [
-                     s_enemy_attack(900, 5, 5, true),
-                     s_enemy_attack(900, 5, 5, true),
-                     s_enemy_attack(900, 5, 5, true),
                      s_enemy_attack(900, 5, 5, true),
                      s_enemy_attack(900, 5, 5, true)
                   ],
