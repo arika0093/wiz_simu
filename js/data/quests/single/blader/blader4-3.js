@@ -35,7 +35,7 @@
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(2000, 1, 1, true)/*case2*/
+                     s_enemy_attack(2000, 1, 1, true)/* Warning: ac2con5（分裂待機など） */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -51,7 +51,7 @@
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(250, 5, 1, true)/*case2*/
+                     s_enemy_attack(250, 5, 1, true)/* Warning: ac2con5（分裂待機など） */
                   ],
                   on_popup: [
                      damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true)
@@ -208,7 +208,7 @@
                      damage_switch(s_enemy_when_after_turn(3), m_enemy_angry(), true)
                   ],
                   on_move: [
-                     attack_counter_dual(1000, 4)
+                     s_enemy_attack(500, 5, 1, true)
                   ],
                   on_angry: [
                      damage_block_own(20000, 4)
@@ -234,7 +234,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_continue_damage, "継続大魔術（固定値：6000）4T", 100, false, 4, 1500, 1500)),
+                     m_enemy_once(skill_counter_func(s_enemy_continue_damage, "-", 100, false, 4, 1500, 1500)),
                      damage_switch(s_enemy_when_hpdown(0.5), m_enemy_angry(), true)
                   ],
                   on_move: [
