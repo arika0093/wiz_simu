@@ -37378,7 +37378,7 @@ Cards = [{
 	ss2: {
 		desc: "〈蘇生〉味方全体のHPを完全に回復し、さらに火属性の味方を蘇生(50%)、20チェインで100%蘇生に",
 		turn: 10,
-		proc: [[ss_heal(1), ss_resurrection([1,0,0,0,0], ss_chain_cond(20, 1, 0.5))]],
+		proc: [ss_heal(1), ss_resurrection([1,0,0,0,0], ss_chain_cond(20, 1, 0.5))],
 	},
 	Lawake: [
 		Statusup(700,0),
