@@ -107,7 +107,7 @@ function schfl_grep(obj) {
 				rst = rst && (e.attr[0] == obj.attr_m);
 			}
 			if (obj.attr_s >= -1) {
-				rst = rst && (e.attr[1] == obj.attr_s || (obj.attr_s >= 5 && e.attr[1] >= 0));
+				rst = rst && (e.attr[1] == obj.attr_s || (obj.attr_s == 20 && e.attr[1] >= 3) || (obj.attr_s >= 99 && e.attr[1] >= 0));
 			}
 		} else {
 			// 主属性 = 副属性指定時はOR検索
@@ -226,38 +226,55 @@ function schfl_grep_ss(obj, ss, card) {
 	rst = rst && (obj.ss_maxturn < 0 || obj.ss_maxturn >= ss.turn - fsturn);
 	// 各SS定義についてチェック
 	var checksheet = $.extend(true, [], obj.ss_types);
-	var grp_ss = $.grep(ss.proc, function (e) {
+	var grp_ss = $.grep(ss.proc, function (eb) {
 		var grep_rst = true;
-		if (!e) {
+		if (!eb) {
 			return false;
 		}
-		// 条件SSのそれぞれについて確認
-		if (obj.ss_types && obj.ss_types.length > 0) {
-			var greps = $.grep(obj.ss_types, function (ss_type) {
-				if (obj.ss_types.length <= 0) {
-					return true;
+		// 条件分岐SSなら、それぞれの引数についてチェック
+		var es = [];
+		if (eb.is_cond) {
+			var eb_ps = [eb.p1, eb.p2, eb.p3, eb.p4];
+			$.each(eb_ps, function (i, g) {
+				if (g && g.is_skill) {
+					es.push(g);
 				}
-				var sst = sfdef_ss_namelist[ss_type];
-				var ischeck = false;
-				// type一致ならcheck関数を通す
-				if (!$.isArray(sst.proc)) {
-					ischeck = (e.name == sst.proc || (e.name == sst && !sst.proc) || sst.proc === null);
-				} else {
-					ischeck = $.grep(sst.proc, function (f) {
-						return e.name == f;
-					}).length > 0;
-				}
-				if (ischeck) {
-					var rst = !sst.check || sst.check(e, ss);
-					if (rst) {
-						checksheet.splice(checksheet.indexOf(ss_type), 1);
-					}
-					return rst;
-				}
-				return false;
 			});
-			grep_rst = grep_rst && (obj.ss_types.length <= 0 || greps.length > 0);
+		} else {
+			es = [eb];
 		}
+		$.each(es, function (i, e) {
+			// 条件SSのそれぞれについて確認
+			if (obj.ss_types && obj.ss_types.length > 0) {
+				var greps = $.grep(obj.ss_types, function (ss_type) {
+					if (obj.ss_types.length <= 0) {
+						return true;
+					}
+					var sst = sfdef_ss_namelist[ss_type];
+					var ischeck = false;
+					// type一致ならcheck関数を通す
+					if (!$.isArray(sst.proc)) {
+						ischeck = (e.name == sst.proc || (e.name == sst && !sst.proc) || sst.proc === null);
+					} else {
+						ischeck = $.grep(sst.proc, function (f) {
+							return e.name == f;
+						}).length > 0;
+					}
+					if (ischeck) {
+						var rst = !sst.check || sst.check(e, ss);
+						if (rst) {
+							var sp_index = checksheet.indexOf(ss_type);
+							if(sp_index >= 0){
+								checksheet.splice(sp_index, 1);
+							}
+						}
+						return rst;
+					}
+					return false;
+				});
+				grep_rst = grep_rst && (obj.ss_types.length <= 0 || greps.length > 0);
+			}
+		});
 		// grep result
 		return grep_rst;
 	});
