@@ -170,6 +170,17 @@ function Awake_SpecialSkill(spskill, p1, p2, p3, p4) {
 	};
 }
 
+// 通常エリアでのみステアップ
+function Guild_statusup(hp, atk) {
+	return {
+		type: "own_status_up_guild",
+		up_hp: hp,
+		up_atk: atk,
+		name: "(通常エリア)" + (hp != 0 ? "HP" : "攻撃力") + "アップ" + int2roman(Math.max(hp, atk) / 100),
+		desc: "通常エリアでのみ" + (hp != 0 ? "HP" : "攻撃力") + "が" + Math.max(hp, atk) + "アップする"
+	};
+}
+
 // その他、試走に影響を及ぼさない潜在
 function Awake_noeffect(name, efv) {
 	return {
