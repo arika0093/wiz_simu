@@ -1944,6 +1944,7 @@ Cards = [{
 	cost: 48,
 	attr: [0, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		NEFTJOD(30),
 		Statusup(0, 200),
@@ -3922,6 +3923,7 @@ Cards = [{
 	cost: 46,
 	attr: [0, 1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Panel_boost([1,0,0,0,0], 1),
 		Fastskill(1),
@@ -9640,6 +9642,7 @@ Cards = [{
 	cost: 48,
 	attr: [1, 0],
 	species: [9],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
@@ -9772,6 +9775,7 @@ Cards = [{
 	cost: 45,
 	attr: [1, 2],
 	species: [9],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
@@ -10876,6 +10880,7 @@ Cards = [{
 	cost: 45,
 	attr: [2, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Panel_boost([0, 0, 1, 0, 0], 1),
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0]),
@@ -10920,6 +10925,7 @@ Cards = [{
 	cost: 46,
 	attr: [2, 1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Panel_boost([0, 0, 1, 0, 0], 2),
 		Attr_statusup(100, 0, [0, 1, 1, 0, 0]),
@@ -33837,6 +33843,7 @@ Cards = [{
 	attr: [2,3],
 	species: [9],
 	islegend: true,
+	disable: true,
 	as1: {
 		desc: "雷属性の味方を回復、7チェインでさらに回復(10%/17%)",
 		proc: [Heal(0.10, [0,0,1,0,0], 0), Heal(0.17, [0,0,1,0,0], 7)],
