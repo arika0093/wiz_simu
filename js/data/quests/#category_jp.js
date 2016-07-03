@@ -37,6 +37,11 @@ category_jp = {
 	},
     "suzaku3": {
 		jp: "スザクⅢ",
+		is_dispsim: false,
+		sim_index: 11,
+	},
+    "usg": {
+		jp: "アルティメットサマーガールズ",
 		is_dispsim: true,
 		sim_index: 11,
 	},
