@@ -6,7 +6,7 @@ category_jp = {
     "past_event": {
 		jp: "過去のイベントトーナメント",	// jp: カテゴリ名
 		is_dispsim: true,			// is_dispsim: 試走クエスト選択に表示させるかどうか
-		sim_index: 3,				// sim_index: 表示させる場合の表示順(昇順)
+		sim_index: 50,				// sim_index: 表示させる場合の表示順(昇順)
 	},
     "tornament": {
 		jp: "トーナメント",
@@ -47,12 +47,12 @@ category_jp = {
 	},
     "abcd": {
 		jp: "アビスコード",
-		is_dispsim: true,
+		is_dispsim: false,
 		sim_index: 20,
 	},
     "blader": {
 		jp: "ブレイダー",
-		is_dispsim: true,
+		is_dispsim: false,
 		sim_index: 20,
 	},
     "burningtower": {

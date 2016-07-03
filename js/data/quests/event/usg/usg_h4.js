@@ -1,6 +1,6 @@
 {
    id: "usg_h4",
-   name: "アルティメットガールズ2『到達級』",
+   name: "到達級 逃げ切れ、魔道士",
    desc: "",
    overlap: false,
    aprnum: 4,
@@ -178,7 +178,7 @@
                   ],
                   on_move: [
                      s_enemy_attack(150, 3, 4, true),
-                     /* Error: 未定義のスキルです：{"id":110019,"name":"タイムアタックスコア強奪（20秒）","type":35,"target":0,"targetNum":0,"attrFire":0,"attrWater":0,"attrThunder":0,"attrLight":0,"attrDark":0,"paramType":2,"param1":20,"param2":0,"param3":0,"info":"タイムアタックスコア強奪（20秒）","minVersion":0,"astVerId":1,"vcType":1,"used":true} */
+                     s_enemy_noeffect("タイム減少(20秒)")
                   ],
                   atrandom: false,
                   turn: 1,
@@ -205,7 +205,7 @@
                   ],
                   on_move: [
                      m_enemy_once(s_enemy_attack(300, 3, 5, true)),
-                     /* Error: 未定義のスキルです：{"id":110019,"name":"タイムアタックスコア強奪（20秒）","type":35,"target":0,"targetNum":0,"attrFire":0,"attrWater":0,"attrThunder":0,"attrLight":0,"attrDark":0,"paramType":2,"param1":20,"param2":0,"param3":0,"info":"タイムアタックスコア強奪（20秒）","minVersion":0,"astVerId":1,"vcType":1,"used":true} */
+                     s_enemy_noeffect("タイム減少(20秒)")
                   ],
                   atrandom: false,
                   turn: 1,

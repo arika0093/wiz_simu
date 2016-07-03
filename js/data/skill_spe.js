@@ -660,7 +660,7 @@ function ss_panel_change(attr) {
 function ss_astime_ext(sec, t) {
 	return ss_template({
 		name: "ss_astime_ext",
-		type: "panel_change",
+		type: "others",
 		p1: sec,
 		p2: t,
 	});
@@ -673,7 +673,7 @@ function ss_astime_ext(sec, t) {
 function ss_answer_narrow(num) {
 	return ss_template({
 		name: "ss_answer_narrow",
-		type: "panel_change",
+		type: "others",
 		p1: num,
 	});
 }
@@ -685,7 +685,7 @@ function ss_answer_narrow(num) {
 function ss_answer_foresight() {
 	return ss_template({
 		name: "ss_answer_foresight",
-		type: "panel_change",
+		type: "others",
 	});
 }
 

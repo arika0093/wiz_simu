@@ -711,6 +711,46 @@ function s_enemy_attrguard_all(attr, rate, turn) {
 	}, makeDesc("全体軽減"));
 }
 
+// 敵属性吸収
+function s_enemy_attr_absorb(attr, rate, turn) {
+	return m_create_enemy_move(function (fld, n) {
+		var enemy = GetNowBattleEnemys(n);
+		// 属性表記
+		var attr_text = "";
+		for (var i = 0; i < attr.length; i++) {
+			if (attr[i] > 0) {
+				if (attr_text != "") {
+					attr_text += "/";
+				}
+				attr_text += fld.Constants.Attr[i];
+			}
+		}
+		// 追加
+		enemy.turn_effect.push({
+			desc: attr_text + "属性吸収(" + (rate * 100) + "%)",
+			type: "attr_absorb",
+			icon: null,
+			isdual: false,
+			turn: turn,
+			lim_turn: turn,
+			priority: 4,
+			effect: function () { },
+			on_damage: function (fld, dmg, atr_i) {
+				if (attr[atr_i] > 0) {
+					// 吸収
+					var ed = GetNowBattleEnemys(n);
+					ed.nowhp = Math.max(ed.hp, ed.nowhp + dmg * rate);
+					Field.log_push("Enemy[" + (n + 1) + "]: 属性吸収(HP+" + (dmg * rate) + "t)");
+					return 0;
+				} else {
+					return dmg;
+				}
+			}
+		});
+		Field.log_push("Enemy[" + (n + 1) + "]: [" + attr_text + "]属性吸収(" + (rate * 100) + "%/" + turn + "t)");
+	}, makeDesc("属性吸収"));
+}
+
 // 鉄壁防御
 function impregnable(t) {
 	return m_create_enemy_move(function (fld, n) {
@@ -937,7 +977,10 @@ function s_enemy_chain_sealed(t) {
 // -----------------------------------
 // 何もしない
 function s_enemy_noeffect(mdesc) {
-	return m_create_enemy_move(function () {}, mdesc);
+	return m_create_enemy_move(function (fld, n) {
+		// log output
+		fld.log_push("Enemy[" + (n + 1) + "]: " + mdesc);
+	}, mdesc);
 }
 
 // スキルディスチャージ
