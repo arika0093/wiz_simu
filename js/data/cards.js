@@ -20548,8 +20548,8 @@ Cards = [{
 		Panel_boost([1,0,0,0,0,],2),
 		NEFTJOD(30),
 		Statusup(200,0),
-		Spec_statusup(200,0, [4,]),
-		Spec_statusup(0,200, [4,]),
+		Spec_statusup(300,0, [4,]),
+		Spec_statusup(0,300, [4,]),
 		Abstate_invalid("as_sealed"),
 	],
 	as2: {
@@ -38121,7 +38121,7 @@ Cards = [{
 	ape: "続超魔道列伝　アルティメットサマーガールズ！",
 	as1: {
 		desc: "水属性の味方の攻撃力をアップ(30%)し、6チェインでダメージアップ(400%)",
-		proc: [ChainEnhance([0.3, [0,1,0,0,0], 0), ChainAttack(4.0, 6)],
+		proc: [ChainEnhance(0.3, [0,1,0,0,0], 0), ChainAttack(4.0, 6)],
 	},
 	ss1: {
 		desc: "<弱体化大魔術>敵単体へ水属性のダメージ(400%)、さらに5ターンの間、敵の防御力を弱体化(30%)",
@@ -38142,7 +38142,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "水属性の味方の攻撃力をアップ(30%)し、6チェインでダメージアップ(500%)",
-		proc: [ChainEnhance([0.3, [0,1,0,0,0], 0), ChainAttack(5.0, 6)],
+		proc: [ChainEnhance(0.3, [0,1,0,0,0], 0), ChainAttack(5.0, 6)],
 	},
 	ss2: {
 		desc: "<弱体化大魔術>スキル反射を無視し、敵単体へ水属性のダメージ(800%)、さらに10ターンの間、敵の防御力を弱体化(30%)",
