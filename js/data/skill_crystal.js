@@ -17,11 +17,19 @@ var Awake_crystal_lists = [{
 	imple: Costdown,
 	param1: "{0}",
 }, {
-	genre: "威力増加",
+	genre: "SS変化",
 	name: "SS効果値アップ",
 	imple: Awake_SkillRateup,
 	param1: "{0}",
 	param2: 0,
+}, {
+	name: "SS発動ターン短縮",
+	imple: Fastskill,
+	param1: "{0}",
+}, {
+	name: "SSのヒット回数増加",
+	imple: Awake_multihitadd,
+	param1: "{0}",
 }, {
 	type: "覇眼戦線2",
 	name: "煌眼の欠片(L時味方ATK+100/25%回復)",
@@ -123,3 +131,12 @@ function Awake_damage_multiple(rate) {
 		rate: rate,
 	};
 }
+
+// Hit回数増加
+function Awake_multihitadd(n) {
+	return {
+		type: "Awake_multihitadd",
+		up: n,
+	};
+}
+

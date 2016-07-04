@@ -157,6 +157,17 @@ function Awake_SkillRateup(upval, skl_type) {
 	};
 }
 
+// 通常エリアでのみステアップ
+function Guild_statusup(hp, atk) {
+	return {
+		type: "own_status_up_guild",
+		up_hp: hp,
+		up_atk: atk,
+		name: "ギルドマスターの" + (hp != 0 ? "誓い" : "誇り") + int2roman(Math.max(hp, atk) / 100),
+		desc: "通常エリアでのみ" + (hp != 0 ? "HP" : "攻撃力") + "が" + Math.max(hp, atk) + "アップする"
+	};
+}
+
 // (L時発動)スペシャルスキルを発動
 function Awake_SpecialSkill(spskill, p1, p2, p3, p4) {
 	return {
@@ -167,17 +178,6 @@ function Awake_SpecialSkill(spskill, p1, p2, p3, p4) {
 		p3: p3,
 		p4: p4,
 		name: "SP発動",
-	};
-}
-
-// 通常エリアでのみステアップ
-function Guild_statusup(hp, atk) {
-	return {
-		type: "own_status_up_guild",
-		up_hp: hp,
-		up_atk: atk,
-		name: "(通常エリア)" + (hp != 0 ? "HP" : "攻撃力") + "アップ" + int2roman(Math.max(hp, atk) / 100),
-		desc: "通常エリアでのみ" + (hp != 0 ? "HP" : "攻撃力") + "が" + Math.max(hp, atk) + "アップする"
 	};
 }
 

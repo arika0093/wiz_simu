@@ -23,8 +23,13 @@ var SpSkill = {
 		var attrs = params[1];
 		var atkn = params[2];
 		var ignore_counter = params[3];
-
 		var enemys = GetNowBattleEnemys();
+		// 潜在結晶でのHit回数増加取得
+		var card = fld.Allys.Deck[n];
+		$.each(pickup_awakes(card, "Awake_multihitadd", false), function (i, e) {
+			atkn += e.up;
+		})
+		// 処理
 		for (var an = 0; an < atkn; an++) {
 			for (var a = 0; a < attrs.length; a++) {
 				// 攻撃
