@@ -146,6 +146,38 @@ function poison(dm, t) {
 }
 
 /**
+ * 敵単体に無に帰す効果を付与する
+ * turn: 即死効果発動ターン数
+**/
+function ss_death_limit(turn) {
+	return ss_template({
+		name: "ss_death_limit",
+		type: "turn_effect",
+		subtype: "death_limit",
+		target: "single",
+		p1: turn,
+	});
+}
+
+/**
+ * 敵単体に属性弱体化効果を付与する
+ * attr: 弱体化対象属性(ex: [1,0,0,0,0] -> 火 / null: 全属性)
+ * rate: 効果値(ex: 30% -> 0.3)
+ * turn: 継続ターン数
+**/
+function ss_attr_weaken_s(attr, rate, turn) {
+	return ss_template({
+		name: "ss_attr_weaken_s",
+		type: "turn_effect",
+		subtype: "attr_weaken",
+		target: "single",
+		p1: attr,
+		p2: rate,
+		p3: turn,
+	});
+}
+
+/**
  * 全体遅延スキル
  * turn: 遅延ターン数。
 **/
@@ -538,6 +570,21 @@ function panel_skillboost(t) {
 	});
 }
 
+/**
+ * パネルに軽減効果を付与する
+ * attr: 軽減対象属性。(ex: [1,0,0,0,0] -> 火属性)
+ * rate: 軽減割合。(ex. 0.2 -> 20%)
+**/
+function panel_attr_guard(attr, rate) {
+	return ss_template({
+		name: "panel_attr_guard",
+		type: "panel_add",
+		target: "panel",
+		p1: attr,
+		p2: rate,
+	});
+}
+
 // ------------------------------------------------------
 // 解除系
 /**
@@ -622,9 +669,6 @@ function ss_latest_copy() {
 	});
 }
 
-
-
-
 // ------------------------------------------------------
 // 未実装系
 /**
@@ -690,21 +734,6 @@ function ss_answer_foresight() {
 }
 
 /**
- * パネルに軽減効果を付与する
- * attr: 軽減対象属性。(ex: [1,0,0,0,0] -> 火属性)
- * rate: 軽減割合。(ex. 0.2 -> 20%)
-**/
-function panel_attr_guard(attr, rate) {
-	return ss_template({
-		name: "panel_attr_guard",
-		type: "panel_add",
-		target: "panel",
-		p1: attr,
-		p2: rate,
-	});
-}
-
-/**
  * 挑発効果を自身に付与する
  * rate: 軽減割合。(軽減効果がない場合は0を指定)
  * turn: 効果ターン数
@@ -717,20 +746,6 @@ function ss_provocate(rate, turn) {
 		target: "own",
 		p1: rate,
 		p2: turn,
-	});
-}
-
-/**
- * 敵単体に無に帰す効果を付与する
- * turn: 即死効果発動ターン数
-**/
-function ss_death_limit(turn) {
-	return ss_template({
-		name: "ss_death_limit",
-		type: "turn_effect",
-		subtype: "death_limit",
-		target: "single",
-		p1: turn,
 	});
 }
 

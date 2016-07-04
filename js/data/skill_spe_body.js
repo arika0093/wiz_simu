@@ -327,6 +327,37 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
+	// 敵単体に属性弱体化効果を付与
+	"ss_attr_weaken_s": function (fld, n, cobj, params) {
+		var enemys = GetNowBattleEnemys();
+		var tg = auto_attack_order(enemys, -1, n);
+		var en = enemys[tg];
+		var attr = params[0] ? params[0] : [1,1,1,1,1];
+		var rate = params[1];
+		var turn = params[2];
+		if (en.nowhp <= 0) { return; }
+		en.turn_effect.push({
+			desc: "[" + get_attr_string(attr, "/") + "]属性弱体化",
+			type: "attr_weaken",
+			icon: "attr_weaken",
+			isdual: false,
+			turn: turn,
+			lim_turn: turn,
+			effect: function () {},
+			priority: 2,
+			on_damage: function (fld, dmg, a_i) {
+				if (attr[a_i] > 0) {
+					return dmg * 1/(1 - rate);
+				} else {
+					return dmg;
+				}
+			}
+		});
+		// SSフラグを立てる
+		en.flags.is_ss_attack = true;
+		return true;
+	},
+	// -----------------------------
 	// 全体エンハ
 	"ss_enhance_all": function (fld, n, cobj, params) {
 		var attr = params[2];
@@ -847,6 +878,20 @@ var SpSkill = {
 					// L化確認
 					legend_timing_check(fld.Allys.Deck, fld.Allys.Now, i);
 				}
+			}
+			fld.log_push("パネル付与効果発動: " + dsc);
+		});
+	},
+	// -----------------------------
+	// パネルに軽減効果を付与する
+	"panel_attr_guard": function (fld, n, cobj, params) {
+		var attr = params[0];
+		var rate = params[1];
+		var dsc = "パネル軽減効果(" + (rate * 100) + "%)";
+		return panel_addition(dsc, function (fld) {
+			fld.Status.panel_guard = {
+				attr: attr,
+				rate: rate,
 			}
 			fld.log_push("パネル付与効果発動: " + dsc);
 		});

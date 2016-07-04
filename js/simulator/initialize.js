@@ -51,6 +51,10 @@ var Field = {
 		chainstat_turn: 0,
 		// パネル付与関連
 		panel_add: [],
+		panel_guard: {
+			attr: [],
+			rate: 0,
+		},
 		// 継続効果関連
 		continue_eff: [],
 		// 最後に使用したSS
@@ -281,6 +285,10 @@ function nextturn(is_ssfin) {
 
 	// フラグの初期化
 	initialize_allys_flags(Field.Allys.Now);
+	Field.Status.panel_guard = {
+		attr: [],
+		rate: 0,
+	};
 	// 全滅確認
 	var killed = allkill_check(is_ssfin);
 	if (killed && !f_st.finish) {

@@ -83,7 +83,7 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 		" * 乱数(" + rnd.toFixed(2) + ")" +
 		(atkn > 1 ? " / 攻撃回数(" + atkn + ")" : "") +
 		(var_num ? " / 分散(" + var_num + ")" : "") +
-		((d / bef_ond) != 1 ? " : 攻撃時処理[*" + (d / bef_ond).toFixed(2) + "]" : "") +
+		((d / bef_ond) != 1 ? " * 攻撃時処理[*" + (d / bef_ond).toFixed(2) + "]" : "") +
 		" = ダメージ(" + d + ") "
 	);
 

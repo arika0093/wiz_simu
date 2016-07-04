@@ -101,6 +101,12 @@ function _s_enemy_attack(fld, dmg, ei, ai, is_dmg_const) {
 		var rate = attr_magnification(e.attr, cd.attr[0]);
 		// 属性軽減取得
 		var relief = card_dmg_relief(cd, now, e.attr);
+		// パネル軽減取得
+		var p_relief = 0;
+		var p_guard = fld.Status.panel_guard;
+		if (p_guard.attr[e.attr] > 0) {
+			p_relief = p_guard.rate;
+		}
 		// 攻撃前スキル(主に弱体化)確認
 		$.each(now.turn_effect, function (i, e) {
 			e.bef_damage ? rate = e.bef_damage(fld, rate) : false;
@@ -108,7 +114,7 @@ function _s_enemy_attack(fld, dmg, ei, ai, is_dmg_const) {
 		// 乱数
 		var rnd = damage_rand();
 		// 仮ダメージ
-		var dmg = Math.floor(dmg * (1 - relief) * rnd * rate);
+		var dmg = Math.floor(dmg * (1 - relief) * (1 - p_relief) * rnd * rate);
 		// ダメージブロックなどの確認
 		$.each(now.turn_effect, function (i, e) {
 			if (e.on_damage) {

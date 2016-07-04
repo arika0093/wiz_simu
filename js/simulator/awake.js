@@ -159,7 +159,7 @@ function card_dmg_relief(card, now, t_attr) {
 			r += e.rate;
 		}
 	});
-	r=Math.min(100, r);
+	r = Math.min(100, r);
 	return r / 100;
 }
 
