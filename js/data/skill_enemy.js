@@ -1071,8 +1071,12 @@ function s_enemy_when_after_turn(t) {
 
 // enemy_skillのDescを作る
 // 表示順を変えたいとき、属性特攻を参考にorderを指定してください。
+// IEだと正常に動作しなそうなので、無効にしています。
 function makeDesc(mystr, order){
-	argObj=getParentArg()
+	argObj = getParentArg()
+	if (!argObj) {
+		return "[ERROR: InternetExplorer is not supported]";
+	}
 	var outpStr = mystr
 	var toStr
 	var flag = 1;

@@ -129,12 +129,33 @@ function get_spec_string(spec) {
 	}
 }
 
+// アラビア数字をローマ数字に変換
+function int2roman(n) {
+	var roman = {
+		0: false,
+		1: "Ⅰ",
+		2: "Ⅱ",
+		3: "Ⅲ",
+		4: "Ⅳ",
+		5: "Ⅴ",
+		6: "Ⅵ",
+		7: "Ⅶ",
+		8: "Ⅷ",
+		9: "Ⅸ",
+		10: "Ⅹ",
+		20: "ⅩⅩ",
+		30: "ⅩⅩⅩ",
+	}
+	return roman[n]
+}
 
-
-
+// --------------------------
 // 関数のargumentsを受け取りargObj={__fname__: 関数名, 変数名: 値}を返す
 function getArgA(args){
-	var oCallFunc = args.callee
+	var oCallFunc = args.callee;
+	if (!oCallFunc.name) {
+		return null;
+	}
 	var mFilter = RegExp(oCallFunc.name + "\\\(\(.*?\)\\\)")
 	var argNameStr = oCallFunc.toString().match(mFilter)[1]
 	var argNameArray = argNameStr.replace(/ /g,"").split(",")
@@ -169,23 +190,3 @@ function comma3(myNum){
 	}
 }
 
-
-// アラビア数字をローマ数字に変換
-function int2roman(n) {
-	var roman = {
-		0: false,
-		1: "Ⅰ",
-		2: "Ⅱ",
-		3: "Ⅲ", 
-		4: "Ⅳ", 
-		5: "Ⅴ", 
-		6: "Ⅵ", 
-		7: "Ⅶ", 
-		8: "Ⅷ", 
-		9: "Ⅸ",
-		10: "Ⅹ",
-		20: "ⅩⅩ",
-		30: "ⅩⅩⅩ",
-	}
-	return roman[n]
-}
