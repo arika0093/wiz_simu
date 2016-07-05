@@ -352,7 +352,7 @@ var SpSkill = {
 			priority: 2,
 			on_damage: function (fld, dmg, a_i) {
 				if (attr[a_i] > 0) {
-					return dmg * 1/(1 - rate);
+					return dmg * rate;
 				} else {
 					return dmg;
 				}

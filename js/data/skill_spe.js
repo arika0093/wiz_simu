@@ -162,7 +162,7 @@ function ss_death_limit(turn) {
 /**
  * 敵単体に属性弱体化効果を付与する
  * attr: 弱体化対象属性(ex: [1,0,0,0,0] -> 火 / null: 全属性)
- * rate: 効果値(ex: 30% -> 0.3)
+ * rate: 効果値(ex: 30%UP -> 1.3)
  * turn: 継続ターン数
 **/
 function ss_attr_weaken_s(attr, rate, turn) {
