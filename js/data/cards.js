@@ -37899,7 +37899,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
-	ape: "超魔道列伝　アルティメットガールズ！",
+	ape: "超魔道列伝　アルティメットガールズ",
 	as1: {
 		desc: "7チェインで水属性の敵単体へ特効ダメージ(775%)",
 		proc: ChainAttrAttack(7.75, 7, [0,1,0,0,0]),
@@ -37945,7 +37945,7 @@ Cards = [{
 	attr: [0,1],
 	species: [9],
 	islegend: true,
-	ape: "超魔道列伝　アルティメットガールズ！",
+	ape: "超魔道列伝　アルティメットガールズ",
 	as1: {
 		desc: "敵全体へダメージ、5チェインで更にダメージアップ(150%/200%)",
 		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.0, 5)],
@@ -37990,7 +37990,7 @@ Cards = [{
 	attr: [1,0],
 	species: [9],
 	islegend: true,
-	ape: "超魔道列伝　アルティメットガールズ！",
+	ape: "超魔道列伝　アルティメットガールズ",
 	as1: {
 		desc: "4チェインでダメージアップ(400%)",
 		proc: ChainAttack(4.0, 4),
@@ -38035,7 +38035,7 @@ Cards = [{
 	attr: [1,2],
 	species: [9],
 	islegend: true,
-	ape: "超魔道列伝　アルティメットガールズ！",
+	ape: "超魔道列伝　アルティメットガールズ",
 	as1: {
 		desc: "水・雷属性の味方を回復、7チェインで更に回復(10%/17%)",
 		proc: [Heal(0.10, [0,1,1,0,0], 0), Heal(0.17, [0,1,1,0,0], 7)],
@@ -38080,7 +38080,7 @@ Cards = [{
 	attr: [2,1],
 	species: [9],
 	islegend: true,
-	ape: "超魔道列伝　アルティメットガールズ！",
+	ape: "超魔道列伝　アルティメットガールズ",
 	as1: {
 		desc: "3チェインで敵単体を3回連続攻撃(350%)",
 		proc: ChainDualAttack(3.5, 3, 3),
