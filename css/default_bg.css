@@ -337,6 +337,15 @@ dd dl dd:last-child{
 	padding: 1.5ex 0em 0ex;
 }
 
+dd dl.sublist{
+	padding-top: .5ex;
+}
+dd dl.sublist dt{
+	padding: .5ex  0;
+	border-left: 0px;
+	border-bottom: 1px dotted #0040FF;
+}
+
 ol{
 	margin: 0;
 	padding-left: 1.5em;

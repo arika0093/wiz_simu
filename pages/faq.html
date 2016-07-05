@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px) and (max-width: 1099px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default_bg.css" media="screen and (min-width: 1100px)" />
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <!-- Search -->
+    <meta name="robots" content="all" />
+    <meta name="description" content="Wiztoolsに関する「よくある質問」をまとめています。" />
+    <!-- About Page -->
+    <title>よくある質問 - WizTools</title>
+</head>
+<body>
+    <div id='Top'></div>
+    <div id="wrap">
+        <!-- Header -->
+        <div id="Header"></div>
+
+        <!-- Main Contents -->
+        <div class="Main">
+            <dl class="List">
+                <dt id="site">Q: このページはなんですか？</dt>
+                <dd>
+                    A: よくある質問という体で分かりにくいところとかを色々と説明します。
+                </dd>
+                <dt id="site">サイト全般</dt>
+                <dd>
+                    <dl class="sublist">
+                        <dt>Q: 更新情報が知りたいのですが、ブログの更新が止まっています。</dt>
+                        <dd>
+                            A: Twitter(<a href="//twitter.com/wiz_tools/">@wiz_tools</a>)をご覧ください。ブログは<span class="secretly">面倒なので</span>あまり書きません。<br/>
+                            全更新履歴はソースコード管理履歴(<a href="https://github.com/Arika0093/wiz_simu/commits/master">github</a>)に記載されています。                        
+                        </dd>
+                        <dt>Q: 新要素実装と聞いて来たのですが、反映されてません。</dt>
+                        <dd>
+                            A: 再読み込み(F5)またはスーパーリロード(ctrl+F5)を行ってください。
+                        </dd>
+                        <dt>Q: バグがあります。</dt>
+                        <dd>
+                            A: 上記twitterまでご一報ください。できるだけ対応します。
+                        </dd>
+                        <dt>Q: 動かない箇所があります。</dt>
+                        <dd>
+                            A: InternetExplorer(IE)を使っている場合: <span class="strong">別のブラウザを使ってください。</span><br/>
+                            この場合に限らず、<span class="strong">基本的にIEへの対応はしません。</span><br/>
+                            なぜIEを対応しないかは<a href="http://tolitorey.com/archives/166">こちら</a>をご覧いただければ分かるかと思います。<br/>
+                            それ以外のブラウザの場合: 上記twitterまでご一報いただけると幸いです。
+                        </dd>
+                        <dt>Q: スマートフォンだと使いにくい/表示がおかしいです。</dt>
+                        <dd>
+                            A: PCでの使用を主に想定しています。スマートフォンへの対応も一応行いますが、開発者がiPhoneを持っていないこともあり、iOS関連への対応は困難です。ご了承ください。
+                        </dd>
+                        <dt>Q: サイトデザインがクソ</dt>
+                        <dd>
+                            A: 修正案をぜひpull requestで送りつけてください。
+                        </dd>
+                        <dt>Q: 広告が邪魔</dt>
+                        <dd>
+                            A: 邪魔にならないように置いているつもりですが、サーバー代をここから賄っているので諦めてください。
+                        </dd>
+                    </dl>
+                </dd>
+                <dt id="sim_sel">シミュレーター関連(デッキ選択)</dt>
+                <dd>
+                    <dl class="sublist">
+                        <dt>Q: 使い方がよくわかりません。</dt>
+                        <dd>
+                            A: そのうちちゃんとしたページを用意します。
+                        </dd>
+                        <dt>Q: マナプラスを調整したいです。</dt>
+                        <dd>
+                            A: 精霊選択後、アイコンをクリック/タップしてください。ダイアログが表示されるはずです。
+                        </dd>
+                        <dt>Q: 潜在結晶がうまく付けられません。</dt>
+                        <dd>
+                            A: 現状、一部スマートフォンで正常に動作していないようです。<br/>
+                            PC(Google Chromeなど)での使用では正常に動作していることを確認しています。
+                        </dd>
+                   </dl>
+                </dd>
+                <dt id="sim_p">シミュレーター関連(試走)</dt>
+                <dd>
+                    <dl class="sublist">
+                        <dt>Q: ターゲッティングの方法を教えて下さい。</dt>
+                        <dd>
+                            A: アイコンのクリック/タップでダイアログが表示されます。また、敵アイコンダブルクリックで全員タゲが可能です(PCのみ)。
+                        </dd>
+                        <dt>Q: ダメージ計算あってますか？おかしくないですか？</dt>
+                        <dd>
+                            A: ログ表示→ダメージ計算から確認を行うことができます。
+                        </dd>
+                        <dt>Q: AS逃しはできますか？</dt>
+                        <dd>
+                            A: 現在未実装です。そのうちやります。
+                        </dd>
+                        <dt>Q: 乱数で効果値が変化するアンサースキルについて、調節は可能ですか？</dt>
+                        <dd>
+                            A: 今のところできません。完全にランダムです。
+                        </dd>
+                        <dt>Q: 回答時間に応じて効果値が変化するアンサースキルについて、調節は可能ですか？</dt>
+                        <dd>
+                            A: 今のところできません。回答時間17秒台で回答した時の効果値で実装を行っています。
+                        </dd>
+                        <dt>Q: クリティカルは実装されていますか？</dt>
+                        <dd>
+                            A: されていません。
+                        </dd>
+                        <dt>Q: 現在把握しているが修正していない項目について教えて下さい。</dt>
+                        <dd>
+                            A: 以下の項目について、把握しています。<br />
+                            ・GWハクアのAS<br/>
+                            ・呪いを打たれた時の精霊強化の挙動<br />
+                            ・先制行動を持つ敵の分裂後行動<br />
+                            <!-- ・……<br> -->
+                            ・(随時追加します)<br />
+                        </dd>
+                   </dl>
+                </dd>
+                <dt id="data">精霊詳細データ関連</dt>
+                <dd>
+                    <dl class="sublist">
+                        <dt>Q: メニューから飛ぶとランダムに飛ばされます。</dt>
+                        <dd>
+                            A: 仕様です。
+                        </dd>
+                        <dt>Q: 定義データ、とはなんですか？</dt>
+                        <dd>
+                            A: シミュレーター用の定義データをそのまま置いてあります。ASやSSの効果値がおかしい場合、ここからある程度確認が可能です。
+                        </dd>
+                    </dl>
+                </dd>
+                <dt id="edb">敵行動データベース関連</dt>
+                <dd>
+                    <dl class="sublist">
+                        <dt>Q: [ERROR: InternetExplorer is not supported]と表示されます。</dt>
+                        <dd>
+                            A: <a href="https://twitter.com/hashtag/ie%E6%AD%BB%E3%81%AD">https://twitter.com/hashtag/ie%E6%AD%BB%E3%81%AD</a><br/>
+                            <span class="secretly">(もしかしたらIE以外でも出るかもしれませんが、対応する気はありません)</span>
+                        </dd>
+                        <dt>Q: なんかこの行動おかしくない？</dt>
+                        <dd>
+                            A: 報告ください。できるだけ修正します。
+                        </dd>
+                    </dl>
+                </dd>
+            </dl>
+        </div>
+
+        <!-- Footer -->
+        <div id="Footer"></div>
+
+        <!-- Javascript -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js"></script>
+    </div>
+</body>
+</html>
