@@ -289,6 +289,10 @@ function sim_show() {
 			.attr("selected", i == Field.Status.panel_add.length - 1);
 		$("#panel_add_sel").append(opt);
 	}
+	var bbefi = Field.Quest.battle_before_def + 1;
+	if (bbefi >= 0) {
+		$("#panel_add_sel").val(bbefi);
+	}
 	// sim_panel
 	$(".panel_button").attr("disabled", Field.Status.finish);
 	// sim_field_move

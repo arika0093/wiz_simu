@@ -5,6 +5,23 @@
    desc: "",
    overlap: false,
    aprnum: 1,
+   battle_before: [{
+      desc: "ch+1",
+	  proc: panel_chainplus(1)
+   }, {
+      desc: "ch+2",
+	  proc: panel_chainplus(2)
+   }, {
+      desc: "ch+3",
+	  proc: panel_chainplus(3)
+   }, {
+      desc: "ch+4",
+	  proc: panel_chainplus(4)
+   }, {
+      desc: "SP+50",
+	  proc: panel_skillboost(50)
+   }],
+   battle_before_def: -1,
    data: [
       {
          appearance: [
