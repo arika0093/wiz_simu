@@ -75,6 +75,14 @@ var sfdef_as_namelist = {
 			return true;
 		},
 	},
+	// その他
+	"AS軽減": {
+		genre: "《その他》",
+		type: "as_spskill",
+		check: function (e) {
+			return e.subtype == "as_guard";
+		},
+	},
 	// 条件/攻撃後処理
 	"リーダー時効果値アップ": {
 		genre: "《条件/攻撃後処理》",

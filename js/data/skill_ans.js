@@ -733,6 +733,7 @@ function as_guard(rate, attr, ch) {
 	return [
 		{
 			type: "as_spskill",
+			subtype: "as_guard",
 			skill: ss_attr_guard,
 			p1: attr,
 			p2: rate,
