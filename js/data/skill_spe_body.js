@@ -221,8 +221,9 @@ var SpSkill = {
 	// 多段式カウンター待機
 	"ss_dualcounter": function (fld, n, cobj, params) {
 		var turn = params[0];
+		var nows = cobj.target != "own" ? fld.Allys.Now : [fld.Allys.Now[n]];
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
-			var now = fld.Allys.Now[i];
+			var now = nows[i];
 			if (now.nowhp <= 0) { continue; }
 			now.turn_effect.push({
 				desc: "多段式カウンター待機",

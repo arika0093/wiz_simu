@@ -127,6 +127,20 @@ function ss_dualcounter(t) {
 	});
 }
 
+/**
+ * 自身のみ多段カウンター待機
+ * t: 継続ターン数
+**/
+function ss_dualcounter_s(t) {
+	return ss_template({
+		name: "ss_dualcounter",
+		type: "turn_effect",
+		subtype: "dual_counter",
+		target: "own",
+		p1: t,
+	});
+}
+
 // ------------------------------------------------------
 // 敵関連系
 /**

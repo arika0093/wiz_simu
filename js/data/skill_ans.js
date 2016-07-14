@@ -402,18 +402,22 @@ function ChainDeckAttrsAttack(r1, r2, r3, ch) {
 }
 
 // デッキ特定種族数依存攻撃
-// (base: 種族が1体の時の割合, specs: 対象種族(例: [8,9]), ch: 発動チェイン数)
-function ChainDeckSpecsAttack(base, specs, ch) {
+// (base: 加算割合, specs: 対象種族(例: [8,9]), ch: 発動チェイン数, ubase: 種族が1体の時の割合 - 加算割合)
+// (例1: 効果値 50,200,350,500,650) → ChainDeckSpecsAttack(1.5, specs, ch)
+// (例2: 効果値150,300,450,600,750) → ChainDeckSpecsAttack(1.5, specs, ch, 1)
+// ※互換性確保のためにubaseの定義が若干複雑です。
+function ChainDeckSpecsAttack(base, specs, ch, ubase) {
+	ubase = ubase || 0;
 	return [
 		{
 			type: "attack",
 			isall: false,
 			atkn: 1,
-			rate: 1 + base * 5,
+			rate: (ubase + 1) + base * 5,
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
-			desc: "デッキ内の特定種族数に依存(最大値)",
+			desc: "デッキ内の特定種族数に依存",
 			cond: function (fld, oi, ei) {
 				var count = 0;
 				// 属性カウント
@@ -425,7 +429,7 @@ function ChainDeckSpecsAttack(base, specs, ch) {
 						}
 					}
 				}
-				this.rate = 1 + base * count;
+				this.rate = (ubase + 1) + base * count;
 				return true;
 			},
 		}
@@ -468,15 +472,69 @@ function ChainStakesAttack(u, t, ch) {
 			isall: false,
 			atkn: 1,
 			rate: t,
+			rate_min: u,
+			rate_max: t,
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
-			desc: "イチかバチか攻撃(最大値)",
+			desc: "イチかバチか攻撃",
 			cond: function (fld, oi, ei) {
 				this.rate = Math.floor(Math.random() * (t-u) + u);
 				return true;
 			},
 		}
+	];
+}
+
+// パネル依存イチかバチか攻撃(単色最低値, 単色最高値, 二色最低値, 二色最高値, 三色以上最低値, 三色以上最高値, チェイン)
+function ChainStakesAttack(u1, t1, u2, t2, u3, t3, ch) {
+	return [
+		{
+			type: "attack",
+			isall: false,
+			atkn: 1,
+			rate: t1,
+			rate_min: u1,
+			rate_max: t1,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: create_specs(1),
+			desc: "イチかバチか攻撃(単色)",
+			cond: function (fld, oi, ei) {
+				this.rate = Math.floor(Math.random() * (t1 - u1) + u1);
+				return true;
+			},
+		}, {
+			type: "attack",
+			isall: false,
+			atkn: 1,
+			rate: t2,
+			rate_min: u2,
+			rate_max: t2,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: create_specs(1),
+			desc: "イチかバチか攻撃(二色)",
+			cond: function (fld, oi, ei, ps) {
+				this.rate = Math.floor(Math.random() * (t2 - u2) + u2);
+				return as_panel_over2().cond(fld, oi, ei, ps);
+			},
+		}, {
+			type: "attack",
+			isall: false,
+			atkn: 1,
+			rate: t3,
+			rate_min: u3,
+			rate_max: t3,
+			chain: ch,
+			attr: [1, 1, 1, 1, 1],
+			spec: create_specs(1),
+			desc: "イチかバチか攻撃(三色以上)",
+			cond: function (fld, oi, ei, ps) {
+				this.rate = Math.floor(Math.random() * (t3 - u3) + u3);
+				return as_panel_over2().cond(fld, oi, ei, ps);
+			},
+		},
 	];
 }
 
@@ -778,6 +836,13 @@ function when_deckattr_less(c_attr, c_num) {
 	}
 }
 
+// 回答時間依存
+function answer_time_dependant(min, max) {
+	return {
+		rate_min: min,
+		rate_max: max,
+	}
+}
 
 // ------------------------------------------------------
 // 攻撃後処理(add_condで足す)
