@@ -479,7 +479,7 @@ function ChainStakesAttack(u, t, ch) {
 			spec: create_specs(1),
 			desc: "イチかバチか攻撃",
 			cond: function (fld, oi, ei) {
-				this.rate = Math.floor(Math.random() * (t-u) + u);
+				this.rate = (Math.random() * (t-u) + u).toFixed(1);
 				return true;
 			},
 		}
@@ -487,7 +487,7 @@ function ChainStakesAttack(u, t, ch) {
 }
 
 // パネル依存イチかバチか攻撃(単色最低値, 単色最高値, 二色最低値, 二色最高値, 三色以上最低値, 三色以上最高値, チェイン)
-function ChainStakesAttack(u1, t1, u2, t2, u3, t3, ch) {
+function ChainStakesAttack3(u1, t1, u2, t2, u3, t3, ch) {
 	return [
 		{
 			type: "attack",
@@ -501,7 +501,7 @@ function ChainStakesAttack(u1, t1, u2, t2, u3, t3, ch) {
 			spec: create_specs(1),
 			desc: "イチかバチか攻撃(単色)",
 			cond: function (fld, oi, ei) {
-				this.rate = Math.floor(Math.random() * (t1 - u1) + u1);
+				this.rate = (Math.random() * (t1 - u1) + u1).toFixed(1);
 				return true;
 			},
 		}, {
@@ -516,7 +516,7 @@ function ChainStakesAttack(u1, t1, u2, t2, u3, t3, ch) {
 			spec: create_specs(1),
 			desc: "イチかバチか攻撃(二色)",
 			cond: function (fld, oi, ei, ps) {
-				this.rate = Math.floor(Math.random() * (t2 - u2) + u2);
+				this.rate = (Math.random() * (t2 - u2) + u2).toFixed(1);
 				return as_panel_over2().cond(fld, oi, ei, ps);
 			},
 		}, {
@@ -531,7 +531,7 @@ function ChainStakesAttack(u1, t1, u2, t2, u3, t3, ch) {
 			spec: create_specs(1),
 			desc: "イチかバチか攻撃(三色以上)",
 			cond: function (fld, oi, ei, ps) {
-				this.rate = Math.floor(Math.random() * (t3 - u3) + u3);
+				this.rate = (Math.random() * (t3 - u3) + u3).toFixed(1);
 				return as_panel_over2().cond(fld, oi, ei, ps);
 			},
 		},

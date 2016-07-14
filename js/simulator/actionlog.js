@@ -43,7 +43,7 @@ function actl_send_result(after) {
 
 
 // AS記録
-function actl_save_answer(attr) {
+function actl_save_answer(attr, as_ign) {
 	var st = Field.Status;
 	// タゲ保存
 	actl_save_target();
@@ -51,6 +51,7 @@ function actl_save_answer(attr) {
 	actl_save_object({
 		type: "answer",
 		attr: attr,
+		asignore: as_ign,
 	});
 	// 複色パネルを踏んだかどうかのフラグ
 	st.is_spanel_only = st.is_spanel_only && attr.length <= 1;

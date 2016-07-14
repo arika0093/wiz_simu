@@ -53,6 +53,10 @@ p.enemy_stat{
 	text-overflow: ellipsis;
 }
 
+input#as_ignore{
+	margin: 1ex 0 0;
+}
+
 /* Attribute */
 div.attr_0{
 	background-color: #E00F0F;

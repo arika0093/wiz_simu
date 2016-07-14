@@ -2,13 +2,14 @@
 function panel(attr) {
 	var st = Field.Status;
 	var cnst_rnd = Number($("#attack_rand_sel").val());
+	var as_ignore = $("#as_ignore").prop('checked');
 	// 文字ログ出力
 	Field.log_push("【パネル: " + get_attr_string(attr, ",") + " / チェイン数: " +
 		st.chain + "→" + (st.chain + 1) +
 		" / 乱数: " + (cnst_rnd == -1 ? "Random" : cnst_rnd.toFixed(2)) +
 	 " 】", "orange");
 	// 再現用ログ関連
-	actl_save_answer(attr);
+	actl_save_answer(attr, as_ignore);
 	// チェイン+1
 	if (st.chain_status >= 0) {
 		st.chain += 1;
@@ -50,21 +51,34 @@ function panel(attr) {
 	{
 		// 使用したASリスト
 		var as_afters = [];
-		// エンハ処理
-		answer_skill(pickup_answerskills(attr, "support"), attr, as_afters);
-		// 攻撃
-		var atk_skill = pickup_answerskills(attr, "attack");
-		// 攻撃不可状況を除きデフォASを追加する
-		$.each(atk_skill, function (i, e) {
-			if (e != null) {
-				atk_skill[i].unshift(Default_as()[0]);
-			}
-		});
-		answer_skill(atk_skill, attr, as_afters);
-		// 回復
-		answer_skill(pickup_answerskills(attr, "heal"), attr, as_afters);
-		// SS効果発動
-		answer_skill(pickup_answerskills(attr, "as_spskill"), attr, as_afters);
+		// AS無視しないなら普通に、無視状況なら取得を少なく
+		if (!as_ignore) {
+			// エンハ処理
+			answer_skill(pickup_answerskills(attr, "support"), attr, as_afters);
+			// 攻撃
+			var atk_skill = pickup_answerskills(attr, "attack");
+			// 攻撃不可状況を除きデフォASを追加する
+			$.each(atk_skill, function (i, e) {
+				if (e != null) {
+					atk_skill[i].unshift(Default_as()[0]);
+				}
+			});
+			answer_skill(atk_skill, attr, as_afters);
+			// 回復
+			answer_skill(pickup_answerskills(attr, "heal"), attr, as_afters);
+			// SS効果発動
+			answer_skill(pickup_answerskills(attr, "as_spskill"), attr, as_afters);
+		} else {
+			// 攻撃
+			var atk_skill = pickup_answerskills(attr, "");
+			// 攻撃不可状況を除きデフォASを追加する
+			$.each(atk_skill, function (i, e) {
+				if (e != null) {
+					atk_skill[i].unshift(Default_as()[0]);
+				}
+			});
+			answer_skill(atk_skill, attr, as_afters);
+		}
 		// 使用したASの使用後処理
 		for (var i = 0; i < as_afters.length; i++) {
 			if (as_afters[i][0]) {

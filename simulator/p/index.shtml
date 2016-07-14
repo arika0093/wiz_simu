@@ -207,7 +207,8 @@
 				<button class="panel_button" id="pnl_attr_04" onclick="panel([0,4])">火闇</button>
 				<button class="panel_button" id="pnl_attr_14" onclick="panel([1,4])">水闇</button>
 				<button class="panel_button" id="pnl_attr_24" onclick="panel([2,4])">雷闇</button>
-				<button class="panel_button" id="pnl_attr_miss" onclick="answer_miss()">誤答</button>
+				<button class="panel_button" id="pnl_attr_miss" onclick="answer_miss()">誤答</button><br/>
+                <input id="as_ignore" type="checkbox" /><label for="as_ignore">ASを発動しない</label>
 			</div>
 			<div class="sim_option">
 
