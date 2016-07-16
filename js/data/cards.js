@@ -35,6 +35,7 @@ Cards = [{
 		proc: [ss_panel_change([1,0,1,0,0])]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 400),
 		Attr_statusup(0, 100, [1,0,0,0,0]),
@@ -254,6 +255,7 @@ Cards = [{
 		proc: [ss_damage_all(1.8, [0])],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 500),
 		Statusup(300, 0),
@@ -343,6 +345,7 @@ Cards = [{
 		proc: [ss_damage_all(1.8, [0])],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 700),
 		Statusup(300, 0),
@@ -563,6 +566,7 @@ Cards = [{
 		proc: [ss_damage_all(1.5, [0])],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 400),
 		Attr_statusup(0, 100, [1,0,0,0,0]),
@@ -651,6 +655,7 @@ Cards = [{
 		proc: [ss_damage_all(ss_chain_cost(5, 2.3, 1.8), [0])],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 500),
 		Attr_statusup(0, 100, [1,0,0,0,0]),
@@ -784,6 +789,7 @@ Cards = [{
 		proc: [ss_damage_all(ss_consume_all_cond(1.3, 0.5), [0])],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 500),
 		Attr_statusup(0, 100, [1,0,0,0,0]),
@@ -1354,6 +1360,7 @@ Cards = [{
 		proc: [ss_astime_ext(10, 3)]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(400, 0),
 		Statusup(0, 500),
@@ -1398,6 +1405,7 @@ Cards = [{
 		proc: [ss_panel_change([1,0,0,0,0])]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 400),
 		Attr_statusup(0, 100, [1,0,0,0,0]),
@@ -1617,6 +1625,7 @@ Cards = [{
 		proc: [ss_damage_all(1.8, [0])],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 800),
 	],
@@ -1660,6 +1669,7 @@ Cards = [{
 		proc: [ss_delay_all(2)]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [1,0,0,0,0]),
 		Statusup(400, 0),
@@ -1704,6 +1714,7 @@ Cards = [{
 		proc: [ss_damage_s(1.8, [0], 5)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 400),
 		Statusup(400, 0),
@@ -1748,6 +1759,7 @@ Cards = [{
 		proc: [ss_enhance_own(1.5, 3), ss_consume_own(0.6)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 600),
 		Statusup(200, 0),
@@ -1922,6 +1934,7 @@ Cards = [{
 		proc: [poison(5000, 4)],
 	},
 	islegend: true,
+	is_dist: true,z
 	Lawake: [
 		Attr_statusup(0, 100, [1,0,0,0,0]),
 		Statusup(500, 0),
@@ -1967,6 +1980,7 @@ Cards = [{
 		proc: [panel_chainplus(2)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(400, 0),
 		Attr_statusup(0, 100, [1,0,0,0,0]),
@@ -2010,6 +2024,7 @@ Cards = [{
 		proc: [ss_damage_all(1.8, [0])],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 500),
 		Statusup(500, 0),
@@ -2626,6 +2641,7 @@ Cards = [{
 		proc: [ss_damage_s(2.6, [0], 1), ss_consume_own(0.5)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 400),
 		Statusup(400, 0),
@@ -2714,6 +2730,7 @@ Cards = [{
 		proc: [ss_astime_ext(5, 3)]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [1,0,0,0,0]),
 		Statusup(400, 0),
@@ -2890,6 +2907,7 @@ Cards = [{
 		proc: [ss_delay_s(1)]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
 		Statusup(400, 0),
@@ -3022,6 +3040,7 @@ Cards = [{
 		proc: [ss_damage_all(1.8, [0, 2])],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 400),
 		Statusup(400, 0),
@@ -3110,6 +3129,7 @@ Cards = [{
 		proc: [ss_revival(0.15, 1)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 400),
 		NEFTJOD(30),
@@ -3374,6 +3394,7 @@ Cards = [{
 		proc: [ss_damage_all(1.8, [0])],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		NEFTJOD(30),
 		Attr_statusup(0, 100, [1,0,0,0,0]),
@@ -3462,6 +3483,7 @@ Cards = [{
 		proc: [null]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 600),
 		Statusup(300, 0),
@@ -3506,6 +3528,7 @@ Cards = [{
 		proc: [ss_damage_s(1.5, [0], 5)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(100, 0),
 		Statusup(0, 800),
@@ -3595,6 +3618,7 @@ Cards = [{
 		proc: [ss_attr_guard([0,0,1,0,0], 0.25, 5)]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [1,0,0,0,0]),
 	],
@@ -3813,6 +3837,7 @@ Cards = [{
 		proc: [ss_consume_all(0.5), ss_enhance_all(0.6, 2, [1,0,0,0,0])],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [1,0,0,0,0]),
 		Statusup(500, 0),
@@ -3901,6 +3926,7 @@ Cards = [{
 		proc: [ss_skillboost(2)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [1, 1, 0, 0, 0]),
 		Statusup(0, 500),
@@ -4166,6 +4192,7 @@ Cards = [{
 		proc: [ss_enhance_all(0.7, 2, [1,0,0,0,0]), ss_consume_all(0.5)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [1,0,0,0,0]),
 		Statusup(0, 500),
@@ -4210,6 +4237,7 @@ Cards = [{
 		proc: [poison(9999, 5)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 500),
 		Statusup(500, 0),
@@ -4254,6 +4282,7 @@ Cards = [{
 		proc: [ss_regenerate(0.15, 5)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [1,0,0,0,0]),
 		NEFTJOD(30),
@@ -4474,6 +4503,7 @@ Cards = [{
 		proc: [ss_damageblock_all(500, 5)]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 400),
 		Attr_statusup(0, 100, [1,0,0,0,0]),
@@ -4869,6 +4899,7 @@ Cards = [{
 		proc: [ss_delay_s(1)]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
 		Statusup(400, 0),
@@ -5002,6 +5033,7 @@ Cards = [{
 		proc: [ss_heal(0.3), ss_resurrection([1,0,0,0,0], 0.3)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(700, 0),
 		Statusup(0, 300),
@@ -5045,6 +5077,7 @@ Cards = [{
 		proc: [ss_heal(0.25), ss_resurrection([1, 1, 0, 0, 0], 0.10)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 400),
 		Attr_statusup(0, 100, [1,0,0,0,0]),
@@ -5089,6 +5122,7 @@ Cards = [{
 		proc: [ss_panel_change([1,0,0,0,1])]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [1,0,0,0,0]),
 		Statusup(0, 500),
@@ -5310,6 +5344,7 @@ Cards = [{
 		proc: [ss_panel_change([1,0,0,0,1])]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		NEFTJOD(30),
 		Statusup(0, 500),
@@ -5667,6 +5702,7 @@ Cards = [{
 		proc: [panel_attackup(0.4)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 200),
 		Statusup(700, 0),
@@ -5799,6 +5835,7 @@ Cards = [{
 		proc: [ss_panel_change([0,1,0,0,0])]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 500),
 		Statusup(500, 0),
@@ -5887,6 +5924,7 @@ Cards = [{
 		proc: [ss_regenerate(0.15, 3)]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 400),
 		Statusup(400, 0),
@@ -6151,6 +6189,7 @@ Cards = [{
 		proc: [ss_abstate_cure()],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
 		Statusup(0, 500),
@@ -6457,6 +6496,7 @@ Cards = [{
 		proc: [ss_ratiodamage_s(0.20)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
 		Statusup(400, 0),
@@ -6466,7 +6506,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.6, [9], 0)
 	},
 	ss2: {
-		desc: "(必要正解数 10ターン)",
+		desc: "敵単体のHPを25％減少させる",
 		turn: 10,
 		proc: [ss_ratiodamage_s(0.25)],
 	},
@@ -6674,6 +6714,7 @@ Cards = [{
 		proc: [ss_damage_all(1.8, [1])],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 400),
 		Statusup(400, 0),
@@ -6718,6 +6759,7 @@ Cards = [{
 		proc: [ss_panel_change([0,1,0,0,0])]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 400),
 		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
@@ -6806,6 +6848,7 @@ Cards = [{
 		proc: [ss_answer_narrow(2), ss_consume_all(0.5)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
 		Statusup(0, 500),
@@ -7025,6 +7068,7 @@ Cards = [{
 		proc: [ss_damage_all(1.4, [1]), ss_heal(0.2)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 500),
 		Statusup(500, 0),
@@ -7333,6 +7377,7 @@ Cards = [{
 		proc: [ss_astime_ext(10, 3)]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 500),
 		Statusup(500, 0),
@@ -7509,6 +7554,7 @@ Cards = [{
 		proc: [ss_damage_all(1.5, [1])],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 500),
 		Statusup(500, 0),
@@ -7553,6 +7599,7 @@ Cards = [{
 		proc: [ss_damage_s(1.0, [1], 1)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 500),
 		Statusup(500, 0),
@@ -7597,6 +7644,7 @@ Cards = [{
 		proc: [ss_astime_ext(10, 3)]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 500),
 		Statusup(500, 0),
@@ -8080,6 +8128,7 @@ Cards = [{
 		proc: [ss_skillboost(1), ss_delay_all(1)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
 		Statusup(500, 0),
@@ -8300,6 +8349,7 @@ Cards = [{
 		proc: [ss_heal(0.50), ss_abstate_cure()],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(500, 0),
 		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
@@ -8433,6 +8483,7 @@ Cards = [{
 		proc: [ss_panel_change([0,1,0,0,0])]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 500),
 		Statusup(400, 0),
@@ -8521,6 +8572,7 @@ Cards = [{
 		proc: [ss_chain_protect(2)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 400),
 		Statusup(400, 0),
@@ -8565,6 +8617,7 @@ Cards = [{
 		proc: [ss_skillboost(1)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
 		Statusup(0, 500),
@@ -8830,6 +8883,7 @@ Cards = [{
 		proc: [ss_damage_all(ss_consume_all_cond(1.3, 0.8), [1])],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
 		Statusup(300, 0),
@@ -8962,6 +9016,7 @@ Cards = [{
 		proc: [ss_answer_narrow(2)]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 500),
 		Statusup(500, 0),
@@ -9007,6 +9062,7 @@ Cards = [{
 		proc: [ss_ratiodamage_all(0.30)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 700),
 		Statusup(300, 0),
@@ -9094,6 +9150,7 @@ Cards = [{
 		proc: [ss_attr_guard([0,1,0,0,0], 0.25, 3)]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 400),
 		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
@@ -9225,6 +9282,7 @@ Cards = [{
 		proc: [ss_heal(0.25), ss_resurrection([0,1,0,0,0], 0.25)]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(400, 0),
 		NEFTJOD(30),
@@ -9444,6 +9502,7 @@ Cards = [{
 		proc: [ss_skillboost(ss_chain_cost(5, 3, 2))],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
 		Statusup(500, 0),
@@ -9576,6 +9635,7 @@ Cards = [{
 		proc: [ss_panel_change([1,1,0,0,0])]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(400, 0),
 		NEFTJOD(30),
@@ -9753,6 +9813,7 @@ Cards = [{
 		proc: [ss_skillboost(1), ss_delay_all(1)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
 		Statusup(500, 0),
@@ -9842,6 +9903,7 @@ Cards = [{
 		proc: [ss_damage_all(1.8, [2,1])],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 500),
 		Statusup(500, 0),
@@ -9886,6 +9948,7 @@ Cards = [{
 		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3), ss_heal(0.25)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
 		Statusup(500, 0),
@@ -9930,6 +9993,7 @@ Cards = [{
 		proc: [ss_consume_own(1), ss_damageblock_all(800, 5)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(1000, 0),
 	],
@@ -10061,6 +10125,7 @@ Cards = [{
 		proc: [ss_heal(0.5), ss_enhance_own(1.0, 4)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
 		Statusup(0, 500),
@@ -10105,6 +10170,7 @@ Cards = [{
 		proc: [ss_delay_all(1)]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		NEFTJOD(30),
 		Statusup(500, 0),
@@ -10371,6 +10437,7 @@ Cards = [{
 		proc: [ss_damageblock_all(600, 5)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_relief([1, 1, 1, 1, 1, ], 10),
 		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
@@ -10415,6 +10482,7 @@ Cards = [{
 		proc: [ss_panel_change([0,1,0,1,0])]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
 		Statusup(500, 0),
@@ -10503,6 +10571,7 @@ Cards = [{
 		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.6), [1], 1)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
 		Statusup(500, 0),
@@ -10547,6 +10616,7 @@ Cards = [{
 		proc: [ss_damage_all(ss_chain_cost(5, 4.0, 2.0), [1])],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 400),
 		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
@@ -10635,6 +10705,7 @@ Cards = [{
 		proc: [ss_heal_absolute(500)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 3000),
 	],
@@ -11036,6 +11107,7 @@ Cards = [{
 		proc: [ss_damage_all(2.6, [2]), ss_consume_own(0.5) ],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 500),
 		Statusup(500, 0),
@@ -11298,6 +11370,7 @@ Cards = [{
 		proc: [ss_panel_shuffle()]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 400),
 		Statusup(500, 0),
@@ -11474,6 +11547,7 @@ Cards = [{
 		proc: [ss_damage_all(1.8, [2])],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 500),
 		Statusup(400, 0),
@@ -11694,6 +11768,7 @@ Cards = [{
 		proc: [ss_panel_change([0,0,1,0,0])]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 400),
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
@@ -11738,6 +11813,7 @@ Cards = [{
 		proc: [ss_damage_all(2.6, [1]), ss_consume_own(0.5)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 500),
 		Statusup(400, 0),
@@ -11953,6 +12029,7 @@ Cards = [{
 		proc: [ss_heal(0.5)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 6000),
 		Statusup(2000, 0),
@@ -12086,6 +12163,7 @@ Cards = [{
 		proc: [ss_damage_s(1.8, [2], 5)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
 	],
@@ -12129,6 +12207,7 @@ Cards = [{
 		proc: [ss_panel_change([0,0,1,0,0])]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(400, 0),
 		NEFTJOD(30),
@@ -12218,6 +12297,7 @@ Cards = [{
 		proc: [ss_damage_all(2.6, [2]), ss_consume_own(0.50)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 500),
 		Statusup(500, 0),
@@ -12570,6 +12650,7 @@ Cards = [{
 		proc: [ss_damageblock_all(600, 6)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
 		NEFTJOD(30),
@@ -12832,6 +12913,7 @@ Cards = [{
 		proc: [ss_panel_change([0,0,1,0,0])]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 400),
 		Spec_statusup(0, 100, [4, ]),
@@ -13097,6 +13179,7 @@ Cards = [{
 		proc: [/*undef:集める*/ ss_attr_guard([1,1,1,1,1], 0.5, 3)]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 400),
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
@@ -13185,6 +13268,7 @@ Cards = [{
 		proc: [ss_panel_change([0,0,1,0,0])]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
 		Statusup(500, 0),
@@ -13403,6 +13487,7 @@ Cards = [{
 		proc: [ss_heal(0.5)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 400),
 		Statusup(400, 0),
@@ -13491,6 +13576,7 @@ Cards = [{
 		proc: [ss_answer_narrow(2)]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 400),
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
@@ -13799,6 +13885,7 @@ Cards = [{
 		proc: [ss_damage_all(4.0, [2]), ss_consume_own(1.0)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 500),
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
@@ -13975,6 +14062,7 @@ Cards = [{
 		proc: [panel_chainplus(2)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
 		Statusup(0, 500),
@@ -14018,6 +14106,7 @@ Cards = [{
 		proc: [ss_damage_all(1.8, [2])],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 300),
 		Statusup(500, 0),
@@ -14766,6 +14855,7 @@ Cards = [{
 		proc: [ss_damage_all(1.2, [0,2]), ss_heal(0.20)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(500, 0),
 		Statusup(0, 400),
@@ -14854,6 +14944,7 @@ Cards = [{
 		proc: [ss_heal(0.25), ss_resurrection([1,0,1,0,0], 0.10)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		NEFTJOD(30),
 		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
@@ -15074,6 +15165,7 @@ Cards = [{
 		proc: [ss_panel_change([1,0,1,0,0])]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
 		Statusup(0, 400),
@@ -15162,6 +15254,7 @@ Cards = [{
 		proc: [ss_panel_change([0,1,1,0,0])]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
 		Statusup(500, 0),
@@ -15338,6 +15431,7 @@ Cards = [{
 		proc: [ss_damage_all(1.8, [2, 3])],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		NEFTJOD(30),
 		Statusup(0, 400),
@@ -15383,6 +15477,7 @@ Cards = [{
 		proc: [ss_panel_change([0,0,1,1,0])]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
 		Statusup(500, 0),
@@ -15427,6 +15522,7 @@ Cards = [{
 		proc: [ss_skillboost(3)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 500),
 		Statusup(500, 0),
@@ -15471,6 +15567,7 @@ Cards = [{
 		proc: [ss_absattack_disable(1)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(500, 0),
 		Statusup(0, 400),
@@ -15716,6 +15813,7 @@ Cards = [{
 	attr: [0, -1],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "HP80%以上で雷属性の敵単体へ特効ダメージ(475%)",
 		proc: add_cond(ChainAttrAttack(4.75, 0, [0, 0, 1, 0, 0]), when_hp_more(0.80)),
@@ -15855,6 +15953,7 @@ Cards = [{
 	attr: [0,1],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "3チェインで敵単体を3回連続攻撃、ジャンルパネルが3色だと6回連続攻撃(300%)",
 		proc: [ChainDualAttack(3, 3, 3), add_cond(ChainDualAttack(3,3,6), as_panel_over3())],
@@ -16235,6 +16334,7 @@ Cards = [{
 		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 5.0, 2.0), [2]), ss_consume_all(0.5)]
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(0, 700),
 		Statusup(300, 0),
@@ -16637,6 +16737,7 @@ Cards = [{
 		proc: [ss_enhance_own(1.5, 3)],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0]),
 		Statusup(0, 300),
@@ -16660,6 +16761,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "術士の仲間の数だけダメージアップ(40%×精霊数)",
 		proc: ChainDeckSpecsAttack(0.40, [9], 0),
@@ -17823,6 +17925,7 @@ Cards = [{
 	attr: [1, 3],
 	species: [11],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "5チェインでダメージアップ、HP80%以下でさらにアップ(400%/550%)",
 		proc: [ChainAttack(4.0, 5), add_cond(ChainAttack(5.5, 5), when_hp_less(0.8))],
@@ -17976,6 +18079,7 @@ Cards = [{
 		proc: [ss_damage_all(ss_consume_all_cond(1.5, 1.0), [2])],
 	},
 	islegend: true,
+	is_dist: true,
 	Lawake: [
 		Statusup(400, 0),
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
@@ -18439,6 +18543,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [1],
 	islegend: false,
+	is_dist: true,
 	as1: {
 		desc: "3チェインで敵単体を3回連続攻撃(300%)",
 		proc: ChainDualAttack(3.0, 3, 3),
@@ -18467,6 +18572,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [6],
 	islegend: false,
+	is_dist: true,
 	as1: {
 		desc: "ダメージがイチかバチかアップ(0%~500%)",
 		proc: ChainStakesAttack(0, 5.0, 0),
@@ -18540,6 +18646,7 @@ Cards = [{
 	attr: [1, 2],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "5チェインで敵単体へのダメージアップ、パネルの色が増す度さらにアップ(350%/500%/600%)",
 		proc: ChainPanelsAttack(3.5, 5.0, 6.0, 5),
@@ -18584,6 +18691,7 @@ Cards = [{
 	attr: [1, 4],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "残りHPが80%以上で水属性の味方の攻撃力をアップ(50%)",
 		proc: add_cond(ChainEnhance(0.50, [0, 1, 0, 0, 0], 0), when_hp_more(0.8)),
@@ -18628,6 +18736,7 @@ Cards = [{
 	attr: [1, 3],
 	species: [3],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "3チェインで敵全体へダメージ、魔族・天使・物質の敵へさらにダメージアップ(160%/260%)",
 		proc: [ChainAllAttack(1.6, 3), ChainAllSpecAttack(2.6, [2,3,6], 3)],
@@ -18672,6 +18781,7 @@ Cards = [{
 	attr: [2, 4],
 	species: [1],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "3チェインで敵単体を3回連続攻撃(300%)",
 		proc: ChainDualAttack(3.0, 3, 3),
@@ -18716,6 +18826,7 @@ Cards = [{
 	attr: [2, 3],
 	species: [1],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "雷属性の味方を回復(12%)",
 		proc: Heal(0.12, [0, 0, 1, 0, 0], 0),
@@ -18760,6 +18871,7 @@ Cards = [{
 	attr: [1, -1],
 	species: [8],
 	islegend: false,
+	is_dist: true,
 	as1: {
 		desc: "5チェインで水属性の味方の攻撃力をアップ(60%)",
 		proc: ChainEnhance(0.60, [0, 1, 0, 0, 0], 5),
@@ -19318,6 +19430,7 @@ Cards = [{
 	attr: [2,0],
 	species: [4],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "7チェインで敵単体へのダメージアップ(550%)",
 		proc: ChainAttack(5.5, 7),
@@ -19362,6 +19475,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "5チェインで敵単体を5回連続攻撃(400%)",
 		proc: ChainDualAttack(4.0, 5, 5),
@@ -19406,6 +19520,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "水属性の味方のHPを回復(11%)",
 		proc: Heal(0.11, [0,1,0,0,0], 0),
@@ -19450,6 +19565,7 @@ Cards = [{
 	attr: [0,2],
 	species: [4],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "5チェインで火・雷属性の味方の攻撃力をアップ(55%)",
 		proc: ChainEnhance(0.55, [1,0,1,0,0], 5),
@@ -19494,6 +19610,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [4],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "雷属性の味方の攻撃力をアップ、妖精・亜人はさらにアップ(30%/60%)",
 		proc: [ChainEnhance(0.30, [0,0,1,0,0], 0), ChainSpecEnhance(0.60, [0,0,1,0,0], [4,5], 0)],
@@ -19582,6 +19699,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "雷属性の味方のHPを回復、術士はさらに回復(9%/13%)",
 		proc: [Heal(0.09, [0,0,1,0,0], 0), SpecHeal(0.13, [0,0,1,0,0], [9], 0)],
@@ -19626,6 +19744,7 @@ Cards = [{
 	attr: [2,4],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "雷属性の味方のHPを回復(13%)",
 		proc: Heal(0.13, [0,0,1,0,0], 0),
@@ -19801,6 +19920,7 @@ Cards = [{
 	attr: [2,3],
 	species: [1],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "4チェインで敵単体を3回連続攻撃(400%)",
 		proc: ChainDualAttack(4.0, 4, 3),
@@ -19846,6 +19966,7 @@ Cards = [{
 	attr: [0,4],
 	species: [4],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "5チェインで敵単体を3回連続攻撃(400%)",
 		proc: ChainDualAttack(4.0, 5, 3),
@@ -19890,6 +20011,7 @@ Cards = [{
 	attr: [1,2],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "3チェインでダメージアップ、7チェインで更にダメージアップ(300%/450%)",
 		proc: [ChainAttack(3.0, 3), ChainAttack(4.5, 7)],
@@ -19934,6 +20056,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "火属性の味方のHPを回復(11%)",
 		proc: Heal(0.11, [1,0,0,0,0], 0),
@@ -20022,6 +20145,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "5チェインで火属性の味方の攻撃力をアップ(60%)",
 		proc: ChainEnhance(0.60, [1,0,0,0,0], 5),
@@ -20066,6 +20190,7 @@ Cards = [{
 	attr: [0,4],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "4チェインでダメージアップ、術士の敵へさらにダメージアップ(350%/500%)",
 		proc: [ChainAttack(3.5, 4), ChainSpecAttack(5.0, 4, [9])],
@@ -20154,6 +20279,7 @@ Cards = [{
 	attr: [0,4],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "10チェインで敵単体を3回連続攻撃(700%)",
 		proc: ChainDualAttack(7.0, 10, 3),
@@ -20198,6 +20324,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: false,
+	is_dist: true,
 	as1: {
 		desc: "雷属性の味方の攻撃力を大幅アップ(30%)",
 		proc: ChainEnhance(0.30, [0,0,1,0,0], 0),
@@ -20493,6 +20620,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [0],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "雷属性の敵単体へ特攻ダメージ、HP50%以下でさらにダメージアップ(300%/1050%)",
 		proc: [ChainAttrAttack(3, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(10.5, 0, [0,0,1,0,0]), when_hp_less(0.5))],
@@ -20537,6 +20665,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [4],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "火属性の味方を回復、妖精なら更に回復する(10%/15%)",
 		proc: [Heal(0.10, [1,0,0,0,0], 0), SpecHeal(0.15, [1,0,0,0,0], [4], 0)],
@@ -21422,6 +21551,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: false,
+	is_dist: true,
 	as1: {
 		desc: "火属性の敵単体へ特効ダメージ(300%)",
 		proc: ChainAttrAttack(3.0, 0, [1,0,0,0,0]),
@@ -21453,6 +21583,7 @@ Cards = [{
 	attr: [0,4],
 	species: [2],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "2チェインで敵全体へ分散攻撃(300%)",
 		proc: ChainVarianceAttack(3.0, 2),
@@ -21497,6 +21628,7 @@ Cards = [{
 	attr: [1,4],
 	species: [2],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "残りHPが80%以上でダメージアップ(300%)",
 		proc: add_cond(ChainAttack(3.0, 0), when_hp_more(0.8)),
@@ -21541,6 +21673,7 @@ Cards = [{
 	attr: [2,4],
 	species: [2],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "敵単体を3回連続攻撃(275%)",
 		proc: ChainDualAttack(2.75, 0, 3),
@@ -21585,6 +21718,7 @@ Cards = [{
 	attr: [2,3],
 	species: [11],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "3チェインでMAXHPの15%を使い、敵単体を3回連続攻撃(400%)",
 		proc: add_cond(ChainDualAttack(4.0, 3, 3), as_consume_own(0.15)),
@@ -22200,6 +22334,7 @@ Cards = [{
 	attr: [2, -1],
 	species: [4],
 	islegend: false,
+	is_dist: true,
 	as1: {
 		desc: "水属性の敵単体へ特効5連続ダメージ、HP80%以上でさらにダメージアップ(250%/350%)",
 		proc: [ChainDualAttrAttack(2.5, 0, 5, [0, 1, 0, 0, 0]), add_cond(ChainDualAttrAttack(3.5, 0, 5, [0, 1, 0, 0, 0]), when_hp_more(0.80))],
@@ -22231,6 +22366,7 @@ Cards = [{
 	attr: [0, 3],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "火属性の味方を回復、5チェインでさらに回復(10%/15%)",
 		proc: [Heal(0.10, [1, 0, 0, 0, 0], 0), Heal(0.15, [1, 0, 0, 0, 0], 5)],
@@ -22275,6 +22411,7 @@ Cards = [{
 	attr: [1, 0],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "水属性の味方の攻撃力をアップ、複属性が火属性だとさらにアップ(30%/70%)",
 		proc: ChainEnhance_SubAttr(0.3, 0.7, [0, 1, 0, 0, 0], [1, 0, 0, 0, 0], 0),
@@ -22319,6 +22456,7 @@ Cards = [{
 	attr: [2, 0],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "火・雷属性の味方を回復(13%)",
 		proc: Heal(0.13, [1, 0, 1, 0, 0], 0),
@@ -22363,6 +22501,7 @@ Cards = [{
 	attr: [2, -1],
 	species: [8],
 	islegend: false,
+	is_dist: true,
 	as1: {
 		desc: "5チェインで敵単体を5回連続攻撃(400%)",
 		proc: ChainDualAttack(4.0, 5, 5),
@@ -22869,6 +23008,7 @@ Cards = [{
 	attr: [0,3],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "火属性の味方の攻撃力をアップ、リーダー時さらにアップ(30%/40%)",
 		proc: [ChainEnhance(0.30, [1,0,0,0,0], 0), add_cond(ChainEnhance(0.40, [1,0,0,0,0], 0), when_leader())],
@@ -22913,6 +23053,7 @@ Cards = [{
 	attr: [0,4],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "火属性の味方の攻撃力をアップ、リーダー時さらにアップ(30%/40%)",
 		proc: [ChainEnhance(0.30, [1,0,0,0,0], 0), add_cond(ChainEnhance(0.40, [1,0,0,0,0], 0), when_leader())],
@@ -22957,6 +23098,7 @@ Cards = [{
 	attr: [1,3],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "水属性の味方のHPを回復(12%)",
 		proc: Heal(0.12, [1], 0),
@@ -23001,6 +23143,7 @@ Cards = [{
 	attr: [1,4],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "水属性の味方のHPを回復(12%)",
 		proc: Heal(0.12, [1], 0),
@@ -23045,6 +23188,7 @@ Cards = [{
 	attr: [2,3],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "デッキの属性の数だけ攻撃力アップ(230%/360%/490%)",
 		proc: ChainDeckAttrsAttack(2.3, 3.6, 4.9, 0),
@@ -23089,6 +23233,7 @@ Cards = [{
 	attr: [2,4],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "デッキの属性の数だけ攻撃力アップ(230%/360%/490%)",
 		proc: ChainDeckAttrsAttack(2.3, 3.6, 4.9, 0),
@@ -23133,6 +23278,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "火属性の味方の攻撃力をアップ、術士はさらにアップ(20%/35%)",
 		proc: [ChainEnhance(0.20, [1,0,0,0,0], 0), ChainSpecEnhance(0.35, [1,0,0,0,0], [9], 0)],
@@ -23177,6 +23323,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [4],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "水属性の味方の攻撃力をアップ、リーダー時さらにアップ(30%/40%)",
 		proc: [ChainEnhance(0.30, [0,1,0,0,0], 0), add_cond(ChainEnhance(0.40, [0,1,0,0,0], 0), when_leader())],
@@ -23221,6 +23368,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "水属性の敵単体へ特効3連撃(350%)",
 		proc: ChainDualAttrAttack(3.5, 0, 3, [0,1,0,0,0]),
@@ -23265,6 +23413,7 @@ Cards = [{
 	attr: [2, 1],
 	species: [5],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "敵単体へダメージアップ(160%)",
 		proc: ChainAttack(1.6, 0),
@@ -23310,6 +23459,7 @@ Cards = [{
 	attr: [0, 1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "3チェインで火属性の攻撃力をアップ、複属性が水属性だとさらにアップ(30%/70%)",
 		proc: ChainEnhance_SubAttr(0.3, 0.7, [1, 0, 0, 0, 0], [0, 1, 0, 0, 0], 3),
@@ -23354,6 +23504,7 @@ Cards = [{
 	attr: [1, 0],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "水・火属性の味方の攻撃力をアップ、術士はさらにアップ(20%/40%)",
 		proc: [ChainEnhance(0.20, [1, 1, 0, 0, 0], 0), ChainSpecEnhance(0.40, [1, 1, 0, 0, 0], [9], 0)],
@@ -23398,6 +23549,7 @@ Cards = [{
 	attr: [1, 3],
 	species: [0],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "火属性以外の敵単体へ特効ダメージ(350%)",
 		proc: ChainAttrAttack(3.5, 0, [0, 1, 1, 1, 1]),
@@ -23442,6 +23594,7 @@ Cards = [{
 	attr: [2, -1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "水属性の敵単体へ特効5連撃、HPが20%以下でさらにダメージアップ(300%/1300%)",
 		proc: [ChainDualAttrAttack(3.0, 0, 5, [0, 1, 0, 0, 0]), add_cond(ChainDualAttrAttack(13.0, 0, 5, [0, 1, 0, 0, 0]), when_hp_less(0.20))],
@@ -23487,6 +23640,7 @@ Cards = [{
 	attr: [1, 2],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "種族が魔族・魔法生物の敵単体へダメージ(500%)",
 		proc: ChainSpecAttack(5.0, 0, [2, 7]),
@@ -23531,6 +23685,7 @@ Cards = [{
 	attr: [2, -1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "水属性の敵単体へ特効ダメージ、HP80%以上でさらにダメージアップ(280%/430%)",
 		proc: [ChainAttrAttack(2.8, 0, [0, 1, 0, 0, 0]), add_cond(ChainAttrAttack(4.3, 0, [0, 1, 0, 0, 0]), when_hp_more(0.80))],
@@ -23575,6 +23730,7 @@ Cards = [{
 	attr: [0, 3],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(30%/80%)",
 		proc: ChainEnhance_SubAttr(0.30, 0.80, [1, 0, 0, 0, 0], [0, 0, 0, 1, 0], 0),
@@ -23619,6 +23775,7 @@ Cards = [{
 	attr: [2, 3],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "雷属性の味方のHPを回復(12%)",
 		proc: Heal(0.12, [0, 0, 1, 0, 0], 0),
@@ -23883,6 +24040,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "水属性の味方を回復、5チェインで更に回復(10%/14%)",
 		proc: [Heal(0.10, [0,1,0,0,0], 0), Heal(0.14, [0,1,0,0,0], 5)],
@@ -23927,6 +24085,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [0],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "10チェインでダメージアップ、妖精・亜人の敵へさらにアップ(700%/1100%)",
 		proc: [ChainAttack(7.0, 10), ChainSpecAttack(11.0, 10, [5,6])],
@@ -23970,6 +24129,7 @@ Cards = [{
 	attr: [1,2],
 	species: [4],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "水・雷属性の味方を回復(13%)",
 		proc: Heal(0.13, [0,1,1,0,0], 0),
@@ -24014,6 +24174,7 @@ Cards = [{
 	attr: [2,3],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "4チェインでダメージアップ、パネルの色が増す度ダメージアップ(350%/450%/600%)",
 		proc: ChainPanelsAttack(3.5, 4.5, 6.0, 4),
@@ -24237,6 +24398,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "3チェインでダメージアップ(300%)",
 		proc: ChainAttack(3.0, 3),
@@ -24281,6 +24443,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [5],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "雷属性の味方の攻撃力をアップ(30%)",
 		proc: ChainEnhance(0.30, [0,0,1,0,0], 0),
@@ -24325,6 +24488,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [0],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "ジャンルパネルが2色でダメージアップ、3色でさらにアップ(275%/445%)",
 		proc: ChainPanelsAttack(0, 2.75, 4.45, 0),
@@ -24369,6 +24533,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "水属性の味方のHPを回復(12%)",
 		proc: Heal(0.12, [0,1,0,0,0], 0),
@@ -24413,6 +24578,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "水属性の味方のHPを回復(13%)",
 		proc: Heal(0.13, [0,1,0,0,0], 0),
@@ -24810,6 +24976,7 @@ Cards = [{
 	attr: [0,2],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "火・雷属性の味方のHPを回復(14%)",
 		proc: Heal(0.14, [1,0,1,0,0], 0),
@@ -24986,6 +25153,7 @@ Cards = [{
 	attr: [2, -1],
 	species: [8],
 	islegend: false,
+	is_dist: true,
 	as1: {
 		desc: "戦士の仲間の数だけダメージ大アップ(140%/180%/220%/260%/300%)",
 		proc: ChainDeckSpecsAttack(0.40, [8], 0),
@@ -25016,6 +25184,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [0],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "火属性の味方のHPを回復(12%)",
 		proc: Heal(0.12, [1,0,0,0,0], 0),
@@ -25590,6 +25759,7 @@ Cards = [{
 	attr: [1,4],
 	species: [2],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "4チェインでダメージアップ(300%)",
 		proc: ChainAttack(3.0, 4),
@@ -25634,6 +25804,7 @@ Cards = [{
 	attr: [0,4],
 	species: [2],
 	islegend: false,
+	is_dist: true,
 	as1: {
 		desc: "味方全体のHPを回復(12%)",
 		proc: Heal(0.12, [1,1,1,1,1], 0),
@@ -25665,6 +25836,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [2],
 	islegend: false,
+	is_dist: true,
 	as1: {
 		desc: "雷属性の味方のHPを回復(11%)",
 		proc: Heal(0.11, [0,0,1,0,0], 0),
@@ -25696,6 +25868,7 @@ Cards = [{
 	attr: [2,0],
 	species: [2],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "雷属性の攻撃力をアップ、複属性が火属性だとさらにアップ(30%/70%)",
 		proc: ChainEnhance_SubAttr(0.30, 0.70, [0,0,1,0,0], [1,0,0,0,0], 0),
@@ -25802,6 +25975,7 @@ Cards = [{
 	attr: [0,2],
 	species: [1],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "火・雷属性のHPを回復(12%)",
 		proc: Heal(0.12, [1,0,1,0,0], 0),
@@ -25847,6 +26021,7 @@ Cards = [{
 	attr: [0,2],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "火属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(30%/70%)",
 		proc: ChainEnhance_SubAttr(0.30, 0.70, [1,0,0,0,0], [0,0,1,0,0], 0),
@@ -27076,6 +27251,7 @@ Cards = [{
 	attr: [2,0],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "4チェインで敵単体へのダメージアップ、パネルの色が増す度さらにアップ(350%/450%/600%)",
 		proc: ChainPanelsAttack(3.5, 4.5, 6.0, 4),
@@ -27120,6 +27296,7 @@ Cards = [{
 	attr: [0,1],
 	species: [6],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "火属性の攻撃力をアップ、複属性が水属性だとさらにアップ(30%/80%)",
 		proc: ChainEnhance_SubAttr(0.30, 0.80, [1,0,0,0,0], [0,1,0,0,0], 0),
@@ -27164,6 +27341,7 @@ Cards = [{
 	attr: [0,4],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "4チェインでダメージアップ(300%)",
 		proc: ChainAttack(3.0, 4),
@@ -27208,6 +27386,7 @@ Cards = [{
 	attr: [1,2],
 	species: [5],
 	islegend: false,
+	is_dist: true,
 	as1: {
 		desc: "3チェインで火属性の敵へ特効3連撃(300%)",
 		proc: ChainDualAttrAttack(3.0, 3, 3, [1,0,0,0,0]),
@@ -27239,6 +27418,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "4チェインでダメージアップ(300%)",
 		proc: ChainAttack(3.0, 4),
@@ -27283,6 +27463,7 @@ Cards = [{
 	attr: [0,1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "火・水属性の味方を回復、5チェインで更に回復(10%/14%)",
 		proc: [Heal(0.10, [1,1,0,0,0], 0), Heal(0.14, [1,1,0,0,0], 0.14)],
@@ -27327,6 +27508,7 @@ Cards = [{
 	attr: [1,0],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "3チェインで敵単体を3回連続攻撃、7チェインで更にダメージアップ(300%/450%)",
 		proc: [ChainDualAttack(3.0, 3, 3), ChainDualAttack(4.5, 7, 3)],
@@ -27371,6 +27553,7 @@ Cards = [{
 	attr: [2,1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "3チェインで水・雷属性の味方の攻撃力をアップ(40%)",
 		proc: ChainEnhance(0.40, [0,1,1,0,0], 3),
@@ -27415,6 +27598,7 @@ Cards = [{
 	attr: [2, -1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "水属性の敵単体に特効ダメージ(350%)",
 		proc: ChainAttrAttack(3.5, 0, [0, 1, 0, 0, 0]),
@@ -27552,6 +27736,7 @@ Cards = [{
 	attr: [2, -1],
 	species: [6],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "5チェインで水属性の敵単体へ特効ダメージ(600%)",
 		proc: ChainAttrAttack(6.0, 5, [0, 1, 0, 0, 0]),
@@ -27598,6 +27783,7 @@ Cards = [{
 	attr: [2, 0],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "パネルの色が2色以上で火・雷属性の味方を回復(17%)",
 		proc: ChainPanelsHeal(0, 0.17, 0.17, [1, 0, 1, 0, 0], 0),
@@ -27642,6 +27828,7 @@ Cards = [{
 	attr: [1, 2],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "4チェインで敵全体へ分散攻撃、HP80%以上でさらにダメージアップ(300%/400%)",
 		proc: [ChainVarianceAttack(3.0, 4), add_cond(ChainVarianceAttack(4.0, 4), when_hp_more(0.8))],
@@ -27685,6 +27872,7 @@ Cards = [{
 	attr: [0, 1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "3チェインでダメージアップ(300%)",
 		proc: ChainAttack(3.0, 3),
@@ -27729,6 +27917,7 @@ Cards = [{
 	attr: [0, 4],
 	species: [6],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "4チェインで雷属性の敵単体へ特効3連撃、パネルの色が増す度さらにアップ(500%/600%/700%)",
 		proc: ChainPanelsAttrDualAttack(5.0, 6.0, 7.0, [0, 0, 1, 0, 0], 3, 4),
@@ -27775,6 +27964,7 @@ Cards = [{
 	attr: [2, 1],
 	species: [6],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "HP全快でダメージアップ(450%)",
 		proc: add_cond(ChainAttack(4.5, 0), when_hp_more(1)),
@@ -27818,6 +28008,7 @@ Cards = [{
 	attr: [1, 4],
 	species: [6],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "種族が物質の敵単体へ特効ダメージ(600%)",
 		proc: ChainSpecAttack(6.0, 0, [6]),
@@ -27996,7 +28187,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	as1: {
-		desc: "戦士・亜人の仲間の数だけダメージアップ(100%+40%×数)、パネルの色が2色以上でさらにダメージアップ(100%+60%×数)",
+		desc: "戦士・亜人の仲間の数だけダメージアップ(140%/180%/220%/260%/300%)、パネルの色が2色以上でさらにダメージアップ(160%/220%/280%/340%/400%)、パネルの色が2色以上でさらにダメージアップ(100%+60%×数)",
 		proc: [null],
 	},
 	ss1: {
@@ -28017,7 +28208,7 @@ Cards = [{
 		Spec_statusup(200, 0, [8, ]),
 	],
 	as2: {
-		desc: "戦士・亜人の仲間の数だけダメージアップ(100%+60%×数)、パネルの色が2色以上でさらにダメージアップ(100%+80%×数)",
+		desc: "戦士・亜人の仲間の数だけダメージアップ(140%/180%/220%/260%/300%)、パネルの色が2色以上でさらにダメージアップ(160%/220%/280%/340%/400%)",
 		proc: [null],
 	},
 	ss2: {
@@ -28040,6 +28231,7 @@ Cards = [{
 	attr: [0, -1],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "火属性の味方の攻撃力をアップ、戦士はさらにアップ(20%/40%)",
 		proc: [ChainEnhance(0.20, [1, 0, 0, 0, 0], 0), ChainSpecEnhance(0.40, [1, 0, 0, 0, 0], [8], 0)],
@@ -28084,6 +28276,7 @@ Cards = [{
 	attr: [1, -1],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "5チェインでダメージアップ(400%)",
 		proc: ChainAttack(4.0, 5),
@@ -28128,6 +28321,7 @@ Cards = [{
 	attr: [2, -1],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "水属性の敵単体へ特効ダメージ(350%)",
 		proc: [ChainAttrAttack(3.5, 0, [0, 1, 0, 0, 0])],
@@ -28174,6 +28368,7 @@ Cards = [{
 	attr: [0, -1],
 	species: [5],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "敵全体へ分散攻撃(250%)",
 		proc: ChainVarianceAttack(2.5, 0),
@@ -28217,6 +28412,7 @@ Cards = [{
 	attr: [1, -1],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "敵単体を5回連続攻撃(250%)",
 		proc: ChainDualAttack(2.5, 0, 5),
@@ -28261,6 +28457,7 @@ Cards = [{
 	attr: [2, 1],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "デッキに雷属性が3体以下の時、水・雷属性の味方の攻撃力をアップ(80%)",
 		proc: ChainEnhance_attrless(0.8, [0,1,1,0,0], [0,0,1,0,0], 3, 0),
@@ -28571,6 +28768,7 @@ Cards = [{
 	attr: [0,1],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "4チェインで敵全体に分散攻撃(400%)",
 		proc: ChainVarianceAttack(4.0, 4),
@@ -28617,6 +28815,7 @@ Cards = [{
 	attr: [2,0],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "残りHPが80%以上でダメージアップ(300%)",
 		proc: add_cond(ChainAttack(3.0, 0), when_hp_more(0.80)),
@@ -28661,6 +28860,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [2],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "火属性以外の敵単体へ特効ダメージ(500%)",
 		proc: ChainAttrAttack(5.0, 0, [0,1,1,1,1]),
@@ -28705,6 +28905,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [5],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "4チェインで戦士と亜人の仲間の数だけダメージアップ(100%+50%×数)",
 		proc: ChainDeckSpecsAttack(0.50, [5,8], 4),
@@ -28749,6 +28950,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "3チェインでダメージアップ(300%)",
 		proc: ChainAttack(3.0, 3),
@@ -28793,6 +28995,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "水属性の味方のHPを回復(11%)",
 		proc: Heal(0.11, [0,1,0,0,0], 0),
@@ -28881,6 +29084,7 @@ Cards = [{
 	attr: [0, -1],
 	species: [4],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "7チェインでダメージアップ(500%)",
 		proc: ChainAttack(5.0, 7),
@@ -29127,6 +29331,7 @@ Cards = [{
 	attr: [0,1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "2チェインでダメージアップ(300%)",
 		proc: ChainAttack(3.0, 2),
@@ -29171,6 +29376,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "7チェインで水属性の敵単体へ特効4連撃(700%)",
 		proc: ChainDualAttrAttack(7.0, 7, 4, [0,1,0,0,0]),
@@ -29215,6 +29421,7 @@ Cards = [{
 	attr: [1,2],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "水属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(30%/80%)",
 		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,1,0,0,0], [0,0,1,0,0], 0),
@@ -29260,6 +29467,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "味方全体のHPを回復(13%)",
 		proc: Heal(0.13, [1,1,1,1,1], 0),
@@ -29304,6 +29512,7 @@ Cards = [{
 	attr: [1,3],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "水属性の味方のHPを回復(12%)",
 		proc: Heal(0.12, [0,1,0,0,0], 0),
@@ -29347,6 +29556,7 @@ Cards = [{
 	attr: [1, 2],
 	species: [5],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "4チェインで水属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(10%/120%)",
 		proc: ChainEnhance_SubAttr(0.1, 1.2, [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], 4),
@@ -29390,6 +29600,7 @@ Cards = [{
 	attr: [2, -1],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "6チェインで敵単体を3回連続攻撃(450%)",
 		proc: ChainDualAttack(4.5, 6, 3),
@@ -29434,6 +29645,7 @@ Cards = [{
 	attr: [0, 4],
 	species: [2],
 	islegend: false,
+	is_dist: true,
 	as1: {
 		desc: "4チェインで敵全体へ分散攻撃(400%)",
 		proc: ChainVarianceAttack(4.0, 4),
@@ -29465,6 +29677,7 @@ Cards = [{
 	attr: [0, -1],
 	species: [5],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "4チェインでダメージアップ(400%)",
 		proc: ChainAttack(4.0, 4),
@@ -29509,6 +29722,7 @@ Cards = [{
 	attr: [1, -1],
 	species: [8],
 	islegend: false,
+	is_dist: true,
 	as1: {
 		desc: "火属性の敵単体へ特効ダメージ(350%)",
 		proc: ChainAttrAttack(3.5, 0, [1, 0, 0, 0, 0]),
@@ -29541,6 +29755,7 @@ Cards = [{
 	attr: [2, 1],
 	species: [8],
 	islegend: false,
+	is_dist: true,
 	as1: {
 		desc: "3チェインでダメージアップ、HP50％以上でさらにアップ(300%/350％)",
 		proc: [ChainAttack(3.0, 3), add_cond(ChainAttack(3.5, 3), when_hp_more(0.5))],
@@ -30423,6 +30638,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "水属性の味方の攻撃力をアップ(20%)し、水属性の味方のHPを回復、HP20%以下ならさらに回復(5%/50%)",
 		proc: [ChainEnhance(0.20, [0,1,0,0,0], 0), Heal(0.05, [0,1,0,0,0], 0), add_cond(Heal(0.50, [0,1,0,0,0], 0), when_hp_less(0.20))],
@@ -30800,7 +31016,8 @@ Cards = [{
 	attr: [0,-1],
 	species: [3],
 	islegend: true,
-	ape: "サタ女配付",
+	is_dist: true,
+	ape: "サタ女",
 	as1: {
 		desc: "敵単体を6回連続攻撃(250%)",
 		proc: ChainDualAttack(2.5, 0, 6),
@@ -30845,7 +31062,8 @@ Cards = [{
 	attr: [0,4],
 	species: [2],
 	islegend: true,
-	ape: "サタ女配付",
+	is_dist: true,
+	ape: "サタ女",
 	as1: {
 		desc: "7チェインで火属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(60%/110%)",
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [1,0,0,0,0], [0,0,0,0,1], 7),
@@ -30890,7 +31108,8 @@ Cards = [{
 	attr: [2,1],
 	species: [2],
 	islegend: true,
-	ape: "サタ女配付",
+	is_dist: true,
+	ape: "サタ女",
 	as1: {
 		desc: "水・雷属性の味方のHPを回復(12%)",
 		proc: Heal(0.12, [0,1,1,0,0], 0),
@@ -30935,7 +31154,8 @@ Cards = [{
 	attr: [1,-1],
 	species: [2],
 	islegend: true,
-	ape: "サタ女配付",
+	is_dist: true,
+	ape: "サタ女",
 	as1: {
 		desc: "敵単体へダメージアップ、天使・魔族の敵へさらにダメージアップ(250%/400%)",
 		proc: [ChainAttack(2.5, 0), ChainSpecAttack(4.0, 0, [2,3])],
@@ -30980,7 +31200,8 @@ Cards = [{
 	attr: [2,-1],
 	species: [2],
 	islegend: true,
-	ape: "サタ女配付",
+	is_dist: true,
+	ape: "サタ女",
 	as1: {
 		desc: "水属性の敵単体へ特効ダメージ(350%)",
 		proc: ChainAttrAttack(3.5, 0, [0,1,0,0,0]),
@@ -31025,7 +31246,8 @@ Cards = [{
 	attr: [0,2],
 	species: [2],
 	islegend: true,
-	ape: "サタ女配付",
+	is_dist: true,
+	ape: "サタ女",
 	as1: {
 		desc: "火属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(30%/70%)",
 		proc: ChainEnhance_SubAttr(0.3, 0.7, [1,0,0,0,0], [0,0,1,0,0], 0),
@@ -31245,6 +31467,7 @@ Cards = [{
 	attr: [0,4],
 	species: [2],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "11チェインで火属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(120%/170%)",
 		proc: ChainEnhance_SubAttr(1.2, 1.7, [1,0,0,0,0], [0,0,0,0,1], 11),
@@ -31289,6 +31512,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [2],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "火属性の味方のHPを回復(12%)",
 		proc: Heal(0.12, [1,0,0,0,0], 0),
@@ -31333,6 +31557,7 @@ Cards = [{
 	attr: [1,4],
 	species: [2],
 	islegend: false,
+	is_dist: true,
 	as1: {
 		desc: "敵の数に関わらず敵全体へダメージアップ(140%)",
 		proc: ChainAllAttack(1.4, 0),
@@ -31365,6 +31590,7 @@ Cards = [{
 	attr: [2,4],
 	species: [6],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "水属性の敵単体へ特効ダメージ(400%)",
 		proc: ChainAttrAttack(4.0, 0, [0,1,0,0,0]),
@@ -31409,6 +31635,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [2],
 	islegend: false,
+	is_dist: true,
 	as1: {
 		desc: "水属性の味方のHPを回復(10%)",
 		proc: Heal(0.10, [0,1,0,0,0], 0),
@@ -31440,6 +31667,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [2],
 	islegend: false,
+	is_dist: true,
 	as1: {
 		desc: "3チェインで雷属性の敵単体へ特効ダメージ(350%)",
 		proc: ChainAttrAttack(3.5, 3, [0,0,1,0,0]),
@@ -31603,7 +31831,8 @@ Cards = [{
 	attr: [1,4],
 	species: [11],
 	islegend: true,
-	ape: "アビスコード配付",
+	is_dist: true,
+	ape: "アビスコード",
 	as1: {
 		desc: "敵単体を2回連続攻撃、HP15%以下で5回連続攻撃になりさらにダメージアップ(150%/1100%)",
 		proc: [ChainDualAttack(1.5, 0, 2), add_cond(ChainDualAttack(11.0, 0, 5), when_hp_less(0.15))],
@@ -31959,7 +32188,8 @@ Cards = [{
 	attr: [0,4],
 	species: [11],
 	islegend: true,
-	ape: "アビスコードレイド配付",
+	is_dist: true,
+	ape: "アビスコードレイド",
 	as1: {
 		desc: "4チェインで火属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(10%/120%)",
 		proc: ChainEnhance_SubAttr(0.1, 1.2, [1,0,0,0,0], [0,0,0,0,1], 4),
@@ -33274,6 +33504,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: false,
+	is_dist: true,
 	as1: {
 		desc: "敵単体を3回連続攻撃(150%)",
 		proc: ChainDualAttack(1.5, 0, 3),
@@ -33304,7 +33535,8 @@ Cards = [{
 	attr: [2,4],
 	species: [8],
 	islegend: true,
-	ape: "スザクⅢ配付",
+	is_dist: true,
+	ape: "スザクⅢ",
 	as1: {
 		desc: "4チェインで水・光属性の敵単体へ特効ダメージ(550%)",
 		proc: ChainAttrAttack(5.5, 4, [0,1,0,1,0]),
@@ -33349,7 +33581,8 @@ Cards = [{
 	attr: [0,-1],
 	species: [2],
 	islegend: true,
-	ape: "スザクⅢ配付",
+	is_dist: true,
+	ape: "スザクⅢ",
 	as1: {
 		desc: "4チェインでダメージアップ(400%)",
 		proc: ChainAttack(4.0, 4),
@@ -33394,7 +33627,8 @@ Cards = [{
 	attr: [1,4],
 	species: [2],
 	islegend: true,
-	ape: "スザクⅢ配付",
+	is_dist: true,
+	ape: "スザクⅢ",
 	as1: {
 		desc: "味方のMAXHP10%を使い、敵単体へのダメージアップ(350%)",
 		proc: add_cond(ChainAttack(3.5, 0), as_consume_all(0.10)),
@@ -33439,7 +33673,8 @@ Cards = [{
 	attr: [2,0],
 	species: [2],
 	islegend: true,
-	ape: "スザクⅢ配付",
+	is_dist: true,
+	ape: "スザクⅢ",
 	as1: {
 		desc: "火・雷属性の味方のHPを回復(12%)",
 		proc: Heal(0.12, [1,0,1,0,0], 0),
@@ -33484,7 +33719,8 @@ Cards = [{
 	attr: [1,4],
 	species: [2],
 	islegend: true,
-	ape: "スザクⅢ配付",
+	is_dist: true,
+	ape: "スザクⅢ",
 	as1: {
 		desc: "火属性の敵単体へ特効ダメージ(400%)",
 		proc: ChainAttrAttack(4.0, 0, [1,0,0,0,0]),
@@ -33529,7 +33765,8 @@ Cards = [{
 	attr: [0,-1],
 	species: [6],
 	islegend: true,
-	ape: "スザクⅢ配付",
+	is_dist: true,
+	ape: "スザクⅢ",
 	as1: {
 		desc: "3チェインで敵単体を5回連続攻撃(300%)",
 		proc: ChainDualAttack(3.0, 3, 5),
@@ -33574,7 +33811,8 @@ Cards = [{
 	attr: [2,-1],
 	species: [7],
 	islegend: true,
-	ape: "スザクⅢ配付",
+	is_dist: true,
+	ape: "スザクⅢ",
 	as1: {
 		desc: "味方全体のHPを回復(11%)",
 		proc: Heal(0.11, [1,1,1,1,1], 0),
@@ -33619,7 +33857,8 @@ Cards = [{
 	attr: [0,-1],
 	species: [7],
 	islegend: true,
-	ape: "スザクⅢ配付",
+	is_dist: true,
+	ape: "スザクⅢ",
 	as1: {
 		desc: "3チェインで雷属性の敵単体へ特効ダメージ(475%)",
 		proc: ChainAttrAttack(4.75, 3, [0,0,1,0,0]),
@@ -33843,6 +34082,7 @@ Cards = [{
 	attr: [2,3],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	disable: true,
 	as1: {
 		desc: "雷属性の味方を回復、7チェインでさらに回復(10%/17%)",
@@ -34355,7 +34595,8 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
-	ape: "コナン配付",
+	is_dist: true,
+	ape: "コナン",
 	as1: {
 		desc: "水属性の敵単体へ特効ダメージ(300%)",
 		proc: ChainAttrAttack(3.0, 0, [0,1,0,0,0]),
@@ -34400,7 +34641,8 @@ Cards = [{
 	attr: [0,-1],
 	species: [9],
 	islegend: true,
-	ape: "コナン配付",
+	is_dist: true,
+	ape: "コナン",
 	as1: {
 		desc: "火属性の味方を回復、パネルの色が増す度さらに回復(10%/13%/15%)",
 		proc: ChainPanelsHeal(0.10, 0.13, 0.15, [1,0,0,0,0], 0),
@@ -34445,7 +34687,8 @@ Cards = [{
 	attr: [2,1],
 	species: [8],
 	islegend: true,
-	ape: "コナン配付",
+	is_dist: true,
+	ape: "コナン",
 	as1: {
 		desc: "雷属性の味方のHPを回復(12%)",
 		proc: Heal(0.12, [0,0,1,0,0], 0),
@@ -34490,7 +34733,8 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
-	ape: "コナン配付",
+	is_dist: true,
+	ape: "コナン",
 	as1: {
 		desc: "3チェインで雷属性の味方の攻撃力をアップ(45%)",
 		proc: ChainEnhance(0.45, [0,0,1,0,0], 3),
@@ -34535,7 +34779,8 @@ Cards = [{
 	attr: [1,0],
 	species: [8],
 	islegend: true,
-	ape: "コナン配付",
+	is_dist: true,
+	ape: "コナン",
 	as1: {
 		desc: "火・水属性の味方のHPを回復(11%)",
 		proc: Heal(0.11, [1,1,0,0,0], 0),
@@ -34580,7 +34825,8 @@ Cards = [{
 	attr: [2,4],
 	species: [3],
 	islegend: true,
-	ape: "ロストエデン配付",
+	is_dist: true,
+	ape: "ロストエデン",
 	as1: {
 		desc: "雷属性の味方のHPを回復、魔族・天使はさらに回復(9%/15%)",
 		proc: [Heal(0.09, [0,0,1,0,0], 0), SpecHeal(0.15, [0,0,1,0,0], [2,3], 0)],
@@ -34625,7 +34871,8 @@ Cards = [{
 	attr: [2,1],
 	species: [8],
 	islegend: true,
-	ape: "クロマグⅤ配付",
+	is_dist: true,
+	ape: "クロマグⅤ",
 	as1: {
 		desc: "水・雷属性の味方を回復、3チェインで更に回復(10%/13%)",
 		proc: [Heal(0.10, [0,1,1,0,0], 0), Heal(0.13, [0,1,1,0,0], 3)],
@@ -34805,6 +35052,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [5],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "水属性の敵単体へ極大ダメージ(275%)",
 		proc: ChainAttrAttack(2.75, 0, [0,1,0,0,0]),
@@ -35118,7 +35366,8 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "クロマグⅤ配付",
+	is_dist: true,
+	ape: "クロマグⅤ",
 	as1: {
 		desc: "7チェインで水属性の味方の攻撃力をアップ(70%)",
 		proc: ChainEnhance(0.7, [0,1,0,0,0], 7),
@@ -35386,7 +35635,8 @@ Cards = [{
 	attr: [0,4],
 	species: [1],
 	islegend: true,
-	ape: "神秘譚Ⅱ配付",
+	is_dist: true,
+	ape: "神秘譚Ⅱ",
 	as1: {
 		desc: "火属性の味方のHPを回復、神族はさらに回復(3%/17%)",
 		proc: [Heal(0.03, [1,0,0,0,0], 0), SpecHeal(0.17, [1,0,0,0,0], [2], 0)],
@@ -35431,7 +35681,8 @@ Cards = [{
 	attr: [2,-1],
 	species: [1],
 	islegend: true,
-	ape: "神秘譚Ⅱ配付",
+	is_dist: true,
+	ape: "神秘譚Ⅱ",
 	as1: {
 		desc: "6チェインで敵単体を9回連続攻撃(450%)",
 		proc: ChainDualAttack(4.5, 6, 9),
@@ -35519,6 +35770,7 @@ Cards = [{
 	attr: [2,1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "5チェインで水・雷属性の味方の攻撃力をアップ(60%)",
 		proc: ChainEnhance(0.6, [0,1,1,0,0], 5),
@@ -35563,6 +35815,7 @@ Cards = [{
 	attr: [0,3],
 	species: [4],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "火属性の味方を回復、HP20%以下でさらに回復(13%/33%)",
 		proc: [Heal(0.13, [1,0,0,0,0], 0), add_cond(Heal(0.33, [1,0,0,0,0], 0), when_hp_less(0.2))],
@@ -35607,7 +35860,8 @@ Cards = [{
 	attr: [1,-1],
 	species: [2],
 	islegend: true,
-	ape: "高橋留美子コラボ配付",
+	is_dist: true,
+	ape: "高橋留美子コラボ",
 	as1: {
 		desc: "5チェインで水属性の味方の攻撃力をアップ(60%)",
 		proc: ChainEnhance(0.6, [0,1,0,0,0], 5),
@@ -35761,7 +36015,8 @@ Cards = [{
     		proc: [ss_regenerate(0.15, 5)],
     	},
     	islegend: true,
-	ape: "グリコⅠ配付",
+	is_dist: true,
+	ape: "グリコⅠ",
     	Lawake: [
             Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
             Statusup(400, 0),
@@ -36890,6 +37145,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
+	is_dist: true,
 	as1: {
 		desc: "雷属性の敵単体へ特効3連撃(350%)",
 		proc: ChainDualAttrAttack(3.5, 0, 3, [0,0,1,0,0]),
@@ -36934,6 +37190,7 @@ Cards = [{
 	attr: [2,1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	ape: "魔道杯　爆",
 	is_dist: true,
 	as1: {
@@ -36980,6 +37237,7 @@ Cards = [{
 	attr: [1,3],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	ape: "魔道杯　爆",
 	is_dist: true,
 	as1: {
@@ -37026,6 +37284,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [9],
 	islegend: false,
+	is_dist: true,
 	ape: "魔道杯　爆",
 	is_dist: true,
 	as1: {
@@ -37059,6 +37318,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [9],
 	islegend: true,
+	is_dist: true,
 	ape: "魔道杯　爆",
 	is_dist: true,
 	as1: {
@@ -37107,6 +37367,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: false,
+	is_dist: true,
 	ape: "魔道杯　爆",
 	is_dist: true,
 	as1: {
@@ -37140,6 +37401,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [9],
 	islegend: false,
+	is_dist: true,
 	ape: "魔道杯　爆",
 	is_dist: true,
 	as1: {
@@ -37217,6 +37479,7 @@ Cards = [{
 	attr: [0,4],
 	species: [2],
 	islegend: true,
+	is_dist: true,
 	ape: "Demon's Blader",
 	is_dist: true,
 	as1: {
@@ -37263,6 +37526,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [3],
 	islegend: true,
+	is_dist: true,
 	ape: "Divine Blader",
 	is_dist: true,
 	as1: {
@@ -37309,6 +37573,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [1],
 	islegend: true,
+	is_dist: true,
 	ape: "Heretic Blader",
 	is_dist: true,
 	as1: {
@@ -37355,6 +37620,7 @@ Cards = [{
 	attr: [0,3],
 	species: [1],
 	islegend: true,
+	is_dist: true,
 	ape: "Tempest Blader",
 	is_dist: true,
 	as1: {
