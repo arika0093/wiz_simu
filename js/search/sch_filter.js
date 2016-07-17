@@ -14,6 +14,8 @@ function schfl_create_queryobj() {
 	rst.attr_m = Number($("#s_attr_m").val());
 	rst.attr_s = Number($("#s_attr_s").val());
 	rst.species = Number($("#s_spec").val());
+	rst.disttype = $("#is_dist").prop("checked") ? 1 :
+		$("#is_nodist").prop("checked") ? 2 : 0;
 	// AS
 	var as_mc = $("#sch_as_chain").val();
 	rst.as_types = schfl_textarr_from_msel(".sch_as_type option:selected");
@@ -123,6 +125,8 @@ function schfl_grep(obj) {
 		if (obj.species >= 0) {
 			rst = rst && (e.species[0] == obj.species);
 		}
+		// 配布チェック
+		rst = rst && (obj.disttype != 1 || e.is_dist) && (obj.disttype != 2 || !e.is_dist);
 		// AS絞り込み
 		rst = rst && (schfl_grep_as(obj, e.as1) || schfl_grep_as(obj, e.as2));
 		// SS絞り込み

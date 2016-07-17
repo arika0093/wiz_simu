@@ -412,6 +412,7 @@ $(function () {
 					attr_s: s_attr,
 					as_types: as,
 					ss_types: ss,
+					disttype: $("#is_dist").prop("checked"),
 					// default value
 					name: "",
 					as_maxchain: -1,

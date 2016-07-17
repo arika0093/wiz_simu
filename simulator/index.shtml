@@ -278,6 +278,7 @@
         <select class="sch_ss_type skill_sel">
             <option value="-1">《SSの種類を指定》</option>
         </select>
+        <input type="checkbox" id="is_dist" /><label for="is_dist">配布精霊のみを検索</label>
         <div id="src_result"></div>
     </div>
 	<div class="dialog_div" id="dialog_noselect" title="未選択">

@@ -168,6 +168,12 @@
                                 </select>
                             </div>
                         </dd>
+                        <dt>その他</dt>
+                        <dd>
+                            <input type="radio" name="dist" id="is_igndist" checked /><label for="is_igndist">全精霊から検索</label>
+                            <input type="radio" name="dist" id="is_dist" /><label for="is_dist">配布精霊のみを検索</label>
+                            <input type="radio" name="dist" id="is_nodist" /><label for="is_nodist">配布精霊以外を検索</label>
+                        </dd>
                     </dl>
                 </div>
                 <button id="sf_search" onclick="sf_search_start();">検索</button>
