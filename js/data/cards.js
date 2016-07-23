@@ -9118,8 +9118,8 @@ Cards = [{
 	ss2: {
 		desc: "5ターン味方全体を徐々に回復する、HP50％未満でさらに回復(通常：20％ / HP50％未満：30％)",
 		turn: 10,
-		proc: [ss_regenerate(ss_hp_less(0.5, 0,3, 0.2), 5)],
-	},
+		proc: [ss_regenerate(ss_hp_less(0.5, 0.3, 0.2), 5)],
+	}
 }, {
 	name: "輝龍降臨 ルシェ・ワダツミ",
 	cardno: 3866,
@@ -23623,7 +23623,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン敵の攻撃を自分に集めダメージを75%軽減する、HP50%以下でさらに25%軽減する",
 		turn: 9,
-		proc: [/*undef:集める*/ ss_attr_guard([1,1,1,1,1], ss_hp_less(0.5, 1, 075), 3)],
+		proc: [/*undef:集める*/ ss_attr_guard([1,1,1,1,1], ss_hp_less(0.5, 1, 0.75), 3)],
 	},
 	Lawake: [
 		Statusup(0, 400),
@@ -40516,7 +40516,7 @@ Cards = [{
 	ss1: {
 		desc: "<ブースト>4ターンの間、味方のMAXHPを毎ターン20%消費し、味方の攻撃力をアップ(150%)。さらに極稀にクリティカル",
 		turn: 8,
-		proc: [ss_boost_enhance_s(1.5, 4, 0.2)],
+		proc: [ss_boost_enhance_all(1.5, 4, 0.2)],
 	},
 	awakes: [
 		Statusup(100,0),
@@ -40537,7 +40537,7 @@ Cards = [{
 	ss2: {
 		desc: "<ブースト>5ターンの間、味方のMAXHPを毎ターン20%消費し、味方の攻撃力をアップ(200%)。さらに極稀にクリティカル",
 		turn: 11,
-		proc: [ss_boost_enhance_s(2.0, 4, 0.2)],
+		proc: [ss_boost_enhance_all(2.0, 4, 0.2)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,0,0,0,]),

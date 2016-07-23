@@ -538,11 +538,16 @@ var SpSkill = {
 					if (state == "first") {
 						nowtg.maxhp = Math.max(teff.up_hp + nowtg.maxhp, 1);
 						nowtg.atk = Math.max(teff.up_atk + nowtg.atk, 0);
-						nowtg.nowhp = Math.min(nowtg.nowhp + (params[0][0] > 0 ? params[0][0] : 0), nowtg.maxhp);
+						nowtg.nowhp = Math.min(nowtg.nowhp + Math.max(params[0][0], teff.up_hp, 0), nowtg.maxhp);
 					}
-					else if (state == "end" || state == "overlay" || state == "dead") {
+					else if (state == "end" || state == "dead") {
 						nowtg.maxhp -= teff.up_hp;
 						nowtg.nowhp = Math.min(nowtg.nowhp, nowtg.maxhp);
+						nowtg.atk -= teff.up_atk;
+					}
+					else if (state == "overlay") {
+						nowtg.maxhp -= teff.up_hp;
+						nowtg.nowhp -= teff.up_hp;
 						nowtg.atk -= teff.up_atk;
 					}
 				},

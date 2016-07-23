@@ -307,8 +307,13 @@ $(function () {
 			},
 			"選択デッキを削除": function () {
 				// Remove
+				var ds = $.cookie("savedecks");
+				ds = ds ? JSON.parse(ds) : [];
 				sel_name = $("#deckload_cookie option:selected").text();
-				if (sel_name && sel_name != "") {
+				var is_match = $.grep(ds, function (e) {
+					return e.name == sel_name;
+				}).length > 0;
+				if (is_match) {
 					$("#_data_passing").text(sel_name);
 					$("#dialog_deletedeck").dialog("open");
 				} else {
