@@ -256,3 +256,17 @@ function ss_continue_effect_check() {
 		}
 	}
 }
+
+// ターン終了時効果のチェック(敵味方両方確認)
+function after_turneffect_check() {
+	// 味方チェック(今のところやらない)
+
+	// 敵チェック
+	var es = GetNowBattleEnemys();
+	$.each(es, function (i, e) {
+		// 実行
+		$.each(e.after_turn, function (j, et) {
+			et();
+		});
+	});
+}

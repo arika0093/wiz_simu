@@ -178,6 +178,7 @@ $(function () {
 				now.flags.skill_counter = [];
 				now.flags.damage_hits = [];
 				now.turn_effect = [];
+				now.after_turn = [];
 				// SS状態をリセット
 				now.ss_current = has_fastnum(ally);	// SSチャージターン
 				now.ss_isfirst = true;	// SSをまだ発動していないかどうか
@@ -214,6 +215,7 @@ $(function () {
 					data.enemy[j].flags = {};
 					data.enemy[j].flags.is_as_attack = [];
 					data.enemy[j].turn_effect = [];
+					data.enemy[j].after_turn = [];
 				}
 			}
 			// 敵の処理
@@ -277,6 +279,7 @@ function nextturn(is_ssfin) {
 	ss_continue_effect_check();
 	turn_effect_check(true, is_ssfin);
 	enemy_turn_effect_check(true);
+	after_turneffect_check();
 	// 怒り確認
 	enemy_damage_switch_check("damage_switch");
 	// 総ダメージ出力
