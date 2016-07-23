@@ -268,5 +268,7 @@ function after_turneffect_check() {
 		$.each(e.after_turn, function (j, et) {
 			et();
 		});
+		// clear
+		e.after_turn = [];
 	});
 }
