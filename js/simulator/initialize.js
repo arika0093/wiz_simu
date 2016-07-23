@@ -218,6 +218,22 @@ $(function () {
 					data.enemy[j].after_turn = [];
 				}
 			}
+			// 蘇生時データ
+			if (simQuest.revData) {
+				fes.revData = [];
+				for (var i = 0; i < simQuest.revData.length; i++) {
+					var edat = simQuest.revData[i];
+					// 敵ステ
+					fes.revData[i] = {};
+					fes.revData[i] = $.extend(true, {}, edat);
+					data.nowhp = edat.hp;
+					data.flags = {};
+					data.flags.is_as_attack = [];
+					data.turn_effect = [];
+					data.after_turn = [];
+				}
+			}
+
 			// 敵の処理
 			enemy_popup_proc();
 			// -------------------------

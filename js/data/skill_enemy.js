@@ -944,6 +944,36 @@ function attr_change(attr) {
 	}, makeDesc("属性変化"));
 }
 
+// 全滅時に復活
+function s_enemy_reverse(rev_i) {
+	/*
+	return m_create_enemy_move(function (fld, n) {
+		var push_oncond = m_create_enemy_move(function (f, i) {
+			// 複製先
+			var copyto = i != 0 ? 0 : 1;
+			var hprate = copyhp ? copyhp : 1;
+			var ens = f.Enemys.Data[f.Status.nowbattle - 1].enemy;
+			ens[copyto] = $.extend(true, {}, GetNowBattleEnemys(i));
+			ens[copyto].nowhp = ens[copyto].hp * hprate;
+			fld.log_push("Enemy[" + (n + 1) + "]: 分裂");
+		});
+		delete push_oncond.argObj;
+
+		var enemy = GetNowBattleEnemys(n);
+		enemy.turn_effect.push({
+			desc: null,
+			type: "enemy_division",
+			isdual: false,
+			turn: -1,
+			lim_turn: -1,
+			effect: function () { },
+			cond: s_enemy_when_dead_l().func,
+			on_cond: push_oncond,
+			oncond_anytime: true,
+		});
+	}, makeDesc("分裂待機"));
+	*/
+}
 
 
 // -----------------------------------
