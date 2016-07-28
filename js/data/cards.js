@@ -39613,7 +39613,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "エヴァンゲリオン新劇場版コラボ",
+	ape: "天使と呼ばれる破壊者",
 	is_dist: true,
 	as1: {
 		desc: "雷属性の敵単体へ特効ダメージ、リーダー時さらにアップ(350%/400%)",
@@ -39659,7 +39659,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
-	ape: "エヴァンゲリオン新劇場版コラボ",
+	ape: "天使と呼ばれる破壊者",
 	is_dist: true,
 	as1: {
 		desc: "残りHPが80%以上でダメージアップ(300%)、パネルの色が増す度にさらにアップ(400%/550%)",
@@ -39705,7 +39705,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [3],
 	islegend: true,
-	ape: "エヴァンゲリオン新劇場版コラボ",
+	ape: "選ばれし少年と黒猫のウィズ",
 	is_dist: true,
 	as1: {
 		desc: "雷属性の味方の攻撃力をアップ、天使はさらにアップ(30%/90%)",
@@ -39751,7 +39751,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [3],
 	islegend: true,
-	ape: "エヴァンゲリオン新劇場版コラボ",
+	ape: "選ばれし少年と黒猫のウィズ",
 	is_dist: true,
 	as1: {
 		desc: "ダメージがイチかバチかアップ(200%~250%)",
@@ -39796,7 +39796,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [3],
 	islegend: true,
-	ape: "エヴァンゲリオン新劇場版コラボ",
+	ape: "選ばれし少年と黒猫のウィズ",
 	is_dist: true,
 	as1: {
 		desc: "水属性の敵単体へ特効ダメージ(350%)",
@@ -39841,7 +39841,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [3],
 	islegend: true,
-	ape: "エヴァンゲリオン新劇場版コラボ",
+	ape: "選ばれし少年と黒猫のウィズ",
 	is_dist: true,
 	as1: {
 		desc: "敵単体を2回連続攻撃(250%)",
@@ -39887,7 +39887,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [3],
 	islegend: true,
-	ape: "エヴァンゲリオン新劇場版コラボ",
+	ape: "選ばれし少年と黒猫のウィズ",
 	is_dist: true,
 	as1: {
 		desc: "敵単体へのダメージアップ(250%)",
