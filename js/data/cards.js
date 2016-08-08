@@ -29304,6 +29304,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [1],
 	islegend: false,
+	disable: true,
 	as1: {
 		desc: "火・雷属性の味方の攻撃力を大アップ(20%)",
 		proc: ChainEnhance(0.20, [1,0,1,0,0], 0),
