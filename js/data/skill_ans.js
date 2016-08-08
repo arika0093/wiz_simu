@@ -838,10 +838,11 @@ function when_deckattr_less(c_attr, c_num) {
 }
 
 // 回答時間依存
-function answer_time_dependant(min, max) {
+// (rate: 解答時間による増え幅)
+function as_timedep(rate) {
 	return {
-		rate_min: min,
-		rate_max: max,
+		is_timedep: true,
+		rate_time: rate,
 	}
 }
 

@@ -87,10 +87,10 @@ function sim_show() {
 			var ss_disabled = $.grep(now.turn_effect, function (e) {
 				return e.ss_disabled;
 			}).length > 0;
-			if (!ss_disabled && sst[0] == 0 && now.nowhp > 0 && !Field.Status.finish) {
+			if (!ss_disabled && (sst[0] == 0 || now.flags.ss_chargefin) && now.nowhp > 0 && !Field.Status.finish) {
 				// SS発動可能
 				$("#ally0" + (i + 1) + "_ss_button").attr("class", "ally_ss_button");
-				$("#ally0" + (i + 1) + "_ss_button").text(ss_remain_text(sst));
+				$("#ally0" + (i + 1) + "_ss_button").text(ss_remain_text(sst, now.flags.ss_chargefin));
 				$("#ally0" + (i + 1) + "_ss_button").attr("disabled", false);
 			} else {
 				// SS発動不可
@@ -130,7 +130,7 @@ function sim_show() {
 			// 棒グラフの棒の部分の表示
 			stat.innerHTML += "<div style=position:absolute;top:0px;left:0px;width:" + Math.ceil(barWidth) + "px;height:17px;background-color:" + barColor + ";></div>"
 			// 元々の文字の表示
-			stat.innerHTML += "<div style=position:absolute;top:0px;left:0px;width:239px;height:17px;background-color:transparent;>" + basetxt + "</div>"
+			stat.innerHTML += "<div style=position:absolute;top:-1px;left:0px;width:239px;height:18px;background-color:transparent;>" + basetxt + "</div>"
 		} else {
 			// 無効化
 			$("#ally0" + (i + 1) + "_attr_main").attr("class", "attr_none");
@@ -435,7 +435,7 @@ function sim_show() {
 			var ss_disabled = $.grep(now.turn_effect, function (e) {
 				return e.ss_disabled;
 			}).length > 0;
-			als_ssbtn.text(ss_remain_text(sst));
+			als_ssbtn.text(ss_remain_text(sst, now.flags.ss_chargefin));
 			// 一旦既に定義されてるclickイベントを解除する(解除しないと連続してSSが発動する)
 			als_ssbtn.off("click");
 			als_ssbtn.on("click", function () {
@@ -549,12 +549,16 @@ function create_log(i) {
 }
 
 // SSの残り表記を返却する
-function ss_remain_text(rem_turn) {
+function ss_remain_text(rem_turn, is_chfin) {
 	// SS1, SS2
 	var SS1 = rem_turn[0];
 	var SS2 = rem_turn[1];
+	// チャージ完了なら専用表記
+	if (is_chfin) {
+		return "CHARGE FULL";
+	}
 	// L精霊ならSS1,SS2表記
-	if (SS2 !== undefined) {
+	else if (SS2 !== undefined) {
 		// SS2が打てるならSS2表記のみ
 		if (SS2 == 0) {
 			return "SS2: 発動可能";

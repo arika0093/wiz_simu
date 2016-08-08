@@ -306,14 +306,22 @@ function answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, loop_ct, as_a
 // (カード種類, 現在の状況, 敵データ, 自身のAS一覧, 攻撃属性, パネル, 味方番号, 残り攻撃回数)
 function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem) {
 	// 敵それぞれに対して有効なASのindexの配列
+	var as_rate = [];
 	var as_pos = [];
 	var as_afters = [];
+	var time = Number($("#answer_time_sel").val());
+
 	// 敵それぞれについて条件の良いASを取り出す
 	for (var ai = 0; ai < as.length; ai++) {
 		var chain = Field.Status.chain;
 		for (var ei = 0; ei < enemy.length; ei++) {
 			var rate_n = (is_answer_target(as[ai], chain, enemy[ei].attr, enemy[ei].spec, index, ei, panel) ? as[ai].rate : 0);
 			var rate_b = (as_pos[ei] !== undefined ? as[as_pos[ei]].rate : 0);
+			// 解答時間依存処理
+			if (as[ai].is_timedep) {
+				rate_n += as[ai].rate_time * time;
+			}
+			as_rate[ei] = (rate_n >= rate_b ? rate_n : rate_b);
 			as_pos[ei] = (rate_n >= rate_b ? ai : as_pos[ei]);
 		}
 	}
@@ -335,7 +343,7 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem) {
 			// 乱数
 			var rnd = damage_rand();
 			// ダメージ計算
-			g_dmg += attack_enemy(enemy[tg], now, attr, atk_as.rate, atk_as.atkn, panel, ch, rnd, index, tg, false, var_num);
+			g_dmg += attack_enemy(enemy[tg], now, attr, as_rate[targ], atk_as.atkn, panel, ch, rnd, index, tg, false, var_num);
 			is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
 		}
 	} else {
@@ -343,7 +351,7 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem) {
 		var rnd = damage_rand();
 		var is_as = enemy[targ].flags.is_as_attack;
 		// ダメージ計算
-		g_dmg = attack_enemy(en, now, attr, atk_as.rate, atk_as.atkn, panel, ch, rnd, index, targ, false);
+		g_dmg = attack_enemy(en, now, attr, as_rate[targ], atk_as.atkn, panel, ch, rnd, index, targ, false);
 		is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
 	}
 	// 攻撃後処理
@@ -362,14 +370,21 @@ function answer_enhance(as, i, p) {
 		var card = Field.Allys.Deck[ci];
 		var now = Field.Allys.Now[ci];
 		var chain = Field.Status.chain;
+		var time = Number($("#answer_time_sel").val());
+
 		// 最大の値を取り出す
 		for (var ai = 0; ai < as.length; ai++) {
 			var as_t = { rate: 0 };
 			if (is_answer_target(as[ai], chain, card.attr[0], card.species, ci, -1, p)) {
 				as_t = as[ai];
+				// 解答時間依存処理
+				if (as[ai].is_timedep) {
+					as_t += as[ai].rate_time * time;
+				}
 			}
 			ass = ass.rate < as_t.rate ? as_t : ass;
 		}
+
 		// エンハ値追加
 		var bef_enh = now.as_enhance ? now.as_enhance : 0;
 		now.as_enhance = bef_enh + ass.rate;
@@ -389,11 +404,17 @@ function answer_heal(as, i, p) {
 		var card = Field.Allys.Deck[ci];
 		var now = Field.Allys.Now[ci];
 		var chain = Field.Status.chain;
+		var time = Number($("#answer_time_sel").val());
+
 		// 最大の値を取り出す
 		for (var ai = 0; ai < as.length; ai++) {
 			var as_t = {rate: 0};
 			if(is_answer_target(as[ai], chain, card.attr[0], card.species, ci, -1, p)){
 				as_t = as[ai];
+				// 解答時間依存処理
+				if (as[ai].is_timedep) {
+					as_t += as[ai].rate_time * time;
+				}
 			}
 			ass = ass.rate < as_t.rate ? as_t : ass;
 		}

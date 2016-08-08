@@ -143,16 +143,18 @@ div.img_accept_hover{
 
 /* Ally info */
 div.ally_info{
-	width: 50%;
+	width: 50.5%;
 	margin: 1ex 0em 1ex 0.5em;
 	float: left;
 	border-width: 1px;
 	border-style: solid;
 	border-color: #606060;
+	padding: 1.0ex 0.5em;
+	box-sizing: border-box;
 }
 
 div.ally_info p{
-	margin: 1.0ex 0.5em;
+	margin: 0;
 }
 
 /* Panels */

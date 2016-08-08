@@ -9,23 +9,28 @@ function ss_push(n) {
 	var ss_rst = ss_procdo(ss, now, n);
 	// 発動成功なら
 	if (ss_rst) {
-		// SSを保存しておく
-		if (ss.proc && ss.proc[0] && !ss.proc[0].is_skillcopy) {
-			Field.Status.latest_ss = ss;
-		}
 		// 発動後処理
 		ss_afterproc(n);
-		// ------------------
-		// L状態ならL潜在を解除
-		if (is_l) {
-			minus_legend_awake(Field.Allys.Deck, Field.Allys.Now, n);
-			now.islegend = false;
-			Field.log_push("Unit[" + (n + 1) + "]: Lモード解除");
+		if (!now.flags.ss_chargefin) {
+			// SSを保存しておく
+			if (ss.proc && ss.proc[0] && !ss.proc[0].is_skillcopy) {
+				Field.Status.latest_ss = ss;
+			}
+			// ------------------
+			// L状態ならL潜在を解除
+			if (is_l) {
+				minus_legend_awake(Field.Allys.Deck, Field.Allys.Now, n);
+				now.islegend = false;
+				Field.log_push("Unit[" + (n + 1) + "]: Lモード解除");
+			}
+			// SSターンをリセット
+			now.ss_current = 0;
+			now.ss_isfirst = false;
+			now.ss_isboost = false;
+		} else {
+			// チャージ発動状態解除
+			now.flags.ss_chargefin = false;
 		}
-		// SSターンをリセット
-		now.ss_current = 0;
-		now.ss_isfirst = false;
-		now.ss_isboost = false;
 		// ------------------
 		// 再現用ログ関連
 		actl_save_special(n);
@@ -51,58 +56,62 @@ function ss_push(n) {
 function ss_procdo(ss, now, index) {
 	var ss_rst = true;
 	if (ss.proc != null) {
-		// チャージスキルの場合turn_effectに追加
+		// チャージスキルの場合
 		if (ss.charged > 0) {
-			now.turn_effect.push({
-				desc: "チャージスキル待機(残り" + ss.charged + "t)",
-				type: "ss_charge",
-				icon: "force_reservior",// 後で変える(?)
-				isdual: false,
-				iscursebreak: false,	// 呪い解除されない
-				isreduce_stg: true,		// ターン跨ぎでカウントが減る
-				priority: 1,
-				charge_turn: ss.charged,
-				turn: -1,
-				lim_turn: -1,
-				ss_disabled: true,		// SS発動不可
-				// 攻撃無効
-				bef_answer: function (f, as) {
-					return false;
-				},
-				// 反射無効
-				bef_skillcounter: function (f, ai) {
-					return false;
-				},
-				// カウント減少
-				effect: function (f, oi, teff, state, is_t, is_b, is_sfin) {
-					// SS以外で戦闘を跨いだ場合カウントを減らす
-					if (is_t || (!is_sfin && is_b)) {
-						teff.charge_turn--;
-						teff.desc = "チャージスキル待機(残り" + teff.charge_turn + "t)";
-					}
-				},
-				// 発動スキル
-				charged_fin: function (fld) {
-					// SS発動可能かチェック
-					var ss_disabled = $.grep(now.turn_effect, function (e) {
-						return e.ss_disabled && e.charge_turn === undefined;
-					}).length > 0;
-					// 発動可能なら自動発動
-					if (!ss_disabled) {
-						fld.log_push("Unit[" + (index + 1) + "]: チャージスキル発動");
-						for (var i = 0; i < ss.proc.length; i++) {
-							ss_object_done(fld, index, ss.proc[i]);
-						}
-						return true;
-					} else {
-						fld.log_push("Unit[" + (index + 1) + "]: チャージスキル発動[不発]");
+			// チャージが終わっているか確認し、終わってないなら追加
+			if (!now.flags.ss_chargefin) {
+				now.turn_effect.push({
+					desc: "チャージスキル待機(残り" + ss.charged + "t)",
+					type: "ss_charge",
+					icon: "force_reservior",// 後で変える(?)
+					isdual: false,
+					iscursebreak: false,	// 呪い解除されない
+					isreduce_stg: true,		// ターン跨ぎでカウントが減る
+					priority: 1,
+					charge_turn: ss.charged,
+					charge_skl: $.extend(true, ss.proc, []),
+					turn: -1,
+					lim_turn: -1,
+					ss_disabled: true,		// SS発動不可
+					// 攻撃無効
+					bef_answer: function (f, as) {
 						return false;
+					},
+					// 反射無効
+					bef_skillcounter: function (f, ai) {
+						return false;
+					},
+					// カウント減少
+					effect: function (f, oi, teff, state, is_t, is_b, is_sfin) {
+						// SS以外で戦闘を跨いだ場合カウントを減らす
+						if (is_t || (!is_sfin && is_b)) {
+							teff.charge_turn--;
+							teff.desc = "チャージスキル待機(残り" + teff.charge_turn + "t)";
+						}
+					},
+					// 発動スキル
+					charged_fin: function (fld, oi) {
+						// 発動可能状態にセット
+						var now = fld.Allys.Now[oi];
+						now.flags.ss_chargefin = true;
+						now.flags.ss_chargeskl = this.charge_skl;
+						return;
+					},
+				});
+				Field.log_push("Unit[" + (index + 1) + "]: チャージスキル発動待機…");
+				return true;
+			}
+			// 終わっているなら発動
+			else {
+				var skl = now.flags.ss_chargeskl;
+				for (var i = 0; i < skl.length; i++) {
+					if (skl[i]) {
+						ss_rst = ss_object_done(Field, index, skl[i]);
 					}
-
-				},
-			});
-			Field.log_push("Unit[" + (index + 1) + "]: チャージスキル発動待機…");
-			return true;
+				}
+				now.flags.ss_chargeskl = null;
+				return true;
+			}
 		}
 		// 実行
 		for (var i = 0; i < ss.proc.length; i++) {

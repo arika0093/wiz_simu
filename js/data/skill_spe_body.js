@@ -1083,6 +1083,15 @@ var SpCondSkill = {
 		return rst;
 	},
 	// -----------------------------
+	// 回答時間依存
+	"ss_answertime": function (fld, oi, cobj, params) {
+		var a = params[0];
+		var b = params[1];
+		var time = Number($("#answer_time_sel").val());
+
+		return a + b * time;
+	},
+	// -----------------------------
 	// 味方全体自傷して自傷した数だけ効果値を増やす
 	"ss_consume_all_cond": function (fld, oi, cobj, params) {
 		var base = params[0];

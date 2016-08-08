@@ -220,6 +220,15 @@
 		</div>
 		<div class="ally_info">
 			<p id="ally_info_text"></p>
+            <label for="answer_time_sel">解答時間状況: </label>
+            <select id="answer_time_sel">
+                <option value="5">～1秒以内</option>
+                <option value="4">1～2秒</option>
+                <option value="3">2～3秒</option>
+                <option value="2">3～4秒</option>
+                <option value="1" selected>4～5秒</option>
+                <option value="0">5秒以降～</option>
+            </select>
 		</div>
 	<!-- Adsense -->
 	<div class="simu_ads">

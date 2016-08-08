@@ -155,10 +155,12 @@ div.ally_info{
 	border-width: 1px;
 	border-style: solid;
 	border-color: #606060;
+	padding: 1.5ex 0.5em;
+	box-sizing: border-box;
 }
 
 div.ally_info p{
-	margin: 1.5ex 0.5em;
+	margin: 0;
 }
 
 /* Panels */
