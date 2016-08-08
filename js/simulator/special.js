@@ -57,7 +57,7 @@ function ss_procdo(ss, now, index) {
 	var ss_rst = true;
 	if (ss.proc != null) {
 		// チャージスキルの場合
-		if (ss.charged > 0) {
+		if (ss.charged > 0 || now.flags.ss_chargefin) {
 			// チャージが終わっているか確認し、終わってないなら追加
 			if (!now.flags.ss_chargefin) {
 				now.turn_effect.push({
