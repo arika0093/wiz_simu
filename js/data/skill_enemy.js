@@ -247,28 +247,13 @@ function s_enemy_absorb(ratiorate, tnum, healvalue) {
 }
 
 // ターン終了時に攻撃(不利属性へのダメージ, 対象数)
-function s_enemy_delay_attack(dmg, tnum) {
-	return m_create_enemy_move(function (fld, n, nows, is_counter) {
-		// ターン終了時効果に追加
-		var e = GetNowBattleEnemys(n);
-		e.after_turn.push(function () {
-			// 定数(とりあえず)
-			var atkn = 1;
-			var tgtype = true;
-			// ログ出力
-			Field.log_push("Enemy[" + (n + 1) + "]: " +
-				(tnum < fld.Allys.Deck.length ? tnum : "全") + "体" +
-				(atkn > 1 ? atkn + "連撃(" : "攻撃(") + dmg + ")");
-			// 攻撃対象取得
-			var tg = gen_enemytarget_array(tnum, atkn, tgtype, nows);
-			// 攻撃
-			for (var i = 0; i < tg.length; i++) {
-				for (var j = 0; j < tg[i].length; j++) {
-					_s_enemy_attack(fld, dmg * 2, n, tg[i][j]);
-				}
-			}
-		});
-	}, makeDesc("ターン終了時攻撃"));
+function s_enemy_delay_attack(dmg, tnum, atkn) {
+	atkn = atkn || 1;
+	// 通常攻撃と同じものを取得
+	var mov = s_enemy_attack(dmg, tnum, atkn, true);
+	mov.priority = 5;
+
+	return mov;
 }
 
 

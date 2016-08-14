@@ -259,6 +259,7 @@ function ss_continue_effect_check() {
 	}
 }
 
+/*
 // ターン終了時効果のチェック(敵味方両方確認)
 function after_turneffect_check() {
 	// 味方チェック(今のところやらない)
@@ -274,3 +275,4 @@ function after_turneffect_check() {
 		e.after_turn = [];
 	});
 }
+*/

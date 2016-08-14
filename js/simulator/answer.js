@@ -375,7 +375,7 @@ function answer_enhance(as, i, p) {
 		// 最大の値を取り出す
 		for (var ai = 0; ai < as.length; ai++) {
 			var as_t = { rate: 0 };
-			if (is_answer_target(as[ai], chain, card.attr[0], card.species, ci, -1, p)) {
+			if (is_answer_target(as[ai], chain, card.attr[0], card.species, i, -1, p)) {
 				as_t = as[ai];
 				// 解答時間依存処理
 				if (as[ai].is_timedep) {
@@ -409,7 +409,7 @@ function answer_heal(as, i, p) {
 		// 最大の値を取り出す
 		for (var ai = 0; ai < as.length; ai++) {
 			var as_t = {rate: 0};
-			if(is_answer_target(as[ai], chain, card.attr[0], card.species, ci, -1, p)){
+			if(is_answer_target(as[ai], chain, card.attr[0], card.species, i, -1, p)){
 				as_t = as[ai];
 				// 解答時間依存処理
 				if (as[ai].is_timedep) {

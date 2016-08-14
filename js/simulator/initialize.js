@@ -215,7 +215,7 @@ $(function () {
 					data.enemy[j].flags = {};
 					data.enemy[j].flags.is_as_attack = [];
 					data.enemy[j].turn_effect = [];
-					data.enemy[j].after_turn = [];
+					//data.enemy[j].after_turn = [];
 				}
 			}
 			// 蘇生時データ
@@ -230,7 +230,7 @@ $(function () {
 					data.flags = {};
 					data.flags.is_as_attack = [];
 					data.turn_effect = [];
-					data.after_turn = [];
+					//data.after_turn = [];
 				}
 			}
 

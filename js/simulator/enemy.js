@@ -161,25 +161,39 @@ function enemy_move() {
 			// 遅延解除
 			e.flags.isdelay = false;
 			// 取得
-			e_moves[i] = get_enemy_move_skill(e);
-		} else {
-			e_moves[i] = null;
-		}
-	}
-	// 実行
-	for (var i = 0; i < e_moves.length; i++) {
-		if (e_moves[i] == null) {
-			continue;
-		}
-		// 力溜め状態解除
-		turneff_break(GetNowBattleEnemys(i).turn_effect, i, "force_reservoir");
-		// e_moves[i]が関数でない(=配列である)場合
-		if (e_moves[i].caller === undefined) {
-			for (var mi = 0; mi < e_moves[i].length; mi++) {
-				e_moves[i][mi](Field, i, nows_smove);
+			e_moves[i] = {
+				move: get_enemy_move_skill(e),
+				index: i
 			}
 		} else {
-			e_moves[i](Field, i, nows_smove);
+			e_moves[i] = {
+				move: null,
+				index: i
+			}
+		}
+	}
+	// 優先度で並び替え
+	e_moves.sort(function (a, b) {
+		if (!b.move || b.move.priority === undefined) { return -1; }
+		if (!a.move || a.move.priority === undefined) { return 1; }
+		return a.move.priority < b.move.priority;
+	});
+	// 実行
+	for (var i = 0; i < e_moves.length; i++) {
+		if (!e_moves[i] || !e_moves[i].move) {
+			continue;
+		}
+		var move = e_moves[i].move;
+		var index = e_moves[i].index;
+		// 力溜め状態解除
+		turneff_break(GetNowBattleEnemys(index).turn_effect, index, "force_reservoir");
+		// e_moves[i]が関数でない(=配列である)場合
+		if (move.caller === undefined) {
+			for (var mi = 0; mi < move.length; mi++) {
+				move[mi](Field, index, nows_smove);
+			}
+		} else {
+			move(Field, index, nows_smove);
 		}
 	}
 	// スキカン確認
