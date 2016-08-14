@@ -137,7 +137,13 @@ function Heal_afterbattle(perc) {
 
 // 異常無効
 function Abstate_invalid(tg_type) {
-	var tmptype={"as_sealed":"アンサースキル封印","ss_sealed":"SPスキル封印","poison":"毒"};
+	var tmptype = {
+		"as_sealed": "アンサースキル封印",
+		"ss_sealed": "SPスキル封印",
+		"all_sealed": "封印",
+		"poison": "毒",
+		"death_limit": "死の秒針",
+	};
 	return {
 		type: "abstate_invalid",
 		tgtype: tg_type,
