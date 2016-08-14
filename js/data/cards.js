@@ -42605,7 +42605,7 @@ Cards = [{
 	ss1: {
 		desc: "<犠牲魔術>味方全体のMAXHPの100%を使い敵全体へ雷属性のダメージ(人数×150%)、HP50%以下でスキル反射を無視する",
 		turn: 7,
-		proc: [ss_damage_all(rss_consume_all_cond(1.5, 1), [2]), ss_hp_less_skill(0.5, ss_ignore_skillcounter())],
+		proc: [ss_damage_all(ss_consume_all_cond(1.5, 1), [2]), ss_hp_less_skill(0.5, ss_ignore_skillcounter())],
 	},
 	awakes: [
 		Fastskill(1),
