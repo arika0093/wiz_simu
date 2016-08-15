@@ -7447,6 +7447,7 @@ Cards = [{
 	cost: 45,
 	attr: [1, -1],
 	species: [9],
+	alias: ["/wiztools"],
 	awakes: [
 		Fastskill(1),
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
@@ -9572,7 +9573,7 @@ Cards = [{
 	cost: 48,
 	attr: [1, 0],
 	species: [1],
-	alias: ["arika_nekowiz"],
+	alias: ["/arika_nekowiz", "/wiztools"],
 	awakes: [
 		Fastskill(1),
 		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
@@ -19663,7 +19664,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
-	alias: ["rinshandream"],
+	alias: ["/rinshandream", "/wiztools"],
 	as1: {
 		desc: "雷属性の味方のHPを回復(13%)",
 		proc: Heal(0.13, [0,0,1,0,0], 0),
@@ -20939,7 +20940,7 @@ Cards = [{
 	attr: [1,3],
 	species: [9],
 	islegend: true,
-	alias: ["take_wiz"],
+	alias: ["/take_wiz", "/wiztools"],
 	as1: {
 		desc: "5チェインで水属性の攻撃力をアップ、複属性が光属性で更にアップ(60%/110%)",
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,1,0,0,0], [0,0,0,1,0], 5),
@@ -20967,7 +20968,7 @@ Cards = [{
 	},
 	ss2: {
 		desc: "解答を見破る",
-		turn: 6,
+		turn: 5,
 		proc: [ss_answer_foresight()],
 	},
 	Lawake: [
@@ -31754,7 +31755,7 @@ Cards = [{
 	attr: [1,3],
 	species: [9],
 	islegend: true,
-	alias: ["wiz_kamui"],
+	alias: ["/wiz_kamui", "/wiztools"],
 	as1: {
 		desc: "4チェインでダメージアップ、8チェインで更にダメージアップ(350%/500%)",
 		proc: [ChainAttack(3.5, 4), ChainAttack(5.0, 8)],
@@ -38413,7 +38414,7 @@ Cards = [{
 	ss1: {
 		desc: "<弱体化大魔術>敵単体へ水属性のダメージ(400%)、さらに5ターンの間、敵の防御力を弱体化(30%)",
 		turn: 7,
-		proc: [ss_damage_s(4.0, [1], 1), ss_attr_weaken_s([1,1,1,1,1], 1.3, 5)],
+		proc: [ss_damage_s(4.0, [1], 1), ss_attr_weaken_s([1,1,1,1,1], 0.3, 5)],
 	},
 	awakes: [
 		NEFTJOD(30),
@@ -38434,7 +38435,7 @@ Cards = [{
 	ss2: {
 		desc: "<弱体化大魔術>スキル反射を無視し、敵単体へ水属性のダメージ(800%)、さらに10ターンの間、敵の防御力を弱体化(30%)",
 		turn: 12,
-		proc: [ss_damage_s(8.0, [1], 1), ss_attr_weaken_s([1,1,1,1,1], 1.3, 5), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(8.0, [1], 1), ss_attr_weaken_s([1,1,1,1,1], 0.3, 5), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Abstate_invalid("as_sealed"),
@@ -41590,7 +41591,7 @@ Cards = [{
 	ss2: {
 		desc: "<特効大魔術>敵単体へ火属性のダメージ(800%)、平均解答時間が早いほどさらに雷属性の敵には特効ダメージ(効果値:200)",
 		turn: 6,
-		proc: [ss_damage_s(special_attr([1,0,0,0,0], ss_answertime(8,2), 8), [0], 1)],
+		proc: [ss_damage_s(special_attr([0,0,1,0,0], ss_answertime(8,2), 8), [0], 1)],
 	},
 	Lawake: [
 		Statusup(0,500),

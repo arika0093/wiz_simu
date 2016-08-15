@@ -343,7 +343,7 @@ var SpSkill = {
 		var turn = params[2];
 		if (en.nowhp <= 0) { return; }
 		en.turn_effect.push({
-			desc: "[" + get_attr_string(attr, "/") + "]属性弱体化",
+			desc: "[" + get_attr_string(attr, "/") + "]弱体化",
 			type: "attr_weaken",
 			icon: "attr_weaken",
 			isdual: false,
@@ -353,7 +353,7 @@ var SpSkill = {
 			priority: 2,
 			on_damage: function (fld, dmg, a_i) {
 				if (attr[a_i] > 0) {
-					return dmg * rate;
+					return dmg * (1 + rate);
 				} else {
 					return dmg;
 				}

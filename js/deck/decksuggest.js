@@ -490,9 +490,13 @@ function set_autocmp(i) {
 					rst = rst || value.name.indexOf(hira2kana) >= 0;			// 平仮名からカタカナに変換して比較
 					if (al && al.length > 0) {									// 別名が定義されてるならそれら全てに対しチェック
 						for (var i = 0; i < al.length; i++) {
-							rst = rst || al[i].toLowerCase().indexOf(term) >= 0;
-							rst = rst || al[i].indexOf(roma2kana) >= 0;
-							rst = rst || al[i].indexOf(hira2kana) >= 0;
+							if (al[i].indexOf("/") == 0) {
+								rst = rst || al[i].replace("/", "") == term;
+							} else {
+								rst = rst || al[i].toLowerCase().indexOf(term) >= 0;
+								rst = rst || al[i].indexOf(roma2kana) >= 0;
+								rst = rst || al[i].indexOf(hira2kana) >= 0;
+							}
 						}
 					}
 					rst = rst && value.as1.proc != null;						// ASが未定義のものは除く
