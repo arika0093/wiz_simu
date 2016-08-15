@@ -62,6 +62,11 @@ function allkill_check(is_ssfinish) {
 	var enemy = GetNowBattleEnemys();
 	// 敵全滅確認
 	var e_ak = is_allkill();
+	// 蘇生処理確認
+	if (e_ak) {
+		var rev_rst = enemy_reverse_check();
+		e_ak = !rev_rst;
+	}
 	// 全ての敵を倒していたら
 	if (e_ak) {
 		// 全終了確認
@@ -151,7 +156,8 @@ function enemy_move() {
 	for (var i = 0; i < enemys.length; i++) {
 		// 行動が定義されてないなら飛ばす
 		var e = enemys[i];
-		if (e.nowhp <= 0 || !e.move || !e.move.on_move) { continue; }
+		if (e.nowhp <= 0 || !e.move ||
+			(!e.move.on_move && !e.move.on_move_angry)) { continue; }
 		// ターンカウントを1減らす
 		e.move.turn -= 1;
 		// ターンカウントが0なら行動
@@ -248,6 +254,8 @@ function enemy_popup_proc(){
 			}
 		}
 	}
+	// 怒り確認
+	enemy_damage_switch_check("damage_switch");
 	// 味方スキル反射の処理を行う
 	turneff_check_skillcounter(Field);
 }
@@ -280,4 +288,29 @@ function enemy_damage_switch_check(type, reset) {
 		turneff_check_skillcounter(Field);
 	}
 	return rst;
+}
+
+// 敵復活処理を行う関数
+function enemy_reverse_check() {
+	// 現在の戦闘を取得
+	var nd = Field.Enemys.Data[Field.Status.nowbattle - 1];
+	// 復活先が指定されているなら置き換え
+	if (!nd.rev_check && nd.rev_index !== undefined) {
+		// 蘇生先のデータ取得
+		var rd = Field.Enemys.revData[nd.rev_index];
+		// 入れ替え
+		nd.enemy[0] = rd;
+		if (nd.enemy[2]) {
+			delete nd.enemy.splice(1, 2);
+		}
+		else if (nd.enemy[1]) {
+			delete nd.enemy.splice(1, 1);
+		}
+		nd.rev_check = true;
+		Field.log_push("Enemy[" + (nd.rev_used + 1) + "]: 復活発動");
+		// 先制行動
+		enemy_popup_proc();
+		return true;
+	}
+	return false;
 }

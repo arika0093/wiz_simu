@@ -42,9 +42,14 @@ category_jp = {
 	},
     "usg": {
 		jp: "アルティメットサマーガールズ",
-		is_dispsim: true,
+		is_dispsim: false,
 		sim_index: 11,
 	},
+    "eva2": {
+    	jp: "幻想と歪曲の槍",
+    	is_dispsim: true,
+    	sim_index: 11,
+    },
     "abcd": {
 		jp: "アビスコード",
 		is_dispsim: true,

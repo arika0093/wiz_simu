@@ -48,11 +48,11 @@
                attr: 1,
                spec: 4,
                isStrong: false,
-			   resindex: 0,		// 蘇生先データ指定
                move: {
                   on_popup: [
                      m_enemy_once(skill_counter_func(s_enemy_cursed, "呪い 5体のHP5000減少×6ターン", 100, false, 5000, 5, 7)),
                      damage_switch(s_enemy_when_dead_l(), m_enemy_angry(), true),
+					 s_enemy_reverse(0),
                   ],
                   on_move_angry: [
                      s_enemy_as_sealed(5, 4),
@@ -99,7 +99,7 @@
          ]
       }
    ],
-   resData: [
+   revData: [
       {
          name: "鳥だけにとりあえずの研究成果",
          hp: 600000,
@@ -112,8 +112,11 @@
                m_enemy_once(skill_counter_func(s_enemy_cursed, "呪い 5体のHP5000減少×6ターン", 100, false, 5000, 5, 7)),
                damage_switch(s_enemy_when_hpdown(0.5), m_enemy_angry(), true)
             ],
+			on_move: [
+               s_enemy_attack(750, 5, 1, true),
+			],
             on_angry: [
-               damage_block_all(15000, 4)
+               damage_block_all(15000, 4),
             ],
             on_move_angry: [
                s_enemy_attack_ratio(0.9, 5, true),

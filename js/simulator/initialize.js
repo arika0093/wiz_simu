@@ -226,11 +226,10 @@ $(function () {
 					// 敵ステ
 					fes.revData[i] = {};
 					fes.revData[i] = $.extend(true, {}, edat);
-					data.nowhp = edat.hp;
-					data.flags = {};
-					data.flags.is_as_attack = [];
-					data.turn_effect = [];
-					//data.after_turn = [];
+					fes.revData[i].nowhp = edat.hp;
+					fes.revData[i].flags = {};
+					fes.revData[i].flags.is_as_attack = [];
+					fes.revData[i].turn_effect = [];
 				}
 			}
 
