@@ -251,7 +251,7 @@ function s_enemy_delay_attack(dmg, tnum, atkn) {
 	atkn = atkn || 1;
 	// 通常攻撃と同じものを取得
 	var mov = s_enemy_attack(dmg, tnum, atkn, true);
-	mov.priority = 5;
+	mov.priority = 99;
 
 	return mov;
 }

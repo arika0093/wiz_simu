@@ -295,7 +295,6 @@ function nextturn(is_ssfin) {
 	ss_continue_effect_check();
 	turn_effect_check(true, is_ssfin);
 	enemy_turn_effect_check(true);
-	after_turneffect_check();
 	// 怒り確認
 	enemy_damage_switch_check("damage_switch");
 	// 総ダメージ出力

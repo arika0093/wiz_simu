@@ -498,6 +498,9 @@ function sim_show() {
 				tweet_result();
 				$(this).dialog("close");
 			},
+			"結果を全体公開する": function () {
+
+			},
 			"閉じる": function () {
 				$(this).dialog("close");
 			},
