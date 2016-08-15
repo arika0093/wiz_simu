@@ -767,6 +767,7 @@ Cards = [{
 	cost: 72,
 	attr: [0, -1],
 	species: [0],
+	alias: ["しゅうえん"],
 	awakes: [
 		Panel_boost([1,0,0,0,0], 1),
 		Attr_statusup(100, 0, [1,0,0,0,0]),
@@ -9571,6 +9572,7 @@ Cards = [{
 	cost: 48,
 	attr: [1, 0],
 	species: [1],
+	alias: ["arika_nekowiz"],
 	awakes: [
 		Fastskill(1),
 		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
@@ -11551,6 +11553,7 @@ Cards = [{
 	},
 	islegend: true,
 	is_dist: true,
+	disable: true,
 	Lawake: [
 		Statusup(0, 500),
 		Statusup(400, 0),
@@ -19660,6 +19663,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
+	alias: ["rinshandream"],
 	as1: {
 		desc: "雷属性の味方のHPを回復(13%)",
 		proc: Heal(0.13, [0,0,1,0,0], 0),
@@ -20935,6 +20939,7 @@ Cards = [{
 	attr: [1,3],
 	species: [9],
 	islegend: true,
+	alias: ["take_wiz"],
 	as1: {
 		desc: "5チェインで水属性の攻撃力をアップ、複属性が光属性で更にアップ(60%/110%)",
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,1,0,0,0], [0,0,0,1,0], 5),
@@ -31449,7 +31454,7 @@ Cards = [{
 		Panel_boost([0,0,1,0,0,],1),
 		Spec_statusup(400,0, [5,]),
 		Spec_statusup(0,400, [5,]),
-                Abstate_invalid("ss_sealed"),
+		Abstate_invalid("ss_sealed"),
 	],
 	as2: {
 		desc: "3チェインでダメージアップ、亜人の仲間の数だけさらにダメージアップ(440%/480%/520%/560%/600%)",
@@ -31749,6 +31754,7 @@ Cards = [{
 	attr: [1,3],
 	species: [9],
 	islegend: true,
+	alias: ["wiz_kamui"],
 	as1: {
 		desc: "4チェインでダメージアップ、8チェインで更にダメージアップ(350%/500%)",
 		proc: [ChainAttack(3.5, 4), ChainAttack(5.0, 8)],
@@ -31839,6 +31845,7 @@ Cards = [{
 	islegend: true,
 	is_dist: true,
 	ape: "アビスコード",
+	alias: ["イェルセル"],
 	as1: {
 		desc: "敵単体を2回連続攻撃、HP15%以下で5回連続攻撃になりさらにダメージアップ(150%/1100%)",
 		proc: [ChainDualAttack(1.5, 0, 2), add_cond(ChainDualAttack(11.0, 0, 5), when_hp_less(0.15))],
@@ -31884,6 +31891,7 @@ Cards = [{
 	species: [11],
 	islegend: true,
 	ape: "アビスコード",
+	alias: ["ミルドレッド"],
 	as1: {
 		desc: "雷属性の味方を回復、HP20%以下ならさらに回復(13%/38%)",
 		proc: [Heal(0.13, [0,0,1,0,0], 0), add_cond(Heal(0.38, [0,0,1,0,0], 0), when_hp_less(0.20))],
@@ -38444,6 +38452,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "続超魔道列伝　アルティメットサマーガールズ！",
+	alias: ["まどうがーる"],
 	as1: {
 		desc: "6チェインでダメージアップ(400%)、さらに火属性の攻撃力をアップ、複属性が光だとさらにアップ(10%/40%)",
 		proc: [ChainAttack(4.0, 6), ChainEnhance_SubAttr(0.1, 0.4, [1,0,0,0,0], [0,0,0,1,0], 6)],
@@ -38717,6 +38726,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "続超魔道列伝　アルティメットサマーガールズ！",
+	alias: ["アリエッタ", "はなび"],
 	as1: {
 		desc: "7チェインで水・雷属性の味方の攻撃力をアップ(80%)、さらに全属性のダメージを10%軽減",
 		proc: [ChainEnhance(0.80, [0,1,1,0,0], 7), as_guard(0.10, [0,1,1,0,0], 7)],
@@ -40780,49 +40790,49 @@ Cards = [{
 		Statusup(400,0),
 	],
 },{
-    	name: "優しき獣と謳われる ヴォルフ・ロイ",
-    	cardno: 4467,
-    	imageno: 6161,
-    	hp: 2738,
-    	atk: 3276,
-    	cost: 48,
-    	attr: [0, -1],
-    	species: [8],
-    	awakes: [
-            Fastskill(1),
-            Panel_boost([1, 0, 0, 0, 0, ], 1),
-            NEFTJOD(30),
-            Statusup(200, 0),
-            Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
-            Panel_boost([1, 0, 0, 0, 0, ], 1),
-            Fastskill(2),
-            Statusup(0, 200),
-            Spec_statusup(0, 200, [8, ]),
-            Spec_statusup(200, 0, [8, ]),
-    	],
-    	as1: {
-    		desc: "3チェインかつパネルが2色でダメージがイチかバチかアップ、3色でダメージがイチかバチかアップ(2色：350％～600％ / 3色：450％～850％)",
-    		proc: ChainStakesAttack3(0, 0, 3.5, 6.0, 4.5, 8.5, 3),
-    	},
-    	ss1: {
-    		desc: "MAXHPの50％を使い敵全体へダメージ(260％)",
-    		turn: 7,
-    		proc: [ss_damage_all(2.6, [0]), ss_consume_own(0.5)],
-    	},
-    	islegend: true,
-    	Lawake: [
-            Statusup(0, 500),
-            Statusup(500, 0),
-    	],
-    	as2: {
-    		desc: "3チェインかつパネルが2色でダメージがイチかバチかアップ、3色でダメージがイチかバチかアップ(2色：350％～900％ / 3色：450％～1150％)",
-    		proc: ChainStakesAttack3(0, 0, 3.5, 9.0, 4.5, 11.5, 3),
-    	},
-    	ss2: {
-    		desc: "MAXHPの75％を使い敵全体へダメージ、さらに味方全体のHPを回復する(攻撃：300％ / 回復：25％)",
-    		turn: 10,
-    		proc: [ss_damage_all(3.0, [0]), ss_consume_own(0.75), ss_heal(0.25)],
-    	},
+    name: "優しき獣と謳われる ヴォルフ・ロイ",
+    cardno: 4467,
+    imageno: 6161,
+    hp: 2738,
+    atk: 3276,
+    cost: 48,
+    attr: [0, -1],
+    species: [8],
+    awakes: [
+        Fastskill(1),
+        Panel_boost([1, 0, 0, 0, 0, ], 1),
+        NEFTJOD(30),
+        Statusup(200, 0),
+        Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+        Panel_boost([1, 0, 0, 0, 0, ], 1),
+        Fastskill(2),
+        Statusup(0, 200),
+        Spec_statusup(0, 200, [8, ]),
+        Spec_statusup(200, 0, [8, ]),
+    ],
+    as1: {
+    	desc: "3チェインかつパネルが2色でダメージがイチかバチかアップ、3色でダメージがイチかバチかアップ(2色：350％～600％ / 3色：450％～850％)",
+    	proc: ChainStakesAttack3(0, 0, 3.5, 6.0, 4.5, 8.5, 3),
+    },
+    ss1: {
+    	desc: "MAXHPの50％を使い敵全体へダメージ(260％)",
+    	turn: 7,
+    	proc: [ss_damage_all(2.6, [0]), ss_consume_own(0.5)],
+    },
+    islegend: true,
+    Lawake: [
+        Statusup(0, 500),
+        Statusup(500, 0),
+    ],
+    as2: {
+    	desc: "3チェインかつパネルが2色でダメージがイチかバチかアップ、3色でダメージがイチかバチかアップ(2色：350％～900％ / 3色：450％～1150％)",
+    	proc: ChainStakesAttack3(0, 0, 3.5, 9.0, 4.5, 11.5, 3),
+    },
+    ss2: {
+    	desc: "MAXHPの75％を使い敵全体へダメージ、さらに味方全体のHPを回復する(攻撃：300％ / 回復：25％)",
+    	turn: 10,
+    	proc: [ss_damage_all(3.0, [0]), ss_consume_own(0.75), ss_heal(0.25)],
+    },
 },{
 	name: "屍霊の拳鬼 フー・チャパル",
 	cardno: 4536,
@@ -41367,6 +41377,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	ape: "真夏のグレート・クイズ・ウォー",
+	alias: ["クルス"],
 	as1: {
 		desc: "10チェインでダメージアップ(200%)、解答が早いほどさらにアップ(効果値:250)",
 		proc: add_cond(ChainAttack(2.0, 10), as_timedep(2.5)),
@@ -41413,6 +41424,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "真夏のグレート・クイズ・ウォー",
+	alias: ["ピピア"],
 	as1: {
 		desc: "6チェインで敵単体を3回連続攻撃(400%)、さらに全属性のダメージを10%軽減",
 		proc: [ChainDualAttack(4.0, 6, 3), as_guard(0.1, [1, 1, 1, 1, 1], 6)],
@@ -41458,6 +41470,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	ape: "真夏のグレート・クイズ・ウォー",
+	alias: ["ローヴィ"],
 	as1: {
 		desc: "5チェインで雷属性の敵単体へ特効ダメージ(650%)",
 		proc: ChainAttrAttack(6.5, 5, [0,0,1,0,0]),
@@ -41493,7 +41506,7 @@ Cards = [{
 	],
 },{
 	name: "真夏の海にはじける笑顔",
-	cardno: 6379,
+	cardno: 6380,
 	imageno: 8693,
 	hp: 3108,
 	atk: 5367,
@@ -41502,6 +41515,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	ape: "真夏のグレート・クイズ・ウォー",
+	alias: ["シール"],
 	as1: {
 		desc: "水属性の味方の攻撃力をアップ(30%)し、4チェインで火属性の敵単体へ特効ダメージ(500%)",
 		proc: [ChainEnhance(0.3, [0,1,0,0,0], 0), ChainAttrAttack(5.0, 4, [1,0,0,0,0])],
@@ -41547,6 +41561,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	ape: "真夏のグレート・クイズ・ウォー",
+	alias: ["うりまろびえり"],
 	as1: {
 		desc: "	5チェインで雷属性の敵単体へ特効ダメージ(350%)、解答が早いほどさらにアップ(効果値:150)",
 		proc: [add_cond(ChainAttrAttack(3.5, 5, [0,0,1,0,0]), as_timedep(1.5))],
@@ -41592,6 +41607,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	ape: "真夏のグレート・クイズ・ウォー",
+	alias: ["ひびやまいみ"],
 	as1: {
 		desc: "6チェインで水属性の味方の攻撃力をアップ(70%)、さらに全属性のダメージを10%軽減",
 		proc: [ChainEnhance(0.70, [0,1,0,0,0], 6), as_guard(0.10, [1,1,1,1,1], 6)],
@@ -41638,6 +41654,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	ape: "真夏のグレート・クイズ・ウォー",
+	alias: ["あさひなれんじ"],
 	as1: {
 		desc: "4チェインでダメージアップ(150%)、解答が早いほどさらにアップ(効果値:125)",
 		proc: add_cond(ChainAttack(1.5, 4), as_timedep(1.25)),
@@ -41729,6 +41746,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	ape: "真夏のグレート・クイズ・ウォー",
+	alias: ["しるしがわひらめ"],
 	is_dist: true,
 	as1: {
 		desc: "3チェインで火属性の敵単体へ特効3連撃(375%)、解答が早いほどさらにアップ(効果値:50)",
@@ -42051,6 +42069,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	ape: "真夏のグレート・クイズ・ウォー",
+	alias: ["いまくるすきたん"],
 	is_dist: true,
 	as1: {
 		desc: "水属性の敵単体へ特効ダメージ、パネルの色が増す度さらにアップ(300%/400%/500%)",
