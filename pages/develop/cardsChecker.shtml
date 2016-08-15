@@ -1,0 +1,58 @@
+
+<head>
+<meta charset=utf-8>
+<script>
+function check(){
+	o.innerHTML="1. SS1が配列でないcardのチェック"+"\n";
+	$.grep(Cards,(function(e){if(!$.isArray(e.ss1.proc)){
+		o.innerHTML+=e.name+"\n";
+	}})) 
+
+    o.innerHTML+="\n"
+	o.innerHTML+="2. SS2が配列でないcardのチェック"+"\n";
+    $.grep(Cards,(function(e){if(e.ss2 && !$.isArray(e.ss2.proc)){
+        o.innerHTML+=e.name+"\n"
+    }}))
+
+    o.innerHTML+="\n"
+	o.innerHTML+="3. id重複のチェック"+"\n";
+
+    Cards.forEach(function(a){t=0;Cards.forEach(function(b){if(a.cardno==b.cardno)t++});if(t>1){
+        o.innerHTML+=a.cardno+"| "+a.name+"\n"
+    }}) 
+
+    o.innerHTML+="\n"
+	o.innerHTML+="おまけ：現在のカード数は"+Cards.length+"件です。\n";
+}
+</script></head>
+
+<body onload=check()>
+
+※下に何もエラーが出てなければ良<br>
+
+<textarea id=o style=width:100%;height:300px;></textarea>
+
+
+    <!--#config timefmt="%Y%m%d_%H%M%S" -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="/download/romaji.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/loader.js?                  <!--#flastmod virtual='/js/loader.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js?                <!--#flastmod virtual='/js/pagetemp.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js?               <!--#flastmod virtual='/js/googletrc.js'-->"></script>
+	<!-- 他jsに依存しない基礎関数群 -->
+    <script type="text/javascript" charset="UTF-8" src="/js/general.js?                 <!--#flastmod virtual='/js/general.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/simulator/awake.js?         <!--#flastmod virtual='/js/simulator/awake.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/simulator/species.js?       <!--#flastmod virtual='/js/simulator/species.js'-->"></script>
+	<!-- データ群(基礎関数に依存する) -->
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_ans.js?          <!--#flastmod virtual='/js/data/skill_ans.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_spe.js?          <!--#flastmod virtual='/js/data/skill_spe.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_spe_body.js?     <!--#flastmod virtual='/js/data/skill_spe_body.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_awake.js?        <!--#flastmod virtual='/js/data/skill_awake.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_crystal.js?      <!--#flastmod virtual='/js/data/skill_crystal.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_enemy.js?        <!--#flastmod virtual='/js/data/skill_enemy.js'-->"></script>
+<script type="text/javascript" charset="UTF-8" src="/js/data/cards.js?              <!--#flastmod virtual='/js/data/cards.js'-->"></script>
+
+
+</body>
