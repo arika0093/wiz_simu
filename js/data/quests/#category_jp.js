@@ -47,8 +47,8 @@ category_jp = {
 	},
     "abcd": {
 		jp: "アビスコード",
-		is_dispsim: false,
-		sim_index: 20,
+		is_dispsim: true,
+		sim_index: 41,
 	},
     "blader": {
 		jp: "ブレイダー",
