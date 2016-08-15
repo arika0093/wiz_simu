@@ -31432,7 +31432,7 @@ Cards = [{
 	islegend: true,
 	as1: {
 		desc: "3チェインでダメージアップ、亜人の仲間の数だけさらにダメージアップ(340%/380%/420%/460%/500%)",
-		proc: null,
+		proc: [null],
 	},
 	ss1: {
 		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
@@ -31453,7 +31453,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "3チェインでダメージアップ、亜人の仲間の数だけさらにダメージアップ(440%/480%/520%/560%/600%)",
-		proc: null,
+		proc: [null],
 	},
 	ss2: {
 		desc: "<遅延大魔術>敵全体の攻撃ターンを3遅らせ、雷属性のダメージ、3チェインを消費しさらにダメージアップ(150%/250%)",
@@ -41396,7 +41396,7 @@ Cards = [{
 		desc: "<特効大魔術>4ターン溜めた後敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(400%/270%)",
 		turn: 5,
 		charged: 4,
-		proc: ss_damage_all(special_attr([0,0,1,0,0], 27.0, 4.0), [0]),
+		proc: [ss_damage_all(special_attr([0,0,1,0,0], 27.0, 4.0), [0])],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -41420,7 +41420,7 @@ Cards = [{
 	ss1: {
 		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 1,
-		proc: ss_panel_change([1,1,1,0,0]),
+		proc: [ss_panel_change([1,1,1,0,0])],
 	},
 	awakes: [
 		Fastskill(1),
@@ -41599,7 +41599,7 @@ Cards = [{
 	ss1: {
 		desc: "<効果解除>敵全体の属性吸収を解除する",
 		turn: 4,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Awake_noeffect("経験値取得量アップ", 1),
@@ -42104,7 +42104,7 @@ Cards = [{
 	ss1: {
 		desc: "<継続回復>5ターン自分自身を徐々に回復する(70%)",
 		turn: 10,
-		proc: null,
+		proc: [null],
 	},
 	awakes: [
 		Statusup(200,0),
@@ -42125,7 +42125,7 @@ Cards = [{
 	ss2: {
 		desc: "<継続回復>10ターン自分自身を徐々に回復する(70%)",
 		turn: 15,
-		proc: null,
+		proc: [null],
 	},
 	Lawake: [
 		Statusup(0,500),
