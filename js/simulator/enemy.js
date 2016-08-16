@@ -254,10 +254,10 @@ function enemy_popup_proc(){
 			}
 		}
 	}
-	// 怒り確認
-	enemy_damage_switch_check("damage_switch");
 	// 味方スキル反射の処理を行う
 	turneff_check_skillcounter(Field);
+	// 怒り確認
+	enemy_damage_switch_check("damage_switch");
 }
 
 // 敵ダメージなどに反応するあれこれの制御
@@ -295,7 +295,7 @@ function enemy_reverse_check() {
 	// 現在の戦闘を取得
 	var nd = Field.Enemys.Data[Field.Status.nowbattle - 1];
 	// 復活先が指定されているなら置き換え
-	if (!nd.rev_check && nd.rev_index !== undefined) {
+	if (isexist_enemy_rev()) {
 		// 蘇生先のデータ取得
 		var rd = Field.Enemys.revData[nd.rev_index];
 		// 入れ替え
@@ -313,4 +313,11 @@ function enemy_reverse_check() {
 		return true;
 	}
 	return false;
+}
+
+// 敵復活が存在するかどうかの確認関数
+function isexist_enemy_rev() {
+	// 現在の戦闘を取得
+	var nd = Field.Enemys.Data[Field.Status.nowbattle - 1];
+	return !nd.rev_check && nd.rev_index !== undefined;
 }

@@ -1,7 +1,7 @@
 // turn_effectのターン数減少
 function reduce_turneffect(is_ssfin) {
 	// 全滅確認
-	var allkill = is_allkill();
+	var allkill = is_allkill() && !isexist_enemy_rev();
 	// 味方ターンエフェクト減算処理
 	for (var i = 0; i < Field.Allys.Deck.length; i++) {
 		for (var j = 0; j < Field.Allys.Now[i].turn_effect.length; j++) {
