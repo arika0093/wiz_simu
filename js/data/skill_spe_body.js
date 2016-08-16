@@ -141,7 +141,7 @@ var SpSkill = {
 			(function () {
 				var indx = i;
 				var e = enemys[indx];
-				if (e.nowhp <= 0) { return; }
+				if (e.nowhp <= 0 || !e.move) { return; }
 				if (e.move.turn && !e.flags.isdelay) {
 					e.flags.isdelay=true;
 					e.move.turn=e.move.turn+turn;
