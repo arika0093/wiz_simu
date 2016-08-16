@@ -41756,7 +41756,7 @@ Cards = [{
 	ss1: {
 		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(200%/500%)",
 		turn: 7,
-		proc: [ss_damage_s(special_attr([1,0,0,0,0], 5, 2), [1], 1)],
+		proc: [ss_damage_all(special_attr([1,0,0,0,0], 5, 2), [1])],
 	},
 	awakes: [
 		Fastskill(1),
@@ -41777,7 +41777,7 @@ Cards = [{
 	ss2: {
 		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(200%/900%)",
 		turn: 10,
-		proc: [ss_damage_s(special_attr([1,0,0,0,0], 9, 2), [1], 1)],
+		proc: [ss_damage_all(special_attr([1,0,0,0,0], 9, 2), [1])],
 	},
 	Lawake: [
 		Statusup(400,0),
