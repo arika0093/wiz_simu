@@ -41405,10 +41405,10 @@ Cards = [{
 		proc: add_cond(ChainAttack(3.0, 10), as_timedep(2.5)),
 	},
 	ss2: {
-		desc: "<特効大魔術>4ターン溜めた後敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(400%/270%)",
+		desc: "<特効大魔術>4ターン溜めた後敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(400%/2700%)",
 		turn: 5,
 		charged: 4,
-		proc: [ss_damage_all(special_attr([0,0,1,0,0], 27.0, 4.0), [0])],
+		proc: [ss_damage_s(special_attr([0,0,1,0,0], 27.0, 4.0), [0])],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -41479,7 +41479,7 @@ Cards = [{
 	ss1: {
 		desc: "<犠牲魔術>スキル反射を無視、味方全体のMAXHPの50%を使い敵単体へ火属性のダメージ(280%×人数)",
 		turn: 9,
-		proc: [ss_damage_all(ss_consume_all_cond(2.8, 0.5), [0]), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(ss_consume_all_cond(2.8, 0.5), [0]), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -41500,7 +41500,7 @@ Cards = [{
 	ss2: {
 		desc: "<犠牲魔術>スキル反射を無視、味方全体のMAXHPの50%を使い敵単体へ火属性のダメージ(360%×人数)",
 		turn: 12,
-		proc: [ss_damage_all(ss_consume_all_cond(3.6, 0.5), [0]), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(ss_consume_all_cond(3.6, 0.5), [0]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,1000),

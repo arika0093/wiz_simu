@@ -26,6 +26,9 @@ category_jp = {
     "id": {
 		jp: "未設定",
 	},
+    "": {
+		jp: "未設定",
+	},
     "satajo": {
 		jp: "サタニック女学院",
 	},
@@ -50,7 +53,12 @@ category_jp = {
     	is_dispsim: true,
     	sim_index: 11,
     },
-    "abcd": {
+    "8million2": {
+    	jp: "八百万神秘譚2",
+    	is_dispsim: true,
+    	sim_index: 21,
+    },
+   "abcd": {
 		jp: "アビスコード",
 		is_dispsim: true,
 		sim_index: 41,
