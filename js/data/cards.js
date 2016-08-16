@@ -21501,7 +21501,7 @@ Cards = [{
 	ss2: {
 		desc: "味方全体のHPを1000アップ(上限値:2000)、さらにHPを完全回復",
 		turn: 8,
-		proc: [ss_statusup_all([1000, 0], [2000, 2000], -1), ss_heal(0.5)],
+		proc: [ss_statusup_all([1000, 0], [2000, 2000], -1), ss_heal(1)],
 	},
 	Lawake: [
 		Statusup(700,0),
@@ -26656,7 +26656,7 @@ Cards = [{
 	ss1: {
 		desc: "味方全体のHPを500アップ(上限値:2000)、さらにHPを回復(50%)",
 		turn: 5,
-		proc: [ss_statusup_all([500, 500], [2000, 2000], -1), ss_heal(0.50)],
+		proc: [ss_statusup_all([500, 0], [2000, 2000], -1), ss_heal(0.50)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -26677,7 +26677,7 @@ Cards = [{
 	ss2: {
 		desc: "味方全体のHPを1000アップ(上限値:2000)、さらにHPを完全回復",
 		turn: 8,
-		proc: [ss_statusup_all([1000, 1000], [2000, 2000], -1), ss_heal(0.50)],
+		proc: [ss_statusup_all([1000, 0], [2000, 2000], -1), ss_heal(1)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,0,0,0,]),
