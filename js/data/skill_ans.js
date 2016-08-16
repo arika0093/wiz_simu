@@ -8,6 +8,7 @@ function Default_as() {
 			type: "attack",
 			isall: false,
 			isdefault: true,
+			disactuate: true,
 			atkn: 1,
 			rate: 1,
 			chain: 0,
@@ -182,6 +183,7 @@ function ChainDualAttrAttack(rate, ch, n, attr) {
 		}, {
 			type: "attack",
 			isall: false,
+			disactuate: true,
 			atkn: n,
 			rate: 1,
 			chain: ch,
