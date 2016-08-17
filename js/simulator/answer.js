@@ -317,7 +317,7 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem) {
 		for (var ei = 0; ei < enemy.length; ei++) {
 			var is_ans = is_answer_target(as[ai], chain, enemy[ei].attr, enemy[ei].spec, index, ei, panel);
 			var rate_n = (is_ans ? as[ai].rate : 0);
-			var rate_b = (as_pos[ei] !== undefined ? as_rate[as_pos[ei]] : 0);
+			var rate_b = (as_pos[ei] !== undefined ? as_rate[ei] : 0);
 			// 解答時間依存処理
 			if (is_ans && as[ai].is_timedep && !as[ai].disactuate) {
 				rate_n += as[ai].rate_time * time;
