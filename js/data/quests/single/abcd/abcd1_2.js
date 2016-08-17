@@ -1,8 +1,6 @@
 {
 	id: "abcd01_h",
-	name: "AbyssCode01 黒殻の王『真覇級』",
-	category: "other",
-   category_jp: "その他",
+	name: "AbCd01 黒殻の王 覇級",
 	desc: "",
 	aprnum: 4,
 	overlap: false,
