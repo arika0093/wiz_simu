@@ -96,7 +96,7 @@
                isStrong: false,
                move: {
                   on_move: [
-                     m_enemy_once(s_enemy_poison(700, 5, 4)),
+                     m_enemy_once(s_enemy_poison(700, 5, 3)),
                      s_enemy_attack(750, 5, 1, true)
                   ],
                   atrandom: false,
@@ -253,7 +253,7 @@
                   ],
                   on_move: [
                      s_enemy_panicshout(900, 5, 2),
-                     s_enemy_poison(1000, 5, 4),
+                     s_enemy_poison(1000, 5, 3),
                      s_enemy_attack(500, 5, 1, true),
                      s_enemy_attack(500, 5, 1, true)
                   ],
