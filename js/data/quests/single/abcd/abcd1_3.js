@@ -39,7 +39,7 @@
                move: {
                   on_move: [
                      s_enemy_attack(1500, 3, 1, true),
-                     s_enemy_poison(2000, 5, 6)
+                     s_enemy_poison(2000, 5, 5)
                   ],
                   atrandom: false,
                   turn: 2,
@@ -62,12 +62,12 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     s_enemy_poison(1000, 5, 6)
+                     s_enemy_poison(1000, 5, 5)
                   ],
                   on_move: [
                      s_enemy_attack(700, 5, 3, true),
                      s_enemy_attack_ratio(0.9, 5, true),
-                     s_enemy_poison(1000, 5, 6)
+                     s_enemy_poison(1000, 5, 5)
                   ],
                   atrandom: false,
                   turn: 1,
@@ -107,7 +107,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_cursed, "-", 100, false, 1600, 1, 6))
+                     m_enemy_once(skill_counter_func(s_enemy_cursed, "-", 100, false, 1600, 1, 5))
                   ],
                   on_move: [
                      s_enemy_attack(1200, 5, 1, true)
@@ -234,7 +234,7 @@
                      s_enemy_attack(1500, 5, 1, true)
                   ],
                   on_angry: [
-                     s_enemy_cursed(2000, 5, 6)
+                     s_enemy_cursed(2000, 5, 5)
                   ],
                   on_move_angry: [
                      s_enemy_attack(1500, 5, 1, true)

@@ -225,7 +225,7 @@
                isStrong: true,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_cursed, "-", 100, false, 5000, 5, 6)),
+                     m_enemy_once(skill_counter_func(s_enemy_cursed, "-", 100, false, 5000, 5, 5)),
                      damage_switch(s_enemy_when_dead_l(), m_enemy_angry(), true)
                   ],
                   on_move: [

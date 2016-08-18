@@ -122,7 +122,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_poison, "-", 100, false, 3000, 5, 6)),
+                     m_enemy_once(skill_counter_func(s_enemy_poison, "-", 100, false, 3000, 5, 5)),
                      damage_switch(s_enemy_when_hpdown(0.4), m_enemy_angry(), true)
                   ],
                   on_move: [

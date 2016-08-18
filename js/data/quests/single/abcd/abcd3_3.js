@@ -212,7 +212,7 @@
                      s_enemy_attack(2000, 5, 1, true)/* Warning: case 36 */
                   ],
                   on_angry: [
-                     s_enemy_poison(2000, 5, 4)
+                     s_enemy_poison(2000, 5, 3)
                   ],
                   on_move_angry: [
                      s_enemy_attack(2000, 5, 1, true)/* Warning: case 36 */,
