@@ -39978,7 +39978,7 @@ Cards = [{
 	ss2: {
 		desc: "<弱体化大魔術>スキル反射を無視し、敵単体へ火属性のダメージ(800%)、さらに10ターンの間、敵の防御力を弱体化(30%)",
 		turn: 12,
-		proc: [ss_damage_s(8.0, [0], 1), ss_attr_weaken_s([1,1,1,1,1], 0.3, 10)],
+		proc: [ss_damage_s(8.0, [0], 1), ss_attr_weaken_s([1,1,1,1,1], 0.3, 10), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Abstate_invalid("as_sealed"),
