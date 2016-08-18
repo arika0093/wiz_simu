@@ -4,6 +4,7 @@
    desc: "",
    overlap: false,
    aprnum: 4,
+   panel_effect: [panel_chainplus(1)],
    data: [
       {
          appearance: [
