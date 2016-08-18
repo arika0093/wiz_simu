@@ -4,6 +4,7 @@
    desc: "",
    overlap: false,
    aprnum: 1,
+   panel_effect: [panel_attackup(0.01), panel_attackup(10), panel_attackup(20),  panel_chainplus(1),  panel_chainplus(50),  panel_chainplus(100), panel_healally(0.01), panel_healally(0.5), panel_healally(1), panel_skillboost(5), panel_skillboost(50), panel_attr_guard([1,1,1,1,1], 0.01), panel_attr_guard([1,1,1,1,1], 0.5), panel_attr_guard([1,1,1,1,1], 1)],
    data: [
       {
          appearance: [
