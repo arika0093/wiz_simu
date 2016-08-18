@@ -286,7 +286,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_poison(1000, 5, 4))
+                     m_enemy_once(s_enemy_poison(1000, 5, 3))
                   ],
                   on_move: [
                      s_enemy_attack(400, 5, 3, true)
