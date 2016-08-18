@@ -159,11 +159,11 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_poison(700, 5, 6))
+                     m_enemy_once(s_enemy_poison(700, 5, 5))
                   ],
                   on_move: [
                      s_enemy_chain_break(),
-                     s_enemy_poison(700, 5, 6)
+                     s_enemy_poison(700, 5, 5)
                   ],
                   atrandom: false,
                   turn: 1,

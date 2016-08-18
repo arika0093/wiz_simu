@@ -100,7 +100,7 @@
                move: {
                   on_move: [
                      s_enemy_attack(1500, 5, 1, true),
-                     s_enemy_poison(300, 5, 10)
+                     s_enemy_poison(300, 5, 9)
                   ],
                   on_popup: [
                      damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true)

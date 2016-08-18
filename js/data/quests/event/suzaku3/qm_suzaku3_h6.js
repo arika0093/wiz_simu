@@ -246,14 +246,14 @@
                      damage_switch(s_enemy_when_after_turn(3), m_enemy_angry(), true)
                   ],
                   on_move: [
-                     s_enemy_poison(1000, 5, 2),
+                     s_enemy_poison(1000, 5, 1),
                      s_enemy_attack_ratio(0.5, 5, true)
                   ],
                   on_move_angry: [
                      s_enemy_attack_ratio(0.5, 5, true),
-                     s_enemy_poison(2000, 5, 6),
+                     s_enemy_poison(2000, 5, 5),
                      s_enemy_attack_ratio(0.5, 5, true),
-                     s_enemy_poison(2000, 5, 6),
+                     s_enemy_poison(2000, 5, 5),
                      s_enemy_attack_ratio(0.5, 5, true)
                   ],
                   atrandom: false,

@@ -90,7 +90,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_poison, "-", 100, false, 2000, 5, 5))
+                     m_enemy_once(skill_counter_func(s_enemy_poison, "-", 100, false, 2000, 5, 4))
                   ],
                   on_move: [
                      s_enemy_attack(300, 3, 3, true)

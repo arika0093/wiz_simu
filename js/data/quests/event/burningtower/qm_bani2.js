@@ -28,7 +28,7 @@
                      damage_switch(s_enemy_when_after_turn(2), m_enemy_angry(), true)
                   ],
                   on_move: [
-                     s_enemy_poison(500, 5, 3)
+                     s_enemy_poison(500, 5, 2)
                   ],
                   on_angry: [
                      s_enemy_chain_sealed(4)
@@ -89,7 +89,7 @@
                      s_enemy_attack(66.66666666666667, 3, 3, true)
                   ],
                   on_angry: [
-                     s_enemy_cursed(5000, 5, 6)
+                     s_enemy_cursed(5000, 5, 5)
                   ],
                   on_move_angry: [
                      s_enemy_attack(66.66666666666667, 3, 3, true),

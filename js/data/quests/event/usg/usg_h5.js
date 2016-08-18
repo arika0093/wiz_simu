@@ -38,7 +38,7 @@
                isStrong: false,
                move: {
                   on_move: [
-                     m_enemy_once(s_enemy_poison(700, 5, 3)),
+                     m_enemy_once(s_enemy_poison(700, 5, 2)),
                      s_enemy_attack(1000, 5, 1, true)
                   ],
                   atrandom: false,
@@ -112,7 +112,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_cursed, "-", 100, false, 2000, 5, 5))
+                     m_enemy_once(skill_counter_func(s_enemy_cursed, "-", 100, false, 2000, 5, 4))
                   ],
                   on_move: [
                      s_enemy_attack(1500, 5, 1, true)

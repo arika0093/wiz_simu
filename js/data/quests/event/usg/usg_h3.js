@@ -201,7 +201,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_cursed, "-", 100, false, 3000, 5, 5))
+                     m_enemy_once(skill_counter_func(s_enemy_cursed, "-", 100, false, 3000, 5, 4))
                   ],
                   on_move: [
                      s_enemy_attack(1000, 1, 1, true)
@@ -226,7 +226,7 @@
                      damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true)
                   ],
                   on_angry: [
-                     skill_counter_func(s_enemy_cursed, "-", 100, false, 3000, 5, 5)
+                     skill_counter_func(s_enemy_cursed, "-", 100, false, 3000, 5, 4)
                   ],
                   on_move_angry: [
                      damage_block_own(15000, 5),

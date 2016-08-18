@@ -27,7 +27,7 @@
                      s_enemy_attack(500, 5, 1, true)
                   ],
                   on_angry: [
-                     s_enemy_cursed(3000, 5, 4)
+                     s_enemy_cursed(3000, 5, 3)
                   ],
                   on_move_angry: [
                      s_enemy_attack(600, 5, 5, true),
@@ -50,13 +50,13 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_cursed, "呪い 5体のHP5000減少×6ターン", 100, false, 5000, 5, 7)),
+                     m_enemy_once(skill_counter_func(s_enemy_cursed, "呪い 5体のHP5000減少×6ターン", 100, false, 5000, 5, 6)),
                      damage_switch(s_enemy_when_dead_l(), m_enemy_angry(), true),
 					 s_enemy_reverse(0),
                   ],
                   on_move_angry: [
                      s_enemy_as_sealed(5, 4),
-                     s_enemy_cursed(1000, 5, 4),
+                     s_enemy_cursed(1000, 5, 3),
                      s_enemy_attack(600, 5, 5, true),
                      s_enemy_attack(600, 5, 5, true),
                      s_enemy_attack(1200, 5, 5, true)
@@ -109,7 +109,7 @@
          isStrong: false,
          move: {
             on_popup: [
-               m_enemy_once(skill_counter_func(s_enemy_cursed, "呪い 5体のHP5000減少×6ターン", 100, false, 5000, 5, 7)),
+               m_enemy_once(skill_counter_func(s_enemy_cursed, "呪い 5体のHP5000減少×6ターン", 100, false, 5000, 5, 6)),
                damage_switch(s_enemy_when_hpdown(0.5), m_enemy_angry(), true)
             ],
 			on_move: [

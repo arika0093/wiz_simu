@@ -164,7 +164,7 @@
                      s_enemy_attack(2000, 1, 1, true)
                   ],
                   on_angry: [
-                     s_enemy_poison(700, 5, 3)
+                     s_enemy_poison(700, 5, 2)
                   ],
                   on_move_angry: [
                      s_enemy_attack(1333.3333333333333, 3, 3, true)
