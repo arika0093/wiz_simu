@@ -24186,6 +24186,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	is_dist: true,
+	alias: ["ハルコ"],
 	as1: {
 		desc: "4チェインでダメージアップ、パネルの色が増す度ダメージアップ(350%/450%/600%)",
 		proc: ChainPanelsAttack(3.5, 4.5, 6.0, 4),
