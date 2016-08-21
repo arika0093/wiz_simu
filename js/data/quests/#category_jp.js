@@ -56,12 +56,12 @@ category_jp = {
     "eva2": {
     	jp: "幻想と歪曲の槍",
     	is_dispsim: true,
-    	sim_index: 11,
+    	sim_index: 13,
     },
     "gqw": {
     	jp: "高校生クイズ",
     	is_dispsim: true,
-    	sim_index: 11,
+    	sim_index: 15,
     },
     "8million2": {
     	jp: "八百万神秘譚2",
