@@ -41887,6 +41887,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	ape: "真夏のグレート・クイズ・ウォー",
+	alias: ["デュラはん"],
 	is_dist: true,
 	as1: {
 		desc: "水属性の味方のHPを回復(12%)",
