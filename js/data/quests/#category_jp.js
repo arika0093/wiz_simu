@@ -58,6 +58,11 @@ category_jp = {
     	is_dispsim: true,
     	sim_index: 11,
     },
+    "gqw": {
+    	jp: "高校生クイズ",
+    	is_dispsim: true,
+    	sim_index: 11,
+    },
     "8million2": {
     	jp: "八百万神秘譚2",
     	is_dispsim: true,

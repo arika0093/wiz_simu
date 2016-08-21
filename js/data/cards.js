@@ -32722,9 +32722,9 @@ Cards = [{
 		proc: ChainAttrAttack(7.5, 5, [0,0,1,0,0]),
 	},
 	ss2: {
-		desc: "<効果解除大魔術>敵全体のガード&ダメージブロックを解除し、火属性のダメージ(300%)",
+		desc: "<効果解除大魔術>スキル反射を無視し、敵全体のガード&ダメージブロックを解除し、火属性のダメージ(300%)",
 		turn: 7,
-		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(3.0, [0])],
+		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(3.0, [0]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		NEFTJOD(30),
