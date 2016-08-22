@@ -128,7 +128,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_cursed, "呪い 5体のHP3000減少×5ターン", 100, false, 3000, 5, 6))
+                     m_enemy_once(skill_counter_func(s_enemy_cursed, "呪い 5体のHP3000減少×5ターン", 100, false, 3000, 5, 5))
                   ],
                   on_move: [
                      s_enemy_attack(250, 5, 3, true)

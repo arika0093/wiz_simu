@@ -141,7 +141,7 @@ var SpSkill = {
 			(function () {
 				var indx = i;
 				var e = enemys[indx];
-				if (e.nowhp <= 0) { return; }
+				if (e.nowhp <= 0 || !e.move) { return; }
 				if (e.move.turn && !e.flags.isdelay) {
 					e.flags.isdelay=true;
 					e.move.turn=e.move.turn+turn;
@@ -343,7 +343,7 @@ var SpSkill = {
 		var turn = params[2];
 		if (en.nowhp <= 0) { return; }
 		en.turn_effect.push({
-			desc: "[" + get_attr_string(attr, "/") + "]属性弱体化",
+			desc: "[" + get_attr_string(attr, "/") + "]弱体化",
 			type: "attr_weaken",
 			icon: "attr_weaken",
 			isdual: false,
@@ -353,7 +353,7 @@ var SpSkill = {
 			priority: 2,
 			on_damage: function (fld, dmg, a_i) {
 				if (attr[a_i] > 0) {
-					return dmg * rate;
+					return dmg * (1 + rate);
 				} else {
 					return dmg;
 				}
@@ -541,13 +541,13 @@ var SpSkill = {
 						nowtg.nowhp = Math.min(nowtg.nowhp + Math.max(params[0][0], teff.up_hp, 0), nowtg.maxhp);
 					}
 					else if (state == "end" || state == "dead") {
-						nowtg.maxhp -= teff.up_hp;
+						nowtg.maxhp = Math.max(nowtg.maxhp - teff.up_hp, 1);
 						nowtg.nowhp = Math.min(nowtg.nowhp, nowtg.maxhp);
 						nowtg.atk -= teff.up_atk;
 					}
 					else if (state == "overlay") {
-						nowtg.maxhp -= teff.up_hp;
-						nowtg.nowhp -= teff.up_hp;
+						nowtg.maxhp = Math.max(nowtg.maxhp - teff.up_hp, 1);
+						nowtg.nowhp = Math.max(nowtg.nowhp - teff.up_hp, 1);
 						nowtg.atk -= teff.up_atk;
 					}
 				},

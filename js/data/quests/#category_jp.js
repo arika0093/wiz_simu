@@ -26,6 +26,9 @@ category_jp = {
     "id": {
 		jp: "未設定",
 	},
+    "": {
+		jp: "未設定",
+	},
     "satajo": {
 		jp: "サタニック女学院",
 	},
@@ -40,15 +43,35 @@ category_jp = {
 		is_dispsim: false,
 		sim_index: 11,
 	},
-    "usg": {
-		jp: "アルティメットサマーガールズ",
+    "8millionz": {
+		jp: "YAOYORO Z",
 		is_dispsim: true,
 		sim_index: 11,
 	},
-    "abcd": {
-		jp: "アビスコード",
+    "usg": {
+		jp: "アルティメットサマーガールズ",
 		is_dispsim: false,
-		sim_index: 20,
+		sim_index: 11,
+	},
+    "eva2": {
+    	jp: "幻想と歪曲の槍",
+    	is_dispsim: true,
+    	sim_index: 13,
+    },
+    "gqw": {
+    	jp: "高校生クイズ",
+    	is_dispsim: true,
+    	sim_index: 15,
+    },
+    "8million2": {
+    	jp: "八百万神秘譚2",
+    	is_dispsim: true,
+    	sim_index: 21,
+    },
+   "abcd": {
+		jp: "アビスコード",
+		is_dispsim: true,
+		sim_index: 41,
 	},
     "blader": {
 		jp: "ブレイダー",

@@ -148,7 +148,7 @@
                      m_enemy_once(skill_counter_func(s_enemy_as_sealed, "5体のアンサースキルを封印する（5T）", 100, false, 5, 6))
                   ],
                   on_move: [
-                     m_enemy_once(s_enemy_poison(1000, 5, 4)),
+                     m_enemy_once(s_enemy_poison(1000, 5, 3)),
                      s_enemy_attack(300, 3, 4, true)
                   ],
                   atrandom: false,

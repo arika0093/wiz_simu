@@ -42,7 +42,9 @@ function ss_push(n) {
 		Field_log._removeover(Field.Status.totalturn);
 		// 全滅していたら次のターンへ進む
 		if (is_allkill()) {
-			nextturn(true);
+			// 蘇生があるかのチェック
+			var is_rev = isexist_enemy_rev();
+			nextturn(!is_rev);
 		}
 		// 再表示
 		sim_show();

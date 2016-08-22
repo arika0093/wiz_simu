@@ -99,7 +99,7 @@
                      m_enemy_once(skill_counter_func(s_enemy_healreverse, "ゾンビ(5体)", 100, false, 0.5, 5))
                   ],
                   on_move: [
-                     m_enemy_once(s_enemy_poison(1000, 5, 5)),
+                     m_enemy_once(s_enemy_poison(1000, 5, 4)),
                      s_enemy_attack(500, 3, 3, true)
                   ],
                   atrandom: false,

@@ -247,28 +247,13 @@ function s_enemy_absorb(ratiorate, tnum, healvalue) {
 }
 
 // ターン終了時に攻撃(不利属性へのダメージ, 対象数)
-function s_enemy_delay_attack(dmg, tnum) {
-	return m_create_enemy_move(function (fld, n, nows, is_counter) {
-		// ターン終了時効果に追加
-		var e = GetNowBattleEnemys(n);
-		e.after_turn.push(function () {
-			// 定数(とりあえず)
-			var atkn = 1;
-			var tgtype = true;
-			// ログ出力
-			Field.log_push("Enemy[" + (n + 1) + "]: " +
-				(tnum < fld.Allys.Deck.length ? tnum : "全") + "体" +
-				(atkn > 1 ? atkn + "連撃(" : "攻撃(") + dmg + ")");
-			// 攻撃対象取得
-			var tg = gen_enemytarget_array(tnum, atkn, tgtype, nows);
-			// 攻撃
-			for (var i = 0; i < tg.length; i++) {
-				for (var j = 0; j < tg[i].length; j++) {
-					_s_enemy_attack(fld, dmg * 2, n, tg[i][j]);
-				}
-			}
-		});
-	}, makeDesc("ターン終了時攻撃"));
+function s_enemy_delay_attack(dmg, tnum, atkn) {
+	atkn = atkn || 1;
+	// 通常攻撃と同じものを取得
+	var mov = s_enemy_attack(dmg, tnum, atkn, true);
+	mov.priority = 99;
+
+	return mov;
 }
 
 
@@ -946,35 +931,15 @@ function attr_change(attr) {
 
 // 全滅時に復活
 function s_enemy_reverse(rev_i) {
-	/*
 	return m_create_enemy_move(function (fld, n) {
-		var push_oncond = m_create_enemy_move(function (f, i) {
-			// 複製先
-			var copyto = i != 0 ? 0 : 1;
-			var hprate = copyhp ? copyhp : 1;
-			var ens = f.Enemys.Data[f.Status.nowbattle - 1].enemy;
-			ens[copyto] = $.extend(true, {}, GetNowBattleEnemys(i));
-			ens[copyto].nowhp = ens[copyto].hp * hprate;
-			fld.log_push("Enemy[" + (n + 1) + "]: 分裂");
-		});
-		delete push_oncond.argObj;
-
-		var enemy = GetNowBattleEnemys(n);
-		enemy.turn_effect.push({
-			desc: null,
-			type: "enemy_division",
-			isdual: false,
-			turn: -1,
-			lim_turn: -1,
-			effect: function () { },
-			cond: s_enemy_when_dead_l().func,
-			on_cond: push_oncond,
-			oncond_anytime: true,
-		});
-	}, makeDesc("分裂待機"));
-	*/
+		// 現在の戦闘を取得
+		var bdata = Field.Enemys.Data[Field.Status.nowbattle - 1]
+		// 復活先を指定
+		bdata.rev_used = n;			// 復活処理を発動させた敵の番号
+		bdata.rev_index = rev_i;	// 復活先の番号
+		bdata.rev_check = false;
+	});
 }
-
 
 // -----------------------------------
 // フィールド干渉

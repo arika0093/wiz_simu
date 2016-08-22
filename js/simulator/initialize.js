@@ -97,6 +97,7 @@ var Field = {
 var Field_log = {
 	Allys_now: [],
 	Enemys_data: [],
+	Enemys_revdata: [],
 	Status: [],
 	now_index: 0,
 	is_ssindex: false,
@@ -104,6 +105,7 @@ var Field_log = {
 	save: function (index, fld) {
 		this.Allys_now[index] = $.extend(true, [], fld.Allys.Now);
 		this.Enemys_data[index] = $.extend(true, [], fld.Enemys.Data);
+		this.Enemys_revdata[index] = $.extend(true, [], fld.Enemys.revData);
 		this.Status[index] = $.extend(true, {}, fld.Status);
 		this.now_index = index;
 		// 保存indexより先の要素は消す
@@ -114,6 +116,7 @@ var Field_log = {
 		var fld_reset = $.extend(true, {}, Field);
 		fld_reset.Allys.Now = $.extend(true, [], this.Allys_now[index]);
 		fld_reset.Enemys.Data = $.extend(true, [], this.Enemys_data[index]);
+		fld_reset.Enemys.revData = $.extend(true, [], this.Enemys_revdata[index]);
 		fld_reset.Status = $.extend(true, {}, this.Status[index]);
 		this.now_index = index;
 		return fld_reset;
@@ -215,7 +218,7 @@ $(function () {
 					data.enemy[j].flags = {};
 					data.enemy[j].flags.is_as_attack = [];
 					data.enemy[j].turn_effect = [];
-					data.enemy[j].after_turn = [];
+					//data.enemy[j].after_turn = [];
 				}
 			}
 			// 蘇生時データ
@@ -226,11 +229,10 @@ $(function () {
 					// 敵ステ
 					fes.revData[i] = {};
 					fes.revData[i] = $.extend(true, {}, edat);
-					data.nowhp = edat.hp;
-					data.flags = {};
-					data.flags.is_as_attack = [];
-					data.turn_effect = [];
-					data.after_turn = [];
+					fes.revData[i].nowhp = edat.hp;
+					fes.revData[i].flags = {};
+					fes.revData[i].flags.is_as_attack = [];
+					fes.revData[i].turn_effect = [];
 				}
 			}
 
@@ -295,19 +297,12 @@ function nextturn(is_ssfin) {
 	ss_continue_effect_check();
 	turn_effect_check(true, is_ssfin);
 	enemy_turn_effect_check(true);
-	after_turneffect_check();
 	// 怒り確認
 	enemy_damage_switch_check("damage_switch");
 	// 総ダメージ出力
 	Field.log_push("TURN TOTAL DAMAGE: " + Field.Status.turn_dmg, "blue");
 	Field.Status.turn_dmg = 0;
 
-	// フラグの初期化
-	initialize_allys_flags(Field.Allys.Now);
-	Field.Status.panel_guard = {
-		attr: [],
-		rate: 0,
-	};
 	// 全滅確認
 	var killed = allkill_check(is_ssfin);
 	if (killed && !f_st.finish) {
@@ -352,6 +347,12 @@ function nextturn(is_ssfin) {
 			return true;
 		});
 	}
+	// フラグの初期化
+	initialize_allys_flags(Field.Allys.Now);
+	Field.Status.panel_guard = {
+		attr: [],
+		rate: 0,
+	};
 	// チャージスキル処理
 	turneff_chargeskill_check();
 	// seed リセット

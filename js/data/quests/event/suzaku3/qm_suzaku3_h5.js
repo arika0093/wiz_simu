@@ -152,7 +152,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_poison, "毒ダメージ 5体×3000DMG×5T", 100, false, 3000, 5, 6))
+                     m_enemy_once(skill_counter_func(s_enemy_poison, "毒ダメージ 5体×3000DMG×5T", 100, false, 3000, 5, 5))
                   ],
                   on_move: [
                      s_enemy_attack(1200, 5, 1, true)

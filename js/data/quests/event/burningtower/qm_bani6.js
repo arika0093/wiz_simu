@@ -51,7 +51,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_cursed, "呪い 5体のHP5000減少×6ターン", 100, false, 5000, 5, 7)),
+                     m_enemy_once(skill_counter_func(s_enemy_cursed, "呪い 5体のHP5000減少×6ターン", 100, false, 5000, 5, 6)),
                      damage_switch(s_enemy_when_after_turn(3), m_enemy_angry(), true)
                   ],
                   on_move: [

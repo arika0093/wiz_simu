@@ -110,7 +110,7 @@
                isStrong: false,
                move: {
                   on_move: [
-                     m_enemy_once(s_enemy_poison(500, 5, 4)),
+                     m_enemy_once(s_enemy_poison(500, 5, 3)),
                      s_enemy_attack(600, 5, 1, true)
                   ],
                   atrandom: false,
@@ -232,7 +232,7 @@
                      s_enemy_attack(320, 3, 5, true)
                   ],
                   on_angry: [
-                     s_enemy_cursed(1000, 5, 4)
+                     s_enemy_cursed(1000, 5, 3)
                   ],
                   on_move_angry: [
                      s_enemy_attack(800, 5, 2, true),

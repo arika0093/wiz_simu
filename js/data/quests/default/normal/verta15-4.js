@@ -119,7 +119,7 @@
                      s_enemy_attack(300, 3, 3, true)
                   ],
                   on_angry: [
-                     s_enemy_cursed(1000, 5, 4)
+                     s_enemy_cursed(1000, 5, 3)
                   ],
                   on_move_angry: [
                      s_enemy_attack(300, 3, 3, true),
@@ -194,7 +194,7 @@
                      s_enemy_heal_all(0.5)
                   ],
                   on_move_angry: [
-                     s_enemy_poison(1500, 5, 4),
+                     s_enemy_poison(1500, 5, 3),
                      s_enemy_deathlimit(5, 9),
                      s_enemy_attr_weaken([0,1,0,0,0], 1.5, 5, 4)/* Warning: 属性要確認： 水属性弱体化50%（3T） */,
                      s_enemy_attack(400, 3, 5, true),

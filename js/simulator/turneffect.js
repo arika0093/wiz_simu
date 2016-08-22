@@ -1,7 +1,7 @@
 // turn_effectのターン数減少
 function reduce_turneffect(is_ssfin) {
 	// 全滅確認
-	var allkill = is_allkill();
+	var allkill = is_allkill() && !isexist_enemy_rev();
 	// 味方ターンエフェクト減算処理
 	for (var i = 0; i < Field.Allys.Deck.length; i++) {
 		for (var j = 0; j < Field.Allys.Now[i].turn_effect.length; j++) {
@@ -259,6 +259,7 @@ function ss_continue_effect_check() {
 	}
 }
 
+/*
 // ターン終了時効果のチェック(敵味方両方確認)
 function after_turneffect_check() {
 	// 味方チェック(今のところやらない)
@@ -274,3 +275,4 @@ function after_turneffect_check() {
 		e.after_turn = [];
 	});
 }
+*/

@@ -91,7 +91,7 @@
                      s_enemy_ss_sealed(5, 1)
                   ],
                   on_move_angry: [
-                     s_enemy_poison(2000, 5, 4),
+                     s_enemy_poison(2000, 5, 3),
                      s_enemy_attack(200, 3, 3, true),
                      s_enemy_attack(200, 3, 3, true),
                      s_enemy_attack(200, 3, 3, true),

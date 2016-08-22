@@ -159,7 +159,7 @@
 					impregnable(-1),
 				],
 				on_move: [
-					s_enemy_attack(150, 5, 1, true),
+					s_enemy_attack(150, 5, 3, true),
 				],
 				atrandom: false,
 				turn: 1,

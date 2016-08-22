@@ -175,7 +175,7 @@
                isStrong: false,
                move: {
                   on_move: [
-                     m_enemy_once(s_enemy_poison(500, 5, 3)),
+                     m_enemy_once(s_enemy_poison(500, 5, 2)),
                      s_enemy_attack(600, 5, 1, true)
                   ],
                   atrandom: false,

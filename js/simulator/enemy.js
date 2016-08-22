@@ -62,6 +62,11 @@ function allkill_check(is_ssfinish) {
 	var enemy = GetNowBattleEnemys();
 	// 敵全滅確認
 	var e_ak = is_allkill();
+	// 蘇生処理確認
+	if (e_ak) {
+		var rev_rst = enemy_reverse_check();
+		e_ak = !rev_rst;
+	}
 	// 全ての敵を倒していたら
 	if (e_ak) {
 		// 全終了確認
@@ -151,7 +156,8 @@ function enemy_move() {
 	for (var i = 0; i < enemys.length; i++) {
 		// 行動が定義されてないなら飛ばす
 		var e = enemys[i];
-		if (e.nowhp <= 0 || !e.move || !e.move.on_move) { continue; }
+		if (e.nowhp <= 0 || !e.move ||
+			(!e.move.on_move && !e.move.on_move_angry)) { continue; }
 		// ターンカウントを1減らす
 		e.move.turn -= 1;
 		// ターンカウントが0なら行動
@@ -161,25 +167,39 @@ function enemy_move() {
 			// 遅延解除
 			e.flags.isdelay = false;
 			// 取得
-			e_moves[i] = get_enemy_move_skill(e);
-		} else {
-			e_moves[i] = null;
-		}
-	}
-	// 実行
-	for (var i = 0; i < e_moves.length; i++) {
-		if (e_moves[i] == null) {
-			continue;
-		}
-		// 力溜め状態解除
-		turneff_break(GetNowBattleEnemys(i).turn_effect, i, "force_reservoir");
-		// e_moves[i]が関数でない(=配列である)場合
-		if (e_moves[i].caller === undefined) {
-			for (var mi = 0; mi < e_moves[i].length; mi++) {
-				e_moves[i][mi](Field, i, nows_smove);
+			e_moves[i] = {
+				move: get_enemy_move_skill(e),
+				index: i
 			}
 		} else {
-			e_moves[i](Field, i, nows_smove);
+			e_moves[i] = {
+				move: null,
+				index: i
+			}
+		}
+	}
+	// 優先度で並び替え
+	e_moves.sort(function (a, b) {
+		if (!b.move || b.move.priority === undefined) { return -1; }
+		if (!a.move || a.move.priority === undefined) { return 1; }
+		return a.move.priority < b.move.priority;
+	});
+	// 実行
+	for (var i = 0; i < e_moves.length; i++) {
+		if (!e_moves[i] || !e_moves[i].move) {
+			continue;
+		}
+		var move = e_moves[i].move;
+		var index = e_moves[i].index;
+		// 力溜め状態解除
+		turneff_break(GetNowBattleEnemys(index).turn_effect, index, "force_reservoir");
+		// e_moves[i]が関数でない(=配列である)場合
+		if (move.caller === undefined) {
+			for (var mi = 0; mi < move.length; mi++) {
+				move[mi](Field, index, nows_smove);
+			}
+		} else {
+			move(Field, index, nows_smove);
 		}
 	}
 	// スキカン確認
@@ -236,6 +256,8 @@ function enemy_popup_proc(){
 	}
 	// 味方スキル反射の処理を行う
 	turneff_check_skillcounter(Field);
+	// 怒り確認
+	enemy_damage_switch_check("damage_switch");
 }
 
 // 敵ダメージなどに反応するあれこれの制御
@@ -266,4 +288,36 @@ function enemy_damage_switch_check(type, reset) {
 		turneff_check_skillcounter(Field);
 	}
 	return rst;
+}
+
+// 敵復活処理を行う関数
+function enemy_reverse_check() {
+	// 現在の戦闘を取得
+	var nd = Field.Enemys.Data[Field.Status.nowbattle - 1];
+	// 復活先が指定されているなら置き換え
+	if (isexist_enemy_rev()) {
+		// 蘇生先のデータ取得
+		var rd = Field.Enemys.revData[nd.rev_index];
+		// 入れ替え
+		nd.enemy[0] = rd;
+		if (nd.enemy[2]) {
+			delete nd.enemy.splice(1, 2);
+		}
+		else if (nd.enemy[1]) {
+			delete nd.enemy.splice(1, 1);
+		}
+		nd.rev_check = true;
+		Field.log_push("Enemy[" + (nd.rev_used + 1) + "]: 復活発動");
+		// 先制行動
+		enemy_popup_proc();
+		return true;
+	}
+	return false;
+}
+
+// 敵復活が存在するかどうかの確認関数
+function isexist_enemy_rev() {
+	// 現在の戦闘を取得
+	var nd = Field.Enemys.Data[Field.Status.nowbattle - 1];
+	return !nd.rev_check && nd.rev_index !== undefined;
 }

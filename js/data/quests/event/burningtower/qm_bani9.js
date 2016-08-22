@@ -5,6 +5,10 @@
    desc: "",
    overlap: false,
    aprnum: 1,
+   battle_before: [{
+      desc: "SPスキルが使用できる状態で開始",
+	  proc: spskill_maxcharge()
+   }],
    data: [
       {
          appearance: [
@@ -78,14 +82,14 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_poison(500, 5, 4)),
+                     m_enemy_once(s_enemy_poison(500, 5, 3)),
                      damage_switch(s_enemy_when_after_turn(3), m_enemy_angry(), true)
                   ],
                   on_move: [
                      s_enemy_attack(70, 3, 5, true)
                   ],
                   on_angry: [
-                     s_enemy_poison(1500, 5, 4)
+                     s_enemy_poison(1500, 5, 3)
                   ],
                   on_move_angry: [
                      s_enemy_attack(140, 5, 5, true),

@@ -229,7 +229,7 @@
                      damage_switch(s_enemy_when_hpdown(0.5), m_enemy_angry(), true)
                   ],
                   on_angry: [
-                     s_enemy_cursed(1000, 5, 4)
+                     s_enemy_cursed(1000, 5, 3)
                   ],
                   on_move_angry: [
                      s_enemy_attack(250, 5, 5, true),

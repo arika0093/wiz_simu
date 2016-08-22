@@ -265,7 +265,7 @@
                move: {
                   on_move: [
                      m_enemy_once(s_enemy_ss_sealed(4, 4)),
-                     m_enemy_once(s_enemy_poison(1000, 5, 4)),
+                     m_enemy_once(s_enemy_poison(1000, 5, 3)),
                      s_enemy_attack(400, 3, 5, true)
                   ],
                   atrandom: false,
