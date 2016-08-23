@@ -41664,7 +41664,7 @@ Cards = [{
 	ss1: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ(80%)、平均解答が早いほどさらにダメージ(効果値:40)",
 		turn: 4,
-		proc: [ss_damage_all(ss_answertime(0.8, 0.4), [3, 4]), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(ss_answertime(0.8, 0.4), [2, 3]), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Fastskill(1),
@@ -41685,7 +41685,7 @@ Cards = [{
 	ss2: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ(110%)、平均解答が早いほどさらにダメージ(効果値:40)",
 		turn: 6,
-		proc: [ss_damage_all(ss_answertime(1.1, 0.4), [3, 4]), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(ss_answertime(1.1, 0.4), [2, 3]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,0,1,0,0,]),
@@ -43258,7 +43258,7 @@ Cards = [{
 	ss1: {
 		desc: "<弱体化大魔術>スキル反射を無視し、敵全体へ水属性のダメージ(400%)、さらに5ターンの間、敵の防御力を弱体化(30%)",
 		turn: 13,
-		proc: [ss_damage_all(4.0, [1]), ss_attr_weaken_s(null, 0.3, 5), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(4.0, [1]), ss_attr_weaken_all(null, 0.3, 5), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Fastskill(1),
@@ -43279,7 +43279,7 @@ Cards = [{
 	ss2: {
 		desc: "<弱体化大魔術>スキル反射を無視し、敵全体へ水属性のダメージ(700%)、さらに5ターンの間、敵の防御力を弱体化(30%)",
 		turn: 16,
-		proc: [ss_damage_all(7.0, [1]), ss_attr_weaken_s(null, 0.3, 5), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(7.0, [1]), ss_attr_weaken_all(null, 0.3, 5), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,500),
