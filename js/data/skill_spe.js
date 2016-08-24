@@ -681,6 +681,20 @@ function ss_break_dblock(target) {
 	});
 }
 
+/**
+ * 敵の属性吸収効果を無効化する
+ * target: 「"all"」と記述することで全体対象、それ以外は単体対象
+**/
+function ss_break_absorb(target) {
+	var tg = (target == "all") ? "all" : "single";
+	return ss_template({
+		name: "ss_break_absorb",
+		type: "break",
+		target: tg,
+		p1: tg,
+	});
+}
+
 // ------------------------------------------------------
 // その他
 /**

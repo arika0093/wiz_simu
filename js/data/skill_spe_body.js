@@ -944,6 +944,10 @@ var SpSkill = {
 	"ss_break_dblock": function (fld, n, cobj, params) {
 		return ss_break_template(cobj.target, "damage_block")(fld, n);
 	},
+	// 属性吸収解除
+	"ss_break_absorb": function (fld, n, cobj, params) {
+		return ss_break_template(cobj.target, "attr_absorb")(fld, n);
+	},
 	// -----------------------------
 	// SSコピー
 	"ss_latest_copy": function (fld, n, cobj, params) {
