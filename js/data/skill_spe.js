@@ -181,14 +181,26 @@ function ss_death_limit(turn) {
 **/
 function ss_attr_weaken_s(attr, rate, turn) {
 	return ss_template({
-		name: "ss_attr_weaken_s",
+		name: "ss_attr_weaken",
 		type: "turn_effect",
 		subtype: "attr_weaken",
 		target: "single",
-		p1: attr,
+		p1: attr ? attr : [1,1,1,1,1],
 		p2: rate,
 		p3: turn,
 	});
+}
+
+/**
+ * 敵全体に属性弱体化効果を付与する
+ * attr: 弱体化対象属性(ex: [1,0,0,0,0] -> 火 / null: 全属性)
+ * rate: 効果値(ex: 30%UP -> 1.3)
+ * turn: 継続ターン数
+**/
+function ss_attr_weaken_all(attr, rate, turn) {
+	var s = ss_attr_weaken_s(attr, rate, turn);
+	s.target = "all";
+	return s;
 }
 
 /**
@@ -663,6 +675,20 @@ function ss_break_dblock(target) {
 	var tg = (target == "all") ? "all" : "single";
 	return ss_template({
 		name: "ss_break_dblock",
+		type: "break",
+		target: tg,
+		p1: tg,
+	});
+}
+
+/**
+ * 敵の属性吸収効果を無効化する
+ * target: 「"all"」と記述することで全体対象、それ以外は単体対象
+**/
+function ss_break_absorb(target) {
+	var tg = (target == "all") ? "all" : "single";
+	return ss_template({
+		name: "ss_break_absorb",
 		type: "break",
 		target: tg,
 		p1: tg,

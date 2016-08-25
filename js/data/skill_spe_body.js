@@ -333,23 +333,20 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
-	// 敵単体に属性弱体化効果を付与
-	"ss_attr_weaken_s": function (fld, n, cobj, params) {
+	// 属性弱体化効果を付与
+	"ss_attr_weaken": function (fld, n, cobj, params) {
 		var enemys = GetNowBattleEnemys();
-		var tg = auto_attack_order(enemys, -1, n);
-		var en = enemys[tg];
-		var attr = params[0] ? params[0] : [1,1,1,1,1];
+		var attr = params[0];
 		var rate = params[1];
 		var turn = params[2];
-		if (en.nowhp <= 0) { return; }
-		en.turn_effect.push({
+		var teff_obj = {
 			desc: "[" + get_attr_string(attr, "/") + "]弱体化",
 			type: "attr_weaken",
 			icon: "attr_weaken",
 			isdual: false,
 			turn: turn,
 			lim_turn: turn,
-			effect: function () {},
+			effect: function () { },
 			priority: 2,
 			on_damage: function (fld, dmg, a_i) {
 				if (attr[a_i] > 0) {
@@ -358,7 +355,19 @@ var SpSkill = {
 					return dmg;
 				}
 			}
-		});
+		};
+		if (cobj.target == "all") {
+			for (var tg = 0; tg < enemys.length; tg++) {
+				var en = enemys[tg];
+				if (en.nowhp <= 0) { return; }
+				en.turn_effect.push($.extend(true, {}, teff_obj));
+			}
+		} else {
+			var tg = auto_attack_order(enemys, -1, n);
+			var en = enemys[tg];
+			if (en.nowhp <= 0) { return; }
+			en.turn_effect.push(teff_obj);
+		}
 		// SSフラグを立てる
 		en.flags.is_ss_attack = true;
 		return true;
@@ -934,6 +943,10 @@ var SpSkill = {
 	// ダメブロ解除
 	"ss_break_dblock": function (fld, n, cobj, params) {
 		return ss_break_template(cobj.target, "damage_block")(fld, n);
+	},
+	// 属性吸収解除
+	"ss_break_absorb": function (fld, n, cobj, params) {
+		return ss_break_template(cobj.target, "attr_absorb")(fld, n);
 	},
 	// -----------------------------
 	// SSコピー
