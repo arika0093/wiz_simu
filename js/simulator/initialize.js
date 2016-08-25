@@ -72,6 +72,8 @@ var Field = {
 		is_spanel_only: true,
 		turn_dmg: 0,
 		total_kill: 0,
+		// 結果保存
+		result_id: 0,
 		// 文字ログ
 		log: [],
 		d_log: [],
@@ -284,7 +286,7 @@ $(window).load(function () {
 		scrollTo(0, $("#sim_top").offset().top + 1);
 	} else {
 		// 広告の位置に移動する
-		scrollTo(0, $("div.simu_ads").offset().top + 1);
+		scrollTo(0, $("div.simu_ads").offset().top - 1);
 	}
 });
 
@@ -345,6 +347,7 @@ function nextturn(is_ssfin) {
 	if (Field.Status.finish && !Field.Status.fin_timeup) {
 		actl_send_result(function (rst) {
 			var js = JSON.parse(rst);
+			Field.Status.result_id = Number(js.result_id);
 			return true;
 		});
 	}

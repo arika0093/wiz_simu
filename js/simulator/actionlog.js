@@ -42,21 +42,18 @@ function actl_send_result(after) {
 }
 
 // サーバーにデッキ共有内容を送信する
-function actl_send_share(user, comment, after) {
+function actl_send_share(id, user, comment, after) {
 	var st = Field.Status;
 	var ally = [];
 	var send = "tp=addshare";
 	// クエリ生成
-	send += "&sh=" + window.location.search.substring(1);
-	send += "&t=" + st.totalturn;
-	send += "&is_sp=" + Number(st.is_spanel_only);
-	send += "&is_sf=" + Number(st.durturn[Field.Quest.aprnum - 1].ssfin);
 	send += "&pu=" + encodeURIComponent(user);
 	send += "&pc=" + encodeURIComponent(comment);
+	send += "&id=" + id;
 	// ajaxを使用
 	$.ajax({
 		type: "POST",
-		url: "http://wiztools.net/api/result_share.php",
+		url: "http://wiztools.net/api/rst_share.php",
 		data: send,
 		success: after,
 	});

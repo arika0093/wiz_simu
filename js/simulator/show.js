@@ -523,13 +523,17 @@ function sim_show() {
 			"投稿": function () {
 				var user = $("#simshare_user").val();
 				var comm = $("#simshare_comment").val();
-				// send
-				actl_send_share(user, comm, function (rst) {
-					// msg alert
-					alert("送信完了しました。ご協力ありがとうございます。");
-				});
-				// close
-				$(this).dialog("close");
+				if (user.length > 0 && comm.length > 0) {
+					// send
+					actl_send_share(Field.Status.result_id, user, comm, function (rst) {
+						// msg alert
+						alert("送信完了しました。ご協力ありがとうございます。");
+					});
+					// close
+					$(this).dialog("close");
+				} else {
+					alert("ユーザー名とコメントを入力してください。");
+				}
 			},
 			"キャンセル": function () {
 				$(this).dialog("close");
