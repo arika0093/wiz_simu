@@ -38288,9 +38288,9 @@ Cards = [{
 		proc: ChainAttack(4.0, 4),
 	},
 	ss1: {
-		desc: "<犠牲魔術>味方全体のHPの50%を使い敵全体へダメージ(90%×人数)",
+		desc: "<犠牲魔術>味方全体のHPの50%を使い敵全体へダメージ(120%×人数)",
 		turn: 6,
-		proc: [ss_damage_all(ss_consume_all_cond(0.9, 0.5), [1])],
+		proc: [ss_damage_all(ss_consume_all_cond(1.2, 0.5), [1])],
 	},
 	awakes: [
 		Fastskill(1),
@@ -38309,9 +38309,9 @@ Cards = [{
 		proc: ChainAttack(5.0, 4),
 	},
 	ss2: {
-		desc: "<犠牲魔術>味方全体のHPの50%を使い敵全体へダメージ(150%×人数)",
+		desc: "<犠牲魔術>味方全体のHPの50%を使い敵全体へダメージ(180%×人数)",
 		turn: 9,
-		proc: [ss_damage_all(ss_consume_all_cond(1.5, 0.5), [1])],
+		proc: [ss_damage_all(ss_consume_all_cond(1.8, 0.5), [1])],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,1,0,0,0,]),
@@ -39514,9 +39514,9 @@ Cards = [{
 		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.0, 5)],
 	},
 	ss1: {
-		desc: "<犠牲魔術>味方全体のMAXHPの80%を使い敵全体へ雷属性のダメージ(人数×210%)",
+		desc: "<犠牲魔術>味方全体のMAXHPの80%を使い敵全体へ雷属性のダメージ(人数×220%)",
 		turn: 10,
-		proc: [ss_damage_all(ss_consume_all_cond(2.1, 0.8), [2])],
+		proc: [ss_damage_all(ss_consume_all_cond(2.2, 0.8), [2])],
 	},
 	awakes: [
 		NEFTJOD(30),
@@ -39535,9 +39535,9 @@ Cards = [{
 		proc: [ChainAllAttack(1.8, 0), ChainAllAttack(2.3, 5)],
 	},
 	ss2: {
-		desc: "<犠牲魔術>味方全体のMAXHPの80%を使い敵全体へ雷属性のダメージ(人数×250%)",
+		desc: "<犠牲魔術>味方全体のMAXHPの80%を使い敵全体へ雷属性のダメージ(人数×260%)",
 		turn: 12,
-		proc: [ss_damage_all(ss_consume_all_cond(2.5, 0.8), [2])],
+		proc: [ss_damage_all(ss_consume_all_cond(2.6, 0.8), [2])],
 	},
 	Lawake: [
 		Statusup(0,1000),
@@ -42813,7 +42813,7 @@ Cards = [{
 	},
 	ss1: {
 		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の5回連続ダメージ(250%)",
-		turn: 0,
+		turn: 4,
 		proc: [ss_damage_s(2.5, [0,2], 5), ss_ignore_skillcounter()],
 	},
 	awakes: [
@@ -42834,7 +42834,7 @@ Cards = [{
 	},
 	ss2: {
 		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の5回連続ダメージ(450%)",
-		turn: 0,
+		turn: 6,
 		proc: [ss_damage_s(4.5, [0,2], 5), ss_ignore_skillcounter()],
 	},
 	Lawake: [
