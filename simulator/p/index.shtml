@@ -279,9 +279,20 @@
         </div>
 	</div>
 	<div class="dialog_div" id="dialog_simfinish_popup" title="試走終了">
-		<p>試走が終了しました！</p>
+		<p>
+            試走が終了しました！<br/>
+            「結果を全体公開する」機能を利用することで、あなたのデッキを共有できます。
+        </p>
 		<div class="tweet_preview" id="simfinish_tweettext"></div>
 	</div>
+    <div class="dialog_div" id="dialog_simshare_popup" title="デッキ共有">
+        <p>
+            ご協力ありがとうございます。<br/>
+            以下の内容を記入していただいた後、「投稿」ボタンを押してください。
+        </p>
+        <input type="text" id="simshare_user" placeholder="投稿者名" /><br/>
+        <textarea id="simshare_comment" rows="6" placeholder="立ち回り・コメントなど"></textarea>
+    </div>
     <div class="dialog_div" id="dialog_gameover" title="GAME OVER">
         <p>全滅しました…</p>
     </div>

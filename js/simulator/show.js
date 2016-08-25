@@ -498,12 +498,40 @@ function sim_show() {
 				tweet_result();
 				$(this).dialog("close");
 			},
-			/*
 			"結果を全体公開する": function () {
-
+				$("#dialog_simshare_popup").dialog('open');
 			},
-			*/
 			"閉じる": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
+	// share result
+	$("#dialog_simshare_popup").dialog({
+		autoOpen: false,
+		modal: true,
+		width: 500,
+		open: function () {
+			// close when click dialog outside
+			/*
+			$('.ui-widget-overlay').bind('click', function () {
+				$("#dialog_simshare_popup").dialog('close');
+			});
+			*/
+		},
+		buttons: {
+			"投稿": function () {
+				var user = $("#simshare_user").val();
+				var comm = $("#simshare_comment").val();
+				// send
+				actl_send_share(user, comm, function (rst) {
+					// msg alert
+					alert("送信完了しました。ご協力ありがとうございます。");
+				});
+				// close
+				$(this).dialog("close");
+			},
+			"キャンセル": function () {
 				$(this).dialog("close");
 			},
 		},

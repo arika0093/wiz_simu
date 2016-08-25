@@ -344,6 +344,7 @@ function nextturn(is_ssfin) {
 	// 全終了してたらサーバーに結果送信
 	if (Field.Status.finish && !Field.Status.fin_timeup) {
 		actl_send_result(function (rst) {
+			var js = JSON.parse(rst);
 			return true;
 		});
 	}

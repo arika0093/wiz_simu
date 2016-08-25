@@ -274,6 +274,16 @@ div.tweet_preview div.sh_url {
 	width: 100%;
 }
 
+input#simshare_user{
+	width: 300px;
+	padding: 1px;
+	margin-bottom: 5px;
+}
+
+textarea#simshare_comment{
+	width: 450px;
+}
+
 /* Ally Status */
 div#allystat_index{
 	display: none;
