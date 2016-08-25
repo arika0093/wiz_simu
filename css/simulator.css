@@ -16,6 +16,7 @@ p#sim_info_status {
 	margin: 0;
 	padding: 1ex 0 0.5ex 0.5em;
 	float: left;
+	width: 400px;
 }
 
 p#sim_turns {
@@ -272,6 +273,16 @@ div.tweet_preview div.sh_url {
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	width: 100%;
+}
+
+input#simshare_user{
+	width: 300px;
+	padding: 1px;
+	margin-bottom: 5px;
+}
+
+textarea#simshare_comment{
+	width: 450px;
 }
 
 /* Ally Status */

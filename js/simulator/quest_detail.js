@@ -8,12 +8,12 @@ $(function () {
 	if (id) {
 		makeQD(id);
 	} else {
-		makeList(genre);
+		makeList(genre, "/simulator/quest/?id=");
 	}
 });
 
 // クエスト一覧を表示
-function makeList(genre) {
+function makeList(genre, url) {
 	// match and generate html
 	var rst_html = "<dt>Category: " + getCategoryJp(genre) + "</dt><dd class='left_min ' id='category_view'>";
 	var rst = $.grep(Quests, function (Quest, QuestNum) {
@@ -23,7 +23,7 @@ function makeList(genre) {
 		}
 		var boss_enms = Quest.data[Quest.data.length - 1].enemy;
 		var boss_enm = boss_enms.length >= 2 ? 1 : 0;
-		rst_html += "<a class='genre_link' href='/simulator/quest/?id=" + Quest.id + "'><img src=" +
+		rst_html += "<a class='genre_link' href='" + url + Quest.id + "'><img src=" +
 		get_image_url(boss_enms[boss_enm].imageno) + " class='boss_img'>" + Quest.name + "</a>";
 		return true;
 	});
@@ -76,8 +76,9 @@ function makeQD(id) {
 				resStr += "</div>"
 			})
 			resStr += "</div>"
-			resStr += "<a class='back_category' href='/simulator/quest/?genre=" +
-				Quest.category + "'>カテゴリ一覧に戻る</a>";
+			resStr +=
+				"<a class='back_category' href='/simulator/d/?id=" + Quest.id + "'>みんなの投稿デッキを見る</a>" +
+				"<a class='back_category' href='/simulator/quest/?genre=" + Quest.category + "'>カテゴリ一覧に戻る</a>";
 		})
 		resStr += "</dd>";
 		return true;

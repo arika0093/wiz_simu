@@ -41,6 +41,23 @@ function actl_send_result(after) {
 	});
 }
 
+// サーバーにデッキ共有内容を送信する
+function actl_send_share(id, user, comment, after) {
+	var st = Field.Status;
+	var ally = [];
+	var send = "tp=addshare";
+	// クエリ生成
+	send += "&pu=" + encodeURIComponent(user);
+	send += "&pc=" + encodeURIComponent(comment);
+	send += "&id=" + id;
+
+	$.ajax({
+		type: "POST",
+		url: "http://wiztools.net/api/rst_share.php",
+		data: send,
+		success: after,
+	});
+}
 
 // AS記録
 function actl_save_answer(attr, as_ign) {

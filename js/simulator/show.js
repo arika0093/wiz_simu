@@ -25,8 +25,9 @@ function sim_show() {
 
 	// sim_info_status
 	$("#sim_info_status").html(Field.Quest.name +
-		" [<a target='_blank' href='/simulator/quest/?id=" +
-		Field.Quest.id +"'>敵行動データ</a>]");
+		" [<a target='_blank' href='/simulator/quest/?id=" + Field.Quest.id + "'>敵行動</a> /" +
+		" <a target='_blank' href='/simulator/d/?id=" + Field.Quest.id + "'>投稿デッキ</a>]"
+	);
 
 	// sim_result
 	if (is_ally_alldeath()) {
@@ -498,12 +499,44 @@ function sim_show() {
 				tweet_result();
 				$(this).dialog("close");
 			},
-			/*
 			"結果を全体公開する": function () {
-
+				$("#dialog_simshare_popup").dialog('open');
 			},
-			*/
 			"閉じる": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
+	// share result
+	$("#dialog_simshare_popup").dialog({
+		autoOpen: false,
+		modal: true,
+		width: 500,
+		open: function () {
+			// close when click dialog outside
+			/*
+			$('.ui-widget-overlay').bind('click', function () {
+				$("#dialog_simshare_popup").dialog('close');
+			});
+			*/
+		},
+		buttons: {
+			"投稿": function () {
+				var user = $("#simshare_user").val();
+				var comm = $("#simshare_comment").val();
+				if (user.length > 0 && comm.length > 0) {
+					// send
+					actl_send_share(Field.Status.result_id, user, comm, function (rst) {
+						// msg alert
+						alert("送信完了しました。ご協力ありがとうございます。");
+					});
+					// close
+					$(this).dialog("close");
+				} else {
+					alert("ユーザー名とコメントを入力してください。");
+				}
+			},
+			"キャンセル": function () {
 				$(this).dialog("close");
 			},
 		},
