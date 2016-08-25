@@ -2224,6 +2224,7 @@ Cards = [{
 	cost: 43,
 	attr: [0, -1],
 	species: [3],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Panel_boost([1,0,0,0,0], 2),
@@ -3553,6 +3554,7 @@ Cards = [{
 	cost: 43,
 	attr: [0, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Panel_boost([1,0,0,0,0], 2),
 		Fastskill(1),
@@ -13654,6 +13656,7 @@ Cards = [{
 	cost: 44,
 	attr: [2, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Panel_boost([0, 0, 1, 0, 0, ], 2),
 		Fastskill(1),
@@ -44075,7 +44078,7 @@ Cards = [{
 	islegend: true,
 	as1: {
 		desc: "敵全体へ分散攻撃、パネルの色が増す度さらにダメージアップ(250%/350%/500%)",
-		proc: [ChainVarianceAttack(2.5, 0), add_cond(ChainVarianceAttack(3.5, 0), as_panel_over2(), add_cond(ChainVarianceAttack(5.0, 0), as_panel_over3())],
+		proc: [ChainVarianceAttack(2.5, 0), add_cond(ChainVarianceAttack(3.5, 0), as_panel_over2()), add_cond(ChainVarianceAttack(5.0, 0), as_panel_over3())],
 	},
 	ss1: {
 		desc: "<パネル変換>ジャンルパネルを雷属性化",
@@ -44096,7 +44099,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "敵全体へ分散攻撃、パネルの色が増す度さらにダメージアップ(350%/450%/600%)",
-		proc: [ChainVarianceAttack(3.5, 0), add_cond(ChainVarianceAttack(4.5, 0), as_panel_over2()), add_cond(ChainVarianceAttack(6.0, 0), as_panel_over3()))],
+		proc: [ChainVarianceAttack(3.5, 0), add_cond(ChainVarianceAttack(4.5, 0), as_panel_over2()), add_cond(ChainVarianceAttack(6.0, 0), as_panel_over3())],
 	},
 	ss2: {
 		desc: "<特殊パネル変換>ジャンルパネルを雷・光属性化し、チェインがプラス1の効果を付与",
