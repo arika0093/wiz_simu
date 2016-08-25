@@ -288,7 +288,7 @@
     <div class="dialog_div" id="dialog_simshare_popup" title="デッキ共有">
         <p>
             ご協力ありがとうございます。<br/>
-            以下の内容を記入していただいた後、「投稿」ボタンを押してください。
+            以下の内容を記入した後、「投稿」ボタンを押してください。
         </p>
         <input type="text" id="simshare_user" placeholder="投稿者名" /><br/>
         <textarea id="simshare_comment" rows="6" placeholder="立ち回り・コメントなど"></textarea>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <!-- StyleSheet -->
+    <link rel="stylesheet" type="text/css" href="/css/srdeckview.css" />
+    <link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px) and (max-width: 1099px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default_bg.css" media="screen and (min-width: 1100px)" />
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <!-- Search -->
+    <meta name="robots" content="none" />
+    <!-- for Mobile Adsense -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-5156005489853976",
+            enable_page_level_ads: true
+        });
+    </script>
+    <!-- sim page -->
+    <title>みんなのデッキ - WizTools</title>
+</head>
+<body>
+    <div id='Top'></div>
+    <div id="wrap">
+        <!-- Loader -->
+        <div id="loader"><img src="/image/loading.gif" alt="Loading..." /></div>
+        <noscript id="loadnoscr">このページはjavascriptを使用しています。有効にしたのち再度アクセスしてください。</noscript>
+        <div id="fade"></div>
+
+        <!-- Header -->
+        <div id="Header"></div>
+
+        <!-- Main Contents -->
+        <div class="Main">
+            <div id="stage">Now loading...</div>
+            <div id="result"></div>
+
+            <!-- Adsense -->
+            <div class="Adsense">
+                <!-- advertise -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-5156005489853976"
+                     data-ad-slot="6536828444"
+                     data-ad-format="auto"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div id="Footer"></div>
+
+        <!-- Javascript -->
+        <!--#config timefmt="%Y%m%d_%H%M%S" -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+        <script type="text/javascript" src="/download/romaji.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/loader.js?                  <!--#flastmod virtual='/js/loader.js'-->"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js?                <!--#flastmod virtual='/js/pagetemp.js'-->"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/err_report.js?              <!--#flastmod virtual='/js/err_report.js'-->"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js?               <!--#flastmod virtual='/js/googletrc.js'-->"></script>
+        <!-- 他jsに依存しない基礎関数群 -->
+        <script type="text/javascript" charset="UTF-8" src="/js/general.js?                 <!--#flastmod virtual='/js/general.js'-->"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/simulator/awake.js?         <!--#flastmod virtual='/js/simulator/awake.js'-->"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/simulator/species.js?       <!--#flastmod virtual='/js/simulator/species.js'-->"></script>
+        <!-- データ群(基礎関数に依存する) -->
+        <script type="text/javascript" charset="UTF-8" src="/js/data/skill_ans.js?          <!--#flastmod virtual='/js/data/skill_ans.js'-->"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/data/skill_spe.js?          <!--#flastmod virtual='/js/data/skill_spe.js'-->"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/data/skill_spe_body.js?     <!--#flastmod virtual='/js/data/skill_spe_body.js'-->"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/data/skill_awake.js?        <!--#flastmod virtual='/js/data/skill_awake.js'-->"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/data/skill_crystal.js?      <!--#flastmod virtual='/js/data/skill_crystal.js'-->"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/data/skill_enemy.js?        <!--#flastmod virtual='/js/data/skill_enemy.js'-->"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/data/quests.php"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/data/cards.js?              <!--#flastmod virtual='/js/data/cards.js'-->"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/simulator/srdeckview.js"></script>
+    </div>
+</body>
+</html>

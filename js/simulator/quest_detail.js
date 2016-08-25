@@ -76,8 +76,9 @@ function makeQD(id) {
 				resStr += "</div>"
 			})
 			resStr += "</div>"
-			resStr += "<a class='back_category' href='/simulator/quest/?genre=" +
-				Quest.category + "'>カテゴリ一覧に戻る</a>";
+			resStr +=
+				"<a class='back_category' href='/simulator/d/?id=" + Quest.id + "'>みんなの投稿デッキを見る</a>" +
+				"<a class='back_category' href='/simulator/quest/?genre=" + Quest.category + "'>カテゴリ一覧に戻る</a>";
 		})
 		resStr += "</dd>";
 		return true;

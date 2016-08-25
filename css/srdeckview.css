@@ -1,0 +1,55 @@
+div#stage{
+	margin: 0 0 2ex;
+	padding: 1.5ex 1em;
+	background-color: #00649d;
+	color: #FFF;
+}
+
+div.decks{
+	margin: 1ex 2px;
+	padding: 1ex 1.5ex;
+	border: 1px solid #DDD;
+	border-radius: 7px;
+	background-color: #FFF;
+	box-shadow:0px 0px 8px 1px #e6e6e6 inset;
+}
+
+div.turn{
+	font-size: large;
+	border-color: #F0F0F0;
+	border-width: 0 0 1px;
+	border-style: solid;
+	padding: 2px 0;
+}
+
+div.run{
+	font-size: 1.1em;
+	width: 100%;
+	text-align: right;
+	padding-bottom: 2px;
+}
+
+div.cardimgs{
+	padding-bottom: 4px;
+}
+
+div.cardimgs a:hover{
+	opacity: 0.7;
+}
+
+div.cardimgs img{
+	width: 96px;
+	margin-right: 2px;
+}
+
+div.user{
+	font-size: 1.1em;
+	border-color: #F0F0F0;
+	border-width: 0 0 1px;
+	border-style: solid;
+	padding: 2px 0;
+}
+
+div.comment{
+}
+

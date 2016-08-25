@@ -50,7 +50,7 @@ function actl_send_share(id, user, comment, after) {
 	send += "&pu=" + encodeURIComponent(user);
 	send += "&pc=" + encodeURIComponent(comment);
 	send += "&id=" + id;
-	// ajaxを使用
+
 	$.ajax({
 		type: "POST",
 		url: "http://wiztools.net/api/rst_share.php",
