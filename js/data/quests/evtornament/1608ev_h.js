@@ -238,6 +238,7 @@
                   on_move: [
                      s_enemy_force_reservoir(),
                      s_enemy_attack(2000, 1, 1, true)
+                     s_enemy_attack(1000, 1, 1, true)
                   ],
                   on_popup: [
                      s_enemy_division(0.5)
