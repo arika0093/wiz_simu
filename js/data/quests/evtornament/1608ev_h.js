@@ -1,5 +1,6 @@
 {
    id: "1608ev_h",
+   name: "覇級 えきぞちっく大戦",
    desc: "",
    overlap: false,
    aprnum: 5,
