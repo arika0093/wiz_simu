@@ -43543,7 +43543,7 @@ Cards = [{
 	ss1: {
 		desc: "<ブースト>味方のMAXHP70%と毎ターン10%を使い、5ターンの間、味方の攻撃力をアップ(200%)。さらに極稀にクリティカル",
 		turn: 7,
-		proc: [ss_boost_enhance_all(2.0, 5, 0.1, [1,1,1,1,1]), ss_consume_own(0.7)],
+		proc: [ss_boost_enhance_all(2.0, 5, 0.1, [1,1,1,1,1]), ss_consume_all(0.7)],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -43564,7 +43564,7 @@ Cards = [{
 	ss2: {
 		desc: "<ブースト>味方のMAXHP70%と毎ターン10%を使い、6ターンの間、味方の攻撃力をアップ(250%)。さらに極稀にクリティカル",
 		turn: 10,
-		proc: [ss_boost_enhance_all(2.5, 6, 0.1, [1,1,1,1,1]), ss_consume_own(0.7)],
+		proc: [ss_boost_enhance_all(2.5, 6, 0.1, [1,1,1,1,1]), ss_consume_all(0.7)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,1,0,0,]),
@@ -44198,5 +44198,50 @@ Cards = [{
 	Lawake: [
 		Statusup(500,0),
 		Attr_statusup(100,0, [0,0,1,0,0,]),
+	],
+},{
+	name: "神の名を刻む インベラトラス",
+	cardno: 6516,
+	imageno: 8376,
+	hp: 2935,
+	atk: 3617,
+	cost: 1,
+	attr: [0,3],
+	species: [1],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "味方のMAXHP10％を使い、敵単体へダメージ(450％)",
+		proc: ChainAttack_as_consume_own(4.5, 0, 0.1),
+	},
+	ss1: {
+		desc: "<ブースト>10ターンの間、味方のMAXHPを毎ターン15%消費し、味方の攻撃力をアップ(150%)。さらに極稀にクリティカル",
+		turn: 10,
+		proc: [ss_boost_enhance_all(1.5, 10, 0.15, [1,1,1,1,1])],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_relief([0,0,0,1,1,],10),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,0,0,1,0,]),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,200, [0,0,0,1,0,]),
+	],
+	as2: {
+		desc: "味方のMAXHP10％を使い、敵単体へダメージ(550％)",
+		proc: ChainAttack_as_consume_own(5.5, 0, 0.1),
+	},
+	ss2: {
+		desc: "<ブースト>10ターンの間、味方のMAXHPを毎ターン15%消費し、味方の攻撃力をアップ(150%)。さらに極稀にクリティカル",
+		turn: 10,
+		proc: [ss_boost_enhance_all(1.5, 10, 0.15, [1,1,1,1,1])],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(0,500),
 	],
 },];
