@@ -193,7 +193,6 @@
                   on_move: [
                      s_enemy_attack(500, 5, 1, true),
                      s_enemy_discharge(5, 2),
-                     s_enemy_division(0.5),
                      s_enemy_attack(500, 5, 1, true)
                   ],
                   atrandom: false,
