@@ -43543,7 +43543,7 @@ Cards = [{
 	ss1: {
 		desc: "<ブースト>味方のMAXHP70%と毎ターン10%を使い、5ターンの間、味方の攻撃力をアップ(200%)。さらに極稀にクリティカル",
 		turn: 7,
-		proc: [ss_boost_enhance_all(2.0, 5, 0.1, [1,1,1,1,1]), ss_consume_own(0.7)],
+		proc: [ss_boost_enhance_all(2.0, 5, 0.1, [1,1,1,1,1]), ss_consume_all(0.7)],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -43564,7 +43564,7 @@ Cards = [{
 	ss2: {
 		desc: "<ブースト>味方のMAXHP70%と毎ターン10%を使い、6ターンの間、味方の攻撃力をアップ(250%)。さらに極稀にクリティカル",
 		turn: 10,
-		proc: [ss_boost_enhance_all(2.5, 6, 0.1, [1,1,1,1,1]), ss_consume_own(0.7)],
+		proc: [ss_boost_enhance_all(2.5, 6, 0.1, [1,1,1,1,1]), ss_consume_all(0.7)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,1,0,0,]),
