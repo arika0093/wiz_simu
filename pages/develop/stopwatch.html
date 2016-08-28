@@ -141,7 +141,7 @@ function lap2(status){
 			say("引き続き、頑張りましょう。", "normal")
 		}
 		times.push(timer)
-		times2.push(timer/10)
+		times2.push(Math.round(timer/60)/10)
 		gwrite()
 		mam.innerHTML= "Min:"+count_format(min(times))+" Ave:"+count_format(average(times))+" Max:"+count_format(max(times));
 	}else{
