@@ -1,0 +1,166 @@
+﻿
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+body{
+font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese", sans-serif;
+}
+#counter{
+width:420px;
+font-size:50px;
+text-align:center;
+}
+</style>
+
+<meta charset="utf-8">
+<title>ストップウォッチ</title>
+</head>
+
+<body>
+
+
+<form name="form_sw" style=width:420px;text-align:center;>
+	<div id=counter>00:00:00.0</div>
+	<input name="bstart" type="button"value="測定開始" onClick="start_count()">
+	<input name="breset" id=lap21 disabled type="button"value="次週目開始（クリア）" onClick="lap2(0)">
+	<input name="breset" id=lap22 disabled type="button"value="次週目開始（リタイア）" onClick="lap2(1)">
+	<div id=mam>min ave max</div>
+</form>
+
+<script language="javascript">
+
+initialFlag=true;
+
+sw_status = 0;
+	commenttimer = 0;
+roundNum=0;
+times=[];
+
+reset_form();
+
+function reset_form() {
+	if (sw_status == 1) {start_count();}
+	commenttimer = 0;
+	timer = 0;
+	document.form_sw.counter.value = count_format(0);
+}
+
+function start_count() {
+	if (sw_status == 0) {
+		//スタート
+		if(initialFlag==true){
+			say("さあ、頑張りましょう！", "happy")
+			initialFlag=false;
+			roundNum++;
+		}else{
+			say("おかえりなさい！ 頑張りましょう！", "happy")
+		}
+		lap21.disabled=false;
+		lap22.disabled=false;
+		document.form_sw.bstart.value = "一時停止";
+		sw_status = 1;
+		timerID = setInterval("count_up()",100); 
+	} else {
+		//ストップ
+		say("休憩ですか？ お待ちしてます。", "sad")
+		document.form_sw.bstart.value = "測定開始";
+		lap21.disabled=true;
+		lap22.disabled=true;
+		sw_status = 0;
+		clearInterval(timerID);
+		document.form_sw.counter.value = count_format(timer);
+	}
+}
+
+function count_up() {
+	timer++;
+	commenttimer--;
+	if(commenttimer==0){
+			say("じゃぁ一つ、ド派手にやっつけてやりましょう！", "normal")
+	}
+	if (sw_status < 2) {
+		//document.form_sw.counter.value = count_format(timer);
+		counter.innerHTML=count_format(timer);
+	}
+}
+
+function say(mycomment, kao){
+	chara.src="http://i.quiz.colopl.jp/img/talkstory/201505_Yaoyorozu/201505_mikoto_"+kao+".png";
+	comment.innerHTML=mycomment;
+	commenttimer=70;
+/*
+normal
+surprise
+angry
+sad
+happy
+*/
+}
+
+
+function lap2(status){
+	roundNum++;
+	if(status==0){
+		if(min(times)>timer){
+			say("べすとたいむ、更新です！", "happy")
+		}else if(max(times)<timer){
+			say("わあすとたいむ、更新です…。", "angry")
+		}else if(average(times)>timer){
+			say("いい調子です！", "happy")
+		}else{
+			say("引き続き、頑張りましょう。", "normal")
+		}
+		times.push(timer)
+		mam.innerHTML= "Min:"+count_format(min(times))+" Ave:"+count_format(average(times))+" Max:"+count_format(max(times));
+	}else{
+		say("誤字っちゃいましたね…。 次こそは！", "surprise")
+	}
+	timer=0;
+}
+
+function min(data){
+	if(times.length==0){
+		return Infinity
+	}else{
+		return Math.min.apply(null, times)
+	}
+}
+function max(data){
+	if(times.length==0){
+		return Infinity
+	}else{
+		return Math.max.apply(null, times)
+	}
+}
+function sum(data){
+	var tmpval=0;
+	data.forEach(function(e){
+		tmpval+=e;
+	})
+	return tmpval;
+}
+
+function average(data){
+	return sum(data)/data.length;
+
+}
+
+function count_format(num) {
+	var ts = num / 10;
+	var tm = Math.floor(ts / 60);
+	var ts = (ts % 60).toFixed(1);
+	tm = tm % 60;
+	//表示の整形
+	if (ts < 10) ts = "0" + ts;
+	if (tm < 10) tm = "0" + tm;
+	return  tm + ":" + ts;
+}
+</script>
+
+<img id=chara src=http://i.quiz.colopl.jp/img/talkstory/201505_Yaoyorozu/201505_mikoto_normal.png style=position:fixed;bottom:60px;left:-50px;z-index:-1;>
+<div id=comment style="color:#19214e;border:3px #19214e solid;padding:2px;background-color:#bad1dc;position:fixed;bottom:0px;left:10px;height:60px;width:400px;z-index:-1;">
+とうなめんとのお手伝い、させていただきます。
+</div>
+</body>
+</html>
