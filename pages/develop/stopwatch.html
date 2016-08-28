@@ -38,6 +38,7 @@ text-align:center;
 	<input name="bstart" type="button"value="測定開始" onClick="start_count()">
 	<input name="breset" id=lap21 disabled type="button"value="次週目開始（クリア）" onClick="lap2(0)">
 	<input name="breset" id=lap22 disabled type="button"value="次週目開始（リタイア）" onClick="lap2(1)">
+	<input name="breset" id=lap23 type="button"value="止め忘れ削除" onClick="mdelete()">
 	<div id=mam>min ave max</div>
 </form>
 <div id=graph><canvas width="400" height="100" id="sample"></canvas></div>
@@ -89,6 +90,23 @@ function start_count() {
 	}
 }
 
+function mdelete() {
+	var maxval=max(times)
+	if(maxval<timer){
+		say("えっへん！　誤字は書く時に生まれるのです！<br>現在時刻を修正します。", "happy")
+		timer = 0;
+	}else{
+		say("えっへん！　誤字は書く時に生まれるのです！<br>わあすと記録を修正します。", "happy")
+		for(var mm=0; mm<times.length; mm++){
+			if(times[mm] == maxval){
+				times.splice(mm,1);
+				times2.splice(mm,1);
+			}
+		}
+	}
+	gwrite();
+}
+
 function gwrite() {
 	graph.innerHTML='<canvas width="400" height="100" id="sample"></canvas>'
 	var lg = new html5jp.graph.line("sample");
@@ -98,7 +116,6 @@ function gwrite() {
 	items=[items]
 	lg.canvas.getContext("2d").clearRect(0,0,lg.canvas.scrollWidth, lg.canvas.scrollHeight)
 	lg.draw(items,{yMin:min(times2),yMax:max(times2),backgroundColor:"transparent",gbackgroundColor:"transparent",gGradation:false,xAxisWidth:0,yAxisWidth:0,legend:false,dLabelFontFamily:"ヒラギノ角ゴ Pro W3"});
-	console.log(lg)
 }
 
 
@@ -159,7 +176,7 @@ function min(data){
 }
 function max(data){
 	if(data.length==0){
-		return Infinity
+		return -Infinity
 	}else{
 		return Math.max.apply(null, data)
 	}
