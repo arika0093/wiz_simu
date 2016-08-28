@@ -97,7 +97,7 @@ function gwrite() {
 	items.unshift("")
 	items=[items]
 	lg.canvas.getContext("2d").clearRect(0,0,lg.canvas.scrollWidth, lg.canvas.scrollHeight)
-	lg.draw(items,{backgroundColor:"transparent",gbackgroundColor:"transparent",gGradation:false,xAxisWidth:0,yAxisWidth:0,legend:false,dLabelFontFamily:"ヒラギノ角ゴ Pro W3"});
+	lg.draw(items,{yMin:min(times2),yMax:max(times2),backgroundColor:"transparent",gbackgroundColor:"transparent",gGradation:false,xAxisWidth:0,yAxisWidth:0,legend:false,dLabelFontFamily:"ヒラギノ角ゴ Pro W3"});
 	console.log(lg)
 }
 
@@ -151,17 +151,17 @@ function lap2(status){
 }
 
 function min(data){
-	if(times.length==0){
+	if(data.length==0){
 		return Infinity
 	}else{
-		return Math.min.apply(null, times)
+		return Math.min.apply(null, data)
 	}
 }
 function max(data){
-	if(times.length==0){
+	if(data.length==0){
 		return Infinity
 	}else{
-		return Math.max.apply(null, times)
+		return Math.max.apply(null, data)
 	}
 }
 function sum(data){
