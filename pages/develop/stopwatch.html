@@ -2,7 +2,14 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<meta charset="utf-8">
+
+
+
 <style>
+
+
+
 body{
 font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese", sans-serif;
 }
@@ -13,7 +20,13 @@ text-align:center;
 }
 </style>
 
-<meta charset="utf-8">
+
+
+
+<!--[if IE]><script type="text/javascript" src="html5jp/excanvas/excanvas.js"></script><![endif]-->
+<script type="text/javascript" src="html5jp/graph/line.js"></script>
+
+
 <title>ストップウォッチ</title>
 </head>
 
@@ -27,6 +40,9 @@ text-align:center;
 	<input name="breset" id=lap22 disabled type="button"value="次週目開始（リタイア）" onClick="lap2(1)">
 	<div id=mam>min ave max</div>
 </form>
+<div id=graph><canvas width="400" height="100" id="sample"></canvas></div>
+
+
 
 <script language="javascript">
 
@@ -36,6 +52,7 @@ sw_status = 0;
 	commenttimer = 0;
 roundNum=0;
 times=[];
+times2=[];
 
 reset_form();
 
@@ -43,7 +60,6 @@ function reset_form() {
 	if (sw_status == 1) {start_count();}
 	commenttimer = 0;
 	timer = 0;
-	document.form_sw.counter.value = count_format(0);
 }
 
 function start_count() {
@@ -72,6 +88,19 @@ function start_count() {
 		document.form_sw.counter.value = count_format(timer);
 	}
 }
+
+function gwrite() {
+	graph.innerHTML='<canvas width="400" height="100" id="sample"></canvas>'
+	var lg = new html5jp.graph.line("sample");
+	if( ! lg ) { return; }
+	var items = times2.concat()
+	items.unshift("")
+	items=[items]
+	lg.canvas.getContext("2d").clearRect(0,0,lg.canvas.scrollWidth, lg.canvas.scrollHeight)
+	lg.draw(items,{backgroundColor:"transparent",gbackgroundColor:"transparent",gGradation:false,xAxisWidth:0,yAxisWidth:0,legend:false,dLabelFontFamily:"ヒラギノ角ゴ Pro W3"});
+	console.log(lg)
+}
+
 
 function count_up() {
 	timer++;
@@ -112,6 +141,8 @@ function lap2(status){
 			say("引き続き、頑張りましょう。", "normal")
 		}
 		times.push(timer)
+		times2.push(timer/10)
+		gwrite()
 		mam.innerHTML= "Min:"+count_format(min(times))+" Ave:"+count_format(average(times))+" Max:"+count_format(max(times));
 	}else{
 		say("誤字っちゃいましたね…。 次こそは！", "surprise")
@@ -156,6 +187,7 @@ function count_format(num) {
 	if (tm < 10) tm = "0" + tm;
 	return  tm + ":" + ts;
 }
+
 </script>
 
 <img id=chara src=http://i.quiz.colopl.jp/img/talkstory/201505_Yaoyorozu/201505_mikoto_normal.png style=position:fixed;bottom:60px;left:-50px;z-index:-1;>
