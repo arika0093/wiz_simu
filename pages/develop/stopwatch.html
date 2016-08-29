@@ -68,8 +68,8 @@
 					["よろしくお願いします。私、和歌の神のミコトです。", "normal"]
 				],
 				normal:[
-					["じゃぁ一つ、ド派手にやっつけてやりましょう！", "normal"],
-					["だいじょうぶ、きっとかてるよ、だいじょうぶ、<br>だいじょうぶだから、おちついてみよう……。", "normal"],
+					["じゃぁ一つ、ド派手にやっつけてやりましょう！", "normal", 9999],
+					["だいじょうぶ、きっとかてるよ、だいじょうぶ、<br>だいじょうぶだから、おちついてみよう……。", "normal", 9999],
 				],
 				start:[
 					["『祭りね』と、君は私の手を引いて、喧嘩神輿に挑まんとする", "happy"],
@@ -216,12 +216,16 @@
 		function say(mycomment, feel){
 			chara.src="http://i.quiz.colopl.jp/img/talkstory/"+words[vals.name].imgbase+feel+".png";
 			comment.innerHTML=mycomment;
-			commenttimer=70;
 		}
 		
 		function speak(key){
 			var myrnd=Math.floor(Math.random()*words[vals.name][key].length)
 			say(words[vals.name][key][myrnd][0], words[vals.name][key][myrnd][1])
+			if( words[vals.name][key][myrnd][2]){
+				commenttimer=words[vals.name][key][myrnd][2];
+			}else{
+				commenttimer=70;
+			}
 		}
 		
 		
