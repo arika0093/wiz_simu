@@ -1,215 +1,425 @@
-﻿
-<!DOCTYPE HTML>
-<html>
+﻿<html>
 <head>
-<meta charset="utf-8">
-
-
-
-<style>
-
-
-
-body{
-font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese", sans-serif;
-}
-#counter{
-width:420px;
-font-size:50px;
-text-align:center;
-}
-</style>
-
-
-
-
-<!--[if IE]><script type="text/javascript" src="html5jp/excanvas/excanvas.js"></script><![endif]-->
-<script type="text/javascript" src="html5jp/graph/line.js"></script>
-
-
-<title>ストップウォッチ</title>
-</head>
-
-<body>
-
-
-<form name="form_sw" style=width:420px;text-align:center;>
-	<div id=counter>00:00:00.0</div>
-	<input name="bstart" type="button"value="測定開始" onClick="start_count()">
-	<input name="breset" id=lap21 disabled type="button"value="次週目開始（クリア）" onClick="lap2(0)">
-	<input name="breset" id=lap22 disabled type="button"value="次週目開始（リタイア）" onClick="lap2(1)">
-	<input name="breset" id=lap23 type="button"value="止め忘れ削除" onClick="mdelete()">
-	<div id=mam>min ave max</div>
-</form>
-<div id=graph><canvas width="400" height="100" id="sample"></canvas></div>
-
-
-
-<script language="javascript">
-
-initialFlag=true;
-
-sw_status = 0;
-	commenttimer = 0;
-roundNum=0;
-times=[];
-times2=[];
-
-reset_form();
-
-function reset_form() {
-	if (sw_status == 1) {start_count();}
-	commenttimer = 0;
-	timer = 0;
-}
-
-function start_count() {
-	if (sw_status == 0) {
-		//スタート
-		if(initialFlag==true){
-			say("さあ、頑張りましょう！", "happy")
-			initialFlag=false;
-			roundNum++;
-		}else{
-			say("おかえりなさい！ 頑張りましょう！", "happy")
+	<meta charset="utf-8">
+	<style>
+		body{
+			font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese", sans-serif;
 		}
-		lap21.disabled=false;
-		lap22.disabled=false;
-		document.form_sw.bstart.value = "一時停止";
-		sw_status = 1;
-		timerID = setInterval("count_up()",100); 
-	} else {
-		//ストップ
-		say("休憩ですか？ お待ちしてます。", "sad")
-		document.form_sw.bstart.value = "測定開始";
-		lap21.disabled=true;
-		lap22.disabled=true;
-		sw_status = 0;
-		clearInterval(timerID);
-		document.form_sw.counter.value = count_format(timer);
-	}
-}
+		#counter{
+			width:420px;
+			font-size:50px;
+			text-align:center;
+		}
+		.dbutton{
+			cursor:pointer;
+			width:133px;
+			height:50px;
+			border:1px solid gray;
+			float:left;
+			margin-right:-1px;
+			margin-top:-1px;
+			display: flex;          /* 2 */
+			justify-content: center;/* 3 */
+			align-items: center;    /* 4 */
+		}
+		.dbutton:hover{
+			background-color:lightblue;
+		}
+		#round{
+			font-size:18px;
+			margin-right:20px;
+		}
+	</style>
 
-function mdelete() {
-	var maxval=max(times)
-	if(maxval<timer){
-		say("えっへん！　誤字は書く時に生まれるのです！<br>現在時刻を修正します。", "happy")
+	<script language="javascript">
+		vals={
+			roundNum:0,
+			clearNum:0,
+			totaltime : 0,
+			name:"mikoto1",
+			times:[],
+			deck:""
+		}
+		
+		initialFlag=true;
+		commenttimer = 0;
 		timer = 0;
-	}else{
-		say("えっへん！　誤字は書く時に生まれるのです！<br>わあすと記録を修正します。", "happy")
-		for(var mm=0; mm<times.length; mm++){
-			if(times[mm] == maxval){
-				times.splice(mm,1);
-				times2.splice(mm,1);
+		sw_status = 0;
+		
+		function reset() {
+			initialFlag=true;
+			vals.totaltime = 0;
+			commenttimer = 0;
+			vals.roundNum=0;
+			vals.clearNum=0;
+			sw_status = 0;
+			timer = 0;
+			vals.times=[];
+			speak("initial");
+			draw(vals.times)
+		}
+		
+		words=
+		{
+			mikoto1:{
+				imgbase:"201505_Yaoyorozu/201505_mikoto_",
+				initial:[
+					["とうなめんとのお手伝い、させていただきます。", "normal"],
+					["よろしくお願いします。私、和歌の神のミコトです。", "normal"]
+				],
+				normal:[
+					["じゃぁ一つ、ド派手にやっつけてやりましょう！", "normal"],
+					["だいじょうぶ、きっとかてるよ、だいじょうぶ、<br>だいじょうぶだから、おちついてみよう……。", "normal"],
+				],
+				start:[
+					["『祭りね』と、君は私の手を引いて、喧嘩神輿に挑まんとする", "happy"],
+					["さあ、頑張りましょう！", "happy"],
+					["一緒に頑張りましょう！", "happy"]
+				],
+				tempstop:[
+					["休憩ですか？ お待ちしてます。", "sad"]
+				],
+				restart:[
+					["おかえりなさい。 頑張りましょう！", "happy"]
+				],
+				deletenow:[
+					["えっへん！　誤字は書く時に生まれるのです！<br>現在時刻を修正しました。", "happy"]
+				],
+				deletelog:[
+					["えっへん！　誤字は書く時に生まれるのです！<br>わあすと記録を修正しました。", "happy"]
+				],
+				best:[
+					["べすとたいむ、更新です！", "happy"]
+				],
+				good:[
+					["いい調子です！", "happy"],
+					["うー。私何かすごく燃えてきましたよー！　勝ちましょう、絶対に！", "happy"]
+				],
+				bad:[
+					["引き続き、頑張りましょう。", "normal"]
+				],
+				worst:[
+					["わあすとたいむ、更新です…。", "angry"]
+				],
+				retry:[
+					["誤字っちゃいましたね…。 次こそは！", "surprise"],
+					["ここで勝たなきゃ……勝たなきゃ……！！", "surprise"]
+				],
+				finite:[
+					["お疲れ様でした！", "happy"],
+					["また来てくださいね！", "happy"],
+				],
 			}
 		}
-	}
-	gwrite();
-}
-
-function gwrite() {
-	graph.innerHTML='<canvas width="400" height="100" id="sample"></canvas>'
-	var lg = new html5jp.graph.line("sample");
-	if( ! lg ) { return; }
-	var items = times2.concat()
-	items.unshift("")
-	items=[items]
-	lg.canvas.getContext("2d").clearRect(0,0,lg.canvas.scrollWidth, lg.canvas.scrollHeight)
-	lg.draw(items,{yMin:min(times2),yMax:max(times2),backgroundColor:"transparent",gbackgroundColor:"transparent",gGradation:false,xAxisWidth:0,yAxisWidth:0,legend:false,dLabelFontFamily:"ヒラギノ角ゴ Pro W3"});
-}
-
-
-function count_up() {
-	timer++;
-	commenttimer--;
-	if(commenttimer==0){
-			say("じゃぁ一つ、ド派手にやっつけてやりましょう！", "normal")
-	}
-	if (sw_status < 2) {
-		//document.form_sw.counter.value = count_format(timer);
-		counter.innerHTML=count_format(timer);
-	}
-}
-
-function say(mycomment, kao){
-	chara.src="http://i.quiz.colopl.jp/img/talkstory/201505_Yaoyorozu/201505_mikoto_"+kao+".png";
-	comment.innerHTML=mycomment;
-	commenttimer=70;
-/*
-normal
-surprise
-angry
-sad
-happy
-*/
-}
-
-
-function lap2(status){
-	roundNum++;
-	if(status==0){
-		if(min(times)>timer){
-			say("べすとたいむ、更新です！", "happy")
-		}else if(max(times)<timer){
-			say("わあすとたいむ、更新です…。", "angry")
-		}else if(average(times)>timer){
-			say("いい調子です！", "happy")
-		}else{
-			say("引き続き、頑張りましょう。", "normal")
+		
+		graphSettings={
+			linecolor:'green',
+			dotcolor:'blue',
+			fontcolor:'blue',
+			bgcolor:'transparent',
+			maxappear:15,
+			infFlag:false
 		}
-		times.push(timer)
-		times2.push(Math.round(timer/60)/10)
-		gwrite()
-		mam.innerHTML= "Min:"+count_format(min(times))+" Ave:"+count_format(average(times))+" Max:"+count_format(max(times));
-	}else{
-		say("誤字っちゃいましたね…。 次こそは！", "surprise")
-	}
-	timer=0;
-}
+		
+		function graphswitch(){
+			graphSettings.infFlag=!graphSettings.infFlag;
+			draw(vals.times)
+		}
+		
+		function vcalc(){
+			var message = "";
+			// message += "クエスト名を"
+				message += count_formatEx(vals.totaltime)+"の間、"+(vals.roundNum-1)+"周して"+vals.clearNum+"回クリアし"
+			if(isFinite(nowpoint.value) && isFinite(startpoint.value) && nowpoint.value*1 != 0){
+				message += "、"+((nowpoint.value*1)-(startpoint.value*1)).toLocaleString()+"[pt]稼ぎました。\n"
+			}else{
+				message += "ました。\n"
+			}
+			message += "LapTime：" + count_formatEx(average(vals.times)) + ", クリア率：" + Math.round(vals.clearNum/(vals.roundNum-1)*100) +"[%]"
+			if(isFinite(nowpoint.value) && isFinite(startpoint.value) && nowpoint.value*1 != 0){
+				message += ", 時速" + Math.round(((nowpoint.value*1)-(startpoint.value*1))/(vals.totaltime/10/60/60)).toLocaleString()+"[pt]"
+			}
+			message += "\n"
+			// message += "リンクurl "
+			message += "#wiz_stopwatch"
+			alert(message)
+		}
+		
+		
+		function debugMinute(mi){
+			timer=mi*60*10*(.9+Math.random()*.2)
+		}
+		
+		function finite(){
+			bstart.innerHTML = "測定開始";
+			speak("finite")
+			sw_status = 0
+			clearInterval(timerID);
+			initialFlag= true;
+			draw(vals.times)
+			round.innerHTML=vals.roundNum-1+"周[終了]"
+		}
+		
+		function start_count() {
+			if (sw_status == 0) {
+				//スタート
+				if(initialFlag==true){
+					reset()
+					speak("start")
+					initialFlag=false;
+					roundUp(1);
+				}else{
+					speak("restart")
+				}
+				bstart.innerHTML = "一時停止";
+				sw_status = 1;
+				timerID = setInterval("count_up()",100); 
+			} else {
+				//ストップ
+				speak("tempstop")
+				bstart.innerHTML = "再開";
+				sw_status = 0;
+				clearInterval(timerID);
+			}
+		}
+		
+		function mdelete() {
+			var maxval=max(vals.times)
+			if(maxval<timer){
+				speak("deletenow")
+				timer = 0;
+			}else{
+				speak("deletelog")
+				roundDown(0);
+				for(var mm=0; mm<vals.times.length; mm++){
+					if(vals.times[mm] == maxval){
+						vals.times.splice(mm,1);
+					}
+				}
+				vals.totaltime-=maxval;
+			}
+			draw(vals.times);
+		}
+		
+		function count_up() {
+			timer++;
+			commenttimer--;
+			if(commenttimer==0){
+				speak("normal")
+			}
+			if (sw_status < 2) {
+				counter.innerHTML=count_format(timer);
+			}
+			draw(vals.times.concat(timer))
+		}
+		
+		function say(mycomment, feel){
+			chara.src="http://i.quiz.colopl.jp/img/talkstory/"+words[vals.name].imgbase+feel+".png";
+			comment.innerHTML=mycomment;
+			commenttimer=70;
+		}
+		
+		function speak(key){
+			var myrnd=Math.floor(Math.random()*words[vals.name][key].length)
+			say(words[vals.name][key][myrnd][0], words[vals.name][key][myrnd][1])
+		}
+		
+		
+		function lap2(status){
+			roundUp(status)
+			if(status==0){
+				if(min(vals.times)>timer){
+					speak("best")
+				}else if(max(vals.times)<timer){
+					speak("worst")
+				}else if(average(vals.times)>timer){
+					speak("good")
+				}else{
+					speak("bad")
+				}
+				vals.times.push(timer)
+				draw(vals.times)
+				mam.innerHTML= "Min:"+count_format(min(vals.times))+" Ave:"+count_format(average(vals.times))+" Max:"+count_format(max(vals.times));
+			}else{
+				speak("retry")
+			}
+			vals.totaltime+=timer;
+			timer=0;
+		}
+		
+		function roundUp(status){
+			if(status==0){
+				vals.clearNum++;
+			}
+			vals.roundNum++;
+			bclear.innerHTML=vals.roundNum+1+"週目開始<br>(クリア)"
+			bretry.innerHTML=vals.roundNum+1+"週目開始<br>(リタイア)"
+			round.innerHTML=vals.roundNum+"週目"
+		}
+		
+		function roundDown(status){
+			if(status==0){
+				vals.clearNum--;
+			}
+			vals.roundNum--;
+			bclear.innerHTML=vals.roundNum+1+"週目開始<br>(クリア)"
+			bretry.innerHTML=vals.roundNum+1+"週目開始<br>(リタイア)"
+			round.innerHTML=vals.roundNum+"週目"
+		}
+		
+		function min(data){
+			if(data.length==0){
+				return Infinity
+			}else{
+				return Math.min.apply(null, data)
+			}
+		}
+		function max(data){
+			if(data.length==0){
+				return -Infinity
+			}else{
+				return Math.max.apply(null, data)
+			}
+		}
+		function sum(data){
+			var tmpval=0;
+			data.forEach(function(e){
+				tmpval+=e;
+			})
+			return tmpval;
+		}
+		
+		function average(data){
+			return sum(data)/data.length;
+		}
+		
+		function draw(datas) {
+			var gs=graphSettings;
+			/* canvas要素のノードオブジェクト */
+			var canvas = document.getElementById('canvassample');
+			/* canvas要素の存在チェックとCanvas未対応ブラウザの対処 */
+			if ( ! canvas || ! canvas.getContext ) {
+			return false;
+			}
+			/* 2Dコンテキスト */
+			var ctx = canvas.getContext('2d');
+		
+			/*クリア*/
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+		
+			/* ぬりつぶし*/
+			ctx.beginPath();
+			ctx.fillStyle = gs.bgcolor
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+			ctx.closePath();
+			
+			/*表示数制限*/
+			if(gs.infFlag){
+				pnmin=0;
+				nownum=datas.length;
+			}else{
+				pnmin=Math.max(0, datas.length-gs.maxappear)
+				nownum=Math.min(gs.maxappear, datas.length)
+			}
+		
+			/*線*/
+			ctx.strokeStyle = gs.linecolor;
+			ctx.beginPath();
+			for(pn=pnmin;pn<datas.length;pn++){
+				nowx=((pn-pnmin)/(nownum-1)*.9+.05)*canvas.width
+				nowy=(1-(datas[pn]-min(datas.slice(0,-1)))/(max(datas)-min(datas.slice(0,-1)))*.8-.05)*canvas.height
+				if(pn==0){
+					ctx.moveTo(nowx, nowy);
+				}else{
+					ctx.lineTo(nowx, nowy);
+				}
+			}
+			ctx.stroke();
+		
+			/*点と数字*/
+			if(!gs.infFlag){
+				ctx.font = " Meiryo, 'ヒラギノ角ゴ Pro W3', 'Droid Sans Japanese', sans-serif";
+				for(pn=pnmin;pn<datas.length;pn++){
+					ctx.fillStyle = gs.dotcolor;
+					nowx=((pn-pnmin)/(nownum-1)*.9+.05)*canvas.width
+					nowy=(1-(datas[pn]-min(datas.slice(0,-1)))/(max(datas)-min(datas.slice(0,-1)))*.8-.05)*canvas.height
+					ctx.beginPath();
+					ctx.arc(nowx, nowy, 5, 0, Math.PI*2, false);
+					ctx.fill();
+					ctx.stroke();
+					ctx.fillStyle = gs.fontcolor; 
+					ctx.fillText(count_format2(datas[pn]), nowx-11, nowy-10);
+				}
+			}
+		}
+		
+		function count_format(num) {
+			var ts = num / 10;
+			var tm = Math.floor(ts / 60);
+			var ts = (ts % 60).toFixed(1);
+			tm = tm % 60;
+			//表示の整形
+			if (ts < 10) ts = "0" + ts;
+			if (tm < 10) tm = "0" + tm;
+			return  tm + ":" + ts;
+		}
+		
+		
+		function count_format2(num) {
+			var ts = num / 10;
+			var tm = Math.floor(ts / 60);
+			var ts = (ts % 60).toFixed(0);
+			tm = tm % 60;
+			//表示の整形
+			if (ts < 10) ts = "0" + ts;
+			if (tm < 10) tm = "0" + tm;
+			return  tm + ":" + ts;
+		}
+		
+		function count_formatEx(num) {
+			var ts = num / 10;
+			var tm = Math.floor(ts / 60);
+			var th = Math.floor(tm / 60);
+			ts = ts - tm * 60;
+			tm = tm - th * 60;
+			outp="";
+			if(th>0){
+				outp+=th+"時間"
+			}
+			if(th>0 | tm>0){
+				outp+=tm+"分"
+			}
+			if(th == 0 && ( tm>0 || ts>0 )){
+				outp+=Math.round(ts)+"秒"
+			}
+			return outp
+		}
+	</script>
+	<title>ストップウォッチ</title>
+</head>
 
-function min(data){
-	if(data.length==0){
-		return Infinity
-	}else{
-		return Math.min.apply(null, data)
-	}
-}
-function max(data){
-	if(data.length==0){
-		return -Infinity
-	}else{
-		return Math.max.apply(null, data)
-	}
-}
-function sum(data){
-	var tmpval=0;
-	data.forEach(function(e){
-		tmpval+=e;
-	})
-	return tmpval;
-}
 
-function average(data){
-	return sum(data)/data.length;
 
-}
-
-function count_format(num) {
-	var ts = num / 10;
-	var tm = Math.floor(ts / 60);
-	var ts = (ts % 60).toFixed(1);
-	tm = tm % 60;
-	//表示の整形
-	if (ts < 10) ts = "0" + ts;
-	if (tm < 10) tm = "0" + tm;
-	return  tm + ":" + ts;
-}
-
-</script>
-
-<img id=chara src=http://i.quiz.colopl.jp/img/talkstory/201505_Yaoyorozu/201505_mikoto_normal.png style=position:fixed;bottom:60px;left:-50px;z-index:-1;>
-<div id=comment style="color:#19214e;border:3px #19214e solid;padding:2px;background-color:#bad1dc;position:fixed;bottom:0px;left:10px;height:60px;width:400px;z-index:-1;">
-とうなめんとのお手伝い、させていただきます。
-</div>
+<body onload="reset()">
+	<form vals.name="form_sw" style=width:420px;text-align:center;>
+		<div><span id=round>0週目</span><span id=counter>00:00.0</counter></div>
+		<div class=dbutton id=bstart onclick=start_count()>測定開始</div>
+		<div class=dbutton id=bclear onclick=lap2(0)>次週目開始<br>(クリア)</div>
+		<div class=dbutton id=bretry onclick=lap2(1)>次週目開始<br>(リタイア)</div>
+		<br style=clear:both>
+		<div class=dbutton onclick=mdelete()>止め忘れ削除</div>
+		<div class=dbutton onclick=graphswitch()>グラフ切り替え<br>(全体/最新15件)</div>
+		<div class=dbutton onclick=finite()>測定終了</div>
+		<br style=clear:both>
+		<input id=startpoint placeholder=開始時ポイント><input id=nowpoint placeholder=今のポイント><input onclick=vcalc() type=button value=時速></input>
+		<div id=mam></div>
+	</form>
+	
+	<div id="cparent" style=position:relative>
+		<canvas id="canvassample" width="406" height="140"></canvas>
+	</div>
+	
+	<img id=chara src=http://i.quiz.colopl.jp/img/talkstory/201505_Yaoyorozu/201505_mikoto_normal.png style=position:fixed;bottom:60px;left:-50px;z-index:-1;>
+	<div id=comment style="color:#19214e;border:3px #19214e solid;padding:2px;background-color:#bad1dc;position:fixed;bottom:0px;left:10px;height:60px;width:400px;z-index:-1;"></div>
 </body>
 </html>
