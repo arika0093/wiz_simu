@@ -275,30 +275,31 @@ var SpSkill = {
 		var enemys = GetNowBattleEnemys();
 		for (var i = 0; i < enemys.length; i++) {
 			var en = enemys[i];
-			if (en.nowhp <= 0) { return; }
-			en.turn_effect.push({
-				desc: "毒(" + dmg + ")",
-				type: "poison",
-				icon: "poison",
-				isdual: false,
-				turn: t,
-				lim_turn: t,
-				is_poison: true,
-				effect: function (f, ei, teff, is_end, is_t, is_b) {
-					var e = GetNowBattleEnemys(ei);
-					if (is_t && !is_b) {
-						e.nowhp = Math.max(e.nowhp - dmg, 0);
-						e.flags.on_damage = true;
-						if (e.nowhp <= 0) {
-							// HPが0になったら敵スキルを全て解除
-							turneff_allbreak(e.turn_effect, ei, false);
+			if (en.nowhp > 0) { 
+				en.turn_effect.push({
+					desc: "毒(" + dmg + ")",
+					type: "poison",
+					icon: "poison",
+					isdual: false,
+					turn: t,
+					lim_turn: t,
+					is_poison: true,
+					effect: function (f, ei, teff, is_end, is_t, is_b) {
+						var e = GetNowBattleEnemys(ei);
+						if (is_t && !is_b) {
+							e.nowhp = Math.max(e.nowhp - dmg, 0);
+							e.flags.on_damage = true;
+							if (e.nowhp <= 0) {
+								// HPが0になったら敵スキルを全て解除
+								turneff_allbreak(e.turn_effect, ei, false);
+							}
+							fld.log_push("Enemy[" + (ei + 1) + "]: 毒(" + dmg + "ダメージ)");
 						}
-						fld.log_push("Enemy[" + (ei + 1) + "]: 毒(" + dmg + "ダメージ)");
-					}
-				},
-			});
-			// SSフラグを立てる
-			en.flags.is_ss_attack = true;
+					},
+				});
+				// SSフラグを立てる
+				en.flags.is_ss_attack = true;
+			}
 		}
 		return true;
 	},
