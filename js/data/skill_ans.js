@@ -579,8 +579,8 @@ function ChainEnhance_SubAttr(r1, r2, attr, sub, ch) {
 			subattr: sub,
 			spec: create_specs(1),
 			desc: "副属性も一致した場合",
-			cond: function (fld, oi, ei) {
-				var cd = fld.Allys.Deck[oi];
+			cond: function (fld, oi, ei, p, tgi) {
+				var cd = fld.Allys.Deck[tgi];
 				return sub[cd.attr[1]] > 0;
 			},
 		}

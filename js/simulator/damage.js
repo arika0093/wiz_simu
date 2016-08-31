@@ -198,6 +198,9 @@ function auto_attack_order(enemys, attr, own_index) {
 		// 死んでたら優先度最後
 		if (a.nowhp <= 0) { return +1; }
 		if (b.nowhp <= 0) { return -1; }
+		// 死にかけなら優先度高
+		if (a.nowhp <= pri_hp) { return -1; }
+		if (b.nowhp <= pri_hp) { return +1; }
 		// 属性有利の方が優先度高
 		var mgn_a = attr_magnification(attr, a.attr);
 		var mgn_b = attr_magnification(attr, b.attr);
@@ -208,9 +211,6 @@ function auto_attack_order(enemys, attr, own_index) {
 		var wait_b = b.move ? b.move.turn : 1;
 		if (wait_a > wait_b) { return +1; }
 		if (wait_a < wait_b) { return -1; }
-		// 死にかけなら優先度高
-		if (a.nowhp <= pri_hp) { return -1; }
-		if (b.nowhp <= pri_hp) { return +1; }
 		// HPが低い方が優先度高
 		if (a.nowhp < b.nowhp) { return -1; }
 		if (a.nowhp > b.nowhp) { return +1; }

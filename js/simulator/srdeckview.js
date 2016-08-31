@@ -1,4 +1,4 @@
-var id = location.search.indexOf("?id=") == 0 ?			location.search.substr(4) : null;
+var id = location.search.indexOf("?qid=") == 0 ?		location.search.substr(5) : null;
 var genre = location.search.indexOf("?genre=") == 0 ?	location.search.substr(7) : null;
 
 // 読み込み時に実行
@@ -7,7 +7,7 @@ $(function () {
 	if (id) {
 		getSimResult(id, createView);
 	} else if (genre) {
-		makeList(genre, "/simulator/d/?id=");
+		makeList(genre, "/simulator/d/?qid=");
 		$("#stage").hide();
 	} else {
 		$("#result").html("存在しないクエストが指定されました。");

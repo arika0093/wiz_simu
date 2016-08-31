@@ -26,7 +26,7 @@ function sim_show() {
 	// sim_info_status
 	$("#sim_info_status").html(Field.Quest.name +
 		" [<a target='_blank' href='/simulator/quest/?id=" + Field.Quest.id + "'>敵行動</a> /" +
-		" <a target='_blank' href='/simulator/d/?id=" + Field.Quest.id + "'>投稿デッキ</a>]"
+		" <a target='_blank' href='/simulator/d/?qid=" + Field.Quest.id + "'>投稿デッキ</a>]"
 	);
 
 	// sim_result

@@ -376,7 +376,7 @@ function answer_enhance(as, i, p) {
 		// 最大の値を取り出す
 		for (var ai = 0; ai < as.length; ai++) {
 			var as_t = { rate: 0 };
-			if (is_answer_target(as[ai], chain, card.attr[0], card.species, i, -1, p)) {
+			if (is_answer_target(as[ai], chain, card.attr[0], card.species, i, -1, p, ci)) {
 				as_t = as[ai];
 				// 解答時間依存処理
 				if (as[ai].is_timedep) {
@@ -390,7 +390,7 @@ function answer_enhance(as, i, p) {
 		var bef_enh = now.as_enhance ? now.as_enhance : 0;
 		now.as_enhance = bef_enh + ass.rate;
 		// 攻撃後処理
-		if (ass.after && ci == i) {
+		if (ass.after && ci == 0) {
 			as_afters.push(ass.after(Field, i, true));
 		}
 	}
@@ -410,7 +410,7 @@ function answer_heal(as, i, p) {
 		// 最大の値を取り出す
 		for (var ai = 0; ai < as.length; ai++) {
 			var as_t = {rate: 0};
-			if(is_answer_target(as[ai], chain, card.attr[0], card.species, i, -1, p)){
+			if(is_answer_target(as[ai], chain, card.attr[0], card.species, i, -1, p, ci)){
 				as_t = as[ai];
 				// 解答時間依存処理
 				if (as[ai].is_timedep) {
@@ -426,7 +426,7 @@ function answer_heal(as, i, p) {
 			heal_ally(heal_val, ci, true);
 			Field.log_push("Unit[" + (ci + 1) + "]: HP回復(HP: " + before + "→" + now.nowhp + ")");
 			// 攻撃後処理
-			if (ass.after && ci == i) {
+			if (ass.after && ci == 0) {
 				as_afters.push(ass.after(Field, i, true));
 			}
 		}
@@ -452,7 +452,7 @@ function answer_spskill(as, i, p) {
 }
 
 // ASの対象になるかどうかを確認する
-function is_answer_target(as, ch, tg_attr, tg_spec, own_i, enm_i, panels) {
+function is_answer_target(as, ch, tg_attr, tg_spec, own_i, enm_i, panels, tg_i) {
 	var rst = true;
 	// チェイン確認
 	rst = rst && (ch >= as.chain);
@@ -461,6 +461,6 @@ function is_answer_target(as, ch, tg_attr, tg_spec, own_i, enm_i, panels) {
 	// 種族確認
 	rst = rst && (tg_spec < 0 || check_spec_inarray(as.spec, tg_spec));
 	// 条件確認
-	rst = rst && (as.cond(Field, own_i, enm_i, panels));
+	rst = rst && (as.cond(Field, own_i, enm_i, panels, tg_i));
 	return rst;
 }

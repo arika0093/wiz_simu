@@ -3750,7 +3750,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルにダメージ25％軽減の効果を付与",
 		turn: 6,
-		proc: [null]
+		proc: [panel_attr_guard([1,1,1,1,1], 0.25)]
 	},
 	islegend: true,
 	Lawake: [
@@ -3764,7 +3764,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルにダメージ50％軽減の効果を付与",
 		turn: 10,
-		proc: [null]
+		proc: [panel_attr_guard([1,1,1,1,1], 0.5)]
 	},
 }, {
 	name: "大人だけの秘密の魅力 チーザ",
@@ -5617,7 +5617,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルにダメージ25％軽減の効果を付与",
 		turn: 6,
-		proc: [null]
+		proc: [panel_attr_guard([1, 1, 1, 1, 1], 0.25)]
 	},
 	islegend: true,
 	Lawake: [
@@ -5631,7 +5631,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルにダメージ50％軽減の効果を付与",
 		turn: 10,
-		proc: [null]
+		proc: [panel_attr_guard([1, 1, 1, 1, 1], 0.5)]
 	},
 }, {
 	name: "輝ける星霜の剣 アネモネ・フラル",
@@ -13542,7 +13542,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルにダメージ25％軽減の効果を付与",
 		turn: 6,
-		proc: [null]
+		proc: [panel_attr_guard([1, 1, 1, 1, 1], 0.25)]
 	},
 	islegend: true,
 	Lawake: [
@@ -13556,7 +13556,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルにダメージ50％軽減の効果を付与",
 		turn: 10,
-		proc: [null]
+		proc: [panel_attr_guard([1, 1, 1, 1, 1], 0.5)]
 	},
 }, {
 	name: "収穫者 ヒミカ＆アドミローラ",
@@ -28200,7 +28200,7 @@ Cards = [{
 		Statusup(500, 0),
 	],
 },
-/* {
+{
 	name: "迅雷の煌絶剣　アマカド・ヒメザクロ",
 	cardno: 6035,
 	imageno: 7869,
@@ -28210,6 +28210,7 @@ Cards = [{
 	attr: [2, -1],
 	species: [8],
 	islegend: true,
+	alias: ["未実装"],
 	as1: {
 		desc: "戦士・亜人の仲間の数だけダメージアップ(140%/180%/220%/260%/300%)、パネルの色が2色以上でさらにダメージアップ(160%/220%/280%/340%/400%)、パネルの色が2色以上でさらにダメージアップ(100%+60%×数)",
 		proc: [null],
@@ -28244,7 +28245,7 @@ Cards = [{
 		Statusup(500, 0),
 		Statusup(0, 500),
 	],
-} */
+},
 {
 	name: "紅蓮に燃ゆる煌眼 リヴェータ・イレ",
 	cardno: 6041,
@@ -29027,7 +29028,7 @@ Cards = [{
 	ss1: {
 		desc: "ジャンルパネルに25%軽減の効果を付与",
 		turn: 6,
-		proc: [null],
+		proc: [panel_attr_guard([1, 1, 1, 1, 1], 0.25)]
 	},
 	awakes: [
 		Awake_noeffect("経験値取得量アップ", 1),
@@ -29048,7 +29049,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルに35%軽減の効果を付与",
 		turn: 8,
-		proc: [null],
+		proc: [panel_attr_guard([1, 1, 1, 1, 1], 0.5)]
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -29385,7 +29386,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・水属性化し、ダメージ25%軽減の効果を付与",
 		turn: 7,
-		proc: [ss_panel_change([1,1,0,0,0]), null],
+		proc: [ss_panel_change([1,1,0,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,1,0,0,0,]),
@@ -31449,6 +31450,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [5],
 	islegend: true,
+	alias: ["未実装"],
 	as1: {
 		desc: "3チェインでダメージアップ、亜人の仲間の数だけさらにダメージアップ(340%/380%/420%/460%/500%)",
 		proc: [null],
@@ -39766,7 +39768,7 @@ Cards = [{
 	ss2: {
 		desc: "<ガード>3ターン雷属性ダメージを75%軽減する、5チェインを消費しさらに火属性のダメージを75%軽減",
 		turn: 9,
-		proc: [ss_attr_guard([0,0,1,0,0], 0.75, 2), ss_chain_cost_skill(5, ss_attr_guard([1,0,0,0,0], 0.75, 2, null))],
+		proc: [ss_attr_guard([0,0,1,0,0], 0.75, 2), ss_chain_cost_skill(5, ss_attr_guard([1,0,1,0,0], 0.75, 2), null)],
 	},
 	Lawake: [
 		Statusup(400,0),
@@ -41991,7 +41993,7 @@ Cards = [{
 	cost: 40,
 	attr: [0,2],
 	species: [6],
-	islegend: false,
+	islegend: true,
 	ape: "真夏のグレート・クイズ・ウォー",
 	is_dist: true,
 	as1: {
@@ -42132,6 +42134,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	ape: "魔道杯withクロム・マギナ",
+	alias: ["未実装"],
 	as1: {
 		desc: "残りHPが80%以上でダメージアップ、5チェインで更にダメージアップ(300%/550%)",
 		proc: [add_cond(ChainAttack(3.0, 0), when_hp_more(0.8)), add_cond(ChainAttack(5.5, 5), when_hp_more(0.8))],
@@ -43310,6 +43313,7 @@ Cards = [{
 	species: [1],
 	islegend: true,
 	ape: "YAOYORO Z",
+	alias: ["ミコト", "セイ", "スオウ"],
 	as1: {
 		desc: "6チェインでダメージアップ、リーダー時にさらにアップ(500%/600%)",
 		proc: [ChainAttack(5.0, 6), ChainAttack_Leader(6.0, 6)],
@@ -43446,6 +43450,7 @@ Cards = [{
 	species: [1],
 	islegend: true,
 	ape: "YAOYORO Z",
+	alias: ["トミ", "マトイ", "ツクヨ"],
 	as1: {
 		desc: "水・雷属性の味方を回復、HP20%以下でさらに回復(13%/38%)",
 		proc: [Heal(0.13, [0,1,1,0,0], 0), add_cond(Heal(0.38, [0,1,1,0,0], 0), when_hp_less(0.20))],
