@@ -43,6 +43,11 @@ category_jp = {
 		is_dispsim: false,
 		sim_index: 11,
 	},
+	"chromag6":{
+		jp: "クロム・マグナ ゼロ",
+		is_dispsim: true,
+		sim_index: 11,
+	},
     "8millionz": {
 		jp: "YAOYORO Z",
 		is_dispsim: true,
