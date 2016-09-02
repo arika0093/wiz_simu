@@ -176,7 +176,8 @@
                   ],
                   on_move: [
                      m_enemy_once(s_enemy_force_reservoir()),
-                     s_enemy_attack(3000, 5, 1, true)
+                     s_enemy_attack(3000, 5, 1, true),
+                     s_enemy_attack(1500, 5, 1, true)
                   ],
                   atrandom: false,
                   turn: 1,
