@@ -1,6 +1,6 @@
 {
    id: "1608ev_z",
-   name: "絶級 顕現 「神の中の神」",
+   name: "(2016/08)イベントトーナメント 絶級",
    desc: "",
    overlap: false,
    aprnum: 5,

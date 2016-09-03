@@ -60,7 +60,7 @@ category_jp = {
 	},
     "eva2": {
     	jp: "幻想と歪曲の槍",
-    	is_dispsim: true,
+    	is_dispsim: false,
     	sim_index: 13,
     },
     "gqw": {
