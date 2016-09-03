@@ -35,10 +35,10 @@ function add_cond(as) {
 							var oj = obj;
 							var ky = key;
 							var bef_as = $.extend(true, {}, as[i]);
-							return function (a, b, c, d) {
+							return function (a, b, c, d, e) {
 								var rst = true;
-								rst = rst && bef_as[ky](a, b, c, d);
-								rst = rst && oj[ky](a, b, c, d);
+								rst = rst && bef_as[ky](a, b, c, d, e);
+								rst = rst && oj[ky](a, b, c, d, e);
 								return rst;
 							};
 						}();

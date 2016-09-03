@@ -113,7 +113,7 @@
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(1500, 1, 1, true)/* Warning: ac2con5（分裂待機など） */
+                     s_enemy_attack(1500, 1, 1, m_enemy_tgtype_maxhp())/* Warning: ac2con5（分裂待機など） */
                   ],
                   atrandom: false,
                   turn: 1,

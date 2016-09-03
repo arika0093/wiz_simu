@@ -51,7 +51,7 @@ category_jp = {
     "8millionz": {
 		jp: "YAOYORO Z",
 		is_dispsim: true,
-		sim_index: 11,
+		sim_index: 12,
 	},
     "usg": {
 		jp: "アルティメットサマーガールズ",
