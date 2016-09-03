@@ -99,6 +99,7 @@
                   on_move_angry: [
                      s_enemy_force_reservoir(),
                      s_enemy_attack(3000, 5, 1, true),
+                     s_enemy_attack(1500, 5, 1, true),
                      s_enemy_attack(500, 5, 1, true),
                      s_enemy_attack(500, 5, 1, true),
                      s_enemy_attack(500, 5, 1, true),
