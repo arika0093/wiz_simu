@@ -22,8 +22,71 @@ function check(){
     }}) 
 
     o.innerHTML+="\n"
+	o.innerHTML+="4. descにうんたらがあるとき、procになんちゃらがない物のチェック"+"\n";
+
+    o.innerHTML+=causalityCheck()
+
+    o.innerHTML+="\n"
 	o.innerHTML+="おまけ：現在のカード数は"+Cards.length+"件です。\n";
 }
+
+
+
+
+function causalityCheck(){
+	var ops=["ss1", "ss2"]
+	var causalitys=[
+		["無視", "ss_ignore_skillcounter"],
+		["毒状態で", "ss_is_poison_own"],
+		["以下で", "hp_less"],
+		["毒", "poison"],
+		["無に帰す", "ss_death_limit"],
+		["遅らせ", "ss_delay_"],
+		["攻撃力をアップ", "enhance"],
+		["精霊強化", "ss_reinforcement"],
+		["状態異常攻撃を無効", "ss_absattack_disable"],
+		["ダメージを無効", "ss_damageblock"],
+		["発動ターンを", "ss_skillboost"],
+		["チェインを保護", "ss_chain_protect"],
+		["状態異常を回復", "ss_abstate_cure"],
+		["起死回生", "ss_revival"],
+		["蘇生", "ss_resurrection"],
+		["攻撃力アップの効果", "panel_attackup"],
+		["チェインプラスの効果", "panel_chainplus"],
+		["回復の効果", "panel_healally"],
+		["パネルにスキルチャージ", "panel_skillboost"],
+		["軽減の効果", "panel_attr_guard"],
+		["解除", "break"],
+		["発動する", "ss_latest_copy"],
+		["シャッフル", "ss_panel_shuffle"],
+		["ジャンルパネルを", "panel_"],
+		["アンサースキル発動時間", "ss_astime_ext"],
+		["つ削", "ss_answer_narrow"],
+		["見破る", "ss_answer_foresight"],
+		["自分に集め", "ss_provocate"],
+		["特効", "special_attr"],
+		["平均解答", "ss_answertime"],
+		["チェインを消費", "ss_chain_cost"],
+	]
+	outp="";
+	Cards.forEach(function(card, cn){
+		ops.forEach(function(op){
+			ss=card[op]
+			if(ss){
+				var procStr=JSON.stringify(ss)
+				causalitys.forEach(function(causality){
+					if(ss.desc.indexOf(causality[0])!=-1){
+						if(procStr.indexOf(causality[1])==-1){
+							outp += card.cardno+"| " + op + " " + card.name + " " + causality[0] + "\n"
+						}
+					}
+				})
+			}
+		})
+	})
+	return outp
+}
+
 </script></head>
 
 <body onload=check()>
