@@ -36,10 +36,6 @@
                   ],
                   on_move_angry: [
                      s_enemy_attack(1500, 5, 1, true),
-                     s_enemy_attack(1500, 5, 1, true),
-                     s_enemy_attack(1500, 5, 1, true),
-                     s_enemy_attack(1500, 5, 1, true),
-                     s_enemy_attack(1500, 5, 1, true)
                   ],
                   atrandom: false,
                   turn: 1,
@@ -60,7 +56,6 @@
                   ],
                   on_move: [
                      s_enemy_attack(800, 5, 1, true),
-                     s_enemy_attack(800, 5, 1, true)
                   ],
                   on_angry: [
                      s_enemy_poison(2000, 1, 5)
@@ -91,7 +86,6 @@
                   ],
                   on_move: [
                      s_enemy_attack(500, 5, 1, true),
-                     s_enemy_attack(500, 5, 1, true)
                   ],
                   on_angry: [
                      s_enemy_continue_damage(3, 3000, 750)

@@ -221,10 +221,6 @@
                   ],
                   on_move_angry: [
                      s_enemy_attack(300, 3, 4, true),
-                     s_enemy_attack(300, 3, 4, true),
-                     s_enemy_attack(300, 3, 4, true),
-                     s_enemy_attack(300, 3, 4, true),
-                     s_enemy_attack(300, 3, 4, true)
                   ],
                   atrandom: false,
                   turn: 1,
@@ -251,10 +247,6 @@
                   ],
                   on_move_angry: [
                      s_enemy_attack(300, 5, 5, true),
-                     s_enemy_attack(300, 5, 5, true),
-                     s_enemy_attack(300, 5, 5, true),
-                     s_enemy_attack(300, 5, 5, true),
-                     s_enemy_attack(300, 5, 5, true)
                   ],
                   atrandom: false,
                   turn: 1,

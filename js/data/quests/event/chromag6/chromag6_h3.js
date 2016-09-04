@@ -260,10 +260,6 @@
                   ],
                   on_move_angry: [
                      s_enemy_attack(200, 3, 5, true),
-                     s_enemy_attack(200, 3, 5, true),
-                     s_enemy_attack(200, 3, 5, true),
-                     s_enemy_attack(200, 3, 5, true),
-                     s_enemy_attack(200, 3, 5, true)
                   ],
                   atrandom: false,
                   turn: 1,
