@@ -1129,7 +1129,9 @@ var SpCondSkill = {
 	},
 	"ss_is_poison_own_skill": function (fld, oi, cobj, params) {
 		var scp_rst = this["ss_is_poison_own"](fld, oi, cobj, params);
-		return ss_object_done(fld, oi, scp_rst);
+		if (scp_rst) {
+			return ss_object_done(fld, oi, cobj.p1);
+		}
 	},
 	// -----------------------------
 	// 相手が毒かどうか
