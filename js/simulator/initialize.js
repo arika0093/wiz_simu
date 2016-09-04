@@ -310,13 +310,15 @@ function nextturn(is_ssfin) {
 	if (killed && !f_st.finish) {
 		// 戦後回復処理
 		var abh = cards_heal_afterbattle(Field.Allys.Deck);
+		var nows = Field.Allys.Now;
 		if (abh > 0) {
 			for (var i = 0; i < Field.Allys.Deck.length; i++) {
-				var now = Field.Allys.Now[i];
-				heal_ally(Math.floor(now.maxhp * abh), i);
+				heal_ally(Math.floor(nows[i].maxhp * abh), i);
 			}
 			Field.log_push("戦後回復: " + (abh * 100) + "%");
 		}
+		// 出現前にフラグリセット
+		initialize_allys_flags(nows);
 		// ここで新しい敵の処理を行う
 		enemy_popup_proc();
 	}
