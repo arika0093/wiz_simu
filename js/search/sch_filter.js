@@ -172,6 +172,7 @@ function schfl_grep_as(obj, as) {
 	// 各AS定義についてチェック
 	rst = rst && $.grep(arr_as, function (e) {
 		var grep_rst = true;
+		if (!e) { return false; }
 		// 発動最大チェイン数チェック
 		switch (obj.as_ch_cond) {
 			case 0:

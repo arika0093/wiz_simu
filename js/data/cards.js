@@ -42797,7 +42797,7 @@ Cards = [{
 	ss2: {
 		desc: "<弱体化大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ(800%)、さらに10ターンの間、敵の防御力を弱体化(30%)",
 		turn: 12,
-		proc: [ss_damage_s(8.0, [2], 1), ss_ignore_skillcounter(), ss_attr_weaken_s([1,1,1,1,1], 0.3, 10)],
+		proc: [ss_damage_s(8.0, [2], 1), ss_attr_weaken_s([1, 1, 1, 1, 1], 0.3, 10), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,1000),
@@ -44315,7 +44315,7 @@ Cards = [{
 },{
 	name: "リリカルゴッド T.W.マドロック",
 	cardno: 6907,
-	imageno: -1,
+	imageno: 8968,
 	hp: 4102,
 	atk: 2202,
 	cost: 39,
