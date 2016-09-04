@@ -36227,7 +36227,7 @@ Cards = [{
 		Fastskill(2),
 		Attr_statusup(0,200, [1,0,1,0,0,]),
 		Heal_afterbattle(10),
-		Abstate_invalid("ss_sealed"),
+		Abstate_invalid("as_sealed"),
 	],
 	as2: {
 		desc: "4チェインで敵単体を3回連続攻撃、20チェインで更にダメージアップ(450%/1700%)",

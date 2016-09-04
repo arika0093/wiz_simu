@@ -26,6 +26,13 @@ function check(){
 
     o.innerHTML+=causalityCheck()
 
+
+    o.innerHTML+="\n"
+	o.innerHTML+="5. 覚醒のチェック"+"\n";
+	o.innerHTML+="※問題ないデータがまぎれることがあります （特に自属性が指定されないステアップ）"+"\n";
+
+	awakeCheck()
+
     o.innerHTML+="\n"
 	o.innerHTML+="おまけ：現在のカード数は"+Cards.length+"件です。\n";
 }
@@ -87,13 +94,47 @@ function causalityCheck(){
 	return outp
 }
 
+
+
+
+function awakeCheck(){
+	Cards.forEach(function(card){
+		card.awakes.forEach(function(awake, an){
+			var q={card:card,an:an}
+			var at=awake.type
+			awakeStr=JSON.stringify(awake)
+			if(awakeStr.indexOf("undefined")!=-1)putAwakeError(q,"undefined")
+			if(awakeStr.indexOf("false")!=-1)putAwakeError(q,"false")
+			if(awake.attr && awake.attr.every(function(x){return x == 0})) putAwakeError(q,"属性が空")
+			if(at=="ss_fast" && awake.turn < 1) putAwakeError(q,"ファストターン0")
+			if(at=="panel_boost" && !awake.attr.every(function(x){return x == 0}) && awake.attr[card.attr[0]] != 1) putAwakeError(q,"主属性でないパネブ")
+			if(at=="own_status_up" && awake.up_hp == 0 && awake.up_atk == 0) putAwakeError(q,"効果値0のステアップ")
+			if(at=="status_up" && !awake.attr.every(function(x){return x == 0}) && awake.attr[card.attr[0]] != 1 && awake.attr[card.attr[1]] != 1 ) putAwakeError(q,"自属性が指定されないステアップ")
+			if(at=="status_up" && awake.subattr && awake.attr[card.attr[0]] != 1) putAwakeError(q,"第1属性が自主属性でない複ステアップ")
+			if(at=="status_up" && awake.subattr && awake.subattr[card.attr[1]] != 1) putAwakeError(q,"第2属性が自複属性でない複ステアップ")
+			if(at=="status_up" && awake.spec[card.species[0]]!=1) putAwakeError(q,"自種族が対象外のステアップ")
+		})
+	})
+}
+function putAwakeError(q, comm){
+	card=q.card
+	an=q.an
+	o.innerHTML+=(card.cardno + " (" + an + ")| " + comm + " " + card.name + "\n")
+}
+
+
+
+
+
+
+
 </script></head>
 
 <body onload=check()>
 
 ※下に何もエラーが出てなければ良<br>
 
-<textarea id=o style=width:100%;height:300px;></textarea>
+<textarea id=o style=width:100%;height:90%;></textarea>
 
 
     <!--#config timefmt="%Y%m%d_%H%M%S" -->
