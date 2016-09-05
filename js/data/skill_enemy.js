@@ -950,7 +950,7 @@ function s_enemy_continue_damage(turn, initialdamage, continuedamage){
 		fld.log_push("Enemy[" + (n + 1) + "]: 継続ダメージ(ダメージ:" + initialdamage+", "+ continuedamage+ ")");
 		var tg = gen_enemytarget_array(5, 1, false);
 		for (var i = 0; i < tg[0].length; i++) {
-			_s_enemy_attack(fld, initialdamage, n, tg[0][i], true);
+			_s_enemy_attack(fld, initialdamage, n, tg[0][i], false);
 		}
 		ss_continue_effect_add({
 			type: "continue_damage_by_enemy",
@@ -963,11 +963,11 @@ function s_enemy_continue_damage(turn, initialdamage, continuedamage){
 			effect: function (f, oi, ceff) {
 				var f_copy = $.extend(true, {}, f);
 				f_copy.Enemys.Data[oi] = ceff.now_state;
-				fld.log_push("Enemy[" + (n + 1) + "]: 継続ダメージ発動("+continuedamage+"ダメージ) - 残り" + ceff.lim_turn + "t");
 				var tg = gen_enemytarget_array(5, 1, false);
 				for (var i = 0; i < tg[0].length; i++) {
-					_s_enemy_attack(f_copy, continuedamage, n, tg[0][i], true);
+					_s_enemy_attack(f_copy, continuedamage, n, tg[0][i], false);
 				}
+				fld.log_push("Enemy[" + (n + 1) + "]: 継続ダメージ発動(" + continuedamage + "ダメージ) - 残り" + ceff.lim_turn + "t");
 			}
 		});
 	}, makeDesc("残滅大魔術"));

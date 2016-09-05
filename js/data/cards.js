@@ -1561,6 +1561,7 @@ Cards = [{
 	cost: 38,
 	attr: [0, -1],
 	species: [8],
+	alias: ["/wiz_soraru", "/wiztools"],
 	awakes: [
 		Attr_relief([0, 1, 0, 0, 0], 10),
 		Panel_boost([1,0,0,0,0], 1),
@@ -7452,7 +7453,7 @@ Cards = [{
 	cost: 45,
 	attr: [1, -1],
 	species: [9],
-	alias: ["/wiztools"],
+	alias: ["/alumina_wiz", "/wiztools"],
 	awakes: [
 		Fastskill(1),
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
@@ -15380,6 +15381,7 @@ Cards = [{
 	cost: 49,
 	attr: [2, 1],
 	species: [9],
+	is_dist: true,
 	awakes: [
 		Fastskill(1),
 		Statusup(0, 200),
@@ -20907,6 +20909,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [9],
 	islegend: true,
+	alias: ["/sette_wiz", "/wiztools"],
 	as1: {
 		desc: "水属性の味方のHPを回復(13%)",
 		proc: Heal(0.13, [0,1,0,0,0], 0),
@@ -31770,7 +31773,6 @@ Cards = [{
 	attr: [1,3],
 	species: [9],
 	islegend: true,
-	alias: ["/wiz_kamui", "/wiztools"],
 	as1: {
 		desc: "4チェインでダメージアップ、8チェインで更にダメージアップ(350%/500%)",
 		proc: [ChainAttack(3.5, 4), ChainAttack(5.0, 8)],
@@ -32756,6 +32758,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	ape: "スザクⅠ",
+	alias: ["ulti_chatnoir", "/wiztools"],
 	as1: {
 		desc: "7チェインで雷属性属性の味方の攻撃力をアップ(80%)、さらに全属性のダメージを10%軽減",
 		proc: [ChainEnhance(0.80, [0,0,1,0,0], 7), as_guard(0.10, [1,1,1,1,1], 7)],
@@ -43085,6 +43088,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "八百万神秘譚2 れえすの行方は神のみぞ知る",
+	alias: ["/wiz_kamui", "/wiztools"],
 	as1: {
 		desc: "5チェインで水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(60%/90%)、パネルの色が2色以上でさらにアップ(40%)",
 		proc: [ChainEnhance_SubAttr(0.6, 0.9, [0,1,0,0,0], [1,0,0,0,0], 5), add_cond(ChainEnhance_SubAttr(1.0, 1.3, [0,1,0,0,0], [1,0,0,0,0], 5) , as_panel_over2())],
@@ -43137,7 +43141,7 @@ Cards = [{
 	ss1: {
 		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの50%を使い敵単体へ水属性のダメージ(280%×人数)",
 		turn: 9,
-		proc: [ss_damage_s(ss_consume_all_cond(2.8, 0.5), [1], 1)],
+		proc: [ss_damage_s(ss_consume_all_cond(2.8, 0.5), [1], 1), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],1),
@@ -43158,7 +43162,7 @@ Cards = [{
 	ss2: {
 		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの50%を使い敵単体へ水属性のダメージ(360%×人数)",
 		turn: 12,
-		proc: [ss_damage_s(ss_consume_all_cond(3.6, 0.5), [1], 1)],
+		proc: [ss_damage_s(ss_consume_all_cond(3.6, 0.5), [1], 1), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(500,0),
