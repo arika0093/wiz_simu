@@ -135,7 +135,7 @@ function putAwakeError(q, comm){
 ※下に何もエラーが出てなければ良<br>
 
 <textarea id=o style=width:100%;height:90%;></textarea>
-
+<a href=MorphemeAnalysis.shtml>SS形態素解析（激重注意）</a>
 
     <!--#config timefmt="%Y%m%d_%H%M%S" -->
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
