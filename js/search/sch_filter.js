@@ -61,15 +61,16 @@ function schfl_show_result() {
 		var obj = js.long.length > 0 ? JSON.parse(js.long) : null;
 		// Cardsから検索
 		var rst_cards = schfl_grep(obj);
+		var st = searchText(obj)
 		// imageno順にソート
 		rst_cards.sort(function (a, b) {
 			return (a.imageno < b.imageno ? 1 : -1);
 		});
 		// 件数が少ないなら詳細、多いならアイコンのみ表示
 		if (rst_cards.length <= 3) {
-			schfl_grepshow(rst_cards);
+			schfl_grepshow(rst_cards ,st);
 		} else {
-			schfl_grepshow_icon(rst_cards);
+			schfl_grepshow_icon(rst_cards ,st);
 		}
 		MatchResult = rst_cards;
 	});
@@ -306,10 +307,11 @@ function schfl_grep_awake(obj, awake) {
 
 
 // 得られた結果を表示する関数
-function schfl_grepshow(cs) {
+function schfl_grepshow(cs, st) {
 	cs = cs || MatchResult;
 	var div = $("#search_result");
 	var html = "";
+	html += st + "<br>";
 	if (cs.length <= 0) {
 		html += "該当結果: 0件";
 	} else {
@@ -377,10 +379,11 @@ function schfl_genhtml_awake(aws) {
 
 
 // iconのみを並べる
-function schfl_grepshow_icon(cs) {
+function schfl_grepshow_icon(cs, st) {
 	cs = cs || MatchResult;
 	var div = $("#search_result");
 	var html = "";
+	html += st + "<br>";
 	if (cs.length <= 0) {
 		html += "該当結果: 0件";
 	} else {
@@ -395,4 +398,136 @@ function schfl_grepshow_icon(cs) {
 	$("#show_i").hide();
 	$("#show_d").show();
 	return;
+}
+
+
+var cons = {
+    name_q : {
+        0:"を含む",
+        1:"と一致する",
+        2:"を含まない"
+    },
+    attr_m : {
+        0:"火",
+        1:"水",
+        2:"雷"
+    },
+    attr_s : {
+        "-1":"無し",
+        "99":"有り",
+        "0":"火",
+        "1":"水",
+        "2":"雷",
+        "3":"光",
+        "4":"闇",
+        "20":"光/闇",
+    },
+    species : {
+        "0":"龍族",
+        "1":"神族",
+        "2":"魔族",
+        "3":"天使",
+        "4":"妖精",
+        "5":"亜人",
+        "6":"物質",
+        "7":"魔法生物",
+        "8":"戦士",
+        "9":"術士",
+        "10":"アイテム",
+        "11":"AbCd"
+    },
+    as_ch_cond : {
+        "0":"以下",
+        "1":"以上",
+        "2":"一致",
+    },
+    "ss_target" : {
+        "0":"SS1/SS2両方含む",
+        "-1":"SS1のみ",
+        "1":"SS2のみ",
+    },
+	"disttype" : {
+         "0":"全精霊から検索",
+		 "1":"配布精霊のみを検索",
+		 "2":"配布精霊以外を検索"
+	}
+}
+function searchText(q){
+	console.log(q)
+    // search_queryを受け取って検索条件文字列を返す
+    // 例：console.log(searchText(schfl_create_queryobj()));
+    var outp = ""
+    if(q.name != ""){
+        outp += "精霊名=\"" + q.name + "\""
+        outp += appOpt(q, cons, "name_q", "")
+    }
+    outp += appOpt(q, cons, "attr_m", "主属性")
+    outp += appOpt(q, cons, "attr_s", "複属性")
+    outp += appOpt(q, cons, "species", "種族")
+    if(q.as_name != ""){
+        outp += "AS説明文=\"" + q.as_name + "\"を含む, "
+    }
+    if(q.as_maxchain >= 0){
+        outp += "AS発動チェイン=" + q.as_maxchain + ""
+        outp += appOpt(q, cons, "as_ch_cond", "")
+    }
+    if(q.as_types.length > 0){
+        if(q.as_types.length == 1){
+            outp += "AS種類=" + q.as_types[0]
+        }else{
+            var delimitor = ["AND", "OR"][q.as_search_ao]
+            outp += "AS種類=[" + q.as_types.join(" " + delimitor + " ") + "]"
+        }
+        outp+=", "
+    }
+    var ssEnableFlag = false;
+    if(q.ss_name != ""){
+        ssEnableFlag = true;
+        outp += "SS説明文=\"" + q.ss_name + "\"を含む, "
+    }
+    if(q.ss_maxturn >= 0){
+        ssEnableFlag = true;
+        outp += "SS発動"
+        if(q.ss_fastskl){
+            outp += "FS込"
+        }
+        outp += q.ss_maxturn + "ターン, "
+    }
+    if(q.ss_types.length > 0){
+        ssEnableFlag = true;
+        if(q.ss_types.length == 1){
+            outp += "SS種類=" + q.ss_types[0]
+        }else{
+            var delimitor = ["AND", "OR"][q.ss_search_ao]
+            outp += "SS種類 = [" + q.ss_types.join(" " + delimitor + " ") + "]"
+        }
+        outp += ", "
+    }
+    if(ssEnableFlag){
+        outp += appOpt(q, cons, "ss_target", "SS対象")
+    }
+    if(q.awake_types.length > 0){
+        if(q.awake_types.length == 1){
+            outp += "潜在種類=" + q.awake_types[0]
+        }else{
+            var delimitor = ["AND", "OR"][q.awake_search_ao]
+            outp += "潜在種類=[" + q.awake_types.join(" " + delimitor + " ") + "]"
+        }
+        outp+=", "
+    }
+    outp += appOpt(q, cons, "disttype", "")
+    outp = outp == "" ? "条件なし" : outp.slice(0, -2)
+    return outp
+}
+function getqck(q, c, k){
+    return c[k][q[k]]
+}
+function appOpt(q, c, k, title){
+    var tmpStr = getqck(q, c, k);
+    if(tmpStr){
+        title = title != "" ? title + "=" : title
+        return title + tmpStr + ", "
+    }else{
+        return ""
+    }
 }
