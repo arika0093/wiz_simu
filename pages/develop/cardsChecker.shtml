@@ -34,11 +34,88 @@ function check(){
 	awakeCheck()
 
     o.innerHTML+="\n"
+	o.innerHTML+="6. SS1とSS2が同じ奴のチェック（チュレとかは手動で削除設定してるので増えたとき出てきます）"+"\n";
+
+    o.innerHTML+=diffSs1Ss2()
+
+    o.innerHTML+="\n"
+	o.innerHTML+="7. AS1とAS2が同じ奴のチェック"+"\n";
+
+    o.innerHTML+=diffAs1As2()
+
+    o.innerHTML+="\n"
 	o.innerHTML+="おまけ：現在のカード数は"+Cards.length+"件です。\n";
 }
 
+function diffSs1Ss2(){
+    //SS1とSS2を比較してprocもしくはdescが同じである物を抽出
+    var ignoreCards=[6342, 6288, 6203, 6116, 6412, 6728, 6907]
+    var ignoreSkills=["skill_copy"]
+    var outp=""
+    Cards.forEach(function(card){
+        if(card.ss2){
+            var proc1 = JSON.stringify(card.ss1.proc)
+            var proc2 = JSON.stringify(card.ss2.proc)
+            var desc1 = JSON.stringify(card.ss1.desc)
+            var desc2 = JSON.stringify(card.ss2.desc)
+            if(proc1==proc2 || desc1==desc2){
+                if((function(){
+                    var res = true
+                    ignoreSkills.forEach(function(is){
+                        if(proc1.indexOf(is) != -1){
+                            res = false
+                        }
+                    })
+                    return res
+                })()){
+                    if(ignoreCards.indexOf(card.cardno)==-1){
+                        outp += (card.cardno + "| " + card.name) + "\n"
+                        outp += (desc1) + "\n"
+                        outp += (desc2) + "\n"
+                        outp += (proc1) + "\n"
+                        outp += "\n"
+                    }
+                }
+            }
+        }
+    })
+    return outp
+}
 
-
+function diffAs1As2(){
+    //AS1とAS2を比較してprocもしくはdescが同じである物を抽出
+    var ignoreCards=[]
+    var ignoreSkills=["skill_copy"]
+    var outp=""
+    Cards.forEach(function(card){
+        if(card.as2){
+            var proc1 = JSON.stringify(card.as1.proc)
+            var proc2 = JSON.stringify(card.as2.proc)
+            var desc1 = JSON.stringify(card.as1.desc)
+            var desc2 = JSON.stringify(card.as2.desc)
+            if(proc1==proc2 || desc1==desc2){
+                if((function(){
+                    var res = true
+                    ignoreSkills.forEach(function(is){
+                        if(proc1.indexOf(is) != -1){
+                            res = false
+                        }
+                    })
+                    return res
+                })()){
+                    if(ignoreCards.indexOf(card.cardno)==-1){
+                        outp += (card.cardno + "| " + card.name) + "\n"
+                        outp += (desc1) + "\n"
+                        outp += (desc2) + "\n"
+                        outp += (proc1) + "\n"
+                        outp += "\n"
+                    }
+                }
+            }
+        }
+    })
+    return outp
+}
 
 function causalityCheck(){
 	var ops=["ss1", "ss2"]
