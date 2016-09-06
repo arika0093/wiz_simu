@@ -2,6 +2,7 @@
 // 検索結果生成用の関数
 // -------------------------------
 var MatchResult = [];
+var MatchQuery = "";
 
 // UIのクエリをObjectにまとめる
 function schfl_create_queryobj() {
@@ -73,6 +74,7 @@ function schfl_show_result() {
 			schfl_grepshow_icon(rst_cards ,st);
 		}
 		MatchResult = rst_cards;
+		MatchQuery = st;
 	});
 }
 
@@ -309,9 +311,10 @@ function schfl_grep_awake(obj, awake) {
 // 得られた結果を表示する関数
 function schfl_grepshow(cs, st) {
 	cs = cs || MatchResult;
+	st = st || MatchQuery;
 	var div = $("#search_result");
 	var html = "";
-	html += st + "<br>";
+	html += "<div id='squery'>" + st + "</div>";
 	if (cs.length <= 0) {
 		html += "該当結果: 0件";
 	} else {
@@ -381,9 +384,10 @@ function schfl_genhtml_awake(aws) {
 // iconのみを並べる
 function schfl_grepshow_icon(cs, st) {
 	cs = cs || MatchResult;
+	st = st || MatchQuery;
 	var div = $("#search_result");
 	var html = "";
-	html += st + "<br>";
+	html += "<div id='squery'>" + st + "</div>";
 	if (cs.length <= 0) {
 		html += "該当結果: 0件";
 	} else {

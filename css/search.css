@@ -73,6 +73,18 @@ dd.left_pack{
 	margin-left: 0.5ex;
 }
 
+div#squery{
+	width: 99%;
+	margin: 0.5ex 0.5ex 2ex;
+	padding: 1ex 1em;
+	border-radius: 4px;
+	box-shadow:0px 0px 8px 1px #44aaff;
+	box-sizing: border-box;
+}
+div#squery::before{
+	content: "検索条件: ";
+}
+
 div.rst_item {
 	margin: 1ex 0.5ex 1.5ex;
 	padding: 0.5ex 0.5em;
