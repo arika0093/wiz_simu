@@ -5,10 +5,19 @@ var Deckdata = deckdata_DataTemplate();
 function decksgg_loaddeck(data) {
 	// deck select
 	Deckdata = data || deckdata_DataTemplate();
-	for (var i = 0; i < 5; i++) {
-		$("#deck0" + (i + 1)).attr("placeholder", "《精霊名を入力します》");
+	// 後方互換性
+	if (!Deckdata.deck[5]) {
+		Deckdata.deck[5] = deckdata_DeckCardTemplate();
+	}
+	// apply
+	for (var i = 0; i < 6; i++) {
+		if (i != 5) {
+			$("#deck0" + (i + 1)).attr("placeholder", "《精霊名を入力します》");
+		} else {
+			$("#deck0" + (i + 1)).attr("placeholder", "《精霊名を入力します: 助っ人》");
+		}
 		set_autocmp(i+1)();
-		if (Deckdata && Deckdata.deck[i].cardno > 0) {
+		if (Deckdata && Deckdata.deck[i] && Deckdata.deck[i].cardno > 0) {
 			// Get card
 			var crd = $.grep(Cards, function (e) {
 				return e.cardno == Deckdata.deck[i].cardno;
@@ -24,6 +33,13 @@ function decksgg_loaddeck(data) {
 	}
 	// quest select
 	$("#QstSel").val(Deckdata.quest);
+	// checkbox event
+	$("#helper_sel").toggle(Deckdata.deck[5].cardno > 0);
+	$("#helper_show").prop("checked", Deckdata.deck[5].cardno > 0);
+	$("#helper_show").on("click", function () {
+		var checked = $(this).prop("checked")
+		$("#helper_sel").toggle(checked);
+	});
 }
 
 // autocomplete指定 / deckload / Dialog
@@ -632,7 +648,7 @@ function deck_reset_ready() {
 }
 function deck_reset() {
 	Deckdata = deckdata_DataTemplate();
-	for (var i = 0; i < 5; i++) {
+	for (var i = 0; i < 6; i++) {
 		decksel_show(i + 1, null);
 		$("#deck0" + (i + 1)).val("");
 	}

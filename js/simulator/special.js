@@ -46,6 +46,8 @@ function ss_push(n) {
 			var is_rev = isexist_enemy_rev();
 			nextturn(!is_rev);
 		}
+		// 助っ人チェック
+		helper_change_process();
 		// 再表示
 		sim_show();
 	} else {

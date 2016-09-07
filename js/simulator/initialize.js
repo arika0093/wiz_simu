@@ -59,6 +59,9 @@ var Field = {
 		continue_eff: [],
 		// 最後に使用したSS
 		latest_ss: null,
+		// 助っ人関連
+		is_helper: false,		// 助っ人が存在するかどうか
+		is_hlpchanged: false,	// 助っ人と交代済であるか
 		// ターンetc関連
 		durturn: [],
 		nowturn: 1,
@@ -97,7 +100,7 @@ var Field = {
 
 // Field変数のログ(値が変わるallys.now, enemys.data, statusのみ入れておく)
 var Field_log = {
-	Allys_now: [],
+	Allys: [],
 	Enemys_data: [],
 	Enemys_revdata: [],
 	Status: [],
@@ -105,7 +108,7 @@ var Field_log = {
 	is_ssindex: false,
 	// 保存関数
 	save: function (index, fld) {
-		this.Allys_now[index] = $.extend(true, [], fld.Allys.Now);
+		this.Allys[index] = $.extend(true, [], fld.Allys);
 		this.Enemys_data[index] = $.extend(true, [], fld.Enemys.Data);
 		this.Enemys_revdata[index] = $.extend(true, [], fld.Enemys.revData);
 		this.Status[index] = $.extend(true, {}, fld.Status);
@@ -116,7 +119,7 @@ var Field_log = {
 	// 読み込み関数
 	load: function (index) {
 		var fld_reset = $.extend(true, {}, Field);
-		fld_reset.Allys.Now = $.extend(true, [], this.Allys_now[index]);
+		fld_reset.Allys = $.extend(true, [], this.Allys[index]);
 		fld_reset.Enemys.Data = $.extend(true, [], this.Enemys_data[index]);
 		fld_reset.Enemys.revData = $.extend(true, [], this.Enemys_revdata[index]);
 		fld_reset.Status = $.extend(true, {}, this.Status[index]);
@@ -135,7 +138,7 @@ var Field_log = {
 	// indexから先の余計な要素を消す
 	_removeover: function (index) {
 		for (var i = index + 1; i < this.length() ; i++) {
-			this.Allys_now[i] = [];
+			this.Allys[i] = [];
 			this.Enemys_data[i] = [];
 			this.Status[i] = {};
 		}
@@ -193,14 +196,24 @@ $(function () {
 			// 空要素を詰める
 			als.Deck = $.grep(als.Deck, function (e) { return e !== undefined; });
 			als.Now = $.grep(als.Now, function (e) { return e !== undefined; });
+			// 助っ人チェック
+			if (Field.Status.is_helper = !!als.Deck[5]) {
+				// 助っ人用位置へ移動させる(連番位置に置いておくと不便なので)
+				als.Deck["helper"] = als.Deck[5];
+				als.Now["helper"] = als.Now[5];
+				als.Deck.pop();
+				als.Now.pop();
+			}
 			// 潜在を反映させる
 			var dck = als.Deck;
 			for (var i = 0; i < dck.length; i++) {
 				var card = dck[i];
 				var now = als.Now[i];
 				add_awake_ally(dck, als.Now, i, false);
-				// 0tレジェンド精霊用
-				legend_timing_check(dck, als.Now, i);
+				if (i < 5) {
+					// 0tレジェンド精霊用(助っ人にはチェックを通さない)
+					legend_timing_check(dck, als.Now, i);
+				}
 			}
 			// -------------------------
 			// 敵データを読み込む
@@ -361,6 +374,8 @@ function nextturn(is_ssfin) {
 	};
 	// チャージスキル処理
 	turneff_chargeskill_check();
+	// 助っ人関連の処理
+	helper_change_process();
 	// seed リセット
 	Field.Status.seed = 0;
 	// ログ保存
@@ -375,4 +390,37 @@ function initialize_allys_flags(nows) {
 		e.flags.skill_counter = [];
 		e.flags.damage_hits = [];
 	});
+}
+
+// 助っ人交代の処理
+// (別ファイルを作るには内容が少ないのでここに記載)
+function helper_change_process() {
+	var fs = Field.Status;
+	var nows = Field.Allys.Now;
+	// チェックの必要がないなら何もしない
+	if (!fs.is_helper) {
+		return;
+	}
+	for (var i = 0; i < nows.length ; i++) {
+		if (fs.is_hlpchanged) {
+			continue;
+		}
+		if (nows[i].nowhp <= 0) {
+			// 入れ替え(Deck)
+			var sw_d = Field.Allys.Deck[i];
+			Field.Allys.Deck[i] = Field.Allys.Deck["helper"];
+			Field.Allys.Deck["helper"] = sw_d;
+			// 入れ替え(Now)
+			var sw_n = nows[i];
+			nows[i] = nows["helper"];
+			nows["helper"] = sw_n;
+			// 処理(L化)
+			nows[i].ss_current = 999;
+			legend_timing_check(Field.Allys.Deck, Field.Allys.Now, i);
+			// フラグON
+			fs.is_hlpchanged = true;
+			Field.log_push("Unit[" + (i + 1) + "]: 助っ人交代");
+		}
+	}
+
 }

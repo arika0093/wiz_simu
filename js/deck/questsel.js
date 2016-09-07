@@ -48,6 +48,11 @@ function sim_start() {
 		$("#dialog_sim_error").dialog("open");
 		return false;
 	} else {
+		// is use helper?
+		var checked = $("#helper_show").prop("checked");
+		if (!checked && dd.deck[5]) {
+			delete dd.deck.pop();
+		}
 		// redirect
 		deckdata_Create(dd, function (short) {
 			var redirect_url = '/simulator/p/?' + short;

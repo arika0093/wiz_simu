@@ -315,7 +315,7 @@ function sim_show() {
 	var cost_total = 0;
 	var paneb_total = [0, 0, 0, 0, 0];
 	var paneb_total_str = "";
-	for (var i = 0; i < Field.Allys.Deck.length; i++) {
+	for (var i = 0; i < Math.min(Field.Allys.Deck.length, 5); i++) {
 		cost_total += card_cost(Field.Allys.Deck[i]);
 		var paneb_aw = card_paneb(Field.Allys.Deck[i]);
 		for (var j = 0; j < 5; j++) {

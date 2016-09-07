@@ -3,7 +3,7 @@
 // ------------------------------------
 // dataのテンプレートを生成する
 function deckdata_DataTemplate(size) {
-	size = size || 5;
+	size = size || 6;
 	var data = {
 		quest: "",
 		deck: [],
@@ -46,7 +46,7 @@ function deckdata_Load(query, fc) {
 	}
 	// type check
 	if (query == "") {
-		fc(deckdata_DataTemplate(5));
+		fc(deckdata_DataTemplate());
 	} else if (!deckdata_CheckOldUrl(query)) {
 		// new ver
 		deckdata_LoadUrl(query, function (result) {
@@ -66,8 +66,9 @@ function deckdata_Apply(data, ignore_check) {
 	var is_valid = false;
 	data = $.extend(true, {}, data || deckdata_DataTemplate(5));
 	// 状況取得(card)
-	for (var i = 0; i < 5; i++) {
+	for (var i = 0; i < 6; i++) {
 		var inp_name = $("#deck0" + (i + 1)).val();
+		if (!data.deck[i]) { continue; }
 		if (inp_name != "") {
 			var crd = $.grep(Cards, function (e, i) {
 				return e.name == inp_name && !e.disable;

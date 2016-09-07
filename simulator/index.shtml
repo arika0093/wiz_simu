@@ -177,6 +177,26 @@
 									<p class="ally_mana" id="ally05_mana"></p>
 								</div>
                             </div>
+                            <div class="ally clearfix" id="helper_sel">
+                                <div class="attr_none" id="ally06_attr_main">.</div>
+                                <div class="attr_none" id="ally06_attr_sub">.</div>
+                                <div class="ally_others">
+                                    <div class="input_div">
+                                        <input class="decksel" id="deck06" onchange="decksel(6)" />
+                                        <img onclick="search_click(6);" class="srchimg" src="/image/parts/search_tip.png" />
+                                    </div>
+                                    <button class="ally_edit" tabindex="-1" id="ally0x_edit" onclick="open_deckedit(5)">潜在結晶</button>
+                                    <p class="ally_skill" id="ally06_as"></p>
+                                    <p class="ally_skill" id="ally06_ss"></p>
+                                </div>
+                                <div class="ally_image">
+                                    <img class="chara_img" id="ally06_img" src="/image/noimage.png" onclick="open_manaedit(5)" />
+                                    <p class="ally_mana" id="ally06_mana"></p>
+                                </div>
+                            </div>
+                            <div class="helper_sh">
+                                <input type="checkbox" id="helper_show" /><label for="helper_show">助っ人指定機能を使用する(※β版)</label>
+                            </div>
 						</div>
 						<div class="twitter">
 							<a class="twitter-timeline" href="https://twitter.com/hashtag/wiz_simu" data-widget-id="679640455609368576">#wiz_simu のツイート</a>
