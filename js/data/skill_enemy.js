@@ -1015,7 +1015,12 @@ function s_enemy_discharge(tnum, minus_turn) {
 	return m_create_enemy_move(function (fld, n) {
 		var nows = fld.Allys.Now;
 		$.each(nows, function (i, e) {
+			// 潜在の状態無効を確認
 			var card = fld.Allys.Deck[i];
+			var is_abs_guard_aw = Awake_AbsInvalid(card, nows[i], "discharge");
+			if (is_abs_guard_aw) {
+				return false;
+			}
 			var endcharge = card.islegend ? card.ss2.turn : card.ss1.turn;
 			var is_lgmode = card.islegend & endcharge <= e.ss_current;
 			e.ss_current = Math.max(Math.min(endcharge, e.ss_current) - minus_turn, 0);

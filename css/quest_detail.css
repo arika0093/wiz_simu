@@ -127,9 +127,16 @@ b.imp_move{
 	text-decoration: underline;
 }
 
+div.bcks{
+	float: right;
+	margin: .5ex 0 1ex;
+}
+div.bcks:after{
+	clear: right;
+}
 a.back_category{
-	display:block;
-	text-align: right;
+	display: inline-block;
+	margin-left: 1em;
 }
 
 dd#category_view{

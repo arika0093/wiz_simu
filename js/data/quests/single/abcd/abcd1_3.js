@@ -130,7 +130,7 @@
                      damage_switch(s_enemy_when_hpdown(0.5), m_enemy_angry(), true)
                   ],
                   on_move: [
-                     s_enemy_attack(2000, 1, 1, true)
+                     s_enemy_attack(2000, 1, 1, m_enemy_tgtype_minhp())
                   ],
                   on_angry: [
                      s_enemy_force_reservoir()

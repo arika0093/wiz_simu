@@ -150,15 +150,15 @@ function turneff_chargeskill_check() {
 		});
 		for (var c = 0; c < tf_chs.length; c++) {
 			var tf = tf_chs[c];
-			if (tf.charge_turn <= 0) {
+			if (tf.charge_turn <= 0 && tf.charged_fin) {
 				// 残りカウントが0なら関数実行
 				tf.charged_fin(Field, i);
 				tf.charged_fin = null;
+				/*
 				// 削除
 				turneff_break_cond(e.turn_effect, -1, function (tf) {
 					return !tf.charged_fin && tf.charge_turn <= 0;
 				}, "end");
-				/*
 				// 発動後処理
 				ss_afterproc(i);
 				// 全滅していたら次のターンへ進む

@@ -76,9 +76,10 @@ function makeQD(id) {
 				resStr += "</div>"
 			})
 			resStr += "</div>"
-			resStr +=
+			resStr += "<div class='bcks'>" +
+				"<a class='sim_go back_category' href='#'>試走する</a>" +
 				"<a class='back_category' href='/simulator/d/?id=" + Quest.id + "'>みんなの投稿デッキを見る</a>" +
-				"<a class='back_category' href='/simulator/quest/?genre=" + Quest.category + "'>カテゴリ一覧に戻る</a>";
+				"<a class='back_category' href='/simulator/quest/?genre=" + Quest.category + "'>カテゴリ一覧に戻る</a></div>";
 		})
 		resStr += "</dd>";
 		return true;
@@ -89,6 +90,10 @@ function makeQD(id) {
 		var h = "<dl class='List'><dt>ERROR OCCURRED.</dt><dd>存在しないクエストが指定されました。</dd></dl>";
 		$("#result").html(h);
 	}
+	$("a.sim_go").on("click", function () {
+		sim_by_id(id);
+		return;
+	});
 }
 
 // on_hogehogeの全行動を返す

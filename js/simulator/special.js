@@ -90,8 +90,9 @@ function ss_procdo(ss, now, index) {
 						// SS以外で戦闘を跨いだ場合カウントを減らす
 						if (is_t || (!is_sfin && is_b)) {
 							teff.charge_turn--;
-							teff.desc = "チャージスキル待機(残り" + teff.charge_turn + "t)";
+							teff.desc = "チャージスキル待機(残り" + Math.max(teff.charge_turn, 0) + "t)";
 						}
+						this.ss_disabled = (teff.charge_turn > 0);
 					},
 					// 発動スキル
 					charged_fin: function (fld, oi) {
@@ -114,6 +115,10 @@ function ss_procdo(ss, now, index) {
 					}
 				}
 				now.flags.ss_chargeskl = null;
+				// 削除
+				turneff_break_cond(now.turn_effect, -1, function (tf) {
+					return !tf.charged_fin && tf.charge_turn <= 0;
+				}, "end");
 				return true;
 			}
 		}

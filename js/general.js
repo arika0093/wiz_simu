@@ -192,7 +192,8 @@ function comma3(myNum){
 
 // 指定したidのシミュレータを開く
 function sim_by_id(id){
-	var dd = {"quest":id,"deck":[{"cardno":0,"mana":200,"awake":-1,"awake_default":-1,"crystal":[]},{"cardno":0,"mana":200,"awake":-1,"awake_default":-1,"crystal":[]},{"cardno":0,"mana":200,"awake":-1,"awake_default":-1,"crystal":[]},{"cardno":0,"mana":200,"awake":-1,"awake_default":-1,"crystal":[]},{"cardno":0,"mana":200,"awake":-1,"awake_default":-1,"crystal":[]}]}
+	var dd = deckdata_DataTemplate();
+	dd.quest = id;
 	$.ajax({
 		type: 'POST',
 		url: "http://wiztools.net/api/shorten.php",

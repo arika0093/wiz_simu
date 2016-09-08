@@ -195,7 +195,7 @@
                                 </div>
                             </div>
                             <div class="helper_sh">
-                                <input type="checkbox" id="helper_show" /><label for="helper_show">助っ人指定機能を使用する(※β版)</label>
+                                <input type="checkbox" id="helper_show" /><label for="helper_show">助っ人指定機能を使用する(β版)</label>
                             </div>
 						</div>
 						<div class="twitter">
