@@ -1034,6 +1034,7 @@ Cards = [{
 	cost: 47,
 	attr: [0, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Statusup(200, 0),
 		Statusup(200, 0),
@@ -2580,6 +2581,7 @@ Cards = [{
 	cost: 46,
 	attr: [0, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Panel_boost([1,0,0,0,0], 1),
 		Statusup(0, 200),
@@ -3158,6 +3160,7 @@ Cards = [{
 	cost: 43,
 	attr: [0, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Panel_boost([1,0,0,0,0], 1),
@@ -3735,6 +3738,7 @@ Cards = [{
 	cost: 46,
 	attr: [0, 2],
 	species: [9],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Attr_statusup(100, 0, [1, 0, 1, 0, 0]),
@@ -4134,6 +4138,7 @@ Cards = [{
 	cost: 49,
 	attr: [0, 1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Panel_boost([1,0,0,0,0], 1),
 		Attr_statusup(0, 100, [1, 1, 0, 0, 0]),
@@ -5469,6 +5474,7 @@ Cards = [{
 	cost: 48,
 	attr: [1, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
 		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
@@ -5557,6 +5563,7 @@ Cards = [{
 	cost: 48,
 	attr: [1, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
@@ -6223,6 +6230,7 @@ Cards = [{
 	cost: 48,
 	attr: [1, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
 		Fastskill(1),
@@ -6397,6 +6405,7 @@ Cards = [{
 	cost: 48,
 	attr: [1, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
 		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
@@ -9805,6 +9814,7 @@ Cards = [{
 	cost: 46,
 	attr: [1, 2],
 	species: [9],
+	disable: true,
 	awakes: [
 		Attr_statusup(100, 0, [0, 1, 1, 0, 0, ]),
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
@@ -12382,6 +12392,7 @@ Cards = [{
 	cost: 46,
 	attr: [2, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Panel_boost([0, 0, 1, 0, 0, ], 1),
 		Statusup(0, 200),
@@ -13353,6 +13364,7 @@ Cards = [{
 	cost: 45,
 	attr: [2, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Statusup(0, 200),
 		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
@@ -13443,6 +13455,7 @@ Cards = [{
 	cost: 43,
 	attr: [2, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Panel_boost([0, 0, 1, 0, 0, ], 1),
@@ -14018,6 +14031,7 @@ Cards = [{
 	cost: 49,
 	attr: [2, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Heal_afterbattle(10),
 		Statusup(0, 200),
@@ -14989,6 +15003,7 @@ Cards = [{
 	cost: 47,
 	attr: [2, 0],
 	species: [8],
+	disable: true,
 	awakes: [
 		Attr_statusup(100, 0, [1, 0, 1, 0, 0, ]),
 		Panel_boost([0, 0, 1, 0, 0, ], 1),
@@ -15707,6 +15722,7 @@ Cards = [{
 	attr: [2, -1],
 	species: [9],
 	islegend: true,
+	disable: true,
 	as1: {
 		desc: "3チェインで単体を5回連続攻撃(350%)",
 		proc: ChainDualAttack(3.5, 3, 5),
@@ -35315,6 +35331,7 @@ Cards = [{
 	cost: 42,
 	attr: [0,-1],
 	species: [8],
+	disable: true,
 	islegend: true,
 	ape: "クロマグⅠ",
 	as1: {
@@ -40826,6 +40843,7 @@ Cards = [{
     cost: 48,
     attr: [0, -1],
     species: [8],
+	disable: true,
     awakes: [
         Fastskill(1),
         Panel_boost([1, 0, 0, 0, 0, ], 1),
@@ -45161,7 +45179,7 @@ Cards = [{
 		NEFTJOD(30),
 	],
 },{
-	name: "胸焦がす乙女心　リンカ・ワイアット",
+	name: "胸焦がす乙女心 リンカ・ワイアット",
 	cardno: 6999,
 	imageno: 8997,
 	hp: 2930,
