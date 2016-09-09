@@ -96,6 +96,12 @@ function minus_legend_awake(cards, nows, own_no) {
 				now.maxhp -= e.up_hp;
 				now.nowhp = Math.min(now.maxhp, now.nowhp);
 				now.atk -= e.up_atk;
+				// 副属性一致潜在だったらさらに減らす
+				if (e.sub_attr && e.sub_attr[cards[t].attr[1]] > 0) {
+					nows[t].maxhp -= e.up_hp_2;
+					nows[t].nowhp -= e.up_hp_2;
+					nows[t].atk -= e.up_atk_2;
+				}
 			}
 		}
 	});

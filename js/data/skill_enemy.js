@@ -951,6 +951,8 @@ function s_enemy_continue_damage(turn, initialdamage, continuedamage){
 		var tg = gen_enemytarget_array(5, 1, false);
 		for (var i = 0; i < tg[0].length; i++) {
 			_s_enemy_attack(fld, initialdamage, n, tg[0][i], false);
+			// スキルカウンターを有効に
+			Field.Allys.Now[tg[0][i]].flags.skill_counter[n] = true;
 		}
 		ss_continue_effect_add({
 			type: "continue_damage_by_enemy",

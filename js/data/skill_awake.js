@@ -143,6 +143,7 @@ function Abstate_invalid(tg_type) {
 		"all_sealed": "封印",
 		"poison": "毒",
 		"death_limit": "死の秒針",
+		"discharge": "ディスチャージ",
 	};
 	return {
 		type: "abstate_invalid",
@@ -171,6 +172,27 @@ function Guild_statusup(hp, atk) {
 		up_atk: atk,
 		name: "ギルドマスターの" + (hp != 0 ? "誓い" : "誇り") + int2roman(Math.max(hp, atk) / 100),
 		desc: "通常エリアでのみ" + (hp != 0 ? "HP" : "攻撃力") + "が" + Math.max(hp, atk) + "アップする"
+	};
+}
+
+// デッキ単色時のみステアップ
+function OnlyAttr_statusup(hp, atk, o_attr) {
+	return {
+		type: "status_up",
+		up_hp: hp,
+		up_atk: atk,
+		onlyattr: o_attr,
+		name: "デッキ単色時のみステアップ",
+		desc: "デッキ単色時のみステアップ",
+		cond: function (fld, ai, oi) {
+			// 発動条件
+			var rst = true;
+			var dcs = fld.Allys.Deck;
+			for (var i = 0; i <= dcs.length; i++) {
+				rst = rst && dcs.attr[0] == this.onlyattr && dcs.attr[1] == -1;
+			}
+			return rst;
+		}
 	};
 }
 
