@@ -17965,7 +17965,7 @@ Cards = [{
 	},
 	awakes: [
 		Statusup(0, 200),
-		Attr_statusup(100, 0, [0, 0, 0, 0, 0, ]),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
 		Panel_boost([0, 1, 0, 0, 0, ], 2),
 		Attr_relief([1, 1, 1, 1, 1, ], 10),
 		NEFTJOD(30),
@@ -41459,7 +41459,7 @@ Cards = [{
 	},
 	ss1: {
 		desc: "<パネル変換>ジャンルパネルをALL属性化",
-		turn: 1,
+		turn: 4,
 		proc: [ss_panel_change([1,1,1,0,0])],
 	},
 	awakes: [
@@ -44309,9 +44309,9 @@ Cards = [{
 		proc: ChainStakesAttack(0, 5, 0),
 	},
 	ss1: {
-		desc: "[poison(2500, 3)]",
-		turn: 0,
-		proc: null,
+		desc: "<毒>4ターンの間、敵全体に毒のダメージを与える(9000)",
+		turn: 5,
+		proc: [poison(2500, 3)],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],1),
