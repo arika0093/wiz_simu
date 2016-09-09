@@ -42,7 +42,7 @@ function getCategoryJp(key){
 
 // クエストの詳細を表示
 function makeQD(id) {
-	var resStr = ""
+	var resStr = "";
 	var rst = $.grep(Quests, function (Quest, QuestNum) {
 		// match check
 		if (id && Quest.id != id) {
@@ -82,6 +82,37 @@ function makeQD(id) {
 				"<a class='back_category' href='/simulator/quest/?genre=" + Quest.category + "'>カテゴリ一覧に戻る</a></div>";
 		})
 		resStr += "</dd>";
+		Quest.revData.forEach(function (Enemy, EnemyNum) {
+			resStr += "<dd class='left_min'>" +
+				"<p class='battle_num'>復活後</p><div class='battle_d'>"
+			var move = Enemy.move;
+			// add main
+			var myid = "Q" + QuestNum + "Brev" + EnemyNum;
+			resStr += "<div class='etd clearfix' id=" + myid + ">";
+			resStr += "<img class='eico" + (Enemy.hp < 100 ? " impregnable" : "") +
+				"' src=" + get_image_url_b(Enemy.imageno) + ">";
+			resStr += "<div class='e_name'>" + Enemy.name + "</div>";
+			resStr += "<p class='e_attrspec'>" + get_attr_string(Enemy.attr) +
+				" / " + get_spec_string(Enemy.spec) + "</p>";
+			resStr += "<p class='e_hp'>" + addform("HP", comma3(Enemy.hp)) + "</p>";
+			// add move
+			if (move != undefined) {
+				resStr += "<p class='em_fst'>" + addform("初回", move.turn, "T") +
+					" / " + addform("行動周期", move.wait, "T") + "</p>"
+				resStr += "<div class='e_move'>" + moveappear(move, "on_popup", "先制攻撃")
+				resStr += moveappear(move, "on_move", "通常時")
+				resStr += moveappear(move, "on_angry", "怒った時")
+				resStr += moveappear(move, "on_move_angry", "怒り後") + "</div>"
+			}
+			resStr += "</div>"
+			resStr += "</div>"
+			resStr += "<div class='bcks'>" +
+				"<a class='sim_go back_category' href='#'>試走する</a>" +
+				"<a class='back_category' href='/simulator/d/?id=" + Quest.id + "'>みんなの投稿デッキを見る</a>" +
+				"<a class='back_category' href='/simulator/quest/?genre=" + Quest.category + "'>カテゴリ一覧に戻る</a></div>";
+			resStr += "</dd>";
+			return true;
+		});
 		return true;
 	});
 	if (rst.length > 0) {
@@ -106,7 +137,7 @@ function moveappear(moveObj, key, title) {
 		tmpObj.forEach(function (ss) {
 			if (ss != undefined) {
 				var isimp = $.grep(impTag, function (e) {
-					return ss.mdesc.indexOf(e) >= 0;
+					return ss.mdesc && ss.mdesc.indexOf(e) >= 0;
 				}).length > 0;
 
 				strBody += (isimp ? "<b class='imp_move'>" : "") + ss.mdesc +
