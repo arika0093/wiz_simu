@@ -359,6 +359,22 @@ function ss_damageblock_all(d, t, calltype) {
 }
 
 /**
+ * 自身にダメージブロックをかける
+ * d:	無効ダメージ値
+ * t:	継続ターン数
+**/
+function ss_damageblock_own(d, t) {
+	return ss_template({
+		name: "ss_damageblock_all",
+		type: "turn_effect",
+		subtype: "damageblock",
+		target: "own",
+		p1: d,
+		p2: t,
+	});
+}
+
+/**
  * 味方全体に状態異常無効の効果を付与
  * t: 継続ターン数
 **/
