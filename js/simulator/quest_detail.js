@@ -50,6 +50,9 @@ function makeQD(id) {
 		}
 		// generate html
 		resStr += "<dt>" + Quest.name + "</dt>"
+		if(Quest.revData){
+			Quest.data.push({enemy:Quest.revData})
+		}
 		Quest.data.forEach(function (Battle, BattleNum) {
 			resStr += "<dd class='left_min'>" +
 				"<p class='battle_num'>" + Battle.appearance + "戦目</p><div class='battle_d'>"
