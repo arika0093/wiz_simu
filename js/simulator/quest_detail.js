@@ -109,7 +109,11 @@ function moveappear(moveObj, key, title) {
 		tmpObj.forEach(function (ss) {
 			if (ss != undefined) {
 				var isimp = $.grep(impTag, function (e) {
-					return ss.mdesc.indexOf(e) >= 0;
+					if(ss.mdesc != undefined){
+						return ss.mdesc.indexOf(e) >= 0;
+					}else{
+						return "undefined"
+					}
 				}).length > 0;
 
 				strBody += (isimp ? "<b class='imp_move'>" : "") + ss.mdesc +
