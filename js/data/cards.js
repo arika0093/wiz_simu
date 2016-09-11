@@ -43343,7 +43343,7 @@ Cards = [{
 	species: [1],
 	islegend: true,
 	ape: "YAOYORO Z",
-	alias: ["ミコト", "セイ", "スオウ"],
+	alias: ["ミコト", "セイ", "スオウ", "あいむかみんぐ", "やおよろぜっと"],
 	as1: {
 		desc: "6チェインでダメージアップ、リーダー時にさらにアップ(500%/600%)",
 		proc: [ChainAttack(5.0, 6), ChainAttack_Leader(6.0, 6)],
@@ -43480,7 +43480,7 @@ Cards = [{
 	species: [1],
 	islegend: true,
 	ape: "YAOYORO Z",
-	alias: ["トミ", "マトイ", "ツクヨ"],
+	alias: ["トミ", "マトイ", "ツクヨ", "いこくじょうちょとあでやかなへんげたん"],
 	as1: {
 		desc: "水・雷属性の味方を回復、HP20%以下でさらに回復(13%/38%)",
 		proc: [Heal(0.13, [0,1,1,0,0], 0), add_cond(Heal(0.38, [0,1,1,0,0], 0), when_hp_less(0.20))],

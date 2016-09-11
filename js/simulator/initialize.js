@@ -205,15 +205,17 @@ $(function () {
 				als.Now.pop();
 			}
 			// 潜在を反映させる
+			for (var p in als.Deck) {
+				var card = als.Deck[p];
+				var now = als.Now[p];
+				add_awake_ally(als.Deck, als.Now, p, false);
+				if (Number(p) >= 0) {
+					// 0tレジェンド精霊用(助っ人にはチェックを通さない)
+					legend_timing_check(als.Deck, als.Now, p);
+				}
+			}
 			var dck = als.Deck;
 			for (var i = 0; i < dck.length; i++) {
-				var card = dck[i];
-				var now = als.Now[i];
-				add_awake_ally(dck, als.Now, i, false);
-				if (i < 5) {
-					// 0tレジェンド精霊用(助っ人にはチェックを通さない)
-					legend_timing_check(dck, als.Now, i);
-				}
 			}
 			// -------------------------
 			// 敵データを読み込む
