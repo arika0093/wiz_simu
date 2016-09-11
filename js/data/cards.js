@@ -23921,7 +23921,7 @@ Cards = [{
 	ss1: {
 		desc: "味方のMAXHP70%を使い、敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(400%/900%)",
 		turn: 6,
-		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 9.0, 4.0), [1], 1), ss_consume_all(0.70)],
+		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 9.0, 4.0), [1]), ss_consume_all(0.70)],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -23942,7 +23942,7 @@ Cards = [{
 	ss2: {
 		desc: "味方のMAXHP70%を使い、敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(400%/1300%)",
 		turn: 9,
-		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 13.0, 4.0), [1], 1), ss_consume_all(0.70)],
+		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 13.0, 4.0), [1]), ss_consume_all(0.70)],
 	},
 	Lawake: [
 		Statusup(0, 600),
