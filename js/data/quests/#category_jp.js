@@ -7,16 +7,19 @@ category_jp = {
 		jp: "過去のイベントトーナメント",	// jp: カテゴリ名
 		is_dispsim: true,			// is_dispsim: 試走クエスト選択に表示させるかどうか
 		sim_index: 50,				// sim_index: 表示させる場合の表示順(昇順)
+		is_notusedhelper: true,		// is_notusedhelper: 助っ人使用不可かどうか
 	},
     "tornament": {
 		jp: "トーナメント",
 		is_dispsim: true,
 		sim_index: 2,
+		is_notusedhelper: true,	
 	},
     "evtornament": {
 		jp: "イベントトーナメント",
 		is_dispsim: true,
 		sim_index: 1,
+		is_notusedhelper: true,	
 	},
     "other": {
 		jp: "その他",
@@ -65,7 +68,7 @@ category_jp = {
     },
     "gqw": {
     	jp: "高校生クイズ",
-    	is_dispsim: true,
+    	is_dispsim: false,
     	sim_index: 15,
     },
     "8million2": {

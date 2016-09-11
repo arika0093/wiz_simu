@@ -2,8 +2,8 @@ $.each(Quests, function(n, e){
     // Questの要素にcategory_jp内要素を突っ込む
 	var ctjp = category_jp[e.category] || {};
 	e.category_jp = ctjp.jp;
-	e.is_dispmenu = ctjp.is_dispmenu;    
 	e.is_dispsim  = ctjp.is_dispsim;    
+	e.is_notusedhelper = ctjp.is_notusedhelper;    
 
     e.sortKey = {}
     // category内の定義順

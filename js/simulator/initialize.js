@@ -197,10 +197,13 @@ $(function () {
 			als.Deck = $.grep(als.Deck, function (e) { return e !== undefined; });
 			als.Now = $.grep(als.Now, function (e) { return e !== undefined; });
 			// 助っ人チェック
-			if (Field.Status.is_helper = !!als.Deck[5]) {
-				// 助っ人用位置へ移動させる(連番位置に置いておくと不便なので)
-				als.Deck["helper"] = als.Deck[5];
-				als.Now["helper"] = als.Now[5];
+			if (!!als.Deck[5]) {
+				if (!simQuest.is_notusedhelper) {
+					// 助っ人用位置へ移動させる(連番位置に置いておくと不便なので)
+					als.Deck["helper"] = als.Deck[5];
+					als.Now["helper"] = als.Now[5];
+					Field.Status.is_helper = true;
+				}
 				als.Deck.pop();
 				als.Now.pop();
 			}
@@ -400,7 +403,7 @@ function helper_change_process() {
 	var fs = Field.Status;
 	var nows = Field.Allys.Now;
 	// チェックの必要がないなら何もしない
-	if (!fs.is_helper) {
+	if (!fs.is_helper || is_ally_alldeath()) {
 		return;
 	}
 	for (var i = 0; i < nows.length ; i++) {
