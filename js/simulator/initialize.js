@@ -100,7 +100,7 @@ var Field = {
 
 // Field変数のログ(値が変わるallys.now, enemys.data, statusのみ入れておく)
 var Field_log = {
-	Allys: [],
+	Allys: {},
 	Enemys_data: [],
 	Enemys_revdata: [],
 	Status: [],
@@ -108,7 +108,7 @@ var Field_log = {
 	is_ssindex: false,
 	// 保存関数
 	save: function (index, fld) {
-		this.Allys[index] = $.extend(true, [], fld.Allys);
+		this.Allys[index] = $.extend(true, {}, fld.Allys);
 		this.Enemys_data[index] = $.extend(true, [], fld.Enemys.Data);
 		this.Enemys_revdata[index] = $.extend(true, [], fld.Enemys.revData);
 		this.Status[index] = $.extend(true, {}, fld.Status);

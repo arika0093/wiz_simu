@@ -49,12 +49,14 @@ function panel(attr) {
 	}
 	// 味方攻撃処理
 	{
+		// 攻撃前状況のコピー
+		var bf = $.extend(true, {}, Field);
 		// 使用したASリスト
 		var as_afters = [];
 		// AS無視しないなら普通に、無視状況なら取得を少なく
 		if (!as_ignore) {
 			// エンハ処理
-			answer_skill(pickup_answerskills(attr, "support"), attr, as_afters);
+			answer_skill(pickup_answerskills(attr, "support"), attr, as_afters, bf);
 			// 攻撃
 			var atk_skill = pickup_answerskills(attr, "attack");
 			// 攻撃不可状況を除きデフォASを追加する
@@ -63,11 +65,11 @@ function panel(attr) {
 					atk_skill[i].unshift(Default_as()[0]);
 				}
 			});
-			answer_skill(atk_skill, attr, as_afters);
+			answer_skill(atk_skill, attr, as_afters, bf);
 			// 回復
-			answer_skill(pickup_answerskills(attr, "heal"), attr, as_afters);
+			answer_skill(pickup_answerskills(attr, "heal"), attr, as_afters, bf);
 			// SS効果発動
-			answer_skill(pickup_answerskills(attr, "as_spskill"), attr, as_afters);
+			answer_skill(pickup_answerskills(attr, "as_spskill"), attr, as_afters, bf);
 		} else {
 			// 攻撃
 			var atk_skill = pickup_answerskills(attr, "");
@@ -77,7 +79,7 @@ function panel(attr) {
 					atk_skill[i].unshift(Default_as()[0]);
 				}
 			});
-			answer_skill(atk_skill, attr, as_afters);
+			answer_skill(atk_skill, attr, as_afters, bf);
 		}
 		// 使用したASの使用後処理
 		for (var i = 0; i < as_afters.length; i++) {
@@ -192,7 +194,7 @@ function pickup_answerskills(attr, type, subtype) {
 }
 
 // アンサースキルの前処理
-function answer_skill(as_arr, panel, as_afters) {
+function answer_skill(as_arr, panel, as_afters, bef_f) {
 	// 残り連撃回数管理
 	var atk_duals = [1, 1, 1, 1, 1];
 	var rem_duals = [1, 1, 1, 1, 1];
@@ -221,7 +223,7 @@ function answer_skill(as_arr, panel, as_afters) {
 			var card = Field.Allys.Deck[i];
 			var as = as_arr[i][j];
 			// ASが適用されるならば攻撃数を取得
-			if (as.type == "attack" && is_answer_target(as, chain, -1, -1, i, -1, panel)) {
+			if (as.type == "attack" && is_answer_target(bef_f, as, chain, -1, -1, i, -1, panel)) {
 				var subattr = (card.attr[1] >= 0) ? 2 : 1;
 				rem_duals[i] = Math.max(rem_duals[i], as.atkn * subattr);
 				atk_duals[i] = rem_duals[i];
@@ -233,12 +235,12 @@ function answer_skill(as_arr, panel, as_afters) {
 	do {
 		// 現在の参照精霊を優先して処理
 		if (loop_ct < as_arr.length) {
-			answer_skill_proc(as_arr, panel, loop_ct, atk_duals, rem_duals, loop_ct, as_afters);
+			answer_skill_proc(as_arr, panel, loop_ct, atk_duals, rem_duals, loop_ct, as_afters, bef_f);
 		}
 		// それ以外を処理
 		for (var i = 0; i < as_arr.length; i++) {
 			if (i == loop_ct) { continue; }
-			answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, loop_ct, as_afters);
+			answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, loop_ct, as_afters, bef_f);
 		}
 	} while (function () {
 		// 残攻撃回数を減らして全て0以下なら終了
@@ -255,7 +257,7 @@ function answer_skill(as_arr, panel, as_afters) {
 }
 
 // アンサースキルの処理
-function answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, loop_ct, as_afters) {
+function answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, loop_ct, as_afters, bef_f) {
 	var card = Field.Allys.Deck[i];
 	var now = Field.Allys.Now[i];
 	var subattr = (card.attr[1] && card.attr[1] >= 0) ? 2 : 1;
@@ -280,22 +282,22 @@ function answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, loop_ct, as_a
 	}
 	// 攻撃属性がないならスルー
 	if (atk_attr < 0) { return; }
-		// 種類で分岐
-		var rst = [];
-		switch (as_arr[i][0].type) {
-			case "attack":
-				rst = answer_attack(card, now, enemy_dat, as_arr[i], atk_attr, panel, i, rem_duals[i]);
-				break;
-			case "support":
-				rst = answer_enhance(as_arr[i], i, panel);
-				break;
-			case "heal":
-				rst = answer_heal(as_arr[i], i, panel);
-				break;
-			case "as_spskill":
-				rst = answer_spskill(as_arr[i], i, panel);
-				break;
-		}
+	// 種類で分岐
+	var rst = [];
+	switch (as_arr[i][0].type) {
+		case "attack":
+			rst = answer_attack(card, now, enemy_dat, as_arr[i], atk_attr, panel, i, rem_duals[i], bef_f);
+			break;
+		case "support":
+			rst = answer_enhance(as_arr[i], i, panel, bef_f);
+			break;
+		case "heal":
+			rst = answer_heal(as_arr[i], i, panel, bef_f);
+			break;
+		case "as_spskill":
+			rst = answer_spskill(as_arr[i], i, panel, bef_f);
+			break;
+	}
 	// 攻撃後処理に追加
 	if (rst.length > 0) {
 		as_afters.push(rst);
@@ -304,7 +306,7 @@ function answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, loop_ct, as_a
 
 // AS攻撃の処理
 // (カード種類, 現在の状況, 敵データ, 自身のAS一覧, 攻撃属性, パネル, 味方番号, 残り攻撃回数)
-function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem) {
+function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem, bef_f) {
 	// 敵それぞれに対して有効なASのindexの配列
 	var as_rate = [];
 	var as_pos = [];
@@ -315,7 +317,7 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem) {
 	for (var ai = 0; ai < as.length; ai++) {
 		var chain = Field.Status.chain;
 		for (var ei = 0; ei < enemy.length; ei++) {
-			var is_ans = is_answer_target(as[ai], chain, enemy[ei].attr, enemy[ei].spec, index, ei, panel);
+			var is_ans = is_answer_target(bef_f, as[ai], chain, enemy[ei].attr, enemy[ei].spec, index, ei, panel);
 			var rate_n = (is_ans ? as[ai].rate : 0);
 			var rate_b = (as_pos[ei] !== undefined ? as_rate[ei] : 0);
 			// 解答時間依存処理
@@ -364,7 +366,7 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem) {
 }
 
 // エンハスキルの処理
-function answer_enhance(as, i, p) {
+function answer_enhance(as, i, p, bef_f) {
 	var as_afters = [];
 	for (var ci = 0; ci < Field.Allys.Deck.length; ci++) {
 		var ass = {rate: 0};
@@ -376,7 +378,7 @@ function answer_enhance(as, i, p) {
 		// 最大の値を取り出す
 		for (var ai = 0; ai < as.length; ai++) {
 			var as_t = { rate: 0 };
-			if (is_answer_target(as[ai], chain, card.attr[0], card.species, i, -1, p, ci)) {
+			if (is_answer_target(bef_f, as[ai], chain, card.attr[0], card.species, i, -1, p, ci)) {
 				as_t = as[ai];
 				// 解答時間依存処理
 				if (as[ai].is_timedep) {
@@ -398,7 +400,7 @@ function answer_enhance(as, i, p) {
 }
 
 // 回復スキルの処理
-function answer_heal(as, i, p) {
+function answer_heal(as, i, p, bef_f) {
 	var as_afters = [];
 	for (var ci = 0; ci < Field.Allys.Deck.length; ci++) {
 		var ass = {rate: 0};
@@ -410,7 +412,7 @@ function answer_heal(as, i, p) {
 		// 最大の値を取り出す
 		for (var ai = 0; ai < as.length; ai++) {
 			var as_t = {rate: 0};
-			if(is_answer_target(as[ai], chain, card.attr[0], card.species, i, -1, p, ci)){
+			if (is_answer_target(bef_f, as[ai], chain, card.attr[0], card.species, i, -1, p, ci)) {
 				as_t = as[ai];
 				// 解答時間依存処理
 				if (as[ai].is_timedep) {
@@ -435,11 +437,11 @@ function answer_heal(as, i, p) {
 }
 
 // SP発動スキルの処理
-function answer_spskill(as, i, p) {
+function answer_spskill(as, i, p, bef_f) {
 	var as_afters = [];
 	for (var ai = 0; ai < as.length; ai++) {
 		ass = as[ai];
-		if(is_answer_target(ass, chain, -1, -1, i, -1, panel)){
+		if (is_answer_target(bef_f, ass, chain, -1, -1, i, -1, panel)) {
 			var sco = ass.skill(ass.p1, ass.p2, ass.p3, ass.p4);
 			ss_object_done(Field, i, sco);
 		}
@@ -452,7 +454,7 @@ function answer_spskill(as, i, p) {
 }
 
 // ASの対象になるかどうかを確認する
-function is_answer_target(as, ch, tg_attr, tg_spec, own_i, enm_i, panels, tg_i) {
+function is_answer_target(bef_f, as, ch, tg_attr, tg_spec, own_i, enm_i, panels, tg_i) {
 	var rst = true;
 	// チェイン確認
 	rst = rst && (ch >= as.chain);
@@ -461,6 +463,6 @@ function is_answer_target(as, ch, tg_attr, tg_spec, own_i, enm_i, panels, tg_i) 
 	// 種族確認
 	rst = rst && (tg_spec < 0 || check_spec_inarray(as.spec, tg_spec));
 	// 条件確認
-	rst = rst && (as.cond(Field, own_i, enm_i, panels, tg_i));
+	rst = rst && (as.cond(bef_f, own_i, enm_i, panels, tg_i));
 	return rst;
 }
