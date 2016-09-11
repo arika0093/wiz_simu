@@ -45863,7 +45863,7 @@ Cards = [{
 		Attr_statusup(0,100, [0,0,1,0,0,]),
 	],
 },{
-	name: "暴魔顕現 グランドガーコイル",
+	name: "暴魔顕現 グランドガーゴイル",
 	cardno: 7017,
 	imageno: 8953,
 	hp: 4215,
@@ -45873,6 +45873,7 @@ Cards = [{
 	species: [6],
 	islegend: true,
 	ape: "クロムマグナ ゼロ",
+	alias: ["ガーコイル"],
 	is_dist: true,
 	as1: {
 		desc: "4チェインで敵全体へ分散攻撃(450%)",
@@ -45882,7 +45883,7 @@ Cards = [{
 		desc: "<ダメージブロック>4ターン溜めた後、自分自身のみ20ターン600以下の全属性ダメージを無効化する",
 		turn: 3,
 		charged: 4,
-		proc: ss_damageblock_own(600, 20),
+		proc: [ss_damageblock_own(600, 20)],
 	},
 	awakes: [
 		Statusup(0,200),
