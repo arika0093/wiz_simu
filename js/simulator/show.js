@@ -315,9 +315,12 @@ function sim_show() {
 	var cost_total = 0;
 	var paneb_total = [0, 0, 0, 0, 0];
 	var paneb_total_str = "";
-	for (var i = 0; i < Math.min(Field.Allys.Deck.length, 5); i++) {
-		cost_total += card_cost(Field.Allys.Deck[i]);
-		var paneb_aw = card_paneb(Field.Allys.Deck[i]);
+	for (var p in Field.Allys.Deck) {
+		var c = Field.Allys.Deck[p];
+		var paneb_aw = card_paneb(c);
+		if (Number(p) >= 0) {
+			cost_total += card_cost(c);
+		}
 		for (var j = 0; j < 5; j++) {
 			paneb_total[j] += paneb_aw[j];
 		}

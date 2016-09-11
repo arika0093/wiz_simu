@@ -192,7 +192,7 @@ function awake_neftjod_check(now, index, before_hp) {
 // 戦後回復値を返す
 function cards_heal_afterbattle(cards) {
 	var r = 0;
-	for(p in cards){
+	for(var p in cards){
 		var c = cards[p];
 		var abh_awakes = pickup_awakes(c, "heal_after_battle", false);
 		for (var j = 0; j < abh_awakes.length; j++) {
