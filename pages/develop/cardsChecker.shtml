@@ -290,7 +290,7 @@ function awakeCheck(card){
         if(at=="ss_fast" && awake.turn < 1) putAwakeError(q,"ファストターン0")
         if(at=="panel_boost" && !awake.attr.every(function(x){return x == 0}) && awake.attr[card.attr[0]] != 1) putAwakeError(q,"主属性でないパネブ")
         if(at=="own_status_up" && awake.up_hp == 0 && awake.up_atk == 0) putAwakeError(q,"効果値0のステアップ")
-        if(at=="status_up" && !awake.attr.every(function(x){return x == 0}) && awake.attr[card.attr[0]] != 1 && awake.attr[card.attr[1]] != 1 ) putAwakeError(q,"自属性が対象外のステアップ")
+        //if(at=="status_up" && !awake.attr.every(function(x){return x == 0}) && awake.attr[card.attr[0]] != 1 && awake.attr[card.attr[1]] != 1 ) putAwakeError(q,"自属性が対象外のステアップ")
         if(at=="status_up" && awake.subattr && awake.attr[card.attr[0]] != 1) putAwakeError(q,"第1属性が自主属性でない複ステアップ")
         if(at=="status_up" && awake.subattr && awake.subattr[card.attr[1]] != 1) putAwakeError(q,"第2属性が自複属性でない複ステアップ")
         if(at=="status_up" && awake.spec[card.species[0]]!=1) putAwakeError(q,"自種族が対象外のステアップ")
