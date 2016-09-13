@@ -153,14 +153,35 @@ function Abstate_invalid(tg_type) {
 	};
 }
 
-// 効果値アップ潜在
+// AS効果値アップ潜在
+function Awake_ASkillRateup(upval) {
+	return {
+		type: "awake_ans_rateup",
+		upvalue: upval,
+		name: "AS効果値アップ(+" + upval + ")",
+		desc: "ASの効果値を" + upval + "%アップする",
+	};
+}
+
+// SS効果値アップ潜在
 function Awake_SkillRateup(upval, skl_type) {
 	return {
 		type: "awake_rateup",
 		skilltype: skl_type,
 		upvalue: upval,
-		name: "SS効果値アップ" + int2roman(upval/50) ,
+		name: "SS効果値アップ(+" + upval + ")",
 		desc: "SPスキルの効果値を" + upval + "%アップする" ,
+	};
+}
+
+// SS継続ターン数アップ潜在
+function Awake_Turnup(upval, skl_type) {
+	return {
+		type: "awake_turnup",
+		skilltype: skl_type,
+		upvalue: upval,
+		name: "SS継続ターン数アップ(+" + upval + ")",
+		desc: "SPスキルの継続ターン数を" + upval + "Tアップする",
 	};
 }
 

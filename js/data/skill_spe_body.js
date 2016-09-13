@@ -273,6 +273,17 @@ var SpSkill = {
 		var dmg = params[0];
 		var t = params[1];
 		var enemys = GetNowBattleEnemys();
+		// 潜在結晶考慮
+		var card = fld.Allys.Deck[n];
+		var aw_c = pickup_awakes(card, "awake_rateup", false);
+		var aw_t = pickup_awakes(card, "awake_turnup", false);
+		for (var i = 0; i < aw_c.length; i++) {
+			dmg += Math.floor(aw_c[i].upvalue);
+		}
+		for (var i = 0; i < aw_t.length; i++) {
+			t += Math.floor(aw_t[i].upvalue);
+		}
+		// 付与
 		for (var i = 0; i < enemys.length; i++) {
 			var en = enemys[i];
 			if (en.nowhp > 0) { 
@@ -408,6 +419,17 @@ var SpSkill = {
 				var typestr = ""
 				break;
 		}
+		// 潜在結晶考慮
+		var card = fld.Allys.Deck[n];
+		var aw_c = pickup_awakes(card, "awake_rateup", false);
+		var aw_t = pickup_awakes(card, "awake_turnup", false);
+		for (var i = 0; i < aw_c.length; i++) {
+			rate += Math.floor(aw_c[i].upvalue) / 100;
+		}
+		for (var i = 0; i < aw_t.length; i++) {
+			t += Math.floor(aw_t[i].upvalue);
+		}
+		// 付与
 		var now = fld.Allys.Now[n];
 		now.turn_effect.push({
 			desc: "攻撃力アップ" + typestr + "(" + (rate * 100) + "%)",
@@ -803,6 +825,13 @@ var SpSkill = {
 				var typestr = ""
 				break;
 		}
+		// 潜在結晶反映
+		var card = fld.Allys.Deck[n];
+		var aw_c = pickup_awakes(card, "awake_rateup", false);
+		for (var i = 0; i < aw_c.length; i++) {
+			rate += Math.floor(aw_c[i].upvalue) / 100;
+		}
+		// 付与
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
 			now.turn_effect.push({

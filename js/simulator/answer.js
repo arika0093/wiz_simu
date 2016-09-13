@@ -320,9 +320,16 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem, bef_f)
 			var is_ans = is_answer_target(bef_f, as[ai], chain, enemy[ei].attr, enemy[ei].spec, index, ei, panel);
 			var rate_n = (is_ans ? as[ai].rate : 0);
 			var rate_b = (as_pos[ei] !== undefined ? as_rate[ei] : 0);
+			var aw_t = pickup_awakes(card, "awake_ans_rateup", false);
 			// 解答時間依存処理
 			if (is_ans && as[ai].is_timedep && !as[ai].disactuate) {
 				rate_n += as[ai].rate_time * time;
+			}
+			// 潜在結晶考慮処理
+			for (var i = 0; i < aw_t.length; i++) {
+				if (is_ans && !as[ai].disactuate) {
+					rate_n += Math.floor(aw_t[i].upvalue) / 100;
+				}
 			}
 			as_rate[ei] = (rate_n >= rate_b ? rate_n : rate_b);
 			as_pos[ei] = (rate_n >= rate_b ? ai : as_pos[ei]);
