@@ -181,7 +181,7 @@ function Awake_damage_multiple(rate) {
 function Awake_multihitadd(n) {
 	return {
 		type: "Awake_multihitadd",
-		up: n,
+		upvalue: n,
 	};
 }
 

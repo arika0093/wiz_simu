@@ -30,6 +30,12 @@ function ss_damage_all(r, attrs, ignore_counter) {
 		p1: r,
 		p2: attrs,
 		p3: ignore_counter,
+		c_param: {
+			"awake_rateup": {
+				target: 0,
+				rate_mlt: 0.01,
+			},
+		},
 	});
 }
 
@@ -49,6 +55,15 @@ function ss_damage_s(r, attrs, atn, ignore_counter) {
 		p2: attrs,
 		p3: atn,
 		p4: ignore_counter,
+		c_param: {
+			"awake_rateup": {
+				target: 0,
+				rate_mlt: 0.01,
+			},
+			"Awake_multihitadd": {
+				target: 2,
+			},
+		},
 	});
 }
 
@@ -66,6 +81,12 @@ function ss_damage_slash(r, attrs, atn) {
 		p1: r,
 		p2: attrs,
 		p3: atn,
+		c_param: {
+			"awake_rateup": {
+				target: 0,
+				rate_mlt: 0.01,
+			},
+		},
 	});
 }
 
@@ -156,6 +177,14 @@ function poison(dm, t) {
 		target: "all",
 		p1: dm,
 		p2: t,
+		c_param: {
+			"awake_rateup": {
+				target: 0,
+			},
+			"awake_turnup": {
+				target: 1,
+			},
+		},
 	});
 }
 
@@ -247,6 +276,15 @@ function ss_enhance_all(p, t, attr, calltype) {
 		p2: t,
 		p3: attr,
 		p4: calltype,
+		c_param: {
+			"awake_rateup": {
+				target: 0,
+				rate_mlt: 0.01,
+			},
+			"awake_turnup": {
+				target: 1,
+			},
+		},
 	});
 }
 
@@ -264,6 +302,15 @@ function ss_enhance_own(p, t, _nolog) {
 		p1: p,
 		p2: t,
 		p3: _nolog,
+		c_param: {
+			"awake_rateup": {
+				target: 0,
+				rate_mlt: 0.01,
+			},
+			"awake_turnup": {
+				target: 1,
+			},
+		},
 	});
 }
 
@@ -284,6 +331,11 @@ function ss_boost_enhance_all(p, t, dmg, attr) {
 		p2: t,
 		p3: dmg,
 		p4: attr,
+		c_param: {
+			"awake_turnup": {
+				target: 1,
+			},
+		},
 	});
 }
 
@@ -302,6 +354,11 @@ function ss_boost_enhance_s(p, t, dmg) {
 		p1: p,
 		p2: t,
 		p3: dmg,
+		c_param: {
+			"awake_turnup": {
+				target: 1,
+			},
+		},
 	});
 }
 
@@ -439,6 +496,15 @@ function ss_continue_damage(dmg_r, cont_r, attrs, turn) {
 		p2: cont_r,
 		p3: attrs,
 		p4: turn,
+		c_param: {
+			"awake_rateup": {
+				target: [0, 1],
+				rate_mlt: 0.01,
+			},
+			"awake_turnup": {
+				target: 3,
+			},
+		},
 	});
 }
 
@@ -465,6 +531,11 @@ function ss_chain_protect(t) {
 		type: "chain",
 		target: "field",
 		p1: t,
+		c_param: {
+			"awake_turnup": {
+				target: 0,
+			},
+		},
 	});
 }
 

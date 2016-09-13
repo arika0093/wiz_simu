@@ -111,7 +111,7 @@ function ss_procdo(ss, now, index) {
 				var skl = now.flags.ss_chargeskl;
 				for (var i = 0; i < skl.length; i++) {
 					if (skl[i]) {
-						ss_rst = ss_object_done(Field, index, skl[i]);
+						ss_rst = ss_object_done(Field, index, skl[i], true);
 					}
 				}
 				now.flags.ss_chargeskl = null;
@@ -125,7 +125,7 @@ function ss_procdo(ss, now, index) {
 		// 実行
 		for (var i = 0; i < ss.proc.length; i++) {
 			if (ss.proc[i]) {
-				ss_rst = ss_object_done(Field, index, ss.proc[i]);
+				ss_rst = ss_object_done(Field, index, ss.proc[i], true);
 			}
 		}
 	}

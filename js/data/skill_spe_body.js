@@ -24,12 +24,6 @@ var SpSkill = {
 		var atkn = params[2];
 		var ignore_counter = params[3];
 		var enemys = GetNowBattleEnemys();
-		// 潜在結晶でのHit回数増加取得
-		var card = fld.Allys.Deck[n];
-		$.each(pickup_awakes(card, "Awake_multihitadd", false), function (i, e) {
-			atkn += e.up;
-		})
-		// 処理
 		for (var an = 0; an < atkn; an++) {
 			for (var a = 0; a < attrs.length; a++) {
 				// 攻撃
@@ -203,7 +197,7 @@ var SpSkill = {
 							for (var atri = 0; atri < card.attr.length; atri++) {
 								// 攻撃
 								if (card.attr[atri] >= 0) {
-									ss_damage(f, rate, card.attr[atri], 1, oi, sci, true, true);
+									ss_damage(f, rate, card.attr[atri], 1, oi, sci, true);
 									GetNowBattleEnemys(sci).flags.on_damage = true;
 								}
 							}
@@ -252,7 +246,7 @@ var SpSkill = {
 							for (var atk_ct = 0; atk_ct < dmg_flag[sci]; atk_ct++) {
 								for (var atri = 0; atri < card.attr.length; atri++) {
 									if (card.attr[atri]>= 0) {
-										ss_damage(f, 1, card.attr[atri], 1, oi, sci, true, true);
+										ss_damage(f, 1, card.attr[atri], 1, oi, sci, true);
 									}
 								}
 								GetNowBattleEnemys(sci).flags.on_damage = true;
@@ -273,17 +267,6 @@ var SpSkill = {
 		var dmg = params[0];
 		var t = params[1];
 		var enemys = GetNowBattleEnemys();
-		// 潜在結晶考慮
-		var card = fld.Allys.Deck[n];
-		var aw_c = pickup_awakes(card, "awake_rateup", false);
-		var aw_t = pickup_awakes(card, "awake_turnup", false);
-		for (var i = 0; i < aw_c.length; i++) {
-			dmg += Math.floor(aw_c[i].upvalue);
-		}
-		for (var i = 0; i < aw_t.length; i++) {
-			t += Math.floor(aw_t[i].upvalue);
-		}
-		// 付与
 		for (var i = 0; i < enemys.length; i++) {
 			var en = enemys[i];
 			if (en.nowhp > 0) { 
@@ -418,16 +401,6 @@ var SpSkill = {
 			default:
 				var typestr = ""
 				break;
-		}
-		// 潜在結晶考慮
-		var card = fld.Allys.Deck[n];
-		var aw_c = pickup_awakes(card, "awake_rateup", false);
-		var aw_t = pickup_awakes(card, "awake_turnup", false);
-		for (var i = 0; i < aw_c.length; i++) {
-			rate += Math.floor(aw_c[i].upvalue) / 100;
-		}
-		for (var i = 0; i < aw_t.length; i++) {
-			t += Math.floor(aw_t[i].upvalue);
 		}
 		// 付与
 		var now = fld.Allys.Now[n];
@@ -825,13 +798,6 @@ var SpSkill = {
 				var typestr = ""
 				break;
 		}
-		// 潜在結晶反映
-		var card = fld.Allys.Deck[n];
-		var aw_c = pickup_awakes(card, "awake_rateup", false);
-		for (var i = 0; i < aw_c.length; i++) {
-			rate += Math.floor(aw_c[i].upvalue) / 100;
-		}
-		// 付与
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
 			now.turn_effect.push({
@@ -1252,7 +1218,7 @@ var SpCondSkill = {
 
 // ------------------------------------
 // (内部用)実行関数
-function ss_object_done(fld, n, c_obj) {
+function ss_object_done(fld, n, c_obj, is_check_crs) {
 	// type switch
 	var skl_list = c_obj.is_skill ? SpSkill: SpCondSkill;
 	// 未定義なら実行しない
@@ -1282,25 +1248,33 @@ function ss_object_done(fld, n, c_obj) {
 		}
 		count++;
 	}
+	// 潜在結晶チェック状態なら
+	if (is_check_crs && c_obj.c_param) {
+		// 潜在結晶効果値アップ系の処理を行う
+		for (var pn in c_obj.c_param) {
+			var pm = c_obj.c_param[pn];
+			var card = fld.Allys.Deck[n];
+			var tg = pm.target.length >= 2 ? pm.target : [pm.target];
+			for (var i = 0; i < tg.length; i++) {
+				$.each(pickup_awakes(card, pn, false), function (j, e) {
+					params[tg[i]] += e.upvalue * (pm.rate_mlt || 1);
+				})
+			}
+		}
+	}
 	// 関数実行
 	return skl_list[c_obj.name](fld, n, c_obj, params);
 }
 
 // (内部用)敵にSSダメージ
-function ss_damage(fld, r, atr, atkn, own, tg, isnot_ss, ignore_crs) {
+function ss_damage(fld, r, atr, atkn, own, tg, isnot_ss) {
 	var enemy = GetNowBattleEnemys(tg);
 	var card = fld.Allys.Deck[own];
 	var now = fld.Allys.Now[own];
 	var rnd = damage_rand();
 	// 威力が配列で渡されたら取り出す
 	var rate = $.isArray(r) ? r[tg] : r;
-	// 潜在結晶考慮
-	if (!ignore_crs) {
-		var aw_c = pickup_awakes(card, "awake_rateup", false);
-		for (var i = 0; i < aw_c.length; i++) {
-			rate += Math.floor(aw_c[i].upvalue) / 100;
-		}
-	}
+	// 攻撃
 	Field.Status.turn_dmg += attack_enemy(enemy, now, atr, rate, atkn, [atr],
 		fld.Status.chain, rnd, own, tg, true);
 	// SSフラグを立てる
