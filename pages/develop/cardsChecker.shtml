@@ -1,123 +1,226 @@
 
 <head>
 <meta charset=utf-8>
+	<style>
+		body{
+			font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese", sans-serif;
+		}
+        .title{
+            color:#3f51b5;
+            font-weight:bold;
+        }
+	</style>
+    <title>Cardsエラーチェッカ - WizTools</title>
 <script>
-function check(){
-	o.innerHTML="1. SS1が配列でないcardのチェック"+"\n";
-	$.grep(Cards,(function(e){if(!$.isArray(e.ss1.proc)){
-		o.innerHTML+=e.name+"\n";
-	}})) 
 
-    o.innerHTML+="\n"
-	o.innerHTML+="2. SS2が配列でないcardのチェック"+"\n";
-    $.grep(Cards,(function(e){if(e.ss2 && !$.isArray(e.ss2.proc)){
-        o.innerHTML+=e.name+"\n"
-    }}))
-
-    o.innerHTML+="\n"
-	o.innerHTML+="3. id重複のチェック"+"\n";
-
-    Cards.forEach(function(a){t=0;Cards.forEach(function(b){if(a.cardno==b.cardno)t++});if(t>1){
-        o.innerHTML+=a.cardno+"| "+a.name+"\n"
-    }}) 
-
-    o.innerHTML+="\n"
-	o.innerHTML+="4. descにうんたらがあるとき、procになんちゃらがない物のチェック"+"\n";
-
-    o.innerHTML+=causalityCheck()
-
-
-    o.innerHTML+="\n"
-	o.innerHTML+="5. 覚醒のチェック"+"\n";
-	o.innerHTML+="※問題ないデータがまぎれることがあります （特に自属性が指定されないステアップ）"+"\n";
-
-	awakeCheck()
-
-    o.innerHTML+="\n"
-	o.innerHTML+="6. SS1とSS2が同じ奴のチェック（チュレとかは手動で削除設定してるので増えたとき出てきます）"+"\n";
-
-    o.innerHTML+=diffSs1Ss2()
-
-    o.innerHTML+="\n"
-	o.innerHTML+="7. AS1とAS2が同じ奴のチェック"+"\n";
-
-    o.innerHTML+=diffAs1As2()
-
-    o.innerHTML+="\n"
-	o.innerHTML+="おまけ：現在のカード数は"+Cards.length+"件です。\n";
+var Errors=[]
+function putError(card, title, detail){
+    console.log(card.name)
+    console.log(card)
+    Errors.push({card:card, title:title, detail:detail})
+}
+function appearError(){
+    outp="<table border=1><tr><td>cardno</td><td>カード名</td><td>エラー内容</td></tr>"
+    for(var en=0; en<Errors.length; en++){
+        error=Errors[en];
+        if(en==0 || Errors[en-1].card.name!=error.card.name){
+            outp+="<tr><td>"+error.card.cardno
+            outp+="</td><td>"+error.card.name
+            outp+="</td><td>"
+        }
+        outp+="<span class=title>・"+error.title+"</span>"
+        if(error.detail && error.detail!=""){
+            outp+="<br>"
+            outp+="<small>"+error.detail+"</small>"
+        }
+        if(en >= Errors.length-1 || Errors[en+1].card.name != error.card.name){
+            outp+="</td>"
+            outp+="</tr>"
+        }else{
+            outp+="<br>"
+        }
+    }
+    outp+="</table>"
+    outp+="<br><a href=MorphemeAnalysis.shtml>SS形態素解析（激重注意）</a>"
+    document.body.innerHTML=outp;
 }
 
-function diffSs1Ss2(){
+function check(){
+    Cards.forEach(function(card){
+        //ssに関する色々
+        var ss1ss2=["ss1", "ss2"]
+        for(var ssn = 0; ssn < 2; ssn++){
+            var ss=card[ss1ss2[ssn]];
+            if(ss){
+                //ssが配列か
+                if(!$.isArray(ss.proc)){
+                    putError(card, ss1ss2[ssn].toUpperCase()+"が配列でない")
+                }
+                //ssのdescが日本語か
+                if(!checkJa(ss.desc)){
+                    putError(card, ss1ss2[ssn].toUpperCase()+"のdescが日本語でない", ss.desc)
+                }
+            }
+        }
+
+        //asに関する色々
+        var as1as2=["as1", "as2"]
+        for(var asn = 0; asn < 2; asn++){
+            var as=card[as1as2[asn]];
+            if(as){
+                //asのdescが日本語か
+                if(!checkJa(as.desc)){
+                    putError(card, as1as2[asn].toUpperCase()+"のdescが日本語でない", as.desc)
+                }
+            }
+        }
+
+        //cardnoの重複
+        var cardT = 0;
+        Cards.forEach(function(card2){
+            if(card.cardno==card2.cardno){
+                cardT ++;
+            }
+        })
+        if(cardT > 1){
+            putError(card, "cardnoの重複",card.cardno)
+        }
+
+        //定義にnullなどが含まれるカード
+        if(!NGWordCheck(card, "undefined")){
+            NGWordCheck(card, "undef")
+        }
+        //NGWordCheck(card, "null") //<-誤検出100%だったので削除
+
+        //SS1とSS2の重複
+        diffSs1Ss2(card)
+        //AS1とAS2の重複
+        diffAs1As2(card)
+        //SSのdescproc対応検査
+        causalityCheck(card)
+
+        //覚醒の異常定義検査
+        awakeCheck(card)
+        //変なimgno
+        if(card.imageno<1){
+            putError(card, "imagenoが異常値",card.imageno)
+        }
+        //種族確認
+        if(card.species[0]>=spec_count()){
+            putError(card, "species過大",card.species[0])
+        }
+        if(card.species[0]<0){
+            putError(card, "species過少",card.species[0])
+        }
+        //属性確認
+        if(card.attr[0]>=5){
+            putError(card, "attr過大",card.attr[0])
+        }
+        if(card.attr[0]<0){
+            putError(card, "attr過少",card.attr[0])
+        }
+    })
+
+    appearError()
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function NGWordCheck(card, NGWord){
+    var cj = JSON.stringify(card);
+    var eIndex = cj.indexOf(NGWord);
+    var margin=40;
+    if(eIndex!=-1){
+        var ErrorMsg=cj.slice(Math.max(0,eIndex-margin),Math.min(eIndex+NGWord.length+margin,cj.length));
+        ErrorMsg="..."+ErrorMsg.replace(NGWord,"<font color=red>"+NGWord+"</font>")+"..."
+        putError(card,"定義値異常",ErrorMsg)
+    }
+    return eIndex!=-1
+}
+
+function diffSs1Ss2(card){
     //SS1とSS2を比較してprocもしくはdescが同じである物を抽出
     var ignoreCards=[6342, 6288, 6203, 6116, 6412, 6728, 6907]
     var ignoreSkills=["skill_copy"]
     var outp=""
-    Cards.forEach(function(card){
-        if(card.ss2){
-            var proc1 = JSON.stringify(card.ss1.proc)
-            var proc2 = JSON.stringify(card.ss2.proc)
-            var desc1 = JSON.stringify(card.ss1.desc)
-            var desc2 = JSON.stringify(card.ss2.desc)
-            if(proc1==proc2 || desc1==desc2){
-                if((function(){
-                    var res = true
-                    ignoreSkills.forEach(function(is){
-                        if(proc1.indexOf(is) != -1){
-                            res = false
-                        }
-                    })
-                    return res
-                })()){
-                    if(ignoreCards.indexOf(card.cardno)==-1){
-                        outp += (card.cardno + "| " + card.name) + "\n"
-                        outp += (desc1) + "\n"
-                        outp += (desc2) + "\n"
-                        outp += (proc1) + "\n"
-                        outp += "\n"
+    if(card.ss2){
+        var proc1 = JSON.stringify(card.ss1.proc)
+        var proc2 = JSON.stringify(card.ss2.proc)
+        var desc1 = JSON.stringify(card.ss1.desc)
+        var desc2 = JSON.stringify(card.ss2.desc)
+        if(proc1==proc2 || desc1==desc2){
+            if((function(){
+                var res = true
+                ignoreSkills.forEach(function(is){
+                    if(proc1.indexOf(is) != -1){
+                        res = false
+                    }
+                })
+                return res
+            })()){
+                if(ignoreCards.indexOf(card.cardno)==-1){
+                    if(desc1==desc2){
+                        putError(card, "SS1とSS2のdescが同じ", desc1)
+                    }
+                    if(proc1==proc2){
+                        putError(card, "SS1とSS2のprocが同じ", proc1)
                     }
                 }
             }
         }
-    })
+    }
     return outp
 }
 
-function diffAs1As2(){
+function diffAs1As2(card){
     //AS1とAS2を比較してprocもしくはdescが同じである物を抽出
     var ignoreCards=[]
     var ignoreSkills=["skill_copy"]
     var outp=""
-    Cards.forEach(function(card){
-        if(card.as2){
-            var proc1 = JSON.stringify(card.as1.proc)
-            var proc2 = JSON.stringify(card.as2.proc)
-            var desc1 = JSON.stringify(card.as1.desc)
-            var desc2 = JSON.stringify(card.as2.desc)
-            if(proc1==proc2 || desc1==desc2){
-                if((function(){
-                    var res = true
-                    ignoreSkills.forEach(function(is){
-                        if(proc1.indexOf(is) != -1){
-                            res = false
-                        }
-                    })
-                    return res
-                })()){
-                    if(ignoreCards.indexOf(card.cardno)==-1){
-                        outp += (card.cardno + "| " + card.name) + "\n"
-                        outp += (desc1) + "\n"
-                        outp += (desc2) + "\n"
-                        outp += (proc1) + "\n"
-                        outp += "\n"
+    if(card.as2){
+        var proc1 = JSON.stringify(card.as1.proc)
+        var proc2 = JSON.stringify(card.as2.proc)
+        var desc1 = JSON.stringify(card.as1.desc)
+        var desc2 = JSON.stringify(card.as2.desc)
+        if(proc1==proc2 || desc1==desc2){
+            if((function(){
+                var res = true
+                ignoreSkills.forEach(function(is){
+                    if(proc1.indexOf(is) != -1){
+                        res = false
+                    }
+                })
+                return res
+            })()){
+                if(ignoreCards.indexOf(card.cardno)==-1){
+                    if(desc1==desc2){
+                        putError(card, "AS1とAS2のdescが同じ", desc1)
+                    }
+                    if(proc1==proc2){
+                        putError(card, "AS1とAS2のprocが同じ", proc1)
                     }
                 }
             }
         }
-    })
+    }
     return outp
 }
 
-function causalityCheck(){
+function causalityCheck(card){
 	var ops=["ss1", "ss2"]
 	var causalitys=[
 		["無視", "ss_ignore_skillcounter"],
@@ -151,57 +254,69 @@ function causalityCheck(){
 		["特効", "special_attr"],
 		["平均解答", "ss_answertime"],
 		["チェインを消費", "ss_chain_cost"],
+		["敵単体へ", "damage_s"],
+		["敵全体へ", "all"],
 	]
-	outp="";
-	Cards.forEach(function(card, cn){
-		ops.forEach(function(op){
-			ss=card[op]
-			if(ss){
-				var procStr=JSON.stringify(ss)
-				causalitys.forEach(function(causality){
-					if(ss.desc.indexOf(causality[0])!=-1){
-						if(procStr.indexOf(causality[1])==-1){
-							outp += card.cardno+"| " + op + " " + card.name + " " + causality[0] + "\n"
-						}
-					}
-				})
-			}
-		})
-	})
-	return outp
+    ops.forEach(function(op){
+        ss=card[op]
+        if(ss){
+            var procStr=JSON.stringify(ss)
+            causalitys.forEach(function(causality){
+                if(ss.desc.indexOf(causality[0])!=-1){
+                    if(procStr.indexOf(causality[1])==-1){
+                        putError(card, op.toUpperCase()+"のdescとprocが不一致", "descに\"" + causality[0] + "\"があるが、procに\"" + causality[1]+"\"がない")
+                    }
+                }
+            })
+        }
+    })
 }
 
 
 
 
-function awakeCheck(){
-	Cards.forEach(function(card){
-		card.awakes.forEach(function(awake, an){
-			var q={card:card,an:an}
-			var at=awake.type
-			awakeStr=JSON.stringify(awake)
-			if(awakeStr.indexOf("undefined")!=-1)putAwakeError(q,"undefined")
-			if(awakeStr.indexOf("false")!=-1)putAwakeError(q,"false")
-			if(awake.attr && awake.attr.every(function(x){return x == 0})) putAwakeError(q,"属性が空")
-			if(at=="ss_fast" && awake.turn < 1) putAwakeError(q,"ファストターン0")
-			if(at=="panel_boost" && !awake.attr.every(function(x){return x == 0}) && awake.attr[card.attr[0]] != 1) putAwakeError(q,"主属性でないパネブ")
-			if(at=="own_status_up" && awake.up_hp == 0 && awake.up_atk == 0) putAwakeError(q,"効果値0のステアップ")
-			if(at=="status_up" && !awake.attr.every(function(x){return x == 0}) && awake.attr[card.attr[0]] != 1 && awake.attr[card.attr[1]] != 1 ) putAwakeError(q,"自属性が指定されないステアップ")
-			if(at=="status_up" && awake.subattr && awake.attr[card.attr[0]] != 1) putAwakeError(q,"第1属性が自主属性でない複ステアップ")
-			if(at=="status_up" && awake.subattr && awake.subattr[card.attr[1]] != 1) putAwakeError(q,"第2属性が自複属性でない複ステアップ")
-			if(at=="status_up" && awake.spec[card.species[0]]!=1) putAwakeError(q,"自種族が対象外のステアップ")
-		})
-	})
+function awakeCheck(card){
+    if(card.Lawake){
+        var tmp=card.awakes.concat(card.Lawake);
+    }else{
+        var tmp=card.awakes;
+    }
+    tmp.forEach(function(awake, an){
+        var q={card:card,aw:awake}
+        var at=awake.type
+        awakeStr=JSON.stringify(awake)
+        if(awakeStr.indexOf("false")!=-1)putAwakeError(q,"false")
+        if(awake.attr && awake.attr.every(function(x){return x == 0})) putAwakeError(q,"属性が空")
+        if(at=="ss_fast" && awake.turn < 1) putAwakeError(q,"ファストターン0")
+        if(at=="panel_boost" && !awake.attr.every(function(x){return x == 0}) && awake.attr[card.attr[0]] != 1) putAwakeError(q,"主属性でないパネブ")
+        if(at=="own_status_up" && awake.up_hp == 0 && awake.up_atk == 0) putAwakeError(q,"効果値0のステアップ")
+        //if(at=="status_up" && !awake.attr.every(function(x){return x == 0}) && awake.attr[card.attr[0]] != 1 && awake.attr[card.attr[1]] != 1 ) putAwakeError(q,"自属性が対象外のステアップ")
+        if(at=="status_up" && awake.subattr && awake.attr[card.attr[0]] != 1) putAwakeError(q,"第1属性が自主属性でない複ステアップ")
+        if(at=="status_up" && awake.subattr && awake.subattr[card.attr[1]] != 1) putAwakeError(q,"第2属性が自複属性でない複ステアップ")
+        if(at=="status_up" && awake.spec[card.species[0]]!=1) putAwakeError(q,"自種族が対象外のステアップ")
+    })
 }
 function putAwakeError(q, comm){
 	card=q.card
-	an=q.an
-	o.innerHTML+=(card.cardno + " (" + an + ")| " + comm + " " + card.name + "\n")
+	aw=JSON.stringify(q.aw)
+    putError(q.card, "異常な覚醒 "+comm, aw)
 }
 
 
-
-
+function checkJa(txt) {
+    if (typeof txt !== "string") {
+        return false;
+    }
+    var i = txt.length,
+        escapeTxt;
+    while(i--) {
+        escapeTxt = escape(txt.substring(i, i + 1));
+        if (escapeTxt.length >= 6) {
+            return true;
+        }
+    }
+    return false;
+}
 
 
 
@@ -209,10 +324,7 @@ function putAwakeError(q, comm){
 
 <body onload=check()>
 
-※下に何もエラーが出てなければ良<br>
-
-<textarea id=o style=width:100%;height:90%;></textarea>
-<a href=MorphemeAnalysis.shtml>SS形態素解析（激重注意）</a>
+～読み込み中～
 
     <!--#config timefmt="%Y%m%d_%H%M%S" -->
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -221,8 +333,7 @@ function putAwakeError(q, comm){
     <script type="text/javascript" src="/download/romaji.js"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/loader.js?                  <!--#flastmod virtual='/js/loader.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js?                <!--#flastmod virtual='/js/pagetemp.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js?               <!--#flastmod virtual='/js/googletrc.js'-->"></script>
-	<!-- 他jsに依存しない基礎関数群 -->
+    <!-- 他jsに依存しない基礎関数群 -->
     <script type="text/javascript" charset="UTF-8" src="/js/general.js?                 <!--#flastmod virtual='/js/general.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/awake.js?         <!--#flastmod virtual='/js/simulator/awake.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/species.js?       <!--#flastmod virtual='/js/simulator/species.js'-->"></script>

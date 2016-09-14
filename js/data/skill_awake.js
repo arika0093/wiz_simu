@@ -144,12 +144,26 @@ function Abstate_invalid(tg_type) {
 		"poison": "毒",
 		"death_limit": "死の秒針",
 		"discharge": "ディスチャージ",
+		"attr_weaken": "弱体化",
 	};
+	var mytg=(function(typs,tg){
+					var outp="";
+					if($.isArray(tg)){
+					console.log(tg)
+						tg.forEach(function(t){
+							outp+=typs[t]+"・";
+						})
+						outp=outp.slice(0,-1);
+					}else{
+						outp=typs[tg]
+					}
+					return outp;
+				})(tmptype, tg_type)
 	return {
 		type: "abstate_invalid",
 		tgtype: tg_type,
-		name: tmptype[tg_type]+"無効",
-		desc: "敵スキルの" + tmptype[tg_type] + "を無効化"
+		name: mytg + "無効",
+		desc: "敵スキルの" + mytg + "を無効化"
 	};
 }
 
