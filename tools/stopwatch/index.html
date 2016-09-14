@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px) and (max-width: 1099px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default_bg.css" media="screen and (min-width: 1100px)" />
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <style>
+    body{
+        font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese", sans-serif;
+    }
+    #counter{
+        width:420px;
+        font-size:50px;
+        text-align:center;
+    }
+    .stpwatch{
+        background-repeat: no-repeat;
+        background-position-x: right;
+        background-position-y: -115px;
+    }
+    .trnslayer{
+        background-color: rgba(255,255,255,0.2);
+    }
+    .dbutton{
+        cursor:pointer;
+        width:133px;
+        height:50px;
+        border:1px solid gray;
+        float:left;
+        margin-right:-1px;
+        margin-top:-1px;
+        display: flex;          /* 2 */
+        justify-content: center;/* 3 */
+        align-items: center;    /* 4 */
+    }
+    .dbutton:hover{
+        background-color: rgba(173, 216, 230, 0.6);
+    }
+    input#perhours{
+        background: transparent;
+        border: 1px solid #888;
+        width: 100px;
+    }
+    input#perhours:hover{
+        background: rgba(173, 216, 230, 0.6);
+        cursor: pointer,
+    }
+    #round{
+        font-size:18px;
+        margin-right:20px;
+    }
+    div#comment{
+        color: #19214e;
+        border: 2px #19214e solid;
+        padding: 4px;
+        background-color: #bad1dc;
+        height: 65px;
+    }
+    </style>
+    <!-- Search -->
+    <meta name="robots" content="all" />
+    <meta name="keywords" content="黒猫,ウィズ,魔法使いと黒猫のウィズ,チェック,魔道杯,時間,測定" />
+    <meta name="description" content="「魔法使いと黒猫のウィズ」魔道杯での周回時速を計測することができます。" />
+    <!-- for Mobile Adsense -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-5156005489853976",
+            enable_page_level_ads: true
+        });
+    </script>
+    <!-- Top Page -->
+    <title>魔道杯ストップウォッチ - WizTools</title>
+</head>
+<body>
+    <div id='Top'></div>
+    <div id="wrap">
+        <!-- Loader -->
+        <div id="loader"><img src="/image/loading.gif" alt="Loading..." /></div>
+        <noscript id="loadnoscr">このページはjavascriptを使用しています。有効にしたのち再度アクセスしてください。</noscript>
+        <div id="fade"></div>
+        <!-- Header -->
+        <div id="Header"></div>
+        <!-- Main Contents -->
+        <div class="Main">
+            <div class="stpwatch">
+                <div class="trnslayer">
+                    <form vals.name="form_sw" style=width:420px;text-align:center;>
+                        <div><span id=round>0週目</span><span id=counter>00:00.0</span></div>
+                        <div class=dbutton id=bstart onclick=start_count()>測定開始</div>
+                        <div class=dbutton id=bclear onclick=lap2(0)>次週目開始<br>(クリア)</div>
+                        <div class=dbutton id=bretry onclick=lap2(1)>次週目開始<br>(リタイア)</div>
+                        <br style=clear:both>
+                        <div class=dbutton onclick=mdelete()>止め忘れ削除</div>
+                        <div class=dbutton onclick=graphswitch()>グラフ切り替え<br>(全体/最新15件)</div>
+                        <div class=dbutton onclick=finite()>測定終了</div>
+                        <br style=clear:both>
+                        <input id=startpoint placeholder=開始時ポイント />
+                        <input id=nowpoint placeholder=今のポイント />
+                        <input id="perhours" onclick=vcalc() type=button value="時速計算" />
+                        <div id=mam>Min:--:--.- Ave:--:--.- Max:--:--.-</div>
+                    </form>
+                    <div id="cparent" style=position:relative>
+                        <canvas id="canvassample" width="406" height="140"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!--
+            <img id=chara src=http://i.quiz.colopl.jp/img/talkstory/201505_Yaoyorozu/201505_mikoto_normal.png />
+                -->
+            <div id=comment></div>
+            <!-- Adsense -->
+            <div class="Adsense">
+                <!-- advertise -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-5156005489853976"
+                     data-ad-slot="6536828444"
+                     data-ad-format="auto"></ins>
+                <script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div id="Footer"></div>
+        <!-- Dialog Contents -->
+        <div class="dialog_div" id="dialog_error" title="Error">
+            <p>入力内容に漏れがあります。得られるポイント数と最大魔力を入力してください。</p>
+        </div>
+        <!-- Javascript -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/tools/data/sw_words.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/tools/stopwatch.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/loader.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/general.js"></script>
+    </div>
+</body>
+</html>

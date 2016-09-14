@@ -128,12 +128,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{715492B2-2
 	ProjectSection(SolutionItems) = preProject
 		js\tools\data\checkdata.js = js\tools\data\checkdata.js
 		js\tools\data\point_rewards.js = js\tools\data\point_rewards.js
+		js\tools\data\sw_words.js = js\tools\data\sw_words.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "script", "script", "{226BE818-2166-4B4C-B4C1-3398D39A8069}"
 	ProjectSection(SolutionItems) = preProject
 		js\tools\cardcheck.js = js\tools\cardcheck.js
 		js\tools\crystalpt.js = js\tools\crystalpt.js
+		js\tools\stopwatch.js = js\tools\stopwatch.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "search", "search", "{2E6BF4B1-10BD-40DE-BD83-5258C65E96D0}"
@@ -185,6 +187,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deckshare", "deckshare", "{
 		js\simulator\srdeckview.js = js\simulator\srdeckview.js
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "stopwatch", "stopwatch", "{56183A96-2056-453B-8B99-DD4F0D23A5F8}"
+	ProjectSection(SolutionItems) = preProject
+		tools\stopwatch\index.html = tools\stopwatch\index.html
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -219,5 +226,6 @@ Global
 		{9390570F-08F0-4BB5-8705-4723B0C1D1FC} = {F546FAD9-474F-46A8-B734-545AA08B5821}
 		{A2A0FB4B-77FC-4AF4-962F-A809505E8D6A} = {FBCE4C9C-0BDA-4B34-AC6E-3158CF6D361E}
 		{31932564-66B6-404E-B592-0300DDC8831E} = {0B5CF5D7-96AD-4EED-8363-750FF402B468}
+		{56183A96-2056-453B-8B99-DD4F0D23A5F8} = {AEC9F07D-08AF-4D00-AC3F-C5ED1357D47A}
 	EndGlobalSection
 EndGlobal

@@ -703,6 +703,9 @@ li#mn_check{
 li#mn_chart{
 	background-image: url("/image/tlicon/chart.png") !important;
 }
+li#mn_timer{
+	background-image: url("/image/tlicon/timer.png") !important;
+}
 li.mn_db{
 	background-image: url("/image/tlicon/folder.png") !important;
 	background-size: 30px !important;
