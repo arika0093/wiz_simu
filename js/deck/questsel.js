@@ -19,6 +19,12 @@ $(function () {
 		opt.appendChild(document.createTextNode(Quests[i].name));
 		seld.appendChild(opt);
 	}
+	// select box
+	$("#QstSel").val("");
+	$("#QstSel").chosen({
+		allow_single_deselect: true,
+		search_contains: true,
+	});
 });
 
 // 項目選択

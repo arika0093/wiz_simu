@@ -23,6 +23,8 @@
     <link rel="stylesheet" type="text/css" href="/css/default_bg.css" media="screen and (min-width: 1100px)" />
 	<link type="text/css" rel="stylesheet"
 		  href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <link type="text/css" rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.min.css" />
 	<meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
 	<!-- Cache -->
 	<meta http-equiv="Pragma" content="no-cache" />
@@ -85,9 +87,8 @@
 					<div class="deck_and_menu clearfix">
 						<div class="ally_deck">
 							<div class="selbox_field">
-								<select class="selbox" id="QstSel">
-									<option value="">(クエスト未選択)</option>
-								</select>
+                                <select class="selbox" id="QstSel" data-placeholder="(クエスト未選択)">
+                                </select>
 								<button type="button" class="deck_saveload" id="Deckload" onclick="deck_load_ready()">Load</button>
 								<button type="button" class="deck_saveload" id="Decksave" onclick="deck_save_ready()">Save</button>
 								<button type="button" class="deck_reset" id="Reset" onclick="deck_reset_ready()">Reset</button>
@@ -252,7 +253,7 @@
         <p>
             潜在結晶の種類を選択して、効果値とコスト増加値を指定してください。
         </p>
-        <select class="sel_indialog" id="allyedit_awakeadd_name">
+        <select class="sel_indialog" id="allyedit_awakeadd_name" data-placeholder="(未選択)">
             <option value="-1">(未選択)</option>
         </select>
         <input type=number style="margin:1.6ex 0;" class="edit_indialog" id="ae_awake_value" placeholder="《効果値を指定》" />
@@ -312,7 +313,8 @@
     <!--#config timefmt="%Y%m%d_%H%M%S" -->
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.jquery.min.js"></script>
     <script type="text/javascript" src="/download/romaji.js"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/loader.js?                  <!--#flastmod virtual='/js/loader.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js?                <!--#flastmod virtual='/js/pagetemp.js'-->"></script>

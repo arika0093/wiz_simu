@@ -32,7 +32,10 @@ function decksgg_loaddeck(data) {
 		}
 	}
 	// quest select
-	$("#QstSel").val(Deckdata.quest);
+	if (Deckdata.quest != ""){
+		$("#QstSel").val(Deckdata.quest);
+		$('#QstSel').trigger("chosen:updated");
+	}
 	// checkbox event
 	$("#helper_sel").toggle(Deckdata.deck[5].cardno > 0);
 	$("#helper_show").prop("checked", Deckdata.deck[5].cardno > 0);
@@ -57,7 +60,7 @@ $(function () {
 			$(this).fadeIn(blink_interval / 3);
 		});
 	};
-	mana_blink()
+	mana_blink();
 	setInterval(mana_blink, blink_interval);
 
 	// Dialog
@@ -219,15 +222,24 @@ $(function () {
 	$("#dialog_allyedit_awakeadd").dialog({
 		autoOpen: false,
 		width: 450,
+		height: 480,
 		modal: true,
 		open: function () {
 			// item add
-			var opts = "<option value='-1'>(未選択)</option>";
+			var sel = $("#allyedit_awakeadd_name");
+			var opts = "<option value='-1' selected></option>";
 			var aws = Awake_crystal_lists;
 			for (var i = 0; i < aws.length; i++) {
 				opts += "<option value='" + i + "'>" + aws[i].name + "</option>";
 			}
-			$("#allyedit_awakeadd_name").html(opts);
+			sel.html(opts);
+			// select box
+			sel.chosen({
+				allow_single_deselect: true,
+				disable_search: true,
+				search_contains: true,
+			});
+
 			// value reset
 			$("#ae_awake_value").val("");
 			$("#ae_awake_cost").val("");
@@ -653,6 +665,7 @@ function deck_reset() {
 		$("#deck0" + (i + 1)).val("");
 	}
 	$("#QstSel").val("");
+	$('#QstSel').trigger("chosen:updated");
 }
 
 // デッキ読み込み、保存
