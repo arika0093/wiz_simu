@@ -1024,6 +1024,20 @@ function ss_consume_all_cond(base, p) {
 }
 
 /**
+ * (条件実行系)自身がAS封印の場合ssを実行する。
+ * ss: 条件を満たした時のスキル。
+**/
+function ss_is_assealed_own_skill(ss) {
+	return ss_condition({
+		name: "ss_is_assealed_own_skill",
+		type: "is_abstate_own",
+		p1: ss,
+		p2: null,
+		is_delay: true,
+	});
+}
+
+/**
  * (条件系)自身が毒の場合a,そうでない場合bを返す。
  * a: 条件を満たした時の値。
  * b: 条件を満たさなかった時の値。

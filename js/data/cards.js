@@ -47,7 +47,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・雷属性化し、ダメージ25％軽減の効果を付与",
 		turn: 8,
-		proc: [ss_panel_change([1,0,1,0,0])]
+		proc: [ss_panel_change([1,0,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)]
 	},
 }, {
 	name: "浄き炎神の剣 アイリス・ランティア",
@@ -77,7 +77,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体へ火属性のダメージ(200％)",
 		turn: 5,
-		proc: [ss_damage_all(2, [0])],
+		proc: [ss_damage_s(2, [0], 1)],
 	},
 	islegend: true,
 	Lawake: [
@@ -91,7 +91,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体へ火属性のダメージ(400％)",
 		turn: 8,
-		proc: [ss_damage_all(4, [0])],
+		proc: [ss_damage_s(4, [0], 1)],
 	},
 }, {
 	name: "鳳凰迅将 アルル・アーガイル",
@@ -1591,7 +1591,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "敵単体を3回連続攻撃/計350％",
-		proc: ChainDualAttack(3.5, 3, 3),
+		proc: ChainDualAttack(3.5, 0, 3),
 	},
 	ss2: {
 		desc: "4ターン自分の攻撃力をアップ(250％)",
@@ -1730,7 +1730,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体へ火属性の5回連続ダメージ(計380％)",
 		turn: 9,
-		proc: [ss_damage_s(1.8, [0], 5)],
+		proc: [ss_damage_s(3.8, [0], 5)],
 	},
 }, {
 	name: "燃える拳と鉄板 ジョージ＆アキラ",
@@ -3490,7 +3490,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体のガード＆ダメージブロックを解除する",
 		turn: 9,
-		proc: [null]
+		proc: [ss_break_attrguard(), ss_break_dblock()]
 	},
 	islegend: true,
 	is_dist: true,
@@ -3505,7 +3505,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体のガード＆ダメージブロックを解除し、火属性のダメージ(400％)",
 		turn: 13,
-		proc: [ss_damage_s(4.0, [0], 1)],
+		proc: [ss_damage_s(4.0, [0], 1), ss_break_attrguard(), ss_break_dblock()],
 	},
 }, {
 	name: "己の道を進む ライ・ハナビシ",
@@ -3742,7 +3742,7 @@ Cards = [{
 	awakes: [
 		Fastskill(1),
 		Attr_statusup(100, 0, [1, 0, 1, 0, 0]),
-		Attr_relief([0, 0, 0, 0, 0], 10),
+		Attr_relief([0, 0, 1, 0, 0], 10),
 		Panel_boost([1,0,0,0,0], 1),
 		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
 		Awake_noeffect("経験値取得量アップ", 1),
@@ -4426,7 +4426,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体の攻撃ターンを2遅らせる。HP20％以下でさらに1遅らせる。",
 		turn: 8,
-		proc: [ss_delay_s(ss_hp_under(0.2, 3, 2))]
+		proc: [ss_delay_s(ss_hp_less(0.2, 3, 2))]
 	},
 	islegend: true,
 	Lawake: [
@@ -4679,7 +4679,7 @@ Cards = [{
 		Panel_boost([1,0,0,0,0], 2),
 		Statusup(0, 200),
 		Spec_statusup(0, 200, [3]),
-		Attr_statusup(200, 0, [0, 0, 0, 0, 0]),
+		Attr_statusup(200, 0, [1,1,1,1,1]),
 		Fastskill(1),
 		Spec_statusup(200, 0, [3]),
 		Fastskill(2),
@@ -4705,7 +4705,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し、ダメージ25％軽減の効果を付与",
 		turn: 6,
-		proc: [ss_panel_change([1,1,1,0,0])]
+		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)]
 	},
 }, {
 	name: "煌きの艶麗華月 ユウギリ・アメノ",
@@ -5372,7 +5372,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・闇属性化し、攻撃力アップかダメージ25％軽減の効果を付与",
 		turn: 7,
-		proc: [ss_panel_change([1,0,0,0,1]), panel_attackup(0.4)],
+		proc: [ss_panel_change([1,0,0,0,1]), panel_attackup(0.4), panel_attr_guard([1,1,1,1,1], 0.25)],
 	},
 }, {
 	// -------------------------
@@ -6303,7 +6303,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "3チェインで火属性の敵単体へダメージ/625％",
-		proc: ChainAttrAttack(5.25, 3, [1,0,0,0,0]),
+		proc: ChainAttrAttack(6.25, 3, [1,0,0,0,0]),
 	},
 	ss2: {
 		desc: "4ターン自分の攻撃力をアップ(250％)",
@@ -6809,9 +6809,9 @@ Cards = [{
 		Statusup(0, 100),
 		Fastskill(1),
 		Costdown(4),
-		Attr_statusup(100, 0, [0, 0, 0, 0, 0, ]),
+		Attr_statusup(100, 0, [1,1,1,1,1]),
 		Spec_statusup(200, 0, [9, ]),
-		Attr_statusup(0, 100, [0, 0, 0, 0, 0, ]),
+		Attr_statusup(0, 100, [1,1,1,1,1]),
 		Fastskill(2),
 	],
 	as1: {
@@ -7028,8 +7028,8 @@ Cards = [{
 		Costdown(2),
 		Fastskill(1),
 		Statusup(200, 0),
-		Attr_statusup(100, 0, [0, 0, 0, 0, 0, ]),
-		Attr_statusup(0, 100, [0, 0, 0, 0, 0, ]),
+		Attr_statusup(100, 0, [1,1,1,1,1]),
+		Attr_statusup(0, 100, [1,1,1,1,1]),
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
 		Spec_statusup(0, 200, [3, ]),
 		Spec_statusup(200, 0, [3, ]),
@@ -8800,7 +8800,7 @@ Cards = [{
 		Statusup(0, 200),
 		Costdown(4),
 		Panel_boost([0, 1, 0, 0, 0, ], 2),
-		Attr_statusup(300, 0, [0, 0, 0, 0, 0, ]),
+		Attr_statusup(300, 0, [1,1,1,1,1]),
 		NEFTJOD(30),
 		Attr_relief([1, 1, 1, 1, 1, ], 10),
 		Fastskill(1),
@@ -9486,7 +9486,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "4チェインでダメージアップ/500％",
-		proc: ChainAttack(4.0, 4),
+		proc: ChainAttack(5.0, 4),
 	},
 	ss2: {
 		desc: "敵全体へ火・水属性のダメージ(220％)",
@@ -10340,7 +10340,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水・光属性化し、ダメージ25％軽減の効果を付与。HP20％以下でさらにダメージ35％軽減の効果を付与",
 		turn: 6,
-		proc: [ss_panel_change([0,1,0,1,0])]
+		proc: [ss_panel_change([0,1,0,1,0]), panel_attr_guard([1,1,1,1,1], ss_hp_less(0.2, 0.60, 0.25))]
 	},
 }, {
 	name: "AbCd-Ψ:《闇照す舞踏 ニティア》",
@@ -11864,8 +11864,13 @@ Cards = [{
 	species: [9],
 	awakes: [
 		Statusup(200, 0),
+		Fastskill(1),
 		Costdown(2),
 		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Heal_afterbattle(10),
+		NEFTJOD(30),
+		Attr_statusup(100, 0, [0,0,1,0,0]),
+		NEFTJOD(30),
 		Fastskill(2),
 		Spec_statusup(200, 0, [9, ]),
 	],
@@ -12023,7 +12028,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷属性化し、ダメージ25％軽減の効果を付与",
 		turn: 7,
-		proc: [ss_panel_change([0,0,1,0,0])]
+		proc: [ss_panel_change([0,0,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)]
 	},
 }, {
 	name: "世界のために闘う漢 GABANARIO",
@@ -12676,7 +12681,7 @@ Cards = [{
 	ss1: {
 		desc: "6ターン500以下の全属性ダメージを無効化する",
 		turn: 8,
-		proc: [ss_damageblock_all(600, 6)],
+		proc: [ss_damageblock_all(500, 6)],
 	},
 	islegend: true,
 	is_dist: true,
@@ -13205,7 +13210,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン敵の攻撃を自分に集めダメージを50％軽減する",
 		turn: 7,
-		proc: [/*undef:集める*/ ss_attr_guard([1,1,1,1,1], 0.5, 3)]
+		proc: [ss_provocate(3, 0.5)]
 	},
 	islegend: true,
 	is_dist: true,
@@ -13220,7 +13225,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン敵の攻撃を自分に集めダメージを75％軽減する",
 		turn: 9,
-		proc: [/*undef:集める*/ ss_attr_guard([1,1,1,1,1], 0.75, 3)]
+		proc: [ss_provocate(3, 0.75)]
 	},
 }, {
 	name: "光輝く金剛金華 トミ・コトブキ",
@@ -13310,7 +13315,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷属性化し、ダメージ25％軽減の効果を付与",
 		turn: 9,
-		proc: [ss_panel_change([0,0,1,0,0])]
+		proc: [ss_panel_change([0,0,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)]
 	},
 }, {
 	name: "万壊の竜巻姫 ニア・ファルール",
@@ -13353,7 +13358,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体へ雷属性のダメージ(260％)",
 		turn: 12,
-		proc: [ss_damage_all(1.8, [2])],
+		proc: [ss_damage_all(2.6, [2])],
 	},
 }, {
 	name: "轟雷の機弓 ニコラ・モーガン",
@@ -15824,7 +15829,7 @@ Cards = [{
 		Fastskill(1),
 		Statusup(0, 100),
 		Fastskill(1),
-		Panel_boost([0, 0, 0, 0, 0, ], 1),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
 		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
 		Fastskill(1),
@@ -16385,7 +16390,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "5チェインでダメージアップ/500％",
-		proc: ChainAttack(4, 5)
+		proc: ChainAttack(5, 5)
 	},
 	ss2: {
 		desc: "味方のMAXHP50%を使い、敵全体へ雷属性のダメージ(200%)、さらに水属性の敵には特攻ダメージ(900%)",
@@ -16421,7 +16426,7 @@ Cards = [{
 		Fastskill(1),
 		Statusup(0, 200),
 		Panel_boost([0, 0, 1, 0, 0, ], 2),
-		Heal_afterbattle(0),
+		Heal_afterbattle(10),
 		Fastskill(2),
 		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
 		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
@@ -16604,7 +16609,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "3チェインでダメージアップ、術士・戦士の敵へさらにダメージアップ(400%/650%)",
-		proc: [ChainAttack(3.0, 3), ChainSpecAttack(5.5, 3, [8,9])],
+		proc: [ChainAttack(4.0, 3), ChainSpecAttack(6.5, 3, [8,9])],
 	},
 	ss2: {
 		desc: "敵単体へ火属性のダメージ、5チェインを消費しさらにダメージアップ(400%/800%)",
@@ -17450,7 +17455,7 @@ Cards = [{
 		Statusup(200, 0),
 		Costdown(2),
 		Fastskill(1),
-		Panel_boost([0, 0, 0, 0, 0, ], 1),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
 		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
 		Panel_boost([0, 0, 1, 0, 0, ], 1),
 		NEFTJOD(30),
@@ -18485,7 +18490,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し、ダメージ35%軽減の効果を付与",
 		turn: 7,
-		proc: [ss_panel_change([1,1,1,0,0])],
+		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.35)],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [1,1,1,1,1,]),
@@ -18720,7 +18725,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化。HP50%以下でさらにダメージ40%軽減の効果を付与",
 		turn: 7,
-		proc: [ss_panel_change([1,1,1,0,0])],
+		proc: [ss_panel_change([1,1,1,0,0]), ss_hp_less_skill(0.5, panel_attr_guard([1,1,1,1,1], 0.4))],
 	},
 	Lawake: [
 		Statusup(0, 400),
@@ -19091,7 +19096,7 @@ Cards = [{
 	},
 	awakes: [
 		Attr_statusup(0,100, [0,1,1,0,0,]),
-		Panel_boost([0,1,0,0,0,],0),
+		Panel_boost([0,1,0,0,0,],2),
 		Statusup(200,0),
 		Attr_statusup(100,0, [0,1,1,0,0,]),
 		Fastskill(1),
@@ -19774,7 +19779,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターンの間、スキルカウンター待機(100%)、アンサースキル封印状態でさらに多弾式カウンター待機(100%)",
 		turn: 10,
-		proc: [ss_skillcounter(1.0, 3)],
+		proc: [ss_skillcounter(1.0, 3), ss_is_assealed_own_skill(ss_dualcounter(3))],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,0,1,0,0,]),
@@ -20409,7 +20414,7 @@ Cards = [{
 	ss1: {
 		desc: "敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(100%/300%)",
 		turn: 4,
-		proc: [ss_damage_all(special_attr([0,0,1,0,0], 3.0, 1.0), [0])],
+		proc: [ss_damage_s(special_attr([0,0,1,0,0], 3.0, 1.0), [0], 1)],
 	},
 	awakes: [
 		Statusup(200,0),
@@ -20430,7 +20435,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(200%/500%)",
 		turn: 6,
-		proc: [ss_damage_all(special_attr([0,0,1,0,0], 5.0, 2.0), [0])],
+		proc: [ss_damage_s(special_attr([0,0,1,0,0], 5.0, 2.0), [0], 1)],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -20557,7 +20562,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "水属性の敵単体へ特効3連続ダメージ、パネルの色が増す度さらにアップ(450%/550%/650%)",
-		proc: ChainPanelsAttrDualAttack(3.5, 4.5, 5.5, [0, 1, 0, 0, 0], 3, 0),
+		proc: ChainPanelsAttrDualAttack(4.5, 5.5, 6.5, [0, 1, 0, 0, 0], 3, 0),
 	},
 	ss2: {
 		desc: "敵単体へ雷属性の10回連続ダメージ(380%)",
@@ -21044,7 +21049,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "雷属性の味方のHPを回復(15%)",
-		proc: Heal(0.13, [0,0,1,0,0], 0),
+		proc: Heal(0.15, [0,0,1,0,0], 0),
 	},
 	ss2: {
 		desc: "味方全体のHPを完全回復し、状態異常を回復する",
@@ -22324,7 +22329,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを雷・闇属性化し、ダメージ35%軽減の効果を付与",
 		turn: 7,
-		proc: [ss_panel_change([0,0,1,0,1])],
+		proc: [ss_panel_change([0,0,1,0,1]), panel_attr_guard([1,1,1,1,1], 0.35)],
 	},
 	Lawake: [
 		Statusup(500, 0),
@@ -22780,7 +22785,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・水属性化し、ダメージ25%軽減の効果を付与。HP20%以下でさらにダメージ35%軽減の効果を付与",
 		turn: 6,
-		proc: [ss_panel_change([1,1,0,0,0])],
+		proc: [ss_panel_change([1,1,0,0,0]), panel_attr_guard([1,1,1,1,1], ss_hp_less(0.20, 0.60, 0.25))],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [1,1,0,0,0,]),
@@ -23651,7 +23656,7 @@ Cards = [{
 	ss1: {
 		desc: "3ターン敵の攻撃を自分に集めダメージを50%軽減する",
 		turn: 6,
-		proc: [/*undef:集める*/ ss_attr_guard([1,1,1,1,1], 0.5, 3)],
+		proc: [ss_provocate(3, 0.5)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -23672,7 +23677,7 @@ Cards = [{
 	ss2: {
 		desc: "3ターン敵の攻撃を自分に集めダメージを75%軽減する、HP50%以下でさらに25%軽減する",
 		turn: 9,
-		proc: [/*undef:集める*/ ss_attr_guard([1,1,1,1,1], ss_hp_less(0.5, 1, 0.75), 3)],
+		proc: [ss_provocate(3, ss_hp_less(0.5, 1, 0.75))],
 	},
 	Lawake: [
 		Statusup(0, 400),
@@ -24966,7 +24971,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し、ダメージ25%軽減の効果を付与",
 		turn: 6,
-		proc: [ss_panel_change([1,1,1,0,0])],
+		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)],
 	},
 	Lawake: [
 		Statusup(700,0),
@@ -25649,7 +25654,7 @@ Cards = [{
 		Panel_boost([0, 0, 1, 0, 0, ], 2),
 		Attr_statusup(100, 0, [1, 0, 1, 0, 0, ]),
 		Awake_noeffect("経験値取得量アップ", 1),
-		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
 		Fastskill(2),
 		Attr_statusup(0, 200, [1, 0, 1, 0, 0, ]),
 		Attr_statusup(200, 0, [1, 0, 1, 0, 0, ]),
@@ -26278,7 +26283,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水・雷属性化し、ダメージ25%軽減の効果を付与。HP10%以下でさらにダメージ45%軽減の効果を付与",
 		turn: 6,
-		proc: [ss_panel_change([0,1,1,0,0])],
+		proc: [ss_panel_change([0,1,1,0,0]), panel_attr_guard([1,1,1,1,1], ss_hp_less(0.10, 0.70, 0.25))],
 	},
 	Lawake: [
 		Statusup(700, 0),
@@ -26453,7 +26458,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・雷属性化し、ダメージ25%軽減の効果を付与",
 		turn: 8,
-		proc: [ss_panel_change([1,0,1,0,0])],
+		proc: [ss_panel_change([1,0,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)],
 	},
 	Lawake: [
 		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
@@ -26584,7 +26589,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し、ダメージ35%軽減の効果を付与",
 		turn: 7,
-		proc: [ss_panel_change([1,1,1,0,0])],
+		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.35)],
 	},
 	Lawake: [
 		Statusup(500, 0),
@@ -27330,7 +27335,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルをALL属性化し、ダメージ10%軽減の効果を付与。HP50%以下でさらにダメージ30%軽減の効果を付与",
 		turn: 7,
-		proc: [ss_panel_change([1,1,1,0,0])],
+		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], ss_hp_less(0.50, 0.40, 0.10))],
 	},
 	Lawake: [
 		Statusup(0, 500),
@@ -29993,7 +29998,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "火・水属性の味方のHPを回復し(14%)、火属性のダメージを10%軽減。リーダー時さらに20%軽減",
-		proc: Heal(0.14, [1, 1, 0, 0, 0], 0),
+		proc: [Heal(0.14, [1, 1, 0, 0, 0], 0), as_guard(0.1,[1,0,0,0,0]), add_cond(as_guard(0.2,[1,0,0,0,0]), when_leader())],
 	},
 	ss2: {
 		desc: "<ガード>4ターン火属性のダメージを50%軽減する",
@@ -32347,7 +32352,7 @@ Cards = [{
 	},
 	awakes: [
 		Costdown(2),
-		Panel_boost([0,1,0,0,0,],2),
+		Panel_boost([1,0,0,0,0,],2),
 		Attr_relief([0,1,0,0,0,],10),
 		Statusup(200,0),
 		Statusup(0,200),
@@ -33950,93 +33955,93 @@ Cards = [{
 		Attr_statusup(0,100, [1,0,0,0,0,]),
 	],
 },{
-    	name: "神滅叛帝 テスタメント・ヘイル",
-    	cardno: 3782,
-    	imageno: 5414,
-    	hp: 2386,
-    	atk: 2743,
-    	cost: 36,
-    	attr: [1, -1],
-    	species: [2],
-    	awakes: [
-            Statusup(200, 0),
-            Statusup(0, 100),
-            Statusup(0, 200),
-            Statusup(100, 0),
-            Spec_statusup(0, 100, []),
-            Panel_boost([0, 1, 0, 0, 0, ], 1),
-            Fastskill(2),
-            Spec_statusup(0, 200, [2, ]),
-            Spec_statusup(0, 200, [2, ]),
-    	],
-    	as1: {
-    		desc: "3チェインで敵単体を3回連続攻撃、パネルの色が増す度さらにダメージアップ(1色：計200％、2色：計300％、3色：計450％)",
-    		proc: ChainPanelsDualAttack(2.0, 3.0, 4.5, 3, 3)
-    	},
-    	ss1: {
-    		desc: "敵全体へ水属性のダメージ(150％)",
-    		turn: 7,
-    		proc: [ss_damage_all(1.5, [1])],
-    	},
-    	islegend: true,
-    	Lawake: [
-            Statusup(0, 400),
-            Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
-    	],
-    	as2: {
-    		desc: "3チェインで敵単体を3回連続攻撃、パネルの色が増す度さらにダメージアップ(1色：計300％、2色：計400％、3色：計550％)",
-    		proc: ChainPanelsDualAttack(3.0, 4.0, 5.5, 3, 3)
-    	},
-    	ss2: {
-    		desc: "敵全体へ水属性のダメージ(220％)",
-    		turn: 10,
-    		proc: [ss_damage_all(2.2, [1])],
-    	},
+    name: "神滅叛帝 テスタメント・ヘイル",
+    cardno: 3782,
+    imageno: 5414,
+    hp: 2386,
+    atk: 2743,
+    cost: 36,
+    attr: [1, -1],
+    species: [2],
+    awakes: [
+        Statusup(200, 0),
+        Statusup(0, 100),
+        Statusup(0, 200),
+        Statusup(100, 0),
+        Spec_statusup(0, 100, [2, ]),
+        Panel_boost([0, 1, 0, 0, 0, ], 1),
+        Fastskill(2),
+        Spec_statusup(0, 200, [2, ]),
+        Spec_statusup(0, 200, [2, ]),
+    ],
+    as1: {
+    	desc: "3チェインで敵単体を3回連続攻撃、パネルの色が増す度さらにダメージアップ(1色：計200％、2色：計300％、3色：計450％)",
+    	proc: ChainPanelsDualAttack(2.0, 3.0, 4.5, 3, 3)
+    },
+    ss1: {
+    	desc: "敵全体へ水属性のダメージ(150％)",
+    	turn: 7,
+    	proc: [ss_damage_all(1.5, [1])],
+    },
+    islegend: true,
+    Lawake: [
+        Statusup(0, 400),
+        Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+    ],
+    as2: {
+    	desc: "3チェインで敵単体を3回連続攻撃、パネルの色が増す度さらにダメージアップ(1色：計300％、2色：計400％、3色：計550％)",
+    	proc: ChainPanelsDualAttack(3.0, 4.0, 5.5, 3, 3)
+    },
+    ss2: {
+    	desc: "敵全体へ水属性のダメージ(220％)",
+    	turn: 10,
+    	proc: [ss_damage_all(2.2, [1])],
+    },
 }, {
-    	name: "AbCd-Ωω:《我が存在を滅す カイン》",
-    	cardno: 5036,
-    	imageno: 6773,
-    	hp: 2221,
-    	atk: 3579,
-    	cost: 46,
-    	attr: [2, 4],
-    	species: [11],
+    name: "AbCd-Ωω:《我が存在を滅す カイン》",
+    cardno: 5036,
+    imageno: 6773,
+    hp: 2221,
+    atk: 3579,
+    cost: 46,
+    attr: [2, 4],
+    species: [11],
 	ape: "アビスコード",
-    	awakes: [
-            Fastskill(1),
-            NEFTJOD(30),
-            Attr_relief([0, 0, 0, 1, 1, ], 30),
-            Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
-            Panel_boost([0, 0, 1, 0, 0, ], 1),
-            NEFTJOD(30),
-            Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
-            Fastskill(2),
-            Panel_boost([0, 0, 1, 0, 0, ], 2),
-            Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
-    	],
-    	as1: {
-    		desc: "7チェインでダメージアップ/550％",
-    		proc: ChainAttack(5.5, 7),
-    	},
-    	ss1: {
-    		desc: "敵全体のカウンターを解除する",
-    		turn: 8,
-    		proc: [ss_break_attackcounter("all")],
-    	},
-    	islegend: true,
-    	Lawake: [
-            Statusup(500, 0),
-            Statusup(0, 500),
-    	],
-    	as2: {
-    		desc: "7チェインでダメージアップ/650％",
-    		proc: ChainAttack(6.5, 7),
-    	},
-    	ss2: {
-    		desc: "敵全体のカウンターを解除し、雷属性のダメージ。HP20％以下でさらにスキル反射を解除し、ダメージアップ(通常：180％ / HP20％以下：300％)",
-    		turn: 13,
-    		proc: [ss_break_attackcounter("all"), ss_damage_all(ss_hp_less(0.20, 3.0, 1.8), ss_hp_less_skill(0.2, ss_break_skillcounter("all")))],
-    	},
+    awakes: [
+        Fastskill(1),
+        NEFTJOD(30),
+        Attr_relief([0, 0, 0, 1, 1, ], 30),
+        Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+        Panel_boost([0, 0, 1, 0, 0, ], 1),
+        NEFTJOD(30),
+        Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
+        Fastskill(2),
+        Panel_boost([0, 0, 1, 0, 0, ], 2),
+        Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
+    ],
+    as1: {
+    	desc: "7チェインでダメージアップ/550％",
+    	proc: ChainAttack(5.5, 7),
+    },
+    ss1: {
+    	desc: "敵全体のカウンターを解除する",
+    	turn: 8,
+    	proc: [ss_break_attackcounter("all")],
+    },
+    islegend: true,
+    Lawake: [
+        Statusup(500, 0),
+        Statusup(0, 500),
+    ],
+    as2: {
+    	desc: "7チェインでダメージアップ/650％",
+    	proc: ChainAttack(6.5, 7),
+    },
+    ss2: {
+    	desc: "敵全体のカウンターを解除し、雷属性のダメージ。HP20％以下でさらにスキル反射を解除し、ダメージアップ(通常：180％ / HP20％以下：300％)",
+    	turn: 13,
+    	proc: [ss_break_attackcounter("all"), ss_damage_all(ss_hp_less(0.20, 3.0, 1.8), ss_hp_less_skill(0.2, ss_break_skillcounter("all")))],
+    },
 },{
 	name: "或る魔王 ミカエラ・セラフィム",
 	cardno: 5133,
@@ -35376,7 +35381,7 @@ Cards = [{
 	atk: 3030,
 	cost: 47,
 	attr: [1,-1],
-	species: [8],
+	species: [9],
 	islegend: true,
 	disable: true,
 	ape: "クロマグⅠ",
@@ -38248,7 +38253,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "7チェインで水属性の敵単体へ特効ダメージ(875%)",
-		proc: ChainAttrAttack(7.75, 7, [0,1,0,0,0]),
+		proc: ChainAttrAttack(8.75, 7, [0,1,0,0,0]),
 	},
 	ss2: {
 		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
@@ -38922,11 +38927,11 @@ Cards = [{
 	awakes: [
 		Statusup(200,0),
 		Statusup(0,200),
-		Panel_boost([0,1,0,0,0,],2),
+		Panel_boost([1,0,0,0,0,],2),
 		Fastskill(1),
 		NEFTJOD(30),
 		Fastskill(1),
-		Panel_boost([0,1,0,0,0,],2),
+		Panel_boost([1,0,0,0,0,],2),
 		Attr_statusup(200,0, [1,0,0,0,0,]),
 		Attr_statusup(0,200, [1,0,0,0,0,]),
 		Heal_afterbattle(10),
@@ -40669,7 +40674,7 @@ Cards = [{
 	ss1: {
 		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(300%)、10チェインを消費しスキル反射を無視する",
 		turn: 7,
-		proc: [ss_damage_all(3.0, [0]) , ss_chain_cond_skill(10, ss_ignore_skillcounter(), null), ss_consume_own(0.5)],
+		proc: [ss_damage_all(3.0, [0]) , ss_chain_cost_skill(10, ss_ignore_skillcounter(), null), ss_consume_own(0.5)],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],1),
@@ -40690,7 +40695,7 @@ Cards = [{
 	ss2: {
 		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(550%)、10チェインを消費しスキル反射を無視する",
 		turn: 9,
-		proc: [ss_damage_all(5.5, [0]) , ss_chain_cond_skill(10, ss_ignore_skillcounter(), null), ss_consume_own(0.5)],
+		proc: [ss_damage_all(5.5, [0]) , ss_chain_cost_skill(10, ss_ignore_skillcounter(), null), ss_consume_own(0.5)],
 	},
 	Lawake: [
 		Statusup(0,700),
@@ -40828,7 +40833,7 @@ Cards = [{
 	ss2: {
 		desc: "<特殊パネル変換>ジャンルパネルを雷属性化し、回復の効果を付与(8%)",
 		turn: 9,
-		proc: [ss_panel_change([0,0,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.08)],
+		proc: [ss_panel_change([0,0,1,0,0]), panel_healally(0.08)],
 	},
 	Lawake: [
 		Statusup(0,400),
@@ -41631,7 +41636,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "5チェインで雷属性の敵単体へ特効ダメージ(450%)、解答が早いほどさらにアップ(効果値:150)",
-		proc: [add_cond(ChainAttrAttack(3.5, 5, [0,0,1,0,0]), as_timedep(1.5))],
+		proc: [add_cond(ChainAttrAttack(4.5, 5, [0,0,1,0,0]), as_timedep(1.5))],
 	},
 	ss2: {
 		desc: "<特効大魔術>敵単体へ火属性のダメージ(800%)、平均解答時間が早いほどさらに雷属性の敵には特効ダメージ(効果値:200)",
@@ -42810,7 +42815,7 @@ Cards = [{
 	awakes: [
 		Fastskill(1),
 		Statusup(0,200),
-		Attr_statusup(100,0, [0,0,0,0,0,]),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
 		Panel_boost([0,0,1,0,0,],2),
 		Attr_statusup(0,100, [0,0,1,0,0,]),
 		Panel_boost([0,0,1,0,0,],2),
@@ -43843,10 +43848,10 @@ Cards = [{
 	atk: 3512,
 	cost: 42,
 	attr: [0,-1],
-	species: [-1],
+	species: [2],
 	islegend: true,
 	as1: {
-		desc: "火属性の味方の攻撃力をアップ(30%)し、2チェインでダメージアップ(350%)",
+		desc: "火属性の味方の攻撃力をアップ(30%)し、2チェインでダメージアップ(250%)",
 		proc: [ChainEnhance(0.3, [1,0,0,0,0], 0), ChainAttack(2.5, 2)],
 	},
 	ss1: {
@@ -44391,7 +44396,7 @@ Cards = [{
 },{
 	name: "最速の境地へ テルイ・フィオン",
 	cardno: 5090,
-	imageno: -1,
+	imageno: 6830,
 	hp: 2276,
 	atk: 2534,
 	cost: 29,
@@ -44424,7 +44429,7 @@ Cards = [{
 },{
 	name: "リリンの王 碇ゲンドウ",
 	cardno: 3522,
-	imageno: -1,
+	imageno: 4727,
 	hp: 2352,
 	atk: 2407,
 	cost: 35,

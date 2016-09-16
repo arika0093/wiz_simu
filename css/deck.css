@@ -14,6 +14,13 @@ div.ally:last-child, div.enemy:last-child{
 	margin-bottom: 0px;
 }
 
+.selbox_field .chosen-drop{
+	width: 110% !important;
+}
+.selbox_field .chosen-results{
+	height: 280px !important;
+}
+
 li.ui-menu-item{
 	font-size: 0.9em !important;
 }

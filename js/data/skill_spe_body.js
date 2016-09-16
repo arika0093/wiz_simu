@@ -1137,6 +1137,17 @@ var SpCondSkill = {
 		return base * ss_object_done(fld, oi, sca);
 	},
 	// -----------------------------
+	// 自身がAS封印状態かどうか
+	"ss_is_assealed_own_skill": function (fld, oi, cobj, params) {
+		var ss1 = params[0];
+		var ss2 = params[1];
+		var now = fld.Allys.Now[oi];
+		var is_asseal = $.grep(now.turn_effect, function (e) {
+			return e.type == "as_sealed";
+		}).length > 0;
+		return is_asseal ? a : b;
+	},
+	// -----------------------------
 	// 自身が毒かどうか
 	"ss_is_poison_own": function (fld, oi, cobj, params) {
 		var a = params[0];
@@ -1257,7 +1268,7 @@ function ss_object_done(fld, n, c_obj, is_check_crs) {
 			var tg = pm.target.length >= 2 ? pm.target : [pm.target];
 			for (var i = 0; i < tg.length; i++) {
 				$.each(pickup_awakes(card, pn, false), function (j, e) {
-					params[tg[i]] += e.upvalue * (pm.rate_mlt || 1);
+					params[tg[i]] += (e.upvalue || e.up) * (pm.rate_mlt || 1);
 				})
 			}
 		}
