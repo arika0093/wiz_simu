@@ -147,18 +147,17 @@ function Abstate_invalid(tg_type) {
 		"attr_weaken": "弱体化",
 	};
 	var mytg=(function(typs,tg){
-					var outp="";
-					if($.isArray(tg)){
-					console.log(tg)
-						tg.forEach(function(t){
-							outp+=typs[t]+"・";
-						})
-						outp=outp.slice(0,-1);
-					}else{
-						outp=typs[tg]
-					}
-					return outp;
-				})(tmptype, tg_type)
+		var outp="";
+		if($.isArray(tg)){
+			tg.forEach(function(t){
+				outp+=typs[t]+"・";
+			})
+			outp=outp.slice(0,-1);
+		}else{
+			outp=typs[tg]
+		}
+		return outp;
+	})(tmptype, tg_type)
 	return {
 		type: "abstate_invalid",
 		tgtype: tg_type,
@@ -167,64 +166,38 @@ function Abstate_invalid(tg_type) {
 	};
 }
 
-// AS効果値アップ潜在
-function Awake_ASkillRateup(upval) {
-	return {
-		type: "awake_ans_rateup",
-		upvalue: upval,
-		name: "AS効果値アップ(+" + upval + ")",
-		desc: "ASの効果値を" + upval + "%アップする",
-	};
-}
-
-// SS効果値アップ潜在
-function Awake_SkillRateup(upval, skl_type) {
-	return {
-		type: "awake_rateup",
-		skilltype: skl_type,
-		upvalue: upval,
-		name: "SS効果値アップ(+" + upval + ")",
-		desc: "SPスキルの効果値を" + upval + "%アップする" ,
-	};
-}
-
-// SS継続ターン数アップ潜在
-function Awake_Turnup(upval, skl_type) {
-	return {
-		type: "awake_turnup",
-		skilltype: skl_type,
-		upvalue: upval,
-		name: "SS継続ターン数アップ(+" + upval + ")",
-		desc: "SPスキルの継続ターン数を" + upval + "Tアップする",
-	};
-}
-
 // 通常エリアでのみステアップ
 function Guild_statusup(hp, atk) {
 	return {
-		type: "own_status_up_guild",
+		type: "own_status_up",
 		up_hp: hp,
 		up_atk: atk,
 		name: "ギルドマスターの" + (hp != 0 ? "誓い" : "誇り") + int2roman(Math.max(hp, atk) / 100),
-		desc: "通常エリアでのみ" + (hp != 0 ? "HP" : "攻撃力") + "が" + Math.max(hp, atk) + "アップする"
+		desc: "通常エリアでのみ" + (hp != 0 ? "HP" : "攻撃力") + "が" + Math.max(hp, atk) + "アップする",
+		cond: function (fld, oi, ai) {
+			// 発動条件
+			return false;
+		}
 	};
 }
 
-// デッキ単色時のみステアップ
+// デッキ単色時のみ味方ステアップ
 function OnlyAttr_statusup(hp, atk, o_attr) {
 	return {
 		type: "status_up",
 		up_hp: hp,
 		up_atk: atk,
+		attr: [1,1,1,1,1],
+		spec: create_specs(1),
 		onlyattr: o_attr,
 		name: "デッキ単色時のみステアップ",
 		desc: "デッキ単色時のみステアップ",
-		cond: function (fld, ai, oi) {
+		cond: function (fld, oi, ai) {
 			// 発動条件
 			var rst = true;
 			var dcs = fld.Allys.Deck;
-			for (var i = 0; i <= dcs.length; i++) {
-				rst = rst && dcs.attr[0] == this.onlyattr && dcs.attr[1] == -1;
+			for (var i = 0; i < dcs.length; i++) {
+				rst = rst && dcs[i].attr[0] == this.onlyattr && dcs[i].attr[1] == -1;
 			}
 			return rst;
 		}
@@ -251,4 +224,76 @@ function Awake_noeffect(name, efv) {
 		name: name,
 		efv: efv,
 	}
+}
+
+// ------------------------------------
+// 主に潜在結晶用の関数
+// ------------------------------------
+// 複合潜在能力
+// （煌眼、覇眼等の複数効果を有する潜在能力定義用）
+function Awake_composite(name, p1, p2, p3, p4) {
+	return {
+		type: "awake_composite",
+		name: name,
+		desc: name,
+		proc: [p1, p2, p3, p4],
+	};
+}
+
+// 最終ダメージ定数倍
+function Awake_damage_multiple(rate, lowhp) {
+	if (lowhp === undefined) {
+		// 後方互換性維持(潜在結晶時)
+		return {
+			type: "awake_damage_multiple",
+			rate: rate,
+		}
+	} else {
+		// 普通の潜在に置く場合
+		var desc = "ダメージを" + rate + "倍して、HPを" + lowhp + "下げる";
+		return Awake_composite(desc, Statusup(-lowhp, 0), {
+			type: "awake_damage_multiple",
+			rate: rate,
+		});
+	}
+}
+
+// Hit回数増加
+function Awake_multihitadd(n) {
+	return {
+		type: "Awake_multihitadd",
+		upvalue: n,
+	};
+}
+
+// AS効果値アップ潜在
+function Awake_ASkillRateup(upval) {
+	return {
+		type: "awake_ans_rateup",
+		upvalue: upval,
+		name: "AS効果値アップ(+" + upval + ")",
+		desc: "ASの効果値を" + upval + "%アップする",
+	};
+}
+
+// SS効果値アップ潜在
+function Awake_SkillRateup(upval, skl_type) {
+	return {
+		type: "awake_rateup",
+		skilltype: skl_type,
+		upvalue: upval,
+		name: "SS効果値アップ(+" + upval + ")",
+		desc: "SPスキルの効果値を" + upval + "%アップする",
+	};
+}
+
+// SS継続ターン数アップ潜在
+function Awake_Turnup(upval, skl_type) {
+	return {
+		type: "awake_turnup",
+		skilltype: skl_type,
+		upvalue: upval,
+		name: "SS継続ターン数アップ(+" + upval + ")",
+		desc: "SPスキルの継続ターン数を" + upval + "Tアップする",
+	};
 }

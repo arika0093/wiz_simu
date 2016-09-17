@@ -54,14 +54,18 @@ function add_awake_ally(cards, nows, own_no, legend_skill) {
 	var ally_statups = pickup_awakes(cards[own_no], "status_up", legend_skill);
 	// 自身ステアップの反映
 	$.each(own_statups, function (n, e) {
-		nows[own_no].maxhp += e.up_hp;
-		nows[own_no].nowhp += e.up_hp;
-		nows[own_no].atk += e.up_atk;
+		if(!e.cond || e.cond(Field, own_no)){
+			nows[own_no].maxhp += e.up_hp;
+			nows[own_no].nowhp += e.up_hp;
+			nows[own_no].atk += e.up_atk;
+		}
 	});
 	// 味方ステアップの反映
 	$.each(ally_statups, function (n, e) {
 		for (var t = 0; t < cards.length; t++) {
-			if (e.attr[cards[t].attr[0]] > 0 && check_spec_inarray(e.spec, cards[t].species)) {
+			if(e.attr[cards[t].attr[0]] > 0
+			&& check_spec_inarray(e.spec, cards[t].species)
+			&& (!e.cond || e.cond(Field, own_no, t))) {
 				nows[t].maxhp += e.up_hp;
 				nows[t].nowhp += e.up_hp;
 				nows[t].atk += e.up_atk;
@@ -84,14 +88,18 @@ function minus_legend_awake(cards, nows, own_no) {
 	var ally_statups = pickup_awakes(cards[own_no], "status_up", true);
 	// 増加分を減らす
 	$.each(own_statups, function (n, e) {
-		var now = nows[own_no];
-		now.maxhp = Math.max(now.maxhp - e.up_hp, 1);
-		now.nowhp = Math.min(now.maxhp, now.nowhp);
-		now.atk -= e.up_atk;
+		if (!e.cond || e.cond(Field, own_no)) {
+			var now = nows[own_no];
+			now.maxhp = Math.max(now.maxhp - e.up_hp, 1);
+			now.nowhp = Math.min(now.maxhp, now.nowhp);
+			now.atk -= e.up_atk;
+		}
 	});
 	$.each(ally_statups, function (n, e) {
 		for (var t = 0; t < cards.length; t++) {
-			if (e.attr[cards[t].attr[0]] > 0 && check_spec_inarray(e.spec, cards[t].species)) {
+			if(e.attr[cards[t].attr[0]] > 0
+			&& check_spec_inarray(e.spec, cards[t].species)
+			&& (!e.cond || e.cond(Field, own_no, t))) {
 				var now = nows[t];
 				now.maxhp -= e.up_hp;
 				now.nowhp = Math.min(now.maxhp, now.nowhp);

@@ -46354,7 +46354,7 @@ Cards = [{
 		Fastskill(2),
 		Attr_statusup(300,0, [1,0,0,0,0,]),
 		Attr_statusup(0,300, [1,0,0,0,0,]),
-		// アドヴェリタス結晶,
+		Awake_damage_multiple(1.1, 500),
 	],
 	as2: {
 		desc: "4チェインで敵単体を6回連続攻撃(500%)",
@@ -46366,7 +46366,7 @@ Cards = [{
 		proc: [ss_damage_slash(10.5, [0], 15)],
 	},
 	Lawake: [
-		// 火属性単色デッキアップ,
+		OnlyAttr_statusup(500, 500, 0),
 		Attr_statusup(100,0, [1,0,0,0,0,]),
 		Attr_statusup(0,100, [1,0,0,0,0,]),
 	],
@@ -46401,19 +46401,19 @@ Cards = [{
 		Fastskill(2),
 		Spec_statusup(0,400, [8,]),
 		Spec_statusup(400,0, [8,]),
-		Abstate_invalid("スキルディスチャージ"),
+		Abstate_invalid("discharge"),
 	],
 	as2: {
 		desc: "7チェインで火属性の敵単体へ特効ダメージ(875%)",
 		proc: ChainAttrAttack(8.75, 7, [1,0,0,0,0]),
 	},
 	ss2: {
-		desc: "<特殊パネル変換>ジャンルパネルを水属性化し、スキルチャージプラス1の効果を付与、(スキルチャージの効果は、SPスキルを使うまで重複しません)",
+		desc: "<特殊パネル変換>ジャンルパネルを水属性化し、スキルチャージプラス1の効果を付与(スキルチャージの効果は、SPスキルを使うまで重複しません)",
 		turn: 6,
 		proc: [ss_panel_change([0,1,0,0,0]), panel_skillboost(1)],
 	},
 	Lawake: [
-		// 水属性単色デッキアップ,
+		OnlyAttr_statusup(500, 500, 1),
 		Attr_statusup(0,100, [0,1,0,0,0,]),
 		Attr_statusup(100,0, [0,1,0,0,0,]),
 	],
@@ -46460,7 +46460,7 @@ Cards = [{
 		proc: [ss_panel_change([0,0,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.15)],
 	},
 	Lawake: [
-		// 雷単色デッキアップ,
+		OnlyAttr_statusup(500, 500, 2),
 		Attr_statusup(100,0, [0,0,1,0,0,]),
 		Attr_statusup(0,100, [0,0,1,0,0,]),
 	],
@@ -46482,7 +46482,7 @@ Cards = [{
 	ss1: {
 		desc: "<反動大魔術・蝕>スキル反射を無視し、敵単体へ雷属性のダメージ(200%×人数)◆スキル使用後、味方全体が1ターン封印状態に",
 		turn: 4,
-		proc: null,
+		proc: [ss_damage_all(ss_seal_all_cond(2.0), [0])],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
@@ -46503,7 +46503,7 @@ Cards = [{
 	ss2: {
 		desc: "<反動大魔術・蝕>スキル反射を無視し、敵単体へ雷属性のダメージ(240%×人数)◆スキル使用後、味方全体が1ターン封印状態に",
 		turn: 6,
-		proc: null,
+		proc: [ss_damage_all(ss_seal_all_cond(2.4), [0])],
 	},
 	Lawake: [
 		Statusup(0,1000),

@@ -1024,6 +1024,18 @@ function ss_consume_all_cond(base, p) {
 }
 
 /**
+ * (条件系)味方全体に封印をかけ、対象数*基礎値の数値を返す。
+ * base: 掛け算の基礎値。
+**/
+function ss_seal_all_cond(base) {
+	return ss_condition({
+		name: "ss_seal_all_cond",
+		type: "consume_cond",
+		p1: base,
+	});
+}
+
+/**
  * (条件実行系)自身がAS封印の場合ssを実行する。
  * ss: 条件を満たした時のスキル。
 **/

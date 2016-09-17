@@ -156,32 +156,3 @@ var Awake_crystal_lists = [{
 	})
 })()
 
-// ------------------------------------
-// 潜在結晶用 関数
-// ------------------------------------
-// 複合潜在能力
-// （煌眼、覇眼等の複数効果を有する潜在能力定義用）
-function Awake_composite(name, p1, p2, p3, p4) {
-	return {
-		type: "awake_composite",
-		desc: name,
-		proc: [p1, p2, p3, p4],
-	};
-}
-
-// 最終ダメージ定数倍
-function Awake_damage_multiple(rate) {
-	return {
-		type: "awake_damage_multiple",
-		rate: rate,
-	};
-}
-
-// Hit回数増加
-function Awake_multihitadd(n) {
-	return {
-		type: "Awake_multihitadd",
-		upvalue: n,
-	};
-}
-

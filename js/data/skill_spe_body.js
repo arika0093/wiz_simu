@@ -1137,6 +1137,20 @@ var SpCondSkill = {
 		return base * ss_object_done(fld, oi, sca);
 	},
 	// -----------------------------
+	// 味方全体を封印状態にして対象数だけ効果値を増やす
+	"ss_seal_all_cond": function (fld, oi, cobj, params) {
+		var base = params[0];
+		var nows = fld.Allys.Now;
+		var count = 0;
+		for (var i = 0; i < nows.length; i++) {
+			if (nows[i].nowhp <= 0) { continue; }
+			var scs = ss_allsealed_own(1);
+			ss_object_done(fld, i, scs);
+			count++;
+		}
+		return base * count;
+	},
+	// -----------------------------
 	// 自身がAS封印状態かどうか
 	"ss_is_assealed_own_skill": function (fld, oi, cobj, params) {
 		var ss1 = params[0];
