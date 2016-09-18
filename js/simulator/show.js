@@ -409,6 +409,9 @@ function sim_show() {
 					} else {
 						li_t += "<li class='no_icon'>";
 					}
+					if (teff[i].subicon) {
+						li_t += "<img class='teff_icon' src='/image/icon/" + teff[i].subicon + ".png' />";
+					}
 					li_t += teff[i].desc;
 					if (teff[i].lim_turn > 0) {
 						li_t += "(残り: " + teff[i].lim_turn + "t)";

@@ -18,7 +18,7 @@ div.ally:last-child, div.enemy:last-child{
 	width: 110% !important;
 }
 .selbox_field .chosen-results{
-	height: 280px !important;
+	max-height: 280px !important;
 }
 
 li.ui-menu-item{

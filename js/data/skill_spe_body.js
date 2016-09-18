@@ -532,6 +532,7 @@ var SpSkill = {
 				desc: "ステータスアップ(HP: " + up_arrs[0] + "/ATK: " + up_arrs[1] + ")",
 				type: "ss_statusup",
 				icon: "statusup",
+				subicon: "statusup_atk",
 				isdual: false,
 				iscursebreak: true,
 				turn: t,
@@ -544,6 +545,8 @@ var SpSkill = {
 						nowtg.maxhp = Math.max(teff.up_hp + nowtg.maxhp, 1);
 						nowtg.atk = Math.max(teff.up_atk + nowtg.atk, 0);
 						nowtg.nowhp = Math.min(nowtg.nowhp + Math.max(params[0][0], teff.up_hp, 0), nowtg.maxhp);
+						teff.icon = (teff.up_hp > 0 ? "statusup" : teff.up_hp < 0 ? "statusdown" : null);
+						teff.subicon = (teff.up_atk > 0 ? "statusup_atk" : teff.up_atk < 0 ? "statusdown_atk" : null);
 					}
 					else if (state == "end" || state == "dead") {
 						nowtg.maxhp = Math.max(nowtg.maxhp - teff.up_hp, 1);
