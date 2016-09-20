@@ -1,0 +1,12 @@
+<meta charset=utf-8>
+<body>
+
+    認識するファイルを選択して、アップロードして下さい。<br>
+    複数同時にアップロードできます。<br>
+    1枚目の画像は、Lが15体いるようにして下さい。
+    <form action="./php_up.php?mode=up" method="post" enctype="multipart/form-data">
+    <input name="file[]" type="file" multiple="multiple" />
+    <input type="submit" value="アップロード" />
+    </form>
+    <br>
+    良い画像の例：<br>

@@ -1,0 +1,67 @@
+***************************
+
+imgReader SPECIFICATION
+
+***************************
+
+●what's it?
+・強化合成画面の画像からimagenoを読み取る
+
+●開発環境
+言語：C++
+OS：CentOS6.8
+主要ライブラリ：Opencv2.3.1
+コンパイラ：g++ 4.8.2
+その他：statifier
+
+●主要機能
+・sImgReader.out
+　- 認識処理の心臓部分。phpから呼び出し、分散logを出力する。
+　- 編集のために上の開発環境が必須。
+・resget.cgi
+　- 認識結果をJSON文字列で返す。ajaxから呼び出し、分散logを読み込んでjsonで返す。
+　- resget.cppがソースで、valueserverのsshコンソールでrcompile.sh実行でコンパイルできる。
+
+●インタフェース
+（サンプルで作っただけなので、いい感じに編集してください）
+・index.html
+　- 画像をアップロードしてphp_up.phpを呼ぶフォーム
+・php_up.php
+　- 適当なidを作成
+　- /io/[id名]/inputImgにアップロードされた画像とそのリストを保存
+　- sImgReaderをバックグラウンドで実行
+　- 完了後result.shtmlにリダイレクト
+・result.shtml
+　- isFinite（sImgReaderのプロセスが終了したフラグ）がtrueになるまでAjaxでresget.cgiを叩く
+　- （途中）結果をいい感じに成形して表示
+
+●その他の構成要素
+・clean.sh　…　sImgReaderのデバッグ用なのでいらない。消してもいい
+・onlyCompile.sh　…　sImgReaderのデバッグ用なのでいらない。消してもいい
+・readme_when_comile.txt　…　sImgReaderのデバッグ用なのでいらない。消してもいい
+・imgReader.cpp　…　ソース。ある意味はない。
+・resget.cpp　…　JSON作成用cgiのソース。編集＆コンパイル可能
+・rcompile.sh　…　resget.cppをコンパイルするためのコマンド
+・L.png　…　認識処理でカード位置を決定するための部品。重要。
+・dic　…　認識用画像辞書。重要。
+
+●その他の機能
+・辞書画像の構築機能　（検出精度を変えない限り再実行の必要なし）
+・辞書画像の調整パラメータ取得機能　（位置合わせ処理を変えない限り再実行の必要なし）
+・cronによる辞書画像の自動追加機能（未実装）
+
+●thanks
+CentOS
+https://wiki.centos.org/Manuals/ReleaseNotes/CentOS6.8/Japanese
+CentOSに新しいバージョンのGCC/G++(4.8/4.9)をインストールする
+http://www.task-notes.com/entry/20151114/1447492231
+linux(CentOS)にOpencv2.3をインストール - conta's diary
+http://conta.hatenablog.com/entry/2012/01/06/200543
+動的リンクの実行ファイルを静的リンクに変換する
+https://fish.minidns.net/news/72
+VMware
+http://www.vmware.com/jp.html
+VMware Toolsの共有ファイル設定をしてラクラク開発
+http://catprogram.hatenablog.com/entry/2013/05/22/001541
+wiz_simu
+https://github.com/Arika0093/wiz_simu/
