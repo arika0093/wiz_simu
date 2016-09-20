@@ -200,3 +200,7 @@ _Pvt_Extensions/
 ModelManifest.xml
 /task
 /download/html5jp
+
+# imgReader temporary file
+/tools/imgReader/dic
+/tools/imgReader/io
