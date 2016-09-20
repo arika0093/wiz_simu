@@ -192,11 +192,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "stopwatch", "stopwatch", "{
 		tools\stopwatch\index.html = tools\stopwatch\index.html
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "autorun", "autorun", "{998A7186-9F13-4C7B-BB3B-86A074580B56}"
-	ProjectSection(SolutionItems) = preProject
-		js\simulator\autorun\autorun.js = js\simulator\autorun\autorun.js
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -232,6 +227,5 @@ Global
 		{A2A0FB4B-77FC-4AF4-962F-A809505E8D6A} = {FBCE4C9C-0BDA-4B34-AC6E-3158CF6D361E}
 		{31932564-66B6-404E-B592-0300DDC8831E} = {0B5CF5D7-96AD-4EED-8363-750FF402B468}
 		{56183A96-2056-453B-8B99-DD4F0D23A5F8} = {AEC9F07D-08AF-4D00-AC3F-C5ED1357D47A}
-		{998A7186-9F13-4C7B-BB3B-86A074580B56} = {0B5CF5D7-96AD-4EED-8363-750FF402B468}
 	EndGlobalSection
 EndGlobal

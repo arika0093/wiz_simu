@@ -96,7 +96,7 @@ function deckdata_SaveUrl(data, after) {
 	// AJAXを使ってPHPを呼ぶ
 	$.ajax({
 		type: "POST",
-		url: "http://wiztools.net/api/shorten.php",
+		url: "http://api.wiztools.net/shorten.php",
 		data: "t=set&d=" + JSON.stringify(data),
 		success: after,
 	});
@@ -107,7 +107,7 @@ function deckdata_LoadUrl(short, after) {
 	// AJAXを使ってPHPを呼ぶ
 	$.ajax({
 		type: "POST",
-		url: "http://wiztools.net/api/shorten.php",
+		url: "http://api.wiztools.net/shorten.php",
 		data: "t=get&d=" + short,
 		success: after,
 	});

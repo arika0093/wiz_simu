@@ -1162,7 +1162,7 @@ var SpCondSkill = {
 		var is_asseal = $.grep(now.turn_effect, function (e) {
 			return e.type == "as_sealed";
 		}).length > 0;
-		return is_asseal ? a : b;
+		return is_asseal ? ss1 : ss2;
 	},
 	// -----------------------------
 	// 自身が毒かどうか
@@ -1285,7 +1285,13 @@ function ss_object_done(fld, n, c_obj, is_check_crs) {
 			var tg = pm.target.length >= 2 ? pm.target : [pm.target];
 			for (var i = 0; i < tg.length; i++) {
 				$.each(pickup_awakes(card, pn, false), function (j, e) {
-					params[tg[i]] += (e.upvalue || e.up) * (pm.rate_mlt || 1);
+					if ($.isArray(params[tg[i]])) {
+						for (var k = 0; k < params[tg[i]].length; k++) {
+							params[tg[i]][k] += (e.upvalue || e.up) * (pm.rate_mlt || 1);
+						}
+					} else {
+						params[tg[i]] += (e.upvalue || e.up) * (pm.rate_mlt || 1);
+					}
 				})
 			}
 		}

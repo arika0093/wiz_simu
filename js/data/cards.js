@@ -6791,7 +6791,15 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを水・闇属性化し、くじを引く",
 		turn: 10,
-		proc: [ss_panel_change([0,1,0,0,1]), panel_attackup(0.10), panel_chainplus(1), panel_healally(0.01), panel_attackup(10.0), panel_chainplus(50), panel_healally(1)],
+		proc: [ss_panel_change([0, 1, 0, 0, 1]),
+			panel_attackup(0.10),
+			panel_attackup(10.0),
+			panel_attackup(20.0),
+			panel_chainplus(1),
+			panel_chainplus(50),
+			panel_healally(0.01),
+			panel_healally(1)
+		],
 	},
 }, {
 	name: "金魚を眺む夏の涼 サーヤ・スズカゼ",

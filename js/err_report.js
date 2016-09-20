@@ -10,7 +10,7 @@ window.onerror = function (errorMsg, fileName, lineNumber) {
     if (fileName) {
     	$.ajax({
     		type: "POST",
-    		url: "http://wiztools.net/api/err_report.php",
+    		url: "http://api.wiztools.net/err_report.php",
     		data: "t=set&d=" + JSON.stringify(errorInfo),
     		success: function (r) {
     			return;

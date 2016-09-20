@@ -35,7 +35,7 @@ function actl_send_result(after) {
 	// ajaxを使用
 	$.ajax({
 		type: "POST",
-		url: "http://wiztools.net/api/result_sav.php",
+		url: "http://api.wiztools.net/result_sav.php",
 		data: send,
 		success: after,
 	});
@@ -53,7 +53,7 @@ function actl_send_share(id, user, comment, after) {
 
 	$.ajax({
 		type: "POST",
-		url: "http://wiztools.net/api/rst_share.php",
+		url: "http://api.wiztools.net/rst_share.php",
 		data: send,
 		success: after,
 	});

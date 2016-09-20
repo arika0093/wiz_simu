@@ -198,7 +198,7 @@ function sim_by_id(id){
 	dd.quest = id;
 	$.ajax({
 		type: 'POST',
-		url: "http://wiztools.net/api/shorten.php",
+		url: "http://api.wiztools.net/shorten.php",
 		data: "t=set&d=" + JSON.stringify(dd),
 		success: function(res,ts){
 			var js=JSON.parse(res);
