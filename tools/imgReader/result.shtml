@@ -33,6 +33,7 @@
         if(obj.errorMsg && obj.errorMsg!="undefined"){
             errors += "エラー： " + obj.errorMsg + "<br>";
         }
+        resArea.innerHTML = errors + outp
     }
 
     function putTD(myStr){
@@ -61,6 +62,10 @@
         console.log(data)
 		outp += "<style>"+  data.css+"</style>";
         errorCheck(data);
+        if(data.completion && data.isFinite && data.completion == false && data.isFinite == true){
+            errors += "エラー： 解析ステータスが未完了で解析プログラムが終了しました。<br>";
+            resArea.innerHTML = errors + outp
+        }
         var titles=["登録","元画像","認識画像","確度","名前"]
         outp += "<table border=1><tr>"
         titles.forEach(function(t){
