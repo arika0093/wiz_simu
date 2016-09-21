@@ -46490,7 +46490,7 @@ Cards = [{
 	ss1: {
 		desc: "<反動大魔術・蝕>スキル反射を無視し、敵単体へ雷属性のダメージ(200%×人数)◆スキル使用後、味方全体が1ターン封印状態に",
 		turn: 4,
-		proc: [ss_damage_all(ss_seal_all_cond(2.0), [0])],
+		proc: [ss_damage_s(ss_seal_all_cond(2.0), [2], 1)],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
@@ -46511,7 +46511,7 @@ Cards = [{
 	ss2: {
 		desc: "<反動大魔術・蝕>スキル反射を無視し、敵単体へ雷属性のダメージ(240%×人数)◆スキル使用後、味方全体が1ターン封印状態に",
 		turn: 6,
-		proc: [ss_damage_all(ss_seal_all_cond(2.4), [0])],
+		proc: [ss_damage_s(ss_seal_all_cond(2.4), [2], 1)],
 	},
 	Lawake: [
 		Statusup(0,1000),
@@ -46534,7 +46534,7 @@ Cards = [{
 	ss1: {
 		desc: "<弱体化大魔術>スキル反射を無視し、敵全体へ火属性のダメージ(400%)、さらに5ターンの間、敵の防御力を弱体化(30%)",
 		turn: 13,
-		proc: [ss_damage_all(4.0, [0]), ss_attr_weaken_all(null, 0.3, 5),
+		proc: [ss_damage_all(4.0, [0]), ss_attr_weaken_all(null, 0.3, 5), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Fastskill(1),
@@ -46555,7 +46555,7 @@ Cards = [{
 	ss2: {
 		desc: "<弱体化大魔術>スキル反射を無視し、敵全体へ火属性のダメージ(700%)、さらに5ターンの間、敵の防御力を弱体化(30%)",
 		turn: 16,
-		proc: [ss_damage_all(7.0, [0]), ss_attr_weaken_all(null, 0.3, 5),
+		proc: [ss_damage_all(7.0, [0]), ss_attr_weaken_all(null, 0.3, 5), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [1,0,0,0,0,]),
@@ -46599,7 +46599,7 @@ Cards = [{
 	ss2: {
 		desc: "<ブースト>4ターンの間、味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ(150%)。さらに極稀にクリティカル",
 		turn: 5,
-		proc: [ss_boost_enhance_all(1.5, 4, 0.1, [0,0,1,0,0])],
+		proc: [ss_boost_enhance_all(1.5, 4, 0.1, [1,1,1,1,1])],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [1,0,1,0,0,]),
@@ -46710,7 +46710,7 @@ Cards = [{
 	ss1: {
 		desc: "<反動大魔術・蝕>スキル反射を無視し、敵単体へ水属性のダメージ(200%×人数)◆スキル使用後、味方全体が1ターン封印状態に",
 		turn: 4,
-		proc: [ss_damage_all(ss_seal_all_cond(2.0), [1])],
+		proc: [ss_damage_s(ss_seal_all_cond(2.0), [1], 1)],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],2),
@@ -46731,7 +46731,7 @@ Cards = [{
 	ss2: {
 		desc: "<反動大魔術・蝕>スキル反射を無視し、敵単体へ水属性のダメージ(240%×人数)◆スキル使用後、味方全体が1ターン封印状態に",
 		turn: 6,
-		proc: [ss_damage_all(ss_seal_all_cond(2.4), [1])],
+		proc: [ss_damage_s(ss_seal_all_cond(2.4), [1], 1)],
 	},
 	Lawake: [
 		Statusup(0,1000),
@@ -46799,7 +46799,7 @@ Cards = [{
 	ss1: {
 		desc: "<鉄壁・極>3ターンの間、攻撃や状態異常攻撃など様々な効果を無効化する(スキル発動中は行動不可)",
 		turn: 7,
-		proc: null,
+		proc: [ss_impregnable_all(3)],
 	},
 	awakes: [
 		Attr_statusup(100,0, [0,0,1,0,0,]),
@@ -46820,7 +46820,7 @@ Cards = [{
 	ss2: {
 		desc: "<鉄壁・極>3ターンの間、攻撃や状態異常攻撃など様々な効果を無効化する(スキル発動中は行動不可)",
 		turn: 7,
-		proc: null,
+		proc: [ss_impregnable_all(3)],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [0,0,1,0,0,]),

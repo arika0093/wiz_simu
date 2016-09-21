@@ -709,6 +709,40 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
+	// 鉄壁効果付与
+	"ss_impregnable": function (fld, n, cobj, params) {
+		var turn = params[0];
+		var tgs = cobj.target == "ally" ? fld.Allys.Now : [fld.Allys.Now[n]];
+		for (var i = 0; i < tgs.length; i++) {
+			var now = tgs[i];
+			if (now.nowhp <= 0) { continue; }
+			now.turn_effect.push({
+				desc: "鉄壁・極",
+				type: "ss_impregnable",
+				icon: "impregnable",
+				isdual: false,
+				iscursebreak: true,
+				turn: turn,
+				lim_turn: turn,
+				effect: function () { },
+				bef_absattack: function (fld, oi, ei) {
+					return false;
+				},
+				bef_answer: function (f, as) {
+					return false;
+				},
+				bef_skillcounter: function (f, ai) {
+					return false;
+				},
+				on_damage: function (fld, dmg, attr) {
+					return 0;
+				},
+				ss_disabled: true,
+			});
+		}
+		return true;
+	},
+	// -----------------------------
 	// スキルブースト
 	"ss_skillboost": function (fld, n, cobj, params) {
 		var f_rate = params[0];

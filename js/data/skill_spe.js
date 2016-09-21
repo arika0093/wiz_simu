@@ -446,6 +446,20 @@ function ss_absattack_disable(t) {
 }
 
 /**
+ * 味方全体に鉄壁の効果を付与
+ * t: 継続ターン数
+**/
+function ss_impregnable_all(t) {
+	return ss_template({
+		name: "ss_impregnable",
+		type: "turn_effect",
+		subtype: "state_guard",
+		target: "ally",
+		p1: t,
+	});
+}
+
+/**
  * 味方全体にスキルブーストの効果を付与
  * f: 早めるターン数
 **/
