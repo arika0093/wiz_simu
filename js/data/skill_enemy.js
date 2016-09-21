@@ -125,6 +125,12 @@ function _s_enemy_attack(fld, dmg, ei, ai, is_dmg_const) {
 		// 最終ダメージ
 		var l_dmg = dmg;
 	} else {
+		// ダメージブロックなどの確認
+		$.each(now.turn_effect, function (i, e) {
+			if (e.on_damage) {
+				dmg = e.on_damage(fld, dmg, e.attr);
+			}
+		});
 		var l_dmg = Math.floor(dmg);
 	}
 	damage_ally(l_dmg, ai, true);
@@ -614,15 +620,7 @@ function attack_counter(damage, t) {
 			effect: function () { },
 			on_attack_damage: function (f, ei, ai) {
 				f.log_push("Enemy[" + (ei + 1) + "]: 物理カウンター発動(対象: Unit[" + (ai + 1) + "])");
-				// ダメージブロックなどの確認
-				var now = f.Allys.Now[ai];
-				var dmg = damage;
-				$.each(now.turn_effect, function (i, e) {
-					if (e.on_damage) {
-						dmg = e.on_damage(f, dmg, -1);
-					}
-				});
-				damage_ally(dmg, ai, true);
+				_s_enemy_attack(f, damage, ei, ai, true);
 			}
 		});
 	}, makeDesc("物理カウンター"));
@@ -645,15 +643,7 @@ function attack_counter_dual(damage, t) {
 				f.log_push("Enemy[" + (ei + 1) + "]: 多段式カウンター発動(対象: Unit[" + (ai + 1) + "])");
 				var atk_ct = GetNowBattleEnemys(ei).flags.is_as_attack[ai];
 				for (var i = 0; i < atk_ct; i++) {
-					// ダメージブロックなどの確認
-					var now = f.Allys.Now[ai];
-					var dmg = damage;
-					$.each(now.turn_effect, function (i, e) {
-						if (e.on_damage) {
-							dmg = e.on_damage(f, dmg, -1);
-						}
-					});
-					damage_ally(dmg, ai, true);
+					_s_enemy_attack(f, damage, ei, ai, true);
 				}
 			}
 		});
