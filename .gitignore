@@ -5,7 +5,9 @@ blog/
 local/
 .htaccess
 
-pages/develop/html5jp/
+/tools/imgReader/backup
+/tools/imgReader/dic
+/tools/imgReader/io
 
 ## -------------------------------------------
 ## Ignore Visual Studio temporary files, build results, and
