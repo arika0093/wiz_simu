@@ -255,14 +255,14 @@ p.sitedetail:after {
 
 #menu > ul > li > ul{
 	list-style: none;
-	padding-left: 25px;
+	padding-left: 0.5em;
 }
 
 #menu > ul > li > ul > li{
 	background-image: url("/image/tlicon/default.png");
-	padding-left: 32px;
+	padding-left: 42px;
 	background-size: 32px;
-	background-position: 0px 4px;
+	background-position: 14px 4px;
 	background-repeat: no-repeat;
 	transition-duration: .15s;
 }
@@ -693,12 +693,12 @@ li#mn_search{
 li#mn_detail{
 	background-image: url("/image/tlicon/data.png") !important;
 	background-size: 36px !important;
-	background-position: -3px 1px !important;
+	background-position: 12px 1px !important;
 }
 li#mn_check{
 	background-image: url("/image/tlicon/check.png") !important;
 	background-size: 28px !important;
-	background-position: 2px 6px !important;
+	background-position: 16px 6px !important;
 }
 li#mn_chart{
 	background-image: url("/image/tlicon/chart.png") !important;
@@ -709,7 +709,7 @@ li#mn_timer{
 li.mn_db{
 	background-image: url("/image/tlicon/folder.png") !important;
 	background-size: 30px !important;
-	background-position: 3px 5px !important;
+	background-position: 16px 5px !important;
 }
 
 li#mn_twitter{

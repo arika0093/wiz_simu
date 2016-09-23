@@ -19,6 +19,13 @@ function panel(attr) {
 	if (pnladd != 0) {
 		st.panel_add[pnladd - 1].func(Field);
 	}
+	// 各精霊のSSチャージを1増やす(L処理は敵の攻撃後に行う)
+	for (var i = 0; i < Field.Allys.Deck.length; i++) {
+		var now = Field.Allys.Now[i];
+		if (now.nowhp > 0) {
+			now.ss_current += 1;
+		}
+	}
 	// 解答した時点で生存している敵にフラグを建てる（タゲ異常パニック用）
 	{
 		var enemys = GetNowBattleEnemys();
@@ -112,17 +119,16 @@ function panel(attr) {
 		// 分裂処理
 		enemy_damage_switch_check("enemy_division");
 	}
-	// 各精霊のSSチャージを1増やす
+	// 敵の処理
+	enemy_move();
+	// 各精霊のL処理をここで行う
 	for (var i = 0; i < Field.Allys.Deck.length; i++) {
 		var now = Field.Allys.Now[i];
 		if (now.nowhp > 0) {
-			now.ss_current += 1;
 			// L処理
 			legend_timing_check(Field.Allys.Deck, Field.Allys.Now, i);
 		}
 	}
-	// 敵の処理
-	enemy_move();
 	// 次のターンへ進む
 	nextturn(false);
 	// 表示
@@ -345,7 +351,15 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem, bef_f)
 	// 全体攻撃なら敵全体にダメージ計算
 	if (atk_as.isall) {
 		// 分散攻撃なら敵の数取得
-		var var_num = atk_as.isvariance ? enemy.length : 0;
+		var var_num = 0;
+		if(atk_as.isvariance){
+			for(var i=0; i<enemy.length; i++){
+				var enm = enemy[i];
+				if (enm.nowhp > 0) {
+					var_num += 1;
+				}
+			}
+		}
 		// それぞれに攻撃
 		for (var tg = 0; tg < enemy.length; tg++) {
 			if (enemy[tg].nowhp <= 0) { continue; }

@@ -24,8 +24,8 @@ $(function () {
 		});
 	});
 	$("#Header").load("/template/header.html", function () {
-
-
+		// twitter関連のcookieがあるかチェック
+		//$.cookie("KEY");
 	});
 	$("#Footer").load("/template/footer.html");
 })

@@ -410,14 +410,23 @@ var SpSkill = {
 			icon: "enhance",
 			isdual: false,
 			iscursebreak: true,
+			isreinforce: isreinforce,
 			turn: t,
 			lim_turn: t,
 			effect: function (f, oi, teff, state) {
 				if (state == "first") {
-					f.Allys.Now[oi].ss_enhance = rate;
+					if (teff.isreinforce) {
+						f.Allys.Now[oi].ss_reinforcement_atk = rate;
+					} else {
+						f.Allys.Now[oi].ss_enhance = rate;
+					}
 				}
 				else if (state == "end" || state == "dead") {
-					f.Allys.Now[oi].ss_enhance = 0;
+					if (teff.isreinforce) {
+						f.Allys.Now[oi].ss_reinforcement_atk = 0;
+					} else {
+						f.Allys.Now[oi].ss_enhance = 0;
+					}
 				}
 			},
 		});
