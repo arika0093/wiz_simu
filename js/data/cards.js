@@ -46891,7 +46891,7 @@ Cards = [{
 		desc: "<大魔術>1ターン溜めた後、スキル反射を無視し、敵全体へ雷・闇属性のダメージ(250%)",
 		turn: 6,
 		charged: 1,
-		proc: [ss_damage_all(2.5, [0,0,1,0,1]), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(2.5, [2,4]), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Fastskill(1),
@@ -46913,7 +46913,7 @@ Cards = [{
 		desc: "	<大魔術>1ターン溜めた後、スキル反射を無視し、敵全体へ雷・闇属性のダメージ(400%)",
 		turn: 8,
 		charged: 1,
-		proc: [ss_damage_all(4.0, [0,0,1,0,1]), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(4.0, [2, 4]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,0,1,0,0,]),

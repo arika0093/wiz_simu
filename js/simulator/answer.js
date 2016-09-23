@@ -19,13 +19,6 @@ function panel(attr) {
 	if (pnladd != 0) {
 		st.panel_add[pnladd - 1].func(Field);
 	}
-	// 各精霊のSSチャージを1増やす(L処理は敵の攻撃後に行う)
-	for (var i = 0; i < Field.Allys.Deck.length; i++) {
-		var now = Field.Allys.Now[i];
-		if (now.nowhp > 0) {
-			now.ss_current += 1;
-		}
-	}
 	// 解答した時点で生存している敵にフラグを建てる（タゲ異常パニック用）
 	{
 		var enemys = GetNowBattleEnemys();
@@ -97,6 +90,13 @@ function panel(attr) {
 		// ASエンハ値リセット
 		for (var i = 0; i < atk_skill.length; i++) {
 			Field.Allys.Now[i].as_enhance = 0;
+		}
+	}
+	// 各精霊のSSチャージを1増やす(L処理は敵の攻撃後に行う)
+	for (var i = 0; i < Field.Allys.Deck.length; i++) {
+		var now = Field.Allys.Now[i];
+		if (now.nowhp > 0) {
+			now.ss_current += 1;
 		}
 	}
 	// 敵スキル処理
