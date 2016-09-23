@@ -25,7 +25,15 @@ $(function () {
 	});
 	$("#Header").load("/template/header.html", function () {
 		// twitter関連のcookieがあるかチェック
-		//$.cookie("KEY");
+		var ld = $.cookie("wt_tld");
+		if (ld) {
+			var ld_jsn = JSON.parse(ld);
+			// ログイン済み
+			$("li#twlogin ul.submenu").html('<li id="mn_twitter"><a>ログイン中(@' + ld_jsn.scname + ')</a></li>');
+		} else {
+			// 未ログイン
+			$("li#twlogin ul.submenu").html('<li id="mn_twitter"><a href="//api.wiztools.net/twitter/login.php">Twitterでログイン</a></li>');
+		}
 	});
 	$("#Footer").load("/template/footer.html");
 })
