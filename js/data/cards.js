@@ -42545,7 +42545,7 @@ Cards = [{
 	ss1: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ(180%)",
 		turn: 8,
-		proc: [ss_damage_all(1.8, [0,0,1,1,0]), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(1.8, [2,3]), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Costdown(6),
@@ -42566,7 +42566,7 @@ Cards = [{
 	ss2: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ(260%)",
 		turn: 10,
-		proc: [ss_damage_all(2.6, [0,0,1,1,0]), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(2.6, [2,3]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		NEFTJOD(30),
