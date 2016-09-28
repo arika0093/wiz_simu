@@ -48,19 +48,26 @@ function optsel() {
 
 // シミュ開始
 function sim_start() {
+	// sort
+	var db = $.extend(true, {}, Deckdata);
+	var sort_array = $('#allys_sel').sortable('toArray');
+	for (var i = 0; i < 5; i++) {
+		var load_i = Number(sort_array[i].replace("ally0", "")) - 1;
+		db.deck[i] = Deckdata.deck[load_i];
+	}
 	// quest set
-	var dd = deckdata_Apply(Deckdata);
+	var dd = deckdata_Apply(db);
 	if (dd == null) {
 		$("#dialog_sim_error").dialog("open");
 		return false;
 	} else {
 		// is use helper?
 		var checked = $("#helper_show").prop("checked");
-		if (!checked && dd.deck[5]) {
-			delete dd.deck.pop();
+		if (!checked && db.deck[5]) {
+			delete db.deck.pop();
 		}
 		// redirect
-		deckdata_Create(dd, function (short) {
+		deckdata_Create(db, function (short) {
 			var redirect_url = '/simulator/p/?' + short;
 			location.href = redirect_url;
 		});

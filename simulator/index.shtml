@@ -93,90 +93,92 @@
 								<button type="button" class="deck_saveload" id="Decksave" onclick="deck_save_ready()">Save</button>
 								<button type="button" class="deck_reset" id="Reset" onclick="deck_reset_ready()">Reset</button>
 							</div>
-							<div class="ally clearfix" id="ally01">
-								<div class="attr_none" id="ally01_attr_main">.</div>
-								<div class="attr_none" id="ally01_attr_sub">.</div>
-                                <div class="ally_others">
-                                    <div class="input_div">
-                                        <input class="decksel" id="deck01" onchange="decksel(1)" />
-                                        <img onclick="search_click(1);" class="srchimg" src="/image/parts/search_tip.png" />
+                            <div id="allys_sel">
+                                <div class="ally clearfix" id="ally01">
+                                    <div class="attr_none" id="ally01_attr_main">.</div>
+                                    <div class="attr_none" id="ally01_attr_sub">.</div>
+                                    <div class="ally_others">
+                                        <div class="input_div">
+                                            <input class="decksel" id="deck01" onchange="decksel(1)" />
+                                            <img onclick="search_click(1);" class="srchimg" src="/image/parts/search_tip.png" />
+                                        </div>
+                                        <button class="ally_edit" tabindex="-1" id="ally01_edit" onclick="open_deckedit(0)">潜在結晶</button>
+                                        <p class="ally_skill" id="ally01_as"></p>
+                                        <p class="ally_skill" id="ally01_ss"></p>
                                     </div>
-                                    <button class="ally_edit" tabindex="-1" id="ally01_edit" onclick="open_deckedit(0)">潜在結晶</button>
-                                    <p class="ally_skill" id="ally01_as"></p>
-                                    <p class="ally_skill" id="ally01_ss"></p>
+                                    <div class="ally_image">
+                                        <img class="chara_img" id="ally01_img" src="/image/noimage.png" onclick="open_manaedit(0)" />
+                                        <p class="ally_mana" id="ally01_mana"></p>
+                                    </div>
                                 </div>
-								<div class="ally_image">
-									<img class="chara_img" id="ally01_img" src="/image/noimage.png" onclick="open_manaedit(0)" />
-									<p class="ally_mana" id="ally01_mana"></p>
-								</div>
-							</div>
-							<div class="ally clearfix" id="ally02">
-								<div class="attr_none" id="ally02_attr_main">.</div>
-								<div class="attr_none" id="ally02_attr_sub">.</div>
-                                <div class="ally_others">
-                                    <div class="input_div">
-                                        <input class="decksel" id="deck02" onchange="decksel(2)" />
-                                        <img onclick="search_click(2);" class="srchimg" src="/image/parts/search_tip.png" />
+                                <div class="ally clearfix" id="ally02">
+                                    <div class="attr_none" id="ally02_attr_main">.</div>
+                                    <div class="attr_none" id="ally02_attr_sub">.</div>
+                                    <div class="ally_others">
+                                        <div class="input_div">
+                                            <input class="decksel" id="deck02" onchange="decksel(2)" />
+                                            <img onclick="search_click(2);" class="srchimg" src="/image/parts/search_tip.png" />
+                                        </div>
+                                        <button class="ally_edit" tabindex="-1" id="ally02_edit" onclick="open_deckedit(1)">潜在結晶</button>
+                                        <p class="ally_skill" id="ally02_as"></p>
+                                        <p class="ally_skill" id="ally02_ss"></p>
                                     </div>
-                                    <button class="ally_edit" tabindex="-1" id="ally02_edit" onclick="open_deckedit(1)">潜在結晶</button>
-                                    <p class="ally_skill" id="ally02_as"></p>
-                                    <p class="ally_skill" id="ally02_ss"></p>
+                                    <div class="ally_image">
+                                        <img class="chara_img" id="ally02_img" src="/image/noimage.png" onclick="open_manaedit(1)" />
+                                        <p class="ally_mana" id="ally02_mana"></p>
                                     </div>
-								<div class="ally_image">
-									<img class="chara_img" id="ally02_img" src="/image/noimage.png" onclick="open_manaedit(1)" />
-									<p class="ally_mana" id="ally02_mana"></p>
-								</div>
-                            </div>
-							<div class="ally clearfix" id="ally03">
-								<div class="attr_none" id="ally03_attr_main">.</div>
-								<div class="attr_none" id="ally03_attr_sub">.</div>
-                                <div class="ally_others">
-                                    <div class="input_div">
-                                        <input class="decksel" id="deck03" onchange="decksel(3)" />
-                                        <img onclick="search_click(3);" class="srchimg" src="/image/parts/search_tip.png" />
-                                    </div>
-                                    <button class="ally_edit" tabindex="-1" id="ally03_edit" onclick="open_deckedit(2)">潜在結晶</button>
-                                    <p class="ally_skill" id="ally03_as"></p>
-                                    <p class="ally_skill" id="ally03_ss"></p>
                                 </div>
-								<div class="ally_image">
-									<img class="chara_img" id="ally03_img" src="/image/noimage.png" onclick="open_manaedit(2)" />
-									<p class="ally_mana" id="ally03_mana"></p>
-								</div>
-                            </div>
-							<div class="ally clearfix" id="ally04">
-								<div class="attr_none" id="ally04_attr_main">.</div>
-								<div class="attr_none" id="ally04_attr_sub">.</div>
-                                <div class="ally_others">
-                                    <div class="input_div">
-                                        <input class="decksel" id="deck04" onchange="decksel(4)" />
-                                        <img onclick="search_click(4);" class=" srchimg" src="/image/parts/search_tip.png" />
+                                <div class="ally clearfix" id="ally03">
+                                    <div class="attr_none" id="ally03_attr_main">.</div>
+                                    <div class="attr_none" id="ally03_attr_sub">.</div>
+                                    <div class="ally_others">
+                                        <div class="input_div">
+                                            <input class="decksel" id="deck03" onchange="decksel(3)" />
+                                            <img onclick="search_click(3);" class="srchimg" src="/image/parts/search_tip.png" />
+                                        </div>
+                                        <button class="ally_edit" tabindex="-1" id="ally03_edit" onclick="open_deckedit(2)">潜在結晶</button>
+                                        <p class="ally_skill" id="ally03_as"></p>
+                                        <p class="ally_skill" id="ally03_ss"></p>
                                     </div>
-                                    <button class="ally_edit" tabindex="-1" id="ally04_edit" onclick="open_deckedit(3)">潜在結晶</button>
-                                    <p class="ally_skill" id="ally04_as"></p>
-                                    <p class="ally_skill" id="ally04_ss"></p>
+                                    <div class="ally_image">
+                                        <img class="chara_img" id="ally03_img" src="/image/noimage.png" onclick="open_manaedit(2)" />
+                                        <p class="ally_mana" id="ally03_mana"></p>
                                     </div>
-								<div class="ally_image">
-									<img class="chara_img" id="ally04_img" src="/image/noimage.png" onclick="open_manaedit(3)" />
-									<p class="ally_mana" id="ally04_mana"></p>
-								</div>
-                            </div>
-							<div class="ally clearfix" id="ally05">
-								<div class="attr_none" id="ally05_attr_main">.</div>
-								<div class="attr_none" id="ally05_attr_sub">.</div>
-                                <div class="ally_others">
-                                    <div class="input_div">
-                                        <input class="decksel" id="deck05" onchange="decksel(5)" />
-                                        <img onclick="search_click(5);" class="srchimg" src="/image/parts/search_tip.png" />
+                                </div>
+                                <div class="ally clearfix" id="ally04">
+                                    <div class="attr_none" id="ally04_attr_main">.</div>
+                                    <div class="attr_none" id="ally04_attr_sub">.</div>
+                                    <div class="ally_others">
+                                        <div class="input_div">
+                                            <input class="decksel" id="deck04" onchange="decksel(4)" />
+                                            <img onclick="search_click(4);" class=" srchimg" src="/image/parts/search_tip.png" />
+                                        </div>
+                                        <button class="ally_edit" tabindex="-1" id="ally04_edit" onclick="open_deckedit(3)">潜在結晶</button>
+                                        <p class="ally_skill" id="ally04_as"></p>
+                                        <p class="ally_skill" id="ally04_ss"></p>
                                     </div>
-                                    <button class="ally_edit" tabindex="-1" id="ally05_edit" onclick="open_deckedit(4)">潜在結晶</button>
-                                    <p class="ally_skill" id="ally05_as"></p>
-                                    <p class="ally_skill" id="ally05_ss"></p>
+                                    <div class="ally_image">
+                                        <img class="chara_img" id="ally04_img" src="/image/noimage.png" onclick="open_manaedit(3)" />
+                                        <p class="ally_mana" id="ally04_mana"></p>
                                     </div>
-								<div class="ally_image">
-									<img class="chara_img" id="ally05_img" src="/image/noimage.png" onclick="open_manaedit(4)" />
-									<p class="ally_mana" id="ally05_mana"></p>
-								</div>
+                                </div>
+                                <div class="ally clearfix" id="ally05">
+                                    <div class="attr_none" id="ally05_attr_main">.</div>
+                                    <div class="attr_none" id="ally05_attr_sub">.</div>
+                                    <div class="ally_others">
+                                        <div class="input_div">
+                                            <input class="decksel" id="deck05" onchange="decksel(5)" />
+                                            <img onclick="search_click(5);" class="srchimg" src="/image/parts/search_tip.png" />
+                                        </div>
+                                        <button class="ally_edit" tabindex="-1" id="ally05_edit" onclick="open_deckedit(4)">潜在結晶</button>
+                                        <p class="ally_skill" id="ally05_as"></p>
+                                        <p class="ally_skill" id="ally05_ss"></p>
+                                    </div>
+                                    <div class="ally_image">
+                                        <img class="chara_img" id="ally05_img" src="/image/noimage.png" onclick="open_manaedit(4)" />
+                                        <p class="ally_mana" id="ally05_mana"></p>
+                                    </div>
+                                </div>
                             </div>
                             <div class="ally clearfix" id="helper_sel">
                                 <div class="attr_none" id="ally06_attr_main">.</div>
@@ -315,6 +317,7 @@
 	<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5sortable/0.4.2/html.sortable.min.js"></script>
     <script type="text/javascript" src="/download/romaji.js"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/loader.js?                  <!--#flastmod virtual='/js/loader.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js?                <!--#flastmod virtual='/js/pagetemp.js'-->"></script>

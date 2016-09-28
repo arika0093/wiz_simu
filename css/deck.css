@@ -4,7 +4,7 @@ div.ally, div.enemy{
 	border-bottom: 1px solid #606060;
 }
 
-div.ally:first-child, div.enemy:first-child{
+div.sim_ally > div.ally:first-child, div.enemy:first-child{
 	/*margin-top: 20px;*/
 	border-top: 1px solid #606060;
 }

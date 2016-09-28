@@ -43,6 +43,9 @@ function decksgg_loaddeck(data) {
 		var checked = $(this).prop("checked")
 		$("#helper_sel").toggle(checked);
 	});
+
+	// sortable
+	$("#allys_sel").sortable();
 }
 
 // autocomplete指定 / deckload / Dialog
