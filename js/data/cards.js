@@ -47518,7 +47518,7 @@ Cards = [{
 	ss1: {
 		desc: "<ブースト>4ターンの間味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ、平均解答が早いほどさらにアップ。さらに極稀にクリティカル(基本:90%, 3秒台:130%, 2秒台:170%, 1秒台:210%, 0秒台:250%)",
 		turn: 7,
-		proc: ss_boost_enhance_all(ss_answertime(0.9, 0.4), 4, 0.1, [1,1,1,1,1],
+		proc: [ss_boost_enhance_all(ss_answertime(0.9, 0.4), 4, 0.1, [1,1,1,1,1])]
 	},
 	awakes: [
 		Fastskill(1),
@@ -47539,7 +47539,7 @@ Cards = [{
 	ss2: {
 		desc: "<ブースト>5ターンの間味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ、平均解答が早いほどさらにアップ。さらに極稀にクリティカル(基本:140%, 3秒台:180%, 2秒台:220%, 1秒台:260%, 0秒台:300%)",
 		turn: 10,
-		proc: ss_boost_enhance_all(ss_answertime(0.9, 0.4), 5, 0.1, [1,1,1,1,1],
+		proc: [ss_boost_enhance_all(ss_answertime(0.9, 0.4), 5, 0.1, [1,1,1,1,1])]
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,1,0,0,]),
