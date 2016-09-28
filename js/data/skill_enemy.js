@@ -952,9 +952,9 @@ function s_enemy_reverse(rev_i) {
 // -----------------------------------
 // 継続ダメージ
 function s_enemy_continue_damage(turn, initialdamage, continuedamage){
+	initialdamage *= 2;
+	continuedamage *= 2;
 	return m_create_enemy_move(function (fld, n) {
-		initialdamage *= 2;
-		continuedamage *= 2;
 		fld.log_push("Enemy[" + (n + 1) + "]: 継続ダメージ(ダメージ:" + initialdamage + ", " + continuedamage + ")");
 		var tg = gen_enemytarget_array(5, 1, false);
 		for (var i = 0; i < tg[0].length; i++) {

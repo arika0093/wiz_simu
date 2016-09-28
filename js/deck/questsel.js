@@ -63,11 +63,11 @@ function sim_start() {
 	} else {
 		// is use helper?
 		var checked = $("#helper_show").prop("checked");
-		if (!checked && db.deck[5]) {
-			delete db.deck.pop();
+		if (!checked && dd.deck[5]) {
+			delete dd.deck.pop();
 		}
 		// redirect
-		deckdata_Create(db, function (short) {
+		deckdata_Create(dd, function (short) {
 			var redirect_url = '/simulator/p/?' + short;
 			location.href = redirect_url;
 		});
