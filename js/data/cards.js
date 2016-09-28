@@ -10395,7 +10395,7 @@ Cards = [{
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(ss_hp_less(0.20, 4.0, 1.8), [1])], 
 	},
 }, {
-	name: "AbCd-:Ψψ《絢爛の神舞 ニティア》",
+	name: "AbCd-Ψψ:《絢爛の神舞 ニティア》",
 	cardno: 5039,
 	imageno: 6776,
 	hp: 4554,
