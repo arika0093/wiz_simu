@@ -40189,7 +40189,7 @@ Cards = [{
 	ape: "幻想と歪曲の槍",
 	as1: {
 		desc: "6チェインで敵単体を3回連続攻撃(400%)、さらに全属性のダメージを10%軽減",
-		proc: [ChainAttack(4.0, 6), as_guard(0.10, [1,1,1,1,1], 6)],
+		proc: [ChainDualAttack(4.0, 6, 3), as_guard(0.10, [1,1,1,1,1], 6)],
 	},
 	ss1: {
 		desc: "<パネル変換>ジャンルパネルを雷・闇属性化",
@@ -40210,7 +40210,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "6チェインで敵単体を3回連続攻撃(500%)、さらに全属性のダメージを10%軽減",
-		proc: [ChainAttack(5.0, 6), as_guard(0.10, [1,1,1,1,1], 6)],
+		proc: [ChainDualAttack(5.0, 6, 3), as_guard(0.10, [1,1,1,1,1], 6)],
 	},
 	ss2: {
 		desc: "<解答削り>解答を見破る",
@@ -47704,4 +47704,50 @@ Cards = [{
 		Attr_statusup(0,200, [1,0,0,0,0,]),
 	],
 },
-];
+{
+	name: "AbCd-X:《黒殻の咆哮 ウラガーン》",
+	cardno: 7013,
+	imageno: 9010,
+	hp: 3126,
+	atk: 3233,
+	cost: 63,
+	attr: [0,4],
+	species: [11],
+	islegend: true,
+	ape: "AbCd:《黒虐の王》",
+	is_dist: true,
+	as1: {
+		desc: "6チェインで敵単体へ3連撃、光属性の敵だとさらにダメージアップ(500%/700%)",
+		proc: [ChainDualAttack(5, 6, 3), ChainDualAttrAttack(7, 6, 3, [0,0,0,1,0])],
+	},
+	ss1: {
+		desc: "	<スキルチャージ>味方全体のMAXHPの50%を使い、味方全体のスペシャルスキルの発動ターンを5早める",
+		turn: 12,
+		proc: [ss_consume_all(0.5), ss_skillboost(5)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Abstate_invalid("poison"),
+		Abstate_invalid("discharge"),
+	],
+	as2: {
+		desc: "6チェインで敵単体へ3連撃、光属性の敵だとさらにダメージアップ(600%/800%)",
+		proc: [ChainDualAttack(6, 6, 3), ChainDualAttrAttack(8, 6, 3, [0,0,0,1,0])],
+	},
+	ss2: {
+		desc: "	<スキルチャージ>味方全体のMAXHPの50%を使い、味方全体のスペシャルスキルの発動ターンを5早める",
+		turn: 12,
+		proc: [ss_consume_all(0.5), ss_skillboost(5)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Abstate_invalid("ss_sealed"),
+	],
+},];
