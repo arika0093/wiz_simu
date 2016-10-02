@@ -13,7 +13,8 @@
 #include <limits.h>
 #include <sys/types.h>
 #include <stdlib.h>
-
+#include <sys/stat.h>
+#include <cstdlib>
 
 /*------------------------
        定数
@@ -636,26 +637,77 @@ int turningImg(){
 	
 }
 
-int makeDictionaryBySmall(){
+
+int makeDicBit(int n){
 	double resParam = 0.816549;
 	int turnedx = 15;
 	int turnedy = 56;
 	cv::Rect trimArea(turnedx, turnedy, int(round(double(cvWidth)/resParam)), int(round(double(cvHeight)/resParam)));
-
 	std::string fname = "";
 	std::string fname2 = "";
 	cv::Mat smallImg;
 	cv::Mat mini;
-	for (int n = 0; n < maxcardNo; n++) {
-		fname = "/mnt/hgfs/smalls/card_" + digitString(n,5) + "_0.png";
-		smallImg = cv::imread(fname.c_str(), 1);
-		if (smallImg.data != NULL) {
-			cv::resize(smallImg(trimArea), mini, cv::Size(), resParam*reReduceRate, resParam*reReduceRate);
-			fname2 = "dic/" + digitString(n,5) + ".png";
-			cv::imwrite(fname2.c_str(), mini);
-		}
+	fname = "tmpdic/card_" + digitString(n,5) + "_0.png";
+	smallImg = cv::imread(fname.c_str(), 1);
+	if (smallImg.data != NULL) {
+		cv::resize(smallImg(trimArea), mini, cv::Size(), resParam*reReduceRate, resParam*reReduceRate);
+		fname2 = "dic/" + digitString(n,5) + ".png";
+		cv::imwrite(fname2.c_str(), mini);
+	}else{
+		return 1;
 	}
 	return 0;
+}
+
+int makeDictionaryBySmall(){
+	for (int n = 0; n < maxcardNo; n++) {
+		makeDicBit(n);
+	}
+	return 0;
+}
+
+int pullDic(){
+	system("mkdir tmpdic");
+	struct stat st;
+	int ret;
+	int AllSearchParam=30;
+	int minnum;
+	int forceFinishLimit;
+	srand((unsigned) time(NULL));
+	if(rand() % AllSearchParam == 0){
+		//たまに全画像についてサーチする
+		minnum=0;
+		forceFinishLimit=maxcardNo;
+		printf("総当たりサーチモードで実行します..\n");
+	}else{
+		//基本的には明らかになさそうな画像はサーチしない
+		minnum=9020;
+		forceFinishLimit=50;
+		printf("省力サーチモードで実行します..\n");
+	}
+	int forceFinishVal=0;
+	for(int mynum = minnum; mynum< maxcardNo; mynum++){
+		std::string filename = "dic/" + digitString(mynum, 5) + ".png";
+		ret=stat(filename.c_str(), &st);
+		if(0!=ret){
+			std::string url = "http://i.quiz.colopl.jp/img/card/small/card_" + digitString(mynum, 5) + "_0.png";
+			std::string getComm = "";
+			getComm = getComm + "wget -q -P tmpdic " + url.c_str();
+			system(getComm.c_str());
+			if(0 == makeDicBit(mynum)){
+				//取得成功したときの処理
+				forceFinishVal=0;
+					printf("登録成功：%d\n",mynum);
+			}else{
+				//取得失敗したときの処理
+				if(forceFinishVal++>forceFinishLimit){
+					printf("処理打ち止め：%d\n",mynum);
+					mynum=maxcardNo;
+				}
+			}
+		}
+	}
+	system("rm -r tmpdic");
 }
 
 //引数を解釈して各処理を呼ぶ
@@ -677,6 +729,10 @@ int main(int argc, char *argv[])
 	else if(argc > 1 && !strcmp(argv[1], "/b")){
 		printf("PHPから読み込むための分散実行モードです。\n");
 		mainAnalyze(argv[2]);
+	}
+	else if(argc > 1 && !strcmp(argv[1], "/r")){
+		printf("辞書更新モードです。\n");
+		pullDic();
 	}
 	else{
 		printf("tanasin..\n");
