@@ -8,7 +8,7 @@ echo "
 
 
 
-"
+--"
 
 cd `dirname $0`
 rm -f resget.cgi
