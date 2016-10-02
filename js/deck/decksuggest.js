@@ -246,6 +246,7 @@ $(function () {
 			// value reset
 			$("#ae_awake_value").val("");
 			$("#ae_awake_cost").val("");
+			$('#allyedit_awakeadd_name').trigger("chosen:updated");
 		},
 		buttons: {
 			"OK": function () {
@@ -561,9 +562,6 @@ function set_autocmp(i) {
 				}
 				return false;
 			}
-		})
-		.dblclick(function () {
-			$(this).autocomplete("search", "*all*");
 		})
 		.autocomplete("instance")._renderItem = function (ul, dec) {
 			var AS = dec.data.as2 ? dec.data.as2 : dec.data.as1;
