@@ -61,6 +61,7 @@ std::string get_selfpath() {
 }
 
 int main(int argc, char *argv[]){
+	outp << "Access-Control-Allow-Origin: *\n";
 	outp << "Content-Type: application/json; charset=utf-8\n\n";
 
 	const char* raw = getenv("QUERY_STRING");
