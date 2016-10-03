@@ -83,7 +83,7 @@ function deckdata_Apply(data, ignore_check) {
 	// 状況取得(quest)
 	var qst_name = $("#QstSel").val();
 	data.quest = qst_name;
-	is_valid = is_valid && qst_name.length > 0;
+	is_valid = is_valid && qst_name && qst_name.length > 0;
 	// 返却
 	return is_valid || ignore_check ? data : null;
 }
