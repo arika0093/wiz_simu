@@ -206,3 +206,11 @@ function sim_by_id(id){
 		}
     })
 }
+
+
+// 広告を挟み込む
+function adsence_html(style) {
+	style = style || "";
+	return '<div style=' + style + '><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5156005489853976" data-ad-slot="6536828444" data-ad-format="auto"></ins>' +
+		'<script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>';
+}

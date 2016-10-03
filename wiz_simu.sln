@@ -195,8 +195,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "stopwatch", "stopwatch", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "imgreader", "imgreader", "{E66D8396-C4E0-4CE0-AABD-80B5F7E98DC5}"
 	ProjectSection(SolutionItems) = preProject
-		tools\imgreader\index.html = tools\imgreader\index.html
-		tools\imgreader\result.shtml = tools\imgreader\result.shtml
+		tools\img_reader\index.html = tools\img_reader\index.html
+		tools\img_reader\result.shtml = tools\img_reader\result.shtml
 	EndProjectSection
 EndProject
 Global

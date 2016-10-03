@@ -15,7 +15,7 @@ $(function () {
 // クエスト一覧を表示
 function makeList(genre, url) {
 	// match and generate html
-	var rst_html = "<dt>Category: " + getCategoryJp(genre) + "</dt><dd class='left_min ' id='category_view'>";
+	var rst_html = "<dt>Category: " + getCategoryJp(genre) + "</dt><dd class='left_min' id='category_view'>";
 	var rst = $.grep(Quests, function (Quest, QuestNum) {
 		// match check
 		if (genre && Quest.category != genre) {
@@ -83,6 +83,9 @@ function makeQD(id) {
 				"<a class='sim_go back_category' href='#'>試走する</a>" +
 				"<a class='back_category' href='/simulator/d/?qid=" + Quest.id + "'>みんなの投稿デッキを見る</a>" +
 				"<a class='back_category' href='/simulator/quest/?genre=" + Quest.category + "'>カテゴリ一覧に戻る</a></div>";
+			if (BattleNum % 2 == 0 && BattleNum < 4) {
+				resStr += adsence_html("clear:both;");
+			}
 		})
 		resStr += "</dd>";
 		if (Quest.revData) {

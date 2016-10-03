@@ -314,6 +314,7 @@ function schfl_grepshow(cs, st) {
 	st = st || MatchQuery;
 	var div = $("#search_result");
 	var html = "";
+	html += adsence_html("margin-bottom:2ex;");
 	html += "<div id='squery'>" + st + "</div>";
 	if (cs.length <= 0) {
 		html += "該当結果: 0件";
@@ -387,6 +388,7 @@ function schfl_grepshow_icon(cs, st) {
 	st = st || MatchQuery;
 	var div = $("#search_result");
 	var html = "";
+	html += adsence_html("margin-bottom:2ex;");
 	html += "<div id='squery'>" + st + "</div>";
 	if (cs.length <= 0) {
 		html += "該当結果: 0件";

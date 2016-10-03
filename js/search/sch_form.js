@@ -8,9 +8,12 @@ $(function () {
 	sf_sslist_add();
 	sf_awlist_add();
 
-	$("#search_f .skill_sel").chosen({
-		search_contains: true,
-	});
+	var sel = $("#search_f .skill_sel");
+	if(sel.chosen){
+		sel.chosen({
+			search_contains: true,
+		});
+	}
 });
 
 // 新しいコンボボックスを追加する
