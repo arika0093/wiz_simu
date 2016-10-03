@@ -206,3 +206,5 @@ ModelManifest.xml
 # imgReader temporary file
 /tools/imgReader/dic
 /tools/imgReader/io
+/tools/imgReader/imgReader.out
+/tools/imgReader/resget.cgi
