@@ -1,167 +1,59 @@
-<meta charset=utf-8>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>
-    function fillResArea(){
-        var QS = GetQueryString();
-        var id = QS.id;
-        renewContents(id);
-    }
-
-	maxrep=200;
-
-    function renewContents(id){
-        $.ajax({
-            type: 'GET',
-            url: "resget.cgi?" +id ,
-            dataType: 'json',
-            success: function(mjson){
-                appearContents(mjson);
-                if(!mjson.isFinite && maxrep>0){
-						maxrep=maxrep-1;
-                        setTimeout(function() {
-                            renewContents(id);
-                        }, 2000);
-                }
-            }
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px) and (max-width: 1099px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default_bg.css" media="screen and (min-width: 1100px)" />
+    <link rel="stylesheet" type="text/css" href="/css/crystalpoint.css" />
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <!-- Search -->
+    <meta name="robots" content="none" />
+    <!-- for Mobile Adsense -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-5156005489853976",
+            enable_page_level_ads: true
         });
-    }
+    </script>
+    <!-- Top Page -->
+    <title>手持ち登録ツール:Result - WizTools</title>
+</head>
+<body>
+    <div id='Top'></div>
+    <div id="wrap">
+        <!-- Loader -->
+        <div id="loader"><img src="/image/loading.gif" alt="Loading..." /></div>
+        <noscript id="loadnoscr">このページはjavascriptを使用しています。有効にしたのち再度アクセスしてください。</noscript>
+        <div id="fade"></div>
+        <!-- Header -->
+        <div id="Header"></div>
+        <!-- Main Contents -->
+        <div class="Main">
+            <dl class="List">
+                <dt>このツールについて</dt>
+                <dd>
+                    <div id=resArea></div>
+                    <a href=#>チェックした項目を所持精霊登録</a><font color=white>する機能はありちー先生が作ってくれる筈</font>
 
-    function errorCheck(obj){
-        if(obj.error && obj.error!="undefined" && obj.error!=false){
-            errors += "<b>エラーが発生しました</b><br>";
-        }
-        if(obj.errorMsg && obj.errorMsg!="undefined"){
-            errors += "エラー： " + obj.errorMsg + "<br>";
-        }
-        resArea.innerHTML = errors + outp
-    }
-
-    function putTD(myStr){
-        outp += "<td>"+myStr+"</td>";
-    }
-
-
-    function imgNo2Img(imageno){
-        return "<img class=\"cImg result\" src=" + get_image_url(imageno) + ">";
-    }
-
-    function imgNo2Name(imageno){
-		var res="DB未登録<br><a href=#?"+imageno+">[登録依頼]</a>";
-		Cards.forEach(function(card){
-			if(card.imageno==imageno){
-				res="<a href=/search/detail/?id=" + card.cardno +">" + card.name + "</a>";
-			}
-		})
-        return res;
-    }
-
-    var outp = "";
-    var errors = "";
-
-    function appearContents(data){
-        console.log(data)
-		outp += "<style>"+  data.css+"</style>";
-        errorCheck(data);
-        if(data.completion && data.isFinite && data.completion == false && data.isFinite == true){
-            errors += "エラー： 解析ステータスが未完了で解析プログラムが終了しました。<br>";
-            resArea.innerHTML = errors + outp
-        }
-        var titles=["登録","元画像","認識画像","確度","名前"]
-        outp += "<table border=1><tr>"
-        titles.forEach(function(t){
-            putTD("<b>" + t+ "</b>");
-        })
-        outp += "</tr>"
-        data.imgs.forEach(function(img){
-            img.cards.forEach(function(card){
-                outp += "<tr>"
-                putTD("<input type=checkbox checked>");
-                putTD("<div class=trim>" + card.html + "</div>");
-                putTD(imgNo2Img(card.imageno));
-                putTD(Math.round(card.concordanceRate*100) +"[%]");
-                putTD(imgNo2Name(card.imageno));
-                outp += "</tr>"
-            })
-        })
-        resArea.innerHTML = errors + outp
-		outp="";
-    }
-
-    function GetQueryString()
-    {
-        var result = {};
-        if( 1 < window.location.search.length )
-        {
-            // 最初の1文字 (?記号) を除いた文字列を取得する
-            var query = window.location.search.substring( 1 );
-
-            // クエリの区切り記号 (&) で文字列を配列に分割する
-            var parameters = query.split( '&' );
-
-            for( var i = 0; i < parameters.length; i++ )
-            {
-                // パラメータ名とパラメータ値に分割する
-                var element = parameters[ i ].split( '=' );
-
-                var paramName = decodeURIComponent( element[ 0 ] );
-                var paramValue = decodeURIComponent( element[ 1 ] );
-
-                // パラメータ名をキーとして連想配列に追加する
-                result[ paramName ] = paramValue;
-            }
-        }
-        return result;
-    }
-</script>
-<style>
-	.cImg{
-		width:60px;
-	}
-	.trim{
-		width:113px;
-		height:113px;
-		overflow:hidden;
-		position:relative;
-		zoom:55%;
-	}
-</style>
-<body onload=fillResArea()>
-    <h1>結果</h1>
-    <div id=resArea></div>
-	<a href=#>チェックした項目を所持精霊登録</a><font color=white>する機能はありちー先生が作ってくれる筈</font>
-
-
-
-
-    <!--#config timefmt="%Y%m%d_%H%M%S" -->
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.jquery.min.js"></script>
-    <script type="text/javascript" src="/download/romaji.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/loader.js?                  <!--#flastmod virtual='/js/loader.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js?                <!--#flastmod virtual='/js/pagetemp.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js?               <!--#flastmod virtual='/js/googletrc.js'-->"></script>
-	<!-- 他jsに依存しない基礎関数群 -->
-    <script type="text/javascript" charset="UTF-8" src="/js/general.js?                 <!--#flastmod virtual='/js/general.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/simulator/awake.js?         <!--#flastmod virtual='/js/simulator/awake.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/simulator/species.js?       <!--#flastmod virtual='/js/simulator/species.js'-->"></script>
-	<!-- データ群(基礎関数に依存する) -->
-    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_ans.js?          <!--#flastmod virtual='/js/data/skill_ans.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_spe.js?          <!--#flastmod virtual='/js/data/skill_spe.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_spe_body.js?     <!--#flastmod virtual='/js/data/skill_spe_body.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_awake.js?        <!--#flastmod virtual='/js/data/skill_awake.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_crystal.js?      <!--#flastmod virtual='/js/data/skill_crystal.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_enemy.js?        <!--#flastmod virtual='/js/data/skill_enemy.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/data/quests.php"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/data/cards.js?              <!--#flastmod virtual='/js/data/cards.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/dynamic.js?                 <!--#flastmod virtual='/js/dynamic.js'-->"></script>
-	<!-- 処理群(データ群に依存する) -->
-    <script type="text/javascript" charset="UTF-8" src="/js/deck/deckdata.js?           <!--#flastmod virtual='/js/deck/deckdata.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/deck/decksuggest.js?        <!--#flastmod virtual='/js/deck/decksuggest.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/deck/questsel.js?           <!--#flastmod virtual='/js/deck/questsel.js'-->"></script>
-    <!-- search script -->
-    <script type="text/javascript" charset="UTF-8" src="/js/search/sch_form_def.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/search/sch_form.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/search/sch_filter.js"></script>
+                </dd>
+            </dl>
+        </div>
+        <!-- Footer -->
+        <div id="Footer"></div>
+        <!-- Javascript -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/loader.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/general.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/deck/deckdata.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/tools/imgreader.js"></script>
+    </div>
 </body>
+</html>

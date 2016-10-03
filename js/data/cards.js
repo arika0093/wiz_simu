@@ -946,6 +946,7 @@ Cards = [{
 	cost: 45,
 	attr: [0, -1],
 	species: [0],
+	disable: true,
 	awakes: [
 		NEFTJOD(30),
 		Panel_boost([1,0,0,0,0], 1),
@@ -2937,6 +2938,7 @@ Cards = [{
 	cost: 46,
 	attr: [0, 2],
 	species: [8],
+	disable: true,
 	awakes: [
 		Panel_boost([1,0,0,0,0], 1),
 		Attr_relief([0, 1, 0, 0, 0], 20),
@@ -4050,6 +4052,7 @@ Cards = [{
 	cost: 48,
 	attr: [0, 1],
 	species: [0],
+	disable: true,
 	awakes: [
 		Panel_boost([1,0,0,0,0], 1),
 		Attr_statusup(0, 100, [1, 1, 0, 0, 0]),
@@ -9115,6 +9118,7 @@ Cards = [{
 	cost: 46,
 	attr: [1, -1],
 	species: [1],
+	disable: true,
 	awakes: [
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
 		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
@@ -10047,6 +10051,7 @@ Cards = [{
 	cost: 45,
 	attr: [1, 2],
 	species: [3],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
@@ -14707,6 +14712,7 @@ Cards = [{
 	cost: 43,
 	attr: [2, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
 		Panel_boost([0, 0, 1, 0, 0, ], 1),
@@ -14928,6 +14934,7 @@ Cards = [{
 	cost: 44,
 	attr: [2, 0],
 	species: [8],
+	disable: true,
 	awakes: [
 		NEFTJOD(30),
 		Panel_boost([0, 0, 1, 0, 0, ], 1),
@@ -42634,7 +42641,7 @@ Cards = [{
 	is_dist: true,
 	as1: {
 		desc: "AbCdの仲間の数だけダメージアップ(160%/220%/280%/340%/400%)",
-		proc: ChainDeckSpecsAttack(0.6, [12], 0),
+		proc: ChainDeckSpecsAttack(0.6, [11], 0),
 	},
 	ss1: {
 		desc: "<パネル変換>ジャンルパネルを火・闇属性化",
@@ -42655,7 +42662,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "AbCdの仲間の数だけダメージアップ(180%/260%/340%/420%/500%)",
-		proc: ChainDeckSpecsAttack(0.8, [12], 0),
+		proc: ChainDeckSpecsAttack(0.8, [11], 0),
 	},
 	ss2: {
 		desc: "<特殊パネル変換>ジャンルパネルを火・闇属性化し、攻撃力アップ(40%)かダメージ25%軽減の効果を付与",

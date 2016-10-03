@@ -1,12 +1,102 @@
-<meta charset=utf-8>
+﻿<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px) and (max-width: 1099px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default_bg.css" media="screen and (min-width: 1100px)" />
+    <link rel="stylesheet" type="text/css" href="/css/crystalpoint.css" />
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <!-- Search -->
+    <meta name="robots" content="all" />
+    <meta name="keywords" content="黒猫,ウィズ,魔法使いと黒猫のウィズ,手持ち,チェック" />
+    <meta name="description" content="「魔法使いと黒猫のウィズ」自身の手持ち精霊をwiztoolsに登録することができます。" />
+    <!-- for Mobile Adsense -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-5156005489853976",
+            enable_page_level_ads: true
+        });
+    </script>
+    <!-- Top Page -->
+    <title>手持ち登録ツール - WizTools</title>
+</head>
 <body>
+    <div id='Top'></div>
+    <div id="wrap">
+        <!-- Loader -->
+        <div id="loader"><img src="/image/loading.gif" alt="Loading..." /></div>
+        <noscript id="loadnoscr">このページはjavascriptを使用しています。有効にしたのち再度アクセスしてください。</noscript>
+        <div id="fade"></div>
+        <!-- Header -->
+        <div id="Header"></div>
+        <!-- Main Contents -->
+        <div class="Main">
+            <dl class="List">
+                <dt>このツールについて</dt>
+                <dd id="tool_info">
+                    <div class="info">
+                        手持ちの精霊画像をアップロードすることで、wiztools上に手持ちデータを保存します。<br />
+                        保存された手持ちデータはデッキ構築などに利用いただけます(未実装)<br />
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-related="wiz_tools">Tweet</a>
+                        <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+                    </div>
+                    <!-- Adsense -->
+                    <div class="Adsense">
+                        <!-- advertise -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5156005489853976"
+                             data-ad-slot="6536828444"
+                             data-ad-format="auto"></ins>
+                        <script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </dd>
+                <dt id="check">手持ち画像認識/登録ツール</dt>
+                <dd>
+                    認識するファイルを選択して、アップロードして下さい。<br>
+                    複数同時にアップロードできます。<a href="sample.jpg" target="_blank">良い画像の例</a><br>
+                    <b>※1枚目の画像は、Lが15体いるようにして下さい。</b><br/>
+                    <b>※<span class="strong">強化合成画面</span>の画像を利用してください。</b><br />
+                    <div id="input_form">
+                        <form action="//api.wiztools.net/imgReader/php_up.php?mode=up" method="post" enctype="multipart/form-data">
+                            <input name="file[]" type="file" multiple required accept="image/*" />
+                            <button id="Start" style="margin-top: 1ex;" type="submit" >Upload</button>
+                        </form>
+                    </div>
 
-    認識するファイルを選択して、アップロードして下さい。<br>
-    複数同時にアップロードできます。<br>
-    1枚目の画像は、Lが15体いるようにして下さい。
-    <form action="./php_up.php?mode=up" method="post" enctype="multipart/form-data">
-    <input name="file[]" type="file" multiple="multiple" />
-    <input type="submit" value="アップロード" />
-    </form>
-    <br>
-    良い画像の例：<br>
+                    <!-- Adsense -->
+                    <div class="Adsense">
+                        <!-- advertise -->
+                        <ins class="adsbygoogle"
+                                style="display:block"
+                                data-ad-client="ca-pub-5156005489853976"
+                                data-ad-slot="6536828444"
+                                data-ad-format="auto"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <!-- Footer -->
+        <div id="Footer"></div>
+        <!-- Javascript -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/loader.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/general.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/deck/deckdata.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/tools/imgreader.js"></script>
+    </div>
+</body>
+</html>
