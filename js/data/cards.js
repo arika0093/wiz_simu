@@ -21772,7 +21772,7 @@ Cards = [{
 	ss2: {
 		desc: "敵単体のHPを20%減少させる、HP50%以下でさらに20%減少させる",
 		turn: 12,
-		proc: [ss_ratiodamage_s(ss_hp_less(0.5, 0, 0.15))],
+		proc: [ss_ratiodamage_s(ss_hp_less(0.5, 0.4, 0.2))],
 	},
 	Lawake: [
 		NEFTJOD(60),
@@ -36341,7 +36341,7 @@ Cards = [{
 	cardno: 6412,
 	imageno: 8267,
 	hp: 3256,
-	atk: 3576,
+	atk: 3376,
 	cost: 55,
 	attr: [1,4],
 	species: [2],
@@ -45491,7 +45491,7 @@ Cards = [{
 	},
 	awakes: [
 		Attr_statusup(100,0, [0,1,1,0,0,]),
-		Panel_boost([0,1,1,0,0,],2),
+		Panel_boost([0,1,0,0,0,],2),
 		Heal_afterbattle(10),
 		Fastskill(1),
 		Attr_statusup(0,100, [0,1,1,0,0,]),
