@@ -342,7 +342,13 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem, bef_f)
 		}
 	}
 	// どの敵を攻撃するか
-	var targ = auto_attack_order(enemy, attr, index);
+	var obj_tg = {
+		now: now,
+		as_list: as,
+		as_pos: as_pos,
+		chain: Field.Status.chain,
+	};
+	var targ = auto_attack_order(enemy, attr, index, obj_tg);
 	// 各種情報
 	var g_dmg = 0;
 	var atk_as = as[as_pos[targ]]
