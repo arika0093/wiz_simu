@@ -35,6 +35,10 @@ category_jp = {
     "satajo": {
 		jp: "サタニック女学院",
 	},
+    "losteden2": {
+		is_dispsim: true,
+		jp: "ロストエデン2",
+	},
     "suzaku": {
 		jp: "スザク",
 	},
