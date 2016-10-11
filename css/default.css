@@ -96,6 +96,14 @@ div.linklist a:first-child{
 	display: none;
 }
 
+.chosen-container-single .chosen-single{
+	height: 30px !important;
+	line-height: 29px !important;
+}
+.chosen-container-single .chosen-single div b{
+	background-position-y: 5px !important;
+}
+
 /* Clearfix */
 .clearfix {
 	/*display: inline-table;*/

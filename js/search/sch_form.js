@@ -8,13 +8,18 @@ $(function () {
 	sf_sslist_add();
 	sf_awlist_add();
 
+	conbobox_chosen_apply();
+});
+
+// chosen適応
+function conbobox_chosen_apply() {
 	var sel = $("#search_f .skill_sel");
-	if(sel.chosen){
+	if (sel.chosen) {
 		sel.chosen({
 			search_contains: true,
 		});
 	}
-});
+}
 
 // 新しいコンボボックスを追加する
 function create_new_combobox(adb, adcls, fstitem, fc){
@@ -23,6 +28,7 @@ function create_new_combobox(adb, adcls, fstitem, fc){
 		"<option value='-1'>" + fstitem + "</option></select>";
 	base.append(adcls);
 	if (fc) { fc(); }
+	conbobox_chosen_apply();
 }
 
 // AS要素追加時
@@ -129,7 +135,11 @@ function sf_formreset() {
 	// input初期化
 	$("#search_match_form input").val("");
 	// select初期化
-	$("#search_match_form select").map(function (i, e) {
+	var sel = $("#search_match_form select");
+	sel.map(function (i, e) {
 		e.selectedIndex = 0;
 	});
+	if (sel.chosen) {
+		sel.trigger("chosen:updated");
+	}
 }

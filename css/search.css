@@ -17,7 +17,9 @@ dl#search_match_form dd{
 	padding: 1.5ex 0 2ex;
 }
 
-dl#search_match_form dd select, dl#search_match_form dd input{
+dl#search_match_form dd select,
+dl#search_match_form dd input,
+dl#search_match_form .chosen-container{
 	padding: 0.5ex;
 	margin-bottom: 1ex;
 }
