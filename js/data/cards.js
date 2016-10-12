@@ -47797,7 +47797,7 @@ Cards = [{
 	ss2: {
 		desc: "	<特殊パネル変換>味方全体のMAXHPの50%を使い、ジャンルパネルを雷&光属性化し、チェインがプラス3の効果を付与",
 		turn: 7,
-		proc: [ss_panel_change([0,0,1,1,0], panel_chainplus(3), ss_consume_all(0.5)],
+		proc: [ss_panel_change([0,0,1,1,0]), panel_chainplus(3), ss_consume_all(0.5)],
 	},
 	Lawake: [
 		Statusup(500,0),
