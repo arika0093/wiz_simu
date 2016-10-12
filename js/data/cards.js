@@ -16202,6 +16202,7 @@ Cards = [{
 	attr: [2, 4],
 	species: [2],
 	islegend: true,
+	disable: true,
 	as1: {
 		desc: "4チェインでダメージアップ、天使の敵へさらにダメージアップ(400%/600%)",
 		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [3])],
@@ -16245,6 +16246,7 @@ Cards = [{
 	cost: 49,
 	attr: [2, 3],
 	species: [2],
+	disable: true,
 	islegend: true,
 	as1: {
 		desc: "4チェインでダメージアップ、魔族の敵へさらにダメージアップ(400%/600%)",
@@ -16290,6 +16292,7 @@ Cards = [{
 	attr: [0, -1],
 	species: [3],
 	islegend: true,
+	disable: true,
 	as1: {
 		desc: "3チェインで雷属性の敵単体へ特効ダメージ(525%)",
 		proc: ChainAttrAttack(5.25, 3, [0,0,1,0,0]),
@@ -16334,6 +16337,7 @@ Cards = [{
 	attr: [1,0],
 	species: [3],
 	islegend: true,
+	disable: true,
 	as1: {
 		desc: "火・水属性の味方を回復、7チェインで更に回復(10%/17%)",
 		proc: [Heal(0.10, [1,1,0,0,0], 0), Heal(0.17, [1,1,0,0,0], 7)],
@@ -20302,6 +20306,7 @@ Cards = [{
 	attr: [0,3],
 	species: [3],
 	islegend: true,
+	disable: true,
 	as1: {
 		desc: "4チェインでダメージアップ、天使・魔族の敵へさらにダメージアップ(400%/550%)",
 		proc: [ChainAttack(4.0, 4), ChainSpecAttack(5.5, 4, [2,3])],
@@ -22273,6 +22278,7 @@ Cards = [{
 	attr: [2, 3],
 	species: [3],
 	islegend: true,
+	disable: true,
 	as1: {
 		desc: "味方全体のHPを回復(14%)",
 		proc: Heal(0.14, [1, 1, 1, 1, 1], 0),
@@ -22317,6 +22323,7 @@ Cards = [{
 	attr: [2, 4],
 	species: [3],
 	islegend: true,
+	disable: true,
 	as1: {
 		desc: "5チェインで雷属性の味方の攻撃力をアップ、パネルの色が2色以上でさらにアップ(60%/90%)",
 		proc: ChainPanelsEnhance(0.60, 0.90, 0.90, [0, 0, 1, 0, 0], 5),
@@ -34068,6 +34075,7 @@ Cards = [{
 	attr: [0,4],
 	species: [3],
 	islegend: true,
+	disable: true,
 	ape: "ロストエデン",
 	as1: {
 		desc: "5チェインでダメージアップ(450%)",
@@ -48519,7 +48527,7 @@ Cards = [{
 	],
 },{
 	name: "聖王たる神髄 ミカエラ・セラフィム",
-	cardno: 90059
+	cardno: 90059,
 	imageno: 9120,
 	hp: 3495,
 	atk: 3390,
