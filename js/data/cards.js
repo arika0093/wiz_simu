@@ -48013,7 +48013,7 @@ Cards = [{
 		Panel_boost([1,0,0,0,0,],2),
 		Attr_statusup(0,100, [1,0,0,0,0,]),
 		Fastskill(2),
-		Awake_noeffect("チェインブースト",1),
+		Awake_Chainboost(1),
 	],
 	as2: {
 		desc: "3チェインで雷属性の敵単体へ特効3連撃(575%)",
@@ -48136,7 +48136,7 @@ Cards = [{
 	ss1: {
 		desc: "<効果解除>敵全体のカウンターを解除する",
 		turn: 4,
-		proc: [ss_break_attackcounter(all)],
+		proc: [ss_break_attackcounter("all")],
 	},
 	awakes: [
 		Fastskill(2),
@@ -48157,7 +48157,7 @@ Cards = [{
 	ss2: {
 		desc: "<効果解除大魔術>スキル反射を無視し、敵全体のカウンターを解除し、火属性のダメージ。HP20%以下でさらにスキル反射を解除し、ダメージアップ(300%/900%)",
 		turn: 7,
-		proc: [ss_break_attackcounter(all), ss_damage_all(ss_hp_less(0.2, 9, 3), [0]), ss_ignore_skillcounter(), ss_hp_less_skill(0.2, ss_break_skillcounter(all))],
+		proc: [ss_break_attackcounter("all"), ss_damage_all(ss_hp_less(0.2, 9, 3), [0]), ss_ignore_skillcounter(), ss_hp_less_skill(0.2, ss_break_skillcounter("all"))],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -48645,7 +48645,7 @@ Cards = [{
 		Fastskill(2),
 		Heal_afterbattle(10),
 		Attr_statusup_sattr(200,0, [0,1,0,0,0,], 200,0, [0,0,0,1,0,]),
-		Awake_noeffect("チェインブースト",1),
+		Awake_Chainboost(1),
 	],
 	as2: {
 		desc: "水属性の味方のHPを回復(16%)、さらに水属性の味方の攻撃力をアップ(30%)",

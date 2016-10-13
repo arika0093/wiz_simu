@@ -217,8 +217,16 @@ $(function () {
 					legend_timing_check(als.Deck, als.Now, p);
 				}
 			}
+			// チェインブースト処理(助っ人は含めないので上と別処理)
 			var dck = als.Deck;
 			for (var i = 0; i < dck.length; i++) {
+				var aws = pickup_awakes(dck[i], "awake_chboost", false);
+				var add_chain = 0;
+				$.each(aws, function (j, f) {
+					add_chain += f.add;
+				});
+				Field.Status.chain += add_chain;
+				Field.log_push("Unit[" + (i + 1) + "]: Chain-Boost: +" + add_chain);
 			}
 			// -------------------------
 			// 敵データを読み込む

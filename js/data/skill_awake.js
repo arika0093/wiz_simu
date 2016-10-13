@@ -204,6 +204,16 @@ function OnlyAttr_statusup(hp, atk, o_attr) {
 	};
 }
 
+// チェインブースト
+function Awake_Chainboost(ch) {
+	return {
+		type: "awake_chboost",
+		add: ch,
+		name: "チェインブースト" + int2roman(ch),
+		desc: "クエスト開始時のチェインを+" + ch + "する"
+	};
+}
+
 // (L時発動)スペシャルスキルを発動
 function Awake_SpecialSkill(spskill, p1, p2, p3, p4) {
 	return {
