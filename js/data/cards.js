@@ -47830,7 +47830,7 @@ Cards = [{
 	ss1: {
 		desc: "<特効大魔術>敵単体へ水属性のダメージ、さらに火属性の敵には特効ダメージ、5チェインを消費しさらに特効ダメージ(400%/900%/1900%)",
 		turn: 9,
-		proc: [ss_chain_cost_skill(5, ss_damage_s(special_attr([1,0,0,0,0], 19.0, 4.0), [1], 1), ss_damage_s(special_attr([1,0,0,0,0], 9.0, 2.0), [1], 1))],
+		proc: [ss_chain_cost_skill(5, ss_damage_s(special_attr([1,0,0,0,0], 19.0, 4.0), [1], 1), ss_damage_s(special_attr([1,0,0,0,0], 9.0, 4.0), [1], 1))],
 	},
 	awakes: [
 		Fastskill(1),
