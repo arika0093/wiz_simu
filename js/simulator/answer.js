@@ -55,6 +55,8 @@ function panel(attr) {
 		var as_afters = [];
 		// AS無視しないなら普通に、無視状況なら取得を少なく
 		if (!as_ignore) {
+			// コピー処理
+			//pickup_answerskills(attr, "as_copy");
 			// エンハ処理
 			answer_skill(pickup_answerskills(attr, "support"), attr, as_afters, bf);
 			// 攻撃
@@ -303,6 +305,13 @@ function answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, loop_ct, as_a
 		case "as_spskill":
 			rst = answer_spskill(as_arr[i], i, panel, bef_f);
 			break;
+		/*
+		case "as_copy":
+			// 処理的には大したことないのでここに暫定記載
+
+			rst = true;
+			break;
+		*/
 	}
 	// 攻撃後処理に追加
 	if (rst.length > 0) {
