@@ -47958,7 +47958,7 @@ Cards = [{
 	cost: 36,
 	attr: [0,-1],
 	species: [2],
-	islegend: false,
+	islegend: true,
 	ape: "双翼のロストエデンⅡ WWMF",
 	is_dist: true,
 	as1: {
@@ -47981,6 +47981,19 @@ Cards = [{
 		Attr_statusup(0,100, [1,0,0,0,0,]),
 		Attr_statusup(100,0, [1,0,0,0,0,]),
 		Fastskill(2),
+	],
+	as2: {
+		desc: "雷属性の敵単体へ特効ダメージ(450%)",
+		proc: ChainAttrAttack(4.5, 0, [0,0,1,0,0]),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(100%/350%)",
+		turn: 6,
+		proc: [ss_damage_s(special_attr([0, 0, 1, 0, 0], 3.5, 1.0), [0], 1)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(0,500),
 	],
 },{
 	name: "死界の獄犬 ネブラフィス",
