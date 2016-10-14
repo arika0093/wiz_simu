@@ -16,22 +16,54 @@
          ],
          enemy: [
             {
-               name: "クレセントシャドウ",
-               hp: 200000,
-               imageno: 2187,
-               attr: 1,
-               spec: 2,
+               name: "ヘルファイアドラゴン",
+               hp: 150000,
+               imageno: 2770,
+               attr: 0,
+               spec: 0,
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_continue_damage(2, 750, 750)),
-                     damage_switch(s_enemy_when_after_turn(3), m_enemy_angry(), true)
+                     m_enemy_once(skill_counter_func(s_enemy_absorb, "-", 100, false, 0.9, 5, 150000)),
+                     damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true)
                   ],
                   on_move: [
-                     s_enemy_continue_damage(2, 750, 750)
+                     s_enemy_cursed(200, 5, 1),
+                     s_enemy_attack(1000, 5, 1, true)
                   ],
                   on_angry: [
-                     s_enemy_continue_damage(3, 2500, 2500)
+                     attack_counter_dual(700, 4)
+                  ],
+                  on_move_angry: [
+                     s_enemy_attack(400, 5, 5, true),
+                     s_enemy_attack(400, 5, 5, true),
+                     s_enemy_attack(400, 5, 5, true),
+                     s_enemy_attack(400, 5, 5, true),
+                     s_enemy_attack(400, 5, 5, true)
+                  ],
+                  atrandom: false,
+                  turn: 1,
+                  wait: 1
+               }
+            },
+            {
+               name: "ヴォルテックスドラゴン",
+               hp: 400000,
+               imageno: 2772,
+               attr: 2,
+               spec: 0,
+               isStrong: false,
+               move: {
+                  on_popup: [
+                     m_enemy_once(skill_counter_func(s_enemy_panicshout, "-", 100, false, 2000, 5, 3)),
+                     damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true)
+                  ],
+                  on_move: [
+                     s_enemy_attack(1000, 5, 1, true)
+                  ],
+                  on_angry: [
+                     attr_change(3),
+                     s_enemy_attack_ratio(0.9, 5, true)/* Warning: 属性に十分注意してください */
                   ],
                   on_move_angry: [
                      s_enemy_attack(600, 5, 5, true),
@@ -46,57 +78,30 @@
                }
             },
             {
-               name: "白兵型ブレードロード",
-               hp: 700000,
-               imageno: 5351,
-               attr: 1,
-               spec: 6,
+               name: "ルインコンダクター",
+               hp: 300000,
+               imageno: 4070,
+               attr: 2,
+               spec: 2,
                isStrong: false,
                move: {
-                  on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_panicshout, "混乱（ターゲット対象味方のみ： 2000ダメージ） 5体×3T", 100, false, 2000, 5, 4)),
-                     damage_switch(s_enemy_when_dead_l(), m_enemy_angry(), true)
-                  ],
-                  on_angry: [
-                     attr_change(0)/* Warning: 属性に十分注意してください */,
-                     s_enemy_attack_ratio(0.9, 5, true)
-                  ],
-                  on_move_angry: [
-                     s_enemy_attack(400, 5, 5, true),
-                     s_enemy_attack(400, 5, 5, true),
-                     s_enemy_attack(300, 5, 5, true),
-                     s_enemy_attack(300, 5, 5, true),
-                     s_enemy_attack(300, 5, 5, true)
-                  ],
-                  atrandom: false,
-                  turn: 1,
-                  wait: 1
-               }
-            },
-            {
-               name: "ヘルファイアドラゴン",
-               hp: 100000,
-               imageno: 2770,
-               attr: 0,
-               spec: 0,
-               isStrong: false,
-               move: {
-                  on_popup: [
-                     m_enemy_once(s_enemy_poison(500, 5, 3)),
-                     damage_switch(s_enemy_when_after_turn(3), m_enemy_angry(), true)
-                  ],
                   on_move: [
-                     s_enemy_attack(70, 3, 5, true)
+                     s_enemy_cursed(200, 5, 1),
+                     s_enemy_attack(1000, 5, 1, true)
+                  ],
+                  on_popup: [
+                     damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true)
                   ],
                   on_angry: [
-                     s_enemy_poison(1500, 5, 3)
+                     attr_change(0),
+                     attack_counter_dual(700, 4)/* Warning: 属性に十分注意してください */
                   ],
                   on_move_angry: [
-                     s_enemy_attack(140, 5, 5, true),
-                     s_enemy_attack(140, 5, 5, true),
-                     s_enemy_attack(140, 5, 5, true),
-                     s_enemy_attack(140, 5, 5, true),
-                     s_enemy_attack(140, 5, 5, true)
+                     s_enemy_attack(400, 5, 5, true),
+                     s_enemy_attack(400, 5, 5, true),
+                     s_enemy_attack(400, 5, 5, true),
+                     s_enemy_attack(400, 5, 5, true),
+                     s_enemy_attack(400, 5, 5, true)
                   ],
                   atrandom: false,
                   turn: 1,

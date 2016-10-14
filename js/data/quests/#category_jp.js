@@ -51,18 +51,18 @@ category_jp = {
 		sim_index: 11,
 	},
 	"darcmass2": {
-		is_dispsim: true,
+		is_dispsim: false,
 		jp: "空戦のドルキマスⅡ",
 		sim_index: 11,
 	},
 	"chromag6":{
 		jp: "クロム・マグナ ゼロ",
-		is_dispsim: true,
+		is_dispsim: false,
 		sim_index: 11,
 	},
     "8millionz": {
 		jp: "YAOYORO Z",
-		is_dispsim: true,
+		is_dispsim: false,
 		sim_index: 12,
 	},
     "usg": {
@@ -97,7 +97,7 @@ category_jp = {
 	},
     "burningtower": {
 		jp: "バーニングタワー",
-		is_dispsim: false,
+		is_dispsim: true,
 		sim_index: 10,
 	},
     "material": {

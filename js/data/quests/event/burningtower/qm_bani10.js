@@ -1,10 +1,14 @@
 {
-   id: "bani910",
+   id: "bani_10",
    name: "超魔道バーニングタワー 第10階 へ",
    category: "burningtower",
    desc: "",
    overlap: false,
    aprnum: 1,
+   battle_before: [{
+      desc: "SPスキルが使用できる状態で開始",
+	  proc: spskill_maxcharge()
+   }],
    data: [
       {
          appearance: [

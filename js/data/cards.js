@@ -36598,7 +36598,7 @@ Cards = [{
 		Costdown(2),
 		Statusup(0,200),
 		Attr_statusup(0,100, [0,1,1,0,0,]),
-		Panel_boost([0,1,1,0,0,],2),
+		Panel_boost([0,1,0,0,0,],2),
 		Spec_statusup(0,500, [4,]),
 	],
 	as2: {
@@ -41825,7 +41825,7 @@ Cards = [{
 	is_dist: true,
 	as1: {
 		desc: "3チェインで火属性の敵単体へ特効3連撃(375%)、解答が早いほどさらにアップ(効果値:50)",
-		proc: [add_cond(ChainAttrAttack(3.75, 0, [0,1,0,0,0]), as_timedep(0.5))],
+		proc: [add_cond(ChainDualAttrAttack(3.75, 3, 3, [0,1,0,0,0]), as_timedep(0.5))],
 	},
 	ss1: {
 		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(200%/500%)",
@@ -41846,7 +41846,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "3チェインで火属性の敵単体へ特効3連撃(475%)、解答が早いほどさらにアップ(効果値:50)",
-		proc: [add_cond(ChainAttrAttack(4.75, 0, [0,1,0,0,0]), as_timedep(0.5))],
+		proc: [add_cond(ChainDualAttrAttack(4.75, 3, 3, [0, 1, 0, 0, 0]), as_timedep(0.5))],
 	},
 	ss2: {
 		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(200%/900%)",
