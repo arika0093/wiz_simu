@@ -1,6 +1,6 @@
 {
    id: "1609ev_h",
-   name: "覇級 名も無き侵略",
+   name: "(2016/08)イベントトーナメント 覇級",
    desc: "",
    overlap: false,
    aprnum: 5,

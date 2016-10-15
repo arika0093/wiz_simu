@@ -8,6 +8,9 @@
    battle_before: [{
       desc: "SPスキルが使用できる状態で開始",
 	  proc: spskill_maxcharge()
+   }, {
+      desc: "ch+3パネル付与",
+	  proc: panel_chainplus(3)
    }],
    data: [
       {
@@ -54,9 +57,12 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_cursed, "呪い 5体のHP5000減少×6ターン", 100, false, 5000, 5, 6)),
+                     m_enemy_once(skill_counter_func(s_enemy_cursed, "-", 100, false, 5000, 5, 6)),
                      damage_switch(s_enemy_when_dead_l(), m_enemy_angry(), true),
-					 s_enemy_reverse(0),
+                     s_enemy_reverse(0)
+                  ],
+                  on_move: [
+                     s_enemy_attack(1000, 5, 1, true)
                   ],
                   on_move_angry: [
                      s_enemy_as_sealed(5, 4),
@@ -83,7 +89,7 @@
                      damage_switch(s_enemy_when_after_turn(6), m_enemy_angry(), true)
                   ],
                   on_move: [
-                     s_enemy_attack_ratio(0.9, 5, true)
+                     s_enemy_attack(500, 5, 1, true)
                   ],
                   on_angry: [
                      s_enemy_discharge(5, 99)
@@ -113,14 +119,14 @@
          isStrong: false,
          move: {
             on_popup: [
-               m_enemy_once(skill_counter_func(s_enemy_cursed, "呪い 5体のHP5000減少×6ターン", 100, false, 5000, 5, 6)),
+               m_enemy_once(skill_counter_func(s_enemy_cursed, "-", 100, false, 5000, 5, 6)),
                damage_switch(s_enemy_when_hpdown(0.5), m_enemy_angry(), true)
             ],
-			on_move: [
-               s_enemy_attack(750, 5, 1, true),
-			],
+            on_move: [
+               s_enemy_attack(750, 5, 1, true)
+            ],
             on_angry: [
-               damage_block_all(15000, 4),
+               damage_block_all(15000, 4)
             ],
             on_move_angry: [
                s_enemy_attack_ratio(0.9, 5, true),
