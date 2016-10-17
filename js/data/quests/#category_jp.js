@@ -32,6 +32,11 @@ category_jp = {
     "": {
 		jp: "未設定",
 	},
+    "radiant1": {
+		is_dispsim: true,
+		sim_index: 11,
+		jp: "追憶のレディアント",
+	},
     "satajo": {
 		jp: "サタニック女学院",
 	},
