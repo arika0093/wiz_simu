@@ -33629,9 +33629,9 @@ Cards = [{
 		proc: ChainAttrAttack(5.5, 4, [0,1,0,1,0]),
 	},
 	ss1: {
-		desc: "<ブースト>5ターンの間、味方のMAXHPを毎ターン20%消費し、味方の攻撃力をアップ(150%)、さらに極稀にクリティカル",
+		desc: "<ブースト>4ターンの間、味方のMAXHPを毎ターン20%消費し、味方の攻撃力をアップ(150%)、さらに極稀にクリティカル",
 		turn: 8,
-		proc: [ss_boost_enhance_all(1.5, 5, 0.2, [1,1,1,1,1])],
+		proc: [ss_boost_enhance_all(1.5, 4, 0.2, [1,1,1,1,1])],
 	},
 	awakes: [
 		Attr_statusup(100,0, [0,0,1,0,0,]),
@@ -43028,7 +43028,7 @@ Cards = [{
 		Panel_boost([0,1,0,0,0,],2),
 		Attr_statusup(0,200, [0,1,0,0,0,]),
 		Fastskill(2),
-		Spec_statusup(0,400, [1,]),
+		Spec_statusup(0,200, [1,]),
 		Abstate_invalid("as_sealed"),
 		Awake_noeffect("心眼",1),
 	],
