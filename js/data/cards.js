@@ -41829,7 +41829,7 @@ Cards = [{
 	is_dist: true,
 	as1: {
 		desc: "3チェインで火属性の敵単体へ特効3連撃(375%)、解答が早いほどさらにアップ(効果値:50)",
-		proc: [add_cond(ChainDualAttrAttack(3.75, 3, 3, [0,1,0,0,0]), as_timedep(0.5))],
+		proc: [add_cond(ChainDualAttrAttack(3.75, 3, 3, [1,0,0,0,0]), as_timedep(0.5))],
 	},
 	ss1: {
 		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(200%/500%)",
@@ -41850,7 +41850,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "3チェインで火属性の敵単体へ特効3連撃(475%)、解答が早いほどさらにアップ(効果値:50)",
-		proc: [add_cond(ChainDualAttrAttack(4.75, 3, 3, [0, 1, 0, 0, 0]), as_timedep(0.5))],
+		proc: [add_cond(ChainDualAttrAttack(4.75, 3, 3, [1, 0, 0, 0, 0]), as_timedep(0.5))],
 	},
 	ss2: {
 		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(200%/900%)",
