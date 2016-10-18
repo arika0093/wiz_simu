@@ -47886,7 +47886,7 @@ Cards = [{
 		Statusup(0,200),
 		NEFTJOD(30),
 		Statusup(200,0),
-		Panel_boost([0,0,1,0,0,],2),
+		Panel_boost([0,0,1,0,0,],1),
 		Spec_statusup(200,0, [6,]),
 		Panel_boost([0,0,1,0,0,],2),
 		Fastskill(2),
