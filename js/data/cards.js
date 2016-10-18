@@ -47543,7 +47543,7 @@ Cards = [{
 		Fastskill(1),
 		Awake_noeffect("経験値取得量アップ",1),
 		Panel_boost([1,0,0,0,0,],2),
-		Attr_relief([1,0,0,0,0,],10),
+		Attr_relief([0,1,0,0,0,],10),
 		Attr_statusup(100,0, [1,0,1,0,0,]),
 		Panel_boost([1,0,0,0,0,],2),
 		Attr_statusup(0,100, [1,0,1,0,0,]),
