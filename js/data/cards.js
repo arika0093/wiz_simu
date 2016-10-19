@@ -48836,7 +48836,7 @@ Cards = [{
 	},
 	awakes: [
 		Fastskill(2),
-		Abstate_invalid(["poison", "attr_weaken", "death_limit"])
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
 		NEFTJOD(30),
 		Costdown(10),
 		Heal_afterbattle(10),
