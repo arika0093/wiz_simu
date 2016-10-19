@@ -18978,9 +18978,9 @@ Cards = [{
 		proc: ChainVarianceAttack(4.5, 4),
 	},
 	ss1: {
-		desc: "火・雷属性の3連撃、さらに連撃数分チェインプラス(180%)",
+		desc: "スキル反射を無視し、火・雷属性の3連撃、さらに連撃数分チェインプラス(180%)",
 		turn: 7,
-		proc: [ss_damage_slash(1.8, [0,2], 3)],
+		proc: [ss_damage_slash(1.8, [0,2], 3), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],1),
@@ -18999,9 +18999,9 @@ Cards = [{
 		proc: ChainVarianceAttack(5.5, 4),
 	},
 	ss2: {
-		desc: "火・雷属性の5連撃、さらに連撃数分チェインプラス(380%)",
+		desc: "スキル反射を無視し、火・雷属性の5連撃、さらに連撃数分チェインプラス(380%)",
 		turn: 10,
-		proc: [ss_damage_slash(3.8, [0,2], 5)],
+		proc: [ss_damage_slash(3.8, [0,2], 5), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -21321,9 +21321,9 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,1,0,0,0], [0,0,0,1,0], 0),
 	},
 	ss1: {
-		desc: "水・光属性の3連撃、さらに連撃数分チェインプラス(180%)",
+		desc: "スキル反射を無視し、水・光属性の3連撃、さらに連撃数分チェインプラス(180%)",
 		turn: 7,
-		proc: [ss_damage_slash(1.8, [1,3], 3)],
+		proc: [ss_damage_slash(1.8, [1,3], 3), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -21342,9 +21342,9 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,1,0,0,0], [0,0,0,1,0], 0),
 	},
 	ss2: {
-		desc: "水・光属性の5連撃、さらに連撃数分チェインプラス(380%)",
+		desc: "スキル反射を無視し、水・光属性の5連撃、さらに連撃数分チェインプラス(380%)",
 		turn: 10,
-		proc: [ss_damage_slash(3.8, [1,3], 5)],
+		proc: [ss_damage_slash(3.8, [1,3], 5), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [0,1,0,0,0,]),
@@ -21843,9 +21843,9 @@ Cards = [{
 		proc: [ChainDualAttack(4.0, 6, 3), add_cond(ChainDualAttack(6.0, 6, 3), when_hp_more(0.5))],
 	},
 	ss1: {
-		desc: "火・雷属性の3連撃(180%)、さらに連撃数分チェインプラス",
+		desc: "スキル反射を無視し、火・雷属性の3連撃(180%)、さらに連撃数分チェインプラス",
 		turn: 7,
-		proc: [ss_damage_slash(1.8, [0, 2], 3)],
+		proc: [ss_damage_slash(1.8, [0, 2], 3), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -21864,9 +21864,9 @@ Cards = [{
 		proc: [ChainDualAttack(5.0, 6, 3), add_cond(ChainDualAttack(7.0, 6, 3), when_hp_more(0.5))],
 	},
 	ss2: {
-		desc: "火・雷属性の5連撃(380%)、さらに連撃数分チェインプラス",
+		desc: "スキル反射を無視し、火・雷属性の5連撃(380%)、さらに連撃数分チェインプラス",
 		turn: 10,
-		proc: [ss_damage_slash(3.8, [0, 2], 5)],
+		proc: [ss_damage_slash(3.8, [0, 2], 5), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0, 1000),
@@ -24212,9 +24212,9 @@ Cards = [{
 		proc: Heal(0.13, [0,1,1,0,0], 0),
 	},
 	ss1: {
-		desc: "水・雷属性の3連撃・さらに連撃数分チェインプラス(180%)",
+		desc: "スキル反射を無視し、水・雷属性の3連撃・さらに連撃数分チェインプラス(180%)",
 		turn: 8,
-		proc: [ss_damage_slash(1.8, [1,2], 3)],
+		proc: [ss_damage_slash(1.8, [1,2], 3), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Fastskill(1),
@@ -24233,9 +24233,9 @@ Cards = [{
 		proc: Heal(0.16, [0,1,1,0,0], 0),
 	},
 	ss2: {
-		desc: "水・雷属性の5連撃・さらに連撃数分チェインプラス(380%)",
+		desc: "スキル反射を無視し、水・雷属性の5連撃・さらに連撃数分チェインプラス(380%)",
 		turn: 11,
-		proc: [ss_damage_slash(3.8, [1,2], 5)],
+		proc: [ss_damage_slash(3.8, [1,2], 5), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -27117,9 +27117,9 @@ Cards = [{
 		proc: ChainAttrAttack(5.0, 4, [0,0,1,0,0]),
 	},
 	ss1: {
-		desc: "火属性の5連撃(180%)、さらに連撃数分チェインプラス",
+		desc: "スキル反射を無視し、火属性の5連撃(180%)、さらに連撃数分チェインプラス",
 		turn: 9,
-		proc: [ss_damage_slash(1.8, [0], 5)],
+		proc: [ss_damage_slash(1.8, [0], 5), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		NEFTJOD(30),
@@ -29462,9 +29462,9 @@ Cards = [{
 		proc: ChainDualAttrAttack(7.0, 7, 4, [0,1,0,0,0]),
 	},
 	ss1: {
-		desc: "雷属性の6連撃、さらに連撃数分チェインプラス(180%)",
+		desc: "スキル反射を無視し、雷属性の6連撃、さらに連撃数分チェインプラス(180%)",
 		turn: 8,
-		proc: [ss_damage_slash(1.8, [2], 6)],
+		proc: [ss_damage_slash(1.8, [2], 6), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],1),
@@ -29483,9 +29483,9 @@ Cards = [{
 		proc: ChainDualAttrAttack(8.0, 7, 4, [0,1,0,0,0]),
 	},
 	ss2: {
-		desc: "雷属性の10連撃、さらに連撃数分チェインプラス(380%)",
+		desc: "スキル反射を無視し、雷属性の10連撃、さらに連撃数分チェインプラス(380%)",
 		turn: 11,
-		proc: [ss_damage_slash(3.8, [2], 10)],
+		proc: [ss_damage_slash(3.8, [2], 10), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -30266,9 +30266,9 @@ Cards = [{
 		proc: ChainDualAttack(5.0, 6, 3),
 	},
 	ss1: {
-		desc: "<斬撃大魔術>雷・闇属性の5連撃(380%)、さらに連撃数分チェインプラス",
+		desc: "<斬撃大魔術>スキル反射を無視し、雷・闇属性の5連撃(380%)、さらに連撃数分チェインプラス",
 		turn: 10,
-		proc: [ss_damage_slash(3.8, [2, 4], 5)],
+		proc: [ss_damage_slash(3.8, [2,4], 5), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Statusup(400, 0),
@@ -30287,9 +30287,9 @@ Cards = [{
 		proc: ChainDualAttack(6.0, 6, 3),
 	},
 	ss2: {
-		desc: "<斬撃大魔術>雷・闇属性の10連撃(760%)、さらに連撃数分チェインプラス",
+		desc: "<斬撃大魔術>スキル反射を無視し、雷・闇属性の10連撃(760%)、さらに連撃数分チェインプラス",
 		turn: 15,
-		proc: [ss_damage_slash(7.6, [2, 4], 10)],
+		proc: [ss_damage_slash(7.6, [2,4], 10), ss_ignore_skillcounter()]
 	},
 	Lawake: [
 		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
@@ -30677,7 +30677,7 @@ Cards = [{
 		proc: ChainDualAttack(5.0, 6, 3),
 	},
 	ss1: {
-		desc: "<斬撃大魔術>3ターン溜めた後、火・水属性の5連撃、さらに連撃数分チェインプラス(180%)",
+		desc: "<斬撃大魔術>3ターン溜めた後、スキル反射を無視し、火・水属性の5連撃、さらに連撃数分チェインプラス(180%)",
 		turn: 6,
 		charged: 3,
 		proc: [ss_damage_slash(1.8, [0, 1], 5)],
@@ -30699,10 +30699,10 @@ Cards = [{
 		proc: ChainDualAttack(6.0, 6, 3),
 	},
 	ss2: {
-		desc: "<斬撃大魔術>3ターン溜めた後、火・水属性の7連撃、さらに連撃数分チェインプラス(380%)",
+		desc: "<斬撃大魔術>3ターン溜めた後、スキル反射を無視し、火・水属性の7連撃、さらに連撃数分チェインプラス(380%)",
 		turn: 8,
 		charged: 3,
-		proc: [ss_damage_slash(3.8, [0, 1], 7)],
+		proc: [ss_damage_slash(3.8, [0, 1], 7), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0, 500),
@@ -46364,9 +46364,9 @@ Cards = [{
 		proc: ChainDualAttack(4.0, 4, 6),
 	},
 	ss1: {
-		desc: "<斬撃大魔術>火属性の10連撃(700%)、さらに連撃数分チェインプラス",
+		desc: "<斬撃大魔術>スキル反射を無視し、火属性の10連撃(700%)、さらに連撃数分チェインプラス",
 		turn: 10,
-		proc: [ss_damage_slash(7, [0], 10)],
+		proc: [ss_damage_slash(7, [0], 10), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],2),
@@ -46385,9 +46385,9 @@ Cards = [{
 		proc: ChainDualAttack(5.0, 4, 6),
 	},
 	ss2: {
-		desc: "<斬撃大魔術>火属性の15連撃(1050%)、さらに連撃数分チェインプラス",
+		desc: "<斬撃大魔術>スキル反射を無視し、火属性の15連撃(1050%)、さらに連撃数分チェインプラス",
 		turn: 12,
-		proc: [ss_damage_slash(10.5, [0], 15)],
+		proc: [ss_damage_slash(10.5, [0], 15), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		OnlyAttr_statusup(500, 500, 0),
