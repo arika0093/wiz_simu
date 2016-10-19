@@ -11079,6 +11079,7 @@ Cards = [{
 	cost: 42,
 	attr: [2, -1],
 	species: [6],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Statusup(0, 200),
@@ -22909,6 +22910,7 @@ Cards = [{
 	cost: 48,
 	attr: [2,0],
 	species: [6],
+	disable: true,
 	islegend: true,
 	as1: {
 		desc: "雷属性の攻撃力をアップ、複属性が火属性だとさらにアップ(30%/80%)",
@@ -35001,6 +35003,7 @@ Cards = [{
 	cost: 44,
 	attr: [2,-1],
 	species: [6],
+	disable: true,
 	islegend: true,
 	ape: "クリスマス2014",
 	as1: {
