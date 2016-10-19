@@ -14802,6 +14802,7 @@ Cards = [{
 	cost: 45,
 	attr: [2, 0],
 	species: [6],
+	disable: true,
 	awakes: [
 		Spec_statusup(0, 200, [4, 6, ]),
 		Fastskill(1),
