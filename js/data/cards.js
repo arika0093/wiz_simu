@@ -4008,6 +4008,7 @@ Cards = [{
 	cost: 45,
 	attr: [0, 1],
 	species: [3],
+	disable: true,
 	awakes: [
 		Panel_boost([1,0,0,0,0], 1),
 		Attr_statusup(100, 0, [1, 1, 0, 0, 0]),
@@ -6902,6 +6903,7 @@ Cards = [{
 	cost: 46,
 	attr: [1, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Statusup(200, 0),
 		Statusup(0, 200),
@@ -6946,6 +6948,7 @@ Cards = [{
 	cost: 44,
 	attr: [1, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
 		Fastskill(1),
@@ -7299,6 +7302,7 @@ Cards = [{
 	cost: 52,
 	attr: [1, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Statusup(0, 200),
 		Statusup(0, 200),
@@ -7343,6 +7347,7 @@ Cards = [{
 	cost: 44,
 	attr: [1, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
@@ -48992,7 +48997,7 @@ Cards = [{
 		Attr_statusup(0,100, [1,1,0,0,0,]),
 	],
 },{
-	name: "滅龍冥刃　シャドウ・サーヴァント",
+	name: "滅龍冥刃 シャドウ・サーヴァント",
 	cardno: 7199,
 	imageno: 5720,
 	hp: 4391,
