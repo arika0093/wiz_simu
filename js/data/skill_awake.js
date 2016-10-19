@@ -23,12 +23,25 @@ function Fastskill(t) {
 
 // ステータスアップ
 function Statusup(hp, atk) {
+	if(hp != 0){
+		tmpName = "HP";
+		tmpValue = hp;
+	}else if(atk != 0){
+		tmpName = "攻撃力";
+		tmpValue = atk;
+	}
+	if(tmpValue > 0){
+		tmpUD = "アップ";
+	}else{
+		tmpUD = "ダウン";
+		tmpValue = -tmpValue;
+	}
 	return {
 		type: "own_status_up",
 		up_hp: hp,
 		up_atk: atk,
-		name: (hp != 0 ? "HP" : "攻撃力") + "アップ" + int2roman(Math.max(hp, atk)/100),
-		desc: (hp != 0 ? "HP" : "攻撃力") + "が" + Math.max(hp, atk) + "アップする"
+		name: tmpName + tmpUD + int2roman(tmpValue/100),
+		desc: tmpName + "が" + tmpValue + tmpUD +"する"
 	};
 }
 

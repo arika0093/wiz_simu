@@ -14802,6 +14802,7 @@ Cards = [{
 	cost: 45,
 	attr: [2, 0],
 	species: [6],
+	disable: true,
 	awakes: [
 		Spec_statusup(0, 200, [4, 6, ]),
 		Fastskill(1),
@@ -48836,7 +48837,7 @@ Cards = [{
 	},
 	awakes: [
 		Fastskill(2),
-		Abstate_invalid(["poison", "attr_weaken", "death_limit"])
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
 		NEFTJOD(30),
 		Costdown(10),
 		Heal_afterbattle(10),
