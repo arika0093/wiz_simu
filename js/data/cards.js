@@ -11079,6 +11079,7 @@ Cards = [{
 	cost: 42,
 	attr: [2, -1],
 	species: [6],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Statusup(0, 200),
@@ -18978,9 +18979,9 @@ Cards = [{
 		proc: ChainVarianceAttack(4.5, 4),
 	},
 	ss1: {
-		desc: "火・雷属性の3連撃、さらに連撃数分チェインプラス(180%)",
+		desc: "スキル反射を無視し、火・雷属性の3連撃、さらに連撃数分チェインプラス(180%)",
 		turn: 7,
-		proc: [ss_damage_slash(1.8, [0,2], 3)],
+		proc: [ss_damage_slash(1.8, [0,2], 3), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],1),
@@ -18999,9 +19000,9 @@ Cards = [{
 		proc: ChainVarianceAttack(5.5, 4),
 	},
 	ss2: {
-		desc: "火・雷属性の5連撃、さらに連撃数分チェインプラス(380%)",
+		desc: "スキル反射を無視し、火・雷属性の5連撃、さらに連撃数分チェインプラス(380%)",
 		turn: 10,
-		proc: [ss_damage_slash(3.8, [0,2], 5)],
+		proc: [ss_damage_slash(3.8, [0,2], 5), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -21321,9 +21322,9 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,1,0,0,0], [0,0,0,1,0], 0),
 	},
 	ss1: {
-		desc: "水・光属性の3連撃、さらに連撃数分チェインプラス(180%)",
+		desc: "スキル反射を無視し、水・光属性の3連撃、さらに連撃数分チェインプラス(180%)",
 		turn: 7,
-		proc: [ss_damage_slash(1.8, [1,3], 3)],
+		proc: [ss_damage_slash(1.8, [1,3], 3), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -21342,9 +21343,9 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,1,0,0,0], [0,0,0,1,0], 0),
 	},
 	ss2: {
-		desc: "水・光属性の5連撃、さらに連撃数分チェインプラス(380%)",
+		desc: "スキル反射を無視し、水・光属性の5連撃、さらに連撃数分チェインプラス(380%)",
 		turn: 10,
-		proc: [ss_damage_slash(3.8, [1,3], 5)],
+		proc: [ss_damage_slash(3.8, [1,3], 5), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [0,1,0,0,0,]),
@@ -21843,9 +21844,9 @@ Cards = [{
 		proc: [ChainDualAttack(4.0, 6, 3), add_cond(ChainDualAttack(6.0, 6, 3), when_hp_more(0.5))],
 	},
 	ss1: {
-		desc: "火・雷属性の3連撃(180%)、さらに連撃数分チェインプラス",
+		desc: "スキル反射を無視し、火・雷属性の3連撃(180%)、さらに連撃数分チェインプラス",
 		turn: 7,
-		proc: [ss_damage_slash(1.8, [0, 2], 3)],
+		proc: [ss_damage_slash(1.8, [0, 2], 3), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Statusup(0, 200),
@@ -21864,9 +21865,9 @@ Cards = [{
 		proc: [ChainDualAttack(5.0, 6, 3), add_cond(ChainDualAttack(7.0, 6, 3), when_hp_more(0.5))],
 	},
 	ss2: {
-		desc: "火・雷属性の5連撃(380%)、さらに連撃数分チェインプラス",
+		desc: "スキル反射を無視し、火・雷属性の5連撃(380%)、さらに連撃数分チェインプラス",
 		turn: 10,
-		proc: [ss_damage_slash(3.8, [0, 2], 5)],
+		proc: [ss_damage_slash(3.8, [0, 2], 5), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0, 1000),
@@ -22909,6 +22910,7 @@ Cards = [{
 	cost: 48,
 	attr: [2,0],
 	species: [6],
+	disable: true,
 	islegend: true,
 	as1: {
 		desc: "雷属性の攻撃力をアップ、複属性が火属性だとさらにアップ(30%/80%)",
@@ -24212,9 +24214,9 @@ Cards = [{
 		proc: Heal(0.13, [0,1,1,0,0], 0),
 	},
 	ss1: {
-		desc: "水・雷属性の3連撃・さらに連撃数分チェインプラス(180%)",
+		desc: "スキル反射を無視し、水・雷属性の3連撃・さらに連撃数分チェインプラス(180%)",
 		turn: 8,
-		proc: [ss_damage_slash(1.8, [1,2], 3)],
+		proc: [ss_damage_slash(1.8, [1,2], 3), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Fastskill(1),
@@ -24233,9 +24235,9 @@ Cards = [{
 		proc: Heal(0.16, [0,1,1,0,0], 0),
 	},
 	ss2: {
-		desc: "水・雷属性の5連撃・さらに連撃数分チェインプラス(380%)",
+		desc: "スキル反射を無視し、水・雷属性の5連撃・さらに連撃数分チェインプラス(380%)",
 		turn: 11,
-		proc: [ss_damage_slash(3.8, [1,2], 5)],
+		proc: [ss_damage_slash(3.8, [1,2], 5), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -27117,9 +27119,9 @@ Cards = [{
 		proc: ChainAttrAttack(5.0, 4, [0,0,1,0,0]),
 	},
 	ss1: {
-		desc: "火属性の5連撃(180%)、さらに連撃数分チェインプラス",
+		desc: "スキル反射を無視し、火属性の5連撃(180%)、さらに連撃数分チェインプラス",
 		turn: 9,
-		proc: [ss_damage_slash(1.8, [0], 5)],
+		proc: [ss_damage_slash(1.8, [0], 5), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		NEFTJOD(30),
@@ -29462,9 +29464,9 @@ Cards = [{
 		proc: ChainDualAttrAttack(7.0, 7, 4, [0,1,0,0,0]),
 	},
 	ss1: {
-		desc: "雷属性の6連撃、さらに連撃数分チェインプラス(180%)",
+		desc: "スキル反射を無視し、雷属性の6連撃、さらに連撃数分チェインプラス(180%)",
 		turn: 8,
-		proc: [ss_damage_slash(1.8, [2], 6)],
+		proc: [ss_damage_slash(1.8, [2], 6), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],1),
@@ -29483,9 +29485,9 @@ Cards = [{
 		proc: ChainDualAttrAttack(8.0, 7, 4, [0,1,0,0,0]),
 	},
 	ss2: {
-		desc: "雷属性の10連撃、さらに連撃数分チェインプラス(380%)",
+		desc: "スキル反射を無視し、雷属性の10連撃、さらに連撃数分チェインプラス(380%)",
 		turn: 11,
-		proc: [ss_damage_slash(3.8, [2], 10)],
+		proc: [ss_damage_slash(3.8, [2], 10), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -30266,9 +30268,9 @@ Cards = [{
 		proc: ChainDualAttack(5.0, 6, 3),
 	},
 	ss1: {
-		desc: "<斬撃大魔術>雷・闇属性の5連撃(380%)、さらに連撃数分チェインプラス",
+		desc: "<斬撃大魔術>スキル反射を無視し、雷・闇属性の5連撃(380%)、さらに連撃数分チェインプラス",
 		turn: 10,
-		proc: [ss_damage_slash(3.8, [2, 4], 5)],
+		proc: [ss_damage_slash(3.8, [2,4], 5), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Statusup(400, 0),
@@ -30287,9 +30289,9 @@ Cards = [{
 		proc: ChainDualAttack(6.0, 6, 3),
 	},
 	ss2: {
-		desc: "<斬撃大魔術>雷・闇属性の10連撃(760%)、さらに連撃数分チェインプラス",
+		desc: "<斬撃大魔術>スキル反射を無視し、雷・闇属性の10連撃(760%)、さらに連撃数分チェインプラス",
 		turn: 15,
-		proc: [ss_damage_slash(7.6, [2, 4], 10)],
+		proc: [ss_damage_slash(7.6, [2,4], 10), ss_ignore_skillcounter()]
 	},
 	Lawake: [
 		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
@@ -30677,7 +30679,7 @@ Cards = [{
 		proc: ChainDualAttack(5.0, 6, 3),
 	},
 	ss1: {
-		desc: "<斬撃大魔術>3ターン溜めた後、火・水属性の5連撃、さらに連撃数分チェインプラス(180%)",
+		desc: "<斬撃大魔術>3ターン溜めた後、スキル反射を無視し、火・水属性の5連撃、さらに連撃数分チェインプラス(180%)",
 		turn: 6,
 		charged: 3,
 		proc: [ss_damage_slash(1.8, [0, 1], 5)],
@@ -30699,10 +30701,10 @@ Cards = [{
 		proc: ChainDualAttack(6.0, 6, 3),
 	},
 	ss2: {
-		desc: "<斬撃大魔術>3ターン溜めた後、火・水属性の7連撃、さらに連撃数分チェインプラス(380%)",
+		desc: "<斬撃大魔術>3ターン溜めた後、スキル反射を無視し、火・水属性の7連撃、さらに連撃数分チェインプラス(380%)",
 		turn: 8,
 		charged: 3,
-		proc: [ss_damage_slash(3.8, [0, 1], 7)],
+		proc: [ss_damage_slash(3.8, [0, 1], 7), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0, 500),
@@ -35001,6 +35003,7 @@ Cards = [{
 	cost: 44,
 	attr: [2,-1],
 	species: [6],
+	disable: true,
 	islegend: true,
 	ape: "クリスマス2014",
 	as1: {
@@ -46364,9 +46367,9 @@ Cards = [{
 		proc: ChainDualAttack(4.0, 4, 6),
 	},
 	ss1: {
-		desc: "<斬撃大魔術>火属性の10連撃(700%)、さらに連撃数分チェインプラス",
+		desc: "<斬撃大魔術>スキル反射を無視し、火属性の10連撃(700%)、さらに連撃数分チェインプラス",
 		turn: 10,
-		proc: [ss_damage_slash(7, [0], 10)],
+		proc: [ss_damage_slash(7, [0], 10), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],2),
@@ -46385,9 +46388,9 @@ Cards = [{
 		proc: ChainDualAttack(5.0, 4, 6),
 	},
 	ss2: {
-		desc: "<斬撃大魔術>火属性の15連撃(1050%)、さらに連撃数分チェインプラス",
+		desc: "<斬撃大魔術>スキル反射を無視し、火属性の15連撃(1050%)、さらに連撃数分チェインプラス",
 		turn: 12,
-		proc: [ss_damage_slash(10.5, [0], 15)],
+		proc: [ss_damage_slash(10.5, [0], 15), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		OnlyAttr_statusup(500, 500, 0),
@@ -48811,5 +48814,136 @@ Cards = [{
 	Lawake: [
 		Statusup(500,0),
 		Statusup(0,500),
+	],
+},{
+	name: "鼓動するココロのままに アイ",
+	cardno: 90061,
+	imageno: 6173,
+	hp: 3003,
+	atk: 5999,
+	cost: 56,
+	attr: [2,-1],
+	species: [6],
+	islegend: true,
+	as1: {
+		desc: "水属性の敵単体へ特攻5連撃(400%)",
+		proc: ChainDualAttrAttack(4.0, 0, 5, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	awakes: [
+		Fastskill(2),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"])
+		NEFTJOD(30),
+		Costdown(10),
+		Heal_afterbattle(10),
+		Panel_boost([0,0,1,0,0,],2),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Spec_statusup(0,400, [6,]),
+	],
+	as2: {
+		desc: "水属性の敵単体へ特攻7連撃(500%)",
+		proc: ChainDualAttrAttack(5.0, 0, 5, [0,1,0,0,0]),
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
+		turn: 9,
+		proc: [ss_heal(1), ss_abstate_cure()],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+},{
+	name: "そっと絡まる機械の指先 アイ",
+	cardno: 90062,
+	imageno: 7550,
+	hp: 4736,
+	atk: 2911,
+	cost: 54,
+	attr: [2,0],
+	species: [6],
+	islegend: true,
+	as1: {
+		desc: "雷属性の攻撃力をアップ、複属性が火属性だとさらにアップ(30%/80%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,0,1,0,0], [1,0,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<ダメージ強化>4ターンの間、味方の攻撃力をアップ、5チェインを消費してさらにアップ(100%/150%)",
+		turn: 7,
+		proc: [ss_enhance_all(ss_chain_cost(5, 1.5, 1.0), 4, [1,1,1,1,1])],
+	},
+	awakes: [
+		Attr_statusup_sattr(200,0, [0,0,1,0,0,], 200,0, [1,0,0,0,0,]),
+		Costdown(10),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_sattr(0,200, [0,0,1,0,0,], 0,200, [1,0,0,0,0,]),
+		Fastskill(1),
+		Fastskill(2),
+		Spec_statusup(400,0, [6,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(0,400, [6,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "雷属性の攻撃力をアップ、複属性が火属性だとさらにアップ(60%/110%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,0,1,0,0], [1,0,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<ダメージ強化>5ターンの間、味方の攻撃力をアップ、5チェインを消費してさらにアップ(100%/200%)",
+		turn: 10,
+		proc: [ss_enhance_all(ss_chain_cost(5, 2.0, 1.0), 5, [1,1,1,1,1])],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+	],
+},{
+	name: "機械の心が求めた光は アイ",
+	cardno: 7271,
+	imageno: 9242,
+	hp: 4467,
+	atk: 2743,
+	cost: 54,
+	attr: [2,1],
+	species: [6],
+	islegend: true,
+	as1: {
+		desc: "味方全体のHPを回復(10%)、さらに攻撃力をアップ、パネルの色が増す度さらにアップ(30%/50%/80%)",
+		proc: [Heal(0.10, [1,1,1,1,1], 0), ChainPanelsEnhance(0.3, 0.5, 0.8, [1,1,1,1,1], 0)],
+	},
+	ss1: {
+		desc: "<ダメージ強化>4ターンの間、味方の攻撃力をアップ、5チェインを消費しさらにアップ(100%/150%)",
+		turn: 7,
+		proc: [ss_enhance_all(ss_chain_cost(5, 1.5, 1.0), 4, [1,1,1,1,1])],
+	},
+	awakes: [
+		Attr_statusup_sattr(0,200, [0,0,1,0,0,], 0,200, [0,1,0,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		Costdown(10),
+		Attr_relief([1,1,1,1,1,],10),
+		Spec_statusup(400,0, [6,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(0,400, [6,]),
+		Attr_statusup_sattr(200,0, [0,0,1,0,0,], 200,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "味方全体のHPを回復(10%)、さらに攻撃力をアップ、パネルの色が増す度さらにアップ(60%/80%/110%)",
+		proc: [Heal(0.10, [1,1,1,1,1], 0), ChainPanelsEnhance(0.6, 0.8, 1.1, [1,1,1,1,1], 0)],
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターンの間、味方の攻撃力をアップ、10チェインを消費しさらにアップ(100%/350%)",
+		turn: 12,
+		proc: [ss_enhance_all(ss_chain_cost(10, 3.5, 1.0), 4, [1,1,1,1,1])],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
 	],
 },];
