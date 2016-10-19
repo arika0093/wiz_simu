@@ -47968,7 +47968,7 @@ Cards = [{
 	ss1: {
 		desc: "<特効大魔術>敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(100%/250%)",
 		turn: 4,
-		proc: [ss_damage_s(special_attr([0, 0, 1, 0, 0], 2.5, 1.0), [0], 1)],
+		proc: [ss_damage_all(special_attr([0,0,1,0,0], 2.5, 1.0), [0])],
 	},
 	awakes: [
 		Awake_noeffect("経験値取得量アップ",1),
@@ -47989,7 +47989,7 @@ Cards = [{
 	ss2: {
 		desc: "<特効大魔術>敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(100%/350%)",
 		turn: 6,
-		proc: [ss_damage_s(special_attr([0, 0, 1, 0, 0], 3.5, 1.0), [0], 1)],
+		proc: [ss_damage_all(special_attr([0,0,1,0,0], 3.5, 1.0), [0])],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,0,0,0,]),
@@ -48693,7 +48693,7 @@ Cards = [{
 	ss1: {
 		desc: "<多弾魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ火・闇属性の5回連続ダメージ(450%)",
 		turn: 4,
-		proc: [ss_damage_s(4.5, [0,4], 5), ss_ignore_skillcounter(), ss_consume_own(0.6)],
+		proc: [ss_damage_s(4.5, [0,4], 5), ss_ignore_skillcounter(), ss_consume_all(0.6)],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],1),
@@ -48714,7 +48714,7 @@ Cards = [{
 	ss2: {
 		desc: "<多弾魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ火・闇属性の5回連続ダメージ(650%)",
 		turn: 6,
-		proc: [ss_damage_s(6.5, [0,4], 5), ss_ignore_skillcounter(), ss_consume_own(0.6)],
+		proc: [ss_damage_s(6.5, [0,4], 5), ss_ignore_skillcounter(), ss_consume_all(0.6)],
 	},
 	Lawake: [
 		Statusup(500,0),
