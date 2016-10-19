@@ -60,6 +60,12 @@ function check(){
                 if(!checkJa(ss.desc)){
                     putError(card, ss1ss2[ssn].toUpperCase()+"のdescが日本語でない", ss.desc)
                 }
+                if(ss.desc.indexOf("\t")!=-1){
+                    putError(card, ss1ss2[ssn].toUpperCase()+"のdescにタブコードが含まれる", ss.desc)
+                }
+                if(ss.desc.indexOf("\n")!=-1){
+                    putError(card, ss1ss2[ssn].toUpperCase()+"のdescに改行コードが含まれる", ss.desc)
+                }
             }
         }
 
@@ -71,6 +77,12 @@ function check(){
                 //asのdescが日本語か
                 if(!checkJa(as.desc)){
                     putError(card, as1as2[asn].toUpperCase()+"のdescが日本語でない", as.desc)
+                }
+                if(as.desc.indexOf("\\t")!=-1){
+                    putError(card, as1as2[asn].toUpperCase()+"のdescにタブコードが含まれる", as.desc)
+                }
+                if(as.desc.indexOf("\\n")!=-1){
+                    putError(card, as1as2[asn].toUpperCase()+"のdescに改行コードが含まれる", as.desc)
                 }
             }
         }
@@ -154,8 +166,8 @@ function NGWordCheck(card, NGWord){
 
 function diffSs1Ss2(card){
     //SS1とSS2を比較してprocもしくはdescが同じである物を抽出
-    var ignoreCards=[6342, 6288, 6203, 6116, 6412, 6728, 6907]
-    var ignoreSkills=["skill_copy"]
+    var ignoreCards=[6342, 6288, 6203, 6116, 6412, 6728, 6907, 5804, 6419, 6566, 6516, 7013, 7152]
+    var ignoreSkills=["skill_copy", "ss_impregnable"]
     var outp=""
     if(card.ss2){
         var proc1 = JSON.stringify(card.ss1.proc)
