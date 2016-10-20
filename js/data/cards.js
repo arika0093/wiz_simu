@@ -47189,12 +47189,12 @@ Cards = [{
 	is_dist: true,
 	as1: {
 		desc: "HP80%以上で水属性の敵単体へ特効5連撃(475%)",
-		proc: null,
+		proc: [add_cond(ChainDualAttrAttack(6.25, 0, 5, [0, 1, 0, 0, 0]), when_hp_more(0.8))]
 	},
 	ss1: {
 		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
 		turn: 8,
-		proc: null,
+		proc: [ss_skillboost(2)],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],1),
