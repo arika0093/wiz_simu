@@ -225,8 +225,10 @@ $(function () {
 				$.each(aws, function (j, f) {
 					add_chain += f.add;
 				});
-				Field.Status.chain += add_chain;
-				Field.log_push("Unit[" + (i + 1) + "]: Chain-Boost: +" + add_chain);
+				if (add_chain > 0) {
+					Field.Status.chain += add_chain;
+					Field.log_push("Unit[" + (i + 1) + "]: Chain-Boost: +" + add_chain);
+				}
 			}
 			// -------------------------
 			// 敵データを読み込む

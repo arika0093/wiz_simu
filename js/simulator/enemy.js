@@ -308,6 +308,8 @@ function enemy_reverse_check() {
 		}
 		nd.rev_check = true;
 		Field.log_push("Enemy[" + (nd.rev_used + 1) + "]: 復活発動");
+		// フラグリセット
+		initialize_allys_flags(Field.Allys.Now);
 		// 先制行動
 		enemy_popup_proc();
 		return true;
