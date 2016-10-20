@@ -88,7 +88,7 @@ function ss_procdo(ss, now, index) {
 					// カウント減少
 					effect: function (f, oi, teff, state, is_t, is_b, is_sfin) {
 						// SS以外で戦闘を跨いだ場合カウントを減らす
-						if (is_t || (!is_sfin && is_b)) {
+						if (is_t && (!is_sfin || !is_b)) {
 							teff.charge_turn--;
 							teff.desc = "チャージスキル待機(残り" + Math.max(teff.charge_turn, 0) + "t)";
 						}

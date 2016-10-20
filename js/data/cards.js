@@ -49395,7 +49395,7 @@ Cards = [{
 		proc: [ss_damage_s(special_attr([0,1,0,0,1], 19, 4), [2], 1)],
 	},
 	Lawake: [
-		Abstate_invalid("as_sealed", ss_sealed"),
+		Abstate_invalid("as_sealed", "ss_sealed"),
 		Statusup(0,500),
 		Attr_statusup(0,100, [0,0,1,0,0,]),
 	],
@@ -49780,7 +49780,7 @@ Cards = [{
 	ss1: {
 		desc: "<効果解除>敵全体の属性吸収を解除する",
 		turn: 4,
-		proc: [ss_break_absorb(all)],
+		proc: [ss_break_absorb("all")],
 	},
 	awakes: [
 		Awake_noeffect("経験値取得量アップ",1),
@@ -49801,7 +49801,7 @@ Cards = [{
 	ss2: {
 		desc: "<効果解除大魔術>スキル反射を無視し、敵全体の属性吸収を解除し、火属性のダメージ(300%)",
 		turn: 7,
-		proc: [ss_break_absorb(all), ss_damage_all(3.0, 0]), ss_ignore_skillcounter()],
+		proc: [ss_break_absorb("all"), ss_damage_all(3.0, [0]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Attr_statusup(100,0, [1,0,0,0,0,]),
