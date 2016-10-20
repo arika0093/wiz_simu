@@ -3072,7 +3072,6 @@ Cards = [{
 	cost: 46,
 	attr: [0, -1],
 	species: [8],
-	disable: true,
 	awakes: [
 		Fastskill(1),
 		Statusup(0, 200),
@@ -3106,9 +3105,9 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火・水属性化し、ダメージ25％軽減の効果を付与",
 		turn: 7,
-		proc: [ss_panel_change([1,1,0,0,0])]
+		proc: [ss_panel_change([1,1,0,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)]
 	},
-}, {
+},{
 	name: "収穫者 ウシュガ＆ウィアノーヴァ",
 	cardno: 4274,
 	imageno: 5961,
@@ -44716,48 +44715,49 @@ Cards = [{
 	],
 },{
 	name: "大海の獣と戯れる ヴォルフ・ロイ",
-	cardno: 4459,
-	imageno: 6153,
+	cardno: 6993,
+	imageno: 8991,
 	hp: 3038,
-	atk: 2920,
-	cost: 46,
-	attr: [0, -1],
+	atk: 3503,
+	cost: 52,
+	attr: [0,1],
 	species: [8],
-	awakes: [
-		Fastskill(1),
-		Statusup(0, 200),
-		Costdown(2),
-		Fastskill(1),
-		Statusup(0, 200),
-		Attr_statusup(0, 100, [1, 1, 0, 0, 0]),
-		Attr_statusup(100, 0, [1, 1, 0, 0, 0]),
-		Panel_boost([1,0,0,0,0], 1),
-		Spec_statusup(0, 200, [8]),
-		Spec_statusup(200, 0, [8]),
-	],
+	islegend: true,
+	ape: "クロム・マグナⅢ 臨海学校",
 	as1: {
-		desc: "デッキの属性の数だけ攻撃力アップ(1属性：250％ / 2属性：400％ / 3属性：550％)",
-		proc: ChainDeckAttrsAttack(2.5, 4.0, 5.5, 0),
+		desc: "デッキの属性の数だけ攻撃力アップ(350%/600%/850%)",
+		proc: ChainDeckAttrsAttack(3.5, 6.0, 8.5, 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火・水属性化",
-		turn: 5,
-		proc: [ss_panel_change([1,1,0,0,0])]
+		desc: "<パネル変換>ジャンルパネルを火・水属性化",
+		turn: 3,
+		proc: [ss_panel_change([1,1,0,0,0])],
 	},
-	islegend: true,
-	Lawake: [
-		Statusup(500, 0),
-		Attr_statusup(0, 100, [1, 1, 0, 0, 0]),
+	awakes: [
+		Fastskill(1),
+		Statusup(0,400),
+		Costdown(2),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Spec_statusup(0,200, [8,]),
+		Spec_statusup(200,0, [8,]),
 	],
 	as2: {
-		desc: "デッキの属性の数だけ攻撃力アップ(1属性：300％ / 2属性：500％ / 3属性：700％)",
-		proc: ChainDeckAttrsAttack(3.0, 5.0, 7.0, 0),
+		desc: "デッキの属性の数だけ攻撃力アップ(400%/700%/1000%)",
+		proc: ChainDeckAttrsAttack(4.5, 7.0, 10, 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルを火・水属性化し、ダメージ25％軽減の効果を付与",
-		turn: 7,
-		proc: [ss_panel_change([1,1,0,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)]
+		desc: "<特殊パネル変換>ジャンルパネルを火・水属性化し、ダメージ25%軽減の効果を付与",
+		turn: 6,
+		proc: [ss_panel_change([1,1,0,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)],
 	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+	],
 },{
 	name: "今日も大漁！ シャーリー・コルト",
 	cardno: 6992,
