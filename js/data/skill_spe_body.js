@@ -1116,7 +1116,7 @@ var SpCondSkill = {
 	"ss_hp_more_skill": function (fld, oi, cobj, params) {
 		var scc_rst = this["ss_hp_more"](fld, oi, cobj, params);
 		if (scc_rst) {
-			return ss_object_done(fld, oi, scc_rst);
+			return ss_object_done(fld, oi, scc_rst, true);
 		}
 		return null;
 	},
@@ -1132,7 +1132,7 @@ var SpCondSkill = {
 	"ss_hp_less_skill": function (fld, oi, cobj, params) {
 		var scc_rst = this["ss_hp_less"](fld, oi, cobj, params);
 		if (scc_rst) {
-			return ss_object_done(fld, oi, scc_rst);
+			return ss_object_done(fld, oi, scc_rst, true);
 		}
 		return null;
 	},
@@ -1224,7 +1224,7 @@ var SpCondSkill = {
 	"ss_is_poison_own_skill": function (fld, oi, cobj, params) {
 		var scp_rst = this["ss_is_poison_own"](fld, oi, cobj, params);
 		if (scp_rst) {
-			return ss_object_done(fld, oi, cobj.p1);
+			return ss_object_done(fld, oi, cobj.p1, true);
 		}
 	},
 	// -----------------------------
@@ -1252,7 +1252,7 @@ var SpCondSkill = {
 	},
 	"ss_chain_cond_skill": function (fld, oi, cobj, params) {
 		var scc_rst = this["ss_chain_cond"](fld, oi, cobj, params);
-		return ss_object_done(fld, oi, scc_rst);
+		return ss_object_done(fld, oi, scc_rst, true);
 	},
 	// -----------------------------
 	// チェイン消費
@@ -1269,7 +1269,7 @@ var SpCondSkill = {
 	},
 	"ss_chain_cost_skill": function (fld, oi, cobj, params) {
 		var scc_rst = this["ss_chain_cost"](fld, oi, cobj, params);
-		return ss_object_done(fld, oi, scc_rst);
+		return ss_object_done(fld, oi, scc_rst, true);
 	},
 	
 
@@ -1307,7 +1307,7 @@ function ss_object_done(fld, n, c_obj, is_check_crs) {
 		}
 		// 条件またはスキルなら再帰
 		else if (p.is_cond || p.is_skill) {
-			params[count] = ss_object_done(fld, n, p);
+			params[count] = ss_object_done(fld, n, p, is_check_crs);
 		}
 		// 関数なら実行
 		else if ($.isFunction(p)) {
