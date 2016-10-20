@@ -241,7 +241,7 @@ function Awake_get_multiple(card, now) {
 	}
 	for (var i = 0; i < dm_awakes.length; i++) {
 		var dm = dm_awakes[i];
-		rate *= dm.rate;
+		rate += (dm.rate - 1);
 	}
 	return rate;
 }
