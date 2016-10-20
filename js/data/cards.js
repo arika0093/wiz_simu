@@ -48909,7 +48909,7 @@ Cards = [{
 	],
 },{
 	name: "神戦に導く使徒 エアリル・セレ",
-	cardno: 7195,
+	cardno: 90063,
 	imageno: 5699,
 	hp: 3304,
 	atk: 3629,
@@ -49085,7 +49085,7 @@ Cards = [{
 	],
 },{
 	name: "インペリアル・ゾディアーク",
-	cardno: 7195,
+	cardno: 90064,
 	imageno: 5729,
 	hp: 4256,
 	atk: 4250,
@@ -49393,7 +49393,7 @@ Cards = [{
 	ss2: {
 		desc: "<反動大魔術・蝕>スキル反射を無視し、敵単体へ火属性のダメージ(240%×人数)◆スキル使用後、味方全体が1ターン封印状態に",
 		turn: 6,
-		proc: [ss_damage_s(ss_seal_all_cond(2.0), [0]), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(ss_seal_all_cond(2.4), [0]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,1000),
