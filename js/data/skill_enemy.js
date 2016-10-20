@@ -509,6 +509,10 @@ function s_enemy_cursed(hpdown, tnum, t) {
 						turneff_break_cond(nowtg.turn_effect, oi, function (teff) {
 							return teff.iscursebreak;
 						});
+						// エンハ効果値解除
+						now.ss_enhance = 0;
+						now.ss_boost_enhance = 0;
+						now.ss_reinforcement_atk = 0;
 					}
 					else if (state == "end" || state == "overlay") {
 						nowtg.maxhp += hpdown;
