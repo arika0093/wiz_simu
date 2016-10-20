@@ -523,11 +523,15 @@ function s_enemy_cursed(hpdown, tnum, t) {
 			var is_abs_guard_aw = Awake_AbsInvalid(card, now, "curse");
 			if (!is_abs_guard_aw) {
 				now.turn_effect.push(eff_obj);
-				// スキル重複確認
-				turn_effect_check(false);
 			}
+			// スキルカウンターを有効に
+			now.flags.skill_counter[n] = true;
 			fld.log_push("Enemy[" + (n + 1) + "]: 呪い(HP:" + (-hpdown) + "|" + t + "t)(対象: Unit[" + (tg[i] + 1) + "])");
 		}
+		// 反射チェック
+		turneff_check_skillcounter(fld);
+		// スキル重複確認
+		turn_effect_check(false);
 	}, makeDesc("呪い"));
 }
 
