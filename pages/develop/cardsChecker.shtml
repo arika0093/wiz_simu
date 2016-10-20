@@ -13,6 +13,34 @@
     <title>Cardsエラーチェッカ - WizTools</title>
 <script>
 
+
+
+
+CONSOLEERROR=false;
+
+window.onerror = function (message, file, line, col, error) {
+    CONSOLEERROR=true;
+    comm="<h1>Console error!</h1>"
+    comm+="重大な問題が発生しました。<br>"
+    comm+="下の手順に沿って対処してください。<br><br>"
+    comm+="エラー内容(参考)：<div style='font-size:6px;border:1px solid gray'>msg:"+message+"<br>file:"+file+"<br>line:"+line+"<br>col:"+col+"</div>"
+    comm+="<br><br>"
+    comm+="<h2>対処手順</h2>"
+    comm+="<ol>"
+    comm+="<li>深呼吸をして、気持ちを落ち着かせます。</li>"
+    efn=file.replace(/\?.*$/g, '');
+    comm+="<li><b><a href="+efn+">"+efn+"</a></b>の<b>"+line+"</b>行目前後（大体その1つ前）にエラーが検出されています。<br>"+
+            "カンマが抜けている、かっこの対応がおかしい、ドットとカンマを間違えているなどのミスを探し、あれば修正します。</li>"
+    comm+="<li>修正をCommit&Syncして直ればＯＫです。見つからない場合、次に進みます。</li>"
+    comm+="<li>arika及びkontaに「カードチェッカでコンソールエラーがでて、typoが見つからない」と伝えます。</li>"
+    comm+="<li>もしすぐに連絡が取れたら、協力して対処します。取れない場合、次に進みます。</li>"
+    comm+="<li>github for windowsを起動して、最後のコミットを選択し、Revertというボタンを押します。</li>"
+    comm+="<li>修正をCommit&Syncして直ればＯＫです。</li>"
+    comm+="<li>以上をやってもダメだったら諦めて直せる人を待ちます。</li>"
+    comm+="</ol>"
+    document.body.innerHTML=comm;
+};
+
 var Errors=[]
 function putError(card, title, detail){
     console.log(card.name)
@@ -46,94 +74,96 @@ function appearError(){
 }
 
 function check(){
-    Cards.forEach(function(card){
-        //ssに関する色々
-        var ss1ss2=["ss1", "ss2"]
-        for(var ssn = 0; ssn < 2; ssn++){
-            var ss=card[ss1ss2[ssn]];
-            if(ss){
-                //ssが配列か
-                if(!$.isArray(ss.proc)){
-                    putError(card, ss1ss2[ssn].toUpperCase()+"が配列でない")
-                }
-                //ssのdescが日本語か
-                if(!checkJa(ss.desc)){
-                    putError(card, ss1ss2[ssn].toUpperCase()+"のdescが日本語でない", ss.desc)
-                }
-                if(ss.desc.indexOf("\t")!=-1){
-                    putError(card, ss1ss2[ssn].toUpperCase()+"のdescにタブコードが含まれる", ss.desc)
-                }
-                if(ss.desc.indexOf("\n")!=-1){
-                    putError(card, ss1ss2[ssn].toUpperCase()+"のdescに改行コードが含まれる", ss.desc)
-                }
-            }
-        }
-
-        //asに関する色々
-        var as1as2=["as1", "as2"]
-        for(var asn = 0; asn < 2; asn++){
-            var as=card[as1as2[asn]];
-            if(as){
-                //asのdescが日本語か
-                if(!checkJa(as.desc)){
-                    putError(card, as1as2[asn].toUpperCase()+"のdescが日本語でない", as.desc)
-                }
-                if(as.desc.indexOf("\\t")!=-1){
-                    putError(card, as1as2[asn].toUpperCase()+"のdescにタブコードが含まれる", as.desc)
-                }
-                if(as.desc.indexOf("\\n")!=-1){
-                    putError(card, as1as2[asn].toUpperCase()+"のdescに改行コードが含まれる", as.desc)
+    if(!CONSOLEERROR){
+        Cards.forEach(function(card){
+            //ssに関する色々
+            var ss1ss2=["ss1", "ss2"]
+            for(var ssn = 0; ssn < 2; ssn++){
+                var ss=card[ss1ss2[ssn]];
+                if(ss){
+                    //ssが配列か
+                    if(!$.isArray(ss.proc)){
+                        putError(card, ss1ss2[ssn].toUpperCase()+"が配列でない")
+                    }
+                    //ssのdescが日本語か
+                    if(!checkJa(ss.desc)){
+                        putError(card, ss1ss2[ssn].toUpperCase()+"のdescが日本語でない", ss.desc)
+                    }
+                    if(ss.desc.indexOf("\t")!=-1){
+                        putError(card, ss1ss2[ssn].toUpperCase()+"のdescにタブコードが含まれる", ss.desc)
+                    }
+                    if(ss.desc.indexOf("\n")!=-1){
+                        putError(card, ss1ss2[ssn].toUpperCase()+"のdescに改行コードが含まれる", ss.desc)
+                    }
                 }
             }
-        }
 
-        //cardnoの重複
-        var cardT = 0;
-        Cards.forEach(function(card2){
-            if(card.cardno==card2.cardno){
-                cardT ++;
+            //asに関する色々
+            var as1as2=["as1", "as2"]
+            for(var asn = 0; asn < 2; asn++){
+                var as=card[as1as2[asn]];
+                if(as){
+                    //asのdescが日本語か
+                    if(!checkJa(as.desc)){
+                        putError(card, as1as2[asn].toUpperCase()+"のdescが日本語でない", as.desc)
+                    }
+                    if(as.desc.indexOf("\\t")!=-1){
+                        putError(card, as1as2[asn].toUpperCase()+"のdescにタブコードが含まれる", as.desc)
+                    }
+                    if(as.desc.indexOf("\\n")!=-1){
+                        putError(card, as1as2[asn].toUpperCase()+"のdescに改行コードが含まれる", as.desc)
+                    }
+                }
+            }
+
+            //cardnoの重複
+            var cardT = 0;
+            Cards.forEach(function(card2){
+                if(card.cardno==card2.cardno){
+                    cardT ++;
+                }
+            })
+            if(cardT > 1){
+                putError(card, "cardnoの重複",card.cardno)
+            }
+
+            //定義にnullなどが含まれるカード
+            if(!NGWordCheck(card, "undefined")){
+                NGWordCheck(card, "undef")
+            }
+            //NGWordCheck(card, "null") //<-誤検出100%だったので削除
+
+            //SS1とSS2の重複
+            diffSs1Ss2(card)
+            //AS1とAS2の重複
+            diffAs1As2(card)
+            //SSのdescproc対応検査
+            causalityCheck(card)
+
+            //覚醒の異常定義検査
+            awakeCheck(card)
+            //変なimgno
+            if(card.imageno<1){
+                putError(card, "imagenoが異常値",card.imageno)
+            }
+            //種族確認
+            if(card.species[0]>=spec_count()){
+                putError(card, "species過大",card.species[0])
+            }
+            if(card.species[0]<0){
+                putError(card, "species過少",card.species[0])
+            }
+            //属性確認
+            if(card.attr[0]>=5){
+                putError(card, "attr過大",card.attr[0])
+            }
+            if(card.attr[0]<0){
+                putError(card, "attr過少",card.attr[0])
             }
         })
-        if(cardT > 1){
-            putError(card, "cardnoの重複",card.cardno)
-        }
 
-        //定義にnullなどが含まれるカード
-        if(!NGWordCheck(card, "undefined")){
-            NGWordCheck(card, "undef")
-        }
-        //NGWordCheck(card, "null") //<-誤検出100%だったので削除
-
-        //SS1とSS2の重複
-        diffSs1Ss2(card)
-        //AS1とAS2の重複
-        diffAs1As2(card)
-        //SSのdescproc対応検査
-        causalityCheck(card)
-
-        //覚醒の異常定義検査
-        awakeCheck(card)
-        //変なimgno
-        if(card.imageno<1){
-            putError(card, "imagenoが異常値",card.imageno)
-        }
-        //種族確認
-        if(card.species[0]>=spec_count()){
-            putError(card, "species過大",card.species[0])
-        }
-        if(card.species[0]<0){
-            putError(card, "species過少",card.species[0])
-        }
-        //属性確認
-        if(card.attr[0]>=5){
-            putError(card, "attr過大",card.attr[0])
-        }
-        if(card.attr[0]<0){
-            putError(card, "attr過少",card.attr[0])
-        }
-    })
-
-    appearError()
+        appearError()
+    }
 }
 
 
