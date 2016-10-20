@@ -212,6 +212,7 @@ function cards_heal_afterbattle(cards) {
 
 // 潜在による異常無効を確認する
 function Awake_AbsInvalid(card, now, type) {
+	var flag = false;
 	var ai_awakes = pickup_awakes(card, "abstate_invalid", false);
 	if (is_legendmode(card, now)) {
 		ai_awakes = ai_awakes.concat(pickup_awakes(card, "abstate_invalid", true));
@@ -219,7 +220,7 @@ function Awake_AbsInvalid(card, now, type) {
 	for (var i = 0; i < ai_awakes.length; i++) {
 		// 定義が配列なら全てに対しチェック
 		if ($.isArray(ai_awakes[i].tgtype)) {
-			return $.grep(ai_awakes[i].tgtype, function (e) {
+			flag = flag || $.grep(ai_awakes[i].tgtype, function (e) {
 				return e == type;
 			}).length > 0;
 		}
@@ -228,7 +229,7 @@ function Awake_AbsInvalid(card, now, type) {
 			return true;
 		}
 	}
-	return false;
+	return flag;
 }
 
 // 最終補正値を取得する
