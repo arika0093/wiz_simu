@@ -3421,7 +3421,7 @@ Cards = [{
 		proc: [ss_damage_all(2.6, [0])],
 	},
 }, {
-	name: "蛇骨の真王 トキオ＆エクスアルバ",
+	name: "蛇骨の真王 トキオ&エクスアルバ",
 	cardno: 3739,
 	imageno: 5290,
 	hp: 2357,
@@ -3448,7 +3448,7 @@ Cards = [{
 	ss1: {
 		desc: "敵全体のガードを解除する",
 		turn: 6,
-		proc: [null]
+		proc: [ss_break_attrguard()]
 	},
 	islegend: true,
 	Lawake: [
@@ -3462,7 +3462,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体のガード＆ダメージブロックを解除する",
 		turn: 8,
-		proc: [null]
+		proc: [ss_break_attrguard(), ss_break_dblock()]
 	},
 }, {
 	name: "鉄剣開票係 ノア・アームストロング",
@@ -4683,7 +4683,7 @@ Cards = [{
 		Panel_boost([1,0,0,0,0], 2),
 		Statusup(0, 200),
 		Spec_statusup(0, 200, [3]),
-		Attr_statusup(200, 0, [1,1,1,1,1]),
+		Attr_statusup(200, 0, [1, 1, 1, 1, 1]),
 		Fastskill(1),
 		Spec_statusup(200, 0, [3]),
 		Fastskill(2),
@@ -4699,7 +4699,7 @@ Cards = [{
 	},
 	islegend: true,
 	Lawake: [
-		Attr_statusup(0, 100, [0, 0, 0, 0, 0]),
+		Attr_statusup(0, 100, [1, 1, 1, 1, 1]),
 		Statusup(500, 0),
 	],
 	as2: {
@@ -7042,8 +7042,8 @@ Cards = [{
 		Costdown(2),
 		Fastskill(1),
 		Statusup(200, 0),
-		Attr_statusup(100, 0, [1,1,1,1,1]),
-		Attr_statusup(0, 100, [1,1,1,1,1]),
+		Attr_statusup(100, 0, [1, 1, 1, 1, 1, ]),
+		Attr_statusup(0, 100, [1, 1, 1, 1, 1, ]),
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
 		Spec_statusup(0, 200, [3, ]),
 		Spec_statusup(200, 0, [3, ]),
@@ -7059,7 +7059,7 @@ Cards = [{
 	},
 	islegend: true,
 	Lawake: [
-		Attr_statusup(0, 100, [0, 0, 0, 0, 0, ]),
+		Attr_statusup(0, 100, [1, 1, 1, 1, 1, ]),
 		Statusup(400, 0),
 	],
 	as2: {
@@ -13388,8 +13388,7 @@ Cards = [{
 	atk: 2787,
 	cost: 45,
 	attr: [2, -1],
-	species: [8],
-	disable: true,
+	species: [9],
 	awakes: [
 		Statusup(0, 200),
 		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
@@ -13425,7 +13424,7 @@ Cards = [{
 		turn: 13,
 		proc: [ss_delay_all(3), ss_heal(0.5)],
 	},
-}, {
+},{
 	name: "真夏の熱視線 ニコラ・モーガン",
 	cardno: 4535,
 	imageno: 6152,
@@ -15750,7 +15749,6 @@ Cards = [{
 	attr: [2, -1],
 	species: [9],
 	islegend: true,
-	disable: true,
 	as1: {
 		desc: "3チェインで単体を5回連続攻撃(350%)",
 		proc: ChainDualAttack(3.5, 3, 5),
@@ -15766,7 +15764,7 @@ Cards = [{
 		Statusup(0, 200),
 		Statusup(0, 200),
 		Costdown(2),
-		Panel_boost([0, 0, 1, 0, 0, ], 0),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
 		Fastskill(2),
 		Fastskill(2),
 		Spec_statusup(0, 200, [9, ]),
@@ -15785,7 +15783,7 @@ Cards = [{
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
 		Statusup(0, 500),
 	],
-}, {
+},{
 	name: "時空機工師 ユッカ・エンデ",
 	cardno: 90002,
 	imageno: 6595,
@@ -16452,11 +16450,11 @@ Cards = [{
 		Panel_boost([0, 0, 1, 0, 0, ], 2),
 		Fastskill(1),
 		Statusup(0, 200),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
 		Panel_boost([0, 0, 1, 0, 0, ], 2),
 		Heal_afterbattle(10),
 		Fastskill(2),
 		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
-		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
 	],
 	as2: {
 		desc: "雷属性の味方のHPを回復(16%)、さらに雷属性の味方の攻撃力をアップ(30%)",
@@ -16469,7 +16467,7 @@ Cards = [{
 	},
 	Lawake: [
 		Statusup(500, 0),
-		Attr_statusup(0, 100, [0, 0, 0, 0, 0, ]),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
 	],
 }, {
 	name: "現代のホームズ コナン&新一",
@@ -16645,7 +16643,7 @@ Cards = [{
 	},
 	Lawake: [
 		Statusup(0,400),
-		Attr_statusup(0,100, [0,0,0,0,0,]),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
 	],
 },{
 	name: "不敵に笑うゼロ 安室透",
@@ -23399,7 +23397,7 @@ Cards = [{
 		Statusup(500,0),
 	],
 },{
-	name: "親愛なる氷菓の姫君 アイスの実",
+	name: "深愛なる氷菓の姫君 アイスの実",
 	cardno: 5570,
 	imageno: 7367,
 	hp: 3132,
@@ -23441,7 +23439,7 @@ Cards = [{
 	},
 	Lawake: [
 		Statusup(400,0),
-		Attr_statusup(0,100, [0,0,0,0,0,]),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
 	],
 },{
 	name: "タフで実直、好青年 咲",
@@ -24468,7 +24466,7 @@ Cards = [{
 	ss2: {
 		desc: "ジャンルパネルを火属性化し、ダメージ25%軽減の効果を付与",
 		turn: 7,
-		proc: [ss_panel_change([1,0,0,0,0])],
+		proc: [ss_panel_change([1,0,0,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)],
 	},
 	Lawake: [
 		Statusup(400,0),
@@ -24688,7 +24686,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "水属性の味方のHPを回復(15%)",
-		proc: Heal(0.13, [0,1,0,0,0], 0),
+		proc: Heal(0.15, [0,1,0,0,0], 0),
 	},
 	ss2: {
 		desc: "味方全体のHPを回復し、状態異常を回復する(50%)",
@@ -25050,7 +25048,7 @@ Cards = [{
 	},
 	Lawake: [
 		Statusup(500,0),
-		Attr_statusup(0,100, [0,0,0,0,0,]),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
 	],
 },{
 	name: "聖なる白城の騎士 ルビア・シュガー",
@@ -28272,10 +28270,9 @@ Cards = [{
 	attr: [2, -1],
 	species: [8],
 	islegend: true,
-	alias: ["未実装"],
 	as1: {
-		desc: "戦士・亜人の仲間の数だけダメージアップ(140%/180%/220%/260%/300%)、パネルの色が2色以上でさらにダメージアップ(160%/220%/280%/340%/400%)、パネルの色が2色以上でさらにダメージアップ(100%+60%×数)",
-		proc: [null],
+		desc: "戦士・亜人の仲間の数だけダメージアップ(140%/180%/220%/260%/300%)、パネルの色が2色以上でさらにダメージアップ(160%/220%/280%/340%/400%)",
+		proc: [ChainDeckSpecsAttack(0.4, [5,8], 0),add_cond(ChainDeckSpecsAttack(0.6, [5,8], 0), as_panel_over2())],
 	},
 	ss1: {
 		desc: "味方全体のHPを回復する(50%)",
@@ -28295,8 +28292,8 @@ Cards = [{
 		Spec_statusup(200, 0, [8, ]),
 	],
 	as2: {
-		desc: "戦士・亜人の仲間の数だけダメージアップ(140%/180%/220%/260%/300%)、パネルの色が2色以上でさらにダメージアップ(160%/220%/280%/340%/400%)",
-		proc: [null],
+		desc: "戦士・亜人の仲間の数だけダメージアップ(160%/220%/280%/340%/400%)、パネルの色が2色以上でさらにダメージアップ(180%/260%/340%/420%/500%)",
+		proc: [ChainDeckSpecsAttack(0.6, [5,8], 0),add_cond(ChainDeckSpecsAttack(0.8, [5,8], 0), as_panel_over2())],
 	},
 	ss2: {
 		desc: "味方全体のHPを回復し(50%)、状態異常を回復する",
@@ -31512,10 +31509,9 @@ Cards = [{
 	attr: [2,-1],
 	species: [5],
 	islegend: true,
-	alias: ["未実装"],
 	as1: {
 		desc: "3チェインでダメージアップ、亜人の仲間の数だけさらにダメージアップ(340%/380%/420%/460%/500%)",
-		proc: [null],
+		proc: [ChainDeckSpecsAttack(0.4, [5], 3, 2.0)],
 	},
 	ss1: {
 		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
@@ -31536,7 +31532,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "3チェインでダメージアップ、亜人の仲間の数だけさらにダメージアップ(440%/480%/520%/560%/600%)",
-		proc: [null],
+		proc: [ChainDeckSpecsAttack(0.4, [5], 3, 3.0)],
 	},
 	ss2: {
 		desc: "<遅延大魔術>敵全体の攻撃ターンを3遅らせ、雷属性のダメージ、3チェインを消費しさらにダメージアップ(150%/250%)",
@@ -44720,94 +44716,48 @@ Cards = [{
 	],
 },{
 	name: "大海の獣と戯れる ヴォルフ・ロイ",
-	cardno: 6993,
-	imageno: 8991,
+	cardno: 4459,
+	imageno: 6153,
 	hp: 3038,
-	atk: 3503,
-	cost: 52,
-	attr: [0, 1],
+	atk: 2920,
+	cost: 46,
+	attr: [0, -1],
 	species: [8],
-	islegend: true,
-	ape: "クロマグⅢ",
-	as1: {
-		desc: "デッキの属性の数だけ攻撃力アップ(350%/600%/850%)",
-		proc: ChainDeckAttrsAttack(3.5, 6.0, 8.5, 0),
-	},
-	ss1: {
-		desc: "<パネル変換>ジャンルパネルを火・水属性化",
-		turn: 3,
-		proc: [ss_panel_change([1,1,0,0,0])],
-	},
 	awakes: [
 		Fastskill(1),
-		Statusup(0, 400),
+		Statusup(0, 200),
 		Costdown(2),
-		Fastskill(2),
-		Panel_boost([1,0,0,0,0], 2),
-		Attr_statusup(0, 200, [1, 1, 0, 0, 0]),
-		Attr_statusup(200, 0, [1, 1, 0, 0, 0]),
-		Panel_boost([1,0,0,0,0], 2),
+		Fastskill(1),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0]),
+		Attr_statusup(100, 0, [1, 1, 0, 0, 0]),
+		Panel_boost([1,0,0,0,0], 1),
 		Spec_statusup(0, 200, [8]),
 		Spec_statusup(200, 0, [8]),
 	],
-	as2: {
-		desc: "デッキの属性の数だけ攻撃力アップ(400%/700%/1000%)",
-		proc: ChainDeckAttrsAttack(4.0, 7.0, 10.0, 0),
+	as1: {
+		desc: "デッキの属性の数だけ攻撃力アップ(1属性：250％ / 2属性：400％ / 3属性：550％)",
+		proc: ChainDeckAttrsAttack(2.5, 4.0, 5.5, 0),
 	},
-	ss2: {
-		desc: "<特殊パネル変換>ジャンルパネルを火・水属性化し、ダメージ25％軽減の効果を付与",
-		turn: 6,
-		proc: [ss_panel_change([1,1,0,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)],
+	ss1: {
+		desc: "ジャンルパネルを火・水属性化",
+		turn: 5,
+		proc: [ss_panel_change([1,1,0,0,0])]
 	},
+	islegend: true,
 	Lawake: [
 		Statusup(500, 0),
 		Attr_statusup(0, 100, [1, 1, 0, 0, 0]),
 	],
-},{
-	name: "夏の日の涼風 リンカ・ワイアット",
-	cardno: 6989,
-	imageno: 6151,
-	hp: 4341,
-	atk: 4421,
-	cost: 54,
-	attr: [0, -1],
-	species: [8],
-	islegend: true,
-	ape: "クロマグⅢ",
-	as1: {
-		desc: "3チェインで火属性の味方の攻撃力をアップ(40%)し、ダメージアップ。10チェインでさらにダメージアップ(200%/400%)",
-		proc: [ChainEnhance(0.4, [1,0,0,0,0], 3), ChainAttack(2.0, 3), ChainAttack(4.0, 10)],
-	},
-	ss1: {
-		desc: "<パネル変換>ジャンルパネルをALL属性化",
-		turn: 4,
-		proc: [ss_panel_change([1,1,1,0,0])],
-	},
-	awakes: [
-		Panel_boost([1,0,0,0,0], 2),
-		Panel_boost([1,0,0,0,0], 2),
-		Statusup(0, 200),
-		Fastskill(2),
-		Statusup(200, 0),
-		Fastskill(2),
-		Attr_statusup(0, 200, [1,0,0,0,0]),
-		Attr_statusup(200, 0, [1,0,0,0,0]),
-		Spec_statusup(0, 200, [8]),
-		Spec_statusup(200, 0, [8]),
-	],
 	as2: {
-		desc: "3チェインで火属性の味方の攻撃力をアップ(70%)し、ダメージアップ。10チェインでさらにダメージアップ(200%/400%)",
-		proc: [ChainEnhance(0.7, [1,0,0,0,0], 3), ChainAttack(2.0, 3), ChainAttack(4.0, 10)],
+		desc: "デッキの属性の数だけ攻撃力アップ(1属性：300％ / 2属性：500％ / 3属性：700％)",
+		proc: ChainDeckAttrsAttack(3.0, 5.0, 7.0, 0),
 	},
 	ss2: {
-		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、チェインがプラス2の効果を付与",
+		desc: "ジャンルパネルを火・水属性化し、ダメージ25％軽減の効果を付与",
 		turn: 7,
-		proc: [ss_panel_change([1,1,1,0,0]), panel_chainplus(2)],
+		proc: [ss_panel_change([1,1,0,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)]
 	},
-	Lawake: [
-		Statusup(0, 500),
-		Attr_statusup(0, 100, [1,0,0,0,0]),
-	],
 },{
 	name: "今日も大漁！ シャーリー・コルト",
 	cardno: 6992,
@@ -47189,7 +47139,7 @@ Cards = [{
 	is_dist: true,
 	as1: {
 		desc: "HP80%以上で水属性の敵単体へ特効5連撃(475%)",
-		proc: [add_cond(ChainDualAttrAttack(6.25, 0, 5, [0, 1, 0, 0, 0]), when_hp_more(0.8))]
+		proc: [add_cond(ChainDualAttrAttack(4.75, 0, 5, [0,1,0,0,0]), when_hp_more(0.8))],
 	},
 	ss1: {
 		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
@@ -47745,7 +47695,7 @@ Cards = [{
 		proc: [ChainDualAttack(5, 6, 3), ChainDualAttrAttack(7, 6, 3, [0,0,0,1,0])],
 	},
 	ss1: {
-		desc: "	<スキルチャージ>味方全体のMAXHPの50%を使い、味方全体のスペシャルスキルの発動ターンを5早める",
+		desc: "<スキルチャージ>味方全体のMAXHPの50%を使い、味方全体のスペシャルスキルの発動ターンを5早める",
 		turn: 12,
 		proc: [ss_consume_all(0.5), ss_skillboost(5)],
 	},
@@ -47766,7 +47716,7 @@ Cards = [{
 		proc: [ChainDualAttack(6, 6, 3), ChainDualAttrAttack(8, 6, 3, [0,0,0,1,0])],
 	},
 	ss2: {
-		desc: "	<スキルチャージ>味方全体のMAXHPの50%を使い、味方全体のスペシャルスキルの発動ターンを5早める",
+		desc: "<スキルチャージ>味方全体のMAXHPの50%を使い、味方全体のスペシャルスキルの発動ターンを5早める",
 		turn: 12,
 		proc: [ss_consume_all(0.5), ss_skillboost(5)],
 	},
@@ -48023,7 +47973,7 @@ Cards = [{
 	ss1: {
 		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(200%)",
 		turn: 8,
-		proc: [ss_damage_s(2.0, [0], 1), ss_consume_own(0.5)],
+		proc: [ss_damage_all(2.0, [0]), ss_consume_own(0.5)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -48044,7 +47994,7 @@ Cards = [{
 	ss2: {
 		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(300%)",
 		turn: 10,
-		proc: [ss_damage_s(3.0, [0], 1), ss_consume_own(0.5)],
+		proc: [ss_damage_all(3.0, [0]), ss_consume_own(0.5)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,0,0,0,]),
@@ -48592,7 +48542,7 @@ Cards = [{
 	ss2: {
 		desc: "<多弾魔術>スキル反射を無視し、雷・光属性の5回連続ダメージ(650%)",
 		turn: 6,
-		proc: [ss_damage_s(6.5, [2,3], 5)],
+		proc: [ss_damage_s(6.5, [2,3], 5), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Attr_statusup(100,0, [0,0,1,0,0,]),
@@ -48959,7 +48909,7 @@ Cards = [{
 	],
 },{
 	name: "神戦に導く使徒 エアリル・セレ",
-	cardno: 7195,
+	cardno: 90063,
 	imageno: 5699,
 	hp: 3304,
 	atk: 3629,
@@ -49135,7 +49085,7 @@ Cards = [{
 	],
 },{
 	name: "インペリアル・ゾディアーク",
-	cardno: 7195,
+	cardno: 90064,
 	imageno: 5729,
 	hp: 4256,
 	atk: 4250,
@@ -49443,7 +49393,7 @@ Cards = [{
 	ss2: {
 		desc: "<反動大魔術・蝕>スキル反射を無視し、敵単体へ火属性のダメージ(240%×人数)◆スキル使用後、味方全体が1ターン封印状態に",
 		turn: 6,
-		proc: [ss_damage_s(ss_seal_all_cond(2.0), [0]), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(ss_seal_all_cond(2.4), [0]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,1000),
