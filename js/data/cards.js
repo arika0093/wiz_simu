@@ -48179,7 +48179,12 @@ Cards = [{
 	ss2: {
 		desc: "<効果解除大魔術>スキル反射を無視し、敵全体のカウンターを解除し、火属性のダメージ。HP20%以下でさらにスキル反射を解除し、ダメージアップ(300%/900%)",
 		turn: 7,
-		proc: [ss_break_attackcounter("all"), ss_damage_all(ss_hp_less(0.2, 9, 3), [0]), ss_ignore_skillcounter(), ss_hp_less_skill(0.2, ss_break_skillcounter("all"))],
+		proc: [
+			ss_damage_all(ss_hp_less(0.2, 9, 3), [0]),
+			ss_break_attackcounter("all"),
+			ss_hp_less_skill(0.2, ss_break_skillcounter("all")),
+			ss_ignore_skillcounter()
+		],
 	},
 	Lawake: [
 		Statusup(500,0),
