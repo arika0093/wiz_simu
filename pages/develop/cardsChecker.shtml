@@ -90,7 +90,8 @@ function check(){
                         putError(card, ss1ss2[ssn].toUpperCase()+"のdescが日本語でない", ss.desc)
                     }
                     if(ss.desc.indexOf("\t")!=-1){
-                        putError(card, ss1ss2[ssn].toUpperCase()+"のdescにタブコードが含まれる", ss.desc)
+                        var desc2=ss.desc.replace("\t","<font color=red>[tab]</font>")
+                        putError(card, ss1ss2[ssn].toUpperCase()+"のdescにタブコードが含まれる", desc2)
                     }
                     if(ss.desc.indexOf("\n")!=-1){
                         putError(card, ss1ss2[ssn].toUpperCase()+"のdescに改行コードが含まれる", ss.desc)
@@ -108,7 +109,8 @@ function check(){
                         putError(card, as1as2[asn].toUpperCase()+"のdescが日本語でない", as.desc)
                     }
                     if(as.desc.indexOf("\\t")!=-1){
-                        putError(card, as1as2[asn].toUpperCase()+"のdescにタブコードが含まれる", as.desc)
+                        var desc2=as.desc.replace("\t","<font color=red>[tab]</font>")
+                        putError(card, as1as2[asn].toUpperCase()+"のdescにタブコードが含まれる", desc2)
                     }
                     if(as.desc.indexOf("\\n")!=-1){
                         putError(card, as1as2[asn].toUpperCase()+"のdescに改行コードが含まれる", as.desc)
