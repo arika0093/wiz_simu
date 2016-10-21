@@ -269,7 +269,8 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_poison(300, 5, 5))
+                     m_enemy_once(s_enemy_poison(300, 5, 5)),
+                     m_enemy_once(s_enemy_attr_absorb([0,0,0,0,1], 3, 3)),
                   ],
                   on_move: [
                      s_enemy_attack_attrsp(375, 125, [1,0,0,0,0], 5, 1, false)
@@ -289,6 +290,7 @@
                move: {
                   on_popup: [
                      m_enemy_once(skill_counter_func(s_enemy_cursed, "-", 100, false, 1000, 5, 3)),
+                     m_enemy_once(s_enemy_attr_absorb([0,0,0,0,1], 3, 3)),
                      damage_switch(s_enemy_when_hpdown(0.4), m_enemy_angry(), true)
                   ],
                   on_move: [
