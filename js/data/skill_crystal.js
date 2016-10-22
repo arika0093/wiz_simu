@@ -126,16 +126,21 @@ var Awake_crystal_lists = [{
 		is_legend: true,
 	},
 }, {
+	genre: "ロストエデンⅡ WWMF",
+	name: "共闘の結晶〈セラフィム〉(魔族ATK+300)",
+	imple: Awake_composite,
+	param2: Spec_statusup(300, 0, [2]),
+}, {
 	genre: "精霊結晶",
-	name: "巡礼の結晶(スビェート)(光軽減10%)",
+	name: "巡礼の結晶〈スビェート〉(光軽減10%)",
 	imple: Awake_composite,
 	param2: Attr_relief([0,0,0,1,0], 10),
 }, {
-	name: "異神の結晶(バシレイデ)(AbCd軽減10%)",
+	name: "異神の結晶〈バシレイデ〉(AbCd軽減10%)",
 	imple: Awake_composite,
 	param2: Spec_relief([11], 10),
 }, {
-	name: "擬態の結晶(ガーゴイル)(物質HP+200)",
+	name: "擬態の結晶〈ガーゴイル〉(物質HP+200)",
 	imple: Awake_composite,
 	param2: Spec_statusup(200, 0, [6]),
 }

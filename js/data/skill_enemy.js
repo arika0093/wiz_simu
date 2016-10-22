@@ -330,7 +330,7 @@ function s_enemy_poison(d, tnum, t) {
 			fld, "毒(" + d + ")", "poison", t, tnum, n, is_counter, {
 				is_poison: true,
 				effect: function (f, oi, teff, state, is_t, is_b) {
-					if (is_t && !is_b && state != "overlay") {
+					if (is_t && state != "overlay") {
 						f.log_push("Unit[" + (oi + 1) + "]: 毒(" + d + "ダメージ)");
 						damage_ally(d, oi, true);
 					}
@@ -952,7 +952,7 @@ function s_enemy_reverse(rev_i) {
 		bdata.rev_used = n;			// 復活処理を発動させた敵の番号
 		bdata.rev_index = rev_i;	// 復活先の番号
 		bdata.rev_check = false;
-	});
+	}, makeDesc("全滅時復活"));
 }
 
 // -----------------------------------
