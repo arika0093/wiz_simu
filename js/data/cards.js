@@ -49372,7 +49372,7 @@ Cards = [{
 	ss1: {
 		desc: "<反動大魔術・蝕>スキル反射を無視し、敵単体へ火属性のダメージ(200%×人数)◆スキル使用後、味方全体が1ターン封印状態に",
 		turn: 4,
-		proc: [ss_damage_s(ss_seal_all_cond(2.0), [0]), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(ss_seal_all_cond(2.0), [0], 1), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],2),
@@ -49393,7 +49393,7 @@ Cards = [{
 	ss2: {
 		desc: "<反動大魔術・蝕>スキル反射を無視し、敵単体へ火属性のダメージ(240%×人数)◆スキル使用後、味方全体が1ターン封印状態に",
 		turn: 6,
-		proc: [ss_damage_s(ss_seal_all_cond(2.4), [0]), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(ss_seal_all_cond(2.4), [0], 1), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,1000),
