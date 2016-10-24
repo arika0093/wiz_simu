@@ -1,9 +1,9 @@
 {
    id: "ayutara15-4",
-   name: "",
+   name: "アユタラ15-4 最終層・叡智の間",
    desc: "",
    overlap: false,
-   aprnum: 7,
+   aprnum: 6,
    panel_effect: [
 	  panel_attackup(0.2),
 	  panel_chainplus(2),
@@ -293,15 +293,14 @@
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attr_weaken(error, 2, 3, 11)/* /* Error: 属性解釈に失敗しました */Error: 属性解釈に失敗しました *//* Warning: 属性要確認： 火水弱体化2倍×10T */,
-                     s_enemy_attr_weaken(error, 2, 3, 11)/* /* Error: 属性解釈に失敗しました */Error: 属性解釈に失敗しました *//* Warning: 属性要確認： 火水弱体化2倍×10T */
+                     s_enemy_attr_weaken([1,1,0,0,0], 2, 3, 11)
                   ],
                   on_popup: [
                      damage_switch(s_enemy_when_hpdown(0.6), m_enemy_angry(), true)
                   ],
                   on_move_angry: [
                      s_enemy_as_sealed(2, 4),
-                     s_enemy_attr_weaken(error, 2, 3, 11)/* /* Error: 属性解釈に失敗しました */Error: 属性解釈に失敗しました *//* Warning: 属性要確認： 火水弱体化2倍×10T */
+                     s_enemy_attr_weaken([1,1,0,0,0], 2, 3, 11)
                   ],
                   atrandom: false,
                   turn: 2,
@@ -313,61 +312,6 @@
       {
          appearance: [
             6
-         ],
-         enemy: [
-            {
-               name: "ライトサンダーパンプキン",
-               hp: 100,
-               imageno: 1281,
-               attr: 2,
-               spec: 7,
-               isStrong: false,
-               move: {
-                  on_move: [
-                     s_enemy_attack(25, 1, 1, true)/*nogambits*/
-                  ],
-                  atrandom: false,
-                  turn: 1,
-                  wait: 1
-               }
-            },
-            {
-               name: "レッドホットパンプキン",
-               hp: 100,
-               imageno: 1279,
-               attr: 0,
-               spec: 7,
-               isStrong: false,
-               move: {
-                  on_move: [
-                     s_enemy_attack(25, 5, 1, true)/*nogambits*/
-                  ],
-                  atrandom: false,
-                  turn: 1,
-                  wait: 1
-               }
-            },
-            {
-               name: "ブルーアイスパンプキン",
-               hp: 100,
-               imageno: 1280,
-               attr: 1,
-               spec: 7,
-               isStrong: false,
-               move: {
-                  on_move: [
-                     s_enemy_attack(25, 1, 1, true)/*nogambits*/
-                  ],
-                  atrandom: false,
-                  turn: 1,
-                  wait: 1
-               }
-            }
-         ]
-      },
-      {
-         appearance: [
-            7
          ],
          enemy: [
             {
