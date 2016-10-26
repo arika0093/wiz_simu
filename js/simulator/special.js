@@ -163,7 +163,7 @@ function ss_afterproc(n) {
 }
 
 // Lモードに入ったタイミングかどうかを判定する
-function legend_timing_check(cards, nows, index) {
+function legend_timing_check(cards, nows, index, is_ignore_spskill) {
 	var is_l = is_legendmode(cards[index], nows[index]);
 	var rst = is_l && !nows[index].islegend;
 	if (rst) {
@@ -172,7 +172,9 @@ function legend_timing_check(cards, nows, index) {
 		// L時の潜在を反映させる
 		add_awake_ally(cards, nows, index, true);
 		// L時のSSを発動する
-		Awake_dospskill(Field, index);
+		if (is_ignore_spskill) {
+			Awake_dospskill(Field, index);
+		}
 	}
 }
 

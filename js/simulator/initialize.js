@@ -230,6 +230,13 @@ $(function () {
 					Field.log_push("Unit[" + (i + 1) + "]: Chain-Boost: +" + add_chain);
 				}
 			}
+			// 戦闘開始前処理
+			if (Field.Quest.battle_before) {
+				var bbef = Field.Quest.battle_before;
+				for (var i = 0; i < bbef.length; i++) {
+					ss_object_done(Field, -1, bbef[i].proc);
+				}
+			}
 			// -------------------------
 			// 敵データを読み込む
 			Field.Quest = simQuest;
@@ -265,7 +272,6 @@ $(function () {
 					fes.revData[i].turn_effect = [];
 				}
 			}
-
 			// 敵の処理
 			enemy_popup_proc();
 			// -------------------------
@@ -282,13 +288,6 @@ $(function () {
 			if (Field.Quest.limitturn) {
 				var fs = Field.Status;
 				fs.limit_turn = fs.limit_now = Field.Quest.limitturn;
-			}
-			// 戦闘開始前処理
-			if (Field.Quest.battle_before) {
-				var bbef = Field.Quest.battle_before;
-				for (var i = 0; i < bbef.length; i++) {
-					ss_object_done(Field, -1, bbef[i].proc);
-				}
 			}
 			// 初期状態を保存
 			Field_log.save(0, Field);
