@@ -37,6 +37,11 @@ category_jp = {
 		sim_index: 11,
 		jp: "追憶のレディアント",
 	},
+    "chronicle1": {
+		is_dispsim: true,
+		sim_index: 11,
+		jp: "天界の双子 訣別のクロニクル",
+	},
     "satajo": {
 		jp: "サタニック女学院",
 	},
