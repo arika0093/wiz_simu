@@ -2,7 +2,8 @@ $.each(Quests, function(n, e){
     // Questの要素にcategory_jp内要素を突っ込む
 	var ctjp = category_jp[e.category] || {};
 	e.category_jp = ctjp.jp;
-	e.is_dispsim  = ctjp.is_dispsim;    
+	e.is_dispsim  = ctjp.is_dispsim;   
+	e.disable_date  = ctjp.disable_date;    
 	e.is_notusedhelper = ctjp.is_notusedhelper;    
 
     e.sortKey = {}
@@ -42,4 +43,14 @@ Quests = Quests.sort(function(a, b){
         if(x[ns] > y[ns]) return -sign;
     }
     return 0
+})
+
+//日付によるdisable
+Quests.forEach(function(q){
+    var nowTime=new Date();
+    if(q.disable_date){
+        if(Date.parse(q.disable_date)<nowTime){
+            q.is_dispsim=false;
+        }
+    }
 })

@@ -8,7 +8,23 @@ category_jp = {
 		is_dispsim: true,			// is_dispsim: 試走クエスト選択に表示させるかどうか
 		sim_index: 50,				// sim_index: 表示させる場合の表示順(昇順)
 		is_notusedhelper: true,		// is_notusedhelper: 助っ人使用不可かどうか
+		disable_date:"3000/1/1 12:00"		// disable_date: 指定した日時になったら表示をやめる
 	},
+	/*
+		*************sim_indexのメモ*************
+		イベントトーナメント=1
+		トーナメント=2
+		期間限定イベント=11
+		----（以降あんまり深い意味はない）----
+		魔導士の家系イベント=12
+		通常クエスト=30
+		素材クエスト=31
+		blader=40
+		abcd=41
+		過去のイベトナメ=50
+		シミュレータオリジナル系=999
+		未指定=9999
+	 */
     "tornament": {
 		jp: "トーナメント",
 		is_dispsim: true,
@@ -20,6 +36,7 @@ category_jp = {
 		is_dispsim: true,
 		sim_index: 1,
 		is_notusedhelper: true,	
+		disable_date:"2016/10/20 12:00",
 	},
     "other": {
 		jp: "その他",
@@ -36,23 +53,21 @@ category_jp = {
 		is_dispsim: true,
 		sim_index: 11,
 		jp: "追憶のレディアント",
+		disable_date:"2016/11/14 16:00",
 	},
     "losteden2": {
 		is_dispsim: true,
 		sim_index: 11,
 		jp: "双翼のロストエデン　ＷＷＭＦ",
+		disable_date:"2016/10/31 16:00",
 	},
     "chronicle1": {
 		is_dispsim: true,
-		sim_index: 11,
+		sim_index: 12,
 		jp: "天界の双子 訣別のクロニクル",
 	},
     "satajo": {
 		jp: "サタニック女学院",
-	},
-    "losteden2": {
-		is_dispsim: true,
-		jp: "ロストエデン2",
 	},
     "suzaku": {
 		jp: "スザク",
@@ -78,7 +93,7 @@ category_jp = {
     "8millionz": {
 		jp: "YAOYORO Z",
 		is_dispsim: false,
-		sim_index: 12,
+		sim_index: 11,
 	},
     "usg": {
 		jp: "アルティメットサマーガールズ",
@@ -88,17 +103,17 @@ category_jp = {
     "eva2": {
     	jp: "幻想と歪曲の槍",
     	is_dispsim: false,
-    	sim_index: 13,
+    	sim_index: 11,
     },
     "gqw": {
     	jp: "高校生クイズ",
     	is_dispsim: false,
-    	sim_index: 15,
+    	sim_index: 11,
     },
     "8million2": {
     	jp: "八百万神秘譚2",
     	is_dispsim: true,
-    	sim_index: 21,
+    	sim_index: 12,
     },
    "abcd": {
 		jp: "アビスコード",
@@ -114,11 +129,12 @@ category_jp = {
 		jp: "バーニングタワー",
 		is_dispsim: true,
 		sim_index: 10,
+		disable_date:"2016/10/20",
 	},
     "material": {
 		jp: "素材クエスト",
 		is_dispsim: true,
-		sim_index: 30,
+		sim_index: 31,
 	},
     "normal": {
 		jp: "ノーマルクエスト",
