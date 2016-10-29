@@ -55,7 +55,7 @@ $(function () {
 		})
 		var dbtxt="";
 		appearQuests.forEach(function(q){
-			dbtxt+='<li class="mn_db"><a href="/simulator/quest/?genre='+q.cId+'">'+q.name+'</a></li>';
+			dbtxt+='<li class="mn_db"><a href="/simulator/quest/?genre='+q.id+'">'+q.name+'</a></li>';
 		})
 		dbtxt+='<li class="mn_db"><a href="/simulator/quest/">全て表示</a></li>';
 		enm_db.innerHTML=dbtxt
