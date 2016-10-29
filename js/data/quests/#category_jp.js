@@ -15,18 +15,18 @@ category_jp = {
 		イベントトーナメント=1
 		トーナメント=2
 		期間限定イベント=11
-		----（以降あんまり深い意味はない）----
+		----（sim_indexが12未満のものはdispsim=trueなら敵情報DBにも表示）----
 		魔導士の家系イベント=12
 		通常クエスト=30
 		素材クエスト=31
-		blader=40
+		blader=40  			(特例として40以上50以下は敵情報DBに表示)
 		abcd=41
 		過去のイベトナメ=50
 		シミュレータオリジナル系=999
 		未指定=9999
 	 */
     "tornament": {
-		jp: "トーナメント",
+		jp: "通常トーナメント",
 		is_dispsim: true,
 		sim_index: 2,
 		is_notusedhelper: true,	
@@ -116,12 +116,12 @@ category_jp = {
     	sim_index: 12,
     },
    "abcd": {
-		jp: "アビスコード",
+		jp: "AbyssCode",
 		is_dispsim: true,
 		sim_index: 41,
 	},
     "blader": {
-		jp: "ブレイダー",
+		jp: "Blader",
 		is_dispsim: true,
 		sim_index: 40,
 	},
