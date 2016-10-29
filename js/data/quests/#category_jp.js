@@ -37,6 +37,11 @@ category_jp = {
 		sim_index: 11,
 		jp: "追憶のレディアント",
 	},
+    "losteden2": {
+		is_dispsim: true,
+		sim_index: 11,
+		jp: "双翼のロストエデン　ＷＷＭＦ",
+	},
     "chronicle1": {
 		is_dispsim: true,
 		sim_index: 11,
