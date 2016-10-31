@@ -50140,7 +50140,7 @@ Cards = [{
 	is_dist: true,
 	as1: {
 		desc: "雷属性の味方の攻撃力をアップ、魔族はさらにアップ(30%/90%)",
-		proc: [ChainEnhance(0.3, [0,0,1,0,0], 0), ChainSpecEnhance([0.9, [0,0,1,0,0], [2], 0)],
+		proc: [ChainEnhance(0.3, [0,0,1,0,0], 0), ChainSpecEnhance(0.9, [0,0,1,0,0], [2], 0)],
 	},
 	ss1: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・闇属性のダメージ(120%)",
@@ -50161,7 +50161,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "雷属性の味方の攻撃力をアップ、魔族はさらにアップ(60%/120%)",
-		proc: [ChainEnhance(0.6, [0,0,1,0,0], 0), ChainSpecEnhance([1.2, [0,0,1,0,0], [2], 0)],
+		proc: [ChainEnhance(0.6, [0,0,1,0,0], 0), ChainSpecEnhance(1.2, [0,0,1,0,0], [2], 0)],
 	},
 	ss2: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・闇属性のダメージ(150%)",
@@ -50329,7 +50329,7 @@ Cards = [{
 	ss1: {
 		desc: "<蘇生>味方全体のHPを回復し(25%)、さらに水属性の味方を蘇生(25%)",
 		turn: 9,
-		proc: [ss_heal(0.25), s_resurrection([0,1,0,0,0], 0.25)],
+		proc: [ss_heal(0.25), ss_resurrection([0,1,0,0,0], 0.25)],
 	},
 	awakes: [
 		Statusup(0,100),
@@ -50350,7 +50350,7 @@ Cards = [{
 	ss2: {
 		desc: "<蘇生>味方全体のHPを回復し(50%)、さらに水属性の味方を蘇生(50%)",
 		turn: 11,
-		proc: [ss_heal(0.5), s_resurrection([0,1,0,0,0], 0.5)],
+		proc: [ss_heal(0.5), ss_resurrection([0,1,0,0,0], 0.5)],
 	},
 	Lawake: [
 		Statusup(400,0),
