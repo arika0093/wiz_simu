@@ -61,6 +61,12 @@ category_jp = {
 		jp: "双翼のロストエデン　ＷＷＭＦ",
 		disable_date:"2016/10/31 16:00",
 	},
+    "mareless2": {
+		is_dispsim: true,
+		sim_index: 11,
+		jp: "黄昏メアレスⅡ 残響dearless",
+		disable_date:"2016/11/30 16:00",
+	},
     "chronicle1": {
 		is_dispsim: true,
 		sim_index: 12,
