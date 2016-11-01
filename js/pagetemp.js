@@ -34,7 +34,33 @@ $(function () {
 			// 未ログイン
 			$("li#twlogin ul.submenu").html('<li id="mn_twitter"><a href="//api.wiztools.net/twitter/login.php">Twitterでログイン</a></li>');
 		}
+		// category_jsを読み込む
+		$.getScript("/js/data/quests/%23category_jp.js", function () {
+			var appearQuests = [];
+			var nowDt = new Date();
+			for (var cId in category_jp) {
+				var nowCate = category_jp[cId];
+				if (nowCate.sim_index <= 11 || (nowCate.sim_index >= 40 && nowCate.sim_index <= 50)) {
+					if (nowCate.is_dispsim) {
+						if (!nowCate.disable_date || Date.parse(nowCate.disable_date) > nowDt) {
+							appearQuests.push({ id: cId, name: nowCate.jp, sim_index: nowCate.sim_index })
+						}
+					}
+				}
+			}
+			appearQuests = appearQuests.sort(function (a, b) {
+				if (a.sim_index < b.sim_index) return -1;
+				if (a.sim_index > b.sim_index) return 1;
+				return 0;
+			})
+			var dbtxt = "";
+			appearQuests.forEach(function (q) {
+				dbtxt += '<li class="mn_db"><a href="/simulator/quest/?genre=' + q.id + '">' + q.name + '</a></li>';
+			})
+			dbtxt += '<li class="mn_db"><a href="/simulator/quest/">全て表示</a></li>';
+			enm_db.innerHTML = dbtxt
+		});
+		$("#Footer").load("/template/footer.html");
 	});
-	$("#Footer").load("/template/footer.html");
 })
 

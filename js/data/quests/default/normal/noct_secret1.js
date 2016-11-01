@@ -134,12 +134,12 @@
                      s_enemy_reverse(0)
                   ],
                   on_move: [
+                     s_enemy_attack(3250, 5, 1, true),
                      s_enemy_attr_weaken([1,1,1,1,1], 1.5, 5, 6),
                      s_enemy_attack(1466.6666666666667, 3, 3, true),
                      s_enemy_statusup(false, 10, -1),
                      s_enemy_attack(6500, 5, 1, true),
                      s_enemy_attack(2200, 5, 1, true),
-                     s_enemy_attack(3250, 5, 1, true)
                   ],
                   on_angry: [
                      attr_change(3)
