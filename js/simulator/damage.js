@@ -116,14 +116,16 @@ function damage_ally(dmg, index, neft_check) {
 	var minhp = 0;
 	// 死亡寸前発動スキル(e.g.起死回生)の判定
 	if (aft <= 0) {
-		$.each(now.turn_effect, function (i, e) {
+		for (var i = 0; i < now.turn_effect.length; i++) {
+			var e = now.turn_effecti[i];
 			if (e.before_dead) {
 				e.before_dead(Field, index);
 				minhp = now.nowhp;
 				// 発動したら取り除く
 				now.turn_effect.splice(i, 1);
+				i--;
 			}
-		});
+		}
 	}
 	// 九死一生の判定
 	if (neft_check && aft <= 0 && minhp == 0 && awake_neftjod_check(now, index, bef)) {
