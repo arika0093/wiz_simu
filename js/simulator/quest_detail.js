@@ -3,14 +3,36 @@ $(function () {
 	// get query
 	var id = location.search.indexOf("?id=") == 0 ?			location.search.substr(4) : null;
 	var genre = location.search.indexOf("?genre=") == 0 ?	location.search.substr(7) : null;
-	var tag = location.search.indexOf("?tag=") == 0 ?		location.search.substr(5) : null;
 
 	if (id) {
 		makeQD(id);
-	} else {
+	} else if(genre && genre != "") {
 		makeList(genre, "/simulator/quest/?id=");
+	} else {
+		makeCategoryList("/simulator/quest/?genre=");
 	}
 });
+
+// カテゴリ一覧を表示
+function makeCategoryList(url) {
+	// match and generate html
+	var view_genre = "";
+	var rst_html = "<dt>Category View</dt><dd class='left_min' id='category_view'>";
+	var rst = $.grep(Quests, function (Quest, QuestNum) {
+		// match check
+		if (Quest.category != view_genre) {
+			var ctgr = Quest.category;
+			var boss_enms = Quest.data[Quest.data.length - 1].enemy;
+			var boss_enm = boss_enms.length >= 2 ? 1 : 0;
+			rst_html += "<a class='genre_link' href='" + url + ctgr + "'><img src=" +
+			get_image_url(boss_enms[boss_enm].imageno) + " class='boss_img'>" +
+			category_jp[ctgr].jp + "</a>";
+			view_genre = ctgr;
+		}
+	});
+	rst_html += "</dd>";
+	$("#result").html(rst_html);
+}
 
 // クエスト一覧を表示
 function makeList(genre, url) {

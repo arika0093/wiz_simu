@@ -165,6 +165,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "quest_view", "quest_view", "{8B9ACD64-350B-49DA-95B0-EB4388CCE61F}"
 	ProjectSection(SolutionItems) = preProject
 		js\simulator\quest_detail.js = js\simulator\quest_detail.js
+		js\simulator\quest_detailex.js = js\simulator\quest_detailex.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "quests", "quests", "{64FB46EC-C184-4D6A-9B24-E976EB277B1B}"
