@@ -117,7 +117,7 @@ function damage_ally(dmg, index, neft_check) {
 	// 死亡寸前発動スキル(e.g.起死回生)の判定
 	if (aft <= 0) {
 		for (var i = 0; i < now.turn_effect.length; i++) {
-			var e = now.turn_effecti[i];
+			var e = now.turn_effect[i];
 			if (e.before_dead) {
 				e.before_dead(Field, index);
 				minhp = now.nowhp;
