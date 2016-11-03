@@ -25577,6 +25577,7 @@ Cards = [{
 	attr: [1, -1],
 	species: [8],
 	islegend: true,
+	disable: true,
 	as1: {
 		desc: "4チェインで敵単体を3回連続攻撃、HP50%以上でさらにダメージアップ(300%/500%)",
 		proc: [ChainDualAttack(3.0, 4, 3), add_cond(ChainDualAttack(5.0, 4, 3), when_hp_more(0.5))],
@@ -25621,6 +25622,7 @@ Cards = [{
 	attr: [0, 4],
 	species: [8],
 	islegend: true,
+	disable: true,
 	as1: {
 		desc: "4チェインで雷・光属性の敵単体へ特効ダメージ(600%)",
 		proc: ChainAttrAttack(6.0, 4, [0, 0, 1, 1, 0]),
@@ -25667,6 +25669,7 @@ Cards = [{
 	attr: [2, 0],
 	species: [9],
 	islegend: true,
+	disable: true,
 	as1: {
 		desc: "4チェインでダメージアップ、魔族の敵へさらにダメージアップ(400%/600%)",
 		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [2])],
@@ -25711,6 +25714,7 @@ Cards = [{
 	attr: [0, -1],
 	species: [8],
 	islegend: true,
+	disable: true,
 	as1: {
 		desc: "残りHPが80%以上でダメージアップ(350%)",
 		proc: add_cond(ChainAttack(3.5, 0), when_hp_more(0.8)),
@@ -25755,6 +25759,7 @@ Cards = [{
 	attr: [1, 0],
 	species: [8],
 	islegend: true,
+	disable: true,
 	as1: {
 		desc: "6チェインでダメージアップ(500%)",
 		proc: ChainAttack(5.0, 6),
@@ -32230,6 +32235,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [1],
 	islegend: true,
+	disable: true,
 	as1: {
 		desc: "雷属性の味方の攻撃力をアップ、神族と天使はさらにアップ(30%/100%)",
 		proc: [ChainEnhance(0.30, [0,0,1,0,0], 0), ChainSpecEnhance(1.0, [0,0,1,0,0], [1,3], 0)],
@@ -49824,7 +49830,7 @@ Cards = [{
 		proc: ChainPanelsAttack(5.5, 7.0, 7.0, 3),
 	},
 	ss1: {
-		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光(闇)属性のダメージ、5チェインを消費しさらにダメージアップ(150%/300%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ、5チェインを消費しさらにダメージアップ(150%/300%)",
 		turn: 4,
 		proc: [ss_damage_all(ss_chain_cost(5, 3.0, 1.5), [2, 3]), ss_ignore_skillcounter()],
 	},
@@ -49845,7 +49851,7 @@ Cards = [{
 		proc: ChainPanelsAttack(6.5, 8.0, 8.0, 3),
 	},
 	ss2: {
-		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光(闇)属性のダメージ、5チェインを消費しさらにダメージアップ(220%/440%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ、5チェインを消費しさらにダメージアップ(220%/440%)",
 		turn: 6,
 		proc: [ss_damage_all(ss_chain_cost(5, 4.4, 2.2), [2, 3]), ss_ignore_skillcounter()],
 	},
@@ -49870,7 +49876,7 @@ Cards = [{
 		proc: ChainPanelsAttack(5.5, 7.0, 7.0, 3),
 	},
 	ss1: {
-		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光(闇)属性のダメージ、5チェインを消費しさらにダメージアップ(150%/300%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・闇属性のダメージ、5チェインを消費しさらにダメージアップ(150%/300%)",
 		turn: 4,
 		proc: [ss_damage_all(ss_chain_cost(5, 3.0, 1.5), [2, 4]), ss_ignore_skillcounter()],
 	},
@@ -49891,7 +49897,7 @@ Cards = [{
 		proc: ChainPanelsAttack(6.5, 8.0, 8.0, 3),
 	},
 	ss2: {
-		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光(闇)属性のダメージ、5チェインを消費しさらにダメージアップ(220%/440%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・闇属性のダメージ、5チェインを消費しさらにダメージアップ(220%/440%)",
 		turn: 6,
 		proc: [ss_damage_all(ss_chain_cost(5, 4.4, 2.2), [2, 4]), ss_ignore_skillcounter()],
 	},
@@ -50488,7 +50494,7 @@ Cards = [{
 	},
 	ss1: {
 		desc: "<ステータスアップ>味方全体の攻撃力を500アップ(上限値:2000)、さらにHPを回復(50%)",
-		turn: 3,
+		turn: 6,
 		proc: [ss_statusup_all([0, 500], [2000, 2000], -1), ss_heal(0.5)],
 	},
 	awakes: [
