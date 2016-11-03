@@ -50696,7 +50696,7 @@ Cards = [{
 },{
 	name: "戦の天稟 ウォーブリンガー=ミリィ",
 	cardno: 7317,
-	imageno: -1,
+	imageno: 7642,
 	hp: 3254,
 	atk: 5276,
 	cost: 53,
