@@ -154,6 +154,8 @@ $(function () {
 			var simQuest = $.grep(Quests, function (e, i) {
 				return e.id == data.quest;
 			})[0];
+			// 敵データを読み込む
+			Field.Quest = simQuest;
 			// -------------------------
 			// 味方データを読み込む
 			var als = Field.Allys;
@@ -238,8 +240,6 @@ $(function () {
 				}
 			}
 			// -------------------------
-			// 敵データを読み込む
-			Field.Quest = simQuest;
 			// 出現順番
 			var fes = Field.Enemys;
 			fes.Popuplist = CreateEnemypopup(simQuest);
