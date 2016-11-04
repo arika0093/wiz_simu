@@ -304,6 +304,16 @@
 		<div id="sim_dlog_inner">
 		</div>
 	</div>
+    <div class="dialog_div" id="dialog_ss_selectone" title="味方単体指定ダイアログ">
+        <div id="sso_skilled_index" class="dialog_div"></div>
+        <div id="sso_selected_index" class="dialog_div"></div>
+        <p>SS効果の対象を選択してください。</p>
+        <img class="sso_ally_image chara_img" id="sso_ally_image_0" src="/image/noimage.png" />
+        <img class="sso_ally_image chara_img" id="sso_ally_image_1" src="/image/noimage.png" />
+        <img class="sso_ally_image chara_img" id="sso_ally_image_2" src="/image/noimage.png" />
+        <img class="sso_ally_image chara_img" id="sso_ally_image_3" src="/image/noimage.png" />
+        <img class="sso_ally_image chara_img" id="sso_ally_image_4" src="/image/noimage.png" />
+    </div>
 	<div class="dialog_div" id="dialog_ss_noaction" title="No Effect">
 		<p>SSを発動しても効果が得られません。</p>
 	</div>

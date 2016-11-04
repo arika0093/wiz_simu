@@ -130,6 +130,11 @@ img.chara_img, img.chara_img_dead, img.chara_img_impregnable {
 	height: 64px;
 }
 
+img.sso_ally_image:hover{
+	cursor: pointer;
+	opacity: 0.6;
+}
+
 p.ally_mana{
 	font-size: 9.5pt;
 	color: #FFFFFF;

@@ -96,7 +96,7 @@ function ss_damage_slash(r, attrs, atn) {
 **/
 function ss_ratiodamage_all(r) {
 	return ss_template({
-		name: "ss_ratiodamage_all",
+		name: "ss_ratiodamage",
 		type: "damage",
 		subtype: "ratio",
 		target: "all",
@@ -110,7 +110,7 @@ function ss_ratiodamage_all(r) {
 **/
 function ss_ratiodamage_s(r) {
 	return ss_template({
-		name: "ss_ratiodamage_s",
+		name: "ss_ratiodamage",
 		type: "damage",
 		subtype: "ratio",
 		target: "single",
@@ -152,7 +152,7 @@ function ss_dualcounter(t) {
  * 自身のみ多段カウンター待機
  * t: 継続ターン数
 **/
-function ss_dualcounter_s(t) {
+function ss_dualcounter_own(t) {
 	return ss_template({
 		name: "ss_dualcounter",
 		type: "turn_effect",
@@ -238,7 +238,7 @@ function ss_attr_weaken_all(attr, rate, turn) {
 **/
 function ss_delay_all(turn) {
 	return ss_template({
-		name: "ss_delay_all",
+		name: "ss_delay",
 		type: "delay",
 		target: "all",
 		p1: turn,
@@ -251,7 +251,7 @@ function ss_delay_all(turn) {
 **/
 function ss_delay_s(turn) {
 	return ss_template({
-		name: "ss_delay_s",
+		name: "ss_delay",
 		type: "delay",
 		target: "single",
 		p1: turn,
@@ -268,7 +268,7 @@ function ss_delay_s(turn) {
 **/
 function ss_enhance_all(p, t, attr, calltype) {
 	return ss_template({
-		name: "ss_enhance_all",
+		name: "ss_enhance",
 		type: "turn_effect",
 		subtype: "enhance",
 		target: "ally",
@@ -293,15 +293,15 @@ function ss_enhance_all(p, t, attr, calltype) {
  * p:	上昇値(ex: 0.6 -> 60%)
  * t:	継続ターン数
 **/
-function ss_enhance_own(p, t, _nolog) {
+function ss_enhance_own(p, t) {
 	return ss_template({
-		name: "ss_enhance_own",
+		name: "ss_enhance",
 		type: "turn_effect",
 		subtype: "enhance",
 		target: "own",
 		p1: p,
 		p2: t,
-		p3: _nolog,
+		p3: [1,1,1,1,1],
 		c_param: {
 			"awake_rateup": {
 				target: 0,
@@ -323,7 +323,7 @@ function ss_enhance_own(p, t, _nolog) {
 **/
 function ss_boost_enhance_all(p, t, dmg, attr) {
 	return ss_template({
-		name: "ss_boost_enhance_all",
+		name: "ss_boost_enhance",
 		type: "turn_effect",
 		subtype: "enhance_boost",
 		target: "ally",
@@ -347,7 +347,7 @@ function ss_boost_enhance_all(p, t, dmg, attr) {
 **/
 function ss_boost_enhance_s(p, t, dmg) {
 	return ss_template({
-		name: "ss_boost_enhance_s",
+		name: "ss_boost_enhance",
 		type: "turn_effect",
 		subtype: "enhance_boost",
 		target: "own",
@@ -370,7 +370,7 @@ function ss_boost_enhance_s(p, t, dmg) {
 **/
 function ss_reinforcement_all(t, sss) {
 	return ss_template({
-		name: "ss_reinforcement_all",
+		name: "ss_reinforcement",
 		type: "turn_effect",
 		subtype: "reinforcement",
 		target: "ally",
@@ -387,7 +387,7 @@ function ss_reinforcement_all(t, sss) {
 **/
 function ss_statusup_all(up_arr, up_limit, t) {
 	return ss_template({
-		name: "ss_statusup_all",
+		name: "ss_statusup",
 		type: "turn_effect",
 		subtype: "statusup",
 		target: "ally",
@@ -405,7 +405,7 @@ function ss_statusup_all(up_arr, up_limit, t) {
 **/
 function ss_damageblock_all(d, t, calltype) {
 	return ss_template({
-		name: "ss_damageblock_all",
+		name: "ss_damageblock",
 		type: "turn_effect",
 		subtype: "damageblock",
 		target: "ally",
@@ -422,7 +422,7 @@ function ss_damageblock_all(d, t, calltype) {
 **/
 function ss_damageblock_own(d, t) {
 	return ss_template({
-		name: "ss_damageblock_all",
+		name: "ss_damageblock",
 		type: "turn_effect",
 		subtype: "damageblock",
 		target: "own",
@@ -604,6 +604,23 @@ function ss_regenerate(p, t, calltype) {
 		type: "turn_effect",
 		subtype: "regenerate",
 		target: "ally",
+		p1: p,
+		p2: t,
+		p3: calltype,
+	});
+}
+
+/**
+ * 味方単体にリジェネの効果を付与する
+ * p: 回復割合
+ * t: 継続ターン数
+**/
+function ss_regenerate_own(p, t, calltype) {
+	return ss_template({
+		name: "ss_regenerate",
+		type: "turn_effect",
+		subtype: "regenerate",
+		target: "own",
 		p1: p,
 		p2: t,
 		p3: calltype,

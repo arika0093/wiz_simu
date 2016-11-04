@@ -66,7 +66,7 @@ var Awake_crystal_lists = [{
 	param2: {
 		name: "L時ダメージブロック(300/4T)",
 		type: "awake_spskill",
-		skill: "ss_damageblock_all",
+		skill: "ss_damageblock",
 		p1: 300,
 		p2: 4,
 		p3: "ringan",

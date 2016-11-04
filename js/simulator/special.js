@@ -4,11 +4,18 @@ function ss_push(n) {
 	var now = Field.Allys.Now[n];
 	var is_l = is_legendmode(card, now);
 	var ss = is_l ? card.ss2 : card.ss1;
-	// SSを打つ
-	Field.log_push("Unit[" + (n + 1) + "]: SS発動");
-	var ss_rst = ss_procdo(ss, now, n);
+	var ss_rst = true;
+	// SS発動前チェック
+	if (sscheck_before(ss, n)) {
+		// SSを打つ
+		ss_rst = ss_procdo(ss, now, n);
+	} else {
+		// チェックを通過しなかったら打ち切る
+		return;
+	}
 	// 発動成功なら
 	if (ss_rst) {
+		Field.log_push("Unit[" + (n + 1) + "]: SS発動");
 		// 発動後処理
 		ss_afterproc(n);
 		if (!now.flags.ss_chargefin) {
@@ -53,6 +60,39 @@ function ss_push(n) {
 	} else {
 		// failed
 		$("#dialog_ss_noaction").dialog("open");
+	}
+}
+
+// SS発動前に味方単体指定があるかどうかを確認する関数
+function sscheck_before(ss, n) {
+	var is_exist = false;
+	for (var i = 0; i < (ss.proc || []).length; i++) {
+		is_exist = is_exist || (ss.proc[i].target == "ally_one");
+		if (ss.proc[i].is_skillcopy) {
+			var ls_ss = Field.Status.latest_ss.proc;
+			if(!ls_ss){
+				continue;
+			}
+			for (var j = 0; j < ls_ss.length; j++) {
+				is_exist = is_exist || (ls_ss[j].target == "ally_one");
+			}
+		}
+	}
+	if (is_exist) {
+		// 指定済みかチェック
+		var target_seled = ss_allyselect_getindex();
+		// 指定済みならOK
+		if (target_seled >= 0) {
+			return true;
+		}
+		// 未指定なら選択ダイアログを出して処理を終了させる
+		else {
+			$("#sso_skilled_index").text(n);
+			$("#dialog_ss_selectone").dialog("open");
+			return false;
+		}
+	} else {
+		return true;
 	}
 }
 
@@ -154,6 +194,9 @@ function ss_afterproc(n) {
 			}
 		});
 	});
+	// 対象指定SSの指定を解除
+	$("#sso_selected_index").text("");
+	$("#sso_skilled_index").text("");
 	// ターン効果確認
 	turneff_check_skillcounter(Field);
 	turn_effect_check(false, is_allkill());
@@ -196,4 +239,10 @@ function get_ssturn(card, ally_n) {
 	var ss2 = ss2_def !== undefined ? (Math.max(ss2_def - cg, 0)) : undefined;
 	// 返却
 	return [ss1, ss2];
+}
+
+// 味方単体を指定するSSにおいて、誰が指定されているかを取得
+function ss_allyselect_getindex() {
+	var istr = $("#sso_selected_index").text();
+	return istr != "" ? Number(istr) : -1;
 }

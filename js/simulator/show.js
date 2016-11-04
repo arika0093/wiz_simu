@@ -567,6 +567,41 @@ function sim_show() {
 			},
 		},
 	});
+	// ss_single_one
+	$("#dialog_ss_selectone").dialog({
+		autoOpen: false,
+		modal: true,
+		width: 400,
+		open: function() {
+			// images set
+			var cds = Field.Allys.Deck;
+			for (var i = 0; i < cds.length; i++) {
+				var c = cds[i];
+				var dom = $("#sso_ally_image_" + i);
+				dom.prop("src", get_image_url(c.imageno));
+				dom.on("click", function (e) {
+					// set
+					var tg_id = e.target.id;
+					var tg_idx = tg_id.replace("sso_ally_image_", "");
+					$("#sso_selected_index").text(tg_idx);
+					$("#dialog_ss_selectone").dialog("close");
+					for (var j = 0; j < cds.length; j++) {
+						var dm = $("#sso_ally_image_" + j);
+						dm.off("click");
+					}
+					// skill done
+					var skl_index = Number($("#sso_skilled_index").text())
+					ss_push(skl_index);
+					return;
+				});
+			}
+		},
+		buttons: {
+			"Cancel": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
 	// no effect
 	$("#dialog_ss_noaction").dialog({
 		autoOpen: false,

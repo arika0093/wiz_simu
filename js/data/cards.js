@@ -40353,7 +40353,7 @@ Cards = [{
 	ss1: {
 		desc: "<カウンター>4ターンの間、自身のみ多段式カウンター待機(100%)",
 		turn: 10,
-		proc: [ss_dualcounter_s(4)],
+		proc: [ss_dualcounter_own(4)],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
@@ -40374,7 +40374,7 @@ Cards = [{
 	ss2: {
 		desc: "<カウンター>6ターンの間、自身のみ多段式カウンター待機(100%)",
 		turn: 13,
-		proc: [ss_dualcounter_s(6)],
+		proc: [ss_dualcounter_own(6)],
 	},
 	Lawake: [
 		Statusup(0,1000),
@@ -42202,7 +42202,6 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	ape: "魔道杯withクロム・マギナ",
-	alias: ["未実装"],
 	as1: {
 		desc: "残りHPが80%以上でダメージアップ、5チェインで更にダメージアップ(300%/550%)",
 		proc: [add_cond(ChainAttack(3.0, 0), when_hp_more(0.8)), add_cond(ChainAttack(5.5, 5), when_hp_more(0.8))],
@@ -42210,7 +42209,7 @@ Cards = [{
 	ss1: {
 		desc: "<継続回復>5ターン自分自身を徐々に回復する(70%)",
 		turn: 10,
-		proc: [null],
+		proc: [ss_regenerate_own(0.7, 5)],
 	},
 	awakes: [
 		Statusup(200,0),
@@ -42231,7 +42230,7 @@ Cards = [{
 	ss2: {
 		desc: "<継続回復>10ターン自分自身を徐々に回復する(70%)",
 		turn: 15,
-		proc: [null],
+		proc: [ss_regenerate_own(0.7, 10)],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -49787,7 +49786,7 @@ Cards = [{
 	ss1: {
 		desc: "<回復>味方一人のHPを完全に回復する",
 		turn: 2,
-		proc: null,
+		proc: [ss_toselect_one(ss_heal(1))],
 	},
 	awakes: [
 		Costdown(10),
@@ -49808,7 +49807,11 @@ Cards = [{
 	ss2: {
 		desc: "<状態異常回復&蘇生>味方一人のHPを完全回復し、状態異常を回復、さらに50%で蘇生",
 		turn: 4,
-		proc: null,
+		proc: [
+			ss_toselect_one(ss_heal(1)),
+			ss_toselect_one(ss_abstate_cure()),
+			ss_toselect_one(ss_resurrection([1, 1, 1, 1, 1], 0.5))
+		],
 	},
 	Lawake: [
 		Statusup(0,400),
