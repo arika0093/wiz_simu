@@ -222,7 +222,7 @@
                      s_enemy_chain_sealed(6)/* Warning: 属性に十分注意してください */
                   ],
                   on_move_angry: [
-                     s_enemy_attack(2000, 5, 1, true)/* Warning: case 36 */,
+                     s_enemy_attack(2000, 3, 1, true)/* Warning: case 36 */,
                      s_enemy_attack(1000, 5, 1, true)/* Warning: case 36 */,
                      s_enemy_attack(1000, 5, 1, true)/* Warning: case 36 */,
                      s_enemy_attack(1000, 5, 1, true)/* Warning: case 36 */,
@@ -245,7 +245,6 @@
                      m_enemy_once(skill_counter_func(s_enemy_as_sealed, "-", 100, false, 5, 6))
                   ],
                   on_move: [
-                     s_enemy_attack(300, 2, 5, true),
                      s_enemy_heal_all(0.05),
                      s_enemy_attack(750, 1, 1, true)
                   ],
