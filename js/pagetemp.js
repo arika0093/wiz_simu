@@ -58,7 +58,9 @@ $(function () {
 				dbtxt += '<li class="mn_db"><a href="/simulator/quest/?genre=' + q.id + '">' + q.name + '</a></li>';
 			})
 			dbtxt += '<li class="mn_db"><a href="/simulator/quest/">全て表示</a></li>';
-			enm_db.innerHTML = dbtxt
+			if(document.getElementById("enm_db")){
+				enm_db.innerHTML = dbtxt
+			}
 		});
 		$("#Footer").load("/template/footer.html");
 	});
