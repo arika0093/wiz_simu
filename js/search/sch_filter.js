@@ -303,8 +303,8 @@ function schfl_grep_awake(obj, awake) {
 	var o_type = obj.awake_types[0];
 	return $.grep(awake, function (e) {
 		var m_type = o_type && (e.type == sfdef_aw_namelist[o_type].type);
-		return (!obj.aw_name || schfl_string_match(e.name, obj.aw_name))
-			&& (!m_type || sfdef_aw_namelist[o_type].check(e));
+		return (!obj.aw_name || schfl_string_match(e.name, obj.aw_name))　//潜在文字列検索側
+			&& (m_type && sfdef_aw_namelist[o_type].check(e));				//潜在タイプ側
 	}).length > 0;
 }
 
@@ -527,7 +527,7 @@ function searchText(q){
     if(ssEnableFlag){
         outp += appOpt(q, cons, "ss_target", "SS対象")
     }
-    if (q.aw_name != "") {
+    if (q.aw_name != "" && q.aw_name != "undefined") {
     	outp += "潜在能力説明文=\"" + q.aw_name + "\"を含む, "
     }
     if (q.awake_types.length > 0) {
