@@ -51075,6 +51075,7 @@ Cards = [{
 	ss1: {
 		desc: "<斬撃大魔術>3ターン溜めた後、スキル反射を無視し、火・雷属性の3連撃(300%)、さらに連撃数分チェインプラス",
 		turn: 1,
+		charged: 3,
 		proc: [ss_damage_slash(3.0, [0,2], 3), ss_ignore_skillcounter()],
 	},
 	awakes: [
