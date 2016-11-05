@@ -676,7 +676,7 @@ var SpSkill = {
 				},
 				ss_disabled: true,
 			});
-			fld.log_push("Unit[" + (i + 1) + "]: 鉄壁・極(" + t + "t)");
+			fld.log_push("Unit[" + (i + 1) + "]: 鉄壁・極(" + turn + "t)");
 		}
 		return true;
 	},
