@@ -694,7 +694,7 @@ var SpSkill = {
 			var cd = cds[i];
 			var now = nows[i];
 			if (now.nowhp <= 0) { continue; }
-			if (!now.ss_isboost && !is_legendmode(card, now)) {
+			if (!now.ss_isboost && !is_legendmode(cd, now)) {
 				now.ss_current += f_rate;
 				now.ss_isboost = true;
 				// L化確認
