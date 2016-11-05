@@ -461,7 +461,7 @@ function answer_heal(as, i, p, bef_f) {
 			// 回復
 			var heal_val = Math.floor(ass.rate * now.maxhp);
 			var before = now.nowhp;
-			heal_ally(heal_val, ci, true);
+			heal_ally(heal_val, ci/*, true*/);
 			Field.log_push("Unit[" + (ci + 1) + "]: HP回復(HP: " + before + "→" + now.nowhp + ")");
 			// 攻撃後処理
 			if (ass.after && ci == 0) {

@@ -215,7 +215,7 @@ function legend_timing_check(cards, nows, index, is_ignore_spskill) {
 		// L時の潜在を反映させる
 		add_awake_ally(cards, nows, index, true);
 		// L時のSSを発動する
-		if (is_ignore_spskill) {
+		if (!is_ignore_spskill) {
 			Awake_dospskill(Field, index);
 		}
 	}

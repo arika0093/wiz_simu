@@ -143,7 +143,7 @@ function damage_ally(dmg, index, neft_check) {
 
 // 味方を回復する
 function heal_ally(value, index, now) {
-	var now = now || Field.Allys.Now[index];
+	now = now || Field.Allys.Now[index];
 	var h_val = Math.floor(value);
 	// 死んでなかったら回復
 	if (now.nowhp > 0) {
