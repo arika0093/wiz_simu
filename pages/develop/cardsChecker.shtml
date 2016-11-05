@@ -272,7 +272,7 @@ function causalityCheck(card){
 		["以下で", "hp_less"],
 		["毒", "poison"],
 		["無に帰す", "ss_death_limit"],
-		["遅らせ", "ss_delay_"],
+		["遅らせ", "ss_delay"],
 		["攻撃力をアップ", "enhance"],
 		["精霊強化", "ss_reinforcement"],
 		["状態異常攻撃を無効", "ss_absattack_disable"],
