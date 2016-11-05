@@ -96,6 +96,11 @@ function check(){
                     if(ss.desc.indexOf("\n")!=-1){
                         putError(card, ss1ss2[ssn].toUpperCase()+"のdescに改行コードが含まれる", ss.desc)
                     }
+                    var ssprocstr=JSON.stringify(ss)
+                    if(ss.desc.indexOf("無視")==-1 && ssprocstr.indexOf('"target":"single"')!=-1 && 
+                    ssprocstr.indexOf('"target":"all"')!=-1 ){
+                        putError(card, ss1ss2[ssn].toUpperCase()+"のprocに敵全体向けと単体向けの両方が含まれる")
+                    }
                 }
             }
 
@@ -283,10 +288,15 @@ function causalityCheck(card){
 		["起死回生", "ss_revival"],
 		["蘇生", "ss_resurrection"],
 		["攻撃力アップの効果", "panel_attackup"],
+		//["攻撃力アップ(", "panel_attackup"],(RFが引っかかるのでNG)
 		["チェインプラスの効果", "panel_chainplus"],
+		["チェイン(", "panel_chainplus"],
 		["回復の効果", "panel_healally"],
+		["属性化", "ss_panel_change"],
 		["パネルにスキルチャージ", "panel_skillboost"],
+		["スキルチャージ(", "panel_skillboost"],
 		["軽減の効果", "panel_attr_guard"],
+		["ダメージ軽減", "panel_attr_guard"],
 		["解除", "break"],
 		["発動する", "ss_latest_copy"],
 		["シャッフル", "ss_panel_shuffle"],
