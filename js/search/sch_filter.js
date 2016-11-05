@@ -33,6 +33,7 @@ function schfl_create_queryobj() {
 	rst.ss_search_ao = Number($("#ss_cond").val());
 	rst.ss_target = Number($("#sch_ss_target").val());
 	// Awake
+	rst.aw_name = $("#s_awtext").val();
 	rst.awake_types = schfl_textarr_from_msel(".sch_aw_type option:selected");
 
 	return rst;
@@ -159,7 +160,7 @@ function schfl_grep_as(obj, as) {
 	var rst = true;
 	// AS説明部分一致
 	if (obj.as_name) {
-		rst = rst && (as.desc.indexOf(obj.as_name) >= 0);
+		rst = rst && schfl_string_match(as.desc, obj.as_name);
 	}
 	// ASを1次元配列に落としこむ
 	var arr_as = [];
@@ -227,7 +228,7 @@ function schfl_grep_ss(obj, ss, card) {
 	var rst = true;
 	// SS説明部分一致
 	if (obj.ss_name) {
-		rst = rst && (ss.desc.indexOf(obj.ss_name) >= 0);
+		rst = rst && schfl_string_match(ss.desc, obj.ss_name);
 	}
 	// 発動ターン確認
 	var fsturn = obj.ss_fastskl ? has_fastnum(card) : 0;
@@ -262,10 +263,12 @@ function schfl_grep_ss(obj, ss, card) {
 					var ischeck = false;
 					// type一致ならcheck関数を通す
 					if (!$.isArray(sst.proc)) {
-						ischeck = (e.name == sst.proc || (e.name == sst && !sst.proc) || sst.proc === null);
+						ischeck = ((e.name == sst.proc || (e.name == sst && !sst.proc)
+							&& (!sst.target || e.target == sst.target))
+							|| sst.proc === null);
 					} else {
 						ischeck = $.grep(sst.proc, function (f) {
-							return e.name == f;
+							return e.name == f && (!sst.target || e.target == sst.target);
 						}).length > 0;
 					}
 					if (ischeck) {
@@ -298,15 +301,27 @@ function schfl_grep_awake(obj, awake) {
 		return false;
 	}
 	var o_type = obj.awake_types[0];
-	if (!o_type) {
-		return true;
-	}
 	return $.grep(awake, function (e) {
-		var m_type = (e.type == sfdef_aw_namelist[o_type].type);
-		return m_type && sfdef_aw_namelist[o_type].check(e);
+		var m_type = o_type && (e.type == sfdef_aw_namelist[o_type].type);
+		return (!obj.aw_name || schfl_string_match(e.name, obj.aw_name))
+			&& (!m_type || sfdef_aw_namelist[o_type].check(e));
 	}).length > 0;
 }
 
+// 文字列一致をチェックする関数(スラッシュ始まりなら正規表現)
+function schfl_string_match(target, meta) {
+	if (meta.length <= 0) {
+		return false;
+	}
+	else if (meta[0] == '/') {
+		meta = meta.replace("/", "");
+		var rgxexp = new RegExp(meta, "i");
+		return target.match(rgxexp);
+	}
+	else {
+		return target.indexOf(meta) >= 0;
+	}
+}
 
 // 得られた結果を表示する関数
 function schfl_grepshow(cs, st) {
@@ -406,7 +421,7 @@ function schfl_grepshow_icon(cs, st) {
 	return;
 }
 
-
+// --------------------
 var cons = {
     name_q : {
         0:"を含む",
@@ -512,7 +527,10 @@ function searchText(q){
     if(ssEnableFlag){
         outp += appOpt(q, cons, "ss_target", "SS対象")
     }
-    if(q.awake_types.length > 0){
+    if (q.aw_name != "") {
+    	outp += "潜在能力説明文=\"" + q.aw_name + "\"を含む, "
+    }
+    if (q.awake_types.length > 0) {
         if(q.awake_types.length == 1){
             outp += "潜在種類=" + q.awake_types[0]
         }else{

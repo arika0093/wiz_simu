@@ -51310,7 +51310,7 @@ Cards = [{
 		Statusup(200,0),
 		Panel_boost([0,0,1,0,0,],1),
 		Fastskill(1),
-		Attr_relief([0,1,1,1,1,],10),
+		Attr_relief([1,1,1,1,1,],10),
 		Panel_boost([0,0,1,0,0,],2),
 		Fastskill(2),
 		Attr_statusup(0,200, [0,0,1,0,0,]),

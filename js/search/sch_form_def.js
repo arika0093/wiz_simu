@@ -132,30 +132,56 @@ var sfdef_ss_namelist = {
 		}
 	},
 	"敵全体に残滅大魔術": "ss_continue_damage",
-	"敵全体に割合ダメージ": "ss_ratiodamage_all",
-	"敵単体に割合ダメージ": "ss_ratiodamage_s",
+	"敵全体に割合ダメージ": {
+		proc: ["ss_ratiodamage", "ss_ratiodamage_all"],
+		target: "all",
+	},
+	"敵単体に割合ダメージ": {
+		proc: ["ss_ratiodamage", "ss_ratiodamage_s"],
+		target: "single",
+	},
 	// --- 補助関連 -------------------------
 	"味方全体攻撃力アップ": {
-		proc: "ss_enhance_all",
+		proc: ["ss_enhance", "ss_enhance_all"],
+		target: "ally",
 		genre: "《味方効果付与系》",
 	},
-	"自身の攻撃力アップ": "ss_enhance_own",
-	"味方全体にブースト": "ss_boost_enhance_all",
-	"自身にブースト": "ss_boost_enhance_s",
-	"味方全体のステータスアップ": "ss_statusup_all",
+	"自身の攻撃力アップ": {
+		proc: ["ss_enhance", "ss_enhance_own"],
+		target: "own",
+	},
+	"味方全体にブースト": {
+		proc: ["ss_boost_enhance", "ss_boost_enhance_all"],
+		target: "ally",
+	},
+	"自身にブースト": {
+		proc: ["ss_boost_enhance", "ss_boost_enhance_own"],
+		target: "own",
+	},
+	"味方全体のステータスアップ": {
+		proc: ["ss_statusup", "ss_statusup_all"],
+		target: "ally",
+	},
 	"精霊強化効果": "ss_reinforcement_all",
-	"ダメージブロック": "ss_damageblock_all",
+	"ダメージブロック": {
+		proc: ["ss_damageblock", "ss_damageblock_all"],
+	},
 	"状態異常無効": "ss_absattack_disable",
 	"スキルカウンター待機": "ss_skillcounter",
+	"多段カウンター待機": "ss_dualcounter",
 	"スキルブースト": "ss_skillboost",
 	"敵ダメージを軽減": "ss_attr_guard",
 	"挑発": "ss_provocate",
 	// --- 敵妨害関連 -----------------------
 	"全体遅延": {
-		proc: "ss_delay_all",
+		proc: "ss_delay",
+		target: "all",
 		genre: "《敵妨害系》",
 	},
-	"単体遅延": "ss_delay_s",
+	"単体遅延": {
+		proc: "ss_delay",
+		target: "single",
+	},
 	"敵に毒を付与": "poison",
 	"無に帰す": "ss_death_limit",
 	// --- 回復関連 -------------------------
