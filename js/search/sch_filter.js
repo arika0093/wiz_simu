@@ -303,8 +303,8 @@ function schfl_grep_awake(obj, awake) {
 	var o_type = obj.awake_types[0];
 	return $.grep(awake, function (e) {
 		var m_type = o_type && (e.type == sfdef_aw_namelist[o_type].type);
-		return (!obj.aw_name || schfl_string_match(e.name, obj.aw_name))　//潜在文字列検索側
-			&& (m_type && sfdef_aw_namelist[o_type].check(e));				//潜在タイプ側
+		return (obj.aw_name.length <= 0 || schfl_string_match(e.name, obj.aw_name)) //潜在文字列検索側
+			&& (!o_type || (m_type && sfdef_aw_namelist[o_type].check(e)));			//潜在タイプ側
 	}).length > 0;
 }
 
