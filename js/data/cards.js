@@ -30,7 +30,7 @@ Cards = [{
 		proc: ChainAttack(3, 3),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを火・雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([1,0,1,0,0])]
 	},
@@ -45,7 +45,7 @@ Cards = [{
 		proc: ChainAttack(0, 3),
 	},
 	ss2: {
-		desc: "ジャンルパネルを火・雷属性化し、ダメージ25％軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、ダメージ25％軽減の効果を付与",
 		turn: 8,
 		proc: [ss_panel_change([1,0,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)]
 	},
@@ -75,7 +75,7 @@ Cards = [{
 		proc: ChainDualAttack(3, 0, 3),
 	},
 	ss1: {
-		desc: "敵単体へ火属性のダメージ(200％)",
+		desc: "<大魔術>敵単体へ火属性のダメージ(200％)",
 		turn: 5,
 		proc: [ss_damage_s(2, [0], 1)],
 	},
@@ -89,7 +89,7 @@ Cards = [{
 		proc: ChainDualAttack(4, 0, 3),
 	},
 	ss2: {
-		desc: "敵単体へ火属性のダメージ(400％)",
+		desc: "<大魔術>敵単体へ火属性のダメージ(400％)",
 		turn: 8,
 		proc: [ss_damage_s(4, [0], 1)],
 	},
@@ -119,7 +119,7 @@ Cards = [{
 		proc: ChainAttrAttack(4, 0, [0, 0, 1, 0, 0]),
 	},
 	ss1: {
-		desc: "ジャンルパネルにチェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
 		turn: 4,
 		proc: [panel_chainplus(1)],
 	},
@@ -133,7 +133,7 @@ Cards = [{
 		proc: ChainAttrAttack(5, 0, [0, 0, 1, 0, 0]),
 	},
 	ss2: {
-		desc: "ジャンルパネルを火・雷属性化し、チェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、チェインがプラス1の効果を付与",
 		turn: 5,
 		proc: [ss_panel_change([1,0,1,0,0]), panel_chainplus(1)],
 	},
@@ -163,7 +163,7 @@ Cards = [{
 		proc: multi_as(ChainEnhance(0.3, [1,0,0,0,0], 0), ChainSpecEnhance(0.45, [1,0,0,0,0], [9], 0)),
 	},
 	ss1: {
-		desc: "2ターン火属性の味方の攻撃力をアップ(+40％)",
+		desc: "<ダメージ強化>2ターン火属性の味方の攻撃力をアップ(+40％)",
 		turn: 6,
 		proc: [ss_enhance_all(0.4, 2, [1,0,0,0,0])]
 	},
@@ -177,7 +177,7 @@ Cards = [{
 		proc: multi_as(ChainEnhance(0.3, [1,0,0,0,0], 0), ChainSpecEnhance(0.65, [1,0,0,0,0], [9], 0)),
 	},
 	ss2: {
-		desc: "4ターン火属性の味方の攻撃力をアップ(+60％)",
+		desc: "<ダメージ強化>4ターン火属性の味方の攻撃力をアップ(+60％)",
 		turn: 9,
 		proc: [ss_enhance_all(0.6, 2, [1,0,0,0,0])]
 	},
@@ -207,7 +207,7 @@ Cards = [{
 		proc: [ChainEnhance(0.2, [1,0,0,0,0], 0), ChainSpecEnhance(0.4, [1,0,0,0,0], [2, 9], 0)],
 	},
 	ss1: {
-		desc: "ジャンルパネルをシャッフル",
+		desc: "<シャッフル>ジャンルパネルをシャッフル",
 		turn: 3,
 		proc: [ss_panel_shuffle()]
 	},
@@ -221,7 +221,7 @@ Cards = [{
 		proc: [ChainEnhance(0.3, [1,0,0,0,0], 0), ChainSpecEnhance(0.6, [1,0,0,0,0], [2, 9], 0)],
 	},
 	ss2: {
-		desc: "ジャンルパネルを火属性化し、チェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを火属性化し、チェインがプラス1の効果を付与",
 		turn: 5,
 		proc: [ss_panel_change([1,0,0,0,0]), panel_chainplus(1)],
 	},
@@ -250,7 +250,7 @@ Cards = [{
 		proc: ChainAttack(2.5, 3),
 	},
 	ss1: {
-		desc: "敵全体へ火属性の究極ダメージ(180％)",
+		desc: "<大魔術>敵全体へ火属性の究極ダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [0])],
 	},
@@ -265,7 +265,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 3),
 	},
 	ss2: {
-		desc: "敵全体へ火属性の超究極ダメージ(260％)",
+		desc: "<大魔術>敵全体へ火属性の超究極ダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [0])],
 	},
@@ -295,7 +295,7 @@ Cards = [{
 		proc: ChainEnhance(0.5, [1,0,0,0,0], 3),
 	},
 	ss1: {
-		desc: "MAXHPの50％を使い敵全体へダメージ(260％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(260％)",
 		turn: 8,
 		proc: [ss_damage_all(2.6, [0]), ss_consume_own(0.5)],
 	},
@@ -309,7 +309,7 @@ Cards = [{
 		proc: ChainEnhance(0.7, [1,0,0,0,0], 3),
 	},
 	ss2: {
-		desc: "MAXHPの50％を使い敵全体へダメージ(330％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(330％)",
 		turn: 10,
 		proc: [ss_damage_all(3.3, [0]), ss_consume_own(0.5)],
 	},
@@ -340,7 +340,7 @@ Cards = [{
 		proc: ChainAllAttack(1.4, 0),
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ(180％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [0])],
 	},
@@ -355,7 +355,7 @@ Cards = [{
 		proc: ChainAllAttack(1.5, 0),
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ(260％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [0])],
 	},
@@ -385,7 +385,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 5, 6.5, 5),
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(通常：200％ / 雷属性：500％)",
+		desc: "<特効大魔術>敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(通常：200％ / 雷属性：500％)",
 		turn: 6,
 		proc: [ss_damage_all(special_attr([0,0,1,0,0], 5.0, 2.0), [0])],
 	},
@@ -399,7 +399,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 5, 9, 5),
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(通常：200％ / 雷属性：900％)",
+		desc: "<特効大魔術>敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(通常：200％ / 雷属性：900％)",
 		turn: 9,
 		proc: [ss_damage_all(special_attr([0,0,1,0,0], 9.0, 2.0), [0])],
 	},
@@ -429,7 +429,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.11, 0.15, 0.21, [1,0,0,0,0]),
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ(120％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(120％)",
 		turn: 5,
 		proc: [ss_damage_all(1.2, [0])],
 	},
@@ -443,7 +443,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.13, 0.17, 0.24, [1,0,0,0,0]),
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ、更に味方のHPを回復(攻撃：180％ / 回復：30％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ、更に味方のHPを回復(攻撃：180％ / 回復：30％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [0]), ss_heal(0.3)],
 	}
@@ -473,7 +473,7 @@ Cards = [{
 		proc: ChainAllAttack(1.8, 3),
 	},
 	ss1: {
-		desc: "敵単体の攻撃ターンを1遅らせる",
+		desc: "<遅延>敵単体の攻撃ターンを1遅らせる",
 		turn: 5,
 		proc: [ss_delay_s(1)]
 	},
@@ -487,7 +487,7 @@ Cards = [{
 		proc: ChainAllAttack(1.8, 0),
 	},
 	ss2: {
-		desc: "敵単体の攻撃ターンを1遅らせ、火属性のダメージ(180％)",
+		desc: "<遅延大魔術>敵単体の攻撃ターンを1遅らせ、火属性のダメージ(180％)",
 		turn: 6,
 		proc: [ss_damage_all(1.8, [0]), ss_delay_s(1)],
 	},
@@ -517,7 +517,7 @@ Cards = [{
 		proc: add_cond(ChainEnhance(0.5, [1,0,0,0,0], 0), as_consume_all(0.1)),
 	},
 	ss1: {
-		desc: "MAXHPの50％を使い敵全体へダメージ(260％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(260％)",
 		turn: 7,
 		proc: [ss_damage_all(2.6, [0]), ss_consume_own(0.5)],
 	},
@@ -531,7 +531,7 @@ Cards = [{
 		proc: add_cond(ChainEnhance(0.7, [1,0,0,0,0], 0), as_consume_all(0.1)),
 	},
 	ss2: {
-		desc: "MAXHPの50％を使い敵全体へダメージ(330％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(330％)",
 		turn: 9,
 		proc: [ss_damage_all(3.3, [0]), ss_consume_own(0.5)],
 	},
@@ -561,7 +561,7 @@ Cards = [{
 		proc: add_cond(ChainDualAttrAttack(5.0, 0, 3, [0,0,1,0,0]), when_hp_more(1)),
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ(150％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(150％)",
 		turn: 7,
 		proc: [ss_damage_all(1.5, [0])],
 	},
@@ -576,7 +576,7 @@ Cards = [{
 		proc: add_cond(ChainDualAttrAttack(6.0, 0, 3, [0,0,1,0,0]), when_hp_more(1)),
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ(220％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(220％)",
 		turn: 10,
 		proc: [ss_damage_all(2.2, [0])],
 	},
@@ -606,7 +606,7 @@ Cards = [{
 		proc: multi_as(Heal(0.11, [1,0,0,0,0]), add_cond(Heal(0.20, [1,0,0,0,0]), when_hp_less(0.5))),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50%を使い敵全体へダメージ(130％×味方の人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へダメージ(130％×味方の人数)",
 		turn: 11,
 		proc: [ss_damage_all(ss_consume_all_cond(1.3, 0.5), [0])],
 	},
@@ -620,7 +620,7 @@ Cards = [{
 		proc: multi_as(Heal(0.13, [1,0,0,0,0]), add_cond(Heal(0.22, [1,0,0,0,0]), when_hp_less(0.5))),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50%を使い敵全体へダメージ(160％×味方の人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へダメージ(160％×味方の人数)",
 		turn: 13,
 		proc: [ss_damage_all(ss_consume_all_cond(1.6, 0.5), [0])],
 	},
@@ -650,7 +650,7 @@ Cards = [{
 		proc: ChainSpecAttack(6.0, 0, [6, 9]),
 	},
 	ss1: {
-		desc: "敵全体に火属性ダメージ、5チェインを消費しさらにダメージアップ(通常：180％ / 5チェイン消費：230％)",
+		desc: "<大魔術>敵全体に火属性ダメージ、5チェインを消費しさらにダメージアップ(通常：180％ / 5チェイン消費：230％)",
 		turn: 8,
 		proc: [ss_damage_all(ss_chain_cost(5, 2.3, 1.8), [0])],
 	},
@@ -665,7 +665,7 @@ Cards = [{
 		proc: ChainSpecAttack(7.0, 0, [6, 9]),
 	},
 	ss2: {
-		desc: "敵全体に火属性ダメージ、5チェインを消費しさらにダメージアップ(通常：260％ / 5チェイン消費：310％)",
+		desc: "<大魔術>敵全体に火属性ダメージ、5チェインを消費しさらにダメージアップ(通常：260％ / 5チェイン消費：310％)",
 		turn: 12,
 		proc: [ss_damage_all(ss_chain_cost(5, 3.1, 2.6), [0])],
 	},
@@ -696,7 +696,7 @@ Cards = [{
 		proc: multi_as(Heal(0.11, [1, 1, 1, 1, 1]), SpecHeal(0.16, [1, 1, 1, 1, 1], [9])),
 	},
 	ss1: {
-		desc: "敵全体のHPを20％減少させる",
+		desc: "<割合削り>敵全体のHPを20％減少させる",
 		turn: 9,
 		proc: [ss_ratiodamage_all(0.2)],
 	},
@@ -710,7 +710,7 @@ Cards = [{
 		proc: multi_as(Heal(0.13, [1, 1, 1, 1, 1]), SpecHeal(0.18, [1, 1, 1, 1, 1], [9])),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50％を使い、敵全体のHPを30％減少させる",
+		desc: "<割合削り>味方全体のMAXHPの50％を使い、敵全体のHPを30％減少させる",
 		turn: 12,
 		proc: [ss_consume_all(0.5), ss_ratiodamage_all(0.3)],
 	},
@@ -740,7 +740,7 @@ Cards = [{
 		proc: ChainVarianceAttack(3.5, 3),
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ(180%)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(180%)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [0])],
 	},
@@ -755,7 +755,7 @@ Cards = [{
 		proc: ChainVarianceAttack(4.5, 3),
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ(260%)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(260%)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [0])],
 	},
@@ -786,7 +786,7 @@ Cards = [{
 		proc: multi_as(ChainDualAttack(4.5, 5, 3), ChainDualAttack(7.5, 10, 3)),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50%を使い敵全体へダメージ(130％×味方の人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へダメージ(130％×味方の人数)",
 		turn: 10,
 		proc: [ss_damage_all(ss_consume_all_cond(1.3, 0.5), [0])],
 	},
@@ -801,7 +801,7 @@ Cards = [{
 		proc: multi_as(ChainDualAttack(5.5, 5, 3), ChainDualAttack(8.5, 10, 3)),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50%を使い敵全体へダメージ(160％×味方の人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へダメージ(160％×味方の人数)",
 		turn: 12,
 		proc: [ss_damage_all(ss_consume_all_cond(1.6, 0.5), [0])],
 	},
@@ -831,7 +831,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 3),
 	},
 	ss1: {
-		desc: "MAXHPの50％を使い敵単体へダメージ(380％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵単体へダメージ(380％)",
 		turn: 8,
 		proc: [ss_damage_s(3.8, [0], 1), ss_consume_own(0.5)],
 	},
@@ -845,7 +845,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 3),
 	},
 	ss2: {
-		desc: "MAXHPの50％を使い敵単体へダメージ(500％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵単体へダメージ(500％)",
 		turn: 10,
 		proc: [ss_damage_s(5.0, [0], 1), ss_consume_own(0.5)],
 	},
@@ -875,7 +875,7 @@ Cards = [{
 		proc: [Heal(0.10, [1,0,0,0,0]), SpecHeal(0.15, [1,0,0,0,0], [9])],
 	},
 	ss1: {
-		desc: "ジャンルパネルを火属性化",
+		desc: "<パネル変換>ジャンルパネルを火属性化",
 		turn: 5,
 		proc: [ss_panel_change([1,0,0,0,0])]
 	},
@@ -889,7 +889,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,0,0,0,0]), SpecHeal(0.18, [1,0,0,0,0], [9])],
 	},
 	ss2: {
-		desc: "ジャンルパネルを火属性化し、攻撃力アップの効果を付与(+20％)",
+		desc: "<特殊パネル変換>ジャンルパネルを火属性化し、攻撃力アップの効果を付与(+20％)",
 		turn: 8,
 		proc: [ss_panel_change([1,0,0,0,0]), panel_attackup(0.20)],
 	},
@@ -933,7 +933,7 @@ Cards = [{
 		proc: ChainEnhance(0.9, [1,0,0,0,0], 5)
 	},
 	ss2: {
-		desc: "解答を見破る",
+		desc: "<解答削り>解答を見破る",
 		turn: 6,
 		proc: [ss_answer_foresight()]
 	},
@@ -964,7 +964,7 @@ Cards = [{
 		proc: ChainAttrAttack(9.65, 10, [0,0,1,0,0]),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50％を使い敵全体へダメージ(90％×味方の人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50％を使い敵全体へダメージ(90％×味方の人数)",
 		turn: 8,
 		proc: [ss_damage_all(ss_consume_all_cond(0.9, 0.5), [0])],
 	},
@@ -978,7 +978,7 @@ Cards = [{
 		proc: ChainAttrAttack(10.65, 10, [0,0,1,0,0]),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50％を使い敵全体へダメージ(130％×味方の人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50％を使い敵全体へダメージ(130％×味方の人数)",
 		turn: 10,
 		proc: [ss_damage_all(ss_consume_all_cond(1.3, 0.5), [0])],
 	},
@@ -1008,7 +1008,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(16.0, 0), when_hp_less(0.15)),
 	},
 	ss1: {
-		desc: "MAXHPの95％を使い敵全体へダメージ(330％)",
+		desc: "<自己犠牲魔術>MAXHPの95％を使い敵全体へダメージ(330％)",
 		turn: 6,
 		proc: [ss_damage_all(3.3, [0]), ss_consume_own(0.95)],
 	},
@@ -1022,7 +1022,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(21.0, 0), when_hp_less(0.15)),
 	},
 	ss2: {
-		desc: "MAXHPの95％を使い敵全体へダメージ(450％)",
+		desc: "<自己犠牲魔術>MAXHPの95％を使い敵全体へダメージ(450％)",
 		turn: 10,
 		proc: [ss_damage_all(4.5, [0]), ss_consume_own(0.95)],
 	},
@@ -1053,7 +1053,7 @@ Cards = [{
 		proc: [ChainAttack(3.5, 5), ChainAttack(6.5, 10)],
 	},
 	ss1: {
-		desc: "3ターン味方全体を徐々に回復する(15％×3T)",
+		desc: "<継続回復>3ターン味方全体を徐々に回復する(15％×3T)",
 		turn: 5,
 		proc: [ss_regenerate(0.15, 3)],
 	},
@@ -1067,7 +1067,7 @@ Cards = [{
 		proc: [ChainAttack(4.5, 5), ChainAttack(7.5, 10)],
 	},
 	ss2: {
-		desc: "味方全体のHPを回復する、さらに5ターン味方全体を徐々に回復する(回復：35％ / 徐々に回復：15％×5T)",
+		desc: "<継続回復>味方全体のHPを回復する、さらに5ターン味方全体を徐々に回復する(回復：35％ / 徐々に回復：15％×5T)",
 		turn: 9,
 		proc: [ss_heal(0.35), ss_regenerate(0.15, 5)],
 	},
@@ -1096,7 +1096,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.40, [3, 4], 0)
 	},
 	ss1: {
-		desc: "敵単体のHPを25％減少させる",
+		desc: "<割合削り>敵単体のHPを25％減少させる",
 		turn: 9,
 		proc: [ss_ratiodamage_s(0.25)],
 	},
@@ -1110,7 +1110,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.60, [3, 4], 0)
 	},
 	ss2: {
-		desc: "敵単体のHPを30％減少させる",
+		desc: "<割合削り>敵単体のHPを30％減少させる",
 		turn: 12,
 		proc: [ss_ratiodamage_s(0.3)],
 	},
@@ -1139,7 +1139,7 @@ Cards = [{
 		proc: multi_as(ChainEnhance(0.3, [1,0,0,0,0], 3), ChainSpecEnhance(0.6, [1,0,0,0,0], [8], 3)),
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを1早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早める",
 		turn: 6,
 		proc: [ss_skillboost(1)],
 	},
@@ -1153,7 +1153,7 @@ Cards = [{
 		proc: multi_as(ChainEnhance(0.4, [1,0,0,0,0], 3), ChainSpecEnhance(0.8, [1,0,0,0,0], [8], 3)),
 	},
 	ss2: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
 		turn: 8,
 		proc: [ss_skillboost(2)],
 	},
@@ -1183,7 +1183,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.4, [8], 0),
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ(180％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [0])],
 	},
@@ -1197,7 +1197,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.6, [8], 0),
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ(260％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [0])],
 	},
@@ -1227,7 +1227,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 5),
 	},
 	ss1: {
-		desc: "MAXHPの50％を使い敵全体へダメージ(260％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(260％)",
 		turn: 7,
 		proc: [ss_damage_all(2.6, [0]), ss_consume_own(0.5)],
 	},
@@ -1241,7 +1241,7 @@ Cards = [{
 		proc: ChainAttack(5.5, 5),
 	},
 	ss2: {
-		desc: "MAXHPの50％を使い敵全体へダメージ(330％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(330％)",
 		turn: 9,
 		proc: [ss_damage_all(3.3, [0]), ss_consume_own(0.5)],
 	},
@@ -1272,7 +1272,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 5),
 	},
 	ss1: {
-		desc: "敵全体のHPを20％減少させる",
+		desc: "<割合削り>敵全体のHPを20％減少させる",
 		turn: 9,
 		proc: [ss_ratiodamage_all(0.2)],
 	},
@@ -1286,7 +1286,7 @@ Cards = [{
 		proc: ChainAttack_as_consume_own(6.5, 5, 0.15),
 	},
 	ss2: {
-		desc: "敵全体のHPを25％減少させる",
+		desc: "<割合削り>敵全体のHPを25％減少させる",
 		turn: 12,
 		proc: [ss_ratiodamage_all(0.25)],
 	},
@@ -1316,7 +1316,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 5),
 	},
 	ss1: {
-		desc: "敵全体の攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)]
 	},
@@ -1330,7 +1330,7 @@ Cards = [{
 		proc: ChainAttack(5.5, 5),
 	},
 	ss2: {
-		desc: "スペシャルスキルの発動ターンを3早め、敵全体の攻撃ターンを3遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを3早め、敵全体の攻撃ターンを3遅らせる",
 		turn: 15,
 		proc: [ss_skillboost(3), ss_delay_all(3)],
 	},
@@ -1404,7 +1404,7 @@ Cards = [{
 		proc: ChainAttack(7, 10),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火属性化",
+		desc: "<パネル変換>ジャンルパネルを火属性化",
 		turn: 5,
 		proc: [ss_panel_change([1,0,0,0,0])]
 	},
@@ -1419,7 +1419,7 @@ Cards = [{
 		proc: ChainAttack(8, 10),
 	},
 	ss2: {
-		desc: "ジャンルパネルを火属性化し、攻撃力アップの効果を付与(30％)",
+		desc: "<特殊パネル変換>ジャンルパネルを火属性化し、攻撃力アップの効果を付与(30％)",
 		turn: 7,
 		proc: [ss_panel_change([1,0,0,0,0]), panel_attackup(0.3)],
 	},
@@ -1449,7 +1449,7 @@ Cards = [{
 		proc: ChainAttrAttack(4.0, 0, [0,0,1,0,0]),
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ(150％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(150％)",
 		turn: 7,
 		proc: [ss_damage_all(1.5, [0])],
 	},
@@ -1463,7 +1463,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.0, 0, [0,0,1,0,0]),
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ(230％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(230％)",
 		turn: 11,
 		proc: [ss_damage_all(2.3, [0])],
 	},
@@ -1493,7 +1493,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(4.5, 3), as_consume_all(0.1)),
 	},
 	ss1: {
-		desc: "MAXHPの50％を使い敵単体へダメージ(380％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵単体へダメージ(380％)",
 		turn: 7,
 		proc: [ss_damage_s(3.8, [0], 1), ss_consume_own(0.5)],
 	},
@@ -1507,7 +1507,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(5.5, 3), as_consume_all(0.1)),
 	},
 	ss2: {
-		desc: "MAXHPの50％を使い敵単体へダメージ(500％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵単体へダメージ(500％)",
 		turn: 9,
 		proc: [ss_damage_s(5.0, [0], 1), ss_consume_own(0.5)],
 	},
@@ -1537,7 +1537,7 @@ Cards = [{
 		proc: add_cond(ChainAttrAttack(5.0, 0, [0,0,1,0,0]), as_consume_all(0.1)),
 	},
 	ss1: {
-		desc: "MAXHPの50％を使い敵全体へダメージ(260％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(260％)",
 		turn: 7,
 		proc: [ss_damage_all(2.6, [0]), ss_consume_own(0.5)],
 	},
@@ -1551,7 +1551,7 @@ Cards = [{
 		proc: add_cond(ChainAttrAttack(6.0, 0, [0,0,1,0,0]), as_consume_all(0.1)),
 	},
 	ss2: {
-		desc: "MAXHPの50％を使い敵全体へダメージ(330％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(330％)",
 		turn: 9,
 		proc: [ss_damage_all(3.3, [0]), ss_consume_own(0.5)],
 	},
@@ -1582,7 +1582,7 @@ Cards = [{
 		proc: ChainDualAttack(3.5, 3, 3),
 	},
 	ss1: {
-		desc: "3ターン自分の攻撃力をアップ(150％)",
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(150％)",
 		turn: 6,
 		proc: [ss_enhance_own(1.5, 3)],
 	},
@@ -1595,7 +1595,7 @@ Cards = [{
 		proc: ChainDualAttack(3.5, 0, 3),
 	},
 	ss2: {
-		desc: "4ターン自分の攻撃力をアップ(250％)",
+		desc: "<ダメージ強化>4ターン自分の攻撃力をアップ(250％)",
 		turn: 8,
 		proc: [ss_enhance_own(2.5, 4)],
 	},
@@ -1625,7 +1625,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 7, 4),
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ(180％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(180％)",
 		turn: 9,
 		proc: [ss_damage_all(1.8, [0])],
 	},
@@ -1639,7 +1639,7 @@ Cards = [{
 		proc: ChainDualAttack(5.5, 7, 4),
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ(260％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(260％)",
 		turn: 13,
 		proc: [ss_damage_all(2.6, [0])],
 	},
@@ -1669,7 +1669,7 @@ Cards = [{
 		proc: multi_as(Heal(0.1, [1, 1, 1, 1, 1]), add_cond(Heal(0.13, [1, 1, 1, 1, 1]), when_leader())),
 	},
 	ss1: {
-		desc: "攻撃ターンを2遅らせる",
+		desc: "<遅延>攻撃ターンを2遅らせる",
 		turn: 9,
 		proc: [ss_delay_all(2)]
 	},
@@ -1684,7 +1684,7 @@ Cards = [{
 		proc: multi_as(Heal(0.13, [1, 1, 1, 1, 1]), add_cond(Heal(0.16, [1, 1, 1, 1, 1]), when_leader())),
 	},
 	ss2: {
-		desc: "攻撃ターンを2遅らせる、さらに味方全体のHPを回復する(50％)",
+		desc: "<遅延>攻撃ターンを2遅らせる、さらに味方全体のHPを回復する(50％)",
 		turn: 13,
 		proc: [ss_delay_all(2), ss_heal(0.5)],
 	},
@@ -1714,7 +1714,7 @@ Cards = [{
 		proc: [ChainDualAttack(2.5, 0, 3), add_cond(ChainDualAttack(3.0, 0, 3), when_hp_more(0.8))],
 	},
 	ss1: {
-		desc: "敵単体へ火属性の5回連続ダメージ(計180％)",
+		desc: "<多弾魔術>敵単体へ火属性の5回連続ダメージ(計180％)",
 		turn: 6,
 		proc: [ss_damage_s(1.8, [0], 5)],
 	},
@@ -1729,7 +1729,7 @@ Cards = [{
 		proc: [ChainDualAttack(3.5, 0, 3), add_cond(ChainDualAttack(4.0, 0, 3), when_hp_more(0.8))],
 	},
 	ss2: {
-		desc: "敵単体へ火属性の5回連続ダメージ(計380％)",
+		desc: "<多弾魔術>敵単体へ火属性の5回連続ダメージ(計380％)",
 		turn: 9,
 		proc: [ss_damage_s(3.8, [0], 5)],
 	},
@@ -1759,7 +1759,7 @@ Cards = [{
 		proc: ChainDualAttack(3.5, 5, 6),
 	},
 	ss1: {
-		desc: "MAXHPの60％を使い、3ターン自分の攻撃力をアップ(150％)",
+		desc: "<ダメージ強化>MAXHPの60％を使い、3ターン自分の攻撃力をアップ(150％)",
 		turn: 6,
 		proc: [ss_enhance_own(1.5, 3), ss_consume_own(0.6)],
 	},
@@ -1774,7 +1774,7 @@ Cards = [{
 		proc: ChainDualAttack(3.5, 0, 6),
 	},
 	ss2: {
-		desc: "MAXHPの60％を使い、4ターン自分の攻撃力をアップ(250％)",
+		desc: "<ダメージ強化>MAXHPの60％を使い、4ターン自分の攻撃力をアップ(250％)",
 		turn: 8,
 		proc: [ss_enhance_own(2.5, 4), ss_consume_own(0.6)],
 	},
@@ -1803,7 +1803,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(4.0, 0, 4, [0,0,1,0,0]),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火属性化",
+		desc: "<パネル変換>ジャンルパネルを火属性化",
 		turn: 5,
 		proc: [ss_panel_change([1,0,0,0,0])]
 	},
@@ -1817,7 +1817,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(5.0, 0, 4, [0,0,1,0,0]),
 	},
 	ss2: {
-		desc: "ジャンルパネルを火属性化し、攻撃力アップの効果を付与(+30％)",
+		desc: "<特殊パネル変換>ジャンルパネルを火属性化し、攻撃力アップの効果を付与(+30％)",
 		turn: 7,
 		proc: [ss_panel_change([1,0,0,0,0]), panel_attackup(0.3)],
 	},
@@ -1846,7 +1846,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(3.0, 0), when_hp_more(0.8)),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火属性化",
+		desc: "<パネル変換>ジャンルパネルを火属性化",
 		turn: 5,
 		proc: [ss_panel_change([1,0,0,0,0])]
 	},
@@ -1860,7 +1860,7 @@ Cards = [{
 		proc: [add_cond(ChainAttack(3.0, 0), when_hp_more(0.8)), add_cond(ChainAttack(7.0, 0), when_hp_more(0.8))],
 	},
 	ss2: {
-		desc: "ジャンルパネルを火属性化し、チェインがプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを火属性化し、チェインがプラス2の効果を付与",
 		turn: 7,
 		proc: [ss_panel_change([1,0,0,0,0]), panel_chainplus(2)],
 	},
@@ -1890,7 +1890,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.5, 5, [0,0,1,0,0]),
 	},
 	ss1: {
-		desc: "敵単体へ火属性のダメージ(200％)",
+		desc: "<大魔術>敵単体へ火属性のダメージ(200％)",
 		turn: 5,
 		proc: [ss_damage_s(2.0, [0], 1)],
 	},
@@ -1904,7 +1904,7 @@ Cards = [{
 		proc: ChainAttrAttack(7.5, 5, [0,0,1,0,0]),
 	},
 	ss2: {
-		desc: "敵単体へ火属性のダメージ(400％)",
+		desc: "<大魔術>敵単体へ火属性のダメージ(400％)",
 		turn: 8,
 		proc: [ss_damage_s(4.0, [0], 1)],
 	},
@@ -1934,7 +1934,7 @@ Cards = [{
 		proc: ChainEnhance(0.35, [1,0,0,0,0], 0),
 	},
 	ss1: {
-		desc: "4ターン敵全体に毒のダメージを与える(5000ダメージ)",
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(5000ダメージ)",
 		turn: 7,
 		proc: [poison(5000, 4)],
 	},
@@ -1949,7 +1949,7 @@ Cards = [{
 		proc: ChainEnhance(0.55, [1,0,0,0,0], 0),
 	},
 	ss2: {
-		desc: "4ターン敵全体に毒のダメージを与える(9999ダメージ)",
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(9999ダメージ)",
 		turn: 11,
 		proc: [poison(9999, 4)],
 	},
@@ -1980,7 +1980,7 @@ Cards = [{
 		proc: ChainEnhance(0.8, [1,0,0,0,0], 7),
 	},
 	ss1: {
-		desc: "ジャンルパネルにチェインがプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
 		turn: 5,
 		proc: [panel_chainplus(2)],
 	},
@@ -1995,7 +1995,7 @@ Cards = [{
 		proc: ChainEnhance(1.0, [1,0,0,0,0], 7),
 	},
 	ss2: {
-		desc: "ジャンルパネルにチェインがプラス3の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス3の効果を付与",
 		turn: 8,
 		proc: [panel_chainplus(3)],
 	},
@@ -2024,7 +2024,7 @@ Cards = [{
 		proc: [add_cond(ChainAttack(2.5, 0), when_hp_more(0.8)), add_cond(ChainAttack(3.0, 0), when_hp_more(0.8), when_leader())],
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ(180％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [0])],
 	},
@@ -2039,7 +2039,7 @@ Cards = [{
 		proc: [add_cond(ChainAttack(3.5, 0), when_hp_more(0.8)), add_cond(ChainAttack(4.0, 0), when_hp_more(0.8), when_leader())],
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ(260％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [0])],
 	},
@@ -2069,7 +2069,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(4.0, 0, 3, [0,0,1,0,0]),
 	},
 	ss1: {
-		desc: "敵単体へ火属性の5回連続ダメージ(計180％)",
+		desc: "<多弾魔術>敵単体へ火属性の5回連続ダメージ(計180％)",
 		turn: 5,
 		proc: [ss_damage_s(1.8, [0], 5)],
 	},
@@ -2083,7 +2083,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(5.0, 0, 3, [0,0,1,0,0]),
 	},
 	ss2: {
-		desc: "敵単体へ火属性の5回連続ダメージ(計380％)",
+		desc: "<多弾魔術>敵単体へ火属性の5回連続ダメージ(計380％)",
 		turn: 8,
 		proc: [ss_damage_s(3.8, [0], 5)],
 	},
@@ -2113,7 +2113,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 3),
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ(180％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [0])],
 	},
@@ -2127,7 +2127,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 3),
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ(260％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [0])],
 	},
@@ -2157,7 +2157,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 4.0, 5.5, 3),
 	},
 	ss1: {
-		desc: "敵全体へ火・雷属性のダメージ(180％)",
+		desc: "<大魔術>敵全体へ火・雷属性のダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [0, 2])],
 	},
@@ -2171,7 +2171,7 @@ Cards = [{
 		proc: add_cond(ChainPanelsAttack(0, 5.0, 9.0, 3), as_consume_own(0.15)),
 	},
 	ss2: {
-		desc: "敵全体へ火・雷属性のダメージ(260％)",
+		desc: "<大魔術>敵全体へ火・雷属性のダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [0, 2])],
 	},
@@ -2201,7 +2201,7 @@ Cards = [{
 		proc: [ChainEnhance(0.4, [1,0,0,0,0], 0), add_cond(ChainEnhance(0.5, [1,0,0,0,0], 0), when_leader())],
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ(180％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [0])],
 	},
@@ -2215,7 +2215,7 @@ Cards = [{
 		proc: [ChainEnhance(0.6, [1,0,0,0,0], 0), add_cond(ChainEnhance(0.7, [1,0,0,0,0], 0), when_leader())],
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ(260％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [0])],
 	},
@@ -2246,7 +2246,7 @@ Cards = [{
 		proc: ChainAllAttack(1.8, 3),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50％を使い敵全体へダメージ(90％×味方の人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50％を使い敵全体へダメージ(90％×味方の人数)",
 		turn: 8,
 		proc: [ss_damage_all(ss_consume_all_cond(0.9, 0.5), [0])],
 	},
@@ -2260,7 +2260,7 @@ Cards = [{
 		proc: ChainAllAttack(2.2, 3),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50％を使い敵全体へダメージ(130％×味方の人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50％を使い敵全体へダメージ(130％×味方の人数)",
 		turn: 10,
 		proc: [ss_damage_all(ss_consume_all_cond(1.3, 0.5), [0])],
 	},
@@ -2290,7 +2290,7 @@ Cards = [{
 		proc: ChainEnhance(0.6, [1,0,0,0,0], 5),
 	},
 	ss1: {
-		desc: "ジャンルパネルにチェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
 		turn: 3,
 		proc: [panel_chainplus(1)],
 	},
@@ -2304,7 +2304,7 @@ Cards = [{
 		proc: ChainEnhance(0.9, [1,0,0,0,0], 5),
 	},
 	ss2: {
-		desc: "ジャンルパネルにチェインがプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
 		turn: 5,
 		proc: [panel_chainplus(2)],
 	},
@@ -2335,7 +2335,7 @@ Cards = [{
 		proc: add_cond(ChainEnhance(0.5, [1,0,0,0,0], 0), when_hp_more(0.8)),
 	},
 	ss1: {
-		desc: "直前に発動したスペシャルスキルを発動する",
+		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
 		turn: 9,
 		proc: [ss_latest_copy()],
 	},
@@ -2349,7 +2349,7 @@ Cards = [{
 		proc: add_cond(ChainEnhance(0.7, [1,0,0,0,0], 0), when_hp_more(0.8)),
 	},
 	ss2: {
-		desc: "直前に発動したスペシャルスキルを発動する",
+		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
 		turn: 9,
 		proc: [ss_latest_copy()],
 	},
@@ -2378,7 +2378,7 @@ Cards = [{
 		proc: ChainEnhance(0.8, [1,0,0,0,0], 7),
 	},
 	ss1: {
-		desc: "攻撃ターンを2遅らせる",
+		desc: "<遅延>攻撃ターンを2遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(2)]
 	},
@@ -2392,7 +2392,7 @@ Cards = [{
 		proc: ChainEnhance(1.0, [1,0,0,0,0], 7),
 	},
 	ss2: {
-		desc: "攻撃ターンを3遅らせる",
+		desc: "<遅延>攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)]
 	},
@@ -2422,7 +2422,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.4, [1, 8], 0),
 	},
 	ss1: {
-		desc: "敵全体へ火属性の究極ダメージ(180％)",
+		desc: "<大魔術>敵全体へ火属性の究極ダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [0])],
 	},
@@ -2436,7 +2436,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.6, [1, 8], 0),
 	},
 	ss2: {
-		desc: "敵全体へ火属性の超究極ダメージ(260％)",
+		desc: "<大魔術>敵全体へ火属性の超究極ダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [0])],
 	},
@@ -2466,7 +2466,7 @@ Cards = [{
 		proc: ChainAttrAttack(4.0, 0, [0,0,1,0,0]),
 	},
 	ss1: {
-		desc: "攻撃ターンを3遅らせる",
+		desc: "<遅延>攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)]
 	},
@@ -2480,7 +2480,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.0, 0, [0,0,1,0,0]),
 	},
 	ss2: {
-		desc: "攻撃ターンを3遅らせ、敵全体へ火属性のダメージ(180％)",
+		desc: "<遅延大魔術>攻撃ターンを3遅らせ、敵全体へ火属性のダメージ(180％)",
 		turn: 15,
 		proc: [ss_delay_all(3), ss_damage_all(1.8, [0])],
 	},
@@ -2510,7 +2510,7 @@ Cards = [{
 		proc: [ChainAttrAttack(3.5, 3, [0,0,1,0,0]), ChainAttrAttack(8.5, 10, [0,0,1,0,0])],
 	},
 	ss1: {
-		desc: "ジャンルパネルをシャッフル",
+		desc: "<シャッフル>ジャンルパネルをシャッフル",
 		turn: 3,
 		proc: [ss_panel_shuffle()]
 	},
@@ -2524,7 +2524,7 @@ Cards = [{
 		proc: [ChainAttrAttack(4.5, 3, [0,0,1,0,0]), ChainAttrAttack(9.5, 10, [0,0,1,0,0])],
 	},
 	ss2: {
-		desc: "ジャンルパネルを火属性化し、チェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを火属性化し、チェインがプラス1の効果を付与",
 		turn: 5,
 		proc: [ss_panel_change([1,0,0,0,0]), panel_chainplus(1)],
 	},
@@ -2555,7 +2555,7 @@ Cards = [{
 		proc: [ChainEnhance(0.4, [1,0,0,0,0], 3), ChainEnhance(1.0, [1,0,0,0,0], 10)],
 	},
 	ss1: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 6,
 		proc: [ss_panel_change([1,1,1,0,0])]
 	},
@@ -2569,7 +2569,7 @@ Cards = [{
 		proc: [ChainEnhance(0.6, [1,0,0,0,0], 3), ChainEnhance(1.2, [1,0,0,0,0], 10)],
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化し、チェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、チェインがプラス1の効果を付与",
 		turn: 8,
 		proc: [ss_panel_change([1,1,1,0,0]), panel_chainplus(1)],
 	},
@@ -2600,7 +2600,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 4.0, 5.5, 3),
 	},
 	ss1: {
-		desc: "3ターン自分の攻撃力をアップ(150％)",
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(150％)",
 		turn: 6,
 		proc: [ss_enhance_own(1.5, 3)],
 	},
@@ -2614,7 +2614,7 @@ Cards = [{
 		proc: add_cond(ChainPanelsAttack(0, 5.0, 9.0, 3), as_consume_own(0.15)),
 	},
 	ss2: {
-		desc: "4ターン自分の攻撃力をアップ(250％)",
+		desc: "<ダメージ強化>4ターン自分の攻撃力をアップ(250％)",
 		turn: 8,
 		proc: [ss_enhance_own(2.5, 4)],
 	},
@@ -2644,7 +2644,7 @@ Cards = [{
 		proc: [ChainDualAttack(3.0, 3, 5), add_cond(ChainDualAttack(3.5, 3, 5), when_hp_more(0.9))]
 	},
 	ss1: {
-		desc: "MAXHPの50％を使い敵単体へダメージ(260％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵単体へダメージ(260％)",
 		turn: 5,
 		proc: [ss_damage_s(2.6, [0], 1), ss_consume_own(0.5)],
 	},
@@ -2659,7 +2659,7 @@ Cards = [{
 		proc: [ChainDualAttack(3.0, 0, 5), add_cond(ChainDualAttack(3.5, 0, 5), when_hp_more(0.9))]
 	},
 	ss2: {
-		desc: "MAXHPの50％を使い敵単体へダメージ(380％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵単体へダメージ(380％)",
 		turn: 7,
 		proc: [ss_damage_s(3.8, [0], 1), ss_consume_own(0.5)],
 	},
@@ -2689,7 +2689,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 3),
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ、さらに味方全体のHPを回復(攻撃：150％ / 回復：20％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ、さらに味方全体のHPを回復(攻撃：150％ / 回復：20％)",
 		turn: 6,
 		proc: [ss_damage_all(1.5, [0]), ss_heal(0.2)],
 	},
@@ -2703,7 +2703,7 @@ Cards = [{
 		proc: [ChainAttack(3.5, 3), Heal(0.05, [1,0,0,0,0], 3)],
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ、さらに味方全体のHPを回復(攻撃：200％ / 回復：25％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ、さらに味方全体のHPを回復(攻撃：200％ / 回復：25％)",
 		turn: 9,
 		proc: [ss_damage_all(2.0, [0]), ss_heal(0.25)],
 	},
@@ -2748,7 +2748,7 @@ Cards = [{
 		proc: ChainEnhance(0.6, [1,0,0,0,0], 0),
 	},
 	ss2: {
-		desc: "解答を見破る",
+		desc: "<解答削り>解答を見破る",
 		turn: 6,
 		proc: [ss_answer_foresight()]
 	},
@@ -2778,7 +2778,7 @@ Cards = [{
 		proc: [ChainAttrAttack(3.0, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(4.5, 0, [0,0,1,0,0]), when_hp_more(0.8))],
 	},
 	ss1: {
-		desc: "敵単体のHP20％減少させる、5チェインを消費しさらに15％減少させる",
+		desc: "<割合削り>敵単体のHP20％減少させる、5チェインを消費しさらに15％減少させる",
 		turn: 9,
 		proc: [ss_ratiodamage_s(ss_chain_cost(5, 0.35, 0.25))],
 	},
@@ -2792,7 +2792,7 @@ Cards = [{
 		proc: [ChainAttrAttack(4.0, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(5.5, 0, [0,0,1,0,0]), when_hp_more(0.8))],
 	},
 	ss2: {
-		desc: "敵単体のHP25％減少させる、5チェインを消費しさらに15％減少させる",
+		desc: "<割合削り>敵単体のHP25％減少させる、5チェインを消費しさらに15％減少させる",
 		turn: 12,
 		proc: [ss_ratiodamage_s(ss_chain_cost(5, 0.40, 0.25))],
 	},
@@ -2822,7 +2822,7 @@ Cards = [{
 		proc: [ChainEnhance(0.3, [1,0,0,0,0], 0), ChainSpecEnhance(0.45, [1,0,0,0,0], [9], 0)]
 	},
 	ss1: {
-		desc: "MAXHPの50％を使い敵全体へダメージ(260％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(260％)",
 		turn: 7,
 		proc: [ss_damage_all(2.6, [0]), ss_consume_own(0.5)],
 	},
@@ -2836,7 +2836,7 @@ Cards = [{
 		proc: [ChainEnhance(0.4, [1,0,0,0,0], 0), ChainSpecEnhance(0.65, [1,0,0,0,0], [9], 0)]
 	},
 	ss2: {
-		desc: "MAXHPの50％を使い敵全体へダメージ(330％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(330％)",
 		turn: 9,
 		proc: [ss_damage_all(3.3, [0]), ss_consume_own(0.5)],
 	},
@@ -2866,7 +2866,7 @@ Cards = [{
 		proc: ChainAttack(4, 4.0),
 	},
 	ss1: {
-		desc: "MAXHPの50％を使い、敵単体へ火・雷属性の5回連続ダメージ(計250％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い、敵単体へ火・雷属性の5回連続ダメージ(計250％)",
 		turn: 5,
 		proc: [ss_damage_s(2.5, [0, 2], 5), ss_consume_own(0.5)],
 	},
@@ -2880,7 +2880,7 @@ Cards = [{
 		proc: ChainAttack(4, 5.0),
 	},
 	ss2: {
-		desc: "MAXHPの50％を使い、敵単体へ火・雷属性の5回連続ダメージ(計450％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い、敵単体へ火・雷属性の5回連続ダメージ(計450％)",
 		turn: 8,
 		proc: [ss_damage_s(4.5, [0, 2], 5), ss_consume_own(0.5)],
 	},
@@ -2910,7 +2910,7 @@ Cards = [{
 		proc: ChainAttack(4.0, 5),
 	},
 	ss1: {
-		desc: "敵単体の攻撃ターンを1遅らせる",
+		desc: "<遅延>敵単体の攻撃ターンを1遅らせる",
 		turn: 7,
 		proc: [ss_delay_s(1)]
 	},
@@ -2925,7 +2925,7 @@ Cards = [{
 		proc: [ChainAttack(4.0, 5), Heal(0.05, [1, 0, 1, 0, 0], 5)],
 	},
 	ss2: {
-		desc: "敵単体の攻撃ターンを1遅らせ、火属性のダメージ(180％)",
+		desc: "<遅延大魔術>敵単体の攻撃ターンを1遅らせ、火属性のダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [0]), ss_delay_s(1)],
 	},
@@ -2956,7 +2956,7 @@ Cards = [{
 		proc: ChainVarianceAttack(4.5, 4),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50％を使い、ジャンルパネルにチェインがプラス3の効果を付与",
+		desc: "<特殊パネル変換>味方全体のMAXHPの50％を使い、ジャンルパネルにチェインがプラス3の効果を付与",
 		turn: 5,
 		proc: [panel_chainplus(3), ss_consume_all(0.5)],
 	},
@@ -2970,7 +2970,7 @@ Cards = [{
 		proc: ChainVarianceAttack(5.5, 4),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50％を使い、ジャンルパネルにチェインがプラス4の効果を付与",
+		desc: "<特殊パネル変換>味方全体のMAXHPの50％を使い、ジャンルパネルにチェインがプラス4の効果を付与",
 		turn: 8,
 		proc: [panel_chainplus(4), ss_consume_all(0.5)],
 	},
@@ -3000,7 +3000,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 5, 3),
 	},
 	ss1: {
-		desc: "攻撃ターンを2遅らせる",
+		desc: "<遅延>攻撃ターンを2遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(2)]
 	},
@@ -3014,7 +3014,7 @@ Cards = [{
 		proc: ChainDualAttack(5.5, 5, 3),
 	},
 	ss2: {
-		desc: "攻撃ターンを2遅らせ、20チェインで更に2遅らせる",
+		desc: "<遅延>攻撃ターンを2遅らせ、20チェインで更に2遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(ss_chain_cond(20, 4, 2))]
 	},
@@ -3044,7 +3044,7 @@ Cards = [{
 		proc: add_cond(ChainPanelsAttack(2.5, 4.0, 5.5, 0), when_hp_more(0.8)),
 	},
 	ss1: {
-		desc: "敵全体へ火・雷属性のダメージ(180％)",
+		desc: "<大魔術>敵全体へ火・雷属性のダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [0, 2])],
 	},
@@ -3059,7 +3059,7 @@ Cards = [{
 		proc: add_cond(ChainPanelsAttack(3.5, 5.0, 6.5, 0), when_hp_more(0.8)),
 	},
 	ss2: {
-		desc: "敵全体へ火・雷属性のダメージ(260％)",
+		desc: "<大魔術>敵全体へ火・雷属性のダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [0, 2])],
 	},
@@ -3089,7 +3089,7 @@ Cards = [{
 		proc: ChainDeckAttrsAttack(2.5, 4.0, 5.5, 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火・水属性化",
+		desc: "<パネル変換>ジャンルパネルを火・水属性化",
 		turn: 5,
 		proc: [ss_panel_change([1,1,0,0,0])]
 	},
@@ -3103,7 +3103,7 @@ Cards = [{
 		proc: ChainDeckAttrsAttack(3.0, 5.0, 7.0, 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルを火・水属性化し、ダメージ25％軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを火・水属性化し、ダメージ25％軽減の効果を付与",
 		turn: 7,
 		proc: [ss_panel_change([1,1,0,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)]
 	},
@@ -3133,7 +3133,7 @@ Cards = [{
 		proc: multi_as(ChainAttrAttack(3, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(13, 0, [0,0,1,0,0]), when_hp_less(0.5))),
 	},
 	ss1: {
-		desc: "1ターン、致死ダメージを受けたら一度だけHP15％で起死回生",
+		desc: "<起死回生>1ターン、致死ダメージを受けたら一度だけHP15％で起死回生",
 		turn: 8,
 		proc: [ss_revival(0.15, 1)],
 	},
@@ -3148,7 +3148,7 @@ Cards = [{
 		proc: multi_as(ChainAttrAttack(4, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(19, 0, [0,0,1,0,0]), when_hp_less(0.5))),
 	},
 	ss2: {
-		desc: "2ターン、致死ダメージを受けたら一度だけHP15％で起死回生",
+		desc: "<起死回生>2ターン、致死ダメージを受けたら一度だけHP15％で起死回生",
 		turn: 10,
 		proc: [ss_revival(0.15, 2)],
 	},
@@ -3179,7 +3179,7 @@ Cards = [{
 		proc: multi_as(ChainEnhance(0.4, [1,0,0,0,0], 5), ChainSpecEnhance(0.7, [1,0,0,0,0], [9], 5)),
 	},
 	ss1: {
-		desc: "3ターン全属性のダメージを25％軽減する",
+		desc: "<ガード>3ターン全属性のダメージを25％軽減する",
 		turn: 5,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)]
 	},
@@ -3194,7 +3194,7 @@ Cards = [{
 		proc: multi_as(ChainEnhance(0.7, [1,0,0,0,0], 5), ChainSpecEnhance(1.0, [1,0,0,0,0], [9], 5)),
 	},
 	ss2: {
-		desc: "3ターン全属性のダメージを50％軽減する",
+		desc: "<ガード>3ターン全属性のダメージを50％軽減する",
 		turn: 9,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)]
 	},
@@ -3224,7 +3224,7 @@ Cards = [{
 		proc: [Heal(0.11, [1, 1, 0, 0, 0]), add_cond(Heal(0.21, [1, 1, 0, 0, 0]), when_hp_less(0.5))],
 	},
 	ss1: {
-		desc: "3ターン全属性のダメージを25％軽減する",
+		desc: "<ガード>3ターン全属性のダメージを25％軽減する",
 		turn: 5,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)]
 	},
@@ -3238,7 +3238,7 @@ Cards = [{
 		proc: [Heal(0.13, [1, 1, 0, 0, 0]), add_cond(Heal(0.23, [1, 1, 0, 0, 0]), when_hp_less(0.5))],
 	},
 	ss2: {
-		desc: "3ターン全属性のダメージを50％軽減する",
+		desc: "<ガード>3ターン全属性のダメージを50％軽減する",
 		turn: 9,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)]
 	},
@@ -3269,7 +3269,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 5, 3),
 	},
 	ss1: {
-		desc: "5ターン600以下の全属性ダメージを無効化する",
+		desc: "<ダメージブロック>5ターン600以下の全属性ダメージを無効化する",
 		turn: 9,
 		proc: [ss_damageblock_all(600, 5)],
 	},
@@ -3283,7 +3283,7 @@ Cards = [{
 		proc: ChainDualAttack(5.0, 5, 3),
 	},
 	ss2: {
-		desc: "5ターン800以下の全属性ダメージを無効化する",
+		desc: "<ダメージブロック>5ターン800以下の全属性ダメージを無効化する",
 		turn: 12,
 		proc: [ss_damageblock_all(800, 5)]
 	},
@@ -3313,7 +3313,7 @@ Cards = [{
 		proc: ChainVarianceAttack(2.75, 0),
 	},
 	ss1: {
-		desc: "2ターン火・水属性のダメージを70％軽減する",
+		desc: "<ガード>2ターン火・水属性のダメージを70％軽減する",
 		turn: 9,
 		proc: [ss_attr_guard([1,1,0,0,0], 0.7, 2)]
 	},
@@ -3327,7 +3327,7 @@ Cards = [{
 		proc: ChainVarianceAttack(3.75, 0),
 	},
 	ss2: {
-		desc: "3ターン火・水属性のダメージを70％軽減する",
+		desc: "<ガード>3ターン火・水属性のダメージを70％軽減する",
 		turn: 12,
 		proc: [ss_attr_guard([1,1,0,0,0], 0.7, 3)]
 	},
@@ -3356,7 +3356,7 @@ Cards = [{
 		proc: [ChainEnhance(0.2, [1,0,0,0,0], 0), ChainSpecEnhance(0.4, [1,0,0,0,0], [9], 0)],
 	},
 	ss1: {
-		desc: "ジャンルパネルを火・水属性化",
+		desc: "<パネル変換>ジャンルパネルを火・水属性化",
 		turn: 5,
 		proc: [ss_panel_change([1,1,0,0,0])]
 	},
@@ -3370,7 +3370,7 @@ Cards = [{
 		proc: [ChainEnhance(0.3, [1,0,0,0,0], 0), ChainSpecEnhance(0.6, [1,0,0,0,0], [9], 0)],
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 7,
 		proc: [ss_panel_change([1,1,1,0,0])]
 	},
@@ -3400,7 +3400,7 @@ Cards = [{
 		proc: add_cond(ChainVarianceAttack(4.5, 3), as_consume_all(0.15)),
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ(180％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [0])],
 	},
@@ -3415,7 +3415,7 @@ Cards = [{
 		proc: add_cond(ChainVarianceAttack(5.5, 3), as_consume_all(0.15)),
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ(260％)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [0])],
 	},
@@ -3445,7 +3445,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.5, 5, [0,0,1,0,0]),
 	},
 	ss1: {
-		desc: "敵全体のガードを解除する",
+		desc: "<効果解除>敵全体のガードを解除する",
 		turn: 6,
 		proc: [ss_break_attrguard()]
 	},
@@ -3459,7 +3459,7 @@ Cards = [{
 		proc: ChainAttrAttack(7.5, 5, [0,0,1,0,0]),
 	},
 	ss2: {
-		desc: "敵全体のガード＆ダメージブロックを解除する",
+		desc: "<効果解除>敵全体のガード＆ダメージブロックを解除する",
 		turn: 8,
 		proc: [ss_break_attrguard(), ss_break_dblock()]
 	},
@@ -3489,7 +3489,7 @@ Cards = [{
 		proc: ChainAttack(5.0, 7),
 	},
 	ss1: {
-		desc: "敵単体のガード＆ダメージブロックを解除する",
+		desc: "<効果解除>敵単体のガード＆ダメージブロックを解除する",
 		turn: 9,
 		proc: [ss_break_attrguard(), ss_break_dblock()]
 	},
@@ -3504,7 +3504,7 @@ Cards = [{
 		proc: ChainAttack(6.0, 7),
 	},
 	ss2: {
-		desc: "敵単体のガード＆ダメージブロックを解除し、火属性のダメージ(400％)",
+		desc: "<効果解除大魔術>敵単体のガード＆ダメージブロックを解除し、火属性のダメージ(400％)",
 		turn: 13,
 		proc: [ss_damage_s(4.0, [0], 1), ss_break_attrguard(), ss_break_dblock()],
 	},
@@ -3534,7 +3534,7 @@ Cards = [{
 		proc: ChainVarianceAttack(3.0, 3),
 	},
 	ss1: {
-		desc: "敵単体へ火属性の5回連続ダメージ(150％)",
+		desc: "<多弾魔術>敵単体へ火属性の5回連続ダメージ(150％)",
 		turn: 5,
 		proc: [ss_damage_s(1.5, [0], 5)],
 	},
@@ -3549,7 +3549,7 @@ Cards = [{
 		proc: ChainVarianceAttack(4.0, 3),
 	},
 	ss2: {
-		desc: "敵単体へ火属性の5回連続ダメージ(350％)",
+		desc: "<多弾魔術>敵単体へ火属性の5回連続ダメージ(350％)",
 		turn: 8,
 		proc: [ss_damage_s(3.5, [0], 5)],
 	},
@@ -3580,7 +3580,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(5.25, 3, 3, [0,0,1,0,0]),
 	},
 	ss1: {
-		desc: "3ターン自分の攻撃力をアップ(150％)",
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(150％)",
 		turn: 6,
 		proc: [ss_enhance_own(1.5, 3)],
 	},
@@ -3595,7 +3595,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(6.25, 3, 3, [0,0,1,0,0]),
 	},
 	ss2: {
-		desc: "4ターン自分の攻撃力をアップ。HP20％以下の時、さらに自分の攻撃力をアップ)(通常：200％ / HP20％以下：1200％)",
+		desc: "<ダメージ強化>4ターン自分の攻撃力をアップ。HP20％以下の時、さらに自分の攻撃力をアップ)(通常：200％ / HP20％以下：1200％)",
 		turn: 8,
 		proc: [ss_enhance_own(ss_hp_less(0.2, 12, 2.0), 4)],
 	},
@@ -3625,7 +3625,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 4.0, 6.5, 5),
 	},
 	ss1: {
-		desc: "5ターン雷属性ダメージを25％軽減する",
+		desc: "<ガード>5ターン雷属性ダメージを25％軽減する",
 		turn: 7,
 		proc: [ss_attr_guard([0,0,1,0,0], 0.25, 5)]
 	},
@@ -3639,7 +3639,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 4.0, 6.5, 0),
 	},
 	ss2: {
-		desc: "5ターン水・雷属性ダメージを25％軽減する",
+		desc: "<ガード>5ターン水・雷属性ダメージを25％軽減する",
 		turn: 9,
 		proc: [ss_attr_guard([0,1,1,0,0], 0.25, 5)]
 	},
@@ -3668,7 +3668,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 3),
 	},
 	ss1: {
-		desc: "2ターン水・雷属性のダメージを50％軽減する",
+		desc: "<ガード>2ターン水・雷属性のダメージを50％軽減する",
 		turn: 7,
 		proc: [ss_attr_guard([0,1,1,0,0], 0.5, 2)]
 	},
@@ -3682,7 +3682,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 3),
 	},
 	ss2: {
-		desc: "2ターン水・雷属性のダメージを75％軽減する",
+		desc: "<ガード>2ターン水・雷属性のダメージを75％軽減する",
 		turn: 9,
 		proc: [ss_attr_guard([0,1,1,0,0], 0.75, 2)]
 	},
@@ -3712,7 +3712,7 @@ Cards = [{
 		proc: [ChainAttack(3.0, 3), add_cond(ChainAttack(4.0, 3), when_hp_more(0.8))],
 	},
 	ss1: {
-		desc: "敵単体へ火属性の5回連続ダメージ(計180％)",
+		desc: "<多弾魔術>敵単体へ火属性の5回連続ダメージ(計180％)",
 		turn: 6,
 		proc: [ss_damage_s(1.8, [0], 5)],
 	},
@@ -3726,7 +3726,7 @@ Cards = [{
 		proc: [ChainAttack(4.0, 3), add_cond(ChainAttack(5.0, 3), when_hp_more(0.8))],
 	},
 	ss2: {
-		desc: "敵単体へ火属性の5回連続ダメージ、10チェインで10回連続攻撃に(計380％)",
+		desc: "<多弾魔術>敵単体へ火属性の5回連続ダメージ、10チェインで10回連続攻撃に(計380％)",
 		turn: 9,
 		proc: [ss_damage_s(3.8, [0], ss_chain_cond(10, 10, 5))],
 	},
@@ -3757,7 +3757,7 @@ Cards = [{
 		proc: ChainDualAttack(3.5, 3, 3),
 	},
 	ss1: {
-		desc: "ジャンルパネルにダメージ25％軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ25％軽減の効果を付与",
 		turn: 6,
 		proc: [panel_attr_guard([1,1,1,1,1], 0.25)]
 	},
@@ -3771,7 +3771,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 3, 3),
 	},
 	ss2: {
-		desc: "ジャンルパネルにダメージ50％軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ50％軽減の効果を付与",
 		turn: 10,
 		proc: [panel_attr_guard([1,1,1,1,1], 0.5)]
 	},
@@ -3801,7 +3801,7 @@ Cards = [{
 		proc: [ChainEnhance(0.3, [1,0,0,0,0], 3), ChainSpecEnhance(0.6, [1,0,0,0,0], [9], 3)],
 	},
 	ss1: {
-		desc: "2ターン火属性の味方の攻撃力をアップ(+40％)",
+		desc: "<ダメージ強化>2ターン火属性の味方の攻撃力をアップ(+40％)",
 		turn: 5,
 		proc: [ss_enhance_all(0.4, 2, [1,0,0,0,0])],
 	},
@@ -3815,7 +3815,7 @@ Cards = [{
 		proc: [ChainEnhance(0.4, [1,0,0,0,0], 3), ChainSpecEnhance(0.8, [1,0,0,0,0], [9], 3)],
 	},
 	ss2: {
-		desc: "4ターン火属性の味方の攻撃力をアップ(+60％)",
+		desc: "<ダメージ強化>4ターン火属性の味方の攻撃力をアップ(+60％)",
 		turn: 8,
 		proc: [ss_enhance_all(0.6, 4, [1,0,0,0,0])],
 	},
@@ -3845,7 +3845,7 @@ Cards = [{
 		proc: multi_as(ChainAttrAttack(3.5, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(4.0, 0, [0,0,1,0,0]), when_hp_less(0.5))),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50％を使い、2ターン火属性の味方の攻撃力をアップ(+60％)",
+		desc: "<ダメージ強化>味方全体のMAXHPの50％を使い、2ターン火属性の味方の攻撃力をアップ(+60％)",
 		turn: 6,
 		proc: [ss_consume_all(0.5), ss_enhance_all(0.6, 2, [1,0,0,0,0])],
 	},
@@ -3860,7 +3860,7 @@ Cards = [{
 		proc: multi_as(ChainAttrAttack(3.5, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(4.0, 0, [0,0,1,0,0]), when_hp_more(0.5))),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50％を使い、4ターン火属性の味方の攻撃力をアップ(+80％)",
+		desc: "<ダメージ強化>味方全体のMAXHPの50％を使い、4ターン火属性の味方の攻撃力をアップ(+80％)",
 		turn: 9,
 		proc: [ss_consume_all(0.5), ss_enhance_all(0.8, 4, [1,0,0,0,0])],
 	},
@@ -3890,7 +3890,7 @@ Cards = [{
 		proc: ChainEnhance(0.8, [1, 0, 1, 0, 0], 7),
 	},
 	ss1: {
-		desc: "2ターン火・雷属性の味方の攻撃力をアップ(+40％)",
+		desc: "<ダメージ強化>2ターン火・雷属性の味方の攻撃力をアップ(+40％)",
 		turn: 5,
 		proc: [ss_enhance_all(0.4, 2, [1, 0, 1, 0, 0])],
 	},
@@ -3904,7 +3904,7 @@ Cards = [{
 		proc: ChainEnhance(0.8, [1, 0, 1, 0, 0], 0),
 	},
 	ss2: {
-		desc: "4ターン火・雷属性の味方の攻撃力をアップ(+60％)",
+		desc: "<ダメージ強化>4ターン火・雷属性の味方の攻撃力をアップ(+60％)",
 		turn: 8,
 		proc: [ss_enhance_all(0.6, 4, [1, 0, 1, 0, 0])],
 	},
@@ -3934,7 +3934,7 @@ Cards = [{
 		proc: [Heal(0.05, [1, 1, 1, 1, 1], 0), SpecHeal(0.10, [1, 1, 1, 1, 1], [9], 0), SpecHeal(0.25, [1, 1, 1, 1, 1], [9], 15)],
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
 		turn: 8,
 		proc: [ss_skillboost(2)],
 	},
@@ -3949,7 +3949,7 @@ Cards = [{
 		proc: [Heal(0.05, [1, 1, 1, 1, 1], 0), SpecHeal(0.10, [1, 1, 1, 1, 1], [9], 0), SpecHeal(0.30, [1, 1, 1, 1, 1], [9], 15)],
 	},
 	ss2: {
-		desc: "味方全体のスペシャルスキルの発動ターンを3早める、20チェインでさらに1早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを3早める、20チェインでさらに1早める",
 		turn: 12,
 		proc: [ss_skillboost(ss_chain_cond(20, 4, 3))],
 	},
@@ -3980,7 +3980,7 @@ Cards = [{
 		proc: ChainAllAttack(1.8, 3),
 	},
 	ss1: {
-		desc: "敵全体へ火・水属性のダメージ、5チェインを消費しさらにダメージアップ(通常：150％ / 5チェイン消費：230％)",
+		desc: "<大魔術>敵全体へ火・水属性のダメージ、5チェインを消費しさらにダメージアップ(通常：150％ / 5チェイン消費：230％)",
 		turn: 6,
 		proc: [ss_damage_all(ss_chain_cost(5, 2.3, 1.5), [0, 1])],
 	},
@@ -3994,7 +3994,7 @@ Cards = [{
 		proc: ChainAllAttack(2.2, 3),
 	},
 	ss2: {
-		desc: "敵全体へ火・水属性のダメージ、5チェインを消費しさらにダメージアップ(通常：220％ / 5チェイン消費：300％)",
+		desc: "<大魔術>敵全体へ火・水属性のダメージ、5チェインを消費しさらにダメージアップ(通常：220％ / 5チェイン消費：300％)",
 		turn: 9,
 		proc: [ss_damage_all(ss_chain_cost(5, 3.0, 2.2), [0, 1])],
 	},
@@ -4025,7 +4025,7 @@ Cards = [{
 		proc: ChainDualAttack(3.5, 3, 2),
 	},
 	ss1: {
-		desc: "ジャンルパネルに攻撃力アップの効果を付与(+40％)",
+		desc: "<特殊パネル変換>ジャンルパネルに攻撃力アップの効果を付与(+40％)",
 		turn: 5,
 		proc: [panel_attackup(0.4)],
 	},
@@ -4039,7 +4039,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 3, 2),
 	},
 	ss2: {
-		desc: "ジャンルパネルに攻撃力アップの効果を付与(+80％)",
+		desc: "<特殊パネル変換>ジャンルパネルに攻撃力アップの効果を付与(+80％)",
 		turn: 8,
 		proc: [panel_attackup(0.8)],
 	},
@@ -4070,7 +4070,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 5, 3)
 	},
 	ss1: {
-		desc: "4ターン敵全体に毒のダメージを与える(5000ダメージ)",
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(5000ダメージ)",
 		turn: 6,
 		proc: [poison(5000, 4)],
 	},
@@ -4084,7 +4084,7 @@ Cards = [{
 		proc: ChainDualAttack(5.5, 5, 3)
 	},
 	ss2: {
-		desc: "4ターン敵全体に毒のダメージを与える(9999ダメージ)",
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(9999ダメージ)",
 		turn: 10,
 		proc: [poison(9999, 4)],
 	},
@@ -4114,7 +4114,7 @@ Cards = [{
 		proc: [ChainAttack(3.5, 3), ChainAttack_Leader(4.0, 3)],
 	},
 	ss1: {
-		desc: "敵単体へ火・水属性の5回連続ダメージ(計180％)",
+		desc: "<多弾魔術>敵単体へ火・水属性の5回連続ダメージ(計180％)",
 		turn: 5,
 		proc: [ss_damage_s(1.8, [0, 1], 5)],
 	},
@@ -4128,7 +4128,7 @@ Cards = [{
 		proc: [ChainAttack(4.5, 3), ChainAttack_Leader(5.0, 3)],
 	},
 	ss2: {
-		desc: "敵単体へ火・水属性の5回連続ダメージ(計380％)",
+		desc: "<多弾魔術>敵単体へ火・水属性の5回連続ダメージ(計380％)",
 		turn: 8,
 		proc: [ss_damage_s(3.8, [0, 1], 5)],
 	},
@@ -4159,7 +4159,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 5),
 	},
 	ss1: {
-		desc: "ジャンルパネルにチェインがプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
 		turn: 5,
 		proc: [panel_chainplus(2)],
 	},
@@ -4173,7 +4173,7 @@ Cards = [{
 		proc: ChainAttack_as_consume_own(6.5, 5, 0.15),
 	},
 	ss2: {
-		desc: "ジャンルパネルにチェインがプラス3の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス3の効果を付与",
 		turn: 8,
 		proc: [panel_chainplus(3)],
 	},
@@ -4203,7 +4203,7 @@ Cards = [{
 		proc: ChainVarianceAttack(4.0, 3),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50％を使い、2ターン火属性の味方の攻撃力をアップ(+70％)",
+		desc: "<ダメージ強化>味方全体のMAXHPの50％を使い、2ターン火属性の味方の攻撃力をアップ(+70％)",
 		turn: 5,
 		proc: [ss_enhance_all(0.7, 2, [1,0,0,0,0]), ss_consume_all(0.5)],
 	},
@@ -4218,7 +4218,7 @@ Cards = [{
 		proc: ChainVarianceAttack(5.0, 3),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50％を使い、4ターン火属性の味方の攻撃力をアップ(+100％)",
+		desc: "<ダメージ強化>味方全体のMAXHPの50％を使い、4ターン火属性の味方の攻撃力をアップ(+100％)",
 		turn: 8,
 		proc: [ss_enhance_all(1.0, 4, [1,0,0,0,0]), ss_consume_all(0.5)],
 	},
@@ -4248,7 +4248,7 @@ Cards = [{
 		proc: ChainAttack(9.0, 0),
 	},
 	ss1: {
-		desc: "5ターン敵全体に毒のダメージを与える(9999ダメージ)",
+		desc: "<毒>5ターン敵全体に毒のダメージを与える(9999ダメージ)",
 		turn: 10,
 		proc: [poison(9999, 5)],
 	},
@@ -4264,7 +4264,7 @@ Cards = [{
 		proc: ChainAttack(10.0, 0),
 	},
 	ss2: {
-		desc: "5ターン敵全体に毒のダメージを与える(24999ダメージ)",
+		desc: "<毒>5ターン敵全体に毒のダメージを与える(24999ダメージ)",
 		turn: 15,
 		proc: [poison(24999, 5)],
 	},
@@ -4294,7 +4294,7 @@ Cards = [{
 		proc: [ChainEnhance(0.2, [1,0,0,0,0], 0), ChainSpecEnhance(0.35, [1,0,0,0,0], [9], 0)],
 	},
 	ss1: {
-		desc: "5ターン味方全体を徐々に回復する(15％×5T)",
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(15％×5T)",
 		turn: 8,
 		proc: [ss_regenerate(0.15, 5)],
 	},
@@ -4309,7 +4309,7 @@ Cards = [{
 		proc: [ChainEnhance(0.25, [1,0,0,0,0], 0), ChainSpecEnhance(0.45, [1,0,0,0,0], [9], 0)],
 	},
 	ss2: {
-		desc: "5ターン味方全体を徐々に回復する(20％×5T)",
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20％×5T)",
 		turn: 10,
 		proc: [ss_regenerate(0.20, 5)],
 	},
@@ -4339,7 +4339,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,0,0,0,0], 0), add_cond(Heal(0.17, [1,0,0,0,0], 0), when_leader())],
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
 		turn: 8,
 		proc: [ss_skillboost(2)],
 	},
@@ -4353,7 +4353,7 @@ Cards = [{
 		proc: [Heal(0.16, [1,0,0,0,0], 0), add_cond(Heal(0.20, [1,0,0,0,0], 0), when_leader())],
 	},
 	ss2: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早める。HP20％以下でさらに3早める。",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める。HP20％以下でさらに3早める。",
 		turn: 9,
 		proc: [ss_skillboost(ss_hp_less(0.2, 5, 2))],
 	},
@@ -4383,7 +4383,7 @@ Cards = [{
 		proc: ChainPanelsEnhance(0.6, 0.9, 0.9, [1,0,0,0,0], 5),
 	},
 	ss1: {
-		desc: "敵単体へ火・闇属性の5回連続ダメージ。HP20％以下でさらにダメージアップ(通常：計180％ / HP20％以下：計360％)",
+		desc: "<多弾魔術>敵単体へ火・闇属性の5回連続ダメージ。HP20％以下でさらにダメージアップ(通常：計180％ / HP20％以下：計360％)",
 		turn: 6,
 		proc: [ss_damage_s(ss_hp_less(0.2, 3.6, 1.8), [0, 4], 5)],
 	},
@@ -4397,7 +4397,7 @@ Cards = [{
 		proc: ChainPanelsEnhance(0.9, 1.2, 1.2, [1,0,0,0,0], 5),
 	},
 	ss2: {
-		desc: "敵単体へ火・闇属性の5回連続ダメージ。HP20％以下でさらにダメージアップ(通常：計380％ / HP20％以下：計760％)",
+		desc: "<多弾魔術>敵単体へ火・闇属性の5回連続ダメージ。HP20％以下でさらにダメージアップ(通常：計380％ / HP20％以下：計760％)",
 		turn: 9,
 		proc: [ss_damage_s(ss_hp_less(0.2, 7.6, 3.6), [0, 4], 5)],
 	},
@@ -4427,7 +4427,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 4.0, 5.5, 3),
 	},
 	ss1: {
-		desc: "敵単体の攻撃ターンを2遅らせる。HP20％以下でさらに1遅らせる。",
+		desc: "<遅延>敵単体の攻撃ターンを2遅らせる。HP20％以下でさらに1遅らせる。",
 		turn: 8,
 		proc: [ss_delay_s(ss_hp_less(0.2, 3, 2))]
 	},
@@ -4441,7 +4441,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 4.0, 5.5, 0),
 	},
 	ss2: {
-		desc: "敵単体の攻撃ターンを3遅らせる。HP20％以下でさらに1遅らせる。",
+		desc: "<遅延>敵単体の攻撃ターンを3遅らせる。HP20％以下でさらに1遅らせる。",
 		turn: 10,
 		proc: [ss_delay_s(ss_hp_less(0.2, 4, 3))]
 	},
@@ -4471,7 +4471,7 @@ Cards = [{
 		proc: ChainDualAttack(5.5, 7, 3),
 	},
 	ss1: {
-		desc: "3ターン全属性のダメージを35％軽減する。HP20％以下でさらに3ターン軽減する。",
+		desc: "<ガード>3ターン全属性のダメージを35％軽減する。HP20％以下でさらに3ターン軽減する。",
 		turn: 6,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.35, ss_hp_less(0.2, 6, 3))],
 	},
@@ -4485,7 +4485,7 @@ Cards = [{
 		proc: ChainDualAttack(6.5, 7, 3),
 	},
 	ss2: {
-		desc: "3ターン全属性のダメージを50％軽減する。HP20％以下でさらに3ターン軽減する。",
+		desc: "<ガード>3ターン全属性のダメージを50％軽減する。HP20％以下でさらに3ターン軽減する。",
 		turn: 9,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.5, ss_hp_less(0.2, 6, 3))]
 	},
@@ -4515,7 +4515,7 @@ Cards = [{
 		proc: [ChainDualAttack(4.0, 5, 3), add_cond(ChainDualAttack(6.0, 5, 5), when_hp_less(0.5))],
 	},
 	ss1: {
-		desc: "5ターン500以下の全属性ダメージを無効化する",
+		desc: "<ダメージブロック>5ターン500以下の全属性ダメージを無効化する",
 		turn: 8,
 		proc: [ss_damageblock_all(500, 5)]
 	},
@@ -4530,7 +4530,7 @@ Cards = [{
 		proc: [ChainDualAttack(4.0, 0, 3), add_cond(ChainDualAttack(6.0, 0, 5), when_hp_less(0.5))],
 	},
 	ss2: {
-		desc: "5ターン600以下の全属性ダメージを無効化する",
+		desc: "<ダメージブロック>5ターン600以下の全属性ダメージを無効化する",
 		turn: 10,
 		proc: [ss_damageblock_all(600, 5)]
 	},
@@ -4560,7 +4560,7 @@ Cards = [{
 		proc: [Heal(0.11, [1, 1, 1, 1, 1], 0), SpecHeal(0.17, [1, 1, 1, 1, 1], [3, 4], 0)],
 	},
 	ss1: {
-		desc: "敵単体のHPを25％減少させる、HP20％未満で更に15％減少させる",
+		desc: "<割合削り>敵単体のHPを25％減少させる、HP20％未満で更に15％減少させる",
 		turn: 9,
 		proc: [ss_ratiodamage_s(ss_hp_less(0.2, 0.4, 0.25))],
 	},
@@ -4574,7 +4574,7 @@ Cards = [{
 		proc: [Heal(0.13, [1, 1, 1, 1, 1], 0), SpecHeal(0.20, [1, 1, 1, 1, 1], [3, 4], 0)],
 	},
 	ss2: {
-		desc: "敵単体のHPを30％減少させる、HP20％未満で更に20％減少させる",
+		desc: "<割合削り>敵単体のHPを30％減少させる、HP20％未満で更に20％減少させる",
 		turn: 12,
 		proc: [ss_ratiodamage_s(ss_hp_less(0.2, 0.5, 0.3))],
 	},
@@ -4604,7 +4604,7 @@ Cards = [{
 		proc: Heal(0.13, [1,0,0,0,0], 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火属性化",
+		desc: "<パネル変換>ジャンルパネルを火属性化",
 		turn: 6,
 		proc: [ss_panel_change([1,0,0,0,0])]
 	},
@@ -4618,7 +4618,7 @@ Cards = [{
 		proc: Heal(0.15, [1,0,0,0,0], 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルを火属性化し、回復の効果を付与(8％)",
+		desc: "<特殊パネル変換>ジャンルパネルを火属性化し、回復の効果を付与(8％)",
 		turn: 8,
 		proc: [ss_panel_change([1,0,0,0,0]), panel_healally(0.08)],
 	},
@@ -4648,7 +4648,7 @@ Cards = [{
 		proc: ChainEnhance(0.35, [1,0,0,0,0], 0),
 	},
 	ss1: {
-		desc: "自分を犠牲に全員をHP75％蘇生",
+		desc: "<自己犠牲蘇生>自分を犠牲に全員をHP75％蘇生",
 		turn: 11,
 		proc: [ss_resurrection([1, 1, 1, 1, 1], 0.75), ss_consume_own(1)],
 	},
@@ -4662,7 +4662,7 @@ Cards = [{
 		proc: ChainEnhance(0.55, [1,0,0,0,0], 0),
 	},
 	ss2: {
-		desc: "自分を犠牲に全員をHP100％蘇生",
+		desc: "<自己犠牲蘇生>自分を犠牲に全員をHP100％蘇生",
 		turn: 12,
 		proc: [ss_resurrection([1, 1, 1, 1, 1], 1.0), ss_consume_own(1)],
 	},
@@ -4692,7 +4692,7 @@ Cards = [{
 		proc: [Heal(0.11, [1, 1, 1, 1, 1], 0), add_cond(Heal(0.20, [1, 1, 1, 1, 1], 0), when_hp_less(0.5))],
 	},
 	ss1: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 4,
 		proc: [ss_panel_change([1,1,1,0,0])]
 	},
@@ -4706,7 +4706,7 @@ Cards = [{
 		proc: [Heal(0.13, [1, 1, 1, 1, 1], 0), add_cond(Heal(0.22, [1, 1, 1, 1, 1], 0), when_hp_less(0.5))],
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化し、ダメージ25％軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、ダメージ25％軽減の効果を付与",
 		turn: 6,
 		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)]
 	},
@@ -4735,7 +4735,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(2.5, 0), as_hp_absorption(0.05)),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火属性化",
+		desc: "<パネル変換>ジャンルパネルを火属性化",
 		turn: 5,
 		proc: [ss_panel_change([1,0,0,0,0])]
 	},
@@ -4749,7 +4749,7 @@ Cards = [{
 		proc: [add_cond(ChainAttack(3.2, 0), as_hp_absorption(0.05)), Heal(0.02, [1,0,0,0,0], 0)],
 	},
 	ss2: {
-		desc: "ジャンルパネルを火属性化し、回復の効果を付与(8％)",
+		desc: "<特殊パネル変換>ジャンルパネルを火属性化し、回復の効果を付与(8％)",
 		turn: 8,
 		proc: [ss_panel_change([1,0,0,0,0]), panel_healally(0.08)],
 	},
@@ -4779,7 +4779,7 @@ Cards = [{
 		proc: [Heal(0.10, [1, 0, 1, 0, 0], 0), SpecHeal(0.15, [1, 0, 1, 0, 0], [9], 0)],
 	},
 	ss1: {
-		desc: "ジャンルパネルを火属性化",
+		desc: "<パネル変換>ジャンルパネルを火属性化",
 		turn: 5,
 		proc: [ss_panel_change([1,0,0,0,0])]
 	},
@@ -4793,7 +4793,7 @@ Cards = [{
 		proc: [Heal(0.13, [1, 0, 1, 0, 0], 0), SpecHeal(0.18, [1, 0, 1, 0, 0], [9], 0)],
 	},
 	ss2: {
-		desc: "ジャンルパネルを火・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを火・雷属性化",
 		turn: 7,
 		proc: [ss_panel_change([1,0,1,0,0])]
 	},
@@ -4823,7 +4823,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.11, 0.15, 0.17, [1,0,0,0,0], 0),
 	},
 	ss1: {
-		desc: "敵単体の攻撃ターンを1遅らせる",
+		desc: "<遅延>敵単体の攻撃ターンを1遅らせる",
 		turn: 5,
 		proc: [ss_delay_s(1)]
 	},
@@ -4837,7 +4837,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.13, 0.17, 0.20, [1,0,0,0,0], 0),
 	},
 	ss2: {
-		desc: "敵単体の攻撃ターンを2遅らせ、20チェインで更に2遅らせる",
+		desc: "<遅延>敵単体の攻撃ターンを2遅らせ、20チェインで更に2遅らせる",
 		turn: 10,
 		proc: [ss_delay_s(ss_chain_cond(20, 4, 2))]
 	},
@@ -4867,7 +4867,7 @@ Cards = [{
 		proc: [Heal(0.10, [1, 0, 1, 0, 0], 0), Heal(0.17, [1, 0, 1, 0, 0], 7)],
 	},
 	ss1: {
-		desc: "チェインプラス2の効果、さらに3ターン味方全体を徐々に回復する(15％)",
+		desc: "<継続回復>チェインプラス2の効果、さらに3ターン味方全体を徐々に回復する(15％)",
 		turn: 6,
 		proc: [ss_addchain(2), ss_regenerate(0.15, 3)],
 	},
@@ -4881,7 +4881,7 @@ Cards = [{
 		proc: [Heal(0.13, [1, 0, 1, 0, 0], 0), Heal(0.20, [1, 0, 1, 0, 0], 7)],
 	},
 	ss2: {
-		desc: "チェインプラス3の効果、さらに5ターン味方全体を徐々に回復する(20％)",
+		desc: "<継続回復>チェインプラス3の効果、さらに5ターン味方全体を徐々に回復する(20％)",
 		turn: 9,
 		proc: [ss_addchain(3), ss_regenerate(0.20, 5)],
 	},
@@ -4911,7 +4911,7 @@ Cards = [{
 		proc: Heal(0.11, [1, 0, 1, 0, 0], 0),
 	},
 	ss1: {
-		desc: "敵単体の攻撃ターンを1遅らせる",
+		desc: "<遅延>敵単体の攻撃ターンを1遅らせる",
 		turn: 5,
 		proc: [ss_delay_s(1)]
 	},
@@ -4926,7 +4926,7 @@ Cards = [{
 		proc: [Heal(0.11, [1, 0, 1, 0, 0], 0), ChainEnhance(0.3, [1, 0, 1, 0, 0], 0)],
 	},
 	ss2: {
-		desc: "敵単体の攻撃ターンを2遅らせる",
+		desc: "<遅延>敵単体の攻撃ターンを2遅らせる",
 		turn: 8,
 		proc: [ss_delay_s(2)]
 	},
@@ -4956,7 +4956,7 @@ Cards = [{
 		proc: [Heal(0.08, [1,0,0,0,0]), SpecHeal(0.15, [1,0,0,0,0], [1, 3])],
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、さらに火属性の味方を30％で蘇生(回復：30％)",
+		desc: "<蘇生>味方全体のHPを回復し、さらに火属性の味方を30％で蘇生(回復：30％)",
 		turn: 8,
 		proc: [ss_heal(0.3), ss_resurrection([1,0,0,0,0], 0.3)],
 	},
@@ -4970,7 +4970,7 @@ Cards = [{
 		proc: [Heal(0.11, [1,0,0,0,0]), SpecHeal(0.18, [1,0,0,0,0], [1, 3])],
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し、さらに火属性の味方を50％で蘇生(回復：50％)",
+		desc: "<蘇生>味方全体のHPを回復し、さらに火属性の味方を50％で蘇生(回復：50％)",
 		turn: 10,
 		proc: [ss_heal(0.5), ss_resurrection([1,0,0,0,0], 0.5)],
 	},
@@ -5000,7 +5000,7 @@ Cards = [{
 		proc: ChainAttrAttack(4.0, 0, [0,0,1,0,0]),
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、さらに火属性の味方を30％で蘇生(回復：30％)",
+		desc: "<蘇生>味方全体のHPを回復し、さらに火属性の味方を30％で蘇生(回復：30％)",
 		turn: 8,
 		proc: [ss_heal(0.3), ss_resurrection([1,0,0,0,0], 0.3)],
 	},
@@ -5014,7 +5014,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.0, 0, [0,0,1,0,0]),
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し、さらに火属性の味方を50％で蘇生(回復：50％)",
+		desc: "<蘇生>味方全体のHPを回復し、さらに火属性の味方を50％で蘇生(回復：50％)",
 		turn: 10,
 		proc: [ss_heal(0.5), ss_resurrection([1,0,0,0,0], 0.5)],
 	},
@@ -5045,7 +5045,7 @@ Cards = [{
 		proc: [ChainEnhance(0.3, [1,0,0,0,0], 0), ChainSpecEnhance(0.4, [1,0,0,0,0], [0, 1], 0)],
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、さらに火属性の味方を30％で蘇生(回復：30％)",
+		desc: "<蘇生>味方全体のHPを回復し、さらに火属性の味方を30％で蘇生(回復：30％)",
 		turn: 8,
 		proc: [ss_heal(0.3), ss_resurrection([1,0,0,0,0], 0.3)],
 	},
@@ -5060,7 +5060,7 @@ Cards = [{
 		proc: [ChainEnhance(0.5, [1,0,0,0,0], 0), ChainSpecEnhance(0.8, [1,0,0,0,0], [0, 1], 0)],
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し、さらに火属性の味方を30％で蘇生、20チェインで100％蘇生(回復：50％)",
+		desc: "<蘇生>味方全体のHPを回復し、さらに火属性の味方を30％で蘇生、20チェインで100％蘇生(回復：50％)",
 		turn: 10,
 		proc: [ss_heal(0.5), ss_resurrection([1,0,0,0,0], ss_chain_cond(20, 1, 0.3))],
 	},
@@ -5089,7 +5089,7 @@ Cards = [{
 		proc: [ChainAttack(3.0, 3), ChainAttack_Leader(3.5, 3)],
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、さらに火・水属性の味方を蘇生(回復：25％ / 蘇生：10％)",
+		desc: "<蘇生>味方全体のHPを回復し、さらに火・水属性の味方を蘇生(回復：25％ / 蘇生：10％)",
 		turn: 10,
 		proc: [ss_heal(0.25), ss_resurrection([1, 1, 0, 0, 0], 0.10)],
 	},
@@ -5104,7 +5104,7 @@ Cards = [{
 		proc: [ChainAttack(4.0, 3), ChainAttack_Leader(4.5, 3)],
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し、さらに火・水属性の味方を蘇生(回復：25％ / 蘇生：25％)",
+		desc: "<蘇生>味方全体のHPを回復し、さらに火・水属性の味方を蘇生(回復：25％ / 蘇生：25％)",
 		turn: 14,
 		proc: [ss_heal(0.25), ss_resurrection([1, 1, 0, 0, 0], 0.25)],
 	},
@@ -5134,7 +5134,7 @@ Cards = [{
 		proc: Heal(0.12, [1,0,0,0,0], 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火・闇属性化",
+		desc: "<パネル変換>ジャンルパネルを火・闇属性化",
 		turn: 5,
 		proc: [ss_panel_change([1,0,0,0,1])]
 	},
@@ -5149,7 +5149,7 @@ Cards = [{
 		proc: Heal(0.14, [1,0,0,0,0], 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルを火・闇属性化し、回復の効果を付与(10％)",
+		desc: "<特殊パネル変換>ジャンルパネルを火・闇属性化し、回復の効果を付与(10％)",
 		turn: 8,
 		proc: [ss_panel_change([1,0,0,0,1]), panel_healally(0.10)],
 	},
@@ -5179,7 +5179,7 @@ Cards = [{
 		proc: ChainAttack(7.0, 10),
 	},
 	ss1: {
-		desc: "ジャンルパネルにチェインがプラス3の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス3の効果を付与",
 		turn: 8,
 		proc: [panel_chainplus(3)],
 	},
@@ -5194,7 +5194,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(7.0, 10), as_hp_absorption(0.03)),
 	},
 	ss2: {
-		desc: "ジャンルパネルにチェインがプラス4の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス4の効果を付与",
 		turn: 10,
 		proc: [panel_chainplus(4)],
 	},
@@ -5224,7 +5224,7 @@ Cards = [{
 		proc: [Heal(0.09, [1,0,0,0,0], 0), SpecHeal(0.15, [1,0,0,0,0], [2], 0)],
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、状態異常を回復する(50％)",
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(50％)",
 		turn: 8,
 		proc: [ss_heal(0.50), ss_abstate_cure()],
 	},
@@ -5238,7 +5238,7 @@ Cards = [{
 		proc: [Heal(0.12, [1,0,0,0,0], 0), SpecHeal(0.18, [1,0,0,0,0], [2], 0)],
 	},
 	ss2: {
-		desc: "味方全体のHPを完全回復し、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
 		turn: 10,
 		proc: [ss_heal(1.0), ss_abstate_cure()],
 	},
@@ -5267,7 +5267,7 @@ Cards = [{
 		proc: ChainStakesAttack(0, 5.0, 1),
 	},
 	ss1: {
-		desc: "敵単体のHPを20％減少させる",
+		desc: "<割合削り>敵単体のHPを20％減少させる",
 		turn: 6,
 		proc: [ss_ratiodamage_s(0.20)],
 	},
@@ -5281,7 +5281,7 @@ Cards = [{
 		proc: ChainStakesAttack(0, 7.0, 1),
 	},
 	ss2: {
-		desc: "敵単体のHPを25％減少させる",
+		desc: "<割合削り>敵単体のHPを25％減少させる",
 		turn: 8,
 		proc: [ss_ratiodamage_s(0.25)],
 	},
@@ -5311,7 +5311,7 @@ Cards = [{
 		proc: [Heal(0.10, [1,0,1,0,0], 1), Heal(0.17, [1,0,1,0,0], 7)],
 	},
 	ss1: {
-		desc: "3ターンの間、スキルカウンター待機",
+		desc: "<カウンター>3ターンの間、スキルカウンター待機",
 		turn: 7,
 		proc: [ss_skillcounter(2.0, 3)],
 	},
@@ -5326,7 +5326,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,0,1,0,0], 1), Heal(0.20, [1,0,1,0,0], 7)],
 	},
 	ss2: {
-		desc: "5ターンの間、スキルカウンター待機",
+		desc: "<カウンター>5ターンの間、スキルカウンター待機",
 		turn: 10,
 		proc: [ss_skillcounter(2.0, 5)],
 	},
@@ -5356,7 +5356,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.6, [11], 1),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火・闇属性化",
+		desc: "<パネル変換>ジャンルパネルを火・闇属性化",
 		turn: 5,
 		proc: [ss_panel_change([1,0,0,0,1])]
 	},
@@ -5373,7 +5373,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.8, [11], 1),
 	},
 	ss2: {
-		desc: "ジャンルパネルを火・闇属性化し、攻撃力アップかダメージ25％軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを火・闇属性化し、攻撃力アップかダメージ25％軽減の効果を付与",
 		turn: 7,
 		proc: [ss_panel_change([1,0,0,0,1]), panel_attackup(0.4), panel_attr_guard([1,1,1,1,1], 0.25)],
 	},
@@ -5406,7 +5406,7 @@ Cards = [{
 		proc: Heal(0.13, [0, 1, 0, 0, 0]),
 	},
 	ss1: {
-		desc: "4ターン敵全体に毒のダメージを与える(5000ダメージ)",
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(5000ダメージ)",
 		turn: 7,
 		proc: [poison(5000, 4)],
 	},
@@ -5420,7 +5420,7 @@ Cards = [{
 		proc: Heal(0.16, [0, 1, 0, 0, 0]),
 	},
 	ss2: {
-		desc: "5ターン敵全体に毒のダメージを与える(9999ダメージ)",
+		desc: "<毒>5ターン敵全体に毒のダメージを与える(9999ダメージ)",
 		turn: 11,
 		proc: [poison(9999, 4)],
 	},
@@ -5450,7 +5450,7 @@ Cards = [{
 		proc: ChainEnhance(0.50, [0,1,0,0,0], 3),
 	},
 	ss1: {
-		desc: "3ターン全属性のダメージを25％軽減する",
+		desc: "<ガード>3ターン全属性のダメージを25％軽減する",
 		turn: 5,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)]
 	},
@@ -5464,7 +5464,7 @@ Cards = [{
 		proc: ChainEnhance(0.70, [0,1,0,0,0], 3),
 	},
 	ss2: {
-		desc: "3ターン全属性のダメージを50％軽減する",
+		desc: "<ガード>3ターン全属性のダメージを50％軽減する",
 		turn: 9,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)]
 	},
@@ -5509,7 +5509,7 @@ Cards = [{
 		proc: ChainPanelsEnhance(0.5, 0.7, 1.0, [0,1,0,0,0], 1),
 	},
 	ss2: {
-		desc: "解答を見破る",
+		desc: "<解答削り>解答を見破る",
 		turn: 6,
 		proc: [ss_answer_foresight()]
 	},
@@ -5539,7 +5539,7 @@ Cards = [{
 		proc: ChainAttrAttack(4.0, 1, [1,0,0,0,0]),
 	},
 	ss1: {
-		desc: "ジャンルパネルを水属性化",
+		desc: "<パネル変換>ジャンルパネルを水属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,1,0,0,0])]
 	},
@@ -5553,7 +5553,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.0, 1, [1,0,0,0,0]),
 	},
 	ss2: {
-		desc: "ジャンルパネルを水属性化し、攻撃力アップの効果を付与(+20％)",
+		desc: "<特殊パネル変換>ジャンルパネルを水属性化し、攻撃力アップの効果を付与(+20％)",
 		turn: 8,
 		proc: [ss_panel_change([0,1,0,0,0]), panel_attackup(0.2)],
 	},
@@ -5584,7 +5584,7 @@ Cards = [{
 		proc: Heal(0.14, [0,1,0,0,0], 1),
 	},
 	ss1: {
-		desc: "敵単体の攻撃ターンを1遅らせる",
+		desc: "<遅延>敵単体の攻撃ターンを1遅らせる",
 		turn: 6,
 		proc: [ss_delay_s(1)]
 	},
@@ -5598,7 +5598,7 @@ Cards = [{
 		proc: Heal(0.17, [0,1,0,0,0], 1),
 	},
 	ss2: {
-		desc: "敵単体の攻撃ターンを2遅らせる",
+		desc: "<遅延>敵単体の攻撃ターンを2遅らせる",
 		turn: 7,
 		proc: [ss_delay_s(2)]
 	},
@@ -5629,7 +5629,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 5),
 	},
 	ss1: {
-		desc: "ジャンルパネルにダメージ25％軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ25％軽減の効果を付与",
 		turn: 6,
 		proc: [panel_attr_guard([1, 1, 1, 1, 1], 0.25)]
 	},
@@ -5643,7 +5643,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 1),
 	},
 	ss2: {
-		desc: "ジャンルパネルにダメージ50％軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ50％軽減の効果を付与",
 		turn: 10,
 		proc: [panel_attr_guard([1, 1, 1, 1, 1], 0.5)]
 	},
@@ -5673,7 +5673,7 @@ Cards = [{
 		proc: [ChainEnhance(0.20, [0,1,0,0,0], 0), ChainSpecEnhance(0.45, [0,1,0,0,0], [8], 0)],
 	},
 	ss1: {
-		desc: "2ターン水属性の味方の攻撃力をアップ(+40％)",
+		desc: "<ダメージ強化>2ターン水属性の味方の攻撃力をアップ(+40％)",
 		turn: 6,
 		proc: [ss_enhance_all(0.4, 2, [0,1,0,0,0])], 
 	},
@@ -5687,7 +5687,7 @@ Cards = [{
 		proc: [ChainEnhance(0.20, [0,1,0,0,0], 0), ChainSpecEnhance(0.65, [0,1,0,0,0], [8], 0)],
 	},
 	ss2: {
-		desc: "4ターン水属性の味方の攻撃力をアップ(+60％)",
+		desc: "<ダメージ強化>4ターン水属性の味方の攻撃力をアップ(+60％)",
 		turn: 9,
 		proc: [ss_enhance_all(0.6, 4, [0,1,0,0,0])], 
 	},
@@ -5717,7 +5717,7 @@ Cards = [{
 		proc: ChainAttrAttack(3.5, 1, [1,0,0,0,0]),
 	},
 	ss1: {
-		desc: "ジャンルパネルに攻撃力アップの効果を付与(+40％)",
+		desc: "<特殊パネル変換>ジャンルパネルに攻撃力アップの効果を付与(+40％)",
 		turn: 6,
 		proc: [panel_attackup(0.4)],
 	},
@@ -5732,7 +5732,7 @@ Cards = [{
 		proc: add_cond(ChainAttrAttack(5.0, 1, [1,0,0,0,0]), as_consume_own(0.20)),
 	},
 	ss2: {
-		desc: "ジャンルパネルに攻撃力アップの効果を付与(+80％)",
+		desc: "<特殊パネル変換>ジャンルパネルに攻撃力アップの効果を付与(+80％)",
 		turn: 9,
 		proc: [panel_attackup(0.8)],
 	},
@@ -5762,7 +5762,7 @@ Cards = [{
 		proc: ChainPanelsAttack(1.0, 4.0, 5.5, 3),
 	},
 	ss1: {
-		desc: "敵全体へ水属性のダメージ、さらに味方全体を回復(攻撃：200％ / 回復：50％)",
+		desc: "<大魔術>敵全体へ水属性のダメージ、さらに味方全体を回復(攻撃：200％ / 回復：50％)",
 		turn: 6,
 		proc: [ss_damage_all(2.0, [1]), ss_heal(0.5)],
 	},
@@ -5776,7 +5776,7 @@ Cards = [{
 		proc: ChainPanelsAttack(1.0, 5.5, 7.0, 3),
 	},
 	ss2: {
-		desc: "敵全体へ水属性のダメージ、さらに味方全体を全回復(攻撃：200％)",
+		desc: "<大魔術>敵全体へ水属性のダメージ、さらに味方全体を全回復(攻撃：200％)",
 		turn: 9,
 		proc: [ss_damage_all(2.0, [1]), ss_heal(1)],
 	},
@@ -5806,7 +5806,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 5),
 	},
 	ss1: {
-		desc: "敵単体へ水属性の5回連続ダメージ(計180％)",
+		desc: "<多弾魔術>敵単体へ水属性の5回連続ダメージ(計180％)",
 		turn: 5,
 		proc: [ss_damage_s(1.8, [1], 5)],
 	},
@@ -5820,7 +5820,7 @@ Cards = [{
 		proc: ChainAttack(5.5, 5),
 	},
 	ss2: {
-		desc: "敵単体へ水属性の5回連続ダメージ(計380％)",
+		desc: "<多弾魔術>敵単体へ水属性の5回連続ダメージ(計380％)",
 		turn: 8,
 		proc: [ss_damage_s(3.8, [1], 5)],
 	},
@@ -5850,7 +5850,7 @@ Cards = [{
 		proc: [ChainDualAttack(3.0, 3, 3), add_cond(ChainDualAttack(3.5, 3, 3), when_leader())],
 	},
 	ss1: {
-		desc: "ジャンルパネルを水属性化",
+		desc: "<パネル変換>ジャンルパネルを水属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,1,0,0,0])]
 	},
@@ -5865,7 +5865,7 @@ Cards = [{
 		proc: [ChainDualAttack(4.0, 3, 3), add_cond(ChainDualAttack(4.5, 3, 3), when_leader())],
 	},
 	ss2: {
-		desc: "ジャンルパネルを水属性化し、チェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを水属性化し、チェインがプラス1の効果を付与",
 		turn: 7,
 		proc: [ss_panel_change([0,1,0,0,0]), panel_chainplus(1)],
 	},
@@ -5895,7 +5895,7 @@ Cards = [{
 		proc: ChainDualAttack(3.5, 3, 3),
 	},
 	ss1: {
-		desc: "敵単体へ水・火属性の5回連続ダメージ(計180％)",
+		desc: "<多弾魔術>敵単体へ水・火属性の5回連続ダメージ(計180％)",
 		turn: 5,
 		proc: [ss_damage_s(1.8, [1, 0], 5)],
 	},
@@ -5909,7 +5909,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 3, 3),
 	},
 	ss2: {
-		desc: "敵単体へ水・火属性の5回連続ダメージ(計380％)",
+		desc: "<多弾魔術>敵単体へ水・火属性の5回連続ダメージ(計380％)",
 		turn: 8,
 		proc: [ss_damage_s(3.8, [1, 0], 5)],
 	},
@@ -5939,7 +5939,7 @@ Cards = [{
 		proc: ChainAllAttack(1.8, 3)
 	},
 	ss1: {
-		desc: "3ターン味方全体を徐々に回復する(15％×3T)",
+		desc: "<継続回復>3ターン味方全体を徐々に回復する(15％×3T)",
 		turn: 6,
 		proc: [ss_regenerate(0.15, 3)]
 	},
@@ -5954,7 +5954,7 @@ Cards = [{
 		proc: ChainAllAttack(1.8, 0)
 	},
 	ss2: {
-		desc: "5ターン味方全体を徐々に回復する(20％×5T)",
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20％×5T)",
 		turn: 9,
 		proc: [ss_regenerate(0.2, 5)]
 	},
@@ -5984,7 +5984,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.5, 5, [1,0,0,0,0])
 	},
 	ss1: {
-		desc: "直前に発動したスペシャルスキルを発動する",
+		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
 		turn: 9,
 		proc: [ss_latest_copy()]
 	},
@@ -5998,7 +5998,7 @@ Cards = [{
 		proc: ChainAttrAttack(7.5, 5, [1,0,0,0,0])
 	},
 	ss2: {
-		desc: "直前に発動したスペシャルスキルを発動する",
+		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
 		turn: 9,
 		proc: [ss_latest_copy()]
 	},
@@ -6029,7 +6029,7 @@ Cards = [{
 		proc: ChainAttack(6.0, 8)
 	},
 	ss1: {
-		desc: "ジャンルパネルにチェインがプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
 		turn: 5,
 		proc: [panel_chainplus(2)]
 	},
@@ -6043,7 +6043,7 @@ Cards = [{
 		proc: ChainAttack(7.0, 8)
 	},
 	ss2: {
-		desc: "ジャンルパネルにチェインがプラス3の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス3の効果を付与",
 		turn: 8,
 		proc: [panel_chainplus(3)]
 	},
@@ -6073,7 +6073,7 @@ Cards = [{
 		proc: ChainPanelsSpecAttack(5.5, 7.0, 8.0, [1,6,7], 0)
 	},
 	ss1: {
-		desc: "2ターン己の力を高める(350％)",
+		desc: "<ダメージ強化>2ターン己の力を高める(350％)",
 		turn: 6,
 		proc: [ss_enhance_own(3.5, 2)],
 	},
@@ -6087,7 +6087,7 @@ Cards = [{
 		proc: ChainPanelsSpecAttack(6.5, 8.0, 9.0, [1,6,7], 0)
 	},
 	ss2: {
-		desc: "2ターン己の力を高める(500％)",
+		desc: "<ダメージ強化>2ターン己の力を高める(500％)",
 		turn: 8,
 		proc: [ss_enhance_own(5.0, 2)],
 	},
@@ -6117,7 +6117,7 @@ Cards = [{
 		proc: ChainSpecAttack(6.0, 0, [1,6,7]),
 	},
 	ss1: {
-		desc: "敵単体のカウンターを解除する",
+		desc: "<効果解除>敵単体のカウンターを解除する",
 		turn: 8,
 		proc: [ss_break_attackcounter()],
 	},
@@ -6131,7 +6131,7 @@ Cards = [{
 		proc: ChainSpecAttack(7.0, 0, [1,6,7]),
 	},
 	ss2: {
-		desc: "敵単体のカウンターを解除し、水属性のダメージ(400％)",
+		desc: "<効果解除大魔術>敵単体のカウンターを解除し、水属性のダメージ(400％)",
 		turn: 12,
 		proc: [ss_break_attackcounter(), ss_damage_s(4, [1], 1)],
 	},
@@ -6161,7 +6161,7 @@ Cards = [{
 		proc: ChainDualAttack(3.5, 3, 3),
 	},
 	ss1: {
-		desc: "2ターン敵の状態異常攻撃を無効化する",
+		desc: "<状態異常無効>2ターン敵の状態異常攻撃を無効化する",
 		turn: 7,
 		proc: [ss_absattack_disable(2)],
 	},
@@ -6175,7 +6175,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 3, 3),
 	},
 	ss2: {
-		desc: "3ターン敵の状態異常攻撃を無効化する",
+		desc: "<状態異常無効>3ターン敵の状態異常攻撃を無効化する",
 		turn: 9,
 		proc: [ss_absattack_disable(3)],
 	},
@@ -6205,7 +6205,7 @@ Cards = [{
 		proc: [ChainAttack(3.0, 3), add_cond(ChainAttack(3.5, 3), when_hp_more(0.8))],
 	},
 	ss1: {
-		desc: "味方全体の状態異常を回復する",
+		desc: "<状態異常回復>味方全体の状態異常を回復する",
 		turn: 6,
 		proc: [ss_abstate_cure()],
 	},
@@ -6220,7 +6220,7 @@ Cards = [{
 		proc: [ChainAttack(3.0, 1), add_cond(ChainAttack(3.5, 1), when_hp_more(0.8))],
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し、状態異常を回復する(50％)",
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(50％)",
 		turn: 9,
 		proc: [ss_heal(0.5), ss_abstate_cure()],
 	},
@@ -6251,7 +6251,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.25, 3, [1,0,0,0,0]),
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、状態異常を回復する(回復：50％)",
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(回復：50％)",
 		turn: 7,
 		proc: [ss_heal(0.5), ss_abstate_cure()],
 	},
@@ -6265,7 +6265,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.25, 3, [1,0,0,0,0]),
 	},
 	ss2: {
-		desc: "味方全体のHPを完全回復し、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
 		turn: 9,
 		proc: [ss_heal(1.0), ss_abstate_cure()],
 	},
@@ -6295,7 +6295,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.25, 3, [1,0,0,0,0]),
 	},
 	ss1: {
-		desc: "3ターン自分の攻撃力をアップ(150％)",
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(150％)",
 		turn: 6,
 		proc: [ss_enhance_own(1.5, 3)],
 	},
@@ -6309,7 +6309,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.25, 3, [1,0,0,0,0]),
 	},
 	ss2: {
-		desc: "4ターン自分の攻撃力をアップ(250％)",
+		desc: "<ダメージ強化>4ターン自分の攻撃力をアップ(250％)",
 		turn: 8,
 		proc: [ss_enhance_own(2.5, 4)],
 	},
@@ -6338,7 +6338,7 @@ Cards = [{
 		proc: Heal(0.13, [1,1,1,1,1], 0),
 	},
 	ss1: {
-		desc: "攻撃ターンを2遅らせる",
+		desc: "<遅延>攻撃ターンを2遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(2)]
 	},
@@ -6352,7 +6352,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,1,1,1,1], 0), ChainEnhance(0.30, [0,1,0,0,0], 0)],
 	},
 	ss2: {
-		desc: "攻撃ターンを3遅らせる",
+		desc: "<遅延>攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)]
 	},
@@ -6381,7 +6381,7 @@ Cards = [{
 		proc: [Heal(0.10, [0,1,0,0,0], 0), SpecHeal(0.17, [0,1,0,0,0], [1], 0)],
 	},
 	ss1: {
-		desc: "ジャンルパネルを水属性化",
+		desc: "<パネル変換>ジャンルパネルを水属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,1,0,0,0])]
 	},
@@ -6395,7 +6395,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,1,0,0,0], 0), SpecHeal(0.20, [0,1,0,0,0], [1], 0)],
 	},
 	ss2: {
-		desc: "ジャンルパネルを水属性化し、回復の効果を付与(10％)",
+		desc: "<特殊パネル変換>ジャンルパネルを水属性化し、回復の効果を付与(10％)",
 		turn: 7,
 		proc: [ss_panel_change([0,1,0,0,0]), panel_healally(0.10)],
 	},
@@ -6426,7 +6426,7 @@ Cards = [{
 		proc: ChainEnhance(0.60, [0,1,0,0,0], 5),
 	},
 	ss1: {
-		desc: "4ターン敵全体に毒のダメージを与える(5000ダメージ)",
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(5000ダメージ)",
 		turn: 6,
 		proc: [poison(5000, 4)],
 	},
@@ -6440,7 +6440,7 @@ Cards = [{
 		proc: ChainEnhance(0.90, [0,1,0,0,0], 5),
 	},
 	ss2: {
-		desc: "5ターン敵全体に毒のダメージを与える(9999ダメージ)",
+		desc: "<毒>5ターン敵全体に毒のダメージを与える(9999ダメージ)",
 		turn: 10,
 		proc: [poison(9999, 5)],
 	},
@@ -6470,7 +6470,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 3),
 	},
 	ss1: {
-		desc: "敵単体の攻撃ターンを1遅らせる",
+		desc: "<遅延>敵単体の攻撃ターンを1遅らせる",
 		turn: 5,
 		proc: [ss_delay_s(1)]
 	},
@@ -6484,7 +6484,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 3),
 	},
 	ss2: {
-		desc: "敵単体の攻撃ターンを1遅らせ、水属性のダメージ(180％)",
+		desc: "<遅延大魔術>敵単体の攻撃ターンを1遅らせ、水属性のダメージ(180％)",
 		turn: 6,
 		proc: [ss_damage_s(1.8, [1], 1), ss_delay_s(1)],
 	},
@@ -6514,7 +6514,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.4, [9], 0),
 	},
 	ss1: {
-		desc: "敵単体のHPを20％減少させる",
+		desc: "<割合削り>敵単体のHPを20％減少させる",
 		turn: 8,
 		proc: [ss_ratiodamage_s(0.20)],
 	},
@@ -6529,7 +6529,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.6, [9], 0)
 	},
 	ss2: {
-		desc: "敵単体のHPを25％減少させる",
+		desc: "<割合削り>敵単体のHPを25％減少させる",
 		turn: 10,
 		proc: [ss_ratiodamage_s(0.25)],
 	},
@@ -6559,7 +6559,7 @@ Cards = [{
 		proc: [ChainAttack(2.5, 0), ChainAttack(3.0, 3)],
 	},
 	ss1: {
-		desc: "敵全体へ水属性のダメージ(180％)",
+		desc: "<大魔術>敵全体へ水属性のダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [1])],
 	},
@@ -6573,7 +6573,7 @@ Cards = [{
 		proc: [ChainAttack(3.5, 0), add_cond(ChainAttack(4.0, 3), as_hp_absorption(0.05))],
 	},
 	ss2: {
-		desc: "敵全体へ水属性のダメージ(260％)",
+		desc: "<大魔術>敵全体へ水属性のダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [1])],
 	},
@@ -6603,7 +6603,7 @@ Cards = [{
 		proc: ChainAllAttack(1.5, 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火・水属性化",
+		desc: "<パネル変換>ジャンルパネルを火・水属性化",
 		turn: 5,
 		proc: [ss_panel_change([1,1,0,0,0])]
 	},
@@ -6617,7 +6617,7 @@ Cards = [{
 		proc: ChainAllAttack(1.6, 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 7,
 		proc: [ss_panel_change([1,1,1,0,0])]
 	},
@@ -6646,7 +6646,7 @@ Cards = [{
 		proc: Heal(0.13, [0,1,0,0,0], 0),
 	},
 	ss1: {
-		desc: "水・雷属性ダメージを2ターンの間50％軽減する",
+		desc: "<ガード>水・雷属性ダメージを2ターンの間50％軽減する",
 		turn: 7,
 		proc: [ss_attr_guard([0,1,1,0,0], 0.5, 2)]
 	},
@@ -6660,7 +6660,7 @@ Cards = [{
 		proc: Heal(0.15, [0,1,0,0,0], 0),
 	},
 	ss2: {
-		desc: "水・雷属性ダメージを3ターンの間50％軽減する",
+		desc: "<ガード>水・雷属性ダメージを3ターンの間50％軽減する",
 		turn: 10,
 		proc: [ss_attr_guard([0,1,1,0,0], 0.5, 3)]
 	},
@@ -6689,7 +6689,7 @@ Cards = [{
 		proc: ChainAllAttack(1.8, 3),
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを1早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早める",
 		turn: 6,
 		proc: [ss_skillboost(1)],
 	},
@@ -6703,7 +6703,7 @@ Cards = [{
 		proc: ChainAllAttack(1.8, 0),
 	},
 	ss2: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
 		turn: 8,
 		proc: [ss_skillboost(2)],
 	},
@@ -6732,7 +6732,7 @@ Cards = [{
 		proc: ChainAttack(2.5, 3),
 	},
 	ss1: {
-		desc: "敵全体へ水属性の究極ダメージ(180％)",
+		desc: "<大魔術>敵全体へ水属性の究極ダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [1])],
 	},
@@ -6747,7 +6747,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 3),
 	},
 	ss2: {
-		desc: "敵全体へ水属性の超究極ダメージ(260％)",
+		desc: "<大魔術>敵全体へ水属性の超究極ダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [1])],
 	},
@@ -6777,7 +6777,7 @@ Cards = [{
 		proc: ChainAttack(5.5, 7),
 	},
 	ss1: {
-		desc: "ジャンルパネルを水属性化",
+		desc: "<パネル変換>ジャンルパネルを水属性化",
 		turn: 4,
 		proc: [ss_panel_change([0,1,0,0,0])]
 	},
@@ -6792,7 +6792,7 @@ Cards = [{
 		proc: ChainAttack(6.5, 7),
 	},
 	ss2: {
-		desc: "ジャンルパネルを水・闇属性化し、くじを引く",
+		desc: "<特殊パネル変換>ジャンルパネルを水・闇属性化し、くじを引く",
 		turn: 10,
 		proc: [ss_panel_change([0, 1, 0, 0, 1]),
 			panel_attackup(0.10),
@@ -6830,7 +6830,7 @@ Cards = [{
 		proc: Heal(0.13, [1,1,1,1,1], 0)
 	},
 	ss1: {
-		desc: "攻撃ターンを1遅らせ、敵全体へ水属性のダメージ(150％)",
+		desc: "<遅延大魔術>攻撃ターンを1遅らせ、敵全体へ水属性のダメージ(150％)",
 		turn: 8,
 		proc: [ss_damage_all(1.5, [1]), ss_delay_all(1)],
 	},
@@ -6844,7 +6844,7 @@ Cards = [{
 		proc: [Heal(0.16, [1,1,1,1,1], 0), ChainEnhance(0.30, [0,1,0,0,0], 0)],
 	},
 	ss2: {
-		desc: "攻撃ターンを1遅らせ、敵全体へ水属性のダメージ、さらに味方全体のHPを回復する(攻撃：150％ / 回復：25％)",
+		desc: "<遅延大魔術>攻撃ターンを1遅らせ、敵全体へ水属性のダメージ、さらに味方全体のHPを回復する(攻撃：150％ / 回復：25％)",
 		turn: 12,
 		proc: [ss_damage_all(1.5, [1]), ss_heal(0.25), ss_delay_all(1)],
 	},
@@ -6874,7 +6874,7 @@ Cards = [{
 		proc: [ChainDualAttrAttack(3.0, 0, 5, [1,0,0,0,0]), add_cond(ChainDualAttrAttack(4.0, 0, 5, [1,0,0,0,0]), when_hp_more(0.8))],
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50％を使い、解答選択肢を2つ削る",
+		desc: "<解答削り>味方全体のMAXHPの50％を使い、解答選択肢を2つ削る",
 		turn: 1,
 		proc: [ss_answer_narrow(2), ss_consume_all(0.5)],
 	},
@@ -6889,7 +6889,7 @@ Cards = [{
 		proc: [ChainDualAttrAttack(3.0, 0, 7, [1,0,0,0,0]), add_cond(ChainDualAttrAttack(5.0, 0, 7, [1,0,0,0,0]), when_hp_more(0.8))],
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50％を使い、解答を見破る",
+		desc: "<解答削り>味方全体のMAXHPの50％を使い、解答を見破る",
 		turn: 2,
 		proc: [ss_answer_foresight(), ss_consume_all(0.5)],
 	},
@@ -6920,7 +6920,7 @@ Cards = [{
 		proc: ChainAttack(5.5, 7),
 	},
 	ss1: {
-		desc: "敵全体のHPを20％減少させる",
+		desc: "<割合削り>敵全体のHPを20％減少させる",
 		turn: 9,
 		proc: [ss_ratiodamage_all(0.2)],
 	},
@@ -6934,7 +6934,7 @@ Cards = [{
 		proc: ChainAttack(5.5, 0),
 	},
 	ss2: {
-		desc: "敵全体のHPを25％減少させる",
+		desc: "<割合削り>敵全体のHPを25％減少させる",
 		turn: 12,
 		proc: [ss_ratiodamage_all(0.25)],
 	},
@@ -6965,7 +6965,7 @@ Cards = [{
 		proc: ChainAttack(5.5, 7),
 	},
 	ss1: {
-		desc: "MAXHPの50％を使い敵単体へダメージ(380％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵単体へダメージ(380％)",
 		turn: 7,
 		proc: [ss_damage_s(3.8, [1], 1), ss_consume_own(0.5)],
 	},
@@ -6979,7 +6979,7 @@ Cards = [{
 		proc: ChainAttack(6.5, 7),
 	},
 	ss2: {
-		desc: "MAXHPの50％を使い敵単体へダメージ(500％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵単体へダメージ(500％)",
 		turn: 9,
 		proc: [ss_damage_s(5.0, [1], 1), ss_consume_own(0.5)],
 	},
@@ -7008,7 +7008,7 @@ Cards = [{
 		proc: [ChainAttack(2.5, 0), add_cond(ChainAttack(10, 0), when_hp_less(0.5))],
 	},
 	ss1: {
-		desc: "敵全体へ水属性のダメージ(150％)",
+		desc: "<大魔術>敵全体へ水属性のダメージ(150％)",
 		turn: 7,
 		proc: [ss_damage_all(1.5, [1])],
 	},
@@ -7022,7 +7022,7 @@ Cards = [{
 		proc: [ChainAttack(3.2, 0), add_cond(ChainAttack(13.0, 0), when_hp_less(0.5))],
 	},
 	ss2: {
-		desc: "敵全体へ水属性のダメージ(230％)",
+		desc: "<大魔術>敵全体へ水属性のダメージ(230％)",
 		turn: 11,
 		proc: [ss_damage_all(2.2, [1])],
 	},
@@ -7052,7 +7052,7 @@ Cards = [{
 		proc: Heal(0.13, [1,1,1,1,1], 0),
 	},
 	ss1: {
-		desc: "2ターン味方全体の攻撃力をアップ(+50％)",
+		desc: "<ダメージ強化>2ターン味方全体の攻撃力をアップ(+50％)",
 		turn: 8,
 		proc: [ss_enhance_all(0.5, 2, [1,1,1,1,1])],
 	},
@@ -7066,7 +7066,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,1,1,1,1], 0), ChainEnhance(0.3, [1,1,1,1,1], 0)],
 	},
 	ss2: {
-		desc: "2ターン味方全体の攻撃力をアップ(+100％)",
+		desc: "<ダメージ強化>2ターン味方全体の攻撃力をアップ(+100％)",
 		turn: 10,
 		proc: [ss_enhance_all(1.0, 2, [1,1,1,1,1])],
 	},
@@ -7096,7 +7096,7 @@ Cards = [{
 		proc: Heal(0.11, [0,1,1,0,0], 0),
 	},
 	ss1: {
-		desc: "敵全体へ水属性のダメージ、さらに味方全体のHPを回復(攻撃：140％ / 回復：20％)",
+		desc: "<大魔術>敵全体へ水属性のダメージ、さらに味方全体のHPを回復(攻撃：140％ / 回復：20％)",
 		turn: 6,
 		proc: [ss_damage_all(1.4, [1]), ss_heal(0.2)],
 	},
@@ -7111,7 +7111,7 @@ Cards = [{
 		proc: Heal(0.13, [0,1,1,0,0], 0),
 	},
 	ss2: {
-		desc: "敵全体へ水属性のダメージ、さらに味方全体のHPを回復(攻撃：150％ / 回復：20％)",
+		desc: "<大魔術>敵全体へ水属性のダメージ、さらに味方全体のHPを回復(攻撃：150％ / 回復：20％)",
 		turn: 7,
 		proc: [ss_damage_all(1.5, [1]), ss_heal(0.2)],
 	},
@@ -7141,7 +7141,7 @@ Cards = [{
 		proc: ChainAttrAttack(4.0, 0, [1,0,0,0,0]),
 	},
 	ss1: {
-		desc: "敵単体へ水属性のダメージ(200％)",
+		desc: "<大魔術>敵単体へ水属性のダメージ(200％)",
 		turn: 5,
 		proc: [ss_damage_s(2.0, [1], 0)],
 	},
@@ -7155,7 +7155,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.0, 0, [1,0,0,0,0]),
 	},
 	ss2: {
-		desc: "敵単体へ水属性のダメージ(400％)",
+		desc: "<大魔術>敵単体へ水属性のダメージ(400％)",
 		turn: 8,
 		proc: [ss_damage_s(4.0, [1], 0)],
 	},
@@ -7186,7 +7186,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 3),
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを1早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早める",
 		turn: 6,
 		proc: [ss_skillboost(1)],
 	},
@@ -7200,7 +7200,7 @@ Cards = [{
 		proc: [ChainAttack(3.5, 0), Heal(0.05, [0,1,0,0,0], 0)],
 	},
 	ss2: {
-		desc: "敵単体の攻撃ターンを3遅らせる",
+		desc: "<遅延>敵単体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_s(3)]
 	},
@@ -7230,7 +7230,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(5.0, 0), as_consume_all(0.10)),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50％を使い敵全体へダメージ(130％×味方の人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50％を使い敵全体へダメージ(130％×味方の人数)",
 		turn: 10,
 		proc: [ss_damage_all(ss_consume_all_cond(1.3, 0.5), [1])],
 	},
@@ -7244,7 +7244,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(6.0, 0), as_consume_all(0.10)),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50％を使い敵全体へダメージ(160％×味方の人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50％を使い敵全体へダメージ(160％×味方の人数)",
 		turn: 12,
 		proc: [ss_damage_all(ss_consume_all_cond(1.6, 0.5), [1])],
 	},
@@ -7274,7 +7274,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 3),
 	},
 	ss1: {
-		desc: "攻撃ターンを3遅らせる",
+		desc: "<遅延>攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)]
 	},
@@ -7288,7 +7288,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 3),
 	},
 	ss2: {
-		desc: "攻撃ターンを3遅らせ、敵全体へ水属性のダメージ(180％)",
+		desc: "<遅延大魔術>攻撃ターンを3遅らせ、敵全体へ水属性のダメージ(180％)",
 		turn: 15,
 		proc: [ss_damage_all(1.8, [1]), ss_delay_all(3)],
 	},
@@ -7319,7 +7319,7 @@ Cards = [{
 		proc: ChainVarianceAttack(3.5, 3),
 	},
 	ss1: {
-		desc: "ジャンルパネルを水＆雷属性化",
+		desc: "<パネル変換>ジャンルパネルを水＆雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,1,1,0,0])]
 	},
@@ -7333,7 +7333,7 @@ Cards = [{
 		proc: ChainVarianceAttack(4.5, 3),
 	},
 	ss2: {
-		desc: "ジャンルパネルを水＆雷属性化し、攻撃力アップの効果を付与(+20％)",
+		desc: "<特殊パネル変換>ジャンルパネルを水＆雷属性化し、攻撃力アップの効果を付与(+20％)",
 		turn: 8,
 		proc: [ss_panel_change([0,1,1,0,0]), panel_attackup(0.20)],
 	},
@@ -7364,7 +7364,7 @@ Cards = [{
 		proc: ChainAttack(6.5, 5),
 	},
 	ss1: {
-		desc: "1ターン、致死ダメージを受けたら一度だけHP25％で起死回生",
+		desc: "<起死回生>1ターン、致死ダメージを受けたら一度だけHP25％で起死回生",
 		turn: 7,
 		proc: [ss_revival(0.25, 1)],
 	},
@@ -7378,7 +7378,7 @@ Cards = [{
 		proc: ChainAttack(7.5, 5),
 	},
 	ss2: {
-		desc: "2ターン、致死ダメージを受けたら一度だけHP25％で起死回生",
+		desc: "<起死回生>2ターン、致死ダメージを受けたら一度だけHP25％で起死回生",
 		turn: 9,
 		proc: [ss_revival(0.25, 2)],
 	},
@@ -7453,7 +7453,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 5),
 	},
 	ss1: {
-		desc: "ジャンルパネルをシャッフル",
+		desc: "<シャッフル>ジャンルパネルをシャッフル",
 		turn: 3,
 		proc: [ss_panel_shuffle()]
 	},
@@ -7467,7 +7467,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルに攻撃力アップの効果を付与(+60％)",
+		desc: "<特殊パネル変換>ジャンルパネルに攻撃力アップの効果を付与(+60％)",
 		turn: 7,
 		proc: [panel_attackup(0.60)],
 	},
@@ -7498,7 +7498,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 5.0, 6.5, 5),
 	},
 	ss1: {
-		desc: "敵単体へ水属性の5回連続ダメージ(計180％)",
+		desc: "<多弾魔術>敵単体へ水属性の5回連続ダメージ(計180％)",
 		turn: 6,
 		proc: [ss_damage_s(1.8, [1], 5)],
 	},
@@ -7512,7 +7512,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 5.0, 9.0, 5),
 	},
 	ss2: {
-		desc: "敵単体へ水属性の5回連続ダメージ、10チェインを消費しさらにダメージ(通常：計380％ / 10チェイン消費：760％)",
+		desc: "<多弾魔術>敵単体へ水属性の5回連続ダメージ、10チェインを消費しさらにダメージ(通常：計380％ / 10チェイン消費：760％)",
 		turn: 9,
 		proc: [ss_damage_s(ss_chain_cost(10, 7.6, 3.8), [1], 5)],
 	},
@@ -7542,7 +7542,7 @@ Cards = [{
 		proc: ChainDeckAttrsAttack(2.5, 4.0, 5.5, 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルを水・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,1,1,0,0])]
 	},
@@ -7556,7 +7556,7 @@ Cards = [{
 		proc: ChainDeckAttrsAttack(3.0, 5.0, 7.0, 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化し、回復の効果を付与(5％)",
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、回復の効果を付与(5％)",
 		turn: 8,
 		proc: [ss_panel_change([1,1,1,0,0]), panel_healally(0.05)],
 	},
@@ -7586,7 +7586,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(2.5, 5), as_hp_absorption(0.05)),
 	},
 	ss1: {
-		desc: "敵全体へ水属性のダメージ(150％)",
+		desc: "<大魔術>敵全体へ水属性のダメージ(150％)",
 		turn: 7,
 		proc: [ss_damage_all(1.5, [1])],
 	},
@@ -7601,7 +7601,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(4.5, 5), as_hp_absorption(0.05)),
 	},
 	ss2: {
-		desc: "敵全体へ水属性のダメージ(200％)",
+		desc: "<大魔術>敵全体へ水属性のダメージ(200％)",
 		turn: 9,
 		proc: [ss_damage_all(2.0, [1])],
 	},
@@ -7631,7 +7631,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(3.0, 0), as_consume_all(0.10)),
 	},
 	ss1: {
-		desc: "敵単体へ水属性のダメージ(100％)",
+		desc: "<大魔術>敵単体へ水属性のダメージ(100％)",
 		turn: 4,
 		proc: [ss_damage_s(1.0, [1], 1)],
 	},
@@ -7646,7 +7646,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(4.0, 0), as_consume_all(0.10)),
 	},
 	ss2: {
-		desc: "敵単体へ水属性のダメージ(250％)",
+		desc: "<大魔術>敵単体へ水属性のダメージ(250％)",
 		turn: 7,
 		proc: [ss_damage_s(2.5, [1], 1)],
 	},
@@ -7721,7 +7721,7 @@ Cards = [{
 		proc: ChainEnhance(0.8, [0,1,0,0,0], 7),
 	},
 	ss1: {
-		desc: "ジャンルパネルを水属性化",
+		desc: "<パネル変換>ジャンルパネルを水属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,1,0,0,0])]
 	},
@@ -7735,7 +7735,7 @@ Cards = [{
 		proc: ChainEnhance(0.8, [0,1,0,0,0], 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルを水属性化し、チェインがプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを水属性化し、チェインがプラス2の効果を付与",
 		turn: 7,
 		proc: [ss_panel_change([0,1,0,0,0]), panel_chainplus(2)],
 	},
@@ -7765,7 +7765,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(5.25, 3, 5, [1,0,0,0,0])
 	},
 	ss1: {
-		desc: "2ターン自分の攻撃力をアップ(+350％)",
+		desc: "<ダメージ強化>2ターン自分の攻撃力をアップ(+350％)",
 		turn: 6,
 		proc: [ss_enhance_own(3.5, 2)],
 	},
@@ -7779,7 +7779,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(6.25, 3, 5, [1,0,0,0,0])
 	},
 	ss2: {
-		desc: "2ターン自分の攻撃力をアップ(+500％)",
+		desc: "<ダメージ強化>2ターン自分の攻撃力をアップ(+500％)",
 		turn: 8,
 		proc: [ss_enhance_own(5.0, 2)],
 	},
@@ -7808,7 +7808,7 @@ Cards = [{
 		proc: Heal(0.13, [1,1,0,0,0], 0),
 	},
 	ss1: {
-		desc: "2ターン火・水属性のダメージを50％軽減する",
+		desc: "<ガード>2ターン火・水属性のダメージを50％軽減する",
 		turn: 7,
 		proc: [ss_attr_guard([1,1,0,0,0], 0.5, 2)]
 	},
@@ -7822,7 +7822,7 @@ Cards = [{
 		proc: Heal(0.15, [1,1,0,0,0], 0),
 	},
 	ss2: {
-		desc: "3ターン火・水属性のダメージを50％軽減する",
+		desc: "<ガード>3ターン火・水属性のダメージを50％軽減する",
 		turn: 9,
 		proc: [ss_attr_guard([1,1,0,0,0], 0.5, 3)]
 	},
@@ -7852,7 +7852,7 @@ Cards = [{
 		proc: [Heal(0.10, [0,1,0,0,0], 0), Heal(0.15, [0,1,0,0,0], 7)],
 	},
 	ss1: {
-		desc: "解答選択肢を2つ削る",
+		desc: "<解答削り>解答選択肢を2つ削る",
 		turn: 3,
 		proc: [ss_answer_narrow(2)]
 	},
@@ -7866,7 +7866,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,1,0,0,0], 0), Heal(0.18, [0,1,0,0,0], 7)],
 	},
 	ss2: {
-		desc: "解答を見破る",
+		desc: "<解答削り>解答を見破る",
 		turn: 6,
 		proc: [ss_answer_foresight()]
 	},
@@ -7896,7 +7896,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 3),
 	},
 	ss1: {
-		desc: "敵全体へ水属性のダメージ(180％)",
+		desc: "<大魔術>敵全体へ水属性のダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [1])],
 	},
@@ -7910,7 +7910,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 3),
 	},
 	ss2: {
-		desc: "敵全体へ水属性のダメージ(260％)",
+		desc: "<大魔術>敵全体へ水属性のダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [1])],
 	},
@@ -7940,7 +7940,7 @@ Cards = [{
 		proc: Heal(0.13, [0,1,0,0,0], 0),
 	},
 	ss1: {
-		desc: "水・雷属性ダメージを50％軽減(継続：2ターン)",
+		desc: "<ガード>水・雷属性ダメージを50％軽減(継続：2ターン)",
 		turn: 8,
 		proc: [ss_attr_guard([0,1,1,0,0], 0.5, 2)]
 	},
@@ -7954,7 +7954,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,1,0,0,0], 0), SpecHeal(0.17, [0,1,0,0,0], [8], 0)],
 	},
 	ss2: {
-		desc: "水・雷属性ダメージを75％軽減(継続：2ターン)",
+		desc: "<ガード>水・雷属性ダメージを75％軽減(継続：2ターン)",
 		turn: 10,
 		proc: [ss_attr_guard([0,1,1,0,0], 0.75, 2)]
 	},
@@ -7984,7 +7984,7 @@ Cards = [{
 		proc: [Heal(0.09, [1,1,1,1,1], 0), SpecHeal(0.16, [1,1,1,1,1], [1], 0)],
 	},
 	ss1: {
-		desc: "ジャンルパネルを水・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,1,1,0,0])]
 	},
@@ -7998,7 +7998,7 @@ Cards = [{
 		proc: [Heal(0.12, [1,1,1,1,1], 0), SpecHeal(0.19, [1,1,1,1,1], [1], 0)],
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 7,
 		proc: [ss_panel_change([1,1,1,0,0])]
 	},
@@ -8028,7 +8028,7 @@ Cards = [{
 		proc: [add_cond(ChainDualAttack(3.0, 0, 2), as_consume_all(0.10)), add_cond(ChainDualAttack(3.5, 3, 2), as_consume_all(0.10))],
 	},
 	ss1: {
-		desc: "敵単体へ水属性のダメージ、残りHPが50％以下でダメージアップ(通常：300％ / HP50％以下：500％)",
+		desc: "<大魔術>敵単体へ水属性のダメージ、残りHPが50％以下でダメージアップ(通常：300％ / HP50％以下：500％)",
 		turn: 7,
 		proc: [ss_damage_s(ss_hp_less(0.5, 5.0, 3.0), [1], 1)],
 	},
@@ -8042,7 +8042,7 @@ Cards = [{
 		proc: [add_cond(ChainDualAttack(4.0, 0, 2), as_consume_all(0.10)), add_cond(ChainDualAttack(4.5, 3, 5), as_consume_all(0.10))],
 	},
 	ss2: {
-		desc: "敵単体へ水属性のダメージ、残りHPが50％以下でダメージアップ(通常：600％ / HP50％以下：800％)",
+		desc: "<大魔術>敵単体へ水属性のダメージ、残りHPが50％以下でダメージアップ(通常：600％ / HP50％以下：800％)",
 		turn: 10,
 		proc: [ss_damage_s(ss_hp_less(0.5, 8.0, 6.0), [1], 1)],
 	},
@@ -8072,7 +8072,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 5),
 	},
 	ss1: {
-		desc: "MAXHPの50％を使い敵全体へダメージ(260％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(260％)",
 		turn: 8,
 		proc: [ss_damage_all(2.6, [1]), ss_consume_own(0.5)],
 	},
@@ -8086,7 +8086,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 0),
 	},
 	ss2: {
-		desc: "MAXHPの50％を使い敵全体へダメージ(330％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(330％)",
 		turn: 12,
 		proc: [ss_damage_all(3,3, [1]), ss_consume_own(0.5)],
 	},
@@ -8116,7 +8116,7 @@ Cards = [{
 		proc: ChainDualAttack(3.5, 3, 4),
 	},
 	ss1: {
-		desc: "2ターン水属性の味方の攻撃力をアップ(+40％)",
+		desc: "<ダメージ強化>2ターン水属性の味方の攻撃力をアップ(+40％)",
 		turn: 6,
 		proc: [ss_enhance_all(0.4, 2, [0,1,0,0,0])],
 	},
@@ -8130,7 +8130,7 @@ Cards = [{
 		proc: ChainDualAttack(3.5, 0, 4),
 	},
 	ss2: {
-		desc: "4ターン水属性の味方の攻撃力をアップ(+60％)",
+		desc: "<ダメージ強化>4ターン水属性の味方の攻撃力をアップ(+60％)",
 		turn: 9,
 		proc: [ss_enhance_all(0.6, 4, [0,1,0,0,0])],
 	},
@@ -8160,7 +8160,7 @@ Cards = [{
 		proc: ChainPanelsEnhance(0, 0.6, 1.0, [0,1,0,0,0], 0),
 	},
 	ss1: {
-		desc: "スペシャルスキルの発動ターンを1早め、敵全体の攻撃ターンを1遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを1早め、敵全体の攻撃ターンを1遅らせる",
 		turn: 7,
 		proc: [ss_skillboost(1), ss_delay_all(1)],
 	},
@@ -8175,7 +8175,7 @@ Cards = [{
 		proc: ChainPanelsEnhance(0, 0.8, 1.2, [0,1,0,0,0], 0),
 	},
 	ss2: {
-		desc: "スペシャルスキルの発動ターンを2早め、敵全体の攻撃ターンを2遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵全体の攻撃ターンを2遅らせる",
 		turn: 10,
 		proc: [ss_skillboost(2), ss_delay_all(2)],
 	},
@@ -8205,7 +8205,7 @@ Cards = [{
 		proc: [Heal(0.10, [1,1,1,1,1], 0), SpecHeal(0.15, [1,1,1,1,1], [9], 0)],
 	},
 	ss1: {
-		desc: "ジャンルパネルを水・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,1,1,0,0])]
 	},
@@ -8219,7 +8219,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,1,1,1,1], 0), SpecHeal(0.18, [1,1,1,1,1], [9], 0)],
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 7,
 		proc: [ss_panel_change([1,1,1,0,0])]
 	},
@@ -8249,7 +8249,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.11, 0.15, 0.17, [1,1,1,1,1], 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルを水・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,1,1,0,0])]
 	},
@@ -8263,7 +8263,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.13, 0.17, 0.20, [1,1,1,1,1], 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化し、回復の効果を付与(6％)",
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、回復の効果を付与(6％)",
 		turn: 7,
 		proc: [ss_panel_change([1,1,1,0,0]), panel_healally(0.08)],
 	},
@@ -8293,7 +8293,7 @@ Cards = [{
 		proc: [ChainEnhance(0.20, [0,1,0,0,0], 0), ChainSpecEnhance(0.40, [0,1,0,0,0], [8], 0)],
 	},
 	ss1: {
-		desc: "解答選択肢を2つ削る",
+		desc: "<解答削り>解答選択肢を2つ削る",
 		turn: 3,
 		proc: [ss_answer_narrow(2)]
 	},
@@ -8307,7 +8307,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [0,1,0,0,0], 0), ChainSpecEnhance(0.60, [0,1,0,0,0], [8], 0)],
 	},
 	ss2: {
-		desc: "解答を見破る",
+		desc: "<解答削り>解答を見破る",
 		turn: 6,
 		proc: [ss_answer_foresight()]
 	},
@@ -8337,7 +8337,7 @@ Cards = [{
 		proc: Heal(0.13, [0,1,0,0,0], 0)
 	},
 	ss1: {
-		desc: "味方全体のHPを回復する(50％)",
+		desc: "<回復>味方全体のHPを回復する(50％)",
 		turn: 6,
 		proc: [ss_heal(0.50)],
 	},
@@ -8351,7 +8351,7 @@ Cards = [{
 		proc: Heal(0.15, [0,1,0,0,0], 0)
 	},
 	ss2: {
-		desc: "味方全体のHPを回復する、さらに5ターン徐々に回復する(回復：35％ / 徐々に回復：15％×5T)",
+		desc: "<継続回復>味方全体のHPを回復する、さらに5ターン徐々に回復する(回復：35％ / 徐々に回復：15％×5T)",
 		turn: 10,
 		proc: [ss_heal(0.35), ss_regenerate(0.15, 5)],
 	},
@@ -8381,7 +8381,7 @@ Cards = [{
 		proc: [Heal(0.10, [0,1,0,0,0], 0), Heal(0.17, [0,1,0,0,0], 7)],
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、状態異常を回復する(回復：50％)",
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(回復：50％)",
 		turn: 7,
 		proc: [ss_heal(0.50), ss_abstate_cure()],
 	},
@@ -8396,7 +8396,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,1,0,0,0], 0), Heal(0.20, [0,1,0,0,0], 7)],
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し、状態異常を回復、さらに水属性の味方を50％で蘇生(回復：50％)",
+		desc: "<状態異常回復&蘇生>味方全体のHPを回復し、状態異常を回復、さらに水属性の味方を50％で蘇生(回復：50％)",
 		turn: 10,
 		proc: [ss_heal(0.50), ss_abstate_cure(), ss_resurrection([0,1,0,0,0], 0.5)],
 	},
@@ -8426,7 +8426,7 @@ Cards = [{
 		proc: ChainDualAttack(3.5, 2, 2),
 	},
 	ss1: {
-		desc: "3ターン自分の攻撃力をアップ(+150％)",
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(+150％)",
 		turn: 6,
 		proc: [ss_enhance_own(1.5, 3)],
 	},
@@ -8441,7 +8441,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 2, 2),
 	},
 	ss2: {
-		desc: "4ターン自分の攻撃力をアップ(+250％)",
+		desc: "<ダメージ強化>4ターン自分の攻撃力をアップ(+250％)",
 		turn: 8,
 		proc: [ss_enhance_own(2.5, 4)],
 	},
@@ -8471,7 +8471,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.4, [4,8], 0),
 	},
 	ss1: {
-		desc: "敵全体へ水属性の究極ダメージ(180％)",
+		desc: "<大魔術>敵全体へ水属性の究極ダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [1])],
 	},
@@ -8485,7 +8485,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.6, [4,8], 0),
 	},
 	ss2: {
-		desc: "敵全体へ水属性の超究極ダメージ(260％)",
+		desc: "<大魔術>敵全体へ水属性の超究極ダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [1])],
 	},
@@ -8515,7 +8515,7 @@ Cards = [{
 		proc: ChainSpecAttack(3.5, 0, [2,7]),
 	},
 	ss1: {
-		desc: "ジャンルパネルを水属性化",
+		desc: "<パネル変換>ジャンルパネルを水属性化",
 		turn: 6,
 		proc: [ss_panel_change([0,1,0,0,0])]
 	},
@@ -8530,7 +8530,7 @@ Cards = [{
 		proc: ChainSpecAttack(4.5, 0, [2,7]),
 	},
 	ss2: {
-		desc: "ジャンルパネルを水属性化し、回復の効果を付与(8％)",
+		desc: "<特殊パネル変換>ジャンルパネルを水属性化し、回復の効果を付与(8％)",
 		turn: 8,
 		proc: [ss_panel_change([0,1,0,0,0]), panel_healally(0.08)],
 	},
@@ -8560,7 +8560,7 @@ Cards = [{
 		proc: Heal(0.13, [0,1,0,0,0], 0)
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、さらに水属性の味方を蘇生(回復：25％ / 蘇生：25％)",
+		desc: "<蘇生>味方全体のHPを回復し、さらに水属性の味方を蘇生(回復：25％ / 蘇生：25％)",
 		turn: 7,
 		proc: [ss_heal(0.25), ss_resurrection([0,1,0,0,0], 0.25)],
 	},
@@ -8574,7 +8574,7 @@ Cards = [{
 		proc: [Heal(0.16, [0,1,0,0,0], 0), ChainEnhance(0.3, [0,1,0,0,0], 0)],
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し、さらに水属性の味方を蘇生(回復：50％ / 蘇生：50％)",
+		desc: "<蘇生>味方全体のHPを回復し、さらに水属性の味方を蘇生(回復：50％ / 蘇生：50％)",
 		turn: 9,
 		proc: [ss_heal(0.50), ss_resurrection([0,1,0,0,0], 0.50)],
 	},
@@ -8604,7 +8604,7 @@ Cards = [{
 		proc: Heal(0.13, [0,1,0,0,0], 0),
 	},
 	ss1: {
-		desc: "2ターンの間、チェインを保護する",
+		desc: "<チェインガード>2ターンの間、チェインを保護する",
 		turn: 6,
 		proc: [ss_chain_protect(2)],
 	},
@@ -8619,7 +8619,7 @@ Cards = [{
 		proc: Heal(0.16, [0,1,0,0,0], 0),
 	},
 	ss2: {
-		desc: "4ターンの間、チェインを保護する",
+		desc: "<チェインガード>4ターンの間、チェインを保護する",
 		turn: 9,
 		proc: [ss_chain_protect(4)],
 	},
@@ -8649,7 +8649,7 @@ Cards = [{
 		proc: ChainPanelsAttrAttack(0, 5.5, 7.0, [1,0,0,0,0], 0)
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを1早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早める",
 		turn: 7,
 		proc: [ss_skillboost(1)],
 	},
@@ -8664,7 +8664,7 @@ Cards = [{
 		proc: ChainPanelsAttrAttack(0, 7.0, 9.0, [1, 0, 0, 0, 0], 0)
 	},
 	ss2: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
 		turn: 9,
 		proc: [ss_skillboost(2)],
 	},
@@ -8694,7 +8694,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [0,1,0,0,0], 0), ChainSpecEnhance(0.50, [0,1,0,0,0], [1], 0)],
 	},
 	ss1: {
-		desc: "攻撃ターンを2遅らせる",
+		desc: "<遅延>攻撃ターンを2遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(2)]
 	},
@@ -8708,7 +8708,7 @@ Cards = [{
 		proc: [ChainEnhance(0.40, [0,1,0,0,0], 0), ChainSpecEnhance(0.70, [0,1,0,0,0], [1], 0)],
 	},
 	ss2: {
-		desc: "攻撃ターンを3遅らせる",
+		desc: "<遅延>攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)]
 	},
@@ -8738,7 +8738,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 6.5, 8.0, 7),
 	},
 	ss1: {
-		desc: "ジャンルパネルを水・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,1,1,0,0])]
 	},
@@ -8752,7 +8752,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 7.5, 9.0, 7),
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 7,
 		proc: [ss_panel_change([1,1,1,0,0])]
 	},
@@ -8782,7 +8782,7 @@ Cards = [{
 		proc: Heal(0.13, [0,1,0,0,0], 0),
 	},
 	ss1: {
-		desc: "攻撃ターンを2遅らせる",
+		desc: "<遅延>攻撃ターンを2遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(2)]
 	},
@@ -8796,7 +8796,7 @@ Cards = [{
 		proc: [Heal(0.16, [0,1,0,0,0], 0), ChainEnhance(0.30, [0,1,0,0,0], 0)],
 	},
 	ss2: {
-		desc: "攻撃ターンを3遅らせる",
+		desc: "<遅延>攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)]
 	},
@@ -8826,7 +8826,7 @@ Cards = [{
 		proc: Heal(0.14, [1,1,1,1,1], 0),
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、状態異常を回復する(回復：50％)",
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(回復：50％)",
 		turn: 7,
 		proc: [ss_heal(0.5), ss_abstate_cure()],
 	},
@@ -8841,7 +8841,7 @@ Cards = [{
 		proc: Heal(0.17, [1,1,1,1,1], 0),
 	},
 	ss2: {
-		desc: "味方全体のHPを完全回復し、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
 		turn: 9,
 		proc: [ss_heal(1.0), ss_abstate_cure()],
 	},
@@ -8871,7 +8871,7 @@ Cards = [{
 		proc: ChainVarianceAttack(3.5, 3),
 	},
 	ss1: {
-		desc: "敵単体のHPを25％減少させる",
+		desc: "<割合削り>敵単体のHPを25％減少させる",
 		turn: 9,
 		proc: [ss_ratiodamage_s(0.25)],
 	},
@@ -8885,7 +8885,7 @@ Cards = [{
 		proc: ChainVarianceAttack(4.5, 3),
 	},
 	ss2: {
-		desc: "敵単体のHPを30％減少させる",
+		desc: "<割合削り>敵単体のHPを30％減少させる",
 		turn: 13,
 		proc: [ss_ratiodamage_s(0.30)],
 	},
@@ -8915,7 +8915,7 @@ Cards = [{
 		proc: ChainVarianceAttack(3.0, 3),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの80％を使い敵全体へダメージ(130％×味方の人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの80％を使い敵全体へダメージ(130％×味方の人数)",
 		turn: 10,
 		proc: [ss_damage_all(ss_consume_all_cond(1.3, 0.8), [1])],
 	},
@@ -8930,7 +8930,7 @@ Cards = [{
 		proc: add_cond(ChainVarianceAttack(5.0, 3), as_consume_all(0.15)),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの80％を使い敵全体へダメージ(150％×味方の人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの80％を使い敵全体へダメージ(150％×味方の人数)",
 		turn: 12,
 		proc: [ss_damage_all(ss_consume_all_cond(1.5, 0.8), [1])],
 	},
@@ -8960,7 +8960,7 @@ Cards = [{
 		proc: ChainAttrAttack(4.0, 0, [1,0,0,0,0]),
 	},
 	ss1: {
-		desc: "敵単体へ水属性のダメージ(200％)",
+		desc: "<大魔術>敵単体へ水属性のダメージ(200％)",
 		turn: 5,
 		proc: [ss_damage_s(2.0, [1], 1)],
 	},
@@ -8974,7 +8974,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.0, 0, [1,0,0,0,0]),
 	},
 	ss2: {
-		desc: "敵単体へ水属性のダメージ(400％)",
+		desc: "<大魔術>敵単体へ水属性のダメージ(400％)",
 		turn: 8,
 		proc: [ss_damage_s(4.0, [1], 1)],
 	},
@@ -9004,7 +9004,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.25, 0, [1,0,0,0,0]),
 	},
 	ss1: {
-		desc: "ジャンルパネルをシャッフル",
+		desc: "<シャッフル>ジャンルパネルをシャッフル",
 		turn: 3,
 		proc: [ss_panel_shuffle()]
 	},
@@ -9018,7 +9018,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.25, 0, [1,0,0,0,0]),
 	},
 	ss2: {
-		desc: "ジャンルパネルを水属性化し、チェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを水属性化し、チェインがプラス1の効果を付与",
 		turn: 5,
 		proc: [ss_panel_change([0,1,0,0,0]), panel_chainplus(1)],
 	},
@@ -9048,7 +9048,7 @@ Cards = [{
 		proc: ChainAttack(4.0, 5),
 	},
 	ss1: {
-		desc: "解答選択肢を2つ削る",
+		desc: "<解答削り>解答選択肢を2つ削る",
 		turn: 3,
 		proc: [ss_answer_narrow(2)]
 	},
@@ -9063,7 +9063,7 @@ Cards = [{
 		proc: ChainAttack(5.0, 5),
 	},
 	ss2: {
-		desc: "解答を見破る",
+		desc: "<解答削り>解答を見破る",
 		turn: 6,
 		proc: [ss_answer_foresight()]
 	},
@@ -9094,7 +9094,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.5, 5, [1,0,0,0,0]),
 	},
 	ss1: {
-		desc: "1クエストに1回のみ、敵全体のHPを30％減少させる",
+		desc: "<割合削り>1クエストに1回のみ、敵全体のHPを30％減少させる",
 		turn: 9,
 		proc: [ss_ratiodamage_all(0.30)],
 	},
@@ -9109,7 +9109,7 @@ Cards = [{
 		proc: ChainAttrAttack(7.5, 5, [1,0,0,0,0]),
 	},
 	ss2: {
-		desc: "1クエストに1回のみ、敵全体のHPを35％減少させる",
+		desc: "<割合削り>1クエストに1回のみ、敵全体のHPを35％減少させる",
 		turn: 12,
 		proc: [ss_ratiodamage_all(0.35)],
 	},
@@ -9140,7 +9140,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.5, 5, [1,0,0,0,0]),
 	},
 	ss1: {
-		desc: "5ターン味方全体を徐々に回復する(20％)",
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20％)",
 		turn: 8,
 		proc: [ss_regenerate(0.20, 5)],
 	},
@@ -9154,7 +9154,7 @@ Cards = [{
 		proc: ChainAttrAttack(7.5, 5, [1,0,0,0,0]),
 	},
 	ss2: {
-		desc: "5ターン味方全体を徐々に回復する、HP50％未満でさらに回復(通常：20％ / HP50％未満：30％)",
+		desc: "<継続回復>5ターン味方全体を徐々に回復する、HP50％未満でさらに回復(通常：20％ / HP50％未満：30％)",
 		turn: 10,
 		proc: [ss_regenerate(ss_hp_less(0.5, 0.3, 0.2), 5)],
 	}
@@ -9183,7 +9183,7 @@ Cards = [{
 		proc: ChainAttrAttack(3.5, 0, [0,1,0,0,0]),
 	},
 	ss1: {
-		desc: "3ターン水属性のダメージを25％軽減する",
+		desc: "<ガード>3ターン水属性のダメージを25％軽減する",
 		turn: 8,
 		proc: [ss_attr_guard([0,1,0,0,0], 0.25, 3)]
 	},
@@ -9198,7 +9198,7 @@ Cards = [{
 		proc: ChainAttrAttack(4.5, 0, [0,1,0,0,0]),
 	},
 	ss2: {
-		desc: "3ターン水属性のダメージを50％軽減する",
+		desc: "<ガード>3ターン水属性のダメージを50％軽減する",
 		turn: 12,
 		proc: [ss_attr_guard([0,1,0,0,0], 0.5, 3)]
 	},
@@ -9228,7 +9228,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [0,1,0,0,0], 0), add_cond(ChainEnhance(0.45, [0,1,0,0,0], 0), when_leader())],
 	},
 	ss1: {
-		desc: "味方全体の攻撃力をアップ(+50％)",
+		desc: "<ダメージ強化>味方全体の攻撃力をアップ(+50％)",
 		turn: 7,
 		proc: [ss_enhance_all(0.50, 2, [1,1,1,1,1])],
 	},
@@ -9242,7 +9242,7 @@ Cards = [{
 		proc: [ChainEnhance(0.40, [0,1,0,0,0], 0), add_cond(ChainEnhance(0.65, [0,1,0,0,0], 0), when_leader())],
 	},
 	ss2: {
-		desc: "味方全体の攻撃力をアップ(+70％)",
+		desc: "<ダメージ強化>味方全体の攻撃力をアップ(+70％)",
 		turn: 10,
 		proc: [ss_enhance_all(0.70, 4, [1,1,1,1,1])],
 	},
@@ -9272,7 +9272,7 @@ Cards = [{
 		proc: ChainAttack(9.0, 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火・水属性化",
+		desc: "<パネル変換>ジャンルパネルを火・水属性化",
 		turn: 5,
 		proc: [ss_panel_change([1,1,0,0,0])]
 	},
@@ -9286,7 +9286,7 @@ Cards = [{
 		proc: ChainPanelsAttack(9.0, 9.0, 19.0, 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 7,
 		proc: [ss_panel_change([1,1,1,0,0])]
 	},
@@ -9315,7 +9315,7 @@ Cards = [{
 		proc: [ChainEnhance(0.10, [0,1,0,0,0], 0), ChainSpecEnhance(0.30, [0,1,0,0,0], [9], 0)],
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、さらに水属性の味方を蘇生(回復：25％ / 蘇生：25％)",
+		desc: "<蘇生>味方全体のHPを回復し、さらに水属性の味方を蘇生(回復：25％ / 蘇生：25％)",
 		turn: 10,
 		proc: [ss_heal(0.25), ss_resurrection([0,1,0,0,0], 0.25)]
 	},
@@ -9330,7 +9330,7 @@ Cards = [{
 		proc: [ChainEnhance(0.20, [0,1,0,0,0], 0), ChainSpecEnhance(0.40, [0,1,0,0,0], [9], 0)],
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し、さらに水属性の味方を蘇生(回復：50％ / 蘇生：50％)",
+		desc: "<蘇生>味方全体のHPを回復し、さらに水属性の味方を蘇生(回復：50％ / 蘇生：50％)",
 		turn: 14,
 		proc: [ss_heal(0.50), ss_resurrection([0,1,0,0,0], 0.50)]
 	},
@@ -9360,7 +9360,7 @@ Cards = [{
 		proc: ChainAttrAttack(4.0, 0, [1,0,0,0,0]),
 	},
 	ss1: {
-		desc: "敵全体のHPを20％減少させる",
+		desc: "<割合削り>敵全体のHPを20％減少させる",
 		turn: 9,
 		proc: [ss_ratiodamage_all(0.20)],
 	},
@@ -9374,7 +9374,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.0, 0, [1,0,0,0,0]),
 	},
 	ss2: {
-		desc: "敵全体のHPを20％減少させる、15チェインで更に10％減少させる",
+		desc: "<割合削り>敵全体のHPを20％減少させる、15チェインで更に10％減少させる",
 		turn: 12,
 		proc: [ss_ratiodamage_all(ss_chain_cost(15, 0.30, 0.20))],
 	},
@@ -9403,7 +9403,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [1,1,0,0,0], 3), ChainSpecEnhance(0.60, [1,1,0,0,0], [9], 3)],
 	},
 	ss1: {
-		desc: "2ターン火・水属性の味方の攻撃力をアップ(+40％)",
+		desc: "<ダメージ強化>2ターン火・水属性の味方の攻撃力をアップ(+40％)",
 		turn: 5,
 		proc: [ss_enhance_all(0.40, 2, [1,1,0,0,0])],
 	},
@@ -9417,7 +9417,7 @@ Cards = [{
 		proc: [ChainEnhance(0.40, [1,1,0,0,0], 3), ChainSpecEnhance(0.80, [1,1,0,0,0], [9], 3)],
 	},
 	ss2: {
-		desc: "4ターン火・水属性の味方の攻撃力をアップ(+60％)",
+		desc: "<ダメージ強化>4ターン火・水属性の味方の攻撃力をアップ(+60％)",
 		turn: 8,
 		proc: [ss_enhance_all(0.60, 4, [1,1,0,0,0])],
 	},
@@ -9447,7 +9447,7 @@ Cards = [{
 		proc: ChainEnhance(0.60, [1,1,0,0,0], 5),
 	},
 	ss1: {
-		desc: "敵全体のガードを解除する",
+		desc: "<効果解除>敵全体のガードを解除する",
 		turn: 6,
 		proc: [ss_break_attrguard("all")],
 	},
@@ -9461,7 +9461,7 @@ Cards = [{
 		proc: ChainEnhance(0.90, [1,1,0,0,0], 5),
 	},
 	ss2: {
-		desc: "敵全体のガード＆ダメージブロックを解除する",
+		desc: "<効果解除>敵全体のガード＆ダメージブロックを解除する",
 		turn: 8,
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all")],
 	},
@@ -9491,7 +9491,7 @@ Cards = [{
 		proc: ChainAttack(4.0, 4),
 	},
 	ss1: {
-		desc: "敵全体へ火・水属性のダメージ(150％)",
+		desc: "<大魔術>敵全体へ火・水属性のダメージ(150％)",
 		turn: 7,
 		proc: [ss_damage_all(1.5, [0,1])],
 	},
@@ -9505,7 +9505,7 @@ Cards = [{
 		proc: ChainAttack(5.0, 4),
 	},
 	ss2: {
-		desc: "敵全体へ火・水属性のダメージ(220％)",
+		desc: "<大魔術>敵全体へ火・水属性のダメージ(220％)",
 		turn: 10,
 		proc: [ss_damage_all(2.2, [0,1])],
 	},
@@ -9535,7 +9535,7 @@ Cards = [{
 		proc: ChainAttack(4.0, 5),
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早める、5チェインを消費してさらに1早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める、5チェインを消費してさらに1早める",
 		turn: 8,
 		proc: [ss_skillboost(ss_chain_cost(5, 3, 2))],
 	},
@@ -9550,7 +9550,7 @@ Cards = [{
 		proc: ChainAttack(5.0, 5),
 	},
 	ss2: {
-		desc: "味方全体のスペシャルスキルの発動ターンを3早める、5チェインを消費してさらに1早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを3早める、5チェインを消費してさらに1早める",
 		turn: 11,
 		proc: [ss_skillboost(ss_chain_cost(5, 4, 3))],
 	},
@@ -9580,7 +9580,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 5, 3),
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを1早める、5チェインを消費しさらに1早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早める、5チェインを消費しさらに1早める",
 		turn: 6,
 		proc: [ss_skillboost(ss_chain_cost(5, 2, 1))],
 	},
@@ -9594,7 +9594,7 @@ Cards = [{
 		proc: ChainDualAttack(5.5, 5, 3),
 	},
 	ss2: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早める、5チェインを消費しさらに1早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める、5チェインを消費しさらに1早める",
 		turn: 8,
 		proc: [ss_skillboost(ss_chain_cost(5, 3, 2))],
 	},
@@ -9625,7 +9625,7 @@ Cards = [{
 		proc: [Heal(0.10, [1,1,0,0,0], 0), Heal(0.17, [1,1,0,0,0], 7)],
 	},
 	ss1: {
-		desc: "3ターン味方全体を徐々に回復する(15％×3T)",
+		desc: "<継続回復>3ターン味方全体を徐々に回復する(15％×3T)",
 		turn: 5,
 		proc: [ss_regenerate(0.15, 3)],
 	},
@@ -9639,7 +9639,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,1,0,0,0], 0), Heal(0.20, [1,1,0,0,0], 7)],
 	},
 	ss2: {
-		desc: "味方全体のHPを回復する、さらに5ターン徐々に回復する(回復：35％ / 徐々に回復：15％×5T)",
+		desc: "<継続回復>味方全体のHPを回復する、さらに5ターン徐々に回復する(回復：35％ / 徐々に回復：15％×5T)",
 		turn: 9,
 		proc: [ss_heal(0.35), ss_regenerate(0.15, 5)],
 	},
@@ -9669,7 +9669,7 @@ Cards = [{
 		proc: [Heal(0.10, [1,1,0,0,0], 0), SpecHeal(0.15, [1,1,0,0,0], [1], 0)],
 	},
 	ss1: {
-		desc: "ジャンルパネルを水＆火属性化",
+		desc: "<パネル変換>ジャンルパネルを水＆火属性化",
 		turn: 5,
 		proc: [ss_panel_change([1,1,0,0,0])]
 	},
@@ -9684,7 +9684,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,1,0,0,0], 0), SpecHeal(0.18, [1,1,0,0,0], [1], 0)],
 	},
 	ss2: {
-		desc: "ジャンルパネルを水＆火属性化し、チェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを水＆火属性化し、チェインがプラス1の効果を付与",
 		turn: 9,
 		proc: [ss_panel_change([1,1,0,0,0]), panel_chainplus(1)],
 	},
@@ -9714,7 +9714,7 @@ Cards = [{
 		proc: [ChainAttack(3.5, 5), ChainAttack(6.5, 10)],
 	},
 	ss1: {
-		desc: "敵全体へ火・水属性のダメージ(180％)",
+		desc: "<大魔術>敵全体へ火・水属性のダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [0,1])],
 	},
@@ -9728,7 +9728,7 @@ Cards = [{
 		proc: [ChainAttack(4.5, 5), ChainAttack(7.5, 10)],
 	},
 	ss2: {
-		desc: "敵全体へ火・水属性のダメージ(260％)",
+		desc: "<大魔術>敵全体へ火・水属性のダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [0,1])],
 	},
@@ -9759,7 +9759,7 @@ Cards = [{
 		proc: ChainAttack(4.0, 4),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50％を使い敵全体へダメージ(90％×味方の人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50％を使い敵全体へダメージ(90％×味方の人数)",
 		turn: 8,
 		proc: [ss_damage_all(ss_consume_all_cond(0.9, 0.5), [1])],
 	},
@@ -9773,7 +9773,7 @@ Cards = [{
 		proc: ChainAttack(5.0, 4),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50％を使い敵全体へダメージ(130％×味方の人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50％を使い敵全体へダメージ(130％×味方の人数)",
 		turn: 10,
 		proc: [ss_damage_all(ss_consume_all_cond(1.3, 0.5), [1])],
 	},
@@ -9803,7 +9803,7 @@ Cards = [{
 		proc: ChainAttack(4.0, 4),
 	},
 	ss1: {
-		desc: "敵全体へ火・水属性のダメージ、さらに味方全体のHPを回復する(攻撃：150％ / 回復：20％)",
+		desc: "<大魔術>敵全体へ火・水属性のダメージ、さらに味方全体のHPを回復する(攻撃：150％ / 回復：20％)",
 		turn: 6,
 		proc: [ss_damage_all(1.5, [0,1]), ss_heal(0.20)],
 	},
@@ -9817,7 +9817,7 @@ Cards = [{
 		proc: ChainAttack(5.0, 4),
 	},
 	ss2: {
-		desc: "敵全体へ火・水属性のダメージ、さらに味方全体のHPを回復する(攻撃：200％ / 回復：25％)",
+		desc: "<大魔術>敵全体へ火・水属性のダメージ、さらに味方全体のHPを回復する(攻撃：200％ / 回復：25％)",
 		turn: 9,
 		proc: [ss_damage_all(2.0, [0,1]), ss_heal(0.25)],
 	},
@@ -9848,7 +9848,7 @@ Cards = [{
 		proc: Heal(0.13, [0,1,1,0,0], 0)
 	},
 	ss1: {
-		desc: "スペシャルスキルの発動ターンを1早め、敵全体の攻撃ターンを1遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを1早め、敵全体の攻撃ターンを1遅らせる",
 		turn: 6,
 		proc: [ss_skillboost(1), ss_delay_all(1)],
 	},
@@ -9863,7 +9863,7 @@ Cards = [{
 		proc: [Heal(0.16, [0,1,1,0,0], 0), ChainEnhance(0.30, [0,1,1,0,0], 0)],
 	},
 	ss2: {
-		desc: "スペシャルスキルの発動ターンを2早め、敵全体の攻撃ターンを2遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵全体の攻撃ターンを2遅らせる",
 		turn: 9,
 		proc: [ss_skillboost(2), ss_delay_all(2)],
 	},
@@ -9894,7 +9894,7 @@ Cards = [{
 		proc: [Heal(0.10, [0,1,1,0,0], 0), Heal(0.17, [0,1,1,0,0], 7)],
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50％を使い、2ターン水・雷属性の味方の攻撃力をアップ(+70％)",
+		desc: "<ダメージ強化>味方全体のMAXHPの50％を使い、2ターン水・雷属性の味方の攻撃力をアップ(+70％)",
 		turn: 5,
 		proc: [ss_enhance_all(0.7, 2, [0,1,1,0,0]), ss_consume_all(0.5)],
 	},
@@ -9908,7 +9908,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,1,1,0,0], 0), Heal(0.20, [0,1,1,0,0], 7)],
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50％を使い、4ターン水・雷属性の味方の攻撃力をアップ(+100％)",
+		desc: "<ダメージ強化>味方全体のMAXHPの50％を使い、4ターン水・雷属性の味方の攻撃力をアップ(+100％)",
 		turn: 8,
 		proc: [ss_enhance_all(1.0, 4, [0,1,1,0,0]), ss_consume_all(0.5)],
 	},
@@ -9938,7 +9938,7 @@ Cards = [{
 		proc: Heal(0.11, [0,1,1,0,0,]),
 	},
 	ss1: {
-		desc: "敵全体へ水・雷属性のダメージ(180％)",
+		desc: "<大魔術>敵全体へ水・雷属性のダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [2,1])],
 	},
@@ -9953,7 +9953,7 @@ Cards = [{
 		proc: Heal(0.13, [0,1,1,0,0,]),
 	},
 	ss2: {
-		desc: "敵全体へ水・雷属性のダメージ(260％)",
+		desc: "<大魔術>敵全体へ水・雷属性のダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [2,1])],
 	},
@@ -9983,7 +9983,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0, 0.30, 0.34, [0,1,1,0,0], 0),
 	},
 	ss1: {
-		desc: "3ターン全属性のダメージを25％軽減する、さらに味方全体のHPを回復する(25％)",
+		desc: "<ガード>3ターン全属性のダメージを25％軽減する、さらに味方全体のHPを回復する(25％)",
 		turn: 6,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3), ss_heal(0.25)],
 	},
@@ -9998,7 +9998,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0, 0.34, 0.40, [0,1,1,0,0], 0),
 	},
 	ss2: {
-		desc: "3ターン全属性のダメージを50％軽減する、さらに味方全体のHPを回復する(25％)",
+		desc: "<ガード>3ターン全属性のダメージを50％軽減する、さらに味方全体のHPを回復する(25％)",
 		turn: 10,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3), ss_heal(0.25)],
 	},
@@ -10028,7 +10028,7 @@ Cards = [{
 		proc: ChainVarianceAttack(4.5, 5),
 	},
 	ss1: {
-		desc: "MAXHPの100％を使い、5ターン800以下の全属性ダメージを無効化する",
+		desc: "<ダメージブロック>MAXHPの100％を使い、5ターン800以下の全属性ダメージを無効化する",
 		turn: 9,
 		proc: [ss_consume_own(1), ss_damageblock_all(800, 5)],
 	},
@@ -10042,7 +10042,7 @@ Cards = [{
 		proc: ChainVarianceAttack(5.5, 5),
 	},
 	ss2: {
-		desc: "MAXHPの100％を使い、5ターン1000以下の全属性ダメージを無効化する",
+		desc: "<ダメージブロック>MAXHPの100％を使い、5ターン1000以下の全属性ダメージを無効化する",
 		turn: 12,
 		proc: [ss_consume_own(1), ss_damageblock_all(1000, 5)],
 	},
@@ -10073,7 +10073,7 @@ Cards = [{
 		proc: ChainAttack(4.0, 4)
 	},
 	ss1: {
-		desc: "ジャンルパネルを水・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
 		turn: 3,
 		proc: [ss_panel_change([0,1,1,0,0])]
 	},
@@ -10087,7 +10087,7 @@ Cards = [{
 		proc: ChainAttack(5.0, 4)
 	},
 	ss2: {
-		desc: "ジャンルパネルを水・雷属性化し、チェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、チェインがプラス1の効果を付与",
 		turn: 5,
 		proc: [ss_panel_change([0,1,1,0,0]), panel_chainplus(1)],
 	},
@@ -10117,7 +10117,7 @@ Cards = [{
 		proc: [Heal(0.11, [0,1,1,0,0], 0), add_cond(Heal(0.20, [0,1,1,0,0], 0), when_hp_less(0.5))],
 	},
 	ss1: {
-		desc: "5ターン600以下の全属性ダメージを無効化する",
+		desc: "<ダメージブロック>5ターン600以下の全属性ダメージを無効化する",
 		turn: 9,
 		proc: [ss_damageblock_all(600, 5)],
 	},
@@ -10131,7 +10131,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,1,1,0,0], 0), add_cond(Heal(0.22, [0,1,1,0,0], 0), when_hp_less(0.5))],
 	},
 	ss2: {
-		desc: "5ターン800以下の全属性ダメージを無効化する",
+		desc: "<ダメージブロック>5ターン800以下の全属性ダメージを無効化する",
 		turn: 12,
 		proc: [ss_damageblock_all(800, 5)],
 	},
@@ -10161,7 +10161,7 @@ Cards = [{
 		proc: ChainAttack(4.0, 4),
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、4ターン自分の攻撃力をアップ(回復：50％ / 攻撃力：+100％)",
+		desc: "<ダメージ強化>味方全体のHPを回復し、4ターン自分の攻撃力をアップ(回復：50％ / 攻撃力：+100％)",
 		turn: 6,
 		proc: [ss_heal(0.5), ss_enhance_own(1.0, 4)],
 	},
@@ -10176,7 +10176,7 @@ Cards = [{
 		proc: ChainAttack(5.0, 4),
 	},
 	ss2: {
-		desc: "味方全体のHPを完全回復し、6ターン自分の攻撃力をアップ。HP20％未満の時、さらに自分の攻撃力をアップ(通常：+100％ / HP20％未満：+1000％)",
+		desc: "<ダメージ強化>味方全体のHPを完全回復し、6ターン自分の攻撃力をアップ。HP20％未満の時、さらに自分の攻撃力をアップ(通常：+100％ / HP20％未満：+1000％)",
 		turn: 10,
 		proc: [ss_enhance_own(ss_hp_less(0.20, 10, 1.0), 6), ss_heal(1.0)],
 	},
@@ -10206,7 +10206,7 @@ Cards = [{
 		proc: Heal(0.11, [0,1,1,0,0], 0),
 	},
 	ss1: {
-		desc: "敵全体の攻撃ターンを1遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを1遅らせる",
 		turn: 5,
 		proc: [ss_delay_all(1)]
 	},
@@ -10222,7 +10222,7 @@ Cards = [{
 		proc: Heal(0.14, [0,1,1,0,0], 0),
 	},
 	ss2: {
-		desc: "敵全体の攻撃ターンを1遅らせ、水属性のダメージ(120％)",
+		desc: "<遅延大魔術>敵全体の攻撃ターンを1遅らせ、水属性のダメージ(120％)",
 		turn: 6,
 		proc: [ss_damage_all(1.2, [1]), ss_delay_all(1)],
 	},
@@ -10253,7 +10253,7 @@ Cards = [{
 		proc: ChainEnhance(0.6, [0,1,1,0,0], 5),
 	},
 	ss1: {
-		desc: "ジャンルパネルにチェインプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインプラス2の効果を付与",
 		turn: 5,
 		proc: [panel_chainplus(2)],
 	},
@@ -10267,7 +10267,7 @@ Cards = [{
 		proc: ChainEnhance(0.9, [0,1,1,0,0], 5),
 	},
 	ss2: {
-		desc: "攻撃ターンを3遅らせる",
+		desc: "<遅延>攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)]
 	},
@@ -10297,7 +10297,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 4.0, 5.5, 3),
 	},
 	ss1: {
-		desc: "敵単体の攻撃ターンを2遅らせる。HP20％以下でさらに1遅らせる。",
+		desc: "<遅延>敵単体の攻撃ターンを2遅らせる。HP20％以下でさらに1遅らせる。",
 		turn: 8,
 		proc: [ss_delay_s(ss_hp_less(0.2, 3, 2))]
 	},
@@ -10311,7 +10311,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 5.5, 7.0, 3),
 	},
 	ss2: {
-		desc: "敵単体の攻撃ターンを3遅らせる。HP20％以下でさらに1遅らせる。",
+		desc: "<遅延>敵単体の攻撃ターンを3遅らせる。HP20％以下でさらに1遅らせる。",
 		turn: 10,
 		proc: [ss_delay_s(ss_hp_less(0.2, 4, 3))]
 	},
@@ -10341,7 +10341,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 5),
 	},
 	ss1: {
-		desc: "ジャンルパネルを水・光属性化",
+		desc: "<パネル変換>ジャンルパネルを水・光属性化",
 		turn: 3,
 		proc: [ss_panel_change([0,1,0,1,0])]
 	},
@@ -10355,7 +10355,7 @@ Cards = [{
 		proc: ChainAttack(5.5, 5),
 	},
 	ss2: {
-		desc: "ジャンルパネルを水・光属性化し、ダメージ25％軽減の効果を付与。HP20％以下でさらにダメージ35％軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを水・光属性化し、ダメージ25％軽減の効果を付与。HP20％以下でさらにダメージ35％軽減の効果を付与",
 		turn: 6,
 		proc: [ss_panel_change([0,1,0,1,0]), panel_attr_guard([1,1,1,1,1], ss_hp_less(0.2, 0.60, 0.25))]
 	},
@@ -10385,7 +10385,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.11, 0.15, 0.17, [0,1,0,0,0], 0)
 	},
 	ss1: {
-		desc: "敵全体のガード＆ダメージブロックを解除する",
+		desc: "<効果解除>敵全体のガード＆ダメージブロックを解除する",
 		turn: 8,
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all")],
 	},
@@ -10399,7 +10399,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.13, 0.17, 0.20, [0,1,0,0,0], 0)
 	},
 	ss2: {
-		desc: "敵全体のガード＆ダメージブロックを解除し、水属性のダメージ。HP20％以下でさらにダメージアップ(通常：180％ / HP20％以下：400％)",
+		desc: "<効果解除大魔術>敵全体のガード＆ダメージブロックを解除し、水属性のダメージ。HP20％以下でさらにダメージアップ(通常：180％ / HP20％以下：400％)",
 		turn: 12,
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(ss_hp_less(0.20, 4.0, 1.8), [1])], 
 	},
@@ -10429,7 +10429,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,1,0,0,0], 0), add_cond(Heal(0.38, [0,1,0,0,0], 0), when_hp_less(0.20))],
 	},
 	ss1: {
-		desc: "スペシャルスキルの発動ターンを1早め、敵単体の攻撃ターンを1遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを1早め、敵単体の攻撃ターンを1遅らせる",
 		turn: 6,
 		proc: [ss_skillboost(1), ss_delay_s(1)],
 	},
@@ -10443,7 +10443,7 @@ Cards = [{
 		proc: [Heal(0.17, [0,1,0,0,0], 0), add_cond(Heal(0.42, [0,1,0,0,0], 0), when_hp_less(0.20))],
 	},
 	ss2: {
-		desc: "スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
 		turn: 9,
 		proc: [ss_skillboost(2), ss_delay_s(2)],
 	},
@@ -10473,7 +10473,7 @@ Cards = [{
 		proc: add_cond(ChainEnhance(0.80, [0,1,0,0,0], 0), when_hp_less(0.80)),
 	},
 	ss1: {
-		desc: "5ターン600以下の全属性ダメージを無効化する",
+		desc: "<ダメージブロック>5ターン600以下の全属性ダメージを無効化する",
 		turn: 9,
 		proc: [ss_damageblock_all(600, 5)],
 	},
@@ -10489,7 +10489,7 @@ Cards = [{
 		proc: add_cond(ChainEnhance(1.1, [0,1,0,0,0], 0), when_hp_less(0.80)),
 	},
 	ss2: {
-		desc: "5ターン600以下の全属性ダメージを無効化し、HP20％以下の時、1200以下の全属性ダメージを無効化",
+		desc: "<ダメージブロック>5ターン600以下の全属性ダメージを無効化し、HP20％以下の時、1200以下の全属性ダメージを無効化",
 		turn: 12,
 		proc: [ss_damageblock_all(ss_hp_less(0.2, 1200, 600), 5)],
 	},
@@ -10519,7 +10519,7 @@ Cards = [{
 		proc: ChainAttack(3.0, 3),
 	},
 	ss1: {
-		desc: "ジャンルパネルを水・光属性化",
+		desc: "<パネル変換>ジャンルパネルを水・光属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,1,0,1,0])]
 	},
@@ -10534,7 +10534,7 @@ Cards = [{
 		proc: ChainAttack(4.0, 3),
 	},
 	ss2: {
-		desc: "ジャンルパネルを水・光属性化し、攻撃力アップの効果を付与(+30％)",
+		desc: "<特殊パネル変換>ジャンルパネルを水・光属性化し、攻撃力アップの効果を付与(+30％)",
 		turn: 8,
 		proc: [ss_panel_change([0,1,0,1,0]), panel_attackup(0.3)],
 	},
@@ -10564,7 +10564,7 @@ Cards = [{
 		proc: ChainAttack(4.0, 4),
 	},
 	ss1: {
-		desc: "3ターンの間、チェインを保護する",
+		desc: "<チェインガード>3ターンの間、チェインを保護する",
 		turn: 5,
 		proc: [ss_chain_protect(3)],
 	},
@@ -10578,7 +10578,7 @@ Cards = [{
 		proc: ChainAttack(5.0, 4),
 	},
 	ss2: {
-		desc: "6ターンの間、チェインを保護する",
+		desc: "<チェインガード>6ターンの間、チェインを保護する",
 		turn: 8,
 		proc: [ss_chain_protect(6)],
 	},
@@ -10608,7 +10608,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(6.0, 10), as_hp_absorption(0.03)),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの60％を使い敵単体へダメージ(240％×味方の人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの60％を使い敵単体へダメージ(240％×味方の人数)",
 		turn: 12,
 		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.6), [1], 1)],
 	},
@@ -10623,7 +10623,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(7.0, 10), as_hp_absorption(0.03)),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの60％を使い敵単体へダメージ(300％×味方の人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの60％を使い敵単体へダメージ(300％×味方の人数)",
 		turn: 14,
 		proc: [ss_damage_s(ss_consume_all_cond(3.0, 0.6), [1], 1)],
 	},
@@ -10653,7 +10653,7 @@ Cards = [{
 		proc: ChainAttack(3.2, 3),
 	},
 	ss1: {
-		desc: "5チェインを消費し、敵全体へ水属性のダメージ、チェインが満たない場合(5チェイン消費：400％ / チェインなし：200％)",
+		desc: "<大魔術>5チェインを消費し、敵全体へ水属性のダメージ、チェインが満たない場合(5チェイン消費：400％ / チェインなし：200％)",
 		turn: 8,
 		proc: [ss_damage_all(ss_chain_cost(5, 4.0, 2.0), [1])],
 	},
@@ -10668,7 +10668,7 @@ Cards = [{
 		proc: ChainAttack(4.2, 3),
 	},
 	ss2: {
-		desc: "10チェインを消費し、敵全体へ水属性のダメージ、チェインが満たない場合(10チェイン消費：600％ / チェインなし：300％)",
+		desc: "<大魔術>10チェインを消費し、敵全体へ水属性のダメージ、チェインが満たない場合(10チェイン消費：600％ / チェインなし：300％)",
 		turn: 10,
 		proc: [ss_damage_all(ss_chain_cost(10, 6.0, 3.0), [1])],
 	},
@@ -10698,7 +10698,7 @@ Cards = [{
 		proc: Heal(0.13, [0,1,0,0,0], 1),
 	},
 	ss1: {
-		desc: "味方全体のHPを1000回復する",
+		desc: "<回復>味方全体のHPを1000回復する",
 		turn: 3,
 		proc: [ss_heal_absolute(1000)],
 	},
@@ -10712,7 +10712,7 @@ Cards = [{
 		proc: Heal(0.15, [0,1,0,0,0], 1),
 	},
 	ss2: {
-		desc: "味方全体のHPを2000回復する",
+		desc: "<回復>味方全体のHPを2000回復する",
 		turn: 6,
 		proc: [ss_heal_absolute(2000)],
 	},
@@ -10742,7 +10742,7 @@ Cards = [{
 		proc: ChainAttack(2.25, 0),
 	},
 	ss1: {
-		desc: "味方全体のHPを500回復する",
+		desc: "<回復>味方全体のHPを500回復する",
 		turn: 2,
 		proc: [ss_heal_absolute(500)],
 	},
@@ -10756,7 +10756,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(5.5, 3), as_consume_own(0.15)),
 	},
 	ss2: {
-		desc: "味方全体のHPを1000回復する",
+		desc: "<回復>味方全体のHPを1000回復する",
 		turn: 3,
 		proc: [ss_heal_absolute(1000)],
 	},
@@ -10786,7 +10786,7 @@ Cards = [{
 		proc: ChainEnhance(0.7, [0, 1, 1, 0, 0], 6)
 	},
 	ss1: {
-		desc: "3ターンの間、スキルカウンター待機(200%)",
+		desc: "<カウンター>3ターンの間、スキルカウンター待機(200%)",
 		turn: 7,
 		proc: [ss_skillcounter(2, 3)]
 	},
@@ -10800,7 +10800,7 @@ Cards = [{
 		proc: ChainEnhance(1.0, [0, 1, 1, 0, 0], 6)
 	},
 	ss2: {
-		desc: "5ターンの間、スキルカウンター待機(200%)",
+		desc: "<カウンター>5ターンの間、スキルカウンター待機(200%)",
 		turn: 10,
 		proc: [ss_skillcounter(2, 5)]
 	},
@@ -10830,7 +10830,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(4, 0, 3, [1,0,0,0,0])
 	},
 	ss1: {
-		desc: "ジャンルパネルにチェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
 		turn: 3,
 		proc: [panel_chainplus(1)]
 	},
@@ -10844,7 +10844,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(5, 0, 3, [1,0,0,0,0])
 	},
 	ss2: {
-		desc: "チェインがプラス1の効果、さらに敵全体へ水属性のダメージ(150％)",
+		desc: "<大魔術>チェインがプラス1の効果、さらに敵全体へ水属性のダメージ(150％)",
 		turn: 7,
 		proc: [ss_addchain(1), ss_damage_all(1.8, [1])]
 	},
@@ -10874,7 +10874,7 @@ Cards = [{
 		proc: ChainEnhance(0.6, [0,1,0,0,0], 5)
 	},
 	ss1: {
-		desc: "ジャンルパネルにチェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
 		turn: 3,
 		proc: [panel_chainplus(1)]
 	},
@@ -10888,7 +10888,7 @@ Cards = [{
 		proc: ChainEnhance(0.9, [0,1,0,0,0], 5)
 	},
 	ss2: {
-		desc: "ジャンルパネルにチェインがプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
 		turn: 5,
 		proc: [panel_chainplus(2)]
 	},
@@ -10921,7 +10921,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 5.0, 6.5, 5)
 	},
 	ss1: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 6,
 		proc: [ss_panel_change([1,1,1,0,0])]
 	},
@@ -10935,7 +10935,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 5.0, 6.5, 0)
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化し、攻撃力アップの効果を付与(+20％)",
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、攻撃力アップの効果を付与(+20％)",
 		turn: 8,
 		proc: [ss_panel_change([1,1,1,0,0]), panel_attackup(0.2)]
 	},
@@ -10966,7 +10966,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.5, 5, [0, 1, 0, 0, 0])
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
 		turn: 8,
 		proc: [ss_skillboost(2)]
 	},
@@ -10980,7 +10980,7 @@ Cards = [{
 		proc: ChainAttrAttack(7.5, 5, [0, 1, 0, 0, 0])
 	},
 	ss2: {
-		desc: "味方全体のスペシャルスキルの発動ターンを3早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを3早める",
 		turn: 11,
 		proc: [ss_skillboost(3)]
 	},
@@ -11011,7 +11011,7 @@ Cards = [{
 		proc: ChainAttrAttack(7.75, 7, [0, 1, 0, 0, 0])
 	},
 	ss1: {
-		desc: "ジャンルパネルにチェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
 		turn: 3,
 		proc: [panel_chainplus(1)]
 	},
@@ -11025,7 +11025,7 @@ Cards = [{
 		proc: ChainAttrAttack(8.75, 7, [0, 1, 0, 0, 0])
 	},
 	ss2: {
-		desc: "ジャンルパネルにチェインがプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
 		turn: 5,
 		proc: [panel_chainplus(2)]
 	},
@@ -11056,7 +11056,7 @@ Cards = [{
 		proc: ChainDualAttack(3.5, 3, 3)
 	},
 	ss1: {
-		desc: "直前に発動したスペシャルスキルを発動する",
+		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
 		turn: 9,
 		proc: [ss_latest_copy()],
 	},
@@ -11070,7 +11070,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 3, 3)
 	},
 	ss2: {
-		desc: "直前に発動したスペシャルスキルを発動する",
+		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
 		turn: 9,
 		proc: [ss_latest_copy()],
 	},
@@ -11101,7 +11101,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(4.0, 0, 5, [0,1,0,0,0]),
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、状態異常を回復する(回復：50％)",
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(回復：50％)",
 		turn: 7,
 		proc: [ss_heal(0.5), ss_abstate_cure()],
 	},
@@ -11115,7 +11115,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(5.0, 0, 7, [0,1,0,0,0]),
 	},
 	ss2: {
-		desc: "味方全体のHPを完全回復し、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
 		turn: 9,
 		proc: [ss_heal(1.0), ss_abstate_cure()],
 	},
@@ -11145,7 +11145,7 @@ Cards = [{
 		proc: [ChainSpecAttack(4.5, 3, [8,9]), add_cond(ChainSpecAttack(6.5, 3, [8,9]), when_leader())],
 	},
 	ss1: {
-		desc: "MAXHPの50％を使い敵全体へダメージ(260％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(260％)",
 		turn: 7,
 		proc: [ss_damage_all(2.6, [2]), ss_consume_own(0.5) ],
 	},
@@ -11160,7 +11160,7 @@ Cards = [{
 		proc: [ChainSpecAttack(5.5, 3, [8,9]), add_cond(ChainSpecAttack(7.5, 3, [8,9]), when_leader())],
 	},
 	ss2: {
-		desc: "MAXHPの50％を使い敵全体へダメージ(330％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(330％)",
 		turn: 9,
 		proc: [ss_damage_all(3.3, [2]), ss_consume_own(0.5) ],
 	},
@@ -11191,7 +11191,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 3),
 	},
 	ss1: {
-		desc: "味方全体のHPを中回復し、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを中回復し、状態異常を回復する",
 		turn: 7,
 		proc: [ss_heal(0.5), ss_abstate_cure()],
 	},
@@ -11205,7 +11205,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 3),
 	},
 	ss2: {
-		desc: "味方全体のHPを完全回復し、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
 		turn: 9,
 		proc: [ss_heal(1.0), ss_abstate_cure()],
 	},
@@ -11235,7 +11235,7 @@ Cards = [{
 		proc: ChainEnhance(0.60, [0,0,1,0,0], 5),
 	},
 	ss1: {
-		desc: "ジャンルパネルを雷属性化",
+		desc: "<パネル変換>ジャンルパネルを雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,0,1,0,0])]
 	},
@@ -11249,7 +11249,7 @@ Cards = [{
 		proc: ChainEnhance(0.90, [0,0,1,0,0], 5),
 	},
 	ss2: {
-		desc: "ジャンルパネルを雷属性化し、チェインがプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを雷属性化し、チェインがプラス2の効果を付与",
 		turn: 7,
 		proc: [ss_panel_change([0,0,1,0,0]), panel_chainplus(2)],
 	},
@@ -11278,7 +11278,7 @@ Cards = [{
 		proc: [ChainEnhance(0.20, [0,0,1,0,0], 0), ChainSpecEnhance(0.40, [0,0,1,0,0], [1,9], 0)],
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し(50％)、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを回復し(50％)、状態異常を回復する",
 		turn: 7,
 		proc: [ss_heal(0.5), ss_abstate_cure()],
 	},
@@ -11292,7 +11292,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [0,0,1,0,0], 0), ChainSpecEnhance(0.60, [0,0,1,0,0], [1,9], 0)]
 	},
 	ss2: {
-		desc: "味方全体のHPを完全回復し、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
 		turn: 9,
 		proc: [ss_heal(1.0), ss_abstate_cure()],
 	},
@@ -11321,7 +11321,7 @@ Cards = [{
 		proc: [Heal(0.09, [0,0,1,0,0], 0), SpecHeal(0.16, [0,0,1,0,0], [1], 0)],
 	},
 	ss1: {
-		desc: "2ターン火属性ダメージを75％軽減する",
+		desc: "<ガード>2ターン火属性ダメージを75％軽減する",
 		turn: 5,
 		proc: [ss_attr_guard([1,0,0,0,0], 0.75, 2)]
 	},
@@ -11335,7 +11335,7 @@ Cards = [{
 		proc: [Heal(0.12, [0,0,1,0,0], 0), SpecHeal(0.19, [0,0,1,0,0], [1], 0)],
 	},
 	ss2: {
-		desc: "2ターン火属性ダメージを100％軽減する",
+		desc: "<ガード>2ターン火属性ダメージを100％軽減する",
 		turn: 8,
 		proc: [ss_attr_guard([1,0,0,0,0], 1, 2)]
 	},
@@ -11365,7 +11365,7 @@ Cards = [{
 		proc: [Heal(0.10, [1,1,1,1,1], 0), SpecHeal(0.17, [1,1,1,1,1], [1], 0)],
 	},
 	ss1: {
-		desc: "ジャンルパネルを火＆雷属性化",
+		desc: "<パネル変換>ジャンルパネルを火＆雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([1,0,1,0,0])]
 	},
@@ -11379,7 +11379,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,1,1,1,1], 0), SpecHeal(0.20, [1,1,1,1,1], [1], 0)],
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 7,
 		proc: [ss_panel_change([1,1,1,0,0])]
 	},
@@ -11408,7 +11408,7 @@ Cards = [{
 		proc: ChainEnhance(0.30, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルをシャッフル",
+		desc: "<シャッフル>ジャンルパネルをシャッフル",
 		turn: 3,
 		proc: [ss_panel_shuffle()]
 	},
@@ -11423,7 +11423,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [0,0,1,0,0], 0), ChainSpecEnhance(0.60, [0,0,1,0,0], [6], 0)],
 	},
 	ss2: {
-		desc: "ジャンルパネルを雷属性化",
+		desc: "<パネル変換>ジャンルパネルを雷属性化",
 		turn: 7,
 		proc: [ss_panel_change([0,0,1,0,0])]
 	},
@@ -11453,7 +11453,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(3.0, 0), when_hp_more(0.80)),
 	},
 	ss1: {
-		desc: "ジャンルパネルを雷属性化",
+		desc: "<パネル変換>ジャンルパネルを雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,0,1,0,0])]
 	},
@@ -11467,7 +11467,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(4.0, 0), when_hp_more(0.80)),
 	},
 	ss2: {
-		desc: "ジャンルパネルを雷属性化し、攻撃力アップの効果を付与(+30％)",
+		desc: "<特殊パネル変換>ジャンルパネルを雷属性化し、攻撃力アップの効果を付与(+30％)",
 		turn: 8,
 		proc: [ss_panel_change([0,0,1,0,0]), panel_attackup(0.30)],
 	},
@@ -11497,7 +11497,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,1,1,1,1], 0), add_cond(Heal(0.17, [1,1,1,1,1], 0), when_leader())],
 	},
 	ss1: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 6,
 		proc: [ss_panel_change([1,1,1,0,0])]
 	},
@@ -11511,7 +11511,7 @@ Cards = [{
 		proc: [Heal(0.16, [1,1,1,1,1], 0), add_cond(Heal(0.20, [1,1,1,1,1], 0), when_leader())],
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化し、回復の効果を付与(5％)",
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、回復の効果を付与(5％)",
 		turn: 7,
 		proc: [ss_panel_change([1,1,1,0,0]), panel_healally(0.05)],
 	},
@@ -11541,7 +11541,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 3),
 	},
 	ss1: {
-		desc: "敵全体のHPを20％減少させる",
+		desc: "<割合削り>敵全体のHPを20％減少させる",
 		turn: 9,
 		proc: [ss_ratiodamage_all(0.2)],
 	},
@@ -11555,7 +11555,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 3),
 	},
 	ss2: {
-		desc: "敵全体のHPを25％減少させる",
+		desc: "<割合削り>敵全体のHPを25％減少させる",
 		turn: 12,
 		proc: [ss_ratiodamage_all(0.25)],
 	},
@@ -11585,7 +11585,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [0,0,1,0,0], 0), add_cond(ChainEnhance(0.40, [0,0,1,0,0], 0), when_hp_more(0.8))],
 	},
 	ss1: {
-		desc: "敵全体へ雷属性の究極ダメージ(180%)",
+		desc: "<大魔術>敵全体へ雷属性の究極ダメージ(180%)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [2])],
 	},
@@ -11601,7 +11601,7 @@ Cards = [{
 		proc: [ChainEnhance(0.60, [0,0,1,0,0], 0), add_cond(ChainEnhance(0.70, [0,0,1,0,0], 0), when_hp_more(0.8))],
 	},
 	ss2: {
-		desc: "敵全体へ雷属性の超究極ダメージ(260％)",
+		desc: "<大魔術>敵全体へ雷属性の超究極ダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [2])],
 	},
@@ -11631,7 +11631,7 @@ Cards = [{
 		proc: ChainDeckAttrsAttack(2.5, 4.0, 5.5, 0),
 	},
 	ss1: {
-		desc: "敵全体へ雷属性のダメージ(180％)",
+		desc: "<大魔術>敵全体へ雷属性のダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [2])],
 	},
@@ -11645,7 +11645,7 @@ Cards = [{
 		proc: ChainDeckAttrsAttack(3.0, 5.0, 7.0, 0),
 	},
 	ss2: {
-		desc: "敵全体へ雷属性のダメージ(260％)",
+		desc: "<大魔術>敵全体へ雷属性のダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [2])],
 	},
@@ -11675,7 +11675,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 5),
 	},
 	ss1: {
-		desc: "ジャンルパネルをシャッフル",
+		desc: "<シャッフル>ジャンルパネルをシャッフル",
 		turn: 3,
 		proc: [ss_panel_shuffle()]
 	},
@@ -11689,7 +11689,7 @@ Cards = [{
 		proc: ChainAttack(5.5, 5),
 	},
 	ss2: {
-		desc: "ジャンルパネルを雷属性化し、攻撃力アップの効果を付与(+30％)",
+		desc: "<特殊パネル変換>ジャンルパネルを雷属性化し、攻撃力アップの効果を付与(+30％)",
 		turn: 7,
 		proc: [ss_panel_change([0,0,1,0,0]), panel_attackup(0.3)],
 	},
@@ -11720,7 +11720,7 @@ Cards = [{
 		proc: ChainEnhance(0.40, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "敵単体の攻撃ターンを1遅らせる",
+		desc: "<遅延>敵単体の攻撃ターンを1遅らせる",
 		turn: 5,
 		proc: [ss_delay_s(1)]
 	},
@@ -11734,7 +11734,7 @@ Cards = [{
 		proc: add_cond(ChainEnhance(1.20, [0,0,1,0,0], 0), as_consume_all(0.20)),
 	},
 	ss2: {
-		desc: "敵単体の攻撃ターンを1遅らせ、雷属性のダメージ(180％)",
+		desc: "<遅延大魔術>敵単体の攻撃ターンを1遅らせ、雷属性のダメージ(180％)",
 		turn: 6,
 		proc: [ss_damage_all(1.8, [0,0,1,0,0]), ss_delay_s(1)],
 	},
@@ -11764,7 +11764,7 @@ Cards = [{
 		proc: add_cond(ChainPanelsAttack(3.0, 4.0, 5.5, 0), when_hp_more(0.80)),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火＆雷属性化",
+		desc: "<パネル変換>ジャンルパネルを火＆雷属性化",
 		turn: 6,
 		proc: [ss_panel_change([1,0,1,0,0])]
 	},
@@ -11778,7 +11778,7 @@ Cards = [{
 		proc: add_cond(ChainPanelsAttack(4.0, 5.0, 6.5, 0), when_hp_more(0.80)),
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 8,
 		proc: [ss_panel_change([1,1,1,0,0])]
 	},
@@ -11808,7 +11808,7 @@ Cards = [{
 		proc: ChainStakesAttack(1.6, 3.0, 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルを雷属性化",
+		desc: "<パネル変換>ジャンルパネルを雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,0,1,0,0])]
 	},
@@ -11823,7 +11823,7 @@ Cards = [{
 		proc: ChainStakesAttack(2.5, 4.5, 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルを雷属性化し、くじを引く",
+		desc: "<パネル変換>ジャンルパネルを雷属性化し、くじを引く",
 		turn: 7,
 		proc: [ss_panel_change([0,0,1,0,0])]
 	},
@@ -11853,7 +11853,7 @@ Cards = [{
 		proc: [ChainAttrAttack(2.5, 0, [0,1,0,0,0]), add_cond(ChainAttrAttack(4.0, 0, [0,1,0,0,0]), when_hp_more(0.80))],
 	},
 	ss1: {
-		desc: "MAXHPの50％を使い敵全体へダメージ(260％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(260％)",
 		turn: 8,
 		proc: [ss_damage_all(2.6, [1]), ss_consume_own(0.5)],
 	},
@@ -11868,7 +11868,7 @@ Cards = [{
 		proc: [ChainAttrAttack(3.5, 0, [0,1,0,0,0]), add_cond(ChainAttrAttack(5.0, 0, [0,1,0,0,0]), when_hp_more(0.80))],
 	},
 	ss2: {
-		desc: "MAXHPの50％を使い敵全体へダメージ(330％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(330％)",
 		turn: 12,
 		proc: [ss_damage_all(3.3, [1]), ss_consume_own(0.5)],
 	},
@@ -11898,7 +11898,7 @@ Cards = [{
 		proc: [Heal(0.11, [0,0,1,0,0], 0), add_cond(Heal(0.29, [0,0,1,0,0], 0), when_hp_less(0.20))],
 	},
 	ss1: {
-		desc: "5ターン味方全体を徐々に回復する(20%)",
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20%)",
 		turn: 8,
 		proc: [ss_regenerate(0.20, 5)],
 	},
@@ -11912,7 +11912,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,0,1,0,0], 0), add_cond(Heal(0.31, [0,0,1,0,0], 0), when_hp_less(0.20))],
 	},
 	ss2: {
-		desc: "5ターン味方全体を徐々に回復する(20%)、HP20%未満でさらに回復(40%)",
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20%)、HP20%未満でさらに回復(40%)",
 		turn: 10,
 		proc: [ss_regenerate(ss_hp_less(0.20, 0.40, 0.20), 5)],
 	},
@@ -11942,7 +11942,7 @@ Cards = [{
 		proc: ChainDualAttack(2.5, 0, 3),
 	},
 	ss1: {
-		desc: "敵単体へ雷属性のダメージ(200％)",
+		desc: "<大魔術>敵単体へ雷属性のダメージ(200％)",
 		turn: 5,
 		proc: [ss_damage_s(2.0, [0,0,1,0,0], 1)],
 	},
@@ -11956,7 +11956,7 @@ Cards = [{
 		proc: [ChainDualAttack(2.5, 0, 3), ChainDualAttack(17.5, 20, 6),],
 	},
 	ss2: {
-		desc: "敵単体へ雷属性のダメージ(400％)",
+		desc: "<大魔術>敵単体へ雷属性のダメージ(400％)",
 		turn: 8,
 		proc: [ss_damage_s(4.0, [0,0,1,0,0], 1)],
 	},
@@ -11987,7 +11987,7 @@ Cards = [{
 		proc: ChainDualAttack(6.0, 8, 4),
 	},
 	ss1: {
-		desc: "3ターン火属性ダメージを75％軽減する",
+		desc: "<ガード>3ターン火属性ダメージを75％軽減する",
 		turn: 5,
 		proc: [ss_attr_guard([1,0,0,0,0], 0.75, 3)]
 	},
@@ -12001,7 +12001,7 @@ Cards = [{
 		proc: ChainDualAttack(7.0, 8, 4),
 	},
 	ss2: {
-		desc: "3ターン火属性ダメージを100％軽減する",
+		desc: "<ガード>3ターン火属性ダメージを100％軽減する",
 		turn: 8,
 		proc: [ss_attr_guard([1,0,0,0,0], 1, 3)]
 	},
@@ -12031,7 +12031,7 @@ Cards = [{
 		proc: [Heal(0.10, [0,0,1,0,0], 0), Heal(0.15, [0,0,1,0,0], 5)],
 	},
 	ss1: {
-		desc: "ジャンルパネルを雷属性化",
+		desc: "<パネル変換>ジャンルパネルを雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,0,1,0,0])]
 	},
@@ -12045,7 +12045,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,0,1,0,0], 0), Heal(0.18, [0,0,1,0,0], 5)],
 	},
 	ss2: {
-		desc: "ジャンルパネルを雷属性化し、ダメージ25％軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを雷属性化し、ダメージ25％軽減の効果を付与",
 		turn: 7,
 		proc: [ss_panel_change([0,0,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)]
 	},
@@ -12075,7 +12075,7 @@ Cards = [{
 		proc: [ChainDualAttack(2.5, 0, 3), ChainDualAttack(3.5, 5, 3),],
 	},
 	ss1: {
-		desc: "味方全体のHPを回復(50％)",
+		desc: "<回復>味方全体のHPを回復(50％)",
 		turn: 7,
 		proc: [ss_heal(0.5)],
 	},
@@ -12091,7 +12091,7 @@ Cards = [{
 		proc: [ChainDualAttack(3.5, 0, 3), ChainDualAttack(4.5, 5, 3),],
 	},
 	ss2: {
-		desc: "敵全体へ雷属性のダメージ、さらに味方全体のHPを完全に回復する(ダメージ：150％)",
+		desc: "<大魔術>敵全体へ雷属性のダメージ、さらに味方全体のHPを完全に回復する(ダメージ：150％)",
 		turn: 15,
 		proc: [ss_heal(1.0), ss_damage_all(1.5, [0,0,1,0,0])],
 	},
@@ -12121,7 +12121,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.25, 3, [0,1,0,0,0]),
 	},
 	ss1: {
-		desc: "5ターン600以下の全属性ダメージを無効化する",
+		desc: "<ダメージブロック>5ターン600以下の全属性ダメージを無効化する",
 		turn: 9,
 		proc: [ss_damageblock_all(600, 5)],
 	},
@@ -12135,7 +12135,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.25, 3, [0,1,0,0,0]),
 	},
 	ss2: {
-		desc: "5ターン600以下の全属性ダメージを無効化し、HP20％未満の時、1200以下の全属性ダメージを無効化",
+		desc: "<ダメージブロック>5ターン600以下の全属性ダメージを無効化し、HP20％未満の時、1200以下の全属性ダメージを無効化",
 		turn: 12,
 		proc: [ss_damageblock_all(when_hp_under(0.2, 1200, 600), 5)],
 	},
@@ -12165,7 +12165,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.11, 0.15, 0.17, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "敵全体へ雷属性のダメージ(180％)",
+		desc: "<大魔術>敵全体へ雷属性のダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [0,0,1,0,0])],
 	},
@@ -12179,7 +12179,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.13, 0.17, 0.20, [0,0,1,0,0], 0),
 	},
 	ss2: {
-		desc: "敵全体のガード＆ダメージブロックを解除し、雷属性のダメージ(180％)",
+		desc: "<効果解除大魔術>敵全体のガード＆ダメージブロックを解除し、雷属性のダメージ(180％)",
 		turn: 12,
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(1.8, [0,0,1,0,0])],
 	},
@@ -12209,7 +12209,7 @@ Cards = [{
 		proc: Heal(0.11, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "敵単体へ雷属性の5回連続ダメージ(計180％)",
+		desc: "<多弾魔術>敵単体へ雷属性の5回連続ダメージ(計180％)",
 		turn: 6,
 		proc: [ss_damage_s(1.8, [2], 5)],
 	},
@@ -12223,7 +12223,7 @@ Cards = [{
 		proc: [Heal(0.11, [0,0,1,0,0], 0), ChainEnhance(0.20, [0,0,1,0,0], 0)],
 	},
 	ss2: {
-		desc: "敵単体へ雷属性の5回連続ダメージ(計380％)",
+		desc: "<多弾魔術>敵単体へ雷属性の5回連続ダメージ(計380％)",
 		turn: 9,
 		proc: [ss_damage_s(3.8, [2], 5)],
 	},
@@ -12253,7 +12253,7 @@ Cards = [{
 		proc: [add_cond(ChainEnhance(0.30, [0,0,1,0,0], 0, as_consume_own(0.2))), add_cond(ChainSpecEnhance(0.70, [0,0,1,0,0], [4], 0), as_consume_own(0.2))],
 	},
 	ss1: {
-		desc: "ジャンルパネルを雷属性化",
+		desc: "<パネル変換>ジャンルパネルを雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,0,1,0,0])]
 	},
@@ -12268,7 +12268,7 @@ Cards = [{
 		proc: [add_cond(ChainEnhance(0.40, [0,0,1,0,0], 0, as_consume_own(0.2))), add_cond(ChainSpecEnhance(0.90, [0,0,1,0,0], [4], 0), as_consume_own(0.2))],
 	},
 	ss2: {
-		desc: "ジャンルパネルを雷属性化し、攻撃力アップの効果を付与(+20％)",
+		desc: "<特殊パネル変換>ジャンルパネルを雷属性化し、攻撃力アップの効果を付与(+20％)",
 		turn: 8,
 		proc: [ss_panel_change([0,0,1,0,0]), panel_attackup(0.20)],
 	},
@@ -12298,7 +12298,7 @@ Cards = [{
 		proc: ChainAttrAttack(4.0, 0, [0,1,0,0,0]),
 	},
 	ss1: {
-		desc: "ジャンルパネルを水・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
 		turn: 4,
 		proc: [ss_panel_change([0,1,1,0,0])]
 	},
@@ -12312,7 +12312,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.0, 0, [0,1,0,0,0]),
 	},
 	ss2: {
-		desc: "ジャンルパネルを水・雷属性化し、チェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、チェインがプラス1の効果を付与",
 		turn: 5,
 		proc: [ss_panel_change([0,1,1,0,0]), panel_chainplus(1)],
 	},
@@ -12343,7 +12343,7 @@ Cards = [{
 		proc: [ChainEnhance(0.40, [0,0,1,0,0], 3), ChainEnhance(0.90, [0,0,1,0,0], 10)],
 	},
 	ss1: {
-		desc: "MAXHPの50％を使い敵全体へダメージ(260％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(260％)",
 		turn: 7,
 		proc: [ss_damage_all(2.6, [2]), ss_consume_own(0.50)],
 	},
@@ -12358,7 +12358,7 @@ Cards = [{
 		proc: [ChainEnhance(0.60, [0,0,1,0,0], 3), ChainEnhance(1.10, [0,0,1,0,0], 10)],
 	},
 	ss2: {
-		desc: "MAXHPの50％を使い敵全体へダメージ(330％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(330％)",
 		turn: 9,
 		proc: [ss_damage_all(3.3, [2]), ss_consume_own(0.50)],
 	},
@@ -12389,7 +12389,7 @@ Cards = [{
 		proc: [ChainAttrAttack(3.0, 0, [0,1,0,0,0]), add_cond(ChainAttrAttack(4.5, 0, [0,1,0,0,0]), when_hp_more(0.80))],
 	},
 	ss1: {
-		desc: "ジャンルパネルをシャッフル",
+		desc: "<シャッフル>ジャンルパネルをシャッフル",
 		turn: 3,
 		proc: [ss_panel_shuffle()]
 	},
@@ -12403,7 +12403,7 @@ Cards = [{
 		proc: [ChainAttrAttack(4.0, 0, [0,1,0,0,0]), add_cond(ChainAttrAttack(5.5, 0, [0,1,0,0,0]), when_hp_more(0.80))],
 	},
 	ss2: {
-		desc: "ジャンルパネルに攻撃力アップの効果を付与(+60％)",
+		desc: "<特殊パネル変換>ジャンルパネルに攻撃力アップの効果を付与(+60％)",
 		turn: 7,
 		proc: [panel_attackup(0.60)],
 	},
@@ -12478,7 +12478,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(3.5, 5), as_hp_absorption(0.10)),
 	},
 	ss1: {
-		desc: "火・雷属性ダメージを2ターンの間50％軽減する",
+		desc: "<ガード>火・雷属性ダメージを2ターンの間50％軽減する",
 		turn: 7,
 		proc: [ss_attr_guard([1,0,1,0,0], 0.5, 2)]
 	},
@@ -12492,7 +12492,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(4.5, 5), as_hp_absorption(0.10)),
 	},
 	ss2: {
-		desc: "火・雷属性ダメージを3ターンの間50％軽減する",
+		desc: "<ガード>火・雷属性ダメージを3ターンの間50％軽減する",
 		turn: 10,
 		proc: [ss_attr_guard([1,0,1,0,0], 0.5, 3)]
 	},
@@ -12522,7 +12522,7 @@ Cards = [{
 		proc: Heal(0.12, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルを雷属性化",
+		desc: "<パネル変換>ジャンルパネルを雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,0,1,0,0])]
 	},
@@ -12536,7 +12536,7 @@ Cards = [{
 		proc: Heal(0.15, [0,0,1,0,0], 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルを雷属性化し、回復の効果を付与(8％)",
+		desc: "<特殊パネル変換>ジャンルパネルを雷属性化し、回復の効果を付与(8％)",
 		turn: 8,
 		proc: [ss_panel_change([0,0,1,0,0]), panel_healally(0.08)],
 	},
@@ -12566,7 +12566,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 3),
 	},
 	ss1: {
-		desc: "ジャンルパネルを雷属性化",
+		desc: "<パネル変換>ジャンルパネルを雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,0,1,0,0])]
 	},
@@ -12580,7 +12580,7 @@ Cards = [{
 		proc: [ChainAttack(4.0, 3), Heal(0.05, [0,0,1,0,0], 0)],
 	},
 	ss2: {
-		desc: "ジャンルパネルを雷属性化し、チェインプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを雷属性化し、チェインプラス2の効果を付与",
 		turn: 7,
 		proc: [ss_panel_change([0,0,1,0,0]), panel_chainplus(2)],
 	},
@@ -12610,7 +12610,7 @@ Cards = [{
 		proc: ChainEnhance(0.80, [0,0,1,0,0], 7),
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを1早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早める",
 		turn: 6,
 		proc: [ss_skillboost(1)],
 	},
@@ -12624,7 +12624,7 @@ Cards = [{
 		proc: ChainEnhance(1.0, [0,0,1,0,0], 7),
 	},
 	ss2: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
 		turn: 8,
 		proc: [ss_skillboost(2)],
 	},
@@ -12654,7 +12654,7 @@ Cards = [{
 		proc: [ChainEnhance(0.20, [0,0,1,0,0], 0), ChainSpecEnhance(0.40, [0,0,1,0,0], [8], 0)],
 	},
 	ss1: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 6,
 		proc: [ss_panel_change([1,1,1,0,0])]
 	},
@@ -12668,7 +12668,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [0,0,1,0,0], 0), ChainSpecEnhance(0.60, [0,0,1,0,0], [8], 0)],
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化し、チェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、チェインがプラス1の効果を付与",
 		turn: 8,
 		proc: [ss_panel_change([1,1,1,0,0]), panel_chainplus(1)],
 	},
@@ -12698,7 +12698,7 @@ Cards = [{
 		proc: ChainAllAttack(1.3, 0),
 	},
 	ss1: {
-		desc: "6ターン500以下の全属性ダメージを無効化する",
+		desc: "<ダメージブロック>6ターン500以下の全属性ダメージを無効化する",
 		turn: 8,
 		proc: [ss_damageblock_all(500, 6)],
 	},
@@ -12713,7 +12713,7 @@ Cards = [{
 		proc: ChainAllAttack(1.4, 0),
 	},
 	ss2: {
-		desc: "6ターン600以下の全属性ダメージを無効化する",
+		desc: "<ダメージブロック>6ターン600以下の全属性ダメージを無効化する",
 		turn: 10,
 		proc: [ss_damageblock_all(600, 6)],
 	},
@@ -12743,7 +12743,7 @@ Cards = [{
 		proc: Heal(0.13, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、さらに雷属性の味方を30％で蘇生(回復：30％)",
+		desc: "<蘇生>味方全体のHPを回復し、さらに雷属性の味方を30％で蘇生(回復：30％)",
 		turn: 8,
 		proc: [ss_heal(0.30), ss_resurrection([0,0,1,0,0], 0.30)],
 	},
@@ -12757,7 +12757,7 @@ Cards = [{
 		proc: Heal(0.15, [0,0,1,0,0], 0),
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し、さらに雷属性の味方を50％で蘇生(回復：50％)",
+		desc: "<蘇生>味方全体のHPを回復し、さらに雷属性の味方を50％で蘇生(回復：50％)",
 		turn: 10,
 		proc: [ss_heal(0.50), ss_resurrection([0,0,1,0,0], 0.50)],
 	},
@@ -12787,7 +12787,7 @@ Cards = [{
 		proc: Heal(0.13, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "攻撃ターンを3遅らせる",
+		desc: "<遅延>攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)]
 	},
@@ -12801,7 +12801,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,0,1,0,0], 0), ChainEnhance(0.30, [0,0,1,0,0], 0)],
 	},
 	ss2: {
-		desc: "攻撃ターンを3遅らせ、さらに味方全体のHPを回復する(50％)",
+		desc: "<遅延>攻撃ターンを3遅らせ、さらに味方全体のHPを回復する(50％)",
 		turn: 13,
 		proc: [ss_heal(0.50), ss_delay_all(3)],
 	},
@@ -12831,7 +12831,7 @@ Cards = [{
 		proc: [Heal(0.10, [0,0,1,0,0], 0), SpecHeal(0.15, [0,0,1,0,0], [9], 0)],
 	},
 	ss1: {
-		desc: "ジャンルパネルを雷属性化",
+		desc: "<パネル変換>ジャンルパネルを雷属性化",
 		turn: 6,
 		proc: [ss_panel_change([0,0,1,0,0])]
 	},
@@ -12845,7 +12845,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,0,1,0,0], 0), SpecHeal(0.18, [0,0,1,0,0], [9], 0)],
 	},
 	ss2: {
-		desc: "ジャンルパネルを雷属性化し、回復の効果を付与(8％)",
+		desc: "<特殊パネル変換>ジャンルパネルを雷属性化し、回復の効果を付与(8％)",
 		turn: 8,
 		proc: [ss_panel_change([0,0,1,0,0]), panel_healally(0.08)],
 	},
@@ -12874,7 +12874,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [0,0,1,0,0], 0), ChainSpecEnhance(0.50, [0,0,1,0,0], [1], 0)],
 	},
 	ss1: {
-		desc: "ジャンルパネルを雷属性化",
+		desc: "<パネル変換>ジャンルパネルを雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,0,1,0,0])]
 	},
@@ -12888,7 +12888,7 @@ Cards = [{
 		proc: [ChainEnhance(0.40, [0,0,1,0,0], 0), ChainSpecEnhance(0.70, [0,0,1,0,0], [1], 0)],
 	},
 	ss2: {
-		desc: "ジャンルパネルを雷属性化し、回復の効果を付与(8％)",
+		desc: "<特殊パネル変換>ジャンルパネルを雷属性化し、回復の効果を付与(8％)",
 		turn: 7,
 		proc: [ss_panel_change([0,0,1,0,0]), panel_healally(0.08)],
 	},
@@ -12917,7 +12917,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.60, [1,4], 3),
 	},
 	ss1: {
-		desc: "3ターン全属性のダメージを25％軽減する",
+		desc: "<ガード>3ターン全属性のダメージを25％軽減する",
 		turn: 5,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)]
 	},
@@ -12931,7 +12931,7 @@ Cards = [{
 		proc: [ChainDeckSpecsAttack(0.60, [1,4], 3), ChainEnhance(0.30, [0,0,1,0,0], 0)],
 	},
 	ss2: {
-		desc: "3ターン全属性のダメージを50％軽減する",
+		desc: "<ガード>3ターン全属性のダメージを50％軽減する",
 		turn: 9,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)]
 	},
@@ -12961,7 +12961,7 @@ Cards = [{
 		proc: ChainAttrAttack(8.0, 12, [0,1,0,0,0]),
 	},
 	ss1: {
-		desc: "ジャンルパネルを雷属性化",
+		desc: "<パネル変換>ジャンルパネルを雷属性化",
 		turn: 6,
 		proc: [ss_panel_change([0,0,1,0,0])]
 	},
@@ -12976,7 +12976,7 @@ Cards = [{
 		proc: ChainAttrAttack(9.0, 12, [0,1,0,0,0]),
 	},
 	ss2: {
-		desc: "ジャンルパネルを雷属性化し、チェインがプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを雷属性化し、チェインがプラス2の効果を付与",
 		turn: 10,
 		proc: [ss_panel_change([0,0,1,0,0]), panel_chainplus(2)],
 	},
@@ -13006,7 +13006,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.40, [0,9], 0),
 	},
 	ss1: {
-		desc: "敵全体へ雷属性の究極ダメージ(180％)",
+		desc: "<大魔術>敵全体へ雷属性の究極ダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [2])],
 	},
@@ -13020,7 +13020,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.60, [0,9], 0),
 	},
 	ss2: {
-		desc: "敵全体へ雷属性の超究極ダメージ(260％)",
+		desc: "<大魔術>敵全体へ雷属性の超究極ダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [2])],
 	},
@@ -13050,7 +13050,7 @@ Cards = [{
 		proc: ChainDualAttack(3.5, 3, 3),
 	},
 	ss1: {
-		desc: "敵全体への雷属性のダメージ(120％)",
+		desc: "<大魔術>敵全体への雷属性のダメージ(120％)",
 		turn: 4,
 		proc: [ss_damage_all(1.2, [2])],
 	},
@@ -13064,7 +13064,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 3, 6),
 	},
 	ss2: {
-		desc: "敵全体のカウンターを解除し、雷属性のダメージ(180％)",
+		desc: "<効果解除大魔術>敵全体のカウンターを解除し、雷属性のダメージ(180％)",
 		turn: 12,
 		proc: [ss_break_attackcounter("all"), ss_damage_all(1.8, [2])],
 	},
@@ -13094,7 +13094,7 @@ Cards = [{
 		proc: add_cond(Heal(0.11, [0,0,1,0,0], 0), as_hp_absorption(0.23)),
 	},
 	ss1: {
-		desc: "自分を犠牲に全員をHP50％蘇生",
+		desc: "<自己犠牲蘇生>自分を犠牲に全員をHP50％蘇生",
 		turn: 11,
 		proc: [ss_resurrection([1,1,1,1,1], 0.50), ss_consume_own(1.0)],
 	},
@@ -13108,7 +13108,7 @@ Cards = [{
 		proc: [add_cond(Heal(0.13, [0,0,1,0,0], 0), as_hp_absorption(0.23)), ChainEnhance(0.20, [0,0,1,0,0], 0)],
 	},
 	ss2: {
-		desc: "自分を犠牲に全員をHP100％蘇生",
+		desc: "<自己犠牲蘇生>自分を犠牲に全員をHP100％蘇生",
 		turn: 12,
 		proc: [ss_resurrection([1,1,1,1,1], 1.0), ss_consume_own(1.0)],
 	},
@@ -13137,7 +13137,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.70, [8], 5),
 	},
 	ss1: {
-		desc: "敵全体へ雷属性のダメージ(180％)",
+		desc: "<大魔術>敵全体へ雷属性のダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [2])],
 	},
@@ -13151,7 +13151,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.70, [8], 0),
 	},
 	ss2: {
-		desc: "敵全体へ雷属性のダメージ(260％)",
+		desc: "<大魔術>敵全体へ雷属性のダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [2])],
 	},
@@ -13182,7 +13182,7 @@ Cards = [{
 		proc: ChainAllAttack(1.8, 3),
 	},
 	ss1: {
-		desc: "3ターン自分の攻撃力をアップ(+150％)",
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(+150％)",
 		turn: 6,
 		proc: [ss_enhance_own(1.5, 3)],
 	},
@@ -13197,7 +13197,7 @@ Cards = [{
 		proc: ChainAllAttack(2.2, 3),
 	},
 	ss2: {
-		desc: "4ターン自分の攻撃力をアップ(+250％)",
+		desc: "<ダメージ強化>4ターン自分の攻撃力をアップ(+250％)",
 		turn: 8,
 		proc: [ss_enhance_own(2.5, 3)],
 	},
@@ -13227,7 +13227,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(3.0, 0, 5, [0,1,0,0,0]),
 	},
 	ss1: {
-		desc: "3ターン敵の攻撃を自分に集めダメージを50％軽減する",
+		desc: "<その他>3ターン敵の攻撃を自分に集めダメージを50％軽減する",
 		turn: 7,
 		proc: [ss_provocate(3, 0.5)]
 	},
@@ -13242,7 +13242,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(4.0, 0, 5, [0,1,0,0,0]),
 	},
 	ss2: {
-		desc: "3ターン敵の攻撃を自分に集めダメージを75％軽減する",
+		desc: "<その他>3ターン敵の攻撃を自分に集めダメージを75％軽減する",
 		turn: 9,
 		proc: [ss_provocate(3, 0.75)]
 	},
@@ -13273,7 +13273,7 @@ Cards = [{
 		proc: Heal(0.13, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "1ターン、致死ダメージを受けたら一度だけHP25％で起死回生",
+		desc: "<起死回生>1ターン、致死ダメージを受けたら一度だけHP25％で起死回生",
 		turn: 7,
 		proc: [ss_revival(0.25, 1)],
 	},
@@ -13287,7 +13287,7 @@ Cards = [{
 		proc: [Heal(0.16, [0,0,1,0,0], 0),ChainEnhance(0.30, [0,0,1,0,0], 0) ],
 	},
 	ss2: {
-		desc: "2ターン、致死ダメージを受けたら一度だけHP25％で起死回生",
+		desc: "<起死回生>2ターン、致死ダメージを受けたら一度だけHP25％で起死回生",
 		turn: 9,
 		proc: [ss_revival(0.25, 2)],
 	},
@@ -13317,7 +13317,7 @@ Cards = [{
 		proc: Heal(0.11, [0,0,1,0,0], 0)
 	},
 	ss1: {
-		desc: "ジャンルパネルを雷属性化",
+		desc: "<パネル変換>ジャンルパネルを雷属性化",
 		turn: 6,
 		proc: [ss_panel_change([0,0,1,0,0])]
 	},
@@ -13332,7 +13332,7 @@ Cards = [{
 		proc: Heal(0.14, [0,0,1,0,0], 0)
 	},
 	ss2: {
-		desc: "ジャンルパネルを雷属性化し、ダメージ25％軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを雷属性化し、ダメージ25％軽減の効果を付与",
 		turn: 9,
 		proc: [ss_panel_change([0,0,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)]
 	},
@@ -13362,7 +13362,7 @@ Cards = [{
 		proc: ChainAttack(7.0, 10),
 	},
 	ss1: {
-		desc: "敵全体へ雷属性のダメージ(180％)",
+		desc: "<大魔術>敵全体へ雷属性のダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [2])],
 	},
@@ -13375,7 +13375,7 @@ Cards = [{
 		proc: ChainAttack(8.0, 10),
 	},
 	ss2: {
-		desc: "敵全体へ雷属性のダメージ(260％)",
+		desc: "<大魔術>敵全体へ雷属性のダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [2])],
 	},
@@ -13405,7 +13405,7 @@ Cards = [{
 		proc: [Heal(0.10, [0,0,1,0,0], 0), Heal(0.15, [0,0,1,0,0], 5)],
 	},
 	ss1: {
-		desc: "攻撃ターンを3遅らせる",
+		desc: "<遅延>攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)]
 	},
@@ -13419,7 +13419,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,0,1,0,0], 0), Heal(0.18, [0,0,1,0,0], 5)],
 	},
 	ss2: {
-		desc: "攻撃ターンを3遅らせる、さらに味方全体のHPを回復する(50％)",
+		desc: "<遅延>攻撃ターンを3遅らせる、さらに味方全体のHPを回復する(50％)",
 		turn: 13,
 		proc: [ss_delay_all(3), ss_heal(0.5)],
 	},
@@ -13450,7 +13450,7 @@ Cards = [{
 		proc: [Heal(0.10, [0,1,1,0,0], 0), SpecHeal(0.15, [0,1,1,0,0], [9], 0)],
 	},
 	ss1: {
-		desc: "敵単体の攻撃ターンを3遅らせる",
+		desc: "<遅延>敵単体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_s(3)]
 	},
@@ -13465,7 +13465,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,1,1,0,0], 0), SpecHeal(0.18, [0,1,1,0,0], [9], 0)],
 	},
 	ss2: {
-		desc: "敵単体の攻撃ターンを3遅らせ、単体に雷属性のダメージ(400％)",
+		desc: "<遅延大魔術>敵単体の攻撃ターンを3遅らせ、単体に雷属性のダメージ(400％)",
 		turn: 15,
 		proc: [ss_damage_s(4.0, [2], 1), ss_delay_s(3)],
 	},
@@ -13496,7 +13496,7 @@ Cards = [{
 		proc: [ChainEnhance(0.40, [0,0,1,0,0], 3), ChainSpecEnhance(0.60, [0,0,1,0,0], [9], 3)],
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
 		turn: 8,
 		proc: [ss_skillboost(2)],
 	},
@@ -13510,7 +13510,7 @@ Cards = [{
 		proc: [ChainEnhance(0.50, [0,0,1,0,0], 3), ChainSpecEnhance(0.70, [0,0,1,0,0], [9], 3)],
 	},
 	ss2: {
-		desc: "味方全体のスペシャルスキルの発動ターンを3早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを3早める",
 		turn: 11,
 		proc: [ss_skillboost(3)],
 	},
@@ -13538,7 +13538,7 @@ Cards = [{
 		proc: ChainAttack(1.6, 0),
 	},
 	ss1: {
-		desc: "味方全体のHPを回復する(50％)",
+		desc: "<回復>味方全体のHPを回復する(50％)",
 		turn: 7,
 		proc: [ss_heal(0.5)],
 	},
@@ -13553,7 +13553,7 @@ Cards = [{
 		proc: ChainAttack(1.9, 0),
 	},
 	ss2: {
-		desc: "味方全体のHPを完全に回復する",
+		desc: "<回復>味方全体のHPを完全に回復する",
 		turn: 9,
 		proc: [ss_heal(1.0)],
 	},
@@ -13583,7 +13583,7 @@ Cards = [{
 		proc: Heal(0.13, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルにダメージ25％軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ25％軽減の効果を付与",
 		turn: 6,
 		proc: [panel_attr_guard([1, 1, 1, 1, 1], 0.25)]
 	},
@@ -13597,7 +13597,7 @@ Cards = [{
 		proc: [Heal(0.16, [0,0,1,0,0], 0), ChainEnhance(0.30, [0,0,1,0,0], 0)],
 	},
 	ss2: {
-		desc: "ジャンルパネルにダメージ50％軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ50％軽減の効果を付与",
 		turn: 10,
 		proc: [panel_attr_guard([1, 1, 1, 1, 1], 0.5)]
 	},
@@ -13627,7 +13627,7 @@ Cards = [{
 		proc: ChainSpecAttack(6.0, 0, [2,6]),
 	},
 	ss1: {
-		desc: "解答選択肢を2つ削る",
+		desc: "<解答削り>解答選択肢を2つ削る",
 		turn: 3,
 		proc: [ss_answer_narrow(2)]
 	},
@@ -13642,7 +13642,7 @@ Cards = [{
 		proc: ChainSpecAttack(7.0, 0, [2,6]),
 	},
 	ss2: {
-		desc: "解答を見破る",
+		desc: "<解答削り>解答を見破る",
 		turn: 6,
 		proc: [ss_answer_foresight()]
 	},
@@ -13672,7 +13672,7 @@ Cards = [{
 		proc: ChainEnhance(0.55, [0,0,1,0,0], 3),
 	},
 	ss1: {
-		desc: "攻撃ターンを3遅らせる",
+		desc: "<遅延>攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)]
 	},
@@ -13686,7 +13686,7 @@ Cards = [{
 		proc: ChainEnhance(0.75, [0,0,1,0,0], 3),
 	},
 	ss2: {
-		desc: "攻撃ターンを3遅らせ、20チェインで更に1遅らせる",
+		desc: "<遅延>攻撃ターンを3遅らせ、20チェインで更に1遅らせる",
 		turn: 13,
 		proc: [ss_delay_all(ss_chain_cond(20, 4, 3))]
 	},
@@ -13717,7 +13717,7 @@ Cards = [{
 		proc: ChainPanelsEnhance(0.60, 0.90, 0.90, [0,0,1,0,0], 5),
 	},
 	ss1: {
-		desc: "スペシャルスキルの発動ターンを1早め、敵単体の攻撃ターンを1遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを1早め、敵単体の攻撃ターンを1遅らせる",
 		turn: 6,
 		proc: [ss_skillboost(1), ss_delay_s(1)],
 	},
@@ -13732,7 +13732,7 @@ Cards = [{
 		proc: ChainPanelsEnhance(0.90, 1.20, 1.20, [0,0,1,0,0], 5),
 	},
 	ss2: {
-		desc: "スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
 		turn: 9,
 		proc: [ss_skillboost(2), ss_delay_s(2)],
 	},
@@ -13762,7 +13762,7 @@ Cards = [{
 		proc: [Heal(0.11, [0,1,1,0,0], 0), add_cond(Heal(0.20, [0,1,1,0,0], 0), when_hp_less(0.5))],
 	},
 	ss1: {
-		desc: "ジャンルパネルを水・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,1,1,0,0])]
 	},
@@ -13776,7 +13776,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,1,1,0,0], 0), add_cond(Heal(0.22, [0,1,1,0,0], 0), when_hp_less(0.5))],
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 7,
 		proc: [ss_panel_change([1,1,1,0,0])]
 	},
@@ -13806,7 +13806,7 @@ Cards = [{
 		proc: Heal(0.13, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "5ターン600以下の全属性ダメージを無効化する",
+		desc: "<ダメージブロック>5ターン600以下の全属性ダメージを無効化する",
 		turn: 9,
 		proc: [ss_damageblock_all(600, 5)],
 	},
@@ -13820,7 +13820,7 @@ Cards = [{
 		proc: Heal(0.17, [0,0,1,0,0], 0),
 	},
 	ss2: {
-		desc: "5ターン800以下の全属性ダメージを無効化する",
+		desc: "<ダメージブロック>5ターン800以下の全属性ダメージを無効化する",
 		turn: 12,
 		proc: [ss_damageblock_all(800, 5)],
 	},
@@ -13850,7 +13850,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 4.0, 5.5, 3),
 	},
 	ss1: {
-		desc: "解答選択肢を2つ削る",
+		desc: "<解答削り>解答選択肢を2つ削る",
 		turn: 3,
 		proc: [ss_answer_narrow(2)]
 	},
@@ -13863,7 +13863,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 5.5, 7.0, 3),
 	},
 	ss2: {
-		desc: "解答を見破る",
+		desc: "<解答削り>解答を見破る",
 		turn: 6,
 		proc: [ss_answer_foresight()]
 	},
@@ -13893,7 +13893,7 @@ Cards = [{
 		proc: [Heal(0.11, [1,0,1,0,0], 0), add_cond(Heal(0.20, [1,0,1,0,0], 0), when_hp_less(0.5))],
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、さらに火・雷属性の味方を蘇生(回復：25％ / 蘇生：25％)",
+		desc: "<蘇生>味方全体のHPを回復し、さらに火・雷属性の味方を蘇生(回復：25％ / 蘇生：25％)",
 		turn: 7,
 		proc: [ss_heal(0.25), ss_resurrection([1,0,1,0,0], 0.25)],
 	},
@@ -13907,7 +13907,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,0,1,0,0], 0), add_cond(Heal(0.22, [1,0,1,0,0], 0), when_hp_less(0.5))],
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し、さらに火・雷属性の味方を蘇生(回復：50％ / 蘇生：50％)",
+		desc: "<蘇生>味方全体のHPを回復し、さらに火・雷属性の味方を蘇生(回復：50％ / 蘇生：50％)",
 		turn: 9,
 		proc: [ss_heal(0.50), ss_resurrection([1,0,1,0,0], 0.50)],
 	},
@@ -13937,7 +13937,7 @@ Cards = [{
 		proc: Heal(0.10, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "MAXHPの100％を使い敵全体へダメージ(400％)",
+		desc: "<自己犠牲魔術>MAXHPの100％を使い敵全体へダメージ(400％)",
 		turn: 8,
 		proc: [ss_damage_all(4.0, [2]), ss_consume_own(1.0)],
 	},
@@ -13952,7 +13952,7 @@ Cards = [{
 		proc: [Heal(0.12, [0,0,1,0,0], 0), ChainEnhance(0.30, [0,0,1,0,0], 0)],
 	},
 	ss2: {
-		desc: "MAXHPの100％を使い敵全体へダメージ(800％)",
+		desc: "<自己犠牲魔術>MAXHPの100％を使い敵全体へダメージ(800％)",
 		turn: 10,
 		proc: [ss_damage_all(8.0, [2]), ss_consume_own(1.0)],
 	},
@@ -13982,7 +13982,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(2.5, 0), as_hp_absorption(0.05)),
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し(20％)、さらに雷属性の味方を20％で蘇生",
+		desc: "<蘇生>味方全体のHPを回復し(20％)、さらに雷属性の味方を20％で蘇生",
 		turn: 6,
 		proc: [ss_heal(0.20), ss_resurrection([0,0,1,0,0], 0.20)],
 	},
@@ -13996,7 +13996,7 @@ Cards = [{
 		proc: [add_cond(ChainAttack(2.5, 0), as_hp_absorption(0.05)), Heal(0.02, [0,0,1,0,0], 0)],
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し(30％)、さらに雷属性の味方を20％で蘇生",
+		desc: "<蘇生>味方全体のHPを回復し(30％)、さらに雷属性の味方を20％で蘇生",
 		turn: 9,
 		proc: [ss_heal(0.30), ss_resurrection([0,0,1,0,0], 0.20)],
 	},
@@ -14027,7 +14027,7 @@ Cards = [{
 		proc: ChainAttrAttack(4.0, 0, [0,1,0,0,0]),
 	},
 	ss1: {
-		desc: "味方全体のHPを回復する(75％)",
+		desc: "<回復>味方全体のHPを回復する(75％)",
 		turn: 7,
 		proc: [ss_heal(0.75)],
 	},
@@ -14041,7 +14041,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.0, 0, [0,1,0,0,0]),
 	},
 	ss2: {
-		desc: "味方全体のHPを完全に回復し、更に3ターン雷属性の味方の攻撃力をアップ(+30％)",
+		desc: "<ダメージ強化>味方全体のHPを完全に回復し、更に3ターン雷属性の味方の攻撃力をアップ(+30％)",
 		turn: 9,
 		proc: [ss_heal(1.0), ss_enhance_all(0.30, 3, [0,0,1,0,0])],
 	},
@@ -14072,7 +14072,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 3),
 	},
 	ss1: {
-		desc: "2ターン敵の状態異常攻撃を無効化する",
+		desc: "<状態異常無効>2ターン敵の状態異常攻撃を無効化する",
 		turn: 7,
 		proc: [ss_absattack_disable(2)],
 	},
@@ -14086,7 +14086,7 @@ Cards = [{
 		proc: [ChainAttack(3.5, 3), Heal(0.05, [0,0,1,0,0], 0)],
 	},
 	ss2: {
-		desc: "3ターン敵の状態異常攻撃を無効化する",
+		desc: "<状態異常無効>3ターン敵の状態異常攻撃を無効化する",
 		turn: 9,
 		proc: [ss_absattack_disable(3)],
 	},
@@ -14116,7 +14116,7 @@ Cards = [{
 		proc: [ChainDeckSpecsAttack(0.30, [9], 0), ChainDeckSpecsAttack(0.50, [9], 5)],
 	},
 	ss1: {
-		desc: "ジャンルパネルにチェインプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインプラス2の効果を付与",
 		turn: 6,
 		proc: [panel_chainplus(2)],
 	},
@@ -14131,7 +14131,7 @@ Cards = [{
 		proc: [ChainDeckSpecsAttack(0.50, [9], 0), ChainDeckSpecsAttack(0.70, [9], 5)],
 	},
 	ss2: {
-		desc: "ジャンルパネルにチェインプラス3の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインプラス3の効果を付与",
 		turn: 9,
 		proc: [panel_chainplus(3)],
 	},
@@ -14160,7 +14160,7 @@ Cards = [{
 		proc: ChainAttack(2.5, 3),
 	},
 	ss1: {
-		desc: "敵全体へ雷属性の究極ダメージ(180％)",
+		desc: "<大魔術>敵全体へ雷属性の究極ダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [2])],
 	},
@@ -14175,7 +14175,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 3),
 	},
 	ss2: {
-		desc: "敵全体へ雷属性の超究極ダメージ(260％)",
+		desc: "<大魔術>敵全体へ雷属性の超究極ダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [2])],
 	},
@@ -14205,7 +14205,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 5),
 	},
 	ss1: {
-		desc: "敵全体へ雷属性のダメージ(150％)",
+		desc: "<大魔術>敵全体へ雷属性のダメージ(150％)",
 		turn: 7,
 		proc: [ss_damage_all(1.5, [2])],
 	},
@@ -14219,7 +14219,7 @@ Cards = [{
 		proc: ChainAttack(5.5, 5),
 	},
 	ss2: {
-		desc: "敵全体へ雷属性のダメージ(220％)",
+		desc: "<大魔術>敵全体へ雷属性のダメージ(220％)",
 		turn: 10,
 		proc: [ss_damage_all(2.2, [2])],
 	},
@@ -14249,7 +14249,7 @@ Cards = [{
 		proc: Heal(0.13, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "1クエストに1回のみ、ジャンルパネルにチェインプラス2の効果を付与",
+		desc: "<特殊パネル変換>1クエストに1回のみ、ジャンルパネルにチェインプラス2の効果を付与",
 		turn: 5,
 		proc: [panel_chainplus(2)],
 	},
@@ -14263,7 +14263,7 @@ Cards = [{
 		proc: [Heal(0.16, [0,0,1,0,0], 0), ChainEnhance(0.30, [0,0,1,0,0], 0)],
 	},
 	ss2: {
-		desc: "1クエストに1回のみ、ジャンルパネルにチェインプラス4の効果を付与",
+		desc: "<特殊パネル変換>1クエストに1回のみ、ジャンルパネルにチェインプラス4の効果を付与",
 		turn: 8,
 		proc: [panel_chainplus(4)],
 	},
@@ -14293,7 +14293,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(4.0, 0, 3, [0,1,0,0,0]),
 	},
 	ss1: {
-		desc: "2ターン全属性の味方の攻撃力をアップ(+40％)",
+		desc: "<ダメージ強化>2ターン全属性の味方の攻撃力をアップ(+40％)",
 		turn: 5,
 		proc: [ss_enhance_all(0.40, 2, [1,1,1,1,1])],
 	},
@@ -14307,7 +14307,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(5.0, 0, 3, [0,1,0,0,0]),
 	},
 	ss2: {
-		desc: "3ターン全属性の味方の攻撃力をアップ、HP20％未満で更にアップ(通常：+60％ / HP20％未満：+200％)",
+		desc: "<ダメージ強化>3ターン全属性の味方の攻撃力をアップ、HP20％未満で更にアップ(通常：+60％ / HP20％未満：+200％)",
 		turn: 8,
 		proc: [ss_enhance_all(ss_hp_less(0.20, 2, 0.6), 3, [1,1,1,1,1])],
 	},
@@ -14337,7 +14337,7 @@ Cards = [{
 		proc: [Heal(0.10, [0,1,1,0,0], 0), SpecHeal(0.14, [0,1,1,0,0], [0,9], 0)],
 	},
 	ss1: {
-		desc: "3ターン全属性のダメージを25％軽減する",
+		desc: "<ガード>3ターン全属性のダメージを25％軽減する",
 		turn: 6,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)]
 	},
@@ -14351,7 +14351,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,1,1,0,0], 0), SpecHeal(0.17, [0,1,1,0,0], [0,9], 0)],
 	},
 	ss2: {
-		desc: "3ターン全属性のダメージを50％軽減する",
+		desc: "<ガード>3ターン全属性のダメージを50％軽減する",
 		turn: 10,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)]
 	},
@@ -14381,7 +14381,7 @@ Cards = [{
 		proc: ChainEnhance(0.60, [0,0,1,0,0], 5),
 	},
 	ss1: {
-		desc: "敵単体へ雷属性のダメージ(200％)",
+		desc: "<大魔術>敵単体へ雷属性のダメージ(200％)",
 		turn: 5,
 		proc: [ss_damage_s(2.0, [2], 1)],
 	},
@@ -14395,7 +14395,7 @@ Cards = [{
 		proc: ChainEnhance(0.90, [0,0,1,0,0], 5),
 	},
 	ss2: {
-		desc: "敵単体へ雷属性のダメージ(400％)",
+		desc: "<大魔術>敵単体へ雷属性のダメージ(400％)",
 		turn: 8,
 		proc: [ss_damage_s(4.0, [2], 1)],
 	},
@@ -14425,7 +14425,7 @@ Cards = [{
 		proc: [Heal(0.10, [0,0,1,0,0], 0), SpecHeal(0.17, [0,0,1,0,0], [6], 0)],
 	},
 	ss1: {
-		desc: "3ターン味方全体を徐々に回復する(15％)",
+		desc: "<継続回復>3ターン味方全体を徐々に回復する(15％)",
 		turn: 5,
 		proc: [ss_regenerate(0.15, 3)],
 	},
@@ -14439,7 +14439,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,0,1,0,0], 0), SpecHeal(0.20, [0,0,1,0,0], [6], 0)],
 	},
 	ss2: {
-		desc: "5ターン味方全体を徐々に回復する(20％)",
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20％)",
 		turn: 8,
 		proc: [ss_regenerate(0.20, 5)],
 	},
@@ -14469,7 +14469,7 @@ Cards = [{
 		proc: [ChainDualAttack(3.0, 3, 4), add_cond(ChainDualAttack(4.0, 3, 4), when_hp_more(0.80))]
 	},
 	ss1: {
-		desc: "敵単体へ雷属性の5回連続ダメージ(計180％)",
+		desc: "<多弾魔術>敵単体へ雷属性の5回連続ダメージ(計180％)",
 		turn: 5,
 		proc: [ss_damage_s(1.8, [2], 5)],
 	},
@@ -14483,7 +14483,7 @@ Cards = [{
 		proc: [ChainDualAttack(4.0, 3, 4), add_cond(ChainDualAttack(5.0, 3, 4), when_hp_more(0.80))]
 	},
 	ss2: {
-		desc: "敵単体へ雷属性の5回連続ダメージ(計380％)",
+		desc: "<多弾魔術>敵単体へ雷属性の5回連続ダメージ(計380％)",
 		turn: 8,
 		proc: [ss_damage_s(3.8, [2], 5)],
 	},
@@ -14513,7 +14513,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.25, 3, [0,1,0,0,0]),
 	},
 	ss1: {
-		desc: "敵全体のガード＆ダメージブロックを解除する",
+		desc: "<効果解除>敵全体のガード＆ダメージブロックを解除する",
 		turn: 8,
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all")],
 	},
@@ -14527,7 +14527,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.25, 3, [0,1,0,0,0]),
 	},
 	ss2: {
-		desc: "敵全体のガード＆ダメージブロックを解除し、雷属性のダメージ(180％)",
+		desc: "<効果解除大魔術>敵全体のガード＆ダメージブロックを解除し、雷属性のダメージ(180％)",
 		turn: 12,
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(1.8, [2])],
 	},
@@ -14557,7 +14557,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(4.0, 0, 3, [0,1,0,0,0]),
 	},
 	ss1: {
-		desc: "3ターン自分の攻撃力をアップ(+150％)",
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(+150％)",
 		turn: 6,
 		proc: [ss_enhance_own(1.5, 3)],
 	},
@@ -14571,7 +14571,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(5.0, 0, 3, [0,1,0,0,0]),
 	},
 	ss2: {
-		desc: "4ターン自分の攻撃力をアップ(+250％)",
+		desc: "<ダメージ強化>4ターン自分の攻撃力をアップ(+250％)",
 		turn: 8,
 		proc: [ss_enhance_own(2.5, 4)],
 	},
@@ -14601,7 +14601,7 @@ Cards = [{
 		proc: ChainDualAttack(3.5, 3, 5),
 	},
 	ss1: {
-		desc: "2ターン雷属性の味方の攻撃力をアップ(+40％)",
+		desc: "<ダメージ強化>2ターン雷属性の味方の攻撃力をアップ(+40％)",
 		turn: 6,
 		proc: [ss_enhance_all(0.40, 2, [0,0,1,0,0])],
 	},
@@ -14615,7 +14615,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 3, 5),
 	},
 	ss2: {
-		desc: "4ターン雷属性の味方の攻撃力をアップ(+60％)",
+		desc: "<ダメージ強化>4ターン雷属性の味方の攻撃力をアップ(+60％)",
 		turn: 9,
 		proc: [ss_enhance_all(0.60, 4, [0,0,1,0,0])],
 	},
@@ -14645,7 +14645,7 @@ Cards = [{
 		proc: [ChainEnhance(0.20, [0,0,1,0,0], 0), ChainSpecEnhance(0.40, [0,0,1,0,0], [8], 0)],
 	},
 	ss1: {
-		desc: "ジャンルパネルを雷属性化",
+		desc: "<パネル変換>ジャンルパネルを雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,0,1,0,0])]
 	},
@@ -14659,7 +14659,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [0,0,1,0,0], 0), ChainSpecEnhance(0.60, [0,0,1,0,0], [8], 0)],
 	},
 	ss2: {
-		desc: "ジャンルパネルを雷属性化し、攻撃力アップの効果を付与(+20％)",
+		desc: "<特殊パネル変換>ジャンルパネルを雷属性化し、攻撃力アップの効果を付与(+20％)",
 		turn: 8,
 		proc: [ss_panel_change([0,0,1,0,0]), panel_attackup(0.20)],
 	},
@@ -14689,7 +14689,7 @@ Cards = [{
 		proc: [ChainEnhance(0.40, [0,0,1,0,0], 3), ChainSpecEnhance(0.80, [0,0,1,0,0], [8], 3)],
 	},
 	ss1: {
-		desc: "敵単体の攻撃ターンを2遅らせる",
+		desc: "<遅延>敵単体の攻撃ターンを2遅らせる",
 		turn: 8,
 		proc: [ss_delay_s(2)]
 	},
@@ -14703,7 +14703,7 @@ Cards = [{
 		proc: [ChainEnhance(0.70, [0,0,1,0,0], 3), ChainSpecEnhance(1.10, [0,0,1,0,0], [8], 3)],
 	},
 	ss2: {
-		desc: "敵単体の攻撃ターンを3遅らせる",
+		desc: "<遅延>敵単体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_s(3)]
 	},
@@ -14734,7 +14734,7 @@ Cards = [{
 		proc: Heal(0.13, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "スペシャルスキルの発動ターンを1早め、敵全体の攻撃ターンを1遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを1早め、敵全体の攻撃ターンを1遅らせる",
 		turn: 6,
 		proc: [ss_skillboost(1), ss_delay_all(1)],
 	},
@@ -14748,7 +14748,7 @@ Cards = [{
 		proc: [Heal(0.16, [0,0,1,0,0], 0), ChainEnhance(0.30, [0,0,1,0,0], 0)],
 	},
 	ss2: {
-		desc: "スペシャルスキルの発動ターンを2早め、敵全体の攻撃ターンを2遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵全体の攻撃ターンを2遅らせる",
 		turn: 9,
 		proc: [ss_skillboost(2), ss_delay_all(2)],
 	},
@@ -14778,7 +14778,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(4.0, 0, 3, [0,1,0,0,0]),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50%を使い敵単体へダメージ(240％×味方の人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵単体へダメージ(240％×味方の人数)",
 		turn: 11,
 		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.5), [2], 1)],
 	},
@@ -14792,7 +14792,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(5.0, 0, 3, [0,1,0,0,0]),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50%を使い敵単体へダメージ(300％×味方の人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵単体へダメージ(300％×味方の人数)",
 		turn: 13,
 		proc: [ss_damage_s(ss_consume_all_cond(3.0, 0.5), [2], 1)],
 	},
@@ -14823,7 +14823,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 3),
 	},
 	ss1: {
-		desc: "2ターン火・雷属性の味方の攻撃力をアップ(+40％)",
+		desc: "<ダメージ強化>2ターン火・雷属性の味方の攻撃力をアップ(+40％)",
 		turn: 5,
 		proc: [ss_enhance_all(0.40, 2, [1,0,1,0,0])],
 	},
@@ -14837,7 +14837,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 3),
 	},
 	ss2: {
-		desc: "4ターン火・雷属性の味方の攻撃力をアップ(+60％)",
+		desc: "<ダメージ強化>4ターン火・雷属性の味方の攻撃力をアップ(+60％)",
 		turn: 8,
 		proc: [ss_enhance_all(0.60, 4, [1,0,1,0,0])],
 	},
@@ -14867,7 +14867,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 5),
 	},
 	ss1: {
-		desc: "ジャンルパネルにチェインがプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
 		turn: 5,
 		proc: [panel_chainplus(2)],
 	},
@@ -14881,7 +14881,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(6.5, 5), as_consume_own(0.15)),
 	},
 	ss2: {
-		desc: "ジャンルパネルにチェインがプラス3の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス3の効果を付与",
 		turn: 8,
 		proc: [panel_chainplus(3)],
 	},
@@ -14911,7 +14911,7 @@ Cards = [{
 		proc: ChainDualAttack(3.0, 3, 2),
 	},
 	ss1: {
-		desc: "敵全体へ火・雷属性のダメージ、さらに味方全体のHPを回復する(攻撃：120％ / 回復：20％)",
+		desc: "<大魔術>敵全体へ火・雷属性のダメージ、さらに味方全体のHPを回復する(攻撃：120％ / 回復：20％)",
 		turn: 6,
 		proc: [ss_damage_all(1.2, [0,2]), ss_heal(0.20)],
 	},
@@ -14926,7 +14926,7 @@ Cards = [{
 		proc: ChainDualAttack(4.0, 3, 2),
 	},
 	ss2: {
-		desc: "敵全体へ火・雷属性のダメージ、さらに味方全体のHPを回復する(攻撃：150％ / 回復：20％)",
+		desc: "<大魔術>敵全体へ火・雷属性のダメージ、さらに味方全体のHPを回復する(攻撃：150％ / 回復：20％)",
 		turn: 9,
 		proc: [ss_damage_all(1.5, [0,2]), ss_heal(0.20)],
 	},
@@ -14957,7 +14957,7 @@ Cards = [{
 		proc: ChainDualAttack(4.0, 4, 4),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50％を使い、2ターン火・雷属性の味方の攻撃力をアップ(+70％)",
+		desc: "<ダメージ強化>味方全体のMAXHPの50％を使い、2ターン火・雷属性の味方の攻撃力をアップ(+70％)",
 		turn: 5,
 		proc: [ss_enhance_all(0.70, 2, [1,0,1,0,0]), ss_consume_all(0.50)],
 	},
@@ -14971,7 +14971,7 @@ Cards = [{
 		proc: ChainDualAttack(5.0, 4, 4),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50％を使い、4ターン火・雷属性の味方の攻撃力をアップ(+100％)",
+		desc: "<ダメージ強化>味方全体のMAXHPの50％を使い、4ターン火・雷属性の味方の攻撃力をアップ(+100％)",
 		turn: 8,
 		proc: [ss_enhance_all(1.00, 4, [1,0,1,0,0]), ss_consume_all(0.50)],
 	},
@@ -15001,7 +15001,7 @@ Cards = [{
 		proc: [Heal(0.08, [1,0,1,0,0], 0), SpecHeal(0.11, [1,0,1,0,0], [8], 0)],
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、さらに火・雷属性の味方を蘇生(回復：25％ / 蘇生：10％)",
+		desc: "<蘇生>味方全体のHPを回復し、さらに火・雷属性の味方を蘇生(回復：25％ / 蘇生：10％)",
 		turn: 10,
 		proc: [ss_heal(0.25), ss_resurrection([1,0,1,0,0], 0.10)],
 	},
@@ -15016,7 +15016,7 @@ Cards = [{
 		proc: [Heal(0.11, [1,0,1,0,0], 0), SpecHeal(0.16, [1,0,1,0,0], [8], 0)],
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し、さらに火・雷属性の味方を蘇生(回復：25％ / 蘇生：25％)",
+		desc: "<蘇生>味方全体のHPを回復し、さらに火・雷属性の味方を蘇生(回復：25％ / 蘇生：25％)",
 		turn: 14,
 		proc: [ss_heal(0.25), ss_resurrection([1,0,1,0,0], 0.25)],
 	},
@@ -15047,7 +15047,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(3.5, 0), as_consume_all(0.10)),
 	},
 	ss1: {
-		desc: "敵単体へ火・雷属性の5回連続ダメージ(計180％)",
+		desc: "<多弾魔術>敵単体へ火・雷属性の5回連続ダメージ(計180％)",
 		turn: 5,
 		proc: [ss_damage_s(1.8, [0,2], 5)],
 	},
@@ -15061,7 +15061,7 @@ Cards = [{
 		proc: ChainAttack(4.0, 0),
 	},
 	ss2: {
-		desc: "敵単体へ火・雷属性の5回連続ダメージ(計380％)",
+		desc: "<多弾魔術>敵単体へ火・雷属性の5回連続ダメージ(計380％)",
 		turn: 8,
 		proc: [ss_damage_s(3.8, [0,2], 5)],
 	},
@@ -15091,7 +15091,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 5),
 	},
 	ss1: {
-		desc: "味方全体の攻撃力とHPを500アップ(上限値：2000)",
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップ(上限値：2000)",
 		turn: 5,
 		proc: [ss_statusup_all([500, 500], [2000, 2000], -1)],
 	},
@@ -15105,7 +15105,7 @@ Cards = [{
 		proc: ChainAttack(5.5, 5),
 	},
 	ss2: {
-		desc: "味方全体の攻撃力とHPを1000アップ(上限値：2000)",
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを1000アップ(上限値：2000)",
 		turn: 8,
 		proc: [ss_statusup_all([1000, 1000], [2000, 2000], -1)],
 	},
@@ -15135,7 +15135,7 @@ Cards = [{
 		proc: [Heal(0.10, [1,0,1,0,0], 0), Heal(0.15, [1,0,1,0,0], 5)],
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、状態異常を回復する(回復：50％)",
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(回復：50％)",
 		turn: 7,
 		proc: [ss_heal(0.5), ss_abstate_cure()],
 	},
@@ -15149,7 +15149,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,0,1,0,0], 0), Heal(0.18, [1,0,1,0,0], 5)],
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し、状態異常を回復、さらに火・雷属性の味方を50％で蘇生(回復：50％)",
+		desc: "<状態異常回復&蘇生>味方全体のHPを回復し、状態異常を回復、さらに火・雷属性の味方を50％で蘇生(回復：50％)",
 		turn: 10,
 		proc: [ss_heal(0.5), ss_abstate_cure(), ss_resurrection([1,0,1,0,0], 0.50)],
 	},
@@ -15180,7 +15180,7 @@ Cards = [{
 		proc: ChainDualAttack(3.5, 3, 3),
 	},
 	ss1: {
-		desc: "敵単体へ火・雷属性の5回連続ダメージ(計180％)",
+		desc: "<多弾魔術>敵単体へ火・雷属性の5回連続ダメージ(計180％)",
 		turn: 5,
 		proc: [ss_damage_s(1.8, [0,2], 5)],
 	},
@@ -15194,7 +15194,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 3, 3),
 	},
 	ss2: {
-		desc: "敵単体へ火・雷属性の5回連続ダメージ(計380％)",
+		desc: "<多弾魔術>敵単体へ火・雷属性の5回連続ダメージ(計380％)",
 		turn: 8,
 		proc: [ss_damage_s(3.8, [0,2], 5)],
 	},
@@ -15224,7 +15224,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.80, [6,8], 5),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを火・雷属性化",
 		turn: 4,
 		proc: [ss_panel_change([1,0,1,0,0])]
 	},
@@ -15239,7 +15239,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(1.0, [6,8], 5),
 	},
 	ss2: {
-		desc: "ジャンルパネルを火・雷属性化し、チェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、チェインがプラス1の効果を付与",
 		turn: 6,
 		proc: [ss_panel_change([1,0,1,0,0]), panel_chainplus(1)],
 	},
@@ -15269,7 +15269,7 @@ Cards = [{
 		proc: [Heal(0.10, [0,1,1,0,0], 0), SpecHeal(0.15, [0,1,1,0,0], [8], 0)],
 	},
 	ss1: {
-		desc: "ジャンルパネルを水＆雷属性化",
+		desc: "<パネル変換>ジャンルパネルを水＆雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,1,1,0,0])]
 	},
@@ -15283,7 +15283,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,1,1,0,0], 0), SpecHeal(0.18, [0,1,1,0,0], [8], 0)],
 	},
 	ss2: {
-		desc: "ジャンルパネルを水＆雷属性化し、回復の効果を付与(5％)",
+		desc: "<特殊パネル変換>ジャンルパネルを水＆雷属性化し、回復の効果を付与(5％)",
 		turn: 7,
 		proc: [ss_panel_change([0,1,1,0,0]), panel_healally(0.05)],
 	},
@@ -15313,7 +15313,7 @@ Cards = [{
 		proc: [ChainEnhance(0.60, [0,1,1,0,0], 7), ChainEnhance(1.4, [0,1,1,0,0], 15)],
 	},
 	ss1: {
-		desc: "1クエストに1回のみ、ジャンルパネルを水・雷属性化",
+		desc: "<パネル変換>1クエストに1回のみ、ジャンルパネルを水・雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,1,1,0,0])]
 	},
@@ -15328,7 +15328,7 @@ Cards = [{
 		proc: [ChainEnhance(0.80, [0,1,1,0,0], 7), ChainEnhance(1.6, [0,1,1,0,0], 15)],
 	},
 	ss2: {
-		desc: "1クエストに1回のみ、ジャンルパネルを水・雷属性化し、様々な効果を付与",
+		desc: "<特殊パネル変換>1クエストに1回のみ、ジャンルパネルを水・雷属性化し、様々な効果を付与",
 		turn: 8,
 		proc: [ss_panel_change([0,1,1,0,0]), panel_attackup(0.30), panel_chainplus(3), panel_healally(0.20)],
 	},
@@ -15358,7 +15358,7 @@ Cards = [{
 		proc: [Heal(0.10, [0,1,1,0,0], 0), SpecHeal(0.17, [0,1,1,0,0], [1,3], 0)],
 	},
 	ss1: {
-		desc: "敵全体へ水・雷属性のダメージ、さらに味方全体のHPを回復する(攻撃：120％ / 回復：15％)",
+		desc: "<大魔術>敵全体へ水・雷属性のダメージ、さらに味方全体のHPを回復する(攻撃：120％ / 回復：15％)",
 		turn: 5,
 		proc: [ss_damage_all(1.2, [1,2]), ss_heal(0.15)],
 	},
@@ -15372,7 +15372,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,1,1,0,0], 0), SpecHeal(0.20, [0,1,1,0,0], [1,3], 0)],
 	},
 	ss2: {
-		desc: "敵全体へ水・雷属性のダメージ、さらに味方全体のHPを回復する(攻撃：180％ / 回復：25％)",
+		desc: "<大魔術>敵全体へ水・雷属性のダメージ、さらに味方全体のHPを回復する(攻撃：180％ / 回復：25％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [1,2]), ss_heal(0.25)],
 	},
@@ -15402,7 +15402,7 @@ Cards = [{
 		proc: ChainEnhance(0.60, [0,1,1,0,0], 5),
 	},
 	ss1: {
-		desc: "4ターン敵全体に毒のダメージを与える(5000ダメージ)",
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(5000ダメージ)",
 		turn: 6,
 		proc: [poison(5000, 4)],
 	},
@@ -15416,7 +15416,7 @@ Cards = [{
 		proc: ChainEnhance(0.90, [0,1,1,0,0], 5),
 	},
 	ss2: {
-		desc: "5ターン敵全体に毒のダメージを与える(9999ダメージ)",
+		desc: "<毒>5ターン敵全体に毒のダメージを与える(9999ダメージ)",
 		turn: 10,
 		proc: [poison(9999, 5)],
 	},
@@ -15447,7 +15447,7 @@ Cards = [{
 		proc: ChainEnhance(0.60, [0,1,1,0,0], 5),
 	},
 	ss1: {
-		desc: "3ターンの間、スキルカウンター待機",
+		desc: "<カウンター>3ターンの間、スキルカウンター待機",
 		turn: 7,
 		proc: [ss_skillcounter(2.0, 3)],
 	},
@@ -15461,7 +15461,7 @@ Cards = [{
 		proc: [ChainEnhance(0.60, [0,1,1,0,0], 5), Heal(0.05, [0,1,1,0,0], 5)],
 	},
 	ss2: {
-		desc: "5ターンの間、スキルカウンター待機",
+		desc: "<カウンター>5ターンの間、スキルカウンター待機",
 		turn: 10,
 		proc: [ss_skillcounter(2.0, 5)],
 	},
@@ -15491,7 +15491,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(3.6, 0), when_hp_more(0.90), as_hp_absorption(0.12))
 	},
 	ss1: {
-		desc: "敵全体へ雷・光属性のダメージ(180％)",
+		desc: "<大魔術>敵全体へ雷・光属性のダメージ(180％)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [2, 3])],
 	},
@@ -15508,7 +15508,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(4.6, 0), when_hp_more(0.90), as_hp_absorption(0.12))
 	},
 	ss2: {
-		desc: "敵全体へ雷・光属性のダメージ(260％)",
+		desc: "<大魔術>敵全体へ雷・光属性のダメージ(260％)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [2, 3])],
 	},
@@ -15538,7 +15538,7 @@ Cards = [{
 		proc: Heal(0.13, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルを雷・光属性化",
+		desc: "<パネル変換>ジャンルパネルを雷・光属性化",
 		turn: 3,
 		proc: [ss_panel_change([0,0,1,1,0])]
 	},
@@ -15553,7 +15553,7 @@ Cards = [{
 		proc: Heal(0.15, [0,0,1,0,0], 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルを雷・光属性化し、回復の効果を付与(回復：10％)",
+		desc: "<特殊パネル変換>ジャンルパネルを雷・光属性化し、回復の効果を付与(回復：10％)",
 		turn: 6,
 		proc: [ss_panel_change([0,0,1,1,0]), panel_healally(0.10)],
 	},
@@ -15583,7 +15583,7 @@ Cards = [{
 		proc: ChainAttack(10.0, 15),
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを3早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを3早める",
 		turn: 9,
 		proc: [ss_skillboost(3)],
 	},
@@ -15598,7 +15598,7 @@ Cards = [{
 		proc: ChainAttack(11.0, 15),
 	},
 	ss2: {
-		desc: "味方全体のスペシャルスキルの発動ターンを4早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを4早める",
 		turn: 13,
 		proc: [ss_skillboost(4)],
 	},
@@ -15628,7 +15628,7 @@ Cards = [{
 		proc: ChainEnhance(0.40, [0,0,1,0,0], 3),
 	},
 	ss1: {
-		desc: "1ターン敵の状態異常攻撃を無効化する",
+		desc: "<状態異常無効>1ターン敵の状態異常攻撃を無効化する",
 		turn: 5,
 		proc: [ss_absattack_disable(1)],
 	},
@@ -15643,7 +15643,7 @@ Cards = [{
 		proc: ChainEnhance(0.60, [0,0,1,0,0], 3),
 	},
 	ss2: {
-		desc: "2ターン敵の状態異常攻撃を無効化する",
+		desc: "<状態異常無効>2ターン敵の状態異常攻撃を無効化する",
 		turn: 7,
 		proc: [ss_absattack_disable(2)],
 	},
@@ -15673,7 +15673,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 5.0, 6.5, 5),
 	},
 	ss1: {
-		desc: "敵全体のガード＆ダメージブロックを解除する",
+		desc: "<効果解除>敵全体のガード＆ダメージブロックを解除する",
 		turn: 8,
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all")],
 	},
@@ -15687,7 +15687,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 5.0, 9.0, 5),
 	},
 	ss2: {
-		desc: "敵全体のガード＆ダメージブロックを解除し、雷属性のダメージ。HP20％以下でさらにダメージアップ(通常：180％ / HP20％以下：400％)",
+		desc: "<効果解除大魔術>敵全体のガード＆ダメージブロックを解除し、雷属性のダメージ。HP20％以下でさらにダメージアップ(通常：180％ / HP20％以下：400％)",
 		turn: 12,
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(ss_hp_less(0.20, 4.0, 1.8), [2])],
 	},
@@ -15717,7 +15717,7 @@ Cards = [{
 		proc: ChainDualAttack(3.5, 3, 3)
 	},
 	ss1: {
-		desc: "敵単体のHPを20％減少させる、5チェインを消費しさらに15％減少させる",
+		desc: "<割合削り>敵単体のHPを20％減少させる、5チェインを消費しさらに15％減少させる",
 		turn: 9,
 		proc: [ss_ratiodamage_s(ss_chain_cost(5, 0.35, 0.20))]
 	},
@@ -15731,7 +15731,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 3, 3)
 	},
 	ss2: {
-		desc: "敵単体のHPを25％減少させる、5チェインを消費しさらに15％減少させる",
+		desc: "<割合削り>敵単体のHPを25％減少させる、5チェインを消費しさらに15％減少させる",
 		turn: 12,
 		proc: [ss_ratiodamage_s(ss_chain_cost(5, 0.40, 0.25))]
 	},
@@ -15753,7 +15753,7 @@ Cards = [{
 		proc: ChainDualAttack(3.5, 3, 5),
 	},
 	ss1: {
-		desc: "敵単体へ雷属性の5回連続ダメージ(180%)",
+		desc: "<多弾魔術>敵単体へ雷属性の5回連続ダメージ(180%)",
 		turn: 5,
 		proc: [ss_damage_s(1.8, [2], 5)],
 	},
@@ -15774,7 +15774,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 3, 7),
 	},
 	ss2: {
-		desc: "敵全体へ雷属性のダメージ(260%)",
+		desc: "<大魔術>敵全体へ雷属性のダメージ(260%)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [2])],
 	},
@@ -15797,7 +15797,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 3),
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ(120%)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(120%)",
 		turn: 4,
 		proc: [ss_damage_all(1.2, [0])],
 	},
@@ -15818,7 +15818,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 3),
 	},
 	ss2: {
-		desc: "攻撃ターンを1遅らせ、敵全体へ火属性のダメージ(120%)",
+		desc: "<遅延大魔術>攻撃ターンを1遅らせ、敵全体へ火属性のダメージ(120%)",
 		turn: 6,
 		proc: [ss_damage_all(1.2, [0]), ss_delay_all(1)],
 	},
@@ -15841,7 +15841,7 @@ Cards = [{
 		proc: ChainEnhance(0.60, [0, 0, 1, 0, 0], 5),
 	},
 	ss1: {
-		desc: "解答選択肢を2つ削る",
+		desc: "<解答削り>解答選択肢を2つ削る",
 		turn: 3,
 		proc: [ss_answer_narrow(2)],
 	},
@@ -15862,7 +15862,7 @@ Cards = [{
 		proc: ChainEnhance(0.90, [0, 0, 1, 0, 0], 5),
 	},
 	ss2: {
-		desc: "解答を見破る",
+		desc: "<解答削り>解答を見破る",
 		turn: 6,
 		proc: [ss_answer_foresight()],
 	},
@@ -15885,7 +15885,7 @@ Cards = [{
 		proc: add_cond(ChainAttrAttack(4.75, 0, [0, 0, 1, 0, 0]), when_hp_more(0.80)),
 	},
 	ss1: {
-		desc: "MAXHPの100%を使い敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(500%/1000%)",
+		desc: "<自己犠牲魔術>MAXHPの100%を使い敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(500%/1000%)",
 		turn: 5,
 		proc: [ss_damage_s(special_attr([0, 0, 1, 0, 0], 10.0, 5.0), [0], 1), ss_consume_own(1)],
 	},
@@ -15906,7 +15906,7 @@ Cards = [{
 		proc: add_cond(ChainAttrAttack(5.75, 0, [0, 0, 1, 0, 0]), when_hp_more(0.80)),
 	},
 	ss2: {
-		desc: "MAXHPの100%を使い敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(600%/1200%)",
+		desc: "<自己犠牲魔術>MAXHPの100%を使い敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(600%/1200%)",
 		turn: 7,
 		proc: [ss_damage_s(special_attr([0, 0, 1, 0, 0], 12.0, 6.0), [0], 1), ss_consume_own(1)],
 	},
@@ -15944,7 +15944,7 @@ Cards = [{
 		proc: [ChainEnhance(0.3, [0, 1, 1, 0, 0], 3), ChainSpecEnhance(0.3, [0, 1, 1, 0, 0], [8], 3), ]
 	},
 	ss1: {
-		desc: "2ターン水・雷属性の味方の攻撃力をアップ(40%)",
+		desc: "<ダメージ強化>2ターン水・雷属性の味方の攻撃力をアップ(40%)",
 		turn: 5,
 		proc: [ss_enhance_all(0.4, 2, [0, 1, 1, 0, 0])]
 	},
@@ -15958,7 +15958,7 @@ Cards = [{
 		proc: [ChainEnhance(0.4, [0, 1, 1, 0, 0], 3), ChainSpecEnhance(0.8, [0, 1, 1, 0, 0], [8], 3), ]
 	},
 	ss2: {
-		desc: "4ターン水・雷属性の味方の攻撃力をアップ(60%)",
+		desc: "<ダメージ強化>4ターン水・雷属性の味方の攻撃力をアップ(60%)",
 		turn: 6,
 		proc: [ss_enhance_all(0.6, 4, [0, 1, 1, 0, 0])]
 	},
@@ -15980,7 +15980,7 @@ Cards = [{
 		proc: ChainAttack(4, 5),
 	},
 	ss1: {
-		desc: "敵全体へ火・水属性のダメージ(150%)",
+		desc: "<大魔術>敵全体へ火・水属性のダメージ(150%)",
 		turn: 8,
 		proc: [ss_damage_all(1.5, [1,0])],
 	},
@@ -16001,7 +16001,7 @@ Cards = [{
 		proc: ChainAttack(5, 5),
 	},
 	ss2: {
-		desc: "敵全体へ火・水属性のダメージ(220%)",
+		desc: "<大魔術>敵全体へ火・水属性のダメージ(220%)",
 		turn: 11,
 		proc: [ss_damage_all(2.2, [1,0])],
 	},
@@ -16025,7 +16025,7 @@ Cards = [{
 		proc: [ChainDualAttack(3, 3, 3), add_cond(ChainDualAttack(3,3,6), as_panel_over3())],
 	},
 	ss1: {
-		desc: "敵単体へ火・水属性の5回連続ダメージ(150%)更に味方のHPを回復(25%)",
+		desc: "<多弾魔術>敵単体へ火・水属性の5回連続ダメージ(150%)更に味方のHPを回復(25%)",
 		turn: 6,
 		proc: [ss_damage_s(1.5, [1,0], 5), ss_heal(0.25)],
 	},
@@ -16046,7 +16046,7 @@ Cards = [{
 		proc: [ChainDualAttack(4, 3, 3), add_cond(ChainDualAttack(4,3,6), as_panel_over3())],
 	},
 	ss2: {
-		desc: "敵単体へ火・水属性の5回連続ダメージ(300%)更に味方のHPを回復(25%)",
+		desc: "<多弾魔術>敵単体へ火・水属性の5回連続ダメージ(300%)更に味方のHPを回復(25%)",
 		turn: 9,
 		proc: [ss_damage_s(3.0, [1,0], 5), ss_heal(0.25)],
 	},
@@ -16090,7 +16090,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 5, 3)
 	},
 	ss1: {
-		desc: "敵全体へ雷属性のダメージ(200%)、さらに水属性の敵には特攻ダメージ(500%)",
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ(200%)、さらに水属性の敵には特攻ダメージ(500%)",
 		turn: 6,
 		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 5.0, 2.0), [2])]
 	},
@@ -16099,7 +16099,7 @@ Cards = [{
 		proc: ChainDualAttack(5.5, 5, 3)
 	},
 	ss2: {
-		desc: "敵全体へ雷属性のダメージ(200%)、さらに水属性の敵には特攻ダメージ(900%)",
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ(200%)、さらに水属性の敵には特攻ダメージ(900%)",
 		turn: 9,
 		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 9.0, 2.0), [2])]
 	},
@@ -16130,7 +16130,7 @@ Cards = [{
 		proc: ChainAttack(7.0, 10)
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50%を使い敵単体へ水属性ダメージ(240%×味方数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵単体へ水属性ダメージ(240%×味方数)",
 		turn: 10,
 		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.5), [1], 1)]
 	},
@@ -16144,7 +16144,7 @@ Cards = [{
 		proc: ChainAttack(8.0, 10)
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50%を使い敵単体へダメージ(300%×味方数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵単体へダメージ(300%×味方数)",
 		turn: 12,
 		proc: [ss_damage_s(ss_consume_all_cond(3.0, 0.5), [1], 1)]
 	},
@@ -16164,7 +16164,7 @@ Cards = [{
 		proc: [ChainPanelsEnhance(0.6,0.9,0.9,[1,1,0,0,0],5)],
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50%を使い、ジャンルパネルにチェインがプラス3の効果を付与",
+		desc: "<特殊パネル変換>味方全体のMAXHPの50%を使い、ジャンルパネルにチェインがプラス3の効果を付与",
 		turn: 5,
 		proc: [panel_chainplus(3), ss_consume_all(0.5)],
 	},
@@ -16185,7 +16185,7 @@ Cards = [{
 		proc: [ChainPanelsEnhance(0.9, 1.2, 1.2, [1, 1, 0, 0, 0], 5)],
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50%を使い、ジャンルパネルにチェインがプラス4の効果を付与",
+		desc: "<特殊パネル変換>味方全体のMAXHPの50%を使い、ジャンルパネルにチェインがプラス4の効果を付与",
 		turn: 8,
 		proc: [panel_chainplus(4), ss_consume_all(0.5)],
 	},
@@ -16212,7 +16212,7 @@ Cards = [{
 		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [3])],
 	},
 	ss1: {
-		desc: "4ターン雷属性の味方の攻撃力をアップ、5チェインを消費しさらにアップ(60%/100%)",
+		desc: "<ダメージ強化>4ターン雷属性の味方の攻撃力をアップ、5チェインを消費しさらにアップ(60%/100%)",
 		turn: 9,
 		proc: [ss_enhance_all(ss_chain_cost(5, 1.0, 0.60), 4, [0, 0, 1, 0, 0])],
 	},
@@ -16233,7 +16233,7 @@ Cards = [{
 		proc: [ChainAttack(5.0, 4), ChainSpecAttack(7.0, 4, [3])],
 	},
 	ss2: {
-		desc: "4ターン雷属性の味方の攻撃力をアップ、5チェインを消費しさらにアップ(120%/180%)",
+		desc: "<ダメージ強化>4ターン雷属性の味方の攻撃力をアップ、5チェインを消費しさらにアップ(120%/180%)",
 		turn: 12,
 		proc: [ss_enhance_all(ss_chain_cost(5, 1.8, 1.2), 4, [0, 0, 1, 0, 0])],
 	},
@@ -16257,7 +16257,7 @@ Cards = [{
 		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [2])],
 	},
 	ss1: {
-		desc: "スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
 		turn: 9,
 		proc: [ss_skillboost(2), ss_delay_s(2)],
 	},
@@ -16278,7 +16278,7 @@ Cards = [{
 		proc: [ChainAttack(5.0, 4), ChainSpecAttack(7.0, 4, [2])],
 	},
 	ss2: {
-		desc: "スペシャルスキルの発動ターンを3早め、敵単体の攻撃ターンを3遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを3早め、敵単体の攻撃ターンを3遅らせる",
 		turn: 12,
 		proc: [ss_skillboost(3), ss_delay_s(3)],
 	},
@@ -16302,7 +16302,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.25, 3, [0,0,1,0,0]),
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(200%/500%)",
+		desc: "<特効大魔術>敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(200%/500%)",
 		turn: 6,
 		proc: [ss_damage_all(special_attr([0, 0, 1, 0, 0], 5.0, 2.0), [0])]
 	},
@@ -16323,7 +16323,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.25, 3, [0,0,1,0,0]),
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(200%/900%)",
+		desc: "<特効大魔術>敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(200%/900%)",
 		turn: 9,
 		proc: [ss_damage_all(special_attr([0, 0, 1, 0, 0], 9.0, 2.0), [0])]
 	},
@@ -16347,7 +16347,7 @@ Cards = [{
 		proc: [Heal(0.10, [1,1,0,0,0], 0), Heal(0.17, [1,1,0,0,0], 7)],
 	},
 	ss1: {
-		desc: "味方全体のHPを500アップ(上限値:2000)、さらにHPを回復(50%)",
+		desc: "<ステータスアップ>味方全体のHPを500アップ(上限値:2000)、さらにHPを回復(50%)",
 		turn: 5,
 		proc: [ss_statusup_all([500, 0], [2000, 2000], -1), ss_heal(0.5)],
 	},
@@ -16368,7 +16368,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,1,0,0,0], 0), Heal(0.20, [1,1,0,0,0], 7)],
 	},
 	ss2: {
-		desc: "味方全体のHPを1000アップ(上限値:2000)、さらにHPを完全回復",
+		desc: "<ステータスアップ>味方全体のHPを1000アップ(上限値:2000)、さらにHPを完全回復",
 		turn: 8,
 		proc: [ss_statusup_all([1000, 0], [2000, 2000], -1), ss_heal(1)],
 	},
@@ -16402,7 +16402,7 @@ Cards = [{
 		proc: ChainAttack(4, 5)
 	},
 	ss1: {
-		desc: "味方のMAXHP50%を使い、敵全体へ雷属性のダメージ(200%)、さらに水属性の敵には特攻ダメージ(500%)",
+		desc: "<特効大魔術>味方のMAXHP50%を使い、敵全体へ雷属性のダメージ(200%)、さらに水属性の敵には特攻ダメージ(500%)",
 		turn: 6,
 		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 5.0, 2.0), [2]), ss_consume_all(0.5)]
 	},
@@ -16417,7 +16417,7 @@ Cards = [{
 		proc: ChainAttack(5, 5)
 	},
 	ss2: {
-		desc: "味方のMAXHP50%を使い、敵全体へ雷属性のダメージ(200%)、さらに水属性の敵には特攻ダメージ(900%)",
+		desc: "<特効大魔術>味方のMAXHP50%を使い、敵全体へ雷属性のダメージ(200%)、さらに水属性の敵には特攻ダメージ(900%)",
 		turn: 9,
 		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 9.0, 2.0), [2]), ss_consume_all(0.5)]
 	},
@@ -16439,7 +16439,7 @@ Cards = [{
 		proc: Heal(0.12, [0, 0, 1, 0, 0], 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルにチェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
 		turn: 3,
 		proc: [panel_chainplus(1)],
 	},
@@ -16460,7 +16460,7 @@ Cards = [{
 		proc: [Heal(0.16, [0, 0, 1, 0, 0], 0), ChainEnhance(0.30, [0, 0, 1, 0, 0], 0)],
 	},
 	ss2: {
-		desc: "ジャンルパネルを雷&光属性化し、チェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを雷&光属性化し、チェインがプラス1の効果を付与",
 		turn: 6,
 		proc: [ss_panel_change([0,0,1,1,0]), panel_chainplus(1)],
 	},
@@ -16483,7 +16483,7 @@ Cards = [{
 		proc: add_cond(ChainDualAttack(3.5, 0, 3), when_hp_more(0.8)),
 	},
 	ss1: {
-		desc: "敵単体のHPを20%減少させる、5チェインを消費しさらに15%減少させる",
+		desc: "<割合削り>敵単体のHPを20%減少させる、5チェインを消費しさらに15%減少させる",
 		turn: 9,
 		proc: [ss_ratiodamage_s(ss_chain_cost(5, 0.35, 0.20))],
 	},
@@ -16504,7 +16504,7 @@ Cards = [{
 		proc: add_cond(ChainDualAttack(4.5, 0, 3), when_hp_more(0.8)),
 	},
 	ss2: {
-		desc: "敵単体のHPを25%減少させる、5チェインを消費しさらに15%減少させる",
+		desc: "<割合削り>敵単体のHPを25%減少させる、5チェインを消費しさらに15%減少させる",
 		turn: 12,
 		proc: [ss_ratiodamage_s(ss_chain_cost(5, 0.40, 0.25))],
 	},
@@ -16527,7 +16527,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.25, 3, [0,0,1,0,0]),
 	},
 	ss1: {
-		desc: "直前に発動したスペシャルスキルを発動する",
+		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
 		turn: 9,
 		proc: [ss_latest_copy()],
 	},
@@ -16548,7 +16548,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.25, 3, [0,0,1,0,0]),
 	},
 	ss2: {
-		desc: "直前に発動したスペシャルスキルを発動する",
+		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
 		turn: 9,
 		proc: [ss_latest_copy()],
 	},
@@ -16571,7 +16571,7 @@ Cards = [{
 		proc: ChainDualAttack(4.0, 4, 3),
 	},
 	ss1: {
-		desc: "敵単体の攻撃ターンを2遅らせる",
+		desc: "<遅延>敵単体の攻撃ターンを2遅らせる",
 		turn: 8,
 		proc: [ss_delay_s(2)],
 	},
@@ -16592,7 +16592,7 @@ Cards = [{
 		proc: ChainDualAttack(5.0, 4, 3),
 	},
 	ss2: {
-		desc: "敵単体の攻撃ターンを3遅らせる",
+		desc: "<遅延>敵単体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_s(3)],
 	},
@@ -16615,7 +16615,7 @@ Cards = [{
 		proc: [ChainAttack(3.0, 3), ChainSpecAttack(5.5, 3, [8,9])],
 	},
 	ss1: {
-		desc: "敵単体へ火属性のダメージ、5チェインを消費しさらにダメージアップ(200%/400%)",
+		desc: "<大魔術>敵単体へ火属性のダメージ、5チェインを消費しさらにダメージアップ(200%/400%)",
 		turn: 5,
 		proc: [ss_damage_s(ss_chain_cost(5, 4.0, 2.0), [0], 1)],
 	},
@@ -16636,7 +16636,7 @@ Cards = [{
 		proc: [ChainAttack(4.0, 3), ChainSpecAttack(6.5, 3, [8,9])],
 	},
 	ss2: {
-		desc: "敵単体へ火属性のダメージ、5チェインを消費しさらにダメージアップ(400%/800%)",
+		desc: "<大魔術>敵単体へ火属性のダメージ、5チェインを消費しさらにダメージアップ(400%/800%)",
 		turn: 8,
 		proc: [ss_damage_s(ss_chain_cost(5, 8.0, 4.0), [0], 1)],
 	},
@@ -16659,7 +16659,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 5),
 	},
 	ss1: {
-		desc: "敵全体へ火・水属性のダメージ、さらに味方全体のHPを回復する(120%/15%)",
+		desc: "<大魔術>敵全体へ火・水属性のダメージ、さらに味方全体のHPを回復する(120%/15%)",
 		turn: 5,
 		proc: [ss_damage_all(1.2, [0,1]), ss_heal(0.15)],
 	},
@@ -16680,7 +16680,7 @@ Cards = [{
 		proc: ChainAttack(5.5, 5),
 	},
 	ss2: {
-		desc: "敵全体へ火・水属性のダメージ、さらに味方全体のHPを回復する(180%/25%)",
+		desc: "<大魔術>敵全体へ火・水属性のダメージ、さらに味方全体のHPを回復する(180%/25%)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [0,1]), ss_heal(0.25)],
 	},
@@ -16714,7 +16714,7 @@ Cards = [{
 		proc: ChainAttack(5.5, 7)
 	},
 	ss1: {
-		desc: "ジャンルパネルを水・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
 		turn: 3,
 		proc: [ss_panel_change([0,1,1,0,0])]
 	},
@@ -16728,7 +16728,7 @@ Cards = [{
 		proc: ChainAttack(6.5, 7)
 	},
 	ss2: {
-		desc: "ジャンルパネルを水・雷属性化し、攻撃力アップの効果を付与(50%)",
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、攻撃力アップの効果を付与(50%)",
 		turn: 6,
 		proc: [ss_panel_change([0,1,1,0,0]), panel_attackup(0.5)]
 	},
@@ -16758,7 +16758,7 @@ Cards = [{
 		proc: ChainAttack(5.5, 7)
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの80%を使い敵全体へダメージ(120%×人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの80%を使い敵全体へダメージ(120%×人数)",
 		turn: 8,
 		proc: [ss_damage_all(ss_consume_all_cond(1.2, 0.8), [2])],
 	},
@@ -16772,7 +16772,7 @@ Cards = [{
 		proc: ChainAttack(6.5, 7)
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの80%を使い敵全体へダメージ(160%×人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの80%を使い敵全体へダメージ(160%×人数)",
 		turn: 10,
 		proc: [ss_damage_all(ss_consume_all_cond(1.6, 0.8), [2])],
 	},
@@ -16805,7 +16805,7 @@ Cards = [{
 		proc: ChainDualAttack(4.0, 5, 5),
 	},
 	ss1: {
-		desc: "3ターン自分の攻撃力をアップ(150%)",
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(150%)",
 		turn: 7,
 		proc: [ss_enhance_own(1.5, 3)],
 	},
@@ -16820,7 +16820,7 @@ Cards = [{
 		proc: ChainDualAttack(5.0, 5, 5),
 	},
 	ss2: {
-		desc: "4ターン自分の攻撃力をアップ。毒状態の時、さらに自分の攻撃力をアップ(200%/1200%)",
+		desc: "<ダメージ強化>4ターン自分の攻撃力をアップ。毒状態の時、さらに自分の攻撃力をアップ(200%/1200%)",
 		turn: 9,
 		proc: [ss_enhance_own(ss_is_poison_own(12, 2), 4)],
 	},
@@ -16840,7 +16840,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.40, [9], 0),
 	},
 	ss1: {
-		desc: "チェインプラス1の効果、敵全体へ雷属性のダメージ(100%)",
+		desc: "<大魔術>チェインプラス1の効果、敵全体へ雷属性のダメージ(100%)",
 		turn: 4,
 		proc: [ss_addchain(1), ss_damage_all(1.0, [2])],
 	},
@@ -16861,7 +16861,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.60, [9], 0),
 	},
 	ss2: {
-		desc: "敵全体へ雷属性のダメージ、5チェインでさらにアップ(180%/270%)",
+		desc: "<大魔術>敵全体へ雷属性のダメージ、5チェインでさらにアップ(180%/270%)",
 		turn: 8,
 		proc: [ss_damage_all(ss_chain_cond(5, 2.7, 1.8), [2])],
 	},
@@ -16898,7 +16898,7 @@ Cards = [{
 		proc: [ChainAttack(3.5, 4), ChainAttack(5.5, 10)]
 	},
 	ss1: {
-		desc: "3ターンの間チェインを保護する",
+		desc: "<チェインガード>3ターンの間チェインを保護する",
 		turn: 5,
 		proc: [ss_chain_protect(3)]
 	},
@@ -16912,7 +16912,7 @@ Cards = [{
 		proc: [ChainAttack(4.5, 4), ChainAttack(6.5, 10)]
 	},
 	ss2: {
-		desc: "スペシャルスキルの発動ターンを2早め、敵単体の行動ターンを2遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵単体の行動ターンを2遅らせる",
 		turn: 9,
 		proc: [ss_skillboost(2), ss_delay_s(2)]
 	},
@@ -16942,7 +16942,7 @@ Cards = [{
 		proc: [ChainDualAttack(4, 4, 4)]
 	},
 	ss1: {
-		desc: "2ターン敵の状態異常攻撃を無効化し、さらに味方全体のHPを回復(50%)",
+		desc: "<状態異常無効>2ターン敵の状態異常攻撃を無効化し、さらに味方全体のHPを回復(50%)",
 		turn: 7,
 		proc: [ss_absattack_disable(2), ss_heal(0.5)]
 	},
@@ -16956,7 +16956,7 @@ Cards = [{
 		proc: [ChainDualAttack(5, 4, 4)]
 	},
 	ss2: {
-		desc: "3ターン敵の状態異常攻撃を無効化し、さらに味方全体のHPを回復(50%)",
+		desc: "<状態異常無効>3ターン敵の状態異常攻撃を無効化し、さらに味方全体のHPを回復(50%)",
 		turn: 9,
 		proc: [ss_absattack_disable(3), ss_heal(0.5)]
 	},
@@ -16986,7 +16986,7 @@ Cards = [{
 		proc: [ChainAttrAttack(5.25, 3, [1,0,0,0,0])]
 	},
 	ss1: {
-		desc: "敵全体へ水属性のダメージ(200%)、さらに火属性の敵には特攻ダメージ(500%)",
+		desc: "<特効大魔術>敵全体へ水属性のダメージ(200%)、さらに火属性の敵には特攻ダメージ(500%)",
 		turn: 6,
 		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 5.0, 2.0), [1])]
 	},
@@ -17000,7 +17000,7 @@ Cards = [{
 		proc: [ChainAttrAttack(6.25, 3, [1, 0, 0, 0, 0])]
 	},
 	ss2: {
-		desc: "敵全体へ水属性のダメージ(200%)、さらに火属性の敵には特攻ダメージ(900%)",
+		desc: "<特効大魔術>敵全体へ水属性のダメージ(200%)、さらに火属性の敵には特攻ダメージ(900%)",
 		turn: 9,
 		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 9.0, 2.0), [1])]
 	},
@@ -17030,7 +17030,7 @@ Cards = [{
 		proc: [Heal(0.11, [1,1,1,1,1], 0), add_cond(Heal(0.20, [1,1,1,1,1], 0), when_hp_less(0.5))]
 	},
 	ss1: {
-		desc: "ジャンルパネルにチェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
 		turn: 3,
 		proc: [panel_chainplus(1)]
 	},
@@ -17044,7 +17044,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,1,1,1,1], 0), add_cond(Heal(0.22, [1,1,1,1,1], 0), when_hp_less(0.5))]
 	},
 	ss2: {
-		desc: "4ターン味方全体の攻撃力をアップ(120%)、5チェイン消費しさらにアップ(180%)",
+		desc: "<ダメージ強化>4ターン味方全体の攻撃力をアップ(120%)、5チェイン消費しさらにアップ(180%)",
 		turn: 12,
 		proc: [ss_enhance_all(ss_chain_cost(5, 1.8, 1.2), 4, [1,1,1,1,1])]
 	},
@@ -17074,7 +17074,7 @@ Cards = [{
 		proc: [add_cond(ChainAttrAttack(5.25, 0, [0,1,0,0,0]), when_hp_more(0.8))]
 	},
 	ss1: {
-		desc: "ジャンルパネルを水・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
 		turn: 3,
 		proc: [ss_panel_change([0,1,1,0,0])]
 	},
@@ -17088,7 +17088,7 @@ Cards = [{
 		proc: [add_cond(ChainAttrAttack(6.25, 0, [0,1,0,0,0]), when_hp_more(0.8))]
 	},
 	ss2: {
-		desc: "ジャンルパネルを水・雷属性化し、攻撃力アップの効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、攻撃力アップの効果を付与",
 		turn: 6,
 		proc: [ss_panel_change([0,1,1,0,0]), panel_attackup(0.5)]
 	},
@@ -17121,7 +17121,7 @@ Cards = [{
 		proc: [ChainAttack(3.5, 4), ChainAttack(5.5, 10)]
 	},
 	ss1: {
-		desc: "5ターンの間スキルカウンター待機(300%)",
+		desc: "<カウンター>5ターンの間スキルカウンター待機(300%)",
 		turn: 12,
 		proc: [ss_skillcounter(3, 5)]
 	},
@@ -17135,7 +17135,7 @@ Cards = [{
 		proc: [ChainAttack(4.5, 4), ChainAttack(6.5, 10)]
 	},
 	ss2: {
-		desc: "5ターンの間スキルカウンター待機(400%)",
+		desc: "<カウンター>5ターンの間スキルカウンター待機(400%)",
 		turn: 15,
 		proc: [ss_skillcounter(4, 5)]
 	},
@@ -17168,7 +17168,7 @@ Cards = [{
 		proc: ChainDualAttack(4, 6, 3)
 	},
 	ss1: {
-		desc: "敵全体へ水属性のダメージ(200%)、さらに火属性の敵には特攻ダメージ(500%)",
+		desc: "<特効大魔術>敵全体へ水属性のダメージ(200%)、さらに火属性の敵には特攻ダメージ(500%)",
 		turn: 6,
 		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 5.0, 2.0), [1])]
 	},
@@ -17182,7 +17182,7 @@ Cards = [{
 		proc: ChainDualAttack(5, 6, 3)
 	},
 	ss2: {
-		desc: "敵全体へ水属性のダメージ(200%)、さらに火属性の敵には特攻ダメージ(900%)",
+		desc: "<特効大魔術>敵全体へ水属性のダメージ(200%)、さらに火属性の敵には特攻ダメージ(900%)",
 		turn: 9,
 		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 9.0, 2.0), [1])]
 	},
@@ -17212,7 +17212,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.25, 3, [1,0,0,0,0])
 	},
 	ss1: {
-		desc: "5ターンの間スキルカウンター待機(300%)",
+		desc: "<カウンター>5ターンの間スキルカウンター待機(300%)",
 		turn: 12,
 		proc: [ss_skillcounter(3, 5)]
 	},
@@ -17226,7 +17226,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.25, 3, [1, 0, 0, 0, 0])
 	},
 	ss2: {
-		desc: "5ターンの間スキルカウンター待機(400%)",
+		desc: "<カウンター>5ターンの間スキルカウンター待機(400%)",
 		turn: 15,
 		proc: [ss_skillcounter(4, 5)]
 	},
@@ -17256,7 +17256,7 @@ Cards = [{
 		proc: ChainAttrAttack(6, 4, [0,1,0,0,0])
 	},
 	ss1: {
-		desc: "敵単体へ雷・光属性の5回連続ダメージ(180%)",
+		desc: "<多弾魔術>敵単体へ雷・光属性の5回連続ダメージ(180%)",
 		turn: 5,
 		proc: [ss_damage_s(1.8, [2,3], 5)]
 	},
@@ -17270,7 +17270,7 @@ Cards = [{
 		proc: ChainAttrAttack(7, 4, [0,1,0,0,0])
 	},
 	ss2: {
-		desc: "敵単体へ雷・光属性の5回連続ダメージ(380%)、5チェインを消費しさらにダメージアップ(760%)",
+		desc: "<多弾魔術>敵単体へ雷・光属性の5回連続ダメージ(380%)、5チェインを消費しさらにダメージアップ(760%)",
 		turn: 8,
 		proc: [ss_damage_s(ss_chain_cost(5, 7.6, 3.8), [2, 3], 5)]
 	},
@@ -17300,7 +17300,7 @@ Cards = [{
 		proc: ChainAttack(5, 6)
 	},
 	ss1: {
-		desc: "敵全体へ火属性ダメージ(300%)、自身に1t封印",
+		desc: "<反動大魔術>敵全体へ火属性ダメージ(300%)、自身に1t封印",
 		turn: 3,
 		proc: [ss_damage_all(3, [0]), ss_allsealed_own(1)]
 	},
@@ -17314,7 +17314,7 @@ Cards = [{
 		proc: ChainAttack(6, 6)
 	},
 	ss2: {
-		desc: "敵全体へ火属性ダメージ(500%)、自身に1t封印",
+		desc: "<反動大魔術>敵全体へ火属性ダメージ(500%)、自身に1t封印",
 		turn: 5,
 		proc: [ss_damage_all(5, [0]), ss_allsealed_own(1)]
 	},
@@ -17336,7 +17336,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(3.5, 0), when_hp_more(0.8)),
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(200%/500%)",
+		desc: "<特効大魔術>敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(200%/500%)",
 		turn: 6,
 		proc: [ss_damage_all(special_attr([0, 0, 1, 0, 0], 5.0, 2.0), [0])],
 	},
@@ -17357,7 +17357,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(4.5, 0), when_hp_more(0.8)),
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ。3チェインを消費し雷属性の敵にはさらにダメージアップ(200%/500%/900%)",
+		desc: "<特効大魔術>敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ。3チェインを消費し雷属性の敵にはさらにダメージアップ(200%/500%/900%)",
 		turn: 9,
 		proc: [ss_damage_all(special_attr([0, 0, 1, 0, 0], ss_chain_cost(3, 9.0, 5.0), 2.0), [0])],
 	},
@@ -17380,7 +17380,7 @@ Cards = [{
 		proc: ChainDualAttack(3.5, 3, 3),
 	},
 	ss1: {
-		desc: "敵全体へ水属性のダメージ(300%)(1t封印)",
+		desc: "<反動大魔術>敵全体へ水属性のダメージ(300%)(1t封印)",
 		turn: 3,
 		proc: [ss_damage_all(3, [1]), ss_allsealed_own(1)],
 	},
@@ -17401,7 +17401,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 3, 3),
 	},
 	ss2: {
-		desc: "敵全体へ水属性のダメージ(500%)(1t封印)",
+		desc: "<反動大魔術>敵全体へ水属性のダメージ(500%)(1t封印)",
 		turn: 5,
 		proc: [ss_damage_all(5, [1]), ss_allsealed_own(1)],
 	},
@@ -17423,7 +17423,7 @@ Cards = [{
 		proc: ChainDualAttack(4, 4, 3),
 	},
 	ss1: {
-		desc: "味方全体のHPを750ダウンし、攻撃力を1000アップ(上限値2000)",
+		desc: "<ステータスアップ>味方全体のHPを750ダウンし、攻撃力を1000アップ(上限値2000)",
 		turn: 5,
 		proc: [ss_statusup_all([-750, 1000], [2000, 2000], -1)],
 	},
@@ -17444,7 +17444,7 @@ Cards = [{
 		proc: ChainDualAttack(5, 4, 3),
 	},
 	ss2: {
-		desc: "味方全体のMAXHP50%を使い敵全体へ雷属性のダメージ(人数×130%)",
+		desc: "<犠牲魔術>味方全体のMAXHP50%を使い敵全体へ雷属性のダメージ(人数×130%)",
 		turn: 10,
 		proc: [ss_damage_all(ss_consume_all_cond(1.3, 0.5), [2])],
 	},
@@ -17470,7 +17470,7 @@ Cards = [{
 		proc: [ChainAttrAttack(3.5, 0, [0, 1, 0, 0, 0]), add_cond(ChainAttrAttack(4.5, 0, [0, 1, 0, 0, 0]), when_leader())],
 	},
 	ss1: {
-		desc: "攻撃ターンを3遅らせる",
+		desc: "<遅延>攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)],
 	},
@@ -17491,7 +17491,7 @@ Cards = [{
 		proc: [ChainAttrAttack(4.5, 0, [0, 1, 0, 0, 0]), add_cond(ChainAttrAttack(5.5, 0, [0, 1, 0, 0, 0]), when_leader())],
 	},
 	ss2: {
-		desc: "攻撃ターンを3遅らせ、敵全体へ雷属性のダメージ(180%)",
+		desc: "<遅延大魔術>攻撃ターンを3遅らせ、敵全体へ雷属性のダメージ(180%)",
 		turn: 15,
 		proc: [ss_damage_all(1.8, [2]), ss_delay_all(3)],
 	},
@@ -17514,7 +17514,7 @@ Cards = [{
 		proc: [ChainEnhance(0.3, [0,1,1,0,0], 0), ChainSpecEnhance(0.45, [0,1,1,0,0], [9], 0)],
 	},
 	ss1: {
-		desc: "ジャンルパネルにチェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
 		turn: 4,
 		proc: [panel_chainplus(1)],
 	},
@@ -17535,7 +17535,7 @@ Cards = [{
 		proc: [ChainEnhance(0.3, [0,1,1,0,0], 0), ChainSpecEnhance(0.65, [0,1,1,0,0], [9], 0)],
 	},
 	ss2: {
-		desc: "ジャンルパネルを水・雷属性化し、チェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、チェインがプラス1の効果を付与",
 		turn: 5,
 		proc: [ss_panel_change([0,1,1,0,0]), panel_chainplus(1)],
 	},
@@ -17561,7 +17561,7 @@ Cards = [{
 		proc: Heal(0.13, [1, 0, 0, 0, 0]),
 	},
 	ss1: {
-		desc: "5ターン味方全体を徐々に回復する(20%)",
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20%)",
 		turn: 8,
 		proc: [ss_regenerate(0.2, 5)],
 	},
@@ -17581,7 +17581,7 @@ Cards = [{
 		proc: [Heal(0.16, [1, 0, 0, 0, 0]), ChainEnhance(0.3, [1, 0, 0, 0, 0], 0)],
 	},
 	ss2: {
-		desc: "5ターン味方全体を徐々に回復する、HP50%以下でさらに回復(20%/30%)",
+		desc: "<継続回復>5ターン味方全体を徐々に回復する、HP50%以下でさらに回復(20%/30%)",
 		turn: 10,
 		proc: [ss_regenerate(ss_hp_less(0.5, 0.3, 0.2), 5)],
 	},
@@ -17604,7 +17604,7 @@ Cards = [{
 		proc: ChainDeckAttrsAttack(3.5, 6, 8.5, 3),
 	},
 	ss1: {
-		desc: "解答選択肢を2つ削る",
+		desc: "<解答削り>解答選択肢を2つ削る",
 		turn: 3,
 		proc: [ss_answer_narrow(2)],
 	},
@@ -17625,7 +17625,7 @@ Cards = [{
 		proc: ChainDeckAttrsAttack(4, 7, 10, 3),
 	},
 	ss2: {
-		desc: "解答を見破る",
+		desc: "<解答削り>解答を見破る",
 		turn: 6,
 		proc: [ss_answer_foresight()],
 	},
@@ -17648,7 +17648,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.5, 5, [1, 0, 0, 0, 0]),
 	},
 	ss1: {
-		desc: "敵全体の攻撃ターンを1遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを1遅らせる",
 		turn: 4,
 		proc: [ss_delay_all(1)],
 	},
@@ -17668,7 +17668,7 @@ Cards = [{
 		proc: ChainAttrAttack(7.5, 5, [1, 0, 0, 0, 0]),
 	},
 	ss2: {
-		desc: "敵全体の攻撃ターンを1遅らせ、水属性のダメージ(180%)",
+		desc: "<遅延大魔術>敵全体の攻撃ターンを1遅らせ、水属性のダメージ(180%)",
 		turn: 9,
 		proc: [ss_damage_all(1.8, [1]), ss_delay_all(1)],
 	},
@@ -17691,7 +17691,7 @@ Cards = [{
 		proc: ChainEnhance(0.5, [0, 0, 1, 0, 0], 3),
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、状態異常を回復する(50%)",
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(50%)",
 		turn: 7,
 		proc: [ss_heal(0.50), ss_abstate_cure()],
 	},
@@ -17712,7 +17712,7 @@ Cards = [{
 		proc: ChainEnhance(0.7, [0, 0, 1, 0, 0], 3),
 	},
 	ss2: {
-		desc: "味方全体のHPを回復(50%)し、状態異常を回復、さらに雷属性の味方を50%で蘇生",
+		desc: "<状態異常回復&蘇生>味方全体のHPを回復(50%)し、状態異常を回復、さらに雷属性の味方を50%で蘇生",
 		turn: 11,
 		proc: [ss_heal(0.50), ss_abstate_cure(), ss_resurrection([0, 0, 1, 0, 0], 0.5)],
 	},
@@ -17738,7 +17738,7 @@ Cards = [{
 		proc: ChainAttack(4, 4),
 	},
 	ss1: {
-		desc: "味方全体の攻撃力とHPを500アップ",
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップ",
 		turn: 5,
 		proc: [ss_statusup_all([500, 500], [2000, 2000], -1)],
 	},
@@ -17759,7 +17759,7 @@ Cards = [{
 		proc: ChainAttack(5, 4),
 	},
 	ss2: {
-		desc: "味方全体の攻撃力とHPを1000アップ",
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを1000アップ",
 		turn: 8,
 		proc: [ss_statusup_all([1000, 1000], [2000, 2000], -1)],
 	},
@@ -17783,7 +17783,7 @@ Cards = [{
 		proc: Heal(0.14, [1,1,1,1,1]),
 	},
 	ss1: {
-		desc: "3ターンの間チェインを保護する",
+		desc: "<チェインガード>3ターンの間チェインを保護する",
 		turn: 5,
 		proc: [ss_chain_protect(3)],
 	},
@@ -17804,7 +17804,7 @@ Cards = [{
 		proc: Heal(0.17, [1,1,1,1,1]),
 	},
 	ss2: {
-		desc: "6ターンの間チェインを保護する",
+		desc: "<チェインガード>6ターンの間チェインを保護する",
 		turn: 8,
 		proc: [ss_chain_protect(6)],
 	},
@@ -17827,7 +17827,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 5),
 	},
 	ss1: {
-		desc: "5ターン味方全体を徐々に回復する(20%)",
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20%)",
 		turn: 8,
 		proc: [ss_regenerate(0.2, 5)],
 	},
@@ -17848,7 +17848,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(4.5, 5), as_consume_own(0.15)),
 	},
 	ss2: {
-		desc: "5ターン味方全体を徐々に回復する、3チェインを消費しさらに回復(20%/30%)",
+		desc: "<継続回復>5ターン味方全体を徐々に回復する、3チェインを消費しさらに回復(20%/30%)",
 		turn: 10,
 		proc: [ss_regenerate(ss_chain_cost(3, 0.3, 0.2), 5)],
 	},
@@ -17871,7 +17871,7 @@ Cards = [{
 		proc: ChainDualAttack(4,4,3),
 	},
 	ss1: {
-		desc: "ジャンルパネルを水・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
 		turn: 3,
 		proc: [ss_panel_change([0,1,1,0,0])],
 	},
@@ -17892,7 +17892,7 @@ Cards = [{
 		proc: ChainDualAttack(5,4,3),
 	},
 	ss2: {
-		desc: "ジャンルパネルを水・雷属性化し、ダメージ軽減(25%)・スキルチャージ(1)・チェイン(2)・攻撃力アップ(50%)の効果をランダムで付与",
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、ダメージ軽減(25%)・スキルチャージ(1)・チェイン(2)・攻撃力アップ(50%)の効果をランダムで付与",
 		turn: 7,
 		proc: [ss_panel_change([0,1,1,0,0]),/*軽減(25%),*/panel_skillboost(1), panel_chainplus(2), panel_attackup(0.5)],
 	},
@@ -17915,7 +17915,7 @@ Cards = [{
 		proc: add_cond(ChainDualAttack(3.5,0,3), when_hp_more(0.8)),
 	},
 	ss1: {
-		desc: "解答選択肢を2つ削り、3チェインを消費し解答を見破る",
+		desc: "<解答削り>解答選択肢を2つ削り、3チェインを消費し解答を見破る",
 		turn: 3,
 		proc: [ss_chain_cost_skill(3, ss_answer_foresight(), ss_answer_narrow(2))],
 	},
@@ -17936,7 +17936,7 @@ Cards = [{
 		proc: add_cond(ChainDualAttack(4.5,0,3), when_hp_more(0.8)),
 	},
 	ss2: {
-		desc: "解答を見破る",
+		desc: "<解答削り>解答を見破る",
 		turn: 6,
 		proc: [ss_answer_foresight()],
 	},
@@ -17959,7 +17959,7 @@ Cards = [{
 		proc: ChainAttrAttack(7.75, 7, [0, 1, 0, 0, 0]),
 	},
 	ss1: {
-		desc: "全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/900%)",
+		desc: "<特効大魔術>全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/900%)",
 		turn: 9,
 		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 9.0, 2.0), [2])],
 	},
@@ -17980,7 +17980,7 @@ Cards = [{
 		proc: ChainAttrAttack(8.75, 7, [0, 1, 0, 0, 0]),
 	},
 	ss2: {
-		desc: "敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/1200%)",
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/1200%)",
 		turn: 12,
 		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 12.0, 2.0), [2])],
 	},
@@ -18004,7 +18004,7 @@ Cards = [{
 		proc: [ChainAttack(4.0, 5), add_cond(ChainAttack(5.5, 5), when_hp_less(0.8))],
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50%を使い、1ターン敵の状態異常攻撃を無効化する",
+		desc: "<状態異常無効>味方全体のMAXHPの50%を使い、1ターン敵の状態異常攻撃を無効化する",
 		turn: 4,
 		proc: [ss_absattack_disable(1), ss_consume_all(0.5)],
 	},
@@ -18025,7 +18025,7 @@ Cards = [{
 		proc: [ChainAttack(5.0, 5), add_cond(ChainAttack(6.5, 5), when_hp_less(0.8))],
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50%を使い、2ターン敵の状態異常攻撃を無効化する",
+		desc: "<状態異常無効>味方全体のMAXHPの50%を使い、2ターン敵の状態異常攻撃を無効化する",
 		turn: 6,
 		proc: [ss_absattack_disable(2), ss_consume_all(0.5)],
 	},
@@ -18048,7 +18048,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(4.0, 0, 2, [1, 0, 0, 0, 0]),
 	},
 	ss1: {
-		desc: "ジャンルパネルを水・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
 		turn: 3,
 		proc: [ss_panel_change([0,1,1,0,0])],
 	},
@@ -18069,7 +18069,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(5.0, 0, 2, [1, 0, 0, 0, 0]),
 	},
 	ss2: {
-		desc: "ジャンルパネルを水・雷属性化し、チェインがプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、チェインがプラス2の効果を付与",
 		turn: 7,
 		proc: [ss_panel_change([0,1,1,0,0]), panel_chainplus(2)],
 	},
@@ -18092,7 +18092,7 @@ Cards = [{
 		proc: ChainAllAttack(1.5, 0),
 	},
 	ss1: {
-		desc: "2ターン味方全体の攻撃力をアップ(50%)、さらに味方全体のHPを回復する(50%)",
+		desc: "<ダメージ強化>2ターン味方全体の攻撃力をアップ(50%)、さらに味方全体のHPを回復する(50%)",
 		turn: 8,
 		proc: [ss_enhance_all(0.5, 2, [1, 1, 1, 1, 1]), ss_heal(0.5)],
 	},
@@ -18113,7 +18113,7 @@ Cards = [{
 		proc: ChainAllAttack(1.6, 0),
 	},
 	ss2: {
-		desc: "2ターン味方全体の攻撃力をアップ(100%)、さらに味方全体のHPを完全回復する",
+		desc: "<ダメージ強化>2ターン味方全体の攻撃力をアップ(100%)、さらに味方全体のHPを完全回復する",
 		turn: 10,
 		proc: [ss_enhance_all(1.0, 2, [1, 1, 1, 1, 1]), ss_heal(1.0)],
 	},
@@ -18147,7 +18147,7 @@ Cards = [{
 		proc: add_cond(ChainDeckDeadsAttack(4.0, 0), as_hp_absorption(0.04)),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの100％を使い敵全体へダメージ(150％×味方の人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの100％を使い敵全体へダメージ(150％×味方の人数)",
 		turn: 7,
 		proc: [ss_damage_all(ss_consume_all_cond(1.5, 1.0), [2])],
 	},
@@ -18163,7 +18163,7 @@ Cards = [{
 		proc: add_cond(ChainDeckDeadsAttack(4.5, 0), as_hp_absorption(0.04)),
 	},
 	ss2: {
-		desc: "自分を犠牲に全員をHP75％蘇生",
+		desc: "<自己犠牲蘇生>自分を犠牲に全員をHP75％蘇生",
 		turn: 10,
 		proc: [ss_resurrection([1, 1, 1, 1, 1], 0.75), ss_consume_own(1)],
 	},
@@ -18183,7 +18183,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(3.0, 0), when_hp_more(0.8)),
 	},
 	ss1: {
-		desc: "敵単体へ水属性のダメージ(200%)",
+		desc: "<大魔術>敵単体へ水属性のダメージ(200%)",
 		turn: 5,
 		proc: [ss_damage_s(2.0, [1], 1)],
 	},
@@ -18204,7 +18204,7 @@ Cards = [{
 		proc: [add_cond(ChainAttack(3.0, 0), when_hp_more(0.8)), add_cond(ChainAttack(3.0, 7), when_hp_more(0.8))],
 	},
 	ss2: {
-		desc: "敵単体へ水属性のダメージ(400%)",
+		desc: "<大魔術>敵単体へ水属性のダメージ(400%)",
 		turn: 8,
 		proc: [ss_damage_s(4.0, [1], 1)],
 	},
@@ -18227,7 +18227,7 @@ Cards = [{
 		proc: add_cond(ChainAttrAttack(6.75, 3, [0, 0, 1, 0, 0]), when_hp_more(0.8)),
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ(180%)、さらに味方全体のHPを回復する(20%)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(180%)、さらに味方全体のHPを回復する(20%)",
 		turn: 6,
 		proc: [ss_damage_all(1.8, [0]), ss_heal(0.20)],
 	},
@@ -18248,7 +18248,7 @@ Cards = [{
 		proc: add_cond(ChainAttrAttack(7.75, 3, [0, 0, 1, 0, 0]), when_hp_more(0.8)),
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ(200%)、さらに味方全体のHPを回復する(25%)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(200%)、さらに味方全体のHPを回復する(25%)",
 		turn: 9,
 		proc: [ss_damage_all(2.0, [0]), ss_heal(0.25)],
 	},
@@ -18271,7 +18271,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(11.0, 0), when_hp_less(0.35)),
 	},
 	ss1: {
-		desc: "MAXHPの70%を使い敵単体へダメージ(380%)",
+		desc: "<自己犠牲魔術>MAXHPの70%を使い敵単体へダメージ(380%)",
 		turn: 6,
 		proc: [ss_damage_s(3.8, [0], 1), ss_consume_own(0.7)],
 	},
@@ -18292,7 +18292,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(16.0, 0), when_hp_less(0.35)),
 	},
 	ss2: {
-		desc: "MAXHPの70%を使い敵単体へダメージ(600%)",
+		desc: "<自己犠牲魔術>MAXHPの70%を使い敵単体へダメージ(600%)",
 		turn: 9,
 		proc: [ss_damage_s(6.0, [0], 1), ss_consume_own(0.7)],
 	},
@@ -18315,7 +18315,7 @@ Cards = [{
 		proc: ChainAttack(3.0, 0),
 	},
 	ss1: {
-		desc: "敵全体へ雷属性のダメージ(500%)(スキル使用後、1ターン封印状態に)",
+		desc: "<反動大魔術>敵全体へ雷属性のダメージ(500%)(スキル使用後、1ターン封印状態に)",
 		turn: 6,
 		proc: [ss_damage_all(5.0, [2]), ss_allsealed_own(1)],
 	},
@@ -18336,7 +18336,7 @@ Cards = [{
 		proc: ChainAttack(4.0, 0),
 	},
 	ss2: {
-		desc: "敵全体へ雷属性のダメージ(1000%)(スキル使用後、2ターン封印状態に)",
+		desc: "<反動大魔術>敵全体へ雷属性のダメージ(1000%)(スキル使用後、2ターン封印状態に)",
 		turn: 12,
 		proc: [ss_damage_all(10.0, [2]), ss_allsealed_own(2)],
 	},
@@ -18359,7 +18359,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 4.0, 5.5, 3),
 	},
 	ss1: {
-		desc: "2ターン自分の攻撃力をアップ(500%)",
+		desc: "<ダメージ強化>2ターン自分の攻撃力をアップ(500%)",
 		turn: 8,
 		proc: [ss_enhance_own(5.0, 2)],
 	},
@@ -18380,7 +18380,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 5.5, 7.0, 3),
 	},
 	ss2: {
-		desc: "2ターン自分の攻撃力をアップ(1000%) 5チェインを消費しさらに3ターン攻撃力をアップ(2000%)",
+		desc: "<ダメージ強化>2ターン自分の攻撃力をアップ(1000%) 5チェインを消費しさらに3ターン攻撃力をアップ(2000%)",
 		turn: 12,
 		proc: [ss_chain_cost_skill(5, ss_enhance_own(20.0, 5), ss_enhance_own(10.0, 2))],
 	},
@@ -18403,7 +18403,7 @@ Cards = [{
 		proc: ChainPanelsAttrAttack(3.5, 5.0, 6.0, [1,0,0,0,0], 0),
 	},
 	ss1: {
-		desc: "敵全体の攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)],
 	},
@@ -18424,7 +18424,7 @@ Cards = [{
 		proc: ChainPanelsAttrAttack(4.5, 6.0, 7.0, [1,0,0,0,0], 0),
 	},
 	ss2: {
-		desc: "敵全体の攻撃ターンを3遅らせ、20チェインでさらに1遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせ、20チェインでさらに1遅らせる",
 		turn: 13,
 		proc: [ss_delay_all(ss_chain_cond(20, 4, 3))],
 	},
@@ -18447,7 +18447,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.3, 0.8, [1,0,0,0,0], [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
 		turn: 7,
 		proc: [ss_skillboost(2)],
 	},
@@ -18468,7 +18468,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [1,0,0,0,0], [0,0,1,0,0], 0),
 	},
 	ss2: {
-		desc: "味方全体のスペシャルスキルの発動ターンを3早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを3早める",
 		turn: 10,
 		proc: [ss_skillboost(3)],
 	},
@@ -18491,7 +18491,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.8, 1.3, [0,1,0,0,0], [1,0,0,0,0], 7),
 	},
 	ss1: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 4,
 		proc: [ss_panel_change([1,1,1,0,0])],
 	},
@@ -18512,7 +18512,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(1.1, 1.6, [0,1,0,0,0], [1,0,0,0,0], 7),
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化し、ダメージ35%軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、ダメージ35%軽減の効果を付与",
 		turn: 7,
 		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.35)],
 	},
@@ -18534,7 +18534,7 @@ Cards = [{
 		proc: ChainPanelsAttrAttack(3.5, 4.5, 5.5, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
 		turn: 7,
 		proc: [ss_skillboost(2)],
 	},
@@ -18555,7 +18555,7 @@ Cards = [{
 		proc: ChainPanelsAttrAttack(4.5, 5.5, 6.5, [0,0,1,0,0], 0),
 	},
 	ss2: {
-		desc: "スペシャルスキルの発動ターンを2早め、敵全体の行動ターンを2遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵全体の行動ターンを2遅らせる",
 		turn: 9,
 		proc: [ss_skillboost(2), ss_delay_all(2)],
 	},
@@ -18578,7 +18578,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,0,1,0,0], 0), add_cond(Heal(0.17, [0,0,1,0,0], 0), when_leader())],
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
 		turn: 7,
 		proc: [ss_skillboost(2)],
 	},
@@ -18598,7 +18598,7 @@ Cards = [{
 		proc: [Heal(0.16, [0,0,1,0,0], 0), add_cond(Heal(0.20, [0,0,1,0,0], 0), when_leader())],
 	},
 	ss2: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
+		desc: "<スキルチャージ&遅延>味方全体のスペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
 		turn: 9,
 		proc: [ss_skillboost(2), ss_delay_s(2)],
 	},
@@ -18623,7 +18623,7 @@ Cards = [{
 		proc: ChainDualAttack(3.0, 3, 3),
 	},
 	ss1: {
-		desc: "ジャンルパネルにチェインプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインプラス2の効果を付与",
 		turn: 5,
 		proc: [panel_chainplus(2)],
 	},
@@ -18652,7 +18652,7 @@ Cards = [{
 		proc: ChainStakesAttack(0, 5.0, 0),
 	},
 	ss1: {
-		desc: "3ターン敵全体に毒のダメージを与える(2500)",
+		desc: "<毒>3ターン敵全体に毒のダメージを与える(2500)",
 		turn: 5,
 		proc: [poison(2500, 3)],
 	},
@@ -18682,7 +18682,7 @@ Cards = [{
 		proc: add_cond(ChainAttrAttack(6.0, 4, [0, 1, 0, 0, 0]), as_hp_absorption(0.06)),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50%を使い敵単体へダメージ(240%×人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵単体へダメージ(240%×人数)",
 		turn: 10,
 		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.5), [2], 1)],
 	},
@@ -18703,7 +18703,7 @@ Cards = [{
 		proc: add_cond(ChainAttrAttack(7.0, 4, [0, 1, 0, 0, 0]), as_hp_absorption(0.06)),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50%を使い敵単体へダメージ(300%×人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵単体へダメージ(300%×人数)",
 		turn: 12,
 		proc: [ss_damage_s(ss_consume_all_cond(3.0, 0.5), [2], 1)],
 	},
@@ -18726,7 +18726,7 @@ Cards = [{
 		proc: ChainPanelsAttack(3.5, 5.0, 6.0, 5),
 	},
 	ss1: {
-		desc: "ジャンルパネルを水・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
 		turn: 4,
 		proc: [ss_panel_change([0,1,1,0,0])],
 	},
@@ -18747,7 +18747,7 @@ Cards = [{
 		proc: ChainPanelsAttack(4.5, 6.0, 7.0, 5),
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化。HP50%以下でさらにダメージ40%軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化。HP50%以下でさらにダメージ40%軽減の効果を付与",
 		turn: 7,
 		proc: [ss_panel_change([1,1,1,0,0]), ss_hp_less_skill(0.5, panel_attr_guard([1,1,1,1,1], 0.4))],
 	},
@@ -18771,7 +18771,7 @@ Cards = [{
 		proc: add_cond(ChainEnhance(0.50, [0, 1, 0, 0, 0], 0), when_hp_more(0.8)),
 	},
 	ss1: {
-		desc: "3ターンの間、スキルカウンター待機",
+		desc: "<カウンター>3ターンの間、スキルカウンター待機",
 		turn: 8,
 		proc: [ss_skillcounter(1.0, 3)],
 	},
@@ -18792,7 +18792,7 @@ Cards = [{
 		proc: add_cond(ChainEnhance(0.70, [0, 1, 0, 0, 0], 0), when_hp_more(0.8)),
 	},
 	ss2: {
-		desc: "5ターンの間、スキルカウンター待機",
+		desc: "<カウンター>5ターンの間、スキルカウンター待機",
 		turn: 11,
 		proc: [ss_skillcounter(1.0, 5)],
 	},
@@ -18816,7 +18816,7 @@ Cards = [{
 		proc: [ChainAllAttack(1.6, 3), ChainAllSpecAttack(2.6, [2,3,6], 3)],
 	},
 	ss1: {
-		desc: "敵全体へ水・光属性のダメージ、5チェインを消費しさらにダメージアップ(150%/230%)",
+		desc: "<大魔術>敵全体へ水・光属性のダメージ、5チェインを消費しさらにダメージアップ(150%/230%)",
 		turn: 6,
 		proc: [ss_damage_all(ss_chain_cost(5, 2.3, 1.5), [1, 3])],
 	},
@@ -18837,7 +18837,7 @@ Cards = [{
 		proc: [ChainAllAttack(2.0, 3), ChainAllSpecAttack(3.0, [2, 3, 6], 3)],
 	},
 	ss2: {
-		desc: "敵全体へ水・光属性のダメージ、5チェインを消費しさらにダメージアップ(220%/300%)",
+		desc: "<大魔術>敵全体へ水・光属性のダメージ、5チェインを消費しさらにダメージアップ(220%/300%)",
 		turn: 9,
 		proc: [ss_damage_all(ss_chain_cost(5, 3.0, 2.2), [1, 3])],
 	},
@@ -18861,7 +18861,7 @@ Cards = [{
 		proc: ChainDualAttack(3.0, 3, 3),
 	},
 	ss1: {
-		desc: "敵全体の攻撃ターンを1遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを1遅らせる",
 		turn: 6,
 		proc: [ss_delay_all(1)],
 	},
@@ -18882,7 +18882,7 @@ Cards = [{
 		proc: ChainDualAttack(4.0, 3, 3),
 	},
 	ss2: {
-		desc: "敵全体の攻撃ターンを2遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(2)],
 	},
@@ -18906,7 +18906,7 @@ Cards = [{
 		proc: Heal(0.12, [0, 0, 1, 0, 0], 0),
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを1早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早める",
 		turn: 7,
 		proc: [ss_skillboost(1)],
 	},
@@ -18927,7 +18927,7 @@ Cards = [{
 		proc: Heal(0.15, [0, 0, 1, 0, 0], 0),
 	},
 	ss2: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
 		turn: 9,
 		proc: [ss_skillboost(2)],
 	},
@@ -18951,7 +18951,7 @@ Cards = [{
 		proc: ChainEnhance(0.60, [0, 1, 0, 0, 0], 5),
 	},
 	ss1: {
-		desc: "ジャンルパネルを水属性化し、チェインがプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを水属性化し、チェインがプラス2の効果を付与",
 		turn: 7,
 		proc: [ss_panel_change([0,1,0,0,0]), panel_chainplus(2)],
 	},
@@ -18982,7 +18982,7 @@ Cards = [{
 		proc: ChainVarianceAttack(4.5, 4),
 	},
 	ss1: {
-		desc: "スキル反射を無視し、火・雷属性の3連撃、さらに連撃数分チェインプラス(180%)",
+		desc: "<斬撃大魔術>スキル反射を無視し、火・雷属性の3連撃、さらに連撃数分チェインプラス(180%)",
 		turn: 7,
 		proc: [ss_damage_slash(1.8, [0,2], 3), ss_ignore_skillcounter()],
 	},
@@ -19003,7 +19003,7 @@ Cards = [{
 		proc: ChainVarianceAttack(5.5, 4),
 	},
 	ss2: {
-		desc: "スキル反射を無視し、火・雷属性の5連撃、さらに連撃数分チェインプラス(380%)",
+		desc: "<斬撃大魔術>スキル反射を無視し、火・雷属性の5連撃、さらに連撃数分チェインプラス(380%)",
 		turn: 10,
 		proc: [ss_damage_slash(3.8, [0,2], 5), ss_ignore_skillcounter()],
 	},
@@ -19026,7 +19026,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.07, 0.20, 0.20, [1,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動を1早め、5チェインを消費しさらに1早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動を1早め、5チェインを消費しさらに1早める",
 		turn: 6,
 		proc: [ss_chain_cost_skill(5, ss_skillboost(2), ss_skillboost(1))],
 	},
@@ -19047,7 +19047,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.10, 0.23, 0.23, [1,0,1,0,0], 0),
 	},
 	ss2: {
-		desc: "味方全体のスペシャルスキルの発動を2早め、5チェインを消費しさらに1早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動を2早め、5チェインを消費しさらに1早める",
 		turn: 8,
 		proc: [ss_chain_cost_skill(5, ss_skillboost(3), ss_skillboost(2))],
 	},
@@ -19070,7 +19070,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,0,1,0,0], [0,1,0,0,0], 0),
 	},
 	ss1: {
-		desc: "4ターン水・雷属性の味方の攻撃力をアップ、5チェインを消費しさらにアップ(60%/100%)",
+		desc: "<ダメージ強化>4ターン水・雷属性の味方の攻撃力をアップ、5チェインを消費しさらにアップ(60%/100%)",
 		turn: 9,
 		proc: [ss_chain_cost_skill(5, ss_enhance_all(1.0, 4, [0,1,1,0,0]), ss_enhance_all(0.6, 4, [0,1,1,0,0]))],
 	},
@@ -19091,7 +19091,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,0,1,0,0], [0,1,0,0,0], 0),
 	},
 	ss2: {
-		desc: "4ターン水・雷属性の味方の攻撃力をアップ、5チェインを消費しさらにアップ(120%/180%)",
+		desc: "<ダメージ強化>4ターン水・雷属性の味方の攻撃力をアップ、5チェインを消費しさらにアップ(120%/180%)",
 		turn: 12,
 		proc: [ss_chain_cost_skill(5, ss_enhance_all(1.8, 4, [0,1,1,0,0]), ss_enhance_all(1.2, 4, [0,1,1,0,0]))],
 	},
@@ -19114,7 +19114,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,1,0,0,0], [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
 		turn: 7,
 		proc: [ss_skillboost(2)],
 	},
@@ -19135,7 +19135,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,1,0,0,0], [0,0,1,0,0], 0),
 	},
 	ss2: {
-		desc: "味方全体のスペシャルスキルの発動ターンを3早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを3早める",
 		turn: 10,
 		proc: [ss_skillboost(3)],
 	},
@@ -19158,7 +19158,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.3, 0.8, [1,0,0,0,0], [0,0,0,0,1], 0),
 	},
 	ss1: {
-		desc: "3ターン後に敵単体を無に還す(一部敵には無効)",
+		desc: "<無に還す瞳>3ターン後に敵単体を無に還す(一部敵には無効)",
 		turn: 10,
 		proc: [ss_death_limit(3)],
 	},
@@ -19179,7 +19179,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [1,0,0,0,0], [0,0,0,0,1], 0),
 	},
 	ss2: {
-		desc: "2ターン後に敵単体を無に還す(一部敵には無効)",
+		desc: "<無に還す瞳>2ターン後に敵単体を無に還す(一部敵には無効)",
 		turn: 15,
 		proc: [ss_death_limit(2)],
 	},
@@ -19202,7 +19202,7 @@ Cards = [{
 		proc: [ChainAttack(3.0, 4), add_cond(ChainAttack(5.0, 4), when_hp_more(0.5))],
 	},
 	ss1: {
-		desc: "ジャンルパネルにダメージ軽減(25%)、スキルチャージ(1)、チェイン(2)、攻撃力アップ(50%)の効果をランダムで付与",
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ軽減(25%)、スキルチャージ(1)、チェイン(2)、攻撃力アップ(50%)の効果をランダムで付与",
 		turn: 5,
 		proc: [panel_chainplus(2), panel_skillboost(1), panel_attackup(0.5)],
 	},
@@ -19223,7 +19223,7 @@ Cards = [{
 		proc: [ChainAttack(4.0, 4), add_cond(ChainAttack(6.0, 4), when_hp_more(0.5))],
 	},
 	ss2: {
-		desc: "ジャンルパネルを火・雷属性化し、ダメージ軽減(25%)、スキルチャージ(1)、チェイン(2)、攻撃力アップ(50%)の効果をランダムで付与",
+		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、ダメージ軽減(25%)、スキルチャージ(1)、チェイン(2)、攻撃力アップ(50%)の効果をランダムで付与",
 		turn: 7,
 		proc: [ss_panel_change([1,0,1,0,0]), panel_chainplus(2), panel_skillboost(1), panel_attackup(0.5)],
 	},
@@ -19246,7 +19246,7 @@ Cards = [{
 		proc: ChainDualAttack(4.0, 4, 3),
 	},
 	ss1: {
-		desc: "スキル反射を無視し、敵全体へ雷・光属性のダメージ(150%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ(150%)",
 		turn: 6,
 		proc: [ss_damage_all(1.5, [2,3]), ss_ignore_skillcounter()],
 	},
@@ -19267,7 +19267,7 @@ Cards = [{
 		proc: ChainDualAttack(5.0, 4, 3),
 	},
 	ss2: {
-		desc: "スキル反射を無視し、敵全体へ雷・光属性のダメージ(220%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ(220%)",
 		turn: 9,
 		proc: [ss_damage_all(2.2, [2,3]), ss_ignore_skillcounter()],
 	},
@@ -19290,7 +19290,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.0, 4, [1,0,0,0,0]),
 	},
 	ss1: {
-		desc: "ジャンルパネルにチェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
 		turn: 3,
 		proc: [panel_chainplus(1)],
 	},
@@ -19311,7 +19311,7 @@ Cards = [{
 		proc: ChainAttrAttack(7.0, 4, [1,0,0,0,0]),
 	},
 	ss2: {
-		desc: "ジャンルパネルにチェインがプラス3の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス3の効果を付与",
 		turn: 8,
 		proc: [panel_chainplus(3)],
 	},
@@ -19334,7 +19334,7 @@ Cards = [{
 		proc: [Heal(0.10, [0,1,1,0,0], 0), Heal(0.15, [0,1,1,0,0], 5)],
 	},
 	ss1: {
-		desc: "味方全体の攻撃力とHPを500アップ(上限値:2000)",
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップ(上限値:2000)",
 		turn: 5,
 		proc: [ss_statusup_all([500, 500], [2000, 2000], -1)],
 	},
@@ -19355,7 +19355,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,1,1,0,0], 0), Heal(0.18, [0,1,1,0,0], 5)],
 	},
 	ss2: {
-		desc: "味方全体の攻撃力とHPを1000アップ(上限値:2000)",
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを1000アップ(上限値:2000)",
 		turn: 8,
 		proc: [ss_statusup_all([1000, 1000], [2000, 2000], -1)],
 	},
@@ -19378,7 +19378,7 @@ Cards = [{
 		proc: [ChainAttack(3.0, 4), add_cond(ChainAttack(5.0, 4), when_hp_more(0.5))],
 	},
 	ss1: {
-		desc: "敵全体の攻撃ターンを1遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを1遅らせる",
 		turn: 4,
 		proc: [ss_delay_all(1)],
 	},
@@ -19399,7 +19399,7 @@ Cards = [{
 		proc: [ChainAttack(4.0, 4), add_cond(ChainAttack(6.0, 4), when_hp_more(0.5))],
 	},
 	ss2: {
-		desc: "敵単体へ火・雷属性の5回連続ダメージ、5チェインを消費しさらにダメージアップ(320%/640%)",
+		desc: "<多弾魔術>敵単体へ火・雷属性の5回連続ダメージ、5チェインを消費しさらにダメージアップ(320%/640%)",
 		turn: 7,
 		proc: [ss_chain_cost_skill(5, ss_damage_s(6.4, [0,2], 5), ss_damage_s(3.2, [0,2], 5))],
 	},
@@ -19422,7 +19422,7 @@ Cards = [{
 		proc: add_cond(ChainDualAttack(3.5, 0, 3), when_hp_more(0.80)),
 	},
 	ss1: {
-		desc: "敵単体のHPを20%減少させる、5チェインを消費しさらに10%減少させる",
+		desc: "<割合削り>敵単体のHPを20%減少させる、5チェインを消費しさらに10%減少させる",
 		turn: 7,
 		proc: [ss_chain_cost_skill(5, ss_ratiodamage_s(0.30), ss_ratiodamage_s(0.20))],
 	},
@@ -19443,7 +19443,7 @@ Cards = [{
 		proc: add_cond(ChainDualAttack(4.5, 0, 3), when_hp_more(0.80)),
 	},
 	ss2: {
-		desc: "敵単体のHPを20%減少させる、5チェインを消費しさらに15%減少させる",
+		desc: "<割合削り>敵単体のHPを20%減少させる、5チェインを消費しさらに15%減少させる",
 		turn: 9,
 		proc: [ss_chain_cost_skill(5, ss_ratiodamage_s(0.35), ss_ratiodamage_s(0.20))],
 	},
@@ -19466,7 +19466,7 @@ Cards = [{
 		proc: ChainPanelsDualAttack(3.5, 4.5, 6.0, 3, 4),
 	},
 	ss1: {
-		desc: "ジャンルパネルを水・光属性化",
+		desc: "<パネル変換>ジャンルパネルを水・光属性化",
 		turn: 3,
 		proc: [ss_panel_change([0,1,0,1,0])],
 	},
@@ -19487,7 +19487,7 @@ Cards = [{
 		proc: ChainPanelsDualAttack(4.5, 5.5, 7.0, 3, 4),
 	},
 	ss2: {
-		desc: "解答を見破る",
+		desc: "<解答削り>解答を見破る",
 		turn: 6,
 		proc: [ss_answer_foresight()],
 	},
@@ -19510,7 +19510,7 @@ Cards = [{
 		proc: ChainAttack(5.5, 7),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50%を使い、3ターンの間、チェインを保護する",
+		desc: "<チェインガード>味方全体のMAXHPの50%を使い、3ターンの間、チェインを保護する",
 		turn: 5,
 		proc: [ss_chain_protect(3), ss_consume_all(0.5)],
 	},
@@ -19531,7 +19531,7 @@ Cards = [{
 		proc: ChainAttack(6.5, 7),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50%を使い、6ターンの間、チェインを保護する",
+		desc: "<チェインガード>味方全体のMAXHPの50%を使い、6ターンの間、チェインを保護する",
 		turn: 8,
 		proc: [ss_chain_protect(6), ss_consume_all(0.5)],
 	},
@@ -19555,7 +19555,7 @@ Cards = [{
 		proc: ChainDualAttack(4.0, 5, 5),
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ(300%)◆スキル使用後、1ターン封印状態に",
+		desc: "<反動大魔術>敵全体へ火属性のダメージ(300%)◆スキル使用後、1ターン封印状態に",
 		turn: 4,
 		proc: [ss_damage_all(3.0, [0]), ss_allsealed_own(1)],
 	},
@@ -19576,7 +19576,7 @@ Cards = [{
 		proc: ChainDualAttack(5.0, 5, 5),
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ(500%)◆スキル使用後、1ターン封印状態に",
+		desc: "<反動大魔術>敵全体へ火属性のダメージ(500%)◆スキル使用後、1ターン封印状態に",
 		turn: 6,
 		proc: [ss_damage_all(5.0, [0]), ss_allsealed_own(1)],
 	},
@@ -19600,7 +19600,7 @@ Cards = [{
 		proc: Heal(0.11, [0,1,0,0,0], 0),
 	},
 	ss1: {
-		desc: "3ターン味方全体を徐々に回復する(15%)",
+		desc: "<継続回復>3ターン味方全体を徐々に回復する(15%)",
 		turn: 6,
 		proc: [ss_regenerate(0.15, 3)],
 	},
@@ -19621,7 +19621,7 @@ Cards = [{
 		proc: Heal(0.14, [0,1,0,0,0], 0),
 	},
 	ss2: {
-		desc: "5ターン味方全体を徐々に回復する(20%)",
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20%)",
 		turn: 9,
 		proc: [ss_regenerate(0.20, 5)],
 	},
@@ -19645,7 +19645,7 @@ Cards = [{
 		proc: ChainEnhance(0.55, [1,0,1,0,0], 5),
 	},
 	ss1: {
-		desc: "3ターン全属性ダメージを40%軽減する",
+		desc: "<ガード>3ターン全属性ダメージを40%軽減する",
 		turn: 8,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.4, 3)],
 	},
@@ -19666,7 +19666,7 @@ Cards = [{
 		proc: ChainEnhance(0.85, [1,0,1,0,0], 5),
 	},
 	ss2: {
-		desc: "3ターン全属性ダメージを40%軽減する、10チェインを消費しさらに3ターン軽減",
+		desc: "<ガード>3ターン全属性ダメージを40%軽減する、10チェインを消費しさらに3ターン軽減",
 		turn: 12,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.4, ss_chain_cost(10, 6, 3))],
 	},
@@ -19690,7 +19690,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [0,0,1,0,0], 0), ChainSpecEnhance(0.60, [0,0,1,0,0], [4,5], 0)],
 	},
 	ss1: {
-		desc: "攻撃ターンを2遅らせる",
+		desc: "<遅延>攻撃ターンを2遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(2)],
 	},
@@ -19711,7 +19711,7 @@ Cards = [{
 		proc: [ChainEnhance(0.60, [0,0,1,0,0], 0), ChainSpecEnhance(0.90, [0,0,1,0,0], [4,5], 0)],
 	},
 	ss2: {
-		desc: "攻撃ターンを2遅らせ、3チェインを消費しさらに1遅らせる",
+		desc: "<遅延>攻撃ターンを2遅らせ、3チェインを消費しさらに1遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(ss_chain_cost(3, 3, 2))],
 	},
@@ -19735,7 +19735,7 @@ Cards = [{
 		proc: Heal(0.13, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "味方全体のHPを回復する(50%)",
+		desc: "<回復>味方全体のHPを回復する(50%)",
 		turn: 5,
 		proc: [ss_heal(0.5)],
 	},
@@ -19756,7 +19756,7 @@ Cards = [{
 		proc: Heal(0.16, [0,0,1,0,0], 0),
 	},
 	ss2: {
-		desc: "チェインプラス2の効果、さらに味方全体のHPを完全に回復",
+		desc: "<回復>チェインプラス2の効果、さらに味方全体のHPを完全に回復",
 		turn: 8,
 		proc: [ss_addchain(2), ss_heal(1.0)],
 	},
@@ -19780,7 +19780,7 @@ Cards = [{
 		proc: [Heal(0.09, [0,0,1,0,0], 0), SpecHeal(0.13, [0,0,1,0,0], [9], 0)],
 	},
 	ss1: {
-		desc: "2ターンの間、スキルカウンター待機(100%)",
+		desc: "<カウンター>2ターンの間、スキルカウンター待機(100%)",
 		turn: 7,
 		proc: [ss_skillcounter(1.0, 3)],
 	},
@@ -19801,7 +19801,7 @@ Cards = [{
 		proc: [Heal(0.12, [0,0,1,0,0], 0), SpecHeal(0.16, [0,0,1,0,0], [9], 0)],
 	},
 	ss2: {
-		desc: "3ターンの間、スキルカウンター待機(100%)、アンサースキル封印状態でさらに多弾式カウンター待機(100%)",
+		desc: "<カウンター>3ターンの間、スキルカウンター待機(100%)、アンサースキル封印状態でさらに多弾式カウンター待機(100%)",
 		turn: 10,
 		proc: [ss_skillcounter(1.0, 3), ss_is_assealed_own_skill(ss_dualcounter(3))],
 	},
@@ -19825,7 +19825,7 @@ Cards = [{
 		proc: Heal(0.13, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "3ターン後に敵単体を無に還す(一部敵には無効)",
+		desc: "<無に還す瞳>3ターン後に敵単体を無に還す(一部敵には無効)",
 		turn: 10,
 		proc: [ss_death_limit(3)],
 	},
@@ -19846,7 +19846,7 @@ Cards = [{
 		proc: [Heal(0.16, [0,0,1,0,0], 0), ChainEnhance(0.30, [0,0,1,0,0], 0)],
 	},
 	ss2: {
-		desc: "2ターン後に敵単体を無に還す(一部敵には無効)",
+		desc: "<無に還す瞳>2ターン後に敵単体を無に還す(一部敵には無効)",
 		turn: 15,
 		proc: [ss_death_limit(2)],
 	},
@@ -19869,7 +19869,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.5, 5, [0,0,1,0,0]),
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ(180%)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(180%)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [0])],
 	},
@@ -19890,7 +19890,7 @@ Cards = [{
 		proc: ChainAttrAttack(7.5, 5, [0,0,1,0,0]),
 	},
 	ss2: {
-		desc: "敵全体の攻撃ターンを1遅らせ、火属性のダメージ(180%)",
+		desc: "<遅延大魔術>敵全体の攻撃ターンを1遅らせ、火属性のダメージ(180%)",
 		turn: 10,
 		proc: [ss_damage_all(1.8, [0]), ss_delay_all(1)],
 	},
@@ -19912,7 +19912,7 @@ Cards = [{
 		proc: ChainAllAttack(1.5, 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを火・雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([1,0,1,0,0])],
 	},
@@ -19933,7 +19933,7 @@ Cards = [{
 		proc: ChainAllAttack(1.6, 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルを火・雷属性化し、回復の効果を付与(10%)",
+		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、回復の効果を付与(10%)",
 		turn: 8,
 		proc: [ss_panel_change([1,0,1,0,0]), panel_healally(0.10)],
 	},
@@ -19956,7 +19956,7 @@ Cards = [{
 		proc: [ChainAttrAttack(3.5, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(4.5, 0, [0,0,1,0,0]), when_leader())],
 	},
 	ss1: {
-		desc: "ジャンルパネルを火・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを火・雷属性化",
 		turn: 4,
 		proc: [ss_panel_change([1,0,1,0,0])],
 	},
@@ -19977,7 +19977,7 @@ Cards = [{
 		proc: [ChainAttrAttack(4.5, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(5.5, 0, [0,0,1,0,0]), when_leader())],
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 6,
 		proc: [ss_panel_change([1,1,1,0,0])],
 	},
@@ -20001,7 +20001,7 @@ Cards = [{
 		proc: ChainDualAttack(4.0, 4, 3),
 	},
 	ss1: {
-		desc: "味方全体の攻撃力とHPを500アップ(上限値:2000)。HP20%以下でさらに1500アップ",
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップ(上限値:2000)。HP20%以下でさらに1500アップ",
 		turn: 7,
 		proc: [ss_statusup_all(ss_hp_less(0.20, [2000, 2000], [500, 500]), [2000, 2000], -1)],
 	},
@@ -20022,7 +20022,7 @@ Cards = [{
 		proc: ChainDualAttack(5.0, 4, 3),
 	},
 	ss2: {
-		desc: "味方全体の攻撃力とHPを500アップ(上限値:2000)。HP20%以下でさらに1500アップし、HPを完全回復",
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップ(上限値:2000)。HP20%以下でさらに1500アップし、HPを完全回復",
 		turn: 9,
 		proc: [ss_statusup_all(ss_hp_less(0.20, [2000, 2000], [500, 500]), [2000, 2000], -1), ss_heal(1.0)],
 	},
@@ -20047,7 +20047,7 @@ Cards = [{
 		proc: ChainDualAttack(4.0, 5, 3),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50%を使い、2ターン自分の攻撃力をアップ(500%)",
+		desc: "<ダメージ強化>味方全体のMAXHPの50%を使い、2ターン自分の攻撃力をアップ(500%)",
 		turn: 9,
 		proc: [ss_enhance_own(5.0, 2), ss_consume_all(0.5)],
 	},
@@ -20068,7 +20068,7 @@ Cards = [{
 		proc: ChainDualAttack(5.0, 5, 3),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50%を使い、2ターン自分の攻撃力をアップ(1000%)",
+		desc: "<ダメージ強化>味方全体のMAXHPの50%を使い、2ターン自分の攻撃力をアップ(1000%)",
 		turn: 13,
 		proc: [ss_enhance_own(10.0, 2), ss_consume_all(0.5)],
 	},
@@ -20092,7 +20092,7 @@ Cards = [{
 		proc: [ChainAttack(3.0, 3), ChainAttack(4.5, 7)],
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを1早め、さらに味方全体のHPを回復する(25%)",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早め、さらに味方全体のHPを回復する(25%)",
 		turn: 7,
 		proc: [ss_skillboost(1), ss_heal(0.25)],
 	},
@@ -20113,7 +20113,7 @@ Cards = [{
 		proc: [ChainAttack(4.0, 3), ChainAttack(5.5, 7)],
 	},
 	ss2: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早め、さらに味方全体のHPを回復する(50%)",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早め、さらに味方全体のHPを回復する(50%)",
 		turn: 9,
 		proc: [ss_skillboost(2), ss_heal(0.50)],
 	},
@@ -20137,7 +20137,7 @@ Cards = [{
 		proc: Heal(0.11, [1,0,0,0,0], 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルにチェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
 		turn: 3,
 		proc: [panel_chainplus(1)],
 	},
@@ -20158,7 +20158,7 @@ Cards = [{
 		proc: Heal(0.13, [1,0,0,0,0], 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルにチェインがプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
 		turn: 5,
 		proc: [panel_chainplus(2)],
 	},
@@ -20181,7 +20181,7 @@ Cards = [{
 		proc: [ChainEnhance(0.40, [1,0,0,0,0], 3), ChainSpecEnhance(0.60, [1,0,0,0,0], [9], 3)],
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し(50%)、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
 		turn: 7,
 		proc: [ss_heal(0.5), ss_abstate_cure()],
 	},
@@ -20202,7 +20202,7 @@ Cards = [{
 		proc: [ChainEnhance(0.40, [1,0,0,0,0], 3), ChainSpecEnhance(0.80, [1,0,0,0,0], [9], 3)],
 	},
 	ss2: {
-		desc: "味方全体のHPを完全回復し、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
 		turn: 10,
 		proc: [ss_heal(1.0), ss_abstate_cure()],
 	},
@@ -20226,7 +20226,7 @@ Cards = [{
 		proc: ChainEnhance(0.60, [1,0,0,0,0], 5),
 	},
 	ss1: {
-		desc: "5ターンの間、スキルカウンター待機(200%)",
+		desc: "<カウンター>5ターンの間、スキルカウンター待機(200%)",
 		turn: 11,
 		proc: [ss_skillcounter(2.0, 5)],
 	},
@@ -20247,7 +20247,7 @@ Cards = [{
 		proc: ChainEnhance(0.90, [1,0,0,0,0], 5),
 	},
 	ss2: {
-		desc: "5ターンの間、スキルカウンター待機(300%)",
+		desc: "<カウンター>5ターンの間、スキルカウンター待機(300%)",
 		turn: 14,
 		proc: [ss_skillcounter(3.0, 5)],
 	},
@@ -20271,7 +20271,7 @@ Cards = [{
 		proc: [ChainAttack(3.5, 4), ChainSpecAttack(5.0, 4, [9])],
 	},
 	ss1: {
-		desc: "ジャンルパネルにダメージ軽減(25%)、スキルチャージ(1)、チェイン(2)、攻撃力アップ(50%)の効果をランダムで付与",
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ軽減(25%)、スキルチャージ(1)、チェイン(2)、攻撃力アップ(50%)の効果をランダムで付与",
 		turn: 6,
 		proc: [panel_chainplus(2), panel_skillboost(1), panel_attackup(0.50)],
 	},
@@ -20292,7 +20292,7 @@ Cards = [{
 		proc: [ChainAttack(4.5, 4), ChainSpecAttack(6.0, 4, [9])],
 	},
 	ss2: {
-		desc: "ジャンルパネルを火・闇属性化し、ダメージ軽減(25%)、スキルチャージ(1)、チェイン(2)、攻撃力アップ(50%)の効果をランダムで付与",
+		desc: "<特殊パネル変換>ジャンルパネルを火・闇属性化し、ダメージ軽減(25%)、スキルチャージ(1)、チェイン(2)、攻撃力アップ(50%)の効果をランダムで付与",
 		turn: 8,
 		proc: [ss_panel_change([1,0,0,0,1]), panel_chainplus(2), panel_skillboost(1), panel_attackup(0.50)],
 	},
@@ -20316,7 +20316,7 @@ Cards = [{
 		proc: [ChainAttack(4.0, 4), ChainSpecAttack(5.5, 4, [2,3])],
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、状態異常を回復する(50%)",
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(50%)",
 		turn: 7,
 		proc: [ss_heal(0.5), ss_abstate_cure()],
 	},
@@ -20337,7 +20337,7 @@ Cards = [{
 		proc: [ChainAttack(5.0, 4), ChainSpecAttack(6.5, 4, [2,3])],
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し、状態異常を回復、さらに火属性の味方を50%で蘇生(50%)",
+		desc: "<状態異常回復&蘇生>味方全体のHPを回復し、状態異常を回復、さらに火属性の味方を50%で蘇生(50%)",
 		turn: 10,
 		proc: [ss_heal(0.5), ss_abstate_cure(), ss_resurrection([1,0,0,0,0], 0.5)],
 	},
@@ -20361,7 +20361,7 @@ Cards = [{
 		proc: ChainDualAttack(7.0, 10, 3),
 	},
 	ss1: {
-		desc: "味方のMAXHP50%を使い、攻撃ターンを1遅らせる",
+		desc: "<遅延>味方のMAXHP50%を使い、攻撃ターンを1遅らせる",
 		turn: 3,
 		proc: [ss_consume_all(0.5), ss_delay_all(1)],
 	},
@@ -20382,7 +20382,7 @@ Cards = [{
 		proc: ChainDualAttack(8.0, 10, 3),
 	},
 	ss2: {
-		desc: "味方のMAXHP50%を使い、攻撃ターンを1遅らせ、敵全体へ火属性のダメージ(300%)",
+		desc: "<遅延大魔術>味方のMAXHP50%を使い、攻撃ターンを1遅らせ、敵全体へ火属性のダメージ(300%)",
 		turn: 5,
 		proc: [ss_consume_all(0.5), ss_damage_all(3.0, [0]), ss_delay_all(1)],
 	},
@@ -20406,7 +20406,7 @@ Cards = [{
 		proc: ChainEnhance(0.30, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "敵単体のHPを25%減少させる",
+		desc: "<割合削り>敵単体のHPを25%減少させる",
 		turn: 9,
 		proc: [ss_ratiodamage_s(0.25)],
 	},
@@ -20437,7 +20437,7 @@ Cards = [{
 		proc: [ChainDualAttrAttack(3.0, 0, 3, [0,0,1,0,0]), add_cond(ChainDualAttrAttack(4.5, 0, 3, [0,0,1,0,0]), when_hp_more(0.80))],
 	},
 	ss1: {
-		desc: "敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(100%/300%)",
+		desc: "<特効大魔術>敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(100%/300%)",
 		turn: 4,
 		proc: [ss_damage_s(special_attr([0,0,1,0,0], 3.0, 1.0), [0], 1)],
 	},
@@ -20458,7 +20458,7 @@ Cards = [{
 		proc: [ChainDualAttrAttack(4.0, 0, 3, [0,0,1,0,0]), add_cond(ChainDualAttrAttack(5.5, 0, 3, [0,0,1,0,0]), when_hp_more(0.80))],
 	},
 	ss2: {
-		desc: "敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(200%/500%)",
+		desc: "<特効大魔術>敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(200%/500%)",
 		turn: 6,
 		proc: [ss_damage_s(special_attr([0,0,1,0,0], 5.0, 2.0), [0], 1)],
 	},
@@ -20481,7 +20481,7 @@ Cards = [{
 		proc: [ChainDeckSpecsAttack(0.40, [8], 0), ChainDeckSpecsAttack(0.60, [8], 5)],
 	},
 	ss1: {
-		desc: "2ターン自分の攻撃力をアップ(500%)",
+		desc: "<ダメージ強化>2ターン自分の攻撃力をアップ(500%)",
 		turn: 8,
 		proc: [ss_enhance_own(5.0, 2)],
 	},
@@ -20502,7 +20502,7 @@ Cards = [{
 		proc: [ChainDeckSpecsAttack(0.60, [8], 0), ChainDeckSpecsAttack(0.80, [8], 5)],
 	},
 	ss2: {
-		desc: "2ターン自分の攻撃力をアップ(1000%)",
+		desc: "<ダメージ強化>2ターン自分の攻撃力をアップ(1000%)",
 		turn: 12,
 		proc: [ss_enhance_own(10.0, 2)],
 	},
@@ -20525,7 +20525,7 @@ Cards = [{
 		proc: [ChainAllAttack(2.2, 5), ChainAllSpecAttack(3.2, [3], 5)],
 	},
 	ss1: {
-		desc: "スキル反射を無視し、敵全体へ雷属性のダメージ(120%)、さらに味方全体を回復(25%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷属性のダメージ(120%)、さらに味方全体を回復(25%)",
 		turn: 4,
 		proc: [ss_damage_all(1.2, [2]), ss_ignore_skillcounter(), ss_heal(0.25)],
 	},
@@ -20546,7 +20546,7 @@ Cards = [{
 		proc: [ChainAllAttack(2.6, 5), ChainAllSpecAttack(3.6, [3], 5)],
 	},
 	ss2: {
-		desc: "スキル反射を無視し、敵全体へ雷属性のダメージ(180%)、さらに味方全体を回復(50%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷属性のダメージ(180%)、さらに味方全体を回復(50%)",
 		turn: 7,
 		proc: [ss_damage_all(1.8, [2]), ss_ignore_skillcounter(), ss_heal(0.50)],
 	},
@@ -20569,7 +20569,7 @@ Cards = [{
 		proc: ChainPanelsAttrDualAttack(3.5, 4.5, 5.5, [0, 1, 0, 0, 0], 3, 0),
 	},
 	ss1: {
-		desc: "敵単体へ雷属性の10回連続ダメージ(100%)",
+		desc: "<多弾魔術>敵単体へ雷属性の10回連続ダメージ(100%)",
 		turn: 4,
 		proc: [ss_damage_s(1.0, [2], 10)],
 	},
@@ -20590,7 +20590,7 @@ Cards = [{
 		proc: ChainPanelsAttrDualAttack(4.5, 5.5, 6.5, [0, 1, 0, 0, 0], 3, 0),
 	},
 	ss2: {
-		desc: "敵単体へ雷属性の10回連続ダメージ(380%)",
+		desc: "<多弾魔術>敵単体へ雷属性の10回連続ダメージ(380%)",
 		turn: 8,
 		proc: [ss_damage_s(3.8, [2], 10)],
 	},
@@ -20613,7 +20613,7 @@ Cards = [{
 		proc: [ChainEnhance(0.25, [0,1,0,0,0], 0), ChainSpecEnhance(0.45, [0,1,0,0,0], [9], 0)],
 	},
 	ss1: {
-		desc: "チェインプラス2の効果、さらに3ターン味方全体を徐々に回復する(15%)",
+		desc: "<継続回復>チェインプラス2の効果、さらに3ターン味方全体を徐々に回復する(15%)",
 		turn: 6,
 		proc: [ss_addchain(2), ss_regenerate(0.15, 3)],
 	},
@@ -20634,7 +20634,7 @@ Cards = [{
 		proc: [ChainEnhance(0.25, [0,1,0,0,0], 0), ChainSpecEnhance(0.45, [0,1,0,0,0], [9], 0), Heal(0.05, [0,1,0,0,0], 0)],
 	},
 	ss2: {
-		desc: "チェインプラス3の効果、さらに5ターン味方全体を徐々に回復する(20%)",
+		desc: "<継続回復>チェインプラス3の効果、さらに5ターン味方全体を徐々に回復する(20%)",
 		turn: 9,
 		proc: [ss_addchain(3), ss_regenerate(0.20, 3)],
 	},
@@ -20657,7 +20657,7 @@ Cards = [{
 		proc: [ChainEnhance(0.20, [1,0,0,0,0], 0), ChainSpecEnhance(0.80, [1,0,0,0,0], [4,5], 0)],
 	},
 	ss1: {
-		desc: "解答選択肢を2つ削り、3チェインを消費し解答を見破る",
+		desc: "<解答削り>解答選択肢を2つ削り、3チェインを消費し解答を見破る",
 		turn: 3,
 		proc: [ss_chain_cost_skill(3, ss_answer_foresight(), ss_answer_narrow(2))],
 	},
@@ -20678,7 +20678,7 @@ Cards = [{
 		proc: [ChainEnhance(0.40, [1,0,0,0,0], 0), ChainSpecEnhance(1.20, [1,0,0,0,0], [4,5], 0)],
 	},
 	ss2: {
-		desc: "解答を見破る",
+		desc: "<解答削り>解答を見破る",
 		turn: 6,
 		proc: [ss_answer_foresight()],
 	},
@@ -20702,7 +20702,7 @@ Cards = [{
 		proc: [ChainAttrAttack(3, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(10.5, 0, [0,0,1,0,0]), when_hp_less(0.5))],
 	},
 	ss1: {
-		desc: "味方全体のHPを50%使い敵単体へ火属性のダメージ(220%×人数)",
+		desc: "<犠牲魔術>味方全体のHPを50%使い敵単体へ火属性のダメージ(220%×人数)",
 		turn: 12,
 		proc: [ss_damage_s(ss_consume_all_cond(2.2, 0.5), [0], 1)],
 	},
@@ -20723,7 +20723,7 @@ Cards = [{
 		proc: [ChainAttrAttack(4.0, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(14.0, 0, [0,0,1,0,0]), when_hp_less(0.5))],
 	},
 	ss2: {
-		desc: "味方全体のHPを50%使い敵単体へ火属性のダメージ(280%×人数)",
+		desc: "<犠牲魔術>味方全体のHPを50%使い敵単体へ火属性のダメージ(280%×人数)",
 		turn: 14,
 		proc: [ss_damage_s(ss_consume_all_cond(2.8, 0.5), [0], 1)],
 	},
@@ -20747,7 +20747,7 @@ Cards = [{
 		proc: [Heal(0.10, [1,0,0,0,0], 0), SpecHeal(0.15, [1,0,0,0,0], [4], 0)],
 	},
 	ss1: {
-		desc: "味方全体の状態異常回復",
+		desc: "<状態異常回復>味方全体の状態異常回復",
 		turn: 6,
 		proc: [ss_abstate_cure()],
 	},
@@ -20768,7 +20768,7 @@ Cards = [{
 		proc: [Heal(0.12, [1,0,0,0,0], 0), SpecHeal(0.18, [1,0,0,0,0], [4], 0)],
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し(50%)、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
 		turn: 9,
 		proc: [ss_heal(0.50), ss_abstate_cure()],
 	},
@@ -20791,7 +20791,7 @@ Cards = [{
 		proc: [ChainAttrAttack(3.5, 0, [1,0,0,0,0]), add_cond(ChainAttrAttack(4.5, 0, [1,0,0,0,0]), when_leader())],
 	},
 	ss1: {
-		desc: "攻撃ターンを3遅らせる",
+		desc: "<遅延>攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)],
 	},
@@ -20812,7 +20812,7 @@ Cards = [{
 		proc: [ChainAttrAttack(4.5, 0, [1,0,0,0,0]), add_cond(ChainAttrAttack(5.5, 0, [1,0,0,0,0]), when_leader())],
 	},
 	ss2: {
-		desc: "攻撃ターンを3遅らせ、敵全体へ水属性のダメージ(180%)",
+		desc: "<遅延大魔術>攻撃ターンを3遅らせ、敵全体へ水属性のダメージ(180%)",
 		turn: 15,
 		proc: [ss_delay_all(3), ss_damage_all(1.8, [1])],
 	},
@@ -20835,7 +20835,7 @@ Cards = [{
 		proc: Heal(0.13, [1,0,0,0,0], 0),
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し(50%)、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
 		turn: 7,
 		proc: [ss_heal(0.5), ss_abstate_cure()],
 	},
@@ -20856,7 +20856,7 @@ Cards = [{
 		proc: Heal(0.16, [1,0,0,0,0], 0),
 	},
 	ss2: {
-		desc: "味方全体のHPを完全回復し、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
 		turn: 10,
 		proc: [ss_heal(1.0), ss_abstate_cure()],
 	},
@@ -20879,7 +20879,7 @@ Cards = [{
 		proc: Heal(0.13, [1,0,0,0,0], 0),
 	},
 	ss1: {
-		desc: "解答選択肢を2つ削る",
+		desc: "<解答削り>解答選択肢を2つ削る",
 		turn: 3,
 		proc: [ss_answer_narrow(2)],
 	},
@@ -20900,7 +20900,7 @@ Cards = [{
 		proc: Heal(0.15, [1,0,0,0,0], 0),
 	},
 	ss2: {
-		desc: "解答を見破る",
+		desc: "<解答削り>解答を見破る",
 		turn: 6,
 		proc: [ss_answer_foresight()],
 	},
@@ -20923,7 +20923,7 @@ Cards = [{
 		proc: Heal(0.11, [1,1,0,0,0], 0),
 	},
 	ss1: {
-		desc: "火・水属性の味方の味方を完全回復する",
+		desc: "<回復>火・水属性の味方の味方を完全回復する",
 		turn: 6,
 		proc: [ss_heal(1.0)],
 	},
@@ -20944,7 +20944,7 @@ Cards = [{
 		proc: Heal(0.14, [1,1,0,0,0], 0),
 	},
 	ss2: {
-		desc: "火・水属性の味方の味方を完全回復し、さらに火・水属性の味方を100%で蘇生",
+		desc: "<蘇生>火・水属性の味方の味方を完全回復し、さらに火・水属性の味方を100%で蘇生",
 		turn: 12,
 		proc: [ss_heal(1.0), ss_resurrection([1,1,0,0,0], 1.0)],
 	},
@@ -20968,7 +20968,7 @@ Cards = [{
 		proc: Heal(0.13, [0,1,0,0,0], 0),
 	},
 	ss1: {
-		desc: "攻撃ターンを2遅らせる",
+		desc: "<遅延>攻撃ターンを2遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(2)],
 	},
@@ -20989,7 +20989,7 @@ Cards = [{
 		proc: Heal(0.16, [0,1,0,0,0], 0),
 	},
 	ss2: {
-		desc: "攻撃ターンを2遅らせる、さらに味方全体のHPを回復する(50%)",
+		desc: "<遅延>攻撃ターンを2遅らせる、さらに味方全体のHPを回復する(50%)",
 		turn: 10,
 		proc: [ss_delay_all(2), ss_heal(0.5)],
 	},
@@ -21013,7 +21013,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,1,0,0,0], [0,0,0,1,0], 5),
 	},
 	ss1: {
-		desc: "解答選択肢を2つ削る",
+		desc: "<解答削り>解答選択肢を2つ削る",
 		turn: 3,
 		proc: [ss_answer_narrow(2)],
 	},
@@ -21034,7 +21034,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.9, 1.4, [0,1,0,0,0], [0,0,0,1,0], 5),
 	},
 	ss2: {
-		desc: "解答を見破る",
+		desc: "<解答削り>解答を見破る",
 		turn: 5,
 		proc: [ss_answer_foresight()],
 	},
@@ -21056,7 +21056,7 @@ Cards = [{
 		proc: Heal(0.13, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し(50%)、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
 		turn: 8,
 		proc: [ss_heal(0.5), ss_abstate_cure()],
 	},
@@ -21077,7 +21077,7 @@ Cards = [{
 		proc: Heal(0.15, [0,0,1,0,0], 0),
 	},
 	ss2: {
-		desc: "味方全体のHPを完全回復し、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
 		turn: 10,
 		proc: [ss_heal(1.0), ss_abstate_cure()],
 	},
@@ -21100,7 +21100,7 @@ Cards = [{
 		proc: Heal(0.13, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "味方全体の状態異常を回復する",
+		desc: "<状態異常回復>味方全体の状態異常を回復する",
 		turn: 4,
 		proc: [ss_abstate_cure()],
 	},
@@ -21121,7 +21121,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,0,1,0,0], 0), ChainEnhance(0.30, [0,0,1,0,0], 0)],
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50%を使い敵全体へ雷属性のダメージ(90%×人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へ雷属性のダメージ(90%×人数)",
 		turn: 8,
 		proc: [ss_damage_all(ss_consume_all_cond(0.90, 0.5), [2])],
 	},
@@ -21146,7 +21146,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.11, 0.15, 0.17, [1,0,0,0,0], 0),
 	},
 	ss1: {
-		desc: "自分を犠牲に味方全体のHPを回復し(50%)、状態異常を回復、さらに火属性の味方を50%で蘇生",
+		desc: "<状態異常回復&蘇生>自分を犠牲に味方全体のHPを回復し(50%)、状態異常を回復、さらに火属性の味方を50%で蘇生",
 		turn: 7,
 		proc: [ss_heal(0.5), ss_abstate_cure(), ss_resurrection([1,0,0,0,0], 0.5), ss_consume_own(1)],
 	},
@@ -21167,7 +21167,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.13, 0.17, 0.20, [1,0,0,0,0], 0),
 	},
 	ss2: {
-		desc: "自分を犠牲に味方全体のHPを完全回復し、状態異常を回復、さらに火属性の味方を75%で蘇生",
+		desc: "<状態異常回復&蘇生>自分を犠牲に味方全体のHPを完全回復し、状態異常を回復、さらに火属性の味方を75%で蘇生",
 		turn: 10,
 		proc: [ss_heal(1), ss_abstate_cure(), ss_resurrection([1,0,0,0,0], 0.75), ss_consume_own(1)],
 	},
@@ -21191,7 +21191,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.25, 3, [1,0,0,0,0]),
 	},
 	ss1: {
-		desc: "敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(200%/900%)",
+		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(200%/900%)",
 		turn: 9,
 		proc: [ss_damage_all(special_attr([1,0,0,0,0], 9.0, 2.0), [1])],
 	},
@@ -21212,7 +21212,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.25, 3, [1,0,0,0,0]),
 	},
 	ss2: {
-		desc: "敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(200%/1200%)",
+		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(200%/1200%)",
 		turn: 12,
 		proc: [ss_damage_all(special_attr([1,0,0,0,0], 12.0, 2.0), [1])],
 	},
@@ -21235,7 +21235,7 @@ Cards = [{
 		proc: [add_cond(ChainAttack(3.0, 3), as_hp_absorption(0.05)), add_cond(ChainAttack(4.5, 7), as_hp_absorption(0.05))],
 	},
 	ss1: {
-		desc: "ジャンルパネルを火・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを火・雷属性化",
 		turn: 3,
 		proc: [ss_panel_change([1,0,1,0,0])],
 	},
@@ -21256,7 +21256,7 @@ Cards = [{
 		proc: [add_cond(ChainAttack(3.0, 3), as_hp_absorption(0.05)), add_cond(ChainAttack(5.5, 7), as_hp_absorption(0.05))],
 	},
 	ss2: {
-		desc: "ジャンルパネルを火・雷属性化し、チェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、チェインがプラス1の効果を付与",
 		turn: 6,
 		proc: [ss_panel_change([1,0,1,0,0]), panel_chainplus(1)],
 	},
@@ -21280,7 +21280,7 @@ Cards = [{
 		proc: ChainAttrAttack(4.0, 0, [0,1,0,0,0]),
 	},
 	ss1: {
-		desc: "2ターン雷属性の味方の攻撃力をアップ(40%)",
+		desc: "<ダメージ強化>2ターン雷属性の味方の攻撃力をアップ(40%)",
 		turn: 6,
 		proc: [ss_enhance_all(0.4, 2, [0,0,1,0,0])],
 	},
@@ -21301,7 +21301,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.0, 0, [0,1,0,0,0]),
 	},
 	ss2: {
-		desc: "4ターン雷属性の味方の攻撃力をアップ、リーダー時さらにアップ(50%/70%)",
+		desc: "<ダメージ強化>4ターン雷属性の味方の攻撃力をアップ、リーダー時さらにアップ(50%/70%)",
 		turn: 9,
 		proc: [ss_enhance_all(ss_when_leader(0.7, 0.5), 2, [0,0,1,0,0])],
 	},
@@ -21325,7 +21325,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,1,0,0,0], [0,0,0,1,0], 0),
 	},
 	ss1: {
-		desc: "スキル反射を無視し、水・光属性の3連撃、さらに連撃数分チェインプラス(180%)",
+		desc: "<斬撃大魔術>スキル反射を無視し、水・光属性の3連撃、さらに連撃数分チェインプラス(180%)",
 		turn: 7,
 		proc: [ss_damage_slash(1.8, [1,3], 3), ss_ignore_skillcounter()],
 	},
@@ -21346,7 +21346,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,1,0,0,0], [0,0,0,1,0], 0),
 	},
 	ss2: {
-		desc: "スキル反射を無視し、水・光属性の5連撃、さらに連撃数分チェインプラス(380%)",
+		desc: "<斬撃大魔術>スキル反射を無視し、水・光属性の5連撃、さらに連撃数分チェインプラス(380%)",
 		turn: 10,
 		proc: [ss_damage_slash(3.8, [1,3], 5), ss_ignore_skillcounter()],
 	},
@@ -21369,7 +21369,7 @@ Cards = [{
 		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [0])],
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ(200%)、さらに3ターンの間、火属性のダメージ(200%)",
+		desc: "<残滅大魔術>敵全体へ火属性のダメージ(200%)、さらに3ターンの間、火属性のダメージ(200%)",
 		turn: 7,
 		proc: [ss_continue_damage(2.0, 2.0, [0], 3)],
 	},
@@ -21390,7 +21390,7 @@ Cards = [{
 		proc: [ChainAttack(5.0, 4), ChainSpecAttack(7.0, 4, [0])],
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ(300%)、さらに3ターンの間、火属性のダメージ(300%)",
+		desc: "<残滅大魔術>敵全体へ火属性のダメージ(300%)、さらに3ターンの間、火属性のダメージ(300%)",
 		turn: 9,
 		proc: [ss_continue_damage(3.0, 3.0, [0], 3)],
 	},
@@ -21413,7 +21413,7 @@ Cards = [{
 		proc: [ChainAttrAttack(9.65, 10, [1,0,0,1,0])],
 	},
 	ss1: {
-		desc: "敵単体へ水・闇属性の5回連続ダメージ(180%)",
+		desc: "<多弾魔術>敵単体へ水・闇属性の5回連続ダメージ(180%)",
 		turn: 5,
 		proc: [ss_damage_s(1.8, [1,4], 5)],
 	},
@@ -21434,7 +21434,7 @@ Cards = [{
 		proc: [ChainAttrAttack(10.65, 10, [1,0,0,1,0])],
 	},
 	ss2: {
-		desc: "敵単体へ水・闇属性の5回連続ダメージ、10チェインを消費しさらにダメージアップ(380%/950%)",
+		desc: "<多弾魔術>敵単体へ水・闇属性の5回連続ダメージ、10チェインを消費しさらにダメージアップ(380%/950%)",
 		turn: 8,
 		proc: [ss_chain_cost_skill(10, ss_damage_s(9.5, [1,4], 5), ss_damage_s(3.8, [1,4], 5))],
 	},
@@ -21457,7 +21457,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.0, 4, [0,1,0,0,1]) ,
 	},
 	ss1: {
-		desc: "敵全体へ雷属性のダメージ(300%)◆スキル使用後、1ターン封印状態に",
+		desc: "<反動大魔術>敵全体へ雷属性のダメージ(300%)◆スキル使用後、1ターン封印状態に",
 		turn: 3,
 		proc: [ss_damage_all(3.0, [2]), ss_allsealed_own(1)],
 	},
@@ -21478,7 +21478,7 @@ Cards = [{
 		proc: ChainAttrAttack(7.0, 4, [0,1,0,0,1]) ,
 	},
 	ss2: {
-		desc: "敵全体へ雷属性のダメージ(500%)◆スキル使用後、1ターン封印状態に",
+		desc: "<反動大魔術>敵全体へ雷属性のダメージ(500%)◆スキル使用後、1ターン封印状態に",
 		turn: 5,
 		proc: [ss_damage_all(5.0, [2]), ss_allsealed_own(1)],
 	},
@@ -21501,7 +21501,7 @@ Cards = [{
 		proc: Heal(0.13, [0,1,0,0,0], 0),
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し(50%)、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
 		turn: 7,
 		proc: [ss_heal(0.5), ss_abstate_cure()],
 	},
@@ -21522,7 +21522,7 @@ Cards = [{
 		proc: Heal(0.16, [0,1,0,0,0], 0),
 	},
 	ss2: {
-		desc: "味方全体のHPを完全回復し、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
 		turn: 10,
 		proc: [ss_heal(1.0), ss_abstate_cure()],
 	},
@@ -21546,7 +21546,7 @@ Cards = [{
 		proc: [Heal(0.10, [1,1,0,0,0], 0), Heal(0.17, [1,1,0,0,0], 7)],
 	},
 	ss1: {
-		desc: "味方全体のHPを500アップ(上限値:2000)、さらにHPを回復(50%)",
+		desc: "<ステータスアップ>味方全体のHPを500アップ(上限値:2000)、さらにHPを回復(50%)",
 		turn: 5,
 		proc: [ss_statusup_all([500, 0], [2000, 2000], -1), ss_heal(0.5)],
 	},
@@ -21567,7 +21567,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,1,0,0,0], 0), Heal(0.20, [1,1,0,0,0], 7)],
 	},
 	ss2: {
-		desc: "味方全体のHPを1000アップ(上限値:2000)、さらにHPを完全回復",
+		desc: "<ステータスアップ>味方全体のHPを1000アップ(上限値:2000)、さらにHPを完全回復",
 		turn: 8,
 		proc: [ss_statusup_all([1000, 0], [2000, 2000], -1), ss_heal(1)],
 	},
@@ -21591,7 +21591,7 @@ Cards = [{
 		proc: ChainEnhance(0.60, [0,1,1,0,0], 5),
 	},
 	ss1: {
-		desc: "味方全員のHPを回復し、状態異常を回復する(50%)",
+		desc: "<状態異常回復>味方全員のHPを回復し、状態異常を回復する(50%)",
 		turn: 7,
 		proc: [ss_heal(0.5), ss_abstate_cure()],
 	},
@@ -21612,7 +21612,7 @@ Cards = [{
 		proc: ChainEnhance(0.90, [0,1,1,0,0], 5),
 	},
 	ss2: {
-		desc: "味方全員のHPを回復し、状態異常を回復、さらに水・雷属性の味方を50%で蘇生(50%)",
+		desc: "<状態異常回復&蘇生>味方全員のHPを回復し、状態異常を回復、さらに水・雷属性の味方を50%で蘇生(50%)",
 		turn: 11,
 		proc: [ss_heal(0.5), ss_abstate_cure(), ss_resurrection([0,1,1,0,0], 0.50)],
 	},
@@ -21636,7 +21636,7 @@ Cards = [{
 		proc: ChainAttrAttack(3.0, 0, [1,0,0,0,0]),
 	},
 	ss1: {
-		desc: "2ターン敵の状態異常攻撃を無効化",
+		desc: "<状態異常無効>2ターン敵の状態異常攻撃を無効化",
 		turn: 8,
 		proc: [ss_absattack_disable(2)],
 	},
@@ -21668,7 +21668,7 @@ Cards = [{
 		proc: ChainVarianceAttack(3.0, 2),
 	},
 	ss1: {
-		desc: "MAXHPの70%を使い敵全体へダメージ(260%)",
+		desc: "<自己犠牲魔術>MAXHPの70%を使い敵全体へダメージ(260%)",
 		turn: 7,
 		proc: [ss_consume_own(0.7), ss_damage_all(2.6, [0])],
 	},
@@ -21689,7 +21689,7 @@ Cards = [{
 		proc: [ChainVarianceAttack(7.0, 2), as_consume_own(0.20)],
 	},
 	ss2: {
-		desc: "MAXHPの70%を使い敵全体へダメージ(330%)",
+		desc: "<自己犠牲魔術>MAXHPの70%を使い敵全体へダメージ(330%)",
 		turn: 9,
 		proc: [ss_consume_own(0.7), ss_damage_all(3.3, [0])],
 	},
@@ -21713,7 +21713,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(3.0, 0), when_hp_more(0.8)),
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを1早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早める",
 		turn: 6,
 		proc: [ss_skillboost(1)],
 	},
@@ -21734,7 +21734,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(4.0, 0), when_hp_more(0.8)),
 	},
 	ss2: {
-		desc: "ジャンルパネルにスキルチャージ(1)、回復(10%)をランダムで付与",
+		desc: "<特殊パネル変換>ジャンルパネルにスキルチャージ(1)、回復(10%)をランダムで付与",
 		turn: 9,
 		proc: [panel_skillboost(1), panel_healally(0.1)],
 	},
@@ -21758,7 +21758,7 @@ Cards = [{
 		proc: ChainDualAttack(2.75, 0, 3),
 	},
 	ss1: {
-		desc: "敵単体のHPを15%減少させる、HP50%以下でさらに15%減少させる",
+		desc: "<割合削り>敵単体のHPを15%減少させる、HP50%以下でさらに15%減少させる",
 		turn: 9,
 		proc: [ss_ratiodamage_s(ss_hp_less(0.50, 0.30, 0.15))],
 	},
@@ -21779,7 +21779,7 @@ Cards = [{
 		proc: ChainDualAttack(3.5, 0, 3),
 	},
 	ss2: {
-		desc: "敵単体のHPを20%減少させる、HP50%以下でさらに20%減少させる",
+		desc: "<割合削り>敵単体のHPを20%減少させる、HP50%以下でさらに20%減少させる",
 		turn: 12,
 		proc: [ss_ratiodamage_s(ss_hp_less(0.5, 0.4, 0.2))],
 	},
@@ -21803,7 +21803,7 @@ Cards = [{
 		proc: add_cond(ChainDualAttack(4.0, 3, 3), as_consume_own(0.15)),
 	},
 	ss1: {
-		desc: "味方全体のHPを1000ダウンし、攻撃力を1000アップ(上限2000)",
+		desc: "<ステータスアップ>味方全体のHPを1000ダウンし、攻撃力を1000アップ(上限2000)",
 		turn: 5,
 		proc: [ss_statusup_all([-1000, 1000], [2000, 2000], -1)],
 	},
@@ -21824,7 +21824,7 @@ Cards = [{
 		proc: add_cond(ChainDualAttack(5.0, 3, 3), as_consume_own(0.15)),
 	},
 	ss2: {
-		desc: "MAXHPを100%使い敵単体へ雷属性のダメージ、さらに水属性の敵には特攻ダメージ(300%/1200%)",
+		desc: "<自己犠牲魔術>MAXHPを100%使い敵単体へ雷属性のダメージ、さらに水属性の敵には特攻ダメージ(300%/1200%)",
 		turn: 7,
 		proc: [ss_damage_s(special_attr([0, 1, 0, 0, 0], 12.0, 3.0), [2], 1), ss_consume_own(1)],
 	},
@@ -21847,7 +21847,7 @@ Cards = [{
 		proc: [ChainDualAttack(4.0, 6, 3), add_cond(ChainDualAttack(6.0, 6, 3), when_hp_more(0.5))],
 	},
 	ss1: {
-		desc: "スキル反射を無視し、火・雷属性の3連撃(180%)、さらに連撃数分チェインプラス",
+		desc: "<斬撃大魔術>スキル反射を無視し、火・雷属性の3連撃(180%)、さらに連撃数分チェインプラス",
 		turn: 7,
 		proc: [ss_damage_slash(1.8, [0, 2], 3), ss_ignore_skillcounter()],
 	},
@@ -21868,7 +21868,7 @@ Cards = [{
 		proc: [ChainDualAttack(5.0, 6, 3), add_cond(ChainDualAttack(7.0, 6, 3), when_hp_more(0.5))],
 	},
 	ss2: {
-		desc: "スキル反射を無視し、火・雷属性の5連撃(380%)、さらに連撃数分チェインプラス",
+		desc: "<斬撃大魔術>スキル反射を無視し、火・雷属性の5連撃(380%)、さらに連撃数分チェインプラス",
 		turn: 10,
 		proc: [ss_damage_slash(3.8, [0, 2], 5), ss_ignore_skillcounter()],
 	},
@@ -21891,7 +21891,7 @@ Cards = [{
 		proc: ChainPanelsDualAttack(4.5, 5.5, 7.0, 3, 6),
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、状態異常を回復する(50%)",
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(50%)",
 		turn: 7,
 		proc: [ss_heal(0.5), ss_abstate_cure()],
 	},
@@ -21912,7 +21912,7 @@ Cards = [{
 		proc: ChainPanelsDualAttack(5.5, 6.5, 8.0, 3, 6),
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し(50%)、状態異常を回復、さらに味方全体を50%で蘇生",
+		desc: "<状態異常回復&蘇生>味方全体のHPを回復し(50%)、状態異常を回復、さらに味方全体を50%で蘇生",
 		turn: 10,
 		proc: [ss_heal(0.5), ss_abstate_cure(), ss_resurrection([1, 1, 1, 1, 1], 0.50)],
 	},
@@ -21935,7 +21935,7 @@ Cards = [{
 		proc: [ChainVarianceAttack(4.0, 4), ChainVarianceAttack(6.0, 10)],
 	},
 	ss1: {
-		desc: "敵全体へ雷属性のダメージ(200%)、さらに3ターンの間、雷属性のダメージ(200%)",
+		desc: "<残滅大魔術>敵全体へ雷属性のダメージ(200%)、さらに3ターンの間、雷属性のダメージ(200%)",
 		turn: 7,
 		proc: [ss_continue_damage(2.0, 2.0, [2], 3)],
 	},
@@ -21956,7 +21956,7 @@ Cards = [{
 		proc: [ChainVarianceAttack(5.0, 4), ChainVarianceAttack(7.0, 10)],
 	},
 	ss2: {
-		desc: "敵全体へ雷属性のダメージ(300%)、さらに3ターンの間、雷属性のダメージ(300%)",
+		desc: "<残滅大魔術>敵全体へ雷属性のダメージ(300%)、さらに3ターンの間、雷属性のダメージ(300%)",
 		turn: 9,
 		proc: [ss_continue_damage(3.0, 3.0, [2], 3)],
 	},
@@ -21980,7 +21980,7 @@ Cards = [{
 		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [2, 3])],
 	},
 	ss1: {
-		desc: "味方のMAXHP70%を使い、敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(400%/900%)",
+		desc: "<特効大魔術>味方のMAXHP70%を使い、敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(400%/900%)",
 		turn: 6,
 		proc: [ss_damage_all(special_attr([0, 0, 1, 0, 0], 9.0, 4.0), [0]), ss_consume_all(0.70)],
 	},
@@ -22001,7 +22001,7 @@ Cards = [{
 		proc: [add_cond(ChainAttack(7.0, 4), as_consume_own(0.20)), add_cond(ChainSpecAttack(9.0, 4, [2, 3]), as_consume_own(0.20))],
 	},
 	ss2: {
-		desc: "味方のMAXHP70%を使い、敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(400%/1300%)",
+		desc: "<特効大魔術>味方のMAXHP70%を使い、敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(400%/1300%)",
 		turn: 9,
 		proc: [ss_damage_all(special_attr([0, 0, 1, 0, 0], 13.0, 4.0), [0]), ss_consume_all(0.70)],
 	},
@@ -22024,7 +22024,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.5, 1.0, [0, 1, 0, 0, 0], [1, 0, 0, 0, 0], 4),
 	},
 	ss1: {
-		desc: "味方全体の攻撃力を500アップ(上限値2000)、さらにHPを回復(50%)",
+		desc: "<ステータスアップ>味方全体の攻撃力を500アップ(上限値2000)、さらにHPを回復(50%)",
 		turn: 5,
 		proc: [ss_statusup_all([0, 500], [2000, 2000], -1), ss_heal(0.5)],
 	},
@@ -22045,7 +22045,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.8, 1.3, [0, 1, 0, 0, 0], [1, 0, 0, 0, 0], 4),
 	},
 	ss2: {
-		desc: "味方全体の攻撃力を1000アップ(上限値2000)、さらにHPを完全回復",
+		desc: "<ステータスアップ>味方全体の攻撃力を1000アップ(上限値2000)、さらにHPを完全回復",
 		turn: 8,
 		proc: [ss_statusup_all([0, 1000], [2000, 2000], -1), ss_heal(1.0)],
 	},
@@ -22068,7 +22068,7 @@ Cards = [{
 		proc: ChainPanelsEnhance(0.30, 0.30, 1.1, [0, 0, 1, 0, 0], 0),
 	},
 	ss1: {
-		desc: "3ターン雷属性の味方の攻撃力をアップ、10チェインを消費しさらにアップ(60%/120%)",
+		desc: "<ダメージ強化>3ターン雷属性の味方の攻撃力をアップ、10チェインを消費しさらにアップ(60%/120%)",
 		turn: 7,
 		proc: [ss_chain_cost_skill(10, ss_enhance_all(1.20, 3, [0, 0, 1, 0, 0]), ss_enhance_all(0.60, 3, [0, 0, 1, 0, 0]))],
 	},
@@ -22089,7 +22089,7 @@ Cards = [{
 		proc: ChainPanelsEnhance(0.50, 0.50, 1.3, [0, 0, 1, 0, 0], 0),
 	},
 	ss2: {
-		desc: "3ターン雷属性の味方の攻撃力をアップ、10チェインを消費しさらにアップ(120%/220%)",
+		desc: "<ダメージ強化>3ターン雷属性の味方の攻撃力をアップ、10チェインを消費しさらにアップ(120%/220%)",
 		turn: 10,
 		proc: [ss_chain_cost_skill(10, ss_enhance_all(2.20, 3, [0, 0, 1, 0, 0]), ss_enhance_all(1.20, 3, [0, 0, 1, 0, 0]))],
 	},
@@ -22111,7 +22111,7 @@ Cards = [{
 		proc: Heal(0.13, [0, 1, 1, 0, 0], 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルをシャッフル",
+		desc: "<シャッフル>ジャンルパネルをシャッフル",
 		turn: 1,
 		proc: [ss_panel_shuffle()],
 	},
@@ -22132,7 +22132,7 @@ Cards = [{
 		proc: [Heal(0.16, [0, 1, 1, 0, 0], 0), ChainEnhance(0.30, [0, 1, 1, 0, 0], 0)],
 	},
 	ss2: {
-		desc: "ジャンルパネルにチェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
 		turn: 3,
 		proc: [panel_chainplus(1)],
 	},
@@ -22154,7 +22154,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.0, 0, [1, 0, 1, 1, 1, ]),
 	},
 	ss1: {
-		desc: "味方全体のHPを回復する(70%)",
+		desc: "<回復>味方全体のHPを回復する(70%)",
 		turn: 6,
 		proc: [ss_heal(0.70)],
 	},
@@ -22175,7 +22175,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.0, 0, [1, 0, 1, 1, 1, ]),
 	},
 	ss2: {
-		desc: "味方全体のHPを完全回復し、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
 		turn: 9,
 		proc: [ss_heal(1.0), ss_abstate_cure()],
 	},
@@ -22198,7 +22198,7 @@ Cards = [{
 		proc: [Heal(0.11, [1, 1, 0, 0, 0], 0), Heal(0.17, [1, 1, 0, 0, 0], 7)],
 	},
 	ss1: {
-		desc: "攻撃ターンを2遅らせる",
+		desc: "<遅延>攻撃ターンを2遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(2)],
 	},
@@ -22219,7 +22219,7 @@ Cards = [{
 		proc: [Heal(0.14, [1, 1, 0, 0, 0], 0), Heal(0.20, [1, 1, 0, 0, 0], 7)],
 	},
 	ss2: {
-		desc: "チェインプラス3の効果、さらに攻撃ターンを3遅らせる",
+		desc: "<遅延>チェインプラス3の効果、さらに攻撃ターンを3遅らせる",
 		turn: 12,
 		proc: [ss_addchain(3), ss_delay_all(3)],
 	},
@@ -22243,7 +22243,7 @@ Cards = [{
 		proc: [Heal(0.13, [0, 1, 0, 0, 0], 0), add_cond(Heal(0.38, [0, 1, 0, 0, 0], 0), when_hp_less(0.20))],
 	},
 	ss1: {
-		desc: "2ターン、致死ダメージを受けたら一度だけHP25%で起死回生",
+		desc: "<起死回生>2ターン、致死ダメージを受けたら一度だけHP25%で起死回生",
 		turn: 9,
 		proc: [ss_revival(0.25, 2)],
 	},
@@ -22264,7 +22264,7 @@ Cards = [{
 		proc: [Heal(0.17, [0, 1, 0, 0, 0], 0), add_cond(Heal(0.42, [0, 1, 0, 0, 0], 0), when_hp_less(0.20))],
 	},
 	ss2: {
-		desc: "2ターン、致死ダメージを受けたら一度だけHP25%で起死回生、5チェインを消費しさらに2ターン継続しHP50%で起死回生",
+		desc: "<起死回生>2ターン、致死ダメージを受けたら一度だけHP25%で起死回生、5チェインを消費しさらに2ターン継続しHP50%で起死回生",
 		turn: 11,
 		proc: [ss_chain_cost_skill(5, ss_revival(0.50, 4), ss_revival(0.25, 2))],
 	},
@@ -22288,7 +22288,7 @@ Cards = [{
 		proc: Heal(0.14, [1, 1, 1, 1, 1], 0),
 	},
 	ss1: {
-		desc: "3ターンの間、チェインを保護する",
+		desc: "<チェインガード>3ターンの間、チェインを保護する",
 		turn: 5,
 		proc: [ss_chain_protect(3)],
 	},
@@ -22309,7 +22309,7 @@ Cards = [{
 		proc: Heal(0.17, [1, 1, 1, 1, 1], 0),
 	},
 	ss2: {
-		desc: "6ターンの間、チェインを保護する",
+		desc: "<チェインガード>6ターンの間、チェインを保護する",
 		turn: 8,
 		proc: [ss_chain_protect(6)],
 	},
@@ -22333,7 +22333,7 @@ Cards = [{
 		proc: ChainPanelsEnhance(0.60, 0.90, 0.90, [0, 0, 1, 0, 0], 5),
 	},
 	ss1: {
-		desc: "ジャンルパネルを雷・闇属性化",
+		desc: "<パネル変換>ジャンルパネルを雷・闇属性化",
 		turn: 3,
 		proc: [ss_panel_change([0,0,1,0,1])],
 	},
@@ -22354,7 +22354,7 @@ Cards = [{
 		proc: ChainPanelsEnhance(0.90, 1.20, 1.20, [0, 0, 1, 0, 0], 5),
 	},
 	ss2: {
-		desc: "ジャンルパネルを雷・闇属性化し、ダメージ35%軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを雷・闇属性化し、ダメージ35%軽減の効果を付与",
 		turn: 7,
 		proc: [ss_panel_change([0,0,1,0,1]), panel_attr_guard([1,1,1,1,1], 0.35)],
 	},
@@ -22377,7 +22377,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.50, [9], 2),
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ(180%)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(180%)",
 		turn: 8,
 		proc: [ss_damage_all(1.8, [0])],
 	},
@@ -22397,7 +22397,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.70, [9], 2),
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ(260%)",
+		desc: "<大魔術>敵全体へ火属性のダメージ(260%)",
 		turn: 12,
 		proc: [ss_damage_all(2.6, [0])],
 	},
@@ -22421,7 +22421,7 @@ Cards = [{
 		proc: [ChainDualAttrAttack(2.5, 0, 5, [0, 1, 0, 0, 0]), add_cond(ChainDualAttrAttack(3.5, 0, 5, [0, 1, 0, 0, 0]), when_hp_more(0.80))],
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
 		turn: 9,
 		proc: [ss_skillboost(2)],
 	},
@@ -22453,7 +22453,7 @@ Cards = [{
 		proc: [Heal(0.10, [1, 0, 0, 0, 0], 0), Heal(0.15, [1, 0, 0, 0, 0], 5)],
 	},
 	ss1: {
-		desc: "2ターン敵の状態異常攻撃を無効化する、5チェインを消費さらに2ターン無効化",
+		desc: "<状態異常無効>2ターン敵の状態異常攻撃を無効化する、5チェインを消費さらに2ターン無効化",
 		turn: 7,
 		proc: [ss_chain_cost_skill(5, ss_absattack_disable(4), ss_absattack_disable(2))],
 	},
@@ -22474,7 +22474,7 @@ Cards = [{
 		proc: [Heal(0.13, [1, 0, 0, 0, 0], 0), Heal(0.18, [1, 0, 0, 0, 0], 5)],
 	},
 	ss2: {
-		desc: "3ターン敵の状態異常攻撃を無効化する、5チェインを消費さらに3ターン無効化",
+		desc: "<状態異常無効>3ターン敵の状態異常攻撃を無効化する、5チェインを消費さらに3ターン無効化",
 		turn: 9,
 		proc: [ss_chain_cost_skill(5, ss_absattack_disable(6), ss_absattack_disable(3))],
 	},
@@ -22498,7 +22498,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.3, 0.7, [0, 1, 0, 0, 0], [1, 0, 0, 0, 0], 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルにダメージ軽減(25%)、スキルチャージ(1)、チェイン(2)、攻撃力アップ(50%)の効果をランダムで付与",
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ軽減(25%)、スキルチャージ(1)、チェイン(2)、攻撃力アップ(50%)の効果をランダムで付与",
 		turn: 6,
 		proc: [panel_skillboost(1), panel_chainplus(2), panel_attackup(0.50)],
 	},
@@ -22519,7 +22519,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.6, 1.0, [0, 1, 0, 0, 0], [1, 0, 0, 0, 0], 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルにダメージ軽減(50%)、スキルチャージ(2)、チェイン(4)、攻撃力アップ(50%)の効果をランダムで付与",
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ軽減(50%)、スキルチャージ(2)、チェイン(4)、攻撃力アップ(50%)の効果をランダムで付与",
 		turn: 10,
 		proc: [panel_skillboost(2), panel_chainplus(4), panel_attackup(0.50)],
 	},
@@ -22543,7 +22543,7 @@ Cards = [{
 		proc: Heal(0.13, [1, 0, 1, 0, 0], 0),
 	},
 	ss1: {
-		desc: "味方全体の攻撃力を500ダウンし、味方全体のHPを500アップ(上限値2000)、さらにHPを回復(50%)",
+		desc: "<ステータスアップ>味方全体の攻撃力を500ダウンし、味方全体のHPを500アップ(上限値2000)、さらにHPを回復(50%)",
 		turn: 5,
 		proc: [ss_statusup_all([500, -500], [2000, 2000], -1), ss_heal(0.5)],
 	},
@@ -22564,7 +22564,7 @@ Cards = [{
 		proc: Heal(0.16, [1, 0, 1, 0, 0], 0),
 	},
 	ss2: {
-		desc: "味方全体の攻撃力を500ダウンし、味方全体のHPを1000アップ(上限値2000)、さらにHPを回復(50%)",
+		desc: "<ステータスアップ>味方全体の攻撃力を500ダウンし、味方全体のHPを1000アップ(上限値2000)、さらにHPを回復(50%)",
 		turn: 8,
 		proc: [ss_statusup_all([1000, -500], [2000, 2000], -1), ss_heal(0.5)],
 	},
@@ -22588,7 +22588,7 @@ Cards = [{
 		proc: ChainDualAttack(4.0, 5, 5),
 	},
 	ss1: {
-		desc: "直前に発動したスキルを発動する",
+		desc: "<スキルコピー>直前に発動したスキルを発動する",
 		turn: 9,
 		proc: [ss_latest_copy()],
 	},
@@ -22619,7 +22619,7 @@ Cards = [{
 		proc: ChainPanelsAttrAttack(3.5, 4.5, 5.5, [0,1,0,0,0], 0),
 	},
 	ss1: {
-		desc: "敵全体へ雷属性のダメージ(400%)◆スキル使用後、1ターン封印状態に",
+		desc: "<反動大魔術>敵全体へ雷属性のダメージ(400%)◆スキル使用後、1ターン封印状態に",
 		turn: 4,
 		proc: [ss_damage_all(4.0, [2]), ss_allsealed_own(1)],
 	},
@@ -22640,7 +22640,7 @@ Cards = [{
 		proc: ChainPanelsAttrAttack(4.5, 5.5, 6.5, [0,1,0,0,0], 0),
 	},
 	ss2: {
-		desc: "敵全体へ雷属性のダメージ(600%)◆スキル使用後、1ターン封印状態に",
+		desc: "<反動大魔術>敵全体へ雷属性のダメージ(600%)◆スキル使用後、1ターン封印状態に",
 		turn: 6,
 		proc: [ss_damage_all(6.0, [2]), ss_allsealed_own(1)],
 	},
@@ -22662,7 +22662,7 @@ Cards = [{
 		proc: [ChainEnhance(0.80, [0,1,0,0,0], 7), ChainEnhance(1.8, [0,1,0,0,0], 20)],
 	},
 	ss1: {
-		desc: "攻撃ターンを3遅らせる",
+		desc: "<遅延>攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)],
 	},
@@ -22683,7 +22683,7 @@ Cards = [{
 		proc: [ChainEnhance(1.0, [0,1,0,0,0], 7), ChainEnhance(2.0, [0,1,0,0,0], 20)],
 	},
 	ss2: {
-		desc: "攻撃ターンを3遅らせる、さらに味方全体のHPを回復する(50%)",
+		desc: "<遅延>攻撃ターンを3遅らせる、さらに味方全体のHPを回復する(50%)",
 		turn: 12,
 		proc: [ss_delay_all(3), ss_heal(0.50)],
 	},
@@ -22702,7 +22702,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,0,1,0,0], [0,1,0,0,0], 0),
 	},
 	ss1: {
-		desc: "敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/500%)",
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/500%)",
 		turn: 6,
 		proc: [ss_damage_all(special_attr([0,1,0,0,0], 5.0, 2.0), [2])],
 	},
@@ -22723,7 +22723,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,0,1,0,0], [0,1,0,0,0], 0),
 	},
 	ss2: {
-		desc: "敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/900%)",
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/900%)",
 		turn: 9,
 		proc: [ss_damage_all(special_attr([0,1,0,0,0], 9.0, 2.0), [2])],
 	},
@@ -22746,7 +22746,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 4.0, 5.5, 3),
 	},
 	ss1: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 4,
 		proc: [ss_panel_change([1,1,1,0,0])],
 	},
@@ -22767,7 +22767,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 5.0, 7.0, 3),
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化し、チェインプラスが2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、チェインプラスが2の効果を付与",
 		turn: 7,
 		proc: [ss_panel_change([1,1,1,0,0]), panel_chainplus(2)],
 	},
@@ -22789,7 +22789,7 @@ Cards = [{
 		proc: [Heal(0.11, [1,1,0,0,0], 0), add_cond(Heal(0.21, [1,1,0,0,0], 0), when_hp_less(0.50))],
 	},
 	ss1: {
-		desc: "ジャンルパネルを火・水属性化",
+		desc: "<パネル変換>ジャンルパネルを火・水属性化",
 		turn: 3,
 		proc: [ss_panel_change([1,1,0,0,0])],
 	},
@@ -22810,7 +22810,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,1,0,0,0], 0), add_cond(Heal(0.23, [1,1,0,0,0], 0), when_hp_less(0.50))],
 	},
 	ss2: {
-		desc: "ジャンルパネルを火・水属性化し、ダメージ25%軽減の効果を付与。HP20%以下でさらにダメージ35%軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを火・水属性化し、ダメージ25%軽減の効果を付与。HP20%以下でさらにダメージ35%軽減の効果を付与",
 		turn: 6,
 		proc: [ss_panel_change([1,1,0,0,0]), panel_attr_guard([1,1,1,1,1], ss_hp_less(0.20, 0.60, 0.25))],
 	},
@@ -22832,7 +22832,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.11, 0.15, 0.17, [1,1,1,1,1], 0),
 	},
 	ss1: {
-		desc: "敵全体へ水属性のダメージ(200%)、さらに3ターンの間、水属性のダメージ(200%)",
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(200%)、さらに3ターンの間、水属性のダメージ(200%)",
 		turn: 7,
 		proc: [ss_continue_damage(2.0, 2.0, [1], 3)],
 	},
@@ -22853,7 +22853,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.13, 0.17, 0.20, [1,1,1,1,1], 0),
 	},
 	ss2: {
-		desc: "敵全体へ水属性のダメージ(300%)、さらに3ターンの間、水属性のダメージ(300%)",
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(300%)、さらに3ターンの間、水属性のダメージ(300%)",
 		turn: 9,
 		proc: [ss_continue_damage(3.0, 3.0, [1], 3)],
 	},
@@ -22875,7 +22875,7 @@ Cards = [{
 		proc: [Heal(0.11, [0,1,0,0,0], 0), add_cond(Heal(0.21, [0,1,0,0,0], 0), when_hp_less(0.50))],
 	},
 	ss1: {
-		desc: "味方全体の状態異常を回復する",
+		desc: "<状態異常回復>味方全体の状態異常を回復する",
 		turn: 4,
 		proc: [ss_abstate_cure()],
 	},
@@ -22896,7 +22896,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,1,0,0,0], 0), add_cond(Heal(0.23, [0,1,0,0,0], 0), when_hp_less(0.50))],
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し(70%)、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを回復し(70%)、状態異常を回復する",
 		turn: 7,
 		proc: [ss_heal(0.70), ss_abstate_cure()],
 	},
@@ -22920,7 +22920,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,0,1,0,0], [1,0,0,0,0], 0),
 	},
 	ss1: {
-		desc: "3ターン火・雷属性の味方の攻撃力をアップ、5チェインを消費してさらにアップ(60%/100%)",
+		desc: "<ダメージ強化>3ターン火・雷属性の味方の攻撃力をアップ、5チェインを消費してさらにアップ(60%/100%)",
 		turn: 7,
 		proc: [ss_chain_cost_skill(5, ss_enhance_all(1.0, 3, [1,0,1,0,0]), ss_enhance_all(0.60, 3, [1,0,1,0,0]))],
 	},
@@ -22941,7 +22941,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,0,1,0,0], [1,0,0,0,0], 0),
 	},
 	ss2: {
-		desc: "3ターン火・雷属性の味方の攻撃力をアップ、5チェインを消費してさらにアップ(120%/180%)",
+		desc: "<ダメージ強化>3ターン火・雷属性の味方の攻撃力をアップ、5チェインを消費してさらにアップ(120%/180%)",
 		turn: 10,
 		proc: [ss_chain_cost_skill(5, ss_enhance_all(1.8, 3, [1,0,1,0,0]), ss_enhance_all(1.2, 3, [1,0,1,0,0]))],
 	},
@@ -22963,7 +22963,7 @@ Cards = [{
 		proc: ChainPanelsEnhance(0.30, 0.50, 0.80, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "3ターン全属性のダメージを50%軽減する",
+		desc: "<ガード>3ターン全属性のダメージを50%軽減する",
 		turn: 8,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)],
 	},
@@ -22984,7 +22984,7 @@ Cards = [{
 		proc: ChainPanelsEnhance(0.50, 0.70, 1.0, [0,0,1,0,0], 0),
 	},
 	ss2: {
-		desc: "3ターン全属性のダメージを50%軽減する、5チェインを消費しさらに2ターン軽減",
+		desc: "<ガード>3ターン全属性のダメージを50%軽減する、5チェインを消費しさらに2ターン軽減",
 		turn: 12,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.5, ss_chain_cost(5, 5, 3))],
 	},
@@ -23007,7 +23007,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(5.25, 3, 10, [0, 1, 0, 0, 0]),
 	},
 	ss1: {
-		desc: "敵単体へ雷属性の10回連続ダメージ(180%)",
+		desc: "<多弾魔術>敵単体へ雷属性の10回連続ダメージ(180%)",
 		turn: 5,
 		proc: [ss_damage_s(1.8, [2], 10)],
 	},
@@ -23028,7 +23028,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(6.25, 3, 10, [0, 1, 0, 0, 0]),
 	},
 	ss2: {
-		desc: "敵単体へ雷属性の10回連続ダメージ、5チェイン消費しさらにダメージアップ(320%/640%)",
+		desc: "<多弾魔術>敵単体へ雷属性の10回連続ダメージ、5チェイン消費しさらにダメージアップ(320%/640%)",
 		turn: 8,
 		proc: [ss_chain_cost_skill(5, ss_damage_s(6.4, [2], 10), ss_damage_s(3.2, [2], 10))],
 	},
@@ -23051,7 +23051,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [1, 1, 0, 0, 0], 0), ChainEnhance(0.50, [1, 1, 0, 0, 0], 5)],
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
 		turn: 8,
 		proc: [ss_skillboost(2)],
 	},
@@ -23072,7 +23072,7 @@ Cards = [{
 		proc: [ChainEnhance(0.60, [1, 1, 0, 0, 0], 0), ChainEnhance(0.80, [1, 1, 0, 0, 0], 5)],
 	},
 	ss2: {
-		desc: "スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
 		turn: 9,
 		proc: [ss_skillboost(2), ss_delay_s(2)],
 	},
@@ -23096,7 +23096,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [1,0,0,0,0], 0), add_cond(ChainEnhance(0.40, [1,0,0,0,0], 0), when_leader())],
 	},
 	ss1: {
-		desc: "味方全体のHPを回復する(50%)",
+		desc: "<回復>味方全体のHPを回復する(50%)",
 		turn: 6,
 		proc: [ss_heal(0.50)],
 	},
@@ -23117,7 +23117,7 @@ Cards = [{
 		proc: [ChainEnhance(0.40, [1,0,0,0,0], 0), add_cond(ChainEnhance(0.60, [1,0,0,0,0], 0), when_leader())],
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し、状態異常を回復する(50%)",
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(50%)",
 		turn: 9,
 		proc: [ss_heal(0.50), ss_abstate_cure()],
 	},
@@ -23141,7 +23141,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [1,0,0,0,0], 0), add_cond(ChainEnhance(0.40, [1,0,0,0,0], 0), when_leader())],
 	},
 	ss1: {
-		desc: "味方全体のHPを回復する(50%)",
+		desc: "<回復>味方全体のHPを回復する(50%)",
 		turn: 6,
 		proc: [ss_heal(0.50)],
 	},
@@ -23162,7 +23162,7 @@ Cards = [{
 		proc: [ChainEnhance(0.40, [1,0,0,0,0], 0), add_cond(ChainEnhance(0.60, [1,0,0,0,0], 0), when_leader())],
 	},
 	ss2: {
-		desc: "チェインプラス2の効果、さらに味方全体のHPを回復する(50%)",
+		desc: "<回復>チェインプラス2の効果、さらに味方全体のHPを回復する(50%)",
 		turn: 9,
 		proc: [ss_heal(0.50), ss_addchain(2)],
 	},
@@ -23186,7 +23186,7 @@ Cards = [{
 		proc: Heal(0.12, [1], 0),
 	},
 	ss1: {
-		desc: "攻撃ターンを2遅らせる",
+		desc: "<遅延>攻撃ターンを2遅らせる",
 		turn: 9,
 		proc: [ss_delay_all(2)],
 	},
@@ -23207,7 +23207,7 @@ Cards = [{
 		proc: Heal(0.14, [1], 0),
 	},
 	ss2: {
-		desc: "攻撃ターンを2遅らせ、HP20%以下でさらに2遅らせる",
+		desc: "<遅延>攻撃ターンを2遅らせ、HP20%以下でさらに2遅らせる",
 		turn: 12,
 		proc: [ss_delay_all(ss_hp_less(0.2, 4, 2))],
 	},
@@ -23231,7 +23231,7 @@ Cards = [{
 		proc: Heal(0.12, [1], 0),
 	},
 	ss1: {
-		desc: "攻撃ターンを2遅らせる",
+		desc: "<遅延>攻撃ターンを2遅らせる",
 		turn: 9,
 		proc: [ss_delay_all(2)],
 	},
@@ -23252,7 +23252,7 @@ Cards = [{
 		proc: Heal(0.14, [1], 0),
 	},
 	ss2: {
-		desc: "攻撃ターンを2遅らせ、敵全体へ水属性のダメージ(180%)",
+		desc: "<遅延大魔術>攻撃ターンを2遅らせ、敵全体へ水属性のダメージ(180%)",
 		turn: 12,
 		proc: [ss_delay_all(2), ss_damage_all(1.8, [1])],
 	},
@@ -23276,7 +23276,7 @@ Cards = [{
 		proc: ChainDeckAttrsAttack(2.3, 3.6, 4.9, 0),
 	},
 	ss1: {
-		desc: "敵単体へ雷・光属性の5回連続ダメージ、さらに味方全体のHPを回復する(180%/20%)",
+		desc: "<多弾魔術>敵単体へ雷・光属性の5回連続ダメージ、さらに味方全体のHPを回復する(180%/20%)",
 		turn: 7,
 		proc: [ss_damage_s(1.8, [2,3], 5), ss_heal(0.20)],
 	},
@@ -23297,7 +23297,7 @@ Cards = [{
 		proc: ChainDeckAttrsAttack(2.8, 4.6, 6.4, 0),
 	},
 	ss2: {
-		desc: "敵単体へ雷・光属性の5回連続ダメージ、さらに味方全体のHPを回復する(380%/25%)",
+		desc: "<多弾魔術>敵単体へ雷・光属性の5回連続ダメージ、さらに味方全体のHPを回復する(380%/25%)",
 		turn: 10,
 		proc: [ss_damage_s(3.8, [2,3], 5), ss_heal(0.25)],
 	},
@@ -23321,7 +23321,7 @@ Cards = [{
 		proc: ChainDeckAttrsAttack(2.3, 3.6, 4.9, 0),
 	},
 	ss1: {
-		desc: "敵単体へ雷・闇属性の5回連続ダメージ(180%)",
+		desc: "<多弾魔術>敵単体へ雷・闇属性の5回連続ダメージ(180%)",
 		turn: 6,
 		proc: [ss_damage_s(1.8, [2,3], 5)],
 	},
@@ -23342,7 +23342,7 @@ Cards = [{
 		proc: ChainDeckAttrsAttack(2.8, 4.6, 6.4, 0),
 	},
 	ss2: {
-		desc: "敵単体へ雷・闇属性の5回連続ダメージ(380%)",
+		desc: "<多弾魔術>敵単体へ雷・闇属性の5回連続ダメージ(380%)",
 		turn: 9,
 		proc: [ss_damage_s(3.8, [2,3], 5)],
 	},
@@ -23366,7 +23366,7 @@ Cards = [{
 		proc: [ChainEnhance(0.20, [1,0,0,0,0], 0), ChainSpecEnhance(0.35, [1,0,0,0,0], [9], 0)],
 	},
 	ss1: {
-		desc: "2ターン雷属性ダメージを軽減する(50%)",
+		desc: "<ガード>2ターン雷属性ダメージを軽減する(50%)",
 		turn: 8,
 		proc: [ss_attr_guard([0,0,1,0,0], 0.5, 2)],
 	},
@@ -23387,7 +23387,7 @@ Cards = [{
 		proc: [ChainEnhance(0.25, [1,0,0,0,0], 0), ChainSpecEnhance(0.45, [1,0,0,0,0], [9], 0)],
 	},
 	ss2: {
-		desc: "3ターン雷属性ダメージを軽減する(50%)",
+		desc: "<ガード>3ターン雷属性ダメージを軽減する(50%)",
 		turn: 10,
 		proc: [ss_attr_guard([0,0,1,0,0], 0.5, 3)],
 	},
@@ -23411,7 +23411,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [0,1,0,0,0], 0), add_cond(ChainEnhance(0.40, [0,1,0,0,0], 0), when_leader())],
 	},
 	ss1: {
-		desc: "2ターン火属性のダメージを75%軽減する",
+		desc: "<ガード>2ターン火属性のダメージを75%軽減する",
 		turn: 8,
 		proc: [ss_attr_guard([1,0,0,0,0], 0.75, 2)],
 	},
@@ -23432,7 +23432,7 @@ Cards = [{
 		proc: [ChainEnhance(0.40, [0,1,0,0,0], 0), add_cond(ChainEnhance(0.60, [0,1,0,0,0], 0), when_leader())],
 	},
 	ss2: {
-		desc: "2ターン火属性のダメージを75%軽減する、さらに味方全体のHPを回復する(25%)",
+		desc: "<ガード>2ターン火属性のダメージを75%軽減する、さらに味方全体のHPを回復する(25%)",
 		turn: 11,
 		proc: [ss_attr_guard([1,0,0,0,0], 0.75, 2), ss_heal(0.25)],
 	},
@@ -23456,7 +23456,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(3.5, 0, 3, [0,1,0,0,0]),
 	},
 	ss1: {
-		desc: "敵全体のカウンターを解除する",
+		desc: "<効果解除>敵全体のカウンターを解除する",
 		turn: 8,
 		proc: [ss_break_attackcounter("all")],
 	},
@@ -23477,7 +23477,7 @@ Cards = [{
 		proc: [ChainDualAttrAttack(4.0, 0, 3, [0,1,0,0,0]), add_cond(ChainDualAttrAttack(5.0, 0, 3, [0,1,0,0,0]), when_hp_more(0.80))],
 	},
 	ss2: {
-		desc: "敵全体のカウンターを解除し、雷属性のダメージ(180%)",
+		desc: "<効果解除大魔術>敵全体のカウンターを解除し、雷属性のダメージ(180%)",
 		turn: 13,
 		proc: [ss_break_attackcounter("all"), ss_damage_all(1.8, [2])],
 	},
@@ -23501,7 +23501,7 @@ Cards = [{
 		proc: ChainAttack(1.6, 0),
 	},
 	ss1: {
-		desc: "味方のHPを回復する(50%)",
+		desc: "<回復>味方のHPを回復する(50%)",
 		turn: 7,
 		proc: [ss_heal(0.5)],
 	},
@@ -23522,7 +23522,7 @@ Cards = [{
 		proc: [ChainAttack(1.9, 0), ChainSpecEnhance(0.5, [1, 1, 1, 1, 1], [5], 0)],
 	},
 	ss2: {
-		desc: "味方のHPを完全に回復する",
+		desc: "<回復>味方のHPを完全に回復する",
 		turn: 9,
 		proc: [ss_heal(1)],
 	},
@@ -23547,7 +23547,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.3, 0.7, [1, 0, 0, 0, 0], [0, 1, 0, 0, 0], 3),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火・水属性化",
+		desc: "<パネル変換>ジャンルパネルを火・水属性化",
 		turn: 4,
 		proc: [ss_panel_change([1,1,0,0,0])],
 	},
@@ -23568,7 +23568,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.4, 0.8, [1, 0, 0, 0, 0], [0, 1, 0, 0, 0], 3),
 	},
 	ss2: {
-		desc: "ジャンルパネルを火・水属性化し、チェインがプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを火・水属性化し、チェインがプラス2の効果を付与",
 		turn: 7,
 		proc: [ss_panel_change([1,1,0,0,0]), panel_chainplus(2)],
 	},
@@ -23592,7 +23592,7 @@ Cards = [{
 		proc: [ChainEnhance(0.20, [1, 1, 0, 0, 0], 0), ChainSpecEnhance(0.40, [1, 1, 0, 0, 0], [9], 0)],
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し(25%)、さらに水属性の味方を蘇生(25%)",
+		desc: "<蘇生>味方全体のHPを回復し(25%)、さらに水属性の味方を蘇生(25%)",
 		turn: 9,
 		proc: [ss_heal(0.25), ss_resurrection([0, 1, 0, 0, 0], 0.25)],
 	},
@@ -23613,7 +23613,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [1, 1, 0, 0, 0], 0), ChainSpecEnhance(0.60, [1, 1, 0, 0, 0], [9], 0)],
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し(50%)、さらに水属性の味方を蘇生(50%)",
+		desc: "<蘇生>味方全体のHPを回復し(50%)、さらに水属性の味方を蘇生(50%)",
 		turn: 11,
 		proc: [ss_heal(0.50), ss_resurrection([0, 1, 0, 0, 0], 0.50)],
 	},
@@ -23637,7 +23637,7 @@ Cards = [{
 		proc: ChainAttrAttack(3.5, 0, [0, 1, 1, 1, 1]),
 	},
 	ss1: {
-		desc: "3ターン水属性のダメージを50%軽減する",
+		desc: "<ガード>3ターン水属性のダメージを50%軽減する",
 		turn: 7,
 		proc: [ss_attr_guard([0,1,0,0,0], 0.5, 3)],
 	},
@@ -23658,7 +23658,7 @@ Cards = [{
 		proc: ChainAttrAttack(4.5, 0, [0, 1, 1, 1, 1]),
 	},
 	ss2: {
-		desc: "3ターン水属性のダメージを75%軽減する",
+		desc: "<ガード>3ターン水属性のダメージを75%軽減する",
 		turn: 10,
 		proc: [ss_attr_guard([0,1,0,0,0], 0.75, 3)],
 	},
@@ -23682,7 +23682,7 @@ Cards = [{
 		proc: [ChainDualAttrAttack(3.0, 0, 5, [0, 1, 0, 0, 0]), add_cond(ChainDualAttrAttack(13.0, 0, 5, [0, 1, 0, 0, 0]), when_hp_less(0.20))],
 	},
 	ss1: {
-		desc: "3ターン敵の攻撃を自分に集めダメージを50%軽減する",
+		desc: "<その他>3ターン敵の攻撃を自分に集めダメージを50%軽減する",
 		turn: 6,
 		proc: [ss_provocate(3, 0.5)],
 	},
@@ -23703,7 +23703,7 @@ Cards = [{
 		proc: [ChainDualAttrAttack(4.0, 0, 5, [0, 1, 0, 0, 0]), add_cond(ChainDualAttrAttack(19.0, 0, 5, [0, 1, 0, 0, 0]), when_hp_less(0.20))],
 	},
 	ss2: {
-		desc: "3ターン敵の攻撃を自分に集めダメージを75%軽減する、HP50%以下でさらに25%軽減する",
+		desc: "<その他>3ターン敵の攻撃を自分に集めダメージを75%軽減する、HP50%以下でさらに25%軽減する",
 		turn: 9,
 		proc: [ss_provocate(3, ss_hp_less(0.5, 1, 0.75))],
 	},
@@ -23728,7 +23728,7 @@ Cards = [{
 		proc: ChainSpecAttack(5.0, 0, [2, 7]),
 	},
 	ss1: {
-		desc: "ジャンルパネルを水・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
 		turn: 4,
 		proc: [ss_panel_change([0,1,1,0,0])],
 	},
@@ -23749,7 +23749,7 @@ Cards = [{
 		proc: ChainSpecAttack(6.0, 0, [2, 7]),
 	},
 	ss2: {
-		desc: "ジャンルパネルを水・雷属性化し、回復の効果を付与、属性弱体化状態だとさらに回復の効果を付与(8%/50%)",
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、回復の効果を付与、属性弱体化状態だとさらに回復の効果を付与(8%/50%)",
 		turn: 7,
 		proc: [ss_panel_change([0,1,1,0,0]), panel_healally(0.08), panel_healally(0.50)],
 	},
@@ -23773,7 +23773,7 @@ Cards = [{
 		proc: [ChainAttrAttack(2.8, 0, [0, 1, 0, 0, 0]), add_cond(ChainAttrAttack(4.3, 0, [0, 1, 0, 0, 0]), when_hp_more(0.80))],
 	},
 	ss1: {
-		desc: "MAXHPの50%を使い敵全体へダメージ(260%)",
+		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(260%)",
 		turn: 8,
 		proc: [ss_damage_all(2.6, [2]), ss_consume_own(0.50)],
 	},
@@ -23794,7 +23794,7 @@ Cards = [{
 		proc: [ChainAttrAttack(3.8, 0, [0, 1, 0, 0, 0]), add_cond(ChainAttrAttack(5.3, 0, [0, 1, 0, 0, 0]), when_hp_more(0.80))],
 	},
 	ss2: {
-		desc: "MAXHPの50%を使い敵全体へダメージ(330%)",
+		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(330%)",
 		turn: 10,
 		proc: [ss_damage_all(3.3, [2]), ss_consume_own(0.50)],
 	},
@@ -23818,7 +23818,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.30, 0.80, [1, 0, 0, 0, 0], [0, 0, 0, 1, 0], 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火・光属性化",
+		desc: "<パネル変換>ジャンルパネルを火・光属性化",
 		turn: 3,
 		proc: [ss_panel_change([1,0,0,1,0])],
 	},
@@ -23839,7 +23839,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.60, 1.10, [1, 0, 0, 0, 0], [0, 0, 0, 1, 0], 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルを火・光属性化し、攻撃力アップの効果を付与(50%)",
+		desc: "<特殊パネル変換>ジャンルパネルを火・光属性化し、攻撃力アップの効果を付与(50%)",
 		turn: 6,
 		proc: [ss_panel_change([1,0,0,1,0]), panel_attackup(0.50)],
 	},
@@ -23863,7 +23863,7 @@ Cards = [{
 		proc: Heal(0.12, [0, 0, 1, 0, 0], 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルをシャッフル",
+		desc: "<シャッフル>ジャンルパネルをシャッフル",
 		turn: 1,
 		proc: [ss_panel_shuffle()],
 	},
@@ -23884,7 +23884,7 @@ Cards = [{
 		proc: Heal(0.14, [0, 0, 1, 0, 0], 0),
 	},
 	ss2: {
-		desc: "解答を見破る",
+		desc: "<解答削り>解答を見破る",
 		turn: 6,
 		proc: [ss_answer_foresight()],
 	},
@@ -23908,7 +23908,7 @@ Cards = [{
 		proc: ChainAttrAttack(7.0, 6, [0, 0, 1, 0, 1]),
 	},
 	ss1: {
-		desc: "スキル反射を無視し、敵全体へ火・光属性のダメージ(150%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・光属性のダメージ(150%)",
 		turn: 6,
 		proc: [ss_damage_all(1.5, [0, 3]), ss_ignore_skillcounter()],
 	},
@@ -23929,7 +23929,7 @@ Cards = [{
 		proc: ChainAttrAttack(8.0, 6, [0, 0, 1, 0, 1]),
 	},
 	ss2: {
-		desc: "スキル反射を無視し、敵全体へ火・光属性のダメージ(220%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・光属性のダメージ(220%)",
 		turn: 9,
 		proc: [ss_damage_all(2.2, [0, 3]), ss_ignore_skillcounter()],
 	},
@@ -23952,7 +23952,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(6.0, 10), as_hp_absorption(0.03)),
 	},
 	ss1: {
-		desc: "味方のMAXHP70%を使い、敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(400%/900%)",
+		desc: "<特効大魔術>味方のMAXHP70%を使い、敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(400%/900%)",
 		turn: 6,
 		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 9.0, 4.0), [1]), ss_consume_all(0.70)],
 	},
@@ -23973,7 +23973,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(7.0, 10), as_hp_absorption(0.03)),
 	},
 	ss2: {
-		desc: "味方のMAXHP70%を使い、敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(400%/1300%)",
+		desc: "<特効大魔術>味方のMAXHP70%を使い、敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(400%/1300%)",
 		turn: 9,
 		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 13.0, 4.0), [1]), ss_consume_all(0.70)],
 	},
@@ -23996,7 +23996,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.3, 0.8, [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], 0),
 	},
 	ss1: {
-		desc: "2ターン、致死ダメージを受けたら一度だけHP25%で起死回生",
+		desc: "<起死回生>2ターン、致死ダメージを受けたら一度だけHP25%で起死回生",
 		turn: 9,
 		proc: [ss_revival(0.25, 2)],
 	},
@@ -24017,7 +24017,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], 0),
 	},
 	ss2: {
-		desc: "2ターン、致死ダメージを受けたら一度だけHP25%で起死回生、10チェインを消費しさらに3ターン継続しHP100%で起死回生",
+		desc: "<起死回生>2ターン、致死ダメージを受けたら一度だけHP25%で起死回生、10チェインを消費しさらに3ターン継続しHP100%で起死回生",
 		turn: 11,
 		proc: [ss_chain_cost_skill(10, ss_revival(1.0, 5), ss_revival(0.25, 2))],
 	},
@@ -24040,7 +24040,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.5, 1.0, [0, 0, 1, 0, 0], [1, 0, 0, 0, 0], 4),
 	},
 	ss1: {
-		desc: "3ターン味方全体を徐々に回復する(15%)",
+		desc: "<継続回復>3ターン味方全体を徐々に回復する(15%)",
 		turn: 5,
 		proc: [ss_regenerate(0.15, 3)],
 	},
@@ -24061,7 +24061,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.8, 1.3, [0, 0, 1, 0, 0], [1, 0, 0, 0, 0], 4),
 	},
 	ss2: {
-		desc: "5ターン味方全体を徐々に回復する、5チェインを消費しさらに回復(15%/30%)",
+		desc: "<継続回復>5ターン味方全体を徐々に回復する、5チェインを消費しさらに回復(15%/30%)",
 		turn: 8,
 		proc: [ss_chain_cost_skill(5, ss_regenerate(0.30, 5), ss_regenerate(0.15, 5))],
 	},
@@ -24083,7 +24083,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.0, 4, [0, 0, 1, 0, 0]),
 	},
 	ss1: {
-		desc: "ジャンルパネルにチェインプラス4の効果を付与、7チェインを消費し、さらにプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインプラス4の効果を付与、7チェインを消費し、さらにプラス2の効果を付与",
 		turn: 10,
 		proc: [ss_chain_cost_skill(7, panel_chainplus(6), panel_chainplus(2))],
 	},
@@ -24104,7 +24104,7 @@ Cards = [{
 		proc: ChainAttrAttack(7.0, 4, [0, 0, 1, 0, 0]),
 	},
 	ss2: {
-		desc: "ジャンルパネルにチェインプラス4の効果を付与、7チェインを消費し、さらにプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインプラス4の効果を付与、7チェインを消費し、さらにプラス2の効果を付与",
 		turn: 10,
 		proc: [ss_chain_cost_skill(7, panel_chainplus(6), panel_chainplus(2))],
 	},
@@ -24128,7 +24128,7 @@ Cards = [{
 		proc: [Heal(0.10, [0,1,0,0,0], 0), Heal(0.14, [0,1,0,0,0], 5)],
 	},
 	ss1: {
-		desc: "味方全体の攻撃力とHPを500アップ(上限値2000)",
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップ(上限値2000)",
 		turn: 5,
 		proc: [ss_statusup_all([500, 500], [2000, 2000], -1)],
 	},
@@ -24149,7 +24149,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,1,0,0,0], 0), Heal(0.17, [0,1,0,0,0], 5)],
 	},
 	ss2: {
-		desc: "味方全体の攻撃力とHPを1000アップ(上限値2000)",
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを1000アップ(上限値2000)",
 		turn: 8,
 		proc: [ss_statusup_all([1000, 1000], [2000, 2000], -1)],
 	},
@@ -24173,7 +24173,7 @@ Cards = [{
 		proc: [ChainAttack(7.0, 10), ChainSpecAttack(11.0, 10, [5,6])],
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ、さらに雷属性には特効ダメージ(100%/300%)",
+		desc: "<特効大魔術>敵全体へ火属性のダメージ、さらに雷属性には特効ダメージ(100%/300%)",
 		turn: 4,
 		proc: [ss_damage_all(special_attr([0,0,1,0,0], 3.0, 1.0), [0])],
 	},
@@ -24194,7 +24194,7 @@ Cards = [{
 		proc: [ChainAttack(8.0, 10), ChainSpecAttack(12.0, 10, [5,6])],
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ、さらに雷属性には特効ダメージ(200%/500%)",
+		desc: "<特効大魔術>敵全体へ火属性のダメージ、さらに雷属性には特効ダメージ(200%/500%)",
 		turn: 6,
 		proc: [ss_damage_all(special_attr([0,0,1,0,0], 5.0, 2.0), [0])],
 	},
@@ -24217,7 +24217,7 @@ Cards = [{
 		proc: Heal(0.13, [0,1,1,0,0], 0),
 	},
 	ss1: {
-		desc: "スキル反射を無視し、水・雷属性の3連撃・さらに連撃数分チェインプラス(180%)",
+		desc: "<斬撃大魔術>スキル反射を無視し、水・雷属性の3連撃・さらに連撃数分チェインプラス(180%)",
 		turn: 8,
 		proc: [ss_damage_slash(1.8, [1,2], 3), ss_ignore_skillcounter()],
 	},
@@ -24238,7 +24238,7 @@ Cards = [{
 		proc: Heal(0.16, [0,1,1,0,0], 0),
 	},
 	ss2: {
-		desc: "スキル反射を無視し、水・雷属性の5連撃・さらに連撃数分チェインプラス(380%)",
+		desc: "<斬撃大魔術>スキル反射を無視し、水・雷属性の5連撃・さらに連撃数分チェインプラス(380%)",
 		turn: 11,
 		proc: [ss_damage_slash(3.8, [1,2], 5), ss_ignore_skillcounter()],
 	},
@@ -24263,7 +24263,7 @@ Cards = [{
 		proc: ChainPanelsAttack(3.5, 4.5, 6.0, 4),
 	},
 	ss1: {
-		desc: "ジャンルパネルを雷・光属性化",
+		desc: "<パネル変換>ジャンルパネルを雷・光属性化",
 		turn: 3,
 		proc: [ss_panel_change([0,0,1,1,0])],
 	},
@@ -24284,7 +24284,7 @@ Cards = [{
 		proc: ChainPanelsAttack(4.5, 5.5, 7.0, 4),
 	},
 	ss2: {
-		desc: "ジャンルパネルを雷・光属性化し、攻撃力アップの効果を付与(50%)",
+		desc: "<特殊パネル変換>ジャンルパネルを雷・光属性化し、攻撃力アップの効果を付与(50%)",
 		turn: 6,
 		proc: [ss_panel_change([0,0,1,1,0]), panel_attackup(0.50)],
 	},
@@ -24307,7 +24307,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 5),
 	},
 	ss1: {
-		desc: "5ターン味方全体を徐々に回復する(15%)",
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(15%)",
 		turn: 5,
 		proc: [ss_regenerate(0.15, 5)],
 	},
@@ -24328,7 +24328,7 @@ Cards = [{
 		proc: ChainAttack(5.5, 5),
 	},
 	ss2: {
-		desc: "5ターン味方全体を徐々に回復する(20%)",
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20%)",
 		turn: 8,
 		proc: [ss_regenerate(0.20, 5)],
 	},
@@ -24352,7 +24352,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 4.0, 5.5, 3),
 	},
 	ss1: {
-		desc: "3ターン全属性のダメージを25%軽減する",
+		desc: "<ガード>3ターン全属性のダメージを25%軽減する",
 		turn: 5,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)],
 	},
@@ -24373,7 +24373,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 5.5, 7.0, 3),
 	},
 	ss2: {
-		desc: "3ターン全属性のダメージを50%軽減する",
+		desc: "<ガード>3ターン全属性のダメージを50%軽減する",
 		turn: 9,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)],
 	},
@@ -24397,7 +24397,7 @@ Cards = [{
 		proc: [ChainEnhance(0.40, [0,0,1,0,0], 3), ChainSpecEnhance(0.70, [0,0,1,0,0], [1,4], 3)],
 	},
 	ss1: {
-		desc: "ジャンルパネルを雷属性化",
+		desc: "<パネル変換>ジャンルパネルを雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,0,1,0,0])],
 	},
@@ -24418,7 +24418,7 @@ Cards = [{
 		proc: [ChainEnhance(0.50, [0,0,1,0,0], 3), ChainSpecEnhance(0.90, [0,0,1,0,0], [1,4], 3)],
 	},
 	ss2: {
-		desc: "ジャンルパネルを雷属性化し、攻撃力アップの効果を付与(30%)",
+		desc: "<特殊パネル変換>ジャンルパネルを雷属性化し、攻撃力アップの効果を付与(30%)",
 		turn: 7,
 		proc: [ss_panel_change([0,0,1,0,0]), panel_attackup(0.30)],
 	},
@@ -24442,7 +24442,7 @@ Cards = [{
 		proc: Heal(0.13, [1,0,0,0,0], 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火属性化",
+		desc: "<パネル変換>ジャンルパネルを火属性化",
 		turn: 5,
 		proc: [ss_panel_change([1,0,0,0,0])],
 	},
@@ -24463,7 +24463,7 @@ Cards = [{
 		proc: [Heal(0.16, [1,0,0,0,0], 0), ChainEnhance(0.30, [1,0,0,0,0], 0)],
 	},
 	ss2: {
-		desc: "ジャンルパネルを火属性化し、ダメージ25%軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを火属性化し、ダメージ25%軽減の効果を付与",
 		turn: 7,
 		proc: [ss_panel_change([1,0,0,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)],
 	},
@@ -24487,7 +24487,7 @@ Cards = [{
 		proc: ChainAttack(3.0, 3),
 	},
 	ss1: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 7,
 		proc: [ss_panel_change([1,1,1,0,0])],
 	},
@@ -24508,7 +24508,7 @@ Cards = [{
 		proc: ChainAttack(4.0, 3),
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化し、攻撃力アップの効果を付与(20%)",
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、攻撃力アップの効果を付与(20%)",
 		turn: 9,
 		proc: [ss_panel_change([1,1,1,0,0]), panel_attackup(0.20)],
 	},
@@ -24532,7 +24532,7 @@ Cards = [{
 		proc: ChainEnhance(0.30, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "敵全体へ雷属性のダメージ(150%)、さらに味方のHPを回復(20%)",
+		desc: "<大魔術>敵全体へ雷属性のダメージ(150%)、さらに味方のHPを回復(20%)",
 		turn: 8,
 		proc: [ss_damage_all(1.5, [0,0,1,0,0]), ss_heal(0.25)],
 	},
@@ -24553,7 +24553,7 @@ Cards = [{
 		proc: ChainEnhance(0.60, [0,0,1,0,0], 0),
 	},
 	ss2: {
-		desc: "敵全体へ雷属性のダメージ(220%)、さらに味方のHPを回復(25%)",
+		desc: "<大魔術>敵全体へ雷属性のダメージ(220%)、さらに味方のHPを回復(25%)",
 		turn: 11,
 		proc: [ss_damage_all(2.2, [0,0,1,0,0]), ss_heal(0.25)],
 	},
@@ -24577,7 +24577,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 2.75, 4.45, 0),
 	},
 	ss1: {
-		desc: "解答選択肢を2つ削る",
+		desc: "<解答削り>解答選択肢を2つ削る",
 		turn: 3,
 		proc: [ss_answer_narrow(2)],
 	},
@@ -24598,7 +24598,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 3.75, 5.45, 0),
 	},
 	ss2: {
-		desc: "解答を見破る",
+		desc: "<解答削り>解答を見破る",
 		turn: 6,
 		proc: [ss_answer_foresight()],
 	},
@@ -24622,7 +24622,7 @@ Cards = [{
 		proc: Heal(0.12, [0,1,0,0,0], 0),
 	},
 	ss1: {
-		desc: "敵単体へ水属性の5回連続ダメージ(180%)",
+		desc: "<多弾魔術>敵単体へ水属性の5回連続ダメージ(180%)",
 		turn: 7,
 		proc: [ss_damage_s(1.8, [1], 5)],
 	},
@@ -24643,7 +24643,7 @@ Cards = [{
 		proc: Heal(0.14, [0,1,0,0,0], 0),
 	},
 	ss2: {
-		desc: "チェインプラス1の効果、さらに敵単体へ水属性の5回連続ダメージ(180%)",
+		desc: "<多弾魔術>チェインプラス1の効果、さらに敵単体へ水属性の5回連続ダメージ(180%)",
 		turn: 9,
 		proc: [ss_damage_s(1.8, [1], 5), ss_addchain(1)],
 	},
@@ -24667,7 +24667,7 @@ Cards = [{
 		proc: Heal(0.13, [0,1,0,0,0], 0),
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、状態異常を回復する(25%)",
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(25%)",
 		turn: 7,
 		proc: [ss_heal(0.25), ss_abstate_cure()],
 	},
@@ -24688,7 +24688,7 @@ Cards = [{
 		proc: Heal(0.15, [0,1,0,0,0], 0),
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し、状態異常を回復する(50%)",
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(50%)",
 		turn: 9,
 		proc: [ss_heal(0.50), ss_abstate_cure()],
 	},
@@ -24711,7 +24711,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 3),
 	},
 	ss1: {
-		desc: "敵全体の攻撃ターンを2遅らせ、毒状態でさらに1遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせ、毒状態でさらに1遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(ss_is_poison_own(3,2))],
 	},
@@ -24732,7 +24732,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 3),
 	},
 	ss2: {
-		desc: "敵全体の攻撃ターンを3遅らせ、毒状態でさらに1遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせ、毒状態でさらに1遅らせる",
 		turn: 12,
 		proc: [ss_delay_all(ss_is_poison_own(4,3))],
 	},
@@ -24755,7 +24755,7 @@ Cards = [{
 		proc: [ChainAttack(3.5, 3), add_cond(ChainAttack(4.0, 3), when_leader())],
 	},
 	ss1: {
-		desc: "3ターン全属性のダメージを25%軽減する",
+		desc: "<ガード>3ターン全属性のダメージを25%軽減する",
 		turn: 5,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)],
 	},
@@ -24776,7 +24776,7 @@ Cards = [{
 		proc: [ChainAttack(4.5, 3), add_cond(ChainAttack(5.0, 3), when_leader())],
 	},
 	ss2: {
-		desc: "3ターン全属性のダメージを50%軽減する",
+		desc: "<ガード>3ターン全属性のダメージを50%軽減する",
 		turn: 9,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)],
 	},
@@ -24799,7 +24799,7 @@ Cards = [{
 		proc: ChainEnhance(0.80, [1,0,0,0,0], 7),
 	},
 	ss1: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 4,
 		proc: [ss_panel_change([1,1,1,0,0])],
 	},
@@ -24820,7 +24820,7 @@ Cards = [{
 		proc: ChainEnhance(1.0, [1,0,0,0,0], 7),
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化し、チェインがプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、チェインがプラス2の効果を付与",
 		turn: 7,
 		proc: [ss_panel_change([1,1,1,0,0]), panel_chainplus(2)],
 	},
@@ -24844,7 +24844,7 @@ Cards = [{
 		proc: ChainEnhance(0.8, [0,0,1,0,0], 7),
 	},
 	ss1: {
-		desc: "3ターン全属性のダメージを25%軽減する",
+		desc: "<ガード>3ターン全属性のダメージを25%軽減する",
 		turn: 5,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)],
 	},
@@ -24865,7 +24865,7 @@ Cards = [{
 		proc: ChainEnhance(1.0, [0,0,1,0,0], 7),
 	},
 	ss2: {
-		desc: "3ターン全属性のダメージを50%軽減する",
+		desc: "<ガード>3ターン全属性のダメージを50%軽減する",
 		turn: 9,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)],
 	},
@@ -24888,7 +24888,7 @@ Cards = [{
 		proc: ChainPanelsEnhance(0.30, 0.50, 0.80, [0,1,0,0,0], 0),
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、状態異常を回復する(50%)",
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(50%)",
 		turn: 7,
 		proc: [ss_heal(0.50), ss_abstate_cure()],
 	},
@@ -24909,7 +24909,7 @@ Cards = [{
 		proc:  ChainPanelsEnhance(0.50, 0.70, 1.0, [0,1,0,0,0], 0),
 	},
 	ss2: {
-		desc: "味方全体のHPを完全回復し、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
 		turn: 9,
 		proc: [ss_heal(1.0), ss_abstate_cure()],
 	},
@@ -24932,7 +24932,7 @@ Cards = [{
 		proc: ChainEnhance(0.55, [0,1,0,0,0], 3),
 	},
 	ss1: {
-		desc: "攻撃ターンを3遅らせる",
+		desc: "<遅延>攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)],
 	},
@@ -24953,7 +24953,7 @@ Cards = [{
 		proc: ChainEnhance(0.75, [0,1,0,0,0], 3),
 	},
 	ss2: {
-		desc: "スペシャルスキルの発動ターンを3早め、敵全体の攻撃ターンを3遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを3早め、敵全体の攻撃ターンを3遅らせる",
 		turn: 15,
 		proc: [ss_skillboost(3), ss_delay_all(3)],
 	},
@@ -24976,7 +24976,7 @@ Cards = [{
 		proc: Heal(0.14, [1,1,1,1,1], 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 4,
 		proc: [ss_panel_change([1,1,1,0,0])],
 	},
@@ -24997,7 +24997,7 @@ Cards = [{
 		proc: Heal(0.17, [1,1,1,1,1], 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化し、ダメージ25%軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、ダメージ25%軽減の効果を付与",
 		turn: 6,
 		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)],
 	},
@@ -25020,7 +25020,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.11, 0.15, 0.17, [1,0,0,0,0]),
 	},
 	ss1: {
-		desc: "攻撃ターンを3遅らせる",
+		desc: "<遅延>攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)],
 	},
@@ -25041,7 +25041,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.13, 0.17, 0.20, [1,0,0,0,0]),
 	},
 	ss2: {
-		desc: "攻撃ターンを3遅らせ、20チェインで更に1遅らせる",
+		desc: "<遅延>攻撃ターンを3遅らせ、20チェインで更に1遅らせる",
 		turn: 13,
 		proc: [ss_delay_all(ss_chain_cond(20, 4, 3))],
 	},
@@ -25065,7 +25065,7 @@ Cards = [{
 		proc: Heal(0.14, [1,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルにスキルチャージプラス1の効果を付与(スキルチャージの効果は、SPスキルを使うまで重複しません)",
+		desc: "<特殊パネル変換>ジャンルパネルにスキルチャージプラス1の効果を付与(スキルチャージの効果は、SPスキルを使うまで重複しません)",
 		turn: 6,
 		proc: [panel_skillboost(1)],
 	},
@@ -25086,7 +25086,7 @@ Cards = [{
 		proc: Heal(0.16, [1,0,1,0,0], 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルを火・雷属性化し、スキルチャージプラス1の効果を付与(スキルチャージの効果は、SPスキルを使うまで重複しません)",
+		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、スキルチャージプラス1の効果を付与(スキルチャージの効果は、SPスキルを使うまで重複しません)",
 		turn: 8,
 		proc: [ss_panel_change([1,0,1,0,0]), panel_skillboost(1)],
 	},
@@ -25109,7 +25109,7 @@ Cards = [{
 		proc: [ChainAttack(4.5, 5), ChainSpecAttack(6.0, 5, [4, 5])],
 	},
 	ss1: {
-		desc: "ジャンルパネルをシャッフル",
+		desc: "<シャッフル>ジャンルパネルをシャッフル",
 		turn: 1,
 		proc: [ss_panel_shuffle()],
 	},
@@ -25130,7 +25130,7 @@ Cards = [{
 		proc: [ChainAttack(5.5, 5), ChainSpecAttack(7.0, 5, [4, 5])],
 	},
 	ss2: {
-		desc: "ジャンルパネルにチェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
 		turn: 3,
 		proc: [panel_chainplus(1)],
 	},
@@ -25153,7 +25153,7 @@ Cards = [{
 		proc: ChainPanelsAttrAttack(3.5, 5.0, 6.0, [1, 0, 0, 0, 0], 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 4,
 		proc: [ss_panel_change([1,1,1,0,0])],
 	},
@@ -25174,7 +25174,7 @@ Cards = [{
 		proc: ChainPanelsAttrAttack(4.5, 6.0, 7.0, [1, 0, 0, 0, 0], 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化し、チェインがプラス2の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、チェインがプラス2の効果を付与",
 		turn: 7,
 		proc: [ss_panel_change([1,1,1,0,0]), panel_chainplus(2)],
 	},
@@ -25197,7 +25197,7 @@ Cards = [{
 		proc: [ChainAttack(3.5, 5), add_cond(ChainAttack(6.0, 5), when_hp_more(0.80))],
 	},
 	ss1: {
-		desc: "ジャンルパネルにチェインプラス2の効果",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインプラス2の効果",
 		turn: 5,
 		proc: [panel_chainplus(2)],
 	},
@@ -25218,7 +25218,7 @@ Cards = [{
 		proc: [ChainAttack(4.5, 5), add_cond(ChainAttack(7.0, 5), when_hp_more(0.80))],
 	},
 	ss2: {
-		desc: "攻撃ターンを3遅らせる",
+		desc: "<遅延>攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)],
 	},
@@ -25242,7 +25242,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.40, [8], 0),
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを1早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早める",
 		turn: 6,
 		proc: [ss_skillboost(1)],
 	},
@@ -25273,7 +25273,7 @@ Cards = [{
 		proc: Heal(0.12, [1,0,0,0,0], 0),
 	},
 	ss1: {
-		desc: "敵全体の攻撃ターンを2ターン遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを2ターン遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(2)],
 	},
@@ -25294,7 +25294,7 @@ Cards = [{
 		proc: Heal(0.14, [1,0,0,0,0], 0),
 	},
 	ss2: {
-		desc: "敵全体の攻撃ターンを2ターン遅らせ、3チェイン消費しさらに1遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを2ターン遅らせ、3チェイン消費しさらに1遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(ss_chain_cost(3, 3, 2))],
 	},
@@ -25317,7 +25317,7 @@ Cards = [{
 		proc: add_cond(ChainDeckDeadsAttack(4.0, 0), as_hp_absorption(0.04)),
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ(200%)、さらに3ターンの間、火属性のダメージ(200%)",
+		desc: "<残滅大魔術>敵全体へ火属性のダメージ(200%)、さらに3ターンの間、火属性のダメージ(200%)",
 		turn: 7,
 		proc: [ss_continue_damage(2.0, 2.0, [0], 3)],
 	},
@@ -25338,7 +25338,7 @@ Cards = [{
 		proc: add_cond(ChainDeckDeadsAttack(4.5, 0), as_hp_absorption(0.04)),
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ(300%)、さらに3ターンの間、火属性のダメージ(300%)",
+		desc: "<残滅大魔術>敵全体へ火属性のダメージ(300%)、さらに3ターンの間、火属性のダメージ(300%)",
 		turn: 9,
 		proc: [ss_continue_damage(3.0, 3.0, [0], 3)],
 	},
@@ -25361,7 +25361,7 @@ Cards = [{
 		proc: add_cond(ChainDualAttack(3.5, 0, 3), when_hp_more(0.80)),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(人数×50%)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(人数×50%)",
 		turn: 6,
 		proc: [ss_damage_all(ss_consume_all_cond(0.50, 0.50), [0])],
 	},
@@ -25382,7 +25382,7 @@ Cards = [{
 		proc: add_cond(ChainDualAttack(4.5, 0, 3), when_hp_more(0.80)),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(人数×90%)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(人数×90%)",
 		turn: 9,
 		proc: [ss_damage_all(ss_consume_all_cond(0.90, 0.50), [0])],
 	},
@@ -25405,7 +25405,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.40, 0.90, [0,1,0,0,0], [1,0,0,0,0], 3),
 	},
 	ss1: {
-		desc: "自分を犠牲に全員を50%蘇生",
+		desc: "<自己犠牲蘇生>自分を犠牲に全員を50%蘇生",
 		turn: 11,
 		proc: [ss_resurrection([1,1,1,1,1], 0.50), ss_consume_own(1)],
 	},
@@ -25426,7 +25426,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.70, 1.20, [0,1,0,0,0], [1,0,0,0,0], 3),
 	},
 	ss2: {
-		desc: "自分を犠牲に全員を100%蘇生",
+		desc: "<自己犠牲蘇生>自分を犠牲に全員を100%蘇生",
 		turn: 12,
 		proc: [ss_resurrection([1,1,1,1,1], 1), ss_consume_own(1)],
 	},
@@ -25450,7 +25450,7 @@ Cards = [{
 		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [0,8])],
 	},
 	ss1: {
-		desc: "MAXHPの70%を使い敵単体へダメージ(380%)",
+		desc: "<自己犠牲魔術>MAXHPの70%を使い敵単体へダメージ(380%)",
 		turn: 6,
 		proc: [ss_damage_s(3.8, [1], 1), ss_consume_own(0.70)],
 	},
@@ -25471,7 +25471,7 @@ Cards = [{
 		proc: [ChainAttack(5.0, 4), ChainSpecAttack(7.0, 4, [0,8])],
 	},
 	ss2: {
-		desc: "MAXHPの70%を使い敵単体へダメージ(600%)",
+		desc: "<自己犠牲魔術>MAXHPの70%を使い敵単体へダメージ(600%)",
 		turn: 9,
 		proc: [ss_damage_s(6.0, [1], 1), ss_consume_own(0.70)],
 	},
@@ -25494,7 +25494,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 5),
 	},
 	ss1: {
-		desc: "敵全体へ雷属性でダメージ(120%)、さらに3ターンの間、雷属性のダメージ(120%)",
+		desc: "<残滅大魔術>敵全体へ雷属性でダメージ(120%)、さらに3ターンの間、雷属性のダメージ(120%)",
 		turn: 5,
 		proc: [ss_continue_damage(1.2, 1.2, [2], 3)],
 	},
@@ -25515,7 +25515,7 @@ Cards = [{
 		proc: ChainAttack(5.5, 5),
 	},
 	ss2: {
-		desc: "敵全体へ雷属性でダメージ(200%)、さらに3ターンの間、雷属性のダメージ(200%)",
+		desc: "<残滅大魔術>敵全体へ雷属性でダメージ(200%)、さらに3ターンの間、雷属性のダメージ(200%)",
 		turn: 9,
 		proc: [ss_continue_damage(2.0, 2.0, [2], 3)],
 	},
@@ -25538,7 +25538,7 @@ Cards = [{
 		proc: [ChainAllAttack(1.8, 3), ChainAllAttack(2.8, 10)],
 	},
 	ss1: {
-		desc: "敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/900%)",
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/900%)",
 		turn: 9,
 		proc: [ss_damage_all(special_attr([0,1,0,0,0], 9.0, 2.0), [2])],
 	},
@@ -25559,7 +25559,7 @@ Cards = [{
 		proc: [ChainAllAttack(2.2, 3), ChainAllAttack(3.2, 10)],
 	},
 	ss2: {
-		desc: "敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/1200%)",
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/1200%)",
 		turn: 12,
 		proc: [ss_damage_all(special_attr([0,1,0,0,0], 12.0, 2.0), [2])],
 	},
@@ -25583,7 +25583,7 @@ Cards = [{
 		proc: [ChainDualAttack(3.0, 4, 3), add_cond(ChainDualAttack(5.0, 4, 3), when_hp_more(0.5))],
 	},
 	ss1: {
-		desc: "敵全体へ水属性のダメージ(200%)、さらに3ターンの間、水属性のダメージ(200%)",
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(200%)、さらに3ターンの間、水属性のダメージ(200%)",
 		turn: 7,
 		proc: [ss_continue_damage(2.0, 2.0, [1], 3)],
 	},
@@ -25604,7 +25604,7 @@ Cards = [{
 		proc: [ChainDualAttack(4.0, 4, 3), add_cond(ChainDualAttack(6.0, 4, 3), when_hp_more(0.5))],
 	},
 	ss2: {
-		desc: "敵全体へ水属性のダメージ(300%)、さらに3ターンの間、水属性のダメージ(300%)",
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(300%)、さらに3ターンの間、水属性のダメージ(300%)",
 		turn: 9,
 		proc: [ss_continue_damage(3.0, 3.0, [1], 3)],
 	},
@@ -25628,7 +25628,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.0, 4, [0, 0, 1, 1, 0]),
 	},
 	ss1: {
-		desc: "スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
 		turn: 9,
 		proc: [ss_skillboost(2), ss_delay_s(2)],
 	},
@@ -25649,7 +25649,7 @@ Cards = [{
 		proc: ChainAttrAttack(7.0, 4, [0, 0, 1, 1, 0]),
 	},
 	ss2: {
-		desc: "スペシャルスキルの発動ターンを3早め、敵単体の攻撃ターンを3遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを3早め、敵単体の攻撃ターンを3遅らせる",
 		turn: 12,
 		proc: [ss_skillboost(3), ss_delay_s(3)],
 	},
@@ -25675,7 +25675,7 @@ Cards = [{
 		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [2])],
 	},
 	ss1: {
-		desc: "ジャンルパネルにスキルチャージプラス2の効果を付与(スキルチャージの効果は、SPスキルを使うまで重複しません)",
+		desc: "<特殊パネル変換>ジャンルパネルにスキルチャージプラス2の効果を付与(スキルチャージの効果は、SPスキルを使うまで重複しません)",
 		turn: 8,
 		proc: [panel_skillboost(2)],
 	},
@@ -25696,7 +25696,7 @@ Cards = [{
 		proc: [ChainAttack(5.0, 4), ChainSpecAttack(7.0, 4, [2])],
 	},
 	ss2: {
-		desc: "ジャンルパネルにスキルチャージプラス3の効果を付与(スキルチャージの効果は、SPスキルを使うまで重複しません)",
+		desc: "<特殊パネル変換>ジャンルパネルにスキルチャージプラス3の効果を付与(スキルチャージの効果は、SPスキルを使うまで重複しません)",
 		turn: 11,
 		proc: [panel_skillboost(3)],
 	},
@@ -25720,7 +25720,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(3.5, 0), when_hp_more(0.8)),
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ(500%)◆スキル使用後、1ターン封印状態に",
+		desc: "<反動大魔術>敵全体へ火属性のダメージ(500%)◆スキル使用後、1ターン封印状態に",
 		turn: 5,
 		proc: [ss_damage_all(5.0, [0]), ss_allsealed_own(1)],
 	},
@@ -25741,7 +25741,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(4.5, 0), when_hp_more(0.8)),
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ(800%)◆スキル使用後、1ターン封印状態に",
+		desc: "<反動大魔術>敵全体へ火属性のダメージ(800%)◆スキル使用後、1ターン封印状態に",
 		turn: 8,
 		proc: [ss_damage_all(8.0, [0]), ss_allsealed_own(1)],
 	},
@@ -25765,7 +25765,7 @@ Cards = [{
 		proc: ChainAttack(5.0, 6),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火・水属性化",
+		desc: "<パネル変換>ジャンルパネルを火・水属性化",
 		turn: 3,
 		proc: [ss_panel_change([1,1,0,0,0])],
 	},
@@ -25786,7 +25786,7 @@ Cards = [{
 		proc: ChainAttack(6.0, 6),
 	},
 	ss2: {
-		desc: "ジャンルパネルを火・水属性化し、ダメージ軽減(25%)・スキルチャージ(1)・チェイン(2)・攻撃力アップ(50%)の効果をランダムで付与",
+		desc: "<特殊パネル変換>ジャンルパネルを火・水属性化し、ダメージ軽減(25%)・スキルチャージ(1)・チェイン(2)・攻撃力アップ(50%)の効果をランダムで付与",
 		turn: 7,
 		proc: [ss_panel_change([1,1,0,0,0]), panel_skillboost(1), panel_chainplus(2), panel_attackup(0.50)],
 	},
@@ -25808,7 +25808,7 @@ Cards = [{
 		proc: Heal(0.12, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "直前に発動したスペシャルスキルを発動する",
+		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
 		turn: 9,
 		proc: [ss_latest_copy()],
 	},
@@ -25829,7 +25829,7 @@ Cards = [{
 		proc: Heal(0.14, [0,0,1,0,0], 0),
 	},
 	ss2: {
-		desc: "直前に発動したスペシャルスキルを発動する",
+		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
 		turn: 9,
 		proc: [ss_latest_copy()],
 	},
@@ -25853,7 +25853,7 @@ Cards = [{
 		proc: ChainAttack(3.0, 4),
 	},
 	ss1: {
-		desc: "敵全体へ水属性のダメージ(100%)、さらに3ターンの間、水属性のダメージ(100%)",
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(100%)、さらに3ターンの間、水属性のダメージ(100%)",
 		turn: 6,
 		proc: [ss_continue_damage(1.0, 1.0, [1], 3)],
 	},
@@ -25874,7 +25874,7 @@ Cards = [{
 		proc: ChainAttack(4.0, 4),
 	},
 	ss2: {
-		desc: "敵全体へ水属性のダメージ(200%)、さらに3ターンの間、水属性のダメージ(200%)",
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(200%)、さらに3ターンの間、水属性のダメージ(200%)",
 		turn: 8,
 		proc: [ss_continue_damage(2.0, 2.0, [1], 3)],
 	},
@@ -25898,7 +25898,7 @@ Cards = [{
 		proc: Heal(0.12, [1,1,1,1,1], 0),
 	},
 	ss1: {
-		desc: "3ターンの間、チェインを保護する、3チェインを消費しさらに3ターンの間保護する",
+		desc: "<チェインガード>3ターンの間、チェインを保護する、3チェインを消費しさらに3ターンの間保護する",
 		turn: 8,
 		proc: [ss_chain_cost_skill(3, ss_chain_protect(6), ss_chain_protect(3))],
 	},
@@ -25930,7 +25930,7 @@ Cards = [{
 		proc: Heal(0.11, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "3ターン後に敵単体を無に還す(一部敵には無効)",
+		desc: "<無に還す瞳>3ターン後に敵単体を無に還す(一部敵には無効)",
 		turn: 10,
 		proc: [ss_death_limit(3)],
 	},
@@ -25962,7 +25962,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.30, 0.70, [0,0,1,0,0], [1,0,0,0,0], 0),
 	},
 	ss1: {
-		desc: "スキル反射を無視し、敵全体へ火・雷属性のダメージ(150%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・雷属性のダメージ(150%)",
 		turn: 7,
 		proc: [ss_damage_all(1.5, [0, 2]), ss_ignore_skillcounter()],
 	},
@@ -25983,7 +25983,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.60, 1.00, [0,0,1,0,0], [1,0,0,0,0], 0),
 	},
 	ss2: {
-		desc: "スキル反射を無視し、敵全体へ火・雷属性のダメージ(220%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・雷属性のダメージ(220%)",
 		turn: 10,
 		proc: [ss_damage_all(2.2, [0,2]), ss_ignore_skillcounter()],
 	},
@@ -26006,7 +26006,7 @@ Cards = [{
 		proc: ChainDualAttack(3.0, 3, 2),
 	},
 	ss1: {
-		desc: "敵単体へ火・水属性の5回連続ダメージ(300%)",
+		desc: "<多弾魔術>敵単体へ火・水属性の5回連続ダメージ(300%)",
 		turn: 9,
 		proc: [ss_damage_s(3.0, [0,1], 5)],
 	},
@@ -26037,7 +26037,7 @@ Cards = [{
 		proc: ChainDualAttack(3.0, 3, 3),
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
 		turn: 9,
 		proc: [ss_skillboost(2)],
 	},
@@ -26069,7 +26069,7 @@ Cards = [{
 		proc: Heal(0.12, [1,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "敵全体の攻撃ターンを1遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを1遅らせる",
 		turn: 4,
 		proc: [ss_delay_all(1)],
 	},
@@ -26090,7 +26090,7 @@ Cards = [{
 		proc: Heal(0.14, [1,0,1,0,0], 0),
 	},
 	ss2: {
-		desc: "スペシャルスキルの発動ターンを1早め、敵全体の攻撃ターンを1遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを1早め、敵全体の攻撃ターンを1遅らせる",
 		turn: 6,
 		proc: [ss_skillboost(1), ss_delay_all(1)],
 	},
@@ -26115,7 +26115,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.30, 0.70, [1,0,0,0,0], [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "敵単体へ火・雷属性の5回連続ダメージ(180%)",
+		desc: "<多弾魔術>敵単体へ火・雷属性の5回連続ダメージ(180%)",
 		turn: 6,
 		proc: [ss_damage_s(1.8, [0,2], 5)],
 	},
@@ -26136,7 +26136,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.60, 1.0, [1,0,0,0,0], [0,0,1,0,0], 0),
 	},
 	ss2: {
-		desc: "敵単体へ火・雷属性の5回連続ダメージ(380%)",
+		desc: "<多弾魔術>敵単体へ火・雷属性の5回連続ダメージ(380%)",
 		turn: 9,
 		proc: [ss_damage_s(3.8, [0,2], 5)],
 	},
@@ -26171,7 +26171,7 @@ Cards = [{
 		proc: ChainAttack(4, 4.0),
 	},
 	ss1: {
-		desc: "MAXHPの50％を使い、敵単体へ火・闇属性の5回連続ダメージ(計250％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い、敵単体へ火・闇属性の5回連続ダメージ(計250％)",
 		turn: 5,
 		proc: [ss_damage_s(2.5, [0, 4], 5), ss_consume_own(0.5)],
 	},
@@ -26185,7 +26185,7 @@ Cards = [{
 		proc: ChainAttack(4, 5.0),
 	},
 	ss2: {
-		desc: "MAXHPの50％を使い、敵単体へ火・闇属性の5回連続ダメージ(計450％)",
+		desc: "<自己犠牲魔術>MAXHPの50％を使い、敵単体へ火・闇属性の5回連続ダメージ(計450％)",
 		turn: 8,
 		proc: [ss_damage_s(4.5, [0, 4], 5), ss_consume_own(0.5)],
 	},
@@ -26204,7 +26204,7 @@ Cards = [{
 		proc: [Heal(0.10, [1, 0, 0, 0, 0], 0), Heal(0.17, [1, 0, 0, 0, 0], 7)],
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し(60%)、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを回復し(60%)、状態異常を回復する",
 		turn: 7,
 		proc: [ss_heal(0.60), ss_abstate_cure()],
 	},
@@ -26225,7 +26225,7 @@ Cards = [{
 		proc: [Heal(0.13, [1, 0, 0, 0, 0], 0), Heal(0.20, [1, 0, 0, 0, 0], 7)],
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し(60%)、状態異常を回復、さらに火属性の味方を50%で蘇生",
+		desc: "<状態異常回復&蘇生>味方全体のHPを回復し(60%)、状態異常を回復、さらに火属性の味方を50%で蘇生",
 		turn: 10,
 		proc: [ss_heal(0.60), ss_abstate_cure(), ss_resurrection([1, 0, 0, 0, 0], 0.50)],
 	},
@@ -26248,7 +26248,7 @@ Cards = [{
 		proc: [ChainAttack(5.0, 6), ChainSpecAttack(7.0, 6, [2])],
 	},
 	ss1: {
-		desc: "スキル反射を無視し、敵全体へ水・光属性のダメージ(120%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水・光属性のダメージ(120%)",
 		turn: 4,
 		proc: [ss_damage_all(1.2, [1, 3]), ss_ignore_skillcounter()],
 	},
@@ -26269,7 +26269,7 @@ Cards = [{
 		proc: [ChainAttack(6.0, 6), ChainSpecAttack(8.0, 6, [2])],
 	},
 	ss2: {
-		desc: "スキル反射を無視し、敵全体へ水・光属性のダメージ(150%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水・光属性のダメージ(150%)",
 		turn: 6,
 		proc: [ss_damage_all(1.5, [1, 3]), ss_ignore_skillcounter()],
 	},
@@ -26293,7 +26293,7 @@ Cards = [{
 		proc: [Heal(0.12, [0, 1, 1, 0, 0], 0), add_cond(Heal(1.0, [0, 1, 1, 0, 0], 0), when_hp_less(0.10))],
 	},
 	ss1: {
-		desc: "ジャンルパネルを水・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
 		turn: 3,
 		proc: [ss_panel_change([0,1,1,0,0])],
 	},
@@ -26314,7 +26314,7 @@ Cards = [{
 		proc: [Heal(0.17, [0, 1, 1, 0, 0], 0), add_cond(Heal(1.0, [0, 1, 1, 0, 0], 0), when_hp_less(0.10))],
 	},
 	ss2: {
-		desc: "ジャンルパネルを水・雷属性化し、ダメージ25%軽減の効果を付与。HP10%以下でさらにダメージ45%軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、ダメージ25%軽減の効果を付与。HP10%以下でさらにダメージ45%軽減の効果を付与",
 		turn: 6,
 		proc: [ss_panel_change([0,1,1,0,0]), panel_attr_guard([1,1,1,1,1], ss_hp_less(0.10, 0.70, 0.25))],
 	},
@@ -26337,7 +26337,7 @@ Cards = [{
 		proc: [ChainAttrAttack(3.0, 3, [0, 1, 0, 0, 0]), add_cond(ChainAttrAttack(11.5, 15, [0, 1, 0, 0, 0]), as_hp_absorption(0.05))],
 	},
 	ss1: {
-		desc: "敵全体へ雷属性のダメージ(220%)",
+		desc: "<大魔術>敵全体へ雷属性のダメージ(220%)",
 		turn: 10,
 		proc: [ss_damage_all(2.2, [2])],
 	},
@@ -26358,7 +26358,7 @@ Cards = [{
 		proc: [ChainAttrAttack(4.0, 3, [0, 1, 0, 0, 0]), add_cond(ChainAttrAttack(12, 15, [0, 1, 0, 0, 0]), as_hp_absorption(0.05))],
 	},
 	ss2: {
-		desc: "敵全体のダメージブロックを解除し、敵全体へ雷属性のダメージ(260%)",
+		desc: "<効果解除大魔術>敵全体のダメージブロックを解除し、敵全体へ雷属性のダメージ(260%)",
 		turn: 12,
 		proc: [ss_break_dblock("all"), ss_damage_all(2.6, [2])],
 	},
@@ -26381,7 +26381,7 @@ Cards = [{
 		proc: ChainAllAttack(1.8, 3),
 	},
 	ss1: {
-		desc: "3ターン自分の攻撃力をアップ(150%)",
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(150%)",
 		turn: 6,
 		proc: [ss_enhance_own(1.5, 3)],
 	},
@@ -26402,7 +26402,7 @@ Cards = [{
 		proc: ChainAllAttack(2.2, 3),
 	},
 	ss2: {
-		desc: "4ターン自分の攻撃力をアップ(250%)、3チェインを消費しさらに3ターン継続",
+		desc: "<ダメージ強化>4ターン自分の攻撃力をアップ(250%)、3チェインを消費しさらに3ターン継続",
 		turn: 8,
 		proc: [ss_chain_cost_skill(3, ss_enhance_own(2.5, 7), ss_enhance_own(2.5, 4))],
 	},
@@ -26426,7 +26426,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [0, 0, 1, 0, 0], 0), ChainSpecEnhance(0.80, [0, 0, 1, 0, 0], [4, 5], 0)],
 	},
 	ss1: {
-		desc: "敵単体の攻撃ターンを3遅らせる",
+		desc: "<遅延>敵単体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_s(3)],
 	},
@@ -26447,7 +26447,7 @@ Cards = [{
 		proc: [ChainEnhance(0.40, [0, 0, 1, 0, 0], 0), ChainSpecEnhance(1.20, [0, 0, 1, 0, 0], [4, 5], 0)],
 	},
 	ss2: {
-		desc: "敵単体の攻撃ターンを3遅らせ、20チェインでさらに1遅らせる",
+		desc: "<遅延>敵単体の攻撃ターンを3遅らせ、20チェインでさらに1遅らせる",
 		turn: 14,
 		proc: [ss_delay_s(ss_chain_cond(20, 4, 3))],
 	},
@@ -26470,7 +26470,7 @@ Cards = [{
 		proc: Heal(0.13, [1, 0, 1, 0, 0], 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを火・雷属性化",
 		turn: 4,
 		proc: [ss_panel_change([1,0,1,0,0])],
 	},
@@ -26489,7 +26489,7 @@ Cards = [{
 		proc: Heal(0.16, [1, 0, 1, 0, 0], 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルを火・雷属性化し、ダメージ25%軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、ダメージ25%軽減の効果を付与",
 		turn: 8,
 		proc: [ss_panel_change([1,0,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)],
 	},
@@ -26512,7 +26512,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [0, 1, 0, 0, 0], 3), ChainSpecEnhance(0.60, [0, 1, 0, 0, 0], [8], 3)],
 	},
 	ss1: {
-		desc: "MAXHPの50%を使い敵全体へダメージ(260%)",
+		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(260%)",
 		turn: 8,
 		proc: [ss_damage_all(2.6, [1]), ss_consume_own(0.50)],
 	},
@@ -26533,7 +26533,7 @@ Cards = [{
 		proc: [ChainEnhance(0.40, [0, 1, 0, 0, 0], 3), ChainSpecEnhance(0.80, [0, 1, 0, 0, 0], [8], 3)],
 	},
 	ss2: {
-		desc: "MAXHPの50%を使い敵全体へダメージ(330%)",
+		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(330%)",
 		turn: 10,
 		proc: [ss_damage_all(3.3, [1]), ss_consume_own(0.50)],
 	},
@@ -26555,7 +26555,7 @@ Cards = [{
 		proc: [ChainAttrAttack(3.0, 0, [1, 0, 0, 0, 0]), ChainAttrAttack(8.0, 8, [1, 0, 0, 0, 0])],
 	},
 	ss1: {
-		desc: "敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(200%/500%)",
+		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(200%/500%)",
 		turn: 6,
 		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 5.0, 2.0), [1])],
 	},
@@ -26576,7 +26576,7 @@ Cards = [{
 		proc: [ChainAttrAttack(4.0, 0, [1, 0, 0, 0, 0]), ChainAttrAttack(9.0, 8, [1, 0, 0, 0, 0])],
 	},
 	ss2: {
-		desc: "敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(200%/900%)",
+		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(200%/900%)",
 		turn: 9,
 		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 9.0, 2.0), [1])],
 	},
@@ -26599,7 +26599,7 @@ Cards = [{
 		proc: Heal(0.14, [1, 1, 1, 1, 1], 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 4,
 		proc: [ss_panel_change([1,1,1,0,0])],
 	},
@@ -26620,7 +26620,7 @@ Cards = [{
 		proc: Heal(0.17, [1, 1, 1, 1, 1], 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化し、ダメージ35%軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、ダメージ35%軽減の効果を付与",
 		turn: 7,
 		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.35)],
 	},
@@ -26643,7 +26643,7 @@ Cards = [{
 		proc: [ChainAttack(3.0, 4), add_cond(ChainAttack(5.5, 4), when_hp_more(0.8))],
 	},
 	ss1: {
-		desc: "ジャンルパネルをシャッフル",
+		desc: "<シャッフル>ジャンルパネルをシャッフル",
 		turn: 1,
 		proc: [ss_panel_shuffle()],
 	},
@@ -26664,7 +26664,7 @@ Cards = [{
 		proc: [ChainAttack(4.0, 4), add_cond(ChainAttack(6.5, 4), when_hp_more(0.8))],
 	},
 	ss2: {
-		desc: "ジャンルパネルにチェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
 		turn: 3,
 		proc: [panel_chainplus(1)],
 	},
@@ -26687,7 +26687,7 @@ Cards = [{
 		proc: [ChainAttack(4.0, 4), ChainSpecAttack(7.0, 4, [6])],
 	},
 	ss1: {
-		desc: "味方全体の攻撃力とHPを500アップし(上限値:2000)、さらに味方全体のHPを回復(25%)",
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップし(上限値:2000)、さらに味方全体のHPを回復(25%)",
 		turn: 5,
 		proc: [ss_statusup_all([500, 500], [2000, 2000], -1), ss_heal(0.25)],
 	},
@@ -26708,7 +26708,7 @@ Cards = [{
 		proc: [ChainAttack(5.0, 4), ChainSpecAttack(8.0, 4, [6])],
 	},
 	ss2: {
-		desc: "味方全体の攻撃力とHPを1000アップし(上限値:2000)、さらに味方全体のHPを回復(25%)",
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを1000アップし(上限値:2000)、さらに味方全体のHPを回復(25%)",
 		turn: 8,
 		proc: [ss_statusup_all([1000, 1000], [2000, 2000], -1), ss_heal(0.25)],
 	},
@@ -26731,7 +26731,7 @@ Cards = [{
 		proc: [ChainAttrAttack(6.5, 5, [0,0,1,0,0])],
 	},
 	ss1: {
-		desc: "味方全体のHPを500アップ(上限値:2000)、さらにHPを回復(50%)",
+		desc: "<ステータスアップ>味方全体のHPを500アップ(上限値:2000)、さらにHPを回復(50%)",
 		turn: 5,
 		proc: [ss_statusup_all([500, 0], [2000, 2000], -1), ss_heal(0.50)],
 	},
@@ -26752,7 +26752,7 @@ Cards = [{
 		proc: [ChainAttrAttack(7.5, 5, [0,0,1,0,0])],
 	},
 	ss2: {
-		desc: "味方全体のHPを1000アップ(上限値:2000)、さらにHPを完全回復",
+		desc: "<ステータスアップ>味方全体のHPを1000アップ(上限値:2000)、さらにHPを完全回復",
 		turn: 8,
 		proc: [ss_statusup_all([1000, 0], [2000, 2000], -1), ss_heal(1)],
 	},
@@ -26775,7 +26775,7 @@ Cards = [{
 		proc: ChainAttack(5.0, 6),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(人数×90%)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(人数×90%)",
 		turn: 8,
 		proc: [ss_damage_all(ss_consume_all_cond(0.90, 0.5), [0])],
 	},
@@ -26796,7 +26796,7 @@ Cards = [{
 		proc: ChainAttack_as_consume_own(7.0, 6, 0.15),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(人数×130%)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(人数×130%)",
 		turn: 10,
 		proc: [ss_damage_all(ss_consume_all_cond(1.30, 0.5), [0])],
 	},
@@ -26819,7 +26819,7 @@ Cards = [{
 		proc: ChainAttrAttack(4.0, 0, [1,0,0,0,0]),
 	},
 	ss1: {
-		desc: "敵全体へ水属性のダメージ、さらに火属性の敵に特効ダメージ(100%/300%)",
+		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに火属性の敵に特効ダメージ(100%/300%)",
 		turn: 4,
 		proc: [ss_damage_all(special_attr([1,0,0,0,0], 3.0, 1.0), [1])],
 	},
@@ -26840,7 +26840,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.0, 0, [1, 0, 0, 0, 0]),
 	},
 	ss2: {
-		desc: "敵全体へ水属性のダメージ、さらに火属性の敵に特効ダメージ(200%/500%)",
+		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに火属性の敵に特効ダメージ(200%/500%)",
 		turn: 6,
 		proc: [ss_damage_all(special_attr([1,0,0,0,0], 5.0, 2.0), [1])],
 	},
@@ -26863,7 +26863,7 @@ Cards = [{
 		proc: [ChainAttack(3.5, 4), ChainAttack(5.5, 10)],
 	},
 	ss1: {
-		desc: "敵単体の攻撃ターンを3ターン遅らせる",
+		desc: "<遅延>敵単体の攻撃ターンを3ターン遅らせる",
 		turn: 10,
 		proc: [ss_delay_s(3)],
 	},
@@ -26884,7 +26884,7 @@ Cards = [{
 		proc: [ChainAttack(4.5, 4), ChainAttack(6.5, 10)],
 	},
 	ss2: {
-		desc: "敵単体の攻撃ターンを3ターン遅らせ、水属性のダメージ(400%)",
+		desc: "<遅延大魔術>敵単体の攻撃ターンを3ターン遅らせ、水属性のダメージ(400%)",
 		turn: 12,
 		proc: [ss_damage_s(4.0, [1], 1), ss_delay_s(3)],
 	},
@@ -26951,7 +26951,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,0,1,0,0], [0,0,0,1,0], 5),
 	},
 	ss1: {
-		desc: "スキル反射を無視し、敵全体へ雷・光属性のダメージ(120%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ(120%)",
 		turn: 4,
 		proc: [ss_damage_all(1.2, [2, 3]), ss_ignore_skillcounter()],
 	},
@@ -26972,7 +26972,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.9, 1.4, [0,0,1,0,0], [0,0,0,1,0], 5),
 	},
 	ss2: {
-		desc: "スキル反射を無視し、敵全体へ雷・光属性のダメージ(150%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ(150%)",
 		turn: 6,
 		proc: [ss_damage_all(1.5, [2, 3]), ss_ignore_skillcounter()],
 	},
@@ -26995,7 +26995,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.25, 3, [0,1,0,0,0]),
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し(50%)、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
 		turn: 7,
 		proc: [ss_heal(0.50), ss_abstate_cure()],
 	},
@@ -27016,7 +27016,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.25, 3, [0,1,0,0,0]),
 	},
 	ss2: {
-		desc: "味方全体のHPを完全回復し、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
 		turn: 9,
 		proc: [ss_heal(1.0), ss_abstate_cure()],
 	},
@@ -27039,7 +27039,7 @@ Cards = [{
 		proc: add_cond(ChainDualAttack(3.5, 0, 3), when_hp_more(0.80)),
 	},
 	ss1: {
-		desc: "敵全体の攻撃ターンを1遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを1遅らせる",
 		turn: 4,
 		proc: [ss_delay_all(1)],
 	},
@@ -27060,7 +27060,7 @@ Cards = [{
 		proc: add_cond(ChainDualAttack(4.5, 0, 3), when_hp_more(0.80)),
 	},
 	ss2: {
-		desc: "敵全体の攻撃ターンを1遅らせ、雷属性のダメージ(120%)",
+		desc: "<遅延大魔術>敵全体の攻撃ターンを1遅らせ、雷属性のダメージ(120%)",
 		turn: 6,
 		proc: [ss_damage_all(1.2, [2]), ss_delay_all(1)],
 	},
@@ -27083,7 +27083,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 5, 3),
 	},
 	ss1: {
-		desc: "スペシャルスキルの発動を1ターン早め、敵全体の攻撃ターンを1遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動を1ターン早め、敵全体の攻撃ターンを1遅らせる",
 		turn: 6,
 		proc: [ss_skillboost(1), ss_delay_all(1)],
 	},
@@ -27104,7 +27104,7 @@ Cards = [{
 		proc: ChainDualAttack(5.5, 5, 3),
 	},
 	ss2: {
-		desc: "スペシャルスキルの発動を2ターン早め、敵全体の攻撃ターンを2遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動を2ターン早め、敵全体の攻撃ターンを2遅らせる",
 		turn: 9,
 		proc: [ss_skillboost(2), ss_delay_all(2)],
 	},
@@ -27127,7 +27127,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.0, 4, [0,0,1,0,0]),
 	},
 	ss1: {
-		desc: "スキル反射を無視し、火属性の5連撃(180%)、さらに連撃数分チェインプラス",
+		desc: "<斬撃大魔術>スキル反射を無視し、火属性の5連撃(180%)、さらに連撃数分チェインプラス",
 		turn: 9,
 		proc: [ss_damage_slash(1.8, [0], 5), ss_ignore_skillcounter()],
 	},
@@ -27158,7 +27158,7 @@ Cards = [{
 		proc: [ChainDualAttack(2.5, 4, 3), add_cond(ChainDualAttack(3.5, 4, 3), when_hp_more(0.5))],
 	},
 	ss1: {
-		desc: "ジャンルパネルを火・雷属性化し、攻撃力アップの効果を付与(20%)",
+		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、攻撃力アップの効果を付与(20%)",
 		turn: 8,
 		proc: [ss_panel_change([1,0,1,0,0]), panel_attackup(0.20)],
 	},
@@ -27189,7 +27189,7 @@ Cards = [{
 		proc: [Heal(0.11, [0,1,0,0,0], 0)],
 	},
 	ss1: {
-		desc: "チェインプラス2の効果、さらに3ターン味方全体を徐々に回復する(15%)",
+		desc: "<継続回復>チェインプラス2の効果、さらに3ターン味方全体を徐々に回復する(15%)",
 		turn: 7,
 		proc: [ss_addchain(2), ss_regenerate(0.15, 3)],
 	},
@@ -27220,7 +27220,7 @@ Cards = [{
 		proc: [Heal(0.09, [0,1,0,0,0], 0), Heal(0.12, [0,1,0,0,0], 3)],
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
 		turn: 9,
 		proc: [ss_skillboost(2)],
 	},
@@ -27251,7 +27251,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 4),
 	},
 	ss1: {
-		desc: "敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/500%)",
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/500%)",
 		turn: 8,
 		proc: [ss_damage_all(special_attr([0,1,0,0,0], 5.0, 2.0), [2])],
 	},
@@ -27282,7 +27282,7 @@ Cards = [{
 		proc: ChainAttrAttack(3.0, 0, [0,1,0,0,0]),
 	},
 	ss1: {
-		desc: "2ターン敵の状態異常攻撃を無効化する",
+		desc: "<状態異常無効>2ターン敵の状態異常攻撃を無効化する",
 		turn: 9,
 		proc: [ss_absattack_disable(2)],
 	},
@@ -27313,7 +27313,7 @@ Cards = [{
 		proc: ChainDualAttack(3.0, 3, 3),
 	},
 	ss1: {
-		desc: "ジャンルパネルにチェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
 		turn: 4,
 		proc: [panel_chainplus(1)],
 	},
@@ -27345,7 +27345,7 @@ Cards = [{
 		proc: ChainPanelsAttack(3.5, 4.5, 6.0, 4),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火・雷属性化",
+		desc: "<パネル変換>ジャンルパネルを火・雷属性化",
 		turn: 4,
 		proc: [ss_panel_change([1,0,1,0,0])],
 	},
@@ -27366,7 +27366,7 @@ Cards = [{
 		proc: ChainPanelsAttack(4.5, 5.5, 7.0, 4),
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化し、ダメージ10%軽減の効果を付与。HP50%以下でさらにダメージ30%軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、ダメージ10%軽減の効果を付与。HP50%以下でさらにダメージ30%軽減の効果を付与",
 		turn: 7,
 		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], ss_hp_less(0.50, 0.40, 0.10))],
 	},
@@ -27390,7 +27390,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.30, 0.80, [1,0,0,0,0], [0,1,0,0,0], 0),
 	},
 	ss1: {
-		desc: "味方全体の攻撃力を2000ダウンし、味方全体のHPを2000アップ(上限値:2000)",
+		desc: "<ステータスアップ>味方全体の攻撃力を2000ダウンし、味方全体のHPを2000アップ(上限値:2000)",
 		turn: 5,
 		proc: [ss_statusup_all([2000, -2000], [2000, 2000], -1)],
 	},
@@ -27411,7 +27411,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.60, 1.10, [1,0,0,0,0], [0,1,0,0,0], 0),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(160%×人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(160%×人数)",
 		turn: 12,
 		proc: [ss_damage_all(ss_consume_all_cond(1.6, 0.5), [0])],
 	},
@@ -27435,7 +27435,7 @@ Cards = [{
 		proc: ChainAttack(3.0, 4),
 	},
 	ss1: {
-		desc: "3ターンの間、スキルカウンター待機(100%)",
+		desc: "<カウンター>3ターンの間、スキルカウンター待機(100%)",
 		turn: 8,
 		proc: [ss_skillcounter(1.0, 3)],
 	},
@@ -27456,7 +27456,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 4),
 	},
 	ss2: {
-		desc: "5ターンの間、スキルカウンター待機(100%)",
+		desc: "<カウンター>5ターンの間、スキルカウンター待機(100%)",
 		turn: 10,
 		proc: [ss_skillcounter(1.0, 5)],
 	},
@@ -27480,7 +27480,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(3.0, 3, 3, [1,0,0,0,0]),
 	},
 	ss1: {
-		desc: "敵全体のガード&ダメージブロックを解除する",
+		desc: "<効果解除>敵全体のガード&ダメージブロックを解除する",
 		turn: 10,
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all")],
 	},
@@ -27512,7 +27512,7 @@ Cards = [{
 		proc: ChainAttack(3.0, 4),
 	},
 	ss1: {
-		desc: "敵全体の攻撃ターンを1遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを1遅らせる",
 		turn: 5,
 		proc: [ss_delay_all(1)],
 	},
@@ -27533,7 +27533,7 @@ Cards = [{
 		proc: ChainAttack(4.0, 4),
 	},
 	ss2: {
-		desc: "敵全体の攻撃ターンを1遅らせ、水属性のダメージ(120%)",
+		desc: "<遅延大魔術>敵全体の攻撃ターンを1遅らせ、水属性のダメージ(120%)",
 		turn: 7,
 		proc: [ss_damage_all(1.2, [1]), ss_delay_all(1)],
 	},
@@ -27557,7 +27557,7 @@ Cards = [{
 		proc: [Heal(0.10, [1,1,0,0,0], 0), Heal(0.14, [1,1,0,0,0], 0.14)],
 	},
 	ss1: {
-		desc: "スキル反射を無視し、敵全体へ火・水属性のダメージ(150%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・水属性のダメージ(150%)",
 		turn: 7,
 		proc: [ss_damage_all(1.5, [0, 1]), ss_ignore_skillcounter()],
 	},
@@ -27578,7 +27578,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,1,0,0,0], 0), Heal(0.17, [1,1,0,0,0], 0.14)],
 	},
 	ss2: {
-		desc: "スキル反射を無視し、敵全体へ火・水属性のダメージ(220%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・水属性のダメージ(220%)",
 		turn: 10,
 		proc: [ss_damage_all(2.2, [0, 1]), ss_ignore_skillcounter()],
 	},
@@ -27602,7 +27602,7 @@ Cards = [{
 		proc: [ChainDualAttack(3.0, 3, 3), ChainDualAttack(4.5, 7, 3)],
 	},
 	ss1: {
-		desc: "敵単体へ火・水属性の5回連続ダメージ(180%)",
+		desc: "<多弾魔術>敵単体へ火・水属性の5回連続ダメージ(180%)",
 		turn: 6,
 		proc: [ss_damage_s(1.8, [0,1], 5)],
 	},
@@ -27623,7 +27623,7 @@ Cards = [{
 		proc: [ChainDualAttack(4.0, 3, 3), ChainDualAttack(5.5, 7, 3)],
 	},
 	ss2: {
-		desc: "敵単体へ火・水属性の5回連続ダメージ(380%)",
+		desc: "<多弾魔術>敵単体へ火・水属性の5回連続ダメージ(380%)",
 		turn: 9,
 		proc: [ss_damage_s(3.8, [0,1], 5)],
 	},
@@ -27647,7 +27647,7 @@ Cards = [{
 		proc: ChainEnhance(0.40, [0,1,1,0,0], 3),
 	},
 	ss1: {
-		desc: "敵全体へ雷属性のダメージ(100%)、さらに3ターンの間雷属性のダメージ(100%)",
+		desc: "<残滅大魔術>敵全体へ雷属性のダメージ(100%)、さらに3ターンの間雷属性のダメージ(100%)",
 		turn: 6,
 		proc: [ss_continue_damage(1.0, 1.0, [2], 3)],
 	},
@@ -27668,7 +27668,7 @@ Cards = [{
 		proc: ChainEnhance(0.60, [0,1,1,0,0], 3),
 	},
 	ss2: {
-		desc: "敵全体へ雷属性のダメージ(200%)、さらに3ターンの間雷属性のダメージ(200%)",
+		desc: "<残滅大魔術>敵全体へ雷属性のダメージ(200%)、さらに3ターンの間雷属性のダメージ(200%)",
 		turn: 8,
 		proc: [ss_continue_damage(2.0, 2.0, [2], 3)],
 	},
@@ -27692,7 +27692,7 @@ Cards = [{
 		proc: ChainAttrAttack(3.5, 0, [0, 1, 0, 0, 0]),
 	},
 	ss1: {
-		desc: "2ターン溜めた後、2ターン自分の攻撃力をアップ(1000%)",
+		desc: "<ダメージ強化>2ターン溜めた後、2ターン自分の攻撃力をアップ(1000%)",
 		turn: 3,
 		charged: 2,
 		proc: [ss_enhance_own(10.0, 2)],
@@ -27713,7 +27713,7 @@ Cards = [{
 		proc: ChainAttrAttack(4.5, 0, [0, 1, 0, 0, 0]),
 	},
 	ss2: {
-		desc: "2ターン溜めた後、2ターン自分の攻撃力をアップ(1200%)",
+		desc: "<ダメージ強化>2ターン溜めた後、2ターン自分の攻撃力をアップ(1200%)",
 		turn: 5,
 		charged: 2,
 		proc: [ss_enhance_own(12.0, 2)],
@@ -27737,7 +27737,7 @@ Cards = [{
 		proc: ChainAttack(5.5, 7),
 	},
 	ss1: {
-		desc: "5ターン溜めた後、4ターン火属性の味方の攻撃力をアップ(200%)",
+		desc: "<ダメージ強化>5ターン溜めた後、4ターン火属性の味方の攻撃力をアップ(200%)",
 		turn: 5,
 		charged: 5,
 		proc: [ss_enhance_all(2.0, 4, [1, 0, 0, 0, 0])]
@@ -27759,7 +27759,7 @@ Cards = [{
 		proc: ChainAttack(6.5, 7),
 	},
 	ss2: {
-		desc: "5ターン溜めた後、5ターン火属性の味方の攻撃力をアップ(250%)",
+		desc: "<ダメージ強化>5ターン溜めた後、5ターン火属性の味方の攻撃力をアップ(250%)",
 		turn: 8,
 		charged: 5,
 		proc: [ss_enhance_all(2.5, 5, [1, 0, 0, 0, 0])]
@@ -27783,7 +27783,7 @@ Cards = [{
 		proc: [ChainDualAttack(3.0, 4, 3), add_cond(ChainDualAttack(5.0, 4, 3), when_hp_more(0.5))],
 	},
 	ss1: {
-		desc: "2ターン溜めた後、敵単体へ火・雷属性の7回連続ダメージ(350%)",
+		desc: "<多弾魔術>2ターン溜めた後、敵単体へ火・雷属性の7回連続ダメージ(350%)",
 		turn: 3,
 		charged: 2,
 		proc: [ss_damage_s(3.5, [0, 2], 7)],
@@ -27805,7 +27805,7 @@ Cards = [{
 		proc: [ChainDualAttack(4.0, 4, 3), add_cond(ChainDualAttack(6.0, 4, 3), when_hp_more(0.5))],
 	},
 	ss2: {
-		desc: "2ターン溜めた後、敵単体へ火・雷属性の7回連続ダメージ(560%)",
+		desc: "<多弾魔術>2ターン溜めた後、敵単体へ火・雷属性の7回連続ダメージ(560%)",
 		turn: 6,
 		charged: 2,
 		proc: [ss_damage_s(5.6, [0, 2], 7)],
@@ -27830,7 +27830,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.0, 5, [0, 1, 0, 0, 0]),
 	},
 	ss1: {
-		desc: "4ターン溜めた後、敵単体へ雷属性のダメージ(1500%)◆スキル使用後、1ターン封印状態に",
+		desc: "<大魔術>4ターン溜めた後、敵単体へ雷属性のダメージ(1500%)◆スキル使用後、1ターン封印状態に",
 		turn: 4,
 		charged: 4,
 		proc: [ss_damage_s(15.0, [2], 1), ss_allsealed_own(1)],
@@ -27852,7 +27852,7 @@ Cards = [{
 		proc: ChainAttrAttack(7.0, 5, [0, 1, 0, 0, 0]),
 	},
 	ss2: {
-		desc: "4ターン溜めた後、敵単体へ雷属性のダメージ(2500%)◆スキル使用後、1ターン封印状態に",
+		desc: "<大魔術>4ターン溜めた後、敵単体へ雷属性のダメージ(2500%)◆スキル使用後、1ターン封印状態に",
 		turn: 7,
 		charged: 4,
 		proc: [ss_damage_s(25.0, [2], 1), ss_allsealed_own(1)],
@@ -27877,7 +27877,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0, 0.17, 0.17, [1, 0, 1, 0, 0], 0),
 	},
 	ss1: {
-		desc: "スキル反射を無視し、敵単体へ火・雷属性の2回連続ダメージ(200%)",
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の2回連続ダメージ(200%)",
 		turn: 4,
 		proc: [ss_damage_s(2.0, [0, 2], 2), ss_ignore_skillcounter()],
 	},
@@ -27898,7 +27898,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0, 0.20, 0.20, [1, 0, 1, 0, 0], 0),
 	},
 	ss2: {
-		desc: "スキル反射を無視し、敵単体へ火・雷属性の2回連続ダメージ(400%)",
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の2回連続ダメージ(400%)",
 		turn: 6,
 		proc: [ss_damage_s(4.0, [0, 2], 2), ss_ignore_skillcounter()],
 	},
@@ -27922,7 +27922,7 @@ Cards = [{
 		proc: [ChainVarianceAttack(3.0, 4), add_cond(ChainVarianceAttack(4.0, 4), when_hp_more(0.8))],
 	},
 	ss1: {
-		desc: "スキル反射を無視し、敵全体へ水・雷属性のダメージ(150%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水・雷属性のダメージ(150%)",
 		turn: 7,
 		proc: [ss_damage_all(1.5, [1, 2]), ss_ignore_skillcounter()],
 	},
@@ -27943,7 +27943,7 @@ Cards = [{
 		proc: [ChainVarianceAttack(4.0, 4), add_cond(ChainVarianceAttack(5.0, 4), when_hp_more(0.8))],
 	},
 	ss2: {
-		desc: "スキル反射を無視し、敵全体へ水・雷属性のダメージ(220%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水・雷属性のダメージ(220%)",
 		turn: 10,
 		proc: [ss_damage_all(2.2, [1, 2]), ss_ignore_skillcounter()],
 	},
@@ -28011,7 +28011,7 @@ Cards = [{
 		proc: ChainPanelsAttrDualAttack(5.0, 6.0, 7.0, [0, 0, 1, 0, 0], 3, 4),
 	},
 	ss1: {
-		desc: "2ターン溜めた後、1ターン1000以下の全属性ダメージを無効化する",
+		desc: "<ダメージブロック>2ターン溜めた後、1ターン1000以下の全属性ダメージを無効化する",
 		turn: 8,
 		charged: 2,
 		proc: [ss_damageblock_all(1000, 1)],
@@ -28033,7 +28033,7 @@ Cards = [{
 		proc: ChainPanelsAttrDualAttack(6.0, 7.0, 8.0, [0, 0, 1, 0, 0], 3, 4),
 	},
 	ss2: {
-		desc: "2ターン溜めた後、1ターン1500以下の全属性ダメージを無効化する",
+		desc: "<ダメージブロック>2ターン溜めた後、1ターン1500以下の全属性ダメージを無効化する",
 		turn: 11,
 		charged: 2,
 		proc: [ss_damageblock_all(1500, 1)],
@@ -28058,7 +28058,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(4.5, 0), when_hp_more(1)),
 	},
 	ss1: {
-		desc: "味方のMAXHP60%を使い、スキル反射を無視し、敵全体へ水・雷属性のダメージ(220%)",
+		desc: "<犠牲魔術>味方のMAXHP60%を使い、スキル反射を無視し、敵全体へ水・雷属性のダメージ(220%)",
 		turn: 7,
 		proc: [ss_damage_all(2.2, [1, 2]), ss_ignore_skillcounter(), ss_consume_all(0.60)],
 	},
@@ -28079,7 +28079,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(5.5, 0), when_hp_more(1)),
 	},
 	ss2: {
-		desc: "味方のMAXHP60%を使い、スキル反射を無視し、敵全体へ水・雷属性のダメージ(260%)",
+		desc: "<犠牲魔術>味方のMAXHP60%を使い、スキル反射を無視し、敵全体へ水・雷属性のダメージ(260%)",
 		turn: 9,
 		proc: [ss_damage_all(2.6, [1, 2]), ss_ignore_skillcounter(), ss_consume_all(0.60)],
 	},
@@ -28102,7 +28102,7 @@ Cards = [{
 		proc: ChainSpecAttack(6.0, 0, [6]),
 	},
 	ss1: {
-		desc: "ジャンルパネルを水・闇属性化",
+		desc: "<パネル変換>ジャンルパネルを水・闇属性化",
 		turn: 4,
 		proc: [ss_panel_change([0,1,0,0,1])],
 	},
@@ -28123,7 +28123,7 @@ Cards = [{
 		proc: ChainSpecAttack(7.0, 0, [6]),
 	},
 	ss2: {
-		desc: "ジャンルパネルを水・闇属性化し、攻撃力アップの効果を付与(30%)",
+		desc: "<特殊パネル変換>ジャンルパネルを水・闇属性化し、攻撃力アップの効果を付与(30%)",
 		turn: 7,
 		proc: [ss_panel_change([0,1,0,0,1]), panel_attackup(0.30)],
 	},
@@ -28146,7 +28146,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(4.0, 0, 3, [0, 0, 1, 0, 0]),
 	},
 	ss1: {
-		desc: "5ターン味方全体を徐々に回復する(15%)",
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(15%)",
 		turn: 6,
 		proc: [ss_regenerate(0.15, 5)],
 	},
@@ -28167,7 +28167,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(5.0, 0, 3, [0, 0, 1, 0, 0]),
 	},
 	ss2: {
-		desc: "2ターン溜めた後、味方HPを完全回復し、さらに5ターン味方全体を徐々に回復する(30%)",
+		desc: "<継続回復>2ターン溜めた後、味方HPを完全回復し、さらに5ターン味方全体を徐々に回復する(30%)",
 		turn: 8,
 		charged: 2,
 		proc: [ss_heal(1), ss_regenerate(0.30, 5)],
@@ -28234,7 +28234,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 4.0, 5.5, 3),
 	},
 	ss1: {
-		desc: "解答選択肢を2つ削り、3チェインを消費し解答を見破る",
+		desc: "<解答削り>解答選択肢を2つ削り、3チェインを消費し解答を見破る",
 		turn: 3,
 		proc: [ss_chain_cost_skill(3, ss_answer_foresight(), ss_answer_narrow(2))],
 	},
@@ -28255,7 +28255,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 5.5, 7.0, 3),
 	},
 	ss2: {
-		desc: "解答を見破る",
+		desc: "<解答削り>解答を見破る",
 		turn: 6,
 		proc: [ss_answer_foresight()],
 	},
@@ -28279,7 +28279,7 @@ Cards = [{
 		proc: [ChainDeckSpecsAttack(0.4, [5,8], 0),add_cond(ChainDeckSpecsAttack(0.6, [5,8], 0), as_panel_over2())],
 	},
 	ss1: {
-		desc: "味方全体のHPを回復する(50%)",
+		desc: "<回復>味方全体のHPを回復する(50%)",
 		turn: 5,
 		proc: [ss_heal(0.5)],
 	},
@@ -28300,7 +28300,7 @@ Cards = [{
 		proc: [ChainDeckSpecsAttack(0.6, [5,8], 0),add_cond(ChainDeckSpecsAttack(0.8, [5,8], 0), as_panel_over2())],
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し(50%)、状態異常を回復する",
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
 		turn: 7,
 		proc: [ss_heal(0.5), ss_abstate_cure()],
 	},
@@ -28325,7 +28325,7 @@ Cards = [{
 		proc: [ChainEnhance(0.20, [1, 0, 0, 0, 0], 0), ChainSpecEnhance(0.40, [1, 0, 0, 0, 0], [8], 0)],
 	},
 	ss1: {
-		desc: "敵単体の攻撃ターンを2遅らせる",
+		desc: "<遅延>敵単体の攻撃ターンを2遅らせる",
 		turn: 9,
 		proc: [ss_delay_s(2)],
 	},
@@ -28346,7 +28346,7 @@ Cards = [{
 		proc: [Heal(0.13, [1, 0, 0, 0, 0], 0), ChainEnhance(0.20, [1, 0, 0, 0, 0], 0), ChainSpecEnhance(0.40, [1, 0, 0, 0, 0], [8], 0)],
 	},
 	ss2: {
-		desc: "敵単体の攻撃ターンを2遅らせ、火属性のダメージ(400%)",
+		desc: "<遅延大魔術>敵単体の攻撃ターンを2遅らせ、火属性のダメージ(400%)",
 		turn: 12,
 		proc: [ss_damage_s(4.0, [0], 1), ss_delay_s(2)],
 	},
@@ -28370,7 +28370,7 @@ Cards = [{
 		proc: ChainAttack(4.0, 5),
 	},
 	ss1: {
-		desc: "味方全体のHPを回復する(50%)",
+		desc: "<回復>味方全体のHPを回復する(50%)",
 		turn: 6,
 		proc: [ss_heal(0.50)],
 	},
@@ -28391,7 +28391,7 @@ Cards = [{
 		proc: [ChainAttack(4.5, 5), Heal(0.05, [0, 1, 0, 0, 0], 0)],
 	},
 	ss2: {
-		desc: "チェインプラス2の効果、さらに味方全体のHPを回復する(50%)",
+		desc: "<回復>チェインプラス2の効果、さらに味方全体のHPを回復する(50%)",
 		turn: 10,
 		proc: [ss_heal(0.50), ss_addchain(2)],
 	},
@@ -28415,7 +28415,7 @@ Cards = [{
 		proc: [ChainAttrAttack(3.5, 0, [0, 1, 0, 0, 0])],
 	},
 	ss1: {
-		desc: "1ターン溜めた後、敵単体へ雷属性のダメージ(200%)",
+		desc: "<大魔術>1ターン溜めた後、敵単体へ雷属性のダメージ(200%)",
 		turn: 4,
 		charged: 1,
 		proc: [ss_damage_s(2.0, [2], 1)],
@@ -28437,7 +28437,7 @@ Cards = [{
 		proc: [ChainAttrAttack(4.5, 0, [0, 1, 0, 0, 0])],
 	},
 	ss2: {
-		desc: "1ターン溜めた後、敵単体へ雷属性のダメージ(400%)",
+		desc: "<大魔術>1ターン溜めた後、敵単体へ雷属性のダメージ(400%)",
 		turn: 7,
 		charged: 1,
 		proc: [ss_damage_s(4.0, [2], 1)],
@@ -28462,7 +28462,7 @@ Cards = [{
 		proc: ChainVarianceAttack(2.5, 0),
 	},
 	ss1: {
-		desc: "3ターン火属性の味方の攻撃力をアップ(50%)",
+		desc: "<ダメージ強化>3ターン火属性の味方の攻撃力をアップ(50%)",
 		turn: 8,
 		proc: [ss_enhance_all(0.50, 3, [1, 0, 0, 0, 0])],
 	},
@@ -28483,7 +28483,7 @@ Cards = [{
 		proc: ChainVarianceAttack(3.5, 0),
 	},
 	ss2: {
-		desc: "4ターン火属性の味方の攻撃力をアップ、5チェインを消費しさらにアップ(120%/180%)",
+		desc: "<ダメージ強化>4ターン火属性の味方の攻撃力をアップ、5チェインを消費しさらにアップ(120%/180%)",
 		turn: 13,
 		proc: [ss_chain_cost_skill(5, ss_enhance_all(1.80, 4, [1, 0, 0, 0, 0]), ss_enhance_all(1.20, 4, [1, 0, 0, 0, 0]))],
 	},
@@ -28506,7 +28506,7 @@ Cards = [{
 		proc: ChainDualAttack(2.5, 0, 5),
 	},
 	ss1: {
-		desc: "敵全体へ水属性のダメージ(100%)",
+		desc: "<大魔術>敵全体へ水属性のダメージ(100%)",
 		turn: 5,
 		proc: [ss_damage_all(1.0, [1])],
 	},
@@ -28527,7 +28527,7 @@ Cards = [{
 		proc: ChainDualAttack(3.0, 0, 10),
 	},
 	ss2: {
-		desc: "敵全体へ水属性のダメージ(150%)",
+		desc: "<大魔術>敵全体へ水属性のダメージ(150%)",
 		turn: 7,
 		proc: [ss_damage_all(1.5, [1])],
 	},
@@ -28551,7 +28551,7 @@ Cards = [{
 		proc: ChainEnhance_attrless(0.8, [0,1,1,0,0], [0,0,1,0,0], 3, 0),
 	},
 	ss1: {
-		desc: "敵全体へ水・雷属性のダメージ(150%)",
+		desc: "<大魔術>敵全体へ水・雷属性のダメージ(150%)",
 		turn: 7,
 		proc: [ss_damage_all(1.5, [1, 2])],
 	},
@@ -28572,7 +28572,7 @@ Cards = [{
 		proc: ChainEnhance_attrless(1.1, [0,1,1,0,0], [0,0,1,0,0], 3, 0),
 	},
 	ss2: {
-		desc: "敵全体へ水・雷属性のダメージ(220%)",
+		desc: "<大魔術>敵全体へ水・雷属性のダメージ(220%)",
 		turn: 10,
 		proc: [ss_damage_all(2.2, [1, 2])],
 	},
@@ -28595,7 +28595,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [1, 0, 0, 0, 0], 0), ChainAttack(4.0, 6)],
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ、5チェイン消費しさらに特効ダメージ(200%/900%/1200%)",
+		desc: "<特効大魔術>敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ、5チェイン消費しさらに特効ダメージ(200%/900%/1200%)",
 		turn: 9,
 		proc: [ss_chain_cost_skill(5, ss_damage_all(special_attr([0, 0, 1, 0, 0], 12.0, 2.0), [0]), ss_damage_all(special_attr([0, 0, 1, 0, 0], 9.0, 2.0), [0]))],
 	},
@@ -28616,7 +28616,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [1, 0, 0, 0, 0], 0), ChainAttack(5.0, 6)],
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ、5チェイン消費しさらに特効ダメージ(200%/1200%/1700%)",
+		desc: "<特効大魔術>敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ、5チェイン消費しさらに特効ダメージ(200%/1200%/1700%)",
 		turn: 12,
 		proc: [ss_chain_cost_skill(5, ss_damage_all(special_attr([0,0,1,0,0], 17.0, 2.0), [0]), ss_damage_all(special_attr([0,0,1,0,0], 12.0, 2.0), [0]))],
 	},
@@ -28640,7 +28640,7 @@ Cards = [{
 		proc: [ChainAttack(4.0, 4), ChainSpecAttack(7.0, 4, [8])],
 	},
 	ss1: {
-		desc: "スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
 		turn: 9,
 		proc: [ss_skillboost(2), ss_delay_s(2)],
 	},
@@ -28661,7 +28661,7 @@ Cards = [{
 		proc: [ChainAttack(5.0, 4), ChainSpecAttack(8.0, 4, [8])],
 	},
 	ss2: {
-		desc: "スペシャルスキルの発動ターンを3早め、敵単体の攻撃ターンを3遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを3早め、敵単体の攻撃ターンを3遅らせる",
 		turn: 12,
 		proc: [ss_skillboost(3), ss_delay_s(3)],
 	},
@@ -28684,7 +28684,7 @@ Cards = [{
 		proc: ChainAttrAttack(14.0, 15, [0, 0, 1, 0, 0]),
 	},
 	ss1: {
-		desc: "敵全体へ火属性のダメージ(300%)、さらに3ターンの間、火属性のダメージ(300%)",
+		desc: "<残滅大魔術>敵全体へ火属性のダメージ(300%)、さらに3ターンの間、火属性のダメージ(300%)",
 		turn: 9,
 		proc: [ss_continue_damage(3.0, 3.0, [0], 3)],
 	},
@@ -28705,7 +28705,7 @@ Cards = [{
 		proc: ChainAttrAttack(16.0, 15, [0, 0, 1, 0, 0]),
 	},
 	ss2: {
-		desc: "敵全体へ火属性のダメージ(300%)、さらに4ターンの間、火属性のダメージ(300%)",
+		desc: "<残滅大魔術>敵全体へ火属性のダメージ(300%)、さらに4ターンの間、火属性のダメージ(300%)",
 		turn: 11,
 		proc: [ss_continue_damage(3.0, 3.0, [0], 4)],
 	},
@@ -28728,7 +28728,7 @@ Cards = [{
 		proc: [Heal(0.05, [0, 0, 1, 0, 0], 0), ChainEnhance_SubAttr(0.30, 0.50, [0, 0, 1, 0, 0], [1, 0, 0, 0, 0], 0)],
 	},
 	ss1: {
-		desc: "5ターン溜めた後、味方HPを完全回復し、さらに10ターン味方全体を徐々に回復する(30%)",
+		desc: "<継続回復>5ターン溜めた後、味方HPを完全回復し、さらに10ターン味方全体を徐々に回復する(30%)",
 		turn: 5,
 		charged: 5,
 		proc: [ss_heal(1), ss_regenerate(0.30, 10)],
@@ -28750,7 +28750,7 @@ Cards = [{
 		proc: [Heal(0.05, [0, 0, 1, 0, 0], 0), ChainEnhance_SubAttr(0.60, 0.80, [0, 0, 1, 0, 0], [1, 0, 0, 0, 0], 0)],
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し(50%)、状態異常を回復、さらに火・雷属性の味方を50%で蘇生",
+		desc: "<状態異常回復&蘇生>味方全体のHPを回復し(50%)、状態異常を回復、さらに火・雷属性の味方を50%で蘇生",
 		turn: 10,
 		proc: [ss_heal(0.50), ss_abstate_cure(), ss_resurrection([1, 0, 1, 0, 0], 0.50)],
 	},
@@ -28773,7 +28773,7 @@ Cards = [{
 		proc: ChainVarianceAttack(4.5, 4),
 	},
 	ss1: {
-		desc: "スキル反射を無視し、敵単体のHPを15%減少させる",
+		desc: "<割合削り>スキル反射を無視し、敵単体のHPを15%減少させる",
 		turn: 8,
 		proc: [ss_ratiodamage_s(0.15), ss_ignore_skillcounter()],
 	},
@@ -28794,7 +28794,7 @@ Cards = [{
 		proc: ChainVarianceAttack(5.5, 4),
 	},
 	ss2: {
-		desc: "スキル反射を無視し、敵単体のHPを25%減少させる",
+		desc: "<割合削り>スキル反射を無視し、敵単体のHPを25%減少させる",
 		turn: 10,
 		proc: [ss_ratiodamage_s(0.25), ss_ignore_skillcounter()],
 	},
@@ -28862,7 +28862,7 @@ Cards = [{
 		proc: ChainVarianceAttack(4.0, 4),
 	},
 	ss1: {
-		desc: "4ターン溜めた後、6ターンの間スキルカウンター待機(100%)",
+		desc: "<カウンター>4ターン溜めた後、6ターンの間スキルカウンター待機(100%)",
 		turn: 3,
 		charged: 4,
 		proc: [ss_skillcounter(1.0, 6)],
@@ -28884,7 +28884,7 @@ Cards = [{
 		proc: ChainVarianceAttack(5.0, 4),
 	},
 	ss2: {
-		desc: "4ターン溜めた後、10ターンの間スキルカウンター待機(100%)",
+		desc: "<カウンター>4ターン溜めた後、10ターンの間スキルカウンター待機(100%)",
 		turn: 6,
 		charged: 4,
 		proc: [ss_skillcounter(1.0, 10)],
@@ -28909,7 +28909,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(3.0, 0), when_hp_more(0.80)),
 	},
 	ss1: {
-		desc: "味方のMAXHP60%を使い、敵単体へ火・雷属性の10回連続ダメージ(250%)",
+		desc: "<犠牲魔術>味方のMAXHP60%を使い、敵単体へ火・雷属性の10回連続ダメージ(250%)",
 		turn: 5,
 		proc: [ss_consume_all(0.60), ss_damage_s(2.5, [0,2], 10), ],
 	},
@@ -28930,7 +28930,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(4.0, 0), when_hp_more(0.80)),
 	},
 	ss2: {
-		desc: "味方のMAXHP60%を使い、敵単体へ火・雷属性の10回連続ダメージ(450%)",
+		desc: "<犠牲魔術>味方のMAXHP60%を使い、敵単体へ火・雷属性の10回連続ダメージ(450%)",
 		turn: 8,
 		proc: [ss_consume_all(0.60), ss_damage_s(4.5, [0,2], 10), ],
 	},
@@ -28954,7 +28954,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.0, 0, [0,1,1,1,1]),
 	},
 	ss1: {
-		desc: "敵全体へ水属性のダメージ、さらに水属性の敵には特効ダメージ(200%/500%)",
+		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに水属性の敵には特効ダメージ(200%/500%)",
 		turn: 6,
 		proc: [ss_damage_all(special_attr([0,1,0,0,0], 5.0, 2.0), [1])],
 	},
@@ -28975,7 +28975,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.0, 0, [0,1,1,1,1]),
 	},
 	ss2: {
-		desc: "敵全体へ水属性のダメージ、さらに水属性の敵には特効ダメージ(200%/900%)",
+		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに水属性の敵には特効ダメージ(200%/900%)",
 		turn: 9,
 		proc: [ss_damage_all(special_attr([0,1,0,0,0], 9.0, 2.0), [1])],
 	},
@@ -28999,7 +28999,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.50, [5,8], 4),
 	},
 	ss1: {
-		desc: "味方全体のHPを回復し、状態異常を回復する、3チェインを消費しさらにHPを回復(25%/50%)",
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する、3チェインを消費しさらにHPを回復(25%/50%)",
 		turn: 8,
 		proc: [ss_chain_cost_skill(3, ss_heal(0.50), ss_heal(0.25)), ss_abstate_cure()],
 	},
@@ -29020,7 +29020,7 @@ Cards = [{
 		proc: ChainDeckSpecsAttack(0.60, [5,8], 4),
 	},
 	ss2: {
-		desc: "味方全体のHPを回復し、状態異常を回復する、3チェインを消費しさらにHPを回復(50%/100%)",
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する、3チェインを消費しさらにHPを回復(50%/100%)",
 		turn: 10,
 		proc: [ss_chain_cost_skill(3, ss_heal(1.0), ss_heal(0.50)), ss_abstate_cure()],
 	},
@@ -29044,7 +29044,7 @@ Cards = [{
 		proc: ChainAttack(3.0, 3),
 	},
 	ss1: {
-		desc: "4ターン敵全体に毒のダメージを与える(5000)",
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(5000)",
 		turn: 8,
 		proc: [poison(5000, 4)],
 	},
@@ -29065,7 +29065,7 @@ Cards = [{
 		proc: ChainAttack(4.0, 3),
 	},
 	ss2: {
-		desc: "5ターン敵全体に毒のダメージを与える(9999)",
+		desc: "<毒>5ターン敵全体に毒のダメージを与える(9999)",
 		turn: 12,
 		proc: [poison(9999, 5)],
 	},
@@ -29089,7 +29089,7 @@ Cards = [{
 		proc: Heal(0.11, [0,1,0,0,0], 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルに25%軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルに25%軽減の効果を付与",
 		turn: 6,
 		proc: [panel_attr_guard([1, 1, 1, 1, 1], 0.25)]
 	},
@@ -29110,7 +29110,7 @@ Cards = [{
 		proc: Heal(0.13, [0,1,0,0,0], 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルに35%軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルに35%軽減の効果を付与",
 		turn: 8,
 		proc: [panel_attr_guard([1, 1, 1, 1, 1], 0.5)]
 	},
@@ -29133,7 +29133,7 @@ Cards = [{
 		proc: ChainEnhance(0.50, [0, 1, 0, 0, 0], 3),
 	},
 	ss1: {
-		desc: "スキル反射を無視し、敵全体へ水属性のダメージ(120%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水属性のダメージ(120%)",
 		turn: 4,
 		proc: [ss_damage_all(1.2, [1]), ss_ignore_skillcounter()],
 	},
@@ -29154,7 +29154,7 @@ Cards = [{
 		proc: ChainEnhance(0.70, [0, 1, 0, 0, 0], 3),
 	},
 	ss2: {
-		desc: "スキル反射を無視し、敵全体へ水属性のダメージ(120%)",
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水属性のダメージ(120%)",
 		turn: 4,
 		proc: [ss_damage_all(1.2, [1]), ss_ignore_skillcounter()],
 	},
@@ -29178,7 +29178,7 @@ Cards = [{
 		proc: ChainAttack(5.0, 7),
 	},
 	ss1: {
-		desc: "敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(400%/1900%)",
+		desc: "<特効大魔術>敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(400%/1900%)",
 		turn: 9,
 		proc: [ss_damage_s(special_attr([0, 0, 1, 0, 0], 19, 4.0), [0], 1)],
 	},
@@ -29199,7 +29199,7 @@ Cards = [{
 		proc: ChainAttack(6.0, 7),
 	},
 	ss2: {
-		desc: "敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(400%/2400%)",
+		desc: "<特効大魔術>敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(400%/2400%)",
 		turn: 12,
 		proc: [ss_damage_s(special_attr([0, 0, 1, 0, 0], 24, 4.0), [0], 1)],
 	},
@@ -29222,7 +29222,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 4.0, 5.5, 3),
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを2早める、5チェインを消費しさらに1早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める、5チェインを消費しさらに1早める",
 		turn: 8,
 		proc: [ss_chain_cost_skill(5, ss_skillboost(3), ss_skillboost(2))],
 	},
@@ -29243,7 +29243,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 5.5, 7.0, 3),
 	},
 	ss2: {
-		desc: "味方全体のスペシャルスキルの発動ターンを3早める、5チェインを消費しさらに1早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを3早める、5チェインを消費しさらに1早める",
 		turn: 11,
 		proc: [ss_chain_cost_skill(5, ss_skillboost(4), ss_skillboost(3))],
 	},
@@ -29266,7 +29266,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 4.0, 5.5, 3),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50%を使い敵単体へ水属性のダメージ(240%×人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵単体へ水属性のダメージ(240%×人数)",
 		turn: 11,
 		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.50), [1], 1)],
 	},
@@ -29287,7 +29287,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 5.5, 7.0, 3),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50%を使い敵単体へ水属性のダメージ(300%×人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵単体へ水属性のダメージ(300%×人数)",
 		turn: 13,
 		proc: [ss_damage_s(ss_consume_all_cond(3.0, 0.50), [1], 1)],
 	},
@@ -29309,7 +29309,7 @@ Cards = [{
 		proc: Heal(0.13, [1, 1, 1, 1, 1], 0),
 	},
 	ss1: {
-		desc: "敵単体へ水属性のダメージ(200%)、さらに味方全体を回復(50%)",
+		desc: "<大魔術>敵単体へ水属性のダメージ(200%)、さらに味方全体を回復(50%)",
 		turn: 6,
 		proc: [ss_damage_s(2.0, [1], 1), ss_heal(0.50)],
 	},
@@ -29330,7 +29330,7 @@ Cards = [{
 		proc: Heal(0.15, [1, 1, 1, 1, 1], 0),
 	},
 	ss2: {
-		desc: "敵単体へ水属性のダメージ(400%)、さらに味方全体を回復(50%)",
+		desc: "<大魔術>敵単体へ水属性のダメージ(400%)、さらに味方全体を回復(50%)",
 		turn: 9,
 		proc: [ss_damage_s(4.0, [1], 1), ss_heal(0.50)],
 	},
@@ -29353,7 +29353,7 @@ Cards = [{
 		proc: ChainPanelsAttrAttack(3.5, 4.5, 6.5, [0, 1, 0, 0, 0], 0),
 	},
 	ss1: {
-		desc: "味方のMAXHP50%を使い、敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/500%)",
+		desc: "<特効大魔術>味方のMAXHP50%を使い、敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/500%)",
 		turn: 6,
 		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 5.0, 2.0), [1]), ss_consume_all(0.50)],
 	},
@@ -29374,7 +29374,7 @@ Cards = [{
 		proc: ChainPanelsAttrAttack(4.5, 5.5, 7.5, [0, 1, 0, 0, 0], 0),
 	},
 	ss2: {
-		desc: "味方のMAXHP50%を使い、敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/900%)",
+		desc: "<特効大魔術>味方のMAXHP50%を使い、敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/900%)",
 		turn: 9,
 		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 9.0, 2.0), [2]), ss_consume_all(0.50)],
 	},
@@ -29398,7 +29398,7 @@ Cards = [{
 		proc: ChainEnhance(0.20, [1,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "火・雷属性の味方をHP30％で蘇生",
+		desc: "<蘇生>火・雷属性の味方をHP30％で蘇生",
 		turn: 10,
 		proc: [ss_resurrection([1,0,1,0,0], 0.30)],
 	},
@@ -29426,7 +29426,7 @@ Cards = [{
 		proc: ChainAttack(3.0, 2),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火・水属性化",
+		desc: "<パネル変換>ジャンルパネルを火・水属性化",
 		turn: 3,
 		proc: [ss_panel_change([1,1,0,0,0])],
 	},
@@ -29447,7 +29447,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 2),
 	},
 	ss2: {
-		desc: "ジャンルパネルを火・水属性化し、ダメージ25%軽減の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを火・水属性化し、ダメージ25%軽減の効果を付与",
 		turn: 7,
 		proc: [ss_panel_change([1,1,0,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)],
 	},
@@ -29471,7 +29471,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(7.0, 7, 4, [0,1,0,0,0]),
 	},
 	ss1: {
-		desc: "スキル反射を無視し、雷属性の6連撃、さらに連撃数分チェインプラス(180%)",
+		desc: "<斬撃大魔術>スキル反射を無視し、雷属性の6連撃、さらに連撃数分チェインプラス(180%)",
 		turn: 8,
 		proc: [ss_damage_slash(1.8, [2], 6), ss_ignore_skillcounter()],
 	},
@@ -29492,7 +29492,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(8.0, 7, 4, [0,1,0,0,0]),
 	},
 	ss2: {
-		desc: "スキル反射を無視し、雷属性の10連撃、さらに連撃数分チェインプラス(380%)",
+		desc: "<斬撃大魔術>スキル反射を無視し、雷属性の10連撃、さらに連撃数分チェインプラス(380%)",
 		turn: 11,
 		proc: [ss_damage_slash(3.8, [2], 10), ss_ignore_skillcounter()],
 	},
@@ -29516,7 +29516,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,1,0,0,0], [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "5ターン味方を徐々に回復する(15%)",
+		desc: "<継続回復>5ターン味方を徐々に回復する(15%)",
 		turn: 6,
 		proc: [ss_regenerate(0.15, 5)],
 	},
@@ -29537,7 +29537,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,1,0,0,0], [0,0,1,0,0], 0),
 	},
 	ss2: {
-		desc: "2ターン溜めた後、味方HPを完全回復し、さらに5ターン味方全体を徐々に回復する(30%)",
+		desc: "<継続回復>2ターン溜めた後、味方HPを完全回復し、さらに5ターン味方全体を徐々に回復する(30%)",
 		turn: 8,
 		charged: 2,
 		proc: [ss_heal(1), ss_regenerate(0.30, 5)],
@@ -29562,7 +29562,7 @@ Cards = [{
 		proc: Heal(0.13, [1,1,1,1,1], 0),
 	},
 	ss1: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 4,
 		proc: [ss_panel_change([1,1,1,0,0])],
 	},
@@ -29583,7 +29583,7 @@ Cards = [{
 		proc: Heal(0.15, [1,1,1,1,1], 0),
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化し回復の効果を付与、8チェインを消費しさらに効果を付与(5%/50%)",
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し回復の効果を付与、8チェインを消費しさらに効果を付与(5%/50%)",
 		turn: 7,
 		proc: [ss_panel_change([1,1,1,0,0]), ss_chain_cost_skill(8, panel_healally(0.50), panel_healally(0.05))],
 	},
@@ -29607,7 +29607,7 @@ Cards = [{
 		proc: Heal(0.12, [0,1,0,0,0], 0),
 	},
 	ss1: {
-		desc: "味方全体の攻撃力とHPを500アップ(上限値:2000)",
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップ(上限値:2000)",
 		turn: 6,
 		proc: [ss_statusup_all([500, 500], [2000, 2000], -1)],
 	},
@@ -29628,7 +29628,7 @@ Cards = [{
 		proc: Heal(0.14, [0,1,0,0,0], 0),
 	},
 	ss2: {
-		desc: "味方全体の攻撃力とHPを750アップ(上限値:2000)",
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを750アップ(上限値:2000)",
 		turn: 9,
 		proc: [ss_statusup_all([750, 750], [2000, 2000], -1)],
 	},
@@ -29695,7 +29695,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 6, 3),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの50%を使い、ジャンルパネルにチェインがプラス3の効果を付与",
+		desc: "<特殊パネル変換>味方全体のMAXHPの50%を使い、ジャンルパネルにチェインがプラス3の効果を付与",
 		turn: 5,
 		proc: [panel_chainplus(3), ss_consume_all(0.5)],
 	},
@@ -29716,7 +29716,7 @@ Cards = [{
 		proc: ChainDualAttack(5.5, 6, 3),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPの50%を使い、ジャンルパネルにチェインがプラス4の効果を付与",
+		desc: "<特殊パネル変換>味方全体のMAXHPの50%を使い、ジャンルパネルにチェインがプラス4の効果を付与",
 		turn: 8,
 		proc: [panel_chainplus(4), ss_consume_all(0.5)],
 	},
@@ -29740,7 +29740,7 @@ Cards = [{
 		proc: ChainVarianceAttack(4.0, 4),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPの80%を使い敵全体へ火属性のダメージ(120%×人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの80%を使い敵全体へ火属性のダメージ(120%×人数)",
 		turn: 9,
 		proc: [ss_damage_all(ss_consume_all_cond(1.2, 0.8), [0])],
 	},
@@ -29772,7 +29772,7 @@ Cards = [{
 		proc: ChainAttack(4.0, 4),
 	},
 	ss1: {
-		desc: "味方全体のMAXHPを50%使い、3ターンの間、チェインを保護する",
+		desc: "<チェインガード>味方全体のMAXHPを50%使い、3ターンの間、チェインを保護する",
 		turn: 5,
 		proc: [ss_chain_protect(3), ss_consume_all(0.5)],
 	},
@@ -29793,7 +29793,7 @@ Cards = [{
 		proc: ChainAttack(5.0, 4),
 	},
 	ss2: {
-		desc: "味方全体のMAXHPを50%使い、6ターンの間、チェインを保護する",
+		desc: "<チェインガード>味方全体のMAXHPを50%使い、6ターンの間、チェインを保護する",
 		turn: 8,
 		proc: [ss_chain_protect(6), ss_consume_all(0.5)],
 	},
@@ -29817,7 +29817,7 @@ Cards = [{
 		proc: ChainAttrAttack(3.5, 0, [1, 0, 0, 0, 0]),
 	},
 	ss1: {
-		desc: "4ターン溜めた後、敵単体へ水属性のダメージ(1500%)◆スキル使用後、1ターン封印状態に",
+		desc: "<大魔術>4ターン溜めた後、敵単体へ水属性のダメージ(1500%)◆スキル使用後、1ターン封印状態に",
 		turn: 4,
 		charged: 4,
 		proc: [ss_damage_s(15, [1], 1), ss_allsealed_own(1)],
@@ -30100,7 +30100,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 4.0, 5.5, 3),
 	},
 	ss1: {
-		desc: "ジャンルパネルを水&雷属性化",
+		desc: "<パネル変換>ジャンルパネルを水&雷属性化",
 		turn: 3,
 		proc: [ss_panel_change([0,1,1,0,0])],
 	},
@@ -30121,7 +30121,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 5.5, 7.0, 3),
 	},
 	ss2: {
-		desc: "ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
 		turn: 4,
 		proc: [ss_panel_change([1,1,1,0,0])],
 	},
@@ -30452,7 +30452,7 @@ Cards = [{
 		proc: [Heal(0.07, [1,0,0,0,0], 0), ChainEnhance(0.3, [1,0,0,0,0], 0)],
 	},
 	ss1: {
-		desc: "4ターンの間、味方の攻撃力をアップし(100%)、ダメージを軽減(10%)◆発動中行動不可",
+		desc: "<ダメージ強化>4ターンの間、味方の攻撃力をアップし(100%)、ダメージを軽減(10%)◆発動中行動不可",
 		turn: 6,
 		proc: [ss_reinforcement_all(4, [
 			ss_attr_guard([1, 1, 1, 1, 1], 0.1, 4, "RF"),
@@ -30476,7 +30476,7 @@ Cards = [{
 		proc: [Heal(0.07, [1,0,0,0,0], 0), ChainEnhance(0.6, [1,0,0,0,0], 0)],
 	},
 	ss2: {
-		desc: "4ターンの間、味方の攻撃力をアップし(100%)、ダメージを軽減(10%)。5チェインを消費しさらに効果値アップ(200%、20%)◆発動中行動不可",
+		desc: "<ダメージ強化>4ターンの間、味方の攻撃力をアップし(100%)、ダメージを軽減(10%)。5チェインを消費しさらに効果値アップ(200%、20%)◆発動中行動不可",
 		turn: 9,
 		proc: [ss_chain_cost_skill(5,
 			ss_reinforcement_all(4, [
@@ -30641,7 +30641,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.50, 1.0, [0, 0, 1, 0, 0], [0, 0, 0, 0, 1], 4),
 	},
 	ss1: {
-		desc: "ジャンルパネルを雷・闇属性化",
+		desc: "<パネル変換>ジャンルパネルを雷・闇属性化",
 		turn: 3,
 		proc: [ss_panel_change([0,0,1,0,1])],
 	},
@@ -30662,7 +30662,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.80, 1.3, [0, 0, 1, 0, 0], [0, 0, 0, 0, 1], 4),
 	},
 	ss2: {
-		desc: "ジャンルパネルを雷・闇属性化し、攻撃力アップの効果を付与(50%)",
+		desc: "<特殊パネル変換>ジャンルパネルを雷・闇属性化し、攻撃力アップの効果を付与(50%)",
 		turn: 6,
 		proc: [ss_panel_change([0,0,1,0,1]), panel_attackup(0.5)],
 	},
@@ -30822,7 +30822,7 @@ Cards = [{
 		proc: [Heal(0.11, [1,0,0,0,0], 0), as_guard(0.05,[1,1,1,1,1]), add_cond(as_guard(0.05,[1,1,1,1,1]), when_leader())],
 	},
 	ss1: {
-		desc: "3ターン600以下の全属性ダメージを無効化する、5チェインを消費しさらに2ターン無効化",
+		desc: "<ダメージブロック>3ターン600以下の全属性ダメージを無効化する、5チェインを消費しさらに2ターン無効化",
 		turn: 6,
 		proc: [ss_damageblock_all(600, ss_chain_cost(5, 5, 3))],
 	},
@@ -30843,7 +30843,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,0,0,0,0], 0), as_guard(0.1,[1,1,1,1,1]), add_cond(as_guard(0.1,[1,1,1,1,1]), when_leader())],
 	},
 	ss2: {
-		desc: "3ターン800以下の全属性ダメージを無効化する、5チェインを消費しさらに2ターン無効化",
+		desc: "<ダメージブロック>3ターン800以下の全属性ダメージを無効化する、5チェインを消費しさらに2ターン無効化",
 		turn: 9,
 		proc: [ss_damageblock_all(800, ss_chain_cost(5, 5, 3))],
 	},
@@ -30938,7 +30938,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,1,0,0,0], [1,0,0,0,0], 0),
 	},
 	ss2: {
-		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し、ダメージを軽減(30%、10%)。5チェインを消費しさらに攻撃力アップ(50%)◆発動中行動不可",
+		desc: "<ダメージ強化>4ターンの間、味方全体を徐々に回復し、ダメージを軽減(30%、10%)。5チェインを消費しさらに攻撃力アップ(50%)◆発動中行動不可",
 		turn: 9,
 		proc: [ss_chain_cost_skill(5,
 			ss_reinforcement_all(4, [
@@ -31039,7 +31039,7 @@ Cards = [{
 		proc: [Heal(0.10, [0,0,1,0,0], 5), ChainEnhance_SubAttr(0.60, 1.10, [0,0,1,0,0], [0,1,0,0,0], 5)],
 	},
 	ss2: {
-		desc: "<AS発動時間延長>2ターン溜めた後、15ターンの間、アンサースキル発動時間を15秒延長する(上限値:20秒)",
+		desc: "2ターン溜めた後、15ターンの間、アンサースキル発動時間を15秒延長する(上限値:20秒)",
 		turn: 5,
 		charged: 2,
 		proc: [ss_astime_ext(15, 15)],
@@ -31928,7 +31928,7 @@ Cards = [{
 		proc: [ChainDualAttack(1.5, 0, 2), add_cond(ChainDualAttack(11.0, 0, 5), when_hp_less(0.15))],
 	},
 	ss1: {
-		desc: "<多弾魔術>MAXHPの95%を使い、敵単体へ水属性の10回連続ダメージ(330%)",
+		desc: "<自己犠牲魔術>MAXHPの95%を使い、敵単体へ水属性の10回連続ダメージ(330%)",
 		turn: 6,
 		proc: [ss_damage_s(3.3, [1], 10), ss_consume_own(0.95)],
 	},
@@ -31949,7 +31949,7 @@ Cards = [{
 		proc: [ChainDualAttack(2.0, 0, 2), add_cond(ChainDualAttack(16.0, 0, 5), when_hp_less(0.15))],
 	},
 	ss2: {
-		desc: "<多弾魔術>MAXHPの95%を使い、敵単体へ水属性の10回連続ダメージ(450%)",
+		desc: "<自己犠牲魔術>MAXHPの95%を使い、敵単体へ水属性の10回連続ダメージ(450%)",
 		turn: 9,
 		proc: [ss_damage_s(4.5, [1], 10), ss_consume_own(0.95)],
 	},
@@ -32732,7 +32732,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,1,0,0,0], 0), ChainEnhance(0.30, [0,1,0,0,0], 0)],
 	},
 	ss1: {
-		desc: "攻撃ターンを2遅らせ、20チェインで更に1遅らせる",
+		desc: "<遅延>攻撃ターンを2遅らせ、20チェインで更に1遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(ss_chain_cond(20, 3, 2))],
 	},
@@ -32753,7 +32753,7 @@ Cards = [{
 		proc: [Heal(0.16, [0,1,0,0,0], 0), ChainEnhance(0.30, [0,1,0,0,0], 0)],
 	},
 	ss2: {
-		desc: "攻撃ターンを3遅らせ、20チェインで更に1遅らせる",
+		desc: "<遅延>攻撃ターンを3遅らせ、20チェインで更に1遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(ss_chain_cond(20, 4, 3))],
 	},
@@ -33727,7 +33727,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(3.5, 0), as_consume_all(0.10)),
 	},
 	ss1: {
-		desc: "<多弾魔術>MAXHPの50%を使い、敵単体へ水・闇属性の5連続ダメージ(200%)",
+		desc: "<自己犠牲魔術>MAXHPの50%を使い、敵単体へ水・闇属性の5連続ダメージ(200%)",
 		turn: 5,
 		proc: [ss_damage_s(2.0, [1,4], 5), ss_consume_own(0.5)],
 	},
@@ -33748,7 +33748,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(4.5, 0), as_consume_all(0.10)),
 	},
 	ss2: {
-		desc: "<多弾魔術>MAXHPの50%を使い、敵単体へ水・闇属性の5連続ダメージ(400%)",
+		desc: "<自己犠牲魔術>MAXHPの50%を使い、敵単体へ水・闇属性の5連続ダメージ(400%)",
 		turn: 8,
 		proc: [ss_damage_s(4.0, [1,4], 5), ss_consume_own(0.5)],
 	},
@@ -34011,7 +34011,7 @@ Cards = [{
     	proc: ChainPanelsDualAttack(2.0, 3.0, 4.5, 3, 3)
     },
     ss1: {
-    	desc: "敵全体へ水属性のダメージ(150％)",
+    	desc: "<大魔術>敵全体へ水属性のダメージ(150％)",
     	turn: 7,
     	proc: [ss_damage_all(1.5, [1])],
     },
@@ -34025,7 +34025,7 @@ Cards = [{
     	proc: ChainPanelsDualAttack(3.0, 4.0, 5.5, 3, 3)
     },
     ss2: {
-    	desc: "敵全体へ水属性のダメージ(220％)",
+    	desc: "<大魔術>敵全体へ水属性のダメージ(220％)",
     	turn: 10,
     	proc: [ss_damage_all(2.2, [1])],
     },
@@ -34056,7 +34056,7 @@ Cards = [{
     	proc: ChainAttack(5.5, 7),
     },
     ss1: {
-    	desc: "敵全体のカウンターを解除する",
+    	desc: "<効果解除>敵全体のカウンターを解除する",
     	turn: 8,
     	proc: [ss_break_attackcounter("all")],
     },
@@ -34070,7 +34070,7 @@ Cards = [{
     	proc: ChainAttack(6.5, 7),
     },
     ss2: {
-    	desc: "敵全体のカウンターを解除し、雷属性のダメージ。HP20％以下でさらにスキル反射を解除し、ダメージアップ(通常：180％ / HP20％以下：300％)",
+    	desc: "<効果解除大魔術>敵全体のカウンターを解除し、雷属性のダメージ。HP20％以下でさらにスキル反射を解除し、ダメージアップ(通常：180％ / HP20％以下：300％)",
     	turn: 13,
     	proc: [ss_break_attackcounter("all"), ss_damage_all(ss_hp_less(0.20, 3.0, 1.8), ss_hp_less_skill(0.2, ss_break_skillcounter("all")))],
     },
@@ -34091,7 +34091,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 5),
 	},
 	ss1: {
-		desc: "敵全体のカウンターを解除する",
+		desc: "<効果解除>敵全体のカウンターを解除する",
 		turn: 8,
 		proc: [ss_break_attackcounter("all")],
 	},
@@ -34112,7 +34112,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(7.0, 5), as_consume_own(0.20)),
 	},
 	ss2: {
-		desc: "敵全体のカウンターを解除し、火属性のダメージ。HP20%以下でさらにスキル反射を解除し、ダメージアップ(180%/300%)",
+		desc: "<効果解除大魔術>敵全体のカウンターを解除し、火属性のダメージ。HP20%以下でさらにスキル反射を解除し、ダメージアップ(180%/300%)",
 		turn: 13,
 		proc: [ss_break_attackcounter("all"), ss_damage_all(ss_hp_less(0.20, 3.0, 1.8), [0]), ss_hp_less_skill(0.2, ss_break_skillcounter("all"))],
 	},
@@ -36064,7 +36064,7 @@ Cards = [{
     		proc: add_cond(ChainAttack(6.0, 0), when_deckattr_less([0,1,0,0,0], 1))
     	},
     	ss1: {
-    		desc: "ジャンルパネルをALL属性化",
+    		desc: "<パネル変換>ジャンルパネルをALL属性化",
     		turn: 6,
     		proc: [ss_panel_change([1,1,1,0,0])]
     	},
@@ -36078,7 +36078,7 @@ Cards = [{
     		proc: add_cond(ChainAttack(7.0, 0), when_deckattr_less([0,1,0,0,0], 1))
     	},
     	ss2: {
-    		desc: "ジャンルパネルをALL属性化し、チェインがプラス1の効果を付与",
+    		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、チェインがプラス1の効果を付与",
     		turn: 8,
     		proc: [ss_panel_change([1,1,1,0,0]), panel_chainplus(1)],
     	},
@@ -36108,7 +36108,7 @@ Cards = [{
     		proc: add_cond(Heal(0.25, [1,1,1,1,1], 0), when_deckattr_less([0,0,1,0,0], 1))
     	},
     	ss1: {
-    		desc: "5ターン味方全体を徐々に回復する(15％×5T)",
+    		desc: "<継続回復>5ターン味方全体を徐々に回復する(15％×5T)",
     		turn: 9,
     		proc: [ss_regenerate(0.15, 5)],
     	},
@@ -36124,7 +36124,7 @@ Cards = [{
     		proc: [add_cond(Heal(0.25, [1,1,1,1,1], 0), when_deckattr_less([0,0,1,0,0], 1)), add_cond(SpecHeal(0.5, [1,1,1,1,1], [5], 0), when_deckattr_less([0,0,1,0,0], 1))]
     	},
     	ss2: {
-    		desc: "5ターン味方全体を徐々に回復する(20％×5T)",
+    		desc: "<継続回復>5ターン味方全体を徐々に回復する(20％×5T)",
     		turn: 10,
     		proc: [ss_regenerate(0.20, 5)],
     	},
@@ -36528,7 +36528,7 @@ Cards = [{
 		proc:  ChainEnhance_SubAttr(0.6, 1.1, [0,0,1,0,0], [1,0,0,0,0], 0),
 	},
 	ss2: {
-		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し、ダメージを軽減(30%、10%)、5チェインを消費しさらに攻撃力アップ(50%)◆発動中行動不可",
+		desc: "<ダメージ強化>4ターンの間、味方全体を徐々に回復し、ダメージを軽減(30%、10%)、5チェインを消費しさらに攻撃力アップ(50%)◆発動中行動不可",
 		turn: 9,
 		proc: [ss_reinforcement_all(4, [ss_regenerate(0.30, 4, "RF"), ss_attr_guard([1,1,1,1,1], 0.10, 4, "RF"), ss_enhance_all(0.5, 4, [1,1,1,1,1], ss_chain_cost(5,"RF","null"))])],
 	},
@@ -37249,7 +37249,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(3.5, 0, 3, [0,0,1,0,0]),
 	},
 	ss1: {
-		desc: "敵全体のガード&ダメージブロックを解除する",
+		desc: "<効果解除>敵全体のガード&ダメージブロックを解除する",
 		turn: 10,
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all")],
 	},
@@ -37270,7 +37270,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(4.5, 0, 3, [0,0,1,0,0]),
 	},
 	ss2: {
-		desc: "敵全体のガード&ダメージブロックを解除し、火属性のダメージ(180%)。毒状態でさらにスキル反射待機を解除する",
+		desc: "<効果解除大魔術>敵全体のガード&ダメージブロックを解除し、火属性のダメージ(180%)。毒状態でさらにスキル反射待機を解除する",
 		turn: 14,
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(1.8, [0]), ss_is_poison_own_skill(ss_break_skillcounter("all"))],
 	},
@@ -37726,7 +37726,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [1,0,0,0,0], 0), ChainSpecEnhance(0.9, [1,0,0,0,0], [0,1], 0)],
 	},
 	ss1: {
-		desc: "〈蘇生〉味方全体のHPを回復し(30%)、さらに火属性の味方を50%で蘇生",
+		desc: "<蘇生>〈蘇生〉味方全体のHPを回復し(30%)、さらに火属性の味方を50%で蘇生",
 		turn: 8,
 		proc: [ss_heal(0.3), ss_resurrection([1,0,0,0,0], 0.5)],
 	},
@@ -37747,7 +37747,7 @@ Cards = [{
 		proc: [ChainEnhance(0.50, [1,0,0,0,0], 0), ChainSpecEnhance(1.1, [1,0,0,0,0], [0,1], 0)],
 	},
 	ss2: {
-		desc: "〈蘇生〉味方全体のHPを完全に回復し、さらに火属性の味方を蘇生(50%)、20チェインで100%蘇生に",
+		desc: "<蘇生>〈蘇生〉味方全体のHPを完全に回復し、さらに火属性の味方を蘇生(50%)、20チェインで100%蘇生に",
 		turn: 10,
 		proc: [ss_heal(1), ss_resurrection([1,0,0,0,0], ss_chain_cond(20, 1, 0.5))],
 	},
@@ -37818,7 +37818,7 @@ Cards = [{
 		proc: [ChainAttack(2.5, 0), ChainAttack(4.0, 5)],
 	},
 	ss1: {
-		desc: "〈大魔術〉スキル反射を無視し、敵全体へ雷属性のダメージ(150%)",
+		desc: "<大魔術>〈大魔術〉スキル反射を無視し、敵全体へ雷属性のダメージ(150%)",
 		turn: 5,
 		proc: [ss_damage_all(1.5, [2]), ss_ignore_skillcounter()],
 	},
@@ -37839,7 +37839,7 @@ Cards = [{
 		proc: [ChainAttack(3.5, 0), ChainAttack(5.0, 5)],
 	},
 	ss2: {
-		desc: "〈大魔術〉スキル反射を無視し、敵全体へ雷属性のダメージ、5チェインを消費しさらにダメージアップ(300%/500%)",
+		desc: "<大魔術>〈大魔術〉スキル反射を無視し、敵全体へ雷属性のダメージ、5チェインを消費しさらにダメージアップ(300%/500%)",
 		turn: 8,
 		proc: [ss_damage_all(ss_chain_cost(5, 5, 3), [2]), ss_ignore_skillcounter()],
 	},
@@ -37863,7 +37863,7 @@ Cards = [{
 		proc: [ChainEnhance(0.3, [1,0,0,0,0], 0), Heal(0.10, [1,0,0,0,0], 0)],
 	},
 	ss1: {
-		desc: "〈パネル変換〉ジャンルパネルを火属性化",
+		desc: "<パネル変換>〈パネル変換〉ジャンルパネルを火属性化",
 		turn: 2,
 		proc: [ss_panel_change([1,0,0,0,0])],
 	},
@@ -37884,7 +37884,7 @@ Cards = [{
 		proc: [ChainEnhance(0.5, [1,0,0,0,0], 0), Heal(0.10, [1,0,0,0,0], 0)],
 	},
 	ss2: {
-		desc: "〈特殊パネル変換〉ジャンルパネルを火属性化し、チェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>〈特殊パネル変換〉ジャンルパネルを火属性化し、チェインがプラス1の効果を付与",
 		turn: 5,
 		proc: [ss_panel_change([1,0,0,0,0]), panel_chainplus(1)],
 	},
@@ -37908,7 +37908,7 @@ Cards = [{
 		proc: [ChainVarianceAttack(2.5, 0), ChainVarianceAttack(5.0, 6)],
 	},
 	ss1: {
-		desc: "〈回復〉味方全体のHPを回復する(50%)",
+		desc: "<回復>〈回復〉味方全体のHPを回復する(50%)",
 		turn: 5,
 		proc: [ss_heal(0.5)],
 	},
@@ -37929,7 +37929,7 @@ Cards = [{
 		proc: [ChainVarianceAttack(3.5, 0), ChainVarianceAttack(6.0, 6)],
 	},
 	ss2: {
-		desc: "〈ステータスアップ〉味方全体のHPを750アップ（上限値2000）、さらにHPを完全回復",
+		desc: "<ステータスアップ>〈ステータスアップ〉味方全体のHPを750アップ（上限値2000）、さらにHPを完全回復",
 		turn: 8,
 		proc: [ss_statusup_all([750, 0], [2000, 2000], -1), ss_heal(1)],
 	},
@@ -37953,7 +37953,7 @@ Cards = [{
 		proc: [Heal(0.11, [1,0,0,0,0], 0), ChainEnhance(0.20, [1,0,0,0,0], 0)],
 	},
 	ss1: {
-		desc: "〈残滅大魔術〉敵全体へ水属性のダメージ(150%)、さらに3ターンの間水属性のダメージ(150%)",
+		desc: "<残滅大魔術>〈残滅大魔術〉敵全体へ水属性のダメージ(150%)、さらに3ターンの間水属性のダメージ(150%)",
 		turn: 4,
 		proc: [ss_continue_damage(1.5, 1.5, [1], 3)],
 	},
@@ -37974,7 +37974,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,0,0,0,0], 0), ChainEnhance(0.20, [1,0,0,0,0], 0)],
 	},
 	ss2: {
-		desc: "〈残滅大魔術〉敵全体へ水属性のダメージ(200%)、さらに3ターンの間水属性のダメージ(200%)",
+		desc: "<残滅大魔術>〈残滅大魔術〉敵全体へ水属性のダメージ(200%)、さらに3ターンの間水属性のダメージ(200%)",
 		turn: 8,
 		proc: [ss_continue_damage(2.0, 2.0, [1], 3)],
 	},
@@ -37998,7 +37998,7 @@ Cards = [{
 		proc: [ChainDualAttack(2.5, 0, 3), ChainDualAttack(5.5, 10, 3)],
 	},
 	ss1: {
-		desc: "〈特効大魔術〉敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ、5チェイン消費しさらに特効ダメージ(200%/400%/500%)",
+		desc: "<特効大魔術>〈特効大魔術〉敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ、5チェイン消費しさらに特効ダメージ(200%/400%/500%)",
 		turn: 6,
 		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], ss_chain_cost(5, 5.0, 4.0), 2.0), [2])],
 	},
@@ -38019,7 +38019,7 @@ Cards = [{
 		proc: [ChainDualAttack(3.5, 0, 3), ChainDualAttack(6.5, 10, 3)],
 	},
 	ss2: {
-		desc: "〈特効大魔術〉敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ、5チェイン消費しさらに特効ダメージ(200%/400%/900%)",
+		desc: "<特効大魔術>〈特効大魔術〉敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ、5チェイン消費しさらに特効ダメージ(200%/400%/900%)",
 		turn: 9,
 		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], ss_chain_cost(5, 9.0, 4.0), 2.0), [2])],
 	},
@@ -38632,7 +38632,7 @@ Cards = [{
 		proc: [Heal(0.10, [0,1,1,0,0], 5), ChainEnhance(0.60, [0,1,1,0,0], 5)],
 	},
 	ss1: {
-		desc: "〈状態異常無効〉5ターン溜めた後、10ターン敵の状態異常攻撃を無効化する",
+		desc: "<状態異常無効>〈状態異常無効〉5ターン溜めた後、10ターン敵の状態異常攻撃を無効化する",
 		turn: 3,
 		charged: 5,
 		proc: [ss_absattack_disable(10)],
@@ -38654,7 +38654,7 @@ Cards = [{
 		proc: [Heal(0.10, [0,1,1,0,0], 5), ChainEnhance(0.90, [0,1,1,0,0], 5)],
 	},
 	ss2: {
-		desc: "〈継続回復〉5ターン味方全体を徐々に回復する(20%)",
+		desc: "<継続回復>〈継続回復〉5ターン味方全体を徐々に回復する(20%)",
 		turn: 8,
 		proc: [ss_regenerate(0.20, 5)],
 	},
@@ -38723,7 +38723,7 @@ Cards = [{
 		proc:  [Heal(0.10, [0,1,1,0,0], 5), ChainEnhance(0.60, [0,1,1,0,0], 5)],
 	},
 	ss1: {
-		desc: "〈遅延〉敵全体の攻撃ターンを1遅らせる",
+		desc: "<遅延>〈遅延〉敵全体の攻撃ターンを1遅らせる",
 		turn: 4,
 		proc: [ss_delay_all(1)],
 	},
@@ -38744,7 +38744,7 @@ Cards = [{
 		proc:  [Heal(0.10, [0,1,1,0,0], 5), ChainEnhance(0.90, [0,1,1,0,0], 5)],
 	},
 	ss2: {
-		desc: "〈スキルチャージ&遅延〉スペシャルスキルの発動ターンを1早め、敵全体の攻撃ターンを1遅らせる",
+		desc: "<スキルチャージ&遅延>〈スキルチャージ&遅延〉スペシャルスキルの発動ターンを1早め、敵全体の攻撃ターンを1遅らせる",
 		turn: 6,
 		proc: [ss_skillboost(1), ss_delay_all(1)],
 	},
@@ -39204,7 +39204,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(8.0, 5), when_hp_more(0.9)),
 	},
 	ss2: {
-		desc: "<その他>3ターン敵の攻撃を自分に集めダメージを75%軽減する、さらに味方全体のHPを回復(50%)",
+		desc: "<回復>3ターン敵の攻撃を自分に集めダメージを75%軽減する、さらに味方全体のHPを回復(50%)",
 		turn: 9,
 		proc: [ss_provocate(0.75, 3), ss_heal(0.5)],
 	},
@@ -40900,7 +40900,7 @@ Cards = [{
     	proc: ChainStakesAttack3(0, 0, 3.5, 6.0, 4.5, 8.5, 3),
     },
     ss1: {
-    	desc: "MAXHPの50％を使い敵全体へダメージ(260％)",
+    	desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(260％)",
     	turn: 7,
     	proc: [ss_damage_all(2.6, [0]), ss_consume_own(0.5)],
     },
@@ -40914,7 +40914,7 @@ Cards = [{
     	proc: ChainStakesAttack3(0, 0, 3.5, 9.0, 4.5, 11.5, 3),
     },
     ss2: {
-    	desc: "MAXHPの75％を使い敵全体へダメージ、さらに味方全体のHPを回復する(攻撃：300％ / 回復：25％)",
+    	desc: "<自己犠牲魔術>MAXHPの75％を使い敵全体へダメージ、さらに味方全体のHPを回復する(攻撃：300％ / 回復：25％)",
     	turn: 10,
     	proc: [ss_damage_all(3.0, [0]), ss_consume_own(0.75), ss_heal(0.25)],
     },
@@ -41025,7 +41025,7 @@ Cards = [{
 		proc: [ChainAttack(3.5, 4), ChainSpecAttack(5.0, 4, [3])],
 	},
 	ss1: {
-		desc: "<多弾魔術>MAXHPの50%を使い、敵単体へ雷・闇属性の5回連続ダメージ(250%)",
+		desc: "<自己犠牲魔術>MAXHPの50%を使い、敵単体へ雷・闇属性の5回連続ダメージ(250%)",
 		turn: 6,
 		proc: [ss_damage_s(2.5, [2,4], 5), ss_consume_own(0.5)],
 	},
@@ -41046,7 +41046,7 @@ Cards = [{
 		proc: [ChainAttack(4.5, 4), ChainSpecAttack(6.0, 4, [3])],
 	},
 	ss2: {
-		desc: "<多弾魔術>MAXHPの50%を使い、敵単体へ雷・闇属性の5回連続ダメージ(450%)",
+		desc: "<自己犠牲魔術>MAXHPの50%を使い、敵単体へ雷・闇属性の5回連続ダメージ(450%)",
 		turn: 9,
 		proc: [ss_damage_s(4.5, [2,4], 5), ss_consume_own(0.5)],
 	},
@@ -41745,7 +41745,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(1.5, 4), as_timedep(1.25)),
 	},
 	ss1: {
-		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ(80%)、平均解答が早いほどさらにダメージ(効果値:40)",
+		desc: "<解答削り>スキル反射を無視し、敵全体へ雷・光属性のダメージ(80%)、平均解答が早いほどさらにダメージ(効果値:40)",
 		turn: 4,
 		proc: [ss_damage_all(ss_answertime(0.8, 0.4), [2, 3]), ss_ignore_skillcounter()],
 	},
@@ -41766,7 +41766,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(2.5, 4), as_timedep(1.25)),
 	},
 	ss2: {
-		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ(110%)、平均解答が早いほどさらにダメージ(効果値:40)",
+		desc: "<解答削り>スキル反射を無視し、敵全体へ雷・光属性のダメージ(110%)、平均解答が早いほどさらにダメージ(効果値:40)",
 		turn: 6,
 		proc: [ss_damage_all(ss_answertime(1.1, 0.4), [2, 3]), ss_ignore_skillcounter()],
 	},
@@ -43478,7 +43478,7 @@ Cards = [{
 		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.0, 5)],
 	},
 	ss1: {
-		desc: "<大魔術>スキル反射を無視し、敵全体に水・火属性のダメージ(80%)、平均解答が早いほどさらにダメージ(効果値:40)【上限値:160】",
+		desc: "<解答削り>スキル反射を無視し、敵全体に水・火属性のダメージ(80%)、平均解答が早いほどさらにダメージ(効果値:40)【上限値:160】",
 		turn: 4,
 		proc: [ss_damage_all(ss_answertime(0.8, 0.4), [0, 1]), ss_ignore_skillcounter()],
 	},
@@ -43499,7 +43499,7 @@ Cards = [{
 		proc: [ChainAllAttack(1.8, 0), ChainAllAttack(2.3, 5)],
 	},
 	ss2: {
-		desc: "<大魔術>スキル反射を無視し、敵全体に水・火属性のダメージ(110%)、平均解答が早いほどさらにダメージ(効果値:40)【上限値:160】",
+		desc: "<解答削り>スキル反射を無視し、敵全体に水・火属性のダメージ(110%)、平均解答が早いほどさらにダメージ(効果値:40)【上限値:160】",
 		turn: 6,
 		proc: [ss_damage_all(ss_answertime(1.1, 0.4), [0, 1]), ss_ignore_skillcounter()],
 	},
@@ -44397,7 +44397,7 @@ Cards = [{
 		proc: [ChainDualAttack(2.5, 0, 3), ChainDualAttack(3.5, 5, 3)],
 	},
 	ss1: {
-		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し(15%)、味方の攻撃力をアップ(100%)",
+		desc: "<ダメージ強化>4ターンの間、味方全体を徐々に回復し(15%)、味方の攻撃力をアップ(100%)",
 		turn: 1,
 		proc: [ss_reinforcement_all(4, [ss_regenerate(0.15, 4, "RF"), ss_enhance_all(1, 4, [1,1,1,1,1], "RF")])],
 	},
@@ -44418,7 +44418,7 @@ Cards = [{
 		proc: [ChainDualAttack(3.5, 0, 3), ChainDualAttack(4.5, 5, 3)],
 	},
 	ss2: {
-		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し(15%)、味方の攻撃力をアップ(100%)",
+		desc: "<ダメージ強化>4ターンの間、味方全体を徐々に回復し(15%)、味方の攻撃力をアップ(100%)",
 		turn: 1,
 		proc: [ss_reinforcement_all(4, [ss_regenerate(0.15, 4, "RF"), ss_enhance_all(1, 4, [1,1,1,1,1], "RF")])],
 	},
@@ -44475,7 +44475,7 @@ Cards = [{
 		proc: [ChainAttrAttack(2.5, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(4.0, 0, [0,0,1,0,0]), when_hp_less(0.5))],
 	},
 	ss1: {
-		desc: "味方全体のスペシャルスキルの発動ターンを1早める",
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早める",
 		turn: 6,
 		proc: [ss_skillboost(1)],
 	},
@@ -45232,7 +45232,7 @@ Cards = [{
 		proc: [Heal(0.08, [1,1,0,0,0], 0), ChainPanelsEnhance(0.3, 0.5, 0.8, [1,1,0,0,0], 0)],
 	},
 	ss1: {
-		desc: "<AS発動時間延長>3ターンの間、アンサースキル発動時間を10秒延長する(上限値:20秒)",
+		desc: "3ターンの間、アンサースキル発動時間を10秒延長する(上限値:20秒)",
 		turn: 3,
 		proc: [ss_astime_ext(15, 3)],
 	},
@@ -45277,7 +45277,7 @@ Cards = [{
 		proc: [ChainDualAttrAttack(3.0, 0, 6, [0,1,0,0,0]), add_cond(ChainDualAttrAttack(5.0, 0, 6, [0,1,0,0,0]), when_hp_more(0.8))],
 	},
 	ss1: {
-		desc: "<AS発動時間延長>3ターンの間、アンサースキル発動時間を10秒延長する(上限値:20秒)",
+		desc: "3ターンの間、アンサースキル発動時間を10秒延長する(上限値:20秒)",
 		turn: 3,
 		proc: [ss_astime_ext(15, 3)],
 	},
@@ -45298,7 +45298,7 @@ Cards = [{
 		proc: [ChainDualAttrAttack(4.0, 0, 6, [0,1,0,0,0]), add_cond(ChainDualAttrAttack(6.0, 0, 6, [0,1,0,0,0]), when_hp_more(0.8))],
 	},
 	ss2: {
-		desc: "<AS発動時間延長>5ターンの間、アンサースキル発動時間を15秒延長する(上限値:20秒)",
+		desc: "5ターンの間、アンサースキル発動時間を15秒延長する(上限値:20秒)",
 		turn: 6,
 		proc: [ss_astime_ext(20, 5)],
 	},
@@ -47495,7 +47495,7 @@ Cards = [{
 		proc: Heal(0.14, [1,1,1,1,1], 0),
 	},
 	ss1: {
-		desc: "<ブースト>4ターンの間味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ、平均解答が早いほどさらにアップ。さらに極稀にクリティカル(基本:90%, 3秒台:130%, 2秒台:170%, 1秒台:210%, 0秒台:250%)",
+		desc: "<解答削り>4ターンの間味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ、平均解答が早いほどさらにアップ。さらに極稀にクリティカル(基本:90%, 3秒台:130%, 2秒台:170%, 1秒台:210%, 0秒台:250%)",
 		turn: 7,
 		proc: [ss_boost_enhance_all(ss_answertime(0.9, 0.4), 4, 0.1, [1,1,1,1,1])]
 	},
@@ -47516,7 +47516,7 @@ Cards = [{
 		proc: Heal(0.17, [1,1,1,1,1], 0),
 	},
 	ss2: {
-		desc: "<ブースト>5ターンの間味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ、平均解答が早いほどさらにアップ。さらに極稀にクリティカル(基本:140%, 3秒台:180%, 2秒台:220%, 1秒台:260%, 0秒台:300%)",
+		desc: "<解答削り>5ターンの間味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ、平均解答が早いほどさらにアップ。さらに極稀にクリティカル(基本:140%, 3秒台:180%, 2秒台:220%, 1秒台:260%, 0秒台:300%)",
 		turn: 10,
 		proc: [ss_boost_enhance_all(ss_answertime(0.9, 0.4), 5, 0.1, [1,1,1,1,1])]
 	},
@@ -47562,7 +47562,7 @@ Cards = [{
 		proc: [ChainEnhance_SubAttr(0.6, 1.0, [0,1,0,0,0], [0,0,1,0,0], 0)],
 	},
 	ss2: {
-		desc: "<ガード>3ターン全属性のダメージを軽減、平均解答時間が早いほどさらに軽減(基本:20%, 3秒台:30%, 2秒台:40%, 1秒台:50%, 0秒台:60%)",
+		desc: "<解答削り>3ターン全属性のダメージを軽減、平均解答時間が早いほどさらに軽減(基本:20%, 3秒台:30%, 2秒台:40%, 1秒台:50%, 0秒台:60%)",
 		turn: 9,
 		proc: [ss_attr_guard([1,1,1,1,1], ss_answertime(0.2, 0.1), 3)],
 	},
@@ -47608,7 +47608,7 @@ Cards = [{
 		proc: [ChainAttack(5.0, 4)],
 	},
 	ss2: {
-		desc: "<継続回復>3ターン味方全体を徐々に回復する、平均解答が早いほどさらに回復し、1ターン継続(基本:15%3ターン, 3秒台:18%4ターン, 2秒台:21%5ターン, 1秒台:24%6ターン, 0秒台:27%7ターン)",
+		desc: "<解答削り>3ターン味方全体を徐々に回復する、平均解答が早いほどさらに回復し、1ターン継続(基本:15%3ターン, 3秒台:18%4ターン, 2秒台:21%5ターン, 1秒台:24%6ターン, 0秒台:27%7ターン)",
 		turn: 8,
 		proc: [ss_regenerate(ss_answertime(0.15, 0.03), ss_answertime(3, 1))],
 	},
@@ -48660,7 +48660,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.5, 4, [0,0,1,1,0]),
 	},
 	ss1: {
-		desc: "<多弾魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ火・闇属性の5回連続ダメージ(450%)",
+		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ火・闇属性の5回連続ダメージ(450%)",
 		turn: 4,
 		proc: [ss_damage_s(4.5, [0,4], 5), ss_ignore_skillcounter(), ss_consume_all(0.6)],
 	},
@@ -48681,7 +48681,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.5, 4, [0,0,1,1,0]),
 	},
 	ss2: {
-		desc: "<多弾魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ火・闇属性の5回連続ダメージ(650%)",
+		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ火・闇属性の5回連続ダメージ(650%)",
 		turn: 6,
 		proc: [ss_damage_s(6.5, [0,4], 5), ss_ignore_skillcounter(), ss_consume_all(0.6)],
 	},
@@ -49530,7 +49530,7 @@ Cards = [{
 		proc: ChainAttack(9.0, 10),
 	},
 	ss2: {
-		desc: "5ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ(1500%)。さらに極稀にクリティカル",
+		desc: "<ブースト>5ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ(1500%)。さらに極稀にクリティカル",
 		turn: 13,
 		proc: [ss_boost_enhance_s(15, 5, 0.15)],
 	},
@@ -49830,7 +49830,7 @@ Cards = [{
 	ape: "天界の双子 訣別のクロニクル",
 	as1: {
 		desc: "3チェインかつパネルが2色でダメージアップ、3色でさらにアップ(550%/700%)",
-		proc: ChainPanelsAttack(0, 5.5, 7.0, 3),
+		proc: ChainPanelsAttack(5.5, 7.0, 7.0, 3),
 	},
 	ss1: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ、5チェインを消費しさらにダメージアップ(150%/300%)",
@@ -49851,7 +49851,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "3チェインかつパネルが2色でダメージアップ、3色でさらにアップ(650%/800%)",
-		proc: ChainPanelsAttack(0, 6.5, 8.0, 3),
+		proc: ChainPanelsAttack(6.5, 8.0, 8.0, 3),
 	},
 	ss2: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ、5チェインを消費しさらにダメージアップ(220%/440%)",
@@ -50529,7 +50529,7 @@ Cards = [{
 		proc: Heal(0.13, [1,1,1,1,1], 0),
 	},
 	ss1: {
-		desc: "3ターン敵の攻撃を自分に集めダメージを50%軽減する",
+		desc: "<その他>3ターン敵の攻撃を自分に集めダメージを50%軽減する",
 		turn: 6,
 		proc: [ss_provocate(0.5, 3)],
 	},
@@ -50550,7 +50550,7 @@ Cards = [{
 		proc: Heal(0.16, [1,1,1,1,1], 0),
 	},
 	ss2: {
-		desc: "3ターン敵の攻撃を自分に集めダメージを75%軽減する、さらに味方全体のHPを回復(25%)",
+		desc: "<回復>3ターン敵の攻撃を自分に集めダメージを75%軽減する、さらに味方全体のHPを回復(25%)",
 		turn: 9,
 		proc: [ss_provocate(0.75, 3), ss_heal(0.25)],
 	},
@@ -50575,7 +50575,7 @@ Cards = [{
 		proc: Heal(0.13, [1,1,1,1,1], 0),
 	},
 	ss1: {
-		desc: "3ターン敵の攻撃を自分に集めダメージを50%軽減する",
+		desc: "<その他>3ターン敵の攻撃を自分に集めダメージを50%軽減する",
 		turn: 6,
 		proc: [ss_provocate(0.5, 3)],
 	},
@@ -50596,7 +50596,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,1,1,1,1], 0)],
 	},
 	ss2: {
-		desc: "ターン敵の攻撃を自分に集めダメージを75%軽減する、さらに味方全体のHPを回復(25%)",
+		desc: "<回復>ターン敵の攻撃を自分に集めダメージを75%軽減する、さらに味方全体のHPを回復(25%)",
 		turn: 9,
 		proc: [ss_provocate(0.75, 3), ss_heal(0.25)],
 	},
@@ -50757,7 +50757,7 @@ Cards = [{
 		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [2])],
 	},
 	ss1: {
-		desc: "ジャンルパネルにスキルチャージプラス2の効果を付与(スキルチャージの効果は、SPスキルを使うまで重複しません)",
+		desc: "<特殊パネル変換>ジャンルパネルにスキルチャージプラス2の効果を付与(スキルチャージの効果は、SPスキルを使うまで重複しません)",
 		turn: 8,
 		proc: [panel_skillboost(2)],
 	},
@@ -50778,7 +50778,7 @@ Cards = [{
 		proc: [ChainAttack(5.0, 4), ChainSpecAttack(7.0, 4, [2])],
 	},
 	ss2: {
-		desc: "ジャンルパネルにスキルチャージプラス3の効果を付与(スキルチャージの効果は、SPスキルを使うまで重複しません)",
+		desc: "<特殊パネル変換>ジャンルパネルにスキルチャージプラス3の効果を付与(スキルチャージの効果は、SPスキルを使うまで重複しません)",
 		turn: 11,
 		proc: [panel_skillboost(3)],
 	},
@@ -50803,7 +50803,7 @@ Cards = [{
 		proc: ChainAttack(5.0, 6),
 	},
 	ss1: {
-		desc: "ジャンルパネルを火・水属性化",
+		desc: "<パネル変換>ジャンルパネルを火・水属性化",
 		turn: 3,
 		proc: [ss_panel_change([1,1,0,0,0])],
 	},
@@ -50824,7 +50824,7 @@ Cards = [{
 		proc: ChainAttack(6.0, 6),
 	},
 	ss2: {
-		desc: "ジャンルパネルを火・水属性化し、ダメージ軽減(25%)・スキルチャージ(1)・チェイン(2)・攻撃力アップ(100%)の効果をランダムで付与",
+		desc: "<特殊パネル変換>ジャンルパネルを火・水属性化し、ダメージ軽減(25%)・スキルチャージ(1)・チェイン(2)・攻撃力アップ(100%)の効果をランダムで付与",
 		turn: 7,
 		proc: [ss_panel_change([1,1,0,0,0]), panel_skillboost(1), panel_chainplus(2), panel_attackup(1.0), panel_attr_guard([1,1,1,1,1], 0.25)],
 	},
@@ -50847,7 +50847,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.0, 4, [0, 0, 1, 1, 0]),
 	},
 	ss1: {
-		desc: "スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
 		turn: 9,
 		proc: [ss_skillboost(2), ss_delay_s(2)],
 	},
@@ -50869,7 +50869,7 @@ Cards = [{
 		proc: ChainAttrAttack(7.0, 4, [0, 0, 1, 1, 0]),
 	},
 	ss2: {
-		desc: "スペシャルスキルの発動ターンを3早め、敵単体の攻撃ターンを3遅らせる",
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを3早め、敵単体の攻撃ターンを3遅らせる",
 		turn: 12,
 		proc: [ss_skillboost(3), ss_delay_s(3)],
 	},
@@ -50895,7 +50895,7 @@ Cards = [{
 		proc: [ChainDualAttack(3.0, 4, 3), add_cond(ChainDualAttack(5.0, 4, 3), when_hp_more(0.5))],
 	},
 	ss1: {
-		desc: "敵全体へ水属性のダメージ(200%)、さらに3ターンの間、水属性のダメージ(200%)",
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(200%)、さらに3ターンの間、水属性のダメージ(200%)",
 		turn: 6,
 		proc: [ss_continue_damage(2.0, 2.0, [1], 3)],
 	},
@@ -50916,7 +50916,7 @@ Cards = [{
 		proc: [ChainDualAttack(4.0, 4, 3), add_cond(ChainDualAttack(6.0, 4, 3), when_hp_more(0.5))],
 	},
 	ss2: {
-		desc: "敵全体へ水属性のダメージ(300%)、さらに3ターンの間、水属性のダメージ(300%)",
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(300%)、さらに3ターンの間、水属性のダメージ(300%)",
 		turn: 9,
 		proc: [ss_continue_damage(3.0, 3.0, [1], 3)],
 	},
@@ -51163,7 +51163,7 @@ Cards = [{
 		proc: ChainDualAttack(8.0, 10, 4),
 	},
 	ss1: {
-		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の2回連続ダメージ(150%)、平均解答時間が早いほどさらに1回連続ダメージ(上限:4段階)",
+		desc: "<解答削り>スキル反射を無視し、敵単体へ火・雷属性の2回連続ダメージ(150%)、平均解答時間が早いほどさらに1回連続ダメージ(上限:4段階)",
 		turn: 5,
 		proc: [ss_damage_s(ss_answertime(1.5, 0.75), [0,2], ss_answertime(2, 1)), ss_ignore_skillcounter()],
 	},
@@ -51184,7 +51184,7 @@ Cards = [{
 		proc: ChainDualAttack(9.0, 10, 4),
 	},
 	ss2: {
-		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の2回連続ダメージ(350%)、平均解答時間が早いほどさらに1回連続ダメージ(上限:4段階)",
+		desc: "<解答削り>スキル反射を無視し、敵単体へ火・雷属性の2回連続ダメージ(350%)、平均解答時間が早いほどさらに1回連続ダメージ(上限:4段階)",
 		turn: 8,
 		proc: [ss_damage_s(ss_answertime(3.5, 1.75), [0,2], ss_answertime(2, 1)), ss_ignore_skillcounter()],
 	},
