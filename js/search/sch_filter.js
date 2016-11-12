@@ -263,9 +263,10 @@ function schfl_grep_ss(obj, ss, card) {
 					var ischeck = false;
 					// type一致ならcheck関数を通す
 					if (!$.isArray(sst.proc)) {
-						ischeck = ((e.name == sst.proc || (e.name == sst && !sst.proc)
+						ischeck = 
+							((e.name == sst.proc || (e.name == sst && !sst.proc))
 							&& (!sst.target || e.target == sst.target))
-							|| sst.proc === null);
+							|| (sst.proc === null);
 					} else {
 						ischeck = $.grep(sst.proc, function (f) {
 							return e.name == f && (!sst.target || e.target == sst.target);

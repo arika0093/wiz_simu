@@ -13388,6 +13388,7 @@ Cards = [{
 	cost: 45,
 	attr: [2, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Statusup(0, 200),
 		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
