@@ -2866,7 +2866,7 @@ Cards = [{
 		proc: ChainAttack(4, 4.0),
 	},
 	ss1: {
-		desc: "<自己犠牲魔術>MAXHPの50％を使い、敵単体へ火・雷属性の5回連続ダメージ(計250％)",
+		desc: "<多弾魔術>MAXHPの50％を使い、敵単体へ火・雷属性の5回連続ダメージ(計250％)",
 		turn: 5,
 		proc: [ss_damage_s(2.5, [0, 2], 5), ss_consume_own(0.5)],
 	},
@@ -2880,7 +2880,7 @@ Cards = [{
 		proc: ChainAttack(4, 5.0),
 	},
 	ss2: {
-		desc: "<自己犠牲魔術>MAXHPの50％を使い、敵単体へ火・雷属性の5回連続ダメージ(計450％)",
+		desc: "<多弾魔術>MAXHPの50％を使い、敵単体へ火・雷属性の5回連続ダメージ(計450％)",
 		turn: 8,
 		proc: [ss_damage_s(4.5, [0, 2], 5), ss_consume_own(0.5)],
 	},
@@ -26171,7 +26171,7 @@ Cards = [{
 		proc: ChainAttack(4, 4.0),
 	},
 	ss1: {
-		desc: "<自己犠牲魔術>MAXHPの50％を使い、敵単体へ火・闇属性の5回連続ダメージ(計250％)",
+		desc: "<多弾魔術>MAXHPの50％を使い、敵単体へ火・闇属性の5回連続ダメージ(計250％)",
 		turn: 5,
 		proc: [ss_damage_s(2.5, [0, 4], 5), ss_consume_own(0.5)],
 	},
@@ -26185,7 +26185,7 @@ Cards = [{
 		proc: ChainAttack(4, 5.0),
 	},
 	ss2: {
-		desc: "<自己犠牲魔術>MAXHPの50％を使い、敵単体へ火・闇属性の5回連続ダメージ(計450％)",
+		desc: "<多弾魔術>MAXHPの50％を使い、敵単体へ火・闇属性の5回連続ダメージ(計450％)",
 		turn: 8,
 		proc: [ss_damage_s(4.5, [0, 4], 5), ss_consume_own(0.5)],
 	},
@@ -31928,7 +31928,7 @@ Cards = [{
 		proc: [ChainDualAttack(1.5, 0, 2), add_cond(ChainDualAttack(11.0, 0, 5), when_hp_less(0.15))],
 	},
 	ss1: {
-		desc: "<自己犠牲魔術>MAXHPの95%を使い、敵単体へ水属性の10回連続ダメージ(330%)",
+		desc: "<多弾魔術>MAXHPの95%を使い、敵単体へ水属性の10回連続ダメージ(330%)",
 		turn: 6,
 		proc: [ss_damage_s(3.3, [1], 10), ss_consume_own(0.95)],
 	},
@@ -31949,7 +31949,7 @@ Cards = [{
 		proc: [ChainDualAttack(2.0, 0, 2), add_cond(ChainDualAttack(16.0, 0, 5), when_hp_less(0.15))],
 	},
 	ss2: {
-		desc: "<自己犠牲魔術>MAXHPの95%を使い、敵単体へ水属性の10回連続ダメージ(450%)",
+		desc: "<多弾魔術>MAXHPの95%を使い、敵単体へ水属性の10回連続ダメージ(450%)",
 		turn: 9,
 		proc: [ss_damage_s(4.5, [1], 10), ss_consume_own(0.95)],
 	},
@@ -33727,7 +33727,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(3.5, 0), as_consume_all(0.10)),
 	},
 	ss1: {
-		desc: "<自己犠牲魔術>MAXHPの50%を使い、敵単体へ水・闇属性の5連続ダメージ(200%)",
+		desc: "<多弾魔術>MAXHPの50%を使い、敵単体へ水・闇属性の5連続ダメージ(200%)",
 		turn: 5,
 		proc: [ss_damage_s(2.0, [1,4], 5), ss_consume_own(0.5)],
 	},
@@ -33748,7 +33748,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(4.5, 0), as_consume_all(0.10)),
 	},
 	ss2: {
-		desc: "<自己犠牲魔術>MAXHPの50%を使い、敵単体へ水・闇属性の5連続ダメージ(400%)",
+		desc: "<多弾魔術>MAXHPの50%を使い、敵単体へ水・闇属性の5連続ダメージ(400%)",
 		turn: 8,
 		proc: [ss_damage_s(4.0, [1,4], 5), ss_consume_own(0.5)],
 	},
@@ -41025,7 +41025,7 @@ Cards = [{
 		proc: [ChainAttack(3.5, 4), ChainSpecAttack(5.0, 4, [3])],
 	},
 	ss1: {
-		desc: "<自己犠牲魔術>MAXHPの50%を使い、敵単体へ雷・闇属性の5回連続ダメージ(250%)",
+		desc: "<多弾魔術>MAXHPの50%を使い、敵単体へ雷・闇属性の5回連続ダメージ(250%)",
 		turn: 6,
 		proc: [ss_damage_s(2.5, [2,4], 5), ss_consume_own(0.5)],
 	},
@@ -41046,7 +41046,7 @@ Cards = [{
 		proc: [ChainAttack(4.5, 4), ChainSpecAttack(6.0, 4, [3])],
 	},
 	ss2: {
-		desc: "<自己犠牲魔術>MAXHPの50%を使い、敵単体へ雷・闇属性の5回連続ダメージ(450%)",
+		desc: "<多弾魔術>MAXHPの50%を使い、敵単体へ雷・闇属性の5回連続ダメージ(450%)",
 		turn: 9,
 		proc: [ss_damage_s(4.5, [2,4], 5), ss_consume_own(0.5)],
 	},
