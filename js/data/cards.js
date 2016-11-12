@@ -28909,7 +28909,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(3.0, 0), when_hp_more(0.80)),
 	},
 	ss1: {
-		desc: "<犠牲魔術>味方のMAXHP60%を使い、敵単体へ火・雷属性の10回連続ダメージ(250%)",
+		desc: "<多弾魔術>味方のMAXHP60%を使い、敵単体へ火・雷属性の10回連続ダメージ(250%)",
 		turn: 5,
 		proc: [ss_consume_all(0.60), ss_damage_s(2.5, [0,2], 10), ],
 	},
@@ -28930,7 +28930,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(4.0, 0), when_hp_more(0.80)),
 	},
 	ss2: {
-		desc: "<犠牲魔術>味方のMAXHP60%を使い、敵単体へ火・雷属性の10回連続ダメージ(450%)",
+		desc: "<多弾魔術>味方のMAXHP60%を使い、敵単体へ火・雷属性の10回連続ダメージ(450%)",
 		turn: 8,
 		proc: [ss_consume_all(0.60), ss_damage_s(4.5, [0,2], 10), ],
 	},
@@ -48660,7 +48660,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.5, 4, [0,0,1,1,0]),
 	},
 	ss1: {
-		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ火・闇属性の5回連続ダメージ(450%)",
+		desc: "<多弾魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ火・闇属性の5回連続ダメージ(450%)",
 		turn: 4,
 		proc: [ss_damage_s(4.5, [0,4], 5), ss_ignore_skillcounter(), ss_consume_all(0.6)],
 	},
@@ -48681,7 +48681,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.5, 4, [0,0,1,1,0]),
 	},
 	ss2: {
-		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ火・闇属性の5回連続ダメージ(650%)",
+		desc: "<多弾魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ火・闇属性の5回連続ダメージ(650%)",
 		turn: 6,
 		proc: [ss_damage_s(6.5, [0,4], 5), ss_ignore_skillcounter(), ss_consume_all(0.6)],
 	},
