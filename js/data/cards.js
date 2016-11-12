@@ -28058,7 +28058,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(4.5, 0), when_hp_more(1)),
 	},
 	ss1: {
-		desc: "<犠牲魔術>味方のMAXHP60%を使い、スキル反射を無視し、敵全体へ水・雷属性のダメージ(220%)",
+		desc: "<大魔術>味方のMAXHP60%を使い、スキル反射を無視し、敵全体へ水・雷属性のダメージ(220%)",
 		turn: 7,
 		proc: [ss_damage_all(2.2, [1, 2]), ss_ignore_skillcounter(), ss_consume_all(0.60)],
 	},
@@ -28079,7 +28079,7 @@ Cards = [{
 		proc: add_cond(ChainAttack(5.5, 0), when_hp_more(1)),
 	},
 	ss2: {
-		desc: "<犠牲魔術>味方のMAXHP60%を使い、スキル反射を無視し、敵全体へ水・雷属性のダメージ(260%)",
+		desc: "<大魔術>味方のMAXHP60%を使い、スキル反射を無視し、敵全体へ水・雷属性のダメージ(260%)",
 		turn: 9,
 		proc: [ss_damage_all(2.6, [1, 2]), ss_ignore_skillcounter(), ss_consume_all(0.60)],
 	},
