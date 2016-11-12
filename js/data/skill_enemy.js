@@ -36,6 +36,39 @@ function m_enemy_nturn(e_skl, n) {
 	return e_skl;
 }
 
+// 2回連続行動
+function m_enemy_dualmove(skl1, skl2) {
+	return m_create_enemy_move(function (fld, n, nows) {
+		// ログ出力
+		Field.log_push("Enemy[" + (n + 1) + "]: 2連続行動");
+		// 順番に実行
+		skl1.move(fld, n, nows);
+		skl2.move(fld, n, nows);
+	}, "2連続行動(" + skl1.mdesc + " / " + skl2.mdesc + ")");
+}
+
+// n回連続行動
+function m_enemy_anymove() {
+	// argumentをarrayに変換
+	var args = Array.prototype.slice.call(arguments, 0);
+	var desc = args.length + "連続行動(";
+	for (var i = 0; i < args.length; i++) {
+		desc += args[i].mdesc;
+		if (i < args.length - 1) {
+			desc += " / ";
+		}
+	}
+	desc = desc + ")";
+	return m_create_enemy_move(function (fld, n, nows) {
+		// ログ出力
+		Field.log_push("Enemy[" + (n + 1) + "]: " + args.length + "連続行動");
+		// 順番に実行
+		for (var i = 0; i < args.length; i++) {
+			args[i].move(fld, n, nows);
+		}
+	}, desc);
+}
+
 // 現在HPが最も高い味方を狙う
 function m_enemy_tgtype_maxhp() {
 	return function (nows, tnum) {
