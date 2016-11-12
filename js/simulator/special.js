@@ -202,7 +202,7 @@ function ss_afterproc(n) {
 	turn_effect_check(false, is_allkill());
 	enemy_turn_effect_check(false);
 	// 敵ダメージ反応系
-	enemy_damage_switch_check("damage_switch");
+	enemy_damage_switch_check("damage_switch", true);
 }
 
 // Lモードに入ったタイミングかどうかを判定する

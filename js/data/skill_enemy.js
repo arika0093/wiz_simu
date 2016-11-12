@@ -1108,9 +1108,13 @@ function s_enemy_when_hpdown(rate) {
 
 // ターン経過
 function s_enemy_when_after_turn(t) {
-	return {func: function (fld, n) {
-		return t == fld.Status.nowturn;
-	}, desc: t + "ターン経過"};
+	return {
+		func: function (fld, n, is_ss) {
+			var n_t = fld.Status.nowturn - (is_ss ? 1 : 0);
+			return t <= n_t;
+		},
+		desc: t + "ターン経過"
+	};
 }
 
 // enemy_skillのDescを作る
