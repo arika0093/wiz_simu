@@ -162,7 +162,9 @@ var sfdef_ss_namelist = {
 		proc: ["ss_statusup", "ss_statusup_all"],
 		target: "ally",
 	},
-	"精霊強化効果": "ss_reinforcement_all",
+	"精霊強化効果": {
+		proc: ["ss_reinforcement", "ss_reinforcement_all"],
+	},
 	"ダメージブロック": {
 		proc: ["ss_damageblock", "ss_damageblock_all"],
 	},

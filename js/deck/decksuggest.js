@@ -458,6 +458,7 @@ $(function () {
 					ss_target: 0,
 					ss_search_ao: 0,
 					awake_types: [],
+					aw_name: "",
 				}
 				// Cardsの中から絞り込み検索
 				var rst_cards = schfl_grep(obj);
