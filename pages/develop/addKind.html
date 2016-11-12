@@ -66,10 +66,11 @@ var typeData=[
     ["ss_damage","","大魔術"],
     ["ss_resurrection","","蘇生"],
     ["ss_delay","","遅延"],
+    ["ss_provocate","","挑発"],
     ["ss_heal","","回復"],
     ["poison","","毒"],
-    ["","","その他"],
-    ["","","時限大魔術"],
+    //["","","その他"],
+    //["","","時限大魔術"],
 ]
 
 function getObject(myStr, keyStr){
@@ -97,6 +98,7 @@ function getObject(myStr, keyStr){
     for(var i=0; i<rcr.length; i++){
         resStr = resStr.replace(rcr[i], rcr2[i])
     }
+    resStr=resStr.replace(/\<挑発\>/g,"")
     return resStr;
 }
 
