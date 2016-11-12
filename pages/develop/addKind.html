@@ -84,7 +84,7 @@ function getObject(myStr, keyStr){
         for(var i2=0; i2<typeData.length; i2++){
             if(rcr[i].indexOf(typeData[i2][0])!=-1){
                 if(typeData[i2][1]=="" || rcr[i].indexOf(typeData[i2][1])!=-1){
-                    tmp=tmp.replace(/(\<|＜).*?(\>|＞)/g,"")
+                    tmp=tmp.replace(/(\<|＜|〈).*?(\>|＞|〉)/g,"")
                     tmp=tmp.replace(/desc *\: *\"/i,"desc: \"<"+typeData[i2][2]+">")
                     break;
                 }
