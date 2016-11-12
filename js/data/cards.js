@@ -15885,7 +15885,7 @@ Cards = [{
 		proc: add_cond(ChainAttrAttack(4.75, 0, [0, 0, 1, 0, 0]), when_hp_more(0.80)),
 	},
 	ss1: {
-		desc: "<自己犠牲魔術>MAXHPの100%を使い敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(500%/1000%)",
+		desc: "<特効大魔術>MAXHPの100%を使い敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(500%/1000%)",
 		turn: 5,
 		proc: [ss_damage_s(special_attr([0, 0, 1, 0, 0], 10.0, 5.0), [0], 1), ss_consume_own(1)],
 	},
@@ -15906,7 +15906,7 @@ Cards = [{
 		proc: add_cond(ChainAttrAttack(5.75, 0, [0, 0, 1, 0, 0]), when_hp_more(0.80)),
 	},
 	ss2: {
-		desc: "<自己犠牲魔術>MAXHPの100%を使い敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(600%/1200%)",
+		desc: "<特効大魔術>MAXHPの100%を使い敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(600%/1200%)",
 		turn: 7,
 		proc: [ss_damage_s(special_attr([0, 0, 1, 0, 0], 12.0, 6.0), [0], 1), ss_consume_own(1)],
 	},
@@ -21824,7 +21824,7 @@ Cards = [{
 		proc: add_cond(ChainDualAttack(5.0, 3, 3), as_consume_own(0.15)),
 	},
 	ss2: {
-		desc: "<自己犠牲魔術>MAXHPを100%使い敵単体へ雷属性のダメージ、さらに水属性の敵には特攻ダメージ(300%/1200%)",
+		desc: "<特効大魔術>MAXHPを100%使い敵単体へ雷属性のダメージ、さらに水属性の敵には特攻ダメージ(300%/1200%)",
 		turn: 7,
 		proc: [ss_damage_s(special_attr([0, 1, 0, 0, 0], 12.0, 3.0), [2], 1), ss_consume_own(1)],
 	},
