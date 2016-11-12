@@ -1,0 +1,89 @@
+div#comment_box{
+	margin: 1ex 0;
+}
+@media screen and (min-width: 600px){
+	div#comment_box{
+		width: 600px;
+	}
+}
+@media screen and (max-width: 599px){
+	div#comment_box{
+		max-width: 600px;
+	}
+}
+
+div.pg_moved{
+	text-align: center;
+}
+
+div.show_comments{
+	margin: .5ex 0;
+	padding: .5ex;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #AAA;
+	border-radius: 4px;
+}
+
+p.no_comment{
+	color: #666;
+}
+
+div.cm_comment{
+	margin: 1ex 1ex;
+	padding-bottom: 1.5ex;
+}
+
+div.cmm_top{
+	padding-bottom: 1px;
+	border-bottom: 1px solid #CCC;
+}
+
+span.cmm_date{
+	float: right;
+	color: #666;
+}
+span.cmm_date:after{
+	clear: both;
+}
+@media screen and (max-width: 599px){
+	span.cmm_date{
+		display: none;
+	}
+}
+
+div.cmm_content{
+	padding: .5ex;
+	background-color: #F0F0F0;
+}
+
+img.cmm_image{
+	padding: .5ex .5em;
+	max-width: 100%;
+	max-height: 300px;
+	box-sizing: border-box;
+}
+
+form[name="post_comment"]{
+	width: 100%;
+	box-sizing: border-box;
+}
+
+input[name="dspname"]{
+	margin: .5ex 0;
+	width: 250px;
+}
+
+textarea[name="post_content"]{
+	width: 100%;
+	box-sizing: border-box;
+}
+
+button#cm_send{
+	width: 120px;
+	float: right;
+}
+button#cm_send:after{
+	clear:both;
+}
+

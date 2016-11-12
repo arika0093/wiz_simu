@@ -72,9 +72,6 @@ function makeQD(id) {
 		}
 		// generate html
 		resStr += "<dt>" + Quest.name + "</dt>"
-		if(Quest.revData){
-			Quest.data.push({enemy:Quest.revData})
-		}
 		Quest.data.forEach(function (Battle, BattleNum) {
 			resStr += "<dd class='left_min'>" +
 				"<p class='battle_num'>" + Battle.appearance + "戦目</p><div class='battle_d'>"
@@ -101,7 +98,7 @@ function makeQD(id) {
 				resStr += "</div>"
 			})
 			resStr += "</div>"
-			resStr += "<div class='bcks'>" +
+			resStr += "<div class='bcks clearfix'>" +
 				"<a class='sim_go back_category' href='#'>試走する</a>" +
 				"<a class='back_category' href='/simulator/d/?qid=" + Quest.id + "'>みんなの投稿デッキを見る</a>" +
 				"<a class='back_category' href='/simulator/quest/?genre=" + Quest.category + "'>カテゴリ一覧に戻る</a></div>";
