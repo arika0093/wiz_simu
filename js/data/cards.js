@@ -448,7 +448,7 @@ Cards = [{
 		proc: [ss_damage_all(1.8, [0]), ss_heal(0.3)],
 	}
 }, {
-	name: "明日を見つめるふたり 犬夜叉＆かごめ",
+	name: "明日を見つめるふたり 犬夜叉&かごめ",
 	cardno: 4174,
 	imageno: 5862,
 	hp: 2502,
@@ -492,7 +492,7 @@ Cards = [{
 		proc: [ss_damage_all(1.8, [0]), ss_delay_s(1)],
 	},
 }, {
-	name: "死界の焔 ヴィヴィ＆イザヴェリ",
+	name: "死界の焔 ヴィヴィ&イザヴェリ",
 	cardno: 4438,
 	imageno: 6132,
 	hp: 3468,
@@ -1202,7 +1202,7 @@ Cards = [{
 		proc: [ss_damage_all(2.6, [0])],
 	},
 }, {
-	name: "不滅の主従 キワム＆アウデアムス",
+	name: "不滅の主従 キワム&アウデアムス",
 	cardno: 3730,
 	imageno: 5284,
 	hp: 2457,
@@ -1246,7 +1246,7 @@ Cards = [{
 		proc: [ss_damage_all(3.3, [0]), ss_consume_own(0.5)],
 	},
 }, {
-	name: "其は深淵の災い キワム＆鋼鉄の獣",
+	name: "其は深淵の災い キワム&鋼鉄の獣",
 	cardno: 4237,
 	imageno: 5943,
 	hp: 2344,
@@ -1734,7 +1734,7 @@ Cards = [{
 		proc: [ss_damage_s(3.8, [0], 5)],
 	},
 }, {
-	name: "燃える拳と鉄板 ジョージ＆アキラ",
+	name: "燃える拳と鉄板 ジョージ&アキラ",
 	cardno: 4495,
 	imageno: 6190,
 	hp: 2005,
@@ -2132,7 +2132,7 @@ Cards = [{
 		proc: [ss_damage_all(2.6, [0])],
 	},
 }, {
-	name: "天地分かつ姉弟 ミカエラ＆イザーク",
+	name: "天地分かつ姉弟 ミカエラ&イザーク",
 	cardno: 4744,
 	imageno: 6580,
 	hp: 2213,
@@ -2309,7 +2309,7 @@ Cards = [{
 		proc: [panel_chainplus(2)],
 	},
 }, {
-	name: "深淵の女王 ミュール＆レベリオー",
+	name: "深淵の女王 ミュール&レベリオー",
 	cardno: 4249,
 	imageno: 5958,
 	hp: 2905,
@@ -2885,7 +2885,7 @@ Cards = [{
 		proc: [ss_damage_s(4.5, [0, 2], 5), ss_consume_own(0.5)],
 	},
 }, {
-	name: "二心一閃の太刀筋 ウッド＆リーリ",
+	name: "二心一閃の太刀筋 ウッド&リーリ",
 	cardno: 4658,
 	imageno: 6416,
 	hp: 2189,
@@ -3019,7 +3019,7 @@ Cards = [{
 		proc: [ss_delay_all(ss_chain_cond(20, 4, 2))]
 	},
 }, {
-	name: "シェアハピネスな魔法 リコ＆グリ",
+	name: "シェアハピネスな魔法 リコ&グリ",
 	cardno: 4309,
 	imageno: 6023,
 	hp: 2436,
@@ -3108,7 +3108,7 @@ Cards = [{
 		proc: [ss_panel_change([1,1,0,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)]
 	},
 },{
-	name: "収穫者 ウシュガ＆ウィアノーヴァ",
+	name: "収穫者 ウシュガ&ウィアノーヴァ",
 	cardno: 4274,
 	imageno: 5961,
 	hp: 2533,
@@ -3459,7 +3459,7 @@ Cards = [{
 		proc: ChainAttrAttack(7.5, 5, [0,0,1,0,0]),
 	},
 	ss2: {
-		desc: "<効果解除>敵全体のガード＆ダメージブロックを解除する",
+		desc: "<効果解除>敵全体のガード&ダメージブロックを解除する",
 		turn: 8,
 		proc: [ss_break_attrguard(), ss_break_dblock()]
 	},
@@ -3489,7 +3489,7 @@ Cards = [{
 		proc: ChainAttack(5.0, 7),
 	},
 	ss1: {
-		desc: "<効果解除>敵単体のガード＆ダメージブロックを解除する",
+		desc: "<効果解除>敵単体のガード&ダメージブロックを解除する",
 		turn: 9,
 		proc: [ss_break_attrguard(), ss_break_dblock()]
 	},
@@ -3504,7 +3504,7 @@ Cards = [{
 		proc: ChainAttack(6.0, 7),
 	},
 	ss2: {
-		desc: "<効果解除大魔術>敵単体のガード＆ダメージブロックを解除し、火属性のダメージ(400％)",
+		desc: "<効果解除大魔術>敵単体のガード&ダメージブロックを解除し、火属性のダメージ(400％)",
 		turn: 13,
 		proc: [ss_damage_s(4.0, [0], 1), ss_break_attrguard(), ss_break_dblock()],
 	},
@@ -3731,7 +3731,7 @@ Cards = [{
 		proc: [ss_damage_s(3.8, [0], ss_chain_cond(10, 10, 5))],
 	},
 }, {
-	name: "常時共闘戦線 エミリア＆カエデ",
+	name: "常時共闘戦線 エミリア&カエデ",
 	cardno: 4534,
 	imageno: 6212,
 	hp: 2331,
@@ -3865,7 +3865,7 @@ Cards = [{
 		proc: [ss_consume_all(0.5), ss_enhance_all(0.8, 4, [1,0,0,0,0])],
 	},
 }, {
-	name: "信頼と絆に結ばれる りんね＆桜",
+	name: "信頼と絆に結ばれる りんね&桜",
 	cardno: 4170,
 	imageno: 5846,
 	hp: 2867,
@@ -4089,7 +4089,7 @@ Cards = [{
 		proc: [poison(9999, 4)],
 	},
 }, {
-	name: "覇眼戦線 リヴェータ＆ルドヴィカ",
+	name: "覇眼戦線 リヴェータ&ルドヴィカ",
 	cardno: 4434,
 	imageno: 6128,
 	hp: 2283,
@@ -4667,7 +4667,7 @@ Cards = [{
 		proc: [ss_resurrection([1, 1, 1, 1, 1], 1.0), ss_consume_own(1)],
 	},
 }, {
-	name: "愛で繋いだ心の架け橋 ミミ＆ララ",
+	name: "愛で繋いだ心の架け橋 ミミ&ララ",
 	cardno: 5110,
 	imageno: 6861,
 	hp: 4558,
@@ -4731,7 +4731,7 @@ Cards = [{
 		Spec_statusup(200, 0, [5]),
 	],
 	as1: {
-		desc: "敵単体へのダメージアップ＆敵HPを吸収する(攻撃：250％ / 吸収：敵に与えるダメージの5％)",
+		desc: "敵単体へのダメージアップ&敵HPを吸収する(攻撃：250％ / 吸収：敵に与えるダメージの5％)",
 		proc: add_cond(ChainAttack(2.5, 0), as_hp_absorption(0.05)),
 	},
 	ss1: {
@@ -4745,7 +4745,7 @@ Cards = [{
 		Statusup(400, 0),
 	],
 	as2: {
-		desc: "敵単体へのダメージアップ、さらに火属性の味方のHPを回復＆敵HPを吸収する(攻撃：320％ / 回復：2％ / 吸収：与ダメージの5％)",
+		desc: "敵単体へのダメージアップ、さらに火属性の味方のHPを回復&敵HPを吸収する(攻撃：320％ / 回復：2％ / 吸収：与ダメージの5％)",
 		proc: [add_cond(ChainAttack(3.2, 0), as_hp_absorption(0.05)), Heal(0.02, [1,0,0,0,0], 0)],
 	},
 	ss2: {
@@ -6569,7 +6569,7 @@ Cards = [{
 		Statusup(0, 400),
 	],
 	as2: {
-		desc: "敵単体へのダメージアップ350％、3チェインで更にアップ＆敵HPを吸収する400％",
+		desc: "敵単体へのダメージアップ350％、3チェインで更にアップ&敵HPを吸収する400％",
 		proc: [ChainAttack(3.5, 0), add_cond(ChainAttack(4.0, 3), as_hp_absorption(0.05))],
 	},
 	ss2: {
@@ -7319,7 +7319,7 @@ Cards = [{
 		proc: ChainVarianceAttack(3.5, 3),
 	},
 	ss1: {
-		desc: "<パネル変換>ジャンルパネルを水＆雷属性化",
+		desc: "<パネル変換>ジャンルパネルを水&雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,1,1,0,0])]
 	},
@@ -7333,7 +7333,7 @@ Cards = [{
 		proc: ChainVarianceAttack(4.5, 3),
 	},
 	ss2: {
-		desc: "<特殊パネル変換>ジャンルパネルを水＆雷属性化し、攻撃力アップの効果を付与(+20％)",
+		desc: "<特殊パネル変換>ジャンルパネルを水&雷属性化し、攻撃力アップの効果を付与(+20％)",
 		turn: 8,
 		proc: [ss_panel_change([0,1,1,0,0]), panel_attackup(0.20)],
 	},
@@ -7740,7 +7740,7 @@ Cards = [{
 		proc: [ss_panel_change([0,1,0,0,0]), panel_chainplus(2)],
 	},
 }, {
-	name: "乱れ咲きの銀吹雪 ツバキ＆ハヅキ",
+	name: "乱れ咲きの銀吹雪 ツバキ&ハヅキ",
 	cardno: 4745,
 	imageno: 6581,
 	hp: 2135,
@@ -8757,7 +8757,7 @@ Cards = [{
 		proc: [ss_panel_change([1,1,1,0,0])]
 	},
 }, {
-	name: "桜媛と巫女 ヤチヨ＆インフローレ",
+	name: "桜媛と巫女 ヤチヨ&インフローレ",
 	cardno: 3736,
 	imageno: 5296,
 	hp: 2757,
@@ -9422,7 +9422,7 @@ Cards = [{
 		proc: [ss_enhance_all(0.60, 4, [1,1,0,0,0])],
 	},
 }, {
-	name: "響く歌、遠くまで KAITO＆MEIKO",
+	name: "響く歌、遠くまで KAITO&MEIKO",
 	cardno: 4898,
 	imageno: 6612,
 	hp: 2874,
@@ -9461,12 +9461,12 @@ Cards = [{
 		proc: ChainEnhance(0.90, [1,1,0,0,0], 5),
 	},
 	ss2: {
-		desc: "<効果解除>敵全体のガード＆ダメージブロックを解除する",
+		desc: "<効果解除>敵全体のガード&ダメージブロックを解除する",
 		turn: 8,
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all")],
 	},
 }, {
-	name: "私たち、超無敵の ソフィ＆リルム",
+	name: "私たち、超無敵の ソフィ&リルム",
 	cardno: 4440,
 	imageno: 6134,
 	hp: 2203,
@@ -9555,7 +9555,7 @@ Cards = [{
 		proc: [ss_skillboost(ss_chain_cost(5, 4, 3))],
 	},
 }, {
-	name: "南国バーチャルシンガー ミク＆ルカ",
+	name: "南国バーチャルシンガー ミク&ルカ",
 	cardno: 4867,
 	imageno: 6630,
 	hp: 3420,
@@ -9669,7 +9669,7 @@ Cards = [{
 		proc: [Heal(0.10, [1,1,0,0,0], 0), SpecHeal(0.15, [1,1,0,0,0], [1], 0)],
 	},
 	ss1: {
-		desc: "<パネル変換>ジャンルパネルを水＆火属性化",
+		desc: "<パネル変換>ジャンルパネルを水&火属性化",
 		turn: 5,
 		proc: [ss_panel_change([1,1,0,0,0])]
 	},
@@ -9684,7 +9684,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,1,0,0,0], 0), SpecHeal(0.18, [1,1,0,0,0], [1], 0)],
 	},
 	ss2: {
-		desc: "<特殊パネル変換>ジャンルパネルを水＆火属性化し、チェインがプラス1の効果を付与",
+		desc: "<特殊パネル変換>ジャンルパネルを水&火属性化し、チェインがプラス1の効果を付与",
 		turn: 9,
 		proc: [ss_panel_change([1,1,0,0,0]), panel_chainplus(1)],
 	},
@@ -9822,7 +9822,7 @@ Cards = [{
 		proc: [ss_damage_all(2.0, [0,1]), ss_heal(0.25)],
 	},
 }, {
-	name: "募る想いに彩られ アーシア＆ニコラ",
+	name: "募る想いに彩られ アーシア&ニコラ",
 	cardno: 4522,
 	imageno: 6200,
 	hp: 3540,
@@ -9913,7 +9913,7 @@ Cards = [{
 		proc: [ss_enhance_all(1.0, 4, [0,1,1,0,0]), ss_consume_all(0.5)],
 	},
 }, {
-	name: "虹色の姉妹 サーシャ＆シンシア",
+	name: "虹色の姉妹 サーシャ&シンシア",
 	cardno: 4444,
 	imageno: 5766,
 	hp: 3500,
@@ -10227,7 +10227,7 @@ Cards = [{
 		proc: [ss_damage_all(1.2, [1]), ss_delay_all(1)],
 	},
 }, {
-	name: "開かれた夏への扉 ヤチヨ＆アッカ",
+	name: "開かれた夏への扉 ヤチヨ&アッカ",
 	cardno: 4240,
 	imageno: 5946,
 	hp: 2929,
@@ -10385,7 +10385,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.11, 0.15, 0.17, [0,1,0,0,0], 0)
 	},
 	ss1: {
-		desc: "<効果解除>敵全体のガード＆ダメージブロックを解除する",
+		desc: "<効果解除>敵全体のガード&ダメージブロックを解除する",
 		turn: 8,
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all")],
 	},
@@ -10399,7 +10399,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.13, 0.17, 0.20, [0,1,0,0,0], 0)
 	},
 	ss2: {
-		desc: "<効果解除大魔術>敵全体のガード＆ダメージブロックを解除し、水属性のダメージ。HP20％以下でさらにダメージアップ(通常：180％ / HP20％以下：400％)",
+		desc: "<効果解除大魔術>敵全体のガード&ダメージブロックを解除し、水属性のダメージ。HP20％以下でさらにダメージアップ(通常：180％ / HP20％以下：400％)",
 		turn: 12,
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(ss_hp_less(0.20, 4.0, 1.8), [1])], 
 	},
@@ -10761,7 +10761,7 @@ Cards = [{
 		proc: [ss_heal_absolute(1000)],
 	},
 }, {
-	name: "心繋がる星の夜に ソラナ＆ヒカリ",
+	name: "心繋がる星の夜に ソラナ&ヒカリ",
 	cardno: 4435,
 	imageno: 6130,
 	hp: 3117,
@@ -11165,7 +11165,7 @@ Cards = [{
 		proc: [ss_damage_all(3.3, [2]), ss_consume_own(0.5) ],
 	},
 }, {
-	name: "歴史の見届け人 アサギ＆セルウス",
+	name: "歴史の見届け人 アサギ&セルウス",
 	cardno: 4252,
 	imageno: 5955,
 	hp: 2864,
@@ -11210,7 +11210,7 @@ Cards = [{
 		proc: [ss_heal(1.0), ss_abstate_cure()],
 	},
 }, {
-	name: "鏡合わせの私達 アッカ＆トイボア",
+	name: "鏡合わせの私達 アッカ&トイボア",
 	cardno: 3742,
 	imageno: 5293,
 	hp: 2758,
@@ -11365,7 +11365,7 @@ Cards = [{
 		proc: [Heal(0.10, [1,1,1,1,1], 0), SpecHeal(0.17, [1,1,1,1,1], [1], 0)],
 	},
 	ss1: {
-		desc: "<パネル変換>ジャンルパネルを火＆雷属性化",
+		desc: "<パネル変換>ジャンルパネルを火&雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([1,0,1,0,0])]
 	},
@@ -11764,7 +11764,7 @@ Cards = [{
 		proc: add_cond(ChainPanelsAttack(3.0, 4.0, 5.5, 0), when_hp_more(0.80)),
 	},
 	ss1: {
-		desc: "<パネル変換>ジャンルパネルを火＆雷属性化",
+		desc: "<パネル変換>ジャンルパネルを火&雷属性化",
 		turn: 6,
 		proc: [ss_panel_change([1,0,1,0,0])]
 	},
@@ -12179,7 +12179,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.13, 0.17, 0.20, [0,0,1,0,0], 0),
 	},
 	ss2: {
-		desc: "<効果解除大魔術>敵全体のガード＆ダメージブロックを解除し、雷属性のダメージ(180％)",
+		desc: "<効果解除大魔術>敵全体のガード&ダメージブロックを解除し、雷属性のダメージ(180％)",
 		turn: 12,
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(1.8, [0,0,1,0,0])],
 	},
@@ -12585,7 +12585,7 @@ Cards = [{
 		proc: [ss_panel_change([0,0,1,0,0]), panel_chainplus(2)],
 	},
 }, {
-	name: "機神の操者 スミオ＆エクスマキナ",
+	name: "機神の操者 スミオ&エクスマキナ",
 	cardno: 3733,
 	imageno: 5287,
 	hp: 2836,
@@ -12629,7 +12629,7 @@ Cards = [{
 		proc: [ss_skillboost(2)],
 	},
 }, {
-	name: "伝説のセレニティ＆エンディミオン",
+	name: "伝説のセレニティ&エンディミオン",
 	cardno: 4002,
 	imageno: 5691,
 	hp: 2643,
@@ -13603,7 +13603,7 @@ Cards = [{
 		proc: [panel_attr_guard([1, 1, 1, 1, 1], 0.5)]
 	},
 }, {
-	name: "収穫者 ヒミカ＆アドミローラ",
+	name: "収穫者 ヒミカ&アドミローラ",
 	cardno: 4271,
 	imageno: 5965,
 	hp: 2039,
@@ -13648,7 +13648,7 @@ Cards = [{
 		proc: [ss_answer_foresight()]
 	},
 }, {
-	name: "芳しき天上の姉妹 ファム＆フェルチ",
+	name: "芳しき天上の姉妹 ファム&フェルチ",
 	cardno: 4746,
 	imageno: 6582,
 	hp: 3819,
@@ -13979,7 +13979,7 @@ Cards = [{
 		Spec_statusup(200, 0, [2, ]),
 	],
 	as1: {
-		desc: "敵単体へのダメージアップ＆敵HPを吸収する(攻撃：250％ / 吸収：5％)",
+		desc: "敵単体へのダメージアップ&敵HPを吸収する(攻撃：250％ / 吸収：5％)",
 		proc: add_cond(ChainAttack(2.5, 0), as_hp_absorption(0.05)),
 	},
 	ss1: {
@@ -13993,7 +13993,7 @@ Cards = [{
 		Statusup(400, 0),
 	],
 	as2: {
-		desc: "敵単体へのダメージアップ、さらに雷属性の味方のHPを回復＆敵HPを吸収する(攻撃：320％ / 回復：2％ / 吸収：5％)",
+		desc: "敵単体へのダメージアップ、さらに雷属性の味方のHPを回復&敵HPを吸収する(攻撃：320％ / 回復：2％ / 吸収：5％)",
 		proc: [add_cond(ChainAttack(2.5, 0), as_hp_absorption(0.05)), Heal(0.02, [0,0,1,0,0], 0)],
 	},
 	ss2: {
@@ -14225,7 +14225,7 @@ Cards = [{
 		proc: [ss_damage_all(2.2, [2])],
 	},
 }, {
-	name: "永遠に続く愛 ラム＆あたる",
+	name: "永遠に続く愛 ラム&あたる",
 	cardno: 4176,
 	imageno: 5858,
 	hp: 2910,
@@ -14445,7 +14445,7 @@ Cards = [{
 		proc: [ss_regenerate(0.20, 5)],
 	},
 }, {
-	name: "穿神脚 師匠＆リンリン＆ポンタン",
+	name: "穿神脚 師匠&リンリン&ポンタン",
 	cardno: 4288,
 	imageno: 5877,
 	hp: 2345,
@@ -14514,7 +14514,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.25, 3, [0,1,0,0,0]),
 	},
 	ss1: {
-		desc: "<効果解除>敵全体のガード＆ダメージブロックを解除する",
+		desc: "<効果解除>敵全体のガード&ダメージブロックを解除する",
 		turn: 8,
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all")],
 	},
@@ -14528,7 +14528,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.25, 3, [0,1,0,0,0]),
 	},
 	ss2: {
-		desc: "<効果解除大魔術>敵全体のガード＆ダメージブロックを解除し、雷属性のダメージ(180％)",
+		desc: "<効果解除大魔術>敵全体のガード&ダメージブロックを解除し、雷属性のダメージ(180％)",
 		turn: 12,
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(1.8, [2])],
 	},
@@ -14843,7 +14843,7 @@ Cards = [{
 		proc: [ss_enhance_all(0.60, 4, [1,0,1,0,0])],
 	},
 }, {
-	name: "双星、芽生えたココロ アイ＆アイ",
+	name: "双星、芽生えたココロ アイ&アイ",
 	cardno: 4432,
 	imageno: 6126,
 	hp: 2328,
@@ -14887,7 +14887,7 @@ Cards = [{
 		proc: [panel_chainplus(3)],
 	},
 }, {
-	name: "光を求めるふたり KAITO＆MEIKO",
+	name: "光を求めるふたり KAITO&MEIKO",
 	cardno: 4970,
 	imageno: 6705,
 	hp: 2423,
@@ -15022,7 +15022,7 @@ Cards = [{
 		proc: [ss_heal(0.25), ss_resurrection([1,0,1,0,0], 0.25)],
 	},
 }, {
-	name: "機獣の咆哮 シャーリー＆ヴォルフ",
+	name: "機獣の咆哮 シャーリー&ヴォルフ",
 	cardno: 4525,
 	imageno: 6203,
 	hp: 1826,
@@ -15270,7 +15270,7 @@ Cards = [{
 		proc: [Heal(0.10, [0,1,1,0,0], 0), SpecHeal(0.15, [0,1,1,0,0], [8], 0)],
 	},
 	ss1: {
-		desc: "<パネル変換>ジャンルパネルを水＆雷属性化",
+		desc: "<パネル変換>ジャンルパネルを水&雷属性化",
 		turn: 5,
 		proc: [ss_panel_change([0,1,1,0,0])]
 	},
@@ -15284,7 +15284,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,1,1,0,0], 0), SpecHeal(0.18, [0,1,1,0,0], [8], 0)],
 	},
 	ss2: {
-		desc: "<特殊パネル変換>ジャンルパネルを水＆雷属性化し、回復の効果を付与(5％)",
+		desc: "<特殊パネル変換>ジャンルパネルを水&雷属性化し、回復の効果を付与(5％)",
 		turn: 7,
 		proc: [ss_panel_change([0,1,1,0,0]), panel_healally(0.05)],
 	},
@@ -15488,7 +15488,7 @@ Cards = [{
 		Attr_relief([1, 1, 1, 1, 1, ], 10),
 	],
 	as1: {
-		desc: "残りHPが90％以上でダメージアップ＆敵HPを吸収(攻撃：360％ / 吸収：12％)",
+		desc: "残りHPが90％以上でダメージアップ&敵HPを吸収(攻撃：360％ / 吸収：12％)",
 		proc: add_cond(ChainAttack(3.6, 0), when_hp_more(0.90), as_hp_absorption(0.12))
 	},
 	ss1: {
@@ -15505,7 +15505,7 @@ Cards = [{
 		Statusup(500, 0),
 	],
 	as2: {
-		desc: "残りHPが90％以上でダメージアップ＆敵HPを吸収(攻撃：460％ / 吸収：12％)",
+		desc: "残りHPが90％以上でダメージアップ&敵HPを吸収(攻撃：460％ / 吸収：12％)",
 		proc: add_cond(ChainAttack(4.6, 0), when_hp_more(0.90), as_hp_absorption(0.12))
 	},
 	ss2: {
@@ -15674,7 +15674,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 5.0, 6.5, 5),
 	},
 	ss1: {
-		desc: "<効果解除>敵全体のガード＆ダメージブロックを解除する",
+		desc: "<効果解除>敵全体のガード&ダメージブロックを解除する",
 		turn: 8,
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all")],
 	},
@@ -15688,7 +15688,7 @@ Cards = [{
 		proc: ChainPanelsAttack(0, 5.0, 9.0, 5),
 	},
 	ss2: {
-		desc: "<効果解除大魔術>敵全体のガード＆ダメージブロックを解除し、雷属性のダメージ。HP20％以下でさらにダメージアップ(通常：180％ / HP20％以下：400％)",
+		desc: "<効果解除大魔術>敵全体のガード&ダメージブロックを解除し、雷属性のダメージ。HP20％以下でさらにダメージアップ(通常：180％ / HP20％以下：400％)",
 		turn: 12,
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(ss_hp_less(0.20, 4.0, 1.8), [2])],
 	},
@@ -16011,7 +16011,7 @@ Cards = [{
 		Statusup(0,400),
 	],
 }, {
-	name: "夢の兄弟屋台 イツキ＆アキラ",
+	name: "夢の兄弟屋台 イツキ&アキラ",
 	cardno: 4509,
 	imageno: 6191,
 	hp: 1777,
@@ -16105,7 +16105,7 @@ Cards = [{
 		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], 9.0, 2.0), [2])]
 	},
 }, {
-	name: "海風流るる焔々と セイ＆スオウ",
+	name: "海風流るる焔々と セイ&スオウ",
 	cardno: 5064,
 	imageno: 6804,
 	hp: 2650,
@@ -16874,7 +16874,7 @@ Cards = [{
 	// -------------------------
 	// 追加: 2015クリスマス精霊
 	// -------------------------
-	name: "永劫の白翼 アルドベリク＆ルシエラ",
+	name: "永劫の白翼 アルドベリク&ルシエラ",
 	cardno: 5197,
 	imageno: 7079,
 	hp: 3329,
@@ -16918,7 +16918,7 @@ Cards = [{
 		proc: [ss_skillboost(2), ss_delay_s(2)]
 	},
 }, {
-	name: "夢色の心贈る キワム＆クロ",
+	name: "夢色の心贈る キワム&クロ",
 	cardno: 5200,
 	imageno: 7082,
 	hp: 3221,
@@ -17006,7 +17006,7 @@ Cards = [{
 		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 9.0, 2.0), [1])]
 	},
 }, {
-	name: "綺光と焔の絆 ベアトリーゼ＆エルト",
+	name: "綺光と焔の絆 ベアトリーゼ&エルト",
 	cardno: 5206,
 	imageno: 7088,
 	hp: 4139,
@@ -17050,7 +17050,7 @@ Cards = [{
 		proc: [ss_enhance_all(ss_chain_cost(5, 1.8, 1.2), 4, [1,1,1,1,1])]
 	},
 }, {
-	name: "師匠サンタ登場 リンリン＆ポンタン",
+	name: "師匠サンタ登場 リンリン&ポンタン",
 	cardno: 5365,
 	imageno: 7091,
 	hp: 1856,
@@ -17276,7 +17276,7 @@ Cards = [{
 		proc: [ss_damage_s(ss_chain_cost(5, 7.6, 3.8), [2, 3], 5)]
 	},
 }, {
-	name: "兄妹正月 クィントゥス＆レノックス",
+	name: "兄妹正月 クィントゥス&レノックス",
 	cardno: 5452,
 	imageno: 7106,
 	hp: 2654,
@@ -18144,7 +18144,7 @@ Cards = [{
 		NEFTJOD(99, 90),
 	],
 	as1: {
-		desc: "戦闘不能の仲間の数だけ攻撃力アップ＆敵HPを吸収(戦闘不能人数×400％+100％ / 吸収：4％)(1体：500%/2体：900%/3体：1300%/4体：1700%：2100％)",
+		desc: "戦闘不能の仲間の数だけ攻撃力アップ&敵HPを吸収(戦闘不能人数×400％+100％ / 吸収：4％)(1体：500%/2体：900%/3体：1300%/4体：1700%：2100％)",
 		proc: add_cond(ChainDeckDeadsAttack(4.0, 0), as_hp_absorption(0.04)),
 	},
 	ss1: {
@@ -18160,7 +18160,7 @@ Cards = [{
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
 	],
 	as2: {
-		desc: "戦闘不能の仲間の数だけ攻撃力アップ＆敵HPを吸収(戦闘不能人数×450％+100％ / 吸収：4％)(1体：550%/2体：1000%/3体：1450%/4体：1900%：2350％)",
+		desc: "戦闘不能の仲間の数だけ攻撃力アップ&敵HPを吸収(戦闘不能人数×450％+100％ / 吸収：4％)(1体：550%/2体：1000%/3体：1450%/4体：1900%：2350％)",
 		proc: add_cond(ChainDeckDeadsAttack(4.5, 0), as_hp_absorption(0.04)),
 	},
 	ss2: {
@@ -23038,7 +23038,7 @@ Cards = [{
 		Statusup(0, 500),
 	],
 }, {
-	name: "新世界の失踪 ダリオ＆ガラティア",
+	name: "新世界の失踪 ダリオ&ガラティア",
 	cardno: 5788,
 	imageno: 7613,
 	hp: 3015,
@@ -32718,7 +32718,7 @@ Cards = [{
 		Attr_statusup(0,100, [0,1,1,0,0,]),
 	],
 },{
-	name: "桜媛と巫女 ヤチヨ＆インフローレ",
+	name: "桜媛と巫女 ヤチヨ&インフローレ",
 	cardno: 6312,
 	imageno: 5296,
 	hp: 4998,
@@ -45443,7 +45443,7 @@ Cards = [{
 		Attr_statusup(500,0, [1,0,1,0,0,]),
 	],
 },{
-	name: "募る想いに彩られ アーシア＆ニコラ",
+	name: "募る想いに彩られ アーシア&ニコラ",
 	cardno: 7001,
 	imageno: 6200,
 	hp: 5540,
@@ -45533,7 +45533,7 @@ Cards = [{
 		Statusup(500,0),
 	],
 },{
-	name: "機獣の咆哮 シャーリー＆ヴォルフ",
+	name: "機獣の咆哮 シャーリー&ヴォルフ",
 	cardno: 7002,
 	imageno: 6203,
 	hp: 1926,
@@ -45632,7 +45632,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "ミス＆ミスタークロム・マグナ",
+	ape: "ミス&ミスタークロム・マグナ",
 	as1: {
 		desc: "3チェインで火属性の敵単体へ特効ダメージ(525%)",
 		proc: ChainAttrAttack(5.25, 3, [1,0,0,0,0]),
@@ -45677,7 +45677,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [9],
 	islegend: true,
-	ape: "ミス＆ミスタークロム・マグナ",
+	ape: "ミス&ミスタークロム・マグナ",
 	as1: {
 		desc: "水属性の味方を回復(14%)、さらに攻撃力をアップ(20%)",
 		proc: [Heal(0.14, [0,1,0,0,0], 0), ChainEnhance(0.2, [0,1,0,0,0], 0)],
