@@ -23,7 +23,7 @@ var Field = {
 			"アイテム",
 			"AbCd",
 		],
-		Actlog_Ver: 102,
+		Actlog_Ver: 103,
 	},
 	// クエストデータ
 	Quest: {},
@@ -62,6 +62,7 @@ var Field = {
 		// 助っ人関連
 		is_helper: false,		// 助っ人が存在するかどうか
 		is_hlpchanged: false,	// 助っ人と交代済であるか
+		hlpchanged_index: -1,	// 交代した先のindex
 		// ターンetc関連
 		durturn: [],
 		nowturn: 1,
@@ -433,6 +434,7 @@ function helper_change_process() {
 			legend_timing_check(Field.Allys.Deck, Field.Allys.Now, i);
 			// フラグON
 			fs.is_hlpchanged = true;
+			fs.hlpchanged_index = i;
 			Field.log_push("Unit[" + (i + 1) + "]: 助っ人交代");
 		}
 	}

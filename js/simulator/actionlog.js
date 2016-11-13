@@ -15,9 +15,17 @@ function actl_send_result(after) {
 	var ally = [];
 	var send = "tp=regist";
 	// データ整理
-	$.each(Field.Allys.Deck, function (i, e) {
+	for (var i = 0; i < Field.Allys.Deck.length; i++) {
+		var e = Field.Allys.Deck[i];
+		if (st.is_hlpchanged && st.hlpchanged_index == i) {
+			e = Field.Allys.Deck["helper"];
+			ally[5] = Field.Allys.Deck[i].cardno;
+		}
 		ally[i] = e.cardno;
-	});
+	}
+	if (!st.is_hlpchanged && st.is_helper) {
+		ally[5] = Field.Allys.Deck["helper"].cardno;
+	}
 	// クエリ生成
 	send += "&sh=" + window.location.search.substring(1);
 	send += "&ac=" + JSON.stringify(st.act_log);
@@ -29,6 +37,7 @@ function actl_send_result(after) {
 	send += "&a3=" + ally[2];
 	send += "&a4=" + ally[3];
 	send += "&a5=" + ally[4];
+	send += "&ah=" + ally[5];
 	send += "&is_sp=" + Number(st.is_spanel_only);
 	send += "&is_sf=" + Number(st.durturn[Field.Quest.aprnum - 1].ssfin);
 	send += "&ver=" + Field.Constants.Actlog_Ver;
