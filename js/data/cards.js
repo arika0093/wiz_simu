@@ -5536,7 +5536,7 @@ Cards = [{
 	],
 	as1: {
 		desc: "火属性の敵単体へ特効ダメージ/400％",
-		proc: ChainAttrAttack(4.0, 1, [1,0,0,0,0]),
+		proc: ChainAttrAttack(4.0, 0, [1,0,0,0,0]),
 	},
 	ss1: {
 		desc: "<パネル変換>ジャンルパネルを水属性化",
@@ -5550,7 +5550,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "火属性の敵単体へ特効ダメージ/500％",
-		proc: ChainAttrAttack(5.0, 1, [1,0,0,0,0]),
+		proc: ChainAttrAttack(5.0, 0, [1,0,0,0,0]),
 	},
 	ss2: {
 		desc: "<特殊パネル変換>ジャンルパネルを水属性化し、攻撃力アップの効果を付与(+20％)",
@@ -5714,7 +5714,7 @@ Cards = [{
 	],
 	as1: {
 		desc: "火属性の敵単体へ特効ダメージ/350％",
-		proc: ChainAttrAttack(3.5, 1, [1,0,0,0,0]),
+		proc: ChainAttrAttack(3.5, 0, [1,0,0,0,0]),
 	},
 	ss1: {
 		desc: "<特殊パネル変換>ジャンルパネルに攻撃力アップの効果を付与(+40％)",
@@ -5729,7 +5729,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "MAXHP20％を使い、火属性の敵単体へ特効ダメージ/500％",
-		proc: add_cond(ChainAttrAttack(5.0, 1, [1,0,0,0,0]), as_consume_own(0.20)),
+		proc: add_cond(ChainAttrAttack(5.0, 0, [1,0,0,0,0]), as_consume_own(0.20)),
 	},
 	ss2: {
 		desc: "<特殊パネル変換>ジャンルパネルに攻撃力アップの効果を付与(+80％)",
@@ -51330,5 +51330,49 @@ Cards = [{
 	Lawake: [
 		Attr_statusup(0,100, [0,0,1,0,0,]),
 		Statusup(500,0),
+	],
+}, {
+	name: "咎の鎖 ダイトメア=ラギト",
+	cardno: 7327,
+	imageno: 9352,
+	hp: 3989,
+	atk: 4721,
+	cost: 54,
+	attr: [1,4],
+	species: [8],
+	islegend: true,
+	ape: "黄昏メアレスⅡ 残響dearless",
+	as1: {
+		desc: "火属性の敵単体へ特効ダメージ(350%)、解答が早いほどさらにアップ(50%)",
+		proc: add_cond(ChainAttrAttack(3.5, 0, [1,0,0,0,0]), as_timedep(0.5)),
+	},
+	ss1: {
+		desc: "<時限大魔術>スキル反射を無視し、3ターン後に敵単体へ水属性ダメージ(1000%)",
+		turn: 2,
+		proc: [ss_damage_timebomb(10, [1], 1, 3)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		NEFTJOD(30),
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_relief([0,1,0,0,0,],10),
+		Abstate_invalid("ss_sealed"),
+		Awake_noeffect("スキル反射見破り",1),
+	],
+	as2: {
+		desc: "火属性の敵単体へ特効ダメージ(450%)、解答が早いほどさらにアップ(50%)",
+		proc: add_cond(ChainAttrAttack(4.5, 0, [1,0,0,0,0]), as_timedep(0.5)),
+	},
+	ss2: {
+		desc: "<時限大魔術>スキル反射を無視し、3ターン後に敵単体へ水属性ダメージ(2000%)",
+		turn: 3,
+		proc: [ss_damage_timebomb(20, [1], 1, 3)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,0,0,0,]),
 	],
 },];

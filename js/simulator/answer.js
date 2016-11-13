@@ -357,7 +357,7 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem, bef_f)
 		as_pos: as_pos,
 		chain: Field.Status.chain,
 	};
-	var targ = auto_attack_order(enemy, attr, index, obj_tg);
+	var targ = auto_attack_order(Field, enemy, attr, index, obj_tg);
 	// 各種情報
 	var g_dmg = 0;
 	var atk_as = as[as_pos[targ]]

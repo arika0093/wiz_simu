@@ -184,9 +184,9 @@ function attr_magnification(atk_atr, def_atr) {
 
 // 攻撃順序を自動で指定する
 // obj_tg: 味方データ、各敵への効果値などが格納されたobject
-function auto_attack_order(enemys, attr, own_index, obj_tg) {
+function auto_attack_order(fld, enemys, attr, own_index, obj_tg) {
 	// ランダムターゲット（パニックシャウト）
-	var now = Field.Allys.Now[own_index];
+	var now = fld.Allys.Now[own_index];
 	var is_rndtarget = $.grep(now.turn_effect, function (e) {
 		return e.panic_target;
 	});
@@ -202,8 +202,8 @@ function auto_attack_order(enemys, attr, own_index, obj_tg) {
 		return tg;
 	}
 	// 攻撃順序が指定されているならそっちを優先
-	var fst_attr = Field.Allys.Deck[own_index].attr[0];
-	var now = Field.Allys.Now[own_index];
+	var fst_attr = fld.Allys.Deck[own_index].attr[0];
+	var now = fld.Allys.Now[own_index];
 	var tg = Number(attr == fst_attr ? now.target[0] : now.target[1]);
 	for (var i = tg; i > 0; i--) {
 		if (enemys[i]) { break; }

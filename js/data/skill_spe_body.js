@@ -28,7 +28,7 @@ var SpSkill = {
 			for (var a = 0; a < attrs.length; a++) {
 				// 攻撃
 				var atr = attrs[a];
-				var atk_order = auto_attack_order(enemys, atr, n);
+				var atk_order = auto_attack_order(fld, enemys, atr, n);
 				ss_damage(fld, r, atr, atkn, n, atk_order, ignore_counter);
 			}
 		}
@@ -46,7 +46,7 @@ var SpSkill = {
 			for (var a = 0; a < attrs.length; a++) {
 				// 攻撃
 				var atr = attrs[a];
-				var atk_order = auto_attack_order(enemys, atr, n);
+				var atk_order = auto_attack_order(fld, enemys, atr, n);
 				ss_damage(fld, r, atr, atkn, n, atk_order, false);
 				// チェイン封印されてなければチェインプラス
 				if (fld.Status.chain_status != 2) {
@@ -97,7 +97,7 @@ var SpSkill = {
 	// 割合ダメージ
 	"ss_ratiodamage": function (fld, n, cobj, params) {
 		var ratio = params[0];
-		var enemys = ss_get_targetenemy(cobj, n);
+		var enemys = ss_get_targetenemy(fld, cobj, n);
 		for (var i = 0; i < enemys.length; i++) {
 			var e = enemys[i];
 			var dmg = Math.floor(e.nowhp * ratio);
@@ -114,7 +114,7 @@ var SpSkill = {
 	// 全体遅延
 	"ss_delay": function(fld, n, cobj, params){
 		var turn = params[0];
-		var enemys = ss_get_targetenemy(cobj, n);
+		var enemys = ss_get_targetenemy(fld, cobj, n);
 		for (var i = 0; i < enemys.length; i++) {
 			(function () {
 				var indx = i;
@@ -136,7 +136,7 @@ var SpSkill = {
 	"ss_skillcounter": function (fld, n, cobj, params) {
 		var rate = params[0];
 		var turn = params[1];
-		var nows = ss_get_targetally(cobj, fld.Allys.Now, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var now = nows[i];
 			if (now.nowhp <= 0) { continue; }
@@ -184,7 +184,7 @@ var SpSkill = {
 	// 多段式カウンター待機
 	"ss_dualcounter": function (fld, n, cobj, params) {
 		var turn = params[0];
-		var nows = ss_get_targetally(cobj, fld.Allys.Now, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var now = nows[i];
 			if (now.nowhp <= 0) { continue; }
@@ -235,7 +235,7 @@ var SpSkill = {
 	"poison": function (fld, n, cobj, params) {
 		var dmg = params[0];
 		var t = params[1];
-		var enemys = ss_get_targetenemy(cobj, n);
+		var enemys = ss_get_targetenemy(fld, cobj, n);
 		for (var i = 0; i < enemys.length; i++) {
 			var en = enemys[i];
 			if (en.nowhp > 0) { 
@@ -267,10 +267,50 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
+	// 時限大魔術
+	"ss_damage_timebomb": function (fld, n, cobj, params) {
+		var rate = params[0];
+		var attrs = params[1];
+		var atkn = params[2];
+		var t = params[3];
+		var enemys = ss_get_targetenemy(fld, cobj, n);
+		for (var i = 0; i < enemys.length; i++) {
+			var en = enemys[i];
+			if (en.nowhp <= 0) { return; }
+			// 参照用にコピーを取る
+			var now_state = $.extend(true, {}, fld.Allys.Now[n]);
+			en.turn_effect.push({
+				desc: "時限大魔術",
+				type: "ss_damage_timebomb",
+				icon: null,
+				isdual: true,
+				turn: t,
+				lim_turn: t,
+				effect: function (f, ei, teff, is_end, is_t, is_b) {
+					// 残りターンが0なら発動
+					if (is_end) {
+						// 発動時の攻撃力などをコピーする
+						var f_copy = $.extend(true, {}, f);
+						var fc_now = f_copy.Allys.Now[n] = now_state;
+						// タゲ指定(内部的に)
+						fc_now.target = [ei, ei];
+						// 着火
+						f.log_push("Enemy[" + (ei + 1) + "]: 時限大魔術 - 残り0t");
+						var sda = ss_damage_s(rate, attrs, atkn, false);
+						ss_object_done(f_copy, n, sda);
+					}
+				},
+			});
+			// SSフラグを立てる
+			en.flags.is_ss_attack = true;
+		}
+		return true;
+	},
+	// -----------------------------
 	// 無に還す瞳
 	"ss_death_limit": function (fld, n, cobj, params) {
 		var t = params[0];
-		var enemys = ss_get_targetenemy(cobj, n);
+		var enemys = ss_get_targetenemy(fld, cobj, n);
 		for (var i = 0; i < enemys.length; i++) {
 			var en = enemys[i];
 			if (en.nowhp <= 0) { return; }
@@ -300,7 +340,7 @@ var SpSkill = {
 	// -----------------------------
 	// 属性弱体化効果を付与
 	"ss_attr_weaken": function (fld, n, cobj, params) {
-		var enemys = ss_get_targetenemy(cobj, n);
+		var enemys = ss_get_targetenemy(fld, cobj, n);
 		var attr = params[0];
 		var rate = params[1];
 		var turn = params[2];
@@ -341,8 +381,8 @@ var SpSkill = {
 			// 属性未指定なら全属性Up
 			attr = [1, 1, 1, 1, 1];
 		}
-		var cds = ss_get_targetally(cobj, fld.Allys.Deck, n);
-		var nows = ss_get_targetally(cobj, fld.Allys.Now, n);
+		var cds = ss_get_targetally(fld, cobj, fld.Allys.Deck, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var cd = cds[i];
 			var now = nows[i];
@@ -402,8 +442,8 @@ var SpSkill = {
 			// 属性未指定なら全属性Up
 			attr = [1, 1, 1, 1, 1];
 		}
-		var cds = ss_get_targetally(cobj, fld.Allys.Deck, n);
-		var nows = ss_get_targetally(cobj, fld.Allys.Now, n);
+		var cds = ss_get_targetally(fld, cobj, fld.Allys.Deck, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var cd = cds[i];
 			var now = nows[i];
@@ -474,7 +514,7 @@ var SpSkill = {
 	"ss_statusup": function (fld, n, cobj, params) {
 		var up_limit = params[1];
 		var t = params[2];
-		var nows = ss_get_targetally(cobj, fld.Allys.Now, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var up_arrs = $.extend(true, {}, params[0]);
 			var now = nows[i];
@@ -542,7 +582,7 @@ var SpSkill = {
 				var typestr = ""
 				break;
 		}
-		var nows = ss_get_targetally(cobj, fld.Allys.Now, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var now = nows[i];
 			if (now.nowhp > 0) {
@@ -593,8 +633,8 @@ var SpSkill = {
 				break;
 		}
 		var attrstr=get_attr_string(attr);		
-		var cds = ss_get_targetally(cobj, fld.Allys.Deck, n);
-		var nows = ss_get_targetally(cobj, fld.Allys.Now, n);
+		var cds = ss_get_targetally(fld, cobj, fld.Allys.Deck, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var cd = cds[i];
 			var now = nows[i];
@@ -625,7 +665,7 @@ var SpSkill = {
 	// 全体状態異常無効
 	"ss_absattack_disable": function (fld, n, cobj, params) {
 		var turn = params[0];
-		var nows = ss_get_targetally(cobj, fld.Allys.Now, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var now = nows[i];
 			if (now.nowhp <= 0) { continue; }
@@ -649,7 +689,7 @@ var SpSkill = {
 	// 鉄壁効果付与
 	"ss_impregnable": function (fld, n, cobj, params) {
 		var turn = params[0];
-		var nows = ss_get_targetally(cobj, fld.Allys.Now, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var now = nows[i];
 			if (now.nowhp <= 0) { continue; }
@@ -685,8 +725,8 @@ var SpSkill = {
 	"ss_skillboost": function (fld, n, cobj, params) {
 		var f_rate = params[0];
 		var rst = false;
-		var cds = ss_get_targetally(cobj, fld.Allys.Deck, n);
-		var nows = ss_get_targetally(cobj, fld.Allys.Now, n);
+		var cds = ss_get_targetally(fld, cobj, fld.Allys.Deck, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			// 自分にスキブをかけない
 			if (i == n) { continue; }
@@ -725,7 +765,7 @@ var SpSkill = {
 	// 回復
 	"ss_heal": function (fld, n, cobj, params) {
 		var rate = params[0];
-		var nows = ss_get_targetally(cobj, fld.Allys.Now, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var now = nows[i];
 			var hr = Math.floor(now.maxhp * rate);
@@ -738,7 +778,7 @@ var SpSkill = {
 	// 指定値だけ全体回復(1000回復, etc)
 	"ss_heal_absolute": function (fld, n, cobj, params) {
 		var rate = params[0];
-		var nows = ss_get_targetally(cobj, fld.Allys.Now, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var now = nows[i];
 			heal_ally(rate, i);
@@ -749,7 +789,7 @@ var SpSkill = {
 	// -----------------------------
 	// 状態異常回復
 	"ss_abstate_cure": function (fld, n, cobj, params) {
-		var nows = ss_get_targetally(cobj, fld.Allys.Now, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var now = nows[i];
 			for (var te = 0; te < now.turn_effect.length; te++) {
@@ -778,7 +818,7 @@ var SpSkill = {
 				var typestr = ""
 				break;
 		}
-		var nows = ss_get_targetally(cobj, fld.Allys.Now, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var now = nows[i];
 			now.turn_effect.push({
@@ -807,7 +847,7 @@ var SpSkill = {
 	"ss_revival": function (fld, n, cobj, params) {
 		var rate = params[0];
 		var t = params[1];
-		var nows = ss_get_targetally(cobj, fld.Allys.Now, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var now = nows[i];
 			if (now.nowhp <= 0) { continue; }
@@ -834,8 +874,8 @@ var SpSkill = {
 	"ss_resurrection": function (fld, n, cobj, params) {
 		var attr = params[0];
 		var rate = params[1];
-		var cds = ss_get_targetally(cobj, fld.Allys.Deck, n);
-		var nows = ss_get_targetally(cobj, fld.Allys.Now, n);
+		var cds = ss_get_targetally(fld, cobj, fld.Allys.Deck, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var cd = cds[i];
 			var now = nows[i];
@@ -1346,7 +1386,7 @@ function ss_break_template(target, type) {
 				rsts = rsts || rst;
 			}
 		} else {
-			var tg = auto_attack_order(es, cd.attr[0], n);
+			var tg = auto_attack_order(fld, es, cd.attr[0], n);
 			var rst = _break_temp_fc(fld, n, tg);
 			es[tg].flags.is_ss_attack = rst;
 			rsts = rsts || rst;
@@ -1356,13 +1396,13 @@ function ss_break_template(target, type) {
 }
 
 // (内部用)[対象:敵]効果対象が単体か全体かを判別して適切な敵配列を返却
-function ss_get_targetenemy(ss, ai) {
+function ss_get_targetenemy(fld, ss, ai) {
 	switch (ss.target) {
 		case "all":
 			return GetNowBattleEnemys();
 		case "single":
 			var enemys = GetNowBattleEnemys();
-			var tg = auto_attack_order(enemys, -1, ai);
+			var tg = auto_attack_order(fld, enemys, -1, ai);
 			return [enemys[tg]];
 		default:
 			console.error("INVALID VALUE: " + ss.target + "(index: " + ei + ")");
@@ -1371,7 +1411,7 @@ function ss_get_targetenemy(ss, ai) {
 }
 
 // (内部用)[対象:味方]効果対象が単体か全体かを判別して適切な味方配列を返却
-function ss_get_targetally(ss, array, ai) {
+function ss_get_targetally(fld, ss, array, ai) {
 	if (!ss) {
 		return array;
 	}

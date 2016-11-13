@@ -189,6 +189,25 @@ function poison(dm, t) {
 }
 
 /**
+ * 敵単体に時限大魔術
+ * r:		攻撃威力(ex: 1.0		-> 効果値100)
+ * attrs:	攻撃属性(ex: [0,1]	-> 火,水)
+ * atkn:	攻撃回数(基本は1)
+ * t:		発動ターン数(ex: 3		-> 3T後)
+**/
+function ss_damage_timebomb(r, attrs, atkn, t) {
+	return ss_template({
+		name: "ss_damage_timebomb",
+		type: "damage",
+		target: "single",
+		p1: r,
+		p2: attrs,
+		p3: atkn,
+		p4: t,
+	});
+}
+
+/**
  * 敵単体に無に帰す効果を付与する
  * turn: 即死効果発動ターン数
 **/
