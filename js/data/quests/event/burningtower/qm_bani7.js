@@ -24,7 +24,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(impregnable, "絶対防御×3T", 100, false, 3)),
+                     m_enemy_once(skill_counter_func(impregnable, "-", 100, false, 3)),
                      damage_switch(s_enemy_when_after_turn(2), m_enemy_angry(), true)
                   ],
                   on_move: [
@@ -54,12 +54,15 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_continue_damage/* Warning: 相当動作が怪しいので必ず実機検証してください。:継続大魔術（固定値：10000）3T */, "継続大魔術（固定値：10000）3T", 100, false, 3, 2500, 2500)),
+                     m_enemy_once(skill_counter_func(s_enemy_continue_damage, "-", 100, false, 3, 2500, 2500)),
                      damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true)
                   ],
+                  on_move: [
+                     s_enemy_attack(500, 5, 1, true)
+                  ],
                   on_angry: [
-                     attr_change(3)/* Warning: 属性に十分注意してください */,
-                     damage_block_own(10000, 4)
+                     attr_change(3),
+                     damage_block_own(10000, 4)/* Warning: 属性に十分注意してください */
                   ],
                   on_move_angry: [
                      s_enemy_chain_break(),
@@ -89,7 +92,7 @@
                      s_enemy_attack(800, 3, 5, true)
                   ],
                   on_angry: [
-                     s_enemy_panicshout(900, 5, 4)
+                     s_enemy_panicshout(900, 5, 3)
                   ],
                   on_move_angry: [
                      s_enemy_attack(1200, 5, 5, true),
