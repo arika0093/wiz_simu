@@ -70,16 +70,19 @@ form[name="post_comment"]{
 }
 
 input[name="dspname"]{
+	font-family: "Meiryo", "MS Gothic" !important;
 	margin: .5ex 0;
 	width: 250px;
 }
 
 textarea[name="post_content"]{
+	font-family: "Meiryo", "MS Gothic" !important;
 	width: 100%;
 	box-sizing: border-box;
 }
 
 button#cm_send{
+	font-family: "Meiryo", "MS Gothic" !important;
 	width: 120px;
 	float: right;
 }
