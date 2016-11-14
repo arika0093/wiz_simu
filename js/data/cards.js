@@ -21008,7 +21008,7 @@ Cards = [{
 	attr: [1,3],
 	species: [9],
 	islegend: true,
-	alias: ["/take_wiz", "/wiztools"],
+	alias: ["/konta_wiz", "/wiztools"],
 	as1: {
 		desc: "5チェインで水属性の攻撃力をアップ、複属性が光属性で更にアップ(60%/110%)",
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,1,0,0,0], [0,0,0,1,0], 5),

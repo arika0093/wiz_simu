@@ -24,4 +24,4 @@ WebMoneyを投げつけてくれると泣いて喜びます。
 @tsunahori  
 @alumina_wiz  
 @wiz_soraru  
-@take_wiz  
+@konta_wiz  
