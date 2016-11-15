@@ -1,5 +1,5 @@
 {
-   id: "bani16",
+   id: "bani_16",
    name: "超魔道バーニングタワー 第16階 歓",
    desc: "",
    overlap: false,

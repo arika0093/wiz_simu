@@ -1,5 +1,5 @@
 {
-   id: "bani15",
+   id: "bani_15",
    name: "超魔道バーニングタワー 第15階 す",
    desc: "",
    overlap: false,
