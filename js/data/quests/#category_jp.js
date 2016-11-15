@@ -50,7 +50,7 @@ category_jp = {
 		jp: "未設定",
 	},
     "shinryu3": {
-		is_dispsim: true,
+		is_dispsim: false,
 		sim_index: 11,
 		jp: "心竜天翔",
 		disable_date:"2016/12/16 16:00",
@@ -139,7 +139,7 @@ category_jp = {
 	},
     "burningtower": {
 		jp: "バーニングタワー",
-		is_dispsim: true,
+		is_dispsim: false,
 		sim_index: 10,
 		disable_date:"2016/11/18 16:00",
 	},
