@@ -64,6 +64,7 @@ var Field = {
 		is_hlpchanged: false,	// 助っ人と交代済であるか
 		hlpchanged_index: -1,	// 交代した先のindex
 		// ターンetc関連
+		is_initialize: true,	// 初期化処理の最中はtrue
 		durturn: [],
 		nowturn: 1,
 		totalturn: 0,
@@ -290,6 +291,8 @@ $(function () {
 				var fs = Field.Status;
 				fs.limit_turn = fs.limit_now = Field.Quest.limitturn;
 			}
+			// 初期化処理終了
+			Field.Status.is_initialize = false;
 			// 初期状態を保存
 			Field_log.save(0, Field);
 			// 表示
@@ -328,7 +331,7 @@ function nextturn(is_ssfin) {
 	turn_effect_check(true, is_ssfin);
 	enemy_turn_effect_check(true);
 	// 怒り確認
-	enemy_damage_switch_check("damage_switch", false);
+	enemy_damage_switch_check("damage_switch", false, false, false);
 	// 総ダメージ出力
 	Field.log_push("TURN TOTAL DAMAGE: " + Field.Status.turn_dmg, "blue");
 	Field.Status.turn_dmg = 0;

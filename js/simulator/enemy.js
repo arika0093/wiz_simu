@@ -257,11 +257,12 @@ function enemy_popup_proc(){
 	// 味方スキル反射の処理を行う
 	turneff_check_skillcounter(Field);
 	// 怒り確認
-	enemy_damage_switch_check("damage_switch", false);
+	enemy_damage_switch_check("damage_switch", false, true, false);
 }
 
 // 敵ダメージなどに反応するあれこれの制御
-function enemy_damage_switch_check(type, is_ss, reset) {
+// type: 取得するタイプ, is_ss: SS発動時かどうか, is_preem: 先制行動かどうか, is_reset: フラグをリセットするか
+function enemy_damage_switch_check(type, is_ss, is_preem, is_reset) {
 	var rst = false;
 	var enemys = GetNowBattleEnemys();
 	type = type || "damage_switch";
@@ -273,13 +274,13 @@ function enemy_damage_switch_check(type, is_ss, reset) {
 			for (var j = 0; j < skillct.length; j++) {
 				var s = skillct[j];
 				var ischeck = e.flags.on_damage || s.oncond_anytime;
-				if (ischeck && s.cond(Field, i, is_ss) && --s.on_cond.count <= 0) {
+				if (ischeck && s.cond(Field, i, is_ss, is_preem) && --s.on_cond.count <= 0) {
 					s.on_cond.move(Field, i);
 					s.on_cond.count = s.on_cond.interval;
 					rst = true;
 				}
 			}
-			if (reset) {
+			if (is_reset) {
 				e.flags.on_damage = false;
 			}
 		}

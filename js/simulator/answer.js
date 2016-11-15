@@ -119,7 +119,7 @@ function panel(attr) {
 			}
 		});
 		// 分裂処理
-		enemy_damage_switch_check("enemy_division", false);
+		enemy_damage_switch_check("enemy_division", false, false, false);
 	}
 	// 敵の処理
 	enemy_move();
