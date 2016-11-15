@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px) and (max-width: 1099px)" />
     <link rel="stylesheet" type="text/css" href="/css/default_bg.css" media="screen and (min-width: 1100px)" />
     <link rel="stylesheet" type="text/css" href="/css/quest_detail.css" />
-    <link rel="stylesheet" type="text/css" href="/css/comment.css" />
     <link type="text/css" rel="stylesheet"
           href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
     <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
@@ -82,8 +81,6 @@
     <script type="text/javascript" charset="UTF-8" src="/js/data/quests.php"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/deck/deckdata.js?           <!--#flastmod virtual='/js/deck/deckdata.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/quest_detail.js"></script>
-    <!-- comment script -->
-    <script type="text/javascript" charset="UTF-8" src="/js/comment/comment.js"></script>
 </div>
 </body>
 </html>

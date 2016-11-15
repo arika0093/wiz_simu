@@ -1,6 +1,5 @@
 dd.left_min{
 	margin-left: 0.5em;
-	margin-bottom: 1ex;
 	padding-bottom: 0.5ex;
 	font-size: 0.9em;
 }
@@ -129,10 +128,12 @@ b.imp_move{
 }
 
 div.bcks{
-	text-align: right;
+	float: right;
 	margin: .5ex 0 1ex;
 }
-
+div.bcks:after{
+	clear: right;
+}
 a.back_category{
 	display: inline-block;
 	margin-left: 1em;
@@ -145,7 +146,7 @@ dd#category_view{
 a.genre_link {
     display: inline-block;
     padding: 2ex 1em;
-    margin: 1ex .5em;
+    margin: 2ex .5em 0;
     border: 1px solid #AAA;
     background: #EEE;
     border-radius: 6px;
