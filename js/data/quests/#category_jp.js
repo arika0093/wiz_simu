@@ -36,7 +36,6 @@ category_jp = {
 		is_dispsim: true,
 		sim_index: 1,
 		is_notusedhelper: true,	
-		disable_date:"2016/10/20 12:00",
 	},
     "other": {
 		jp: "その他",
@@ -48,6 +47,12 @@ category_jp = {
 	},
     "": {
 		jp: "未設定",
+	},
+    "shinryu3": {
+		is_dispsim: true,
+		sim_index: 11,
+		jp: "心竜天翔",
+		disable_date:"2016/12/16 16:00",
 	},
     "radiant1": {
 		is_dispsim: true,
