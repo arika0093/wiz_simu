@@ -53,7 +53,7 @@ function makeList(genre, url) {
 	if (rst.length > 0) {
 		$("#result").html(rst_html);
 	} else {
-		var h = "<dl class='List'><dt>ERROR OCCURRED.</dt><dd>存在しないクエストが指定されました。</dd></dl>";
+		var h = "<dt>ERROR OCCURRED.</dt><dd>存在しないクエストが指定されました。</dd>";
 		$("#result").html(h);
 	}
 }
