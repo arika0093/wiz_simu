@@ -41,7 +41,7 @@ var Awake_crystal_lists = [{
 	imple: Awake_multihitadd,
 	param1: "{0}",
 }, {
-	type: "覇眼戦線2",
+	genre: "イベント結晶",
 	name: "煌眼の欠片(L時味方ATK+100/25%回復)",
 	imple: Awake_composite,
 	param2: {
@@ -85,12 +85,10 @@ var Awake_crystal_lists = [{
 		is_legend: true,
 	},
 }, {
-	genre: "聖サタニック女学院",
 	name: "PTA印の成績表(反転無効)",
 	imple: Awake_composite,
 	param2: Abstate_invalid("heal_reverse"),
 }, {
-	genre: "幻魔特区スザクⅢ",
 	name: "インフローレ(戦士ATK+200)",
 	imple: Awake_composite,
 	param2: Spec_statusup(0, 200, [8]),
@@ -104,16 +102,14 @@ var Awake_crystal_lists = [{
 	param2: Statusup(-1000, 0),
 	param3: Awake_damage_multiple(1.2),
 }, {
-	genre: "幻想と歪曲の槍",
 	name: "カヲルの楽譜(天使HP+300)",
 	imple: Awake_composite,
 	param2: Spec_statusup(300, 0, [3]),
 }, {
 	name: "カヲルの楽譜(天使ATK+300)",
 	imple: Awake_composite,
-	param2: Spec_statusup(300, 0, [3]),
+	param2: Spec_statusup(0, 300, [3]),
 }, {
-	genre: "クロムマグナ ゼロ",
 	name: "覇色の結晶(L時HP,ATK+500)",
 	imple: Awake_composite,
 	param2: {
@@ -126,10 +122,29 @@ var Awake_crystal_lists = [{
 		is_legend: true,
 	},
 }, {
-	genre: "ロストエデンⅡ WWMF",
+	name: "勝戦の結晶〈ベルク旗艦〉(戦士HP+200)",
+	imple: Awake_composite,
+	param2: Spec_statusup(200, 0, [8]),
+}, {
 	name: "共闘の結晶〈セラフィム〉(魔族ATK+300)",
 	imple: Awake_composite,
-	param2: Spec_statusup(300, 0, [2]),
+	param2: Spec_statusup(0, 300, [2]),
+}, {
+	name: "魂魄の結晶〈追憶〉(物質ATK+300)",
+	imple: Awake_composite,
+	param2: Spec_statusup(0, 300, [6]),
+}, {
+	name: "誇りの結晶〈クロード〉(味方全体ATK-500)",
+	imple: Awake_composite,
+	param2: Attr_statusup(0, -500, [1,1,1,1,1]),
+}, {
+	name: "絆の結晶〈ゾラスヴィルク〉(L時ATK+1000,被ダメUP回復×)",
+	imple: Awake_composite,
+	param2: function () {
+		var dm = Awake_dragonmode(1000, 1.3);
+		dm.is_legend = true;
+		return dm;
+	}(),
 }, {
 	genre: "精霊結晶",
 	name: "巡礼の結晶〈スビェート〉(光軽減10%)",
@@ -143,6 +158,10 @@ var Awake_crystal_lists = [{
 	name: "擬態の結晶〈ガーゴイル〉(物質HP+200)",
 	imple: Awake_composite,
 	param2: Spec_statusup(200, 0, [6]),
+}, {
+	name: "獄門の結晶〈ムールス〉(魔族HP+200)",
+	imple: Awake_composite,
+	param2: Spec_statusup(200, 0, [2]),
 }
 
 ];

@@ -247,6 +247,21 @@ function Awake_get_multiple(card, now) {
 	return rate;
 }
 
+// (被ダメージ)最終補正値を取得する
+function Awake_get_damaged_multiple(card, now) {
+	var rate = 1;
+	var type = "awake_damaged_multiple";
+	var dm_awakes = pickup_awakes(card, type, false);
+	if (is_legendmode(card, now)) {
+		dm_awakes = dm_awakes.concat(pickup_awakes(card, type, true));
+	}
+	for (var i = 0; i < dm_awakes.length; i++) {
+		var dm = dm_awakes[i];
+		rate += (dm.rate - 1);
+	}
+	return rate;
+}
+
 // L時突入時に潜在SSを発動する
 function Awake_dospskill(fld, index) {
 	var card = fld.Allys.Deck[index];

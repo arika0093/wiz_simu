@@ -281,6 +281,16 @@ function Awake_damage_multiple(rate, lowhp) {
 	}
 }
 
+// 攻撃力+X、被ダメージ*Y倍、回復効果を受けない
+function Awake_dragonmode(up_atk, up_damaged) {
+	var desc = "攻撃力+" + up_atk + ",被ダメージ" + up_damaged + "倍,回復しない";
+	return Awake_composite(desc,
+		Statusup(0, up_atk),
+		Awake_damaged_multiple(up_damaged),
+		Awake_noheal()
+	);
+}
+
 // Hit回数増加
 function Awake_multihitadd(n) {
 	return {
@@ -318,5 +328,20 @@ function Awake_Turnup(upval, skl_type) {
 		upvalue: upval,
 		name: "SS継続ターン数アップ(+" + upval + ")",
 		desc: "SPスキルの継続ターン数を" + upval + "Tアップする",
+	};
+}
+
+// 被ダメージ定数倍
+function Awake_damaged_multiple(rate) {
+	return {
+		type: "awake_damaged_multiple",
+		rate: rate,
+	};
+}
+
+// 回復効果を受けない
+function Awake_noheal() {
+	return {
+		type: "awake_no_heal",
 	};
 }

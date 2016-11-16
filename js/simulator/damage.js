@@ -147,6 +147,13 @@ function heal_ally(value, index, now) {
 	var h_val = Math.floor(value);
 	// 死んでなかったら回復
 	if (now.nowhp > 0) {
+		// ドラゴンモード時に回復しない
+		var is_drgmode = $.grep(now.turn_effect, function (e) {
+			return e.type == "awake_no_heal";
+		});
+		if (is_drgmode.length > 0) {
+			return false;
+		}
 		// 回復反転時は回復量を逆転させる
 		var is_reverse = $.grep(now.turn_effect, function (e) {
 			return e.type == "heal_reverse";
@@ -156,13 +163,12 @@ function heal_ally(value, index, now) {
 		}
 		// 回復
 		now.nowhp = Math.min(now.maxhp, now.nowhp + h_val);
-		return true;
 	}
 	if (now.nowhp <= 0) {
 		// 死んだら全効果を解除
 		turneff_allbreak(now.turn_effect, index, "dead");
 	}
-	return false;
+	return true;
 }
 
 // 属性有利係数を返す
