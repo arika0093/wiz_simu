@@ -769,7 +769,7 @@ var SpSkill = {
 		for (var i = 0; i < nows.length; i++) {
 			var now = nows[i];
 			var hr = Math.floor(now.maxhp * rate);
-			heal_ally(fld, hr, -1);
+			heal_ally(fld, hr, fld.Allys.Now.indexOf(now));
 			fld.log_push("Unit[" + (i + 1) + "]: HP回復(" + (rate * 100) + "%)");
 		}
 		return true;
@@ -781,7 +781,7 @@ var SpSkill = {
 		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var now = nows[i];
-			heal_ally(fld, rate, i);
+			heal_ally(fld, rate, fld.Allys.Now.indexOf(now));
 		}
 		fld.log_push("Unit[" + (i + 1) + "]: HP回復(+" + rate + ")");
 		return true;
