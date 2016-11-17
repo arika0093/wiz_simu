@@ -158,7 +158,7 @@ function _s_enemy_attack(fld, dmg, ei, ai, is_dmg_const) {
 		dmg *= e.statusup ? e.statusup : 1;
 		// 最終補正値を取得
 		var lst_multi = Awake_get_damaged_multiple(cd, now);
-		dmg *= lst_multi;
+		dmg = Math.floor(dmg * lst_multi);
 		// 最終ダメージ
 		var l_dmg = dmg;
 	} else {

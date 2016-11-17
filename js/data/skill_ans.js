@@ -870,7 +870,7 @@ function as_hp_absorption(r) {
 			return function () {
 				var now = fld.Allys.Now[oi];
 				var hl = Math.floor(g_dmg * r);
-				heal_ally(hl, oi);
+				heal_ally(fld, hl, oi);
 				fld.log_push("Unit[" + (oi + 1) + "]: HP吸収(+" + hl + ")");
 			}
 		}

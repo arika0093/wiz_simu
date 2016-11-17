@@ -769,7 +769,7 @@ var SpSkill = {
 		for (var i = 0; i < nows.length; i++) {
 			var now = nows[i];
 			var hr = Math.floor(now.maxhp * rate);
-			heal_ally(hr, -1, now);
+			heal_ally(fld, hr, -1);
 			fld.log_push("Unit[" + (i + 1) + "]: HP回復(" + (rate * 100) + "%)");
 		}
 		return true;
@@ -781,7 +781,7 @@ var SpSkill = {
 		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var now = nows[i];
-			heal_ally(rate, i);
+			heal_ally(fld, rate, i);
 		}
 		fld.log_push("Unit[" + (i + 1) + "]: HP回復(+" + rate + ")");
 		return true;
@@ -834,7 +834,7 @@ var SpSkill = {
 					if (is_t) {
 						var nd = f.Allys.Now[oi];
 						var hr = Math.floor(nd.maxhp * rate);
-						heal_ally(hr, oi);
+						heal_ally(f, hr, oi);
 						fld.log_push("Unit[" + (oi + 1) + "]: HP徐々に回復" + typestr + "(+" + hr + ")");
 					}
 				},
@@ -922,7 +922,7 @@ var SpSkill = {
 		return panel_addition(dsc, function (fld) {
 			for (var i = 0; i < fld.Allys.Deck.length; i++) {
 				var now = fld.Allys.Now[i];
-				heal_ally(now.maxhp * r, i);
+				heal_ally(fld, now.maxhp * r, i);
 			}
 			fld.log_push("パネル付与効果発動: " + dsc);
 		});

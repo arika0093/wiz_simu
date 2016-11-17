@@ -142,8 +142,18 @@ var Awake_crystal_lists = [{
 	imple: Awake_composite,
 	param2: function () {
 		var dm = Awake_dragonmode(1000, 1.3);
-		dm.is_legend = true;
-		return dm;
+		dm.proc[0].is_legend = true;
+		return dm.proc[0];
+	}(),
+	param3: function () {
+		var dm = Awake_dragonmode(1000, 1.3);
+		dm.proc[1].is_legend = true;
+		return dm.proc[1];
+	}(),
+	param4: function () {
+		var dm = Awake_dragonmode(1000, 1.3);
+		dm.proc[2].is_legend = true;
+		return dm.proc[2];
 	}(),
 }, {
 	genre: "精霊結晶",

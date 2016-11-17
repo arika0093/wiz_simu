@@ -264,10 +264,10 @@ $(function () {
 					var pr_3 = typeof awc_data.param3 == "string" ? ifNumThenStr2Num(
 							awc_data.param3.replace("{0}", $("#ae_awake_value").val())
 						): awc_data.param3;
-					var awake_c = awc_data.imple(pr_1, pr_2, pr_3);
+					var awake_c = awc_data.imple(pr_1, pr_2, pr_3, awc_data.param4);
 					if(awake_c.type == "awake_spskill"){
 						pr_1 = awc_data.param1;
-						awake_c = awc_data.imple(pr_1, pr_2, pr_3);
+						awake_c = awc_data.imple(pr_1, pr_2, pr_3, awc_data.param4);
 					}
 					// plus item
 					var aw_value = $("#ae_awake_value").val();

@@ -142,15 +142,14 @@ function damage_ally(dmg, index, neft_check) {
 }
 
 // 味方を回復する
-function heal_ally(value, index, now) {
-	now = now || Field.Allys.Now[index];
+function heal_ally(fld, value, index) {
 	var h_val = Math.floor(value);
+	var cd = fld.Allys.Deck[index];
+	var now = fld.Allys.Now[index];
 	// 死んでなかったら回復
 	if (now.nowhp > 0) {
 		// ドラゴンモード時に回復しない
-		var is_drgmode = $.grep(now.turn_effect, function (e) {
-			return e.type == "awake_no_heal";
-		});
+		var is_drgmode = pickup_awakes(cd, "awake_no_heal", true);
 		if (is_drgmode.length > 0) {
 			return false;
 		}

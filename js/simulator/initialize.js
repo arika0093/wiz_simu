@@ -344,7 +344,7 @@ function nextturn(is_ssfin) {
 		var nows = Field.Allys.Now;
 		if (abh > 0) {
 			for (var i = 0; i < Field.Allys.Deck.length; i++) {
-				heal_ally(Math.floor(nows[i].maxhp * abh), i);
+				heal_ally(Field, Math.floor(nows[i].maxhp * abh), i);
 			}
 			Field.log_push("戦後回復: " + (abh * 100) + "%");
 		}
