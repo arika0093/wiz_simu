@@ -1064,6 +1064,21 @@ var SpSkill = {
 		})
 		return true;
 	},
+	"spskill_maxcharge_spec": function (fld, n, cobj, params) {
+		nows = fld.Allys.Now;
+		var spe = params[0]-1;
+		$.each(nows, function (i, e) {
+			if(fld.Allys.Deck[i].species.indexOf(spe)!=-1){
+				e.ss_current = 999;
+				// スキブ処理
+				var card = fld.Allys.Deck[i];
+				if (is_legendmode(card, e)) {
+					legend_timing_check(fld.Allys.Deck, nows, i, true);
+				}
+			}
+		})
+		return true;
+	},
 	/*
 	// -----------------------------
 	// テンプレート

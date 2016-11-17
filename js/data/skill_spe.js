@@ -1250,3 +1250,10 @@ function spskill_maxcharge() {
 		type: "for_internal",
 	});
 }
+function spskill_maxcharge_spec(specNo) {
+	return ss_template({
+		name: "spskill_maxcharge_spec",
+		type: "for_internal",
+		p1: specNo+1,
+	});
+}
