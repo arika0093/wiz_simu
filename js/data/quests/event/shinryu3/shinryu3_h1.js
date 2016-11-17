@@ -4,6 +4,10 @@
    desc: "",
    overlap: false,
    aprnum: 4,
+   battle_before: [{
+      desc: "竜族のSPスキルが使用できる状態で開始",
+	  proc: spskill_maxcharge_spec(0)
+   }],
    data: [
       {
          appearance: [
