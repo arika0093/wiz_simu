@@ -149,8 +149,8 @@ function heal_ally(fld, value, index) {
 	// 死んでなかったら回復
 	if (now.nowhp > 0) {
 		// ドラゴンモード時に回復しない
-		var is_drgmode = pickup_awakes(cd, "awake_no_heal", true);
-		if (is_drgmode.length > 0) {
+		var is_drgmode = is_legendmode(cd, now) && pickup_awakes(cd, "awake_no_heal", true).length > 0;
+		if (is_drgmode) {
 			return false;
 		}
 		// 回復反転時は回復量を逆転させる
