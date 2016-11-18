@@ -55,6 +55,12 @@ category_jp = {
 		jp: "神竜降臨！",
 		disable_date:"2016/12/16 16:00",
 	},
+    "shinryu2": {
+		is_dispsim: true,
+		sim_index: 11,
+		jp: "神竜降臨Ⅱ",
+		disable_date:"2016/12/16 16:00",
+	},
     "shinryu3": {
 		is_dispsim: true,
 		sim_index: 11,
