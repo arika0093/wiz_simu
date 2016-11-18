@@ -4,6 +4,10 @@
    desc: "",
    overlap: false,
    aprnum: 1,
+   battle_before: [{
+      desc: "SPスキルが使用できる状態で開始",
+	  proc: spskill_maxcharge()
+   }],
    data: [
       {
          appearance: [
