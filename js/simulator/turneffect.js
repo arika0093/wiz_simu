@@ -268,7 +268,7 @@ function retsugan_check(is_ssfin){
 	Field.Allys.Now.forEach(function(ally, n){
 		if(ally.islegend){
 			Field.Allys.Deck[n].crystal.forEach(function(crstl){
-				if(crstl.name.indexOf("烈眼")!=-1){
+				if (crstl.name && crstl.name.indexOf("烈眼") != -1) {
 					is_retsugan = true;
 				}
 			})
