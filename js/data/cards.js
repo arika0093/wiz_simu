@@ -51375,4 +51375,48 @@ Cards = [{
 	Lawake: [
 		Attr_statusup(0,200, [0,1,0,0,0,]),
 	],
+}, {
+	name: "狂乱の魔刃竜 ケルク＝ナダ(仮)",
+	cardno: 7410,
+	//imageno: 7576,
+	hp: 2748,
+	atk: 2324,
+	cost: 39,
+	attr: [0, 2],
+	species: [0],
+	islegend: true,
+	as1: {
+		desc: "	HP80%以上で敵単体を3回連続攻撃(300%)",
+		proc: [add_cond(ChainDualAttack(3, 0, 3), when_hp_more(0.8))],
+	},
+	ss1: {
+		desc: "<斬撃大魔術>火・雷属性の3連撃(180%)、さらに連撃数分チェインプラス",
+		turn: 8,
+		proc: [ss_damage_slash(1.8, [0, 2], 3), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1, 0, 0, 0, 0, ], 1),
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Attr_statusup(0, 200, [1, 0, 1, 0, 0, ]),
+		NEFTJOD(30),
+		Attr_statusup(200, 0, [1, 0, 1, 0, 0, ]),
+		Fastskill(2),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Spec_statusup(0, 200, [0]),
+	],
+	as2: {
+		desc: "	HP80%以上で敵単体を3回連続攻撃(400%)",
+		proc: [add_cond(ChainDualAttack(4, 0, 3), when_hp_more(0.8))],
+	},
+	ss2: {
+		desc: "<斬撃大魔術>火・雷属性の5連撃(380%)、さらに連撃数分チェインプラス",
+		turn: 11,
+		proc: [ss_damage_slash(3.8, [0, 2], 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+		Statusup(0, 400),
+	],
 },];
