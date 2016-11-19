@@ -324,6 +324,8 @@ $(window).load(function () {
 // 次のターンに進む
 function nextturn(is_ssfin) {
 	var f_st = Field.Status;
+	// 烈眼ダメージ
+	retsugan_check(is_ssfin);
 	// 全滅していなかったら効果ターンを減少
 	reduce_turneffect(is_ssfin);
 	// 効果の継続確認

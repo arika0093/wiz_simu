@@ -259,6 +259,26 @@ function ss_continue_effect_check() {
 	}
 }
 
+//烈眼ダメージのチェック
+function retsugan_check(is_ssfin){
+	if(is_ssfin){
+		return
+	}
+	var is_retsugan=false;
+	Field.Allys.Now.forEach(function(ally, n){
+		if(ally.islegend){
+			Field.Allys.Deck[n].crystal.forEach(function(crstl){
+				if(crstl.name.indexOf("烈眼")!=-1){
+					is_retsugan = true;
+				}
+			})
+		}
+	})
+	if(is_retsugan){
+		ss_object_done(Field, 0, ss_consume_all(0.1));
+	}
+}
+
 /*
 // ターン終了時効果のチェック(敵味方両方確認)
 function after_turneffect_check() {
