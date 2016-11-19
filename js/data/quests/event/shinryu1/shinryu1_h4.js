@@ -53,9 +53,9 @@
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_as_sealed(3, 3),
                      s_enemy_attack(1500, 1, 1, true),
-                     s_enemy_attack(1500, 1, 1, true)
+                     s_enemy_attack(1500, 1, 1, true),
+                     s_enemy_as_sealed(3, 3),
                   ],
                   atrandom: false,
                   turn: 1,
@@ -78,9 +78,9 @@
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_as_sealed(3, 3),
                      s_enemy_attack(1500, 1, 1, true),
-                     s_enemy_attack(1500, 1, 1, true)
+                     s_enemy_attack(1500, 1, 1, true),
+                     s_enemy_as_sealed(3, 3),
                   ],
                   atrandom: false,
                   turn: 1,
@@ -113,9 +113,9 @@
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_as_sealed(3, 3),
                      s_enemy_attack(1500, 1, 1, true),
-                     s_enemy_attack(1500, 1, 1, true)
+                     s_enemy_attack(1500, 1, 1, true),
+                     s_enemy_as_sealed(3, 3),
                   ],
                   atrandom: false,
                   turn: 1,
