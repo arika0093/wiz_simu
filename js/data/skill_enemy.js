@@ -210,8 +210,12 @@ function s_enemy_attack_attrsp(dmg_s, dmg_n, attr, tnum, atkn, tgtype) {
 				var targ = tg[i][j];
 				var cd = fld.Allys.Deck[targ];
 				var e = GetNowBattleEnemys(targ);
-				var dmg = (attr == cd.attr[0]) ? dmg_s : dmg_n;
-				_s_enemy_attack(fld, dmg, n, targ);
+				if(typeof(attr)=="number"){
+					var dmg = (attr == cd.attr[0]) ? dmg_s : dmg_n;
+				}else{
+					var dmg = (attr[cd.attr[0]]==1) ? dmg_s : dmg_n;
+				}
+				_s_enemy_attack(fld, dmg * 2, n, targ);
 			}
 		}
 	}, makeDesc("属性特攻",{attr:0,dmg_s:0,dmg_n:0,tnum:0,atkn:0}));
