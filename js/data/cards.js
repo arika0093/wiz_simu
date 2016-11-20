@@ -44125,7 +44125,7 @@ Cards = [{
 		Spec_statusup(200,0, [9,]),
 		Attr_statusup(200,0, [1,0,1,0,0,]),
 		Attr_statusup(0,200, [1,0,1,0,0,]),
-		Awake_noeffect("精霊交替",1),
+		Awake_noeffect("精霊交代",1),
 	],
 	as2: {
 		desc: "残りHPが80%以上でダメージアップ(450%)",
