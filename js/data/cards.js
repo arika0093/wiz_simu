@@ -52022,7 +52022,7 @@ Cards = [{
 	is_dist: true,
 	as1: {
 		desc: "種族が魔法生物の敵単体へダメージ(500%)",
-		proc: ChainSpecAttack(5.0, 0, 7),
+		proc: ChainSpecAttack(5.0, 0, [7]),
 	},
 	ss1: {
 		desc: "<蘇生>味方全体のHPを回復し(25%)、さらに雷属性の味方を蘇生(25%)",
@@ -52043,7 +52043,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "種族が魔法生物の敵単体へダメージ(600%)",
-		proc: ChainSpecAttack(6.0, 0, 7),
+		proc: ChainSpecAttack(6.0, 0, [7]),
 	},
 	ss2: {
 		desc: "<蘇生>味方全体のHPを回復し(50%)、さらに雷属性の味方を蘇生(50%)",
