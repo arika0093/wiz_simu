@@ -51930,7 +51930,7 @@ Cards = [{
 	is_dist: true,
 	as1: {
 		desc: "HP80%以上で敵単体を3回連続攻撃(300%)",
-		proc: add_cond(ChainDualAttack(3.0, 0, 3), as_hp_absorption(0.8)),
+		proc: add_cond(ChainDualAttack(3.0, 0, 3), when_hp_more(0.8)),
 	},
 	ss1: {
 		desc: "<斬撃大魔術>火・雷属性の3連撃、さらに連撃数分チェインプラス(180%)",
@@ -51951,7 +51951,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "HP80%以上で敵単体を3回連続攻撃(400%)",
-		proc: add_cond(ChainDualAttack(4.0, 0, 3), as_hp_absorption(0.8)),
+		proc: add_cond(ChainDualAttack(4.0, 0, 3), when_hp_more(0.8)),
 	},
 	ss2: {
 		desc: "<斬撃大魔術>火・雷属性の5連撃、さらに連撃数分チェインプラス(380%)",
