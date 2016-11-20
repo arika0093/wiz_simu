@@ -220,9 +220,9 @@
                   ],
                   on_angry: [
                      s_enemy_force_reservoir(),
-                     s_enemy_attack(2400, 5, 1, true)
                   ],
                   on_move_angry: [
+                     m_enemy_once(s_enemy_attack(2400, 5, 1, true)),
                      s_enemy_attack(1200, 5, 1, true)
                   ],
                   atrandom: false,
