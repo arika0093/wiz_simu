@@ -308,7 +308,7 @@ function causalityCheck(card){
 		["特効", "special_attr"],
 		["平均解答", "ss_answertime"],
 		["チェインを消費", "ss_chain_cost"],
-		["敵単体へ", "damage_s"],
+		["敵単体へ", "single"],
 		["敵全体へ", "all"],
 	]
     ops.forEach(function(op){
