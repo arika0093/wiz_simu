@@ -51349,7 +51349,7 @@ Cards = [{
 	ss1: {
 		desc: "<時限大魔術>スキル反射を無視し、3ターン後に敵単体へ水属性ダメージ(1000%)",
 		turn: 2,
-		proc: [ss_damage_timebomb(10, [1], 1, 3)],
+		proc: [ss_damage_timebomb(10, [1], 1, 3), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],1),
@@ -51370,12 +51370,12 @@ Cards = [{
 	ss2: {
 		desc: "<時限大魔術>スキル反射を無視し、3ターン後に敵単体へ水属性ダメージ(2000%)",
 		turn: 3,
-		proc: [ss_damage_timebomb(20, [1], 1, 3)],
+		proc: [ss_damage_timebomb(20, [1], 1, 3), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [0,1,0,0,0,]),
 	],
-}, {
+},/* {
 	name: "狂乱の魔刃竜 ケルク＝ナダ(仮)",
 	cardno: 7410,
 	//imageno: 7576,
@@ -51419,7 +51419,7 @@ Cards = [{
 		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
 		Statusup(0, 400),
 	],
-},{
+},*/{
 	name: "心竜天翔 アデレード・シラー",
 	cardno: 7388,
 	imageno: 9443,
@@ -51432,7 +51432,7 @@ Cards = [{
 	ape: "心竜天翔 Rising Dragon",
 	as1: {
 		desc: "4チェインでダメージアップ、龍族の敵へさらにダメージアップ(400%/800%)",
-		proc: [ChainAttack(4.0, 4), ChainSpecAttack(8.0, 4, 0)],
+		proc: [ChainAttack(4.0, 4), ChainSpecAttack(8.0, 4, [0])],
 	},
 	ss1: {
 		desc: "<残滅大魔術>4ターン溜めた後、スキル反射を無視し、敵全体へ火属性のダメージ(500%)、さらに10ターンの間、火属性のダメージ(500%)",
@@ -51454,7 +51454,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "4チェインでダメージアップ、龍族の敵へさらにダメージアップ(500%/900%)",
-		proc: [ChainAttack(5.0, 4), ChainSpecAttack(9.0, 4, 0)],
+		proc: [ChainAttack(5.0, 4), ChainSpecAttack(9.0, 4, [0])],
 	},
 	ss2: {
 		desc: "<残滅大魔術>4ターン溜めた後、スキル反射を無視し、敵全体へ火属性のダメージ(600%)、さらに10ターンの間、火属性のダメージ(600%)",
@@ -51573,7 +51573,7 @@ Cards = [{
 	ss1: {
 		desc: "<その他>4ターン溜めた後、30ターン敵の攻撃を自分に集めダメージを50%軽減する",
 		turn: 3,
-		charged: 4
+		charged: 4,
 		proc: [ss_provocate(0.5, 30)],
 	},
 	awakes: [
@@ -51663,7 +51663,7 @@ Cards = [{
 	ss1: {
 		desc: "<効果解除>敵全体の属性吸収を解除する",
 		turn: 4,
-		proc: [ss_break_absorb(all)],
+		proc: [ss_break_absorb("all")],
 	},
 	awakes: [
 		Awake_noeffect("経験値取得量アップ",1),
@@ -51684,7 +51684,7 @@ Cards = [{
 	ss2: {
 		desc: "<効果解除大魔術>スキル反射を無視し、敵全体の属性吸収を解除し、雷属性のダメージ(300%)",
 		turn: 7,
-		proc: [ss_break_absorb(all), ss_damage_all(3.0, [2]), ss_ignore_skillcounter()],
+		proc: [ss_break_absorb("all"), ss_damage_all(3.0, [2]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,0,1,0,0,]),
@@ -51753,7 +51753,7 @@ Cards = [{
 	ss1: {
 		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ水属性のダメージ(240%×人数)",
 		turn: 10,
-		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.6), [1], 1)],
+		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.6), [1], 1), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Fastskill(1),
@@ -51774,7 +51774,7 @@ Cards = [{
 	ss2: {
 		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ水属性のダメージ(320%×人数)",
 		turn: 13,
-		proc: [ss_damage_s(ss_consume_all_cond(3.2, 0.6), [1], 1)],
+		proc: [ss_damage_s(ss_consume_all_cond(3.2, 0.6), [1], 1), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,400),
@@ -51869,7 +51869,7 @@ Cards = [{
 		proc: [ss_boost_enhance_s(ss_chain_cost(5, 14, 9), 8, 0.15)],
 	},
 	Lawake: [
-		Attr_statusup(0,100, [0,0,0,0,0,]),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
 		Abstate_invalid("ss_sealed"),
 	],
 },];

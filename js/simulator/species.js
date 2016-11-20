@@ -18,6 +18,9 @@ function create_specs(val) {
 function specific_specs(spec) {
 	var specs = new Array(spec_count());
 	for (var i = 0; i < spec_count() ; i++) {
+		if(typeof(spec)!="object"){
+			console.log(getParentArg())
+		}
 		specs[i] = spec.indexOf(i) >= 0 ? 1 : 0;
 	}
 	return specs;
