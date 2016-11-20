@@ -38361,7 +38361,7 @@ Cards = [{
 		proc: ChainAttack(4.0, 4),
 	},
 	ss1: {
-		desc: "<犠牲魔術>味方全体のHPの50%を使い敵全体へダメージ(120%×人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へダメージ(120%×人数)",
 		turn: 6,
 		proc: [ss_damage_all(ss_consume_all_cond(1.2, 0.5), [1])],
 	},
@@ -38382,7 +38382,7 @@ Cards = [{
 		proc: ChainAttack(5.0, 4),
 	},
 	ss2: {
-		desc: "<犠牲魔術>味方全体のHPの50%を使い敵全体へダメージ(180%×人数)",
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へダメージ(180%×人数)",
 		turn: 9,
 		proc: [ss_damage_all(ss_consume_all_cond(1.8, 0.5), [1])],
 	},
@@ -50597,7 +50597,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,1,1,1,1], 0)],
 	},
 	ss2: {
-		desc: "ターン敵の攻撃を自分に集めダメージを75%軽減する、さらに味方全体のHPを回復(25%)",
+		desc: "3ターン敵の攻撃を自分に集めダメージを75%軽減する、さらに味方全体のHPを回復(25%)",
 		turn: 9,
 		proc: [ss_provocate(0.75, 3), ss_heal(0.25)],
 	},
@@ -51818,7 +51818,7 @@ Cards = [{
 	ss2: {
 		desc: "<斬撃大魔術>火・雷属性の5連撃、さらに連撃数分チェインプラス(380%)",
 		turn: 11,
-		proc: [ss_damage_slash(1.8, [0,2], 5)],
+		proc: [ss_damage_slash(3.8, [0,2], 5)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,1,0,0,]),
