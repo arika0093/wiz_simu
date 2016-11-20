@@ -1042,6 +1042,12 @@ function special_attr(attrs, a, b) {
 		p1: attrs,
 		p2: a,
 		p3: b,
+		c_param: {
+			"awake_rateup_sp": {
+				target: 1,
+				rate_mlt: 0.01,
+			},
+		},
 	});
 }
 

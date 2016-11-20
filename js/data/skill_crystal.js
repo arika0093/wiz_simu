@@ -28,6 +28,15 @@ var Awake_crystal_lists = [{
 	param1: "{0}",
 	param2: 0,
 }, {
+	name: "SS効果値アップ<特攻大魔術>",
+	imple: function (upval) {
+		var asr = Awake_SkillRateup(upval);
+		asr.type = "awake_rateup_sp";
+		return asr;
+	},
+	param1: "{0}",
+	param2: 0,
+}, {
 	name: "SS継続ターン数アップ",
 	imple: Awake_Turnup,
 	param1: "{0}",
