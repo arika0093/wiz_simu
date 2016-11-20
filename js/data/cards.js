@@ -51463,8 +51463,7 @@ Cards = [{
 		proc: [ss_continue_damage(6.0, 6.0, [0], 10), ss_ignore_skillcounter()],
 	},
 	Lawake: [
-		Statusup(0,2000),
-		// Lモード状態時ATK2000アップ被ダメージ1.5倍、回復を受け付けない,
+		Awake_dragonmode(2000, 1.5) ,
 	],
 },{
 	name: "黎明の皇竜魔 ミネバ・クロード",
@@ -51508,8 +51507,7 @@ Cards = [{
 		proc: [ss_damage_all(special_attr([0,0,0,0,1], 22, 8), [3])],
 	},
 	Lawake: [
-		Statusup(0,2000),
-		// Lモード状態時ATK2000アップ被ダメージ1.5倍、回復を受け付けない,
+		Awake_dragonmode(2000, 1.5) ,
 	],
 },{
 	name: "炎の絆 アデレード・シラー",
