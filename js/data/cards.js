@@ -52256,7 +52256,7 @@ Cards = [{
 	},
 	ss1: {
 		desc: "<反動大魔術・蝕>スキル反射を無視し、味方全体のHPを50%使い敵全体へ雷属性のダメージ(180%×人数)◆スキル使用後、味方全体が1ターン封印状態に",
-		turn: 0,
+		turn: 4,
 		proc: [ss_damage_all(ss_seal_all_cond(1.8), [2]), ss_ignore_skillcounter()],
 	},
 	awakes: [
@@ -52277,7 +52277,7 @@ Cards = [{
 	},
 	ss2: {
 		desc: "<反動大魔術・蝕>スキル反射を無視し、味方全体のHPを50%使い敵全体へ雷属性のダメージ(220%×人数)◆スキル使用後、味方全体が1ターン封印状態に",
-		turn: 0,
+		turn: 6,
 		proc: [ss_damage_all(ss_seal_all_cond(2.2), [2]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
