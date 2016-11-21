@@ -52352,6 +52352,16 @@ Cards = [{
 		proc: [ss_panel_shuffle()],
 	},
 	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Statusup(200,0),
+		Statusup(0,200),
+		Fastskill(2),
+		Costdown(2),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Spec_statusup(400,0, [0,]),
+		Spec_statusup(0,400, [0,]),
+		NEFTJOD(30),
 	],
 	as2: {
 		desc: "ダメージがイチかバチかアップ(200%～500%)",
