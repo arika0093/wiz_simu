@@ -370,8 +370,8 @@ function s_enemy_poison(d, tnum, t) {
 		s_enemy_abstate_attack(
 			fld, "毒(" + d + ")", "poison", t, tnum, n, is_counter, {
 				is_poison: true,
-				effect: function (f, oi, teff, state, is_t, is_b) {
-					if (is_t && state != "overlay") {
+				effect: function (f, oi, teff, state, is_t, is_b, is_ss) {
+					if (is_t && !is_b && !is_ss && state != "overlay") {
 						f.log_push("Unit[" + (oi + 1) + "]: 毒(" + d + "ダメージ)");
 						damage_ally(d, oi, true);
 					}
