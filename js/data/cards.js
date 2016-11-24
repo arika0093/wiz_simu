@@ -53093,7 +53093,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "残りHPが80%以上でダメージアップ、パネルの色が増す度さらにアップ(400%/500%/650%)",
-		proc: [add_cond(ChainAttack(4.0, 0), when_hp_more(0.8)), add_cond(add_cond(ChainAttack(5.0, 0), when_hp_more(0.8)), as_panel_over2()), add_cond(add_cond(ChainAttack(6.5, 0), when_hp_more(0.8)), as_panel_over3()))],
+		proc: add_cond(ChainAttack(4.0, 0), when_hp_more(0.8)),
 	},
 	ss2: {
 		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、攻撃力アップの効果を付与。HP80%以上でさらに攻撃力アップの効果を付与(50%/125%)",
