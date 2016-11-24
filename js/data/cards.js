@@ -53072,7 +53072,7 @@ Cards = [{
 	ape: "神竜降臨Ⅱ",
 	as1: {
 		desc: "残りHPが80%以上でダメージアップ、パネルの色が増す度さらにアップ(300%/400%/550%)",
-		proc: [add_cond(ChainAttack(3.0, 0), when_hp_more(0.8)), add_cond(add_cond(ChainAttack(4.0, 0), when_hp_more(0.8)), as_panel_over2()), add_cond(add_cond(ChainAttack(5.5, 0), when_hp_more(0.8)), as_panel_over3()))],
+		proc: [add_cond(ChainAttack(3.0, 0), when_hp_more(0.8)), add_cond(add_cond(ChainAttack(4.0, 0), when_hp_more(0.8)), as_panel_over2()), add_cond(add_cond(ChainAttack(5.5, 0), when_hp_more(0.8)), as_panel_over3())],
 	},
 	ss1: {
 		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
