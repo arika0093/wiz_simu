@@ -51477,7 +51477,7 @@ Cards = [{
 	hp: 3989,
 	atk: 4721,
 	cost: 54,
-	attr: [1,4],
+	attr: [1,-1],
 	species: [8],
 	islegend: true,
 	ape: "黄昏メアレスⅡ 残響dearless",
