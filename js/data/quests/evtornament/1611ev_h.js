@@ -308,7 +308,7 @@
                isStrong: true,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_attrguard_own([2], 1, 4)),
+                     m_enemy_once(s_enemy_attrguard_own([0, 0, 1, 0, 0], 1, 4)),
                      damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true)
                   ],
                   on_move: [
