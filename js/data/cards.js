@@ -53519,7 +53519,7 @@ Cards = [{
 		Statusup(500,0),
 		Statusup(0,500),
 	],
-},,{
+},{
 	name: "剛武人と共に戦う灼竜 レツィーユ",
 	cardno: 7470,
 	imageno: 9523,
