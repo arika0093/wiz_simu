@@ -44287,7 +44287,7 @@ Cards = [{
 	is_dist: true,
 	as1: {
 		desc: "味方のMAXHP10％を使い、敵単体へダメージ(450％)",
-		proc: ChainAttack_as_consume_own(4.5, 0, 0.1),
+		proc: add_cond(ChainAttack(4.5, 0), as_consume_all(0.10)),
 	},
 	ss1: {
 		desc: "<ブースト>10ターンの間、味方のMAXHPを毎ターン15%消費し、味方の攻撃力をアップ(150%)。さらに極稀にクリティカル",
@@ -44308,7 +44308,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "味方のMAXHP10％を使い、敵単体へダメージ(550％)",
-		proc: ChainAttack_as_consume_own(5.5, 0, 0.1),
+		proc: add_cond(ChainAttack(5.5, 0), as_consume_all(0.10)),
 	},
 	ss2: {
 		desc: "<ブースト>10ターンの間、味方のMAXHPを毎ターン15%消費し、味方の攻撃力をアップ(150%)。さらに極稀にクリティカル",
