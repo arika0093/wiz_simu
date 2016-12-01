@@ -49,6 +49,12 @@ category_jp = {
     "": {
 		jp: "未設定",
 	},
+    "esuterera1": {
+		is_dispsim: true,
+		sim_index: 11,
+		jp: "聖なる空のエステレラ",
+		disable_date:"2017/1/16 16:00",
+	},
     "shinryu1": {
 		is_dispsim: true,
 		sim_index: 11,
