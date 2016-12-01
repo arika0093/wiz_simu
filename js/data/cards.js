@@ -500,6 +500,7 @@ Cards = [{
 	cost: 46,
 	attr: [0, -1],
 	species: [2],
+	disable: true,
 	awakes: [
 		Attr_statusup(100, 0, [1,0,0,0,0]),
 		Fastskill(1),
@@ -4097,6 +4098,7 @@ Cards = [{
 	cost: 52,
 	attr: [0, 1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Attr_statusup(100, 0, [1, 1, 0, 0, 0]),
 		Panel_boost([1,0,0,0,0], 1),
@@ -9474,6 +9476,7 @@ Cards = [{
 	cost: 47,
 	attr: [1, 0],
 	species: [9],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Statusup(0, 200),
@@ -9921,6 +9924,7 @@ Cards = [{
 	cost: 35,
 	attr: [1, 2],
 	species: [9],
+	disable: true,
 	awakes: [
 		Statusup(200, 0),
 		Statusup(0, 200),
@@ -10769,6 +10773,7 @@ Cards = [{
 	cost: 50,
 	attr: [1, 2],
 	species: [9],
+	disable: true,
 	awakes: [
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
 		Fastskill(1),
@@ -14851,6 +14856,7 @@ Cards = [{
 	cost: 48,
 	attr: [2, 0],
 	species: [6],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Attr_statusup(100, 0, [1, 0, 1, 0, 0, ]),
