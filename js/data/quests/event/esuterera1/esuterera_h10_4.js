@@ -57,6 +57,79 @@
          enemy: [
             {
                name: "暗黒から呼ぶ者",
+               hp: 55000,
+               imageno: 9600,
+               attr: 4,
+               spec: 7,
+               isStrong: false,
+               move: {
+                  on_popup: [
+                     m_enemy_once(skill_counter_func(s_enemy_as_sealed, "-", 100, false, 5, 4))
+                  ],
+                  on_move: [
+                     m_enemy_once(s_enemy_attr_absorb([0,0,0,0,1], 1, 3)),
+                     s_enemy_attack(600, 5, 1, true)
+                  ],
+                  atrandom: false,
+                  turn: 1,
+                  wait: 1
+               }
+            },
+            {
+               name: "意味深な壺",
+               hp: 120000,
+               imageno: 9590,
+               attr: 0,
+               spec: 7,
+               isStrong: false,
+               move: {
+                  on_popup: [
+                     m_enemy_once(s_enemy_chain_sealed(4))
+                  ],
+                  on_move: [
+                     s_enemy_attack(1500, 5, 1, true)
+                  ],
+                  atrandom: false,
+                  turn: 2,
+                  wait: 2
+               }
+            },
+            {
+               name: "暗黒から呼ぶ者",
+               hp: 55000,
+               imageno: 9600,
+               attr: 4,
+               spec: 7,
+               isStrong: false,
+               move: {
+                  on_popup: [
+                     m_enemy_once(skill_counter_func(s_enemy_ss_sealed, "-", 100, false, 5, 4)),
+                     damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true)
+                  ],
+                  on_move: [
+                     s_enemy_attack(600, 5, 1, true),
+                     s_enemy_attack(600, 5, 1, true)
+                  ],
+                  on_angry: [
+                     s_enemy_poison(2000, 5, 3)
+                  ],
+                  on_move_angry: [
+                     s_enemy_attack(600, 5, 1, true)
+                  ],
+                  atrandom: false,
+                  turn: 1,
+                  wait: 1
+               }
+            }
+         ]
+      },
+      {
+         appearance: [
+            2,3
+         ],
+         enemy: [
+            {
+               name: "暗黒から呼ぶ者",
                hp: 50000,
                imageno: 9600,
                attr: 4,

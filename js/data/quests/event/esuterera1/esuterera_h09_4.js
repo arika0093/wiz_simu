@@ -215,6 +215,7 @@
                isStrong: false,
                move: {
                   on_popup: [
+                     m_enemy_once(s_enemy_attr_absorb([0,1,0,0,0], 1, 3)),
                      m_enemy_once(impregnable(99))
                   ],
                   on_move: [
@@ -235,6 +236,7 @@
                isStrong: false,
                move: {
                   on_popup: [
+                     m_enemy_once(s_enemy_attr_absorb([0,1,0,0,0], 1, 3)),
                      m_enemy_once(skill_counter_func(s_enemy_as_sealed, "-", 100, false, 5, 3)),
                      damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true)
                   ],
@@ -328,7 +330,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_attr_absorb([0,1,0,0,0], 1, 3))
+                     m_enemy_once(s_enemy_attr_absorb([0,1,0,0,0], 1, 3)),
                   ],
                   on_move: [
                      s_enemy_attack(1200, 5, 1, true)
@@ -346,6 +348,9 @@
                spec: 7,
                isStrong: false,
                move: {
+                  on_popup: [
+                     m_enemy_once(s_enemy_attr_absorb([0,1,0,0,0], 1, 3)),
+                  ],
                   on_move: [
                      s_enemy_attack_attrsp(1500, 750, [0,0,1,0,0], 5, 1, false)
                   ],
@@ -363,6 +368,7 @@
                isStrong: false,
                move: {
                   on_popup: [
+                     m_enemy_once(s_enemy_attr_absorb([0,1,0,0,0], 1, 3)),
                      m_enemy_once(impregnable(99))
                   ],
                   on_move: [
