@@ -130,9 +130,6 @@
                spec: 9,
                isStrong: false,
                move: {
-                  on_popup: [
-                     m_enemy_once(s_enemy_attr_absorb([0,0,0,1,0], 2, 3))
-                  ],
                   on_move: [
                      s_enemy_attack(300, 1, 1, true)/*nogambits*/
                   ],
@@ -150,7 +147,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_attr_absorb([0,0,0,1,0], 2, 3))
+                     m_enemy_once(s_enemy_attr_absorb_all([0,0,0,1,0], 2, 3))
                   ],
                   on_move: [
                      s_enemy_attack(500, 5, 1, true)
@@ -170,7 +167,6 @@
                move: {
                   on_popup: [
                      m_enemy_once(s_enemy_cursed(600, 5, 3)),
-                     m_enemy_once(s_enemy_attr_absorb([0,0,0,1,0], 2, 3))
                   ],
                   on_move: [
                      s_enemy_attack(500, 5, 1, true)

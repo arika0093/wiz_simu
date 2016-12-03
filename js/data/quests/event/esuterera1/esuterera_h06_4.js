@@ -62,7 +62,7 @@
                move: {
                   on_move: [
                      s_enemy_attack(800, 5, 1, true),
-                     s_enemy_noeffect("s_enemy_panelchange([1,1,1,0,0])")
+                     s_enemy_panelchange([1,1,1,0,0])
                   ],
                   atrandom: false,
                   turn: 1,
@@ -137,7 +137,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_noeffect("バリアウォール(20000dmg, 99T, 3体)"))
+                     m_enemy_once(s_enemy_barrier_all(20000, 99))
                   ],
                   on_move: [
                      s_enemy_attack(1000, 5, 1, true)
@@ -195,7 +195,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_noeffect("バリアウォール(30000dmg, 99T, 3体)"))
+                     m_enemy_once(s_enemy_barrier_all(30000, 99))
                   ],
                   on_move: [
                      s_enemy_attack(1000, 5, 1, true)
@@ -313,7 +313,7 @@
                isStrong: true,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_noeffect("バリアウォール(80000dmg, 99T, 3体)")),
+                     m_enemy_once(s_enemy_barrier_all(80000, 99)),
                      damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true)
                   ],
                   on_move: [

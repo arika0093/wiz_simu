@@ -338,7 +338,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_noeffect("バリアウォール(10000dmg, 99T, 3体)")),
+                     m_enemy_once(s_enemy_barrier_all(10000, 99)),
                      damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true)
                   ],
                   on_move: [

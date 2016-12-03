@@ -783,7 +783,7 @@ function s_enemy_attrguard_all(attr, rate, turn) {
 	}, makeDesc("全体軽減"));
 }
 
-// 敵属性吸収
+// 敵属性吸収(単体)
 function s_enemy_attr_absorb(attr, rate, turn) {
 	return m_create_enemy_move(function (fld, n) {
 		var enemy = GetNowBattleEnemys(n);
@@ -821,6 +821,97 @@ function s_enemy_attr_absorb(attr, rate, turn) {
 		});
 		Field.log_push("Enemy[" + (n + 1) + "]: [" + attr_text + "]属性吸収(" + (rate * 100) + "%/" + turn + "t)");
 	}, makeDesc("属性吸収"));
+}
+
+// 敵属性吸収(全体)
+function s_enemy_attr_absorb_all(attr, rate, turn) {
+	return m_create_enemy_move(function (fld, n) {
+		var absorb = s_enemy_attr_absorb(attr, rate, turn);
+		var enemys = GetNowBattleEnemys();
+		for (var i = 0; i < enemys.length; i++) {
+			absorb.move(fld, i);
+		}
+	}, makeDesc("属性吸収[全体]"));
+}
+
+// 単体バリア
+function s_enemy_barrier_own(dmg, turn) {
+	return m_create_enemy_move(function (fld, n) {
+		var enemy = GetNowBattleEnemys(n);
+		// 追加
+		enemy.turn_effect.push({
+			desc: "バリアウォール(" + dmg + ")",
+			type: "barrier_wall",
+			icon: null,
+			isdual: false,
+			turn: turn,
+			lim_turn: turn,
+			priority: 5,
+			barr_endurance: dmg,
+			effect: function (f, oi, teff, state, is_t, is_b) {
+				if (this.barr_endurance <= 0) {
+					teff.lim_turn = 0;
+				}
+			},
+			on_damage: function (fld, dmg, atr_i) {
+				var is_invalid = false;
+				if (this.barr_endurance > 0) {
+					// 無効化
+					var bf = this.barr_endurance;
+					var af = this.barr_endurance - dmg;
+					Field.log_push("Enemy[" + (n + 1) + "]: バリアウォール(残: " + bf + "→" + af + ")");
+					this.barr_endurance -= dmg;
+					is_invalid = true;
+				}
+				return is_invalid ? 0 : dmg;
+			}
+		});
+		Field.log_push("Enemy[" + (n + 1) + "]: バリアウォール(" + dmg + "/" + turn + "t)");
+	}, makeDesc("バリアウォール"));
+}
+
+// 全体バリア
+function s_enemy_barrier_all(dmg, turn) {
+	return m_create_enemy_move(function (fld, n) {
+		barr_endu = dmg;
+		var barr_all = {
+			desc: "バリアウォール(" + dmg + ")",
+			type: "barrier_wall",
+			icon: null,
+			isdual: false,
+			turn: turn,
+			lim_turn: turn,
+			priority: 5,
+			//barr_endurance: dmg,
+			effect: function (f, oi, teff, state, is_t, is_b) {
+				if (barr_endu <= 0) {
+					// break
+					teff.lim_turn = 0;
+				} else {
+					teff.desc = "バリアウォール(" + barr_endu + "/" + dmg + ")";
+				}
+
+			},
+			on_damage: function (fld, dmg, atr_i) {
+				var is_invalid = false;
+				if (barr_endu > 0) {
+					// 無効化
+					var bf = barr_endu;
+					var af = Math.max(bf - dmg, 0);
+					Field.log_push("Enemy[" + (n + 1) + "]: バリアウォール(残: " + bf + "→" + af + ")");
+					barr_endu = af;
+					is_invalid = true;
+				}
+				return is_invalid ? 0 : dmg;
+			}
+		};
+		var enemys = GetNowBattleEnemys();
+		// 追加
+		for (var i = 0; i < enemys.length; i++) {
+			enemys[i].turn_effect.push(barr_all);
+		}
+		Field.log_push("Enemy[" + (n + 1) + "]: バリアウォール[全体](" + dmg + "/" + turn + "t)");
+	}, makeDesc("バリアウォール[全体]"));
 }
 
 // 鉄壁防御
@@ -1067,6 +1158,19 @@ function s_enemy_noeffect(mdesc) {
 		// log output
 		fld.log_push("Enemy[" + (n + 1) + "]: " + mdesc);
 	}, mdesc);
+}
+
+// パネル変換
+function s_enemy_panelchange(attr) {
+	var sm = 0;
+	$.each(attr, function (i, e) {
+		sm += e;
+	})
+	var text = (sm >= 2) ? "パネルシャッフル" : "パネル変換";
+	return m_create_enemy_move(function (fld, n) {
+		// log output
+		fld.log_push("Enemy[" + (n + 1) + "]: " + text);
+	}, text);
 }
 
 // スキルディスチャージ
