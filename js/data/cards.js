@@ -53323,7 +53323,7 @@ Cards = [{
 		Panel_boost([0,0,1,0,0,],2),
 		Statusup(0,200),
 		Attr_statusup(100,0, [0,0,1,0,0,]),
-		Fastskill(3),
+		Fastskill(2),
 		Attr_statusup(0,100, [0,0,1,0,0,]),
 	],
 	as2: {
