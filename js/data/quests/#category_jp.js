@@ -145,6 +145,11 @@ category_jp = {
     	is_dispsim: true,
     	sim_index: 12,
     },
+    "sennenzakura1": {
+    	jp: "古の森の千年桜",
+    	is_dispsim: true,
+    	sim_index: 12,
+    },
    "abcd": {
 		jp: "AbyssCode",
 		is_dispsim: true,
