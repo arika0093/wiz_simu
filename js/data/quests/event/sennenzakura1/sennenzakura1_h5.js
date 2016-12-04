@@ -1,7 +1,7 @@
 {
    id: "sennenzakura1_h5",
-   name: "sennenzakura1_h5",
-   desc: "絶妖級 季節は巡りて...",
+   name: "絶妖級 季節は巡りて...",
+   desc: "",
    overlap: false,
    aprnum: 4,
    data: [
