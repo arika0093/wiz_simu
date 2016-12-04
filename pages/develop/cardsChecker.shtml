@@ -151,7 +151,7 @@ function check(){
             awakeCheck(card)
             //変なimgno
             if(card.imageno<1){
-                putError(card, "imagenoが異常値",card.imageno)
+                putError(card, "imagenoが異常値(画像探索ツール：<a href=imgView.html>imgView</a>)",card.imageno)
             }
             //種族確認
             if(card.species[0]>=spec_count()){
@@ -237,7 +237,7 @@ function diffSs1Ss2(card){
 
 function diffAs1As2(card){
     //AS1とAS2を比較してprocもしくはdescが同じである物を抽出
-    var ignoreCards=[]
+    var ignoreCards=[7158]
     var ignoreSkills=["skill_copy"]
     var outp=""
     if(card.as2){

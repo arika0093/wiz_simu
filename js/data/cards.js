@@ -52126,7 +52126,7 @@ Cards = [{
 		desc: "<残滅大魔術>6ターン溜めた後、スキル反射を無視し、敵全体へ水属性のダメージ(500%)、さらに10ターンの間、水属性のダメージ(500%)",
 		turn: 7,
 		charged: 6,
-		proc: [ss_continue_damage(5.0, 5.0, [1], 10)],
+		proc: [ss_continue_damage(5.0, 5.0, [1], 10), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -52148,7 +52148,7 @@ Cards = [{
 		desc: "<残滅大魔術>6ターン溜めた後、スキル反射を無視し、敵全体へ水属性のダメージ(600%)、さらに10ターンの間、水属性のダメージ(600%)",
 		turn: 9,
 		charged: 6,
-		proc: [ss_continue_damage(6.0, 6.0, [1], 10)],
+		proc: [ss_continue_damage(6.0, 6.0, [1], 10), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,1000),
@@ -53807,7 +53807,7 @@ Cards = [{
 },{
 	name: "私たち、超無敵の ソフィ&リルム",
 	cardno: 7487,
-	imageno: -1,
+	imageno: 6134,
 	hp: 2653,
 	atk: 4004,
 	cost: 55,
@@ -53852,7 +53852,7 @@ Cards = [{
 },{
 	name: "拳に秘めた情熱 リアラ・ローム",
 	cardno: 7510,
-	imageno: -1,
+	imageno: 9553,
 	hp: 6021,
 	atk: 1678,
 	cost: 53,
@@ -53897,7 +53897,7 @@ Cards = [{
 },{
 	name: "揺蕩う星海の光 ソラナ・カルナ",
 	cardno: 7504,
-	imageno: -1,
+	imageno: 9547,
 	hp: 5531,
 	atk: 1667,
 	cost: 50,
@@ -53942,7 +53942,7 @@ Cards = [{
 },{
 	name: "絶対☆恋ANGEL マーガレット・リル",
 	cardno: 7507,
-	imageno: -1,
+	imageno: 9550,
 	hp: 1780,
 	atk: 4490,
 	cost: 54,
@@ -53970,7 +53970,7 @@ Cards = [{
 		Panel_boost([1,0,0,0,0,],2),
 		Awake_noeffect("経験値取得量アップ",2),
 		Abstate_invalid("as_sealed"),
-		Abstate_invalid("diecharge"),
+		Abstate_invalid("discharge"),
 	],
 	as2: {
 		desc: "雷・闇属性の敵単体へ特効ダメージ、解答が早いほどさらにアップ(基本:450%, 3秒台:500%, 2秒台:550%, 1秒台:600%, 0秒台:650%)",
@@ -53984,6 +53984,6 @@ Cards = [{
 	},
 	Lawake: [
 		Statusup(0,500),
-		Attr_statusup(0,200, [0,0,0,0,0,]),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
 	],
 },];
