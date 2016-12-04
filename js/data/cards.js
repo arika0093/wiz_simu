@@ -54252,7 +54252,7 @@ Cards = [{
 	ss2: {
 		desc: "<状態異常回復&蘇生>味方全体のHPを完全回復し、状態異常を回復、さらに雷属性の味方を100%で蘇生",
 		turn: 11,
-		proc: [ss_heal(1), ss_abstate_cure(),. ss_resurrection([0,0,1,0,0], 1)],
+		proc: [ss_heal(1), ss_abstate_cure(), ss_resurrection([0,0,1,0,0], 1)],
 	},
 	Lawake: [
 		Statusup(700,0),
