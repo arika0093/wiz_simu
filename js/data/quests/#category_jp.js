@@ -150,6 +150,13 @@ category_jp = {
     	is_dispsim: true,
     	sim_index: 12,
     },
+    "itazuramegami1": {
+    	jp: "ｲﾀｽﾞﾗ女神とうさぎのおはなし",
+    	is_dispsim: true,
+    	//sim_index: 12,
+    	sim_index: 11,
+		disable_date:"2016/12/16 16:00",
+    },
    "abcd": {
 		jp: "AbyssCode",
 		is_dispsim: true,
