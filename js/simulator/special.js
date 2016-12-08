@@ -8,7 +8,7 @@ function ss_push(n) {
 	// SS発動前チェック
 	if (sscheck_before(ss, n)) {
 		// SSを打つ
-		ss_rst = ss_procdo(ss, now, n);
+		ss_rst = ss_procdo(Field, ss, now, n);
 	} else {
 		// チェックを通過しなかったら打ち切る
 		return;
@@ -97,13 +97,14 @@ function sscheck_before(ss, n) {
 }
 
 // SSを順番に発動していく関数
-function ss_procdo(ss, now, index) {
+function ss_procdo(fld, ss, now, index) {
 	var ss_rst = true;
 	if (ss.proc != null) {
 		// チャージスキルの場合
 		if (ss.charged > 0 || now.flags.ss_chargefin) {
 			// チャージが終わっているか確認し、終わってないなら追加
 			if (!now.flags.ss_chargefin) {
+				// 自身に行動不可効果を付与
 				now.turn_effect.push({
 					desc: "チャージスキル待機(残り" + ss.charged + "t)",
 					type: "ss_charge",
@@ -143,6 +144,10 @@ function ss_procdo(ss, now, index) {
 						return;
 					},
 				});
+				// 全体チャージスキルなら味方全体にnT行動不可効果付与
+				if (ss.isallcharge) {
+					ss_add_chargenomove_otheruser(fld, ss.charged, index);
+				}
 				Field.log_push("Unit[" + (index + 1) + "]: チャージスキル発動待機…");
 				return true;
 			}
@@ -245,4 +250,34 @@ function get_ssturn(card, ally_n) {
 function ss_allyselect_getindex() {
 	var istr = $("#sso_selected_index").text();
 	return istr != "" ? Number(istr) : -1;
+}
+
+// 発動者以外の味方全員にnT行動不可(チャージ)を付与
+function ss_add_chargenomove_otheruser(fld, turn, user_i) {
+	var nows = fld.Allys.Now;
+	for (var i = 0; i < nows.length; i++) {
+		if (i == user_i) { continue; }
+		var now = nows[i];
+		now.turn_effect.push({
+			desc: "チャージスキル待機",
+			type: "ss_charge",
+			icon: "force_reservior",// 後で変える(?)
+			isdual: false,
+			iscursebreak: false,	// 呪い解除されない
+			isreduce_stg: true,		// ターン跨ぎでカウントが減る
+			priority: 1,
+			turn: turn,
+			lim_turn: turn,
+			ss_disabled: true,		// SS発動不可
+			effect: function () { },
+			// 攻撃無効
+			bef_answer: function (f, as) {
+				return false;
+			},
+			// 反射無効
+			bef_skillcounter: function (f, ai) {
+				return false;
+			},
+		});
+	}
 }

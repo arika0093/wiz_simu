@@ -54005,7 +54005,12 @@ Cards = [{
 		desc: "<精霊強化>味方全体で1ターン溜めた後、5ターンの間、味方全体を徐々に回復しダメージを軽減、さらに攻撃力アップ(20%/20%/200%)◆発動中行動不可",
 		turn: 5,
 		charged: 1,
-		proc: [ss_reinforcement_all(5, [ss_attr_guard([1,1,1,1,1], 0.2, 5, "RF"), ss_enhance_all(2, 5, [1,1,1,1,1], "RF"), ss_regenerate(0.2, 5, "RF")])],
+		isallcharge: true,
+		proc: [ss_reinforcement_all(5, [
+			ss_attr_guard([1, 1, 1, 1, 1], 0.2, 5, "RF"),
+			ss_enhance_all(2, 5, [1, 1, 1, 1, 1], "RF"),
+			ss_regenerate(0.2, 5, "RF")
+		])],
 	},
 	awakes: [
 		Awake_noeffect("経験値取得量アップ",1),
@@ -54027,7 +54032,12 @@ Cards = [{
 		desc: "<精霊強化>味方全体で1ターン溜めた後、5ターンの間、味方全体を徐々に回復しダメージを軽減、さらに攻撃力アップ(20%/20%/200%)◆発動中行動不可",
 		turn: 5,
 		charged: 1,
-		proc: [ss_reinforcement_all(5, [ss_attr_guard([1,1,1,1,1], 0.2, 5, "RF"), ss_enhance_all(2, 5, [1,1,1,1,1], "RF"), ss_regenerate(0.2, 5, "RF")])],
+		isallcharge: true,
+		proc: [ss_reinforcement_all(5, [
+			ss_attr_guard([1, 1, 1, 1, 1], 0.2, 5, "RF"),
+			ss_enhance_all(2, 5, [1, 1, 1, 1, 1], "RF"),
+			ss_regenerate(0.2, 5, "RF")
+		])],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,1,0,0,0,]),
