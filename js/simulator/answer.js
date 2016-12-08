@@ -239,18 +239,8 @@ function answer_skill(as_arr, panel, as_afters, bef_f) {
 		}
 	}
 	// 攻撃処理
-	var loop_ct = 0;
-	do {
-		// 現在の参照精霊を優先して処理
-		if (loop_ct < as_arr.length) {
-			answer_skill_proc(as_arr, panel, loop_ct, atk_duals, rem_duals, loop_ct, as_afters, bef_f);
-		}
-		// それ以外を処理
-		for (var i = 0; i < as_arr.length; i++) {
-			if (i == loop_ct) { continue; }
-			answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, loop_ct, as_afters, bef_f);
-		}
-	} while (function () {
+	var loop_ct = -1;
+	var isAllAtkEndCheck = function () {
 		// 残攻撃回数を減らして全て0以下なら終了
 		var rst = false;
 		for (var l = 0; l < rem_duals.length; l++) {
@@ -260,8 +250,14 @@ function answer_skill(as_arr, panel, as_afters, bef_f) {
 			rst = rst || rem_duals[l] > 0;
 		}
 		loop_ct++;
-		return rst;
-	}());
+		return !rst;
+	};
+	for(var i = 0; !isAllAtkEndCheck(); i++){
+		for (var j = i; j >= 0; j--) {
+			if (j >= atk_duals.length) { continue; }
+			answer_skill_proc(as_arr, panel, j, atk_duals, rem_duals, loop_ct, as_afters, bef_f);
+		}
+	}
 }
 
 // アンサースキルの処理
