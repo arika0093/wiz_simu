@@ -145,6 +145,11 @@ category_jp = {
     	is_dispsim: true,
     	sim_index: 12,
     },
+    "mareless1": {
+    	jp: "黄昏メアレス",
+    	is_dispsim: true,
+    	sim_index: 12,
+    },
     "sennenzakura1": {
     	jp: "古の森の千年桜",
     	is_dispsim: true,

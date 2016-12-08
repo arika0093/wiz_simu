@@ -79,7 +79,7 @@
                move: {
                   on_move: [
                      s_enemy_attack(800, 5, 1, true),
-                     s_enemy_noeffect("s_enemy_panelchange([1,1,1,0,0])")
+                     s_enemy_panelchange([1,1,1,0,0])
                   ],
                   atrandom: false,
                   turn: 1,
