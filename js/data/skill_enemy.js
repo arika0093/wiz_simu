@@ -522,8 +522,9 @@ function s_enemy_healreverse(rate, tnum) {
 }
 
 // 呪い(HP低下値, 対象数, 継続ターン)
-function s_enemy_cursed(hpdown, tnum, t) {
+function s_enemy_cursed(hpdown, tnum, t, atkdown) {
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
+		atkdown = atkdown || 0;
 		var tg = !tnum.length ? gen_enemytarget_array(tnum, 1, false)[0] : tnum;
 		for (var i = 0; i < tg.length; i++) {
 			var card = fld.Allys.Deck[tg[i]];
