@@ -1,0 +1,158 @@
+<head>
+    <title>Cards.js分割 - WizTools</title>
+    <!--@Detail@Cards.jsを分割するだけ（将来CardsCheckerに盛り込む・・？）@-->
+</head>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+
+
+
+function main(){
+    $.ajax({
+        url:'/js/data/cards.js',
+        type:'GET',
+        dataType: 'text',
+        complete : function(data) {
+            var charaStr=data.responseText;
+            var charaArray=sepCharaStr(charaStr);
+            /*
+            charaArray.forEach(function(chara){
+                propertyAnalyze("{"+chara+"}")
+            })
+            */
+            propertyAnalyze("{"+charaArray[0]+"}")
+        }
+    });
+}
+
+mode=[];
+addKeys=[
+    ["{", "Obj"],
+    ["\"", "Str"],
+    ["[", "Array"]
+]
+function addMode(keyStr){
+    var flag = true;
+    for(var i=0; i<addKeys.length; i++){
+        if(keyStr==addKeys[i][0]){
+            mode.push(addKeys[i][1])
+            flag = false;
+        }
+    }
+    if(flag){
+        mode.push("Func")
+    }
+}
+function nowMode(){
+    return mode[mode.length-1];
+}
+function propertyAnalyze(iStr){
+    var myStr=iStr.trim();
+    console.log(myStr)
+    addMode(myStr[0])
+    document.body.innerHTML="";
+}
+
+function sepCharaStr(mStr){
+    mStr=mStr.replace(/\/\*[\s\S]*?\*\//gim,"")
+    mStr=mStr.replace(/\/\/.*\n/gim,"")
+    mStr=mStr.replace(/Cards = \[\s*\{/,"")
+    mStr=mStr.replace(/\}\s*\,\s*\{/gim,"@DELIMITA@")
+    mStr=mStr.replace(/];\s*$/,"")
+    document.body.innerHTML=mStr
+    return mStr.split("@DELIMITA@")
+}
+
+
+var typeData=[
+
+    ["ss_reinforcement","","精霊強化"],
+    ["ss_skillboost","ss_delay","スキルチャージ&遅延"],
+    ["ss_astime_ext","","AS発動時間延長"],
+    ["ss_statusup","","ステータスアップ"],
+    ["ss_damageblock","","ダメージブロック"],
+    ["ss_abstate_cure","ss_resurrection","状態異常回復&蘇生"],
+    ["panel_attackup","","特殊パネル変換"],
+    ["panel_chainplus","","特殊パネル変換"],
+    ["panel_healally","","特殊パネル変換"],
+    ["panel_skillboost","","特殊パネル変換"],
+    ["panel_attr_guard","","特殊パネル変換"],
+    ["ss_chain_protect","","チェインガード"],
+    ["ss_skillboost","","スキルチャージ"],
+    ["ss_break","ss_damage","効果解除大魔術"],
+    ["ss_latest_copy","","スキルコピー"],
+    ["ss_consume_own","ss_resurrection","自己犠牲蘇生"],
+    ["ss_enhance","","ダメージ強化"],
+    ["ss_damage_slash","","斬撃大魔術"],
+    ["ss_damage_s","連","多弾魔術"],
+    ["ss_attr_weaken","","弱体化大魔術"],
+    ["ss_abstate_cure","","状態異常回復"],
+    ["ss_absattack","","状態異常無効"],
+    ["ss_panel_shuffle","","シャッフル"],
+    ["ss_skillcounter","","カウンター"],
+    ["dualcounter","","カウンター"],
+    ["ss_death_limit","","無に還す瞳"],
+    ["ss_delay","ss_damage","遅延大魔術"],
+    ["ss_damage","special_attr","特効大魔術"],
+    ["ss_continue_damage","","残滅大魔術"],
+    ["ss_answer_narrow","","解答削り"],
+    ["ss_answer_foresight","","解答削り"],
+    ["ss_revival","","起死回生"],
+    ["ss_boost_enhance","","ブースト"],
+    ["ss_ratiodamage","","割合削り"],
+    ["ss_panel_change","","パネル変換"],
+    ["ss_regenerate","","継続回復"],
+    ["ss_impregnable","","鉄壁・極"],
+    ["ss_attr_guard","","ガード"],
+    ["ss_resurrection","","蘇生"],
+    ["ss_delay","","遅延"],
+    ["ss_provocate","","挑発"],
+
+    ["ss_seal_all_cond","","反動大魔術・蝕"],
+    ["ss_damage","ss_allsealed_own","反動大魔術"],
+    ["ss_consume_own","ss_damage","自己犠牲魔術"],
+    ["ss_consume_all_cond","ss_damage","犠牲魔術"],
+    
+    ["ss_break","","効果解除"],
+    ["ss_damage","","大魔術"],
+
+    ["ss_heal","","回復"],
+    ["poison","","毒"],
+    //["","","その他"],
+    //["","","時限大魔術"],
+]
+
+function getObject(myStr, keyStr){
+    var resStr = myStr;
+    var reg = new RegExp(keyStr+" *\: *{[\\s\\S]*?} *, *$","gim");
+    var rcr = myStr.match(reg)
+    var rcr2=[];
+    var tmp;
+    for(var i=0; i<rcr.length; i++){
+        tmp=rcr[i];
+        for(var i2=0; i2<typeData.length; i2++){
+            if(rcr[i].indexOf(typeData[i2][0])!=-1){
+                if(typeData[i2][1]=="" || rcr[i].indexOf(typeData[i2][1])!=-1){
+                    tmp=tmp.replace(/(\<|＜|〈).*?(\>|＞|〉)/g,"")
+                    tmp=tmp.replace(/desc *\: *\"/i,"desc: \"<"+typeData[i2][2]+">")
+                    break;
+                }
+            }
+        }
+        if(tmp.indexOf("<")==-1){
+            tmp=tmp.replace(/desc *\: *\"/i,"desc: \"<その他>")
+        }
+        rcr2[i]=tmp;
+    }
+    for(var i=0; i<rcr.length; i++){
+        resStr = resStr.replace(rcr[i], rcr2[i])
+    }
+    resStr=resStr.replace(/\<挑発\>/g,"")
+    return resStr;
+}
+
+
+</script>
+
+<body onload=main()>～*読み込み中*～</body>

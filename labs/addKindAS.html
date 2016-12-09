@@ -1,0 +1,91 @@
+<head>
+    <title>ASタイプ付加 - WizTools</title>
+    <!--@Detail@Cards.jsにASタイプを機械的付与する@-->
+</head>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+
+
+
+function main(){
+    $.ajax({
+        url:'/js/data/cards.js',
+        type:'GET',
+        dataType: 'text',
+        complete : function(data) {
+            var charaStr=data.responseText;
+            var myRes=getObject(charaStr,"as1")
+            myRes=getObject(myRes,"as2")
+            document.body.innerHTML="<pre>"+myRes;
+        }
+    });
+}
+
+
+var typeData=[
+
+    ["ChainEnhance","","強化"],
+    ["ChainAllAttack","","全体攻撃"],
+    ["ChainVarianceAttack","","分散攻撃"],
+    ["ChainDeckAttrsAttack","","属性の加護"],
+    ["ChainAttrAttack","","属性特攻"],
+    ["ChainSpecAttack","","種族特攻"],
+    ["ChainDualAttrAttack","","特攻連撃"],
+    ["as_guard","","防御"],
+    ["Heal","","回復"],
+    ["ChainAttack","","チェイン攻撃"],
+    ["ChainDualAttack","","チェイン連撃"],
+    ["ChainPanelsAttack","","パネル攻撃"],
+    ["ChainPanelsDualAttack","","パネル連撃"],
+    ["ChainPanelsEnhance","","パネル強化"],
+    ["ChainPanelsAttrAttac","","パネル属性特攻"],
+    ["ChainPanelsAttrDualAttack","","パネル属性連撃"],
+    ["ChainPanelsSpecAttack","","パネル種族特攻"],
+    ["ChainDeckSpecsAttack","","種族数攻撃"],
+    ["ChainStakesAttack","","一か八か"],
+    ["ChainDeckDeadsAttack","","嘆き"],
+    ["as_hp_absorption","","吸収"],
+    ["ChainEnhance_SubAttr","","複属性強化"],
+    ["左隣の","","スキルコピー"],
+]
+
+function getObject(myStr, keyStr){
+    var resStr = myStr;
+    var reg = new RegExp(keyStr+" *\: *{[\\s\\S]*?} *, *$","gim");
+    var rcr = myStr.match(reg)
+    var rcr2=[];
+    var tmp;
+    for(var i=0; i<rcr.length; i++){
+        var tmp2 = "";
+        tmp=rcr[i];
+        for(var i2=0; i2<typeData.length; i2++){
+            if(rcr[i].indexOf(typeData[i2][0])!=-1){
+                if(typeData[i2][1]=="" || rcr[i].indexOf(typeData[i2][1])!=-1){
+                    if(""==tmp2){
+                        tmp2 = typeData[i2][2]
+                    }else{
+                        tmp2 += "," + typeData[i2][2]
+                    }
+                }
+            }
+        }
+        if(""!=tmp2){
+            tmp=tmp.replace(/(\<|＜|〈).*?(\>|＞|〉)/g,"")
+            tmp=tmp.replace(/desc *\: *\"/i,"desc: \"<"+tmp2+">")
+        }else{
+            tmp=tmp.replace(/desc *\: *\"/i,"desc: \"<その他>")
+        }
+        rcr2[i]=tmp;
+    }
+    for(var i=0; i<rcr.length; i++){
+        resStr = resStr.replace(rcr[i], rcr2[i])
+    }
+    resStr=resStr.replace(/\<挑発\>/g,"")
+    return resStr;
+}
+
+
+</script>
+
+<body onload=main()>～*読み込み中*～</body>

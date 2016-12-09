@@ -1,0 +1,81 @@
+
+<head>
+<meta charset=utf-8>
+	<style>
+		body{
+			font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese", sans-serif;
+		}
+        .title{
+            color:#3f51b5;
+            font-weight:bold;
+        }
+	</style>
+    <title>旧Category.jp CSV化 - WizTools</title>
+<script>
+
+
+
+
+CONSOLEERROR=false;
+
+window.onerror = function (message, file, line, col, error) {
+    CONSOLEERROR=true;
+    comm="<h1>Console error!</h1>"
+    comm+="エラー内容(参考)：<div style='font-size:6px;border:1px solid gray'>msg:"+message+"<br>file:"+file+"<br>line:"+line+"<br>col:"+col+"</div>"
+    document.body.innerHTML=comm;
+};
+
+var Errors=[]
+
+/*
+
+		jp: "過去のイベントトーナメント",	// jp: カテゴリ名
+		is_dispsim: true,			// is_dispsim: 試走クエスト選択に表示させるかどうか
+		sim_index: 50,				// sim_index: 表示させる場合の表示順(昇順)
+		is_notusedhelper: true,		// is_notusedhelper: 助っ人使用不可かどうか
+		disable_date:"3000/1/1 12:00"		// disable_date: 指定した日時になったら表示をやめる
+
+        */
+function check(){
+        ms="";
+
+    cj=category_jp;
+    for( a in cj ){
+        ms+=a +","
+        ms+=cj[a].jp +","
+        ms+=cj[a].is_dispsim +","
+        ms+=cj[a].sim_index +","
+        ms+=cj[a].is_notusedhelper +","
+        ms+=cj[a].disable_date +","
+        ms+="<br>"
+    }
+document.body.innerHTML=ms
+}
+</script></head>
+
+<body onload=check()>
+
+～読み込み中～
+
+    <!--#config timefmt="%Y%m%d_%H%M%S" -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="/download/romaji.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/loader.js?                  <!--#flastmod virtual='/js/loader.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js?                <!--#flastmod virtual='/js/pagetemp.js'-->"></script>
+    <!-- 他jsに依存しない基礎関数群 -->
+    <script type="text/javascript" charset="UTF-8" src="/js/general.js?                 <!--#flastmod virtual='/js/general.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/simulator/awake.js?         <!--#flastmod virtual='/js/simulator/awake.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/simulator/species.js?       <!--#flastmod virtual='/js/simulator/species.js'-->"></script>
+	<!-- データ群(基礎関数に依存する) -->
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_ans.js?          <!--#flastmod virtual='/js/data/skill_ans.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_spe.js?          <!--#flastmod virtual='/js/data/skill_spe.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_spe_body.js?     <!--#flastmod virtual='/js/data/skill_spe_body.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_awake.js?        <!--#flastmod virtual='/js/data/skill_awake.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_crystal.js?      <!--#flastmod virtual='/js/data/skill_crystal.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_enemy.js?        <!--#flastmod virtual='/js/data/skill_enemy.js'-->"></script>
+<script type="text/javascript" charset="UTF-8" src="/js/data/quests.php?              <!--#flastmod virtual='/js/data/quests.php'-->"></script>
+
+
+</body>

@@ -1,0 +1,119 @@
+﻿<head>
+	<meta charset="utf-8"></meta>
+    <title>BladerCounter - WizTools</title>
+    <!--@Detail@現在のブレイダー所持数を入力すると残りの必要枚数を表示@-->
+	<script>
+		var bcField={
+			maxLank:"",
+			lanks:{A:19564, Ap:35620, S:63204, Sp:103931, SS:170905, L:340153, L2:340153, L3:340153},
+			haveNum:{A:0, Ap:0, S:0, Sp:0, SS:0, L:0, L2:0, L3:0},
+			needNum:0,
+			haveNumA:0,
+		}
+
+		function appearLanks(){
+			var minimumLank="SS";
+			var lankCount=0;
+			var flag=false;
+			var outpText="最終ランクを選択：<br>";
+			Object.keys(bcField.lanks).forEach(function(key){
+				if(minimumLank==key){
+					flag=true;
+				}
+				if(flag){
+					outpText+="<input onclick=setMaxLank(\""+key+"\") type=button value="+key.replace("p","+")+"></input> "
+				}
+			}, bcField.lanks);
+
+			areaLanks.innerHTML=outpText;
+		}
+
+		function setMaxLank(myKey){
+			bcField.maxLank = myKey;
+			bcField.haveNum = {A:0, Ap:0, S:0, Sp:0, SS:0, L:0, L2:0, L3:0};
+			appearHaveNum();
+		}
+
+		function appearHaveNum(){
+			bcClear();
+			var outpText="<br>所持数：<br>";
+			outpText+="<table border=1>";
+			outpText+="<tr><td>MaxExp</td><td>Lank</td><td>所持数</td></tr>";
+			var flag = true;
+			Object.keys(bcField.lanks).forEach(function(key){
+				if(flag){
+					outpText+=	"<tr><td class=bcExp>"+this[key].toLocaleString()+"</td><td>" +
+								key.replace("p","+")+"</td><td><input onchange=setHaveNum(this) id='v"+key+"' value=0></td></tr>"
+					if(key==bcField.maxLank){
+						outpText += "</table>"
+						flag = false;
+					}
+				}
+			}, bcField.lanks);
+			if(!flag){
+				outpText+="<input type=button value=Clear onclick=bcClear('u')></input><br>"
+				var haveNum={A:0, Ap:0, S:0, Sp:0, SS:0, L:0, L2:0, L3:0};
+				areaHaveNum.innerHTML=outpText;
+				appearResult();
+				vA.focus();
+				vA.select();
+			}
+		}
+
+		function setHaveNum(obj){
+			var myKey=obj.id.slice(1);
+			bcField.haveNum[myKey]=parseInt(obj.value);
+			appearResult();
+		}
+
+		function appearResult(){
+			var outpText = "<br>"+bcField.maxLank.replace("p","+")+"を作るための残り必要数：<br>";
+			var flag = true;
+			bcField.needNum=0;
+			bcField.haveNumA=0;
+			Object.keys(bcField.lanks).forEach(function(key){
+				if(flag){
+					if(bcField.needNum==0){
+						bcField.needNum=1
+					}else{
+						bcField.needNum*=2;
+					}
+					if(key==bcField.maxLank){
+						outpText += "</table>"
+						flag = false;
+					}
+					bcField.haveNumA+=bcField.haveNum[key]*bcField.needNum;
+				}
+			}, bcField.lanks);
+			outpText+="A相当："+(bcField.needNum-bcField.haveNumA)+"枚<br>";
+			outpText+="A+相当："+Math.ceil((bcField.needNum-bcField.haveNumA)/2)+"枚";
+			areaResult.innerHTML=outpText;
+		}
+
+		function bcClear(type){
+			bcField.haveNum={A:0, Ap:0, S:0, Sp:0, SS:0, L:0, L2:0, L3:0};
+			bcField.needNum=0;
+			bcField.haveNumA=0;
+			if (type!="u"){
+				areaHaveNum.innerHTML = "";
+				areaResult.innerHTML = "";
+			}else{
+				appearHaveNum()
+			}
+		}
+		
+	</script>
+	<style>
+		.bcExp{
+			text-align:right;
+		}
+	</style>
+</head>
+
+
+<body onload=appearLanks()>
+	<h1>Blader Counter</h1>
+	<div id=areaLanks></div>
+	<div id=areaHaveNum></div>
+	<div id=areaResult></div>
+</body>
