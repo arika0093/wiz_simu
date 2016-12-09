@@ -8,7 +8,7 @@ WizToolsに関する色々な開発中＆開発者向けコンテンツ
 <table border=1>
 <tr><td><b>コンテンツ</b></td><td><b>詳細</b></td></tr>
 <?php
-	$mydir='/xampp/htdocs/wiz_simu/labs';
+	$mydir='labs/';
 	if ($handle = opendir($mydir)) {
 		while (false !== ($file = readdir($handle))) {
 			if($file!="." && $file!=".." && (strpos($file, 'html') || strpos($file, 'php'))){
