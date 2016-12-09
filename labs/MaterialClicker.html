@@ -1,0 +1,859 @@
+<meta charset=utf-8>
+<head>
+    <title>MaterialClicker - WizTools</title>
+    <!--@Detail@‘fÞ‚Ì”‚ð”‚¦‚ç‚ê‚é@-->
+</head>
+<style>
+    .hako{
+        opacity:0.4;
+        font-weight:bold;
+        text-align:center;
+        font-size:50px;
+        float:left;
+        width:60px;
+        height:60px;
+        line-height:60px;
+    }
+    .img{
+        cursor:pointer;
+        background-size:contain;
+    }
+</style>
+
+<body onload=view()></body>
+
+
+<script>
+    muki=1;
+    function plus(a){
+        var tmpInt=a.innerHTML*1+muki;
+        a.innerHTML=tmpInt;
+        a.style.opacity = tmpInt==0 ? "" : 1;
+    }
+    function view(){
+        var tmpStr="";
+        for(var a=1;a<=7;a++){
+            var d=0;
+            var ta=mats.cardDataMap[a].cardData;
+            for(var b=0;b<3;b++){
+                for(var c=0;c<5;c++){
+                    if(c<ta.length/3){
+                        tmpStr+="<div class='hako img' onclick=plus(this) style=background-image:url(http://i.quiz.colopl.jp/img/card/small/"+ta[d].ab+".png);>0</div>"
+                        d++;
+                    }else{
+                        tmpStr+="<div class=hako></div>"
+                    }
+                }
+            }
+            tmpStr+="<br style=clear:both>"
+        }
+        document.body.innerHTML=tmpStr+"<input type=button value=å¢—æ¸›åEã‚Šæ›¿ãEonclick=muki*=-1>";
+    }
+    mats={
+  "cardDataMap": {
+    "1": {
+      "columnNum": 5,
+      "cardData": [
+        {
+          "a": 401,
+          "ab": "card_00401_0",
+          "c": 2,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 21
+        },
+        {
+          "a": 402,
+          "ab": "card_00402_0",
+          "c": 3,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 0
+        },
+        {
+          "a": 403,
+          "ab": "card_00403_0",
+          "c": 4,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 7
+        },
+        {
+          "a": 2216,
+          "ab": "card_02216_0",
+          "c": 5,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 2
+        },
+        {
+          "a": 2217,
+          "ab": "card_02217_0",
+          "c": 6,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 2
+        },
+        {
+          "a": 404,
+          "ab": "card_00404_0",
+          "c": 2,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 24
+        },
+        {
+          "a": 405,
+          "ab": "card_00405_0",
+          "c": 3,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 15
+        },
+        {
+          "a": 406,
+          "ab": "card_00406_0",
+          "c": 4,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 0
+        },
+        {
+          "a": 2218,
+          "ab": "card_02218_0",
+          "c": 5,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 3
+        },
+        {
+          "a": 2219,
+          "ab": "card_02219_0",
+          "c": 6,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 5
+        },
+        {
+          "a": 407,
+          "ab": "card_00407_0",
+          "c": 2,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 25
+        },
+        {
+          "a": 408,
+          "ab": "card_00408_0",
+          "c": 3,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 8
+        },
+        {
+          "a": 409,
+          "ab": "card_00409_0",
+          "c": 4,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 4
+        },
+        {
+          "a": 2220,
+          "ab": "card_02220_0",
+          "c": 5,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 4
+        },
+        {
+          "a": 2221,
+          "ab": "card_02221_0",
+          "c": 6,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 7
+        }
+      ]
+    },
+    "2": {
+      "columnNum": 5,
+      "cardData": [
+        {
+          "a": 392,
+          "ab": "card_00392_0",
+          "c": 2,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 18
+        },
+        {
+          "a": 393,
+          "ab": "card_00393_0",
+          "c": 4,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 10
+        },
+        {
+          "a": 394,
+          "ab": "card_00394_0",
+          "c": 5,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 7
+        },
+        {
+          "a": 2210,
+          "ab": "card_02210_0",
+          "c": 6,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 15
+        },
+        {
+          "a": 2211,
+          "ab": "card_02211_0",
+          "c": 7,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 5
+        },
+        {
+          "a": 395,
+          "ab": "card_00395_0",
+          "c": 2,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 0
+        },
+        {
+          "a": 396,
+          "ab": "card_00396_0",
+          "c": 4,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 1
+        },
+        {
+          "a": 397,
+          "ab": "card_00397_0",
+          "c": 5,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 0
+        },
+        {
+          "a": 2212,
+          "ab": "card_02212_0",
+          "c": 6,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 3
+        },
+        {
+          "a": 2213,
+          "ab": "card_02213_0",
+          "c": 7,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 1
+        },
+        {
+          "a": 398,
+          "ab": "card_00398_0",
+          "c": 2,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 14
+        },
+        {
+          "a": 399,
+          "ab": "card_00399_0",
+          "c": 4,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 40
+        },
+        {
+          "a": 400,
+          "ab": "card_00400_0",
+          "c": 5,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 5
+        },
+        {
+          "a": 2214,
+          "ab": "card_02214_0",
+          "c": 6,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 22
+        },
+        {
+          "a": 2215,
+          "ab": "card_02215_0",
+          "c": 7,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 4
+        }
+      ]
+    },
+    "3": {
+      "columnNum": 5,
+      "cardData": [
+        {
+          "a": 374,
+          "ab": "card_00374_0",
+          "c": 2,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 28
+        },
+        {
+          "a": 375,
+          "ab": "card_00375_0",
+          "c": 4,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 3
+        },
+        {
+          "a": 376,
+          "ab": "card_00376_0",
+          "c": 5,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 6
+        },
+        {
+          "a": 2198,
+          "ab": "card_02198_0",
+          "c": 6,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 0
+        },
+        {
+          "a": 2199,
+          "ab": "card_02199_0",
+          "c": 7,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 3
+        },
+        {
+          "a": 377,
+          "ab": "card_00377_0",
+          "c": 2,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 16
+        },
+        {
+          "a": 378,
+          "ab": "card_00378_0",
+          "c": 4,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 11
+        },
+        {
+          "a": 379,
+          "ab": "card_00379_0",
+          "c": 5,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 3
+        },
+        {
+          "a": 2200,
+          "ab": "card_02200_0",
+          "c": 6,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 4
+        },
+        {
+          "a": 2201,
+          "ab": "card_02201_0",
+          "c": 7,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 6
+        },
+        {
+          "a": 380,
+          "ab": "card_00380_0",
+          "c": 2,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 7
+        },
+        {
+          "a": 381,
+          "ab": "card_00381_0",
+          "c": 4,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 7
+        },
+        {
+          "a": 382,
+          "ab": "card_00382_0",
+          "c": 5,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 4
+        },
+        {
+          "a": 2202,
+          "ab": "card_02202_0",
+          "c": 6,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 4
+        },
+        {
+          "a": 2203,
+          "ab": "card_02203_0",
+          "c": 7,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 6
+        }
+      ]
+    },
+    "4": {
+      "columnNum": 4,
+      "cardData": [
+        {
+          "a": 410,
+          "ab": "card_00410_0",
+          "c": 5,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 18
+        },
+        {
+          "a": 411,
+          "ab": "card_00411_0",
+          "c": 6,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 2
+        },
+        {
+          "a": 412,
+          "ab": "card_00412_0",
+          "c": 7,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 3
+        },
+        {
+          "a": 2222,
+          "ab": "card_02222_0",
+          "c": 8,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 10
+        },
+        {
+          "a": 413,
+          "ab": "card_00413_0",
+          "c": 5,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 7
+        },
+        {
+          "a": 414,
+          "ab": "card_00414_0",
+          "c": 6,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 5
+        },
+        {
+          "a": 415,
+          "ab": "card_00415_0",
+          "c": 7,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 3
+        },
+        {
+          "a": 2224,
+          "ab": "card_02224_0",
+          "c": 8,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 45
+        },
+        {
+          "a": 416,
+          "ab": "card_00416_0",
+          "c": 5,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 7
+        },
+        {
+          "a": 417,
+          "ab": "card_00417_0",
+          "c": 6,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 1
+        },
+        {
+          "a": 418,
+          "ab": "card_00418_0",
+          "c": 7,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 5
+        },
+        {
+          "a": 2226,
+          "ab": "card_02226_0",
+          "c": 8,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 40
+        }
+      ]
+    },
+    "5": {
+      "columnNum": 5,
+      "cardData": [
+        {
+          "a": 383,
+          "ab": "card_00383_0",
+          "c": 2,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 22
+        },
+        {
+          "a": 384,
+          "ab": "card_00384_0",
+          "c": 4,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 1
+        },
+        {
+          "a": 385,
+          "ab": "card_00385_0",
+          "c": 5,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 5
+        },
+        {
+          "a": 2204,
+          "ab": "card_02204_0",
+          "c": 6,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 1
+        },
+        {
+          "a": 2205,
+          "ab": "card_02205_0",
+          "c": 7,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 1
+        },
+        {
+          "a": 386,
+          "ab": "card_00386_0",
+          "c": 2,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 17
+        },
+        {
+          "a": 387,
+          "ab": "card_00387_0",
+          "c": 4,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 17
+        },
+        {
+          "a": 388,
+          "ab": "card_00388_0",
+          "c": 5,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 4
+        },
+        {
+          "a": 2206,
+          "ab": "card_02206_0",
+          "c": 6,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 6
+        },
+        {
+          "a": 2207,
+          "ab": "card_02207_0",
+          "c": 7,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 7
+        },
+        {
+          "a": 389,
+          "ab": "card_00389_0",
+          "c": 2,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 0
+        },
+        {
+          "a": 390,
+          "ab": "card_00390_0",
+          "c": 4,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 24
+        },
+        {
+          "a": 391,
+          "ab": "card_00391_0",
+          "c": 5,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 3
+        },
+        {
+          "a": 2208,
+          "ab": "card_02208_0",
+          "c": 6,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 4
+        },
+        {
+          "a": 2209,
+          "ab": "card_02209_0",
+          "c": 7,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 4
+        }
+      ]
+    },
+    "6": {
+      "columnNum": 3,
+      "cardData": [
+        {
+          "a": 5213,
+          "ab": "card_05213_0",
+          "c": 8,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 2
+        },
+        {
+          "a": 5216,
+          "ab": "card_05216_0",
+          "c": 9,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 16
+        },
+        {
+          "a": 8244,
+          "ab": "card_08244_0",
+          "c": 10,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 0
+        },
+        {
+          "a": 5214,
+          "ab": "card_05214_0",
+          "c": 8,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 24
+        },
+        {
+          "a": 5217,
+          "ab": "card_05217_0",
+          "c": 9,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 43
+        },
+        {
+          "a": 8245,
+          "ab": "card_08245_0",
+          "c": 10,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 4
+        },
+        {
+          "a": 5215,
+          "ab": "card_05215_0",
+          "c": 8,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 2
+        },
+        {
+          "a": 5218,
+          "ab": "card_05218_0",
+          "c": 9,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 8
+        },
+        {
+          "a": 8246,
+          "ab": "card_08246_0",
+          "c": 10,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 0
+        }
+      ]
+    },
+    "7": {
+      "columnNum": 5,
+      "cardData": [
+        {
+          "a": 362,
+          "ab": "card_00362_0",
+          "c": 3,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 2
+        },
+        {
+          "a": 363,
+          "ab": "card_00363_0",
+          "c": 5,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 0
+        },
+        {
+          "a": 364,
+          "ab": "card_00364_0",
+          "c": 7,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 67
+        },
+        {
+          "a": 2782,
+          "ab": "card_02782_0",
+          "c": 9,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 77
+        },
+        {
+          "a": 7609,
+          "ab": "card_07609_0",
+          "c": 10,
+          "d": 0,
+          "bd": -1,
+          "cardCount": 116
+        },
+        {
+          "a": 365,
+          "ab": "card_00365_0",
+          "c": 3,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 10
+        },
+        {
+          "a": 366,
+          "ab": "card_00366_0",
+          "c": 5,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 6
+        },
+        {
+          "a": 367,
+          "ab": "card_00367_0",
+          "c": 7,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 10
+        },
+        {
+          "a": 2783,
+          "ab": "card_02783_0",
+          "c": 9,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 0
+        },
+        {
+          "a": 7610,
+          "ab": "card_07610_0",
+          "c": 10,
+          "d": 1,
+          "bd": -1,
+          "cardCount": 5
+        },
+        {
+          "a": 368,
+          "ab": "card_00368_0",
+          "c": 3,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 0
+        },
+        {
+          "a": 369,
+          "ab": "card_00369_0",
+          "c": 5,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 0
+        },
+        {
+          "a": 370,
+          "ab": "card_00370_0",
+          "c": 7,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 96
+        },
+        {
+          "a": 2784,
+          "ab": "card_02784_0",
+          "c": 9,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 10
+        },
+        {
+          "a": 7611,
+          "ab": "card_07611_0",
+          "c": 10,
+          "d": 2,
+          "bd": -1,
+          "cardCount": 21
+        }
+      ]
+    }
+  }
+}
+</script>
