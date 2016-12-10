@@ -49838,7 +49838,7 @@ Cards = [{
 	ape: "天界の双子 訣別のクロニクル",
 	as1: {
 		desc: "3チェインかつパネルが2色でダメージアップ、3色でさらにアップ(550%/700%)",
-		proc: ChainPanelsAttack(5.5, 7.0, 7.0, 3),
+		proc: ChainPanelsAttack(0, 5.5, 7.0, 3),
 	},
 	ss1: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ、5チェインを消費しさらにダメージアップ(150%/300%)",
@@ -49859,11 +49859,11 @@ Cards = [{
 	],
 	as2: {
 		desc: "3チェインかつパネルが2色でダメージアップ、3色でさらにアップ(650%/800%)",
-		proc: ChainPanelsAttack(6.5, 8.0, 8.0, 3),
+		proc: ChainPanelsAttack(0, 6.5, 8.0, 3),
 	},
 	ss2: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ、5チェインを消費しさらにダメージアップ(220%/440%)",
-		turn: 6,
+		turn: 9,
 		proc: [ss_damage_all(ss_chain_cost(5, 4.4, 2.2), [2, 3]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
@@ -49884,7 +49884,7 @@ Cards = [{
 	ape: "天界の双子 訣別のクロニクル",
 	as1: {
 		desc: "3チェインかつパネルが2色でダメージアップ、3色でさらにアップ(550%/700%)",
-		proc: ChainPanelsAttack(5.5, 7.0, 7.0, 3),
+		proc: ChainPanelsAttack(0, 5.5, 7.0, 3),
 	},
 	ss1: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・闇属性のダメージ、5チェインを消費しさらにダメージアップ(150%/300%)",
@@ -49905,11 +49905,11 @@ Cards = [{
 	],
 	as2: {
 		desc: "3チェインかつパネルが2色でダメージアップ、3色でさらにアップ(650%/800%)",
-		proc: ChainPanelsAttack(6.5, 8.0, 8.0, 3),
+		proc: ChainPanelsAttack(0, 6.5, 8.0, 3),
 	},
 	ss2: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・闇属性のダメージ、5チェインを消費しさらにダメージアップ(220%/440%)",
-		turn: 6,
+		turn: 9,
 		proc: [ss_damage_all(ss_chain_cost(5, 4.4, 2.2), [2, 4]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
