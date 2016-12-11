@@ -47106,49 +47106,48 @@ Cards = [{
 		Statusup(500,0),
 	],
 },{
-	name: "不滅への方程式 ヴィラム・オルゲン",
-	cardno: 7021,
-	imageno: 6490,
-	hp: 3333,
-	atk: 5233,
-	cost: 53,
-	attr: [2,-1],
+	name: "戦場に戻る右腕 ヴィラム・オルゲン",
+	cardno: 7036,
+	imageno: 9033,
+	hp: 4108,
+	atk: 4202,
+	cost: 51,
+	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "空戦のドルキマス 沈まぬ翼",
+	ape: "空戦のドルキマスⅡ 昏き英雄",
 	as1: {
-		desc: "雷属性の味方のHPを回復(11%)、雷属性の味方の攻撃力をアップ(40%)",
-		proc: [Heal(0.11, [0,0,1,0,0], 0), ChainEnhance(0.4, [0,0,1,0,0], 0)],
+		desc: "4チェインでダメージアップ(400%)",
+		proc: ChainAttack(4.0, 4),
 	},
 	ss1: {
-		desc: "<遅延>敵単体の攻撃ターンを1遅らせる",
-		turn: 4,
-		proc: [ss_delay_s(1)],
+		desc: "<弱体化大魔術>スキル反射を無視し、敵全体へ火属性のダメージ(400%)、さらに5ターンの間、敵の防御力を弱体化(30%)",
+		turn: 13,
+		proc: [ss_damage_all(4.0, [0]), ss_attr_weaken_all(null, 0.3, 5), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Fastskill(1),
-		NEFTJOD(30),
-		Panel_boost([0,0,1,0,0,],2),
-		Attr_statusup(0,100, [0,0,1,0,0,]),
-		Attr_statusup(200,0, [0,0,1,0,0,]),
-		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
 		Fastskill(2),
-		Attr_statusup(0,200, [0,0,1,0,0,]),
-		Panel_boost([0,0,1,0,0,],2),
-		Attr_relief([0,0,1,0,0,],20),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
 	],
 	as2: {
-		desc: "味方のMAXHP20%を使い、雷属性の味方の攻撃力をアップ(120%)",
-		proc: [add_cond(ChainEnhance(1.2, [0,0,1,0,0], 0), as_consume_all(0.2))],
+		desc: "4チェインでダメージアップ(500%)",
+		proc: ChainAttack(5.0, 4),
 	},
 	ss2: {
-		desc: "<遅延大魔術>敵単体の攻撃ターンを1遅らせ、雷属性のダメージ(300%)",
-		turn: 5,
-		proc: [ss_delay_s(1), ss_damage_all(3.0, [2])],
+		desc: "<弱体化大魔術>スキル反射を無視し、敵全体へ火属性のダメージ(700%)、さらに5ターンの間、敵の防御力を弱体化(30%)",
+		turn: 16,
+		proc: [ss_damage_all(7.0, [0]), ss_attr_weaken_all(null, 0.3, 5), ss_ignore_skillcounter()],
 	},
 	Lawake: [
-		Statusup(0,500),
-		Statusup(500,0),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
 	],
 },{
 	name: "勝利を支える翼 ペティナ・ロロフ",
@@ -54491,7 +54490,7 @@ Cards = [{
 	ss1: {
 		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・闇属性の5回連続ダメージ。HP20%以下でさらにダメージアップ(200%/1000%)",
 		turn: 4,
-		proc: [ss_damage_s(ss_hp_less(0.2, 10.0, 2.0), [0, 4], 5)],
+		proc: [ss_damage_s(ss_hp_less(0.2, 10.0, 2.0), [0, 4], 5), ss_ignore_skillcounter()],
 	},
 	islegend: true,
 	Lawake: [
@@ -54505,7 +54504,7 @@ Cards = [{
 	ss2: {
 		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・闇属性の5回連続ダメージ。HP20%以下でさらにダメージアップ(400%/1600%)",
 		turn: 6,
-		proc: [ss_damage_s(ss_hp_less(0.2, 16.0, 4.0), [0, 4], 5)],
+		proc: [ss_damage_s(ss_hp_less(0.2, 16.0, 4.0), [0, 4], 5), ss_ignore_skillcounter()],
 	},
 }, {
 	name: "AbCd-Λ:《冥黙の白鴉 ニレイヌ》",
@@ -54916,8 +54915,7 @@ Cards = [{
 		Statusup(500, 0),
 		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
 	],
-},
-{
+}, {
 	name: "星の女神 サフィナ・ファウト",
 	cardno: 7516,
 	imageno: 9559,
@@ -54962,8 +54960,7 @@ Cards = [{
 	Lawake: [
 		Statusup(1000, 0),
 	],
-},
-{
+}, {
 	name: "撃砕の親父力 ドルティ・ローム",
 	cardno: 7538,
 	imageno: 9577,
@@ -55008,8 +55005,7 @@ Cards = [{
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
 		Abstate_invalid("ss_sealed"),
 	],
-},
-{
+}, {
 	name: "神の、なれの果て",
 	cardno: 7535,
 	imageno: 9599,
@@ -55037,7 +55033,7 @@ Cards = [{
 		proc: [ChainEnhance_SubAttr(0.3, 0.8, [1,0,0,0,0], [0,0,0,1,0], 3)],
 	},
 	ss1: {
-		desc: "	<特効大魔術>敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ、5チェインを消費しさらに特効ダメージ(300%/800%/1300%)",
+		desc: "<特効大魔術>敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ、5チェインを消費しさらに特効ダメージ(300%/800%/1300%)",
 		turn: 6,
 		proc: [ss_chain_cost_skill(5, ss_damage_s(special_attr([0,0,1,0,0], 13.0, 3.0), [2], 1), ss_damage_s(special_attr([0,0,1,0,0], 8.0, 3.0), [2], 1))],
 	},
@@ -55054,11 +55050,10 @@ Cards = [{
 		Attr_statusup(0, 200, [1, 0, 0, 0, 0, ]),
 		Statusup(0, 400),
 	],
-},
-{
+}, {
 	name: "全て救済する神 ウルディラ・フレド",
 	cardno: 7531,
-	imageno: -1,
+	imageno: 9574,
 	hp: 4032,
 	atk: 2385,
 	cost: 40,
