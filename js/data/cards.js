@@ -54873,7 +54873,7 @@ Cards = [{
 }, {
 	name: "聖 シャイア・フラクタル",
 	cardno: 7519,
-	imageno: -1,
+	imageno: 9562,
 	hp: 4468,
 	atk: 2334,
 	cost: 50,
@@ -54920,7 +54920,7 @@ Cards = [{
 {
 	name: "星の女神 サフィナ・ファウト",
 	cardno: 7516,
-	imageno: -1,
+	imageno: 9559,
 	hp: 4673,
 	atk: 2359,
 	cost: 43,
@@ -54966,7 +54966,7 @@ Cards = [{
 {
 	name: "撃砕の親父力 ドルティ・ローム",
 	cardno: 7538,
-	imageno: -1,
+	imageno: 9577,
 	hp: 3103,
 	atk: 4336,
 	cost: 46,
@@ -55012,7 +55012,7 @@ Cards = [{
 {
 	name: "神の、なれの果て",
 	cardno: 7535,
-	imageno: -1,
+	imageno: 9599,
 	hp: 2339,
 	atk: 3312,
 	cost: 46,
@@ -55033,8 +55033,7 @@ Cards = [{
 		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,100, [0,0,0,1,0,]),
 	],
 	as1: {
-		desc: "3チェインで火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(30%/80%)
-",
+		desc: "3チェインで火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(30%/80%)",
 		proc: [ChainEnhance_SubAttr(0.3, 0.8, [1,0,0,0,0], [0,0,0,1,0], 3)],
 	},
 	ss1: {
@@ -55105,7 +55104,7 @@ Cards = [{
 {
 	name: "不倒の信仰 エレンディ・トゥオノ",
 	cardno: 7527,
-	imageno: -1,
+	imageno: 9566,
 	hp: 4224,
 	atk: 2016,
 	cost: 39,
@@ -55151,7 +55150,7 @@ Cards = [{
 {
 	name: "醜悪なる魔物の顕現 モーノー",
 	cardno: 7523,
-	imageno: -1,
+	imageno: 9570,
 	hp: 2538,
 	atk: 3544,
 	cost: 38,
