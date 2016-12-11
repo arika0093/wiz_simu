@@ -489,7 +489,7 @@ Cards = [{
 	ss2: {
 		desc: "<遅延大魔術>敵単体の攻撃ターンを1遅らせ、火属性のダメージ(180％)",
 		turn: 6,
-		proc: [ss_damage_all(1.8, [0]), ss_delay_s(1)],
+		proc: [ss_damage_s(1.8, [0]), ss_delay_s(1)],
 	},
 }, {
 	name: "死界の焔 ヴィヴィ&イザヴェリ",
@@ -2928,7 +2928,7 @@ Cards = [{
 	ss2: {
 		desc: "<遅延大魔術>敵単体の攻撃ターンを1遅らせ、火属性のダメージ(180％)",
 		turn: 8,
-		proc: [ss_damage_all(1.8, [0]), ss_delay_s(1)],
+		proc: [ss_damage_s(1.8, [0]), ss_delay_s(1)],
 	},
 }, {
 	name: "空の昏き英雄 ディートリヒ・ベルク",
@@ -11749,7 +11749,7 @@ Cards = [{
 	ss2: {
 		desc: "<遅延大魔術>敵単体の攻撃ターンを1遅らせ、雷属性のダメージ(180％)",
 		turn: 6,
-		proc: [ss_damage_all(1.8, [0,0,1,0,0]), ss_delay_s(1)],
+		proc: [ss_damage_s(1.8, [0,0,1,0,0]), ss_delay_s(1)],
 	},
 }, {
 	name: "宗匠紋章師 エトワール・ブリュネ",
@@ -17875,6 +17875,7 @@ Cards = [{
 }, {
 	name: "調香術の歴史を記す ロニール・クム",
 	cardno: 89004,
+	//cardno: 5490,
 	imageno: 7280,
 	hp: 3888,
 	atk: 2789,
@@ -17910,7 +17911,7 @@ Cards = [{
 	ss2: {
 		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、ダメージ軽減(25%)・スキルチャージ(1)・チェイン(2)・攻撃力アップ(50%)の効果をランダムで付与",
 		turn: 7,
-		proc: [ss_panel_change([0,1,1,0,0]),/*軽減(25%),*/panel_skillboost(1), panel_chainplus(2), panel_attackup(0.5)],
+		proc: [ss_panel_change([0,1,1,0,0]),panel_attr_guard([1,1,1,1,1], 0.25),panel_skillboost(1), panel_chainplus(2), panel_attackup(0.5)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,1,1,0,0,]),
@@ -19220,7 +19221,7 @@ Cards = [{
 	ss1: {
 		desc: "<特殊パネル変換>ジャンルパネルにダメージ軽減(25%)、スキルチャージ(1)、チェイン(2)、攻撃力アップ(50%)の効果をランダムで付与",
 		turn: 5,
-		proc: [panel_chainplus(2), panel_skillboost(1), panel_attackup(0.5)],
+		proc: [panel_attr_guard([1,1,1,1,1], 0.25), panel_skillboost(1), panel_chainplus(2), panel_attackup(0.5)],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
@@ -19241,7 +19242,7 @@ Cards = [{
 	ss2: {
 		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、ダメージ軽減(25%)、スキルチャージ(1)、チェイン(2)、攻撃力アップ(50%)の効果をランダムで付与",
 		turn: 7,
-		proc: [ss_panel_change([1,0,1,0,0]), panel_chainplus(2), panel_skillboost(1), panel_attackup(0.5)],
+		proc: [ss_panel_change([1,0,1,0,0]),panel_attr_guard([1,1,1,1,1], 0.25), panel_skillboost(1), panel_chainplus(2), panel_attackup(0.5)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,1,0,0,]),
@@ -20289,7 +20290,7 @@ Cards = [{
 	ss1: {
 		desc: "<特殊パネル変換>ジャンルパネルにダメージ軽減(25%)、スキルチャージ(1)、チェイン(2)、攻撃力アップ(50%)の効果をランダムで付与",
 		turn: 6,
-		proc: [panel_chainplus(2), panel_skillboost(1), panel_attackup(0.50)],
+		proc: [panel_attr_guard([1,1,1,1,1], 0.25), panel_skillboost(1), panel_chainplus(2), panel_attackup(0.50)],
 	},
 	awakes: [
 		Fastskill(1),
@@ -20310,7 +20311,7 @@ Cards = [{
 	ss2: {
 		desc: "<特殊パネル変換>ジャンルパネルを火・闇属性化し、ダメージ軽減(25%)、スキルチャージ(1)、チェイン(2)、攻撃力アップ(50%)の効果をランダムで付与",
 		turn: 8,
-		proc: [ss_panel_change([1,0,0,0,1]), panel_chainplus(2), panel_skillboost(1), panel_attackup(0.50)],
+		proc: [ss_panel_change([1,0,0,0,1]), panel_attr_guard([1,1,1,1,1], 0.25), panel_skillboost(1), panel_chainplus(2), panel_attackup(0.50)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,0,0,0,]),
@@ -22516,7 +22517,7 @@ Cards = [{
 	ss1: {
 		desc: "<特殊パネル変換>ジャンルパネルにダメージ軽減(25%)、スキルチャージ(1)、チェイン(2)、攻撃力アップ(50%)の効果をランダムで付与",
 		turn: 6,
-		proc: [panel_skillboost(1), panel_chainplus(2), panel_attackup(0.50)],
+		proc: [panel_attr_guard([1,1,1,1,1], 0.25), panel_skillboost(1), panel_chainplus(2), panel_attackup(0.50)],
 	},
 	awakes: [
 		Panel_boost([0, 1, 0, 0, 0, ], 2),
@@ -22537,7 +22538,7 @@ Cards = [{
 	ss2: {
 		desc: "<特殊パネル変換>ジャンルパネルにダメージ軽減(50%)、スキルチャージ(2)、チェイン(4)、攻撃力アップ(50%)の効果をランダムで付与",
 		turn: 10,
-		proc: [panel_skillboost(2), panel_chainplus(4), panel_attackup(0.50)],
+		proc: [panel_attr_guard([1,1,1,1,1], 0.50), panel_skillboost(2), panel_chainplus(4), panel_attackup(0.50)],
 	},
 	Lawake: [
 		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
@@ -25805,7 +25806,7 @@ Cards = [{
 	ss2: {
 		desc: "<特殊パネル変換>ジャンルパネルを火・水属性化し、ダメージ軽減(25%)・スキルチャージ(1)・チェイン(2)・攻撃力アップ(50%)の効果をランダムで付与",
 		turn: 7,
-		proc: [ss_panel_change([1,1,0,0,0]), panel_skillboost(1), panel_chainplus(2), panel_attackup(0.50)],
+		proc: [ss_panel_change([1,1,0,0,0]), panel_attr_guard([1,1,1,1,1], 0.25), panel_skillboost(1), panel_chainplus(2), panel_attackup(0.50)],
 	},
 	Lawake: [
 		Attr_statusup(0, 200, [1, 1, 0, 0, 0, ]),
@@ -37493,7 +37494,7 @@ Cards = [{
 	ss1: {
 		desc: "<特殊パネル変換>ジャンルパネルを雷属性化し、ダメージ軽減(25%)・スキルチャージ(1)・チェイン(2)・攻撃力アップ(50)の効果をランダムで付与",
 		turn: 8,
-		proc: [panel_attackup(0.50), panel_chainplus(2), panel_skillboost(1), panel_attr_guard([1,1,1,1,1], 0.25)],
+		proc: [ss_panel_change([0,0,1,0,0]), panel_attackup(0.50), panel_chainplus(2), panel_skillboost(1), panel_attr_guard([1,1,1,1,1], 0.25)],
 	},
 	awakes: [
 		Awake_noeffect("経験値取得量アップ", 1),
@@ -43747,7 +43748,7 @@ Cards = [{
 	ss2: {
 		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、ダメージ軽減(35%)・スキルチャージ(2)・チェイン(5)・攻撃力アップ(100%)の効果をランダムで付与",
 		turn: 10,
-		proc: [panel_attr_guard([1,1,1,1,1], 0.35), panel_skillboost(2), panel_chainplus(5), panel_attackup(1.0)],
+		proc: [ss_panel_change([1,0,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.35), panel_skillboost(2), panel_chainplus(5), panel_attackup(1.0)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,1,0,0,]),
@@ -46515,48 +46516,49 @@ Cards = [{
 		Statusup(0,1000),
 	],
 },{
-	name: "戦場に戻る右腕 ヴィラム・オルゲン",
-	cardno: 7036,
-	imageno: 9033,
-	hp: 4108,
-	atk: 4202,
-	cost: 51,
-	attr: [0,-1],
+	name: "不滅への方程式 ヴィラム・オルゲン",
+	cardno: 7021,
+	imageno: 6490,
+	hp: 3333,
+	atk: 5233,
+	cost: 53,
+	attr: [2,-1],
 	species: [8],
 	islegend: true,
-	ape: "空戦のドルキマスⅡ 昏き英雄",
+	ape: "空戦のドルキマス 沈まぬ翼",
 	as1: {
-		desc: "4チェインでダメージアップ(400%)",
-		proc: ChainAttack(4.0, 4),
+		desc: "雷属性の味方のHPを回復(11%)、雷属性の味方の攻撃力をアップ(40%)",
+		proc: [Heal(0.11, [0,0,1,0,0], 0), ChainEnhance(0.4, [0,0,1,0,0], 0)],
 	},
 	ss1: {
-		desc: "<弱体化大魔術>スキル反射を無視し、敵全体へ火属性のダメージ(400%)、さらに5ターンの間、敵の防御力を弱体化(30%)",
-		turn: 13,
-		proc: [ss_damage_all(4.0, [0]), ss_attr_weaken_all(null, 0.3, 5), ss_ignore_skillcounter()],
+		desc: "<遅延>敵単体の攻撃ターンを1遅らせる",
+		turn: 4,
+		proc: [ss_delay_s(1)],
 	},
 	awakes: [
 		Fastskill(1),
-		Panel_boost([1,0,0,0,0,],2),
-		Attr_relief([1,1,1,1,1,],10),
-		Attr_statusup(100,0, [1,0,0,0,0,]),
-		Panel_boost([1,0,0,0,0,],2),
-		Attr_statusup(0,100, [1,0,0,0,0,]),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		NEFTJOD(30),
 		Fastskill(2),
-		Attr_statusup(200,0, [1,0,0,0,0,]),
-		Attr_statusup(0,200, [1,0,0,0,0,]),
-		Abstate_invalid(["as_sealed", "ss_sealed"]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_relief([0,0,1,0,0,],20),
 	],
 	as2: {
-		desc: "4チェインでダメージアップ(500%)",
-		proc: ChainAttack(5.0, 4),
+		desc: "味方のMAXHP20%を使い、雷属性の味方の攻撃力をアップ(120%)",
+		proc: [add_cond(ChainEnhance(1.2, [0,0,1,0,0], 0), as_consume_all(0.2))],
 	},
 	ss2: {
-		desc: "<弱体化大魔術>スキル反射を無視し、敵全体へ火属性のダメージ(700%)、さらに5ターンの間、敵の防御力を弱体化(30%)",
-		turn: 16,
-		proc: [ss_damage_all(7.0, [0]), ss_attr_weaken_all(null, 0.3, 5), ss_ignore_skillcounter()],
+		desc: "<遅延大魔術>敵単体の攻撃ターンを1遅らせ、雷属性のダメージ(300%)",
+		turn: 5,
+		proc: [ss_delay_s(1), ss_damage_s(3.0, [2])],
 	},
 	Lawake: [
-		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Statusup(0,500),
+		Statusup(500,0),
 	],
 },{
 	name: "叛逆の大元帥 ディートリヒ・ベルク",
@@ -54071,7 +54073,7 @@ Cards = [{
 	ss1: {
 		desc: "<時限大魔術>スキル反射を無視し、3ターン後に敵単体へ雷属性ダメージ(1000%)(上限設置数:5)",
 		turn: 2,
-		proc: [ss_damage_timebomb(10, [2], 1, 3)],
+		proc: [ss_damage_timebomb(10, [2], 1, 3), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],1),
@@ -54092,12 +54094,12 @@ Cards = [{
 	ss2: {
 		desc: "<時限大魔術>スキル反射を無視し、3ターン後に敵単体へ雷属性ダメージ(2000%)(上限設置数:5)",
 		turn: 3,
-		proc: [ss_damage_timebomb(20, [2], 1, 3)],
+		proc: [ss_damage_timebomb(20, [2], 1, 3), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [0,0,1,0,0,]),
 	],
-},{
+}, {
 	name: "聖なる夜空を渡る ヒカリ・スフィア",
 	cardno: 7501,
 	imageno: 9544,
@@ -54868,4 +54870,328 @@ Cards = [{
 		turn: 7,
 		proc: [ss_break_attackcounter("all"), ss_damage_all(ss_hp_less(0.20, 9.0, 3.0), ss_hp_less_skill(0.2, ss_break_skillcounter("all")))],
 	},
-},];
+}, {
+	name: "聖 シャイア・フラクタル",
+	cardno: 7519,
+	imageno: -1,
+	hp: 4468,
+	atk: 2334,
+	cost: 50,
+	attr: [0,1],
+	species: [9],
+	islegend: true,
+	ape: "聖なる空のエステレラ 星めぐりの物語",
+	awakes: [
+		Awake_noeffect("経験値取得量アップ", 1),
+		Panel_boost([1, 0, 0, 0, 0, ], 1),
+		Fastskill(1),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Fastskill(2),
+		Spec_statusup(200, 0, [9, ]),
+		Abstate_invalid("ss_sealed"),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 100,0, [0,1,0,0,0,]),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,100, [0,1,0,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as1: {
+		desc: "4チェインで火属性の攻撃力をアップ、複属性が水属性だとさらにアップ(50%/100%)",
+		proc: [ChainEnhance_SubAttr(0.5, 1.0, [1,0,0,0,0], [0,1,0,0,0], 4)],
+	},
+	ss1: {
+		desc: "<状態異常無効>5ターン溜めた後、8ターン敵の状態異常を無効化する",
+		turn: 3,
+		charged:5,
+		proc: [ss_absattack_disable(8)],
+	},
+	as2: {
+		desc: "4チェインで火属性の攻撃力をアップ、複属性が水属性だとさらにアップ(80%/130%)",
+		proc: [ChainEnhance_SubAttr(0.8, 1.3, [1,0,0,0,0], [0,1,0,0,0], 4)],
+	},
+	ss2: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20%)",
+		turn: 8,
+		proc: [ss_regenerate(0.20, 5)],
+	},
+	Lawake: [
+		Statusup(500, 0),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+	],
+},
+{
+	name: "星の女神 サフィナ・ファウト",
+	cardno: 7516,
+	imageno: -1,
+	hp: 4673,
+	atk: 2359,
+	cost: 43,
+	attr: [1,-1],
+	species: [1],
+	islegend: true,
+	ape: "聖なる空のエステレラ 星めぐりの物語",
+	awakes: [
+		Fastskill(1),
+		Statusup(200, 0),
+		NEFTJOD(30),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Spec_statusup(0, 200, [1, ]),
+		Attr_relief([1,0,0,0,0,],10),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Spec_statusup(200, 0, [1, ]),
+		Attr_statusup(0, 200, [0, 1, 0, 0, 0, ]),
+		Attr_statusup(200, 0, [0, 1, 0, 0, 0, ]),
+	],
+	as1: {
+		desc: "5チェインで水属性の味方のHPを回復(10%)、さらに攻撃力をアップ(60%)",
+		proc: [Heal(0.10, [0,1,0,0,0], 5), ChainEnhance(0.60, [0,1,0,0,0], 5)],
+	},
+	ss1: {
+		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し(15%)、味方の攻撃力をアップ(100%)◆発動中行動不可",
+		turn: 1,
+		proc: [ss_reinforcement_all(4, [ss_enhance_all(1, 4, [1,1,1,1,1], "RF"), ss_regenerate(0.15, 4, "RF")])],
+	
+	},
+	as2: {
+		desc: "5チェインで水属性の味方のHPを回復(10%)、さらに攻撃力をアップ(90%)",
+		proc: [Heal(0.10, [0,1,0,0,0], 5), ChainEnhance(0.90, [0,1,0,0,0], 5)],
+	},
+	ss2: {
+		desc: "<精霊強化>4ターンの間、味方全体のダメージを軽減(30%)◆発動中行動不可",
+		turn: 6,
+		proc: [ss_reinforcement_all(4, [ss_attr_guard([1,1,1,1,1], 0.3, 4, "RF")])],
+	},
+	Lawake: [
+		Statusup(1000, 0),
+	],
+},
+{
+	name: "撃砕の親父力 ドルティ・ローム",
+	cardno: 7538,
+	imageno: -1,
+	hp: 3103,
+	atk: 4336,
+	cost: 46,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "聖なる空のエステレラ 星めぐりの物語",
+	awakes: [
+		Statusup(0, 200),
+		Attr_relief([1,1,1,1,1,],10),
+		Statusup(200, 0),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Spec_statusup(0, 200, [9, ]),
+		Spec_statusup(200, 0, [9, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+	],
+	as1: {
+		desc: "10チェインでダメージアップ(700%)",
+		proc: [ChainAttack(7.0, 10)],
+	},
+	ss1: {
+		desc: "<弱体化大魔術>敵単体へ雷属性のダメージ(400%)、さらに5ターンの間、敵の防御力を弱体化、5チェインを消費しさらに弱体化(20%/30%)",
+		turn: 7,
+		proc: [ss_damage_s(4.0, [2], 1),ss_attr_weaken_s([1,1,1,1,1], ss_chain_cost_skill(5,0.3,0.2) , 5)],
+	},
+	as2: {
+		desc: "10チェインでダメージアップ(800%)",
+		proc: [ChainAttack(8.0, 10)],
+	},
+	ss2: {
+		desc: "<弱体化大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ(800%)、さらに10ターンの間、敵の防御力を弱体化、5チェインを消費しさらに弱体化(20%/30%)",
+		turn: 12,
+		proc: [ss_damage_s(8.0, [2], 1), ss_attr_weaken_s([1, 1, 1, 1, 1], ss_chain_cost_skill(5,0.3,0.2) , 10), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Abstate_invalid("ss_sealed"),
+	],
+},
+{
+	name: "神の、なれの果て",
+	cardno: 7535,
+	imageno: -1,
+	hp: 2339,
+	atk: 3312,
+	cost: 46,
+	attr: [0,3],
+	species: [1],
+	islegend: true,
+	ape: "聖なる空のエステレラ 星めぐりの物語",
+	awakes: [
+		Statusup(0, 200),
+		Attr_relief([0,0,0,0,1,],10),
+		Panel_boost([1, 0, 0, 0, 0, ], 1),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Fastskill(2),
+		Spec_statusup(200, 0, [1, ]),
+		Spec_statusup(0, 200, [1, ]),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,100, [0,0,0,1,0,]),
+	],
+	as1: {
+		desc: "3チェインで火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(30%/80%)
+",
+		proc: [ChainEnhance_SubAttr(0.3, 0.8, [1,0,0,0,0], [0,0,0,1,0], 3)],
+	},
+	ss1: {
+		desc: "	<特効大魔術>敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ、5チェインを消費しさらに特効ダメージ(300%/800%/1300%)",
+		turn: 6,
+		proc: [ss_chain_cost_skill(5, ss_damage_s(special_attr([0,0,1,0,0], 13.0, 3.0), [2], 1), ss_damage_s(special_attr([0,0,1,0,0], 8.0, 3.0), [2], 1))],
+	},
+	as2: {
+		desc: "3チェインで火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(60%/110%)",
+		proc: [ChainEnhance_SubAttr(0.6, 1.1, [1,0,0,0,0], [0,0,0,1,0], 3)],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ、5チェインを消費しさらに特効ダメージ(500%/1000%/2000%)",
+		turn: 9,
+		proc: [ss_chain_cost_skill(5, ss_damage_s(special_attr([0,0,1,0,0], 20.0, 5.0), [2], 1), ss_damage_s(special_attr([0,0,1,0,0], 10.0, 5.0), [2], 1))],
+	},
+	Lawake: [
+		Attr_statusup(0, 200, [1, 0, 0, 0, 0, ]),
+		Statusup(0, 400),
+	],
+},
+{
+	name: "全て救済する神 ウルディラ・フレド",
+	cardno: 7531,
+	imageno: -1,
+	hp: 4032,
+	atk: 2385,
+	cost: 40,
+	attr: [1,-1],
+	species: [1],
+	islegend: true,
+	ape: "聖なる空のエステレラ 星めぐりの物語",
+	awakes: [
+		Fastskill(1),
+		Statusup(0, 100),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Statusup(100, 0),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Statusup(0, 200),
+		Fastskill(2),
+		Statusup(200, 0),
+		Spec_statusup(0, 200, [1, ]),
+		Spec_statusup(100, 0, [1, ]),
+	],
+	as1: {
+		desc: "水属性の味方の攻撃力をアップ、神族はさらにアップ(20%/70%)",
+		proc: [ChainEnhance(0.20, [0,1,0,0,0], 0), ChainSpecEnhance(0.70, [0,1,0,0,0], [1], 0)],
+	},
+	ss1: {
+		desc: "<起死回生>1ターン、致死ダメージを受けたら一度だけHP10%で起死回生",
+		turn: 8,
+		proc: [ss_revival(0.10, 1)],
+	},
+	as2: {
+		desc: "水属性の味方の攻撃力をアップ、神族はさらにアップ(50%/100%)",
+		proc: [ChainEnhance(0.50, [0,1,0,0,0], 0), ChainSpecEnhance(1.00, [0,1,0,0,0], [1], 0)],
+	},
+	ss2: {
+		desc: "<起死回生>2ターン、致死ダメージを受けたら一度だけHP10%で起死回生",
+		turn: 10,
+		proc: [ss_revival(0.10, 2)],
+	},
+	Lawake: [
+		Statusup(400, 0),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+	],
+},
+{
+	name: "不倒の信仰 エレンディ・トゥオノ",
+	cardno: 7527,
+	imageno: -1,
+	hp: 4224,
+	atk: 2016,
+	cost: 39,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "聖なる空のエステレラ 星めぐりの物語",
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Attr_relief([0,0,1,0,0,],10),
+		NEFTJOD(30),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "雷属性の味方の攻撃力をアップ(20%)し、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.2, [0,0,1,0,0], 0), as_guard(0.1, [1,1,1,1,1], 0)],
+	},
+	ss1: {
+		desc: "<解答削り>解答選択肢を1つ削り、3チェインを消費し解答を見破る",
+		turn: 4,
+		proc: [ss_chain_cost_skill(3, ss_answer_foresight(), ss_answer_narrow(1))],
+	},
+	as2: {
+		desc: "雷属性の味方の攻撃力をアップ(40%)し、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.4, [0,0,1,0,0], 0), as_guard(0.1, [1,1,1,1,1], 0)],
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 7,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Statusup(400, 0),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+	],
+},
+{
+	name: "醜悪なる魔物の顕現 モーノー",
+	cardno: 7523,
+	imageno: -1,
+	hp: 2538,
+	atk: 3544,
+	cost: 38,
+	attr: [1,-1],
+	species: [7],
+	islegend: true,
+	ape: "聖なる空のエステレラ 星めぐりの物語",
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Statusup(0, 100),
+		Statusup(100, 0),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Fastskill(1),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Fastskill(2),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+	],
+	as1: {
+		desc: "火属性の敵単体へ特効5連撃(350%)",
+		proc: [ChainDualAttrAttack(3.5, 0, 5, [1,0,0,0,0])],
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水属性の10回連続ダメージ(200%)",
+		turn: 6,
+		proc: [ss_damage_s(2.0, [1], 10), ss_ignore_skillcounter()],
+	},
+	as2: {
+		desc: "火属性の敵単体へ特効5連撃(450%)",
+		proc: [ChainDualAttrAttack(4.5, 0, 5, [1,0,0,0,0])],
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水属性の10回連続ダメージ(400%)",
+		turn: 9,
+		proc: [ss_damage_s(4.0, [1], 10), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0, 400),
+		Statusup(400, 0),
+	],
+},
+];
