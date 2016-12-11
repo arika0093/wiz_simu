@@ -363,7 +363,7 @@ var SpSkill = {
 		};
 		for (var tg = 0; tg < enemys.length; tg++) {
 			var en = enemys[tg];
-			if (en.nowhp <= 0) { return; }
+			if (en.nowhp <= 0) { continue; }
 			en.turn_effect.push($.extend(true, {}, teff_obj));
 			// SSフラグを立てる
 			en.flags.is_ss_attack = true;
