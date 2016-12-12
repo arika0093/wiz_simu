@@ -1,0 +1,148 @@
+﻿<head>
+	<title>HP計算機 - WizTools</title>
+	<meta charset=utf-8>
+	<!--@Detail@任意のLvでのHPを計算@-->
+	<style>
+		.valArea{
+			width:80px;
+		}
+		.jInput{
+			width:30px;
+		}
+		.appearLink{
+			cursor:pointer;
+			color:blue;
+			text-decoration:underline;
+		}
+	</style>
+	<script>
+		var expTable=[0,0,6,13,21,29,38,48,58,69,81,94,120,160,216,291,388,512,664,848,1067,1324,1600,1893,2206,2539,2892,3268,3660,4072,4502,4952,5424,5924,6454,7013,7603,8223,8873,9555,10268,11013,11788,12604,13460,14360,15305,16296,17336,18424,19564,20757,22001,23328,24747,26264,27889,29629,31492,33487,35620,37901,40273,42753,45342,48040,50849,53769,56801,59946,63204,66427,69814,73374,77116,81048,85181,89525,94090,98888,103931,109231,114801,120655,126808,133275,140072,147215,154722,162612,170905,179214,187539,195580,204237,212610,220999,229404,237825,246262,254715,263184,271669,280170,288688,297223,305775,314344,322930,331533,340153];
+		function nLvHp(x, HP1, HPmax, mana){
+			return Math.floor((HP1)+(HPmax-HP1)/109*(x-1))+mana
+		}
+		function loadJoken(){
+			ids=[
+				"1n0",
+				"2n0",
+				"2n1",
+				"5n0",
+				"10n0",
+				"10n5",
+				"nandemo",
+			]
+			for(var myId=0; myId<ids.length; myId++){
+				if(document.form1[ids[myId]].checked){
+					return (ids[myId])
+				}
+			}
+		}
+		function needExp(lv, nExp){
+			return expTable[lv]-nExp
+		}
+		grimoireTable=[
+			[390222,"<font color=blue>自属性L猫"],
+			[312178,"<font color=red>他属性L猫"],
+			[61340,"<font color=blue>自属性SS+書"],
+			[49072,"<font color=red>他属性SS+書"],
+			[45345,"<font color=blue>自属性SS書"],
+			[36348,"<font color=red>他属性SS書"],
+			[15776,"<font color=blue>自属性S書"],
+			[12621,"<font color=red>他属性S書"],
+			[7723,"<font color=blue>自属性A書"],
+			[6179,"<font color=red>他属性A書"],
+			[2905,"<font color=blue>自属性B+書"],
+			[2324,"<font color=red>他属性B+書"],
+		]
+		function calcRecipe(lv){
+			var vNowExp=document.getElementById("nowExp").value*1;
+			var res="<h2>レシピ：</h2>"
+			var vNeedExp=needExp(lv, vNowExp);
+			var vNgExp;
+			if(lv!=110){
+				var vNgExp=needExp(lv+1, vNowExp);
+			}else{
+				var vNgExp=9999999;
+			}
+			res+="現在のExp:"+vNowExp+"<br>"
+			res+="目標Lv:"+lv+"<br>"
+			res+="必要なExp："+vNeedExp+"<br>"
+			res+="目標Lv+1になるExp："+vNgExp+"<br>"
+
+			var vvNowExp=0;
+			var resMain="<table border=1><tr><td>素材名</td><td>必要数</td></tr>"
+			for(var gtn=0; gtn<grimoireTable.length; gtn++){
+				var nowCount=0;
+				while(vNgExp>grimoireTable[gtn][0] && vvNowExp<vNeedExp){
+					vNgExp-=grimoireTable[gtn][0]
+					vvNowExp+=grimoireTable[gtn][0]
+					nowCount++;
+				}
+				if(nowCount!=0){
+					resMain+="<tr><td>"+grimoireTable[gtn][1]+"</td><td>"+nowCount+"</td></tr>"
+				}
+			}
+			resMain+="</table>合計Exp:"+vvNowExp
+			if(vvNowExp==0){
+				resMain="魔導書で該当のExpにすることはできませんでした。。"
+			}
+			res+=resMain;
+			recipe.innerHTML=res;
+		}
+		function calc(){
+			var vMaxLvHp=maxLvHp.value*1;
+			var vMaxLv=maxLv.value*1;
+			var vNowMana=nowMana.value*1;
+			var vMinLvHp=minLvHp.value*1;
+			var vNowExp=nowExp.value*1;
+			var joken=loadJoken();
+			if(joken!="nandemo"){
+				jokenArray=joken.split("n")
+			}else{
+				jokenArray=[joken1.value, joken2.value]
+			}
+			res="";
+			res+="<div id=recipe></div>"
+			res+="<h2>HP一覧</h2>"
+			res+="<table border=1><tr><td>Lv</td><td>HP</td><td>必要Exp</td><td>レシピ</td></tr>"
+			var nowLvHp;
+			for(var lv=vMaxLv; lv>0; lv--){
+				nowLvHp=nLvHp(lv, vMinLvHp, vMaxLvHp, vNowMana);
+				if((nowLvHp-jokenArray[1]*1)%(jokenArray[0]*1)==0){
+					res+="<tr><td>"+lv+"</td><td>"+nowLvHp+"</td><td>"+needExp(lv, vNowExp)+"</td><td><span class=appearLink onclick=calcRecipe("+lv+")>表示</span></td></tr>"
+				}
+			}
+			res+="</table>"
+			reszone.innerHTML=res
+		}
+		function calcMinHp(){
+			minLvHp.value=Math.floor(maxLvHp.value/2)
+		}
+	</script>
+</head>
+<body>
+	<h1>任意LvでのHP計算</h1>
+	<h2>基本情報：</h2>
+	<table>
+		<tr><td>最大レベル：</td><td><input id=maxLv type=text class=valArea value=110></input></td></tr>
+		<tr><td>最大レベルのときのHP：</td><td><input id=maxLvHp type=text class=valArea onchange=calcMinHp()></input></td></tr>
+		<tr><td>Lv1のときのHP：</td><td><input id=minLvHp type=text class=valArea></input></td></tr>
+		<tr><td>現在のマナ：</td><td><input id=nowMana type=text class=valArea value=200></input></td></tr>
+		<tr><td colspan=2 style=text-align:center>option</td></tr>
+		<tr><td>現在のexp：</td><td><input id=nowExp type=text class=valArea value=0></input></td></tr>
+	</table>
+	
+	<h2>条件：</h2>
+	<form name="form1" action="">
+		<ul>
+			<li><input name=joken type=radio id=1n0 checked=true> 全部表示 </li>
+			<li><input name=joken type=radio id=2n0> 2n(偶数)調整 </li>
+			<li><input name=joken type=radio id=2n1> 2n+1(奇数)調整 </li>
+			<li><input name=joken type=radio id=5n0> 5n(2, 4, 6, 8割削りが丁度)調整 </li>
+			<li><input name=joken type=radio id=10n0> 10n(n割削りが丁度)調整 </li>
+			<li><input name=joken type=radio id=10n5> 10n+5(2, 4, 6, 8割削りが丁度かつ奇数)調整 </li>
+			<li><input name=joken type=radio id=nandemo> <input class=jInput type=text id=joken1>n+<input class=jInput type=text id=joken2>調整 </li>
+		</ul>
+	</form>
+	<input type="button" value="計算" onclick=calc()>
+	<div id=reszone></div>
+</body>
