@@ -1005,7 +1005,7 @@ Cards = [{
 		Spec_statusup(0, 200, [8]),
 	],
 	as1: {
-		desc: "<攻撃>HP15％以下でダメージアップ/1600％",
+		desc: "<瀕死攻撃>HP15％以下でダメージアップ/1600％",
 		proc: add_cond(ChainAttack(16.0, 0), when_hp_less(0.15)),
 	},
 	ss1: {
@@ -1019,7 +1019,7 @@ Cards = [{
 		Statusup(500, 0),
 	],
 	as2: {
-		desc: "<攻撃>HP15％以下でダメージアップ/2100％",
+		desc: "<瀕死攻撃>HP15％以下でダメージアップ/2100％",
 		proc: add_cond(ChainAttack(21.0, 0), when_hp_less(0.15)),
 	},
 	ss2: {
@@ -1843,7 +1843,7 @@ Cards = [{
 		Spec_statusup(0, 200, [1]),
 	],
 	as1: {
-		desc: "<攻撃>残りHPが80％以上でダメージアップ/300％",
+		desc: "<快調攻撃>残りHPが80％以上でダメージアップ/300％",
 		proc: add_cond(ChainAttack(3.0, 0), when_hp_more(0.8)),
 	},
 	ss1: {
@@ -2021,7 +2021,7 @@ Cards = [{
 		Spec_statusup(200, 0, [8]),
 	],
 	as1: {
-		desc: "<攻撃>残りHPが80％以上でダメージアップ、リーダー時さらにアップ(HP80％以上：250％ / リーダー時：300％)",
+		desc: "<快調攻撃・快調攻撃>残りHPが80％以上でダメージアップ、リーダー時さらにアップ(HP80％以上：250％ / リーダー時：300％)",
 		proc: [add_cond(ChainAttack(2.5, 0), when_hp_more(0.8)), add_cond(ChainAttack(3.0, 0), when_hp_more(0.8), when_leader())],
 	},
 	ss1: {
@@ -2036,7 +2036,7 @@ Cards = [{
 		Statusup(500, 0),
 	],
 	as2: {
-		desc: "<攻撃>残りHPが80％以上でダメージアップ、リーダー時さらにアップ(HP80％以上：350％ / リーダー時：400％)",
+		desc: "<快調攻撃・快調攻撃>残りHPが80％以上でダメージアップ、リーダー時さらにアップ(HP80％以上：350％ / リーダー時：400％)",
 		proc: [add_cond(ChainAttack(3.5, 0), when_hp_more(0.8)), add_cond(ChainAttack(4.0, 0), when_hp_more(0.8), when_leader())],
 	},
 	ss2: {
@@ -11462,7 +11462,7 @@ Cards = [{
 		Panel_boost([0, 0, 1, 0, 0, ], 5),
 	],
 	as1: {
-		desc: "<攻撃>残りHPが80％以上でダメージアップ/300％",
+		desc: "<快調攻撃>残りHPが80％以上でダメージアップ/300％",
 		proc: add_cond(ChainAttack(3.0, 0), when_hp_more(0.80)),
 	},
 	ss1: {
@@ -11476,7 +11476,7 @@ Cards = [{
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
 	],
 	as2: {
-		desc: "<攻撃>残りHPが80％以上でダメージアップ/400％",
+		desc: "<快調攻撃>残りHPが80％以上でダメージアップ/400％",
 		proc: add_cond(ChainAttack(4.0, 0), when_hp_more(0.80)),
 	},
 	ss2: {
@@ -15502,7 +15502,7 @@ Cards = [{
 		Attr_relief([1, 1, 1, 1, 1, ], 10),
 	],
 	as1: {
-		desc: "<攻撃>残りHPが90％以上でダメージアップ&敵HPを吸収(攻撃：360％ / 吸収：12％)",
+		desc: "<快調攻撃・吸収>残りHPが90％以上でダメージアップ&敵HPを吸収(攻撃：360％ / 吸収：12％)",
 		proc: add_cond(ChainAttack(3.6, 0), when_hp_more(0.90), as_hp_absorption(0.12))
 	},
 	ss1: {
@@ -15519,7 +15519,7 @@ Cards = [{
 		Statusup(500, 0),
 	],
 	as2: {
-		desc: "<攻撃>残りHPが90％以上でダメージアップ&敵HPを吸収(攻撃：460％ / 吸収：12％)",
+		desc: "<快調攻撃・吸収>残りHPが90％以上でダメージアップ&敵HPを吸収(攻撃：460％ / 吸収：12％)",
 		proc: add_cond(ChainAttack(4.6, 0), when_hp_more(0.90), as_hp_absorption(0.12))
 	},
 	ss2: {
@@ -17348,7 +17348,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	as1: {
-		desc: "<攻撃>残りHPが80%以上でダメージアップ(350%)",
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(350%)",
 		proc: add_cond(ChainAttack(3.5, 0), when_hp_more(0.8)),
 	},
 	ss1: {
@@ -17369,7 +17369,7 @@ Cards = [{
 		Spec_statusup(200,0, [9,]),
 	],
 	as2: {
-		desc: "<攻撃>残りHPが80%以上でダメージアップ(450%)",
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(450%)",
 		proc: add_cond(ChainAttack(4.5, 0), when_hp_more(0.8)),
 	},
 	ss2: {
@@ -18196,7 +18196,7 @@ Cards = [{
 	islegend: true,
 	disable: true,
 	as1: {
-		desc: "<攻撃>残りHPが80%以上でダメージアップ(300%)",
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(300%)",
 		proc: add_cond(ChainAttack(3.0, 0), when_hp_more(0.8)),
 	},
 	ss1: {
@@ -18284,7 +18284,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	as1: {
-		desc: "<攻撃>HP35%以下でダメージアップ(1100%)",
+		desc: "<瀕死攻撃>HP35%以下でダメージアップ(1100%)",
 		proc: add_cond(ChainAttack(11.0, 0), when_hp_less(0.35)),
 	},
 	ss1: {
@@ -18305,7 +18305,7 @@ Cards = [{
 		Fastskill(2),
 	],
 	as2: {
-		desc: "<攻撃>HP35%以下でダメージアップ(1600%)",
+		desc: "<瀕死攻撃>HP35%以下でダメージアップ(1600%)",
 		proc: add_cond(ChainAttack(16.0, 0), when_hp_less(0.35)),
 	},
 	ss2: {
@@ -21726,7 +21726,7 @@ Cards = [{
 	islegend: true,
 	is_dist: true,
 	as1: {
-		desc: "<攻撃>残りHPが80%以上でダメージアップ(300%)",
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(300%)",
 		proc: add_cond(ChainAttack(3.0, 0), when_hp_more(0.8)),
 	},
 	ss1: {
@@ -21747,7 +21747,7 @@ Cards = [{
 		Fastskill(2),
 	],
 	as2: {
-		desc: "<攻撃>残りHPが80%以上でダメージアップ(400%)",
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(400%)",
 		proc: add_cond(ChainAttack(4.0, 0), when_hp_more(0.8)),
 	},
 	ss2: {
@@ -25734,7 +25734,7 @@ Cards = [{
 	islegend: true,
 	disable: true,
 	as1: {
-		desc: "<攻撃>残りHPが80%以上でダメージアップ(350%)",
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(350%)",
 		proc: add_cond(ChainAttack(3.5, 0), when_hp_more(0.8)),
 	},
 	ss1: {
@@ -25755,7 +25755,7 @@ Cards = [{
 		Abstate_invalid("ss_sealed"),
 	],
 	as2: {
-		desc: "<攻撃>残りHPが80%以上でダメージアップ(450%)",
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(450%)",
 		proc: add_cond(ChainAttack(4.5, 0), when_hp_more(0.8)),
 	},
 	ss2: {
@@ -28072,7 +28072,7 @@ Cards = [{
 	islegend: true,
 	is_dist: true,
 	as1: {
-		desc: "<攻撃>HP全快でダメージアップ(450%)",
+		desc: "<快調攻撃>HP全快でダメージアップ(450%)",
 		proc: add_cond(ChainAttack(4.5, 0), when_hp_more(1)),
 	},
 	ss1: {
@@ -28093,7 +28093,7 @@ Cards = [{
 		Abstate_invalid("as_sealed"),
 	],
 	as2: {
-		desc: "<攻撃>HP全快でダメージアップ(550%)",
+		desc: "<快調攻撃>HP全快でダメージアップ(550%)",
 		proc: add_cond(ChainAttack(5.5, 0), when_hp_more(1)),
 	},
 	ss2: {
@@ -28923,7 +28923,7 @@ Cards = [{
 	islegend: true,
 	is_dist: true,
 	as1: {
-		desc: "<攻撃>残りHPが80%以上でダメージアップ(300%)",
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(300%)",
 		proc: add_cond(ChainAttack(3.0, 0), when_hp_more(0.80)),
 	},
 	ss1: {
@@ -28944,7 +28944,7 @@ Cards = [{
 		Attr_statusup(0,200, [1,0,1,0,0,]),
 	],
 	as2: {
-		desc: "<攻撃>残りHPが80%以上でダメージアップ(400%)",
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(400%)",
 		proc: add_cond(ChainAttack(4.0, 0), when_hp_more(0.80)),
 	},
 	ss2: {
@@ -36610,7 +36610,7 @@ Cards = [{
 	species: [4],
 	islegend: true,
 	as1: {
-		desc: "<攻撃>残りHPが80%以上でダメージアップ(350%)",
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(350%)",
 		proc: add_cond(ChainAttack(3.5, 0), when_hp_more(0.8)),
 	},
 	ss1: {
@@ -36631,7 +36631,7 @@ Cards = [{
 		Spec_statusup(0,500, [4,]),
 	],
 	as2: {
-		desc: "<攻撃>残りHPが80%以上でダメージアップ(450%)",
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(450%)",
 		proc: add_cond(ChainAttack(4.5, 0), when_hp_more(0.8)),
 	},
 	ss2: {
@@ -37011,7 +37011,7 @@ Cards = [{
 	species: [4],
 	islegend: true,
 	as1: {
-		desc: "<攻撃>残りHPが80%以上でダメージアップ(350%)",
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(350%)",
 		proc: add_cond(ChainAttack(3.5, 0), when_hp_more(0.8)),
 	},
 	ss1: {
@@ -39198,7 +39198,7 @@ Cards = [{
 	islegend: true,
 	ape: "錬鉄の魔道杯",
 	as1: {
-		desc: "<攻撃>5チェインかつ残りHP90%以上でダメージアップ(700%)",
+		desc: "<快調攻撃>5チェインかつ残りHP90%以上でダメージアップ(700%)",
 		proc: add_cond(ChainAttack(7.0, 5), when_hp_more(0.9)),
 	},
 	ss1: {
@@ -39219,7 +39219,7 @@ Cards = [{
 		Abstate_invalid("as_sealed"),
 	],
 	as2: {
-		desc: "<攻撃>5チェインかつ残りHP90%以上でダメージアップ(800%)",
+		desc: "<快調攻撃>5チェインかつ残りHP90%以上でダメージアップ(800%)",
 		proc: add_cond(ChainAttack(8.0, 5), when_hp_more(0.9)),
 	},
 	ss2: {
@@ -42583,7 +42583,7 @@ Cards = [{
 	ape: "AbyssCode02 盲目の調和",
 	is_dist: true,
 	as1: {
-		desc: "<攻撃>残りHPが90%以上でダメージアップ(360%)&敵HPを吸収(12%)",
+		desc: "<快調攻撃・吸収>残りHPが90%以上でダメージアップ(360%)&敵HPを吸収(12%)",
 		proc: add_cond(ChainAttack(3.6, 0), as_hp_absorption(0.12), when_hp_more(0.9)),
 	},
 	ss1: {
@@ -42604,7 +42604,7 @@ Cards = [{
 		Fastskill(2),
 	],
 	as2: {
-		desc: "<攻撃>残りHPが90%以上でダメージアップ(460%)&敵HPを吸収(12%)",
+		desc: "<快調攻撃・吸収>残りHPが90%以上でダメージアップ(460%)&敵HPを吸収(12%)",
 		proc: add_cond(ChainAttack(4.6, 0), as_hp_absorption(0.12), when_hp_more(0.9)),
 	},
 	ss2: {
@@ -44125,7 +44125,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	as1: {
-		desc: "<攻撃>残りHPが80%以上でダメージアップ(350%)",
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(350%)",
 		proc: add_cond(ChainAttack(3.5, 0), when_hp_more(0.8)),
 	},
 	ss1: {
@@ -44146,7 +44146,7 @@ Cards = [{
 		Awake_noeffect("精霊交代",1),
 	],
 	as2: {
-		desc: "<攻撃>残りHPが80%以上でダメージアップ(450%)",
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(450%)",
 		proc: add_cond(ChainAttack(4.5, 0), when_hp_more(0.8)),
 	},
 	ss2: {
@@ -50727,7 +50727,7 @@ Cards = [{
 	islegend: true,
 	ape: "黄昏メアレス",
 	as1: {
-		desc: "<攻撃>残りHPが80%以上でダメージアップ(400%)",
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(400%)",
 		proc: add_cond(ChainAttack(4.0, 0), when_hp_more(0.8)),
 	},
 	ss1: {
@@ -50748,7 +50748,7 @@ Cards = [{
 		Abstate_invalid("ss_sealed"),
 	],
 	as2: {
-		desc: "<攻撃>残りHPが80%以上でダメージアップ(500%)",
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(500%)",
 		proc: add_cond(ChainAttack(5.0, 0), when_hp_more(0.8)),
 	},
 	ss2: {
@@ -53088,7 +53088,7 @@ Cards = [{
 	islegend: true,
 	ape: "神竜降臨Ⅱ",
 	as1: {
-		desc: "<攻撃>残りHPが80%以上でダメージアップ、パネルの色が増す度さらにアップ(300%/400%/550%)",
+		desc: "<快調攻撃・快調攻撃>残りHPが80%以上でダメージアップ、パネルの色が増す度さらにアップ(300%/400%/550%)",
 		proc: add_cond(ChainAttack(3.0, 0), when_hp_more(0.8)),
 	},
 	ss1: {
@@ -53109,7 +53109,7 @@ Cards = [{
 		Attr_statusup_sattr(0,200, [0,1,0,0,0,], 0,200, [0,0,1,0,0,]),
 	],
 	as2: {
-		desc: "<攻撃>残りHPが80%以上でダメージアップ、パネルの色が増す度さらにアップ(400%/500%/650%)",
+		desc: "<快調攻撃・快調攻撃>残りHPが80%以上でダメージアップ、パネルの色が増す度さらにアップ(400%/500%/650%)",
 		proc: add_cond(ChainAttack(4.0, 0), when_hp_more(0.8)),
 	},
 	ss2: {
