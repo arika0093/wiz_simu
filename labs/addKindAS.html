@@ -65,33 +65,35 @@ var typeData=[
     ["when_hp_under","ChainAttack","チェインで","瀕死攻撃"],
     ["as_hp_absorption","","","吸収"],
     ["as_copy","","","スキルコピー"],
+    ["ChainDeckDeadsAttack","","","嘆きの怒り"],
+
+    
 ]
 
 
-//左のラベル(部分一致)があるなら右のラベル(完全一致)を1回消す
 var dupli=[
     ["属性特効連撃","属性特効連撃"],
     ["属性特効連撃","連撃"],
-    ["チェイン回復","回復"],
+    ["属性特効連撃","吸収"],
+
+    ["チェイン攻撃","吸収"],
+    ["嘆きの怒り","吸収"],
+
+
+    ["回復","チェイン回復"],
+
     ["種族攻撃強化","攻撃強化"],
     ["複属性攻撃強化","攻撃強化"],
     ["種族数攻撃","チェイン攻撃"],
     ["種族数攻撃","攻撃"],
 
-    ["回復","回復"],
-    ["全体攻撃","全体攻撃"],
-    ["ギャンブル攻撃","ギャンブル攻撃"],
+   // ["回復","回復"],
+  //  ["全体攻撃","全体攻撃"],
+   // ["ギャンブル攻撃","ギャンブル攻撃"],
 
     ["瀕死攻撃","攻撃"],
     ["快調攻撃","攻撃"],
 
-    ["特効","チェイン攻撃"],
-    ["特効","全体攻撃"],
-    ["特効","攻撃"],
-
-    ["吸収","チェイン攻撃"],
-    ["吸収","全体攻撃"],
-    ["吸収","攻撃"],
 ]
 
 function getObject(myStr, keyStr){
@@ -110,21 +112,29 @@ function getObject(myStr, keyStr){
                         if(""==tmp2){
                             tmp2 = typeData[i2][3]
                         }else{
-                            tmp2 += "," + typeData[i2][3]
+                            tmp2 += "・" + typeData[i2][3]
                         }
                     }
                 }
             }
         }
-        tmp2="HEAD"+tmp2+"FOOT"
-        for(var i3=0; i3<dupli.length; i3++){
-            if(tmp2.indexOf(dupli[i3][0])!=-1){
-                tmp2=tmp2.replace(","+dupli[i3][1]+",","");
-                tmp2=tmp2.replace("HEAD"+dupli[i3][1]+",","HEAD");
-                tmp2=tmp2.replace(","+dupli[i3][1]+"FOOT","FOOT");
+        var tArray=tmp2.split("・")
+        for(var it=0; it<tArray.length; it++){
+            for(var i3=0; i3<dupli.length; i3++){
+                if(tArray[it]==dupli[i3][0]){
+                    for(var it5=0; it5<tArray.length; it5++){
+                        console.log(1)
+                        if(tArray[it5]==dupli[i3][1]){
+                            tArray.splice(it5,1)
+                        }
+                    }
+                    if(dupli[i3][0]==dupli[i3][1]){
+                        tArray.push(dupli[i3][1])
+                    }
+                }
             }
         }
-        tmp2=tmp2.slice(4, -4)
+        tmp2=tArray.join("・")
         if(""!=tmp2){
             tmp=tmp.replace(/(\<|＜|〈).*?(\>|＞|〉)/g,"")
             tmp=tmp.replace(/desc *\: *\"/i,"desc: \"<"+tmp2+">")
