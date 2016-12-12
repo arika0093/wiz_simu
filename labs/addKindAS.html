@@ -104,6 +104,7 @@ var dupli=[
     ["瀕死攻撃","攻撃"],
     ["快調攻撃","攻撃"],
     ["快調攻撃","パネル色数攻撃"],
+    ["種族特効","全体攻撃"],
 
 ]
 //dupli=[];
@@ -148,7 +149,7 @@ function getObject(myStr, keyStr){
         }
         tmp2=tArray.join("・")
         //レイドウラガーン用
-        tmp2.replace("連撃・属性特効連撃","連撃・属性特効")
+        tmp2=tmp2.replace("連撃・属性特効連撃","連撃・属性特効")
         if(""!=tmp2){
             tmp=tmp.replace(/(\<|＜|〈).*?(\>|＞|〉)/g,"")
             tmp=tmp.replace(/desc *\: *\"/i,"desc: \"<"+tmp2+">")
