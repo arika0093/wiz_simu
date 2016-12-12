@@ -90,6 +90,12 @@ function check(){
                     if(!checkJa(ss.desc)){
                         putError(card, ss1ss2[ssn].toUpperCase()+"のdescが日本語でない", ss.desc)
                     }
+                    if(ss.desc.indexOf("その他")!=-1){
+                        putError(card, ss1ss2[ssn].toUpperCase()+"のdescにその他が含まれる(ジャンルなしが正)", ss.desc)
+                    }
+                    if(ss.desc.indexOf("挑発")!=-1){
+                        putError(card, ss1ss2[ssn].toUpperCase()+"のdescに挑発が含まれる(ジャンルなしが正)", ss.desc)
+                    }
                     if(ss.desc.indexOf("\t")!=-1){
                         var desc2=ss.desc.replace("\t","<font color=red>[tab]</font>")
                         putError(card, ss1ss2[ssn].toUpperCase()+"のdescにタブコードが含まれる", desc2)
@@ -160,6 +166,7 @@ function check(){
             diffAs1As2(card)
             //SSのdescproc対応検査
             causalityCheck(card)
+            causalityCheckAs(card)
 
             //覚醒の異常定義検査
             awakeCheck(card)
@@ -340,6 +347,25 @@ function causalityCheck(card){
     })
 }
 
+function causalityCheckAs(card){
+	var ops=["as1", "as2"]
+	var causalitys=[
+		["イチかバチか", "イチかバチか攻撃"],
+	]
+    ops.forEach(function(op){
+        ss=card[op]
+        if(ss){
+            var procStr=JSON.stringify(ss)
+            causalitys.forEach(function(causality){
+                if(ss.desc.indexOf(causality[0])!=-1){
+                    if(procStr.indexOf(causality[1])==-1){
+                        putError(card, op.toUpperCase()+"のdescと定義が不一致", "descに\"" + causality[0] + "\"があるが、定義に\"" + causality[1]+"\"がない")
+                    }
+                }
+            })
+        }
+    })
+}
 
 
 
