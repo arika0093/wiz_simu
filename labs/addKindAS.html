@@ -61,6 +61,7 @@ var typeData=[
     ["ChainPanelsSpecAttack","","","パネル色数攻撃"],
     ["ChainStakesAttack3","","","パネル色数攻撃"],*/
     ["when_hp_more","ChainAttack","チェインで","快調攻撃"],
+    ["when_hp_more","ChainPanelsAttack","","快調攻撃"],
     ["when_hp_less","ChainAttack","チェインで","瀕死攻撃"],
     ["when_hp_under","ChainAttack","チェインで","瀕死攻撃"],
     ["as_hp_absorption","","","吸収"],
@@ -78,6 +79,11 @@ var dupli=[
 
     ["チェイン攻撃","吸収"],
     ["嘆きの怒り","吸収"],
+    ["攻撃","吸収"],
+    ["連撃","吸収"],
+    ["属性特効","吸収"],
+    ["回復","吸収"],
+    ["チェイン回復","吸収"],
 
 
     ["回復","チェイン回復"],
@@ -87,12 +93,14 @@ var dupli=[
     ["種族数攻撃","チェイン攻撃"],
     ["種族数攻撃","攻撃"],
 
-   // ["回復","回復"],
-  //  ["全体攻撃","全体攻撃"],
-   // ["ギャンブル攻撃","ギャンブル攻撃"],
+    ["回復","回復"],
+    ["チェイン回復","チェイン回復"],
+    ["全体攻撃","全体攻撃"],
+    ["ギャンブル攻撃","ギャンブル攻撃"],
 
     ["瀕死攻撃","攻撃"],
     ["快調攻撃","攻撃"],
+    ["快調攻撃","パネル色数攻撃"],
 
 ]
 
@@ -122,7 +130,7 @@ function getObject(myStr, keyStr){
         for(var it=0; it<tArray.length; it++){
             for(var i3=0; i3<dupli.length; i3++){
                 if(tArray[it]==dupli[i3][0]){
-                    for(var it5=0; it5<tArray.length; it5++){
+                    for(var it5=tArray.length;it5>=0 ; it5--){
                         console.log(1)
                         if(tArray[it5]==dupli[i3][1]){
                             tArray.splice(it5,1)
