@@ -22,32 +22,76 @@ function main(){
     });
 }
 
-
+//[含む, 含む, 含まない, ラベル]
 var typeData=[
+    ["ChainAttack","","チェインで","攻撃"],
+    ["ChainAttack","チェインで","","チェイン攻撃"],
+    ["ChainDualAttack","","","連撃"],
+    ["ChainPanelsDualAttack","","","連撃"],
+    ["ChainSpecAttack","","","種族特効"],
+    ["ChainAllSpecAttack","","","種族特効"],
+    ["ChainPanelsSpecAttack","","","種族特効"],
+    ["ChainAttrAttack","","","属性特効"],
+    ["ChainPanelsAttrAttack","","","属性特効"],
+    ["ChainDualAttrAttack","","","属性特効連撃"],
+    ["ChainPanelsAttrDualAttack","","","属性特効連撃"],
+    ["ChainVarianceAttack","","","分散攻撃"],
+    ["ChainAllAttack","","","全体攻撃"],
+    ["ChainAllSpecAttack","","","全体攻撃"],
+    ["ChainDeckSpecsAttack","","","種族数攻撃"],
+    ["ChainSpecEnhance","","","種族攻撃強化"],
+    ["ChainEnhance","","","攻撃強化"],
+    ["ChainPanelsEnhance","","","攻撃強化"],
+    ["ChainEnhance_SubAttr","","","複属性攻撃強化"],
+    ["Heal","","チェインで","回復"],
+    ["SpecHeal","","チェインで","回復"],
+    ["ChainPanelsHeal","","チェインで","回復"],
+    ["Heal","チェインで","","チェイン回復"],
+    ["SpecHeal","チェインで","","チェイン回復"],
+    ["ChainPanelsHeal","チェインで","","チェイン回復"],
+    ["as_guard","","","ガード"],
+    ["ChainStakesAttack","","","ギャンブル攻撃"],
+    ["ChainStakesAttack3","","","ギャンブル攻撃"],
+    ["ChainDeckAttrsAttack","","","属性の加護"],
+    ["ChainPanelsAttack","","","パネル色数攻撃"],
+    /*
+    ["ChainPanelsDualAttack","","","パネル色数攻撃"],
+    ["ChainPanelsAttrAttack","","","パネル色数攻撃"],
+    ["ChainPanelsAttrDualAttack","","","パネル色数攻撃"],
+    ["ChainPanelsSpecAttack","","","パネル色数攻撃"],
+    ["ChainStakesAttack3","","","パネル色数攻撃"],*/
+    ["when_hp_more","ChainAttack","チェインで","快調攻撃"],
+    ["when_hp_less","ChainAttack","チェインで","瀕死攻撃"],
+    ["when_hp_under","ChainAttack","チェインで","瀕死攻撃"],
+    ["as_hp_absorption","","","吸収"],
+    ["as_copy","","","スキルコピー"],
+]
 
-    ["ChainEnhance","","強化"],
-    ["ChainAllAttack","","全体攻撃"],
-    ["ChainVarianceAttack","","分散攻撃"],
-    ["ChainDeckAttrsAttack","","属性の加護"],
-    ["ChainAttrAttack","","属性特攻"],
-    ["ChainSpecAttack","","種族特攻"],
-    ["ChainDualAttrAttack","","特攻連撃"],
-    ["as_guard","","防御"],
-    ["Heal","","回復"],
-    ["ChainAttack","","チェイン攻撃"],
-    ["ChainDualAttack","","チェイン連撃"],
-    ["ChainPanelsAttack","","パネル攻撃"],
-    ["ChainPanelsDualAttack","","パネル連撃"],
-    ["ChainPanelsEnhance","","パネル強化"],
-    ["ChainPanelsAttrAttac","","パネル属性特攻"],
-    ["ChainPanelsAttrDualAttack","","パネル属性連撃"],
-    ["ChainPanelsSpecAttack","","パネル種族特攻"],
-    ["ChainDeckSpecsAttack","","種族数攻撃"],
-    ["ChainStakesAttack","","一か八か"],
-    ["ChainDeckDeadsAttack","","嘆き"],
-    ["as_hp_absorption","","吸収"],
-    ["ChainEnhance_SubAttr","","複属性強化"],
-    ["左隣の","","スキルコピー"],
+
+//左のラベル(部分一致)があるなら右のラベル(完全一致)を1回消す
+var dupli=[
+    ["属性特効連撃","属性特効連撃"],
+    ["属性特効連撃","連撃"],
+    ["チェイン回復","回復"],
+    ["種族攻撃強化","攻撃強化"],
+    ["複属性攻撃強化","攻撃強化"],
+    ["種族数攻撃","チェイン攻撃"],
+    ["種族数攻撃","攻撃"],
+
+    ["回復","回復"],
+    ["全体攻撃","全体攻撃"],
+    ["ギャンブル攻撃","ギャンブル攻撃"],
+
+    ["瀕死攻撃","攻撃"],
+    ["快調攻撃","攻撃"],
+
+    ["特効","チェイン攻撃"],
+    ["特効","全体攻撃"],
+    ["特効","攻撃"],
+
+    ["吸収","チェイン攻撃"],
+    ["吸収","全体攻撃"],
+    ["吸収","攻撃"],
 ]
 
 function getObject(myStr, keyStr){
@@ -62,14 +106,25 @@ function getObject(myStr, keyStr){
         for(var i2=0; i2<typeData.length; i2++){
             if(rcr[i].indexOf(typeData[i2][0])!=-1){
                 if(typeData[i2][1]=="" || rcr[i].indexOf(typeData[i2][1])!=-1){
-                    if(""==tmp2){
-                        tmp2 = typeData[i2][2]
-                    }else{
-                        tmp2 += "," + typeData[i2][2]
+                    if(typeData[i2][2]=="" || rcr[i].indexOf(typeData[i2][2])==-1){
+                        if(""==tmp2){
+                            tmp2 = typeData[i2][3]
+                        }else{
+                            tmp2 += "," + typeData[i2][3]
+                        }
                     }
                 }
             }
         }
+        tmp2="HEAD"+tmp2+"FOOT"
+        for(var i3=0; i3<dupli.length; i3++){
+            if(tmp2.indexOf(dupli[i3][0])!=-1){
+                tmp2=tmp2.replace(","+dupli[i3][1]+",","");
+                tmp2=tmp2.replace("HEAD"+dupli[i3][1]+",","HEAD");
+                tmp2=tmp2.replace(","+dupli[i3][1]+"FOOT","FOOT");
+            }
+        }
+        tmp2=tmp2.slice(4, -4)
         if(""!=tmp2){
             tmp=tmp.replace(/(\<|＜|〈).*?(\>|＞|〉)/g,"")
             tmp=tmp.replace(/desc *\: *\"/i,"desc: \"<"+tmp2+">")
@@ -81,7 +136,6 @@ function getObject(myStr, keyStr){
     for(var i=0; i<rcr.length; i++){
         resStr = resStr.replace(rcr[i], rcr2[i])
     }
-    resStr=resStr.replace(/\<挑発\>/g,"")
     return resStr;
 }
 
