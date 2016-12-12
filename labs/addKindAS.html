@@ -26,6 +26,8 @@ function main(){
 var typeData=[
     ["ChainAttack","","チェインで","攻撃"],
     ["ChainAttack","敵単体へのダメージアップ","","攻撃"],
+    ["ChainPanelsAttack","敵単体へのダメージアップ","","攻撃"],
+    ["ChainAttack",">ダメージアップ、","","攻撃"],
     ["ChainAttack","チェインで","","チェイン攻撃"],
     ["ChainDeckSpecsAttack","","","チェイン攻撃"],
     ["ChainDualAttack","","","連撃"],
@@ -65,17 +67,21 @@ var typeData=[
     ["ChainStakesAttack3","","","パネル色数攻撃"],*/
     ["when_hp_more","ChainAttack","チェインで","快調攻撃"],
     ["when_hp_more","ChainPanelsAttack","","快調攻撃"],
+    ["when_hp_more","でダメージアップ、","","快調攻撃"],
     ["when_hp_less","ChainAttack","チェインで","瀕死攻撃"],
     ["when_hp_under","ChainAttack","チェインで","瀕死攻撃"],
     ["as_hp_absorption","","","吸収"],
     ["as_copy","","","スキルコピー"],
     ["ChainDeckDeadsAttack","","","嘆きの怒り"],
+    ["ChainPanelsAttack","チェインで","","チェイン攻撃"],
 
     
 ]
 
 
 var dupli=[
+    ["快調攻撃","チェイン攻撃"],
+    ["種族数攻撃","チェイン攻撃"],
     ["属性特効連撃","属性特効連撃"],
     ["属性特効連撃","属性特効"],
     //["属性特効連撃","連撃"],
@@ -103,8 +109,10 @@ var dupli=[
     ["全体攻撃","全体攻撃"],
     ["ギャンブル攻撃","ギャンブル攻撃"],
 
-    ["瀕死攻撃","攻撃"],
-    ["快調攻撃","攻撃"],
+    ["攻撃","瀕死攻撃",],
+    ["攻撃","快調攻撃",],
+    ["チェイン攻撃","パネル色数攻撃"],
+    ["攻撃","パネル色数攻撃",],
     ["快調攻撃","パネル色数攻撃"],
     ["種族特効","全体攻撃"],
     ["種族特効","チェイン攻撃"],
