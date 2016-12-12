@@ -135,6 +135,19 @@ function check(){
                 putError(card, "cardnoの重複",card.cardno)
             }
 
+            if(card.cost<=1){
+                putError(card, "costが異常値",card.cost)
+            }
+            if(card.attr.length!=2){
+                putError(card, "attrの長さが2でない",card.attr.length)
+            }
+            if(card.hp<=100 || card.hp>10000){
+                putError(card, "hpが異常値",card.hp)
+            }
+            if(card.atk<=100 || card.atk>10000){
+                putError(card, "atkが異常値",card.atk)
+            }
+            
             //定義にnullなどが含まれるカード
             if(!NGWordCheck(card, "undefined")){
                 NGWordCheck(card, "undef")
@@ -204,7 +217,7 @@ function NGWordCheck(card, NGWord){
 
 function diffSs1Ss2(card){
     //SS1とSS2を比較してprocもしくはdescが同じである物を抽出
-    var ignoreCards=[6342, 6288, 6203, 6116, 6412, 6728, 6907, 5804, 6419, 6566, 6516, 7013, 7152, 7284, 7333]
+    var ignoreCards=[6342, 6288, 6203, 6116, 6412, 6728, 6907, 5804, 6419, 6566, 6516, 7013, 7152, 7284, 7333, 7513, 7493]
     var ignoreSkills=["skill_copy", "ss_impregnable"]
     var outp=""
     if(card.ss2){
