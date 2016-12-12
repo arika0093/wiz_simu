@@ -324,6 +324,7 @@ function causalityCheck(card){
 		["チェインを消費", "ss_chain_cost"],
 		["敵単体へ", "single"],
 		["敵全体へ", "all"],
+		["イチかバチか", "イチかバチか攻撃"],
 	]
     ops.forEach(function(op){
         ss=card[op]
