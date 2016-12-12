@@ -349,9 +349,11 @@ function causalityCheck(card){
 
 function causalityCheckAs(card){
 	var ops=["as1", "as2"]
-	var causalitys=[戦闘不能の仲間の数
+	var causalitys=[
 		["イチかバチか", "イチかバチか攻撃"],
 		["戦闘不能の仲間の数", "戦闘不能の味方数に依存"],
+		["仲間の数だけ", "種族数攻撃"],
+		["軽減", "guard"],
 	]
     ops.forEach(function(op){
         ss=card[op]
