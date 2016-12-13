@@ -34,12 +34,16 @@ function add_cond(as) {
 						var fc = function () {
 							var oj = obj;
 							var ky = key;
-							var bef_as = $.extend(true, {}, as[i]);
+							var bef_as_i = i;
+							var bef_as = $.extend(true, {}, as[bef_as_i]);
 							return function (a, b, c, d, e) {
 								var rst = true;
-								rst = rst && bef_as[ky](a, b, c, d, e);
+								var cond_rst = true;
+								// 条件合成
+								rst = rst && !!(cond_rst = bef_as[ky](a, b, c, d, e));
 								rst = rst && oj[ky](a, b, c, d, e);
-								return rst;
+								// 効果値変更があったらそれを返す
+								return (rst && cond_rst > 1) ? cond_rst : rst;
 							};
 						}();
 					} else {
@@ -431,22 +435,22 @@ function ChainDeckSpecsAttack(base, specs, ch, ubase) {
 						}
 					}
 				}
-				this.rate = (ubase + 1) + base * count;
-				return true;
+				return (ubase + 1) + base * count;
 			},
 		}
 	];
 }
 
 // 戦闘不能味方数依存攻撃
-// (base: 戦闘不能味方が1体の時の割合, ch: 発動チェイン数)
-function ChainDeckDeadsAttack(base, ch) {
+// (base: 戦闘不能味方が1体の時の割合, ch: 発動チェイン数, ubase: 誰も倒れてない時の基本倍率)
+function ChainDeckDeadsAttack(base, ch, ubase) {
+	ubase = ubase ? ubase : 1;
 	return [
 		{
 			type: "attack",
 			isall: false,
 			atkn: 1,
-			rate: 1 + base * 5,
+			rate: ubase + base * 5,
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
@@ -459,8 +463,7 @@ function ChainDeckDeadsAttack(base, ch) {
 						count++;
 					}
 				}
-				this.rate = 1 + base * count;
-				return true;
+				return ubase + base * count;
 			},
 		}
 	];
@@ -481,8 +484,7 @@ function ChainStakesAttack(u, t, ch) {
 			spec: create_specs(1),
 			desc: "イチかバチか攻撃",
 			cond: function (fld, oi, ei) {
-				this.rate = (Math.random() * (t-u) + u).toFixed(1);
-				return true;
+				return Number((Math.random() * (t-u) + u).toFixed(1));
 			},
 		}
 	];
@@ -503,8 +505,8 @@ function ChainStakesAttack3(u1, t1, u2, t2, u3, t3, ch) {
 			spec: create_specs(1),
 			desc: "イチかバチか攻撃(単色)",
 			cond: function (fld, oi, ei) {
-				this.rate = (Math.random() * (t1 - u1) + u1).toFixed(1);
-				return true;
+				var rate = Number((Math.random() * (t1 - u1) + u1).toFixed(1));
+				return rate;
 			},
 		}, {
 			type: "attack",
@@ -518,8 +520,9 @@ function ChainStakesAttack3(u1, t1, u2, t2, u3, t3, ch) {
 			spec: create_specs(1),
 			desc: "イチかバチか攻撃(二色)",
 			cond: function (fld, oi, ei, ps) {
-				this.rate = (Math.random() * (t2 - u2) + u2).toFixed(1);
-				return as_panel_over2().cond(fld, oi, ei, ps);
+				var cond = as_panel_over2().cond(fld, oi, ei, ps);
+				var rate = Number((Math.random() * (t2 - u2) + u2).toFixed(1));
+				return cond ? rate : false;
 			},
 		}, {
 			type: "attack",
@@ -533,8 +536,9 @@ function ChainStakesAttack3(u1, t1, u2, t2, u3, t3, ch) {
 			spec: create_specs(1),
 			desc: "イチかバチか攻撃(三色以上)",
 			cond: function (fld, oi, ei, ps) {
-				this.rate = (Math.random() * (t3 - u3) + u3).toFixed(1);
-				return as_panel_over2().cond(fld, oi, ei, ps);
+				var cond = as_panel_over3().cond(fld, oi, ei, ps);
+				var rate = Number((Math.random() * (t3 - u3) + u3).toFixed(1));
+				return cond ? rate : false;
 			},
 		},
 	];
@@ -579,10 +583,7 @@ function ChainEnhance_SubAttr(r1, r2, attr, sub, ch) {
 			subattr: sub,
 			spec: create_specs(1),
 			desc: "副属性も一致した場合",
-			cond: function (fld, oi, ei, p, tgi) {
-				var cd = fld.Allys.Deck[tgi];
-				return sub[cd.attr[1]] > 0;
-			},
+			cond: when_subattr_match(attr, sub).cond,
 		}
 	];
 }
@@ -792,7 +793,6 @@ function as_panel_over3() {
 	}
 }
 
-
 // リーダー時
 function when_leader() {
 	return {
@@ -823,6 +823,7 @@ function when_hp_less(p) {
 		}
 	}
 }
+
 // HP一定未満
 function when_hp_under(p) {
 	return {
@@ -846,6 +847,40 @@ function when_deckattr_less(c_attr, c_num) {
 				}
 			}
 			return count <= c_num;
+		}
+	}
+}
+
+// 味方種族一致
+function when_spec_match(m_specs) {
+	return {
+		cond: function (fld, oi, ei, p, tgi) {
+			var cd = fld.Allys.Deck[tgi];
+			var rst = true;
+			for (var i = 0; i < m_specs.length; i++) {
+				rst = rst && (cd.species.indexOf(m_specs[i]) >= 0);
+			}
+			return rst;
+		}
+	}
+}
+
+// 味方副属性一致
+function when_subattr_match(attr, sub) {
+	return {
+		cond: function (fld, oi, ei, p, tgi) {
+			var cd = fld.Allys.Deck[tgi];
+			return sub[cd.attr[1]] > 0;
+		}
+	}
+}
+
+// 敵特攻対象
+function when_enemyattr_match(e_attr) {
+	return {
+		cond: function (fld, oi, ei, p, tgi) {
+			var e = GetNowBattleEnemys(ei);
+			return ei < 0 || e.attr == e_attr;
 		}
 	}
 }

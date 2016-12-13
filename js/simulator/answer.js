@@ -254,7 +254,7 @@ function answer_skill(as_arr, panel, as_afters, bef_f) {
 	};
 	for(var i = 0; !isAllAtkEndCheck(); i++){
 		for (var j = i; j >= 0; j--) {
-			if (j >= atk_duals.length) { continue; }
+			if (j >= as_arr.length) { continue; }
 			answer_skill_proc(as_arr, panel, j, atk_duals, rem_duals, loop_ct, as_afters, bef_f);
 		}
 	}
@@ -488,6 +488,7 @@ function answer_spskill(as, i, p, bef_f) {
 // ASの対象になるかどうかを確認する
 function is_answer_target(bef_f, as, ch, tg_attr, tg_spec, own_i, enm_i, panels, tg_i) {
 	var rst = true;
+	var cond_rst = false;
 	// チェイン確認
 	rst = rst && (ch >= as.chain);
 	// 属性確認
@@ -495,6 +496,10 @@ function is_answer_target(bef_f, as, ch, tg_attr, tg_spec, own_i, enm_i, panels,
 	// 種族確認
 	rst = rst && (tg_spec < 0 || check_spec_inarray(as.spec, tg_spec));
 	// 条件確認
-	rst = rst && (as.cond(bef_f, own_i, enm_i, panels, tg_i));
+	rst = rst && !!(cond_rst = as.cond(bef_f, own_i, enm_i, panels, tg_i));
+	// condで効果値が変更されたらapply
+	if (rst && cond_rst > 1) {
+		as.rate = cond_rst;
+	}
 	return rst;
 }
