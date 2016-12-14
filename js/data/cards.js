@@ -16804,6 +16804,7 @@ Cards = [{
 	cost: 42,
 	attr: [2, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Statusup(0, 200),
 		Fastskill(1),
@@ -16849,6 +16850,7 @@ Cards = [{
 	cost: 47,
 	attr: [2,-1],
 	species: [9],
+	disable: true,
 	islegend: true,
 	is_dist: true,
 	as1: {
@@ -20236,6 +20238,7 @@ Cards = [{
 	cost: 50,
 	attr: [0,-1],
 	species: [9],
+	disable: true,
 	islegend: true,
 	is_dist: true,
 	as1: {
@@ -23106,6 +23109,7 @@ Cards = [{
 	cost: 1,
 	attr: [0,3],
 	species: [9],
+	disable: true,
 	islegend: true,
 	is_dist: true,
 	as1: {
@@ -23151,6 +23155,7 @@ Cards = [{
 	cost: 32,
 	attr: [0,4],
 	species: [9],
+	disable: true,
 	islegend: true,
 	is_dist: true,
 	as1: {
@@ -23196,6 +23201,7 @@ Cards = [{
 	cost: 32,
 	attr: [1,3],
 	species: [9],
+	disable: true,
 	islegend: true,
 	is_dist: true,
 	as1: {
@@ -23241,6 +23247,7 @@ Cards = [{
 	cost: 32,
 	attr: [1,4],
 	species: [9],
+	disable: true,
 	islegend: true,
 	is_dist: true,
 	as1: {
@@ -23286,6 +23293,7 @@ Cards = [{
 	cost: 32,
 	attr: [2,3],
 	species: [9],
+	disable: true,
 	islegend: true,
 	is_dist: true,
 	as1: {
@@ -23331,6 +23339,7 @@ Cards = [{
 	cost: 32,
 	attr: [2,4],
 	species: [9],
+	disable: true,
 	islegend: true,
 	is_dist: true,
 	as1: {
@@ -23376,6 +23385,7 @@ Cards = [{
 	cost: 33,
 	attr: [0,-1],
 	species: [9],
+	disable: true,
 	islegend: true,
 	is_dist: true,
 	as1: {
@@ -24497,6 +24507,7 @@ Cards = [{
 	cost: 23,
 	attr: [0,-1],
 	species: [9],
+	disable: true,
 	islegend: true,
 	is_dist: true,
 	as1: {
@@ -24542,6 +24553,7 @@ Cards = [{
 	cost: 24,
 	attr: [2,-1],
 	species: [5],
+	disable: true,
 	islegend: true,
 	is_dist: true,
 	as1: {
@@ -24587,6 +24599,7 @@ Cards = [{
 	cost: 37,
 	attr: [1,-1],
 	species: [0],
+	disable: true,
 	islegend: true,
 	is_dist: true,
 	as1: {
@@ -24632,6 +24645,7 @@ Cards = [{
 	cost: 34,
 	attr: [1,-1],
 	species: [9],
+	disable: true,
 	islegend: true,
 	is_dist: true,
 	as1: {
@@ -24677,6 +24691,7 @@ Cards = [{
 	cost: 43,
 	attr: [1,-1],
 	species: [9],
+	disable: true,
 	islegend: true,
 	is_dist: true,
 	as1: {
