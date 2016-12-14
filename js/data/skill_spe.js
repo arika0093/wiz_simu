@@ -308,6 +308,38 @@ function ss_enhance_all(p, t, attr, calltype) {
 }
 
 /**
+ * 味方全体に攻撃エンハンスを付与(副属性込みで更にアップ)
+ * p:		上昇値(ex: 0.6 -> 60%)
+ * p_sub:	副属性一致時の上昇値
+ * t:		継続ターン数
+ * attr		付与対象の属性(ex; [1,0,0,0,0]	-> 火属性のみに付与)
+ * subattr	付与対象の副属性
+**/
+function ss_enhance_all_subattr(p, p_sub, t, attr, subattr, calltype) {
+	return ss_template({
+		name: "ss_enhance_subattr",
+		type: "turn_effect",
+		subtype: "enhance",
+		target: "ally",
+		p1: p,
+		p2: p_sub,
+		p3: t,
+		p4: attr,
+		p5: subattr,
+		p6: calltype,
+		c_param: {
+			"awake_rateup": {
+				target: [0, 1],
+				rate_mlt: 0.01,
+			},
+			"awake_turnup": {
+				target: 2,
+			},
+		},
+	});
+}
+
+/**
  * 自身に攻撃エンハンスを付与
  * p:	上昇値(ex: 0.6 -> 60%)
  * t:	継続ターン数

@@ -126,6 +126,17 @@ function has_fastnum(card) {
 	return turn;
 }
 
+// セカンドファストがいくつついているかを返却する
+function has_secondfastnum(card) {
+	var turn = 0;
+	// ss_fastについて取得(L時は考慮する必要がないため第三引数はfalse固定)
+	var ss_awakes = pickup_awakes(card, "ss_secondfast", false);
+	for (var i = 0; i < ss_awakes.length; i++) {
+		turn += ss_awakes[i].turn;
+	}
+	return turn;
+}
+
 // コストを返す
 function card_cost(card) {
 	var cost = card.cost;

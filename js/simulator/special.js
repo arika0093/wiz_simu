@@ -31,7 +31,7 @@ function ss_push(n) {
 				Field.log_push("Unit[" + (n + 1) + "]: Lモード解除");
 			}
 			// SSターンをリセット
-			now.ss_current = 0;
+			now.ss_current = has_secondfastnum(card);
 			now.ss_isfirst = false;
 			now.ss_isboost = false;
 		} else {

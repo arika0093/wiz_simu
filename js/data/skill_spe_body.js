@@ -432,6 +432,68 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
+	// エンハンス効果を付与(副属性込み)
+	"ss_enhance_subattr": function (fld, n, cobj, params) {
+		var r = params[0];
+		var s_r = params[1];
+		var t = params[2];
+		var attr = params[3];
+		var s_attr = params[4];
+		var calltype = params[5];
+		var cds = ss_get_targetally(fld, cobj, fld.Allys.Deck, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
+		for (var i = 0; i < nows.length; i++) {
+			var cd = cds[i];
+			var now = nows[i];
+			if (now.nowhp > 0 && attr[cd.attr[0]] > 0) {
+				// check type
+				switch (calltype) {
+					case "RF":
+						var isreinforce = true
+						var typestr = "[精霊強化]"
+						break;
+					case "null":
+						return null;
+					case "SS":
+					default:
+						var typestr = ""
+						break;
+				}
+				// check rate
+				var rate = (s_attr[cd.attr[1]] > 0) ? s_r : r;
+				// 付与
+				now.turn_effect.push({
+					desc: "攻撃力アップ" + typestr + "(" + (rate * 100) + "%)",
+					type: "ss_enhance" + calltype,
+					icon: "enhance",
+					isdual: false,
+					iscursebreak: true,
+					isreinforce: isreinforce,
+					turn: t,
+					lim_turn: t,
+					effect: function (f, oi, teff, state) {
+						if (state == "first") {
+							if (teff.isreinforce) {
+								f.Allys.Now[oi].ss_reinforcement_atk = rate;
+							} else {
+								f.Allys.Now[oi].ss_enhance = rate;
+							}
+						}
+						else if (state == "end" || state == "dead") {
+							if (teff.isreinforce) {
+								f.Allys.Now[oi].ss_reinforcement_atk = 0;
+							} else {
+								f.Allys.Now[oi].ss_enhance = 0;
+							}
+						}
+					},
+				});
+				fld.log_push("Unit[" + (i + 1) + "]: 攻撃力Up" + typestr + "(" + (rate * 100) + "%, " + t + "t)");
+			}
+		}
+		return true;
+	},
+	// -----------------------------
 	// ブーストエンハンスをかける
 	"ss_boost_enhance": function (fld, n, cobj, params) {
 		var rate = params[0];

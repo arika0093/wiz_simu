@@ -345,3 +345,13 @@ function Awake_noheal() {
 		type: "awake_no_heal",
 	};
 }
+
+// セカンドファスト
+function Awake_secondfast(t) {
+	return {
+		type: "ss_secondfast",
+		turn: t,			// 短縮ターン数
+		name: "セカンドファスト" + int2roman(t),
+		desc: "2回目以降のスペシャルスキル発動を" + t + "ターン短縮",
+	}
+}

@@ -131,6 +131,10 @@ var Awake_crystal_lists = [{
 		is_legend: true,
 	},
 }, {
+	name: "平衡を司る天秤(術士ATK+200)",
+	imple: Awake_composite,
+	param2: Spec_statusup(0, 200, [9]),
+}, {
 	name: "勝戦の結晶〈ベルク旗艦〉(戦士HP+200)",
 	imple: Awake_composite,
 	param2: Spec_statusup(200, 0, [8]),
