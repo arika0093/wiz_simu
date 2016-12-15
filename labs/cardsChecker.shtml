@@ -153,6 +153,18 @@ function check(){
                 putError(card, "imagenoの重複",card.imageno)
             }
 
+            
+            var cardT = 0;
+            Cards.forEach(function(card2){
+                if(!card.disable & !card2.disable & card.name==card2.name){
+                    cardT ++;
+                }
+            })
+            if(cardT > 1){
+                console.log(cardT)
+                putError(card, "nameの重複",card.name)
+            }
+
             if(card.cost<=1){
                 putError(card, "costが異常値",card.cost)
             }

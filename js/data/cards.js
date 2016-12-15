@@ -49470,7 +49470,7 @@ Cards = [{
 	},
 	awakes: [
 		Statusup(200,0),
-		Abstate_invalid("poison", "attr_weaken", "death_limit"),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
 		Fastskill(1),
 		Fastskill(2),
 		Panel_boost([1,0,0,0,0,],1),
@@ -51676,7 +51676,7 @@ Cards = [{
 		Panel_boost([0,0,1,0,0,],2),
 		Attr_relief([0,0,0,0,1,],20),
 		Abstate_invalid("all_sealed"),
-		Abstate_invalid("poison", "attr_weaken", "death_limit"),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
 		Abstate_invalid(["as_sealed", "ss_sealed"]),
 	],
 	as2: {
@@ -56814,7 +56814,7 @@ Cards = [{
 	ape: "Christmas2016",
 	as1: {
 		desc: "<複属性攻撃強化>4チェインで水属性の攻撃力をアップ、複属性が火だとさらにアップ(10%/120%)",
-		proc: [ChainEnhance_SubAttr(0.1, 1.2 [0,1,0,0,0], [1,0,0,0,0], 4)],
+		proc: ChainEnhance_SubAttr(0.1, 1.2 ,[0,1,0,0,0], [1,0,0,0,0], 4),
 	},
 	ss1: {
 		desc: "<複属性ダメージ強化>5ターンの間、水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(100%/250%)",
@@ -56835,7 +56835,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<複属性攻撃強化>4チェインで水属性の攻撃力をアップ、複属性が火だとさらにアップ(40%/150%)",
-		proc: [ChainEnhance_SubAttr(0.4, 1.5 [0,1,0,0,0], [1,0,0,0,0], 4)],
+		proc: ChainEnhance_SubAttr(0.4, 1.5 ,[0,1,0,0,0], [1,0,0,0,0], 4),
 	},
 	ss2: {
 		desc: "<複属性ダメージ強化>5ターンの間、水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(100%/250%)",
@@ -56843,7 +56843,7 @@ Cards = [{
 		proc: [ss_enhance_all_subattr(1.0, 2.5, 5, [0,1,0,0,0], [1,0,0,0,0])],
 	},
 	Lawake: [
-		Abstate_invalid("poison", "attr_weaken", "death_limit"),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
 		Statusup(500,0),
 	],
 },{
