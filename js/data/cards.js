@@ -49470,7 +49470,7 @@ Cards = [{
 	},
 	awakes: [
 		Statusup(200,0),
-		Abstate_invalid("poison", "attr_weaken", "death_limit"),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
 		Fastskill(1),
 		Fastskill(2),
 		Panel_boost([1,0,0,0,0,],1),
@@ -51676,7 +51676,7 @@ Cards = [{
 		Panel_boost([0,0,1,0,0,],2),
 		Attr_relief([0,0,0,0,1,],20),
 		Abstate_invalid("all_sealed"),
-		Abstate_invalid("poison", "attr_weaken", "death_limit"),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
 		Abstate_invalid(["as_sealed", "ss_sealed"]),
 	],
 	as2: {
@@ -56843,7 +56843,7 @@ Cards = [{
 		proc: [ss_enhance_all_subattr(1.0, 2.5, 5, [0,1,0,0,0], [1,0,0,0,0])],
 	},
 	Lawake: [
-		Abstate_invalid("poison", "attr_weaken", "death_limit"),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
 		Statusup(500,0),
 	],
 },{
