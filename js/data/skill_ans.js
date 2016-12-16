@@ -386,7 +386,7 @@ function ChainDeckAttrsAttack(r1, r2, r3, ch) {
 			type: "attack",
 			isall: false,
 			atkn: 1,
-			rate: r2,
+			rate: r3,
 			chain: ch,
 			attr: [1, 1, 1, 1, 1],
 			spec: create_specs(1),
