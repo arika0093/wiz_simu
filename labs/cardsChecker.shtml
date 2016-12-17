@@ -96,6 +96,12 @@ function check(){
                     if(ss.desc.indexOf("挑発")!=-1){
                         putError(card, ss1ss2[ssn].toUpperCase()+"のdescに挑発が含まれる(ジャンルなしが正)", ss.desc)
                     }
+                    if(ss.desc.indexOf("特攻")!=-1){
+                        putError(card, ss1ss2[ssn].toUpperCase()+"のdescに特攻が含まれる(特効が正)", ss.desc)
+                    }
+                    if(ss.desc.indexOf("多段")!=-1){
+                        putError(card, ss1ss2[ssn].toUpperCase()+"のdescに多段が含まれる(多弾が正)", ss.desc)
+                    }
                     if(ss.desc.indexOf("\t")!=-1){
                         var desc2=ss.desc.replace("\t","<font color=red>[tab]</font>")
                         putError(card, ss1ss2[ssn].toUpperCase()+"のdescにタブコードが含まれる", desc2)
@@ -126,6 +132,12 @@ function check(){
                     }
                     if(as.desc.indexOf("\\n")!=-1){
                         putError(card, as1as2[asn].toUpperCase()+"のdescに改行コードが含まれる", as.desc)
+                    }
+                    if(as.desc.indexOf("特攻")!=-1){
+                        putError(card, as1as2[asn].toUpperCase()+"のdescに特攻が含まれる(特効が正)", as.desc)
+                    }
+                    if(as.desc.indexOf("多段")!=-1){
+                        putError(card, as1as2[asn].toUpperCase()+"のdescに多段が含まれる(多弾が正)", as.desc)
                     }
                 }
             }
@@ -355,6 +367,7 @@ function causalityCheck(card){
 		["チェインを消費", "ss_chain_cost"],
 		["敵単体へ", "single"],
 		["敵全体へ", "all"],
+		["多弾魔術", "single"],
 	]
     ops.forEach(function(op){
         ss=card[op]
