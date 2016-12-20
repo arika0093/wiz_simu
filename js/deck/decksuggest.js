@@ -578,25 +578,12 @@ function set_autocmp(i) {
 function decksel(i) {
 	var ct;
 	var selval = $("#deck0" + i).val();
-	// add by konta 20161217>>>>>
-	var dd = deckdata_Apply(Deckdata, true);
-	var ncarno = dd.deck[i].cardno
-	// <<<<<<<<add by konta 20161217
 	if (selval != "") {
 		for (ct in Cards) {
-			// add by konta 20161217>>>>>
-			var cards = $.grep(Cards, function (e, i) {
-				return e.cardno == ncarno;
-			});
-			// <<<<<<<<add by konta 20161217
-			// rm by konta 20161217>>>>>
-			/*
 			if (Cards[ct].name == selval) {
 				decksel_show(i, Cards[ct]);
 				return;
 			}
-			*/
-			// <<<<<<<<rm by konta 20161217
 		}
 	}
 	decksel_show(i);
@@ -629,18 +616,9 @@ function decksel_show(idx, c) {
 // マナプラス指定ダイアログを開く
 function open_manaedit(n) {
 	var input = $("#deck0" + (n+1)).val();
-	/*
 	var cards = $.grep(Cards, function (e, i) {
 		return e.name == input;
 	});
-	*/  // rm by konta 20161217
-	// add by konta 20161217>>>>>
-	var dd = deckdata_Apply(Deckdata, true);
-	var ncarno = dd.deck[n].cardno
-	var cards = $.grep(Cards, function (e, i) {
-		return e.cardno == ncarno;
-	});
-	// <<<<<<<<add by konta 20161217
 	if (cards && cards[0]) {
 		var cd = cards[0];
 		$("#d_mana_index").text(Cards.indexOf(cd));
