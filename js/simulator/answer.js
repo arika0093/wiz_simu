@@ -322,7 +322,6 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem, bef_f)
 	var as_rate = [];
 	var as_pos = [];
 	var as_afters = [];
-	var time = Number($("#answer_time_sel").val());
 
 	// 敵それぞれについて条件の良いASを取り出す
 	for (var ai = 0; ai < as.length; ai++) {
@@ -332,9 +331,9 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem, bef_f)
 			var rate_n = (is_ans ? as[ai].rate : 0);
 			var rate_b = (as_pos[ei] !== undefined ? as_rate[ei] : 0);
 			var aw_t = pickup_awakes(card, "awake_ans_rateup", false);
-			// 解答時間依存処理
-			if (is_ans && as[ai].is_timedep && !as[ai].disactuate) {
-				rate_n += as[ai].rate_time * time;
+			// AS効果値後乗せ処理
+			if (is_ans && as[ai].is_afteradd && !as[ai].disactuate) {
+				rate_n += as[ai].add_f(bef_f, index, ei, panel);
 			}
 			// 潜在結晶考慮処理
 			for (var i = 0; i < aw_t.length; i++) {
@@ -412,9 +411,9 @@ function answer_enhance(as, i, p, bef_f) {
 			var as_t = { rate: 0 };
 			if (is_answer_target(bef_f, as[ai], chain, card.attr[0], card.species, i, -1, p, ci)) {
 				as_t = as[ai];
-				// 解答時間依存処理
-				if (as[ai].is_timedep) {
-					as_t += as[ai].rate_time * time;
+				// AS効果値後乗せ処理
+				if (as_t.is_afteradd) {
+					as_t += as_t.add_f(bef_f, i, -1, p, ci);
 				}
 			}
 			ass = ass.rate < as_t.rate ? as_t : ass;
@@ -446,9 +445,9 @@ function answer_heal(as, i, p, bef_f) {
 			var as_t = {rate: 0};
 			if (is_answer_target(bef_f, as[ai], chain, card.attr[0], card.species, i, -1, p, ci)) {
 				as_t = as[ai];
-				// 解答時間依存処理
-				if (as[ai].is_timedep) {
-					as_t += as[ai].rate_time * time;
+				// AS効果値後乗せ処理
+				if (as_t.is_afteradd) {
+					as_t += as_t.add_f(bef_f, i, -1, p, ci);
 				}
 			}
 			ass = ass.rate < as_t.rate ? as_t : ass;

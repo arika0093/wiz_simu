@@ -887,10 +887,30 @@ function when_enemyattr_match(e_attr) {
 
 // 回答時間依存
 // (rate: 解答時間による増え幅)
+function as_legendnum(rate) {
+	return {
+		is_afteradd: true,
+		add_f: function (fld, oi, ei, p, tgi) {
+			var l_count = 0;
+			var cards = fld.Allys.Deck;
+			var nows = fld.Allys.Now;
+			for (var i = 0; i < nows.length; i++) {
+				l_count += (is_legendmode(cards[i], nows[i]) ? 1 : 0);
+			}
+			return l_count * rate;
+		},
+	}
+}
+
+// 回答時間依存
+// (rate: 解答時間による増え幅)
 function as_timedep(rate) {
 	return {
-		is_timedep: true,
-		rate_time: rate,
+		is_afteradd: true,
+		add_f: function (fld, oi, ei, p, tgi) {
+			var time = Number($("#answer_time_sel").val());
+			return rate * time;
+		},
 	}
 }
 
