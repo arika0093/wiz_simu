@@ -1229,6 +1229,19 @@ var SpCondSkill = {
 		return a + b * time;
 	},
 	// -----------------------------
+	// L精霊数依存
+	"ss_legendnum": function (fld, oi, cobj, params) {
+		var a = params[0];
+		var b = params[1];
+		var cards = fld.Allys.Deck;
+		var nows = fld.Allys.Now;
+		var num = 0;
+		for (var i = 0; i < cards.length; i++) {
+			num += (is_legendmode(cards[i], nows[i]) ? 1 : 0);
+		}
+		return a + b * num;
+	},
+	// -----------------------------
 	// 味方全体自傷して自傷した数だけ効果値を増やす
 	"ss_consume_all_cond": function (fld, oi, cobj, params) {
 		var base = params[0];
