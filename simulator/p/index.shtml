@@ -60,6 +60,7 @@
 				<a id="sim_share" onclick="tweet_result()">結果をツイートする</a>
 				<a id="sim_restart" onclick="load_field(0)">始めからやり直す</a>
 				<a id="sim_logview" onclick="log_view()">ログを確認する</a>
+                <a id="sim_rndview" onclick="rand_checker()">乱数確認ツール</a>
 				<a id="sim_decksel" onclick="back_decksel()">デッキ選択画面に戻る</a>
 			</div>
 		</div>
@@ -318,6 +319,28 @@
 	<div class="dialog_div" id="dialog_ss_noaction" title="No Effect">
 		<p>SSを発動しても効果が得られません。</p>
 	</div>
+    <div class="dialog_div" id="dialog_randchecker" title="乱数チェッカー">
+        <p>現在のターゲッティングでSS発動/攻撃を任意の回数繰り返し、突破できた回数を表示します。</p>
+        <div id="randcheck_actdata" class="dialog_div"></div>
+        <select class="sel_indialog" id="randcheck_acts" size="5"></select>
+        <select id="randcheck_act" data-placeholder="(未選択)">
+            <option value="-1">火パネル攻撃</option>
+            <option value="-2">水パネル攻撃</option>
+            <option value="-3">雷パネル攻撃</option>
+            <option value="1">Unit[1]:SS発動</option>
+            <option value="2">Unit[2]:SS発動</option>
+            <option value="3">Unit[3]:SS発動</option>
+            <option value="4">Unit[4]:SS発動</option>
+            <option value="5">Unit[5]:SS発動</option>
+        </select>
+        <button type="button" onclick="randcheck_addact();">追加</button>
+        <button type="button" onclick="randcheck_alldelact();">全削除</button>
+        <input type="number" class="edit_indialog" id="randcheck_rnum" placeholder="《試行回数を入力》" />
+        <input type="checkbox" id="randcheck_disp" /><label for="randcheck_disp">不偏分散</label>
+    </div>
+    <div class="dialog_div" id="dialog_randchecker_rst" title="結果">
+        <p id="randcheck_rsttext"></p>
+    </div>
 
 	<!-- Javascript -->
     <!--#config timefmt="%Y%m%d_%H%M%S" -->

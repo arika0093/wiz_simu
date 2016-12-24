@@ -32,11 +32,13 @@ function sim_show() {
 	// sim_result
 	if (is_ally_alldeath()) {
 		$("#dialog_gameover").dialog("open");
-	} else if (Field.Status.finish) {
+	} else if (Field.Status.finish /*&& !Field.Status.isautomode*/) {
 		$("#sim_share").fadeIn("slow");
+		$("#sim_rndview").hide();
 		$("#dialog_simfinish_popup").dialog("open");
 	} else {
 		$("#sim_share").fadeOut("slow");
+		$("#sim_rndview").fadeIn("slow");
 	}
 	// sim_restart / logview
 	if (Field.Status.totalturn > 0) {
@@ -567,6 +569,98 @@ function sim_show() {
 			},
 		},
 	});
+	// randchecker
+	$("#dialog_randchecker").dialog({
+		autoOpen: false,
+		modal: true,
+		width: 450,
+		buttons: {
+			"testrun": function () {
+				// task
+				var tobj = {
+					"-1": [panel, [0]],
+					"-2": [panel, [1]],
+					"-3": [panel, [2]],
+					"1": [ss_push, 0],
+					"2": [ss_push, 1],
+					"3": [ss_push, 2],
+					"4": [ss_push, 3],
+					"5": [ss_push, 4],
+				};
+				// get task-do-array
+				var task_doarr = $("#randcheck_actdata").text().split(",");
+				var test_rnum = Number($("#randcheck_rnum").val());
+				var is_calcdisp = $("#randcheck_disp").prop("checked");
+				var disp_num = 5;
+				// save before
+				var bef_f = $.extend(true, {}, Field);
+				var bef_battle = bef_f.Status.nowbattle;
+				// test
+				var break_counts = [];
+				for (var d = 0; d < (is_calcdisp ? 5 : 1) ; d++) {
+					break_counts[d] = 0;
+					for (var i = 0; i < test_rnum; i++) {
+						// Fieldにバックアップしておいたbeforeをコピー
+						Field = $.extend(true, {}, bef_f);
+						Field.Status.isautomode = true;
+						Field.Status.seed = Math.random(1, 100000);
+						// タスクを実行
+						for (var j = 0; j < task_doarr.length; j++) {
+							var ti = task_doarr[j];
+							if (ti == "") { continue; }
+							tobj[ti][0](tobj[ti][1]);
+						}
+						// 結果を確認
+						var aft_battle = Field.Status.nowbattle;
+						break_counts[d] += ((aft_battle - bef_battle > 0 || Field.Status.finish) ? 1 : 0);
+					}
+				}
+				// 終了後処理
+				Field.Status.isautomode = false;
+				// rst show
+				var rst_tx = "";
+				if (is_calcdisp) {
+					var sum = function (arr) {
+						return arr.reduce(function (prev, current, i, arr) {
+							return prev + current;
+						});
+					};
+					var ave = function (arr, fn) {
+						return sum(arr, fn)/arr.length;
+					}(break_counts);
+					var disp = function (arr) {
+						var varia = 0;
+						for (i = 0; i < arr.length; i++) {
+							varia = varia + Math.pow(arr[i] - ave, 2);
+						}
+						var v = (varia / (arr.length-1));
+						return Math.sqrt(v);
+					}(break_counts);
+					rst_tx = "Result: <br/>Average±SD = " + ave.toFixed(2) + "±" + disp.toFixed(2) + " / " + test_rnum +
+						" (" + (ave*100/test_rnum).toFixed(2) + "±" + (disp*100/test_rnum).toFixed(2) + "%)";
+				} else {
+					rst_tx = "Result: " + break_counts[0] + " / " + test_rnum +
+						" (" + (break_counts[0] * 100 / test_rnum) + "%)";
+				}
+				$("#randcheck_rsttext").html(rst_tx);
+				$("#dialog_randchecker_rst").dialog("open");
+			},
+			"close": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
+	// randchecker-result
+	$("#dialog_randchecker_rst").dialog({
+		autoOpen: false,
+		modal: true,
+		width: 300,
+		buttons: {
+			"close": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
 	// ss_single_one
 	$("#dialog_ss_selectone").dialog({
 		autoOpen: false,
@@ -725,6 +819,23 @@ function simshow_create_fintext(is_replace) {
 function log_view() {
 	$("#dialog_simlog").dialog("open");
 }
+
+// 乱数チェッカー表示
+function rand_checker() {
+	$("#dialog_randchecker").dialog("open");
+}
+function randcheck_addact() {
+	var si = $("#randcheck_act");
+	var si_i = Number(si.val());
+	var add_num = si_i + ",";
+	$("#randcheck_actdata").append(add_num);
+	$("#randcheck_acts").append("<option>" + $("#randcheck_act option[value=" + si_i + "]").text() + "</option>");
+}
+function randcheck_alldelact() {
+	$("#randcheck_actdata").text("");
+	$("#randcheck_acts").html("");
+}
+
 
 // 味方精霊情報表示
 function show_allystat(n) {

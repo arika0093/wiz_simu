@@ -379,7 +379,7 @@ function nextturn(is_ssfin) {
 		}
 	}
 	// 全終了してたらサーバーに結果送信
-	if (Field.Status.finish && !Field.Status.fin_timeup) {
+	if (Field.Status.finish && !Field.Status.fin_timeup && !Field.Status.isautomode) {
 		actl_send_result(function (rst) {
 			var js = JSON.parse(rst);
 			Field.Status.result_id = Number(js.result_id);

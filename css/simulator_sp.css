@@ -55,7 +55,7 @@ div.sim_result_links a{
 	cursor: pointer;
 }
 
-#sim_share, #sim_restart {
+#sim_share, #sim_restart, #sim_rndview {
 	display: none;
 	font-size: 0;
 }
