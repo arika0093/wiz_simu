@@ -3,6 +3,10 @@ var _Timer = undefined;
 
 // 現在の状況を表示する
 function sim_show() {
+	// 自動試走中なら何もしない
+	if (Field.Status.isautomode) {
+		return;
+	}
 	// timer reset
 	if (_Timer) {
 		clearInterval(_Timer);
@@ -620,6 +624,7 @@ function sim_show() {
 				}
 				// 終了後処理
 				Field.Status.isautomode = false;
+				sim_show();
 				// rst show
 				var rst_tx = "";
 				if (is_calcdisp) {
@@ -829,10 +834,10 @@ function rand_checker() {
 }
 function randcheck_addact() {
 	var si = $("#randcheck_act");
-	var si_i = Number(si.val());
-	var add_num = si_i + ",";
+	var si_v = si.val();
+	var add_num = si_v + ",";
 	$("#randcheck_actdata").append(add_num);
-	$("#randcheck_acts").append("<option>" + $("#randcheck_act option[value=" + si_i + "]").text() + "</option>");
+	$("#randcheck_acts").append("<option>" + $("#randcheck_act option[value=" + si_v + "]").text() + "</option>");
 }
 function randcheck_alldelact() {
 	$("#randcheck_actdata").text("");
