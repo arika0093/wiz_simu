@@ -324,14 +324,17 @@
         <div id="randcheck_actdata" class="dialog_div"></div>
         <select class="sel_indialog" id="randcheck_acts" size="5"></select>
         <select id="randcheck_act" data-placeholder="(未選択)">
-            <option value="-1">火パネル攻撃</option>
-            <option value="-2">水パネル攻撃</option>
-            <option value="-3">雷パネル攻撃</option>
-            <option value="1">Unit[1]:SS発動</option>
-            <option value="2">Unit[2]:SS発動</option>
-            <option value="3">Unit[3]:SS発動</option>
-            <option value="4">Unit[4]:SS発動</option>
-            <option value="5">Unit[5]:SS発動</option>
+            <option value="panel_fire">火パネル攻撃</option>
+            <option value="panel_water">水パネル攻撃</option>
+            <option value="panel_thunder">雷パネル攻撃</option>
+            <option value="alltarget_left">全左タゲ</option>
+            <option value="alltarget_center">全中タゲ</option>
+            <option value="alltarget_right">全右タゲ</option>
+            <option value="unit1_ss">Unit[1]:SS発動</option>
+            <option value="unit2_ss">Unit[2]:SS発動</option>
+            <option value="unit3_ss">Unit[3]:SS発動</option>
+            <option value="unit4_ss">Unit[4]:SS発動</option>
+            <option value="unit5_ss">Unit[5]:SS発動</option>
         </select>
         <button type="button" onclick="randcheck_addact();">追加</button>
         <button type="button" onclick="randcheck_alldelact();">全削除</button>

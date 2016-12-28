@@ -578,14 +578,17 @@ function sim_show() {
 			"testrun": function () {
 				// task
 				var tobj = {
-					"-1": [panel, [0]],
-					"-2": [panel, [1]],
-					"-3": [panel, [2]],
-					"1": [ss_push, 0],
-					"2": [ss_push, 1],
-					"3": [ss_push, 2],
-					"4": [ss_push, 3],
-					"5": [ss_push, 4],
+					"panel_fire":		[panel, [0]],
+					"panel_water":		[panel, [1]],
+					"panel_thunder":	[panel, [2]],
+					"alltarget_left":	[target_allselect, 0],
+					"alltarget_center":	[target_allselect, 1],
+					"alltarget_right":	[target_allselect, 2],
+					"unit1_ss":			[ss_push, 0],
+					"unit2_ss":			[ss_push, 1],
+					"unit3_ss":			[ss_push, 2],
+					"unit4_ss":			[ss_push, 3],
+					"unit5_ss":			[ss_push, 4],
 				};
 				// get task-do-array
 				var task_doarr = $("#randcheck_actdata").text().split(",");
