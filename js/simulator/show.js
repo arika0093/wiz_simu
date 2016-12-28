@@ -91,10 +91,7 @@ function sim_show() {
 
 			// SSが発動可能かどうか
 			var sst = get_ssturn(dec, now);
-			var ss_disabled = $.grep(now.turn_effect, function (e) {
-				return e.ss_disabled;
-			}).length > 0;
-			if (!ss_disabled && (sst[0] == 0 || now.flags.ss_chargefin) && now.nowhp > 0 && !Field.Status.finish) {
+			if (is_ss_active(Field, i)) {
 				// SS発動可能
 				$("#ally0" + (i + 1) + "_ss_button").attr("class", "ally_ss_button");
 				$("#ally0" + (i + 1) + "_ss_button").text(ss_remain_text(sst, now.flags.ss_chargefin));

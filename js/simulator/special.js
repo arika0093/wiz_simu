@@ -6,7 +6,7 @@ function ss_push(n) {
 	var ss = is_l ? card.ss2 : card.ss1;
 	var ss_rst = true;
 	// SS発動前チェック
-	if (sscheck_before(ss, n)) {
+	if (is_ss_active(Field, n) && sscheck_before(ss, n)) {
 		// SSを打つ
 		ss_rst = ss_procdo(Field, ss, now, n);
 	} else {
@@ -281,3 +281,15 @@ function ss_add_chargenomove_otheruser(fld, turn, user_i) {
 		});
 	}
 }
+
+// SS発動可能かどうか
+function is_ss_active(fld, i) {
+	var dec = fld.Allys.Deck[i];
+	var now = fld.Allys.Now[i];
+	var sst = get_ssturn(dec, now);
+	var ss_disabled = $.grep(now.turn_effect, function (e) {
+		return e.ss_disabled;
+	}).length > 0;
+	return !ss_disabled && (sst[0] == 0 || now.flags.ss_chargefin) && now.nowhp > 0 && !Field.Status.finish;
+}
+
