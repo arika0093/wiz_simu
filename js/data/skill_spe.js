@@ -1098,6 +1098,20 @@ function ss_answertime(a, b) {
 }
 
 /**
+ * (条件系)Lmodeの精霊数に応じて、a+b*numの値を返す。
+ * a: 基礎値。例えば1なら、最低保証値が1になる。
+ * b: 乗算値。この値×L精霊数が基礎値に追加される。
+**/
+function ss_legendnum(a, b) {
+	return ss_condition({
+		name: "ss_legendnum",
+		type: "other",
+		p1: a,
+		p2: b,
+	});
+}
+
+/**
  * (条件系)味方全体の自傷を行い、自傷した数*基礎値の数値を返す。
  * base: 掛け算の基礎値。
  * p:	 自傷ダメージ割合。

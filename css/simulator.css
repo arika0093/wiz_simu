@@ -29,7 +29,7 @@ p#sim_turns {
 
 /* sim_result */
 div.sim_result_links {
-	width: 70%;
+	width: 98%;
 	float: right;
 	padding: 0 0.5em 0.5ex;
 	text-align: right;
@@ -140,6 +140,16 @@ div.img_accept_hover, div.selected_target {
 }
 div.img_accept_hover{
 	transition: 0s;
+}
+
+/* rand_checker */
+#randcheck_act{
+	margin-top: 1ex;
+	width: 50%;
+}
+#randcheck_rnum{
+	margin-top: 1ex;
+	width: 75%;
 }
 
 /* Ally info */
