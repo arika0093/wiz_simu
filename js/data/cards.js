@@ -58055,7 +58055,7 @@ Cards = [{
 	],
 },{
 	name: "迎春 鬼狩りキュウマ",
-	cardno: 7692,
+	cardno: 90068,
 	imageno: 9774,
 	hp: 2245,
 	atk: 4335,
