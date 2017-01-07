@@ -57604,7 +57604,6 @@ Cards = [{
 	attr: [1,2],
 	species: [3],
 	islegend: true,
-	ape: "その光は淡く碧く 第一章 皇帝と剣",
 	as1: {
 		desc: "<全体攻撃>敵全体へダメージ、7チェインでさらにダメージアップ(150%/250%)",
 		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.5, 7)],
