@@ -1124,6 +1124,7 @@ Cards = [{
 	cost: 45,
 	attr: [0, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Statusup(0, 200),
 		Panel_boost([1,0,0,0,0], 1),
@@ -1477,6 +1478,7 @@ Cards = [{
 	cost: 47,
 	attr: [0, -1],
 	species: [2],
+	disable: true,
 	awakes: [
 		Panel_boost([1,0,0,0,0], 1),
 		Statusup(200, 0),
@@ -1874,6 +1876,7 @@ Cards = [{
 	cost: 46,
 	attr: [0, -1],
 	species: [2],
+	disable: true,
 	awakes: [
 		Statusup(0, 100),
 		Statusup(200, 0),
@@ -2053,6 +2056,7 @@ Cards = [{
 	cost: 45,
 	attr: [0, -1],
 	species: [3],
+	disable: true,
 	awakes: [
 		Panel_boost([1,0,0,0,0], 1),
 		Fastskill(1),
@@ -2406,6 +2410,7 @@ Cards = [{
 	cost: 47,
 	attr: [0, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Panel_boost([1,0,0,0,0], 1),
 		Fastskill(1),
@@ -2850,6 +2855,7 @@ Cards = [{
 	cost: 48,
 	attr: [0, 2],
 	species: [2],
+	disable: true,
 	awakes: [
 		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
 		Fastskill(1),
@@ -5886,6 +5892,7 @@ Cards = [{
 	cost: 45,
 	attr: [1, 0],
 	species: [9],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Panel_boost([0, 1, 0, 0, 0], 1),
@@ -5975,6 +5982,7 @@ Cards = [{
 	cost: 47,
 	attr: [1, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Statusup(0, 200),
 		Panel_boost([0, 1, 0, 0, 0], 1),
@@ -6464,6 +6472,7 @@ Cards = [{
 	cost: 45,
 	attr: [1, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
 		Statusup(200, 0),
@@ -6684,6 +6693,7 @@ Cards = [{
 	cost: 46,
 	attr: [1, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
@@ -8465,6 +8475,7 @@ Cards = [{
 	cost: 46,
 	attr: [1, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
@@ -9798,6 +9809,7 @@ Cards = [{
 	cost: 48,
 	attr: [1, 0],
 	species: [3],
+	disable: true,
 	awakes: [
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
 		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
@@ -12032,6 +12044,7 @@ Cards = [{
 	cost: 44,
 	attr: [2, -1],
 	species: [4],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Statusup(200, 0),
@@ -13008,6 +13021,7 @@ Cards = [{
 	cost: 48,
 	attr: [2, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Statusup(200, 0),
 		Fastskill(1),
@@ -14384,6 +14398,7 @@ Cards = [{
 	cost: 45,
 	attr: [2, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Statusup(0, 200),
@@ -14516,6 +14531,7 @@ Cards = [{
 	cost: 44,
 	attr: [2, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Panel_boost([0, 0, 1, 0, 0, ], 1),
 		Fastskill(1),
@@ -15406,6 +15422,7 @@ Cards = [{
 	cost: 49,
 	attr: [2, 1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
 		Attr_statusup(100, 0, [0, 1, 1, 0, 0, ]),
@@ -17355,6 +17372,7 @@ Cards = [{
 	cost: 46,
 	attr: [0,1],
 	species: [9],
+	disable: true,
 	islegend: true,
 	as1: {
 		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(350%)",
@@ -17399,6 +17417,7 @@ Cards = [{
 	cost: 45,
 	attr: [1,2],
 	species: [8],
+	disable: true,
 	islegend: true,
 	as1: {
 		desc: "<連撃>3チェインで敵単体を3回連続攻撃(350%)",
@@ -17442,6 +17461,7 @@ Cards = [{
 	cost: 43,
 	attr: [2,0],
 	species: [8],
+	disable: true,
 	islegend: true,
 	as1: {
 		desc: "<連撃>4チェインで敵単体を3回連続攻撃(400%)",
@@ -21435,6 +21455,7 @@ Cards = [{
 	cost: 45,
 	attr: [1,4],
 	species: [0],
+	disable: true,
 	islegend: true,
 	as1: {
 		desc: "<属性特効>10チェインで火・光属性の敵単体へ特効ダメージ(965%)",
@@ -21479,6 +21500,7 @@ Cards = [{
 	cost: 44,
 	attr: [2,3],
 	species: [0],
+	disable: true,
 	islegend: true,
 	as1: {
 		desc: "<属性特効>4チェインで水・闇属性の敵単体へ特効ダメージ(600%)",
@@ -26196,6 +26218,7 @@ Cards = [{
 	cost: 48,
 	attr: [0, 4],
 	species: [2],
+	disable: true,
 	awakes: [
 		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
 		Fastskill(1),
@@ -30677,6 +30700,7 @@ Cards = [{
 	cost: 47,
 	attr: [2, 4],
 	species: [9],
+	disable: true,
 	islegend: true,
 	as1: {
 		desc: "<複属性攻撃強化>4チェインで雷属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(50%/100%)",
@@ -30722,6 +30746,7 @@ Cards = [{
 	cost: 46,
 	attr: [0, 1],
 	species: [1],
+	disable: true,
 	islegend: true,
 	as1: {
 		desc: "<連撃>6チェインで敵単体を3回攻撃(500%)",
@@ -31873,6 +31898,7 @@ Cards = [{
 	cost: 49,
 	attr: [1,3],
 	species: [9],
+	disable: true,
 	islegend: true,
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ、8チェインで更にダメージアップ(350%/500%)",
@@ -42842,6 +42868,7 @@ Cards = [{
 	attr: [1,2],
 	species: [6],
 	islegend: true,
+	disable: true,
 	as1: {
 		desc: "<攻撃>敵単体へのダメージアップ、10チェインで更にダメージアップ(250%/550%)",
 		proc: [ChainAttack(2.5, 0), ChainAttack(5.5, 10)],
