@@ -16010,7 +16010,7 @@ Cards = [{
 	imageno: 6192,
 	hp: 2438,
 	atk: 2015,
-	cost: 0,
+	cost: 36,
 	attr: [0,1],
 	species: [8],
 	islegend: true,
@@ -18485,7 +18485,7 @@ Cards = [{
 	imageno: 7339,
 	hp: 3978,
 	atk: 2731,
-	cost: 1,
+	cost: 50,
 	attr: [0,2],
 	species: [9],
 	islegend: true,
@@ -22239,7 +22239,7 @@ Cards = [{
 	imageno: 7559,
 	hp: 4111,
 	atk: 2655,
-	cost: 1,
+	cost: 43,
 	attr: [0, 1],
 	species: [9],
 	islegend: true,
@@ -22660,7 +22660,7 @@ Cards = [{
 	imageno: 7557,
 	hp: 2987,
 	atk: 5322,
-	cost: 1,
+	cost: 45,
 	attr: [2,-1],
 	species: [4],
 	islegend: true,
@@ -23136,7 +23136,7 @@ Cards = [{
 	imageno: 7108,
 	hp: 2414,
 	atk: 2202,
-	cost: 1,
+	cost: 32,
 	attr: [0,3],
 	species: [9],
 	disable: true,
@@ -30659,7 +30659,7 @@ Cards = [{
 	islegend: true,
 	as1: {
 		desc: "<回復>水属性の味方のHPを回復(10%)し、全属性のダメージを5%軽減。リーダー時さらに5%軽減",
-		proc: Heal(0.10, [0, 1, 0, 0, 0], 0),
+		proc: [Heal(0.10, [0, 1, 0, 0, 0], 0), as_guard(0.05, [1,1,1,1,1], 0), add_conr(as_guard(0.10, [1,1,1,1,1], 0), when_leader())]
 	},
 	ss1: {
 		desc: "<特殊パネル変換>ャンルパネルにスキルチャージプラス2の効果を付与(効果は、SPスキルを使うまで重複しません)",
@@ -30680,7 +30680,8 @@ Cards = [{
 	],
 	as2: {
 		desc: "<回復>水属性の味方のHPを回復(12%)し、全属性のダメージを10%軽減。リーダー時さらに10%軽減",
-		proc: Heal(0.12, [0, 1, 0, 0, 0], 0),
+		proc: 
+		proc: [Heal(0.12, [0, 1, 0, 0, 0], 0), as_guard(0.10, [1,1,1,1,1], 0), add_conr(as_guard(0.20, [1,1,1,1,1], 0), when_leader())]
 	},
 	ss2: {
 		desc: "<特殊パネル変換>ジャンルパネルにスキルチャージプラス3の効果を付与(効果は、SPスキルを使うまで重複しません)",
@@ -35623,6 +35624,7 @@ Cards = [{
 	cost: 45,
 	attr: [2,-1],
 	species: [9],
+	disable: true,
 	islegend: true,
 	as1: {
 		desc: "<回復>雷属性の味方のHPを回復、リーダー時さらに回復(13%/17%)",
@@ -38030,7 +38032,7 @@ Cards = [{
 	},
 	ss1: {
 		desc: "<残滅大魔術>敵全体へ水属性のダメージ(150%)、さらに3ターンの間水属性のダメージ(150%)",
-		turn: 4,
+		turn: 6,
 		proc: [ss_continue_damage(1.5, 1.5, [1], 3)],
 	},
 	awakes: [
@@ -44355,7 +44357,7 @@ Cards = [{
 	imageno: 8376,
 	hp: 2935,
 	atk: 3617,
-	cost: 1,
+	cost: 80,
 	attr: [0,3],
 	species: [1],
 	islegend: true,
@@ -46989,7 +46991,7 @@ Cards = [{
 	imageno: 9054,
 	hp: 2683,
 	atk: 3531,
-	cost: 1,
+	cost: 38,
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
@@ -51192,7 +51194,7 @@ Cards = [{
 	imageno: 9358,
 	hp: 3209,
 	atk: 3412,
-	cost: 1,
+	cost: 52,
 	attr: [1,0],
 	species: [8],
 	islegend: true,
@@ -53621,52 +53623,6 @@ Cards = [{
 		Statusup(0,500),
 	],
 },{
-	name: "剛武人と共に戦う灼竜 レツィーユ",
-	cardno: 7470,
-	imageno: 9523,
-	hp: 3141,
-	atk: 4021,
-	cost: 44,
-	attr: [0,-1],
-	species: [0],
-	islegend: true,
-	ape: "大魔導杯",
-	is_dist: true,
-	as1: {
-		desc: "<属性特効>4チェインで雷属性以外の敵単体へ特効ダメージ(900%)",
-		proc: ChainAttrAttack(9, 4, [1,1,0,1,1]),
-	},
-	ss1: {
-		desc: "<特効大魔術>敵単体へ火属性のダメージ、さらに火属性の敵には特効ダメージ(500%/1300%)",
-		turn: 6,
-		proc: [ss_damage_s(special_attr([1,0,0,0,0], 13, 5), [0], 1)],
-	},
-	awakes: [
-		Statusup(0,200),
-		Statusup(200,0),
-		Fastskill(1),
-		Panel_boost([1,0,0,0,0,],1),
-		Panel_boost([1,0,0,0,0,],2),
-		Fastskill(2),
-		Attr_relief([1,0,0,0,0,],10),
-		Attr_relief([0,1,0,0,0,],10),
-		Attr_statusup(0, 200, [1,0,0,0,0]),
-		Awake_noeffect("チェインガード",1),
-	],
-	as2: {
-		desc: "<属性特効>4チェインで雷属性以外の敵単体へ特効ダメージ(1000%)",
-		proc: ChainAttrAttack(10, 4, [1,1,0,1,1]),
-	},
-	ss2: {
-		desc: "<特効大魔術>敵単体へ火属性のダメージ、さらに火属性の敵には特効ダメージ(500%/2000%)",
-		turn: 9,
-		proc: [ss_damage_s(special_attr([1,0,0,0,0], 20, 5), [0], 1)],
-	},
-	Lawake: [
-		Statusup(0,400),
-		Attr_statusup(0, 100, [1,0,0,0,0]),
-	],
-},{
 	name: "覇眼戦線 リヴェータ&ルドヴィカ",
 	cardno: 7484,
 	imageno: 6128,
@@ -55335,7 +55291,7 @@ Cards = [{
 	ss1: {
 		desc: "<時限大魔術>スキル反射を無視し、4ターン後に敵単体へ雷属性のダメージ(1000%)(上限設置数:5)",
 		turn: 2,
-		proc: [ss_damage_timebomb(10, [2], 1, 4)],
+		proc: [ss_damage_timebomb(10, [2], 1, 4), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Statusup(0,100),
@@ -55356,7 +55312,7 @@ Cards = [{
 	ss2: {
 		desc: "<時限大魔術>スキル反射を無視し、4ターン後に敵単体へ雷属性のダメージ(2000%)(上限設置数:5)",
 		turn: 3,
-		proc: [ss_damage_timebomb(20, [2], 1, 4)],
+		proc: [ss_damage_timebomb(20, [2], 1, 4), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,0,1,0,0,]),
@@ -55857,7 +55813,7 @@ Cards = [{
 		Attr_statusup(100,0, [1,1,0,0,0,]),
 		Attr_statusup(0,100, [1,1,0,0,0,]),
 		Fastskill(3),
-		Panel_boost([1,0,0,0,0,],2),
+		Panel_boost([0,1,0,0,0,],2),
 		Attr_statusup_sattr(0,200, [0,1,0,0,0,], 0,200, [1,0,0,0,0,]),
 		Attr_statusup_sattr(200,0, [0,1,0,0,0,], 200,0, [1,0,0,0,0,]),
 	],
@@ -57341,7 +57297,7 @@ Cards = [{
 		proc: [ss_attr_guard([1,1,1,1,1], 0.35, 6), ss_heal(0.5)],
 	},
 	Lawake: [
-		Attr_statusup(100,0, [0,0,0,0,0,]),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
 		Abstate_invalid("as_sealed"),
 	],
 },{
@@ -57364,7 +57320,7 @@ Cards = [{
 		desc: "<斬撃大魔術>3ターン溜めた後、スキル反射を無視し、火属性の6連撃(300%)、さらに連撃数分チェインプラス",
 		turn: 2,
 		charged: 3,
-		proc: [ss_damage_slash(3.0, [0], 6)],
+		proc: [ss_damage_slash(3.0, [0], 6), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Awake_noeffect("チェインガード",1),
@@ -57991,7 +57947,7 @@ Cards = [{
 	ss2: {
 		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、チェインがプラス1の効果を付与",
 		turn: 7,
-		proc: [panel_chainplus(1)],
+		proc: [panel_chainplus(1), ss_panel_change([1,1,1,0,0])],
 	},
 	Lawake: [
 		Statusup(400,0),
@@ -58086,7 +58042,7 @@ Cards = [{
 	},
 	Lawake: [
 		Statusup(1000,0),
-		Attr_relief([0,0,0,0,0,],10),
+		Attr_relief([1,1,1,1,1,],10),
 	],
 },{
 	name: "迎春 鬼狩りキュウマ",
@@ -58264,7 +58220,7 @@ Cards = [{
 		proc: ChainAttrAttack(7.5, 5, [1,0,0,0,0]),
 	},
 	ss2: {
-		desc: "	<ブースト>味方全体で1ターン溜めた後、8ターンの間、味方のMAXHPを毎ターン15%消費し、味方の攻撃力をアップ(150%)。さらに極稀にクリティカル",
+		desc: "<ブースト>味方全体で1ターン溜めた後、8ターンの間、味方のMAXHPを毎ターン15%消費し、味方の攻撃力をアップ(150%)。さらに極稀にクリティカル",
 		turn: 8,
 		charged: 1,
 		isallcharge: true,
