@@ -518,14 +518,14 @@ var SpSkill = {
 					iscursebreak: true,
 					turn: t,
 					lim_turn: t,
-					effect: function (f, oi, teff, state, is_t, is_f, is_ss) {
+					effect: function (f, oi, teff, state, is_t, is_ak, is_ss) {
 						if (state == "first") {
 							f.Allys.Now[oi].ss_boost_enhance = rate;
 						}
 						else if (state == "end" || state == "dead") {
 							f.Allys.Now[oi].ss_boost_enhance = 0;
 						}
-						else if (is_t && !is_f && !is_ss) {
+						else if (is_t && !is_ss && !f.Status.finish) {
 							// 自傷
 							var sco = ss_consume_own(dmg)
 							ss_object_done(f, oi, sco);

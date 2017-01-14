@@ -531,7 +531,7 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown) {
 			var now = fld.Allys.Now[tg[i]];
 			// 追加
 			var eff_obj = $.extend(true, {}, {
-				desc: "呪い(HP: " + (-hpdown) + ")",
+				desc: "呪い(HP: " + (-hpdown) + (atkdown ? ", ATK: " + -atkdown : "") + ")",
 				type: "curse",
 				icon: "curse",
 				isabstate: false,
@@ -541,12 +541,17 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown) {
 				turn: t,
 				lim_turn: t,
 				hpdown: hpdown,
+				atkdown: atkdown,
 				effect: function (f, oi, teff, state) {
 					var nowtg = f.Allys.Now[oi];
 					if (state == "first") {
 						// HP低下
 						nowtg.maxhp = Math.max(-hpdown + nowtg.maxhp, 1);
 						nowtg.nowhp = Math.min(nowtg.nowhp, nowtg.maxhp);
+						// ATK低下
+						if (atkdown) {
+							nowtg.atk = Math.max(-atkdown + nowtg.atk, 1);
+						}
 						// 効果解除
 						turneff_break_cond(nowtg.turn_effect, oi, function (teff) {
 							return teff.iscursebreak;
@@ -559,9 +564,15 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown) {
 					else if (state == "end" || state == "overlay") {
 						nowtg.maxhp += hpdown;
 						nowtg.nowhp = Math.min(nowtg.nowhp + hpdown, nowtg.maxhp);
+						if (atkdown) {
+							nowtg.atk += atkdown;
+						}
 					}
 					else if (state == "dead") {
 						nowtg.maxhp += hpdown;
+						if (atkdown) {
+							nowtg.atk += atkdown;
+						}
 					}
 				},
 			});
@@ -1112,13 +1123,15 @@ function s_enemy_continue_damage(turn, initialdamage, continuedamage){
 			// 参照用にコピーを取る
 			now_state: $.extend(true, {}, fld.Enemys.Data[n]),
 			effect: function (f, oi, ceff) {
-				var f_copy = $.extend(true, {}, f);
-				f_copy.Enemys.Data[oi] = ceff.now_state;
-				var tg = gen_enemytarget_array(5, 1, false);
-				for (var i = 0; i < tg[0].length; i++) {
-					_s_enemy_attack(f_copy, continuedamage, n, tg[0][i], false);
+				if (!f.Status.finish) {
+					var f_copy = $.extend(true, {}, f);
+					f_copy.Enemys.Data[oi] = ceff.now_state;
+					var tg = gen_enemytarget_array(5, 1, false);
+					for (var i = 0; i < tg[0].length; i++) {
+						_s_enemy_attack(f_copy, continuedamage, n, tg[0][i], false);
+					}
+					fld.log_push("Enemy[" + (n + 1) + "]: 継続ダメージ発動(" + continuedamage + "ダメージ) - 残り" + ceff.lim_turn + "t");
 				}
-				fld.log_push("Enemy[" + (n + 1) + "]: 継続ダメージ発動(" + continuedamage + "ダメージ) - 残り" + ceff.lim_turn + "t");
 			}
 		});
 	}, makeDesc("残滅大魔術"));

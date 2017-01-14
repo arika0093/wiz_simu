@@ -286,7 +286,7 @@
                      s_enemy_as_sealed(5, 4)
                   ],
                   on_move_angry: [
-                     s_enemy_attack(350, 1, 1, true)
+                     s_enemy_attack(350, 5, 1, true)
                   ],
                   atrandom: false,
                   turn: 1,

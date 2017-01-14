@@ -56773,7 +56773,7 @@ Cards = [{
 	ss1: {
 		desc: "<ステータスアップ>自身の攻撃力とHPを2000アップ(上限値:6000)し、HPを完全に回復する",
 		turn: 8,
-		proc: null,
+		proc: [ss_statusup_own([2000, 2000], [6000, 6000], -1), ss_heal_own(1)],
 	},
 	awakes: [
 		NEFTJOD(30),
@@ -56794,7 +56794,7 @@ Cards = [{
 	ss2: {
 		desc: "<ステータスアップ>自身の攻撃力とHPを2000アップ(上限値:6000)し、HPを完全に回復する",
 		turn: 8,
-		proc: null,
+		proc: [ss_statusup_own([2000, 2000], [6000, 6000], -1), ss_heal_own(1)],
 	},
 	Lawake: [
 		Abstate_invalid("ss_sealed"),
@@ -57629,7 +57629,7 @@ Cards = [{
 	ss2: {
 		desc: "<複属性ダメージ強化>5ターンの間、水属性の攻撃力をアップ、複属性が雷だとさらにアップ(100%/200%)。さらに味方属性のHPを完全回復する",
 		turn: 10,
-		proc: [ss_enhance_all_subattr(1.0, 2.0, 5, [0,1,0,0,0], [0,0,1,0,0]), ss_heal(0.5)],
+		proc: [ss_enhance_all_subattr(1.0, 2.0, 5, [0,1,0,0,0], [0,0,1,0,0]), ss_heal(1)],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -58114,7 +58114,7 @@ Cards = [{
 	ss1: {
 		desc: "<ステータスアップ>自身の攻撃力とHPを2000アップ(上限値:6000)し、HPを完全に回復する",
 		turn: 8,
-		proc: null,
+		proc: [ss_statusup_own([2000, 2000], [6000, 6000], -1), ss_heal_own(1)],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
@@ -58135,7 +58135,7 @@ Cards = [{
 	ss2: {
 		desc: "<ステータスアップ>自身の攻撃力とHPを2000アップ(上限値:6000)し、HPを完全に回復する",
 		turn: 8,
-		proc: null,
+		proc: [ss_statusup_own([2000, 2000], [6000, 6000], -1), ss_heal_own(1)],
 	},
 	Lawake: [
 		Abstate_invalid("as_sealed"),

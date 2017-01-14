@@ -176,7 +176,7 @@ category_jp = {
 		jp: "バーニングタワー",
 		is_dispsim: true,
 		sim_index: 10,
-		disable_date:"2016/11/18 16:00",
+		disable_date:"2017/1/20 16:00",
 	},
     "material": {
 		jp: "素材クエスト",

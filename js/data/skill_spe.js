@@ -449,6 +449,24 @@ function ss_statusup_all(up_arr, up_limit, t) {
 }
 
 /**
+ * 自身にステータスアップの効果を付与
+ * up_arr:		上昇値(ex: [500,500] -> HP500,攻撃500UP)
+ * up_limit:	上昇限界値(ex: [2000,2000] -> HP2000,攻撃2000以上は切り捨て)
+ * t:			継続ターン数(ex: -1 -> 無制限)
+**/
+function ss_statusup_own(up_arr, up_limit, t) {
+	return ss_template({
+		name: "ss_statusup",
+		type: "turn_effect",
+		subtype: "statusup",
+		target: "own",
+		p1: up_arr,
+		p2: up_limit,
+		p3: t,
+	});
+}
+
+/**
  * 味方全体にダメージブロックをかける
  * d:	無効ダメージ値
  * t:	継続ターン数
@@ -615,6 +633,19 @@ function ss_heal(p) {
 		name: "ss_heal",
 		type: "heal",
 		target: "ally",
+		p1: p,
+	});
+}
+
+/**
+ * 自身を効果値だけ回復する。
+ * p: 回復効果値(ex. 0.25 -> 25%)
+**/
+function ss_heal_own(p) {
+	return ss_template({
+		name: "ss_heal",
+		type: "heal",
+		target: "own",
 		p1: p,
 	});
 }
