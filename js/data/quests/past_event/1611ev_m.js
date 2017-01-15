@@ -1,6 +1,6 @@
 {
    id: "1611ev_m",
-   name: "魔竜級 その名を知る者",
+   name: "(2016/11)イベントトーナメント 魔竜級",
    desc: "",
    overlap: false,
    aprnum: 5,

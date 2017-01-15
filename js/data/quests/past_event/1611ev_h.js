@@ -1,6 +1,6 @@
 {
    id: "1611ev_h",
-   name: "覇級 頂上決戦",
+   name: "(2016/11)イベントトーナメント 覇級",
    desc: "",
    overlap: false,
    aprnum: 5,

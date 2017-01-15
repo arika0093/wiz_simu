@@ -1062,7 +1062,7 @@ var SpSkill = {
 	"ss_latest_copy": function (fld, n, cobj, params) {
 		if (fld.Status.latest_ss) {
 			var now = fld.Allys.Now[n];
-			return ss_procdo(fld.Status.latest_ss, now, n);
+			return ss_procdo(fld, fld.Status.latest_ss, now, n);
 		} else {
 			return false;
 		}
@@ -1393,6 +1393,14 @@ function ss_object_done(fld, n, c_obj, is_check_crs) {
 		// 関数なら実行
 		else if ($.isFunction(p)) {
 			params[count] = p();
+		}
+		// 配列なら内部要素について再帰
+		else if ($.isArray(p)) {
+			params[count] = [];
+			for (i = 0; i < p.length; i++) {
+				var is_num = $.isNumeric(p[i]);
+				params[count][i] = is_num ? p[i] : ss_object_done(fld, n, p[i], is_check_crs);
+			}
 		}
 		// 関数型でないならそのまま
 		else {
