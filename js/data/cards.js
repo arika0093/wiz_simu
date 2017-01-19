@@ -60397,7 +60397,7 @@ Cards = [{
 	awakes: [
 		Statusup(300,0),
 		Statusup(0,300),
-		Panel_boost([0,0,1,0,0,],2),
+		Panel_boost([0,1,0,0,0,],2),
 		NEFTJOD(30),
 		Attr_statusup(0,300, [0,1,0,0,0,]),
 		Fastskill(1),
