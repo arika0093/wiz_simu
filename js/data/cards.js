@@ -60441,12 +60441,12 @@ Cards = [{
 		proc: [ss_enhance_all_subattr(1.0, 2.5, 5, [1,0,0,0,0], [0,1,0,0,0])],
 	},
 	awakes: [
-		Panel_boost([0,1,0,0,0,],2),
+		Panel_boost([1,0,0,0,0,],2),
 		NEFTJOD(30),
 		Attr_statusup(200,0, [1,1,0,0,0,]),
 		Attr_statusup(0,200, [1,1,0,0,0,]),
 		Abstate_invalid("as_sealed"),
-		Panel_boost([0,1,0,0,0,],2),
+		Panel_boost([1,0,0,0,0,],2),
 		Attr_relief([1,1,1,1,1,],10),
 		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
 		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,200, [0,1,0,0,0,]),
@@ -60564,7 +60564,7 @@ Cards = [{
 	atk: 1307,
 	cost: 52,
 	attr: [2,3],
-	species: [-1],
+	species: [1],
 	islegend: true,
 	ape: "魔轟三鉄傑 対 地獄三十六歌仙",
 	as1: {
@@ -60808,7 +60808,7 @@ Cards = [{
 	ss1: {
 		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ火属性のダメージ(240%×人数)",
 		turn: 10,
-		proc: [ss_damage_all(ss_consume_all_cond(2.4, 0.6), [0]), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.6), [0], 1), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Fastskill(1),
@@ -60829,7 +60829,7 @@ Cards = [{
 	ss2: {
 		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ火属性のダメージ(320%×人数)",
 		turn: 13,
-		proc: [ss_damage_all(ss_consume_all_cond(3.2, 0.6), [0]), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(ss_consume_all_cond(3.2, 0.6), [0], 1), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,0,0,0,]),
