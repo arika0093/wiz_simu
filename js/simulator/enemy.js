@@ -180,6 +180,10 @@ function enemy_move() {
 	}
 	// 優先度で並び替え
 	e_moves.sort(function (a, b) {
+		if ((!a.move || a.move.priority === undefined)
+		 && (!b.move || b.move.priority === undefined)) {
+			return a.index > b.index;
+		}
 		if (!b.move || b.move.priority === undefined) { return -1; }
 		if (!a.move || a.move.priority === undefined) { return 1; }
 		return a.move.priority < b.move.priority;
