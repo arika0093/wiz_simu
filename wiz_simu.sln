@@ -207,6 +207,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "comment", "comment", "{9997
 		js\comment\comment.js = js\comment\comment.js
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hpcalc", "hpcalc", "{A4DB78BA-8F08-414B-A7C6-49AB5135DA63}"
+	ProjectSection(SolutionItems) = preProject
+		tools\hpcalc\index.html = tools\hpcalc\index.html
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -244,5 +249,6 @@ Global
 		{56183A96-2056-453B-8B99-DD4F0D23A5F8} = {AEC9F07D-08AF-4D00-AC3F-C5ED1357D47A}
 		{E66D8396-C4E0-4CE0-AABD-80B5F7E98DC5} = {AEC9F07D-08AF-4D00-AC3F-C5ED1357D47A}
 		{9997ACDB-DC59-4D59-AC9F-F5D0B6A4338A} = {20D7A7D8-822B-4D68-AEF0-9127E62A819F}
+		{A4DB78BA-8F08-414B-A7C6-49AB5135DA63} = {AEC9F07D-08AF-4D00-AC3F-C5ED1357D47A}
 	EndGlobalSection
 EndGlobal

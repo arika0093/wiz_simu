@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px) and (max-width: 1099px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default_bg.css" media="screen and (min-width: 1100px)" />
+    <link rel="stylesheet" type="text/css" href="/css/crystalpoint.css" />
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <!-- Search -->
+    <meta name="robots" content="all" />
+    <meta name="keywords" content="黒猫,ウィズ,魔法使いと黒猫のウィズ,チェック,HP,体力" />
+    <meta name="description" content="「魔法使いと黒猫のウィズ」精霊の各レベルごとのHPを計算し、経験値の入れ方を表示します。" />
+    <!-- for Mobile Adsense -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-5156005489853976",
+            enable_page_level_ads: true
+        });
+    </script>
+    <!-- Top Page -->
+    <title>HP計算ツール - WizTools</title>
+    <!-- CSS -->
+    <style>
+        body{
+            font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese", sans-serif;
+        }
+        .tbl_caption{
+            padding: .5ex 0 .5ex 1ex;
+            border-width: 1px 1px 1px 3px;
+            border-style: solid;
+            border-color: #06F;
+        }
+        .calc_base, .calc_cond ul {
+            padding-left: 2ex;
+        }
+        .calc_cond ul{
+            list-style: none;
+        }
+        #recipe{
+            float: right;
+            width: 40%;
+        }
+        #hplist{
+            float: left;
+            width: 55%;
+        }
+        @media screen and (max-width: 600px){
+            #recipe, #hplist{
+                float: none;
+                width: 100%;
+            }
+        }
+        .appearLink{
+            text-decoration:underline;
+            color: #00D;
+            cursor: pointer;
+        }
+        table.hp_disp{
+            border-collapse: separate;
+            border-spacing: 1px;
+            text-align: left;
+            line-height: 1.5;
+            /*border-top: 1px solid #ccc;*/
+        }
+        table.hp_disp th {
+	        padding: 3px;
+	        font-weight: bold;
+	        vertical-align: top;
+	        border-bottom: 1px solid #ccc;
+        }
+        table.hp_disp td {
+	        padding: 5px;
+	        vertical-align: top;
+	        border-bottom: 1px solid #ccc;
+        }
+        .tbl_title{
+            border-bottom: 3px double #02D;
+        }
+    </style>
+    <!-- javascript -->
+    <script>
+        var expTable = [0, 0, 6, 13, 21, 29, 38, 48, 58, 69, 81, 94, 120, 160, 216, 291, 388, 512, 664, 848, 1067, 1324, 1600, 1893, 2206, 2539, 2892, 3268, 3660, 4072, 4502, 4952, 5424, 5924, 6454, 7013, 7603, 8223, 8873, 9555, 10268, 11013, 11788, 12604, 13460, 14360, 15305, 16296, 17336, 18424, 19564, 20757, 22001, 23328, 24747, 26264, 27889, 29629, 31492, 33487, 35620, 37901, 40273, 42753, 45342, 48040, 50849, 53769, 56801, 59946, 63204, 66427, 69814, 73374, 77116, 81048, 85181, 89525, 94090, 98888, 103931, 109231, 114801, 120655, 126808, 133275, 140072, 147215, 154722, 162612, 170905, 179214, 187539, 195580, 204237, 212610, 220999, 229404, 237825, 246262, 254715, 263184, 271669, 280170, 288688, 297223, 305775, 314344, 322930, 331533, 340153];
+        function nLvHp(x, HP1, HPmax, mana, maxLv) {
+            return Math.floor((HP1) + (HPmax - HP1) / (maxLv - 1) * (x - 1)) + mana
+        }
+        function loadJoken() {
+            ids = [
+				"1n0",
+				"2n0",
+				"2n1",
+				"5n0",
+				"10n0",
+				"10n5",
+				"nandemo",
+            ]
+            for (var myId = 0; myId < ids.length; myId++) {
+                if (document.form1[ids[myId]].checked) {
+                    return (ids[myId])
+                }
+            }
+        }
+        function onSelectDo(card) {
+            maxLvHp.value = card.hp;
+            maxLv.value = card.islegend ? 110 : 90;
+            calcMinHp()
+        }
+        function needExp(lv, nExp) {
+            return expTable[lv] - nExp
+        }
+        grimoireTable1 = [
+			[390222, "<font color=blue>自属性L猫"],
+			[312178, "<font color=red>他属性L猫"],
+			[61340, "<font color=blue>自属性SS+書"],
+			[49072, "<font color=red>他属性SS+書"],
+			[45345, "<font color=blue>自属性SS書"],
+			[36348, "<font color=red>他属性SS書"],
+			[15776, "<font color=blue>自属性S書"],
+			[12621, "<font color=red>他属性S書"],
+			[7723, "<font color=blue>自属性A書"],
+			[6179, "<font color=red>他属性A書"],
+			[2905, "<font color=blue>自属性B+書"],
+			[2324, "<font color=red>他属性B+書"],
+        ]
+        grimoireTable2 = [
+			[390222, "<font color=blue>自属性L猫"],
+			[61340, "<font color=blue>自属性SS+書"],
+			[45345, "<font color=blue>自属性SS書"],
+			[15776, "<font color=blue>自属性S書"],
+			[7723, "<font color=blue>自属性A書"],
+			[2905, "<font color=blue>自属性B+書"],
+        ]
+        function calcRecipe(lv) {
+            var vNowExp = document.getElementById("nowExp").value.replace(",", "") * 1;
+            var vMaxLv = document.getElementById("maxLv").value * 1;
+            var vMinExpOverFlow = document.getElementById("minExpOverFlow").checked;
+
+            var res = "<p class='tbl_title'>レシピ：</p>"
+            if (!lv) {
+                res += "右の[表示]をクリックして下さい"
+            } else {
+                var vNeedExp = needExp(lv, vNowExp);
+                var vNgExp;
+                if (lv != vMaxLv) {
+                    var vNgExp = needExp(lv + 1, vNowExp);
+                } else {
+                    var vNgExp = 9999999;
+                }
+                res += "目標Lv:" + lv + "<br>"
+                res += "現在のExp:" + comma3(vNowExp) + "<br>"
+                res += "必要なExp：" + comma3(vNeedExp) + "<br>"
+                res += "目標Lv+1になるExp：" + comma3(vNgExp) + "<br>"
+                if (false /*noOther.checked*/) {
+                    var gRes = calcRecipeCore(grimoireTable2, vNeedExp, vNgExp, 2)
+                } else {
+                    //両方入りのテーブルでやるとき、自属性だけのほうがよくなることがあるので、両方解析する
+                    var gRes1 = calcRecipeCore(grimoireTable1, vNeedExp, vNgExp, 1)
+                    var gRes2 = calcRecipeCore(grimoireTable2, vNeedExp, vNgExp, 2)
+                    var gRes = gRes1.concat(gRes2)
+                }
+                var tmpVal = 99999;
+                var trueRes = [];
+                //OK以上NG以下の全パターンから回数orオーバーフロー最小の物を抽出
+                gRes.forEach(function (gr) {
+                    var gra = gr.split(",");
+                    if (vMinExpOverFlow && (tmpVal * 1 > gra[1] * 1)) {
+                        tmpVal = gra[1]
+                        trueRes = gra
+                    } else if (!vMinExpOverFlow && tmpVal * 1 >= gra[0] * 1) {
+                        tmpVal = gra[0]
+                        trueRes = gra
+                    }
+                })
+                var sumExp = 0;
+                if (trueRes.length != 0) {
+                    resMain = "<table border=1><tr><td>素材名</td><td>必要数</td></tr>"
+                    if (trueRes[2] == 1) {
+                        grimoireTable = grimoireTable1
+                    } else {
+                        grimoireTable = grimoireTable2
+                    }
+                    for (var trn = 3; trn < trueRes.length; trn++) {
+                        if (trueRes[trn] != 0) {
+                            resMain += "<tr><td>" + grimoireTable[trn - 3][1] + "</td><td>" + trueRes[trn] + "</td></tr>"
+                            sumExp += grimoireTable[trn - 3][0] * trueRes[trn];
+                        }
+                    }
+                    resMain += "</table>合計Exp:" + comma3(sumExp)
+                    resMain += "<br>EXPオーバフロー：" + comma3(trueRes[1] * 1)
+                    resMain += "<br>合成回数：" + trueRes[0]
+                } else {
+                    resMain = "魔導書で該当のExpにすることはできませんでした。。"
+                }
+                res += resMain;
+            }
+            recipe.innerHTML = res;
+        }
+        function calcRecipeCore(grimoireTable, vNeedExp, vNgExp, tableNum) {
+            var vvNowExp = 0;
+            var gRes = []
+            var gResStr = tableNum
+            var totalNowCount = 0;
+            var overExp = 9999999;
+            for (var gtn = 0; gtn < grimoireTable.length; gtn++) {
+                var nowCount = 0;
+                //追加しても必要EXPを超えない書は追加確定とする。ただし、
+                while (vvNowExp + grimoireTable[gtn][0] <= vNeedExp &&
+                    //(その書と一番小さい書を追加したときにNGを超える書)は追加しない
+				!(vvNowExp + grimoireTable[gtn][0] + grimoireTable[grimoireTable.length - 1][0] >= vNgExp)
+				) {
+                    vvNowExp += grimoireTable[gtn][0]
+                    nowCount++;
+                    totalNowCount++;
+                }
+                //(最適かどうかは兎も角)取りあえずOK以上NG以下になるパターンを記録
+                if (vvNowExp + grimoireTable[gtn][0] >= vNeedExp & vvNowExp + grimoireTable[gtn][0] <= vNgExp) {
+                    var nowOverExp = vvNowExp + grimoireTable[gtn][0] - vNeedExp
+                    if (overExp > nowOverExp) {
+                        overExp = nowOverExp;
+                        gRes.push((totalNowCount + 1) + "," + overExp + "," + gResStr + "," + (nowCount + 1))
+                    }
+                }
+                gResStr += "," + nowCount
+            }
+            return gRes
+        }
+        function calc() {
+            var vMaxLvHp = maxLvHp.value.replace(",", "") * 1;
+            var vMaxLv = maxLv.value * 1;
+            var vNowMana = nowMana.value * 1;
+            var vMinLvHp = minLvHp.value.replace(",", "") * 1;
+            var vNowExp = nowExp.value.replace(",", "") * 1;
+            var joken = loadJoken();
+            if (joken != "nandemo") {
+                jokenArray = joken.split("n")
+            } else {
+                jokenArray = [joken1.value, joken2.value]
+            }
+            res = "";
+            res += "<div id='recipe'></div>"
+            res += "<div id='hplist'>"
+            res += "<p class='tbl_title'>HP一覧：</p>"
+            var nowLvHp;
+            var resMain = ""
+            var fstLv = 0;
+            for (var lv = vMaxLv; lv > 0; lv--) {
+                nowLvHp = nLvHp(lv, vMinLvHp, vMaxLvHp, vNowMana, vMaxLv);
+                if ((nowLvHp - jokenArray[1] * 1) % (jokenArray[0] * 1) == 0) {
+                    if (fstLv == 0) {
+                        fstLv = lv;
+                    }
+                    resMain += "<tr><td>" + lv + "</td><td>" + comma3(nowLvHp) + "</td><td>" + comma3(needExp(lv, vNowExp)) + "</td><td><span class=appearLink onclick=calcRecipe(" + lv + ");>表示</span></td></tr>"
+                }
+            }
+            if (resMain != "") {
+                res += "<table class='hp_disp'><tr><td>Lv</td><td>HP</td><td>必要Exp</td><td>レシピ</td></tr>"
+                res += resMain
+                res += "</table></div>"
+            } else {
+                res += "該当なし"
+            }
+            reszone.innerHTML = res
+            calcRecipe(fstLv)
+        }
+        function calcMinHp() {
+            minLvHp.value = Math.floor(maxLvHp.value.replace(",", "") / 2)
+        }
+    </script>
+</head>
+<body>
+    <div id='Top'></div>
+    <div id="wrap">
+        <!-- Loader -->
+        <div id="loader"><img src="/image/loading.gif" alt="Loading..." /></div>
+        <noscript id="loadnoscr">このページはjavascriptを使用しています。有効にしたのち再度アクセスしてください。</noscript>
+        <div id="fade"></div>
+        <!-- Header -->
+        <div id="Header"></div>
+        <!-- Main Contents -->
+        <div class="Main">
+            <dl class="List">
+                <dt>このツールについて</dt>
+                <dd id="tool_info">
+                    <div class="info">
+                        精霊のHPを計算し、各レベルごとに表示します。<br/>
+                        奇数調整や10n+5調整など、幅広く条件を指定可能です。<br />
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-related="wiz_tools">Tweet</a>
+                        <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+                    </div>
+                    <!-- Adsense -->
+                    <div class="Adsense">
+                        <!-- advertise -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5156005489853976"
+                             data-ad-slot="6536828444"
+                             data-ad-format="auto"></ins>
+                        <script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </dd>
+                <dt>使い方など</dt>
+                <dd id="howtouse">
+                    <div class="info">
+                        その精霊の最大HPを入力します。経験値状況、マナなどは必要に応じて入力してください。<br/>
+                        オーバフロー最小を指定すると、次のレベルまでの経験値が大きくなるよう計算します。結晶の付け外しで経験値が入るため、おすすめです。
+                        一般的には2n+1(奇数調整)、20%以下発動の精霊は5nまたは10n+5が推奨されます。
+                    </div>
+                </dd>
+                <dt id="check">データ入力</dt>
+                <dd>
+                    <div id="input_form">
+                        <p class="tbl_caption" >基本情報/オプション</p>
+                        <table class="calc_base">
+                            <tr><td>最大レベル：</td><td><input id=maxLv type=text class=valArea value=110 /></td></tr>
+                            <tr><td>最大レベルのときのHP：</td><td><input id=maxLvHp type=text class=valArea onchange=calcMinHp() placeholder="図鑑から確認可能[必須]"/></td></tr>
+                            <tr><td>Lv1のときのHP[自動指定]：</td><td><input id=minLvHp type=text class=valArea placeholder="最大HPの半分(例外あり)" /></td></tr>
+                            <tr><td>現在のマナ：</td><td><input id=nowMana type=text class=valArea value=200 /></td></tr>
+                            <tr><td>現在の経験値：</td><td><input id=nowExp type=text class=valArea value=0 /></td></tr>
+                            <tr><td colspan="2"><input name=expType type="checkbox" id="minExpOverFlow" checked /><label for="minExpOverFlow">EXPオーバフローを最小化</label></td></tr>
+                            <tr><td colspan="2"><input name=expType type="checkbox" id="minAddNum" /><label for="minAddNum">合成回数を最小化</label></td></tr>
+                        </table>
+                        <form name="form1" class="calc_cond" action="">
+                            <p class="tbl_caption">探索条件</p>
+                            <ul>
+                                <li><input name=joken type=radio id=1n0 checked><label for="1n0">全部表示</label></li>
+                                <li><input name=joken type=radio id=2n0><label for="1n0">2n(偶数)調整</label></li>
+                                <li><input name=joken type=radio id=2n1><label for="2n1">2n+1(奇数)調整</label></li>
+                                <li><input name=joken type=radio id=5n0><label for="5n0">5n(2, 4, 6, 8割削りが丁度)調整</label></li>
+                                <li><input name=joken type=radio id=10n0><label for="10n0">10n(n割削りが丁度)調整</label></li>
+                                <li><input name=joken type=radio id=10n5><label for="10n5">10n+5(2, 4, 6, 8割削りが丁度かつ奇数)調整</label></li>
+                                <li><input name=joken type=radio id=nandemo><label for="nandemo"><input class=jInput type=text id=joken1>n+<input class=jInput type=text id=joken2>調整</label></li>
+                            </ul>
+                        </form>
+                        <button class="cp_calculate" id="Start" onclick="calc();">計算開始</button>
+                    </div>
+                    <!-- Adsense -->
+                    <div class="Adsense">
+                        <!-- advertise -->
+                        <ins class="adsbygoogle"
+                             style="display:block"
+                             data-ad-client="ca-pub-5156005489853976"
+                             data-ad-slot="6536828444"
+                             data-ad-format="auto"></ins>
+                        <script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </dd>
+                <dt>結果表示</dt>
+                <dd id="reszone" class='clearfix'>
+                    (ここに計算結果が表示されます)
+                </dd>
+            </dl>
+        </div>
+        <!-- Footer -->
+        <div id="Footer"></div>
+        <!-- Dialog Contents -->
+        <div class="dialog_div" id="dialog_error" title="Error">
+            <p>入力内容に漏れがあります。得られるポイント数と最大魔力を入力してください。</p>
+        </div>
+        <!-- Javascript -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+        <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/loader.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/general.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/deck/deckdata.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/tools/data/point_rewards.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/tools/crystalpt.js"></script>
+    </div>
+</body>
+</html>
