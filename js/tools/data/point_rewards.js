@@ -34,7 +34,7 @@ var rewards = [{
 	point: 80000,
 }, {
 	type: "awake_ct",
-	desc: "潜在結晶<コストダウン>(A+)",
+	desc: "潜在結晶",
 	point: 100000,
 }, {
 	type: "ether",
@@ -48,7 +48,7 @@ var rewards = [{
 	important: true,
 }, {
 	type: "awake_ct",
-	desc: "潜在結晶<パネブ火>(A+)",
+	desc: "潜在結晶",
 	point: 200000,
 }, {
 	type: "crystal",
@@ -57,7 +57,7 @@ var rewards = [{
 	crystal: +1,
 }, {
 	type: "awake_ct",
-	desc: "潜在結晶<パネブ水>(A+)",
+	desc: "潜在結晶",
 	point: 300000,
 }, {
 	type: "crystal",
@@ -76,7 +76,7 @@ var rewards = [{
 	crystal: +1,
 }, {
 	type: "awake_ct",
-	desc: "潜在結晶<パネブ雷>(A+)",
+	desc: "潜在結晶",
 	point: 400000,
 }, {
 	type: "crystal",
@@ -95,7 +95,7 @@ var rewards = [{
 	crystal: +1,
 }, {
 	type: "awake_ct",
-	desc: "潜在結晶<自己犠牲>(A)",
+	desc: "潜在結晶",
 	point: 500000,
 	important: true,
 }, {
@@ -169,7 +169,7 @@ var rewards = [{
 	crystal: +1,
 }, {
 	type: "awake_ct",
-	desc: "潜在結晶<大魔術>(A+)",
+	desc: "潜在結晶",
 	point: 600000,
 	important: true,
 }, {

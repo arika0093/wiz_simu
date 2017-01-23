@@ -96,6 +96,15 @@ var Cardlist = [{
 	name: "リシア",
 	imageno: 8133,
 }, {
+	name: "ルツィア",
+	imageno: 8777,
+}, {
+	name: "クルル",
+	imageno: 8780,
+}, {
+	name: "ラス",
+	imageno: 8783,
+}, {
 	// --------------------------
 	// ウィズセレ Aスタート
 	type: "ウィズセレクション A精霊"
@@ -215,19 +224,19 @@ var Cardlist = [{
 	imageno: 7234,
 }, {
 	name: "ヒルデ",
-	imageno: 3835,
+	imageno: 7935,
 }, {
 	name: "ディートリヒ",
 	imageno: 7702,
 }, {
 	name: "チュレ",
-	imageno: 4308,
+	imageno: 7936,
 }, {
 	name: "ミオ",
-	imageno: 4945,
+	imageno: 7937,
 }, {
 	name: "ラスル",
-	imageno: 4954,
+	imageno: 7938,
 }, ];
 
 
