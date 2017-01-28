@@ -158,16 +158,18 @@ var SpSkill = {
 					var is_sc_cancel = $.grep(now_e.turn_effect, function (e) {
 						return e.bef_skillcounter && !e.bef_skillcounter(f, oi);
 					}).length > 0;
-					if (is_t && !is_b && sc_flag.length > 0 && !is_sc_cancel) {
-						f.log_push("Unit[" + (oi + 1) + "]: スキルカウンター発動(" + (rate * 100) + "%)");
-						// スキルカウンター対象の敵の数だけ繰り返す
-						for (var sci = 0; sci < sc_flag.length; sci++) {
-							if (!sc_flag[sci]) { continue; }
-							for (var atri = 0; atri < card.attr.length; atri++) {
-								// 攻撃
-								if (card.attr[atri] >= 0) {
-									ss_damage(f, rate, card.attr[atri], 1, oi, sci, true);
-									GetNowBattleEnemys(sci).flags.on_damage = true;
+					if (is_t && !is_b && sc_flag.length > 0) {
+						if (!is_sc_cancel) {
+							f.log_push("Unit[" + (oi + 1) + "]: スキルカウンター発動(" + (rate * 100) + "%)");
+							// スキルカウンター対象の敵の数だけ繰り返す
+							for (var sci = 0; sci < sc_flag.length; sci++) {
+								if (!sc_flag[sci]) { continue; }
+								for (var atri = 0; atri < card.attr.length; atri++) {
+									// 攻撃
+									if (card.attr[atri] >= 0) {
+										ss_damage(f, rate, card.attr[atri], 1, oi, sci, true);
+										GetNowBattleEnemys(sci).flags.on_damage = true;
+									}
 								}
 							}
 						}
@@ -206,19 +208,21 @@ var SpSkill = {
 					var is_sc_cancel = $.grep(now_e.turn_effect, function (e) {
 						return e.bef_skillcounter && !e.bef_skillcounter(f, oi);
 					}).length > 0;
-					if (is_t && !is_b && dmg_flag.length > 0 && !is_sc_cancel) {
-						f.log_push("Unit[" + (oi + 1) + "]: 多段式カウンター発動");
-						// 多段カウンター対象の敵の数だけ繰り返す
-						for (var sci = 0; sci < dmg_flag.length; sci++) {
-							if (!dmg_flag[sci]) { continue; }
-							// 攻撃された回数だけ攻撃
-							for (var atk_ct = 0; atk_ct < dmg_flag[sci]; atk_ct++) {
-								for (var atri = 0; atri < card.attr.length; atri++) {
-									if (card.attr[atri]>= 0) {
-										ss_damage(f, 1, card.attr[atri], 1, oi, sci, true);
+					if (is_t && !is_b && dmg_flag.length > 0) {
+						if (!is_sc_cancel) {
+							f.log_push("Unit[" + (oi + 1) + "]: 多段式カウンター発動");
+							// 多段カウンター対象の敵の数だけ繰り返す
+							for (var sci = 0; sci < dmg_flag.length; sci++) {
+								if (!dmg_flag[sci]) { continue; }
+								// 攻撃された回数だけ攻撃
+								for (var atk_ct = 0; atk_ct < dmg_flag[sci]; atk_ct++) {
+									for (var atri = 0; atri < card.attr.length; atri++) {
+										if (card.attr[atri] >= 0) {
+											ss_damage(f, 1, card.attr[atri], 1, oi, sci, true);
+										}
 									}
+									GetNowBattleEnemys(sci).flags.on_damage = true;
 								}
-								GetNowBattleEnemys(sci).flags.on_damage = true;
 							}
 						}
 						// ダメージ反射フラグを解除

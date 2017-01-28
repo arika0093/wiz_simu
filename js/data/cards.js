@@ -51394,7 +51394,7 @@ Cards = [{
 	ss1: {
 		desc: "<ステータスアップ>味方全体の攻撃力を500アップ、さらにHPを回復(25%)(上限値:2000)",
 		turn: 5,
-		proc: [ss_statusup_all([500, 500], [2000, 2000], -1), ss_heal(0.25)],
+		proc: [ss_statusup_all([0, 500], [2000, 2000], -1), ss_heal(0.25)],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -51415,7 +51415,7 @@ Cards = [{
 	ss2: {
 		desc: "<ステータスアップ>味方全体の攻撃力を1000アップ、さらにHPを回復(50%)(上限値:2000)",
 		turn: 8,
-		proc: [ss_statusup_all([1000, 1000], [2000, 2000], -1), ss_heal(0.5)],
+		proc: [ss_statusup_all([0, 1000], [2000, 2000], -1), ss_heal(0.5)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,0,1,0,0,]),

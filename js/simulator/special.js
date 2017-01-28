@@ -216,6 +216,7 @@ function legend_timing_check(cards, nows, index, is_ignore_spskill) {
 	var rst = is_l && !nows[index].islegend;
 	if (rst) {
 		nows[index].islegend = true;
+		nows[index].lgstart_turn = Field.Status.totalturn;
 		Field.log_push("Unit[" + (index + 1) + "]: Lモード");
 		// L時の潜在を反映させる
 		add_awake_ally(cards, nows, index, true);
