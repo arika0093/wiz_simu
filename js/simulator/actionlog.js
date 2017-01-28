@@ -145,3 +145,53 @@ function actl_save_seed() {
 	}
 	st.act_log[st.totalturn].seed = st.seed;
 }
+
+
+/**
+ * actionlogデータからデッキの早さを推測する関数群
+ **/
+function actionSpScoreAnalyze(turn, turn_d, act) {
+	if (!act || !act[0] || !act[0].action || !act[0].action[0]) {
+		return undefined;
+	}
+	var score = 0;
+	var def_targetct = 0;
+	var appearval = {
+		"target": 0,
+		"special": 0,
+		"answer": 0,
+	}
+	var typeval = {
+		"target": function (ap, ac, ti) {
+			if (ac.target == ti) {
+				def_targetct++;
+				return 0;
+			}
+			else if (!$.isArray(ac.target)) {
+				return (ap - def_targetct) * 2;
+			}
+			else {
+				return Math.pow((ap - def_targetct + 1), 2);
+			}
+		},
+		"special": function (ap, ac) { return 12 * Math.pow(ap, 0.8); },
+		"answer": function (ap, ac) { return 24; },
+	}
+	// turn add
+	score += Math.pow(Math.max(Number(turn)-5, 0), 2.5) * 10;
+	// action add
+	for (var i = 0; i < act.length; i++) {
+		if (!act[i] || !act[i].action) { return undefined; }
+		var tg_index = -1;
+		for (var j = 0; j < act[i].action.length; j++) {
+			var chk = act[i].action[j];
+			if (!chk) { return undefined; }
+			score += typeval[chk.type](appearval[chk.type], chk, tg_index);
+			if (chk.type == "target") {
+				tg_index = chk.target;
+			}
+			appearval[chk.type]++;
+		}
+	}
+	return Math.floor(score);
+}

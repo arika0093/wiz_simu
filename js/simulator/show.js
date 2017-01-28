@@ -22,9 +22,10 @@ function sim_show() {
 	} else {
 		var chain_state = "";
 	}
-	$("#sim_turns").text(
+	$("#sim_turns").html(
 		"turn: " + totalturn_string() + " / chain: " + Field.Status.chain
-			+ chain_state + " / " + Field.Status.nowbattle + "戦目 (" + durturn_string() + ")"
+			+ chain_state + (Field.Status.finish ? " / Act-Factor: " + Field.Status.speedscore :
+			" / " + Field.Status.nowbattle + "戦目 (" + durturn_string() + ")")
 	);
 
 	// sim_info_status

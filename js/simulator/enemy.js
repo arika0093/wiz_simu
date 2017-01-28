@@ -75,6 +75,9 @@ function allkill_check(is_ssfinish) {
 			st.finish = true;
 			Field.log_push(st.nowbattle + "戦目突破(" + st.nowturn + "ターン)");
 			Field.log_push("QUEST CLEARED! (Total: " + (st.totalturn + 1) + "turn)");
+			// ログにSpeedscoreを記載
+			Field.Status.speedscore = actionSpScoreAnalyze(st.totalturn + 1, durturn_string(), st.act_log);
+			Field.log_push("ACTION-FACTOR: " + Field.Status.speedscore, "orange");
 		} else {
 			Field.log_push(st.nowbattle + "戦目突破(" + st.nowturn + "ターン)");
 			// 次に進む

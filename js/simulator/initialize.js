@@ -77,6 +77,7 @@ var Field = {
 		is_spanel_only: true,
 		turn_dmg: 0,
 		total_kill: 0,
+		speedscore: 0,
 		// 結果保存
 		result_id: 0,
 		// 文字ログ
