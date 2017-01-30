@@ -49,6 +49,12 @@ category_jp = {
     "": {
 		jp: "未設定",
 	},
+    "zoba": {
+		is_dispsim: true,
+		sim_index: 11,
+		jp: "魔轟三鉄傑 対 地獄三十六歌仙",
+		disable_date:"2017/2/7 16:00",
+	},
     "esuterera1": {
 		is_dispsim: true,
 		sim_index: 11,

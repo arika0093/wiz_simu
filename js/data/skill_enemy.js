@@ -1150,6 +1150,18 @@ function s_enemy_chain_break() {
 	}, makeDesc("チェイン解除"));
 }
 
+// チェイン減少
+function s_enemy_chainreduce(ch) {
+	return m_create_enemy_move(function (fld, n) {
+		if (fld.Status.chain_status <= 0) {
+			fld.Status.chain -= ch;
+			fld.log_push("Enemy[" + (n + 1) + "]: チェイン減少: " + t);
+		} else {
+			fld.log_push("Enemy[" + (n + 1) + "]: チェイン減少(無効)");
+		}
+	}, makeDesc("チェイン減少"));
+}
+
 // チェイン封印
 function s_enemy_chain_sealed(t) {
 	return m_create_enemy_move(function (fld, n) {
@@ -1312,7 +1324,8 @@ function makeDesc(mystr, order){
 			toStr = prop != "desc" ? toStr : toStr+" "
 			toStr = prop != "healvalue" ? toStr : toStr+"回復"
 			toStr = prop != "ratiorate" ? toStr : toStr * 100 + "％削り"
-			toStr = ["tgtype","p1","p2","p3","p4"].indexOf(prop)==-1 ? toStr : ""
+			toStr = prop != "ch" ? toStr : toStr + "chain"
+			toStr = ["tgtype", "p1", "p2", "p3", "p4"].indexOf(prop) == -1 ? toStr : ""
 			outpStr += toStr == "" ? "" : flag==1 ? " (" : "、"
 			toStr = toStr == "" ? "" : toStr != comma3(argObj[prop]) ? toStr : "<font color=red>#DEF!</font>" + prop
 			flag = toStr == "" ? flag :  0
