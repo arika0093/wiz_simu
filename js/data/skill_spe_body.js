@@ -1246,6 +1246,16 @@ var SpCondSkill = {
 		return a + b * num;
 	},
 	// -----------------------------
+	// 激化大魔術
+	"ss_intenselyval": function (fld, oi, cobj, params) {
+		var a = params[0];
+		var b = params[1];
+		var max = params[2];
+		var now = fld.Allys.Now[oi];
+		var x = (now.intensely_val || 0) + 1;
+		return Math.min(a + b * x, max);
+	},
+	// -----------------------------
 	// 味方全体自傷して自傷した数だけ効果値を増やす
 	"ss_consume_all_cond": function (fld, oi, cobj, params) {
 		var base = params[0];
