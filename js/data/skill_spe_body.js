@@ -1253,6 +1253,7 @@ var SpCondSkill = {
 		var max = params[2];
 		var now = fld.Allys.Now[oi];
 		var x = (now.intensely_val || 0) + 1;
+		now.intensely_val = x;
 		return Math.min(a + b * x, max);
 	},
 	// -----------------------------
