@@ -61414,6 +61414,7 @@ Cards = [{
 	ss1: {
 		desc: "<斬撃大魔術>6ターン溜めた後、スキル反射を無視し、水属性の12連撃(1200%)、さらに連撃数分チェインプラス",
 		turn: 6,
+		charged: 6,
 		proc: [ss_damage_slash(12, [1], 12), ss_ignore_skillcounter()],
 	},
 	awakes: [
@@ -61435,6 +61436,7 @@ Cards = [{
 	ss2: {
 		desc: "<斬撃大魔術>6ターン溜めた後、スキル反射を無視し、水属性の12連撃(1200%)、さらに連撃数分チェインプラス",
 		turn: 6,
+		charged: 6,
 		proc: [ss_damage_slash(12, [1], 12), ss_ignore_skillcounter()],
 	},
 	Lawake: [
