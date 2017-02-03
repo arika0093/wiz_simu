@@ -6,7 +6,7 @@
 //	読み込み時にAjaxを用いた通信を行いコメント一覧をすべて取得する。
 //	動作にはjquery, jquery-uiの読み込みが必要。
 // -------------------
-var PAGE_VIEW = 15;
+var PAGE_VIEW = 16;
 
 //	on load
 $(function () {
@@ -74,14 +74,14 @@ function cm_loadandapply(dom_s, url, page) {
 				dom.html("<p class='no_comment'>（このページにはまだコメントが投稿されていません）</p>");
 			}
 			else {
-				var total = Number(dats.total[0][0]);
+				var total = dats.cms.length;
 				var tpnum = Math.floor(total / PAGE_VIEW) + 1;
 				var app_html = "";
 				// pagemoveを作成
 				cm_create_pmovelink("#comment_box div.pg_moved", tpnum, page);
 				// 内容を表示
 				$.each(dats.cms.reverse(), function (i, e) {
-					if (i < page * PAGE_VIEW || i >= (page + 1) * PAGE_VIEW) {
+					if (i < page * PAGE_VIEW || i >= ((page + 1) * PAGE_VIEW) - 1) {
 						return;
 					}
 					app_html += cm_generate_cmhtml(total-i-1, e);

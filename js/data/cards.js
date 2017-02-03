@@ -40483,6 +40483,16 @@ Cards = [{
 		proc: [ss_heal(1), ss_regenerate(0.30, 10)],
 	},
 	awakes: [
+		Panel_boost([1,0,0,0,0], 2),
+		Statusup(0, 200),
+		Fastskill(2),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0], 2),
+		Fastskill(3),
+		Heal_afterbattle(10),
+		Spec_statusup(200, 0, [8]),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0], 2),
 	],
 	as2: {
 		desc: "<複属性攻撃強化・回復>火属性の味方を回復(5%)し、攻撃力もアップ。複属性が水属性だとさらに攻撃力アップ(60%/80%)",
