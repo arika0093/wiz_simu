@@ -1252,9 +1252,9 @@ var SpCondSkill = {
 		var b = params[1];
 		var max = params[2];
 		var now = fld.Allys.Now[oi];
-		var x = (now.intensely_val || 0) + 1;
-		now.intensely_val = x;
-		return Math.min(a + b * x, max);
+		var x = (now.intensely_val || 0);
+		now.intensely_val = x + 1;
+		return Math.min(a + b * Math.pow(2,x), max);
 	},
 	// -----------------------------
 	// 味方全体自傷して自傷した数だけ効果値を増やす
@@ -1395,7 +1395,7 @@ function ss_object_done(fld, n, c_obj, is_check_crs) {
 	// 引数チェック
 	var params = [];
 	var count = 0;
-	while (c_obj["p" + (count + 1)]) {
+	while (c_obj["p" + (count + 1)] != null) {
 		var p = c_obj["p" + (count + 1)];
 		// 遅延評価関数なら特に何もしない
 		if(c_obj.is_delay){
