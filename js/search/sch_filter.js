@@ -149,7 +149,7 @@ function schfl_grep(obj) {
 		rst = rst && (schfl_grep_awake(obj, e.awakes) || schfl_grep_awake(obj, e.Lawake));
 		// イベント検索(現状は単体指定のみ)
 		var ev_n = obj.ap_name[0];
-		rst = rst && (ev_n != null && ev_n === e.ape);
+		rst = rst && (ev_n == null || ev_n === e.ape);
 		// 結果返却
 		return rst;
 	});
