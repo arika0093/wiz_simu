@@ -35,7 +35,8 @@ function schfl_create_queryobj() {
 	// Awake
 	rst.aw_name = $("#s_awtext").val();
 	rst.awake_types = schfl_textarr_from_msel(".sch_aw_type option:selected");
-
+	// Append
+	rst.ap_name = schfl_textarr_from_msel(".sch_ap_type option:selected");
 	return rst;
 }
 
@@ -146,6 +147,9 @@ function schfl_grep(obj) {
 		rst = rst && ssrst;
 		// 潜在絞り込み
 		rst = rst && (schfl_grep_awake(obj, e.awakes) || schfl_grep_awake(obj, e.Lawake));
+		// イベント検索(現状は単体指定のみ)
+		var ev_n = obj.ap_name[0];
+		rst = rst && (ev_n != null && ev_n === e.ape);
 		// 結果返却
 		return rst;
 	});
@@ -330,7 +334,7 @@ function schfl_grepshow(cs, st) {
 	st = st || MatchQuery;
 	var div = $("#search_result");
 	var html = "";
-	html += adsence_html("margin-bottom:2ex;");
+	//html += adsence_html("margin-bottom:2ex;");
 	html += "<div id='squery'>" + st + "</div>";
 	if (cs.length <= 0) {
 		html += "該当結果: 0件";
@@ -404,7 +408,7 @@ function schfl_grepshow_icon(cs, st) {
 	st = st || MatchQuery;
 	var div = $("#search_result");
 	var html = "";
-	html += adsence_html("margin-bottom:2ex;");
+	//html += adsence_html("margin-bottom:2ex;");
 	html += "<div id='squery'>" + st + "</div>";
 	if (cs.length <= 0) {
 		html += "該当結果: 0件";
@@ -539,6 +543,10 @@ function searchText(q){
             outp += "潜在種類=[" + q.awake_types.join(" " + delimitor + " ") + "]"
         }
         outp+=", "
+    }
+    if (q.ap_name.length > 0) {
+    	outp += "登場イベント=\"" + q.ap_name[0] + "\"";
+    	outp += ", "
     }
     outp += appOpt(q, cons, "disttype", "")
     outp = outp == "" ? "条件なし" : outp.slice(0, -2)

@@ -131,6 +131,7 @@ var sfdef_ss_namelist = {
 			return e.p1.is_cond && e.p1.name == "special_attr";
 		}
 	},
+	"敵単体に斬撃大魔術": "ss_damage_slash",
 	"敵全体に残滅大魔術": "ss_continue_damage",
 	"敵全体に割合ダメージ": {
 		proc: ["ss_ratiodamage", "ss_ratiodamage_all"],

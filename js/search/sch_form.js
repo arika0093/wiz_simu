@@ -7,6 +7,7 @@ $(function () {
 	sf_aslist_add();
 	sf_sslist_add();
 	sf_awlist_add();
+	sf_aplist_add();
 
 	conbobox_chosen_apply();
 });
@@ -103,6 +104,34 @@ function sf_awlist_add() {
 		// plus
 		p_html += "<option value='" + c + "'>" + sk + "</option>";
 		c++;
+	}
+	slf.html(p_html + "</optgroup>");
+}
+
+// Append候補追加
+function sf_aplist_add() {
+	var slf = $(".sch_ap_type:last");
+	if (!slf) { return; }
+	var p_html = "<option value='-1'>《登場イベントの種類を指定》</option>";
+	// add
+	var added_list = [];
+	for (c in Cards) {
+		var ape = Cards[c].ape;
+		if (!ape || added_list[ape]) { continue; }
+		added_list[ape] = ape;
+	}
+	// sort
+	var apels = [];
+	var c = 0;
+	for (ai in added_list) {
+		apels[c] = added_list[ai];
+		c++;
+	}
+	apels.sort();
+	// html add
+	for (ap in apels) {
+		// plus
+		p_html += "<option value='" + ap + "'>" + apels[ap] + "</option>";
 	}
 	slf.html(p_html + "</optgroup>");
 }
