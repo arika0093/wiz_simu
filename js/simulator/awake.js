@@ -101,7 +101,7 @@ function minus_legend_awake(cards, nows, own_no) {
 			&& check_spec_inarray(e.spec, cards[t].species)
 			&& (!e.cond || e.cond(Field, own_no, t))) {
 				var now = nows[t];
-				now.maxhp -= e.up_hp;
+				now.maxhp = Math.max(now.maxhp - e.up_hp, 1);
 				now.nowhp = Math.min(now.maxhp, now.nowhp);
 				now.atk -= e.up_atk;
 				// 副属性一致潜在だったらさらに減らす
