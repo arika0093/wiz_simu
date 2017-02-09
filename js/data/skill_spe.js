@@ -1200,6 +1200,20 @@ function ss_is_assealed_own_skill(ss) {
 }
 
 /**
+ * (条件系)自身が状態異常の場合a,そうでない場合bを返す。
+ * a: 条件を満たした時の値。
+ * b: 条件を満たさなかった時の値。
+**/
+function ss_is_abstate_own(a, b) {
+	return ss_condition({
+		name: "ss_is_abstate_own",
+		type: "is_abstate_own",
+		p1: a,
+		p2: b,
+	});
+}
+
+/**
  * (条件系)自身が毒の場合a,そうでない場合bを返す。
  * a: 条件を満たした時の値。
  * b: 条件を満たさなかった時の値。

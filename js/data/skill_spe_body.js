@@ -1279,6 +1279,17 @@ var SpCondSkill = {
 		return base * count;
 	},
 	// -----------------------------
+	// 自身が異常状態かどうか
+	"ss_is_abstate_own": function (fld, oi, cobj, params) {
+		var a = params[0];
+		var b = params[1];
+		var now = fld.Allys.Now[oi];
+		var is_abstate = $.grep(now.turn_effect, function (e) {
+			return e.isabstate;
+		}).length > 0;
+		return is_abstate ? a : b;
+	},
+	// -----------------------------
 	// 自身がAS封印状態かどうか
 	"ss_is_assealed_own_skill": function (fld, oi, cobj, params) {
 		var ss1 = params[0];
