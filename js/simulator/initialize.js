@@ -335,6 +335,7 @@ function nextturn(is_ssfin) {
 	enemy_damage_switch_check("damage_switch", false, false, false);
 	// 全滅していなかったら効果ターンを減少
 	reduce_turneffect(is_ssfin);
+	turn_effect_check(true, is_ssfin);	// 再度チェックをいれる(バグるかも)
 	// 総ダメージ出力
 	Field.log_push("TURN TOTAL DAMAGE: " + Field.Status.turn_dmg, "blue");
 	Field.Status.turn_dmg = 0;
