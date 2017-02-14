@@ -158,6 +158,7 @@ function Abstate_invalid(tg_type) {
 		"death_limit": "死の秒針",
 		"discharge": "ディスチャージ",
 		"attr_weaken": "弱体化",
+		"heal_reverse": "回復反転",
 	};
 	var mytg=(function(typs,tg){
 		var outp="";
