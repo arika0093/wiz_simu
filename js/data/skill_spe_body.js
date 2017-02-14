@@ -1462,12 +1462,13 @@ function ss_object_done(fld, n, c_obj, is_check_crs) {
 			var tg = pm.target.length >= 2 ? pm.target : [pm.target];
 			for (var i = 0; i < tg.length; i++) {
 				$.each(pickup_awakes(card, pn, false), function (j, e) {
+					var r_max = Number.MAX_VALUE;
 					if ($.isArray(params[tg[i]])) {
 						for (var k = 0; k < params[tg[i]].length; k++) {
-							params[tg[i]][k] += Math.min(e.upvalue || e.up, e.rate_max || 0) * (pm.rate_mlt || 1);
+							params[tg[i]][k] += Math.min(e.upvalue || e.up, pm.rate_max || r_max) * (pm.rate_mlt || 1);
 						}
 					} else {
-						params[tg[i]] += Math.min(e.upvalue || e.up, e.rate_max || 0) * (pm.rate_mlt || 1);
+						params[tg[i]] += Math.min(e.upvalue || e.up, pm.rate_max || r_max) * (pm.rate_mlt || 1);
 					}
 				})
 			}
