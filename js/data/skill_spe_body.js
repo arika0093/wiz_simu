@@ -35,6 +35,25 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
+	// 敵全体に連撃ダメージ
+	"ss_damage_all_cons": function (fld, n, cobj, params) {
+		var r = params[0];
+		var attrs = params[1];
+		var atkn = params[2];
+		var ignore_counter = params[3];
+		var enemys = GetNowBattleEnemys();
+		for (var an = 0; an < atkn; an++) {
+			for (var a = 0; a < attrs.length; a++) {
+				for (var i = 0; i < enemys().length; i++) {
+					// 攻撃
+					var atr = attrs[a];
+					ss_damage(fld, r, atr, atkn, n, i, ignore_counter);
+				}
+			}
+		}
+		return true;
+	},
+	// -----------------------------
 	// 敵単体に連撃&チェインプラス
 	"ss_damage_slash": function (fld, n, cobj, params) {
 		var r = params[0];

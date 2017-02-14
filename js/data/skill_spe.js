@@ -68,6 +68,34 @@ function ss_damage_s(r, attrs, atn, ignore_counter) {
 }
 
 /**
+ * 敵全体に指定属性の連撃ダメージ
+ * r:		攻撃威力(ex: 1.0		-> 効果値100)
+ * attrs:	攻撃属性(ex: [0,1]	-> 火,水)
+ * atn:		攻撃回数(ex: 3		-> 3連撃)
+ * ignore_counter: 反射無視を行うかどうか(trueで無視)
+**/
+function ss_damage_all_cons(r, attrs, atn, ignore_counter) {
+	return ss_template({
+		name: "ss_damage_all_cons",
+		type: "damage",
+		target: "all",
+		p1: r,
+		p2: attrs,
+		p3: atn,
+		p4: ignore_counter,
+		c_param: {
+			"awake_rateup": {
+				target: 0,
+				rate_mlt: 0.01,
+			},
+			"Awake_multihitadd": {
+				target: 2,
+			},
+		},
+	});
+}
+
+/**
  * 敵単体に指定属性の連撃＆連撃数だけチェイン数プラス
  * r:		攻撃威力(ex: 1.0		-> 効果値100)
  * attrs:	攻撃属性(ex: [0,1]	-> 火,水)
@@ -299,6 +327,7 @@ function ss_enhance_all(p, t, attr, calltype) {
 			"awake_rateup": {
 				target: 0,
 				rate_mlt: 0.01,
+				rate_max: 50,
 			},
 			"awake_turnup": {
 				target: 1,
@@ -331,6 +360,7 @@ function ss_enhance_all_subattr(p, p_sub, t, attr, subattr, calltype) {
 			"awake_rateup": {
 				target: [0, 1],
 				rate_mlt: 0.01,
+				rate_max: 50,
 			},
 			"awake_turnup": {
 				target: 2,
@@ -357,6 +387,7 @@ function ss_enhance_own(p, t) {
 			"awake_rateup": {
 				target: 0,
 				rate_mlt: 0.01,
+				rate_max: 50,
 			},
 			"awake_turnup": {
 				target: 1,

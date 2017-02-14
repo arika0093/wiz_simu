@@ -23979,8 +23979,7 @@ Cards = [{
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
 		Statusup(500, 0),
 	],
-},
-{
+}, {
 	name: "戦乱を鎮める剣の女神 アンジェリカ",
 	cardno: 5797,
 	imageno: 7580,
@@ -28365,8 +28364,7 @@ Cards = [{
 		Statusup(0, 500),
 		Statusup(500, 0),
 	],
-},
-{
+}, {
 	name: "迅雷の煌絶剣　アマカド・ヒメザクロ",
 	cardno: 6035,
 	imageno: 7869,
@@ -28410,8 +28408,7 @@ Cards = [{
 		Statusup(500, 0),
 		Statusup(0, 500),
 	],
-},
-{
+}, {
 	name: "紅蓮に燃ゆる煌眼 リヴェータ・イレ",
 	cardno: 6041,
 	imageno: 7865,
@@ -31002,8 +30999,7 @@ Cards = [{
 		Statusup(0,500),
 		Attr_statusup(0,100, [1,0,0,0,0,]),
 	],
-},
-{
+}, {
 	name: "終末の白き音色 ウリシラ・ファーレ",
 	cardno: 6194,
 	imageno: 8017,
@@ -31060,8 +31056,7 @@ Cards = [{
 	Lawake: [
 		Statusup(1000,0),
 	],
-},
-{
+}, {
 	name: "処刑台の麗花 イーディス・キルティ",
 	cardno: 6200,
 	imageno: 8023,
@@ -47821,8 +47816,7 @@ Cards = [{
 		Attr_statusup(200,0, [1,0,0,0,0,]),
 		Attr_statusup(0,200, [1,0,0,0,0,]),
 	],
-},
-{
+}, {
 	name: "AbCd-X:《黒殻の咆哮 ウラガーン》",
 	cardno: 7013,
 	imageno: 9010,
@@ -53722,8 +53716,7 @@ Cards = [{
 		turn: 8,
 		proc: [ss_damage_s(6.5, [0, 1], 5), ss_ignore_skillcounter()],
 	},
-},
-{
+}, {
 	name: "死界の焔 ヴィヴィ&イザヴェリ",
 	cardno: 7485,
 	imageno: 6132,
@@ -53769,8 +53762,7 @@ Cards = [{
 		turn: 9,
 		proc: [ss_damage_all(6.0, [0]), ss_consume_own(0.5), ss_ignore_skillcounter()],
 	},
-},
-{
+}, {
 	name: "心繋がる星の夜に ソラナ&ヒカリ",
 	cardno: 7486,
 	imageno: 6130,
@@ -53816,8 +53808,7 @@ Cards = [{
 		turn: 10,
 		proc: [ss_skillcounter(2, 5)]
 	},
-},
-{
+}, {
 	name: "双星、芽生えたココロ アイ&アイ",
 	cardno: 7488,
 	imageno: 6126,
@@ -53862,8 +53853,7 @@ Cards = [{
 		turn: 8,
 		proc: [panel_chainplus(3)],
 	},
-},
-{
+}, {
 	name: "虹色の姉妹 サーシャ&シンシア",
 	cardno: 7489,
 	imageno: 5766,
@@ -54690,8 +54680,7 @@ Cards = [{
 		turn: 9,
 		proc: [ss_attr_guard([1,1,1,1,1], 0.5, ss_hp_less(0.2, 6, 3))]
 	},
-},
-{
+}, {
 	name: "AbCd-Z:《闃寂の地平 カルム》",
 	cardno: 7123,
 	imageno: 6788,
@@ -54871,8 +54860,7 @@ Cards = [{
 		turn: 9,
 		proc: [ss_skillboost(2), ss_delay_s(2)],
 	},
-},
-{
+}, {
 	name: "AbCd-Ω:《天に蠢く憤怒 カイン》",
 	cardno: 7125,
 	imageno: 6785,
@@ -54917,8 +54905,7 @@ Cards = [{
 		turn: 7,
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(ss_hp_less(0.20, 15.0, 3.0), [2]), ss_ignore_skillcounter()],
 	},
-},
-{
+}, {
 	name: "AbCd-Ωω:《我が存在を滅す カイン》",
 	cardno: 7130,
 	imageno: 6773,
@@ -59378,8 +59365,7 @@ Cards = [{
 		turn: 9,
 		proc: [ss_latest_copy()]
 	},
-},
-{
+}, {
 	name: "喰滅されし根源 ルナリィ・ヘレラ",
 	cardno: 7706,
 	imageno: 5888,
@@ -59424,8 +59410,7 @@ Cards = [{
 		turn: 7,
 		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(3.0, [2]), ss_ignore_skillcounter()],
 	},
-},
-{
+}, {
 	name: "激烈大魔法使い アリエッタ・トワ",
 	cardno: 7705,
 	imageno: 5900,
@@ -59470,8 +59455,7 @@ Cards = [{
 		turn: 8,
 		proc: [ss_damage_s(6.5, [1, 0], 5), ss_ignore_skillcounter()],
 	},
-},
-{
+}, {
 	name: "凍徹眼の竜賢者 ザハール・サハロフ",
 	cardno: 7723,
 	imageno: 7508,
@@ -59562,8 +59546,7 @@ Cards = [{
 		turn: 9,
 		proc: [ss_damage_s(special_attr([0,0,1,0,0], 19, 4.0), [0], 1)],
 	},
-},
-{
+}, {
 	name: "蒼世界の双牙 クラヴィル・スティ",
 	cardno: 7700,
 	imageno: 9782,
@@ -59608,8 +59591,7 @@ Cards = [{
 		turn: 8,
 		proc: [ss_skillboost(2)],
 	},
-},
-{
+}, {
 	name: "全力の恋天使 マーガレット・リル",
 	cardno: 7703,
 	imageno: 9785,
@@ -59654,8 +59636,7 @@ Cards = [{
 		turn: 8,
 		proc: [ss_damage_s(6.5, [0,3], 5), ss_ignore_skillcounter()],
 	},
-},
-{
+}, {
 	name: "封神の機剣 エリオット・シクス",
 	cardno: 7707,
 	imageno: 5894,
@@ -59838,8 +59819,7 @@ Cards = [{
 		Attr_statusup(0,200, [0,1,1,0,0,]),
 		Statusup(0,500),
 	],
-},
-{
+}, {
 	name: "純仁愛の竜鍼士 イニュー・リェル",
 	cardno: 7722,
 	imageno: 7505,
@@ -59974,8 +59954,7 @@ Cards = [{
 		Statusup(0, 500),
 		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
 	],
-},
-{
+}, {
 	name: "気高き不可侵の光貌 シエオラ",
 	cardno: 7727,
 	imageno: 8127,
@@ -63757,6 +63736,279 @@ Cards = [{
 	Lawake: [
 		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,0,0,1,0,]),
 		Statusup(500,0),
+	],
+}, {
+	name: "愛を祝福する妖精姫 フレイ・エレン",
+	cardno: 7942,
+	imageno: 10045,
+	hp: 7445,
+	atk: 1545,
+	cost: 56,
+	attr: [1,-1],
+	species: [4],
+	islegend: true,
+	ape: "バレンタイン2017",
+	as1: {
+		desc: "<回復>水属性の味方を回復(14%)",
+		proc: Heal(0.14, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<ブースト>4ターンの間味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ、平均解答が早いほどさらにアップ。さらに極稀にクリティカル(基本:90%, 3秒台:130%, 2秒台:170%, 1秒台:210%, 0秒台:250%)",
+		turn: 7,
+		proc: [ss_boost_enhance_all(ss_answertime(0.9, 0.4), 4, 0.1, [1,1,1,1,1])],
+	},
+	as2: {
+		desc: "<回復>水属性の味方を回復(17%)",
+		proc: Heal(0.17, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ、平均解答が早いほどさらにアップ。さらに極稀にクリティカル(基本:140%, 3秒台:180%, 2秒台:220%, 1秒台:260%, 0秒台:300%)",
+		turn: 10,
+		proc: [ss_boost_enhance_all(ss_answertime(1.4, 0.4), 5, 0.1, [1,1,1,1,1])],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([1,0,0,0,0,],20),
+		Panel_boost([0,1,0,0,0,],2),
+		Spec_statusup(0,500,[4,]),
+		Attr_statusup(0,400,[0,1,0,0,0,]),
+		Attr_statusup(400,0,[0,1,0,0,0,]),
+		Fastskill(3),
+		Abstate_invalid("heal_reverse"),
+		Heal_afterbattle(10),
+	],
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,200,[0,1,0,0,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+}, {
+	name: "星と語り合う クレティア・ブライユ",
+	cardno: 7930,
+	imageno: 10033,
+	hp: 3145,
+	atk: 3883,
+	cost: 56,
+	attr: [1,0],
+	species: [9],
+	islegend: true,
+	ape: "バレンタイン2017",
+	as1: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃、20チェインで更にダメージアップ(300%/1600%)",
+		proc: [ChainDualAttack(3.0, 3, 3), ChainDualAttack(16.0, 20, 3)],
+	},
+	ss1: {
+		desc: "<激化大魔術>敵単体へ火・水属性の5回連続ダメージ、発動する度に効果値が2倍アップ(800%/1600%/3200%/6400%)(上限:3段階)",
+		turn: 11,
+		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [0,1], 2)],
+	},
+	as2: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃、20チェインで更にダメージアップ(400%/1700%)",
+		proc: [ChainDualAttack(4.0, 3, 3), ChainDualAttack(17.0, 20, 3)],
+	},
+	ss2: {
+		desc: "<激化大魔術>敵単体へ火・水属性の5回連続ダメージ、発動する度に効果値が2倍アップ(800%/1600%/3200%/6400%)(上限:3段階)",
+		turn: 11,
+		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [0,1], 2)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],4),
+		Awake_secondfast(4),
+		Attr_statusup(0,200,[1,1,0,0,0,]),
+		Attr_statusup(200,0,[1,1,0,0,0,]),
+		Spec_statusup(300,0,[9,]),
+		Attr_statusup_sattr(100,0,[0,1,0,0,0,],300,0,[1,0,0,0,0,]),
+		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,300,[1,0,0,0,0,]),
+		Awake_secondfast(5),
+		Awake_noeffect("チェインブースト",1),
+		Awake_noeffect("反射見破り",1),
+	],
+	Lawake: [
+		Statusup(0,1500),
+		Attr_statusup(0,100,[1,1,0,0,0,]),
+	],
+}, {
+	name: "恋は呪い エリス=マギア・シャルム",
+	cardno: 7933,
+	imageno: 10036,
+	hp: 2325,
+	atk: 6655,
+	cost: 56,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "バレンタイン2017",
+	as1: {
+		desc: "<連撃>敵単体を6回連続攻撃、解答が早いほどさらにアップ(基本:250%, 3秒台:320%, 2秒台:390%, 1秒台:460%, 0秒台:530%)",
+		proc: add_cond(ChainDualAttack(2.5, 0, 6), as_timedep(0.7)),
+	},
+	ss1: {
+		desc: "<反動大魔術>スキル反射を無視し、敵全体に雷属性のダメージ(750%)◆スキル使用後、1ターン封印状態に",
+		turn: 5,
+		proc: [ss_damage_all(7.5, [2]), ss_allsealed_own(1), ss_ignore_skillcounter()],
+	},
+	as2: {
+		desc: "<連撃>敵単体を6回連続攻撃、解答が早いほどさらにアップ(基本:350%, 3秒台:420%, 2秒台:490%, 1秒台:560%, 0秒台:630%)",
+		proc: add_cond(ChainDualAttack(3.5, 0, 6), as_timedep(0.7)),
+	},
+	ss2: {
+		desc: "<反動大魔術>スキル反射を無視し、敵全体へ雷属性のダメージ(1050%)◆スキル使用後、1ターン封印状態に",
+		turn: 8,
+		proc: [ss_damage_all(10.5, [2]), ss_allsealed_own(1), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([0,1,0,0,0,],20),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,400,[0,0,1,0,0,]),
+		Attr_statusup(400,0,[0,0,1,0,0,]),
+		NEFTJOD(30),
+		Abstate_invalid("ss_sealed"),
+		Fastskill(3),
+		Awake_damage_multiple(1.1, 500)
+	],
+	Lawake: [
+		Statusup(0,1000),
+		Statusup(400,0),
+		Attr_relief([1,1,1,1,1,],10),
+	],
+}, {
+	name: "お互いを思いやる アムベル&エマ",
+	cardno: 7936,
+	imageno: 10039,
+	hp: 6148,
+	atk: 1845,
+	cost: 56,
+	attr: [0,2],
+	species: [9],
+	islegend: true,
+	ape: "バレンタイン2017",
+	as1: {
+		desc: "<攻撃強化・ガード>10チェインで火・雷属性の味方の攻撃力をアップ(110%)、さらに全属性のダメージを15%軽減",
+		proc: [ChainEnhance(1.1, [1,0,1,0,0], 10), as_guard(0.15, [1,1,1,1,1], 10)],
+	},
+	ss1: {
+		desc: "<ステータスアップ>8ターン溜めた後、味方全体の攻撃力とHPを3000アップ(上限値3000)",
+		turn: 3,
+		charged: 8,
+		proc: [ss_statusup_all([3000, 3000], [3000, 3000], -1)],
+	},
+	as2: {
+		desc: "<攻撃強化・ガード>10チェインで火・雷属性の味方の攻撃力をアップ(140%)、さらに全属性のダメージを15%軽減",
+		proc: [ChainEnhance(1.4, [1,0,1,0,0], 10), as_guard(0.15, [1,1,1,1,1], 10)],
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],4),
+		Attr_statusup(0,200,[1,0,1,0,0,]),
+		Attr_statusup(200,0,[1,0,1,0,0,]),
+		NEFTJOD(30),
+		Attr_relief([1,0,1,0,0,],20),
+		Abstate_invalid("all_sealed"),
+		Attr_statusup_sattr(0,100,[1,0,0,0,0,],0,300,[0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0,[1,0,0,0,0,],300,0,[0,0,1,0,0,]),
+		Fastskill(3),
+		Awake_noeffect("チェインブースト",1),
+	],
+	Lawake: [
+		Attr_statusup(0,300,[1,0,1,0,0,]),
+		Statusup(500,0),
+	],
+}, {
+	name: "星ショコラの恋歌 ピピア・ショトワ",
+	cardno: 7939,
+	imageno: 10042,
+	hp: 2645,
+	atk: 6350,
+	cost: 56,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "バレンタイン2017",
+	as1: {
+		desc: "<属性特効>HP80%以上で雷属性の敵単体へ特効ダメージ(525%)",
+		proc: add_cond(ChainAttrAttack(5.25, 0, [0,0,1,0,0]), when_hp_more(0.8)),
+	},
+	ss1: {
+		desc: "<多弾魔術>敵全体へ火属性の10回連続ダメージ(120%)",
+		turn: 3,
+		proc: [ss_damage_all_cons(1.2, [0], 10)],
+	},
+	as2: {
+		desc: "<属性特効>HP80%以上で雷属性の敵単体へ特効ダメージ(625%)",
+		proc: add_cond(ChainAttrAttack(6.25, 0, [0,0,1,0,0]), when_hp_more(0.8)),
+	},
+	ss2: {
+		desc: "<多弾魔術>敵全体へ火属性の10回連続ダメージ(150%)",
+		turn: 5,
+		proc: [ss_damage_all_cons(1.5, [0], 10)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Awake_noeffect("経験値取得量アップ",2),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(0,400,[1,0,0,0,0,]),
+		Attr_statusup(400,0,[1,0,0,0,0,]),
+		Fastskill(2),
+		Awake_noeffect("難易度ダウン",1),
+	],
+	Lawake: [
+		Statusup(0,1500),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+}, {
+	name: "V－day ユッカ・エンデ",
+	cardno: 7927,
+	imageno: 10030,
+	hp: 2875,
+	atk: 4105,
+	cost: 57,
+	attr: [2,1],
+	species: [9],
+	islegend: true,
+	ape: "バレンタイン2017",
+	as1: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ、複属性が水だとさらにアップ(10%/100%)",
+		proc: ChainEnhance_SubAttr(0.1, 1.0, [0,0,1,0,0], [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水・雷属性のダメージ(120%)",
+		turn: 4,
+		proc: [ss_damage_all(1.2, [1, 2]), ss_ignore_skillcounter()],
+	},
+	as2: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ、複属性が水だとさらにアップ(40%/130%)",
+		proc: ChainEnhance_SubAttr(0.4, 1.3, [0,0,1,0,0], [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<複属性ダメージ強化>4ターンの間、雷属性の攻撃力をアップ、複属性が水だとさらにアップ(50%/150%)",
+		turn: 8,
+		proc: [ss_enhance_all_subattr(0.5, 1.5, 4, [0,0,1,0,0], [0,1,0,0,0])],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],4),
+		NEFTJOD(30),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+		Fastskill(4),
+		Attr_statusup(0,200,[0,1,1,0,0,]),
+		Attr_statusup(200,0,[0,1,1,0,0,]),
+		Fastskill(4),
+		Awake_noeffect("心眼",1),
+		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,300,[0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0,[0,0,1,0,0,],300,0,[0,1,0,0,0,]),
+	],
+	Lawake: [
+		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,200,[0,1,0,0,0,]),
+		Statusup(0,500),
 	],
 },
 ];
