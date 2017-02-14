@@ -329,7 +329,7 @@ function nextturn(is_ssfin) {
 	retsugan_check(is_ssfin);
 	// 効果の継続確認
 	ss_continue_effect_check();
-	turn_effect_check(true, is_ssfin);
+	turn_effect_check(false, is_ssfin);
 	enemy_turn_effect_check(true);
 	// 怒り確認
 	enemy_damage_switch_check("damage_switch", false, false, false);
