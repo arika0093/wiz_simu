@@ -44,7 +44,7 @@ var SpSkill = {
 		var enemys = GetNowBattleEnemys();
 		for (var an = 0; an < atkn; an++) {
 			for (var a = 0; a < attrs.length; a++) {
-				for (var i = 0; i < enemys().length; i++) {
+				for (var i = 0; i < enemys.length; i++) {
 					// 攻撃
 					var atr = attrs[a];
 					ss_damage(fld, r, atr, atkn, n, i, ignore_counter);
