@@ -59331,6 +59331,7 @@ Cards = [{
 	cost: 52,
 	attr: [1, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		Statusup(0, 200),
 		Panel_boost([0, 1, 0, 0, 0], 2),
@@ -61352,7 +61353,7 @@ Cards = [{
 	ss1: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・水属性のダメージ、平均解答時間が早いほどさらにダメージ(基本:80%, 3秒台:120%, 2秒台:160%, 1秒台:200%, 0秒台:240%)",
 		turn: 4,
-		proc: [ss_damage_all(ss_answertime(0.8, 0.4), [1,2]), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(ss_answertime(0.8, 0.4), [2, 1]), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
@@ -61373,7 +61374,7 @@ Cards = [{
 	ss2: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・水属性のダメージ、平均解答時間が早いほどさらにダメージ(基本:110%, 3秒台:150%, 2秒台:190%, 1秒台:230%, 0秒台:270%)",
 		turn: 6,
-		proc: [ss_damage_all(ss_answertime(1.1, 0.4), [1,2]), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(ss_answertime(1.1, 0.4), [2, 1]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,1500),
