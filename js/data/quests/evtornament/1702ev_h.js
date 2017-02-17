@@ -141,7 +141,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_attr_absorb([0,0,1,0,0], 3, 3))
+                     m_enemy_once(s_enemy_attr_absorb_all([0,0,1,0,0], 3, 3))
                   ],
                   on_move: [
                      s_enemy_attack(66.75, 5, 1, true)
