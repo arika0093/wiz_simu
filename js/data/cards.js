@@ -17028,6 +17028,7 @@ Cards = [{
 	cost: 49,
 	attr: [1, -1],
 	species: [8],
+	disable: true,
 	awakes: [
 		NEFTJOD(30),
 		Panel_boost([0, 1, 0, 0, 0], 1),
@@ -59331,7 +59332,6 @@ Cards = [{
 	cost: 52,
 	attr: [1, -1],
 	species: [8],
-	disable: true,
 	awakes: [
 		Statusup(0, 200),
 		Panel_boost([0, 1, 0, 0, 0], 2),
