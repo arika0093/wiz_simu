@@ -279,9 +279,9 @@
                   on_popup: [
                      m_enemy_once(skill_counter_func(s_enemy_discharge, "-", 100, false, 5, 3)),
                      damage_switch(s_enemy_when_dead_s(), m_enemy_angry(), true)
+                     m_enemy_once(s_enemy_attr_weaken([1,0,0,0,0], 1.25, 5, 4)/* Warning: 属性要確認： 火属性弱体化25%（3T） */),
                   ],
                   on_move: [
-                     m_enemy_once(s_enemy_attr_weaken([1,0,0,0,0], 1.25, 5, 4)/* Warning: 属性要確認： 火属性弱体化25%（3T） */),
                      s_enemy_attack(300, 5, 1, true)
                   ],
                   on_angry: [
