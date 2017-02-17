@@ -14413,7 +14413,6 @@ Cards = [{
 	cost: 45,
 	attr: [2, -1],
 	species: [9],
-	disable: true,
 	awakes: [
 		Fastskill(1),
 		Statusup(0, 200),
@@ -14436,6 +14435,7 @@ Cards = [{
 		proc: [ss_damage_s(2.0, [2], 1)],
 	},
 	islegend: true,
+	disable: true,
 	Lawake: [
 		Statusup(0, 400),
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
@@ -35849,7 +35849,7 @@ Cards = [{
 	ape: "神秘譚Ⅱ",
 	as1: {
 		desc: "<回復>火属性の味方のHPを回復、神族はさらに回復(3%/17%)",
-		proc: [Heal(0.03, [1,0,0,0,0], 0), SpecHeal(0.17, [1,0,0,0,0], [2], 0)],
+		proc: [Heal(0.03, [1,0,0,0,0], 0), SpecHeal(0.17, [1,0,0,0,0], [1], 0)],
 	},
 	ss1: {
 		desc: "<状態異常無効>1ターン敵の状態異常攻撃を無効化する",
@@ -63916,7 +63916,7 @@ Cards = [{
 		Attr_statusup_sattr(100,0,[0,1,0,0,0,],300,0,[1,0,0,0,0,]),
 		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,300,[1,0,0,0,0,]),
 		Awake_secondfast(5),
-		Awake_noeffect("チェインブースト",1),
+		Awake_Chainboost(1),
 		Awake_noeffect("反射見破り",1),
 	],
 	Lawake: [
