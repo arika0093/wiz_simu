@@ -122,10 +122,11 @@ function sf_aplist_add() {
 	}
 	// sort
 	var apels = [];
-	var c = 0;
 	for (ai in added_list) {
-		apels[c] = added_list[ai];
-		c++;
+		apels.push(added_list[ai]);
+	}
+	for (sa in SpecialAlias) {
+		apels.push(sa);
 	}
 	apels.sort();
 	// html add

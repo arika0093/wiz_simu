@@ -110,6 +110,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{96B04CAB-9
 		js\data\skill_enemy.js = js\data\skill_enemy.js
 		js\data\skill_spe.js = js\data\skill_spe.js
 		js\data\skill_spe_body.js = js\data\skill_spe_body.js
+		js\data\sp_alias.js = js\data\sp_alias.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{AEC9F07D-08AF-4D00-AC3F-C5ED1357D47A}"
