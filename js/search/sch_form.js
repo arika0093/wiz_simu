@@ -117,7 +117,7 @@ function sf_aplist_add() {
 	var added_list = [];
 	for (c in Cards) {
 		var ape = Cards[c].ape;
-		if (!ape || added_list[ape]) { continue; }
+		if (!ape || added_list[ape] || Cards[c].disable) { continue; }
 		added_list[ape] = ape;
 	}
 	// sort

@@ -581,7 +581,7 @@ function decksel(i) {
 	var selval = $("#deck0" + i).val();
 	if (selval != "") {
 		for (ct in Cards) {
-			if (Cards[ct].name == selval) {
+			if (Cards[ct].name == selval && !Cards[ct].disable) {
 				decksel_show(i, Cards[ct]);
 				return;
 			}
@@ -618,7 +618,7 @@ function decksel_show(idx, c) {
 function open_manaedit(n) {
 	var input = $("#deck0" + (n+1)).val();
 	var cards = $.grep(Cards, function (e, i) {
-		return e.name == input;
+		return e.name == input && !e.disable;
 	});
 	if (cards && cards[0]) {
 		var cd = cards[0];
