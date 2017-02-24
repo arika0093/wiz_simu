@@ -149,7 +149,7 @@ function schfl_grep(obj) {
 		rst = rst && (schfl_grep_awake(obj, e.awakes) || schfl_grep_awake(obj, e.Lawake));
 		// イベント検索(現状は単体指定のみ)
 		var ev_n = obj.ap_name[0];
-		if (SpecialAlias[ev_n]) {
+		if (typeof SpecialAlias !== "undefined" && SpecialAlias[ev_n]) {
 			var is_ext = $.grep(SpecialAlias[ev_n], function (f) {
 				return e.name == f;
 			}).length > 0;

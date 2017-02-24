@@ -125,8 +125,10 @@ function sf_aplist_add() {
 	for (ai in added_list) {
 		apels.push(added_list[ai]);
 	}
-	for (sa in SpecialAlias) {
-		apels.push(sa);
+	if (typeof SpecialAlias !== "undefined") {
+		for (sa in SpecialAlias) {
+			apels.push(sa);
+		}
 	}
 	apels.sort();
 	// html add
