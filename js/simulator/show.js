@@ -493,7 +493,7 @@ function sim_show() {
 			$(".ui-dialog-titlebar").hide();
 			// tweet data
 			$("#simfinish_tweettext").html(
-				text + "<br/><div class='sh_url'>" + absolutePath("/simulator/" + location.search) + "</div> #wiz_simu"
+				text + "<br/><div class='sh_url'>" + absolutePath("/simulator/" + location.search) + "</div> #wzsim"
 			);
 			// close when click dialog outside
 			$('.ui-widget-overlay').bind('click', function () {
@@ -858,7 +858,7 @@ function tweet_result() {
 	var url = absolutePath("/simulator/" + location.search);
 	var text = //"このデッキを使って " +
 			simshow_create_fintext(true) + "%0A" + url;
-	var tweeturl = "https://twitter.com/intent/tweet?hashtags=wiz_simu" + "&text=" + text;
+	var tweeturl = "https://twitter.com/intent/tweet?hashtags=wzsim" + "&text=" + text;
 	// 開く
 	window.open(tweeturl, "tweet_result", win_opt);
 }
