@@ -64177,7 +64177,7 @@ Cards = [{
 		proc: ChainAttrAttack(6.0, 4, [0,1,0,0,1]) ,
 	},
 	ss1: {
-		desc: "<多段魔術>スキル反射を無視し、敵単体へ雷・光の5回連続ダメージ(計350%)",
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ雷・光の5回連続ダメージ(計350%)",
 		turn: 5,
 		proc: [ss_damage_s(3.5, [2, 3], 5), ss_ignore_skillcounter()],
 	},
@@ -64186,7 +64186,7 @@ Cards = [{
 		proc: ChainAttrAttack(7.0, 4, [0,1,0,0,1]) ,
 	},
 	ss2: {
-		desc: "<多段魔術>スキル反射を無視し、敵単体へ雷・光属性の5回連続ダメージ(計650%)、5チェインを消費しさらにダメージアップ(計970%)",
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ雷・光属性の5回連続ダメージ(計650%)、5チェインを消費しさらにダメージアップ(計970%)",
 		turn: 8,
 		proc: [ss_damage_s(ss_chain_cost(5, 9.7, 6.5), [2, 3], 5), ss_ignore_skillcounter()],
 	},
@@ -64244,7 +64244,7 @@ Cards = [{
 		NEFTJOD(60),
 		Awake_noeffect("経験値取得量アップ",2),
 		Fastskill(3),
-		Attr_statusup_sattr(100,0,[1,0,0,0,0,],0,300,[0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0,[1,0,0,0,0,],300,0,[0,0,1,0,0,]),
 		Attr_statusup_sattr(0,100,[1,0,0,0,0,],0,300,[0,0,1,0,0,]),
 		Abstate_invalid("ss_sealed"),
 	],
@@ -64571,7 +64571,7 @@ Cards = [{
 	],
 	Lawake: [
 		Attr_statusup(0,200,[0,1,1,0,0,]),
-		Statusup(1000,0),
+		Statusup(0,1000),
 	],
 }, {
 	name: "いつでも大成功！ ユッカ&アリス",
@@ -64610,7 +64610,7 @@ Cards = [{
 		Attr_statusup(200,0,[0,0,1,0,0,]),
 		Attr_statusup(0,200,[0,0,1,0,0,]),
 		Abstate_invalid("ss_sealed"),
-		Attr_statusup_sattr(100,0,[0,0,1,0,0,],0,300,[0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0,[0,0,1,0,0,],300,0,[0,0,0,1,0,]),
 		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,300,[0,0,0,1,0,]),
 		Fastskill(3),
 	],
