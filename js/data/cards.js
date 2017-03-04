@@ -64725,7 +64725,7 @@ Cards = [{
 	islegend: true,
 	ape: "ゴジラコラボ",
 	is_dist: true,
-	alias: ["ゴジラ","シンゴジラ"]
+	alias: ["ゴジラ","シンゴジラ"],
 	as1: {
 		desc: "<分散攻撃>4チェインで敵全体へ分散攻撃(400%)",
 		proc: ChainVarianceAttack(4.0, 4),
