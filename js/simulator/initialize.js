@@ -330,12 +330,13 @@ function nextturn(is_ssfin) {
 	// 効果の継続確認
 	ss_continue_effect_check();
 	turn_effect_check(false, is_ssfin);
-	enemy_turn_effect_check(true);
+	enemy_turn_effect_check(false);
 	// 怒り確認
 	enemy_damage_switch_check("damage_switch", false, false, false);
 	// 全滅していなかったら効果ターンを減少
 	reduce_turneffect(is_ssfin);
 	turn_effect_check(true, is_ssfin);	// 再度チェックをいれる(バグるかも)
+	enemy_turn_effect_check(true);
 	// 総ダメージ出力
 	Field.log_push("TURN TOTAL DAMAGE: " + Field.Status.turn_dmg, "blue");
 	Field.Status.turn_dmg = 0;
