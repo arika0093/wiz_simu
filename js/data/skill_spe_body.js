@@ -494,12 +494,13 @@ var SpSkill = {
 					isreinforce: isreinforce,
 					turn: t,
 					lim_turn: t,
+					up_rate: rate,
 					effect: function (f, oi, teff, state) {
 						if (state == "first") {
 							if (teff.isreinforce) {
-								f.Allys.Now[oi].ss_reinforcement_atk = rate;
+								f.Allys.Now[oi].ss_reinforcement_atk = teff.up_rate;
 							} else {
-								f.Allys.Now[oi].ss_enhance = rate;
+								f.Allys.Now[oi].ss_enhance = teff.up_rate;
 							}
 						}
 						else if (state == "end" || state == "dead") {
