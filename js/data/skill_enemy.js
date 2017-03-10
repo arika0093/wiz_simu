@@ -854,7 +854,7 @@ function s_enemy_barrier_own(dmg, turn) {
 		enemy.turn_effect.push({
 			desc: "バリアウォール(" + dmg + ")",
 			type: "barrier_wall",
-			icon: null,
+			icon: "barrier",
 			isdual: false,
 			turn: turn,
 			lim_turn: turn,
@@ -889,7 +889,7 @@ function s_enemy_barrier_all(dmg, turn) {
 		var barr_all = {
 			desc: "バリアウォール(" + dmg + ")",
 			type: "barrier_wall",
-			icon: null,
+			icon: "barrier",
 			isdual: false,
 			turn: turn,
 			lim_turn: turn,
@@ -924,6 +924,81 @@ function s_enemy_barrier_all(dmg, turn) {
 		}
 		Field.log_push("Enemy[" + (n + 1) + "]: バリアウォール[全体](" + dmg + "/" + turn + "t)");
 	}, makeDesc("バリアウォール[全体]"));
+}
+
+// 単体多層バリア
+function s_enemy_multibarrier_own(dmg, turn) {
+    return m_create_enemy_move(function (fld, n) {
+        var enemy = GetNowBattleEnemys(n);
+        // 追加
+        enemy.turn_effect.push({
+            desc: "多層バリア(" + dmg + ")",
+            type: "barrier_wall",
+            icon: "multibarrier",
+            isdual: false,
+            turn: turn,
+            lim_turn: turn,
+            priority: 5,
+            barr_endurance: dmg,
+            effect: function (f, oi, teff, state, is_t, is_b) {
+                if (this.barr_endurance <= 0) {
+                    teff.lim_turn = 0;
+                }
+            },
+            on_damage: function (fld, dmg, atr_i) {
+                var is_invalid = false;
+                if (this.barr_endurance > 0) {
+                    // 無効化
+                    var bf = this.barr_endurance;
+                    var af = this.barr_endurance - 1;
+                    Field.log_push("Enemy[" + (n + 1) + "]: 多層バリア(残: " + bf + "→" + af + ")");
+                    this.barr_endurance -= 1;
+                    is_invalid = true;
+                }
+                return is_invalid ? 0 : dmg;
+            }
+        });
+        Field.log_push("Enemy[" + (n + 1) + "]: 多層バリア(" + dmg + ")");
+    }, makeDesc("多層バリア"));
+}
+
+// 全体多層バリア
+function s_enemy_multibarrier_all(dmg, turn) {
+    return m_create_enemy_move(function (fld, n) {
+        var enemy = GetNowBattleEnemys();
+        // 追加
+		for(var i=0; i < enemy.length; i++){
+			var e = enemy[i];
+            e.turn_effect.push({
+                desc: "多層バリア(" + dmg + ")",
+                type: "barrier_wall",
+                icon: "multibarrier",
+                isdual: false,
+                turn: turn,
+                lim_turn: turn,
+                priority: 5,
+                barr_endurance: dmg,
+                effect: function (f, oi, teff, state, is_t, is_b) {
+                    if (this.barr_endurance <= 0) {
+                        teff.lim_turn = 0;
+                    }
+                },
+                on_damage: function (fld, dmg, atr_i) {
+                    var is_invalid = false;
+                    if (this.barr_endurance > 0) {
+                        // 無効化
+                        var bf = this.barr_endurance;
+                        var af = this.barr_endurance - 1;
+                        Field.log_push("Enemy[" + (n + 1) + "]: 多層バリア(残: " + bf + "→" + af + ")");
+                        this.barr_endurance -= 1;
+                        is_invalid = true;
+                    }
+                    return is_invalid ? 0 : dmg;
+                }
+            });
+		}
+        Field.log_push("Enemy[" + (n + 1) + "]: 全体多層バリア(" + dmg + ")");
+    }, makeDesc("多層バリア"));
 }
 
 // 鉄壁防御
