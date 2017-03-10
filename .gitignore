@@ -4,6 +4,7 @@ api/
 blog/
 local/
 .htaccess
+.idea/
 
 /tools/imgReader/backup
 /tools/imgReader/dic

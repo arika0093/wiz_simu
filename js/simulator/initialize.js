@@ -345,7 +345,7 @@ function nextturn(is_ssfin) {
 	var killed = allkill_check(is_ssfin);
 	if (killed && !f_st.finish) {
 		// 戦後回復処理
-		var abh = cards_heal_afterbattle(Field.Allys.Deck);
+		var abh = cards_heal_afterbattle(Field.Allys.Deck, Field.Allys.Now);
 		var nows = Field.Allys.Now;
 		if (abh > 0) {
 			for (var i = 0; i < Field.Allys.Deck.length; i++) {

@@ -209,13 +209,20 @@ function awake_neftjod_check(now, index, before_hp) {
 }
 
 // 戦後回復値を返す
-function cards_heal_afterbattle(cards) {
+function cards_heal_afterbattle(cards, nows) {
 	var r = 0;
 	for(var p in cards){
 		var c = cards[p];
 		var abh_awakes = pickup_awakes(c, "heal_after_battle", false);
+        if (is_legendmode(c, nows[p])) {
+            abh_awakes = abh_awakes.concat(pickup_awakes(c, "heal_after_battle", true));
+        }
 		for (var j = 0; j < abh_awakes.length; j++) {
-			r += abh_awakes[j].perc;
+			var aw = abh_awakes[j];
+			var ap_cond = aw.append_cond;
+			if(!ap_cond || (c.ape && c.ape.indexOf(ap_cond) >= 0)){
+                r += aw.perc;
+			}
 		}
 	}
 	return r / 100;

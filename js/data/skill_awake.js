@@ -139,10 +139,11 @@ function Spec_relief(spec, perc) {
 }
 
 // 戦後回復
-function Heal_afterbattle(perc) {
+function Heal_afterbattle(perc, ape) {
 	return {
 		type: "heal_after_battle",
 		perc: perc,
+		append_cond: ape,
 		name: "バトル終了後にHP回復" + int2roman(perc/10),
 		desc: "バトル終了後に味方全体のHPを" + perc + "%回復",
 	};

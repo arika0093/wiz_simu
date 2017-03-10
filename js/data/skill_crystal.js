@@ -169,6 +169,14 @@ var Awake_crystal_lists = [{
 		return dm.proc[2];
 	}(),
 }, {
+    name: "愛が響く結晶〈初音ミク〉(L時戦後回復)",
+    imple: Awake_composite,
+    param2: function () {
+        var ha = Heal_afterbattle(10);
+        ha.is_legend = true;
+        return ha;
+    }(),
+}, {
 	genre: "精霊結晶",
 	name: "巡礼の結晶〈スビェート〉(光軽減10%)",
 	imple: Awake_composite,
@@ -185,6 +193,22 @@ var Awake_crystal_lists = [{
 	name: "獄門の結晶〈ムールス〉(魔族HP+200)",
 	imple: Awake_composite,
 	param2: Spec_statusup(200, 0, [2]),
+}, {
+    name: "幻影の結晶〈ディルクーザ〉(龍族HP+200)",
+    imple: Awake_composite,
+    param2: Spec_statusup(200, 0, [0]),
+}, {
+    name: "敵か味方か結晶〈MGMkⅡ〉(物質軽減10%)",
+    imple: Awake_composite,
+    param2: Spec_relief([6], 10),
+}, {
+    name: "滅亡因子の結晶〈ヴィロムコ〉(闇軽減10%)",
+    imple: Awake_composite,
+    param2: Attr_relief([0,0,0,0,1], 10),
+}, {
+    name: "絶滅因子の結晶〈フーガァー〉(龍族軽減10%)",
+    imple: Awake_composite,
+    param2: Spec_relief([0], 10),
 }
 
 ];
