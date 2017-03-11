@@ -49,6 +49,12 @@ category_jp = {
     "": {
 		jp: "未設定",
 	},
+    "1703miku": {
+		is_dispsim: true,
+		sim_index: 11,
+		jp: "輝く想いの魔法(ミクコラボ)",
+		disable_date:"2017/4/7 16:00",
+	},
     "zoba": {
 		is_dispsim: true,
 		sim_index: 11,
@@ -187,7 +193,7 @@ category_jp = {
     "material": {
 		jp: "素材クエスト",
 		is_dispsim: true,
-		sim_index: 31,
+		sim_index: 10,
 	},
     "normal": {
 		jp: "ノーマルクエスト",

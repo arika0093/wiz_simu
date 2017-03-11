@@ -902,7 +902,6 @@ function s_enemy_barrier_all(dmg, turn) {
 				} else {
 					teff.desc = "バリアウォール(" + barr_endu + "/" + dmg + ")";
 				}
-
 			},
 			on_damage: function (fld, dmg, atr_i) {
 				var is_invalid = false;
