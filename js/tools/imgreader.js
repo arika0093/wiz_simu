@@ -51,8 +51,8 @@ function putTD(myStr) {
 }
 
 
-function imgNo2Img(imageno) {
-	return "<img class=\"cImg result\" src=" + get_image_url(imageno) + ">";
+function imgNo2Img(imageno, i_pref) {
+	return "<img class=\"cImg result\" src=" + get_image_url(imageno, i_pref) + ">";
 }
 
 function imgNo2Name(imageno) {

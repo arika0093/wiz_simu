@@ -55,7 +55,7 @@ function list_reload() {
 			var c_style = Cardstate[l.state];
 			lshtml += "<div class='chara_box " + c_style.style +
 				"' title='" + d.name + "[" + c_style.state + "]'>";
-			lshtml += "<img class='chara_image' src='" + get_image_url(d.imageno) + "' />";
+			lshtml += "<img class='chara_image' src='" + get_image_url(d.imageno, d.imageno_prefix) + "' />";
 			lshtml += "</div>";
 		}
 	}

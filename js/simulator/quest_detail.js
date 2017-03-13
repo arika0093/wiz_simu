@@ -25,7 +25,7 @@ function makeCategoryList(url) {
 			var boss_enms = Quest.data[Quest.data.length - 1].enemy;
 			var boss_enm = boss_enms.length >= 2 ? 1 : 0;
 			rst_html += "<a class='genre_link' href='" + url + ctgr + "'><img src=" +
-			get_image_url(boss_enms[boss_enm].imageno) + " class='boss_img'>" +
+			get_image_url(boss_enms[boss_enm].imageno, boss_enms[boss_enm].imageno_prefix) + " class='boss_img'>" +
 			category_jp[ctgr].jp + "</a>";
 			view_genre = ctgr;
 		}
@@ -46,7 +46,7 @@ function makeList(genre, url) {
 		var boss_enms = Quest.data[Quest.data.length - 1].enemy;
 		var boss_enm = boss_enms.length >= 2 ? 1 : 0;
 		rst_html += "<a class='genre_link' href='" + url + Quest.id + "'><img src=" +
-		get_image_url(boss_enms[boss_enm].imageno) + " class='boss_img'>" + Quest.name + "</a>";
+		get_image_url(boss_enms[boss_enm].imageno, boss_enms[boss_enm].imageno_prefix) + " class='boss_img'>" + Quest.name + "</a>";
 		return true;
 	});
 	rst_html += "</dd>";
@@ -81,7 +81,7 @@ function makeQD(id) {
 				var myid = "Q" + QuestNum + "B" + BattleNum;
 				resStr += "<div class='etd clearfix' id=" + myid + ">";
 				resStr += "<img class='eico" + (Enemy.hp < 100 ? " impregnable" : "") +
-					"' src=" + get_image_url_b(Enemy.imageno) + ">";
+					"' src=" + get_image_url_b(Enemy.imageno, Enemy.imageno_prefix) + ">";
 				resStr += "<div class='e_name'>" + Enemy.name + "</div>";
 				resStr += "<p class='e_attrspec'>" + get_attr_string(Enemy.attr) +
 					" / " + get_spec_string(Enemy.spec) + "</p>";
@@ -116,7 +116,7 @@ function makeQD(id) {
 				var myid = "Q" + QuestNum + "Brev" + EnemyNum;
 				resStr += "<div class='etd clearfix' id=" + myid + ">";
 				resStr += "<img class='eico" + (Enemy.hp < 100 ? " impregnable" : "") +
-					"' src=" + get_image_url_b(Enemy.imageno) + ">";
+					"' src=" + get_image_url_b(Enemy.imageno, Enemy.imageno_prefix) + ">";
 				resStr += "<div class='e_name'>" + Enemy.name + "</div>";
 				resStr += "<p class='e_attrspec'>" + get_attr_string(Enemy.attr) +
 					" / " + get_spec_string(Enemy.spec) + "</p>";

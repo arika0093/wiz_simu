@@ -359,7 +359,7 @@ function schfl_grepshow(cs, st) {
 				" / 種族: " + Species[c.species[0]] + "</p></div><div class='body clearfix'>" +
 				"<div class='attr attr_" + c.attr[0] + "' />" +
 				"<div class='attr attr_" + (c.attr[1] >= 0 ? c.attr[1] : c.attr[0]) + "' />" +
-				"<img class='ch_img' src='" + get_image_url(c.imageno) + "' />" +
+				"<img class='ch_img' src='" + get_image_url(c.imageno, c.imageno_prefix) + "' />" +
 				"<div class='skl_set'>" + as_h + ss_h + "</div></div></div>";
 		}
 	}
@@ -423,7 +423,7 @@ function schfl_grepshow_icon(cs, st) {
 		for (var i = 0; i < cs.length; i++) {
 			var c = cs[i];
 			html += "<a href='/search/detail/?id=" + c.cardno + "'>" +
-				"<img class='ch_lists' src='" + get_image_url(c.imageno) + "' title='" + c.name + "' /></a>";
+				"<img class='ch_lists' src='" + get_image_url(c.imageno, c.imageno_prefix) + "' title='" + c.name + "' /></a>";
 		}
 	}
 	div.html(html);

@@ -28,7 +28,7 @@ function sch_show_detail() {
 	// basic data output
 	var attr_txt = "主: " + get_attr_string(c.attr[0]) +
 		(c.attr[1] != -1 ? " / 副: " + get_attr_string(c.attr[1]) : "");
-	$("#bs_image").prop("src", get_image_url_b(c.imageno));
+	$("#bs_image").prop("src", get_image_url_b(c.imageno, c.imageno_prefix));
 	$("#c_name").text(c.name);
 	$("#c_attr").text(attr_txt);
 	$("#c_hp").text("HP: " + c.hp);

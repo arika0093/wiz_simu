@@ -68,7 +68,7 @@ function cardImgListup(r) {
 		})[0];
 		op += "<span class='dimg'><a title='" + c.name +
 			"' href='/search/detail/?id=" + cn + "'>" +
-			"<img src='" + get_image_url(c.imageno) + "'></a></span>"
+			"<img src='" + get_image_url(c.imageno, c.imageno_prefix) + "'></a></span>"
 	}
 	return op;
 }

@@ -63,7 +63,7 @@ function sim_show() {
 			// 各種指定
 			$("#ally0" + (i + 1) + "_attr_main").attr("class", "attr_" + dec.attr[0]);
 			$("#ally0" + (i + 1) + "_attr_sub").attr("class", "attr_" + (dec.attr[1] != -1 ? dec.attr[1] : dec.attr[0]));
-			$("#ally0" + (i + 1) + "_img").attr("src", get_image_url(dec.imageno));
+			$("#ally0" + (i + 1) + "_img").attr("src", get_image_url(dec.imageno, dec.imageno_prefix));
 			$("#ally0" + (i + 1) + "_name").text(dec.name);
 			$("#ally0" + (i + 1) + "_status").text("HP: " + now.nowhp + "/" + now.maxhp + ", ATK: " + now.atk);
 
@@ -154,7 +154,7 @@ function sim_show() {
 			// 各種指定
 			$("#enemy0" + (i + 1) + "_attr_main").attr("class", "attr_" + e.attr);
 			$("#enemy0" + (i + 1) + "_attr_sub").attr("class", "attr_" + e.attr);
-			$("#enemy0" + (i + 1) + "_img").attr("src", get_image_url(e.imageno));
+			$("#enemy0" + (i + 1) + "_img").attr("src", get_image_url(e.imageno, e.imageno_prefix));
 			$("#enemy0" + (i + 1) + "_name").text(e.name);
 			$("#enemy0" + (i + 1) + "_hp").text("HP: " + e.nowhp + "/" + e.hp);
 
@@ -678,7 +678,7 @@ function sim_show() {
 			for (var i = 0; i < cds.length; i++) {
 				var c = cds[i];
 				var dom = $("#sso_ally_image_" + i);
-				dom.prop("src", get_image_url(c.imageno));
+				dom.prop("src", get_image_url(c.imageno, c.imageno_prefix));
 				dom.on("click", function (e) {
 					// set
 					var tg_id = e.target.id;

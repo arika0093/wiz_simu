@@ -1,22 +1,22 @@
 // ------------------------------------
 // 便利関数
 // ------------------------------------
- 
-
 // 画像のURLを返却する
-function get_image_url(no) {
+function get_image_url(no, pref) {
+	pref = pref || "";
 	if (no < 0) {
 		return "/image/noimage.png";
 	}
-	return "http://i.quiz.colopl.jp/img/card/small/card_" + ("0000" + no).slice(-5) + "_0.png"
+	return "http://i.quiz.colopl.jp/img/card/small/" + pref + "card_" + ("0000" + no).slice(-5) + "_0.png"
 }
 
 // 大きい画像のURLを返却する
-function get_image_url_b(no) {
+function get_image_url_b(no, pref) {
+	pref = pref || "";
 	if (no < 0) {
 		return "/image/noimage.png";
 	}
-	return "http://i.quiz.colopl.jp/img/card/middle/card_" + ("0000" + no).slice(-5) + "_1.png"
+	return "http://i.quiz.colopl.jp/img/card/middle/" + pref + "card_" + ("0000" + no).slice(-5) + "_1.png"
 }
 
 

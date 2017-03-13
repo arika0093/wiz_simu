@@ -470,7 +470,7 @@ $(function () {
 				// HTMLに変換,反映
 				$.each(rst_cards, function (i, e) {
 					rst_html += "<div class='item'><img class='item_img' src='"
-						+ get_image_url(e.imageno) + "' /><p class='item_name' onclick='search_apply(\""
+						+ get_image_url(e.imageno, e.imageno_prefix) + "' /><p class='item_name' onclick='search_apply(\""
 						+ e.name + "\")'>" + e.name + "</p> <a href='/search/detail/?id=" + e.cardno
 						+ "' target='_blank'>[詳細]</a></div>";
 				});
@@ -568,7 +568,7 @@ function set_autocmp(i) {
 		.autocomplete("instance")._renderItem = function (ul, dec) {
 			var AS = dec.data.as2 ? dec.data.as2 : dec.data.as1;
 			return $("<li class='clearfix'>")
-				.append("<img src='" + get_image_url(dec.data.imageno) + "' /><a>" + dec.label
+				.append("<img src='" + get_image_url(dec.data.imageno, dec.data.imageno_prefix) + "' /><a>" + dec.label
 					+ "</a><br/><p>" + AS.desc + "</p>")
 				.appendTo(ul);
 		};
@@ -598,7 +598,7 @@ function decksel_show(idx, c) {
 		var SS = c.ss2 ? c.ss2 : c.ss1;
 		$("#ally0" + idx + "_attr_main").attr("class", "attr_" + c.attr[0]);
 		$("#ally0" + idx + "_attr_sub").attr("class", "attr_" + (c.attr[1] != -1 ? c.attr[1] : c.attr[0]));
-		$("#ally0" + idx + "_img").attr("src", get_image_url(c.imageno));
+		$("#ally0" + idx + "_img").attr("src", get_image_url(c.imageno, c.imageno_prefix));
 		$("#ally0" + idx + "_mana").text("+" + Deckdata.deck[idx-1].mana);
 		$("#deck0" + idx).val(c.name);
 		$("#ally0" + idx + "_as").text("AS: " + AS.desc);
