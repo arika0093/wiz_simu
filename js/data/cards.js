@@ -65594,11 +65594,11 @@ Cards = [{
 		proc: [ss_chain_cost_skill(3, ss_skillboost(2), ss_skillboost(1))],
 	},
 	as2: {
-		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早め、3チェインを消費しさらに1早める",
+		desc: "<連撃>5チェインで敵単体を3回連続攻撃(550%)",
 		proc: ChainDualAttack(5.5, 5, 3),
 	},
 	ss2: {
-		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
+		desc: "<スキルチャージ>味方全体のスペシャルスキル発動ターンを2早め、3チェインを消費しさらに1早める",
 		turn: 8,
 		proc: [ss_chain_cost_skill(3, ss_skillboost(3), ss_skillboost(2))],
 	},
