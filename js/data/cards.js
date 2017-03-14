@@ -2281,6 +2281,7 @@ Cards = [{
 	cost: 46,
 	attr: [0, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Attr_statusup(0, 100, [1,0,0,0,0]),
 		Panel_boost([1,0,0,0,0], 1),
@@ -2682,6 +2683,7 @@ Cards = [{
 	cost: 32,
 	attr: [0, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Panel_boost([1,0,0,0,0], 1),
 		Attr_statusup(100, 0, [1,0,0,0,0]),
@@ -2726,6 +2728,7 @@ Cards = [{
 	cost: 35,
 	attr: [0, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Panel_boost([1,0,0,0,0], 1),
@@ -4871,6 +4874,7 @@ Cards = [{
 	cost: 45,
 	attr: [0, 2],
 	species: [9],
+	disable: true,
 	awakes: [
 		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
 		Fastskill(1),
@@ -4915,6 +4919,7 @@ Cards = [{
 	cost: 26,
 	attr: [0, 2],
 	species: [9],
+	disable: true,
 	awakes: [
 		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
 		Panel_boost([1,0,0,0,0], 1),
@@ -5183,6 +5188,7 @@ Cards = [{
 	cost: 50,
 	attr: [0, 4],
 	species: [2],
+	disable: true,
 	awakes: [
 		Attr_statusup(0, 100, [1,0,0,0,0]),
 		Panel_boost([1,0,0,0,0], 1),
@@ -9598,6 +9604,7 @@ Cards = [{
 	cost: 45,
 	attr: [1, 0],
 	species: [9],
+	disable: true,
 	awakes: [
 		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
@@ -10137,6 +10144,7 @@ Cards = [{
 	cost: 48,
 	attr: [1, 2],
 	species: [3],
+	disable: true,
 	awakes: [
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
 		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
@@ -10226,6 +10234,7 @@ Cards = [{
 	cost: 26,
 	attr: [1, 2],
 	species: [9],
+	disable: true,
 	awakes: [
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
 		Fastskill(1),
@@ -10588,6 +10597,7 @@ Cards = [{
 	cost: 46,
 	attr: [1, 3],
 	species: [3],
+	disable: true,
 	awakes: [
 		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
 		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
@@ -10677,6 +10687,7 @@ Cards = [{
 	cost: 40,
 	attr: [1, 4],
 	species: [8],
+	disable: true,
 	awakes: [
 		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
 		Fastskill(1),
@@ -14459,6 +14470,7 @@ Cards = [{
 	cost: 35,
 	attr: [2, -1],
 	species: [6],
+	disable: true,
 	awakes: [
 		Panel_boost([0, 0, 1, 0, 0, ], 1),
 		Fastskill(1),
@@ -14724,6 +14736,7 @@ Cards = [{
 	cost: 34,
 	attr: [2, -1],
 	species: [6],
+	disable: true,
 	awakes: [
 		Panel_boost([0, 0, 1, 0, 0, ], 1),
 		Fastskill(1),
@@ -14947,6 +14960,7 @@ Cards = [{
 	cost: 36,
 	attr: [2, 0],
 	species: [9],
+	disable: true,
 	awakes: [
 		Panel_boost([0, 0, 1, 0, 0, ], 1),
 		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
@@ -15127,6 +15141,7 @@ Cards = [{
 	cost: 48,
 	attr: [2, 0],
 	species: [8],
+	disable: true,
 	awakes: [
 		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
 		Fastskill(1),
@@ -15171,6 +15186,7 @@ Cards = [{
 	cost: 43,
 	attr: [2, 0],
 	species: [6],
+	disable: true,
 	awakes: [
 		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
 		NEFTJOD(30),
@@ -15666,6 +15682,7 @@ Cards = [{
 	cost: 27,
 	attr: [2, 3],
 	species: [8],
+	disable: true,
 	awakes: [
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
 		NEFTJOD(30),
