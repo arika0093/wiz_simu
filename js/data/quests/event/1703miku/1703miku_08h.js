@@ -222,10 +222,10 @@
                move: {
                   on_popup: [
                      m_enemy_once(skill_counter_func(s_enemy_attack, "-", 100, false, 9000, 5, 10, true)),
+                     m_enemy_once(s_enemy_continue_damage(3, 750, 750)),
                      damage_switch(s_enemy_when_hpdown(0.7), m_enemy_angry(), true)
                   ],
                   on_move: [
-                     m_enemy_once(s_enemy_continue_damage(3, 750, 750)),
                      s_enemy_all_sealed(5, 4),
                      s_enemy_attack(1500, 5, 1, true),
                      s_enemy_attack(1500, 5, 1, true)

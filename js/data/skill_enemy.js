@@ -1228,8 +1228,8 @@ function s_enemy_chain_break() {
 function s_enemy_chainreduce(ch) {
 	return m_create_enemy_move(function (fld, n) {
 		if (fld.Status.chain_status <= 0) {
-			fld.Status.chain -= ch;
-			fld.log_push("Enemy[" + (n + 1) + "]: チェイン減少: " + t);
+			fld.Status.chain -= Math.min(ch, fld.Status.chain);
+			fld.log_push("Enemy[" + (n + 1) + "]: チェイン減少: " + ch);
 		} else {
 			fld.log_push("Enemy[" + (n + 1) + "]: チェイン減少(無効)");
 		}
