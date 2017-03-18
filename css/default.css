@@ -103,6 +103,12 @@ div.linklist a:first-child{
 .chosen-container-single .chosen-single div b{
 	background-position-y: 5px !important;
 }
+.chosen-results .group-result {
+	background-color: #CAE9FF;
+	background-image: -webkit-gradient(linear, 0 0, 100% 100%,color-stop(.25, #E7F8FC), color-stop(.25, transparent),color-stop(.5, transparent), color-stop(.5, #E7F8FC),color-stop(.75, #E7F8FC), color-stop(.75, transparent),to(transparent));
+	-webkit-background-size: 7px 7px;
+	margin-right: 3px;
+}
 
 /* Clearfix */
 .clearfix {

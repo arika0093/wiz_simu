@@ -2,29 +2,17 @@
 // 潜在結晶用データ定義
 // ------------------------------------
 var Awake_crystal_lists = [{
-	genre: "ステータス変動",
-	name: "攻撃力アップ",
-	imple: Statusup,
-	param1: 0,
-	param2: "{0}",
-}, {
-	name: "HPアップ",
-	imple: Statusup,
-	param1: "{0}",
-	param2: 0,
-}, {
-	name: "コストダウン",
-	imple: Costdown,
-	param1: "{0}",
-}, {
-	genre: "AS変化",
+	genre: "AS/SS変化",
 	name: "AS効果値アップ",
 	imple: Awake_ASkillRateup,
 	param1: "{0}",
 }, {
-	genre: "SS変化",
-	name: "SS効果値アップ",
-	imple: Awake_SkillRateup,
+	name: "SS効果値アップ<攻撃系SS>",
+	imple: function (upval) {
+		var asr = Awake_SkillRateup(upval);
+		asr.type = "awake_rateup_normal";
+		return asr;
+	},
 	param1: "{0}",
 	param2: 0,
 }, {
@@ -36,6 +24,35 @@ var Awake_crystal_lists = [{
 	},
 	param1: "{0}",
 	param2: 0,
+}, {
+	name: "SS効果値アップ<毒>",
+	imple: function (upval) {
+		var asr = Awake_SkillRateup(upval);
+		asr.type = "awake_rateup_poison";
+		return asr;
+	},
+	param1: "{0}",
+	param2: 0,
+}, {
+	name: "天罰の結晶〈インベラトラス〉(エンハ+50%/継続+1)",
+	imple: Awake_composite,
+	param2: function () {
+		var asr = Awake_SkillRateup(50);
+		asr.type = "awake_rateup_enhance";
+		return asr;
+	}(),
+	param3: Awake_Turnup(1),
+}, {
+	name: "ASCENSIVE(ブースト効果値+25%/自傷+5%)",
+	imple: Awake_composite,
+	param2: function () {
+		var asc = Awake_ASCENSIVE(25, 5);
+		return asc.proc[0];
+	}(),
+	param3: function () {
+		var asc = Awake_ASCENSIVE(25, 5);
+		return asc.proc[1];
+	}(),
 }, {
 	name: "SS継続ターン数アップ",
 	imple: Awake_Turnup,
@@ -50,7 +67,98 @@ var Awake_crystal_lists = [{
 	imple: Awake_multihitadd,
 	param1: "{0}",
 }, {
-	genre: "イベント結晶",
+	genre: "ステータス変動(自身)",
+	name: "攻撃力アップ",
+	imple: Statusup,
+	param1: 0,
+	param2: "{0}",
+}, {
+	name: "HPアップ",
+	imple: Statusup,
+	param1: "{0}",
+	param2: 0,
+}, {
+	name: "コストダウン",
+	imple: Costdown,
+	param1: "{0}",
+}, {
+	name: "アドヴェリタス(ダメージ1.2倍/HP-1000)",
+	imple: Awake_composite,
+	param2: Statusup(-1000, 0),
+	param3: Awake_damage_multiple(1.2),
+}, {
+	name: "絆の結晶〈ゾラスヴィルク〉(L時ATK+1000,被ダメUP回復×)",
+	imple: Awake_composite,
+	param2: function () {
+		var dm = Awake_dragonmode(1000, 1.3);
+		dm.proc[0].is_legend = true;
+		return dm.proc[0];
+	}(),
+	param3: function () {
+		var dm = Awake_dragonmode(1000, 1.3);
+		dm.proc[1].is_legend = true;
+		return dm.proc[1];
+	}(),
+	param4: function () {
+		var dm = Awake_dragonmode(1000, 1.3);
+		dm.proc[2].is_legend = true;
+		return dm.proc[2];
+	}(),
+}, {
+	genre: "ステータス変動(味方全体)",
+	name: "インフローレ(戦士ATK+200)",
+	imple: Awake_composite,
+	param2: Spec_statusup(0, 200, [8]),
+}, {
+	name: "カヲルの楽譜(天使HP+300)",
+	imple: Awake_composite,
+	param2: Spec_statusup(300, 0, [3]),
+}, {
+	name: "カヲルの楽譜(天使ATK+300)",
+	imple: Awake_composite,
+	param2: Spec_statusup(0, 300, [3]),
+}, {
+	name: "平衡を司る天秤(術士ATK+200)",
+	imple: Awake_composite,
+	param2: Spec_statusup(0, 200, [9]),
+}, {
+	name: "勝戦の結晶〈ベルク旗艦〉(戦士HP+200)",
+	imple: Awake_composite,
+	param2: Spec_statusup(200, 0, [8]),
+}, {
+	name: "共闘の結晶〈セラフィム〉(魔族ATK+300)",
+	imple: Awake_composite,
+	param2: Spec_statusup(0, 300, [2]),
+}, {
+	name: "魂魄の結晶〈追憶〉(物質ATK+300)",
+	imple: Awake_composite,
+	param2: Spec_statusup(0, 300, [6]),
+}, {
+	name: "誇りの結晶〈クロード〉(味方全体ATK-500)",
+	imple: Awake_composite,
+	param2: Attr_statusup(0, -500, [1,1,1,1,1]),
+}, {
+	name: "慈愛の結晶〈皇と剣〉(副光HP+300)",
+	imple: Awake_composite,
+	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 300, 0, [0,0,0,1,0]),
+}, {
+	name: "THE OLD ONE(副闇ATK+200)",
+	imple: Awake_composite,
+	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 0, 200, [0,0,0,0,1]),
+}, {
+	name: "擬態の結晶〈ガーゴイル〉(物質HP+200)",
+	imple: Awake_composite,
+	param2: Spec_statusup(200, 0, [6]),
+}, {
+	name: "獄門の結晶〈ムールス〉(魔族HP+200)",
+	imple: Awake_composite,
+	param2: Spec_statusup(200, 0, [2]),
+}, {
+	name: "幻影の結晶〈ディルクーザ〉(龍族HP+200)",
+	imple: Awake_composite,
+	param2: Spec_statusup(200, 0, [0]),
+}, {
+	genre: "L時発動結晶",
 	name: "煌眼の欠片(L時味方ATK+100/25%回復)",
 	imple: Awake_composite,
 	param2: {
@@ -94,31 +202,6 @@ var Awake_crystal_lists = [{
 		is_legend: true,
 	},
 }, {
-	name: "PTA印の成績表(反転無効)",
-	imple: Awake_composite,
-	param2: Abstate_invalid("heal_reverse"),
-}, {
-	name: "インフローレ(戦士ATK+200)",
-	imple: Awake_composite,
-	param2: Spec_statusup(0, 200, [8]),
-}, {
-	name: "エクスマキナ(毒,弱体化,死の秒針無効)",
-	imple: Awake_composite,
-	param2: Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
-}, {
-	name: "アドヴェリタス(ダメージ1.2倍/HP-1000)",
-	imple: Awake_composite,
-	param2: Statusup(-1000, 0),
-	param3: Awake_damage_multiple(1.2),
-}, {
-	name: "カヲルの楽譜(天使HP+300)",
-	imple: Awake_composite,
-	param2: Spec_statusup(300, 0, [3]),
-}, {
-	name: "カヲルの楽譜(天使ATK+300)",
-	imple: Awake_composite,
-	param2: Spec_statusup(0, 300, [3]),
-}, {
 	name: "覇色の結晶(L時HP,ATK+500)",
 	imple: Awake_composite,
 	param2: {
@@ -131,53 +214,24 @@ var Awake_crystal_lists = [{
 		is_legend: true,
 	},
 }, {
-	name: "平衡を司る天秤(術士ATK+200)",
-	imple: Awake_composite,
-	param2: Spec_statusup(0, 200, [9]),
-}, {
-	name: "勝戦の結晶〈ベルク旗艦〉(戦士HP+200)",
-	imple: Awake_composite,
-	param2: Spec_statusup(200, 0, [8]),
-}, {
-	name: "共闘の結晶〈セラフィム〉(魔族ATK+300)",
-	imple: Awake_composite,
-	param2: Spec_statusup(0, 300, [2]),
-}, {
-	name: "魂魄の結晶〈追憶〉(物質ATK+300)",
-	imple: Awake_composite,
-	param2: Spec_statusup(0, 300, [6]),
-}, {
-	name: "誇りの結晶〈クロード〉(味方全体ATK-500)",
-	imple: Awake_composite,
-	param2: Attr_statusup(0, -500, [1,1,1,1,1]),
-}, {
-	name: "絆の結晶〈ゾラスヴィルク〉(L時ATK+1000,被ダメUP回復×)",
+	name: "愛が響く結晶〈初音ミク〉(L時戦後回復)",
 	imple: Awake_composite,
 	param2: function () {
-		var dm = Awake_dragonmode(1000, 1.3);
-		dm.proc[0].is_legend = true;
-		return dm.proc[0];
-	}(),
-	param3: function () {
-		var dm = Awake_dragonmode(1000, 1.3);
-		dm.proc[1].is_legend = true;
-		return dm.proc[1];
-	}(),
-	param4: function () {
-		var dm = Awake_dragonmode(1000, 1.3);
-		dm.proc[2].is_legend = true;
-		return dm.proc[2];
+		var ha = Heal_afterbattle(10);
+		ha.is_legend = true;
+		return ha;
 	}(),
 }, {
-    name: "愛が響く結晶〈初音ミク〉(L時戦後回復)",
-    imple: Awake_composite,
-    param2: function () {
-        var ha = Heal_afterbattle(10);
-        ha.is_legend = true;
-        return ha;
-    }(),
+	genre: "状態異常無効",
+	name: "PTA印の成績表(反転無効)",
+	imple: Awake_composite,
+	param2: Abstate_invalid("heal_reverse"),
 }, {
-	genre: "精霊結晶",
+	name: "エクスマキナ(毒,弱体化,死の秒針無効)",
+	imple: Awake_composite,
+	param2: Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+}, {
+	genre: "ダメージ軽減",
 	name: "巡礼の結晶〈スビェート〉(光軽減10%)",
 	imple: Awake_composite,
 	param2: Attr_relief([0,0,0,1,0], 10),
@@ -185,18 +239,6 @@ var Awake_crystal_lists = [{
 	name: "異神の結晶〈バシレイデ〉(AbCd軽減10%)",
 	imple: Awake_composite,
 	param2: Spec_relief([11], 10),
-}, {
-	name: "擬態の結晶〈ガーゴイル〉(物質HP+200)",
-	imple: Awake_composite,
-	param2: Spec_statusup(200, 0, [6]),
-}, {
-	name: "獄門の結晶〈ムールス〉(魔族HP+200)",
-	imple: Awake_composite,
-	param2: Spec_statusup(200, 0, [2]),
-}, {
-    name: "幻影の結晶〈ディルクーザ〉(龍族HP+200)",
-    imple: Awake_composite,
-    param2: Spec_statusup(200, 0, [0]),
 }, {
     name: "敵か味方か結晶〈MGMkⅡ〉(物質軽減10%)",
     imple: Awake_composite,

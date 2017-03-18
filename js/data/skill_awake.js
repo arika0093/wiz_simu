@@ -312,6 +312,7 @@ function Awake_ASkillRateup(upval) {
 }
 
 // SS効果値アップ潜在
+// *** WARNING: typeは変えて使うこと ***
 function Awake_SkillRateup(upval, skl_type) {
 	return {
 		type: "awake_rateup",
@@ -320,6 +321,18 @@ function Awake_SkillRateup(upval, skl_type) {
 		name: "SS効果値アップ(+" + upval + ")",
 		desc: "SPスキルの効果値を" + upval + "%アップする",
 	};
+}
+
+// ASCENSIVE結晶(ブースト効果値UP/自傷UP)
+function Awake_ASCENSIVE(effup, dmgup){
+	var desc = "ブースト効果値+" + effup + "%,自傷ダメージ+" + dmgup + "%";
+	var eff1 = Awake_SkillRateup(effup, "ss_enhance_boost");
+	eff1.type = "awake_rateup_boost";
+	var eff2 = {
+		type: "awake_dmgup_boost",
+		upvalue: dmgup,
+	}
+	return Awake_composite(desc, eff1, eff2);
 }
 
 // SS継続ターン数アップ潜在

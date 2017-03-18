@@ -412,7 +412,8 @@ var SpSkill = {
 			if (now.nowhp > 0 && attr[cd.attr[0]] > 0) {
 				switch (calltype) {
 					case "RF":
-						var isreinforce = true
+						var isreinforce = true;
+						var isreduce_stg = true;
 						var typestr = "[精霊強化]"
 						break;
 					case "null":
@@ -472,7 +473,8 @@ var SpSkill = {
 				// check type
 				switch (calltype) {
 					case "RF":
-						var isreinforce = true
+						var isreinforce = true;
+						var isreduce_stg = true;
 						var typestr = "[精霊強化]"
 						break;
 					case "null":
@@ -566,10 +568,20 @@ var SpSkill = {
 	// 精霊強化効果を味方全体に付与する
 	"ss_reinforcement": function (fld, oi, cobj, params) {
 		// paramsにssの配列を書いて、全て実行する
-		var t = params[0]
-		var sss = params[1].concat()
-		for(n=0; n < sss.length; n++){
-			ss_object_done(fld, oi, sss[n]);
+		var t = params[0];
+		var skills = $.extend(true, [], cobj.p2);
+		var all_done = function(f, is_ak){
+			var sss = skills;
+			for(n=0; n < sss.length; n++){
+				ss_object_done(fld, oi, sss[n]);
+			}
+			// dup-remove
+			if(is_ak){
+				var nows = f.Allys.Now;
+				for(n=0; n < nows.length; n++){
+					turneff_break_dual(nows[n].turn_effect, n, true);
+				}
+			}
 		}
 		// 自身に行動不能効果を付与
 		fld.Allys.Now[oi].turn_effect.push({
@@ -577,9 +589,13 @@ var SpSkill = {
 			type: "ss_reactionaly_noaction",
 			icon: "reinforcement",
 			isdual: false,
-			iscursebreak: true,		// 呪い解除される(?)
+			iscursebreak: false,	// 呪い解除されない
 			isreduce_stg: false,	// ターン跨ぎでカウントが減らない
-			effect: function () { },
+			effect: function (f, oi, teff, state, is_t, is_ak, is_ss) {
+				if (state != "end" && state != "dead" && is_t && !is_ss) {
+					all_done(f, is_ak);
+				}
+			},
 			priority: 1,
 			turn: t,
 			lim_turn: t,
@@ -897,6 +913,7 @@ var SpSkill = {
 		switch(calltype){
 			case "RF":
 				var isreinforce = true
+				var isreduce_stg = true;
 				var typestr = "[精霊強化]"
 				break;
 			case "SS":

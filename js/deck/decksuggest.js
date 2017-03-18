@@ -232,9 +232,19 @@ $(function () {
 			var sel = $("#allyedit_awakeadd_name");
 			var opts = "<option value='-1' selected></option>";
 			var aws = Awake_crystal_lists;
+			var genre = "";
 			for (var i = 0; i < aws.length; i++) {
-				opts += "<option value='" + i + "'>" + aws[i].name + "</option>";
+				var a = aws[i];
+				if(a.genre && a.genre != genre){
+					if(!genre){
+						opts += "</optgroup>";
+					}
+					opts += "<optgroup label='" + a.genre + "'>";
+					genre = a.genre;
+				}
+				opts += "<option value='" + i + "'>" + a.name + "</option>";
 			}
+			opts += "</optgroup>";
 			sel.html(opts);
 			// select box
 			sel.chosen({

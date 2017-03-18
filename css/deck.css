@@ -15,7 +15,7 @@ div.ally:last-child, div.enemy:last-child{
 }
 
 .selbox_field .chosen-drop{
-	width: 110% !important;
+	width: 120% !important;
 }
 .selbox_field .chosen-results{
 	max-height: 280px !important;

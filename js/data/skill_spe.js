@@ -35,6 +35,10 @@ function ss_damage_all(r, attrs, ignore_counter) {
 				target: 0,
 				rate_mlt: 0.01,
 			},
+			"awake_rateup_normal": {
+				target: 0,
+				rate_mlt: 0.01,
+			},
 		},
 	});
 }
@@ -57,6 +61,10 @@ function ss_damage_s(r, attrs, atn, ignore_counter) {
 		p4: ignore_counter,
 		c_param: {
 			"awake_rateup": {
+				target: 0,
+				rate_mlt: 0.01,
+			},
+			"awake_rateup_normal": {
 				target: 0,
 				rate_mlt: 0.01,
 			},
@@ -88,6 +96,10 @@ function ss_damage_all_cons(r, attrs, atn, ignore_counter) {
 				target: 0,
 				rate_mlt: 0.01,
 			},
+			"awake_rateup_normal": {
+				target: 0,
+				rate_mlt: 0.01,
+			},
 			"Awake_multihitadd": {
 				target: 2,
 			},
@@ -109,12 +121,6 @@ function ss_damage_slash(r, attrs, atn) {
 		p1: r,
 		p2: attrs,
 		p3: atn,
-		c_param: {
-			"awake_rateup": {
-				target: 0,
-				rate_mlt: 0.01,
-			},
-		},
 	});
 }
 
@@ -207,6 +213,9 @@ function poison(dm, t) {
 		p2: t,
 		c_param: {
 			"awake_rateup": {
+				target: 0,
+			},
+			"awake_rateup_poison": {
 				target: 0,
 			},
 			"awake_turnup": {
@@ -329,6 +338,10 @@ function ss_enhance_all(p, t, attr, calltype) {
 				rate_mlt: 0.01,
 				rate_max: 50,
 			},
+			"awake_rateup_enhance": {
+				target: 0,
+				rate_mlt: 0.01,
+			},
 			"awake_turnup": {
 				target: 1,
 			},
@@ -362,6 +375,10 @@ function ss_enhance_all_subattr(p, p_sub, t, attr, subattr, calltype) {
 				rate_mlt: 0.01,
 				rate_max: 50,
 			},
+			"awake_rateup_enhance": {
+				target: [0, 1],
+				rate_mlt: 0.01,
+			},
 			"awake_turnup": {
 				target: 2,
 			},
@@ -389,6 +406,10 @@ function ss_enhance_own(p, t) {
 				rate_mlt: 0.01,
 				rate_max: 50,
 			},
+			"awake_rateup_enhance": {
+				target: 0,
+				rate_mlt: 0.01,
+			},
 			"awake_turnup": {
 				target: 1,
 			},
@@ -414,6 +435,15 @@ function ss_boost_enhance_all(p, t, dmg, attr) {
 		p3: dmg,
 		p4: attr,
 		c_param: {
+			"awake_rateup_boost": {
+				target: 0,
+				rate_mlt: 0.01,
+				rate_max: 25,
+			},
+			"awake_dmgup_boost": {
+				target: 2,
+				rate_mlt: 0.01,
+			},
 			"awake_turnup": {
 				target: 1,
 			},
@@ -437,6 +467,15 @@ function ss_boost_enhance_s(p, t, dmg) {
 		p2: t,
 		p3: dmg,
 		c_param: {
+			"awake_rateup_boost": {
+				target: 0,
+				rate_mlt: 0.01,
+				rate_max: 25,
+			},
+			"awake_dmgup_boost": {
+				target: 2,
+				rate_mlt: 0.01,
+			},
 			"awake_turnup": {
 				target: 1,
 			},
@@ -612,6 +651,10 @@ function ss_continue_damage(dmg_r, cont_r, attrs, turn) {
 		p4: turn,
 		c_param: {
 			"awake_rateup": {
+				target: [0, 1],
+				rate_mlt: 0.01,
+			},
+			"awake_rateup_normal": {
 				target: [0, 1],
 				rate_mlt: 0.01,
 			},

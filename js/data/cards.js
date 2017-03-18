@@ -30658,8 +30658,8 @@ Cards = [{
 		desc: "<精霊強化>4ターンの間、味方の攻撃力をアップし(100%)、ダメージを軽減(10%)◆発動中行動不可",
 		turn: 6,
 		proc: [ss_reinforcement_all(4, [
-			ss_attr_guard([1, 1, 1, 1, 1], 0.1, 4, "RF"),
-			ss_enhance_all(1, 4, [1, 1, 1, 1, 1], "RF")
+			ss_attr_guard([1, 1, 1, 1, 1], 0.1, 1, "RF"),
+			ss_enhance_all(1, 1, [1, 1, 1, 1, 1], "RF")
 		])],
 	},
 	awakes: [
@@ -30683,12 +30683,12 @@ Cards = [{
 		turn: 9,
 		proc: [ss_chain_cost_skill(5,
 			ss_reinforcement_all(4, [
-				ss_attr_guard([1, 1, 1, 1, 1], 0.2, 4, "RF"),
-				ss_enhance_all(2.0, 4, [1, 1, 1, 1, 1], "RF")
+				ss_attr_guard([1, 1, 1, 1, 1], 0.2, 1, "RF"),
+				ss_enhance_all(2.0, 1, [1, 1, 1, 1, 1], "RF")
 			]),
 			ss_reinforcement_all(4, [
-				ss_attr_guard([1, 1, 1, 1, 1], 0.1, 4, "RF"),
-				ss_enhance_all(1.0, 4, [1, 1, 1, 1, 1], "RF")
+				ss_attr_guard([1, 1, 1, 1, 1], 0.1, 1, "RF"),
+				ss_enhance_all(1.0, 1, [1, 1, 1, 1, 1], "RF")
 			])
 		 )],
 	},
@@ -31147,13 +31147,13 @@ Cards = [{
 		turn: 9,
 		proc: [ss_chain_cost_skill(5,
 			ss_reinforcement_all(4, [
-				ss_regenerate(0.3, 4, "RF"),
-				ss_attr_guard([1, 1, 1, 1, 1], 0.1, 4, "RF"),
-				ss_enhance_all(0.5, 4, [1, 1, 1, 1, 1], "RF")
+				ss_regenerate(0.3, 1, "RF"),
+				ss_attr_guard([1, 1, 1, 1, 1], 0.1, 1, "RF"),
+				ss_enhance_all(0.5, 1, [1, 1, 1, 1, 1], "RF")
 			]),
 			ss_reinforcement_all(4, [
-				ss_regenerate(0.3, 4, "RF"),
-				ss_attr_guard([1, 1, 1, 1, 1], 0.1, 4, "RF")
+				ss_regenerate(0.3, 1, "RF"),
+				ss_attr_guard([1, 1, 1, 1, 1], 0.1, 1, "RF")
 			])
 		)],
 	},
@@ -32506,7 +32506,7 @@ Cards = [{
 		desc: "<精霊強化>10ターンの間、味方全体のダメージを軽減(25%)◆発動中行動不可",
 		turn: 6,
 		proc: [ss_reinforcement_all(10, [
-			ss_attr_guard([1, 1, 1, 1, 1], 0.25, 10, "RF")
+			ss_attr_guard([1, 1, 1, 1, 1], 0.25, 1, "RF")
 		])],
 	},
 	awakes: [
@@ -32528,7 +32528,7 @@ Cards = [{
 		desc: "<精霊強化>10ターンの間、味方全体のダメージを軽減(40%)◆発動中行動不可",
 		turn: 9,
 		proc: [ss_reinforcement_all(10, [
-			ss_attr_guard([1, 1, 1, 1, 1], 0.4, 10, "RF")
+			ss_attr_guard([1, 1, 1, 1, 1], 0.4, 1, "RF")
 		])],
 	},
 	Lawake: [
@@ -36734,7 +36734,7 @@ Cards = [{
 	ss1: {
 		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し、ダメージを軽減(20%、10%)◆発動中行動不可",
 		turn: 6,
-		proc: [ss_reinforcement_all(4, [ss_regenerate(0.20, 4, "RF"), ss_attr_guard([1,1,1,1,1], 0.10, 4, "RF")])],
+		proc: [ss_reinforcement_all(4, [ss_regenerate(0.20, 1, "RF"), ss_attr_guard([1,1,1,1,1], 0.10, 1, "RF")])],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
@@ -36755,7 +36755,7 @@ Cards = [{
 	ss2: {
 		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し、ダメージを軽減(30%、10%)、5チェインを消費しさらに攻撃力アップ(50%)◆発動中行動不可",
 		turn: 9,
-		proc: [ss_reinforcement_all(4, [ss_regenerate(0.30, 4, "RF"), ss_attr_guard([1,1,1,1,1], 0.10, 4, "RF"), ss_enhance_all(0.5, 4, [1,1,1,1,1], ss_chain_cost(5,"RF","null"))])],
+		proc: [ss_reinforcement_all(4, [ss_regenerate(0.30, 1, "RF"), ss_attr_guard([1,1,1,1,1], 0.10, 1, "RF"), ss_enhance_all(0.5, 1, [1,1,1,1,1], ss_chain_cost(5,"RF","null"))])],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -44652,7 +44652,7 @@ Cards = [{
 	ss1: {
 		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し(15%)、味方の攻撃力をアップ(100%)",
 		turn: 1,
-		proc: [ss_reinforcement_all(4, [ss_regenerate(0.15, 4, "RF"), ss_enhance_all(1, 4, [1,1,1,1,1], "RF")])],
+		proc: [ss_reinforcement_all(4, [ss_regenerate(0.15, 1, "RF"), ss_enhance_all(1, 1, [1,1,1,1,1], "RF")])],
 	},
 	awakes: [
 		Fastskill(1),
@@ -44673,7 +44673,7 @@ Cards = [{
 	ss2: {
 		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し(15%)、味方の攻撃力をアップ(100%)",
 		turn: 1,
-		proc: [ss_reinforcement_all(4, [ss_regenerate(0.15, 4, "RF"), ss_enhance_all(1, 4, [1,1,1,1,1], "RF")])],
+		proc: [ss_reinforcement_all(4, [ss_regenerate(0.15, 1, "RF"), ss_enhance_all(1, 1, [1,1,1,1,1], "RF")])],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,0,0,0,]),
@@ -52421,7 +52421,7 @@ Cards = [{
 	ss1: {
 		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し(15%)、味方の攻撃力をアップ(100%)◆発動中行動不可",
 		turn: 1,
-		proc: [ss_reinforcement_all(4, [ss_enhance_all(1, 4, [1,1,1,1,1], "RF"), ss_regenerate(0.15, 4, "RF")])],
+		proc: [ss_reinforcement_all(4, [ss_enhance_all(1, 1, [1,1,1,1,1], "RF"), ss_regenerate(0.15, 1, "RF")])],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -52442,7 +52442,7 @@ Cards = [{
 	ss2: {
 		desc: "<精霊強化>4ターンの間、味方全体のダメージを軽減(30%)◆発動中行動不可",
 		turn: 6,
-		proc: [ss_reinforcement_all(4, [ss_attr_guard([1,1,1,1,1], 0.3, 4, "RF")])],
+		proc: [ss_reinforcement_all(4, [ss_attr_guard([1,1,1,1,1], 0.3, 1, "RF")])],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -54226,9 +54226,9 @@ Cards = [{
 		charged: 1,
 		isallcharge: true,
 		proc: [ss_reinforcement_all(5, [
-			ss_attr_guard([1, 1, 1, 1, 1], 0.2, 5, "RF"),
-			ss_enhance_all(2, 5, [1, 1, 1, 1, 1], "RF"),
-			ss_regenerate(0.2, 5, "RF")
+			ss_attr_guard([1, 1, 1, 1, 1], 0.2, 1, "RF"),
+			ss_enhance_all(2, 1, [1, 1, 1, 1, 1], "RF"),
+			ss_regenerate(0.2, 1, "RF")
 		])],
 	},
 	awakes: [
@@ -54253,9 +54253,9 @@ Cards = [{
 		charged: 1,
 		isallcharge: true,
 		proc: [ss_reinforcement_all(5, [
-			ss_attr_guard([1, 1, 1, 1, 1], 0.2, 5, "RF"),
-			ss_enhance_all(2, 5, [1, 1, 1, 1, 1], "RF"),
-			ss_regenerate(0.2, 5, "RF")
+			ss_attr_guard([1, 1, 1, 1, 1], 0.2, 1, "RF"),
+			ss_enhance_all(2, 1, [1, 1, 1, 1, 1], "RF"),
+			ss_regenerate(0.2, 1, "RF")
 		])],
 	},
 	Lawake: [
@@ -55150,7 +55150,7 @@ Cards = [{
 	ss1: {
 		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し(15%)、味方の攻撃力をアップ(100%)◆発動中行動不可",
 		turn: 1,
-		proc: [ss_reinforcement_all(4, [ss_enhance_all(1, 4, [1,1,1,1,1], "RF"), ss_regenerate(0.15, 4, "RF")])],
+		proc: [ss_reinforcement_all(4, [ss_enhance_all(1, 1, [1,1,1,1,1], "RF"), ss_regenerate(0.15, 1, "RF")])],
 	
 	},
 	as2: {
@@ -55160,7 +55160,7 @@ Cards = [{
 	ss2: {
 		desc: "<精霊強化>4ターンの間、味方全体のダメージを軽減(30%)◆発動中行動不可",
 		turn: 6,
-		proc: [ss_reinforcement_all(4, [ss_attr_guard([1,1,1,1,1], 0.3, 4, "RF")])],
+		proc: [ss_reinforcement_all(4, [ss_attr_guard([1,1,1,1,1], 0.3, 1, "RF")])],
 	},
 	Lawake: [
 		Statusup(1000, 0),
@@ -57297,7 +57297,7 @@ Cards = [{
 		turn: 5,
 		charged: 1,
 		isallcharge: true,
-		proc: [ss_reinforcement_all(5, [ss_attr_guard([1,1,1,1,1], 0.2, 5, "RF"), ss_enhance_all(2, 5, [1,1,1,1,1], "RF"), ss_regenerate(0.2, 5, "RF")])],
+		proc: [ss_reinforcement_all(5, [ss_attr_guard([1,1,1,1,1], 0.2, 1, "RF"), ss_enhance_all(2, 1, [1,1,1,1,1], "RF"), ss_regenerate(0.2, 1, "RF")])],
 	},
 	awakes: [
 		Awake_noeffect("経験値取得量アップ",1),
@@ -57320,7 +57320,7 @@ Cards = [{
 		turn: 5,
 		charged: 1,
 		isallcharge: true,
-		proc: [ss_reinforcement_all(5, [ss_attr_guard([1,1,1,1,1], 0.2, 5, "RF"), ss_enhance_all(2, 5, [1,1,1,1,1], "RF"), ss_regenerate(0.2, 5, "RF")])],
+		proc: [ss_reinforcement_all(5, [ss_attr_guard([1,1,1,1,1], 0.2, 1, "RF"), ss_enhance_all(2, 1, [1,1,1,1,1], "RF"), ss_regenerate(0.2, 1, "RF")])],
 	},
 	Lawake: [
 		Attr_statusup(100,0, [0,1,1,0,0,]),
@@ -64845,7 +64845,7 @@ Cards = [{
         desc: "<精霊強化>4ターン溜めた後、8ターンの間、味方全体を徐々に回復(40%)しダメージを軽減(25%)、さらに攻撃力をアップ(150%)◆発動中行動不可",
         turn: 1,
         charged: 4,
-        proc: [ss_reinforcement_all(8, [ss_attr_guard([1, 1, 1, 1, 1], 0.25, 8, "RF"), ss_enhance_all(1.5, 8, [1, 1, 1, 1, 1], "RF"), ss_regenerate(0.4, 8, "RF")])],
+        proc: [ss_reinforcement_all(8, [ss_attr_guard([1, 1, 1, 1, 1], 0.25, 1, "RF"), ss_enhance_all(1.5, 1, [1, 1, 1, 1, 1], "RF"), ss_regenerate(0.4, 1, "RF")])],
     },
     awakes: [
         Panel_boost([1,0,0,0,0,],2),
@@ -64867,7 +64867,7 @@ Cards = [{
         desc: "<精霊強化>1ターン溜めた後、8ターンの間、味方全体を徐々に回復(40%)しダメージを軽減(25%)、さらに攻撃力をアップ(150%)◆発動中行動不可",
         turn: 10,
         charged: 1,
-        proc: [ss_reinforcement_all(8, [ss_attr_guard([1, 1, 1, 1, 1], 0.25, 8, "RF"), ss_enhance_all(1.5, 8, [1, 1, 1, 1, 1], "RF"), ss_regenerate(0.4, 8, "RF")])],
+        proc: [ss_reinforcement_all(8, [ss_attr_guard([1, 1, 1, 1, 1], 0.25, 1, "RF"), ss_enhance_all(1.5, 1, [1, 1, 1, 1, 1], "RF"), ss_regenerate(0.4, 8, "RF")])],
     },
     Lawake: [
         Statusup(1500,0),
@@ -65769,7 +65769,7 @@ Cards = [{
 	islegend: true,
 	ape: "ミクコラボ",
 	as1: {
-		desc: "<複属性攻撃強化>3チェインで雷属性の攻撃力をアップ、複属性が水属性だとさらにアップ、術士はさらにアップ(30%/80%/130%)",
+		desc: "<複属性攻撃強化>3チェインで雷属性の攻撃力をアップ、複属性が水属性だとさらにアップ、物質はさらにアップ(30%/80%/130%)",
 		proc: [
 				ChainEnhance_SubAttr(0.3, 0.8, [0,0,1,0,0], [0,1,0,0,0], 3),
 				add_cond(ChainEnhance_SubAttr(0.3, 1.3, [0,0,1,0,0], [0,1,0,0,0], 3), when_spec_match([6])),
@@ -65781,8 +65781,11 @@ Cards = [{
 		proc: [ss_delay_s(2)],
 	},
 	as2: {
-		desc: "<回復>雷属性の味方を回復、物質はさらに回復(16%/23%)",
-		proc: [Heal(0.16, [0,0,1,0,0], 0), SpecHeal(0.23, [0,0,1,0,0], [6], 0)],
+		desc: "<複属性攻撃強化>3チェインで雷属性の攻撃力をアップ、複属性が水属性だとさらにアップ、物質はさらにアップ(60%/110%/160%)",
+		proc: [
+				ChainEnhance_SubAttr(0.6, 1.1, [0,0,1,0,0], [0,1,0,0,0], 3),
+				add_cond(ChainEnhance_SubAttr(0.6, 1.6, [0,0,1,0,0], [0,1,0,0,0], 3), when_spec_match([6])),
+		]
 	},
 	ss2: {
 		desc: "<遅延>敵単体の攻撃ターンを3遅らせる",
