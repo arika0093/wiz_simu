@@ -21738,7 +21738,6 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: false,
-	is_dist: true,
 	as1: {
 		desc: "<属性特効>火属性の敵単体へ特効ダメージ(300%)",
 		proc: ChainAttrAttack(3.0, 0, [1,0,0,0,0]),
@@ -30683,12 +30682,12 @@ Cards = [{
 		turn: 9,
 		proc: [ss_chain_cost_skill(5,
 			ss_reinforcement_all(4, [
-				ss_attr_guard([1, 1, 1, 1, 1], 0.2, 1, "RF"),
-				ss_enhance_all(2.0, 1, [1, 1, 1, 1, 1], "RF")
+				ss_attr_guard([1, 1, 1, 1, 1], 0.2, 4, "RF"),
+				ss_enhance_all(2.0, 4, [1, 1, 1, 1, 1], "RF")
 			]),
 			ss_reinforcement_all(4, [
-				ss_attr_guard([1, 1, 1, 1, 1], 0.1, 1, "RF"),
-				ss_enhance_all(1.0, 1, [1, 1, 1, 1, 1], "RF")
+				ss_attr_guard([1, 1, 1, 1, 1], 0.1, 4, "RF"),
+				ss_enhance_all(1.0, 4, [1, 1, 1, 1, 1], "RF")
 			])
 		 )],
 	},
@@ -64018,7 +64017,7 @@ Cards = [{
 	ss1: {
 		desc: "<激化大魔術>敵単体へ火・水属性の5回連続ダメージ、発動する度に効果値が2倍アップ(800%/1600%/3200%/6400%)(上限:3段階)",
 		turn: 11,
-		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [0,1], 2)],
+		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [0,1], 5)],
 	},
 	as2: {
 		desc: "<連撃>3チェインで敵単体を3回連続攻撃、20チェインで更にダメージアップ(400%/1700%)",
@@ -64027,7 +64026,7 @@ Cards = [{
 	ss2: {
 		desc: "<激化大魔術>敵単体へ火・水属性の5回連続ダメージ、発動する度に効果値が2倍アップ(800%/1600%/3200%/6400%)(上限:3段階)",
 		turn: 11,
-		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [0,1], 2)],
+		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [0,1], 5)],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],4),
@@ -65990,6 +65989,97 @@ Cards = [{
 	Lawake: [
 		Statusup(1000,0),
 		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,100,[0,0,0,1,0,]),
+	],
+},{
+	name: "In the Fast Lane レリッシュ",
+	cardno: 8059,
+	imageno: 10187,
+	hp: 5985,
+	atk: 2075,
+	cost: 50,
+	attr: [1,2],
+	species: [8],
+	islegend: true,
+	ape: "クロスディライブ",
+	as1: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(30%/80%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,1,0,0,0], [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<精霊強化>4ターンの間、味方の攻撃力をアップ(200%)(発動中行動不可)",
+		turn: 4,
+		proc: [ss_reinforcement_all(4, [ss_enhance_all(2, 4, [1, 1, 1, 1, 1], "RF")])],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Awake_noeffect("経験値取得量アップ",2),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],2),
+		Abstate_invalid("ss_sealed"),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,1,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(60%/110%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,1,0,0,0], [0,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<精霊強化>4ターンの間、味方の攻撃力をアップ(300%)(発動中行動不可)",
+		turn: 7,
+		proc: [ss_reinforcement_all(4, [ss_enhance_all(3, 4, [1, 1, 1, 1, 1], "RF")])],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		NEFTJOD(30),
+	],
+},{
+	name: "Sparks Fly Upward グリット",
+	cardno: 8050,
+	imageno: 10178,
+	hp: 2555,
+	atk: 4180,
+	cost: 56,
+	attr: [0,1],
+	species: [8],
+	islegend: true,
+	ape: "クロスディライブ",
+	as1: {
+		desc: "<連撃>HP80%以上で敵単体を3回連続攻撃(400%)",
+		proc: add_cond(ChainDualAttack(4.0, 0, 3), when_hp_more(0.8)),
+	},
+	ss1: {
+		desc: "<カウンター>1ターンの間、スキルカウンター待機(200%)",
+		turn: 5,
+		proc: [ss_skillcounter(2, 1)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		NEFTJOD(60),
+		Panel_boost([1,0,0,0,0,],2),
+		Abstate_invalid("ss_sealed"),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,1,0,0,0,]),
+		Fastskill(3),
+		Attr_relief([1,1,1,1,1,],20),
+	],
+	as2: {
+		desc: "<連撃>HP80%以上で敵単体を3回連続攻撃(500%)",
+		proc: add_cond(ChainDualAttack(5.0, 0, 3), when_hp_more(0.8)),
+	},
+	ss2: {
+		desc: "<カウンター>1ターンの間、スキルカウンター待機(300%)",
+		turn: 7,
+		proc: [ss_skillcounter(3, 1)],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,1,0,0,0,]),
+		Abstate_invalid("all_sealed"),
 	],
 },
 ];
