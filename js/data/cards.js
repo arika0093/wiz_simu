@@ -66015,7 +66015,7 @@ Cards = [{
 		Attr_statusup(0,200, [0,1,1,0,0,]),
 		Attr_statusup(200,0, [0,1,1,0,0,]),
 		Awake_noeffect("経験値取得量アップ",2),
-		Fastskill(2),
+		Fastskill(1),
 		Panel_boost([0,1,0,0,0,],2),
 		Abstate_invalid("ss_sealed"),
 		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,1,0,0,]),
