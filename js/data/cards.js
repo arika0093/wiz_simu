@@ -66996,7 +66996,7 @@ Cards = [{
 		Fastskill(1),
 		Panel_boost([0,1,0,0,0,],2),
 		Fastskill(2),
-		Attr_relief([0,0,0,1,1,],20)
+		Attr_relief([0,0,0,1,1,],20),
 		Attr_statusup(0,200,[0,1,0,0,0,]),
 		Attr_statusup(200,0,[0,1,0,0,0,]),
 		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,200,[0,0,0,0,1,]),
