@@ -66860,8 +66860,8 @@ Cards = [{
 		Fastskill(1),
 		Panel_boost([0,0,1,0,0,],3),
 		Fastskill(2),
-		Panel_boost([0,0,1,0,0,],3)
-		Attr_statusup(100,0,[0,0,1,0,0,])
+		Panel_boost([0,0,1,0,0,],3),
+		Attr_statusup(100,0,[0,0,1,0,0,]),
 		NEFTJOD(30),
 		Heal_afterbattle(10),
 		Attr_statusup(0,100,[0,0,1,0,0,]),
@@ -66911,7 +66911,7 @@ Cards = [{
 		Attr_statusup(0,100,[1,0,0,0,0,]),
 		Attr_statusup_sattr(0,100,[1,0,0,0,0,],0,200,[0,0,0,1,0,]),
 		Attr_statusup_sattr(100,0,[1,0,0,0,0,],200,0,[0,0,0,1,0,]),
-		Abstate_invalid("as_sealed")
+		Abstate_invalid("as_sealed"),
 	],
 	Lawake: [
 		Attr_statusup_sattr(0,100,[1,0,0,0,0,],0,100,[0,0,0,1,0,]),
