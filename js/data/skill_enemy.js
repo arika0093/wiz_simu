@@ -542,6 +542,7 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown) {
 				lim_turn: t,
 				hpdown: hpdown,
 				atkdown: atkdown,
+				priority: -256,	// at last
 				effect: function (f, oi, teff, state) {
 					var nowtg = f.Allys.Now[oi];
 					if (state == "first") {
@@ -555,7 +556,7 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown) {
 						// 効果解除
 						turneff_break_cond(nowtg.turn_effect, oi, function (teff) {
 							return teff.iscursebreak;
-						});
+						}, "cursebreak");
 						// エンハ効果値解除
 						now.ss_enhance = 0;
 						now.ss_boost_enhance = 0;
@@ -583,7 +584,8 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown) {
 			}
 			// スキルカウンターを有効に
 			now.flags.skill_counter[n] = true;
-			fld.log_push("Enemy[" + (n + 1) + "]: 呪い(HP:" + (-hpdown) + "|" + t + "t)(対象: Unit[" + (tg[i] + 1) + "])");
+			fld.log_push("Enemy[" + (n + 1) + "]: 呪い(HP:" + (-hpdown) + "|" + (atkdown > 0 ? "|ATK:" + (-atkdown) : "")
+				+ t + "t)(対象: Unit[" + (tg[i] + 1) + "])");
 		}
 		// 反射チェック
 		turneff_check_skillcounter(fld);

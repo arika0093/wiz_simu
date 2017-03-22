@@ -441,7 +441,7 @@ var SpSkill = {
 								f.Allys.Now[oi].ss_enhance = rate;
 							}
 						}
-						else if (state == "end" || state == "dead") {
+						else if (state == "end" || state == "dead" || state == "cursebreak" || state == "overlay") {
 							if (teff.isreinforce) {
 								f.Allys.Now[oi].ss_reinforcement_atk = 0;
 							} else {
@@ -505,7 +505,7 @@ var SpSkill = {
 								f.Allys.Now[oi].ss_enhance = teff.up_rate;
 							}
 						}
-						else if (state == "end" || state == "dead") {
+						else if (state == "end" || state == "dead" || state == "cursebreak" || state == "overlay") {
 							if (teff.isreinforce) {
 								f.Allys.Now[oi].ss_reinforcement_atk = 0;
 							} else {
@@ -548,7 +548,7 @@ var SpSkill = {
 						if (state == "first") {
 							f.Allys.Now[oi].ss_boost_enhance = rate;
 						}
-						else if (state == "end" || state == "dead") {
+						else if (state == "end" || state == "dead" || state == "cursebreak" || state == "overlay") {
 							f.Allys.Now[oi].ss_boost_enhance = 0;
 						}
 						else if (is_t && !is_ss && !f.Status.finish) {
@@ -657,7 +657,7 @@ var SpSkill = {
 						nowtg.nowhp = Math.min(nowtg.nowhp, nowtg.maxhp);
 						nowtg.atk -= teff.up_atk;
 					}
-					else if (state == "overlay") {
+					else if (state == "overlay" || state == "cursebreak") {
 						nowtg.maxhp = Math.max(nowtg.maxhp - teff.up_hp, 1);
 						nowtg.nowhp = Math.max(nowtg.nowhp - teff.up_hp, 1);
 						nowtg.atk -= teff.up_atk;

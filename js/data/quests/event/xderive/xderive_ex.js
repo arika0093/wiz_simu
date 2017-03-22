@@ -28,7 +28,6 @@
                   ],
                   on_move: [
                      m_enemy_once(damage_block_own(30000, 4)),
-                     m_enemy_once(damage_block_own(20000, 4)),
 					 s_enemy_attack(1000, 5, 1, true),
                      s_enemy_chainreduce(2)
                   ],
@@ -56,7 +55,8 @@
                s_enemy_reverse(1)
             ],
             on_move: [
-               s_enemy_attack(2500, 5, 1, true)
+			  m_enemy_once(skill_counter_func(s_enemy_attack, "-", 100, false, 3000, 5, 10, true)),
+              s_enemy_attack(2500, 5, 1, true)
             ],
             on_angry: [
                s_enemy_cursed(0, 5, 6, 1000)
