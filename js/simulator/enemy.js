@@ -239,11 +239,13 @@ function get_enemy_move_skill(e) {
 	} else {
 		if (uskils[0].interval > 0) {
 			var call_index = 0;
+			var rst = uskils[call_index];
+			e.move.m_index = 0;
 		} else {
 			var call_index = Math.min(e.move.m_index, uskils.length - 1);
+			var rst = uskils[call_index];
+			e.move.m_index = (call_index + 1) % (uskils.length);
 		}
-		var rst = uskils[call_index];
-		e.move.m_index = (call_index + 1) % (em.length);
 	}
 	if (rst == null) { return null; }
 	// count値をintervalの値にする

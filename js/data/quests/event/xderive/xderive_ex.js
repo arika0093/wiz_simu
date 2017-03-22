@@ -4,6 +4,10 @@
    desc: "",
    overlap: false,
    aprnum: 1,
+   battle_before: [{
+      desc: "SP+1",
+	  proc: panel_skillboost(1)
+   }],
    data: [
       {
          appearance: [
@@ -24,6 +28,7 @@
                   ],
                   on_move: [
                      m_enemy_once(damage_block_own(30000, 4)),
+                     m_enemy_once(damage_block_own(20000, 4)),
 					 s_enemy_attack(1000, 5, 1, true),
                      s_enemy_chainreduce(2)
                   ],
