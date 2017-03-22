@@ -55,6 +55,12 @@ category_jp = {
 		jp: "輝く想いの魔法(ミクコラボ)",
 		disable_date:"2017/4/7 16:00",
 	},
+    "xderive": {
+		is_dispsim: true,
+		sim_index: 11,
+		jp: "響命クロスディライブ",
+		disable_date:"2017/4/13 16:00",
+	},
     "zoba": {
 		is_dispsim: true,
 		sim_index: 11,
