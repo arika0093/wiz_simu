@@ -573,7 +573,7 @@ var SpSkill = {
 		var all_done = function(f, is_ak){
 			var sss = skills;
 			for(n=0; n < sss.length; n++){
-				ss_object_done(fld, oi, sss[n]);
+				ss_object_done(f, oi, sss[n]);
 			}
 			// dup-remove
 			if(is_ak){
