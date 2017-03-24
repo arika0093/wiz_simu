@@ -66017,7 +66017,7 @@ Cards = [{
 	ss1: {
 		desc: "<精霊強化>4ターンの間、味方の攻撃力をアップ(200%)(発動中行動不可)",
 		turn: 4,
-		proc: [ss_reinforcement_all(4, [ss_enhance_all(2, 4, [1, 1, 1, 1, 1], "RF")])],
+		proc: [ss_reinforcement_all(4, [ss_enhance_all(2, 1, [1, 1, 1, 1, 1], "RF")])],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],2),
@@ -66038,7 +66038,7 @@ Cards = [{
 	ss2: {
 		desc: "<精霊強化>4ターンの間、味方の攻撃力をアップ(300%)(発動中行動不可)",
 		turn: 7,
-		proc: [ss_reinforcement_all(4, [ss_enhance_all(3, 4, [1, 1, 1, 1, 1], "RF")])],
+		proc: [ss_reinforcement_all(4, [ss_enhance_all(3, 1, [1, 1, 1, 1, 1], "RF")])],
 	},
 	Lawake: [
 		Statusup(500,0),
