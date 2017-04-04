@@ -68360,7 +68360,7 @@ Cards = [{
 },{
 	name: "恋降る空の祈り手 ソラナ・カルナ",
 	cardno: 8130,
-	imageno: -1,
+	imageno: 7555,
 	hp: 4797,
 	atk: 2743,
 	cost: 56,
@@ -68406,7 +68406,7 @@ Cards = [{
 },{
 	name: "恋そよぐ雅紅華 ツバキ・リンドウ",
 	cardno: 8132,
-	imageno: -1,
+	imageno: 7556,
 	hp: 2741,
 	atk: 4081,
 	cost: 56,
@@ -68451,7 +68451,7 @@ Cards = [{
 },{
 	name: "恋花を咲かす乙女 パニーラ・アモー",
 	cardno: 8131,
-	imageno: -1,
+	imageno: 7557,
 	hp: 2987,
 	atk: 5722,
 	cost: 54,
@@ -68496,7 +68496,7 @@ Cards = [{
 },{
 	name: "恋と炎の大爆裂 レナ・イラプション",
 	cardno: 8133,
-	imageno: -1,
+	imageno: 6578,
 	hp: 3024,
 	atk: 5976,
 	cost: 56,
@@ -68526,7 +68526,7 @@ Cards = [{
 		Panel_boost([1,0,0,0,0,],2),
 		NEFTJOD(60),
 		Attr_relief([1,0,0,0,0,],20),
-		Panel_boost([1,0,0,0,0,],2)
+		Panel_boost([1,0,0,0,0,],2),
 		Abstate_invalid(["as_sealed", "ss_sealed"]),
 		Attr_statusup(0,400,[1,0,0,0,0,]),
 		Attr_statusup(400,0,[1,0,0,0,0,]),
