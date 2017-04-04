@@ -66379,7 +66379,7 @@ Cards = [{
 },{
 	name: "Trial by Fire 〈オールド・ワン〉",
 	cardno: 8074,
-	imageno: -1,
+	imageno: 10202,
 	hp: 2327,
 	atk: 4241,
 	cost: 41,
@@ -67311,6 +67311,7 @@ Cards = [{
 	species: [11],
 	islegend: true,
 	ape: "新人王",
+	alias: ["ミルドレッド"],
 	as1: {
 		desc: "<属性特効連撃・複属性攻撃強化>水・闇属性の敵単体へ特効3連撃(300%)、さらに雷属性の攻撃力をアップ、複属性が光属性だとさらにアップ(10%/40%)",
 		proc: [ChainDualAttrAttack(3.0, 0, 3, [0,1,0,0,1]), ChainEnhance_SubAttr(0.1, 0.4, [0,0,1,0,0], [0,0,0,1,0], 0)],
