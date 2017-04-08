@@ -95,8 +95,8 @@ $(function () {
 			$("#d_mana_edit").spinner({
 				change: function () {
 					var value = $("#d_mana_edit").spinner("value");
-					if (value > 200) {
-						$(this).spinner("value", 200);
+					if (value > 400) {
+						$(this).spinner("value", 400);
 						return false;
 					} else if (value < 0) {
 						$(this).spinner("value", 0);
@@ -104,8 +104,8 @@ $(function () {
 					}
 				},
 				spin: function (event, ui) {
-					if (ui.value > 200) {
-						$(this).spinner("value", 200);
+					if (ui.value > 400) {
+						$(this).spinner("value", 400);
 						return false;
 					} else if (ui.value < 0) {
 						$(this).spinner("value", 0);
@@ -116,7 +116,7 @@ $(function () {
 			$("#d_mana_edit").spinner("value", Deckdata.deck[ni].mana);
 			var p_t = (ni + 1) + ": " +
 				"<a target='_blank' href='/search/detail/?id=" + cd.cardno + "'>" + cd.name +
-				"</a><br/>マナの値を0-200の間で指定してください。(HP: " + cd.hp + ")";
+				"</a><br/>マナの値を0-400の間で指定してください。(HP: " + cd.hp + ")";
 			$("#d_mana_text").html(p_t);
 
 			// set value(awake)

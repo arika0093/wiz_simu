@@ -67343,8 +67343,8 @@ Cards = [{
 		NEFTJOD(60),
 		Attr_relief([0,0,0,1,1,],30),
 		Fastskill(3),
-		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,100, [0,0,0,1,0,]),
-		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 100,0, [0,0,0,1,0,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,0,0,1,0,]),
 		Abstate_invalid(["as_sealed", "ss_sealed"]),
 		Awake_damage_multiple(1.1, 500),
 	],
@@ -68920,7 +68920,6 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "バレンタイン2014",
-	alias: ["ちっぱいビール"],
 	as1: {
 		desc: "<回復>水・雷属性の味方を回復、HP50%以下なら更に回復(11%/21%)",
 		proc: [Heal(0.11, [0,1,1,0,0], 0), add_cond(Heal(0.21, [0,1,1,0,0], 0), when_hp_less(0.5))],
