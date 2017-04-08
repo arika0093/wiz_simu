@@ -1,6 +1,6 @@
 {
-   id: "1703_h03",
-   name: "(17/03)イベントトーナメント覇級[雷]",
+   id: "1703_h02",
+   name: "(2017/03)イベント覇級[水]",
    desc: "",
    overlap: false,
    aprnum: 5,
@@ -28,10 +28,10 @@
                }
             },
             {
-               name: "機神の操者 スミオ＆エクスマキナ",
+               name: "墜星銃姫 ガンダウナー＝ルリアゲハ",
                hp: 90000,
-               imageno: 5287,
-               attr: 2,
+               imageno: 7639,
+               attr: 1,
                spec: 8,
                isStrong: false,
                move: {
@@ -69,16 +69,16 @@
          ],
          enemy: [
             {
-               name: "チャンスメドレー スパークラー",
+               name: "チャンスメドレー アヴァランチ",
                hp: 10,
-               imageno: 8217,
-               attr: 2,
+               imageno: 8215,
+               attr: 1,
                spec: 6,
                isStrong: false,
                move: {
                   on_popup: [
                      m_enemy_once(impregnable(99)),
-                     m_enemy_once(s_enemy_attr_absorb([0,0,1,0,0], 3, 3)),
+                     m_enemy_once(s_enemy_attr_absorb([0,1,0,0,0], 3, 3)),
                   ],
                   on_move: [
                      s_enemy_attack(200, 5, 1, true)
@@ -89,10 +89,10 @@
                }
             },
             {
-               name: "空戦支配の片翼 ローヴィ・フロイセ",
+               name: "凛眼に覇道を宿す ルドヴィカ・ロア",
                hp: 100000,
-               imageno: 6472,
-               attr: 2,
+               imageno: 7875,
+               attr: 1,
                spec: 8,
                isStrong: false,
                move: {
@@ -108,16 +108,16 @@
                }
             },
             {
-               name: "其れは雷を背負いし者",
+               name: "其れは溟海に沈む者",
                hp: 10,
-               imageno: 7924,
-               attr: 2,
+               imageno: 7922,
+               attr: 1,
                spec: 8,
                isStrong: false,
                move: {
                   on_popup: [
                      m_enemy_once(impregnable(99)),
-                     m_enemy_once(s_enemy_attr_absorb([0,0,1,0,0], 3, 3)),
+                     m_enemy_once(s_enemy_attr_absorb([0,1,0,0,0], 3, 3)),
                   ],
                   on_move: [
                      s_enemy_attack(200, 5, 1, true)
@@ -135,10 +135,10 @@
          ],
          enemy: [
             {
-               name: "雷光のシュッツァー",
+               name: "氷結のシュッツァー",
                hp: 50000,
-               imageno: 8499,
-               attr: 2,
+               imageno: 8497,
+               attr: 1,
                spec: 7,
                isStrong: false,
                move: {
@@ -151,11 +151,11 @@
                }
             },
             {
-               name: "黄昏魔道 サンセット＝リフィル",
+               name: "風雅なる桜華 ヤチヨ＆インフローレ",
                hp: 40000,
-               imageno: 7636,
-               attr: 2,
-               spec: 9,
+               imageno: 8162,
+               attr: 1,
+               spec: 8,
                isStrong: false,
                move: {
                   on_move: [
@@ -167,10 +167,10 @@
                }
             },
             {
-               name: "苦悶因子",
+               name: "悲劇因子",
                hp: 50000,
-               imageno: 9164,
-               attr: 2,
+               imageno: 9162,
+               attr: 1,
                spec: 2,
                isStrong: false,
                move: {
@@ -206,11 +206,11 @@
                }
             },
             {
-               name: "魔道は海より広く アリエッタ・トワ",
+               name: "華麗なる魔王 アルドベリク・ゴドー",
                hp: 70000,
-               imageno: 8429,
-               attr: 2,
-               spec: 9,
+               imageno: 9114,
+               attr: 1,
+               spec: 2,
                isStrong: false,
                move: {
                   on_move: [
@@ -275,11 +275,11 @@
                }
             },
             {
-               name: "叛逆の大元帥 ディートリヒ・ベルク",
+               name: "黄昏に咲く華 サンセット＝リフィル",
                hp: 220000,
-               imageno: 9024,
-               attr: 2,
-               spec: 8,
+               imageno: 9346,
+               attr: 1,
+               spec: 9,
                isStrong: true,
                move: {
                   on_popup: [
@@ -305,10 +305,10 @@
                }
             },
             {
-               name: "チャンスメドレー スパークラー",
+               name: "チャンスメドレー アヴァランチ",
                hp: 100000,
-               imageno: 8217,
-               attr: 2,
+               imageno: 8215,
+               attr: 1,
                spec: 6,
                isStrong: false,
                move: {

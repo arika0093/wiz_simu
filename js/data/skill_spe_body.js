@@ -659,7 +659,7 @@ var SpSkill = {
 					}
 					else if (state == "overlay" || state == "cursebreak") {
 						nowtg.maxhp = Math.max(nowtg.maxhp - teff.up_hp, 1);
-						nowtg.nowhp = Math.max(nowtg.nowhp - teff.up_hp, 1);
+						nowtg.nowhp = Math.max(nowtg.nowhp, 1);
 						nowtg.atk -= teff.up_atk;
 					}
 				},
