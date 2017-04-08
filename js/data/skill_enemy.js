@@ -546,6 +546,10 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown) {
 				effect: function (f, oi, teff, state) {
 					var nowtg = f.Allys.Now[oi];
 					if (state == "first") {
+						// 効果解除
+						turneff_break_cond(nowtg.turn_effect, oi, function (teff) {
+							return teff.iscursebreak;
+						}, "cursebreak");
 						// HP低下
 						nowtg.maxhp = Math.max(-hpdown + nowtg.maxhp, 1);
 						nowtg.nowhp = Math.min(nowtg.nowhp, nowtg.maxhp);
@@ -553,10 +557,6 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown) {
 						if (atkdown) {
 							nowtg.atk = Math.max(-atkdown + nowtg.atk, 1);
 						}
-						// 効果解除
-						turneff_break_cond(nowtg.turn_effect, oi, function (teff) {
-							return teff.iscursebreak;
-						}, "cursebreak");
 						// エンハ効果値解除
 						now.ss_enhance = 0;
 						now.ss_boost_enhance = 0;
