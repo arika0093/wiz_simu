@@ -63,6 +63,15 @@ a.blocklink{
 	border: 1px solid #60C0FF;
 	border-radius: 5px;
 }
+dl.desctable > dt{
+	font-weight: bolder;
+	border-width: 0px 0px 1px 0px;
+	border-style: solid;
+	border-color: #606060;
+}
+dl.desctable > dd, dl.desctable > dd:last-child{
+	padding: 0.5ex 0 1ex;
+}
 div.linklist{
 	box-sizing: border-box;
 	width: 100%;

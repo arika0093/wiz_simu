@@ -14,6 +14,15 @@
     <meta name="description" content="「魔法使いと黒猫のウィズ」のクエスト・トーナメントシミュレータの使用方法について記載しています。" />
     <!-- About Page -->
     <title>シミュレーターの使用方法 - WizTools</title>
+    <style type="text/css">
+        .under50{
+            background-color: yellow;
+        }
+        .under20{
+            background-color: red;
+            color: #FFF;
+        }
+    </style>
 </head>
 <body>
 <div id='Top'></div>
@@ -24,43 +33,125 @@
     <!-- Main Contents -->
     <div class="Main">
         <dl class="List">
-            <dt id="use">基本の使い方</dt>
+            <dt id="whats">シミュレーターの使い方</dt>
             <dd>
-                <p class="highlight sp_hidden"><span class="link_like" onclick="popup_demomovie();">こちらのgif動画</span>で基本的な操作を確認することができます。</p>
-                <ol>
-                    <li>試走を行うクエスト/段位を選択します。</li>
-                    <li>
-                        デッキを編集します。名前を入力すると一覧が出ますのでそこから選択してください。<br />
-                        アイコンをクリックするとマナの値と覚醒の数を設定することができます。<br />
-                        デッキに名前をつけて保存をすることが可能です。
-                    </li>
-                    <li>[開始]ボタンを押して試走を開始します。</li>
-                    <li>
-                        パネルをクリックすると攻撃を行います。<br />
-                        状態異常やエンハンスの状況を確認したい時は味方アイコンをクリックしてください。<br />
-                        敵アイコンをダブルクリックするとその敵にターゲッティングすることができます。<br />
-                        精霊アイコンをドラッグすると精霊ごとにターゲッティングすることができます(PCのみ)。<br />
-                    </li>
-                    <li>
-                        「ログを確認する」をクリックすると与えたダメージなどを確認することができます(PCのみ)。
-                    </li>
-                    <li>
-                        試走結果をこんな感じでツイートすることができます。<br />
-                        リンクをクリックするとデッキを読み込むことができます。<br />
-                        <blockquote class="twitter-tweet" data-cards="hidden" lang="ja"><p lang="ja" dir="ltr">「賢王【朧】肆式(トーナメント14段)」を 8 ターン(2-3-1-1-1)で突破！&#10;<a href="https://t.co/oJPHVbgaBr">https://t.co/oJPHVbgaBr</a> <a href="https://twitter.com/hashtag/wiz_simu?src=hash">#wiz_simu</a></p>&mdash; 春@シーラってます (@rinshandream) <a href="https://twitter.com/rinshandream/status/688595690868486144">2016, 1月 17</a></blockquote>
-                        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-                    </li>
-                </ol>
+                <p class="highlight">(2017/04/09)大幅に加筆修正。</p>
+                wiztools公開時から一年以上が経過し、利用方法が複雑化してきているため、このページにある程度の使用方法をまとめます。
+                ここに書かれてない機能もいくつかあるかもしれません。<br/>
+
+                <div class="linklist">
+                    <a href="#seldeck">#デッキ選択画面</a>
+                    <a href="#simplay">#試走画面</a>
+                    <a href="#randcheck">#乱数チェッカー</a>
+                    <a href="#contact">#要望・意見など</a>
+                </div>
             </dd>
-            <dt id="warn">注意点</dt>
+            <dt id="seldeck">デッキ選択画面</dt>
             <dd>
-                軽減・遅延スキルの実装は今のところ行っていません。<br />
-                また、敵行動は最低限実装しましたが再現できていない部分も多々あります。<br />
-                後ほど整備しますのでご了承ください。
+                <div class="imgframe"><img src="/image/help/01.png" alt="デッキ選択画面の画像"></div>
+                <dl class="desctable">
+                    <dt>[1]: 試走クエストの指定</dt>
+                    <dd>試走を行うクエストをここで指定します。検索機能である程度の絞り込みを行うことができます。</dd>
+                    <dt>[2]: 保存したデッキの読み込み</dt>
+                    <dd>"Save"機能で保存したデッキを読み込むことができます。</dd>
+                    <dt>[3]: デッキの保存</dt>
+                    <dd>現在編集しているデッキの内容をCookieに保存します。<br/>保存したデッキは"Load"機能から読み込むことが可能です。</dd>
+                    <dt>[4]: 編集中デッキの消去</dt>
+                    <dd>編集中の内容を破棄して、初期状態に戻します。</dd>
+                    <dt>[5]: 属性表示</dt>
+                    <dd>選択した精霊の主属性/副属性を表示します。主属性のみの場合は単色です。</dd>
+                    <dt>[6]: 精霊アイコン</dt>
+                    <dd>選択した精霊のアイコンが表示されます。<b>クリックすることでマナ調整/潜在能力調整が可能です。</b></dd>
+                    <dt>[7]: 精霊名入力</dt>
+                    <dd>名前を入力することで精霊をデッキに登録します。一部を入力することで、補完機能を利用可能です。</dd>
+                    <dt>[8]: 簡易精霊検索</dt>
+                    <dd>クリックすることで、簡易的な精霊の条件検索を行うことができます。</dd>
+                    <dt>[9]: 潜在結晶エディター</dt>
+                    <dd>精霊の潜在結晶を編集することが可能です。</dd>
+                    <dt>[10]: 助っ人機能の使用有無</dt>
+                    <dd>有効にすると、精霊が戦闘不能になった際に入れ替えます。入れ替え精霊は即スキルを使用できます。<br/>トーナメントでは無効化されます。</dd>
+                    <dt>[11]: #wzsim</dt>
+                    <dd>Twitterに投稿された試走結果が表示されます。</dd>
+                    <dt>[12]: 試走開始</dt>
+                    <dd><a href="#simplay">試走画面</a>へ移動します。</dd>
+                </dl>
+            </dd>
+            <dt id="simplay">試走画面</dt>
+            <dd>
+                <div class="imgframe"><img src="/image/help/02.png" alt="試走画面の画像"></div>
+                <dl class="desctable">
+                    <dt>[1]: 試走クエストの名前</dt>
+                    <dd>試走中のクエスト名が表示されます。</dd>
+                    <dt>[2]: 敵行動データベースへ移動</dt>
+                    <dd>試走中クエストの敵行動をまとめたページを新しく開きます。</dd>
+                    <dt>[3]: 投稿デッキ一覧へ移動</dt>
+                    <dd>試走結果画面から共有されたデッキの一覧を新しく開きます。</dd>
+                    <dt>[4]: 始めからやり直す</dt>
+                    <dd>状況を一戦目の初期状態にリセットします。</dd>
+                    <dt>[5]: ログを確認する</dt>
+                    <dd>試走中の状況をテキスト出力したログを確認することができます。<br/><b>ダメージ計算の確認も可能です。</b></dd>
+                    <dt>[6]: 乱数確認ツール</dt>
+                    <dd>指定されたタスクを任意の回数繰り返し、突破回数を表示します。詳細は<a href="#randcheck">ページ下部</a>を参照。</dd>
+                    <dt>[7]: デッキ選択画面に戻る</dt>
+                    <dd>現在のデッキ内容を維持したまま、<a href="#seldeck">デッキ選択画面</a>へ戻ります。</dd>
+                    <dt>[8]: 味方精霊データ</dt>
+                    <dd>
+                        <div class="imgframe imgframe_noleft"><img src="/image/help/02_1.png" /></div><br/>
+                        ・<b>アイコンをクリックすることで、精霊に付与された特殊効果の一覧を表示</b>します(上図参照)。<br/>
+                        ・<b>アイコンを敵アイコンへドラッグすることで、主副属性の一括ターゲッティングが可能</b>です。
+                    </dd>
+                    <dt>[9]: 味方精霊のHP表示</dt>
+                    <dd>現在HP/最大HPを表示します。残りHPが50%以下で<span class="under50">黄色</span>、20%以下で<span class="under20">赤色</span>表示となります。</dd>
+                    <dt>[10]: 敵待機ターン</dt>
+                    <dd>敵が次の行動を行うまでの待機ターン数を表示します。</dd>
+                    <dt>[11]: パネル付与効果</dt>
+                    <dd>パネル付与効果SSを使用した際、ここから付与効果を選択することができます。<br/>一部クエストでは始めから選択可能の場合もあります。</dd>
+                    <dt>[12]: 攻撃順指定</dt>
+                    <dd>
+                        味方精霊が優先的に攻撃する敵を指定することができます。自動は標準ターゲッティングです。<br/>
+                        <b>個別ターゲッティングの場合は、味方精霊アイコンのクリックにより指定可能</b>です。
+                    </dd>
+                    <dt>[13]: 乱数設定</dt>
+                    <dd>
+                        敵へのダメージ計算の際に最後にかかる乱数の値を固定(0.9-1.1)するか、ランダムにするかを指定できます。<br/>
+                        <a href="#randcheck">乱数確認ツール</a>を使用する際はランダムに指定します。
+                    </dd>
+                    <dt>[14]: パネル選択/AS逃し指定</dt>
+                    <dd>AS逃しにチェックを入れることでアンサースキルの発動を回避することができます。</dd>
+                    <dt>[15]: ターン進み/巻き戻し</dt>
+                    <dd>履歴から、1ターン先へ進んだり戻ったりすることが可能です。</dd>
+                    <dt>[16]: 平均解答時間指定</dt>
+                    <dd>解答時間に依存するスキルの威力調節を行うことができます。</dd>
+                </dl>
+            </dd>
+            <dt id="randcheck">乱数チェッカー</dt>
+            <dd>
+                <div class="imgframe"><img src="/image/help/03.png" alt="乱数チェッカーの画像"></div>
+                <dl class="desctable">
+                    <dt>[1]: 実行予定タスクの一覧</dt>
+                    <dd>ここに表示されているタスクを上から順番に実行します。</dd>
+                    <dt>[2]: タスクの追加</dt>
+                    <dd>左から追加するタスク内容を選び、このボタンで追加します。</dd>
+                    <dt>[3]: タスクの全削除</dt>
+                    <dd>実行予定のタスクを全削除します。</dd>
+                    <dt>[4]: 試行回数の入力</dt>
+                    <dd>
+                        指定したタスクを何回繰り返すかを数字で指定します。<br/>
+                        大きい数字を指定すると確実性が増しますが、実行に時間がかかります。<br/>
+                        一般的に、試行回数は50～200程度が推奨されます。
+                    </dd>
+                    <dt>[5]: 不偏分散の利用</dt>
+                    <dd>
+                        試行の際に不偏分散を利用するかを指定します。<br/>
+                        少なめの計算回数でより正確に結果を算出することができます。
+                    </dd>
+                    <dt>[6]: 計算開始</dt>
+                    <dd>試行を開始します。</dd>
+                </dl>
             </dd>
             <dt id="contact">要望・意見など</dt>
             <dd>
-                「このサイトについて」の<a href="/pages/info.html#contact">「要望・意見など」</a>をご覧ください。
+                <a href="/pages/contact.html">「バグ報告/要望用ページ」</a>をご覧ください。
             </dd>
         </dl>
     </div>
@@ -68,44 +159,12 @@
     <!-- Footer -->
     <div id="Footer"></div>
 
-    <!-- Dialog Contents -->
-    <div class="dialog_div" id="dialog_sim_use" title="Error">
-        <img src="https://github.com/Arika0093/wiz_simu/raw/master/image/demo.gif" style="max-width: 100%;" />
-    </div>
-
     <!-- Javascript -->
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js"></script>
-    <script type="text/javascript">
-		$(function () {
-			$("#dialog_sim_use").dialog({
-				autoOpen: false,
-				show: "blind",
-				hide: "blind",
-				width: 820,
-				height: 600,
-				modal: true,
-				open: function () {
-					// hide
-					$(".ui-dialog-titlebar").hide();
-					// close when click dialog outside
-					$('.ui-widget-overlay').bind('click', function () {
-						$("#dialog_sim_use").dialog('close');
-					});
-				},
-				close: function () {
-					// title show
-					$(".ui-dialog-titlebar").show();
-				},
-			});
-		});
-		function popup_demomovie() {
-			$("#dialog_sim_use").dialog("open");
-		}
-    </script>
 </div>
 </body>
 </html>

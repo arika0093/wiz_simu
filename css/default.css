@@ -70,6 +70,25 @@ a.blocklink:hover{
 	background-color: #98efff;
 	cursor: pointer;
 }
+div.imgframe{
+	margin: 1ex 0 1.5ex -3ex;
+	border: 1px solid #e6e6e6;
+	background-color: #fffff0;
+	display: inline-block;
+	box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+}
+div.imgframe_noleft{
+	margin-left: 0px;
+}
+dl.desctable > dt{
+	font-weight: bolder;
+	border-width: 0px 0px 1px 0px;
+	border-style: solid;
+	border-color: #606060;
+}
+dl.desctable > dd, dl.desctable > dd:last-child{
+	padding: 0.5ex 0 1ex;
+}
 
 div.linklist{
 	width: 80%;
