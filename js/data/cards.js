@@ -67790,7 +67790,7 @@ Cards = [{
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],2),
-		Fastskill(2),
+		Fastskill(1),
 		Panel_boost([1,0,0,0,0,],2),
 		Fastskill(2),
 		NEFTJOD(60),
