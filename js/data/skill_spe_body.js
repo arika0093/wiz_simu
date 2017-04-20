@@ -570,17 +570,20 @@ var SpSkill = {
 		// paramsにssの配列を書いて、全て実行する
 		var t = params[0];
 		var skills = $.extend(true, [], cobj.p2);
-		var all_done = function(f, is_ak){
+		var all_done = function(f, state, is_t, is_ak){
 			var sss = skills;
 			for(n=0; n < sss.length; n++){
 				ss_object_done(f, oi, sss[n]);
 			}
 			// dup-remove
-			if(is_ak){
-				var nows = f.Allys.Now;
-				for(n=0; n < nows.length; n++){
+			var nows = f.Allys.Now;
+			for(n=0; n < nows.length; n++) {
+				turn_effect_check_onlyfirst(nows[n], n);
+				if (is_ak) {
 					turneff_break_dual(nows[n].turn_effect, n, true);
 				}
+				// statusup-remove
+				turneff_break_dual_settype(nows[n].turn_effect, n, "ss_statusup", true);
 			}
 		}
 		// 自身に行動不能効果を付与
@@ -593,7 +596,7 @@ var SpSkill = {
 			isreduce_stg: false,	// ターン跨ぎでカウントが減らない
 			effect: function (f, oi, teff, state, is_t, is_ak, is_ss) {
 				if (state != "end" && state != "dead" && is_t && !is_ss) {
-					all_done(f, is_ak);
+					all_done(f, state, is_t, is_ak);
 				}
 			},
 			priority: 1,
@@ -609,6 +612,7 @@ var SpSkill = {
 				return false;
 			},
 		});
+		//all_done(fld, false);
 		return true;
 	},
 	// -----------------------------
@@ -659,7 +663,7 @@ var SpSkill = {
 					}
 					else if (state == "overlay" || state == "cursebreak") {
 						nowtg.maxhp = Math.max(nowtg.maxhp - teff.up_hp, 1);
-						nowtg.nowhp = Math.max(nowtg.nowhp, 1);
+						nowtg.nowhp = Math.min(Math.max(nowtg.nowhp, 1), nowtg.maxhp);
 						nowtg.atk -= teff.up_atk;
 					}
 				},

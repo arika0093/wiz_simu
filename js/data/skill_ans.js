@@ -914,6 +914,32 @@ function as_timedep(rate) {
 	}
 }
 
+// チェインを消費して火力アップ
+// (rate: 消費時の増え幅, red_ch: 消費チェイン)
+function as_reducechain(rate, red_ch) {
+	return {
+		is_afteradd: true,
+		add_f: function (fld, oi, ei, p, tgi) {
+			var nowchain = fld.Status.chain;
+			var redtask = Field.Status.chain_redtask || [];
+			// later-fix: 本来なら消費履歴を見るべきだが、仕様上何度も通過するためとりあえず0に指定
+			var reducetask = 0;
+			/*
+				Field.Status.chain_redtask.reduce(function(prev, current, i, arr) {
+			 		return prev+current;
+			 	});
+			*/
+			if ((nowchain - reducetask) >= red_ch) {
+				redtask[oi] = red_ch;
+				Field.Status.chain_redtask = redtask;
+				return rate;
+			} else {
+				return 0;
+			}
+		},
+	}
+}
+
 // ------------------------------------------------------
 // 攻撃後処理(add_condで足す)
 // ------------------------------------------------------

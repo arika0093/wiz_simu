@@ -67243,7 +67243,7 @@ Cards = [{
 	ss1: {
 		desc: "<反動大魔術・蝕>スキル反射を無視し、味方全体のMAXHPを50%使い敵全体へ火属性のダメージ(240%×人数)◆スキル使用後、味方全員が1ターン封印状態に",
 		turn: 10,
-		proc: [ss_damage_all(ss_seal_all_cond(2.4), [2]), ss_consume_all(0.5), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(ss_seal_all_cond(2.4), [0]), ss_consume_all(0.5), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],2),
@@ -67264,7 +67264,7 @@ Cards = [{
 	ss2: {
 		desc: "<反動大魔術・蝕>スキル反射を無視し、味方全体のMAXHPを50%使い敵全体へ火属性のダメージ(300%×人数)◆スキル使用後、味方全員が1ターン封印状態に",
 		turn: 13,
-		proc: [ss_damage_all(ss_seal_all_cond(3.0), [2]), ss_consume_all(0.5), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(ss_seal_all_cond(3.0), [0]), ss_consume_all(0.5), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [1,0,0,0,0,]),
@@ -69127,7 +69127,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ、チェインを2消費して、さらにダメージアップ(600%/1100%)",
-		proc: add_cond(ChainAttack(11.0, 0), as_consume_all(0.1)),
+		proc: add_cond(ChainAttack(6.0, 0), as_reducechain(5.0, 2), as_consume_all(0.1)),
 	},
 	ss2: {
 		desc: "<ブースト>5ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ(600%)。さらに極稀にクリティカル",
@@ -69670,7 +69670,7 @@ Cards = [{
 	ss1: {
 		desc: "<精霊強化>5ターンの間、味方全体を徐々に回復(20%)、さらに攻撃力とHPを250アップ(上限値:2000)◆発動中行動不可",
 		turn: 5,
-		proc: [ss_reinforcement_all(5, [ss_regenerate(0.2, 5, "RF"), ss_statusup_all([250, 250], [2000, 2000], -1)]),]
+		proc: [ss_reinforcement_all(5, [ss_regenerate(0.2, 1, "RF"), ss_statusup_all([250, 250], [2000, 2000], -1)]),]
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],2),
@@ -69691,7 +69691,7 @@ Cards = [{
 	ss2: {
 		desc: "<精霊強化>5ターンの間、味方全体を徐々に回復しダメージを軽減(20%,20%)、さらに攻撃力とHPを500アップ(上限値:2000)◆発動中行動不可",
 		turn: 8,
-		proc: [ss_reinforcement_all(5, [ss_regenerate(0.2, 5, "RF"), ss_attr_guard([1,1,1,1,1], 0.2, 5, "RF"), ss_statusup_all([500, 500], [2000, 2000], -1)]),]
+		proc: [ss_reinforcement_all(5, [ss_regenerate(0.2, 1, "RF"), ss_attr_guard([1,1,1,1,1], 0.2, 1, "RF"), ss_statusup_all([500, 500], [2000, 2000], -1)]),]
 	},
 	Lawake: [
 		Statusup(500,0),
