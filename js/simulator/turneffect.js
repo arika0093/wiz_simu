@@ -85,6 +85,20 @@ function turn_effect_check(is_turn_move, is_ssfin) {
 	}
 }
 
+// turn_effectの初回effect未実行のもののみに対して初回呼び出しを行う
+function turn_effect_check_onlyfirst(now, index){
+	var teffs = now.turn_effect;
+	for (var te = 0; te < teffs.length; te++) {
+		var turneff = teffs[te];
+		if (!turneff._notfirst) {
+			var state = "first";
+			// 呼び出し
+			turneff.effect(Field, index, turneff, state, false, is_allkill(), false);
+			turneff._notfirst = true;
+		}
+	}
+}
+
 // ターン継続効果の確認(敵版)
 function enemy_turn_effect_check(is_turn_move) {
 	var enemys = GetNowBattleEnemys();
@@ -109,10 +123,15 @@ function enemy_turn_effect_check(is_turn_move) {
 
 // 重複しているターン継続効果の解除
 function turneff_break_dual(teffs, index, is_turn_move) {
+	turneff_break_dual_settype(teffs, index, "", is_turn_move);
+}
+
+// 重複しているターン継続効果をtypeを指定して解除
+function turneff_break_dual_settype(teffs, index, type, is_turn_move) {
 	for (var t = 0; t < teffs.length; t++) {
 		// 同一typeが複数存在し新しい方が重複不可なら最初の要素を消す
 		var duals = $.grep(teffs, function (e) {
-			return (e.type == teffs[t].type) && (!teffs[t].isdual);
+			return (e.type == teffs[t].type) && (!type || type == teffs[t].type) && (!teffs[t].isdual);
 		});
 		if (duals.length >= 2) {
 			for (var i = 0; i < duals.length - 1; i++) {

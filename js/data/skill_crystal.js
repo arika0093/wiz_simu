@@ -158,6 +158,10 @@ var Awake_crystal_lists = [{
 	imple: Awake_composite,
 	param2: Spec_statusup(200, 0, [0]),
 }, {
+	name: "アラフト長老の結晶〈シガ〉(亜人HP+200)",
+	imple: Awake_composite,
+	param2: Spec_statusup(200, 0, [5]),
+}, {
 	genre: "L時発動結晶",
 	name: "煌眼の欠片(L時味方ATK+100/25%回復)",
 	imple: Awake_composite,
@@ -220,6 +224,32 @@ var Awake_crystal_lists = [{
 		var ha = Heal_afterbattle(10);
 		ha.is_legend = true;
 		return ha;
+	}(),
+}, {
+	name: "凛煌眼(L時味方ATK+300/4T300ダメブロ/被ダメ1.2倍)",
+	imple: Awake_composite,
+	param2: {
+		name: "L時味方攻撃力アップ",
+		type: "status_up",
+		attr: [1,1,1,1,1],
+		spec: create_specs(1),
+		up_hp: 0,
+		up_atk: 300,
+		is_legend: true,
+	},
+	param3: {
+		name: "L時ダメージブロック(300/4T)",
+		type: "awake_spskill",
+		skill: "ss_damageblock",
+		p1: 300,
+		p2: 4,
+		p3: "ringan",
+		is_legend: true,
+	},
+	param4: function () {
+		var dm = Awake_dragonmode(0, 1.3);
+		dm.proc[1].is_legend = true;
+		return dm.proc[1];
 	}(),
 }, {
 	genre: "状態異常無効",

@@ -89,6 +89,15 @@ function panel(attr) {
 				as_afters[i][0]();
 			}
 		}
+		// チェイン消費ASの処理
+		var reducetask = Field.Status.chain_redtask || [];
+		var tasksum = reducetask.length > 0 ? reducetask.reduce(function(p, c){ return p+c; }) : 0;
+		if(tasksum > 0){
+			var bef = Field.Status.chain;
+			var aft = Math.max(bef - tasksum, 0);
+			Field.log_push("AnswerSkill チェイン消費(" + bef + "→" + aft + ")");
+			Field.Status.chain = aft;
+		}
 		// ASエンハ値リセット
 		for (var i = 0; i < atk_skill.length; i++) {
 			Field.Allys.Now[i].as_enhance = 0;
