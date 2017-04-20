@@ -70082,7 +70082,7 @@ Cards = [{
 },{
 	name: "煌流星の砲撃猫 ガンドゥ・ギギライ",
 	cardno: 8231,
-	imageno: 8231,
+	imageno: 7867,
 	hp: 4678,
 	atk: 3065,
 	cost: 58,
