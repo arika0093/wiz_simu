@@ -36,7 +36,6 @@ category_jp = {
 		is_dispsim: true,
 		sim_index: 1,
 		is_notusedhelper: true,	
-		disable_date:"2017/03/29 12:00",
 	},
     "other": {
 		jp: "その他",
