@@ -887,7 +887,8 @@ function s_enemy_barrier_own(dmg, turn) {
 // 全体バリア
 function s_enemy_barrier_all(dmg, turn) {
 	return m_create_enemy_move(function (fld, n) {
-		barr_endu = dmg;
+
+		barr_endu = dmg_base = dmg;
 		var barr_all = {
 			desc: "バリアウォール(" + dmg + ")",
 			type: "barrier_wall",
@@ -901,12 +902,16 @@ function s_enemy_barrier_all(dmg, turn) {
 				if (barr_endu <= 0) {
 					// break
 					teff.lim_turn = 0;
+					barr_endu = null;	// for reverse
 				} else {
 					teff.desc = "バリアウォール(" + barr_endu + "/" + dmg + ")";
 				}
 			},
 			on_damage: function (fld, dmg, atr_i) {
 				var is_invalid = false;
+				if(barr_endu === null){
+					barr_endu = dmg_base;
+				}
 				if (barr_endu > 0) {
 					// 無効化
 					var bf = barr_endu;
