@@ -1,6 +1,6 @@
 {
-   id: "1704_h02",
-   name: "戦士挽歌[水]",
+   id: "1704_h03",
+   name: "(2017/04)イベント覇級[雷]",
    desc: "",
    overlap: false,
    aprnum: 5,
@@ -11,10 +11,10 @@
          ],
          enemy: [
             {
-               name: "グルドラン帝国蒼鋭激兵",
+               name: "グルドラン帝国地穿崩兵",
                hp: 60000,
-               imageno: 10359,
-               attr: 1,
+               imageno: 10360,
+               attr: 2,
                spec: 6,
                isStrong: false,
                move: {
@@ -27,10 +27,10 @@
                }
             },
             {
-               name: "グルドラン帝国蒼鋭激兵",
+               name: "グルドラン帝国地穿崩兵",
                hp: 50000,
-               imageno: 10359,
-               attr: 1,
+               imageno: 10360,
+               attr: 2,
                spec: 6,
                isStrong: false,
                move: {
@@ -46,10 +46,10 @@
                }
             },
             {
-               name: "グルドラン帝国蒼鋭激兵",
+               name: "グルドラン帝国地穿崩兵",
                hp: 60000,
-               imageno: 10359,
-               attr: 1,
+               imageno: 10360,
+               attr: 2,
                spec: 6,
                isStrong: false,
                move: {
@@ -69,10 +69,10 @@
          ],
          enemy: [
             {
-               name: "グルドラン帝国蒼鋭激兵",
+               name: "グルドラン帝国地穿崩兵",
                hp: 5,
-               imageno: 10359,
-               attr: 1,
+               imageno: 10360,
+               attr: 2,
                spec: 6,
                isStrong: false,
                move: {
@@ -88,10 +88,10 @@
                }
             },
             {
-               name: "グルドラン帝国蒼鋭激兵",
+               name: "グルドラン帝国地穿崩兵",
                hp: 140000,
-               imageno: 10359,
-               attr: 1,
+               imageno: 10360,
+               attr: 2,
                spec: 6,
                isStrong: false,
                move: {
@@ -107,15 +107,15 @@
                }
             },
             {
-               name: "グルドラン帝国紅炎焔兵",
+               name: "グルドラン帝国蒼鋭激兵",
                hp: 5,
-               imageno: 10358,
-               attr: 0,
+               imageno: 10359,
+               attr: 1,
                spec: 6,
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_attr_absorb([1,0,0,0,0], 1, 3)),
+                     m_enemy_once(s_enemy_attr_absorb_all([0,1,0,0,0], 1, 3)),
                      m_enemy_once(impregnable(99)),
                   ],
                   on_move: [
@@ -150,10 +150,10 @@
                }
             },
             {
-               name: "グルドラン帝国蒼鋭激兵",
+               name: "グルドラン帝国地穿崩兵",
                hp: 120000,
-               imageno: 10359,
-               attr: 1,
+               imageno: 10360,
+               attr: 2,
                spec: 6,
                isStrong: false,
                move: {
@@ -211,10 +211,10 @@
                }
             },
             {
-               name: "グルドラン帝国蒼鋭激兵",
+               name: "グルドラン帝国地穿崩兵",
                hp: 18,
-               imageno: 10359,
-               attr: 1,
+               imageno: 10360,
+               attr: 2,
                spec: 6,
                isStrong: false,
                move: {
@@ -284,11 +284,11 @@
                }
             },
             {
-               name: "蘇りし屍人たちの王 ヴァヌスス",
+               name: "正道王 リーブ・エクレール",
                hp: 400000,
-               imageno: 10345,
-               attr: 1,
-               spec: 9,
+               imageno: 10341,
+               attr: 2,
+               spec: 8,
                isStrong: false,
                move: {
                   on_popup: [
@@ -314,10 +314,10 @@
                }
             },
             {
-               name: "グルドラン帝国蒼鋭激兵",
+               name: "グルドラン帝国地穿崩兵",
                hp: 250000,
-               imageno: 10359,
-               attr: 1,
+               imageno: 10360,
+               attr: 2,
                spec: 6,
                isStrong: false,
                move: {

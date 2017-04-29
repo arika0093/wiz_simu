@@ -49,6 +49,7 @@ var Field = {
 		chain: 0,
 		chain_status: 0,
 		chainstat_turn: 0,
+		chain_redtask: [],
 		// パネル付与関連
 		panel_add: [],
 		panel_guard: {

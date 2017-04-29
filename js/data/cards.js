@@ -61985,7 +61985,7 @@ Cards = [{
 	ss1: {
 		desc: "<反動大魔術>敵全体へ水属性のダメージ(600%)◆スキル使用後、1ターン封印状態に",
 		turn: 4,
-		proc: [ss_damage_all(6.0, [0]), ss_allsealed_own(1)],
+		proc: [ss_damage_all(6.0, [1]), ss_allsealed_own(1)],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -62006,7 +62006,7 @@ Cards = [{
 	ss2: {
 		desc: "<反動大魔術>敵全体へ水属性のダメージ(800%)◆スキル使用後、1ターン封印状態に",
 		turn: 6,
-		proc: [ss_damage_all(8.0, [0]), ss_allsealed_own(1)],
+		proc: [ss_damage_all(8.0, [1]), ss_allsealed_own(1)],
 	},
 	Lawake: [
 		Attr_statusup(100,0, [0,1,0,0,0,]),
@@ -70174,7 +70174,7 @@ Cards = [{
 },{
 	name: "凛眼の懐刀 イスルギ・ユスラウメ",
 	cardno: 8251,
-	imageno: -1,
+	imageno: 10392,
 	hp: 3598,
 	atk: 3421,
 	cost: 43,
@@ -70219,7 +70219,7 @@ Cards = [{
 },{
 	name: "凛麗な金獅 エスメラルダ・アウルム",
 	cardno: 8259,
-	imageno: -1,
+	imageno: 10400,
 	hp: 1702,
 	atk: 3591,
 	cost: 45,

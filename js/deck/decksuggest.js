@@ -531,8 +531,9 @@ function set_autocmp(i) {
 					var al = value.alias;
 					// アルファベット大文字小文字の区別をしない
 					// &、・などは省略してチェック
-					var nm = value.name.toLowerCase().replace(/[&・\& ]/g, "");
-					rst = rst && nm.indexOf(term) >= 0;
+					var nm = value.name.toLowerCase().replace(/[&・ ]/g, "");
+					rst = rst && value.name.indexOf(term) >= 0;
+					rst = rst || nm.indexOf(term) >= 0;
 					rst = rst || nm.indexOf(roma2kana) >= 0;	// ローマ字からカタカナに変換して比較
 					rst = rst || nm.indexOf(hira2kana) >= 0;	// 平仮名からカタカナに変換して比較
 					if (al && al.length > 0) {					// 別名が定義されてるならそれら全てに対しチェック
