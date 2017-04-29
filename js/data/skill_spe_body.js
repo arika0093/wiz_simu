@@ -449,7 +449,7 @@ var SpSkill = {
 							}
 						}
 					},
-				});{
+				});
 				fld.log_push("Unit[" + (i + 1) + "]: 攻撃力Up" + typestr + "(" + (rate * 100) + "%, " + t + "t)");
 			}
 		}
