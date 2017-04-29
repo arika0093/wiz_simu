@@ -488,6 +488,7 @@ function ss_boost_enhance_s(p, t, dmg) {
  * t: 行動不能ターン数
  * sss: ssの配列(ex: [ss_attr_guard([1,1,1,1,1], 0.1, 4, "RF"), ss_enhance_all(1, 4, [1,1,1,1,1], "RF")])
  * sssで呼び出す継続効果にはcalltype="RF"を付けること
+ * sssで指定するスキルの継続ターン数は1にすること(毎ターンかけ直す)
 **/
 function ss_reinforcement_all(t, sss) {
 	return ss_template({
@@ -497,6 +498,7 @@ function ss_reinforcement_all(t, sss) {
 		target: "ally",
 		p1: t,
 		p2: sss,
+		delaychkparam: ["p2"],
 	});
 }
 

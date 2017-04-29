@@ -43,6 +43,14 @@ var Awake_crystal_lists = [{
 	}(),
 	param3: Awake_Turnup(1),
 }, {
+	name: "福音の結晶〈インベラトラス〉(精霊強化リジェネ+10%)",
+	imple: Awake_composite,
+	param2: function () {
+		var asr = Awake_SkillRateup(10);
+		asr.type = "awake_rateup_regenerateRF";
+		return asr;
+	}(),
+}, {
 	name: "ASCENSIVE(ブースト効果値+25%/自傷+5%)",
 	imple: Awake_composite,
 	param2: function () {

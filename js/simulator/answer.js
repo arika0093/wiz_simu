@@ -233,18 +233,28 @@ function answer_skill(as_arr, panel, as_afters, bef_f) {
 	}
 	// 各精霊の連撃回数を取得する
 	for (var i = 0; i < as_arr.length; i++) {
-		var chain = Field.Status.chain;
-		// ASがないなら処理せず飛ばす
-		if (as_arr[i] == null || as_arr[i].length <= 0) { continue; }
-		for (var j = 0; j < as_arr[i].length; j++) {
-			var card = Field.Allys.Deck[i];
-			var as = as_arr[i][j];
-			// ASが適用されるならば攻撃数を取得
-			if (as.type == "attack" && is_answer_target(bef_f, as, chain, -1, -1, i, -1, panel)) {
-				var subattr = (card.attr[1] >= 0) ? 2 : 1;
-				rem_duals[i] = Math.max(rem_duals[i], as.atkn * subattr);
-				atk_duals[i] = rem_duals[i];
+		/* パネルが一致するか確認
+		var has_panelattr = (panel.indexOf(card.attr[0]) >= 0);
+		has_panelattr = has_panelattr && card.attr[1] >= 0 && panel.indexOf(card.attr[1]) >= 0;
+		*/
+		if(true /*has_panelattr*/){
+			var chain = Field.Status.chain;
+			// ASがないなら処理せず飛ばす
+			if (as_arr[i] == null || as_arr[i].length <= 0) { continue; }
+			for (var j = 0; j < as_arr[i].length; j++) {
+				var card = Field.Allys.Deck[i];
+				var as = as_arr[i][j];
+				// ASが適用されるならば攻撃数を取得
+				if (as.type == "attack" && is_answer_target(bef_f, as, chain, -1, -1, i, -1, panel)) {
+					var subattr = (card.attr[1] >= 0) ? 2 : 1;
+					rem_duals[i] = Math.max(rem_duals[i], as.atkn * subattr);
+					atk_duals[i] = rem_duals[i];
+				}
 			}
+		}
+		else {
+			// パネルがないなら飛ばす
+			rem_duals[i] = atk_duals[i] = -1;
 		}
 	}
 	// 攻撃処理
@@ -431,10 +441,10 @@ function answer_enhance(as, i, p, bef_f) {
 		// エンハ値追加
 		var bef_enh = now.as_enhance ? now.as_enhance : 0;
 		now.as_enhance = bef_enh + ass.rate;
-		// 攻撃後処理
-		if (ass.after && ci == 0) {
-			as_afters.push(ass.after(Field, i, true));
-		}
+	}
+	// 攻撃後処理
+	if (ass.after) {
+		as_afters.push(ass.after(Field, i, true));
 	}
 	return as_afters;
 }

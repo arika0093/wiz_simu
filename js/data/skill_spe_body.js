@@ -441,7 +441,7 @@ var SpSkill = {
 								f.Allys.Now[oi].ss_enhance = rate;
 							}
 						}
-						else if (state == "end" || state == "dead" || state == "cursebreak" || state == "overlay") {
+						if (state == "end" || state == "dead" || state == "cursebreak") {
 							if (teff.isreinforce) {
 								f.Allys.Now[oi].ss_reinforcement_atk = 0;
 							} else {
@@ -449,7 +449,7 @@ var SpSkill = {
 							}
 						}
 					},
-				});
+				});{
 				fld.log_push("Unit[" + (i + 1) + "]: 攻撃力Up" + typestr + "(" + (rate * 100) + "%, " + t + "t)");
 			}
 		}
@@ -575,6 +575,14 @@ var SpSkill = {
 			for(n=0; n < sss.length; n++){
 				ss_object_done(f, oi, sss[n]);
 			}
+			// 精霊強化が実行関数に未指定ならそれも行う
+			var rate_awplusRF = pickup_awakes(f.Allys.Deck[oi], "awake_rateup_regenerateRF", false);
+			var isexist_regenerate = $.grep(sss, function(e){
+				return e.name == "ss_regenerate";
+			}).length > 0;
+			if(rate_awplusRF.length > 0 && !isexist_regenerate){
+				ss_object_done(f, oi, ss_regenerate(0, 1, "RF"));
+			}
 			// dup-remove
 			var nows = f.Allys.Now;
 			for(n=0; n < nows.length; n++) {
@@ -612,7 +620,7 @@ var SpSkill = {
 				return false;
 			},
 		});
-		//all_done(fld, false);
+		all_done(fld, "", false, false);
 		return true;
 	},
 	// -----------------------------
@@ -919,6 +927,11 @@ var SpSkill = {
 				var isreinforce = true
 				var isreduce_stg = true;
 				var typestr = "[精霊強化]"
+				var rate_awplusRF = pickup_awakes(fld.Allys.Deck[n], "awake_rateup_regenerateRF", false);
+				$.each(rate_awplusRF, function(i, e){
+					rate += e.upvalue / 100;
+				});
+				rate = Math.floor(rate * 100) / 100;
 				break;
 			case "SS":
 			default:
@@ -1448,9 +1461,10 @@ function ss_object_done(fld, n, c_obj, is_check_crs) {
 	var params = [];
 	var count = 0;
 	while (c_obj["p" + (count + 1)] != null) {
-		var p = c_obj["p" + (count + 1)];
+		var px = "p" + (count + 1);
+		var p = c_obj[px];
 		// 遅延評価関数なら特に何もしない
-		if(c_obj.is_delay){
+		if(c_obj.is_delay || (c_obj.delaychkparam && c_obj.delaychkparam.indexOf(px) >= 0)){
 			params[count] = p;
 		}
 		// 条件またはスキルなら再帰
@@ -1466,7 +1480,8 @@ function ss_object_done(fld, n, c_obj, is_check_crs) {
 			params[count] = [];
 			for (i = 0; i < p.length; i++) {
 				var is_num = $.isNumeric(p[i]);
-				params[count][i] = is_num ? p[i] : ss_object_done(fld, n, p[i], is_check_crs);
+				var isdelay = (c_obj.delaychkparam && c_obj.delaychkparam.indexOf(px) >= 0);
+				params[count][i] = (is_num && !isdelay) ? p[i] : ss_object_done(fld, n, p[i], is_check_crs);
 			}
 		}
 		// 関数型でないならそのまま
