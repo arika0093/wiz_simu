@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px) and (max-width: 1099px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default_bg.css" media="screen and (min-width: 1100px)" />
+    <link rel="stylesheet" type="text/css" href="/css/crystalpoint.css" />
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <!-- Search -->
+    <meta name="robots" content="all" />
+    <meta name="keywords" content="黒猫,ウィズ,魔法使いと黒猫のウィズ,魔道杯,ポイント管理" />
+    <meta name="description" content="「魔法使いと黒猫のウィズ」魔道杯のポイント推移をわかりやすくまとめることが可能です。" />
+    <!-- for Mobile Adsense -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+		(adsbygoogle = window.adsbygoogle || []).push({
+			google_ad_client: "ca-pub-5156005489853976",
+			enable_page_level_ads: true
+		});
+    </script>
+    <!-- Top Page -->
+    <title>魔道杯ポイント管理ツール - WizTools</title>
+</head>
+<body>
+<div id='Top'></div>
+<div id="wrap">
+    <!-- Loader -->
+    <div id="loader"><img src="/image/loading.gif" alt="Loading..." /></div>
+    <noscript id="loadnoscr">このページはjavascriptを使用しています。有効にしたのち再度アクセスしてください。</noscript>
+    <div id="fade"></div>
+    <!-- Header -->
+    <div id="Header"></div>
+    <!-- Main Contents -->
+    <div class="Main">
+        <dl class="List">
+            <dt>このツールについて</dt>
+            <dd id="tool_info">
+                <b>魔道杯におけるポイント管理を効率よく行うためのツール</b>(Excelファイル)です。<br/>
+                当ツールは、こたち(<a href="https://twitter.com/Kotachi_wiz/">@Kotachi_wiz</a>)さんが開発したポイント管理ツールに機能追加を行ったものです。<br/>
+
+                <!-- Adsense -->
+                <div class="Adsense">
+                    <!-- advertise -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-5156005489853976"
+                         data-ad-slot="6536828444"
+                         data-ad-format="auto"></ins>
+                    <script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </dd>
+            <dt>機能一覧</dt>
+            <dd>
+                ・<u>間近時速・平均時速及び現在の総合Ptを自動で計算</u>します。<br/>
+                ・途中(13時など)でも最終結果を出すことが可能です。また、ブースト分は時速に含まれません。<br/>
+                ・前時のデイリーに記入漏れがあった場合、空白期間の平均時速が計算されます。<br/>
+                ・空白があった場合でもデイリー平均時速及び全体平均時速は正しく計算されます。<br/>
+                ・時速理論値、現在のPtから任意のPtに到達するまでの時間を算出することができます。<br/>
+                ・全体を通しての時速変動をグラフに表示します(シート2)<br/>
+            </dd>
+            <dt>使い方</dt>
+            <dd>
+                <div class="imgframe"><img src="01.png" alt="managed_pt/01" /></div><br/>
+                上の図で青い四角で囲った部分が編集可能な部分です。<br/>
+                1. の部分にその時間でのデイリーポイントおよびブースト使用値を記入します。<br/>
+                2. の部分に1位ポイント、2位ポイントおよび周回ラップを入力することで理論時速を算出します。<br/>
+                また、算出した理論時速と近い値を青く、時速が落ちている場合は赤く色分けして表示することができます。<br/>
+            </dd>
+            <dt>注意点</dt>
+            <dd>
+                <span class="strong">初回起動時に"マクロが無効にされました"と表示されるので、「コンテンツの有効化」を押してください。</span><br/>
+                二次配布はできません。また、入力が必要なセル以外の編集はできません(保護を行っております)。<br/>
+                その他詳細はReadme.txtをご確認ください。<br/>
+                このツールに関するバグ報告は、<a href="https://twitter.com/Kotachi_wiz/">@Kotachi_wiz</a>か<a href="https://twitter.com/arika_nekowiz/">@arika_nekowiz</a>に直接お問い合わせください。<br/>
+                (バグ報告欄に記入しないでください)
+            </dd>
+            <dt id="download">ダウンロード</dt>
+            <dd>
+                どちらからダウンロードしても内容は同一です。<br/><br/>
+                <a href="/bin/manage_pt/sheet_v20.zip"><div class="button">wiztools.net</div></a>
+                <a target="_blank" href="https://www.dropbox.com/s/wjlmiwze8sjghaq/%E9%AD%94%E9%81%93%E6%9D%AFPt%E7%AE%A1%E7%90%86%E3%82%B7%E3%83%BC%E3%83%88%E3%80%90v2.0%E3%80%91.zip?dl=0"><div class="button">Onedrive</div></a>
+
+                <!-- Adsense -->
+                <div class="Adsense">
+                    <!-- advertise -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-5156005489853976"
+                         data-ad-slot="6536828444"
+                         data-ad-format="auto"></ins>
+                    <script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <!-- Footer -->
+    <div id="Footer"></div>
+    <!-- Javascript -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/loader.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js"></script>
+</div>
+</body>
+</html>
