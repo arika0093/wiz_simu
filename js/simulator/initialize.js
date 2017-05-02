@@ -214,6 +214,9 @@ $(function () {
 				als.Now.pop();
 			}
 			// 潜在を反映させる
+			if(simQuest.disable_awake){
+				Field.log_push("【このクエストでは潜在能力の一部が制限されています】", "blue");
+			}
 			for (var p in als.Deck) {
 				var card = als.Deck[p];
 				var now = als.Now[p];

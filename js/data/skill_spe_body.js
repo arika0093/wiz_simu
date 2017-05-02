@@ -1375,6 +1375,26 @@ var SpCondSkill = {
 		}
 	},
 	// -----------------------------
+	// 自身が呪いかどうか
+	"ss_is_cursed_own": function (fld, oi, cobj, params) {
+		var a = params[0];
+		var b = params[1];
+		var now = fld.Allys.Now[oi];
+		var is_cursed = $.grep(now.turn_effect, function (e) {
+				return e.type == "curse";
+			}).length > 0;
+		if (is_cursed) {
+			return a;
+		}
+		return b;
+	},
+	"ss_is_cursed_own_skill": function (fld, oi, cobj, params) {
+		var scc_rst = this["ss_is_cursed_own"](fld, oi, cobj, params);
+		if (scc_rst) {
+			return ss_object_done(fld, oi, cobj.p1, true);
+		}
+	},
+	// -----------------------------
 	// 相手が毒かどうか
 	"ss_is_poison_enemy": function (fld, oi, cobj, params) {
 		var a = params[0];

@@ -6,24 +6,25 @@ function pickup_awakes(card, type, l_awakes) {
 		awakes = $.grep(open_awake_composite(card.Lawake), function (e) {
 			return e.type == type;
 		});
-		// L時発動の潜在結晶の分も足す
-		if (card.crystal && card.crystal.length > 0) {
-			var awakes_cr = $.grep(open_awake_composite(card.crystal), function (e) {
-				return e.type == type && e.is_legend;
-			});
-			awakes = awakes.concat(awakes_cr);
-		}
 	} else {
 		awakes = $.grep(open_awake_composite(card.awakes), function (e) {
 			return e.type == type;
 		});
-		// 潜在結晶の分も足す
-		if (card.crystal && card.crystal.length > 0) {
-			var awakes_cr = $.grep(open_awake_composite(card.crystal), function (e) {
-				return e.type == type && !e.is_legend;
-			});
-			awakes = awakes.concat(awakes_cr);
-		}
+	}
+	// 潜在結晶の分も足す
+	if (card.crystal && card.crystal.length > 0) {
+		var awakes_cr = $.grep(open_awake_composite(card.crystal), function (e) {
+			// L時指定ならis_legendがtrue, そうでないならis_legendがfalse
+			return e.type == type && ((e.is_legend && l_awakes) || (!e.is_legend && !l_awakes));
+		});
+		awakes = awakes.concat(awakes_cr);
+	}
+	// クエスト無効処置の分を除外する
+	var daw = Field.Quest.disable_awake
+	if(daw){
+		awakes = $.grep(awakes, function(e){
+			return !daw(e);
+		});
 	}
 	return awakes;
 }

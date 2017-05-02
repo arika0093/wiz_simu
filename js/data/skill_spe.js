@@ -1304,6 +1304,20 @@ function ss_is_poison_own(a, b) {
 }
 
 /**
+ * (条件系)自身が呪いの場合a,そうでない場合bを返す。
+ * a: 条件を満たした時の値。
+ * b: 条件を満たさなかった時の値。
+ **/
+function ss_is_cursed_own(a, b) {
+	return ss_condition({
+		name: "ss_is_cursed_own",
+		type: "is_abstate_own",
+		p1: a,
+		p2: b,
+	});
+}
+
+/**
  * (条件系)相手が毒の場合a,そうでない場合bを返す。
  * a: 条件を満たした時の値。
  * b: 条件を満たさなかった時の値。
@@ -1422,6 +1436,20 @@ function ss_hp_less_skill(r, ss) {
 function ss_is_poison_own_skill(ss) {
 	return ss_condition({
 		name: "ss_is_poison_own_skill",
+		type: "is_abstate_own",
+		p1: ss,
+		p2: null,
+		is_delay: true,
+	});
+}
+
+/**
+ * (条件実行系)自身が呪いの場合にスキルを実行する。
+ * ss: 条件を満たした時に発動するSS。
+ **/
+function ss_is_cursed_own_skill(ss) {
+	return ss_condition({
+		name: "ss_is_cursed_own_skill",
 		type: "is_abstate_own",
 		p1: ss,
 		p2: null,

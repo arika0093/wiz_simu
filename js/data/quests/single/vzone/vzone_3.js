@@ -4,6 +4,9 @@
    desc: "",
    overlap: false,
    aprnum: 4,
+   disable_awake: function(aw){
+      return aw.type == "status_up" && aw.desc.indexOf("属性") >= 0;
+   },
    data: [
       {
          appearance: [
