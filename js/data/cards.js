@@ -70278,7 +70278,7 @@ Cards = [{
 	},
 	ss1: {
 		desc: "<時限大魔術>スキル反射を無視し、4ターン後に敵単体へ水属性のダメージ(1000%)",
-		turn: 0,
+		turn: 2,
 		proc: [ss_damage_timebomb(10, [1], 1, 4), ss_ignore_skillcounter()],
 	},
 	awakes: [
@@ -70299,7 +70299,7 @@ Cards = [{
 	},
 	ss2: {
 		desc: "<時限大魔術>スキル反射を無視し、4ターン後に敵単体へ水属性のダメージ(2000%)",
-		turn: 0,
+		turn: 3,
 		proc: [ss_damage_timebomb(20, [1], 1, 4), ss_ignore_skillcounter()],
 	},
 	Lawake: [
