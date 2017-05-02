@@ -61,8 +61,9 @@ function sim_show() {
 		var now = Field.Allys.Now[i];
 		if (dec !== undefined) {
 			// 各種指定
-			$("#ally0" + (i + 1) + "_attr_main").attr("class", "attr_" + dec.attr[0]);
-			$("#ally0" + (i + 1) + "_attr_sub").attr("class", "attr_" + (dec.attr[1] != -1 ? dec.attr[1] : dec.attr[0]));
+			var attr0 = (dec.attr[0] != -1 ? dec.attr[0]+"" : "none");
+			$("#ally0" + (i + 1) + "_attr_main").attr("class", "attr_" + attr0);
+			$("#ally0" + (i + 1) + "_attr_sub").attr("class", "attr_" + (dec.attr[1] != -1 ? dec.attr[1] : attr0));
 			$("#ally0" + (i + 1) + "_img").attr("src", get_image_url(dec.imageno, dec.imageno_prefix));
 			$("#ally0" + (i + 1) + "_name").text(dec.name);
 			$("#ally0" + (i + 1) + "_status").text("HP: " + now.nowhp + "/" + now.maxhp + ", ATK: " + now.atk);
@@ -152,8 +153,9 @@ function sim_show() {
 		var e = enemys_dat[i];
 		if (e !== undefined) {
 			// 各種指定
-			$("#enemy0" + (i + 1) + "_attr_main").attr("class", "attr_" + e.attr);
-			$("#enemy0" + (i + 1) + "_attr_sub").attr("class", "attr_" + e.attr);
+			var eattr = (e.attr != -1 ? e.attr+"" : "none");
+			$("#enemy0" + (i + 1) + "_attr_main").attr("class", "attr_" + eattr);
+			$("#enemy0" + (i + 1) + "_attr_sub").attr("class", "attr_" + eattr);
 			$("#enemy0" + (i + 1) + "_img").attr("src", get_image_url(e.imageno, e.imageno_prefix));
 			$("#enemy0" + (i + 1) + "_name").text(e.name);
 			$("#enemy0" + (i + 1) + "_hp").text("HP: " + e.nowhp + "/" + e.hp);
