@@ -172,8 +172,12 @@ function heal_ally(fld, value, index) {
 
 // 属性有利係数を返す
 function attr_magnification(atk_atr, def_atr) {
+	// 無属性を含む
+	if(atk_atr == -1 || def_atr == -1){
+		return 1;
+	}
 	// 両方とも火水雷
-	if (atk_atr <= 2 && def_atr <= 2) {
+	else if (atk_atr <= 2 && def_atr <= 2) {
 		var magn = [1, 1.5, 0.5];
 		return magn[(atk_atr - def_atr + 3)%3];
 	}

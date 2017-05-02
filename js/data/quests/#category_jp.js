@@ -189,6 +189,11 @@ category_jp = {
 		is_dispsim: true,
 		sim_index: 40,
 	},
+   "vzone": {
+		jp: "VOID ZONE",
+		is_dispsim: true,
+		sim_index: 11,
+	},
     "burningtower": {
 		jp: "バーニングタワー",
 		is_dispsim: true,
@@ -198,7 +203,7 @@ category_jp = {
     "material": {
 		jp: "素材クエスト",
 		is_dispsim: true,
-		sim_index: 10,
+		sim_index: 30,
 	},
     "normal": {
 		jp: "ノーマルクエスト",
