@@ -70549,7 +70549,7 @@ Cards = [{
 	is_dist: true,
 	ape: "覇眼戦線3",
 	as1: {
-		desc: "<属性の加護・パネル色数攻撃>デッキの属性の数だけダメージアップ(効果値:150)、パネルが2色でダメージアップ(効果値:200)、3色でさらにアップ(効果値:200)",
+		desc: "<属性の加護・パネル色数攻撃>デッキの属性の数だけダメージアップ(250%)、パネルが2色でダメージアップ(200%)、3色でさらにアップ(200%)",
 		proc: [ChainDeckAttrsAttack(2.5, 4.0, 5.5, 0),add_cond(ChainDeckAttrsAttack(4.5, 6.0, 7.5, 0), as_panel_over2()),add_cond(ChainDeckAttrsAttack(6.5, 8.0, 9.5, 0), as_panel_over3())],
 	},
 	ss1: {
@@ -70558,8 +70558,8 @@ Cards = [{
 		proc: [ss_panel_change([1,1,1,0,0])],
 	},
 	as2: {
-		desc: "<属性の加護・パネル色数攻撃>デッキの属性の数だけダメージアップ(効果値:200)、パネルが2色でダメージアップ(効果値:300)、3色でさらにアップ(効果値:200)",
-		proc: [ChainDeckAttrsAttack(3.0, 5.0, 7.0, 0),add_cond(ChainDeckAttrsAttack(5.0, 7.0, 9.0, 0), as_panel_over2()),add_cond(ChainDeckAttrsAttack(7.0, 9.0, 11.0, 0), as_panel_over3())],
+		desc: "<属性の加護・パネル色数攻撃>デッキの属性の数だけダメージアップ(300%)、パネルが2色でダメージアップ(300%)、3色でさらにアップ(200%)",
+		proc: [ChainDeckAttrsAttack(3.0, 5.0, 7.0, 0),add_cond(ChainDeckAttrsAttack(6.0, 8.0, 10.0, 0), as_panel_over2()),add_cond(ChainDeckAttrsAttack(8.0, 10.0, 12.0, 0), as_panel_over3())],
 	},
 	ss2: {
 		desc: "<パネル変換>ジャンルパネルをALL属性化",
