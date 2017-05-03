@@ -20550,9 +20550,9 @@ Cards = [{
 		proc: [ChainDualAttrAttack(3.0, 0, 3, [0,0,1,0,0]), add_cond(ChainDualAttrAttack(4.5, 0, 3, [0,0,1,0,0]), when_hp_more(0.80))],
 	},
 	ss1: {
-		desc: "<特効大魔術>敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(100%/300%)",
+		desc: "<特効大魔術>敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(100%/300%)",
 		turn: 4,
-		proc: [ss_damage_s(special_attr([0,0,1,0,0], 3.0, 1.0), [0], 1)],
+		proc: [ss_damage_all(special_attr([0,0,1,0,0], 3.0, 1.0), [0])],
 	},
 	awakes: [
 		Statusup(200,0),
@@ -20571,9 +20571,9 @@ Cards = [{
 		proc: [ChainDualAttrAttack(4.0, 0, 3, [0,0,1,0,0]), add_cond(ChainDualAttrAttack(5.5, 0, 3, [0,0,1,0,0]), when_hp_more(0.80))],
 	},
 	ss2: {
-		desc: "<特効大魔術>敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(200%/500%)",
+		desc: "<特効大魔術>敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(200%/500%)",
 		turn: 6,
-		proc: [ss_damage_s(special_attr([0,0,1,0,0], 5.0, 2.0), [0], 1)],
+		proc: [ss_damage_all(special_attr([0,0,1,0,0], 5.0, 2.0), [0])],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -68482,7 +68482,7 @@ Cards = [{
 	ss1: {
 		desc: "<反動大魔術>スキル反射を無視し、敵全体へ雷属性のダメージ(650%) ◆スキル使用後、1ターン封印状態に",
 		turn: 4,
-		proc: [ss_damage_all(6.5, [2]), ss_allsealed_own(1)],
+		proc: [ss_damage_all(6.5, [2]), ss_allsealed_own(1), ss_ignore_skillcounter()],
 	},
 	as2: {
 		desc: "<属性特効>水属性の敵単体へ特効ダメージ、パネルの色が増す度さらにアップ(450%/600%/700%)",
@@ -68491,7 +68491,7 @@ Cards = [{
 	ss2: {
 		desc: "<反動大魔術>スキル反射を無視し、敵全体へ雷属性のダメージ(850%) ◆スキル使用後、1ターン封印状態に",
 		turn: 6,
-		proc: [ss_damage_all(8.5, [2]), ss_allsealed_own(1)],
+		proc: [ss_damage_all(8.5, [2]), ss_allsealed_own(1), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
