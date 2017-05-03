@@ -731,7 +731,7 @@ function damage_block_own(bl, t) {
 			priority: 1,
 			effect: function () { },
 			on_damage: function (fld, dmg, attr) {
-				if (dmg >= bl) {
+				if (dmg >= bl || attr == -1) {
 					return dmg;
 				} else {
 					return 0;

@@ -1002,6 +1002,10 @@ var SpSkill = {
 			if (now.nowhp <= 0 && attr[cd.attr[0]]) {
 				now.nowhp = Math.min((now.maxhp * rate), now.maxhp);
 				now.nowhp = Math.round(now.nowhp);
+				// 復活時にLなら死亡時解除の潜在を再適用
+				if(is_legendmode(fld.Allys.Deck, fld.Allys.Now, n)){
+					add_awake_ally(Field.Allys.Deck, Field.Allys.Now, index, true);
+				}
 			}
 		}
 		fld.log_push("Unit[" + (i + 1) + "]: 蘇生(" + (rate * 100) + "%)");

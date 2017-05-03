@@ -110,6 +110,7 @@ function calculate_damage(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is
 
 // 味方にダメージを与える
 function damage_ally(dmg, index, neft_check) {
+	var card = Field.Allys.Deck[index];
 	var now = Field.Allys.Now[index];
 	var bef = now.nowhp;
 	var aft = Math.floor(bef - dmg);
@@ -138,6 +139,10 @@ function damage_ally(dmg, index, neft_check) {
 	// HPが0なら全効果を消す
 	if (now.nowhp <= 0) {
 		turneff_allbreak(now.turn_effect, index, "dead");
+		// L時ならL潜在も消す
+		if(is_legendmode(card, now)){
+			minus_legend_awake(Field.Allys.Deck, Field.Allys.Now, index);
+		}
 	}
 }
 
