@@ -20,11 +20,13 @@ function pickup_awakes(card, type, l_awakes) {
 		awakes = awakes.concat(awakes_cr);
 	}
 	// クエスト無効処置の分を除外する
-	var daw = Field.Quest.disable_awake
-	if(daw){
-		awakes = $.grep(awakes, function(e){
-			return !daw(e);
-		});
+	if(typeof(Field) != "undefined"){
+		var daw = Field.Quest.disable_awake
+		if(daw){
+			awakes = $.grep(awakes, function(e){
+				return !daw(e);
+			});
+		}
 	}
 	return awakes;
 }
