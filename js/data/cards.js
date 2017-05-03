@@ -55117,7 +55117,7 @@ Cards = [{
 	ss2: {
 		desc: "敵全体のカウンターを解除し、雷属性のダメージ(300%)。HP20%以下でさらにスキル反射を解除し、ダメージアップ(900%)",
 		turn: 7,
-		proc: [ss_break_attackcounter("all"), ss_damage_all(ss_hp_less(0.20, 9.0, 3.0), ss_hp_less_skill(0.2, ss_break_skillcounter("all")))],
+		proc: [ss_break_attackcounter("all"), ss_damage_all(ss_hp_less(0.20, 9.0, 3.0),[2]), ss_hp_less_skill(0.2, ss_break_skillcounter("all"))],
 	},
 }, {
 	name: "聖 シャイア・フラクタル",
@@ -70623,7 +70623,7 @@ Cards = [{
 	ss2: {
 		desc: "<効果解除大魔術>スキル反射を無視し、敵全体のカウンターを解除し、水属性のダメージ(効果値:300)。HP20%以下でさらにスキル反射を解除し、ダメージアップ(効果値:600)",
 		turn: 8,
-		proc: [ss_break_attackcounter("all"), ss_damage_all(ss_hp_less(0.20, 6.0, 3.0), [2]), ss_ignore_skillcounter(), ss_hp_less_skill(0.2, ss_break_skillcounter("all")))],
+		proc: [ss_break_attackcounter("all"), ss_damage_all(ss_hp_less(0.20, 6.0, 3.0), [2]), ss_ignore_skillcounter(), ss_hp_less_skill(0.2, ss_break_skillcounter("all"))],
 	},
 	Lawake: [
 		Statusup(0,500),
