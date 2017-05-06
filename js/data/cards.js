@@ -70868,6 +70868,7 @@ Cards = [{
 	cost: 52,
 	attr: [0,1],
 	species: [8],
+	alias: ["白猫"],
 	islegend: true,
 	is_dist: true,
 	as1: {
