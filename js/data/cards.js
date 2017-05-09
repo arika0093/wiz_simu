@@ -70715,7 +70715,7 @@ Cards = [{
 	],
 },{
 	name: "アリオテス親衛 メンジャル・アンフ",
-	cardno: 8247,
+	cardno: 8248,
 	imageno: 10388,
 	hp: 2043,
 	atk: 3005,
@@ -70735,6 +70735,16 @@ Cards = [{
 		proc: [ss_damage_all(1.2, [0, 1]), ss_ignore_skillcounter()],
 	},
 	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(200,0),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(100,0,[1,0,0,0,0,]),
+		Attr_statusup(0,100,[1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,1,0,0,0,]),
 	],
 },{
 	name: "精神治療の達人 ドゥパン・ギギライ",
