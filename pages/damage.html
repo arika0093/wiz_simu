@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px) and (max-width: 1099px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default_bg.css" media="screen and (min-width: 1100px)" />
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <!-- Search -->
+    <meta name="robots" content="all" />
+    <meta name="keywords" content="黒猫,ウィズ,魔法使いと黒猫のウィズ,シミュレーター,シミュ,トーナメント,ダメージ計算式,攻撃順序" />
+    <meta name="description" content="「魔法使いと黒猫のウィズ」のダメージ計算式および攻撃順序について記載しています。" />
+    <!-- About Page -->
+    <title>ダメージ計算式/自動ターゲッティングの仕様 - WizTools</title>
+    <style type="text/css">
+        dd{
+            line-height: 2.9ex;
+        }
+        div.inner{
+            border: 1px solid #888;
+            border-radius: 3px;
+            background: #EFF;
+            font-style: italic;
+            padding: 1ex;
+            margin: 1ex 0;
+        }
+        div.i_small{
+            font-size: smaller;
+        }
+        div.i_exam{
+            background: #F0F0F0;
+        }
+        span.number{
+            background: #FFEEDD;
+        }
+        span.dotunder{
+            border-bottom: 1px dashed #444;
+        }
+
+        label.tgl_label{
+            color: #0026ff;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        label.tgl_label:hover{
+            font-weight: bold;
+        }
+        input.tgl{
+            display: none;
+        }
+        .tgl_hidden {
+            transition: 0.2s;
+            height: 0;
+            overflow: hidden;
+            padding: 0 10px;
+        }
+        input#toggle:checked + .tgl_hidden {
+            height: auto;
+            padding: 0 10px 10px 10px;
+            background: #fff;
+        }
+
+    </style>
+</head>
+<body>
+<div id='Top'></div>
+<div id="wrap">
+    <!-- Header -->
+    <div id="Header"></div>
+
+    <!-- Main Contents -->
+    <div class="Main">
+        <dl class="List">
+            <dt id="00">ダメージ計算式とややこしい攻撃順について</dt>
+            <dd>
+                シミュレーターを普通に使うぶんには気にしなくても、仕組みぐらいは知っていてもいいと思います。<br/>
+                基本的に、以下の内容に添ってシミュレーターの挙動は実装されています。<br/>
+                <div class="linklist">
+                    <a href="#01">ダメージ計算式(AS)</a>
+                    <a href="#02">ダメージ計算式(SS)</a>
+                    <a href="#03">精霊の攻撃順序</a>
+                    <a href="#04">自動ターゲッティング(基本)</a>
+                    <a href="#05">自動ターゲッティング(例外)</a>
+                    <a href="#06">細かい話</a>
+                </div>
+                <!-- Adsense -->
+                <div class="Adsense">
+                    <!-- advertise -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-5156005489853976"
+                         data-ad-slot="6536828444"
+                         data-ad-format="auto"></ins>
+                    <script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </dd>
+
+            <dt id="01">ダメージ計算式(AS)</dt>
+            <dd>
+                わざわざASと銘打ってるのは、ASの場合とSSの場合で計算式が違うためです。<br/>
+                その計算式は、以下のようになります(AS)。
+                <div class="inner">
+                    damage = 0.5 × 攻撃力 × 攻撃倍率 × (1 + チェイン×0.01) × パネル補正 × 属性相性 × 補正値 × 乱数
+                </div>
+                各項目について補足すると、<br/>
+                ・攻撃力　　： 精霊の攻撃力です。デッキ画面や精霊ステータス画面で「攻撃」と書いてある数字です。<br/>
+                ・攻撃倍率　： ASの威力です。エンハンスやブーストなどの値はここに足されます。<br/>
+                ・チェイン　： 解答後のチェイン数を参照します。チェイン数が大きいと無視できなくなってきます。<br/>
+                ・パネル補正： 攻撃色とパネルの色が一致しない場合<span class="number">×0.5</span>します(副属性での攻撃時など)。<br/>
+                ・属性相性　： 有利属性相手なら<span class="number">×1.5</span>、不利属性相手なら<span class="number">×0.5</span>をかけます。<br/>
+                ・補正値　　： 潜在(結晶)による倍率補正をかけます。アドヴェリタスの<span class="number">×1.2</span>などがここです。<br/>
+                ・乱数　　　： <span class="number">0.9</span>～<span class="number">1.1</span>までの値を<b>連続に</b>とります。ログ表記では小数点三桁以降を省略しています。<br/>
+                <br/>
+                具体例をあげて説明すると、キュウマ(水属性, 攻撃力6535, 1.1倍潜在発動中)がASを発動(倍率6.0)させて同属性の敵を攻撃した時、主属性の与えるダメージは
+                <div class="inner i_small i_exam">
+                    攻撃力(6535/2) * 倍率(6+0+0) * チェイン(1.01) * パネル(1) * 属性相性(1) * 補正値(1.1) * 乱数(0.97) = ダメージ(21044)
+                </div>
+                となります。この計算はシミュレーターの「ログ」→「ダメージ計算」で確認できます。
+            </dd>
+
+            <dt id="02">ダメージ計算式(SS)</dt>
+            <dd>
+                さて、SSの場合のダメージ計算式ですが、ASの場合と殆ど同じです（<span class="number">0.5</span>倍がなくなっているだけ）。
+                <div class="inner">
+                    damage = 攻撃力 × 攻撃倍率 × (1 + チェイン×0.01) × パネル補正 × 属性相性 × 補正値 × 乱数
+                </div>
+                ちなみにカウンターでのダメージ量はこの式で計算します。そのため、少ない効果値でも実際には大きなダメージが与えられるのです。
+            </dd>
+
+            <dt id="03">精霊の攻撃順序</dt>
+            <dd>
+                これで攻撃ダメージ量は判明しました。さて、次はどの順番で攻撃するかです。<br/>
+                完全に解明されたわけではないものの、有志の検証から以下のような順番で攻撃するのだろうと言われています。<br/>
+                <div class="inner">
+                    A(主)→B(主)→A(副)→C(主)→B(副)→D(主)→……
+                </div>
+                ここで、A,B,C,...は精霊(デッキの左から順番に)、主副は<span class="dotunder" title="正確には、踏んだパネルに含まれる属性から攻撃する。もちろん主副両方の属性が含まれていれば主属性から攻撃する">攻撃属性</span>を表しています。<br/>
+                ここに連撃が絡むと少し面倒なことになりますが、基本は同じです。<br/>
+                <div class="inner">
+                    A(主1)→B(主)→A(主2)→C(主)→B(副)→A(副1)→……
+                </div>
+                簡単に把握する方法として、<a href="/image/pages/attack_order.gif" target="_blank">このgif動画(別タブで開きます)</a>のような方法があります。<br/>
+                <span class="secretly">各s,p,d,f軌道に電子が入る順番と同じような感じです。と書けば一部の人には明快に理解してもらえるはず。</span>
+            </dd>
+
+            <dt id="04">自動ターゲッティング(基本)</dt>
+            <dd>
+                攻撃順が分かって、ダメージ量も計算可能。これなら完璧！ いや、まだ早い。<br/>
+                最後にして最大の関門、「どの敵を攻撃するか」という問題が残っています(手動でターゲッティングしない場合)。<br/>
+                といっても、こんなページをわざわざ見に来る皆さんならある程度は察しがついているでしょう。<br/>
+                というわけで、答え合わせ(？)をしましょう。以下の順番で優先順位が決定されます。<br/>
+                <div class="inner">
+                    属性有利 → 待機ターンが短い → 最小HP → (左側優先)
+                </div>
+                いくつか具体例を出して説明しましょう。<br/>
+                ・水属性で攻撃する時は、火属性を優先して狙います。待機10の火と待機1の雷が相手の時でも、火を狙いに行きます。<br/>
+                ・待機ターンが交互に1になる場合では、律儀にその時その時で待機1の方を狙います。<br/>
+                ・同じ属性、同じ待機ターンの場合は最小HPを優先します。ボス戦とかで特に意識しないと見ることになることが多いです。<br/>
+                以上。結構明確なルールです。
+            </dd>
+
+            <dt id="05">自動ターゲッティング(例外)</dt>
+            <dd>
+                ……と、ここまでの話で済めばよかったのですが、実はもう一つ<span class="secretly">余計な</span>判定条件があります。<br/>
+                先ほどの優先順位で意図的に一つ省いた項目があります。それを省略せずに書くとこうなります。<br/>
+                <div class="inner">
+                    <b>ワンパン判定</b> → 属性有利 → 待機ターンが短い → 最小HP → (左側優先)
+                </div>
+                要は、一撃で倒せそうならば自動でそちらに攻撃を向けるというものです。
+                <span class="secretly">攻撃ダメージに乱数がある以上こういった<span class="dotunder" title="最高乱数を引くとワンパン圏内に入るが、最低乱数だとワンパン圏内に入らない場合など。こうした場合、同じ状況にもかかわらず攻撃する敵が異なるといった問題が発生する">冗長な運要素</span>を入れないで欲しいのですが…</span><br/>
+                さらに困ったことに、このワンパン判定には<span class="strong">計算式上の問題点があります</span>。すなわち<br/>
+                <div class="inner i_exam">
+                    1．パネル補正を考慮しない（常に<span class="number">×1</span>として計算する）<br/>
+                    2．ダメージ倍率潜在(前述の[補正値]に相当)を考慮しない<br/>
+                    3．敵のガード、ダメージブロック、鉄壁、属性吸収などを考慮しない<br/>
+                </div>
+                といった類です。
+                1.については、特に副属性での攻撃で問題になります。2や3も、本来与えるダメージの最低値と異なる計算結果を導いてしまう材料です。<br/>
+                この判定条件のおかげで、<a href="https://twitter.com/macha0923/status/862730211925696512" target="_blank">トップランカーの痛切な叫びを見ることが出来たり</a>、
+                <a href="https://twitter.com/aniki_ww2525/status/779747045812731904" target="_blank">最低乱数指定でシミュでは倒せたのに実機だと倒せないと報告が入ったり</a>するわけです。<span class="secretly">勘弁してほしい。</span>
+            </dd>
+
+            <dt id="06">細かい話</dt>
+            <dd>
+                <dl class="desctable">
+                    <dt>高ダメージを出すための結晶選択</dt>
+                    <dd>
+                        まずはAS/SSの計算式をある程度頭にいれましょう。<br/>
+                        その後、ステアップは攻撃力に、エンハンス/ブーストは攻撃倍率に作用するということを思い出します。<br/>
+                        すると、「攻撃力が高いなら倍率をあげた方が打点が上がりやすい」「倍率が非常に高いなら攻撃力を上げたほうがいい」というのがわかるかと思います。<br/>
+                        こういった情報を元に最適な結晶を選んでいきます。<br/>
+                        例えば、HP20%以下の<a href="/search/detail/?id=8164">新人王ミルドレッド</a>なら、最適結晶は「アドヴェリタス/ゾラスウィルグ」になります。<br/>
+                        大魔術+200%結晶は、素の倍率が高すぎる(1650%)ためあまり恩恵がないのです。
+                    </dd>
+                    <dt>アドヴェリタス結晶 + アドヴェリ潜在</dt>
+                    <dd>
+                        1.1*1.2=<span class="number">1.32倍</span>ということはなく、小数点以下の和をとって<span class="number">1.3倍</span>になります。
+                    </dd>
+                    <dt>副属性持ち精霊の攻撃順序</dt>
+                    <dd>
+                        例えば主:火/副:水の精霊(UGエッタなど)がいる時に水パネルを踏んだ時は、水パネルから攻撃します。
+                    </dd>
+                </dl>
+            </dd>
+        </dl>
+    </div>
+
+    <!-- Footer -->
+    <div id="Footer"></div>
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js"></script>
+</div>
+</body>
+</html>

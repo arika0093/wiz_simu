@@ -95,24 +95,6 @@ var Awake_crystal_lists = [{
 	param2: Statusup(-1000, 0),
 	param3: Awake_damage_multiple(1.2),
 }, {
-	name: "絆の結晶〈ゾラスヴィルク〉(L時ATK+1000,被ダメUP回復×)",
-	imple: Awake_composite,
-	param2: function () {
-		var dm = Awake_dragonmode(1000, 1.3);
-		dm.proc[0].is_legend = true;
-		return dm.proc[0];
-	}(),
-	param3: function () {
-		var dm = Awake_dragonmode(1000, 1.3);
-		dm.proc[1].is_legend = true;
-		return dm.proc[1];
-	}(),
-	param4: function () {
-		var dm = Awake_dragonmode(1000, 1.3);
-		dm.proc[2].is_legend = true;
-		return dm.proc[2];
-	}(),
-}, {
 	genre: "ステータス変動(味方全体)",
 	name: "インフローレ(戦士ATK+200)",
 	imple: Awake_composite,
@@ -225,6 +207,24 @@ var Awake_crystal_lists = [{
 		up_atk: 500,
 		is_legend: true,
 	},
+}, {
+	name: "絆の結晶〈ゾラスヴィルク〉(L時ATK+1000,被ダメUP回復×)",
+	imple: Awake_composite,
+	param2: function () {
+		var dm = Awake_dragonmode(1000, 1.3);
+		dm.proc[0].is_legend = true;
+		return dm.proc[0];
+	}(),
+	param3: function () {
+		var dm = Awake_dragonmode(1000, 1.3);
+		dm.proc[1].is_legend = true;
+		return dm.proc[1];
+	}(),
+	param4: function () {
+		var dm = Awake_dragonmode(1000, 1.3);
+		dm.proc[2].is_legend = true;
+		return dm.proc[2];
+	}(),
 }, {
 	name: "愛が響く結晶〈初音ミク〉(L時戦後回復)",
 	imple: Awake_composite,
