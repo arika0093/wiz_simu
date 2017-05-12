@@ -70396,7 +70396,7 @@ Cards = [{
 	ss2: {
 		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める。HP20%以下でさらに5早める。",
 		turn: 9,
-		proc: [ss_skillboost(ss_hp_less(0.2, 5, 2))],
+		proc: [ss_skillboost(ss_hp_less(0.2, 7, 2))],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [0,1,0,0,0,]),
