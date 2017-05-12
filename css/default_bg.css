@@ -717,7 +717,7 @@ input{
 }
 
 /* Icon define */
-li#mn_simulator{
+li#mn_simulator, li#mn_hpcalc{
 	background-image: url("/image/tlicon/simulator.png") !important;
 }
 li#mn_search{
@@ -733,7 +733,7 @@ li#mn_check{
 	background-size: 28px !important;
 	background-position: 16px 6px !important;
 }
-li#mn_chart{
+li#mn_chart, li#mn_ptchart{
 	background-image: url("/image/tlicon/chart.png") !important;
 }
 li#mn_timer{
