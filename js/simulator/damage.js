@@ -5,7 +5,7 @@
 function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num) {
 	var bef_hp = enemy.nowhp;
 	// ダメージ計算
-	var d_dat = calculate_damage(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num);
+	var d_dat = calculate_damage(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num, false);
 	var d = d_dat.damage;
 	var bef_ond = d;
 
@@ -66,7 +66,8 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 //	enemy: 敵データ, now: 自身のデータ, atk_atr: 攻撃属性,
 //	rate: 倍率, atkn: 攻撃回数, pn: 踏んだパネル, ch: チェイン数, rnd: 乱数, 
 //	i: 味方の番号, e: 敵の番号, is_ss: SSかどうか, var_num: 分散対象数(未指定なら通常)
-function calculate_damage(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num) {
+//	is_simulate: 敵ワンパン判定時のみtrue(潜在補正/ガードを無視)
+function calculate_damage(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num, is_simulate) {
 	var d = 0;
 	// エンハ
 	var as_enh = now.as_enhance ? Number(now.as_enhance.toFixed(2)) : 0;
@@ -75,7 +76,7 @@ function calculate_damage(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is
 	var rfm_enh = now.ss_reinforcement_atk ? Number(now.ss_reinforcement_atk.toFixed(2)) : 0;
 	// 最終補正値
 	var card = Field.Allys.Deck[i];
-	var lst_multi = Awake_get_multiple(card, now);
+	var lst_multi = (!is_simulate ? Awake_get_multiple(card, now) : 1);
 	// 攻撃力
 	d = now.atk / (!is_ss ? 2 : 1);
 	// AS倍率、エンハ
@@ -236,11 +237,11 @@ function auto_attack_order(fld, enemys, attr, own_index, obj_tg) {
 			// 死にかけなら優先度最高: 敵aについて比較
 			var a_idx = enemys.indexOf(a);
 			var a_as = obj_tg.as_list[obj_tg.as_pos[a_idx]];
-			var a_dmg = calculate_damage(a, obj_tg.now, attr, a_as.rate, a_as.atkn, [0,1,2,3,4], obj_tg.chain, 0.9, own_index, a_idx, false, 1).damage;
+			var a_dmg = calculate_damage(a, obj_tg.now, attr, a_as.rate, a_as.atkn, [0,1,2,3,4], obj_tg.chain, 0.9, own_index, a_idx, false, 1, true).damage;
 			// 死にかけなら優先度最高: 敵bについて比較
 			var b_idx = enemys.indexOf(b);
 			var b_as = obj_tg.as_list[obj_tg.as_pos[b_idx]];
-			var b_dmg = calculate_damage(b, obj_tg.now, attr, b_as.rate, b_as.atkn, [0,1,2,3,4], obj_tg.chain, 0.9, own_index, b_idx, false, 1).damage;
+			var b_dmg = calculate_damage(b, obj_tg.now, attr, b_as.rate, b_as.atkn, [0,1,2,3,4], obj_tg.chain, 0.9, own_index, b_idx, false, 1, true).damage;
 			if (!(a.nowhp <= a_dmg && b.nowhp <= b_dmg)) {
 				if (a.nowhp <= a_dmg) { return -1; }
 				if (b.nowhp <= b_dmg) { return +1; }
