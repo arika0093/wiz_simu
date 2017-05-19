@@ -551,28 +551,28 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown) {
 							return teff.iscursebreak;
 						}, "cursebreak");
 						// HP低下
-						nowtg.maxhp = Math.max(-hpdown + nowtg.maxhp, 1);
-						nowtg.nowhp = Math.min(nowtg.nowhp, nowtg.maxhp);
+						nowtg.upval_hp -= hpdown;
+						nowtg.maxhp = Math.max(nowtg.def_awhp + nowtg.upval_hp, 1);
+						nowtg.nowhp = Math.min(nowtg.maxhp, nowtg.nowhp);
 						// ATK低下
 						if (atkdown) {
-							nowtg.atk = Math.max(-atkdown + nowtg.atk, 1);
+							nowtg.upval_atk -= atkdown;
+							nowtg.atk = Math.max(nowtg.def_awatk + nowtg.upval_atk, 0);
 						}
 						// エンハ効果値解除
 						now.ss_enhance = 0;
 						now.ss_boost_enhance = 0;
 						now.ss_reinforcement_atk = 0;
 					}
-					else if (state == "end" || state == "overlay") {
-						nowtg.maxhp += hpdown;
-						nowtg.nowhp = Math.min(nowtg.nowhp + hpdown, nowtg.maxhp);
-						if (atkdown) {
-							nowtg.atk += atkdown;
+					else if (state == "end" || state == "overlay" | state == "dead") {
+						nowtg.upval_hp += hpdown;
+						nowtg.maxhp = Math.max(nowtg.def_awhp + nowtg.upval_hp, 1);
+						if(state != "dead"){
+							nowtg.nowhp = Math.min(nowtg.maxhp, nowtg.nowhp + hpdown);
 						}
-					}
-					else if (state == "dead") {
-						nowtg.maxhp += hpdown;
 						if (atkdown) {
-							nowtg.atk += atkdown;
+							nowtg.upval_atk += atkdown;
+							nowtg.atk = Math.max(nowtg.def_awatk + nowtg.upval_atk, 0);
 						}
 					}
 				},

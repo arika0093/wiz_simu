@@ -60,6 +60,8 @@ var Field = {
 		continue_eff: [],
 		// 最後に使用したSS
 		latest_ss: null,
+		// ステアップの上限値保存
+		statusup_max: [2000, 2000],
 		// 助っ人関連
 		is_helper: false,		// 助っ人が存在するかどうか
 		is_hlpchanged: false,	// 助っ人と交代済であるか
@@ -187,6 +189,8 @@ $(function () {
 				now.maxhp = card.hp + mana;
 				now.nowhp = card.hp + mana;
 				now.atk = card.atk + mana;
+				now.def_hp = now.maxhp;	// 初期状態のHP(マナ込み)
+				now.def_atk = now.atk;	// 初期状態のATK(マナ込み)
 				now.target = [];
 				now.flags = {};
 				now.flags.skill_counter = [];
@@ -225,6 +229,14 @@ $(function () {
 					// 0tレジェンド精霊用(助っ人にはチェックを通さない)
 					legend_timing_check(als.Deck, als.Now, p);
 				}
+			}
+			// 潜在反映HP/ATK保存
+			for (var p in als.Deck) {
+				var now = als.Now[p];
+				now.def_awhp = now.maxhp;
+				now.def_awatk = now.atk;
+				now.upval_hp = 0;
+				now.upval_atk = 0;
 			}
 			// チェインブースト処理(助っ人は含めないので上と別処理)
 			var dck = als.Deck;

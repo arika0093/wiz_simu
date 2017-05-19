@@ -626,11 +626,17 @@ var SpSkill = {
 	// -----------------------------
 	// ステアップ
 	"ss_statusup": function (fld, n, cobj, params) {
-		var up_limit = params[1];
+		// ステアップの上限値をfield.status.statusup_maxにセット
+		{
+			var stmax = fld.Status.statusup_max;
+			stmax[0] = Math.max(stmax[0], params[1][0]);
+			stmax[1] = Math.max(stmax[1], params[1][1]);
+		}
 		var t = params[2];
 		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var up_arrs = $.extend(true, {}, params[0]);
+			var up_limit = fld.Status.statusup_max;
 			var now = nows[i];
 			if (now.nowhp <= 0) { continue; }
 			// 既にかかってるステアップの値を取得する
@@ -658,21 +664,23 @@ var SpSkill = {
 				effect: function (f, oi, teff, state) {
 					var nowtg = f.Allys.Now[oi];
 					if (state == "first") {
-						nowtg.maxhp = Math.max(teff.up_hp + nowtg.maxhp, 1);
-						nowtg.atk = Math.max(teff.up_atk + nowtg.atk, 0);
+						// 上昇値にステアップ影響分を追加
+						nowtg.upval_hp += teff.up_hp;
+						nowtg.upval_atk += teff.up_atk;
+						nowtg.maxhp = Math.max(nowtg.def_awhp + nowtg.upval_hp, 1);
 						nowtg.nowhp = Math.min(nowtg.nowhp + Math.max(params[0][0], teff.up_hp, 0), nowtg.maxhp);
+						nowtg.atk = Math.max(nowtg.def_awatk + nowtg.upval_atk, 0);
+						// iconset
 						teff.icon = (teff.up_hp > 0 ? "statusup" : teff.up_hp < 0 ? "statusdown" : null);
 						teff.subicon = (teff.up_atk > 0 ? "statusup_atk" : teff.up_atk < 0 ? "statusdown_atk" : null);
 					}
-					else if (state == "end" || state == "dead") {
-						nowtg.maxhp = Math.max(nowtg.maxhp - teff.up_hp, 1);
-						nowtg.nowhp = Math.min(nowtg.nowhp, nowtg.maxhp);
-						nowtg.atk -= teff.up_atk;
-					}
-					else if (state == "overlay" || state == "cursebreak") {
-						nowtg.maxhp = Math.max(nowtg.maxhp - teff.up_hp, 1);
-						nowtg.nowhp = Math.min(Math.max(nowtg.nowhp, 1), nowtg.maxhp);
-						nowtg.atk -= teff.up_atk;
+					else if (state == "end" || state == "dead" | state == "overlay" || state == "cursebreak") {
+						// ステアップ影響分を引く
+						nowtg.upval_hp -= teff.up_hp;
+						nowtg.upval_atk -= teff.up_atk;
+						nowtg.maxhp = Math.max(nowtg.def_awhp + nowtg.upval_hp, 1);
+						nowtg.nowhp = Math.min(nowtg.maxhp, nowtg.nowhp);
+						nowtg.atk = Math.max(nowtg.def_awatk + nowtg.upval_atk, 0);
 					}
 				},
 			});
