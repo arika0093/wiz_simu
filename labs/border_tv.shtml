@@ -5,11 +5,11 @@
 
 </head>
 <body>
-	<input id=nowpt type="number" placeholder="現在のボーダーpt"></input><br/>
-	<input id=starttm type="text" placeholder="開始からの時間を入力"></input>
-	<input id=date type="number" value="0" placeholder="開始からの日数を入力"></input>
+<input id=nowpt type="number" placeholder="現在のボーダーpt"/><br/>
+    <input id=starttm type="text" placeholder="開始からの時間を入力"/>
+    <input id=date type="number" value="0" placeholder="開始からの日数を入力"/>
 	<button onclick="calc_border()">calc</button><br/>
-	<input id=result type="text" readonly placeholder="理論ボーダー"></input>
+    <input id=result type="text" readonly placeholder="理論ボーダー"/>
 
 
 
