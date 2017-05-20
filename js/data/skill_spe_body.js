@@ -433,6 +433,7 @@ var SpSkill = {
 					isreinforce: isreinforce,
 					turn: t,
 					lim_turn: t,
+					target_attr: attr,
 					effect: function (f, oi, teff, state) {
 						if (state == "first") {
 							if (teff.isreinforce) {
@@ -441,7 +442,7 @@ var SpSkill = {
 								f.Allys.Now[oi].ss_enhance = rate;
 							}
 						}
-						if (state == "end" || state == "dead" || state == "cursebreak") {
+						if (state == "end" || state == "dead" || state == "break") {
 							if (teff.isreinforce) {
 								f.Allys.Now[oi].ss_reinforcement_atk = 0;
 							} else {
@@ -497,6 +498,8 @@ var SpSkill = {
 					turn: t,
 					lim_turn: t,
 					up_rate: rate,
+					target_attr: attr,
+					target_sattr: (rate == s_r ? s_attr : [1,1,1,1,1]),
 					effect: function (f, oi, teff, state) {
 						if (state == "first") {
 							if (teff.isreinforce) {
@@ -505,7 +508,7 @@ var SpSkill = {
 								f.Allys.Now[oi].ss_enhance = teff.up_rate;
 							}
 						}
-						else if (state == "end" || state == "dead" || state == "cursebreak" || state == "overlay") {
+						else if (state == "end" || state == "dead" || state == "break" || state == "overlay") {
 							if (teff.isreinforce) {
 								f.Allys.Now[oi].ss_reinforcement_atk = 0;
 							} else {
@@ -544,11 +547,12 @@ var SpSkill = {
 					iscursebreak: true,
 					turn: t,
 					lim_turn: t,
+					target_attr: attr,
 					effect: function (f, oi, teff, state, is_t, is_ak, is_ss) {
 						if (state == "first") {
 							f.Allys.Now[oi].ss_boost_enhance = rate;
 						}
-						else if (state == "end" || state == "dead" || state == "cursebreak" || state == "overlay") {
+						else if (state == "end" || state == "dead" || state == "break" || state == "overlay") {
 							f.Allys.Now[oi].ss_boost_enhance = 0;
 						}
 						else if (is_t && !is_ss && !f.Status.finish) {
@@ -626,11 +630,17 @@ var SpSkill = {
 	// -----------------------------
 	// ステアップ
 	"ss_statusup": function (fld, n, cobj, params) {
-		var up_limit = params[1];
+		// ステアップの上限値をfield.status.statusup_maxにセット
+		{
+			var stmax = fld.Status.statusup_max;
+			stmax[0] = Math.max(stmax[0], params[1][0]);
+			stmax[1] = Math.max(stmax[1], params[1][1]);
+		}
 		var t = params[2];
 		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var up_arrs = $.extend(true, {}, params[0]);
+			var up_limit = fld.Status.statusup_max;
 			var now = nows[i];
 			if (now.nowhp <= 0) { continue; }
 			// 既にかかってるステアップの値を取得する
@@ -658,21 +668,23 @@ var SpSkill = {
 				effect: function (f, oi, teff, state) {
 					var nowtg = f.Allys.Now[oi];
 					if (state == "first") {
-						nowtg.maxhp = Math.max(teff.up_hp + nowtg.maxhp, 1);
-						nowtg.atk = Math.max(teff.up_atk + nowtg.atk, 0);
+						// 上昇値にステアップ影響分を追加
+						nowtg.upval_hp += teff.up_hp;
+						nowtg.upval_atk += teff.up_atk;
+						nowtg.maxhp = Math.max(nowtg.def_awhp + nowtg.upval_hp, 1);
 						nowtg.nowhp = Math.min(nowtg.nowhp + Math.max(params[0][0], teff.up_hp, 0), nowtg.maxhp);
+						nowtg.atk = Math.max(nowtg.def_awatk + nowtg.upval_atk, 0);
+						// iconset
 						teff.icon = (teff.up_hp > 0 ? "statusup" : teff.up_hp < 0 ? "statusdown" : null);
 						teff.subicon = (teff.up_atk > 0 ? "statusup_atk" : teff.up_atk < 0 ? "statusdown_atk" : null);
 					}
-					else if (state == "end" || state == "dead") {
-						nowtg.maxhp = Math.max(nowtg.maxhp - teff.up_hp, 1);
-						nowtg.nowhp = Math.min(nowtg.nowhp, nowtg.maxhp);
-						nowtg.atk -= teff.up_atk;
-					}
-					else if (state == "overlay" || state == "cursebreak") {
-						nowtg.maxhp = Math.max(nowtg.maxhp - teff.up_hp, 1);
-						nowtg.nowhp = Math.min(Math.max(nowtg.nowhp, 1), nowtg.maxhp);
-						nowtg.atk -= teff.up_atk;
+					else if (state == "end" || state == "dead" | state == "overlay" || state == "break") {
+						// ステアップ影響分を引く
+						nowtg.upval_hp -= teff.up_hp;
+						nowtg.upval_atk -= teff.up_atk;
+						nowtg.maxhp = Math.max(nowtg.def_awhp + nowtg.upval_hp, 1);
+						nowtg.nowhp = Math.min(nowtg.maxhp, nowtg.nowhp);
+						nowtg.atk = Math.max(nowtg.def_awatk + nowtg.upval_atk, 0);
 					}
 				},
 			});
@@ -1300,6 +1312,18 @@ var SpCondSkill = {
 		var num = 0;
 		for (var i = 0; i < cards.length; i++) {
 			num += (is_legendmode(cards[i], nows[i]) ? 1 : 0);
+		}
+		return a + b * num;
+	},
+	// -----------------------------
+	// 単属性精霊数依存
+	"ss_singleattr_num": function (fld, oi, cobj, params) {
+		var a = params[0];
+		var b = params[1];
+		var cards = fld.Allys.Deck;
+		var num = 0;
+		for (var i = 0; i < cards.length; i++) {
+			num += (cards[i].attr[1] == -1 ? 1 : 0);
 		}
 		return a + b * num;
 	},

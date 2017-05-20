@@ -244,6 +244,13 @@ function answer_skill(as_arr, panel, as_afters, bef_f) {
 			for (var j = 0; j < as_arr[i].length; j++) {
 				var card = Field.Allys.Deck[i];
 				var as = as_arr[i][j];
+				// 攻撃回数を増やす潜在結晶反映
+				var aw_t = pickup_awakes(card, "awake_ans_atknup", false);
+				for (var n = 0; n < aw_t.length; n++) {
+					if (as.atkn >= 2) {
+						as.atkn += aw_t[n].upvalue;
+					}
+				}
 				// ASが適用されるならば攻撃数を取得
 				if (as.type == "attack" && is_answer_target(bef_f, as, chain, -1, -1, i, -1, panel)) {
 					var subattr = (card.attr[1] >= 0) ? 2 : 1;

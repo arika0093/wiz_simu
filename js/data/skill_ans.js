@@ -914,6 +914,22 @@ function as_timedep(rate) {
 	}
 }
 
+// 単色精霊数依存
+// (a: 0体の時の基礎倍率, b: 一体増加ごとに増える倍率)
+function as_singleattr_num(a, b) {
+	return {
+		is_afteradd: true,
+		add_f: function (fld, oi, ei, p, tgi) {
+			var cards = fld.Allys.Deck;
+			var num = 0
+			for(var i=0; i < cards.length; i++){
+				num += (cards[i].attr[1] == -1 ? 1 : 0);
+			}
+			return a + b * num;
+		},
+	}
+}
+
 // チェインを消費して火力アップ
 // (rate: 消費時の増え幅, red_ch: 消費チェイン)
 function as_reducechain(rate, red_ch) {

@@ -311,6 +311,16 @@ function Awake_ASkillRateup(upval) {
 	};
 }
 
+// AS連撃数アップ潜在
+function Awake_ASkillAtknup(upval) {
+	return {
+		type: "awake_ans_atknup",
+		upvalue: upval,
+		name: "AS連撃数アップ(+" + upval + ")",
+		desc: "ASの連撃数を" + upval + "%アップする",
+	};
+}
+
 // SS効果値アップ潜在
 // *** WARNING: typeは変えて使うこと ***
 function Awake_SkillRateup(upval, skl_type) {
