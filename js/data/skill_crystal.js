@@ -3,10 +3,6 @@
 // ------------------------------------
 var Awake_crystal_lists = [{
 	genre: "AS/SS変化",
-	name: "AS効果値アップ",
-	imple: Awake_ASkillRateup,
-	param1: "{0}",
-}, {
 	name: "SS効果値アップ<攻撃系SS>",
 	imple: function (upval) {
 		var asr = Awake_SkillRateup(upval);
@@ -73,6 +69,14 @@ var Awake_crystal_lists = [{
 }, {
 	name: "SSのヒット回数増加",
 	imple: Awake_multihitadd,
+	param1: "{0}",
+}, {
+	name: "AS効果値アップ",
+	imple: Awake_ASkillRateup,
+	param1: "{0}",
+}, {
+	name: "AS連撃数アップ",
+	imple: Awake_ASkillAtknup,
 	param1: "{0}",
 }, {
 	genre: "ステータス変動(自身)",
