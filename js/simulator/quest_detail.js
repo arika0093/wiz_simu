@@ -157,7 +157,7 @@ function makeQD(id) {
 // on_hogehogeの全行動を返す
 function moveappear(moveObj, key, title) {
 	var tmpObj = moveObj[key]
-	var impTag = ["分裂待機", "鉄壁", "スキル反射", "チェイン解除", "AS封印", "怒り", "属性変化"];
+	var impTag = ["分裂待機", "鉄壁", "スキル反射", "チェイン解除", "AS封印", "怒り", "属性変化", "属性反転"];
 	var strBody = ""
 	var strTitle = title == undefined ? "" : "<b class='em_title " + key +"'>" + title + "：</b><br>"
 	if (tmpObj != undefined) {

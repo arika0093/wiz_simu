@@ -433,6 +433,7 @@ var SpSkill = {
 					isreinforce: isreinforce,
 					turn: t,
 					lim_turn: t,
+					target_attr: attr,
 					effect: function (f, oi, teff, state) {
 						if (state == "first") {
 							if (teff.isreinforce) {
@@ -441,7 +442,7 @@ var SpSkill = {
 								f.Allys.Now[oi].ss_enhance = rate;
 							}
 						}
-						if (state == "end" || state == "dead" || state == "cursebreak") {
+						if (state == "end" || state == "dead" || state == "break") {
 							if (teff.isreinforce) {
 								f.Allys.Now[oi].ss_reinforcement_atk = 0;
 							} else {
@@ -497,6 +498,8 @@ var SpSkill = {
 					turn: t,
 					lim_turn: t,
 					up_rate: rate,
+					target_attr: attr,
+					target_sattr: (rate == s_r ? s_attr : [1,1,1,1,1]),
 					effect: function (f, oi, teff, state) {
 						if (state == "first") {
 							if (teff.isreinforce) {
@@ -505,7 +508,7 @@ var SpSkill = {
 								f.Allys.Now[oi].ss_enhance = teff.up_rate;
 							}
 						}
-						else if (state == "end" || state == "dead" || state == "cursebreak" || state == "overlay") {
+						else if (state == "end" || state == "dead" || state == "break" || state == "overlay") {
 							if (teff.isreinforce) {
 								f.Allys.Now[oi].ss_reinforcement_atk = 0;
 							} else {
@@ -544,11 +547,12 @@ var SpSkill = {
 					iscursebreak: true,
 					turn: t,
 					lim_turn: t,
+					target_attr: attr,
 					effect: function (f, oi, teff, state, is_t, is_ak, is_ss) {
 						if (state == "first") {
 							f.Allys.Now[oi].ss_boost_enhance = rate;
 						}
-						else if (state == "end" || state == "dead" || state == "cursebreak" || state == "overlay") {
+						else if (state == "end" || state == "dead" || state == "break" || state == "overlay") {
 							f.Allys.Now[oi].ss_boost_enhance = 0;
 						}
 						else if (is_t && !is_ss && !f.Status.finish) {
@@ -674,7 +678,7 @@ var SpSkill = {
 						teff.icon = (teff.up_hp > 0 ? "statusup" : teff.up_hp < 0 ? "statusdown" : null);
 						teff.subicon = (teff.up_atk > 0 ? "statusup_atk" : teff.up_atk < 0 ? "statusdown_atk" : null);
 					}
-					else if (state == "end" || state == "dead" | state == "overlay" || state == "cursebreak") {
+					else if (state == "end" || state == "dead" | state == "overlay" || state == "break") {
 						// ステアップ影響分を引く
 						nowtg.upval_hp -= teff.up_hp;
 						nowtg.upval_atk -= teff.up_atk;

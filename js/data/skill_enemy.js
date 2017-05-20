@@ -308,7 +308,7 @@ function s_enemy_delay_attack(dmg, tnum, atkn) {
 // 状態異常攻撃
 // -----------------------------------
 // 状態異常攻撃テンプレ
-// (Field, 説明, 種類, ターン数, 対象, 発動敵番号, カウンター攻撃かどうか, 追加内容, 異常無効貫通)
+// (Field, 説明, 種類, ターン数, 対象, 発動敵番号, 敵のカウンター攻撃かどうか, 追加内容, 異常無効貫通)
 function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f_obj, disable_guard) {
 	var tg = !target.length ? gen_enemytarget_array(target, 1, false)[0] : target;
 	f_obj = f_obj || {};
@@ -452,7 +452,7 @@ function s_enemy_panicshout(damage, tnum, t) {
 		// ダメージパニック
 		return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 			s_enemy_abstate_attack(
-				fld, "混乱(" + damage + "ダメージ)", "panicshout", t, tnum, n, false, {
+				fld, "混乱(" + damage + "ダメージ)", "panicshout", t, tnum, n, is_counter, {
 					ss_disabled: true,
 					bef_answer: function (f, as) {
 						return false;
@@ -466,7 +466,7 @@ function s_enemy_panicshout(damage, tnum, t) {
 		// タゲ異常パニック
 		return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 			s_enemy_abstate_attack(
-				fld, "混乱", "panicshout", t, tnum, n, false, {
+				fld, "混乱", "panicshout", t, tnum, n, is_counter, {
 					ss_disabled: true,
 					panic_target: true,
 				}
@@ -479,7 +479,7 @@ function s_enemy_panicshout(damage, tnum, t) {
 function s_enemy_deathlimit(tnum, limit) {
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 		s_enemy_abstate_attack(
-			fld, "死の秒針", "death_limit", limit, tnum, n, false, {
+			fld, "死の秒針", "death_limit", limit, tnum, n, is_counter, {
 				isreduce_stg: false,
 				effect: function (f, oi, teff, state) {
 					var nowtg = f.Allys.Now[oi];
@@ -498,11 +498,11 @@ function s_enemy_healreverse(rate, tnum) {
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 		s_enemy_abstate_attack(
 			fld, "回復反転(" + (rate*100) + "%)",
-			"heal_reverse", -1, tnum, n, false, {
+			"heal_reverse", -1, tnum, n, is_counter, {
 				// 光闇属性なら反転は無効
 				bef_absattack: function (fld, oi, ei) {
 					var card = fld.Allys.Deck[oi];
-					return !(card.attr[1] >= 3 && card.attr[1] <= 4);
+					return !(card.attr.indexOf(3) >= 0 && card.attr.indexOf(4) >= 0);
 				},
 				effect: function(f, oi, teff, state, is_t, is_b){
 					if(f.Enemys.Data[teff.receveButtle].enemy[teff.fromEnemy].nowhp <= 0){
@@ -549,7 +549,7 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown) {
 						// 効果解除
 						turneff_break_cond(nowtg.turn_effect, oi, function (teff) {
 							return teff.iscursebreak;
-						}, "cursebreak");
+						}, "break");
 						// HP低下
 						nowtg.upval_hp -= hpdown;
 						nowtg.maxhp = Math.max(nowtg.def_awhp + nowtg.upval_hp, 1);
@@ -583,7 +583,7 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown) {
 				now.turn_effect.push(eff_obj);
 			}
 			// スキルカウンターを有効に
-			now.flags.skill_counter[n] = true;
+			now.flags.skill_counter[n] = (is_counter ? false : true);
 			fld.log_push("Enemy[" + (n + 1) + "]: 呪い(HP:" + (-hpdown) + "|" + (atkdown > 0 ? "|ATK:" + (-atkdown) : "")
 				+ t + "t)(対象: Unit[" + (tg[i] + 1) + "])");
 		}
@@ -592,6 +592,80 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown) {
 		// スキル重複確認
 		turn_effect_check(false);
 	}, makeDesc("呪い"));
+}
+
+// 属性反転
+function s_enemy_attrreverse(t, tnum){
+	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
+		// 潜在を無効化した後かけ直す関数
+		var func_reawake = function(cards, nows, index){
+			var card = cards[index];
+			var now = nows[index];
+			var isL = is_legendmode(card, now);
+			// ステ上昇潜在を一旦無効化
+			now.maxhp = Math.max(now.def_hp, 1);
+			now.nowhp = Math.min(now.maxhp, now.nowhp);
+			now.atk = Math.max(now.def_atk, 0);
+			// 属性が一致しない場合、属性指定効果を無効化
+			var teffs = now.turn_effect;
+			for(var i=0; i < teffs.length; i++){
+				var tf = teffs[i];
+				if(tf.target_attr){
+					var invalid_rst = (tf.target_attr[card.attr[0]] > 0);
+					if(tf.target_sattr && invalid_rst){
+						invalid_rst = (tf.target_sattr[card.attr[1]] > 0);
+					}
+					if(!invalid_rst){
+						// 無効化する
+						tf.effect(Field, index, tf, "break", false, false);
+						turneff_remove_pos(teffs, i);
+						i--;
+					}
+				}
+			}
+			// 再度有効化
+			add_awake_ally(cards, nows, index, false);
+			if(isL){
+				add_awake_ally(cards, nows, index, true);
+			}
+			now.def_awhp = now.maxhp;
+			now.def_awatk = now.atk;
+		}
+		// 状態異常付与(解除時の処理, etc)
+		s_enemy_abstate_attack(
+			fld, "属性反転",
+			"attr_reverse", t, tnum, n, is_counter, {
+				// ここで属性反転処理を行う(カウンター前に変更を確定させたい都合上)
+				bef_absattack: function (fld, oi, ei) {
+					var cards = fld.Allys.Deck;
+					var nows = fld.Allys.Now;
+					var card = cards[oi];
+					var now = nows[oi];
+					var defattr = this.def_attr = now.def_attr;
+					// 単属性精霊なら以下の処理を行わない
+					if(defattr[1] != -1){
+						// 属性反転処理
+						card.attr[0] = defattr[1];
+						card.attr[1] = defattr[0];
+						// 潜在掛け直し
+						func_reawake(cards, nows, oi);
+						return true;
+					}
+					return false;
+				},
+				effect: function(f, oi, teff, state, is_t, is_b){
+					if(state == "dead" | state == "end"){
+						// 属性を元に戻す
+						var card = f.Allys.Deck[oi];
+						card.attr[0] = teff.def_attr[0];
+						card.attr[1] = teff.def_attr[1];
+						// 潜在をかけ直す
+						func_reawake(f.Allys.Deck, f.Allys.Now, oi);
+					}
+				},
+			}
+		);
+	}, makeDesc("属性反転"));
 }
 
 // -----------------------------------
@@ -1410,6 +1484,7 @@ function makeDesc(mystr, order){
 			toStr = prop != "limit" ? toStr : "残り" + toStr + "T"
 			toStr = prop != "copyhp" ? toStr : "分裂時HP：" + (toStr * 100) + "％"
 			toStr = prop != "hpdown" ? toStr : "HP-" + toStr
+			toStr = prop != "atkdown" ? toStr : "ATK-" + toStr
 			toStr = prop != "desc" ? toStr : toStr+" "
 			toStr = prop != "healvalue" ? toStr : toStr+"回復"
 			toStr = prop != "ratiorate" ? toStr : toStr * 100 + "％削り"

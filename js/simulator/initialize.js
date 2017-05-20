@@ -191,6 +191,7 @@ $(function () {
 				now.atk = card.atk + mana;
 				now.def_hp = now.maxhp;	// 初期状態のHP(マナ込み)
 				now.def_atk = now.atk;	// 初期状態のATK(マナ込み)
+				now.def_attr = card.attr;
 				now.target = [];
 				now.flags = {};
 				now.flags.skill_counter = [];
