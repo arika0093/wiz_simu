@@ -1219,6 +1219,20 @@ function ss_legendnum(a, b) {
 }
 
 /**
+ * (条件系)単属性の精霊数に応じて、a+b*numの値を返す。
+ * a: 基礎値。例えば1なら、最低保証値が1になる。
+ * b: 乗算値。この値×単属性精霊数が基礎値に追加される。
+ **/
+function ss_singleattr_num(a, b) {
+	return ss_condition({
+		name: "ss_singleattr_num",
+		type: "other",
+		p1: a,
+		p2: b,
+	});
+}
+
+/**
  * (条件系)発動回数に応じて値をn倍したものを返す。[r = a + bx]
  * [例]効果値が320,640,...,6400と増加していく場合、ss_intenselyval(0, 3.2, 64)
  * a:	基礎値[無条件加算値]。

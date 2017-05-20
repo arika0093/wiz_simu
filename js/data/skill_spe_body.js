@@ -1316,6 +1316,18 @@ var SpCondSkill = {
 		return a + b * num;
 	},
 	// -----------------------------
+	// 単属性精霊数依存
+	"ss_singleattr_num": function (fld, oi, cobj, params) {
+		var a = params[0];
+		var b = params[1];
+		var cards = fld.Allys.Deck;
+		var num = 0;
+		for (var i = 0; i < cards.length; i++) {
+			num += (cards[i].attr[1] == -1 ? 1 : 0);
+		}
+		return a + b * num;
+	},
+	// -----------------------------
 	// 激化大魔術
 	"ss_intenselyval": function (fld, oi, cobj, params) {
 		var a = params[0];
