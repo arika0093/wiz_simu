@@ -30,7 +30,7 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 	enemy.flags.on_damage = (enemy.flags.on_damage ? enemy.flags.on_damage+1 : 1);
 	// HPが0ならターン効果を全て消す
 	if (enemy.nowhp <= 0) {
-		turneff_allbreak(enemy.turn_effect, e, false);
+		turneff_allbreak(enemy.turn_effect, e, "dead");
 		// 撃破カウント
 		Field.Status.total_kill += 1;
 	}
