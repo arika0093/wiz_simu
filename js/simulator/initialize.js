@@ -191,6 +191,10 @@ $(function () {
 				now.atk = card.atk + mana;
 				now.def_hp = now.maxhp;	// 初期状態のHP(マナ込み)
 				now.def_atk = now.atk;	// 初期状態のATK(マナ込み)
+				now.def_awhp = now.def_hp;      // 潜在込みのHP(初期状態ではdef_hpと同じ)
+				now.def_awatk = now.def_atk;    // 潜在込みのATK(初期状態ではdef_atkと同じ)
+				now.upval_hp = 0;
+				now.upval_atk = 0;
 				now.def_attr = card.attr;
 				now.target = [];
 				now.flags = {};
@@ -230,14 +234,6 @@ $(function () {
 					// 0tレジェンド精霊用(助っ人にはチェックを通さない)
 					legend_timing_check(als.Deck, als.Now, p);
 				}
-			}
-			// 潜在反映HP/ATK保存
-			for (var p in als.Deck) {
-				var now = als.Now[p];
-				now.def_awhp = now.maxhp;
-				now.def_awatk = now.atk;
-				now.upval_hp = 0;
-				now.upval_atk = 0;
 			}
 			// チェインブースト処理(助っ人は含めないので上と別処理)
 			var dck = als.Deck;
@@ -457,6 +453,7 @@ function helper_change_process() {
 			// 処理(L化)
 			nows[i].ss_current = 999;
 			legend_timing_check(Field.Allys.Deck, Field.Allys.Now, i);
+			
 			// フラグON
 			fs.is_hlpchanged = true;
 			fs.hlpchanged_index = i;

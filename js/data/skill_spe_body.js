@@ -672,7 +672,7 @@ var SpSkill = {
 						nowtg.upval_hp += teff.up_hp;
 						nowtg.upval_atk += teff.up_atk;
 						nowtg.maxhp = Math.max(nowtg.def_awhp + nowtg.upval_hp, 1);
-						nowtg.nowhp = Math.min(nowtg.nowhp + Math.max(params[0][0], teff.up_hp, 0), nowtg.maxhp);
+						nowtg.nowhp = Math.min(nowtg.nowhp + Math.max(params[0][0], 0), nowtg.maxhp);
 						nowtg.atk = Math.max(nowtg.def_awatk + nowtg.upval_atk, 0);
 						// iconset
 						teff.icon = (teff.up_hp > 0 ? "statusup" : teff.up_hp < 0 ? "statusdown" : null);
