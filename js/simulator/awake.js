@@ -61,6 +61,8 @@ function add_awake_ally(cards, nows, own_no, legend_skill) {
 			nows[own_no].maxhp += e.up_hp;
 			nows[own_no].nowhp += e.up_hp;
 			nows[own_no].atk += e.up_atk;
+			nows[own_no].def_awhp += e.up_hp;
+			nows[own_no].def_awatk += e.up_atk;
 		}
 	});
 	// 味方ステアップの反映
@@ -72,11 +74,15 @@ function add_awake_ally(cards, nows, own_no, legend_skill) {
 				nows[t].maxhp += e.up_hp;
 				nows[t].nowhp += e.up_hp;
 				nows[t].atk += e.up_atk;
+				nows[t].def_awhp += e.up_hp;
+				nows[t].def_awatk += e.up_atk;
 				// 副属性一致潜在があったらさらにアップ
 				if (e.sub_attr && e.sub_attr[cards[t].attr[1]] > 0) {
 					nows[t].maxhp += e.up_hp_2;
 					nows[t].nowhp += e.up_hp_2;
 					nows[t].atk += e.up_atk_2;
+					nows[t].def_awhp += e.up_hp_2;
+					nows[t].def_awatk += e.up_atk_2;
 				}
 			}
 		}
@@ -96,6 +102,8 @@ function minus_legend_awake(cards, nows, own_no) {
 			now.maxhp = Math.max(now.maxhp - e.up_hp, 1);
 			now.nowhp = Math.min(now.maxhp, now.nowhp);
 			now.atk -= e.up_atk;
+			now.def_awhp -= e.up_hp;
+			now.def_awatk -= e.up_atk;
 		}
 	});
 	$.each(ally_statups, function (n, e) {
@@ -107,11 +115,15 @@ function minus_legend_awake(cards, nows, own_no) {
 				now.maxhp = Math.max(now.maxhp - e.up_hp, 1);
 				now.nowhp = Math.min(now.maxhp, now.nowhp);
 				now.atk -= e.up_atk;
+				now.def_awhp -= e.up_hp;
+				now.def_awatk -= e.up_atk;
 				// 副属性一致潜在だったらさらに減らす
 				if (e.sub_attr && e.sub_attr[cards[t].attr[1]] > 0) {
 					nows[t].maxhp -= e.up_hp_2;
 					nows[t].nowhp -= e.up_hp_2;
 					nows[t].atk -= e.up_atk_2;
+					now.def_awhp -= e.up_hp_2;
+					now.def_awatk -= e.up_atk_2;
 				}
 			}
 		}

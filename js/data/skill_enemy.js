@@ -971,12 +971,17 @@ function s_enemy_barrier_all(dmg, turn) {
 			turn: turn,
 			lim_turn: turn,
 			priority: 5,
-			//barr_endurance: dmg,
 			effect: function (f, oi, teff, state, is_t, is_b) {
+				if(barr_endu === null){
+					return;
+				}
 				if (barr_endu <= 0) {
 					// break
 					teff.lim_turn = 0;
-					barr_endu = null;	// for reverse
+					// 全滅してたら巻き戻し用にbarr_enduをnullに指定
+					if(is_allkill()){
+						barr_endu = null;	// for reverse
+					}
 				} else {
 					teff.desc = "バリアウォール(" + barr_endu + "/" + dmg + ")";
 				}
