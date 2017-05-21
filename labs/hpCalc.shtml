@@ -254,12 +254,12 @@
 	<div class=lfloat>
 		<h2>基本情報：</h2>
 		<table>
-			<tr><td>最大レベル：</td><td><input id=maxLv type=text class=valArea value=110></input></td></tr>
-			<tr><td>最大レベルのときのHP：</td><td><input id=maxLvHp type=text class=valArea onchange=calcMinHp()></input></td></tr>
-			<tr><td>Lv1のときのHP：</td><td><input id=minLvHp type=text class=valArea></input></td></tr>
-			<tr><td>現在のマナ：</td><td><input id=nowMana type=text class=valArea value=200></input></td></tr>
+			<tr><td>最大レベル：</td><td><input id=maxLv type=text class=valArea value=110/></td></tr>
+			<tr><td>最大レベルのときのHP：</td><td><input id=maxLvHp type=text class=valArea onchange=calcMinHp()/></td></tr>
+			<tr><td>Lv1のときのHP：</td><td><input id=minLvHp type=text class=valArea/></td></tr>
+			<tr><td>現在のマナ：</td><td><input id=nowMana type=text class=valArea value=200/></td></tr>
 			<!--<tr><td colspan=2 style=text-align:center>option</td></tr>-->
-			<tr><td>現在のexp：</td><td><input id=nowExp type=text class=valArea value=0></input></td></tr>
+			<tr><td>現在のexp：</td><td><input id=nowExp type=text class=valArea value=0/></td></tr>
 		</table>
 	</div>
 	
