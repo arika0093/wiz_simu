@@ -978,7 +978,10 @@ function s_enemy_barrier_all(dmg, turn) {
 				if (barr_endu <= 0) {
 					// break
 					teff.lim_turn = 0;
-					barr_endu = null;	// for reverse
+					// 全滅してたら巻き戻し用にbarr_enduをnullに指定
+					if(is_allkill()){
+						barr_endu = null;	// for reverse
+					}
 				} else {
 					teff.desc = "バリアウォール(" + barr_endu + "/" + dmg + ")";
 				}
