@@ -173,6 +173,8 @@ $(function () {
 					return e.cardno == data.deck[i].cardno;
 				})[0];
 				if (!card) { continue; }
+				// def_attr定義
+				card.def_attr = $.extend(true, [], card.attr);
 				// 代入
 				var ally = als.Deck[i] = $.extend(true, {}, card);
 				// 潜在結晶を追加

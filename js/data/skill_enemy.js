@@ -598,60 +598,67 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown) {
 function s_enemy_attrreverse(t, tnum){
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 		// 潜在を無効化した後かけ直す関数
-		var func_reawake = function(cards, nows, index){
+		var func_reawake = function(fld, cards, nows){
+			// 味方全員のステ上昇潜在を一旦無効化
+			for(var i=0; i < nows.length; i++){
+				var ntg = nows[i];
+				ntg.maxhp = Math.max(ntg.def_hp, 1);
+				ntg.nowhp = Math.min(ntg.maxhp, ntg.nowhp);
+				ntg.atk = Math.max(ntg.def_atk, 0);
+			}
+			// 味方全体のステ上昇潜在を再度有効化
+			for(var i=0; i < nows.length; i++){
+				var isL = is_legendmode(cards[i], nows[i]);
+				add_awake_ally(cards, nows, i, false);
+				if(isL){
+					add_awake_ally(cards, nows, i, true);
+				}
+			}
+		}
+		// 属性が一致しない場合、属性指定効果を無効化
+		var func_invalid = function(fld, cards, nows, index){
 			var card = cards[index];
 			var now = nows[index];
-			var isL = is_legendmode(card, now);
-			// ステ上昇潜在を一旦無効化
-			now.maxhp = Math.max(now.def_hp, 1);
-			now.nowhp = Math.min(now.maxhp, now.nowhp);
-			now.atk = Math.max(now.def_atk, 0);
-			// 属性が一致しない場合、属性指定効果を無効化
 			var teffs = now.turn_effect;
 			for(var i=0; i < teffs.length; i++){
 				var tf = teffs[i];
 				if(tf.target_attr){
 					var invalid_rst = (tf.target_attr[card.attr[0]] > 0);
-					if(tf.target_sattr && invalid_rst){
-						invalid_rst = (tf.target_sattr[card.attr[1]] > 0);
-					}
 					if(!invalid_rst){
-						// 無効化する
-						tf.effect(Field, index, tf, "break", false, false);
-						turneff_remove_pos(teffs, i);
-						i--;
+						/* 無効化する
+						 tf.effect(Field, index, tf, "break", false, false);
+						 turneff_remove_pos(teffs, i);
+						 i--;
+						 */
+						// 無効化チェックを働かせる
+						tf.effect(fld, index, tf, "", false, false);
 					}
 				}
 			}
-			// 再度有効化
-			add_awake_ally(cards, nows, index, false);
-			if(isL){
-				add_awake_ally(cards, nows, index, true);
+		}
+		
+		// 攻撃ターゲットを取得
+		var tg = gen_enemytarget_array(tnum, 1, false)[0];
+		// 属性反転処理
+		var cs = fld.Allys.Deck;
+		for(var i=0; i < cs.length; i++){
+			if(tg.indexOf(i) >= 0){
+				var c = cs[i];
+				// ここでは属性反転のみ行う(潜在/エンハンスの無効化処理は最後に行う)
+				if(c.def_attr[1] != -1){
+					c.attr[0] = c.def_attr[1];
+					c.attr[1] = c.def_attr[0];
+				}
 			}
-			now.def_awhp = now.maxhp;
-			now.def_awatk = now.atk;
 		}
 		// 状態異常付与(解除時の処理, etc)
 		s_enemy_abstate_attack(
 			fld, "属性反転",
-			"attr_reverse", t, tnum, n, is_counter, {
-				// ここで属性反転処理を行う(カウンター前に変更を確定させたい都合上)
-				bef_absattack: function (fld, oi, ei) {
-					var cards = fld.Allys.Deck;
-					var nows = fld.Allys.Now;
-					var card = cards[oi];
-					var now = nows[oi];
-					var defattr = this.def_attr = now.def_attr;
-					// 単属性精霊なら以下の処理を行わない
-					if(defattr[1] != -1){
-						// 属性反転処理
-						card.attr[0] = defattr[1];
-						card.attr[1] = defattr[0];
-						// 潜在掛け直し
-						func_reawake(cards, nows, oi);
-						return true;
-					}
-					return false;
+			"attr_reverse", t, tg, n, is_counter, {
+				bef_absattack: function (f, oi, ei) {
+					var card = f.Allys.Deck[oi];
+					var defattr = this.def_attr = card.def_attr;
+					return !(defattr[1] == -1);
 				},
 				effect: function(f, oi, teff, state, is_t, is_b){
 					if(state == "dead" | state == "end"){
@@ -660,11 +667,30 @@ function s_enemy_attrreverse(t, tnum){
 						card.attr[0] = teff.def_attr[0];
 						card.attr[1] = teff.def_attr[1];
 						// 潜在をかけ直す
-						func_reawake(f.Allys.Deck, f.Allys.Now, oi);
+						// 未解決事項(later-fix): 同時に何体も解除する時HP回復量がバグあり
+						func_reawake(f, f.Allys.Deck, f.Allys.Now);
+						// エンハ無効化
+						func_invalid(f, f.Allys.Deck, f.Allys.Now, oi);
 					}
 				},
 			}
 		);
+		// 反射チェック
+		turneff_check_skillcounter(fld);
+		// ここで全精霊の潜在をかけ直し、エンハ無効化処理を行う
+		var cards = fld.Allys.Deck;
+		var nows = fld.Allys.Now;
+		// 潜在かけ直し
+		func_reawake(fld, cards, nows);
+		for(var i=0; i < cards.length; i++){
+			if(tg.indexOf(i) >= 0) {
+				var card = cards[i];
+				if (card.def_attr[1] != -1) {
+					// エンハ無効化
+					func_invalid(fld, cards, nows, i);
+				}
+			}
+		}
 	}, makeDesc("属性反転"));
 }
 

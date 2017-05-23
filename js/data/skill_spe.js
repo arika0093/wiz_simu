@@ -399,7 +399,7 @@ function ss_enhance_own(p, t) {
 		target: "own",
 		p1: p,
 		p2: t,
-		p3: [1,1,1,1,1],
+		p3: null,
 		c_param: {
 			"awake_rateup": {
 				target: 0,
