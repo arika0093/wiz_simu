@@ -400,16 +400,21 @@ var SpSkill = {
 		var t = params[1];
 		var attr = params[2];
 		var calltype = params[3];
+		var is_own = false;
 		if (!attr) {
-			// 属性未指定なら全属性Up
-			attr = [1, 1, 1, 1, 1];
+			// 属性未指定なら自身の元々の主属性を指定
+			// ※スキルコピーには正常に対応できない
+			var own = fld.Allys.Now[n];
+			attr = [0,0,0,0,0];
+			attr[own.def_attr[0]] = 1;
+			is_own = true;
 		}
 		var cds = ss_get_targetally(fld, cobj, fld.Allys.Deck, n);
 		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var cd = cds[i];
 			var now = nows[i];
-			if (now.nowhp > 0 && attr[cd.attr[0]] > 0) {
+			if (now.nowhp > 0 && (is_own || attr[cd.attr[0]] > 0)) {
 				switch (calltype) {
 					case "RF":
 						var isreinforce = true;
@@ -435,6 +440,17 @@ var SpSkill = {
 					lim_turn: t,
 					target_attr: attr,
 					effect: function (f, oi, teff, state) {
+						var card = f.Allys.Deck[oi];
+						var desc = "攻撃力アップ" + typestr + "(" + (rate * 100) + "%)";
+						// エンハンスの対応属性と一致していないなら説明文変更/効果無効化
+						if(teff.target_attr[card.attr[0]] <= 0 && !teff.isreinforce){
+							teff.desc = desc + "[属性不一致:無効]";
+							f.Allys.Now[oi].ss_enhance = 0;
+							return;
+						} else {
+							teff.desc = desc;
+						}
+						// 初回実行時にエンハ値を代入
 						if (state == "first") {
 							if (teff.isreinforce) {
 								f.Allys.Now[oi].ss_reinforcement_atk = rate;
@@ -442,6 +458,7 @@ var SpSkill = {
 								f.Allys.Now[oi].ss_enhance = rate;
 							}
 						}
+						// 解除時にエンハ値を0にする(overrideは見ない[別の値代入の恐れがあるため])
 						if (state == "end" || state == "dead" || state == "break") {
 							if (teff.isreinforce) {
 								f.Allys.Now[oi].ss_reinforcement_atk = 0;
@@ -501,6 +518,16 @@ var SpSkill = {
 					target_attr: attr,
 					target_sattr: (rate == s_r ? s_attr : [1,1,1,1,1]),
 					effect: function (f, oi, teff, state) {
+						var card = f.Allys.Deck[oi];
+						var desc = "攻撃力アップ" + typestr + "(" + (rate * 100) + "%)";
+						// エンハンスの対応属性と一致していないなら説明文変更/効果無効化
+						if(teff.target_attr[card.attr[0]] <= 0 && !teff.isreinforce){
+							teff.desc = desc + "[属性不一致:無効]";
+							f.Allys.Now[oi].ss_enhance = 0;
+							return;
+						} else {
+							teff.desc = desc;
+						}
 						if (state == "first") {
 							if (teff.isreinforce) {
 								f.Allys.Now[oi].ss_reinforcement_atk = teff.up_rate;

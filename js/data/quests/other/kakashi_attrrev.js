@@ -6,6 +6,9 @@
    overlap: false,
    aprnum: 1,
    battle_before: [{
+      desc: "SPスキルが使用できる状態で開始",
+	  proc: spskill_maxcharge()
+   }, {
       desc: "ch+1",
 	  proc: panel_chainplus(1)
    }, {
@@ -39,7 +42,7 @@
 					],
 					on_move: [
 						m_enemy_once(s_enemy_attrreverse(5, 5)),
-						s_enemy_attack(100, 3, 3, true),
+						s_enemy_attack(100, 3, 5, true),
 					],
 					atrandom: false,
 					turn: 1,

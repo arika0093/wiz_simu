@@ -68,9 +68,10 @@ function add_awake_ally(cards, nows, own_no, legend_skill) {
 	// 味方ステアップの反映
 	$.each(ally_statups, function (n, e) {
 		for (var t = 0; t < cards.length; t++) {
-			if(e.attr[cards[t].attr[0]] > 0
-			&& check_spec_inarray(e.spec, cards[t].species)
-			&& (!e.cond || e.cond(Field, own_no, t))) {
+			if(e.attr[cards[t].attr[0]] > 0                     // 現在の属性と一致していて
+			&& e.attr[nows[t].def_attr[0]] > 0	                // 元々の属性とも一致していて
+			&& check_spec_inarray(e.spec, cards[t].species)     // 対象種族とも一致していて
+			&& (!e.cond || e.cond(Field, own_no, t))) {         // 潜在固有の条件とも一致する場合反映
 				nows[t].maxhp += e.up_hp;
 				nows[t].nowhp += e.up_hp;
 				nows[t].atk += e.up_atk;
