@@ -400,21 +400,23 @@ var SpSkill = {
 		var t = params[1];
 		var attr = params[2];
 		var calltype = params[3];
-		var is_own = false;
+		// var is_own = false;
 		if (!attr) {
-			// 属性未指定なら自身の元々の主属性を指定
+			attr = [1,1,1,1,1];
+			/* 属性未指定なら自身の元々の主属性を指定
 			// ※スキルコピーには正常に対応できない
 			var own = fld.Allys.Now[n];
 			attr = [0,0,0,0,0];
 			attr[own.def_attr[0]] = 1;
 			is_own = true;
+			*/
 		}
 		var cds = ss_get_targetally(fld, cobj, fld.Allys.Deck, n);
 		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var cd = cds[i];
 			var now = nows[i];
-			if (now.nowhp > 0 && (is_own || attr[cd.attr[0]] > 0)) {
+			if (now.nowhp > 0 && (/*is_own ||*/ attr[cd.attr[0]] > 0)) {
 				switch (calltype) {
 					case "RF":
 						var isreinforce = true;
