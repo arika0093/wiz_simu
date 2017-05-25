@@ -62566,7 +62566,7 @@ Cards = [{
 		Panel_boost([0,0,1,0,0,],4),
 		Attr_statusup(200,0,[1,0,1,0,0,]),
 		Attr_statusup(0,200,[1,0,1,0,0,]),
-		Abstate_invalid("ss_sealed")
+		Abstate_invalid("ss_sealed"),
 		NEFTJOD(30),
 		Fastskill(4),
 		Attr_statusup_sattr(100,0,[0,0,1,0,0,],300,0,[1,0,0,0,0,]),
