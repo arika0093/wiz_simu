@@ -24,11 +24,11 @@
                      damage_switch(s_enemy_when_hpdown(0.6), m_enemy_angry(), true)
                   ],
                   on_move: [
+                     s_enemy_attack(1750, 3, 2, true),
                      s_enemy_multibarrier_own(30, 99),
                      s_enemy_attack(1750, 3, 2, true),
                      s_enemy_poison(1500, 5, 5),
                      s_enemy_attack(1750, 5, 1, true),
-                     s_enemy_attack(1750, 3, 2, true)
                   ],
                   on_angry: [
                      s_enemy_cursed(1600, 5, 5, 0)
