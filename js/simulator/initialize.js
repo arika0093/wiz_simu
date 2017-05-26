@@ -368,6 +368,15 @@ function nextturn(is_ssfin) {
 			}
 			Field.log_push("戦後回復: " + (abh * 100) + "%");
 		}
+		// 戦闘開始前処理
+		if (Field.Quest.battle_before) {
+			var bbef = Field.Quest.battle_before;
+			for (var i = 0; i < bbef.length; i++) {
+				if(bbef[i].isev){
+					ss_object_done(Field, -1, bbef[i].proc);
+				}
+			}
+		}
 		// 出現前にフラグリセット
 		initialize_allys_flags(nows);
 		// ここで新しい敵の処理を行う
