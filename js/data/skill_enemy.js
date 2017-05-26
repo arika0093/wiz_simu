@@ -609,7 +609,7 @@ function s_enemy_attrreverse(t, tnum){
 			// 味方全体のステ上昇潜在を再度有効化
 			for(var i=0; i < nows.length; i++){
 				var isL = is_legendmode(cards[i], nows[i]);
-				add_awake_ally(cards, nows, i, false);
+				add_awake_ally(cards, nows, i, false, true);
 				if(isL){
 					add_awake_ally(cards, nows, i, true);
 				}

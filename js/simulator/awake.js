@@ -50,7 +50,7 @@ function open_awake_composite(awakes_t){
 }
 
 // 潜在能力を味方に反映させる
-function add_awake_ally(cards, nows, own_no, legend_skill) {
+function add_awake_ally(cards, nows, own_no, legend_skill, ignorenowhpup) {
 	// 自身ステアップ
 	var own_statups = pickup_awakes(cards[own_no], "own_status_up", legend_skill);
 	// 味方ステアップ
@@ -73,7 +73,7 @@ function add_awake_ally(cards, nows, own_no, legend_skill) {
 			&& check_spec_inarray(e.spec, cards[t].species)     // 対象種族とも一致していて
 			&& (!e.cond || e.cond(Field, own_no, t))) {         // 潜在固有の条件とも一致する場合反映
 				nows[t].maxhp += e.up_hp;
-				if(nows[t].nowhp > 0){
+				if(nows[t].nowhp > 0 && !ignorenowhpup){
 					nows[t].nowhp += e.up_hp;
 				}
 				nows[t].atk += e.up_atk;
@@ -82,7 +82,7 @@ function add_awake_ally(cards, nows, own_no, legend_skill) {
 				// 副属性一致潜在があったらさらにアップ
 				if (e.sub_attr && e.sub_attr[cards[t].attr[1]] > 0) {
 					nows[t].maxhp += e.up_hp_2;
-					if(nows[t].nowhp > 0) {
+					if(nows[t].nowhp > 0 && !ignorenowhpup) {
 						nows[t].nowhp += e.up_hp_2;
 					}
 					nows[t].atk += e.up_atk_2;
