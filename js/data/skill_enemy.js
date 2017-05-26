@@ -598,7 +598,7 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown) {
 function s_enemy_attrreverse(t, tnum){
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 		// 潜在を無効化した後かけ直す関数
-		var func_reawake = function(fld, cards, nows){
+		var func_reawake = function(fld, cards, nows, isbreak){
 			// 味方全員のステ上昇潜在を一旦無効化
 			for(var i=0; i < nows.length; i++){
 				var ntg = nows[i];
@@ -609,9 +609,9 @@ function s_enemy_attrreverse(t, tnum){
 			// 味方全体のステ上昇潜在を再度有効化
 			for(var i=0; i < nows.length; i++){
 				var isL = is_legendmode(cards[i], nows[i]);
-				add_awake_ally(cards, nows, i, false, true);
+				add_awake_ally(cards, nows, i, false, isbreak);
 				if(isL){
-					add_awake_ally(cards, nows, i, true, true);
+					add_awake_ally(cards, nows, i, true, isbreak);
 				}
 			}
 		}
@@ -668,7 +668,7 @@ function s_enemy_attrreverse(t, tnum){
 						card.attr[1] = teff.def_attr[1];
 						// 潜在をかけ直す
 						// 未解決事項(later-fix): 同時に何体も解除する時HP回復量がバグあり
-						func_reawake(f, f.Allys.Deck, f.Allys.Now);
+						func_reawake(f, f.Allys.Deck, f.Allys.Now, true);
 						// エンハ無効化
 						func_invalid(f, f.Allys.Deck, f.Allys.Now, oi);
 					}
