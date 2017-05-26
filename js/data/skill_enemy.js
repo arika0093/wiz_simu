@@ -611,7 +611,7 @@ function s_enemy_attrreverse(t, tnum){
 				var isL = is_legendmode(cards[i], nows[i]);
 				add_awake_ally(cards, nows, i, false, true);
 				if(isL){
-					add_awake_ally(cards, nows, i, true);
+					add_awake_ally(cards, nows, i, true, true);
 				}
 			}
 		}
