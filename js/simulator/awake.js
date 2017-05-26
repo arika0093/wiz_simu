@@ -59,7 +59,7 @@ function add_awake_ally(cards, nows, own_no, legend_skill, ignorenowhpup) {
 	$.each(own_statups, function (n, e) {
 		if(!e.cond || e.cond(Field, own_no)){
 			nows[own_no].maxhp += e.up_hp;
-			if(nows[t].nowhp > 0 && !ignorenowhpup){
+			if(nows[own_no].nowhp > 0 && !ignorenowhpup){
 				nows[own_no].nowhp += e.up_hp;
 			}
 			nows[own_no].atk += e.up_atk;
