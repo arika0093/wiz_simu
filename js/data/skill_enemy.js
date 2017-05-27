@@ -602,17 +602,31 @@ function s_enemy_attrreverse(t, tnum){
 			// 味方全員のステ上昇潜在を一旦無効化
 			for(var i=0; i < nows.length; i++){
 				var ntg = nows[i];
+				ntg.def_awhp = ntg.def_hp;
+				ntg.def_awatk = ntg.def_atk;
 				ntg.maxhp = Math.max(ntg.def_hp, 1);
 				ntg.nowhp = Math.min(ntg.maxhp, ntg.nowhp);
 				ntg.atk = Math.max(ntg.def_atk, 0);
 			}
 			// 味方全体のステ上昇潜在を再度有効化
 			for(var i=0; i < nows.length; i++){
-				var isL = is_legendmode(cards[i], nows[i]);
+				var ntg = nows[i];
+				var isL = is_legendmode(cards[i], ntg);
 				add_awake_ally(cards, nows, i, false, isbreak);
 				if(isL){
 					add_awake_ally(cards, nows, i, true, isbreak);
 				}
+			}
+			// ステアップ効果値反映
+			for(var i=0; i < nows.length; i++){
+				var ntg = nows[i];
+				$.each(ntg.turn_effect, function(j,e){
+					if(e.type == "ss_statusup"){
+						ntg.maxhp = Math.max(ntg.def_awhp + ntg.upval_hp, 1);
+						ntg.nowhp = Math.min(ntg.nowhp, ntg.maxhp);
+						ntg.atk = Math.max(ntg.def_awatk + ntg.upval_atk, 0);
+					}
+				});
 			}
 		}
 		// 属性が一致しない場合、属性指定効果を無効化
