@@ -64192,7 +64192,7 @@ Cards = [{
 		Attr_statusup_sattr(0,100,[1,0,0,0,0,],0,300,[0,0,1,0,0,]),
 		Attr_statusup_sattr(100,0,[1,0,0,0,0,],300,0,[0,0,1,0,0,]),
 		Fastskill(3),
-		Awake_noeffect("チェインブースト",1),
+		Awake_Chainboost(1),
 	],
 	Lawake: [
 		Attr_statusup(0,300,[1,0,1,0,0,]),
@@ -64636,7 +64636,7 @@ Cards = [{
 		Attr_statusup_sattr(100, 0, [0,1,0,0,0], 300, 0, [1,0,0,0,0]),
 		Attr_statusup_sattr(0, 100, [0,1,0,0,0], 0, 300, [1,0,0,0,0]),
 		Fastskill(4),
-		Awake_noeffect("チェインブースト",1),
+		Awake_Chainboost(1),
 		Heal_afterbattle(10),
 		Attr_relief([1,1,1,1,1,],20),
 	],
@@ -72268,7 +72268,7 @@ Cards = [{
 	is_dist: true,
 	as1: {
 		desc: "<連撃>4チェインで敵単体を6回連続攻撃(300%)、HP50%以上でさらにダメージアップ(100%)",
-		proc: [ChainDualAttack(3.0, 4, 3), add_cond(ChainDualAttack(4.0, 4, 3), when_hp_more(0.5))],
+		proc: [ChainDualAttack(3.0, 4, 6), add_cond(ChainDualAttack(4.0, 4, 6), when_hp_more(0.5))],
 	},
 	ss1: {
 		desc: "<特効大魔術>敵単体へ雷属性のダメージ(400%)、さらに水属性の敵には特効ダメージ(600%)",
@@ -72289,7 +72289,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<連撃>4チェインで敵単体を6回連続攻撃(400%)、HP50%以上でさらにダメージアップ(100%)",
-		proc: [ChainDualAttack(4.0, 4, 3), add_cond(ChainDualAttack(5.0, 4, 3), when_hp_more(0.5))],
+		proc: [ChainDualAttack(4.0, 4, 6), add_cond(ChainDualAttack(5.0, 4, 6), when_hp_more(0.5))],
 	},
 	ss2: {
 		desc: "<特効大魔術>敵単体へ雷属性のダメージ(400%)、さらに水属性の敵には特効ダメージ(1200%)",
