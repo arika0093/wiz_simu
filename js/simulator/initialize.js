@@ -49,7 +49,9 @@ var Field = {
 		chain: 0,
 		chain_status: 0,
 		chainstat_turn: 0,
-		chain_redtask: [],
+		// AS処理関連
+		chain_redtask: [],          // チェイン消費タスク
+		hpcons_task: [0,0,0,0,0],   // 全体自傷HPタスク
 		// パネル付与関連
 		panel_add: [],
 		panel_guard: {

@@ -64192,7 +64192,7 @@ Cards = [{
 		Attr_statusup_sattr(0,100,[1,0,0,0,0,],0,300,[0,0,1,0,0,]),
 		Attr_statusup_sattr(100,0,[1,0,0,0,0,],300,0,[0,0,1,0,0,]),
 		Fastskill(3),
-		Awake_noeffect("チェインブースト",1),
+		Awake_Chainboost(1),
 	],
 	Lawake: [
 		Attr_statusup(0,300,[1,0,1,0,0,]),
@@ -64636,7 +64636,7 @@ Cards = [{
 		Attr_statusup_sattr(100, 0, [0,1,0,0,0], 300, 0, [1,0,0,0,0]),
 		Attr_statusup_sattr(0, 100, [0,1,0,0,0], 0, 300, [1,0,0,0,0]),
 		Fastskill(4),
-		Awake_noeffect("チェインブースト",1),
+		Awake_Chainboost(1),
 		Heal_afterbattle(10),
 		Attr_relief([1,1,1,1,1,],20),
 	],

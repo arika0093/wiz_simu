@@ -89,6 +89,16 @@ function panel(attr) {
 				as_afters[i][0]();
 			}
 		}
+		// 自傷ASの処理
+		var nows = Field.Allys.Now;
+		for(var i=0; i < nows.length; i++){
+			var hp = Field.Status.hpcons_task[i];
+			if(hp > 0){
+				Field.log_push("Unit[" + (i + 1) + "]: 自傷(" + Math.round(hp * 100) + "%)");
+				damage_ally(Math.floor(nows[i].maxhp * hp), i);
+				Field.Status.hpcons_task[i] = 0;
+			}
+		}
 		// チェイン消費ASの処理
 		var reducetask = Field.Status.chain_redtask || [];
 		var tasksum = reducetask.length > 0 ? reducetask.reduce(function(p, c){ return p+c; }) : 0;
@@ -425,6 +435,7 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem, bef_f)
 // エンハスキルの処理
 function answer_enhance(as, i, p, bef_f) {
 	var as_afters = [];
+	var is_afteradded = false;
 	for (var ci = 0; ci < Field.Allys.Deck.length; ci++) {
 		var ass = {rate: 0};
 		var card = Field.Allys.Deck[ci];
@@ -448,10 +459,11 @@ function answer_enhance(as, i, p, bef_f) {
 		// エンハ値追加
 		var bef_enh = now.as_enhance ? now.as_enhance : 0;
 		now.as_enhance = bef_enh + ass.rate;
-	}
-	// 攻撃後処理
-	if (ass.after) {
-		as_afters.push(ass.after(Field, i, true));
+		// 攻撃後処理
+		if (ass.after && !is_afteradded) {
+			as_afters.push(ass.after(Field, i, true));
+			is_afteradded = true;
+		}
 	}
 	return as_afters;
 }

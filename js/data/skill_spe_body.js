@@ -521,7 +521,7 @@ var SpSkill = {
 					target_sattr: (rate == s_r ? s_attr : [1,1,1,1,1]),
 					effect: function (f, oi, teff, state) {
 						var card = f.Allys.Deck[oi];
-						var desc = "攻撃力アップ" + typestr + "(" + (rate * 100) + "%)";
+						var desc = "攻撃力アップ" + typestr + "(" + (teff.up_rate * 100) + "%)";
 						// エンハンスの対応属性と一致していないなら説明文変更/効果無効化
 						if(teff.target_attr[card.attr[0]] <= 0 && !teff.isreinforce){
 							teff.desc = desc + "[属性不一致:無効]";
