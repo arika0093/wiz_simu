@@ -72318,7 +72318,7 @@ Cards = [{
 	ss1: {
 		desc: "<狂暴化> 5ターンの間、デタラメな方向に攻撃するようになるが、必ずクリティカルが出るようになる",
 		turn: 1,
-		proc: null,
+		proc: [ss_berserk_s(5)],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],2),

@@ -598,6 +598,33 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
+	// ブーストエンハンスをかける
+	"ss_berserk": function (fld, n, cobj, params) {
+		var t = params[0];
+		var cds = ss_get_targetally(fld, cobj, fld.Allys.Deck, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
+		for (var i = 0; i < nows.length; i++) {
+			var cd = cds[i];
+			var now = nows[i];
+			if (now.nowhp > 0) {
+				now.turn_effect.push({
+					desc: "凶暴化",
+					type: "ss_berserk",
+					icon: "ss_berserk",
+					isdual: false,
+					iscursebreak: true,
+					turn: t,
+					lim_turn: t,
+					panic_target: true,
+					isberserk: true,
+					effect: function (f, oi, teff, state, is_t, is_ak, is_ss) {},
+				});
+				fld.log_push("Unit[" + (i + 1) + "]: 凶暴化");
+			}
+		}
+		return true;
+	},
+	// -----------------------------
 	// 精霊強化効果を味方全体に付与する
 	"ss_reinforcement": function (fld, oi, cobj, params) {
 		// paramsにssの配列を書いて、全て実行する

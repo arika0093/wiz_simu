@@ -484,6 +484,20 @@ function ss_boost_enhance_s(p, t, dmg) {
 }
 
 /**
+ * 凶暴化(攻撃対象がランダムになり,常にクリティカル)を自身にかける
+ * t:	 継続ターン数
+ **/
+function ss_berserk_s(t) {
+	return ss_template({
+		name: "ss_berserk",
+		type: "turn_effect",
+		subtype: "berserk",
+		target: "own",
+		p1: t,
+	});
+}
+
+/**
  * 味方全体に精霊強化効果を付与し、自分は行動不能になる
  * t: 行動不能ターン数
  * sss: ssの配列(ex: [ss_attr_guard([1,1,1,1,1], 0.1, 4, "RF"), ss_enhance_all(1, 4, [1,1,1,1,1], "RF")])

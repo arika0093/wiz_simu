@@ -9,6 +9,14 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 	var d = d_dat.damage;
 	var bef_ond = d;
 
+	// 凶暴化状態か取得
+	var is_berserk = $.grep(now.turn_effect, function(e){
+		return e.isberserk;
+	}).length > 0;
+	// 凶暴化状態なら威力を三倍に
+	if(is_berserk){
+		d *= 3;
+	}
 	// 攻撃時スキル確認
 	if (enemy.turn_effect.length > 0) {
 		var skillct = $.grep(enemy.turn_effect, function (g) {
@@ -20,7 +28,7 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 			if (a.priority < b.priority) return +1;
 		})
 		for (var j = 0; j < skillct.length; j++) {
-			d = Math.round(skillct[j].on_damage(Field, d, atk_atr));
+			d = Math.round(skillct[j].on_damage(Field, d, atk_atr, is_berserk));
 		}
 	}
 
@@ -202,10 +210,16 @@ function attr_magnification(atk_atr, def_atr) {
 function auto_attack_order(fld, enemys, attr, own_index, obj_tg) {
 	// ランダムターゲット（パニックシャウト）
 	var now = fld.Allys.Now[own_index];
+	var is_rndberserk = $.grep(now.turn_effect, function (e) {
+		return e.panic_target && e.isberserk;
+	});
 	var is_rndtarget = $.grep(now.turn_effect, function (e) {
 		return e.panic_target;
 	});
-	if (is_rndtarget.length > 0){
+	if (is_rndberserk.length > 0) {
+		return Math.floor(dmg_generate_rand(0, 3)) % 3;
+	}
+	else if (is_rndtarget.length > 0){
 		var alives = [];
 		$.each(enemys, function(i, e){
 			if(e.flags.isAliveWhenAnswer > 0){
@@ -218,7 +232,6 @@ function auto_attack_order(fld, enemys, attr, own_index, obj_tg) {
 	}
 	// 攻撃順序が指定されているならそっちを優先
 	var fst_attr = fld.Allys.Deck[own_index].attr[0];
-	var now = fld.Allys.Now[own_index];
 	var tg = Number(attr == fst_attr ? now.target[0] : now.target[1]);
 	for (var i = tg; i > 0; i--) {
 		if (enemys[i]) { break; }

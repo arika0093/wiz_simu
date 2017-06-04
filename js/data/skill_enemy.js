@@ -1148,8 +1148,11 @@ function impregnable(t) {
 			lim_turn: t,
 			priority: 2,
 			effect: function () { },
-			on_damage: function (fld, dmg, attr) {
-				if (dmg < 1) {
+			on_damage: function (fld, dmg, attr, is_critical) {
+				if (is_critical){
+					return dmg;
+				}
+				else if (dmg < 1) {
 					return 0;
 				}
 				return 1;

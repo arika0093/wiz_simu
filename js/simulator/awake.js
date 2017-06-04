@@ -76,7 +76,7 @@ function add_awake_ally(cards, nows, own_no, legend_skill, ignorenowhpup) {
 			&& (!e.cond || e.cond(Field, own_no, t))) {         // 潜在固有の条件とも一致する場合反映
 				nows[t].maxhp += e.up_hp;
 				if(nows[t].nowhp > 0 && !ignorenowhpup){
-					nows[t].nowhp += e.up_hp;
+					nows[t].nowhp = Math.max(nows[t].nowhp + e.up_hp, 1);
 				}
 				nows[t].atk += e.up_atk;
 				nows[t].def_awhp += e.up_hp;
