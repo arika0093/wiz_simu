@@ -66,6 +66,9 @@ function cardImgListup(r) {
 		var c = $.grep(Cards, function (e) {
 			return e.cardno == cn;
 		})[0];
+		if(c === undefined){
+			c = {name: "(unknown)", imageno: -1}
+		}
 		op += "<span class='dimg'><a title='" + c.name +
 			"' href='/search/detail/?id=" + cn + "'>" +
 			"<img src='" + get_image_url(c.imageno, c.imageno_prefix) + "'></a></span>"

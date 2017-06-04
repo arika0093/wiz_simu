@@ -89,6 +89,16 @@ function panel(attr) {
 				as_afters[i][0]();
 			}
 		}
+		// 自傷ASの処理
+		var nows = Field.Allys.Now;
+		for(var i=0; i < nows.length; i++){
+			var hp = Field.Status.hpcons_task[i];
+			if(hp > 0){
+				Field.log_push("Unit[" + (i + 1) + "]: 自傷(" + Math.round(hp * 100) + "%)");
+				damage_ally(Math.floor(nows[i].maxhp * hp), i);
+				Field.Status.hpcons_task[i] = 0;
+			}
+		}
 		// チェイン消費ASの処理
 		var reducetask = Field.Status.chain_redtask || [];
 		var tasksum = reducetask.length > 0 ? reducetask.reduce(function(p, c){ return p+c; }) : 0;
@@ -246,10 +256,13 @@ function answer_skill(as_arr, panel, as_afters, bef_f) {
 				var as = as_arr[i][j];
 				// 攻撃回数を増やす潜在結晶反映
 				var aw_t = pickup_awakes(card, "awake_ans_atknup", false);
-				for (var n = 0; n < aw_t.length; n++) {
-					if (as.atkn >= 2) {
-						as.atkn += aw_t[n].upvalue;
+				if(aw_t.length > 0){
+					for (var n = 0; n < aw_t.length; n++) {
+						if (as.atkn >= 2 && !as.atkn_awakeadded) {
+							as.atkn += aw_t[n].upvalue;
+						}
 					}
+					as.atkn_awakeadded = true;
 				}
 				// ASが適用されるならば攻撃数を取得
 				if (as.type == "attack" && is_answer_target(bef_f, as, chain, -1, -1, i, -1, panel)) {
@@ -384,8 +397,17 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem, bef_f)
 	var atk_as = as[as_pos[targ]]
 	var en = enemy[targ];
 	var ch = Field.Status.chain;
+	// 凶暴化状態か取得
+	var is_berserk = $.grep(now.turn_effect, function(e){
+		return e.isberserk
+	}).length > 0;
+	// 敵データを取得できなかったら(=外れた場合)MISSを出して終了
+	if(is_berserk && (en === undefined || en.nowhp <= 0 || atk_as === undefined)){
+		Field.log_push("Unit[" + (index + 1) + "]: MISS(target: 敵[" + (targ + 1) + "])");
+		atk_as = as[as_pos[0]];
+	}
 	// 全体攻撃なら敵全体にダメージ計算
-	if (atk_as.isall) {
+	else if (atk_as.isall) {
 		// 分散攻撃なら敵の数取得
 		var var_num = 0;
 		if(atk_as.isvariance){
@@ -425,6 +447,7 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem, bef_f)
 // エンハスキルの処理
 function answer_enhance(as, i, p, bef_f) {
 	var as_afters = [];
+	var is_afteradded = false;
 	for (var ci = 0; ci < Field.Allys.Deck.length; ci++) {
 		var ass = {rate: 0};
 		var card = Field.Allys.Deck[ci];
@@ -448,10 +471,11 @@ function answer_enhance(as, i, p, bef_f) {
 		// エンハ値追加
 		var bef_enh = now.as_enhance ? now.as_enhance : 0;
 		now.as_enhance = bef_enh + ass.rate;
-	}
-	// 攻撃後処理
-	if (ass.after) {
-		as_afters.push(ass.after(Field, i, true));
+		// 攻撃後処理
+		if (ass.after && !is_afteradded) {
+			as_afters.push(ass.after(Field, i, true));
+			is_afteradded = true;
+		}
 	}
 	return as_afters;
 }

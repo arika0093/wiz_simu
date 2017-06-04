@@ -521,7 +521,7 @@ var SpSkill = {
 					target_sattr: (rate == s_r ? s_attr : [1,1,1,1,1]),
 					effect: function (f, oi, teff, state) {
 						var card = f.Allys.Deck[oi];
-						var desc = "攻撃力アップ" + typestr + "(" + (rate * 100) + "%)";
+						var desc = "攻撃力アップ" + typestr + "(" + (teff.up_rate * 100) + "%)";
 						// エンハンスの対応属性と一致していないなら説明文変更/効果無効化
 						if(teff.target_attr[card.attr[0]] <= 0 && !teff.isreinforce){
 							teff.desc = desc + "[属性不一致:無効]";
@@ -593,6 +593,33 @@ var SpSkill = {
 				});
 				fld.log_push("Unit[" + (i + 1) + "]: 自身攻撃力Up[Boost](" +
 					(rate * 100) + "%, " + t + "t, dmg: " + (dmg * 100) + "%)");
+			}
+		}
+		return true;
+	},
+	// -----------------------------
+	// ブーストエンハンスをかける
+	"ss_berserk": function (fld, n, cobj, params) {
+		var t = params[0];
+		var cds = ss_get_targetally(fld, cobj, fld.Allys.Deck, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
+		for (var i = 0; i < nows.length; i++) {
+			var cd = cds[i];
+			var now = nows[i];
+			if (now.nowhp > 0) {
+				now.turn_effect.push({
+					desc: "凶暴化",
+					type: "ss_berserk",
+					icon: "ss_berserk",
+					isdual: false,
+					iscursebreak: true,
+					turn: t,
+					lim_turn: t,
+					panic_target: true,
+					isberserk: true,
+					effect: function (f, oi, teff, state, is_t, is_ak, is_ss) {},
+				});
+				fld.log_push("Unit[" + (i + 1) + "]: 凶暴化");
 			}
 		}
 		return true;
