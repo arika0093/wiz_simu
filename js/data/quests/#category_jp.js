@@ -48,6 +48,12 @@ category_jp = {
     "": {
 		jp: "未設定",
 	},
+    "wbtcolabo": {
+		is_dispsim: true,
+		sim_index: 11,
+		jp: "黒白テニスコラボ",
+		disable_date:"2017/6/31 16:00",
+	},
     "kuugarize": {
 		is_dispsim: true,
 		sim_index: 11,
@@ -165,18 +171,18 @@ category_jp = {
     },
     "8million2": {
     	jp: "八百万神秘譚2",
-    	is_dispsim: true,
-    	sim_index: 12,
+    	is_dispsim: false,
+    	sim_index: 16,
     },
     "mareless1": {
     	jp: "黄昏メアレス",
-    	is_dispsim: true,
-    	sim_index: 12,
+    	is_dispsim: false,
+    	sim_index: 16,
     },
     "sennenzakura1": {
     	jp: "古の森の千年桜",
-    	is_dispsim: true,
-    	sim_index: 12,
+    	is_dispsim: false,
+    	sim_index: 16,
     },
     "itazuramegami1": {
     	jp: "ｲﾀｽﾞﾗ女神とうさぎのおはなし",
@@ -197,13 +203,13 @@ category_jp = {
 	},
    "vzone": {
 		jp: "VOID ZONE",
-		is_dispsim: true,
+		is_dispsim: false,
 		sim_index: 11,
 	},
     "burningtower": {
 		jp: "バーニングタワー",
 		is_dispsim: true,
-		sim_index: 10,
+		sim_index: 21,
 		disable_date:"2017/1/20 16:00",
 	},
     "material": {

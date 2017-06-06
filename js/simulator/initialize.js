@@ -445,6 +445,7 @@ function initialize_allys_flags(nows) {
 // (別ファイルを作るには内容が少ないのでここに記載)
 function helper_change_process() {
 	var fs = Field.Status;
+	var deck = Field.Allys.Deck;
 	var nows = Field.Allys.Now;
 	// チェックの必要がないなら何もしない
 	if (!fs.is_helper || is_ally_alldeath()) {
@@ -456,8 +457,8 @@ function helper_change_process() {
 		}
 		if (nows[i].nowhp <= 0) {
 			// 入れ替え(Deck)
-			var sw_d = Field.Allys.Deck[i];
-			Field.Allys.Deck[i] = Field.Allys.Deck["helper"];
+			var sw_d = deck[i];
+			Field.Allys.Deck[i] = deck["helper"];
 			Field.Allys.Deck["helper"] = sw_d;
 			// 入れ替え(Now)
 			var sw_n = nows[i];
@@ -466,11 +467,12 @@ function helper_change_process() {
 			// 処理(L化)
 			nows[i].ss_current = 999;
 			legend_timing_check(Field.Allys.Deck, Field.Allys.Now, i);
-			
 			// フラグON
 			fs.is_hlpchanged = true;
 			fs.hlpchanged_index = i;
 			Field.log_push("Unit[" + (i + 1) + "]: 助っ人交代");
+			// 潜在をかけ直す
+			//func_reawake(Field, Field.Allys.Deck, Field.Allys.Now, true);
 		}
 	}
 
