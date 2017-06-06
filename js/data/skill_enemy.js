@@ -125,7 +125,7 @@ function damage_switch(cond, func, is_always) {
 // 攻撃
 // -----------------------------------
 // (内部用)攻撃
-function _s_enemy_attack(fld, dmg, ei, ai, is_dmg_const) {
+function _s_enemy_attack(fld, dmg, ei, ai, is_dmg_const, ignore_guard) {
 	var e = GetNowBattleEnemys(ei);
 	var cd = fld.Allys.Deck[ai];
 	var now = fld.Allys.Now[ai];
@@ -133,16 +133,21 @@ function _s_enemy_attack(fld, dmg, ei, ai, is_dmg_const) {
 		// 属性倍率
 		var rate = attr_magnification(e.attr, cd.attr[0]);
 		// 属性軽減取得
-		var relief = card_dmg_relief(cd, now, e.attr);
+		var relief = !ignore_guard ? card_dmg_relief(cd, now, e.attr) : 0;
 		// パネル軽減取得
 		var p_relief = 0;
 		var p_guard = fld.Status.panel_guard;
-		if (p_guard.attr[e.attr] > 0) {
+		if (p_guard.attr[e.attr] > 0 && !ignore_guard) {
 			p_relief = p_guard.rate;
 		}
 		// 攻撃前スキル(主に弱体化)確認
 		$.each(now.turn_effect, function (i, e) {
-			e.bef_damage ? rate = e.bef_damage(fld, rate) : false;
+			if(e.bef_damage){
+				var tmp = e.bef_damage(fld, rate);
+				if(!ignore_guard || (rate < tmp)){
+					rate = tmp;
+				}
+			}
 		});
 		// 乱数
 		var rnd = damage_rand();
@@ -151,7 +156,10 @@ function _s_enemy_attack(fld, dmg, ei, ai, is_dmg_const) {
 		// ダメージブロックなどの確認
 		$.each(now.turn_effect, function (i, e) {
 			if (e.on_damage) {
-				dmg = e.on_damage(fld, dmg, e.attr);
+				var tmp = e.on_damage(fld, dmg, e.attr);
+				if(!ignore_guard || (dmg < tmp)){
+					dmg = tmp;
+				}
 			}
 		});
 		// 敵ステアップ補正
@@ -262,6 +270,24 @@ function s_enemy_attack_deadgrudge(r1, r2, r3, tgtype) {
 	}, makeDesc("亡者の怨念"));
 }
 
+// 防御無視攻撃(不利属性相手への単発ダメージ, 攻撃対象数, 攻撃回数, 攻撃対象詳細)
+function s_enemy_attack_ignoreguard(dmg, tnum, atkn, tgtype) {
+	return m_create_enemy_move(function (fld, n, nows) {
+		// ログ出力
+		Field.log_push("Enemy[" + (n + 1) + "]: " +
+			(tnum < fld.Allys.Deck.length ? tnum : "全") + "体防御無視" +
+			(atkn > 1 ? atkn + "連撃(" : "攻撃(") + dmg + ")");
+		// 攻撃対象取得
+		var tg = gen_enemytarget_array(tnum, atkn, tgtype, nows);
+		// 攻撃
+		for (var i = 0; i < tg.length; i++) {
+			for (var j = 0; j < tg[i].length; j++) {
+				_s_enemy_attack(fld, dmg * 2, n, tg[i][j], false, true);
+			}
+		}
+	}, makeDesc("防御無視攻撃"));
+}
+
 
 // 吸収(削り幅, 回復値, 攻撃対象数)
 function s_enemy_absorb(ratiorate, tnum, healvalue) {
@@ -310,6 +336,7 @@ function s_enemy_delay_attack(dmg, tnum, atkn) {
 // 状態異常攻撃テンプレ
 // (Field, 説明, 種類, ターン数, 対象, 発動敵番号, 敵のカウンター攻撃かどうか, 追加内容, 異常無効貫通)
 function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f_obj, disable_guard) {
+	var rst = [];
 	var tg = !target.length ? gen_enemytarget_array(target, 1, false)[0] : target;
 	f_obj = f_obj || {};
 	// effect add
@@ -340,19 +367,21 @@ function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f
 		if(eff_obj.bef_absattack){
 			is_abs_guard = is_abs_guard || !eff_obj.bef_absattack(fld, tg[i], ei);
 		}
-		if (!is_abs_guard && !is_abs_guard_aw && !disable_guard) {
+		if ((!is_abs_guard || disable_guard) && !is_abs_guard_aw) {
 			// 追加
 			now.turn_effect.push(eff_obj);
 			if (ei >= 0) {
 				logtext += "Enemy[" + (ei + 1) + "]: ";
 			}
 			logtext += desc + "(" + turn + "t)(対象: Unit[" + (tg[i] + 1) + "])";
+			rst[tg[i]] = true;
 		} else {
 			// 無効
 			if (ei >= 0) {
 				logtext += "Enemy[" + (ei + 1) + "]: ";
 			}
 			logtext += desc + "(" + turn + "t)(対象: Unit[" + (tg[i] + 1) + "])(無効)";
+			rst[tg[i]] = false;
 		}
 		fld.log_push(logtext);
 		if (!is_counter) {
@@ -362,6 +391,7 @@ function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f
 		// スキル重複確認
 		turn_effect_check(false);
 	}
+	return rst;
 }
 
 // 毒(効果値, 対象数, 継続ターン)
@@ -371,9 +401,17 @@ function s_enemy_poison(d, tnum, t) {
 			fld, "毒(" + d + ")", "poison", t, tnum, n, is_counter, {
 				is_poison: true,
 				effect: function (f, oi, teff, state, is_t, is_b, is_ss) {
+					var now = f.Allys.Now[oi];
+					var is_imple = $.grep(now.turn_effect, function(e){
+						return e.type == "ss_impregnable"
+					})
 					if (is_t && !is_b && !is_ss && state != "overlay") {
-						f.log_push("Unit[" + (oi + 1) + "]: 毒(" + d + "ダメージ)");
-						damage_ally(d, oi, true);
+						if(!is_imple){
+							f.log_push("Unit[" + (oi + 1) + "]: 毒(" + d + "ダメージ)");
+							damage_ally(d, oi, true);
+						} else {
+							f.log_push("Unit[" + (oi + 1) + "]: 毒(0ダメージ[無効化])");
+						}
 					}
 				},
 			}
@@ -597,38 +635,6 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown) {
 // 属性反転
 function s_enemy_attrreverse(t, tnum){
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
-		// 潜在を無効化した後かけ直す関数
-		var func_reawake = function(fld, cards, nows, isbreak){
-			// 味方全員のステ上昇潜在を一旦無効化
-			for(var i=0; i < nows.length; i++){
-				var ntg = nows[i];
-				ntg.def_awhp = ntg.def_hp;
-				ntg.def_awatk = ntg.def_atk;
-				ntg.maxhp = Math.max(ntg.def_hp, 1);
-				ntg.nowhp = Math.min(ntg.maxhp, ntg.nowhp);
-				ntg.atk = Math.max(ntg.def_atk, 0);
-			}
-			// 味方全体のステ上昇潜在を再度有効化
-			for(var i=0; i < nows.length; i++){
-				var ntg = nows[i];
-				var isL = is_legendmode(cards[i], ntg);
-				add_awake_ally(cards, nows, i, false, isbreak);
-				if(isL){
-					add_awake_ally(cards, nows, i, true, isbreak);
-				}
-			}
-			// ステアップ効果値反映
-			for(var i=0; i < nows.length; i++){
-				var ntg = nows[i];
-				$.each(ntg.turn_effect, function(j,e){
-					if(e.type == "ss_statusup"){
-						ntg.maxhp = Math.max(ntg.def_awhp + ntg.upval_hp, 1);
-						ntg.nowhp = Math.min(ntg.nowhp, ntg.maxhp);
-						ntg.atk = Math.max(ntg.def_awatk + ntg.upval_atk, 0);
-					}
-				});
-			}
-		}
 		// 属性が一致しない場合、属性指定効果を無効化
 		var func_invalid = function(fld, cards, nows, index){
 			var card = cards[index];
@@ -653,20 +659,8 @@ function s_enemy_attrreverse(t, tnum){
 		
 		// 攻撃ターゲットを取得
 		var tg = gen_enemytarget_array(tnum, 1, false)[0];
-		// 属性反転処理
-		var cs = fld.Allys.Deck;
-		for(var i=0; i < cs.length; i++){
-			if(tg.indexOf(i) >= 0){
-				var c = cs[i];
-				// ここでは属性反転のみ行う(潜在/エンハンスの無効化処理は最後に行う)
-				if(c.def_attr[1] != -1){
-					c.attr[0] = c.def_attr[1];
-					c.attr[1] = c.def_attr[0];
-				}
-			}
-		}
 		// 状態異常付与(解除時の処理, etc)
-		s_enemy_abstate_attack(
+		var rst = s_enemy_abstate_attack(
 			fld, "属性反転",
 			"attr_reverse", t, tg, n, is_counter, {
 				bef_absattack: function (f, oi, ei) {
@@ -681,7 +675,6 @@ function s_enemy_attrreverse(t, tnum){
 						card.attr[0] = teff.def_attr[0];
 						card.attr[1] = teff.def_attr[1];
 						// 潜在をかけ直す
-						// 未解決事項(later-fix): 同時に何体も解除する時HP回復量がバグあり
 						func_reawake(f, f.Allys.Deck, f.Allys.Now, true);
 						// エンハ無効化
 						func_invalid(f, f.Allys.Deck, f.Allys.Now, oi);
@@ -689,19 +682,36 @@ function s_enemy_attrreverse(t, tnum){
 				},
 			}
 		);
+		// 属性反転処理(付与に成功した精霊のみ行う)
+		var isallfalse = true;
+		var cs = fld.Allys.Deck;
+		for(var i=0; i < cs.length; i++){
+			if(tg.indexOf(i) >= 0 && rst[tg[i]] === true){
+				var c = cs[i];
+				// ここでは属性反転のみ行う(潜在/エンハンスの無効化処理は最後に行う)
+				if(c.def_attr[1] != -1){
+					c.attr[0] = c.def_attr[1];
+					c.attr[1] = c.def_attr[0];
+				}
+				isallfalse = false;
+			}
+		}
 		// 反射チェック
 		turneff_check_skillcounter(fld);
-		// ここで全精霊の潜在をかけ直し、エンハ無効化処理を行う
-		var cards = fld.Allys.Deck;
-		var nows = fld.Allys.Now;
-		// 潜在かけ直し
-		func_reawake(fld, cards, nows);
-		for(var i=0; i < cards.length; i++){
-			if(tg.indexOf(i) >= 0) {
-				var card = cards[i];
-				if (card.def_attr[1] != -1) {
-					// エンハ無効化
-					func_invalid(fld, cards, nows, i);
+		// 被弾精霊がいないなら以下の処理は行わない
+		if(!isallfalse){
+			// ここで全精霊の潜在をかけ直し、エンハ無効化処理を行う
+			var cards = fld.Allys.Deck;
+			var nows = fld.Allys.Now;
+			// 潜在かけ直し
+			func_reawake(fld, cards, nows);
+			for(var i=0; i < cards.length; i++){
+				if(tg.indexOf(i) >= 0) {
+					var card = cards[i];
+					if (card.def_attr[1] != -1) {
+						// エンハ無効化
+						func_invalid(fld, cards, nows, i);
+					}
 				}
 			}
 		}

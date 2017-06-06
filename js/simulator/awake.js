@@ -59,7 +59,7 @@ function add_awake_ally(cards, nows, own_no, legend_skill, ignorenowhpup) {
 	$.each(own_statups, function (n, e) {
 		if(!e.cond || e.cond(Field, own_no)){
 			nows[own_no].maxhp += e.up_hp;
-			if(nows[own_no].nowhp > 0 && !ignorenowhpup){
+			if(!ignorenowhpup){
 				nows[own_no].nowhp += e.up_hp;
 			}
 			nows[own_no].atk += e.up_atk;
@@ -69,14 +69,14 @@ function add_awake_ally(cards, nows, own_no, legend_skill, ignorenowhpup) {
 	});
 	// 味方ステアップの反映
 	$.each(ally_statups, function (n, e) {
-		for (var t = 0; t < cards.length; t++) {
+		for (var t in cards) {
 			if(e.attr[cards[t].attr[0]] > 0                     // 現在の属性と一致していて
 			//&& e.attr[nows[t].def_attr[0]] > 0	            // 元々の属性とも一致していて(修正により削除)
 			&& check_spec_inarray(e.spec, cards[t].species)     // 対象種族とも一致していて
 			&& (!e.cond || e.cond(Field, own_no, t))) {         // 潜在固有の条件とも一致する場合反映
 				nows[t].maxhp += e.up_hp;
-				if(nows[t].nowhp > 0 && !ignorenowhpup){
-					nows[t].nowhp = Math.max(nows[t].nowhp + e.up_hp, 1);
+				if(!ignorenowhpup){
+					nows[t].nowhp += e.up_hp;
 				}
 				nows[t].atk += e.up_atk;
 				nows[t].def_awhp += e.up_hp;
@@ -114,7 +114,7 @@ function minus_legend_awake(cards, nows, own_no) {
 		}
 	});
 	$.each(ally_statups, function (n, e) {
-		for (var t = 0; t < cards.length; t++) {
+		for (var t in cards) {
 			if(e.attr[cards[t].attr[0]] > 0
 			&& check_spec_inarray(e.spec, cards[t].species)
 			&& (!e.cond || e.cond(Field, own_no, t))) {
@@ -135,6 +135,48 @@ function minus_legend_awake(cards, nows, own_no) {
 			}
 		}
 	});
+}
+
+// 潜在を無効化した後かけ直す関数
+function func_reawake(fld, cards, nows, isbreak){
+	// 味方全員のステ上昇潜在を一旦無効化
+	for(var i=0; i < nows.length; i++){
+		var ntg = nows[i];
+		ntg.def_awhp = ntg.def_hp;
+		ntg.def_awatk = ntg.def_atk;
+		ntg.maxhp = Math.max(ntg.def_hp, 1);
+		ntg.nowhp = Math.min(ntg.maxhp, ntg.nowhp);
+		ntg.atk = Math.max(ntg.def_atk, 0);
+	}
+	// 味方全体[助っ人込み]のステ上昇潜在を再度有効化
+	for(var i in nows){
+		add_awake_ally(cards, nows, i, false, isbreak);
+	}
+	// 味方全体のステ上昇潜在を再度有効化(L覚醒)
+	for(var i=0; i < nows.length; i++){
+		var ntg = nows[i];
+		var isL = is_legendmode(cards[i], ntg);
+		if(isL){
+			add_awake_ally(cards, nows, i, true, isbreak);
+		}
+	}
+	// 異常値を修正
+	for(var i=0; i < nows.length; i++){
+		var ntg = nows[i];
+		ntg.maxhp = Math.max(ntg.maxhp, 1);
+		ntg.nowhp = Math.max(Math.min(ntg.nowhp, ntg.maxhp), 1);
+	}
+	// ステアップ効果値反映
+	for(var i=0; i < nows.length; i++){
+		var ntg = nows[i];
+		$.each(ntg.turn_effect, function(j,e){
+			if(e.type == "ss_statusup"){
+				ntg.maxhp = Math.max(ntg.def_awhp + ntg.upval_hp, 1);
+				ntg.nowhp = Math.min(ntg.nowhp, ntg.maxhp);
+				ntg.atk = Math.max(ntg.def_awatk + ntg.upval_atk, 0);
+			}
+		});
+	}
 }
 
 // ファストがいくつついているかを返却する

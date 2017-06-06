@@ -14,7 +14,7 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 		return e.isberserk;
 	}).length > 0;
 	// 凶暴化状態なら威力を三倍に
-	if(is_berserk){
+	if(is_berserk && !is_ss){
 		d *= 3;
 	}
 	// 攻撃時スキル確認
@@ -165,6 +165,13 @@ function heal_ally(fld, value, index) {
 		// ドラゴンモード時に回復しない
 		var is_drgmode = is_legendmode(cd, now) && pickup_awakes(cd, "awake_no_heal", true).length > 0;
 		if (is_drgmode) {
+			return false;
+		}
+		// 鉄壁時に回復しない
+		var is_imple = $.grep(now.turn_effect, function(e){
+			return e.type == "ss_impregnable";
+		}).length > 0;
+		if(is_imple){
 			return false;
 		}
 		// 回復反転時は回復量を逆転させる
