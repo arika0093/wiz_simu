@@ -434,7 +434,7 @@ div.ally_others{
 div.input_div{
     position: relative;
     float: left;
-    width: 70%;
+    width: 100%;
 }
 
 input.decksel{
@@ -447,7 +447,7 @@ input.decksel{
 img.srchimg{
 	position: absolute;
     right: 2px;
-    top: 0px;
+    top: 3px;
     padding: 1px 4px 4px 8px;
 }
 
@@ -492,9 +492,9 @@ p.item_name{
 }
 
 button.ally_edit{
-	width: 25%;
-	margin-left: 5px;
-	float: left;
+	width: 35%;
+	margin-top: 4px;
+	float: right;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -524,18 +524,18 @@ button.ally_edit{
 }
 
 p.ally_skill{
-	width: 85%;
+	/*
+	display: none;
+	*/
+	width: 30%;
 	margin: 0px 0.5em 0 0;
 	padding: 0;
 	text-align: left;
-	float: right;
+	float: left;
 	font-size: 10pt;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-}
-p.ally_skill:last-child{
-	display: none;
 }
 
 button#Start{

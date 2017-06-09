@@ -454,11 +454,13 @@ div.deckmenu{
 }
 
 div.ally_others{
-	width: 100%;
+	width: 98%;
 	float: left;
-	padding: 4px 6px 4px 77px;
+	margin-left: 8px;
+	padding: 4px 6px 4px 69px;
 	position: absolute;
 	box-sizing: border-box;
+	background: white;
 }
 
 div.input_div{

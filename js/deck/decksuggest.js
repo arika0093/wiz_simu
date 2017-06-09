@@ -44,8 +44,10 @@ function decksgg_loaddeck(data) {
 		$("#helper_sel").toggle(checked);
 	});
 
-	// sortable
-	$("#allys_sel").sortable();
+	// sortable(without smartphone)
+	if(w_width_sp =window.innerWidth > 600){
+		$("#allys_sel").sortable();
+	}
 }
 
 // autocomplete指定 / deckload / Dialog
@@ -218,6 +220,8 @@ $(function () {
 				}
 			},
 			"閉じる": function () {
+				var n = Number($("#d_edit_index").text());
+				decksel_show(n + 1, null, true)
 				$(this).dialog("close");
 			},
 		},
@@ -602,18 +606,27 @@ function decksel(i) {
 }
 
 // 精霊情報から表示を行う
-function decksel_show(idx, c) {
-	if (c) {
+function decksel_show(idx, c, carddata_noreload) {
+	var crys = (Deckdata.deck.length > 0 ? Deckdata.deck[idx - 1].crystal : null);
+	if (c || (crys && carddata_noreload)) {
 		// show
-		var AS = c.as2 ? c.as2 : c.as1;
-		var SS = c.ss2 ? c.ss2 : c.ss1;
-		$("#ally0" + idx + "_attr_main").attr("class", "attr_" + c.attr[0]);
-		$("#ally0" + idx + "_attr_sub").attr("class", "attr_" + (c.attr[1] != -1 ? c.attr[1] : c.attr[0]));
-		$("#ally0" + idx + "_img").attr("src", get_image_url(c.imageno, c.imageno_prefix));
-		$("#ally0" + idx + "_mana").text("+" + Deckdata.deck[idx-1].mana);
-		$("#deck0" + idx).val(c.name);
-		$("#ally0" + idx + "_as").text("AS: " + AS.desc);
-		$("#ally0" + idx + "_ss").text("SS: " + SS.desc);
+		var w_width_sp =window.innerWidth <= 600;
+		var crys_1 = crys[0] ? crys[0].name : "";
+		var crys_2 = crys[1] ? crys[1].name : "";
+		if(crys.length > 2){
+			crys_2 += ", and more…";
+		}
+		if(!carddata_noreload){
+			var AS = c.as2 ? c.as2 : c.as1;
+			var SS = c.ss2 ? c.ss2 : c.ss1;
+			$("#ally0" + idx + "_attr_main").attr("class", "attr_" + c.attr[0]);
+			$("#ally0" + idx + "_attr_sub").attr("class", "attr_" + (c.attr[1] != -1 ? c.attr[1] : c.attr[0]));
+			$("#ally0" + idx + "_img").attr("src", get_image_url(c.imageno, c.imageno_prefix));
+			$("#ally0" + idx + "_mana").text("+" + Deckdata.deck[idx-1].mana);
+			$("#deck0" + idx).val(c.name);
+		}
+		$("#ally0" + idx + "_as").text("結晶1: " + (w_width_sp && crys_1 != "" ? "装備中" : crys_1));
+		$("#ally0" + idx + "_ss").text("結晶2: " + (w_width_sp && crys_2 != "" ? "装備中" : crys_2));
 	} else {
 		$("#ally0" + idx + "_attr_main").attr("class", "attr_none");
 		$("#ally0" + idx + "_attr_sub").attr("class", "attr_none");

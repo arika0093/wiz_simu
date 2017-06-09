@@ -10,11 +10,11 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 	var bef_ond = d;
 
 	// 凶暴化状態か取得
-	var is_berserk = $.grep(now.turn_effect, function(e){
+	var is_berserk = !is_ss && $.grep(now.turn_effect, function(e){
 		return e.isberserk;
 	}).length > 0;
 	// 凶暴化状態なら威力を三倍に
-	if(is_berserk && !is_ss){
+	if(is_berserk){
 		d *= 3;
 	}
 	// 攻撃時スキル確認
