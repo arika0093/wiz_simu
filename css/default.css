@@ -493,6 +493,13 @@ select.skill_sel{
 	padding: 0.25ex 0;
 	box-sizing: border-box;
 }
+select.sch_ss_type{
+	width: 70%;
+}
+#sch_ss_turn{
+	width: 25%;
+	vertical-align: middle;
+}
 div#src_result{
 	margin-top: .5ex;
 	border: 1px solid #BBB;

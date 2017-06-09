@@ -454,6 +454,7 @@ $(function () {
 				// 選択状況を取得
 				var m_attr = Number($("#s_attr_m").val());
 				var s_attr = Number($("#s_attr_s").val());
+				var ss_t = $("#sch_ss_turn").val();
 				var as = schfl_textarr_from_msel(".sch_as_type option:selected");
 				var ss = schfl_textarr_from_msel(".sch_ss_type option:selected");
 				// obj生成
@@ -463,14 +464,15 @@ $(function () {
 					attr_s: s_attr,
 					as_types: as,
 					ss_types: ss,
+					ss_maxturn: ss_t.length > 0 ? Number(ss_t) : -1,
 					disttype: $("#is_dist").prop("checked"),
 					// default value
 					name: "",
 					as_maxchain: -1,
 					as_ch_cond: 0,
-					ss_maxturn: -1,
 					ss_target: 0,
 					ss_search_ao: 0,
+					ss_fastskl: true,
 					awake_types: [],
 					aw_name: "",
 					ap_name: [],

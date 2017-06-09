@@ -301,6 +301,7 @@
         <select class="sch_ss_type skill_sel">
             <option value="-1">《SSの種類を指定》</option>
         </select>
+        <input type="number" id="sch_ss_turn" placeholder="《発動T数》" />
         <input type="checkbox" id="is_dist" /><label for="is_dist">配布精霊のみを検索</label>
         <div id="src_result"></div>
     </div>
