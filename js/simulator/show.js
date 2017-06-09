@@ -585,6 +585,7 @@ function sim_show() {
 					"panel_fire":		[panel, [0]],
 					"panel_water":		[panel, [1]],
 					"panel_thunder":	[panel, [2]],
+					"panel_multi":	    [panel, "#"],
 					"alltarget_left":	[target_allselect, 0],
 					"alltarget_center":	[target_allselect, 1],
 					"alltarget_right":	[target_allselect, 2],
@@ -595,7 +596,7 @@ function sim_show() {
 					"unit5_ss":			[ss_push, 4],
 				};
 				// get task-do-array
-				var task_doarr = $("#randcheck_actdata").text().split(",");
+				var task_doarr = $("#randcheck_actdata").text().split("/");
 				var test_rnum = Number($("#randcheck_rnum").val());
 				var is_calcdisp = $("#randcheck_disp").prop("checked");
 				var disp_num = 5;
@@ -615,7 +616,14 @@ function sim_show() {
 						for (var j = 0; j < task_doarr.length; j++) {
 							var ti = task_doarr[j];
 							if (ti == "") { continue; }
-							tobj[ti][0](tobj[ti][1]);
+							if(ti.indexOf("|") >= 0){
+								var tis = ti.split("|");
+								var p1 = tobj[tis[0]][1];
+								tis[1] = tis[1].split(",").map(Number);
+								tobj[tis[0]][0](p1 == "#" ? tis[1] : p1);
+							} else {
+								tobj[ti][0](tobj[ti][1]);
+							}
 						}
 						// 結果を確認
 						var aft_battle = Field.Status.nowbattle;
@@ -832,12 +840,23 @@ function log_view() {
 function rand_checker() {
 	$("#dialog_randchecker").dialog("open");
 }
+function randcheck_selchange() {
+	var si = $("#randcheck_act option:selected");
+	if(si.attr("type") == "showp"){
+		$("#rch_editpanel").show();
+	} else {
+		$("#rch_editpanel").hide();
+	}
+	
+}
 function randcheck_addact() {
 	var si = $("#randcheck_act");
 	var si_v = si.val();
-	var add_num = si_v + ",";
+	var pdata = $("#rch_editpanel").val();
+	var add_num = si_v + (pdata ? "|" + pdata.replace(/|/g, "") : "") + "/";
 	$("#randcheck_actdata").append(add_num);
 	$("#randcheck_acts").append("<option>" + $("#randcheck_act option[value=" + si_v + "]").text() + "</option>");
+	$("#rch_editpanel").val("");
 }
 function randcheck_alldelact() {
 	$("#randcheck_actdata").text("");
