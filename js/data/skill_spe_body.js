@@ -1071,8 +1071,8 @@ var SpSkill = {
 				now.nowhp = Math.min((now.maxhp * rate), now.maxhp);
 				now.nowhp = Math.round(now.nowhp);
 				// 復活時にLなら死亡時解除の潜在を再適用
-				if(is_legendmode(fld.Allys.Deck, fld.Allys.Now, n)){
-					add_awake_ally(Field.Allys.Deck, Field.Allys.Now, index, true);
+				if(is_legendmode(fld.Allys.Deck[n], fld.Allys.Now[n])){
+					add_awake_ally(Field.Allys.Deck, Field.Allys.Now, i, true);
 				}
 			}
 		}

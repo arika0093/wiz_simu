@@ -38,6 +38,9 @@ select.skill_sel{
 	width: 100%;
 	max-width: 450px;
 }
+#sch_ss_turn{
+	vertical-align: top;
+}
 select#ss_cond{
 	display: none;
 }

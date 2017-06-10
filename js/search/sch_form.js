@@ -61,6 +61,33 @@ function sf_aslist_add() {
 		c++;
 	}
 	slf.html(p_html + "</optgroup>");
+	
+	// AS正規表現リストを追加
+	var ast = $("#s_astext");
+	if(!ast){ return; }
+	ast.autocomplete({
+		minLength: 1,
+		source: function (req, resp) {
+			resp($.map(sfdef_asregex, function (value, key){
+				if(req.term.indexOf("/") == 0){
+					return {
+						label: key,
+						value: value,
+						data: value,
+					}
+				}
+			}))
+		},
+		focus: function(e, dec) {
+			ast.val(dec.item.value);
+			return false;
+		},
+		select: function (e, dec) {
+			ast.val(dec.item.value);
+			ast.autocomplete("close");
+			return false;
+		}
+	});
 }
 
 // SS候補にSS一覧を追加
@@ -85,6 +112,33 @@ function sf_sslist_add() {
 		c++;
 	}
 	slf.html(p_html + "</optgroup>");
+	
+	// SS正規表現リストを追加
+	var sst = $("#s_sstext");
+	if(!sst){ return; }
+	sst.autocomplete({
+		minLength: 1,
+		source: function (req, resp) {
+			resp($.map(sfdef_ssregex, function (value, key){
+				if(req.term.indexOf("/") == 0){
+					return {
+						label: key,
+						value: value,
+						data: value,
+					}
+				}
+			}))
+		},
+		focus: function(e, dec) {
+			sst.val(dec.item.value);
+			return false;
+		},
+		select: function (e, dec) {
+			sst.val(dec.item.value);
+			sst.autocomplete("close");
+			return false;
+		}
+	});
 }
 
 // SS要素追加時

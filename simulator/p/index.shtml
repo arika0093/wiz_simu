@@ -323,10 +323,11 @@
         <p>現在のターゲッティングでSS発動/攻撃を任意の回数繰り返し、突破できた回数を表示します。</p>
         <div id="randcheck_actdata" class="dialog_div"></div>
         <select class="sel_indialog" id="randcheck_acts" size="5"></select>
-        <select id="randcheck_act" data-placeholder="(未選択)">
+        <select id="randcheck_act" data-placeholder="(未選択)" onchange="randcheck_selchange();">
             <option value="panel_fire">火パネル攻撃</option>
             <option value="panel_water">水パネル攻撃</option>
             <option value="panel_thunder">雷パネル攻撃</option>
+			<option value="panel_multi" type="showp">複色パネル攻撃</option>
             <option value="alltarget_left">全左タゲ</option>
             <option value="alltarget_center">全中タゲ</option>
             <option value="alltarget_right">全右タゲ</option>
@@ -336,6 +337,8 @@
             <option value="unit4_ss">Unit[4]:SS発動</option>
             <option value="unit5_ss">Unit[5]:SS発動</option>
         </select>
+		<input style="width:15%;display:none;" title="攻撃属性をコンマ区切りの数字で指定する。例えば、火雷パネルなら0,2。三色なら0,1,2。水光なら1,3。雷闇なら2,4。"
+			   id="rch_editpanel" placeholder="panel" />
         <button type="button" onclick="randcheck_addact();">追加</button>
         <button type="button" onclick="randcheck_alldelact();">全削除</button>
         <input type="number" class="edit_indialog" id="randcheck_rnum" placeholder="《試行回数を入力》" />

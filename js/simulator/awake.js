@@ -164,7 +164,9 @@ function func_reawake(fld, cards, nows, isbreak){
 	for(var i=0; i < nows.length; i++){
 		var ntg = nows[i];
 		ntg.maxhp = Math.max(ntg.maxhp, 1);
-		ntg.nowhp = Math.max(Math.min(ntg.nowhp, ntg.maxhp), 1);
+		if(!isbreak){
+			ntg.nowhp = Math.max(Math.min(ntg.nowhp, ntg.maxhp), 1);
+		}
 	}
 	// ステアップ効果値反映
 	for(var i=0; i < nows.length; i++){
