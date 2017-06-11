@@ -45,9 +45,9 @@ function decksgg_loaddeck(data) {
 	});
 
 	// sortable(without smartphone)
-	if(w_width_sp =window.innerWidth > 600){
-		$("#allys_sel").sortable();
-	}
+	//if(w_width_sp =window.innerWidth > 600){
+	$("#allys_sel").sortable();
+	//}
 }
 
 // autocomplete指定 / deckload / Dialog
