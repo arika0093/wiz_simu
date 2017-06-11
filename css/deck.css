@@ -1,3 +1,7 @@
+.hidden{
+	display: none;
+}
+
 /* Deck UI */
 div.ally, div.enemy{
 	position: relative;
