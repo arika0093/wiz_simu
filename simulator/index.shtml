@@ -249,14 +249,14 @@
             潜在結晶の編集を行うことができます。[結晶追加]ボタンを押して追加を行ってください。<br/>
             削除する場合は、項目を選択して[結晶削除]ボタンを押してください。
         </p>
-        <span class="ui-helper-hidden-accessible"><input type="image"/></span> <!-- dummy -->
+        <span class="hidden"><input type="image"/></span> <!-- dummy -->
         <select class="sel_indialog" id="allyedit_awakes" size="8"></select>
     </div>
     <div class="dialog_div" id="dialog_allyedit_awakeadd" title="潜在結晶追加">
         <p>
             潜在結晶の種類を選択して、効果値とコスト増加値を指定してください。
         </p>
-        <span class="ui-helper-hidden-accessible"><input type="image"/></span> <!-- dummy -->
+        <span class="hidden"><input type="image"/></span> <!-- dummy -->
         <select class="sel_indialog" id="allyedit_awakeadd_name" data-placeholder="(未選択)">
             <option value="-1">(未選択)</option>
         </select>
@@ -268,7 +268,7 @@
 	</div>
 	<div class="dialog_div" id="dialog_deck_load" title="Deck Load">
 		<p>デッキを読み込みます。</p>
-        <span class="ui-helper-hidden-accessible"><input type="image"/></span> <!-- dummy -->
+        <span class="hidden"><input type="image"/></span> <!-- dummy -->
 		<select class="sel_indialog" id="deckload_cookie" size="8">
 		</select>
 	</div>
@@ -282,7 +282,7 @@
 	</div>
     <div class="dialog_div" id="dialog_search" title="精霊簡易検索">
         <div id="search_target_no" class="dialog_div"></div>
-        <span class="ui-helper-hidden-accessible"><input type="image"/></span> <!-- dummy -->
+        <span class="hidden"><input type="image"/></span> <!-- dummy -->
         <select id="s_attr_m">
             <option value="-2" selected>《主属性を指定》</option>
             <option value="0">火</option>

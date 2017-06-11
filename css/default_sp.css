@@ -539,7 +539,7 @@ p.ally_skill{
 	padding: 0;
 	text-align: left;
 	float: left;
-	font-size: 10pt;
+	font-size: 8pt;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
