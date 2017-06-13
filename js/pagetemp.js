@@ -81,11 +81,10 @@ function applyJustViewport(){
 	var w_height = window.innerHeight;
 	var viewport = "";
 	if(w_width > w_height && w_width < 800 && w_width >= 600){
-		var scale = w_width / 800;
-		viewport = "width=800, minimum-scale=1, maximum-scale=1, target-densitydpi=device-dpi, user-scallable=no";
+		viewport = "width=800, user-scallable=no";
 	} else {
 		viewport = "width=device-width, minimum-scale=1, maximum-scale=1, user-scallable=no";
 	}
-	$("meta[name=viewport]").remove();
-	$("head").append($("<meta />", { name: "viewport", content: viewport }));
+	alert(w_width+", "+w_height+","+viewport);
+	$("meta[name=viewport]").attr("content", viewport );
 }
