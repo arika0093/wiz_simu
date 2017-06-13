@@ -85,5 +85,6 @@ function applyJustViewport(){
 	} else {
 		viewport = "width=device-width, minimum-scale=1, maximum-scale=1, user-scallable=no";
 	}
-	document.querySelector("meta[name='viewport']").setAttribute("content", viewport);
+	$("meta[name=viewport]").remove();
+	$("head").append($("<meta />"), { name: "viewport", content: viewport });
 }
