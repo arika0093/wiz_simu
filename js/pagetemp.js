@@ -77,14 +77,16 @@ $(window).on("orientationchange",function(e){
 // 横持ち状態で横幅が800pxない場合には縮小表示する
 // そうでない時は標準のviewportを適用する
 function applyJustViewport(){
-	var w_width = window.screen.width;
-	var w_height = window.screen.height;
+	var w = window.screen.width;
+	var h = window.screen.height;
+	var is_land = Math.abs(window.orientation) == 90;
+	var w_width = is_land ? h : w;
+	var w_height = is_land ? w : h;
 	var viewport = "";
 	if(w_width > w_height && w_width < 800 && w_width >= 600){
 		viewport = "width=800, user-scallable=no";
 	} else {
 		viewport = "width=device-width, minimum-scale=1, maximum-scale=1, user-scallable=no";
 	}
-	alert(w_width+", "+w_height+","+viewport);
 	$("meta[name=viewport]").attr("content", viewport );
 }
