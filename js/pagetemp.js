@@ -89,6 +89,5 @@ function applyJustViewport(){
 	} else {
 		viewport = "width=device-width, minimum-scale=1, maximum-scale=1, user-scallable=no";
 	}
-	alert(w_width+", "+w_height+","+viewport);
 	$("meta[name=viewport]").attr("content", viewport );
 }
