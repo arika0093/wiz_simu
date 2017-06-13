@@ -69,16 +69,16 @@ $(function () {
 })
 
 // 縦横切替時実行
-$(window).on("orientationchange",function(){
-	applyJustViewport();
+$(window).on("orientationchange",function(e){
+	applyJustViewport(e);
 })
 
 // 読み込み時に実行される関数
 // 横持ち状態で横幅が800pxない場合には縮小表示する
 // そうでない時は標準のviewportを適用する
 function applyJustViewport(){
-	var w_width = window.innerWidth;
-	var w_height = window.innerHeight;
+	var w_width = window.screen.width;
+	var w_height = window.screen.height;
 	var viewport = "";
 	if(w_width > w_height && w_width < 800 && w_width >= 600){
 		viewport = "width=800, user-scallable=no";
