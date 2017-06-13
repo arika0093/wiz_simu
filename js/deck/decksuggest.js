@@ -229,7 +229,7 @@ $(function () {
 	$("#dialog_allyedit_awakeadd").dialog({
 		autoOpen: false,
 		width: 450,
-		height: 480,
+		height: 280,
 		modal: true,
 		open: function () {
 			// item add
@@ -256,10 +256,26 @@ $(function () {
 				disable_search: true,
 				search_contains: true,
 			});
+			sel.on("change", function(ev, params){
+				var sel_index = $("#allyedit_awakeadd_name").val();
+				var awv = $("#ae_awake_value");
+				if (sel_index && sel_index != "" && sel_index >= 0) {
+					var idx = Number(sel_index);
+					var awc_data = Awake_crystal_lists[idx];
+					if(awc_data.input_required){
+						awv.show();
+					} else {
+						awv.hide();
+					}
+				} else {
+					awv.hide();
+				}
+				awv.val("");
+			});
 
 			// value reset
 			$("#ae_awake_value").val("");
-			$("#ae_awake_cost").val("");
+			$("#ae_awake_cost").hide();
 			$('#allyedit_awakeadd_name').trigger("chosen:updated");
 		},
 		buttons: {
@@ -285,6 +301,11 @@ $(function () {
 					}
 					// plus item
 					var aw_value = $("#ae_awake_value").val();
+					if(awc_data.input_required && aw_value == ""){
+						// error
+						alert("結晶効果値を入力してください。");
+						return;
+					}
 					awake_c.display_text = awc_data.name
 						+ (Number(aw_value) > 0 ? "(" + aw_value + ")" : "");
 					awake_c.add_cost = Number($("#ae_awake_cost").val());

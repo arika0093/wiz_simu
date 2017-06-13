@@ -545,6 +545,9 @@ button.ally_edit{
 	padding-right: 5px;
 }
 
+div.ui-dialog[aria-describedby="dialog_allyedit_awakeadd"], #dialog_allyedit_awakeadd{
+	overflow: visible !important;
+}
 .ui-autocomplete{
 	font-family: Meiryo, "ヒラギノ角ゴ Pro W3" !important;
 	max-height: 250px;
@@ -628,6 +631,10 @@ iframe.twitter-timeline{
 
 iframe.twitter-share-button {
 	vertical-align: sub;
+}
+
+.for_sp{
+	display: none;
 }
 
 /* Footer */

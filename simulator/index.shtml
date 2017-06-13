@@ -25,7 +25,7 @@
 		  href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
     <link type="text/css" rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.min.css" />
-	<meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 	<!-- Cache -->
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta http-equiv="Cache-Control" content="no-cache" />
@@ -61,11 +61,14 @@
 		<dl class="List">
 			<dt>このツールについて</dt>
 			<dd id="Simu_info">
+                <div class="for_sp for_sp_port">
+                    スマートフォンをお使いの場合は、横向きで閲覧するとより見やすくなります。
+                </div>
 				<div class="info">
                     「魔法使いと黒猫のウィズ」のトーナメント攻略を支援するWebアプリです。<br />
                     お好みのデッキでクエストや段位の試走を行うことができます。<br/>
                     使用方法などの詳細は以下のページをご覧ください。<br/>
-                    <a class="blocklink" href="/pages/help_sim.html">詳細はこちら</a>
+                    <a class="blocklink" href="/pages/help_sim.html">詳細はこちら</a><br/>
 				</div>
                 <!-- Adsense -->
                 <div class="Adsense">
@@ -254,7 +257,7 @@
     </div>
     <div class="dialog_div" id="dialog_allyedit_awakeadd" title="潜在結晶追加">
         <p>
-            潜在結晶の種類を選択して、効果値とコスト増加値を指定してください。
+            潜在結晶の種類を選択して、効果値を指定してください。
         </p>
         <span class="ui-helper-hidden-accessible"><input type="image"/></span> <!-- dummy -->
         <select class="sel_indialog" id="allyedit_awakeadd_name" data-placeholder="(未選択)">

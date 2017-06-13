@@ -97,7 +97,22 @@ div.linklist a:first-child{
 .sp_hidden{
 	display: none;
 }
-
+@media screen and (orientation: portrait) {
+	div.for_sp_port{
+		padding: 1ex;
+		border-width: 2px;
+		border-style: solid;
+		border-color: #0060C0;
+		border-radius: 4px;
+		margin-bottom: 1ex;
+		text-align: center;
+	}
+}
+@media screen and (orientation: landscape) {
+	div.for_sp_port{
+		display: none;
+	}
+}
 
 /* Clearfix */
 .clearfix {
@@ -507,6 +522,9 @@ button.ally_edit{
 	text-overflow: ellipsis;
 }
 
+div.ui-dialog[aria-describedby="dialog_allyedit_awakeadd"], #dialog_allyedit_awakeadd{
+	overflow: visible !important;
+}
 .ui-autocomplete{
 	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese" !important;
 	width: 70%;

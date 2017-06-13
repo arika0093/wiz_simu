@@ -2,6 +2,24 @@
 // 潜在結晶用データ定義
 // ------------------------------------
 var Awake_crystal_lists = [{
+	genre: "ステータス変動(自身)",
+	name: "攻撃力アップ",
+	imple: Statusup,
+	param1: 0,
+	param2: "{0}",
+	input_required: true,
+}, {
+	name: "HPアップ",
+	imple: Statusup,
+	param1: "{0}",
+	param2: 0,
+	input_required: true,
+}, {
+	name: "アドヴェリタス(ダメージ1.2倍/HP-1000)",
+	imple: Awake_composite,
+	param2: Statusup(-1000, 0),
+	param3: Awake_damage_multiple(1.2),
+}, {
 	genre: "AS/SS変化",
 	name: "SS効果値アップ<攻撃系SS>",
 	imple: function (upval) {
@@ -11,6 +29,7 @@ var Awake_crystal_lists = [{
 	},
 	param1: "{0}",
 	param2: 0,
+	input_required: true,
 }, {
 	name: "SS効果値アップ<特攻大魔術>",
 	imple: function (upval) {
@@ -20,6 +39,7 @@ var Awake_crystal_lists = [{
 	},
 	param1: "{0}",
 	param2: 0,
+	input_required: true,
 }, {
 	name: "SS効果値アップ<毒>",
 	imple: function (upval) {
@@ -29,6 +49,7 @@ var Awake_crystal_lists = [{
 	},
 	param1: "{0}",
 	param2: 0,
+	input_required: true,
 }, {
 	name: "天罰の結晶〈インベラトラス〉(エンハ+50%/継続+1)",
 	imple: Awake_composite,
@@ -62,42 +83,27 @@ var Awake_crystal_lists = [{
 	imple: Awake_Turnup,
 	param1: "{0}",
 	param2: 0,
+	input_required: true,
 }, {
 	name: "SS発動ターン短縮",
 	imple: Fastskill,
 	param1: "{0}",
+	input_required: true,
 }, {
 	name: "SSのヒット回数増加",
 	imple: Awake_multihitadd,
 	param1: "{0}",
+	input_required: true,
 }, {
 	name: "AS効果値アップ",
 	imple: Awake_ASkillRateup,
 	param1: "{0}",
+	input_required: true,
 }, {
 	name: "AS連撃数アップ",
 	imple: Awake_ASkillAtknup,
 	param1: "{0}",
-}, {
-	genre: "ステータス変動(自身)",
-	name: "攻撃力アップ",
-	imple: Statusup,
-	param1: 0,
-	param2: "{0}",
-}, {
-	name: "HPアップ",
-	imple: Statusup,
-	param1: "{0}",
-	param2: 0,
-}, {
-	name: "コストダウン",
-	imple: Costdown,
-	param1: "{0}",
-}, {
-	name: "アドヴェリタス(ダメージ1.2倍/HP-1000)",
-	imple: Awake_composite,
-	param2: Statusup(-1000, 0),
-	param3: Awake_damage_multiple(1.2),
+	input_required: true,
 }, {
 	genre: "ステータス変動(味方全体)",
 	name: "インフローレ(戦士ATK+200)",
@@ -155,6 +161,10 @@ var Awake_crystal_lists = [{
 	name: "アラフト長老の結晶〈シガ〉(亜人HP+200)",
 	imple: Awake_composite,
 	param2: Spec_statusup(200, 0, [5]),
+}, {
+	name: "アイドルの結晶〈きゃっつ(仮)〉(副光ATK,HP+200)",
+	imple: Awake_composite,
+	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 200, 200, [0,0,0,1,0]),
 }, {
 	genre: "L時発動結晶",
 	name: "煌眼の欠片(L時味方ATK+100/25%回復)",
