@@ -66,6 +66,8 @@ $(function () {
 	});
 	
 	// 横持ち状態で横幅が800pxない場合には縮小表示する
+	var w_width = window.innerWidth;
+	var w_height = window.innerHeight;
 	if(w_width > w_height && w_width < 800 && w_width >= 600){
 		$('meta[name="viewport"]').attr("content", "width=800");
 	}
