@@ -84,9 +84,11 @@ function applyJustViewport(){
 	var w_height = is_land ? w : h;
 	var viewport = "";
 	if(w_width > w_height && w_width < 800 && w_width >= 600){
-		viewport = "width=800, user-scallable=no";
+		var scale = w_width / 800;
+		viewport = "width=800, minimum-scale="+scale+", maximum-scale="+scale+", user-scallable=no";
 	} else {
 		viewport = "width=device-width, minimum-scale=1, maximum-scale=1, user-scallable=no";
 	}
+	alert(w_width+", "+w_height+","+viewport);
 	$("meta[name=viewport]").attr("content", viewport );
 }
