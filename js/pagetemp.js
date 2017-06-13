@@ -81,9 +81,10 @@ function applyJustViewport(){
 	var w_height = window.innerHeight;
 	var viewport = "";
 	if(w_width > w_height && w_width < 800 && w_width >= 600){
-		viewport = "width=800, minimum-scale=0.5, maximum-scale=1, user-scallable=no";
+		var scale = w_width / 800;
+		viewport = "width=800, initial-scale=" + scale + " minimum-scale=" + scale + ", maximum-scale=" + scale + ", user-scallable=no";
 	} else {
-		viewport = "width=device-width, minimum-scale=1, maximum-scale=1, user-scallable=no";
+		viewport = "width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scallable=no";
 	}
 	$("meta[name=viewport]").remove();
 	$("head").append($("<meta />", { name: "viewport", content: viewport }));
