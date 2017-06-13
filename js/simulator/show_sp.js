@@ -16,9 +16,4 @@ $(function () {
 		s_panl.insertBefore(s_ally);
 		s_ads.insertBefore(s_top);
 	}
-	
-	// 横持ち状態で横幅が800pxない場合には縮小表示する
-	if(w_width > w_height && w_width < 800 && w_width >= 600){
-		$('meta[name="viewport"]').attr("content", "width=800");
-	}
 });
