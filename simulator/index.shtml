@@ -25,7 +25,7 @@
 		  href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
     <link type="text/css" rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.min.css" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+	<meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
 	<!-- Cache -->
 	<meta http-equiv="Pragma" content="no-cache" />
 	<meta http-equiv="Cache-Control" content="no-cache" />

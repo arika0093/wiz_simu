@@ -65,11 +65,22 @@ $(function () {
 		$("#Footer").load("/template/footer.html");
 	});
 	
-	// 横持ち状態で横幅が800pxない場合には縮小表示する
+	applyJustViewport();
+})
+
+window.onresize = function(){
+	applyJustViewport();
+}
+
+// 読み込み時orページサイズ切り替わり時に実行される関数
+// 横持ち状態で横幅が800pxない場合には縮小表示する
+// そうでない時は標準のviewportを適用する
+function applyJustViewport(){
 	var w_width = window.innerWidth;
 	var w_height = window.innerHeight;
 	if(w_width > w_height && w_width < 800 && w_width >= 600){
 		$('meta[name="viewport"]').attr("content", "width=800");
+	} else {
+		$('meta[name="viewport"]').attr("content", "initial-scale=1, minimum-scale=1, maximum-scale=1");
 	}
-})
-
+}
