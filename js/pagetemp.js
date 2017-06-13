@@ -68,11 +68,12 @@ $(function () {
 	applyJustViewport();
 })
 
-window.onresize = function(){
+// 縦横切替時実行
+$(window).on("orientationchange",function(){
 	applyJustViewport();
-}
+})
 
-// 読み込み時orページサイズ切り替わり時に実行される関数
+// 読み込み時or縦横切り替わり時に実行される関数
 // 横持ち状態で横幅が800pxない場合には縮小表示する
 // そうでない時は標準のviewportを適用する
 function applyJustViewport(){
