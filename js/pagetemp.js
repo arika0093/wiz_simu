@@ -79,11 +79,11 @@ $(window).on("orientationchange",function(){
 function applyJustViewport(){
 	var w_width = window.innerWidth;
 	var w_height = window.innerHeight;
+	var viewport = "";
 	if(w_width > w_height && w_width < 800 && w_width >= 600){
-		var zoom_ratio = w_width / 800;
-		$('meta[name="viewport"]').attr("content", "width=800, minimum-scale=" + zoom_ratio
-			+ ", maximum-scale=" + zoom_ratio + ", user-scallable=no");
+		viewport = "width=800, minimum-scale=0.5, maximum-scale=1, user-scallable=no";
 	} else {
-		$('meta[name="viewport"]').attr("content", "initial-scale=1, minimum-scale=1, maximum-scale=1");
+		viewport = "width=device-width, minimum-scale=1, maximum-scale=1, user-scallable=no";
 	}
+	document.querySelector("meta[name='viewport']").setAttribute("content", viewport);
 }
