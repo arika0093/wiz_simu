@@ -86,5 +86,5 @@ function applyJustViewport(){
 		viewport = "width=device-width, minimum-scale=1, maximum-scale=1, user-scallable=no";
 	}
 	$("meta[name=viewport]").remove();
-	$("head").append($("<meta />"), { name: "viewport", content: viewport });
+	$("head").append($("<meta />", { name: "viewport", content: viewport }));
 }
