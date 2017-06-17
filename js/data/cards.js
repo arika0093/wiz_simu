@@ -67487,15 +67487,15 @@ Cards = [{
 	cost: 57,
 	attr: [2,-1],
 	species: [9],
-	islegend: false,
+	islegend: true,
 	ape: "新人王",
 	as1: {
-		desc: "<属性特効>5チェインで水属性の敵単体へ特効ダメージ、解答が早いほどさらにアップ(基本:600％, 最大:800％)",
+		desc: "<属性特効>5チェインで水属性の敵単体へ特効ダメージ(600%)、解答が早いほどさらにアップ(50%)（上限:4段階)",
 		proc: add_cond(ChainAttrAttack(6.0, 5, [0,1,0,0,0]), as_timedep(0.5)),
 	},
 	ss1: {
-		desc: "<詠唱大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ、クイズに5問解答し、解答時間が早いほどさらにダメージ(基本:800%, 最大:2400%)",
-		turn: 0,
+		desc: "<詠唱大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ(800%)、クイズに5問解答し、解答時間が早いほどさらにダメージ(400%)(上限4段階)",
+		turn: 9,
 		proc: [ss_damage_s(ss_answertime(8.0, 4.0), [2], 1), ss_ignore_skillcounter()],
 	},
 	awakes: [
@@ -67509,6 +67509,19 @@ Cards = [{
 		Attr_statusup(400,0, [0,0,1,0,0,]),
 		Fastskill(3),
 		Awake_noeffect("心眼",1),
+	],
+	as2: {
+		desc: "<属性特効>5チェインで水属性の敵単体へ特効ダメージ(700%)、解答が早いほどさらにアップ(50%)（上限:4段階)",
+		proc: add_cond(ChainAttrAttack(7.0, 5, [0,1,0,0,0]), as_timedep(0.5)),
+	},
+	ss2: {
+		desc: "<詠唱大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ(1100%)、クイズに5問解答し、解答時間が早いほどさらにダメージ(400%)(上限4段階)",
+		turn: 12,
+		proc: [ss_damage_s(ss_answertime(11.0, 4.0), [2], 1), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
 	],
 },{
 	name: "英雄凱旋祭 -響命-",
@@ -72847,6 +72860,52 @@ Cards = [{
 	Lawake: [
 		Statusup(500,0),
 		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+},{
+	name: "ピュアハザード ペオルタンω",
+	cardno: 8464,
+	imageno: 10614,
+	hp: 2821,
+	atk: 6224,
+	cost: 56,
+	attr: [0,-1],
+	species: [2],
+	islegend: true,
+	ape: "アイドルキャッツ！",
+	is_dist: true,
+	as1: {
+		desc: "<ギャンブル攻撃>ダメージがイチかバチかアップ(150%～350%)、デッキに単色の精霊が多いほど、さらにダメージアップ(40%)(上限:5段階)",
+		proc: ChainStakesAttack(as_singleattr_num(1.5, 0.4), as_singleattr_num(3.5, 0.4), 0),
+	},
+	ss1: {
+		desc: "<時限大魔術>スキル反射を無視し、6ターン後に敵単体へ火属性のダメージ(3000%)(上限設置数:5)",
+		turn: 1,
+		proc: [ss_damage_timebomb(30, [0], 1, 6), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		Spec_statusup(0,300, [2,]),
+		Spec_statusup(300,0, [2,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(0,300, [1,0,0,0,0,]),
+		Attr_statusup(300,0, [1,0,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<ギャンブル攻撃>ダメージがイチかバチかアップ(150%～350%)、デッキに単色の精霊が多いほど、さらにダメージアップ(60%)(上限:5段階)",
+		proc: ChainStakesAttack(as_singleattr_num(1.5, 0.6), as_singleattr_num(3.5, 0.6), 0),
+	},
+	ss2: {
+		desc: "<時限大魔術>スキル反射を無視し、6ターン後に敵単体へ火属性のダメージ(4000%)(上限設置数:5)",
+		turn: 2,
+		proc: [ss_damage_timebomb(40, [0], 1, 6), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
 	],
 },
 ];
