@@ -8,30 +8,7 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 	var d_dat = calculate_damage(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num, false);
 	var d = d_dat.damage;
 	var bef_ond = d;
-
-	// 凶暴化状態か取得
-	var is_berserk = !is_ss && $.grep(now.turn_effect, function(e){
-		return e.isberserk;
-	}).length > 0;
-	// 凶暴化状態なら威力を三倍に
-	if(is_berserk){
-		d *= 3;
-	}
-	// 攻撃時スキル確認
-	if (enemy.turn_effect.length > 0) {
-		var skillct = $.grep(enemy.turn_effect, function (g) {
-			return g.on_damage !== undefined;
-		});
-		is_ondamage = true;
-		skillct.sort(function (a, b) {
-			if (a.priority > b.priority) return -1;
-			if (a.priority < b.priority) return +1;
-		})
-		for (var j = 0; j < skillct.length; j++) {
-			d = Math.round(skillct[j].on_damage(Field, d, atk_atr, is_berserk));
-		}
-	}
-
+	
 	// NowHPから削る
 	enemy.nowhp = Math.max(enemy.nowhp - d, 0);
 	// ダメージフラグ
@@ -42,6 +19,8 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 		// 撃破カウント
 		Field.Status.total_kill += 1;
 	}
+	// セットしておいた乱数を削除
+	now.atk_rand = 0;
 
 	// ログ
 	var log_cc = (enemy.nowhp <= 0) && (bef_hp >= 1);
@@ -72,9 +51,9 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 
 // 与えるダメージを計算する(ダメブロ、鉄壁などを無視する)
 //	enemy: 敵データ, now: 自身のデータ, atk_atr: 攻撃属性,
-//	rate: 倍率, atkn: 攻撃回数, pn: 踏んだパネル, ch: チェイン数, rnd: 乱数, 
+//	rate: 倍率, atkn: 攻撃回数, pn: 踏んだパネル, ch: チェイン数, rnd: 乱数(未使用値),
 //	i: 味方の番号, e: 敵の番号, is_ss: SSかどうか, var_num: 分散対象数(未指定なら通常)
-//	is_simulate: 敵ワンパン判定時のみtrue(潜在補正/ガードを無視)
+//	is_simulate: 敵ワンパン判定時のみtrue
 function calculate_damage(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num, is_simulate) {
 	var d = 0;
 	// エンハ
@@ -82,9 +61,16 @@ function calculate_damage(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is
 	var ss_enh = now.ss_enhance ? Number(now.ss_enhance.toFixed(2)) : 0;
 	var bss_enh = now.ss_boost_enhance ? Number(now.ss_boost_enhance.toFixed(2)) : 0;
 	var rfm_enh = now.ss_reinforcement_atk ? Number(now.ss_reinforcement_atk.toFixed(2)) : 0;
+	// 乱数決定
+	var rnd = 0;
+	if(!now.atk_rand){
+		rnd = now.atk_rand = dmg_generate_rand(0.9, 1.1);
+	} else {
+		rnd = now.atk_rand;
+	}
 	// 最終補正値
 	var card = Field.Allys.Deck[i];
-	var lst_multi = (!is_simulate ? Awake_get_multiple(card, now) : 1);
+	var lst_multi = Awake_get_multiple(card, now);
 	// 攻撃力
 	d = now.atk / (!is_ss ? 2 : 1);
 	// AS倍率、エンハ
@@ -104,15 +90,39 @@ function calculate_damage(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is
 	// 分散考慮
 	d /= (var_num || 1);
 	// 切り捨て
-	d = Math.floor(d);
+	var d_ws = d = Math.floor(d);
+	// 凶暴化状態か取得
+	var is_berserk = !is_ss && $.grep(now.turn_effect, function(e){
+		return e.isberserk;
+	}).length > 0;
+	// 凶暴化状態なら威力を三倍に
+	if(is_berserk){
+		d *= 3;
+	}
+	// 攻撃時スキル確認
+	if (enemy.turn_effect.length > 0) {
+		var skillct = $.grep(enemy.turn_effect, function (g) {
+			return g.on_damage !== undefined;
+		});
+		is_ondamage = true;
+		skillct.sort(function (a, b) {
+			if (a.priority > b.priority) return -1;
+			if (a.priority < b.priority) return +1;
+		})
+		for (var j = 0; j < skillct.length; j++) {
+			d = Math.round(skillct[j].on_damage(Field, d, atk_atr, is_berserk));
+		}
+	}
 
 	// return object
 	return {
 		damage: d,
+		damage_withoutskill: d_ws,
 		base_rate: rate,
 		as_enh: as_enh,
 		sst_enh: (ss_enh + bss_enh + rfm_enh),
 		final_rate: (rate + as_enh + ss_enh + bss_enh + rfm_enh),
+		random: rnd,
 		lst_multi: lst_multi,
 	};
 }
