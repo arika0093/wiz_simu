@@ -1406,11 +1406,12 @@ var SpCondSkill = {
 	// 味方全体を封印状態にして対象数だけ効果値を増やす
 	"ss_seal_all_cond": function (fld, oi, cobj, params) {
 		var base = params[0];
+		var turn = params[1];
 		var nows = fld.Allys.Now;
 		var count = 0;
 		for (var i = 0; i < nows.length; i++) {
 			if (nows[i].nowhp <= 0) { continue; }
-			var scs = ss_allsealed_own(1);
+			var scs = ss_allsealed_own(turn);
 			ss_object_done(fld, i, scs);
 			count++;
 		}
@@ -1492,6 +1493,23 @@ var SpCondSkill = {
 			rst[i] = is_poison ? a : b;
 		}
 		return rst;
+	},
+	// -----------------------------
+	// 純属性精霊数に応じて効果値変動
+	"ss_pureattr_cond": function (fld, oi, cobj, params) {
+		var rate_fix = [0, 0.1, 0.15, 0.25, 0.35, 1];
+		var rate = params[0];
+		var cards = fld.Allys.Deck;
+		var count = 0;
+		for(var i=0; i < cards.length; i++){
+			var c = cards[i];
+			var now = fld.Allys.Now[i];
+			if(now.nowhp > 0 && c.attr[1] == -1){
+				count++;
+			}
+		}
+		count = Math.max(Math.min(count, 5), 0);
+		return (rate * rate_fix[count]).toFixed(3);
 	},
 	// -----------------------------
 	// チェイン分岐

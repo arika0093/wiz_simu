@@ -106,6 +106,28 @@ var Awake_crystal_lists = [{
 	input_required: true,
 }, {
 	genre: "ステータス変動(味方全体)",
+	name: "単属性攻撃力UP[火]",
+	imple: Attr_statusup_oattr,
+	param1: 0,
+	param2: "{0}",
+	param3: [1,0,0,0,0],
+	input_required: true,
+}, {
+	name: "単属性攻撃力UP[水]",
+	imple: Attr_statusup_oattr,
+	param1: 0,
+	param2: "{0}",
+	param3: [0,1,0,0,0],
+	input_required: true,
+}, {
+	name: "単属性攻撃力UP[雷]",
+	imple: Attr_statusup_oattr,
+	param1: 0,
+	param2: "{0}",
+	param3: [0,0,1,0,0],
+	input_required: true,
+}, {
+	genre: "ステータス変動(味方全体/固定値)",
 	name: "インフローレ(戦士ATK+200)",
 	imple: Awake_composite,
 	param2: Spec_statusup(0, 200, [8]),
@@ -146,6 +168,10 @@ var Awake_crystal_lists = [{
 	imple: Awake_composite,
 	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 0, 200, [0,0,0,0,1]),
 }, {
+	name: "アイドルの結晶〈きゃっつ(仮)〉(副光ATK,HP+200)",
+	imple: Awake_composite,
+	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 200, 200, [0,0,0,1,0]),
+}, {
 	name: "擬態の結晶〈ガーゴイル〉(物質HP+200)",
 	imple: Awake_composite,
 	param2: Spec_statusup(200, 0, [6]),
@@ -161,10 +187,6 @@ var Awake_crystal_lists = [{
 	name: "アラフト長老の結晶〈シガ〉(亜人HP+200)",
 	imple: Awake_composite,
 	param2: Spec_statusup(200, 0, [5]),
-}, {
-	name: "アイドルの結晶〈きゃっつ(仮)〉(副光ATK,HP+200)",
-	imple: Awake_composite,
-	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 200, 200, [0,0,0,1,0]),
 }, {
 	genre: "L時発動結晶",
 	name: "煌眼の欠片(L時味方ATK+100/25%回復)",

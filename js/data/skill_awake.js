@@ -87,7 +87,7 @@ function Attr_statusup_oattr(hp, atk, attr) {
 		sub_attr: [-1,-1,-1,-1,-1],
 		up_hp_2: hp,
 		up_atk_2: atk,
-		name: "純属性" + (hp != 0 ? "HP" : "攻撃力") + "アップ" + int2roman(Math.max(hp, atk)/100) + "・" + get_attr_string(attrs).replace("属性",""),
+		name: "純属性" + (hp != 0 ? "HP" : "攻撃力") + "アップ" + int2roman(Math.max(hp, atk)/100) + "・" + get_attr_string(attr).replace("属性",""),
 		desc: "純属性の" + (hp != 0 ? "HP" : "攻撃力") + "をアップ",
 	};
 }
@@ -254,7 +254,8 @@ function Awake_SpecialSkill(spskill, p1, p2, p3, p4) {
 		p2: p2,
 		p3: p3,
 		p4: p4,
-		name: "SP発動",
+		name: "L時SP発動",
+		desc: "L化時にスキルを発動する",
 	};
 }
 
@@ -263,6 +264,7 @@ function Awake_noeffect(name, efv) {
 	return {
 		type: "awake_noeffect",
 		name: name,
+		desc: name,
 		efv: efv,
 	}
 }
@@ -313,6 +315,8 @@ function Awake_dragonmode(up_atk, up_damaged) {
 function Awake_multihitadd(n) {
 	return {
 		type: "Awake_multihitadd",
+		name: "SSヒット回数" + n + "回増加",
+		desc: "SSのヒット回数を" + n + "回増加させる",
 		upvalue: n,
 	};
 }

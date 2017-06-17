@@ -1281,11 +1281,13 @@ function ss_consume_all_cond(base, p) {
  * (条件系)味方全体に封印をかけ、対象数*基礎値の数値を返す。
  * base: 掛け算の基礎値。
 **/
-function ss_seal_all_cond(base) {
+function ss_seal_all_cond(base, turn) {
+	turn = turn || 1;
 	return ss_condition({
 		name: "ss_seal_all_cond",
 		type: "consume_cond",
 		p1: base,
+		p2: turn,
 	});
 }
 
@@ -1356,6 +1358,18 @@ function ss_is_poison_enemy(a, b) {
 		type: "is_abstate_enemy",
 		p1: a,
 		p2: b,
+	});
+}
+
+/**
+ * (条件系)デッキ内の純属性精霊数に応じて効果値を変動させる。
+ * max:	効果値の最大値。
+ **/
+function ss_pureattr_cond(max) {
+	return ss_condition({
+		name: "ss_pureattr_cond",
+		type: "deckattr",
+		p1: max,
 	});
 }
 
