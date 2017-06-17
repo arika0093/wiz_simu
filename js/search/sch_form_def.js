@@ -143,9 +143,13 @@ var sfdef_ss_namelist = {
 	},
 	// --- 補助関連 -------------------------
 	"味方全体攻撃力アップ": {
-		proc: ["ss_enhance", "ss_enhance_all"],
+		proc: ["ss_enhance", "ss_enhance_all", "ss_enhance_subattr"],
 		target: "ally",
 		genre: "《味方効果付与系》",
+	},
+	"味方全体攻撃力アップ(副属性UP)": {
+		proc: ["ss_enhance_subattr"],
+		target: "ally",
 	},
 	"自身の攻撃力アップ": {
 		proc: ["ss_enhance", "ss_enhance_own"],
