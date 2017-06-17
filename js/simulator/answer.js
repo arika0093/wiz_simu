@@ -162,7 +162,7 @@ function answer_miss()
 	Field.log_push("【誤答】");
 	// 誤答処理
 	if (Field.Status.chain_status <= 0) {
-		Field.Status.chain = 0;
+		Field.Status.chain = Math.floor(Field.Status.chain / 2);
 	}
 	// 敵の処理
 	enemy_move();
@@ -243,11 +243,10 @@ function answer_skill(as_arr, panel, as_afters, bef_f) {
 	}
 	// 各精霊の連撃回数を取得する
 	for (var i = 0; i < as_arr.length; i++) {
-		/* パネルが一致するか確認
-		var has_panelattr = (panel.indexOf(card.attr[0]) >= 0);
-		has_panelattr = has_panelattr && card.attr[1] >= 0 && panel.indexOf(card.attr[1]) >= 0;
-		*/
-		if(true /*has_panelattr*/){
+		// パネルが一致するか確認
+		var card = Field.Allys.Deck[i];
+		var has_panelattr = (panel.indexOf(card.attr[0]) >= 0) || (card.attr[1] >= 0 && panel.indexOf(card.attr[1]) >= 0);
+		if(has_panelattr){
 			var chain = Field.Status.chain;
 			// ASがないなら処理せず飛ばす
 			if (as_arr[i] == null || as_arr[i].length <= 0) { continue; }
@@ -291,9 +290,30 @@ function answer_skill(as_arr, panel, as_afters, bef_f) {
 		loop_ct++;
 		return !rst;
 	};
+	// 参照攻撃番号までのスキップ精霊数を取得する
+	var countSkipNum = function(x){
+		var ct = 0;
+		for(var n = x; n >= 0; n--){
+			if(atk_duals[n] < 0){
+				ct++;
+			}
+		}
+		return ct;
+	}
 	for(var i = 0; !isAllAtkEndCheck(); i++){
-		for (var j = i; j >= 0; j--) {
+		// Skip精霊分だけStart位置を補正
+		var ix = i + countSkipNum(i);
+		// ループカウントに支障がないよう補正
+		if(atk_duals.length > i && atk_duals[i] < 0){
+			loop_ct++;
+		}
+		for (var j = ix; j >= 0; j--) {
+			// 攻撃精霊の幅を超えていたら無視
 			if (j >= as_arr.length) { continue; }
+			// 攻撃しない精霊をSkip
+			if(atk_duals[j] < 0){
+				j--;
+			}
 			answer_skill_proc(as_arr, panel, j, atk_duals, rem_duals, loop_ct, as_afters, bef_f);
 		}
 	}
@@ -303,7 +323,6 @@ function answer_skill(as_arr, panel, as_afters, bef_f) {
 function answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, loop_ct, as_afters, bef_f) {
 	var card = Field.Allys.Deck[i];
 	var now = Field.Allys.Now[i];
-	var subattr = (card.attr[1] && card.attr[1] >= 0) ? 2 : 1;
 	var enemy_dat = GetNowBattleEnemys();
 	// ASがないなら処理せず飛ばす
 	if (as_arr[i] == null || as_arr[i].length <= 0) { return; }

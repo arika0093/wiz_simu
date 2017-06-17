@@ -484,7 +484,9 @@ function ChainStakesAttack(u, t, ch) {
 			spec: create_specs(1),
 			desc: "イチかバチか攻撃",
 			cond: function (fld, oi, ei) {
-				return Number((Math.random() * (t-u) + u).toFixed(1));
+				var u_ = (!u.add_f ? u : u.add_f(fld, oi, ei));
+				var t_ = (!t.add_f ? t : t.add_f(fld, oi, ei));
+				return Number((Math.random() * (t_-u_) + u_).toFixed(1));
 			},
 		}
 	];
