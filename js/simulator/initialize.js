@@ -202,6 +202,7 @@ $(function () {
 				now.def_attr = card.attr;
 				now.target = [];
 				now.flags = {};
+				now.flags.enemy_counter = [];
 				now.flags.skill_counter = [];
 				now.flags.damage_hits = [];
 				now.turn_effect = [];
@@ -436,6 +437,7 @@ function nextturn(is_ssfin) {
 // 味方フラグを初期化する
 function initialize_allys_flags(nows) {
 	$.each(nows, function (i, e) {
+		e.flags.enemy_counter = [];
 		e.flags.skill_counter = [];
 		e.flags.damage_hits = [];
 	});

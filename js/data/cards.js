@@ -55596,7 +55596,7 @@ Cards = [{
 	ss1: {
 		desc: "<特効大魔術>敵単体へ火属性のダメージ、さらに火属性の敵には特効ダメージ(400%/1200%)",
 		turn: 6,
-		proc: [ss_damage_slash(special_attr([1,0,0,0,0], 12, 4), [0], 1)],
+		proc: [ss_damage_s(special_attr([1,0,0,0,0], 12, 4), [0], 1)],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -55617,7 +55617,7 @@ Cards = [{
 	ss2: {
 		desc: "<特効大魔術>敵単体へ火属性のダメージ、さらに火属性の敵には特効ダメージ(400%/1900%)",
 		turn: 9,
-		proc: [ss_damage_slash(special_attr([1,0,0,0,0], 19, 4), [0], 1)],
+		proc: [ss_damage_s(special_attr([1,0,0,0,0], 19, 4), [0], 1)],
 	},
 	Lawake: [
 		Statusup(0,400),
@@ -56304,7 +56304,7 @@ Cards = [{
 	ss1: {
 		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水・光属性の5回連続ダメージ(250%)",
 		turn: 5,
-		proc: [ss_damage_slash(2.5, [1,3], 5), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(2.5, [1,3], 5), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -56325,7 +56325,7 @@ Cards = [{
 	ss2: {
 		desc: "<多弾魔術>チェインプラス1の効果、スキル反射を無視し、敵単体へ水・光属性の5回連続ダメージ(250%)",
 		turn: 7,
-		proc: [panel_chainplus(1), ss_damage_slash(2.5, [1,3], 5), ss_ignore_skillcounter()],
+		proc: [panel_chainplus(1), ss_damage_s(2.5, [1,3], 5), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,1,0,0,0,]),

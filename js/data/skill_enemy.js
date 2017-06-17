@@ -735,6 +735,13 @@ function skill_counter(damage, t) {
 			lim_turn: t,
 			effect: function (){},
 			on_ss_damage: function (f, ei, ai) {
+				var now = f.Allys.Now[ai];
+				if(now.flags.enemy_counter[ei]){
+					// 発動済なら無効化
+					f.log_push("Enemy[" + (ei + 1) + "]: スキル反射発動(対象: Unit[" + (ai + 1) + "])(発動済)");
+					return;
+				}
+				f.Allys.Now[ai].flags.enemy_counter[ei] = true;
 				f.log_push("Enemy[" + (ei + 1) + "]: スキル反射発動(対象: Unit[" + (ai + 1) + "])");
 				damage_ally(damage, ai, true);
 			}
@@ -759,7 +766,16 @@ function skill_counter_func(skill, desc, t, is_tgonly, p1, p2, p3, p4) {
 			lim_turn: t,
 			effect: function () { },
 			on_ss_damage: function (f, ei, ai) {
-				f.log_push("Enemy[" + (ei + 1) + "]: スキル反射発動" + 
+				var nows = f.Allys.Now;
+				var now = nows[ai];
+				if(now.flags.enemy_counter[ei]){
+					// 発動済なら無効化
+					f.log_push("Enemy[" + (ei + 1) + "]: スキル反射発動" +
+						(is_tgonly ? "(対象: Unit[" + (ai + 1) + "])" : "") + "(発動済)");
+					return;
+				}
+				f.Allys.Now[ai].flags.enemy_counter[ei] = true;
+				f.log_push("Enemy[" + (ei + 1) + "]: スキル反射発動" +
 					(is_tgonly ? "(対象: Unit[" + (ai + 1) + "])" : ""));
 				var p_1 = (!is_tgonly || p1 !== null) ? p1 : [ai];
 				var p_2 = (!is_tgonly || p2 !== null) ? p2 : [ai];
@@ -767,7 +783,9 @@ function skill_counter_func(skill, desc, t, is_tgonly, p1, p2, p3, p4) {
 				var p_4 = (!is_tgonly || p4 !== null) ? p4 : [ai];
 				skill(p_1, p_2, p_3, p_4).move(f, ei);
 				// スキル反射には味方の反射は発動しない
-				initialize_allys_flags(f.Allys.Now);
+				$.each(nows, function (i, e) {
+					e.flags.skill_counter = [];
+				});
 			}
 		});
 	}, "スキル反射 :"+desc);
