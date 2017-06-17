@@ -39,7 +39,7 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 		" * パネル(" + (pn.indexOf(atk_atr) >= 0 ? 1 : 0.5) + ")" +
 		" * 属性相性(" + attr_magnification(atk_atr, enemy.attr) + ")" +
 		(d_dat.lst_multi != 1 ? " * 補正値(" + d_dat.lst_multi + ")" : "") +
-		" * 乱数(" + rnd.toFixed(2) + ")" +
+		" * 乱数(" + d_dat.random.toFixed(2) + ")" +
 		(atkn > 1 ? " / 攻撃回数(" + atkn + ")" : "") +
 		(var_num ? " / 分散(" + var_num + ")" : "") +
 		((d / bef_ond) != 1 ? " * 攻撃時処理[*" + (d / bef_ond).toFixed(2) + "]" : "") +
@@ -64,7 +64,7 @@ function calculate_damage(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is
 	// 乱数決定
 	var rnd = 0;
 	if(!now.atk_rand){
-		rnd = now.atk_rand = dmg_generate_rand(0.9, 1.1);
+		rnd = now.atk_rand = damage_rand();
 	} else {
 		rnd = now.atk_rand;
 	}
