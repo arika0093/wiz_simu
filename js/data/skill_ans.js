@@ -484,9 +484,7 @@ function ChainStakesAttack(u, t, ch) {
 			spec: create_specs(1),
 			desc: "イチかバチか攻撃",
 			cond: function (fld, oi, ei) {
-				var u_ = (!u.add_f ? u : u.add_f(fld, oi, ei));
-				var t_ = (!t.add_f ? t : t.add_f(fld, oi, ei));
-				return Number((Math.random() * (t_-u_) + u_).toFixed(1));
+				return Number((Math.random() * (t - u) + u).toFixed(1));
 			},
 		}
 	];
@@ -919,16 +917,18 @@ function as_timedep(rate) {
 // 単色精霊数依存
 // (a: 0体の時の基礎倍率, b: 一体増加ごとに増える倍率)
 function as_singleattr_num(a, b) {
+	var fc = function (fld, oi, ei, p, tgi) {
+		var cards = fld.Allys.Deck;
+		var num = 0
+		for(var i=0; i < cards.length; i++){
+			num += (cards[i].attr[1] == -1 ? 1 : 0);
+		}
+		return a + b * num;
+	};
 	return {
 		is_afteradd: true,
-		add_f: function (fld, oi, ei, p, tgi) {
-			var cards = fld.Allys.Deck;
-			var num = 0
-			for(var i=0; i < cards.length; i++){
-				num += (cards[i].attr[1] == -1 ? 1 : 0);
-			}
-			return a + b * num;
-		},
+		add_f: fc,
+		add_atkn: fc,
 	}
 }
 

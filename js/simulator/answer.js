@@ -253,6 +253,11 @@ function answer_skill(as_arr, panel, as_afters, bef_f) {
 			for (var j = 0; j < as_arr[i].length; j++) {
 				var card = Field.Allys.Deck[i];
 				var as = as_arr[i][j];
+				// atknを増やす関数が指定されているなら実行
+				if(!as.atkn_funcadded && as.atkn && as.atkn.add_atkn){
+					as.atkn = as.atkn.add_atkn(bef_f, j, -1);
+					as.atkn_funcadded = true;
+				}
 				// 攻撃回数を増やす潜在結晶反映
 				var aw_t = pickup_awakes(card, "awake_ans_atknup", false);
 				if(aw_t.length > 0){

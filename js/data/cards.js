@@ -70286,7 +70286,7 @@ Cards = [{
 	ss2: {
 		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水・雷属性の5回連続ダメージ(600%)",
 		turn: 8,
-		proc: [ss_damage_s(3.0, [1,2], 5), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(6.0, [1,2], 5), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,1000),
@@ -70395,7 +70395,7 @@ Cards = [{
 	ape: "GW2017",
 	as1: {
 		desc: "<回復>水属性の味方を回復(14％)、HP20%以下でさらに回復(39%)",
-		proc: [Heal(0.13, [0,0,1,0,0], 0), add_cond(Heal(0.38, [0,0,1,0,0], 0), when_hp_less(0.20))],
+		proc: [Heal(0.13, [0,1,0,0,0], 0), add_cond(Heal(0.38, [0,1,0,0,0], 0), when_hp_less(0.20))],
 	},
 	ss1: {
 		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
@@ -70416,7 +70416,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<回復>水属性の味方を回復(17%)、HP20%以下でさらに回復(42%)",
-		proc: [Heal(0.17, [0,0,1,0,0], 0), add_cond(Heal(0.42, [0,0,1,0,0], 0), when_hp_less(0.20))],
+		proc: [Heal(0.17, [0,1,0,0,0], 0), add_cond(Heal(0.42, [0,1,0,0,0], 0), when_hp_less(0.20))],
 	},
 	ss2: {
 		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める。HP20%以下でさらに5早める。",
@@ -71824,7 +71824,7 @@ Cards = [{
 	ape: "喰牙RIZE -クウガライズ-",
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ(300%)、デッキに単色の精霊が多いほど、さらにダメージアップ(60%)（上限:5段階)",
-		proc: ChainAttack(as_singleattr_num(3.0, 0.6), 4),
+		proc: add_cond(ChainAttack(3.0, 4), as_singleattr_num(0, 0.6)),
 	},
 	ss1: {
 		desc: "<詠唱大魔術>スキル反射を無視し、敵単体へ火属性のダメージ(800%)、クイズに5問解答し、解答時間が早いほどさらにダメージ(400%)(上限4段階)",
@@ -71845,7 +71845,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ(400%)、デッキに単色の精霊が多いほど、さらにダメージアップ(60%)（上限:5段階)",
-		proc: ChainAttack(as_singleattr_num(4.0, 0.6), 4),
+		proc: add_cond(ChainAttack(4.0, 4), as_singleattr_num(0, 0.6)),
 	},
 	ss2: {
 		desc: "<詠唱大魔術>スキル反射を無視し、敵単体へ火属性のダメージ(効果値:1100)、クイズに5問解答し、解答時間が早いほどさらにダメージ(効果値:400)(上限4段階)",
@@ -72006,7 +72006,7 @@ Cards = [{
 	ape: "喰牙RIZE -クウガライズ-",
 	as1: {
 		desc: "<分散攻撃>敵全体へ分散攻撃(150%)、デッキに単色の精霊が多いほど、さらにダメージアップ(70%)（上限:5段階)",
-		proc: ChainVarianceAttack(as_singleattr_num(1.5, 0.7), 0),
+		proc: add_cond(ChainVarianceAttack(1.5, 0), as_singleattr_num(0, 0.7)),
 	},
 	ss1: {
 		desc: "<特効大魔術>敵単体へ水属性のダメージ(400%)、さらに火属性の敵には特効ダメージ(400%)",
@@ -72027,7 +72027,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<分散攻撃>敵全体へ分散攻撃(250%)、デッキに単色の精霊が多いほど、さらにダメージアップ(70%)（上限:5段階)",
-		proc: ChainVarianceAttack(as_singleattr_num(1.5, 0.7), 0),
+		proc: add_cond(ChainVarianceAttack(2.5, 0), as_singleattr_num(0, 0.7)),
 	},
 	ss2: {
 		desc: "<特効大魔術>敵単体へ水属性のダメージ(400%)、さらに火属性の敵には特効ダメージ(1000%)",
@@ -72875,7 +72875,7 @@ Cards = [{
 	is_dist: true,
 	as1: {
 		desc: "<ギャンブル攻撃>ダメージがイチかバチかアップ(150%～350%)、デッキに単色の精霊が多いほど、さらにダメージアップ(40%)(上限:5段階)",
-		proc: ChainStakesAttack(as_singleattr_num(1.5, 0.4), as_singleattr_num(3.5, 0.4), 0),
+		proc: add_cond(ChainStakesAttack(1.5, 3.5, 0), as_singleattr_num(0, 0.4)),
 	},
 	ss1: {
 		desc: "<時限大魔術>スキル反射を無視し、6ターン後に敵単体へ火属性のダメージ(3000%)(上限設置数:5)",
@@ -72896,7 +72896,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<ギャンブル攻撃>ダメージがイチかバチかアップ(150%～350%)、デッキに単色の精霊が多いほど、さらにダメージアップ(60%)(上限:5段階)",
-		proc: ChainStakesAttack(as_singleattr_num(1.5, 0.6), as_singleattr_num(3.5, 0.6), 0),
+		proc: add_cond(ChainStakesAttack(1.5, 3.5, 0), as_singleattr_num(0, 0.6)),
 	},
 	ss2: {
 		desc: "<時限大魔術>スキル反射を無視し、6ターン後に敵単体へ火属性のダメージ(4000%)(上限設置数:5)",
@@ -73009,7 +73009,7 @@ Cards = [{
 	ape: "アイドルキャッツ！",
 	as1: {
 		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(300%)、デッキに単色の精霊が多いほど、さらにダメージアップ(60%)（上限:5段階)",
-		proc: ChainAttrAttack(as_singleattr_num(3.0, 0.6), 0, [0,0,1,0,0]),
+		proc: add_cond(ChainAttrAttack(3.0, 0, [0,0,1,0,0]), as_singleattr_num(0, 0.6)),
 	},
 	ss1: {
 		desc: "<純属性大魔術>スキル反射を無視し、敵全体へ火属性のダメージ、火単色の精霊が多いほどダメージアップ(上限値:1500%)",
@@ -73030,7 +73030,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(400%)、デッキに単色の精霊が多いほど、さらにダメージアップ(60%)（上限:5段階)",
-		proc: ChainAttrAttack(as_singleattr_num(4.0, 0.6), 0, [0,0,1,0,0]),
+		proc: add_cond(ChainAttrAttack(4.0, 0, [0,0,1,0,0]), as_singleattr_num(0, 0.6)),
 	},
 	ss2: {
 		desc: "<純属性大魔術>スキル反射を無視し、敵全体へ火属性のダメージ、火単色の精霊が多いほどダメージアップ(上限値:1800%)",
@@ -73054,7 +73054,7 @@ Cards = [{
 	ape: "アイドルキャッツ！",
 	as1: {
 		desc: "<連撃>敵単体を8回連続攻撃(150%)、デッキに単色の精霊が多いほど、ダメージがアップ(70%)(上限:5段階)",
-		proc: ChainDualAttack(as_singleattr_num(1.5, 0.7), 0, 8),
+		proc: add_cond(ChainDualAttack(1.5, 0, 8), as_singleattr_num(0, 0.7)),
 	},
 	ss1: {
 		desc: "<特効大魔術>敵単体へ雷属性のダメージ(400%)、さらに水属性の敵には特効ダメージ(400%) ",
@@ -73075,7 +73075,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<連撃>敵単体を8回連続攻撃(250)、デッキに単色の精霊が多いほど、ダメージがアップ(70%)(上限:5段階)",
-		proc: ChainDualAttack(as_singleattr_num(2.5, 0.7), 0, 8),
+		proc: add_cond(ChainDualAttack(2.5, 0, 8), as_singleattr_num(0, 0.7)),
 	},
 	ss2: {
 		desc: "<特効大魔術>敵単体へ雷属性のダメージ(400%)、さらに水属性の敵には特効ダメージ(1000%) ",

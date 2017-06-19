@@ -84,7 +84,7 @@ function Attr_statusup_oattr(hp, atk, attr) {
 		spec: create_specs(1),
 		up_hp: 0,
 		up_atk: 0,
-		sub_attr: [-1,-1,-1,-1,-1],
+		sub_attr: {"-1": 1},
 		up_hp_2: hp,
 		up_atk_2: atk,
 		name: "純属性" + (hp != 0 ? "HP" : "攻撃力") + "アップ" + int2roman(Math.max(hp, atk)/100) + "・" + get_attr_string(attr).replace("属性",""),
