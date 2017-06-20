@@ -368,6 +368,7 @@ Cards = [{
 	cost: 44,
 	attr: [0, -1],
 	species: [0],
+	disable: true,
 	awakes: [
 		Fastskill(1),
 		Statusup(0, 300),
@@ -5775,6 +5776,7 @@ Cards = [{
 	cost: 43,
 	attr: [1, -1],
 	species: [1],
+	disable: true,
 	awakes: [
 		Spec_statusup(0, 200, [1, ]),
 		Fastskill(1),
@@ -6850,6 +6852,7 @@ Cards = [{
 	cost: 45,
 	attr: [1, -1],
 	species: [9],
+	disable: true,
 	awakes: [
 		Costdown(2),
 		Statusup(0, 200),
