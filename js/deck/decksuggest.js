@@ -253,7 +253,7 @@ $(function () {
 			// select box
 			sel.chosen({
 				allow_single_deselect: true,
-				disable_search: true,
+				disable_search: false,
 				search_contains: true,
 			});
 			sel.on("change", function(ev, params){

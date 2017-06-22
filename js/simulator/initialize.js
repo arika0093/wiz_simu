@@ -238,6 +238,7 @@ $(function () {
 				if (Number(p) >= 0) {
 					// 0tレジェンド精霊用(助っ人にはチェックを通さない)
 					legend_timing_check(als.Deck, als.Now, Number(p));
+					als.Now[p].lgstart_turn = -1; // 列眼処理の関係
 				}
 			}
 			// チェインブースト処理(助っ人は含めないので上と別処理)
