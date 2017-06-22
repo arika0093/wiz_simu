@@ -481,15 +481,14 @@ function answer_enhance(as, i, p, bef_f) {
 
 		// 最大の値を取り出す
 		for (var ai = 0; ai < as.length; ai++) {
-			var as_t = { rate: 0 };
 			if (is_answer_target(bef_f, as[ai], chain, card.attr[0], card.species, i, -1, p, ci)) {
-				as_t = as[ai];
+				var as_t = $.extend(true, {}, as[ai]);
 				// AS効果値後乗せ処理
 				if (as_t.is_afteradd) {
-					as_t += as_t.add_f(bef_f, i, -1, p, ci);
+					as_t.rate += as_t.add_f(bef_f, i, -1, p, ci);
 				}
 			}
-			ass = ass.rate < as_t.rate ? as_t : ass;
+			ass = (ass.rate < as_t.rate) ? as_t : ass;
 		}
 
 		// エンハ値追加
@@ -516,12 +515,11 @@ function answer_heal(as, i, p, bef_f) {
 
 		// 最大の値を取り出す
 		for (var ai = 0; ai < as.length; ai++) {
-			var as_t = {rate: 0};
 			if (is_answer_target(bef_f, as[ai], chain, card.attr[0], card.species, i, -1, p, ci)) {
-				as_t = as[ai];
+				var as_t = $.extend(true, {}, as[ai]);
 				// AS効果値後乗せ処理
 				if (as_t.is_afteradd) {
-					as_t += as_t.add_f(bef_f, i, -1, p, ci);
+					as_t.rate += as_t.add_f(bef_f, i, -1, p, ci);
 				}
 			}
 			ass = ass.rate < as_t.rate ? as_t : ass;
