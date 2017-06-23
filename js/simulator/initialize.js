@@ -294,11 +294,11 @@ $(function () {
 					fes.revData[i].turn_effect = [];
 				}
 			}
+			// タゲリセット
+			target_allselect(-1);
 			// 敵の処理
 			enemy_popup_proc();
 			// -------------------------
-			// タゲリセット
-			target_allselect(-1);
 			//クエスト依存パネル効果の設定
 			if (Field.Quest.panel_effect) {
 				var peff = Field.Quest.panel_effect;

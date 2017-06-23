@@ -1098,15 +1098,17 @@ function s_enemy_multibarrier_own(dmg, turn) {
                     teff.lim_turn = 0;
                 }
             },
-            on_damage: function (fld, dmg, atr_i) {
+            on_damage: function (fld, dmg, atr_i, is_berserk, is_sim) {
                 var is_invalid = false;
-                if (this.barr_endurance > 0) {
+                if (this.barr_endurance > 0 && !is_sim) {
                     // 無効化
                     var bf = this.barr_endurance;
                     var af = this.barr_endurance - 1;
                     Field.log_push("Enemy[" + (n + 1) + "]: 多層バリア(残: " + bf + "→" + af + ")");
                     this.barr_endurance -= 1;
                     is_invalid = true;
+                } else if(is_sim) {
+	                is_invalid = (this.barr_endurance > 0);
                 }
                 return is_invalid ? 0 : dmg;
             }
@@ -1136,15 +1138,17 @@ function s_enemy_multibarrier_all(dmg, turn) {
                         teff.lim_turn = 0;
                     }
                 },
-                on_damage: function (fld, dmg, atr_i) {
+                on_damage: function (fld, dmg, atr_i, is_berserk, is_sim) {
                     var is_invalid = false;
-                    if (this.barr_endurance > 0) {
+                    if (this.barr_endurance > 0 && !is_sim) {
                         // 無効化
                         var bf = this.barr_endurance;
                         var af = this.barr_endurance - 1;
                         Field.log_push("Enemy[" + (n + 1) + "]: 多層バリア(残: " + bf + "→" + af + ")");
                         this.barr_endurance -= 1;
                         is_invalid = true;
+                    } else if(is_sim){
+	                    is_invalid = (this.barr_endurance > 0);
                     }
                     return is_invalid ? 0 : dmg;
                 }

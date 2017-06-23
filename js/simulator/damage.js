@@ -110,7 +110,7 @@ function calculate_damage(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is
 			if (a.priority < b.priority) return +1;
 		})
 		for (var j = 0; j < skillct.length; j++) {
-			d = Math.round(skillct[j].on_damage(Field, d, atk_atr, is_berserk));
+			d = Math.round(skillct[j].on_damage(Field, d, atk_atr, is_berserk, is_simulate));
 		}
 	}
 
