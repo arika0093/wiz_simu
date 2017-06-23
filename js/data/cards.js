@@ -65985,7 +65985,7 @@ Cards = [{
 },{
 	name: "声が想いを繋ぐ 初音ミク",
 	cardno: 8019,
-	imageno: 4865,
+	imageno: 6600,
 	hp: 4442,
 	atk: 2739,
 	cost: 54,
@@ -67309,9 +67309,9 @@ Cards = [{
 		proc: ChainAttack(9.0, 10),
 	},
 	ss2: {
-		desc: "<反動大魔術・蝕>スキル反射を無視し、味方全体のMAXHPを50%使い敵全体へ火属性のダメージ(300%×人数)◆スキル使用後、味方全員が1ターン封印状態に",
+		desc: "<反動大魔術・蝕>スキル反射を無視し、敵全体へ火属性のダメージ(300%×人数)◆スキル使用後、味方全員が1ターン封印状態に",
 		turn: 13,
-		proc: [ss_damage_all(ss_seal_all_cond(3.0), [0]), ss_consume_all(0.5), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(ss_seal_all_cond(3.0), [0]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [1,0,0,0,0,]),
