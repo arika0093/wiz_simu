@@ -1509,7 +1509,7 @@ var SpCondSkill = {
 			}
 		}
 		count = Math.max(Math.min(count, 5), 0);
-		return (rate * rate_fix[count]).toFixed(3);
+		return Number((rate * rate_fix[count]).toFixed(3));
 	},
 	// -----------------------------
 	// チェイン分岐
