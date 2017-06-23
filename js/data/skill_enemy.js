@@ -704,7 +704,7 @@ function s_enemy_attrreverse(t, tnum){
 			var cards = fld.Allys.Deck;
 			var nows = fld.Allys.Now;
 			// 潜在かけ直し
-			func_reawake(fld, cards, nows);
+			func_reawake(fld, cards, nows, true);
 			for(var i=0; i < cards.length; i++){
 				if(tg.indexOf(i) >= 0) {
 					var card = cards[i];
