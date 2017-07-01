@@ -219,7 +219,8 @@ function legend_timing_check(cards, nows, index, is_ignore_spskill) {
 		nows[index].lgstart_turn = Field.Status.totalturn;
 		Field.log_push("Unit[" + (index + 1) + "]: Lモード");
 		// L時の潜在を反映させる
-		add_awake_ally(cards, nows, index, true);
+		//add_awake_ally(cards, nows, index, true);
+		func_reawake(Field, cards, nows);
 		// L時のSSを発動する
 		if (!is_ignore_spskill) {
 			Awake_dospskill(Field, index);

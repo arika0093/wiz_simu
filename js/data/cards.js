@@ -71538,7 +71538,7 @@ Cards = [{
 		Attr_relief([1,0,0,0,0,],20),
 		Panel_boost([0,1,0,0,0,],3),
 		Spec_statusup(0,500, [4,]),
-		Spec_statusup(0,500, [4,]),
+		Spec_statusup(500,0, [4,]),
 		Fastskill(3),
 		Attr_statusup(0,400, [0,1,0,0,0,]),
 		Attr_statusup(400,0, [0,1,0,0,0,]),

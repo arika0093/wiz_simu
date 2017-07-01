@@ -138,10 +138,13 @@ function minus_legend_awake(cards, nows, own_no) {
 }
 
 // 潜在を無効化した後かけ直す関数
-function func_reawake(fld, cards, nows, isbreak){
+function func_reawake(fld, cards, nows){
+	// 味方の現在HP保存
+	var allys_nowhp = [];
 	// 味方全員のステ上昇潜在を一旦無効化
 	for(var i=0; i < nows.length; i++){
 		var ntg = nows[i];
+		allys_nowhp[i] = ntg.nowhp;
 		ntg.def_awhp = ntg.def_hp;
 		ntg.def_awatk = ntg.def_atk;
 		ntg.maxhp = Math.max(ntg.def_hp, 1);
@@ -150,22 +153,14 @@ function func_reawake(fld, cards, nows, isbreak){
 	}
 	// 味方全体[助っ人込み]のステ上昇潜在を再度有効化
 	for(var i in nows){
-		add_awake_ally(cards, nows, i, false, isbreak);
+		add_awake_ally(cards, nows, i, false);
 	}
 	// 味方全体のステ上昇潜在を再度有効化(L覚醒)
 	for(var i=0; i < nows.length; i++){
 		var ntg = nows[i];
 		var isL = is_legendmode(cards[i], ntg);
 		if(isL){
-			add_awake_ally(cards, nows, i, true, isbreak);
-		}
-	}
-	// 異常値を修正
-	for(var i=0; i < nows.length; i++){
-		var ntg = nows[i];
-		ntg.maxhp = Math.max(ntg.maxhp, 1);
-		if(!isbreak){
-			ntg.nowhp = Math.max(Math.min(ntg.nowhp, ntg.maxhp), 1);
+			add_awake_ally(cards, nows, i, true);
 		}
 	}
 	// ステアップ効果値反映
@@ -178,6 +173,16 @@ function func_reawake(fld, cards, nows, isbreak){
 				ntg.atk = Math.max(ntg.def_awatk + ntg.upval_atk, 0);
 			}
 		});
+	}
+	// 元のHPと比較して修正
+	for(var i=0; i < nows.length; i++){
+		var ntg = nows[i];
+		ntg.maxhp = Math.max(ntg.maxhp, 1);
+		if(allys_nowhp[i] > 0){
+			ntg.nowhp = Math.max(Math.min(allys_nowhp[i], ntg.maxhp), 1);
+		} else {
+			ntg.nowhp = 0;
+		}
 	}
 }
 
