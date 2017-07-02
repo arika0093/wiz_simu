@@ -21,6 +21,8 @@ function deckdata_DeckCardTemplate() {
 		mana: 200,
 		awake: -1,
 		awake_default: -1,
+		level: 110,
+		level_default: 110,
 		crystal: [],
 	});
 }

@@ -40,7 +40,6 @@ function sim_show() {
 	} else if (Field.Status.finish /*&& !Field.Status.isautomode*/) {
 		$("#sim_share").fadeIn("slow");
 		$("#sim_rndview").hide();
-		$("#dialog_simfinish_popup").dialog("open");
 	} else {
 		$("#sim_share").fadeOut("slow");
 		$("#sim_rndview").fadeIn("slow");
@@ -495,7 +494,7 @@ function sim_show() {
 			$(".ui-dialog-titlebar").hide();
 			// tweet data
 			$("#simfinish_tweettext").html(
-				text + "<br/><div class='sh_url'>" + absolutePath("/simulator/" + location.search) + "</div> #wzsim"
+				text + "<br/><div class='sh_url'>" + absolutePath("/simulator/v/?id=" + Field.Status.result_enc) + "</div> #wzsim"
 			);
 			// close when click dialog outside
 			$('.ui-widget-overlay').bind('click', function () {
@@ -876,9 +875,10 @@ function show_allystat(n) {
 function tweet_result() {
 	var win_opt = "menubar=no,toolbar=no,resizable=yes,scrollbars=no,width=640px,height=360px,top=40px,left=40px";
 	// URL生成して開く
-	var url = absolutePath("/simulator/" + location.search);
+	//var url = absolutePath("/simulator/" + location.search);
+	var vurl = absolutePath("/simulator/v/?id=" + Field.Status.result_enc);
 	var text = //"このデッキを使って " +
-			simshow_create_fintext(true) + "%0A" + url;
+			simshow_create_fintext(true) + "%0A" + vurl;
 	var tweeturl = "https://twitter.com/intent/tweet?hashtags=wzsim" + "&text=" + text;
 	// 開く
 	window.open(tweeturl, "tweet_result", win_opt);

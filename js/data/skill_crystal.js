@@ -20,6 +20,21 @@ var Awake_crystal_lists = [{
 	param2: Statusup(-1000, 0),
 	param3: Awake_damage_multiple(1.2),
 }, {
+	name: "夜空に届け！ファイアワークス！(花火/HP-300)",
+	imple: Statusup,
+	param1: -300,
+	param2: 0,
+}, {
+	name: "改変の結晶〈オルタメア〉(HP-200)",
+	imple: Statusup,
+	param1: -200,
+	param2: 0,
+}, {
+	name: "発見！魔道士たちの財宝(宝箱/ATK-300)",
+	imple: Statusup,
+	param1: 0,
+	param2: -300,
+}, {
 	genre: "AS/SS変化",
 	name: "SS効果値アップ<攻撃系SS>",
 	imple: function (upval) {

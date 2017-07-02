@@ -29,15 +29,15 @@ div.run{
 	padding-bottom: 2px;
 }
 
-div.cardimgs{
+.cardimgs{
 	padding-bottom: 4px;
 }
 
-div.cardimgs a:hover{
+.cardimgs a:hover{
 	opacity: 0.7;
 }
 
-div.cardimgs img{
+.cardimgs img{
 	width: 96px;
 	margin-right: 2px;
 }
@@ -53,3 +53,56 @@ div.user{
 div.comment{
 }
 
+/*  for actionview */
+a#run_url{
+	float: right;
+	display: block;
+	padding: 1.5ex 1em;
+}
+
+div.clearturn{
+	margin: 0 0 1ex;
+	padding: 1.5ex 1em;
+	border: dotted 1px #0060C0;
+}
+
+table.cdtable{
+	width: 100%;
+	padding: 1ex 1.5em 2.5ex;
+}
+.wraptb{
+	overflow: auto;
+	white-space: nowrap;
+}
+.wraptb::-webkit-scrollbar{
+	height: 5px;
+}
+.wraptb::-webkit-scrollbar-track{
+	background: #F1F1F1;
+}
+.wraptb::-webkit-scrollbar-thumb {
+	background: #BCBCBC;
+}
+
+table.cdtable th{
+	width: 19.9%;
+}
+
+table.cdtable tr:nth-child(odd){
+	background-color: #F0F0F0;
+}
+
+table.cdtable td{
+	text-align: center;
+}
+
+table.action_lst{
+	width: 100%;
+}
+table.action_lst th.actb, table.action_lst th.actt{
+	width: 70px;
+}
+
+table.action_lst tr:nth-child(odd){
+	background-color: #dff7FF;
+}

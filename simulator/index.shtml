@@ -243,6 +243,8 @@
 		<div class="dialog_div" id="d_mana_dindex"></div>
 		<p id="d_mana_text">マナプラスの値を指定してください。</p>
 		<input type=number class="edit_indialog" id="d_mana_edit" placeholder="《マナプラスの値を指定》" />
+        <p id="d_level_text">レベルの値を指定してください。</p>
+        <input type=number class="edit_indialog" id="d_level_edit" placeholder="《レベルの値を指定》" />
 		<p id="d_awake_text">潜在解放の個数を指定してください。</p>
 		<input type=number class="edit_indialog" id="d_awake_edit" placeholder="《潜在の個数を指定》" />
 	</div>

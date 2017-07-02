@@ -190,9 +190,10 @@ $(function () {
 				var now = als.Now[i] = {};
 				var mana = data.deck[i].mana;
 				now.mana = mana;
-				now.maxhp = card.hp + mana;
-				now.nowhp = card.hp + mana;
-				now.atk = card.atk + mana;
+				now.lv = data.deck[i].level;
+				now.maxhp = calcLvStatus(now.lv, (card.islegend ? 110 : 90), Math.floor(card.hp/2), card.hp, mana);
+				now.nowhp = now.maxhp;
+				now.atk = calcLvStatus(now.lv, (card.islegend ? 110 : 90), Math.floor(card.atk/2), card.atk, mana);
 				now.def_hp = now.maxhp;	// 初期状態のHP(マナ込み)
 				now.def_atk = now.atk;	// 初期状態のATK(マナ込み)
 				now.def_awhp = now.def_hp;      // 潜在込みのHP(初期状態ではdef_hpと同じ)
@@ -231,13 +232,12 @@ $(function () {
 			if(simQuest.disable_awake){
 				Field.log_push("【このクエストでは潜在能力の一部が制限されています】", "blue");
 			}
+			func_reawake(Field, als.Deck, als.Now);
 			for (var p in als.Deck) {
 				var card = als.Deck[p];
 				var now = als.Now[p];
-				add_awake_ally(als.Deck, als.Now, p, false);
 				if (Number(p) >= 0) {
 					// 0tレジェンド精霊用(助っ人にはチェックを通さない)
-					legend_timing_check(als.Deck, als.Now, Number(p));
 					als.Now[p].lgstart_turn = -1; // 列眼処理の関係
 				}
 			}
@@ -341,6 +341,12 @@ $(window).load(function () {
 	}
 });
 
+// LvからHP/ATKを計算する
+function calcLvStatus(nowLv, maxLv, statusAt1, maxStatus, mana) {
+	nowLv = nowLv || maxLv;
+	return Math.floor((statusAt1) + (maxStatus - statusAt1) / (maxLv - 1) * (nowLv - 1)) + mana;
+}
+
 // 次のターンに進む
 function nextturn(is_ssfin) {
 	var f_st = Field.Status;
@@ -413,7 +419,9 @@ function nextturn(is_ssfin) {
 	if (Field.Status.finish && !Field.Status.fin_timeup && !Field.Status.isautomode) {
 		actl_send_result(function (rst) {
 			var js = JSON.parse(rst);
+			Field.Status.result_enc = js.result_enc;
 			Field.Status.result_id = Number(js.result_id);
+			$("#dialog_simfinish_popup").dialog("open");
 			return true;
 		});
 	}

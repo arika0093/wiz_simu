@@ -138,10 +138,15 @@ function minus_legend_awake(cards, nows, own_no) {
 }
 
 // 潜在を無効化した後かけ直す関数
-function func_reawake(fld, cards, nows, isbreak){
+function func_reawake(fld, cards, nows){
+	// 味方の現在HP/最大HP保存
+	var allys_maxhp = [];
+	var allys_nowhp = [];
 	// 味方全員のステ上昇潜在を一旦無効化
 	for(var i=0; i < nows.length; i++){
 		var ntg = nows[i];
+		allys_maxhp[i] = ntg.maxhp;
+		allys_nowhp[i] = ntg.nowhp;
 		ntg.def_awhp = ntg.def_hp;
 		ntg.def_awatk = ntg.def_atk;
 		ntg.maxhp = Math.max(ntg.def_hp, 1);
@@ -150,22 +155,14 @@ function func_reawake(fld, cards, nows, isbreak){
 	}
 	// 味方全体[助っ人込み]のステ上昇潜在を再度有効化
 	for(var i in nows){
-		add_awake_ally(cards, nows, i, false, isbreak);
+		add_awake_ally(cards, nows, i, false);
 	}
 	// 味方全体のステ上昇潜在を再度有効化(L覚醒)
 	for(var i=0; i < nows.length; i++){
 		var ntg = nows[i];
 		var isL = is_legendmode(cards[i], ntg);
 		if(isL){
-			add_awake_ally(cards, nows, i, true, isbreak);
-		}
-	}
-	// 異常値を修正
-	for(var i=0; i < nows.length; i++){
-		var ntg = nows[i];
-		ntg.maxhp = Math.max(ntg.maxhp, 1);
-		if(!isbreak){
-			ntg.nowhp = Math.max(Math.min(ntg.nowhp, ntg.maxhp), 1);
+			add_awake_ally(cards, nows, i, true);
 		}
 	}
 	// ステアップ効果値反映
@@ -173,11 +170,32 @@ function func_reawake(fld, cards, nows, isbreak){
 		var ntg = nows[i];
 		$.each(ntg.turn_effect, function(j,e){
 			if(e.type == "ss_statusup"){
-				ntg.maxhp = Math.max(ntg.def_awhp + ntg.upval_hp, 1);
-				ntg.nowhp = Math.min(ntg.nowhp, ntg.maxhp);
-				ntg.atk = Math.max(ntg.def_awatk + ntg.upval_atk, 0);
+				ntg.maxhp = Math.max(ntg.maxhp + e.up_hp, 1);
+				ntg.atk = Math.max(ntg.atk + e.up_atk, 0);
+			}
+			if(e.type == "curse"){
+				ntg.maxhp = Math.max(ntg.maxhp - e.hpdown, 1);
+				ntg.atk = Math.max(ntg.atk - e.atkdown, 0);
 			}
 		});
+	}
+	// 元のHPと比較して修正
+	for(var i=0; i < nows.length; i++){
+		var ntg = nows[i];
+		ntg.maxhp = Math.max(ntg.maxhp, 1);
+		if(allys_nowhp[i] > 0){
+			ntg.nowhp = Math.max(Math.min(allys_nowhp[i] + Math.max(ntg.maxhp - allys_maxhp[i], 0), ntg.maxhp), 1);
+			/*
+			var is_up = (ntg.maxhp >= allys_maxhp[i]);
+			if(is_up){
+				ntg.nowhp = Math.max(Math.min(allys_nowhp[i] + Math.max(ntg.maxhp - allys_maxhp[i], 0), ntg.maxhp), 1);
+			} else {
+				ntg.nowhp = Math.max(Math.min(allys_nowhp[i], ntg.maxhp), 1);
+			}
+			*/
+		} else {
+			ntg.nowhp = 0;
+		}
 	}
 }
 
