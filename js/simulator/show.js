@@ -40,7 +40,6 @@ function sim_show() {
 	} else if (Field.Status.finish /*&& !Field.Status.isautomode*/) {
 		$("#sim_share").fadeIn("slow");
 		$("#sim_rndview").hide();
-		$("#dialog_simfinish_popup").dialog("open");
 	} else {
 		$("#sim_share").fadeOut("slow");
 		$("#sim_rndview").fadeIn("slow");

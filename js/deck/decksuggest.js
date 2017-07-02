@@ -170,7 +170,7 @@ $(function () {
 					}
 				},
 			});
-			$("#d_level_edit").spinner("value", Deckdata.deck[ni].level | max_level);
+			$("#d_level_edit").spinner("value", Deckdata.deck[ni].level || max_level);
 			// close when click dialog outside
 			$('.ui-widget-overlay').bind('click', function () {
 				$("#dialog_manaset").dialog('close');

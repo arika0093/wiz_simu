@@ -343,7 +343,7 @@ $(window).load(function () {
 
 // LvからHP/ATKを計算する
 function calcLvStatus(nowLv, maxLv, statusAt1, maxStatus, mana) {
-	nowLv = nowLv | maxLv;
+	nowLv = nowLv || maxLv;
 	return Math.floor((statusAt1) + (maxStatus - statusAt1) / (maxLv - 1) * (nowLv - 1)) + mana;
 }
 
@@ -421,6 +421,7 @@ function nextturn(is_ssfin) {
 			var js = JSON.parse(rst);
 			Field.Status.result_enc = js.result_enc;
 			Field.Status.result_id = Number(js.result_id);
+			$("#dialog_simfinish_popup").dialog("open");
 			return true;
 		});
 	}
