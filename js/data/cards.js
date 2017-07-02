@@ -74139,7 +74139,7 @@ Cards = [{
 	ss1: {
 		desc: "<大魔術>スキル反射を無視し、敵全体に水・火属性のダメージ(80%)、平均解答が早いほどさらにダメージ(40%)(上限値:160%)",
 		turn: 4,
-		proc: [ss_damage_all(ss_answertime(0.8, 0.4), [2, 1]), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(ss_answertime(0.8, 0.4), [1, 0]), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],4),
@@ -74160,7 +74160,7 @@ Cards = [{
 	ss2: {
 		desc: "<大魔術>スキル反射を無視し、敵全体に水・火属性のダメージ(110%)、平均解答が早いほどさらにダメージ(40%)(上限値:160%)",
 		turn: 6,
-		proc: [ss_damage_all(ss_answertime(1.1, 0.4), [2, 1]), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(ss_answertime(1.1, 0.4), [1, 0]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,1,0,0,0,]),
