@@ -93,6 +93,7 @@ $(function () {
 			var ni = Number($("#d_mana_dindex").text());
 			var cd = Cards[n];
 			var cd_aws = cd.awakes.length;
+			var max_level = (cd.islegend ? 110 : 90);
 			// set value(mana)
 			$("#d_mana_edit").spinner({
 				change: function () {
@@ -145,6 +146,31 @@ $(function () {
 			});
 			$("#d_awake_edit").spinner("value",
 				Deckdata.deck[ni].awake != -1 ? Deckdata.deck[ni].awake : cd_aws);
+			
+			// set value(level)
+			$("#d_level_edit").spinner({
+				change: function () {
+					var value = $("#d_level_edit").spinner("value");
+					if (value > max_level) {
+						$(this).spinner("value", max_level);
+						return false;
+					} else if (value < 1) {
+						$(this).spinner("value", 1);
+						return false;
+					}
+					
+				},
+				spin: function (event, ui) {
+					if (ui.value > max_level) {
+						$(this).spinner("value", max_level);
+						return false;
+					} else if (ui.value < 1) {
+						$(this).spinner("value", 1);
+						return false;
+					}
+				},
+			});
+			$("#d_level_edit").spinner("value", Deckdata.deck[ni].level | max_level);
 			// close when click dialog outside
 			$('.ui-widget-overlay').bind('click', function () {
 				$("#dialog_manaset").dialog('close');
@@ -170,8 +196,10 @@ $(function () {
 				var cd_aws = cd.awakes.length;
 				var val = $("#d_mana_edit").spinner("value");
 				var aws = $("#d_awake_edit").spinner("value");
+				var lv = $("#d_level_edit").spinner("value");
 				Deckdata.deck[ni].mana = val >= 0 ? val : 200;
 				Deckdata.deck[ni].awake = aws != cd_aws ? aws : cd_aws;
+				Deckdata.deck[ni].level = lv;
 				$("#ally0" + (ni + 1) + "_mana").text(Deckdata.deck[ni].mana
 					? "+" + Deckdata.deck[ni].mana : "");
 				$(this).dialog("close");
@@ -592,7 +620,12 @@ function set_autocmp(i) {
 				return false;
 			},
 			select: function (e, dec) {
+				// 表示
 				decksel_show(idx, dec.item.data);
+				// レベルを調整する
+				Deckdata.deck[idx].level = Deckdata.deck[idx].level_default
+					= (dec.item.data.islegend ? 110 : 90);
+				// 閉じる
 				$(".selector").autocomplete("close");
 				// TABキーで次の要素に移動してないなら移動
 				var next = $("#deck0" + (i + 1));
