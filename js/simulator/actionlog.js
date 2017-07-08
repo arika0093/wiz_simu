@@ -168,10 +168,10 @@ function actionSpScoreAnalyze(turn, turn_d, act) {
 				return 0;
 			}
 			else if (!$.isArray(ac.target)) {
-				return (ap - def_targetct) * 2;
+				return (ap - def_targetct + 1) * 2;
 			}
 			else {
-				return Math.pow((ap - def_targetct + 1), 2);
+				return Math.pow((ap - def_targetct + 2), 2);
 			}
 		},
 		"special": function (ap, ac) { return 12 * Math.pow(ap, 0.8); },

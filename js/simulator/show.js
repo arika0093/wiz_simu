@@ -875,8 +875,11 @@ function show_allystat(n) {
 function tweet_result() {
 	var win_opt = "menubar=no,toolbar=no,resizable=yes,scrollbars=no,width=640px,height=360px,top=40px,left=40px";
 	// URL生成して開く
-	//var url = absolutePath("/simulator/" + location.search);
-	var vurl = absolutePath("/simulator/v/?id=" + Field.Status.result_enc);
+	if(Field.Status.result_enc){
+		var vurl = absolutePath("/simulator/v/?id=" + Field.Status.result_enc);
+	} else {
+		var vurl = absolutePath("/simulator/" + location.search);
+	}
 	var text = //"このデッキを使って " +
 			simshow_create_fintext(true) + "%0A" + vurl;
 	var tweeturl = "https://twitter.com/intent/tweet?hashtags=wzsim" + "&text=" + text;

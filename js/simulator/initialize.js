@@ -201,6 +201,7 @@ $(function () {
 				now.upval_hp = 0;
 				now.upval_atk = 0;
 				now.def_attr = card.attr;
+				now.lgstart_turn = -1;
 				now.target = [];
 				now.flags = {};
 				now.flags.enemy_counter = [];
@@ -233,14 +234,6 @@ $(function () {
 				Field.log_push("【このクエストでは潜在能力の一部が制限されています】", "blue");
 			}
 			func_reawake(Field, als.Deck, als.Now);
-			for (var p in als.Deck) {
-				var card = als.Deck[p];
-				var now = als.Now[p];
-				if (Number(p) >= 0) {
-					// 0tレジェンド精霊用(助っ人にはチェックを通さない)
-					als.Now[p].lgstart_turn = -1; // 列眼処理の関係
-				}
-			}
 			// チェインブースト処理(助っ人は含めないので上と別処理)
 			var dck = als.Deck;
 			for (var i = 0; i < dck.length; i++) {
