@@ -77,6 +77,23 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
+	// 敵単体に属性ダメージ
+	"ss_damage_explosion": function (fld, n, cobj, params) {
+		var r = params[0];
+		var attrs = params[1];
+		var enemys = GetNowBattleEnemys();
+		var t_enemys = ss_get_targetenemy(fld, cobj, n);
+		for (var en = 0; en < t_enemys.length; en++) {
+			for (var a = 0; a < attrs.length; a++) {
+				// 攻撃
+				var atr = attrs[a];
+				var atk_order = enemys.indexOf(t_enemys[en]);
+				ss_damage(fld, r, atr, 1, n, atk_order, false);
+			}
+		}
+		return true;
+	},
+	// -----------------------------
 	// 敵全体にダメージ&残滅ダメージ
 	"ss_continue_damage": function (fld, n, cobj, params) {
 		var dmg_r = params[0];
@@ -667,7 +684,7 @@ var SpSkill = {
 					all_done(f, state, is_t, is_ak);
 				}
 			},
-			priority: 1,
+			priority: -256,         // 1T継続効果が切れてから最後に追加する
 			turn: t,
 			lim_turn: t,
 			ss_disabled: true,		// SS発動不可
@@ -1700,6 +1717,11 @@ function ss_break_template(target, type) {
 
 // (内部用)[対象:敵]効果対象が単体か全体かを判別して適切な敵配列を返却
 function ss_get_targetenemy(fld, ss, ai) {
+	// 敵3体の時の並び順
+	var earr3 = [0,1,2];
+	// 敵5体の時の並び順
+	// var earr5 = [0,4,1,5,2];
+	// タゲの種類で分岐
 	switch (ss.target) {
 		case "all":
 			return GetNowBattleEnemys();
@@ -1707,6 +1729,23 @@ function ss_get_targetenemy(fld, ss, ai) {
 			var enemys = GetNowBattleEnemys();
 			var tg = auto_attack_order(fld, enemys, -1, ai);
 			return [enemys[tg]];
+		case "withside":
+			var enemys = GetNowBattleEnemys();
+			var tg = auto_attack_order(fld, enemys, -1, ai);
+			var e_order = (/*敵五体の時の判定式 ? earr5 : */ earr3);
+			// まず始めに両脇の敵を追加する
+			var new_arr = $.map(enemys, function(e, i){
+				if((tg > 0 && e_order[tg-1] == i)               // タゲ対象の左側を含める
+				|| (tg < enemys.length && e_order[tg+1] == i)   // タゲ対象の右側を含める
+				){
+					return enemys[i];
+				}
+				// それ以外は除外する
+				return null;
+			});
+			// 最後に、先頭に対象の敵を追加する
+			new_arr.unshift(enemys[tg]);
+			return new_arr;
 		default:
 			console.error("INVALID VALUE: " + ss.target + "(index: " + ei + ")");
 			return null;

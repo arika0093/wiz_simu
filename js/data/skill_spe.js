@@ -125,6 +125,21 @@ function ss_damage_slash(r, attrs, atn) {
 }
 
 /**
+ * 指定した敵とその左右の敵に指定属性のダメージ
+ * r:		攻撃威力(ex: 1.0		-> 効果値100)
+ * attrs:	攻撃属性(ex: [0,1]	-> 火,水)
+ **/
+function ss_damage_explosion(r, attrs) {
+	return ss_template({
+		name: "ss_damage_explosion",
+		type: "damage",
+		target: "withside",
+		p1: r,
+		p2: attrs,
+	});
+}
+
+/**
  * 敵全体に割合ダメージ
  * r: ダメージ割合(ex: 0.25 -> 25%)
 **/

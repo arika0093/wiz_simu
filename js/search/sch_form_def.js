@@ -283,10 +283,16 @@ var sfdef_aw_namelist = {
 			return true;
 		}
 	},
+	"単属性ステアップ": {
+		type: "status_up",
+		check: function (e) {
+			return e.sub_attr && e.sub_attr["-1"];
+		}
+	},
 	"属性ステアップ/複属性でさらにアップ": {
 		type: "status_up",
 		check: function (e) {
-			return e.sub_attr;
+			return e.sub_attr && !e.sub_attr["-1"];
 		}
 	},
 	"経験値取得量アップ": {
@@ -307,16 +313,22 @@ var sfdef_aw_namelist = {
 			return e.name == "心眼";
 		}
 	},
-	"精霊交代": {
+	"精霊交替": {
 		type: "awake_noeffect",
 		check: function (e) {
-			return e.name == "精霊交代";
+			return e.name == "精霊交替";
 		}
 	},
 	"難易度ダウン": {
 		type: "awake_noeffect",
 		check: function (e) {
 			return e.name == "難易度ダウン";
+		}
+	},
+	"チェインブースト": {
+		type: "awake_chboost",
+		check: function (e) {
+			return true;
 		}
 	},
 	"AS封印無効": {

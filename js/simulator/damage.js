@@ -36,7 +36,7 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 		"攻撃力(" + now.atk + (!is_ss ? "/2" : "") + ")" +
 		" * 倍率(" + rate + "+" + d_dat.as_enh + "+" + d_dat.sst_enh + ")" +
 		" * チェイン(" + (1 + ch / 100).toFixed(2) + ")" +
-		" * パネル(" + (pn.indexOf(atk_atr) >= 0 ? 1 : 0.5) + ")" +
+		(!is_ss ? " * パネル(" + (pn.indexOf(atk_atr) >= 0 ? 1 : 0.5) + ")" : "") +
 		" * 属性相性(" + attr_magnification(atk_atr, enemy.attr) + ")" +
 		(d_dat.lst_multi != 1 ? " * 補正値(" + d_dat.lst_multi + ")" : "") +
 		" * 乱数(" + d_dat.random.toFixed(2) + ")" +

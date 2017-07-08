@@ -1,4 +1,4 @@
-﻿// -------------------------
+﻿﻿﻿// -------------------------
 // 実装が終わった精霊データ
 // -------------------------
 Cards = [{
@@ -30782,7 +30782,7 @@ Cards = [{
 		Fastskill(2),
 		Attr_statusup(0,200, [0,0,1,0,0,]),
 		Attr_statusup_sattr(0, 200, [0,0,1,0,0], 0, 200, [0,0,0,1,0]),
-		Awake_noeffect("精霊交代", 1),
+		Awake_noeffect("精霊交替", 1),
 	],
 	as2: {
 		desc: "<複属性攻撃強化>4チェインで雷属性の攻撃力をアップ、複属性が光属性だとさらにアップ(40%/150%)",
@@ -32261,7 +32261,7 @@ Cards = [{
 		Attr_statusup(200,0, [0,0,1,0,0,]),
 		Attr_relief([0,0,0,1,1,],30),
 		Fastskill(3),
-		Awake_noeffect("精霊交代", 1),
+		Awake_noeffect("精霊交替", 1),
 	],
 	as2: {
 		desc: "<回復>雷属性の味方を回復、HP20%以下ならさらに回復(17%/42%)",
@@ -38859,7 +38859,7 @@ Cards = [{
 		Fastskill(2),
 		Attr_statusup_sattr(0, 200, [1,0,0,0,0], 0, 200, [0,0,0,1,0]),
 		Attr_statusup_sattr(200, 0, [1,0,0,0,0], 200, 0, [0,0,0,1,0]),
-		Awake_noeffect("精霊交代", 1),
+		Awake_noeffect("精霊交替", 1),
 	],
 	as2: {
 		desc: "<チェイン攻撃・複属性攻撃強化>6チェインでダメージアップ(500%)、さらに火属性の攻撃力をアップ、複属性が光だとさらにアップ(10%/40%)",
@@ -43081,7 +43081,7 @@ Cards = [{
 		Fastskill(2),
 		Attr_statusup(0,200, [1,0,0,0,0,]),
 		Attr_statusup(200,0, [1,0,0,0,0,]),
-		Awake_noeffect("精霊交代", 1),
+		Awake_noeffect("精霊交替", 1),
 	],
 	as2: {
 		desc: "<攻撃強化・ガード>5チェインで火属性の味方の攻撃力をアップ(90%)、さらに全属性のダメージを10%軽減",
@@ -43126,7 +43126,7 @@ Cards = [{
 		Fastskill(2),
 		Attr_statusup(200,0, [0,1,1,0,0,]),
 		Attr_statusup_sattr(0, 200, [0,1,0,0,0], 0, 200, [0,0,1,0,0]),
-		Awake_noeffect("精霊交代", 1),
+		Awake_noeffect("精霊交替", 1),
 	],
 	as2: {
 		desc: "<攻撃>敵単体へのダメージアップ、10チェインで更にダメージアップ(350%/650%)",
@@ -43171,7 +43171,7 @@ Cards = [{
 		Fastskill(2),
 		Attr_statusup(200,0, [0,0,1,0,0,]),
 		Attr_statusup(0,200, [0,0,1,0,0,]),
-		Awake_noeffect("精霊交代", 1),
+		Awake_noeffect("精霊交替", 1),
 	],
 	as2: {
 		desc: "<チェイン攻撃・攻撃強化>味方の攻撃力をアップ(30%)し、4チェインでダメージアップ(400%)",
@@ -44457,7 +44457,7 @@ Cards = [{
 		Spec_statusup(200,0, [9,]),
 		Attr_statusup(200,0, [1,0,1,0,0,]),
 		Attr_statusup(0,200, [1,0,1,0,0,]),
-		Awake_noeffect("精霊交代",1),
+		Awake_noeffect("精霊交替",1),
 	],
 	as2: {
 		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(450%)",
@@ -58288,7 +58288,7 @@ Cards = [{
 		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
 		Fastskill(3),
 		Abstate_invalid("as_sealed"),
-		Awake_noeffect("精霊交代",1),
+		Awake_noeffect("精霊交替",1),
 	],
 	as2: {
 		desc: "<回復>火・水属性の味方を回復、HP20%以下ならさらに回復(17%/42%)",
@@ -59477,7 +59477,7 @@ Cards = [{
 		Fastskill(2),
 		Attr_statusup(200,0, [0,1,1,0,0,]),
 		Attr_statusup_sattr(0,200, [0,1,0,0,0,], 0,200, [0,0,1,0,0,]),
-		Awake_noeffect("精霊交代",1),
+		Awake_noeffect("精霊交替",1),
 	],
 	as2: {
 		desc: "<攻撃>敵単体へのダメージアップ、10チェインで更にアップ(400%/700%)",
@@ -60513,7 +60513,7 @@ Cards = [{
 		Fastskill(2),
 		Attr_statusup(200,0, [0,0,1,0,0,]),
 		Attr_statusup(0,200, [0,0,1,0,0,]),
-		Awake_noeffect("精霊交代", 1),
+		Awake_noeffect("精霊交替", 1),
 	],
 	as2: {
 		desc: "<チェイン攻撃・攻撃強化>味方の攻撃力をアップ(30%)し、4チェインでダメージアップ(400%)",
@@ -60556,7 +60556,7 @@ Cards = [{
 		Fastskill(2),
 		Attr_statusup(0,200, [1,0,0,0,0,]),
 		Attr_statusup(200,0, [1,0,0,0,0,]),
-		Awake_noeffect("精霊交代", 1),
+		Awake_noeffect("精霊交替", 1),
 	],
 	as2: {
 		desc: "<攻撃強化・ガード>5チェインで火属性の味方の攻撃力をアップ(90%)、さらに全属性のダメージを10%軽減",
@@ -68783,7 +68783,7 @@ Cards = [{
 		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,100, [0,0,0,1,0,]),
 		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 100,0, [0,0,0,1,0,]),
 		Fastskill(3),
-		Awake_noeffect("精霊交代",1),
+		Awake_noeffect("精霊交替",1),
 	],
 	as2: {
 		desc: "<連撃>4チェインで敵単体を3回連続攻撃、パネルの色が増す度さらにダメージアップ(450%/550%/700%)",
@@ -71370,7 +71370,7 @@ Cards = [{
 		Fastskill(3),
 		Attr_statusup_sattr(0,200, [0,0,1,0,0,], 0,200, [0,0,0,1,0,]),
 		Attr_statusup_sattr(200,0, [0,0,1,0,0,], 200,0, [0,0,0,1,0,]),
-		Awake_noeffect("精霊交代",1),
+		Awake_noeffect("精霊交替",1),
 	],
 	as2: {
 		desc: "<複属性攻撃強化>4チェインで雷属性の攻撃力をアップ(40%)、複属性が光属性だとさらにアップ(110%)",
@@ -73423,7 +73423,7 @@ Cards = [{
 	ss1: {
 		desc: "<純属性強化>4ターンの間、火単色精霊が多いほど、火単色精霊のダメージを強化し(上限値:100%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:2000,2000)",
 		turn: 4,
-		proc: [ss_enhance_all(ss_pureattr_cond(1.0), 4, [1,0,0,0,0]), ss_statusup_all([ss_pureattr_cond(2000), ss_pureattr_cond(2000)], -1)],
+		proc: [ss_enhance_all(ss_pureattr_cond(1.0), 4, [1,0,0,0,0]), ss_statusup_all([ss_pureattr_cond(2000), ss_pureattr_cond(2000)], [2000,2000], -1)],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],2),
@@ -73444,7 +73444,7 @@ Cards = [{
 	ss2: {
 		desc: "<純属性強化>4ターンの間、火単色精霊が多いほど、火単色精霊のダメージを強化し(上限値:200%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:3000,3000)",
 		turn: 8,
-		proc: [ss_enhance_all(ss_pureattr_cond(2.0), 4, [1,0,0,0,0]), ss_statusup_all([ss_pureattr_cond(3000), ss_pureattr_cond(3000)], -1)],
+		proc: [ss_enhance_all(ss_pureattr_cond(2.0), 4, [1,0,0,0,0]), ss_statusup_all([ss_pureattr_cond(3000), ss_pureattr_cond(3000)], [3000,3000], -1)],
 	},
 	Lawake: [
 		Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
@@ -74298,7 +74298,7 @@ Cards = [{
 		Fastskill(3),
 		NEFTJOD(30),
 		Abstate_invalid("ss_sealed"),
-		Awake_noeffect("精霊交代",1),
+		Awake_noeffect("精霊交替",1),
 		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,1,0,0,0,]),
 		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,1,0,0,0,]),
 	],
@@ -75302,7 +75302,7 @@ Cards = [{
 	ss1: {
 		desc: "<純属性強化>4ターンの間、水単色精霊が多いほど、水単色精霊のダメージを強化し(上限値:100)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:2000,2000)",
 		turn: 4,
-		proc: [ss_enhance_all(ss_pureattr_cond(1.0), 4, [0,1,0,0,0]), ss_statusup_all([ss_pureattr_cond(2000), ss_pureattr_cond(2000)], -1)],
+		proc: [ss_enhance_all(ss_pureattr_cond(1.0), 4, [0,1,0,0,0]), ss_statusup_all([ss_pureattr_cond(2000), ss_pureattr_cond(2000)], [2000,2000], -1)],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],2),
@@ -75323,7 +75323,7 @@ Cards = [{
 	ss2: {
 		desc: "<純属性強化>4ターンの間、水単色精霊が多いほど、水単色精霊のダメージを強化し(上限値:200)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:3000,3000)",
 		turn: 8,
-		proc: [ss_enhance_all(ss_pureattr_cond(2.0), 4, [0,1,0,0,0]), ss_statusup_all([ss_pureattr_cond(3000), ss_pureattr_cond(3000)], -1)],
+		proc: [ss_enhance_all(ss_pureattr_cond(2.0), 4, [0,1,0,0,0]), ss_statusup_all([ss_pureattr_cond(3000), ss_pureattr_cond(3000)], [3000,3000], -1)],
 	},
 	Lawake: [
 		Attr_statusup_oattr(0,300, [0,1,0,0,0,]),
@@ -75347,7 +75347,7 @@ Cards = [{
 	ss1: {
 		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ(650%)、さらに隣接する敵に雷属性のダメージ(650%)",
 		turn: 4,
-		proc: [ss_damage_all(6.5, [2]), ss_ignore_skillcounter()],
+		proc: [ss_damage_explosion(6.5, [2]), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
@@ -75368,7 +75368,7 @@ Cards = [{
 	ss2: {
 		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ(850%)、さらに隣接する敵に雷属性のダメージ(850%)",
 		turn: 6,
-		proc: [ss_damage_all(8.5, [2]), ss_ignore_skillcounter()],
+		proc: [ss_damage_explosion(8.5, [2]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,1500),
@@ -76344,6 +76344,51 @@ Cards = [{
 		Statusup(0,1000),
 		Attr_statusup(0,100,[1,0,1,0,0,]),
 		Statusup(500,0),
+	],
+},{
+	name: "願いの刃 ティアライザー＝コピシュ",
+	cardno: 8580,
+	imageno: 10751,
+	hp: 6545,
+	atk: 1445,
+	cost: 54,
+	attr: [1,3],
+	species: [8],
+	islegend: true,
+	ape: "メアレスⅢ",
+	as1: {
+		desc: "<回復>水属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復(20%)、さらに敵の状態異常攻撃を無効化(発動中行動不可)",
+		turn: 5,
+		proc: [ss_reinforcement_all(4, [ss_regenerate(0.2, 1, "RF"), ss_absattack_disable(1, "RF")])],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Awake_noeffect("経験値取得量アップ",2),
+		Fastskill(3),
+		Abstate_invalid("ss_sealed"),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,0,1,0,]),
+	],
+	as2: {
+		desc: "<回復>水属性の味方のHPを回復(17%)",
+		proc: Heal(0.17, [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し、さらに攻撃力をアップ(20%,150%)、さらに敵の状態異常攻撃を無効化(発動中行動不可)",
+		turn: 8,
+		proc: [ss_reinforcement_all(4, [ss_regenerate(0.2, 1, "RF"), ss_enhance_all(1.5, 1, [1, 1, 1, 1, 1], "RF"), ss_absattack_disable(1, "RF")])],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [0,0,0,1,0,]),
+		NEFTJOD(30),
 	],
 },
 ];
