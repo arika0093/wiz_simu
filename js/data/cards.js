@@ -12004,7 +12004,7 @@ Cards = [{
 	ss1: {
 		desc: "<大魔術>敵単体へ雷属性のダメージ(200％)",
 		turn: 5,
-		proc: [ss_damage_s(2.0, [0,0,1,0,0], 1)],
+		proc: [ss_damage_s(2.0, [2], 1)],
 	},
 	islegend: true,
 	Lawake: [
@@ -12018,7 +12018,7 @@ Cards = [{
 	ss2: {
 		desc: "<大魔術>敵単体へ雷属性のダメージ(400％)",
 		turn: 8,
-		proc: [ss_damage_s(4.0, [0,0,1,0,0], 1)],
+		proc: [ss_damage_s(4.0, [2], 1)],
 	},
 }, {
 	name: "真なる鉄壁 カエデ・ジングウジ",
@@ -75173,7 +75173,7 @@ Cards = [{
 		Attr_statusup(0,200, [0,1,0,0,0,]),
 		Attr_statusup(200,0, [0,1,0,0,0,]),
 		Panel_boost([0,1,0,0,0,],2),
-		Fastskill(2),
+		Fastskill(3),
 		NEFTJOD(60),
 		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [0,0,0,0,1,]),
 		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 200,0, [0,0,0,0,1,]),
