@@ -217,7 +217,7 @@ function legend_timing_check(cards, nows, index, is_ignore_spskill) {
 	if (rst) {
 		nows[index].islegend = true;
 		// 最初の初期化処理中なら代入しない(烈眼の処理の関係で)
-		if(Field.Status.is_initialize){
+		if(!Field.Status.is_initialize){
 			nows[index].lgstart_turn = Field.Status.totalturn;
 		}
 		Field.log_push("Unit[" + (index + 1) + "]: Lモード");
