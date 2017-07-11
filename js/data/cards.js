@@ -67259,7 +67259,7 @@ Cards = [{
 	atk: 3843,
 	cost: 38,
 	attr: [2,-1],
-	species: [-1],
+	species: [9],
 	islegend: false,
 	ape: "ショコラフォレスト大魔道杯",
 	is_dist: true,
@@ -67500,7 +67500,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<連撃>4チェインで敵単体を5回連続攻撃、HP50%以上でさらにダメージアップ(400%/600%)",
-		proc: [ChainDualAttack(3.0, 4, 5), add_cond(ChainDualAttack(5.0, 4, 5), when_hp_more(0.5))],
+		proc: [ChainDualAttack(4.0, 4, 5), add_cond(ChainDualAttack(6.0, 4, 5), when_hp_more(0.5))],
 	},
 	ss2: {
 		desc: "<複属性ダメージ強化>5ターンの間、水属性の攻撃力をアップ、複属性が光属性だとさらにアップ(100%/200%) 。さらに味方全体のHPを完全回復する",
@@ -68847,7 +68847,7 @@ Cards = [{
 },{
 	name: "純真なる甘愛 エトワール・ブリュネ",
 	cardno: 8139,
-	imageno: 10237,
+	imageno: 10273,
 	hp: 4749,
 	atk: 2575,
 	cost: 54,
@@ -69292,7 +69292,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<連撃>敵単体を3回連続攻撃、解答が早いほどさらにアップ(基本:350%, 3秒台:420%, 2秒台:490%, 1秒台:560%, 0秒台:630%)",
-		proc: add_cond(ChainDualAttack(2.5, 0, 3), as_timedep(0.7)),
+		proc: add_cond(ChainDualAttack(3.5, 0, 3), as_timedep(0.7)),
 	},
 	ss2: {
 		desc: "<カウンター>1ターンの間、スキルカウンター待機(カウンター時、ダメージアップ(300%)",
@@ -70817,13 +70817,13 @@ Cards = [{
 	ape: "覇眼戦線3魔道杯",
 	is_dist: true,
 	as1: {
-		desc: "<回復>味方全体のHPを回復(効果値:12)",
-		proc: null,
+		desc: "<回復>味方全体のHPを回復(12%)",
+		proc: Heal(0.12, [1,1,1,1,1], 0),
 	},
 	ss1: {
 		desc: "<状態異常回復>味方全体の状態異常を回復する",
 		turn: 5,
-		proc: null,
+		proc: [ss_abstate_cure()],
 	},
 	awakes: [
 		Costdown(5),
@@ -74291,14 +74291,14 @@ Cards = [{
 		proc: [ss_panel_change([1,1,0,0,0])],
 	},
 	awakes: [
-		Panel_boost([0,1,0,0,0,],2),
+		Panel_boost([1,0,0,0,0,],2),
 		Attr_statusup(200,0, [1,1,0,0,0,]),
 		Attr_statusup(0,200, [1,1,0,0,0,]),
 		Panel_boost([1,0,0,0,0,],2),
 		Fastskill(3),
 		NEFTJOD(30),
 		Abstate_invalid("ss_sealed"),
-		Awake_noeffect("精霊交替",1),
+		Awake_noeffect("精霊交代",1),
 		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,1,0,0,0,]),
 		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,1,0,0,0,]),
 	],
@@ -74317,7 +74317,7 @@ Cards = [{
 	],
 },{
 	name: "求む声に辿り着き コノハ・ヨリヒメ",
-	cardno: 8532,
+	cardno: 8535,
 	imageno: 6813,
 	hp: 3932,
 	atk: 3102,
@@ -75363,7 +75363,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<チェイン攻撃>3チェインでダメージアップ(450%)、リーダー時さらにアップ(150%)",
-		proc: [ChainAttack(3.5, 3), ChainAttack_Leader(5.0, 3)],
+		proc: [ChainAttack(4.5, 3), ChainAttack_Leader(6.0, 3)],
 	},
 	ss2: {
 		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ(850%)、さらに隣接する敵に雷属性のダメージ(850%)",
