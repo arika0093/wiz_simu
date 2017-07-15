@@ -148,7 +148,14 @@ function sim_show() {
 	}
 	// sim_enemy
 	var enemys_dat = GetNowBattleEnemys();
-	for (var i = 0; i < 3; i++) {
+	// 敵が3体以下なら4/5体目の表示を消す
+	if(enemys_dat.length <= 3){
+		$(".enemy_5").hide();
+	} else {
+		$(".enemy_5").show();
+	}
+	
+	for (var i = 0; i < 5; i++) {
 		var e = enemys_dat[i];
 		if (e !== undefined) {
 			// 各種指定
@@ -300,21 +307,34 @@ function sim_show() {
 	$("#fld_move_after").attr("disabled", (Field_log.now_index >= Field_log.length() - 1));
 	// 敵の数に応じてattack_target_selの中身を変える
 	var eleng = GetNowBattleEnemys().length;
-	if (eleng == 2) {
-		// 2体(中央を消す)
-		$("#attack_target_sel option[value=1]").hide();
-		$("#atarget_sel_1 option[value=1]").hide();
-		$("#atarget_sel_2 option[value=1]").hide();
-	} else {
-		// 3体(全て表示)
+	if(eleng >= 4){
+		// 4体以上(全表示)
 		$("#attack_target_sel option").show();
 		$("#atarget_sel_1 option").show();
 		$("#atarget_sel_2 option").show();
 	}
-	// 1体なら選択を無効化
-	$("#attack_target_sel").attr("disabled", eleng <= 1);
-	$("#atarget_sel_1").attr("disabled", eleng <= 1);
-	$("#atarget_sel_2").attr("disabled", eleng <= 1);
+	else if(eleng >= 2){
+		if (eleng <= 3) {
+			// 3体以下(奥を消す)
+			$("#attack_target_sel option[value=4]").hide();
+			$("#attack_target_sel option[value=5]").hide();
+			$("#atarget_sel_1 option[value=4]").hide();
+			$("#atarget_sel_1 option[value=5]").hide();
+			$("#atarget_sel_2 option[value=4]").hide();
+			$("#atarget_sel_2 option[value=5]").hide();
+		}
+		if (eleng <= 2) {
+			// 2体以下(中央を消す)
+			$("#attack_target_sel option[value=1]").hide();
+			$("#atarget_sel_1 option[value=1]").hide();
+			$("#atarget_sel_2 option[value=1]").hide();
+		}
+	} else {
+		// 1体なら選択を無効化
+		$("#attack_target_sel").attr("disabled", eleng <= 1);
+		$("#atarget_sel_1").attr("disabled", eleng <= 1);
+		$("#atarget_sel_2").attr("disabled", eleng <= 1);
+	}
 
 	// ally_info
 	var cost_total = 0;

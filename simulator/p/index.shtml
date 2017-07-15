@@ -144,6 +144,18 @@
 				<p class="enemy_hp" id="enemy01_hp"></p>
 				<p class="enemy_stat" id="enemy01_stats"></p>
 			</div>
+			<div class="enemy clearfix enemy_5" id="enemy04">
+				<div class="attr_none" id="enemy04_attr_main"></div>
+				<div class="attr_none" id="enemy04_attr_sub"></div>
+				<div class="enemy_image" ondblclick="target_allselect(3)">
+					<img class="chara_img" id="enemy04_img" src="/image/noimage.png" />
+					<img class="chara_teff" id="enemy04_teff" src="/image/noimage.png" />
+				</div>
+				<div class="enemy_turn" id="enemy04_turn"></div>
+				<p class="enemy_name" id="enemy04_name"></p>
+				<p class="enemy_hp" id="enemy04_hp"></p>
+				<p class="enemy_stat" id="enemy04_stats"></p>
+			</div>
 			<div class="enemy clearfix" id="enemy02">
 				<div class="attr_none" id="enemy02_attr_main"></div>
 				<div class="attr_none" id="enemy02_attr_sub"></div>
@@ -155,6 +167,18 @@
 				<p class="enemy_name" id="enemy02_name"></p>
 				<p class="enemy_hp" id="enemy02_hp"></p>
 				<p class="enemy_stat" id="enemy02_stats"></p>
+			</div>
+			<div class="enemy clearfix enemy_5" id="enemy05">
+				<div class="attr_none" id="enemy05_attr_main"></div>
+				<div class="attr_none" id="enemy05_attr_sub"></div>
+				<div class="enemy_image" ondblclick="target_allselect(4)">
+					<img class="chara_img" id="enemy05_img" src="/image/noimage.png" />
+					<img class="chara_teff" id="enemy05_teff" src="/image/noimage.png" />
+				</div>
+				<div class="enemy_turn" id="enemy05_turn"></div>
+				<p class="enemy_name" id="enemy05_name"></p>
+				<p class="enemy_hp" id="enemy05_hp"></p>
+				<p class="enemy_stat" id="enemy05_stats"></p>
 			</div>
 			<div class="enemy clearfix" id="enemy03">
 				<div class="attr_none" id="enemy03_attr_main"></div>
@@ -180,7 +204,9 @@
 				<select id="attack_target_sel" onchange="target_allselect()">
 					<option value="-1">自動</option>
 					<option value="0">左</option>
+					<option value="3">左奥</option>
 					<option value="1">中央</option>
+					<option value="4">右奥</option>
 					<option value="2">右</option>
 				</select>
 			</div>
@@ -262,7 +288,9 @@
 				<select id="atarget_sel_1">
 					<option value="-1">自動</option>
 					<option value="0">左</option>
+					<option value="3">左奥</option>
 					<option value="1">中央</option>
+					<option value="4">右奥</option>
 					<option value="2">右</option>
 				</select>
 			</span>
@@ -271,7 +299,9 @@
 				<select id="atarget_sel_2">
 					<option value="-1">自動</option>
 					<option value="0">左</option>
+					<option value="3">左奥</option>
 					<option value="1">中央</option>
+					<option value="4">右奥</option>
 					<option value="2">右</option>
 				</select>
 			</span>
