@@ -1720,7 +1720,7 @@ function ss_get_targetenemy(fld, ss, ai) {
 	// 敵3体の時の並び順
 	var earr3 = [0,1,2];
 	// 敵5体の時の並び順
-	// var earr5 = [0,4,1,5,2];
+	 var earr5 = [0,3,1,4,2];
 	// タゲの種類で分岐
 	switch (ss.target) {
 		case "all":
@@ -1732,11 +1732,11 @@ function ss_get_targetenemy(fld, ss, ai) {
 		case "withside":
 			var enemys = GetNowBattleEnemys();
 			var tg = auto_attack_order(fld, enemys, -1, ai);
-			var e_order = (/*敵五体の時の判定式 ? earr5 : */ earr3);
+			var e_order = (enemys.length >= 4 ? earr5 : earr3);
 			// まず始めに両脇の敵を追加する
 			var new_arr = $.map(enemys, function(e, i){
-				if((tg > 0 && e_order[tg-1] == i)               // タゲ対象の左側を含める
-				|| (tg < enemys.length && e_order[tg+1] == i)   // タゲ対象の右側を含める
+				if((tg > 0 && e_order[e_order.indexOf(tg)-1] == i)               // タゲ対象の左側を含める
+				|| (tg < enemys.length && e_order[e_order.indexOf(tg)+1] == i)   // タゲ対象の右側を含める
 				){
 					return enemys[i];
 				}

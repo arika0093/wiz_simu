@@ -963,8 +963,12 @@ function s_enemy_attr_absorb(attr, rate, turn) {
 			lim_turn: turn,
 			priority: 4,
 			effect: function () { },
-			on_damage: function (fld, dmg, atr_i) {
+			on_damage: function (fld, dmg, atr_i, is_berserk, is_sim) {
 				if (attr[atr_i] > 0) {
+					// 仮想ダメ計算時は0
+					if(is_sim){
+						return 0;
+					}
 					// 吸収
 					var ed = GetNowBattleEnemys(n);
 					ed.nowhp = Math.min(ed.hp, ed.nowhp + dmg * rate);
