@@ -113,6 +113,10 @@ div.attr_none{
 	text-indent: -9999px;
 }
 
+.enemy_5{
+	display: none;
+}
+
 /* Image */
 div.ally_image, div.enemy_image{
 	width: 64px;

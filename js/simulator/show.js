@@ -316,12 +316,12 @@ function sim_show() {
 	else if(eleng >= 2){
 		if (eleng <= 3) {
 			// 3体以下(奥を消す)
+			$("#attack_target_sel option[value=3]").hide();
 			$("#attack_target_sel option[value=4]").hide();
-			$("#attack_target_sel option[value=5]").hide();
+			$("#atarget_sel_1 option[value=3]").hide();
 			$("#atarget_sel_1 option[value=4]").hide();
-			$("#atarget_sel_1 option[value=5]").hide();
+			$("#atarget_sel_2 option[value=3]").hide();
 			$("#atarget_sel_2 option[value=4]").hide();
-			$("#atarget_sel_2 option[value=5]").hide();
 		}
 		if (eleng <= 2) {
 			// 2体以下(中央を消す)
