@@ -77006,7 +77006,7 @@ Cards = [{
 	ss1: {
 		desc: "<割合削り>敵全体のHPを20%減少させる、10チェインを消費しスキル反射を無視する",
 		turn: 7,
-		proc: [ss_ratiodamage_all(0.2), ss_chain_cost_skill(10, ss_ignore_skillcounter(), null)]],
+		proc: [ss_ratiodamage_all(0.2), ss_chain_cost_skill(10, ss_ignore_skillcounter(), null)],
 	},
 	awakes: [
 		Costdown(10),
@@ -77027,7 +77027,7 @@ Cards = [{
 	ss2: {
 		desc: "<割合削り>敵全体のHPを30%減少させる、10チェインを消費しスキル反射を無視する",
 		turn: 9,
-		proc: [ss_ratiodamage_all(0.3), ss_chain_cost_skill(10, ss_ignore_skillcounter(), null)]],
+		proc: [ss_ratiodamage_all(0.3), ss_chain_cost_skill(10, ss_ignore_skillcounter(), null)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,0,1,0,0,]),
