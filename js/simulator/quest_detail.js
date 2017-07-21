@@ -87,8 +87,13 @@ function makeQD(id) {
 				// add main
 				var myid = "Q" + QuestNum + "B" + BattleNum;
 				resStr += "<div class='etd clearfix' id=" + myid + ">";
-				resStr += "<img class='eico" + (Enemy.hp < 100 ? " impregnable" : "") +
-					"' src=" + get_image_url_b(Enemy.imageno, Enemy.imageno_prefix) + ">";
+				if($(window).width() >= 600){
+					resStr += "<img class='eico" + (Enemy.hp < 100 ? " impregnable" : "") +
+						"' src=" + get_image_url_b(Enemy.imageno, Enemy.imageno_prefix) + ">";
+				} else {
+					resStr += "<img class='eico_sm" + (Enemy.hp < 100 ? " impregnable" : "") +
+						"' src=" + get_image_url(Enemy.imageno, Enemy.imageno_prefix) + ">";
+				}
 				resStr += "<div class='e_name'>" + Enemy.name + "</div>";
 				resStr += "<p class='e_attrspec'>" + get_attr_string(Enemy.attr) +
 					" / " + get_spec_string(Enemy.spec) + "</p>";
@@ -122,8 +127,13 @@ function makeQD(id) {
 				// add main
 				var myid = "Q" + QuestNum + "Brev" + EnemyNum;
 				resStr += "<div class='etd clearfix' id=" + myid + ">";
-				resStr += "<img class='eico" + (Enemy.hp < 100 ? " impregnable" : "") +
-					"' src=" + get_image_url_b(Enemy.imageno, Enemy.imageno_prefix) + ">";
+				if($(window).width() >= 600){
+					resStr += "<img class='eico" + (Enemy.hp < 100 ? " impregnable" : "") +
+						"' src=" + get_image_url_b(Enemy.imageno, Enemy.imageno_prefix) + ">";
+				} else {
+					resStr += "<img class='eico_sm" + (Enemy.hp < 100 ? " impregnable" : "") +
+						"' src=" + get_image_url(Enemy.imageno, Enemy.imageno_prefix) + ">";
+				}
 				resStr += "<div class='e_name'>" + Enemy.name + "</div>";
 				resStr += "<p class='e_attrspec'>" + get_attr_string(Enemy.attr) +
 					" / " + get_spec_string(Enemy.spec) + "</p>";
