@@ -73310,7 +73310,7 @@ Cards = [{
 	is_dist: true,
 	as1: {
 		desc: "<全体攻撃>敵全体へダメージ(130%)、デッキに単色の精霊が多いほど、さらにダメージアップ(10%)（上限:5段階)",
-		proc: ChainAllAttack(as_singleattr_num(1.3, 0.1), 0),
+		proc: add_cond(ChainAllAttack(1.3, 0), as_singleattr_num(0, 0.1)),
 	},
 	ss1: {
 		desc: "<残滅大魔術>味方全体で1ターン溜めた後、スキル反射を無視し、敵全体へ雷属性のダメージ(200%)、さらに3ターンの間、雷属性のダメージ(200%)",
@@ -73333,7 +73333,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<全体攻撃>敵全体へダメージ(160%)、デッキに単色の精霊が多いほど、さらにダメージアップ(10%)（上限:5段階)",
-		proc: ChainAllAttack(as_singleattr_num(1.6, 0.1), 0),
+		proc: add_cond(ChainAllAttack(1.6, 0), as_singleattr_num(0, 0.1)),
 	},
 	ss2: {
 		desc: "<残滅大魔術>味方全体で1ターン溜めた後、スキル反射を無視し、敵全体へ雷属性のダメージ(300%)、さらに3ターンの間、雷属性のダメージ(300%)",
