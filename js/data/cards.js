@@ -76733,7 +76733,7 @@ Cards = [{
 	ss1: {
 		desc: "<特効大魔術>MAXHPの50%を使い敵単体へ水属性のダメージ(400%)、さらに火属性の敵には特効ダメージ(800%)",
 		turn: 6,
-		proc: [ss_damage_s(special_attr([1, 0, 0, 0, 0], 12.0, 4.0), [1]), ss_consume_own(0.50)],
+		proc: [ss_damage_s(special_attr([1, 0, 0, 0, 0], 12.0, 4.0), [1], 1), ss_consume_own(0.50)],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],1),
@@ -76754,7 +76754,7 @@ Cards = [{
 	ss2: {
 		desc: "<特効大魔術>MAXHPの50%を使い敵単体へ水属性のダメージ(400%)、さらに火属性の敵には特効ダメージ(1500%)",
 		turn: 9,
-		proc: [ss_damage_s(special_attr([1, 0, 0, 0, 0], 19.0, 4.0), [1]), ss_consume_own(0.50)],
+		proc: [ss_damage_s(special_attr([1, 0, 0, 0, 0], 19.0, 4.0), [1], 1), ss_consume_own(0.50)],
 	},
 	Lawake: [
 		Statusup(0,1000),
