@@ -212,7 +212,7 @@ function createActionList(js, act){
 
 // action情報をひとまず文字列配列に変換する
 function createActionStrData(js, act){
-	var tg = ["左", "中", "右"];
+	var tg = ["左", "中", "右", "左奥", "右奥"];
 	var attr = ["火", "水", "雷", "光", "闇"];
 	var allacts = [];
 	var nowturn = 0;
