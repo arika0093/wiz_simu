@@ -77455,7 +77455,7 @@ Cards = [{
 	ape: "クロスディライブ2",
 	as1: {
 		desc: "<連撃>味方のMAXHP10%を使い、敵単体を3回連続攻撃(600%)",
-		roc: add_cond(ChainDualAttack(6.0, 0, 3), as_consume_all(0.10)),
+		proc: add_cond(ChainDualAttack(6.0, 0, 3), as_consume_all(0.10)),
 	},
 	ss1: {
 		desc: "<狂暴化> 5ターンの間、デタラメな方向に攻撃するようになるが、必ずクリティカルが出るようになる",
