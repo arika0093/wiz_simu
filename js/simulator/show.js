@@ -328,13 +328,17 @@ function sim_show() {
 			$("#attack_target_sel option[value=1]").hide();
 			$("#atarget_sel_1 option[value=1]").hide();
 			$("#atarget_sel_2 option[value=1]").hide();
+		} else {
+			// 3体
+			$("#attack_target_sel option[value=1]").show();
+			$("#atarget_sel_1 option[value=1]").show();
+			$("#atarget_sel_2 option[value=1]").show();
 		}
-	} else {
-		// 1体なら選択を無効化
-		$("#attack_target_sel").attr("disabled", eleng <= 1);
-		$("#atarget_sel_1").attr("disabled", eleng <= 1);
-		$("#atarget_sel_2").attr("disabled", eleng <= 1);
 	}
+	// 1体なら選択を無効化
+	$("#attack_target_sel").attr("disabled", eleng <= 1);
+	$("#atarget_sel_1").attr("disabled", eleng <= 1);
+	$("#atarget_sel_2").attr("disabled", eleng <= 1);
 
 	// ally_info
 	var cost_total = 0;
@@ -513,8 +517,9 @@ function sim_show() {
 			// hide
 			$(".ui-dialog-titlebar").hide();
 			// tweet data
+			var url = absolutePath("/simulator/v/?id=" + Field.Status.result_enc);
 			$("#simfinish_tweettext").html(
-				text + "<br/><div class='sh_url'>" + absolutePath("/simulator/v/?id=" + Field.Status.result_enc) + "</div> #wzsim"
+				text + "<br/><div class='sh_url'><a href='" + url + "' target='_blank'>" + url + "</a></div> #wzsim"
 			);
 			// close when click dialog outside
 			$('.ui-widget-overlay').bind('click', function () {

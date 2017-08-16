@@ -212,7 +212,7 @@ $(function () {
 				now.ss_current = has_fastnum(ally);	// SSチャージターン
 				now.ss_isfirst = true;	// SSをまだ発動していないかどうか
 				now.ss_isboost = false;	// スキブを受けたかどうか
-				now.islegend = false; // Lモードかどうか(card.islegendとは意味合いが違うので注意)
+				now.islegend = (get_ssturn(card, now)[1] == 0); // Lモードかどうか(card.islegendとは意味合いが違うので注意)
 				now.lgstart_turn = -1;
 			}
 			// 空要素を詰める
