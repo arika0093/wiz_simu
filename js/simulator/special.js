@@ -210,9 +210,9 @@ function ss_afterproc(n) {
 	enemy_damage_switch_check("damage_switch", true, false, false);
 }
 
-// Lモードに入ったタイミングかどうかを判定する
+// Lモードに入るタイミングの処理
 function legend_timing_check(cards, nows, index, is_ignore_spskill) {
-	var is_l = is_legendmode(cards[index], nows[index]);
+	var is_l = (get_ssturn(cards[index], nows[index])[1] == 0); //is_legendmode(cards[index], nows[index]);
 	var rst = is_l && !nows[index].islegend;
 	if (rst) {
 		nows[index].islegend = true;
@@ -233,7 +233,8 @@ function legend_timing_check(cards, nows, index, is_ignore_spskill) {
 
 // Lモードに入っているかどうかを判定する
 function is_legendmode(card, now) {
-	return get_ssturn(card, now)[1] == 0;
+	return now.islegend;
+	// return get_ssturn(card, now)[1] == 0;
 }
 
 // SSが残り何ターンで打てるかを配列で返す
