@@ -77578,6 +77578,7 @@ Cards = [{
 	islegend: true,
 	ape: "エタクロⅢ大魔道杯",
 	is_dist: true,
+	alias: ["ヴァイオレッタ", "ルドルフ"],
 	as1: {
 		desc: "<回復>火属性の味方のHPを回復(13%)",
 		proc: Heal(0.13, [1,0,0,0,0], 0),
