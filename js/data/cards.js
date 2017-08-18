@@ -78089,7 +78089,7 @@ Cards = [{
 		Statusup(400,0),
 	],
 },{
-	name: "Grand Sl"u"m デライプサバー",
+	name: "Grand Slum デライプサバー",
 	cardno: 8781,
 	imageno: 10963,
 	hp: 4343,
