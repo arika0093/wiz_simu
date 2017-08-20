@@ -78503,7 +78503,7 @@ Cards = [{
 	name: "死霊のBONダンス ルルベル",
 	cardno: 8812,
 	imageno: 11011,
-	hp: 2135,
+	hp: 2635,
 	atk: 7645,
 	cost: 54,
 	attr: [0,-1],
