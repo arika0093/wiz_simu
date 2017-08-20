@@ -100,6 +100,10 @@ function sscheck_before(ss, n) {
 function ss_procdo(fld, ss, now, index) {
 	var ss_rst = true;
 	if (ss.proc != null) {
+		// SS発動前の敵の数を取得
+		var en_lived = $.grep(GetNowBattleEnemys(), function(e){
+			return e.nowhp > 0;
+		}).length;
 		// チャージスキルの場合
 		if (ss.charged > 0 || now.flags.ss_chargefin) {
 			// チャージが終わっているか確認し、終わってないなら追加
@@ -149,6 +153,7 @@ function ss_procdo(fld, ss, now, index) {
 					ss_add_chargenomove_otheruser(fld, ss.charged, index);
 				}
 				Field.log_push("Unit[" + (index + 1) + "]: チャージスキル発動待機…");
+				// ため処理終了
 				return true;
 			}
 			// 終わっているなら発動
@@ -164,15 +169,31 @@ function ss_procdo(fld, ss, now, index) {
 				turneff_break_cond(now.turn_effect, -1, function (tf) {
 					return !tf.charged_fin && tf.charge_turn <= 0;
 				}, "end");
-				return true;
+			}
+		} else {
+			// チャージでないなら普通に実行
+			for (var i = 0; i < ss.proc.length; i++) {
+				if (ss.proc[i]) {
+					ss_rst = ss_object_done(Field, index, ss.proc[i], true);
+				}
 			}
 		}
-		// 実行
-		for (var i = 0; i < ss.proc.length; i++) {
-			if (ss.proc[i]) {
-				ss_rst = ss_object_done(Field, index, ss.proc[i], true);
+		// 撃破数に応じてch+処理
+		if(ss.chadd_killing){
+			// SS発動後の敵の数を取得
+			var en_living = $.grep(GetNowBattleEnemys(), function(e){
+				return e.nowhp > 0;
+			}).length;
+			// 敵の数が変化しているならch+
+			var addch = en_lived - en_living;
+			if(addch > 0){
+				if (fld.Status.chain_status >= 0) {
+					fld.Status.chain += addch;
+					fld.log_push("チェイン付与: +" + addch);
+				}
 			}
 		}
+		
 	}
 	return ss_rst !== false;
 }

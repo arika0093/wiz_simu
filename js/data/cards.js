@@ -78517,7 +78517,8 @@ Cards = [{
 	ss1: {
 		desc: "<特効大魔術>敵全体へ闇属性のダメージ(600%)、さらに光属性の敵には特効ダメージ(900%)、さらに敵にトドメを刺した数だけチェインプラス1",
 		turn: 3,
-		proc: [ss_damage_all(special_attr([0,0,0,1,0], 15, 6), [4])],//敵撃破数に応じてチェインプラスが未実装
+		chadd_killing: true,
+		proc: [ss_damage_all(special_attr([0,0,0,1,0], 15, 6), [4])],
 	},
 	as2: {
 		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(500%)",
@@ -78526,7 +78527,8 @@ Cards = [{
 	ss2: {
 		desc: "<特効大魔術>敵全体へ闇属性のダメージ(600%)、さらに光属性の敵には特効ダメージ(1400%)、さらに敵にトドメを刺した数だけチェインプラス1",
 		turn: 6,
-		proc: [ss_damage_all(special_attr([0,0,0,1,0], 20, 6), [4])],//敵撃破数に応じてチェインプラスが未実装
+		chadd_killing: true,
+		proc: [ss_damage_all(special_attr([0,0,0,1,0], 20, 6), [4])],
 	},
 	awakes: [
 		Costdown(20),
