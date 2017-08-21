@@ -261,8 +261,8 @@ p.sitedetail{
 	float:left;
 	list-style-type: none;
 	padding: 2ex 0;
-	column-count: 2;
-	column-width: 400px;
+	column-count: 3;
+	column-width: 200px;
 	-moz-column-count: 2;
 	-moz-column-width: 400px;
 	column-rule: 1px solid #DDD;
