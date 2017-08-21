@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px) and (max-width: 1099px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default_bg.css" media="screen and (min-width: 1100px)" />
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <!-- Search -->
+    <meta name="robots" content="all" />
+    <meta name="keywords" content="黒猫,ウィズ,魔法使いと黒猫のウィズ,シミュレーター,シミュ,パネル,パネルブースト" />
+    <meta name="description" content="「魔法使いと黒猫のウィズ」のパネルブーストについて記載しています。" />
+    <!-- About Page -->
+    <title>パネルブーストについて - WizTools</title>
+    <style type="text/css">
+        dd{
+            line-height: 2.9ex;
+        }
+        div.inner{
+            border: 1px solid #888;
+            border-radius: 3px;
+            background: #EFF;
+            font-style: italic;
+            padding: 1ex;
+            margin: 1ex 0;
+        }
+        div.harfsize{
+            width: 70%;
+        }
+        img.resize{
+            width: 100%;
+        }
+        div.i_small{
+            font-size: smaller;
+        }
+        div.i_exam{
+            background: #F0F0F0;
+        }
+        span.number{
+            background: #FFEEDD;
+        }
+        span.dotunder{
+            border-bottom: 1px dashed #444;
+        }
+
+        label.tgl_label{
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        label.tgl_label:hover{
+            font-weight: bold;
+        }
+        input.tgl{
+            display: none;
+        }
+        .tgl_hidden {
+            transition: 0.2s;
+            height: 0;
+            overflow: hidden;
+        }
+        input#toggle:checked + .tgl_hidden {
+            height: auto;
+            padding: 1ex;
+            border: 1px solid #CCC;
+            border-radius: 3px;
+        }
+
+    </style>
+</head>
+<body>
+<div id='Top'></div>
+<div id="wrap">
+    <!-- Header -->
+    <div id="Header"></div>
+
+    <!-- Main Contents -->
+    <div class="Main">
+        <dl class="List">
+            <dt id="00">パネルブーストについて</dt>
+            <dd>
+                精霊の潜在能力や潜在結晶にはパネルブーストが存在します。通称「パネブ」。<br/>
+                このページではその概略について説明を行います。<br/>
+                <div class="linklist">
+                    <a href="#01">パネルブーストの基礎</a>
+                    <a href="#02">単色パネル時の出現率</a>
+                    <a href="#03">ニ色パネル時の出現率</a>
+                    <a href="#04">簡易出現率計算ツール</a>
+                    <a href="#05">簡易画像まとめ</a>
+                </div>
+                <!-- Adsense -->
+                <div class="Adsense">
+                    <!-- advertise -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-5156005489853976"
+                         data-ad-slot="6536828444"
+                         data-ad-format="auto"></ins>
+                    <script>
+				        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </dd>
+
+            <dt id="01">パネルブーストの基礎</dt>
+            <dd>
+                パネルブーストは、特定パネルの出現率を増加させる効果を持っています。<br/>
+                例えば<a href="/search/detail/?id=8531" target="_blank">八百万神秘譚Ⅱ ミコト</a>の潜在を見てみると、<b>雷パネルブーストⅣ</b>を持つことがわかります。<br/>
+                <label for="toggle" class="tgl_label">■クリックで画像を表示</label>
+                <input id="toggle" type="checkbox" class="tgl" />
+                <div class="tgl_hidden">
+                    <div class="imgframe_noleft harfsize"><img class="resize" src="/image/pages/pnb_01.png"></div>
+                </div><br/>
+                説明文には、<br/>
+                <div class="inner i_exam">
+                    XX属性パネルが出やすくなる（効果値: X）
+                </div>
+                と書かれています。ですが、具体的にどれぐらい出やすくなるかは明示されていません。<br/>
+                そこで、有志による検証(と解析)が行われ以下の検証結果が出ています。<br/>
+            </dd>
+
+            <dt id="02">単色パネル時の出現率</dt>
+            <dd>
+                <div class="inner">
+                    【パネルブーストの作用(単色パネル時)】<br/>
+                    1. 初期状態で各属性に4ずつパネルブーストを持っている。<br/>
+                    2. ここに、精霊/結晶のパネルブーストの値を足す（レイドでは結晶のパネブは無効）。<br/>
+                    3. 2.で算出したパネルブーストの合計値だけ、問題に色を割り当てる。<br/>
+                    4. パネルブーストの数ぶん全て色を割り当て終わったら、使用状況をリセットする。
+                </div>
+                これだけだとわかりにくいので解説を入れます。<br/>
+                <ol>
+                    <li>
+                        初期状態では、火/水/雷の三色にパネルブーストがそれぞれ4ずつかかったような状態です。<br/>
+                        見やすくするために数字で表記すると、4:4:4となります。<br/>
+                        パネルが出現する際「パネルブースト」という文字が出ることがありますが、1.で用意されたパネルに関してはこれが出ません。
+                    </li>
+                    <li>
+                        精霊の持つパネルブーストや、潜在結晶で追加されたパネルブーストの効果値をここに足していきます。<br/>
+                        一例として、前述のⅡミコトがデッキに入っている場合、雷に4追加され4:4:8となります。
+                    </li>
+                    <li>
+                        例としてあげた雷パネブ+4の場合、最終的には4:4:8となります。<br/>
+                        パネブの全色合計値は4+4+8=16なので、16問につき火パネル4問、水パネル4問、雷パネル8問と振り分けられます。
+                        すなわち、雷パネルの出現率は8/16=50%となります。
+                    </li>
+                    <li>
+                        これはパネル色リストを使い切った時に補充するという内容です。<br/>
+                        もともとどの問題が出るか自体が運によるので、この項目が意味をなす場合は殆どありません。
+                    </li>
+                </ol>
+            </dd>
+
+            <dt id="03">二色パネル時の出現率</dt>
+            <dd>
+                <div class="inner">
+                    【パネルブーストの作用(ニ色パネル時)】<br/>
+                    1. 初期状態で各パネル(火水/水雷/火雷)に8ずつパネルブーストを持っている。<br/>
+                    2. ここに精霊/結晶のパネルブーストの値を足す。この時、例えば火のパネブなら火水/火雷にそれぞれ追加する<br/>
+                    3. 割り振った値に応じた確率で出現する。
+                </div>
+                単色の場合と異なるのは「初期パネブ値が8」「1パネブが2箇所に作用する」「二色パネルの色はその都度決定」という所です。<br/>
+                3.はタスクキルが行えた時代、2色パネルの色が読み込むたびに変化していたことからも明らかです。<br/>
+                （単色パネルの場合タスクキルを行ってもそのままだった）
+            </dd>
+
+
+            <dt id="04">簡易出現率計算ツール</dt>
+            <dd>
+                以上がパネルブーストの仕様となります。<br/>
+                せっかくなので、簡単な出現確率計算ツールを作りました(単色のみ考慮)。<br/>
+                フォームの値を変化させることで各パネルの確率が表示されます。<br/>
+                <div class="pnb_calc">
+                    <div class="inner">
+                        <input id="pnb_f" type="number" placeholder="火パネブ"> /
+                        <input id="pnb_w" type="number" placeholder="水パネブ"> /
+                        <input id="pnb_t" type="number" placeholder="雷パネブ">
+                    </div>
+                    <div class="inner i_exam">
+                        <input id="pnb_fr" type="text" readonly placeholder="火パネルの確率"> /
+                        <input id="pnb_wr" type="text" readonly placeholder="水パネルの確率"> /
+                        <input id="pnb_tr" type="text" readonly placeholder="雷パネルの確率">
+                    </div>
+                </div>
+            </dd>
+
+            <dt id="05">簡易画像まとめ</dt>
+            <dd>
+                計算手法が分かってもパネルブーストをいくつ用意すればいいかは直感的に分かるものではありません。<br/>
+                そこで、EXCELを使ってパネブ値がどの程度要求されるかを簡単にまとめました。<br/><br/>
+                下に示した表は、簡単に言えば「<b>開幕でパネル事故が発生していない確率</b>」です。<br/>
+                色分けは恣意的なものですが、一般的にはこの表で緑色の箇所(99%以上)であればパネル事故率は低いです。<br/>
+                魔道杯をずっと走ったり、長期戦クエストが予想される場合は99.7%以上あると心強いです。<br/>
+                ちなみに、二色(雷or水など)が許容できる場合の確率は目的パネブを+12するとおおよそ近い値が得られます。<br/>
+                <div class="imgframe">
+                    <a href="/image/pages/pnb_02.png" target="_blank">
+                        <img class="resize" src="/image/pages/pnb_02.png">
+                    </a>
+                </div>
+                クリックすると別タブで大きく表示されます。<br/>
+            </dd>
+        </dl>
+    </div>
+
+    <!-- Footer -->
+    <div id="Footer"></div>
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js"></script>
+    <script>
+        // on load
+        $(function(){
+        	var fi = $("#pnb_f");
+	        var wi = $("#pnb_w");
+	        var ti = $("#pnb_t");
+	        var fr = $("#pnb_fr");
+	        var wr = $("#pnb_wr");
+	        var tr = $("#pnb_tr");
+        	var onchanged = function(){
+        		var fn = Math.floor(Number(fi.val()));
+		        var wn = Math.floor(Number(wi.val()));
+		        var tn = Math.floor(Number(ti.val()));
+		        var fp = ((fn+4)/(fn+wn+tn+12)*100).toFixed(2);
+		        var wp = ((wn+4)/(fn+wn+tn+12)*100).toFixed(2);
+		        var tp = ((tn+4)/(fn+wn+tn+12)*100).toFixed(2);
+        		fr.val(fp + " %");
+		        wr.val(wp + " %");
+		        tr.val(tp + " %");
+            };
+            $("div.pnb_calc input").keyup(onchanged);
+	        $("div.pnb_calc input").change(onchanged);
+        });
+    </script>
+</div>
+</body>
+</html>
