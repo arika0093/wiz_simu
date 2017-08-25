@@ -203,6 +203,10 @@ var Awake_crystal_lists = [{
 	imple: Awake_composite,
 	param2: Spec_statusup(200, 0, [5]),
 }, {
+	name: "愛と悲しみの結晶〈ギブン〉(副光HP+100)",
+	imple: Awake_composite,
+	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 100, 0, [0,0,0,1,0]),
+}, {
 	genre: "L時発動結晶",
 	name: "煌眼の欠片(L時味方ATK+100/25%回復)",
 	imple: Awake_composite,

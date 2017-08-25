@@ -433,6 +433,7 @@ var SpSkill = {
 		for (var i = 0; i < nows.length; i++) {
 			var cd = cds[i];
 			var now = nows[i];
+			var n_index = fld.Allys.Now.indexOf(now);
 			if (now.nowhp > 0 && (/*is_own ||*/ attr[cd.attr[0]] > 0)) {
 				switch (calltype) {
 					case "RF":
@@ -487,7 +488,7 @@ var SpSkill = {
 						}
 					},
 				});
-				fld.log_push("Unit[" + (i + 1) + "]: 攻撃力Up" + typestr + "(" + (rate * 100) + "%, " + t + "t)");
+				fld.log_push("Unit[" + (n_index + 1) + "]: 攻撃力Up" + typestr + "(" + (rate * 100) + "%, " + t + "t)");
 			}
 		}
 		return true;
@@ -584,6 +585,7 @@ var SpSkill = {
 		for (var i = 0; i < nows.length; i++) {
 			var cd = cds[i];
 			var now = nows[i];
+			var n_index = fld.Allys.Now.indexOf(now);
 			if (now.nowhp > 0 && attr[cd.attr[0]] > 0) {
 				now.turn_effect.push({
 					desc: "攻撃力アップ[ブースト](" + (rate * 100) + "%)",
@@ -608,7 +610,7 @@ var SpSkill = {
 						}
 					},
 				});
-				fld.log_push("Unit[" + (i + 1) + "]: 自身攻撃力Up[Boost](" +
+				fld.log_push("Unit[" + (n_index + 1) + "]: 自身攻撃力Up[Boost](" +
 					(rate * 100) + "%, " + t + "t, dmg: " + (dmg * 100) + "%)");
 			}
 		}
@@ -623,6 +625,7 @@ var SpSkill = {
 		for (var i = 0; i < nows.length; i++) {
 			var cd = cds[i];
 			var now = nows[i];
+			var n_index = fld.Allys.Now.indexOf(now);
 			if (now.nowhp > 0) {
 				now.turn_effect.push({
 					desc: "凶暴化",
@@ -636,7 +639,7 @@ var SpSkill = {
 					isberserk: true,
 					effect: function (f, oi, teff, state, is_t, is_ak, is_ss) {},
 				});
-				fld.log_push("Unit[" + (i + 1) + "]: 凶暴化");
+				fld.log_push("Unit[" + (n_index + 1) + "]: 凶暴化");
 			}
 		}
 		return true;
@@ -1267,9 +1270,7 @@ var SpSkill = {
 			e.ss_current = 999;
 			// スキブ処理
 			var card = fld.Allys.Deck[i];
-			if (is_legendmode(card, e)) {
-				legend_timing_check(fld.Allys.Deck, nows, i, true);
-			}
+			legend_timing_check(fld.Allys.Deck, nows, i, true);
 		})
 		return true;
 	},
@@ -1281,9 +1282,7 @@ var SpSkill = {
 				e.ss_current = 999;
 				// スキブ処理
 				var card = fld.Allys.Deck[i];
-				if (is_legendmode(card, e)) {
-					legend_timing_check(fld.Allys.Deck, nows, i, true);
-				}
+				legend_timing_check(fld.Allys.Deck, nows, i, true);
 			}
 		})
 		return true;
@@ -1441,7 +1440,7 @@ var SpCondSkill = {
 		var b = params[1];
 		var now = fld.Allys.Now[oi];
 		var is_abstate = $.grep(now.turn_effect, function (e) {
-			return e.isabstate;
+			return e.isabstate || e.type == "curse";
 		}).length > 0;
 		return is_abstate ? a : b;
 	},
