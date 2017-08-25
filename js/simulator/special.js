@@ -187,10 +187,10 @@ function ss_procdo(fld, ss, now, index) {
 			// 敵の数が変化しているならch+
 			var addch = en_lived - en_living;
 			if(addch > 0){
-				if (fld.Status.chain_status >= 0) {
+				//if (fld.Status.chain_status >= 0) {
 					fld.Status.chain += addch;
 					fld.log_push("チェイン付与: +" + addch);
-				}
+				//}
 			}
 		}
 		
