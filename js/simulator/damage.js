@@ -225,6 +225,15 @@ function attr_magnification(atk_atr, def_atr) {
 // 攻撃順序を自動で指定する
 // obj_tg: 味方データ、各敵への効果値などが格納されたobject
 function auto_attack_order(fld, enemys, attr, own_index, obj_tg) {
+	// 挑発使用中の敵がいるか取得
+	var taunt_n = enemys.indexOf($.grep(enemys, function(e){
+		return $.grep(e.turn_effect, function(te){
+			return te.is_taunt;
+		}).length > 0;
+	})[0]);
+	if(taunt_n >= 0){
+		return taunt_n;
+	}
 	// ランダムターゲット（パニックシャウト）
 	var now = fld.Allys.Now[own_index];
 	var is_rndberserk = $.grep(now.turn_effect, function (e) {

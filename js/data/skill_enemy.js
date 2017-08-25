@@ -1165,6 +1165,17 @@ function s_enemy_multibarrier_all(dmg, turn) {
 // 挑発
 function s_enemy_taunt(turn) {
 	return m_create_enemy_move(function (fld, n) {
+		var e = GetNowBattleEnemys(n);
+		e.turn_effect.push({
+			desc: "挑発",
+			type: "enemy_taunt",
+			icon: null,
+			isdual: false,
+			turn: turn,
+			lim_turn: turn,
+			is_taunt: true,
+			effect: function(){ },
+		});
 		$("#attack_target_sel").val(n);
 		Field.log_push("Enemy[" + (n + 1) + "]: 挑発(" + turn + "t)");
 	}, makeDesc("挑発"));
