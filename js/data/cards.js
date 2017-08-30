@@ -77650,7 +77650,7 @@ Cards = [{
 	ss1: {
 		desc: "<特効大魔術>敵単体へ火属性のダメージ(400%)、さらに雷属性以外の敵には特効ダメージ(1000%)",
 		turn: 7,
-		proc: [ss_damage_all(special_attr([1,1,0,1,1], 14.0, 4.0), [0])],
+		proc: [ss_damage_s(special_attr([1,1,0,1,1], 14.0, 4.0), [0])],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],1),
