@@ -2,13 +2,14 @@
 var Field = {
 	// 各種定数(主に表示用)
 	Constants: {
-		Attr: [
-			"火",
-			"水",
-			"雷",
-			"光",
-			"闇",
-		],
+		Attr: {
+			"-1": "無",
+			0: "火",
+			1: "水",
+			2: "雷",
+			3: "光",
+			4: "闇",
+		},
 		Species: [
 			"龍族",
 			"神族",
@@ -48,6 +49,7 @@ var Field = {
 		// チェイン関連
 		chain: 0,
 		chain_status: 0,
+		chain_awguard: 0,
 		chainstat_turn: 0,
 		// AS処理関連
 		chain_redtask: [],          // チェイン消費タスク
@@ -233,7 +235,15 @@ $(function () {
 			if(simQuest.disable_awake){
 				Field.log_push("【このクエストでは潜在能力の一部が制限されています】", "blue");
 			}
+			// ステアップ潜在の反映
 			func_reawake(Field, als.Deck, als.Now);
+			// チェインガード潜在の反映(助っ人込み)
+			for(var i in als.Deck){
+				var has_chguard = pickup_awakes(als.Deck[i], "awake_chainguard", false).length > 0;
+				if(has_chguard){
+					Field.Status.chain_awguard += 1;
+				}
+			}
 			// チェインブースト処理(助っ人は含めないので上と別処理)
 			var dck = als.Deck;
 			for (var i = 0; i < dck.length; i++) {

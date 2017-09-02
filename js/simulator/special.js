@@ -179,7 +179,7 @@ function ss_procdo(fld, ss, now, index) {
 			}
 		}
 		// 撃破数に応じてch+処理
-		if(ss.chadd_killing){
+		if(ss.chadd_killing > 0){
 			// SS発動後の敵の数を取得
 			var en_living = $.grep(GetNowBattleEnemys(), function(e){
 				return e.nowhp > 0;
@@ -188,7 +188,7 @@ function ss_procdo(fld, ss, now, index) {
 			var addch = en_lived - en_living;
 			if(addch > 0){
 				//if (fld.Status.chain_status >= 0) {
-					fld.Status.chain += addch;
+					fld.Status.chain += addch * ss.chadd_killing;
 					fld.log_push("チェイン付与: +" + addch);
 				//}
 			}

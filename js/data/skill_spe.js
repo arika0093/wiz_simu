@@ -697,6 +697,30 @@ function ss_continue_damage(dmg_r, cont_r, attrs, turn) {
 }
 
 /**
+ * 連鎖解放大魔術SSを発動する。
+ * base_r:	基礎効果値。
+ * max_r:	最大効果値。
+ * max_ch:	最大効果値を出すのに必要なチェイン数。
+ * attrs:	攻撃ダメージ属性。
+ * exp_c:	ダメージの増加幅(指数部分)指定。不明な場合は0を指定すること。
+ **/
+function ss_burst_attack(base_r, max_r, max_ch, attrs, exp_c) {
+	return ss_template({
+		name: "ss_burst_attack",
+		type: "damage",
+		subtype: "burst_attack",
+		target: "field",
+		p1: base_r,
+		p2: max_r,
+		p3: max_ch,
+		p4: attrs,
+		p5: exp_c,
+		c_param: {
+		},
+	});
+}
+
+/**
  * チェインを直接追加する。チェイン封印の効果を受けない。
  * ch: 追加チェイン数。
 **/
@@ -724,6 +748,23 @@ function ss_chain_protect(t) {
 				target: 0,
 			},
 		},
+	});
+}
+
+/**
+ * チェイン犠牲強化を発動する。
+ * r:       効果値。
+ * red_ch:  減少チェイン数。
+ * t:       継続ターン。
+ **/
+function ss_chain_enhance(r, red_ch, t) {
+	return ss_template({
+		name: "ss_chain_enhance",
+		type: "chain",
+		target: "field",
+		p1: r,
+		p2: red_ch,
+		p3: t,
 	});
 }
 
