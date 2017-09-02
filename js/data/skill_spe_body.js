@@ -1014,17 +1014,18 @@ var SpSkill = {
 		var cds = ss_get_targetally(fld, cobj, fld.Allys.Deck, n);
 		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
-			// 自分にスキブをかけない
-			if (i == n) { continue; }
-			// スキブ処理
 			var cd = cds[i];
 			var now = nows[i];
+			var n_index = fld.Allys.Now.indexOf(now);
+			// 自分にスキブをかけない
+			if (n_index == n) { continue; }
+			// スキブ処理
 			if (now.nowhp <= 0) { continue; }
 			if (!now.ss_isboost && !is_legendmode(cd, now)) {
 				now.ss_current += f_rate;
 				now.ss_isboost = true;
 				// L化確認
-				legend_timing_check(fld.Allys.Deck, fld.Allys.Now, i);
+				legend_timing_check(fld.Allys.Deck, fld.Allys.Now, n_index);
 				rst = true;
 			}
 		}

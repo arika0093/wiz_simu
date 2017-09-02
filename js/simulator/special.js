@@ -61,6 +61,9 @@ function ss_push(n) {
 		// failed
 		$("#dialog_ss_noaction").dialog("open");
 	}
+	// 対象指定SSの指定を解除
+	$("#sso_selected_index").text("");
+	$("#sso_skilled_index").text("");
 }
 
 // SS発動前に味方単体指定があるかどうかを確認する関数
@@ -220,9 +223,6 @@ function ss_afterproc(n) {
 			}
 		});
 	});
-	// 対象指定SSの指定を解除
-	$("#sso_selected_index").text("");
-	$("#sso_skilled_index").text("");
 	// ターン効果確認
 	turneff_check_skillcounter(Field);
 	turn_effect_check(false, is_allkill());
