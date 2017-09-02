@@ -1399,10 +1399,16 @@ function s_enemy_continue_damage(turn, initialdamage, continuedamage){
 // チェイン解除
 function s_enemy_chain_break() {
 	return m_create_enemy_move(function (fld, n) {
-		if (fld.Status.chain_status <= 0) {
+		if(fld.Status.chain_awguard > 0){
+			var cg = fld.Status.chain_awguard;
+			fld.log_push("Enemy[" + (n + 1) + "]: チェイン解除(無効) チェインガード残り[" + cg + "→" + (cg-1) + "]");
+			fld.Status.chain_awguard--;
+		}
+		else if (fld.Status.chain_status <= 0) {
 			fld.Status.chain = 0;
 			fld.log_push("Enemy[" + (n + 1) + "]: チェイン解除");
-		} else {
+		}
+		else {
 			fld.log_push("Enemy[" + (n + 1) + "]: チェイン解除(無効)");
 		}
 	}, makeDesc("チェイン解除"));
@@ -1411,10 +1417,16 @@ function s_enemy_chain_break() {
 // チェイン減少
 function s_enemy_chainreduce(ch) {
 	return m_create_enemy_move(function (fld, n) {
-		if (fld.Status.chain_status <= 0) {
+		if(fld.Status.chain_awguard > 0){
+			var cg = fld.Status.chain_awguard;
+			fld.log_push("Enemy[" + (n + 1) + "]: チェイン減少(無効) チェインガード残り[" + cg + "→" + (cg-1) + "]");
+			fld.Status.chain_awguard--;
+		}
+		else if (fld.Status.chain_status <= 0) {
 			fld.Status.chain -= Math.min(ch, fld.Status.chain);
 			fld.log_push("Enemy[" + (n + 1) + "]: チェイン減少: " + ch);
-		} else {
+		}
+		else {
 			fld.log_push("Enemy[" + (n + 1) + "]: チェイン減少(無効)");
 		}
 	}, makeDesc("チェイン減少"));
@@ -1423,11 +1435,17 @@ function s_enemy_chainreduce(ch) {
 // チェイン封印
 function s_enemy_chain_sealed(t) {
 	return m_create_enemy_move(function (fld, n) {
-		if (fld.Status.chain_status <= 0) {
+		if(fld.Status.chain_awguard > 0){
+			var cg = fld.Status.chain_awguard;
+			fld.log_push("Enemy[" + (n + 1) + "]: チェイン封印(無効) チェインガード残り[" + cg + "→" + (cg-1) + "]");
+			fld.Status.chain_awguard--;
+		}
+		else if (fld.Status.chain_status <= 0) {
 			fld.Status.chain_status = -1;
 			fld.Status.chainstat_turn = t;
 			fld.log_push("Enemy[" + (n + 1) + "]: チェイン封印(" + t + "t)");
-		} else {
+		}
+		else {
 			fld.log_push("Enemy[" + (n + 1) + "]: チェイン封印(無効)");
 		}
 	}, makeDesc("チェイン封印"));

@@ -150,6 +150,16 @@ function panel(attr) {
 			legend_timing_check(Field.Allys.Deck, Field.Allys.Now, i);
 		}
 	}
+	// この時点で保持しているturn_effectにフラグを立てる
+	// （精霊強化やフィールド付与強化について、ターン減少処理を介さないようにするため）
+	for (var i = 0; i < Field.Allys.Deck.length; i++) {
+		var now = Field.Allys.Now[i];
+		if (now.nowhp > 0) {
+			$.each(now.turn_effect, function(i, e){
+				e.isnotafteradded = true;
+			});
+		}
+	}
 	// 次のターンへ進む
 	nextturn(false);
 	// 表示
@@ -159,10 +169,21 @@ function panel(attr) {
 // 誤答
 function answer_miss()
 {
-	Field.log_push("【誤答】");
+	var fld = Field;
+	fld.log_push("【誤答】");
 	// 誤答処理
-	if (Field.Status.chain_status <= 0) {
-		Field.Status.chain = Math.floor(Field.Status.chain / 2);
+	var cg = fld.Status.chain_awguard;
+	if (cg > 0){
+		fld.log_push("チェインガード潜在発動[残り:"+ (cg) +"→"+ (cg-1) +"]");
+		fld.Status.chain_awguard--;
+	}
+	else if (fld.Status.chain_status > 0) {
+		fld.log_push("チェインガード発動");
+	}
+	else {
+		var ch_bef = fld.Status.chain;
+		var ch_aft = fld.Status.chain = Math.floor(fld.Status.chain / 2);
+		fld.log_push("チェイン減少[" + ch_bef + "→" + ch_aft + "]");
 	}
 	// 敵の処理
 	enemy_move();

@@ -259,6 +259,15 @@ function Awake_SpecialSkill(spskill, p1, p2, p3, p4) {
 	};
 }
 
+// チェインガード
+function Awake_chainguard(){
+	return {
+		type: "awake_chainguard",
+		name: "チェインガード",
+		desc: "1クエストに1度のみチェインを保護",
+	}
+}
+
 // その他、試走に影響を及ぼさない潜在
 function Awake_noeffect(name, efv) {
 	return {

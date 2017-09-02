@@ -25,11 +25,12 @@ var SpSkill = {
 		var ignore_counter = params[3];
 		var enemys = GetNowBattleEnemys();
 		for (var an = 0; an < atkn; an++) {
+			var atk_orders = $.map(attrs, function(e){
+				return auto_attack_order(fld, enemys, e, n);
+			});
 			for (var a = 0; a < attrs.length; a++) {
 				// 攻撃
-				var atr = attrs[a];
-				var atk_order = auto_attack_order(fld, enemys, atr, n);
-				ss_damage(fld, r, atr, atkn, n, atk_order, ignore_counter);
+				ss_damage(fld, r, attrs[a], atkn, n, atk_orders[a], ignore_counter);
 			}
 		}
 		return true;
@@ -46,8 +47,7 @@ var SpSkill = {
 			for (var a = 0; a < attrs.length; a++) {
 				for (var i = 0; i < enemys.length; i++) {
 					// 攻撃
-					var atr = attrs[a];
-					ss_damage(fld, r, atr, atkn, n, i, ignore_counter);
+					ss_damage(fld, r, attrs[a], atkn, n, i, ignore_counter);
 				}
 			}
 		}
@@ -59,14 +59,14 @@ var SpSkill = {
 		var r = params[0];
 		var attrs = params[1];
 		var atkn = params[2];
-
 		var enemys = GetNowBattleEnemys();
 		for (var an = 0; an < atkn; an++) {
+			var atk_orders = $.map(attrs, function(e){
+				return auto_attack_order(fld, enemys, e, n);
+			});
 			for (var a = 0; a < attrs.length; a++) {
 				// 攻撃
-				var atr = attrs[a];
-				var atk_order = auto_attack_order(fld, enemys, atr, n);
-				ss_damage(fld, r, atr, atkn, n, atk_order, false);
+				ss_damage(fld, r, attrs[a], atkn, n, atk_order[a], false);
 				// チェイン封印されてなければチェインプラス
 				if (fld.Status.chain_status != 2) {
 					fld.Status.chain += 1;
@@ -127,6 +127,51 @@ var SpSkill = {
 				}
 			}
 		});
+		return true;
+	},
+	// -----------------------------
+	// 連鎖解放大魔術
+	"ss_burst_attack": function (fld, n, cobj, params) {
+		var base_r = params[0];
+		var max_r = params[1];
+		var max_ch = params[2];
+		var attrs = params[3];
+		var exp_c = (params[4] || 2.5);
+		// 参照用にコピーを取る
+		var now_state = $.extend(true, {}, fld.Allys.Now[n]);
+		// 継続効果追加
+		ss_continue_effect_add({
+			type: "burst_attack",
+			turn: 999,
+			lim_turn: 999,
+			index: n,
+			effect: function (f, oi, ceff) {
+				// 全滅しているなら次の戦闘に持ち越す
+				if(is_allkill()){
+					return;
+				}
+				// 発動時の攻撃力などをコピーする
+				var f_copy = $.extend(true, {}, f);
+				f_copy.Allys.Now[oi] = now_state;
+				// 効果値計算
+				var nowch = Math.min(fld.Status.chain, max_ch);
+				var rate = Math.floor((base_r + max_r * Math.pow(nowch/max_ch, exp_c))*100)/100;
+				// チェインを0に指定
+				f.Status.chain = f_copy.Status.chain = 0;
+				// 攻撃
+				var sda = ss_damage_all(rate, attrs, true);
+				ss_object_done(f_copy, n, sda);
+				f.log_push("Unit[" + (n + 1) + "]: 連鎖解放大魔術-発動(効果値: " + (rate * 100) + ")");
+				// SS状況を解除
+				var es = GetNowBattleEnemys();
+				for (var i = 0; i < es.length; i++) {
+					es[i].flags.is_ss_attack = false;
+				}
+				// 継続効果を解除
+				ceff.lim_turn = 0;
+			}
+		});
+		fld.log_push("Unit[" + (n + 1) + "]: 連鎖解放大魔術-設置");
 		return true;
 	},
 	// -----------------------------
@@ -336,6 +381,7 @@ var SpSkill = {
 						fc_now.target = [ei, ei];
 						// 着火
 						f.log_push("Enemy[" + (ei + 1) + "]: 時限大魔術 - 残り0t");
+						// TO DO: チェイン補正関連の修正を適用してないので後で確認すること
 						var sda = ss_damage_s(rate, attrs, atkn, false);
 						ss_object_done(f_copy, n, sda);
 					}
@@ -617,7 +663,7 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
-	// ブーストエンハンスをかける
+	// 凶暴化をかける
 	"ss_berserk": function (fld, n, cobj, params) {
 		var t = params[0];
 		var cds = ss_get_targetally(fld, cobj, fld.Allys.Deck, n);
@@ -642,6 +688,45 @@ var SpSkill = {
 				fld.log_push("Unit[" + (n_index + 1) + "]: 凶暴化");
 			}
 		}
+		return true;
+	},
+	// -----------------------------
+	// エンハンス効果を付与
+	"ss_chain_enhance": function (fld, n, cobj, params) {
+		var rate = params[0];
+		var redch = params[1];
+		var t = params[2];
+		var nows = fld.Allys.Now;
+		// チェイン消費してエンハンスをかける処理の関数
+		var fc_ch_enhance = function(f, nows){
+			var isdone = f.Status.chain >= redch;
+			if(isdone){
+				// 発動
+				var ch_bef = f.Status.chain;
+				var ch_aft = Math.max(ch_bef - redch, 0);
+				var sea = ss_enhance_all(rate, 1, [1,1,1,1,1]);
+				ss_object_done(f, n, sea);
+				// チェイン減少
+				f.Status.chain = ch_aft;
+				f.log_push("チェイン犠牲強化(適用)[" + ch_bef + "→" + ch_aft + "]");
+			}
+			else {
+				// 不発
+				f.log_push("チェイン犠牲強化適用(不発)");
+			}
+		}
+		// 継続効果追加
+		ss_continue_effect_add({
+			type: "chain_enhance",
+			turn: t,
+			lim_turn: t,
+			index: n,
+			effect: function (f, oi, ceff) {
+				fc_ch_enhance(f, f.Allys.Now);
+			}
+		});
+		// 発動時にもエンハンス処理を実行
+		fc_ch_enhance(fld, fld.Allys.Now);
 		return true;
 	},
 	// -----------------------------
@@ -687,7 +772,6 @@ var SpSkill = {
 					all_done(f, state, is_t, is_ak);
 				}
 			},
-			priority: -256,         // 1T継続効果が切れてから最後に追加する
 			turn: t,
 			lim_turn: t,
 			ss_disabled: true,		// SS発動不可

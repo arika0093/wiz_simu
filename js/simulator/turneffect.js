@@ -8,7 +8,12 @@ function reduce_turneffect(is_ssfin) {
 			var teff = Field.Allys.Now[i].turn_effect[j];
 			// 戦闘を跨ぐ際にターンを減少させる(AS撃破時) or 未全滅時
 			if ((teff.isreduce_stg && !is_ssfin) || !allkill) {
-				teff.lim_turn -= 1;
+				// 後付けエフェクトなら無視する
+				// answer.js - panel()を参照のこと
+				if(teff.isnotafteradded){
+					teff.lim_turn -= 1;
+					teff.isnotafteradded = false;
+				}
 			}
 		}
 	}
