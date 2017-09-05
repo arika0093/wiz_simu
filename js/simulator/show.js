@@ -757,8 +757,8 @@ function sim_show() {
 // ダメージ計算を開く
 function openDamageCalcPage(i){
 	var fld = Field;
-	var c = fld.Allys.Deck[n];
-	var now = fld.Allys.Now[n];
+	var c = fld.Allys.Deck[i];
+	var now = fld.Allys.Now[i];
 	var cryst = c.crystal || [];
 	// アドヴェリタス潜在
 	var has_advawake = $.grep(open_awake_composite(cryst), function(e){
