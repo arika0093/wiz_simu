@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<!--
+    ///////////////////////////////////////////////////////////////////////////////
+     _       ___       __              __                  __
+    | |     / (_)___  / /_____  ____  / /____  ____  ___  / /_
+    | | /| / / /_  / / __/ __ |/ __ |/ / ___/ / __ |/ _ |/ __/
+    | |/ |/ / / / /_/ /_/ /_/ / /_/ / (__  ) / / / /  __/ /_
+    |__/|__/_/ /___/|__/|____/|____/_/____(_)_/ /_/|___/|__/
+
+    Welcome to wiztools.net!
+    This project is open source: https://github.com/Arika0093/wiz_simu
+    Author: @arika_nekowiz / @rinshandream / @konta_wiz
+    LICENSE: GNU GPL v3
+    ///////////////////////////////////////////////////////////////////////////////
+-->
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <!-- StyleSheet -->
+    <link rel="stylesheet" type="text/css" href="/css/deck.css" />
+    <link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px) and (max-width: 1099px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default_bg.css" media="screen and (min-width: 1100px)" />
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <link type="text/css" rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.min.css" />
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <!-- Cache -->
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <!-- Search -->
+    <meta name="robots" content="all" />
+    <meta name="keywords" content="黒猫,ウィズ,魔法使いと黒猫のウィズ,シミュレーター,シミュ,ダメージ計算" />
+    <meta name="description" content="「魔法使いと黒猫のウィズ」のダメージ計算を行うことができます。攻略のお供にどうぞ。" />
+    <!-- for Mobile Adsense -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+		(adsbygoogle = window.adsbygoogle || []).push({
+			google_ad_client: "ca-pub-5156005489853976",
+			enable_page_level_ads: true
+		});
+    </script>
+    <!-- Simulate Damage-Calc Page -->
+    <title>ダメージ計算ツール - WizTools</title>
+    <!-- page-style -->
+    <style>
+        /* rayout-design */
+        div#inputform{
+            width: 100%;
+            margin: 1em 0;
+        }
+        div.inputform_tmp{
+            background-color: #FFF;
+            margin-bottom: 1ex;
+            padding: 1ex 0.5em;
+            border: 1px solid #CCC;
+            box-sizing: border-box;
+            border-radius:4px;
+            -moz-border-radius:4px;
+            -webkit-border-radius:4px;
+            box-shadow:0px 0px 8px 2px #ddd;
+            -moz-box-shadow:0px 0px 8px 2px #ddd;
+            -webkit-box-shadow:0px 0px 8px 2px #ddd;
+        }
+        div#ally_inputform, div.detail_parts{
+            float: left;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        div#enemy_form, div#result_form, div#share_form, div#tips_form{
+            float: right;
+            width: 49%;
+            box-sizing: border-box;
+        }
+        div#data_input, div#cond_input, div#status_input{
+            box-sizing: border-box;
+        }
+        @media screen and (max-width: 599px){
+            div#ally_inputform, div.detail_parts, div#enemy_form, div#result_form, div#share_form, div#tips_form{
+                float: none;
+                width: 100%;
+            }
+        }
+
+        /* form-design */
+        div.ally, div.enemy{
+            border-width: 1px;
+            border-style: solid;
+            border-color: #606060;
+        }
+        .ally_others{
+            width: 95% !important;
+        }
+        .input_div{
+            width: 100% !important;
+        }
+        .input_atk_div{
+            margin-top: .5ex;
+            text-align: right;
+            float: right;
+        }
+        .input_atk_div input{
+            width: 100px;
+        }
+        .enemy_status, .enemy_attr{
+            float: left;
+            padding: .5ex 0 .5ex .5ex;
+        }
+        input.decksel{
+            padding-right: 0px !important;
+        }
+        table.input_table input[type="number"], table.input_table input[type="text"]{
+            width: 80px;
+        }
+        div.enemy_buttons{
+            float: right;
+            margin-right: 1ex;
+        }
+        div.enemy_buttons input[type=button]{
+            height: 21px;
+            padding: 0 .8ex;
+        }
+        input.enemy_adminus{
+            width: 25px;
+        }
+
+        /* others design */
+        .tbl_caption, .tbl_caption_en, .tbl_caption_mid, .tbl_caption_tip{
+            margin: .5ex 0 1.5ex;
+            padding: .5ex 0 .5ex 1ex;
+            border-width: 1px 1px 1px 3px;
+            border-style: solid;
+        }
+        .tbl_caption{
+            border-color: #06F;
+        }
+        .tbl_caption_en{
+            border-color: #FF4040;
+        }
+        .tbl_caption_mid{
+            border-color: #FF8040;
+        }
+        .tbl_caption_tip{
+            border-color: #00B040;
+        }
+        .killing{
+            font-weight: bolder;
+        }
+        table.input_table td:first-child{
+            text-align: right;
+        }
+        table.input_table p{
+            margin: 4px 0;
+        }
+        div.content{
+            color: #666;
+            padding: 0 1em 1ex;
+        }
+        div.content a{
+            color: #222;
+        }
+
+        /* at first hidden */
+        .calc_atk, .as_only, .ssb_only, .ss_without, .hidden_item{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id='Top'></div>
+<div id="wrap">
+    <!-- Loader -->
+    <div id="loader"><img src="/image/loading.gif" alt="Loading..." /></div>
+    <noscript id="loadnoscr">このページはjavascriptを使用しています。有効にしたのち再度アクセスしてください。</noscript>
+    <div id="fade"></div>
+
+    <!-- Header -->
+    <div id="Header"></div>
+
+    <!-- Main Contents -->
+    <div class="Main">
+        <dl class="List">
+            <dt>ダメージ計算ツール</dt>
+            <dd id="Simu_info clearfix">
+                <div id="inputform" class="clearfix">
+                    <div id="ally_inputform" class="inputform_tmp">
+                        <p class="tbl_caption" >攻撃精霊</p>
+                        <div class="ally clearfix" id="ally01">
+                            <div class="attr_none" id="ally01_attr_main">.</div>
+                            <div class="attr_none" id="ally01_attr_sub">.</div>
+                            <div class="ally_others">
+                                <div class="input_div">
+                                    <input class="decksel" id="deck01" placeholder="《精霊名を入力します》" />
+                                </div>
+                                <div class="input_atk_div">
+                                    <span class="sp_hidden">
+                                        属性:
+                                        <select id="ally_attr">
+                                            <option value="0,-1">火</option>
+                                            <option value="0,1">火/水</option>
+                                            <option value="0,2">火/雷</option>
+                                            <option value="0,3">火/光</option>
+                                            <option value="0,4">火/闇</option>
+                                            <option value="1,-1">水</option>
+                                            <option value="1,0">水/火</option>
+                                            <option value="1,2">水/雷</option>
+                                            <option value="1,3">水/光</option>
+                                            <option value="1,4">水/闇</option>
+                                            <option value="2,-1">雷</option>
+                                            <option value="2,0">雷/火</option>
+                                            <option value="2,1">雷/水</option>
+                                            <option value="2,3">雷/光</option>
+                                            <option value="2,4">雷/闇</option>
+                                        </select> ,
+                                    </span>
+                                    ATK: <input type="number" id="ally_atk" min="0" step="100" placeholder="《精霊の攻撃力》" />
+                                </div>
+                            </div>
+                            <div class="ally_image">
+                                <img class="chara_img" id="ally01_img" src="/image/noimage.png" />
+                                <p class="ally_mana" id="ally01_mana"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="enemy_form" class="inputform_tmp">
+                        <p class="tbl_caption_en" >敵精霊</p>
+                        <div class="enemy clearfix" id="enemy01">
+                            <div class="attr_none" id="enemy_attr_main"></div>
+                            <div class="attr_none" id="enemy_attr_sub"></div>
+                            <div class="enemy_image">
+                                <img class="chara_img" id="enemy_img" src="/image/noimage.png" />
+                            </div>
+                            <div class="enemy_status">
+                                HP:
+                                <input type="number" id="enemy_hp_input" placeholder="《敵のHPを入力します》" value="100000" />
+                                <!-- <input type="button" id="enemy_load" value="Load" /> -->
+                            </div>
+                            <div class="enemy_attr">
+                                <input type="radio" id="enemy_attr_0" name="enemy_attr_rd" value="0" /><label for="enemy_attr_0">火</label>
+                                <input type="radio" id="enemy_attr_1" name="enemy_attr_rd" value="1" /><label for="enemy_attr_1">水</label>
+                                <input type="radio" id="enemy_attr_2" name="enemy_attr_rd" value="2" /><label for="enemy_attr_2">雷</label>
+                                <input type="radio" id="enemy_attr_3" name="enemy_attr_rd" value="3" /><label for="enemy_attr_3">光</label>
+                                <input type="radio" id="enemy_attr_4" name="enemy_attr_rd" value="4" /><label for="enemy_attr_4">闇</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail_parts">
+                        <div id="data_input" class="inputform_tmp">
+                            <p class="tbl_caption" >攻撃精霊詳細</p>
+                            <table class="input_table">
+                                <tr>
+                                    <td>+ATK：</td>
+                                    <td><input type="number" id="card_addatk" value="0" step="100" /></td>
+                                    <td><input type="checkbox" id="card_addatk_scan" /><label for="card_addatk_scan">必要攻撃力の探索</label></td>
+                                </tr>
+                                <tr>
+                                    <td>潜在UP：</td>
+                                    <td><input type="number" id="card_atkup_awk" value="0" step="100" /></td>
+                                    <td><input type="button" id="card_atkup_awk_m100" value="-100" />
+                                        <input type="button" id="card_atkup_awk_p100" value="+100" /></td>
+                                </tr>
+                                <tr>
+                                    <td>ステUP：</td>
+                                    <td><input type="number" id="card_stup" value="0" max="6000" step="100" /></td>
+                                    <td><input type="button" id="card_stup_m1000" value="-1000" />
+                                        <input type="button" id="card_stup_p1000" value="+1000" /></td>
+                                </tr>
+                                <tr>
+                                    <td>精霊Lv：</td>
+                                    <td><input type="number" id="card_lv" value="110" min="1" max="110" /></td>
+                                    <td><input type="button" id="card_lv_1" value="Lv.1" />
+                                        <input type="button" id="card_lv_max" value="Lv.MAX" /></td>
+                                </tr>
+                                <!--
+                                <tr>
+                                    <td>覚醒数：</td>
+                                    <td><input type="number" id="card_awn" value="10" min="0" max="10"/></td>
+                                    <td><input type="button" id="card_aw_0" value="0覚" />
+                                        <input type="button" id="card_aw_max" value="フル" /></td>
+                                </tr>
+                                -->
+                                <tr>
+                                    <td>マナ値：</td>
+                                    <td><input type="number" id="card_mana" value="200" min="0" max="400" /></td>
+                                    <td><input type="button" id="card_mn_200" value="+200" />
+                                        <input type="button" id="card_mn_400" value="+400" /></td>
+                                </tr>
+                            </table>
+                            <input type="checkbox" id="card_isadv" /><label for="card_isadv">アド結晶(×1.2)</label>
+                            <input type="checkbox" id="card_isadvaw" /><label for="card_isadvaw">ダメアップ潜在(×1.1)</label>
+                        </div>
+                        <div id="cond_input" class="inputform_tmp">
+                            <p class="tbl_caption" >スキル詳細指定</p>
+                            <div class="combobox_lst">
+                                <input type="radio" id="cmb_as" class="input_combo" name="calctype" value="0" /><label for="cmb_as">AS</label>
+                                <input type="radio" id="cmb_ss" class="input_combo" name="calctype" value="1" checked /><label for="cmb_ss">攻撃SS</label>
+                                <!-- <input type="radio" id="cmb_ss_bm" class="input_combo" name="calctype" /><label for="cmb_ss_bm">時限</label> -->
+                                <input type="radio" id="cmb_ss_b" class="input_combo" name="calctype" value="3" /><label for="cmb_ss_b">連鎖解放</label>
+                            </div>
+                            <hr/>
+                            <table class="input_table">
+                                <tr class="as_only">
+                                    <td>パネル：</td>
+                                    <td colspan="2">
+                                        <input type="radio" id="as_panel_col_mo" name="as_panel_col" value="0" checked /><label for="as_panel_col_mo">主属性一致</label>
+                                        <input type="radio" id="as_panel_col_so" name="as_panel_col" value="1" /><label for="as_panel_col_so">副属性一致</label>
+                                        <input type="radio" id="as_panel_col_ms" name="as_panel_col" value="2" /><label for="as_panel_col_ms">両方一致</label>
+                                    </td>
+                                </tr>
+                                <tr class="ss_only">
+                                    <td>攻撃属性：</td>
+                                    <td colspan="2">
+                                        <input type="checkbox" id="ss_attr_col_00" name="ss_attr_col" value="0" /><label for="ss_attr_col_00">火</label>
+                                        <input type="checkbox" id="ss_attr_col_01" name="ss_attr_col" value="1" /><label for="ss_attr_col_01">水</label>
+                                        <input type="checkbox" id="ss_attr_col_02" name="ss_attr_col" value="2" /><label for="ss_attr_col_02">雷</label>
+                                        <input type="checkbox" id="ss_attr_col_03" name="ss_attr_col" value="3" /><label for="ss_attr_col_03">光</label>
+                                        <input type="checkbox" id="ss_attr_col_04" name="ss_attr_col" value="4" /><label for="ss_attr_col_04">闇</label>
+                                        <input type="checkbox" id="ss_attr_col_99" name="ss_attr_col" value="-1" /><label for="ss_attr_col_99">無</label>
+                                    </td>
+                                </tr>
+                                <tr class="ssb_without">
+                                    <td>効果値：</td>
+                                    <td colspan="2">
+                                        <input type="number" id="card_rate" value="100" min="-100" step="10" />
+                                        <input type="button" id="card_rate_m1" value="-100" />
+                                        <input type="button" id="card_rate_p1" value="+100" />
+                                    </td>
+                                </tr>
+                                <tr class="ssb_only">
+                                    <td>保証効果値：</td>
+                                    <td colspan="2">
+                                        <input type="number" id="card_rate_ssb_min" value="100" min="-100" step="100" />
+                                    </td>
+                                </tr>
+                                <tr class="ssb_only">
+                                    <td>付与最大効果値：</td>
+                                    <td colspan="2">
+                                        <input type="number" id="card_rate_ssb_max" value="2500" />
+                                    </td>
+                                </tr>
+                                <tr class="hidden_item">
+                                    <td>増加曲線：</td>
+                                    <td colspan="2">
+                                        <input type="number" id="card_rate_ssb_exp" value="2.5" />
+                                    </td>
+                                </tr>
+                                <tr class="ss_only">
+                                    <td>潜在結晶：</td>
+                                    <td colspan="2">
+                                        <input type="number" id="card_awenh" value="0" min="0" step="100" />
+                                        <input type="button" id="card_awenh_m1" value="-100" />
+                                        <input type="button" id="card_awenh_p1" value="+100" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>エンハ値：</td>
+                                    <td colspan="2">
+                                        <input type="number" id="card_enh" value="0" min="0" step="10" />
+                                        <input type="button" id="card_enh_m1" value="-100" />
+                                        <input type="button" id="card_enh_p1" value="+100" />
+                                    </td>
+                                </tr>
+                                <!--
+                                <tr class="ssb_without">
+                                    <td>Hit数：</td>
+                                    <td>
+                                        <input type="number" id="card_atkn" value="1" min="1" />
+                                    </td>
+                                </tr>
+                                -->
+                            </table>
+                            <div class="as_only">
+                                <input type="checkbox" id="as_critical" /><label for="as_critical">クリティカル(×3)</label>
+                            </div>
+                        </div>
+                        <div id="status_input" class="inputform_tmp">
+                            <p class="tbl_caption" >その他条件指定</p>
+                            <table class="input_table">
+                                <tr>
+                                    <td>乱数：</td>
+                                    <td><input type="number" id="fld_rand" value="1.00" min="0.90" max="1.10" step="0.01" /></td>
+                                    <td><input type="button" id="fld_rand_min" value="最小" />
+                                        <input type="button" id="fld_rand_ave" value="1.0" />
+                                        <input type="button" id="fld_rand_max" value="最大" /></td>
+                                </tr>
+                                <tr>
+                                    <td>chain：</td>
+                                    <td><input type="number" id="fld_chain" value="0" min="0" /></td>
+                                </tr>
+                                <tr>
+                                    <td>敵ガード：</td>
+                                    <td><input type="number" id="enemy_guard" value="0" min="0" /></td>
+                                    <td>(効果値指定)</td>
+                                </tr>
+                                <tr>
+                                    <td>敵弱体化：</td>
+                                    <td><input type="number" id="enemy_weaken" value="0" min="0" /></td>
+                                    <td>(効果値指定)</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="result_form" class="inputform_tmp">
+                        <p class="tbl_caption_mid" >計算結果</p>
+                        <table class="input_table calc_dmg">
+                            <tr>
+                                <td>与ダメージ：</td>
+                                <td><p id="dmg_show">------</p></td>
+                            </tr>
+                            <tr>
+                                <td>与ダメージ(最小)：</td>
+                                <td><p id="dmg_show_min">------</p></td>
+                            </tr>
+                            <!-- <tr>
+                                <td>与ダメージ(99%)：</td>
+                                <td><p id="dmg_show_99per">------</p></td>
+                            </tr> -->
+                            <tr>
+                                <td>与ダメージ(最大)：</td>
+                                <td><p id="dmg_show_max">------</p></td>
+                            </tr>
+                            <tr>
+                                <td>撃破に必要な乱数：</td>
+                                <td><p id="dmg_show_jstrand">-.----</p></td>
+                            </tr>
+                            <tr>
+                                <td>残りHP：</td>
+                                <td><p id="enemy_hp_remain">-------</p></td>
+                            </tr>
+                        </table>
+                        <!-- <input type="button" id="apply_remainhp" class="calc_dmg" value="続けて計算する" disabled /> -->
+                        <table class="input_table calc_atk">
+                            <tr>
+                                <td>必要攻撃力：</td>
+                                <td><p id="atk_show">------</p></td>
+                            </tr>
+                            <tr>
+                                <td>必要攻撃力(最大)：</td>
+                                <td><p id="atk_show_max">------</p></td>
+                            </tr>
+                            <!-- <tr>
+                                <td>必要攻撃力(99%)：</td>
+                                <td><p id="atk_show_99per">------</p></td>
+                            </tr> -->
+                            <tr>
+                                <td>必要攻撃力(最小)：</td>
+                                <td><p id="atk_show_min">------</p></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="share_form" class="inputform_tmp">
+                        <p class="tbl_caption_mid" >share</p>
+                        <div class="content">
+                            計算結果をURLに保存することができます。生成したURLを開くことで復元が可能です。<br/>
+                            <input type="button" id="create_url" value="URL生成" disabled />
+                            <!--<input type="button" id="create_pct" value="画像生成" disabled />-->
+                        </div>
+                    </div>
+                    <div id="tips_form" class="inputform_tmp">
+                        <p class="tbl_caption_tip" >概要</p>
+                        <div class="content">
+                            条件を指定してダメージ計算を行うツールです。<br/>
+                            味方精霊の指定、敵のHPと属性、その他条件を指定してあげることで、与えるダメージ量を計算します。
+                            また、敵を倒しきるのに必要な攻撃力の検索を行うこともできます。<br/>
+                            詳細な計算式は<a href="/pages/damage.html">ダメージ計算の解説ページ</a>をご覧ください。
+                            バグなどありましたら<a href="/pages/contact.html">報告ページ</a>か作者のTwitter(<a href="https://twitter.com/arika_nekowiz">@arika_nekowiz</a>)まで。
+                        </div>
+                        <p class="tbl_caption_tip" >シミュレーターとの連携</p>
+                        <div class="content">
+                            試走画面で精霊画像をクリック→「ダメージ計算を開く」を押すことで、
+                            その時のパラメータを引き継いでダメージ計算を行うことができます。効果値は<u>手動</u>で入力してください。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adsense -->
+                <div class="Adsense">
+                    <!-- advertise -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-5156005489853976"
+                         data-ad-slot="6536828444"
+                         data-ad-format="auto"></ins>
+                    <script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </dd>
+
+        </dl>
+    </div>
+
+    <!-- Footer -->
+    <div id="Footer"></div>
+
+    <!-- Dialog Contents -->
+    <div class="dialog_div" id="dialog_createurl" title="Gen. URL">
+        <p>URLを生成しました。</p>
+        <input type="text" style="width: 100%;" id="createurl_rst" readonly />
+    </div>
+
+    <!-- Javascript -->
+    <!--#config timefmt="%Y%m%d_%H%M%S" -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5sortable/0.4.2/html.sortable.min.js"></script>
+    <script type="text/javascript" src="/download/romaji.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/loader.js?                  <!--#flastmod virtual='/js/loader.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js?                <!--#flastmod virtual='/js/pagetemp.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js?               <!--#flastmod virtual='/js/googletrc.js'-->"></script>
+    <!-- 他jsに依存しない基礎関数群 -->
+    <script type="text/javascript" charset="UTF-8" src="/js/general.js?                 <!--#flastmod virtual='/js/general.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/simulator/awake.js?         <!--#flastmod virtual='/js/simulator/awake.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/simulator/species.js?       <!--#flastmod virtual='/js/simulator/species.js'-->"></script>
+    <!-- データ群(基礎関数に依存する) -->
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_ans.js?          <!--#flastmod virtual='/js/data/skill_ans.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_spe.js?          <!--#flastmod virtual='/js/data/skill_spe.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_spe_body.js?     <!--#flastmod virtual='/js/data/skill_spe_body.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_awake.js?        <!--#flastmod virtual='/js/data/skill_awake.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_crystal.js?      <!--#flastmod virtual='/js/data/skill_crystal.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_enemy.js?        <!--#flastmod virtual='/js/data/skill_enemy.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/quests.php"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/data/cards.js?              <!--#flastmod virtual='/js/data/cards.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/dynamic.js?                 <!--#flastmod virtual='/js/dynamic.js'-->"></script>
+    <!-- 処理群(データ群に依存する) -->
+    <script type="text/javascript" charset="UTF-8" src="/js/deck/deckdata.js?           <!--#flastmod virtual='/js/deck/deckdata.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/simulator/damage.js?        <!--#flastmod virtual='/js/simulator/damage.js'-->"></script>
+    <script type="text/javascript" charset="UTF-8" src="script.js"></script>
+    <!-- search script -->
+    <script type="text/javascript" charset="UTF-8" src="/js/search/sch_form_def.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/search/sch_form.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/search/sch_filter.js"></script>
+</div>
+</body>
+</html>

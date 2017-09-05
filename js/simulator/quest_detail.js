@@ -26,7 +26,7 @@ function makeCategoryList(url) {
 			var boss_enm = boss_enms.length >= 2 ? 1 : 0;
 			rst_html += "<a class='genre_link' href='" + url + ctgr + "'><img src=" +
 			get_image_url(boss_enms[boss_enm].imageno, boss_enms[boss_enm].imageno_prefix) + " class='boss_img'>" +
-			category_jp[ctgr].jp + "</a>";
+				(category_jp[ctgr] ? category_jp[ctgr].jp : "") + "</a>";
 			view_genre = ctgr;
 		}
 	});

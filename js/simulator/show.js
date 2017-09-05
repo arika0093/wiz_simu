@@ -452,9 +452,14 @@ function sim_show() {
 				li_t = "<li class='no_icon'>(現在継続中の効果はありません)</li>";
 			}
 			$("#allystat_name").html((n + 1) + ": " +
-				"<a target='_blank' href='/search/detail/?id=" + card.cardno + "'>" + card.name +
-				"</a><br/><div style='text-align: right;'>HP: " + now.nowhp + "/" + now.maxhp + ", ATK: " + now.atk + "</div>");
+				"<a target='_blank' href='/search/detail/?id=" + card.cardno + "'>" + card.name + "</a>" +
+				"<a href='javascript:;' style='float:right; display:block' id='opendmgcalc'>ダメージ計算を開く</a>" +
+				"<br/><div style='text-align: right;'>HP: " + now.nowhp + "/" + now.maxhp + ", ATK: " + now.atk + "</div>");
 			$("#ally_tefflist").html(li_t);
+			$("#opendmgcalc").off("click");
+			$("#opendmgcalc").on("click", function(){
+				openDamageCalcPage(n);
+			});
 			// ----------------------------
 			// target select
 			if (card.attr[1] != -1) {
@@ -748,6 +753,82 @@ function sim_show() {
 		},
 	});
 }
+
+// ダメージ計算を開く
+function openDamageCalcPage(i){
+	var fld = Field;
+	var c = fld.Allys.Deck[n];
+	var now = fld.Allys.Now[n];
+	var cryst = c.crystal || [];
+	// アドヴェリタス潜在
+	var has_advawake = $.grep(open_awake_composite(cryst), function(e){
+		return e.type == "awake_damage_multiple";
+	}).length > 0;
+	// 効果値アップ潜在
+	var cryst_rateups = $.grep(open_awake_composite(cryst), function(e){
+		return e.type.indexOf("awake_rateup") >= 0;
+	});
+	var cryst_rateup_val = 0;
+	$.each(cryst_rateups, function(i,e){
+		cryst_rateup_val += e.upvalue
+	});
+	// 乱数
+	var rand_val = Number($("#attack_rand_sel").val());
+	var rand = (rand_val != -1 ? rand_val : 1);
+	// 敵データ
+	var enemys = GetNowBattleEnemys();
+	var e = enemys.sort(function(a,b){
+		if( a.hp > b.hp ) return -1;
+		if( a.hp < b.hp ) return 1;
+		return 0;
+	})[0];
+
+	// クエリ
+	var query = {
+		obj_type: "dmgcalc/query",
+		cond: {
+			find_killatk: false,
+			empty_rate: true,
+			add_atk: 0,
+			add_awatk: (now.def_awatk - now.def_atk),
+			status_up: (now.atk - now.def_awatk),
+			level: (now.level || 110),
+			awakenum: c.awakes.length,
+			manaplus: now.mana,
+			is_advawake: has_advawake,
+			as_panel_type: 0,
+			skillrate: "",
+			skill_awc_rate: cryst_rateup_val,
+			as_iscritical: false,
+			enh_rate: Math.floor((now.ss_enhance || 0)*100),
+			hit_num: 1,
+			rand: rand,
+			chain: fld.Status.chain,
+			e_guard: 0,
+			e_weaken: 0,
+		},
+		ally: {
+			isloading: true,
+			card: c,
+		},
+		enemy: {
+			imageno: e.imageno,
+			img_pref: e.imageno_prefix,
+			attr: e.attr,
+			hp: e.hp,
+		},
+	};
+	// gen url and open page
+	var w = window.open("/damagecalc/loading.html", "_blank");
+	// objをJSON化して短縮する
+	deckdata_SaveUrl(query, function (result) {
+		var js = JSON.parse(result);
+		// 別タブで検索結果表示ページを開く
+		w.location = "/damagecalc/?q=" + js.short;
+	});
+	return;
+}
+
 
 // logを生成する
 function create_log(i) {

@@ -736,6 +736,10 @@ input{
 li#mn_simulator, li#mn_hpcalc{
 	background-image: url("/image/tlicon/simulator.png") !important;
 }
+li#mn_dmgcalc{
+	background-image: url("/image/tlicon/calc.png") !important;
+	background-position: 17px 2px !important;
+}
 li#mn_search{
 	background-image: url("/image/tlicon/search.png") !important;
 }
