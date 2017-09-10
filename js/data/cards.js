@@ -81196,7 +81196,7 @@ Cards = [{
 	ss1: {
 		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵単体へダメージ(1000%)",
 		turn: 8,
-		proc: [ss_damage_s(10, [1], 1), ss_consume_own(0.5), ss_ignore_skillcounter()],,
+		proc: [ss_damage_s(10, [1], 1), ss_consume_own(0.5), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],3),
@@ -81217,7 +81217,7 @@ Cards = [{
 	ss2: {
 		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵単体へダメージ(1200%)",
 		turn: 10,
-		proc: [ss_damage_s(12, [1], 1), ss_consume_own(0.5), ss_ignore_skillcounter()],,
+		proc: [ss_damage_s(12, [1], 1), ss_consume_own(0.5), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,500),
