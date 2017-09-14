@@ -1,6 +1,6 @@
 {
    id: "grade17",
-   name: "",
+   name: "漆式(トーナメント17段)",
    desc: "",
    overlap: false,
    aprnum: 5,
