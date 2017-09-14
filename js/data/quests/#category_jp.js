@@ -121,7 +121,7 @@ category_jp = {
 		disable_date:"2016/11/30 16:00",
 	},
     "chronicle1": {
-		is_dispsim: true,
+		is_dispsim: false,
 		sim_index: 12,
 		jp: "天界の双子 訣別のクロニクル",
 	},
@@ -171,7 +171,7 @@ category_jp = {
     },
     "8million2": {
     	jp: "八百万神秘譚2",
-    	is_dispsim: false,
+    	is_dispsim: true,
     	sim_index: 16,
     },
     "mareless1": {
