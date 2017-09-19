@@ -252,6 +252,18 @@ function turneff_break_cond(teffs, index, func, call_type) {
 	}
 }
 
+// 一番最後にかけられたターン継続効果の解除(条件)
+function turneff_break_last(teffs, index, func, call_type) {
+	call_type = call_type || "overlay";
+	var cond_tfs = $.grep(teffs, function(e){
+		return func(e);
+	});
+	var teff = cond_tfs[cond_tfs.length];
+	var i = teffs.indexOf(teff);
+	teff.effect(Field, index, teff, call_type, false, false);
+	turneff_remove_pos(teffs, i);
+}
+
 // 継続効果追加
 function ss_continue_effect_add(eff_obj) {
 	// 重複してたら削除

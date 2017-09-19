@@ -66,13 +66,36 @@ var SpSkill = {
 			});
 			for (var a = 0; a < attrs.length; a++) {
 				// 攻撃
-				ss_damage(fld, r, attrs[a], atkn, n, atk_order[a], false);
+				ss_damage(fld, r, attrs[a], atkn, n, atk_orders[a], false);
 				// チェイン封印されてなければチェインプラス
 				if (fld.Status.chain_status != 2) {
 					fld.Status.chain += 1;
 					fld.log_push("チェインプラス(+1)");
 				}
 			}
+		}
+		return true;
+	},
+	// -----------------------------
+	// 一閃斬撃大魔術
+	"ss_damage_slash_all": function (fld, n, cobj, params) {
+		var r = params[0];
+		var attrs = params[1];
+		var enemys = GetNowBattleEnemys();
+		var liv_en = $.grep(enemys, function(e){
+			return e.nowhp > 0;
+		}).length;
+		var addch = Math.pow(2, liv_en) - 1;
+		for (var a = 0; a < attrs.length; a++) {
+			for (var i = 0; i < GetNowBattleEnemys().length; i++) {
+				// 攻撃
+				ss_damage(fld, r, attrs[a], 1, n, i, false);
+			}
+		}
+		// チェイン封印されてなければチェインプラス
+		if (fld.Status.chain_status != 2) {
+			fld.Status.chain += addch;
+			fld.log_push("チェインプラス(+" + addch + ")");
 		}
 		return true;
 	},
@@ -1674,6 +1697,10 @@ function ss_toselect_one(skill) {
 // ------------------------------------
 // (内部用)実行関数
 function ss_object_done(fld, n, c_obj, is_check_crs) {
+	// nullとかが渡されたら何もしない
+	if(!c_obj){
+		return;
+	}
 	// type switch
 	var skl_list = c_obj.is_skill ? SpSkill: SpCondSkill;
 	// 未定義なら実行しない
@@ -1800,22 +1827,24 @@ function ss_break_template(target, type) {
 }
 
 // (内部用)[対象:敵]効果対象が単体か全体かを判別して適切な敵配列を返却
-function ss_get_targetenemy(fld, ss, ai) {
+function ss_get_targetenemy(fld, ss, ai, attr) {
 	// 敵3体の時の並び順
 	var earr3 = [0,1,2];
 	// 敵5体の時の並び順
 	 var earr5 = [0,3,1,4,2];
+	 // 属性指定
+	 attr = (attr != undefined ? attr : fld.Allys.Deck[ai].attr[0]);
 	// タゲの種類で分岐
 	switch (ss.target) {
 		case "all":
 			return GetNowBattleEnemys();
 		case "single":
 			var enemys = GetNowBattleEnemys();
-			var tg = auto_attack_order(fld, enemys, -1, ai);
+			var tg = auto_attack_order(fld, enemys, attr, ai);
 			return [enemys[tg]];
 		case "withside":
 			var enemys = GetNowBattleEnemys();
-			var tg = auto_attack_order(fld, enemys, -1, ai);
+			var tg = auto_attack_order(fld, enemys, attr, ai);
 			var e_order = (enemys.length >= 4 ? earr5 : earr3);
 			// まず始めに両脇の敵を追加する
 			var new_arr = $.map(enemys, function(e, i){
