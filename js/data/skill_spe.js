@@ -125,6 +125,21 @@ function ss_damage_slash(r, attrs, atn) {
 }
 
 /**
+ * 敵全体に指定属性の攻撃＆敵の数だけチェイン数プラス
+ * r:		攻撃威力(ex: 1.0		-> 効果値100)
+ * attrs:	攻撃属性(ex: [0,1]	-> 火,水)
+ **/
+function ss_damage_slash_all(r, attrs) {
+	return ss_template({
+		name: "ss_damage_slash_all",
+		type: "damage",
+		target: "single",
+		p1: r,
+		p2: attrs,
+	});
+}
+
+/**
  * 指定した敵とその左右の敵に指定属性のダメージ
  * r:		攻撃威力(ex: 1.0		-> 効果値100)
  * attrs:	攻撃属性(ex: [0,1]	-> 火,水)

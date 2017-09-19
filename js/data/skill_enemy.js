@@ -632,6 +632,28 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown) {
 	}, makeDesc("呪い"));
 }
 
+// 効果解除呪い(対象数)
+function s_enemy_cursed_break(tnum) {
+	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
+		var tg = !tnum.length ? gen_enemytarget_array(tnum, 1, false)[0] : tnum;
+		for (var i = 0; i < tg.length; i++) {
+			var card = fld.Allys.Deck[tg[i]];
+			var now = fld.Allys.Now[tg[i]];
+			// 一番最後の効果を解除
+			turneff_break_last(now.turn_effect, tg[i], function (teff) {
+				return teff.iscursebreak;
+			}, "break");
+			// スキルカウンターを有効に
+			now.flags.skill_counter[n] = (is_counter ? false : true);
+			fld.log_push("Enemy[" + (n + 1) + "]: 効果解除呪い(対象: Unit[" + (tg[i] + 1) + "])");
+		}
+		// 反射チェック
+		turneff_check_skillcounter(fld);
+		// スキル重複確認
+		turn_effect_check(false);
+	}, makeDesc("効果解除"));
+}
+
 // 属性反転
 function s_enemy_attrreverse(t, tnum){
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
