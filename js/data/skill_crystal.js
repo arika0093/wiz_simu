@@ -187,6 +187,14 @@ var Awake_crystal_lists = [{
 	imple: Awake_composite,
 	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 200, 200, [0,0,0,1,0]),
 }, {
+	name: "努力と継続の結晶〈女学院課題〉(副火ATK+200)",
+	imple: Awake_composite,
+	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 0, 200, [1,0,0,0,0]),
+}, {
+	name: "封呪槍〈コンファイナー〉(副水ATK+200)",
+	imple: Awake_composite,
+	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 0, 200, [0,1,0,0,0]),
+}, {
 	name: "擬態の結晶〈ガーゴイル〉(物質HP+200)",
 	imple: Awake_composite,
 	param2: Spec_statusup(200, 0, [6]),
@@ -206,6 +214,10 @@ var Awake_crystal_lists = [{
 	name: "愛と悲しみの結晶〈ギブン〉(副光HP+100)",
 	imple: Awake_composite,
 	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 100, 0, [0,0,0,1,0]),
+}, {
+	name: "虚の結晶〈スタードであったもの〉(副闇HP+100)",
+	imple: Awake_composite,
+	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 100, 0, [0,0,0,0,1]),
 }, {
 	genre: "L時発動結晶",
 	name: "煌眼の欠片(L時味方ATK+100/25%回復)",
