@@ -82911,7 +82911,7 @@ Cards = [{
 	},
 	awakes: [
 		Costdown(20),
-		Panel_boost([0,1,0,0,0,],4)
+		Panel_boost([0,1,0,0,0,],4),
 		Attr_statusup_oattr(0,400, [0,1,0,0,0,]),
 		Attr_statusup_oattr(400,0, [0,1,0,0,0,]),
 		Abstate_invalid("as_sealed"),
