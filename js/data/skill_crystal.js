@@ -251,7 +251,7 @@ var Awake_crystal_lists = [{
 		is_legend: true,
 	},
 }, {
-	name: "烈眼の欠片(L時味方ATK+500)",
+	name: "烈眼の欠片(L時味方ATK+500,自傷10%)",
 	imple: Awake_composite,
 	param2: {
 		name: "L時味方攻撃力アップ",
@@ -335,6 +335,10 @@ var Awake_crystal_lists = [{
 	name: "エクスマキナ(毒,弱体化,死の秒針無効)",
 	imple: Awake_composite,
 	param2: Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+}, {
+	name: "人外魔装〈刻銘羽〉(属性反転無効)",
+	imple: Awake_composite,
+	param2: Abstate_invalid("attr_reverse"),
 }, {
 	genre: "ダメージ軽減",
 	name: "巡礼の結晶〈スビェート〉(光軽減10%)",

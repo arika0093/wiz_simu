@@ -151,8 +151,8 @@ function createCardDataTable(crds){
 			h += "<td class='c_crystal_none'></td>";
 		} else {
 			var btx = crds[i].crystal[0].name;
-			var rtx = btx.replace(/\s*\(.*\)/g, "");
-			rtx = rtx.replace(/\s*<.*>/g, "");
+			var rtx = btx.replace(/\((?!仮).*?\)/g, "");
+			rtx = rtx.replace(/\s*<.*?>/g, "");
 			rtx = rtx.replace(/〈/g, "<br/>〈");
 			h += "<td class='c_crystal' title='" + crds[i].crystal[0].display_text + "'>" + rtx + "</td>";
 		}
@@ -168,8 +168,8 @@ function createCardDataTable(crds){
 			h += "<td class='c_crystal_none'></td>";
 		} else {
 			var btx = crds[i].crystal[1].name;
-			var rtx = btx.replace(/\s*\(.*\)/g, "");
-			rtx = rtx.replace(/\s*<.*>/g, "");
+			var rtx = btx.replace(/\((?!仮).*?\)/g, "");
+			rtx = rtx.replace(/\s*<.*?>/g, "");
 			rtx = rtx.replace(/〈/g, "<br/>〈");
 			h += "<td class='c_crystal' title='" + crds[i].crystal[1].display_text + "'>" + rtx + "</td>";
 		}
