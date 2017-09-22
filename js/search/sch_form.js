@@ -69,7 +69,7 @@ function sf_aslist_add() {
 		minLength: 1,
 		source: function (req, resp) {
 			resp($.map(sfdef_asregex, function (value, key){
-				if(req.term.indexOf("/") == 0){
+				if(req.term.indexOf("/") == 0 && req.term.length <= 2){
 					return {
 						label: key,
 						value: value,
@@ -120,7 +120,7 @@ function sf_sslist_add() {
 		minLength: 1,
 		source: function (req, resp) {
 			resp($.map(sfdef_ssregex, function (value, key){
-				if(req.term.indexOf("/") == 0){
+				if(req.term.indexOf("/") == 0 && req.term.length <= 2){
 					return {
 						label: key,
 						value: value,

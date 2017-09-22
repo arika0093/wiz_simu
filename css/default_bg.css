@@ -728,7 +728,7 @@ input.edit_indialog{
 input, button, select{
 	font-size: 13.33px;
 }
-input{
+input, select, textarea, button{
 	font-family: Meiryo, "ヒラギノ角ゴ Pro W3" !important;
 }
 

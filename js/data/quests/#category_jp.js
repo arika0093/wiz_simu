@@ -171,7 +171,7 @@ category_jp = {
     },
     "8million2": {
     	jp: "八百万神秘譚2",
-    	is_dispsim: true,
+    	is_dispsim: false,
     	sim_index: 16,
     },
     "mareless1": {
@@ -215,7 +215,7 @@ category_jp = {
     "material": {
 		jp: "素材クエスト",
 		is_dispsim: true,
-		sim_index: 30,
+		sim_index: 31,
 	},
     "normal": {
 		jp: "ノーマルクエスト",
