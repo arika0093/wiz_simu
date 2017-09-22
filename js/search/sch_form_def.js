@@ -343,6 +343,12 @@ var sfdef_aw_namelist = {
 			return sfdef_absinvalid(e.tgtype, "ss_sealed");
 		}
 	},
+	"封印無効": {
+		type: "abstate_invalid",
+		check: function (e) {
+			return sfdef_absinvalid(e.tgtype, "all_sealed");
+		}
+	},
 	"毒無効": {
 		type: "abstate_invalid",
 		check: function (e) {
