@@ -298,11 +298,17 @@ function createActionStrData(js, act){
 					}
 					break;
 				case "answer":
-					var ans_attr = get_attr_string(ac.attr, "/").replace(/属性/g, "");
-					var asig_str = ac.asignore ? "(AS逃し)" : "";
-					d_l = "回答" + asig_str + "[" + ans_attr + "]<br/>"
-					is_answer_flag = true;
-					is_ntadd_flag = false;
+					if(!ac.result){
+						d_l = "(誤答)<br/>"
+						is_answer_flag = true;
+					}
+					else {
+						var ans_attr = get_attr_string(ac.attr, "/").replace(/属性/g, "");
+						var asig_str = ac.asignore ? "(AS逃し)" : "";
+						d_l = "回答" + asig_str + "[" + ans_attr + "]<br/>"
+						is_answer_flag = true;
+						is_ntadd_flag = false;
+					}
 					break;
 				case "special":
 					d_l = "Unit[" + (ac.index+1) + "]: SS発動<br/>"

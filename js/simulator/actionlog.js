@@ -76,11 +76,24 @@ function actl_save_answer(attr, as_ign) {
 	// save
 	actl_save_object({
 		type: "answer",
+		result: true,
 		attr: attr,
 		asignore: as_ign,
 	});
 	// 複色パネルを踏んだかどうかのフラグ
 	st.is_spanel_only = st.is_spanel_only && attr.length <= 1;
+}
+
+// AS誤答記録
+function actl_save_answer_miss() {
+	var st = Field.Status;
+	// タゲ保存
+	actl_save_target();
+	// save
+	actl_save_object({
+		type: "answer",
+		result: false,
+	});
 }
 
 // SS記録

@@ -171,6 +171,8 @@ function answer_miss()
 {
 	var fld = Field;
 	fld.log_push("【誤答】");
+	// 再現用ログ関連
+	actl_save_answer_miss();
 	// 誤答処理
 	var cg = fld.Status.chain_awguard;
 	if (cg > 0){
