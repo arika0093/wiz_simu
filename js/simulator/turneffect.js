@@ -277,12 +277,12 @@ function ss_continue_effect_add(eff_obj) {
 }
 
 // 継続効果の確認/発動/除外
-function ss_continue_effect_check() {
+function ss_continue_effect_check(is_ssfin) {
 	var cont_effs = Field.Status.continue_eff;
 	for (var i = 0; i < cont_effs.length; i++) {
 		var ceff = cont_effs[i];
 		// 発動
-		ceff.effect(Field, ceff.index, ceff);
+		ceff.effect(Field, ceff.index, ceff, is_ssfin);
 		// 敵が全滅していない場合か、デメリット効果なら、ターン数を減らす
 		if (ceff.isdemerit || !is_allkill()) {
 			ceff.lim_turn--;

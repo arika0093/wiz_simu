@@ -356,7 +356,7 @@ function nextturn(is_ssfin) {
 	// 烈眼ダメージ
 	retsugan_check(is_ssfin);
 	// 効果の継続確認
-	ss_continue_effect_check();
+	ss_continue_effect_check(is_ssfin);
 	turn_effect_check(false, is_ssfin);
 	enemy_turn_effect_check(false);
 	// 怒り確認

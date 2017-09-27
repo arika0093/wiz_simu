@@ -1402,8 +1402,8 @@ function s_enemy_continue_damage(turn, initialdamage, continuedamage){
 			continuedamage: continuedamage,
 			// 参照用にコピーを取る
 			now_state: $.extend(true, {}, fld.Enemys.Data[n]),
-			effect: function (f, oi, ceff) {
-				if (!f.Status.finish) {
+			effect: function (f, oi, ceff, is_ssfin) {
+				if (!f.Status.finish && !is_ssfin) {
 					var f_copy = $.extend(true, {}, f);
 					f_copy.Enemys.Data[oi] = ceff.now_state;
 					var tg = gen_enemytarget_array(5, 1, false);
