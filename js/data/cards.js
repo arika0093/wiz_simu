@@ -83413,7 +83413,7 @@ Cards = [{
 	ss1: {
 		desc: "<激化大魔術>敵単体へ雷属性の3回連続ダメージ(800%)、発動する度に効果値が2倍アップ(上限:3段階)",
 		turn: 11,
-		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [2], 2),
+		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [2], 2)],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
@@ -83434,7 +83434,7 @@ Cards = [{
 	ss2: {
 		desc: "<激化大魔術>敵単体へ雷属性の3回連続ダメージ(800%)、発動する度に効果値が2倍アップ(上限:3段階)",
 		turn: 11,
-		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [2], 2),
+		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [2], 2)],
 	},
 	Lawake: [
 		Statusup(0,1500),
