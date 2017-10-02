@@ -83004,7 +83004,7 @@ Cards = [{
 	ss1: {
 		desc: "<弱体化大魔術>スキル反射を無視し、敵全体へ雷属性のダメージ(100%)、さらに15ターンの間、敵の防御力を弱体化(15%)",
 		turn: 4,
-		proc: [ss_damage_all(1.0, [2]), ss_attr_weaken_all(null, 0.15, 15), ss_ignore_skillcounter()],,
+		proc: [ss_damage_all(1.0, [2]), ss_attr_weaken_all(null, 0.15, 15), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],4),
