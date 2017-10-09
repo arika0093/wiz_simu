@@ -408,6 +408,7 @@
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/show.js?          <!--#flastmod virtual='/js/simulator/show.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/show_sp.js?       <!--#flastmod virtual='/js/simulator/show_sp.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/damage.js?        <!--#flastmod virtual='/js/simulator/damage.js'-->"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/simulator/targeting.js?     <!--#flastmod virtual='/js/simulator/targeting.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/answer.js?        <!--#flastmod virtual='/js/simulator/answer.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/special.js?       <!--#flastmod virtual='/js/simulator/special.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/turneffect.js?    <!--#flastmod virtual='/js/simulator/turneffect.js'-->"></script>

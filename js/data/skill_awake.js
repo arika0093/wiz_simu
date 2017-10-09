@@ -409,3 +409,11 @@ function Awake_secondfast(t) {
 		desc: "2回目以降のスペシャルスキル発動を" + t + "ターン短縮",
 	}
 }
+
+// ファスト+セカンドファスト
+function Awake_Skillfast(t){
+	var desc = "SS発動ターン短縮" + int2roman(t);
+	var eff1 = Fastskill(t);
+	var eff2 = Awake_secondfast(t);
+	return Awake_composite(desc, eff1, eff2);
+}

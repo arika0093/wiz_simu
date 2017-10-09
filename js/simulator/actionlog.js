@@ -128,10 +128,8 @@ function actl_save_target() {
 	var add_obj = {
 		type: "target",
 		target: tg,
+		const_rand: set_rand,
 	};
-	if (set_rand != -1) {
-		add_obj.const_rand = set_rand;
-	}
 	actl_save_object(add_obj);
 	return true;
 }

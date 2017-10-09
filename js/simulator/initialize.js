@@ -24,7 +24,7 @@ var Field = {
 			"アイテム",
 			"AbCd",
 		],
-		Actlog_Ver: 105,
+		Actlog_Ver: 106,
 	},
 	// クエストデータ
 	Quest: {},
@@ -277,6 +277,7 @@ $(function () {
 				for (var j = 0; j < popup_enemys.enemy.length; j++) {
 					data.enemy[j] = $.extend(true, {}, popup_enemys.enemy[j]);
 					data.enemy[j].nowhp = popup_enemys.enemy[j].hp;
+					data.enemy[j].contract_dmgs = [];
 					data.enemy[j].flags = {};
 					data.enemy[j].flags.is_as_attack = [];
 					data.enemy[j].turn_effect = [];
