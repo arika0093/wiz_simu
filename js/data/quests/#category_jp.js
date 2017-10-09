@@ -144,6 +144,11 @@ category_jp = {
 		jp: "空戦のドルキマスⅡ",
 		sim_index: 11,
 	},
+	"darcmass3": {
+		is_dispsim: true,
+		jp: "空戦のドルキマスⅢ",
+		sim_index: 11,
+	},
 	"chromag6":{
 		jp: "クロム・マグナ ゼロ",
 		is_dispsim: false,

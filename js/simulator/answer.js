@@ -304,8 +304,50 @@ function answer_skill(as_arr, panel, as_afters, bef_f) {
 			rem_duals[i] = atk_duals[i] = -1;
 		}
 	}
-	// 攻撃処理
+	// 連撃処理が入らないなら普通に攻撃関数を呼ぶ
+	var maxatks = Math.max.apply(null, atk_duals);
+	if(maxatks <= 1){
+		for(var i=0; i < as_arr.length; i++){
+			answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, i, as_afters, bef_f);
+		}
+	} else {
+		// 連撃精霊がいるなら専用の処理に移動
+		cardAttackAndDmgManage(as_arr, panel, as_afters, bef_f, atk_duals, rem_duals);
+	}
+}
+
+// 精霊の攻撃順序/ダメージ反映を管理する処理
+function cardAttackAndDmgManage(as_arr, panel, as_afters, bef_f, atk_duals, rem_duals){
+	var SummonFrame = 7;	        // 横方向の増加F（召喚間隔）
+	var DualAtkFrame = 9;           // 連撃処理の間隔F
+	var ContractReflectFrame = 8;   // ダメージ反映F
+	// 現在処理しているF位置を取得
+	var CalcNowFrame = function(i, n) {
+		return i * SummonFrame + n * DualAtkFrame;
+	}
+	// 現在Fから予約リストを処理する
+	var ReflectContractsList = function(nf){
+		var es = GetNowBattleEnemys();
+		$.each(es, function(i,e){
+			var cs = e.contract_dmgs;
+			if(!cs){
+				return;
+			}
+			$.each(cs, function(ic, c){
+				if(!c.isreflected &&
+					(nf < 0 || c.added_f + ContractReflectFrame <= nf)){
+					e.nowhp = Math.max(e.nowhp - c.damage, 0);
+					c.isreflected = true;
+				}
+			});
+			e.contract_dmgs = $.grep(cs, function(c){
+				return !c.isreflected;
+			});
+		});
+	}
+	// ------------------------------------------
 	var loop_ct = -1;
+	// 攻撃が全部終わったかどうかを確認する関数
 	var isAllAtkEndCheck = function () {
 		// 残攻撃回数を減らして全て0以下なら終了
 		var rst = false;
@@ -318,7 +360,7 @@ function answer_skill(as_arr, panel, as_afters, bef_f) {
 		loop_ct++;
 		return !rst;
 	};
-	// 参照攻撃番号までのスキップ精霊数を取得する
+	// 参照攻撃番号までのスキップ精霊数を取得する関数
 	var countSkipNum = function(x){
 		var ct = 0;
 		for(var n = x; n >= 0; n--){
@@ -328,27 +370,39 @@ function answer_skill(as_arr, panel, as_afters, bef_f) {
 		}
 		return ct;
 	}
+	// ------------------------------------------
 	for(var i = 0; !isAllAtkEndCheck(); i++){
 		// Skip精霊分だけStart位置を補正
-		var ix = i + countSkipNum(i);
+		var cskip = countSkipNum(i)
+		var ix = i + cskip;
 		// ループカウントに支障がないよう補正
 		if(atk_duals.length > i && atk_duals[i] < 0){
 			loop_ct++;
 		}
 		for (var j = ix; j >= 0; j--) {
 			// 攻撃精霊の幅を超えていたら無視
-			if (j >= as_arr.length) { continue; }
+			if (j >= as_arr.length) {
+				continue;
+			}
 			// 攻撃しない精霊をSkip
 			if(atk_duals[j] < 0){
-				j--;
+				// j--;
+				continue;
 			}
-			answer_skill_proc(as_arr, panel, j, atk_duals, rem_duals, loop_ct, as_afters, bef_f);
+			// F位置を取得
+			var F = CalcNowFrame(j - cskip, atk_duals[j] - rem_duals[j]);
+			// 予約ダメージの反映
+			ReflectContractsList(F);
+			// 攻撃処理へ移行
+			answer_skill_proc(as_arr, panel, j, atk_duals, rem_duals, loop_ct, as_afters, bef_f, F);
 		}
 	}
+	// 予約ダメージの全反映
+	ReflectContractsList(-1);
 }
 
 // アンサースキルの処理
-function answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, loop_ct, as_afters, bef_f) {
+function answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, loop_ct, as_afters, bef_f, nframe) {
 	var card = Field.Allys.Deck[i];
 	var now = Field.Allys.Now[i];
 	var enemy_dat = GetNowBattleEnemys();
@@ -376,7 +430,7 @@ function answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, loop_ct, as_a
 	var rst = [];
 	switch (as_arr[i][0].type) {
 		case "attack":
-			rst = answer_attack(card, now, enemy_dat, as_arr[i], atk_attr, panel, i, rem_duals[i], bef_f);
+			rst = answer_attack(card, now, enemy_dat, as_arr[i], atk_attr, panel, i, rem_duals[i], bef_f, nframe);
 			break;
 		case "support":
 			rst = answer_enhance(as_arr[i], i, panel, bef_f);
@@ -402,8 +456,8 @@ function answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, loop_ct, as_a
 }
 
 // AS攻撃の処理
-// (カード種類, 現在の状況, 敵データ, 自身のAS一覧, 攻撃属性, パネル, 味方番号, 残り攻撃回数)
-function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem, bef_f) {
+// (カード種類, 現在の状況, 敵データ, 自身のAS一覧, 攻撃属性, パネル, 味方番号, 残り攻撃回数, 現在F数)
+function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem, bef_f, nframe) {
 	// 敵それぞれに対して有効なASのindexの配列
 	var as_rate = [];
 	var as_pos = [];
@@ -435,7 +489,9 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem, bef_f)
 	var obj_tg = {
 		now: now,
 		as_list: as,
+		as_rate: as_rate,
 		as_pos: as_pos,
+		panel: panel,
 		chain: Field.Status.chain,
 	};
 	var targ = auto_attack_order(Field, enemy, attr, index, obj_tg);
@@ -472,7 +528,7 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem, bef_f)
 			// 乱数
 			var rnd = damage_rand();
 			// ダメージ計算
-			g_dmg += attack_enemy(enemy[tg], now, attr, as_rate[targ], atk_as.atkn, panel, ch, rnd, index, tg, false, var_num);
+			g_dmg += attack_enemy(enemy[tg], now, attr, as_rate[targ], atk_as.atkn, panel, ch, rnd, index, tg, false, var_num, nframe);
 			is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
 		}
 	} else {
@@ -480,7 +536,7 @@ function answer_attack(card, now, enemy, as, attr, panel, index, atk_rem, bef_f)
 		var rnd = damage_rand();
 		var is_as = enemy[targ].flags.is_as_attack;
 		// ダメージ計算
-		g_dmg = attack_enemy(en, now, attr, as_rate[targ], atk_as.atkn, panel, ch, rnd, index, targ, false);
+		g_dmg = attack_enemy(en, now, attr, as_rate[targ], atk_as.atkn, panel, ch, rnd, index, targ, false, 0, nframe);
 		is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
 	}
 	// 攻撃後処理

@@ -101,7 +101,7 @@ var Awake_crystal_lists = [{
 	input_required: true,
 }, {
 	name: "SS発動ターン短縮",
-	imple: Fastskill,
+	imple: Awake_Skillfast,
 	param1: "{0}",
 	input_required: true,
 }, {
@@ -195,6 +195,10 @@ var Awake_crystal_lists = [{
 	imple: Awake_composite,
 	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 0, 200, [0,1,0,0,0]),
 }, {
+	name: "闇を駆る空賊団の徽章(副雷ATK+200)",
+	imple: Awake_composite,
+	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 0, 200, [0,0,1,0,0]),
+}, {
 	name: "擬態の結晶〈ガーゴイル〉(物質HP+200)",
 	imple: Awake_composite,
 	param2: Spec_statusup(200, 0, [6]),
@@ -218,6 +222,10 @@ var Awake_crystal_lists = [{
 	name: "虚の結晶〈スタードであったもの〉(副闇HP+100)",
 	imple: Awake_composite,
 	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 100, 0, [0,0,0,0,1]),
+}, {
+	name: "荒鷲の結晶＜ブルーノ＞(副光ATK+100)",
+	imple: Awake_composite,
+	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 0, 100, [0,0,0,1,0]),
 }, {
 	genre: "L時発動結晶",
 	name: "煌眼の欠片(L時味方ATK+100/25%回復)",
