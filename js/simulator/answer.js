@@ -322,8 +322,12 @@ function cardAttackAndDmgManage(as_arr, panel, as_afters, bef_f, atk_duals, rem_
 	var DualAtkFrame = 9;           // 連撃処理の間隔F
 	var ContractReflectFrame = 8;   // ダメージ反映F
 	// 現在処理しているF位置を取得
-	var CalcNowFrame = function(i, n) {
-		return i * SummonFrame + n * DualAtkFrame;
+	var CalcNowFrame = function(i, n, max) {
+		var mv = 0;
+		if((i + n) > max){
+			mv = 2 * ((i+n) - max);
+		}
+		return i * SummonFrame + n * DualAtkFrame - mv;
 	}
 	// 現在Fから予約リストを処理する
 	var ReflectContractsList = function(nf){
@@ -381,16 +385,13 @@ function cardAttackAndDmgManage(as_arr, panel, as_afters, bef_f, atk_duals, rem_
 		}
 		for (var j = ix; j >= 0; j--) {
 			// 攻撃精霊の幅を超えていたら無視
-			if (j >= as_arr.length) {
-				continue;
-			}
+			if (j >= as_arr.length) { continue; }
 			// 攻撃しない精霊をSkip
-			if(atk_duals[j] < 0){
-				// j--;
-				continue;
-			}
+			if(atk_duals[j] < 0){ continue; }
+			// 残攻撃回数が0以下なら飛ばす
+			if (rem_duals[j] <= 0) { continue; }
 			// F位置を取得
-			var F = CalcNowFrame(j - cskip, atk_duals[j] - rem_duals[j]);
+			var F = CalcNowFrame(j - cskip, atk_duals[j] - rem_duals[j], as_arr.length - cskip - 1);
 			// 予約ダメージの反映
 			ReflectContractsList(F);
 			// 攻撃処理へ移行
@@ -410,8 +411,6 @@ function answer_skill_proc(as_arr, panel, i, atk_duals, rem_duals, loop_ct, as_a
 	if (as_arr[i] == null || as_arr[i].length <= 0) { return; }
 	// 参照番を超えてるなら終了
 	if (i > loop_ct) { return; }
-	// 残攻撃回数が0以下なら飛ばす
-	if (rem_duals[i] <= 0) { return; }
 	// 攻撃属性(水炎属性の精霊が炎パネルを踏んだ時に炎から攻撃する的なアレ)
 	var atk_attr = -1;
 	if(panel.indexOf(card.attr[0]) >= 0){
