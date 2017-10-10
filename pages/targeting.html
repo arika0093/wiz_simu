@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px) and (max-width: 1099px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default_bg.css" media="screen and (min-width: 1100px)" />
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <!-- Search -->
+    <meta name="robots" content="all" />
+    <meta name="keywords" content="黒猫,ウィズ,魔法使いと黒猫のウィズ,シミュレーター,シミュ,トーナメント,ダメージ計算式,攻撃順序" />
+    <meta name="description" content="「魔法使いと黒猫のウィズ」のダメージ計算式および攻撃順序について記載しています。" />
+    <!-- About Page -->
+    <title>攻撃順序の仕様 - WizTools</title>
+    <style type="text/css">
+        dd{
+            line-height: 2.9ex;
+        }
+        div.inner{
+            border: 1px solid #888;
+            border-radius: 3px;
+            background: #EFF;
+            font-style: italic;
+            padding: 1ex;
+            margin: 1ex 0;
+        }
+        div.i_small{
+            font-size: smaller;
+        }
+        div.i_exam{
+            background: #F0F0F0;
+        }
+        span.number{
+            background: #FFEEDD;
+        }
+        span.dotunder{
+            border-bottom: 1px dashed #444;
+        }
+
+        span.attr_w{
+            color: #0000FF;
+            background-color: #9fccFF;
+        }
+        span.attr_w2{
+            color: #159584;
+            background-color: #edfff4;
+        }
+        span.attr_t{
+            color: #cebc0c;
+            background-color: #fffdd9;
+        }
+        span.attr_d{
+            color: #ae007d;
+            background-color: #f9c3ff;
+        }
+
+        label.tgl_label{
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        label.tgl_label:hover{
+            font-weight: bold;
+        }
+        input.tgl{
+            display: none;
+        }
+        .tgl_hidden {
+            transition: 0.2s;
+            height: 0;
+            overflow: hidden;
+        }
+        input#toggle:checked + .tgl_hidden, input#toggle_03:checked + .tgl_hidden {
+            height: auto;
+            padding: 1ex;
+            border: 1px solid #CCC;
+            border-radius: 3px;
+        }
+
+        li:nth-child(even) {
+            background-color: #e9faff;
+        }
+    </style>
+</head>
+<body>
+<div id='Top'></div>
+<div id="wrap">
+    <!-- Header -->
+    <div id="Header"></div>
+
+    <!-- Main Contents -->
+    <div class="Main">
+        <dl class="List">
+            <dt id="00">ややこしい攻撃順について</dt>
+            <dd>
+                難解な仕組みの備忘録として、記事にまとめることにしました。<br/>
+                基本的に、以下の内容に添ってシミュレーターの挙動は実装されています。<br/>
+                <div class="linklist">
+                    <a href="#02">攻撃処理のタイミング</a>
+                    <a href="#03">精霊の攻撃順序</a>
+                    <a href="#031">攻撃対象決定の優先度</a>
+                    <a href="#04">自動ターゲッティング(基本)</a>
+                    <a href="#05">自動ターゲッティング(例外)</a>
+                </div>
+                <!-- Adsense -->
+                <div class="Adsense">
+                    <!-- advertise -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-5156005489853976"
+                         data-ad-slot="6536828444"
+                         data-ad-format="auto"></ins>
+                    <script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </dd>
+
+            <dt id="02">攻撃処理のタイミング</dt>
+            <dd>
+                攻撃順序およびターゲッティングの決定に関しては、非常にややこしい仕様が待ち受けています。<br/>
+                まず、どのようにして精霊が敵を攻撃しているかを振り返っていきましょう。<br/>
+                <div class="inner i_exam">
+                    1. 問題に正解する。<br/>
+                    2. パネル色が主副属性どちらかに一致した精霊がリストアップされる。<br/>
+                    3. 精霊画像が左から順に映し出される。<br/>
+                    4. 映し出された精霊は、玉を生成し、敵精霊に玉をぶつける。ここで敵のHPゲージが減少する。<br/>
+                    5. 攻撃回数分4.の処理を繰り返す。<br/>
+                    6. 攻撃を終了し、元の位置に戻る。
+                </div>
+                こんな内容をわざわざ意識してウィズをやっている人はいないかと思いますが、処理を考えるには必要です。<br/>
+                以下、説明のために精霊が5体（A～E）、攻撃回数はいずれも6回としましょう。<br/>
+                簡単に表すために、「精霊Cの攻撃2発目」を「C2」と略記することにします。<br/>
+                <br/>
+                中の人(@arika_nekowiz)が調査した結果、以下の内容が得られました。<br/>
+                <div class="inner">
+                    [1]: 3.で味方が左から順に映し出される時、隣り合った精霊の表示される間隔は「7F」。<br/>
+                    [2]: 4.の「玉生成→ヒットするまで」の間隔は「8F」。<br/>
+                    [3]: 5.の「玉生成の繰り返し」の間隔は「9F」。<br/>
+                    [4]: 精霊位置+攻撃回数が(攻撃精霊数+1)を超える場合、[3]の間隔は「7F」になる。
+                </div>
+                突然Fという単位が出てきましたが、これは「フレーム数」を表しています。<br/>
+                ウィズの場合は、1秒を30フレームで表している(30FPS)ため、1F=1/30秒となります。<br/>
+                [4]の「精霊位置」は、左から見た攻撃精霊の位置です（例: A→1, B→2, …）。<br/>
+                この内容をもとに、精霊の攻撃を開始する時(4.の位置)のF数をまとめたのが以下の表1です。
+                <img class="tb_image" src="/image/pages/targets/atk_st_frame.png" /><br/>
+                同様に、攻撃終了時(6.の位置)のF数をまとめたのが以下の表2です。<br/>
+                <img class="tb_image" src="/image/pages/targets/atk_ed_frame.png" /><br/>
+            </dd>
+
+            <dt id="03">精霊の攻撃順序</dt>
+            <dd>
+                以上の内容を元に、精霊の攻撃順序の話に戻りましょう。<br/>
+                表1(攻撃開始フレーム)の数字が小さい精霊から攻撃が開始されることになるので、
+                <div class="inner">
+                    A1 → B1 → A2 → C1 → B2 → A1 → ……
+                </div>
+                となります。<br/>
+                簡単に把握する方法として、<a href="/image/pages/attack_order.gif" target="_blank">このgif動画(別タブで開きます)</a>のような方法があります。<br/>
+                <!--
+                <label for="toggle_03" class="tgl_label">調査を行う以前の内容はこちら</label>
+                <input id="toggle_03" type="checkbox" class="tgl" />
+                <div class="tgl_hidden">
+                    完全に解明されたわけではないものの、有志の検証から以下のような順番で攻撃するのだろうと言われています。<br/>
+                    <div class="inner">
+                        A(主)→B(主)→A(副)→C(主)→B(副)→D(主)→……
+                    </div>
+                    ここで、A,B,C,...は精霊(デッキの左から順番に)、主副は<span class="dotunder" title="正確には、踏んだパネルに含まれる属性から攻撃する。もちろん主副両方の属性が含まれていれば主属性から攻撃する">攻撃属性</span>を表しています。<br/>
+                    ここに連撃が絡むと少し面倒なことになりますが、基本は同じです。<br/>
+                    <div class="inner">
+                        A(主1)→B(主)→A(主2)→C(主)→B(副)→A(副1)→……
+                    </div>
+                </div>
+                -->
+            </dd>
+
+            <dt id="031">攻撃対象決定の優先度</dt>
+            <dd>
+                次に、どの敵を攻撃していくかの判定内容について説明を行います。<br/>
+                判定として、以下に示した内容を上から順にチェックしていきます。
+                <div class="inner">
+                    1. 敵スキル「挑発」を使っている敵がいるならそちらが優先。<br/>
+                    2. 味方スキル「凶暴化」を使用している場合、全ての敵(生存問わず)の中からランダムで1体。<br/>
+                    3. 「パニックシャウト(弱)」を被弾している場合、生きている敵からランダムで1体。<br/>
+                    4. 手動でターゲッティングを指定した場合、そちらに攻撃。<br/>
+                    5. ここまででどれも一致しなかった場合、自動で決定。
+                </div>
+                最後の自動処理を、ここでは「自動ターゲッティング」と呼ぶことにします。
+            </dd>
+
+            <dt id="04">自動ターゲッティング(基本)</dt>
+            <dd>
+                自動ターゲッティングについての解説をしていきましょう。<br/>
+                基本的には、以下の順番で優先順位が決定されます。<br/>
+                <div class="inner">
+                    属性有利(×1.5) → 属性普通(×1.0) → 待機ターンが短い → 最小HP → (左側優先)
+                </div>
+                それぞれの箇所で敵全体に対して条件フィルターをかけ、絞り込めなかった場合次に進みます。<br/>
+                例えば、敵が[<span class="attr_w">水</span>:HP5000]
+                [<span class="attr_d">闇</span>:HP2000][<span class="attr_w">水</span>:HP4000]だった時に
+                [<span class="attr_t">雷</span>]で攻撃する場合を考えましょう。<br/>
+                敵の待機ターンはいずれも1Tとします。この場合、<br/>
+                <div class="inner i_exam">
+                    ・ 属性有利チェック(×1.5)<br/>
+                    水HP5000、水HP4000が一致(属性有利)する。以降の判定はこの2体に対して行う。<br>
+                    ・ 属性普通チェック(×1.0)<br/>
+                    水HP5000、水HP4000の二体とも相性判定は1.0以上である。次に進む。<br/>
+                    ・ 待機ターンチェック<br/>
+                    二体とも待機ターンは1Tである。次に進む<br/>
+                    ・ 最小HPチェック<br/>
+                    水HP4000のみが一致する。絞り込みが完了したので終了。
+                </div>
+                となり、雷の攻撃は[<span class="attr_w">水</span>:HP4000]に飛んでいきます。<br/>
+                <hr/>
+                と、これだけで終わるのならわかりやすくていいのですが、そういうわけにはいきません。<br/>
+                自動ターゲッティングには「最小HP判定」が出てきます。では、<u>どの時点でのHPを参照している</u>でしょうか。<br/>
+                正解は、「<b>玉を生成する時</b>」のHPを見ています。意味わからないですね。<br/>
+                実は、<a href="#2">攻撃処理のタイミング</a>で示したフレーム数の話がここでまた出てくるのです。<br/>
+                <br/>
+                具体例を一つ上げて説明しましょう。<br/>
+                精霊Cの1発目の攻撃(C1)の対象を決定するとき、どの時点でのHPで比較しているでしょうか？<br/>
+                C1の攻撃が開始されるフレームは、前述した表1を見ると「14F」とわかります。<br/>
+                <img class="tb_image" src="/image/pages/targets/atk_st_frame_c1.png" /><br/>
+                次に、この時点で攻撃が終わっている精霊を探します。表2のうち、14Fよりも値が小さいのはA1のみとなります。<br/>
+                <img class="tb_image" src="/image/pages/targets/atk_ed_frame_a1.png" /><br/>
+                よって、C1攻撃時の最小HP比較は、「A1がHitした時点でのHP」を参照して行うことになります。
+                <hr/>
+                もう一つ、実際の動画も交えて解説をいれましょう。<br/>
+                奇妙なターゲッティングの好例である、こちらのケースを説明していきます。<br/>
+                <blockquote class="twitter-tweet" data-lang="ja"><p lang="und" dir="ltr"><a href="https://t.co/23C4i9M1wp">pic.twitter.com/23C4i9M1wp</a></p>&mdash; ありか (@arika_nekowiz) <a href="https://twitter.com/arika_nekowiz/status/917694743412224001?ref_src=twsrc%5Etfw">2017年10月10日</a></blockquote>
+                <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                ミコト(A)のタゲを右にして、リリー(B)のタゲは未指定にしています。<br/>
+                すると、リリーの攻撃が左右に交互にHitする奇妙な状況ができあがります。<br/>
+                これも、先ほどの理論で説明ができることを示しましょう。<br/>
+                <br/>
+                説明のために、先ほどの攻撃Fの表を今回のケース用に書き直します。<br/>
+                左表が攻撃開始F、右表が攻撃終了(HP減少)Fです。<br/>
+                <img class="tb_img" src="/image/pages/targets/atk_st_frame_on2.png" />
+                <img class="tb_img" src="/image/pages/targets/atk_ed_frame_on2.png" /><br/>
+                <ol>
+                    <li>
+                        まず、ミコト(A1)が攻撃を開始します。対象は<span class="attr_w">右</span>です(手動ターゲッティングによるもの)。
+                    </li>
+                    <li>
+                        次に、リリー1発目(B1)の攻撃開始は「7F」です。この時点で、ミコトの攻撃(A1)は終わっていません(8>7)。<br/>
+                        そのため、両方のHPが満タン(5万)の状態でHP比較が行われます。<br/>
+                        どちらもHPが同じであるため、左側が優先されます。結果、B1は<span class="attr_w2">左</span>に攻撃します。
+                    </li>
+                    <li>
+                        リリーの2発目(B2)が攻撃を開始するのは「14F」です。<br/>
+                        この時点で、ミコトの攻撃(A1)は終了しています(8<14)が、リリー1発目(B1)は終了していません(15>14)。<br/>
+                        そのため、ミコトが攻撃した時点での状態でHP比較が行われます。<br/>
+                        この時、右のみがHP-1673されています。結果、B2は<span class="attr_w">右</span>に攻撃します。
+                    </li>
+                    <li>
+                        同様に、リリーの3発目(B3)が攻撃を開始するのは「21F」です。<br/>
+                        この時点で、A1、B1は終了しています(8<21, 15<21)が、B2は終了していません(22>21)。<br/>
+                        そのため、ミコトとリリー1発目がHitした時点での状態でHP比較が行われます。<br/>
+                        この時、左はHP-2847、右のみがHP-1673されています。結果、B3は<span class="attr_w2">左</span>に攻撃します。
+                    </li>
+                    <li>
+                        以下、同様に繰り返します。
+                    </li>
+                </ol>
+                まとめると、
+                <div class="inner i_exam">
+                    A1,B2,B4,B6,B8: 右側<br/>
+                    B1,B3,B5,B7:    左側
+                </div>
+                となります。しっかりと、動画の攻撃順を再現できていることがわかります。
+            </dd>
+
+            <dt id="05">自動ターゲッティング(例外)</dt>
+            <dd>
+                話を自動ターゲッティングに戻しましょう。<br/>
+                先ほどの優先順位には一つ記載していなかった内容があります。それが、ワンパン判定と呼ばれるものです。<br/>
+                <div class="inner">
+                    <b>ワンパン判定</b> → 属性有利 → 属性普通 → 待機ターンが短い → 最小HP → (左側優先)
+                </div>
+                これは、<b>一撃で倒せる場合には攻撃を自動でそちらに向ける</b>というものです。<br/>
+                <div class="inner i_exam">
+                    実際に使われる乱数で計算をし、ダメージ倍率潜在、敵スキル(鉄壁等)を考慮して、<b>敵のHP</b>よりも
+                    多くのダメージを与えられるなら自動で攻撃をそちらに向ける。対象が複数いる場合はその後ろの判定基準に従う。
+                </div>
+                また「敵のHP」というワードが出てきました。<br/>
+                カンがいい人はもう気づくでしょうが、例によって<a href="#2">攻撃処理のタイミング</a>関連のお話です。<br/>
+                <br/>
+                ややこしいことに、ワンパン判定の際に参照するHPは<b>「予約ダメージ」も含まれています</b>。<br/>
+                これに関しては例を出して説明したほうがわかりやすいでしょう。以下の動画を見てください。
+                <blockquote class="twitter-tweet" data-lang="ja"><p lang="und" dir="ltr"><a href="https://t.co/dXu32YVIXt">pic.twitter.com/dXu32YVIXt</a></p>&mdash; ありか (@arika_nekowiz) <a href="https://twitter.com/arika_nekowiz/status/917707762015993856?ref_src=twsrc%5Etfw">2017年10月10日</a></blockquote>
+                <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                以前の説明の通りなら、本来はミリィ(A)の2発目の時点ではゼラード(B)の攻撃分を反映していません。<br/>
+                ですが、実際にはA2の攻撃はしっかり右側に吸い寄せられています。<br/>
+                これは、ワンパン判定が<b>「ゼラードの攻撃によって与えるダメージ」も考慮</b>するよう実装されているためです。<br/>
+                こういった事情もあり、ターゲッティングに関する内容は複雑怪奇となっているのです。<br/>
+                <!--
+                仕様変更によって、実際にワンパンできる場合にのみ発動するようになりました(今までしなかったのが問題なのですが)。
+                今までと異なり、鉄壁防御の相手に攻撃が吸われるといったことが起こらなくなっているため注意が必要です。<br/><br/>
+                -->
+                <br/>
+                <label for="toggle" class="tgl_label">Ver.2.6.2以前のワンパン判定はこちら</label>
+                <input id="toggle" type="checkbox" class="tgl" />
+                <div class="tgl_hidden">
+                    ……と、ここまでの話で済めばよかったのですが、実はもう一つ<span class="secretly">余計な</span>判定条件があります。<br/>
+                    先ほどの優先順位で意図的に一つ省いた項目があります。それを省略せずに書くとこうなります。<br/>
+                    <div class="inner">
+                        <b>ワンパン判定</b> → 属性有利 → 待機ターンが短い → 最小HP → (左側優先)
+                    </div>
+                    要は、一撃で倒せそうならば自動でそちらに攻撃を向けるというものです。
+                    <span class="secretly">攻撃ダメージに乱数がある以上こういった<span class="dotunder" title="最高乱数を引くとワンパン圏内に入るが、最低乱数だとワンパン圏内に入らない場合など。こうした場合、同じ状況にもかかわらず攻撃する敵が異なるといった問題が発生する">冗長な運要素</span>を入れないで欲しいのですが…</span><br/>
+                    さらに困ったことに、このワンパン判定には<span class="strong">計算式上の問題点があります</span>。すなわち<br/>
+                    <div class="inner i_exam">
+                        1．パネル補正を考慮しない（常に<span class="number">×1</span>として計算する）<br/>
+                        2．ダメージ倍率潜在(前述の[補正値]に相当)を考慮しない<br/>
+                        3．敵のガード、ダメージブロック、鉄壁、属性吸収などを考慮しない<br/>
+                    </div>
+                    といった類です。
+                    1.については、特に副属性での攻撃で問題になります。2や3も、本来与えるダメージの最低値と異なる計算結果を導いてしまう材料です。<br/>
+                    この判定条件のおかげで、<a href="https://twitter.com/macha0923/status/862730211925696512" target="_blank">トップランカーの痛切な叫びを見ることが出来たり</a>、
+                    <a href="https://twitter.com/aniki_ww2525/status/779747045812731904" target="_blank">最低乱数指定でシミュでは倒せたのに実機だと倒せないと報告が入ったり</a>するわけです。<span class="secretly">勘弁してほしい。</span>
+                </div>
+            </dd>
+
+        </dl>
+    </div>
+
+    <!-- Footer -->
+    <div id="Footer"></div>
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js"></script>
+</div>
+</body>
+</html>

@@ -8,7 +8,7 @@ wiz_simu
 ## How to Join "wiz_simu" Project
 当プロジェクトに参加したい方は、[@wiz_tools](https://twitter.com/wiz_tools)にリプライまたはDMを送るか、  
 <master@wiztools.net>にメールをお送りください。手順をお伝えします。  
-もちろん、cloneしてpull requestを投げつける方法でもOKです。
+もちろん、cloneしてpull requestを投げつける方法でもOKです。  
 
 ## Running "wiztools" on Local-Server
 ```
@@ -27,11 +27,11 @@ Serving HTTP on 0.0.0.0 port 8000 ...
 ```
 
 ## License
-GNU GPL Version 3で開発しています。
-ソースコードの公開を前提に、このプログラムの改変および公開を許可します。
-なお、改変公開時はご一報頂けると幸いです。
-画像ファイルは上記ライセンスに含まれません(各提供者に帰属します)。
+GNU GPL Version 3で開発しています。  
+ソースコードの公開を前提に、このプログラムの改変および公開を許可します。  
+なお、改変公開時はご一報頂けると幸いです。  
+画像ファイルは上記ライセンスに含まれません(各提供者に帰属します)。  
 
 ## Donate
-継続して情報を更新していくために、ご協力いただけると幸いです。
+継続して情報を更新していくために、ご協力いただけると幸いです。  
 [Kampa!](http://kampa.me/t/mhs)
