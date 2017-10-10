@@ -34,4 +34,4 @@ GNU GPL Version 3で開発しています。
 
 ## Donate
 継続して情報を更新していくために、ご協力いただけると幸いです。
-[![Kampa!](http://kampa.me/t/mhs)](http://kampa.me/static/kampa_capsule_2x.png)
+[Kampa!](http://kampa.me/t/mhs)
