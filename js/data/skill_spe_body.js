@@ -714,16 +714,16 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
-	// エンハンス効果を付与
+	// チェインを消費してエンハンス効果を付与
 	"ss_chain_enhance": function (fld, n, cobj, params) {
 		var rate = params[0];
 		var redch = params[1];
 		var t = params[2];
 		var nows = fld.Allys.Now;
 		// チェイン消費してエンハンスをかける処理の関数
-		var fc_ch_enhance = function(f, nows){
+		var fc_ch_enhance = function(f, nows, is_ssfin){
 			var isdone = f.Status.chain >= redch;
-			if(isdone){
+			if(isdone && !is_ssfin){
 				// 発動
 				var ch_bef = f.Status.chain;
 				var ch_aft = Math.max(ch_bef - redch, 0);
@@ -744,8 +744,8 @@ var SpSkill = {
 			turn: t,
 			lim_turn: t,
 			index: n,
-			effect: function (f, oi, ceff) {
-				fc_ch_enhance(f, f.Allys.Now);
+			effect: function (f, oi, ceff, is_ssfin) {
+				fc_ch_enhance(f, f.Allys.Now, is_ssfin);
 			}
 		});
 		// 発動時にもエンハンス処理を実行
