@@ -46982,6 +46982,7 @@ Cards = [{
 	cost: 52,
 	attr: [0,2],
 	species: [8],
+	disable: true,
 	islegend: true,
 	ape: "ドルキマスⅡ",
 	as1: {
@@ -47026,6 +47027,7 @@ Cards = [{
 	cost: 52,
 	attr: [1,2],
 	species: [1],
+	disable: true,
 	islegend: true,
 	ape: "ドルキマスⅡ",
 	as1: {
@@ -47161,6 +47163,7 @@ Cards = [{
 	cost: 50,
 	attr: [2,-1],
 	species: [8],
+	disable: true,
 	islegend: true,
 	ape: "ドルキマスⅡ",
 	as1: {
@@ -47485,6 +47488,7 @@ Cards = [{
 	cost: 51,
 	attr: [0,-1],
 	species: [8],
+	disable: true,
 	islegend: true,
 	ape: "ドルキマスⅡ",
 	as1: {
