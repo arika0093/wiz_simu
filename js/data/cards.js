@@ -64163,7 +64163,7 @@ Cards = [{
 	ss1: {
 		desc: "<激化大魔術>敵単体へ火・水属性の5回連続ダメージ、発動する度に効果値が2倍アップ(800%/1600%/3200%/6400%)(上限:3段階)",
 		turn: 11,
-		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [0,1], 5)],
+		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [1,0], 5)],
 	},
 	as2: {
 		desc: "<連撃>3チェインで敵単体を3回連続攻撃、20チェインで更にダメージアップ(400%/1700%)",
@@ -64172,7 +64172,7 @@ Cards = [{
 	ss2: {
 		desc: "<激化大魔術>敵単体へ火・水属性の5回連続ダメージ、発動する度に効果値が2倍アップ(800%/1600%/3200%/6400%)(上限:3段階)",
 		turn: 11,
-		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [0,1], 5)],
+		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [1,0], 5)],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],4),
@@ -78487,7 +78487,7 @@ Cards = [{
 	ss2: {
 		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップ、のろい状態でさらに1500アップ(上限値:2000)し、さらに味方全体のHPを回復(50%)",
 		turn: 7,
-		proc: [ss_statusup_all(ss_is_cursed_own([2000, 2000], [250, 250]), [2000, 2000], -1), ss_heal(0.5)],
+		proc: [ss_statusup_all(ss_is_cursed_own([2000, 2000], [500, 500]), [2000, 2000], -1), ss_heal(0.5)],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
@@ -83413,14 +83413,14 @@ Cards = [{
 	ss1: {
 		desc: "<激化大魔術>敵単体へ雷属性の3回連続ダメージ(800%)、発動する度に効果値が2倍アップ(上限:3段階)",
 		turn: 11,
-		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [2], 2)],
+		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [2], 3)],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
 		Attr_statusup_oattr(0,400, [0,0,1,0,0,]),
 		Attr_statusup_oattr(400,0, [0,0,1,0,0,]),
 		Panel_boost([0,0,1,0,0,],2),
-		Awake_secondfast(5),
+		Awake_secondfast(4),
 		Attr_statusup(0,400, [0,0,1,0,0,]),
 		Attr_statusup(400,0, [0,0,1,0,0,]),
 		Awake_secondfast(5),
@@ -83434,7 +83434,7 @@ Cards = [{
 	ss2: {
 		desc: "<激化大魔術>敵単体へ雷属性の3回連続ダメージ(800%)、発動する度に効果値が2倍アップ(上限:3段階)",
 		turn: 11,
-		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [2], 2)],
+		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [2], 3)],
 	},
 	Lawake: [
 		Statusup(0,1500),
@@ -83751,7 +83751,7 @@ Cards = [{
 	ss2: {
 		desc: "<遅延大魔術>敵単体の攻撃ターンを1遅らせ、雷属性のダメージ(300%)",
 		turn: 4,
-		proc: [ss_delay_s(1), ss_damage_s(3.0, [2])],
+		proc: [ss_delay_s(1), ss_damage_s(3.0, [2], 1)],
 	},
 	Lawake: [
 		Statusup(0,1000),
