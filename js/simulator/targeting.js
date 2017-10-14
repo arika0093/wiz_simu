@@ -84,8 +84,11 @@ function getManualTargeting(fld, enemys, attr, own_index){
 		if (enemys[i]) { break; }
 		else { tg--; }
 	}
-	if (tg != -1 && enemys[tg] && enemys[tg].nowhp > 0) {
-		return tg;
+	if (tg != -1){
+		var sumcon = sumContractDamages(enemys[tg]);
+		if(enemys[tg] && enemys[tg].nowhp > sumcon) {
+			return tg;
+		}
 	}
 	return -1;
 }

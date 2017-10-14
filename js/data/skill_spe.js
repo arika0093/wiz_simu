@@ -799,6 +799,22 @@ function ss_heal(p) {
 }
 
 /**
+ * 味方全体を効果値だけ回復、副属性が一致していたら更に回復する。
+ * m_attr:  対象の主属性。
+ * m_p:     (主属性が一致した時)回復効果値(ex. 0.25 -> 25%)
+ * s_attr:  対象の副属性。
+ * s_p:     (副属性も一致した時)回復効果値(ex. 0.80 -> 80%)
+ **/
+function ss_heal_subattr(m_attr, m_p, s_attr, s_p) {
+	return ss_template({
+		name: "ss_heal_subattr",
+		type: "heal",
+		target: "ally",
+		p1: p,
+	});
+}
+
+/**
  * 自身を効果値だけ回復する。
  * p: 回復効果値(ex. 0.25 -> 25%)
 **/

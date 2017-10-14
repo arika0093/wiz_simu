@@ -19,7 +19,7 @@ function m_create_enemy_move(f, mdesc) {
 function m_enemy_once(e_skl) {
 	var mdesc = e_skl.mdesc
 	if(mdesc.indexOf("反射")==-1){
-		mdesc = mdesc.slice(-1) == ")" ? mdesc.slice(0, -1)+"、" : mdesc+"("
+		mdesc = mdesc.slice(-1) == ")" ? mdesc.slice(0, -1)+", " : mdesc+"("
 		e_skl.mdesc =　mdesc + "初回のみ)"
 	}
 	return m_enemy_nturn(e_skl, 999);
@@ -30,7 +30,7 @@ function m_enemy_nturn(e_skl, n) {
 	e_skl.interval = n;
 	if(n!=999){
 		var mdesc=e_skl.mdesc
-		mdesc = mdesc.slice(-1) == ")" ? mdesc.slice(0, -1)+"、" : mdesc+"("
+		mdesc = mdesc.slice(-1) == ")" ? mdesc.slice(0, -1)+", " : mdesc+"("
 		e_skl.mdesc =　mdesc + n + "ターンに１回)"
 	}
 	return e_skl;
@@ -961,20 +961,107 @@ function s_enemy_attrguard_all(attr, rate, turn) {
 	}, makeDesc("全体軽減"));
 }
 
+// 属性免疫(単体)
+function s_enemy_attrIncreaseGuard_own(attr, up_rate, up_max, turn){
+	return m_create_enemy_move(function (fld, n) {
+		var enemy = GetNowBattleEnemys(n);
+		// 属性表記
+		var attr_text = get_attr_string(attr, "/");
+		// 追加
+		enemy.turn_effect.push({
+			desc: attr_text + "免疫(0%)",
+			type: "attr_inc_guard",
+			icon: "attr_guard",
+			isdual: false,
+			turn: turn,
+			lim_turn: turn,
+			priority: 3,
+			n_rate: 0,
+			effect: function () { },
+			on_damage: function (fld, dmg, atr_i, is_berserk, is_sim) {
+				var nowr = this.n_rate;
+				if (attr[atr_i] > 0) {
+					// ダメージに現在の軽減率をかけて返す
+					var dmg_rst = dmg * (1 - nowr);
+					// 仮想ダメ計算時以外なら軽減率を増加させる
+					if(!is_sim){
+						this.n_rate = Math.min(nowr + up_rate, up_max);
+						this.desc = attr_text + "免疫(" + (this.n_rate*100) + "%)";
+						Field.log_push("Enemy[" + (n + 1) + "]: 属性免疫(" + (nowr*100) + "% → " + (this.n_rate*100) + "%)");
+					}
+					return dmg_rst;
+				} else {
+					// 不一致だった場合はカウントリセット
+					if(!is_sim && this.n_rate > 0){
+						this.n_rate = 0;
+						this.desc = attr_text + "免疫(0%)";
+						Field.log_push("Enemy[" + (n + 1) + "]: 属性免疫(" + (nowr*100) + "% → 0%)");
+					}
+					return dmg;
+				}
+			}
+		});
+		Field.log_push("Enemy[" + (n + 1) + "]: [" + attr_text + "]属性免疫発動(max: " + (up_max * 100) + "%/" + turn + "t)");
+	}, makeDesc("属性免疫[単体]"));
+}
+
+// 属性免疫(全体)
+function s_enemy_attrIncreaseGuard_all(attr, up_rate, up_max, turn){
+	return m_create_enemy_move(function (fld, n) {
+		grd_v = 0;
+		var inc_guard = {
+			desc: attr_text + "免疫(0%)",
+			type: "attr_inc_guard",
+			icon: "attr_guard",
+			isdual: false,
+			turn: turn,
+			lim_turn: turn,
+			priority: 3,
+			effect: function (f, oi, teff, state, is_t, is_b) {
+				if(state == "dead" || state == "break"){
+					grd_v = 0;
+					return;
+				}
+			},
+			on_damage: function (fld, dmg, atr_i, is_berserk, is_sim){
+				var nowr = grd_v;
+				if (attr[atr_i] > 0) {
+					// ダメージに現在の軽減率をかけて返す
+					var dmg_rst = dmg * (1 - nowr);
+					// 仮想ダメ計算時に軽減率を増加させる
+					if (!is_sim) {
+						grd_v = Math.min(nowr + up_rate, up_max);
+						this.desc = attr_text + "免疫(" + (grd_v * 100) + "%)";
+						Field.log_push("Enemy[" + (n + 1) + "]: 属性免疫(" + (nowr * 100) + "% → " + (this.n_rate * 100) + "%)");
+					}
+					return dmg_rst;
+				} else {
+					// 不一致だった場合はカウントリセット
+					if (!is_sim) {
+						grd_v = 0;
+						this.desc = attr_text + "免疫(0%)";
+						Field.log_push("Enemy[" + (n + 1) + "]: 属性免疫(" + (nowr * 100) + "% → 0%)");
+					}
+					return dmg;
+				}
+			}
+		};
+		
+		var enemys = GetNowBattleEnemys();
+		// 追加
+		for (var i = 0; i < enemys.length; i++) {
+			enemys[i].turn_effect.push(inc_guard);
+		}
+		Field.log_push("Enemy[" + (n + 1) + "]: [" + attr_text + "]属性免疫発動(max: " + (up_max * 100) + "%/" + turn + "t)");
+	}, makeDesc("属性免疫[全体]"));
+}
+
 // 敵属性吸収(単体)
 function s_enemy_attr_absorb(attr, rate, turn) {
 	return m_create_enemy_move(function (fld, n) {
 		var enemy = GetNowBattleEnemys(n);
 		// 属性表記
-		var attr_text = "";
-		for (var i = 0; i < attr.length; i++) {
-			if (attr[i] > 0) {
-				if (attr_text != "") {
-					attr_text += "/";
-				}
-				attr_text += fld.Constants.Attr[i];
-			}
-		}
+		var attr_text = get_attr_string(attr, "/");
 		// 追加
 		enemy.turn_effect.push({
 			desc: attr_text + "属性吸収(" + (rate * 100) + "%)",
@@ -1107,81 +1194,81 @@ function s_enemy_barrier_all(dmg, turn) {
 
 // 単体多層バリア
 function s_enemy_multibarrier_own(dmg, turn) {
-    return m_create_enemy_move(function (fld, n) {
-        var enemy = GetNowBattleEnemys(n);
-        // 追加
-        enemy.turn_effect.push({
-            desc: "多層バリア(" + dmg + ")",
-            type: "barrier_wall",
-            icon: "multibarrier",
-            isdual: false,
-            turn: turn,
-            lim_turn: turn,
-            priority: 5,
-            barr_endurance: dmg,
-            effect: function (f, oi, teff, state, is_t, is_b) {
-                if (this.barr_endurance <= 0) {
-                    teff.lim_turn = 0;
-                }
-            },
-            on_damage: function (fld, dmg, atr_i, is_berserk, is_sim) {
-                var is_invalid = false;
-                if (this.barr_endurance > 0 && !is_sim) {
-                    // 無効化
-                    var bf = this.barr_endurance;
-                    var af = this.barr_endurance - 1;
-                    Field.log_push("Enemy[" + (n + 1) + "]: 多層バリア(残: " + bf + "→" + af + ")");
-                    this.barr_endurance -= 1;
-                    is_invalid = true;
-                } else if(is_sim) {
-	                is_invalid = (this.barr_endurance > 0);
-                }
-                return is_invalid ? 0 : dmg;
-            }
-        });
-        Field.log_push("Enemy[" + (n + 1) + "]: 多層バリア(" + dmg + ")");
-    }, makeDesc("多層バリア"));
+	return m_create_enemy_move(function (fld, n) {
+		var enemy = GetNowBattleEnemys(n);
+		// 追加
+		enemy.turn_effect.push({
+			desc: "多層バリア(" + dmg + ")",
+			type: "barrier_wall",
+			icon: "multibarrier",
+			isdual: false,
+			turn: turn,
+			lim_turn: turn,
+			priority: 5,
+			barr_endurance: dmg,
+			effect: function (f, oi, teff, state, is_t, is_b) {
+				if (this.barr_endurance <= 0) {
+					teff.lim_turn = 0;
+				}
+			},
+			on_damage: function (fld, dmg, atr_i, is_berserk, is_sim) {
+				var is_invalid = false;
+				if (this.barr_endurance > 0 && !is_sim) {
+					// 無効化
+					var bf = this.barr_endurance;
+					var af = this.barr_endurance - 1;
+					Field.log_push("Enemy[" + (n + 1) + "]: 多層バリア(残: " + bf + "→" + af + ")");
+					this.barr_endurance -= 1;
+					is_invalid = true;
+				} else if(is_sim) {
+					is_invalid = (this.barr_endurance > 0);
+				}
+				return is_invalid ? 0 : dmg;
+			}
+		});
+		Field.log_push("Enemy[" + (n + 1) + "]: 多層バリア(" + dmg + ")");
+	}, makeDesc("多層バリア"));
 }
 
 // 全体多層バリア
 function s_enemy_multibarrier_all(dmg, turn) {
-    return m_create_enemy_move(function (fld, n) {
-        var enemy = GetNowBattleEnemys();
-        // 追加
+	return m_create_enemy_move(function (fld, n) {
+		var enemy = GetNowBattleEnemys();
+		// 追加
 		for(var i=0; i < enemy.length; i++){
 			var e = enemy[i];
-            e.turn_effect.push({
-                desc: "多層バリア(" + dmg + ")",
-                type: "barrier_wall",
-                icon: "multibarrier",
-                isdual: false,
-                turn: turn,
-                lim_turn: turn,
-                priority: 5,
-                barr_endurance: dmg,
-                effect: function (f, oi, teff, state, is_t, is_b) {
-                    if (this.barr_endurance <= 0) {
-                        teff.lim_turn = 0;
-                    }
-                },
-                on_damage: function (fld, dmg, atr_i, is_berserk, is_sim) {
-                    var is_invalid = false;
-                    if (this.barr_endurance > 0 && !is_sim) {
-                        // 無効化
-                        var bf = this.barr_endurance;
-                        var af = this.barr_endurance - 1;
-                        Field.log_push("Enemy[" + (n + 1) + "]: 多層バリア(残: " + bf + "→" + af + ")");
-                        this.barr_endurance -= 1;
-                        is_invalid = true;
-                    } else if(is_sim){
-	                    is_invalid = (this.barr_endurance > 0);
-                    }
-                    return is_invalid ? 0 : dmg;
-                }
-            });
+			e.turn_effect.push({
+				desc: "多層バリア(" + dmg + ")",
+				type: "barrier_wall",
+				icon: "multibarrier",
+				isdual: false,
+				turn: turn,
+				lim_turn: turn,
+				priority: 5,
+				barr_endurance: dmg,
+				effect: function (f, oi, teff, state, is_t, is_b) {
+					if (this.barr_endurance <= 0) {
+						teff.lim_turn = 0;
+					}
+				},
+				on_damage: function (fld, dmg, atr_i, is_berserk, is_sim) {
+					var is_invalid = false;
+					if (this.barr_endurance > 0 && !is_sim) {
+						// 無効化
+						var bf = this.barr_endurance;
+						var af = this.barr_endurance - 1;
+						Field.log_push("Enemy[" + (n + 1) + "]: 多層バリア(残: " + bf + "→" + af + ")");
+						this.barr_endurance -= 1;
+						is_invalid = true;
+					} else if(is_sim){
+						is_invalid = (this.barr_endurance > 0);
+					}
+					return is_invalid ? 0 : dmg;
+				}
+			});
 		}
-        Field.log_push("Enemy[" + (n + 1) + "]: 全体多層バリア(" + dmg + ")");
-    }, makeDesc("多層バリア"));
+		Field.log_push("Enemy[" + (n + 1) + "]: 全体多層バリア(" + dmg + ")");
+	}, makeDesc("多層バリア"));
 }
 
 // 挑発
@@ -1620,12 +1707,14 @@ function makeDesc(mystr, order){
 			toStr = prop != "copyhp" ? toStr : "分裂時HP：" + (toStr * 100) + "％"
 			toStr = prop != "hpdown" ? toStr : "HP-" + toStr
 			toStr = prop != "atkdown" ? toStr : "ATK-" + toStr
+			toStr = prop != "up_rate" ? toStr : "上昇幅:" + toStr
+			toStr = prop != "up_max" ? toStr : "最大値:" + toStr
 			toStr = prop != "desc" ? toStr : toStr+" "
 			toStr = prop != "healvalue" ? toStr : toStr+"回復"
 			toStr = prop != "ratiorate" ? toStr : toStr * 100 + "％削り"
 			toStr = prop != "ch" ? toStr : toStr + "chain"
 			toStr = ["tgtype", "p1", "p2", "p3", "p4"].indexOf(prop) == -1 ? toStr : ""
-			outpStr += toStr == "" ? "" : flag==1 ? " (" : "、"
+			outpStr += toStr == "" ? "" : flag==1 ? " (" : ", "
 			toStr = toStr == "" ? "" : toStr != comma3(argObj[prop]) ? toStr : "<font color=red>#DEF!</font>" + prop
 			flag = toStr == "" ? flag :  0
 			outpStr += toStr

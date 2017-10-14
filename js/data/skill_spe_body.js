@@ -1085,6 +1085,31 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
+	// 副属性考慮回復
+	"ss_heal_subattr": function (fld, n, cobj, params) {
+		var m_attr = params[0];
+		var m_rate = params[1];
+		var s_attr = params[2];
+		var s_rate = params[3];
+		var cards = ss_get_targetally(fld, cobj, fld.Allys.Deck, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
+		for (var i = 0; i < nows.length; i++) {
+			var now = nows[i];
+			var card = cards[i];
+			var n_index = fld.Allys.Now.indexOf(now);
+			if(m_attr.indexOf(card.attr[0])){
+				var hr = Math.floor(now.maxhp * rate);
+				var rate = m_rate;
+				if(s_attr.indexOf(card.attr[1])){
+					rate = s_rate;
+				}
+				heal_ally(fld, rate, n_index);
+				fld.log_push("Unit[" + (i + 1) + "]: HP回復(" + (rate * 100) + "%)");
+			}
+		}
+		return true;
+	},
+	// -----------------------------
 	// 指定値だけ全体回復(1000回復, etc)
 	"ss_heal_absolute": function (fld, n, cobj, params) {
 		var rate = params[0];

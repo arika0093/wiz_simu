@@ -15,18 +15,22 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 	// NowHPから削る
 	if(added_frame === undefined){
 		enemy.nowhp = Math.max(enemy.nowhp - d, 0);
-		// HPが0ならターン効果を全て消す
-		if (enemy.nowhp <= 0) {
-			turneff_allbreak(enemy.turn_effect, e, "dead");
-			// 撃破カウント
-			Field.Status.total_kill += 1;
-		}
 	} else {
+		// 予約
 		con.push({
 			added_f: added_frame,
 			damage: d,
 			damage_data: d_dat,
 		});
+	}
+	// 合計予約ダメに追加しておく
+	consum += d;
+	
+	// HPが0になりそうならターン効果を全て消す
+	if (enemy.nowhp <= consum) {
+		turneff_allbreak(enemy.turn_effect, e, "dead");
+		// 撃破カウント
+		Field.Status.total_kill += 1;
 	}
 	// ダメージフラグ
 	enemy.flags.on_damage = (enemy.flags.on_damage ? enemy.flags.on_damage+1 : 1);
@@ -34,7 +38,7 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 	now.atk_rand = 0;
 
 	// ログ
-	var e_nowhp = (enemy.nowhp - d - consum);
+	var e_nowhp = (enemy.nowhp - consum);
 	var log_cc = (e_nowhp <= 0) && (bef_hp >= 1);
 	var l_t = "Unit[" + (i + 1) + "]: 敵[" + (e + 1) + "]へ" +
 		Field.Constants.Attr[atk_atr] + "攻撃( " + d +
@@ -264,6 +268,6 @@ function dmg_generate_rand(min, max) {
 
 	st.seed = (st.seed * 9301 + 49297) % 233280;
 	var rnd = st.seed / 233280;
-
+	
 	return min + rnd * (max - min);
 }
