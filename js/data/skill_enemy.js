@@ -1064,7 +1064,7 @@ function s_enemy_attr_absorb(attr, rate, turn) {
 		var attr_text = get_attr_string(attr, "/");
 		// 追加
 		enemy.turn_effect.push({
-			desc: attr_text + "属性吸収(" + (rate * 100) + "%)",
+			desc: attr_text + "吸収(" + (rate * 100) + "%)",
 			type: "attr_absorb",
 			icon: null,
 			isdual: false,
@@ -1088,7 +1088,7 @@ function s_enemy_attr_absorb(attr, rate, turn) {
 				}
 			}
 		});
-		Field.log_push("Enemy[" + (n + 1) + "]: [" + attr_text + "]属性吸収(" + (rate * 100) + "%/" + turn + "t)");
+		Field.log_push("Enemy[" + (n + 1) + "]: " + attr_text + "吸収(" + (rate * 100) + "%/" + turn + "t)");
 	}, makeDesc("属性吸収"));
 }
 
@@ -1117,19 +1117,30 @@ function s_enemy_barrier_own(dmg, turn) {
 			lim_turn: turn,
 			priority: 5,
 			barr_endurance: dmg,
+			barr_max: dmg,
 			effect: function (f, oi, teff, state, is_t, is_b) {
 				if (this.barr_endurance <= 0) {
 					teff.lim_turn = 0;
 				}
 			},
-			on_damage: function (fld, dmg, atr_i) {
+			on_damage: function (fld, dmg, atr_i, is_bersek, is_sim) {
 				var is_invalid = false;
 				if (this.barr_endurance > 0) {
 					// 無効化
 					var bf = this.barr_endurance;
 					var af = this.barr_endurance - dmg;
 					Field.log_push("Enemy[" + (n + 1) + "]: バリアウォール(残: " + bf + "→" + af + ")");
-					this.barr_endurance -= dmg;
+					if(!is_sim){
+						var lm = this.barr_endurance -= dmg;
+						if(lm <= 0){
+							// not display
+							this.desc = null;
+						} else if(lm < this.barr_max){
+							this.desc = "バリアウォール(" + lm + "/" + this.barr_max + ")";
+						} else {
+							this.desc = "バリアウォール(" + this.barr_max + ")";
+						}
+					}
 					is_invalid = true;
 				}
 				return is_invalid ? 0 : dmg;
@@ -1142,11 +1153,24 @@ function s_enemy_barrier_own(dmg, turn) {
 // 全体バリア
 function s_enemy_barrier_all(dmg, turn) {
 	return m_create_enemy_move(function (fld, n) {
-
+		
+		var enemys = GetNowBattleEnemys();
 		barr_endu = dmg_base = dmg;
+		var is_allbarrbreaked = function(oi, state){
+			var es = GetNowBattleEnemys();
+			return $.grep(es, function(e, i){
+				// 現在見てる敵が死亡確定ならカウントしない
+				if(i == oi && ["end", "dead", "break"].indexOf(state) >= 0){
+					return false;
+				}
+				return $.grep(e.turn_effect, function(et){
+					return et.type == "barrier_wall_all";
+				}).length > 0;
+			}).length <= 0;
+		}
 		var barr_all = {
 			desc: "バリアウォール(" + dmg + ")",
-			type: "barrier_wall",
+			type: "barrier_wall_all",
 			icon: "barrier",
 			isdual: false,
 			turn: turn,
@@ -1156,34 +1180,33 @@ function s_enemy_barrier_all(dmg, turn) {
 				if(barr_endu === null){
 					return;
 				}
-				if (barr_endu <= 0) {
-					// break
-					teff.lim_turn = 0;
-					// 全滅してたら巻き戻し用にbarr_enduをnullに指定
-					if(is_allkill()){
+				else if (barr_endu <= 0) {
+					// バリア対象の敵が全ていなくなったらバリアを消して耐久値をnullに
+					if(is_allbarrbreaked(oi, state)){
 						barr_endu = null;	// for reverse
 					}
+					// 破壊されたら非表示にする
+					teff.desc = null;       // not display
 				} else {
 					teff.desc = "バリアウォール(" + barr_endu + "/" + dmg + ")";
 				}
 			},
-			on_damage: function (fld, dmg, atr_i) {
+			on_damage: function (fld, dmg, atr_i, is_berserk, is_simulate) {
 				var is_invalid = false;
 				if(barr_endu === null){
 					barr_endu = dmg_base;
 				}
-				if (barr_endu > 0) {
+				is_invalid = (barr_endu > 0);
+				if (barr_endu > 0 && !is_simulate) {
 					// 無効化
 					var bf = barr_endu;
 					var af = Math.max(bf - dmg, 0);
 					Field.log_push("Enemy[" + (n + 1) + "]: バリアウォール(残: " + bf + "→" + af + ")");
 					barr_endu = af;
-					is_invalid = true;
 				}
 				return is_invalid ? 0 : dmg;
 			}
 		};
-		var enemys = GetNowBattleEnemys();
 		// 追加
 		for (var i = 0; i < enemys.length; i++) {
 			enemys[i].turn_effect.push(barr_all);

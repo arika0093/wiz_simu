@@ -348,6 +348,10 @@ var Awake_crystal_lists = [{
 	imple: Awake_composite,
 	param2: Abstate_invalid("attr_reverse"),
 }, {
+	name: "救世の結晶〈サルヴァトル〉(ディスチャ無効)",
+	imple: Awake_composite,
+	param2: Abstate_invalid("discharge"),
+}, {
 	genre: "ダメージ軽減",
 	name: "巡礼の結晶〈スビェート〉(光軽減10%)",
 	imple: Awake_composite,

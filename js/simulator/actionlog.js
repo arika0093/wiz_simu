@@ -189,7 +189,7 @@ function actionSpScoreAnalyze(turn, turn_d, act) {
 		"answer": function (ap, ac) { return 24; },
 	}
 	// turn add
-	score += Math.pow(Math.max(Number(turn)-4, 0), 3) * 12;
+	score += Math.pow(Math.max(Number(turn)-4, 0), 2) * 12;
 	// action add
 	for (var i = 0; i < act.length; i++) {
 		if (!act[i] || !act[i].action) { return undefined; }

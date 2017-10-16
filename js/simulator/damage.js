@@ -22,9 +22,9 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 			damage: d,
 			damage_data: d_dat,
 		});
+		// 合計予約ダメに追加しておく
+		consum += d;
 	}
-	// 合計予約ダメに追加しておく
-	consum += d;
 	
 	// HPが0になりそうならターン効果を全て消す
 	if (enemy.nowhp <= consum) {
