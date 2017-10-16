@@ -139,6 +139,11 @@ category_jp = {
 		is_dispsim: false,
 		sim_index: 11,
 	},
+    "reloaded": {
+		jp: "幻魔特区RELOADED",
+		is_dispsim: true,
+		sim_index: 11,
+	},
 	"darcmass2": {
 		is_dispsim: false,
 		jp: "空戦のドルキマスⅡ",
@@ -147,7 +152,7 @@ category_jp = {
 	"darcmass3": {
 		is_dispsim: true,
 		jp: "空戦のドルキマスⅢ",
-		sim_index: 11,
+		sim_index: 12,
 	},
 	"chromag6":{
 		jp: "クロム・マグナ ゼロ",

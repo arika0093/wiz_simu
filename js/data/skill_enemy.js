@@ -560,7 +560,8 @@ function s_enemy_healreverse(rate, tnum) {
 }
 
 // 呪い(HP低下値, 対象数, 継続ターン)
-function s_enemy_cursed(hpdown, tnum, t, atkdown) {
+function s_enemy_cursed(hpdown, tnum, t, atkdown, isStatusDownOnly) {
+	var txtype = isStatusDownOnly ? "ステータス減少" : "呪い";
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 		atkdown = atkdown || 0;
 		var tg = !tnum.length ? gen_enemytarget_array(tnum, 1, false)[0] : tnum;
@@ -569,7 +570,7 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown) {
 			var now = fld.Allys.Now[tg[i]];
 			// 追加
 			var eff_obj = $.extend(true, {}, {
-				desc: "呪い(HP: " + (-hpdown) + (atkdown ? ", ATK: " + -atkdown : "") + ")",
+				desc: `${txtype}:[HP:-${(hpdown>0 ? `${hpdown}` : "--")}, ATK:-${(atkdown>0 ? `${atkdown}` : "--")}]`,
 				type: "curse",
 				icon: "curse",
 				isabstate: false,
@@ -585,9 +586,11 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown) {
 					var nowtg = f.Allys.Now[oi];
 					if (state == "first") {
 						// 効果解除
-						turneff_break_cond(nowtg.turn_effect, oi, function (teff) {
-							return teff.iscursebreak;
-						}, "break");
+						if(!isStatusDownOnly){
+							turneff_break_cond(nowtg.turn_effect, oi, function (teff) {
+								return teff.iscursebreak;
+							}, "break");
+						}
 						// HP低下
 						nowtg.upval_hp -= hpdown;
 						nowtg.maxhp = Math.max(nowtg.def_awhp + nowtg.upval_hp, 1);
@@ -622,14 +625,13 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown) {
 			}
 			// スキルカウンターを有効に
 			now.flags.skill_counter[n] = (is_counter ? false : true);
-			fld.log_push("Enemy[" + (n + 1) + "]: 呪い(HP:" + (-hpdown) + "|" + (atkdown > 0 ? "|ATK:" + (-atkdown) : "")
-				+ t + "t)(対象: Unit[" + (tg[i] + 1) + "])");
+			fld.log_push(`Enemy[${n+1}]: ${txtype}(HP: ${-hpdown},ATK: ${-atkdown},${t}t)(対象: Unit[${tg[i]+1}])`);
 		}
 		// 反射チェック
 		turneff_check_skillcounter(fld);
 		// スキル重複確認
 		turn_effect_check(false);
-	}, makeDesc("呪い"));
+	}, makeDesc(txtype));
 }
 
 // 効果解除呪い(対象数)
@@ -639,10 +641,14 @@ function s_enemy_cursed_break(tnum) {
 		for (var i = 0; i < tg.length; i++) {
 			var card = fld.Allys.Deck[tg[i]];
 			var now = fld.Allys.Now[tg[i]];
-			// 一番最後の効果を解除
-			turneff_break_last(now.turn_effect, tg[i], function (teff) {
-				return teff.iscursebreak;
-			}, "break");
+			// 潜在の状態無効を確認
+			var is_abs_guard_aw = Awake_AbsInvalid(card, now, "curse");
+			if(!is_abs_guard_aw){
+				// 一番最後の効果を解除
+				turneff_break_last(now.turn_effect, tg[i], function (teff) {
+					return teff.iscursebreak;
+				}, "break");
+			}
 			// スキルカウンターを有効に
 			now.flags.skill_counter[n] = (is_counter ? false : true);
 			fld.log_push("Enemy[" + (n + 1) + "]: 効果解除呪い(対象: Unit[" + (tg[i] + 1) + "])");
@@ -1664,6 +1670,19 @@ function s_enemy_when_dead_s() {
 	}, desc: "敵1体が倒れる"};
 }
 
+// 敵2体が倒れる
+function s_enemy_when_dead_x(num) {
+	return {func: function (fld, n) {
+		var cnt = num;
+		var es = GetNowBattleEnemys();
+		for (var i = 0; i < es.length; i++) {
+			if (i == n && es[i].nowhp > 0) { continue; }
+			cnt--;
+		}
+		return cnt <= 0;
+	}, desc: `敵${num}体が倒れる`};
+}
+
 // 敵自身以外が倒れる
 function s_enemy_when_dead_l() {
 	return {func: function (fld, n) {
@@ -1737,6 +1756,7 @@ function makeDesc(mystr, order){
 			toStr = prop != "ratiorate" ? toStr : toStr * 100 + "％削り"
 			toStr = prop != "ch" ? toStr : toStr + "chain"
 			toStr = ["tgtype", "p1", "p2", "p3", "p4"].indexOf(prop) == -1 ? toStr : ""
+			toStr = prop != "isStatusDownOnly" ? toStr : ""
 			outpStr += toStr == "" ? "" : flag==1 ? " (" : ", "
 			toStr = toStr == "" ? "" : toStr != comma3(argObj[prop]) ? toStr : "<font color=red>#DEF!</font>" + prop
 			flag = toStr == "" ? flag :  0
