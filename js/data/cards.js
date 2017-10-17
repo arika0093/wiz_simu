@@ -16119,7 +16119,7 @@ Cards = [{
 	ss1: {
 		desc: "<多弾魔術>敵単体へ火・水属性の5回連続ダメージ(150%)更に味方のHPを回復(25%)",
 		turn: 6,
-		proc: [ss_damage_s(1.5, [1,0], 5), ss_heal(0.25)],
+		proc: [ss_damage_s(1.5, [0,1], 5), ss_heal(0.25)],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],1),
@@ -16140,7 +16140,7 @@ Cards = [{
 	ss2: {
 		desc: "<多弾魔術>敵単体へ火・水属性の5回連続ダメージ(300%)更に味方のHPを回復(25%)",
 		turn: 9,
-		proc: [ss_damage_s(3.0, [1,0], 5), ss_heal(0.25)],
+		proc: [ss_damage_s(3.0, [0,1], 5), ss_heal(0.25)],
 	},
 	Lawake: [
 		Statusup(0,400),
@@ -26197,7 +26197,7 @@ Cards = [{
 	ss1: {
 		desc: "<多弾魔術>敵単体へ火・水属性の5回連続ダメージ(300%)",
 		turn: 9,
-		proc: [ss_damage_s(3.0, [0,1], 5)],
+		proc: [ss_damage_s(3.0, [1,0], 5)],
 	},
 	awakes: [
 		Attr_statusup(0,100, [1,1,0,0,0,]),
@@ -27821,7 +27821,7 @@ Cards = [{
 	ss1: {
 		desc: "<多弾魔術>敵単体へ火・水属性の5回連続ダメージ(180%)",
 		turn: 6,
-		proc: [ss_damage_s(1.8, [0,1], 5)],
+		proc: [ss_damage_s(1.8, [1,0], 5)],
 	},
 	awakes: [
 		Statusup(0,100),
@@ -27842,7 +27842,7 @@ Cards = [{
 	ss2: {
 		desc: "<多弾魔術>敵単体へ火・水属性の5回連続ダメージ(380%)",
 		turn: 9,
-		proc: [ss_damage_s(3.8, [0,1], 5)],
+		proc: [ss_damage_s(3.8, [1,0], 5)],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [0,1,0,0,0,]),
@@ -28101,7 +28101,7 @@ Cards = [{
 	ss1: {
 		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の2回連続ダメージ(200%)",
 		turn: 4,
-		proc: [ss_damage_s(2.0, [0, 2], 2), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(2.0, [2, 0], 2), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Fastskill(1),
@@ -28122,7 +28122,7 @@ Cards = [{
 	ss2: {
 		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の2回連続ダメージ(400%)",
 		turn: 6,
-		proc: [ss_damage_s(4.0, [0, 2], 2), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(4.0, [2, 0], 2), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(500, 0),
@@ -29164,7 +29164,7 @@ Cards = [{
 	ss1: {
 		desc: "<多弾魔術>味方のMAXHP60%を使い、敵単体へ火・雷属性の10回連続ダメージ(250%)",
 		turn: 5,
-		proc: [ss_consume_all(0.60), ss_damage_s(2.5, [0,2], 10), ],
+		proc: [ss_consume_all(0.60), ss_damage_s(2.5, [2,0], 10), ],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -29185,7 +29185,7 @@ Cards = [{
 	ss2: {
 		desc: "<多弾魔術>味方のMAXHP60%を使い、敵単体へ火・雷属性の10回連続ダメージ(450%)",
 		turn: 8,
-		proc: [ss_consume_all(0.60), ss_damage_s(4.5, [0,2], 10), ],
+		proc: [ss_consume_all(0.60), ss_damage_s(4.5, [2,0], 10), ],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -44890,7 +44890,7 @@ Cards = [{
 		desc: "<多弾魔術>1ターン溜めた後、スキル反射を無視し、敵単体へ水・火属性の7回連続ダメージ(450%)",
 		turn: 3,
 		charged: 1,
-		proc: [ss_damage_s(4.5, [0, 1], 7), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(4.5, [1, 0], 7), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Statusup(0,200),
@@ -44912,7 +44912,7 @@ Cards = [{
 		desc: "<多弾魔術>1ターン溜めた後、スキル反射を無視し、敵単体へ水・火属性の7回連続ダメージ(650%)",
 		turn: 5,
 		charged: 1,
-		proc: [ss_damage_s(6.5, [0, 1], 7), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(6.5, [1, 0], 7), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -45388,7 +45388,7 @@ Cards = [{
 	ss1: {
 		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の5回連続ダメージ(350%)",
 		turn: 5,
-		proc: [ss_damage_s(3.5, [0,2], 5), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(3.5, [2,0], 5), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Statusup(200,0),
@@ -45409,7 +45409,7 @@ Cards = [{
 	ss2: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ火・雷属性のダメージ(260%)",
 		turn: 12,
-		proc: [ss_damage_all(2.6, [0,2]), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(2.6, [2,0]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,1,0,0,]),
@@ -45935,7 +45935,7 @@ Cards = [{
 	ss1: {
 		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の5回連続ダメージ(350%)",
 		turn: 5,
-		proc: [ss_damage_s(3.5, [0,2], 5), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(3.5, [2,0], 5), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Attr_statusup(100,0, [1,0,1,0,0,]),
@@ -45956,7 +45956,7 @@ Cards = [{
 	ss2: {
 		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の5回連続ダメージ(650%)",
 		turn: 8,
-		proc: [ss_damage_s(6.5, [0,2], 5), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(6.5, [2,0], 5), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,1,0,0,]),
@@ -46200,7 +46200,7 @@ Cards = [{
 		Attr_statusup(100,0, [0,1,1,0,0,]),
 		Statusup(200,0),
 		Statusup(0,200),
-		Panel_boost([0,1,1,0,0,],2),
+		Panel_boost([0,1,0,0,0,],2),
 		NEFTJOD(30),
 		Attr_statusup(100,0, [0,1,1,0,0,]),
 		Panel_boost([0,1,0,0,0,],2),
@@ -50421,7 +50421,7 @@ Cards = [{
 	ss1: {
 		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水・火属性の5回連続ダメージ(350%)",
 		turn: 5,
-		proc: [ss_damage_s(3.5, [0,1], 5), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(3.5, [1,0], 5), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Attr_statusup(100,0, [1,1,0,0,0,]),
@@ -50442,7 +50442,7 @@ Cards = [{
 	ss2: {
 		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水・火属性の5回連続ダメージ(650%)",
 		turn: 8,
-		proc: [ss_damage_s(6.5, [0,1], 5), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(6.5, [1,0], 5), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,1,0,0,0,]),
@@ -62052,7 +62052,7 @@ Cards = [{
 	ss1: {
 		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水・雷属性の5回連続ダメージ(250%)",
 		turn: 5,
-		proc: [ss_damage_s(2.5, [1,2], 5), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(2.5, [2,1], 5), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Statusup(0,100),
@@ -62073,7 +62073,7 @@ Cards = [{
 	ss2: {
 		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水・雷属性の5回連続ダメージ(450%)",
 		turn: 7,
-		proc: [ss_damage_s(4.5, [1,2], 5), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(4.5, [2,1], 5), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,400),
@@ -76388,7 +76388,7 @@ Cards = [{
 	ss1: {
 		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の4回連続ダメージ(280%)、平均解答時間が早いほどさらに1回連続ダメージ(上限:4段階)",
 		turn: 5,
-		proc: [ss_damage_s(ss_answertime(2.8, 0.7), [0,2], ss_answertime(4, 1)), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(ss_answertime(2.8, 0.7), [2,0], ss_answertime(4, 1)), ss_ignore_skillcounter()],
 	},
 	as2: {
 		desc: "<連撃>10チェインで敵単体を4回連続攻撃(1000%)",
@@ -76397,7 +76397,7 @@ Cards = [{
 	ss2: {
 		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の4回連続ダメージ(540%)、平均解答時間が早いほどさらに1回連続ダメージ(上限:4段階)",
 		turn: 8,
-		proc: [ss_damage_s(ss_answertime(5.4, 1.35), [0,2], ss_answertime(4, 1)), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(ss_answertime(5.4, 1.35), [2,0], ss_answertime(4, 1)), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
@@ -76564,7 +76564,7 @@ Cards = [{
 	ape: "エタクロⅢ",
 	as1: {
 		desc: "<攻撃強化・ガード>全属性のダメージを10%軽減し、デッキに単色の精霊が多いほど、攻撃力をアップ(15%)（上限:5段階)",
-		proc: [as_guard(0.10, [1,1,1,1,1], 0), add_cond(ChainEnhance(0, [0,1,0,0,0], 0), as_singleattr_num(0, 0.15))],
+		proc: [as_guard(0.10, [1,1,1,1,1], 0), add_cond(ChainEnhance(0, [0,0,1,0,0], 0), as_singleattr_num(0, 0.15))],
 	},
 	ss1: {
 		desc: "<純属性強化>4ターンの間、雷単色精霊が多いほど、雷単色精霊のダメージを強化し(100%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:2000,2000)",
@@ -76585,7 +76585,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<攻撃強化・ガード>全属性のダメージを10%軽減し、デッキに単色の精霊が多いほど、攻撃力をアップ(20%)（上限:5段階)",
-		proc: [as_guard(0.10, [1,1,1,1,1], 0), add_cond(ChainEnhance(0, [0,1,0,0,0], 0), as_singleattr_num(0, 0.2))],
+		proc: [as_guard(0.10, [1,1,1,1,1], 0), add_cond(ChainEnhance(0, [0,0,1,0,0], 0), as_singleattr_num(0, 0.2))],
 	},
 	ss2: {
 		desc: "<純属性強化>4ターンの間、雷単色精霊が多いほど、雷単色精霊のダメージを強化し(200%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:3000,3000",
@@ -80448,12 +80448,12 @@ Cards = [{
 	ss1: {
 		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・水属性の5回連続ダメージ(450%)",
 		turn: 6,
-		proc: [ss_damage_s(4.5, [0, 1], 5), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(4.5, [1, 0], 5), ss_ignore_skillcounter()],
 	},
 	ss2: {
 		desc: "<激化大魔術>敵単体へ火・水属性の2回連続ダメージ(2500%)、発動する度に効果値が3倍アップ(上限:1段階)",
 		turn: 16,
-		proc: [ss_damage_s(ss_intenselyval(-25, 50, 75), [0,1], 2)],//現状の関数だと2倍ずつしかできないので50x-25で25,75にしています
+		proc: [ss_damage_s(ss_intenselyval(-25, 50, 75), [1,0], 2)],//現状の関数だと2倍ずつしかできないので50x-25で25,75にしています
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],4),
