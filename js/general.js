@@ -152,6 +152,53 @@ function int2roman(n) {
 }
 
 // --------------------------
+// ごくごく一般的な関数群
+ArrayMath = {
+	sum(arr, cond, key){
+		var sum = 0;
+		if(!arr){ return NaN; }
+		arr.forEach(function(elm) {
+			if(!cond || cond(elm)){
+				var v = key ? elm[key] : elm;
+				sum += v;
+			}
+		});
+		return sum;
+	},
+	average(arr, cond, key){
+		if(arr.length <= 0){
+			return NaN;
+		}
+		var s = sum(arr, cond, key);
+		return s / arr.length;
+	},
+	mode(arr, cond, key){
+		var array_length, count, i, max, value;
+		array_length = arr.length;
+		count = [];
+		for (i = 0; i < array_length; i++) {
+			if (count[arr[i]]) {
+				count[arr[i]]++;
+			} else {
+				count[arr[i]] = 1;
+			}
+		}
+		max = 0;
+		for (i in count) {
+			if (count[i] > max) {
+				max = count[i];
+				value = i;
+			}
+		}
+		if (max > 1) {
+			return Number(value);
+		} else {
+			return NaN;
+		}
+	}
+}
+
+// --------------------------
 // 関数のargumentsを受け取りargObj={__fname__: 関数名, 変数名: 値}を返す
 function getArgA(args){
 	var oCallFunc = args.callee;
@@ -206,6 +253,14 @@ function sim_by_id(id){
 		}
     })
 }
+
+// 相対パス → 絶対パス
+function absolutePath(path) {
+	var e = document.createElement('span');
+	e.insertAdjacentHTML('beforeend', '<a href="' + path + '" />');
+	return e.firstChild.href;
+}
+
 
 
 // 広告を挟み込む

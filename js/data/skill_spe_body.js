@@ -9,7 +9,7 @@ var SpSkill = {
 
 		for (var a = 0; a < attrs.length; a++) {
 			var atr = attrs[a];
-			for (var i = 0; i < GetNowBattleEnemys().length; i++) {
+			for (var i = 0; i < GetNowBattleEnemys(fld).length; i++) {
 				// 攻撃
 				ss_damage(fld, r, atr, 1, n, i, ignore_counter);
 			}
@@ -23,7 +23,7 @@ var SpSkill = {
 		var attrs = params[1];
 		var atkn = params[2];
 		var ignore_counter = params[3];
-		var enemys = GetNowBattleEnemys();
+		var enemys = GetNowBattleEnemys(fld);
 		for (var an = 0; an < atkn; an++) {
 			var atk_orders = $.map(attrs, function(e){
 				return auto_attack_order(fld, enemys, e, n);
@@ -42,7 +42,7 @@ var SpSkill = {
 		var attrs = params[1];
 		var atkn = params[2];
 		var ignore_counter = params[3];
-		var enemys = GetNowBattleEnemys();
+		var enemys = GetNowBattleEnemys(fld);
 		for (var an = 0; an < atkn; an++) {
 			for (var a = 0; a < attrs.length; a++) {
 				for (var i = 0; i < enemys.length; i++) {
@@ -59,7 +59,7 @@ var SpSkill = {
 		var r = params[0];
 		var attrs = params[1];
 		var atkn = params[2];
-		var enemys = GetNowBattleEnemys();
+		var enemys = GetNowBattleEnemys(fld);
 		for (var an = 0; an < atkn; an++) {
 			var atk_orders = $.map(attrs, function(e){
 				return auto_attack_order(fld, enemys, e, n);
@@ -81,13 +81,13 @@ var SpSkill = {
 	"ss_damage_slash_all": function (fld, n, cobj, params) {
 		var r = params[0];
 		var attrs = params[1];
-		var enemys = GetNowBattleEnemys();
+		var enemys = GetNowBattleEnemys(fld);
 		var liv_en = $.grep(enemys, function(e){
 			return e.nowhp > 0;
 		}).length;
 		var addch = Math.pow(2, liv_en) - 1;
 		for (var a = 0; a < attrs.length; a++) {
-			for (var i = 0; i < GetNowBattleEnemys().length; i++) {
+			for (var i = 0; i < GetNowBattleEnemys(fld).length; i++) {
 				// 攻撃
 				ss_damage(fld, r, attrs[a], 1, n, i, false);
 			}
@@ -104,7 +104,7 @@ var SpSkill = {
 	"ss_damage_explosion": function (fld, n, cobj, params) {
 		var r = params[0];
 		var attrs = params[1];
-		var enemys = GetNowBattleEnemys();
+		var enemys = GetNowBattleEnemys(fld);
 		var t_enemys = ss_get_targetenemy(fld, cobj, n);
 		for (var en = 0; en < t_enemys.length; en++) {
 			for (var a = 0; a < attrs.length; a++) {
@@ -124,27 +124,29 @@ var SpSkill = {
 		var attrs = params[2];
 		var turn = params[3];
 		// 参照用にコピーを取る
-		var now_state = $.extend(true, {}, fld.Allys.Now[n]);
+		var init_now = $.extend(true, {}, fld.Allys.Now[n]);
 		// 普通のダメージ
 		var sda = ss_damage_all(dmg_r + 1, attrs, false);
 		fld.log_push("Unit[" + (n + 1) + "]: 継続ダメージSS(威力: " + dmg_r * 100 + ")");
 		ss_object_done(fld, n, sda);
 		// 継続効果追加
-		ss_continue_effect_add({
+		ss_continue_effect_add(fld, {
 			type: "continue_damage",
 			turn: turn,
 			lim_turn: turn,
 			index: n,
-			effect: function (f, oi, ceff) {
+			effect: function(f, oi, ceff){
 				// 発動時の攻撃力などをコピーする
-				var f_copy = $.extend(true, {}, f);
-				f_copy.Allys.Now[oi] = now_state;
+				var eff_now = $.extend(true, {}, f.Allys.Now[n]);
+				f.Allys.Now[oi] = init_now;
 				// 継続ダメージ
-				fld.log_push("Unit[" + (n + 1) + "]: 継続ダメージ発動(" + (cont_r * 100) + ") - 残り" + ceff.lim_turn + "t");
+				f.log_push("Unit[" + (n + 1) + "]: 継続ダメージ発動(" + (cont_r * 100) + ") - 残り" + ceff.lim_turn + "t");
 				var sda = ss_damage_all(cont_r + 1, attrs, true);
-				ss_object_done(f_copy, n, sda);
+				ss_object_done(f, n, sda);
+				// コピーを解除
+				f.Allys.Now[oi] = eff_now;
 				// SS状況を解除
-				var es = GetNowBattleEnemys();
+				var es = GetNowBattleEnemys(f);
 				for (var i = 0; i < es.length; i++) {
 					es[i].flags.is_ss_attack = false;
 				}
@@ -163,22 +165,22 @@ var SpSkill = {
 		// 参照用にコピーを取る
 		var now_state = $.extend(true, {}, fld.Allys.Now[n]);
 		// 継続効果追加
-		ss_continue_effect_add({
+		ss_continue_effect_add(fld, {
 			type: "burst_attack",
 			turn: 999,
 			lim_turn: 999,
 			index: n,
-			effect: function (f, oi, ceff) {
+			effect: function(f, oi, ceff){
 				// 全滅しているなら次の戦闘に持ち越す
-				if(is_allkill()){
+				if (is_allkill(f)) {
 					return;
 				}
 				// 発動時の攻撃力などをコピーする
 				var f_copy = $.extend(true, {}, f);
 				f_copy.Allys.Now[oi] = now_state;
 				// 効果値計算
-				var nowch = Math.min(fld.Status.chain, max_ch);
-				var rate = Math.floor((base_r + max_r * Math.pow(nowch/max_ch, exp_c))*100)/100;
+				var nowch = Math.min(f.Status.chain, max_ch);
+				var rate = Math.floor((base_r + max_r * Math.pow(nowch / max_ch, exp_c)) * 100) / 100;
 				// チェインを0に指定
 				f.Status.chain = f_copy.Status.chain = 0;
 				// 攻撃
@@ -186,7 +188,7 @@ var SpSkill = {
 				ss_object_done(f_copy, n, sda);
 				f.log_push("Unit[" + (n + 1) + "]: 連鎖解放大魔術-発動(効果値: " + (rate * 100) + ")");
 				// SS状況を解除
-				var es = GetNowBattleEnemys();
+				var es = GetNowBattleEnemys(f);
 				for (var i = 0; i < es.length; i++) {
 					es[i].flags.is_ss_attack = false;
 				}
@@ -272,7 +274,7 @@ var SpSkill = {
 									// 攻撃
 									if (card.attr[atri] >= 0) {
 										ss_damage(f, rate, card.attr[atri], 1, oi, sci, true);
-										GetNowBattleEnemys(sci).flags.on_damage = true;
+										GetNowBattleEnemys(fld, sci).flags.on_damage = true;
 									}
 								}
 							}
@@ -325,7 +327,7 @@ var SpSkill = {
 											ss_damage(f, 1, card.attr[atri], 1, oi, sci, true);
 										}
 									}
-									GetNowBattleEnemys(sci).flags.on_damage = true;
+									GetNowBattleEnemys(fld, sci).flags.on_damage = true;
 								}
 							}
 						}
@@ -355,16 +357,16 @@ var SpSkill = {
 					turn: t,
 					lim_turn: t,
 					is_poison: true,
-					effect: function (f, ei, teff, is_end, is_t, is_b) {
-						var e = GetNowBattleEnemys(ei);
+					effect: function (f, oi, teff, state, is_t, is_b, is_ss) {
+						var e = GetNowBattleEnemys(f, ei);
 						if (is_t && !is_b) {
 							e.nowhp = Math.max(e.nowhp - dmg, 0);
 							e.flags.on_damage = true;
 							if (e.nowhp <= 0) {
 								// HPが0になったら敵スキルを全て解除
-								turneff_allbreak(e.turn_effect, ei, false);
+								turneff_allbreak_enemy(fld, e.turn_effect, ei);
 							}
-							fld.log_push("Enemy[" + (ei + 1) + "]: 毒(" + dmg + "ダメージ)");
+							f.log_push("Enemy[" + (ei + 1) + "]: 毒(" + dmg + "ダメージ)");
 						}
 					},
 				});
@@ -399,22 +401,22 @@ var SpSkill = {
 						var f_copy = $.extend(true, {}, f);
 						var fc_card = f_copy.Allys.Deck[n];
 						var fc_now = f_copy.Allys.Now[n];
-						var enemy = GetNowBattleEnemys(ei);
+						var enemy = GetNowBattleEnemys(f, ei);
 						var dmg = function(card, now, atk, chain){
 							var rst = 0;
 							for(var attr in attrs){
-								var {as_enh, ss_enh, bss_enh, rfm_enh} = getEnhanceRate(now);
-								var r = (rate + (as_enh + ss_enh + bss_enh + rfm_enh) + 1 + chain/100);
-								var adv = Awake_get_multiple(card, now);
+								var {total} = getEnhanceRate(now);
+								var r = (rate + total + 1 + chain/100);
+								var adv = Awake_get_multiple(f, card, now);
 								var mgn = attr_magnification(attr, enemy.attr);
 								var dmg_tmp = Math.floor(Math.floor(atk * r) * mgn * adv);
-								rst +=  checkFunctionOnAttack(enemy, dmg_tmp, attr, false, false);
+								rst +=  checkFunctionOnAttack(f, enemy, dmg_tmp, attr, false, false);
 							}
 							return rst;
 						}(fc_card, fc_now, fc_now.atk, f_copy.Status.chain);
 						// 着火
 						f.log_push("Enemy[" + (ei + 1) + "]: 時限大魔術 - 残り0t");
-						constDamageToEnemy(enemy, dmg, n, ei);
+						constDamageToEnemy(f, enemy, dmg, n, ei);
 					}
 				},
 			});
@@ -439,13 +441,13 @@ var SpSkill = {
 				turn: t,
 				lim_turn: t,
 				effect: function (f, ei, teff, is_end, is_t, is_b) {
-					var e = GetNowBattleEnemys(ei);
+					var e = GetNowBattleEnemys(f, ei);
 					// 残りターンが0ならHPを0に
 					if (is_end) {
 						f.log_push("Enemy[" + (ei + 1) + "]: 無に還す瞳 - 残り0t");
 						e.nowhp = 0;
 						// HPが0になったら敵スキルを全て解除
-						turneff_allbreak(e.turn_effect, ei, false);
+						turneff_allbreak_enemy(fld, e.turn_effect, ei);
 					}
 				},
 			});
@@ -470,7 +472,7 @@ var SpSkill = {
 			lim_turn: turn,
 			effect: function () { },
 			priority: 2,
-			on_damage: function (fld, dmg, a_i) {
+			on_damage: function (f, dmg, a_i) {
 				if (attr[a_i] > 0) {
 					return dmg * (1 + rate);
 				} else {
@@ -747,12 +749,12 @@ var SpSkill = {
 			}
 		}
 		// 継続効果追加
-		ss_continue_effect_add({
+		ss_continue_effect_add(fld, {
 			type: "chain_enhance",
 			turn: t,
 			lim_turn: t,
 			index: n,
-			effect: function (f, oi, ceff, is_ssfin) {
+			effect: function(f, oi, ceff, is_ssfin){
 				fc_ch_enhance(f, f.Allys.Now, is_ssfin);
 			}
 		});
@@ -772,7 +774,7 @@ var SpSkill = {
 				ss_object_done(f, oi, sss[n]);
 			}
 			// 精霊強化が実行関数に未指定ならそれも行う
-			var rate_awplusRF = pickup_awakes(f.Allys.Deck[oi], "awake_rateup_regenerateRF", false);
+			var rate_awplusRF = pickup_awakes(fld, f.Allys.Deck[oi], "awake_rateup_regenerateRF", false);
 			var isexist_regenerate = $.grep(sss, function(e){
 				return e.name == "ss_regenerate";
 			}).length > 0;
@@ -782,12 +784,12 @@ var SpSkill = {
 			// dup-remove
 			var nows = f.Allys.Now;
 			for(n=0; n < nows.length; n++) {
-				turn_effect_check_onlyfirst(nows[n], n);
+				turn_effect_check_onlyfirst(fld, nows[n], n);
 				if (is_ak) {
-					turneff_break_dual(nows[n].turn_effect, n, true);
+					turneff_break_dual(fld, nows[n].turn_effect, n, true);
 				}
 				// statusup-remove
-				turneff_break_dual_settype(nows[n].turn_effect, n, "ss_statusup", true);
+				turneff_break_dual_settype(fld, nows[n].turn_effect, n, "ss_statusup", true);
 			}
 		}
 		// 自身に行動不能効果を付与
@@ -913,7 +915,7 @@ var SpSkill = {
 					lim_turn: t,
 					effect: function () { },
 					priority: 1,
-					on_damage: function (fld, dmg, attr) {
+					on_damage: function (f, dmg, attr) {
 						if (dmg >= rate) {
 							return dmg;
 						} else {
@@ -995,7 +997,7 @@ var SpSkill = {
 				turn: turn,
 				lim_turn: turn,
 				effect: function () { },
-				bef_absattack: function (fld, oi, ei) {
+				bef_absattack: function (f, oi, ei) {
 					return false;
 				}
 			});
@@ -1019,7 +1021,7 @@ var SpSkill = {
 				turn: turn,
 				lim_turn: turn,
 				effect: function () { },
-				bef_absattack: function (fld, oi, ei) {
+				bef_absattack: function (f, oi, ei) {
 					return false;
 				},
 				bef_answer: function (f, as) {
@@ -1028,7 +1030,7 @@ var SpSkill = {
 				bef_skillcounter: function (f, ai) {
 					return false;
 				},
-				on_damage: function (fld, dmg, attr) {
+				on_damage: function (f, dmg, attr) {
 					return 0;
 				},
 				ss_disabled: true,
@@ -1052,11 +1054,11 @@ var SpSkill = {
 			if (n_index == n) { continue; }
 			// スキブ処理
 			if (now.nowhp <= 0) { continue; }
-			if (!now.ss_isboost && !is_legendmode(cd, now)) {
+			if (!now.ss_isboost && !is_legendmode(fld, cd, now)) {
 				now.ss_current += f_rate;
 				now.ss_isboost = true;
 				// L化確認
-				legend_timing_check(fld.Allys.Deck, fld.Allys.Now, n_index);
+				legend_timing_check(fld, fld.Allys.Deck, fld.Allys.Now, n_index);
 				rst = true;
 			}
 		}
@@ -1156,7 +1158,7 @@ var SpSkill = {
 				var isreinforce = true
 				var isreduce_stg = true;
 				var typestr = "[精霊強化]"
-				var rate_awplusRF = pickup_awakes(fld.Allys.Deck[n], "awake_rateup_regenerateRF", false);
+				var rate_awplusRF = pickup_awakes(fld, fld.Allys.Deck[n], "awake_rateup_regenerateRF", false);
 				$.each(rate_awplusRF, function(i, e){
 					rate += e.upvalue / 100;
 				});
@@ -1232,8 +1234,8 @@ var SpSkill = {
 				now.nowhp = Math.min((now.maxhp * rate), now.maxhp);
 				now.nowhp = Math.round(now.nowhp);
 				// 復活時にLなら死亡時解除の潜在を再適用
-				if(is_legendmode(fld.Allys.Deck[n], fld.Allys.Now[n])){
-					add_awake_ally(Field.Allys.Deck, Field.Allys.Now, i, true);
+				if(is_legendmode(fld, fld.Allys.Deck[n], fld.Allys.Now[n])){
+					add_awake_ally(fld, fld.Allys.Deck, fld.Allys.Now, i, true);
 				}
 			}
 		}
@@ -1245,9 +1247,9 @@ var SpSkill = {
 	"panel_attackup": function (fld, n, cobj, params) {
 		var p = params[0];
 		var dsc = "攻撃力アップ(" + (p * 100) + "%)";
-		return panel_addition(dsc, function (fld) {
-			for (var i = 0; i < fld.Allys.Deck.length; i++) {
-				var now = fld.Allys.Now[i];
+		return panel_addition(fld, dsc, function(fl){
+			for (var i = 0; i < fl.Allys.Deck.length; i++) {
+				var now = fl.Allys.Now[i];
 				now.as_enhance = (now.as_enhance ? now.as_enhance : 0) + p;
 			}
 			fld.log_push("パネル付与効果発動: " + dsc);
@@ -1259,10 +1261,10 @@ var SpSkill = {
 	"panel_chainplus": function (fld, n, cobj, params) {
 		var p = params[0];
 		var dsc = "チェインプラス(+" + p + ")";
-		return panel_addition(dsc, function (fld) {
-			if (fld.Status.chain_status >= 0) {
-				fld.Status.chain += p;
-				fld.log_push("パネル付与効果発動: " + dsc);
+		return panel_addition(fld, dsc, function(fl){
+			if (fl.Status.chain_status >= 0) {
+				fl.Status.chain += p;
+				fl.log_push("パネル付与効果発動: " + dsc);
 			}
 		});
 		return true;
@@ -1272,12 +1274,12 @@ var SpSkill = {
 	"panel_healally": function (fld, n, cobj, params) {
 		var r = params[0];
 		var dsc = "味方回復(" + (r * 100) + "%)";
-		return panel_addition(dsc, function (fld) {
-			for (var i = 0; i < fld.Allys.Deck.length; i++) {
-				var now = fld.Allys.Now[i];
-				heal_ally(fld, now.maxhp * r, i);
+		return panel_addition(fld, dsc, function(fl){
+			for (var i = 0; i < fl.Allys.Deck.length; i++) {
+				var now = fl.Allys.Now[i];
+				heal_ally(fl, now.maxhp * r, i);
 			}
-			fld.log_push("パネル付与効果発動: " + dsc);
+			fl.log_push("パネル付与効果発動: " + dsc);
 		});
 		return true;
 	},
@@ -1286,20 +1288,22 @@ var SpSkill = {
 	"panel_skillboost": function (fld, n, cobj, params) {
 		var t = params[0];
 		var dsc = "スキルブースト(+" + t + ")";
-		return panel_addition(dsc, function (fld) {
-			for (var i = 0; i < fld.Allys.Deck.length; i++) {
+		return panel_addition(fld, dsc, function(fl){
+			for (var i = 0; i < fl.Allys.Deck.length; i++) {
 				// スキブ処理
-				var card = fld.Allys.Deck[i];
-				var now = fld.Allys.Now[i];
-				if (now.nowhp <= 0) { continue; }
-				if (!now.ss_isboost && !is_legendmode(card, now)) {
+				var card = fl.Allys.Deck[i];
+				var now = fl.Allys.Now[i];
+				if (now.nowhp <= 0) {
+					continue;
+				}
+				if (!now.ss_isboost && !is_legendmode(fld, card, now)) {
 					now.ss_current += t;
 					now.ss_isboost = true;
 					// L化確認
-					legend_timing_check(fld.Allys.Deck, fld.Allys.Now, i);
+					legend_timing_check(fld, fl.Allys.Deck, fl.Allys.Now, i);
 				}
 			}
-			fld.log_push("パネル付与効果発動: " + dsc);
+			fl.log_push("パネル付与効果発動: " + dsc);
 		});
 	},
 	// -----------------------------
@@ -1308,18 +1312,18 @@ var SpSkill = {
 		var attr = params[0];
 		var rate = params[1];
 		var dsc = "パネル軽減効果(" + (rate * 100) + "%)";
-		return panel_addition(dsc, function (fld) {
-			fld.Status.panel_guard = {
+		return panel_addition(fld, dsc, function(fl){
+			fl.Status.panel_guard = {
 				attr: attr,
 				rate: rate,
 			}
-			fld.log_push("パネル付与効果発動: " + dsc);
+			fl.log_push("パネル付与効果発動: " + dsc);
 		});
 	},
 	// -----------------------------
 	// スキル反射無視
 	"ss_ignore_skillcounter": function (fld, n, cobj, params) {
-		var enemys = GetNowBattleEnemys();
+		var enemys = GetNowBattleEnemys(fld);
 		$.each(enemys, function (i, e) {
 			if (e.flags) {
 				e.flags.is_ss_attack = false;
@@ -1366,7 +1370,7 @@ var SpSkill = {
 		var now = fld.Allys.Now[n];
 		var dmg = Math.floor(p * now.maxhp);
 		fld.log_push("Unit[" + (n + 1) + "]: 自傷(" + (p * 100) + "%)");
-		damage_ally(dmg, n);
+		damage_ally(fld, dmg, n);
 		return true;
 	},
 	// -----------------------------
@@ -1379,7 +1383,7 @@ var SpSkill = {
 			var now = fld.Allys.Now[i];
 			var dmg = Math.floor(p * now.maxhp);
 			if (now.nowhp > 0) {
-				damage_ally(dmg, i);
+				damage_ally(fld, dmg, i);
 				ct++;
 			}
 		}
@@ -1411,7 +1415,7 @@ var SpSkill = {
 			e.ss_current = 999;
 			// スキブ処理
 			var card = fld.Allys.Deck[i];
-			legend_timing_check(fld.Allys.Deck, nows, i, true);
+			legend_timing_check(fld, fld.Allys.Deck, nows, i, true);
 		})
 		return true;
 	},
@@ -1423,7 +1427,7 @@ var SpSkill = {
 				e.ss_current = 999;
 				// スキブ処理
 				var card = fld.Allys.Deck[i];
-				legend_timing_check(fld.Allys.Deck, nows, i, true);
+				legend_timing_check(fld, fld.Allys.Deck, nows, i, true);
 			}
 		})
 		return true;
@@ -1499,7 +1503,7 @@ var SpCondSkill = {
 		var attrs = params[0];
 		var a = params[1] + 1;
 		var b = params[2] + 1;
-		var e = GetNowBattleEnemys();
+		var e = GetNowBattleEnemys(fld);
 		var rst = [];
 		for (var i = 0; i < e.length; i++) {
 			rst[i] = (attrs[e[i].attr] > 0) ? a : b;
@@ -1524,7 +1528,7 @@ var SpCondSkill = {
 		var nows = fld.Allys.Now;
 		var num = 0;
 		for (var i = 0; i < cards.length; i++) {
-			num += (is_legendmode(cards[i], nows[i]) ? 1 : 0);
+			num += (is_legendmode(fld, cards[i], nows[i]) ? 1 : 0);
 		}
 		return a + b * num;
 	},
@@ -1642,7 +1646,7 @@ var SpCondSkill = {
 		var a = params[0];
 		var b = params[1];
 		var rst = [];
-		var es = GetNowBattleEnemys();
+		var es = GetNowBattleEnemys(fld);
 		for (var i = 0; i < es.length; i++) {
 			var is_poison = $.grep(edat.turn_effect, function (e) {
 				return e.type == "poison";
@@ -1781,7 +1785,7 @@ function ss_object_done(fld, n, c_obj, is_check_crs) {
 			var card = fld.Allys.Deck[n];
 			var tg = pm.target.length >= 2 ? pm.target : [pm.target];
 			for (var i = 0; i < tg.length; i++) {
-				$.each(pickup_awakes(card, pn, false), function (j, e) {
+				$.each(pickup_awakes(fld, card, pn, false), function (j, e) {
 					var r_max = Number.MAX_VALUE;
 					if ($.isArray(params[tg[i]])) {
 						for (var k = 0; k < params[tg[i]].length; k++) {
@@ -1800,22 +1804,21 @@ function ss_object_done(fld, n, c_obj, is_check_crs) {
 
 // (内部用)敵にSSダメージ
 function ss_damage(fld, r, atr, atkn, own, tg, isnot_ss) {
-	var enemy = GetNowBattleEnemys(tg);
+	var enemy = GetNowBattleEnemys(fld, tg);
 	var card = fld.Allys.Deck[own];
 	var now = fld.Allys.Now[own];
-	var rnd = damage_rand();
+	var rnd = damage_rand(fld);
 	// 威力が配列で渡されたら取り出す
 	var rate = $.isArray(r) ? r[tg] : r;
 	// 攻撃
-	Field.Status.turn_dmg += attack_enemy(enemy, now, atr, rate, atkn, [atr],
-		fld.Status.chain, rnd, own, tg, true);
+	fld.Status.turn_dmg += attack_enemy(fld, enemy, now, atr, rate, atkn, [atr], fld.Status.chain, rnd, own, tg, true);
 	// SSフラグを立てる
 	enemy.flags.is_ss_attack = (isnot_ss != true);
 }
 
 // (内部用)パネル付与効果
-function panel_addition(dsc, fc) {
-	Field.Status.panel_add.push({
+function panel_addition(fld, dsc, fc) {
+	fld.Status.panel_add.push({
 		desc: dsc,
 		func: fc,
 	});
@@ -1826,13 +1829,13 @@ function panel_addition(dsc, fc) {
 function ss_break_template(target, type) {
 	var _break_temp_fc = function (fld, oi, ei) {
 		var is_break = false;
-		var em = GetNowBattleEnemys(ei);
+		var em = GetNowBattleEnemys(fld, ei);
 		for (var i = 0; i < em.turn_effect.length; i++) {
 			var eff = em.turn_effect[i];
 			// typeを含んでいる場合除く
 			// (attack_counterが指定されてたら多段カウンターも除く)
 			if (eff.type.indexOf(type) >= 0) {
-				turneff_remove_pos(em.turn_effect, i);
+				turneff_remove_pos(fld, em.turn_effect, i);
 				i--;
 				is_break = true;
 			}
@@ -1841,7 +1844,7 @@ function ss_break_template(target, type) {
 	};
 	return function (fld, n) {
 		var cd = fld.Allys.Deck[n];
-		var es = GetNowBattleEnemys();
+		var es = GetNowBattleEnemys(fld);
 		var rsts = false;
 		if (target == "all") {
 			for (var i = 0; i < es.length; i++) {
@@ -1870,13 +1873,13 @@ function ss_get_targetenemy(fld, ss, ai, attr) {
 	// タゲの種類で分岐
 	switch (ss.target) {
 		case "all":
-			return GetNowBattleEnemys();
+			return GetNowBattleEnemys(fld);
 		case "single":
-			var enemys = GetNowBattleEnemys();
+			var enemys = GetNowBattleEnemys(fld);
 			var tg = auto_attack_order(fld, enemys, attr, ai);
 			return [enemys[tg]];
 		case "withside":
-			var enemys = GetNowBattleEnemys();
+			var enemys = GetNowBattleEnemys(fld);
 			var tg = auto_attack_order(fld, enemys, attr, ai);
 			var e_order = (enemys.length >= 4 ? earr5 : earr3);
 			// まず始めに両脇の敵を追加する
@@ -1909,7 +1912,7 @@ function ss_get_targetally(fld, ss, array, ai) {
 		case "own":
 			return [array[ai]];
 		case "ally_one":
-			var si = ss_allyselect_getindex();
+			var si = ss_allyselect_getindex(fld);
 			return [array[si]];
 		default:
 			console.error("INVALID VALUE: " + ss.target + "(index: " + ai + ")");

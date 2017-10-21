@@ -10,28 +10,28 @@
 **/
 // ---------------------------------
 // サーバーに結果を送信する
-function actl_send_result(after) {
-	var st = Field.Status;
+function actl_send_result(fld, after) {
+	var st = fld.Status;
 	var ally = [];
 	var send = "tp=regist";
 	// データ整理
-	for (var i = 0; i < Field.Allys.Deck.length; i++) {
-		var e = Field.Allys.Deck[i];
+	for (var i = 0; i < fld.Allys.Deck.length; i++) {
+		var e = fld.Allys.Deck[i];
 		if (st.is_hlpchanged && st.hlpchanged_index == i) {
-			e = Field.Allys.Deck["helper"];
-			ally[5] = Field.Allys.Deck[i].cardno;
+			e = fld.Allys.Deck["helper"];
+			ally[5] = fld.Allys.Deck[i].cardno;
 		}
 		ally[i] = e.cardno;
 	}
 	if (!st.is_hlpchanged && st.is_helper) {
-		ally[5] = Field.Allys.Deck["helper"].cardno;
+		ally[5] = fld.Allys.Deck["helper"].cardno;
 	}
 	// クエリ生成
 	send += "&sh=" + window.location.search.substring(1);
 	send += "&ac=" + JSON.stringify(st.act_log);
 	send += "&t=" + st.totalturn;
-	send += "&td=" + encodeURIComponent(durturn_string());
-	send += "&st=" + Field.Quest.id;
+	send += "&td=" + encodeURIComponent(durturn_string(fld));
+	send += "&st=" + fld.Quest.id;
 	send += "&a1=" + ally[0];
 	send += "&a2=" + ally[1];
 	send += "&a3=" + ally[2];
@@ -39,8 +39,8 @@ function actl_send_result(after) {
 	send += "&a5=" + ally[4];
 	send += "&ah=" + ally[5];
 	send += "&is_sp=" + Number(st.is_spanel_only);
-	send += "&is_sf=" + Number(st.durturn[Field.Quest.aprnum - 1].ssfin);
-	send += "&ver=" + Field.Constants.Actlog_Ver;
+	send += "&is_sf=" + Number(st.durturn[fld.Quest.aprnum - 1].ssfin);
+	send += "&ver=" + fld.Constants.Actlog_Ver;
 	// ajaxを使用
 	$.ajax({
 		type: "POST",
@@ -51,8 +51,8 @@ function actl_send_result(after) {
 }
 
 // サーバーにデッキ共有内容を送信する
-function actl_send_share(id, user, comment, after) {
-	var st = Field.Status;
+function actl_send_share(fld, id, user, comment, after) {
+	var st = fld.Status;
 	var ally = [];
 	var send = "tp=addshare";
 	// クエリ生成
@@ -69,12 +69,12 @@ function actl_send_share(id, user, comment, after) {
 }
 
 // AS記録
-function actl_save_answer(attr, as_ign) {
-	var st = Field.Status;
+function actl_save_answer(fld, attr, as_ign) {
+	var st = fld.Status;
 	// タゲ保存
-	actl_save_target();
+	actl_save_target(fld);
 	// save
-	actl_save_object({
+	actl_save_object(fld, {
 		type: "answer",
 		result: true,
 		attr: attr,
@@ -85,34 +85,34 @@ function actl_save_answer(attr, as_ign) {
 }
 
 // AS誤答記録
-function actl_save_answer_miss() {
-	var st = Field.Status;
+function actl_save_answer_miss(fld) {
+	var st = fld.Status;
 	// タゲ保存
-	actl_save_target();
+	actl_save_target(fld);
 	// save
-	actl_save_object({
+	actl_save_object(fld, {
 		type: "answer",
 		result: false,
 	});
 }
 
 // SS記録
-function actl_save_special(i) {
+function actl_save_special(fld, i) {
 	// タゲ保存
-	actl_save_target();
+	actl_save_target(fld);
 	// save
-	actl_save_object({
+	actl_save_object(fld, {
 		type: "special",
 		index: i,
 	});
 }
 
 // タゲ記録
-function actl_save_target() {
-	var st = Field.Status;
+function actl_save_target(fld) {
+	var st = fld.Status;
 	var tg = [];
 	// listup
-	$.each(Field.Allys.Now, function (i, e) {
+	$.each(fld.Allys.Now, function (i, e) {
 		tg[i] = $.extend(true, [], e.target);
 	});
 	// 全て共通の値の場合tgをその値にする(データ量節約)
@@ -130,27 +130,27 @@ function actl_save_target() {
 		target: tg,
 		const_rand: set_rand,
 	};
-	actl_save_object(add_obj);
+	actl_save_object(fld, add_obj);
 	return true;
 }
 
 // ログ追加
-function actl_save_object(obj) {
-	var st = Field.Status;
+function actl_save_object(fld, obj) {
+	var st = fld.Status;
 	if (!st.act_log[st.totalturn]) {
 		st.act_log[st.totalturn] = {};
 		st.act_log[st.totalturn].action = [];
 	}
 	// seedが未登録なら追加
 	if (!st.act_log[st.totalturn].seed) {
-		actl_save_seed();
+		actl_save_seed(fld);
 	}
 	st.act_log[st.totalturn].action.push($.extend(true, {}, obj));
 }
 
 // seed記録
-function actl_save_seed() {
-	var st = Field.Status;
+function actl_save_seed(fld) {
+	var st = fld.Status;
 	if (st.seed <= 0) {
 		st.seed = new Date().getMilliseconds() + 1;
 	}

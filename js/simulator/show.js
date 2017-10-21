@@ -2,9 +2,9 @@
 var _Timer = undefined;
 
 // 現在の状況を表示する
-function sim_show() {
+function sim_show(fld) {
 	// 自動試走中なら何もしない
-	if (Field.Status.isautomode) {
+	if (fld.Status.isautomode) {
 		return;
 	}
 	// timer reset
@@ -15,29 +15,29 @@ function sim_show() {
 	$("div.enemy").removeClass("selected_target");
 
 	// sim_info_turn
-	if (Field.Status.chain_status == 1) {
+	if (fld.Status.chain_status == 1) {
 		var chain_state = "(保護)";
-	} else if (Field.Status.chain_status == -1) {
+	} else if (fld.Status.chain_status == -1) {
 		var chain_state = "(封印)";
 	} else {
 		var chain_state = "";
 	}
 	$("#sim_turns").html(
-		"turn: " + totalturn_string() + " / chain: " + Field.Status.chain
-			+ chain_state + (Field.Status.finish ? " / Act-Factor: " + Field.Status.speedscore :
-			" / " + Field.Status.nowbattle + "戦目 (" + durturn_string() + ")")
+		"turn: " + totalturn_string(fld) + " / chain: " + fld.Status.chain
+			+ chain_state + (fld.Status.finish ? " / Act-Factor: " + fld.Status.speedscore :
+			" / " + fld.Status.nowbattle + "戦目 (" + durturn_string(fld) + ")")
 	);
 
 	// sim_info_status
-	$("#sim_info_status").html(Field.Quest.name +
-		" [<a target='_blank' href='/simulator/quest/?id=" + Field.Quest.id + "'>敵行動</a> /" +
-		" <a target='_blank' href='/simulator/d/?qid=" + Field.Quest.id + "'>投稿デッキ</a>]"
+	$("#sim_info_status").html(fld.Quest.name +
+		" [<a target='_blank' href='/simulator/quest/?id=" + fld.Quest.id + "'>敵行動</a> /" +
+		" <a target='_blank' href='/simulator/d/?qid=" + fld.Quest.id + "'>投稿デッキ</a>]"
 	);
 
 	// sim_result
-	if (is_ally_alldeath()) {
+	if (is_ally_alldeath(fld)) {
 		$("#dialog_gameover").dialog("open");
-	} else if (Field.Status.finish /*&& !Field.Status.isautomode*/) {
+	} else if (fld.Status.finish /*&& !fld.Status.isautomode*/) {
 		$("#sim_share").fadeIn("slow");
 		$("#sim_rndview").hide();
 	} else {
@@ -45,7 +45,7 @@ function sim_show() {
 		$("#sim_rndview").fadeIn("slow");
 	}
 	// sim_restart / logview
-	if (Field.Status.totalturn > 0) {
+	if (fld.Status.totalturn > 0) {
 		$("#sim_restart").fadeIn("slow");
 		$("#sim_logview").fadeIn("slow");
 	} else {
@@ -56,8 +56,8 @@ function sim_show() {
 	// ----------------
 	// sim_ally
 	for (var i = 0; i < 5; i++) {
-		var dec = Field.Allys.Deck[i];
-		var now = Field.Allys.Now[i];
+		var dec = fld.Allys.Deck[i];
+		var now = fld.Allys.Now[i];
 		if (dec !== undefined) {
 			// 各種指定
 			var attr0 = (dec.attr[0] != -1 ? dec.attr[0]+"" : "none");
@@ -91,16 +91,16 @@ function sim_show() {
 			}
 
 			// SSが発動可能かどうか
-			var sst = get_ssturn(dec, now);
-			if (is_ss_active(Field, i)) {
+			var sst = get_ssturn(fld, dec, now);
+			if (is_ss_active(fld, i)) {
 				// SS発動可能
 				$("#ally0" + (i + 1) + "_ss_button").attr("class", "ally_ss_button");
-				$("#ally0" + (i + 1) + "_ss_button").text(ss_remain_text(sst, now.flags.ss_chargefin));
+				$("#ally0" + (i + 1) + "_ss_button").text(ss_remain_text(fld, sst, now.flags.ss_chargefin));
 				$("#ally0" + (i + 1) + "_ss_button").attr("disabled", false);
 			} else {
 				// SS発動不可
 				$("#ally0" + (i + 1) + "_ss_button").attr("class", "ally_ss_button_disabled");
-				$("#ally0" + (i + 1) + "_ss_button").text(ss_remain_text(sst));
+				$("#ally0" + (i + 1) + "_ss_button").text(ss_remain_text(fld, sst));
 				$("#ally0" + (i + 1) + "_ss_button").attr("disabled", "disabled");
 			}
 			// HPバー指定
@@ -147,7 +147,7 @@ function sim_show() {
 		}
 	}
 	// sim_enemy
-	var enemys_dat = GetNowBattleEnemys();
+	var enemys_dat = GetNowBattleEnemys(fld);
 	// 敵が3体以下なら4/5体目の表示を消す
 	if(enemys_dat.length <= 3){
 		$(".enemy_5").hide();
@@ -178,7 +178,7 @@ function sim_show() {
 					var drp_id = this.id;
 					var drp_index = Number(drp_id.replace("enemy0", "")) - 1;
 					// set target
-					var now = Field.Allys.Now[drg_index];
+					var now = fld.Allys.Now[drg_index];
 					now.target[0] = drp_index;
 					now.target[1] = drp_index;
 				},
@@ -238,13 +238,13 @@ function sim_show() {
 		}
 	}
 	// 発動中の効果を点滅表示
-	if (!Field.Status.finish) {
+	if (!fld.Status.finish) {
 		var blink_onetime = 2500;
 		var b_vis = [-1, -1, -1, -1, -1, -1, -1, -1];
 		var blink = function () {
 			// 味方
-			for (var i = 0; i < Field.Allys.Deck.length; i++) {
-				var now = Field.Allys.Now[i];
+			for (var i = 0; i < fld.Allys.Deck.length; i++) {
+				var now = fld.Allys.Now[i];
 				var teffs = $.grep(now.turn_effect, function (e) {
 					return e.desc && e.icon;
 				});
@@ -261,7 +261,7 @@ function sim_show() {
 				}
 			}
 			// 敵
-			var es = GetNowBattleEnemys();
+			var es = GetNowBattleEnemys(fld);
 			for (var i = 5; i < es.length + 5; i++) {
 				var edat = es[i - 5];
 				var teffs = $.grep(edat.turn_effect, function (e) {
@@ -290,23 +290,23 @@ function sim_show() {
 	// 未選択
 	$("#panel_add_sel").append($('<option>').val(0).text("(未選択)"));
 	// 追加していく
-	for (var i = 0; i < Field.Status.panel_add.length; i++) {
+	for (var i = 0; i < fld.Status.panel_add.length; i++) {
 		var opt = $('<option>').val(i + 1)
-			.text(Field.Status.panel_add[i].desc)
-			.attr("selected", i == Field.Status.panel_add.length - 1);
+			.text(fld.Status.panel_add[i].desc)
+			.attr("selected", i == fld.Status.panel_add.length - 1);
 		$("#panel_add_sel").append(opt);
 	}
-	var bbefi = Field.Quest.battle_before_def + 1;
+	var bbefi = fld.Quest.battle_before_def + 1;
 	if (bbefi >= 0) {
 		$("#panel_add_sel").val(bbefi);
 	}
 	// sim_panel
-	$(".panel_button").attr("disabled", Field.Status.finish);
-	// sim_field_move
+	$(".panel_button").attr("disabled", fld.Status.finish);
+	// sim_fld_move
 	$("#fld_move_before").attr("disabled", (Field_log.now_index == 0));
 	$("#fld_move_after").attr("disabled", (Field_log.now_index >= Field_log.length() - 1));
 	// 敵の数に応じてattack_target_selの中身を変える
-	var eleng = GetNowBattleEnemys().length;
+	var eleng = GetNowBattleEnemys(fld).length;
 	if(eleng >= 4){
 		// 4体以上(全表示)
 		$("#attack_target_sel option").show();
@@ -344,11 +344,11 @@ function sim_show() {
 	var cost_total = 0;
 	var paneb_total = [0, 0, 0, 0, 0];
 	var paneb_total_str = "";
-	for (var p in Field.Allys.Deck) {
-		var c = Field.Allys.Deck[p];
-		var paneb_aw = card_paneb(c);
+	for (var p in fld.Allys.Deck) {
+		var c = fld.Allys.Deck[p];
+		var paneb_aw = card_paneb(fld, c);
 		if (Number(p) >= 0) {
-			cost_total += card_cost(c);
+			cost_total += card_cost(fld, c);
 		}
 		for (var j = 0; j < 5; j++) {
 			paneb_total[j] += paneb_aw[j];
@@ -359,7 +359,7 @@ function sim_show() {
 		if (paneb_total_str != "") {
 			paneb_total_str += ", ";
 		}
-		paneb_total_str += Field.Constants.Attr[j] + ": " + paneb_total[j];
+		paneb_total_str += fld.Constants.Attr[j] + ": " + paneb_total[j];
 	}
 	$("#ally_info_text").text("Cost: " + cost_total + " / Panel Boost: [" + paneb_total_str + "]");
 
@@ -375,10 +375,10 @@ function sim_show() {
 		open: function(e, ui){
 			// sim_log
 			var logtext = "";
-			var tt = Field.Status.totalturn;
-			var log_stat = Field.Status.log[tt] !== undefined ? tt : tt - 1;
+			var tt = fld.Status.totalturn;
+			var log_stat = fld.Status.log[tt] !== undefined ? tt : tt - 1;
 			for (var i = 0 ; i <= log_stat; i++) {
-				var l_t = create_log(i);
+				var l_t = create_log(fld, i);
 				l_t = l_t.replace(/\/\/\{blue}/g, "<span class='blue'>");
 				l_t = l_t.replace(/\/\/\{orange}/g, "<span class='orange'>");
 				l_t = l_t.replace(/\{}\/\//g, "</span>");
@@ -404,7 +404,7 @@ function sim_show() {
 		open: function (e, ui) {
 			// sim_log
 			var logtext = "";
-			var dl = Field.Status.d_log;
+			var dl = fld.Status.d_log;
 			for (var i = 0 ; i < dl.length; i++) {
 				logtext += dl[i] + "<br/>";
 			}
@@ -428,8 +428,8 @@ function sim_show() {
 			// listup turn effect
 			var li_t = "";
 			var n = Number($("#allystat_index").text());
-			var card = Field.Allys.Deck[n];
-			var now = Field.Allys.Now[n];
+			var card = fld.Allys.Deck[n];
+			var now = fld.Allys.Now[n];
 			var teff = now.turn_effect;
 			for (var i = 0; i < teff.length; i++) {
 				if (teff[i].desc != null) {
@@ -458,7 +458,7 @@ function sim_show() {
 			$("#ally_tefflist").html(li_t);
 			$("#opendmgcalc").off("click");
 			$("#opendmgcalc").on("click", function(){
-				openDamageCalcPage(n);
+				openDamageCalcPage(fld, n);
 			});
 			// ----------------------------
 			// target select
@@ -472,11 +472,11 @@ function sim_show() {
 			// ----------------------------
 			// button of special skill
 			var als_ssbtn = $("#allystat_ss_button");
-			var sst = get_ssturn(card, now);
+			var sst = get_ssturn(fld, card, now);
 			var ss_disabled = $.grep(now.turn_effect, function (e) {
 				return e.ss_disabled;
 			}).length > 0;
-			als_ssbtn.text(ss_remain_text(sst, now.flags.ss_chargefin));
+			als_ssbtn.text(ss_remain_text(fld, sst, now.flags.ss_chargefin));
 			// 一旦既に定義されてるclickイベントを解除する(解除しないと連続してSSが発動する)
 			als_ssbtn.off("click");
 			als_ssbtn.on("click", function () {
@@ -484,7 +484,7 @@ function sim_show() {
 				$("#dialog_allystatus").dialog('close');
 				ss_push(n);
 			});
-			if (!ss_disabled && sst[0] == 0 && now.nowhp > 0 && !Field.Status.finish) {
+			if (!ss_disabled && sst[0] == 0 && now.nowhp > 0 && !fld.Status.finish) {
 				// SS発動可能
 				als_ssbtn.attr("class", "ally_ss_button");
 				als_ssbtn.attr("disabled", false);
@@ -502,7 +502,7 @@ function sim_show() {
 		close: function () {
 			// target set
 			var n = Number($("#allystat_index").text());
-			var now = Field.Allys.Now[n];
+			var now = fld.Allys.Now[n];
 			now.target[0] = Number($("#atarget_sel_1").val());
 			now.target[1] = Number($("#atarget_sel_2").val());
 			// title show
@@ -515,14 +515,14 @@ function sim_show() {
 		modal: true,
 		width: 600,
 		open: function () {
-			var nam = Field.Quest.name;
-			var trn = durturn_string();
-			var tot = totalturn_string();
-			var text = simshow_create_fintext();
+			var nam = fld.Quest.name;
+			var trn = durturn_string(fld);
+			var tot = totalturn_string(fld);
+			var text = simshow_create_fintext(fld);
 			// hide
 			$(".ui-dialog-titlebar").hide();
 			// tweet data
-			var url = absolutePath("/simulator/v/?id=" + Field.Status.result_enc);
+			var url = absolutePath("/simulator/v/?id=" + fld.Status.result_enc);
 			$("#simfinish_tweettext").html(
 				text + "<br/><div class='sh_url'><a href='" + url + "' target='_blank'>" + url + "</a></div> #wzsim"
 			);
@@ -537,7 +537,7 @@ function sim_show() {
 		},
 		buttons: {
 			"結果をツイートする": function () {
-				tweet_result();
+				tweet_result(fld);
 				$(this).dialog("close");
 			},
 			"結果を全体公開する": function () {
@@ -567,7 +567,7 @@ function sim_show() {
 				var comm = $("#simshare_comment").val();
 				if (user.length > 0 && comm.length > 0) {
 					// send
-					actl_send_share(Field.Status.result_id, user, comm, function (rst) {
+					actl_send_share(fld, fld.Status.result_id, user, comm, function(rst){
 						// msg alert
 						alert("送信完了しました。ご協力ありがとうございます。");
 					});
@@ -630,17 +630,17 @@ function sim_show() {
 				var is_calcdisp = $("#randcheck_disp").prop("checked");
 				var disp_num = 5;
 				// save before
-				var bef_f = $.extend(true, {}, Field);
+				var bef_f = $.extend(true, {}, fld);
 				var bef_battle = bef_f.Status.nowbattle;
 				// test
 				var break_counts = [];
 				for (var d = 0; d < (is_calcdisp ? 5 : 1) ; d++) {
 					break_counts[d] = 0;
 					for (var i = 0; i < test_rnum; i++) {
-						// Fieldにバックアップしておいたbeforeをコピー
-						Field = $.extend(true, {}, bef_f);
-						Field.Status.isautomode = true;
-						Field.Status.seed = Math.random(1, 100000);
+						// fldにバックアップしておいたbeforeをコピー
+						fld = $.extend(true, {}, bef_f);
+						fld.Status.isautomode = true;
+						fld.Status.seed = Math.random(1, 100000);
 						// タスクを実行
 						for (var j = 0; j < task_doarr.length; j++) {
 							var ti = task_doarr[j];
@@ -655,13 +655,13 @@ function sim_show() {
 							}
 						}
 						// 結果を確認
-						var aft_battle = Field.Status.nowbattle;
-						break_counts[d] += ((aft_battle - bef_battle > 0 || Field.Status.finish) ? 1 : 0);
+						var aft_battle = fld.Status.nowbattle;
+						break_counts[d] += ((aft_battle - bef_battle > 0 || fld.Status.finish) ? 1 : 0);
 					}
 				}
 				// 終了後処理
-				Field.Status.isautomode = false;
-				sim_show();
+				fld.Status.isautomode = false;
+				sim_show(fld);
 				// rst show
 				var rst_tx = "";
 				if (is_calcdisp) {
@@ -713,7 +713,7 @@ function sim_show() {
 		width: 400,
 		open: function() {
 			// images set
-			var cds = Field.Allys.Deck;
+			var cds = fld.Allys.Deck;
 			for (var i = 0; i < cds.length; i++) {
 				var c = cds[i];
 				var dom = $("#sso_ally_image_" + i);
@@ -755,8 +755,7 @@ function sim_show() {
 }
 
 // ダメージ計算を開く
-function openDamageCalcPage(i){
-	var fld = Field;
+function openDamageCalcPage(fld, i){
 	var c = fld.Allys.Deck[i];
 	var now = fld.Allys.Now[i];
 	var cryst = c.crystal || [];
@@ -776,7 +775,7 @@ function openDamageCalcPage(i){
 	var rand_val = Number($("#attack_rand_sel").val());
 	var rand = (rand_val != -1 ? rand_val : 1);
 	// 敵データ
-	var enemys = GetNowBattleEnemys();
+	var enemys = GetNowBattleEnemys(fld);
 	var e = enemys.sort(function(a,b){
 		if( a.hp > b.hp ) return -1;
 		if( a.hp < b.hp ) return 1;
@@ -831,11 +830,11 @@ function openDamageCalcPage(i){
 
 
 // logを生成する
-function create_log(i) {
+function create_log(fld, i) {
 	var logtext = "<h3>turn: " + (i + 1) + "" + "</h3><div>";
-	if (Field.Status.log[i] !== undefined) {
-		for (var j = 0; j < Field.Status.log[i].length; j++) {
-			logtext += Field.Status.log[i][j] + "<br/>";
+	if (fld.Status.log[i] !== undefined) {
+		for (var j = 0; j < fld.Status.log[i].length; j++) {
+			logtext += fld.Status.log[i][j] + "<br/>";
 		}
 	}
 	logtext += "</div>";
@@ -843,7 +842,7 @@ function create_log(i) {
 }
 
 // SSの残り表記を返却する
-function ss_remain_text(rem_turn, is_chfin) {
+function ss_remain_text(fld, rem_turn, is_chfin) {
 	// SS1, SS2
 	var SS1 = rem_turn[0];
 	var SS2 = rem_turn[1];
@@ -867,10 +866,10 @@ function ss_remain_text(rem_turn, is_chfin) {
 }
 
 // 合計ターンの表記を返却する
-function totalturn_string() {
-	var f_st = Field.Status;
+function totalturn_string(fld) {
+	var f_st = fld.Status;
 	if (f_st.finish && !f_st.fin_timeup) {
-		var finish_ss = f_st.durturn[Field.Quest.aprnum - 1].ssfin
+		var finish_ss = f_st.durturn[fld.Quest.aprnum - 1].ssfin
 	} else {
 		var finish_ss = false;
 	}
@@ -878,17 +877,17 @@ function totalturn_string() {
 }
 
 // 累計ターンの表記を返却する
-function durturn_string() {
+function durturn_string(fld) {
 	var popupstr = "";
 	var disable_after = false;
-	for (var i = 0; i < Field.Enemys.Popuplist.length; i++) {
+	for (var i = 0; i < fld.Enemys.Popuplist.length; i++) {
 		var t = "";
-		var fs = Field.Status;
+		var fs = fld.Status;
 		var tu = fs.durturn[i];
 		if (disable_after) {
 			t = "X";
 		} else if (!tu) {
-			if (is_ally_alldeath()) {
+			if (is_ally_alldeath(fld)) {
 				t = "DD"; // DeaD
 				disable_after = true;
 			} else if (fs.fin_timeup) {
@@ -908,7 +907,7 @@ function durturn_string() {
 		}
 
 		popupstr += t;
-		if (i != Field.Enemys.Popuplist.length - 1) {
+		if (i != fld.Enemys.Popuplist.length - 1) {
 			popupstr += "-";
 		}
 	}
@@ -916,15 +915,15 @@ function durturn_string() {
 }
 
 // 試走完了時のテキストを生成する
-function simshow_create_fintext(is_replace) {
+function simshow_create_fintext(fld, is_replace) {
 	var rst = "";
-	var nam = Field.Quest.name;
-	var trn = durturn_string().replace("+", is_replace ? "%2B" : "+");
-	var tot = totalturn_string().replace("+", is_replace ? "%2B" : "+");
-	var is_fintimeup = Field.Status.fin_timeup;
-	var kill_c = Field.Status.total_kill;
-	var limit = Field.Status.limit_turn;
-	var limitn = Field.Status.limit_now;
+	var nam = fld.Quest.name;
+	var trn = durturn_string(fld).replace("+", is_replace ? "%2B" : "+");
+	var tot = totalturn_string(fld).replace("+", is_replace ? "%2B" : "+");
+	var is_fintimeup = fld.Status.fin_timeup;
+	var kill_c = fld.Status.total_kill;
+	var limit = fld.Status.limit_turn;
+	var limitn = fld.Status.limit_now;
 
 	if (!(limit > 0)) {
 		rst = nam + " を " + tot + " ターン(" + trn + ") で突破！";
@@ -970,37 +969,40 @@ function randcheck_alldelact() {
 
 
 // 味方精霊情報表示
-function show_allystat(n) {
-	if (!Field.Status.finish && n < Field.Allys.Deck.length) {
+function show_allystat(fld, n) {
+	fld = fld || Field;
+	if (!fld.Status.finish && n < fld.Allys.Deck.length) {
 		$("#allystat_index").text(n + "");
 		$("#dialog_allystatus").dialog("open");
 	}
 }
 
 // ツイート
-function tweet_result() {
+function tweet_result(fld) {
+	fld = fld || Field;
 	var win_opt = "menubar=no,toolbar=no,resizable=yes,scrollbars=no,width=640px,height=360px,top=40px,left=40px";
 	// URL生成して開く
-	if(Field.Status.result_enc){
-		var vurl = absolutePath("/simulator/v/?id=" + Field.Status.result_enc);
+	if(fld.Status.result_enc){
+		var vurl = absolutePath("/simulator/v/?id=" + fld.Status.result_enc);
 	} else {
 		var vurl = absolutePath("/simulator/" + location.search);
 	}
 	var text = //"このデッキを使って " +
-			simshow_create_fintext(true) + "%0A" + vurl;
+			simshow_create_fintext(fld, true) + "%0A" + vurl;
 	var tweeturl = "https://twitter.com/intent/tweet?hashtags=wzsim" + "&text=" + text;
 	// 開く
 	window.open(tweeturl, "tweet_result", win_opt);
 }
 
 // fieldのログを読む
-function load_field(i) {
+function load_field(fld, i) {
+	fld = fld || Field;
 	// 読み込み前の戦闘数
 	var target_bef = [];
-	$.each(Field.Allys.Now, function (i, e) {
+	$.each(fld.Allys.Now, function (i, e) {
 		target_bef[i] = { first: e.target[0], second: e.target[1] };
 	});
-	var btlct_bef = Field.Status.nowbattle;
+	var btlct_bef = fld.Status.nowbattle;
 	// 読み込み先取得
 	var load_index = 0;
 	if (i != 0) {
@@ -1017,10 +1019,10 @@ function load_field(i) {
 		Field = Field_log.load(load_index);
 		Field_log.is_ssindex = false;
 		// 再表示
-		sim_show();
+		sim_show(Field);
 		// 戦闘数が読み込み前と違っていたらタゲリセット
 		if (btlct_bef != Field.Status.nowbattle) {
-			target_allselect();
+			target_allselect(Field);
 		} else {
 			// 同じなら保存したログを読み込む
 			$.each(Field.Allys.Now, function (i, e) {
@@ -1039,12 +1041,13 @@ function back_decksel() {
 }
 
 // タゲ選択
-function target_allselect(n) {
+function target_allselect(fld, n) {
+	fld = fld || Field;
 	n = (n !== undefined ? n : $("#attack_target_sel").val());
 	$("#attack_target_sel").val(n + "");
 	$("div.enemy").removeClass("selected_target");
-	for (var i = 0; i < Field.Allys.Deck.length; i++) {
-		var now = Field.Allys.Now[i];
+	for (var i = 0; i < fld.Allys.Deck.length; i++) {
+		var now = fld.Allys.Now[i];
 		now.target[0] = n;
 		now.target[1] = n;
 	}
@@ -1052,11 +1055,4 @@ function target_allselect(n) {
 	setTimeout(function () {
 		$("#enemy0" + (n + 1)).removeClass("selected_target");
 	}, 2000);
-}
-
-// 相対パス → 絶対パス
-function absolutePath(path) {
-	var e = document.createElement('span');
-	e.insertAdjacentHTML('beforeend', '<a href="' + path + '" />');
-	return e.firstChild.href;
 }

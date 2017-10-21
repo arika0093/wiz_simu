@@ -5,7 +5,7 @@
 // obj_tg: 味方データ、各敵への効果値などが格納されたobject
 function auto_attack_order(fld, enemys, attr, own_index, obj_tg) {
 	// 挑発使用中の敵がいるか取得
-	var t_rst = getTauntingEnemy(enemys);
+	var t_rst = getTauntingEnemy(fld, enemys);
 	if(t_rst != -1){
 		return t_rst;
 	}
@@ -29,7 +29,7 @@ function auto_attack_order(fld, enemys, attr, own_index, obj_tg) {
 }
 
 // 挑発使用中の敵indexを取得
-function getTauntingEnemy(enemys){
+function getTauntingEnemy(fld, enemys){
 	var taunt_n = enemys.indexOf($.grep(enemys, function(e){
 		return $.grep(e.turn_effect, function(te){
 				return te.is_taunt;
@@ -48,7 +48,7 @@ function getRandomTargetingWithBersek(fld, enemys, own_index){
 		return e.panic_target && e.isberserk;
 	}).length > 0;
 	if(is_rndberserk){
-		return Math.floor(dmg_generate_rand(0, 3)) % 3;
+		return Math.floor(dmg_generate_rand(fld, 0, 3)) % 3;
 	} else {
 		return -1;
 	}
@@ -67,7 +67,7 @@ function getRandomTargetingWithPanicshout(fld, enemys, own_index){
 				alives.push(e.flags.isAliveWhenAnswer - 1);
 			}
 		});
-		var tmp = Math.floor(dmg_generate_rand(0, alives.length)) % alives.length;
+		var tmp = Math.floor(dmg_generate_rand(fld, 0, alives.length)) % alives.length;
 		tg = alives[tmp];
 		return tg;
 	} else {
@@ -85,7 +85,7 @@ function getManualTargeting(fld, enemys, attr, own_index){
 		else { tg--; }
 	}
 	if (tg != -1){
-		var sumcon = sumContractDamages(enemys[tg]);
+		var sumcon = sumContractDamages(fld, enemys[tg]);
 		if(enemys[tg] && enemys[tg].nowhp > sumcon) {
 			return tg;
 		}
@@ -105,7 +105,7 @@ function getAutoTargeting(fld, enemys, attr, own_index, obj_tg){
 	];
 	// 敵リストから死亡した敵を抜いてコピーを生成する
 	var e_copy = $.grep(enemys, function(e){
-		var contdmg = sumContractDamages(e);
+		var contdmg = sumContractDamages(fld, e);
 		return (e.nowhp - contdmg) > 0;
 	});
 	// 各処理を順番に実行する
@@ -118,12 +118,12 @@ function getAutoTargeting(fld, enemys, attr, own_index, obj_tg){
 	var l = e_copy.length;
 	if(l >= 2){
 		// 最終候補が複数: その中からランダム
-		var tg = Math.floor(dmg_generate_rand(0, l)) % l;
+		var tg = Math.floor(dmg_generate_rand(fld, 0, l)) % l;
 		return enemys.indexOf(e_copy[tg]);
 	} else if(l <= 0){
 		// 最終候補がない: 全ての敵からランダム
 		var l = enemys.length;
-		var tg = Math.floor(dmg_generate_rand(0, l)) % l;
+		var tg = Math.floor(dmg_generate_rand(fld, 0, l)) % l;
 		return tg;
 	} else {
 		// 最終候補が1つ: それを返す
@@ -141,8 +141,8 @@ function getOverKillCheck(fld, enemys, attr, own_index, obj_tg){
 			var as_i = obj_tg.as_pos[idx];
 			var as = obj_tg.as_list[as_i];
 			var rate = obj_tg.as_rate[as_i];
-			var sumcon = sumContractDamages(e);
-			var dmg = calculate_damage(e, obj_tg.now, attr, rate, as.atkn, obj_tg.panel, obj_tg.chain, -1, own_index, idx, false, 1, true).damage;
+			var sumcon = sumContractDamages(fld, e);
+			var dmg = calculate_damage(fld, e, obj_tg.now, attr, rate, as.atkn, obj_tg.panel, obj_tg.chain, -1, own_index, idx, false, 1, true).damage;
 			return (e.nowhp - sumcon - dmg) <= 0;
 		}
 		return false;

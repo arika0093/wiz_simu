@@ -1,14 +1,14 @@
 // 今戦っている相手の配列を返す
-function GetNowBattleEnemys(i) {
+function GetNowBattleEnemys(fld, i) {
 	if (i === undefined) {
-		return Field.Enemys.Data[Field.Status.nowbattle - 1].enemy;
+		return fld.Enemys.Data[fld.Status.nowbattle - 1].enemy;
 	} else {
-		return Field.Enemys.Data[Field.Status.nowbattle - 1].enemy[i];
+		return fld.Enemys.Data[fld.Status.nowbattle - 1].enemy[i];
 	}
 }
 
 // 敵出現順番生成
-function CreateEnemypopup(qst) {
+function CreateEnemypopup(fld, qst) {
 	var poplist = [];
 	var pop_i = [];
 	for (var t = 0; t < qst.aprnum; t++) {
@@ -35,9 +35,9 @@ function CreateEnemypopup(qst) {
 }
 
 // 全滅確認
-function is_allkill() {
+function is_allkill(fld) {
 	var i_allkill = true;
-	var enemys = GetNowBattleEnemys();
+	var enemys = GetNowBattleEnemys(fld);
 	for (var i = 0; i < enemys.length; i++) {
 		// 全部の敵を倒してるかどうか判定する
 		i_allkill = (i_allkill && enemys[i].nowhp <= 0);
@@ -46,9 +46,9 @@ function is_allkill() {
 }
 
 // 味方全滅確認
-function is_ally_alldeath() {
+function is_ally_alldeath(fld) {
 	var allyd = true;
-	var nows = Field.Allys.Now;
+	var nows = fld.Allys.Now;
 	for (var i = 0; i < nows.length; i++) {
 		// 全部の敵を倒してるかどうか判定する
 		allyd = (allyd && nows[i].nowhp <= 0);
@@ -57,41 +57,41 @@ function is_ally_alldeath() {
 }
 
 // 敵を全滅させたか確認し、全滅してたら次の敵を出現させる
-function allkill_check(is_ssfinish) {
-	var st = Field.Status;
-	var enemy = GetNowBattleEnemys();
+function allkill_check(fld, is_ssfinish) {
+	var st = fld.Status;
+	var enemy = GetNowBattleEnemys(fld);
 	// 敵全滅確認
-	var e_ak = is_allkill();
+	var e_ak = is_allkill(fld);
 	// 蘇生処理確認
 	if (e_ak) {
-		var rev_rst = enemy_reverse_check();
+		var rev_rst = enemy_reverse_check(fld);
 		e_ak = !rev_rst;
 	}
 	// 全ての敵を倒していたら
 	if (e_ak) {
 		// 全終了確認
-		if (Field.Enemys.Popuplist.length <= st.nowbattle) {
+		if (fld.Enemys.Popuplist.length <= st.nowbattle) {
 			// 終了処理開始
 			st.finish = true;
-			Field.log_push(st.nowbattle + "戦目突破(" + st.nowturn + "ターン)");
-			Field.log_push("QUEST CLEARED! (Total: " + (st.totalturn + 1) + "turn)");
+			fld.log_push(st.nowbattle + "戦目突破(" + st.nowturn + "ターン)");
+			fld.log_push("QUEST CLEARED! (Total: " + (st.totalturn + 1) + "turn)");
 			// ログにSpeedscoreを記載
-			Field.Status.speedscore = actionSpScoreAnalyze(st.totalturn + 1, durturn_string(), st.act_log);
-			Field.log_push("ACTION-FACTOR: " + Field.Status.speedscore, "orange");
+			fld.Status.speedscore = actionSpScoreAnalyze(st.totalturn + 1, durturn_string(fld), st.act_log);
+			fld.log_push("ACTION-FACTOR: " + fld.Status.speedscore, "orange");
 		} else {
-			Field.log_push(st.nowbattle + "戦目突破(" + st.nowturn + "ターン)");
+			fld.log_push(st.nowbattle + "戦目突破(" + st.nowturn + "ターン)");
 			// 次に進む
 			st.nowbattle += 1;
 			// タゲ全リセット
-			target_allselect(-1);
+			target_allselect(fld, -1);
 		}
 		// パネル付与効果を全部リセット
 		st.panel_add = [];
 		//クエスト依存パネル効果の設定
-		if (Field.Quest.panel_effect) {
-			var peff = Field.Quest.panel_effect;
+		if (fld.Quest.panel_effect) {
+			var peff = fld.Quest.panel_effect;
 			for (var i = 0; i < peff.length; i++) {
-				ss_object_done(Field, 0, peff[i]);
+				ss_object_done(fld, 0, peff[i]);
 			}
 		}
 		st.durturn.push({ ssfin: is_ssfinish, turn: st.nowturn });
@@ -104,9 +104,9 @@ function allkill_check(is_ssfinish) {
 }
 
 // 敵攻撃の対象配列を生成する
-function gen_enemytarget_array(tnum, atkn, tgtype, nows) {
+function gen_enemytarget_array(fld, tnum, atkn, tgtype, nows) {
 	var gen_ar = [];
-	var deck_n = Field.Allys.Deck.length;
+	var deck_n = fld.Allys.Deck.length;
 	var tgtype_isfunc = (tgtype !== true && tgtype);
 	for (var an = 0; an < atkn; an++) {
 		// 攻撃対象を毎回変えないなら最初の要素をコピーする
@@ -117,7 +117,7 @@ function gen_enemytarget_array(tnum, atkn, tgtype, nows) {
 		var tg_arr = [];
 		// 生きてる味方を追加
 		for (var i = 0; i < deck_n; i++) {
-			var nw = nows ? nows[i] : Field.Allys.Now[i];
+			var nw = nows ? nows[i] : fld.Allys.Now[i];
 			if (nw.nowhp > 0) {
 				tg_arr.push(i);
 			}
@@ -151,10 +151,10 @@ function gen_enemytarget_array(tnum, atkn, tgtype, nows) {
 }
 
 // 敵の攻撃処理を行う
-function enemy_move() {
+function enemy_move(fld) {
 	// 敵行動開始時の味方の状況を取得
-	var nows_smove = $.extend(true, [], Field.Allys.Now);
-	var enemys = GetNowBattleEnemys();
+	var nows_smove = $.extend(true, [], fld.Allys.Now);
+	var enemys = GetNowBattleEnemys(fld);
 	var e_moves = [];
 	for (var i = 0; i < enemys.length; i++) {
 		// 行動が定義されてないなら飛ばす
@@ -171,7 +171,7 @@ function enemy_move() {
 			e.flags.isdelay = false;
 			// 取得
 			e_moves[i] = {
-				move: get_enemy_move_skill(e),
+				move: get_enemy_move_skill(fld, e),
 				index: i
 			}
 		} else {
@@ -199,22 +199,22 @@ function enemy_move() {
 		var move = e_moves[i].move;
 		var index = e_moves[i].index;
 		// 力溜め状態解除
-		turneff_break(GetNowBattleEnemys(index).turn_effect, index, "force_reservoir");
+		turneff_break(fld, GetNowBattleEnemys(fld, index).turn_effect, index, "force_reservoir");
 		// e_moves[i]が関数でない(=配列である)場合
 		if (move.caller === undefined) {
 			for (var mi = 0; mi < move.length; mi++) {
-				move[mi](Field, index, nows_smove);
+				move[mi](fld, index, nows_smove);
 			}
 		} else {
-			move(Field, index, nows_smove);
+			move(fld, index, nows_smove);
 		}
 	}
 	// スキカン確認
-	turneff_check_skillcounter(Field);
+	turneff_check_skillcounter(fld);
 }
 
 // 条件に適した敵スキルを取得する
-function get_enemy_move_skill(e) {
+function get_enemy_move_skill(fld, e) {
 	// 怒り時は怒りスキルを参照する
 	var em = (e.move.isangry && e.move.on_move_angry) ? e.move.on_move_angry : e.move.on_move;
 	// 行動番号が定義されてないなら最初に
@@ -254,26 +254,26 @@ function get_enemy_move_skill(e) {
 }
 
 // 敵出現時の先制攻撃処理を行う
-function enemy_popup_proc(){
-	var enemys = GetNowBattleEnemys();
+function enemy_popup_proc(fld){
+	var enemys = GetNowBattleEnemys(fld);
 	for (var i = 0; i < enemys.length; i++) {
 		if (enemys[i].move && enemys[i].move.on_popup) {
 			for (var j = 0; j < enemys[i].move.on_popup.length; j++) {
-				enemys[i].move.on_popup[j].move(Field, i);
+				enemys[i].move.on_popup[j].move(fld, i);
 			}
 		}
 	}
 	// 味方スキル反射の処理を行う
-	turneff_check_skillcounter(Field);
+	turneff_check_skillcounter(fld);
 	// 怒り確認
-	enemy_damage_switch_check("damage_switch", false, true, false);
+	enemy_damage_switch_check(fld, "damage_switch", false, true, false);
 }
 
 // 敵ダメージなどに反応するあれこれの制御
 // type: 取得するタイプ, is_ss: SS発動時かどうか, is_preem: 先制行動かどうか, is_reset: フラグをリセットするか
-function enemy_damage_switch_check(type, is_ss, is_preem, is_reset) {
+function enemy_damage_switch_check(fld, type, is_ss, is_preem, is_reset) {
 	var rst = false;
-	var enemys = GetNowBattleEnemys();
+	var enemys = GetNowBattleEnemys(fld);
 	type = type || "damage_switch";
 	$.each(enemys, function (i, e) {
 		if (e.turn_effect.length > 0) {
@@ -283,8 +283,8 @@ function enemy_damage_switch_check(type, is_ss, is_preem, is_reset) {
 			for (var j = 0; j < skillct.length; j++) {
 				var s = skillct[j];
 				var ischeck = e.flags.on_damage || s.oncond_anytime;
-				if (ischeck && s.cond(Field, i, is_ss, is_preem) && --s.on_cond.count <= 0) {
-					s.on_cond.move(Field, i);
+				if (ischeck && s.cond(fld, i, is_ss, is_preem) && --s.on_cond.count <= 0) {
+					s.on_cond.move(fld, i);
 					s.on_cond.count = s.on_cond.interval;
 					rst = true;
 				}
@@ -295,19 +295,19 @@ function enemy_damage_switch_check(type, is_ss, is_preem, is_reset) {
 		}
 	});
 	if (rst) {
-		turneff_check_skillcounter(Field);
+		turneff_check_skillcounter(fld);
 	}
 	return rst;
 }
 
 // 敵復活処理を行う関数
-function enemy_reverse_check() {
+function enemy_reverse_check(fld) {
 	// 現在の戦闘を取得
-	var nd = Field.Enemys.Data[Field.Status.nowbattle - 1];
+	var nd = fld.Enemys.Data[fld.Status.nowbattle - 1];
 	// 復活先が指定されているなら置き換え
-	if (isexist_enemy_rev()) {
+	if (isexist_enemy_rev(fld)) {
 		// 蘇生先のデータ取得
-		var rd = Field.Enemys.revData[nd.rev_index];
+		var rd = fld.Enemys.revData[nd.rev_index];
 		// 入れ替え
 		nd.enemy[0] = rd;
 		if (nd.enemy[2]) {
@@ -317,19 +317,19 @@ function enemy_reverse_check() {
 			delete nd.enemy.splice(1, 1);
 		}
 		nd.rev_check = true;
-		Field.log_push("Enemy[" + (nd.rev_used + 1) + "]: 復活発動");
+		fld.log_push("Enemy[" + (nd.rev_used + 1) + "]: 復活発動");
 		// フラグリセット
-		initialize_allys_flags(Field.Allys.Now);
+		initialize_allys_flags(fld, fld.Allys.Now);
 		// 先制行動
-		enemy_popup_proc();
+		enemy_popup_proc(fld);
 		return true;
 	}
 	return false;
 }
 
 // 敵復活が存在するかどうかの確認関数
-function isexist_enemy_rev() {
+function isexist_enemy_rev(fld) {
 	// 現在の戦闘を取得
-	var nd = Field.Enemys.Data[Field.Status.nowbattle - 1];
+	var nd = fld.Enemys.Data[fld.Status.nowbattle - 1];
 	return !nd.rev_check && nd.rev_index !== undefined;
 }

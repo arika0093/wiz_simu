@@ -92,7 +92,7 @@ var Field = {
 		d_log: [],
 	},
 	log_push: function (text, color) {
-		var fs = Field.Status;
+		var fs = this.Status;
 		if (fs.log[fs.totalturn] === undefined) {
 			fs.log[fs.totalturn] = [];
 		}
@@ -100,7 +100,7 @@ var Field = {
 		fs.log[fs.totalturn].push(text);
 	},
 	detail_log: function (fc, title, text) {
-		var fs = Field.Status;
+		var fs = this.Status;
 		fs.d_log.push("#(battle: " + fs.nowbattle +
 			", turn: " + (fs.totalturn+1) +
 			"):{ " + text + "}"
@@ -211,10 +211,10 @@ $(function () {
 				now.turn_effect = [];
 				now.after_turn = [];
 				// SS状態をリセット
-				now.ss_current = has_fastnum(ally);	// SSチャージターン
+				now.ss_current = has_fastnum(Field, ally);	// SSチャージターン
 				now.ss_isfirst = true;	// SSをまだ発動していないかどうか
 				now.ss_isboost = false;	// スキブを受けたかどうか
-				now.islegend = (get_ssturn(card, now)[1] == 0); // Lモードかどうか(card.islegendとは意味合いが違うので注意)
+				now.islegend = (get_ssturn(Field, card, now)[1] == 0); // Lモードかどうか(card.islegendとは意味合いが違うので注意)
 				now.lgstart_turn = -1;
 			}
 			// 空要素を詰める
@@ -239,7 +239,7 @@ $(function () {
 			func_reawake(Field, als.Deck, als.Now);
 			// チェインガード潜在の反映(助っ人込み)
 			for(var i in als.Deck){
-				var has_chguard = pickup_awakes(als.Deck[i], "awake_chainguard", false).length > 0;
+				var has_chguard = pickup_awakes(Field, als.Deck[i], "awake_chainguard", false).length > 0;
 				if(has_chguard){
 					Field.Status.chain_awguard += 1;
 				}
@@ -247,7 +247,7 @@ $(function () {
 			// チェインブースト処理(助っ人は含めないので上と別処理)
 			var dck = als.Deck;
 			for (var i = 0; i < dck.length; i++) {
-				var aws = pickup_awakes(dck[i], "awake_chboost", false);
+				var aws = pickup_awakes(Field, dck[i], "awake_chboost", false);
 				var add_chain = 0;
 				$.each(aws, function (j, f) {
 					add_chain += f.add;
@@ -267,7 +267,7 @@ $(function () {
 			// -------------------------
 			// 出現順番
 			var fes = Field.Enemys;
-			fes.Popuplist = CreateEnemypopup(simQuest);
+			fes.Popuplist = CreateEnemypopup(Field, simQuest);
 			for (var i = 0; i < fes.Popuplist.length; i++) {
 				var popup_enemys = simQuest.data[fes.Popuplist[i]];
 				// 敵ステ
@@ -299,9 +299,9 @@ $(function () {
 				}
 			}
 			// タゲリセット
-			target_allselect(-1);
+			target_allselect(Field, -1);
 			// 敵の処理
-			enemy_popup_proc();
+			enemy_popup_proc(Field);
 			// -------------------------
 			//クエスト依存パネル効果の設定
 			if (Field.Quest.panel_effect) {
@@ -325,7 +325,7 @@ $(function () {
 				heightStyle: "content",
 				collapsible: true
 			});
-			sim_show();
+			sim_show(Field);
 		} else {
 			$("#sim_info_status").html("#ERROR: URLが正しくありません。");
 			$(".panel_button").attr("disabled", "disabled");
@@ -352,49 +352,49 @@ function calcLvStatus(nowLv, maxLv, statusAt1, maxStatus, mana) {
 }
 
 // 次のターンに進む
-function nextturn(is_ssfin) {
-	var f_st = Field.Status;
+function nextturn(fld, is_ssfin) {
+	var f_st = fld.Status;
 	// 烈眼ダメージ
-	retsugan_check(is_ssfin);
+	retsugan_check(fld, is_ssfin);
 	// 効果の継続確認
-	ss_continue_effect_check(is_ssfin);
-	turn_effect_check(false, is_ssfin);
-	enemy_turn_effect_check(false);
+	ss_continue_effect_check(fld, is_ssfin);
+	turn_effect_check(fld, false, is_ssfin);
+	enemy_turn_effect_check(fld, false);
 	// 怒り確認
-	enemy_damage_switch_check("damage_switch", false, false, false);
+	enemy_damage_switch_check(fld, "damage_switch", false, false, false);
 	// 全滅していなかったら効果ターンを減少
-	reduce_turneffect(is_ssfin);
-	turn_effect_check(true, is_ssfin);	// 再度チェックをいれる(バグるかも)
-	enemy_turn_effect_check(true);
+	reduce_turneffect(fld, is_ssfin);
+	turn_effect_check(fld, true, is_ssfin);	// 再度チェックをいれる(バグるかも)
+	enemy_turn_effect_check(fld, true);
 	// 総ダメージ出力
-	Field.log_push("TURN TOTAL DAMAGE: " + Field.Status.turn_dmg, "blue");
-	Field.Status.turn_dmg = 0;
+	fld.log_push("TURN TOTAL DAMAGE: " + fld.Status.turn_dmg, "blue");
+	fld.Status.turn_dmg = 0;
 
 	// 全滅確認
-	var killed = allkill_check(is_ssfin);
+	var killed = allkill_check(fld, is_ssfin);
 	if (killed && !f_st.finish) {
 		// 戦後回復処理
-		var abh = cards_heal_afterbattle(Field.Allys.Deck, Field.Allys.Now);
-		var nows = Field.Allys.Now;
+		var abh = cards_heal_afterbattle(fld, fld.Allys.Deck, fld.Allys.Now);
+		var nows = fld.Allys.Now;
 		if (abh > 0) {
-			for (var i = 0; i < Field.Allys.Deck.length; i++) {
-				heal_ally(Field, Math.floor(nows[i].maxhp * abh), i);
+			for (var i = 0; i < fld.Allys.Deck.length; i++) {
+				heal_ally(fld, Math.floor(nows[i].maxhp * abh), i);
 			}
-			Field.log_push("戦後回復: " + (abh * 100) + "%");
+			fld.log_push("戦後回復: " + (abh * 100) + "%");
 		}
 		// 戦闘開始前処理
-		if (Field.Quest.battle_before) {
-			var bbef = Field.Quest.battle_before;
+		if (fld.Quest.battle_before) {
+			var bbef = fld.Quest.battle_before;
 			for (var i = 0; i < bbef.length; i++) {
 				if(bbef[i].isev){
-					ss_object_done(Field, -1, bbef[i].proc);
+					ss_object_done(fld, -1, bbef[i].proc);
 				}
 			}
 		}
 		// 出現前にフラグリセット
-		initialize_allys_flags(nows);
+		initialize_allys_flags(fld, nows);
 		// ここで新しい敵の処理を行う
-		enemy_popup_proc();
+		enemy_popup_proc(fld);
 	}
 	// チェイン状態の確認
 	if (f_st.chain_status != 0) {
@@ -403,7 +403,7 @@ function nextturn(is_ssfin) {
 		}
 		if (f_st.chainstat_turn == 0) {
 			f_st.chain_status = 0;
-			Field.log_push("Status: チェイン状態解除");
+			fld.log_push("Status: チェイン状態解除");
 		}
 	}
 	// SSで全滅させてない or 全ての敵を全滅
@@ -420,35 +420,35 @@ function nextturn(is_ssfin) {
 		}
 	}
 	// 全終了してたらサーバーに結果送信
-	if (Field.Status.finish && !Field.Status.fin_timeup && !Field.Status.isautomode) {
-		actl_send_result(function (rst) {
+	if (fld.Status.finish && !fld.Status.fin_timeup && !fld.Status.isautomode) {
+		actl_send_result(fld, function (rst) {
 			var js = JSON.parse(rst);
-			Field.Status.result_enc = js.result_enc;
-			Field.Status.result_id = Number(js.result_id);
+			fld.Status.result_enc = js.result_enc;
+			fld.Status.result_id = Number(js.result_id);
 			$("#dialog_simfinish_popup").dialog("open");
 			return true;
 		});
 	}
 	// フラグの初期化
-	initialize_allys_flags(Field.Allys.Now);
-	Field.Status.panel_guard = {
+	initialize_allys_flags(fld, fld.Allys.Now);
+	fld.Status.panel_guard = {
 		attr: [],
 		rate: 0,
 	};
 	// チャージスキル処理
-	turneff_chargeskill_check();
+	turneff_chargeskill_check(fld);
 	// 助っ人関連の処理
-	helper_change_process();
+	helper_change_process(fld);
 	// seed リセット
-	Field.Status.seed = 0;
+	fld.Status.seed = 0;
 	// ログ保存
-	Field_log.save(f_st.totalturn, Field);
+	Field_log.save(f_st.totalturn, fld);
 	Field_log._removeover(f_st.totalturn);
 	Field_log.is_ssindex = false;
 }
 
 // 味方フラグを初期化する
-function initialize_allys_flags(nows) {
+function initialize_allys_flags(fld, nows) {
 	$.each(nows, function (i, e) {
 		e.flags.enemy_counter = [];
 		e.flags.skill_counter = [];
@@ -458,12 +458,12 @@ function initialize_allys_flags(nows) {
 
 // 助っ人交代の処理
 // (別ファイルを作るには内容が少ないのでここに記載)
-function helper_change_process() {
-	var fs = Field.Status;
-	var deck = Field.Allys.Deck;
-	var nows = Field.Allys.Now;
+function helper_change_process(fld) {
+	var fs = fld.Status;
+	var deck = fld.Allys.Deck;
+	var nows = fld.Allys.Now;
 	// チェックの必要がないなら何もしない
-	if (!fs.is_helper || is_ally_alldeath()) {
+	if (!fs.is_helper || is_ally_alldeath(fld)) {
 		return;
 	}
 	for (var i = 0; i < nows.length ; i++) {
@@ -473,21 +473,21 @@ function helper_change_process() {
 		if (nows[i].nowhp <= 0) {
 			// 入れ替え(Deck)
 			var sw_d = deck[i];
-			Field.Allys.Deck[i] = deck["helper"];
-			Field.Allys.Deck["helper"] = sw_d;
+			fld.Allys.Deck[i] = deck["helper"];
+			fld.Allys.Deck["helper"] = sw_d;
 			// 入れ替え(Now)
 			var sw_n = nows[i];
 			nows[i] = nows["helper"];
 			nows["helper"] = sw_n;
 			// 処理(L化)
 			nows[i].ss_current = 999;
-			legend_timing_check(Field.Allys.Deck, Field.Allys.Now, i);
+			legend_timing_check(fld, fld.Allys.Deck, fld.Allys.Now, i);
 			// フラグON
 			fs.is_hlpchanged = true;
 			fs.hlpchanged_index = i;
-			Field.log_push("Unit[" + (i + 1) + "]: 助っ人交代");
+			fld.log_push("Unit[" + (i + 1) + "]: 助っ人交代");
 			// 潜在をかけ直す
-			//func_reawake(Field, Field.Allys.Deck, Field.Allys.Now, true);
+			//func_reawake(fld, fld.Allys.Deck, fld.Allys.Now, true);
 		}
 	}
 

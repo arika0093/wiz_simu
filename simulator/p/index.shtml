@@ -57,8 +57,8 @@
 			<p id="sim_info_status"></p>
 			<p id="sim_turns"></p>
 			<div class="sim_result_links">
-				<a id="sim_share" onclick="tweet_result()">結果をツイートする</a>
-				<a id="sim_restart" onclick="load_field(0)">始めからやり直す</a>
+				<a id="sim_share" onclick="tweet_result(null)">結果をツイートする</a>
+				<a id="sim_restart" onclick="load_field(null,0)">始めからやり直す</a>
 				<a id="sim_logview" onclick="log_view()">ログを確認する</a>
                 <a id="sim_rndview" onclick="rand_checker()">乱数確認ツール</a>
 				<a id="sim_decksel" onclick="back_decksel()">デッキ選択画面に戻る</a>
@@ -68,7 +68,7 @@
 			<div class="ally clearfix" id="ally01">
 				<div class="attr_none" id="ally01_attr_main">.</div>
 				<div class="attr_none" id="ally01_attr_sub">.</div>
-				<div class="ally_image" onclick="show_allystat(0)">
+				<div class="ally_image" onclick="show_allystat(null,0)">
 					<img class="chara_img" id="ally01_img" src="/image/noimage.png" />
 					<img class="chara_teff" id="ally01_teff" src="/image/noimage.png" />
 				</div>
@@ -81,7 +81,7 @@
 			<div class="ally clearfix" id="ally02">
 				<div class="attr_none" id="ally02_attr_main">.</div>
 				<div class="attr_none" id="ally02_attr_sub">.</div>
-				<div class="ally_image" onclick="show_allystat(1)">
+				<div class="ally_image" onclick="show_allystat(null,1)">
 					<img class="chara_img" id="ally02_img" src="/image/noimage.png" />
 					<img class="chara_teff" id="ally02_teff" src="/image/noimage.png" />
 				</div>
@@ -94,7 +94,7 @@
 			<div class="ally clearfix" id="ally03">
 				<div class="attr_none" id="ally03_attr_main">.</div>
 				<div class="attr_none" id="ally03_attr_sub">.</div>
-				<div class="ally_image" onclick="show_allystat(2)">
+				<div class="ally_image" onclick="show_allystat(null,2)">
 					<img class="chara_img" id="ally03_img" src="/image/noimage.png" />
 					<img class="chara_teff" id="ally03_teff" src="/image/noimage.png" />
 				</div>
@@ -107,7 +107,7 @@
 			<div class="ally clearfix" id="ally04">
 				<div class="attr_none" id="ally04_attr_main">.</div>
 				<div class="attr_none" id="ally04_attr_sub">.</div>
-				<div class="ally_image" onclick="show_allystat(3)">
+				<div class="ally_image" onclick="show_allystat(null,3)">
 					<img class="chara_img" id="ally04_img" src="/image/noimage.png" />
 					<img class="chara_teff" id="ally04_teff" src="/image/noimage.png" />
 				</div>
@@ -120,7 +120,7 @@
 			<div class="ally clearfix" id="ally05">
 				<div class="attr_none" id="ally05_attr_main">.</div>
 				<div class="attr_none" id="ally05_attr_sub">.</div>
-				<div class="ally_image" onclick="show_allystat(4)">
+				<div class="ally_image" onclick="show_allystat(null,4)">
 					<img class="chara_img" id="ally05_img" src="/image/noimage.png" />
 					<img class="chara_teff" id="ally05_teff" src="/image/noimage.png" />
 				</div>
@@ -135,7 +135,7 @@
 			<div class="enemy clearfix" id="enemy01">
 				<div class="attr_none" id="enemy01_attr_main"></div>
 				<div class="attr_none" id="enemy01_attr_sub"></div>
-				<div class="enemy_image" ondblclick="target_allselect(0)">
+				<div class="enemy_image" ondblclick="target_allselect(null,0)">
 					<img class="chara_img" id="enemy01_img" src="/image/noimage.png" />
 					<img class="chara_teff" id="enemy01_teff" src="/image/noimage.png" />
 				</div>
@@ -147,7 +147,7 @@
 			<div class="enemy clearfix enemy_5" id="enemy04">
 				<div class="attr_none" id="enemy04_attr_main"></div>
 				<div class="attr_none" id="enemy04_attr_sub"></div>
-				<div class="enemy_image" ondblclick="target_allselect(3)">
+				<div class="enemy_image" ondblclick="target_allselect(null,3)">
 					<img class="chara_img" id="enemy04_img" src="/image/noimage.png" />
 					<img class="chara_teff" id="enemy04_teff" src="/image/noimage.png" />
 				</div>
@@ -159,7 +159,7 @@
 			<div class="enemy clearfix" id="enemy02">
 				<div class="attr_none" id="enemy02_attr_main"></div>
 				<div class="attr_none" id="enemy02_attr_sub"></div>
-				<div class="enemy_image" ondblclick="target_allselect(1)">
+				<div class="enemy_image" ondblclick="target_allselect(null,1)">
 					<img class="chara_img" id="enemy02_img" src="/image/noimage.png" />
 					<img class="chara_teff" id="enemy02_teff" src="/image/noimage.png" />
 				</div>
@@ -171,7 +171,7 @@
 			<div class="enemy clearfix enemy_5" id="enemy05">
 				<div class="attr_none" id="enemy05_attr_main"></div>
 				<div class="attr_none" id="enemy05_attr_sub"></div>
-				<div class="enemy_image" ondblclick="target_allselect(4)">
+				<div class="enemy_image" ondblclick="target_allselect(null,4)">
 					<img class="chara_img" id="enemy05_img" src="/image/noimage.png" />
 					<img class="chara_teff" id="enemy05_teff" src="/image/noimage.png" />
 				</div>
@@ -183,7 +183,7 @@
 			<div class="enemy clearfix" id="enemy03">
 				<div class="attr_none" id="enemy03_attr_main"></div>
 				<div class="attr_none" id="enemy03_attr_sub"></div>
-				<div class="enemy_image" ondblclick="target_allselect(2)">
+				<div class="enemy_image" ondblclick="target_allselect(null,2)">
 					<img class="chara_img" id="enemy03_img" src="/image/noimage.png" />
 					<img class="chara_teff" id="enemy03_teff" src="/image/noimage.png" />
 				</div>
@@ -201,7 +201,7 @@
 			</div>
 			<div class="attack_target">
 				<label for="attack_target_sel">攻撃順</label>
-				<select id="attack_target_sel" onchange="target_allselect()">
+				<select id="attack_target_sel" onchange="target_allselect(null)">
 					<option value="-1">自動</option>
 					<option value="0">左</option>
 					<option value="3">左奥</option>
@@ -242,8 +242,8 @@
 
 			</div>
 			<div class="field_move clearfix">
-				<button disabled="disabled" class="field_mov_button" id="fld_move_before" onclick="load_field(-1)">1ターン前に戻る</button>
-				<button disabled="disabled" class="field_mov_button" id="fld_move_after" onclick="load_field(1)">1ターン先に進む</button>
+				<button disabled="disabled" class="field_mov_button" id="fld_move_before" onclick="load_field(null,-1)">1ターン前に戻る</button>
+				<button disabled="disabled" class="field_mov_button" id="fld_move_after" onclick="load_field(null,1)">1ターン先に進む</button>
 			</div>
 		</div>
 		<div class="ally_info">
@@ -401,7 +401,6 @@
     <script type="text/javascript" charset="UTF-8" src="/js/data/skill_enemy.js?        <!--#flastmod virtual='/js/data/skill_enemy.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/data/quests.php"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/data/cards.js?              <!--#flastmod virtual='/js/data/cards.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/dynamic.js?                 <!--#flastmod virtual='/js/dynamic.js'-->"></script>
 	<!-- 処理群(データ群に依存する) -->
     <script type="text/javascript" charset="UTF-8" src="/js/deck/deckdata.js?           <!--#flastmod virtual='/js/deck/deckdata.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/initialize.js?    <!--#flastmod virtual='/js/simulator/initialize.js'-->"></script>

@@ -242,7 +242,7 @@ function schfl_grep_ss(obj, ss, card) {
 		rst = rst && schfl_string_match(ss.desc, obj.ss_name);
 	}
 	// 発動ターン確認
-	var fsturn = obj.ss_fastskl ? has_fastnum(card) : 0;
+	var fsturn = obj.ss_fastskl ? has_fastnum(undefined, card) : 0;
 	rst = rst && (obj.ss_maxturn < 0 || obj.ss_maxturn >= ss.turn - fsturn);
 	// 各SS定義についてチェック
 	var checksheet = $.extend(true, [], obj.ss_types);
@@ -378,7 +378,7 @@ function schfl_genhtml_skill(disp, skl, c, is_ss) {
 	}
 	if (is_ss) {
 		// SS
-		var f = has_fastnum(c);
+		var f = has_fastnum(undefined, c);
 		if (c.islegend) {
 			skill_t += c.ss1.turn + "-" + c.ss2.turn;
 			if (f > 0) {

@@ -80,8 +80,8 @@
         <script type="text/javascript" charset="UTF-8" src="/js/data/skill_enemy.js?        <!--#flastmod virtual='/js/data/skill_enemy.js'-->"></script>
         <script type="text/javascript" charset="UTF-8" src="/js/data/quests.php"></script>
         <script type="text/javascript" charset="UTF-8" src="/js/data/cards.js?              <!--#flastmod virtual='/js/data/cards.js'-->"></script>
-        <script type="text/javascript" charset="UTF-8" src="/js/simulator/quest_detail.js"></script>
-        <script type="text/javascript" charset="UTF-8" src="/js/simulator/srdeckview.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/q_detail/quest_detail.js"></script>
+        <script type="text/javascript" charset="UTF-8" src="/js/share_deck/srdeckview.js"></script>
     </div>
 </body>
 </html>

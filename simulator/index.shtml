@@ -345,7 +345,6 @@
     <script type="text/javascript" charset="UTF-8" src="/js/data/skill_enemy.js?        <!--#flastmod virtual='/js/data/skill_enemy.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/data/quests.php"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/data/cards.js?              <!--#flastmod virtual='/js/data/cards.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/dynamic.js?                 <!--#flastmod virtual='/js/dynamic.js'-->"></script>
 	<!-- 処理群(データ群に依存する) -->
     <script type="text/javascript" charset="UTF-8" src="/js/deck/deckdata.js?           <!--#flastmod virtual='/js/deck/deckdata.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/deck/decksuggest.js?        <!--#flastmod virtual='/js/deck/decksuggest.js'-->"></script>

@@ -136,8 +136,8 @@ function makeQD(id) {
 			resStr += "</div>"
 			resStr += "<div class='bcks'>" +
 				"<a class='sim_go back_category' href='#'>試走する</a>" +
-				"<a class='back_category' href='/simulator/d/?qid=" + Quest.id + "'>みんなの投稿デッキを見る</a>" +
-				"<a class='back_category' href='/simulator/quest/?genre=" + Quest.category + "'>カテゴリ一覧に戻る</a></div>";
+				"<a class='back_category' href=" + Quest.id + "'/simulator/d?qid='>みんなの投稿デッキを見る</a>" +
+				"<a class='back_category' href=" + Quest.category + "'/simulator/quest?genre='>カテゴリ一覧に戻る</a></div>";
 			if (BattleNum % 2 == 0 && BattleNum < 4) {
 				resStr += adsence_html("clear:both;");
 			}
@@ -170,8 +170,8 @@ function makeQD(id) {
 				resStr += "</div>"
 				resStr += "<div class='bcks'>" +
 					"<a class='sim_go back_category' href='#'>試走する</a>" +
-					"<a class='back_category' href='/simulator/d/?id=" + Quest.id + "'>みんなの投稿デッキを見る</a>" +
-					"<a class='back_category' href='/simulator/quest/?genre=" + Quest.category + "'>カテゴリ一覧に戻る</a></div>";
+					"<a class='back_category' href=" + Quest.id + "'/simulator/d?id='>みんなの投稿デッキを見る</a>" +
+					"<a class='back_category' href=" + Quest.category + "'/simulator/quest?genre='>カテゴリ一覧に戻る</a></div>";
 				resStr += "</dd>";
 				return true;
 			});

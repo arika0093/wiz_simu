@@ -3,12 +3,12 @@
 //	rate: 倍率, atkn: 攻撃回数, pn: 踏んだパネル, ch: チェイン数, rnd: 乱数, 
 //	i: 味方の番号, e: 敵の番号, is_ss: SSかどうか, var_num: 分散対象数(未指定なら通常)
 //  added_frame: ダメージを与えたF数(未指定ならcontを使わず即付与)
-function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num, added_frame) {
+function attack_enemy(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num, added_frame) {
 	var con = enemy.contract_dmgs;
-	var consum = sumContractDamages(enemy);
+	var consum = sumContractDamages(fld, enemy);
 	var bef_hp = (enemy.nowhp - consum);
 	// ダメージ計算
-	var d_dat = calculate_damage(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num, false);
+	var d_dat = calculate_damage(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num, false);
 	var d = d_dat.damage;
 	var bef_ond = d;
 	
@@ -28,9 +28,9 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 	
 	// HPが0になりそうならターン効果を全て消す
 	if (enemy.nowhp <= consum) {
-		turneff_allbreak(enemy.turn_effect, e, "dead");
+		turneff_allbreak_enemy(fld, enemy.turn_effect, e);
 		// 撃破カウント
-		Field.Status.total_kill += 1;
+		fld.Status.total_kill += 1;
 	}
 	// ダメージフラグ
 	enemy.flags.on_damage = (enemy.flags.on_damage ? enemy.flags.on_damage+1 : 1);
@@ -41,13 +41,13 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 	var e_nowhp = (enemy.nowhp - consum);
 	var log_cc = (e_nowhp <= 0) && (bef_hp >= 1);
 	var l_t = "Unit[" + (i + 1) + "]: 敵[" + (e + 1) + "]へ" +
-		Field.Constants.Attr[atk_atr] + "攻撃( " + d +
+		fld.Constants.Attr[atk_atr] + "攻撃( " + d +
 		"ダメージ)(残: " + Math.max(e_nowhp, 0) + "/" + enemy.hp + ")" +
 		(log_cc ? "[超過: " + (d - bef_hp) + "]" : "");
-	Field.log_push(l_t, (log_cc ? "blue" : null));
+	fld.log_push(l_t, (log_cc ? "blue" : null));
 
 	// 詳細ログ
-	Field.detail_log("attack_enemy", "calculate",
+	fld.detail_log("attack_enemy", "calculate",
 		"Unit[" + (i+1) + "]: " +
 		"攻撃力(" + now.atk + (!is_ss ? "/2" : "") + ")" +
 		" * 倍率(" + rate + "+" + d_dat.as_enh + "+" + d_dat.sst_enh + ")" +
@@ -70,20 +70,20 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 //	rate: 倍率, atkn: 攻撃回数, pn: 踏んだパネル, ch: チェイン数, rnd: 乱数(未使用値),
 //	i: 味方の番号, e: 敵の番号, is_ss: SSかどうか, var_num: 分散対象数(未指定なら通常)
 //	is_simulate: 敵ワンパン判定時のみtrue
-function calculate_damage(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num, is_simulate) {
+function calculate_damage(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num, is_simulate) {
 	var d = 0;
 	// エンハ
 	var {as_enh, ss_enh, bss_enh, rfm_enh} = getEnhanceRate(now);
 	// 乱数決定
 	var rnd = 0;
 	if(!now.atk_rand){
-		rnd = now.atk_rand = damage_rand();
+		rnd = now.atk_rand = damage_rand(fld);
 	} else {
 		rnd = now.atk_rand;
 	}
 	// 最終補正値
-	var card = Field.Allys.Deck[i];
-	var lst_multi = Awake_get_multiple(card, now);
+	var card = fld.Allys.Deck[i];
+	var lst_multi = Awake_get_multiple(fld, card, now);
 	// 攻撃力
 	d = now.atk / (!is_ss ? 2 : 1);
 	// AS倍率、エンハ
@@ -113,7 +113,7 @@ function calculate_damage(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is
 		d *= 3;
 	}
 	// 攻撃時スキル確認
-	d = checkFunctionOnAttack(enemy, d, atk_atr, is_simulate);
+	d = checkFunctionOnAttack(fld, enemy, d, atk_atr, is_simulate);
 
 	// return object
 	return {
@@ -134,11 +134,12 @@ function getEnhanceRate(now){
 	var ss_enh = now.ss_enhance ? Number(now.ss_enhance.toFixed(2)) : 0;
 	var bss_enh = now.ss_boost_enhance ? Number(now.ss_boost_enhance.toFixed(2)) : 0;
 	var rfm_enh = now.ss_reinforcement_atk ? Number(now.ss_reinforcement_atk.toFixed(2)) : 0;
-	return {as_enh, ss_enh, bss_enh, rfm_enh};
+	var total = ArrayMath.sum([as_enh, ss_enh, bss_enh, rfm_enh]);
+	return {as_enh, ss_enh, bss_enh, rfm_enh, total};
 }
 
 // 攻撃時発動スキルのチェック
-function checkFunctionOnAttack(enemy, dmg, attr, is_berserk, is_simulate){
+function checkFunctionOnAttack(fld, enemy, dmg, attr, is_berserk, is_simulate){
 	if (enemy.turn_effect.length > 0) {
 		var skillct = $.grep(enemy.turn_effect, function(g){
 			return g.on_damage !== undefined;
@@ -149,35 +150,28 @@ function checkFunctionOnAttack(enemy, dmg, attr, is_berserk, is_simulate){
 			if (a.priority < b.priority) return +1;
 		})
 		for (var j = 0; j < skillct.length; j++) {
-			dmg = Math.round(skillct[j].on_damage(Field, dmg, attr, is_berserk, is_simulate));
+			dmg = Math.round(skillct[j].on_damage(fld, dmg, attr, is_berserk, is_simulate));
 		}
 	}
 	return dmg;
 }
 
 // contract_dmgsの総和を返す
-function sumContractDamages(enemy){
-	return function(arr) {
-		var sum = 0;
-		if(!arr){ return 0; }
-		arr.forEach(function(elm) {
-			sum += !elm.isreflected ? elm.damage : 0;
-		});
-		return sum;
-	}(enemy.contract_dmgs);
+function sumContractDamages(fld, enemy){
+	return ArrayMath.sum(enemy.contract_dmgs, e => !e.isreflected, "damage");
 }
 
 // 敵に固定ダメージを与える
-function constDamageToEnemy(enemy, dmg, i, e){
+function constDamageToEnemy(fld, enemy, dmg, i, e){
 	var bef_hp = enemy.nowhp;
 	
 	enemy.nowhp = Math.max(enemy.nowhp - dmg, 0);
 	
 	// HPが0になりそうならターン効果を全て消す
 	if (enemy.nowhp <= 0) {
-		turneff_allbreak(enemy.turn_effect, e, "dead");
+		turneff_allbreak_enemy(fld, enemy.turn_effect, e);
 		// 撃破カウント
-		Field.Status.total_kill += 1;
+		fld.Status.total_kill += 1;
 	}
 	// ダメージフラグ
 	enemy.flags.on_damage = (enemy.flags.on_damage ? enemy.flags.on_damage+1 : 1);
@@ -187,13 +181,13 @@ function constDamageToEnemy(enemy, dmg, i, e){
 	var log_cc = (e_nowhp <= 0) && (bef_hp >= 1);
 	var l_t = "Unit[" + (i + 1) + "]: 敵[" + (e + 1) + "]へ攻撃( " + dmg +
 		"ダメージ)(残: " + Math.max(e_nowhp, 0) + "/" + enemy.hp + ")";
-	Field.log_push(l_t);
+	fld.log_push(l_t);
 }
 
 // 味方にダメージを与える
-function damage_ally(dmg, index, neft_check) {
-	var card = Field.Allys.Deck[index];
-	var now = Field.Allys.Now[index];
+function damage_ally(fld, dmg, index, neft_check) {
+	var card = fld.Allys.Deck[index];
+	var now = fld.Allys.Now[index];
 	var bef = now.nowhp;
 	var aft = Math.floor(bef - dmg);
 	var minhp = 0;
@@ -202,7 +196,7 @@ function damage_ally(dmg, index, neft_check) {
 		for (var i = 0; i < now.turn_effect.length; i++) {
 			var e = now.turn_effect[i];
 			if (e.before_dead) {
-				e.before_dead(Field, index);
+				e.before_dead(fld, index);
 				minhp = now.nowhp;
 				// 発動したら取り除く
 				now.turn_effect.splice(i, 1);
@@ -211,19 +205,19 @@ function damage_ally(dmg, index, neft_check) {
 		}
 	}
 	// 九死一生の判定
-	if (neft_check && aft <= 0 && minhp == 0 && awake_neftjod_check(now, index, bef)) {
+	if (neft_check && aft <= 0 && minhp == 0 && awake_neftjod_check(fld, now, index, bef)) {
 		// 九死一生発動
 		minhp = 1;
-		Field.log_push("Unit[" + (index + 1) + "]: 九死一生発動");
+		fld.log_push("Unit[" + (index + 1) + "]: 九死一生発動");
 	}
 	now.nowhp = Math.max(aft, minhp);
-	Field.log_push("Unit[" + (index + 1) + "]: " + dmg + "ダメージ(残: " + now.nowhp + "/" + now.maxhp + ")");
+	fld.log_push("Unit[" + (index + 1) + "]: " + dmg + "ダメージ(残: " + now.nowhp + "/" + now.maxhp + ")");
 	// HPが0なら全効果を消す
 	if (now.nowhp <= 0) {
-		turneff_allbreak(now.turn_effect, index, "dead");
+		turneff_allbreak(fld, now.turn_effect, index, "dead");
 		// L時ならL潜在も消す
-		if(is_legendmode(card, now)){
-			minus_legend_awake(Field.Allys.Deck, Field.Allys.Now, index);
+		if(is_legendmode(fld, card, now)){
+			minus_legend_awake(fld, fld.Allys.Deck, fld.Allys.Now, index);
 		}
 	}
 }
@@ -236,7 +230,7 @@ function heal_ally(fld, value, index) {
 	// 死んでなかったら回復
 	if (now.nowhp > 0) {
 		// ドラゴンモード時に回復しない
-		var is_drgmode = is_legendmode(cd, now) && pickup_awakes(cd, "awake_no_heal", true).length > 0;
+		var is_drgmode = is_legendmode(fld, cd, now) && pickup_awakes(fld, cd, "awake_no_heal", true).length > 0;
 		if (is_drgmode) {
 			return false;
 		}
@@ -259,7 +253,7 @@ function heal_ally(fld, value, index) {
 	}
 	if (now.nowhp <= 0) {
 		// 死んだら全効果を解除
-		turneff_allbreak(now.turn_effect, index, "dead");
+		turneff_allbreak(fld, now.turn_effect, index, "dead");
 	}
 	return true;
 }
@@ -286,18 +280,18 @@ function attr_magnification(atk_atr, def_atr) {
 }
 
 // 乱数を生成する
-function damage_rand() {
+function damage_rand(fld) {
 	var r = Number($("#attack_rand_sel").val());
 	if (r != -1) {
 		return r;
 	}
-	var rnd = dmg_generate_rand(0, 200) / 1000;
+	var rnd = dmg_generate_rand(fld, 0, 200) / 1000;
 	return 0.9 + rnd;
 }
 
 // 再現性のある乱数を生成する
-function dmg_generate_rand(min, max) {
-	var st = Field.Status;
+function dmg_generate_rand(fld, min, max) {
+	var st = fld.Status;
 	max = max || 1;
 	min = min || 0;
 

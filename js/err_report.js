@@ -1,3 +1,4 @@
+/*
 window.onerror = function (errorMsg, fileName, lineNumber) {
 	fileName = fileName.replace(/\s+/g, '');
     var errorInfo = {
@@ -18,3 +19,4 @@ window.onerror = function (errorMsg, fileName, lineNumber) {
     	});
     }
 };
+*/

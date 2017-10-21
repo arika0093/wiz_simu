@@ -1,11 +1,11 @@
 // turn_effectのターン数減少
-function reduce_turneffect(is_ssfin) {
+function reduce_turneffect(fld, is_ssfin) {
 	// 全滅確認
-	var allkill = is_allkill() && !isexist_enemy_rev();
+	var allkill = is_allkill(fld) && !isexist_enemy_rev(fld);
 	// 味方ターンエフェクト減算処理
-	for (var i = 0; i < Field.Allys.Deck.length; i++) {
-		for (var j = 0; j < Field.Allys.Now[i].turn_effect.length; j++) {
-			var teff = Field.Allys.Now[i].turn_effect[j];
+	for (var i = 0; i < fld.Allys.Deck.length; i++) {
+		for (var j = 0; j < fld.Allys.Now[i].turn_effect.length; j++) {
+			var teff = fld.Allys.Now[i].turn_effect[j];
 			// 戦闘を跨ぐ際にターンを減少させる(AS撃破時) or 未全滅時
 			if ((teff.isreduce_stg && !is_ssfin) || !allkill) {
 				// 後付けエフェクトなら無視する
@@ -19,7 +19,7 @@ function reduce_turneffect(is_ssfin) {
 	}
 	if (!allkill) {
 		// 敵ターンエフェクト減算処理
-		var enemys = GetNowBattleEnemys();
+		var enemys = GetNowBattleEnemys(fld);
 		for (var i = 0; i < enemys.length; i++) {
 			for (var j = 0; j < enemys[i].turn_effect.length; j++) {
 				enemys[i].turn_effect[j].lim_turn -= 1;
@@ -29,19 +29,19 @@ function reduce_turneffect(is_ssfin) {
 }
 
 // (味方)効果の継続確認を行う
-function turn_effect_check(is_turn_move, is_ssfin) {
+function turn_effect_check(fld, is_turn_move, is_ssfin) {
 	// 全効果をまとめる
 	var all_turneff = [];
 	var ct = 0;
-	for (var i = 0; i < Field.Allys.Deck.length; i++) {
-		var now = Field.Allys.Now[i];
+	for (var i = 0; i < fld.Allys.Deck.length; i++) {
+		var now = fld.Allys.Now[i];
 		// 重複効果を削除
-		turneff_break_dual(now.turn_effect, i, is_turn_move);
+		turneff_break_dual(fld, now.turn_effect, i, is_turn_move);
 		for (var j = 0; j < now.turn_effect.length; j++) {
 			all_turneff[ct] = {
 				index: i,
 				position: j,
-				effect: Field.Allys.Now[i].turn_effect[j],
+				effect: fld.Allys.Now[i].turn_effect[j],
 			};
 			ct++;
 		}
@@ -54,7 +54,7 @@ function turn_effect_check(is_turn_move, is_ssfin) {
 		if (a_pr > b_pr) return -1;
 	})
 	for (var te = 0; te < all_turneff.length; te++) {
-		var now = Field.Allys.Now[all_turneff[te].index];
+		var now = fld.Allys.Now[all_turneff[te].index];
 		var turneff = all_turneff[te].effect;
 		if (!turneff._notfirst || is_turn_move) {
 			// 発動時状況を決める(初回呼び出し時: first, 終了時: end)
@@ -66,15 +66,15 @@ function turn_effect_check(is_turn_move, is_ssfin) {
 				var state = "";
 			}
 			// 呼び出し
-			turneff.effect(Field, all_turneff[te].index, turneff, state, is_turn_move, is_allkill(), is_ssfin);
+			turneff.effect(fld, all_turneff[te].index, turneff, state, is_turn_move, is_allkill(fld), is_ssfin);
 			turneff._notfirst = true;
 		}
 		if (turneff.lim_turn == 0) {
 			var tf_index = all_turneff[te].index;
 			var tf_pos = all_turneff[te].position;
 			// 残りターンが0なら除外
-			turneff_remove_pos(now.turn_effect, all_turneff[te].position);
-			turneff_remove_pos(all_turneff, te);
+			turneff_remove_pos(fld, now.turn_effect, all_turneff[te].position);
+			turneff_remove_pos(fld, all_turneff, te);
 			te--;
 			// 同じindexを持つtfのpositionをずらす
 			$.each(all_turneff, function (i, e) {
@@ -86,40 +86,40 @@ function turn_effect_check(is_turn_move, is_ssfin) {
 	}
 	// スキカン確認
 	if (is_turn_move && !is_ssfin) {
-		turneff_check_skillcounter(Field);
+		turneff_check_skillcounter(fld);
 	}
 }
 
 // turn_effectの初回effect未実行のもののみに対して初回呼び出しを行う
-function turn_effect_check_onlyfirst(now, index){
+function turn_effect_check_onlyfirst(fld, now, index){
 	var teffs = now.turn_effect;
 	for (var te = 0; te < teffs.length; te++) {
 		var turneff = teffs[te];
 		if (!turneff._notfirst) {
 			var state = "first";
 			// 呼び出し
-			turneff.effect(Field, index, turneff, state, false, is_allkill(), false);
+			turneff.effect(fld, index, turneff, state, false, is_allkill(fld), false);
 			turneff._notfirst = true;
 		}
 	}
 }
 
 // ターン継続効果の確認(敵版)
-function enemy_turn_effect_check(is_turn_move) {
-	var enemys = GetNowBattleEnemys();
+function enemy_turn_effect_check(fld, is_turn_move) {
+	var enemys = GetNowBattleEnemys(fld);
 	for (var i = 0; i < enemys.length; i++) {
 		// 重複効果を削除
-		turneff_break_dual(enemys[i].turn_effect, i, is_turn_move);
+		turneff_break_dual(fld, enemys[i].turn_effect, i, is_turn_move);
 		for (var te = 0; te < enemys[i].turn_effect.length; te++) {
 			var turneff = enemys[i].turn_effect[te];
 			if (!turneff._notfirst || is_turn_move) {
 				// 発動
-				turneff.effect(Field, i, turneff, turneff.lim_turn == 0, is_turn_move, is_allkill());
+				turneff.effect(fld, i, turneff, turneff.lim_turn == 0, is_turn_move, is_allkill(fld));
 				turneff._notfirst = true;
 			}
 			if (turneff.lim_turn == 0) {
 				// 残りターンが0なら除外
-				turneff_remove_pos(enemys[i].turn_effect, te)
+				turneff_remove_pos(fld, enemys[i].turn_effect, te)
 				te -= 1;
 			}
 		}
@@ -127,12 +127,12 @@ function enemy_turn_effect_check(is_turn_move) {
 }
 
 // 重複しているターン継続効果の解除
-function turneff_break_dual(teffs, index, is_turn_move) {
-	turneff_break_dual_settype(teffs, index, "", is_turn_move);
+function turneff_break_dual(fld, teffs, index, is_turn_move) {
+	turneff_break_dual_settype(fld, teffs, index, "", is_turn_move);
 }
 
 // 重複しているターン継続効果をtypeを指定して解除
-function turneff_break_dual_settype(teffs, index, type, is_turn_move) {
+function turneff_break_dual_settype(fld, teffs, index, type, is_turn_move) {
 	for (var t = 0; t < teffs.length; t++) {
 		// 同一typeが複数存在し新しい方が重複不可なら最初の要素を消す
 		var duals = $.grep(teffs, function (e) {
@@ -142,8 +142,8 @@ function turneff_break_dual_settype(teffs, index, type, is_turn_move) {
 			for (var i = 0; i < duals.length - 1; i++) {
 				// 消す前に終了時関数をcallする(state: overlay)
 				var pos = teffs.indexOf(duals[i]);
-				duals[i].effect(Field, index, duals[i], "overlay", is_turn_move, is_allkill());
-				turneff_remove_pos(teffs, pos);
+				duals[i].effect(fld, index, duals[i], "overlay", is_turn_move, is_allkill(fld));
+				turneff_remove_pos(fld, teffs, pos);
 				t = (pos <= t ? t - 1 : t);
 			}
 		}
@@ -152,7 +152,7 @@ function turneff_break_dual_settype(teffs, index, type, is_turn_move) {
 
 // 指定位置のturneffectを削除して返す
 // pos: 削除対象のindex or 削除対象のturn_effect
-function turneff_remove_pos(teffs, pos) {
+function turneff_remove_pos(fld, teffs, pos) {
 	if (pos >= 0) {
 		// remove
 		teffs.splice(pos, 1);
@@ -165,8 +165,8 @@ function turneff_remove_pos(teffs, pos) {
 }
 
 // チャージスキルの確認を行う
-function turneff_chargeskill_check() {
-	var nows = Field.Allys.Now;
+function turneff_chargeskill_check(fld) {
+	var nows = fld.Allys.Now;
 	$.each(nows, function (i, e) {
 		// 抽出
 		var tf_chs = $.grep(e.turn_effect, function (g) {
@@ -176,7 +176,7 @@ function turneff_chargeskill_check() {
 			var tf = tf_chs[c];
 			if (tf.charge_turn <= 0 && tf.charged_fin) {
 				// 残りカウントが0なら関数実行
-				tf.charged_fin(Field, i);
+				tf.charged_fin(fld, i);
 				tf.charged_fin = null;
 				/*
 				// 削除
@@ -187,7 +187,7 @@ function turneff_chargeskill_check() {
 				ss_afterproc(i);
 				// 全滅していたら次のターンへ進む
 				if (is_allkill()) {
-					var t = Field.Status.totalturn;
+					var t = fld.Status.totalturn;
 					nextturn(true);
 					return;
 				}
@@ -205,25 +205,35 @@ function turneff_check_skillcounter(fld) {
 			return g.type == "ss_skill_counter" || g.type == "ss_dual_counter";
 		});
 		for (var c = 0; c < tf_scs.length; c++) {
-			tf_scs[c].counter(fld, i, tf_scs[c], "", true, is_allkill());
+			tf_scs[c].counter(fld, i, tf_scs[c], "", true, is_allkill(fld));
 		}
 	});
 }
 
-// ターン継続効果の全解除
-function turneff_allbreak(teffs, index, call_type) {
+// ターン継続効果の全解除(味方)
+function turneff_allbreak(fld, teffs, index, call_type) {
 	while (teffs.length > 0) {
 		var teff = teffs[0];
 		// 除外時効果
 		if (call_type) {
-			teff.effect(Field, index, teff, call_type, false, false);
+			teff.effect(fld, index, teff, call_type, false, false);
 		}
-		turneff_remove_pos(teffs, 0);
+		turneff_remove_pos(fld, teffs, 0);
+	}
+}
+
+// ターン継続効果の全解除(敵)
+function turneff_allbreak_enemy(fld, teffs, index) {
+	while (teffs.length > 0) {
+		var teff = teffs[0];
+		// 除外時効果
+		teff.effect(fld, index, teff, false, false, false);
+		turneff_remove_pos(fld, teffs, 0);
 	}
 }
 
 // 指定したターン継続効果の解除
-function turneff_break(teffs, index, type, call_type) {
+function turneff_break(fld, teffs, index, type, call_type) {
 	for (var i = 0; i < teffs.length; i++) {
 		var teff = teffs[i];
 		if (teff.type != type) {
@@ -231,79 +241,79 @@ function turneff_break(teffs, index, type, call_type) {
 		}
 		// 除外時効果
 		if (call_type) {
-			teff.effect(Field, index, teff, call_type, false, false);
+			teff.effect(fld, index, teff, call_type, false, false);
 		}
-		turneff_remove_pos(teffs, i);
+		turneff_remove_pos(fld, teffs, i);
 		i--;
 	}
 }
 
 // ターン継続効果の解除(条件)
-function turneff_break_cond(teffs, index, func, call_type) {
+function turneff_break_cond(fld, teffs, index, func, call_type) {
 	call_type = call_type || "overlay";
 	for (var i = 0; i < teffs.length; i++) {
 		var teff = teffs[i];
 		if (!func(teff)) {
 			continue;
 		}
-		teff.effect(Field, index, teff, call_type, false, false);
-		turneff_remove_pos(teffs, i);
+		teff.effect(fld, index, teff, call_type, false, false);
+		turneff_remove_pos(fld, teffs, i);
 		i--;
 	}
 }
 
 // 一番最後にかけられたターン継続効果の解除(条件)
-function turneff_break_last(teffs, index, func, call_type) {
+function turneff_break_last(fld, teffs, index, func, call_type) {
 	call_type = call_type || "overlay";
 	var cond_tfs = $.grep(teffs, function(e){
 		return func(e);
 	});
 	var teff = cond_tfs[cond_tfs.length];
 	var i = teffs.indexOf(teff);
-	teff.effect(Field, index, teff, call_type, false, false);
-	turneff_remove_pos(teffs, i);
+	teff.effect(fld, index, teff, call_type, false, false);
+	turneff_remove_pos(fld, teffs, i);
 }
 
 // 継続効果追加
-function ss_continue_effect_add(eff_obj) {
+function ss_continue_effect_add(fld, eff_obj) {
 	// 重複してたら削除
-	var cont_effs = Field.Status.continue_eff;
+	var cont_effs = fld.Status.continue_eff;
 	cont_effs = cont_effs.filter(function (e) {
 		return e.type != eff_obj.type;
 	});
 	// 追加
 	cont_effs.push(eff_obj);
-	Field.Status.continue_eff = cont_effs;
+	fld.Status.continue_eff = cont_effs;
 }
 
 // 継続効果の確認/発動/除外
-function ss_continue_effect_check(is_ssfin) {
-	var cont_effs = Field.Status.continue_eff;
+function ss_continue_effect_check(fld, is_ssfin) {
+	var cont_effs = fld.Status.continue_eff;
 	for (var i = 0; i < cont_effs.length; i++) {
 		var ceff = cont_effs[i];
 		// 発動
-		ceff.effect(Field, ceff.index, ceff, is_ssfin);
+		ceff.effect(fld, ceff.index, ceff, is_ssfin);
 		// 敵が全滅していない場合か、デメリット効果なら、ターン数を減らす
-		if (ceff.isdemerit || !is_allkill()) {
+		if (ceff.isdemerit || !is_allkill(fld)) {
 			ceff.lim_turn--;
 		}
 		// 残りターンが0以下なら除外
 		if (ceff.lim_turn <= 0) {
-			turneff_remove_pos(cont_effs, i);
+			turneff_remove_pos(fld, cont_effs, i);
 			i--;
 		}
 	}
 }
 
 //烈眼ダメージのチェック
-function retsugan_check(is_ssfin){
+function retsugan_check(fld, is_ssfin){
 	if(is_ssfin){
 		return
 	}
 	var is_retsugan=false;
-	Field.Allys.Now.forEach(function(ally, n){
-		if(ally.islegend && ally.lgstart_turn != Field.Status.totalturn){
-			Field.Allys.Deck[n].crystal.forEach(function(crstl){
+	fld.Allys.Now.forEach(function(ally, n){
+		if(ally.islegend && ally.lgstart_turn != fld.Status.totalturn){
+			fld.Allys.Deck[n].crystal.forEach(function(crstl){
 				if (crstl.name && crstl.name.indexOf("烈眼") != -1) {
 					is_retsugan = true;
 				}
@@ -311,7 +321,7 @@ function retsugan_check(is_ssfin){
 		}
 	})
 	if(is_retsugan){
-		ss_object_done(Field, 0, ss_consume_all(0.1));
+		ss_object_done(fld, 0, ss_consume_all(0.1));
 	}
 }
 

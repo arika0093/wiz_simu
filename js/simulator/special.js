@@ -1,37 +1,42 @@
-// SSを発動する
+// SSを発動する(buttonから)
 function ss_push(n) {
-	var card = Field.Allys.Deck[n];
-	var now = Field.Allys.Now[n];
-	var is_l = is_legendmode(card, now);
+	return ssPushWithParam(Field, n);
+}
+
+// SSを発動する
+function ssPushWithParam(fld, n){
+	var card = fld.Allys.Deck[n];
+	var now = fld.Allys.Now[n];
+	var is_l = is_legendmode(fld, card, now);
 	var ss = is_l ? card.ss2 : card.ss1;
 	var ss_rst = true;
 	// SS発動前チェック
-	if (is_ss_active(Field, n) && sscheck_before(ss, n)) {
+	if (is_ss_active(fld, n) && sscheck_before(fld, ss, n)) {
 		// SSを打つ
-		ss_rst = ss_procdo(Field, ss, now, n);
+		ss_rst = ss_procdo(fld, ss, now, n);
 	} else {
 		// チェックを通過しなかったら打ち切る
 		return;
 	}
 	// 発動成功なら
 	if (ss_rst) {
-		Field.log_push("Unit[" + (n + 1) + "]: SS発動");
+		fld.log_push("Unit[" + (n + 1) + "]: SS発動");
 		// 発動後処理
-		ss_afterproc(n);
+		ss_afterproc(fld, n);
 		if (!now.flags.ss_chargefin) {
 			// SSを保存しておく
 			if (ss.proc && ss.proc[0] && !ss.proc[0].is_skillcopy) {
-				Field.Status.latest_ss = ss;
+				fld.Status.latest_ss = ss;
 			}
 			// ------------------
 			// L状態ならL潜在を解除
 			if (is_l) {
-				minus_legend_awake(Field.Allys.Deck, Field.Allys.Now, n);
+				minus_legend_awake(fld, fld.Allys.Deck, fld.Allys.Now, n);
 				now.islegend = false;
-				Field.log_push("Unit[" + (n + 1) + "]: Lモード解除");
+				fld.log_push("Unit[" + (n + 1) + "]: Lモード解除");
 			}
 			// SSターンをリセット
-			now.ss_current = has_secondfastnum(card);
+			now.ss_current = has_secondfastnum(fld, card);
 			now.ss_isfirst = false;
 			now.ss_isboost = false;
 		} else {
@@ -40,23 +45,23 @@ function ss_push(n) {
 		}
 		// ------------------
 		// 再現用ログ関連
-		actl_save_special(n);
+		actl_save_special(fld, n);
 		// [進む]を使えないように
 		if (!Field_log.is_ssindex) {
 			Field_log.now_index++;
 			Field_log.is_ssindex = true;
 		}
-		Field_log._removeover(Field.Status.totalturn);
+		Field_log._removeover(fld.Status.totalturn);
 		// 全滅していたら次のターンへ進む
-		if (is_allkill()) {
+		if (is_allkill(fld)) {
 			// 蘇生があるかのチェック
-			var is_rev = isexist_enemy_rev();
-			nextturn(!is_rev);
+			var is_rev = isexist_enemy_rev(fld);
+			nextturn(fld, !is_rev);
 		}
 		// 助っ人チェック
-		helper_change_process();
+		helper_change_process(fld);
 		// 再表示
-		sim_show();
+		sim_show(fld);
 	} else {
 		// failed
 		$("#dialog_ss_noaction").dialog("open");
@@ -67,12 +72,12 @@ function ss_push(n) {
 }
 
 // SS発動前に味方単体指定があるかどうかを確認する関数
-function sscheck_before(ss, n) {
+function sscheck_before(fld, ss, n) {
 	var is_exist = false;
 	for (var i = 0; i < (ss.proc || []).length; i++) {
 		is_exist = is_exist || (ss.proc[i].target == "ally_one");
 		if (ss.proc[i].is_skillcopy) {
-			var ls_ss = Field.Status.latest_ss.proc;
+			var ls_ss = fld.Status.latest_ss.proc;
 			if(!ls_ss){
 				continue;
 			}
@@ -83,7 +88,7 @@ function sscheck_before(ss, n) {
 	}
 	if (is_exist) {
 		// 指定済みかチェック
-		var target_seled = ss_allyselect_getindex();
+		var target_seled = ss_allyselect_getindex(fld);
 		// 指定済みならOK
 		if (target_seled >= 0) {
 			return true;
@@ -104,7 +109,7 @@ function ss_procdo(fld, ss, now, index) {
 	var ss_rst = true;
 	if (ss.proc != null) {
 		// SS発動前の敵の数を取得
-		var en_lived = $.grep(GetNowBattleEnemys(), function(e){
+		var en_lived = $.grep(GetNowBattleEnemys(fld), function(e){
 			return e.nowhp > 0;
 		}).length;
 		// チャージスキルの場合
@@ -134,7 +139,7 @@ function ss_procdo(fld, ss, now, index) {
 						return false;
 					},
 					// カウント減少
-					effect: function (f, oi, teff, state, is_t, is_b, is_sfin) {
+					effect: function (fl, oi, teff, state, is_t, is_b, is_sfin) {
 						// SS以外で戦闘を跨いだ場合カウントを減らす
 						if (is_t && (!is_sfin || !is_b)) {
 							teff.charge_turn--;
@@ -143,9 +148,9 @@ function ss_procdo(fld, ss, now, index) {
 						this.ss_disabled = (teff.charge_turn > 0);
 					},
 					// 発動スキル
-					charged_fin: function (fld, oi) {
+					charged_fin: function (fl, oi) {
 						// 発動可能状態にセット
-						var now = fld.Allys.Now[oi];
+						var now = fl.Allys.Now[oi];
 						now.flags.ss_chargefin = true;
 						now.flags.ss_chargeskl = this.charge_skl;
 						return;
@@ -155,7 +160,7 @@ function ss_procdo(fld, ss, now, index) {
 				if (ss.isallcharge) {
 					ss_add_chargenomove_otheruser(fld, ss.charged, index);
 				}
-				Field.log_push("Unit[" + (index + 1) + "]: チャージスキル発動待機…");
+				fld.log_push("Unit[" + (index + 1) + "]: チャージスキル発動待機…");
 				// ため処理終了
 				return true;
 			}
@@ -164,12 +169,12 @@ function ss_procdo(fld, ss, now, index) {
 				var skl = now.flags.ss_chargeskl;
 				for (var i = 0; i < skl.length; i++) {
 					if (skl[i]) {
-						ss_rst = ss_object_done(Field, index, skl[i], true);
+						ss_rst = ss_object_done(fld, index, skl[i], true);
 					}
 				}
 				now.flags.ss_chargeskl = null;
 				// 削除
-				turneff_break_cond(now.turn_effect, -1, function (tf) {
+				turneff_break_cond(fld, now.turn_effect, -1, function(tf){
 					return !tf.charged_fin && tf.charge_turn <= 0;
 				}, "end");
 			}
@@ -177,14 +182,14 @@ function ss_procdo(fld, ss, now, index) {
 			// チャージでないなら普通に実行
 			for (var i = 0; i < ss.proc.length; i++) {
 				if (ss.proc[i]) {
-					ss_rst = ss_object_done(Field, index, ss.proc[i], true);
+					ss_rst = ss_object_done(fld, index, ss.proc[i], true);
 				}
 			}
 		}
 		// 撃破数に応じてch+処理
 		if(ss.chadd_killing > 0){
 			// SS発動後の敵の数を取得
-			var en_living = $.grep(GetNowBattleEnemys(), function(e){
+			var en_living = $.grep(GetNowBattleEnemys(fld), function(e){
 				return e.nowhp > 0;
 			}).length;
 			// 敵の数が変化しているならch+
@@ -202,9 +207,9 @@ function ss_procdo(fld, ss, now, index) {
 }
 
 // SS発動後処理
-function ss_afterproc(n) {
+function ss_afterproc(fld, n) {
 	// 敵スキル関係の処理
-	var enemys = GetNowBattleEnemys();
+	var enemys = GetNowBattleEnemys(fld);
 	$.each(enemys, function (i, e) {
 		// スキル反射確認
 		if (e.flags.is_ss_attack && e.turn_effect.length > 0) {
@@ -212,54 +217,54 @@ function ss_afterproc(n) {
 				return g.on_ss_damage !== undefined;
 			});
 			for (var j = 0; j < skillct.length; j++) {
-				skillct[j].on_ss_damage(Field, i, n);
+				skillct[j].on_ss_damage(fld, i, n);
 			}
 			e.flags.is_ss_attack = false;
 		}
 		// スキル反応確認
 		$.each(e.turn_effect, function (g) {
 			if (g.type == "skill_response") {
-				g.on_ss_invoke(Field, i);
+				g.on_ss_invoke(fld, i);
 			}
 		});
 	});
 	// ターン効果確認
-	turneff_check_skillcounter(Field);
-	turn_effect_check(false, is_allkill());
-	enemy_turn_effect_check(false);
+	turneff_check_skillcounter(fld);
+	turn_effect_check(fld, false, is_allkill(fld));
+	enemy_turn_effect_check(fld, false);
 	// 敵ダメージ反応系
-	enemy_damage_switch_check("damage_switch", true, false, false);
+	enemy_damage_switch_check(fld, "damage_switch", true, false, false);
 }
 
 // Lモードに入るタイミングの処理
-function legend_timing_check(cards, nows, index, is_ignore_spskill) {
-	var is_l = (get_ssturn(cards[index], nows[index])[1] == 0); //is_legendmode(cards[index], nows[index]);
+function legend_timing_check(fld, cards, nows, index, is_ignore_spskill) {
+	var is_l = (get_ssturn(fld, cards[index], nows[index])[1] == 0); //is_legendmode(cards[index], nows[index]);
 	var rst = is_l && !nows[index].islegend;
 	if (rst) {
 		nows[index].islegend = true;
 		// 最初の初期化処理中なら代入しない(烈眼の処理の関係で)
-		if(!Field.Status.is_initialize){
-			nows[index].lgstart_turn = Field.Status.totalturn;
+		if(!fld.Status.is_initialize){
+			nows[index].lgstart_turn = fld.Status.totalturn;
 		}
-		Field.log_push("Unit[" + (index + 1) + "]: Lモード");
+		fld.log_push("Unit[" + (index + 1) + "]: Lモード");
 		// L時の潜在を反映させる
 		//add_awake_ally(cards, nows, index, true);
-		func_reawake(Field, cards, nows);
+		func_reawake(fld, cards, nows);
 		// L時のSSを発動する
 		if (!is_ignore_spskill) {
-			Awake_dospskill(Field, index);
+			Awake_dospskill(fld, index);
 		}
 	}
 }
 
 // Lモードに入っているかどうかを判定する
-function is_legendmode(card, now) {
+function is_legendmode(fld, card, now) {
 	return now.islegend;
 	// return get_ssturn(card, now)[1] == 0;
 }
 
 // SSが残り何ターンで打てるかを配列で返す
-function get_ssturn(card, ally_n) {
+function get_ssturn(fld, card, ally_n) {
 	// SS1 default
 	var ss1_def = card.ss1.turn;
 	// SS2 default
@@ -274,7 +279,7 @@ function get_ssturn(card, ally_n) {
 }
 
 // 味方単体を指定するSSにおいて、誰が指定されているかを取得
-function ss_allyselect_getindex() {
+function ss_allyselect_getindex(fld) {
 	var istr = $("#sso_selected_index").text();
 	return istr != "" ? Number(istr) : -1;
 }
@@ -313,10 +318,10 @@ function ss_add_chargenomove_otheruser(fld, turn, user_i) {
 function is_ss_active(fld, i) {
 	var dec = fld.Allys.Deck[i];
 	var now = fld.Allys.Now[i];
-	var sst = get_ssturn(dec, now);
+	var sst = get_ssturn(fld, dec, now);
 	var ss_disabled = $.grep(now.turn_effect, function (e) {
 		return e.ss_disabled;
 	}).length > 0;
-	return !ss_disabled && (sst[0] == 0 || now.flags.ss_chargefin) && now.nowhp > 0 && !Field.Status.finish;
+	return !ss_disabled && (sst[0] == 0 || now.flags.ss_chargefin) && now.nowhp > 0 && !fld.Status.finish;
 }
 

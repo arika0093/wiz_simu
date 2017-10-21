@@ -1,29 +1,3 @@
-// 配列の最頻値を求めるprototype
-Array.prototype.mode = function() {
-	var array_length, count, i, max, value;
-	array_length = this.length;
-	count = [];
-	for (i = 0; i < array_length; i++) {
-		if (count[this[i]]) {
-			count[this[i]] ++;
-		} else {
-			count[this[i]] = 1;
-		}
-	}
-	max = 0;
-	for (i in count) {
-		if (count[i] > max) {
-			max = count[i];
-			value = i;
-		}
-	}
-	if (max > 1) {
-		return Number(value);
-	} else {
-		return NaN; //重複がない場合エラー。
-	}
-}
-
 // 立ち回り確認関連の機能
 $(function(){
 	// get query
@@ -260,7 +234,7 @@ function createActionStrData(js, act){
 							$.each(ac.target, function(i,e){
 								allinone = allinone.concat(e);
 							});
-							var mode = allinone.mode();
+							var mode = ArrayMath.mode(allinone);
 							// そこから基準タゲを決定する
 							var base_tg = (allinone.indexOf(-1) >= 0 ? -1 : mode);
 							d_l = (base_tg != -1 ? "全タゲ[" + tg[base_tg] + "]" : "ターゲッティング: ");
@@ -300,15 +274,14 @@ function createActionStrData(js, act){
 				case "answer":
 					if(!ac.result){
 						d_l = "(誤答)<br/>"
-						is_answer_flag = true;
 					}
 					else {
 						var ans_attr = get_attr_string(ac.attr, "/").replace(/属性/g, "");
 						var asig_str = ac.asignore ? "(AS逃し)" : "";
 						d_l = "回答" + asig_str + "[" + ans_attr + "]<br/>"
-						is_answer_flag = true;
-						is_ntadd_flag = false;
 					}
+					is_answer_flag = true;
+					is_ntadd_flag = false;
 					break;
 				case "special":
 					d_l = "Unit[" + (ac.index+1) + "]: SS発動<br/>"

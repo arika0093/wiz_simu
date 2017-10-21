@@ -1,6 +1,6 @@
 // 潜在能力から特定要素のみを抜き出す
 // (L時の潜在のみ取り出す場合は第三引数をtrueにする。正確性について保証しないため注意)
-function pickup_awakes(card, type, l_awakes) {
+function pickup_awakes(fld, card, type, l_awakes) {
 	var awakes = [];
 	if (l_awakes) {
 		awakes = $.grep(open_awake_composite(card.Lawake), function (e) {
@@ -20,8 +20,8 @@ function pickup_awakes(card, type, l_awakes) {
 		awakes = awakes.concat(awakes_cr);
 	}
 	// クエスト無効処置の分を除外する
-	if(typeof(Field) != "undefined"){
-		var daw = Field.Quest.disable_awake
+	if(typeof(fld) != "undefined"){
+		var daw = fld.Quest.disable_awake
 		if(daw){
 			awakes = $.grep(awakes, function(e){
 				return !daw(e);
@@ -50,14 +50,14 @@ function open_awake_composite(awakes_t){
 }
 
 // 潜在能力を味方に反映させる
-function add_awake_ally(cards, nows, own_no, legend_skill, ignorenowhpup) {
+function add_awake_ally(fld, cards, nows, own_no, legend_skill, ignorenowhpup) {
 	// 自身ステアップ
-	var own_statups = pickup_awakes(cards[own_no], "own_status_up", legend_skill);
+	var own_statups = pickup_awakes(fld, cards[own_no], "own_status_up", legend_skill);
 	// 味方ステアップ
-	var ally_statups = pickup_awakes(cards[own_no], "status_up", legend_skill);
+	var ally_statups = pickup_awakes(fld, cards[own_no], "status_up", legend_skill);
 	// 自身ステアップの反映
 	$.each(own_statups, function (n, e) {
-		if(!e.cond || e.cond(Field, own_no)){
+		if(!e.cond || e.cond(fld, own_no)){
 			nows[own_no].maxhp += e.up_hp;
 			if(!ignorenowhpup){
 				nows[own_no].nowhp += e.up_hp;
@@ -73,7 +73,7 @@ function add_awake_ally(cards, nows, own_no, legend_skill, ignorenowhpup) {
 			if(e.attr[cards[t].attr[0]] > 0                     // 現在の属性と一致していて
 			//&& e.attr[nows[t].def_attr[0]] > 0	            // 元々の属性とも一致していて(修正により削除)
 			&& check_spec_inarray(e.spec, cards[t].species)     // 対象種族とも一致していて
-			&& (!e.cond || e.cond(Field, own_no, t))) {         // 潜在固有の条件とも一致する場合反映
+			&& (!e.cond || e.cond(fld, own_no, t))) {         // 潜在固有の条件とも一致する場合反映
 				nows[t].maxhp += e.up_hp;
 				if(!ignorenowhpup){
 					nows[t].nowhp += e.up_hp;
@@ -97,14 +97,14 @@ function add_awake_ally(cards, nows, own_no, legend_skill, ignorenowhpup) {
 }
 
 // L時の潜在能力を解除する
-function minus_legend_awake(cards, nows, own_no) {
+function minus_legend_awake(fld, cards, nows, own_no) {
 	// 自身ステアップ(L)
-	var own_statups = pickup_awakes(cards[own_no], "own_status_up", true);
+	var own_statups = pickup_awakes(fld, cards[own_no], "own_status_up", true);
 	// 味方ステアップ(L)
-	var ally_statups = pickup_awakes(cards[own_no], "status_up", true);
+	var ally_statups = pickup_awakes(fld, cards[own_no], "status_up", true);
 	// 増加分を減らす
 	$.each(own_statups, function (n, e) {
-		if (!e.cond || e.cond(Field, own_no)) {
+		if (!e.cond || e.cond(fld, own_no)) {
 			var now = nows[own_no];
 			now.maxhp = Math.max(now.maxhp - e.up_hp, 1);
 			now.nowhp = Math.min(now.maxhp, now.nowhp);
@@ -117,7 +117,7 @@ function minus_legend_awake(cards, nows, own_no) {
 		for (var t in cards) {
 			if(e.attr[cards[t].attr[0]] > 0
 			&& check_spec_inarray(e.spec, cards[t].species)
-			&& (!e.cond || e.cond(Field, own_no, t))) {
+			&& (!e.cond || e.cond(fld, own_no, t))) {
 				var now = nows[t];
 				now.maxhp = Math.max(now.maxhp - e.up_hp, 1);
 				now.nowhp = Math.min(now.maxhp, now.nowhp);
@@ -155,14 +155,14 @@ function func_reawake(fld, cards, nows){
 	}
 	// 味方全体[助っ人込み]のステ上昇潜在を再度有効化
 	for(var i in nows){
-		add_awake_ally(cards, nows, i, false);
+		add_awake_ally(fld, cards, nows, i, false);
 	}
 	// 味方全体のステ上昇潜在を再度有効化(L覚醒)
 	for(var i=0; i < nows.length; i++){
 		var ntg = nows[i];
-		var isL = is_legendmode(cards[i], ntg);
+		var isL = is_legendmode(fld, cards[i], ntg);
 		if(isL){
-			add_awake_ally(cards, nows, i, true);
+			add_awake_ally(fld, cards, nows, i, true);
 		}
 	}
 	// ステアップ効果値反映
@@ -200,10 +200,10 @@ function func_reawake(fld, cards, nows){
 }
 
 // ファストがいくつついているかを返却する
-function has_fastnum(card) {
+function has_fastnum(fld, card) {
 	var turn = 0;
 	// ss_fastについて取得(L時は考慮する必要がないため第三引数はfalse固定)
-	var ss_awakes = pickup_awakes(card, "ss_fast", false);
+	var ss_awakes = pickup_awakes(fld, card, "ss_fast", false);
 	for (var i = 0; i < ss_awakes.length; i++) {
 		turn += ss_awakes[i].turn;
 	}
@@ -211,10 +211,10 @@ function has_fastnum(card) {
 }
 
 // セカンドファストがいくつついているかを返却する
-function has_secondfastnum(card) {
+function has_secondfastnum(fld, card) {
 	var turn = 0;
 	// ss_fastについて取得(L時は考慮する必要がないため第三引数はfalse固定)
-	var ss_awakes = pickup_awakes(card, "ss_secondfast", false);
+	var ss_awakes = pickup_awakes(fld, card, "ss_secondfast", false);
 	for (var i = 0; i < ss_awakes.length; i++) {
 		turn += ss_awakes[i].turn;
 	}
@@ -222,10 +222,10 @@ function has_secondfastnum(card) {
 }
 
 // コストを返す
-function card_cost(card) {
+function card_cost(fld, card) {
 	var cost = card.cost;
 	// cost down
-	var cd_awakes = pickup_awakes(card, "costdown", false);
+	var cd_awakes = pickup_awakes(fld, card, "costdown", false);
 	for (var i = 0; i < cd_awakes.length; i++) {
 		cost -= cd_awakes[i].down;
 	}
@@ -239,9 +239,9 @@ function card_cost(card) {
 }
 
 // パネブを返す
-function card_paneb(card) {
+function card_paneb(fld, card) {
 	var paneb = [0, 0, 0, 0, 0];
-	var pb_awakes = pickup_awakes(card, "panel_boost", false);
+	var pb_awakes = pickup_awakes(fld, card, "panel_boost", false);
 	for (var i = 0; i < pb_awakes.length; i++) {
 		for (var j = 0; j < 5; j++) {
 			paneb[j] += pb_awakes[i].attr[j] * pb_awakes[i].efv;
@@ -251,11 +251,11 @@ function card_paneb(card) {
 }
 
 // ダメージ軽減値を返す
-function card_dmg_relief(card, now, t_attr) {
+function card_dmg_relief(fld, card, now, t_attr) {
 	var r = 0;
-	var ar_awakes = pickup_awakes(card, "damage_relief", false);
-	if (is_legendmode(card, now)) {
-		ar_awakes = ar_awakes.concat(pickup_awakes(card, "damage_relief", true));
+	var ar_awakes = pickup_awakes(fld, card, "damage_relief", false);
+	if (is_legendmode(fld, card, now)) {
+		ar_awakes = ar_awakes.concat(pickup_awakes(fld, card, "damage_relief", true));
 	}
 	for (var i = 0; i < ar_awakes.length; i++) {
 		if (ar_awakes[i].attr[t_attr] > 0 &&
@@ -273,10 +273,10 @@ function card_dmg_relief(card, now, t_attr) {
 }
 
 // 九死一生の判定を行う
-function awake_neftjod_check(now, index, before_hp) {
-	var neft = pickup_awakes(Field.Allys.Deck[index], "neftjod", false);
-	if (is_legendmode(Field.Allys.Deck[index], now)) {
-		neft = neft.concat(pickup_awakes(Field.Allys.Deck[index], "neftjod", true));
+function awake_neftjod_check(fld, now, index, before_hp) {
+	var neft = pickup_awakes(fld, fld.Allys.Deck[index], "neftjod", false);
+	if (is_legendmode(fld, fld.Allys.Deck[index], now)) {
+		neft = neft.concat(pickup_awakes(fld, fld.Allys.Deck[index], "neftjod", true));
 	}
 	if (neft.length > 0) {
 		var neft_total = 0;
@@ -293,13 +293,13 @@ function awake_neftjod_check(now, index, before_hp) {
 }
 
 // 戦後回復値を返す
-function cards_heal_afterbattle(cards, nows) {
+function cards_heal_afterbattle(fld, cards, nows) {
 	var r = 0;
 	for(var p in cards){
 		var c = cards[p];
-		var abh_awakes = pickup_awakes(c, "heal_after_battle", false);
-    	if (is_legendmode(c, nows[p])) {
-            abh_awakes = abh_awakes.concat(pickup_awakes(c, "heal_after_battle", true));
+		var abh_awakes = pickup_awakes(fld, c, "heal_after_battle", false);
+    	if (is_legendmode(fld, c, nows[p])) {
+            abh_awakes = abh_awakes.concat(pickup_awakes(fld, c, "heal_after_battle", true));
         }
 		for (var j = 0; j < abh_awakes.length; j++) {
 			var aw = abh_awakes[j];
@@ -313,11 +313,11 @@ function cards_heal_afterbattle(cards, nows) {
 }
 
 // 潜在による異常無効を確認する
-function Awake_AbsInvalid(card, now, type) {
+function Awake_AbsInvalid(fld, card, now, type) {
 	var flag = false;
-	var ai_awakes = pickup_awakes(card, "abstate_invalid", false);
-	if (is_legendmode(card, now)) {
-		ai_awakes = ai_awakes.concat(pickup_awakes(card, "abstate_invalid", true));
+	var ai_awakes = pickup_awakes(fld, card, "abstate_invalid", false);
+	if (is_legendmode(fld, card, now)) {
+		ai_awakes = ai_awakes.concat(pickup_awakes(fld, card, "abstate_invalid", true));
 	}
 	for (var i = 0; i < ai_awakes.length; i++) {
 		// 定義が配列なら全てに対しチェック
@@ -335,12 +335,12 @@ function Awake_AbsInvalid(card, now, type) {
 }
 
 // 最終補正値を取得する
-function Awake_get_multiple(card, now) {
+function Awake_get_multiple(fld, card, now) {
 	var rate = 1;
 	var type = "awake_damage_multiple";
-	var dm_awakes = pickup_awakes(card, type, false);
-	if (is_legendmode(card, now)) {
-		dm_awakes = dm_awakes.concat(pickup_awakes(card, type, true));
+	var dm_awakes = pickup_awakes(fld, card, type, false);
+	if (is_legendmode(fld, card, now)) {
+		dm_awakes = dm_awakes.concat(pickup_awakes(fld, card, type, true));
 	}
 	for (var i = 0; i < dm_awakes.length; i++) {
 		var dm = dm_awakes[i];
@@ -350,12 +350,12 @@ function Awake_get_multiple(card, now) {
 }
 
 // (被ダメージ)最終補正値を取得する
-function Awake_get_damaged_multiple(card, now) {
+function Awake_get_damaged_multiple(fld, card, now) {
 	var rate = 1;
 	var type = "awake_damaged_multiple";
-	var dm_awakes = pickup_awakes(card, type, false);
-	if (is_legendmode(card, now)) {
-		dm_awakes = dm_awakes.concat(pickup_awakes(card, type, true));
+	var dm_awakes = pickup_awakes(fld, card, type, false);
+	if (is_legendmode(fld, card, now)) {
+		dm_awakes = dm_awakes.concat(pickup_awakes(fld, card, type, true));
 	}
 	for (var i = 0; i < dm_awakes.length; i++) {
 		var dm = dm_awakes[i];
@@ -368,10 +368,10 @@ function Awake_get_damaged_multiple(card, now) {
 function Awake_dospskill(fld, index) {
 	var card = fld.Allys.Deck[index];
 	var now = fld.Allys.Now[index];
-	if (!is_legendmode(card, now)) {
+	if (!is_legendmode(fld, card, now)) {
 		return false;
 	}
-	var ls_awakes = pickup_awakes(card, "awake_spskill", true);
+	var ls_awakes = pickup_awakes(fld, card, "awake_spskill", true);
 	for (var i = 0; i < ls_awakes.length; i++) {
 		var ls = ls_awakes[i];
 		SpSkill[ls.skill](fld, index, null, [ls.p1, ls.p2, ls.p3, ls.p4]);

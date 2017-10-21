@@ -40,7 +40,7 @@ function m_enemy_nturn(e_skl, n) {
 function m_enemy_dualmove(skl1, skl2) {
 	return m_create_enemy_move(function (fld, n, nows) {
 		// ログ出力
-		Field.log_push("Enemy[" + (n + 1) + "]: 2連続行動");
+		fld.log_push("Enemy[" + (n + 1) + "]: 2連続行動");
 		// 順番に実行
 		skl1.move(fld, n, nows);
 		skl2.move(fld, n, nows);
@@ -61,7 +61,7 @@ function m_enemy_anymove() {
 	desc = desc + ")";
 	return m_create_enemy_move(function (fld, n, nows) {
 		// ログ出力
-		Field.log_push("Enemy[" + (n + 1) + "]: " + args.length + "連続行動");
+		fld.log_push("Enemy[" + (n + 1) + "]: " + args.length + "連続行動");
 		// 順番に実行
 		for (var i = 0; i < args.length; i++) {
 			args[i].move(fld, n, nows);
@@ -103,7 +103,7 @@ function m_enemy_tgtype_minhp() {
 // ダメージに反応してあれこれする(条件関数, 実行関数, ダメージフラグに関わらず常に実行するかどうか)
 function damage_switch(cond, func, is_always) {
 	var rst = m_create_enemy_move(function (fld, n) {
-		var enemy = GetNowBattleEnemys(n);
+		var enemy = GetNowBattleEnemys(fld, n);
 		var on_cond = m_enemy_once(func);
 		on_cond.count = 0;
 		enemy.turn_effect.push({
@@ -126,14 +126,14 @@ function damage_switch(cond, func, is_always) {
 // -----------------------------------
 // (内部用)攻撃
 function _s_enemy_attack(fld, dmg, ei, ai, is_dmg_const, ignore_guard) {
-	var e = GetNowBattleEnemys(ei);
+	var e = GetNowBattleEnemys(fld, ei);
 	var cd = fld.Allys.Deck[ai];
 	var now = fld.Allys.Now[ai];
 	if (!is_dmg_const) {
 		// 属性倍率
 		var rate = attr_magnification(e.attr, cd.attr[0]);
 		// 属性軽減取得
-		var relief = !ignore_guard ? card_dmg_relief(cd, now, e.attr) : 0;
+		var relief = !ignore_guard ? card_dmg_relief(fld, cd, now, e.attr) : 0;
 		// パネル軽減取得
 		var p_relief = 0;
 		var p_guard = fld.Status.panel_guard;
@@ -150,7 +150,7 @@ function _s_enemy_attack(fld, dmg, ei, ai, is_dmg_const, ignore_guard) {
 			}
 		});
 		// 乱数
-		var rnd = damage_rand();
+		var rnd = damage_rand(fld);
 		// 仮ダメージ
 		var dmg = Math.floor(dmg * (1 - relief) * (1 - p_relief) * rnd * rate);
 		// ダメージブロックなどの確認
@@ -165,7 +165,7 @@ function _s_enemy_attack(fld, dmg, ei, ai, is_dmg_const, ignore_guard) {
 		// 敵ステアップ補正
 		dmg *= e.statusup ? e.statusup : 1;
 		// 最終補正値を取得
-		var lst_multi = Awake_get_damaged_multiple(cd, now);
+		var lst_multi = Awake_get_damaged_multiple(fld, cd, now);
 		dmg = Math.floor(dmg * lst_multi);
 		// 最終ダメージ
 		var l_dmg = dmg;
@@ -178,7 +178,7 @@ function _s_enemy_attack(fld, dmg, ei, ai, is_dmg_const, ignore_guard) {
 		});
 		var l_dmg = Math.floor(dmg);
 	}
-	damage_ally(l_dmg, ai, true);
+	damage_ally(fld, l_dmg, ai, true);
 	// ダメージフラグを立てる
 	var n_dhits = now.flags.damage_hits[ei] ? now.flags.damage_hits[ei] : 0;
 	now.flags.damage_hits[ei] = n_dhits + 1;
@@ -189,11 +189,11 @@ function _s_enemy_attack(fld, dmg, ei, ai, is_dmg_const, ignore_guard) {
 function s_enemy_attack(dmg, tnum, atkn, tgtype) {
 	return m_create_enemy_move(function (fld, n, nows) {
 		// ログ出力
-		Field.log_push("Enemy[" + (n + 1) + "]: " +
+		fld.log_push("Enemy[" + (n + 1) + "]: " +
 			(tnum < fld.Allys.Deck.length ? tnum : "全") + "体" +
 			(atkn > 1 ? atkn + "連撃(" : "攻撃(") + dmg + ")");
 		// 攻撃対象取得
-		var tg = gen_enemytarget_array(tnum, atkn, tgtype, nows);
+		var tg = gen_enemytarget_array(fld, tnum, atkn, tgtype, nows);
 		// 攻撃
 		for (var i = 0; i < tg.length; i++) {
 			for (var j = 0; j < tg[i].length; j++) {
@@ -207,17 +207,17 @@ function s_enemy_attack(dmg, tnum, atkn, tgtype) {
 function s_enemy_attack_attrsp(dmg_s, dmg_n, attr, tnum, atkn, tgtype) {
 	return m_create_enemy_move(function (fld, n, nows) {
 		// ログ出力
-		Field.log_push("Enemy[" + (n + 1) + "]: " +
+		fld.log_push("Enemy[" + (n + 1) + "]: " +
 			(tnum < fld.Allys.Deck.length ? tnum : "全") + "体属性特攻" +
 			(atkn > 1 ? atkn + "連撃(" : "攻撃(") + dmg_s + ")");
 		// 攻撃対象取得
-		var tg = gen_enemytarget_array(tnum, atkn, tgtype, nows);
+		var tg = gen_enemytarget_array(fld, tnum, atkn, tgtype, nows);
 		// 攻撃
 		for (var i = 0; i < tg.length; i++) {
 			for (var j = 0; j < tg[i].length; j++) {
 				var targ = tg[i][j];
 				var cd = fld.Allys.Deck[targ];
-				var e = GetNowBattleEnemys(targ);
+				var e = GetNowBattleEnemys(fld, targ);
 				if(typeof(attr)=="number"){
 					var dmg = (attr == cd.attr[0]) ? dmg_s : dmg_n;
 				}else{
@@ -233,11 +233,11 @@ function s_enemy_attack_attrsp(dmg_s, dmg_n, attr, tnum, atkn, tgtype) {
 function s_enemy_attack_ratio(rate, tnum, tgtype) {
 	return m_create_enemy_move(function (fld, n, nows, is_counter) {
 		// ログ出力
-		Field.log_push("Enemy[" + (n + 1) + "]: " +
+		fld.log_push("Enemy[" + (n + 1) + "]: " +
 			(tnum < fld.Allys.Deck.length ? tnum : "全") + "体割合攻撃(" +
 			(rate * 100) + "%)");
 		// 攻撃対象取得
-		var tg = gen_enemytarget_array(tnum, 1, tgtype, nows);
+		var tg = gen_enemytarget_array(fld, tnum, 1, tgtype, nows);
 		// 攻撃
 		for (var i = 0; i < tg.length; i++) {
 			for (var j = 0; j < tg[i].length; j++) {
@@ -259,7 +259,7 @@ function s_enemy_attack_deadgrudge(r1, r2, r3, tgtype) {
 	return m_create_enemy_move(function (fld, n, nows, is_counter) {
 		var rates = [r1, r2, r3, r3];
 		var deadnum = 0;
-		var es = GetNowBattleEnemys();
+		var es = GetNowBattleEnemys(fld);
 		$.each(es, function (i, e) {
 			if (e.nowhp <= 0) {
 				deadnum++;
@@ -274,11 +274,11 @@ function s_enemy_attack_deadgrudge(r1, r2, r3, tgtype) {
 function s_enemy_attack_ignoreguard(dmg, tnum, atkn, tgtype) {
 	return m_create_enemy_move(function (fld, n, nows) {
 		// ログ出力
-		Field.log_push("Enemy[" + (n + 1) + "]: " +
+		fld.log_push("Enemy[" + (n + 1) + "]: " +
 			(tnum < fld.Allys.Deck.length ? tnum : "全") + "体防御無視" +
 			(atkn > 1 ? atkn + "連撃(" : "攻撃(") + dmg + ")");
 		// 攻撃対象取得
-		var tg = gen_enemytarget_array(tnum, atkn, tgtype, nows);
+		var tg = gen_enemytarget_array(fld, tnum, atkn, tgtype, nows);
 		// 攻撃
 		for (var i = 0; i < tg.length; i++) {
 			for (var j = 0; j < tg[i].length; j++) {
@@ -293,11 +293,11 @@ function s_enemy_attack_ignoreguard(dmg, tnum, atkn, tgtype) {
 function s_enemy_absorb(ratiorate, tnum, healvalue) {
 	return m_create_enemy_move(function (fld, n, nows, is_counter) {
 		// ログ出力
-		Field.log_push("Enemy[" + (n + 1) + "]: " +
+		fld.log_push("Enemy[" + (n + 1) + "]: " +
 			(tnum < fld.Allys.Deck.length ? tnum : "全") + "体割合攻撃(" +
 			(ratiorate * 100) + "%)");
 		// 攻撃対象取得
-		var tg = gen_enemytarget_array(tnum, 1, false, nows);
+		var tg = gen_enemytarget_array(fld, tnum, 1, false, nows);
 		// 攻撃
 		for (var i = 0; i < tg.length; i++) {
 			for (var j = 0; j < tg[i].length; j++) {
@@ -311,7 +311,7 @@ function s_enemy_absorb(ratiorate, tnum, healvalue) {
 				}
 			}
 		}
-		var e = GetNowBattleEnemys(n);
+		var e = GetNowBattleEnemys(fld, n);
 		if (e.nowhp <= 0) { return; }
 		var heal_v = healvalue;
 		e.nowhp = Math.min(e.nowhp +heal_v, e.hp);
@@ -334,10 +334,10 @@ function s_enemy_delay_attack(dmg, tnum, atkn) {
 // 状態異常攻撃
 // -----------------------------------
 // 状態異常攻撃テンプレ
-// (Field, 説明, 種類, ターン数, 対象, 発動敵番号, 敵のカウンター攻撃かどうか, 追加内容, 異常無効貫通)
+// (fld, 説明, 種類, ターン数, 対象, 発動敵番号, 敵のカウンター攻撃かどうか, 追加内容, 異常無効貫通)
 function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f_obj, disable_guard) {
 	var rst = [];
-	var tg = !target.length ? gen_enemytarget_array(target, 1, false)[0] : target;
+	var tg = !target.length ? gen_enemytarget_array(fld, target, 1, false)[0] : target;
 	f_obj = f_obj || {};
 	// effect add
 	for (var i = 0; i < tg.length; i++) {
@@ -357,7 +357,7 @@ function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f
 			effect: function () { },
 		}, f_obj);
 		// 潜在の状態無効を確認
-		var is_abs_guard_aw = Awake_AbsInvalid(card, now, type);
+		var is_abs_guard_aw = Awake_AbsInvalid(fld, card, now, type);
 		// 異常攻撃前効果を発動させ、戻り値がfalseのものが1つ以上あったら無効
 		// ユーザー側の攻撃前効果(ex: 異常無効)
 		var is_abs_guard = $.grep(now.turn_effect, function (e) {
@@ -389,7 +389,7 @@ function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f
 			now.flags.skill_counter[ei] = true;
 		}
 		// スキル重複確認
-		turn_effect_check(false);
+		turn_effect_check(fld, false);
 	}
 	return rst;
 }
@@ -408,7 +408,7 @@ function s_enemy_poison(d, tnum, t) {
 					if (is_t && !is_b && !is_ss && state != "overlay") {
 						if(!is_imple){
 							f.log_push("Unit[" + (oi + 1) + "]: 毒(" + d + "ダメージ)");
-							damage_ally(d, oi, true);
+							damage_ally(fld, d, oi, true);
 						} else {
 							f.log_push("Unit[" + (oi + 1) + "]: 毒(0ダメージ[無効化])");
 						}
@@ -523,7 +523,7 @@ function s_enemy_deathlimit(tnum, limit) {
 					var nowtg = f.Allys.Now[oi];
 					if (state == "end") {
 						f.log_push("Unit[" + (oi+1) + "]: 死の秒針 - 残り0t");
-						damage_ally(nowtg.maxhp, oi, true);
+						damage_ally(fld, nowtg.maxhp, oi, true);
 					}
 				},
 			}
@@ -564,7 +564,7 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown, isStatusDownOnly) {
 	var txtype = isStatusDownOnly ? "ステータス減少" : "呪い";
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 		atkdown = atkdown || 0;
-		var tg = !tnum.length ? gen_enemytarget_array(tnum, 1, false)[0] : tnum;
+		var tg = !tnum.length ? gen_enemytarget_array(fld, tnum, 1, false)[0] : tnum;
 		for (var i = 0; i < tg.length; i++) {
 			var card = fld.Allys.Deck[tg[i]];
 			var now = fld.Allys.Now[tg[i]];
@@ -587,7 +587,7 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown, isStatusDownOnly) {
 					if (state == "first") {
 						// 効果解除
 						if(!isStatusDownOnly){
-							turneff_break_cond(nowtg.turn_effect, oi, function (teff) {
+							turneff_break_cond(fld, nowtg.turn_effect, oi, function(teff){
 								return teff.iscursebreak;
 							}, "break");
 						}
@@ -619,7 +619,7 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown, isStatusDownOnly) {
 				},
 			});
 			// 潜在の状態無効を確認
-			var is_abs_guard_aw = Awake_AbsInvalid(card, now, "curse");
+			var is_abs_guard_aw = Awake_AbsInvalid(fld, card, now, "curse");
 			if (!is_abs_guard_aw) {
 				now.turn_effect.push(eff_obj);
 			}
@@ -630,22 +630,22 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown, isStatusDownOnly) {
 		// 反射チェック
 		turneff_check_skillcounter(fld);
 		// スキル重複確認
-		turn_effect_check(false);
+		turn_effect_check(fld, false);
 	}, makeDesc(txtype));
 }
 
 // 効果解除呪い(対象数)
 function s_enemy_cursed_break(tnum) {
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
-		var tg = !tnum.length ? gen_enemytarget_array(tnum, 1, false)[0] : tnum;
+		var tg = !tnum.length ? gen_enemytarget_array(fld, tnum, 1, false)[0] : tnum;
 		for (var i = 0; i < tg.length; i++) {
 			var card = fld.Allys.Deck[tg[i]];
 			var now = fld.Allys.Now[tg[i]];
 			// 潜在の状態無効を確認
-			var is_abs_guard_aw = Awake_AbsInvalid(card, now, "curse");
+			var is_abs_guard_aw = Awake_AbsInvalid(fld, card, now, "curse");
 			if(!is_abs_guard_aw){
 				// 一番最後の効果を解除
-				turneff_break_last(now.turn_effect, tg[i], function (teff) {
+				turneff_break_last(fld, now.turn_effect, tg[i], function(teff){
 					return teff.iscursebreak;
 				}, "break");
 			}
@@ -656,7 +656,7 @@ function s_enemy_cursed_break(tnum) {
 		// 反射チェック
 		turneff_check_skillcounter(fld);
 		// スキル重複確認
-		turn_effect_check(false);
+		turn_effect_check(fld, false);
 	}, makeDesc("効果解除"));
 }
 
@@ -674,7 +674,7 @@ function s_enemy_attrreverse(t, tnum){
 					var invalid_rst = (tf.target_attr[card.attr[0]] > 0);
 					if(!invalid_rst){
 						/* 無効化する
-						 tf.effect(Field, index, tf, "break", false, false);
+						 tf.effect(fld, index, tf, "break", false, false);
 						 turneff_remove_pos(teffs, i);
 						 i--;
 						 */
@@ -686,7 +686,7 @@ function s_enemy_attrreverse(t, tnum){
 		}
 		
 		// 攻撃ターゲットを取得
-		var tg = gen_enemytarget_array(tnum, 1, false)[0];
+		var tg = gen_enemytarget_array(fld, tnum, 1, false)[0];
 		// 状態異常付与(解除時の処理, etc)
 		var rst = s_enemy_abstate_attack(
 			fld, "属性反転",
@@ -752,8 +752,8 @@ function s_enemy_attrreverse(t, tnum){
 // スキル反射(単発ダメージ)
 function skill_counter(damage, t) {
 	return m_create_enemy_move(function(fld, n){
-		var enemy = GetNowBattleEnemys(n);
-		Field.log_push("Enemy[" + (n + 1) + "]: スキル反射待機");
+		var enemy = GetNowBattleEnemys(fld, n);
+		fld.log_push("Enemy[" + (n + 1) + "]: スキル反射待機");
 		enemy.turn_effect.push({
 			desc: "スキル反射(" + damage + ")",
 			type: "skill_counter",
@@ -771,7 +771,7 @@ function skill_counter(damage, t) {
 				}
 				f.Allys.Now[ai].flags.enemy_counter[ei] = true;
 				f.log_push("Enemy[" + (ei + 1) + "]: スキル反射発動(対象: Unit[" + (ai + 1) + "])");
-				damage_ally(damage, ai, true);
+				damage_ally(fld, damage, ai, true);
 			}
 		});
 	}, makeDesc("スキル反射"));
@@ -783,8 +783,8 @@ function skill_counter(damage, t) {
 function skill_counter_func(skill, desc, t, is_tgonly, p1, p2, p3, p4) {
 	desc = skill(p1,p2,p3,p4).mdesc != undefined ? skill(p1,p2,p3,p4).mdesc : desc
 	return m_create_enemy_move(function (fld, n) {
-		var enemy = GetNowBattleEnemys(n);
-		Field.log_push("Enemy[" + (n + 1) + "]: スキル反射待機");
+		var enemy = GetNowBattleEnemys(fld, n);
+		fld.log_push("Enemy[" + (n + 1) + "]: スキル反射待機");
 		enemy.turn_effect.push({
 			desc: "スキル反射(" + desc + ")",
 			type: "skill_counter",
@@ -822,7 +822,7 @@ function skill_counter_func(skill, desc, t, is_tgonly, p1, p2, p3, p4) {
 // SS反応(味方スキルに反応する)
 function skill_response(skill) {
 	return m_create_enemy_move(function (fld, n) {
-		var enemy = GetNowBattleEnemys(n);
+		var enemy = GetNowBattleEnemys(fld, n);
 		enemy.turn_effect.push({
 			desc: null,
 			type: "skill_response",
@@ -841,8 +841,8 @@ function skill_response(skill) {
 // 物理カウンター(単発ダメージ)
 function attack_counter(damage, t) {
 	return m_create_enemy_move(function (fld, n) {
-		var enemy = GetNowBattleEnemys(n);
-		Field.log_push("Enemy[" + (n + 1) + "]: 物理カウンター");
+		var enemy = GetNowBattleEnemys(fld, n);
+		fld.log_push("Enemy[" + (n + 1) + "]: 物理カウンター");
 		enemy.turn_effect.push({
 			desc: "物理カウンター(" + damage + ")",
 			type: "attack_counter",
@@ -862,8 +862,8 @@ function attack_counter(damage, t) {
 // 物理カウンター(多段式ダメージ)
 function attack_counter_dual(damage, t) {
 	return m_create_enemy_move(function (fld, n) {
-		var enemy = GetNowBattleEnemys(n);
-		Field.log_push("Enemy[" + (n + 1) + "]: 物理カウンター");
+		var enemy = GetNowBattleEnemys(fld, n);
+		fld.log_push("Enemy[" + (n + 1) + "]: 物理カウンター");
 		enemy.turn_effect.push({
 			desc: "多段式カウンター(" + damage + ")",
 			type: "attack_counter",
@@ -874,7 +874,7 @@ function attack_counter_dual(damage, t) {
 			effect: function () { },
 			on_attack_damage: function (f, ei, ai) {
 				f.log_push("Enemy[" + (ei + 1) + "]: 多段式カウンター発動(対象: Unit[" + (ai + 1) + "])");
-				var atk_ct = GetNowBattleEnemys(ei).flags.is_as_attack[ai];
+				var atk_ct = GetNowBattleEnemys(fld, ei).flags.is_as_attack[ai];
 				for (var i = 0; i < atk_ct; i++) {
 					_s_enemy_attack(f, damage, ei, ai, true);
 				}
@@ -889,8 +889,8 @@ function attack_counter_dual(damage, t) {
 // ダメージブロック(自身)
 function damage_block_own(bl, t) {
 	return m_create_enemy_move(function (fld, n) {
-		var enemy = GetNowBattleEnemys(n);
-		Field.log_push("Enemy[" + (n + 1) + "]: ダメージブロック(" + bl + ")");
+		var enemy = GetNowBattleEnemys(fld, n);
+		fld.log_push("Enemy[" + (n + 1) + "]: ダメージブロック(" + bl + ")");
 		enemy.turn_effect.push({
 			desc: "ダメージブロック(" + bl + ")",
 			type: "damage_block",
@@ -914,7 +914,7 @@ function damage_block_own(bl, t) {
 // ダメージブロック(全体)
 function damage_block_all(bl, t) {
 	return m_create_enemy_move(function (fld, n) {
-		var enemys = GetNowBattleEnemys();
+		var enemys = GetNowBattleEnemys(fld);
 		for (var i = 0; i < enemys.length; i++) {
 			damage_block_own(bl, t).move(fld, i);
 		}
@@ -924,7 +924,7 @@ function damage_block_all(bl, t) {
 // 属性ガード(単体)
 function s_enemy_attrguard_own(attr, rate, turn) {
 	return m_create_enemy_move(function (fld, n) {
-		var enemy = GetNowBattleEnemys(n);
+		var enemy = GetNowBattleEnemys(fld, n);
 		// 属性表記
 		var attr_text = "";
 		for (var i = 0; i < attr.length; i++) {
@@ -953,14 +953,14 @@ function s_enemy_attrguard_own(attr, rate, turn) {
 				}
 			}
 		});
-		Field.log_push("Enemy[" + (n + 1) + "]: [" + attr_text + "]属性ガード(" + (rate * 100) + "%)");
+		fld.log_push("Enemy[" + (n + 1) + "]: [" + attr_text + "]属性ガード(" + (rate * 100) + "%)");
 	}, makeDesc("単体軽減"));
 }
 
 // 属性ガード(全体)
 function s_enemy_attrguard_all(attr, rate, turn) {
 	return m_create_enemy_move(function (fld, n) {
-		var enemys = GetNowBattleEnemys();
+		var enemys = GetNowBattleEnemys(fld);
 		for (var i = 0; i < enemys.length; i++) {
 			s_enemy_attrguard_own(attr, rate, turn).move(fld, i);
 		}
@@ -970,7 +970,7 @@ function s_enemy_attrguard_all(attr, rate, turn) {
 // 属性免疫(単体)
 function s_enemy_attrIncreaseGuard_own(attr, up_rate, up_max, turn){
 	return m_create_enemy_move(function (fld, n) {
-		var enemy = GetNowBattleEnemys(n);
+		var enemy = GetNowBattleEnemys(fld, n);
 		// 属性表記
 		var attr_text = get_attr_string(attr, "/");
 		// 追加
@@ -984,7 +984,7 @@ function s_enemy_attrIncreaseGuard_own(attr, up_rate, up_max, turn){
 			priority: 3,
 			n_rate: 0,
 			effect: function () { },
-			on_damage: function (fld, dmg, atr_i, is_berserk, is_sim) {
+			on_damage: function (f, dmg, atr_i, is_berserk, is_sim) {
 				var nowr = this.n_rate;
 				if (attr[atr_i] > 0) {
 					// ダメージに現在の軽減率をかけて返す
@@ -993,7 +993,7 @@ function s_enemy_attrIncreaseGuard_own(attr, up_rate, up_max, turn){
 					if(!is_sim){
 						this.n_rate = Math.min(nowr + up_rate, up_max);
 						this.desc = attr_text + "免疫(" + (this.n_rate*100) + "%)";
-						Field.log_push("Enemy[" + (n + 1) + "]: 属性免疫(" + (nowr*100) + "% → " + (this.n_rate*100) + "%)");
+						f.log_push("Enemy[" + (n + 1) + "]: 属性免疫(" + (nowr*100) + "% → " + (this.n_rate*100) + "%)");
 					}
 					return dmg_rst;
 				} else {
@@ -1001,13 +1001,13 @@ function s_enemy_attrIncreaseGuard_own(attr, up_rate, up_max, turn){
 					if(!is_sim && this.n_rate > 0){
 						this.n_rate = 0;
 						this.desc = attr_text + "免疫(0%)";
-						Field.log_push("Enemy[" + (n + 1) + "]: 属性免疫(" + (nowr*100) + "% → 0%)");
+						f.log_push("Enemy[" + (n + 1) + "]: 属性免疫(" + (nowr*100) + "% → 0%)");
 					}
 					return dmg;
 				}
 			}
 		});
-		Field.log_push("Enemy[" + (n + 1) + "]: [" + attr_text + "]属性免疫発動(max: " + (up_max * 100) + "%/" + turn + "t)");
+		fld.log_push("Enemy[" + (n + 1) + "]: [" + attr_text + "]属性免疫発動(max: " + (up_max * 100) + "%/" + turn + "t)");
 	}, makeDesc("属性免疫[単体]"));
 }
 
@@ -1029,7 +1029,7 @@ function s_enemy_attrIncreaseGuard_all(attr, up_rate, up_max, turn){
 					return;
 				}
 			},
-			on_damage: function (fld, dmg, atr_i, is_berserk, is_sim){
+			on_damage: function (fl, dmg, atr_i, is_berserk, is_sim){
 				var nowr = grd_v;
 				if (attr[atr_i] > 0) {
 					// ダメージに現在の軽減率をかけて返す
@@ -1038,7 +1038,7 @@ function s_enemy_attrIncreaseGuard_all(attr, up_rate, up_max, turn){
 					if (!is_sim) {
 						grd_v = Math.min(nowr + up_rate, up_max);
 						this.desc = attr_text + "免疫(" + (grd_v * 100) + "%)";
-						Field.log_push("Enemy[" + (n + 1) + "]: 属性免疫(" + (nowr * 100) + "% → " + (this.n_rate * 100) + "%)");
+						fl.log_push("Enemy[" + (n + 1) + "]: 属性免疫(" + (nowr * 100) + "% → " + (this.n_rate * 100) + "%)");
 					}
 					return dmg_rst;
 				} else {
@@ -1046,26 +1046,26 @@ function s_enemy_attrIncreaseGuard_all(attr, up_rate, up_max, turn){
 					if (!is_sim) {
 						grd_v = 0;
 						this.desc = attr_text + "免疫(0%)";
-						Field.log_push("Enemy[" + (n + 1) + "]: 属性免疫(" + (nowr * 100) + "% → 0%)");
+						fl.log_push("Enemy[" + (n + 1) + "]: 属性免疫(" + (nowr * 100) + "% → 0%)");
 					}
 					return dmg;
 				}
 			}
 		};
 		
-		var enemys = GetNowBattleEnemys();
+		var enemys = GetNowBattleEnemys(fld);
 		// 追加
 		for (var i = 0; i < enemys.length; i++) {
 			enemys[i].turn_effect.push(inc_guard);
 		}
-		Field.log_push("Enemy[" + (n + 1) + "]: [" + attr_text + "]属性免疫発動(max: " + (up_max * 100) + "%/" + turn + "t)");
+		fld.log_push("Enemy[" + (n + 1) + "]: [" + attr_text + "]属性免疫発動(max: " + (up_max * 100) + "%/" + turn + "t)");
 	}, makeDesc("属性免疫[全体]"));
 }
 
 // 敵属性吸収(単体)
 function s_enemy_attr_absorb(attr, rate, turn) {
 	return m_create_enemy_move(function (fld, n) {
-		var enemy = GetNowBattleEnemys(n);
+		var enemy = GetNowBattleEnemys(fld, n);
 		// 属性表記
 		var attr_text = get_attr_string(attr, "/");
 		// 追加
@@ -1078,23 +1078,23 @@ function s_enemy_attr_absorb(attr, rate, turn) {
 			lim_turn: turn,
 			priority: 4,
 			effect: function () { },
-			on_damage: function (fld, dmg, atr_i, is_berserk, is_sim) {
+			on_damage: function (fl, dmg, atr_i, is_berserk, is_sim) {
 				if (attr[atr_i] > 0) {
 					// 仮想ダメ計算時は0
 					if(is_sim){
 						return 0;
 					}
 					// 吸収
-					var ed = GetNowBattleEnemys(n);
+					var ed = GetNowBattleEnemys(fld, n);
 					ed.nowhp = Math.min(ed.hp, ed.nowhp + dmg * rate);
-					Field.log_push("Enemy[" + (n + 1) + "]: 属性吸収(HP+" + (dmg * rate) + ")");
+					fl.log_push("Enemy[" + (n + 1) + "]: 属性吸収(HP+" + (dmg * rate) + ")");
 					return 0;
 				} else {
 					return dmg;
 				}
 			}
 		});
-		Field.log_push("Enemy[" + (n + 1) + "]: " + attr_text + "吸収(" + (rate * 100) + "%/" + turn + "t)");
+		fld.log_push("Enemy[" + (n + 1) + "]: " + attr_text + "吸収(" + (rate * 100) + "%/" + turn + "t)");
 	}, makeDesc("属性吸収"));
 }
 
@@ -1102,7 +1102,7 @@ function s_enemy_attr_absorb(attr, rate, turn) {
 function s_enemy_attr_absorb_all(attr, rate, turn) {
 	return m_create_enemy_move(function (fld, n) {
 		var absorb = s_enemy_attr_absorb(attr, rate, turn);
-		var enemys = GetNowBattleEnemys();
+		var enemys = GetNowBattleEnemys(fld);
 		for (var i = 0; i < enemys.length; i++) {
 			absorb.move(fld, i);
 		}
@@ -1112,7 +1112,7 @@ function s_enemy_attr_absorb_all(attr, rate, turn) {
 // 単体バリア
 function s_enemy_barrier_own(dmg, turn) {
 	return m_create_enemy_move(function (fld, n) {
-		var enemy = GetNowBattleEnemys(n);
+		var enemy = GetNowBattleEnemys(fld, n);
 		// 追加
 		enemy.turn_effect.push({
 			desc: "バリアウォール(" + dmg + ")",
@@ -1124,18 +1124,18 @@ function s_enemy_barrier_own(dmg, turn) {
 			priority: 5,
 			barr_endurance: dmg,
 			barr_max: dmg,
-			effect: function (f, oi, teff, state, is_t, is_b) {
+			effect: function (fl, oi, teff, state, is_t, is_b) {
 				if (this.barr_endurance <= 0) {
 					teff.lim_turn = 0;
 				}
 			},
-			on_damage: function (fld, dmg, atr_i, is_bersek, is_sim) {
+			on_damage: function (fl, dmg, atr_i, is_bersek, is_sim) {
 				var is_invalid = false;
 				if (this.barr_endurance > 0) {
 					// 無効化
 					var bf = this.barr_endurance;
 					var af = this.barr_endurance - dmg;
-					Field.log_push("Enemy[" + (n + 1) + "]: バリアウォール(残: " + bf + "→" + af + ")");
+					fl.log_push("Enemy[" + (n + 1) + "]: バリアウォール(残: " + bf + "→" + af + ")");
 					if(!is_sim){
 						var lm = this.barr_endurance -= dmg;
 						if(lm <= 0){
@@ -1152,7 +1152,7 @@ function s_enemy_barrier_own(dmg, turn) {
 				return is_invalid ? 0 : dmg;
 			}
 		});
-		Field.log_push("Enemy[" + (n + 1) + "]: バリアウォール(" + dmg + "/" + turn + "t)");
+		fld.log_push("Enemy[" + (n + 1) + "]: バリアウォール(" + dmg + "/" + turn + "t)");
 	}, makeDesc("バリアウォール"));
 }
 
@@ -1160,10 +1160,10 @@ function s_enemy_barrier_own(dmg, turn) {
 function s_enemy_barrier_all(dmg, turn) {
 	return m_create_enemy_move(function (fld, n) {
 		
-		var enemys = GetNowBattleEnemys();
+		var enemys = GetNowBattleEnemys(fld);
 		barr_endu = dmg_base = dmg;
 		var is_allbarrbreaked = function(oi, state){
-			var es = GetNowBattleEnemys();
+			var es = GetNowBattleEnemys(fld);
 			return $.grep(es, function(e, i){
 				// 現在見てる敵が死亡確定ならカウントしない
 				if(i == oi && ["end", "dead", "break"].indexOf(state) >= 0){
@@ -1182,7 +1182,7 @@ function s_enemy_barrier_all(dmg, turn) {
 			turn: turn,
 			lim_turn: turn,
 			priority: 5,
-			effect: function (f, oi, teff, state, is_t, is_b) {
+			effect: function (fl, oi, teff, state, is_t, is_b) {
 				if(barr_endu === null){
 					return;
 				}
@@ -1197,7 +1197,7 @@ function s_enemy_barrier_all(dmg, turn) {
 					teff.desc = "バリアウォール(" + barr_endu + "/" + dmg + ")";
 				}
 			},
-			on_damage: function (fld, dmg, atr_i, is_berserk, is_simulate) {
+			on_damage: function (fl, dmg, atr_i, is_berserk, is_simulate) {
 				var is_invalid = false;
 				if(barr_endu === null){
 					barr_endu = dmg_base;
@@ -1207,7 +1207,7 @@ function s_enemy_barrier_all(dmg, turn) {
 					// 無効化
 					var bf = barr_endu;
 					var af = Math.max(bf - dmg, 0);
-					Field.log_push("Enemy[" + (n + 1) + "]: バリアウォール(残: " + bf + "→" + af + ")");
+					fl.log_push("Enemy[" + (n + 1) + "]: バリアウォール(残: " + bf + "→" + af + ")");
 					barr_endu = af;
 				}
 				return is_invalid ? 0 : dmg;
@@ -1217,14 +1217,14 @@ function s_enemy_barrier_all(dmg, turn) {
 		for (var i = 0; i < enemys.length; i++) {
 			enemys[i].turn_effect.push(barr_all);
 		}
-		Field.log_push("Enemy[" + (n + 1) + "]: バリアウォール[全体](" + dmg + "/" + turn + "t)");
+		fld.log_push("Enemy[" + (n + 1) + "]: バリアウォール[全体](" + dmg + "/" + turn + "t)");
 	}, makeDesc("バリアウォール[全体]"));
 }
 
 // 単体多層バリア
 function s_enemy_multibarrier_own(dmg, turn) {
 	return m_create_enemy_move(function (fld, n) {
-		var enemy = GetNowBattleEnemys(n);
+		var enemy = GetNowBattleEnemys(fld, n);
 		// 追加
 		enemy.turn_effect.push({
 			desc: "多層バリア(" + dmg + ")",
@@ -1235,18 +1235,18 @@ function s_enemy_multibarrier_own(dmg, turn) {
 			lim_turn: turn,
 			priority: 5,
 			barr_endurance: dmg,
-			effect: function (f, oi, teff, state, is_t, is_b) {
+			effect: function (fl, oi, teff, state, is_t, is_b) {
 				if (this.barr_endurance <= 0) {
 					teff.lim_turn = 0;
 				}
 			},
-			on_damage: function (fld, dmg, atr_i, is_berserk, is_sim) {
+			on_damage: function (fl, dmg, atr_i, is_berserk, is_sim) {
 				var is_invalid = false;
 				if (this.barr_endurance > 0 && !is_sim) {
 					// 無効化
 					var bf = this.barr_endurance;
 					var af = this.barr_endurance - 1;
-					Field.log_push("Enemy[" + (n + 1) + "]: 多層バリア(残: " + bf + "→" + af + ")");
+					fl.log_push("Enemy[" + (n + 1) + "]: 多層バリア(残: " + bf + "→" + af + ")");
 					this.barr_endurance -= 1;
 					is_invalid = true;
 				} else if(is_sim) {
@@ -1255,14 +1255,14 @@ function s_enemy_multibarrier_own(dmg, turn) {
 				return is_invalid ? 0 : dmg;
 			}
 		});
-		Field.log_push("Enemy[" + (n + 1) + "]: 多層バリア(" + dmg + ")");
+		fld.log_push("Enemy[" + (n + 1) + "]: 多層バリア(" + dmg + ")");
 	}, makeDesc("多層バリア"));
 }
 
 // 全体多層バリア
 function s_enemy_multibarrier_all(dmg, turn) {
 	return m_create_enemy_move(function (fld, n) {
-		var enemy = GetNowBattleEnemys();
+		var enemy = GetNowBattleEnemys(fld);
 		// 追加
 		for(var i=0; i < enemy.length; i++){
 			var e = enemy[i];
@@ -1275,18 +1275,18 @@ function s_enemy_multibarrier_all(dmg, turn) {
 				lim_turn: turn,
 				priority: 5,
 				barr_endurance: dmg,
-				effect: function (f, oi, teff, state, is_t, is_b) {
+				effect: function (fl, oi, teff, state, is_t, is_b) {
 					if (this.barr_endurance <= 0) {
 						teff.lim_turn = 0;
 					}
 				},
-				on_damage: function (fld, dmg, atr_i, is_berserk, is_sim) {
+				on_damage: function (fl, dmg, atr_i, is_berserk, is_sim) {
 					var is_invalid = false;
 					if (this.barr_endurance > 0 && !is_sim) {
 						// 無効化
 						var bf = this.barr_endurance;
 						var af = this.barr_endurance - 1;
-						Field.log_push("Enemy[" + (n + 1) + "]: 多層バリア(残: " + bf + "→" + af + ")");
+						fl.log_push("Enemy[" + (n + 1) + "]: 多層バリア(残: " + bf + "→" + af + ")");
 						this.barr_endurance -= 1;
 						is_invalid = true;
 					} else if(is_sim){
@@ -1296,14 +1296,14 @@ function s_enemy_multibarrier_all(dmg, turn) {
 				}
 			});
 		}
-		Field.log_push("Enemy[" + (n + 1) + "]: 全体多層バリア(" + dmg + ")");
+		fld.log_push("Enemy[" + (n + 1) + "]: 全体多層バリア(" + dmg + ")");
 	}, makeDesc("多層バリア"));
 }
 
 // 挑発
 function s_enemy_taunt(turn) {
 	return m_create_enemy_move(function (fld, n) {
-		var e = GetNowBattleEnemys(n);
+		var e = GetNowBattleEnemys(fld, n);
 		e.turn_effect.push({
 			desc: "挑発",
 			type: "enemy_taunt",
@@ -1315,15 +1315,15 @@ function s_enemy_taunt(turn) {
 			effect: function(){ },
 		});
 		$("#attack_target_sel").val(n);
-		Field.log_push("Enemy[" + (n + 1) + "]: 挑発(" + turn + "t)");
+		fld.log_push("Enemy[" + (n + 1) + "]: 挑発(" + turn + "t)");
 	}, makeDesc("挑発"));
 }
 
 // 鉄壁防御
 function impregnable(t) {
 	return m_create_enemy_move(function (fld, n) {
-		var enemy = GetNowBattleEnemys(n);
-		Field.log_push("Enemy[" + (n + 1) + "]: 鉄壁防御");
+		var enemy = GetNowBattleEnemys(fld, n);
+		fld.log_push("Enemy[" + (n + 1) + "]: 鉄壁防御");
 		enemy.turn_effect.push({
 			desc: "鉄壁防御",
 			type: "impregnable",
@@ -1352,13 +1352,13 @@ function impregnable(t) {
 // 分裂(自分自身が残った場合に発動/何回でも発動)
 function s_enemy_division(copyhp) {
 	return m_create_enemy_move(function (fld, n) {
-		var enemy = GetNowBattleEnemys(n);
+		var enemy = GetNowBattleEnemys(fld, n);
 		var push_oncond = m_create_enemy_move(function (f, i) {
 			// 複製先
 			var copyto = i != 0 ? 0 : 1;
 			var hprate = copyhp ? copyhp : 1;
 			var ens = f.Enemys.Data[f.Status.nowbattle - 1].enemy;
-			ens[copyto] = $.extend(true, {}, GetNowBattleEnemys(i));
+			ens[copyto] = $.extend(true, {}, GetNowBattleEnemys(fld, i));
 			ens[copyto].nowhp = ens[copyto].hp * hprate;
 			fld.log_push("Enemy[" + (n + 1) + "]: 分裂");
 		});
@@ -1381,7 +1381,7 @@ function s_enemy_division(copyhp) {
 // 敵全体を回復
 function s_enemy_heal_all(rate) {
 	return m_create_enemy_move(function (fld, n) {
-		var es = GetNowBattleEnemys();
+		var es = GetNowBattleEnemys(fld);
 		$.each(es, function (i, e) {
 			if (e.nowhp <= 0) { return; }
 			var heal_v = e.hp * rate;
@@ -1394,7 +1394,7 @@ function s_enemy_heal_all(rate) {
 // 自分自身を回復
 function s_enemy_heal_own(rate) {
 	return m_create_enemy_move(function (fld, n) {
-		var e = GetNowBattleEnemys(n);
+		var e = GetNowBattleEnemys(fld, n);
 		if (e.nowhp <= 0) { return; }
 		var heal_v = e.hp * rate;
 		e.nowhp = Math.min(e.nowhp +heal_v, e.hp);
@@ -1405,7 +1405,7 @@ function s_enemy_heal_own(rate) {
 // 全蘇生
 function s_enemy_resurrection(rate) {
 	return m_create_enemy_move(function (fld, n) {
-		var es = GetNowBattleEnemys();
+		var es = GetNowBattleEnemys(fld);
 		$.each(es, function (i, e) {
 			var heal_v = e.hp * rate;
 			if (e.nowhp <= 0) {
@@ -1419,7 +1419,7 @@ function s_enemy_resurrection(rate) {
 // 力溜め
 function s_enemy_force_reservoir() {
 	return m_create_enemy_move(function (fld, n) {
-		var enemy = GetNowBattleEnemys(n);
+		var enemy = GetNowBattleEnemys(fld, n);
 		fld.log_push("Enemy[" + (n + 1) + "]: 力溜め");
 		enemy.turn_effect.push({
 			desc: "力溜め",
@@ -1436,7 +1436,7 @@ function s_enemy_force_reservoir() {
 // 怒り状態
 function m_enemy_angry() {
 	return m_create_enemy_move(function (fld, n) {
-		var e = GetNowBattleEnemys(n);
+		var e = GetNowBattleEnemys(fld, n);
 		// 怒り状態にする
 		e.move.isangry = true;
 		// log
@@ -1458,14 +1458,14 @@ function m_enemy_angry() {
 function s_enemy_statusup(isall, up_rate, turn) {
 	return m_create_enemy_move(function (fld, n) {
 		if (isall) {
-			var es = GetNowBattleEnemys();
+			var es = GetNowBattleEnemys(fld);
 			for (var i = 0; i < es.length; i++) {
 				var e = es[i];
 				e.statusup = (e.statusup ? e.statusup + up_rate : e.statusup);
 				fld.log_push("Enemy[" + (n + 1) + "]: 敵ステータスアップ(" + up_rate + ")");
 			}
 		} else {
-			var e = GetNowBattleEnemys(n);
+			var e = GetNowBattleEnemys(fld, n);
 			e.statusup = (e.statusup ? e.statusup + up_rate : e.statusup);
 			fld.log_push("Enemy[" + (n + 1) + "]: 敵ステータスアップ(" + up_rate + ")");
 		}
@@ -1475,7 +1475,7 @@ function s_enemy_statusup(isall, up_rate, turn) {
 // 属性変化
 function attr_change(attr) {
 	return m_create_enemy_move(function (fld, n) {
-		var e = GetNowBattleEnemys(n);
+		var e = GetNowBattleEnemys(fld, n);
 		var bef = e.attr;
 		e.attr = attr;
 		fld.log_push("Enemy[" + (n + 1) + "]: 属性変化("
@@ -1487,7 +1487,7 @@ function attr_change(attr) {
 function s_enemy_reverse(rev_i) {
 	return m_create_enemy_move(function (fld, n) {
 		// 現在の戦闘を取得
-		var bdata = Field.Enemys.Data[Field.Status.nowbattle - 1]
+		var bdata = fld.Enemys.Data[fld.Status.nowbattle - 1]
 		// 復活先を指定
 		bdata.rev_used = n;			// 復活処理を発動させた敵の番号
 		bdata.rev_index = rev_i;	// 復活先の番号
@@ -1504,13 +1504,13 @@ function s_enemy_continue_damage(turn, initialdamage, continuedamage){
 	continuedamage *= 2;
 	return m_create_enemy_move(function (fld, n) {
 		fld.log_push("Enemy[" + (n + 1) + "]: 継続ダメージ(ダメージ:" + initialdamage + ", " + continuedamage + ")");
-		var tg = gen_enemytarget_array(5, 1, false);
+		var tg = gen_enemytarget_array(fld, 5, 1, false);
 		for (var i = 0; i < tg[0].length; i++) {
 			_s_enemy_attack(fld, initialdamage, n, tg[0][i], false);
 			// スキルカウンターを有効に
-			Field.Allys.Now[tg[0][i]].flags.skill_counter[n] = true;
+			fld.Allys.Now[tg[0][i]].flags.skill_counter[n] = true;
 		}
-		ss_continue_effect_add({
+		ss_continue_effect_add(fld, {
 			type: "continue_damage_by_enemy",
 			isdemerit: true,
 			turn: turn,
@@ -1518,11 +1518,11 @@ function s_enemy_continue_damage(turn, initialdamage, continuedamage){
 			continuedamage: continuedamage,
 			// 参照用にコピーを取る
 			now_state: $.extend(true, {}, fld.Enemys.Data[n]),
-			effect: function (f, oi, ceff, is_ssfin) {
+			effect: function(f, oi, ceff, is_ssfin){
 				if (!f.Status.finish && !is_ssfin) {
 					var f_copy = $.extend(true, {}, f);
 					f_copy.Enemys.Data[oi] = ceff.now_state;
-					var tg = gen_enemytarget_array(5, 1, false);
+					var tg = gen_enemytarget_array(fld, 5, 1, false);
 					for (var i = 0; i < tg[0].length; i++) {
 						_s_enemy_attack(f_copy, continuedamage, n, tg[0][i], false);
 					}
@@ -1620,7 +1620,7 @@ function s_enemy_discharge(tnum, minus_turn) {
 		$.each(nows, function (i, e) {
 			// 潜在の状態無効を確認
 			var card = fld.Allys.Deck[i];
-			var is_abs_guard_aw = Awake_AbsInvalid(card, nows[i], "discharge");
+			var is_abs_guard_aw = Awake_AbsInvalid(fld, card, nows[i], "discharge");
 			if (is_abs_guard_aw) {
 				return;
 			}
@@ -1629,9 +1629,9 @@ function s_enemy_discharge(tnum, minus_turn) {
 			e.ss_current = Math.max(Math.min(endcharge, e.ss_current) - minus_turn, 0);
 			// Lモードなら覚醒解除
 			if (is_lgmode) {
-				minus_legend_awake(Field.Allys.Deck, Field.Allys.Now, i);
+				minus_legend_awake(fld, fld.Allys.Deck, fld.Allys.Now, i);
 				nows[i].islegend = false;
-				Field.log_push("Unit[" + (i + 1) + "]: Lモード解除");
+				fld.log_push("Unit[" + (i + 1) + "]: Lモード解除");
 			}
 			// スキルカウンターを有効に
 			nows[i].flags.skill_counter[n] = true;
@@ -1647,10 +1647,10 @@ function s_enemy_discharge(tnum, minus_turn) {
 function s_enemy_when_dead(i1, i2) {
 	return {func: function (fld, n) {
 		var rst = true;
-		var e = GetNowBattleEnemys(i1);
+		var e = GetNowBattleEnemys(fld, i1);
 		rst = rst && e.nowhp <= 0;
 		if (i2 !== undefined) {
-			e = GetNowBattleEnemys(i2);
+			e = GetNowBattleEnemys(fld, i2);
 			rst = rst && e.nowhp <= 0;
 		}
 		return rst;
@@ -1661,7 +1661,7 @@ function s_enemy_when_dead(i1, i2) {
 function s_enemy_when_dead_s() {
 	return {func: function (fld, n) {
 		var rst = false;
-		var es = GetNowBattleEnemys();
+		var es = GetNowBattleEnemys(fld);
 		for (var i = 0; i < es.length; i++) {
 			if (i == n) { continue; }
 			rst = rst || es[i].nowhp <= 0;
@@ -1674,7 +1674,7 @@ function s_enemy_when_dead_s() {
 function s_enemy_when_dead_x(num) {
 	return {func: function (fld, n) {
 		var cnt = num;
-		var es = GetNowBattleEnemys();
+		var es = GetNowBattleEnemys(fld);
 		for (var i = 0; i < es.length; i++) {
 			if (i == n && es[i].nowhp > 0) { continue; }
 			cnt--;
@@ -1687,7 +1687,7 @@ function s_enemy_when_dead_x(num) {
 function s_enemy_when_dead_l() {
 	return {func: function (fld, n) {
 		var rst = true;
-		var es = GetNowBattleEnemys();
+		var es = GetNowBattleEnemys(fld);
 		for (var i = 0; i < es.length; i++) {
 			if (i == n) { continue; }
 			rst = rst && es[i].nowhp <= 0;
@@ -1699,7 +1699,7 @@ function s_enemy_when_dead_l() {
 // HPが指定%以下
 function s_enemy_when_hpdown(rate) {
 	return {func: function (fld, n) {
-		var e = GetNowBattleEnemys(n);
+		var e = GetNowBattleEnemys(fld, n);
 		return e.nowhp <= Math.floor(e.hp * rate);
 	}, desc: "HPが" + rate * 100 + "％以下"};
 }

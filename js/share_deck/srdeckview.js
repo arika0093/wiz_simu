@@ -42,8 +42,8 @@ function createView(rst) {
 		if (bef_deckMD5 == r.deckMD5) { continue; }
 		op += "<div class='decks'>" +
 			"<div class='turn'>" + r.turn + "T ( " + r.turn_detail + " )</div>" +
-			"<div class='run'><a target='_blank' href='/simulator/?" + r.shorturl + "'>試走開始</a> / "+
-			"<a target='_blank' href='/simulator/v/?sid=" + r.id + "'>立ち回り詳細</a></div>" +
+			"<div class='run'><a target='_blank' href=" + r.shorturl + "'/simulator?'>試走開始</a> / "+
+			"<a target='_blank' href=" + r.id + "'/simulator/v?sid='>立ち回り詳細</a></div>" +
 			"<div class='cardimgs'>" + cardImgListup(r) + "</div>" +
 			(r.post_user ? "<div class='user'>投稿者: " + r.post_user + "</div>" : "") +
 			"<div class='comment'>" + (r.post_comment ? r.post_comment.replace(/\n/g, "<br/>") : "") + "</div>" +
@@ -71,7 +71,7 @@ function cardImgListup(r) {
 			c = {name: "(unknown)", imageno: -1}
 		}
 		op += "<span class='dimg'><a title='" + c.name +
-			"' href='/search/detail/?id=" + cn + "'>" +
+			"' href=" + cn + "'/search/detail?id='>" +
 			"<img src='" + get_image_url(c.imageno, c.imageno_prefix) + "'></a></span>"
 	}
 	return op;

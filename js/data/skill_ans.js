@@ -879,7 +879,7 @@ function when_subattr_match(attr, sub) {
 function when_enemyattr_match(e_attr) {
 	return {
 		cond: function (fld, oi, ei, p, tgi) {
-			var e = GetNowBattleEnemys(ei);
+			var e = GetNowBattleEnemys(fld, ei);
 			return ei < 0 || e.attr == e_attr;
 		}
 	}
@@ -895,7 +895,7 @@ function as_legendnum(rate) {
 			var cards = fld.Allys.Deck;
 			var nows = fld.Allys.Now;
 			for (var i = 0; i < nows.length; i++) {
-				l_count += (is_legendmode(cards[i], nows[i]) ? 1 : 0);
+				l_count += (is_legendmode(fld, cards[i], nows[i]) ? 1 : 0);
 			}
 			return l_count * rate;
 		},
@@ -939,17 +939,11 @@ function as_reducechain(rate, red_ch) {
 		is_afteradd: true,
 		add_f: function (fld, oi, ei, p, tgi) {
 			var nowchain = fld.Status.chain;
-			var redtask = Field.Status.chain_redtask || [];
-			// later-fix: 本来なら消費履歴を見るべきだが、仕様上何度も通過するためとりあえず0に指定
+			var redtask = fld.Status.chain_redtask || [];
 			var reducetask = 0;
-			/*
-				Field.Status.chain_redtask.reduce(function(prev, current, i, arr) {
-			 		return prev+current;
-			 	});
-			*/
 			if ((nowchain - reducetask) >= red_ch) {
 				redtask[oi] = red_ch;
-				Field.Status.chain_redtask = redtask;
+				fld.Status.chain_redtask = redtask;
 				return rate;
 			} else {
 				return 0;
