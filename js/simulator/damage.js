@@ -73,10 +73,7 @@ function attack_enemy(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss,
 function calculate_damage(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num, is_simulate) {
 	var d = 0;
 	// エンハ
-	var as_enh = now.as_enhance ? Number(now.as_enhance.toFixed(2)) : 0;
-	var ss_enh = now.ss_enhance ? Number(now.ss_enhance.toFixed(2)) : 0;
-	var bss_enh = now.ss_boost_enhance ? Number(now.ss_boost_enhance.toFixed(2)) : 0;
-	var rfm_enh = now.ss_reinforcement_atk ? Number(now.ss_reinforcement_atk.toFixed(2)) : 0;
+	var {as_enh, ss_enh, bss_enh, rfm_enh} = getEnhanceRate(now);
 	// 乱数決定
 	var rnd = 0;
 	if(!now.atk_rand){
@@ -116,19 +113,7 @@ function calculate_damage(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is
 		d *= 3;
 	}
 	// 攻撃時スキル確認
-	if (enemy.turn_effect.length > 0) {
-		var skillct = $.grep(enemy.turn_effect, function (g) {
-			return g.on_damage !== undefined;
-		});
-		is_ondamage = true;
-		skillct.sort(function (a, b) {
-			if (a.priority > b.priority) return -1;
-			if (a.priority < b.priority) return +1;
-		})
-		for (var j = 0; j < skillct.length; j++) {
-			d = Math.round(skillct[j].on_damage(Field, d, atk_atr, is_berserk, is_simulate));
-		}
-	}
+	d = checkFunctionOnAttack(enemy, d, atk_atr, is_simulate);
 
 	// return object
 	return {
@@ -143,6 +128,33 @@ function calculate_damage(enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is
 	};
 }
 
+// エンハンス値をまとめて返す
+function getEnhanceRate(now){
+	var as_enh = now.as_enhance ? Number(now.as_enhance.toFixed(2)) : 0;
+	var ss_enh = now.ss_enhance ? Number(now.ss_enhance.toFixed(2)) : 0;
+	var bss_enh = now.ss_boost_enhance ? Number(now.ss_boost_enhance.toFixed(2)) : 0;
+	var rfm_enh = now.ss_reinforcement_atk ? Number(now.ss_reinforcement_atk.toFixed(2)) : 0;
+	return {as_enh, ss_enh, bss_enh, rfm_enh};
+}
+
+// 攻撃時発動スキルのチェック
+function checkFunctionOnAttack(enemy, dmg, attr, is_berserk, is_simulate){
+	if (enemy.turn_effect.length > 0) {
+		var skillct = $.grep(enemy.turn_effect, function(g){
+			return g.on_damage !== undefined;
+		});
+		is_ondamage = true;
+		skillct.sort(function(a, b){
+			if (a.priority > b.priority) return -1;
+			if (a.priority < b.priority) return +1;
+		})
+		for (var j = 0; j < skillct.length; j++) {
+			dmg = Math.round(skillct[j].on_damage(Field, dmg, attr, is_berserk, is_simulate));
+		}
+	}
+	return dmg;
+}
+
 // contract_dmgsの総和を返す
 function sumContractDamages(enemy){
 	return function(arr) {
@@ -153,6 +165,29 @@ function sumContractDamages(enemy){
 		});
 		return sum;
 	}(enemy.contract_dmgs);
+}
+
+// 敵に固定ダメージを与える
+function constDamageToEnemy(enemy, dmg, i, e){
+	var bef_hp = enemy.nowhp;
+	
+	enemy.nowhp = Math.max(enemy.nowhp - dmg, 0);
+	
+	// HPが0になりそうならターン効果を全て消す
+	if (enemy.nowhp <= 0) {
+		turneff_allbreak(enemy.turn_effect, e, "dead");
+		// 撃破カウント
+		Field.Status.total_kill += 1;
+	}
+	// ダメージフラグ
+	enemy.flags.on_damage = (enemy.flags.on_damage ? enemy.flags.on_damage+1 : 1);
+	
+	// ログ
+	var e_nowhp = (enemy.nowhp);
+	var log_cc = (e_nowhp <= 0) && (bef_hp >= 1);
+	var l_t = "Unit[" + (i + 1) + "]: 敵[" + (e + 1) + "]へ攻撃( " + dmg +
+		"ダメージ)(残: " + Math.max(e_nowhp, 0) + "/" + enemy.hp + ")";
+	Field.log_push(l_t);
 }
 
 // 味方にダメージを与える

@@ -1622,7 +1622,7 @@ function s_enemy_discharge(tnum, minus_turn) {
 			var card = fld.Allys.Deck[i];
 			var is_abs_guard_aw = Awake_AbsInvalid(card, nows[i], "discharge");
 			if (is_abs_guard_aw) {
-				return false;
+				return;
 			}
 			var endcharge = card.islegend ? card.ss2.turn : card.ss1.turn;
 			var is_lgmode = card.islegend & endcharge <= e.ss_current;

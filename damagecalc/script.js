@@ -153,6 +153,10 @@ function action_set(){
 				$("." + types[i] + "_without").show();
 			}
 		}
+		// 時限チェックなら乱数が不要なので無効化
+		var checked = $("#cmb_ss_bm").prop("checked");
+		$("#fld_rand").prop("disabled", checked);
+		
 		calculate();
 	});
 	$("#card_rate_m1").on("click", function(){
@@ -408,6 +412,7 @@ function calculate(v){
 	var rate = 1;
 	var critical = 1;
 	var mgn_totalrate = 0;
+	var dmg_func = null;
 	switch(Number(vc.atktype)){
 		case 0:
 			// AS
@@ -447,11 +452,18 @@ function calculate(v){
 			lg.p("基礎効果値(SS効果値+潜在結晶+エンハンス)", rate);
 			break;
 		case 2:
-			// timebomb(未実装)
+			// timebomb
+			rate = (vc.skillrate/100 + vc.enh_rate/100 + 1 + chain/100);
+			mgn_totalrate = attr_magnification(va.attr_m, ve.attr);
+			dmg_func = function(atk, rand){
+				return Math.floor(Math.floor(atk * rate) * mgn_totalrate * advrate * eguard * eweak);
+			}
+			lg.p("時限効果値", rate);
+			lg.p("属性有利係数", mgn_totalrate);
 			break;
 		case 3:
 			// burst
-			rate = Math.floor(1 * vc.ssb_rate_min + vc.ssb_rate_add * Math.pow(chain/vc.ssb_rate_mch, vc.ssb_rate_exp))/100
+			rate = Math.floor(vc.ssb_rate_min + vc.ssb_rate_add * Math.pow(chain/vc.ssb_rate_mch, vc.ssb_rate_exp))/100
 				 + vc.enh_rate/100;
 			mgn_totalrate = attr_magnification(va.attr_m, ve.attr);
 			lg.p("基礎効果値(SS効果値+エンハンス)", rate);
@@ -461,66 +473,79 @@ function calculate(v){
 	// 打点を計算するか、ATKを計算するかで振り分ける
 	if(!vc.find_killatk){
 		// 打点計算
-		// 乱数以外を全て入れる
-		var dmg_without_rand
-			= Math.floor(last_atk * rate * critical * mgn_totalrate * advrate * (1 + chain/100) * eguard * eweak);
-		// 指定乱数込み
-		var dmg = Math.floor(dmg_without_rand * rand);
-		// 最低乱数込み
-		var dmg_l = Math.floor(dmg_without_rand * 0.9);
-		// 最高乱数込み
-		var dmg_h = Math.floor(dmg_without_rand * 1.1);
-		// 確殺に必要な乱数
-		var need_rand_str = "";
-		if(ve.hp <= dmg_l){
-			need_rand_str = "0.9000[確定]";
-		} else if(ve.hp >= dmg_h){
-			need_rand_str = "-.----[撃破不可]";
+		if(!dmg_func){
+			// 乱数以外を全て入れる
+			var dmg_without_rand = (last_atk * rate * critical * mgn_totalrate * advrate * (1 + chain/100) * eguard * eweak);
+			// 指定乱数込み
+			var dmg = Math.floor(dmg_without_rand * rand);
+			// 最低乱数込み
+			var dmg_l = Math.floor(dmg_without_rand * 0.9);
+			// 最高乱数込み
+			var dmg_h = Math.floor(dmg_without_rand * 1.1);
+			// 確殺に必要な乱数
+			var need_rand_str = "";
+			if(ve.hp <= dmg_l){
+				need_rand_str = "0.9000[確定]";
+			} else if(ve.hp >= dmg_h){
+				need_rand_str = "-.----[撃破不可]";
+			} else {
+				var nr = ve.hp / dmg_without_rand;
+				need_rand_str = "" + Math.floor(nr * 10000)/10000;
+				lg.p("確殺に必要な乱数", nr);
+			}
+			$("#dmg_show_min").text(dmg_l);
+			$("#dmg_show_min").toggleClass("killing", dmg_l >= ve.hp);
+			$("#dmg_show_max").text(dmg_h);
+			$("#dmg_show_max").toggleClass("killing", dmg_h >= ve.hp);
+			$("#dmg_show_jstrand").text(need_rand_str);
+			lg.p("乱数以外を全て入れた打点", dmg_without_rand);
+			lg.p("指定乱数込み打点", dmg);
+			lg.p("最低乱数込み打点", dmg_l);
+			lg.p("最高乱数込み打点", dmg_h);
 		} else {
-			var nr = ve.hp / dmg_without_rand;
-			need_rand_str = "" + Math.floor(nr * 10000)/10000;
-			lg.p("確殺に必要な乱数", nr);
+			var dmg = dmg_func(last_atk, 1);
+			$("#dmg_show_min").text("------");
+			$("#dmg_show_max").text("------");
+			$("#dmg_show_jstrand").text("-.----");
 		}
 		// html apply
 		$("#dmg_show").text(dmg);
 		$("#dmg_show").toggleClass("killing", dmg >= ve.hp);
-		$("#dmg_show_min").text(dmg_l);
-		$("#dmg_show_min").toggleClass("killing", dmg_l >= ve.hp);
-		$("#dmg_show_max").text(dmg_h);
-		$("#dmg_show_max").toggleClass("killing", dmg_h >= ve.hp);
-		$("#dmg_show_jstrand").text(need_rand_str);
 		$("#enemy_hp_remain").text(Math.max(ve.hp - dmg, 0));
 		// log add
-		lg.p("乱数以外を全て入れた打点", dmg_without_rand);
-		lg.p("指定乱数込み打点", dmg);
-		lg.p("最低乱数込み打点", dmg_l);
-		lg.p("最高乱数込み打点", dmg_h);
 	} else {
 		// 打点計算
-		// 攻撃力と乱数以外を全て入れる
-		var dmg_without_rand_and_atk
-			= rate * critical * mgn_totalrate * advrate * (1 + chain/100) * eguard * eweak;
-		// 指定乱数込み
-		var dmg_watk = (dmg_without_rand_and_atk * rand);
-		var need_atk = Math.floor(ve.hp / dmg_watk) - last_atk;
-		// 最低乱数込み
-		var dmg_l_watk = (dmg_without_rand_and_atk * 0.9);
-		var need_atk_l = Math.floor(ve.hp / dmg_l_watk) - last_atk;
-		// 最高乱数込み
-		var dmg_h_watk = (dmg_without_rand_and_atk * 1.1);
-		var need_atk_h = Math.floor(ve.hp / dmg_h_watk) - last_atk;
-		// html apply
+		if(!dmg_func){
+			// 攻撃力と乱数以外を全て入れる
+			var dmg_without_rand_and_atk
+				= rate * critical * mgn_totalrate * advrate * (1 + chain/100) * eguard * eweak;
+			// 指定乱数込み
+			var dmg_watk = (dmg_without_rand_and_atk * rand);
+			var need_atk = Math.floor(ve.hp / dmg_watk) - last_atk;
+			// 最低乱数込み
+			var dmg_l_watk = (dmg_without_rand_and_atk * 0.9);
+			var need_atk_l = Math.floor(ve.hp / dmg_l_watk) - last_atk;
+			// 最高乱数込み
+			var dmg_h_watk = (dmg_without_rand_and_atk * 1.1);
+			var need_atk_h = Math.floor(ve.hp / dmg_h_watk) - last_atk;
+			// html apply
+			$("#atk_show_max").text("あと " + need_atk_l);
+			$("#atk_show_max").toggleClass("killing", need_atk_l <= 0);
+			$("#atk_show_min").text("あと " + need_atk_h);
+			$("#atk_show_min").toggleClass("killing", need_atk_h <= 0);
+			lg.p("乱数と攻撃以外を全て入れた係数", dmg_without_rand_and_atk);
+			lg.p("最低乱数時の必須打点", need_atk_l);
+			lg.p("最高乱数時の必須打点", need_atk_h);
+		} else {
+			var dmg_without_atk = dmg_func(1, 1, 1);
+			var need_atk = Math.floor(ve.hp / dmg_without_atk) - last_atk;
+			$("#atk_show_max").text("------");
+			$("#atk_show_min").text("------");
+		}
 		$("#atk_show").text("あと " + need_atk);
 		$("#atk_show").toggleClass("killing", need_atk <= 0);
-		$("#atk_show_max").text("あと " + need_atk_l);
-		$("#atk_show_max").toggleClass("killing", need_atk_l <= 0);
-		$("#atk_show_min").text("あと " + need_atk_h);
-		$("#atk_show_min").toggleClass("killing", need_atk_h <= 0);
 		// log add
-		lg.p("乱数と攻撃以外を全て入れた係数", dmg_without_rand_and_atk);
 		lg.p("指定乱数時の必須打点", need_atk);
-		lg.p("最低乱数時の必須打点", need_atk_l);
-		lg.p("最高乱数時の必須打点", need_atk_h);
 	}
 	// button enable
 	$("#create_url").prop("disabled", false);

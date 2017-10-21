@@ -385,8 +385,6 @@ var SpSkill = {
 		for (var i = 0; i < enemys.length; i++) {
 			var en = enemys[i];
 			if (en.nowhp <= 0) { return; }
-			// 参照用にコピーを取る
-			var now_state = $.extend(true, {}, fld.Allys.Now[n]);
 			en.turn_effect.push({
 				desc: "時限大魔術",
 				type: "ss_damage_timebomb",
@@ -399,14 +397,24 @@ var SpSkill = {
 					if (is_end) {
 						// 発動時の攻撃力などをコピーする
 						var f_copy = $.extend(true, {}, f);
-						var fc_now = f_copy.Allys.Now[n] = now_state;
-						// タゲ指定(内部的に)
-						fc_now.target = [ei, ei];
+						var fc_card = f_copy.Allys.Deck[n];
+						var fc_now = f_copy.Allys.Now[n];
+						var enemy = GetNowBattleEnemys(ei);
+						var dmg = function(card, now, atk, chain){
+							var rst = 0;
+							for(var attr in attrs){
+								var {as_enh, ss_enh, bss_enh, rfm_enh} = getEnhanceRate(now);
+								var r = (rate + (as_enh + ss_enh + bss_enh + rfm_enh) + 1 + chain/100);
+								var adv = Awake_get_multiple(card, now);
+								var mgn = attr_magnification(attr, enemy.attr);
+								var dmg_tmp = Math.floor(Math.floor(atk * r) * mgn * adv);
+								rst +=  checkFunctionOnAttack(enemy, dmg_tmp, attr, false, false);
+							}
+							return rst;
+						}(fc_card, fc_now, fc_now.atk, f_copy.Status.chain);
 						// 着火
 						f.log_push("Enemy[" + (ei + 1) + "]: 時限大魔術 - 残り0t");
-						// TO DO: チェイン補正関連の修正を適用してないので後で確認すること
-						var sda = ss_damage_s(rate, attrs, atkn, false);
-						ss_object_done(f_copy, n, sda);
+						constDamageToEnemy(enemy, dmg, n, ei);
 					}
 				},
 			});

@@ -64358,7 +64358,7 @@ Cards = [{
 	ss1: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ水・雷属性のダメージ(120%)",
 		turn: 4,
-		proc: [ss_damage_all(1.2, [1, 2]), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(1.2, [2, 1]), ss_ignore_skillcounter()],
 	},
 	as2: {
 		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ、複属性が水だとさらにアップ(40%/130%)",

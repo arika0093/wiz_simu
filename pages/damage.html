@@ -1,175 +1,200 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
-    <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px) and (max-width: 1099px)" />
-    <link rel="stylesheet" type="text/css" href="/css/default_bg.css" media="screen and (min-width: 1100px)" />
-    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
-    <link type="text/css" rel="stylesheet"
-          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
-    <!-- Search -->
-    <meta name="robots" content="all" />
-    <meta name="keywords" content="黒猫,ウィズ,魔法使いと黒猫のウィズ,シミュレーター,シミュ,トーナメント,ダメージ計算式,攻撃順序" />
-    <meta name="description" content="「魔法使いと黒猫のウィズ」のダメージ計算式について記載しています。" />
-    <!-- About Page -->
-    <title>ダメージ計算式 - WizTools</title>
-    <style type="text/css">
-        dd{
-            line-height: 2.9ex;
-        }
-        div.inner{
-            border: 1px solid #888;
-            border-radius: 3px;
-            background: #EFF;
-            font-style: italic;
-            padding: 1ex;
-            margin: 1ex 0;
-        }
-        div.i_small{
-            font-size: smaller;
-        }
-        div.i_exam{
-            background: #F0F0F0;
-        }
-        span.number{
-            background: #FFEEDD;
-        }
-        span.dotunder{
-            border-bottom: 1px dashed #444;
-        }
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
+	<link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px) and (max-width: 1099px)" />
+	<link rel="stylesheet" type="text/css" href="/css/default_bg.css" media="screen and (min-width: 1100px)" />
+	<meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+	<link type="text/css" rel="stylesheet"
+		  href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+	<!-- Search -->
+	<meta name="robots" content="all" />
+	<meta name="keywords" content="黒猫,ウィズ,魔法使いと黒猫のウィズ,シミュレーター,シミュ,トーナメント,ダメージ計算式,攻撃順序" />
+	<meta name="description" content="「魔法使いと黒猫のウィズ」のダメージ計算式について記載しています。" />
+	<!-- About Page -->
+	<title>ダメージ計算式 - WizTools</title>
+	<style type="text/css">
+		dd{
+			line-height: 2.9ex;
+		}
+		div.inner{
+			border: 1px solid #888;
+			border-radius: 3px;
+			background: #EFF;
+			font-style: italic;
+			padding: 1ex;
+			margin: 1ex 0;
+		}
+		div.i_small{
+			font-size: smaller;
+		}
+		div.i_exam{
+			background: #F0F0F0;
+		}
+		span.number{
+			background: #FFEEDD;
+		}
+		span.dotunder{
+			border-bottom: 1px dashed #444;
+		}
 
-        span.attr_w{
-            color: #0000FF;
-            background-color: #9fccFF;
-        }
-        span.attr_t{
-            color: #cebc0c;
-            background-color: #fffdd9;
-        }
-        span.attr_d{
-            color: #ae007d;
-            background-color: #f9c3ff;
-        }
+		span.attr_w{
+			color: #0000FF;
+			background-color: #9fccFF;
+		}
+		span.attr_t{
+			color: #cebc0c;
+			background-color: #fffdd9;
+		}
+		span.attr_d{
+			color: #ae007d;
+			background-color: #f9c3ff;
+		}
 
-        label.tgl_label{
-            cursor: pointer;
-            text-decoration: underline;
-        }
-        label.tgl_label:hover{
-            font-weight: bold;
-        }
-        input.tgl{
-            display: none;
-        }
-        .tgl_hidden {
-            transition: 0.2s;
-            height: 0;
-            overflow: hidden;
-        }
-        input#toggle:checked + .tgl_hidden {
-            height: auto;
-            padding: 1ex;
-            border: 1px solid #CCC;
-            border-radius: 3px;
-        }
+		label.tgl_label{
+			cursor: pointer;
+			text-decoration: underline;
+		}
+		label.tgl_label:hover{
+			font-weight: bold;
+		}
+		input.tgl{
+			display: none;
+		}
+		.tgl_hidden {
+			transition: 0.2s;
+			height: 0;
+			overflow: hidden;
+		}
+		input#toggle:checked + .tgl_hidden {
+			height: auto;
+			padding: 1ex;
+			border: 1px solid #CCC;
+			border-radius: 3px;
+		}
 
-    </style>
+	</style>
 </head>
 <body>
 <div id='Top'></div>
 <div id="wrap">
-    <!-- Header -->
-    <div id="Header"></div>
+	<!-- Header -->
+	<div id="Header"></div>
 
-    <!-- Main Contents -->
-    <div class="Main">
-        <dl class="List">
-            <dt id="00">ダメージ計算式とややこしい攻撃順について</dt>
-            <dd>
-                ダメージ計算はウィズを考える上で重要な内容です。このページではその計算式について説明します。<br/>
-                攻撃順序についての記事は<a href="targeting.html">こちら</a>に移動しました。
-                <div class="linklist">
-                    <a href="#01">ダメージ計算式(AS)</a>
-                    <a href="#02">ダメージ計算式(SS)</a>
-                    <a href="#06">細かい話</a>
-                </div>
-                <!-- Adsense -->
-                <div class="Adsense">
-                    <!-- advertise -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-5156005489853976"
-                         data-ad-slot="6536828444"
-                         data-ad-format="auto"></ins>
-                    <script>
+	<!-- Main Contents -->
+	<div class="Main">
+		<dl class="List">
+			<dt id="00">ダメージ計算式とややこしい攻撃順について</dt>
+			<dd>
+				ダメージ計算はウィズを考える上で重要な内容です。このページではその計算式について説明します。<br/>
+				ここに記載している内容にしたがって<a href="/damagecalc/">ダメージ計算機</a>を実装しています。<br/>
+				攻撃順序についての記事は<a href="targeting.html">こちら</a>に移動しました。
+
+				<div class="linklist">
+					<a href="#01">ダメージ計算式(AS)</a>
+					<a href="#02">ダメージ計算式(SS)</a>
+					<a href="#03">ダメージ計算式(時限)</a>
+					<a href="#04">ダメージ計算式(連鎖解放)</a>
+					<a href="#06">細かい話</a>
+				</div>
+				<!-- Adsense -->
+				<div class="Adsense">
+					<!-- advertise -->
+					<ins class="adsbygoogle"
+						 style="display:block"
+						 data-ad-client="ca-pub-5156005489853976"
+						 data-ad-slot="6536828444"
+						 data-ad-format="auto"></ins>
+					<script>
 						(adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
-            </dd>
+					</script>
+				</div>
+			</dd>
 
-            <dt id="01">ダメージ計算式(AS)</dt>
-            <dd>
-                わざわざASと銘打ってるのは、ASの場合とSSの場合で計算式が違うためです。<br/>
-                その計算式は、以下のようになります(AS)。
+			<dt id="01">ダメージ計算式(AS)</dt>
+			<dd>
+				わざわざASと銘打ってるのは、ASの場合とSSの場合で計算式が違うためです。<br/>
+				その計算式は、以下のようになります(AS)。
+				<div class="inner">
+					damage = 0.5 × 攻撃力 × 攻撃倍率 × (1 + チェイン×0.01) × パネル補正 × 属性相性 × 補正値 × 乱数
+				</div>
+				各項目について補足すると、<br/>
+				・攻撃力　　： 精霊の攻撃力です。デッキ画面や精霊ステータス画面で「攻撃」と書いてある数字です。<br/>
+				・攻撃倍率　： ASの威力です。エンハンスやブーストなどの値はここに足されます。<br/>
+				・チェイン　： 解答後のチェイン数を参照します。チェイン数が大きいと無視できなくなってきます。<br/>
+				・パネル補正： 攻撃色とパネルの色が一致しない場合<span class="number">×0.5</span>します(副属性での攻撃時など)。<br/>
+				・属性相性　： 有利属性相手なら<span class="number">×1.5</span>、不利属性相手なら<span class="number">×0.5</span>をかけます。<br/>
+				・補正値　　： 潜在(結晶)による倍率補正をかけます。アドヴェリタスの<span class="number">×1.2</span>などがここです。<br/>
+				・乱数　　　： <span class="number">0.9</span>～<span class="number">1.1</span>までの値を<b>連続に</b>とります。ログ表記では小数点三桁以降を省略しています。<br/>
+				<br/>
+				具体例をあげて説明すると、キュウマ(水属性, 攻撃力6535, 1.1倍潜在発動中)がASを発動(倍率6.0)させて同属性の敵を攻撃した時、主属性の与えるダメージは
+				<div class="inner i_small i_exam">
+					攻撃力(6535/2) * 倍率(6+0+0) * チェイン(1.01) * パネル(1) * 属性相性(1) * 補正値(1.1) * 乱数(0.97) = ダメージ(21044)
+				</div>
+				となります。この計算はシミュレーターの「ログ」→「ダメージ計算」で確認できます。
+			</dd>
+
+			<dt id="02">ダメージ計算式(SS)</dt>
+			<dd>
+				SSの場合のダメージ計算式ですが、ASの場合と殆ど同じです（<span class="number">0.5</span>倍がなくなっているだけ）。
+				<div class="inner">
+					damage = 攻撃力 × 攻撃倍率 × (1 + チェイン×0.01) × 属性相性 × 補正値 × 乱数
+				</div>
+                攻撃倍率と省略していますが、ここにエンハンスやブーストがかかります。以降の説明でも同様です。<br/>
+				ちなみにカウンターでのダメージ量はこの式で計算します。そのため、少ない効果値でも実際には大きなダメージが与えられるのです。
+			</dd>
+
+			<dt id="03">ダメージ計算式(時限)</dt>
+			<dd>
+				時限大魔術のダメージ計算では、乱数の処理が行われていません。また、チェイン補正のかかり方も異なります。<br/>
+				<div class="inner">
+					damage = floor(攻撃力 × floor{効果値+1+(チェイン×0.01)} × 属性相性)
+				</div>
+				floorは切り捨てを意味します。また、チェイン数は発動時のものを参照します。<br/>
+                式を見ても分かるように、乱数が絡まないので同じ条件で同時に発動すると同じダメージになります。
+			</dd>
+
+			<dt id="04">ダメージ計算式(連鎖解放)</dt>
+			<dd>
+				最後に連鎖解放大魔術のダメージ計算式です。エンハなどの乗らない基礎効果値の算出のみが特殊なので、その箇所のみ記載します。<br/>
+                得られた効果値をSSダメージ計算の攻撃倍率に入れてあげれば実際のダメージが計算できます。
                 <div class="inner">
-                    damage = 0.5 × 攻撃力 × 攻撃倍率 × (1 + チェイン×0.01) × パネル補正 × 属性相性 × 補正値 × 乱数
-                </div>
-                各項目について補足すると、<br/>
-                ・攻撃力　　： 精霊の攻撃力です。デッキ画面や精霊ステータス画面で「攻撃」と書いてある数字です。<br/>
-                ・攻撃倍率　： ASの威力です。エンハンスやブーストなどの値はここに足されます。<br/>
-                ・チェイン　： 解答後のチェイン数を参照します。チェイン数が大きいと無視できなくなってきます。<br/>
-                ・パネル補正： 攻撃色とパネルの色が一致しない場合<span class="number">×0.5</span>します(副属性での攻撃時など)。<br/>
-                ・属性相性　： 有利属性相手なら<span class="number">×1.5</span>、不利属性相手なら<span class="number">×0.5</span>をかけます。<br/>
-                ・補正値　　： 潜在(結晶)による倍率補正をかけます。アドヴェリタスの<span class="number">×1.2</span>などがここです。<br/>
-                ・乱数　　　： <span class="number">0.9</span>～<span class="number">1.1</span>までの値を<b>連続に</b>とります。ログ表記では小数点三桁以降を省略しています。<br/>
-                <br/>
-                具体例をあげて説明すると、キュウマ(水属性, 攻撃力6535, 1.1倍潜在発動中)がASを発動(倍率6.0)させて同属性の敵を攻撃した時、主属性の与えるダメージは
-                <div class="inner i_small i_exam">
-                    攻撃力(6535/2) * 倍率(6+0+0) * チェイン(1.01) * パネル(1) * 属性相性(1) * 補正値(1.1) * 乱数(0.97) = ダメージ(21044)
-                </div>
-                となります。この計算はシミュレーターの「ログ」→「ダメージ計算」で確認できます。
-            </dd>
+                    rate = floor(最低保証値 + 最大効果値 * (現在ch/最大ch)^2.5)
+				</div>
+				ダメージを計算する際は、チェインが0になっている(チェイン補正がかからない)ことに留意してください。
+			</dd>
 
-            <dt id="02">ダメージ計算式(SS)</dt>
-            <dd>
-                SSの場合のダメージ計算式ですが、ASの場合と殆ど同じです（<span class="number">0.5</span>倍がなくなっているだけ）。
-                <div class="inner">
-                    damage = 攻撃力 × 攻撃倍率 × (1 + チェイン×0.01) × 属性相性 × 補正値 × 乱数
-                </div>
-                ちなみにカウンターでのダメージ量はこの式で計算します。そのため、少ない効果値でも実際には大きなダメージが与えられるのです。
-            </dd>
+			<dt id="06">細かい話</dt>
+			<dd>
+				<dl class="desctable">
+					<dt>高ダメージを出すための結晶選択</dt>
+					<dd>
+						まずはAS/SSの計算式をある程度頭にいれましょう。<br/>
+						その後、ステアップは攻撃力に、エンハンス/ブーストは攻撃倍率に作用するということを思い出します。<br/>
+						すると、「攻撃力が高いなら倍率をあげた方が打点が上がりやすい」「倍率が非常に高いなら攻撃力を上げたほうがいい」というのがわかるかと思います。<br/>
+						こういった情報を元に最適な結晶を選んでいきます。<br/>
+						例えば、HP20%以下の<a href="/search/detail/?id=8164">新人王ミルドレッド</a>なら、最適結晶は「アドヴェリタス/ゾラスウィルグ」になります。<br/>
+						大魔術+200%結晶は、素の倍率が高すぎる(1650%)ためあまり恩恵がないのです(攻撃力UPが多くかかっている場合は別)。
+					</dd>
+					<dt>アドヴェリタス結晶 + アドヴェリ潜在</dt>
+					<dd>
+						1.1*1.2=<span class="number">1.32倍</span>ということはなく、小数点以下の和をとって<span class="number">1.3倍</span>になります。
+					</dd>
+				</dl>
+			</dd>
+		</dl>
+	</div>
 
-            <dt id="06">細かい話</dt>
-            <dd>
-                <dl class="desctable">
-                    <dt>高ダメージを出すための結晶選択</dt>
-                    <dd>
-                        まずはAS/SSの計算式をある程度頭にいれましょう。<br/>
-                        その後、ステアップは攻撃力に、エンハンス/ブーストは攻撃倍率に作用するということを思い出します。<br/>
-                        すると、「攻撃力が高いなら倍率をあげた方が打点が上がりやすい」「倍率が非常に高いなら攻撃力を上げたほうがいい」というのがわかるかと思います。<br/>
-                        こういった情報を元に最適な結晶を選んでいきます。<br/>
-                        例えば、HP20%以下の<a href="/search/detail/?id=8164">新人王ミルドレッド</a>なら、最適結晶は「アドヴェリタス/ゾラスウィルグ」になります。<br/>
-                        大魔術+200%結晶は、素の倍率が高すぎる(1650%)ためあまり恩恵がないのです(攻撃力UPが多くかかっている場合は別)。
-                    </dd>
-                    <dt>アドヴェリタス結晶 + アドヴェリ潜在</dt>
-                    <dd>
-                        1.1*1.2=<span class="number">1.32倍</span>ということはなく、小数点以下の和をとって<span class="number">1.3倍</span>になります。
-                    </dd>
-                </dl>
-            </dd>
-        </dl>
-    </div>
+	<!-- Footer -->
+	<div id="Footer"></div>
 
-    <!-- Footer -->
-    <div id="Footer"></div>
-
-    <!-- Javascript -->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js"></script>
+	<!-- Javascript -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/googletrc.js"></script>
 </div>
 </body>
 </html>

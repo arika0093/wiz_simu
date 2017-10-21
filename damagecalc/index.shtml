@@ -296,7 +296,7 @@
                             <div class="combobox_lst">
                                 <input type="radio" id="cmb_as" class="input_combo" name="calctype" value="0" /><label for="cmb_as">AS</label>
                                 <input type="radio" id="cmb_ss" class="input_combo" name="calctype" value="1" checked /><label for="cmb_ss">攻撃SS</label>
-                                <!-- <input type="radio" id="cmb_ss_bm" class="input_combo" name="calctype" /><label for="cmb_ss_bm">時限</label> -->
+                                <input type="radio" id="cmb_ss_bm" class="input_combo" name="calctype" value="2" /><label for="cmb_ss_bm">時限</label>
                                 <input type="radio" id="cmb_ss_b" class="input_combo" name="calctype" value="3" /><label for="cmb_ss_b">連鎖解放</label>
                             </div>
                             <hr/>
