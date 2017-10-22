@@ -60,7 +60,8 @@
 				<a id="sim_share" onclick="tweet_result(null)">結果をツイートする</a>
 				<a id="sim_restart" onclick="load_field(null,0)">始めからやり直す</a>
 				<a id="sim_logview" onclick="log_view()">ログを確認する</a>
-                <a id="sim_rndview" onclick="rand_checker()">乱数確認ツール</a>
+				<!-- <a id="sim_ordview" onclick="rand_checker()">編成順ch</a> -->
+                <a id="sim_rndview" onclick="rand_checker()">乱数確認</a>
 				<a id="sim_decksel" onclick="back_decksel()">デッキ選択画面に戻る</a>
 			</div>
 		</div>
@@ -372,7 +373,6 @@
         <button type="button" onclick="randcheck_addact();">追加</button>
         <button type="button" onclick="randcheck_alldelact();">全削除</button>
         <input type="number" class="edit_indialog" id="randcheck_rnum" placeholder="《試行回数を入力》" />
-        <input type="checkbox" id="randcheck_disp" /><label for="randcheck_disp">不偏分散</label>
     </div>
     <div class="dialog_div" id="dialog_randchecker_rst" title="結果">
         <p id="randcheck_rsttext"></p>
@@ -383,6 +383,8 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<script src="https://cdn.rawgit.com/deep-rain/thread/1.0.0/dist/thread.min.js"></script>
+
     <script type="text/javascript" charset="UTF-8" src="/js/loader.js?                  <!--#flastmod virtual='/js/loader.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js?                <!--#flastmod virtual='/js/pagetemp.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/err_report.js?              <!--#flastmod virtual='/js/err_report.js'-->"></script>
@@ -415,6 +417,7 @@
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/actionlog.js?     <!--#flastmod virtual='/js/simulator/actionlog.js'-->"></script>
 	<!-- その他 -->
 	<script type="text/javascript" charset="UTF-8" src="/js/autorun/repeat.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/autorun/brute4ce.js"></script>
 </div>
 </body>
 </html>

@@ -375,8 +375,8 @@ function sim_show(fld) {
 		open: function(e, ui){
 			// sim_log
 			var logtext = "";
-			var tt = fld.Status.totalturn;
-			var log_stat = fld.Status.log[tt] !== undefined ? tt : tt - 1;
+			var tt = Field.Status.totalturn;
+			var log_stat = Field.Status.log[tt] !== undefined ? tt : tt - 1;
 			for (var i = 0 ; i <= log_stat; i++) {
 				var l_t = create_log(fld, i);
 				l_t = l_t.replace(/\/\/\{blue}/g, "<span class='blue'>");
@@ -404,7 +404,7 @@ function sim_show(fld) {
 		open: function (e, ui) {
 			// sim_log
 			var logtext = "";
-			var dl = fld.Status.d_log;
+			var dl = Field.Status.d_log;
 			for (var i = 0 ; i < dl.length; i++) {
 				logtext += dl[i] + "<br/>";
 			}
@@ -428,8 +428,8 @@ function sim_show(fld) {
 			// listup turn effect
 			var li_t = "";
 			var n = Number($("#allystat_index").text());
-			var card = fld.Allys.Deck[n];
-			var now = fld.Allys.Now[n];
+			var card = Field.Allys.Deck[n];
+			var now = Field.Allys.Now[n];
 			var teff = now.turn_effect;
 			for (var i = 0; i < teff.length; i++) {
 				if (teff[i].desc != null) {
@@ -484,7 +484,7 @@ function sim_show(fld) {
 				$("#dialog_allystatus").dialog('close');
 				ss_push(n);
 			});
-			if (!ss_disabled && sst[0] == 0 && now.nowhp > 0 && !fld.Status.finish) {
+			if (!ss_disabled && sst[0] == 0 && now.nowhp > 0 && !Field.Status.finish) {
 				// SS発動可能
 				als_ssbtn.attr("class", "ally_ss_button");
 				als_ssbtn.attr("disabled", false);
@@ -502,7 +502,7 @@ function sim_show(fld) {
 		close: function () {
 			// target set
 			var n = Number($("#allystat_index").text());
-			var now = fld.Allys.Now[n];
+			var now = Field.Allys.Now[n];
 			now.target[0] = Number($("#atarget_sel_1").val());
 			now.target[1] = Number($("#atarget_sel_2").val());
 			// title show
@@ -515,14 +515,14 @@ function sim_show(fld) {
 		modal: true,
 		width: 600,
 		open: function () {
-			var nam = fld.Quest.name;
+			var nam = Field.Quest.name;
 			var trn = durturn_string(fld);
 			var tot = totalturn_string(fld);
 			var text = simshow_create_fintext(fld);
 			// hide
 			$(".ui-dialog-titlebar").hide();
 			// tweet data
-			var url = absolutePath("/simulator/v/?id=" + fld.Status.result_enc);
+			var url = absolutePath("/simulator/v/?id=" + Field.Status.result_enc);
 			$("#simfinish_tweettext").html(
 				text + "<br/><div class='sh_url'><a href='" + url + "' target='_blank'>" + url + "</a></div> #wzsim"
 			);
@@ -567,7 +567,7 @@ function sim_show(fld) {
 				var comm = $("#simshare_comment").val();
 				if (user.length > 0 && comm.length > 0) {
 					// send
-					actl_send_share(fld, fld.Status.result_id, user, comm, function(rst){
+					actl_send_share(fld, Field.Status.result_id, user, comm, function(rst){
 						// msg alert
 						alert("送信完了しました。ご協力ありがとうございます。");
 					});
@@ -609,85 +609,35 @@ function sim_show(fld) {
 		width: 450,
 		buttons: {
 			"testrun": function () {
-				// task
-				var tobj = {
-					"panel_fire":		[panel, [0]],
-					"panel_water":		[panel, [1]],
-					"panel_thunder":	[panel, [2]],
-					"panel_multi":	    [panel, "#"],
-					"alltarget_left":	[target_allselect, 0],
-					"alltarget_center":	[target_allselect, 1],
-					"alltarget_right":	[target_allselect, 2],
-					"unit1_ss":			[ss_push, 0],
-					"unit2_ss":			[ss_push, 1],
-					"unit3_ss":			[ss_push, 2],
-					"unit4_ss":			[ss_push, 3],
-					"unit5_ss":			[ss_push, 4],
-				};
-				// get task-do-array
-				var task_doarr = $("#randcheck_actdata").text().split("/");
-				var test_rnum = Number($("#randcheck_rnum").val());
-				var is_calcdisp = $("#randcheck_disp").prop("checked");
-				var disp_num = 5;
-				// save before
-				var bef_f = $.extend(true, {}, fld);
-				var bef_battle = bef_f.Status.nowbattle;
-				// test
-				var break_counts = [];
-				for (var d = 0; d < (is_calcdisp ? 5 : 1) ; d++) {
-					break_counts[d] = 0;
-					for (var i = 0; i < test_rnum; i++) {
-						// fldにバックアップしておいたbeforeをコピー
-						fld = $.extend(true, {}, bef_f);
-						fld.Status.isautomode = true;
-						fld.Status.seed = Math.random(1, 100000);
-						// タスクを実行
-						for (var j = 0; j < task_doarr.length; j++) {
-							var ti = task_doarr[j];
-							if (ti == "") { continue; }
-							if(ti.indexOf("|") >= 0){
-								var tis = ti.split("|");
-								var p1 = tobj[tis[0]][1];
-								tis[1] = tis[1].split(",").map(Number);
-								tobj[tis[0]][0](p1 == "#" ? tis[1] : p1);
-							} else {
-								tobj[ti][0](tobj[ti][1]);
-							}
-						}
-						// 結果を確認
-						var aft_battle = fld.Status.nowbattle;
-						break_counts[d] += ((aft_battle - bef_battle > 0 || fld.Status.finish) ? 1 : 0);
+				// initilize
+				var loop = Number($("#randcheck_rnum").val());
+				var dotask = convertRepeatStr2TaskFunc();
+				var chcond = function(fld, bef_f){
+					// battle数が進行していたらOK
+					var bef_battle = bef_f.Status.nowbattle;
+					var aft_battle = fld.Status.nowbattle;
+					return (aft_battle - bef_battle > 0 || fld.Status.finish);
+				}
+				// 描画関連処理
+				var opdialog = function(n, c, t, is_fin){
+					var fin_p = (c/t*100).toFixed(2);
+					var clr_p = (n/c*100).toFixed(2);
+					var rst_tx = "";
+					if(is_fin){
+						rst_tx = `Result: ${n} / ${t} ( 突破率: ${clr_p}% )`;
+					} else {
+						rst_tx = `Calculating: ${n} / ${c} [ ${fin_p}% done. ]`;
 					}
+					$("#randcheck_rsttext").html(rst_tx);
 				}
-				// 終了後処理
-				fld.Status.isautomode = false;
-				sim_show(fld);
-				// rst show
-				var rst_tx = "";
-				if (is_calcdisp) {
-					var sum = function (arr) {
-						return arr.reduce(function (prev, current, i, arr) {
-							return prev + current;
-						});
-					};
-					var ave = function (arr, fn) {
-						return sum(arr, fn)/arr.length;
-					}(break_counts);
-					var disp = function (arr) {
-						var varia = 0;
-						for (i = 0; i < arr.length; i++) {
-							varia = varia + Math.pow(arr[i] - ave, 2);
-						}
-						var v = (varia / (arr.length-1));
-						return Math.sqrt(v);
-					}(break_counts);
-					rst_tx = "Result: <br/>Average±SD = " + ave.toFixed(2) + "±" + disp.toFixed(2) + " / " + test_rnum +
-						" (" + (ave*100/test_rnum).toFixed(2) + "±" + (disp*100/test_rnum).toFixed(2) + "%)";
-				} else {
-					rst_tx = "Result: " + break_counts[0] + " / " + test_rnum +
-						" (" + (break_counts[0] * 100 / test_rnum) + "%)";
-				}
-				$("#randcheck_rsttext").html(rst_tx);
+				// test
+				autoRun_RepeatTest(Field, chcond, dotask, loop)
+					.progress(v => {
+						opdialog(v.matched, v.finished, v.total, false);
+					})
+					.then(v => {
+						opdialog(v.matched, v.finished, v.total, true);
+					});
 				$("#dialog_randchecker_rst").dialog("open");
 			},
 			"close": function () {
@@ -699,7 +649,7 @@ function sim_show(fld) {
 	$("#dialog_randchecker_rst").dialog({
 		autoOpen: false,
 		modal: true,
-		width: 300,
+		width: 400,
 		buttons: {
 			"close": function () {
 				$(this).dialog("close");
@@ -713,7 +663,7 @@ function sim_show(fld) {
 		width: 400,
 		open: function() {
 			// images set
-			var cds = fld.Allys.Deck;
+			var cds = Field.Allys.Deck;
 			for (var i = 0; i < cds.length; i++) {
 				var c = cds[i];
 				var dom = $("#sso_ally_image_" + i);

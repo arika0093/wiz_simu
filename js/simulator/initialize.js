@@ -44,8 +44,8 @@ var Field = {
 	},
 	// 現在の状況管理
 	Status: {
-		// 乱数生成シード(試走結果再現に使用)
-		seed: -1,
+		seed: -1,                   // 乱数生成シード(試走結果再現に使用)
+		const_rand: null,           // 乱数固定用の変数, nullなら参照しない(DOMから読む)
 		// チェイン関連
 		chain: 0,
 		chain_status: 0,

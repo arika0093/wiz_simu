@@ -281,7 +281,11 @@ function attr_magnification(atk_atr, def_atr) {
 
 // 乱数を生成する
 function damage_rand(fld) {
+	var cnt = fld.Status.const_rand;
 	var r = Number($("#attack_rand_sel").val());
+	if(cnt !== null){
+		return cnt;
+	}
 	if (r != -1) {
 		return r;
 	}

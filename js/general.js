@@ -154,6 +154,7 @@ function int2roman(n) {
 // --------------------------
 // ごくごく一般的な関数群
 ArrayMath = {
+	// 合計
 	sum(arr, cond, key){
 		var sum = 0;
 		if(!arr){ return NaN; }
@@ -165,6 +166,7 @@ ArrayMath = {
 		});
 		return sum;
 	},
+	// 平均
 	average(arr, cond, key){
 		if(arr.length <= 0){
 			return NaN;
@@ -172,6 +174,7 @@ ArrayMath = {
 		var s = sum(arr, cond, key);
 		return s / arr.length;
 	},
+	// 最頻値
 	mode(arr, cond, key){
 		var array_length, count, i, max, value;
 		array_length = arr.length;
@@ -195,6 +198,26 @@ ArrayMath = {
 		} else {
 			return NaN;
 		}
+	},
+	// 全パターン
+	permutations(arr, n){
+		n = n || arr.length;
+		var generatePermutation = function(perm, pre, post, n) {
+			var elem, i, rest, len;
+			if (n > 0){
+				for (i = 0, len = post.length; i < len; ++i) {
+					rest = post.slice(0);
+					elem = rest.splice(i, 1);
+					generatePermutation(perm, pre.concat(elem), rest, n - 1);
+				}
+			} else {
+				perm.push(pre);
+			}
+		};
+		if (arr == null){ return []; };
+		var perm = [];
+		generatePermutation(perm, [], arr, n);
+		return perm;
 	}
 }
 
