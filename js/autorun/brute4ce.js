@@ -4,10 +4,11 @@
 // Managed class
 class Brute4ceTest {
 	
-	constructor(fld, tm, is_ff, is_umr){
+	constructor(fld, filt, tm, is_ff, is_umr){
 		this.patterns = {};
 		this.state = "created";
 		this.field = fld;
+		this.filter = filt;
 		this.tgmax = tm;
 		this.is1stfixed = is_ff;
 		this.isusedmrnd = is_umr;
@@ -27,11 +28,17 @@ class Brute4ceTest {
 }
 
 // パネルを踏んだときの最適並び順を探す関数
-function findBetterOrderAndTargetting(fld, panel, cond, loop, tgSrchMax, isFirstFix, isUsedMinRand){
-	var btest = new Brute4ceTest(fld, tgSrchMax, isFirstFix, isUsedMinRand);
+function findBetterOrderAndTarget(fld, panel, cond, loop, fltArray, tgSrchMax, isFirstFix, isUsedMinRand){
+	var btest = new Brute4ceTest(fld, fltArray, tgSrchMax, isFirstFix, isUsedMinRand);
 	return brute4ceTestDone(fld, btest, panel, cond, loop);
 }
 
+// 0.9確定抜けの場合のみを抜き出す
+function findMinRandOrderAndTarget(fld, panel, cond, tgSrchMax, isFirstFix){
+	return findBetterOrderAndTarget(fld, panel, cond, 1, [], tgSrchMax, isFirstFix, true);
+}
+
+// -------------------
 // 各testごとにpromiseを生成して管理する
 function brute4ceTestDone(fld, btest, panel, cond, loop){
 	var defer = btest.defer;
@@ -100,16 +107,9 @@ function testForBrute4ce(pnl, fstfixed){
 		var aft_battle = fld.Status.nowbattle;
 		return (aft_battle - bef_battle > 0 || fld.Status.finish);
 	}
-	var p = findBetterOrderAndTargetting(Field, pnl, nextcheck, 10, false, fstfixed, true);
+	//var p = findBetterOrderAndTarget(Field, pnl, nextcheck, 10, false, fstfixed, true);
+	var p = findMinRandOrderAndTarget(Field, pnl, nextcheck, false, fstfixed);
 	p.done(v => {
-		var goods = [];
-		for(var key in v.patterns){
-			var p = v.patterns[key];
-			// 暫定的に95%基準にしとく
-			if(p.matched >= Math.ceil(p.total * 0.95 )){
-				console.log(`[${key}]`, p.matched);
-			}
-		}
 		console.log(v);
 	})
 }
