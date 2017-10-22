@@ -129,7 +129,7 @@ var Field_log = {
 	// 読み込み関数
 	load: function (index) {
 		var fld_reset = $.extend(true, {}, Field);
-		fld_reset.Allys = $.extend(true, [], this.Allys[index]);
+		fld_reset.Allys = $.extend(true, {}, this.Allys[index]);
 		fld_reset.Enemys.Data = $.extend(true, [], this.Enemys_data[index]);
 		fld_reset.Enemys.revData = $.extend(true, [], this.Enemys_revdata[index]);
 		fld_reset.Status = $.extend(true, {}, this.Status[index]);

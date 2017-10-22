@@ -286,7 +286,12 @@ function answer_skill(fld, as_arr, panel, as_afters, bef_f) {
 				var as = as_arr[i][j];
 				// atknを増やす関数が指定されているなら実行
 				if(!as.atkn_funcadded && as.atkn && as.atkn.add_atkn){
-					as.atkn = as.atkn.add_atkn(bef_f, j, -1);
+					var anf = AsAddRate;
+					var an = 0;
+					$.each(as.atkn.add_atkn, function(aki,e){
+						an += anf[e.func](bef_f, e, j, -1);
+					});
+					as.atkn = an;
 					as.atkn_funcadded = true;
 				}
 				// 攻撃回数を増やす潜在結晶反映
@@ -479,8 +484,8 @@ function answer_attack(fld, card, now, enemy, as, attr, panel, index, atk_rem, b
 			var rate_b = (as_pos[ei] !== undefined ? as_rate[ei] : 0);
 			var aw_t = pickup_awakes(fld, card, "awake_ans_rateup", false);
 			// AS効果値後乗せ処理
-			if (is_ans && as[ai].is_afteradd && !as[ai].disactuate) {
-				rate_n += as[ai].add_f(bef_f, index, ei, panel);
+			if (is_ans && as[ai].add_f && !as[ai].disactuate) {
+				rate_n += answer_rateadded(bef_f, as[ai], index, ei, panel);
 			}
 			// 潜在結晶考慮処理
 			for (var i = 0; i < aw_t.length; i++) {
@@ -547,8 +552,8 @@ function answer_attack(fld, card, now, enemy, as, attr, panel, index, atk_rem, b
 		is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
 	}
 	// 攻撃後処理
-	if (atk_as.after && atk_rem == atk_as.atkn) {
-		as_afters.push(atk_as.after(fld, index, g_dmg));
+	if (atk_rem == atk_as.atkn) {
+		as_afters = answer_afterfunc(fld, as_afters, atk_as, i, g_dmg);
 	}
 	fld.Status.turn_dmg += g_dmg;
 	return as_afters;
@@ -571,8 +576,8 @@ function answer_enhance(fld, as, i, p, bef_f) {
 			if (is_answer_target(fld, bef_f, as[ai], chain, card.attr[0], card.species, i, -1, p, ci)) {
 				as_t = $.extend(true, {}, as[ai]);
 				// AS効果値後乗せ処理
-				if (as_t.is_afteradd) {
-					as_t.rate += as_t.add_f(bef_f, i, -1, p, ci);
+				if (as_t.add_f) {
+					as_t.rate += answer_rateadded(bef_f, as_t, i, -1, p, ci);
 				}
 			}
 			ass = (ass.rate < as_t.rate) ? as_t : ass;
@@ -582,8 +587,8 @@ function answer_enhance(fld, as, i, p, bef_f) {
 		var bef_enh = now.as_enhance ? now.as_enhance : 0;
 		now.as_enhance = bef_enh + ass.rate;
 		// 攻撃後処理
-		if (ass.after && !is_afteradded) {
-			as_afters.push(ass.after(fld, i, true));
+		if (!is_afteradded) {
+			as_afters = answer_afterfunc(fld, as_afters, ass, i, true);
 			is_afteradded = true;
 		}
 	}
@@ -593,6 +598,7 @@ function answer_enhance(fld, as, i, p, bef_f) {
 // 回復スキルの処理
 function answer_heal(fld, as, i, p, bef_f) {
 	var as_afters = [];
+	var is_afteradded = false;
 	for (var ci = 0; ci < fld.Allys.Deck.length; ci++) {
 		var ass = {rate: 0};
 		var card = fld.Allys.Deck[ci];
@@ -606,8 +612,8 @@ function answer_heal(fld, as, i, p, bef_f) {
 			if (is_answer_target(fld, bef_f, as[ai], chain, card.attr[0], card.species, i, -1, p, ci)) {
 				as_t = $.extend(true, {}, as[ai]);
 				// AS効果値後乗せ処理
-				if (as_t.is_afteradd) {
-					as_t.rate += as_t.add_f(bef_f, i, -1, p, ci);
+				if (as_t.add_f) {
+					as_t.rate += answer_rateadded(bef_f, as_t, i, -1, p, ci);
 				}
 			}
 			ass = ass.rate < as_t.rate ? as_t : ass;
@@ -619,8 +625,9 @@ function answer_heal(fld, as, i, p, bef_f) {
 			heal_ally(fld, heal_val, ci);
 			fld.log_push("Unit[" + (ci + 1) + "]: HP回復(HP: " + before + "→" + now.nowhp + ")");
 			// 攻撃後処理
-			if (ass.after && ci == 0) {
-				as_afters.push(ass.after(fld, i, true));
+			if (!is_afteradded) {
+				as_afters = answer_afterfunc(fld, as_afters, ass, i, true);
+				is_afteradded = true;
 			}
 		}
 	}
@@ -637,17 +644,37 @@ function answer_spskill(fld, as, i, p, bef_f) {
 			ss_object_done(fld, i, sco);
 		}
 		// 攻撃後処理（いらない？）
-		if (ass.after)  {
-			as_afters.push(ass.after(fld, i, true));
-		}
+		as_afters = answer_afterfunc(fld, as_afters, ass, i, true);
 	}
 	return as_afters;
+}
+
+// 攻撃時効果値追加処理を一括して行う
+function answer_rateadded(fld, as, oi, ei, p, tgi){
+	var adr = AsAddRate;
+	var rst = 0;
+	if(as.add_f){
+		$.each(as.add_f, function(i, e){
+			rst += adr[e.func](fld, e, oi, ei, p, tgi);
+		});
+	}
+	return rst;
+}
+
+// 攻撃後追加処理を一括して行う
+function answer_afterfunc(fld, aft_as, as, i, dmg){
+	var afn = AsAfter;
+	if(as.after){
+		$.each(as.after, function(i, e){
+			aft_as.push(afn[e.func](fld, e, as, i, dmg));
+		});
+	}
+	return aft_as;
 }
 
 // ASの対象になるかどうかを確認する
 function is_answer_target(fld, bef_f, as, ch, tg_attr, tg_spec, own_i, enm_i, panels, tg_i) {
 	var rst = true;
-	var cond_rst = false;
 	// チェイン確認
 	rst = rst && (ch >= as.chain);
 	// 属性確認
@@ -655,10 +682,9 @@ function is_answer_target(fld, bef_f, as, ch, tg_attr, tg_spec, own_i, enm_i, pa
 	// 種族確認
 	rst = rst && (tg_spec < 0 || check_spec_inarray(as.spec, tg_spec));
 	// 条件確認
-	rst = rst && !!(cond_rst = as.cond(bef_f, own_i, enm_i, panels, tg_i));
-	// condで効果値が変更されたらapply
-	if (rst && cond_rst > 1) {
-		as.rate = cond_rst;
-	}
+	var acn = AsCond;
+	$.each(as.cond, function(i, e){
+		rst = rst && acn[e.func](bef_f, e, own_i, enm_i, panels, tg_i);
+	});
 	return rst;
 }

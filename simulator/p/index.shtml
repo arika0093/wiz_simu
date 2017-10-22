@@ -394,6 +394,7 @@
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/enemy.js?         <!--#flastmod virtual='/js/simulator/enemy.js'-->"></script>
 	<!-- データ群(基礎関数に依存する) -->
     <script type="text/javascript" charset="UTF-8" src="/js/data/skill_ans.js?          <!--#flastmod virtual='/js/data/skill_ans.js'-->"></script>
+	<script type="text/javascript" charset="UTF-8" src="/js/data/skill_ans_cond.js?     <!--#flastmod virtual='/js/data/skill_ans_cond.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/data/skill_spe.js?          <!--#flastmod virtual='/js/data/skill_spe.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/data/skill_spe_body.js?     <!--#flastmod virtual='/js/data/skill_spe_body.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/data/skill_awake.js?        <!--#flastmod virtual='/js/data/skill_awake.js'-->"></script>
@@ -412,6 +413,8 @@
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/special.js?       <!--#flastmod virtual='/js/simulator/special.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/turneffect.js?    <!--#flastmod virtual='/js/simulator/turneffect.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/simulator/actionlog.js?     <!--#flastmod virtual='/js/simulator/actionlog.js'-->"></script>
+	<!-- その他 -->
+	<script type="text/javascript" charset="UTF-8" src="/js/autorun/repeat.js"></script>
 </div>
 </body>
 </html>

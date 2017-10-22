@@ -333,3 +333,31 @@ function isexist_enemy_rev(fld) {
 	var nd = fld.Enemys.Data[fld.Status.nowbattle - 1];
 	return !nd.rev_check && nd.rev_index !== undefined;
 }
+
+// argObjから敵行動を復旧する用の関数
+function restoreEnemyMoveFunction(fld){
+	var edata = fld.Enemys.Data;
+	$.each(edata, (is,es) => {
+		$.each(es, (i,e) => {
+			var arg = e.argObj;
+			var fc = arg.__fname__;
+			var param = [];
+			var count = 0;
+			for(key in arg){
+				var v = arg[key];
+				if(v != fc){
+					param[count] = v;
+					count++;
+				}
+			}
+			// evalで復元する
+			e.move = eval(`${fc}(...[${param}])`);
+		});
+	});
+	
+	
+	
+	
+	
+	
+}
