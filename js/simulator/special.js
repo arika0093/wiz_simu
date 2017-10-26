@@ -47,7 +47,7 @@ function ssPushWithParam(fld, n){
 		// 再現用ログ関連
 		actl_save_special(fld, n);
 		// [進む]を使えないように
-		if (!Field_log.is_ssindex) {
+		if (!fld.Status.isautomode && !Field_log.is_ssindex) {
 			Field_log.now_index++;
 			Field_log.is_ssindex = true;
 		}

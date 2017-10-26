@@ -4,44 +4,81 @@
 // Managed class
 class Brute4ceTest {
 	
-	constructor(fld, filt, tm, is_ff, is_umr){
+	constructor(fld){
 		this.patterns = {};
 		this.state = "created";
 		this.field = fld;
-		this.filter = filt;
-		this.tgmax = tm;
-		this.is1stfixed = is_ff;
-		this.isusedmrnd = is_umr;
+		this.filter = null;
+		this.tgmax = 0;
+		this.loop = 1;
+		this.is1stfixed = false;
+		this.isusedmrnd = true;
 		this.defer = new $.Deferred;
+		this.doaction = (x)=>{
+			return;
+		}
+		this.cond = (x) => {
+			return true;
+		}
 	}
 	
 	progress(v, order){
 		var key = order.toString();
 		delete v.field;
+		this.state = "progress";
 		this.patterns[key] = v;
-		console.log(order, `${v.matched}/${v.finished}`);
 	}
 	
 	done(){
 		this.state = "finish";
 	}
+	
+	justMatchPatternsToArray(){
+		return this.patternsToArray((p, arr) => {
+			return this.isusedmrnd ? p.matched == 1 : p.matched == p.finished;
+		})
+	}
+	
+	patternsToArray(cond){
+		var arr = [];
+		for(var key in this.patterns){
+			var a = key.split(",").map(e => { return Number(e)});
+			var p = this.patterns[key];
+			if(cond(p, a, this)){
+				arr.push(a);
+			}
+		}
+		return arr;
+	}
 }
 
-// パネルを踏んだときの最適並び順を探す関数
-function findBetterOrderAndTarget(fld, panel, cond, loop, fltArray, tgSrchMax, isFirstFix, isUsedMinRand){
-	var btest = new Brute4ceTest(fld, fltArray, tgSrchMax, isFirstFix, isUsedMinRand);
-	return brute4ceTestDone(fld, btest, panel, cond, loop);
+// -------------------
+// パネルを踏んだときの最適並び順を探すBrute4ce-Objectを返す
+function initilizeBrute4ceObject(fld, action, cond, loop, fltArray, tgSrchMax, isFirstFix, isUsedMinRand){
+	var btest = new Brute4ceTest(fld);
+	btest.loop = loop;
+	btest.filter = fltArray;
+	btest.tgmax = tgSrchMax;
+	btest.is1stfixed = isFirstFix;
+	btest.isusedmrnd = isUsedMinRand;
+	btest.doaction = action;
+	btest.cond = cond;
+	return btest;
 }
 
 // 0.9確定抜けの場合のみを抜き出す
-function findMinRandOrderAndTarget(fld, panel, cond, tgSrchMax, isFirstFix){
-	return findBetterOrderAndTarget(fld, panel, cond, 1, [], tgSrchMax, isFirstFix, true);
+function initMinRandBrute4ceObject(fld, action, cond, tgSrchMax, isFirstFix){
+	return initilizeBrute4ceObject(fld, action, cond, 1, [], tgSrchMax, isFirstFix, true);
 }
 
 // -------------------
 // 各testごとにpromiseを生成して管理する
-function brute4ceTestDone(fld, btest, panel, cond, loop){
+function brute4ceTestDone(btest){
+	var fld = btest.field;
 	var defer = btest.defer;
+	var loop = btest.loop;
+	var action = btest.doaction;
+	var cond = btest.cond;
 	var tgSrchMax = btest.tgmax;
 	var isFirstFix = btest.is1stfixed;
 	var isUsedMRnd = btest.isusedmrnd;
@@ -61,9 +98,7 @@ function brute4ceTestDone(fld, btest, panel, cond, loop){
 		// 入れ替える
 		var f = reOrderFieldAllyData(fld, aoe);
 		// 実際にtest
-		var promise = autoRun_RepeatTest(f, cond, (x)=>{
-			panelAnswerWithParam(x, panel);
-		}, loop, isUsedMRnd);
+		var promise = autoRun_RepeatTest(f, cond, action, loop, isUsedMRnd);
 		// 途中経過報告
 		promise.progress(v => {
 			//console.log(aoe, `${v.matched} / ${v.finished}`);
@@ -100,16 +135,22 @@ function reOrderFieldAllyData(fld, arr){
 
 
 
+// -------------------
 // test
 function testForBrute4ce(pnl, fstfixed){
-	var nextcheck = function(fld, bef_f){
+	var nextcheck = (fld, bef_f) => {
 		var bef_battle = bef_f.Status.nowbattle;
 		var aft_battle = fld.Status.nowbattle;
 		return (aft_battle - bef_battle > 0 || fld.Status.finish);
 	}
-	//var p = findBetterOrderAndTarget(Field, pnl, nextcheck, 10, false, fstfixed, true);
-	var p = findMinRandOrderAndTarget(Field, pnl, nextcheck, false, fstfixed);
-	p.done(v => {
-		console.log(v);
-	})
+	var action = (fld) => {
+		panelAnswerWithParam(fld, pnl);
+	}
+	var bobj = initilizeBrute4ceObject(
+		Field, action, nextcheck, 10, null, 0, false, fstfixed, false
+	);
+	brute4ceTestDone(bobj)
+		.done(v => {
+			console.log(v.justMatchPatternsToArray());
+		})
 }

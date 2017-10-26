@@ -58,8 +58,15 @@ function panelAnswerWithParam(fld, attr) {
 	}
 	// 味方攻撃処理
 	{
-		// 攻撃前状況のコピー
-		var bf = $.extend(true, {}, fld);
+		// 攻撃前状況のコピー(必要最小限のコピーに留める)
+		var bf = {
+			Allys: {
+				Deck: $.extend([], fld.Allys.Deck),
+				Now: $.extend(true, [], fld.Allys.Now),
+			},
+			Status: $.extend(true, {}, fld.Status),
+		}
+		//var bf = $.extend(true, {}, fld);
 		// 使用したASリスト
 		var as_afters = [];
 		// AS無視しないなら普通に、無視状況なら取得を少なく

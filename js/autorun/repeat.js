@@ -104,6 +104,16 @@ function singleTaskDoRepeat(fld, cond, task){
 	});
 }
 
+// -------------------
+// 汎用的な終了条件（戦闘をまたぐ or 戦闘終了）
+function condNextBattleOrFinish(fld, bef_f){
+	var bef_battle = bef_f.Status.nowbattle;
+	var aft_battle = fld.Status.nowbattle;
+	return (aft_battle - bef_battle > 0 || fld.Status.finish);
+}
+
+
+// GUIから乱数チェッカを読んだときにtask関数を生成する
 function convertRepeatStr2TaskFunc(){
 	// task list
 	var tobj = {

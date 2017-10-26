@@ -611,13 +611,6 @@ function sim_show(fld) {
 			"testrun": function () {
 				// initilize
 				var loop = Number($("#randcheck_rnum").val());
-				var dotask = convertRepeatStr2TaskFunc();
-				var chcond = function(fld, bef_f){
-					// battle数が進行していたらOK
-					var bef_battle = bef_f.Status.nowbattle;
-					var aft_battle = fld.Status.nowbattle;
-					return (aft_battle - bef_battle > 0 || fld.Status.finish);
-				}
 				// 描画関連処理
 				var opdialog = function(n, c, t, is_fin){
 					var fin_p = (c/t*100).toFixed(2);
@@ -631,7 +624,7 @@ function sim_show(fld) {
 					$("#randcheck_rsttext").html(rst_tx);
 				}
 				// test
-				autoRun_RepeatTest(Field, chcond, dotask, loop)
+				autoRun_RepeatTest(Field, condNextBattleOrFinish, convertRepeatStr2TaskFunc(), loop)
 					.progress(v => {
 						opdialog(v.matched, v.finished, v.total, false);
 					})

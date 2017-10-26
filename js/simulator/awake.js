@@ -38,11 +38,11 @@ function open_awake_composite(awakes_t){
 		if (val != undefined){
 			// 複合潜在能力であるならば再帰的に展開する
 			if (val.type=="awake_composite"){
-				awakes2=awakes2.concat(open_awake_composite(val.proc))
+				Array.prototype.push.apply(awakes2, open_awake_composite(val.proc));
 			}
 			// 単体潜在能力であるならばそのまま出力する
 			else{
-				awakes2=awakes2.concat(val)
+				awakes2.push(val);
 			}
 		}
 	});

@@ -442,9 +442,11 @@ function nextturn(fld, is_ssfin) {
 	// seed リセット
 	fld.Status.seed = 0;
 	// ログ保存
-	Field_log.save(f_st.totalturn, fld);
-	Field_log._removeover(f_st.totalturn);
-	Field_log.is_ssindex = false;
+	if(!fld.Status.isautomode){
+		Field_log.save(f_st.totalturn, fld);
+		Field_log._removeover(f_st.totalturn);
+		Field_log.is_ssindex = false;
+	}
 }
 
 // 味方フラグを初期化する
