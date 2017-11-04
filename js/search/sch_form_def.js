@@ -88,19 +88,25 @@ var sfdef_as_namelist = {
 		genre: "《条件/攻撃後処理》",
 		type: null,
 		check: function (e) {
-			return e.desc == when_leader().desc;
+			return e.cond && $.grep(e.cond, ei => {
+				return ei.func == "when_leader";
+			}).length > 0;
 		},
 	},
 	"単体自傷攻撃": {
 		type: null,
 		check: function (e) {
-			return e.af_desc == as_consume_own().af_desc;
+			return e.after && $.grep(e.after, ei => {
+				return ei.func == "as_consume_own";
+			}).length > 0;
 		},
 	},
 	"全体自傷攻撃": {
 		type: null,
 		check: function (e) {
-			return e.af_desc == as_consume_all().af_desc;
+			return e.after && $.grep(e.after, ei => {
+				return ei.func == "as_consume_all";
+			}).length > 0;
 		},
 	},
 };
