@@ -254,7 +254,7 @@ function card_paneb(card) {
 function card_dmg_relief(card, now, t_attr) {
 	var r = 0;
 	var ar_awakes = pickup_awakes(card, "damage_relief", false);
-	if (is_legendmode(card, now)) {
+	if (is_legendmode_onAnswer(card, now)) {
 		ar_awakes = ar_awakes.concat(pickup_awakes(card, "damage_relief", true));
 	}
 	for (var i = 0; i < ar_awakes.length; i++) {
@@ -275,7 +275,7 @@ function card_dmg_relief(card, now, t_attr) {
 // 九死一生の判定を行う
 function awake_neftjod_check(now, index, before_hp) {
 	var neft = pickup_awakes(Field.Allys.Deck[index], "neftjod", false);
-	if (is_legendmode(Field.Allys.Deck[index], now)) {
+	if (is_legendmode_onAnswer(Field.Allys.Deck[index], now)) {
 		neft = neft.concat(pickup_awakes(Field.Allys.Deck[index], "neftjod", true));
 	}
 	if (neft.length > 0) {
@@ -316,7 +316,7 @@ function cards_heal_afterbattle(cards, nows) {
 function Awake_AbsInvalid(card, now, type) {
 	var flag = false;
 	var ai_awakes = pickup_awakes(card, "abstate_invalid", false);
-	if (is_legendmode(card, now)) {
+	if (is_legendmode_onAnswer(card, now)) {
 		ai_awakes = ai_awakes.concat(pickup_awakes(card, "abstate_invalid", true));
 	}
 	for (var i = 0; i < ai_awakes.length; i++) {
@@ -339,7 +339,7 @@ function Awake_get_multiple(card, now) {
 	var rate = 1;
 	var type = "awake_damage_multiple";
 	var dm_awakes = pickup_awakes(card, type, false);
-	if (is_legendmode(card, now)) {
+	if (is_legendmode_onAnswer(card, now)) {
 		dm_awakes = dm_awakes.concat(pickup_awakes(card, type, true));
 	}
 	for (var i = 0; i < dm_awakes.length; i++) {
@@ -354,7 +354,7 @@ function Awake_get_damaged_multiple(card, now) {
 	var rate = 1;
 	var type = "awake_damaged_multiple";
 	var dm_awakes = pickup_awakes(card, type, false);
-	if (is_legendmode(card, now)) {
+	if (is_legendmode_onAnswer(card, now)) {
 		dm_awakes = dm_awakes.concat(pickup_awakes(card, type, true));
 	}
 	for (var i = 0; i < dm_awakes.length; i++) {

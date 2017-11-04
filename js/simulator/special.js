@@ -258,6 +258,12 @@ function is_legendmode(card, now) {
 	// return get_ssturn(card, now)[1] == 0;
 }
 
+// Lモードに入っているかどうかを判定する(軽減/ゾラス潜在用)
+// [解答時にL判定が既に入っているタイプ用]
+function is_legendmode_onAnswer(card, now) {
+	return get_ssturn(card, now)[1] == 0;
+}
+
 // SSが残り何ターンで打てるかを配列で返す
 function get_ssturn(card, ally_n) {
 	// SS1 default
