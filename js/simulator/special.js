@@ -265,7 +265,7 @@ function is_legendmode(fld, card, now) {
 // Lモードに入っているかどうかを判定する(軽減/ゾラス潜在用)
 // [解答時にL判定が既に入っているタイプ用]
 function is_legendmode_onAnswer(fld, card, now) {
-	return get_ssturn(card, now)[1] == 0;
+	return get_ssturn(fld, card, now)[1] == 0;
 }
 
 // SSが残り何ターンで打てるかを配列で返す
