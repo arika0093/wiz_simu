@@ -260,12 +260,11 @@ function legend_timing_check(fld, cards, nows, index, is_ignore_spskill) {
 // Lモードに入っているかどうかを判定する
 function is_legendmode(fld, card, now) {
 	return now.islegend;
-	// return get_ssturn(card, now)[1] == 0;
 }
 
 // Lモードに入っているかどうかを判定する(軽減/ゾラス潜在用)
 // [解答時にL判定が既に入っているタイプ用]
-function is_legendmode_onAnswer(card, now) {
+function is_legendmode_onAnswer(fld, card, now) {
 	return get_ssturn(card, now)[1] == 0;
 }
 

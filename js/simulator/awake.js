@@ -254,7 +254,7 @@ function card_paneb(fld, card) {
 function card_dmg_relief(fld, card, now, t_attr) {
 	var r = 0;
 	var ar_awakes = pickup_awakes(fld, card, "damage_relief", false);
-	if (is_legendmode(fld, card, now)) {
+	if (is_legendmode_onAnswer(fld, card, now)) {
 		ar_awakes = ar_awakes.concat(pickup_awakes(fld, card, "damage_relief", true));
 	}
 	for (var i = 0; i < ar_awakes.length; i++) {
@@ -275,7 +275,7 @@ function card_dmg_relief(fld, card, now, t_attr) {
 // 九死一生の判定を行う
 function awake_neftjod_check(fld, now, index, before_hp) {
 	var neft = pickup_awakes(fld, fld.Allys.Deck[index], "neftjod", false);
-	if (is_legendmode(fld, fld.Allys.Deck[index], now)) {
+	if (is_legendmode_onAnswer(fld, fld.Allys.Deck[index], now)) {
 		neft = neft.concat(pickup_awakes(fld, fld.Allys.Deck[index], "neftjod", true));
 	}
 	if (neft.length > 0) {
@@ -298,7 +298,7 @@ function cards_heal_afterbattle(fld, cards, nows) {
 	for(var p in cards){
 		var c = cards[p];
 		var abh_awakes = pickup_awakes(fld, c, "heal_after_battle", false);
-    	if (is_legendmode(fld, c, nows[p])) {
+    	if (is_legendmode_onAnswer(fld, c, nows[p])) {
             abh_awakes = abh_awakes.concat(pickup_awakes(fld, c, "heal_after_battle", true));
         }
 		for (var j = 0; j < abh_awakes.length; j++) {
@@ -316,7 +316,7 @@ function cards_heal_afterbattle(fld, cards, nows) {
 function Awake_AbsInvalid(fld, card, now, type) {
 	var flag = false;
 	var ai_awakes = pickup_awakes(fld, card, "abstate_invalid", false);
-	if (is_legendmode(fld, card, now)) {
+	if (is_legendmode_onAnswer(fld, card, now)) {
 		ai_awakes = ai_awakes.concat(pickup_awakes(fld, card, "abstate_invalid", true));
 	}
 	for (var i = 0; i < ai_awakes.length; i++) {
@@ -339,7 +339,7 @@ function Awake_get_multiple(fld, card, now) {
 	var rate = 1;
 	var type = "awake_damage_multiple";
 	var dm_awakes = pickup_awakes(fld, card, type, false);
-	if (is_legendmode(fld, card, now)) {
+	if (is_legendmode_onAnswer(fld, card, now)) {
 		dm_awakes = dm_awakes.concat(pickup_awakes(fld, card, type, true));
 	}
 	for (var i = 0; i < dm_awakes.length; i++) {
@@ -354,7 +354,7 @@ function Awake_get_damaged_multiple(fld, card, now) {
 	var rate = 1;
 	var type = "awake_damaged_multiple";
 	var dm_awakes = pickup_awakes(fld, card, type, false);
-	if (is_legendmode(fld, card, now)) {
+	if (is_legendmode_onAnswer(fld, card, now)) {
 		dm_awakes = dm_awakes.concat(pickup_awakes(fld, card, type, true));
 	}
 	for (var i = 0; i < dm_awakes.length; i++) {
