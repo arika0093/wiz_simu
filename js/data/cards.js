@@ -32976,6 +32976,7 @@ Cards = [{
 	attr: [2,1],
 	species: [8],
 	islegend: true,
+	disable: true,
 	ape: "スザクⅠ",
 	as1: {
 		desc: "<複属性攻撃強化>5チェインで雷属性の攻撃力をアップ、複属性が水属性だとさらにアップ(60%/110%)5チェインで雷属性の攻撃力をアップ、複属性が水属性だとさらにアップ(90%/140%)",
@@ -33021,6 +33022,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
+	disable: true,
 	ape: "スザクⅠ",
 	as1: {
 		desc: "<攻撃強化・回復>水属性の味方のHPを回復(13%)、さらに水属性の味方の攻撃力をアップ(30%)",
@@ -33066,6 +33068,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
+	disable: true,
 	ape: "スザクⅠ",
 	as1: {
 		desc: "<属性特効>5チェインで雷属性の敵単体へ特効ダメージ(650%)",
@@ -33112,6 +33115,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
+	disable: true,
 	ape: "スザクⅠ",
 	alias: ["ulti_chatnoir", "/wiztools"],
 	as1: {
@@ -33158,6 +33162,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
+	disable: true,
 	ape: "スザクⅠ",
 	as1: {
 		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)、10チェインで更にダメージアップ(600%)",
@@ -33203,6 +33208,7 @@ Cards = [{
 	attr: [0,4],
 	species: [2],
 	islegend: true,
+	disable: true,
 	ape: "スザクⅡ",
 	as1: {
 		desc: "<複属性攻撃強化>残りHPが80%以上で火属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(50%/100%)",
@@ -33248,6 +33254,7 @@ Cards = [{
 	attr: [1,2],
 	species: [8],
 	islegend: true,
+	disable: true,
 	ape: "スザクⅡ",
 	as1: {
 		desc: "<攻撃強化・ガード>5チェインで水・雷属性の味方の攻撃力をアップ(60%)し、さらに全属性のダメージを10%軽減",
@@ -33294,6 +33301,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
+	disable: true,
 	ape: "スザクⅡ",
 	as1: {
 		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)",
@@ -33340,6 +33348,7 @@ Cards = [{
 	attr: [2,0],
 	species: [8],
 	islegend: true,
+	disable: true,
 	ape: "スザクⅡ",
 	as1: {
 		desc: "<属性特効>5チェインで水属性の敵単体へ特効ダメージ(650%)",
@@ -33386,6 +33395,7 @@ Cards = [{
 	attr: [2,3],
 	species: [1],
 	islegend: true,
+	disable: true,
 	ape: "スザクⅡ",
 	as1: {
 		desc: "<チェイン攻撃>3チェインでダメージアップ(350%)",
@@ -33432,6 +33442,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
+	disable: true,
 	ape: "スザクⅡ",
 	as1: {
 		desc: "<チェイン攻撃>5チェインでダメージアップ、10チェインで更にダメージアップ(450%/600%)",
@@ -33478,6 +33489,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
+	disable: true,
 	ape: "スザクⅢ",
 	as1: {
 		desc: "<属性特効・攻撃強化>火属性の味方の攻撃力をアップし(30%)、4チェインで雷属性の敵単体へ特効ダメージ(500%)",
@@ -33524,6 +33536,7 @@ Cards = [{
 	attr: [0,2],
 	species: [8],
 	islegend: true,
+	disable: true,
 	ape: "スザクⅢ",
 	as1: {
 		desc: "<複属性攻撃強化>7チェインで火属性の攻撃力をアップ、複属性が雷だとさらにアップ(80%/130%)",
@@ -33570,6 +33583,7 @@ Cards = [{
 	attr: [0,1],
 	species: [8],
 	islegend: true,
+	disable: true,
 	ape: "スザクⅢ",
 	as1: {
 		desc: "<連撃>4チェインで敵単体を3回連続攻撃、8チェインで更にダメージアップ(350%/500%)",
@@ -33615,6 +33629,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [2],
 	islegend: true,
+	disable: true,
 	ape: "スザクⅢ",
 	as1: {
 		desc: "<属性特効連撃>雷属性の敵単体へ特効8連撃、20チェインで更に特効ダメージ(300%/2000%)",
@@ -33662,6 +33677,7 @@ Cards = [{
 	attr: [1,0],
 	species: [8],
 	islegend: true,
+	disable: true,
 	ape: "スザクⅢ",
 	as1: {
 		desc: "<連撃・複属性攻撃強化>4チェインで敵単体を3回連続攻撃(300%)、さらに水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(10%/40%)",
@@ -33708,6 +33724,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
+	disable: true,
 	ape: "スザクⅢ",
 	as1: {
 		desc: "<回復>水属性の味方を回復、8チェインで更に回復(10%/18%)",
@@ -33755,6 +33772,7 @@ Cards = [{
 	attr: [2,0],
 	species: [8],
 	islegend: true,
+	disable: true,
 	ape: "スザクⅢ",
 	as1: {
 		desc: "<複属性攻撃強化>残りHPが80%以上で雷属性の攻撃力をアップ、複属性が火属性だとさらにアップ(50%/100%)",
@@ -33801,6 +33819,7 @@ Cards = [{
 	attr: [2,3],
 	species: [1],
 	islegend: true,
+	disable: true,
 	ape: "スザクⅢ",
 	as1: {
 		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ、複属性が光だとさらにアップ(30%/80%)",
@@ -33847,6 +33866,7 @@ Cards = [{
 	attr: [2,3],
 	species: [8],
 	islegend: true,
+	disable: true,
 	ape: "スザクⅢ",
 	as1: {
 		desc: "<回復>雷属性の味方を回復、HP20%以下でさらに回復(13%/38%)",
@@ -85412,7 +85432,7 @@ Cards = [{
 },{
 	name: "其は深淵の災い キワム&鋼鉄の獣",
 	cardno: 9212,
-	imageno: 5943,
+	imageno: 11453,
 	hp: 4510,
 	atk: 4234,
 	cost: 60,
@@ -85457,7 +85477,7 @@ Cards = [{
 },{
 	name: "深淵の女王 ミュール&レベリオー",
 	cardno: 9216,
-	imageno: 11453,
+	imageno: 5958,
 	hp: 2950,
 	atk: 3749,
 	cost: 54,

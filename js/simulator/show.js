@@ -589,11 +589,11 @@ function sim_show(fld) {
 		width: 450,
 		buttons: {
 			"1T前に戻る": function() {
-				load_field(-1);
+				load_field(Field, -1);
 				$(this).dialog("close");
 			},
 			"始めからやり直す": function () {
-				load_field(0);
+				load_field(Field, 0);
 				$(this).dialog("close");
 			},
 			"デッキ選択に戻る": function () {

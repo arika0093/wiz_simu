@@ -35,7 +35,7 @@ var Awake_crystal_lists = [{
 	param1: 0,
 	param2: -300,
 }, {
-	genre: "AS/SS変化",
+	genre: "SS変化",
 	name: "SS効果値アップ<攻撃系SS>",
 	imple: function (upval) {
 		var asr = Awake_SkillRateup(upval);
@@ -94,6 +94,10 @@ var Awake_crystal_lists = [{
 		return asc.proc[1];
 	}(),
 }, {
+	name: "大当たりの結晶(多段威力+200/Hit+3)",
+	imple: Awake_composite,
+	param2: Awake_RateAndHitup(200, 3),
+}, {
 	name: "SS継続ターン数アップ",
 	imple: Awake_Turnup,
 	param1: "{0}",
@@ -110,6 +114,7 @@ var Awake_crystal_lists = [{
 	param1: "{0}",
 	input_required: true,
 }, {
+	genre: "AS変化",
 	name: "AS効果値アップ",
 	imple: Awake_ASkillRateup,
 	param1: "{0}",

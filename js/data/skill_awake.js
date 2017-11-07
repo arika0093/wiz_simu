@@ -351,7 +351,6 @@ function Awake_ASkillAtknup(upval) {
 }
 
 // SS効果値アップ潜在
-// *** WARNING: typeは変えて使うこと ***
 function Awake_SkillRateup(upval, skl_type) {
 	return {
 		type: "awake_rateup",
@@ -360,6 +359,16 @@ function Awake_SkillRateup(upval, skl_type) {
 		name: "SS効果値アップ(+" + upval + ")",
 		desc: "SPスキルの効果値を" + upval + "%アップする",
 	};
+}
+
+// 大当たり結晶(威力UP+Hit数UP)
+function Awake_RateAndHitup(r_up, h_up) {
+	var eff1 = Awake_SkillRateup(r_up);
+	var eff2 = Awake_multihitadd(h_up);
+	var comp = Awake_composite("", eff1, eff2);
+	comp.desc = "多段魔術の効果値を" + r_up + "%アップし、ヒット数を" + h_up + "増加させる";
+	comp.name = "大当たりの結晶";
+	return comp;
 }
 
 // ASCENSIVE結晶(ブースト効果値UP/自傷UP)

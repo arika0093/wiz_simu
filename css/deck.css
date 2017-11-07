@@ -151,3 +151,10 @@ p.ally_mana{
 	top: 0px;
 	right: 1px;
 }
+
+p.ally_mana_ex{
+	text-shadow: 2px  2px 3px #080,
+				-2px  2px 3px #0F0,
+				 2px -2px 3px #080,
+				-2px -2px 3px #0F0;
+}

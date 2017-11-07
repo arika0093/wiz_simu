@@ -145,8 +145,8 @@ $(function () {
 				},
 			});
 			$("#d_awake_edit").spinner("value",
-				Deckdata.deck[ni].awake != -1 ? Deckdata.deck[ni].awake : cd_aws);
-			
+				Deckdata.deck[ni].awake != -1 ? Deckdata.deck[ni].awake : cd_aws
+			);
 			// set value(level)
 			$("#d_level_edit").spinner({
 				change: function () {
@@ -200,8 +200,9 @@ $(function () {
 				Deckdata.deck[ni].mana = val >= 0 ? val : 200;
 				Deckdata.deck[ni].awake = aws != cd_aws ? aws : cd_aws;
 				Deckdata.deck[ni].level = lv;
-				$("#ally0" + (ni + 1) + "_mana").text(Deckdata.deck[ni].mana
-					? "+" + Deckdata.deck[ni].mana : "");
+				var mana_dom = $("#ally0" + (ni + 1) + "_mana");
+				mana_dom.text(Deckdata.deck[ni].mana ? "+" + Deckdata.deck[ni].mana : "");
+				mana_dom.toggleClass("ally_mana_ex", val > 200);
 				$(this).dialog("close");
 			},
 			"Cancel": function () {
@@ -675,10 +676,13 @@ function decksel_show(idx, c, carddata_noreload) {
 		if(!carddata_noreload){
 			var AS = c.as2 ? c.as2 : c.as1;
 			var SS = c.ss2 ? c.ss2 : c.ss1;
+			var mana_dom = $("#ally0" + idx + "_mana");
+			var mana = Deckdata.deck[idx-1].mana;
 			$("#ally0" + idx + "_attr_main").attr("class", "attr_" + c.attr[0]);
 			$("#ally0" + idx + "_attr_sub").attr("class", "attr_" + (c.attr[1] != -1 ? c.attr[1] : c.attr[0]));
 			$("#ally0" + idx + "_img").attr("src", get_image_url(c.imageno, c.imageno_prefix));
-			$("#ally0" + idx + "_mana").text("+" + Deckdata.deck[idx-1].mana);
+			mana_dom.text("+" + mana);
+			mana_dom.toggleClass("ally_mana_ex", mana > 200);
 			$("#deck0" + idx).val(c.name);
 		}
 		$("#ally0" + idx + "_as").text("結晶1: " + (w_width_sp && crys_1 != "" ? "装備中" : crys_1));
