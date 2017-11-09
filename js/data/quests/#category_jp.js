@@ -211,6 +211,11 @@ category_jp = {
 		is_dispsim: true,
 		sim_index: 40,
 	},
+   "orlha": {
+		jp: "Orlha Report",
+		is_dispsim: true,
+		sim_index: 10,
+	},
    "vzone": {
 		jp: "VOID ZONE",
 		is_dispsim: false,

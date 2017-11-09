@@ -2,6 +2,7 @@
 function panel(attr) {
 	return panelAnswerWithParam(Field, attr);
 }
+
 // 誤答したときの処理(panel button)
 function answer_miss() {
 	return panelAnswerMissWithParam(Field);
@@ -183,8 +184,7 @@ function panelAnswerWithParam(fld, attr) {
 }
 
 // 誤答
-function panelAnswerMissWithParam(fld)
-{
+function panelAnswerMissWithParam(fld) {
 	fld.log_push("【誤答】");
 	// 再現用ログ関連
 	actl_save_answer_miss(fld);
