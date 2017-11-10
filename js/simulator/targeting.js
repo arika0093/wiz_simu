@@ -142,7 +142,9 @@ function getOverKillCheck(fld, enemys, attr, own_index, obj_tg){
 			var as = obj_tg.as_list[as_i];
 			var rate = obj_tg.as_rate[as_i];
 			var sumcon = sumContractDamages(fld, e);
-			var dmg = calculate_damage(fld, e, obj_tg.now, attr, rate, as.atkn, obj_tg.panel, obj_tg.chain, -1, own_index, idx, false, 1, true).damage;
+			var dmg = calculate_damage(
+				fld, e, obj_tg.now, attr, rate, as.atkn, obj_tg.panel, obj_tg.chain, -1, own_index, idx, false, 1, true
+			).damage;
 			return (e.nowhp - sumcon - dmg) <= 0;
 		}
 		return false;

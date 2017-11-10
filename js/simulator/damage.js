@@ -113,7 +113,7 @@ function calculate_damage(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, 
 		d *= 3;
 	}
 	// 攻撃時スキル確認
-	d = checkFunctionOnAttack(fld, enemy, d, atk_atr, is_simulate);
+	d = checkFunctionOnAttack(fld, enemy, d, atk_atr, is_berserk, is_simulate);
 
 	// return object
 	return {

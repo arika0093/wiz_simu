@@ -476,7 +476,7 @@ function answer_skill_proc(fld, as_arr, panel, i, atk_duals, rem_duals, loop_ct,
 
 // AS攻撃の処理
 // (カード種類, 現在の状況, 敵データ, 自身のAS一覧, 攻撃属性, パネル, 味方番号, 残り攻撃回数, 現在F数)
-function answer_attack(fld, card, now, enemy, as, attr, panel, index, atk_rem, bef_f, nframe) {
+function answer_attack(fld, card, now, enemys, as, attr, panel, index, atk_rem, bef_f, nframe) {
 	// 敵それぞれに対して有効なASのindexの配列
 	var as_rate = [];
 	var as_pos = [];
@@ -485,8 +485,8 @@ function answer_attack(fld, card, now, enemy, as, attr, panel, index, atk_rem, b
 	// 敵それぞれについて条件の良いASを取り出す
 	for (var ai = 0; ai < as.length; ai++) {
 		var chain = fld.Status.chain;
-		for (var ei = 0; ei < enemy.length; ei++) {
-			var is_ans = is_answer_target(fld, bef_f, as[ai], chain, enemy[ei].attr, enemy[ei].spec, index, ei, panel);
+		for (var ei = 0; ei < enemys.length; ei++) {
+			var is_ans = is_answer_target(fld, bef_f, as[ai], chain, enemys[ei].attr, enemys[ei].spec, index, ei, panel);
 			var rate_n = (is_ans ? as[ai].rate : 0);
 			var rate_b = (as_pos[ei] !== undefined ? as_rate[ei] : 0);
 			var aw_t = pickup_awakes(fld, card, "awake_ans_rateup", false);
@@ -513,11 +513,11 @@ function answer_attack(fld, card, now, enemy, as, attr, panel, index, atk_rem, b
 		panel: panel,
 		chain: fld.Status.chain,
 	};
-	var targ = auto_attack_order(fld, enemy, attr, index, obj_tg);
+	var targ = auto_attack_order(fld, enemys, attr, index, obj_tg);
 	// 各種情報
 	var g_dmg = 0;
 	var atk_as = as[as_pos[targ]]
-	var en = enemy[targ];
+	var en = enemys[targ];
 	var ch = fld.Status.chain;
 	// 凶暴化状態か取得
 	var is_berserk = $.grep(now.turn_effect, function(e){
@@ -533,27 +533,27 @@ function answer_attack(fld, card, now, enemy, as, attr, panel, index, atk_rem, b
 		// 分散攻撃なら敵の数取得
 		var var_num = 0;
 		if(atk_as.isvariance){
-			for(var i=0; i<enemy.length; i++){
-				var enm = enemy[i];
+			for(var i=0; i<enemys.length; i++){
+				var enm = enemys[i];
 				if (enm.nowhp > 0) {
 					var_num += 1;
 				}
 			}
 		}
 		// それぞれに攻撃
-		for (var tg = 0; tg < enemy.length; tg++) {
-			if (enemy[tg].nowhp <= 0) { continue; }
-			var is_as = enemy[tg].flags.is_as_attack;
+		for (var tg = 0; tg < enemys.length; tg++) {
+			if (enemys[tg].nowhp <= 0) { continue; }
+			var is_as = enemys[tg].flags.is_as_attack;
 			// 乱数
 			var rnd = damage_rand(fld);
 			// ダメージ計算
-			g_dmg += attack_enemy(fld, enemy[tg], now, attr, as_rate[targ], atk_as.atkn, panel, ch, rnd, index, tg, false, var_num, nframe);
+			g_dmg += attack_enemy(fld, enemys[tg], now, attr, as_rate[targ], atk_as.atkn, panel, ch, rnd, index, tg, false, var_num, nframe);
 			is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
 		}
 	} else {
 		// 乱数
 		var rnd = damage_rand(fld);
-		var is_as = enemy[targ].flags.is_as_attack;
+		var is_as = enemys[targ].flags.is_as_attack;
 		// ダメージ計算
 		g_dmg = attack_enemy(fld, en, now, attr, as_rate[targ], atk_as.atkn, panel, ch, rnd, index, targ, false, 0, nframe);
 		is_as[index] = is_as[index] ? is_as[index] + 1 : 1;
