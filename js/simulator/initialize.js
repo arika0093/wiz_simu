@@ -293,6 +293,7 @@ $(function () {
 					fes.revData[i] = {};
 					fes.revData[i] = $.extend(true, {}, edat);
 					fes.revData[i].nowhp = edat.hp;
+					fes.revData[i].contract_dmgs = [];
 					fes.revData[i].flags = {};
 					fes.revData[i].flags.is_as_attack = [];
 					fes.revData[i].turn_effect = [];
