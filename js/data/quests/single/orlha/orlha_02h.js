@@ -6,7 +6,8 @@
    aprnum: 4,
    battle_before: [{
       desc: "SP+4",
-	  proc: panel_skillboost(4)
+	  proc: panel_skillboost(4),
+	  isev: true
    }],
    data: [
       {
@@ -227,11 +228,11 @@
                isStrong: true,
                move: {
                   on_popup: [
-                     m_enemy_once(attack_counter_dual(1000, 100))/* Error: 二連続行動がおそらく存在するので要修正[通常時]: m_enemy_dualmove(a, b)を先制or初回行動に追加 */,
+                     m_enemy_once(attack_counter_dual(1000, 100)),
+                     m_enemy_once(s_enemy_multibarrier_own(10, 99)),
                      damage_switch(s_enemy_when_hpdown(0.7), m_enemy_angry(), true)
                   ],
                   on_move: [
-                     m_enemy_once(s_enemy_multibarrier_own(10, 99)),
                      s_enemy_attack(1000, 5, 1, true)
                   ],
                   on_angry: [

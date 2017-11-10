@@ -402,16 +402,9 @@ function s_enemy_poison(d, tnum, t) {
 				is_poison: true,
 				effect: function (f, oi, teff, state, is_t, is_b, is_ss) {
 					var now = f.Allys.Now[oi];
-					var is_imple = $.grep(now.turn_effect, function(e){
-						return e.type == "ss_impregnable"
-					})
 					if (is_t && !is_b && !is_ss && state != "overlay") {
-						if(!is_imple){
-							f.log_push("Unit[" + (oi + 1) + "]: 毒(" + d + "ダメージ)");
-							damage_ally(fld, d, oi, true);
-						} else {
-							f.log_push("Unit[" + (oi + 1) + "]: 毒(0ダメージ[無効化])");
-						}
+						f.log_push("Unit[" + (oi + 1) + "]: 毒(" + d + "ダメージ)");
+						damage_ally(fld, d, oi, true);
 					}
 				},
 			}
@@ -873,8 +866,8 @@ function attack_counter_dual(damage, t) {
 			lim_turn: t,
 			effect: function () { },
 			on_attack_damage: function (f, ei, ai) {
-				f.log_push("Enemy[" + (ei + 1) + "]: 多段式カウンター発動(対象: Unit[" + (ai + 1) + "])");
 				var atk_ct = GetNowBattleEnemys(fld, ei).flags.is_as_attack[ai];
+				f.log_push(`Enemy[${(ei+1)}]: 多段式カウンター発動(対象: Unit[${(ai+1)}]|dmg: ${damage}*${atk_ct})`);
 				for (var i = 0; i < atk_ct; i++) {
 					_s_enemy_attack(f, damage, ei, ai, true);
 				}
@@ -1240,19 +1233,20 @@ function s_enemy_multibarrier_own(dmg, turn) {
 					teff.lim_turn = 0;
 				}
 			},
-			on_damage: function (fl, dmg, atr_i, is_berserk, is_sim) {
+			on_damage: function (fl, d, atr_i, is_berserk, is_sim) {
 				var is_invalid = false;
 				if (this.barr_endurance > 0 && !is_sim) {
 					// 無効化
 					var bf = this.barr_endurance;
 					var af = this.barr_endurance - 1;
 					fl.log_push("Enemy[" + (n + 1) + "]: 多層バリア(残: " + bf + "→" + af + ")");
+					this.desc = `多層バリア(${af}/${dmg})`;
 					this.barr_endurance -= 1;
 					is_invalid = true;
 				} else if(is_sim) {
 					is_invalid = (this.barr_endurance > 0);
 				}
-				return is_invalid ? 0 : dmg;
+				return is_invalid ? 0 : d;
 			}
 		});
 		fld.log_push("Enemy[" + (n + 1) + "]: 多層バリア(" + dmg + ")");
@@ -1280,19 +1274,20 @@ function s_enemy_multibarrier_all(dmg, turn) {
 						teff.lim_turn = 0;
 					}
 				},
-				on_damage: function (fl, dmg, atr_i, is_berserk, is_sim) {
+				on_damage: function (fl, d, atr_i, is_berserk, is_sim) {
 					var is_invalid = false;
 					if (this.barr_endurance > 0 && !is_sim) {
 						// 無効化
 						var bf = this.barr_endurance;
 						var af = this.barr_endurance - 1;
 						fl.log_push("Enemy[" + (n + 1) + "]: 多層バリア(残: " + bf + "→" + af + ")");
+						this.desc = `多層バリア(${af}/${dmg})`;
 						this.barr_endurance -= 1;
 						is_invalid = true;
 					} else if(is_sim){
 						is_invalid = (this.barr_endurance > 0);
 					}
-					return is_invalid ? 0 : dmg;
+					return is_invalid ? 0 : d;
 				}
 			});
 		}

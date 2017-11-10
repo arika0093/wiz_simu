@@ -1296,11 +1296,11 @@ var SpSkill = {
 				if (now.nowhp <= 0) {
 					continue;
 				}
-				if (!now.ss_isboost && !is_legendmode(fld, card, now)) {
+				if (!now.ss_isboost && !is_legendmode(fl, card, now)) {
 					now.ss_current += t;
 					now.ss_isboost = true;
 					// L化確認
-					legend_timing_check(fld, fl.Allys.Deck, fl.Allys.Now, i);
+					legend_timing_check(fl, fl.Allys.Deck, fl.Allys.Now, i);
 				}
 			}
 			fl.log_push("パネル付与効果発動: " + dsc);
