@@ -31138,7 +31138,7 @@ Cards = [{
 		Attr_relief([0,0,1,0,0,],10),
 	],
 },{
-	name: "モォー烈超魔牛 ミィア・ヤガタ",
+	name: "モォー烈超魔牛 ミィア・ヤガダ",
 	cardno: 6197,
 	imageno: 8020,
 	hp: 1999,
@@ -47551,7 +47551,7 @@ Cards = [{
 		Attr_statusup(0,200, [1,0,0,0,0,]),
 	],
 },{
-	name: "勝利を支える翼 ペティナ・ロロフ",
+	name: "勝利を支える翼 べティナ・ロロフ",
 	cardno: 7091,
 	imageno: 9097,
 	hp: 2438,
@@ -50944,7 +50944,7 @@ Cards = [{
 		Attr_statusup(200,0, [1,0,1,0,0,]),
 	],
 },{
-	name: "究極お節介妹 リューリュー・ブック",
+	name: "究極お節介妹 リューリュー・ブック[火]",
 	cardno: 7292,
 	imageno: 9317,
 	hp: 6023,
@@ -50990,7 +50990,7 @@ Cards = [{
 		Statusup(500,0),
 	],
 },{
-	name: "究極お節介妹 リューリュー・ブック",
+	name: "究極お節介妹 リューリュー・ブック[水]",
 	cardno: 7293,
 	imageno: 9408,
 	hp: 6023,
@@ -57245,6 +57245,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "Christmas2016",
+	alias: ["しゅじょう", "シエオラ", "セルマ", "リシア"],
 	as1: {
 		desc: "<属性特効連撃>味方のMAXHP10%を使い、水属性の敵単体へ特効5連撃(700%)",
 		proc: add_cond(ChainDualAttrAttack(7.0, 0, 5, [0,1,0,0,0]), as_consume_all(0.1)),
@@ -57473,6 +57474,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "Christmas2016",
+	alias: ["しゅじょう", "シエオラ", "セルマ", "リシア"],
 	as1: {
 		desc: "<回復>水・雷属性の味方のHPを回復(14%)",
 		proc: Heal(0.14, [0,1,1,0,0], 0),
@@ -61743,6 +61745,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	ape: "新説 桃娘伝 妖爺合戦誓助剣",
+	alias: ["おんせん", "スモモ", "フウカ", "ミライ"],
 	as1: {
 		desc: "<属性特効連撃>12チェインで火属性の敵単体へ特効3連撃(1300%)",
 		proc: ChainDualAttrAttack(13, 12, 3, [1,0,0,0,0]),
@@ -71213,6 +71216,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "GW2016",
+	alias: ["ちくわ"],
 	as1: {
 		desc: "<回復・複属性攻撃強化>火属性の味方を回復し(10%)、攻撃力もアップ(30%)。複属性が雷属性だとさらに攻撃力アップ(30%)",
 		proc: [Heal(0.1, [1,0,0,0,0], 0), ChainEnhance_SubAttr(0.3, 0.6, [1,0,0,0,0], [0,0,1,0,0], 0)],
@@ -73829,6 +73833,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	ape: "八百万神秘譚4",
+	alias: ["あかび"],
 	is_dist: true,
 	as1: {
 		desc: "<属性特効連撃>味方のMAXHP10%を使い、雷属性の敵単体へ特効5連撃(600%)",
@@ -75256,6 +75261,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	ape: "八百万神秘譚4",
+	alias: ["あかび", "あかひ"],
 	is_dist: true,
 	as1: {
 		desc: "<瀕死攻撃>HP15%以下でダメージアップ(1600%)",
@@ -75804,6 +75810,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	ape: "メアレスⅢ",
+	alias: ["ロードメア", "レベルメア"],
 	is_dist: true,
 	as1: {
 		desc: "<回復・複属性攻撃強化>火属性の味方を回復(10%)し、攻撃力もアップ(10%)。複属性が闇属性だとさらに攻撃力アップ(50%)",
@@ -79008,7 +79015,7 @@ Cards = [{
 		Statusup(0,500),
 	],
 },{
-	name: "モォー烈超魔牛 ミィア・ヤガタ",
+	name: "モォー烈超魔牛 ミィア・ヤガダ",
 	cardno: 6197,
 	imageno: 8020,
 	hp: 1999,
@@ -83582,6 +83589,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	ape: "ドルキマス3",
+	alias: ["シャルルリエ"],
 	as1: {
 		desc: "<連撃>12チェインで敵単体を4回連続攻撃(1000%)",
 		proc: ChainDualAttack(10, 12, 4),
@@ -83589,6 +83597,7 @@ Cards = [{
 	ss1: {
 		desc: "<斬撃大魔術>6ターン溜めた後、スキル反射を無視し、水・雷属性の6連撃(1200%)、さらに連撃数分チェインプラス",
 		turn: 6,
+		charged: 6,
 		proc: [ss_damage_slash(12, [1,2], 6), ss_ignore_skillcounter()],
 	},
 	awakes: [
@@ -83610,6 +83619,7 @@ Cards = [{
 	ss2: {
 		desc: "<斬撃大魔術>6ターン溜めた後、スキル反射を無視し、水・雷属性の6連撃(1200%)、さらに連撃数分チェインプラス",
 		turn: 6,
+		charged: 6,
 		proc: [ss_damage_slash(12, [1,2], 6), ss_ignore_skillcounter()],
 	},
 	Lawake: [
@@ -86803,6 +86813,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [9],
 	islegend: true,
+	alias: ["きしだん"],
 	as1: {
 		desc: "<回復>火属性の味方を回復(11%)、HP50%以下なら更に回復(10%)",
 		proc: [Heal(0.11, [1,0,0,0,0], 0), add_cond(Heal(0.21, [1,0,0,0,0], 0), when_hp_less(0.50))],
@@ -86847,6 +86858,7 @@ Cards = [{
 	attr: [0,2],
 	species: [8],
 	islegend: true,
+	alias: ["きしだん"],
 	as1: {
 		desc: "<チェイン攻撃>3チェインでダメージアップ(300%)、HP50%以上でさらにダメージアップ(100%)",
 		proc: [ChainAttack(3.0, 3), add_cond(ChainAttack(4.0, 3), when_hp_more(0.5))],
@@ -86891,6 +86903,7 @@ Cards = [{
 	attr: [1,0],
 	species: [8],
 	islegend: true,
+	alias: ["きしだん"],
 	as1: {
 		desc: "<複属性攻撃強化・種族攻撃強化>水属性の攻撃力をアップ(20%)、複属性が火属性だとさらにアップ(50%)、戦士はさらにアップ(30%)",
 		proc: [ChainEnhance_SubAttr(0.2, 0.7, [0,1,0,0,0], [1,0,0,0,0], 0), add_cond(ChainEnhance_SubAttr(0.5, 1.0, [0,1,0,0,0], [1,0,0,0,0], 0), when_spec_match([8]))],
@@ -86935,6 +86948,7 @@ Cards = [{
 	attr: [2,3],
 	species: [9],
 	islegend: true,
+	alias: ["きしだん"],
 	as1: {
 		desc: "<回復>雷属性の味方を回復(13%)、HP20%以下でさらに回復(20%)",
 		proc: [Heal(0.13, [0,0,1,0,0], 0), add_cond(Heal(0.33, [0,0,1,0,0], 0), when_hp_less(0.20))],
@@ -86979,6 +86993,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
+	alias: ["きしだん"],
 	as1: {
 		desc: "<属性特効>水属性の敵単体へ特効ダメージ(400%)",
 		proc: ChainAttrAttack(4.0, 0, [0,1,0,0,0]),
@@ -87023,6 +87038,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
+	alias: ["きしだん"],
 	as1: {
 		desc: "<属性特効連撃>水属性の敵単体へ特効3連撃(400%)",
 		proc: ChainDualAttrAttack(4.0, 0, 3, [0, 1, 0, 0, 0]),

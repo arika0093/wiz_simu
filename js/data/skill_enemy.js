@@ -393,7 +393,7 @@ function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f
 	}
 	return rst;
 }
-
+ 
 // 毒(効果値, 対象数, 継続ターン)
 function s_enemy_poison(d, tnum, t) {
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
@@ -628,7 +628,7 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown, isStatusDownOnly) {
 }
 
 // 効果解除呪い(対象数)
-function s_enemy_cursed_break(tnum) {
+function s_enemy_cursed_break(tnum, breaks) {
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 		var tg = !tnum.length ? gen_enemytarget_array(fld, tnum, 1, false)[0] : tnum;
 		for (var i = 0; i < tg.length; i++) {
@@ -639,12 +639,13 @@ function s_enemy_cursed_break(tnum) {
 			if(!is_abs_guard_aw){
 				// 一番最後の効果を解除
 				turneff_break_last(fld, now.turn_effect, tg[i], function(teff){
-					return teff.iscursebreak;
+					// 問答無用で解除する
+					return true;
 				}, "break");
 			}
 			// スキルカウンターを有効に
 			now.flags.skill_counter[n] = (is_counter ? false : true);
-			fld.log_push("Enemy[" + (n + 1) + "]: 効果解除呪い(対象: Unit[" + (tg[i] + 1) + "])");
+			fld.log_push(`Enemy[${(n+1)}]: 効果解除呪い(対象: Unit[${(tg[i]+1)}])`);
 		}
 		// 反射チェック
 		turneff_check_skillcounter(fld);
@@ -866,7 +867,8 @@ function attack_counter_dual(damage, t) {
 			lim_turn: t,
 			effect: function () { },
 			on_attack_damage: function (f, ei, ai) {
-				var atk_ct = GetNowBattleEnemys(fld, ei).flags.is_as_attack[ai];
+				var en = GetNowBattleEnemys(f, ei);
+				var atk_ct = en.flags.is_as_attack[ai];
 				f.log_push(`Enemy[${(ei+1)}]: 多段式カウンター発動(対象: Unit[${(ai+1)}]|dmg: ${damage}*${atk_ct})`);
 				for (var i = 0; i < atk_ct; i++) {
 					_s_enemy_attack(f, damage, ei, ai, true);
@@ -990,8 +992,8 @@ function s_enemy_attrIncreaseGuard_own(attr, up_rate, up_max, turn){
 					}
 					return dmg_rst;
 				} else {
-					// 不一致だった場合はカウントリセット
-					if(!is_sim && this.n_rate > 0){
+					// 不一致かつ無属性以外だった場合はカウントリセット
+					if(!is_sim && atr_i >= 0 && this.n_rate > 0){
 						this.n_rate = 0;
 						this.desc = attr_text + "免疫(0%)";
 						f.log_push("Enemy[" + (n + 1) + "]: 属性免疫(" + (nowr*100) + "% → 0%)");
@@ -1240,7 +1242,7 @@ function s_enemy_multibarrier_own(dmg, turn) {
 					var bf = this.barr_endurance;
 					var af = this.barr_endurance - 1;
 					fl.log_push("Enemy[" + (n + 1) + "]: 多層バリア(残: " + bf + "→" + af + ")");
-					this.desc = `多層バリア(${af}/${dmg})`;
+					this.desc = (af > 0) ? `多層バリア(${af}/${dmg})` : null;
 					this.barr_endurance -= 1;
 					is_invalid = true;
 				} else if(is_sim) {
@@ -1281,7 +1283,7 @@ function s_enemy_multibarrier_all(dmg, turn) {
 						var bf = this.barr_endurance;
 						var af = this.barr_endurance - 1;
 						fl.log_push("Enemy[" + (n + 1) + "]: 多層バリア(残: " + bf + "→" + af + ")");
-						this.desc = `多層バリア(${af}/${dmg})`;
+						this.desc = (af > 0) ? `多層バリア(${af}/${dmg})` : null;
 						this.barr_endurance -= 1;
 						is_invalid = true;
 					} else if(is_sim){
