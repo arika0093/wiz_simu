@@ -357,7 +357,7 @@ var SpSkill = {
 					turn: t,
 					lim_turn: t,
 					is_poison: true,
-					effect: function (f, oi, teff, state, is_t, is_b, is_ss) {
+					effect: function (f, ei, teff, state, is_t, is_b, is_ss) {
 						var e = GetNowBattleEnemys(f, ei);
 						if (is_t && !is_b) {
 							e.nowhp = Math.max(e.nowhp - dmg, 0);
