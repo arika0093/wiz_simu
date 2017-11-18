@@ -1148,7 +1148,7 @@ function s_enemy_barrier_own(dmg, turn) {
 			}
 		});
 		fld.log_push("Enemy[" + (n + 1) + "]: バリアウォール(" + dmg + "/" + turn + "t)");
-	}, makeDesc("バリアウォール"));
+	}, makeDesc("バリアウォール[単]"));
 }
 
 // 全体バリア
@@ -1213,7 +1213,7 @@ function s_enemy_barrier_all(dmg, turn) {
 			enemys[i].turn_effect.push(barr_all);
 		}
 		fld.log_push("Enemy[" + (n + 1) + "]: バリアウォール[全体](" + dmg + "/" + turn + "t)");
-	}, makeDesc("バリアウォール[全体]"));
+	}, makeDesc("バリアウォール[全]"));
 }
 
 // 単体多層バリア
@@ -1252,7 +1252,7 @@ function s_enemy_multibarrier_own(dmg, turn) {
 			}
 		});
 		fld.log_push("Enemy[" + (n + 1) + "]: 多層バリア(" + dmg + ")");
-	}, makeDesc("多層バリア"));
+	}, makeDesc("多層バリア[単]"));
 }
 
 // 全体多層バリア
@@ -1294,7 +1294,7 @@ function s_enemy_multibarrier_all(dmg, turn) {
 			});
 		}
 		fld.log_push("Enemy[" + (n + 1) + "]: 全体多層バリア(" + dmg + ")");
-	}, makeDesc("多層バリア"));
+	}, makeDesc("多層バリア[全]"));
 }
 
 // 挑発
@@ -1451,22 +1451,34 @@ function m_enemy_angry() {
 	}, makeDesc("怒り"));
 }
 
-// ステータスアップ(効果値分だけダメージ増加)
-function s_enemy_statusup(isall, up_rate, turn) {
+// ステータスアップ(効果値分だけダメージ増加/HP上昇)
+function s_enemy_statusup(isall, up_rate, turn, up_hp) {
 	return m_create_enemy_move(function (fld, n) {
+		// ステアップ実行関数
+		var stupfc = (n) => {
+			var e = GetNowBattleEnemys(fld, n);
+			// 攻撃力UP
+			e.statusup = (e.statusup ? e.statusup + up_rate : e.statusup);
+			// HPUP
+			if(up_hp > 0){
+				e.nowhp += up_hp;
+				e.hp += up_hp;
+			}
+			logpush(n);
+		}
+		// ログ出力
+		var logpush = (n) => {
+			fld.log_push(`Enemy[${n+1}]: 敵ステータスアップ(ATK: ${up_rate} / ${up_hp ? `HP: ${up_hp}` : ""})`);
+		};
 		if (isall) {
 			var es = GetNowBattleEnemys(fld);
 			for (var i = 0; i < es.length; i++) {
-				var e = es[i];
-				e.statusup = (e.statusup ? e.statusup + up_rate : e.statusup);
-				fld.log_push("Enemy[" + (n + 1) + "]: 敵ステータスアップ(" + up_rate + ")");
+				stupfc(i);
 			}
 		} else {
-			var e = GetNowBattleEnemys(fld, n);
-			e.statusup = (e.statusup ? e.statusup + up_rate : e.statusup);
-			fld.log_push("Enemy[" + (n + 1) + "]: 敵ステータスアップ(" + up_rate + ")");
+			stupfc(n);
 		}
-	}, makeDesc("敵ステータスアップ"));
+	}, makeDesc(`敵ステータスアップ[${isall ? "全体" : "単体"}]`));
 }
 
 // 属性変化
@@ -1673,8 +1685,8 @@ function s_enemy_when_dead_x(num) {
 		var cnt = num;
 		var es = GetNowBattleEnemys(fld);
 		for (var i = 0; i < es.length; i++) {
-			if (i == n && es[i].nowhp > 0) { continue; }
-			cnt--;
+			if (i == n) { continue; }
+			cnt = (es[i].nowhp > 0 ? cnt : cnt - 1);
 		}
 		return cnt <= 0;
 	}, desc: `敵${num}体が倒れる`};
@@ -1748,6 +1760,7 @@ function makeDesc(mystr, order){
 			toStr = prop != "atkdown" ? toStr : "ATK-" + toStr
 			toStr = prop != "up_rate" ? toStr : "上昇幅:" + toStr
 			toStr = prop != "up_max" ? toStr : "最大値:" + toStr
+			toStr = prop != "up_hp" ? toStr : "上昇HP:" + toStr
 			toStr = prop != "desc" ? toStr : toStr+" "
 			toStr = prop != "healvalue" ? toStr : toStr+"回復"
 			toStr = prop != "ratiorate" ? toStr : toStr * 100 + "％削り"

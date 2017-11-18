@@ -114,6 +114,12 @@ category_jp = {
 		jp: "双翼のロストエデン　ＷＷＭＦ",
 		disable_date:"2016/10/31 16:00",
 	},
+    "losteden3": {
+		is_dispsim: true,
+		sim_index: 11,
+		jp: "双翼のロストエデンⅢ",
+		disable_date:"2017/12/15 16:00",
+	},
     "mareless2": {
 		is_dispsim: true,
 		sim_index: 11,
@@ -141,7 +147,7 @@ category_jp = {
 	},
     "reloaded": {
 		jp: "幻魔特区RELOADED",
-		is_dispsim: true,
+		is_dispsim: false,
 		sim_index: 11,
 	},
 	"darcmass2": {
@@ -150,7 +156,7 @@ category_jp = {
 		sim_index: 11,
 	},
 	"darcmass3": {
-		is_dispsim: true,
+		is_dispsim: false,
 		jp: "空戦のドルキマスⅢ",
 		sim_index: 12,
 	},
@@ -214,7 +220,8 @@ category_jp = {
    "orlha": {
 		jp: "Orlha Report",
 		is_dispsim: true,
-		sim_index: 10,
+		sim_index: 20,
+		disable_date:"2017/12/1 16:00",
 	},
    "vzone": {
 		jp: "VOID ZONE",
