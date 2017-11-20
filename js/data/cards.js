@@ -31769,7 +31769,7 @@ Cards = [{
 	ss1: {
 		desc: "<解答削り>解答選択肢を2つ削り、HP80%以下なら解答を見破る",
 		turn: 4,
-		proc: [ss_answer_narrow(2), ss_answer_foresight()],
+		proc: [ss_answer_narrow(2), ss_hp_less_skill(0.8, ss_answer_foresight())],
 	},
 	awakes: [
 		Statusup(0,400),
@@ -33685,6 +33685,7 @@ Cards = [{
 	cost: 49,
 	attr: [1,0],
 	species: [8],
+	disable: true,
 	islegend: true,
 	disable: true,
 	ape: "スザクⅢ",
@@ -50737,7 +50738,7 @@ Cards = [{
 	ss1: {
 		desc: "<解答削り>解答選択肢を2つ削り、HP80%以下なら解答を見破る",
 		turn: 5,
-		proc: [ss_answer_narrow(2), ss_answer_foresight()],
+		proc: [ss_answer_narrow(2), ss_hp_less_skill(0.8, ss_answer_foresight())],
 	},
 	awakes: [
 		Fastskill(1),
@@ -75843,8 +75844,8 @@ Cards = [{
 		Fastskill(1),
 		NEFTJOD(30),
 		Attr_relief([1,1,1,1,1,],10),
-		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,100, [0,0,0,0,1,]),
-		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 100,0, [0,0,0,0,1,]),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 200,0, [0,0,0,0,1,]),
 		Abstate_invalid("ss_sealed"),
 	],
 	as2: {
@@ -76810,8 +76811,8 @@ Cards = [{
 		Abstate_invalid("death_limit"),
 		Fastskill(2),
 		NEFTJOD(30),
-		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,100, [0,0,0,0,1,]),
-		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 100,0, [0,0,0,0,1,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,200, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 200,0, [0,0,0,0,1,]),
 	],
 	as2: {
 		desc: "<連撃>敵単体を3回連続攻撃(350%)、HP80%以上でさらにダメージアップ(50%)",
