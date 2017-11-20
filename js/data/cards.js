@@ -88094,7 +88094,7 @@ Cards = [{
 },{
 	name: "に魂いち ヴェレフキナ＆シミラル",
 	cardno: 9392,
-	imageno: 11614,
+	imageno: 11641,
 	hp: 1345,
 	atk: 4831,
 	cost: 54,
