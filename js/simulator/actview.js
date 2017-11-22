@@ -244,6 +244,10 @@ function createActionStrData(js, act){
 								var main_tg = e[0];
 								// 副タゲ
 								var sub_tg = e[1];
+								// undefined(助っ人)なら未記載
+								if(e[0] === undefined){
+									d_l += "→Unit[" + (i+1) + "]自動"
+								}
 								// 主=副で、基準タゲが未指定(-1)なら主副同時記載
 								if(main_tg != base_tg && main_tg == sub_tg && base_tg == -1){
 									d_l += "→Unit[" + (i+1) + "]主副" + tg[main_tg];

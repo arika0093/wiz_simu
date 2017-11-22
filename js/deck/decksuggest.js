@@ -397,6 +397,7 @@ $(function () {
 				sel_q = $("#deckload_cookie").val();
 				if (sel_q && sel_q != "") {
 					deckdata_Load(sel_q, decksgg_loaddeck);
+					history.replaceState("", "", `?${sel_q}`);
 				} else {
 					$("#dialog_noselect").dialog("open");
 				}
@@ -754,6 +755,7 @@ function deck_reset() {
 		decksel_show(i + 1, null);
 		$("#deck0" + (i + 1)).val("");
 	}
+	history.replaceState("", "", "/simulator/");
 	$("#QstSel").val("");
 	$('#QstSel').trigger("chosen:updated");
 }

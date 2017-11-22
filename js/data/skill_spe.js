@@ -514,6 +514,27 @@ function ss_boost_enhance_s(p, t, dmg) {
 }
 
 /**
+ * 味方全体に撃破強化エンハンスを付与
+ * b:	基礎値(ex: 0.6 -> 60%)
+ * u:	上昇値(ex: 0.6 -> 60%)
+ * m:	上限値(ex: 0.6 -> 60%)
+ * t:	継続ターン数
+ **/
+function ss_kill_enhance_all(b, u, m, t) {
+	return ss_template({
+		name: "ss_kill_enhance",
+		type: "turn_effect",
+		subtype: "enhance",
+		target: "ally",
+		p1: b,
+		p2: u,
+		p3: m,
+		p4: t,
+	});
+}
+
+
+/**
  * 凶暴化(攻撃対象がランダムになり,常にクリティカル)を自身にかける
  * t:	 継続ターン数
  **/

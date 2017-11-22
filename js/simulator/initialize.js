@@ -489,6 +489,8 @@ function helper_change_process(fld) {
 			fs.is_hlpchanged = true;
 			fs.hlpchanged_index = i;
 			fld.log_push("Unit[" + (i + 1) + "]: 助っ人交代");
+			// タゲを自動状態に設定
+			nows[i].target = [-1, -1];
 			// 潜在をかけ直す
 			//func_reawake(fld, fld.Allys.Deck, fld.Allys.Now, true);
 		}

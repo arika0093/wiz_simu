@@ -331,22 +331,32 @@ function Awake_multihitadd(n) {
 }
 
 // AS効果値アップ潜在
-function Awake_ASkillRateup(upval) {
+function Awake_ASkillRateup(upval, match_type, match_cond, div_rate) {
+	match_type  = match_type || null;
+	match_cond  = match_cond || null;
+	div_rate    = div_rate || 1;
 	return {
-		type: "awake_ans_rateup",
-		upvalue: upval,
+		type: "awake_answer_up",
+		subtype: "awake_ans_rateup",
+		upvalue: upval / div_rate,
 		name: "AS効果値アップ(+" + upval + ")",
 		desc: "ASの効果値を" + upval + "%アップする",
+		matched_type: match_type,
+		matched_cond: match_cond,
+		matched_up: "rate",
 	};
 }
 
 // AS連撃数アップ潜在
 function Awake_ASkillAtknup(upval) {
 	return {
-		type: "awake_ans_atknup",
+		type: "awake_answer_up",
+		subtype: "awake_ans_atknup",
 		upvalue: upval,
 		name: "AS連撃数アップ(+" + upval + ")",
 		desc: "ASの連撃数を" + upval + "%アップする",
+		matched_type: "attack",
+		matched_up: "atkn",
 	};
 }
 

@@ -214,14 +214,14 @@ function panelAnswerMissWithParam(fld) {
 
 // アンサースキルから踏んだパネルに応じた特定要素のみを抜き出す
 function pickup_answerskills(fld, attr, type, subtype) {
-	var result = [];
+	var results = [];
 	for (var i = 0; i < fld.Allys.Deck.length; i++) {
 		// カード種類
 		var card = fld.Allys.Deck[i];
 		var al_now = fld.Allys.Now[i];
 		// 死んでいたらnullを入れる
 		if (al_now.nowhp <= 0) {
-			result.push(null);
+			results.push(null);
 			continue;
 		}
 		// 踏んだパネル色と属性のどれかとで一致しない場合nullを入れる
@@ -229,7 +229,7 @@ function pickup_answerskills(fld, attr, type, subtype) {
 			return t == card.attr[0] || t == card.attr[1];
 		}).length != 0;
 		if (!is_match_attr) {
-			result.push(null);
+			results.push(null);
 			continue;
 		}
 
@@ -237,7 +237,7 @@ function pickup_answerskills(fld, attr, type, subtype) {
 		var ASkill = is_legendmode(fld, card, al_now) ? card.as2 : card.as1;
 		// ASがない場合抜き出さない
 		if (!ASkill || !ASkill.proc) {
-			result.push([]);
+			results.push([]);
 			continue;
 		}
 		// 二重配列の場合1つにまとめる
@@ -249,13 +249,42 @@ function pickup_answerskills(fld, attr, type, subtype) {
 		} else {
 			as_proc = ASkill.proc;
 		}
+		
+		// 潜在結晶の反映
+		var result = $.grep(as_proc, function (e) {
+			return (e.type == type) && (subtype !== undefined ? e.subtype == subtype : true);
+		});
+		var aw_t = pickup_awakes(fld, card, "awake_answer_up", false);
+		if(aw_t.length > 0){
+			for (var n = 0; n < aw_t.length; n++) {
+				for(var i=0; i < result.length; i++){
+					var aw = aw_t[n];
+					var as = result[i];
+					// ignore default
+					if(as.isdefault || as.disactuate){
+						continue;
+					}
+					// type check
+					if(aw.matched_type && aw.matched_type != as.type){
+						continue;
+					}
+					// cond check
+					var ismatch_cond = $.grep(as.cond, (e) => {
+						return !aw.matched_cond || e.func == aw.matched_cond;
+					}).length > 0;
+					if(!ismatch_cond){
+						continue;
+					}
+					// value up
+					as[aw.matched_up] += aw.upvalue;
+				}
+			}
+		}
 
 		// 抜き出し
-		result.push($.grep(as_proc, function (e) {
-			return (e.type == type) && (subtype !== undefined ? e.subtype == subtype : true);
-		}));
+		results.push(result);
 	}
-	return result;
+	return results;
 }
 
 // アンサースキルの前処理
@@ -300,16 +329,6 @@ function answer_skill(fld, as_arr, panel, as_afters, bef_f) {
 					});
 					as.atkn = an;
 					as.atkn_funcadded = true;
-				}
-				// 攻撃回数を増やす潜在結晶反映
-				var aw_t = pickup_awakes(fld, card, "awake_ans_atknup", false);
-				if(aw_t.length > 0){
-					for (var n = 0; n < aw_t.length; n++) {
-						if (as.atkn >= 2 && !as.atkn_awakeadded) {
-							as.atkn += aw_t[n].upvalue;
-						}
-					}
-					as.atkn_awakeadded = true;
 				}
 				// ASが適用されるならば攻撃数を取得
 				if (as.type == "attack" && is_answer_target(fld, bef_f, as, chain, -1, -1, i, -1, panel)) {
@@ -489,16 +508,9 @@ function answer_attack(fld, card, now, enemys, as, attr, panel, index, atk_rem, 
 			var is_ans = is_answer_target(fld, bef_f, as[ai], chain, enemys[ei].attr, enemys[ei].spec, index, ei, panel);
 			var rate_n = (is_ans ? as[ai].rate : 0);
 			var rate_b = (as_pos[ei] !== undefined ? as_rate[ei] : 0);
-			var aw_t = pickup_awakes(fld, card, "awake_ans_rateup", false);
 			// AS効果値後乗せ処理
 			if (is_ans && as[ai].add_f && !as[ai].disactuate) {
 				rate_n += answer_rateadded(bef_f, as[ai], index, ei, panel);
-			}
-			// 潜在結晶考慮処理
-			for (var i = 0; i < aw_t.length; i++) {
-				if (is_ans && !as[ai].disactuate) {
-					rate_n += Math.floor(aw_t[i].upvalue) / 100;
-				}
 			}
 			as_rate[ei] = (rate_n >= rate_b ? rate_n : rate_b);
 			as_pos[ei] = (rate_n >= rate_b ? ai : as_pos[ei]);
