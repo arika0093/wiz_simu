@@ -5,8 +5,9 @@
 //  added_frame: ダメージを与えたF数(未指定ならcontを使わず即付与)
 function attack_enemy(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num, added_frame) {
 	var con = enemy.contract_dmgs;
-	var consum = sumContractDamages(fld, enemy);
-	var bef_hp = (enemy.nowhp - consum);
+	var consum_b = sumContractDamages(fld, enemy);
+	var consum = consum_b;
+	var bef_hp = (enemy.nowhp - consum_b);
 	// ダメージ計算
 	var d_dat = calculate_damage(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num, false);
 	var d = d_dat.damage;
@@ -26,8 +27,9 @@ function attack_enemy(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, i
 		consum += d;
 	}
 	
-	// HPが0になりそうならターン効果を全て消す
-	if (enemy.nowhp <= consum) {
+	// HPが0になったタイミングに1度だけ処理
+	if (bef_hp <= d && bef_hp > 0) {
+		// 効果解除
 		turneff_allbreak_enemy(fld, enemy.turn_effect, e);
 		// 撃破カウント
 		fld.Status.total_kill += 1;

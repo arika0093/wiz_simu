@@ -115,9 +115,24 @@ var Awake_crystal_lists = [{
 	input_required: true,
 }, {
 	genre: "AS変化",
+	name: "過ぎた夏の名残り(AS回復+2%)",
+	imple: Awake_ASkillRateup,
+	param1: 2,
+	param2: "heal",
+}, {
+	name: "魔王からの贈り物(AS複属性エンハンス+20%)",
+	imple: Awake_ASkillRateup,
+	param1: 20,
+	param2: "support",
+	param3: "when_subattr_match",
+	param4: 100,
+}, {
 	name: "AS効果値アップ",
 	imple: Awake_ASkillRateup,
 	param1: "{0}",
+	param2: null,
+	param3: null,
+	param4: 100,
 	input_required: true,
 }, {
 	name: "AS連撃数アップ",
@@ -358,6 +373,18 @@ var Awake_crystal_lists = [{
 	param2: Abstate_invalid("discharge"),
 }, {
 	genre: "ダメージ軽減",
+	name: "超魔道装具〈災害のリボン〉(術士軽減10%)",
+	imple: Awake_composite,
+	param2: Spec_relief([9], 10),
+}, {
+	name: "いつか見た天使の髪飾り(魔族軽減10%)",
+	imple: Awake_composite,
+	param2: Spec_relief([2], 10),
+}, {
+	name: "破槍の結晶〈ブリューダイン〉(神族軽減10%)",
+	imple: Awake_composite,
+	param2: Spec_relief([1], 10),
+}, {
 	name: "巡礼の結晶〈スビェート〉(光軽減10%)",
 	imple: Awake_composite,
 	param2: Attr_relief([0,0,0,1,0], 10),

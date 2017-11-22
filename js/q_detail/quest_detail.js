@@ -151,7 +151,7 @@ function makeQD(id) {
 				resStr += "</div>"
 				resStr += "<div class='bcks'>" +
 					"<a class='sim_go back_category' href='#'>試走する</a>" +
-					"<a class='back_category' href='/simulator/d?id=" + Quest.id + "'>みんなの投稿デッキを見る</a>" +
+					"<a class='back_category' href='/simulator/d?qid=" + Quest.id + "'>みんなの投稿デッキを見る</a>" +
 					"<a class='back_category' href='/simulator/quest?genre=" + Quest.category + "'>カテゴリ一覧に戻る</a></div>";
 				resStr += "</dd>";
 				return true;

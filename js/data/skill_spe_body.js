@@ -499,13 +499,6 @@ var SpSkill = {
 		// var is_own = false;
 		if (!attr) {
 			attr = [1,1,1,1,1];
-			/* 属性未指定なら自身の元々の主属性を指定
-			// ※スキルコピーには正常に対応できない
-			var own = fld.Allys.Now[n];
-			attr = [0,0,0,0,0];
-			attr[own.def_attr[0]] = 1;
-			is_own = true;
-			*/
 		}
 		var cds = ss_get_targetally(fld, cobj, fld.Allys.Deck, n);
 		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
@@ -760,6 +753,53 @@ var SpSkill = {
 		});
 		// 発動時にもエンハンス処理を実行
 		fc_ch_enhance(fld, fld.Allys.Now);
+		return true;
+	},
+	// -----------------------------
+	// 撃破した敵数に応じてエンハンス効果を付与
+	"ss_kill_enhance": function (fld, n, cobj, params) {
+		var rate_st = params[0];
+		var rate_up = params[1];
+		var rate_mx = params[2];
+		var t = params[3];
+		var cds = ss_get_targetally(fld, cobj, fld.Allys.Deck, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
+		for (var i = 0; i < nows.length; i++) {
+			var cd = cds[i];
+			var now = nows[i];
+			var n_index = fld.Allys.Now.indexOf(now);
+			var kill_st = fld.Status.total_kill;
+			if (now.nowhp <= 0) {
+				continue;
+			}
+			// 付与
+			var desc_tx = (r) => {
+				return `撃破強化(${(r*100).toFixed(0)}%)`;
+			}
+			now.turn_effect.push({
+				desc: desc_tx(rate_st),
+				type: "ss_enhance", // 普通のエンハンスと重複しないので同じss_enhance
+				icon: "enhance",
+				isdual: false,
+				iscursebreak: true,
+				turn: t,
+				lim_turn: t,
+				effect: function(f, oi, teff, state){
+					// 解除条件に当てはまっていた場合、後処理して終了
+					if (["end", "dead", "break"].indexOf(state) >= 0) {
+						f.Allys.Now[oi].ss_enhance = 0;
+					}
+					else if(state == "first" || state == ""){
+						// 撃破数取得
+						var killnum = f.Status.total_kill - kill_st;
+						// 効果値上書き
+						var rate = Math.min(rate_st + killnum * rate_up, rate_mx);
+						teff.desc = desc_tx(rate);
+						f.Allys.Now[oi].ss_enhance = rate;
+					}
+				},
+			});
+		}
 		return true;
 	},
 	// -----------------------------
