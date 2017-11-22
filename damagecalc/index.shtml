@@ -215,7 +215,7 @@
                                             <option value="2,4">雷/闇</option>
                                         </select> ,
                                     </span>
-                                    ATK: <input type="number" id="ally_atk" min="0" step="100" placeholder="《精霊の攻撃力》" />
+                                    ATK: <input type="number" id="ally_atk" min="0" step="1" placeholder="《精霊の攻撃力》" />
                                 </div>
                             </div>
                             <div class="ally_image">

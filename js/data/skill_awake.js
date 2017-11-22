@@ -320,16 +320,6 @@ function Awake_dragonmode(up_atk, up_damaged) {
 	);
 }
 
-// Hit回数増加
-function Awake_multihitadd(n) {
-	return {
-		type: "Awake_multihitadd",
-		name: "SSヒット回数" + n + "回増加",
-		desc: "SSのヒット回数を" + n + "回増加させる",
-		upvalue: n,
-	};
-}
-
 // AS効果値アップ潜在
 function Awake_ASkillRateup(upval, match_type, match_cond, div_rate) {
 	match_type  = match_type || null;
@@ -368,6 +358,26 @@ function Awake_SkillRateup(upval, skl_type) {
 		upvalue: upval,
 		name: "SS効果値アップ(+" + upval + ")",
 		desc: "SPスキルの効果値を" + upval + "%アップする",
+	};
+}
+
+// Hit回数増加
+function Awake_multihitadd(n) {
+	return {
+		type: "Awake_multihitadd",
+		name: "SSヒット回数" + n + "回増加",
+		desc: "SSのヒット回数を" + n + "回増加させる",
+		upvalue: n,
+	};
+}
+
+// チャージT減少
+function Awake_chargeTurnMinus(n) {
+	return {
+		type: "Awake_chargeTurnMinus",
+		name: "SSチャージ" + n + "T減少",
+		desc: "SSのチャージターン数を" + n + "減少させる",
+		downvalue: n,
 	};
 }
 
@@ -436,3 +446,14 @@ function Awake_Skillfast(t){
 	var eff2 = Awake_secondfast(t);
 	return Awake_composite(desc, eff1, eff2);
 }
+
+// -------------------
+// 選ばれし者の証(※潜在結晶用)
+function Awake_skillFC_atBoss(){
+	return {
+		type: "awake_skillFC_atBoss",
+		name: "選ばれし者の証",
+		desc: "ボス戦突入時にスキチャMAX/特殊攻略用",
+	}
+}
+

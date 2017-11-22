@@ -29,16 +29,26 @@ function ssPushWithParam(fld, n){
 				fld.Status.latest_ss = ss;
 			}
 			// ------------------
-			// L状態ならL潜在を解除
-			if (is_l) {
-				minus_legend_awake(fld, fld.Allys.Deck, fld.Allys.Now, n);
-				now.islegend = false;
-				fld.log_push("Unit[" + (n + 1) + "]: Lモード解除");
+			// ダブルスキル付与状況を確認
+			var is_doubleskill = $.grep(now.turn_effect, (e) => {
+				return e.type == "ss_doubleskill";
+			}).length > 0;
+			if(is_doubleskill) {
+				// 付与状態を解除
+				turneff_break(fld, now.turn_effect, n, "ss_doubleskill");
 			}
-			// SSターンをリセット
-			now.ss_current = has_secondfastnum(fld, card);
-			now.ss_isfirst = false;
-			now.ss_isboost = false;
+			else {
+				// L状態ならL潜在を解除
+				if (is_l) {
+					minus_legend_awake(fld, fld.Allys.Deck, fld.Allys.Now, n);
+					now.islegend = false;
+					fld.log_push("Unit[" + (n + 1) + "]: Lモード解除");
+				}
+				// SSターンをリセット
+				now.ss_current = has_secondfastnum(fld, card);
+				now.ss_isfirst = false;
+				now.ss_isboost = false;
+			}
 		} else {
 			// チャージ発動状態解除
 			now.flags.ss_chargefin = false;
@@ -116,16 +126,26 @@ function ss_procdo(fld, ss, now, index) {
 		if (ss.charged > 0 || now.flags.ss_chargefin) {
 			// チャージが終わっているか確認し、終わってないなら追加
 			if (!now.flags.ss_chargefin) {
+				var c_turn = ss.charged;
+				// C短縮結晶の情報を取得
+				var card = fld.Allys.Deck[index];
+				var aw_t = pickup_awakes(fld, card, "Awake_chargeTurnMinus", false);
+				if(aw_t.length > 0){
+					var dsum = ArrayMath.sum($.map(aw_t, (e) => {
+						return e.downvalue;
+					}));
+					c_turn = Math.max(c_turn - dsum, 1);
+				}
 				// 自身に行動不可効果を付与
 				now.turn_effect.push({
-					desc: "チャージスキル待機(残り" + ss.charged + "t)",
+					desc: "チャージスキル待機(残り" + c_turn + "t)",
 					type: "ss_charge",
 					icon: "force_reservior",// 後で変える(?)
 					isdual: false,
 					iscursebreak: false,	// 呪い解除されない
 					isreduce_stg: true,		// ターン跨ぎでカウントが減る
 					priority: 1,
-					charge_turn: ss.charged,
+					charge_turn: c_turn,
 					charge_skl: $.extend(true, ss.proc, []),
 					turn: -1,
 					lim_turn: -1,
@@ -158,7 +178,7 @@ function ss_procdo(fld, ss, now, index) {
 				});
 				// 全体チャージスキルなら味方全体にnT行動不可効果付与
 				if (ss.isallcharge) {
-					ss_add_chargenomove_otheruser(fld, ss.charged, index);
+					ss_add_chargenomove_otheruser(fld, c_turn, index);
 				}
 				fld.log_push("Unit[" + (index + 1) + "]: チャージスキル発動待機…");
 				// ため処理終了

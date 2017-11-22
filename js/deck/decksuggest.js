@@ -625,7 +625,7 @@ function set_autocmp(i) {
 				// 表示
 				decksel_show(idx, dec.item.data);
 				// レベルを調整する
-				Deckdata.deck[idx].level = Deckdata.deck[idx].level_default
+				Deckdata.deck[idx-1].level = Deckdata.deck[idx-1].level_default
 					= (dec.item.data.islegend ? 110 : 90);
 				// 閉じる
 				$(".selector").autocomplete("close");

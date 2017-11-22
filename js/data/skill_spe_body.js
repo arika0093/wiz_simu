@@ -1080,6 +1080,28 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
+	// ダブルスキル効果付与
+	"ss_doubleskill": function (fld, n, cobj, params) {
+		var turn = params[0];
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
+		for (var i = 0; i < nows.length; i++) {
+			var now = nows[i];
+			if (now.nowhp <= 0) { continue; }
+			now.turn_effect.push({
+				desc: "SPスキル使用回数+1",
+				type: "ss_doubleskill",
+				icon: "doubleskill",
+				isdual: false,
+				iscursebreak: true,
+				turn: turn,
+				lim_turn: turn,
+				effect: function () { },
+			});
+			fld.log_push(`Unit[${(i+1)}]: ダブルスキル効果付与(" + ${turn} + "t)`);
+		}
+		return true;
+	},
+	// -----------------------------
 	// スキルブースト
 	"ss_skillboost": function (fld, n, cobj, params) {
 		var f_rate = params[0];

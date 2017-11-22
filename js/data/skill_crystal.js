@@ -114,6 +114,11 @@ var Awake_crystal_lists = [{
 	param1: "{0}",
 	input_required: true,
 }, {
+	name: "SSチャージターン減少",
+	imple: Awake_chargeTurnMinus,
+	param1: "{0}",
+	input_required: true,
+}, {
 	genre: "AS変化",
 	name: "過ぎた夏の名残り(AS回復+2%)",
 	imple: Awake_ASkillRateup,
@@ -404,8 +409,12 @@ var Awake_crystal_lists = [{
     name: "絶滅因子の結晶〈フーガァー〉(龍族軽減10%)",
     imple: Awake_composite,
     param2: Spec_relief([0], 10),
+}, {
+	genre: "その他[特殊攻略用]",
+	name: "選ばれし者の証(ボス戦時SPMAX/発動100%)",
+	imple: Awake_composite,
+	param2: Awake_skillFC_atBoss(),
 }
-
 ];
 
 

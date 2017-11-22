@@ -396,6 +396,19 @@ function nextturn(fld, is_ssfin) {
 		initialize_allys_flags(fld, nows);
 		// ここで新しい敵の処理を行う
 		enemy_popup_proc(fld);
+		// 最終戦で、GA潜在が利用できる状況(暫定的に助っ人の利用可能状況で判定)なら処理する
+		var fq = fld.Quest;
+		if(fq.aprnum == f_st.nowbattle && !fq.is_notusedhelper){
+			// GA潜在を誰かが所持しているか確認
+			$.each(fld.Allys.Deck, (i, e) => {
+				var aw_t = pickup_awakes(fld, e, "awake_skillFC_atBoss", false);
+				if(aw_t.length > 0) {
+					// 発動
+					fld.log_push(`Unit[${i+1}]: 「選ばれし者の証」発動`, "orange");
+					ss_object_done(fld, i, spskill_maxcharge());
+				}
+			});
+		}
 	}
 	// チェイン状態の確認
 	if (f_st.chain_status != 0) {

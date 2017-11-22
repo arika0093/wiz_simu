@@ -666,6 +666,20 @@ function ss_impregnable_all(t) {
 }
 
 /**
+ * 味方全体にダブルスキル効果を付与
+ * t: 継続ターン数
+ **/
+function ss_doubleskill_all(t) {
+	return ss_template({
+		name: "ss_doubleskill",
+		type: "turn_effect",
+		subtype: "doubleskill",
+		target: "ally",
+		p1: t,
+	});
+}
+
+/**
  * 味方全体にスキルブーストの効果を付与
  * f: 早めるターン数
 **/
