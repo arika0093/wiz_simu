@@ -277,6 +277,7 @@ function sim_by_id(id){
     })
 }
 
+// --------------------------
 // 相対パス → 絶対パス
 function absolutePath(path) {
 	var e = document.createElement('span');
@@ -284,8 +285,37 @@ function absolutePath(path) {
 	return e.firstChild.href;
 }
 
+// 一般的な日付の文字列を返す
+function getDateString(date){
+	var padStr = (i) => {
+		return (i < 10) ? "0" + i : "" + i;
+	}
+	var dateStr =
+		padStr(date.getFullYear()) + "/" +
+		padStr(1 + date.getMonth()) + "/" +
+		padStr(date.getDate()) + " " +
+		padStr(date.getHours()) + ":" +
+		padStr(date.getMinutes()) + ":" +
+		padStr(date.getSeconds());
+	return dateStr;
+}
+
+// 文字列をコピーする関数
+function execCopy(string){
+	var temp = document.createElement('div');
+	temp.appendChild(document.createElement('pre')).textContent = string;
+	var s = temp.style;
+	s.position = 'fixed';
+	s.left = '-100%';
+	document.body.appendChild(temp);
+	document.getSelection().selectAllChildren(temp);
+	var result = document.execCommand('copy');
+	document.body.removeChild(temp);
+	return result;
+}
 
 
+// --------------------------
 // 広告を挟み込む
 function adsence_html(style) {
 	style = style || "";
