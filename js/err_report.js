@@ -31,7 +31,7 @@ window.onerror = function (errorMsg, fileName, lineNumber) {
 		err_dialog.dialog({
 			autoOpen: false,
 			modal: true,
-			width: 550,
+			width: 600,
 			buttons: {
 				"Copy": function () {
 					var rst = execCopy(err_detail);
