@@ -257,9 +257,9 @@ function pickup_answerskills(fld, attr, type, subtype) {
 		var aw_t = pickup_awakes(fld, card, "awake_answer_up", false);
 		if(aw_t.length > 0){
 			for (var n = 0; n < aw_t.length; n++) {
-				for(var i=0; i < result.length; i++){
+				for(var ai=0; ai < result.length; ai++){
 					var aw = aw_t[n];
-					var as = result[i];
+					var as = result[ai];
 					// ignore default
 					if(as.isdefault || as.disactuate){
 						continue;
