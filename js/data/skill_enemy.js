@@ -402,9 +402,9 @@ function s_enemy_poison(d, tnum, t) {
 				is_poison: true,
 				effect: function (f, oi, teff, state, is_t, is_b, is_ss) {
 					var now = f.Allys.Now[oi];
-					if (!is_ss && state != "overlay") {
+					if (is_t && !is_ss && state != "overlay") {
 						f.log_push("Unit[" + (oi + 1) + "]: 毒(" + d + "ダメージ)");
-						damage_ally(fld, d, oi, true);
+						damage_ally(f, d, oi, true);
 					}
 				},
 			}
