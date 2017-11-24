@@ -265,6 +265,9 @@ function pickup_answerskills(fld, attr, type, subtype) {
 						continue;
 					}
 					// type check
+					if(!aw.matched_type){
+						aw.matched_type = "attack";
+					}
 					if(aw.matched_type && aw.matched_type != as.type){
 						continue;
 					}
