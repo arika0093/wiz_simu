@@ -251,9 +251,9 @@ function pickup_answerskills(fld, attr, type, subtype) {
 		}
 		
 		// 潜在結晶の反映
-		var result = $.grep(as_proc, function (e) {
+		var result = $.extend(true, [], $.grep(as_proc, function (e) {
 			return (e.type == type) && (subtype !== undefined ? e.subtype == subtype : true);
-		});
+		}));
 		var aw_t = pickup_awakes(fld, card, "awake_answer_up", false);
 		if(aw_t.length > 0){
 			for (var n = 0; n < aw_t.length; n++) {

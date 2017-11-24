@@ -268,7 +268,7 @@ function turneff_break_last(fld, teffs, index, func, call_type) {
 	var cond_tfs = $.grep(teffs, function(e){
 		return func(e);
 	});
-	var teff = cond_tfs[cond_tfs.length];
+	var teff = cond_tfs[cond_tfs.length - 1];
 	var i = teffs.indexOf(teff);
 	teff.effect(fld, index, teff, call_type, false, false);
 	turneff_remove_pos(fld, teffs, i);

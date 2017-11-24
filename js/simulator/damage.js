@@ -11,7 +11,7 @@ function attack_enemy(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, i
 	// ダメージ計算
 	var d_dat = calculate_damage(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num, false);
 	var d = d_dat.damage;
-	var bef_ond = d;
+	var bef_ond = d_dat.damage_withoutskill;
 	
 	// NowHPから削る
 	if(added_frame === undefined){
