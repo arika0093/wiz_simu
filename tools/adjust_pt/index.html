@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px) and (max-width: 1099px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default_bg.css" media="screen and (min-width: 1100px)" />
+    <link rel="stylesheet" type="text/css" href="/css/crystalpoint.css" />
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <!-- Search -->
+    <meta name="robots" content="all" />
+    <meta name="description" content="「魔法使いと黒猫のウィズ」ボードプレイヤー向けのポイント調整計算ツールです。" />
+    <!-- for Mobile Adsense -->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+		(adsbygoogle = window.adsbygoogle || []).push({
+			google_ad_client: "ca-pub-5156005489853976",
+			enable_page_level_ads: true
+		});
+    </script>
+    <!-- Top Page -->
+    <title>Pt調整計算ツール - WizTools</title>
+    <!-- CSS -->
+    <style>
+        .tbl_caption{
+            padding: .5ex 0 .5ex 1ex;
+            border-width: 1px 1px 1px 3px;
+            border-style: solid;
+            border-color: #06F;
+        }
+        .calc_base, .calc_cond ul {
+            padding-left: 2ex;
+        }
+        .calc_cond ul{
+            list-style: none;
+        }
+        input.valArea {
+            width: 300px;
+        }
+
+        table.hp_disp{
+            border-collapse: separate;
+            border-spacing: 1px;
+            text-align: left;
+            line-height: 1.5;
+            /*border-top: 1px solid #ccc;*/
+        }
+        table.hp_disp th {
+            padding: 3px;
+            font-weight: bold;
+            vertical-align: top;
+            border-bottom: 1px solid #ccc;
+        }
+        table.hp_disp td {
+            padding: 5px;
+            vertical-align: top;
+            border-bottom: 1px solid #ccc;
+        }
+        .tbl_title{
+            border-bottom: 3px double #02D;
+        }
+
+        table#rst_table {
+            text-align: center;
+        }
+        table#rst_table th {
+            border-bottom: 1px solid #444;
+        }
+        table#rst_table th, table#rst_table td {
+            padding: 0 1ex;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id='Top'></div>
+<div id="wrap">
+    <!-- Loader -->
+    <div id="loader"><img src="/image/loading.gif" alt="Loading..." /></div>
+    <noscript id="loadnoscr">このページはjavascriptを使用しています。有効にしたのち再度アクセスしてください。</noscript>
+    <div id="fade"></div>
+    <!-- Header -->
+    <div id="Header"></div>
+    <!-- Main Contents -->
+    <div class="Main">
+        <dl class="List">
+            <dt>このツールについて</dt>
+            <dd id="tool_info">
+                <div class="info">
+                    魔道杯でポイント調整をしたい変人向けのポイント計算ツールです。<br/>
+                    線型計画法(<a href="https://ja.wikipedia.org/wiki/%E7%B7%9A%E5%9E%8B%E8%A8%88%E7%94%BB%E6%B3%95">Wikipedia</a>)の手法を元に、最小クリア回数でポイント調整を行えるよう計算します。<br/>
+                    計算ライブラリとして<a href="https://github.com/hgourvest/glpk.js">glpk.js</a>を使用しています。
+                </div>
+                <!-- Adsense -->
+                <div class="Adsense">
+                    <!-- advertise -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-5156005489853976"
+                         data-ad-slot="6536828444"
+                         data-ad-format="auto"></ins>
+                    <script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </dd>
+            <dt>使い方</dt>
+            <dd id="howtouse">
+                <div class="info">
+                    まず、<u>覇級1位の入手ポイント</u>、<u>現在の総合ポイント</u>、<u>目標の総合ポイント</u>を入力します。<br/>
+                    現在のデイリーポイントも入力すると、どの段階で調整に入ればいいかが分かりやすくなります。<br/>
+                    標準では イベ中～絶、漆式～肆式の1位および9位以下データが入力されています。<br/>
+                    （参照元: <a href="https://twitter.com/arika_nekowiz/status/911856707210530817">https://twitter.com/arika_nekowiz/status/911856707210530817</a>）<br/>
+                    イベ絶1位が3900pt, イベ封魔1位が2200ptでない場合は使えないので気をつけてください。
+                </div>
+            </dd>
+            <dt>9位以下の取り方</dt>
+            <dd id="howtounder9">
+                <div class="info">
+                    中の人(@arika_nekowiz)が使っている方法です。もっといい方法がありましたら教えてください。<br/>
+                    1. 1T目は普通に抜けてリタイアゴースト(10T)の数を確認。6人以上いたら長押しリタ。<br>
+                    2. 問題が文字つなぎ/スライドでない場合 → 精霊強化ヒーラーを入れて適当に誤答してからクリア。<br>
+                    3. 問題が文字つなぎ/スライドの場合 → パネルシャッフルを入れて時間を稼ぐ。<br>
+                    4. 順位調整に失敗したら、<b>長押しリタ</b>で撤退すること。<br>
+                    見て分かる通り、なかなか時間がかかるので<u>時間に余裕をもってやる</u>ことをおすすめします。
+                </div>
+            </dd>
+            <dt id="check">データ入力</dt>
+            <dd>
+                <div id="input_form">
+                    <table class="calc_base">
+                        <tr><td>覇級1位の獲得Pt：</td><td><input id=evh_pt type=number class=valArea placeholder="[必須](覇級を周回しない場合は0)" /></td></tr>
+                        <tr><td>現在の総合Pt：</td><td><input id=now_sp type=number class=valArea placeholder="[必須]" /></td></tr>
+                        <tr><td>目標の総合Pt：</td><td><input id=last_sp type=number class=valArea placeholder="[必須]" /></td></tr>
+                        <tr><td>現在のデイリーPt：</td><td><input id=now_dp type=number class=valArea placeholder="総合Ptと同一タイミングでの値を入れること" /></td></tr>
+                        <!-- <tr><td colspan="2"><input type="checkbox" id="lst_17th" checked /><label for="lst_17th">降段を使用する場合、最後に漆式に戻す</label></td></tr>  -->
+                        <tr><td colspan="2"><input type="checkbox" id="not_dgrade" checked /><label for="not_dgrade">陸式への降段を回避する(肆式調整を使わない)</label></td></tr>
+                    </table>
+                    <button class="cp_calculate" id="Start" onclick="calc();">計算開始</button>
+                </div>
+            </dd>
+            <dt id="rst">結果表示</dt>
+            <dd id="result_dd" class='clearfix'>
+                (ここに計算結果が表示されます)
+            </dd>
+        </dl>
+    </div>
+    <!-- Footer -->
+    <div id="Footer"></div>
+    <!-- Dialog Contents -->
+    <div class="dialog_div" id="dialog_error" title="Error">
+        <p>入力内容に漏れがあります。</p>
+    </div>
+    <!-- Javascript -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/loader.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/general.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/tools/adjustpts.js"></script>
+</div>
+</body>
+</html>

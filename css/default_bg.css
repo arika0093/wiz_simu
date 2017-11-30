@@ -764,6 +764,10 @@ li.mn_db{
 	background-size: 30px !important;
 	background-position: 16px 5px !important;
 }
+li#mn_adjust{
+	background-image: url("/image/tlicon/adjust.png") !important;
+	background-position: 16px 3px !important;
+}
 
 li#mn_twitter{
 	background-image: url("/image/tlicon/twitter.png") !important;

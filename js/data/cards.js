@@ -74692,7 +74692,7 @@ Cards = [{
 	ss1: {
 		desc: "<特効大魔術>敵全体へ雷属性のダメージ(400%)、さらに水属性の敵には特効ダメージ(550%)、5チェインを消費してさらに特効ダメージ(300%)",
 		turn: 6,
-		proc: [ss_chain_cost_skill(5, ss_damage_all(special_attr([0,1,0,0,0], 9.5, 4.0), [2]), ss_damage_all(special_attr([0,1,0,0,0], 12.5, 4.0), [2]))],
+		proc: [ss_chain_cost_skill(5, ss_damage_all(special_attr([0,1,0,0,0], 12.5, 4.0), [2]), ss_damage_all(special_attr([0,1,0,0,0], 9.5, 4.0), [2]))],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],4),
@@ -74713,7 +74713,7 @@ Cards = [{
 	ss2: {
 		desc: "<特効大魔術>敵全体へ雷属性のダメージ(400%)、さらに水属性の敵には特効ダメージ(1050%)、5チェインを消費してさらに特効ダメージ(300%)",
 		turn: 9,
-		proc: [ss_chain_cost_skill(5, ss_damage_all(special_attr([0,1,0,0,0], 14.5, 4.0), [2]), ss_damage_all(special_attr([0,1,0,0,0], 17.5, 4.0), [2]))],
+		proc: [ss_chain_cost_skill(5, ss_damage_all(special_attr([0,1,0,0,0], 17.5, 4.0), [2]), ss_damage_all(special_attr([0,1,0,0,0], 14.5, 4.0), [2]))],
 	},
 	Lawake: [
 		Statusup(500,0),
