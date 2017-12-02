@@ -48,6 +48,12 @@ category_jp = {
     "": {
 		jp: "未設定",
 	},
+    "wiz_museum": {
+		is_dispsim: true,
+		sim_index: 11,
+		jp: "黒ウィズミュージアム",
+		disable_date:"2018/1/31 16:00",
+	},
     "wbtcolabo": {
 		is_dispsim: true,
 		sim_index: 11,

@@ -42,7 +42,7 @@ function get_attr_string(attr, spl_char) {
 	}else{
 		isBIN = true;
 		// 1,0表示の配列による属性を文字列にする
-		attrstr = "";
+		var attrstr = "";
 		if(attr.length >= 5){
 			for(var i = 0; i < 5; i++){
 				if(attr[i] == 1){

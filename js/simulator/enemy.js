@@ -198,8 +198,6 @@ function enemy_move(fld) {
 		}
 		var move = e_moves[i].move;
 		var index = e_moves[i].index;
-		// 力溜め状態解除
-		turneff_break(fld, GetNowBattleEnemys(fld, index).turn_effect, index, "force_reservoir");
 		// e_moves[i]が関数でない(=配列である)場合
 		if (move.caller === undefined) {
 			for (var mi = 0; mi < move.length; mi++) {
@@ -208,6 +206,8 @@ function enemy_move(fld) {
 		} else {
 			move(fld, index, nows_smove);
 		}
+		// 力溜め状態解除
+		turneff_break(fld, GetNowBattleEnemys(fld, index).turn_effect, index, "force_reservoir");
 	}
 	// スキカン確認
 	turneff_check_skillcounter(fld);

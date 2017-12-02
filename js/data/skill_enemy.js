@@ -192,6 +192,15 @@ function s_enemy_attack(dmg, tnum, atkn, tgtype) {
 		fld.log_push("Enemy[" + (n + 1) + "]: " +
 			(tnum < fld.Allys.Deck.length ? tnum : "全") + "体" +
 			(atkn > 1 ? atkn + "連撃(" : "攻撃(") + dmg + ")");
+		// 力溜め倍率取得
+		var enemy = GetNowBattleEnemys(fld, n);
+		var f_rate = ArrayMath.sum($.map(enemy, (e) => {
+			return e.force;
+		}));
+		if(f_rate > 0){
+			dmg *= (f_rate + 1);
+		}
+		
 		// 攻撃対象取得
 		var tg = gen_enemytarget_array(fld, tnum, atkn, tgtype, nows);
 		// 攻撃
@@ -1413,7 +1422,25 @@ function s_enemy_resurrection(rate) {
 	}, makeDesc("蘇生"));
 }
 
-// 力溜め
+// 力溜め(新関数、こちらを使うこと)
+function s_enemy_force_reservoir_ex(force) {
+	return m_create_enemy_move(function (fld, n) {
+		var enemy = GetNowBattleEnemys(fld, n);
+		fld.log_push("Enemy[" + (n + 1) + "]: 力溜め");
+		enemy.turn_effect.push({
+			desc: "力溜め",
+			type: "force_reservoir",
+			icon: "force_reservior",	// typo
+			isdual: false,
+			turn: -1,
+			lim_turn: -1,
+			force: force,
+			effect: function () { },
+		});
+	}, makeDesc("力溜め"));
+}
+
+// 力溜め(旧関数)
 function s_enemy_force_reservoir() {
 	return m_create_enemy_move(function (fld, n) {
 		var enemy = GetNowBattleEnemys(fld, n);
@@ -1749,6 +1776,7 @@ function makeDesc(mystr, order){
 			toStr = ["d","dmg","damage","bl"].indexOf(prop)==-1 ? toStr : Math.floor(toStr) + "ダメージ"
 			toStr = prop != "dmg_s" ? toStr : "@BS@特攻/" + toStr + ""
 			toStr = prop != "dmg_n" ? toStr : "通常/" + toStr + ""
+			toStr = prop != "force" ? toStr : "+" + (toStr * 100) + "％"
 			toStr = prop != "initialdamage" ? toStr : "初回" + toStr + ""
 			toStr = prop != "continuedamage" ? toStr : "継続" + toStr + ""
 			toStr = prop != "r1" ? toStr : "0体/" + toStr
@@ -1762,6 +1790,7 @@ function makeDesc(mystr, order){
 			toStr = prop != "up_max" ? toStr : "最大値:" + toStr
 			toStr = prop != "up_hp" ? toStr : "上昇HP:" + toStr
 			toStr = prop != "desc" ? toStr : toStr+" "
+			toStr = prop != "breaks" ? toStr : toStr + "個"
 			toStr = prop != "healvalue" ? toStr : toStr+"回復"
 			toStr = prop != "ratiorate" ? toStr : toStr * 100 + "％削り"
 			toStr = prop != "ch" ? toStr : toStr + "chain"
