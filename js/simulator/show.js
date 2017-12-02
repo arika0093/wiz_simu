@@ -240,7 +240,7 @@ function sim_show(fld) {
 	// 発動中の効果を点滅表示
 	if (!fld.Status.finish) {
 		var blink_onetime = 2500;
-		var b_vis = [-1, -1, -1, -1, -1, -1, -1, -1];
+		var b_vis = Array.apply(null, Array(5+5)).map(() => -1); //[-1, -1, -1, -1, -1, -1, -1, -1];
 		var blink = function () {
 			// 味方
 			for (var i = 0; i < fld.Allys.Deck.length; i++) {

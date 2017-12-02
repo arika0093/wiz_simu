@@ -4,6 +4,11 @@
    desc: "",
    overlap: false,
    aprnum: 7,
+   battle_before: [{
+      desc: "SP+3",
+	  proc: panel_skillboost(3),
+	  isev: true
+   }],
    data: [
       {
          appearance: [

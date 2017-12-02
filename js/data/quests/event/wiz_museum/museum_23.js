@@ -4,6 +4,11 @@
    desc: "",
    overlap: false,
    aprnum: 3,
+   battle_before: [{
+      desc: "回復+50%",
+	  proc: panel_healally(0.5),
+	  isev: true,
+   }],
    data: [
       {
          appearance: [

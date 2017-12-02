@@ -4,6 +4,11 @@
    desc: "",
    overlap: false,
    aprnum: 4,
+   battle_before: [{
+      desc: "ch+4",
+	  proc: panel_chainplus(4),
+	  isev: true,
+   }],
    data: [
       {
          appearance: [
