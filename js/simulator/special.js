@@ -117,6 +117,7 @@ function sscheck_before(fld, ss, n) {
 // SSを順番に発動していく関数
 function ss_procdo(fld, ss, now, index) {
 	var ss_rst = true;
+	var ss_tmpl_rst = false;
 	if (ss.proc != null) {
 		// SS発動前の敵の数を取得
 		var en_lived = $.grep(GetNowBattleEnemys(fld), function(e){
@@ -189,7 +190,7 @@ function ss_procdo(fld, ss, now, index) {
 				var skl = now.flags.ss_chargeskl;
 				for (var i = 0; i < skl.length; i++) {
 					if (skl[i]) {
-						ss_rst = ss_object_done(fld, index, skl[i], true);
+						ss_tmpl_rst = ss_object_done(fld, index, skl[i], true);
 					}
 				}
 				now.flags.ss_chargeskl = null;
@@ -202,7 +203,7 @@ function ss_procdo(fld, ss, now, index) {
 			// チャージでないなら普通に実行
 			for (var i = 0; i < ss.proc.length; i++) {
 				if (ss.proc[i]) {
-					ss_rst = ss_object_done(fld, index, ss.proc[i], true);
+					ss_tmpl_rst = ss_object_done(fld, index, ss.proc[i], true);
 				}
 			}
 		}
@@ -221,7 +222,7 @@ function ss_procdo(fld, ss, now, index) {
 				//}
 			}
 		}
-		
+		ss_rst = ss_rst || ss_tmpl_rst;
 	}
 	return ss_rst !== false;
 }
@@ -282,7 +283,7 @@ function is_legendmode(fld, card, now) {
 	return now.islegend;
 }
 
-// Lモードに入っているかどうかを判定する(軽減/ゾラス潜在用)
+// Lモードに入っているかどうかを判定する(ゾラス被ダメUP潜在以外用)
 // [解答時にL判定が既に入っているタイプ用]
 function is_legendmode_onAnswer(fld, card, now) {
 	return get_ssturn(fld, card, now)[1] == 0;

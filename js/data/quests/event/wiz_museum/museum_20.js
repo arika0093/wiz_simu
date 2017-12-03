@@ -240,7 +240,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_attrIncreaseGuard_own, "-", 100, false, [0,0,1,0,0], 25, 75, 100))
+                     m_enemy_once(skill_counter_func(s_enemy_attrIncreaseGuard_all, "-", 100, false, [0,0,1,0,0], 25, 75, 100))
                   ],
                   on_move: [
                      s_enemy_heal_all(0.05),

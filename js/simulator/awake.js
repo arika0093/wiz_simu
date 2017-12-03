@@ -354,7 +354,7 @@ function Awake_get_damaged_multiple(fld, card, now) {
 	var rate = 1;
 	var type = "awake_damaged_multiple";
 	var dm_awakes = pickup_awakes(fld, card, type, false);
-	if (is_legendmode_onAnswer(fld, card, now)) {
+	if (is_legendmode(fld, card, now)) {
 		dm_awakes = dm_awakes.concat(pickup_awakes(fld, card, type, true));
 	}
 	for (var i = 0; i < dm_awakes.length; i++) {

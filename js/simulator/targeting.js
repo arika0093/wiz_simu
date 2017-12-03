@@ -15,9 +15,9 @@ function auto_attack_order(fld, enemys, attr, own_index, obj_tg) {
 		return pt_rst;
 	}
 	// 凶暴化時のランダムターゲット
-	var bt_rst = getRandomTargetingWithBersek(fld, enemys, own_index);
+	var bt_rst = getRandomTargetingWithBersek(fld, enemys, own_index, obj_tg);
 	if(bt_rst != -1){
-		return bt_rst;
+		return bt_rst != NaN ? bt_rst : -1;
 	}
 	// 手動ターゲッティングを取得
 	var mt_rst = getManualTargeting(fld, enemys, attr, own_index);
@@ -42,13 +42,45 @@ function getTauntingEnemy(fld, enemys){
 }
 
 // 凶暴化時のランダムターゲット
-function getRandomTargetingWithBersek(fld, enemys, own_index){
+// NaN: Miss, -1: 処理回避, 0～: Hit
+function getRandomTargetingWithBersek(fld, enemys, own_index, obj_tg){
+	var hit_rates = [-1, 0.33, 0.8, 1, 1, 1];
 	var now = fld.Allys.Now[own_index];
+	var is_ans = obj_tg && obj_tg.is_answer;
 	var is_rndberserk = $.grep(now.turn_effect, function (e) {
 		return e.panic_target && e.isberserk;
 	}).length > 0;
-	if(is_rndberserk){
-		return Math.floor(dmg_generate_rand(fld, 0, 3)) % 3;
+	if(is_ans && is_rndberserk){
+		var es = GetNowBattleEnemys(fld);
+		var alive_en = $.grep(es, (e) => {
+			return e.nowhp > sumContractDamages(fld, e);
+		});
+		var alive_num = alive_en.length;
+		
+		// まずは攻撃ヒット確認
+		var hits = hit_rates[alive_num];
+		if(hits >= Math.random()){
+			// Hit
+			var hit_index = Math.floor(Math.random() * alive_num);
+			var hited_en = alive_en[hit_index];
+			for(var i=0; i < alive_num; i++){
+				var nowhp = hited_en.nowhp - sumContractDamages(fld, hited_en);
+				if(nowhp != hited_en.hp){
+					// 被弾してたら隣にずらす
+					hit_index = (hit_index + 1) % alive_num;
+					hited_en = alive_en[hit_index];
+				} else {
+					// 未被弾精霊ならそれに決定
+					break;
+				}
+			}
+			return es.indexOf(hited_en);
+		} else {
+			// Miss
+			return NaN;
+		}
+		// old:
+		// return Math.floor(dmg_generate_rand(fld, 0, 3)) % 3;
 	} else {
 		return -1;
 	}
@@ -58,10 +90,10 @@ function getRandomTargetingWithBersek(fld, enemys, own_index){
 function getRandomTargetingWithPanicshout(fld, enemys, own_index){
 	var alives = [];
 	var now = fld.Allys.Now[own_index];
-	var is_rndtarget = $.grep(now.turn_effect, function (e) {
-		return e.panic_target;
+	var is_panic_target = $.grep(now.turn_effect, function (e) {
+		return e.panic_target && !e.isberserk;
 	}).length > 0;
-	if(is_rndtarget){
+	if(is_panic_target){
 		$.each(enemys, function(i, e){
 			if(e.flags.isAliveWhenAnswer > 0){
 				alives.push(e.flags.isAliveWhenAnswer - 1);

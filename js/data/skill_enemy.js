@@ -648,8 +648,10 @@ function s_enemy_cursed_break(tnum, breaks) {
 			if(!is_abs_guard_aw){
 				// 一番最後の効果を解除
 				turneff_break_last(fld, now.turn_effect, tg[i], function(teff){
+					// 呪い解除可能な効果のみ
+					return teff && teff.iscursebreak;
 					// 問答無用で解除する
-					return true;
+					// return true;
 				}, "break");
 			}
 			// スキルカウンターを有効に
@@ -973,6 +975,9 @@ function s_enemy_attrguard_all(attr, rate, turn) {
 
 // 属性免疫(単体)
 function s_enemy_attrIncreaseGuard_own(attr, up_rate, up_max, turn){
+	// 定義ミス用
+	up_rate = up_rate > 1 ? up_rate/100 : up_rate;
+	up_max = up_max > 1 ? up_max/100 : up_max;
 	return m_create_enemy_move(function (fld, n) {
 		var enemy = GetNowBattleEnemys(fld, n);
 		// 属性表記
@@ -1017,52 +1022,16 @@ function s_enemy_attrIncreaseGuard_own(attr, up_rate, up_max, turn){
 
 // 属性免疫(全体)
 function s_enemy_attrIncreaseGuard_all(attr, up_rate, up_max, turn){
+	// 定義ミス用
+	up_rate = up_rate > 1 ? up_rate/100 : up_rate;
+	up_max = up_max > 1 ? up_max/100 : up_max;
 	return m_create_enemy_move(function (fld, n) {
-		grd_v = 0;
-		var inc_guard = {
-			desc: attr_text + "免疫(0%)",
-			type: "attr_inc_guard",
-			icon: "attr_guard",
-			isdual: false,
-			turn: turn,
-			lim_turn: turn,
-			priority: 3,
-			effect: function (f, oi, teff, state, is_t, is_b) {
-				if(state == "dead" || state == "break"){
-					grd_v = 0;
-					return;
-				}
-			},
-			on_damage: function (fl, dmg, atr_i, is_berserk, is_sim){
-				var nowr = grd_v;
-				if (attr[atr_i] > 0) {
-					// ダメージに現在の軽減率をかけて返す
-					var dmg_rst = dmg * (1 - nowr);
-					// 仮想ダメ計算時に軽減率を増加させる
-					if (!is_sim) {
-						grd_v = Math.min(nowr + up_rate, up_max);
-						this.desc = attr_text + "免疫(" + (grd_v * 100) + "%)";
-						fl.log_push("Enemy[" + (n + 1) + "]: 属性免疫(" + (nowr * 100) + "% → " + (this.n_rate * 100) + "%)");
-					}
-					return dmg_rst;
-				} else {
-					// 不一致だった場合はカウントリセット
-					if (!is_sim) {
-						grd_v = 0;
-						this.desc = attr_text + "免疫(0%)";
-						fl.log_push("Enemy[" + (n + 1) + "]: 属性免疫(" + (nowr * 100) + "% → 0%)");
-					}
-					return dmg;
-				}
-			}
-		};
-		
+		var inc_guard = s_enemy_attrIncreaseGuard_own(attr, up_rate, up_max, turn);
 		var enemys = GetNowBattleEnemys(fld);
 		// 追加
 		for (var i = 0; i < enemys.length; i++) {
-			enemys[i].turn_effect.push(inc_guard);
+			inc_guard.move(fld, i);
 		}
-		fld.log_push("Enemy[" + (n + 1) + "]: [" + attr_text + "]属性免疫発動(max: " + (up_max * 100) + "%/" + turn + "t)");
 	}, makeDesc("属性免疫[全体]"));
 }
 

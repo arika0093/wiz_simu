@@ -265,11 +265,17 @@ function turneff_break_cond(fld, teffs, index, func, call_type) {
 // 一番最後にかけられたターン継続効果の解除(条件)
 function turneff_break_last(fld, teffs, index, func, call_type) {
 	call_type = call_type || "overlay";
+	if(!teffs || teffs.length <= 0){
+		return;
+	}
 	var cond_tfs = $.grep(teffs, function(e){
 		return func(e);
 	});
 	var teff = cond_tfs[cond_tfs.length - 1];
 	var i = teffs.indexOf(teff);
+	if(!teff){
+		return;
+	}
 	teff.effect(fld, index, teff, call_type, false, false);
 	turneff_remove_pos(fld, teffs, i);
 }

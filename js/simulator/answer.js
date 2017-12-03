@@ -527,6 +527,7 @@ function answer_attack(fld, card, now, enemys, as, attr, panel, index, atk_rem, 
 		as_pos: as_pos,
 		panel: panel,
 		chain: fld.Status.chain,
+		is_answer: true,
 	};
 	var targ = auto_attack_order(fld, enemys, attr, index, obj_tg);
 	// 各種情報
@@ -540,7 +541,8 @@ function answer_attack(fld, card, now, enemys, as, attr, panel, index, atk_rem, 
 	}).length > 0;
 	// 敵データを取得できなかったら(=外れた場合)MISSを出して終了
 	if(is_berserk && (en === undefined || en.nowhp <= 0 || atk_as === undefined)){
-		fld.log_push("Unit[" + (index + 1) + "]: MISS(target: 敵[" + (targ + 1) + "])");
+		var tg_str = (targ >= 0) ? targ + 1 : "---";
+		fld.log_push("Unit[" + (index + 1) + "]: MISS(target: 敵[" + tg_str + "])");
 		atk_as = as[as_pos[0]];
 	}
 	// 全体攻撃なら敵全体にダメージ計算
