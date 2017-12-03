@@ -89753,45 +89753,5 @@ Cards = [{
 		Statusup(500,0),
 		Attr_statusup(0,300, [0,0,1,0,0,]),
 	],
-},{
-	name: "異界の保護者目線 ストリー",
-	cardno: 99999,
-	imageno: -1,
-	hp: 4015,
-	atk: 2005,
-	cost: 44,
-	attr: [2,3],
-	species: [9],
-	islegend: true,
-	is_dist: true,
-	as1: {
-		desc: "<回復・複属性攻撃強化>雷属性の味方を回復(効果値:10)し、攻撃力もアップ(効果値:10)。複属性が光属性だとさらに攻撃力アップ(効果値:50)",
-		proc: [Heal(0.10, [0,0,1,0,0], 0), ChainEnhance_SubAttr(0.1, 0.5, [0,0,1,0,0], [0,0,0,1,0], 0)],
-	},
-	ss1: {
-		desc: "<スキルチャージ>味方一体のスペシャルスキルの発動ターンを3早める",
-		turn: 8,
-		proc: [ss_toselect_one(ss_skillboost(3))],
-	},
-	awakes: [
-		Attr_statusup(0,200, [0,0,1,0,0,]),
-		Attr_statusup(200,0, [0,0,1,0,0,]),
-		Heal_afterbattle(10),
-		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,0,0,1,0,]),
-		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,0,0,1,0,]),
-		Fastskill(5),
-	],
-	as2: {
-		desc: "<回復・複属性攻撃強化>雷属性の味方を回復(効果値:13)し、攻撃力もアップ(効果値:10)。複属性が光属性だとさらに攻撃力アップ(効果値:50)",
-		proc: [Heal(0.13, [0,0,1,0,0], 0), ChainEnhance_SubAttr(0.1, 0.5, [0,0,1,0,0], [0,0,0,1,0], 0)],
-	},
-	ss2: {
-		desc: "<スキルチャージ>味方一体のスペシャルスキルの発動ターンを3早める",
-		turn: 8,
-		proc: [ss_toselect_one(ss_skillboost(3))],
-	},
-	Lawake: [
-		Attr_statusup(0,200, [0,0,1,0,0,]),
-	],
 },
 ];
