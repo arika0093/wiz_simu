@@ -1,12 +1,22 @@
 // error show
 // requred: https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.4/platform.min.js
 isErrShowReport = true;
+
 window.onerror = function (errorMsg, fileName, lineNumber) {
 	// 二件目以降はスルー
 	if(!isErrShowReport){
 		return;
 	}
-	// 整形
+	if(deckdata_SaveUrl && Field){
+		deckdata_SaveUrl(Field, (dat) => {
+			var js = JSON.parse(dat);
+			onErrDialogShow(fileName, errorMsg, lineNumber, js.short);
+		});
+	}
+};
+
+function onErrDialogShow(fileName, errorMsg, lineNumber, short_path){
+// 整形
 	var plt = platform || null;
 	var dat = getDateString(new Date());
 	fileName = fileName.replace(/\?.*/g, '');
@@ -19,25 +29,26 @@ window.onerror = function (errorMsg, fileName, lineNumber) {
 		`--------------------------\n` +
 		`URL: ${location.href} \n` +
 		`Message: ${errorMsg} \n` +
+		(short_path ? `Variable: /labs/s2l?${short_path} \n` : "") +
 		`File: ${fileName}:${lineNumber} \n` +
 		`Date: ${dat} \n` +
 		`Browser: ${plt ? plt.description : navigator.userAgent} \n` +
 		`--------------------------` +
 		``;
-    // エラー表示用dialogがあるか確認
+	// エラー表示用dialogがあるか確認
 	var err_dialog = $("#err_dlg");
-	if(err_dialog){
+	if (err_dialog) {
 		// dialog作成
 		err_dialog.dialog({
 			autoOpen: false,
 			modal: true,
 			width: 600,
 			buttons: {
-				"Copy": function () {
+				"Copy": function(){
 					var rst = execCopy(err_detail);
 					alert(rst ? "コピーに成功しました" : "コピーに失敗しました。未対応のブラウザです。");
 				},
-				"Close": function () {
+				"Close": function(){
 					$(this).dialog("close");
 				},
 			},
@@ -52,4 +63,5 @@ window.onerror = function (errorMsg, fileName, lineNumber) {
 		alert(err_text + "\n" + err_detail);
 	}
 	isErrShowReport = false;
-};
+}
+

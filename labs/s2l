@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Short to Long</title>
+    <!--@Detail@短縮パスの中身を見る@-->
+</head>
+<body>
+    <div id="rst"></div>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/deck/deckdata.js"></script>
+    <script type="text/javascript" >
+        $(() => {
+	        var query = window.location.search;
+	        if(!query || query.length <= 0){
+		        output("no item");
+		        return;
+            }
+	        if (query.indexOf("?") == 0) {
+		        query = query.substring(1);
+	        }
+	        deckdata_LoadUrl(query, (rst) => {
+	        	var js = JSON.parse(rst);
+	        	var json = JSON.stringify(JSON.parse(js.long), null, "    ");
+		        output(json);
+            });
+        });
+
+        function output(str){
+	        $("#rst").html(`<pre>${str}</pre>`);
+        }
+    </script>
+
+</body>
+</html>

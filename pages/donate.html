@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="/css/default_sp.css" media="screen and (max-width: 599px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px) and (max-width: 1099px)" />
+    <link rel="stylesheet" type="text/css" href="/css/default_bg.css" media="screen and (min-width: 1100px)" />
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Search -->
+    <meta name="robots" content="all" />
+    <meta name="description" content="このサイトでは「魔法使いと黒猫のウィズ」の攻略に役立つ各種ツールを公開しています。" />
+    <!-- About Page -->
+    <title>カンパのお願い - Wiztools</title>
+    <style>
+        ul#checks {
+            border: solid 1px #3fb0ff;
+            padding: 0.5em 1em 0.5em 2.3em;
+            position: relative;
+        }
+
+        ul#checks li {
+            line-height: 1.5;
+            padding: 0.5em 0;
+            list-style-type: none!important;
+            border-bottom: dashed 1px #3fb0ff;
+        }
+
+        ul#checks li:last-of-type{
+            border-bottom:none;
+        }
+
+        ul#checks li:before {
+            font-family: FontAwesome;
+            content: "\f00c";
+            position: absolute;
+            left : 1em;
+            color: #3fb0ff;
+        }
+    </style>
+</head>
+<body>
+<div id='Top'></div>
+<div id="wrap">
+    <!-- Header -->
+    <div id="Header"></div>
+
+    <!-- Main Contents -->
+    <div class="Main">
+        <dl class="List">
+            <dt id="kampa">カンパのお願い</dt>
+            <dd>
+                このサイトのツール、あるいは情報が <b>役立った！</b> そう思って下さった方へお願いです。<br/>
+                もしよろしければカンパ(寄付)をしていただけると、とても嬉しいです！<br/>
+                開発、改修のモチベーション維持のため、ご協力いただけると幸いです。<br/>
+            </dd>
+            <dt id="whats_merit">こんな効能が得られます</dt>
+            <dd>
+                <ul id="checks">
+                    <li>シミュレーターの機能向上に貢献できます</li>
+                    <li>中の人のプログラムを書くやる気があがります</li>
+                    <li>より良いサーバーが借りられる可能性があがります</li>
+                    <li>🍛や🍜を食べる資金が手に入り、中の人の死亡確率が下がります</li>
+                </ul>
+            </dd>
+            <dt id="whats_kampa">Kampa! とは</dt>
+            <dd>
+                当サイトでは、カンパの受け取りに <a href="http://kampa.me/">Kampa!</a> というサイトを使用しています。<br/>
+                <b>最低15円から振込可能、手数料なし、氏名や口座番号などの個人情報不要</b><br/>
+                と、手軽にカンパができるようになっています。<br/>
+                カンパの方法につきましては、<a href="http://kampa.me/tutorial#Do_kampa" target="_blank">こちら</a>をお読みください。<br/>
+                <br/>
+                <script src="http://kampa.me/t/mhs.js"></script>
+            </dd>
+        </dl>
+    </div>
+
+    <!-- Footer -->
+    <div id="Footer"></div>
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js"></script>
+</div>
+</body>
+</html>

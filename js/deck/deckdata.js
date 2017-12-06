@@ -101,9 +101,6 @@ function deckdata_SaveUrl(data, after) {
 		url: "http://api.wiztools.net/shorten.php",
 		data: "t=set&d=" + JSON.stringify(data),
 		success: after,
-		error: (xhr, status, err) => {
-			throw err;
-		}
 	});
 }
 

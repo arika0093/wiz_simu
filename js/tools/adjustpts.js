@@ -90,6 +90,7 @@ var PtDatas = [{
 function calc(){
 	// 値を入手
 	var evh_pt = Number( $("#evh_pt").val() );
+	var evh_9t = Number( $("#evh_9th").val() );
 	var now_sp = Number( $("#now_sp").val() );
 	var lst_sp = Number( $("#last_sp").val() );
 	var is_noused_dgrade = $("#not_dgrade").prop("checked");
@@ -97,16 +98,28 @@ function calc(){
 	
 	var get_pt = lst_sp - now_sp;
 	
+	// 初期化
+	PtDatas = $.grep(PtDatas, (e) => {
+		return e && !e.is_added;
+	});
 	// イベ覇追加
 	if(evh_pt > 0){
-		PtDatas = $.grep(PtDatas, (e) => {
-			return e && !e.is_added;
-		});
 		PtDatas.push({
 			name: "覇級",
 			rank: "1位",
 			pt: evh_pt,
 			is_ev: true,
+			is_added: true,
+		});
+	}
+	// イベ覇9位以下を追加できるなら追加
+	if(evh_9t > 0){
+		PtDatas.push({
+			name: "覇級",
+			rank: "9位以下",
+			pt: evh_9t,
+			is_ev: true,
+			is_lo: true,
 			is_added: true,
 		});
 	}

@@ -1,12 +1,12 @@
-{
+﻿{
    id: "museum_24",
    name: "24: 黒猫チャレンジ6",
    desc: "",
    overlap: false,
    aprnum: 4,
    battle_before: [{
-      desc: "ch+4",
-	  proc: panel_chainplus(4),
+      desc: "ch+3",
+	  proc: panel_chainplus(3),
 	  isev: true,
    }],
    data: [

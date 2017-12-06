@@ -202,7 +202,6 @@ GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
 /task
-/download/html5jp
 
 # imgReader temporary file
 /tools/imgReader/dic
@@ -210,3 +209,4 @@ ModelManifest.xml
 /tools/imgReader/imgReader.out
 /tools/imgReader/resget.cgi
 /download
+/download/html5jp
