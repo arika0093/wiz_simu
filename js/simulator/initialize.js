@@ -361,17 +361,25 @@ function nextturn(fld, is_ssfin) {
 	ss_continue_effect_check(fld, is_ssfin);
 	turn_effect_check(fld, false, is_ssfin);
 	enemy_turn_effect_check(fld, false);
-	// 怒り確認
+	// 怒り & スキルカウンターを再度確認（残滅などのスキル確認で状況が変化した可能性があるため）
 	enemy_damage_switch_check(fld, "damage_switch", false, false, false);
 	// 全滅していなかったら効果ターンを減少
 	reduce_turneffect(fld, is_ssfin);
-	turn_effect_check(fld, true, is_ssfin);	// 再度チェックをいれる(バグるかも)
+	turn_effect_check(fld, true, is_ssfin);
 	enemy_turn_effect_check(fld, true);
+	// 各精霊のL処理をここで行う
+	for (var i = 0; i < fld.Allys.Deck.length; i++) {
+		var now = fld.Allys.Now[i];
+		if (now.nowhp > 0) {
+			// L処理
+			legend_timing_check(fld, fld.Allys.Deck, fld.Allys.Now, i);
+		}
+	}
 	// 総ダメージ出力
 	fld.log_push("TURN TOTAL DAMAGE: " + fld.Status.turn_dmg, "blue");
 	fld.Status.turn_dmg = 0;
 
-	// 全滅確認
+	// 全滅確認 & ターン進行
 	var killed = allkill_check(fld, is_ssfin);
 	if (killed && !f_st.finish) {
 		// 戦後回復処理

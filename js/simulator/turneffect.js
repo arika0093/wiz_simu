@@ -178,20 +178,6 @@ function turneff_chargeskill_check(fld) {
 				// 残りカウントが0なら関数実行
 				tf.charged_fin(fld, i);
 				tf.charged_fin = null;
-				/*
-				// 削除
-				turneff_break_cond(e.turn_effect, -1, function (tf) {
-					return !tf.charged_fin && tf.charge_turn <= 0;
-				}, "end");
-				// 発動後処理
-				ss_afterproc(i);
-				// 全滅していたら次のターンへ進む
-				if (is_allkill()) {
-					var t = fld.Status.totalturn;
-					nextturn(true);
-					return;
-				}
-				*/
 			}
 		}
 	});
@@ -199,6 +185,7 @@ function turneff_chargeskill_check(fld) {
 
 // スキル反射のみ確認を行う(先制行動時などの確認に使用)
 function turneff_check_skillcounter(fld) {
+	var is_counted = false;
 	var nows = fld.Allys.Now;
 	$.each(nows, function (i, e) {
 		var tf_scs = $.grep(e.turn_effect, function (g) {
@@ -206,8 +193,10 @@ function turneff_check_skillcounter(fld) {
 		});
 		for (var c = 0; c < tf_scs.length; c++) {
 			tf_scs[c].counter(fld, i, tf_scs[c], "", true, is_allkill(fld));
+			is_counted = true;
 		}
 	});
+	return is_counted;
 }
 
 // ターン継続効果の全解除(味方)
@@ -331,20 +320,3 @@ function retsugan_check(fld, is_ssfin){
 	}
 }
 
-/*
-// ターン終了時効果のチェック(敵味方両方確認)
-function after_turneffect_check() {
-	// 味方チェック(今のところやらない)
-
-	// 敵チェック
-	var es = GetNowBattleEnemys();
-	$.each(es, function (i, e) {
-		// 実行
-		$.each(e.after_turn, function (j, et) {
-			et();
-		});
-		// clear
-		e.after_turn = [];
-	});
-}
-*/

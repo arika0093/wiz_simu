@@ -332,6 +332,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5sortable/0.4.2/html.sortable.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.4/platform.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <script type="text/javascript" src="/download/romaji.js"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/loader.js?                  <!--#flastmod virtual='/js/loader.js'-->"></script>
     <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js?                <!--#flastmod virtual='/js/pagetemp.js'-->"></script>

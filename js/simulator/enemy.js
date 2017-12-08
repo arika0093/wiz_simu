@@ -211,6 +211,8 @@ function enemy_move(fld) {
 	}
 	// スキカン確認
 	turneff_check_skillcounter(fld);
+	// 怒り確認
+	enemy_damage_switch_check(fld, "damage_switch", false, false, false);
 }
 
 // 条件に適した敵スキルを取得する
@@ -295,7 +297,11 @@ function enemy_damage_switch_check(fld, type, is_ss, is_preem, is_reset) {
 		}
 	});
 	if (rst) {
-		turneff_check_skillcounter(fld);
+		var is_counted = turneff_check_skillcounter(fld);
+		if(is_counted){
+			// カウンター成功なら再度怒りチェック
+			rst = enemy_damage_switch_check(fld, type, is_ss, is_preem, is_reset);
+		}
 	}
 	return rst;
 }

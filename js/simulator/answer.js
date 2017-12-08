@@ -159,14 +159,6 @@ function panelAnswerWithParam(fld, attr) {
 	}
 	// 敵の処理
 	enemy_move(fld);
-	// 各精霊のL処理をここで行う
-	for (var i = 0; i < fld.Allys.Deck.length; i++) {
-		var now = fld.Allys.Now[i];
-		if (now.nowhp > 0) {
-			// L処理
-			legend_timing_check(fld, fld.Allys.Deck, fld.Allys.Now, i);
-		}
-	}
 	// この時点で保持しているturn_effectにフラグを立てる
 	// （精霊強化やフィールド付与強化について、ターン減少処理を介さないようにするため）
 	for (var i = 0; i < fld.Allys.Deck.length; i++) {

@@ -240,7 +240,7 @@ function sim_show(fld) {
 	// 発動中の効果を点滅表示
 	if (!fld.Status.finish) {
 		var blink_onetime = 2500;
-		var b_vis = Array.apply(null, Array(5+5)).map(() => -1); //[-1, -1, -1, -1, -1, -1, -1, -1];
+		var b_vis = Array.apply(null, Array(5+5)).map(() => -1); // 味方5体+敵5体のblink-icon数
 		var blink = function () {
 			// 味方
 			for (var i = 0; i < fld.Allys.Deck.length; i++) {
@@ -454,7 +454,8 @@ function sim_show(fld) {
 			$("#allystat_name").html((n + 1) + ": " +
 				"<a target='_blank' href='/search/detail/?id=" + card.cardno + "'>" + card.name + "</a>" +
 				"<a href='javascript:;' style='float:right; display:block' id='opendmgcalc'>ダメージ計算を開く</a>" +
-				"<br/><div style='text-align: right;'>HP: " + now.nowhp + "/" + now.maxhp + ", ATK: " + now.atk + "</div>");
+				"<br/><div style='text-align: right;'>HP: " + now.nowhp + "/" + now.maxhp +
+				"(" + (100*now.nowhp/now.maxhp).toFixed(2) + "%), ATK: " + now.atk + "</div>");
 			$("#ally_tefflist").html(li_t);
 			$("#opendmgcalc").off("click");
 			$("#opendmgcalc").on("click", function(){
