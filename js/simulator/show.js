@@ -451,11 +451,13 @@ function sim_show(fld) {
 			if (teff.length <= 0) {
 				li_t = "<li class='no_icon'>(現在継続中の効果はありません)</li>";
 			}
+			var hp_perc = Math.floor(100*100*now.nowhp/now.maxhp)/100;
+			
 			$("#allystat_name").html((n + 1) + ": " +
 				"<a target='_blank' href='/search/detail/?id=" + card.cardno + "'>" + card.name + "</a>" +
 				"<a href='javascript:;' style='float:right; display:block' id='opendmgcalc'>ダメージ計算を開く</a>" +
 				"<br/><div style='text-align: right;'>HP: " + now.nowhp + "/" + now.maxhp +
-				"(" + (100*now.nowhp/now.maxhp).toFixed(2) + "%), ATK: " + now.atk + "</div>");
+				"(" + hp_perc.toFixed(2) + "%), ATK: " + now.atk + "</div>");
 			$("#ally_tefflist").html(li_t);
 			$("#opendmgcalc").off("click");
 			$("#opendmgcalc").on("click", function(){
