@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title>Cards2JSON</title>
+	<!--@Detail@Cards定義をJSON形式に変換して保存、対して早くならなかったので保留@-->
+</head>
+<body>
+	<div id="detail"></div>
+	<a id="dl" href="#" download="cards.min.js">Download</a>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script>
+		$(() => {
+			$.getScript( "/js/general.js" )
+			.done(() => $.getScript( "/js/simulator/awake.js" ))
+			.done(() => $.getScript( "/js/simulator/species.js" ))
+			.done(() => $.getScript( "/js/data/skill_ans.js" ))
+			.done(() => $.getScript( "/js/data/skill_spe.js" ))
+			.done(() => $.getScript( "/js/data/skill_spe_body.js" ))
+			.done(() => $.getScript( "/js/data/skill_awake.js" ))
+			.done(() => $.getScript( "/js/data/skill_crystal.js" ))
+			.done(function(){
+				$.getScript( "/js/data/cards.js" ).done(() => {
+					var json = JSON.stringify(Cards).replace(/\\t/g, "");
+					var output = `Cards = JSON.parse(\`${json}\`);`
+					var path = writeToLocal(output);
+					$("#detail").html(`Length: ${json.length}, path: ${path}<br/>output: ${output.slice(0, 50)} ... ${output.slice(-50)}`);
+				}).fail(err)
+			}).fail(err);
+		});
+
+		function err(jqXHR, textStatus, errorThrown){
+			console.log(errorThrown);
+		}
+
+		function writeToLocal(content) {
+			var blob = new Blob([content], {type: "text/plain"});
+			var path = window.URL.createObjectURL(blob);
+			$("#dl").prop("href", path);
+			return path;
+		}
+	</script>
+</body>
+</html>
