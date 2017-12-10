@@ -84,7 +84,7 @@ function jsobj_vardump(obj, tab) {
 				if (nextobj_ty != "object" || ($.isArray(obj[key]) && obj[key][0] >= 0)) {
 					str += key + ": " + jsobj_vardump(obj[key], -1);
 				} else {
-					str += key + ":{<br/>" + jsobj_vardump(obj[key], tab+1) + "},<br/>";
+					str += key + ":{<br/>" + jsobj_vardump(obj[key], 2) + "},<br/>";
 				}
 			}
 		}

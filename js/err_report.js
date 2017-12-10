@@ -7,11 +7,13 @@ window.onerror = function (errorMsg, fileName, lineNumber) {
 	if(!isErrShowReport){
 		return;
 	}
-	if(deckdata_SaveUrl && Field){
+	if(deckdata_SaveUrl && typeof Field !== undefined){
 		deckdata_SaveUrl(Field, (dat) => {
 			var js = JSON.parse(dat);
 			onErrDialogShow(fileName, errorMsg, lineNumber, js.short);
 		});
+	} else {
+		onErrDialogShow(fileName, errorMsg, lineNumber);
 	}
 };
 
@@ -23,7 +25,7 @@ function onErrDialogShow(fileName, errorMsg, lineNumber, short_path){
 	// エラー内容
 	var err_text =
 		`エラーが発生しました。\n` +
-		`まずは再読み込み(Shift+F5)を行ってみてください。直る可能性があります。\n` +
+		`まずは再読み込み(ctrl+F5)を行ってみてください。直る可能性があります。\n` +
 		`バグ報告を行う際は、このメッセージと発生状況を添えていただくと助かります。`;
 	var err_detail =
 		`--------------------------\n` +

@@ -383,43 +383,43 @@
 
 	<!-- Javascript -->
     <!--#config timefmt="%Y%m%d_%H%M%S" -->
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.4/platform.min.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/loader.js?                  <!--#flastmod virtual='/js/loader.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/pagetemp.js?                <!--#flastmod virtual='/js/pagetemp.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/err_report.js?              <!--#flastmod virtual='/js/err_report.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/googletrc.js?               <!--#flastmod virtual='/js/googletrc.js'-->"></script>
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.4/platform.min.js"></script>
+    <script charset="UTF-8" src="/js/loader.js?                  <!--#flastmod virtual='/js/loader.js'-->"></script>
+    <script charset="UTF-8" src="/js/pagetemp.js?                <!--#flastmod virtual='/js/pagetemp.js'-->"></script>
+    <script charset="UTF-8" src="/js/err_report.js?              <!--#flastmod virtual='/js/err_report.js'-->"></script>
+    <script charset="UTF-8" src="/js/googletrc.js?               <!--#flastmod virtual='/js/googletrc.js'-->"></script>
 	<!-- 他jsに依存しない基礎関数群 -->
-    <script type="text/javascript" charset="UTF-8" src="/js/general.js?                 <!--#flastmod virtual='/js/general.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/simulator/awake.js?         <!--#flastmod virtual='/js/simulator/awake.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/simulator/species.js?       <!--#flastmod virtual='/js/simulator/species.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/simulator/enemy.js?         <!--#flastmod virtual='/js/simulator/enemy.js'-->"></script>
+    <script charset="UTF-8" src="/js/general.js?                 <!--#flastmod virtual='/js/general.js'-->"></script>
+    <script charset="UTF-8" src="/js/simulator/awake.js?         <!--#flastmod virtual='/js/simulator/awake.js'-->"></script>
+    <script charset="UTF-8" src="/js/simulator/species.js?       <!--#flastmod virtual='/js/simulator/species.js'-->"></script>
+    <script charset="UTF-8" src="/js/simulator/enemy.js?         <!--#flastmod virtual='/js/simulator/enemy.js'-->"></script>
 	<!-- データ群(基礎関数に依存する) -->
-    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_ans.js?          <!--#flastmod virtual='/js/data/skill_ans.js'-->"></script>
-	<script type="text/javascript" charset="UTF-8" src="/js/data/skill_ans_cond.js?     <!--#flastmod virtual='/js/data/skill_ans_cond.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_spe.js?          <!--#flastmod virtual='/js/data/skill_spe.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_spe_body.js?     <!--#flastmod virtual='/js/data/skill_spe_body.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_awake.js?        <!--#flastmod virtual='/js/data/skill_awake.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_crystal.js?      <!--#flastmod virtual='/js/data/skill_crystal.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/data/skill_enemy.js?        <!--#flastmod virtual='/js/data/skill_enemy.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/data/quests.php"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/data/cards.js?              <!--#flastmod virtual='/js/data/cards.js'-->"></script>
+    <script charset="UTF-8" src="/js/data/skill_ans.js?          <!--#flastmod virtual='/js/data/skill_ans.js'-->"></script>
+	<script charset="UTF-8" src="/js/data/skill_ans_cond.js?     <!--#flastmod virtual='/js/data/skill_ans_cond.js'-->"></script>
+    <script charset="UTF-8" src="/js/data/skill_spe.js?          <!--#flastmod virtual='/js/data/skill_spe.js'-->"></script>
+    <script charset="UTF-8" src="/js/data/skill_spe_body.js?     <!--#flastmod virtual='/js/data/skill_spe_body.js'-->"></script>
+    <script charset="UTF-8" src="/js/data/skill_awake.js?        <!--#flastmod virtual='/js/data/skill_awake.js'-->"></script>
+    <script charset="UTF-8" src="/js/data/skill_crystal.js?      <!--#flastmod virtual='/js/data/skill_crystal.js'-->"></script>
+    <script charset="UTF-8" src="/js/data/skill_enemy.js?        <!--#flastmod virtual='/js/data/skill_enemy.js'-->"></script>
+    <script charset="UTF-8" src="/js/data/quests.php"></script>
+    <script charset="UTF-8" src="/js/data/cards.js?              <!--#flastmod virtual='/js/data/cards.js'-->"></script>
 	<!-- 処理群(データ群に依存する) -->
-    <script type="text/javascript" charset="UTF-8" src="/js/deck/deckdata.js?           <!--#flastmod virtual='/js/deck/deckdata.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/simulator/initialize.js?    <!--#flastmod virtual='/js/simulator/initialize.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/simulator/show.js?          <!--#flastmod virtual='/js/simulator/show.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/simulator/show_sp.js?       <!--#flastmod virtual='/js/simulator/show_sp.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/simulator/damage.js?        <!--#flastmod virtual='/js/simulator/damage.js'-->"></script>
-	<script type="text/javascript" charset="UTF-8" src="/js/simulator/targeting.js?     <!--#flastmod virtual='/js/simulator/targeting.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/simulator/answer.js?        <!--#flastmod virtual='/js/simulator/answer.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/simulator/special.js?       <!--#flastmod virtual='/js/simulator/special.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/simulator/turneffect.js?    <!--#flastmod virtual='/js/simulator/turneffect.js'-->"></script>
-    <script type="text/javascript" charset="UTF-8" src="/js/simulator/actionlog.js?     <!--#flastmod virtual='/js/simulator/actionlog.js'-->"></script>
+    <script charset="UTF-8" src="/js/deck/deckdata.js?           <!--#flastmod virtual='/js/deck/deckdata.js'-->"></script>
+    <script charset="UTF-8" src="/js/simulator/initialize.js?    <!--#flastmod virtual='/js/simulator/initialize.js'-->"></script>
+    <script charset="UTF-8" src="/js/simulator/show.js?          <!--#flastmod virtual='/js/simulator/show.js'-->"></script>
+    <script charset="UTF-8" src="/js/simulator/show_sp.js?       <!--#flastmod virtual='/js/simulator/show_sp.js'-->"></script>
+    <script charset="UTF-8" src="/js/simulator/damage.js?        <!--#flastmod virtual='/js/simulator/damage.js'-->"></script>
+	<script charset="UTF-8" src="/js/simulator/targeting.js?     <!--#flastmod virtual='/js/simulator/targeting.js'-->"></script>
+    <script charset="UTF-8" src="/js/simulator/answer.js?        <!--#flastmod virtual='/js/simulator/answer.js'-->"></script>
+    <script charset="UTF-8" src="/js/simulator/special.js?       <!--#flastmod virtual='/js/simulator/special.js'-->"></script>
+    <script charset="UTF-8" src="/js/simulator/turneffect.js?    <!--#flastmod virtual='/js/simulator/turneffect.js'-->"></script>
+    <script charset="UTF-8" src="/js/simulator/actionlog.js?     <!--#flastmod virtual='/js/simulator/actionlog.js'-->"></script>
 	<!-- その他 -->
-	<script type="text/javascript" charset="UTF-8" src="/js/autorun/repeat.js"></script>
-	<script type="text/javascript" charset="UTF-8" src="/js/autorun/brute4ce.js"></script>
+	<script charset="UTF-8" src="/js/autorun/repeat.js"></script>
+	<script charset="UTF-8" src="/js/autorun/brute4ce.js"></script>
 </div>
 </body>
 </html>

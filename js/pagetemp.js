@@ -1,10 +1,5 @@
 // template page loader
 $(function () {
-	// iframe対策
-	if (window != parent) {
-		top.location.href = document.location.href;
-		return;
-	}
 	// コンテンツ読み込み
 	$("#Top").load("/template/top.html", function () {
 		var tgl_tg = $(".spmenu_toggle");
@@ -85,9 +80,9 @@ function applyJustViewport(){
 	var viewport = "";
 	if(w_width > w_height && w_width < 800 && w_width >= 600){
 		var scale = w_width / 800;
-		viewport = "width=800, minimum-scale="+scale+", maximum-scale="+scale+", user-scallable=no";
+		viewport = "width=800, minimum-scale="+scale+", maximum-scale="+scale+", user-scalable=no";
 	} else {
-		viewport = "width=device-width, minimum-scale=1, maximum-scale=1, user-scallable=no";
+		viewport = "width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no";
 	}
 	$("meta[name=viewport]").attr("content", viewport );
 }
