@@ -101,18 +101,18 @@
     </main>
     <footer>
         <div class="links">
-            <a tabindex="-1" href="/">トップページ</a>
-            <a tabindex="-1" href="/simulator/">シミュレーター</a>
-            <a tabindex="-1" href="/damagecalc">ダメージ計算</a>
-            <a tabindex="-1" href="/tools/adjust_pt">ポイント調整</a>
+            <a target="_blank" tabindex="-1" href="/">トップページ</a>
+            <a target="_blank" tabindex="-1" href="/simulator/">シミュレーター</a>
+            <a target="_blank" tabindex="-1" href="/damagecalc">ダメージ計算</a>
+            <a target="_blank" tabindex="-1" href="/tools/adjust_pt">ポイント調整</a>
             <br/>
-            <a tabindex="-1" href="/pages/info.html">このサイトについて</a>
-            <a tabindex="-1" href="/pages/contact.html">バグ報告</a>
-            <a tabindex="-1" href="/pages/donate.html">🍣</a>
+            <a target="_blank" tabindex="-1" href="/pages/info.html">このサイトについて</a>
+            <a target="_blank" tabindex="-1" href="/pages/contact.html">バグ報告</a>
+            <a target="_blank" tabindex="-1" href="/pages/donate.html">🍣</a>
             <span class="sepalator">|</span>
-            <a tabindex="-1" href="http://blog.wiztools.net/">Blog</a>
-            <a tabindex="-1" href="https://twitter.com/wiz_tools">Twitter</a>
-            <a tabindex="-1" href="https://github.com/Arika0093/wiz_simu/">Github</a>
+            <a target="_blank" tabindex="-1" href="http://blog.wiztools.net/">Blog</a>
+            <a target="_blank" tabindex="-1" href="https://twitter.com/wiz_tools">Twitter</a>
+            <a target="_blank" tabindex="-1" href="https://github.com/Arika0093/wiz_simu/">Github</a>
         </div>
     </footer>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>

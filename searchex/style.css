@@ -183,6 +183,7 @@ div#schbox_wrapper{
 	top: 5px;
 	background: #FFF;
 	box-shadow: 0 0 4px 2px #EEF;
+	z-index: 114514;
 }
 div.textbox_wrap {
 	position: relative;
@@ -212,6 +213,10 @@ span.sch_opt_label::after{
 	content: "\f00d";
 	margin-left: 3px;
 	color: #444;
+}
+span.opt_not{
+	color: #F00;
+	font-weight: bolder;
 }
 
 div.sch_opt_box:hover{
@@ -458,6 +463,17 @@ div.chara_desc{
 	/* float: right; */
 	text-align: right;
 }
+li.rst_overlst {
+	font-size: smaller;
+	text-align: center;
+	padding: 1ex;
+	background-color: #FAFAFA;
+	/* margin-top: 1ex; */
+	border-width: 0 1px 1px;
+	border-style: solid;
+	border-color: #CCC;
+	color: #666;
+}
 
 /* aside detail */
 div#detail_wrap{
@@ -480,7 +496,7 @@ div#detail_wrap.indata{
 	padding-bottom: 30px;
 }
 div.closed_hover{
-	background-color: #FAFAFA;
+	background-color: #F0F0F0;
 	cursor: pointer;
 }
 
