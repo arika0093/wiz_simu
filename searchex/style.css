@@ -484,22 +484,29 @@ div.closed_hover{
 	cursor: pointer;
 }
 
-@media screen and (max-width: 1600px){
-	div#detail_wrap{
+@media screen and (max-width: 1600px) {
+	div#detail_wrap {
 		width: 100%;
 		animation-name: fade-in;
 	}
-	div#detail_wrap.indata{
+
+	div#detail_wrap.indata {
 		width: 100%;
 		align-items: center;
 		float: none;
 		display: block;
-			padding: 2ex 2em;
+		padding: 2ex 2em;
 		border-left: 0px;
 	}
 }
+@media screen and (max-width: 820px){
+	div#detail_wrap.indata{
+		padding: 2ex 3.2em 4em;
+	}
+}
 
-div#close_aside{
+
+	div#close_aside{
 	text-decoration: underline;
 	color: #06C;
 	display: block;

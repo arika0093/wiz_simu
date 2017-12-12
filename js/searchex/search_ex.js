@@ -5,10 +5,6 @@ var ListupMax = 50;
 // 詳細を開いているかどうか
 var isOpenDetail = false;
 
-function logpush(t){
-	$("body > footer > div.links").append(`<span>${t}</span><br/>`);
-}
-
 
 // on load
 $(() => {
@@ -167,7 +163,6 @@ $(() => {
 	// 精霊詳細を閉じる時の処理を記載
 	$(document)
 		.on("click", "div#detail_wrap, div#close_aside", function () {
-			logpush("click outer detail_wrap");
 			$("div#search_wrap").removeClass("indata");
 			$("div#detail_wrap").removeClass("indata");
 			// URL変更
@@ -183,7 +178,6 @@ $(() => {
 			}
 		})
 		.on("click", "div#detail_wrap > *", function (e) {
-			logpush("click inner detail_wrap");
 			e.stopPropagation();
 		});
 	// iOS用にclick時に動く空のイベントハンドラを追加
