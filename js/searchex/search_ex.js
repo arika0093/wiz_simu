@@ -178,7 +178,10 @@ $(() => {
 			}
 		})
 		.on("click", "div#detail_wrap > *", function (e) {
-			e.stopPropagation();
+			// タッチスクリーンでなければ無効化
+			if(!window.ontouchstart){
+				e.stopPropagation();
+			}
 		});
 	// iOS用にclick時に動く空のイベントハンドラを追加
 	$("main > div")

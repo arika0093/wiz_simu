@@ -501,7 +501,7 @@ div.closed_hover{
 }
 @media screen and (max-width: 820px){
 	div#detail_wrap.indata{
-		padding: 2ex 3.2em 4em;
+		padding: 2ex 1em 4em;
 	}
 }
 
