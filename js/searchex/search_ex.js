@@ -121,6 +121,13 @@ $(() => {
 			var clicked = $(this);
 			var c_index = clicked.data("index");
 			if(c_index >= 0){
+				// 位置保存(横幅1500px以上のときは処理しない)
+				var ypos = -1;
+				if($(document).width() < 1500){
+					var ypos = $(document).scrollTop();
+				}
+				$("div#maindata").data("ypos", ypos);
+				// 表示
 				var c = Cards[c_index];
 				displayCardDetail(c);
 			}
@@ -157,11 +164,17 @@ $(() => {
 		.on("click", "div#detail_wrap, div#close_aside", function () {
 			$("div#search_wrap").removeClass("indata");
 			$("div#detail_wrap").removeClass("indata");
+			// URL変更
 			history.replaceState(null, null, `/searchex/`);
 			// flag close
 			isOpenDetail = false;
 			toggleClassOfInputed();
 			resetStyleWithoutClass();
+			// 位置を復元
+			var ypos = $("div#maindata").data("ypos");
+			if(ypos >= 0){
+				$(document).scrollTop(ypos);
+			}
 		})
 		.on("click", "div#detail_wrap > *", function (e) {
 			e.stopPropagation();
@@ -440,6 +453,13 @@ function displayCardDetail(c){
 	// flag open
 	isOpenDetail = true;
 	toggleClassOfInputed();
+	// 横幅が1500px以上ないなら精霊情報トップに移動
+	if($(document).width() < 1500){
+		var topbanner = $("a#topbanner");
+		var pos = topbanner.scrollTop() + topbanner.height() + 5;
+		$('html,body').scrollTop(pos);
+	}
+	
 }
 
 

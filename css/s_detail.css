@@ -73,11 +73,11 @@ div#awakes:after, div#Lawakes:after, div#askills:after, div#sskills:after{
 }
 
 div#awakes:after{
-	content: "潜在能力";
+	content: "\6f5c\5728\80fd\529b";
 }
 
 div#Lawakes:after{
-	content: "L時潜在";
+	content: "\4c\6642\6f5c\5728";
 }
 
 div#askills:after{

@@ -7,7 +7,9 @@
           href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Cards Search - Wiztools</title>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Spectral+SC">
+    <title>精霊検索 - Wiztools</title>
     <meta name="description" content="Simple, Speedy and Powerful. 「魔法使いと黒猫のウィズ」最強の精霊検索ツール。" />
     <link type="text/css" rel="stylesheet" charset="UTF-8" href="/css/s_detail.css" />
     <link type="text/css" rel="stylesheet" href="style.css" />
@@ -98,6 +100,20 @@
         </div>
     </main>
     <footer>
+        <div class="links">
+            <a tabindex="-1" href="/">トップページ</a>
+            <a tabindex="-1" href="/simulator/">シミュレーター</a>
+            <a tabindex="-1" href="/damagecalc">ダメージ計算</a>
+            <a tabindex="-1" href="/tools/adjust_pt">ポイント調整</a>
+            <br/>
+            <a tabindex="-1" href="/pages/info.html">このサイトについて</a>
+            <a tabindex="-1" href="/pages/contact.html">バグ報告</a>
+            <a tabindex="-1" href="/pages/donate.html">🍣</a>
+            <span class="sepalator">|</span>
+            <a tabindex="-1" href="http://blog.wiztools.net/">Blog</a>
+            <a tabindex="-1" href="https://twitter.com/wiz_tools">Twitter</a>
+            <a tabindex="-1" href="https://github.com/Arika0093/wiz_simu/">Github</a>
+        </div>
     </footer>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>

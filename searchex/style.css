@@ -1,4 +1,7 @@
 /* EX-Search CSS */
+*{
+	box-sizing: border-box;
+}
 *, input, textbox, button{
 	font-family: Meiryo, "ヒラギノ角ゴ Pro W3", "Droid Sans Japanese", sans-serif;
 }
@@ -84,16 +87,22 @@
 
 
 /* Base */
+html{
+	height: 100%;
+}
+
 body{
-	position: relative;
 	width: 100%;
+	min-height: 100%;
 	margin: 0 auto;
-	padding: 1ex 0;
+	padding: 1ex 0 0;
+	display: flex;
+	flex-direction: column;
 }
 
 /* Header */
 header{
-	margin-top: 120px;
+	margin-top: 60px;
 	transition-duration: .4s;
 }
 @media screen and (max-width: 720px) {
@@ -104,7 +113,6 @@ header{
 }
 
 a#topbanner{
-	box-sizing: border-box;
 	display: block;
 	margin: 0 auto;
 	width: 720px;
@@ -122,13 +130,13 @@ a#topbanner.upperstyle{
 }
 @media screen and (max-width: 720px) {
 	a#topbanner{
-		box-sizing: border-box;
+		font-family: 'Spectral SC', serif;
 		display: block;
 		margin: 0 auto;
 		text-align: center;
-		font-size: large;
-		font-weight: bolder;
+		font-size: xx-large;
 		font-style: italic;
+		text-decoration: none;
 		text-indent: 0pt;
 		width: 100%;
 		height: 40px;
@@ -137,7 +145,7 @@ a#topbanner.upperstyle{
 	}
 	a#topbanner.upperstyle{
 		height: auto;
-		font-size: medium;
+		font-size: large;
 		font-weight: normal;
 	}
 }
@@ -146,11 +154,11 @@ a#topbanner.upperstyle{
 /* Main */
 main{
 	display: flex;
+	flex: 1;
 }
 div#search_wrap{
 	width: 100%;
 	padding: 1ex 0;
-	box-sizing: border-box;
 	transition-duration: .3s;
 }
 div#search_wrap.indata{
@@ -171,6 +179,10 @@ div#schbox_wrapper{
 	transition-duration: .2s;
 	margin: 0ex auto;
 	max-width: 800px;
+	position: sticky;
+	top: 5px;
+	background: #FFF;
+	box-shadow: 0 0 4px 2px #EEF;
 }
 div.textbox_wrap {
 	position: relative;
@@ -181,7 +193,7 @@ div.textbox_wrap::after {
 	content: "\f002";
 	position: absolute;
 	right: 10px;
-	bottom: 10px;
+	bottom: 5px;
 	color: #444;
 }
 div.sch_opt_box {
@@ -220,7 +232,6 @@ div#schbox_wrapper input#schbox {
 	width: 65%;
 	border: 0px;
 	padding: 0 4px;
-	box-sizing: border-box;
 }
 div#schbox_wrapper input#schbox:focus {
 	outline-width: 0px;
@@ -237,7 +248,6 @@ div#infobox_wrapper{
 	/*border-radius: 3px;*/
 	/*box-shadow: 0 0 1px 0 #CCC;*/
 	max-width: 750px;
-	box-sizing: border-box;
 	opacity: 1;
 	transition-duration: .4s;
 	overflow-y: hidden;
@@ -279,7 +289,6 @@ div#filterbox_wrapper{
 	margin: 1ex auto 0;
 	padding: 1ex;
 	max-width: 800px;
-	box-sizing: border-box;
 	animation-duration: .4s;
 	animation-name: fade-in;
 	opacity: 0;
@@ -309,7 +318,6 @@ li.rst_item{
 	width: 100%;
 	padding: 4px 3px;
 	border-bottom: 1px solid #CCC;
-	box-sizing: border-box;
 	cursor: default;
 	display: table;
 	table-layout: fixed;
@@ -385,7 +393,6 @@ div.oc_area{
 	animation-name: fade-in;
 	padding: 3px 1ex;
 	border-bottom: 1px dashed #06C;
-	box-sizing: border-box;
 }
 input.oc_check:checked ~ div.oc_area{
 	display: block;
@@ -415,7 +422,6 @@ div#resultbox_wrapper{
 	margin: 1ex auto;
 	padding: 0 1ex 1ex;
 	max-width: 800px;
-	box-sizing: border-box;
 	animation-duration: .4s;
 	animation-name: fade-in;
 	opacity: 0;
@@ -466,12 +472,12 @@ div#detail_wrap.indata{
 	width: 50%;
 	display: block;
 	opacity: 1;
-	box-sizing: border-box;
 	border-left: 1px solid #888;
 	position: -webkit-sticky;
 	position: sticky;
 	top: 0px;
 	align-self: flex-start;
+	padding-bottom: 30px;
 }
 div.closed_hover{
 	background-color: #FAFAFA;
@@ -488,8 +494,7 @@ div.closed_hover{
 		align-items: center;
 		float: none;
 		display: block;
-		box-sizing: border-box;
-		padding: 2ex 2em;
+			padding: 2ex 2em;
 		border-left: 0px;
 	}
 }
@@ -546,3 +551,25 @@ div#maindata{
 
 }
 
+/* Footer side */
+footer {
+	width: 100%;
+	padding: 1ex 2em;
+	background: linear-gradient(#FFFFFF, #F0F0F0);
+	font-size: small;
+	text-align: center;
+	/* font-style: italic; */
+}
+
+footer a, footer span {
+	color: #888;
+	text-decoration: none;
+	white-space: nowrap;
+}
+footer a {
+	padding: 0 2px;
+}
+footer a:hover{
+	color: #444;
+	text-shadow: 0px 0px 10px #888;
+}
