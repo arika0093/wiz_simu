@@ -186,6 +186,9 @@ $(() => {
 			logpush("click inner detail_wrap");
 			e.stopPropagation();
 		});
+	// iOS用にclick時に動く空のイベントハンドラを追加
+	$("main > div")
+		.on("click", (e) => {});
 	
 	
 	// ソート種類の出力
