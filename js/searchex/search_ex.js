@@ -179,7 +179,8 @@ $(() => {
 		})
 		.on("click", "div#detail_wrap > *", function (e) {
 			// タッチスクリーンでなければ無効化
-			if(!window.ontouchstart){
+			// null: タッチ可能, undefined: 不可
+			if(!(window.ontouchstart === null)){
 				e.stopPropagation();
 			}
 		});
