@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <link type="text/css" rel="stylesheet"
+          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Cards Search - Wiztools</title>
+    <meta name="description" content="Simple, Speedy and Powerful. 「魔法使いと黒猫のウィズ」最強の精霊検索ツール。" />
+    <link type="text/css" rel="stylesheet" charset="UTF-8" href="/css/s_detail.css" />
+    <link type="text/css" rel="stylesheet" href="style.css" />
+</head>
+<body class="clearfix">
+    <header>
+        <a id="topbanner" href="/searchex/" tabindex="-1">Wiztools Search</a>
+    </header>
+    <main>
+        <div id="search_wrap">
+            <!-- Search Box -->
+            <div id="schbox_wrapper">
+                <div class="textbox_wrap">
+                    <input type="text" id="schbox" autocomplete="off" placeholder="精霊名, 属性, 種族名, スキル名 etc..." />
+                </div>
+            </div>
+
+            <!-- Info -->
+            <div id="infobox_wrapper">
+                <dl class="list">
+                    <dt>How to use</dt>
+                    <dd>
+                        上のテキストボックスに検索したい精霊名やスキル名などを入力すると、該当する精霊の一覧が表示されます。<br/>
+                        絞り込み検索を活用することで、詳細な検索を行うことも可能です。<br/>
+                        精霊をクリックすると、詳細を表示します。
+                    </dd>
+                    <dt>Registed Data</dt>
+                    <dd>
+                        <!--#config timefmt="%Y/%m/%d %H:%M" -->
+                        <!--#config sizefmt="bytes" -->
+                        登録されている精霊数:
+                        <span id="reg_num">----</span>
+                        ( <span id="data_size"><!--#fsize virtual='/js/data/cards.js' --></span> B )
+                        <br/>
+                        精霊データ最終更新日:
+                        <span id="data_latest"><!--#flastmod virtual='/js/data/cards.js'--></span>
+                    </dd>
+                </dl>
+            </div>
+
+            <!-- Filter -->
+            <div id="filterbox_wrapper">
+                <ul class="result">
+                </ul>
+            </div>
+
+            <!-- Result -->
+            <div id="resultbox_wrapper">
+                <ul class="result">
+                    <li class="rst_caption">精霊検索結果 <span id="rst_disp_num"></span></li>
+                    <li class="rst_option clearfix">
+                        <label class="oc_area_label" for="chk_sortopt">表示順オプション</label>
+                        <input type="checkbox" id="chk_sortopt" class="oc_check" />
+                        <div for="chk_sortopt" class="oc_area">
+                            Sort:
+                            <div class="list_sortopts">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="detail_wrap" class="clearfix">
+            <div id="maindata" class="clearfix">
+                <div id="close_aside">Close</div>
+                <div id="bs_image_wrapper">
+                    <img id="bs_image" src="/image/noimage.png" />
+                </div>
+                <p id="c_name"></p>
+                <div id="bs_data">
+                    <p id="c_attr"></p>
+                    <span id="c_hp"></span> /
+                    <span id="c_atk"></span> /
+                    <span id="c_cost"></span> /
+                    <span id="c_breed"></span>
+                </div>
+                <div id="awakes"></div>
+                <div id="Lawakes"></div>
+                <div id="askills">
+                    <div id="as_1"></div>
+                    <div id="as_2"></div>
+                </div>
+                <div id="sskills">
+                    <div id="ss_1"></div>
+                    <div id="ss_2"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+    </footer>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script src="https://cdn.rawgit.com/cowboy/jquery-throttle-debounce/bb5bd71e/jquery.ba-throttle-debounce.min.js"></script>
+    <script src="/download/romaji.js"></script>
+    <script charset="UTF-8" src="/js/googletrc.js"></script>
+    <script charset="UTF-8" src="/js/general.js"></script>
+    <script charset="UTF-8" src="/js/deck/deckdata.js"></script>
+    <!-- card data -->
+    <script charset="UTF-8" src="/js/simulator/awake.js"></script>
+    <script charset="UTF-8" src="/js/simulator/species.js"></script>
+    <script charset="UTF-8" src="/js/data/skill_ans.js"></script>
+    <script charset="UTF-8" src="/js/data/skill_spe.js"></script>
+    <script charset="UTF-8" src="/js/data/skill_spe_body.js"></script>
+    <script charset="UTF-8" src="/js/data/skill_awake.js"></script>
+    <script charset="UTF-8" src="/js/data/cards.js"></script>
+    <script charset="UTF-8" src="/js/data/sp_alias.js"></script>
+    <script src="/js/search/sch_filter.js"></script>
+    <script src="/js/search/sch_detail.js"></script>
+    <script src="/js/searchex/srex_filter_list.js"></script>
+    <script src="/js/searchex/srex_sort_list.js"></script>
+    <script src="/js/searchex/search_ex.js"></script>
+</body>
+</html>

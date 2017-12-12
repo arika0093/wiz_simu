@@ -25,7 +25,26 @@ function sch_show_detail() {
 	var c = cs[0];
 	// title set
 	document.title = "「" + c.name + "」の詳細情報 - WizTools";
-	// basic data output
+	applyCardData(c);
+
+	// data output
+	var dtb = $("#datatable");
+
+	if (Detail_view) {
+		var d_html = "<tr><th id='dt_key'>key</th><th>value</th>";
+		for (var key in c) {
+			d_html += "<tr><td id='dt_key'>" + key + "</td><td>" + jsobj_vardump(c[key], 0) + "</td></tr>";
+		}
+		dtb.html(d_html);
+	} else {
+		dtb.text("(定義データの表示は[表示切り替え]を押すことで切り替わります)");
+	}
+
+}
+
+// 精霊データを代入する
+function applyCardData(c){
+// basic data output
 	var attr_txt = "主: " + get_attr_string(c.attr[0]) +
 		(c.attr[1] != -1 ? " / 副: " + get_attr_string(c.attr[1]) : "");
 	$("#bs_image").prop("src", get_image_url_b(c.imageno, c.imageno_prefix));
@@ -51,23 +70,8 @@ function sch_show_detail() {
 		$("#as_2").hide();
 		$("#ss_2").hide();
 	}
-
-
-
-	// data output
-	var dtb = $("#datatable");
-
-	if (Detail_view) {
-		var d_html = "<tr><th id='dt_key'>key</th><th>value</th>";
-		for (var key in c) {
-			d_html += "<tr><td id='dt_key'>" + key + "</td><td>" + jsobj_vardump(c[key], 0) + "</td></tr>";
-		}
-		dtb.html(d_html);
-	} else {
-		dtb.text("(定義データの表示は[表示切り替え]を押すことで切り替わります)");
-	}
-
 }
+
 
 // object dump
 function jsobj_vardump(obj, tab) {
