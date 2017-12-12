@@ -6,7 +6,7 @@ var ListupMax = 50;
 var isOpenDetail = false;
 
 function logpush(t){
-	$("#infobox_wrapper > dl").append(`<dt>log</dt><dd>${t}</dd>`);
+	$(".links").append(`<span>${t}</span><br/>`);
 }
 
 
