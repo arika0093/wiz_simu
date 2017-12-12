@@ -6,7 +6,7 @@ var ListupMax = 50;
 var isOpenDetail = false;
 
 function logpush(t){
-	$(".links").append(`<span>${t}</span><br/>`);
+	$("body > footer > div.links").append(`<span>${t}</span><br/>`);
 }
 
 
