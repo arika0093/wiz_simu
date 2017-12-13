@@ -613,6 +613,7 @@ div.dialog_desc {
 }
 
 input.dlg_input {
+	font-family: Consolas, Meiryo, sans-serif !important;
 	border: 1px solid #CCC;
 	border-radius: 3px;
 	padding: 1ex 0 1ex 1ex;
