@@ -1,7 +1,8 @@
 // activeな検索フィルター条件
 var ActiveSrchFilter = [];
 // 検索結果表示上限
-var ListupMax = 50;
+var FilterListupMax = 10;
+var CardsListupMax = 50;
 // 詳細を開いているかどうか
 var isOpenDetail = false;
 
@@ -17,6 +18,7 @@ $(() => {
 			return null;
 		}
 	}).reverse();
+
 	
 	// カードIDが指定されていたらそれを開く
 	var cardid = sepalateAndGetQuery("id");
@@ -57,13 +59,15 @@ $(() => {
 			if(e.keyCode == 13){
 				var flt_items = $("#filterbox_wrapper li.rst_item");
 				var rst_items = $("#resultbox_wrapper li.rst_item");
-				if(rst_items.length == 1){
-					rst_items[0].click();
-					return;
-				}
-				if(flt_items.length == 1){
-					flt_items[0].click();
-					return;
+				if(rst_items.length != 1 || flt_items.length != 1){
+					if(rst_items.length == 1){
+						rst_items[0].click();
+						return;
+					}
+					if(flt_items.length == 1){
+						flt_items[0].click();
+						return;
+					}
 				}
 			}
 			// 文字が入力されてたらクラスを付与
@@ -80,26 +84,7 @@ $(() => {
 	// フィルター検索結果をクリックした時の結果をあらかじめ記述
 	$("#filterbox_wrapper")
 		.on("click", "li.rst_item", function () {
-			// data-indexに指定されている条件を追加
-			var clicked = $(this);
-			var dat_index = clicked.data("index");
-			if(dat_index >= 0){
-				var txtbox = $("input#schbox");
-				var added_obj = $.extend(SrchFilters[dat_index], { index: dat_index });
-				// 追加時関数をパスしたら追加+フォームリセット+いろいろ描画
-				if(added_obj.do_added(ActiveSrchFilter)){
-					ActiveSrchFilter.push(added_obj);
-					var text_old = txtbox.val().split(" ");
-					var matched_i = clicked.data("matched");
-					text_old.splice(matched_i, 1);
-					var text_new = text_old.join(" ");
-					txtbox.val(text_new);
-					txtbox.focus();
-					outputFilterConditionElement();
-					listupFilterCondition(text_new);
-					listupCardThrowFilter(text_new);
-				}
-			}
+			addObjectToActiveFilter(this);
 		});
 	// ソート種類をクリックした時の結果をあらかじめ記述
 	$("div.list_sortopts")
@@ -132,6 +117,10 @@ $(() => {
 				var c = Cards[c_index];
 				displayCardDetail(c);
 			}
+		})
+	$(document)
+		.on("click", "a.invalid_click", (e) => {
+			e.preventDefault();
 		});
 	// フィルター条件(textbox内)をクリックした時の結果をあらかじめ記述
 	$(document)
@@ -165,7 +154,8 @@ $(() => {
 		.on("click", "div#detail_wrap, div#close_aside", function () {
 			$("div#search_wrap").removeClass("indata");
 			$("div#detail_wrap").removeClass("indata");
-			// URL変更
+			// URLとか変更
+			window.title = `精霊検索 - Wiztools`;
 			history.replaceState(null, null, `/searchex/`);
 			// flag close
 			isOpenDetail = false;
@@ -185,14 +175,17 @@ $(() => {
 			}
 		});
 	// iOS用にclick時に動く空のイベントハンドラを追加
-	$("main > div")
+	$("main > div#detail_wrap")
 		.on("click", (e) => {});
 	
+	// 複合フィルターを普通のフィルター条件に追加
+	Array.prototype.push.apply(SrchFilters, SrchMultiFilters);
 	
 	// ソート種類の出力
 	listupSortCondition();
 	$("input[name=sortradio]#sortby_regist").prop("checked", true);
-	// その他
+	
+	// その他labelとかの出力
 	$("#reg_num").text(`${Cards.length}`);
 	
 	
@@ -206,7 +199,9 @@ $(() => {
 // 現在の絞り込み条件を出力
 function outputFilterConditionElement(){
 	var genhtml = (flt, i) => {
-		return `<div class="sch_opt_box" data-fltindex="${i}">
+		var notop = flt.is_denial;
+		return `<div class="sch_opt_box ${notop ? "sch_opt_notbox" : ""}" data-fltindex="${i}">
+			${notop ? `<span class="opt_not">!</span>` : ""}
 			<span class="sch_opt_label">${flt.short()}</span>
 			</div>`;
 	}
@@ -226,24 +221,38 @@ function listupFilterCondition(inp_text) {
 	// 出力関数
 	var genhtml = (flt) => {
 		var dlgclass = (flt.dialog != "" ? "opendialog" : "");
+		var dsc = flt.desc
+			.replace(/</, "&lt;")
+			.replace(/>/, "&gt;")
+			.replace(/\n/g, "<br/>");
 		return `<li class="rst_item" data-index="${flt.index}" data-matched="${flt.matched}" >
 			<div class="type">${flt.type}</div>
 			<div class="name">${flt.name}</div>
-			<div class="desc ${dlgclass}">${flt.desc.replace(/\n/, "<br/>")}</div>
+			<div class="desc ${dlgclass}">${dsc}</div>
 		</li>`;
 	}
 	var flt_base_selector = "#filterbox_wrapper";
 	// 既に追加されている要素を一旦消す
 	$(flt_base_selector + " li").remove();
+	// フィルター操作関連(と!)の文字を消す
+	inp_text = inp_text.replace("!", "");
+	$.each(SrchMultiFilters, (i, e) => {
+		inp_text = inp_text.replace(e.char, "");
+	});
 	// 検索文字が空白なら終了
 	if(inp_text.length <= 0){
 		return;
 	}
 	// リストアップ開始
+	var added_count = 0;
 	var flts = $.map(SrchFilters, (e, i) => {
+		// 追加しすぎなら後は除外
+		if(added_count >= FilterListupMax){
+			return null;
+		}
 		// 一致確認
 		var alias = $.extend([], e.alias);
-		alias.push(e.name);
+		alias.push(e.name, e.desc);
 		// 入力されている文字全てでチェックする
 		var match_place = $.map(inp_text.split(" "), (te, ti) => {
 			if(te.trim().length <= 0){
@@ -252,6 +261,7 @@ function listupFilterCondition(inp_text) {
 			return isStringContainCheck(te, alias) ? ti : null;
 		});
 		if(match_place.length > 0){
+			added_count++
 			// 管理用のindex付与
 			e.index = i;
 			e.matched = match_place[0];
@@ -260,13 +270,18 @@ function listupFilterCondition(inp_text) {
 			return null;
 		}
 	});
-	flts.splice(Math.min(flts.length, ListupMax));
 	// 結果が出たら出力
-	if(flts.length > 0){
+	var is_overlst = (added_count >= FilterListupMax);
+	var is_listup = (flts.length > 0);
+	if(is_listup){
 		var flt_base = $(flt_base_selector + " ul.result");
 		var output = `<li class="rst_caption">絞り込み条件</li>`;
 		for(var i = 0; i < flts.length; i++){
 			output += genhtml(flts[i]);
+		}
+		if(is_overlst){
+			output += `<li class="rst_overlst">${FilterListupMax}件以上の絞り込み条件が該当したため、`+
+				`先頭${FilterListupMax}件のみを表示しています。</li>`;
 		}
 		flt_base.html(output);
 	}
@@ -284,7 +299,8 @@ function listupCardThrowFilter(inp_text){
 		var ss_type = ss_match ? ss_match[0].replace("<","").replace(">","") : "-----";
 		var ss_turn = `${Math.max(c.ss1.turn - fast, 0)}`+
 			`${c.ss2 ? ("/" + Math.max(c.ss2.turn - fast, 0)) : ""}`;
-		return `<li class="rst_item rst_chara" data-index="${c.index}">
+		return `<a class="invalid_click" href="/search/detail/?id=${c.cardno}">
+				<li class="rst_item rst_chara" data-index="${c.index}">
                     <div class="chara_icon"><img src="${get_image_url(c.imageno, c.imageno_prefix)}" /></div>
                     <div class="chara_name">${c.name}</div>
                     <div class="chara_desc">
@@ -296,11 +312,12 @@ function listupCardThrowFilter(inp_text){
                         <span class="chara_as">AS: ${as_type}</span> /
                         <span class="chara_ss">SS: ${ss_type}[${ss_turn}]</span>
                     </div>
-                </li>`;
+                </li>
+                </a>`;
 	}
 	var rst_base_selector = "#resultbox_wrapper";
 	// 既に追加されている要素を一旦消す
-	$(rst_base_selector + " li.rst_item").remove();
+	$(`${rst_base_selector} a, ${rst_base_selector} li.rst_overlst`).remove();
 	// 条件式がないなら終了
 	var is_endflag = (ActiveSrchFilter.length <= 0 && inp_text.length <= 0);
 	if(is_endflag){
@@ -312,19 +329,24 @@ function listupCardThrowFilter(inp_text){
 	var fltCards = $.map(Cards, (e, i) => {
 		var check_rst = true;
 		// 上限まで追加されてたら以降は全て無視
-		if(added_count >= ListupMax){
+		if(added_count >= CardsListupMax){
 			return null;
 		}
 		$.each(ActiveSrchFilter, (fi, fe) => {
-			// 条件関数内で判定を行った後、総合結果(check_rst)と比較,評価
+			var dofunc = (p, ...args) => {
+				if(!fe[p]){
+					return true;
+				}
+				var do_rst = fe[p].apply(fe, args);
+				// 反転条件が有効なら、実行結果に対してNOTする
+				return do_rst ^ fe.is_denial;
+			}
 			var check_inner = true;
 			if(!check_rst){
 				return false;
 			}
-			check_inner = check_inner && fe.cond_cd(e);
-			check_inner = check_inner && fe.cond_as(e.as1, e.as2, e);
-			check_inner = check_inner && fe.cond_ss(e.ss1, e.ss2, e);
-			check_inner = check_inner && fe.cond_aw(e.awake, e.Lawake, e);
+			// 条件関数内で判定を行った後、総合結果(check_rst)と比較,評価
+			check_inner = check_inner && dofunc("cond_cd", e);
 			check_rst = check_inner;
 		})
 		// inputに文字が入力されているなら、その文字列で検索をかける
@@ -349,13 +371,18 @@ function listupCardThrowFilter(inp_text){
 		}
 	});
 	// 結果が出たら出力
-	var is_overlst = (added_count >= ListupMax);
+	var is_overlst = (added_count >= CardsListupMax);
 	var is_listup = (fltCards.length > 0);
 	if(is_listup){
 		var rst_base = $(rst_base_selector + " ul.result");
 		var output = "";
 		for(var i = 0; i < fltCards.length; i++){
 			output += genhtml(fltCards[i]);
+		}
+		if(is_overlst){
+			output += `<li class="rst_overlst">${CardsListupMax}件以上の精霊と一致したため、`+
+				`先頭${CardsListupMax}件のみを表示しています。`+
+				`<br/>絞り込み条件を追加してください。</li>`;
 		}
 		rst_base.append(output);
 	}
@@ -381,8 +408,66 @@ function listupSortCondition(){
 	outputDom.html(output);
 }
 
+// -----------------------------------
+// ActiveFilterに足す関連の処理
+function addObjectToActiveFilter(target, added_obj){
+	// data-indexに指定されている条件を追加
+	var clicked = $(target);
+	var dat_index = clicked.data("index");
+	if (dat_index >= 0) {
+		var txtbox = $("input#schbox");
+		var text_old = txtbox.val().split(" ");
+		var matched_i = clicked.data("matched");
+		var matched_str = text_old[matched_i];
+		if(!added_obj){
+			added_obj = $.extend(true, {}, SrchFilters[dat_index], {index: dat_index});
+		}
+		var added_flag = false;
+		var pushed_flag = true;
+		// (追加されるobj)追加時関数を確認する
+		added_flag = added_obj.do_added(getAllActiveFilter(), {
+			clicked: clicked,
+		});
+		// (複合フィルター条件)追加時関数を確認する
+		$.each(SrchMultiFilters, (i, e) =>{
+			if (added_flag && matched_str.indexOf(e.char) >= 0) {
+				added_obj = e.chk_add_txt(added_obj);
+				return false;
+			}
+		})
+		// (追加される側のobj)追加時関数を確認する
+		$.each(getAllActiveFilter(), (i, e) =>{
+			if (added_flag && e.chk_add) {
+				var {a_flag, p_flag} = e.chk_add(added_obj);
+				added_flag = added_flag && a_flag;
+				pushed_flag = pushed_flag && p_flag;
+				return p_flag;
+			} else {
+				// 追加時関数がないならpass
+				return true;
+			}
+		})
+		if (added_flag) {
+			// 文字に!が含まれているなら、否定条件にする
+			added_obj.is_denial = (matched_str.indexOf("!") >= 0);
+			// フィルター検索に使った文字を消す
+			text_old.splice(matched_i, 1);
+			var text_new = text_old.join(" ");
+			txtbox.val(text_new);
+			txtbox.focus();
+			// 追加 & 再描画
+			if (pushed_flag) {
+				ActiveSrchFilter.push(added_obj);
+			}
+			outputFilterConditionElement();
+			listupFilterCondition(text_new);
+			listupCardThrowFilter(text_new);
+		}
+	}
+}
 
 
+// -----------------------------------
 // 入力欄を全て消す
 function clearInput(){
 	var txtbox = $("input#schbox");
@@ -427,6 +512,26 @@ function resetStyleWithoutClass(){
 	$("div#infobox_wrapper:not([class=inputed])").prop("style", "");
 }
 
+// ActiveFilterを再帰込みで返す
+function getAllActiveFilter(){
+	var getAdfRecursion = (e) => {
+		var rst_arr = [];
+		if(e.flt1){
+			Array.prototype.push.apply(rst_arr, getAdfRecursion(e.flt1));
+		}
+		if(e.flt2){
+			Array.prototype.push.apply(rst_arr, getAdfRecursion(e.flt2));
+		}
+		rst_arr.push(e);
+		return rst_arr;
+	}
+	var asf = ActiveSrchFilter;
+	return $.map(asf, (e) => {
+		var rst = getAdfRecursion(e)
+		return rst;
+	})
+}
+
 // 絞り込み結果に一致するかどうかチェックする
 function isStringContainedInCard(t, e){
 	var check_cont_str = false;
@@ -436,9 +541,6 @@ function isStringContainedInCard(t, e){
 	// alias
 	check_cont_str = check_cont_str || (e.alias
 		&& isStringContainCheck(t, e.alias));
-	// 種族名
-	check_cont_str = check_cont_str || (e.species >= 0
-		&& isStringContainCheck(t, get_spec_string(e.species), true));
 	// AS,SS
 	check_cont_str = check_cont_str
 		|| isStringContainCheck(t, function(){
@@ -455,6 +557,8 @@ function isStringContainedInCard(t, e){
 function displayCardDetail(c){
 	// 表示
 	applyCardData(c);
+	// いろいろ書き換え
+	window.title = `${c.name} - Wiztools`;
 	history.replaceState(null, null, `/searchex/?id=${c.cardno}`);
 	$("div#search_wrap").addClass("indata");
 	$("div#detail_wrap").addClass("indata");
@@ -467,11 +571,9 @@ function displayCardDetail(c){
 		var pos = topbanner.scrollTop() + topbanner.height() + 5;
 		$('html,body').scrollTop(pos);
 	}
-	
 }
 
-
-
+// -----------------------------------
 // 柔軟な文字列含有確認
 function isStringContainCheck(base, targets, ignore_roman){
 	if(!$.isArray(targets)){
@@ -480,10 +582,15 @@ function isStringContainCheck(base, targets, ignore_roman){
 	var rst = false;
 	for(var i=0; i < targets.length; i++){
 		var t = targets[i];
-		var h2k_t = h2k(t);
-		rst = rst || t.indexOf(base) >= 0
-			|| (!ignore_roman && h2k_t.indexOf(r2k(base)) >= 0)
-			|| (!ignore_roman && h2k_t.indexOf(h2k(base)) >= 0)
+		// 正規表現で渡されていたらtest, そうでないならindexOf
+		if(base.test){
+			rst = rst || base.test(t);
+		} else {
+			var h2k_t = h2k(t);
+			rst = rst || t.indexOf(base) >= 0
+				|| (!ignore_roman && h2k_t.indexOf(r2k(base)) >= 0)
+				|| (!ignore_roman && h2k_t.indexOf(h2k(base)) >= 0)
+		}
 	}
 	return rst;
 }

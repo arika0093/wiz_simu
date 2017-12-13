@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
     <link type="text/css" rel="stylesheet"
-          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+          href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet"
@@ -19,6 +19,7 @@
         <a id="topbanner" href="/searchex/" tabindex="-1">Wiztools Search</a>
     </header>
     <main>
+        <!-- Search side -->
         <div id="search_wrap">
             <!-- Search Box -->
             <div id="schbox_wrapper">
@@ -72,6 +73,8 @@
                 </ul>
             </div>
         </div>
+
+        <!-- Detail side -->
         <div id="detail_wrap" class="clearfix">
             <div id="maindata" class="clearfix">
                 <div id="close_aside">Close</div>
@@ -98,25 +101,71 @@
                 </div>
             </div>
         </div>
+
+        <!-- Dialog side -->
+        <div id="dialog_side">
+            <div id="dialog_test">
+                <span>This is a test dialog. OK?</span>
+            </div>
+            <div id="dialog_attr">
+                <p class="dialog_section">主属性</p>
+                <div class="dialog_desc">
+                    チェックを付けたもののどれかに当てはまっている場合、表示されます。
+                </div>
+                <div class="dlg_attr_input">
+                    <label for="main_0">火</label>
+                    <input type="checkbox" name="main_attr" id="main_0" value="0">
+                    <label for="main_1">水</label>
+                    <input type="checkbox" name="main_attr" id="main_1" value="1">
+                    <label for="main_2">雷</label>
+                    <input type="checkbox" name="main_attr" id="main_2" value="2">
+                </div>
+                <p class="dialog_section">副属性</p>
+                <div class="dialog_desc">
+                    チェックを付けたもののどれかに当てはまっている場合、表示されます。<br/>
+                    チェックを入れない場合、純属性精霊のみを検索します。
+                </div>
+                <div class="dlg_attr_input">
+                    <label for="sub_0">火</label>
+                    <input type="checkbox" name="sub_attr" id="sub_0" value="0">
+                    <label for="sub_1">水</label>
+                    <input type="checkbox" name="sub_attr" id="sub_1" value="1">
+                    <label for="sub_2">雷</label>
+                    <input type="checkbox" name="sub_attr" id="sub_2" value="2">
+                    <label for="sub_3">光</label>
+                    <input type="checkbox" name="sub_attr" id="sub_3" value="3">
+                    <label for="sub_4">闇</label>
+                    <input type="checkbox" name="sub_attr" id="sub_4" value="4">
+                </div>
+            </div>
+            <div id="dialog_spec">
+                <p class="dialog_section">種族選択</p>
+                <div class="dialog_desc">
+                    チェックを付けたもののどれかに当てはまっている場合、表示されます。
+                </div>
+                <div class="dlg_spec_input">
+                </div>
+            </div>
+        </div>
     </main>
     <footer>
         <div class="links">
-            <a tabindex="-1" href="/">トップページ</a>
-            <a tabindex="-1" href="/simulator/">シミュレーター</a>
-            <a tabindex="-1" href="/damagecalc">ダメージ計算</a>
-            <a tabindex="-1" href="/tools/adjust_pt">ポイント調整</a>
+            <a target="_blank" tabindex="-1" href="/">トップページ</a>
+            <a target="_blank" tabindex="-1" href="/simulator/">シミュレーター</a>
+            <a target="_blank" tabindex="-1" href="/damagecalc">ダメージ計算</a>
+            <a target="_blank" tabindex="-1" href="/tools/adjust_pt">ポイント調整</a>
             <br/>
-            <a tabindex="-1" href="/pages/info.html">このサイトについて</a>
-            <a tabindex="-1" href="/pages/contact.html">バグ報告</a>
-            <a tabindex="-1" href="/pages/donate.html">🍣</a>
+            <a target="_blank" tabindex="-1" href="/pages/info.html">このサイトについて</a>
+            <a target="_blank" tabindex="-1" href="/pages/contact.html">バグ報告</a>
+            <a target="_blank" tabindex="-1" href="/pages/donate.html">🍣</a>
             <span class="sepalator">|</span>
-            <a tabindex="-1" href="http://blog.wiztools.net/">Blog</a>
-            <a tabindex="-1" href="https://twitter.com/wiz_tools">Twitter</a>
-            <a tabindex="-1" href="https://github.com/Arika0093/wiz_simu/">Github</a>
+            <a target="_blank" tabindex="-1" href="http://blog.wiztools.net/">Blog</a>
+            <a target="_blank" tabindex="-1" href="https://twitter.com/wiz_tools">Twitter</a>
+            <a target="_blank" tabindex="-1" href="https://github.com/Arika0093/wiz_simu/">Github</a>
         </div>
     </footer>
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdn.rawgit.com/cowboy/jquery-throttle-debounce/bb5bd71e/jquery.ba-throttle-debounce.min.js"></script>
     <script src="/download/romaji.js"></script>
     <script charset="UTF-8" src="/js/googletrc.js"></script>
