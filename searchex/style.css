@@ -15,11 +15,6 @@
 	visibility: hidden;
 }
 
-.opendialog::after{
-	font-family: FontAwesome;
-	content: "\f08e";
-}
-
 .hidden{
 	display: none;
 }
@@ -183,11 +178,12 @@ div#schbox_wrapper{
 	top: 5px;
 	background: #FFF;
 	box-shadow: 0 0 4px 2px #EEF;
-	z-index: 114514;
+	z-index: 11.4514;
 }
 div.textbox_wrap {
 	position: relative;
 	margin: 4px;
+	cursor: text;
 }
 div.textbox_wrap::after {
 	font-family: FontAwesome;
@@ -321,7 +317,7 @@ li.rst_caption{
 
 li.rst_item{
 	width: 100%;
-	padding: 4px 3px;
+	padding: 6px 3px;
 	border-bottom: 1px solid #CCC;
 	cursor: default;
 	display: table;
@@ -343,7 +339,7 @@ li.rst_item div{
 li.rst_item div.type{
 	font-style: italic;
 	color: #666;
-	width: 50px;
+	width: 60px;
 	font-size: smaller;
 }
 li.rst_item div.name{
@@ -437,6 +433,16 @@ div#resultbox_wrapper.inputed {
 	display: block;
 }
 
+a.invalid_click, a.invalid_click:hover, a.invalid_click:visited{
+	display: block;
+	color: unset;
+	text-decoration: none;
+	border-bottom: 1px solid #CCC;
+}
+a.invalid_click:last-child{
+	border-bottom: 1px solid transparent;
+}
+
 span#rst_disp_num{
 	color: #666;
 	font-size: smaller;
@@ -447,8 +453,8 @@ li.rst_chara{
 	padding: 3px 4px 0;
 }
 div.chara_icon{
-	padding-left: 1ex;
-	width: 48px;
+	padding: 0 1ex;
+	width: 52px;
 }
 div.chara_icon img{
 	width: 36px;
@@ -573,6 +579,39 @@ div#maindata{
     }
 
 }
+
+/* Dialog side */
+#dialog_side{
+	display: none;
+}
+
+.opendialog::after{
+	font-family: FontAwesome;
+	content: "\f08e";
+	margin-left: .5ex;
+}
+
+.ui-dialog{
+	font-size: 0.9em;
+}
+.ui-state-active{
+	background-color: #1e8eff !important;
+}
+
+p.dialog_section {
+	padding: 1ex 0 0;
+	font-size: medium;
+	border-bottom: 1px solid #888;
+	margin: 1ex 0 .5ex;
+}
+div.dialog_desc {
+	color: #666;
+	font-size: 0.9em;
+	/* text-align: right; */
+	line-height: 17px;
+	margin-bottom: 1ex;
+}
+
 
 /* Footer side */
 footer {

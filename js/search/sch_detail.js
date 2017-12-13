@@ -65,11 +65,10 @@ function applyCardData(c){
 		$("#Lawakes").html(schfl_genhtml_awake(c.Lawake));
 		$("#as_2").html("AS2: " + schfl_genhtml_skill("as2", c.as2, c, false));
 		$("#ss_2").html("SS2: " + schfl_genhtml_skill("ss2", c.ss2, c, true));
-	} else {
-		$("#Lawakes").hide();
-		$("#as_2").hide();
-		$("#ss_2").hide();
 	}
+	$("#Lawakes").toggle(c.islegend);
+	$("#as_2").toggle(c.islegend);
+	$("#ss_2").toggle(c.islegend);
 }
 
 
