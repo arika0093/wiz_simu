@@ -1,4 +1,8 @@
 // ----------------------------
+// 検索フィルター複合条件の一覧
+// ----------------------------
+
+// ----------------------------
 // 検索フィルターの一覧
 // ----------------------------
 var SrchFilters = [
@@ -192,7 +196,9 @@ var SrchFilters = [
 		alias: ["ゆうごう"],
 	}),
 	createSpecialSkillObject("ガード", "ガードSS"),
-	createSpecialSkillObject("ダメージブロック", "ダメブロ"),
+	createSpecialSkillObject("ダメージブロック", "ダメブロ", {
+		alias: ["だめぶろ"],
+	}),
 	createSpecialSkillObject("状態異常無効", "異常無効", {
 		alias: ["じょうたいいじょうむこう"],
 	}),
@@ -204,11 +210,11 @@ var SrchFilters = [
 	}),
 	createSpecialSkillObject("シャッフル", null),
 	createSpecialSkillObject("特殊パネル変換", "特殊ﾊﾟﾈﾙ変換", {
-		alias: ["とくしゅぱねるへんかん"],
+		alias: ["とくしゅぱねるへんかん", "こうかふよ"],
 	}),
-	createSpecialSkillObject("連結パネル生成", "連結パネル", {
+	/* createSpecialSkillObject("連結パネル生成", "連結パネル", {
 		alias: ["れんけつぱねる"],
-	}),
+	}), */
 	createSpecialSkillObject("遅延", null, {
 		alias: ["ちえん"],
 	}),
@@ -307,12 +313,91 @@ var SrchFilters = [
 	createSpecialSkillObject("チャージSS", null, {
 		cond_cd: (c) => {
 			return $.map([c.ss1, c.ss2], (e) => {
-				return (e ? e.charged : null);
-			}).length > 0;
+					return (e ? e.charged : null);
+				}).length > 0;
 		}
 	}),
+	// 特殊効果パネル
+	createSpecialSkillDetailObject("パネル付与:ダメージ軽減", "パネル付与:軽減",
+		/<特殊パネル変換>.*パネルに.*(|ダメージ)軽減/, {
+			alias: ["とくしゅぱねるへんかん", "ぱねるふよ", "だめーじけいげん", "がーど"],
+		}),
+	createSpecialSkillDetailObject("パネル付与:スキルチャージ", "パネル付与:スキチャ",
+		/<特殊パネル変換>.*パネルに.*スキル(チャージ|ブースト)/, {
+			alias: ["とくしゅぱねるへんかん", "ぱねるふよ", "すきるぶーすと", "すきちゃ", "すきぶ"],
+		}),
+	createSpecialSkillDetailObject("パネル付与:チェインプラス", "パネル付与:Ch+",
+		/<特殊パネル変換>.*パネルに.*チェイン/, {
+			alias: ["とくしゅぱねるへんかん", "ぱねるふよ", "ちぇいんぷらす", "ちぇいんふよ"],
+		}),
+	createSpecialSkillDetailObject("パネル付与:攻撃力UP", "パネル付与:攻撃UP",
+		/<特殊パネル変換>.*パネルに.*攻撃力アップ/, {
+			alias: ["とくしゅぱねるへんかん", "ぱねるふよ", "こうげきりょくあっぷ", "こうげきあっぷ"],
+		}),
+	createSpecialSkillDetailObject("パネル付与:ランダム", "パネル付与:ランダム",
+		/<特殊パネル変換>.*(|の効果を)ランダムで付与/, {
+			alias: ["とくしゅぱねるへんかん", "ぱねるふよ", "らんだむふよ", "らんだむぱねる"],
+		}),
+	// 効果解除
+	createSpecialSkillDetailObject("効果解除:ガード", null,
+		/<効果解除(|大魔術)>.*ガード/, {
+			alias: ["こうかかいじょ", "がーどかいじょ"],
+		}),
+	createSpecialSkillDetailObject("効果解除:ダメージブロック", "効果解除:ダメブロ",
+		/<効果解除(|大魔術)>.*(ダメージブロック|ダメブロ)/, {
+			alias: ["こうかかいじょ", "だめぶろ"],
+		}),
+	createSpecialSkillDetailObject("効果解除:カウンター", null,
+		/<効果解除(|大魔術)>.*(カウンター)/, {
+			alias: ["こうかかいじょ"],
+		}),
+	createSpecialSkillDetailObject("効果解除:属性吸収", "効果解除:吸収",
+		/<効果解除(|大魔術)>.*(属性吸収)/, {
+			alias: ["こうかかいじょ", "ぞくせいきゅうしゅう"],
+		}),
 	// 潜在フィルター
 	// ---------------------------------
+	createAwakeObject("経験値取得量UP", "経験値UP", {
+		src_alias: ["経験値取得量アップ"],
+		alias: ["けいけんち"],
+	}),
+	createAwakeObject("ゴールド取得量UP", "ゴールドUP", {
+		src_alias: ["ゴールド取得量アップ"],
+		alias: ["ごーるど"],
+	}),
+	createAwakeObject("ドロップ率UP", "ドロップUP", {
+		src_alias: ["ドロップアップ"],
+	}),
+	createAwakeObject("難易度ダウン", null, {
+		alias: ["なんいどだうん"],
+	}),
+	createAwakeObject("戦後回復", null, {
+		src_alias: ["バトル終了後にHP回復"],
+		alias: ["せんごかいふく", "ばとるしゅうりょうじ"],
+	}),
+	createAwakeObject("チェインブースト", null),
+	createAwakeObject("九死一生", null, {
+		alias: ["きゅうしいっしょう"],
+	}),
+	createAwakeObject("セカンドファスト", "ｾｶﾝﾄﾞﾌｧｽﾄ"),
+	createAwakeObject("AS発動時間延長", "AS延長潜在", {
+		alias: ["はつどうじかんえんちょう"],
+	}),
+	createAwakeObject("心眼", null, {
+		alias: ["しんがん"],
+	}),
+	createAwakeObject("心眼・絶", "心眼(絶)", {
+		alias: ["しんがんぜつ"],
+	}),
+	createAwakeObject("心眼・破", "心眼(破)", {
+		alias: ["しんがんは"],
+	}),
+	createAwakeObject("精霊交替", null, {
+		alias: ["せいれいこうたい"],
+	}),
+	createAwakeObject("チェインガード", "Chガード潜在"),
+	
+	
 	
 	// その他フィルター
 	// ---------------------------------
@@ -349,7 +434,7 @@ var SrchFilters = [
 	
 	// ダイアログを表示する系のフィルター
 	// ---------------------------------
-	createDialogFilterObject("属性詳細指定", "精霊の属性を詳細に指定することができます。", "attr", {
+	createDialogFilterObject("属性詳細指定", "精霊の属性を詳細に指定します。", "attr", {
 		alias: ["ぞくせいしょうさい", "火", "水", "雷", "光", "闇"],
 		short: function () {
 			var str = "";
@@ -371,19 +456,19 @@ var SrchFilters = [
 			var ss = this.dialog_obj.attr_s;
 			if(ms.length >= 0){
 				flg = flg && $.grep(ms, (e) => {
-					return c.attr[0] == e;
-				}).length > 0;
+						return c.attr[0] == e;
+					}).length > 0;
 			}
 			if(ss.length >= 0){
 				flg = flg && $.grep(ss, (e) => {
-					if(c.attr[1] == e){
-						return true;
-					}
-					// mainで指定済の属性だったら、単属性確認
-					else if(ms.indexOf(e) >= 0){
-						return c.attr[0] == e && c.attr[1] == -1;
-					}
-				}).length > 0;
+						if(c.attr[1] == e){
+							return true;
+						}
+						// mainで指定済の属性だったら、単属性確認
+						else if(ms.indexOf(e) >= 0){
+							return c.attr[0] == e && c.attr[1] == -1;
+						}
+					}).length > 0;
 			} else {
 				flg = flg && c.attr[1] == -1;
 			}
@@ -410,10 +495,10 @@ var SrchFilters = [
 			obj.attr_s = s_arr;
 		},
 	}),
-	createDialogFilterObject("種族詳細指定", "精霊の種族を詳細に指定することができます。", "spec", {
+	createDialogFilterObject("種族詳細指定", "精霊の種族を詳細に指定します。", "spec", {
 		alias: ["しゅぞくしょうさい"],
 		speclist: [
-            "龍族", "神族", "魔族", "天使", "妖精", "亜人", "物質", "魔法生物", "戦士", "術士", "アイテム", "AbCd",
+			"龍族", "神族", "魔族", "天使", "妖精", "亜人", "物質", "魔法生物", "戦士", "術士", "アイテム", "AbCd",
 		],
 		short: function () {
 			var str = "種族: ";
@@ -427,14 +512,11 @@ var SrchFilters = [
 		cond_cd: function (c) {
 			var specs = this.dialog_obj.specs;
 			return $.grep(specs, (e) => {
-				return e == c.species;
-			}).length > 0;
+					return e == c.species;
+				}).length > 0;
 		},
 		initialize: function () {
 			// 種族リストを元に色々追加
-			// alias
-			this.alias.push.apply(this.speclist);
-			// dom
 			if(!($("div.dlg_spec_input input").length)){
 				var dom = $("#dialog_spec div.dlg_spec_input");
 				dom.empty();
@@ -457,8 +539,67 @@ var SrchFilters = [
 			obj.specs = rst;
 		},
 	}),
-	// SSターン数
-	
+	createDialogFilterObject("SSターン数指定", "SS発動ターンを指定します。", "ssturn", {
+		alias: ["たーんすうしてい", "ssta-nnsuu", "ssturn", "すぺしゃるすきる"],
+		typelist: [
+			"より上", "以上", "一致", "以下", "未満"
+		],
+		is_ssturnobj: true,
+		short: function () {
+			var o = this.dialog_obj;
+			var type_short = [">", "≧", "=", "≦", "<"];
+			return `SS${o.isfast ? "初回" : "発動"}T ${type_short[o.type]} ${o.turn}`;
+		},
+		cond_ssturn : function (c, target_ss){
+			var Invalid = -99;
+			var o = this.dialog_obj;
+			var opt_turn = o.turn;
+			var opt_type = o.type;
+			var fasts = (o.isfast ? has_fastnum(undefined, c) : 0);
+			var chk_cond = (a, b) =>{
+				switch (opt_type) {
+					case 0:
+						return a > b;
+					case 1:
+						return a >= b;
+					case 2:
+						return a == b;
+					case 3:
+						return a <= b;
+					case 4:
+						return a < b;
+					default:
+						return false;
+				}
+			}
+			// SSターン数を抜き出す、対象でなかったらInvalid(処理しない)
+			var sst = $.map([c.ss1, c.ss2], (e, i) =>{
+				return ((e && target_ss[i] > 0) ? e.turn : Invalid);
+			});
+			// SSチャージT数を抜き出す
+			var ssc = o.ischarge ? $.map([c.ss1, c.ss2], (e) =>{
+					return e ? (e.charged || 0) : 0
+				}) : 0;
+			// ターン数が-1(非処理)でないなら、指定された比較条件に沿って比較
+			// どちらかがmatchしていればOK
+			return (sst[0] != Invalid && chk_cond(sst[0] - fasts + ssc[0], opt_turn))
+				|| (sst[1] != Invalid && chk_cond(sst[1] - fasts + ssc[1], opt_turn));
+		},
+		cond_cd: function (c) {
+			// SSが未指定の時はここで比較する
+			// SSが何か指定されていたら、そちらでしっかり比較する
+			// SS1またはSS2が指定した条件にmatchすればOK
+			return this.cond_ssturn(c, [1,1]);
+		},
+		initialize: () => {},
+		onsaved: function (obj) {
+			// objに突っ込む
+			obj.turn = $("#ssturn_spinner").val() - 0;
+			obj.type = $("#ssturn_type option:selected").val() - 0;
+			obj.isfast = $("#ssturn_isfast").prop("checked");
+			obj.ischarge = $("#ssturn_ischarge").prop("checked");
+		},
+	}),
 	// AS詳細
 	
 	// SS詳細
@@ -468,13 +609,72 @@ var SrchFilters = [
 	
 	// マニアックな人向けフィルター
 	// ---------------------------------
-	
-	
-];
+	// 文字列検索
+	createDialogFilterObject("文字列検索", "指定された文字列で精霊を検索します。", "string", {
+		alias: ["もじれつけんさく", "せいきひょうげん", "regex", "string", "text"],
+		short: function () {
+			var o = this.dialog_obj;
+			var pls = (o.isregex ? "/" : "\"");
+			return `${pls}${o.string}${pls}`;
+		},
+		cond_cd: function (c) {
+			var o = this.dialog_obj;
+			var is_ssflag = false;
+			var srch_txt = (!o.isregex ? o.string : new RegExp(o.string));
+			var srch_strs = [];
+			// 検索範囲をリストアップ
+			$.each(o.findpos, (i, e) => {
+				var arr = [];
+				switch(e){
+					// Card name
+					case 0:
+						arr = [c.name];
+						break;
+					// AS
+					case 1:
+						arr = $.map([c.as1,c.as2], (e) => (e ? e.desc : null));
+						break;
+					// SS
+					case 2:
+						arr = $.map([c.ss1,c.ss2], (e) => (e ? e.desc : null));
+						is_ssflag = true;
+						break;
+					// 潜在
+					case 3:
+						arr = $.map([c.awakes,c.Lawake], (e) => (e ? [e.name, e.desc] : null));
+						break;
+				}
+				srch_strs.push(...arr);
+			})
+			// 実際に検索
+			var rst = isStringContainCheck(srch_txt, srch_strs, true);
+			// SSが含まれてるならターン数も検索しとく
+			// もしかしたらコメントアウトするかも
+			if(rst && is_ssflag){
+				$.each(srch_strs, (i, e) => {
+					rst = rst && checkCond_CardSSturn(c, e);
+				})
+			}
+			return rst;
+		},
+		initialize: () => {
+			$("div#dialog_string div.dlg_string_input_checks").controlgroup();
+		},
+		onsaved: function (obj) {
+			// 検索箇所
+			var rst = []
+			var pos_checked = $("input[name=sinput_types]:checked");
+			$.each(pos_checked, (i, e) => {
+				rst.push(Number($(e).prop("value")));
+			})
+			// objに突っ込む
+			obj.string = $("#string_input").val();
+			obj.isregex = $("#string_isregex").prop("checked");
+			obj.findpos = rst;
+		},
+	}),
 
-// ----------------------------
-// 検索フィルター複合条件の一覧
-// ----------------------------
+];
 var SrchMultiFilters = [
 	createMultiFilter({
 		name: "AND",
@@ -505,7 +705,6 @@ var SrchMultiFilters = [
 	createMultiFilter({
 		name: "NAND",
 		desc: "[上級者向け]複数条件をNANDで結合します",
-		char: "%",
 		multi_cond: (a, b) => {
 			var _a = (a !== undefined ? a : true);
 			var _b = (b !== undefined ? b : true);
@@ -515,7 +714,6 @@ var SrchMultiFilters = [
 	createMultiFilter({
 		name: "NOR",
 		desc: "[上級者向け]複数条件をNORで結合します",
-		char: "~",
 		multi_cond: (a, b) => {
 			var _a = (a !== undefined ? a : true);
 			var _b = (b !== undefined ? b : true);
@@ -523,6 +721,30 @@ var SrchMultiFilters = [
 		}
 	}),
 ]
+
+
+
+// ----------------------------
+// SSターン条件を比較する関数
+function checkCond_CardSSturn(c, matchs){
+	var ss_list = $.grep([c.ss1, c.ss2], (e, i) => {
+		var rst = (e != undefined);
+		rst = rst && isStringContainCheck(matchs, e.desc, true);
+		if(rst){
+			// 全追加SSを捜査して、ターン指定Objがあったらチェックを通す
+			$.each(getAllActiveFilter(), (ai, ae) => {
+				if(ae.cond_ssturn){
+					var tg_arr = [0, 0];
+					tg_arr[i] = 1;
+					rst = rst && ae.cond_ssturn(c, tg_arr);
+				}
+			});
+		}
+		return (rst ? e : null);
+	});
+	return ss_list.length > 0;
+}
+
 
 // ----------------------------
 // 検索フィルターobjのベース
@@ -675,10 +897,7 @@ function createSpecialSkillObject(ss_name, ss_short_name, append){
 		desc: `SSが<${ss_name}>である精霊を検索します。`,
 		short: () => ss_short_name,
 		cond_cd: function (c) {
-			var ss_list = $.map([c.ss1, c.ss2], (e) => {
-				return (e ? e.desc : null);
-			});
-			return isStringContainCheck(`<${ss_name}>`, ss_list, true);
+			return checkCond_CardSSturn(c, `<${ss_name}>`);
 		},
 	}, append);
 }
@@ -692,10 +911,33 @@ function createSpecialSkillDetailObject(name, short, matchs, append){
 		desc: `[${name}]を持つ精霊を検索します。`,
 		short: () => short,
 		cond_cd: function (c) {
-			var ss_list = $.map([c.ss1, c.ss2], (e) => {
-				return (e ? e.desc : null);
+			return checkCond_CardSSturn(c, matchs);
+		},
+	}, append);
+}
+
+// 検索フィルター: 潜在(簡易)
+function createAwakeObject(aw_name, aw_short, append){
+	aw_short = aw_short || aw_name;
+	return $.extend(true, createFilterObject(), {
+		type: "awake",
+		name: aw_name,
+		desc: `[${aw_name}]潜在を持つ精霊を検索します。`,
+		short: () => aw_short,
+		cond_cd: function (c) {
+			var rst = false;
+			var srch_txt = [];
+			var	src_alias = this.src_alias || [];
+			var aws = c.awakes.concat(c.Lawake);
+			var aw_list = $.map(aws, (e) => {
+				return (e ? [e.name, e.desc] : null);
 			});
-			return isStringContainCheck(matchs, ss_list, true);
+			srch_txt.push(aw_name);
+			srch_txt.push(...src_alias);
+			$.each(srch_txt, (i, e) => {
+				rst = rst || isStringContainCheck(e, aw_list, true);
+			})
+			return rst;
 		},
 	}, append);
 }
@@ -737,7 +979,7 @@ function createMultiFilter(append){
 	return $.extend(true, createFilterObject(), {
 		type: "multi",
 		name: "",
-		char: "",
+		char: null,
 		flt1: null,
 		flt2: null,
 		short: function () {

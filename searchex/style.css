@@ -612,6 +612,25 @@ div.dialog_desc {
 	margin-bottom: 1ex;
 }
 
+input.dlg_input {
+	border: 1px solid #CCC;
+	border-radius: 3px;
+	padding: 1ex 0 1ex 1ex;
+	margin: .5ex 0;
+	max-width: 100%;
+	width: 300px;
+}
+input.dlg_input_number{
+	max-width: 100px;
+	text-align: right;
+}
+select.dlg_select {
+	padding: .9ex;
+	margin: .5ex 0;
+	vertical-align: bottom;
+	padding-bottom: 1ex;
+}
+
 
 /* Footer side */
 footer {

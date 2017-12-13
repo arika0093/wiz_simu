@@ -104,9 +104,6 @@
 
         <!-- Dialog side -->
         <div id="dialog_side">
-            <div id="dialog_test">
-                <span>This is a test dialog. OK?</span>
-            </div>
             <div id="dialog_attr">
                 <p class="dialog_section">主属性</p>
                 <div class="dialog_desc">
@@ -144,6 +141,51 @@
                     チェックを付けたもののどれかに当てはまっている場合、表示されます。
                 </div>
                 <div class="dlg_spec_input">
+                </div>
+            </div>
+            <div id="dialog_ssturn">
+                <p class="dialog_section">SSターン数指定</p>
+                <div class="dialog_desc">
+                    現在指定しているSS条件の中から、SSターン数の条件を満たすものを表示します。
+                </div>
+                <div class="dlg_ssturn_input">
+                    <input type="number" min="0" step="1" id="ssturn_spinner" class="dlg_input dlg_input_number" placeholder="発動ターン"> T
+                    <select id="ssturn_type" class="dlg_select">
+                        <option value="0">より上</option>
+                        <option value="1">以上</option>
+                        <option value="2">一致</option>
+                        <option value="3" selected>以下</option>
+                        <option value="4">未満</option>
+                    </select>
+                    <input type="checkbox" id="ssturn_isfast" checked>
+                    <label for="ssturn_isfast">FS考慮</label>
+                    <input type="checkbox" id="ssturn_ischarge" checked>
+                    <label for="ssturn_ischarge">チャージT考慮</label>
+                </div>
+            </div>
+            <div id="dialog_string">
+                <p class="dialog_section">検索文字列指定</p>
+                <div class="dialog_desc">
+                    入力した文字列が含まれている精霊を表示します。
+                </div>
+                <div class="dlg_string_input">
+                    <input type="text" id="string_input" class="dlg_input" placeholder="search text">
+                    <input type="checkbox" id="string_isregex">
+                    <label for="string_isregex">正規表現</label><br/>
+                </div>
+                <p class="dialog_section">検索範囲指定</p>
+                <div class="dialog_desc">
+                    チェックされた箇所のみを検索します。
+                </div>
+                <div class="dlg_string_input_checks">
+                    <label for="stringinput_name">精霊名</label>
+                    <input type="checkbox" name="sinput_types" id="stringinput_name" value="0">
+                    <label for="stringinput_as">AS</label>
+                    <input type="checkbox" name="sinput_types" id="stringinput_as" value="1">
+                    <label for="stringinput_ss">SS</label>
+                    <input type="checkbox" name="sinput_types" id="stringinput_ss" value="2">
+                    <label for="stringinput_aw">潜在</label>
+                    <input type="checkbox" name="sinput_types" id="stringinput_aw" value="3">
                 </div>
             </div>
         </div>
