@@ -587,7 +587,9 @@ function isStringContainCheck(base, targets, ignore_roman){
 			rst = rst || base.test(t);
 		} else {
 			var h2k_t = h2k(t);
-			rst = rst || t.indexOf(base) >= 0
+			rst = rst
+				|| t.indexOf(base.toLowerCase()) >= 0
+				|| t.indexOf(base.toUpperCase()) >= 0
 				|| (!ignore_roman && h2k_t.indexOf(r2k(base)) >= 0)
 				|| (!ignore_roman && h2k_t.indexOf(h2k(base)) >= 0)
 		}
