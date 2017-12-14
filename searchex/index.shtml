@@ -10,7 +10,7 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Spectral+SC">
     <title>精霊検索 - Wiztools</title>
-    <meta name="description" content="Simple, Speedy and Powerful. 「魔法使いと黒猫のウィズ」最強の精霊検索ツール。" />
+    <meta name="description" content="Simple, Speedy and Powerful. 「魔法使いと黒猫のウィズ」多機能精霊検索ツール。" />
     <link type="text/css" rel="stylesheet" charset="UTF-8" href="/css/s_detail.css" />
     <link type="text/css" rel="stylesheet" href="style.css" />
 </head>
@@ -23,8 +23,9 @@
         <div id="search_wrap">
             <!-- Search Box -->
             <div id="schbox_wrapper">
-                <div class="textbox_wrap">
+                <div class="textbox_wrap clearfix">
                     <input type="text" id="schbox" autocomplete="off" placeholder="精霊名, 属性, 種族名, スキル名 etc..." />
+                    <div id="url_generate" title="検索結果をURLに保存します。"><i class="fa fa-floppy-o" aria-hidden="true"></i></div>
                 </div>
             </div>
 
@@ -104,6 +105,13 @@
 
         <!-- Dialog side -->
         <div id="dialog_side">
+            <div id="search_dialog_save" title="URL保存">
+                <p class="dialog_section">URL保存</p>
+                <div class="dialog_desc">
+                    現在の検索条件を以下のURLに保存しました。
+                </div>
+                <input type="text" id="url_save_path" class="dlg_input dlg_input_widthfull" readonly>
+            </div>
             <div id="dialog_attr">
                 <p class="dialog_section">主属性</p>
                 <div class="dialog_desc">
@@ -133,6 +141,7 @@
                     <input type="checkbox" name="sub_attr" id="sub_3" value="3">
                     <label for="sub_4">闇</label>
                     <input type="checkbox" name="sub_attr" id="sub_4" value="4">
+                    <input type="button" name="sub_attr_alltoggle" id="sub_alltoggle" value="全部ON/OFF">
                 </div>
             </div>
             <div id="dialog_spec">
@@ -141,6 +150,22 @@
                     チェックを付けたもののどれかに当てはまっている場合、表示されます。
                 </div>
                 <div class="dlg_spec_input">
+                </div>
+            </div>
+            <div id="dialog_aschain">
+                <p class="dialog_section">ASチェイン数指定</p>
+                <div class="dialog_desc">
+                    現在指定しているAS条件の中から、ASチェイン数の条件を満たすものを表示します。
+                </div>
+                <div class="dlg_ssturn_input">
+                    <input type="number" min="0" step="1" id="aschain_spinner" class="dlg_input dlg_input_number" placeholder="発動チェイン"> ch
+                    <select id="aschain_type" class="dlg_select">
+                        <option value="0">より上</option>
+                        <option value="1">以上</option>
+                        <option value="2">一致</option>
+                        <option value="3" selected>以下</option>
+                        <option value="4">未満</option>
+                    </select>
                 </div>
             </div>
             <div id="dialog_ssturn">

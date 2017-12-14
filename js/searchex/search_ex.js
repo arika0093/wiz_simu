@@ -19,7 +19,6 @@ $(() => {
 		}
 	}).reverse();
 
-	
 	// カードIDが指定されていたらそれを開く
 	var cardid = sepalateAndGetQuery("id");
 	if(cardid){
@@ -30,6 +29,27 @@ $(() => {
 			setUpperStyle();
 			displayCardDetail(cs[0]);
 		}
+	}
+	
+	// 検索クエリが指定されていたら復元を試みる
+	var query = sepalateAndGetQuery("q");
+	if(query){
+		deckdata_LoadUrl(query, (result) => {
+			// 復元
+			var js = JSON.parse(result);
+			var long = js.long.replace(/(^"|"$)/g, "");
+			var so = restoreActiveFilterFromJSON(long);
+			if(so.af){
+				ActiveSrchFilter = so.af;
+			}
+			var txtbox = $("input#schbox");
+			txtbox.val(so.inp);
+			setUpperStyle();
+			toggleClassOfInputed();
+			outputFilterConditionElement();
+			listupFilterCondition(so.inp);
+			listupCardThrowFilter(so.inp);
+		})
 	}
 	
 	// 疑似textboxがクリックされたら本来のtextboxにフォーカスを移す
@@ -81,6 +101,37 @@ $(() => {
 				listupCardThrowFilter(val);
 			}
 		}));
+	// URL保存をクリックした時の処理
+	$("#url_generate")
+		.on("click", () => {
+			// まずjson化して
+			var js = convertActiveFilterToJSON();
+			// URL保存
+			deckdata_SaveUrl(js, (result) => {
+				var js_rst = JSON.parse(result);
+				var url = `http://wiztools.net/searchex/?q=${js_rst.short}`;
+				// history.pushState('','',"/searchex/?q=" + js_rst.short);
+				$("#url_save_path").val(url);
+				// dialogを開く
+				$("#search_dialog_save").dialog({
+					width: 500,
+					modal: true,
+					open: function () {
+						$(".ui-dialog-titlebar").hide();
+					},
+					buttons: {
+						"URLコピー": function (e, ui) {
+							var alt_str = execCopy(url) ? "クリップボードにURLをコピーしました！" : "未対応です。";
+							alert(alt_str);
+						},
+						"閉じる": function (e, ui) {
+							$(this).dialog("close");
+						}
+					},
+				});
+			})
+			
+		})
 	// フィルター検索結果をクリックした時の結果をあらかじめ記述
 	$("#filterbox_wrapper")
 		.on("click", "li.rst_item", function () {
@@ -118,6 +169,7 @@ $(() => {
 				displayCardDetail(c);
 			}
 		})
+	// 精霊クリック時に、aリンクが作動しないように指定
 	$(document)
 		.on("click", "a.invalid_click", (e) => {
 			e.preventDefault();
@@ -185,13 +237,14 @@ $(() => {
 	listupSortCondition();
 	$("input[name=sortradio]#sortby_regist").prop("checked", true);
 	
-	// その他labelとかの出力
+	// その他labelとかtooltipの出力
+	$("*[title]").tooltip();
 	$("#reg_num").text(`${Cards.length}`);
 	
 	
 	
-	
-	
+	// regexをJSONにできるようにしておく
+	RegExp.prototype.toJSON = RegExp.prototype.toString;
 	
 	
 })
@@ -299,7 +352,7 @@ function listupCardThrowFilter(inp_text){
 		var ss_type = ss_match ? ss_match[0].replace("<","").replace(">","") : "-----";
 		var ss_turn = `${Math.max(c.ss1.turn - fast, 0)}`+
 			`${c.ss2 ? ("/" + Math.max(c.ss2.turn - fast, 0)) : ""}`;
-		return `<a class="invalid_click" href="/search/detail/?id=${c.cardno}">
+		return `<a tabindex="-1" class="invalid_click" href="/search/detail/?id=${c.cardno}">
 				<li class="rst_item rst_chara" data-index="${c.index}">
                     <div class="chara_icon"><img src="${get_image_url(c.imageno, c.imageno_prefix)}" /></div>
                     <div class="chara_name">${c.name}</div>
@@ -426,6 +479,7 @@ function addObjectToActiveFilter(target, added_obj){
 		var pushed_flag = true;
 		// (追加されるobj)追加時関数を確認する
 		added_flag = added_obj.do_added(getAllActiveFilter(), {
+			matched_str: matched_str,
 			clicked: clicked,
 		});
 		// (複合フィルター条件)追加時関数を確認する
@@ -490,6 +544,7 @@ function toggleClassOfInputed(){
 	$("div#infobox_wrapper").toggleClass("inputed", isinput);
 	$("div#filterbox_wrapper").toggleClass("inputed", isinput);
 	$("div#resultbox_wrapper").toggleClass("inputed", isinput);
+	$("div#url_generate").toggleClass("isinput", isinput);
 	return {val, isstrinput, isinput};
 }
 
@@ -583,8 +638,10 @@ function isStringContainCheck(base, targets, ignore_roman){
 	for(var i=0; i < targets.length; i++){
 		var t = targets[i];
 		// 正規表現で渡されていたらtest, そうでないならindexOf
-		if(base.test){
+		if(base.test) {
 			rst = rst || base.test(t);
+		} else if(t.test){
+			rst = rst || t.test(base);
 		} else {
 			var h2k_t = h2k(t);
 			rst = rst

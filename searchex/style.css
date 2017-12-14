@@ -178,21 +178,32 @@ div#schbox_wrapper{
 	top: 5px;
 	background: #FFF;
 	box-shadow: 0 0 4px 2px #EEF;
-	z-index: 11.4514;
+	z-index: 11;
 }
 div.textbox_wrap {
 	position: relative;
 	margin: 4px;
 	cursor: text;
 }
-div.textbox_wrap::after {
-	font-family: FontAwesome;
-	content: "\f002";
-	position: absolute;
-	right: 10px;
-	bottom: 5px;
-	color: #444;
+
+div#url_generate {
+	display: none;
+	opacity: 0;
+	animation-name: fade-in;
+	animation-duration: .3s;
 }
+div#url_generate.isinput {
+	display: block;
+	opacity: 1;
+	float: right;
+	color: #048;
+	padding: 0 1ex;
+	cursor: pointer;
+}
+div#url_generate:hover {
+	color: #fd7331;
+}
+
 div.sch_opt_box {
 	display: inline-block;
 	padding: 2px 4px;
@@ -225,7 +236,7 @@ div.sch_opt_box:hover span.sch_opt_label{
 	color: #888;
 }
 div.sch_opt_box:hover span.sch_opt_label::after {
-	text-decoration: none;
+	text-decoration: none !important;
 	color: #F40;
 }
 
@@ -343,7 +354,7 @@ li.rst_item div.type{
 	font-size: smaller;
 }
 li.rst_item div.name{
-	width: 200px;
+	width: 220px;
 }
 li.rst_item div.desc{
 	font-size: small;
@@ -353,7 +364,7 @@ li.rst_item div.desc{
 
 @media screen and (max-width: 720px) {
 	li.rst_item div.name{
-		width: 140px;
+		/*width: 140px;*/
 	}
 }
 @media screen and (max-width: 500px) {
@@ -528,7 +539,7 @@ div.closed_hover{
 }
 
 
-	div#close_aside{
+div#close_aside{
 	text-decoration: underline;
 	color: #06C;
 	display: block;
@@ -591,13 +602,6 @@ div#maindata{
 	margin-left: .5ex;
 }
 
-.ui-dialog{
-	font-size: 0.9em;
-}
-.ui-state-active{
-	background-color: #1e8eff !important;
-}
-
 p.dialog_section {
 	padding: 1ex 0 0;
 	font-size: medium;
@@ -620,6 +624,9 @@ input.dlg_input {
 	margin: .5ex 0;
 	max-width: 100%;
 	width: 300px;
+}
+input.dlg_input_widthfull{
+	width: 100%;
 }
 input.dlg_input_number{
 	max-width: 100px;
@@ -654,4 +661,17 @@ footer a {
 footer a:hover{
 	color: #444;
 	text-shadow: 0px 0px 10px #888;
+}
+
+
+/* jquery UI */
+.ui-dialog{
+	font-size: 0.9em;
+}
+.ui-state-active{
+	background-color: #1e8eff !important;
+}
+.ui-tooltip{
+	font-size: smaller;
+	box-shadow: 0 0 4px #CCC;
 }
