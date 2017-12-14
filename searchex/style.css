@@ -93,6 +93,7 @@ body{
 	padding: 1ex 0 0;
 	display: flex;
 	flex-direction: column;
+	font-size: medium;
 }
 
 /* Header */
@@ -286,6 +287,11 @@ dl.list dd{
 	padding: 1ex;
 	margin: 0 0 1em 2em;
 }
+@media screen and (max-width: 720px) {
+	dl.list dd{
+		margin-left: 1em;
+	}
+}
 
 span#reg_num {
 	font-weight: bolder;
@@ -293,6 +299,76 @@ span#reg_num {
 	font-style: italic;
 	color: #004080;
 }
+
+label.oc_howto_detail_label {
+	cursor: pointer;
+	text-align: center;
+	display: block;
+	padding: 1.2ex;
+	/* background-color: #FFF; */
+	border: 1px solid #8CF;
+	border-radius: 4px;
+	margin: 1ex 0 0;
+}
+label.oc_howto_detail_label:hover {
+	background-color: #CEF;
+	border-color: #08F;
+	/* color: #000; */
+}
+label.oc_howto_detail_label:before {
+	font-family: FontAwesome;
+	content: "\f103";
+	margin-right: 1ex;
+	/* color: #08F; */
+	/* font-weight: lighter; */
+}
+
+dl.list dl.sublist{
+	font-size: medium;
+}
+
+dl.sublist dt{
+	padding: .5em 0;
+	font-style: normal;
+}
+dl.sublist dt:before{
+	content: "\f105";
+}
+dl.sublist dd {
+	margin-bottom: 1.8em;
+}
+
+span.example:after{
+	font-family: FontAwesome;
+	content: "\f101";
+	margin: 0 .5ex 0 1ex;
+}
+span.boxlike{
+	padding: 1px;
+	border: 1px solid #CCC;
+	border-radius: 3px;
+	background-color: #FFF;
+	display: inline-block;
+	margin: 1px;
+}
+span.codelike{
+	padding: 2px;
+	border: 1px solid #CCC;
+	border-radius: 2px;
+	background-color: #F6F6F6;
+}
+div.sample_inner{
+	margin: 1ex;
+	padding: .5ex;
+	border: 1px solid #DDF;
+	border-radius: 3px;
+	background: #FAFAFF;
+}
+div.sample_inner .sch_opt_box {
+	background: #FFF;
+}
+
+
 
 
 
@@ -403,14 +479,16 @@ div.oc_area{
 	opacity: 0;
 	animation-duration: .4s;
 	animation-name: fade-in;
+}
+div.oc_sortarea{
 	padding: 3px 1ex;
 	border-bottom: 1px dashed #06C;
 }
+
 input.oc_check:checked ~ div.oc_area{
 	display: block;
 	opacity: 1;
 	margin-bottom: 1ex;
-	font-style: italic;
 }
 
 .list_sortopts {

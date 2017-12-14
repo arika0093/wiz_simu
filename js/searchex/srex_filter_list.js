@@ -363,6 +363,14 @@ var SrchFilters = [
 		alias: ["かいふく"],
 	}),
 	createAnswerSkillObject("ガード", "ガードAS"),
+	// AS詳細フィルター
+	// ---------------------------------
+	createAnswerSkillDetailObject("攻撃系AS", null, /(?!回復|ガード)/, {
+		alias: ["こうげきけいあんさーすきる"],
+	}),
+	createAnswerSkillDetailObject("連撃AS", null, /(|属性特効)連撃/, {
+		alias: ["れんげき"],
+	}),
 	// SS簡易フィルター
 	// ---------------------------------
 	createSpecialSkillObject("大魔術", null, {
@@ -508,7 +516,7 @@ var SrchFilters = [
 		alias: ["げきはきょうか"],
 	}),
 	createSpecialSkillObject("回復", "回復SS", {
-		alias: ["かいふく"],
+		alias: ["かいふくSS", "SSかいふく"],
 	}),
 	createSpecialSkillObject("継続回復", null, {
 		alias: ["けいぞくかいふく", "りじぇね"],
@@ -711,7 +719,10 @@ var SrchFilters = [
 						break;
 					// 潜在
 					case 3:
-						arr = $.map([c.awakes,c.Lawake], (e) => (e ? [e.name, e.desc] : null));
+						var mapconcat = (a, b) => {
+							return $.map([a,b], (ab) => ab ? ab : null);
+						}
+						arr = $.map(mapconcat(e.awakes, e.Lawake), (e) => (e ? [e.name, e.desc] : null));
 						break;
 				}
 				srch_strs.push(...arr);
@@ -1007,6 +1018,28 @@ function createAnswerSkillObject(as_name, as_short_name, append){
 		cond_cd: function (c) {
 			var regex_str = `(\<${this.params.as_name}|・${this.params.as_name}\>)`;
 			return checkCond_CardASchain(c, new RegExp(regex_str));
+		},
+	}, append);
+}
+
+// 検索フィルター: AS(詳細)
+function createAnswerSkillDetailObject(name, short, matches, append){
+	short = short || name;
+	return $.extend(true, createFilterObject(), {
+		id: `answer_${name}`,
+		params: {
+			name: name,
+			short: short,
+			matches: matches,
+		},
+		type: "answer",
+		name: name,
+		desc: `[${name}]を所持している精霊を検索します。`,
+		short: function () {
+			return this.params.short;
+		},
+		cond_cd: function (c) {
+			return checkCond_CardASchain(c, this.params.matches);
 		},
 	}, append);
 }

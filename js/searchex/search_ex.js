@@ -605,6 +605,14 @@ function isStringContainedInCard(t, e){
 			}
 			return arr;
 		}(), true);
+	// 潜在能力
+	var mapconcat = (a, b) => {
+		return $.map([a,b], (ab) => ab ? ab : null);
+	}
+	var aws = $.map(mapconcat(e.awakes, e.Lawake), (aw_e) => {
+		return aw_e ? [aw_e.name, aw_e.desc] : null;
+	});
+	check_cont_str = check_cont_str || isStringContainCheck(t, aws, true);
 	return check_cont_str;
 }
 
