@@ -41,19 +41,26 @@
                         <input type="checkbox" id="howto_detail" class="oc_check">
                         <div class="oc_area oc_detail_area">
                             <dl class="sublist">
-                                <dt>Wiztools Search</dt>
+                                <dt id="links">目次</dt>
                                 <dd>
-                                    指定した条件で精霊検索を行うことができるツールです。<br/>
-                                    ASやSSの種類、属性、SSの発動ターン数など、幅広い条件で検索が可能です。
+                                    <div class="howto_detail_index">
+                                        <a href="#cond_01">条件指定[1: 直接入力]</a>
+                                        <a href="#cond_02">条件指定[2: 絞り込み条件]</a>
+                                        <a href="#cond_03">条件指定[3: 詳細絞り込み]</a>
+                                        <a href="#cond_04">条件指定[4: 条件否定]</a>
+                                        <a href="#cond_05">条件指定[5: 検索範囲を指定 / 正規表現]</a>
+                                        <a href="#cond_06">条件指定[6: 複数条件をつなげる]</a>
+                                        <a href="#alllistup">実装済のフィルター種類</a>
+                                    </div>
                                 </dd>
-                                <dt>条件指定[1: 直接入力]</dt>
+                                <dt id="cond_01">条件指定[1: 直接入力]</dt>
                                 <dd>
                                     検索欄に直接、探したい条件を入力する方法です。<br/>
                                     入力された文字が「精霊名, AS説明文, SS説明文, 潜在」のどこかに含まれていたら表示します。<br><br/>
                                     <span class="example">例</span>
                                     <span class="codelike">クレティア</span>と入力 → クレティア・ブライユが表示されます。
                                 </dd>
-                                <dt>条件指定[2: 絞り込み条件]</dt>
+                                <dt id="cond_02">条件指定[2: 絞り込み条件]</dt>
                                 <dd>
                                     例えば、<span class="codelike">火属性</span>と入力するとこんな欄が表示されます。
                                     <div class="sample_inner" >
@@ -72,7 +79,7 @@
                                     <span class="example">例2</span>
                                     <span class="boxlike">龍族</span><span class="boxlike">特効大魔術</span> → 龍族 かつ 特効大魔術SSを持つ精霊のみがリストアップされます。
                                 </dd>
-                                <dt>条件指定[3: 詳細絞り込み]</dt>
+                                <dt id="cond_03">条件指定[3: 詳細絞り込み]</dt>
                                 <dd>
                                     先ほどと同様に、<span class="codelike">SSターン数</span>と入力するとこんな欄が表示されます。
                                     <div class="sample_inner" >
@@ -87,7 +94,7 @@
                                     これをクリックすると、ダイアログが表示されます。<br>
                                     検索したい条件をクリックした後に[追加]ボタンを押すと、指定した条件が追加されます。<br>
                                 </dd>
-                                <dt>条件指定[4: 条件否定]</dt>
+                                <dt id="cond_04">条件指定[4: 条件否定]</dt>
                                 <dd>
                                     特定の条件を検索結果から除外したい時に使える手法です。<br/>
                                     入力欄に絞り込み条件を入力し、一番最後に<span class="codelike">!</span>を付け足します。<br/><br/>
@@ -102,9 +109,33 @@
                                     このような形で検索条件に追加されます。<br>
                                     こうすることで、例えばチャージスキルを除外したりする柔軟な検索が可能となります。<br>
                                 </dd>
-                                <dt>条件指定[5: 複数条件をつなげる]</dt>
+                                <dt id="cond_05">条件指定[5: 検索範囲を指定 / 正規表現]</dt>
                                 <dd>
-                                    A<b>または</b>Bが当てはまる精霊が見たい、という時に使用できる手法です。<br/>
+                                    SSからのみ文字列を探したい、といったケースで有効です。<br/>
+                                    入力欄に探したい文字を入力し、一番最後に<span class="codelike">"</span>を付け足します。<br/>
+                                    すると、
+                                    <div class="sample_inner" >
+                                        <ul class="result">
+                                            <li class="rst_item">
+                                                <div class="type">dialog</div>
+                                                <div class="name">文字列検索</div>
+                                                <div class="desc opendialog">指定された文字列で精霊を検索します。</div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    が表示されるのでクリックします。<br/>
+                                    後は、検索範囲を指定して、正規表現の有無を指定してから[追加]を押せば検索が可能です。<br/><br/>
+                                    <span class="example">例</span>
+                                    <span class="codelike">特[効攻]<b>"</b></span> →
+                                    <div class="sample_inner" >
+                                        <div class="sch_opt_box sch_opt_notbox">
+                                            <span class="sch_opt_label">/特[効攻]/</span>
+                                        </div>
+                                    </div>
+                                </dd>
+                                <dt id="cond_06">条件指定[6: 複数条件をつなげる]</dt>
+                                <dd>
+                                    A <b>または</b> Bが当てはまる精霊が見たい、という時に使用できる手法です。<br/>
                                     まず、入力欄に<span class="codelike">OR</span>と入力し、出てきた
                                     <div class="sample_inner" >
                                         <ul class="result">
@@ -140,6 +171,12 @@
                                             <span class="sch_opt_label">[[回復AS AND AS発動ch = 0] OR 異常回復]</span>
                                         </div>
                                     </div>
+                                </dd>
+                                <dt id="alllistup">実装済のフィルター種類</dt>
+                                <dd>
+                                    ここに表示されているフィルターが現在使用可能です。
+                                    <ul id="filter_alllist" class="result">
+                                    </ul>
                                 </dd>
                             </dl>
                         </div>
