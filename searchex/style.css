@@ -328,15 +328,34 @@ dl.list dl.sublist{
 }
 
 dl.sublist dt{
-	padding: .5em 0;
+	padding: 1ex 0;
 	font-style: normal;
+	border: 1px solid #88C;
+	background: #F0F0FF;
 }
 dl.sublist dt:before{
 	content: "\f105";
 }
 dl.sublist dd {
 	margin-bottom: 1.8em;
+	margin-left: 1.2em;
 }
+
+div.howto_detail_index a {
+	display: block;
+	padding: .5ex 4px;
+	/* border: 1px solid #8CF; */
+	/* margin: 3px 0; */
+}
+div.howto_detail_index a:before {
+	font-family: FontAwesome;
+	content: "\f101";
+	padding-right: .5ex;
+}
+div.howto_detail_index a, div.howto_detail_index a:visited {
+	color: #04F;
+}
+
 
 span.example:after{
 	font-family: FontAwesome;
@@ -362,10 +381,18 @@ div.sample_inner{
 	padding: .5ex;
 	border: 1px solid #DDF;
 	border-radius: 3px;
-	background: #FAFAFF;
+	/* background: #FAFAFF; */
 }
 div.sample_inner .sch_opt_box {
 	background: #FFF;
+}
+
+ul#filter_alllist {
+	margin: 1ex 0;
+	padding: 1ex;
+	max-height: 600px;
+	border: 1px solid #8CC;
+	overflow-y: scroll;
 }
 
 

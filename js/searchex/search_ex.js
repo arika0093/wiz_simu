@@ -233,6 +233,13 @@ $(() => {
 	// 複合フィルターを普通のフィルター条件に追加
 	Array.prototype.push.apply(SrchFilters, SrchMultiFilters);
 	
+	// フィルター全種類リストアップ
+	var rst = "";
+	$.each(SrchFilters, (i, e) => {
+		rst += genFilterItemHtml(e);
+	})
+	$("#filter_alllist").html(rst);
+	
 	// ソート種類の出力
 	listupSortCondition();
 	$("input[name=sortradio]#sortby_regist").prop("checked", true);
@@ -245,8 +252,6 @@ $(() => {
 	
 	// regexをJSONにできるようにしておく
 	RegExp.prototype.toJSON = RegExp.prototype.toString;
-	
-	
 })
 
 // 現在の絞り込み条件を出力
@@ -269,21 +274,23 @@ function outputFilterConditionElement(){
 	
 }
 
-// 絞り込みの条件をずらずらリストアップ
-function listupFilterCondition(inp_text) {
-	// 出力関数
-	var genhtml = (flt) => {
-		var dlgclass = (flt.dialog != "" ? "opendialog" : "");
-		var dsc = flt.desc
-			.replace(/</, "&lt;")
-			.replace(/>/, "&gt;")
-			.replace(/\n/g, "<br/>");
-		return `<li class="rst_item" data-index="${flt.index}" data-matched="${flt.matched}" >
+// 絞り込み条件を描画する関数
+function genFilterItemHtml(flt, isdata) {
+	var dlgclass = (flt.dialog != "" ? "opendialog" : "");
+	var dsc = flt.desc
+		.replace(/</, "&lt;")
+		.replace(/>/, "&gt;")
+		.replace(/\n/g, "<br/>");
+	return `<li class="rst_item" data-index="${flt.index || -1}" data-matched="${flt.matched || -1}" >
 			<div class="type">${flt.type}</div>
 			<div class="name">${flt.name}</div>
 			<div class="desc ${dlgclass}">${dsc}</div>
 		</li>`;
-	}
+}
+
+// 絞り込みの条件をずらずらリストアップ
+function listupFilterCondition(inp_text) {
+	// 出力関数
 	var flt_base_selector = "#filterbox_wrapper";
 	// 既に追加されている要素を一旦消す
 	$(flt_base_selector + " li").remove();
@@ -330,7 +337,7 @@ function listupFilterCondition(inp_text) {
 		var flt_base = $(flt_base_selector + " ul.result");
 		var output = `<li class="rst_caption">絞り込み条件</li>`;
 		for(var i = 0; i < flts.length; i++){
-			output += genhtml(flts[i]);
+			output += genFilterItemHtml(flts[i]);
 		}
 		if(is_overlst){
 			output += `<li class="rst_overlst">${FilterListupMax}件以上の絞り込み条件が該当したため、`+

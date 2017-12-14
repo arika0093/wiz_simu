@@ -247,6 +247,83 @@ var SrchFilters = [
 			obj.ischarge = $("#ssturn_ischarge").prop("checked");
 		},
 	}),
+	createDialogFilterObject("文字列検索", "指定された文字列で精霊を検索します。", "string", {
+		alias: ["もじれつけんさく", "せいきひょうげん", "regex", "string", /.?"$/],
+		short: function () {
+			var o = this.dialog_obj;
+			var pls = (o.isregex ? "/" : "\"");
+			return `${pls}${o.string}${pls}`;
+		},
+		is_stringfilter: true,
+		cond_cd: function (c) {
+			var o = this.dialog_obj;
+			var is_ssflag = false;
+			var srch_txt = (!o.isregex ? o.string : new RegExp(o.string));
+			var srch_strs = [];
+			// 検索範囲をリストアップ
+			$.each(o.findpos, (i, e) => {
+				var arr = [];
+				switch(e){
+					// Card name
+					case 0:
+						if(c.alias){
+							arr = [].concat(c.name, ...c.alias);
+						} else {
+							arr = [c.name];
+						}
+						break;
+					// AS
+					case 1:
+						arr = $.map([c.as1,c.as2], (e) => (e ? e.desc : null));
+						break;
+					// SS
+					case 2:
+						arr = $.map([c.ss1,c.ss2], (e) => (e ? e.desc : null));
+						is_ssflag = true;
+						break;
+					// 潜在
+					case 3:
+						var mapconcat = (a, b) => {
+							return $.map([a,b], (ab) => ab ? ab : null);
+						}
+						arr = $.map(mapconcat(e.awakes, e.Lawake), (e) => (e ? [e.name, e.desc] : null));
+						break;
+				}
+				srch_strs.push(...arr);
+			})
+			// 実際に検索
+			var rst = isStringContainCheck(srch_txt, srch_strs, true);
+			// SSが含まれてるならターン数も検索しとく
+			// もしかしたらコメントアウトするかも
+			if(rst && is_ssflag){
+				rst = checkCond_CardSSturn(c, srch_txt);
+			}
+			return rst;
+		},
+		initialize: function () {
+			// /または"で入力してきたなら、入力中の文字列を突っ込む
+			var o = this.dialog_obj;
+			var str = o.matched_str;
+			if(str.indexOf("\"") >= 0){
+				str = str.replace(/["!&|^]/g, "");
+				$("#string_input").val(str);
+			}
+			// contorolgroup initialize
+			$("div#dialog_string div.dlg_string_input_checks").controlgroup();
+		},
+		onsaved: function (obj) {
+			// 検索箇所
+			var rst = []
+			var pos_checked = $("input[name=sinput_types]:checked");
+			$.each(pos_checked, (i, e) => {
+				rst.push(Number($(e).prop("value")));
+			})
+			// objに突っ込む
+			obj.string = $("#string_input").val();
+			obj.isregex = $("#string_isregex").prop("checked");
+			obj.findpos = rst;
+		},
+	}),
 	
 	// 属性フィルター
 	// ---------------------------------
@@ -370,6 +447,9 @@ var SrchFilters = [
 	}),
 	createAnswerSkillDetailObject("連撃AS", null, /(|属性特効)連撃/, {
 		alias: ["れんげき"],
+	}),
+	createAnswerSkillDetailObject("味方HP削りAS", "全体自傷AS", /味方のMAXHP[0-9]{2,}[%％]を使/, {
+		alias: ["みかた", "ぜんたい", "けずり", "じしょう"],
 	}),
 	// SS簡易フィルター
 	// ---------------------------------
@@ -554,8 +634,8 @@ var SrchFilters = [
 	createSpecialSkillDetailObject("スキル反射無視", "反射無視", /スキル反射を無視し/, {
 		alias: ["すきるはんしゃむし"],
 	}),
-	createSpecialSkillDetailObject("味方HP削りSS", null, /味方全体の(|MAX)HP(|の)[0-9]{1,3}%を/, {
-		alias: ["みかたHPけずり"],
+	createSpecialSkillDetailObject("味方HP削りSS", null, /味方全体の(|MAX)HP(|の)[0-9]{1,3}[%％]を/, {
+		alias: ["みかたHPけずり", "ぜんたいじしょう"],
 	}),
 	createSpecialSkillDetailObject("不調SS", null, /HP(|が)[0-9]{1,3}%以下/, {
 		alias: ["HPいぞん", "ふちょう"],
@@ -682,84 +762,6 @@ var SrchFilters = [
 	
 	// マニアックな人向けフィルター
 	// ---------------------------------
-	// 文字列検索
-	createDialogFilterObject("文字列検索", "指定された文字列で精霊を検索します。", "string", {
-		alias: ["もじれつけんさく", "せいきひょうげん", "regex", "string", /.?"$/],
-		short: function () {
-			var o = this.dialog_obj;
-			var pls = (o.isregex ? "/" : "\"");
-			return `${pls}${o.string}${pls}`;
-		},
-		is_stringfilter: true,
-		cond_cd: function (c) {
-			var o = this.dialog_obj;
-			var is_ssflag = false;
-			var srch_txt = (!o.isregex ? o.string : new RegExp(o.string));
-			var srch_strs = [];
-			// 検索範囲をリストアップ
-			$.each(o.findpos, (i, e) => {
-				var arr = [];
-				switch(e){
-					// Card name
-					case 0:
-						if(c.alias){
-							arr = [].concat(c.name, ...c.alias);
-						} else {
-							arr = [c.name];
-						}
-						break;
-					// AS
-					case 1:
-						arr = $.map([c.as1,c.as2], (e) => (e ? e.desc : null));
-						break;
-					// SS
-					case 2:
-						arr = $.map([c.ss1,c.ss2], (e) => (e ? e.desc : null));
-						is_ssflag = true;
-						break;
-					// 潜在
-					case 3:
-						var mapconcat = (a, b) => {
-							return $.map([a,b], (ab) => ab ? ab : null);
-						}
-						arr = $.map(mapconcat(e.awakes, e.Lawake), (e) => (e ? [e.name, e.desc] : null));
-						break;
-				}
-				srch_strs.push(...arr);
-			})
-			// 実際に検索
-			var rst = isStringContainCheck(srch_txt, srch_strs, true);
-			// SSが含まれてるならターン数も検索しとく
-			// もしかしたらコメントアウトするかも
-			if(rst && is_ssflag){
-				rst = checkCond_CardSSturn(c, srch_txt);
-			}
-			return rst;
-		},
-		initialize: function () {
-			// /または"で入力してきたなら、入力中の文字列を突っ込む
-			var o = this.dialog_obj;
-			var str = o.matched_str;
-			if(str.indexOf("\"") >= 0){
-				str = str.replace(/["!&|^]/g, "");
-				$("#string_input").val(str);
-			}
-			// contorolgroup initialize
-			$("div#dialog_string div.dlg_string_input_checks").controlgroup();
-		},
-		onsaved: function (obj) {
-			// 検索箇所
-			var rst = []
-			var pos_checked = $("input[name=sinput_types]:checked");
-			$.each(pos_checked, (i, e) => {
-				rst.push(Number($(e).prop("value")));
-			})
-			// objに突っ込む
-			obj.string = $("#string_input").val();
-			obj.isregex = $("#string_isregex").prop("checked");
-			obj.findpos = rst;
-		},
-	}),
 
 ];
 var SrchMultiFilters = [
