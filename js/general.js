@@ -74,7 +74,7 @@ function get_attr_string(attr, spl_char) {
 				}
 			}
 		}
-		if(attrstr == "火・水・雷・光・闇"){
+		if(attrstr == `火${spl_char}水${spl_char}雷${spl_char}光${spl_char}闇`){
 			attrstr = "全";
 		}
 		attrstr += "属性";
