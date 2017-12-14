@@ -281,7 +281,7 @@ function genFilterItemHtml(flt, isdata) {
 		.replace(/</, "&lt;")
 		.replace(/>/, "&gt;")
 		.replace(/\n/g, "<br/>");
-	return `<li class="rst_item" data-index="${flt.index || -1}" data-matched="${flt.matched || -1}" >
+	return `<li class="rst_item" data-index="${isdata ? flt.index : -1}" data-matched="${isdata ? flt.matched : -1}" >
 			<div class="type">${flt.type}</div>
 			<div class="name">${flt.name}</div>
 			<div class="desc ${dlgclass}">${dsc}</div>
@@ -337,7 +337,7 @@ function listupFilterCondition(inp_text) {
 		var flt_base = $(flt_base_selector + " ul.result");
 		var output = `<li class="rst_caption">絞り込み条件</li>`;
 		for(var i = 0; i < flts.length; i++){
-			output += genFilterItemHtml(flts[i]);
+			output += genFilterItemHtml(flts[i], true);
 		}
 		if(is_overlst){
 			output += `<li class="rst_overlst">${FilterListupMax}件以上の絞り込み条件が該当したため、`+
