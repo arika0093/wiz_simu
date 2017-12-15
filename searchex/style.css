@@ -780,3 +780,9 @@ footer a:hover{
 	font-size: smaller;
 	box-shadow: 0 0 4px #CCC;
 }
+
+@media screen and (max-width: 500px) {
+	.ui-dialog{
+		width: 100% !important;
+	}
+}
