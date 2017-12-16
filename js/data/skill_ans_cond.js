@@ -43,12 +43,12 @@ var AsCond = {
 		var count = 0;
 		var attr_c = [0,0,0,0,0];
 		var cards = fld.Allys.Deck;
-		var {c_cond} = cond.param;
+		var {c_num} = cond.param;
 		for (var i = 0; i < cards.length; i++) {
 			attr_c[cards[i].attr[0]]++;
 		}
 		count = $.grep(attr_c, e => (e > 0) ).length;
-		return count <= c_cond;
+		return count >= c_num;
 	},
 	// デッキ内特定属性数条件
 	"when_deckattr_less": function (fld, cond, oi, ei) {

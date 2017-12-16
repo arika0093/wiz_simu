@@ -143,14 +143,17 @@ function ss_damage_slash_all(r, attrs) {
  * 指定した敵とその左右の敵に指定属性のダメージ
  * r:		攻撃威力(ex: 1.0		-> 効果値100)
  * attrs:	攻撃属性(ex: [0,1]	-> 火,水)
+ * r_side:  両脇の敵への威力(未指定ならrと同じ値を使用)
  **/
-function ss_damage_explosion(r, attrs) {
+function ss_damage_explosion(r, attrs, r_side) {
+	r_side = r_side || r;
 	return ss_template({
 		name: "ss_damage_explosion",
 		type: "damage",
 		target: "withside",
 		p1: r,
 		p2: attrs,
+		p3: r_side,
 	});
 }
 
@@ -572,8 +575,9 @@ function ss_reinforcement_all(t, sss) {
  * up_arr:		上昇値(ex: [500,500] -> HP500,攻撃500UP)
  * up_limit:	上昇限界値(ex: [2000,2000] -> HP2000,攻撃2000以上は切り捨て)
  * t:			継続ターン数(ex: -1 -> 無制限)
+ * attr:        上昇対象の属性
 **/
-function ss_statusup_all(up_arr, up_limit, t) {
+function ss_statusup_all(up_arr, up_limit, t, attr) {
 	return ss_template({
 		name: "ss_statusup",
 		type: "turn_effect",
@@ -582,6 +586,7 @@ function ss_statusup_all(up_arr, up_limit, t) {
 		p1: up_arr,
 		p2: up_limit,
 		p3: t,
+		p4: attr,
 	});
 }
 
@@ -835,9 +840,9 @@ function ss_heal(p) {
 
 /**
  * 味方全体を効果値だけ回復、副属性が一致していたら更に回復する。
- * m_attr:  対象の主属性。
+ * m_attr:  対象の主属性。(ex: [1,0,0,0,0] → 火属性)
  * m_p:     (主属性が一致した時)回復効果値(ex. 0.25 -> 25%)
- * s_attr:  対象の副属性。
+ * s_attr:  対象の副属性。(ex: [0,1,0,0,0] → 水属性)
  * s_p:     (副属性も一致した時)回復効果値(ex. 0.80 -> 80%)
  **/
 function ss_heal_subattr(m_attr, m_p, s_attr, s_p) {
@@ -845,7 +850,10 @@ function ss_heal_subattr(m_attr, m_p, s_attr, s_p) {
 		name: "ss_heal_subattr",
 		type: "heal",
 		target: "ally",
-		p1: p,
+		p1: m_attr,
+		p2: m_p,
+		p3: s_attr,
+		p4: s_p,
 	});
 }
 
@@ -1485,11 +1493,25 @@ function ss_is_poison_enemy(a, b) {
 
 /**
  * (条件系)デッキ内の純属性精霊数に応じて効果値を変動させる。
- * max:	効果値の最大値。
+ * max:     効果値の最大値。
+ * t_attr:  対象の属性。
  **/
-function ss_pureattr_cond(max) {
+function ss_pureattr_cond(max, t_attr) {
 	return ss_condition({
 		name: "ss_pureattr_cond",
+		type: "deckattr",
+		p1: max,
+		p2: t_attr,
+	});
+}
+
+/**
+ * (条件系)デッキ内の属性数(副属性込み)に応じて効果値を変動させる。
+ * max:	効果値の最大値。
+ **/
+function ss_multiattr_cond(max) {
+	return ss_condition({
+		name: "ss_multiattr_cond",
 		type: "deckattr",
 		p1: max,
 	});

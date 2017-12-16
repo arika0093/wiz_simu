@@ -224,6 +224,10 @@ var Awake_crystal_lists = [{
 	imple: Awake_composite,
 	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 0, 200, [0,0,1,0,0]),
 }, {
+	name: "聖夜のプレゼント(術士HP/ATK+150)",
+	imple: Awake_composite,
+	param2: Spec_statusup(150, 150, [9]),
+}, {
 	name: "擬態の結晶〈ガーゴイル〉(物質HP+200)",
 	imple: Awake_composite,
 	param2: Spec_statusup(200, 0, [6]),
@@ -235,6 +239,10 @@ var Awake_crystal_lists = [{
 	name: "幻影の結晶〈ディルクーザ〉(龍族HP+200)",
 	imple: Awake_composite,
 	param2: Spec_statusup(200, 0, [0]),
+}, {
+	name: "屍霊王の結晶〈ヴァヌスス〉(術士HP+100)",
+	imple: Awake_composite,
+	param2: Spec_statusup(100, 0, [9]),
 }, {
 	name: "アラフト長老の結晶〈シガ〉(亜人HP+200)",
 	imple: Awake_composite,

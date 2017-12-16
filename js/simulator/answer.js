@@ -285,8 +285,8 @@ function pickup_answerskills(fld, attr, type, subtype) {
 // アンサースキルの前処理
 function answer_skill(fld, as_arr, panel, as_afters, bef_f) {
 	// 残り連撃回数管理
-	var atk_duals = [1, 1, 1, 1, 1];
-	var rem_duals = [1, 1, 1, 1, 1];
+	var atk_duals = [-1, -1, -1, -1, -1];
+	var rem_duals = [-1, -1, -1, -1, -1];
 	// 攻撃前処理
 	for (var i = 0; i < as_arr.length; i++) {
 		var now = fld.Allys.Now[i];

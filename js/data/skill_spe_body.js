@@ -870,12 +870,20 @@ var SpSkill = {
 			stmax[1] = Math.max(stmax[1], params[1][1]);
 		}
 		var t = params[2];
+		var attr = params[3];
+		var cards = ss_get_targetally(fld, cobj, fld.Allys.Deck, n);
 		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var up_arrs = $.extend(true, {}, params[0]);
 			var up_limit = fld.Status.statusup_max;
+			var card = cards[i];
 			var now = nows[i];
-			if (now.nowhp <= 0) { continue; }
+			if (now.nowhp <= 0) {
+				continue;
+			}
+			if (attr && attr[card.attr[0]] <= 0){
+				continue;
+			}
 			// 既にかかってるステアップの値を取得する
 			$.each(now.turn_effect, function (i, e) {
 				if (e.type == "ss_statusup") {
@@ -1169,13 +1177,14 @@ var SpSkill = {
 			var now = nows[i];
 			var card = cards[i];
 			var n_index = fld.Allys.Now.indexOf(now);
-			if(m_attr.indexOf(card.attr[0])){
+			if(m_attr[card.attr[0]] > 0){
 				var hr = Math.floor(now.maxhp * rate);
 				var rate = m_rate;
-				if(s_attr.indexOf(card.attr[1])){
+				if(s_attr[card.attr[1]] > 0){
 					rate = s_rate;
 				}
-				heal_ally(fld, rate, n_index);
+				var hr = Math.floor(now.maxhp * rate);
+				heal_ally(fld, hr, n_index);
 				fld.log_push("Unit[" + (i + 1) + "]: HP回復(" + (rate * 100) + "%)");
 			}
 		}
@@ -1725,18 +1734,46 @@ var SpCondSkill = {
 	// -----------------------------
 	// 純属性精霊数に応じて効果値変動
 	"ss_pureattr_cond": function (fld, oi, cobj, params) {
-		var rate_fix = [0, 0.1, 0.15, 0.25, 0.35, 1];
-		var rate = params[0];
+		const rate_fix = [0, 0.1, 0.15, 0.25, 0.35, 1];
+		// 使用者の主属性を見て、対象属性を指定(指定漏れ対策)
 		var cards = fld.Allys.Deck;
+		var user_c = cards[oi];
+		var user_m_attr = user_c.def_attr ? user_c.def_attr[0] : user_c.attr[0];
+		var rate = params[0];
+		var attr = (params[1] >= 0 ? params[1] : user_m_attr);
 		var count = 0;
 		for(var i=0; i < cards.length; i++){
 			var c = cards[i];
 			var now = fld.Allys.Now[i];
-			if(now.nowhp > 0 && c.attr[1] == -1){
+			if(now.nowhp > 0 && c.attr[0] == attr && c.attr[1] == -1){
 				count++;
 			}
 		}
 		count = Math.max(Math.min(count, 5), 0);
+		return Number((rate * rate_fix[count]).toFixed(3));
+	},
+	// -----------------------------
+	// デッキの属性(副属性込み)数に応じて効果値変動
+	"ss_multiattr_cond": function (fld, oi, cobj, params) {
+		const rate_fix = [0, 0.1, 0.15, 0.25, 0.35, 1];
+		var rate = params[0];
+		var cards = fld.Allys.Deck;
+		var attrs = [0, 0, 0, 0, 0];
+		var count = 0;
+		for(var i=0; i < cards.length; i++){
+			var c = cards[i];
+			var now = fld.Allys.Now[i];
+			if(now.nowhp > 0){
+				$.each(c.attr, (i,e) => {
+					if(e >= 0){
+						attrs[e]++;
+					}
+				})
+			}
+		}
+		count = $.map(attrs, (e) => {
+			return (e > 0 ? 1 : null);
+		}).length;
 		return Number((rate * rate_fix[count]).toFixed(3));
 	},
 	// -----------------------------
@@ -1789,12 +1826,16 @@ SpSkill["ss_damageblock_all"] = SpSkill["ss_damageblock"];
 
 
 // ------------------------------------
+// 自身の隣接指定に変更する用の関数
+function ss_toselect_ownside(skill) {
+	skill.target = "own_side";
+	return skill;
+}
+
 // 味方単体指定に変更する用の関数
 // ::使用方法 ss_toselect_one(ss_heal(1))
 function ss_toselect_one(skill) {
-	if (skill.target == "ally") {
-		skill.target = "ally_one";
-	}
+	skill.target = "ally_one";
 	return skill;
 }
 
@@ -1981,6 +2022,17 @@ function ss_get_targetally(fld, ss, array, ai) {
 		case "ally_one":
 			var si = ss_allyselect_getindex(fld);
 			return [array[si]];
+		case "own_side":
+			var rst = [];
+			var max = fld.Allys.Deck.length;
+			var min = 0;
+			if(ai > min){
+				rst.push(array[ai - 1]);
+			}
+			if(ai < max){
+				rst.push(array[ai + 1]);
+			}
+			return rst;
 		default:
 			console.error("INVALID VALUE: " + ss.target + "(index: " + ai + ")");
 			return null;

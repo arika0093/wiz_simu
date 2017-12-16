@@ -194,11 +194,13 @@ function s_enemy_attack(dmg, tnum, atkn, tgtype) {
 			(atkn > 1 ? atkn + "連撃(" : "攻撃(") + dmg + ")");
 		// 力溜め倍率取得
 		var enemy = GetNowBattleEnemys(fld, n);
-		var f_rate = ArrayMath.sum($.map(enemy, (e) => {
+		var f_rate = ArrayMath.sum($.map(enemy.turn_effect, (e) => {
 			return e.force;
 		}));
 		if(f_rate > 0){
 			dmg *= (f_rate + 1);
+			// 力溜め削除
+			turneff_break(fld, enemy.turn_effect, n, "force_reservoir", "end");
 		}
 		
 		// 攻撃対象取得
@@ -1724,18 +1726,24 @@ function s_enemy_when_after_turn(t) {
 // 表示順を変えたいとき、属性特攻を参考にorderを指定してください。
 // IEだと正常に動作しなそうなので、無効にしています。
 function makeDesc(mystr, order){
-	argObj = getParentArg()
+	const invalid_props = [
+		"isall", "isStatusDownOnly"
+	];
+	var argObj = getParentArg()
 	if (!argObj) {
 		return "[ERROR: InternetExplorer is not supported]";
 	}
-	var outpStr = mystr
-	var toStr
+	var outpStr = mystr;
+	var toStr;
 	var flag = 1;
 	order = order != undefined ? order : argObj
 	for (var prop in order){
 		toStr = argObj[prop]
 		if(prop != "__fname__" && toStr != undefined && typeof(toStr)!= "function" && toStr != 0){
 			//toStr = comma3(toStr)
+			$.each(invalid_props, (i, e) => {
+				toStr = (prop != e ? toStr : "");
+			});
 			toStr = prop != "tnum" ? toStr : toStr == 5 ? "全体" : toStr == 1 ? "単体" : toStr+"体"
 			toStr = prop != "attr" ? toStr : get_attr_string(toStr) 
 			toStr = prop != "rate" ? toStr : toStr * 100 + "％"
@@ -1764,7 +1772,6 @@ function makeDesc(mystr, order){
 			toStr = prop != "ratiorate" ? toStr : toStr * 100 + "％削り"
 			toStr = prop != "ch" ? toStr : toStr + "chain"
 			toStr = ["tgtype", "p1", "p2", "p3", "p4"].indexOf(prop) == -1 ? toStr : ""
-			toStr = prop != "isStatusDownOnly" ? toStr : ""
 			outpStr += toStr == "" ? "" : flag==1 ? " (" : ", "
 			toStr = toStr == "" ? "" : toStr != comma3(argObj[prop]) ? toStr : "<font color=red>#DEF!</font>" + prop
 			flag = toStr == "" ? flag :  0

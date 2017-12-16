@@ -73553,7 +73553,7 @@ Cards = [{
 	ss1: {
 		desc: "<純属性強化>4ターンの間、火単色精霊が多いほど、火単色精霊のダメージを強化し(上限値:100%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:2000,2000)",
 		turn: 4,
-		proc: [ss_statusup_all([ss_pureattr_cond(2000), ss_pureattr_cond(2000)], [2000,2000], -1), ss_enhance_all(ss_pureattr_cond(1.0), 4, [1,0,0,0,0])],
+		proc: [ss_statusup_all([ss_pureattr_cond(2000), ss_pureattr_cond(2000)], [2000,2000], -1, [1,0,0,0,0]), ss_enhance_all(ss_pureattr_cond(1.0), 4, [1,0,0,0,0])],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],2),
@@ -73574,7 +73574,7 @@ Cards = [{
 	ss2: {
 		desc: "<純属性強化>4ターンの間、火単色精霊が多いほど、火単色精霊のダメージを強化し(上限値:200%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:3000,3000)",
 		turn: 8,
-		proc: [ss_statusup_all([ss_pureattr_cond(3000), ss_pureattr_cond(3000)], [3000,3000], -1), ss_enhance_all(ss_pureattr_cond(2.0), 4, [1,0,0,0,0])],
+		proc: [ss_statusup_all([ss_pureattr_cond(3000), ss_pureattr_cond(3000)], [3000,3000], -1, [1,0,0,0,0]), ss_enhance_all(ss_pureattr_cond(2.0), 4, [1,0,0,0,0])],
 	},
 	Lawake: [
 		Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
@@ -75435,7 +75435,7 @@ Cards = [{
 	ss1: {
 		desc: "<純属性強化>4ターンの間、水単色精霊が多いほど、水単色精霊のダメージを強化し(上限値:100%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:2000,2000)",
 		turn: 4,
-		proc: [ss_statusup_all([ss_pureattr_cond(2000), ss_pureattr_cond(2000)], [2000,2000], -1), ss_enhance_all(ss_pureattr_cond(1.0), 4, [0,1,0,0,0])],
+		proc: [ss_statusup_all([ss_pureattr_cond(2000), ss_pureattr_cond(2000)], [2000,2000], -1, [0,1,0,0,0]), ss_enhance_all(ss_pureattr_cond(1.0), 4, [0,1,0,0,0])],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],2),
@@ -75456,7 +75456,7 @@ Cards = [{
 	ss2: {
 		desc: "<純属性強化>4ターンの間、水単色精霊が多いほど、水単色精霊のダメージを強化し(上限値:200%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:3000,3000)",
 		turn: 8,
-		proc: [ss_statusup_all([ss_pureattr_cond(3000), ss_pureattr_cond(3000)], [3000,3000], -1), ss_enhance_all(ss_pureattr_cond(2.0), 4, [0,1,0,0,0])],
+		proc: [ss_statusup_all([ss_pureattr_cond(3000), ss_pureattr_cond(3000)], [3000,3000], -1, [0,1,0,0,0]), ss_enhance_all(ss_pureattr_cond(2.0), 4, [0,1,0,0,0])],
 	},
 	Lawake: [
 		Attr_statusup_oattr(0,300, [0,1,0,0,0,]),
@@ -76632,7 +76632,7 @@ Cards = [{
 	ss1: {
 		desc: "<純属性強化>4ターンの間、雷単色精霊が多いほど、雷単色精霊のダメージを強化し(100%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:2000,2000)",
 		turn: 4,
-		proc: [ss_statusup_all([ss_pureattr_cond(2000), ss_pureattr_cond(2000)], [2000,2000], -1), ss_enhance_all(ss_pureattr_cond(1.0), 4, [0,0,1,0,0])],
+		proc: [ss_statusup_all([ss_pureattr_cond(2000), ss_pureattr_cond(2000)], [2000,2000], -1, [0,0,1,0,0]), ss_enhance_all(ss_pureattr_cond(1.0), 4, [0,0,1,0,0])],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
@@ -76653,7 +76653,7 @@ Cards = [{
 	ss2: {
 		desc: "<純属性強化>4ターンの間、雷単色精霊が多いほど、雷単色精霊のダメージを強化し(200%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:3000,3000",
 		turn: 8,
-		proc: [ss_statusup_all([ss_pureattr_cond(3000), ss_pureattr_cond(3000)], [3000,3000], -1), ss_enhance_all(ss_pureattr_cond(2.0), 4, [0,0,1,0,0])],
+		proc: [ss_statusup_all([ss_pureattr_cond(3000), ss_pureattr_cond(3000)], [3000,3000], -1, [0,0,1,0,0]), ss_enhance_all(ss_pureattr_cond(2.0), 4, [0,0,1,0,0])],
 	},
 	Lawake: [
 		Attr_statusup_oattr(0,300, [0,0,1,0,0,]),
@@ -77713,7 +77713,7 @@ Cards = [{
 	ss1: {
 		desc: "<純属性強化>4ターンの間、火単色精霊が多いほど、火単色精霊のダメージを強化し(上限値:100%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:1000,1000)",
 		turn: 4,
-		proc: [ss_statusup_all([ss_pureattr_cond(1000), ss_pureattr_cond(1000)], [1000,1000], -1), ss_enhance_all(ss_pureattr_cond(1.0), 4, [1,0,0,0,0])],
+		proc: [ss_statusup_all([ss_pureattr_cond(1000), ss_pureattr_cond(1000)], [1000,1000], -1, [1,0,0,0,0]), ss_enhance_all(ss_pureattr_cond(1.0), 4, [1,0,0,0,0])],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],2),
@@ -77734,7 +77734,7 @@ Cards = [{
 	ss2: {
 		desc: "<純属性強化>4ターンの間、火単色精霊が多いほど、火単色精霊のダメージを強化し(上限値:200%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:2000,2000)",
 		turn: 8,
-		proc: [ss_statusup_all([ss_pureattr_cond(2000), ss_pureattr_cond(2000)], [2000,2000], -1), ss_enhance_all(ss_pureattr_cond(2.0), 4, [1,0,0,0,0])],
+		proc: [ss_statusup_all([ss_pureattr_cond(2000), ss_pureattr_cond(2000)], [2000,2000], -1, [1,0,0,0,0]), ss_enhance_all(ss_pureattr_cond(2.0), 4, [1,0,0,0,0])],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -77825,7 +77825,7 @@ Cards = [{
 	ss1: {
 		desc: "<純属性強化>4ターンの間、水単色精霊が多いほど、水単色精霊のダメージを強化し(100%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:1000,1000)",
 		turn: 4,
-		proc: [ss_statusup_all([ss_pureattr_cond(1000), ss_pureattr_cond(1000)], [1000,1000], -1), ss_enhance_all(ss_pureattr_cond(1.0), 4, [0,1,0,0,0])],
+		proc: [ss_statusup_all([ss_pureattr_cond(1000), ss_pureattr_cond(1000)], [1000,1000], -1, [0,1,0,0,0]), ss_enhance_all(ss_pureattr_cond(1.0), 4, [0,1,0,0,0])],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],2),
@@ -77846,7 +77846,7 @@ Cards = [{
 	ss2: {
 		desc: "<純属性強化>4ターンの間、水単色精霊が多いほど、水単色精霊のダメージを強化し(200%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:2000,2000)",
 		turn: 8,
-		proc: [ss_statusup_all([ss_pureattr_cond(2000), ss_pureattr_cond(1000)], [2000,2000], -1), ss_enhance_all(ss_pureattr_cond(2.0), 4, [0,1,0,0,0])],
+		proc: [ss_statusup_all([ss_pureattr_cond(2000), ss_pureattr_cond(1000)], [2000,2000], -1, [0,1,0,0,0]), ss_enhance_all(ss_pureattr_cond(2.0), 4, [0,1,0,0,0])],
 	},
 	Lawake: [
 		Attr_statusup_oattr(0,200, [0,1,0,0,0,]),
@@ -81756,7 +81756,7 @@ Cards = [{
 	ss1: {
 		desc: "<純属性強化>4ターンの間、雷単色精霊が多いほど、雷単色精霊のダメージを強化し(上限値:100%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:1000,1000)",
 		turn: 4,
-		proc: [ss_statusup_all([ss_pureattr_cond(1000), ss_pureattr_cond(1000)], [1000,1000], -1), ss_enhance_all(ss_pureattr_cond(1.0), 4, [0,0,1,0,0])],
+		proc: [ss_statusup_all([ss_pureattr_cond(1000), ss_pureattr_cond(1000)], [1000,1000], -1, [0,0,1,0,0]), ss_enhance_all(ss_pureattr_cond(1.0), 4, [0,0,1,0,0])],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
@@ -81777,7 +81777,7 @@ Cards = [{
 	ss2: {
 		desc: "<純属性強化>4ターンの間、雷単色精霊が多いほど、雷単色精霊のダメージを強化し(上限値:200%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:2000,2000)",
 		turn: 8,
-		proc: [ss_statusup_all([ss_pureattr_cond(2000), ss_pureattr_cond(2000)], [2000,2000], -1), ss_enhance_all(ss_pureattr_cond(2.0), 4, [0,0,1,0,0])],
+		proc: [ss_statusup_all([ss_pureattr_cond(2000), ss_pureattr_cond(2000)], [2000,2000], -1, [0,0,1,0,0]), ss_enhance_all(ss_pureattr_cond(2.0), 4, [0,0,1,0,0])],
 	},
 	Lawake: [
 		Attr_statusup_oattr(0,200, [0,0,0,0,0,]),
@@ -87034,7 +87034,7 @@ Cards = [{
 	ss1: {
 		desc: "<純属性強化>4ターンの間、雷単色精霊が多いほど、雷単色精霊のダメージを強化し、(100%)、さらに永続ターン、攻撃力、HPのステータスをアップ(500,500)、リーダー時さらにステータスアップ(500,500)",
 		turn: 4,
-		proc: [ss_statusup_all([ss_pureattr_cond(ss_when_leader(1000, 500)), ss_pureattr_cond(ss_when_leader(1000, 500))], [ss_when_leader(1000, 500), ss_when_leader(1000, 500)], -1), ss_enhance_all(ss_pureattr_cond(1.0), 4, [0,0,1,0,0])],
+		proc: [ss_statusup_all([ss_pureattr_cond(ss_when_leader(1000, 500)), ss_pureattr_cond(ss_when_leader(1000, 500))], [ss_when_leader(1000, 500), ss_when_leader(1000, 500)], -1, [0,0,1,0,0]), ss_enhance_all(ss_pureattr_cond(1.0), 4, [0,0,1,0,0])],
 	},
 	awakes: [
 		Attr_relief([0,0,1,0,0,],10),
@@ -87055,7 +87055,7 @@ Cards = [{
 	ss2: {
 		desc: "<純属性強化>4ターンの間、雷単色精霊が多いほど、雷単色精霊のダメージを強化し(200%)、さらに永続ターン、攻撃力、HPのステータスをアップ(1000,1000)、リーダー時さらにステータスアップ(1000,1000)",
 		turn: 8,
-		proc: [ss_statusup_all([ss_pureattr_cond(ss_when_leader(2000, 1000)), ss_pureattr_cond(ss_when_leader(2000, 1000))], [ss_when_leader(2000, 1000), ss_when_leader(2000, 1000)], -1), ss_enhance_all(ss_pureattr_cond(2.0), 4, [0,0,1,0,0])],
+		proc: [ss_statusup_all([ss_pureattr_cond(ss_when_leader(2000, 1000)), ss_pureattr_cond(ss_when_leader(2000, 1000))], [ss_when_leader(2000, 1000), ss_when_leader(2000, 1000)], -1, [0,0,1,0,0]), ss_enhance_all(ss_pureattr_cond(2.0), 4, [0,0,1,0,0])],
 	},
 	Lawake: [
 		Statusup(0,500),
@@ -90389,6 +90389,188 @@ Cards = [{
 	Lawake: [
 		Attr_statusup(0,200, [0,0,1,0,0,]),
 		Statusup(500,0),
+	],
+},{
+	name: "幽玄の観察者 レメモ・ビブリ",
+	cardno: 9465,
+	imageno: 11718,
+	hp: 5915,
+	atk: 4107,
+	cost: 52,
+	attr: [0,-1],
+	species: [3],
+	islegend: true,
+	ape: "大魔道杯 in ロストエデン",
+	is_dist: true,
+	as1: {
+		desc: "<回復・攻撃強化>火属性の味方のHPを回復(13%)、さらに火属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.13, [1,0,0,0,0], 0), ChainEnhance(0.3, [1,0,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<スキルチャージ>隣接する精霊のスペシャルスキルの発動ターンを3早める",
+		turn: 8,
+		proc: [ss_toselect_ownside(ss_skillboost(3))],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_oattr(0,400, [1,0,0,0,0,]),
+		Attr_statusup_oattr(400,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([0,0,1,0,0,],20),
+		Fastskill(4),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復・攻撃強化>火属性の味方のHPを回復(16%)、さらに火属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.16, [1,0,0,0,0], 0), ChainEnhance(0.3, [1,0,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<スキルチャージ>隣接する精霊のスペシャルスキルの発動ターンを4早める",
+		turn: 10,
+		proc: [ss_toselect_ownside(ss_skillboost(4))],
+	},
+	Lawake: [
+		Attr_statusup(0,300, [1,0,0,0,0,]),
+		Abstate_invalid("discharge"),
+	],
+},{
+	name: "双竜天翔 アデレード&ミネバ",
+	cardno: 9472,
+	imageno: 11724,
+	hp: 2845,
+	atk: 4035,
+	cost: 56,
+	attr: [0,3],
+	species: [8],
+	islegend: true,
+	ape: "DL限定",
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ(150%),5チェインで更にダメージアップ(50%)",
+		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.0, 5)],
+	},
+	ss1: {
+		desc: "<融合大魔術>スキル反射を無視し、敵全体へ火属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:5属性で3000%)",
+		turn: 7,
+		proc: [ss_damage_all(ss_multiattr_cond(30), [0])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(3),
+		Attr_statusup(0,300, [1,1,1,1,1,]),
+		Attr_statusup(300,0, [1,1,1,1,1,]),
+		Abstate_invalid("ss_sealed"),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ(180%),5チェインで更にダメージアップ(50%)",
+		proc: [ChainAllAttack(1.8, 0), ChainAllAttack(2.3, 5)],
+	},
+	ss2: {
+		desc: "<融合大魔術>スキル反射を無視し、敵全体へ火属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:5属性で3600%)",
+		turn: 10,
+		proc: [ss_damage_all(ss_multiattr_cond(36), [0])],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Awake_dragonmode(2000, 1.5) ,
+		Attr_relief([1,1,1,1,1,],10),
+	],
+},{
+	name: "天譴が下る プルミエ＆ルヴァル",
+	cardno: 9090,
+	imageno: 11332,
+	hp: 2575,
+	atk: 4028,
+	cost: 54,
+	attr: [1,3],
+	species: [1],
+	islegend: true,
+	ape: "ドルキマス3",
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(300%)、6チェインで更にダメージアップ(250%)",
+		proc: [ChainAttack(3.0, 3), ChainAttack(5.5, 6)],
+	},
+	ss1: {
+		desc: "<複属性回復>水属性の味方のHPを回復(40%)、複属性が光属性だとさらに回復(40%)",
+		turn: 3,
+		proc: [ss_heal_subattr([0,1,0,0,0], 0.4, [0,0,0,1,0], 0.8)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,0,1,0,]),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit", "all_sealed"]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(400%)、6チェインで更にダメージアップ(250%)",
+		proc: [ChainAttack(4.0, 3), ChainAttack(6.5, 6)],
+	},
+	ss2: {
+		desc: "<複属性回復>チェインプラス2の効果、さらに水属性の味方のHPを回復(40%)、複属性が光属性だとさらに回復(40%)",
+		turn: 6,
+		proc: [ss_addchain(2), ss_heal_subattr([0,1,0,0,0], 0.4, [0,0,0,1,0], 0.8)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Statusup(1000,0),
+	],
+},{
+	name: "誘う幻想顕界 シエオラ&プラーミャ",
+	cardno: 9478,
+	imageno: 11730,
+	hp: 2845,
+	atk: 4053,
+	cost: 56,
+	attr: [0,3],
+	species: [9],
+	islegend: true,
+	ape: "DL限定",
+	as1: {
+		desc: "<連撃>味方のMAXHP10%を使い、敵単体を3回連続攻撃(600%)",
+		proc: add_cond(ChainDualAttack(6.0, 0, 3), as_consume_all(0.10)),
+	},
+	ss1: {
+		desc: "<複属性回復>火属性の味方のHPを回復(40%)、複属性が光属性だとさらに回復(40%)",
+		turn: 3,
+		proc: [ss_heal_subattr([1,0,0,0,0], 0.4, [0,0,0,1,0], 0.8)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,0,1,0,]),
+		Abstate_invalid("ss_sealed"),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<連撃>味方のMAXHP10%を使い、敵単体を3回連続攻撃(700%)",
+		proc: add_cond(ChainDualAttack(7.0, 0, 3), as_consume_all(0.10)),
+	},
+	ss2: {
+		desc: "<複属性回復>チェインプラス2の効果、さらに火属性の味方のHPを回復(40%)、複属性が光属性だとさらに回復(40%)",
+		turn: 6,
+		proc: [ss_addchain(2), ss_heal_subattr([1,0,0,0,0], 0.4, [0,0,0,1,0], 0.8)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Statusup(1000,0),
 	],
 },
 ];
