@@ -449,7 +449,7 @@ function checkSkillCrystalUpvalue(desc){
 		return 0;
 	}
 	var type = types[0].replace(/[<>]/g, "");
-	return (targets[type] > 0 ? targets[type] : -1);
+	return (targets[type] > 0 ? targets[type] : 0);
 }
 
 // ------------------------------------

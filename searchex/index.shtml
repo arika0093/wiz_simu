@@ -24,7 +24,6 @@
             <!-- Search Box -->
             <div id="schbox_wrapper">
                 <div class="textbox_wrap clearfix">
-                    <input type="text" id="schbox" autocomplete="off" placeholder="精霊名, 属性, 種族名, スキル名 etc..." />
                     <div id="menuitems">
                         <div id="listup_dmgss" title="攻撃系SS所持の精霊のみに絞り、与ダメージ表示モードに切り替えます。">
                             <input id="listup_dmgss_flg" type="checkbox" />
@@ -34,6 +33,7 @@
                             <i class="fa fa-floppy-o" aria-hidden="true"></i>
                         </div>
                     </div>
+                    <input type="text" id="schbox" autocomplete="off" placeholder="精霊名, 属性, 種族名, スキル名 etc..." />
                 </div>
             </div>
 
