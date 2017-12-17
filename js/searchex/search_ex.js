@@ -6,6 +6,10 @@ var CardsListupMax = 50;
 // 詳細を開いているかどうか
 var isOpenDetail = false;
 
+// 火力データのみを抜き出したCards
+var CardsSSDmg = null;
+// 火力データを表示するかどうか
+var isDispSSDmg = false;
 
 // on load
 $(() => {
@@ -18,7 +22,7 @@ $(() => {
 			return null;
 		}
 	}).reverse();
-
+	
 	// カードIDが指定されていたらそれを開く
 	var cardid = sepalateAndGetQuery("id");
 	if(cardid){
@@ -41,6 +45,15 @@ $(() => {
 			var so = restoreActiveFilterFromJSON(long);
 			if(so.af){
 				ActiveSrchFilter = so.af;
+			}
+			if(so.disp_ss){
+				isDispSSDmg = true;
+				reloadCardsSS();
+				// それ用にクラス付与
+				$("#listup_dmgss_flg").prop("checked", true);
+				$("#listup_dmgss").toggleClass("isflgon", true);
+				$.each($(".oc_sortarea input"), (i,e) => $(e).prop("disabled", true) );
+				$("div.oc_sortarea").toggleClass("disabled", true);
 			}
 			var txtbox = $("input#schbox");
 			txtbox.val(so.inp);
@@ -132,6 +145,27 @@ $(() => {
 			})
 			
 		})
+	// 火力表示をクリックした時の結果をあらかじめ記述
+	$("#listup_dmgss")
+		.on("click", function () {
+			// 現在の状況を取得して、反転させる
+			var flg_input = $("#listup_dmgss_flg");
+			var is_checked = flg_input.prop("checked");
+			isDispSSDmg = !is_checked;
+			flg_input.prop("checked", isDispSSDmg);
+			$(this).toggleClass("isflgon", isDispSSDmg);
+			
+			if(isDispSSDmg){
+				// 火力順データが空なら、ここで加えておく
+				reloadCardsSS();
+			}
+			// 火力順表示ならソートを無効化
+			$.each($(".oc_sortarea input"), (i,e) => $(e).prop("disabled", isDispSSDmg) );
+			$("div.oc_sortarea").toggleClass("disabled", isDispSSDmg);
+			// 再描画
+			var txtbox = $("input#schbox");
+			listupCardThrowFilter(txtbox.val());
+		});
 	// フィルター検索結果をクリックした時の結果をあらかじめ記述
 	$("#filterbox_wrapper")
 		.on("click", "li.rst_item", function () {
@@ -252,6 +286,7 @@ $(() => {
 	
 	// regexをJSONにできるようにしておく
 	RegExp.prototype.toJSON = RegExp.prototype.toString;
+	
 })
 
 // 現在の絞り込み条件を出力
@@ -347,12 +382,10 @@ function listupFilterCondition(inp_text) {
 	}
 }
 
-// 条件にマッチする精霊をリストアップする
-function listupCardThrowFilter(inp_text){
-	inp_text = inp_text.length > 0 ? inp_text.trim() : "";
-	// 出力関数
-	var genhtml = (c) => {
-		var fast = has_fastnum(undefined, c);
+// 条件にマッチする精霊を描画する関数
+function genCardItemHtml (c) {
+	var fast = has_fastnum(undefined, c);
+	if(!isDispSSDmg){
 		var as_match = (c.as1.desc).match(/<.+?>/);
 		var as_type = as_match ? as_match[0].replace("<","").replace(">","") : "-----";
 		var ss_match = (c.ss1.desc).match(/<.+?>/)
@@ -374,7 +407,36 @@ function listupCardThrowFilter(inp_text){
                     </div>
                 </li>
                 </a>`;
+	} else {
+		var ss = c.disp_ss;
+		var ss_match = (ss.desc).match(/<.+?>/)
+		var ss_type = ss_match ? ss_match[0].replace("<","").replace(">","") : "-----";
+		var ss_subd = ss.subdesc != "" ? `(${ss.subdesc})` : "";
+		var ss_turn = `${Math.max(ss.turn - fast + (ss.charged || 0), 0)}T`;
+		var index = $.map(Cards, (e, i) => {
+			return (e.cardno == c.cardno ? i : null)
+		})[0];
+		return `<a tabindex="-1" class="invalid_click" href="/search/detail/?id=${c.cardno}">
+				<li class="rst_item rst_chara rst_ssdmg" data-index="${index}">
+                    <div class="chara_icon"><img src="${get_image_url(c.imageno, c.imageno_prefix)}" /></div>
+                    <div class="chara_name">${c.name}</div>
+                    <div class="chara_desc chara_desc_ss">
+	                    <span class="chara_ssdmg_ssn">${ss.is_ss2 ? "SS2" : "SS1"}, </span>
+	                    <span class="chara_ssdmg_type">&lt;${ss_type}&gt; </span>
+	                    <span class="chara_ssdmg_subtype">${ss_subd}</span>
+	                    <span class="chara_ssdmg_turn">[${ss_turn}]</span><br/>
+	                    <span class="chara_ssdmg_rate">rate: ${ss.rateWithCrs.toFixed(1)},</span>
+	                    <span class="chara_ssdmg_awatk">ATK: ${ss.aw_atk.toFixed(0)}</span>
+                    </div>
+                    <div class="chara_ssdmg_pdmg">${ss.pre_damage}</div>
+                </li>
+                </a>`;
 	}
+}
+
+// 条件にマッチする精霊をリストアップする
+function listupCardThrowFilter(inp_text){
+	inp_text = inp_text.length > 0 ? inp_text.trim() : "";
 	var rst_base_selector = "#resultbox_wrapper";
 	// 既に追加されている要素を一旦消す
 	$(`${rst_base_selector} a, ${rst_base_selector} li.rst_overlst`).remove();
@@ -386,7 +448,8 @@ function listupCardThrowFilter(inp_text){
 	}
 	// 指定されてる条件で検索
 	var added_count = 0;
-	var fltCards = $.map(Cards, (e, i) => {
+	var cs = (isDispSSDmg ? CardsSSDmg : Cards);
+	var fltCards = $.map(cs, (e, i) => {
 		var check_rst = true;
 		// 上限まで追加されてたら以降は全て無視
 		if(added_count >= CardsListupMax){
@@ -437,7 +500,7 @@ function listupCardThrowFilter(inp_text){
 		var rst_base = $(rst_base_selector + " ul.result");
 		var output = "";
 		for(var i = 0; i < fltCards.length; i++){
-			output += genhtml(fltCards[i]);
+			output += genCardItemHtml(fltCards[i]);
 		}
 		if(is_overlst){
 			output += `<li class="rst_overlst">${CardsListupMax}件以上の精霊と一致したため、`+
@@ -527,6 +590,17 @@ function addObjectToActiveFilter(target, added_obj){
 	}
 }
 
+// CardsSSDmgを用意する関数
+function reloadCardsSS(force_flag){
+	force_flag = force_flag || false;
+	if (CardsSSDmg === null || force_flag) {
+		CardsSSDmg = $.map(Cards, (e) =>{
+			return separateOfDamagedSkillFromCard(e);
+		});
+		// 仮火力計算を行っておく
+		calcPreDamageAndSort(CardsSSDmg);
+	}
+}
 
 // -----------------------------------
 // 入力欄を全て消す
@@ -551,7 +625,7 @@ function toggleClassOfInputed(){
 	$("div#infobox_wrapper").toggleClass("inputed", isinput);
 	$("div#filterbox_wrapper").toggleClass("inputed", isinput);
 	$("div#resultbox_wrapper").toggleClass("inputed", isinput);
-	$("div#url_generate").toggleClass("isinput", isinput);
+	$("div#menuitems").toggleClass("isinput", isinput);
 	return {val, isstrinput, isinput};
 }
 

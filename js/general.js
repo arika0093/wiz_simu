@@ -82,7 +82,6 @@ function get_attr_string(attr, spl_char) {
 	}
 }
 
-
 // 種族配列を種族文字列に変換する
 function get_spec_string(spec) {
 	Species= [

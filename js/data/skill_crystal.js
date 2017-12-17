@@ -45,6 +45,7 @@ var Awake_crystal_lists = [{
 	param1: "{0}",
 	param2: 0,
 	input_required: true,
+	getMaxValueAble: true,
 }, {
 	name: "SS効果値アップ<特攻大魔術>",
 	imple: function (upval) {
@@ -55,6 +56,7 @@ var Awake_crystal_lists = [{
 	param1: "{0}",
 	param2: 0,
 	input_required: true,
+	getMaxValueAble: true,
 }, {
 	name: "SS効果値アップ<毒>",
 	imple: function (upval) {
@@ -425,6 +427,30 @@ var Awake_crystal_lists = [{
 }
 ];
 
+// ------------------------------------
+// 潜在結晶 効果値最大を取得
+// ------------------------------------
+// 説明文から、当てはまる潜在結晶の最大値を返す
+function checkSkillCrystalUpvalue(desc){
+	var targets = {
+		"大魔術": 2,
+		"多弾魔術": 3,
+		"自己犠牲魔術": 3,
+		"犠牲魔術": 3,
+		"遅延大魔術": 3,
+		"効果解除大魔術": 3,
+		"反動大魔術": 1.5,
+		"残滅大魔術": 1,
+		"特効大魔術": 3,
+		"反動大魔術・蝕": 4,
+	};
+	var types = desc.match(/<.*>/);
+	if(!types){
+		return 0;
+	}
+	var type = types[0].replace(/[<>]/g, "");
+	return (targets[type] > 0 ? targets[type] : -1);
+}
 
 // ------------------------------------
 // 潜在結晶読み込み後処理
@@ -438,4 +464,5 @@ var Awake_crystal_lists = [{
 		}
 	})
 })()
+
 

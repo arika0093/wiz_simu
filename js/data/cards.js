@@ -39696,7 +39696,7 @@ Cards = [{
 		desc: "<大魔術>3ターン溜めた後、敵単体へ水属性のダメージ(1900%)",
 		turn: 9,
 		charged: 3,
-		proc: [ss_damage_s(19, [0,1,0,0,0], 1)],
+		proc: [ss_damage_s(19, [1], 1)],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],1),
@@ -39718,7 +39718,7 @@ Cards = [{
 		desc: "<大魔術>3ターン溜めた後、敵単体へ水属性のダメージ(2400%)",
 		turn: 12,
 		charged: 3,
-		proc: [ss_damage_s(24, [0,1,0,0,0], 1)],
+		proc: [ss_damage_s(24, [1], 1)],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [0,1,0,0,0,]),
@@ -74145,7 +74145,7 @@ Cards = [{
 	ss1: {
 		desc: "<遅延大魔術>敵全体の攻撃ターンを1遅らせ、敵全体へ水属性のダメージ(400%)",
 		turn: 5,
-		proc: [ss_delay_all(1), ss_damage_all(4.0, [0,1,0,0,0])],
+		proc: [ss_delay_all(1), ss_damage_all(4.0, [1])],
 	},
 	awakes: [
 		Costdown(20),
@@ -74166,7 +74166,7 @@ Cards = [{
 	ss2: {
 		desc: "<遅延大魔術>敵全体の攻撃ターンを1遅らせ、敵全体へ水属性のダメージ(400%)、さらに味方全体のHPを回復する(50%)",
 		turn: 8,
-		proc: [ss_delay_all(1), ss_damage_all(4.0, [0,1,0,0,0]), ss_heal(0.5)],
+		proc: [ss_delay_all(1), ss_damage_all(4.0, [1]), ss_heal(0.5)],
 	},
 	Lawake: [
 		Statusup(500,0),
@@ -80516,7 +80516,7 @@ Cards = [{
 	ss2: {
 		desc: "<激化大魔術>敵単体へ火・水属性の2回連続ダメージ(2500%)、発動する度に効果値が3倍アップ(上限:1段階)",
 		turn: 16,
-		proc: [ss_damage_s(ss_intenselyval(-25, 50, 75), [1,0], 2)],//現状の関数だと2倍ずつしかできないので50x-25で25,75にしています
+		proc: [ss_damage_s(ss_intenselyval(0, 25, 75, 3), [1,0], 2)],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],4),
@@ -87809,7 +87809,7 @@ Cards = [{
 	},
 	ss1: {
 		desc: "<反動大魔術>スキル反射を無視し、敵全体へ火属性のダメージ(1050%)(スキル使用後、3ターン封印状態に)",
-		turn: 0,
+		turn: 7,
 		proc: [ss_damage_all(10.5, [0]), ss_allsealed_own(3), ss_ignore_skillcounter()],
 	},
 	awakes: [
@@ -87830,7 +87830,7 @@ Cards = [{
 	},
 	ss2: {
 		desc: "<反動大魔術>スキル反射を無視し、敵全体へ火属性のダメージ(1350%)(スキル使用後、3ターン封印状態に)",
-		turn: 0,
+		turn: 10,
 		proc: [ss_damage_all(13.5, [0]), ss_allsealed_own(3), ss_ignore_skillcounter()],
 	},
 	Lawake: [

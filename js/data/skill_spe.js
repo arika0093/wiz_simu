@@ -1377,19 +1377,22 @@ function ss_singleattr_num(a, b) {
 }
 
 /**
- * (条件系)発動回数に応じて値をn倍したものを返す。[r = a + bx]
+ * (条件系)発動回数に応じて値をn倍したものを返す。[r = a + b * c ^ x]
  * [例]効果値が320,640,...,6400と増加していく場合、ss_intenselyval(0, 3.2, 64)
  * a:	基礎値[無条件加算値]。
- * b:	乗算値。発動回数分掛け算される。初回発動時のxは1であることに注意。
+ * b:	乗算値。発動回数分掛け算される。初回発動時のxは0。
  * max:	効果値最大値。戻り値がこの値以上になった場合、この値に切り捨てられる。
+ * c:   乗数。未指定なら自動的に2が割り当てられる。
 **/
-function ss_intenselyval(a, b, max) {
+function ss_intenselyval(a, b, max, c) {
+	c = c || 2;
 	return ss_condition({
 		name: "ss_intenselyval",
 		type: "other",
 		p1: a,
 		p2: b,
 		p3: max,
+		p4: c
 	});
 }
 

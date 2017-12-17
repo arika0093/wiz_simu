@@ -25,7 +25,15 @@
             <div id="schbox_wrapper">
                 <div class="textbox_wrap clearfix">
                     <input type="text" id="schbox" autocomplete="off" placeholder="精霊名, 属性, 種族名, スキル名 etc..." />
-                    <div id="url_generate" title="検索結果をURLに保存します。"><i class="fa fa-floppy-o" aria-hidden="true"></i></div>
+                    <div id="menuitems">
+                        <div id="listup_dmgss" title="攻撃系SS所持の精霊のみに絞り、与ダメージ表示モードに切り替えます。">
+                            <input id="listup_dmgss_flg" type="checkbox" />
+                            <i class="fa fa-list" aria-hidden="true"></i>
+                        </div>
+                        <div id="url_generate" title="検索結果をURLに保存します。">
+                            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -50,6 +58,7 @@
                                         <a href="#cond_04">条件指定[4: 条件否定]</a>
                                         <a href="#cond_05">条件指定[5: 検索範囲を指定 / 正規表現]</a>
                                         <a href="#cond_06">条件指定[6: 複数条件をつなげる]</a>
+                                        <a href="#srch_ssdmg">SS火力で検索する</a>
                                         <a href="#alllistup">実装済のフィルター種類</a>
                                     </div>
                                 </dd>
@@ -171,6 +180,26 @@
                                             <span class="sch_opt_label">[[回復AS AND AS発動ch = 0] OR 異常回復]</span>
                                         </div>
                                     </div>
+                                </dd>
+                                <dt id="srch_ssdmg">SS火力で検索する</dt>
+                                <dd>
+                                    検索中に、右の<i class="fa fa-list" aria-hidden="true"></i>アイコンをクリックすることで、火力順表示に切り替えることが可能です。<br/>
+                                    切り替え中は、「攻撃SS」精霊のみが「火力順に」リストアップされます。<br/>
+                                    表示されている火力は以下の方法で計算したものを算出しています。<br/>
+                                    <br/>
+                                    <span class="example">攻撃力</span>
+                                    <span class="boxlike">自身のATK</span> +  <span class="boxlike">自身の潜在分ATK[SS2ならL潜在を含む]</span><br/>
+                                    <span class="example">効果値</span>
+                                    <span class="boxlike">元々の効果値</span> +  <span class="boxlike">潜在結晶の最大値</span><br/>
+                                    <span class="example">火力値</span>
+                                    <span class="boxlike">ATK</span> *  <span class="boxlike">効果値</span> *
+                                        <span class="boxlike">有利属性への属性相性</span> * <span class="boxlike">アド潜在</span><br/>
+                                    <br/>
+                                    例えば、水精霊が水/火属性でSS攻撃を行う場合、火属性相手に発動した際のダメージが火力値となります。<br/>
+                                    この時の攻撃力は味方精霊の分を含んで<b>いない</b>ので注意が必要です。<br/>
+                                    特に、<strong>効果値が高く攻撃力が低い精霊</strong>は実際よりも<u>かなり低く火力値が見積もられる</u>ため、注意が必要です。<br/>
+                                    <br/>
+                                    エンハンス幅指定やステアップ分指定、アド結晶込みの計算はまだ未実装です。しばらくお待ちください。
                                 </dd>
                                 <dt id="alllistup">実装済のフィルター種類</dt>
                                 <dd>
@@ -388,12 +417,17 @@
     <script charset="UTF-8" src="/js/data/skill_spe.js"></script>
     <script charset="UTF-8" src="/js/data/skill_spe_body.js"></script>
     <script charset="UTF-8" src="/js/data/skill_awake.js"></script>
+    <script charset="UTF-8" src="/js/data/skill_crystal.js"></script>
     <script charset="UTF-8" src="/js/data/cards.js"></script>
     <script charset="UTF-8" src="/js/data/sp_alias.js"></script>
+    <!-- other data -->
+    <script charset="UTF-8" src="/js/simulator/damage.js"></script>
+    <!-- search(ex) -->
     <script src="/js/search/sch_filter.js"></script>
     <script src="/js/search/sch_detail.js"></script>
     <script src="/js/searchex/srex_filter_list.js"></script>
     <script src="/js/searchex/srex_sort_list.js"></script>
     <script src="/js/searchex/search_ex.js"></script>
+    <script src="/js/searchex/grepskill.js"></script>
 </body>
 </html>

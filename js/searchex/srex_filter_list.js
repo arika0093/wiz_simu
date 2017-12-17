@@ -233,10 +233,8 @@ var SrchFilters = [
 				|| (sst[1] != Invalid && chk_cond(sst[1] - fasts + ssc[1], opt_turn));
 		},
 		cond_cd: function (c) {
-			// SSが未指定の時はここで比較する
-			// SSが何か指定されていたら、そちらでしっかり比較する
-			// SS1またはSS2が指定した条件にmatchすればOK
-			return this.cond_ssturn(c, [1,1]);
+			// ターン数のみで比較
+			return checkCond_CardSSturn(c, /.*/);
 		},
 		initialize: () => {},
 		onsaved: function (obj) {
@@ -451,6 +449,9 @@ var SrchFilters = [
 	createAnswerSkillDetailObject("味方HP削りAS", "全体自傷AS", /味方のMAXHP[0-9]{2,}[%％]を使/, {
 		alias: ["みかた", "ぜんたい", "けずり", "じしょう"],
 	}),
+	createAnswerSkillDetailObject("解答時間依存AS", "解答依存AS", /(|平均)解答(|時間)が早いほど/, {
+		alias: ["かいとうじかんいぞん", "かいとういぞん"],
+	}),
 	// SS簡易フィルター
 	// ---------------------------------
 	createSpecialSkillObject("大魔術", null, {
@@ -639,6 +640,15 @@ var SrchFilters = [
 	}),
 	createSpecialSkillDetailObject("不調SS", null, /HP(|が)[0-9]{1,3}%以下/, {
 		alias: ["HPいぞん", "ふちょう"],
+	}),
+	createSpecialSkillDetailObject("敵全体対象", null, /敵全体へ/, {
+		alias: ["てきぜんたい"],
+	}),
+	createSpecialSkillDetailObject("敵単体対象", null, /敵単体へ/, {
+		alias: ["てきたんたい"],
+	}),
+	createSpecialSkillDetailObject("解答時間依存SS", "解答依存SS", /(|平均)解答(|時間)が早いほど/, {
+		alias: ["かいとうじかんいぞん", "かいとういぞん"],
 	}),
 	createSpecialSkillObject("チャージSS", null, {
 		cond_cd: (c) => {
@@ -842,15 +852,30 @@ function checkCond_CardASchain(c, matches){
 
 // SSターン条件を比較する関数
 function checkCond_CardSSturn(c, matches){
-	var ss_list = $.grep([c.ss1, c.ss2], (e, i) => {
-		var rst = (e != undefined);
-		rst = rst && isStringContainCheck(matches, e.desc, true);
+	var ss_targets = $.map([c.ss1, c.ss2], (e, i) => {
+		var is_ss2 = (i != 0);
+		if(!e){
+			return null;
+		}
+		if(!c.disp_ss){
+			return {ss: e, is_ss2};
+		}
+		if((i == 0 && !c.disp_ss.is_ss2) || (i == 1 && c.disp_ss.is_ss2)){
+			return {ss: e, is_ss2};
+		} else {
+			return null;
+		}
+	})
+	var ss_list = $.grep(ss_targets, (e, i) => {
+		var rst = (e.ss != undefined);
+		rst = rst && isStringContainCheck(matches, e.ss.desc, true);
 		if(rst){
 			// 全追加SSを捜査して、ターン指定Objがあったらチェックを通す
 			$.each(getAllActiveFilter(), (ai, ae) => {
 				if(ae.cond_ssturn){
 					var tg_arr = [0, 0];
-					tg_arr[i] = 1;
+					var ix = (e.is_ss2 ? 1 : 0)
+					tg_arr[ix] = 1;
 					rst = rst && ae.cond_ssturn(c, tg_arr);
 				}
 			});
@@ -1203,6 +1228,7 @@ function createMultiFilter(append){
 function convertActiveFilterToJSON(){
 	var sv_obj = {
 		query: "query/searchex",
+		disp_ss: isDispSSDmg,
 		inp: $("#schbox").val(),
 		af: ActiveSrchFilter,
 	}

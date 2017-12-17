@@ -1625,11 +1625,12 @@ var SpCondSkill = {
 	"ss_intenselyval": function (fld, oi, cobj, params) {
 		var a = params[0];
 		var b = params[1];
+		var c = params[3];
 		var max = params[2];
 		var now = fld.Allys.Now[oi];
 		var x = (now.intensely_val || 0);
 		now.intensely_val = x + 1;
-		return Math.min(a + b * Math.pow(2,x), max);
+		return Math.min(a + b * Math.pow(c,x), max);
 	},
 	// -----------------------------
 	// 味方全体自傷して自傷した数だけ効果値を増やす
