@@ -83,7 +83,14 @@ var AsCond = {
 		var {e_attr} = cond.param;
 		var e = GetNowBattleEnemys(fld, ei);
 		return ei < 0 || e.attr == e_attr;
-	}
+	},
+	// 自身が毒の時
+	"when_own_poison": function (fld, cond, oi, ei, p, tgi) {
+		var now = fld.Allys.Now[oi];
+		return $.grep(now.turn_effect, (e) => {
+			return e.type == "poison";
+		}).length > 0;
+	},
 };
 
 // ------------------------------------------------------

@@ -1668,10 +1668,18 @@ function spskill_maxcharge_spec(specNo) {
 /**
  * 未定義スキル
  **/
-function ss_undefined() {
+function ss_warning(str) {
+	return ss_template({
+		name: "ss_warning",
+		type: "for_internal",
+		p1: str,
+	});
+}
+function ss_undefined(str) {
 	return ss_template({
 		name: "ss_undefined",
 		type: "for_internal",
+		p1: str,
 	});
 }
 

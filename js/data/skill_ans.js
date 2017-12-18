@@ -793,6 +793,16 @@ function when_enemyattr_match(e_attr) {
 	}
 }
 
+// 自身が毒の時
+function when_own_poison() {
+	return {
+		cond: [{
+			param: {},
+			func: "when_own_poison",
+		}]
+	}
+}
+
 // ------------------------------------------------------
 // 条件依存効果値UP(add_condで足す)
 // ------------------------------------------------------

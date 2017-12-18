@@ -1505,8 +1505,14 @@ var SpSkill = {
 	},
 	// -----------------------------
 	// 未定義スキル
+	"ss_warning": function (fld, n, cobj, params) {
+		var str = params[0];
+		fld.log_push(`Unit[${n+1}]: [WARNING] ${str}`, "orange");
+	},
 	"ss_undefined": function (fld, n, cobj, params) {
-		throw "スキルが定義されていない精霊です。実装をお待ちください。";
+		var str = params[0];
+		fld.log_push(`Unit[${n+1}]: [UNDEFINED] ${str}`, "orange");
+		throw `\n[${str}: スキルが定義されていない精霊です。実装をお待ちください。]`;
 	},
 	/*
 	// -----------------------------
