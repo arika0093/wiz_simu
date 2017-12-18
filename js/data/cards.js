@@ -7575,6 +7575,7 @@ Cards = [{
 	cost: 46,
 	attr: [1, -1],
 	species: [9],
+	alias: ["ちっぱい"],
 	awakes: [
 		Costdown(2),
 		Attr_relief([0, 0, 1, 0, 0, ], 10),
@@ -11509,6 +11510,7 @@ Cards = [{
 	cost: 33,
 	attr: [2, -1],
 	species: [8],
+	alias: ["ちっぱい"],
 	awakes: [
 		Panel_boost([0, 0, 1, 0, 0, ], 1),
 		Fastskill(1),
@@ -13736,6 +13738,7 @@ Cards = [{
 	cost: 44,
 	attr: [2, -1],
 	species: [9],
+	alias: ["ちっぱい"],
 	awakes: [
 		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
 		Fastskill(3),
@@ -17891,6 +17894,7 @@ Cards = [{
 	attr: [0,1],
 	species: [9],
 	islegend: true,
+	alias: ["ちっぱい"],
 	as1: {
 		desc: "<回復>味方全体のHPを回復(14%)",
 		proc: Heal(0.14, [1,1,1,1,1]),
@@ -19864,7 +19868,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
-	alias: ["/rinshandream", "/wiztools"],
+	alias: ["/rinshandream", "/wiztools", "ちっぱい"],
 	as1: {
 		desc: "<回復>雷属性の味方のHPを回復(13%)",
 		proc: Heal(0.13, [0,0,1,0,0], 0),
@@ -54123,6 +54127,7 @@ Cards = [{
 	attr: [1, 2],
 	species: [9],
 	ape: "3500万DL精霊",
+	alias: ["ちっぱい"],
 	awakes: [
 		Awake_Chainboost(1),
 		Fastskill(1),
@@ -54351,6 +54356,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "聖なる空のエステレラ 星めぐりの物語",
+	alias: ["ちっぱい"],
 	as1: {
 		desc: "<攻撃強化・回復>火・水属性の味方のHPを回復(13%)、さらに火・水属性の味方の攻撃力をアップ(30%)",
 		proc: [Heal(0.13, [1,1,0,0,0], 0), ChainEnhance(0.3, [1,1,0,0,0], 0)],
@@ -68584,6 +68590,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "バレンタイン2015",
+	alias: ["ちっぱい"],
 	as1: {
 		desc: "<攻撃強化>7チェインで水属性の味方の攻撃力をアップ、20チェインでさらにアップ(80%/300%)",
 		proc: [ChainEnhance(0.8, [0,1,0,0,0], 7), ChainEnhance(3.0, [0,1,0,0,0], 20)],
@@ -69130,6 +69137,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "バレンタイン2014",
+	alias: ["ちっぱい"],
 	as1: {
 		desc: "<回復>水・雷属性の味方を回復、HP50%以下なら更に回復(11%/21%)",
 		proc: [Heal(0.11, [0,1,1,0,0], 0), add_cond(Heal(0.21, [0,1,1,0,0], 0), when_hp_less(0.5))],
