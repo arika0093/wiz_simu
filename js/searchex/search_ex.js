@@ -48,10 +48,12 @@ $(() => {
 			}
 			if(so.disp_ss){
 				isDispSSDmg = true;
+				setSdmgObject(so.sdmg_obj);
 				reloadCardsSS();
 				// それ用にクラス付与
 				$("#listup_dmgss_flg").prop("checked", true);
 				$("#listup_dmgss").toggleClass("isflgon", true);
+				$("#sdmg_optbox_wrapper").toggleClass("isflgon", true);
 				$.each($(".oc_sortarea input"), (i,e) => $(e).prop("disabled", true) );
 				$("div.oc_sortarea").toggleClass("disabled", true);
 			}
@@ -154,6 +156,7 @@ $(() => {
 			isDispSSDmg = !is_checked;
 			flg_input.prop("checked", isDispSSDmg);
 			$(this).toggleClass("isflgon", isDispSSDmg);
+			$("#sdmg_optbox_wrapper").toggleClass("isflgon", isDispSSDmg);
 			
 			if(isDispSSDmg){
 				// 火力順データが空なら、ここで加えておく
@@ -166,6 +169,16 @@ $(() => {
 			var txtbox = $("input#schbox");
 			listupCardThrowFilter(txtbox.val());
 		});
+	// 再計算ボタンを押した時の処理
+	var reload = function () {
+		// 再計算関数
+		calcPreDamageAndSort(CardsSSDmg);
+		// 再描画
+		var txtbox = $("input#schbox");
+		listupCardThrowFilter(txtbox.val());
+	};
+	$("#sdmg_optbox_wrapper input").on("change", reload);
+	$("#sdmg_optbox_wrapper select").on("selectmenuchange", reload);
 	// フィルター検索結果をクリックした時の結果をあらかじめ記述
 	$("#filterbox_wrapper")
 		.on("click", "li.rst_item", function () {
@@ -278,8 +291,9 @@ $(() => {
 	listupSortCondition();
 	$("input[name=sortradio]#sortby_regist").prop("checked", true);
 	
-	// その他labelとかtooltipの出力
+	// その他labelとかtooltipとかの出力
 	$("*[title]").tooltip();
+	$("div.sdmg_opt_controlgroup").controlgroup();
 	$("#reg_num").text(`${Cards.length}`);
 	
 	
@@ -425,7 +439,7 @@ function genCardItemHtml (c) {
 	                    <span class="chara_ssdmg_type">&lt;${ss_type}&gt; </span>
 	                    <span class="chara_ssdmg_subtype">${ss_subd}</span>
 	                    <span class="chara_ssdmg_turn">[${ss_turn}]</span><br/>
-	                    <span class="chara_ssdmg_rate">rate: ${ss.rateWithCrs.toFixed(1)},</span>
+	                    <span class="chara_ssdmg_rate">rate: ${ss.rate.toFixed(1)},</span>
 	                    <span class="chara_ssdmg_awatk">ATK: ${ss.aw_atk.toFixed(0)}</span>
                     </div>
                     <div class="chara_ssdmg_pdmg">${ss.pre_damage}</div>

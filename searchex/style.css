@@ -126,7 +126,7 @@ a#topbanner{
 }
 a#topbanner.upperstyle{
 	height: 65px;
-	background-position-y: -20px;
+	background-position: 0 -20px;
 }
 @media screen and (max-width: 720px) {
 	a#topbanner{
@@ -578,6 +578,33 @@ div.oc_sortarea.disabled label{
 }
 
 
+/* SS-damage Option */
+div#sdmg_optbox_wrapper{
+	max-width: 780px;
+	animation-duration: .4s;
+	animation-name: fade-in;
+	font-size: smaller;
+	border: 1px solid #8CF;
+	border-radius: 4px;
+	background-color: #F0FAFF;
+	opacity: 0;
+	display: none;
+}
+div#sdmg_optbox_wrapper.isflgon {
+	opacity: 1;
+	display: block;
+	margin: 1ex auto 2ex;
+	padding: 0 1em 2ex;
+}
+
+div#sdmg_optbox_wrapper div.sdmg_opt_controlgroup{
+	margin: .5ex 0;
+}
+
+div#sdmg_optbox_wrapper input.dlg_input:not(.dlg_input_number){
+	max-width: 180px;
+}
+
 
 /* Result box */
 div#resultbox_wrapper{
@@ -829,11 +856,17 @@ footer a:hover{
 	font-size: 0.9em;
 }
 .ui-state-active{
-	background-color: #1e8eff !important;
+	background-color: #1a97bd !important;
 }
 .ui-tooltip{
 	font-size: smaller;
 	box-shadow: 0 0 4px #CCC;
+}
+.ui-controlgroup-label span{
+	font-size: 100% !important;
+}
+li.ui-menu-item {
+	font-size: smaller;
 }
 
 @media screen and (max-width: 500px) {

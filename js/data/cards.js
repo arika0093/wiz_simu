@@ -65435,7 +65435,7 @@ Cards = [{
 	ss2: {
 		desc: "<遅延大魔術>敵全体の攻撃ターンを1遅らせ、水属性のダメージ(150%)",
 		turn: 6,
-		proc: [ss_delay_all(1), ss_damage_all(1.5, [0,1,0,0,0])],
+		proc: [ss_delay_all(1), ss_damage_all(1.5, [1])],
 	},
 	Lawake: [
 		NEFTJOD(30),
@@ -91255,7 +91255,7 @@ Cards = [{
 	ss2: {
 		desc: "<融合大魔術>スキル反射を無視し、敵全体へ水属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:5属性で3600)",
 		turn: 10,
-		proc: [ss_damage_all(ss_multiattr_cond(36), [0])],
+		proc: [ss_damage_all(ss_multiattr_cond(36), [1])],
 	},
 	Lawake: [
 		Statusup(0,1500),

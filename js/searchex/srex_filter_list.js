@@ -1229,6 +1229,7 @@ function convertActiveFilterToJSON(){
 	var sv_obj = {
 		query: "query/searchex",
 		disp_ss: isDispSSDmg,
+		sdmg_obj: getSdmgObject(),
 		inp: $("#schbox").val(),
 		af: ActiveSrchFilter,
 	}

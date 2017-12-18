@@ -198,8 +198,6 @@
                                     例えば、水精霊が水/火属性でSS攻撃を行う場合、火属性相手に発動した際のダメージが火力値となります。<br/>
                                     この時の攻撃力は味方精霊の分を含んで<b>いない</b>ので注意が必要です。<br/>
                                     特に、<strong>効果値が高く攻撃力が低い精霊</strong>は実際よりも<u>かなり低く火力値が見積もられる</u>ため、注意が必要です。<br/>
-                                    <br/>
-                                    エンハンス幅指定やステアップ分指定、アド結晶込みの計算はまだ未実装です。しばらくお待ちください。
                                 </dd>
                                 <dt id="alllistup">実装済のフィルター種類</dt>
                                 <dd>
@@ -229,9 +227,38 @@
                 <ul class="result">
                 </ul>
             </div>
-
+    
             <!-- Result -->
             <div id="resultbox_wrapper">
+                <!-- SS-damage Option -->
+                <div id="sdmg_optbox_wrapper">
+                    <p class="dialog_section">火力値算出オプション</p>
+                    <div class="dialog_desc">
+                        以下の設定を元に火力値を計算、表示します。
+                    </div>
+                    <input type="number" id="sdmgopt_awatk" class="dlg_input" placeholder="(味方潜在)攻撃力補正">
+                    <input type="number" id="sdmgopt_statk" class="dlg_input" placeholder="(ステアップ)攻撃力補正">
+                    <input type="number" id="sdmgopt_enh" class="dlg_input" placeholder="エンハンス効果値補正">
+                    <input type="number" id="sdmgopt_rand" class="dlg_input dlg_input_number" placeholder="乱数" min="0.9" max="1.1">
+                    <div class="sdmg_opt_controlgroup">
+                        <label for="sdmgopt_eattr" class="ui-controlgroup-label">敵属性:</label>
+                        <select id="sdmgopt_eattr">
+                            <option value="-1" selected>対有利属性</option>
+                            <option value="0">火</option>
+                            <option value="1">水</option>
+                            <option value="2">雷</option>
+                            <option value="3">光</option>
+                            <option value="4">闇</option>
+                        </select>
+                        <label for="sdmgopt_flg_awadv">アド潜在</label>
+                        <input type="checkbox" id="sdmgopt_flg_awadv" checked />
+                        <label for="sdmgopt_flg_crrate">威力UP結晶</label>
+                        <input type="checkbox" id="sdmgopt_flg_crrate" checked />
+                        <label for="sdmgopt_flg_cradv">アド結晶</label>
+                        <input type="checkbox" id="sdmgopt_flg_cradv" />
+                    </div>
+                </div>
+                <!-- Result -->
                 <ul class="result">
                     <li class="rst_caption">精霊検索結果 <span id="rst_disp_num"></span></li>
                     <li class="rst_option clearfix">
@@ -329,7 +356,7 @@
                 <div class="dialog_desc">
                     現在指定しているAS条件の中から、ASチェイン数の条件を満たすものを表示します。
                 </div>
-                <div class="dlg_ssturn_input">
+                <div class="dlg_aschain_input">
                     <input type="number" min="0" step="1" id="aschain_spinner" class="dlg_input dlg_input_number" placeholder="発動チェイン"> ch
                     <select id="aschain_type" class="dlg_select">
                         <option value="0">より上</option>
