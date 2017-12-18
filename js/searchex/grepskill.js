@@ -398,11 +398,22 @@ function calcPreDamageAndSort(cs){
 		// 敵属性
 		// 未指定なら、自身の有利属性に合わせる
 		var e_attr = (e_attr_set >= 0 ? e_attr_set : ((c.attr[0] + 2) % 3));
-		// 指定されているなら、攻撃対象属性と合わない場合終了
-		if(e_attr_set >= 0 && ss.t_attr && ss.t_attr[e_attr] <= 0){
-			ss.is_disp = false;
-			ss.pre_damage = 0;
-			return;
+		// 攻撃対象属性と合わない場合、指定されているなら終了
+		// 指定されてないなら、特効対象の属性に合わせる
+		if(ss.t_attr && ss.t_attr[e_attr] <= 0){
+			if(e_attr_set >= 0){
+				ss.aw_atk = c.atk;
+				ss.is_disp = false;
+				ss.pre_damage = 0;
+				return;
+			} else {
+				var tg_attr = $.map(ss.t_attr, (e, i) => {
+					return (e > 0 ? i : null);
+				})[0];
+				if(tg_attr >= 0){
+					e_attr = tg_attr;
+				}
+			}
 		}
 
 		// 潜在の値を取る
