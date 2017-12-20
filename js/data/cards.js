@@ -92018,7 +92018,7 @@ Cards = [{
 		turn: 5,
 		charged: 1,
 		isallcharge: true,
-		proc: [ss_reinforcement_all(5, [ss_attr_guard([1, 1, 1, 1, 1], 0.3, 1, "RF"), ss_enhance_all(3.5, 1, [1, 1, 1, 1, 1], "RF"), ss_regenerate(0.3, 1, "RF")]],
+		proc: [ss_reinforcement_all(5, [ss_attr_guard([1, 1, 1, 1, 1], 0.3, 1, "RF"), ss_enhance_all(3.5, 1, [1, 1, 1, 1, 1], "RF"), ss_regenerate(0.3, 1, "RF")])],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],4),
@@ -92041,7 +92041,7 @@ Cards = [{
 		turn: 8,
 		charged: 1,
 		isallcharge: true,
-		proc: [ss_reinforcement_all(5, [ss_attr_guard([1, 1, 1, 1, 1], 0.3, 1, "RF"), ss_enhance_all(4.5, 1, [1, 1, 1, 1, 1], "RF"), ss_regenerate(0.3, 1, "RF")]],
+		proc: [ss_reinforcement_all(5, [ss_attr_guard([1, 1, 1, 1, 1], 0.3, 1, "RF"), ss_enhance_all(4.5, 1, [1, 1, 1, 1, 1], "RF"), ss_regenerate(0.3, 1, "RF")])],
 	},
 	Lawake: [
 		Attr_statusup(0,300, [1,1,1,1,1,]),
