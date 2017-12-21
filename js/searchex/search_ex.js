@@ -124,7 +124,7 @@ $(() => {
 			// URL保存
 			deckdata_SaveUrl(js, (result) => {
 				var js_rst = JSON.parse(result);
-				var url = `http://wiztools.net/searchex/?q=${js_rst.short}`;
+				var url = `https://wiztools.net/searchex/?q=${js_rst.short}`;
 				// history.pushState('','',"/searchex/?q=" + js_rst.short);
 				$("#url_save_path").val(url);
 				// dialogを開く

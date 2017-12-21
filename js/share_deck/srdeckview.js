@@ -20,7 +20,7 @@ function getSimResult(id, after) {
 	// use ajax
 	$.ajax({
 		type: "POST",
-		url: "http://api.wiztools.net/result_sav.php",
+		url: "https://api.wiztools.net/result_sav.php",
 		data: send,
 		success: after,
 	});

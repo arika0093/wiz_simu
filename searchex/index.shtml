@@ -8,7 +8,7 @@
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Spectral+SC">
+          href="https://fonts.googleapis.com/css?family=Pacifico">
     <title>精霊検索 - Wiztools</title>
     <meta name="description" content="Simple, Speedy and Powerful. 「魔法使いと黒猫のウィズ」多機能精霊検索ツール。" />
     <link type="text/css" rel="stylesheet" charset="UTF-8" href="/css/s_detail.css" />
@@ -425,7 +425,7 @@
             <a target="_blank" tabindex="-1" href="/pages/contact.html">バグ報告</a>
             <a target="_blank" tabindex="-1" href="/pages/donate.html">🍣</a>
             <span class="sepalator">|</span>
-            <a target="_blank" tabindex="-1" href="http://blog.wiztools.net/">Blog</a>
+            <a target="_blank" tabindex="-1" href="https://blog.wiztools.net/">Blog</a>
             <a target="_blank" tabindex="-1" href="https://twitter.com/wiz_tools">Twitter</a>
             <a target="_blank" tabindex="-1" href="https://github.com/Arika0093/wiz_simu/">Github</a>
         </div>

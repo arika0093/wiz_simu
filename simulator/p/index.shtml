@@ -13,7 +13,7 @@
     LICENSE: GNU GPL v3
     ///////////////////////////////////////////////////////////////////////////////
 -->
-<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="ja" xmlns="https://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8" />
 	<!-- StyleSheet -->
@@ -25,7 +25,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/simulator_sp.css" media="screen and (max-width: 599px)" />
 	<link rel="stylesheet" type="text/css" href="/css/simulator.css" media="screen and (min-width: 600px)" />
 	<link type="text/css" rel="stylesheet"
-		  href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+		  href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
 	<meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
 	<!-- Search -->
 	<meta name="robots" content="none" />
@@ -383,8 +383,8 @@
 
 	<!-- Javascript -->
     <!--#config timefmt="%Y%m%d_%H%M%S" -->
-	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.4/platform.min.js"></script>
     <script charset="UTF-8" src="/js/loader.js?                  <!--#flastmod virtual='/js/loader.js'-->"></script>

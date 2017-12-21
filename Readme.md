@@ -3,7 +3,7 @@ wiz_simu
 ![](https://raw.githubusercontent.com/Arika0093/wiz_simu/master/image/wiztools_logo_chara.png)
 
 ## Release
-<http://wiztools.net/>
+<https://wiztools.net/>
 
 ## How to Join "wiz_simu" Project
 当プロジェクトに参加したい方は、[@wiz_tools](https://twitter.com/wiz_tools)にリプライまたはDMを送るか、  

@@ -358,7 +358,7 @@ function dialog_init(){
 		open: function(){
 			create_url(function(result){
 				var js = JSON.parse(result);
-				$("#createurl_rst").val("http://wiztools.net/damagecalc/?q=" + js.short);
+				$("#createurl_rst").val("https://wiztools.net/damagecalc/?q=" + js.short);
 				history.replaceState('','',"?q=" + js.short);
 			});
 		},

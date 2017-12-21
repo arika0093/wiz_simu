@@ -13,7 +13,7 @@
     LICENSE: GNU GPL v3
     ///////////////////////////////////////////////////////////////////////////////
 -->
-<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="ja" xmlns="https://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <!-- StyleSheet -->
@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="/css/default.css" media="screen and (min-width: 600px) and (max-width: 1099px)" />
     <link rel="stylesheet" type="text/css" href="/css/default_bg.css" media="screen and (min-width: 1100px)" />
     <link type="text/css" rel="stylesheet"
-          href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+          href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
     <link type="text/css" rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.min.css" />
     <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1" />
@@ -503,8 +503,8 @@
 
     <!-- Javascript -->
     <!--#config timefmt="%Y%m%d_%H%M%S" -->
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5sortable/0.4.2/html.sortable.min.js"></script>

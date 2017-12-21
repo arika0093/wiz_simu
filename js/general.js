@@ -7,7 +7,7 @@ function get_image_url(no, pref) {
 	if (no < 0) {
 		return "/image/noimage.png";
 	}
-	return "http://i.quiz.colopl.jp/img/card/small/" + pref + "card_" + ("0000" + no).slice(-5) + "_0.png"
+	return "https://i-quiz-colopl-jp.akamaized.net/img/card/small/" + pref + "card_" + ("0000" + no).slice(-5) + "_0.png"
 }
 
 // 大きい画像のURLを返却する
@@ -16,7 +16,7 @@ function get_image_url_b(no, pref) {
 	if (no < 0) {
 		return "/image/noimage.png";
 	}
-	return "http://i.quiz.colopl.jp/img/card/middle/" + pref + "card_" + ("0000" + no).slice(-5) + "_1.png"
+	return "https://i-quiz-colopl-jp.akamaized.net/img/card/middle/" + pref + "card_" + ("0000" + no).slice(-5) + "_1.png"
 }
 
 
@@ -267,7 +267,7 @@ function sim_by_id(id){
 	dd.quest = id;
 	$.ajax({
 		type: 'POST',
-		url: "http://api.wiztools.net/shorten.php",
+		url: "https://api.wiztools.net/shorten.php",
 		data: "t=set&d=" + JSON.stringify(dd),
 		success: function(res,ts){
 			var js=JSON.parse(res);

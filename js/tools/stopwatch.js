@@ -127,7 +127,7 @@ function count_up() {
 }
 
 function say(mycomment, feel) {
-	var imgpath = "http://i.quiz.colopl.jp/img/talkstory/" + words[vals.name].imgbase + feel + ".png";
+	var imgpath = "https://i-quiz-colopl-jp.akamaized.net/img/talkstory/" + words[vals.name].imgbase + feel + ".png";
 	$("div.stpwatch").css("background-image", "url(" + imgpath + ")");
 	comment.innerHTML = mycomment;
 }

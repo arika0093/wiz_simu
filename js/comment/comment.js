@@ -60,7 +60,7 @@ function cm_loadandapply(dom_s, url, page) {
 	// get
 	$.ajax({
 		type: "POST",
-		url: "http://api.wiztools.net/comment/cm_load.php",
+		url: "https://api.wiztools.net/comment/cm_load.php",
 		data: "dat=" + JSON.stringify(sobj),
 		success: function (rst) {
 			var dats = JSON.parse(rst);

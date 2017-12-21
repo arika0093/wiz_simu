@@ -13,7 +13,7 @@ $(function(){
 	var type_str = (id ? "view_id" : "view_sh");
 	$.ajax({
 		type: "POST",
-		url: "http://api.wiztools.net/result_sav.php",
+		url: "https://api.wiztools.net/result_sav.php",
 		data: "tp=" + type_str + "&id=" + (id || sid),
 		success: loadDeckDataFromResult,
 	});

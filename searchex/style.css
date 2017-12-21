@@ -130,7 +130,7 @@ a#topbanner.upperstyle{
 }
 @media screen and (max-width: 720px) {
 	a#topbanner{
-		font-family: 'Spectral SC', serif;
+		font-family: 'Pacifico', serif;
 		display: block;
 		margin: 0 auto;
 		text-align: center;
@@ -139,7 +139,7 @@ a#topbanner.upperstyle{
 		text-decoration: none;
 		text-indent: 0pt;
 		width: 100%;
-		height: 40px;
+		height: 50px;
 		color: #0040FF;
 		background-image: none;
 	}
