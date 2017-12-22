@@ -91195,7 +91195,7 @@ Cards = [{
 	ss1: {
 		desc: "<融合強化>デッキ内の精霊が持つ属性数が多いほど、火属性の味方の攻撃力、HPのステータスをアップ(上限値:2000,2500)",
 		turn: 4,
-		proc: [ss_statusup_all([ss_multiattr_cond(2500), ss_pureattr_cond(2000)], [2500,2000], -1, [1,0,0,0,0])],
+		proc: [ss_statusup_all([ss_multiattr_cond(2500), ss_multiattr_cond(2000)], [2500,2500], -1, [1,0,0,0,0])],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],2),
@@ -91216,7 +91216,7 @@ Cards = [{
 	ss2: {
 		desc: "<融合強化>デッキ内の精霊が持つ属性数が多いほど、火属性の味方の攻撃力、HPのステータスをアップ(上限値:3000,3500)",
 		turn: 8,
-		proc: [ss_statusup_all([ss_multiattr_cond(3500), ss_pureattr_cond(3000)], [3500,3000], -1, [1,0,0,0,0])],
+		proc: [ss_statusup_all([ss_multiattr_cond(3500), ss_multiattr_cond(3000)], [3500,3500], -1, [1,0,0,0,0])],
 	},
 	Lawake: [
 		Attr_statusup(0,300, [1,1,1,1,1,]),
