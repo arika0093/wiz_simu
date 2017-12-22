@@ -91203,7 +91203,7 @@ Cards = [{
 		Attr_statusup(200,0, [1,1,0,0,0,]),
 		Panel_boost([1,0,0,0,0,],2),
 		NEFTJOD(30),
-		Fastskill(5),
+		Fastskill(4),
 		Attr_statusup(0,300, [1,1,1,1,1,]),
 		Attr_statusup(300,0, [1,1,1,1,1,]),
 		Abstate_invalid("ss_sealed"),
