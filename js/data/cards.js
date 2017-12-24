@@ -91580,7 +91580,7 @@ Cards = [{
 	ss2: {
 		desc: "<特効大魔術>敵単体へ火属性のダメージ(400%)、さらに雷属性の敵には特効ダメージ(900%)。HP20%以下の時、さらに特効ダメージ(2200%)",
 		turn: 9,
-		proc: [ss_damage_s(special_attr([0, 0, 1, 0, 0], ss_hp_less(0.2, 25, 13), 4.0), [0], 1)],
+		proc: [ss_damage_s(special_attr([0, 0, 1, 0, 0], ss_hp_less(0.2, 35, 13), 4.0), [0], 1)],
 	},
 	Lawake: [
 		Statusup(0,1000),
