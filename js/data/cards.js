@@ -16004,7 +16004,7 @@ Cards = [{
 	attr: [0, -1],
 	species: [8],
 	islegend: true,
-	ape: "大魔導杯 ケーキ",
+	ape: "大魔道杯 ケーキ",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>HP80%以上で雷属性の敵単体へ特効ダメージ(475%)",
@@ -25308,7 +25308,7 @@ Cards = [{
 	attr: [0,2],
 	species: [8],
 	islegend: true,
-	ape: "大魔導杯 ケーキ",
+	ape: "大魔道杯 ケーキ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>火・雷属性の味方のHPを回復(14%)",
@@ -30482,7 +30482,7 @@ Cards = [{
 	species: [6],
 	disable: true,
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<複属性攻撃強化>4チェインで雷属性の攻撃力をアップ、複属性が火属性だとさらにアップ(10%/120%)",
 		proc: ChainEnhance_SubAttr(0.1, 1.2, [0, 0, 1, 0, 0], [1, 0, 0, 0, 0], 4),
@@ -31918,7 +31918,7 @@ Cards = [{
 	attr: [0,4],
 	species: [2],
 	islegend: true,
-	ape: "大魔導杯 in 聖サタニック女学院",
+	ape: "大魔道杯 in 聖サタニック女学院",
 	is_dist: true,
 	as1: {
 		desc: "<複属性攻撃強化>11チェインで火属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(120%/170%)",
@@ -31964,7 +31964,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [2],
 	islegend: true,
-	ape: "大魔導杯 in 聖サタニック女学院",
+	ape: "大魔道杯 in 聖サタニック女学院",
 	is_dist: true,
 	as1: {
 		desc: "<回復>火属性の味方のHPを回復(12%)",
@@ -32010,7 +32010,7 @@ Cards = [{
 	attr: [1,4],
 	species: [2],
 	islegend: false,
-	ape: "大魔導杯 in 聖サタニック女学院",
+	ape: "大魔道杯 in 聖サタニック女学院",
 	is_dist: true,
 	as1: {
 		desc: "<全体攻撃>敵の数に関わらず敵全体へダメージアップ(140%)",
@@ -32044,7 +32044,7 @@ Cards = [{
 	attr: [2,4],
 	species: [6],
 	islegend: true,
-	ape: "大魔導杯 in 聖サタニック女学院",
+	ape: "大魔道杯 in 聖サタニック女学院",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>水属性の敵単体へ特効ダメージ(400%)",
@@ -32090,7 +32090,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [2],
 	islegend: false,
-	ape: "大魔導杯 in 聖サタニック女学院",
+	ape: "大魔道杯 in 聖サタニック女学院",
 	is_dist: true,
 	as1: {
 		desc: "<回復>水属性の味方のHPを回復(10%)",
@@ -32123,7 +32123,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [2],
 	islegend: false,
-	ape: "大魔導杯 in 聖サタニック女学院",
+	ape: "大魔道杯 in 聖サタニック女学院",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>3チェインで雷属性の敵単体へ特効ダメージ(350%)",
@@ -32474,7 +32474,7 @@ Cards = [{
 	species: [5],
 	disable: true,
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<チェイン攻撃・複属性攻撃強化>4チェインでダメージアップ(400%)、さらに水属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(10%/40%)",
 		proc: [ChainAttack(4.0, 4), ChainEnhance_SubAttr(0.1, 0.4, [0,1,0,0,0], [0,0,1,0,0], 4)],
@@ -32520,7 +32520,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ、HP80%以上でさらにダメージアップ(300%/550%)",
 		proc: [ChainAttack(3.0, 4), add_cond(ChainAttack(5.5, 4), when_hp_more(0.8))],
@@ -35684,7 +35684,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [1],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<回復>味方全体のHPを回復、HP50%以下なら更に回復(11%/21%)",
 		proc: [Heal(0.11, [1,1,1,1,1], 0), add_cond(Heal(0.21, [1,1,1,1,1], 0), when_hp_less(0.5))],
@@ -36275,7 +36275,7 @@ Cards = [{
 	attr: [2,1],
 	species: [9],
 	islegend: true,
-	ape: "大魔導杯 ケーキ",
+	ape: "大魔道杯 ケーキ",
 	is_dist: true,
 	as1: {
 		desc: "<攻撃強化>5チェインで水・雷属性の味方の攻撃力をアップ(60%)",
@@ -37227,7 +37227,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [5],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<回復>水属性の味方のHPを回復、リーダー時さらに回復(13%/17%)",
 		proc: [Heal(0.13, [0,1,0,0,0], 0), add_cond(Heal(0.17, [0,1,0,0,0], 0), when_leader())],
@@ -37273,7 +37273,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [4],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<回復>雷属性の味方のHPを回復、パネルの色が増す度さらに回復(11%/15%/17%)",
 		proc: ChainPanelsHeal(0.11, 0.15, 0.17, [0,0,1,0,0], 0),
@@ -38197,7 +38197,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<攻撃強化・ガード>8チェインで雷属性の味方の攻撃力をアップ(90%)、さらに全属性のダメージを10%軽減",
 		proc: [ChainEnhance(0.9, [0,0,1,0,0], 8), as_guard(0.10, [1,1,1,1,1], 0)],
@@ -44136,7 +44136,7 @@ Cards = [{
 	attr: [0,4],
 	species: [1],
 	islegend: true,
-	ape: "YAOYORO Z",
+	ape: "八百万神秘譚Ⅲ(Z)",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>10チェインでダメージアップ(650%)",
@@ -44182,7 +44182,7 @@ Cards = [{
 	attr: [0,2],
 	species: [1],
 	islegend: true,
-	ape: "YAOYORO Z",
+	ape: "八百万神秘譚Ⅲ(Z)",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ、10チェインで更にダメージアップ(300%/500%)",
@@ -44228,7 +44228,7 @@ Cards = [{
 	attr: [1,4],
 	species: [1],
 	islegend: true,
-	ape: "YAOYORO Z",
+	ape: "八百万神秘譚Ⅲ(Z)",
 	is_dist: true,
 	as1: {
 		desc: "<連撃>6チェインで敵単体を3回連続攻撃、パネルの色が増す度ダメージアップ(350%/450%/550%)",
@@ -44274,7 +44274,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [1],
 	islegend: true,
-	ape: "YAOYORO Z",
+	ape: "八百万神秘譚Ⅲ(Z)",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>5チェインでダメージアップ、HP50%以下でさらにダメージアップ(350%/600%)",
@@ -44320,7 +44320,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [6],
 	islegend: true,
-	ape: "YAOYORO Z",
+	ape: "八百万神秘譚Ⅲ(Z)",
 	is_dist: true,
 	as1: {
 		desc: "<ギャンブル攻撃>4チェインでダメージがイチかバチかアップ(300%~600%)",
@@ -44878,7 +44878,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [1],
 	islegend: true,
-	ape: "YAOYORO Z 魔道杯",
+	ape: "大魔道杯 in YAOYORO Z",
 	is_dist: true,
 	as1: {
 		desc: "<連撃>敵単体を3回連続攻撃、5チェインで更にダメージアップ(250%/350%)",
@@ -46215,7 +46215,7 @@ Cards = [{
 	attr: [0,1],
 	species: [1],
 	islegend: true,
-	ape: "大魔導杯 in YAOYORO Z",
+	ape: "大魔道杯 in YAOYORO Z",
 	is_dist: true,
 	as1: {
 		desc: "<回復>火・水属性の味方のHPを回復、パネルの色が増す度さらに回復(11%/15%/17%)",
@@ -46260,7 +46260,7 @@ Cards = [{
 	attr: [1,4],
 	species: [1],
 	islegend: false,
-	ape: "大魔導杯 in YAOYORO Z",
+	ape: "大魔道杯 in YAOYORO Z",
 	is_dist: true,
 	as1: {
 		desc: "<回復>水属性の味方のHPを回復(13%)",
@@ -46293,7 +46293,7 @@ Cards = [{
 	attr: [1,2],
 	species: [1],
 	islegend: false,
-	ape: "大魔導杯 in YAOYORO Z",
+	ape: "大魔道杯 in YAOYORO Z",
 	is_dist: true,
 	as1: {
 		desc: "<連撃>3チェインで敵単体を3回連続攻撃(300%)",
@@ -46326,7 +46326,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [1],
 	islegend: false,
-	ape: "大魔導杯 in YAOYORO Z",
+	ape: "大魔道杯 in YAOYORO Z",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>3チェインで水属性の敵単体へ特効ダメージ(425%)",
@@ -47642,7 +47642,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: false,
-	ape: "大魔導杯 in ドルキマス",
+	ape: "大魔道杯 in ドルキマス",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効連撃>HP80%以上で水属性の敵単体へ特効5連撃(475%)",
@@ -47997,7 +47997,7 @@ Cards = [{
 	attr: [0,2],
 	species: [8],
 	islegend: true,
-	ape: "大魔導杯 in ドルキマス",
+	ape: "大魔道杯 in ドルキマス",
 	is_dist: true,
 	as1: {
 		desc: "<回復>味方全体のHPを回復(14%)",
@@ -48043,7 +48043,7 @@ Cards = [{
 	attr: [1,2],
 	species: [0],
 	islegend: true,
-	ape: "大魔導杯 in ドルキマス",
+	ape: "大魔道杯 in ドルキマス",
 	is_dist: true,
 	as1: {
 		desc: "<複属性攻撃強化>水属性の攻撃力をアップ、複属性が雷だとさらにアップ(30%/70%)",
@@ -48089,7 +48089,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [3],
 	islegend: true,
-	ape: "大魔導杯 in ドルキマス",
+	ape: "大魔道杯 in ドルキマス",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ(400%)",
@@ -48135,7 +48135,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [6],
 	islegend: false,
-	ape: "大魔導杯 in ドルキマス",
+	ape: "大魔道杯 in ドルキマス",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>4チェインで水属性の敵単体へ特効ダメージ(500%)",
@@ -48168,7 +48168,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: false,
-	ape: "大魔導杯 in ドルキマス",
+	ape: "大魔道杯 in ドルキマス",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>2チェインでダメージアップ(300%)",
@@ -52785,7 +52785,7 @@ Cards = [{
 	attr: [2,3],
 	species: [0],
 	islegend: true,
-	ape: "神竜降臨！",
+	ape: "神竜降臨Ⅰ",
 	is_dist: true,
 	as1: {
 		desc: "<全体攻撃>敵全体へダメージ、7チェインで更にダメージアップ(140%/190%)",
@@ -52831,7 +52831,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [0],
 	islegend: true,
-	ape: "神竜降臨！",
+	ape: "神竜降臨Ⅰ",
 	is_dist: true,
 	as1: {
 		desc: "<属性の加護>デッキの属性の数だけ攻撃力アップ(300%/500%/700%)、龍族の仲間の数だけさらにアップ(40%)",
@@ -52877,7 +52877,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [0],
 	islegend: true,
-	ape: "神竜降臨！",
+	ape: "神竜降臨Ⅰ",
 	is_dist: true,
 	as1: {
 		desc: "<ギャンブル攻撃>ダメージがイチかバチかアップ(200%～300%)",
@@ -54084,7 +54084,7 @@ Cards = [{
 	cost: 57,
 	attr: [0, 1],
 	species: [8],
-	ape: "DL精霊",
+	ape: "DL限定精霊",
 	awakes: [
 		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
 		Panel_boost([1,0,0,0,0], 2),
@@ -54130,7 +54130,7 @@ Cards = [{
 	cost: 53,
 	attr: [0, -1],
 	species: [2],
-	ape: "DL精霊",
+	ape: "DL限定精霊",
 	awakes: [
 		Attr_statusup(100, 0, [1,0,0,0,0]),
 		Fastskill(1),
@@ -54176,7 +54176,7 @@ Cards = [{
 	cost: 51,
 	attr: [1, 2],
 	species: [9],
-	ape: "DL精霊",
+	ape: "DL限定精霊",
 	alias: ["ちっぱい"],
 	awakes: [
 		Awake_Chainboost(1),
@@ -54223,7 +54223,7 @@ Cards = [{
 	cost: 54,
 	attr: [2, 0],
 	species: [6],
-	ape: "DL精霊",
+	ape: "DL限定精霊",
 	awakes: [
 		Fastskill(2),
 		Attr_statusup(200, 0, [1, 0, 1, 0, 0, ]),
@@ -54268,7 +54268,7 @@ Cards = [{
 	cost: 47,
 	attr: [1, 2],
 	species: [9],
-	ape: "DL精霊",
+	ape: "DL限定精霊",
 	awakes: [
 		Awake_noeffect("経験値取得量アップ", 1),
 		Awake_noeffect("心眼", 1),
@@ -54315,7 +54315,7 @@ Cards = [{
 	attr: [1,0],
 	species: [9],
 	islegend: true,
-	ape: "DL精霊",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<種族特効>4チェインでダメージアップ、術士・戦士の敵へさらにダメージアップ(400%/600%)",
 		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [8,9])],
@@ -55689,7 +55689,7 @@ Cards = [{
 	attr: [0,1],
 	species: [0],
 	islegend: true,
-	ape: "大魔導杯 in 心竜天翔",
+	ape: "大魔道杯 in 心竜天翔",
 	is_dist: true,
 	as1: {
 		desc: "<種族数攻撃>4チェインでダメージアップ(320%)、龍族の仲間の数だけさらにアップ(50%/100%/150%/200%/250%)",
@@ -55736,7 +55736,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [0],
 	islegend: true,
-	ape: "大魔導杯 in 心竜天翔",
+	ape: "大魔道杯 in 心竜天翔",
 	is_dist: true,
 	as1: {
 		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(500%)",
@@ -55782,7 +55782,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [0],
 	islegend: false,
-	ape: "大魔導杯 in 心竜天翔",
+	ape: "大魔道杯 in 心竜天翔",
 	is_dist: true,
 	as1: {
 		desc: "<種族特効>4チェインでダメージアップ、龍族の敵へさらにダメージアップ(300%/700%)",
@@ -55815,7 +55815,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [0],
 	islegend: true,
-	ape: "大魔導杯 in 心竜天翔",
+	ape: "大魔道杯 in 心竜天翔",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>4チェインで雷属性以外の敵単体へ特効ダメージ(900%)",
@@ -55861,7 +55861,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [0],
 	islegend: false,
-	ape: "大魔導杯 in 心竜天翔",
+	ape: "大魔道杯 in 心竜天翔",
 	is_dist: true,
 	as1: {
 		desc: "<回復>味方全体のHPを回復(12%)",
@@ -55894,7 +55894,7 @@ Cards = [{
 	attr: [1,2],
 	species: [0],
 	islegend: false,
-	ape: "大魔導杯 in 心竜天翔",
+	ape: "大魔道杯 in 心竜天翔",
 	is_dist: true,
 	as1: {
 		desc: "<回復>味方全体のHPを回復(12%)",
@@ -61425,7 +61425,7 @@ Cards = [{
 	attr: [2,0],
 	species: [8],
 	islegend: true,
-	ape: "大魔導杯 with 魔轟三鉄傑",
+	ape: "大魔道杯 with 魔轟三鉄傑",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ、8チェインで更にダメージアップ(350%/500%)",
@@ -61471,7 +61471,7 @@ Cards = [{
 	attr: [0,1],
 	species: [8],
 	islegend: true,
-	ape: "大魔導杯 with 魔轟三鉄傑",
+	ape: "大魔道杯 with 魔轟三鉄傑",
 	is_dist: true,
 	as1: {
 		desc: "<分散攻撃>4チェインで敵全体へ分散攻撃(450%)",
@@ -61521,7 +61521,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: false,
-	ape: "大魔導杯 with 魔轟三鉄傑",
+	ape: "大魔道杯 with 魔轟三鉄傑",
 	is_dist: true,
 	as1: {
 		desc: "<回復>味方全体のHPを回復、パネルの色が2色以上でさらに回復(7%/18%)",
@@ -61554,7 +61554,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "大魔導杯 with 魔轟三鉄傑",
+	ape: "大魔道杯 with 魔轟三鉄傑",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効連撃>4チェインで火属性の敵単体へ特効6連撃(600%)",
@@ -61600,7 +61600,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: false,
-	ape: "大魔導杯 with 魔轟三鉄傑",
+	ape: "大魔道杯 with 魔轟三鉄傑",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>5チェインでダメージアップ(350%)",
@@ -61634,7 +61634,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: false,
-	ape: "大魔導杯 with 魔轟三鉄傑",
+	ape: "大魔道杯 with 魔轟三鉄傑",
 	is_dist: true,
 	as1: {
 		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(500%)",
@@ -65274,7 +65274,7 @@ Cards = [{
     attr: [1,-1],
     species: [9],
     islegend: true,
-    ape: "DL限定",
+    ape: "DL限定精霊",
     as1: {
         desc: "<属性特効>4チェインで火属性の敵単体へ特効ダメージ、リーダー時さらにダメージアップ(600%/750%)",
         proc: [ChainAttrAttack(6, 4, [1, 0, 0, 0, 0]), add_cond(ChainAttrAttack(7.5, 4, [0, 1, 0, 0, 0]), when_leader())],
@@ -67766,7 +67766,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
-	ape: "4周年大魔道杯",
+	ape: "大魔道杯 with 英雄凱旋祭(4周年)",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>10チェインでダメージアップ(800%)",
@@ -67817,7 +67817,7 @@ Cards = [{
 	attr: [0,1],
 	species: [8],
 	islegend: true,
-	ape: "4周年大魔道杯",
+	ape: "大魔道杯 with 英雄凱旋祭(4周年)",
 	is_dist: true,
 	as1: {
 		desc: "<連撃>5チェインで敵単体を3回連続攻撃(450%)",
@@ -67863,7 +67863,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [2],
 	islegend: true,
-	ape: "4周年大魔道杯",
+	ape: "大魔道杯 with 英雄凱旋祭(4周年)",
 	is_dist: true,
 	as1: {
 		desc: "<回復>雷属性の味方のHPを回復(13%)",
@@ -67909,7 +67909,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "4周年大魔道杯",
+	ape: "大魔道杯 with 英雄凱旋祭(4周年)",
 	is_dist: true,
 	as1: {
 		desc: "<分散攻撃>4チェインで敵全体へ分散攻撃(400%)",
@@ -67957,7 +67957,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "4周年大魔道杯",
+	ape: "大魔道杯 with 英雄凱旋祭(4周年)",
 	is_dist: true,
 	as1: {
 		desc: "<回復・攻撃強化>味方全体のHPを回復(10%)、さらに攻撃力をアップ(30%)",
@@ -68003,7 +68003,7 @@ Cards = [{
 	attr: [1,0],
 	species: [8],
 	islegend: true,
-	ape: "4周年大魔道杯",
+	ape: "大魔道杯 with 英雄凱旋祭(4周年)",
 	is_dist: true,
 	as1: {
 		desc: "<複属性攻撃強化>水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(30%/70%)",
@@ -68050,7 +68050,7 @@ Cards = [{
 	attr: [0,4],
 	species: [2],
 	islegend: true,
-    ape: "周年記念精霊(3周年)",
+	ape: "周年記念精霊(3周年)",
 	as1: {
 		desc: "<種族特効>4チェインでダメージアップ、魔族・天使の敵へさらにダメージアップ(400%/600%)",
 		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [2, 3])],
@@ -68096,7 +68096,7 @@ Cards = [{
 	attr: [1,2],
 	species: [9],
 	islegend: true,
-    ape: "周年記念精霊(3周年)",
+	ape: "周年記念精霊(3周年)",
 	as1: {
 		desc: "<連撃>6チェインで敵単体を3回連続攻撃、パネルの色が増す度ダメージアップ(450%/600%/700%)",
 		proc: ChainPanelsDualAttack(4.5, 6, 7.0, 3, 6),
@@ -68142,7 +68142,7 @@ Cards = [{
 	attr: [1,0],
 	species: [8],
 	islegend: true,
-    ape: "周年記念精霊(3周年)",
+    	ape: "周年記念精霊(3周年)",
 	as1: {
 		desc: "<複属性攻撃強化>4チェインで水属性の攻撃力をアップ、複属性が火だとさらにアップ(50%/100%)",
 		proc: ChainEnhance_SubAttr(0.5, 1.0, [0, 1, 0, 0, 0], [1, 0, 0, 0, 0], 4),
@@ -71186,7 +71186,7 @@ Cards = [{
 	attr: [2,3],
 	species: [8],
 	islegend: true,
-	ape: "DL精霊",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<チェイン攻撃>5チェインでダメージアップ(350%)、HP50%以上でさらにダメージアップ(550%)",
 		proc: [ChainAttack(3.5, 5), add_cond(ChainAttack(5.5, 5), when_hp_more(0.5))],
@@ -71232,7 +71232,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "DL精霊",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<属性特効>3チェインで火属性の敵単体へ特効ダメージ(525%)",
 		proc: ChainAttrAttack(5.25, 3, [1, 0, 0, 0, 0]),
@@ -71277,7 +71277,7 @@ Cards = [{
 	attr: [2,0],
 	species: [1],
 	islegend: true,
-	ape: "DL精霊",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<チェイン攻撃>3チェインでダメージアップ(300%)し、7チェインで更にダメージアップ(200%)、さらに敵のHPを吸収(4%)",
 		proc: [add_cond(ChainAttack(3.0, 3), as_hp_absorption(0.04)), add_cond(ChainAttack(5.0, 7), as_hp_absorption(0.04))],
@@ -74218,7 +74218,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [9],
 	islegend: true,
-	ape: "DL精霊",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<回復・攻撃強化>味方全体のHPを回復(13%)、さらに水属性の味方の攻撃力をアップ(30%)",
 		proc: [Heal(0.13, [1,1,1,1,1], 0), ChainEnhance(0.3, [0,1,0,0,0], 0)],
@@ -74264,7 +74264,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [0],
 	islegend: true,
-	ape: "DL精霊",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<チェイン攻撃>5チェインでダメージアップ(400%)、パネルの色が増す度ダメージアップ(100%/250%)",
 		proc: ChainPanelsAttack(4.0, 5.0, 6.5, 5),
@@ -74310,7 +74310,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [1],
 	islegend: true,
-	ape: "DL精霊",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<チェイン攻撃>3チェインでダメージアップ(350%)、パネルの色が増す度ダメージアップ(100%/250%)",
 		proc: ChainPanelsAttack(3.5, 4.5, 6.0, 3),
@@ -74810,7 +74810,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [1],
 	islegend: true,
-	ape: "大魔導杯 in 八百万Ⅳ",
+	ape: "大魔道杯 in 八百万Ⅳ",
 	is_dist: true,
 	as1: {
 		desc: "<回復・ガード>火属性の味方のHPを回復(13%)し,7チェインで全属性のダメージを10％軽減",
@@ -74857,7 +74857,7 @@ Cards = [{
 	attr: [0,4],
 	species: [1],
 	islegend: true,
-	ape: "大魔導杯 in 八百万Ⅳ",
+	ape: "大魔道杯 in 八百万Ⅳ",
 	is_dist: true,
 	as1: {
 		desc: "<連撃>10チェインで敵単体を4回連続攻撃(800%)",
@@ -74904,7 +74904,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [6],
 	islegend: true,
-	ape: "大魔導杯 in 八百万Ⅳ",
+	ape: "大魔道杯 in 八百万Ⅳ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>雷属性の味方を回復(9%),10チェインで更に回復(10%)",
@@ -74950,7 +74950,7 @@ Cards = [{
 	attr: [1,0],
 	species: [1],
 	islegend: false,
-	ape: "大魔導杯 in 八百万Ⅳ",
+	ape: "大魔道杯 in 八百万Ⅳ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>水属性の味方を回復(10%)、複属性が火属性だとさらに回復(5%)",
@@ -74983,7 +74983,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [1],
 	islegend: false,
-	ape: "大魔導杯 in 八百万Ⅳ",
+	ape: "大魔道杯 in 八百万Ⅳ",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>火属性の敵単体へ特効ダメージ(350%),3チェインでさらに特効ダメージ(150%)",
@@ -75016,7 +75016,7 @@ Cards = [{
 	attr: [2,3],
 	species: [1],
 	islegend: false,
-	ape: "大魔導杯 in 八百万Ⅳ",
+	ape: "大魔道杯 in 八百万Ⅳ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>味方全体のHPを回復(12%)",
@@ -79966,7 +79966,7 @@ Cards = [{
 	species: [2],
 	islegend: false,
 	is_dist: true,
-	ape: "大魔導杯 in 聖サタニック女学院Ⅱ",
+	ape: "大魔道杯 in 聖サタニック女学院Ⅱ",
 	alias: ["ギヨーム"],
 	as1: {
 		desc: "<連撃>敵単体を3回連続攻撃(250%)",
@@ -80001,7 +80001,7 @@ Cards = [{
 	species: [2],
 	islegend: false,
 	is_dist: true,
-	ape: "大魔導杯 in 聖サタニック女学院Ⅱ",
+	ape: "大魔道杯 in 聖サタニック女学院Ⅱ",
 	as1: {
 		desc: "<回復>味方全体のHPを回復(13%)",
 		proc: Heal(0.13, [1,1,1,1,1], 0),
@@ -80035,7 +80035,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	is_dist: true,
-	ape: "大魔導杯 in 聖サタニック女学院Ⅱ",
+	ape: "大魔道杯 in 聖サタニック女学院Ⅱ",
 	as1: {
 		desc: "<回復>火・雷属性の味方のHPを回復(13%)",
 		proc: Heal(0.13, [1,0,1,0,0], 0),
@@ -80082,7 +80082,7 @@ Cards = [{
 	species: [2],
 	islegend: false,
 	is_dist: true,
-	ape: "大魔導杯 in 聖サタニック女学院Ⅱ",
+	ape: "大魔道杯 in 聖サタニック女学院Ⅱ",
 	as1: {
 		desc: "<回復・攻撃強化>雷属性の味方を回復(11%)し、デッキに単色の精霊が多いほど、攻撃力をアップ(15%)（上限:5段階)",
 		proc: as_copy(Heal(0.11, [0,0,1,0,0]), add_cond(ChainEnhance(0, [0,0,1,0,0], 0), as_singleattr_num(0, 0.15))),
@@ -80116,7 +80116,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	is_dist: true,
-	ape: "大魔導杯 in 聖サタニック女学院Ⅱ",
+	ape: "大魔道杯 in 聖サタニック女学院Ⅱ",
 	as1: {
 		desc: "<ギャンブル攻撃>ダメージがイチかバチかアップ(150%～350%)、デッキに単色の精霊が多いほど、さらにダメージアップ(40%)",
 		proc: add_cond(ChainStakesAttack(1.5, 3.5, 0), as_singleattr_num(0, 0.4)),
@@ -80163,7 +80163,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	is_dist: true,
-	ape: "大魔導杯 in 聖サタニック女学院Ⅱ",
+	ape: "大魔道杯 in 聖サタニック女学院Ⅱ",
 	as1: {
 		desc: "<連撃>10チェインで敵単体を10回連続攻撃(700%)、デッキに単色の精霊が多いほど、ダメージがアップ(120%)（上限:5段階)",
 		proc: add_cond(ChainDualAttack(7.0, 10, 10), as_singleattr_num(0, 1.2)),
@@ -90126,7 +90126,7 @@ Cards = [{
 	attr: [2,0],
 	species: [8],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<連撃>敵単体を4回連続攻撃(200%),10チェインで更にダメージアップ(700%)",
 		proc: [ChainDualAttack(2.0, 0, 4), ChainDualAttack(9.0, 10, 4)],
@@ -90171,7 +90171,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<分散攻撃>敵全体へ分散攻撃(150%)、デッキに単色の精霊が多いほど、さらにダメージアップ(70%)（上限:5段階)",
 		proc: add_cond(ChainVarianceAttack(1.5,0), as_singleattr_num(0, 0.7)),
@@ -90214,7 +90214,7 @@ Cards = [{
 	attr: [1,3],
 	species: [8],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<複属性攻撃強化>味方のMAXHP10%を使い、水属性の攻撃力をアップ(90%) 、複属性が光属性だとさらにアップ(50%)",
 		proc: add_cond(ChainEnhance_SubAttr(0.9, 1.4, [0,1,0,0,0], [0,0,0,1,0], 0), as_consume_all(0.1)),
@@ -90259,7 +90259,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ(300%)、HP50%以上でさらにダメージアップ(200%)",
 		proc: [ChainAttack(3.0, 4), add_cond(ChainAttack(5.0, 4), when_hp_more(0.5))],
@@ -90529,7 +90529,7 @@ Cards = [{
 	attr: [0,3],
 	species: [8],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<全体攻撃>敵全体へダメージ(150%),5チェインで更にダメージアップ(50%)",
 		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.0, 5)],
@@ -90620,7 +90620,7 @@ Cards = [{
 	attr: [0,3],
 	species: [9],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<連撃>味方のMAXHP10%を使い、敵単体を3回連続攻撃(600%)",
 		proc: add_cond(ChainDualAttack(6.0, 0, 3), as_consume_all(0.10)),
@@ -90665,7 +90665,7 @@ Cards = [{
 	attr: [2,3],
 	species: [8],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ(300%)、HP80%以上でさらにダメージアップ(250%)",
 		proc: [ChainAttack(3.0, 4), add_cond(ChainAttack(5.5, 4), when_hp_more(0.5))],
@@ -90710,7 +90710,7 @@ Cards = [{
 	attr: [1,0],
 	species: [4],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<回復>味方全体のHPを回復(14%)",
 		proc: Heal(0.14, [1,1,1,1,1], 0),
@@ -90755,7 +90755,7 @@ Cards = [{
 	attr: [1,3],
 	species: [9],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<複属性攻撃強化>5チェインで水属性の攻撃力をアップ(60%)、複属性が光属性だと更にアップ(30%)、パネルの色が2色以上でさらにアップ(60%)",
 		proc: [ChainEnhance_SubAttr(0.6, 0.9, [0,1,0,0,0], [0,0,0,1,0], 5), add_cond(ChainEnhance_SubAttr(1.2, 1.5, [0,1,0,0,0], [0,0,0,1,0], 5) , as_panel_over2())],
@@ -90800,7 +90800,7 @@ Cards = [{
 	attr: [1,2],
 	species: [3],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<連撃>敵単体を3回連続攻撃(250%)、解答が早いほどさらにアップ(70%)",
 		proc: add_cond(ChainDualAttack(2.5, 0, 3), as_timedep(0.7)),
@@ -90845,7 +90845,7 @@ Cards = [{
 	attr: [1,2],
 	species: [5],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<チェイン攻撃・複属性攻撃強化>4チェインでダメージアップ(400%)、さらに水属性の攻撃力をアップ(10%)、複属性が雷属性だとさらにアップ(30%)",
 		proc: [ChainAttack(4.0, 4), ChainEnhance_SubAttr(0.1, 0.4, [0,1,0,0,0], [0,0,1,0,0], 4)],
@@ -90890,7 +90890,7 @@ Cards = [{
 	attr: [2,0],
 	species: [6],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<複属性攻撃強化>4チェインで雷属性の攻撃力をアップ(10%)、複属性が火属性だとさらにアップ(110%)",
 		proc: ChainEnhance_SubAttr(0.1, 1.2, [0, 0, 1, 0, 0], [1, 0, 0, 0, 0], 4),
@@ -90935,7 +90935,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<属性特効>水属性の敵単体へ特効ダメージ(300%)、10チェインでさらに特効ダメージ(700%)",
 		proc: [ChainAttrAttack(3.0, 0, [0, 1, 0, 0, 0]), ChainAttrAttack(10.0, 10, [0, 1, 0, 0, 0])],
@@ -90980,7 +90980,7 @@ Cards = [{
 	attr: [0,1],
 	species: [3],
 	islegend: false,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<回復>味方全体のHPを回復(14%)",
 		proc:  Heal(0.14, [1, 1, 1, 1, 1], 0),
@@ -91012,7 +91012,7 @@ Cards = [{
 	attr: [2,3],
 	species: [9],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ(300%)、HP80%以上でさらにダメージアップ(250%)",
 		proc: [ChainAttack(3.0, 4), add_cond(ChainAttack(5.5, 4), when_hp_more(0.8))],
@@ -91057,7 +91057,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [9],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<属性特効>火属性の敵単体へ特効ダメージ(350%)、8チェインで更に特効ダメージ(450%)",
 		proc: [ChainAttrAttack(3.5, 0, [1, 0, 0, 0, 0]), ChainAttrAttack(8.0, 8, [1, 0, 0, 0, 0])],
@@ -91102,7 +91102,7 @@ Cards = [{
 	attr: [1,3],
 	species: [9],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<回復>味方全体のHPを回復(14%)",
 		proc: Heal(0.14, [1, 1, 1, 1, 1], 0),
@@ -91147,7 +91147,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<種族特効>5チェインで敵単体へのダメージアップ(450%)、妖精と亜人の敵へさらにダメージアップ(350%)",
 		proc: [ChainAttack(4.5, 5), ChainSpecAttack(8.0, 5, [4, 5])],
@@ -91192,7 +91192,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [9],
 	islegend: true,
-	ape: "DL限定",
+	ape: "DL限定精霊",
 	as1: {
 		desc: "<属性特効>火属性の敵単体へ特効ダメージ(300%)、パネルの色が2色以上でさらにアップ(300%)",
 		proc: ChainPanelsAttrAttack(3.0, 6.0, 6.0, [1, 0, 0, 0, 0], 0),
