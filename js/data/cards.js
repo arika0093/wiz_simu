@@ -636,6 +636,7 @@ Cards = [{
 	cost: 48,
 	attr: [0, -1],
 	species: [9],
+	ape: "覇眼戦線Ⅱ",
 	awakes: [
 		Panel_boost([1,0,0,0,0], 1),
 		Fastskill(2),
@@ -17672,6 +17673,7 @@ Cards = [{
 	attr: [0, -1],
 	species: [8],
 	islegend: true,
+	ape: "天上岬Ⅰ",
 	as1: {
 		desc: "<回復>火属性の味方のHPを回復(13%)",
 		proc: Heal(0.13, [1, 0, 0, 0, 0]),
@@ -17715,6 +17717,7 @@ Cards = [{
 	attr: [0, 2],
 	species: [9],
 	islegend: true,
+	ape: "天上岬Ⅰ",
 	as1: {
 		desc: "<属性の加護>3チェインでデッキの属性の数だけ攻撃力を大幅アップ(350%/600%/850%)",
 		proc: ChainDeckAttrsAttack(3.5, 6, 8.5, 3),
@@ -17759,6 +17762,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [5],
 	islegend: true,
+	ape: "天上岬Ⅰ",
 	as1: {
 		desc: "<属性特効>5チェインで火属性の敵単体へ特効ダメージ(650%)",
 		proc: ChainAttrAttack(6.5, 5, [1, 0, 0, 0, 0]),
@@ -17802,6 +17806,7 @@ Cards = [{
 	attr: [2, -1],
 	species: [9],
 	islegend: true,
+	ape: "天上岬Ⅰ",
 	as1: {
 		desc: "<攻撃強化>3チェインで雷属性の味方の攻撃力をアップ(50%)",
 		proc: ChainEnhance(0.5, [0, 0, 1, 0, 0], 3),
@@ -17849,6 +17854,7 @@ Cards = [{
 	attr: [1,2],
 	species: [9],
 	islegend: true,
+	ape: "天上岬Ⅱ",
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ(400%)",
 		proc: ChainAttack(4, 4),
@@ -17894,6 +17900,7 @@ Cards = [{
 	attr: [0,1],
 	species: [9],
 	islegend: true,
+	ape: "天上岬Ⅱ",
 	alias: ["ちっぱい"],
 	as1: {
 		desc: "<回復>味方全体のHPを回復(14%)",
@@ -17939,6 +17946,7 @@ Cards = [{
 	attr: [0, 1],
 	species: [8],
 	islegend: true,
+	ape: "天上岬Ⅱ",
 	as1: {
 		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)",
 		proc: ChainAttack(4.5, 5),
@@ -17984,6 +17992,7 @@ Cards = [{
 	attr: [1,2],
 	species: [9],
 	islegend: true,
+	ape: "天上岬Ⅱ",
 	as1: {
 		desc: "<連撃>4チェインで敵単体を3回連続攻撃(400%)",
 		proc: ChainDualAttack(4,4,3),
@@ -18028,6 +18037,7 @@ Cards = [{
 	attr: [2,0],
 	species: [9],
 	islegend: true,
+	ape: "天上岬Ⅱ",
 	as1: {
 		desc: "<連撃>HP80%以上で敵単体を3回連続攻撃(350%)",
 		proc: add_cond(ChainDualAttack(3.5,0,3), when_hp_more(0.8)),
@@ -18072,6 +18082,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
+	ape: "天上岬Ⅱ",
 	as1: {
 		desc: "<属性特効>7チェインで水属性の敵単体へ特効ダメージ(775%)",
 		proc: ChainAttrAttack(7.75, 7, [0, 1, 0, 0, 0]),
@@ -18937,6 +18948,7 @@ Cards = [{
 	attr: [1, 3],
 	species: [3],
 	islegend: true,
+	ape: "ロストエデンⅡ WWMF",
 	is_dist: true,
 	as1: {
 		desc: "<種族特効>3チェインで敵全体へダメージ、魔族・天使・物質の敵へさらにダメージアップ(160%/260%)",
@@ -26003,7 +26015,7 @@ Cards = [{
 	attr: [2,4],
 	species: [9],
 	islegend: true,
-	ape: "メアレスⅠ",
+	ape: "黄昏メアレスⅠ",
 	as1: {
 		desc: "<回復>雷属性の味方のHPを回復(12%)",
 		proc: Heal(0.12, [0,0,1,0,0], 0),
@@ -26048,7 +26060,7 @@ Cards = [{
 	attr: [1,4],
 	species: [2],
 	islegend: true,
-	ape: "メアレスⅠ",
+	ape: "黄昏メアレスⅠ",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ(300%)",
@@ -26094,7 +26106,7 @@ Cards = [{
 	attr: [0,4],
 	species: [2],
 	islegend: false,
-	ape: "メアレスⅠ",
+	ape: "黄昏メアレスⅠ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>味方全体のHPを回復(12%)",
@@ -26127,7 +26139,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [2],
 	islegend: false,
-	ape: "メアレスⅠ",
+	ape: "黄昏メアレスⅠ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>雷属性の味方のHPを回復(11%)",
@@ -26160,7 +26172,7 @@ Cards = [{
 	attr: [2,0],
 	species: [2],
 	islegend: true,
-	ape: "メアレスⅠ",
+	ape: "黄昏メアレスⅠ",
 	is_dist: true,
 	as1: {
 		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ、複属性が火属性だとさらにアップ(30%/70%)",
@@ -31072,7 +31084,7 @@ Cards = [{
 	species: [2],
 	disable: true,
 	islegend: true,
-	ape: "サタ女",
+	ape: "聖サタニック女学院",
 	as1: {
 		desc: "<属性特効>4チェインで雷・光属性の敵単体へ特効ダメージ、パネルの色が2色以上でさらにダメージアップ(500%/700%)",
 		proc: ChainPanelsAttrAttack(5.0, 7.0, 7.0, [0,0,1,1,0], 4),
@@ -31118,7 +31130,7 @@ Cards = [{
 	species: [2],
 	disable: true,
 	islegend: true,
-	ape: "サタ女",
+	ape: "聖サタニック女学院",
 	as1: {
 		desc: "<ガード・回復>火属性の味方のHPを回復(11%)し、全属性のダメージを5%軽減。リーダー時さらに5%軽減",
 		proc: [Heal(0.11, [1,0,0,0,0], 0), as_guard(0.05,[1,1,1,1,1]), add_cond(as_guard(0.05,[1,1,1,1,1]), when_leader())],
@@ -31165,7 +31177,7 @@ Cards = [{
 	species: [2],
 	disable: true,
 	islegend: true,
-	ape: "サタ女",
+	ape: "聖サタニック女学院",
 	as1: {
 		desc: "<属性特効>6チェインで雷属性の敵へ特効ダメージ(700%)",
 		proc: ChainAttrAttack(7.0, 6, [0,0,1,0,0]),
@@ -31211,7 +31223,7 @@ Cards = [{
 	species: [3],
 	disable: true,
 	islegend: true,
-	ape: "サタ女",
+	ape: "聖サタニック女学院",
 	as1: {
 		desc: "<複属性攻撃強化>水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(30%/80%)",
 		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,1,0,0,0], [1,0,0,0,0], 0),
@@ -31269,7 +31281,7 @@ Cards = [{
 	species: [2],
 	disable: true,
 	islegend: true,
-	ape: "サタ女",
+	ape: "聖サタニック女学院",
 	as1: {
 		desc: "<種族特効>4チェインでダメージアップ、魔族の敵へさらにダメージアップ(400%/600%)",
 		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [2])],
@@ -31315,7 +31327,7 @@ Cards = [{
 	species: [2],
 	disable: true,
 	islegend: true,
-	ape: "サタ女",
+	ape: "聖サタニック女学院",
 	as1: {
 		desc: "<複属性攻撃強化・回復>5チェインで雷属性の味方を回復(10%)し、攻撃力もアップ、複属性が水属性だとさらに攻撃力アップ(30%/80%)",
 		proc: [Heal(0.10, [0,0,1,0,0], 5), ChainEnhance_SubAttr(0.30, 0.80, [0,0,1,0,0], [0,1,0,0,0], 5)],
@@ -31363,7 +31375,7 @@ Cards = [{
 	species: [2],
 	disable: true,
 	islegend: true,
-	ape: "サタ女",
+	ape: "聖サタニック女学院",
 	as1: {
 		desc: "<連撃>敵単体を8回連続攻撃、20チェインでさらにダメージアップ(200%/1600%)",
 		proc: [ChainDualAttack(2.0, 0, 8), ChainDualAttack(16.0, 20, 8)],
@@ -31411,7 +31423,7 @@ Cards = [{
 	species: [3],
 	islegend: true,
 	is_dist: true,
-	ape: "サタ女",
+	ape: "聖サタニック女学院",
 	as1: {
 		desc: "<連撃>敵単体を6回連続攻撃(250%)",
 		proc: ChainDualAttack(2.5, 0, 6),
@@ -31457,7 +31469,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	is_dist: true,
-	ape: "サタ女",
+	ape: "聖サタニック女学院",
 	as1: {
 		desc: "<複属性攻撃強化>7チェインで火属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(60%/110%)",
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [1,0,0,0,0], [0,0,0,0,1], 7),
@@ -31503,7 +31515,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	is_dist: true,
-	ape: "サタ女",
+	ape: "聖サタニック女学院",
 	as1: {
 		desc: "<回復>水・雷属性の味方のHPを回復(12%)",
 		proc: Heal(0.12, [0,1,1,0,0], 0),
@@ -31549,7 +31561,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	is_dist: true,
-	ape: "サタ女",
+	ape: "聖サタニック女学院",
 	as1: {
 		desc: "<種族特効>敵単体へダメージアップ、天使・魔族の敵へさらにダメージアップ(250%/400%)",
 		proc: [ChainAttack(2.5, 0), ChainSpecAttack(4.0, 0, [2,3])],
@@ -31595,7 +31607,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	is_dist: true,
-	ape: "サタ女",
+	ape: "聖サタニック女学院",
 	as1: {
 		desc: "<属性特効>水属性の敵単体へ特効ダメージ(350%)",
 		proc: ChainAttrAttack(3.5, 0, [0,1,0,0,0]),
@@ -31641,7 +31653,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	is_dist: true,
-	ape: "サタ女",
+	ape: "聖サタニック女学院",
 	as1: {
 		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(30%/70%)",
 		proc: ChainEnhance_SubAttr(0.3, 0.7, [1,0,0,0,0], [0,0,1,0,0], 0),
@@ -31864,7 +31876,7 @@ Cards = [{
 	attr: [0,4],
 	species: [2],
 	islegend: true,
-	ape: "大魔導杯 in サタ女",
+	ape: "大魔導杯 in 聖サタニック女学院",
 	is_dist: true,
 	as1: {
 		desc: "<複属性攻撃強化>11チェインで火属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(120%/170%)",
@@ -31910,7 +31922,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [2],
 	islegend: true,
-	ape: "大魔導杯 in サタ女",
+	ape: "大魔導杯 in 聖サタニック女学院",
 	is_dist: true,
 	as1: {
 		desc: "<回復>火属性の味方のHPを回復(12%)",
@@ -31956,7 +31968,7 @@ Cards = [{
 	attr: [1,4],
 	species: [2],
 	islegend: false,
-	ape: "大魔導杯 in サタ女",
+	ape: "大魔導杯 in 聖サタニック女学院",
 	is_dist: true,
 	as1: {
 		desc: "<全体攻撃>敵の数に関わらず敵全体へダメージアップ(140%)",
@@ -31990,7 +32002,7 @@ Cards = [{
 	attr: [2,4],
 	species: [6],
 	islegend: true,
-	ape: "大魔導杯 in サタ女",
+	ape: "大魔導杯 in 聖サタニック女学院",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>水属性の敵単体へ特効ダメージ(400%)",
@@ -32036,7 +32048,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [2],
 	islegend: false,
-	ape: "大魔導杯 in サタ女",
+	ape: "大魔導杯 in 聖サタニック女学院",
 	is_dist: true,
 	as1: {
 		desc: "<回復>水属性の味方のHPを回復(10%)",
@@ -32069,7 +32081,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [2],
 	islegend: false,
-	ape: "大魔導杯 in サタ女",
+	ape: "大魔導杯 in 聖サタニック女学院",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>3チェインで雷属性の敵単体へ特効ダメージ(350%)",
@@ -33003,7 +33015,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	disable: true,
-	ape: "スザクⅠ",
+	ape: "幻魔特区スザクⅠ",
 	as1: {
 		desc: "<複属性攻撃強化>5チェインで雷属性の攻撃力をアップ、複属性が水属性だとさらにアップ(60%/110%)5チェインで雷属性の攻撃力をアップ、複属性が水属性だとさらにアップ(90%/140%)",
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,0,1,0,0], [0,1,0,0,0], 5),
@@ -33049,7 +33061,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	disable: true,
-	ape: "スザクⅠ",
+	ape: "幻魔特区スザクⅠ",
 	as1: {
 		desc: "<攻撃強化・回復>水属性の味方のHPを回復(13%)、さらに水属性の味方の攻撃力をアップ(30%)",
 		proc: [Heal(0.13, [0,1,0,0,0], 0), ChainEnhance(0.30, [0,1,0,0,0], 0)],
@@ -33095,7 +33107,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	disable: true,
-	ape: "スザクⅠ",
+	ape: "幻魔特区スザクⅠ",
 	as1: {
 		desc: "<属性特効>5チェインで雷属性の敵単体へ特効ダメージ(650%)",
 		proc: ChainAttrAttack(6.5, 5, [0,0,1,0,0]),
@@ -33142,7 +33154,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	disable: true,
-	ape: "スザクⅠ",
+	ape: "幻魔特区スザクⅠ",
 	alias: ["ulti_chatnoir", "/wiztools"],
 	as1: {
 		desc: "<攻撃強化・ガード>7チェインで雷属性属性の味方の攻撃力をアップ(80%)、さらに全属性のダメージを10%軽減",
@@ -33189,7 +33201,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	disable: true,
-	ape: "スザクⅠ",
+	ape: "幻魔特区スザクⅠ",
 	as1: {
 		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)、10チェインで更にダメージアップ(600%)",
 		proc: [ChainAttack(4.5, 5), ChainAttack(6.0, 10)],
@@ -33235,7 +33247,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	disable: true,
-	ape: "スザクⅡ",
+	ape: "幻魔特区スザクⅡ",
 	as1: {
 		desc: "<複属性攻撃強化>残りHPが80%以上で火属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(50%/100%)",
 		proc: add_cond(ChainEnhance_SubAttr(0.5, 1.0, [1,0,0,0,0], [0,0,0,0,1], 0), when_hp_more(0.8)),
@@ -33281,7 +33293,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	disable: true,
-	ape: "スザクⅡ",
+	ape: "幻魔特区スザクⅡ",
 	as1: {
 		desc: "<攻撃強化・ガード>5チェインで水・雷属性の味方の攻撃力をアップ(60%)し、さらに全属性のダメージを10%軽減",
 		proc: [ChainEnhance(0.6, [0,1,1,0,0], 5), as_guard(0.10, [1,1,1,1,1], 5)],
@@ -33328,7 +33340,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	disable: true,
-	ape: "スザクⅡ",
+	ape: "幻魔特区スザクⅡ",
 	as1: {
 		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)",
 		proc: ChainAttack(4.5, 5),
@@ -33375,7 +33387,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	disable: true,
-	ape: "スザクⅡ",
+	ape: "幻魔特区スザクⅡ",
 	as1: {
 		desc: "<属性特効>5チェインで水属性の敵単体へ特効ダメージ(650%)",
 		proc: ChainAttrAttack(6.5, 5, [0,1,0,0,0]),
@@ -33422,7 +33434,7 @@ Cards = [{
 	species: [1],
 	islegend: true,
 	disable: true,
-	ape: "スザクⅡ",
+	ape: "幻魔特区スザクⅡ",
 	as1: {
 		desc: "<チェイン攻撃>3チェインでダメージアップ(350%)",
 		proc: ChainAttack(3.5, 3),
@@ -33469,7 +33481,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	disable: true,
-	ape: "スザクⅡ",
+	ape: "幻魔特区スザクⅡ",
 	as1: {
 		desc: "<チェイン攻撃>5チェインでダメージアップ、10チェインで更にダメージアップ(450%/600%)",
 		proc: [ChainAttack(4.5, 5), ChainAttack(6.0, 10)],
@@ -33516,7 +33528,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	disable: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<属性特効・攻撃強化>火属性の味方の攻撃力をアップし(30%)、4チェインで雷属性の敵単体へ特効ダメージ(500%)",
 		proc: [ChainEnhance(0.3, [1,0,0,0,0], 0), ChainAttrAttack(5.0, 4, [0,0,1,0,0])],
@@ -33563,7 +33575,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	disable: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<複属性攻撃強化>7チェインで火属性の攻撃力をアップ、複属性が雷だとさらにアップ(80%/130%)",
 		proc: ChainEnhance_SubAttr(0.8, 1.3, [1,0,0,0,0], [0,0,1,0,0], 7),
@@ -33610,7 +33622,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	disable: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<連撃>4チェインで敵単体を3回連続攻撃、8チェインで更にダメージアップ(350%/500%)",
 		proc: [ChainDualAttack(3.5, 4, 3), ChainDualAttack(5.0, 8, 3)],
@@ -33656,7 +33668,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	disable: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<属性特効連撃>雷属性の敵単体へ特効8連撃、20チェインで更に特効ダメージ(300%/2000%)",
 		proc: [ChainDualAttrAttack(3.0, 0, 8, [0,0,1,0,0]), ChainDualAttrAttack(20, 20, 8, [0,0,1,0,0])],
@@ -33705,7 +33717,7 @@ Cards = [{
 	disable: true,
 	islegend: true,
 	disable: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<連撃・複属性攻撃強化>4チェインで敵単体を3回連続攻撃(300%)、さらに水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(10%/40%)",
 		proc: [ChainDualAttack(3.0, 4, 3), ChainEnhance_SubAttr(0.10, 0.40, [0,1,0,0,0], [1,0,0,0,0], 4)],
@@ -33752,7 +33764,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	disable: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<回復>水属性の味方を回復、8チェインで更に回復(10%/18%)",
 		proc: [Heal(0.10, [0,1,0,0,0], 0), Heal(0.18, [0,1,0,0,0], 8)],
@@ -33800,7 +33812,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	disable: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<複属性攻撃強化>残りHPが80%以上で雷属性の攻撃力をアップ、複属性が火属性だとさらにアップ(50%/100%)",
 		proc: add_cond(ChainEnhance_SubAttr(0.5, 1.0, [0,0,1,0,0], [1,0,0,0,0], 0), when_hp_more(0.8)),
@@ -33847,7 +33859,7 @@ Cards = [{
 	species: [1],
 	islegend: true,
 	disable: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ、複属性が光だとさらにアップ(30%/80%)",
 		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,0,1,0,0], [0,0,0,1,0], 0),
@@ -33894,7 +33906,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	disable: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<回復>雷属性の味方を回復、HP20%以下でさらに回復(13%/38%)",
 		proc: [Heal(0.13, [0,0,1,0,0], 0), add_cond(Heal(0.38, [0,0,1,0,0], 0), when_hp_less(0.2))],
@@ -33971,7 +33983,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	is_dist: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<属性特効>4チェインで水・光属性の敵単体へ特効ダメージ(550%)",
 		proc: ChainAttrAttack(5.5, 4, [0,1,0,1,0]),
@@ -34017,7 +34029,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	is_dist: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ(400%)",
 		proc: ChainAttack(4.0, 4),
@@ -34063,7 +34075,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	is_dist: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(350%)",
 		proc: add_cond(ChainAttack(3.5, 0), as_consume_all(0.10)),
@@ -34109,7 +34121,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	is_dist: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<回復>火・雷属性の味方のHPを回復(12%)",
 		proc: Heal(0.12, [1,0,1,0,0], 0),
@@ -34155,7 +34167,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	is_dist: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<属性特効>火属性の敵単体へ特効ダメージ(400%)",
 		proc: ChainAttrAttack(4.0, 0, [1,0,0,0,0]),
@@ -34201,7 +34213,7 @@ Cards = [{
 	species: [6],
 	islegend: true,
 	is_dist: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<連撃>3チェインで敵単体を5回連続攻撃(300%)",
 		proc: ChainDualAttack(3.0, 3, 5),
@@ -34247,7 +34259,7 @@ Cards = [{
 	species: [7],
 	islegend: true,
 	is_dist: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<回復>味方全体のHPを回復(11%)",
 		proc: Heal(0.11, [1,1,1,1,1], 0),
@@ -34293,7 +34305,7 @@ Cards = [{
 	species: [7],
 	islegend: true,
 	is_dist: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<属性特効>3チェインで雷属性の敵単体へ特効ダメージ(475%)",
 		proc: ChainAttrAttack(4.75, 3, [0,0,1,0,0]),
@@ -51183,7 +51195,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "メアレスⅠ",
+	ape: "黄昏メアレスⅠ",
 	as1: {
 		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(400%)",
 		proc: add_cond(ChainAttack(4.0, 0), when_hp_more(0.8)),
@@ -51229,7 +51241,7 @@ Cards = [{
 	species: [9],
 	disable: true,
 	islegend: true,
-	ape: "メアレスⅠ",
+	ape: "黄昏メアレスⅠ",
 	as1: {
 		desc: "<種族特効>4チェインでダメージアップ、魔族の敵へさらにダメージアップ(400%/600%)",
 		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [2])],
@@ -51276,7 +51288,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "メアレスⅠ",
+	ape: "黄昏メアレスⅠ",
 	as1: {
 		desc: "<チェイン攻撃>6チェインでダメージアップ(500%)",
 		proc: ChainAttack(5.0, 6),
@@ -51321,7 +51333,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "メアレスⅠ",
+	ape: "黄昏メアレスⅠ",
 	as1: {
 		desc: "<属性特効>4チェインで雷・光属性の敵単体へ特効ダメージ(600%)",
 		proc: ChainAttrAttack(6.0, 4, [0, 0, 1, 1, 0]),
@@ -51370,7 +51382,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "メアレスⅠ",
+	ape: "黄昏メアレスⅠ",
 	as1: {
 		desc: "<連撃>4チェインで敵単体を3回連続攻撃、HP50%以上でさらにダメージアップ(300%/500%)",
 		proc: [ChainDualAttack(3.0, 4, 3), add_cond(ChainDualAttack(5.0, 4, 3), when_hp_more(0.5))],
@@ -51416,7 +51428,7 @@ Cards = [{
 	species: [9],
 	disable: true,
 	islegend: true,
-	ape: "メアレスⅡ",
+	ape: "黄昏メアレスⅡ",
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ、8チェインで更にダメージアップ(350%/500%)",
 		proc: [ChainAttack(3.5, 4), ChainAttack(5.0, 8)],
@@ -51461,7 +51473,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "メアレスⅡ",
+	ape: "黄昏メアレスⅡ",
 	as1: {
 		desc: "<連撃>4チェインで敵を6回連続攻撃、HP50%以上でさらにダメージアップ(300%/500%)",
 		proc: [ChainDualAttack(3.0, 4, 6), add_cond(ChainDualAttack(5.0, 4, 6), when_hp_more(0.5))],
@@ -51507,7 +51519,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "メアレスⅡ",
+	ape: "黄昏メアレスⅡ",
 	as1: {
 		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(600%)",
 		proc: add_cond(ChainAttack(6.0, 0), as_consume_all(0.1)),
@@ -51552,7 +51564,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "メアレスⅡ",
+	ape: "黄昏メアレスⅡ",
 	as1: {
 		desc: "<複属性攻撃強化>10チェインで火属性の攻撃力をアップ、複属性が雷だと更にアップ(30%/200%)",
 		proc: [ChainEnhance_SubAttr(0.3, 2.0, [1,0,0,0,0], [0,0,1,0,0], 10)],
@@ -51599,7 +51611,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "メアレスⅡ",
+	ape: "黄昏メアレスⅡ",
 	as1: {
 		desc: "<連撃・複属性攻撃強化>4チェインで敵単体を4回連続攻撃(350%)、さらに水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(10%/40%)",
 		proc: [ChainDualAttack(3.5, 4, 4), ChainEnhance_SubAttr(0.1, 0.4, [0,1,0,0,0], [1,0,0,0,0], 4)],
@@ -51644,7 +51656,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "メアレスⅡ",
+	ape: "黄昏メアレスⅡ",
 	as1: {
 		desc: "<連撃>10チェインで敵単体を4回連続攻撃(800%)",
 		proc: ChainDualAttack(8.0, 10, 4),
@@ -51689,7 +51701,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [2],
 	islegend: true,
-	ape: "メアレスⅡ",
+	ape: "黄昏メアレスⅡ",
 	is_dist: true,
 	as1: {
 		desc: "<攻撃強化・ガード>火属性の味方の攻撃力をアップし(20%)、さらに全属性のダメージを10%軽減",
@@ -51735,7 +51747,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [2],
 	islegend: true,
-	ape: "メアレスⅡ",
+	ape: "黄昏メアレスⅡ",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効連撃>水属性の敵単体へ特効3連撃(350%)",
@@ -51781,7 +51793,7 @@ Cards = [{
 	attr: [2,0],
 	species: [2],
 	islegend: true,
-	ape: "メアレスⅡ",
+	ape: "黄昏メアレスⅡ",
 	is_dist: true,
 	as1: {
 		desc: "<攻撃強化・回復>5チェインで火・雷属性の味方のHPを回復(10%)、さらに攻撃力をアップ(50%)",
@@ -51827,7 +51839,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [2],
 	islegend: true,
-	ape: "メアレスⅡ",
+	ape: "黄昏メアレスⅡ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>味方全体のHPを回復(12%)",
@@ -51873,7 +51885,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [2],
 	islegend: true,
-	ape: "メアレスⅡ",
+	ape: "黄昏メアレスⅡ",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>3チェインで雷属性の敵単体へ特効ダメージ(475%)",
@@ -51919,7 +51931,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [4],
 	islegend: true,
-	ape: "メアレスⅡ",
+	ape: "黄昏メアレスⅡ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>水属性の味方のHPを回復(12%)",
@@ -51966,7 +51978,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "メアレスⅡ",
+	ape: "黄昏メアレスⅡ",
 	as1: {
 		desc: "<属性特効>火属性の敵単体へ特効ダメージ(350%)、解答が早いほどさらにアップ(50%)",
 		proc: add_cond(ChainAttrAttack(3.5, 0, [1,0,0,0,0]), as_timedep(0.5)),
@@ -54311,7 +54323,7 @@ Cards = [{
 	species: [9],
 	disable: true,
 	islegend: true,
-	ape: "聖なる空のエステレラ 星めぐりの物語",
+	ape: "エステレラⅠ",
 	as1: {
 		desc: "<攻撃強化・ガード>5チェインで水・雷属性の味方の攻撃力をアップ(60%)、さらに全属性のダメージを10%軽減",
 		proc: [ChainEnhance(0.6, [0,1,1,0,0], 5), as_guard(0.1, [1,1,1,1,1], 5)],
@@ -54357,7 +54369,7 @@ Cards = [{
 	species: [9],
 	disable: true,
 	islegend: true,
-	ape: "聖なる空のエステレラ 星めぐりの物語",
+	ape: "エステレラⅠ",
 	alias: ["ちっぱい"],
 	as1: {
 		desc: "<攻撃強化・回復>火・水属性の味方のHPを回復(13%)、さらに火・水属性の味方の攻撃力をアップ(30%)",
@@ -54404,7 +54416,7 @@ Cards = [{
 	species: [3],
 	disable: true,
 	islegend: true,
-	ape: "聖なる空のエステレラ 星めぐりの物語",
+	ape: "エステレラⅠ",
 	as1: {
 		desc: "<属性特効>雷・闇属性の敵単体へ特効ダメージ、解答が早いほどさらにアップ(基本:350%, 3秒台:400%, 2秒台:450%, 1秒台:500%, 0秒台:550%)",
 		proc: add_cond(ChainAttrAttack(3.5, 0, [0,0,1,0,1]), as_timedep(0.5)),
@@ -54452,7 +54464,7 @@ Cards = [{
 	species: [9],
 	disable: true,
 	islegend: true,
-	ape: "聖なる空のエステレラ 星めぐりの物語",
+	ape: "エステレラⅠ",
 	as1: {
 		desc: "<回復>水属性の味方のHPを回復(14%)",
 		proc: Heal(0.14, [0,1,0,0,0], 0),
@@ -54510,7 +54522,7 @@ Cards = [{
 	species: [9],
 	disable: true,
 	islegend: true,
-	ape: "聖なる空のエステレラ 星めぐりの物語",
+	ape: "エステレラⅠ",
 	as1: {
 		desc: "<属性特効>水属性の敵単体へ特効ダメージ、解答が早いほどさらにアップ(基本:350%, 3秒台:400%, 2秒台:450%, 1秒台:500%, 0秒台:550%)",
 		proc: add_cond(ChainAttrAttack(3.5, 0, [0,1,0,0,0]), as_timedep(0.5)),
@@ -54555,7 +54567,7 @@ Cards = [{
 	species: [9],
 	disable: true,
 	islegend: true,
-	ape: "聖なる空のエステレラ 星めぐりの物語",
+	ape: "エステレラⅠ",
 	as1: {
 		desc: "<攻撃強化・回復>雷属性の味方のHPを回復(13%)、さらに雷属性の味方の攻撃力をアップ(30%)",
 		proc: [Heal(0.13, [0,0,1,0,0], 0), ChainEnhance(0.3, [0,0,1,0,0], 0)],
@@ -55323,7 +55335,7 @@ Cards = [{
 	attr: [0,1],
 	species: [9],
 	islegend: true,
-	ape: "聖なる空のエステレラ 星めぐりの物語",
+	ape: "エステレラⅠ",
 	awakes: [
 		Awake_noeffect("経験値取得量アップ", 1),
 		Panel_boost([1, 0, 0, 0, 0, ], 1),
@@ -55369,7 +55381,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [1],
 	islegend: true,
-	ape: "聖なる空のエステレラ 星めぐりの物語",
+	ape: "エステレラⅠ",
 	awakes: [
 		Fastskill(1),
 		Statusup(200, 0),
@@ -55414,7 +55426,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
-	ape: "聖なる空のエステレラ 星めぐりの物語",
+	ape: "エステレラⅠ",
 	awakes: [
 		Statusup(0, 200),
 		Attr_relief([1,1,1,1,1,],10),
@@ -55459,7 +55471,7 @@ Cards = [{
 	attr: [0,3],
 	species: [1],
 	islegend: true,
-	ape: "聖なる空のエステレラ 星めぐりの物語",
+	ape: "エステレラⅠ",
 	awakes: [
 		Statusup(0, 200),
 		Attr_relief([0,0,0,0,1,],10),
@@ -55504,7 +55516,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [1],
 	islegend: true,
-	ape: "聖なる空のエステレラ 星めぐりの物語",
+	ape: "エステレラⅠ",
 	awakes: [
 		Fastskill(1),
 		Statusup(0, 100),
@@ -55549,7 +55561,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
-	ape: "聖なる空のエステレラ 星めぐりの物語",
+	ape: "エステレラⅠ",
 	awakes: [
 		Fastskill(1),
 		Panel_boost([0, 0, 1, 0, 0, ], 1),
@@ -55594,7 +55606,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [7],
 	islegend: true,
-	ape: "聖なる空のエステレラ 星めぐりの物語",
+	ape: "エステレラⅠ",
 	awakes: [
 		Panel_boost([0, 1, 0, 0, 0, ], 1),
 		Statusup(0, 100),
@@ -55878,7 +55890,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [1],
 	islegend: true,
-	ape: "ｲﾀｽﾞﾗ女神とうさぎのおはなし",
+	ape: "イタズラ女神とうさぎのおはなし",
 	is_dist: true,
 	as1: {
 		desc: "<分散攻撃>3チェインで敵全体へ分散攻撃、HP80%以下でさらにダメージアップ(350%/450%)",
@@ -55924,7 +55936,7 @@ Cards = [{
 	attr: [1,2],
 	species: [1],
 	islegend: true,
-	ape: "ｲﾀｽﾞﾗ女神とうさぎのおはなし",
+	ape: "イタズラ女神とうさぎのおはなし",
 	is_dist: true,
 	as1: {
 		desc: "<連撃>敵単体を3回連続攻撃、パネルの色が増す度にダメージアップ(300%/400%/450%)",
@@ -55970,7 +55982,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [1],
 	islegend: true,
-	ape: "ｲﾀｽﾞﾗ女神とうさぎのおはなし",
+	ape: "イタズラ女神とうさぎのおはなし",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>敵単体へダメージアップ、3チェインで更にアップ(250%/300%)",
@@ -56016,7 +56028,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [2],
 	islegend: true,
-	ape: "ｲﾀｽﾞﾗ女神とうさぎのおはなし",
+	ape: "イタズラ女神とうさぎのおはなし",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>火属性の敵単体へ特効ダメージ(300%)&敵HPを吸収する(5%)",
@@ -56062,7 +56074,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [1],
 	islegend: true,
-	ape: "ｲﾀｽﾞﾗ女神とうさぎのおはなし",
+	ape: "イタズラ女神とうさぎのおはなし",
 	is_dist: true,
 	as1: {
 		desc: "<攻撃強化・回復>味方全体のHPを回復(10%)、さらに攻撃力をアップ(20%)",
@@ -56108,7 +56120,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [1],
 	islegend: true,
-	ape: "ｲﾀｽﾞﾗ女神とうさぎのおはなし",
+	ape: "イタズラ女神とうさぎのおはなし",
 	as1: {
 		desc: "<攻撃強化・回復>火属性の味方のHPを回復(13%)、さらに火属性の味方の攻撃力をアップ(30%)",
 		proc: [Heal(0.13, [1,0,0,0,0], 0), ChainEnhance(0.3, [1,0,0,0,0], 0)],
@@ -56154,7 +56166,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [1],
 	islegend: true,
-	ape: "ｲﾀｽﾞﾗ女神とうさぎのおはなし",
+	ape: "イタズラ女神とうさぎのおはなし",
 	as1: {
 		desc: "<攻撃強化・回復>火属性の味方のHPを回復(13%)、さらに火属性の味方の攻撃力をアップ(30%)",
 		proc: [Heal(0.13, [1,0,0,0,0], 0), ChainEnhance(0.3, [1,0,0,0,0], 0)],
@@ -56199,7 +56211,7 @@ Cards = [{
 	attr: [1,0],
 	species: [1],
 	islegend: true,
-	ape: "ｲﾀｽﾞﾗ女神とうさぎのおはなし",
+	ape: "イタズラ女神とうさぎのおはなし",
 	as1: {
 		desc: "<回復>火・水属性の味方を回復、3チェインで更に回復(10%/13%)",
 		proc: [Heal(0.10, [1,1,0,0,0], 0), Heal(0.13, [1,1,0,0,0], 3)],
@@ -56243,7 +56255,7 @@ Cards = [{
 	attr: [1,0],
 	species: [1],
 	islegend: true,
-	ape: "ｲﾀｽﾞﾗ女神とうさぎのおはなし",
+	ape: "イタズラ女神とうさぎのおはなし",
 	as1: {
 		desc: "<複属性攻撃強化>水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(30%/70%)",
 		proc: ChainEnhance_SubAttr(0.3, 0.7, [0,1,0,0,0], [1,0,0,0,0], 0),
@@ -56288,7 +56300,7 @@ Cards = [{
 	attr: [0,4],
 	species: [2],
 	islegend: true,
-	ape: "ｲﾀｽﾞﾗ女神とうさぎのおはなし",
+	ape: "黄昏メアレスⅡ",
 	as1: {
 		desc: "<チェイン攻撃・属性特効>8チェインでダメージアップ、光属性の敵だとさらにダメージアップ(550%/750%)",
 		proc: [ChainAttack(5.5, 8), ChainAttrAttack(7.5, 8, [0,0,0,1,0])],
@@ -56334,7 +56346,7 @@ Cards = [{
 	attr: [2,3],
 	species: [0],
 	islegend: true,
-	ape: "ｲﾀｽﾞﾗ女神とうさぎのおはなし",
+	ape: "心竜天翔 Rising Dragon",
 	as1: {
 		desc: "<複属性攻撃強化・属性特効連撃>水・闇属性の敵単体へ特効3連撃(300%)、さらに雷属性に攻撃力をアップ、複属性が光だとさらにアップ(10%/40%)",
 		proc: [ChainDualAttrAttack(3.0, 0, 3, [0,1,0,0,1]), ChainEnhance_SubAttr(0.1, 0.4, [0,0,1,0,0], [0,0,0,1,0], 0)],
@@ -58693,7 +58705,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [2],
 	islegend: true,
-	ape: "Divine Blader",
+	ape: "Blader",
 	as1: {
 		desc: "<回復>火属性の味方を回復、5チェインで更に回復(11%/16%)",
 		proc: [Heal(0.11, [1,0,0,0,0], 0), Heal(0.16, [1,0,0,0,0], 5)],
@@ -58738,7 +58750,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [2],
 	islegend: true,
-	ape: "Divine Blader",
+	ape: "Blader",
 	as1: {
 		desc: "<回復>火属性の味方のHPを回復、パネルの色が増す度にさらに回復(11%/15%/17%)",
 		proc: ChainPanelsHeal(0.11, 0.15, 0.17, [1,0,0,0,0], 0),
@@ -58783,7 +58795,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "Tempest Blader",
+	ape: "Blader",
 	as1: {
 		desc: "<種族特効>種族が物質･魔法生物･神族の敵単体へ特効ダメージ、パネルの色が増す度さらにアップ(700%/850%/950%)",
 		proc: ChainPanelsSpecAttack(7.0, 8.5, 9.5, [1, 6, 7], 0),
@@ -58828,7 +58840,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "Tempest Blader",
+	ape: "Blader",
 	as1: {
 		desc: "<種族特効>種族が物質・魔法生物・神族の敵単体へ特効ダメージ(800%)",
 		proc: ChainSpecAttack(8.0, 0, [1,6,7]),
@@ -58873,7 +58885,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [3],
 	islegend: true,
-	ape: "Demon's Blader",
+	ape: "Blader",
 	as1: {
 		desc: "<回復・攻撃強化>3チェインで水属性の味方のHPを回復(10%)、さらに攻撃力をアップ(50%)",
 		proc: [Heal(0.1, [0,1,0,0,0], 3), ChainEnhance(0.5, [0,1,0,0,0], 3)],
@@ -58919,7 +58931,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [3],
 	islegend: true,
-	ape: "Demon's Blader",
+	ape: "Blader",
 	as1: {
 		desc: "<連撃>3チェインで敵単体を3回連続攻撃(350%)",
 		proc: ChainDualAttack(3.5, 3, 3),
@@ -58964,7 +58976,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [1],
 	islegend: true,
-	ape: "Divine Blader",
+	ape: "Blader",
 	as1: {
 		desc: "<チェイン攻撃>3チェインでダメージアップ(350%)",
 		proc: ChainAttack(3.5, 3),
@@ -59009,7 +59021,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [1],
 	islegend: true,
-	ape: "Divine Blader",
+	ape: "Blader",
 	as1: {
 		desc: "<属性特効>3チェインで水属性の敵単体へ特効ダメージ(525%)",
 		proc: ChainAttrAttack(5.25, 3, [0,1,0,0,0]),
@@ -69281,7 +69293,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "覇眼戦線3",
+	ape: "覇眼戦線Ⅲ",
 	as1: {
 		desc: "<攻撃強化・ガード>10チェインで火属性の味方の攻撃力をアップ(110%)、さらに全属性のダメージを15％軽減",
 		proc: [ChainEnhance(1.1, [1,0,0,0,0], 10), as_guard(0.15, [1,1,1,1,1], 10)],
@@ -69327,7 +69339,7 @@ Cards = [{
 	attr: [1,0],
 	species: [8],
 	islegend: true,
-	ape: "覇眼戦線3",
+	ape: "覇眼戦線Ⅲ",
 	as1: {
 		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(600%)",
 		proc: add_cond(ChainAttack(6.0, 0), as_consume_all(0.1)),
@@ -69374,7 +69386,7 @@ Cards = [{
 	attr: [1,3],
 	species: [8],
 	islegend: true,
-	ape: "覇眼戦線3",
+	ape: "覇眼戦線Ⅲ",
 	as1: {
 		desc: "<全体攻撃>HP80%以上で敵全体へダメージ(200%)",
 		proc: add_cond(ChainAllAttack(2.0, 0), when_hp_more(0.8)),
@@ -69420,7 +69432,7 @@ Cards = [{
 	attr: [2,4],
 	species: [8],
 	islegend: true,
-	ape: "覇眼戦線3",
+	ape: "覇眼戦線Ⅲ",
 	as1: {
 		desc: "<連撃>敵単体を3回連続攻撃、解答が早いほどさらにアップ(基本:250%, 3秒台:320%, 2秒台:390%, 1秒台:460%, 0秒台:530%)",
 		proc: add_cond(ChainDualAttack(2.5, 0, 3), as_timedep(0.7)),
@@ -69465,7 +69477,7 @@ Cards = [{
 	attr: [2,3],
 	species: [5],
 	islegend: true,
-	ape: "覇眼戦線3",
+	ape: "覇眼戦線Ⅲ",
 	as1: {
 		desc: "<回復>味方全体のHPを回復(14%)",
 		proc: Heal(0.14, [1,1,1,1,1], 0),
@@ -69513,7 +69525,7 @@ Cards = [{
 	attr: [0,3],
 	species: [8],
 	islegend: true,
-	ape: "覇眼戦線3",
+	ape: "覇眼戦線Ⅲ",
 	as1: {
 		desc: "<連撃・複属性攻撃強化>3チェインで敵単体を3回連続攻撃(350%)、さらに火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(10%/40%)",
 		proc: [ChainDualAttack(3.5, 3, 3), ChainEnhance_SubAttr(0.10, 0.40, [1,0,0,0,0], [0,0,0,1,0], 4)],
@@ -69560,7 +69572,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "覇眼戦線3",
+	ape: "覇眼戦線Ⅲ",
 	as1: {
 		desc: "<連撃>敵単体を8回連続攻撃,15チェインでさらにダメージアップ(200%/1100%)",
 		proc: [ChainDualAttack(2.0, 0, 8), ChainDualAttack(11.0, 15, 8)],
@@ -69610,7 +69622,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "覇眼戦線3",
+	ape: "覇眼戦線Ⅲ",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>5チェインで雷属性の敵単体へ特効ダメージ(600%)",
@@ -69657,7 +69669,7 @@ Cards = [{
 	attr: [1,4],
 	species: [9],
 	islegend: true,
-	ape: "覇眼戦線3",
+	ape: "覇眼戦線Ⅲ",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃・属性特効>4チェインでダメージアップ、光属性の敵だとさらにダメージアップ(300%/450%)",
@@ -69702,7 +69714,7 @@ Cards = [{
 	attr: [2,4],
 	species: [8],
 	islegend: true,
-	ape: "覇眼戦線3",
+	ape: "覇眼戦線Ⅲ",
 	is_dist: true,
 	as1: {
 		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(30%/70%)",
@@ -69748,7 +69760,7 @@ Cards = [{
 	attr: [0,4],
 	species: [8],
 	islegend: true,
-	ape: "覇眼戦線3",
+	ape: "覇眼戦線Ⅲ",
 	is_dist: true,
 	as1: {
 		desc: "<回復・攻撃強化>味方全体のHPを回復(10%)、さらに攻撃力をアップ(20%)",
@@ -69794,7 +69806,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "覇眼戦線3",
+	ape: "覇眼戦線Ⅲ",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>5チェインでダメージアップ(400%)",
@@ -69840,7 +69852,7 @@ Cards = [{
 	attr: [1,2],
 	species: [8],
 	islegend: true,
-	ape: "覇眼戦線3",
+	ape: "覇眼戦線Ⅲ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>水・雷属性の味方の味方を回復、7チェインで更に回復(9%/16%)",
@@ -69932,7 +69944,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "覇眼戦線2",
+	ape: "覇眼戦線Ⅱ",
 	as1: {
 		desc: "<属性特効>15チェインで雷属性の敵単体へ特効ダメージ(1600%)",
 		proc: ChainAttrAttack(16.0, 15, [0, 0, 1, 0, 0]),
@@ -69980,7 +69992,7 @@ Cards = [{
 	attr: [1,4],
 	species: [8],
 	islegend: true,
-	ape: "覇眼戦線2",
+	ape: "覇眼戦線Ⅱ",
 	as1: {
 		desc: "<分散攻撃>4チェインで敵全体へ分散攻撃(400%)、HP50%以上でさらにアップ(600%)",
 		proc: [ChainVarianceAttack(4.0, 4), add_cond(ChainVarianceAttack(6.0, 4), when_hp_more(0.5))],
@@ -70026,7 +70038,7 @@ Cards = [{
 	attr: [2,0],
 	species: [5],
 	islegend: true,
-	ape: "覇眼戦線2",
+	ape: "覇眼戦線Ⅱ",
 	as1: {
 		desc: "<回復・複属性攻撃強化>雷属性の味方を回復(10%)し、攻撃力もアップ(30%)。複属性が火属性だとさらに攻撃力アップ(30%)",
 		proc: [Heal(0.10, [0, 0, 1, 0, 0], 0), ChainEnhance_SubAttr(0.30, 0.60, [0, 0, 1, 0, 0], [1, 0, 0, 0, 0], 0)],
@@ -70073,7 +70085,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "覇眼戦線2",
+	ape: "覇眼戦線Ⅱ",
 	as1: {
 		desc: "<攻撃強化・チェイン攻撃>火属性の味方の攻撃力をアップ(30%)し、6チェインでダメージアップ(400%)",
 		proc: [ChainEnhance(0.30, [1, 0, 0, 0, 0], 0), ChainAttack(4.0, 6)],
@@ -70119,7 +70131,7 @@ Cards = [{
 	attr: [1,0],
 	species: [8],
 	islegend: true,
-	ape: "覇眼戦線2",
+	ape: "覇眼戦線Ⅱ",
 	as1: {
 		desc: "<種族特効>4チェインでダメージアップ(400%)、戦士の敵へさらにダメージアップ(800%)",
 		proc: [ChainAttack(4.0, 4), ChainSpecAttack(8.0, 4, [8])],
@@ -70164,7 +70176,7 @@ Cards = [{
 	attr: [2,4],
 	species: [8],
 	islegend: true,
-	ape: "覇眼戦線2",
+	ape: "覇眼戦線Ⅱ",
 	as1: {
 		desc: "<属性特効>4チェインで水・光属性の敵単体へ特効ダメージ(600%)",
 		proc: ChainAttrAttack(6.0, 4, [0, 1, 0, 1, 0]),
@@ -70210,7 +70222,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [5],
 	islegend: true,
-	ape: "覇眼戦線1",
+	ape: "覇眼戦線Ⅰ",
 	as1: {
 		desc: "<属性特効連撃>雷属性の敵単体へ特効8連撃(400%)",
 		proc: ChainDualAttrAttack(4.0, 0, 8, [0, 0, 1, 0, 0]),
@@ -70257,7 +70269,7 @@ Cards = [{
 	attr: [0,1],
 	species: [8],
 	islegend: true,
-	ape: "覇眼戦線1",
+	ape: "覇眼戦線Ⅰ",
 	as1: {
 		desc: "<全体攻撃>敵全体へダメージ(150%)、5チェインで更にダメージアップ(200%)",
 		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.0, 5)],
@@ -70303,7 +70315,7 @@ Cards = [{
 	attr: [1,0],
 	species: [5],
 	islegend: true,
-	ape: "覇眼戦線2",
+	ape: "覇眼戦線Ⅰ",
 	as1: {
 		desc: "<チェイン攻撃>3チェインでダメージアップ(350%)、パネルの色が増す度ダメージアップ(450%、700%)",
 		proc: ChainPanelsAttack(3.5, 4.5, 7.0, 3),
@@ -70349,7 +70361,7 @@ Cards = [{
 	attr: [2,1],
 	species: [8],
 	islegend: true,
-	ape: "覇眼戦線1",
+	ape: "覇眼戦線Ⅰ",
 	as1: {
 		desc: "<種族数攻撃>戦士・亜人の仲間の数だけダメージアップ(180%/260%/340%/420%/500%)",
 		proc: ChainDeckSpecsAttack(0.8, [5,8], 0),
@@ -70395,7 +70407,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
-	ape: "覇眼戦線3魔道杯",
+	ape: "大魔道杯 in 覇眼戦線Ⅲ",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>3チェインでダメージアップ(300%)",
@@ -70441,7 +70453,7 @@ Cards = [{
 	attr: [1,2],
 	species: [5],
 	islegend: true,
-	ape: "覇眼戦線3魔道杯",
+	ape: "大魔道杯 in 覇眼戦線Ⅲ",
 	is_dist: true,
 	as1: {
 		desc: "<攻撃>味方のMAXHPの15％を使い、敵単体へのダメージアップ(600％)",
@@ -70486,7 +70498,7 @@ Cards = [{
 	attr: [1,4],
 	species: [2],
 	islegend: true,
-	ape: "メアレスⅡ",
+	ape: "黄昏メアレスⅡ",
 	is_dist: true,
 	as1: {
 		desc: "<複属性攻撃強化>水属性の攻撃力をアップ(30%)、複属性が闇属性だとさらにアップ(40%)",
@@ -70761,7 +70773,7 @@ Cards = [{
 	species: [5],
 	islegend: true,
 	is_dist: true,
-	ape: "覇眼戦線3",
+	ape: "覇眼戦線Ⅲ",
 	as1: {
 		desc: "<属性の加護・パネル色数攻撃>デッキの属性の数だけダメージアップ(250%/400%/550%)、パネルが2色でダメージアップ(200%)、3色でさらにアップ(200%)",
 		proc: [ChainDeckAttrsAttack(2.5, 4.0, 5.5, 0),add_cond(ChainDeckAttrsAttack(4.5, 6.0, 7.5, 0), as_panel_over2()),add_cond(ChainDeckAttrsAttack(6.5, 8.0, 9.5, 0), as_panel_over3())],
@@ -70855,7 +70867,7 @@ Cards = [{
 	attr: [0,3],
 	species: [8],
 	islegend: true,
-	ape: "覇眼戦線3魔道杯",
+	ape: "大魔道杯 in 覇眼戦線Ⅲ",
 	is_dist: true,
 	as1: {
 		desc: "<回復・複属性攻撃強化>火属性の味方を回復(10%)し、攻撃力もアップ(30%)。複属性が光属性だとさらに攻撃力アップ(30%)",
@@ -70901,7 +70913,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: false,
-	ape: "覇眼戦線3魔道杯",
+	ape: "大魔道杯 in 覇眼戦線Ⅲ",
 	is_dist: true,
 	as1: {
 		desc: "<回復・攻撃強化>雷属性の味方にHPを回復(11%)、さらに雷属性の味方に攻撃力をアップ(30%)",
@@ -70934,7 +70946,7 @@ Cards = [{
 	attr: [0,1],
 	species: [8],
 	islegend: false,
-	ape: "覇眼戦線3魔道杯",
+	ape: "大魔道杯 in 覇眼戦線Ⅲ",
 	is_dist: true,
 	as1: {
 		desc: "<全体攻撃>敵全体へダメージ(140%)、3チェインで更にダメージ(170%)",
@@ -70967,7 +70979,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [5],
 	islegend: false,
-	ape: "覇眼戦線3魔道杯",
+	ape: "大魔道杯 in 覇眼戦線Ⅲ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>味方全体のHPを回復(12%)",
@@ -72009,7 +72021,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "喰牙RIZE -クウガライズ-",
+	ape: "喰牙RIZEⅠ",
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ(300%)、デッキに単色の精霊が多いほど、さらにダメージアップ(60%)（上限:5段階)",
 		proc: add_cond(ChainAttack(3.0, 4), as_singleattr_num(0, 0.6)),
@@ -72055,7 +72067,7 @@ Cards = [{
 	species: [4],
 	disable: true,
 	islegend: true,
-	ape: "喰牙RIZE -クウガライズ-",
+	ape: "喰牙RIZEⅠ",
 	as1: {
 		desc: "<攻撃強化>7チェインで火・雷属性の味方の攻撃力をアップ(80%),20チェインでさらにアップ(220%)",
 		proc: [ChainEnhance(0.8, [1,0,1,0,0], 7), ChainEnhance(3.0, [1,0,1,0,0], 20)],
@@ -72102,7 +72114,7 @@ Cards = [{
 	species: [2],
 	disable: true,
 	islegend: true,
-	ape: "喰牙RIZE -クウガライズ-",
+	ape: "喰牙RIZEⅠ",
 	as1: {
 		desc: "<連撃>3チェインで敵単体を3回連続攻撃(300%),20チェインで更にダメージアップ(1300%)",
 		proc: [ChainDualAttack(3.0, 3, 3), ChainDualAttack(16.0, 20, 3)],
@@ -72148,7 +72160,7 @@ Cards = [{
 	species: [2],
 	disable: true,
 	islegend: true,
-	ape: "喰牙RIZE -クウガライズ-",
+	ape: "喰牙RIZEⅠ",
 	as1: {
 		desc: "<回復>火・水属性の味方を回復(10%),20チェインで更に回復(15%)",
 		proc: [Heal(0.10, [1,1,0,0,0], 0), Heal(0.25, [1,1,0,0,0], 20)],
@@ -72195,7 +72207,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "喰牙RIZE -クウガライズ-",
+	ape: "喰牙RIZEⅠ",
 	as1: {
 		desc: "<分散攻撃>敵全体へ分散攻撃(150%)、デッキに単色の精霊が多いほど、さらにダメージアップ(70%)（上限:5段階)",
 		proc: add_cond(ChainVarianceAttack(1.5, 0), as_singleattr_num(0, 0.7)),
@@ -72241,7 +72253,7 @@ Cards = [{
 	species: [9],
 	disable: true,
 	islegend: true,
-	ape: "喰牙RIZE -クウガライズ-",
+	ape: "喰牙RIZEⅠ",
 	as1: {
 		desc: "<回復>味方全体のHPを回復(11%)、HP50%以下なら更に回復(10%)",
 		proc: [Heal(0.11, [1,1,1,1,1], 0), add_cond(Heal(0.21, [1,1,1,1,1], 0), when_hp_less(0.50))],
@@ -72286,7 +72298,7 @@ Cards = [{
 	attr: [1,4],
 	species: [1],
 	islegend: true,
-	ape: "喰牙RIZE -クウガライズ-",
+	ape: "喰牙RIZEⅠ",
 	is_dist: true,
 	as1: {
 		desc: "<回復・攻撃強化>水属性の味方のHPを回復(12%)、さらに水属性の味方の攻撃力をアップ(30%)",
@@ -72333,7 +72345,7 @@ Cards = [{
 	species: [0],
 	disable: true,
 	islegend: true,
-	ape: "喰牙RIZE -クウガライズ-",
+	ape: "喰牙RIZEⅠ",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効連撃>味方のMAXHP10%を使い、水属性の敵単体へ特効5連撃(600%)",
@@ -72379,7 +72391,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [9],
 	islegend: true,
-	ape: "喰牙RIZE -クウガライズ-",
+	ape: "喰牙RIZEⅠ",
 	is_dist: true,
 	as1: {
 		desc: "<回復・攻撃強化>味方全体のHPを回復(10%)、さらに攻撃力をアップ(20%)",
@@ -72425,7 +72437,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [2],
 	islegend: true,
-	ape: "喰牙RIZE -クウガライズ-",
+	ape: "喰牙RIZEⅠ",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>火属性の敵単体へ特効ダメージ(350%)",
@@ -72471,7 +72483,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [0],
 	islegend: true,
-	ape: "喰牙RIZE -クウガライズ-",
+	ape: "喰牙RIZEⅠ",
 	is_dist: true,
 	as1: {
 		desc: "<連撃>4チェインで敵単体を6回連続攻撃(300%)、HP50%以上でさらにダメージアップ(100%)",
@@ -73290,7 +73302,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [1],
 	islegend: true,
-	ape: "アイドルキャッツ！",
+	ape: "Blader",
 	is_dist: true,
 	as1: {
 		desc: "<連撃>敵単体を5回連続攻撃(250%)、デッキに単色の精霊が多いほど、連撃数がアップ(効果値:1)（上限:5段階)",
@@ -73336,7 +73348,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [1],
 	islegend: true,
-	ape: "喰牙RIZE大魔道杯",
+	ape: "大魔道杯 in 喰牙RISE",
 	is_dist: true,
 	as1: {
 		desc: "<回復>味方全体のHPを回復(7%)、デッキに単色の精霊が多いほど、さらに回復(2%)（上限:5段階)",
@@ -73382,7 +73394,7 @@ Cards = [{
 	attr: [0,2],
 	species: [1],
 	islegend: true,
-	ape: "喰牙RIZE大魔道杯",
+	ape: "大魔道杯 in 喰牙RISE",
 	is_dist: true,
 	as1: {
 		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(500%)",
@@ -73427,7 +73439,7 @@ Cards = [{
 	attr: [2,1],
 	species: [8],
 	islegend: false,
-	ape: "喰牙RIZE大魔道杯",
+	ape: "大魔道杯 in 喰牙RISE",
 	is_dist: true,
 	as1: {
 		desc: "<回復>味方全体のHPを回復(12%)",
@@ -73460,7 +73472,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [0],
 	islegend: true,
-	ape: "喰牙RIZE大魔道杯",
+	ape: "大魔道杯 in 喰牙RISE",
 	is_dist: true,
 	as1: {
 		desc: "<全体攻撃>敵全体へダメージ(130%)、デッキに単色の精霊が多いほど、さらにダメージアップ(10%)（上限:5段階)",
@@ -73510,7 +73522,7 @@ Cards = [{
 	attr: [1,4],
 	species: [2],
 	islegend: false,
-	ape: "喰牙RIZE大魔道杯",
+	ape: "大魔道杯 in 喰牙RISE",
 	is_dist: true,
 	as1: {
 		desc: "<回復>味方全体のHPを回復(12%)",
@@ -73543,7 +73555,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [1],
 	islegend: false,
-	ape: "喰牙RIZE大魔道杯",
+	ape: "大魔道杯 in 喰牙RISE",
 	is_dist: true,
 	as1: {
 		desc: "<回復・攻撃強化>味方全体のHPを回復(10%)、さらに攻撃力をアップ(20%)",
@@ -73576,7 +73588,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "八百万神秘譚4",
+	ape: "八百万神秘譚Ⅳ",
 	as1: {
 		desc: "<攻撃強化・ガード>全属性のダメージを10%軽減し、デッキに単色の精霊が多いほど、攻撃力をアップ(15%)（上限:5段階)",
 		proc: [as_guard(0.1, [1,1,1,1,1], 0), add_cond(ChainEnhance(0, [1,0,0,0,0], 0), as_singleattr_num(0, 0.15))],
@@ -73621,7 +73633,7 @@ Cards = [{
 	attr: [0,1],
 	species: [9],
 	islegend: true,
-	ape: "八百万神秘譚4",
+	ape: "八百万神秘譚Ⅳ",
 	as1: {
 		desc: "<複属性攻撃強化>火属性の攻撃力をアップ(30%)、複属性が水属性だとさらにアップ(50%)",
 		proc: ChainEnhance_SubAttr(0.3, 0.8, [1,0,0,0,0], [0,1,0,0,0], 0),
@@ -73666,7 +73678,7 @@ Cards = [{
 	attr: [2,1],
 	species: [9],
 	islegend: true,
-	ape: "八百万神秘譚4",
+	ape: "八百万神秘譚Ⅳ",
 	as1: {
 		desc: "<連撃>3チェインで敵単体を3回連続攻撃(300%),20チェインで更にダメージアップ(1300%)",
 		proc: [ChainDualAttack(3.0, 3, 3), ChainDualAttack(16.0, 20, 3)],
@@ -73711,7 +73723,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "八百万神秘譚4",
+	ape: "八百万神秘譚Ⅳ",
 	as1: {
 		desc: "<属性特効>火属性の敵単体へ特効ダメージ(350%)、解答が早いほどさらにダメージアップ(50%)（上限:4段階)",
 		proc: [add_cond(ChainAttrAttack(3.5, 0, [1,0,0,0,0]), as_timedep(0.5))],
@@ -73756,7 +73768,7 @@ Cards = [{
 	attr: [1,3],
 	species: [8],
 	islegend: true,
-	ape: "八百万神秘譚4",
+	ape: "八百万神秘譚Ⅳ",
 	as1: {
 		desc: "<連撃>敵単体を6回連続攻撃(250%)、解答が早いほどさらにアップ(70%)（上限:4段階)",
 		proc: add_cond(ChainDualAttack(2.5, 0, 6), as_timedep(0.7)),
@@ -73801,7 +73813,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [1],
 	islegend: true,
-	ape: "八百万神秘譚4",
+	ape: "八百万神秘譚Ⅳ",
 	as1: {
 		desc: "<回復・攻撃強化>雷属性の味方を回復(13%)し、デッキに単色の精霊が多いほど、攻撃力をアップ(15%)（上限:5段階)",
 		proc: [Heal(0.13, [0,0,1,0,0]), add_cond(ChainEnhance(0, [0,0,1,0,0], 0), as_singleattr_num(0, 0.15))],
@@ -73846,7 +73858,7 @@ Cards = [{
 	attr: [1,4],
 	species: [1],
 	islegend: true,
-	ape: "八百万神秘譚4",
+	ape: "八百万神秘譚Ⅳ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>水属性の味方を回復(8%)、複属性が闇属性だとさらに回復(8%)",
@@ -73891,7 +73903,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [2],
 	islegend: true,
-	ape: "八百万神秘譚4",
+	ape: "八百万神秘譚Ⅳ",
 	alias: ["あかび"],
 	is_dist: true,
 	as1: {
@@ -73937,7 +73949,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [9],
 	islegend: true,
-	ape: "八百万神秘譚4",
+	ape: "八百万神秘譚Ⅳ",
 	is_dist: true,
 	as1: {
 		desc: "<回復・攻撃強化>味方全体のHPを回復(10%)、さらに攻撃力をアップ(20%)",
@@ -73983,7 +73995,7 @@ Cards = [{
 	attr: [0,1],
 	species: [8],
 	islegend: true,
-	ape: "八百万神秘譚4",
+	ape: "八百万神秘譚Ⅳ",
 	is_dist: true,
 	as1: {
 		desc: "<攻撃強化>火・水属性の味方の攻撃力をアップ(50%)",
@@ -74029,7 +74041,7 @@ Cards = [{
 	attr: [2,0],
 	species: [5],
 	islegend: true,
-	ape: "八百万神秘譚4",
+	ape: "八百万神秘譚Ⅳ",
 	is_dist: true,
 	as1: {
 		desc: "<連撃>4チェインで敵単体を3回連続攻撃(350%)",
@@ -74075,7 +74087,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [1],
 	islegend: true,
-	ape: "八百万神秘譚4",
+	ape: "八百万神秘譚Ⅳ",
 	is_dist: true,
 	as1: {
 		desc: "<攻撃強化・ガード>10チェインで雷属性の味方の攻撃力をアップ(90%)、さらに全属性のダメージを15%軽減",
@@ -74123,7 +74135,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [5],
 	islegend: true,
-	ape: "八百万神秘譚4",
+	ape: "八百万神秘譚Ⅳ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>味方全体のHPを回復(12%)",
@@ -74760,7 +74772,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [1],
 	islegend: true,
-	ape: "八百万4大魔導杯",
+	ape: "大魔導杯 in 八百万Ⅳ",
 	is_dist: true,
 	as1: {
 		desc: "<回復・ガード>火属性の味方のHPを回復(13%)し,7チェインで全属性のダメージを10％軽減",
@@ -74807,7 +74819,7 @@ Cards = [{
 	attr: [0,4],
 	species: [1],
 	islegend: true,
-	ape: "八百万4大魔導杯",
+	ape: "大魔導杯 in 八百万Ⅳ",
 	is_dist: true,
 	as1: {
 		desc: "<連撃>10チェインで敵単体を4回連続攻撃(800%)",
@@ -74854,7 +74866,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [6],
 	islegend: true,
-	ape: "八百万4大魔導杯",
+	ape: "大魔導杯 in 八百万Ⅳ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>雷属性の味方を回復(9%),10チェインで更に回復(10%)",
@@ -74900,7 +74912,7 @@ Cards = [{
 	attr: [1,0],
 	species: [1],
 	islegend: false,
-	ape: "八百万4大魔導杯",
+	ape: "大魔導杯 in 八百万Ⅳ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>水属性の味方を回復(10%)、複属性が火属性だとさらに回復(5%)",
@@ -74933,7 +74945,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [1],
 	islegend: false,
-	ape: "八百万4大魔導杯",
+	ape: "大魔導杯 in 八百万Ⅳ",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>火属性の敵単体へ特効ダメージ(350%),3チェインでさらに特効ダメージ(150%)",
@@ -74966,7 +74978,7 @@ Cards = [{
 	attr: [2,3],
 	species: [1],
 	islegend: false,
-	ape: "八百万4大魔導杯",
+	ape: "大魔導杯 in 八百万Ⅳ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>味方全体のHPを回復(12%)",
@@ -75320,7 +75332,7 @@ Cards = [{
 	attr: [1,4],
 	species: [2],
 	islegend: true,
-	ape: "八百万神秘譚4",
+	ape: "八百万神秘譚Ⅳ",
 	alias: ["あかび", "あかひ"],
 	is_dist: true,
 	as1: {
@@ -75367,7 +75379,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [1],
 	islegend: true,
-	ape: "喰牙RIZE -クウガライズ-",
+	ape: "喰牙RISEⅠ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>味方全体のHPを回復(11%)、デッキに単色の精霊が多いほど、更に回復(1%)(上限:5段階)",
@@ -75413,7 +75425,7 @@ Cards = [{
 	attr: [0,3],
 	species: [8],
 	islegend: true,
-	ape: "メアレスⅢ",
+	ape: "黄昏メアレスⅢ",
 	as1: {
 		desc: "<属性特効連撃・複属性攻撃強化>雷・闇属性の敵単体へ特効3連撃(300%)、さらに火属性の攻撃力をアップ(10%)、複属性が光属性だとさらにアップ(30%)",
 		proc: [ChainDualAttrAttack(3.0, 0, 3, [0,0,1,0,1]), ChainEnhance_SubAttr(0.1, 0.4, [1,0,0,0,0], [0,0,0,1,0], 0)],
@@ -75458,7 +75470,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "メアレスⅢ",
+	ape: "黄昏メアレスⅢ",
 	as1: {
 		desc: "<攻撃強化・ガード>全属性のダメージを10%軽減し、デッキに単色の精霊が多いほど、攻撃力をアップ(15%)（上限:5段階)",
 		proc: [as_guard(0.10, [1,1,1,1,1], 0), add_cond(ChainEnhance(0, [0,1,0,0,0], 0), as_singleattr_num(0, 0.15))],
@@ -75503,7 +75515,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
-	ape: "メアレスⅢ",
+	ape: "黄昏メアレスⅢ",
 	as1: {
 		desc: "<チェイン攻撃>3チェインでダメージアップ(350%)、リーダー時さらにアップ(150%)",
 		proc: [ChainAttack(3.5, 3), ChainAttack_Leader(5.0, 3)],
@@ -75548,7 +75560,7 @@ Cards = [{
 	attr: [0,4],
 	species: [8],
 	islegend: true,
-	ape: "メアレスⅢ",
+	ape: "黄昏メアレスⅢ",
 	as1: {
 		desc: "<全体攻撃>敵全体へダメージ(150%),5チェインで更にダメージアップ(50%)",
 		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.0, 5)],
@@ -75593,7 +75605,7 @@ Cards = [{
 	attr: [0,2],
 	species: [8],
 	islegend: true,
-	ape: "メアレスⅢ",
+	ape: "黄昏メアレスⅢ",
 	as1: {
 		desc: "<連撃>味方のMAXHP10%を使い、敵単体を3回連続攻撃(600%)",
 		proc: add_cond(ChainDualAttack(6.0, 0, 3), as_consume_all(0.10)),
@@ -75638,7 +75650,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
-	ape: "メアレスⅢ",
+	ape: "黄昏メアレスⅢ",
 	as1: {
 		desc: "<属性特効>水属性の敵単体へ特効ダメージ(300%)、デッキに単色の精霊が多いほど、さらにダメージアップ(60%)（上限:5段階)",
 		proc: add_cond(ChainAttrAttack(3.0, 0, [0,1,0,0,0]), as_singleattr_num(0, 0.6)),
@@ -75683,7 +75695,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [9],
 	islegend: true,
-	ape: "メアレスⅢ",
+	ape: "黄昏メアレスⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効連撃>味方のMAXHP10%を使い、火属性の敵単体へ特効5連撃(600%)",
@@ -75728,7 +75740,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [2],
 	islegend: true,
-	ape: "メアレスⅢ",
+	ape: "黄昏メアレスⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<分散攻撃>5チェインで敵全体へ分散攻撃(500%)",
@@ -75776,7 +75788,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [2],
 	islegend: true,
-	ape: "メアレスⅢ",
+	ape: "黄昏メアレスⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>味方全体のHPを回復(9%)、HP50%以下なら更に回復(10%)",
@@ -75823,7 +75835,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [9],
 	islegend: true,
-	ape: "メアレスⅢ",
+	ape: "黄昏メアレスⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<全体攻撃>敵全体へダメージ(140%)",
@@ -75869,7 +75881,7 @@ Cards = [{
 	attr: [0,4],
 	species: [2],
 	islegend: true,
-	ape: "メアレスⅢ",
+	ape: "黄昏メアレスⅢ",
 	alias: ["ロードメア", "レベルメア"],
 	is_dist: true,
 	as1: {
@@ -75916,7 +75928,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [4],
 	islegend: true,
-	ape: "メアレスⅢ",
+	ape: "黄昏メアレスⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<攻撃強化・ガード>5チェインで火属性の味方の攻撃力をアップ(50%)、さらに全属性のダメージを10%軽減",
@@ -75962,7 +75974,7 @@ Cards = [{
 	attr: [2,0],
 	species: [9],
 	islegend: true,
-	ape: "メアレスⅠ",
+	ape: "黄昏メアレスⅠ",
 	as1: {
 		desc: "<種族特効>4チェインでダメージアップ(400%)、魔族の敵へさらにダメージアップ(400%)",
 		proc: [ChainAttack(4.0, 4), ChainSpecAttack(8.0, 4, [2])],
@@ -76008,7 +76020,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "メアレスⅠ",
+	ape: "黄昏メアレスⅠ",
 	as1: {
 		desc: "<連撃>4チェインで敵単体を3回連続攻撃(300%)、HP50%以上でさらにダメージアップ(200%)",
 		proc: [ChainDualAttack(3.0, 4, 3), add_cond(ChainDualAttack(5.0, 4, 3), when_hp_more(0.5))],
@@ -76054,7 +76066,7 @@ Cards = [{
 	attr: [0,4],
 	species: [8],
 	islegend: true,
-	ape: "メアレスⅠ",
+	ape: "黄昏メアレスⅠ",
 	as1: {
 		desc: "<属性特効>4チェインで雷・光属性の敵単体へ特効ダメージ(600%)",
 		proc: ChainAttrAttack(6.0, 4, [0, 0, 1, 1, 0]),
@@ -76101,7 +76113,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "メアレスⅠ",
+	ape: "黄昏メアレスⅠ",
 	as1: {
 		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(400%)",
 		proc: add_cond(ChainAttack(4.0, 0), when_hp_more(0.8)),
@@ -76148,7 +76160,7 @@ Cards = [{
 	attr: [1,0],
 	species: [8],
 	islegend: true,
-	ape: "メアレスⅠ",
+	ape: "黄昏メアレスⅠ",
 	as1: {
 		desc: "<チェイン攻撃>6チェインでダメージアップ(500%)",
 		proc: ChainAttack(5.0, 6),
@@ -76195,7 +76207,7 @@ Cards = [{
 	attr: [1,2],
 	species: [9],
 	islegend: true,
-	ape: "メアレスⅡ",
+	ape: "黄昏メアレスⅡ",
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ(350%)、8チェインで更にダメージアップ(150%)",
 		proc: [ChainAttack(3.5, 4), ChainAttack(5.0, 8)],
@@ -76241,7 +76253,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
-	ape: "メアレスⅡ",
+	ape: "黄昏メアレスⅡ",
 	as1: {
 		desc: "<連撃>4チェインで敵を6回連続攻撃(300%)、HP50%以上でさらにダメージアップ(200%)",
 		proc: [ChainDualAttack(3.0, 4, 6), add_cond(ChainDualAttack(5.0, 4, 6), when_hp_more(0.5))],
@@ -76288,7 +76300,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "メアレスⅡ",
+	ape: "黄昏メアレスⅡ",
 	as1: {
 		desc: "<属性特効>火属性の敵単体へ特効ダメージ(350%)、解答が早いほどさらにアップ(50%)(上限:4段階)",
 		proc: add_cond(ChainAttrAttack(3.5, 0, [1,0,0,0,0]), as_timedep(0.5)),
@@ -76334,7 +76346,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "メアレスⅡ",
+	ape: "黄昏メアレスⅡ",
 	as1: {
 		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(600%)",
 		proc: add_cond(ChainAttack(6.0, 0), as_consume_all(0.1)),
@@ -76380,7 +76392,7 @@ Cards = [{
 	attr: [1,0],
 	species: [8],
 	islegend: true,
-	ape: "メアレスⅡ",
+	ape: "黄昏メアレスⅡ",
 	as1: {
 		desc: "<連撃・複属性攻撃強化>4チェインで敵単体を4回連続攻撃(350%)、さらに水属性の攻撃力をアップ(10%)、複属性が火属性だとさらにアップ(30%)",
 		proc: [ChainDualAttack(3.5, 4, 4), ChainEnhance_SubAttr(0.1, 0.4, [0,1,0,0,0], [1,0,0,0,0], 4)],
@@ -76427,7 +76439,7 @@ Cards = [{
 	attr: [0,2],
 	species: [8],
 	islegend: true,
-	ape: "メアレスⅡ",
+	ape: "黄昏メアレスⅡ",
 	as1: {
 		desc: "<複属性攻撃強化>10チェインで火属性の攻撃力をアップ(30%)、複属性が雷属性だとさらにアップ(170%)",
 		proc: [ChainEnhance_SubAttr(0.3, 2.0, [1,0,0,0,0], [0,0,1,0,0], 10)],
@@ -76474,7 +76486,7 @@ Cards = [{
 	attr: [2,0],
 	species: [8],
 	islegend: true,
-	ape: "メアレスⅡ",
+	ape: "黄昏メアレスⅡ",
 	as1: {
 		desc: "<連撃>10チェインで敵単体を4回連続攻撃(900%)",
 		proc: ChainDualAttack(9.0, 10, 4),
@@ -76520,7 +76532,7 @@ Cards = [{
 	attr: [1,3],
 	species: [8],
 	islegend: true,
-	ape: "メアレスⅢ",
+	ape: "黄昏メアレスⅢ",
 	as1: {
 		desc: "<回復>水属性の味方のHPを回復(14%)",
 		proc: Heal(0.14, [0,1,0,0,0], 0),
@@ -77610,7 +77622,7 @@ Cards = [{
 	attr: [2,1],
 	species: [8],
 	islegend: true,
-	ape: "クロスディライブ2",
+	ape: "クロスディライブACT2",
 	as1: {
 		desc: "<連撃>味方のMAXHP10%を使い、敵単体を3回連続攻撃(600%)",
 		proc: add_cond(ChainDualAttack(6.0, 0, 3), as_consume_all(0.10)),
@@ -79916,7 +79928,7 @@ Cards = [{
 	species: [2],
 	islegend: false,
 	is_dist: true,
-	ape: "サタ女2大魔道杯",
+	ape: "大魔導杯 in 聖サタニック女学院Ⅱ",
 	alias: ["ギヨーム"],
 	as1: {
 		desc: "<連撃>敵単体を3回連続攻撃(250%)",
@@ -79951,7 +79963,7 @@ Cards = [{
 	species: [2],
 	islegend: false,
 	is_dist: true,
-	ape: "サタ女2大魔道杯",
+	ape: "大魔導杯 in 聖サタニック女学院Ⅱ",
 	as1: {
 		desc: "<回復>味方全体のHPを回復(13%)",
 		proc: Heal(0.13, [1,1,1,1,1], 0),
@@ -79985,7 +79997,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	is_dist: true,
-	ape: "サタ女2大魔道杯",
+	ape: "大魔導杯 in 聖サタニック女学院Ⅱ",
 	as1: {
 		desc: "<回復>火・雷属性の味方のHPを回復(13%)",
 		proc: Heal(0.13, [1,0,1,0,0], 0),
@@ -80032,7 +80044,7 @@ Cards = [{
 	species: [2],
 	islegend: false,
 	is_dist: true,
-	ape: "サタ女2大魔道杯",
+	ape: "大魔導杯 in 聖サタニック女学院Ⅱ",
 	as1: {
 		desc: "<回復・攻撃強化>雷属性の味方を回復(11%)し、デッキに単色の精霊が多いほど、攻撃力をアップ(15%)（上限:5段階)",
 		proc: as_copy(Heal(0.11, [0,0,1,0,0]), add_cond(ChainEnhance(0, [0,0,1,0,0], 0), as_singleattr_num(0, 0.15))),
@@ -80066,7 +80078,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	is_dist: true,
-	ape: "サタ女2大魔道杯",
+	ape: "大魔導杯 in 聖サタニック女学院Ⅱ",
 	as1: {
 		desc: "<ギャンブル攻撃>ダメージがイチかバチかアップ(150%～350%)、デッキに単色の精霊が多いほど、さらにダメージアップ(40%)",
 		proc: add_cond(ChainStakesAttack(1.5, 3.5, 0), as_singleattr_num(0, 0.4)),
@@ -80113,7 +80125,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	is_dist: true,
-	ape: "サタ女2大魔道杯",
+	ape: "大魔導杯 in 聖サタニック女学院Ⅱ",
 	as1: {
 		desc: "<連撃>10チェインで敵単体を10回連続攻撃(700%)、デッキに単色の精霊が多いほど、ダメージがアップ(120%)（上限:5段階)",
 		proc: add_cond(ChainDualAttack(7.0, 10, 10), as_singleattr_num(0, 1.2)),
@@ -80211,7 +80223,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
-	ape: "メアレス3",
+	ape: "黄昏メアレスⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>水属性の敵単体へ特効ダメージ(150%)、デッキに単色の精霊が多いほど、さらにダメージアップ(90%)(上限:5段階)",
@@ -81825,7 +81837,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "喰牙RISE2",
+	ape: "喰牙RISEⅡ",
 	as1: {
 		desc: "<攻撃>敵単体へのダメージアップ(150%)、デッキに単色の精霊が多いほど、さらにダメージアップ(50%)（上限:5段階)",
 		proc: add_cond(ChainAttack(1.5, 0), as_singleattr_num(0, 0.5)),
@@ -81870,7 +81882,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
-	ape: "喰牙RISE2",
+	ape: "喰牙RISEⅡ",
 	as1: {
 		desc: "<連撃>15チェインで敵単体を10回連続攻撃(1400%)",
 		proc: ChainDualAttack(14.0, 15, 10),
@@ -81919,7 +81931,7 @@ Cards = [{
 	attr: [0,1],
 	species: [9],
 	islegend: true,
-	ape: "喰牙RISE2",
+	ape: "喰牙RISEⅡ",
 	as1: {
 		desc: "<全体攻撃>HP80%以上で敵全体へダメージ(200%)",
 		proc: add_cond(ChainAllAttack(2.0, 0), when_hp_more(0.8)),
@@ -81964,7 +81976,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "喰牙RISE2",
+	ape: "喰牙RISEⅡ",
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ(300%)、HP50%以上でさらにダメージアップ(200%)",
 		proc: [ChainAttack(3.0, 4), add_cond(ChainAttack(5.0, 4), when_hp_more(0.5))],
@@ -82009,7 +82021,7 @@ Cards = [{
 	attr: [1,2],
 	species: [9],
 	islegend: true,
-	ape: "喰牙RISE2",
+	ape: "喰牙RISEⅡ",
 	as1: {
 		desc: "<複属性攻撃強化>水属性の攻撃力をアップ(10%)、複属性が雷属性だとさらにアップ(90%)",
 		proc: ChainEnhance_SubAttr(0.1, 1.0, [0,1,0,0,0], [0,0,1,0,0], 0),
@@ -82054,7 +82066,7 @@ Cards = [{
 	attr: [2,1],
 	species: [2],
 	islegend: true,
-	ape: "喰牙RISE2",
+	ape: "喰牙RISEⅡ",
 	as1: {
 		desc: "<回復>雷属性の味方を回復(9%)、複属性が水属性だとさらに回復(8%)",
 		proc: [Heal(0.09, [0,0,1,0,0], 0), add_cond(Heal(0.17, [0,0,1,0,0], 0), when_subattr_match([0,0,1,0,0], [0,1,0,0,0]))],
@@ -82507,7 +82519,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [2],
 	islegend: true,
-	ape: "喰牙RISE2",
+	ape: "喰牙RISEⅡ",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>3チェインで味方のMAXHP10%を使い、ダメージアップ(650%)",
@@ -82553,7 +82565,7 @@ Cards = [{
 	attr: [0,1],
 	species: [8],
 	islegend: true,
-	ape: "喰牙RISE2",
+	ape: "喰牙RISEⅡ",
 	is_dist: true,
 	as1: {
 		desc: "<複属性攻撃強化>4チェインで火属性の攻撃力をアップ(10%)、複属性が水だとさらにアップ(60%)",
@@ -82599,7 +82611,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "喰牙RISE2",
+	ape: "喰牙RISEⅡ",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>3チェインで雷属性の敵単体へ特効ダメージ(475%)",
@@ -82645,7 +82657,7 @@ Cards = [{
 	attr: [2,1],
 	species: [0],
 	islegend: true,
-	ape: "喰牙RISE2",
+	ape: "喰牙RISEⅡ",
 	is_dist: true,
 	as1: {
 		desc: "<連撃>敵単体を3回連続攻撃(250%)",
@@ -82691,7 +82703,7 @@ Cards = [{
 	attr: [2,0],
 	species: [0],
 	islegend: true,
-	ape: "喰牙RISE2",
+	ape: "喰牙RISEⅡ",
 	is_dist: true,
 	as1: {
 		desc: "<回復・攻撃強化>雷属性の味方のHPを回復(11%)、さらに雷属性の味方の攻撃力をアップ(30%)",
@@ -82737,7 +82749,7 @@ Cards = [{
 	attr: [2,3],
 	species: [8],
 	islegend: true,
-	ape: "喰牙RISE2",
+	ape: "喰牙RISEⅡ",
 	alias: ["JABEE"],
 	is_dist: true,
 	as1: {
@@ -82784,7 +82796,7 @@ Cards = [{
 	attr: [0,3],
 	species: [8],
 	islegend: true,
-	ape: "喰牙RISE2",
+	ape: "喰牙RISEⅡ",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>10チェインでダメージアップ(700%)",
@@ -82830,7 +82842,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "喰牙RIZE1",
+	ape: "喰牙RISEⅠ",
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ(300%)、デッキに単色の精霊が多いほど、さらにダメージアップ(60%)（上限:5段階)",
 		proc: add_cond(ChainAttack(3.0, 4), as_singleattr_num(0, 0.6)),
@@ -82875,7 +82887,7 @@ Cards = [{
 	attr: [2,0],
 	species: [4],
 	islegend: true,
-	ape: "喰牙RIZE1",
+	ape: "喰牙RISEⅠ",
 	as1: {
 		desc: "<攻撃強化>7チェインで火・雷属性の味方の攻撃力をアップ(80%),20チェインでさらにアップ(220%)",
 		proc: [ChainEnhance(0.8, [1,0,1,0,0], 7), ChainEnhance(3.0, [1,0,1,0,0], 20)],
@@ -82921,7 +82933,7 @@ Cards = [{
 	attr: [0,1],
 	species: [2],
 	islegend: true,
-	ape: "喰牙RIZE1",
+	ape: "喰牙RISEⅠ",
 	as1: {
 		desc: "<連撃>3チェインで敵単体を3回連続攻撃(300%),20チェインで更にダメージアップ(1300%)",
 		proc: [ChainDualAttack(3.0, 3, 3), ChainDualAttack(16.0, 20, 3)],
@@ -82966,7 +82978,7 @@ Cards = [{
 	attr: [1,0],
 	species: [2],
 	islegend: true,
-	ape: "喰牙RIZE1",
+	ape: "喰牙RISEⅠ",
 	as1: {
 		desc: "<回復>火・水属性の味方を回復(10%),20チェインで更に回復(15%)",
 		proc: [Heal(0.10, [1,1,0,0,0], 0), Heal(0.25, [1,1,0,0,0], 20)],
@@ -83012,7 +83024,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "喰牙RIZE1",
+	ape: "喰牙RISEⅠ",
 	as1: {
 		desc: "<分散攻撃>敵全体へ分散攻撃(150%)、デッキに単色の精霊が多いほど、さらにダメージアップ(70%)（上限:5段階)",
 		proc: add_cond(ChainVarianceAttack(1.5, 0), as_singleattr_num(0, 0.7)),
@@ -83058,7 +83070,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
-	ape: "喰牙RIZE1",
+	ape: "喰牙RISEⅠ",
 	as1: {
 		desc: "<回復>味方全体のHPを回復(11%)、HP50%以下なら更に回復(10%)",
 		proc: [Heal(0.11, [1,1,1,1,1], 0), add_cond(Heal(0.21, [1,1,1,1,1], 0), when_hp_less(0.50))],
@@ -83419,7 +83431,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "ドルキマス3",
+	ape: "ドルキマスⅢ",
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ(350%)、リーダー時さらにアップ(250%)",
 		proc: [ChainAttack(3.5, 4), ChainAttack_Leader(6.0, 4)],
@@ -83464,7 +83476,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "ドルキマス3",
+	ape: "ドルキマスⅢ",
 	as1: {
 		desc: "<連撃>15チェインで敵単体を10回連続攻撃(1400%)",
 		proc: ChainDualAttack(14.0, 15, 10),
@@ -83513,7 +83525,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
-	ape: "ドルキマス3",
+	ape: "ドルキマスⅢ",
 	as1: {
 		desc: "<属性特効>15チェインで水属性の敵単体へ特効ダメージ(1950%)",
 		proc: ChainAttrAttack(19.5, 15, [0,1,0,0,0]),
@@ -83558,7 +83570,7 @@ Cards = [{
 	attr: [0,1],
 	species: [0],
 	islegend: true,
-	ape: "ドルキマス3",
+	ape: "ドルキマスⅢ",
 	as1: {
 		desc: "<チェイン攻撃・種族数攻撃>3チェインでダメージアップ(250%)、龍族の仲間の数だけさらにアップ(100%)",
 		proc: ChainDeckSpecsAttack(1.0, [0], 0, 1.5),
@@ -83603,7 +83615,7 @@ Cards = [{
 	attr: [1,0],
 	species: [8],
 	islegend: true,
-	ape: "ドルキマス3",
+	ape: "ドルキマスⅢ",
 	as1: {
 		desc: "<連撃・複属性攻撃強化>敵単体を3回連続攻撃(250%)、さらに水属性の攻撃力をアップ(10%)、複属性が火属性だとさらにアップ(30%)",
 		proc: [ChainDualAttack(2.5, 0, 3), ChainEnhance_SubAttr(0.10, 0.40, [0,1,0,0,0], [1,0,0,0,0], 0)],
@@ -83649,7 +83661,7 @@ Cards = [{
 	attr: [2,1],
 	species: [8],
 	islegend: true,
-	ape: "ドルキマス3",
+	ape: "ドルキマスⅢ",
 	alias: ["シャルルリエ"],
 	as1: {
 		desc: "<連撃>12チェインで敵単体を4回連続攻撃(1000%)",
@@ -83698,7 +83710,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "ドルキマス2",
+	ape: "ドルキマスⅡ",
 	as1: {
 		desc: "<属性特効>4チェインで火属性の敵単体へ特効ダメージ(600%)",
 		proc: ChainAttrAttack(6.0, 4, [1,0,0,0,0]),
@@ -83743,7 +83755,7 @@ Cards = [{
 	attr: [2,0],
 	species: [8],
 	islegend: true,
-	ape: "ドルキマス2",
+	ape: "ドルキマスⅡ",
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ、8チェインで更にダメージアップ(350%/500%)",
 		proc: [ChainAttack(3.5, 4), ChainAttack(5.0, 8)],
@@ -83788,7 +83800,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
-	ape: "ドルキマス2",
+	ape: "ドルキマスⅡ",
 	as1: {
 		desc: "<攻撃強化・属性特効>味方の攻撃力をアップ(30%)し、4チェインで水属性の敵単体へ特効ダメージ(500%)",
 		proc: [ChainEnhance(0.3, [1,1,1,1,1], 0), ChainAttrAttack(5.0, 4, [0,1,0,0,0])],
@@ -83833,7 +83845,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
-	ape: "ドルキマス1",
+	ape: "ドルキマスⅠ",
 	as1: {
 		desc: "<攻撃強化>味方のMAXHP10%を使い、雷属性の味方の攻撃力をアップ(120%)",
 		proc: [add_cond(ChainEnhance(1.2, [0,0,1,0,0], 0), as_consume_all(0.1))],
@@ -83878,7 +83890,7 @@ Cards = [{
 	attr: [2,0],
 	species: [8],
 	islegend: true,
-	ape: "ドルキマス1",
+	ape: "ドルキマスⅠ",
 	as1: {
 		desc: "<連撃>4チェインで敵単体を4回連続攻撃(400%)",
 		proc: ChainDualAttack(4, 4, 4),
@@ -83923,7 +83935,7 @@ Cards = [{
 	attr: [1,3],
 	species: [8],
 	islegend: true,
-	ape: "ドルキマス3",
+	ape: "ドルキマスⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>水属性の味方を回復(8%)、複属性が光属性だとさらに回復(8%)",
@@ -83970,7 +83982,7 @@ Cards = [{
 	attr: [2,0],
 	species: [2],
 	islegend: true,
-	ape: "ドルキマス3",
+	ape: "ドルキマスⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ(30%)、複属性が火属性だとさらにアップ(40%)",
@@ -84017,7 +84029,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "ドルキマス3",
+	ape: "ドルキマスⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<快調攻撃>残りHPが80％以上でダメージアップ(350%)",
@@ -84063,7 +84075,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "ドルキマス3",
+	ape: "ドルキマスⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<連撃>敵単体を6回連続攻撃(150%)、デッキに単色の精霊が多いほど、ダメージがアップ(40%)(上限:5段階)",
@@ -84109,7 +84121,7 @@ Cards = [{
 	attr: [1,0],
 	species: [2],
 	islegend: true,
-	ape: "ドルキマス3",
+	ape: "ドルキマスⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<分散攻撃>5チェインで敵全体へ分散攻撃(450%)",
@@ -84155,7 +84167,7 @@ Cards = [{
 	attr: [2,0],
 	species: [8],
 	islegend: true,
-	ape: "ドルキマス3",
+	ape: "ドルキマスⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>5チェインでダメージアップ(400%)",
@@ -84201,7 +84213,7 @@ Cards = [{
 	attr: [0,2],
 	species: [8],
 	islegend: true,
-	ape: "ドルキマス3",
+	ape: "ドルキマスⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>火属性の味方のHPを回復(11%)",
@@ -84247,7 +84259,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "ドルキマス2",
+	ape: "ドルキマスⅡ",
 	as1: {
 		desc: "<チェイン攻撃・種族数攻撃>4チェインでダメージアップ(350%)、戦士の仲間の数だけさらにアップ(50%)",
 		proc: [ChainDeckSpecsAttack(0.5, [8], 4, 2.5)],
@@ -84292,7 +84304,7 @@ Cards = [{
 	attr: [0,2],
 	species: [8],
 	islegend: true,
-	ape: "ドルキマス2",
+	ape: "ドルキマスⅡ",
 	as1: {
 		desc: "<回復>味方全体のHPを回復(10%)、パネルの色が2色以上だとさらに回復(10%)",
 		proc: ChainPanelsHeal(0.10, 0.20, 0.20, [1,1,1,1,1], 0),
@@ -84337,7 +84349,7 @@ Cards = [{
 	attr: [1,2],
 	species: [1],
 	islegend: true,
-	ape: "ドルキマス2",
+	ape: "ドルキマスⅡ",
 	as1: {
 		desc: "<回復>味方全体のHPを回復(14%)",
 		proc: Heal(0.14, [1,1,1,1,1], 0),
@@ -84382,7 +84394,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
-	ape: "ドルキマス2",
+	ape: "ドルキマスⅡ",
 	as1: {
 		desc: "<回復>味方全体のHPを回復(14%)",
 		proc:  Heal(0.14, [1,1,1,1,1], 0),
@@ -84654,7 +84666,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [0],
 	islegend: true,
-	ape: "ドルキマス1",
+	ape: "ドルキマスⅠ",
 	as1: {
 		desc: "<属性特効>10チェインで雷属性の敵単体へ特効ダメージ(1200%)",
 		proc: [ChainAttrAttack(12, 10, [0,0,1,0,0])],
@@ -84699,7 +84711,7 @@ Cards = [{
 	attr: [0,2],
 	species: [8],
 	islegend: true,
-	ape: "ドルキマス1",
+	ape: "ドルキマスⅠ",
 	as1: {
 		desc: "<分散攻撃>4チェインで敵全体へ分散攻撃(500%)",
 		proc: ChainVarianceAttack(5.0, 4),
@@ -84744,7 +84756,7 @@ Cards = [{
 	attr: [0,1],
 	species: [0],
 	islegend: true,
-	ape: "ドルキマス1",
+	ape: "ドルキマスⅠ",
 	as1: {
 		desc: "<連撃>5チェインで敵単体を6回連続攻撃(450%)",
 		proc: ChainDualAttack(4.5, 5, 6),
@@ -84789,7 +84801,7 @@ Cards = [{
 	attr: [1,2],
 	species: [3],
 	islegend: true,
-	ape: "ドルキマス1",
+	ape: "ドルキマスⅠ",
 	as1: {
 		desc: "<チェイン攻撃・種族数攻撃>4チェインでダメージアップ(300%)、天使の仲間の数だけさらにアップ(100%)",
 		proc: ChainDeckSpecsAttack(1.0, [3], 4, 2.0),
@@ -84834,7 +84846,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [1],
 	islegend: true,
-	ape: "ドルキマス1",
+	ape: "ドルキマスⅠ",
 	as1: {
 		desc: "<属性特効>5チェインで火属性の敵単体へ特効ダメージ(700%)",
 		proc: [ChainAttrAttack(7.0, 5, [1,0,0,0,0])],
@@ -84879,7 +84891,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
-	ape: "ドルキマス1",
+	ape: "ドルキマスⅠ",
 	as1: {
 		desc: "<回復・攻撃強化>雷属性の味方のHPを回復(13%)、さらに雷属性の味方の攻撃力をアップ(30%)",
 		proc: [Heal(0.13, [0,0,1,0,0], 0), ChainEnhance(0.3, [0,0,1,0,0], 0)],
@@ -85384,7 +85396,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "スザクⅠ",
+	ape: "幻魔特区スザクⅠ",
 	as1: {
 		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)、10チェインで更にダメージアップ(150%)",
 		proc: [ChainAttack(4.5, 5), ChainAttack(6.0, 10)],
@@ -85429,7 +85441,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "スザクⅠ",
+	ape: "幻魔特区スザクⅠ",
 	as1: {
 		desc: "<属性特効>5チェインで雷属性の敵単体へ特効ダメージ(700%)",
 		proc: ChainAttrAttack(7.0, 5, [0,0,1,0,0]),
@@ -85474,7 +85486,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
-	ape: "スザクⅠ",
+	ape: "幻魔特区スザクⅠ",
 	as1: {
 		desc: "<攻撃強化・ガード>7チェインで雷属性の味方の攻撃力をアップ(80%)、さらに全属性のダメージを10%軽減",
 		proc: [ChainEnhance(0.80, [0,0,1,0,0], 7), as_guard(0.10, [1,1,1,1,1], 7)],
@@ -85520,7 +85532,7 @@ Cards = [{
 	attr: [0,4],
 	species: [8],
 	islegend: true,
-	ape: "スザクⅡ",
+	ape: "幻魔特区スザクⅡ",
 	as1: {
 		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)、10チェインで更にダメージアップ(150%)",
 		proc: [ChainAttack(4.5, 5), ChainAttack(6.0, 10)],
@@ -85565,7 +85577,7 @@ Cards = [{
 	attr: [0,4],
 	species: [2],
 	islegend: true,
-	ape: "スザクⅡ",
+	ape: "幻魔特区スザクⅡ",
 	as1: {
 		desc: "<複属性攻撃強化>残りHPが80%以上で火属性の攻撃力をアップ(50%)、複属性が闇属性だとさらにアップ(50%)",
 		proc: add_cond(ChainEnhance_SubAttr(0.5, 1.0, [1,0,0,0,0], [0,0,0,0,1], 0), when_hp_more(0.8)),
@@ -85610,7 +85622,7 @@ Cards = [{
 	attr: [2,3],
 	species: [1],
 	islegend: true,
-	ape: "スザクⅡ",
+	ape: "幻魔特区スザクⅡ",
 	as1: {
 		desc: "<チェイン攻撃・種族数攻撃>3チェインでダメージアップ(250%)、神族の仲間の数だけさらにアップ(100%)",
 		proc: ChainDeckSpecsAttack(1.0, [1], 3, 1.5),
@@ -85655,7 +85667,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
-	ape: "スザクⅡ",
+	ape: "幻魔特区スザクⅡ",
 	as1: {
 		desc: "<属性特効>5チェインで水属性の敵単体へ特効ダメージ(700%)",
 		proc: ChainAttrAttack(7.0, 5, [0,1,0,0,0]),
@@ -85700,7 +85712,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<攻撃強化・属性特効>火属性の味方の攻撃力をアップ(30%)し、4チェインで雷属性の敵単体へ特効ダメージ(500%)",
 		proc: [ChainEnhance(0.3, [1,0,0,0,0], 0), ChainAttrAttack(5.0, 4, [0,0,1,0,0])],
@@ -85745,7 +85757,7 @@ Cards = [{
 	attr: [0,2],
 	species: [8],
 	islegend: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<複属性攻撃強化>7チェインで火属性の攻撃力をアップ(80%)、複属性が雷属性だとさらにアップ(50%)",
 		proc: ChainEnhance_SubAttr(0.8, 1.3, [1,0,0,0,0], [0,0,1,0,0], 7),
@@ -85790,7 +85802,7 @@ Cards = [{
 	attr: [0,1],
 	species: [8],
 	islegend: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<連撃>4チェインで敵単体を3回連続攻撃(350%)、8チェインで更にダメージアップ(150%)",
 		proc: [ChainDualAttack(3.5, 4, 3), ChainDualAttack(5.0, 8, 3)],
@@ -85835,7 +85847,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [2],
 	islegend: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<属性特効連撃>雷属性の敵単体へ特効8連撃(300%)、20チェインで更に特効ダメージ(1950%)",
 		proc: [ChainDualAttrAttack(3.0, 0, 8, [0,0,1,0,0]), ChainDualAttrAttack(22.5, 20, 8, [0,0,1,0,0])],
@@ -85882,7 +85894,7 @@ Cards = [{
 	attr: [1,0],
 	species: [8],
 	islegend: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<連撃・複属性攻撃強化>4チェインで敵単体を4回連続攻撃(350%)、さらに水属性の攻撃力をアップ(10%)、複属性が火属性だとさらにアップ(30%)",
 		proc: [ChainDualAttack(3.5, 4, 3), ChainEnhance_SubAttr(0.10, 0.40, [0,1,0,0,0], [1,0,0,0,0], 4)],
@@ -85928,7 +85940,7 @@ Cards = [{
 	attr: [2,0],
 	species: [8],
 	islegend: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<複属性攻撃強化>残りHPが80%以上で雷属性の攻撃力をアップ(50%)、複属性が火属性だとさらにアップ(50%)",
 		proc: add_cond(ChainEnhance_SubAttr(0.5, 1.0, [0,0,1,0,0], [1,0,0,0,0], 0), when_hp_more(0.8)),
@@ -85973,7 +85985,7 @@ Cards = [{
 	attr: [2,3],
 	species: [1],
 	islegend: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ(30%)、複属性が光属性だとさらにアップ(50%)",
 		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,0,1,0,0], [0,0,0,1,0], 0),
@@ -86108,7 +86120,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "スザクⅠ",
+	ape: "幻魔特区スザクⅠ",
 	as1: {
 		desc: "<回復・攻撃強化>水属性の味方のHPを回復(13%)、さらに水属性の味方の攻撃力をアップ(30%)",
 		proc: [Heal(0.13, [0,1,0,0,0], 0), ChainEnhance(0.30, [0,1,0,0,0], 0)],
@@ -86154,7 +86166,7 @@ Cards = [{
 	attr: [2,1],
 	species: [8],
 	islegend: true,
-	ape: "スザクⅠ",
+	ape: "幻魔特区スザクⅠ",
 	as1: {
 		desc: "<複属性攻撃強化>5チェインで雷属性の攻撃力をアップ(60%)、複属性が水属性だとさらにアップ(50%)",
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,0,1,0,0], [0,1,0,0,0], 5),
@@ -86199,7 +86211,7 @@ Cards = [{
 	attr: [1,2],
 	species: [8],
 	islegend: true,
-	ape: "スザクⅡ",
+	ape: "幻魔特区スザクⅡ",
 	as1: {
 		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)",
 		proc: ChainAttack(4.5, 5),
@@ -86245,7 +86257,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<回復>水属性の味方を回復(10%)、8チェインで更に回復(8%)",
 		proc: [Heal(0.10, [0,1,0,0,0], 0), Heal(0.18, [0,1,0,0,0], 8)],
@@ -86291,7 +86303,7 @@ Cards = [{
 	attr: [2,3],
 	species: [8],
 	islegend: true,
-	ape: "スザクⅢ",
+	ape: "幻魔特区スザクⅢ",
 	as1: {
 		desc: "<回復>雷属性の味方を回復(14%)、HP20%以下でさらに回復(25%)",
 		proc: [Heal(0.14, [0,0,1,0,0], 0), add_cond(Heal(0.39, [0,0,1,0,0], 0), when_hp_less(0.2))],
@@ -89120,7 +89132,7 @@ Cards = [{
 	attr: [1,4],
 	species: [-1],
 	islegend: true,
-	ape: "喰牙RISE2",
+	ape: "喰牙RISEⅡ",
 	as1: {
 		desc: "<攻撃強化>5チェインで水属性の味方の攻撃力をアップ(70%)",
 		proc: ChainEnhance(0.7, [0,1,0,0,0], 5),
@@ -89212,7 +89224,7 @@ Cards = [{
 	attr: [0,1],
 	species: [2],
 	islegend: true,
-	ape: "ロストエデンⅡ　WWMF",
+	ape: "ロストエデンⅡ WWMF",
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ(350%)、8チェインで更にダメージアップ(150%)",
 		proc: [ChainAttack(3.5, 4), ChainAttack(5.0, 8)],
@@ -89257,7 +89269,7 @@ Cards = [{
 	attr: [2,3],
 	species: [3],
 	islegend: true,
-	ape: "ロストエデンⅡ　WWMF",
+	ape: "ロストエデンⅡ WWMF",
 	as1: {
 		desc: "<種族特効>10チェインでダメージアップ(900%)、天使・魔族へさらにダメージアップ(350%)",
 		proc: [ChainAttack(9.0, 10), ChainSpecAttack(12.5, 10, [2,3])],
@@ -90525,7 +90537,7 @@ Cards = [{
 	attr: [1,3],
 	species: [1],
 	islegend: true,
-	ape: "ドルキマス3",
+	ape: "ドルキマスⅢ",
 	as1: {
 		desc: "<チェイン攻撃>3チェインでダメージアップ(300%)、6チェインで更にダメージアップ(250%)",
 		proc: [ChainAttack(3.0, 3), ChainAttack(5.5, 6)],
@@ -91187,7 +91199,7 @@ Cards = [{
 	attr: [0,1],
 	species: [9],
 	islegend: true,
-	ape: "エステレラ2",
+	ape: "エステレラⅡ",
 	as1: {
 		desc: "<攻撃強化>火属性の味方の攻撃力をアップ(60%)、解答が早いほどさらにアップ(20%)（上限:4段階)",
 		proc: add_cond(ChainEnhance(0.6, [1,0,0,0,0], 0), as_timedep(0.2)),
@@ -91232,7 +91244,7 @@ Cards = [{
 	attr: [1,0],
 	species: [9],
 	islegend: true,
-	ape: "エステレラ2",
+	ape: "エステレラⅡ",
 	as1: {
 		desc: "<全体攻撃>敵全体へダメージ(150%),5チェインで更にダメージアップ(50%)",
 		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.0, 5)],
@@ -91277,7 +91289,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
-	ape: "エステレラ2",
+	ape: "エステレラⅡ",
 	as1: {
 		desc: "<属性特効連撃>4チェインで水属性の敵単体へ特効6連撃(550%)、解答が早いほどさらにアップ(70%)（上限:4段階)",
 		proc: add_cond(ChainDualAttrAttack(5.5, 4, 6, [0, 1, 0, 0, 0]), as_timedep(0.7)),
@@ -91322,7 +91334,7 @@ Cards = [{
 	attr: [1,4],
 	species: [1],
 	islegend: true,
-	ape: "エステレラ2",
+	ape: "エステレラⅡ",
 	as1: {
 		desc: "<回復・複属性攻撃強化>水属性の味方を回復(10%)し、攻撃力もアップ(30%)。複属性が闇属性だとさらに攻撃力アップ(30%)",
 		proc: [Heal(0.10, [0,1,0,0,0], 0), ChainEnhance_SubAttr(0.3, 0.6, [0,1,0,0,0], [0,0,0,0,1], 0)],
@@ -91367,7 +91379,7 @@ Cards = [{
 	attr: [1,3],
 	species: [9],
 	islegend: true,
-	ape: "エステレラ2",
+	ape: "エステレラⅡ",
 	is_dist: true,
 	as1: {
 		desc: "<回復・ガード>水属性の味方のHPを回復(10%)、5チェインで更に全属性のダメージを10%軽減",
@@ -91413,7 +91425,7 @@ Cards = [{
 	attr: [2,1],
 	species: [1],
 	islegend: true,
-	ape: "エステレラ2",
+	ape: "エステレラⅡ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>水・雷属性の味方のHPを回復(12%)",
@@ -91459,7 +91471,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [9],
 	islegend: true,
-	ape: "エステレラ2",
+	ape: "エステレラⅡ",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(350%)",
@@ -91505,7 +91517,7 @@ Cards = [{
 	attr: [1,0],
 	species: [1],
 	islegend: true,
-	ape: "エステレラ2",
+	ape: "エステレラⅡ",
 	is_dist: true,
 	as1: {
 		desc: "<全体攻撃>敵全体へダメージ(140%),5チェインで更にダメージアップ(50%)",
@@ -91550,7 +91562,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [1],
 	islegend: true,
-	ape: "エステレラ2",
+	ape: "エステレラⅡ",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(350%)",
@@ -91595,7 +91607,7 @@ Cards = [{
 	attr: [2,1],
 	species: [7],
 	islegend: true,
-	ape: "エステレラ2",
+	ape: "エステレラⅡ",
 	is_dist: true,
 	as1: {
 		desc: "<分散攻撃>敵全体へ分散攻撃(250%)、解答が早いほどさらにアップ(70%)（上限:4段階)",
@@ -91640,7 +91652,7 @@ Cards = [{
 	attr: [2,3],
 	species: [9],
 	islegend: true,
-	ape: "エステレラ2",
+	ape: "エステレラⅡ",
 	as1: {
 		desc: "<属性特効連撃・複属性攻撃強化>水・闇属性の敵単体へ特効3連撃(300%)、さらに雷属性の攻撃力をアップ(10%)、複属性が光属性だとさらにアップ(30%)",
 		proc: [ChainDualAttrAttack(3.0, 0, 3, [0,1,0,0,1]), ChainEnhance_SubAttr(0.1, 0.4, [0,0,1,0,0], [0,0,0,1,0], 0)],
@@ -91730,7 +91742,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [11],
 	islegend: true,
-	ape: "AbCd",
+	ape: "アビスコード",
 	as1: {
 		desc: "<分散攻撃>敵全体へ分散攻撃(350%)、リーダー時、更にダメージアップ(100%)",
 		proc: [ChainVarianceAttack(3.5, 0), add_cond(ChainVarianceAttack(4.5, 0), when_leader())],
@@ -91775,7 +91787,7 @@ Cards = [{
 	attr: [0,2],
 	species: [3],
 	islegend: true,
-	ape: "エステレラ2",
+	ape: "エステレラⅡ",
 	as1: {
 		desc: "<連撃>3チェインで敵単体を3回連続攻撃(300%),20チェインで更にダメージアップ(1300%)",
 		proc: [ChainDualAttack(3.0, 3, 3), ChainDualAttack(16.0, 20, 3)],
@@ -92008,7 +92020,7 @@ Cards = [{
 	attr: [1,3],
 	species: [9],
 	islegend: true,
-	ape: "エステレラ",
+	ape: "エステレラⅠ",
 	as1: {
 		desc: "<回復>水属性の味方のHPを回復(14%)",
 		proc: Heal(0.14, [0,1,0,0,0], 0),
@@ -92057,7 +92069,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
-	ape: "エステレラ",
+	ape: "エステレラⅠ",
 	as1: {
 		desc: "<属性特効>水属性の敵単体へ特効ダメージ(350%)、解答が早いほどさらにアップ(70%)(上限:4段階)",
 		proc: add_cond(ChainAttrAttack(3.5, 0, [0,1,0,0,0]), as_timedep(0.7)),
@@ -92102,7 +92114,7 @@ Cards = [{
 	attr: [0,1],
 	species: [9],
 	islegend: true,
-	ape: "エステレラ",
+	ape: "エステレラⅠ",
 	as1: {
 		desc: "<回復・複属性攻撃強化>火・水属性の味方のHPを回復(10%)し、攻撃力もアップ(30%)。複属性が水属性だとさらに攻撃力アップ(30%)",
 		proc: [Heal(0.10, [1,1,0,0,0], 0), ChainEnhance_SubAttr(0.3, 0.6, [1,0,0,0,0], [0,1,0,0,0], 0)],
@@ -92147,7 +92159,7 @@ Cards = [{
 	attr: [0,3],
 	species: [3],
 	islegend: true,
-	ape: "エステレラ",
+	ape: "エステレラⅠ",
 	as1: {
 		desc: "<属性特効>雷・闇属性の敵単体へ特効ダメージ(350%)、解答が早いほどさらにアップ(70%)(上限:4段階)",
 		proc: add_cond(ChainAttrAttack(3.5, 0, [0,0,1,0,1]), as_timedep(0.7)),
@@ -92194,7 +92206,7 @@ Cards = [{
 	attr: [1,2],
 	species: [9],
 	islegend: true,
-	ape: "エステレラ",
+	ape: "エステレラⅠ",
 	as1: {
 		desc: "<攻撃強化・ガード>5チェインで水・雷属性の味方の攻撃力をアップ(60%)、さらに全属性のダメージを10%軽減",
 		proc: [ChainEnhance(0.6, [0,1,1,0,0], 5), as_guard(0.1, [1,1,1,1,1], 5)],
@@ -92239,7 +92251,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
-	ape: "エステレラ",
+	ape: "エステレラⅠ",
 	as1: {
 		desc: "<回復・攻撃強化>雷属性の味方のHPを回復(13%)し、デッキに単色の精霊が多いほど、攻撃力をアップ(15%)(上限:5段階)",
 		proc: [Heal(0.13, [0,0,1,0,0]), add_cond(ChainEnhance(0, [0,0,1,0,0], 0), as_singleattr_num(0, 0.15))],
@@ -92425,7 +92437,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [0],
 	islegend: true,
-	ape: "喰牙RIZE -クウガライズ-",
+	ape: "喰牙RISEⅠ",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効連撃>味方のMAXHP10%を使い、水属性の敵単体へ特効5連撃(600%)",
@@ -92519,7 +92531,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "ドルキマス3",
+	ape: "ドルキマスⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<快調攻撃>残りHPが80％以上でダメージアップ(400%)",
@@ -92558,97 +92570,51 @@ Cards = [{
 },{
 
 	name: "本とみんなと プティ・プエルトーニ",
-
 	cardno: 9581,
-
 	imageno: 11849,
-
 	hp: 1645,
-
 	atk: 4513,
-
 	cost: 1,
-
 	attr: [2,4],
-
 	species: [9],
-
 	islegend: true,
-
 	is_dist: true,
-
-	ape: "大魔道杯 in エステレラ",
-
+	ape: "大魔道杯 in エステレラⅠ",
 	as1: {
-
 		desc: "<連撃>4チェインで敵単体を3回連続攻撃(250%)、HP50%以上で更にダメージアップ(200%)",
-
 		proc: [ChainDualAttack(2.5, 4, 3), add_cond(ChainDualAttack(4.5, 4, 3), when_hp_more(0.5))],
-
 	},
-
 	as2: {
-
 		desc: "<連撃>4チェインで敵単体を3回連続攻撃(350%)、HP50%以上で更にダメージアップ(200%)",
-
 		proc: [ChainDualAttack(3.5, 4, 3), add_cond(ChainDualAttack(5.5, 4, 3), when_hp_more(0.5))],
-
 	},
-
 	ss1: {
-
 		desc: "<特効大魔術>敵全体へ闇属性のダメージ(600%)、さらに光属性の敵には特効ダメージ(900%)、さらに敵にトドメを刺した数だけチェインプラス1",
-
 		turn: 3,
-
 		chadd_killing: 1,
-
 		proc: [ss_damage_all(special_attr([0,0,0,1,0], 15, 6), [4])],
-
 	},
-
 	ss2: {
-
 		desc: "<特効大魔術>敵全体へ闇属性のダメージ(600%)、さらに光属性の敵には特効ダメージ(900%)、さらに敵にトドメを刺した数だけチェインプラス1",
-
 		turn: 3,
-
 		chadd_killing: 1,
-
 		proc: [ss_damage_all(special_attr([0,0,0,1,0], 15, 6), [4])],
-
 	},
-
 	awakes: [
-
 		Costdown(10),
-
 		Panel_boost([0,0,1,0,0,],2),
-
 		Attr_statusup(0,200,[0,0,1,0,0,]),
-
 		Attr_statusup(200,0,[0,0,1,0,0,]),
-
 		Panel_boost([0,0,1,0,0,],2),
-
 		NEFTJOD(30),
-
 		Fastskill(3),
-
 		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,200,[0,0,0,0,1,]),
-
 		Attr_statusup_sattr(100,0,[0,0,1,0,0,],200,0,[0,0,0,0,1,]),
-
 		Abstate_invalid("as_sealed"),
-
 	],
-
 	Lawake: [
-
 		Statusup(0,1000),
-
 		Statusup(500,0),
 	],
-
 },
 ];
