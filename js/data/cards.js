@@ -3049,6 +3049,7 @@ Cards = [{
 	cost: 40,
 	attr: [0, 2],
 	species: [9],
+	ape: "グリコⅡ",
 	awakes: [
 		Statusup(0, 200),
 		Statusup(200, 0),
@@ -3632,6 +3633,7 @@ Cards = [{
 	cost: 37,
 	attr: [0, -1],
 	species: [9],
+	ape: "グリコⅠ",
 	awakes: [
 		Awake_noeffect("ゴールド取得量アップ", 1),
 		Statusup(0, 100),
@@ -3854,6 +3856,7 @@ Cards = [{
 	cost: 46,
 	attr: [0, -1],
 	species: [9],
+	ape: "大魔道杯 in グリコ",
 	awakes: [
 		Panel_boost([1,0,0,0,0], 1),
 		Panel_boost([1,0,0,0,0], 1),
@@ -3943,6 +3946,7 @@ Cards = [{
 	cost: 51,
 	attr: [0, 1],
 	species: [9],
+	ape: "大魔道杯 in グリコ",
 	awakes: [
 		Panel_boost([1,0,0,0,0], 1),
 		Panel_boost([1,0,0,0,0], 1),
@@ -4530,6 +4534,7 @@ Cards = [{
 	cost: 47,
 	attr: [0, -1],
 	species: [4],
+	ape: "グリコⅠ",
 	awakes: [
 		Statusup(0, 200),
 		Statusup(200, 0),
@@ -12136,6 +12141,7 @@ Cards = [{
 	cost: 50,
 	attr: [2, -1],
 	species: [8],
+	ape: "大魔道杯 in グリコ",
 	awakes: [
 		Panel_boost([0, 0, 1, 0, 0, ], 1),
 		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
@@ -12271,6 +12277,7 @@ Cards = [{
 	cost: 38,
 	attr: [2, -1],
 	species: [9],
+	ape: "グリコⅠ",
 	awakes: [
 		Statusup(0, 100),
 		Fastskill(1),
@@ -12315,6 +12322,7 @@ Cards = [{
 	cost: 52,
 	attr: [2, -1],
 	species: [4],
+	ape: "グリコⅠ",
 	awakes: [
 		Statusup(200, 0),
 		Statusup(0, 200),
@@ -15981,6 +15989,7 @@ Cards = [{
 	attr: [0, -1],
 	species: [8],
 	islegend: true,
+	ape: "大魔導杯 ケーキ",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>HP80%以上で雷属性の敵単体へ特効ダメージ(475%)",
@@ -16536,6 +16545,7 @@ Cards = [{
 	attr: [2, 3],
 	species: [8],
 	islegend: true,
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<回復>雷属性の味方のHPを回復(13%)",
 		proc: Heal(0.12, [0, 0, 1, 0, 0], 0),
@@ -16580,6 +16590,7 @@ Cards = [{
 	attr: [1,0],
 	species: [8],
 	islegend: true,
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<連撃>HP80%以上で敵単体を3回連続攻撃(350%)",
 		proc: add_cond(ChainDualAttack(3.5, 0, 3), when_hp_more(0.8)),
@@ -16624,6 +16635,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [9],
 	islegend: true,
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<属性特効>3チェインで雷属性の敵単体へ特効ダメージ(525%)",
 		proc: ChainAttrAttack(5.25, 3, [0,0,1,0,0]),
@@ -16668,6 +16680,7 @@ Cards = [{
 	attr: [0,1],
 	species: [8],
 	islegend: true,
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<連撃>4チェインで敵単体を3回連続攻撃(400%)",
 		proc: ChainDualAttack(4.0, 4, 3),
@@ -16712,6 +16725,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<種族特効>3チェインでダメージアップ、術士・戦士の敵へさらにダメージアップ(300%/550%)",
 		proc: [ChainAttack(3.0, 3), ChainSpecAttack(5.5, 3, [8,9])],
@@ -16756,6 +16770,7 @@ Cards = [{
 	attr: [0,1],
 	species: [8],
 	islegend: true,
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)",
 		proc: ChainAttack(4.5, 5),
@@ -16799,6 +16814,7 @@ Cards = [{
 	cost: 45,
 	attr: [1, 2],
 	species: [8],
+	ape: "コラボ(コナン)",
 	awakes: [
 		Attr_statusup(100, 0, [0, 1, 1, 0, 0]),
 		Attr_statusup(0, 100, [0, 1, 1, 0, 0]),
@@ -16843,6 +16859,7 @@ Cards = [{
 	cost: 44,
 	attr: [2, 4],
 	species: [8],
+	ape: "コラボ(コナン)",
 	awakes: [
 		NEFTJOD(30),
 		Panel_boost([0, 0, 1, 0, 0], 2),
@@ -20237,6 +20254,7 @@ Cards = [{
 	attr: [1,2],
 	species: [9],
 	islegend: true,
+	ape: "グリコⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>3チェインでダメージアップ、7チェインで更にダメージアップ(300%/450%)",
@@ -20282,6 +20300,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [9],
 	islegend: true,
+	ape: "グリコⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>火属性の味方のHPを回復(11%)",
@@ -23587,6 +23606,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [4],
 	islegend: true,
+	ape: "グリコⅠ",
 	is_dist: true,
 	as1: {
 		desc: "<攻撃強化>水属性の味方の攻撃力をアップ、リーダー時さらにアップ(30%/40%)",
@@ -25267,6 +25287,7 @@ Cards = [{
 	attr: [0,2],
 	species: [8],
 	islegend: true,
+	ape: "大魔導杯 ケーキ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>火・雷属性の味方のHPを回復(14%)",
@@ -26218,7 +26239,7 @@ Cards = [{
 	attr: [1,0],
 	species: [8],
 	islegend: false,
-	ape: "ミクコラボ",
+	ape: "コラボ(ミク)",
 	as1: {
 		desc: "<連撃>3チェインで敵単体を2回連続攻撃(300%)",
 		proc: ChainDualAttack(3.0, 3, 2),
@@ -26250,7 +26271,7 @@ Cards = [{
 	attr: [1,2],
 	species: [8],
 	islegend: false,
-	ape: "コナンコラボ",
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<連撃>3チェインで敵単体を3回連続攻撃(300%)",
 		proc: ChainDualAttack(3.0, 3, 3),
@@ -26329,7 +26350,7 @@ Cards = [{
 	attr: [0,2],
 	species: [9],
 	islegend: true,
-	ape: "3周年大魔導杯",
+	ape: "3周年大魔道杯",
 	is_dist: true,
 	as1: {
 		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(30%/70%)",
@@ -26907,7 +26928,7 @@ Cards = [{
 	attr: [0,2],
 	species: [9],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	as1: {
 		desc: "<種族特効>4チェインでダメージアップ、物質の敵へさらにダメージアップ(400%/700%)",
 		proc: [ChainAttack(4.0, 4), ChainSpecAttack(7.0, 4, [6])],
@@ -26952,7 +26973,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [9],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	as1: {
 		desc: "<属性特効>5チェインで雷属性の敵単体へ特効ダメージ(650%)",
 		proc: [ChainAttrAttack(6.5, 5, [0,0,1,0,0])],
@@ -26997,7 +27018,7 @@ Cards = [{
 	attr: [0,3],
 	species: [8],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	as1: {
 		desc: "<チェイン攻撃>6チェインでダメージアップ(500%)",
 		proc: ChainAttack(5.0, 6),
@@ -27042,7 +27063,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	as1: {
 		desc: "<属性特効>火属性の敵単体へ特効ダメージ(400%)",
 		proc: ChainAttrAttack(4.0, 0, [1,0,0,0,0]),
@@ -27087,7 +27108,7 @@ Cards = [{
 	attr: [1,3],
 	species: [8],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ、10チェインで更にダメージアップ(350%/550%)",
 		proc: [ChainAttack(3.5, 4), ChainAttack(5.5, 10)],
@@ -27132,7 +27153,7 @@ Cards = [{
 	attr: [1,2],
 	species: [8],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	as1: {
 		desc: "<複属性攻撃強化>4チェインで水属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(50%/100%)",
 		proc: ChainEnhance_SubAttr(0.50, 1.0, [0,1,0,0,0], [0,0,1,0,0], 4),
@@ -27177,7 +27198,7 @@ Cards = [{
 	attr: [2,3],
 	species: [9],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	as1: {
 		desc: "<複属性攻撃強化>5チェインで雷属性の攻撃力をアップ、複属性が光属性でさらにアップ(60%/110%)",
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,0,1,0,0], [0,0,0,1,0], 5),
@@ -27222,7 +27243,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	as1: {
 		desc: "<属性特効>3チェインで水属性の敵単体へ特効ダメージ(525%)",
 		proc: ChainAttrAttack(5.25, 3, [0,1,0,0,0]),
@@ -27267,7 +27288,7 @@ Cards = [{
 	attr: [2,0],
 	species: [9],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	as1: {
 		desc: "<連撃>HP80%以上で敵単体を3回連続攻撃(350%)",
 		proc: add_cond(ChainDualAttack(3.5, 0, 3), when_hp_more(0.80)),
@@ -27312,7 +27333,7 @@ Cards = [{
 	attr: [2,1],
 	species: [8],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	as1: {
 		desc: "<連撃>5チェインで敵単体を3回連続攻撃(450%)",
 		proc: ChainDualAttack(4.5, 5, 3),
@@ -27357,7 +27378,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: false,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	as1: {
 		desc: "<属性特効>4チェインで雷属性の敵単体へ特効ダメージ(500%)",
 		proc: ChainAttrAttack(5.0, 4, [0,0,1,0,0]),
@@ -27389,7 +27410,7 @@ Cards = [{
 	attr: [0,2],
 	species: [8],
 	islegend: false,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	as1: {
 		desc: "<連撃>4チェインで敵単体を3回連続攻撃、HP50%以上でさらにダメージアップ(250%/350%)",
 		proc: [ChainDualAttack(2.5, 4, 3), add_cond(ChainDualAttack(3.5, 4, 3), when_hp_more(0.5))],
@@ -27421,7 +27442,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [9],
 	islegend: false,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	as1: {
 		desc: "<回復>水属性の味方のHPを回復(11%)",
 		proc: [Heal(0.11, [0,1,0,0,0], 0)],
@@ -27453,7 +27474,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [9],
 	islegend: false,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	as1: {
 		desc: "<回復>水属性の味方を回復、3チェインで更に回復(9%/12%)",
 		proc: [Heal(0.09, [0,1,0,0,0], 0), Heal(0.12, [0,1,0,0,0], 3)],
@@ -27485,7 +27506,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: false,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ(350%)",
 		proc: ChainAttack(3.5, 4),
@@ -27517,7 +27538,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: false,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	as1: {
 		desc: "<属性特効>水属性の敵単体へ特効ダメージ(300%)",
 		proc: ChainAttrAttack(3.0, 0, [0,1,0,0,0]),
@@ -27549,7 +27570,7 @@ Cards = [{
 	attr: [2,1],
 	species: [8],
 	islegend: false,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	as1: {
 		desc: "<連撃>3チェインで敵単体を3回連続攻撃(300%)",
 		proc: ChainDualAttack(3.0, 3, 3),
@@ -27581,7 +27602,7 @@ Cards = [{
 	attr: [2,0],
 	species: [9],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	is_dist: true,
 	as1: {
 		desc: "<攻撃>4チェインで敵単体へのダメージアップ、パネルの色が増す度さらにアップ(350%/450%/600%)",
@@ -27627,7 +27648,7 @@ Cards = [{
 	attr: [0,1],
 	species: [6],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	is_dist: true,
 	as1: {
 		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が水属性だとさらにアップ(30%/80%)",
@@ -27673,7 +27694,7 @@ Cards = [{
 	attr: [0,4],
 	species: [8],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ(300%)",
@@ -27719,7 +27740,7 @@ Cards = [{
 	attr: [1,2],
 	species: [5],
 	islegend: false,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効連撃>3チェインで火属性の敵へ特効3連撃(300%)",
@@ -27752,7 +27773,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ(300%)",
@@ -27798,7 +27819,7 @@ Cards = [{
 	attr: [0,1],
 	species: [9],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	is_dist: true,
 	as1: {
 		desc: "<回復>火・水属性の味方を回復、5チェインで更に回復(10%/14%)",
@@ -27844,7 +27865,7 @@ Cards = [{
 	attr: [1,0],
 	species: [8],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	is_dist: true,
 	as1: {
 		desc: "<連撃>3チェインで敵単体を3回連続攻撃、7チェインで更にダメージアップ(300%/450%)",
@@ -27890,7 +27911,7 @@ Cards = [{
 	attr: [2,1],
 	species: [9],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	is_dist: true,
 	as1: {
 		desc: "<攻撃強化>3チェインで水・雷属性の味方の攻撃力をアップ(40%)",
@@ -27982,7 +28003,7 @@ Cards = [{
 	attr: [0,3],
 	species: [9],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	as1: {
 		desc: "<チェイン攻撃>7チェインでダメージアップ(550%)",
 		proc: ChainAttack(5.5, 7),
@@ -28029,7 +28050,7 @@ Cards = [{
 	attr: [0,2],
 	species: [8],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	as1: {
 		desc: "<連撃>4チェインで敵単体を3回連続攻撃、HP50%以上でさらにダメージアップ(300%/500%)",
 		proc: [ChainDualAttack(3.0, 4, 3), add_cond(ChainDualAttack(5.0, 4, 3), when_hp_more(0.5))],
@@ -28076,7 +28097,7 @@ Cards = [{
 	attr: [2, -1],
 	species: [6],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>5チェインで水属性の敵単体へ特効ダメージ(600%)",
@@ -28124,7 +28145,7 @@ Cards = [{
 	attr: [2, 0],
 	species: [9],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	is_dist: true,
 	as1: {
 		desc: "<回復>パネルの色が2色以上で火・雷属性の味方を回復(17%)",
@@ -28170,7 +28191,7 @@ Cards = [{
 	attr: [1, 2],
 	species: [8],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	is_dist: true,
 	as1: {
 		desc: "<分散攻撃>4チェインで敵全体へ分散攻撃、HP80%以上でさらにダメージアップ(300%/400%)",
@@ -28215,7 +28236,7 @@ Cards = [{
 	attr: [0, 1],
 	species: [9],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>3チェインでダメージアップ(300%)",
@@ -28261,7 +28282,7 @@ Cards = [{
 	attr: [0, 4],
 	species: [6],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効連撃>4チェインで雷属性の敵単体へ特効3連撃、パネルの色が増す度さらにアップ(500%/600%/700%)",
@@ -28309,7 +28330,7 @@ Cards = [{
 	attr: [2, 1],
 	species: [6],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	is_dist: true,
 	as1: {
 		desc: "<快調攻撃>HP全快でダメージアップ(450%)",
@@ -28354,7 +28375,7 @@ Cards = [{
 	attr: [1, 4],
 	species: [6],
 	islegend: true,
-	ape: "マクロスコラボ",
+	ape: "コラボ(マクロス)",
 	is_dist: true,
 	as1: {
 		desc: "<種族特効>種族が物質の敵単体へ特効ダメージ(600%)",
@@ -31698,7 +31719,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "桃娘伝",
+	ape: "桃娘伝Ⅰ",
 	as1: {
 		desc: "<属性特効>3チェインで雷属性の敵単体へ特効ダメージ、12チェインでさらに特効ダメージ(350%/965％)",
 		proc: [ChainAttrAttack(3.5, 3, [0,0,1,0,0]), ChainAttrAttack(9.65, 12, [0,0,1,0,0])],
@@ -34622,7 +34643,7 @@ Cards = [{
 	attr: [1,0],
 	species: [8],
 	islegend: true,
-	ape: "コナンコラボ",
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<回復>火・水属性の味方を回復(14%)",
 		proc: Heal(0.14, [1,1,0,0,0], 0),
@@ -34667,7 +34688,7 @@ Cards = [{
 	attr: [2,4],
 	species: [8],
 	islegend: true,
-	ape: "コナンコラボ",
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<回復>雷属性の味方を回復、HP50%以下なら更に回復(11%/20%)",
 		proc: [Heal(0.11, [0,0,1,0,0], 0), add_cond(Heal(0.20, [0,0,1,0,0], 0), when_hp_less(0.5))],
@@ -34712,7 +34733,7 @@ Cards = [{
 	attr: [2,0],
 	species: [8],
 	islegend: true,
-	ape: "コナンコラボ",
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<チェイン攻撃>3チェインでダメージアップ(350%)",
 		proc: ChainAttack(3.5, 3),
@@ -34757,7 +34778,7 @@ Cards = [{
 	attr: [0,2],
 	species: [8],
 	islegend: false,
-	ape: "コナンコラボ",
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<攻撃強化>火・雷属性の味方の攻撃力をアップ(30%)",
 		proc: ChainEnhance(0.3, [1,0,1,0,0], 0),
@@ -34789,7 +34810,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: false,
-	ape: "コナンコラボ",
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<チェイン攻撃>5チェインでダメージアップ(350%)",
 		proc: ChainAttack(3.5, 5),
@@ -34821,7 +34842,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: false,
-	ape: "コナンコラボ",
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<回復>火属性の味方のHPを回復(11%)",
 		proc: Heal(0.11, [1,0,0,0,0], 0),
@@ -34853,7 +34874,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: false,
-	ape: "コナンコラボ",
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(300%)",
 		proc: ChainAttrAttack(3.0, 0, [0,0,1,0,0]),
@@ -34885,7 +34906,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: false,
-	ape: "コナンコラボ",
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<属性特効>火属性の敵単体へ特効ダメージ(300%)",
 		proc: ChainAttrAttack(3.0, 0, [1,0,0,0,0]),
@@ -34917,7 +34938,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: false,
-	ape: "コナンコラボ",
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<回復>水属性の味方のHPを回復(11%)",
 		proc: Heal(0.11, [0,1,0,0,0], 0),
@@ -34949,7 +34970,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: false,
-	ape: "コナンコラボ",
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<回復>雷属性の味方のHPを回復(11%)",
 		proc: Heal(0.11, [0,0,1,0,0], 0),
@@ -34981,7 +35002,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: false,
-	ape: "コナンコラボ",
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<攻撃強化>雷属性の味方の攻撃力をアップ(30%)",
 		proc: ChainEnhance(0.3, [0,0,1,0,0], 0),
@@ -35013,7 +35034,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: false,
-	ape: "コナンコラボ",
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<回復>雷属性の味方のHPを回復(11%)",
 		proc: Heal(0.11, [0,0,1,0,0], 0),
@@ -35046,7 +35067,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	is_dist: true,
-	ape: "コナンコラボ",
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<属性特効>水属性の敵単体へ特効ダメージ(300%)",
 		proc: ChainAttrAttack(3.0, 0, [0,1,0,0,0]),
@@ -35092,7 +35113,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	is_dist: true,
-	ape: "コナンコラボ",
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<回復>火属性の味方を回復、パネルの色が増す度さらに回復(10%/13%/15%)",
 		proc: ChainPanelsHeal(0.10, 0.13, 0.15, [1,0,0,0,0], 0),
@@ -35138,7 +35159,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	is_dist: true,
-	ape: "コナンコラボ",
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<回復>雷属性の味方のHPを回復(12%)",
 		proc: Heal(0.12, [0,0,1,0,0], 0),
@@ -35184,7 +35205,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	is_dist: true,
-	ape: "コナンコラボ",
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<攻撃強化>3チェインで雷属性の味方の攻撃力をアップ(45%)",
 		proc: ChainEnhance(0.45, [0,0,1,0,0], 3),
@@ -35230,7 +35251,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	is_dist: true,
-	ape: "コナンコラボ",
+	ape: "コラボ(コナン)",
 	as1: {
 		desc: "<回復>火・水属性の味方のHPを回復(11%)",
 		proc: Heal(0.11, [1,1,0,0,0], 0),
@@ -35322,7 +35343,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	is_dist: true,
-	ape: "クロマグⅤ",
+	ape: "クロム・マグナⅤ",
 	as1: {
 		desc: "<回復>水・雷属性の味方を回復、3チェインで更に回復(10%/13%)",
 		proc: [Heal(0.10, [0,1,1,0,0], 0), Heal(0.13, [0,1,1,0,0], 3)],
@@ -35826,7 +35847,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	is_dist: true,
-	ape: "クロマグⅤ",
+	ape: "クロム・マグナⅤ",
 	as1: {
 		desc: "<攻撃強化>7チェインで水属性の味方の攻撃力をアップ(70%)",
 		proc: ChainEnhance(0.7, [0,1,0,0,0], 7),
@@ -36233,7 +36254,7 @@ Cards = [{
 	attr: [2,1],
 	species: [9],
 	islegend: true,
-	ape: "ケーキ大魔導杯",
+	ape: "大魔導杯 ケーキ",
 	is_dist: true,
 	as1: {
 		desc: "<攻撃強化>5チェインで水・雷属性の味方の攻撃力をアップ(60%)",
@@ -36325,7 +36346,7 @@ Cards = [{
 	species: [2],
 	islegend: true,
 	is_dist: true,
-	ape: "高橋留美子コラボ",
+	ape: "コラボ(高橋留美子)",
 	as1: {
 		desc: "<攻撃強化>5チェインで水属性の味方の攻撃力をアップ(60%)",
 		proc: ChainEnhance(0.6, [0,1,0,0,0], 5),
@@ -37604,7 +37625,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [9],
 	islegend: false,
-	ape: "ミクコラボ",
+	ape: "コラボ(ミク)",
 	as1: {
 		desc: "<回復>火属性の味方のHPを回復、術士はさらに回復(9%/14%)",
 		proc: [Heal(0.09, [1,0,0,0,0], 0), SpecHeal(0.14, [1,0,0,0,0], [9], 0)],
@@ -37636,7 +37657,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "コナンコラボ",
+	ape: "コラボ(コナン)",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効連撃>雷属性の敵単体へ特効3連撃(350%)",
@@ -37683,7 +37704,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	is_dist: true,
-	ape: "魔道杯　爆",
+	ape: "大魔道杯　爆",
 	is_dist: true,
 	as1: {
 		desc: "<回復>水・雷属性の味方を回復、20チェインで更に回復(10%/25%)",
@@ -37730,7 +37751,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	is_dist: true,
-	ape: "魔道杯　爆",
+	ape: "大魔道杯　爆",
 	is_dist: true,
 	as1: {
 		desc: "<回復>水属性の味方を回復(12%)",
@@ -37777,7 +37798,7 @@ Cards = [{
 	species: [9],
 	islegend: false,
 	is_dist: true,
-	ape: "魔道杯　爆",
+	ape: "大魔道杯　爆",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効連撃>雷属性の敵単体へ特効5連撃(350%)",
@@ -37811,7 +37832,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	is_dist: true,
-	ape: "魔道杯　爆",
+	ape: "大魔道杯　爆",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(400%)",
@@ -37860,7 +37881,7 @@ Cards = [{
 	species: [9],
 	islegend: false,
 	is_dist: true,
-	ape: "魔道杯　爆",
+	ape: "大魔道杯　爆",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>3チェインで水属性の敵単体へ特効ダメージ(425%)",
@@ -37894,7 +37915,7 @@ Cards = [{
 	species: [9],
 	islegend: false,
 	is_dist: true,
-	ape: "魔道杯　爆",
+	ape: "大魔道杯　爆",
 	is_dist: true,
 	as1: {
 		desc: "<回復>水属性の味方を回復(11%)",
@@ -41832,7 +41853,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "GQW",
+	ape: "真夏のグレート・クイズ・ウォー",
 	as1: {
 		desc: "<属性特効・攻撃強化>雷属性の味方の攻撃力をアップし(30%)、4チェインで水・闇属性の敵単体へ特効ダメージ(500%)",
 		proc: [ChainEnhance(0.30, [0, 0, 1, 0, 0], 0), ChainAttrAttack(5.0, 4, [0,1,0,0,1])],
@@ -41878,7 +41899,7 @@ Cards = [{
 	species: [2],
 	disable: true,
 	islegend: true,
-	ape: "GQW",
+	ape: "真夏のグレート・クイズ・ウォー",
 	alias: ["クルス"],
 	as1: {
 		desc: "<チェイン攻撃>10チェインでダメージアップ(200%)、解答が早いほどさらにアップ(効果値:250)",
@@ -41926,7 +41947,7 @@ Cards = [{
 	species: [9],
 	disable: true,
 	islegend: true,
-	ape: "GQW",
+	ape: "真夏のグレート・クイズ・ウォー",
 	alias: ["ピピア"],
 	as1: {
 		desc: "<連撃・ガード>6チェインで敵単体を3回連続攻撃(400%)、さらに全属性のダメージを10%軽減",
@@ -41973,7 +41994,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "GQW",
+	ape: "真夏のグレート・クイズ・ウォー",
 	alias: ["ローヴィ"],
 	as1: {
 		desc: "<属性特効>5チェインで雷属性の敵単体へ特効ダメージ(650%)",
@@ -42019,7 +42040,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "GQW",
+	ape: "真夏のグレート・クイズ・ウォー",
 	alias: ["シール"],
 	as1: {
 		desc: "<属性特効・攻撃強化>水属性の味方の攻撃力をアップ(30%)し、4チェインで火属性の敵単体へ特効ダメージ(500%)",
@@ -42066,7 +42087,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "GQW",
+	ape: "真夏のグレート・クイズ・ウォー",
 	alias: ["うりまろびえり"],
 	as1: {
 		desc: "<属性特効>	5チェインで雷属性の敵単体へ特効ダメージ(350%)、解答が早いほどさらにアップ(効果値:150)",
@@ -42113,7 +42134,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "GQW",
+	ape: "真夏のグレート・クイズ・ウォー",
 	alias: ["ひびやまいみ"],
 	as1: {
 		desc: "<攻撃強化・ガード>6チェインで水属性の味方の攻撃力をアップ(70%)、さらに全属性のダメージを10%軽減",
@@ -42161,7 +42182,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "GQW",
+	ape: "真夏のグレート・クイズ・ウォー",
 	alias: ["あさひなれんじ"],
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ(150%)、解答が早いほどさらにアップ(効果値:125)",
@@ -42207,7 +42228,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [4],
 	islegend: true,
-	ape: "GQW",
+	ape: "真夏のグレート・クイズ・ウォー",
 	is_dist: true,
 	as1: {
 		desc: "<回復>火属性の味方を回復、3チェインで更に回復(10%/12%)",
@@ -42254,7 +42275,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "GQW",
+	ape: "真夏のグレート・クイズ・ウォー",
 	alias: ["しるしがわひらめ"],
 	is_dist: true,
 	as1: {
@@ -42301,7 +42322,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [7],
 	islegend: true,
-	ape: "GQW",
+	ape: "真夏のグレート・クイズ・ウォー",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>火属性の敵単体へ特効ダメージ(350%)",
@@ -42347,7 +42368,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [7],
 	islegend: true,
-	ape: "GQW",
+	ape: "真夏のグレート・クイズ・ウォー",
 	is_dist: true,
 	as1: {
 		desc: "<攻撃強化>火属性の味方の攻撃力をアップ、5チェインでさらにアップ(20%/40%)",
@@ -42393,7 +42414,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [2],
 	islegend: true,
-	ape: "GQW",
+	ape: "真夏のグレート・クイズ・ウォー",
 	alias: ["デュラはん"],
 	is_dist: true,
 	as1: {
@@ -42440,7 +42461,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [6],
 	islegend: true,
-	ape: "GQW",
+	ape: "真夏のグレート・クイズ・ウォー",
 	is_dist: true,
 	as1: {
 		desc: "<連撃>敵単体を3回連続攻撃、5チェインで6回連続攻撃になりさらにダメージアップ(250%/350%)",
@@ -42486,7 +42507,7 @@ Cards = [{
 	attr: [0,2],
 	species: [6],
 	islegend: true,
-	ape: "GQW",
+	ape: "真夏のグレート・クイズ・ウォー",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)",
@@ -42532,7 +42553,7 @@ Cards = [{
 	attr: [2,3],
 	species: [1],
 	islegend: true,
-	ape: "GQW",
+	ape: "真夏のグレート・クイズ・ウォー",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効連撃>水・闇属性の敵単体へ特効3連撃(300%)、解答が早いほどさらにアップ(効果値:50)",
@@ -42579,7 +42600,7 @@ Cards = [{
 	species: [8],
 	disable: true,
 	islegend: true,
-	ape: "GQW",
+	ape: "真夏のグレート・クイズ・ウォー",
 	alias: ["いまくるすきたん"],
 	is_dist: true,
 	as1: {
@@ -44950,7 +44971,7 @@ Cards = [{
 	attr: [1,0],
 	species: [1],
 	islegend: true,
-	ape: "魔道杯 in YAOYORO Z",
+	ape: "大魔道杯 in YAOYORO Z",
 	is_dist: true,
 	as1: {
 		desc: "<連撃>4チェインで敵単体を3回連続攻撃、10チェインでさらにダメージアップ(350%/550%)",
@@ -56899,7 +56920,7 @@ Cards = [{
 	attr: [0,3],
 	species: [9],
 	islegend: true,
-	ape: "舞い降りた異界の姫君",
+	ape: "チェルシー 舞い降りた異界の姫君",
 	is_dist: true,
 	as1: {
 		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(30%/60%)、リーダー時さらにアップ(20%)",
@@ -56945,7 +56966,7 @@ Cards = [{
 	attr: [0,4],
 	species: [9],
 	islegend: true,
-	ape: "舞い降りた異界の姫君",
+	ape: "チェルシー 舞い降りた異界の姫君",
 	is_dist: true,
 	as1: {
 		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(30%/60%)、リーダー時さらにアップ(20%)",
@@ -56991,7 +57012,7 @@ Cards = [{
 	attr: [1,3],
 	species: [9],
 	islegend: true,
-	ape: "舞い降りた異界の姫君",
+	ape: "チェルシー 舞い降りた異界の姫君",
 	is_dist: true,
 	as1: {
 		desc: "<回復>水属性の味方のHPを回復(12%)",
@@ -57037,7 +57058,7 @@ Cards = [{
 	attr: [1,4],
 	species: [9],
 	islegend: true,
-	ape: "舞い降りた異界の姫君",
+	ape: "チェルシー 舞い降りた異界の姫君",
 	is_dist: true,
 	as1: {
 		desc: "<回復>水属性の味方のHPを回復(12%)",
@@ -57083,7 +57104,7 @@ Cards = [{
 	attr: [2,3],
 	species: [9],
 	islegend: true,
-	ape: "舞い降りた異界の姫君",
+	ape: "チェルシー 舞い降りた異界の姫君",
 	is_dist: true,
 	as1: {
 		desc: "<属性の加護>デッキの属性の数だけ攻撃力アップ(320%/540%/760%)",
@@ -57129,7 +57150,7 @@ Cards = [{
 	attr: [2,4],
 	species: [9],
 	islegend: true,
-	ape: "舞い降りた異界の姫君",
+	ape: "チェルシー 舞い降りた異界の姫君",
 	is_dist: true,
 	as1: {
 		desc: "<属性の加護>デッキの属性の数だけ攻撃力アップ(320%/540%/760%)",
@@ -57589,7 +57610,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [1],
 	islegend: true,
-	ape: "聖夜の大魔道杯 in 2016",
+	ape: "大魔道杯 in 聖夜2016",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>水属性の敵単体へ特効3連撃（効果値：250）、5チェインでさらに特効ダメージ（効果値：175）",
@@ -57636,7 +57657,7 @@ Cards = [{
 	attr: [1,4],
 	species: [9],
 	islegend: true,
-	ape: "聖夜の大魔道杯 in 2016",
+	ape: "大魔道杯 in 聖夜2016",
 	is_dist: true,
 	as1: {
 		desc: "<複属性攻撃強化>4チェインで水属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(10%/120%)",
@@ -57682,7 +57703,7 @@ Cards = [{
 	attr: [2,1],
 	species: [1],
 	islegend: true,
-	ape: "聖夜の大魔道杯 in 2016",
+	ape: "大魔道杯 in 聖夜2016",
 	is_dist: true,
 	as1: {
 		desc: "<回復・攻撃強化>雷属性の味方のHPを回復(12%)、さらに雷属性の味方の攻撃力をアップ(30%)",
@@ -57728,7 +57749,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: false,
-	ape: "聖夜の大魔道杯 in 2016",
+	ape: "大魔道杯 in 聖夜2016",
 	is_dist: true,
 	as1: {
 		desc: "<連撃>敵単体を6回連続攻撃、10チェインで更にダメージアップ(250%/450%)",
@@ -57762,7 +57783,7 @@ Cards = [{
 	attr: [1,4],
 	species: [6],
 	islegend: false,
-	ape: "聖夜の大魔道杯 in 2016",
+	ape: "大魔道杯 in 聖夜2016",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃・属性特効>4チェインでダメージアップ、光属性の敵だとさらにダメージアップ(350%/550%)",
@@ -57795,7 +57816,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [4],
 	islegend: false,
-	ape: "聖夜の大魔道杯 in 2016",
+	ape: "大魔道杯 in 聖夜2016",
 	is_dist: true,
 	as1: {
 		desc: "<回復>味方全体のHPを回復(11%)",
@@ -61629,7 +61650,7 @@ Cards = [{
 	attr: [0,2],
 	species: [8],
 	islegend: true,
-	ape: "新説 桃娘伝 妖爺合戦誓助剣",
+	ape: "桃娘伝Ⅱ",
 	as1: {
 		desc: "<連撃>10チェインで敵単体を5回連続攻撃、リーダー時さらにダメージアップ(800%/950%)",
 		proc: [ChainDualAttack(8.0, 10, 5), add_cond(ChainDualAttack(9.5, 10, 5), when_leader())],
@@ -61674,7 +61695,7 @@ Cards = [{
 	attr: [1,0],
 	species: [9],
 	islegend: true,
-	ape: "新説 桃娘伝 妖爺合戦誓助剣",
+	ape: "桃娘伝Ⅱ",
 	as1: {
 		desc: "<連撃>敵単体を3回連続攻撃、解答が早いほどさらにアップ(基本:250%, 3秒台:320%, 2秒台:390%, 1秒台:460%, 0秒台:530%)",
 		proc: add_cond(ChainDualAttack(2.5, 0, 3), as_timedep(0.7)),
@@ -61719,7 +61740,7 @@ Cards = [{
 	attr: [2,1],
 	species: [5],
 	islegend: true,
-	ape: "新説 桃娘伝 妖爺合戦誓助剣",
+	ape: "桃娘伝Ⅱ",
 	as1: {
 		desc: "<全体攻撃>敵全体へダメージ、5チェインで更にダメージアップ(150%/200%)",
 		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.0, 5)],
@@ -61764,7 +61785,7 @@ Cards = [{
 	attr: [0,1],
 	species: [8],
 	islegend: true,
-	ape: "新説 桃娘伝 妖爺合戦誓助剣",
+	ape: "桃娘伝Ⅱ",
 	as1: {
 		desc: "<連撃>敵単体を3回連続攻撃(300%)",
 		proc: ChainDualAttack(3.0, 0, 3),
@@ -61810,7 +61831,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "新説 桃娘伝 妖爺合戦誓助剣",
+	ape: "桃娘伝Ⅱ",
 	alias: ["おんせん", "スモモ", "フウカ", "ミライ"],
 	as1: {
 		desc: "<属性特効連撃>12チェインで火属性の敵単体へ特効3連撃(1300%)",
@@ -61859,7 +61880,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [5],
 	islegend: true,
-	ape: "新説 桃娘伝 妖爺合戦誓助剣",
+	ape: "桃娘伝Ⅱ",
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ、HP50%以上でさらにダメージアップ(300%/500%)",
 		proc: [ChainAttack(3.0, 4), add_cond(ChainAttack(5.0, 4), when_hp_more(0.5))],
@@ -61909,7 +61930,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
-	ape: "新説 桃娘伝 妖爺合戦誓助剣",
+	ape: "桃娘伝Ⅱ",
 	as1: {
 		desc: "<チェイン攻撃>3チェインで味方のMAXHP10%を使い、ダメージアップ(750%)",
 		proc: add_cond(ChainAttack(7.5, 3), as_consume_all(0.1)),
@@ -61956,7 +61977,7 @@ Cards = [{
 	species: [5],
 	islegend: true,
 	is_dist: true,
-	ape: "新説 桃娘伝 妖爺合戦誓助剣",
+	ape: "桃娘伝Ⅱ",
 	as1: {
 		desc: "<攻撃強化・ガード>3チェインで雷属性の味方の攻撃力をアップ(40%)、さらに全属性のダメージを10%軽減",
 		proc: [ChainEnhance(0.4, [0,0,1,0,0], 3), as_guard(0.1, [1,1,1,1,1], 3)],
@@ -62002,7 +62023,7 @@ Cards = [{
 	species: [5],
 	islegend: true,
 	is_dist: true,
-	ape: "新説 桃娘伝 妖爺合戦誓助剣",
+	ape: "桃娘伝Ⅱ",
 	as1: {
 		desc: "<回復・攻撃強化>味方全体のHPを回復(10%)、さらに攻撃力をアップ(20%)",
 		proc: [Heal(0.1, [1,1,1,1,1], 0), ChainEnhance(0.2, [1,1,1,1,1], 0)],
@@ -62048,7 +62069,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	is_dist: true,
-	ape: "新説 桃娘伝 妖爺合戦誓助剣",
+	ape: "桃娘伝Ⅱ",
 	as1: {
 		desc: "<チェイン攻撃>3チェインでダメージアップ(250%)",
 		proc: [ChainAttack(2.5, 3)],
@@ -62094,7 +62115,7 @@ Cards = [{
 	species: [5],
 	islegend: true,
 	is_dist: true,
-	ape: "新説 桃娘伝 妖爺合戦誓助剣",
+	ape: "桃娘伝Ⅱ",
 	as1: {
 		desc: "<属性特効>4チェインで雷属性の敵単体へ特効ダメージ(550%)",
 		proc: [ChainAttrAttack(5.5, 4, [0,0,1,0,0])],
@@ -62141,7 +62162,7 @@ Cards = [{
 	disable: true,
 	islegend: true,
 	is_dist: true,
-	ape: "新説 桃娘伝 妖爺合戦誓助剣",
+	ape: "桃娘伝Ⅱ",
 	as1: {
 		desc: "<全体攻撃>敵全体へダメージ、5チェインで更にダメージアップ(140%/190%)",
 		proc: [ChainAllAttack(1.4, 0), ChainAllAttack(1.9, 5)],
@@ -62187,7 +62208,7 @@ Cards = [{
 	species: [1],
 	islegend: true,
 	is_dist: true,
-	ape: "新説 桃娘伝 妖爺合戦誓助剣",
+	ape: "桃娘伝Ⅱ",
 	as1: {
 		desc: "<属性特効連撃>火属性の敵単体へ特効3連撃(350%)",
 		proc: [ChainDualAttrAttack(3.5, 0, 3, [1,0,0,0,0])],
@@ -62232,7 +62253,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [9],
 	islegend: true,
-	ape: "マジカルスイート",
+	ape: "グリコⅡ",
 	as1: {
 		desc: "<種族攻撃強化>3チェインで火属性の味方の攻撃力をアップ、術士はさらにアップ(50%/100%)",
 		proc: [ChainEnhance(0.5, [1,0,0,0,0], 3), ChainSpecEnhance(1.0, [1,0,0,0,0], [9], 3)],
@@ -62277,7 +62298,7 @@ Cards = [{
 	attr: [0,2],
 	species: [9],
 	islegend: true,
-	ape: "マジカルスイート",
+	ape: "グリコⅡ",
 	as1: {
 		desc: "<連撃・複属性攻撃強化>5チェインで敵単体を3回連続攻撃(450%)、さらに火属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(10%/40%)",
 		proc: [ChainDualAttack(4.5, 5, 3),ChainEnhance_SubAttr(0.10, 0.40, [1,0,0,0,0], [0,0,1,0,0], 5)],
@@ -62323,7 +62344,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [5],
 	islegend: true,
-	ape: "マジカルスイート",
+	ape: "グリコⅡ",
 	as1: {
 		desc: "<回復・攻撃強化>水属性の味方のHPを回復(13%)、さらに水属性の味方の攻撃力をアップ(30%)",
 		proc: [Heal(0.13, [0,1,0,0,0], 0), ChainEnhance(0.30, [0,1,0,0,0], 0)],
@@ -62368,7 +62389,7 @@ Cards = [{
 	attr: [1,0],
 	species: [1],
 	islegend: true,
-	ape: "マジカルスイート",
+	ape: "グリコⅡ",
 	alias: ["/arika_nekowiz", "/wiztools"],
 	as1: {
 		desc: "<回復>火・水属性の味方を回復、7チェインで更に回復(10%/17%)",
@@ -62415,7 +62436,7 @@ Cards = [{
 	attr: [1,2],
 	species: [9],
 	islegend: true,
-	ape: "マジカルスイート",
+	ape: "グリコⅡ",
 	as1: {
 		desc: "<複属性攻撃強化>5チェインで水属性の味方の攻撃力をアップ、複属性が雷属性だとさらにアップ(60%/110%)",
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], 5),
@@ -62461,7 +62482,7 @@ Cards = [{
 	attr: [2,1],
 	species: [9],
 	islegend: true,
-	ape: "マジカルスイート",
+	ape: "グリコⅡ",
 	as1: {
 		desc: "<回復・攻撃強化>水・雷属性の味方のHPを回復(13%)、さらに水・雷属性の味方の攻撃力をアップ(30%)",
 		proc: [Heal(0.13, [0,1,1,0,0], 0), ChainEnhance(0.30, [0,1,1,0,0], 0)],
@@ -62506,7 +62527,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
-	ape: "マジカルスイート",
+	ape: "グリコⅡ",
 	as1: {
 		desc: "<回復>雷属性の味方のHPを回復(14%)",
 		proc: Heal(0.14, [0,0,1,0,0], 0),
@@ -62552,7 +62573,7 @@ Cards = [{
 	attr: [2,1],
 	species: [3],
 	islegend: true,
-	ape: "マジカルスイート",
+	ape: "グリコⅡ",
 	as1: {
 		desc: "<回復>水・雷属性の味方のHPを回復、神族・天使はさらに回復(11%/19%)",
 		proc: [Heal(0.11, [0,1,1,0,0], 0), SpecHeal(0.19, [0,1,1,0,0], [1,3], 0)],
@@ -62598,7 +62619,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
-	ape: "マジカルスイート",
+	ape: "グリコⅡ",
 	as1: {
 		desc: "<属性特効連撃>水属性の敵単体へ特効5連撃(400%)",
 		proc: ChainDualAttrAttack(4.0, 0, 5, [0,1,0,0,0]),
@@ -62645,7 +62666,7 @@ Cards = [{
 	attr: [2,0],
 	species: [9],
 	islegend: true,
-	ape: "ハッピースイーツカーニバル",
+	ape: "グリコⅢ",
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ、HP50%以上でさらにダメージアップ(300%/500%)",
 		proc: [ChainAttack(3.0, 4), add_cond(ChainAttack(5.0, 4), when_hp_more(0.5))],
@@ -62691,7 +62712,7 @@ Cards = [{
 	attr: [2,3],
 	species: [1],
 	islegend: true,
-	ape: "ハッピースイーツカーニバル",
+	ape: "グリコⅢ",
 	as1: {
 		desc: "<攻撃強化・連撃>雷属性の味方の攻撃力をアップ(30%)し、4チェインで敵単体を3回連続攻撃(350%)",
 		proc: [ChainEnhance(0.3, [0,0,1,0,0], 0), ChainDualAttack(3.5, 4, 3)],
@@ -62737,7 +62758,7 @@ Cards = [{
 	attr: [2,0],
 	species: [1],
 	islegend: true,
-	ape: "ハッピースイーツカーニバル",
+	ape: "グリコⅢ",
 	as1: {
 		desc: "<回復>火・雷属性の味方を回復、パネルの色が2色以上でさらに回復(10%/20%)",
 		proc: ChainPanelsHeal(0.10, 0.20, 0.20, [1,0,1,0,0], 0),
@@ -62783,7 +62804,7 @@ Cards = [{
 	attr: [2,1],
 	species: [6],
 	islegend: true,
-	ape: "ハッピースイーツカーニバル",
+	ape: "グリコⅢ",
 	as1: {
 		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ、複属性が水属性だとさらにアップ(30%/80%)",
 		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,0,1,0,0], [0,1,0,0,0], 0),
@@ -62829,7 +62850,7 @@ Cards = [{
 	attr: [1,3],
 	species: [3],
 	islegend: true,
-	ape: "ハッピースイーツカーニバル",
+	ape: "グリコⅢ",
 	as1: {
 		desc: "<回復>水属性の味方を回復、HP20%以下でさらに回復(14%/39%)",
 		proc: [Heal(0.14, [0, 1, 0, 0, 0], 0), add_cond(Heal(0.39, [0, 1, 0, 0, 0], 0), when_hp_less(0.20))],
@@ -62874,7 +62895,7 @@ Cards = [{
 	attr: [1,2],
 	species: [8],
 	islegend: true,
-	ape: "ハッピースイーツカーニバル",
+	ape: "グリコⅢ",
 	as1: {
 		desc: "<複属性攻撃強化>水属性の味方の攻撃力をアップ、複属性が雷だとさらにアップ(30%/80%)",
 		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,1,0,0,0], [0,0,1,0,0], 0),
@@ -62919,7 +62940,7 @@ Cards = [{
 	attr: [0,4],
 	species: [8],
 	islegend: true,
-	ape: "ハッピースイーツカーニバル",
+	ape: "グリコⅢ",
 	as1: {
 		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(30%/80%)",
 		proc: ChainEnhance_SubAttr(0.3, 0.8, [1,0,0,0,0], [0,0,0,0,1], 0),
@@ -62965,7 +62986,7 @@ Cards = [{
 	attr: [0,2],
 	species: [9],
 	islegend: true,
-	ape: "ハッピースイーツカーニバル",
+	ape: "グリコⅢ",
 	as1: {
 		desc: "<分散攻撃>敵全体へ分散攻撃、4チェインで更にダメージアップ(350%/450%)",
 		proc: [ChainVarianceAttack(3.5, 0), ChainVarianceAttack(4.5, 4)],
@@ -63011,7 +63032,7 @@ Cards = [{
 	species: [6],
 	islegend: true,
 	is_dist: true,
-	ape: "新説 桃娘伝 妖爺合戦誓助剣",
+	ape: "桃娘伝Ⅱ",
 	as1: {
 		desc: "<攻撃強化>4チェインで雷属性の味方の攻撃力をアップ、パネルの色が3色でさらにアップ(10%/210%)",
 		proc: ChainPanelsEnhance(0.10, 0.10, 2.1, [0, 0, 1, 0, 0], 4),
@@ -64492,7 +64513,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	ape: "クロマグⅢ",
+	ape: "クロム・マグナⅢ",
 	as1: {
 		desc: "<チェイン攻撃・攻撃強化>3チェインで火属性の味方の攻撃力をアップ(40%)し、ダメージアップ。10チェインでさらにダメージアップ(200%/400%)",
 		proc: [ChainEnhance(0.4, [1,0,0,0,0], 3),ChainAttack(2.0, 3),ChainAttack(4.0, 10)],
@@ -64675,7 +64696,7 @@ Cards = [{
 	attr: [2,1],
 	species: [0],
 	islegend: true,
-	ape: "正月2015",
+	ape: "謹賀新年2015",
 	as1: {
 		desc: "<回復>味方全体のHPを回復、HP50%以下なら更に回復(11%/21%)",
 		proc: [Heal(0.11, [1,1,1,1,1], 0), add_cond(Heal(0.21, [1,1,1,1,1], 0), when_hp_less(0.5))],
@@ -64721,7 +64742,7 @@ Cards = [{
 	attr: [0,2],
 	species: [9],
 	islegend: true,
-	ape: "正月2015",
+	ape: "謹賀新年2015",
 	as1: {
 		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(30% / 80%)",
 		proc: ChainEnhance_SubAttr(0.3, 0.8, [1,0,0,0,0], [0,0,1,0,0], 0),
@@ -64767,7 +64788,7 @@ Cards = [{
 	attr: [1,0],
 	species: [8],
 	islegend: true,
-	ape: "正月2015",
+	ape: "謹賀新年2015",
 	as1: {
 		desc: "<チェイン攻撃>3チェインでダメージアップ、パネルの色が増す度ダメージアップ(350%/450%/600%)",
 		proc: ChainPanelsAttack(3.5, 4.5, 6.0, 3),
@@ -64812,7 +64833,7 @@ Cards = [{
 	attr: [1,0],
 	species: [9],
 	islegend: true,
-	ape: "正月2015",
+	ape: "謹賀新年2015",
 	as1: {
 		desc: "<複属性攻撃強化>7チェインで水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(80%/130%)",
 		proc: ChainEnhance_SubAttr(0.8, 1.3, [0,1,0,0,0], [1,0,0,0,0], 7),
@@ -64858,7 +64879,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [4],
 	islegend: true,
-	ape: "正月2015",
+	ape: "謹賀新年2015",
 	as1: {
 		desc: "<属性特効>火属性の敵単体への特効ダメージ、パネルの色が増す度さらにアップ(350%/500%/600%)",
 		proc: ChainPanelsAttrAttack(3.5, 5.0, 6.0, [1,0,0,0,0], 0),
@@ -64995,7 +65016,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [1],
 	islegend: true,
-	ape: "ゴジラコラボ",
+	ape: "コラボ(ゴジラ)",
 	is_dist: true,
 	alias: ["ゴジラ","シンゴジラ"],
 	as1: {
@@ -65376,7 +65397,7 @@ Cards = [{
 	attr: [0,4],
 	species: [9],
 	islegend: true,
-	ape: "ミクコラボ",
+	ape: "コラボ(ミク)",
 	is_dist: true,
 	as1: {
 		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が闇だとさらにアップ(30%/70%)",
@@ -65423,7 +65444,7 @@ Cards = [{
 	attr: [1,2],
 	species: [9],
 	islegend: true,
-	ape: "ミクコラボ",
+	ape: "コラボ(ミク)",
 	is_dist: true,
 	as1: {
 		desc: "<回復>水・雷属性の味方のHPを回復(13%)",
@@ -65470,7 +65491,7 @@ Cards = [{
 	attr: [2,0],
 	species: [9],
 	islegend: true,
-	ape: "ミクコラボ",
+	ape: "コラボ(ミク)",
 	is_dist: true,
 	as1: {
 		desc: "<連撃>3チェインで敵単体を3回連続攻撃(300%)",
@@ -65515,7 +65536,7 @@ Cards = [{
 	attr: [0,2],
 	species: [9],
 	islegend: true,
-	ape: "ミクコラボ",
+	ape: "コラボ(ミク)",
 	is_dist: true,
 	as1: {
 		desc: "<回復・攻撃強化>火・雷属性の味方HPを回復(12%)、さらに火・雷属性の味方の攻撃力をアップ(30%)",
@@ -65561,7 +65582,7 @@ Cards = [{
 	attr: [1,4],
 	species: [8],
 	islegend: true,
-	ape: "ミクコラボ",
+	ape: "コラボ(ミク)",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>3チェインでダメージアップ(320%)",
@@ -65608,7 +65629,7 @@ Cards = [{
 	attr: [2,3],
 	species: [8],
 	islegend: true,
-	ape: "ミクコラボ",
+	ape: "コラボ(ミク)",
 	is_dist: true,
 	as1: {
 		desc: "<複属性攻撃強化>3チェインで雷属性の攻撃力をアップ、複属性が光属性だとさらにアップ(40%/90%)",
@@ -65655,7 +65676,7 @@ Cards = [{
 	attr: [0,3],
 	species: [9],
 	islegend: true,
-	ape: "ミクコラボ",
+	ape: "コラボ(ミク)",
 	as1: {
 		desc: "<チェイン攻撃・回復>3チェインでダメージアップ(300%)、さらに火属性の味方のHPを回復(5%)",
 		proc: [ChainAttack(3.0, 3), Heal(0.05, [1,0,0,0,0], 3)],
@@ -65701,7 +65722,7 @@ Cards = [{
 	attr: [0,4],
 	species: [2],
 	islegend: true,
-	ape: "ミクコラボ",
+	ape: "コラボ(ミク)",
 	as1: {
 		desc: "<チェイン攻撃>10チェインでダメージアップ(800%)",
 		proc: ChainAttack(8.0, 10),
@@ -65747,7 +65768,7 @@ Cards = [{
 	attr: [0,2],
 	species: [9],
 	islegend: true,
-	ape: "ミクコラボ",
+	ape: "コラボ(ミク)",
 	as1: {
 		desc: "<回復>火・雷属性の味方を回復、7チェインで更に回復(10%/17%)",
 		proc: [Heal(0.10, [1,0,1,0,0], 0), Heal(0.17, [1,0,1,0,0], 7)],
@@ -65793,7 +65814,7 @@ Cards = [{
 	attr: [0,2],
 	species: [9],
 	islegend: true,
-	ape: "ミクコラボ",
+	ape: "コラボ(ミク)",
 	as1: {
 		desc: "<複属性攻撃強化>5チェインで火属性の味方の攻撃力をアップ、複属性が雷属性だとさらにアップ(60%/110%)",
 		proc: ChainEnhance_SubAttr(0.6, 1.1, [1,0,0,0,0], [0,0,1,0,0], 5),
@@ -65838,7 +65859,7 @@ Cards = [{
 	attr: [1,0],
 	species: [9],
 	islegend: true,
-	ape: "ミクコラボ",
+	ape: "コラボ(ミク)",
 	as1: {
 		desc: "<連撃>5チェインで敵単体を3回連続攻撃(450%)",
 		proc: ChainDualAttack(4.5, 5, 3),
@@ -65884,7 +65905,7 @@ Cards = [{
 	attr: [1,3],
 	species: [3],
 	islegend: true,
-	ape: "ミクコラボ",
+	ape: "コラボ(ミク)",
 	as1: {
 		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)",
 		proc: ChainAttack(4.5, 5),
@@ -65930,7 +65951,7 @@ Cards = [{
 	attr: [1,2],
 	species: [3],
 	islegend: true,
-	ape: "ミクコラボ",
+	ape: "コラボ(ミク)",
 	as1: {
 		desc: "<回復>水・雷属性の味方を回復、HP50%以下なら更に回復(11%/21%)",
 		proc: [Heal(0.11, [0,1,1,0,0], 0), add_cond(Heal(0.21, [0,1,1,0,0], 0), when_hp_less(0.5))],
@@ -65976,7 +65997,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [6],
 	islegend: true,
-	ape: "ミクコラボ",
+	ape: "コラボ(ミク)",
 	as1: {
 		desc: "<回復>雷属性の味方を回復、物質はさらに回復(13%/20%)",
 		proc: [Heal(0.13, [0,0,1,0,0], 0), SpecHeal(0.20, [0,0,1,0,0], [6], 0)],
@@ -66022,7 +66043,7 @@ Cards = [{
 	attr: [2,1],
 	species: [6],
 	islegend: true,
-	ape: "ミクコラボ",
+	ape: "コラボ(ミク)",
 	as1: {
 		desc: "<複属性攻撃強化>3チェインで雷属性の攻撃力をアップ、複属性が水属性だとさらにアップ、物質はさらにアップ(30%/80%/130%)",
 		proc: [
@@ -66074,7 +66095,7 @@ Cards = [{
 	attr: [2,4],
 	species: [9],
 	islegend: true,
-	ape: "ミクコラボ",
+	ape: "コラボ(ミク)",
 	as1: {
 		desc: "<回復・ガード>雷属性の味方のHPを回復(11%)、全属性のダメージを5%軽減。リーダー時さらに全属性のダメージを5%軽減",
 		proc: [Heal(0.11, [0,0,1,0,0], 0), as_guard(0.05, [1,1,1,1,1], 0), add_cond(as_guard(0.10, [1,1,1,1,1], 0), when_leader())],
@@ -66119,7 +66140,7 @@ Cards = [{
 	attr: [2,0],
 	species: [8],
 	islegend: true,
-	ape: "ミクコラボ",
+	ape: "コラボ(ミク)",
 	as1: {
 		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)",
 		proc: ChainAttack(4.5, 5),
@@ -66165,7 +66186,7 @@ Cards = [{
 	attr: [2,0],
 	species: [6],
 	islegend: true,
-	ape: "ミクコラボ",
+	ape: "コラボ(ミク)",
 	as1: {
 		desc: "<回復>火・雷属性の味方を回復、5チェインで更に回復(11%/16%)",
 		proc: [Heal(0.11, [1,0,1,0,0], 0), Heal(0.16, [1,0,1,0,0], 5)],
@@ -66211,7 +66232,7 @@ Cards = [{
 	attr: [2,3],
 	species: [9],
 	islegend: true,
-	ape: "ミクコラボ",
+	ape: "コラボ(ミク)",
 	as1: {
 		desc: "<回復・ガード>雷属性の味方のHPを回復(11%)、全属性のダメージを5%軽減。リーダー時さらに全属性のダメージを5%軽減",
 		proc: [Heal(0.11, [0,0,1,0,0], 0), as_guard(0.05, [1,1,1,1,1], 0), add_cond(as_guard(0.10, [1,1,1,1,1], 0), when_leader())],
@@ -67040,7 +67061,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
-	ape: "ギルドマスター・セレモニーズ",
+	ape: "ギルドマスターセレモニーズ",
 	as1: {
 		desc: "<属性特効>水属性の敵単体へ特効ダメージ、HP80%以上でさらにダメージアップ(280%/430%)",
 		proc: [ChainAttrAttack(2.8, 0, [0,1,0,0,0]), add_cond(ChainAttrAttack(4.3, 0, [0,1,0,0,0]), when_hp_more(0.80))],
@@ -67085,7 +67106,7 @@ Cards = [{
 	attr: [2,3],
 	species: [9],
 	islegend: true,
-	ape: "ギルドマスター・セレモニーズ",
+	ape: "ギルドマスターセレモニーズ",
 	as1: {
 		desc: "<回復>雷属性の味方のHPを回復(13%)",
 		proc: Heal(0.13, [0,0,1,0,0], 0),
@@ -67130,7 +67151,7 @@ Cards = [{
 	attr: [0,3],
 	species: [9],
 	islegend: true,
-	ape: "ギルドマスター・セレモニーズ",
+	ape: "ギルドマスターセレモニーズ",
 	as1: {
 		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(30%/80%)",
 		proc: ChainEnhance_SubAttr(0.30, 0.80, [1,0,0,0,0], [0,0,0,1,0], 0)
@@ -67175,7 +67196,7 @@ Cards = [{
 	attr: [1,2],
 	species: [9],
 	islegend: true,
-	ape: "ギルドマスター・セレモニーズ",
+	ape: "ギルドマスターセレモニーズ",
 	as1: {
 		desc: "<種族特効>敵単体へダメージアップ、魔族・魔法生物の敵へさらにダメージアップ(250%/450%)",
 		proc: [ChainAttack(2.5, 0), ChainSpecAttack(4.5, 0, [3,7])],
@@ -67220,7 +67241,7 @@ Cards = [{
 	attr: [1,4],
 	species: [9],
 	islegend: true,
-	ape: "ギルドマスター・セレモニーズ",
+	ape: "ギルドマスターセレモニーズ",
 	as1: {
 		desc: "<チェイン攻撃・属性特効>5チェインでダメージアップ、光属性の敵だとさらにダメージアップ(400%/600%)",
 		proc: [ChainAttack(4.0, 5), ChainAttrAttack(6.0, 5, [0,0,0,1,0])],
@@ -67265,7 +67286,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [9],
 	islegend: true,
-	ape: "ショコラフォレスト大魔道杯",
+	ape: "大魔道杯 in ショコラフォレスト",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>5チェインで火属性の敵単体に特効ダメージ(650%)",
@@ -67311,7 +67332,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [9],
 	islegend: true,
-	ape: "ショコラフォレスト大魔道杯",
+	ape: "大魔道杯 in ショコラフォレスト",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>HP80%以上で雷属性の敵単体へ特効ダメージ(425%)",
@@ -67357,7 +67378,7 @@ Cards = [{
 	attr: [0,3],
 	species: [2],
 	islegend: false,
-	ape: "ショコラフォレスト大魔道杯",
+	ape: "大魔道杯 in ショコラフォレスト",
 	is_dist: true,
 	as1: {
 		desc: "<回復>味方全体のHPを回復(12%)",
@@ -67390,7 +67411,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: false,
-	ape: "ショコラフォレスト大魔道杯",
+	ape: "大魔道杯 in ショコラフォレスト",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>6チェインで水属性の敵単体へ特効ダメージ(600%)",
@@ -67423,7 +67444,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: false,
-	ape: "ショコラフォレスト大魔道杯",
+	ape: "大魔道杯 in ショコラフォレスト",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>7チェインでダメージアップ(450%)",
@@ -67455,7 +67476,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [9],
 	islegend: true,
-	ape: "ショコラフォレスト大魔道杯",
+	ape: "大魔道杯 in ショコラフォレスト",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>10チェインでダメージアップ(800%)",
@@ -69898,7 +69919,7 @@ Cards = [{
 	attr: [1,0],
 	species: [8],
 	islegend: true,
-	ape: "新人王2017",
+	ape: "新人王",
 	as1: {
 		desc: "<回復>火・水属性の味方のHPを回復(14%)",
 		proc: Heal(0.14, [1,1,0,0,0], 0),
@@ -77576,7 +77597,7 @@ Cards = [{
 	attr: [1,3],
 	species: [9],
 	islegend: true,
-	ape: "エタクロⅢ魔道杯",
+	ape: "大魔道杯 in エタクロⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(500%)",
@@ -77667,7 +77688,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
-	ape: "エタクロⅢ大魔道杯",
+	ape: "大魔道杯 in エタクロⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>味方全体のHPを回復(7%)、デッキに単色の精霊が多いほど、さらに回復(2%)（上限:5段階)",
@@ -77713,7 +77734,7 @@ Cards = [{
 	attr: [1,0],
 	species: [2],
 	islegend: false,
-	ape: "エタクロⅢ大魔道杯",
+	ape: "大魔道杯 in エタクロⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>火・水属性の味方のHPを回復（12%）",
@@ -77746,7 +77767,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [9],
 	islegend: true,
-	ape: "エタクロⅢ大魔道杯",
+	ape: "大魔道杯 in エタクロⅢ",
 	is_dist: true,
 	alias: ["ヴァイオレッタ", "ルドルフ"],
 	as1: {
@@ -77793,7 +77814,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [6],
 	islegend: false,
-	ape: "エタクロⅢ大魔道杯",
+	ape: "大魔道杯 in エタクロⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効>雷属性以外の敵単体へ特効ダメージ(600%)",
@@ -77826,7 +77847,7 @@ Cards = [{
 	attr: [2,1],
 	species: [4],
 	islegend: false,
-	ape: "エタクロⅢ大魔道杯",
+	ape: "大魔道杯 in エタクロⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<回復・攻撃強化>水・雷属性の味方のHPを回復(11%)、さらに水・雷属性の攻撃力をアップ(20%)",
@@ -77859,7 +77880,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [9],
 	islegend: true,
-	ape: "エタクロⅢ",
+	ape: "大魔道杯 in エタクロⅢ",
 	is_dist: true,
 	as1: {
 		desc: "<回復>水属性の味方のHPを回復(13%)",
@@ -80269,7 +80290,7 @@ Cards = [{
 	attr: [0,4],
 	species: [6],
 	islegend: true,
-	ape: "クロスディライブ1",
+	ape: "クロスディライブ",
 	is_dist: true,
 	as1: {
 		desc: "<複属性攻撃強化>火属性の攻撃力をアップ(30%)、複属性が闇属性だとさらにアップ(40%)",
@@ -81283,7 +81304,7 @@ Cards = [{
 	attr: [0,3],
 	species: [8],
 	islegend: true,
-	ape: "北斗の拳コラボ",
+	ape: "コラボ(北斗の拳)",
 	is_dist: true,
 	as1: {
 		desc: "<連撃・複属性攻撃強化>3チェインで敵単体を3回連続攻撃(250%)、さらに火属性の攻撃力をアップ(10%)、複属性が光属性だとさらにアップ(30%)",
@@ -81330,7 +81351,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [8],
 	islegend: true,
-	ape: "北斗の拳コラボ",
+	ape: "コラボ(北斗の拳)",
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃>3チェインで味方のMAXHP10%を使い、ダメージアップ(650%)",
@@ -81377,7 +81398,7 @@ Cards = [{
 	attr: [2,4],
 	species: [8],
 	islegend: true,
-	ape: "北斗の拳コラボ",
+	ape: "コラボ(北斗の拳)",
 	is_dist: true,
 	as1: {
 		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(500%)",
@@ -83115,7 +83136,7 @@ Cards = [{
 	attr: [2,4],
 	species: [9],
 	islegend: true,
-	ape: "感謝大魔道杯",
+	ape: "大魔道杯 感謝",
 	is_dist: true,
 	as1: {
 		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ(10%)、複属性が闇属性だとさらにアップ(90%)",
@@ -83159,7 +83180,7 @@ Cards = [{
 	attr: [0,1],
 	species: [9],
 	islegend: true,
-	ape: "感謝大魔道杯",
+	ape: "大魔道杯 感謝",
 	is_dist: true,
 	as1: {
 		desc: "<全体攻撃>敵全体へダメージ(150%)、5チェインで更にダメージアップ(50%)",
@@ -83205,7 +83226,7 @@ Cards = [{
 	attr: [1,-1],
 	species: [0],
 	islegend: true,
-	ape: "感謝大魔道杯",
+	ape: "大魔道杯 感謝",
 	is_dist: true,
 	as1: {
 		desc: "<連撃>4チェインで敵単体を5回連続攻撃(350%)",
@@ -83250,7 +83271,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
-	ape: "感謝大魔道杯",
+	ape: "大魔道杯 感謝",
 	is_dist: true,
 	as1: {
 		desc: "<属性特効連撃>水属性の敵単体へ特効5連撃(400%)",
@@ -83295,7 +83316,7 @@ Cards = [{
 	attr: [0,3],
 	species: [9],
 	islegend: true,
-	ape: "感謝大魔道杯",
+	ape: "大魔道杯 感謝",
 	is_dist: true,
 	as1: {
 		desc: "<攻撃>敵単体へのダメージアップ(250%)、解答が早いほどさらにアップ(70%)（上限:4段階)",
@@ -83341,7 +83362,7 @@ Cards = [{
 	attr: [0,-1],
 	species: [9],
 	islegend: true,
-	ape: "感謝大魔道杯",
+	ape: "大魔道杯 感謝",
 	is_dist: true,
 	as1: {
 		desc: "<回復・攻撃強化>火属性の味方を回復(12%)し、デッキに単色の精霊が多いほど、攻撃力をアップ(10%)（上限:5段階)",
@@ -83386,7 +83407,7 @@ Cards = [{
 	attr: [1,0],
 	species: [9],
 	islegend: true,
-	ape: "感謝大魔道杯",
+	ape: "大魔道杯 感謝",
 	is_dist: true,
 	as1: {
 		desc: "<分散攻撃>4チェインで敵全体へ分散攻撃(500%)",
@@ -92343,7 +92364,7 @@ Cards = [{
 	attr: [2,1],
 	species: [9],
 	islegend: true,
-	ape: "新説 桃娘伝 妖爺合戦誓助剣",
+	ape: "桃娘伝Ⅱ",
 	is_dist: true,
 	as1: {
 		desc: "<全体攻撃>敵全体へダメージ(150%)、5チェインで更にダメージアップ(50%)",
