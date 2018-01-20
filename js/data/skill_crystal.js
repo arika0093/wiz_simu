@@ -124,7 +124,7 @@ var Awake_crystal_lists = [{
 	genre: "AS変化",
 	name: "過ぎた夏の名残り(AS回復+2%)",
 	imple: Awake_ASkillRateup,
-	param1: 2,
+	param1: 0.02,
 	param2: "heal",
 }, {
 	name: "魔王からの贈り物(AS複属性エンハンス+20%)",

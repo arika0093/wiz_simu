@@ -21,7 +21,7 @@ var Glob_stat = {
 		hit_num: 1,
 		ssb_rate_min: 100,
 		ssb_rate_add: 0,
-		ssb_rate_exp: 2.5,
+		ssb_rate_exp: 1, //修正前: 2.5,
 		ssb_rate_mch: 30,
 		rand: 1.0,
 		chain: 0,
