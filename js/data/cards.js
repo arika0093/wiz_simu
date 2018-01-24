@@ -92884,7 +92884,7 @@ Cards = [{
 	Lawake: [
 		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [1,0,0,0,0,]),
 		Statusup(0,500),
-		Abstate_invalid(["as_sealed", "ss_sealed", "poison", "attr_weaken", "death_limit", "all_sealed", heal_reverse]),
+		Abstate_invalid(["as_sealed", "ss_sealed", "poison", "attr_weaken", "death_limit", "all_sealed", "heal_reverse"]),
 	],
 },{
 	name: "新たなる救世と正義 レグル&テーラ",
