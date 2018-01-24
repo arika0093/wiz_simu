@@ -77840,7 +77840,7 @@ Cards = [{
 	ss1: {
 		desc: "<特効大魔術>敵単体へ火属性のダメージ(400%)、さらに雷属性以外の敵には特効ダメージ(1000%)",
 		turn: 7,
-		proc: [ss_damage_s(special_attr([1,1,0,1,1], 14.0, 4.0), [0])],
+		proc: [ss_damage_s(special_attr([1,1,0,1,1], 14.0, 4.0), [0]), 1],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],1),
@@ -80500,14 +80500,14 @@ Cards = [{
 		proc: add_cond(ChainDualAttack(2.5, 0, 8), as_singleattr_num(0, 0.7)),
 	},
 	ss1: {
-		desc: "<連鎖解放大魔術>スキル反射を無視し、ターン終了時に敵全体へ火属性のダメージ(効果値:100)、すべてのチェインを消費して、消費した数に応じてさらにダメージアップ(上限値:30チェインで2500) ",
+		desc: "<連鎖解放大魔術>スキル反射を無視し、ターン終了時に敵全体へ火属性のダメージ(効果値:100)、すべてのチェインを消費して、消費した数に応じてさらにダメージアップ(上限値:30チェインで3300%) ",
 		turn: 8,
-		proc: [ss_burst_attack(1.0, 25.0, 30, [0], 2.5)],
+		proc: [ss_burst_attack(1.0, 33.0, 30, [0], 1, ss_ignore_skillcounter())],
 	},
 	ss2: {
-		desc: "<連鎖解放大魔術>スキル反射を無視し、ターン終了時に敵全体へ火属性のダメージ(効果値:200)、すべてのチェインを消費して、消費した数に応じてさらにダメージアップ(上限値:30チェインで3500)",
+		desc: "<連鎖解放大魔術>スキル反射を無視し、ターン終了時に敵全体へ火属性のダメージ(効果値:200)、すべてのチェインを消費して、消費した数に応じてさらにダメージアップ(上限値:30チェインで4200%)",
 		turn: 11,
-		proc: [ss_burst_attack(2.0, 35.0, 30, [0], 2.5)],
+		proc: [ss_burst_attack(2.0, 42.0, 30, [0], 1), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],4),
@@ -88163,9 +88163,9 @@ Cards = [{
 		proc: add_cond(ChainDualAttack(1.5, 0, 8), as_singleattr_num(0, 0.7)),
 	},
 	ss1: {
-		desc: "<連鎖解放大魔術>スキル反射を無視し、ターン終了時に敵全体へ水属性のダメージ(100%)、すべてのチェインを消費して、消費した数に応じてさらにダメージアップ(上限値:30チェインで2500%)",
+		desc: "<連鎖解放大魔術>スキル反射を無視し、ターン終了時に敵全体へ水属性のダメージ(100%)、すべてのチェインを消費して、消費した数に応じてさらにダメージアップ(上限値:30チェインで3300%)",
 		turn: 8,
-		proc: [ss_burst_attack(1.0, 25.0, 30, [1], 2.5)],
+		proc: [ss_burst_attack(1.0, 33.0, 30, [1], 1), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],4),
@@ -88184,9 +88184,9 @@ Cards = [{
 		proc: add_cond(ChainDualAttack(2.5, 0, 8), as_singleattr_num(0, 0.7)),
 	},
 	ss2: {
-		desc: "<連鎖解放大魔術>スキル反射を無視し、ターン終了時に敵全体へ水属性のダメージ(100%)、すべてのチェインを消費して、消費した数に応じてさらにダメージアップ(上限値:30チェインで3500%)",
+		desc: "<連鎖解放大魔術>スキル反射を無視し、ターン終了時に敵全体へ水属性のダメージ(100%)、すべてのチェインを消費して、消費した数に応じてさらにダメージアップ(上限値:30チェインで4200%)",
 		turn: 11,
-		proc: [ss_burst_attack(1.0, 35.0, 30, [1], 2.5)],
+		proc: [ss_burst_attack(1.0, 42.0, 30, [1], 1), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,1000),
@@ -90537,7 +90537,7 @@ Cards = [{
 	ss1: {
 		desc: "<融合大魔術>スキル反射を無視し、敵全体へ火属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:5属性で3000%)",
 		turn: 7,
-		proc: [ss_damage_all(ss_multiattr_cond(30), [0])],
+		proc: [ss_damage_all(ss_multiattr_cond(30), [0]), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],2),
@@ -90558,7 +90558,7 @@ Cards = [{
 	ss2: {
 		desc: "<融合大魔術>スキル反射を無視し、敵全体へ火属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:5属性で3600%)",
 		turn: 10,
-		proc: [ss_damage_all(ss_multiattr_cond(36), [0])],
+		proc: [ss_damage_all(ss_multiattr_cond(36), [0]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,1000),
@@ -91290,7 +91290,7 @@ Cards = [{
 	ss1: {
 		desc: "<融合大魔術>スキル反射を無視し、敵全体へ水属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:5属性で3000)",
 		turn: 7,
-		proc: [ss_damage_all(ss_multiattr_cond(30), [1])],
+		proc: [ss_damage_all(ss_multiattr_cond(30), [1]), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],2),
@@ -91311,7 +91311,7 @@ Cards = [{
 	ss2: {
 		desc: "<融合大魔術>スキル反射を無視し、敵全体へ水属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:5属性で3600)",
 		turn: 10,
-		proc: [ss_damage_all(ss_multiattr_cond(36), [1])],
+		proc: [ss_damage_all(ss_multiattr_cond(36), [1]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,1500),
@@ -92068,7 +92068,7 @@ Cards = [{
 		turn: 5,
 		charged: 1,
 		isallcharge: true,
-		proc: [ss_reinforcement_all(5, [ss_attr_guard([1, 1, 1, 1, 1], 0.3, 1, "RF"), ss_enhance_all(3.5, 1, [1, 1, 1, 1, 1], "RF"), ss_regenerate(0.3, 1, "RF")])],
+		proc: [ss_reinforcement_all(10, [ss_attr_guard([1, 1, 1, 1, 1], 0.3, 1, "RF"), ss_enhance_all(3.5, 1, [1, 1, 1, 1, 1], "RF"), ss_regenerate(0.3, 1, "RF")])],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],4),
@@ -92091,7 +92091,7 @@ Cards = [{
 		turn: 8,
 		charged: 1,
 		isallcharge: true,
-		proc: [ss_reinforcement_all(5, [ss_attr_guard([1, 1, 1, 1, 1], 0.3, 1, "RF"), ss_enhance_all(4.5, 1, [1, 1, 1, 1, 1], "RF"), ss_regenerate(0.3, 1, "RF")])],
+		proc: [ss_reinforcement_all(15, [ss_attr_guard([1, 1, 1, 1, 1], 0.3, 1, "RF"), ss_enhance_all(4.5, 1, [1, 1, 1, 1, 1], "RF"), ss_regenerate(0.3, 1, "RF")])],
 	},
 	Lawake: [
 		Attr_statusup(0,300, [1,1,1,1,1,]),
@@ -92617,7 +92617,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	is_dist: true,
-	ape: "大魔道杯 in エステレラⅠ",
+	ape: "大魔道杯 in エステレラ",
 	as1: {
 		desc: "<連撃>4チェインで敵単体を3回連続攻撃(250%)、HP50%以上で更にダメージアップ(200%)",
 		proc: [ChainDualAttack(2.5, 4, 3), add_cond(ChainDualAttack(4.5, 4, 3), when_hp_more(0.5))],
@@ -93040,7 +93040,7 @@ Cards = [{
 	ss1: {
 		desc: "<融合大魔術>スキル反射を無視し、敵全体へ雷属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:3000%)",
 		turn: 7,
-		proc: [ss_damage_all(ss_multiattr_cond(30), [2])],
+		proc: [ss_damage_all(ss_multiattr_cond(30), [2]), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
@@ -93061,7 +93061,7 @@ Cards = [{
 	ss2: {
 		desc: "<融合大魔術>スキル反射を無視し、敵全体へ雷属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:3600%)",
 		turn: 10,
-		proc: [ss_damage_all(ss_multiattr_cond(36), [2])],
+		proc: [ss_damage_all(ss_multiattr_cond(36), [2]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,1500),
