@@ -10,15 +10,25 @@ function main(){
 	var outp="";
 	var tmp="";
 	for(var num=minnn; num<maxnn; num++){
-		var tmp="0000"+num;
-		tmp=tmp.slice(-5);
-		outp+="<div><img onclick=ichange("+tmp+") class=io src=http://i.quiz.colopl.jp/img/card/small/card_"+tmp+"_0.png><br><span class=st>"+num+"</span></div>"
+		var tmp = ("0000"+num);
+		if(num < 100000){
+			tmp = tmp.slice(-5);
+		} else {
+			tmp = tmp.slice(-6);
+		}
+		var tmp2 = parseInt(tmp, 10);
+		outp+="<div><img onclick=ichange("+tmp2+") class=io src=http://i.quiz.colopl.jp/img/card/small/card_"+tmp+"_0.png><br><span class=st>"+num+"</span></div>"
 	}
 	outparea.innerHTML=outp;
 }
 function ichange(tmp){
-	var tmp2="0000"+tmp;
-	tmp2=tmp2.slice(-5);
+	if(Number(tmp) < 100000){
+		var tmp2="0000"+tmp;
+		tmp2=tmp2.slice(-5);
+	} else {
+		var tmp2="0000"+tmp;
+		tmp2=tmp2.slice(-6);
+	}
 	corg.src="http://i.quiz.colopl.jp/img/card/small/card_"+tmp2+"_0.png"
 	corg2.src="http://i.quiz.colopl.jp/img/card/middle/card_"+tmp2+"_1.png"
 	nowno.value=tmp;

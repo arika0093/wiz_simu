@@ -343,7 +343,7 @@
                                 <tr class="hidden_item">
                                     <td>増加曲線：</td>
                                     <td colspan="2">
-                                        <input type="number" id="card_rate_ssb_exp" value="2.5" />
+                                        <input type="number" id="card_rate_ssb_exp" value="1" /> <!-- 修正前2.5 -->
                                     </td>
                                 </tr>
                                 <tr class="ss_only">

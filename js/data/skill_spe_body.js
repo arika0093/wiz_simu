@@ -161,7 +161,7 @@ var SpSkill = {
 		var max_r = params[1];
 		var max_ch = params[2];
 		var attrs = params[3];
-		var exp_c = (params[4] || 2.5);
+		var exp_c = (params[4] || 1); // 修正前2.5
 		// 参照用にコピーを取る
 		var now_state = $.extend(true, {}, fld.Allys.Now[n]);
 		// 継続効果追加
