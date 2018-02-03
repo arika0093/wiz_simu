@@ -767,6 +767,7 @@ var SrchFilters = [
 	// その他フィルター
 	// ---------------------------------
 	createFilterObject({
+		id: "only_legend",
 		type: "other",
 		name: "L精霊のみ",
 		alias: ["えるせいれい"],
@@ -777,6 +778,7 @@ var SrchFilters = [
 		},
 	}),
 	createFilterObject({
+		id: "only_dist",
 		type: "other",
 		name: "配布精霊のみ",
 		alias: ["はいふ"],
@@ -787,6 +789,7 @@ var SrchFilters = [
 		},
 	}),
 	createFilterObject({
+		id: "only_gacha",
 		type: "other",
 		name: "ガチャ産精霊のみ",
 		alias: ["がちゃさん"],
@@ -797,6 +800,7 @@ var SrchFilters = [
 		},
 	}),
 	createFilterObject({
+		id: "only_lskill",
 		type: "other",
 		name: "L時スキルのみ",
 		alias: ["れじぇんどじのすきるのみ"],
