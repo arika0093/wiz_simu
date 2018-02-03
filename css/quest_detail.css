@@ -4,6 +4,16 @@
 	}
 }
 
+dl dt {
+	border: 1px solid #666;
+	border-width: 1px 5px;
+	text-align: center;
+}
+
+div#comment_box{
+	margin: 1ex auto !important;
+}
+
 dd.left_min{
 	margin-left: 0.5em;
 	margin-bottom: 0ex;
@@ -17,6 +27,7 @@ p.battle_num {
 	margin: 1ex 0;
 	background-color: #DDD;
 	border: 1px dashed #444;
+	text-align: center;
 }
 
 @media screen and (min-width: 600px) {
@@ -107,6 +118,7 @@ div.e_name{
 	/*text-decoration: underline;*/
 	box-sizing: border-box;
 	float: left;
+	text-align: center;
 }
 
 @media screen and (min-width: 600px){
