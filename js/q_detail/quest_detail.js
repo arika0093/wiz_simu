@@ -62,6 +62,33 @@ function getCategoryJp(key){
 	return category_jp[key] != undefined ? category_jp[key].jp : key
 }
 
+// 敵データのHTMLを作成する関数
+function genEnemyHTML(Enemy, addclass){
+	addclass = addclass || "";
+	var move = Enemy.move;
+	var resStr = "";
+	// add main
+	resStr += `<div class='etd ${addclass} clearfix'>`;
+	resStr += "<img class='eico_sm" + (Enemy.hp < 100 ? " impregnable" : "") +
+		"' src=" + get_image_url(Enemy.imageno, Enemy.imageno_prefix) + ">";
+	resStr += "<div class='e_name'>" + Enemy.name + "</div>";
+	resStr += "<p class='e_attrspec'>" + get_attr_string(Enemy.attr) +
+		" / " + get_spec_string(Enemy.spec) + "</p>";
+	resStr += "<p class='e_hp'>" + addform("HP", comma3(Enemy.hp)) + "</p>";
+	// add move
+	if (move != undefined) {
+		resStr += "<p class='em_fst'>" + addform("初回", move.turn, "T") +
+			" / " + addform("行動周期", move.wait, "T") + "</p>"
+		resStr += "<div class='e_move'>" + moveappear(move, "on_popup", "先制攻撃")
+		resStr += moveappear(move, "on_move", "通常時")
+		resStr += moveappear(move, "on_angry", "怒った時")
+		resStr += moveappear(move, "on_move_angry", "怒り後")
+		resStr += moveappear(move, "on_dead", "死亡時") + "</div>"
+	}
+	resStr += "</div>"
+	return resStr;
+}
+
 // クエストの詳細を表示
 function makeQD(id) {
 	var resStr = "";
@@ -80,43 +107,25 @@ function makeQD(id) {
 			resStr += "</dd>"
 		}
 		Quest.data.forEach(function (Battle, BattleNum) {
-			resStr += "<dd class='left_min'>" +
-				"<p class='battle_num'>" + Battle.appearance + "戦目</p><div class='battle_d'>"
-			Battle.enemy.forEach(function (Enemy, EnemyNum) {
-				var move = Enemy.move;
-				// add main
-				var myid = "Q" + QuestNum + "B" + BattleNum;
-				resStr += "<div class='etd clearfix' id=" + myid + ">";
-				if($(window).width() >= 600){
-					resStr += "<img class='eico" + (Enemy.hp < 100 ? " impregnable" : "") +
-						"' src=" + get_image_url_b(Enemy.imageno, Enemy.imageno_prefix) + ">";
-				} else {
-					resStr += "<img class='eico_sm" + (Enemy.hp < 100 ? " impregnable" : "") +
-						"' src=" + get_image_url(Enemy.imageno, Enemy.imageno_prefix) + ">";
+			var display_index = [0, 3, 1, 4, 2];
+			var e_num = Battle.enemy.length;
+			resStr += `<dd class='left_min' id='${BattleNum+1}'>` +
+				"<p class='battle_num'>" + Battle.appearance + "戦目</p>" +
+				`<div class='battle_d enum_style ${e_num > 3 ? "enum5" : "enum3"}'>`;
+			for(var i = 0; i < display_index.length; i++) {
+				var idx = display_index[i];
+				var Enemy = Battle.enemy[idx];
+				if(Enemy){
+					resStr += genEnemyHTML(Enemy, (e_num > 3 ? (idx < 3 ? "e_front" : "e_back") : ""));
 				}
-				resStr += "<div class='e_name'>" + Enemy.name + "</div>";
-				resStr += "<p class='e_attrspec'>" + get_attr_string(Enemy.attr) +
-					" / " + get_spec_string(Enemy.spec) + "</p>";
-				resStr += "<p class='e_hp'>" + addform("HP", comma3(Enemy.hp)) + "</p>";
-				// add move
-				if (move != undefined) {
-					resStr += "<p class='em_fst'>" + addform("初回", move.turn, "T") +
-						" / " + addform("行動周期", move.wait, "T") + "</p>"
-					resStr += "<div class='e_move'>" + moveappear(move, "on_popup", "先制攻撃")
-					resStr += moveappear(move, "on_move", "通常時")
-					resStr += moveappear(move, "on_angry", "怒った時")
-					resStr += moveappear(move, "on_move_angry", "怒り後") +"</div>"
-					resStr += moveappear(move, "on_dead", "死亡時") +"</div>"
-				}
-				resStr += "</div>"
-			})
-			resStr += "</div>"
-			resStr += "<div class='bcks clearfix'>" +
-				"<a class='sim_go back_category' href='#'>試走する</a>" +
-				"<a class='back_category' href='/simulator/d?qid=" + Quest.id + "'>みんなの投稿デッキを見る</a>" +
-				"<a class='back_category' href='/simulator/quest?genre=" + Quest.category + "'>カテゴリ一覧に戻る</a></div>";
-			if (BattleNum % 2 == 0 && BattleNum < 4) {
-				resStr += adsence_html("clear:both;");
+			}
+			resStr += "</div>";
+			if (BattleNum == Quest.data.length - 1) {
+				resStr += "<div class='bcks clearfix'>" +
+					"<a class='sim_go back_category' href='#'>試走する</a>" +
+					"<a class='back_category' href='/simulator/d?qid=" + Quest.id + "'>みんなの投稿デッキを見る</a>" +
+					"<a class='back_category' href='/simulator/quest?genre=" + Quest.category + "'>カテゴリ一覧に戻る</a></div>";
+				//resStr += adsence_html("clear:both;");
 			}
 		})
 		resStr += "</dd>";
@@ -124,38 +133,8 @@ function makeQD(id) {
 			Quest.revData.forEach(function (Enemy, EnemyNum) {
 				resStr += "<dd class='left_min'>" +
 					"<p class='battle_num'>復活後</p><div class='battle_d'>"
-				var move = Enemy.move;
-				// add main
-				var myid = "Q" + QuestNum + "Brev" + EnemyNum;
-				resStr += "<div class='etd clearfix' id=" + myid + ">";
-				if($(window).width() >= 600){
-					resStr += "<img class='eico" + (Enemy.hp < 100 ? " impregnable" : "") +
-						"' src=" + get_image_url_b(Enemy.imageno, Enemy.imageno_prefix) + ">";
-				} else {
-					resStr += "<img class='eico_sm" + (Enemy.hp < 100 ? " impregnable" : "") +
-						"' src=" + get_image_url(Enemy.imageno, Enemy.imageno_prefix) + ">";
-				}
-				resStr += "<div class='e_name'>" + Enemy.name + "</div>";
-				resStr += "<p class='e_attrspec'>" + get_attr_string(Enemy.attr) +
-					" / " + get_spec_string(Enemy.spec) + "</p>";
-				resStr += "<p class='e_hp'>" + addform("HP", comma3(Enemy.hp)) + "</p>";
-				// add move
-				if (move != undefined) {
-					resStr += "<p class='em_fst'>" + addform("初回", move.turn, "T") +
-						" / " + addform("行動周期", move.wait, "T") + "</p>"
-					resStr += "<div class='e_move'>" + moveappear(move, "on_popup", "先制攻撃")
-					resStr += moveappear(move, "on_move", "通常時")
-					resStr += moveappear(move, "on_angry", "怒った時")
-					resStr += moveappear(move, "on_move_angry", "怒り後") + "</div>"
-					resStr += moveappear(move, "on_dead", "死亡時") +"</div>"
-				}
-				resStr += "</div>"
-				resStr += "</div>"
-				resStr += "<div class='bcks'>" +
-					"<a class='sim_go back_category' href='#'>試走する</a>" +
-					"<a class='back_category' href='/simulator/d?qid=" + Quest.id + "'>みんなの投稿デッキを見る</a>" +
-					"<a class='back_category' href='/simulator/quest?genre=" + Quest.category + "'>カテゴリ一覧に戻る</a></div>";
-				resStr += "</dd>";
+				resStr += genEnemyHTML(Enemy);
+				resStr += "</div></dd>";
 				return true;
 			});
 		}

@@ -266,9 +266,13 @@ function s_enemy_attack_ratio(rate, tnum, tgtype) {
 }
 
 // 亡者の怨念
-function s_enemy_attack_deadgrudge(r1, r2, r3, tgtype) {
+function s_enemy_attack_deadgrudge(r1, r2, r3, tgtype, tnum) {
+	tnum = tnum || 1;
+	var r4 = r3+(r3-r2);
+	var r5 = r3+(r3-r2)*2;
 	return m_create_enemy_move(function (fld, n, nows, is_counter) {
-		var rates = [r1, r2, r3, r3];
+		// 3体、4体死亡時の火力は計算で出す
+		var rates = [r1, r2, r3, r4, r5];
 		var deadnum = 0;
 		var es = GetNowBattleEnemys(fld);
 		$.each(es, function (i, e) {
@@ -277,8 +281,16 @@ function s_enemy_attack_deadgrudge(r1, r2, r3, tgtype) {
 			}
 		});
 		fld.log_push("Enemy[" + (n + 1) + "]: 亡者の怨念発動");
-		return s_enemy_attack(rates[deadnum], 1, 1, tgtype).move(fld, n, nows, is_counter);
-	}, makeDesc("亡者の怨念"));
+		return s_enemy_attack(rates[deadnum], tnum, 1, tgtype).move(fld, n, nows, is_counter);
+	}, makeDesc("亡者の怨念"), {
+		r1,
+		r2,
+		r3,
+		r4,
+		r5,
+		tnum,
+		tgtype,
+	});
 }
 
 // 防御無視攻撃(不利属性相手への単発ダメージ, 攻撃対象数, 攻撃回数, 攻撃対象詳細)
@@ -1719,6 +1731,24 @@ function s_enemy_discharge(tnum, minus_turn) {
 	}, makeDesc("スキルディスチャージ"));
 }
 
+// 味方スキルチャージ
+function s_enemy_allySkillCharge(tnum, plus_turn) {
+	return m_create_enemy_move(function (fld, n) {
+		var nows = fld.Allys.Now;
+		$.each(nows, function (i, e) {
+			e.ss_current += plus_turn;
+			// スキブ処理
+			var card = fld.Allys.Deck[i];
+			legend_timing_check(fld, fld.Allys.Deck, nows, i, true);
+			// スキルカウンターを有効に
+			nows[i].flags.skill_counter[n] = true;
+		});
+		fld.log_push("Enemy[" + (n + 1) + "]: スキルチャージ(+" + plus_turn + "t)");
+	}, makeDesc("スキルチャージ", {
+		plus_turn
+	}));
+}
+
 // -----------------------------------
 // 条件
 // -----------------------------------
@@ -1820,7 +1850,7 @@ function makeDesc(mystr, order){
 			toStr = prop != "attr" ? toStr : get_attr_string(toStr) 
 			toStr = prop != "rate" ? toStr : toStr * 100 + "％"
 			toStr = ["turn","t"].indexOf(prop)==-1 ? toStr : toStr != -1 ? toStr : "永続"
-			toStr = ["turn","t","minus_turn"].indexOf(prop)==-1 ? toStr : typeof(toStr)!="number" ? toStr : toStr+"T"
+			toStr = ["turn","t","plus_turn","minus_turn"].indexOf(prop)==-1 ? toStr : typeof(toStr)!="number" ? toStr : toStr+"T"
 			toStr = prop != "atkn" ? toStr : toStr == 1 ? "" : toStr + "連撃"
 			toStr = ["d","dmg","damage","bl"].indexOf(prop)==-1 ? toStr : Math.floor(toStr) + "ダメージ"
 			toStr = prop != "dmg_s" ? toStr : "@BS@特攻/" + toStr + ""
@@ -1840,6 +1870,8 @@ function makeDesc(mystr, order){
 			toStr = prop != "up_hp" ? toStr : "上昇HP:" + toStr
 			toStr = prop != "desc" ? toStr : toStr+" "
 			toStr = prop != "breaks" ? toStr : toStr + "個"
+			toStr = prop != "as_seal_p" ? toStr : (toStr*100) + "%[AS封印]"
+			toStr = prop != "ss_seal_p" ? toStr : (toStr*100) + "%[SS封印]"
 			toStr = prop != "healvalue" ? toStr : toStr+"回復"
 			toStr = prop != "ratiorate" ? toStr : toStr * 100 + "％削り"
 			toStr = prop != "ch" ? toStr : toStr + "chain"
