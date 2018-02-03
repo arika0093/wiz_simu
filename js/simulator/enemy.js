@@ -340,28 +340,26 @@ function isexist_enemy_rev(fld) {
 	return !nd.rev_check && nd.rev_index !== undefined;
 }
 
-// argObjから敵行動を復旧する用の関数
-function restoreEnemyMoveFunction(fld){
-	var edata = fld.Enemys.Data;
-	$.each(edata, (is,es) => {
-		$.each(es, (i,e) => {
-			var arg = e.argObj;
-			var fc = arg.__fname__;
-			var param = [];
-			var count = 0;
-			for(key in arg){
-				var v = arg[key];
-				if(v != fc){
-					param[count] = v;
-					count++;
-				}
-			}
-			// evalで復元する
-			e.move = eval(`${fc}(...[${param}])`);
-		});
+// 敵死亡を確認して、死んでいたら死亡時行動を呼ぶ関数
+function enemy_check_ondead(fld){
+	var ondead_exist = false;
+	var enemys = GetNowBattleEnemys(fld);
+	$.each(enemys, function (i, e){
+		var mv = e.move;
+		if(e.nowhp <= 0 && mv.on_dead && !e.on_dead_execed){
+			fld.log_push(`Enemy[${i + 1}]: 死亡時行動`);
+			$.each(mv.on_dead, (io, eo) => {
+				eo.move(fld, i);
+			});
+			e.on_dead_execed = true;
+			ondead_exist = true;
+		}
 	});
-	
-	
+	return ondead_exist;
+}
+
+// 敵死亡時に行動する関数
+function enemy_action_ondead(fld, en, i){
 	
 	
 	

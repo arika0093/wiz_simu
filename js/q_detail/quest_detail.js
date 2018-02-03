@@ -106,6 +106,7 @@ function makeQD(id) {
 					resStr += moveappear(move, "on_move", "通常時")
 					resStr += moveappear(move, "on_angry", "怒った時")
 					resStr += moveappear(move, "on_move_angry", "怒り後") +"</div>"
+					resStr += moveappear(move, "on_dead", "死亡時") +"</div>"
 				}
 				resStr += "</div>"
 			})
@@ -146,6 +147,7 @@ function makeQD(id) {
 					resStr += moveappear(move, "on_move", "通常時")
 					resStr += moveappear(move, "on_angry", "怒った時")
 					resStr += moveappear(move, "on_move_angry", "怒り後") + "</div>"
+					resStr += moveappear(move, "on_dead", "死亡時") +"</div>"
 				}
 				resStr += "</div>"
 				resStr += "</div>"

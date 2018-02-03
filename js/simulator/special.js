@@ -10,6 +10,9 @@ function ssPushWithParam(fld, n){
 	var is_l = is_legendmode(fld, card, now);
 	var ss = is_l ? card.ss2 : card.ss1;
 	var ss_rst = true;
+	var is_doubleskill = $.grep(now.turn_effect, (e) => {
+		return e.type == "ss_doubleskill";
+	}).length > 0;
 	// SS発動前チェック
 	if (is_ss_active(fld, n) && sscheck_before(fld, ss, n)) {
 		// SSを打つ
@@ -30,9 +33,6 @@ function ssPushWithParam(fld, n){
 			}
 			// ------------------
 			// ダブルスキル付与状況を確認
-			var is_doubleskill = $.grep(now.turn_effect, (e) => {
-				return e.type == "ss_doubleskill";
-			}).length > 0;
 			if(is_doubleskill) {
 				// 付与状態を解除
 				turneff_break(fld, now.turn_effect, n, "ss_doubleskill");
@@ -84,6 +84,8 @@ function ssPushWithParam(fld, n){
 // SS発動前に味方単体指定があるかどうかを確認する関数
 function sscheck_before(fld, ss, n) {
 	var is_exist = false;
+	var is_chargefin = true;
+	
 	for (var i = 0; i < (ss.proc || []).length; i++) {
 		is_exist = is_exist || (ss.proc[i].target == "ally_one");
 		if (ss.proc[i].is_skillcopy) {
@@ -96,7 +98,13 @@ function sscheck_before(fld, ss, n) {
 			}
 		}
 	}
-	if (is_exist) {
+	// チャージスキルなら、チャージ完了後のSS発動時のみ対象指定
+	var now = fld.Allys.Now[n];
+	if(ss.charged > 0 && !now.flags.ss_chargefin){
+		is_chargefin = false;
+	}
+	
+	if (is_exist && is_chargefin) {
 		// 指定済みかチェック
 		var target_seled = ss_allyselect_getindex(fld);
 		// 指定済みならOK
@@ -253,6 +261,8 @@ function ss_afterproc(fld, n) {
 	turneff_check_skillcounter(fld);
 	turn_effect_check(fld, false, is_allkill(fld));
 	enemy_turn_effect_check(fld, false);
+	// 死亡時処理
+	enemy_check_ondead(fld);
 	// 敵ダメージ反応系
 	enemy_damage_switch_check(fld, "damage_switch", true, false, false);
 }

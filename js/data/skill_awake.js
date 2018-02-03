@@ -176,6 +176,8 @@ function Abstate_invalid(tg_type) {
 		"discharge": "ディスチャージ",
 		"attr_weaken": "弱体化",
 		"heal_reverse": "回復反転",
+		"panic_shout": "パニックシャウト",
+		"attr_reverse": "属性反転",
 	};
 	var mytg=(function(typs,tg){
 		var outp="";
@@ -426,6 +428,15 @@ function Awake_damaged_multiple(rate) {
 function Awake_noheal() {
 	return {
 		type: "awake_no_heal",
+	};
+}
+
+// 攻撃HP入れ替え
+function Awake_HpAtk_replace() {
+	return {
+		type: "Awake_hpatk_replace",
+		name: "HPATK入れ替え",
+		desc: "HPと攻撃力の値を入れ替える",
 	};
 }
 

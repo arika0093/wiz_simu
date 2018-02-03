@@ -42,6 +42,11 @@ category_jp = {
 		is_dispsim: true,
 		sim_index: 999,
 	},
+    "debug": {
+		jp: "for debug",
+		is_dispsim: true,
+		sim_index: 114514,
+	},
     "id": {
 		jp: "未設定",
 	},

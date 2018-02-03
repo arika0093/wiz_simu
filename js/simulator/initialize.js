@@ -216,6 +216,16 @@ $(function () {
 				now.ss_isboost = false;	// スキブを受けたかどうか
 				now.islegend = (get_ssturn(Field, card, now)[1] == 0); // Lモードかどうか(card.islegendとは意味合いが違うので注意)
 				now.lgstart_turn = -1;
+				// HPATK入れ替え結晶の有無
+				var is_replacement_hpatk = $.grep(ally.crystal, e => {
+					return e.type == "Awake_hpatk_replace"
+				}).length > 0;
+				if(is_replacement_hpatk){
+					// def_xxだけ入れ替えれば後はfunc_reawakeで自動計算される
+					var temp = now.def_hp
+					now.def_hp = now.def_atk;
+					now.def_atk = temp;
+				}
 			}
 			// 空要素を詰める
 			als.Deck = $.grep(als.Deck, function (e) { return e !== undefined; });
@@ -355,12 +365,14 @@ function calcLvStatus(nowLv, maxLv, statusAt1, maxStatus, mana) {
 // 次のターンに進む
 function nextturn(fld, is_ssfin) {
 	var f_st = fld.Status;
-	// 烈眼ダメージ
-	retsugan_check(fld, is_ssfin);
 	// 効果の継続確認
 	ss_continue_effect_check(fld, is_ssfin);
 	turn_effect_check(fld, false, is_ssfin);
 	enemy_turn_effect_check(fld, false);
+	// 烈眼ダメージ
+	retsugan_check(fld, is_ssfin);
+	// 死亡時トリガーを確認
+	enemy_check_ondead(fld);
 	// 怒り & スキルカウンターを再度確認（残滅などのスキル確認で状況が変化した可能性があるため）
 	enemy_damage_switch_check(fld, "damage_switch", false, false, false);
 	// 全滅していなかったら効果ターンを減少

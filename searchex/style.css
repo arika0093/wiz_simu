@@ -23,6 +23,18 @@ strong{
 	display: none;
 }
 
+span.linklike{
+	color: #444;
+	text-decoration: underline;
+}
+span.linklike:hover{
+	cursor: pointer;
+}
+span.linklike:active{
+	color: #000;
+}
+
+
 /* for fadein */
 @keyframes fade-in {
 	0% {

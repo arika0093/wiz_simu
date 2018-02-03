@@ -299,6 +299,17 @@ function getDateString(date){
 	return dateStr;
 }
 
+// accessorコピー機能付きのextend
+function extendWithAccessor(target, ...sources) {
+	sources.forEach(source => {
+		Object.defineProperties(target, Object.keys(source).reduce((descriptors, key) => {
+			descriptors[key] = Object.getOwnPropertyDescriptor(source, key);
+			return descriptors;
+		}, {}));
+	});
+	return target;
+}
+
 // 文字列をコピーする関数
 function execCopy(string){
 	var temp = document.createElement('div');

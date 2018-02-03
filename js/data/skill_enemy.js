@@ -355,10 +355,11 @@ function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f
 		var logtext = "";
 		var card = fld.Allys.Deck[tg[i]];
 		var now = fld.Allys.Now[tg[i]];
-		var eff_obj = $.extend(true, {}, {
+		var eff_obj = extendWithAccessor({}, {
 			desc: desc,
 			type: type,
 			icon: type,
+			target_index: tg[i],
 			isabstate: true,
 			iscursebreak: false,
 			isdual: false,
@@ -487,6 +488,75 @@ function s_enemy_all_sealed(tnum, t) {
 	}, makeDesc("封印"));
 }
 
+// 恐怖(対象数, AS封印対象%, SS封印対象%, 効果対象属性)
+// (%に0を指定すると対象外)
+function s_enemy_fear(tnum, as_seal_p, ss_seal_p, attr) {
+	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
+		var desc = () => {
+			var rst = "恐怖(";
+			if(as_seal_p > 0){
+				rst += `${as_seal_p*100}%以下でAS封印`;
+			}
+			if(as_seal_p > 0 && ss_seal_p > 0){
+				rst += "/";
+			}
+			if(ss_seal_p > 0){
+				rst += `${ss_seal_p*100}%以下でSS封印`;
+			}
+			return rst + ")";
+		};
+		s_enemy_abstate_attack(
+			fld, desc(), "fear", -1, tnum, n, false, {
+				// 対象属性以外には無効
+				bef_absattack: function (fld, oi, ei) {
+					var card = fld.Allys.Deck[oi];
+					return !(attr.indexOf(card.attr[0]) >= 0 || attr.indexOf(card.attr[1]) >= 0);
+				},
+				// 特定条件でAS封印
+				bef_answer: function (f, as) {
+					var t_i = this.target_index;
+					var now = f.Allys.Now[t_i];
+					if(as.isdefault){
+						return true;
+					}
+					// falseならASが無効化
+					return this.is_disabled || (now.nowhp / now.maxhp) > as_seal_p;
+				},
+				// 特定条件でSS封印
+				get ss_disabled() {
+					var t_i = this.target_index;
+					var now = Field.Allys.Now[t_i];
+					// trueならSSが無効化
+					return !this.is_disabled && (now.nowhp / now.maxhp) <= ss_seal_p;
+				},
+				effect: function(f, oi, teff, state, is_t, is_b){
+					// 恐怖対象のHP条件に達していたら強調表示
+					var now = f.Allys.Now[oi];
+					var is_feared = (!teff.bef_answer(f, {}) || teff.ss_disabled);
+					if(is_feared){
+						teff.desc = `<b class="is_feared">${desc()}</b>`;
+					} else {
+						teff.desc = `${desc()}`;
+					}
+					
+					// 発動敵がいないなら効果を解除
+					var e_data = f.Enemys.Data[teff.receveButtle].enemy[teff.fromEnemy];
+					if(e_data.nowhp <= 0 || is_b){
+						teff.lim_turn = 0;
+						teff.is_disabled = true;
+					}
+				},
+				// 異常回復不可
+				isabstate: false,
+				// 被弾敵/バトル数
+				fromEnemy: n,
+				receveButtle: (fld.Status.nowbattle-1),
+				is_disabled: false,
+			}
+		);
+	}, makeDesc("恐怖"));
+}
+
 // パニックシャウト(ダメージ, 対象数, 継続ターン)
 // ダメージが0なら、ターゲット異常
 function s_enemy_panicshout(damage, tnum, t) {
@@ -558,6 +628,8 @@ function s_enemy_healreverse(rate, tnum) {
 				reverse_rate: rate,
 				fromEnemy: n,
 				receveButtle: fld.Status.nowbattle-1,
+				// 異常回復不可
+				isabstate: false,
 			}
 		);
 	}, makeDesc("回復反転"));

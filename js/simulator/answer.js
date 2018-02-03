@@ -154,6 +154,8 @@ function panelAnswerWithParam(fld, attr) {
 				}
 			}
 		});
+		// 敵死亡時処理の確認
+		enemy_check_ondead(fld);
 		// 分裂処理
 		enemy_damage_switch_check(fld, "enemy_division", false, false, false);
 	}

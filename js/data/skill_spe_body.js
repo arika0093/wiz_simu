@@ -362,11 +362,13 @@ var SpSkill = {
 						if (is_t && !is_b) {
 							e.nowhp = Math.max(e.nowhp - dmg, 0);
 							e.flags.on_damage = true;
+							f.log_push("Enemy[" + (ei + 1) + "]: 毒(" + dmg + "ダメージ)");
 							if (e.nowhp <= 0) {
-								// HPが0になったら敵スキルを全て解除
+								// 死亡時行動
+								enemy_check_ondead(f);
+								// 敵スキルを全て解除
 								turneff_allbreak_enemy(fld, e.turn_effect, ei);
 							}
-							f.log_push("Enemy[" + (ei + 1) + "]: 毒(" + dmg + "ダメージ)");
 						}
 					},
 				});
@@ -446,7 +448,9 @@ var SpSkill = {
 					if (is_end) {
 						f.log_push("Enemy[" + (ei + 1) + "]: 無に還す瞳 - 残り0t");
 						e.nowhp = 0;
-						// HPが0になったら敵スキルを全て解除
+						// 死亡時行動を実行させる
+						enemy_check_ondead(f);
+						// 敵スキルを全て解除
 						turneff_allbreak_enemy(fld, e.turn_effect, ei);
 					}
 				},

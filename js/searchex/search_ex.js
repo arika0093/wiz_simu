@@ -221,6 +221,16 @@ $(() => {
 		.on("click", "a.invalid_click", (e) => {
 			e.preventDefault();
 		});
+	// 上限数変更がクリックされたら数値を変更するダイアログを表示
+	$(document)
+		.on("click", "span[name=dispnum_change]", (e) => {
+			var newnum = Number(window.prompt(
+				`検索表示数の上限を指定してください。現在の表示数は ${CardsListupMax} です。\n`+
+				`*** 注意: 数を大きくしすぎると動作が遅くなります。 ***`, ""));
+			if(newnum > 0){
+				CardsListupMax = newnum;
+			}
+		});
 	// フィルター条件(textbox内)をクリックした時の結果をあらかじめ記述
 	$(document)
 		.on("click", "div.sch_opt_box", function() {
@@ -519,7 +529,7 @@ function listupCardThrowFilter(inp_text){
 		if(is_overlst){
 			output += `<li class="rst_overlst">${CardsListupMax}件以上の精霊と一致したため、`+
 				`先頭${CardsListupMax}件のみを表示しています。`+
-				`<br/>絞り込み条件を追加してください。</li>`;
+				`<br/>絞り込み条件を追加するか、<span class="linklike" name="dispnum_change">設定を変更</span>してください。</li>`;
 		}
 		rst_base.append(output);
 	}

@@ -158,6 +158,20 @@ var AsAddRate = {
 		}
 		return a + b * num;
 	},
+	// デッキ内属せお数依存
+	"as_deckinattr_num": function (fld, addf, oi, ei, p, tgi) {
+		var cards = fld.Allys.Deck;
+		var {a,b} = addf.param;
+		var match_attr = [0, 0, 0, 0, 0];
+		for(var i=0; i < cards.length; i++){
+			$.each(cards[i].attr, (i, e) => {
+				if(e >= 0){
+					match_attr[e]++;
+				}
+			});
+		}
+		return a + b * $.grep(match_attr, e => e > 0).length;
+	},
 	// チェインを消費して火力アップ
 	"as_reducechain": function (fld, addf, oi, ei, p, tgi) {
 		var nowchain = fld.Status.chain;

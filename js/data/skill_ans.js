@@ -879,6 +879,22 @@ function as_singleattr_num(a, b) {
 	}
 }
 
+// デッキ内属性数依存
+// (a: 0体の時の基礎倍率, b: 一体増加ごとに増える倍率)
+function as_deckinattr_num(a, b) {
+	return {
+		is_afteradd: true,
+		add_f: [{
+			param: {a, b},
+			func: "as_deckinattr_num",
+		}],
+		add_atkn: [{
+			param: {a, b},
+			func: "as_deckinattr_num",
+		}]
+	}
+}
+
 // チェインを消費して火力アップ
 // (rate: 消費時の増え幅, red_ch: 消費チェイン)
 function as_reducechain(rate, red_ch) {

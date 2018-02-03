@@ -441,7 +441,7 @@ var SrchFilters = [
 	// AS詳細フィルター
 	// ---------------------------------
 	createAnswerSkillDetailObject("攻撃系AS", null, /(?!回復|ガード)/, {
-		alias: ["こうげきけいあんさーすきる"],
+		alias: ["こうげきけいあんさーすきる", "攻撃系"],
 	}),
 	createAnswerSkillDetailObject("連撃AS", null, /(|属性特効)連撃/, {
 		alias: ["れんげき"],
@@ -624,7 +624,7 @@ var SrchFilters = [
 	// SS内容フィルター
 	// ---------------------------------
 	createSpecialSkillDetailObject("攻撃系SS", null, /(多弾|大)魔術/, {
-		alias: ["こうげきすきる"],
+		alias: ["こうげきすきる", "こうげきけい"],
 	}),
 	createSpecialSkillDetailObject("多段カウンター", null, /多[弾段](式|)カウンター/, {
 		alias: ["ただん"],
@@ -641,10 +641,10 @@ var SrchFilters = [
 	createSpecialSkillDetailObject("不調SS", null, /HP(|が)[0-9]{1,3}%以下/, {
 		alias: ["HPいぞん", "ふちょう"],
 	}),
-	createSpecialSkillDetailObject("敵全体対象", null, /敵全体へ/, {
+	createSpecialSkillDetailObject("敵全体対象", null, /敵全体[へに]/, {
 		alias: ["てきぜんたい"],
 	}),
-	createSpecialSkillDetailObject("敵単体対象", null, /敵単体へ/, {
+	createSpecialSkillDetailObject("敵単体対象", null, /敵単体[へに]/, {
 		alias: ["てきたんたい"],
 	}),
 	createSpecialSkillDetailObject("解答時間依存SS", "解答依存SS", /(|平均)解答(|時間)が早いほど/, {
@@ -697,45 +697,72 @@ var SrchFilters = [
 		}),
 	// 潜在フィルター
 	// ---------------------------------
-	createAwakeObject("経験値取得量UP", "経験値UP", {
+	createAwakeObject("経験値取得量UP", "経験値UP", null, {
 		src_alias: ["経験値取得量アップ"],
 		alias: ["けいけんち"],
 	}),
-	createAwakeObject("ゴールド取得量UP", "ゴールドUP", {
+	createAwakeObject("ゴールド取得量UP", "ゴールドUP", null, {
 		src_alias: ["ゴールド取得量アップ"],
 		alias: ["ごーるど"],
 	}),
-	createAwakeObject("ドロップ率UP", "ドロップUP", {
+	createAwakeObject("ドロップ率UP", "ドロップUP", null, {
 		src_alias: ["ドロップアップ"],
 	}),
-	createAwakeObject("難易度ダウン", null, {
+	createAwakeObject("難易度ダウン", null, null, {
 		alias: ["なんいどだうん"],
 	}),
-	createAwakeObject("戦後回復", null, {
+	createAwakeObject("戦後回復", null, null, {
 		src_alias: ["バトル終了後にHP回復"],
 		alias: ["せんごかいふく", "ばとるしゅうりょうじ"],
 	}),
-	createAwakeObject("チェインブースト", null),
-	createAwakeObject("九死一生", null, {
+	createAwakeObject("チェインブースト", null, null),
+	createAwakeObject("九死一生", null, null, {
 		alias: ["きゅうしいっしょう"],
 	}),
-	createAwakeObject("セカンドファスト", "ｾｶﾝﾄﾞﾌｧｽﾄ"),
-	createAwakeObject("AS発動時間延長", "AS延長潜在", {
+	createAwakeObject("セカンドファスト", "ｾｶﾝﾄﾞﾌｧｽﾄ", null),
+	createAwakeObject("AS発動時間延長", "AS延長潜在", null, {
 		alias: ["はつどうじかんえんちょう"],
 	}),
-	createAwakeObject("心眼", null, {
+	createAwakeObject("心眼", null, null, {
 		alias: ["しんがん"],
 	}),
-	createAwakeObject("心眼・絶", "心眼(絶)", {
+	createAwakeObject("心眼・絶", "心眼(絶)", null, {
 		alias: ["しんがんぜつ"],
 	}),
-	createAwakeObject("心眼・破", "心眼(破)", {
+	createAwakeObject("心眼・破", "心眼(破)", null, {
 		alias: ["しんがんは"],
 	}),
-	createAwakeObject("精霊交替", null, {
+	createAwakeObject("精霊交替", null, null, {
 		alias: ["せいれいこうたい"],
 	}),
-	createAwakeObject("チェインガード", "Chガード潜在"),
+	createAwakeObject("チェインガード", "Chガード潜在", null),
+	createAwakeObject("アンサースキル封印", "AS封印無効", null, {
+		alias: ["ASふういんむこう", "あんさーふういんむこう"],
+	}),
+	createAwakeObject("SPスキル封印", "SS封印無効", null, {
+		alias: ["SSふういんむこう", "SPふういんむこう", "すきるふういんむこう"],
+	}),
+	createAwakeObject("封印無効", null, /封印(・|無効)/, {
+		alias: ["ふういんむこう"],
+	}),
+	createAwakeObject("毒無効", null, /毒(・|無効)/, {
+		alias: ["どくむこう"],
+	}),
+	createAwakeObject("弱体化無効", null, /弱体化(・|無効)/, {
+		alias: ["じゃくたいかむこう"],
+	}),
+	createAwakeObject("死の秒針無効", null, /死の秒針(・|無効)/, {
+		alias: ["しのびょうしんむこう"],
+	}),
+	createAwakeObject("弱体化無効", null, /弱体化(・|無効)/, {
+		alias: ["じゃくたいかむこう"],
+	}),
+	createAwakeObject("回復反転無効", null, /回復反転(・|無効)/, {
+		alias: ["かいふくはんてんむこう"],
+	}),
+	createAwakeObject("ディスチャージ無効", null, /ディスチャージ(・|無効)/, {
+		alias: ["でぃすちゃーじむこう"],
+	}),
 	
 	// その他フィルター
 	// ---------------------------------
@@ -767,6 +794,23 @@ var SrchFilters = [
 		short: () => "ガチャ",
 		cond_cd: (c) => {
 			return !c.is_dist;
+		},
+	}),
+	createFilterObject({
+		type: "other",
+		name: "L時スキルのみ",
+		alias: ["れじぇんどじのすきるのみ"],
+		desc: "AS/SS検索において、L化スキルのみを検索対象にします。",
+		short: () => "Lスキルのみ",
+		cond_cd: null,
+		cond_islegend: function(c, is_lskill){
+			return is_lskill;
+		},
+		cond_aschain: function (c, tg_arr, is_lskill) {
+			return is_lskill;
+		},
+		cond_ssturn: function (c, target_ss) {
+			return target_ss[1] > 0;
 		},
 	}),
 	
@@ -833,6 +877,7 @@ var SrchMultiFilters = [
 function checkCond_CardASchain(c, matches){
 	var as_list = $.grep([c.as1, c.as2], (e, i) => {
 		var rst = (e != undefined);
+		var is_lskill = (i != 0);
 		rst = rst && isStringContainCheck(matches, e.desc, true);
 		if(rst){
 			// 全追加asを捜査して、チェイン指定Objがあったらチェックを通す
@@ -841,7 +886,8 @@ function checkCond_CardASchain(c, matches){
 					var tg_arr = $.map(e.proc, (pr_e) => {
 						return pr_e;
 					});
-					rst = rst && ae.cond_aschain(c, tg_arr);
+					// 否定条件とXORで比較する
+					rst = rst && (ae.cond_aschain(c, tg_arr, is_lskill) ^ ae.is_denial);
 				}
 			});
 		}
@@ -876,7 +922,7 @@ function checkCond_CardSSturn(c, matches){
 					var tg_arr = [0, 0];
 					var ix = (e.is_ss2 ? 1 : 0)
 					tg_arr[ix] = 1;
-					rst = rst && ae.cond_ssturn(c, tg_arr);
+					rst = rst && (ae.cond_ssturn(c, tg_arr) ^ ae.is_denial);
 				}
 			});
 		}
@@ -1114,14 +1160,15 @@ function createSpecialSkillDetailObject(name, short, matches, append){
 	}, append);
 }
 
-// 検索フィルター: 潜在(簡易)
-function createAwakeObject(aw_name, aw_short, append){
+// 検索フィルター: 潜在
+function createAwakeObject(aw_name, aw_short, aw_match, append){
 	aw_short = aw_short || aw_name;
 	return $.extend(true, createFilterObject(), {
 		id: `awake_${aw_name}`,
 		params: {
-			aw_name: aw_name,
-			aw_short: aw_short,
+			aw_name,
+			aw_short,
+			aw_match,
 		},
 		type: "awake",
 		name: aw_name,
@@ -1137,7 +1184,7 @@ function createAwakeObject(aw_name, aw_short, append){
 			var aw_list = $.map(aws, (e) => {
 				return (e ? [e.name, e.desc] : null);
 			});
-			srch_txt.push(this.params.aw_name);
+			srch_txt.push(this.params.aw_match || this.params.aw_name);
 			srch_txt.push(...src_alias);
 			$.each(srch_txt, (i, e) => {
 				rst = rst || isStringContainCheck(e, aw_list, true);

@@ -2,6 +2,8 @@ test/
 [#]no_update/
 api/
 blog/
+js/data/quests/debug/
+js/data/quests/checkmate/
 local/
 .htaccess
 .idea/

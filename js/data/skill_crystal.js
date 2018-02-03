@@ -20,6 +20,14 @@ var Awake_crystal_lists = [{
 	param2: Statusup(-1000, 0),
 	param3: Awake_damage_multiple(1.2),
 }, {
+	name: "天邪鬼の結晶(HP/ATK入れ替え)",
+	imple: Awake_HpAtk_replace,
+}, {
+	name: "衰弱の結晶[HP](HP-3000)",
+	imple: Statusup,
+	param1: -3000,
+	param2: 0,
+}, {
 	name: "夜空に届け！ファイアワークス！(花火/HP-300)",
 	imple: Statusup,
 	param1: -300,
@@ -230,6 +238,10 @@ var Awake_crystal_lists = [{
 	imple: Awake_composite,
 	param2: Spec_statusup(150, 150, [9]),
 }, {
+	name: "からくり剣・モモディバイダー(戦士HP/ATK+150)",
+	imple: Awake_composite,
+	param2: Spec_statusup(150, 150, [8]),
+}, {
 	name: "擬態の結晶〈ガーゴイル〉(物質HP+200)",
 	imple: Awake_composite,
 	param2: Spec_statusup(200, 0, [6]),
@@ -258,9 +270,41 @@ var Awake_crystal_lists = [{
 	imple: Awake_composite,
 	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 100, 0, [0,0,0,0,1]),
 }, {
-	name: "荒鷲の結晶＜ブルーノ＞(副光ATK+100)",
+	name: "荒鷲の結晶〈ブルーノ〉(副光ATK+100)",
 	imple: Awake_composite,
 	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 0, 100, [0,0,0,1,0]),
+}, {
+	name: "讒言の結晶〈ヤラ〉(副闇ATK+100)",
+	imple: Awake_composite,
+	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 0, 100, [0,0,0,0,1]),
+}, {
+	name: "紅白ダル＆マー(神族ATK+200)",
+	imple: Awake_composite,
+	param2: Spec_statusup(0, 200, [1]),
+}, {
+	name: "獅子王の結晶〈ガレオーネ〉(亜人ATK+200)",
+	imple: Awake_composite,
+	param2: Spec_statusup(0, 200, [5]),
+}, {
+	name: "流浪の結晶[レッグ] (物質/天使のATK/HP+100)",
+	imple: Awake_composite,
+	param2: Spec_statusup(100, 100, [3,6]),
+}, {
+	name: "流浪の結晶[ビット] (神族/龍族のATK/HP+100)",
+	imple: Awake_composite,
+	param2: Spec_statusup(100, 100, [0,1]),
+}, {
+	name: "流浪の結晶[ヘッド] (魔族/亜人のATK/HP+100)",
+	imple: Awake_composite,
+	param2: Spec_statusup(100, 100, [2,5]),
+}, {
+	name: "流浪の結晶[ソード] (戦士/妖精のATK/HP+100)",
+	imple: Awake_composite,
+	param2: Spec_statusup(100, 100, [4,8]),
+}, {
+	name: "流浪の結晶[コア] (術士/魔法生物のATK/HP+100)",
+	imple: Awake_composite,
+	param2: Spec_statusup(100, 100, [7,9]),
 }, {
 	genre: "L時発動結晶",
 	name: "煌眼の欠片(L時味方ATK+100/25%回復)",
