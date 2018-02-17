@@ -53,6 +53,12 @@ category_jp = {
     "": {
 		jp: "未設定",
 	},
+    "outlander": {
+		is_dispsim: true,
+		sim_index: 11,
+		jp: "眠れる遺跡のアウトランダー",
+		disable_date:"2018/3/14 16:00",
+	},
     "wiz_museum": {
 		is_dispsim: true,
 		sim_index: 11,

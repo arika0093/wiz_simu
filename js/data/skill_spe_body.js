@@ -714,6 +714,9 @@ var SpSkill = {
 					panic_target: true,
 					isberserk: true,
 					effect: function (f, oi, teff, state, is_t, is_ak, is_ss) {},
+					on_answer_dmg: function(f, oi, dmg){
+						return dmg * 3;
+					}
 				});
 				fld.log_push("Unit[" + (n_index + 1) + "]: 凶暴化");
 			}
@@ -804,6 +807,56 @@ var SpSkill = {
 				},
 			});
 		}
+		fld.log_push("Unit[" + (n + 1) + "]: 撃破強化");
+		return true;
+	},
+	// -----------------------------
+	// ASエンハンス効果を味方全体に付与する
+	"ss_asenhance": function(fld, n, cobj, params) {
+		var rate_max = params[0];
+		var target_mattr = params[1];
+		var target_sattr = params[2];
+		var t = params[3];
+
+		// 属性一致判定
+		var is_match_attr = (c) => {
+			return (target_mattr[c.attr[0]] > 0) && (target_sattr[c.attr[1]] > 0);
+		}
+		
+		const up_rates = [0, 1.2, 1.3, 1.4, 1.5, 3.0];
+		var in_attrnum = $.grep(fld.Allys.Deck, is_match_attr).length;
+		var rate = up_rates[in_attrnum];
+		
+		var cds = ss_get_targetally(fld, cobj, fld.Allys.Deck, n);
+		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
+		for (var i = 0; i < nows.length; i++) {
+			var cd = cds[i];
+			var now = nows[i];
+			var n_index = fld.Allys.Now.indexOf(now);
+			if (now.nowhp <= 0 || !is_match_attr(cd)) {
+				continue;
+			}
+			// 付与
+			now.turn_effect.push({
+				desc: `AS倍率強化(${(rate*100).toFixed(0)}%)`,
+				type: "ss_asenhance",
+				icon: "asenhance",
+				isdual: false,
+				iscursebreak: true,
+				turn: t,
+				lim_turn: t,
+				effect: function(f, oi, teff, state){},
+				on_answer_dmg: function(f, oi, dmg){
+					var c = f.Allys.Deck[oi];
+					if(is_match_attr(c)){
+						return dmg * 3;
+					} else {
+						return dmg;
+					}
+				}
+			});
+		}
+		fld.log_push("Unit[" + (n + 1) + "]: AS倍率強化");
 		return true;
 	},
 	// -----------------------------
@@ -1318,9 +1371,35 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
+	// パネル付与効果(複合用)
+	"panel_multieffect": function (fld, n, cobj, params) {
+		var effs_dat = params[0][0];
+		var effects = $.map(effs_dat, (e) => {
+			for(var i=1; ; i++){
+				// 引数の最後に複数パネル用の引数を(無理やり)追加
+				if(!e[`p${i}`]){
+					e[`p${i}`] = true;
+					break;
+				}
+			}
+			return ss_object_done(fld, n, e, true);
+		});
+		// 複数パネルの効果をまとめる
+		var desc = $.map(effects, (e) => e.desc).join("/");
+		var func = (fl) => {
+			// 個別パネルの実行
+			var fcs = $.map(effects, (e) => e.func);
+			$.each(fcs, (i,e) => e(fl));
+			return true;
+		}
+		// 追加
+		return panel_addition(fld, desc, func, false);
+	},
+	// -----------------------------
 	// 攻撃力アップパネル付与効果
 	"panel_attackup": function (fld, n, cobj, params) {
 		var p = params[0];
+		var is_multi = params[1];
 		var dsc = "攻撃力アップ(" + (p * 100) + "%)";
 		return panel_addition(fld, dsc, function(fl){
 			for (var i = 0; i < fl.Allys.Deck.length; i++) {
@@ -1328,26 +1407,26 @@ var SpSkill = {
 				now.as_enhance = (now.as_enhance ? now.as_enhance : 0) + p;
 			}
 			fld.log_push("パネル付与効果発動: " + dsc);
-		});
-		return true;
+		}, is_multi);
 	},
 	// -----------------------------
 	// チェインプラスパネル付与効果
 	"panel_chainplus": function (fld, n, cobj, params) {
 		var p = params[0];
+		var is_multi = params[1];
 		var dsc = "チェインプラス(+" + p + ")";
 		return panel_addition(fld, dsc, function(fl){
 			if (fl.Status.chain_status >= 0) {
 				fl.Status.chain += p;
 				fl.log_push("パネル付与効果発動: " + dsc);
 			}
-		});
-		return true;
+		}, is_multi);
 	},
 	// -----------------------------
 	// 回復パネル付与効果
 	"panel_healally": function (fld, n, cobj, params) {
 		var r = params[0];
+		var is_multi = params[1];
 		var dsc = "味方回復(" + (r * 100) + "%)";
 		return panel_addition(fld, dsc, function(fl){
 			for (var i = 0; i < fl.Allys.Deck.length; i++) {
@@ -1355,13 +1434,13 @@ var SpSkill = {
 				heal_ally(fl, now.maxhp * r, i);
 			}
 			fl.log_push("パネル付与効果発動: " + dsc);
-		});
-		return true;
+		}, is_multi);
 	},
 	// -----------------------------
 	// スキルブーストパネル付与効果
 	"panel_skillboost": function (fld, n, cobj, params) {
 		var t = params[0];
+		var is_multi = params[1];
 		var dsc = "スキルブースト(+" + t + ")";
 		return panel_addition(fld, dsc, function(fl){
 			for (var i = 0; i < fl.Allys.Deck.length; i++) {
@@ -1379,13 +1458,14 @@ var SpSkill = {
 				}
 			}
 			fl.log_push("パネル付与効果発動: " + dsc);
-		});
+		}, is_multi);
 	},
 	// -----------------------------
 	// パネルに軽減効果を付与する
 	"panel_attr_guard": function (fld, n, cobj, params) {
 		var attr = params[0];
 		var rate = params[1];
+		var is_multi = params[2];
 		var dsc = "パネル軽減効果(" + (rate * 100) + "%)";
 		return panel_addition(fld, dsc, function(fl){
 			fl.Status.panel_guard = {
@@ -1393,7 +1473,7 @@ var SpSkill = {
 				rate: rate,
 			}
 			fl.log_push("パネル付与効果発動: " + dsc);
-		});
+		}, is_multi);
 	},
 	// -----------------------------
 	// スキル反射無視
@@ -1936,11 +2016,17 @@ function ss_damage(fld, r, atr, atkn, own, tg, isnot_ss) {
 }
 
 // (内部用)パネル付与効果
-function panel_addition(fld, dsc, fc) {
-	fld.Status.panel_add.push({
+function panel_addition(fld, dsc, fc, is_multi) {
+	var panel_obj = {
 		desc: dsc,
 		func: fc,
-	});
+	}
+	// 複合パネル付与なら、ここでは処理せずobjectだけ返す
+	if(is_multi){
+		return panel_obj;
+	}
+	// それ以外ならここで追加処理
+	fld.Status.panel_add.push(panel_obj);
 	return true;
 }
 

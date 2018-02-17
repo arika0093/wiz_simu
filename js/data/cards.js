@@ -86233,7 +86233,13 @@ Cards = [{
 	ss2: {
 		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、チェインがプラス2の効果と攻撃力アップの効果を付与(50%)",
 		turn: 7,
-		proc: [ss_panel_change([1,1,1,0,0]), panel_chainplus(2)],
+		proc: [
+			ss_panel_change([1,1,1,0,0]),
+			panel_multieffect([
+				panel_attackup(0.5),
+				panel_chainplus(2)
+			]),
+		],
 	},
 	Lawake: [
 		Attr_statusup(0,200, [0,1,1,0,0,]),
@@ -93432,6 +93438,51 @@ Cards = [{
 	},
 	Lawake: [
 		Statusup(0,2000),
+	],
+},{
+	name: "清嵐の戦乙女 ヴィクトリア・ネルド",
+	cardno: 9821,
+	imageno: 12164,
+	hp: 2215,
+	atk: 4649,
+	cost: 58,
+	attr: [2,1],
+	species: [8],
+	islegend: true,
+	ape: "眠れる遺跡のアウトランダー",
+	as1: {
+		desc: "<攻撃>味方MAXHP10%を使い、敵単体へのダメージアップ(効果値:500)",
+		proc: add_cond(ChainAttack(5.0, 0), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "＜AS倍率強化＞3ターンの間、デッキ内の<主属性:雷、複属性:水>の精霊のAS攻撃倍率をアップ。同属性の精霊が多いほどさらに倍率が上昇(上限値:3倍)",
+		turn: 4,
+		proc: [ss_asenhance_all(3, [0,0,1,0,0], [0,1,0,0,0], 3)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_sattr(0,200, [0,0,1,0,0,], 0,100, [0,1,0,0,0,]),
+		Attr_statusup_sattr(200,0, [0,0,1,0,0,], 100,0, [0,1,0,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Abstate_invalid("as_sealed"),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<攻撃>味方MAXHP10%を使い、敵単体へのダメージアップ(効果値:600)",
+		proc: add_cond(ChainAttack(6.0, 0), as_consume_all(0.1)),
+	},
+	ss2: {
+		desc: "＜AS倍率強化＞3ターンの間、デッキ内の<主属性:雷、複属性:水>の精霊のAS攻撃倍率をアップ。同属性の精霊が多いほどさらに倍率が上昇(上限値:3倍)",
+		turn: 4,
+		proc: [ss_asenhance_all(3, [0,0,1,0,0], [0,1,0,0,0], 3)],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,100, [0,1,0,0,0,]),
+		Statusup(0,1000),
 	],
 },
 ];

@@ -311,6 +311,37 @@ function s_enemy_attack_ignoreguard(dmg, tnum, atkn, tgtype) {
 	}, makeDesc("防御無視攻撃"));
 }
 
+// 反動攻撃
+function s_enemy_recoilAttack(dmg, tnum, weak_attr, weak_rate, weak_turn){
+	return m_create_enemy_move(function (fld, n, nows, is_counter) {
+		// ログ出力
+		fld.log_push(`Enemy[${(n+1)}]: 反動攻撃[弱体化${weak_rate*100}%/${weak_turn}T]`);
+		// 攻撃
+		s_enemy_attack(dmg, tnum, 1, true).move(fld, n, nows, is_counter);
+		// 攻撃した敵に弱体化を付与
+		var enemy = GetNowBattleEnemys(fld, n);
+		enemy.turn_effect.push({
+			desc: "[" + get_attr_string(weak_attr, "/") + "]弱体化",
+			type: "attr_weaken",
+			icon: "attr_weaken",
+			isdual: false,
+			turn: weak_turn,
+			lim_turn: weak_turn,
+			effect: function () { },
+			priority: 2,
+			on_damage: function (f, dmg, a_i) {
+				if (weak_attr[a_i] > 0) {
+					return dmg * (1 + weak_rate);
+				} else {
+					return dmg;
+				}
+			}
+		});
+		
+	}, makeDesc("反動攻撃"));
+	return true;
+	
+}
 
 // 吸収(削り幅, 回復値, 攻撃対象数)
 function s_enemy_absorb(ratiorate, tnum, healvalue) {
@@ -1872,6 +1903,10 @@ function makeDesc(mystr, order){
 			toStr = prop != "breaks" ? toStr : toStr + "個"
 			toStr = prop != "as_seal_p" ? toStr : (toStr*100) + "%[AS封印]"
 			toStr = prop != "ss_seal_p" ? toStr : (toStr*100) + "%[SS封印]"
+			toStr = prop != "weak_attr" ? toStr : `${get_attr_string(toStr)}弱体化`
+			toStr = prop != "weak_rate" ? toStr : `${toStr*100}%`
+			toStr = prop != "weak_turn" ? toStr : `${toStr}T`
+			
 			toStr = prop != "healvalue" ? toStr : toStr+"回復"
 			toStr = prop != "ratiorate" ? toStr : toStr * 100 + "％削り"
 			toStr = prop != "ch" ? toStr : toStr + "chain"

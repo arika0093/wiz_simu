@@ -552,6 +552,26 @@ function ss_berserk_s(t) {
 }
 
 /**
+ * 味方全体にAS倍率強化を付与する
+ * rate_max: 効果値の最大値
+ * mattr: 対象の主属性　ex. [0,0,1,0,0] で主雷が対象
+ * sattr: 対象の副属性　ex. [0,1,0,0,0] で副水が対象
+ * turn: 継続ターン数
+ **/
+function ss_asenhance_all(rate_max, mattr, sattr, turn) {
+	return ss_template({
+		name: "ss_asenhance",
+		type: "turn_effect",
+		subtype: "asenhance",
+		target: "ally",
+		p1: rate_max,
+		p2: mattr,
+		p3: sattr,
+		p4: turn,
+	});
+}
+
+/**
  * 味方全体に精霊強化効果を付与し、自分は行動不能になる
  * t: 行動不能ターン数
  * sss: ssの配列(ex: [ss_attr_guard([1,1,1,1,1], 0.1, 4, "RF"), ss_enhance_all(1, 4, [1,1,1,1,1], "RF")])
@@ -964,6 +984,26 @@ function ss_resurrection(r, p) {
 
 // ------------------------------------------------------
 // パネル付与系
+/**
+ * 複合パネル付与
+ * pnls: 付与したいパネル効果を[]内に書く
+ *  例
+ *      // 攻撃力50%UP + チェインプラス2
+ *      panel_multieffect([
+ *          panel_attackup(0.5),
+ *          panel_chainplus(2),
+ *      ])
+ **/
+function panel_multieffect(...pnls){
+	return ss_template({
+		name: "panel_multieffect",
+		type: "panel_add",
+		target: "panel",
+		p1: pnls,
+		delaychkparam: ["p1"],
+	});
+}
+
 /**
  * 攻撃力アップ効果をパネルに付与する
  * p: 攻撃力アップ割合

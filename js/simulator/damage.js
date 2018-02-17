@@ -106,15 +106,20 @@ function calculate_damage(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, 
 	d /= (var_num || 1);
 	// 切り捨て
 	var d_ws = d = Math.floor(d);
+	// AS時のみ威力上昇させる処理があるなら適用
+	if(!is_ss){
+		$.each(now.turn_effect, (i,e) => {
+			if(e.on_answer_dmg){
+				d = e.on_answer_dmg(fld, i, d);
+			}
+		})
+	}
+	
 	// 凶暴化状態か取得
 	var is_berserk = !is_ss && $.grep(now.turn_effect, function(e){
 		return e.isberserk;
 	}).length > 0;
-	// 凶暴化状態なら威力を三倍に
-	if(is_berserk){
-		d *= 3;
-	}
-	// 攻撃時スキル確認
+	// 敵の攻撃時スキル確認
 	d = checkFunctionOnAttack(fld, enemy, d, atk_atr, is_berserk, is_simulate);
 
 	// return object
