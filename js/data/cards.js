@@ -95951,7 +95951,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "Christmas2016",
-	alias: ["しゅじょう", "シエオラ", "セルマ", "リシア"],
+	alias: ["主上", "しゅじょう", "シエオラ", "セルマ", "リシア"],
 	as1: {
 		desc: "<回復>水・雷属性の味方のHPを回復(14%)",
 		proc: Heal(0.14, [0,1,1,0,0], 0),
@@ -96001,7 +96001,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "Christmas2016",
-	alias: ["しゅじょう", "シエオラ", "セルマ", "リシア"],
+	alias: ["主上", "しゅじょう", "シエオラ", "セルマ", "リシア"],
 	as1: {
 		desc: "<属性特効連撃>味方のMAXHP10%を使い、水属性の敵単体へ特効5連撃(700%)",
 		proc: add_cond(ChainDualAttrAttack(7.0, 0, 5, [0,1,0,0,0]), as_consume_all(0.1)),
