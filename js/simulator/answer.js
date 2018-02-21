@@ -580,13 +580,12 @@ function answer_attack(fld, card, now, enemys, as, attr, panel, index, atk_rem, 
 // エンハスキルの処理
 function answer_enhance(fld, as, i, p, bef_f) {
 	var as_afters = [];
-	// var is_afteradded = false;
+	var chain = fld.Status.chain;
 	
 	for (var ci = 0; ci < fld.Allys.Deck.length; ci++) {
 		var ass = {rate: 0};
 		var card = fld.Allys.Deck[ci];
 		var now = fld.Allys.Now[ci];
-		var chain = fld.Status.chain;
 		var time = Number($("#answer_time_sel").val());
 
 		// 最大の値を取り出す
@@ -606,8 +605,6 @@ function answer_enhance(fld, as, i, p, bef_f) {
 		var bef_enh = now.as_enhance ? now.as_enhance : 0;
 		now.as_enhance = bef_enh + ass.rate;
 		// 攻撃後処理
-		// 並び替えに影響しないよう暫定的に書き換え
-		// 現時点だと属性反転等でエンハ対象が0体の時うまくいかないので後ほど修正
 		// if (!is_afteradded) {
 		// 	as_afters = answer_afterfunc(fld, as_afters, ass, i, true);
 		// 	if(as_afters.length > 0){
@@ -617,10 +614,10 @@ function answer_enhance(fld, as, i, p, bef_f) {
 	}
     // 攻撃後処理(修正)
 	// チェイン条件を満たした最後のAS効果を取得
-    var lastafter = as.reduce((a,b)=>{
-        return chain >= b.chain ? b : a;
-    },null);
-    //見つかった場合は処理する
+    var lastafter = as.reduce((a,b) => {
+	        return chain >= b.chain ? b : a;
+	    }, null);
+    // 見つかった場合は処理する
     if(lastafter){
         as_afters = answer_afterfunc(fld, as_afters, lastafter, i, true);
     }
