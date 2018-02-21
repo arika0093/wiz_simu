@@ -242,6 +242,15 @@ var Awake_crystal_lists = [{
 	imple: Awake_composite,
 	param2: Spec_statusup(150, 150, [8]),
 }, {
+	name: "光のチョコレート(副属性持ちHP+150)",
+	imple: Awake_composite,
+	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 150, 0, [1,1,1,1,1]),
+}, {
+	name: "闇のチョコレート(副属性持ちATK+150)",
+	imple: Awake_composite,
+	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 0, 150, [1,1,1,1,1]),
+}, {
+	genre: "ステータス変動(味方全体)[敵結晶]",
 	name: "擬態の結晶〈ガーゴイル〉(物質HP+200)",
 	imple: Awake_composite,
 	param2: Spec_statusup(200, 0, [6]),
@@ -305,6 +314,18 @@ var Awake_crystal_lists = [{
 	name: "流浪の結晶[コア] (術士/魔法生物のATK/HP+100)",
 	imple: Awake_composite,
 	param2: Spec_statusup(100, 100, [7,9]),
+}, {
+	name: "驚天火の結晶Ⅱ〈サプラーディー〉(副火のATK/HP+100)",
+	imple: Awake_composite,
+	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 100, 100, [1,0,0,0,0]),
+}, {
+	name: "驚天水の結晶Ⅱ〈サプラーディー〉(副水のATK/HP+100)",
+	imple: Awake_composite,
+	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 100, 100, [0,1,0,0,0]),
+}, {
+	name: "驚天雷の結晶Ⅱ〈サプラーディー〉(副雷のATK/HP+100)",
+	imple: Awake_composite,
+	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 100, 100, [0,0,1,0,0]),
 }, {
 	genre: "L時発動結晶",
 	name: "煌眼の欠片(L時味方ATK+100/25%回復)",
