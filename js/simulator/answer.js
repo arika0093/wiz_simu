@@ -580,7 +580,7 @@ function answer_attack(fld, card, now, enemys, as, attr, panel, index, atk_rem, 
 // エンハスキルの処理
 function answer_enhance(fld, as, i, p, bef_f) {
 	var as_afters = [];
-	var is_afteradded = false;
+	// var is_afteradded = false;
 	
 	for (var ci = 0; ci < fld.Allys.Deck.length; ci++) {
 		var ass = {rate: 0};
@@ -608,13 +608,22 @@ function answer_enhance(fld, as, i, p, bef_f) {
 		// 攻撃後処理
 		// 並び替えに影響しないよう暫定的に書き換え
 		// 現時点だと属性反転等でエンハ対象が0体の時うまくいかないので後ほど修正
-		if (!is_afteradded) {
-			as_afters = answer_afterfunc(fld, as_afters, ass, i, true);
-			if(as_afters.length > 0){
-				is_afteradded = true;
-			}
-		}
+		// if (!is_afteradded) {
+		// 	as_afters = answer_afterfunc(fld, as_afters, ass, i, true);
+		// 	if(as_afters.length > 0){
+		// 		is_afteradded = true;
+		// 	}
+		// }
 	}
+    // 攻撃後処理(修正)
+	// チェイン条件を満たした最後のAS効果を取得
+    var lastafter = as.reduce((a,b)=>{
+        return chain >= b.chain ? b : a;
+    },null);
+    //見つかった場合は処理する
+    if(lastafter){
+        as_afters = answer_afterfunc(fld, as_afters, lastafter, i, true);
+    }
 	return as_afters;
 }
 
