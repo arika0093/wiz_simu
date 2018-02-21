@@ -581,6 +581,7 @@ function answer_attack(fld, card, now, enemys, as, attr, panel, index, atk_rem, 
 function answer_enhance(fld, as, i, p, bef_f) {
 	var as_afters = [];
 	var is_afteradded = false;
+	
 	for (var ci = 0; ci < fld.Allys.Deck.length; ci++) {
 		var ass = {rate: 0};
 		var card = fld.Allys.Deck[ci];
@@ -591,6 +592,7 @@ function answer_enhance(fld, as, i, p, bef_f) {
 		// 最大の値を取り出す
 		for (var ai = 0; ai < as.length; ai++) {
 			var as_t = {rate: 0};
+			// 実際にエンハンスが乗るかどうかを確認
 			if (is_answer_target(fld, bef_f, as[ai], chain, card.attr[0], card.species, i, -1, p, ci)) {
 				as_t = $.extend(true, {}, as[ai]);
 				// AS効果値後乗せ処理
@@ -600,14 +602,17 @@ function answer_enhance(fld, as, i, p, bef_f) {
 			}
 			ass = (ass.rate < as_t.rate) ? as_t : ass;
 		}
-
 		// エンハ値追加
 		var bef_enh = now.as_enhance ? now.as_enhance : 0;
 		now.as_enhance = bef_enh + ass.rate;
 		// 攻撃後処理
+		// 並び替えに影響しないよう暫定的に書き換え
+		// 現時点だと属性反転等でエンハ対象が0体の時うまくいかないので後ほど修正
 		if (!is_afteradded) {
 			as_afters = answer_afterfunc(fld, as_afters, ass, i, true);
-			is_afteradded = true;
+			if(as_afters.length > 0){
+				is_afteradded = true;
+			}
 		}
 	}
 	return as_afters;
