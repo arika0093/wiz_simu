@@ -346,7 +346,7 @@ function enemy_check_ondead(fld){
 	var enemys = GetNowBattleEnemys(fld);
 	$.each(enemys, function (i, e){
 		var mv = e.move;
-		if(e.nowhp <= 0 && mv.on_dead && !e.on_dead_execed){
+		if(e.nowhp <= 0 && mv && mv.on_dead && !e.on_dead_execed){
 			fld.log_push(`Enemy[${i + 1}]: 死亡時行動`);
 			$.each(mv.on_dead, (io, eo) => {
 				eo.move(fld, i);
