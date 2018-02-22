@@ -96203,7 +96203,7 @@ Cards = [{
 	awakes: [
 		Attr_statusup(300,0, [1,0,0,0,0,]),
 		Attr_statusup(0,300, [1,0,0,0,0,]),
-		Fastskill(3),
+		Fastskill(2),
 		Attr_statusup_oattr(300,0, [1,0,0,0,0,]),
 		Panel_boost([1,0,0,0,0,],4),
 		Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
