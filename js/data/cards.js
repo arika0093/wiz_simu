@@ -5725,7 +5725,7 @@ Cards = [{
 	ss1: {
 		desc: "<ダメージ強化>2ターン水属性の味方の攻撃力をアップ(+40％)",
 		turn: 6,
-		proc: [ss_enhance_all(0.4, 2, [0,1,0,0,0])], 
+		proc: [ss_enhance_all(0.4, 2, [0,1,0,0,0])],
 	},
 	islegend: true,
 	Lawake: [
@@ -5739,7 +5739,7 @@ Cards = [{
 	ss2: {
 		desc: "<ダメージ強化>4ターン水属性の味方の攻撃力をアップ(+60％)",
 		turn: 9,
-		proc: [ss_enhance_all(0.6, 4, [0,1,0,0,0])], 
+		proc: [ss_enhance_all(0.6, 4, [0,1,0,0,0])],
 	},
 }, {
 	name: "鋼鉄の管理者 アムベル・ケイ",
@@ -8248,47 +8248,47 @@ Cards = [{
 	},
 }, {
 	name: "想い、純色の雪華 ピノ・マリアンヌ",
-	cardno: 4144,
+	cardno: 9878,
 	imageno: 5822,
-	hp: 2568,
-	atk: 2632,
-	cost: 43,
+	hp: 4018,
+	atk: 4141,
+	cost: 40,
 	attr: [1, -1],
 	species: [9],
 	awakes: [
-		Statusup(0, 100),
-		Statusup(100, 0),
-		Costdown(2),
-		Fastskill(1),
-		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
-		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
-		Costdown(2),
-		Panel_boost([0, 1, 0, 0, 0, ], 1),
+        Panel_boost([0, 1, 0, 0, 0, ], 4),
+        Attr_statusup_oattr(0, 300, [0, 1, 0, 0, 0, ]),
+        Attr_statusup_oattr(300, 0, [0, 1, 0, 0, 0, ]),
+        Heal_afterbattle(10),
+        Fastskill(1),
+        NEFTJOD(30),
+        Attr_statusup(0,300, [0,1,0,0,0,]),
+        Attr_statusup(300,0, [0,1,0,0,0,]),
 		Fastskill(2),
-		Panel_boost([0, 1, 0, 0, 0, ], 1),
+        Abstate_invalid("ss_sealed"),
 	],
 	as1: {
-		desc: "<回復>味方全員の味方のHPを回復、術士はさらに回復(通常：10％ / 種族：15％)",
-		proc: [Heal(0.10, [1,1,1,1,1], 0), SpecHeal(0.15, [1,1,1,1,1], [9], 0)],
+		desc: "<回復>味方全体のHPを回復(10%)、デッキに単色の精霊が多いほど、さらに回復(1%)（上限:5段階)",
+		proc: add_cond(Heal(0.10, [1, 1, 1, 1, 1]), as_singleattr_num(0, 0.01)),
 	},
 	ss1: {
 		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
-		turn: 5,
+		turn: 3,
 		proc: [ss_panel_change([0,1,1,0,0])]
 	},
 	islegend: true,
 	Lawake: [
-		Statusup(500, 0),
+		Statusup(1000, 0),
 		Statusup(0, 500),
 	],
 	as2: {
-		desc: "<回復>味方全員の味方のHPを回復、術士はさらに回復(通常：13％ / 種族：18％)",
-		proc: [Heal(0.13, [1,1,1,1,1], 0), SpecHeal(0.18, [1,1,1,1,1], [9], 0)],
+        desc: "<回復>味方全体のHPを回復(13%)、デッキに単色の精霊が多いほど、さらに回復(1%)（上限:5段階)",
+        proc: add_cond(Heal(0.13, [1, 1, 1, 1, 1]), as_singleattr_num(0, 0.01)),
 	},
 	ss2: {
-		desc: "<パネル変換>ジャンルパネルをALL属性化",
+		desc: "<パネル変換>ジャンルパネルをALL属性化し、ダメージ25%軽減の効果を付与",
 		turn: 7,
-		proc: [ss_panel_change([1,1,1,0,0])]
+		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)]
 	},
 }, {
 	name: "氷をつたう夏の滴 ピノ・マリアンヌ",
@@ -10488,7 +10488,7 @@ Cards = [{
 	ss2: {
 		desc: "<効果解除大魔術>敵全体のガード&ダメージブロックを解除し、水属性のダメージ。HP20％以下でさらにダメージアップ(通常：180％ / HP20％以下：400％)",
 		turn: 12,
-		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(ss_hp_less(0.20, 4.0, 1.8), [1])], 
+		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(ss_hp_less(0.20, 4.0, 1.8), [1])],
 	},
 }, {
 	name: "AbCd-Ψψ:《絢爛の神舞 ニティア》",
@@ -18781,7 +18781,7 @@ Cards = [{
 		Statusup(500,0),
 		Attr_statusup(0,100, [0,0,1,0,0,]),
 	],
-}, 
+},
 {
 	name: "逆巻の花車旋風 ナゴミ・オソドリ",
 	cardno: 4087,
@@ -20361,17 +20361,17 @@ Cards = [{
 	],
 },{
 	name: "煌めく星の神楽姫 キシャラ・オロル",
-	cardno: 5460,
+	cardno: 9880,
 	imageno: 7234,
-	hp: 3001,
-	atk: 2789,
-	cost: 42,
+	hp: 4511,
+	atk: 3527,
+	cost: 40,
 	attr: [0,-1],
 	species: [9],
 	islegend: true,
 	as1: {
-		desc: "<種族攻撃強化>3チェインで火属性の味方の攻撃力をアップ、術士はさらにアップ(40%/60%)",
-		proc: [ChainEnhance(0.40, [1,0,0,0,0], 3), ChainSpecEnhance(0.60, [1,0,0,0,0], [9], 3)],
+		desc: "<攻撃強化・ガード>3チェインで全属性のダメージを10%軽減し、デッキに単色の精霊が多いほど、攻撃力をアップ(15%)（上限:5段階)",
+		proc: [as_guard(0.10, [1,1,1,1,1], 3), add_cond(ChainEnhance(0, [0,1,0,0,0], 3), as_singleattr_num(0, 0.15))],
 	},
 	ss1: {
 		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
@@ -20379,20 +20379,20 @@ Cards = [{
 		proc: [ss_heal(0.5), ss_abstate_cure()],
 	},
 	awakes: [
-		Fastskill(1),
-		Panel_boost([1,0,0,0,0,],2),
-		Attr_statusup(0,100, [1,0,0,0,0,]),
-		Fastskill(1),
-		Statusup(0,200),
-		Attr_statusup(100,0, [1,0,0,0,0,]),
-		Panel_boost([1,0,0,0,0,],2),
-		Fastskill(1),
-		Spec_statusup(200,0, [9,]),
-		Spec_statusup(0,200, [9,]),
+        Panel_boost([1,0,0,0,0,],4),
+        Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
+        Attr_statusup_oattr(300,0, [1,0,0,0,0,]),
+        Heal_afterbattle(10),
+        Fastskill(1),
+        NEFTJOD(30),
+        Attr_statusup(0,300, [1,0,0,0,0,]),
+        Attr_statusup(300,0, [1,0,0,0,0,]),
+		Fastskill(2),
+        NEFTJOD(30),
 	],
 	as2: {
-		desc: "<種族攻撃強化>3チェインで火属性の味方の攻撃力をアップ、術士はさらにアップ(40%/80%)",
-		proc: [ChainEnhance(0.40, [1,0,0,0,0], 3), ChainSpecEnhance(0.80, [1,0,0,0,0], [9], 3)],
+        desc: "<攻撃強化・ガード>3チェインで全属性のダメージを10%軽減し、デッキに単色の精霊が多いほど、攻撃力をアップ(20%)（上限:5段階)",
+        proc: [as_guard(0.10, [1,1,1,1,1], 3), add_cond(ChainEnhance(0, [0,1,0,0,0], 3), as_singleattr_num(0, 0.20))],
 	},
 	ss2: {
 		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
@@ -20401,7 +20401,7 @@ Cards = [{
 	},
 	Lawake: [
 		Attr_statusup(0,100, [1,0,0,0,0,]),
-		Statusup(400,0),
+		Statusup(1000,0),
 	],
 },{
 	name: "聖なる叡智を求めて ティア・ソピア",
@@ -21016,17 +21016,17 @@ Cards = [{
 	],
 },{
 	name: "不縛なる麗翼 グレイス・シグラー",
-	cardno: 5693,
+	cardno: 9881,
 	imageno: 7514,
-	hp: 3323,
-	atk: 3255,
-	cost: 42,
+	hp: 4613,
+	atk: 3455,
+	cost: 40,
 	attr: [0,-1],
 	species: [9],
 	islegend: true,
 	as1: {
-		desc: "<回復>火属性の味方のHPを回復(13%)",
-		proc: Heal(0.13, [1,0,0,0,0], 0),
+		desc: "<回復>火属性の味方のHPを回復、3チェインでさらに回復(13%/15%)",
+		proc: [Heal(0.13, [1,0,0,0,0], 0),Heal(0.15,[1,0,0,0,0],3)],
 	},
 	ss1: {
 		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
@@ -21034,28 +21034,28 @@ Cards = [{
 		proc: [ss_heal(0.5), ss_abstate_cure()],
 	},
 	awakes: [
-		Fastskill(1),
-		Panel_boost([1,0,0,0,0,],2),
-		Costdown(2),
-		Heal_afterbattle(10),
-		Statusup(200,0),
-		Fastskill(2),
-		Attr_statusup(0,200, [1,0,0,0,0,]),
-		Panel_boost([1,0,0,0,0,],2),
-		Attr_statusup(200,0, [1,0,0,0,0,]),
-		NEFTJOD(30),
+        Panel_boost([1,0,0,0,0,],4),
+        Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
+        Attr_statusup_oattr(300,0, [1,0,0,0,0,]),
+        Heal_afterbattle(10),
+        Fastskill(1),
+        NEFTJOD(30),
+        Attr_statusup(0,300, [1,0,0,0,0,]),
+        Attr_statusup(300,0, [1,0,0,0,0,]),
+        Fastskill(2),
+        Abstate_invalid("as_sealed"),
 	],
 	as2: {
-		desc: "<回復>火属性の味方のHPを回復(16%)",
-		proc: Heal(0.16, [1,0,0,0,0], 0),
-	},
+		desc: "<回復>火属性の味方のHPを回復、3チェインでさらに回復(16%/18%)",
+		proc: [Heal(0.16, [1,0,0,0,0], 0),Heal(0.18,[1,0,0,0,0],3)],
+    },
 	ss2: {
 		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
 		turn: 10,
 		proc: [ss_heal(1.0), ss_abstate_cure()],
 	},
 	Lawake: [
-		Statusup(500,0),
+		Statusup(1000,0),
 		Attr_statusup(0,100, [1,0,0,0,0,]),
 	],
 },{
@@ -21507,7 +21507,7 @@ Cards = [{
 		Statusup(0,500),
 		Statusup(500,0),
 	],
-}, 
+},
 {
 	name: "星と氷に微笑んで ピピア・ショトワ",
 	cardno: 5698,
@@ -21689,17 +21689,17 @@ Cards = [{
 	],
 }, {
 	name: "聖巫女天使 クリネア・マキア",
-	cardno: 5187,
+	cardno: 9879,
 	imageno: 7072,
-	hp: 2993,
-	atk: 2564,
-	cost: 45,
+	hp: 5373,
+	atk: 2661,
+	cost: 40,
 	attr: [1,-1],
 	species: [3],
 	islegend: true,
 	as1: {
-		desc: "<回復>水属性の味方のHPを回復(13%)",
-		proc: Heal(0.13, [0,1,0,0,0], 0),
+        desc: "<回復>水属性の味方のHPを回復、天使はさらに回復(13%/15%)",
+		proc: [Heal(0.13, [0, 1, 0, 0, 0], 0),SpecHeal(0.15, [0, 1, 0, 0, 0], [3], 0)],
 	},
 	ss1: {
 		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
@@ -21707,20 +21707,20 @@ Cards = [{
 		proc: [ss_heal(0.5), ss_abstate_cure()],
 	},
 	awakes: [
+        Panel_boost([0,1,0,0,0,],4),
+        Attr_statusup_oattr(0,300, [0,1,0,0,0,]),
+        Attr_statusup_oattr(300,0, [0,1,0,0,0,]),
+        Attr_relief([1,1,1,1,1,],10),
 		Fastskill(1),
-		Panel_boost([0,1,0,0,0,],1),
-		Attr_relief([1,1,1,1,1,],10),
-		Fastskill(1),
-		Attr_statusup(0,100, [0,1,0,0,0,]),
-		Attr_statusup(100,0, [0,1,0,0,0,]),
-		Fastskill(1),
-		Attr_statusup(100,0, [0,1,0,0,0,]),
+        Panel_boost([0,1,0,0,0,],4),
+		Attr_statusup(0,300, [0,1,0,0,0,]),
+		Attr_statusup(300,0, [0,1,0,0,0,]),
 		Heal_afterbattle(10),
-		Panel_boost([0,1,0,0,0,],2),
+        Fastskill(2),
 	],
 	as2: {
-		desc: "<回復>水属性の味方のHPを回復(16%)",
-		proc: Heal(0.16, [0,1,0,0,0], 0),
+		desc: "<回復>水属性の味方のHPを回復、天使はさらに回復(16%/18%)",
+		proc: [Heal(0.16, [0,1,0,0,0], 0),SpecHeal(0.18, [0, 1, 0, 0, 0],[3],0)],
 	},
 	ss2: {
 		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
@@ -21728,7 +21728,7 @@ Cards = [{
 		proc: [ss_heal(1.0), ss_abstate_cure()],
 	},
 	Lawake: [
-		Statusup(500,0),
+		Statusup(1000,0),
 		Statusup(0,500),
 	],
 },{
@@ -36170,7 +36170,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<回復>火属性の味方のHPを回復、神族はさらに回復(5%/23%)",
-		proc: [Heal(0.05, [1,0,0,0,0], 0), SpecHeal(0.23, [1,0,0,0,0], [2], 0)],
+		proc: [Heal(0.05, [1,0,0,0,0], 0), SpecHeal(0.23, [1,0,0,0,0], [1], 0)],
 	},
 	ss2: {
 		desc: "<状態異常無効>2ターン敵の状態異常攻撃を無効化する",
@@ -55231,7 +55231,7 @@ Cards = [{
 	ss2: {
 		desc: "<効果解除大魔術>スキル反射を無視し、敵全体のガード＆ダメージブロックを解除し、水属性のダメージ。HP20%以下でさらにダメージアップ(300%/1500%)",
 		turn: 7,
-		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(ss_hp_less(0.20, 15.0, 3.0), [1]), ss_ignore_skillcounter()], 
+		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(ss_hp_less(0.20, 15.0, 3.0), [1]), ss_ignore_skillcounter()],
 	},
 }, {
 	name: "AbCd-Ψψ:《絢爛の神舞 ニティア》",
@@ -55445,7 +55445,7 @@ Cards = [{
 		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し(15%)、味方の攻撃力をアップ(100%)◆発動中行動不可",
 		turn: 1,
 		proc: [ss_reinforcement_all(4, [ss_enhance_all(1, 1, [1,1,1,1,1], "RF"), ss_regenerate(0.15, 1, "RF")])],
-	
+
 	},
 	as2: {
 		desc: "<攻撃強化・回復>5チェインで水属性の味方のHPを回復(10%)、さらに攻撃力をアップ(90%)",
@@ -59753,7 +59753,7 @@ Cards = [{
 		turn: 9,
 		proc: [ss_damage_s(12.0, [0], 1), ss_consume_own(0.5), ss_ignore_skillcounter()],
 	},
-}, 
+},
 {
 	name: "夏夢航路の女神様 シール・サンテ",
 	cardno: 7708,
@@ -60114,7 +60114,7 @@ Cards = [{
 		turn: 5,
 		proc: [ss_damage_s(3.0, [1], 1), ss_delay_s(1)],
 	},
-}, 
+},
 {
 	name: "煉獄華 リエン・ユー",
 	cardno: 7718,
@@ -60160,7 +60160,7 @@ Cards = [{
 		Statusup(0,500),
 		NEFTJOD(30),
 	],
-}, 
+},
 {
 	// -------------------------
 	// 追加: ウィズセレ(戦え！魔轟三鉄傑)
@@ -60297,7 +60297,7 @@ Cards = [{
 		Statusup(0,800),
 		Statusup(500,0),
 	],
-}, 
+},
 {
 	name: "滅魔の武器職人 リギット・ミリアン",
 	cardno: 7725,
@@ -92923,7 +92923,7 @@ Cards = [{
 		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [1,0,0,0,0,]),
 		Statusup(0,500),
 		Abstate_invalid([
-			"as_sealed", "ss_sealed", "poison", "attr_weaken", 
+			"as_sealed", "ss_sealed", "poison", "attr_weaken",
 			"death_limit", "all_sealed", "heal_reverse", "panic_shout", "attr_reverse"
 		]),
 	],
