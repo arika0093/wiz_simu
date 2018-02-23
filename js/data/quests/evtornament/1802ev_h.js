@@ -219,17 +219,9 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     s_enemy_attack(100, 5, 1, true)/* Warning: usedでないgambitがあります。 */
+                     m_enemy_once(damage_block_all(20000, 5)),
                   ],
                   on_move: [
-                     s_enemy_attack(100, 5, 1, true),
-                     m_enemy_once(damage_block_all(20000, 5)),
-                     s_enemy_attack(100, 5, 1, true),
-                     s_enemy_attack(100, 5, 1, true),
-                     m_enemy_once(damage_block_all(20000, 5)),
-                     s_enemy_attack(100, 5, 1, true),
-                     s_enemy_attack(100, 5, 1, true),
-                     m_enemy_once(damage_block_all(20000, 5)),
                      s_enemy_attack(100, 5, 1, true)
                   ],
                   atrandom: false,
@@ -339,18 +331,10 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     s_enemy_attack(100, 5, 1, true)/* Warning: usedでないgambitがあります。 */
+                     m_enemy_once(s_enemy_attack_ratio(0.9, 5, true)),
                   ],
                   on_move: [
                      s_enemy_attack(100, 5, 1, true),
-                     m_enemy_once(s_enemy_attack_ratio(0.9, 5, true)),
-                     s_enemy_attack(100, 5, 1, true),
-                     s_enemy_attack(100, 5, 1, true),
-                     s_enemy_attack(100, 5, 1, true),
-                     s_enemy_attack(100, 5, 1, true),
-                     s_enemy_attack(100, 5, 1, true),
-                     m_enemy_once(s_enemy_attack_ratio(0.9, 5, true)),
-                     s_enemy_attack(100, 5, 1, true)
                   ],
                   atrandom: false,
                   turn: 1,
