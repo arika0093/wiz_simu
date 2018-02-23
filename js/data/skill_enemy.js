@@ -337,7 +337,10 @@ function s_enemy_recoilAttack(dmg, tnum, weak_attr, weak_rate, weak_turn){
 				}
 			}
 		});
-		
+		// スキルカウンターを有効に
+		$.each(fld.Allys.Now, (i, now) => {
+			now.flags.skill_counter[n] = (is_counter ? false : true);
+		})
 	}, makeDesc("反動攻撃"));
 	return true;
 	
