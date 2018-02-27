@@ -662,7 +662,7 @@ function s_enemy_healreverse(rate, tnum) {
 				// 光闇属性なら反転は無効
 				bef_absattack: function (fld, oi, ei) {
 					var card = fld.Allys.Deck[oi];
-					return !(card.attr.indexOf(3) >= 0 && card.attr.indexOf(4) >= 0);
+					return !(card.attr.indexOf(3) >= 0 || card.attr.indexOf(4) >= 0);
 				},
 				effect: function(f, oi, teff, state, is_t, is_b){
 					if(f.Enemys.Data[teff.receveButtle].enemy[teff.fromEnemy].nowhp <= 0){
