@@ -1,0 +1,45 @@
+{
+	name: "天宇雷轟の皇竜魔 ミネバ・クロード",
+	cardno: 5824,
+	imageno: 7693,
+	hp: 3213,
+	atk: 5293,
+	cost: 53,
+	attr: [2,-1],
+	species: [0],
+	islegend: true,
+	as1: {
+		desc: "<全体攻撃>3チェインで敵全体へダメージ、10チェインで更にダメージアップ(180%/280%)",
+		proc: [ChainAllAttack(1.8, 3), ChainAllAttack(2.8, 10)],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/900%)",
+		turn: 9,
+		proc: [ss_damage_all(special_attr([0,1,0,0,0], 9.0, 2.0), [2])],
+	},
+	awakes: [
+		Statusup(300,0),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Fastskill(1),
+		Attr_relief([1,0,0,0,0,],10),
+		Costdown(2),
+		Attr_relief([0,1,0,0,0,],10),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(0,500, [0,]),
+	],
+	as2: {
+		desc: "<全体攻撃>3チェインで敵全体へダメージ、10チェインで更にダメージアップ(220%/320%)",
+		proc: [ChainAllAttack(2.2, 3), ChainAllAttack(3.2, 10)],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/1200%)",
+		turn: 12,
+		proc: [ss_damage_all(special_attr([0,1,0,0,0], 12.0, 2.0), [2])],
+	},
+	Lawake: [
+		Statusup(0,700),
+		Statusup(500,0),
+	],
+}

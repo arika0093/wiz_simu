@@ -1,0 +1,46 @@
+{
+	name: "炯眼冷徹 ルートヴィッヒ・ロメオ",
+	cardno: 4598,
+	imageno: 6300,
+	hp: 2564,
+	atk: 3052,
+	cost: 46,
+	attr: [0, -1],
+	species: [8],
+	disable: true,
+	awakes: [
+		Costdown(2),
+		Panel_boost([1,0,0,0,0], 1),
+		Fastskill(1),
+		Statusup(0, 200),
+		Panel_boost([1,0,0,0,0], 1),
+		Fastskill(2),
+		Statusup(0, 200),
+		Spec_statusup(100, 0, [8]),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Spec_statusup(0, 200, [8]),
+	],
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、HP80%以上でさらにダメージアップ(通常：300％：HP80％以上：400％)",
+		proc: [ChainAttack(3.0, 3), add_cond(ChainAttack(4.0, 3), when_hp_more(0.8))],
+	},
+	ss1: {
+		desc: "<多弾魔術>敵単体へ火属性の5回連続ダメージ(計180％)",
+		turn: 6,
+		proc: [ss_damage_s(1.8, [0], 5)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、HP80%以上でさらにダメージアップ(通常：400％：HP80％以上：500％)",
+		proc: [ChainAttack(4.0, 3), add_cond(ChainAttack(5.0, 3), when_hp_more(0.8))],
+	},
+	ss2: {
+		desc: "<多弾魔術>敵単体へ火属性の5回連続ダメージ、10チェインで10回連続攻撃に(計380％)",
+		turn: 9,
+		proc: [ss_damage_s(3.8, [0], ss_chain_cond(10, 10, 5))],
+	},
+}

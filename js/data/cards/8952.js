@@ -1,0 +1,48 @@
+{
+	name: "バトルマーメイド 印河比良芽",
+	cardno: 8952,
+	imageno: 8708,
+	hp: 2812,
+	atk: 4802,
+	cost: 37,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "真夏のグレート・クイズ・ウォー",
+	alias: ["しるしがわひらめ"],
+	is_dist: true,
+	as1: {
+		desc: "<属性特効連撃>3チェインで火属性の敵単体へ特効3連撃(400%)、解答が早いほどさらにアップ(50%)(上限:4段階)",
+		proc: [add_cond(ChainDualAttrAttack(4.0, 3, 3, [1,0,0,0,0]), as_timedep(0.5))],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ水属性のダメージ(400%)、さらに火属性の敵には特効ダメージ(550%)",
+		turn: 7,
+		proc: [ss_damage_all(special_attr([1,0,0,0,0], 9.5, 4.0), [1])],
+	},
+	awakes: [
+		Fastskill(3),
+		Panel_boost([0,1,0,0,0,],1),
+		Costdown(10),
+		NEFTJOD(30),
+		Attr_statusup_oattr(0,300, [0,1,0,0,0,]),
+		Attr_statusup_oattr(300,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_relief([0,1,0,0,0,],10),
+		Attr_statusup(300,0, [0,1,0,0,0,]),
+		Attr_statusup(0,300, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<属性特効連撃>3チェインで火属性の敵単体へ特効3連撃(500%)、解答が早いほどさらにアップ(50%)(上限:4段階)",
+		proc: [add_cond(ChainDualAttrAttack(5.0, 3, 3, [1,0,0,0,0]), as_timedep(0.5))],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ水属性のダメージ(400%)、さらに火属性の敵には特効ダメージ(1050%)",
+		turn: 10,
+		proc: [ss_damage_all(special_attr([1,0,0,0,0], 14.5, 4.0), [1])],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

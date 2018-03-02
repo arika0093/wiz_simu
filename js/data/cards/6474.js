@@ -1,0 +1,46 @@
+{
+	name: "古の魂を継ぐ水龍 ルシェ・ワダツミ",
+	cardno: 6474,
+	imageno: 8414,
+	hp: 3001,
+	atk: 3205,
+	cost: 39,
+	attr: [1,-1],
+	species: [0],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化・回復>水属性の味方を回復(11%)、さらに水属性の味方の攻撃力をアップ(20%)",
+		proc: [Heal(0.11, [1,0,0,0,0], 0), ChainEnhance(0.20, [1,0,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(150%)、さらに3ターンの間水属性のダメージ(150%)",
+		turn: 6,
+		proc: [ss_continue_damage(1.5, 1.5, [1], 3)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Statusup(0,200),
+		Fastskill(2),
+		Attr_relief([0,0,1,0,0,],10),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Spec_statusup(0,200, [0,]),
+		Guild_statusup(0, 1000),
+		Guild_statusup(1000, 0),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>水属性の味方を回復(13%)、さらに水属性の味方の攻撃力をアップ(20%)",
+		proc: [Heal(0.13, [1,0,0,0,0], 0), ChainEnhance(0.20, [1,0,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(200%)、さらに3ターンの間水属性のダメージ(200%)",
+		turn: 8,
+		proc: [ss_continue_damage(2.0, 2.0, [1], 3)],
+	},
+	Lawake: [
+		Statusup(300,0),
+		Statusup(0,500),
+	],
+}

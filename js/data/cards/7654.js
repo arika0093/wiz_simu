@@ -1,0 +1,48 @@
+{
+	name: "いま花開く世界 シャロン・イェルグ",
+	cardno: 7654,
+	imageno: 7116,
+	hp: 3245,
+	atk: 3356,
+	cost: 52,
+	attr: [2,3],
+	species: [3],
+	disable: true,
+	islegend: true,
+	ape: "その光は淡く碧く 第一章 皇帝と剣",
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、10チェインで更にダメージアップ(350%/550%)",
+		proc: [ChainAttack(3.5, 4), ChainAttack(5.5, 10)],
+	},
+	ss1: {
+		desc: "<カウンター>5ターンの間、スキルカウンター待機(300%)",
+		turn: 12,
+		proc: [ss_skillcounter(3.0, 5)],
+	},
+	awakes: [
+		Attr_relief([0,0,0,1,1,],30),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Fastskill(4),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Heal_afterbattle(10),
+		Attr_statusup_sattr(200,0, [0,0,1,0,0,], 200,0, [0,0,0,1,0,]),
+		Attr_statusup_sattr(0,200, [0,0,1,0,0,], 0,200, [0,0,0,1,0,]),
+		Awake_noeffect("スキル反射見破り",1),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、10チェインで更にダメージアップ(450%/650%)",
+		proc: [ChainAttack(4.5, 4), ChainAttack(6.5, 10)],
+	},
+	ss2: {
+		desc: "<カウンター>5ターンの間、スキルカウンター待機(400%)",
+		turn: 15,
+		proc: [ss_skillcounter(4.0, 5)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+}

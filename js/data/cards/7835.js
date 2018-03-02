@@ -1,0 +1,46 @@
+{
+	name: "氷をつたう夏の滴 ピノ・マリアンヌ",
+	cardno: 7835,
+	imageno: 9987,
+	hp: 4321,
+	atk: 3021,
+	cost: 56,
+	attr: [1,2],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<回復>水・雷属性の味方のHPを回復、パネルの色が増す度さらに回復(11%/15%/17%)",
+		proc: ChainPanelsHeal(0.11, 0.15, 0.17, [0,1,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
+		turn: 3,
+		proc: [ss_panel_change([0,1,1,0,0])],
+	},
+	awakes: [
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],2),
+		Heal_afterbattle(10),
+		Spec_statusup(300,0, [9,]),
+		Spec_statusup(0,300, [9,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,1,0,0,]),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,1,0,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<回復>水・雷属性の味方のHPを回復、パネルの色が増す度さらに回復(13%/17%/20%)",
+		proc: ChainPanelsHeal(0.13, 0.17, 0.20, [0,1,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、ダメージ25%軽減と回復の効果を付与(10%)",
+		turn: 7,
+		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1],0.25), panel_healally(0.1)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(1000,0),
+		NEFTJOD(30),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "凛眼の懐刀 イスルギ・ユスラウメ",
+	cardno: 8251,
+	imageno: 10392,
+	hp: 3598,
+	atk: 3421,
+	cost: 43,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	ape: "大魔道杯 in 覇眼戦線Ⅲ",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(300%)",
+		proc: ChainAttack(3.0, 3),
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体のHPを2000ダウンし、攻撃力を2000アップ(上限値:2000)",
+		turn: 1,
+		proc: [ss_statusup_all([-2000, 2000], [2000, 2000], -1)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(0,200),
+		NEFTJOD(30),
+		Statusup(200,0),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_relief([1,1,1,1,1,],10),
+		Abstate_invalid("poison"),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(400%)",
+		proc: ChainAttack(4.0, 3),
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体のHPを1000ダウンし、攻撃力を2000アップ(上限値:2000)",
+		turn: 4,
+		proc: [ss_statusup_all([-1000, 2000], [2000, 2000], -1)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

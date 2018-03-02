@@ -1,0 +1,47 @@
+{
+	name: "復讐の収穫者 トキモリ&ネヴィアム",
+	cardno: 6362,
+	imageno: 8191,
+	hp: 2516,
+	atk: 3045,
+	cost: 34,
+	attr: [1,4],
+	species: [2],
+	islegend: true,
+	is_dist: true,
+	ape: "幻魔特区スザクⅢ",
+	as1: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ(400%)",
+		proc: ChainAttrAttack(4.0, 0, [1,0,0,0,0]),
+	},
+	ss1: {
+		desc: "<ダメージ強化>2ターン水属性の攻撃力をアップ(40%)",
+		turn: 7,
+		proc: [ss_enhance_all(0.4, 2, [0,1,0,0,0])],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Spec_statusup(0,300, [2,]),
+		Spec_statusup(300,0, [2,]),
+	],
+	as2: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ(500%)",
+		proc: ChainAttrAttack(5.0, 0, [1,0,0,0,0]),
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン水属性の攻撃力をアップ(60%)",
+		turn: 9,
+		proc: [ss_enhance_all(0.6, 4, [0,1,0,0,0])],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "断絶竜 デッドエンドブリンガー",
+	cardno: 9336,
+	imageno: 11479,
+	hp: 3005,
+	atk: 6545,
+	cost: 49,
+	attr: [0,-1],
+	species: [0],
+	islegend: true,
+	ape: "レイド the GATE",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(300%)、HP80%以上でさらにダメージアップ(150%)",
+		proc: [ChainAttrAttack(3.0, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(4.5, 0, [0,0,1,0,0]), when_hp_more(0.80))],
+	},
+	ss1: {
+		desc: "<反動大魔術>スキル反射を無視し、敵全体へ火属性のダメージ(1050%)(スキル使用後、3ターン封印状態に)",
+		turn: 7,
+		proc: [ss_damage_all(10.5, [0]), ss_allsealed_own(3), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Abstate_invalid("ss_sealed"),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
+		Attr_statusup_oattr(300,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(3),
+		Attr_statusup(0,300, [1,0,0,0,0,]),
+		Attr_statusup(300,0, [1,0,0,0,0,]),
+		Costdown(20),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(400%)、HP80%以上でさらにダメージアップ(150%)",
+		proc: [ChainAttrAttack(4.0, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(5.5, 0, [0,0,1,0,0]), when_hp_more(0.80))],
+	},
+	ss2: {
+		desc: "<反動大魔術>スキル反射を無視し、敵全体へ火属性のダメージ(1350%)(スキル使用後、3ターン封印状態に)",
+		turn: 10,
+		proc: [ss_damage_all(13.5, [0]), ss_allsealed_own(3), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Statusup(500,0),
+	],
+}

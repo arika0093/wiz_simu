@@ -1,0 +1,47 @@
+{
+	name: "みんなと一緒！アッカ・フロレンテ",
+	cardno: 7606,
+	imageno: 9670,
+	hp: 5831,
+	atk: 1843,
+	cost: 54,
+	attr: [0,1],
+	species: [8],
+	disable: true,
+	islegend: true,
+	ape: "Christmas2016",
+	as1: {
+		desc: "<回復>味方全体のHPを回復(14%)",
+		proc: Heal(0.14, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<解答削り>解答選択肢を2つ削る",
+		turn: 4,
+		proc: [ss_answer_narrow(2)],
+	},
+	awakes: [
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		NEFTJOD(30),
+		Abstate_invalid("as_sealed"),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,200, [0,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
+		Awake_Chainboost(1),
+		Awake_secondfast(2),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(17%)",
+		proc: Heal(0.17, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 5,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "守護と断罪の昏眼 アシュタル・ラド",
+	cardno: 6060,
+	imageno: 7887,
+	hp: 4256,
+	atk: 4345,
+	cost: 52,
+	attr: [0, -1],
+	species: [8],
+	disable: true,
+	islegend: true,
+	ape: "覇眼戦線Ⅱ",
+	as1: {
+		desc: "<属性特効>15チェインで雷属性の敵単体へ特効ダメージ(1400%)",
+		proc: ChainAttrAttack(14.0, 15, [0, 0, 1, 0, 0]),
+	},
+	ss1: {
+		desc: "<残滅大魔術>敵全体へ火属性のダメージ(300%)、さらに3ターンの間、火属性のダメージ(300%)",
+		turn: 9,
+		proc: [ss_continue_damage(3.0, 3.0, [0], 3)],
+	},
+	awakes: [
+		Panel_boost([1, 0, 0, 0, 0, ], 1),
+		Statusup(0, 200),
+		Attr_statusup(100, 0, [1, 0, 0, 0, 0, ]),
+		Fastskill(1),
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Attr_statusup(100, 0, [1, 0, 0, 0, 0, ]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(0, 200, [1, 0, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "<属性特効>15チェインで雷属性の敵単体へ特効ダメージ(1600%)",
+		proc: ChainAttrAttack(16.0, 15, [0, 0, 1, 0, 0]),
+	},
+	ss2: {
+		desc: "<残滅大魔術>敵全体へ火属性のダメージ(300%)、さらに4ターンの間、火属性のダメージ(300%)",
+		turn: 11,
+		proc: [ss_continue_damage(3.0, 3.0, [0], 4)],
+	},
+	Lawake: [
+		Statusup(0, 600),
+		Statusup(400, 0),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "光輪の虚神 エルデステリオ",
+	cardno: 4615,
+	imageno: 6326,
+	hp: 2601,
+	atk: 1950,
+	cost: 50,
+	attr: [2, 3],
+	species: [6],
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Statusup(0, 200),
+		Fastskill(1),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Statusup(200, 0),
+		Fastskill(2),
+		Statusup(0, 200),
+		Spec_statusup(200, 0, [6, ]),
+		Spec_statusup(0, 200, [6, ]),
+	],
+	as1: {
+		desc: "<チェイン攻撃>15チェインでダメージアップ/1000％",
+		proc: ChainAttack(10.0, 15),
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを3早める",
+		turn: 9,
+		proc: [ss_skillboost(3)],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<チェイン攻撃>15チェインでダメージアップ/1100％",
+		proc: ChainAttack(11.0, 15),
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを4早める",
+		turn: 13,
+		proc: [ss_skillboost(4)],
+	},
+}

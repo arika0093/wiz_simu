@@ -1,0 +1,45 @@
+{
+	name: "信頼と絆に結ばれる りんね&桜",
+	cardno: 4170,
+	imageno: 5846,
+	hp: 2867,
+	atk: 1832,
+	cost: 46,
+	attr: [0, 2],
+	species: [8],
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0], 1),
+		Awake_noeffect("ゴールド取得量アップ", 1),
+		Statusup(0, 200),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0]),
+		Heal_afterbattle(10),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
+		Spec_statusup(0, 200, [8]),
+		Spec_statusup(200, 0, [8]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "<攻撃強化>7チェインで火・雷属性の味方の攻撃力をアップ/+80％",
+		proc: ChainEnhance(0.8, [1, 0, 1, 0, 0], 7),
+	},
+	ss1: {
+		desc: "<ダメージ強化>2ターン火・雷属性の味方の攻撃力をアップ(+40％)",
+		turn: 5,
+		proc: [ss_enhance_all(0.4, 2, [1, 0, 1, 0, 0])],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
+		Statusup(400, 0),
+	],
+	as2: {
+		desc: "<攻撃強化>火・雷属性の味方の攻撃力をアップ/+80％",
+		proc: ChainEnhance(0.8, [1, 0, 1, 0, 0], 0),
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン火・雷属性の味方の攻撃力をアップ(+60％)",
+		turn: 8,
+		proc: [ss_enhance_all(0.6, 4, [1, 0, 1, 0, 0])],
+	},
+}

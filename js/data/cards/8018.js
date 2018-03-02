@@ -1,0 +1,48 @@
+{
+	name: "黒厄の災闇王剣 オディルン・バナド",
+	cardno: 8018,
+	imageno: 6709,
+	hp: 2209,
+	atk: 3302,
+	cost: 45,
+	attr: [1,4],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(ミク)",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(320%)",
+		proc: ChainAttack(3.2, 3),
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水・闇属性のダメージ、5チェインを消費しさらにダメージアップ(150%/300%)",
+		turn: 5,
+		proc: [ss_damage_all(ss_chain_cost(5, 3.0, 1.5), [1, 4]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 100,0, [0,0,0,0,1,]),
+		Fastskill(2),
+		Attr_relief([1,1,1,1,1,],10),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(420%)",
+		proc: ChainAttack(4.2, 3),
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水・闇属性のダメージ、5チェインを消費しさらにダメージアップ(220%/440%)",
+		turn: 10,
+		proc: [ss_damage_all(ss_chain_cost(5, 4.4, 2.2), [1, 4]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+}

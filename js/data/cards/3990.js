@@ -1,0 +1,45 @@
+{
+	name: "協奏の風光 ルミィ・エイプリル",
+	cardno: 3990,
+	imageno: 5671,
+	hp: 2008,
+	atk: 3172,
+	cost: 41,
+	attr: [2, -1],
+	species: [9],
+	awakes: [
+		Statusup(200, 0),
+		Costdown(2),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Statusup(0, 200),
+		Fastskill(1),
+		Fastskill(1),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Spec_statusup(0, 200, [9, ]),
+	],
+	as1: {
+		desc: "<連撃>3チェインで敵単体を5回連続攻撃/計350％",
+		proc: ChainDualAttack(3.5, 3, 5),
+	},
+	ss1: {
+		desc: "<ダメージ強化>2ターン雷属性の味方の攻撃力をアップ(+40％)",
+		turn: 6,
+		proc: [ss_enhance_all(0.40, 2, [0,0,1,0,0])],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 400),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<連撃>敵単体を5回連続攻撃/計350％",
+		proc: ChainDualAttack(4.5, 3, 5),
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン雷属性の味方の攻撃力をアップ(+60％)",
+		turn: 9,
+		proc: [ss_enhance_all(0.60, 4, [0,0,1,0,0])],
+	},
+}

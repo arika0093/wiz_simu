@@ -1,0 +1,47 @@
+{
+	name: "漆黒の浸食 Mark.09 覚醒後",
+	cardno: 6721,
+	imageno: 8659,
+	hp: 2005,
+	atk: 2623,
+	cost: 37,
+	attr: [2,4],
+	species: [3],
+	islegend: true,
+	ape: "コラボ(エヴァⅡ)",
+	is_dist: true,
+	as1: {
+		desc: "<種族特効>4チェインでダメージアップ、天使の敵へさらにダメージアップ(350%/500%)",
+		proc: [ChainAttack(3.5, 4), ChainSpecAttack(5.0, 4, [3])],
+	},
+	ss1: {
+		desc: "<多弾魔術>MAXHPの50%を使い、敵単体へ雷・闇属性の5回連続ダメージ(250%)",
+		turn: 6,
+		proc: [ss_damage_s(2.5, [2,4], 5), ss_consume_own(0.5)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(1),
+		Statusup(200,0),
+		Statusup(0,200),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Fastskill(2),
+		Spec_statusup(200,0, [3,]),
+		Spec_statusup(0,200, [3,]),
+	],
+	as2: {
+		desc: "<種族特効>4チェインでダメージアップ、天使の敵へさらにダメージアップ(450%/600%)",
+		proc: [ChainAttack(4.5, 4), ChainSpecAttack(6.0, 4, [3])],
+	},
+	ss2: {
+		desc: "<多弾魔術>MAXHPの50%を使い、敵単体へ雷・闇属性の5回連続ダメージ(450%)",
+		turn: 9,
+		proc: [ss_damage_s(4.5, [2,4], 5), ss_consume_own(0.5)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

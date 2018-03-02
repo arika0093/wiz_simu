@@ -1,0 +1,46 @@
+{
+	name: "もふもふ国王女 ヤネット・フリール",
+	cardno: 89005,
+	imageno: 7271,
+	hp: 3246,
+	atk: 3109,
+	cost: 46,
+	attr: [2,0],
+	species: [9],
+	islegend: true,
+	ape: "天上岬Ⅱ",
+	as1: {
+		desc: "<連撃>HP80%以上で敵単体を3回連続攻撃(350%)",
+		proc: add_cond(ChainDualAttack(3.5,0,3), when_hp_more(0.8)),
+	},
+	ss1: {
+		desc: "<解答削り>解答選択肢を2つ削り、3チェインを消費し解答を見破る",
+		turn: 3,
+		proc: [ss_chain_cost_skill(3, ss_answer_foresight(), ss_answer_narrow(2))],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(0,200),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Fastskill(1),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Attr_relief([1,0,0,0,0,],10),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<連撃>HP80%以上で敵単体を3回連続攻撃(450%)",
+		proc: add_cond(ChainDualAttack(4.5,0,3), when_hp_more(0.8)),
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 6,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+	],
+}

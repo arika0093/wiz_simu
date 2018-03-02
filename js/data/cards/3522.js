@@ -1,0 +1,32 @@
+{
+	name: "リリンの王 碇ゲンドウ",
+	cardno: 3522,
+	imageno: 4727,
+	hp: 2352,
+	atk: 2407,
+	cost: 35,
+	attr: [0,-1],
+	species: [8],
+	islegend: false,
+	ape: "コラボ(エヴァⅠ)",
+	as1: {
+		desc: "<属性特効>雷属性の敵単体へ絶大ダメージ、HP50%以下でさらにダメージアップ(250%/400%)",
+		proc: [ChainAttrAttack(2.5, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(4.0, 0, [0,0,1,0,0]), when_hp_less(0.5))],
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早める",
+		turn: 6,
+		proc: [ss_skillboost(1)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],1),
+		NEFTJOD(30),
+		Fastskill(1),
+		Statusup(0,200),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Spec_statusup(0,200, [8,]),
+	],
+}

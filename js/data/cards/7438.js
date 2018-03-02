@@ -1,0 +1,46 @@
+{
+	name: "焦天竜武尊 ワン・シャンユン",
+	cardno: 7438,
+	imageno: 9423,
+	hp: 2401,
+	atk: 3801,
+	cost: 51,
+	attr: [0,2],
+	species: [0],
+	islegend: true,
+	ape: "神竜降臨Ⅱ",
+	as1: {
+		desc: "<連撃>敵単体を3回連続攻撃、4チェインで更にアップ(250%/350%)",
+		proc: [ChainDualAttack(2.5, 0, 3), ChainDualAttack(3.5, 4, 3)],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・雷属性化",
+		turn: 3,
+		proc: [ss_panel_change([1,0,1,0,0])],
+	},
+	awakes: [
+		Statusup(0,300),
+		Fastskill(1),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Fastskill(2),
+		Statusup(200,0),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,0,1,0,0,]),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,200, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<連撃>敵単体を3回連続攻撃、4チェインで更にアップ(350%/450%)",
+		proc: [ChainDualAttack(3.5, 0, 3), ChainDualAttack(4.5, 4, 3)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、ダメージ軽減(25%)・スキルチャージ(1)・チェイン(2)・攻撃力アップ(100%)の効果をランダムで付与",
+		turn: 7,
+		proc: [ss_panel_change([1,0,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25), panel_skillboost(1), panel_chainplus(2), panel_attackup(1.0)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "穢れざる聖域の護巫 トウカ・ホデリ",
+	cardno: 5791,
+	imageno: 7616,
+	hp: 3120,
+	atk: 5025,
+	cost: 50,
+	attr: [0, -1],
+	species: [8],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<種族特効>5チェインで敵単体へのダメージアップ、妖精と亜人の敵へさらにダメージアップ(450%/600%)",
+		proc: [ChainAttack(4.5, 5), ChainSpecAttack(6.0, 5, [4, 5])],
+	},
+	ss1: {
+		desc: "<シャッフル>ジャンルパネルをシャッフル",
+		turn: 1,
+		proc: [ss_panel_shuffle()],
+	},
+	awakes: [
+		Statusup(200, 0),
+		Fastskill(1),
+		Statusup(0, 400),
+		Costdown(2),
+		Fastskill(2),
+		Abstate_invalid("as_sealed"),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Attr_statusup(0, 200, [1, 0, 0, 0, 0, ]),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Spec_statusup(0, 200, [8, ]),
+	],
+	as2: {
+		desc: "<種族特効>5チェインで敵単体へのダメージアップ、妖精と亜人の敵へさらにダメージアップ(550%/700%)",
+		proc: [ChainAttack(5.5, 5), ChainSpecAttack(7.0, 5, [4, 5])],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
+		turn: 3,
+		proc: [panel_chainplus(1)],
+	},
+	Lawake: [
+		Attr_statusup(0, 200, [1, 0, 0, 0, 0, ]),
+		Statusup(0, 500),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "美しき天の靴 カリン・トランボ",
+	cardno: 7209,
+	imageno: 9232,
+	hp: 3529,
+	atk: 2819,
+	cost: 39,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "レイド Soul of Kings",
+	as1: {
+		desc: "<攻撃強化・回復>味方全体のHPを回復(10%)、さらに攻撃力をアップ(20%)",
+		proc: [Heal(0.1, [1,1,1,1,1], 0), ChainEnhance(0.2, [1,1,1,1,1], 0)],
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体の状態異常を回復する",
+		turn: 4,
+		proc: [ss_abstate_cure()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		NEFTJOD(30),
+		Fastskill(1),
+		Statusup(300,0),
+		Attr_relief([0,1,0,0,0,],10),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Fastskill(2),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>味方全体のHPを回復(12%)、さらに攻撃力をアップ(20%)",
+		proc: [Heal(0.12, [1,1,1,1,1], 0), ChainEnhance(0.2, [1,1,1,1,1], 0)],
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早める",
+		turn: 6,
+		proc: [ss_skillboost(1)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

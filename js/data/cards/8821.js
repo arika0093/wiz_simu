@@ -1,0 +1,46 @@
+{
+	name: "天使にいたずら ウリシラ・ファーレ",
+	cardno: 8821,
+	imageno: 11020,
+	hp: 7875,
+	atk: 1875,
+	cost: 50,
+	attr: [1,-1],
+	species: [3],
+	islegend: true,
+	ape: "聖サタニック女学院2",
+	as1: {
+		desc: "<回復>味方全体のHPを回復(7%)、デッキに単色の精霊が多いほど、さらに回復(2%)（上限:5段階)",
+		proc: add_cond(Heal(0.07, [1, 1, 1, 1, 1]), as_singleattr_num(0, 0.02)),
+	},
+	ss1: {
+		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復しダメージを軽減、さらに攻撃力をアップ(15%,15%,100%)(発動中行動不可)",
+		turn: 4,
+		proc: [ss_reinforcement_all(4, [ss_regenerate(0.15, 1, "RF"), ss_attr_guard([1, 1, 1, 1, 1], 0.15, 1, "RF"), ss_enhance_all(1.0, 1, [1, 1, 1, 1, 1], "RF")])],
+	},
+	as2: {
+		desc: "<回復>味方全体のHPを回復(10%)、デッキに単色の精霊が多いほど、さらに回復(2%)（上限:5段階)",
+		proc: add_cond(Heal(0.10, [1, 1, 1, 1, 1]), as_singleattr_num(0, 0.02)),
+	},
+	ss2: {
+		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復しダメージを軽減、さらに攻撃力をアップ(25%,25%,150%)(発動中行動不可)",
+		turn: 6,
+		proc: [ss_reinforcement_all(4, [ss_regenerate(0.25, 1, "RF"), ss_attr_guard([1, 1, 1, 1, 1], 0.25, 1, "RF"), ss_enhance_all(1.5, 1, [1, 1, 1, 1, 1], "RF")])],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_oattr(0,400,[0,1,0,0,0,]),
+		Attr_statusup_oattr(400,0,[0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(60),
+		Heal_afterbattle(10),
+		Fastskill(3),
+		Attr_statusup(0,400,[0,1,0,0,0,]),
+		Attr_statusup(400,0,[0,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	Lawake: [
+		Attr_statusup(0,200,[0,1,0,0,0,]),
+		Statusup(1000,0),
+	],
+}

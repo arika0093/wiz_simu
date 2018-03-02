@@ -1,0 +1,47 @@
+{
+	name: "機神の操者 スミオ&エクスマキナ",
+	cardno: 9208,
+	imageno: 5287,
+	hp: 6154,
+	atk: 3554,
+	cost: 50,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	ape: "幻魔特区スザクⅠ",
+	as1: {
+		desc: "<攻撃強化・ガード>7チェインで雷属性の味方の攻撃力をアップ(80%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.80, [0,0,1,0,0], 7), as_guard(0.10, [1,1,1,1,1], 7)],
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早める",
+		turn: 5,
+		proc: [ss_skillboost(1)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_oattr(0,400, [0,0,1,0,0,]),
+		Attr_statusup_oattr(400,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_relief([1,0,0,0,0,],20),
+		Fastskill(4),
+		Attr_statusup(0,400, [0,0,1,0,0,]),
+		Attr_statusup(400,0, [0,0,1,0,0,]),
+		Awake_Chainboost(1),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit", "all_sealed"]),
+	],
+	as2: {
+		desc: "<攻撃強化・ガード>7チェインで雷属性の味方の攻撃力をアップ(100%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(1.0, [0,0,1,0,0], 7), as_guard(0.10, [1,1,1,1,1], 7)],
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
+		turn: 7,
+		proc: [ss_skillboost(2)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_relief([1,1,1,1,1,],10),
+	],
+}

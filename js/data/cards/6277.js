@@ -1,0 +1,48 @@
+{
+	name: "AbCd-Κ:《劫末を兆す怪物》",
+	cardno: 6277,
+	imageno: 8120,
+	hp: 2320,
+	atk: 4025,
+	cost: 60,
+	attr: [1,4],
+	species: [11],
+	islegend: true,
+	is_dist: true,
+	ape: "AbCd",
+	alias: ["イェルセル"],
+	as1: {
+		desc: "<連撃>敵単体を2回連続攻撃、HP15%以下で5回連続攻撃になりさらにダメージアップ(150%/1100%)",
+		proc: [ChainDualAttack(1.5, 0, 2), add_cond(ChainDualAttack(11.0, 0, 5), when_hp_less(0.15))],
+	},
+	ss1: {
+		desc: "<多弾魔術>MAXHPの95%を使い、敵単体へ水属性の10回連続ダメージ(330%)",
+		turn: 6,
+		proc: [ss_damage_s(3.3, [1], 10), ss_consume_own(0.95)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		NEFTJOD(60),
+		Abstate_invalid("ss_sealed"),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<連撃>敵単体を2回連続攻撃、HP15%以下で5回連続攻撃になりさらにダメージアップ(200%/1600%)",
+		proc: [ChainDualAttack(2.0, 0, 2), add_cond(ChainDualAttack(16.0, 0, 5), when_hp_less(0.15))],
+	},
+	ss2: {
+		desc: "<多弾魔術>MAXHPの95%を使い、敵単体へ水属性の10回連続ダメージ(450%)",
+		turn: 9,
+		proc: [ss_damage_s(4.5, [1], 10), ss_consume_own(0.95)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_relief([0,0,0,1,1,],20),
+	],
+}

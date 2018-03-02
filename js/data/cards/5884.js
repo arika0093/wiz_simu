@@ -1,0 +1,45 @@
+{
+	name: "邪なる瞳の冥魔剣 ギンガ・カノン",
+	cardno: 5884,
+	imageno: 7701,
+	hp: 1573,
+	atk: 4927,
+	cost: 46,
+	attr: [2, -1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<属性特効>3チェインで水属性の敵単体へ特効ダメージ、15チェインで更に特効ダメージ(300%/1150%)、さらに吸収(5%)",
+		proc: [ChainAttrAttack(3.0, 3, [0, 1, 0, 0, 0]), add_cond(ChainAttrAttack(11.5, 15, [0, 1, 0, 0, 0]), as_hp_absorption(0.05))],
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ雷属性のダメージ(220%)",
+		turn: 10,
+		proc: [ss_damage_all(2.2, [2])],
+	},
+	awakes: [
+		Statusup(0, 300),
+		Costdown(6),
+		Statusup(0, 300),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Fastskill(2),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで水属性の敵単体へ特効ダメージ、15チェインで更に特効ダメージ(400%/1250%)、さらに吸収(5%)",
+		proc: [ChainAttrAttack(4.0, 3, [0, 1, 0, 0, 0]), add_cond(ChainAttrAttack(12, 15, [0, 1, 0, 0, 0]), as_hp_absorption(0.05))],
+	},
+	ss2: {
+		desc: "<効果解除大魔術>敵全体のダメージブロックを解除し、敵全体へ雷属性のダメージ(260%)",
+		turn: 12,
+		proc: [ss_break_dblock("all"), ss_damage_all(2.6, [2])],
+	},
+	Lawake: [
+		Statusup(0, 400),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+}

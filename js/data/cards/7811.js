@@ -1,0 +1,47 @@
+{
+	name: "峰影流継承者 ネイハ・コガナ",
+	cardno: 7811,
+	imageno: 9897,
+	hp: 2147,
+	atk: 4000,
+	cost: 51,
+	attr: [2,0],
+	species: [8],
+	islegend: true,
+	ape: "大魔道杯 with 魔轟三鉄傑",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、8チェインで更にダメージアップ(350%/500%)",
+		proc: [ChainAttack(3.5, 4), ChainAttack(5.0, 8)],
+	},
+	ss1: {
+		desc: "<激化大魔術>敵単体へ火・雷属性の2回連続ダメージ、発動する度に効果値が2倍アップ(800%/1600%/3200%/6400%)(上限:3段階)",
+		turn: 11,
+		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [2,0], 2)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Attr_relief([1,1,1,1,1,],10),
+		Awake_secondfast(4),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [1,0,0,0,0,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [1,0,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+		Awake_secondfast(5),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、8チェインで更にダメージアップ(450%/600%)",
+		proc: [ChainAttack(4.5, 4), ChainAttack(6.0, 8)],
+	},
+	ss2: {
+		desc: "<激化大魔術>敵単体へ火・雷属性の2回連続ダメージ、発動する度に効果値が2倍アップ(800%/1600%/3200%/6400%)(上限:3段階)",
+		turn: 11,
+		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [2,0], 2)],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0,200, [0,0,1,0,0,], 0,100, [1,0,0,0,0,]),
+		NEFTJOD(30),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "腐っても天才 ゾンビエッタ",
+	cardno: 9303,
+	imageno: 11568,
+	hp: 2725,
+	atk: 3133,
+	cost: 47,
+	attr: [0,4],
+	species: [6],
+	islegend: true,
+	ape: "UHG",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃・嘆きの怒り>4チェインでダメージアップ(350%)、さらに戦闘不能の仲間の数だけ攻撃力アップ(300%)",
+		proc: ChainDeckDeadsAttack(3, 0, 3.5),
+	},
+	ss1: {
+		desc: "<ダメージ強化>1ターン自分の攻撃力をアップ(200%)。のろい状態または状態異常時、さらに自分の攻撃力をアップ(800%)",
+		turn: 7,
+		proc: ss_enhance_own(ss_is_abstate_own(10, 2), 1),
+	},
+	awakes: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,0,0,0,1,]),
+		NEFTJOD(30),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 200,0, [0,0,0,0,1,]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<チェイン攻撃・嘆きの怒り>4チェインでダメージアップ(450%)、さらに戦闘不能の仲間の数だけ攻撃力アップ(300%)",
+		proc: ChainDeckDeadsAttack(3, 0, 4.5),
+	},
+	ss2: {
+		desc: "<ダメージ強化>1ターン自分の攻撃力をアップ(200%)。のろい状態または状態異常時、さらに自分の攻撃力をアップ(1200%)",
+		turn: 9,
+		proc: ss_enhance_own(ss_is_abstate_own(14, 2), 1),
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		NEFTJOD(30),
+	],
+}

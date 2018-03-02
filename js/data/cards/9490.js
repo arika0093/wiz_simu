@@ -1,0 +1,47 @@
+{
+	name: "忠義の反旗 ホラーツ・アイスラー",
+	cardno: 9490,
+	imageno: 11351,
+	hp: 2521,
+	atk: 6003,
+	cost: 43,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "ドルキマスⅢ",
+	is_dist: true,
+	as1: {
+		desc: "<快調攻撃>残りHPが80％以上でダメージアップ(400%)",
+		proc: add_cond(ChainAttack(4.0, 0), when_hp_more(0.8)),
+	},
+	ss1: {
+		desc: "<反動大魔術>スキル反射を無視し、敵全体へ水属性のダメージ(750%)(スキル使用後、1ターン封印状態に)",
+		turn: 6,
+		proc: [ss_damage_all(7.5, [1]), ss_allsealed_own(1), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([0,1,0,0,0,],3),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Abstate_invalid("as_sealed"),
+		Attr_statusup_oattr(0,300, [0,1,0,0,0,]),
+		Attr_statusup_oattr(300,0, [0,1,0,0,0,]),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<快調攻撃>残りHPが80％以上でダメージアップ(500%)",
+		proc: add_cond(ChainAttack(5.0, 0), when_hp_more(0.8)),
+	},
+	ss2: {
+		desc: "<反動大魔術>スキル反射を無視し、敵全体へ水属性のダメージ(1050%)(スキル使用後、1ターン封印状態に)",
+		turn: 9,
+		proc: [ss_damage_all(10.5, [1]), ss_allsealed_own(1), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

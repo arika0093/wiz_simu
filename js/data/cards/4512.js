@@ -1,0 +1,47 @@
+{
+	name: "栞に残す恋の続き イツキ&アーシア",
+	cardno: 4512,
+	imageno: 6194,
+	hp: 3209,
+	atk: 2228,
+	cost: 35,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	is_dist: true,
+	ape: "クロム・マグナⅤ",
+	as1: {
+		desc: "<攻撃強化>7チェインで水属性の味方の攻撃力をアップ(70%)",
+		proc: ChainEnhance(0.7, [0,1,0,0,0], 7),
+	},
+	ss1: {
+		desc: "<ダメージ強化>味方全体のHPを回復(25%)、さらに2ターン水属性の味方の攻撃力をアップ(40%)",
+		turn: 7,
+		proc: [ss_heal(0.25), ss_enhance_all(0.4, 2, [0,1,0,0,0])],
+	},
+	awakes: [
+		Heal_afterbattle(10),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],1),
+	],
+	as2: {
+		desc: "<攻撃強化>7チェインで水属性の味方の攻撃力をアップ(90%)",
+		proc: ChainEnhance(0.9, [0,1,0,0,0], 7),
+	},
+	ss2: {
+		desc: "<ダメージ強化>味方全体のHPを回復(25%)、さらに4ターン水属性の味方の攻撃力をアップ(60%)",
+		turn: 10,
+		proc: [ss_heal(0.25), ss_enhance_all(0.6, 4, [0,1,0,0,0])],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(0,500),
+	],
+}

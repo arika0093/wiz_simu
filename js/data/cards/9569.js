@@ -1,0 +1,47 @@
+{
+	name: "手芸の真髄 ウェスティ・ローク",
+	cardno: 9569,
+	imageno: 11837,
+	hp: 5435,
+	atk: 1345,
+	cost: 46,
+	attr: [0,1],
+	species: [1],
+	islegend: true,
+	ape: "大魔道杯 in エステレラ",
+	is_dist: true,
+	as1: {
+		desc: "<回復>火・水属性の味方を回復(10%)、5チェインで更に全属性のダメージを10%軽減",
+		proc: [Heal(0.10, [1,1,0,0,0], 0), as_guard(0.10, [1,1,1,1,1], 5)],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>1クエストに1回のみ、ジャンルパネルをALL属性化し、ダメージ軽減と回復の効果を付与(35%,35%)",
+		turn: 5,
+		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.35), panel_healally(0.35)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+		Heal_afterbattle(10),
+		Fastskill(5),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<回復>火・水属性の味方を回復(13%)、5チェインで更に全属性のダメージを10%軽減",
+		proc: [Heal(0.13, [1,1,0,0,0], 0), as_guard(0.10, [1,1,1,1,1], 5)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>1クエストに1回のみ、ジャンルパネルをALL属性化し、ダメージ軽減と回復の効果を付与(35%,35%)",
+		turn: 5,
+		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.35), panel_healally(0.35)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+}

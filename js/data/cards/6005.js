@@ -1,0 +1,33 @@
+{
+	name: "別れても心通う オズマ&キャサリン",
+	cardno: 6005,
+	imageno: 7787,
+	hp: 1824,
+	atk: 2216,
+	cost: 29,
+	attr: [0,2],
+	species: [8],
+	islegend: false,
+	ape: "コラボ(マクロス)",
+	as1: {
+		desc: "<連撃>4チェインで敵単体を3回連続攻撃、HP50%以上でさらにダメージアップ(250%/350%)",
+		proc: [ChainDualAttack(2.5, 4, 3), add_cond(ChainDualAttack(3.5, 4, 3), when_hp_more(0.5))],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、攻撃力アップの効果を付与(20%)",
+		turn: 8,
+		proc: [ss_panel_change([1,0,1,0,0]), panel_attackup(0.20)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Statusup(0,200),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		NEFTJOD(30),
+		Fastskill(1),
+		Statusup(200,0),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Fastskill(2),
+	],
+}

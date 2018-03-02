@@ -1,0 +1,47 @@
+{
+	name: "月を撃つ慟哭 リュコス・ヴォーダン",
+	cardno: 8469,
+	imageno: 10619,
+	hp: 2915,
+	atk: 6103,
+	cost: 50,
+	attr: [1,-1],
+	species: [1],
+	islegend: true,
+	ape: "レイド Blader",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>敵単体を5回連続攻撃(250%)、デッキに単色の精霊が多いほど、連撃数がアップ(効果値:1)（上限:5段階)",
+		proc: ChainDualAttack(2.5, 0, as_singleattr_num(5, 1)),
+	},
+	ss1: {
+		desc: "<カウンター>3ターンの間、スキルカウンター待機、HP20%以下でさらにカウンター時、ダメージアップ(400%)",
+		turn: 7,
+		proc: [ss_skillcounter(ss_hp_less(0.2, 4, 1), 3)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_oattr(0, 200, [0,1,0,0,0]),
+		Attr_statusup_oattr(200, 0, [0,1,0,0,0]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([0,0,1,0,0,],20),
+		Fastskill(3),
+		Attr_statusup(0,300, [0,1,0,0,0,]),
+		Attr_statusup(300,0, [0,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<連撃>敵単体を5回連続攻撃(350%)、デッキに単色の精霊が多いほど、連撃数がアップ(効果値:1)（上限:5段階)",
+		proc: ChainDualAttack(3.5, 0, as_singleattr_num(5, 1)),
+	},
+	ss2: {
+		desc: "<カウンター>5ターンの間、スキルカウンター待機、HP20%以下でさらにカウンター時、ダメージアップ(400%)",
+		turn: 10,
+		proc: [ss_skillcounter(ss_hp_less(0.2, 4, 1), 5)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+}

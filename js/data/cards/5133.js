@@ -1,0 +1,47 @@
+{
+	name: "或る魔王 ミカエラ・セラフィム",
+	cardno: 5133,
+	imageno: 6876,
+	hp: 2005,
+	atk: 3793,
+	cost: 49,
+	attr: [0,4],
+	species: [3],
+	islegend: true,
+	disable: true,
+	ape: "ロストエデンⅠ",
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)",
+		proc: ChainAttack(4.5, 5),
+	},
+	ss1: {
+		desc: "<効果解除>敵全体のカウンターを解除する",
+		turn: 8,
+		proc: [ss_break_attackcounter("all")],
+	},
+	awakes: [
+		Fastskill(2),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Statusup(200,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(0,200, [2,3,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでMAXHP20%を使い、ダメージアップ(700%)",
+		proc: add_cond(ChainAttack(7.0, 5), as_consume_own(0.20)),
+	},
+	ss2: {
+		desc: "<効果解除大魔術>敵全体のカウンターを解除し、火属性のダメージ。HP20%以下でさらにスキル反射を解除し、ダメージアップ(180%/300%)",
+		turn: 13,
+		proc: [ss_break_attackcounter("all"), ss_damage_all(ss_hp_less(0.20, 3.0, 1.8), [0]), ss_hp_less_skill(0.2, ss_break_skillcounter("all"))],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "絶華却竜姫 アリューゼ・ヴェローナ",
+	cardno: 5112,
+	imageno: 6860,
+	hp: 2556,
+	atk: 4654,
+	cost: 44,
+	attr: [0, -1],
+	species: [0],
+	disable: true,
+	awakes: [
+		Fastskill(1),
+		Statusup(0, 300),
+		Costdown(2),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0], 1),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0], 2),
+		Spec_statusup(0, 200, [0]),
+	],
+	as1: {
+		desc: "<パネル色数攻撃>5チェインかつパネルが2色でダメージアップ、3色でさらにアップ(2色：500％ / 3色：650％)",
+		proc: ChainPanelsAttack(0, 5, 6.5, 5),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(通常：200％ / 雷属性：500％)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([0,0,1,0,0], 5.0, 2.0), [0])],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "<パネル色数攻撃>5チェインかつパネルが2色でダメージアップ、3色でさらにアップ(2色：500％ / 3色：900％)",
+		proc: ChainPanelsAttack(0, 5, 9, 5),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(通常：200％ / 雷属性：900％)",
+		turn: 9,
+		proc: [ss_damage_all(special_attr([0,0,1,0,0], 9.0, 2.0), [0])],
+	},
+}

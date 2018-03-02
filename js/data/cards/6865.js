@@ -1,0 +1,47 @@
+{
+	name: "アトキンス一家推参！",
+	cardno: 6865,
+	imageno: 8837,
+	hp: 2428,
+	atk: 2921,
+	cost: 43,
+	attr: [0,2],
+	species: [1],
+	islegend: true,
+	ape: "八百万神秘譚Ⅲ(Z)",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、10チェインで更にダメージアップ(300%/500%)",
+		proc: [ChainAttack(3.0, 4), ChainAttack(5.0, 10)],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・雷属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,0,1,0,0])],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Awake_chainguard(),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、10チェインで更にダメージアップ(400%/600%)",
+		proc: [ChainAttack(4.0, 4), ChainAttack(6.0, 10)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、ダメージ軽減(35%)・スキルチャージ(2)・チェイン(5)・攻撃力アップ(100%)の効果をランダムで付与",
+		turn: 10,
+		proc: [ss_panel_change([1,0,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.35), panel_skillboost(2), panel_chainplus(5), panel_attackup(1.0)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Statusup(0,500),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "祝祭の流星群 ソフィ・ハーネット",
+	cardno: 4737,
+	imageno: 6576,
+	hp: 2281,
+	atk: 4219,
+	cost: 45,
+	attr: [1, -1],
+	species: [9],
+	alias: ["/alumina_wiz", "/wiztools"],
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		NEFTJOD(30),
+		Fastskill(1),
+		Statusup(0, 200),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Fastskill(1),
+		Spec_statusup(0, 200, [9, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+	],
+	as1: {
+		desc: "<パネル色数攻撃>5チェインかつパネルが2色でダメージアップ、3色で更にアップ(2色：500％ / 3色：650％)",
+		proc: ChainPanelsAttack(0, 5.0, 6.5, 5),
+	},
+	ss1: {
+		desc: "<多弾魔術>敵単体へ水属性の5回連続ダメージ(計180％)",
+		turn: 6,
+		proc: [ss_damage_s(1.8, [1], 5)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "<パネル色数攻撃>5チェインかつパネルが2色でダメージアップ、3色で更にアップ(2色：500％ / 3色：900％)",
+		proc: ChainPanelsAttack(0, 5.0, 9.0, 5),
+	},
+	ss2: {
+		desc: "<多弾魔術>敵単体へ水属性の5回連続ダメージ、10チェインを消費しさらにダメージ(通常：計380％ / 10チェイン消費：760％)",
+		turn: 9,
+		proc: [ss_damage_s(ss_chain_cost(10, 7.6, 3.8), [1], 5)],
+	},
+}

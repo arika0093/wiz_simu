@@ -1,0 +1,47 @@
+{
+	name: "仮面の呪縛 アモン・バッケン",
+	cardno: 7311,
+	imageno: 9331,
+	hp: 2236,
+	atk: 2921,
+	cost: 42,
+	attr: [0,4],
+	species: [2],
+	islegend: true,
+	ape: "訣別のクロニクル",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>火・光属性の敵単体へ特効ダメージ(350%)",
+		proc: [ChainAttrAttack(3.5, 0, [1,0,0,1,0])],
+	},
+	ss1: {
+		desc: "<ガード>5ターン火属性ダメージを25%軽減する",
+		turn: 7,
+		proc: [ss_attr_guard([1,0,0,0,0], 0.25, 5)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Fastskill(1),
+		Statusup(200,0),
+		Costdown(2),
+		Attr_relief([1,0,0,0,0,],20),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Statusup(0,200),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<属性特効>火・光属性の敵単体へ特効ダメージ(450%)",
+		proc: [ChainAttrAttack(4.5, 0, [1,0,0,1,0])],
+	},
+	ss2: {
+		desc: "<ガード>5ターン火属性ダメージを50%軽減する",
+		turn: 9,
+		proc: [ss_attr_guard([1,0,0,0,0], 0.5, 5)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+	],
+}

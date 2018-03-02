@@ -1,0 +1,46 @@
+{
+	name: "永の守り手 アサギ&セルウス",
+	cardno: 9226,
+	imageno: 8180,
+	hp: 3559,
+	atk: 3556,
+	cost: 56,
+	attr: [2,3],
+	species: [1],
+	islegend: true,
+	ape: "幻魔特区スザクⅢ",
+	as1: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ(30%)、複属性が光属性だとさらにアップ(50%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,0,1,0,0], [0,0,0,1,0], 0),
+	},
+	ss1: {
+		desc: "<ブースト>8ターンの間、味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ(150%)。さらに極稀にクリティカル",
+		turn: 8,
+		proc: [ss_boost_enhance_all(1.5, 8, 0.10, [1,1,1,1,1])],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Fastskill(3),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_relief([0,1,0,0,0,],20),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,0,0,1,0,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,0,0,1,0,]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ(60%)、複属性が光属性だとさらにアップ(50%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,0,1,0,0], [0,0,0,1,0], 0),
+	},
+	ss2: {
+		desc: "<ブースト>8ターンの間、味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ(200%)。さらに極稀にクリティカル",
+		turn: 11,
+		proc: [ss_boost_enhance_all(2.0, 8, 0.10, [1,1,1,1,1])],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Statusup(0,1000),
+	],
+}

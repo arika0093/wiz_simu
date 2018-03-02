@@ -1,0 +1,46 @@
+{
+	name: "真理と安らぎの永劫 アウラ・アマタ",
+	cardno: 4634,
+	imageno: 6397,
+	hp: 3038,
+	atk: 3104,
+	cost: 48,
+	attr: [1, -1],
+	species: [3],
+	disable: true,
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Heal_afterbattle(10),
+		Fastskill(2),
+		Spec_statusup(0, 200, [3, ]),
+		Spec_statusup(200, 0, [3, ]),
+	],
+	as1: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃/計350％",
+		proc: ChainDualAttack(3.5, 3, 3),
+	},
+	ss1: {
+		desc: "<状態異常無効>2ターン敵の状態異常攻撃を無効化する",
+		turn: 7,
+		proc: [ss_absattack_disable(2)],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃/計450％",
+		proc: ChainDualAttack(4.5, 3, 3),
+	},
+	ss2: {
+		desc: "<状態異常無効>3ターン敵の状態異常攻撃を無効化する",
+		turn: 9,
+		proc: [ss_absattack_disable(3)],
+	},
+}

@@ -1,0 +1,47 @@
+{
+	name: "心に光の複属性 朝比奈蓮司",
+	cardno: 8950,
+	imageno: 8705,
+	hp: 2437,
+	atk: 4371,
+	cost: 57,
+	attr: [2,3],
+	species: [8],
+	islegend: true,
+	ape: "真夏のグレート・クイズ・ウォー",
+	alias: ["あさひなれんじ"],
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(150%)、解答が早いほどさらにアップ(125%)(上限:4段階)",
+		proc: add_cond(ChainAttack(1.5, 4), as_timedep(1.25)),
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ(80%)、平均解答が早いほどさらにダメージ(40%)(上限値:160%)",
+		turn: 4,
+		proc: [ss_damage_all(ss_answertime(0.8, 0.4), [2, 3]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Fastskill(3),
+		Awake_noeffect("経験値取得量アップ",2),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_relief([0,1,0,0,0,],10),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Abstate_invalid("as_sealed"),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,0,0,1,0,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,0,0,1,0,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(250%)、解答が早いほどさらにアップ(125%)(上限:4段階)",
+		proc: add_cond(ChainAttack(2.5, 4), as_timedep(1.25)),
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ(110%)、平均解答が早いほどさらにダメージ(40%)(上限値:160%)",
+		turn: 6,
+		proc: [ss_damage_all(ss_answertime(1.1, 0.4), [2, 3]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(0,1500),
+	],
+}

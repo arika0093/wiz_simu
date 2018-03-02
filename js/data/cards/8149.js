@@ -1,0 +1,46 @@
+{
+	name: "魂の邂逅 ルーファス・ヴァイル",
+	cardno: 8149,
+	imageno: 7587,
+	hp: 4402,
+	atk: 4640,
+	cost: 56,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "約束の地",
+	as1: {
+		desc: "<属性特効>4チェインで雷属性の敵単体へ特効ダメージ(600%)",
+		proc: ChainAttrAttack(6.0, 4, [0, 0, 1, 0, 0]),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインプラス4の効果を付与、7チェインを消費し、さらにプラス2の効果を付与",
+		turn: 7,
+		proc: [ss_chain_cost_skill(7, panel_chainplus(6), panel_chainplus(2))],
+	},
+	awakes: [
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+		Awake_noeffect("心眼",1),
+	],
+	as2: {
+		desc: "<属性特効>4チェインで雷属性の敵単体へ特効ダメージ(700%)",
+		proc: ChainAttrAttack(7.0, 4, [0, 0, 1, 0, 0]),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインプラス4の効果を付与、7チェインを消費し、さらにプラス2の効果を付与",
+		turn: 7,
+		proc: [ss_chain_cost_skill(7, panel_chainplus(6), panel_chainplus(2))],
+	},
+	Lawake: [
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Statusup(0,1000),
+	],
+}

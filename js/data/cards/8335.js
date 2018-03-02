@@ -1,0 +1,47 @@
+{
+	name: "深き憐憫の喪葬者 イルーシャ・ラ",
+	cardno: 8335,
+	imageno: 10479,
+	hp: 2855,
+	atk: 3815,
+	cost: 54,
+	attr: [0,1],
+	species: [2],
+	disable: true,
+	islegend: true,
+	ape: "喰牙RIZEⅠ",
+	as1: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(300%),20チェインで更にダメージアップ(1300%)",
+		proc: [ChainDualAttack(3.0, 3, 3), ChainDualAttack(16.0, 20, 3)],
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・水属性の5回連続ダメージ(400%) 。20チェインでさらに5回連続ダメージ(800%)",
+		turn: 7,
+		proc: [ss_damage_s(ss_chain_cond(20, 12, 4), [0,1], ss_chain_cond(20, 10, 5)), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,1,0,0,0,]),
+		Awake_secondfast(5),
+		Awake_Chainboost(1),
+	],
+	as2: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(400%),20チェインで更にダメージアップ(1300%)",
+		proc: [ChainDualAttack(4.0, 3, 3), ChainDualAttack(17.0, 20, 3)],
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・水属性の5回連続ダメージ(400%) 。20チェインでさらに5回連続ダメージ(800%)",
+		turn: 7,
+		proc: [ss_damage_s(ss_chain_cond(20, 12, 4), [0,1], ss_chain_cond(20, 10, 5)), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,1,0,0,0,]),
+		Attr_relief([1,1,1,1,1,],10),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "夏のかげろうと向日葵 早瀬りん",
+	cardno: 8801,
+	imageno: 10986,
+	hp: 7219,
+	atk: 2171,
+	cost: 48,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	ape: "夏に咲く君へ",
+	alias: ["はやせりん"],
+	as1: {
+		desc: "<回復・攻撃強化>水属性の味方のHPを回復(13%)、さらに水属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.13, [0,1,0,0,0], 0), ChainEnhance(0.3, [0,1,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<チェイン犠牲強化> 10ターンの間、毎ターン2チェインを消費し、味方の攻撃力をアップ(200%)",
+		turn: 1,
+		proc: [ss_chain_enhance(2.0, 2, 10)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_oattr(0,400, [0,1,0,0,0,]),
+		Attr_statusup_oattr(400,0, [0,1,0,0,0,]),
+		NEFTJOD(30),
+		Heal_afterbattle(10),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<回復・攻撃強化>水属性の味方のHPを回復(16%)、さらに水属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.16, [0,1,0,0,0], 0), ChainEnhance(0.3, [0,1,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<チェイン犠牲強化> 10ターンの間、毎ターン2チェインを消費し、味方の攻撃力をアップ(300%)",
+		turn: 5,
+		proc: [ss_chain_enhance(3.0, 2, 10)],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+	],
+}

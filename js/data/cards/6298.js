@@ -1,0 +1,45 @@
+{
+	name: "スタイリッシュ魔女 オデット・ルー",
+	cardno: 6298,
+	imageno: 8147,
+	hp: 2983,
+	atk: 3511,
+	cost: 48,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(400%)",
+		proc: ChainAttrAttack(4.0, 0, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<割合削り>敵単体のHPを20%減少させる",
+		turn: 8,
+		proc: [ss_ratiodamage_s(0.2)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Fastskill(1),
+		Statusup(200,0),
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Spec_statusup(200,0, [9,]),
+	],
+	as2: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(500%)",
+		proc: ChainAttrAttack(5.0, 0, [0,1,0,0,0]),
+	},
+	ss2: {
+		desc: "<割合削り>敵単体のHPを25%減少させる",
+		turn: 10,
+		proc: [ss_ratiodamage_s(0.25)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

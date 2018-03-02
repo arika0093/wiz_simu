@@ -1,0 +1,46 @@
+{
+	name: "黎明の輝き アニマ・アウローラ",
+	cardno: 7422,
+	imageno: 9477,
+	hp: 3847,
+	atk: 2231,
+	cost: 45,
+	attr: [0,3],
+	species: [0],
+	islegend: true,
+	ape: "心竜天翔 Rising Dragon",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化・回復>味方全体のHPを回復(11%)、さらに攻撃力をアップ(20%)",
+		proc: [Heal(0.11, [1,1,1,1,1], 0), ChainEnhance(0.20, [1,1,1,1,1], 0)],
+	},
+	ss1: {
+		desc: "<遅延大魔術>攻撃ターンを1遅らせ、敵単体へ火属性のダメージ(300%)",
+		turn: 4,
+		proc: [ss_delay_s(1), ss_damage_s(3.0, [0], 1)],
+	},
+	awakes: [
+		Statusup(200,0),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([0,0,0,0,1,],10),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 100,0, [0,0,0,1,0,]),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,100, [0,0,0,1,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>味方全体のHPを回復(13%)、さらに攻撃力をアップ(20%)",
+		proc: [Heal(0.13, [1,1,1,1,1], 0), ChainEnhance(0.20, [1,1,1,1,1], 0)],
+	},
+	ss2: {
+		desc: "<遅延大魔術>攻撃ターンを1遅らせ、敵単体へ火属性のダメージ(500%)",
+		turn: 6,
+		proc: [ss_delay_s(1), ss_damage_s(5.0, [0], 1)],
+	},
+	Lawake: [
+		Statusup(1000,0),
+	],
+}

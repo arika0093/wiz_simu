@@ -1,0 +1,46 @@
+{
+	name: "鬼モテコーデ ジョージ・トドロキ",
+	cardno: 4471,
+	imageno: 6164,
+	hp: 2850,
+	atk: 2830,
+	cost: 54,
+	attr: [0, -1],
+	species: [8],
+	awakes: [
+		Costdown(2),
+		Statusup(0, 100),
+		Fastskill(1),
+		Statusup(0, 200),
+		Fastskill(1),
+		Statusup(200, 0),
+		Panel_boost([1,0,0,0,0], 1),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Spec_statusup(0, 200, [8]),
+	],
+	as1: {
+		desc: "<連撃>敵単体を3回連続攻撃、HP80％以上でさらにダメージアップ(通常：計250％ / HP80％以上：計300％)",
+		proc: [ChainDualAttack(2.5, 0, 3), add_cond(ChainDualAttack(3.0, 0, 3), when_hp_more(0.8))],
+	},
+	ss1: {
+		desc: "<多弾魔術>敵単体へ火属性の5回連続ダメージ(計180％)",
+		turn: 6,
+		proc: [ss_damage_s(1.8, [0], 5)],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(0, 400),
+		Statusup(400, 0),
+	],
+	as2: {
+		desc: "<連撃>敵単体を3回連続攻撃、HP80％以上でさらにダメージアップ(通常：計350％ / HP80％以上：計400％)",
+		proc: [ChainDualAttack(3.5, 0, 3), add_cond(ChainDualAttack(4.0, 0, 3), when_hp_more(0.8))],
+	},
+	ss2: {
+		desc: "<多弾魔術>敵単体へ火属性の5回連続ダメージ(計380％)",
+		turn: 9,
+		proc: [ss_damage_s(3.8, [0], 5)],
+	},
+}

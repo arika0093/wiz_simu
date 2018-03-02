@@ -1,0 +1,48 @@
+{
+	name: "天涯ノ砲雷 オウゼン・リョウガン",
+	cardno: 8353,
+	imageno: 10497,
+	hp: 2421,
+	atk: 4523,
+	cost: 43,
+	attr: [2,-1],
+	species: [0],
+	disable: true,
+	islegend: true,
+	ape: "喰牙RIZEⅠ",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効連撃>味方のMAXHP10%を使い、水属性の敵単体へ特効5連撃(600%)",
+		proc: add_cond(ChainDualAttrAttack(6.0, 0, 5, [0,1,0,0,0]), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "<反動大魔術>スキル反射を無視し、敵全体へ雷属性のダメージ(700%)(スキル使用後、1ターン封印状態に)",
+		turn: 7,
+		proc: [ss_damage_all(7.0, [2]), ss_allsealed_own(1), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(10),
+		Statusup(0,300),
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(1),
+		Statusup(300,0),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Fastskill(2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<属性特効連撃>味方のMAXHP10%を使い、水属性の敵単体へ特効5連撃(700%)",
+		proc: add_cond(ChainDualAttrAttack(7.0, 0, 5, [0,1,0,0,0]), as_consume_all(0.1)),
+	},
+	ss2: {
+		desc: "<反動大魔術>スキル反射を無視し、敵全体へ雷属性のダメージ(900%)(スキル使用後、1ターン封印状態に)",
+		turn: 9,
+		proc: [ss_damage_all(7.0, [9]), ss_allsealed_own(1), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(500,0),
+	],
+}

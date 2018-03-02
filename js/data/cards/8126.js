@@ -1,0 +1,47 @@
+{
+	name: "愛の林檎パイ イヴ・フォルクロール",
+	cardno: 8126,
+	imageno: 7483,
+	hp: 4864,
+	atk: 2490,
+	cost: 54,
+	attr: [2,1],
+	species: [1],
+	islegend: true,
+	ape: "バレンタイン2016",
+	as1: {
+		desc: "<回復>水・雷属性の味方を回復、5チェインで更に回復(11%/16%)",
+		proc: [Heal(0.11, [0,1,1,0,0], 0), Heal(0.16, [0,1,1,0,0], 5)],
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップ(上限値:2000)し、さらに味方全体のHPを回復(25%)",
+		turn: 5,
+		proc: [ss_statusup_all([500, 500], [2000, 2000], -1), ss_heal(0.25)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,100, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 100,0, [0,1,0,0,0,]),
+		Fastskill(3),
+		Heal_afterbattle(10),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<回復>水・雷属性の味方を回復、5チェインで更に回復(13%/18%)",
+		proc: [Heal(0.13, [0,1,1,0,0], 0), Heal(0.18, [0,1,1,0,0], 5)],
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを1000アップ(上限値:2000)し、さらに味方全体のHPを回復(25%)",
+		turn: 8,
+		proc: [ss_statusup_all([1000, 1000], [2000, 2000], -1), ss_heal(0.25)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(1000,0),
+		NEFTJOD(30),
+	],
+}

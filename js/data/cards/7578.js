@@ -1,0 +1,47 @@
+{
+	name: "聖夜に忘れじの栞 キーラ・バルバレス",
+	cardno: 7578,
+	imageno: 9653,
+	hp: 4220,
+	atk: 2230,
+	cost: 47,
+	attr: [2,3],
+	species: [9],
+	islegend: true,
+	ape: "ギルドマスターとChristmas",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化・回復>雷属性の味方のHPを回復(12%)、さらに雷属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.12, [0,0,1,0,0], 0), ChainEnhance(0.3, [0,0,1,0,0], 0)],
+	},
+	ss1: {
+		desc: "<ガード>3ターン闇属性のダメージを50%軽減する",
+		turn: 7,
+		proc: [ss_attr_guard([0,0,0,0,1], 0.5, 3)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(200,0),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,0,0,1,0,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,0,0,1,0,]),
+		Fastskill(2),
+		Guild_statusup(0, 1000),
+		Guild_statusup(1000, 0),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>雷属性の味方のHPを回復(15%)、さらに雷属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.15, [0,0,1,0,0], 0), ChainEnhance(0.3, [0,0,1,0,0], 0)],
+	},
+	ss2: {
+		desc: "<ガード>6ターン闇属性のダメージを50%軽減する",
+		turn: 9,
+		proc: [ss_attr_guard([0,0,0,0,1], 0.5, 6)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

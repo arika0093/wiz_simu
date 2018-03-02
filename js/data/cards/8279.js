@@ -1,0 +1,46 @@
+{
+	name: "残酷な世界の覚醒 アンジェリカ",
+	cardno: 8279,
+	imageno: 6862,
+	hp: 4056,
+	atk: 5342,
+	cost: 58,
+	attr: [1,-1],
+	species: [1],
+	islegend: true,
+	ape: "DL限定精霊",
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(350%)、パネルの色が増す度ダメージアップ(100%/250%)",
+		proc: ChainPanelsAttack(3.5, 4.5, 6.0, 3),
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水属性のダメージ(250%)、さらに味方全体を回復(35%)",
+		turn: 4,
+		proc: [ss_damage_all(2.5, [1]), ss_ignore_skillcounter(), ss_heal(0.35)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Spec_statusup(0,300, [1,]),
+		Spec_statusup(300,0, [1,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Abstate_invalid("heal_reverse"),
+		Fastskill(3),
+		Attr_statusup(0,400, [0,1,0,0,0,]),
+		Attr_statusup(400,0, [0,1,0,0,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(450%)、パネルの色が増す度ダメージアップ(100%/250%)",
+		proc: ChainPanelsAttack(4.5, 5.5, 7.0, 3),
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水属性のダメージ(250%)、さらに味方全体を回復(50%)",
+		turn: 6,
+		proc: [ss_damage_all(2.5, [1]), ss_ignore_skillcounter(), ss_heal(0.5)],
+	},
+	Lawake: [
+		Attr_statusup(0,300, [0,1,0,0,0,]),
+		Statusup(0,500),
+	],
+}

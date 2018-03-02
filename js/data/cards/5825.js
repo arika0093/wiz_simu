@@ -1,0 +1,45 @@
+{
+	name: "絶望を砕く竜魔将 ザッハ・クロード",
+	cardno: 5825,
+	imageno: 7694,
+	hp: 5032,
+	atk: 3632,
+	cost: 52,
+	attr: [0,-1],
+	species: [0],
+	islegend: true,
+	as1: {
+		desc: "<嘆きの怒り>戦闘不能の仲間の数だけ攻撃力アップ(500%/900%/1300%/1700%/2100%)&敵HPを吸収する(4%)",
+		proc: add_cond(ChainDeckDeadsAttack(4.0, 0), as_hp_absorption(0.04)),
+	},
+	ss1: {
+		desc: "<残滅大魔術>敵全体へ火属性のダメージ(200%)、さらに3ターンの間、火属性のダメージ(200%)",
+		turn: 7,
+		proc: [ss_continue_damage(2.0, 2.0, [0], 3)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Statusup(400,0),
+		Spec_statusup(400,0, [0,]),
+		Costdown(2),
+		Attr_relief([0,1,0,0,0,],20),
+		Spec_statusup(0,500, [0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],3),
+	],
+	as2: {
+		desc: "<嘆きの怒り>戦闘不能の仲間の数だけ攻撃力アップ(550%/1000%/1450%/1900%/2350%)&敵HPを吸収する(4%)",
+		proc: add_cond(ChainDeckDeadsAttack(4.5, 0), as_hp_absorption(0.04)),
+	},
+	ss2: {
+		desc: "<残滅大魔術>敵全体へ火属性のダメージ(300%)、さらに3ターンの間、火属性のダメージ(300%)",
+		turn: 9,
+		proc: [ss_continue_damage(3.0, 3.0, [0], 3)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(500,0),
+	],
+}

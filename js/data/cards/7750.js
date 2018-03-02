@@ -1,0 +1,47 @@
+{
+	name: "〝城塞落とし〟の ルディオ・ディル",
+	cardno: 7750,
+	imageno: 9832,
+	hp: 2514,
+	atk: 6476,
+	cost: 56,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "魔轟三鉄傑 対 地獄三十六歌仙",
+	as1: {
+		desc: "<属性特効連撃>味方のMAXHP10%を使い、火属性の敵単体へ特効5連撃(700%)",
+		proc: add_cond(ChainDualAttrAttack(7.0, 0, 5, [1,0,0,0,0]), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵単体へダメージ(1000%)",
+		turn: 7,
+		proc: [ss_damage_s(10, [1], 1), ss_consume_own(0.5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Statusup(300,0),
+		Statusup(0,300),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(0,300, [0,1,0,0,0,]),
+		Fastskill(1),
+		Attr_statusup(300,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],4),
+		Abstate_invalid("ss_sealed"),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<属性特効連撃>味方のMAXHP10%を使い、火属性の敵単体へ特効5連撃(800%)",
+		proc: add_cond(ChainDualAttrAttack(8.0, 0, 5, [1,0,0,0,0]), as_consume_all(0.1)),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵単体へダメージ(1200%)",
+		turn: 9,
+		proc: [ss_damage_s(12, [1], 1), ss_consume_own(0.5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,700),
+		Statusup(300,0),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+	],
+}

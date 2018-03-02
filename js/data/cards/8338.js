@@ -1,0 +1,48 @@
+{
+	name: "固き銘戒の送葬者 ファルク・ラ",
+	cardno: 8338,
+	imageno: 10482,
+	hp: 6635,
+	atk: 1364,
+	cost: 54,
+	attr: [1,0],
+	species: [2],
+	disable: true,
+	islegend: true,
+	ape: "喰牙RIZEⅠ",
+	as1: {
+		desc: "<回復>火・水属性の味方を回復(10%),20チェインで更に回復(15%)",
+		proc: [Heal(0.10, [1,1,0,0,0], 0), Heal(0.25, [1,1,0,0,0], 20)],
+	},
+	ss1: {
+		desc: "<ダメージ強化>3ターン火・水属性の味方の攻撃力をアップ(50%),20チェインでさらに3ターンアップ(150%)",
+		turn: 8,
+		proc: [ss_enhance_all(ss_chain_cond(20, 2.0, 0.5), ss_chain_cond(20, 6, 3), [1,1,0,0,0])],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],4),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Heal_afterbattle(10),
+		NEFTJOD(30),
+		Abstate_invalid("ss_sealed"),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [1,0,0,0,0,]),
+		Fastskill(4),
+		Awake_Chainboost(1),
+	],
+	as2: {
+		desc: "<回復>火・水属性の味方を回復(13%),20チェインで更に回復(15%)",
+		proc: [Heal(0.13, [1,1,0,0,0], 0), Heal(0.28, [1,1,0,0,0], 20)],
+	},
+	ss2: {
+		desc: "<ダメージ強化>3ターン火・水属性の味方の攻撃力をアップ(100%),20チェインでさらに3ターンアップ(150%)",
+		turn: 10,
+		proc: [ss_enhance_all(ss_chain_cond(20, 2.5, 1.0), ss_chain_cond(20, 6, 3), [1,1,0,0,0])],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "超一流の死神 魂子",
+	cardno: 4201,
+	imageno: 5832,
+	hp: 2789,
+	atk: 2222,
+	cost: 49,
+	attr: [1,-1],
+	species: [2],
+	islegend: true,
+	is_dist: true,
+	ape: "コラボ(高橋留美子)",
+	as1: {
+		desc: "<攻撃強化>5チェインで水属性の味方の攻撃力をアップ(60%)",
+		proc: ChainEnhance(0.6, [0,1,0,0,0], 5),
+	},
+	ss1: {
+		desc: "<大魔術>敵単体へ水属性のダメージ(200%)",
+		turn: 6,
+		proc: [ss_damage_s(2.0, [1], 1)],
+	},
+	awakes: [
+		Statusup(100,0),
+		Fastskill(1),
+		Statusup(200,0),
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Spec_statusup(0,200, [2,]),
+	],
+	as2: {
+		desc: "<攻撃強化>水属性の味方の攻撃力をアップ(60%)",
+		proc: ChainEnhance(0.6, [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<大魔術>敵単体へ水属性のダメージ(400%)",
+		turn: 9,
+		proc: [ss_damage_s(4.0, [1], 1)],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

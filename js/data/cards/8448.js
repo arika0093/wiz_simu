@@ -1,0 +1,47 @@
+{
+	name: "ピュア師匠 ペオルタン",
+	cardno: 8448,
+	imageno: 10598,
+	hp: 4025,
+	atk: 2525,
+	cost: 40,
+	attr: [2,-1],
+	species: [2],
+	islegend: true,
+	ape: "アイドルキャッツ！",
+	is_dist: true,
+	as1: {
+		desc: "<回復>雷属性の味方のHPを回復(12%)",
+		proc: Heal(0.12, [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<シャッフル>ジャンルパネルをシャッフル",
+		turn: 1,
+		proc: [ss_panel_shuffle()],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(300,0),
+		Awake_noeffect("経験値取得量アップ",1),
+		Panel_boost([0,0,1,0,0,],2),
+		Awake_noeffect("経験値取得量アップ",1),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>雷属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [0,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<パネル変換>ジャンルパネルを雷属性化",
+		turn: 2,
+		proc: [ss_panel_change([0,0,1,0,0])],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

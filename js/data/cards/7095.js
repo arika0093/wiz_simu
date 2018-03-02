@@ -1,0 +1,47 @@
+{
+	name: "抗いの輝翼 トァラ・アルゼンタム",
+	cardno: 7095,
+	imageno: 9101,
+	hp: 3546,
+	atk: 3579,
+	cost: 44,
+	attr: [1,-1],
+	species: [3],
+	islegend: true,
+	ape: "大魔道杯 in ドルキマス",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(400%)",
+		proc: [ChainAttack(4.0, 4)],
+	},
+	ss1: {
+		desc: "<継続回復>3ターン味方全体を徐々に回復する(15%)",
+		turn: 5,
+		proc: [ss_regenerate(0.15, 3)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],2),
+		Statusup(200,0),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(2),
+		Spec_statusup(0,500, [3,]),
+		Spec_statusup(500,0, [3,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(500%)",
+		proc: [ChainAttack(5.0, 4)],
+	},
+	ss2: {
+		desc: "<継続回復>3ターン味方全体を徐々に回復する、平均解答が早いほどさらに回復し、1ターン継続(基本:15%3ターン, 3秒台:18%4ターン, 2秒台:21%5ターン, 1秒台:24%6ターン, 0秒台:27%7ターン)",
+		turn: 8,
+		proc: [ss_regenerate(ss_answertime(0.15, 0.03), ss_answertime(3, 1))],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

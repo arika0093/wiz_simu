@@ -1,0 +1,45 @@
+{
+	name: "絶門魔道の終端 シド・ハーロック",
+	cardno: 4680,
+	imageno: 6439,
+	hp: 2582,
+	atk: 3021,
+	cost: 41,
+	attr: [0, -1],
+	species: [9],
+	awakes: [
+		Attr_relief([0, 1, 0, 0, 0], 10),
+		Statusup(200, 0),
+		Fastskill(1),
+		Statusup(0, 200),
+		Fastskill(1),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Panel_boost([1,0,0,0,0], 2),
+		Fastskill(1),
+		Spec_statusup(0, 200, [9]),
+		Spec_statusup(200, 0, [9]),
+	],
+	as1: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ/400％",
+		proc: ChainAttrAttack(4.0, 0, [0,0,1,0,0]),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ火属性のダメージ(150％)",
+		turn: 7,
+		proc: [ss_damage_all(1.5, [0])],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 400),
+		Statusup(400, 0),
+	],
+	as2: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ/500％",
+		proc: ChainAttrAttack(5.0, 0, [0,0,1,0,0]),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ火属性のダメージ(230％)",
+		turn: 11,
+		proc: [ss_damage_all(2.3, [0])],
+	},
+}

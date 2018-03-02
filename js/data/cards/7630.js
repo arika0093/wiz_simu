@@ -1,0 +1,47 @@
+{
+	name: "聖夜に福を振りまく サチ・コワラシ",
+	cardno: 7630,
+	imageno: 9693,
+	hp: 4023,
+	atk: 2165,
+	cost: 45,
+	attr: [2,1],
+	species: [1],
+	islegend: true,
+	ape: "大魔道杯 in 聖夜2016",
+	is_dist: true,
+	as1: {
+		desc: "<回復・攻撃強化>雷属性の味方のHPを回復(12%)、さらに雷属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.12, [0,0,1,0,0], 0), ChainEnhance(0.3, [0,0,1,0,0], 0)],
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体の攻撃力を500ダウンし、味方全体のHPを1000アップ(上限値:2000)",
+		turn: 5,
+		proc: [ss_statusup_all([1000, -500], [2000, 2000], -1)],
+	},
+	awakes: [
+		Fastskill(2),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(3),
+		Panel_boost([0,0,1,0,0,],2),
+		Awake_noeffect("ゴールド取得量アップ",3),
+		Awake_noeffect("経験値取得量アップ",2),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復・攻撃強化>雷属性の味方のHPを回復(15%)、さらに雷属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.15, [0,0,1,0,0], 0), ChainEnhance(0.3, [0,0,1,0,0], 0)],
+	},
+	ss2: {
+		desc: "<ガード>6ターン全属性のダメージを35%軽減し、さらにHPを回復(50%)",
+		turn: 11,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.35, 6), ss_heal(0.5)],
+	},
+	Lawake: [
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+}

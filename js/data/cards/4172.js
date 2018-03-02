@@ -1,0 +1,45 @@
+{
+	name: "無差別格闘早乙女流 早乙女乱馬",
+	cardno: 4172,
+	imageno: 5848,
+	hp: 2430,
+	atk: 2261,
+	cost: 46,
+	attr: [1, 0],
+	species: [8],
+	awakes: [
+		Statusup(0, 200),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Statusup(200, 0),
+		Fastskill(1),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+		Costdown(2),
+		Attr_statusup(100, 0, [1, 1, 0, 0, 0, ]),
+		Fastskill(2),
+		Spec_statusup(0, 200, [8, ]),
+		Spec_statusup(200, 0, [8, ]),
+	],
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ、10チェインで更にダメージアップ(5チェイン：350％ / 10チェイン：650％)",
+		proc: [ChainAttack(3.5, 5), ChainAttack(6.5, 10)],
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ火・水属性のダメージ(180％)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [0,1])],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+		Statusup(400, 0),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ、10チェインで更にダメージアップ(5チェイン：450％ / 10チェイン：750％)",
+		proc: [ChainAttack(4.5, 5), ChainAttack(7.5, 10)],
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ火・水属性のダメージ(260％)",
+		turn: 12,
+		proc: [ss_damage_all(2.6, [0,1])],
+	},
+}

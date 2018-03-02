@@ -1,0 +1,46 @@
+{
+	name: "黒の頂点 アルドベリク・ゴドー",
+	cardno: 8898,
+	imageno: 11109,
+	hp: 2905,
+	atk: 4011,
+	cost: 56,
+	attr: [1,0],
+	species: [2],
+	islegend: true,
+	ape: "ゴールデンアワード2017",
+	as1: {
+		desc: "<連撃・複属性攻撃強化>3チェインで敵単体を3回連続攻撃(350%)、さらに水属性の攻撃力をアップ(10%)、複属性が火属性だとさらにアップ(30%)",
+		proc: [ChainDualAttack(3.5, 3, 3), ChainEnhance_SubAttr(0.1, 0.4, [0,1,0,0,0], [1,0,0,0,0], 3)],
+	},
+	as2: {
+		desc: "<連撃・複属性攻撃強化>3チェインで敵単体を3回連続攻撃(450%)、さらに水属性の攻撃力をアップ(10%)、複属性が火属性だとさらにアップ(30%)",
+		proc: [ChainDualAttack(4.5, 3, 3), ChainEnhance_SubAttr(0.1, 0.4, [0,1,0,0,0], [1,0,0,0,0], 3)],
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・水属性の5回連続ダメージ(450%)",
+		turn: 6,
+		proc: [ss_damage_s(4.5, [1, 0], 5), ss_ignore_skillcounter()],
+	},
+	ss2: {
+		desc: "<激化大魔術>敵単体へ火・水属性の2回連続ダメージ(2500%)、発動する度に効果値が3倍アップ(上限:1段階)",
+		turn: 16,
+		proc: [ss_damage_s(ss_intenselyval(0, 25, 75, 3), [1,0], 2)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],4),
+		Attr_statusup(0,200,[1,1,0,0,0,]),
+		Attr_statusup(200,0,[1,1,0,0,0,]),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Awake_noeffect("スキル反射見破り",1),
+		Fastskill(4),
+		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,300,[1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0,[0,1,0,0,0,],300,0,[1,0,0,0,0,]),
+		Awake_noeffect("選ばれし者の証",1),
+	],
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,200,[1,1,0,0,0,]),
+	],
+}

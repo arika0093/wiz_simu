@@ -1,0 +1,47 @@
+{
+	name: "黒い太陽 ソラ・ディ・エーレ",
+	cardno: 8680,
+	imageno: 10853,
+	hp: 2516,
+	atk: 3224,
+	cost: 46,
+	attr: [2,4],
+	species: [1],
+	islegend: true,
+	ape: "エタクロⅢ",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>敵単体を3回連続攻撃(250%)、HP80%以上でさらにダメージアップ(50%)",
+		proc: [ChainDualAttack(2.5, 0, 3), add_cond(ChainDualAttack(3.0, 0, 3), when_hp_more(0.8))],
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ雷・闇属性の5回連続ダメージ(250%)",
+		turn: 5,
+		proc: [ss_damage_s(2.5, [2, 4], 5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Costdown(10),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Abstate_invalid("death_limit"),
+		Fastskill(2),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,200, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 200,0, [0,0,0,0,1,]),
+	],
+	as2: {
+		desc: "<連撃>敵単体を3回連続攻撃(350%)、HP80%以上でさらにダメージアップ(50%)",
+		proc: [ChainDualAttack(3.5, 0, 3), add_cond(ChainDualAttack(3.0, 0, 3), when_hp_more(0.8))],
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ雷・闇属性の5回連続ダメージ(450%)",
+		turn: 7,
+		proc: [ss_damage_s(4.5, [2, 4], 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Statusup(500,0),
+	],
+}

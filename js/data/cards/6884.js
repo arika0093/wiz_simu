@@ -1,0 +1,45 @@
+{
+	name: "美の極限 ガイアス・エクレール",
+	cardno: 6884,
+	imageno: 8864,
+	hp: 2513,
+	atk: 3020,
+	cost: 44,
+	attr: [2,3],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<分散攻撃>敵全体へ分散攻撃、パネルの色が増す度さらにダメージアップ(250%/350%/500%)",
+		proc: [ChainVarianceAttack(2.5, 0), add_cond(ChainVarianceAttack(3.5, 0), as_panel_over2()), add_cond(ChainVarianceAttack(5.0, 0), as_panel_over3())],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを雷属性化",
+		turn: 2,
+		proc: [ss_panel_change([0,0,1,0,0])],
+	},
+	awakes: [
+		Statusup(0,400),
+		Statusup(400,0),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Attr_statusup_sattr(200,0, [0,0,1,0,0,], 200,0, [0,0,0,1,0,]),
+	],
+	as2: {
+		desc: "<分散攻撃>敵全体へ分散攻撃、パネルの色が増す度さらにダメージアップ(350%/450%/600%)",
+		proc: [ChainVarianceAttack(3.5, 0), add_cond(ChainVarianceAttack(4.5, 0), as_panel_over2()), add_cond(ChainVarianceAttack(6.0, 0), as_panel_over3())],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを雷・光属性化し、チェインがプラス1の効果を付与",
+		turn: 6,
+		proc: [ss_panel_change([0,0,1,1,0]), panel_chainplus(1)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

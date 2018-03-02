@@ -1,0 +1,46 @@
+{
+	name: "浮遊島の守護者 ピエラ・サバタ",
+	cardno: 4847,
+	imageno: 6553,
+	hp: 3249,
+	atk: 2701,
+	cost: 49,
+	attr: [1, -1],
+	species: [9],
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Fastskill(1),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(0, 200),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Fastskill(1),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Spec_statusup(0, 200, [9, ]),
+	],
+	as1: {
+		desc: "<攻撃強化>パネルが2色、3色で水属性の味方の攻撃力をアップ(2色：+60％ / 3色：+100％)",
+		proc: ChainPanelsEnhance(0, 0.6, 1.0, [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを1早め、敵全体の攻撃ターンを1遅らせる",
+		turn: 7,
+		proc: [ss_skillboost(1), ss_delay_all(1)],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<攻撃強化>パネルが2色、3色で水属性の味方の攻撃力をアップ(2色：+80％ / 3色：+120％)",
+		proc: ChainPanelsEnhance(0, 0.8, 1.2, [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵全体の攻撃ターンを2遅らせる",
+		turn: 10,
+		proc: [ss_skillboost(2), ss_delay_all(2)],
+	},
+}

@@ -1,0 +1,47 @@
+{
+	name: "前代未聞の大奇術 マギカ・ルーシュ",
+	cardno: 7982,
+	imageno: 7100,
+	hp: 3001,
+	atk: 5351,
+	cost: 52,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	ape: "謹賀新年2016",
+	as1: {
+		desc: "<属性特効>3チェインで火属性の敵単体へ特効ダメージ(525％)",
+		proc: ChainAttrAttack(5.25, 3, [1,0,0,0,0]),
+	},
+	ss1: {
+		desc: "<カウンター>5ターンの間スキルカウンター待機(300%)",
+		turn: 12,
+		proc: [ss_skillcounter(3, 5)],
+	},
+	as2: {
+		desc: "<属性特効>3チェインで火属性の敵単体へ特効ダメージ(625％)",
+		proc: ChainAttrAttack(6.25, 3, [1,0,0,0,0]),
+	},
+	ss2: {
+		desc: "<カウンター>5ターンの間スキルカウンター待機(400%)",
+		turn: 15,
+		proc: [ss_skillcounter(4, 5)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0],2),
+		Fastskill(2),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0],2),
+		Attr_relief([1,1,0,0,0],20),
+		Awake_noeffect("ゴールド取得量アップ",3),
+		Attr_statusup(400,0, [0,1,0,0,0]),
+		Attr_statusup(0,400, [0,1,0,0,0]),
+		Fastskill(2),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+	],
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,200, [0,1,0,0,0]),
+		NEFTJOD(30),
+	],
+}

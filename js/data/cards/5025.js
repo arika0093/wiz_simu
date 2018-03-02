@@ -1,0 +1,47 @@
+{
+	name: "とこしえに薫る想い ファム・リリー",
+	cardno: 5025,
+	imageno: 6780,
+	hp: 3679,
+	atk: 3299,
+	cost: 44,
+	attr: [2, -1],
+	species: [9],
+	disable: true,
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(1),
+		NEFTJOD(30),
+		Statusup(200, 0),
+		Fastskill(1),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Fastskill(2),
+		Spec_statusup(0, 200, [9, ]),
+		Spec_statusup(200, 0, [9, ]),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+	as1: {
+		desc: "<攻撃強化>5チェインで雷属性の味方の攻撃力をアップ、パネルの色が2色以上でさらにアップ(通常：+60％ / 2色以上：+90％)",
+		proc: ChainPanelsEnhance(0.60, 0.90, 0.90, [0,0,1,0,0], 5),
+	},
+	ss1: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを1早め、敵単体の攻撃ターンを1遅らせる",
+		turn: 6,
+		proc: [ss_skillboost(1), ss_delay_s(1)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(700, 0),
+		NEFTJOD(30),
+		Statusup(0, 300),
+	],
+	as2: {
+		desc: "<攻撃強化>5チェインで雷属性の味方の攻撃力をアップ、パネルの色が2色以上でさらにアップ(通常：+90％ / 2色以上：+120％)",
+		proc: ChainPanelsEnhance(0.90, 1.20, 1.20, [0,0,1,0,0], 5),
+	},
+	ss2: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
+		turn: 9,
+		proc: [ss_skillboost(2), ss_delay_s(2)],
+	},
+}

@@ -1,0 +1,48 @@
+{
+	name: "聖なる夜空を渡る ヒカリ・スフィア",
+	cardno: 7501,
+	imageno: 9544,
+	hp: 5959,
+	atk: 2185,
+	cost: 50,
+	attr: [2,-1],
+	species: [9],
+	disable: true,
+	islegend: true,
+	ape: "エステレラⅠ",
+	as1: {
+		desc: "<攻撃強化・回復>雷属性の味方のHPを回復(13%)、さらに雷属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.13, [0,0,1,0,0], 0), ChainEnhance(0.3, [0,0,1,0,0], 0)],
+	},
+	ss1: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20%)",
+		turn: 8,
+		proc: [ss_regenerate(0.2, 5)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],3),
+		Fastskill(2),
+		Heal_afterbattle(10),
+		NEFTJOD(30),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Awake_noeffect("経験値取得量アップ",1),
+		Fastskill(2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Awake_noeffect("心眼",1),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>雷属性の味方のHPを回復(16%)、さらに雷属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.16, [0,0,1,0,0], 0), ChainEnhance(0.3, [0,0,1,0,0], 0)],
+	},
+	ss2: {
+		desc: "<継続回復>6ターン味方全体を徐々に回復する(25%)",
+		turn: 10,
+		proc: [ss_regenerate(0.25, 6)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+}

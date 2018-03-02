@@ -1,0 +1,47 @@
+{
+	name: "叡智の編纂者 ティア・ソピア",
+	cardno: 80004,
+	imageno: 5223,
+	hp: 3003,
+	atk: 2543,
+	cost: 48,
+	attr: [0, -1],
+	species: [9],
+	disable: true,
+	awakes: [
+		NEFTJOD(30),
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Panel_boost([1,0,0,0,0], 1),
+		Fastskill(1),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Panel_boost([1,0,0,0,0], 1),
+		Spec_statusup(0, 200, [9]),
+		Spec_statusup(200, 0, [9]),
+	],
+	as1: {
+		desc: "<攻撃強化>7チェインで火属性の味方の攻撃力をアップ/+80％",
+		proc: ChainEnhance(0.8, [1,0,0,0,0], 7),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(2)],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(400, 0),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "<攻撃強化>7チェインで火属性の味方の攻撃力をアップ/+100％",
+		proc: ChainEnhance(1.0, [1,0,0,0,0], 7),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス3の効果を付与",
+		turn: 8,
+		proc: [panel_chainplus(3)],
+	},
+}

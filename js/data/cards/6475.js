@@ -1,0 +1,46 @@
+{
+	name: "黄金大乱舞 ドゥーガ・ザムンタール",
+	cardno: 6475,
+	imageno: 8415,
+	hp: 2405,
+	atk: 3821,
+	cost: 46,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<連撃>敵単体を3回連続攻撃、10チェインで更にダメージアップ(250%/550%)",
+		proc: [ChainDualAttack(2.5, 0, 3), ChainDualAttack(5.5, 10, 3)],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ、5チェイン消費しさらに特効ダメージ(200%/400%/500%)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], ss_chain_cost(5, 5.0, 4.0), 2.0), [2])],
+	},
+	awakes: [
+		Statusup(200,0),
+		Statusup(0,200),
+		Costdown(2),
+		NEFTJOD(30),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Fastskill(1),
+		Spec_statusup(0,200, [9,]),
+		Fastskill(2),
+		Guild_statusup(0, 1000),
+		Guild_statusup(0, 1000),
+	],
+	as2: {
+		desc: "<連撃>敵単体を3回連続攻撃、10チェインで更にダメージアップ(350%/650%)",
+		proc: [ChainDualAttack(3.5, 0, 3), ChainDualAttack(6.5, 10, 3)],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ、5チェイン消費しさらに特効ダメージ(200%/400%/900%)",
+		turn: 9,
+		proc: [ss_damage_all(special_attr([0, 1, 0, 0, 0], ss_chain_cost(5, 9.0, 4.0), 2.0), [2])],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

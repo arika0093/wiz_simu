@@ -1,0 +1,47 @@
+{
+	name: "覇焔忠魔 エイミー・キャロル",
+	cardno: 8641,
+	imageno: 10815,
+	hp: 5234,
+	atk: 1855,
+	cost: 34,
+	attr: [0,-1],
+	species: [2],
+	islegend: true,
+	is_dist: true,
+	ape: "エタクロⅠ",
+	as1: {
+		desc: "<回復>火属性の味方を回復(12%)",
+		proc: Heal(0.12, [1,0,0,0,0], 0),
+	},
+	as2: {
+		desc: "<回復>火属性の味方を回復(14%)",
+		proc: Heal(0.14, [1,0,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<回復>味方全体のHPを回復する(50%)",
+		turn: 4,
+		proc: [ss_heal(0.50)],
+	},
+	ss2: {
+		desc: "<回復>チェインプラス2の効果、さらに味方全体のHPを回復する(50%)",
+		turn: 7,
+		proc: [ss_heal(0.50), ss_addchain(2)],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([1,0,0,0,0,],2),
+		Abstate_invalid("death_limit"),
+		Awake_noeffect("経験値取得量アップ",1),
+		Fastskill(3),
+		Attr_statusup(200,0,[1,0,0,0,0,]),
+		Attr_statusup(0,200,[1,0,0,0,0,]),
+	],
+	Lawake: [
+		Attr_statusup(0,100,[1,0,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "宝天の綺羅竜 デネブ",
+	cardno: 90065,
+	imageno: 9432,
+	hp: 3472,
+	atk: 3202,
+	cost: 41,
+	attr: [2,-1],
+	species: [0],
+	islegend: true,
+	ape: "神竜降臨Ⅰ",
+	is_dist: true,
+	as1: {
+		desc: "<ギャンブル攻撃>ダメージがイチかバチかアップ(200%～300%)",
+		proc: ChainStakesAttack(2.0, 3.0, 0),
+	},
+	ss1: {
+		desc: "<シャッフル>ジャンルパネルをシャッフル",
+		turn: 1,
+		proc: [ss_panel_shuffle()],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Statusup(200,0),
+		Statusup(0,200),
+		Fastskill(2),
+		Costdown(2),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Spec_statusup(400,0, [0,]),
+		Spec_statusup(0,400, [0,]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<ギャンブル攻撃>ダメージがイチかバチかアップ(200%～500%)",
+		proc: ChainStakesAttack(2.0, 5.0, 0),
+	},
+	ss2: {
+		desc: "<パネル変換>ジャンルパネルを雷属性化",
+		turn: 2,
+		proc: [ss_panel_change([0,0,1,0,0])],
+	},
+	Lawake: [
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

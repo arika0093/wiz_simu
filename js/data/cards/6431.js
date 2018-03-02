@@ -1,0 +1,47 @@
+{
+	name: "真祖討滅の血剣 プラーミャ・シア",
+	cardno: 6431,
+	imageno: 8370,
+	hp: 3342,
+	atk: 3330,
+	cost: 52,
+	attr: [0,4],
+	species: [8],
+	disable: true,
+	islegend: true,
+	ape: "GW2015",
+	as1: {
+		desc: "<パネル色数攻撃>3チェインかつパネルが2色でダメージアップ、3色でさらにアップ(550%/700%)",
+		proc: ChainPanelsAttack(0, 5.5, 7, 3),
+	},
+	ss1: {
+		desc: "<ガード>3ターン全属性のダメージを25%軽減する",
+		turn: 5,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		Statusup(200,0),
+		Statusup(0,200),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup_sattr(0, 200, [1,0,0,0,0], 0, 200, [0,0,0,0,1]),
+		Spec_statusup(0,200, [8,]),
+	],
+	as2: {
+		desc: "<パネル色数攻撃>3チェインかつパネルが2色でダメージアップ、3色でさらにアップ(650%/800%)",
+		proc: ChainPanelsAttack(0, 6.5, 8, 3),
+	},
+	ss2: {
+		desc: "<ガード>3ターン全属性のダメージを50%軽減する、3チェインを消費しさらに1ターン軽減",
+		turn: 9,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.25, ss_chain_cost(3, 4, 3))],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

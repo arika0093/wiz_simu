@@ -1,0 +1,45 @@
+{
+	name: "破業の真聖拳 レノックス・ジルヴァ",
+	cardno: 5456,
+	imageno: 7236,
+	hp: 2208,
+	atk: 2223,
+	cost: 40,
+	attr: [2, -1],
+	species: [2],
+	islegend: true,
+	as1: {
+		desc: "<攻撃>敵単体へのダメージアップ(300%)",
+		proc: ChainAttack(3.0, 0),
+	},
+	ss1: {
+		desc: "<反動大魔術>敵全体へ雷属性のダメージ(500%)(スキル使用後、1ターン封印状態に)",
+		turn: 6,
+		proc: [ss_damage_all(5.0, [2]), ss_allsealed_own(1)],
+	},
+	awakes: [
+		Statusup(0, 600),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Fastskill(1),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0, ]),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+		Costdown(2),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0, ]),
+		Fastskill(2),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+	],
+	as2: {
+		desc: "<攻撃>敵単体へのダメージアップ(400%)",
+		proc: ChainAttack(4.0, 0),
+	},
+	ss2: {
+		desc: "<反動大魔術>敵全体へ雷属性のダメージ(1000%)(スキル使用後、2ターン封印状態に)",
+		turn: 12,
+		proc: [ss_damage_all(10.0, [2]), ss_allsealed_own(2)],
+	},
+	Lawake: [
+		Statusup(0, 2000),
+		Statusup(2000, 0),
+	],
+}

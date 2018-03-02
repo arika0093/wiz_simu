@@ -1,0 +1,47 @@
+{
+	name: "聡慧大賢者 ティア・ソピア",
+	cardno: 5783,
+	imageno: 7594,
+	hp: 2848,
+	atk: 2002,
+	cost: 40,
+	attr: [0, 3],
+	species: [9],
+	disable: true,
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(30%/80%)",
+		proc: ChainEnhance_SubAttr(0.30, 0.80, [1, 0, 0, 0, 0], [0, 0, 0, 1, 0], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・光属性化",
+		turn: 3,
+		proc: [ss_panel_change([1,0,0,1,0])],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Panel_boost([1, 0, 0, 0, 0, ], 1),
+		Statusup(200, 0),
+		Fastskill(1),
+		Attr_statusup(0, 200, [1, 0, 0, 0, 0, ]),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Attr_statusup(100, 0, [1, 0, 0, 0, 0, ]),
+		Statusup(200, 0),
+		Fastskill(2),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(60%/110%)",
+		proc: ChainEnhance_SubAttr(0.60, 1.10, [1, 0, 0, 0, 0], [0, 0, 0, 1, 0], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・光属性化し、攻撃力アップの効果を付与(50%)",
+		turn: 6,
+		proc: [ss_panel_change([1,0,0,1,0]), panel_attackup(0.50)],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		Statusup(500, 0),
+	],
+}

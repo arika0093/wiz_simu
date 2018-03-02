@@ -1,0 +1,46 @@
+{
+	name: "混沌を生む者 ダンケル・アダムス",
+	cardno: 4450,
+	imageno: 6143,
+	hp: 2756,
+	atk: 2734,
+	cost: 57,
+	attr: [1, -1],
+	species: [9],
+	awakes: [
+		Costdown(2),
+		Costdown(2),
+		Costdown(2),
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Fastskill(2),
+		Fastskill(2),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Spec_statusup(200, 0, [9, ]),
+		Spec_statusup(0, 200, [9, ]),
+	],
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ、さらに敵のHPを吸収(攻撃：250％ / 吸収：5％)",
+		proc: add_cond(ChainAttack(2.5, 5), as_hp_absorption(0.05)),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ水属性のダメージ(150％)",
+		turn: 7,
+		proc: [ss_damage_all(1.5, [1])],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ、さらに敵のHPを吸収(攻撃：450％ / 吸収：5％)",
+		proc: add_cond(ChainAttack(4.5, 5), as_hp_absorption(0.05)),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ水属性のダメージ(200％)",
+		turn: 9,
+		proc: [ss_damage_all(2.0, [1])],
+	},
+}

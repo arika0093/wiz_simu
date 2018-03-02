@@ -1,0 +1,46 @@
+{
+	name: "純真の象徴たる白 ルシエラ・フオル",
+	cardno: 7712,
+	imageno: 6309,
+	hp: 3648,
+	atk: 3131,
+	cost: 53,
+	attr: [1,0],
+	species: [3],
+	islegend: true,
+	ape: "ウィズセレクション",
+	as1: {
+		desc: "<種族特効>4チェインでダメージアップ、天使・魔族の敵へさらにダメージアップ(400%/550%)",
+		proc: [ChainAttack(4.0, 4), ChainSpecAttack(5.5, 4, [2,3])],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水・火属性のダメージ(100%)、さらに味方全体のHPを回復する(25%)",
+		turn: 4,
+		proc: [ss_damage_all(1.0, [0,1]), ss_heal(0.25), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Abstate_invalid("ss_sealed"),
+		Fastskill(1),
+		Spec_relief([2], 30),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup_sattr(0,200, [0,1,0,0,0,], 0,200, [1,0,0,0,0,]),
+		Attr_statusup_sattr(200,0, [0,1,0,0,0,], 200,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<種族特効>4チェインでダメージアップ、天使・魔族の敵へさらにダメージアップ(500%/650%)",
+		proc: [ChainAttack(5.0, 4), ChainSpecAttack(6.5, 4, [2,3])],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水・火属性のダメージ(130%)、さらに味方全体のHPを回復する(25%)",
+		turn: 6,
+		proc: [ss_damage_all(1.3, [0,1]), ss_heal(0.25), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

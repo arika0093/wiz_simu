@@ -1,0 +1,47 @@
+{
+	name: "外道冥路の彷徨者 リセル・ルヘリア",
+	cardno: 7714,
+	imageno: 6313,
+	hp: 4067,
+	atk: 2731,
+	cost: 51,
+	attr: [2,1],
+	species: [9],
+	islegend: true,
+	ape: "ウィズセレクション",
+	as1: {
+		desc: "<攻撃強化・ガード>5チェインで水・雷属性の味方の攻撃力をアップ(60%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.6, [0,1,1,0,0], 5), as_guard(0.1, [1,1,1,1,1], 5)],
+	},
+	ss1: {
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(9000)",
+		turn: 6,
+		proc: [poison(9000, 4)],
+	},
+	awakes: [
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Fastskill(1),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(0,300, [9,]),
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(300,0, [9,]),
+	],
+	as2: {
+		desc: "<攻撃強化・ガード>5チェインで水・雷属性の味方の攻撃力をアップ(90%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.9, [0,1,1,0,0], 5), as_guard(0.1, [1,1,1,1,1], 5)],
+	},
+	ss2: {
+		desc: "<毒>5ターン敵全体に毒のダメージを与える(15000)",
+		turn: 10,
+		proc: [poison(15000, 5)],
+	},
+	Lawake: [
+		Statusup(0,200),
+		Statusup(700,0),
+		NEFTJOD(30),
+	],
+}

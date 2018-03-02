@@ -1,0 +1,45 @@
+{
+	name: "ミラクルツインハート ミミ&ララ",
+	cardno: 5736,
+	imageno: 7551,
+	hp: 2398,
+	atk: 5699,
+	cost: 47,
+	attr: [0,-1],
+	species: [3],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<パネル色数攻撃>3チェインかつパネルが2色でダメージアップ、3色でさらにアップ(400%/550%)",
+		proc: ChainPanelsAttack(0, 4.0, 5.5, 3),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,1,1,0,0])],
+	},
+	awakes: [
+		Costdown(4),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,1,1,1,]),
+		Attr_statusup(200,0, [1,1,1,1,1,]),
+		Spec_statusup(400,0, [3,]),
+		Spec_statusup(0,400, [3,]),
+	],
+	as2: {
+		desc: "<パネル色数攻撃>3チェインかつパネルが2色でダメージアップ、3色でさらにアップ(550%/700%)",
+		proc: ChainPanelsAttack(0, 5.0, 7.0, 3),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、チェインプラスが2の効果を付与",
+		turn: 7,
+		proc: [ss_panel_change([1,1,1,0,0]), panel_chainplus(2)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+}

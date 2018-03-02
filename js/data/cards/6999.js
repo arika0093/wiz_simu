@@ -1,0 +1,46 @@
+{
+	name: "胸焦がす乙女心 リンカ・ワイアット",
+	cardno: 6999,
+	imageno: 8997,
+	hp: 2930,
+	atk: 3801,
+	cost: 54,
+	attr: [0,1],
+	species: [8],
+	islegend: true,
+	ape: "クロム・マグナⅣ",
+	as1: {
+		desc: "<パネル色数攻撃>3チェインかつパネルが2色でダメージアップ、3色で更にアップ(550%/700%)",
+		proc: ChainPanelsAttack(0, 5.5, 7.0, 3),
+	},
+	ss1: {
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(400%)",
+		turn: 6,
+		proc: [ss_enhance_own(4.0, 3)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Statusup(0,400),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,200, [0,1,0,0,0,]),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<パネル色数攻撃>MAXHP15%を使い、3チェインかつパネルが2色でダメージアップ、3色で更にアップ(850%/1000%)",
+		proc: add_cond(ChainPanelsAttack(0, 8.5, 10.0, 3), as_consume_own(0.15)),
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン自分の攻撃力をアップ。HP20%以下の時、さらに自分の攻撃力をアップし(600%/2500%)、味方全体のHPを完全回復",
+		turn: 8,
+		proc: [ss_enhance_own(ss_hp_less(0.2, 25, 6), 4), ss_hp_less_skill(0.2, ss_heal(1))],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

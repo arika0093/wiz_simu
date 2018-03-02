@@ -1,0 +1,46 @@
+{
+	name: "スカル小隊の双星　アルト&ミハエル",
+	cardno: 6017,
+	imageno: 7854,
+	hp: 2018,
+	atk: 2609,
+	cost: 25,
+	attr: [1, 2],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(マクロス)",
+	is_dist: true,
+	as1: {
+		desc: "<分散攻撃>4チェインで敵全体へ分散攻撃、HP80%以上でさらにダメージアップ(300%/400%)",
+		proc: [ChainVarianceAttack(3.0, 4), add_cond(ChainVarianceAttack(4.0, 4), when_hp_more(0.8))],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水・雷属性のダメージ(150%)",
+		turn: 7,
+		proc: [ss_damage_all(1.5, [1, 2]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Statusup(200, 0),
+		NEFTJOD(30),
+		Statusup(0, 200),
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(100, 0, [0, 1, 1, 0, 0, ]),
+		Panel_boost([0, 1, 1, 0, 0, ], 2),
+		Fastskill(2),
+		Attr_statusup(0, 200, [0, 1, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<分散攻撃>4チェインで敵全体へ分散攻撃、HP80%以上でさらにダメージアップ(400%/500%)",
+		proc: [ChainVarianceAttack(4.0, 4), add_cond(ChainVarianceAttack(5.0, 4), when_hp_more(0.8))],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水・雷属性のダメージ(220%)",
+		turn: 10,
+		proc: [ss_damage_all(2.2, [1, 2]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0, 200, [0, 1, 1, 0, 0, ]),
+	],
+}

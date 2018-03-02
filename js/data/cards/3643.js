@@ -1,0 +1,46 @@
+{
+	name: "異邦の轟天大帝 タケル・ホシミ",
+	cardno: 3643,
+	imageno: 5212,
+	hp: 2597,
+	atk: 2593,
+	cost: 48,
+	attr: [2, -1],
+	species: [9],
+	disable: true,
+	awakes: [
+		Statusup(200, 0),
+		Fastskill(1),
+		Spec_statusup(0, 100, [0, 9, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		NEFTJOD(30),
+		Spec_statusup(200, 0, [0, 9, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Spec_statusup(0, 200, [0, 9, ]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "<種族数攻撃>龍族と術士の仲間の数だけダメージ大アップ/+40％×種族数(1体：140% / 2体：180% / 3体：220% / 4体：260% / 5体：300%)",
+		proc: ChainDeckSpecsAttack(0.40, [0,9], 0),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ雷属性の究極ダメージ(180％)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [2])],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<種族数攻撃>龍族と術士の仲間の数だけダメージ絶大アップ/+60％×種族数(1体：160% / 2体：220% / 3体：280% / 4体：340% / 5体：400%)",
+		proc: ChainDeckSpecsAttack(0.60, [0,9], 0),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ雷属性の超究極ダメージ(260％)",
+		turn: 12,
+		proc: [ss_damage_all(2.6, [2])],
+	},
+}

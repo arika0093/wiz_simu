@@ -1,0 +1,47 @@
+{
+	name: "堕獄の果ての愛 パッツァ・メレラナ",
+	cardno: 7919,
+	imageno: 10050,
+	hp: 3001,
+	atk: 3021,
+	cost: 47,
+	attr: [2,0],
+	species: [9],
+	islegend: true,
+	ape: "ショコラフォレスト",
+	is_dist: true,
+	as1: {
+		desc: "<分散攻撃>3チェインで敵全体へ分散攻撃(400%)",
+		proc: ChainVarianceAttack(4.0, 3),
+	},
+	ss1: {
+		desc: "<ガード>2ターン火・雷属性ダメージを75%軽減する",
+		turn: 6,
+		proc: [ss_attr_guard([1,0,1,0,0], 0.75, 2)],
+	},
+	awakes: [
+		Statusup(300,0),
+		Statusup(0,300),
+		Fastskill(2),
+		Attr_relief([1,0,0,0,0,],10),
+		NEFTJOD(30),
+		Costdown(10),
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,200, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 200,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<分散攻撃>3チェインで敵全体へ分散攻撃(500%)",
+		proc: ChainVarianceAttack(5.0, 3),
+	},
+	ss2: {
+		desc: "<ガード>5ターン火・雷属性ダメージを75%軽減する",
+		turn: 10,
+		proc: [ss_attr_guard([1,0,1,0,0], 0.75, 5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+	],
+}

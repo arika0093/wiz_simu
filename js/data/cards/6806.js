@@ -1,0 +1,46 @@
+{
+	name: "彼のための笑顔 ツクモ・アラナギ",
+	cardno: 6806,
+	imageno: 8788,
+	hp: 4753,
+	atk: 3825,
+	cost: 53,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	ape: "魔道杯(その他)",
+	as1: {
+		desc: "<攻撃強化・ガード>7チェインで水属性の味方の攻撃力をアップ(80%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.8, [0,1,0,0,0], 7), as_guard(0.1, [1,1,1,1,1], 7)],
+	},
+	ss1: {
+		desc: "<回復>チェインプラス1の効果、さらに味方全体のHPを回復する(50%)",
+		turn: 4,
+		proc: [ss_addchain(1), ss_heal(0.5)],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Fastskill(3),
+		Statusup(0,100),
+		Attr_relief([1,1,1,1,1,],10),
+		Costdown(2),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		NEFTJOD(30),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<攻撃強化・ガード>7チェインで水属性の味方の攻撃力をアップ(100%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(1.0, [0,1,0,0,0], 7), as_guard(0.1, [1,1,1,1,1], 7)],
+	},
+	ss2: {
+		desc: "<状態異常回復&蘇生>味方全体のHPを回復し(50%)、状態異常を回復、さらに味方全体を50%で蘇生",
+		turn: 10,
+		proc: [ss_heal(0.5), ss_abstate_cure(), ss_resurrection([1,1,1,1,1], 0.5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

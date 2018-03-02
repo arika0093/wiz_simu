@@ -1,0 +1,48 @@
+{
+	name: "其は深淵の災い キワム&鋼鉄の獣",
+	cardno: 6315,
+	imageno: 5943,
+	hp: 4210,
+	atk: 4234,
+	cost: 54,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	disable: true,
+	ape: "幻魔特区スザクⅡ",
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ、10チェインで更にダメージアップ(450%/600%)",
+		proc: [ChainAttack(4.5, 5), ChainAttack(6.0, 10)],
+	},
+	ss1: {
+		desc: "<割合削り>敵全体のHPを20%減少させる",
+		turn: 9,
+		proc: [ss_ratiodamage_all(0.2)],
+	},
+	awakes: [
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Spec_statusup(200,0, [8,]),
+		Fastskill(2),
+		Spec_statusup(0,200, [8,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでMAXHP15%を使い、ダメージアップ、10チェインで更にダメージアップ(650%/800%)",
+		proc: [add_cond(ChainAttack(6.5, 5), as_consume_own(0.15)), add_cond(ChainAttack(8.0, 10), as_consume_own(0.15))],
+	},
+	ss2: {
+		desc: "<割合削り>敵全体のHPを25%減少させ、10チェインを消費しスキル反射を無視する",
+		turn: 12,
+		proc: [ss_ratiodamage_all(0.25),  ss_chain_cost_skill(10, ss_ignore_skillcounter(), null)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+}

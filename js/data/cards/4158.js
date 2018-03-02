@@ -1,0 +1,46 @@
+{
+	name: "拒絶の完全世界 シェイナ・メイヴ",
+	cardno: 4158,
+	imageno: 5897,
+	hp: 1483,
+	atk: 4479,
+	cost: 47,
+	attr: [0, -1],
+	species: [2],
+	disable: true,
+	awakes: [
+		Panel_boost([1,0,0,0,0], 1),
+		Statusup(200, 0),
+		NEFTJOD(30),
+		Fastskill(1),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Statusup(0, 200),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Fastskill(2),
+		Spec_statusup(200, 0, [2]),
+		Spec_statusup(0, 200, [2]),
+	],
+	as1: {
+		desc: "<チェイン攻撃>3チェインで味方のMAXHP10％を使い、ダメージアップ/450％",
+		proc: add_cond(ChainAttack(4.5, 3), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵単体へダメージ(380％)",
+		turn: 7,
+		proc: [ss_damage_s(3.8, [0], 1), ss_consume_own(0.5)],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Statusup(0, 500),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインで味方のMAXHP10％を使い、ダメージアップ/550％",
+		proc: add_cond(ChainAttack(5.5, 3), as_consume_all(0.1)),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵単体へダメージ(500％)",
+		turn: 9,
+		proc: [ss_damage_s(5.0, [0], 1), ss_consume_own(0.5)],
+	},
+}

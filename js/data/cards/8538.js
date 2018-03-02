@@ -1,0 +1,46 @@
+{
+	name: "静かに猛るは荒海神 セイ・シラナミ",
+	cardno: 8538,
+	imageno: 8814,
+	hp: 3227,
+	atk: 3773,
+	cost: 56,
+	attr: [1,0],
+	species: [1],
+	islegend: true,
+	ape: "八百万神秘譚Ⅲ(Z)",
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ(150%)、5チェインで更にダメージアップ(50%)",
+		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.0, 5)],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体に水・火属性のダメージ(80%)、平均解答が早いほどさらにダメージ(40%)(上限値:160%)",
+		turn: 4,
+		proc: [ss_damage_all(ss_answertime(0.8, 0.4), [1, 0]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],4),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		NEFTJOD(30),
+		Awake_noeffect("経験値取得量アップ",2),
+		Fastskill(3),
+		Abstate_invalid("as_sealed"),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [1,0,0,0,0,]),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ(180%)、5チェインで更にダメージアップ(50%)",
+		proc: [ChainAllAttack(1.8, 0), ChainAllAttack(2.3, 5)],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体に水・火属性のダメージ(110%)、平均解答が早いほどさらにダメージ(40%)(上限値:160%)",
+		turn: 6,
+		proc: [ss_damage_all(ss_answertime(1.1, 0.4), [1, 0]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Statusup(0,1500),
+	],
+}

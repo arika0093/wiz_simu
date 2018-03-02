@@ -1,0 +1,45 @@
+{
+	name: "炎の鋼鉄剣 ノア・アームストロング",
+	cardno: 4461,
+	imageno: 6150,
+	hp: 1952,
+	atk: 3248,
+	cost: 42,
+	attr: [0, -1],
+	species: [8],
+	awakes: [
+		Fastskill(1),
+		Costdown(2),
+		NEFTJOD(30),
+		Statusup(0, 100),
+		Panel_boost([1,0,0,0,0], 1),
+		Statusup(100, 0),
+		Fastskill(1),
+		Spec_statusup(0, 200, [8]),
+		Spec_statusup(200, 0, [8]),
+	],
+	as1: {
+		desc: "<快調攻撃>残りHPが80％以上でダメージアップ、リーダー時さらにアップ(HP80％以上：250％ / リーダー時：300％)",
+		proc: [add_cond(ChainAttack(2.5, 0), when_hp_more(0.8)), add_cond(ChainAttack(3.0, 0), when_hp_more(0.8), when_leader())],
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ火属性のダメージ(180％)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [0])],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<快調攻撃>残りHPが80％以上でダメージアップ、リーダー時さらにアップ(HP80％以上：350％ / リーダー時：400％)",
+		proc: [add_cond(ChainAttack(3.5, 0), when_hp_more(0.8)), add_cond(ChainAttack(4.0, 0), when_hp_more(0.8), when_leader())],
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ火属性のダメージ(260％)",
+		turn: 12,
+		proc: [ss_damage_all(2.6, [0])],
+	},
+}

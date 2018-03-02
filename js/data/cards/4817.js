@@ -1,0 +1,32 @@
+{
+	name: "イグノビリウムの青の装兵",
+	cardno: 4817,
+	imageno: 6562,
+	hp: 2010,
+	atk: 2413,
+	cost: 25,
+	attr: [1,-1],
+	species: [6],
+	islegend: false,
+	is_dist: true,
+	as1: {
+		desc: "<ギャンブル攻撃>ダメージがイチかバチかアップ(0%~500%)",
+		proc: ChainStakesAttack(0, 5.0, 0),
+	},
+	ss1: {
+		desc: "<毒>3ターン敵全体に毒のダメージを与える(2500)",
+		turn: 5,
+		proc: [poison(2500, 3)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Statusup(100,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Statusup(0,200),
+	],
+}

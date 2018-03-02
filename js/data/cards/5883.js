@@ -1,0 +1,45 @@
+{
+	name: "ふにゃふわ超神獣 ラパパファミリー",
+	cardno: 5883,
+	imageno: 7700,
+	hp: 3691,
+	atk: 2806,
+	cost: 38,
+	attr: [2, -1],
+	species: [4],
+	islegend: true,
+	as1: {
+		desc: "<種族攻撃強化>雷属性の味方の攻撃力をアップ、妖精と亜人はさらにアップ(30%/80%)",
+		proc: [ChainEnhance(0.30, [0, 0, 1, 0, 0], 0), ChainSpecEnhance(0.80, [0, 0, 1, 0, 0], [4, 5], 0)],
+	},
+	ss1: {
+		desc: "<遅延>敵単体の攻撃ターンを3遅らせる",
+		turn: 10,
+		proc: [ss_delay_s(3)],
+	},
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		NEFTJOD(30),
+		Attr_relief([0, 1, 0, 0, 0, ], 10),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Statusup(200, 0),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Fastskill(2),
+		Spec_statusup(500, 0, [4, ]),
+		Spec_statusup(0, 500, [4, ]),
+	],
+	as2: {
+		desc: "<種族攻撃強化>雷属性の味方の攻撃力をアップ、妖精と亜人はさらにアップ(40%/120%)",
+		proc: [ChainEnhance(0.40, [0, 0, 1, 0, 0], 0), ChainSpecEnhance(1.20, [0, 0, 1, 0, 0], [4, 5], 0)],
+	},
+	ss2: {
+		desc: "<遅延>敵単体の攻撃ターンを3遅らせ、20チェインでさらに1遅らせる",
+		turn: 14,
+		proc: [ss_delay_s(ss_chain_cond(20, 4, 3))],
+	},
+	Lawake: [
+		Statusup(400, 0),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "Clear the Way アライナ",
+	cardno: 8053,
+	imageno: 10181,
+	hp: 2105,
+	atk: 6600,
+	cost: 54,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	ape: "クロスディライブ",
+	as1: {
+		desc: "<属性特効>HP80%以上で水属性の敵単体へ特効ダメージ(525%)",
+		proc: add_cond(ChainAttrAttack(5.25, 0, [0,1,0,0,0]), when_hp_more(0.8)),
+	},
+	ss1: {
+		desc: "<多弾魔術>敵全体へ雷属性の10回連続ダメージ(120%)",
+		turn: 3,
+		proc: [ss_damage_all_cons(1.2, [2], 10)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Costdown(20),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],2),
+		Awake_noeffect("経験値取得量アップ",2),
+		Fastskill(2),
+		Attr_statusup(0,400, [0,0,1,0,0,]),
+		Attr_statusup(400,0, [0,0,1,0,0,]),
+		Fastskill(2),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<属性特効>HP80%以上で水属性の敵単体へ特効ダメージ(625%)",
+		proc: add_cond(ChainAttrAttack(6.25, 0, [0,1,0,0,0]), when_hp_more(0.8)),
+	},
+	ss2: {
+		desc: "<多弾魔術>敵全体へ雷属性の10回連続ダメージ(150%)",
+		turn: 5,
+		proc: [ss_damage_all_cons(1.5, [2], 10)],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "Play Hard ヴァルガ",
+	cardno: 8764,
+	imageno: 10946,
+	hp: 2403,
+	atk: 2576,
+	cost: 39,
+	attr: [0,1],
+	species: [8],
+	islegend: true,
+	ape: "クロスディライブACT2",
+	is_dist: true,
+	as1: {
+		desc: "<ギャンブル攻撃>ダメージがイチかバチかアップ(200%～300%)",
+		proc: ChainStakesAttack(2.0, 3.0, 0),
+	},
+	ss1: {
+		desc: "<反動大魔術>敵全体へ火属性のダメージ(500%)(スキル使用後、1ターン封印状態に)",
+		turn: 6,
+		proc: [ss_damage_all(5.0, [1]), ss_allsealed_own(1)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<ギャンブル攻撃>ダメージがイチかバチかアップ(200%～500%)",
+		proc: ChainStakesAttack(2.0, 5.0, 0),
+	},
+	ss2: {
+		desc: "<反動大魔術>敵全体へ火属性のダメージ(700%)(スキル使用後、1ターン封印状態に)",
+		turn: 8,
+		proc: [ss_damage_all(7.0, [1]), ss_allsealed_own(1)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(400,0),
+	],
+}

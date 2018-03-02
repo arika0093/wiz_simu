@@ -1,0 +1,45 @@
+{
+	name: "攻究魔法の最終形 イズロム・ガドラ",
+	cardno: 4850,
+	imageno: 6585,
+	hp: 2524,
+	atk: 3132,
+	cost: 41,
+	attr: [1, -1],
+	species: [9],
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Fastskill(1),
+		Statusup(0, 200),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Attr_relief([1, 0, 0, 0, 0, ], 10),
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Spec_statusup(200, 0, [9, ]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ/450％",
+		proc: ChainAttack(4.5, 5),
+	},
+	ss1: {
+		desc: "<多弾魔術>敵単体へ水属性の5回連続ダメージ(計180％)",
+		turn: 5,
+		proc: [ss_damage_s(1.8, [1], 5)],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(0, 500),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ/550％",
+		proc: ChainAttack(5.5, 5),
+	},
+	ss2: {
+		desc: "<多弾魔術>敵単体へ水属性の5回連続ダメージ(計380％)",
+		turn: 8,
+		proc: [ss_damage_s(3.8, [1], 5)],
+	},
+}

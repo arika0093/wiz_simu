@@ -1,0 +1,46 @@
+{
+	name: "全て救済する神 ウルディラ・フレド",
+	cardno: 7531,
+	imageno: 9574,
+	hp: 4032,
+	atk: 2385,
+	cost: 40,
+	attr: [1,-1],
+	species: [1],
+	islegend: true,
+	ape: "エステレラⅠ",
+	awakes: [
+		Fastskill(1),
+		Statusup(0, 100),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Statusup(100, 0),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Statusup(0, 200),
+		Fastskill(2),
+		Statusup(200, 0),
+		Spec_statusup(0, 200, [1, ]),
+		Spec_statusup(100, 0, [1, ]),
+	],
+	as1: {
+		desc: "<種族攻撃強化>水属性の味方の攻撃力をアップ、神族はさらにアップ(20%/70%)",
+		proc: [ChainEnhance(0.20, [0,1,0,0,0], 0), ChainSpecEnhance(0.70, [0,1,0,0,0], [1], 0)],
+	},
+	ss1: {
+		desc: "<起死回生>1ターン、致死ダメージを受けたら一度だけHP10%で起死回生",
+		turn: 8,
+		proc: [ss_revival(0.10, 1)],
+	},
+	as2: {
+		desc: "<種族攻撃強化>水属性の味方の攻撃力をアップ、神族はさらにアップ(50%/100%)",
+		proc: [ChainEnhance(0.50, [0,1,0,0,0], 0), ChainSpecEnhance(1.00, [0,1,0,0,0], [1], 0)],
+	},
+	ss2: {
+		desc: "<起死回生>2ターン、致死ダメージを受けたら一度だけHP10%で起死回生",
+		turn: 10,
+		proc: [ss_revival(0.10, 2)],
+	},
+	Lawake: [
+		Statusup(400, 0),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+	],
+}

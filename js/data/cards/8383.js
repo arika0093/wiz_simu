@@ -1,0 +1,47 @@
+{
+	name: "宴は甘くて アルティミシア&コリン",
+	cardno: 8383,
+	imageno: 7436,
+	hp: 6159,
+	atk: 2017,
+	cost: 57,
+	attr: [2,0],
+	species: [1],
+	islegend: true,
+	ape: "グリコⅢ",
+	as1: {
+		desc: "<回復>火・雷属性の味方を回復、パネルの色が2色以上でさらに回復(10%/20%)",
+		proc: ChainPanelsHeal(0.10, 0.20, 0.20, [1,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早め、3チェインを消費しさらに1早める",
+		turn: 5,
+		proc: [ss_chain_cost_skill(3, ss_skillboost(2), ss_skillboost(1))],
+	},
+	as2: {
+		desc: "<回復>火・雷属性の味方を回復、パネルの色が2色以上でさらに回復(10%/23%)",
+		proc: ChainPanelsHeal(0.13, 0.23, 0.23, [1,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早め、3チェインを消費しさらに1早める",
+		turn: 8,
+		proc: [ss_chain_cost_skill(3, ss_skillboost(3), ss_skillboost(2))],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],4),
+		Attr_statusup(200,0,[1,0,1,0,0,]),
+		Attr_statusup(0,200,[1,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+		NEFTJOD(30),
+		Fastskill(4),
+		Attr_statusup_sattr(100,0,[0,0,1,0,0,],300,0,[1,0,0,0,0,]),
+		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,300,[1,0,0,0,0,]),
+		Awake_Chainboost(1),
+		Heal_afterbattle(10),
+	],
+	Lawake: [
+		Attr_statusup(0,100,[1,0,1,0,0,]),
+		Statusup(500,0),
+		Abstate_invalid("all_sealed"),
+	],
+}

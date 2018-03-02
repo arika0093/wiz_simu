@@ -1,0 +1,45 @@
+{
+	name: "八卦陰陽頭 トウマ・アマノ",
+	cardno: 6289,
+	imageno: 8136,
+	hp: 3004,
+	atk: 3432,
+	cost: 44,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<攻撃強化・回復>雷属性の味方を回復し(5%)、攻撃力もアップ(30%)",
+		proc: [Heal(0.05, [0,0,1,0,0], 0), ChainEnhance(0.3, [0,0,1,0,0], 0)],
+	},
+	ss1: {
+		desc: "<回復>味方全体のHPを回復する(50%)",
+		turn: 5,
+		proc: [ss_heal(0.5)],
+	},
+	awakes: [
+		Statusup(0,400),
+		Statusup(400,0),
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(0,200),
+		Costdown(2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Heal_afterbattle(10),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>雷属性の味方を回復し(5%)、攻撃力もアップ(60%)",
+		proc: [Heal(0.05, [0,0,1,0,0], 0), ChainEnhance(0.6, [0,0,1,0,0], 0)],
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,300),
+	],
+}

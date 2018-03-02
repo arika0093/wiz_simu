@@ -1,0 +1,47 @@
+{
+	name: "一人はみんなの為に アレク&ルシェ",
+	cardno: 5896,
+	imageno: 7713,
+	hp: 2621,
+	atk: 2278,
+	cost: 29,
+	attr: [0,1],
+	species: [9],
+	islegend: true,
+	ape: "大魔道杯 with ギルドマスターズ(3周年)",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>2チェインでダメージアップ(300%)",
+		proc: ChainAttack(3.0, 2),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・水属性化",
+		turn: 3,
+		proc: [ss_panel_change([1,1,0,0,0])],
+	},
+	awakes: [
+		Attr_relief([1,1,0,0,0,],20),
+		Statusup(200,0),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Heal_afterbattle(10),
+		Fastskill(1),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Awake_noeffect("経験値取得量アップ", 1),
+	],
+	as2: {
+		desc: "<チェイン攻撃>2チェインでダメージアップ(350%)",
+		proc: ChainAttack(3.5, 2),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・水属性化し、ダメージ25%軽減の効果を付与",
+		turn: 7,
+		proc: [ss_panel_change([1,1,0,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Statusup(400,0),
+	],
+}

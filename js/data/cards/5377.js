@@ -1,0 +1,47 @@
+{
+	name: "新たなる肖像 ミシェル・ヴァイル",
+	cardno: 5377,
+	imageno: 7223,
+	hp: 4004,
+	atk: 3545,
+	cost: 42,
+	attr: [0,-1],
+	species: [1],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<攻撃強化>7チェインで火属性の味方の攻撃力をアップ(80%)",
+		proc: ChainEnhance(0.80, [1,0,0,0,0], 7),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,1,1,0,0])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		Attr_statusup(100,0, [1,1,1,1,1,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(0,100, [1,1,1,1,1,]),
+		Fastskill(2),
+		Spec_statusup(300,0, [1,]),
+		Attr_relief([1,1,1,1,1,],10),
+		Spec_statusup(0,300, [1,]),
+	],
+	as2: {
+		desc: "<攻撃強化>7チェインで火属性の味方の攻撃力をアップ(100%)",
+		proc: ChainEnhance(1.0, [1,0,0,0,0], 7),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、チェインがプラス2の効果を付与",
+		turn: 7,
+		proc: [ss_panel_change([1,1,1,0,0]), panel_chainplus(2)],
+	},
+	Lawake: [
+		Attr_relief([1,1,1,1,1,],10),
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

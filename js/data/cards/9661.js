@@ -1,0 +1,47 @@
+{
+	name: "ドンの歌姫 シニョーラ・ティターノ",
+	cardno: 9661,
+	imageno: 11944,
+	hp: 2825,
+	atk: 5735,
+	cost: 43,
+	attr: [1,-1],
+	species: [5],
+	islegend: true,
+	ape: "シュガーレスバンビーナ",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>敵単体を6回連続攻撃(200%)、解答が早いほどさらにアップ(70%)(上限:4段階)",
+		proc: add_cond(ChainDualAttack(2.0, 0, 6), as_timedep(0.7)),
+	},
+	ss1: {
+		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ水属性のダメージ(650%)、さらに隣接する敵に水属性のダメージ(650%)",
+		turn: 5,
+		proc: [ss_damage_explosion(6.5, [1]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_oattr(0,300, [0,1,0,0,0,]),
+		Attr_statusup_oattr(300,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(3),
+		NEFTJOD(30),
+		Attr_statusup(0,300, [0,1,0,0,0,]),
+		Attr_statusup(300,0, [0,1,0,0,0,]),
+		Awake_noeffect("経験値取得量アップ",1),
+	],
+	as2: {
+		desc: "<連撃>敵単体を6回連続攻撃(300%)、解答が早いほどさらにアップ(70%)(上限:4段階)",
+		proc: add_cond(ChainDualAttack(3.0, 0, 6), as_timedep(0.7)),
+	},
+	ss2: {
+		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ水属性のダメージ(850%)、さらに隣接する敵に水属性のダメージ(850%)",
+		turn: 7,
+		proc: [ss_damage_explosion(8.5, [1]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Statusup(500,0),
+	],
+}

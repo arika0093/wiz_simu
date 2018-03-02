@@ -1,0 +1,47 @@
+{
+	name: "無悪不造の外法魔 エネリー・ネリー",
+	cardno: 8349,
+	imageno: 10493,
+	hp: 3753,
+	atk: 2624,
+	cost: 39,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "喰牙RIZEⅠ",
+	is_dist: true,
+	as1: {
+		desc: "<回復・攻撃強化>味方全体のHPを回復(10%)、さらに攻撃力をアップ(20%)",
+		proc: [Heal(0.10, [1,1,1,1,1], 0), ChainEnhance(0.2, [1,1,1,1,1], 0)],
+	},
+	ss1: {
+		desc: "<精霊強化>6ターンの間、味方の攻撃力をアップ(150%)(発動中行動不可)",
+		turn: 6,
+		proc: [ss_reinforcement_all(6, [ss_enhance_all(1.5, 1, [1, 1, 1, 1, 1], "RF")])],
+	},
+	awakes: [
+		Costdown(5),
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(1),
+		Statusup(200,0),
+		Statusup(0,200),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Attr_relief([0,1,0,0,0,],10),
+	],
+	as2: {
+		desc: "<回復・攻撃強化>味方全体のHPを回復(12%)、さらに攻撃力をアップ(20%)",
+		proc: [Heal(0.12, [1,1,1,1,1], 0), ChainEnhance(0.2, [1,1,1,1,1], 0)],
+	},
+	ss2: {
+		desc: "<精霊強化>6ターンの間、味方の攻撃力をアップ(250%)(発動中行動不可)",
+		turn: 9,
+		proc: [ss_reinforcement_all(6, [ss_enhance_all(2.5, 1, [1, 1, 1, 1, 1], "RF")])],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(400,0),
+	],
+}

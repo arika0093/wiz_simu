@@ -1,0 +1,47 @@
+{
+	name: "申年はうちの時代！マワシ・アイア",
+	cardno: 7672,
+	imageno: 9747,
+	hp: 3723,
+	atk: 2445,
+	cost: 38,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	ape: "レイド Gate Defenders 申(さる)ものは追わず。酉(とり)あえずお餅でもどうぞ。",
+	is_dist: true,
+	as1: {
+		desc: "<回復・攻撃強化>5チェインで水属性のHPを回復(10%)、さらに攻撃力をアップ(50%)",
+		proc: [Heal(0.1, [0,1,0,0,0], 5), ChainEnhance(0.5, [0,1,0,0,0], 5)],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,1,1,0,0])],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Statusup(200,0),
+		Attr_relief([1,0,0,0,0,],10),
+		Fastskill(1),
+		Spec_statusup(200,0, [9,]),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<回復・攻撃強化>5チェインで水属性のHPを回復(10%)、さらに攻撃力をアップ(80%)",
+		proc: [Heal(0.1, [0,1,0,0,0], 5), ChainEnhance(0.8, [0,1,0,0,0], 5)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、チェインがプラス1の効果を付与",
+		turn: 7,
+		proc: [panel_chainplus(1), ss_panel_change([1,1,1,0,0])],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Abstate_invalid("ss_sealed"),
+	],
+}

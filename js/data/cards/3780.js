@@ -1,0 +1,45 @@
+{
+	name: "蒼星輝剣 カトレア・ラインハルト",
+	cardno: 3780,
+	imageno: 5410,
+	hp: 2433,
+	atk: 2643,
+	cost: 38,
+	attr: [1, -1],
+	species: [8],
+	awakes: [
+		Statusup(200, 0),
+		Statusup(0, 200),
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Costdown(2),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Fastskill(2),
+		Spec_statusup(0, 200, [8, ]),
+	],
+	as1: {
+		desc: "<攻撃>敵単体へのダメージアップ250％、3チェインで更にアップ300％",
+		proc: [ChainAttack(2.5, 0), ChainAttack(3.0, 3)],
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ水属性のダメージ(180％)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [1])],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(0, 400),
+	],
+	as2: {
+		desc: "<攻撃>敵単体へのダメージアップ350％、3チェインで更にアップ&敵HPを吸収する400％",
+		proc: [ChainAttack(3.5, 0), add_cond(ChainAttack(4.0, 3), as_hp_absorption(0.05))],
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ水属性のダメージ(260％)",
+		turn: 12,
+		proc: [ss_damage_all(2.6, [1])],
+	},
+}

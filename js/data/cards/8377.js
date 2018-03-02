@@ -1,0 +1,46 @@
+{
+	name: "ふんわり世界へ ルシエラ&ミレイユ",
+	cardno: 8377,
+	imageno: 7454,
+	hp: 5854,
+	atk: 2187,
+	cost: 57,
+	attr: [1,3],
+	species: [3],
+	islegend: true,
+	ape: "グリコⅢ",
+	as1: {
+		desc: "<回復>水属性の味方を回復、HP20%以下でさらに回復(14%/39%)",
+		proc: [Heal(0.14, [0, 1, 0, 0, 0], 0), add_cond(Heal(0.39, [0, 1, 0, 0, 0], 0), when_hp_less(0.20))],
+	},
+	ss1: {
+		desc: "<起死回生>3ターン、致死ダメージを受けたら一度だけHP80%で起死回生",
+		turn: 9,
+		proc: [ss_revival(0.8, 3)],
+	},
+	as2: {
+		desc: "<回復>水属性の味方を回復、HP20%以下でさらに回復(17%/42%)",
+		proc: [Heal(0.17, [0, 1, 0, 0, 0], 0), add_cond(Heal(0.42, [0, 1, 0, 0, 0], 0), when_hp_less(0.20))],
+	},
+	ss2: {
+		desc: "<起死回生>6ターン、致死ダメージを受けたら一度だけHP80%で起死回生",
+		turn: 11,
+		proc: [ss_revival(0.8, 6)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],4),
+		Attr_statusup(200,0,[0,1,0,0,0,]),
+		Attr_statusup(0,200,[0,1,0,0,0,]),
+		NEFTJOD(60),
+		Attr_statusup_sattr(100,0,[0,1,0,0,0,],300,0,[0,0,0,1,0,]),
+		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,300,[0,0,0,1,0,]),
+		Fastskill(5),
+		Heal_afterbattle(10),
+		Awake_noeffect("心眼",1),
+		Awake_noeffect("行動見破り",1),
+	],
+	Lawake: [
+		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,200,[0,0,0,1,0,]),
+		Statusup(500,0),
+	],
+}

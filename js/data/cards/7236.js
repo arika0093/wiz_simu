@@ -1,0 +1,45 @@
+{
+	name: "追懐を乗り越えて進む アイ",
+	cardno: 7236,
+	imageno: 9258,
+	hp: 5620,
+	atk: 2003,
+	cost: 54,
+	attr: [0,2],
+	species: [6],
+	islegend: true,
+	ape: "追憶のレディアント",
+	as1: {
+		desc: "<攻撃強化・回復>味方全体のHPを回復(13%)、さらに攻撃力をアップ(30%)",
+		proc: [Heal(0.13, [1,1,1,1,1], 0), ChainEnhance(0.3, [1,1,1,1,1], 0)],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,1,1,0,0])],
+	},
+	awakes: [
+		Statusup(200,0),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+		Fastskill(1),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(0,200, [1,1,1,1,1,]),
+		Attr_statusup(200,0, [1,1,1,1,1,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Heal_afterbattle(10),
+		Attr_statusup(200,0, [1,1,1,1,1,]),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>味方全体のHPを回復(16%)、さらに攻撃力をアップ(30%)",
+		proc: [Heal(0.16, [1,1,1,1,1], 0), ChainEnhance(0.3, [1,1,1,1,1], 0)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、ダメージ35%軽減の効果を付与",
+		turn: 7,
+		proc:  [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.35)],
+	},
+	Lawake: [
+		Attr_statusup(200,0, [1,1,1,1,1,]),
+	],
+}

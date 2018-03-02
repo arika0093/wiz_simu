@@ -1,0 +1,47 @@
+{
+	name: "あいむ神んぐ YAOYORO Z",
+	cardno: 8542,
+	imageno: 8825,
+	hp: 3864,
+	atk: 6356,
+	cost: 63,
+	attr: [0,-1],
+	species: [1],
+	islegend: true,
+	ape: "八百万神秘譚Ⅲ(Z)",
+	alias: ["ミコト", "セイ", "スオウ", "あいむかみんぐ", "やおよろぜっと"],
+	as1: {
+		desc: "<チェイン攻撃>6チェインでダメージアップ(500%)、リーダー時にさらにアップ(150%)",
+		proc: [ChainAttack(5.0, 6), ChainAttack_Leader(6.5, 6)],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ火属性のダメージ(400%)、さらに雷属性の敵には特効ダメージ(2200%)",
+		turn: 13,
+		proc: [ss_damage_s(special_attr([0,0,1,0,0], 26, 4.0), [0], 1)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],4),
+		Attr_statusup_oattr(0,400, [1,0,0,0,0,]),
+		Attr_statusup_oattr(400,0, [1,0,0,0,0,]),
+		Attr_relief([1,1,1,1,1,],20),
+		Heal_afterbattle(10),
+		Fastskill(3),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+		Awake_noeffect("心眼",1),
+	],
+	as2: {
+		desc: "<チェイン攻撃>6チェインでダメージアップ(600%)、リーダー時にさらにアップ(150%)",
+		proc: [ChainAttack(6.0, 6), ChainAttack_Leader(7.5, 6)],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ火属性のダメージ(400%)、さらに雷属性の敵には特効ダメージ(2600%)",
+		turn: 15,
+		proc: [ss_damage_s(special_attr([0,0,1,0,0], 30, 4.0), [0], 1)],
+	},
+	Lawake: [
+		Attr_statusup(0,300, [1,0,0,0,0,]),
+		NEFTJOD(90),
+	],
+}

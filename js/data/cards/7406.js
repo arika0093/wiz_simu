@@ -1,0 +1,47 @@
+{
+	name: "竜骸獣 ログオーズ",
+	cardno: 7406,
+	imageno: 9461,
+	hp: 2649,
+	atk: 3427,
+	cost: 37,
+	attr: [2,-1],
+	species: [7],
+	islegend: true,
+	ape: "心竜天翔 Rising Dragon",
+	is_dist: true,
+	as1: {
+		desc: "<種族特効>種族が魔法生物の敵単体へダメージ(500%)",
+		proc: ChainSpecAttack(5.0, 0, [7]),
+	},
+	ss1: {
+		desc: "<蘇生>味方全体のHPを回復し(25%)、さらに雷属性の味方を蘇生(25%)",
+		turn: 10,
+		proc: [ss_heal(0.25), ss_resurrection([0,0,1,0,0], 0.25)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(0,100),
+		Statusup(100,0),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<種族特効>種族が魔法生物の敵単体へダメージ(600%)",
+		proc: ChainSpecAttack(6.0, 0, [7]),
+	},
+	ss2: {
+		desc: "<蘇生>味方全体のHPを回復し(50%)、さらに雷属性の味方を蘇生(50%)",
+		turn: 12,
+		proc: [ss_heal(0.50), ss_resurrection([0,0,1,0,0], 0.50)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

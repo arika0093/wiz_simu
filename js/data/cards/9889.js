@@ -1,0 +1,46 @@
+{
+	name: "導かれる白馬姫 リミーラ・ネール",
+	cardno: 9889,
+	imageno: 6462,
+	hp: 2088,
+	atk: 4499,
+	cost: 56,
+	attr: [2,1],
+	species: [9],
+	islegend: true,
+	ape: "DL限定",
+	as1: {
+		desc: "<連撃・複属性攻撃強化>3チェインで敵単体を3回連続攻撃(350%)、さらに雷属性の攻撃力をアップ(10%)、複属性が水属性だとさらにアップ(30%)",
+		proc: [ChainDualAttack(3.5, 3, 3), ChainEnhance_SubAttr(0.10, 0.40, [0,0,1,0,0], [0,1,0,0,0], 3)],
+	},
+	ss1: {
+		desc: "<割合削り>スキル反射を無視し、敵単体のHPを20%減少させる、5チェインを消費しさらに15%減少させる",
+		turn: 9,
+		proc: [ss_ratiodamage_s(ss_chain_cost(5, 0.35, 0.20)), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_relief([0,0,1,0,0,],10),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<連撃・複属性攻撃強化>3チェインで敵単体を3回連続攻撃(450%)、さらに雷属性の攻撃力をアップ(10%)、複属性が水属性だとさらにアップ(30%)",
+		proc: [ChainDualAttack(4.5, 3, 3), ChainEnhance_SubAttr(0.10, 0.40, [0,0,1,0,0], [0,1,0,0,0], 3)],
+	},
+	ss2: {
+		desc: "<割合削り>スキル反射を無視し、敵単体のHPを25%減少させる、5チェインを消費しさらに15%減少させる",
+		turn: 11,
+		proc: [ss_ratiodamage_s(ss_chain_cost(5, 0.40, 0.25)), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Statusup(0,1000),
+	],
+}

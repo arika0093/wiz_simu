@@ -1,0 +1,47 @@
+{
+	name: "シェアハピネスな魔法 リコ&グリ",
+	cardno: 4309,
+	imageno: 6023,
+	hp: 2436,
+	atk: 1414,
+	cost: 40,
+	attr: [0, 2],
+	species: [9],
+	ape: "グリコⅡ",
+	awakes: [
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Panel_boost([1,0,0,0,0], 1),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0]),
+		Panel_boost([1,0,0,0,0], 1),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0]),
+		Spec_statusup(0, 200, [9]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "<快調攻撃>残りHPが80％以上でダメージアップ、パネルの色が増す度さらにアップ(1色：250％ / 2色：400％ / 3色：550％)",
+		proc: add_cond(ChainPanelsAttack(2.5, 4.0, 5.5, 0), when_hp_more(0.8)),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ火・雷属性のダメージ(180％)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [0, 2])],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(0, 400),
+		Statusup(400, 0),
+	],
+	as2: {
+		desc: "<快調攻撃>残りHPが80％以上でダメージアップ、パネルの色が増す度さらにアップ(1色：350％ / 2色：500％ / 3色：650％)",
+		proc: add_cond(ChainPanelsAttack(3.5, 5.0, 6.5, 0), when_hp_more(0.8)),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ火・雷属性のダメージ(260％)",
+		turn: 12,
+		proc: [ss_damage_all(2.6, [0, 2])],
+	},
+}

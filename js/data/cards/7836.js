@@ -1,0 +1,45 @@
+{
+	name: "眩き天使の夏 ミカエラ・セラフィム",
+	cardno: 7836,
+	imageno: 9988,
+	hp: 2933,
+	atk: 3953,
+	cost: 56,
+	attr: [0,3],
+	species: [3],
+	islegend: true,
+	as1: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ(20%)、リーダー時さらにアップ(20%)。複属性が光属性だとさらにアップ(50%)",
+		proc: [ChainEnhance_SubAttr(0.2, 0.7, [1,0,0,0,0], [0,0,0,1,0], 0), add_cond( ChainEnhance_SubAttr(0.4, 0.9, [1,0,0,0,0], [0,0,0,1,0], 0),when_leader())],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・光属性のダメージ(120%)",
+		turn: 4,
+		proc: [ss_damage_all(1.2, [0,3]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+		Fastskill(2),
+		Spec_statusup(0,500, [3,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,0,1,0,]),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,0,1,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ(50%)、リーダー時さらにアップ(20%)。複属性が光属性だとさらにアップ(50%)",
+		proc: [ChainEnhance_SubAttr(0.5, 1.0, [1,0,0,0,0], [0,0,0,1,0], 0), add_cond( ChainEnhance_SubAttr(0.7, 1.2, [1,0,0,0,0], [0,0,0,1,0], 0),when_leader())],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・光属性のダメージ(150%)",
+		turn: 6,
+		proc: [ss_damage_all(1.5, [0,3]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,0,1,0,]),
+	],
+}

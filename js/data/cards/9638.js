@@ -1,0 +1,46 @@
+{
+	name: "知られざる番人 グランドガーゴイル",
+	cardno: 9638,
+	imageno: 11916,
+	hp: 2065,
+	atk: 3593,
+	cost: 47,
+	attr: [0,1],
+	species: [6],
+	islegend: true,
+	ape: "黒ウィズチャレンジ",
+	is_dist: true,
+	as1: {
+		desc: "<ギャンブル攻撃>ダメージがイチかバチかアップ(0%~600%)",
+		proc: ChainStakesAttack(0, 6.0, 0),
+	},
+	ss1: {
+		desc: "<ダメージブロック>自分自身のみ、1ターン1500以下の全属性ダメージを無効化する",
+		turn: 3,
+		proc: [ss_damageblock_own(1500, 1)],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(5),
+		Attr_statusup_sattr(0,100, [1,1,0,0,0,], 0,200, [0,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,1,0,0,0,], 200,0, [0,0,0,0,0,]),
+		NEFTJOD(60),
+	],
+	as2: {
+		desc: "<ギャンブル攻撃>ダメージがイチかバチかアップ(0%~700%)",
+		proc: ChainStakesAttack(0, 7.0, 0),
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間、MAXHPを毎ターン20%消費し、攻撃力をアップ(500%)。さらに極稀にクリティカル",
+		turn: 5,
+		proc: [ss_boost_enhance_s(5.0, 5, 0.2)],
+	},
+	Lawake: [
+		Statusup(0,1500),
+	],
+}

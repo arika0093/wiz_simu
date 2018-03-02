@@ -1,0 +1,48 @@
+{
+	name: "ふたつの眼を守る者 セリアル・ノト",
+	cardno: 6057,
+	imageno: 7884,
+	hp: 4693,
+	atk: 2094,
+	cost: 46,
+	attr: [2, 0],
+	species: [5],
+	disable: true,
+	islegend: true,
+	ape: "覇眼戦線Ⅱ",
+	as1: {
+		desc: "<複属性攻撃強化・回復>雷属性の味方を回復し(5%)、攻撃力もアップ。複属性が火だとさらに攻撃力アップ(30%/50%)",
+		proc: [Heal(0.05, [0, 0, 1, 0, 0], 0), ChainEnhance_SubAttr(0.30, 0.50, [0, 0, 1, 0, 0], [1, 0, 0, 0, 0], 0)],
+	},
+	ss1: {
+		desc: "<継続回復>5ターン溜めた後、味方HPを完全回復し、さらに10ターン味方全体を徐々に回復する(30%)",
+		turn: 5,
+		charged: 5,
+		proc: [ss_heal(1), ss_regenerate(0.30, 10)],
+	},
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0, ]),
+		Statusup(0, 200),
+		Fastskill(2),
+		NEFTJOD(30),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(3),
+		Heal_afterbattle(10),
+		Spec_statusup(500, 0, [5, ]),
+		Attr_statusup_sattr(200, 0, [0,0,1,0,0], 200, 0, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化・回復>雷属性の味方を回復し(5%)、攻撃力もアップ。複属性が火だとさらに攻撃力アップ(60%/80%)",
+		proc: [Heal(0.05, [0, 0, 1, 0, 0], 0), ChainEnhance_SubAttr(0.60, 0.80, [0, 0, 1, 0, 0], [1, 0, 0, 0, 0], 0)],
+	},
+	ss2: {
+		desc: "<状態異常回復&蘇生>味方全体のHPを回復し(50%)、状態異常を回復、さらに火・雷属性の味方を50%で蘇生",
+		turn: 10,
+		proc: [ss_heal(0.50), ss_abstate_cure(), ss_resurrection([1, 0, 1, 0, 0], 0.50)],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+		Statusup(500, 0),
+	],
+}

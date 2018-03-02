@@ -1,0 +1,46 @@
+{
+	name: "激烈大魔法使い アリエッタ・トワ",
+	cardno: 7705,
+	imageno: 5900,
+	hp: 1665,
+	atk: 4579,
+	cost: 54,
+	attr: [1, 0],
+	species: [9],
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0], 2),
+		Attr_statusup(0, 200, [1, 1, 0, 0, 0]),
+		NEFTJOD(30),
+		Panel_boost([0, 1, 0, 0, 0], 2),
+		Attr_statusup(200, 0, [1, 1, 0, 0, 0]),
+		Attr_relief([0, 0, 1, 0, 0], 20),
+		Fastskill(2),
+		Spec_statusup(300, 0, [9]),
+		Spec_statusup(0, 300, [9]),
+	],
+	as1: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(350％)",
+		proc: ChainDualAttack(3.5, 3, 3),
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水・火属性の5回連続ダメージ(350％)",
+		turn: 5,
+		proc: [ss_damage_s(3.5, [1, 0], 5), ss_ignore_skillcounter()],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0]),
+		Statusup(0, 500),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(450％)",
+		proc: ChainDualAttack(4.5, 3, 3),
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水・火属性の5回連続ダメージ(650％)",
+		turn: 8,
+		proc: [ss_damage_s(6.5, [1, 0], 5), ss_ignore_skillcounter()],
+	},
+}

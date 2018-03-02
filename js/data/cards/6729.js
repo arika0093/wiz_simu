@@ -1,0 +1,45 @@
+{
+	name: "蒼く輝く双氷雪 シズク&カグヤ",
+	cardno: 6729,
+	imageno: 8683,
+	hp: 3031,
+	atk: 3521,
+	cost: 40,
+	attr: [1,-1],
+	species: [4],
+	islegend: true,
+	as1: {
+		desc: "<分散攻撃>3チェインで敵全体へ分散攻撃(400%)",
+		proc: ChainVarianceAttack(4.0, 3),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水属性化",
+		turn: 2,
+		proc: [ss_panel_change([0,1,0,0,0])],
+	},
+	awakes: [
+		Statusup(0,100),
+		Statusup(200,0),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Fastskill(1),
+		Attr_relief([1,0,0,0,0,],10),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<分散攻撃>3チェインで敵全体へ分散攻撃(500%)",
+		proc: ChainVarianceAttack(5.0, 3),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水属性化し、スキルチャージプラス1の効果を付与(スキルチャージの効果は、SPスキルを使うまで重複しません)",
+		turn: 9,
+		proc: [ss_panel_change([0,1,0,0,0]), panel_skillboost(1)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

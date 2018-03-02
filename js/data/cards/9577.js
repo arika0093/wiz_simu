@@ -1,0 +1,47 @@
+{
+	name: "守護女神見習い エリャ・グラウクス",
+	cardno: 9577,
+	imageno: 11845,
+	hp: 1325,
+	atk: 6243,
+	cost: 37,
+	attr: [1,-1],
+	species: [1],
+	islegend: true,
+	ape: "大魔道杯 in エステレラ",
+	is_dist: true,
+	as1: {
+		desc: "<種族特効>敵全体へダメージ(140%)、魔法生物の敵へさらにダメージアップ(150%)",
+		proc: [ChainAllAttack(1.4, 0), ChainAllSpecAttack(2.9, [7], 0)],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ水属性のダメージ(200%)、さらに水属性の敵には特効ダメージ(1800%)",
+		turn: 8,
+		proc: [ss_damage_s(special_attr([0,1,0,0,0], 20, 2), [1], 1)],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_oattr(0,300, [0,1,0,0,0,]),
+		Attr_statusup_oattr(300,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(4),
+		Attr_statusup(0,300, [0,1,0,0,0,]),
+		Attr_statusup(300,0, [0,1,0,0,0,]),
+		Fastskill(4),
+	],
+	as2: {
+		desc: "<種族特効>敵全体へダメージ(170%)、魔法生物の敵へさらにダメージアップ(150%)",
+		proc: [ChainAllAttack(1.7, 0), ChainAllSpecAttack(3.2, [7], 0)],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ水属性のダメージ(200%)、さらに水属性の敵には特効ダメージ(1800%)",
+		turn: 8,
+		proc: [ss_damage_s(special_attr([0,1,0,0,0], 20, 2), [1], 1)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Statusup(500,0),
+	],
+}

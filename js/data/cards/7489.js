@@ -1,0 +1,47 @@
+{
+	name: "虹色の姉妹 サーシャ&シンシア",
+	cardno: 7489,
+	imageno: 5766,
+	hp: 3700,
+	atk: 2543,
+	cost: 47,
+	attr: [1, 2],
+	species: [9],
+	ape: "DL限定精霊",
+	awakes: [
+		Awake_noeffect("経験値取得量アップ", 1),
+		Awake_noeffect("心眼", 1),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup_sattr(0,200, [0,1,0,0,0,], 0,100, [0,0,1,0,0,]),
+		Attr_statusup_sattr(0,200, [0,1,0,0,0,], 0,100, [0,0,1,0,0,]),
+		Spec_statusup(300, 0, [9, ]),
+		Fastskill(2),
+		Spec_statusup(0, 300, [9, ]),
+	],
+	as1: {
+		desc: "<回復>水・雷属性の味方のHPを回復/11％",
+		proc: Heal(0.11, [0,1,1,0,0,]),
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水・雷属性のダメージ(120％)",
+		turn: 4,
+		proc: [ss_damage_all(1.2, [1,2]), ss_ignore_skillcounter()],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<回復>水・雷属性の味方のHPを回復/13％",
+		proc: Heal(0.13, [0,1,1,0,0,]),
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水・雷属性のダメージ(150％)",
+		turn: 6,
+		proc: [ss_damage_all(1.5, [1,2]), ss_ignore_skillcounter()],
+	},
+}

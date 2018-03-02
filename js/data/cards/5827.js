@@ -1,0 +1,47 @@
+{
+	name: "黎明の竜霊神 アニマ・アウローラ",
+	cardno: 5827,
+	imageno: 7696,
+	hp: 3024,
+	atk: 2710,
+	cost: 44,
+	attr: [0,-1],
+	species: [0],
+	islegend: true,
+	is_dist: true,
+	disable: true,
+	as1: {
+		desc: "<回復>火属性の味方のHPを回復(12%)",
+		proc: Heal(0.12, [1,0,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを2ターン遅らせる",
+		turn: 8,
+		proc: [ss_delay_all(2)],
+	},
+	awakes: [
+		Costdown(2),
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(200,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Spec_statusup(0,400, [0,]),
+		Spec_statusup(400,0, [0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<回復>火属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [1,0,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<遅延>敵全体の攻撃ターンを2ターン遅らせ、3チェイン消費しさらに1遅らせる",
+		turn: 10,
+		proc: [ss_delay_all(ss_chain_cost(3, 3, 2))],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(500,0),
+	],
+}

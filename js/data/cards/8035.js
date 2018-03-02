@@ -1,0 +1,48 @@
+{
+	name: "超熱血剛拳ドゥーガ・ザムンタール",
+	cardno: 8035,
+	imageno: 7603,
+	hp: 3434,
+	atk: 4056,
+	cost: 44,
+	attr: [2, -1],
+	species: [9],
+	islegend: true,
+	is_dist: true,
+	ape:"ギルドマスターセレモニーズ",
+	as1: {
+		desc: "<属性特効連撃>水属性の敵単体へ特効5連撃、HPが20%以下でさらにダメージアップ(300%/1300%)",
+		proc: [ChainDualAttrAttack(3.0, 0, 5, [0, 1, 0, 0, 0]), add_cond(ChainDualAttrAttack(13.0, 0, 5, [0, 1, 0, 0, 0]), when_hp_less(0.20))],
+	},
+	ss1: {
+		desc: "<挑発>3ターン敵の攻撃を自分に集めダメージを50%軽減する",
+		turn: 6,
+		proc: [ss_provocate(3, 0.5)],
+	},
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(2),
+		Spec_statusup(0, 300, [9, ]),
+		NEFTJOD(30),
+		Attr_statusup(300, 0, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(0, 300, [0, 0, 1, 0, 0, ]),
+		Attr_relief([1,1,1,1,1,],10),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<属性特効連撃>水属性の敵単体へ特効5連撃、HPが20%以下でさらにダメージアップ(400%/1900%)",
+		proc: [ChainDualAttrAttack(4.0, 0, 5, [0, 1, 0, 0, 0]), add_cond(ChainDualAttrAttack(19.0, 0, 5, [0, 1, 0, 0, 0]), when_hp_less(0.20))],
+	},
+	ss2: {
+		desc: "<挑発>3ターン敵の攻撃を自分に集めダメージを75%軽減する、HP50%以下でさらに25%軽減する",
+		turn: 9,
+		proc: [ss_provocate(3, ss_hp_less(0.5, 1, 0.75))],
+	},
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		NEFTJOD(60),
+	],
+}

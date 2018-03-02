@@ -1,0 +1,46 @@
+{
+	name: "救奉大聖女 ベルナデッタ・イルマ",
+	cardno: 8036,
+	imageno: 7604,
+	hp: 2843,
+	atk: 2831,
+	cost: 44,
+	attr: [1,2],
+	species: [9],
+	islegend: true,
+	ape: "ギルドマスターセレモニーズ",
+	as1: {
+		desc: "<種族特効>敵単体へダメージアップ、魔族・魔法生物の敵へさらにダメージアップ(250%/450%)",
+		proc: [ChainAttack(2.5, 0), ChainSpecAttack(4.5, 0, [3,7])],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
+		turn: 3,
+		proc: [ss_panel_change([0,1,1,0,0])],
+	},
+	as2: {
+		desc: "<種族特効>敵単体へダメージアップ、魔族・魔法生物の敵へさらにダメージアップ(350%/550%)",
+		proc: [ChainAttack(3.5, 0), ChainSpecAttack(5.5, 0, [3,7])],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、回復の効果を付与、状態異常状態だとさらに回復の効果を付与(25%/50%)",
+		turn: 6,
+		proc: [ss_panel_change([0,1,1,0,0]), panel_healally(0.25), panel_healally(0.50)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(300,0, [9,]),
+		Attr_statusup(100,0,[0,1,0,0,0,]),
+		Attr_statusup(0,100,[0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0,[0,1,0,0,0,],200,0,[0,0,1,0,0,]),
+		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,200,[0,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,100, [0,0,1,0,0,]),
+	],
+}

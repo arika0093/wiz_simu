@@ -1,0 +1,47 @@
+{
+	name: "不屈の護神 バルバラ・フォス",
+	cardno: 7567,
+	imageno: 9630,
+	hp: 2834,
+	atk: 4042,
+	cost: 42,
+	attr: [0,-1],
+	species: [1],
+	islegend: true,
+	ape: "イタズラ女神とうさぎのおはなし",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>敵単体へダメージアップ、3チェインで更にアップ(250%/300%)",
+		proc: [ChainAttack(2.5, 0), ChainAttack(3.0, 3)],
+	},
+	ss1: {
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(400%)",
+		turn: 7,
+		proc: [ss_enhance_own(4.0, 3)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(200,0),
+		NEFTJOD(30),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Spec_statusup(0,300, [1,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>敵単体へダメージアップ、3チェインで更にアップ(350%/400%)",
+		proc: [ChainAttack(3.5, 0), ChainAttack(4.0, 3)],
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン自分の攻撃力をアップ(600%)",
+		turn: 9,
+		proc: [ss_enhance_own(6.0, 4)],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

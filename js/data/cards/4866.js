@@ -1,0 +1,46 @@
+{
+	name: "想いを翼に乗せて 初音ミク",
+	cardno: 4866,
+	imageno: 6615,
+	hp: 4030,
+	atk: 1998,
+	cost: 45,
+	attr: [0, 2],
+	species: [9],
+	disable: true,
+	awakes: [
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0], 1),
+		Attr_relief([0, 1, 0, 0, 0], 20),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0]),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0], 2),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
+		Heal_afterbattle(10),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0]),
+	],
+	as1: {
+		desc: "<回復>火・雷属性の味方を回復、7チェインで更に回復(通常：10％ / 7チェイン：17％)",
+		proc: [Heal(0.10, [1, 0, 1, 0, 0], 0), Heal(0.17, [1, 0, 1, 0, 0], 7)],
+	},
+	ss1: {
+		desc: "<継続回復>チェインプラス2の効果、さらに3ターン味方全体を徐々に回復する(15％)",
+		turn: 6,
+		proc: [ss_addchain(2), ss_regenerate(0.15, 3)],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<回復>火・雷属性の味方を回復、7チェインで更に回復(通常：13％ / 7チェイン：20％)",
+		proc: [Heal(0.13, [1, 0, 1, 0, 0], 0), Heal(0.20, [1, 0, 1, 0, 0], 7)],
+	},
+	ss2: {
+		desc: "<継続回復>チェインプラス3の効果、さらに5ターン味方全体を徐々に回復する(20％)",
+		turn: 9,
+		proc: [ss_addchain(3), ss_regenerate(0.20, 5)],
+	},
+}

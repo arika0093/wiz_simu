@@ -1,0 +1,46 @@
+{
+	name: "外天の人形師 リツェーレ・トノラ",
+	cardno: 4036,
+	imageno: 5695,
+	hp: 2702,
+	atk: 2508,
+	cost: 45,
+	attr: [2, -1],
+	species: [9],
+	awakes: [
+		Fastskill(1),
+		Statusup(0, 200),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Attr_relief([1, 0, 0, 0, 0, ], 20),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Spec_statusup(200, 0, [9, ]),
+		Fastskill(2),
+		Spec_statusup(0, 200, [9, ]),
+	],
+	as1: {
+		desc: "<攻撃強化>5チェインで雷属性の味方の攻撃力をアップ/+60％",
+		proc: ChainEnhance(0.60, [0,0,1,0,0], 5),
+	},
+	ss1: {
+		desc: "<大魔術>敵単体へ雷属性のダメージ(200％)",
+		turn: 5,
+		proc: [ss_damage_s(2.0, [2], 1)],
+	},
+	islegend: true,
+	disable: true,
+	Lawake: [
+		Statusup(0, 400),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<攻撃強化>5チェインで雷属性の味方の攻撃力をアップ/+90％",
+		proc: ChainEnhance(0.90, [0,0,1,0,0], 5),
+	},
+	ss2: {
+		desc: "<大魔術>敵単体へ雷属性のダメージ(400％)",
+		turn: 8,
+		proc: [ss_damage_s(4.0, [2], 1)],
+	},
+}

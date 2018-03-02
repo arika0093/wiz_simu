@@ -1,0 +1,46 @@
+{
+	name: "戦乱を鎮める剣の女神 アンジェリカ",
+	cardno: 5797,
+	imageno: 7580,
+	hp: 3023,
+	atk: 3755,
+	cost: 48,
+	attr: [0, 3],
+	species: [1],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<属性特効>6チェインで雷・闇属性の敵単体へ特効ダメージ(700%)",
+		proc: ChainAttrAttack(7.0, 6, [0, 0, 1, 0, 1]),
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・光属性のダメージ(150%)",
+		turn: 6,
+		proc: [ss_damage_all(1.5, [0, 3]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Fastskill(1),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		Heal_afterbattle(10),
+		Spec_statusup(400, 0, [1, ]),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Fastskill(2),
+		Spec_statusup(0, 400, [1, ]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<属性特効>6チェインで雷・闇属性の敵単体へ特効ダメージ(800%)",
+		proc: ChainAttrAttack(8.0, 6, [0, 0, 1, 0, 1]),
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・光属性のダメージ(220%)",
+		turn: 9,
+		proc: [ss_damage_all(2.2, [0, 3]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0, 600),
+		Statusup(600, 0),
+	],
+}

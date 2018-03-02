@@ -1,0 +1,45 @@
+{
+	name: "永遠に続く愛 ラム&あたる",
+	cardno: 4176,
+	imageno: 5858,
+	hp: 2910,
+	atk: 2245,
+	cost: 47,
+	attr: [2, -1],
+	species: [5],
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		NEFTJOD(30),
+		Spec_statusup(0, 200, [5, ]),
+		Spec_statusup(200, 0, [5, ]),
+		Heal_afterbattle(10),
+		Awake_noeffect("ゴールド取得量アップ", 1),
+		Fastskill(2),
+		Spec_statusup(200, 0, [5, ]),
+		Spec_statusup(0, 200, [5, ]),
+	],
+	as1: {
+		desc: "<回復>雷属性の味方のHPを回復/13％",
+		proc: Heal(0.13, [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>1クエストに1回のみ、ジャンルパネルにチェインプラス2の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(2)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>雷属性の味方のHPを回復し、さらに雷属性の味方の攻撃力をアップ(回復：16％ / 攻撃力：+30％)",
+		proc: [Heal(0.16, [0,0,1,0,0], 0), ChainEnhance(0.30, [0,0,1,0,0], 0)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>1クエストに1回のみ、ジャンルパネルにチェインプラス4の効果を付与",
+		turn: 8,
+		proc: [panel_chainplus(4)],
+	},
+}

@@ -1,0 +1,47 @@
+{
+	name: "恋☆メガトン エミリア・トドロキ",
+	cardno: 6994,
+	imageno: 6162,
+	hp: 4664,
+	atk: 3678,
+	cost: 52,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "クロム・マグナⅣ",
+	as1: {
+		desc: "<種族攻撃強化・ガード>5チェインで火属性の味方の攻撃力をアップ、術士はさらにアップ(40%/70%)。さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.4, [1,0,0,0,0], 5), ChainSpecEnhance(0.7, [1,0,0,0,0], [9], 5), as_guard(0.1, [1,1,1,1,1], 5)],
+	},
+	ss1: {
+		desc: "<ガード>3ターン全属性のダメージを25%軽減する",
+		turn: 5,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)],
+	},
+	awakes: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		NEFTJOD(30),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Spec_statusup(200,0, [9,]),
+		Spec_statusup(0,200, [9,]),
+	],
+	as2: {
+		desc: "<種族攻撃強化・ガード>5チェインで火属性の味方の攻撃力をアップ、術士はさらにアップ(70%/100%)。さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.4, [1,0,0,0,0], 5), ChainSpecEnhance(1.0, [1,0,0,0,0], [9], 5), as_guard(0.1, [1,1,1,1,1], 5)],
+	},
+	ss2: {
+		desc: "<ガード>3ターン全属性のダメージを50%軽減する",
+		turn: 9,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		NEFTJOD(30),
+	],
+}

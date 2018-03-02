@@ -1,0 +1,46 @@
+{
+	name: "月夜に微笑む魔術師 怪盗キッド",
+	cardno: 90004,
+	imageno: 6944,
+	hp: 2225,
+	atk: 5002,
+	cost: 44,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "コラボ(コナン)",
+	as1: {
+		desc: "<属性特効>3チェインで雷属性の敵単体へ特効ダメージ(525%)",
+		proc: ChainAttrAttack(5.25, 3, [0,0,1,0,0]),
+	},
+	ss1: {
+		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
+		turn: 9,
+		proc: [ss_latest_copy()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(1),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Attr_relief([0,1,0,0,0,],10),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Statusup(0,200),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Fastskill(1),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで雷属性の敵単体へ特効ダメージ(625%)",
+		proc: ChainAttrAttack(6.25, 3, [0,0,1,0,0]),
+	},
+	ss2: {
+		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
+		turn: 9,
+		proc: [ss_latest_copy()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

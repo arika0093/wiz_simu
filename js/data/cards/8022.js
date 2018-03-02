@@ -1,0 +1,47 @@
+{
+	name: "白銀の翼が舞い降りる 初音ミク",
+	cardno: 8022,
+	imageno: 6621,
+	hp: 2843,
+	atk: 4039,
+	cost: 56,
+	attr: [1,3],
+	species: [3],
+	islegend: true,
+	ape: "コラボ(ミク)",
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)",
+		proc: ChainAttack(4.5, 5),
+	},
+	ss1: {
+		desc: "<チェインガード>3ターンの間、チェインを保護する",
+		turn: 3,
+		proc: [ss_chain_protect(3)],
+	},
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(550%)",
+		proc: ChainAttack(5.5, 5),
+	},
+	ss2: {
+		desc: "<チェインガード>チェインプラス2の効果、6ターンの間、チェインを保護する",
+		turn: 6,
+		proc: [ss_addchain(2), ss_chain_protect(6)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200,[0,1,0,0,0,]),
+		Attr_statusup(200,0,[0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Abstate_invalid("as_sealed"),
+		Fastskill(4),
+		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,300,[0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0,[0,1,0,0,0,],300,0,[0,0,0,1,0,]),
+		Awake_chainguard(),
+	],
+	Lawake: [
+		Attr_statusup(0,200,[0,1,0,0,0,]),
+		Statusup(500,0),
+		Attr_relief([1,0,0,0,0,],20),
+	],
+}

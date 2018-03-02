@@ -1,0 +1,46 @@
+{
+	name: "邪神サンタ降臨 ルルベル",
+	cardno: 5375,
+	imageno: 7218,
+	hp: 4219,
+	atk: 3143,
+	cost: 46,
+	attr: [0,-1],
+	species: [2],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<回復>火属性の味方のHPを回復、パネルの色が増す度さらに回復(11%/15%/17%)",
+		proc: ChainPanelsHeal(0.11, 0.15, 0.17, [1,0,0,0,0]),
+	},
+	ss1: {
+		desc: "<遅延>攻撃ターンを3遅らせる",
+		turn: 10,
+		proc: [ss_delay_all(3)],
+	},
+	awakes: [
+		Costdown(2),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Fastskill(2),
+		Spec_statusup(300,0, [2,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>火属性の味方のHPを回復、パネルの色が増す度さらに回復(13%/17%/20%)",
+		proc: ChainPanelsHeal(0.13, 0.17, 0.20, [1,0,0,0,0]),
+	},
+	ss2: {
+		desc: "<遅延>攻撃ターンを3遅らせ、20チェインで更に1遅らせる",
+		turn: 13,
+		proc: [ss_delay_all(ss_chain_cond(20, 4, 3))],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "大人だけの秘密の魅力 チーザ",
+	cardno: 4363,
+	imageno: 6007,
+	hp: 3332,
+	atk: 2111,
+	cost: 44,
+	attr: [0, -1],
+	species: [9],
+	disable: true,
+	awakes: [
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Panel_boost([1,0,0,0,0], 1),
+		Fastskill(1),
+		Statusup(200, 0),
+		NEFTJOD(30),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Panel_boost([1,0,0,0,0], 1),
+		Fastskill(2),
+		Spec_statusup(200, 0, [9]),
+		Spec_statusup(0, 200, [9]),
+	],
+	as1: {
+		desc: "<種族攻撃強化>3チェインで火属性の味方の攻撃力をアップ、術士はさらにアップ(3チェイン：+30％ / 3チェイン+術士：+60％)",
+		proc: [ChainEnhance(0.3, [1,0,0,0,0], 3), ChainSpecEnhance(0.6, [1,0,0,0,0], [9], 3)],
+	},
+	ss1: {
+		desc: "<ダメージ強化>2ターン火属性の味方の攻撃力をアップ(+40％)",
+		turn: 5,
+		proc: [ss_enhance_all(0.4, 2, [1,0,0,0,0])],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<種族攻撃強化>3チェインで火属性の味方の攻撃力をアップ、術士はさらにアップ(3チェイン：+40％ / 3チェイン+術士：+80％)",
+		proc: [ChainEnhance(0.4, [1,0,0,0,0], 3), ChainSpecEnhance(0.8, [1,0,0,0,0], [9], 3)],
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン火属性の味方の攻撃力をアップ(+60％)",
+		turn: 8,
+		proc: [ss_enhance_all(0.6, 4, [1,0,0,0,0])],
+	},
+}

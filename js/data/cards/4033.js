@@ -1,0 +1,46 @@
+{
+	name: "全力の恋天使 マーガレット・リル",
+	cardno: 4033,
+	imageno: 5703,
+	hp: 2404,
+	atk: 2965,
+	cost: 45,
+	attr: [0, -1],
+	species: [3],
+	disable: true,
+	awakes: [
+		Panel_boost([1,0,0,0,0], 1),
+		Fastskill(1),
+		Statusup(200, 0),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		NEFTJOD(30),
+		Spec_statusup(0, 200, [3, 4]),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0], 1),
+		Spec_statusup(200, 0, [3, 4]),
+		Spec_statusup(0, 200, [3, 4]),
+	],
+	as1: {
+		desc: "<属性特効連撃>雷属性の敵単体へ特効3連撃/計400％",
+		proc: ChainDualAttrAttack(4.0, 0, 3, [0,0,1,0,0]),
+	},
+	ss1: {
+		desc: "<多弾魔術>敵単体へ火属性の5回連続ダメージ(計180％)",
+		turn: 5,
+		proc: [ss_damage_s(1.8, [0], 5)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(400, 0),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "<属性特効連撃>雷属性の敵単体へ特効3連撃/計500％",
+		proc: ChainDualAttrAttack(5.0, 0, 3, [0,0,1,0,0]),
+	},
+	ss2: {
+		desc: "<多弾魔術>敵単体へ火属性の5回連続ダメージ(計380％)",
+		turn: 8,
+		proc: [ss_damage_s(3.8, [0], 5)],
+	},
+}

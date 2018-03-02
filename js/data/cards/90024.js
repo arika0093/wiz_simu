@@ -1,0 +1,45 @@
+{
+	name: "麗しの聖貴花 アンナ・セイクリッド",
+	cardno: 90024,
+	imageno: 7463,
+	hp: 3030,
+	atk: 4058,
+	cost: 44,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<種族数攻撃>戦士の仲間の数だけダメージアップ(1体につき40%)、5チェインでさらにダメージアップ(1体につき60%)",
+		proc: [ChainDeckSpecsAttack(0.40, [8], 0), ChainDeckSpecsAttack(0.60, [8], 5)],
+	},
+	ss1: {
+		desc: "<ダメージ強化>2ターン自分の攻撃力をアップ(500%)",
+		turn: 8,
+		proc: [ss_enhance_own(5.0, 2)],
+	},
+	awakes: [
+		Fastskill(1),
+		Attr_relief([0,1,0,0,0,],10),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Spec_statusup(0,200, [8,]),
+		Fastskill(2),
+		Spec_statusup(200,0, [8,]),
+	],
+	as2: {
+		desc: "<種族数攻撃>戦士の仲間の数だけダメージアップ(1体につき60%)、5チェインでさらにダメージアップ(1体につき80%)",
+		proc: [ChainDeckSpecsAttack(0.60, [8], 0), ChainDeckSpecsAttack(0.80, [8], 5)],
+	},
+	ss2: {
+		desc: "<ダメージ強化>2ターン自分の攻撃力をアップ(1000%)",
+		turn: 12,
+		proc: [ss_enhance_own(10.0, 2)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

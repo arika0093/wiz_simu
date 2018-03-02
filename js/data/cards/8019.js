@@ -1,0 +1,47 @@
+{
+	name: "声が想いを繋ぐ 初音ミク",
+	cardno: 8019,
+	imageno: 6600,
+	hp: 4442,
+	atk: 2739,
+	cost: 54,
+	attr: [2,0],
+	species: [6],
+	islegend: true,
+	ape: "コラボ(ミク)",
+	as1: {
+		desc: "<回復>火・雷属性の味方を回復、5チェインで更に回復(11%/16%)",
+		proc: [Heal(0.11, [1,0,1,0,0], 0), Heal(0.16, [1,0,1,0,0], 5)],
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(50%)",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	as2: {
+		desc: "<回復>火・雷属性の味方を回復、5チェインで更に回復(13%/18%)",
+		proc: [Heal(0.13, [1,0,1,0,0], 0), Heal(0.18, [1,0,1,0,0], 5)],
+	},
+	ss2: {
+		desc: "<状態異常回復&蘇生>味方全体のHPを回復し、状態異常を回復、さらに火・雷属性の味方を50％で蘇生(50%)",
+		turn: 10,
+		proc: [ss_heal(0.5), ss_abstate_cure(), ss_resurrection([1,0,1,0,0], 0.50)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0],2),
+		Attr_statusup(0,200,[1,0,1,0,0,]),
+		Attr_statusup(200,0,[1,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0],2),
+		NEFTJOD(60),
+		Heal_afterbattle(10),
+		Attr_relief([0,1,0,0,0,],20),
+		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,300,[1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0,[0,0,1,0,0,],300,0,[1,0,0,0,0,]),
+		Fastskill(5),
+	],
+	Lawake: [
+		Attr_statusup(0,200,[1,0,1,0,0,]),
+		Statusup(500,0),
+		Abstate_invalid("as_sealed"),
+	],
+}

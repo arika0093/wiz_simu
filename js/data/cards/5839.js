@@ -1,0 +1,45 @@
+{
+	name: "無窮の剣業 ゼラード&コピシュ",
+	cardno: 5839,
+	imageno: 7645,
+	hp: 3543,
+	atk: 3450,
+	cost: 45,
+	attr: [1, 0],
+	species: [8],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<チェイン攻撃>6チェインでダメージアップ(500%)",
+		proc: ChainAttack(5.0, 6),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・水属性化",
+		turn: 3,
+		proc: [ss_panel_change([1,1,0,0,0])],
+	},
+	awakes: [
+		Statusup(200, 0),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup(100, 0, [1, 1, 0, 0, 0, ]),
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_relief([1, 0, 0, 0, 0, ], 10),
+		Fastskill(2),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup(100, 0, [1, 1, 0, 0, 0, ]),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>6チェインでダメージアップ(600%)",
+		proc: ChainAttack(6.0, 6),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・水属性化し、ダメージ軽減(25%)・スキルチャージ(1)・チェイン(2)・攻撃力アップ(50%)の効果をランダムで付与",
+		turn: 7,
+		proc: [ss_panel_change([1,1,0,0,0]), panel_attr_guard([1,1,1,1,1], 0.25), panel_skillboost(1), panel_chainplus(2), panel_attackup(0.50)],
+	},
+	Lawake: [
+		Attr_statusup(0, 200, [1, 1, 0, 0, 0, ]),
+	],
+}

@@ -1,0 +1,45 @@
+{
+	name: "爆裂！ 料理長 李玲華",
+	cardno: 6423,
+	imageno: 8362,
+	hp: 4842,
+	atk: 2057,
+	cost: 36,
+	attr: [2,0],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<回復>火・雷属性の味方のHPを回復(13%)",
+		proc: Heal(0.13, [1,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
+		turn: 8,
+		proc: [ss_delay_all(2)],
+	},
+	awakes: [
+		Costdown(2),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(0,200),
+		Attr_relief([0,1,0,0,0,],10),
+		NEFTJOD(30),
+		Statusup(200,0),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		Statusup(0,200),
+		Fastskill(3),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<回復>火・雷属性の味方のHPを回復(16%)",
+		proc: Heal(0.16, [1,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせ、3チェインを消費しさらに1遅らせる",
+		turn: 10,
+		proc: [ss_delay_all(ss_chain_cost(3, 3, 2))],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

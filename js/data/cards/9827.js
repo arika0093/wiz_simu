@@ -1,0 +1,46 @@
+{
+	name: "ファルネーゼの語らい ルフ&ラト",
+	cardno: 9827,
+	imageno: 12170,
+	hp: 2517,
+	atk: 4155,
+	cost: 55,
+	attr: [0,2],
+	species: [1],
+	islegend: true,
+	ape: "眠れる遺跡のアウトランダー",
+	as1: {
+		desc: "<連撃>敵単体を3回連続攻撃(250%)、解答が早いほどさらにアップ(70%)(上限:4段階)",
+		proc: add_cond(ChainDualAttack(2.5, 0, 3), as_timedep(0.7)),
+	},
+	ss1: {
+		desc: "<融合大魔術>スキル反射を無視し、敵全体へ火属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:3000%)",
+		turn: 7,
+		proc: [ss_damage_all(ss_multiattr_cond(30), [0]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Abstate_invalid("as_sealed"),
+		Fastskill(3),
+		Attr_statusup(0,300, [1,1,1,1,1,]),
+		Attr_statusup(300,0, [1,1,1,1,1,]),
+		Abstate_invalid("ss_sealed"),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<連撃>敵単体を3回連続攻撃(350%)、解答が早いほどさらにアップ(70%)(上限:4段階)",
+		proc: add_cond(ChainDualAttack(3.5, 0, 3), as_timedep(0.7)),
+	},
+	ss2: {
+		desc: "<融合大魔術>スキル反射を無視し、敵全体へ火属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:3600%)",
+		turn: 10,
+		proc: [ss_damage_all(ss_multiattr_cond(36), [0]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		Statusup(500,0),
+	],
+}

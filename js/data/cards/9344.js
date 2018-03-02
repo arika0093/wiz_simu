@@ -1,0 +1,47 @@
+{
+	name: "レギュームキラー ウーレイ・ヌール",
+	cardno: 9344,
+	imageno: 11487,
+	hp: 6315,
+	atk: 1745,
+	cost: 40,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "レイド the GATE",
+	is_dist: true,
+	as1: {
+		desc: "<回復>味方全体のHPを回復(13%)",
+		proc: Heal(0.13, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<AS発動時間延長>10ターンの間、アンサースキル発動時間を10秒延長する(上限値:20秒)",
+		turn: 3,
+		proc: [ss_astime_ext(15, 10)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_oattr(0,300, [0,0,1,0,0,]),
+		Attr_statusup_oattr(300,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(3),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Awake_noeffect("as_sealed",3),
+		Heal_afterbattle(10),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(16%)",
+		proc: Heal(0.16, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<蘇生>味方全体のHPを回復し(25%)、さらに雷属性の味方を蘇生(10%)",
+		turn: 5,
+		proc: [ss_heal(0.3), ss_resurrection([0,0,1,0,0], 0.1)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+	],
+}

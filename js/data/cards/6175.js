@@ -1,0 +1,47 @@
+{
+	name: "双天の神罰者 ルフ&ラト",
+	cardno: 6175,
+	imageno: 7995,
+	hp: 2106,
+	atk: 4102,
+	cost: 49,
+	attr: [0,2],
+	species: [8],
+	disable: true,
+	islegend: true,
+	ape: "GW2016",
+	as1: {
+		desc: "<連撃>4チェインで敵単体を3回連続攻撃(400%)",
+		proc: ChainDualAttack(4.0, 4, 3),
+	},
+	ss1: {
+		desc: "<ブースト>4ターンの間、味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ(150%)。さらに極稀にクリティカル",
+		turn: 7,
+		proc: [ss_boost_enhance_all(1.5, 4, 0.1)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Attr_statusup_sattr(0, 200, [1,0,0,0,0], 0, 200, [0,0,1,0,0]),
+	],
+	as2: {
+		desc: "<連撃>4チェインで敵単体を3回連続攻撃(500%)",
+		proc: ChainDualAttack(5.0, 4, 3),
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間、味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ(200%)。さらに極稀にクリティカル",
+		turn: 10,
+		proc: [ss_boost_enhance_all(2.0, 5, 0.1)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(0,500),
+	],
+}

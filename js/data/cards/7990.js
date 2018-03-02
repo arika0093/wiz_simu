@@ -1,0 +1,48 @@
+{
+	name: "祝いの魔法料理人 ペロミィ&ヤミィ",
+	cardno: 7990,
+	imageno: 10125,
+	imageno_prefix: "5cxek1_",
+	hp: 4444,
+	atk: 1444,
+	cost: 44,
+	attr: [1,3],
+	species: [9],
+	islegend: true,
+        ape: "周年記念精霊(4周年)",
+	is_dist: true,
+	as1: {
+		desc: "<回復>味方全体のHPを回復(13%)",
+		proc: Heal(0.13, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体のHPを500アップ(上限値2000)し、さらに味方全体のHPを回復(50%)",
+		turn: 6,
+		proc: [ss_statusup_all([500, 0], [2000, 2000], -1), ss_heal(0.5)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],4),
+		Awake_noeffect("経験値取得量アップ",2),
+		Awake_noeffect("ゴールド取得量アップ",2),
+		Statusup(400,0),
+		Statusup(0,400),
+		Heal_afterbattle(10),
+		Attr_statusup_sattr(0,200, [0,1,0,0,0,], 0,200, [0,0,0,0,0,]),
+		Attr_statusup_sattr(200,0, [0,1,0,0,0,], 200,0, [0,0,0,0,0,]),
+		Fastskill(3),
+		Awake_noeffect("心眼",1),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(16%)",
+		proc: Heal(0.16, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体のHPを1000アップ(上限値2000)し、さらに味方全体のHPを完全回復",
+		turn: 9,
+		proc: [ss_statusup_all([1000, 0], [2000, 2000], -1), ss_heal(1)],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+}

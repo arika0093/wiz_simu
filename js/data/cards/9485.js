@@ -1,0 +1,47 @@
+{
+	name: "忘れ去られた少年 レダ",
+	cardno: 9485,
+	imageno: 9273,
+	hp: 3756,
+	atk: 3145,
+	cost: 53,
+	attr: [1,2],
+	species: [6],
+	islegend: true,
+	ape: "追憶のレディアント",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>5チェインで敵単体を5回連続攻撃(450%)",
+		proc: ChainDualAttack(4.5, 5, 5),
+	},
+	ss1: {
+		desc: "<遅延>敵単体の攻撃ターンを1遅らせる",
+		turn: 4,
+		proc: [ss_delay_s(1)],
+	},
+	awakes: [
+		Fastskill(3),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],3),
+		NEFTJOD(30),
+		Attr_relief([0,1,1,0,0,],10),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 200,0, [0,0,1,0,0,]),
+		Spec_statusup(300,0, [6,]),
+		Spec_statusup(0,300, [6,]),
+	],
+	as2: {
+		desc: "<連撃>5チェインで敵単体を5回連続攻撃(550%)",
+		proc: ChainDualAttack(5.5, 5, 5),
+	},
+	ss2: {
+		desc: "<遅延>敵単体の攻撃ターンを2遅らせる",
+		turn: 8,
+		proc: [ss_delay_s(2)],
+	},
+	Lawake: [
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Statusup(0,1000),
+	],
+}

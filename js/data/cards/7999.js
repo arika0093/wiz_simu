@@ -1,0 +1,48 @@
+{
+    name: "愛馬との絆 リミーラ・ネール",
+    cardno: 7999,
+    imageno: 10114,
+    imageno_prefix: "5cxek1_",
+    hp: 2245,
+    atk: 6739,
+    cost: 56,
+    attr: [1,-1],
+    species: [9],
+    islegend: true,
+    ape: "周年記念精霊(4周年)",
+    as1: {
+        desc: "<快調攻撃>残りHPが80%以上でダメージアップ(400%)",
+        proc: add_cond(ChainAttack(4.0, 0), when_hp_more(0.8)),
+    },
+    ss1: {
+        desc: "<反動大魔術>スキル反射を無視し、敵全体へ水属性のダメージ(750%)◆スキル使用後、1ターン封印状態に",
+        turn: 5,
+        proc: [ss_damage_all(7.5, [1]), ss_allsealed_own(1), ss_ignore_skillcounter()],
+    },
+    awakes: [
+        Panel_boost([0,1,0,0,0,],2),
+        NEFTJOD(30),
+        Attr_relief([1,0,0,0,0,],20),
+        Panel_boost([0,1,0,0,0,],2),
+        Attr_statusup(0,400, [0,1,0,0,0,]),
+        Attr_statusup(400,0, [0,1,0,0,0,]),
+        NEFTJOD(30),
+        Abstate_invalid("ss_sealed"),
+        Fastskill(3),
+        Awake_damage_multiple(1.1, 500),
+    ],
+    as2: {
+        desc: "<快調攻撃>残りHPが80%以上でダメージアップ(500%)",
+        proc: add_cond(ChainAttack(5.0, 0), when_hp_more(0.8)),
+    },
+    ss2: {
+        desc: "<反動大魔術>スキル反射を無視し、敵全体へ水属性のダメージ(1050%)◆スキル使用後、1ターン封印状態に",
+        turn: 8,
+        proc: [ss_damage_all(10.5, [1]), ss_allsealed_own(1), ss_ignore_skillcounter()],
+    },
+    Lawake: [
+        Statusup(0,1000),
+        Statusup(500,0),
+        Attr_relief([1,1,1,1,1,],10),
+    ],
+}

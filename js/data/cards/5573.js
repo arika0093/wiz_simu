@@ -1,0 +1,47 @@
+{
+	name: "愛を導く麗弓神 ステラ・フェリクス",
+	cardno: 5573,
+	imageno: 7369,
+	hp: 3133,
+	atk: 4921,
+	cost: 43,
+	attr: [2,-1],
+	species: [1],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップし、さらに敵のHPを吸収、7チェインで更にダメージアップ(300%/5%/450%)",
+		proc: [add_cond(ChainAttack(3.0, 3), as_hp_absorption(0.05)), add_cond(ChainAttack(4.5, 7), as_hp_absorption(0.05))],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・雷属性化",
+		turn: 3,
+		proc: [ss_panel_change([1,0,1,0,0])],
+	},
+	awakes: [
+		Statusup(200,0),
+		Fastskill(1),
+		Statusup(0,200),
+		Costdown(4),
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],3),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Spec_statusup(0,300, [1,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップし、さらに敵のHPを吸収、7チェインで更にダメージアップ(400%/5%/550%)",
+		proc: [add_cond(ChainAttack(3.0, 3), as_hp_absorption(0.05)), add_cond(ChainAttack(5.5, 7), as_hp_absorption(0.05))],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、チェインがプラス1の効果を付与",
+		turn: 6,
+		proc: [ss_panel_change([1,0,1,0,0]), panel_chainplus(1)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(500,0),
+		Attr_relief([0,1,0,0,0,],10),
+	],
+}

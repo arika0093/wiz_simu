@@ -1,0 +1,46 @@
+{
+	name: "祝福を、今 アンジェリカ・ヴァイル",
+	cardno: 5184,
+	imageno: 7076,
+	hp: 4324,
+	atk: 2665,
+	cost: 49,
+	attr: [2,-1],
+	species: [1],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<回復>味方全体のHPを回復(14%)",
+		proc: Heal(0.14, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,1,1,0,0])],
+	},
+	awakes: [
+		Statusup(200,0),
+		Costdown(2),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(400,0, [1,]),
+		Spec_statusup(0,400, [1,]),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(17%)",
+		proc: Heal(0.17, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、ダメージ25%軽減の効果を付与",
+		turn: 6,
+		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)],
+	},
+	Lawake: [
+		Statusup(700,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

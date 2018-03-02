@@ -1,0 +1,47 @@
+{
+	name: "聖雪色の慈悲 ベルナデッタ・イルマ",
+	cardno: 7586,
+	imageno: 7208,
+	hp: 4527,
+	atk: 2643,
+	cost: 44,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	ape: "ギルドマスターとChristmas",
+	is_dist: true,
+	as1: {
+		desc: "<回復>水属性の味方のHPを回復(13%)",
+		proc: Heal(0.13, [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(25%)",
+		turn: 6,
+		proc: [ss_heal(0.25), ss_abstate_cure()],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([0,1,0,0,0,],1),
+		NEFTJOD(30),
+		Fastskill(3),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Heal_afterbattle(10),
+		Spec_statusup(200,0, [9,]),
+		Guild_statusup(0, 1000),
+		Guild_statusup(1000, 0),
+	],
+	as2: {
+		desc: "<回復>水属性の味方のHPを回復(15%)",
+		proc: Heal(0.15, [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(50%)",
+		turn: 8,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

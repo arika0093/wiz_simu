@@ -1,0 +1,33 @@
+{
+	name: "森の大菓子喰らい マージュ・サレ",
+	cardno: 7946,
+	imageno: 10059,
+	hp: 2453,
+	atk: 3843,
+	cost: 38,
+	attr: [2,-1],
+	species: [9],
+	islegend: false,
+	ape: "大魔道杯 in ショコラフォレスト",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>7チェインでダメージアップ(450%)",
+		proc: ChainAttack(4.5, 7),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ、5チェインを消費しさらに特効ダメージ(400%/9000%/1900%)",
+		turn: 9,
+		proc: [ss_chain_cost_skill(5, ss_damage_s(special_attr([0,1,0,0,0], 19.0, 4.0), [2], 1), ss_damage_s(special_attr([0,1,0,0,0], 9.0, 4.0), [2], 1))],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Costdown(5),
+		Statusup(0,200),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(200,0),
+		Fastskill(2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Awake_noeffect("経験値取得量アップ",1),
+	],
+}

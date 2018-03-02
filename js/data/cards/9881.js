@@ -1,0 +1,45 @@
+{
+	name: "不縛なる麗翼 グレイス・シグラー",
+	cardno: 9881,
+	imageno: 7514,
+	hp: 4613,
+	atk: 3455,
+	cost: 40,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<回復>火属性の味方のHPを回復、3チェインでさらに回復(13%/15%)",
+		proc: [Heal(0.13, [1,0,0,0,0], 0),Heal(0.15,[1,0,0,0,0],3)],
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	awakes: [
+        Panel_boost([1,0,0,0,0,],4),
+        Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
+        Attr_statusup_oattr(300,0, [1,0,0,0,0,]),
+        Heal_afterbattle(10),
+        Fastskill(1),
+        NEFTJOD(30),
+        Attr_statusup(0,300, [1,0,0,0,0,]),
+        Attr_statusup(300,0, [1,0,0,0,0,]),
+        Fastskill(2),
+        Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<回復>火属性の味方のHPを回復、3チェインでさらに回復(16%/18%)",
+		proc: [Heal(0.16, [1,0,0,0,0], 0),Heal(0.18,[1,0,0,0,0],3)],
+    },
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
+		turn: 10,
+		proc: [ss_heal(1.0), ss_abstate_cure()],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

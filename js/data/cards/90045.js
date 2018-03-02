@@ -1,0 +1,46 @@
+{
+	name: "スカル小隊スカル４ 早乙女アルト",
+	cardno: 90045,
+	imageno: 7760,
+	hp: 2743,
+	atk: 4434,
+	cost: 48,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(マクロス)",
+	as1: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ(400%)",
+		proc: ChainAttrAttack(4.0, 0, [1,0,0,0,0]),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに火属性の敵に特効ダメージ(100%/300%)",
+		turn: 4,
+		proc: [ss_damage_all(special_attr([1,0,0,0,0], 3.0, 1.0), [1])],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ(500%)",
+		proc: ChainAttrAttack(5.0, 0, [1, 0, 0, 0, 0]),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに火属性の敵に特効ダメージ(200%/500%)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([1,0,0,0,0], 5.0, 2.0), [1])],
+	},
+	Lawake: [
+		Statusup(0,800),
+		Statusup(200,0),
+	],
+}

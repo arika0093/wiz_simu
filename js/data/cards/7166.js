@@ -1,0 +1,47 @@
+{
+	name: "魔界フェスタ03 レメモ・ビブリ",
+	cardno: 7166,
+	imageno: 9152,
+	hp: 3732,
+	atk: 2239,
+	cost: 37,
+	attr: [1,-1],
+	species: [3],
+	islegend: true,
+	ape: "ロストエデンⅡ WWMF",
+	is_dist: true,
+	as1: {
+		desc: "<回復>味方全体のHPを回復(12%)",
+		proc: Heal(0.12, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<状態異常無効>1ターン敵の状態異常攻撃を無効化する",
+		turn: 5,
+		proc: [ss_absattack_disable(1)],
+	},
+	awakes: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		NEFTJOD(30),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Heal_afterbattle(10),
+		Attr_relief([1,1,1,1,1,],10),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(14%)",
+		proc: Heal(0.14, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<状態異常無効>2ターン敵の状態異常攻撃を無効化する",
+		turn: 7,
+		proc: [ss_absattack_disable(2)],
+	},
+	Lawake: [
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

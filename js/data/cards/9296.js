@@ -1,0 +1,47 @@
+{
+	name: "いっぱいちっちゃイーニア",
+	cardno: 9296,
+	imageno: 11561,
+	hp: 2017,
+	atk: 3023,
+	cost: 41,
+	attr: [1,3],
+	species: [6],
+	islegend: true,
+	ape: "UHG",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃・種族数攻撃>4チェインでダメージアップ(250%)、物質・術士の仲間の数だけさらにアップ(60%)",
+		proc: ChainDeckSpecsAttack(0.6, [6,9], 0, 1.5),
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、自分自身のMAXHPの50%を使い敵単体へ水・光属性の5回連続ダメージ(400%)",
+		turn: 6,
+		proc: [ss_damage_s(4.0, [1,3], 5), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([0,1,0,0,0,],1),
+		Statusup(300,0),
+		Statusup(0,300),
+		Panel_boost([0,1,0,0,0,],1),
+		NEFTJOD(30),
+		Awake_noeffect("経験値取得量アップ",1),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Fastskill(3),
+	],
+	as2: {
+		desc: "<チェイン攻撃・種族数攻撃>4チェインでダメージアップ(350%)、物質・術士の仲間の数だけさらにアップ(60%)",
+		proc: ChainDeckSpecsAttack(0.6, [6,9], 0, 2.5),
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、自分自身のMAXHPの50%を使い敵単体へ水・光属性の5回連続ダメージ(600%)",
+		turn: 9,
+		proc: [ss_damage_s(6.0, [1,3], 5), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

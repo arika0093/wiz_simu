@@ -1,0 +1,47 @@
+{
+	name: "秘密のヒーロー バロン・ライオネル",
+	cardno: 7581,
+	imageno: 9644,
+	hp: 3169,
+	atk: 2738,
+	cost: 46,
+	attr: [2,3],
+	species: [5],
+	islegend: true,
+	ape: "ギルドマスターとChristmas",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化・回復>雷属性の味方のHPを回復(10%)、さらに雷属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.10, [0,0,1,0,0], 0), ChainEnhance(0.3, [0,0,1,0,0], 0)],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ(120%)",
+		turn: 4,
+		proc: [ss_damage_all(1.2, [2,3]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Statusup(100,0),
+		Costdown(10),
+		Panel_boost([0,0,1,0,0,],1),
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(500,0, [5,]),
+		Spec_statusup(0,500, [5,]),
+		Fastskill(2),
+		Awake_noeffect("経験値取得量アップ",1),
+		Guild_statusup(0, 1000),
+		Guild_statusup(1000, 0),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>雷属性の味方のHPを回復(10%)、さらに雷属性の味方の攻撃力をアップ(60%)",
+		proc: [Heal(0.10, [0,0,1,0,0], 0), ChainEnhance(0.6, [0,0,1,0,0], 0)],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ(120%)、さらに味方全体のHPを回復する(25%)",
+		turn: 6,
+		proc: [ss_damage_all(1.2, [2,3]), ss_heal(0.25), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

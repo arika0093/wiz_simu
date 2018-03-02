@@ -1,0 +1,47 @@
+{
+	name: "心の憧憬、届く距離 イツキ&ニコラ",
+	cardno: 4511,
+	imageno: 6193,
+	hp: 2823,
+	atk: 1663,
+	cost: 33,
+	attr: [2,1],
+	species: [8],
+	islegend: true,
+	is_dist: true,
+	ape: "クロム・マグナⅤ",
+	as1: {
+		desc: "<回復>水・雷属性の味方を回復、3チェインで更に回復(10%/13%)",
+		proc: [Heal(0.10, [0,1,1,0,0], 0), Heal(0.13, [0,1,1,0,0], 3)],
+	},
+	ss1: {
+		desc: "<ガード>2ターン水属性のダメージを50%軽減する",
+		turn: 7,
+		proc: [ss_attr_guard([0,1,0,0,0], [0.5], 2)],
+	},
+	awakes: [
+		Heal_afterbattle(10),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],1),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Fastskill(2),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+	],
+	as2: {
+		desc: "<回復>水・雷属性の味方を回復、3チェインで更に回復(13%/16%)",
+		proc: [Heal(0.13, [0,1,1,0,0], 0), Heal(0.16, [0,1,1,0,0], 3)],
+	},
+	ss2: {
+		desc: "<ガード>3ターン水属性のダメージを50%軽減する",
+		turn: 9,
+		proc: [ss_attr_guard([0,1,0,0,0], [0.5], 3)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Statusup(400,0),
+	],
+}

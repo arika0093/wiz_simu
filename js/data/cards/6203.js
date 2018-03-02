@@ -1,0 +1,48 @@
+{
+	name: "深き血の黄昏 クルス・ドラク",
+	cardno: 6203,
+	imageno: 8026,
+	hp: 4056,
+	atk: 5704,
+	cost: 51,
+	attr: [2,-1],
+	species: [2],
+	islegend: true,
+	ape: "聖サタニック女学院",
+	as1: {
+		desc: "<連撃>敵単体を8回連続攻撃、20チェインでさらにダメージアップ(200%/1600%)",
+		proc: [ChainDualAttack(2.0, 0, 8), ChainDualAttack(16.0, 20, 8)],
+	},
+	ss1: {
+		desc: "<斬撃大魔術>8ターン溜めた後、スキル反射を無視し、雷属性の20連撃(3000%)、さらに連撃数分チェインプラス",
+		turn: 8,
+		charged: 8,
+		proc: [ss_damage_slash(30, [2], 20), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_oattr(0,400, [0,0,1,0,0,]),
+		Attr_statusup_oattr(400,0, [0,0,1,0,0,]),
+		Fastskill(4),
+		Panel_boost([0,0,1,0,0,],4),
+		NEFTJOD(30),
+		Fastskill(4),
+		Attr_statusup(0,400, [0,0,1,0,0,]),
+		Attr_statusup(400,0, [0,0,1,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<連撃>敵単体を8回連続攻撃、20チェインでさらにダメージアップ(200%/1700%)",
+		proc: [ChainDualAttack(2.0, 0, 8), ChainDualAttack(17.0, 20, 8)],
+	},
+	ss2: {
+		desc: "<斬撃大魔術>8ターン溜めた後、スキル反射を無視し、雷属性の20連撃(3000%)、さらに連撃数分チェインプラス",
+		turn: 8,
+		charged: 8,
+		proc: [ss_damage_slash(30, [2], 20), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup_oattr(0,300, [0,0,1,0,0,]),
+		Statusup(0,500),
+	],
+}

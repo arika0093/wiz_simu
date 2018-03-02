@@ -1,0 +1,45 @@
+{
+	name: "英姿颯爽 バルトラン・ギュメイ",
+	cardno: 90055,
+	imageno: 8360,
+	hp: 2810,
+	atk: 4091,
+	cost: 37,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<連撃>敵単体を6回連続攻撃、3チェインで更にダメージアップ(250%/350%)",
+		proc: [ChainDualAttack(2.5, 0, 6), ChainDualAttack(3.5, 3, 6)],
+	},
+	ss1: {
+		desc: "<解答削り>解答選択肢を2つ削り、3チェインを消費し解答を見破る",
+		turn: 4,
+		proc: [ss_chain_cost_skill(3, ss_answer_narrow(2), ss_answer_foresight())],
+	},
+	awakes: [
+		Statusup(0,200),
+		Attr_relief([1,1,0,0,0,],10),
+		Fastskill(1),
+		Statusup(200,0),
+		NEFTJOD(30),
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<連撃>敵単体を6回連続攻撃、3チェインで更にダメージアップ(350%/450%)",
+		proc: [ChainDualAttack(3.5, 0, 6), ChainDualAttack(4.5, 3, 6)],
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 6,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

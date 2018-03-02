@@ -1,0 +1,45 @@
+{
+	name: "新世界の失踪 ダリオ&ガラティア",
+	cardno: 5788,
+	imageno: 7613,
+	hp: 3015,
+	atk: 2425,
+	cost: 44,
+	attr: [1, 0],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<攻撃強化>火・水属性の味方の攻撃力をアップ、5チェインでさらにアップ(30%/50%)",
+		proc: [ChainEnhance(0.30, [1, 1, 0, 0, 0], 0), ChainEnhance(0.50, [1, 1, 0, 0, 0], 5)],
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
+		turn: 8,
+		proc: [ss_skillboost(2)],
+	},
+	awakes: [
+		Fastskill(1),
+		Attr_statusup(0, 200, [1, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Costdown(2),
+		Attr_statusup(100, 0, [1, 1, 0, 0, 0, ]),
+		Fastskill(2),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup(200, 0, [1, 1, 0, 0, 0, ]),
+		Attr_relief([1, 0, 0, 0, 0, ], 10),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<攻撃強化>火・水属性の味方の攻撃力をアップ、5チェインでさらにアップ(60%/80%)",
+		proc: [ChainEnhance(0.60, [1, 1, 0, 0, 0], 0), ChainEnhance(0.80, [1, 1, 0, 0, 0], 5)],
+	},
+	ss2: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
+		turn: 9,
+		proc: [ss_skillboost(2), ss_delay_s(2)],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+		Statusup(500, 0),
+	],
+}

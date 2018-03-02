@@ -1,0 +1,47 @@
+{
+	name: "原点回帰の不尽焔 スオウ・カグツチ",
+	cardno: 6839,
+	imageno: 8811,
+	hp: 3676,
+	atk: 3087,
+	cost: 52,
+	attr: [0,1],
+	species: [1],
+	disable: true,
+	islegend: true,
+	ape: "YAOYORO Z",
+	as1: {
+		desc: "<複属性攻撃強化>4チェインで火属性の攻撃力をアップ、複属性が水属性だとさらにアップ(10%/120%)",
+		proc: [ChainEnhance_SubAttr(0.1, 1.2, [1,0,0,0,0], [0,1,0,0,0], 4)],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・水属性化",
+		turn: 3,
+		proc: [ss_panel_change([1,1,0,0,0])],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Statusup(200,0),
+		Fastskill(2),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,200, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>4チェインで火属性の攻撃力をアップ、複属性が水属性だとさらにアップ(40%/150%)",
+		proc: [ChainEnhance_SubAttr(0.4, 1.5, [1,0,0,0,0], [0,1,0,0,0], 4)],
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 6,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "愛おしき邪神の天真 ルルベル",
+	cardno: 4645,
+	imageno: 6110,
+	hp: 3093,
+	atk: 2915,
+	cost: 45,
+	attr: [0,-1],
+	species: [2],
+	disable: true,
+	islegend: true,
+	ape: "ブレイダー",
+	as1: {
+		desc: "<回復>火属性の味方を回復、5チェインで更に回復(11%/15%)",
+		proc: [Heal(0.11, [1,0,0,0,0], 0), Heal(0.15, [1,0,0,0,0], 5)],
+	},
+	ss1: {
+		desc: "<ガード>3ターン全属性のダメージを25%軽減する",
+		turn: 5,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)],
+	},
+	awakes: [
+		Costdown(2),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Statusup(0,100),
+		Costdown(2),
+		Attr_relief([1,0,1,0,0,],10),
+		Statusup(200,0),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Fastskill(2),
+		Spec_statusup(0,200, [2,]),
+	],
+	as2: {
+		desc: "<回復>火属性の味方を回復、5チェインで更に回復(13%/17%)",
+		proc: [Heal(0.13, [1,0,0,0,0], 0), Heal(0.17, [1,0,0,0,0], 5)],
+	},
+	ss2: {
+		desc: "<ガード>3ターン全属性のダメージを50%軽減する",
+		turn: 9,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.50, 3)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

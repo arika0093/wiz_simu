@@ -1,0 +1,47 @@
+{
+	name: "極獄の殲炎 アスモデウス・トビト",
+	cardno: 4648,
+	imageno: 6113,
+	hp: 3110,
+	atk: 2870,
+	cost: 70,
+	attr: [0, -1],
+	species: [2],
+	disable: true,
+	awakes: [
+		Statusup(0, 200),
+		Costdown(4),
+		Statusup(200, 0),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Panel_boost([1,0,0,0,0], 1),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Fastskill(2),
+		Spec_statusup(0, 200, [2]),
+		Spec_statusup(200, 0, [2]),
+	],
+	as1: {
+		desc: "<全体攻撃>敵の数に関わらず敵全体へダメージアップ/140％",
+		proc: ChainAllAttack(1.4, 0),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ火属性のダメージ(180％)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [0])],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(0, 700),
+		Statusup(300, 0),
+	],
+	as2: {
+		desc: "<全体攻撃>敵の数に関わらず敵全体へダメージアップ/150％",
+		proc: ChainAllAttack(1.5, 0),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ火属性のダメージ(260％)",
+		turn: 12,
+		proc: [ss_damage_all(2.6, [0])],
+	},
+}

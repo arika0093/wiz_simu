@@ -1,0 +1,46 @@
+{
+	name: "満開桜長者 マツリ・サガミヤ",
+	cardno: 7108,
+	imageno: 9193,
+	hp: 5122,
+	atk: 3067,
+	cost: 51,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "古の森の千年桜",
+	as1: {
+		desc: "<回復>味方全体のHPを回復(13%)",
+		proc: Heal(0.13, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20%)",
+		turn: 8,
+		proc: [ss_regenerate(0.2, 5)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		Heal_afterbattle(10),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Fastskill(2),
+		Awake_noeffect("経験値取得量アップ",1),
+		Spec_statusup(200,0, [9,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(16%)",
+		proc: Heal(0.16, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する、HP50%以下でさらに回復(20%/30%)",
+		turn: 10,
+		proc: [ss_regenerate(ss_hp_less(0.5, 0.3, 0.2), 5)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

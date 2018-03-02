@@ -1,0 +1,46 @@
+{
+	name: "甘さにまどろむ キワム&コヨミ",
+	cardno: 5589,
+	imageno: 7445,
+	hp: 3811,
+	atk: 2611,
+	cost: 45,
+	attr: [1,2],
+	species: [8],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(30%/80%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,1,0,0,0], [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
+		turn: 7,
+		proc: [ss_skillboost(2)],
+	},
+	awakes: [
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Statusup(200,0),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Fastskill(2),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(60%/110%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,1,0,0,0], [0,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを3早める",
+		turn: 10,
+		proc: [ss_skillboost(3)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Statusup(500,0),
+	],
+}

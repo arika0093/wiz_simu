@@ -1,0 +1,47 @@
+{
+	name: "天昇覚醒 第13号機",
+	cardno: 6645,
+	imageno: 8593,
+	hp: 3020,
+	atk: 2130,
+	cost: 39,
+	attr: [1,3],
+	species: [3],
+	islegend: true,
+	ape: "コラボ(エヴァⅡ)",
+	is_dist: true,
+	as1: {
+		desc: "<回復>水属性の味方を回復、5チェインで更に回復(10%/12%)",
+		proc: [Heal(0.10, [0,1,0,0,0], 0), Heal(0.12, [0,1,0,0,0], 5)],
+	},
+	ss1: {
+		desc: "<回復>味方全体のHPを回復する(50%)",
+		turn: 5,
+		proc: [ss_heal(0.5)],
+	},
+	awakes: [
+		Statusup(100,0),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Statusup(200,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],2),
+		Spec_statusup(200,0, [3,]),
+		Spec_statusup(0,200, [3,]),
+	],
+	as2: {
+		desc: "<回復>水属性の味方を回復、5チェインで更に回復(12%/14%)",
+		proc: [Heal(0.12, [0,1,0,0,0], 0), Heal(0.14, [0,1,0,0,0], 5)],
+	},
+	ss2: {
+		desc: "<蘇生>味方全体のHPを回復し(50%)、さらに水属性の味方を蘇生(25%)",
+		turn: 10,
+		proc: [ss_heal(0.5), ss_resurrection([0,1,0,0,0], 0.25)],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

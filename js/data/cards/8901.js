@@ -1,0 +1,46 @@
+{
+	name: "不死身の戦神 ディートリヒ・ベルク",
+	cardno: 8901,
+	imageno: 11112,
+	hp: 2435,
+	atk: 7845,
+	cost: 54,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "ゴールデンアワード2017",
+	as1: {
+		desc: "<属性特効連撃>4チェインで火属性の敵単体へ特効6連撃(550%)、解答が早いほどさらにアップ(70%)（上限:4段階)",
+		proc: add_cond(ChainDualAttrAttack(5.5, 4, 6, [1, 0, 0, 0, 0]), as_timedep(0.7)),
+	},
+	as2: {
+		desc: "<属性特効連撃>4チェインで火属性の敵単体へ特効6連撃(650%)、解答が早いほどさらにアップ(70%)（上限:4段階)",
+		proc: add_cond(ChainDualAttrAttack(6.5, 4, 6, [1, 0, 0, 0, 0]), as_timedep(0.7)),
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵単体へ無属性のダメージ(1500%)",
+		turn: 7,
+		proc: [ss_damage_s(15, [-1], 1), ss_ignore_skillcounter()],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵単体へ無属性のダメージ(1500%)",
+		turn: 7,
+		proc: [ss_damage_s(15, [-1], 1), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],4),
+		Attr_statusup_oattr(0,400,[0,1,0,0,0,]),
+		Attr_statusup_oattr(400,0,[0,1,0,0,0,]),
+		Attr_relief([1,0,0,0,0,],20),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+		Attr_statusup(0,400,[0,1,0,0,0,]),
+		Attr_statusup(400,0,[0,1,0,0,0,]),
+		Awake_secondfast(5),
+		Awake_noeffect("選ばれし者の証",1),
+		Awake_damage_multiple(1.1, 500),
+	],
+	Lawake: [
+		Statusup(0,1500),
+		Abstate_invalid("discharge"),
+	],
+}

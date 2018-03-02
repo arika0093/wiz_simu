@@ -1,0 +1,46 @@
+{
+	name: "二人の心は永遠の海に メル&マナ",
+	cardno: 90013,
+	imageno: 5677,
+	hp: 1956,
+	atk: 3332,
+	cost: 38,
+	attr: [1, -1],
+	species: [4],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(300%)",
+		proc: add_cond(ChainAttack(3.0, 0), when_hp_more(0.8)),
+	},
+	ss1: {
+		desc: "<大魔術>敵単体へ水属性のダメージ(200%)",
+		turn: 5,
+		proc: [ss_damage_s(2.0, [1], 1)],
+	},
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Spec_statusup(200, 0, [4, ]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Spec_statusup(0, 200, [4, ]),
+		Spec_statusup(200, 0, [4, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Fastskill(2),
+		Spec_statusup(0, 200, [4, ]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>残りHPが80%以上でダメージアップ、7チェインでさらにアップ(300%/700%)",
+		proc: [add_cond(ChainAttack(3.0, 0), when_hp_more(0.8)), add_cond(ChainAttack(3.0, 7), when_hp_more(0.8))],
+	},
+	ss2: {
+		desc: "<大魔術>敵単体へ水属性のダメージ(400%)",
+		turn: 8,
+		proc: [ss_damage_s(4.0, [1], 1)],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(0, 400),
+	],
+}

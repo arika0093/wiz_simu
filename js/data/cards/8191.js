@@ -1,0 +1,48 @@
+{
+	name: "覚醒の覇眼 リヴェータ&ルドヴィカ",
+	cardno: 8191,
+	imageno: 10329,
+	hp: 3835,
+	atk: 3255,
+	cost: 55,
+	attr: [1,0],
+	species: [8],
+	islegend: true,
+	ape: "覇眼戦線Ⅲ",
+	as1: {
+		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(600%)",
+		proc: add_cond(ChainAttack(6.0, 0), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "<ステータスアップ>自身のHPを2000ダウンし、攻撃力を6000アップ(上限値:6000)",
+		turn: 1,
+		proc: [ss_statusup_own([-2000, 6000], [6000, 6000], -1)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		NEFTJOD(60),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [1,0,0,0,0,]),
+		Abstate_invalid("all_sealed"),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ、チェインを2消費して、さらにダメージアップ(600%/1100%)",
+		proc: add_cond(ChainAttack(6.0, 0), as_reducechain(5.0, 2), as_consume_all(0.1)),
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ(600%)。さらに極稀にクリティカル",
+		turn: 5,
+		proc: [ss_boost_enhance_s(6, 5, 0.15)],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		Awake_SpecialSkill("ss_damageblock_all", 500, 5, "ringan"),
+		Attr_statusup(0, 500, [1, 1, 1, 1, 1, ]),
+		Awake_SpecialSkill("ss_heal", 0.5),
+	],
+}

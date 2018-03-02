@@ -1,0 +1,46 @@
+{
+	name: "に魂いち ヴェレフキナ＆シミラル",
+	cardno: 9392,
+	imageno: 11641,
+	hp: 1345,
+	atk: 4831,
+	cost: 54,
+	attr: [2,4],
+	species: [2],
+	islegend: true,
+	ape: "ロストエデンⅢ",
+	as1: {
+		desc: "<連撃>敵単体を3回連続攻撃(250%)、解答が早いほどさらにアップ(70%)（上限:4段階)",
+		proc: add_cond(ChainDualAttack(2.5, 0, 3), as_timedep(0.7)),
+	},
+	ss1: {
+		desc: "<ブースト>1ターンの間、MAXHPを毎ターン35%消費し、攻撃力をアップ(1200%)。さらに極稀にクリティカル",
+		turn: 10,
+		proc: [ss_boost_enhance_s(12.0, 1, 0.35)],
+	},
+	awakes: [
+		Costdown(20),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(5),
+		Abstate_invalid("as_sealed"),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,0,0,0,1,]),
+		Fastskill(5),
+	],
+	as2: {
+		desc: "<連撃>敵単体を3回連続攻撃(350%)、解答が早いほどさらにアップ(70%)（上限:4段階)",
+		proc: add_cond(ChainDualAttack(3.5, 0, 3), as_timedep(0.7)),
+	},
+	ss2: {
+		desc: "<ブースト>1ターンの間、MAXHPを毎ターン35%消費し、攻撃力をアップ(1200%)。さらに極稀にクリティカル",
+		turn: 10,
+		proc: [ss_boost_enhance_s(12.0, 1, 0.35)],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,100, [0,0,0,0,1,]),
+		Attr_relief([1,1,1,1,1,],10),
+	],
+}

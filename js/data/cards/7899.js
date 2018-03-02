@@ -1,0 +1,48 @@
+{
+	name: "プレミオな和歌の神 ミコト",
+	cardno: 7899,
+	imageno: 6099,
+	hp: 6071,
+	atk: 1893,
+	cost: 56,
+	attr: [1,0],
+	species: [1],
+	islegend: true,
+	ape: "グリコⅡ",
+	alias: ["/arika_nekowiz", "/wiztools"],
+	as1: {
+		desc: "<回復>火・水属性の味方を回復、7チェインで更に回復(10%/17%)",
+		proc: [Heal(0.10, [1,1,0,0,0], 0), Heal(0.17, [1,1,0,0,0], 7)],
+	},
+	ss1: {
+		desc: "<継続回復>チェインプラス1の効果、さらに3ターン味方全体を徐々に回復する(15%)",
+		turn: 5,
+		proc: [ss_addchain(1), ss_regenerate(0.15, 3)],
+	},
+	awakes: [
+		Attr_statusup(0,200,[1,1,0,0,0,]),
+		Attr_statusup(200,0,[1,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],4),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,300,[1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0,[0,1,0,0,0,],300,0,[1,0,0,0,0,]),
+		Spec_statusup(200,0,[1,]),
+		Spec_statusup(0,200,[1,]),
+		Fastskill(4),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>火・水属性の味方を回復、7チェインで更に回復(13%/20%)",
+		proc: [Heal(0.13, [1,1,0,0,0], 0), Heal(0.20, [1,1,0,0,0], 7)],
+	},
+	ss2: {
+		desc: "<継続回復>味方全体のHPを回復する(50%)、さらに5ターン徐々に回復する(20%)",
+		turn: 9,
+		proc: [ss_heal(0.5), ss_regenerate(0.2, 5)],
+	},
+	Lawake: [
+		Attr_statusup(0,200,[1,1,0,0,0,]),
+		Statusup(500,0),
+		Attr_relief([1,1,1,1,1,],20),
+	],
+}

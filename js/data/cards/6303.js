@@ -1,0 +1,45 @@
+{
+	name: "万華鳴閃　ボタン・カミイズミ",
+	cardno: 6303,
+	imageno: 8152,
+	hp: 2601,
+	atk: 3533,
+	cost: 48,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(350%)",
+		proc: ChainAttack(3.5, 3),
+	},
+	ss1: {
+		desc: "<ダメージ強化>3ターン火属性の味方の攻撃力をアップ(50%)",
+		turn: 7,
+		proc: [ss_enhance_all(0.5, 3, [1,0,0,0,0])],
+	},
+	awakes: [
+		Costdown(4),
+		Statusup(0,300),
+		Statusup(200,0),
+		Fastskill(1),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(450%)",
+		proc: ChainAttack(4.5, 3),
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン火属性の味方の攻撃力をアップ、5チェインを消費しさらにアップ(120%/180%)",
+		turn: 12,
+		proc: [ss_enhance_all(ss_chain_cost(5, 1.8, 1.2), 4, [1,0,0,0,0])],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(500,0),
+	],
+}

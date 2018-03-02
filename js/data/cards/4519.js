@@ -1,0 +1,46 @@
+{
+	name: "誓いの凛炎 リンカ・ワイアット",
+	cardno: 4519,
+	imageno: 6197,
+	hp: 2429,
+	atk: 2435,
+	cost: 49,
+	attr: [0, 1],
+	species: [8],
+	disable: true,
+	awakes: [
+		Panel_boost([1,0,0,0,0], 1),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0]),
+		Attr_relief([0, 1, 0, 0, 0], 20),
+		Attr_statusup(100, 0, [1, 1, 0, 0, 0]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0], 1),
+		NEFTJOD(30),
+		Fastskill(2),
+		Spec_statusup(200, 0, [8]),
+		Spec_statusup(0, 200, [8]),
+	],
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ/450％",
+		proc: ChainAttack(4.5, 5),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(2)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 600),
+		Statusup(400, 0),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでMAXHP15％を使い、ダメージアップ/650％",
+		proc: ChainAttack_as_consume_own(6.5, 5, 0.15),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス3の効果を付与",
+		turn: 8,
+		proc: [panel_chainplus(3)],
+	},
+}

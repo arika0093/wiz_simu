@@ -1,0 +1,46 @@
+{
+	name: "ゴッドダンサー Ms.マラカ",
+	cardno: 8403,
+	imageno: 10544,
+	hp: 3023,
+	atk: 3021,
+	cost: 47,
+	attr: [0,2],
+	species: [1],
+	islegend: true,
+	ape: "大魔道杯 in 喰牙RIZE",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(500%)",
+		proc: add_cond(ChainAttack(5.0, 0), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "<ステータスアップ>自身のHPを2000ダウンし、攻撃力を4000アップ(上限値:4000)",
+		turn: 1,
+		proc: [ss_statusup_own([-2000, 4000], [4000, 4000], -1)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],1),
+		Costdown(10),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,1,0,0,], 200,0, [0,0,1,0,0,]),
+		Attr_statusup_sattr(0,100, [1,0,1,0,0,], 0,200, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(600%)",
+		proc: add_cond(ChainAttack(6.0, 0), as_consume_all(0.1)),
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間、MAXHPを毎ターン20%消費し、攻撃力をアップ(600%)。さらに極稀にクリティカル",
+		turn: 5,
+		proc: [ss_boost_enhance_s(6, 5, 0.2)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "鏡合わせの私達 アッカ&トイボア",
+	cardno: 6314,
+	imageno: 8237,
+	hp: 3777,
+	atk: 2755,
+	cost: 52,
+	attr: [2,1],
+	species: [8],
+	islegend: true,
+	disable: true,
+	ape: "幻魔特区スザクⅠ",
+	as1: {
+		desc: "<複属性攻撃強化>5チェインで雷属性の攻撃力をアップ、複属性が水属性だとさらにアップ(60%/110%)5チェインで雷属性の攻撃力をアップ、複属性が水属性だとさらにアップ(90%/140%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,0,1,0,0], [0,1,0,0,0], 5),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
+		turn: 3,
+		proc: [ss_panel_change([0,1,1,0,0])],
+	},
+	awakes: [
+		Statusup(200,0),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(1),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(200,0, [8,]),
+		Fastskill(2),
+		Spec_statusup(0,200, [8,]),
+		Awake_noeffect("難易度ダウン", 1),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>5チェインで雷属性の攻撃力をアップ、複属性が水属性だとさらにアップ(90%/140%)",
+		proc: ChainEnhance_SubAttr(0.9, 1.4, [0,0,1,0,0], [0,1,0,0,0], 5),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、チェインがプラス2の効果を付与",
+		turn: 7,
+		proc: [ss_panel_change([0,1,1,0,0]), panel_chainplus(2)],
+	},
+	Lawake: [
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+	],
+}

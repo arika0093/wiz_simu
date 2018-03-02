@@ -1,0 +1,47 @@
+{
+	name: "海原大魔道教授 ドン・サルーム",
+	cardno: 4555,
+	imageno: 6277,
+	hp: 3102,
+	atk: 2698,
+	cost: 50,
+	attr: [1, -1],
+	species: [8],
+	ape: "大魔道杯 in クロム・マグナ",
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Awake_noeffect("経験値取得量アップ", 1),
+		NEFTJOD(30),
+		Heal_afterbattle(10),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Statusup(0, 200),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Spec_statusup(200, 0, [8, ]),
+	],
+	as1: {
+		desc: "<属性特効連撃>火属性の敵単体へ特効5連撃、HP80％以上でさらにダメージアップ(通常：計300％ / HP80％以上：計400％)",
+		proc: [ChainDualAttrAttack(3.0, 0, 5, [1,0,0,0,0]), add_cond(ChainDualAttrAttack(4.0, 0, 5, [1,0,0,0,0]), when_hp_more(0.8))],
+	},
+	ss1: {
+		desc: "<解答削り>味方全体のMAXHPの50％を使い、解答選択肢を2つ削る",
+		turn: 1,
+		proc: [ss_answer_narrow(2), ss_consume_all(0.5)],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(0, 500),
+	],
+	as2: {
+		desc: "<属性特効連撃>火属性の敵単体へ特効7連撃、HP80％以上でさらにダメージアップ(通常：計400％ / HP80％以上：計500％)",
+		proc: [ChainDualAttrAttack(3.0, 0, 7, [1,0,0,0,0]), add_cond(ChainDualAttrAttack(5.0, 0, 7, [1,0,0,0,0]), when_hp_more(0.8))],
+	},
+	ss2: {
+		desc: "<解答削り>味方全体のMAXHPの50％を使い、解答を見破る",
+		turn: 2,
+		proc: [ss_answer_foresight(), ss_consume_all(0.5)],
+	},
+}

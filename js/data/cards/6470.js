@@ -1,0 +1,47 @@
+{
+	name: "気高き意思の継承 ルベリ・クラクス",
+	cardno: 6470,
+	imageno: 8282,
+	hp: 5245,
+	atk: 2006,
+	cost: 53,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<回復>水属性の味方を回復、5チェインで更に回復(10%/15%)",
+		proc: [Heal(0.10, [0,1,0,0,0], 0), Heal(0.15, [0,1,0,0,0], 5)],
+	},
+	ss1: {
+		desc: "<ガード>10ターン溜めた後、30ターン全属性のダメージを30%軽減する",
+		turn: 2,
+		charged: 10,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.30, 30)],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(200,0, [9,]),
+		Heal_afterbattle(10),
+		Guild_statusup(0, 500),
+		Guild_statusup(500, 0),
+	],
+	as2: {
+		desc: "<回復>水属性の味方を回復、5チェインで更に回復(13%/18%)",
+		proc: [Heal(0.13, [0,1,0,0,0], 0), Heal(0.18, [0,1,0,0,0], 5)],
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 6,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "ガライド軍中将アクロイス・リンデ",
+	cardno: 9097,
+	imageno: 11339,
+	hp: 2212,
+	atk: 2629,
+	cost: 39,
+	attr: [2,0],
+	species: [8],
+	islegend: true,
+	ape: "ドルキマスⅢ",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(400%)",
+		proc: ChainAttack(4.0, 5),
+	},
+	ss1: {
+		desc: "<割合削り>敵全体のHPを15％減少させる",
+		turn: 7,
+		proc: [ss_ratiodamage_all(0.15)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Fastskill(2),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,200, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 200,0, [1,0,0,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(500%)",
+		proc: ChainAttack(5.0, 5),
+	},
+	ss2: {
+		desc: "<割合削り>敵全体のHPを20％減少させる",
+		turn: 10,
+		proc: [ss_ratiodamage_all(0.2)],
+	},
+	Lawake: [
+		NEFTJOD(30),
+		Statusup(0,500),
+	],
+}

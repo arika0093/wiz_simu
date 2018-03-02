@@ -1,0 +1,46 @@
+{
+	name: "求めたのは本当の「自分」 アイ",
+	cardno: 3881,
+	imageno: 5574,
+	hp: 2542,
+	atk: 2056,
+	cost: 45,
+	attr: [2, 0],
+	species: [6],
+	disable: true,
+	awakes: [
+		Spec_statusup(0, 200, [4, 6, ]),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Fastskill(1),
+		Spec_statusup(200, 0, [4, 6, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Fastskill(2),
+		Spec_statusup(200, 0, [4, 6, ]),
+		Heal_afterbattle(10),
+		Spec_statusup(0, 200, [4, 6, ]),
+	],
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ/350％",
+		proc: ChainAttack(3.5, 3),
+	},
+	ss1: {
+		desc: "<ダメージ強化>2ターン火・雷属性の味方の攻撃力をアップ(+40％)",
+		turn: 5,
+		proc: [ss_enhance_all(0.40, 2, [1,0,1,0,0])],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ/450％",
+		proc: ChainAttack(4.5, 3),
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン火・雷属性の味方の攻撃力をアップ(+60％)",
+		turn: 8,
+		proc: [ss_enhance_all(0.60, 4, [1,0,1,0,0])],
+	},
+}

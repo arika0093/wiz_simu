@@ -1,0 +1,46 @@
+{
+	name: "残酷な世界の覚醒 アンジェリカ",
+	cardno: 5111,
+	imageno: 6862,
+	hp: 4056,
+	atk: 4132,
+	cost: 43,
+	attr: [1, -1],
+	species: [1],
+	disable: true,
+	awakes: [
+		Spec_statusup(0, 200, [1, ]),
+		Fastskill(1),
+		Statusup(0, 100),
+		Spec_statusup(200, 0, [1, ]),
+		Costdown(4),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Fastskill(2),
+		Spec_statusup(0, 200, [1, ]),
+	],
+	as1: {
+		desc: "<パネル色数攻撃>3チェインかつパネルが2色でダメージアップ、3色でさらにアップ(2色：400％ / 3色：550％)",
+		proc: ChainPanelsAttack(1.0, 4.0, 5.5, 3),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ水属性のダメージ、さらに味方全体を回復(攻撃：200％ / 回復：50％)",
+		turn: 6,
+		proc: [ss_damage_all(2.0, [1]), ss_heal(0.5)],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(0, 600),
+	],
+	as2: {
+		desc: "<パネル色数攻撃>3チェインかつパネルが2色でダメージアップ、3色でさらにアップ(2色：550％ / 3色：700％)",
+		proc: ChainPanelsAttack(1.0, 5.5, 7.0, 3),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ水属性のダメージ、さらに味方全体を全回復(攻撃：200％)",
+		turn: 9,
+		proc: [ss_damage_all(2.0, [1]), ss_heal(1)],
+	},
+}

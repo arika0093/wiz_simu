@@ -1,0 +1,47 @@
+{
+	name: "光輝く金剛金華 トミ・コトブキ",
+	cardno: 8530,
+	imageno: 5807,
+	hp: 6012,
+	atk: 3715,
+	cost: 60,
+	attr: [2,-1],
+	species: [1],
+	islegend: true,
+	ape: "八百万神秘譚Ⅲ(Z)",
+	as1: {
+		desc: "<回復・攻撃強化>雷属性の味方のHPを回復(13%)、さらに雷属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.13, [0,0,1,0,0], 0), ChainEnhance(0.3, [0,0,1,0,0], 0)],
+	},
+	ss1: {
+		desc: "<起死回生>1ターン、致死ダメージを受けたら一度だけHP80%で起死回生",
+		turn: 7,
+		proc: [ss_revival(0.8, 1)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_oattr(0,400, [0,0,1,0,0,]),
+		Attr_statusup_oattr(400,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(60),
+		Awake_noeffect("ゴールド取得量アップ",5),
+		Heal_afterbattle(10),
+		Attr_statusup(0,400, [0,0,1,0,0,]),
+		Attr_statusup(400,0, [0,0,1,0,0,]),
+		Fastskill(5),
+	],
+	as2: {
+		desc: "<回復・攻撃強化>雷属性の味方のHPを回復(16%)、さらに雷属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.16, [0,0,1,0,0], 0), ChainEnhance(0.3, [0,0,1,0,0], 0)],
+	},
+	ss2: {
+		desc: "<起死回生>3ターン、致死ダメージを受けたら一度だけHP80%で起死回生",
+		turn: 9,
+		proc: [ss_revival(0.8, 3)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_relief([1,1,1,1,1,],20),
+	],
+}

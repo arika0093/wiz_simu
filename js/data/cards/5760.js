@@ -1,0 +1,46 @@
+{
+	name: "約束と結ばれた糸 サーヤ・スズカゼ",
+	cardno: 5760,
+	imageno: 7567,
+	hp: 4068,
+	atk: 2785,
+	cost: 49,
+	attr: [1, 2],
+	species: [9],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<連撃>6チェインで敵単体を3回連続攻撃、パネルの色が増す度ダメージアップ(450%/550%/700%)",
+		proc: ChainPanelsDualAttack(4.5, 5.5, 7.0, 3, 6),
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(50%)",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(200, 0),
+		Statusup(0, 200),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup(200, 0, [0, 1, 1, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Fastskill(2),
+		Attr_statusup(0, 200, [0, 1, 1, 0, 0, ]),
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<連撃>6チェインで敵単体を3回連続攻撃、パネルの色が増す度ダメージアップ(550%/650%/800%)",
+		proc: ChainPanelsDualAttack(5.5, 6.5, 8.0, 3, 6),
+	},
+	ss2: {
+		desc: "<状態異常回復&蘇生>味方全体のHPを回復し(50%)、状態異常を回復、さらに味方全体を50%で蘇生",
+		turn: 10,
+		proc: [ss_heal(0.5), ss_abstate_cure(), ss_resurrection([1, 1, 1, 1, 1], 0.50)],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+		Statusup(500, 0),
+	],
+}

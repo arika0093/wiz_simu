@@ -1,0 +1,47 @@
+{
+	name: "殲滅双牙の銀虎 ティグリー・マディ",
+	cardno: 6135,
+	imageno: 7955,
+	hp: 3115,
+	atk: 3241,
+	cost: 46,
+	attr: [0, -1],
+	species: [5],
+	islegend: true,
+	ape: "大魔道杯 in 覇眼戦線",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(400%)",
+		proc: ChainAttack(4.0, 4),
+	},
+	ss1: {
+		desc: "<チェインガード>味方全体のMAXHPを50%使い、3ターンの間、チェインを保護する",
+		turn: 5,
+		proc: [ss_chain_protect(3), ss_consume_all(0.5)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1, 0, 0, 0, 0, ], 1),
+				Attr_statusup(100, 0, [1, 0, 0, 0, 0, ]),
+		Statusup(200, 0),
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Attr_statusup(200, 0, [1, 0, 0, 0, 0, ]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Spec_statusup(0, 200, [5, ]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(500%)",
+		proc: ChainAttack(5.0, 4),
+	},
+	ss2: {
+		desc: "<チェインガード>味方全体のMAXHPを50%使い、6ターンの間、チェインを保護する",
+		turn: 8,
+		proc: [ss_chain_protect(6), ss_consume_all(0.5)],
+	},
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+	],
+}

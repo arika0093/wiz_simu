@@ -1,0 +1,47 @@
+{
+	name: "儚き闇の夜に 初音ミク",
+	cardno: 4871,
+	imageno: 6618,
+	hp: 2003,
+	atk: 3731,
+	cost: 50,
+	attr: [0, 4],
+	species: [2],
+	disable: true,
+	awakes: [
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Panel_boost([1,0,0,0,0], 1),
+		Fastskill(1),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Panel_boost([1,0,0,0,0], 1),
+		Statusup(200, 0),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0], 2),
+		Fastskill(2),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+	],
+	as1: {
+		desc: "<チェイン攻撃>10チェインでダメージアップ/700％",
+		proc: ChainAttack(7.0, 10),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス3の効果を付与",
+		turn: 8,
+		proc: [panel_chainplus(3)],
+	},
+	islegend: true,
+	Lawake: [
+		NEFTJOD(30),
+		Statusup(0, 500),
+		Statusup(400, 0),
+	],
+	as2: {
+		desc: "<チェイン攻撃>10チェインでダメージアップ、さらに敵のHPを吸収(攻撃力/700％ / 吸収：3％)",
+		proc: add_cond(ChainAttack(7.0, 10), as_hp_absorption(0.03)),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス4の効果を付与",
+		turn: 10,
+		proc: [panel_chainplus(4)],
+	},
+}

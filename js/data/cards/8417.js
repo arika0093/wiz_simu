@@ -1,0 +1,47 @@
+{
+	name: "悪威怒流 セラータ・エグランティ",
+	cardno: 8417,
+	imageno: 10567,
+	hp: 5715,
+	atk: 2176,
+	cost: 56,
+	attr: [0,4],
+	species: [2],
+	islegend: true,
+	ape: "アイドルキャッツ！",
+	as1: {
+		desc: "<回復>火属性の味方を回復(9%)、複属性が闇属性だとさらに回復(8%)",
+		proc: [Heal(0.09, [1,0,0,0,0], 0), add_cond(Heal(0.17, [1,0,0,0,0], 0), when_subattr_match([1,0,0,0,0], [0,0,0,0,1]))],
+	},
+	ss1: {
+		desc: "<複属性ダメージ強化>5ターンの間、火属性の攻撃力をアップ(100%)、複属性が闇属性だとさらにアップ(50%) 。さらに味方全体のHPを回復する(50%)",
+		turn: 8,
+		proc: [ss_enhance_all_subattr(1.0, 1.5, 5, [1,0,0,0,0], [0,0,0,0,1]), ss_heal(0.5)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Abstate_invalid("ss_sealed"),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,0,0,1,]),
+		Fastskill(4),
+		Awake_noeffect("心眼",1),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>火属性の味方を回復(12%)、複属性が闇属性だとさらに回復(8%)",
+		proc: [Heal(0.12, [1,0,0,0,0], 0), add_cond(Heal(0.20, [1,0,0,0,0], 0), when_subattr_match([1,0,0,0,0], [0,0,0,0,1]))],
+	},
+	ss2: {
+		desc: "<複属性ダメージ強化>5ターンの間、火属性の攻撃力をアップ(100%)、複属性が闇属性だとさらにアップ(100%) 。さらに味方全体のHPを完全回復する",
+		turn: 10,
+		proc: [ss_enhance_all_subattr(1.0, 2.0, 5, [1,0,0,0,0], [0,0,0,0,1]), ss_heal(1)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+}

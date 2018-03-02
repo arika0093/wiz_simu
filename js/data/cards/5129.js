@@ -1,0 +1,46 @@
+{
+	name: "無限の黒天使 ルシエラ・フオル",
+	cardno: 5129,
+	imageno: 6872,
+	hp: 3665,
+	atk: 2705,
+	cost: 41,
+	attr: [2, 4],
+	species: [3],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<攻撃強化>5チェインで雷属性の味方の攻撃力をアップ、パネルの色が2色以上でさらにアップ(60%/90%)",
+		proc: ChainPanelsEnhance(0.60, 0.90, 0.90, [0, 0, 1, 0, 0], 5),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを雷・闇属性化",
+		turn: 3,
+		proc: [ss_panel_change([0,0,1,0,1])],
+	},
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		NEFTJOD(30),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
+		Fastskill(2),
+		Spec_statusup(200, 0, [2, 3, ]),
+	],
+	as2: {
+		desc: "<攻撃強化>5チェインで雷属性の味方の攻撃力をアップ、パネルの色が2色以上でさらにアップ(90%/120%)",
+		proc: ChainPanelsEnhance(0.90, 1.20, 1.20, [0, 0, 1, 0, 0], 5),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを雷・闇属性化し、ダメージ35%軽減の効果を付与",
+		turn: 7,
+		proc: [ss_panel_change([0,0,1,0,1]), panel_attr_guard([1,1,1,1,1], 0.35)],
+	},
+	Lawake: [
+		Statusup(500, 0),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+}

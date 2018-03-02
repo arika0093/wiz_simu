@@ -1,0 +1,47 @@
+{
+	name: "紅蓮の熱気、烈火の疾撃 アスカ",
+	cardno: 6621,
+	imageno: 8619,
+	hp: 2389,
+	atk: 2821,
+	cost: 30,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(エヴァⅡ)",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>3チェインで雷属性の敵単体へ特効ダメージ(475%)",
+		proc: ChainAttrAttack(4.75, 3, [0,0,1,0,0]),
+	},
+	ss1: {
+		desc: "<ブースト>4ターンの間、味方のMAXHPを毎ターン20%消費し、味方の攻撃力をアップ(150%)。さらに極稀にクリティカル",
+		turn: 8,
+		proc: [ss_boost_enhance_all(1.5, 4, 0.2)],
+	},
+	awakes: [
+		Statusup(100,0),
+		Attr_relief([1,0,0,0,0,],10),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(1),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Statusup(0,200),
+		Fastskill(2),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで雷属性の敵単体へ特効ダメージ(575%)",
+		proc: ChainAttrAttack(5.75, 3, [0,0,1,0,0]),
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間、味方のMAXHPを毎ターン20%消費し、味方の攻撃力をアップ(200%)。さらに極稀にクリティカル",
+		turn: 11,
+		proc: [ss_boost_enhance_all(2.0, 4, 0.2)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(0,400),
+	],
+}

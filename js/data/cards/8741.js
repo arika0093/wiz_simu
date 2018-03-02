@@ -1,0 +1,47 @@
+{
+	name: "AbCd-Ξ:《死滅の象徴 テネブル》",
+	cardno: 8741,
+	imageno: 7497,
+	hp: 3050,
+	atk: 3520,
+	cost: 52,
+	attr: [2,3],
+	species: [11],
+	islegend: true,
+	ape: "レイド AbCd",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>3チェインで味方のMAXHP10%を使い、敵単体を3回連続攻撃(700%)",
+		proc: add_cond(ChainDualAttack(7.0, 3, 3), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体のHPを2000ダウンし、攻撃力を2000アップ(上限値:2000)",
+		turn: 4,
+		proc: [ss_statusup_all([-2000, 2000], [2000, 2000], -1)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+		Fastskill(2),
+		Abstate_invalid("as_sealed"),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,200, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 200,0, [0,0,0,1,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<連撃>3チェインで味方のMAXHP10%を使い、敵単体を3回連続攻撃(800%)",
+		proc: add_cond(ChainDualAttack(8.0, 3, 3), as_consume_all(0.1)),
+	},
+	ss2: {
+		desc: "<特効大魔術>MAXHPの100%を使い敵単体へ雷属性のダメージ(400%)、さらに水・闇属性の敵には特効ダメージ(1000%)",
+		turn: 7,
+		proc: [ss_damage_s(special_attr([0, 1, 0, 0, 1], 14.0, 4.0), [2], 1), ss_consume_own(1)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Statusup(500,0),
+	],
+}

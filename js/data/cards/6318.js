@@ -1,0 +1,48 @@
+{
+	name: "撃砕の鉄腕 アトヤ&リベルタス",
+	cardno: 6318,
+	imageno: 5952,
+	hp: 4790,
+	atk: 3345,
+	cost: 56,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	disable: true,
+	ape: "幻魔特区スザクⅡ",
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)",
+		proc: ChainAttack(4.5, 5),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ25%軽減の効果を付与",
+		turn: 6,
+		proc: [panel_attr_guard([1,1,1,1,1], 0.25)],
+	},
+	awakes: [
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Fastskill(2),
+		Spec_statusup(200,0, [8,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Spec_statusup(0,200, [8,]),
+	],
+	as2: {
+		desc: "<攻撃>敵単体へのダメージアップ(450%)",
+		proc: ChainAttack(4.5, 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ50%軽減の効果を付与",
+		turn: 10,
+		proc: [panel_attr_guard([1,1,1,1,1], 0.5)],
+	},
+	Lawake: [
+		NEFTJOD(30),
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "喰滅されし根源 ルナリィ・ヘレラ",
+	cardno: 7706,
+	imageno: 5888,
+	hp: 2143,
+	atk: 6020,
+	cost: 51,
+	attr: [2, -1],
+	species: [8],
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(1),
+		Statusup(0, 200),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Statusup(200, 0),
+		Fastskill(2),
+		Spec_statusup(300, 0, [8, ]),
+		Spec_statusup(0, 300, [8, ]),
+	],
+	as1: {
+		desc: "<属性特効>3チェインで水属性の敵単体へ特効ダメージ(525％)",
+		proc: ChainAttrAttack(5.25, 3, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<効果解除>敵全体のガード&ダメージブロックを解除する",
+		turn: 4,
+		proc: [ss_break_attrguard("all"), ss_break_dblock("all")],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Statusup(0, 500),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで水属性の敵単体へ特効ダメージ(625％)",
+		proc: ChainAttrAttack(6.25, 3, [0,1,0,0,0]),
+	},
+	ss2: {
+		desc: "<効果解除大魔術>スキル反射を無視し、敵全体のガード&ダメージブロックを解除し、雷属性のダメージ(300％)",
+		turn: 7,
+		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(3.0, [2]), ss_ignore_skillcounter()],
+	},
+}

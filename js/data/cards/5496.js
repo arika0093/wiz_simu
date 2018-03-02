@@ -1,0 +1,45 @@
+{
+	name: "天上岬の超快速 カルテロ・レナド",
+	cardno: 5496,
+	imageno: 7333,
+	hp: 2501,
+	atk: 4521,
+	cost: 44,
+	attr: [1,-1],
+	species: [5],
+	islegend: true,
+	ape: "天上岬Ⅰ",
+	as1: {
+		desc: "<属性特効>5チェインで火属性の敵単体へ特効ダメージ(650%)",
+		proc: ChainAttrAttack(6.5, 5, [1, 0, 0, 0, 0]),
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを1遅らせる",
+		turn: 4,
+		proc: [ss_delay_all(1)],
+	},
+	awakes: [
+		Fastskill(2),
+		Costdown(2),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Spec_statusup(0,500, [5,]),
+		Statusup(200,0),
+		Spec_statusup(500,0, [5,]),
+	],
+	as2: {
+		desc: "<属性特効>5チェインで火属性の敵単体へ特効ダメージ(750%)",
+		proc: ChainAttrAttack(7.5, 5, [1, 0, 0, 0, 0]),
+	},
+	ss2: {
+		desc: "<遅延大魔術>敵全体の攻撃ターンを1遅らせ、水属性のダメージ(180%)",
+		turn: 9,
+		proc: [ss_damage_all(1.8, [1]), ss_delay_all(1)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "神魔絶ツ覇吼剣 マイア・スティルマ",
+	cardno: 9497,
+	imageno: 8006,
+	hp: 3865,
+	atk: 6370,
+	cost: 53,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	ape: "DL限定精霊",
+	as1: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(300%)、10チェインでさらに特効ダメージ(700%)",
+		proc: [ChainAttrAttack(3.0, 0, [0, 1, 0, 0, 0]), ChainAttrAttack(10.0, 10, [0, 1, 0, 0, 0])],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ(400%)、さらに水属性の敵には特効ダメージ(2000%)",
+		turn: 12,
+		proc: [ss_damage_s(special_attr([0, 1, 0, 0, 0], 24, 4.0), [2], 1)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_oattr(0,400, [0,0,1,0,0,]),
+		Attr_statusup_oattr(400,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(4),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup(0,400, [0,0,1,0,0,]),
+		Attr_statusup(400,0, [0,0,1,0,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(400%)、10チェインでさらに特効ダメージ(700%)",
+		proc: [ChainAttrAttack(4.0, 0, [0, 1, 0, 0, 0]), ChainAttrAttack(11.0, 10, [0, 1, 0, 0, 0])],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ(400%)、さらに水属性の敵には特効ダメージ(2600%)",
+		turn: 15,
+		proc: [ss_damage_s(special_attr([0, 1, 0, 0, 0], 30, 4.0), [2], 1)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,300, [0,0,1,0,0,]),
+	],
+}

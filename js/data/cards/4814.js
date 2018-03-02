@@ -1,0 +1,33 @@
+{
+	name: "イグノビリウムの赤の装兵",
+	cardno: 4814,
+	imageno: 6559,
+	hp: 2010,
+	atk: 2413,
+	cost: 25,
+	attr: [0,-1],
+	species: [6],
+	islegend: false,
+	ape: "ドルキマスⅠ",
+	is_dist: true,
+	as1: {
+		desc: "<ギャンブル攻撃>ダメージがイチかバチかアップ(0～500%)",
+		proc: ChainStakesAttack(0, 5, 0),
+	},
+	ss1: {
+		desc: "<毒>4ターンの間、敵全体に毒のダメージを与える(9000)",
+		turn: 5,
+		proc: [poison(2500, 3)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Fastskill(1),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Statusup(100,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(1),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "ザ・二千両役者 バロン&ドゥーガ",
+	cardno: 5892,
+	imageno: 7709,
+	hp: 2744,
+	atk: 4022,
+	cost: 46,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "大魔道杯 with ギルドマスターズ(3周年)",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効連撃>7チェインで水属性の敵単体へ特効4連撃(700%)",
+		proc: ChainDualAttrAttack(7.0, 7, 4, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<斬撃大魔術>スキル反射を無視し、雷属性の6連撃、さらに連撃数分チェインプラス(180%)",
+		turn: 8,
+		proc: [ss_damage_slash(1.8, [2], 6), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		NEFTJOD(30),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<属性特効連撃>7チェインで水属性の敵単体へ特効4連撃(800%)",
+		proc: ChainDualAttrAttack(8.0, 7, 4, [0,1,0,0,0]),
+	},
+	ss2: {
+		desc: "<斬撃大魔術>スキル反射を無視し、雷属性の10連撃、さらに連撃数分チェインプラス(380%)",
+		turn: 11,
+		proc: [ss_damage_slash(3.8, [2], 10), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

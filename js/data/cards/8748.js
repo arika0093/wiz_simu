@@ -1,0 +1,46 @@
+{
+	name: "Call the Shots グリット",
+	cardno: 8748,
+	imageno: 10930,
+	hp: 2615,
+	atk: 4011,
+	cost: 54,
+	attr: [2,1],
+	species: [8],
+	islegend: true,
+	ape: "クロスディライブACT2",
+	as1: {
+		desc: "<連撃>味方のMAXHP10%を使い、敵単体を3回連続攻撃(600%)",
+		proc: add_cond(ChainDualAttack(6.0, 0, 3), as_consume_all(0.10)),
+	},
+	ss1: {
+		desc: "<狂暴化> 5ターンの間、デタラメな方向に攻撃するようになるが、必ずクリティカルが出るようになる",
+		turn: 1,
+		proc: [ss_berserk_s(5)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(1),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<連撃>味方のMAXHP10%を使い、敵単体を3回連続攻撃(700%)",
+		proc: add_cond(ChainDualAttack(7.0, 0, 3), as_consume_all(0.10)),
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ雷・水属性の5回連続ダメージ(650%)",
+		turn: 6,
+		proc: [ss_damage_s(6.5, [2,1], 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		NEFTJOD(30),
+	],
+}

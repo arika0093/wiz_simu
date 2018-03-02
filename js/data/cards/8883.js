@@ -1,0 +1,47 @@
+{
+	name: "PTAの休日 パブロ・トマ・アダン",
+	cardno: 8883,
+	imageno: 11092,
+	hp: 3045,
+	atk: 5635,
+	cost: 44,
+	attr: [2,-1],
+	species: [2],
+	islegend: true,
+	is_dist: true,
+	ape: "大魔道杯 in 聖サタニック女学院Ⅱ",
+	as1: {
+		desc: "<ギャンブル攻撃>ダメージがイチかバチかアップ(150%～350%)、デッキに単色の精霊が多いほど、さらにダメージアップ(40%)",
+		proc: add_cond(ChainStakesAttack(1.5, 3.5, 0), as_singleattr_num(0, 0.4)),
+	},
+	as2: {
+		desc: "<ギャンブル攻撃>ダメージがイチかバチかアップ(150%～350%)、デッキに単色の精霊が多いほど、さらにダメージアップ(60%)",
+		proc: add_cond(ChainStakesAttack(1.5, 3.5, 0), as_singleattr_num(0, 0.6)),
+	},
+	ss1: {
+		desc: "<時限大魔術>スキル反射を無視し,6ターン後に敵単体へ雷属性のダメージ(3500%)(上限設置数:5)",
+		turn: 1,
+		proc: [ss_damage_timebomb(35, [2], 1, 6), ss_ignore_skillcounter()],
+	},
+	ss2: {
+		desc: "<時限大魔術>スキル反射を無視し,6ターン後に敵単体へ雷属性のダメージ(4500%)(上限設置数:5)",
+		turn: 2,
+		proc: [ss_damage_timebomb(45, [2], 1, 6), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_oattr(0,300,[0,0,1,0,0,]),
+		Attr_statusup_oattr(300,0,[0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		NEFTJOD(30),
+		Awake_noeffect("経験値取得量アップ",2),
+		Attr_statusup(0,300,[0,0,1,0,0,]),
+		Attr_statusup(300,0,[0,0,1,0,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+	Lawake: [
+		Statusup(0,1000),
+		Statusup(500,0),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "歪んだ竜刃 ガンボ・スヴォラク",
+	cardno: 7414,
+	imageno: 9469,
+	hp: 3028,
+	atk: 3419,
+	cost: 40,
+	attr: [1,-1],
+	species: [0],
+	islegend: true,
+	ape: "心竜天翔 Rising Dragon",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>6チェインでダメージアップ(450%)",
+		proc: ChainAttack(4.5, 6),
+	},
+	ss1: {
+		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ水属性のダメージ(240%×人数)",
+		turn: 10,
+		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.6), [1], 1), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Statusup(200,0),
+		Fastskill(2),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Spec_statusup(0,200, [0,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>6チェインでダメージアップ(550%)",
+		proc: ChainAttack(5.5, 6),
+	},
+	ss2: {
+		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ水属性のダメージ(320%×人数)",
+		turn: 13,
+		proc: [ss_damage_s(ss_consume_all_cond(3.2, 0.6), [1], 1), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

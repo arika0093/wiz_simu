@@ -1,0 +1,47 @@
+{
+	name: "いつでも自由 パラダイス・ラパパ",
+	cardno: 6418,
+	imageno: 8273,
+	hp: 4267,
+	atk: 2589,
+	cost: 51,
+	attr: [2,0],
+	species: [4],
+	disable: true,
+	islegend: true,
+	ape: "GP2016",
+	as1: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ、複属性が火属性だとさらにアップ(30%/80%)",
+		proc:  ChainEnhance_SubAttr(0.3, 0.8, [0,0,1,0,0], [1,0,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し、ダメージを軽減(20%、10%)◆発動中行動不可",
+		turn: 6,
+		proc: [ss_reinforcement_all(4, [ss_regenerate(0.20, 1, "RF"), ss_attr_guard([1,1,1,1,1], 0.10, 1, "RF")])],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(200,0),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Panel_boost([0,0,1,0,0,],2),
+		Abstate_invalid("poison"),
+		Attr_statusup_sattr(200, 0, [0,0,1,0,0], 200, 0, [1,0,0,0,0]),
+		Attr_statusup_sattr(0, 200, [0,0,1,0,0], 0, 200, [1,0,0,0,0]),
+		Heal_afterbattle(10),
+		Awake_noeffect("心眼", 1),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ、複属性が火属性だとさらにアップ(60%/110%)",
+		proc:  ChainEnhance_SubAttr(0.6, 1.1, [0,0,1,0,0], [1,0,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し、ダメージを軽減(30%、10%)、5チェインを消費しさらに攻撃力アップ(50%)◆発動中行動不可",
+		turn: 9,
+		proc: [ss_reinforcement_all(4, [ss_regenerate(0.30, 1, "RF"), ss_attr_guard([1,1,1,1,1], 0.10, 1, "RF"), ss_enhance_all(0.5, 1, [1,1,1,1,1], ss_chain_cost(5,"RF","null"))])],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "裂天の閃き アニマ・アウローラ",
+	cardno: 7424,
+	imageno: 9478,
+	hp: 3385,
+	atk: 2531,
+	cost: 45,
+	attr: [2,3],
+	species: [0],
+	islegend: true,
+	ape: "心竜天翔 Rising Dragon",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>3チェインで雷属性の味方の攻撃力をアップ、複属性が光だと更にアップ(40%/90%)",
+		proc: ChainEnhance_SubAttr(0.4, 0.9, [0,0,1,0,0], [0,0,0,1,0], 3),
+	},
+	ss1: {
+		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し(15%)、味方の攻撃力をアップ(100%)◆発動中行動不可",
+		turn: 1,
+		proc: [ss_reinforcement_all(4, [ss_enhance_all(1, 1, [1,1,1,1,1], "RF"), ss_regenerate(0.15, 1, "RF")])],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		Attr_relief([0,0,0,0,1,],10),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup_sattr(200,0, [0,0,1,0,0,], 100,0, [0,0,0,1,0,]),
+		Attr_statusup_sattr(0,200, [0,0,1,0,0,], 0,100, [0,0,0,1,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>3チェインで雷属性の味方の攻撃力をアップ、複属性が光だと更にアップ(50%/100%)",
+		proc: ChainEnhance_SubAttr(0.5, 1.0, [0,0,1,0,0], [0,0,0,1,0], 3),
+	},
+	ss2: {
+		desc: "<精霊強化>4ターンの間、味方全体のダメージを軽減(30%)◆発動中行動不可",
+		turn: 6,
+		proc: [ss_reinforcement_all(4, [ss_attr_guard([1,1,1,1,1], 0.3, 1, "RF")])],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

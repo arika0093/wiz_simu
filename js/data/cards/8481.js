@@ -1,0 +1,46 @@
+{
+	name: "天運呼ぶ炎獅子 ハヅキ・ユメガタリ",
+	cardno: 8481,
+	imageno: 10642,
+	hp: 7705,
+	atk: 1951,
+	cost: 50,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "八百万神秘譚Ⅳ",
+	as1: {
+		desc: "<攻撃強化・ガード>全属性のダメージを10%軽減し、デッキに単色の精霊が多いほど、攻撃力をアップ(15%)（上限:5段階)",
+		proc: [as_guard(0.1, [1,1,1,1,1], 0), add_cond(ChainEnhance(0, [1,0,0,0,0], 0), as_singleattr_num(0, 0.15))],
+	},
+	ss1: {
+		desc: "<純属性強化>4ターンの間、火単色精霊が多いほど、火単色精霊のダメージを強化し(上限値:100%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:2000,2000)",
+		turn: 4,
+		proc: [ss_statusup_all([ss_pureattr_cond(2000), ss_pureattr_cond(2000)], [2000,2000], -1, [1,0,0,0,0]), ss_enhance_all(ss_pureattr_cond(1.0), 4, [1,0,0,0,0])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_oattr(0,400, [1,0,0,0,0,]),
+		Attr_statusup_oattr(400,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Awake_noeffect("経験値取得量アップ",2),
+		Abstate_invalid("ss_sealed"),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Fastskill(4),
+	],
+	as2: {
+		desc: "<攻撃強化・ガード>全属性のダメージを10%軽減し、デッキに単色の精霊が多いほど、攻撃力をアップ(20%)（上限:5段階)",
+		proc: [as_guard(0.1, [1,1,1,1,1], 0), add_cond(ChainEnhance(0, [1,0,0,0,0], 0), as_singleattr_num(0, 0.2))],
+	},
+	ss2: {
+		desc: "<純属性強化>4ターンの間、火単色精霊が多いほど、火単色精霊のダメージを強化し(上限値:200%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:3000,3000)",
+		turn: 8,
+		proc: [ss_statusup_all([ss_pureattr_cond(3000), ss_pureattr_cond(3000)], [3000,3000], -1, [1,0,0,0,0]), ss_enhance_all(ss_pureattr_cond(2.0), 4, [1,0,0,0,0])],
+	},
+	Lawake: [
+		Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
+		Statusup(500,0),
+	],
+}

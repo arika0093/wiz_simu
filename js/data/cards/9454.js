@@ -1,0 +1,47 @@
+{
+	name: "悪魔執事 ムールス・ゴルジ",
+	cardno: 9454,
+	imageno: 11707,
+	hp: 7015,
+	atk: 2015,
+	cost: 46,
+	attr: [1,-1],
+	species: [2],
+	islegend: true,
+	ape: "大魔道杯 in ロストエデン",
+	is_dist: true,
+	as1: {
+		desc: "<回復>水属性の味方のHPを回復(13%)",
+		proc: Heal(0.13, [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<精霊強化>4ターンの間、敵の状態異常攻撃を無効化(発動中行動不可)",
+		turn: 5,
+		proc: [ss_reinforcement_all(4, [ss_absattack_disable(1, "RF")])],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_oattr(0,300, [0,1,0,0,0,]),
+		Attr_statusup_oattr(300,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Heal_afterbattle(10),
+		Abstate_invalid("ss_sealed"),
+		NEFTJOD(30),
+		Attr_statusup(0,300, [0,1,0,0,0,]),
+		Attr_statusup(300,0, [0,1,0,0,0,]),
+		Fastskill(3),
+	],
+	as2: {
+		desc: "<回復>水属性の味方のHPを回復(16%)",
+		proc: Heal(0.16, [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復(20%)、さらに敵の状態異常攻撃を無効化(発動中行動不可)",
+		turn: 8,
+		proc: [ss_reinforcement_all(4, [ss_regenerate(0.2, 1, "RF"), ss_absattack_disable(1, "RF")])],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+}

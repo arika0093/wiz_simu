@@ -1,0 +1,46 @@
+{
+	name: "迎春の喧嘩花火 ハヅキ・ユメガタリ",
+	cardno: 90015,
+	imageno: 7336,
+	hp: 3183,
+	atk: 5123,
+	cost: 53,
+	attr: [1,-1],
+	species: [8],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<パネル色数攻撃>3チェインかつパネルが2色でダメージアップ、3色でさらにダメージアップ(2色：400% / 3色：550%)",
+		proc: ChainPanelsAttack(0, 4.0, 5.5, 3),
+	},
+	ss1: {
+		desc: "<ダメージ強化>2ターン自分の攻撃力をアップ(500%)",
+		turn: 8,
+		proc: [ss_enhance_own(5.0, 2)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,100),
+		Panel_boost([0,1,0,0,0,],2),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Statusup(0,200),
+		Fastskill(2),
+		Spec_statusup(0,200, [8,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<パネル色数攻撃>3チェインかつパネルが2色でダメージアップ、3色でさらにダメージアップ(2色：550% / 3色：700%)",
+		proc: ChainPanelsAttack(0, 5.5, 7.0, 3),
+	},
+	ss2: {
+		desc: "<ダメージ強化>2ターン自分の攻撃力をアップ(1000%) 5チェインを消費しさらに3ターン攻撃力をアップ(2000%)",
+		turn: 12,
+		proc: [ss_chain_cost_skill(5, ss_enhance_own(20.0, 5), ss_enhance_own(10.0, 2))],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

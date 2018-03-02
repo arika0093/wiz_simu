@@ -1,0 +1,47 @@
+{
+	name: "時忘れの新感覚 ユッカ",
+	cardno: 7901,
+	imageno: 10014,
+	hp: 3794,
+	atk: 2248,
+	cost: 55,
+	attr: [1,2],
+	species: [9],
+	islegend: true,
+	ape: "グリコⅡ",
+	as1: {
+		desc: "<複属性攻撃強化>5チェインで水属性の味方の攻撃力をアップ、複属性が雷属性だとさらにアップ(60%/110%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], 5),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
+		turn: 3,
+		proc: [panel_chainplus(1)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200,[0,1,1,0,0,]),
+		Attr_statusup(200,0,[0,1,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,300,[0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0,[0,1,0,0,0,],300,0,[0,0,1,0,0,]),
+		Attr_relief([1,1,1,1,1,],10),
+		Fastskill(4),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>5チェインで水属性の味方の攻撃力をアップ、複属性が雷属性だとさらにアップ(90%/140%)",
+		proc: ChainEnhance_SubAttr(0.9, 1.4, [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], 5),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(2)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+		Attr_statusup(0,200,[0,1,1,0,0,]),
+	],
+}

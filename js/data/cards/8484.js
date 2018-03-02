@@ -1,0 +1,46 @@
+{
+	name: "鬼となり鬼を斬る キュウマ&フウチ",
+	cardno: 8484,
+	imageno: 10645,
+	hp: 2745,
+	atk: 7015,
+	cost: 51,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "八百万神秘譚Ⅳ",
+	as1: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ(350%)、解答が早いほどさらにダメージアップ(50%)（上限:4段階)",
+		proc: [add_cond(ChainAttrAttack(3.5, 0, [1,0,0,0,0]), as_timedep(0.5))],
+	},
+	ss1: {
+		desc: "<多弾魔術>敵全体へ水属性の10回連続ダメージ(120%)",
+		turn: 3,
+		proc: [ss_damage_all_cons(1.2, [1], 10)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_oattr(0,400, [0,1,0,0,0,]),
+		Attr_statusup_oattr(0,400, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit", "all_sealed"]),
+		NEFTJOD(60),
+		Fastskill(4),
+		Attr_statusup(0,400, [0,1,0,0,0,]),
+		Attr_statusup(400,0, [0,1,0,0,0,]),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ(450%)、解答が早いほどさらにダメージアップ(50%)（上限:4段階)",
+		proc: [add_cond(ChainAttrAttack(4.5, 0, [1,0,0,0,0]), as_timedep(0.5))],
+	},
+	ss2: {
+		desc: "<多弾魔術>敵全体へ水属性の10回連続ダメージ(150%)",
+		turn: 5,
+		proc: [ss_damage_all_cons(1.5, [1], 10)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+}

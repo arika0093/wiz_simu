@@ -1,0 +1,47 @@
+{
+	name: "〈ラスティメア〉取り戻す夢",
+	cardno: 7343,
+	imageno: 9368,
+	hp: 2649,
+	atk: 3359,
+	cost: 37,
+	attr: [0,-1],
+	species: [2],
+	islegend: true,
+	ape: "黄昏メアレスⅡ",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>3チェインで雷属性の敵単体へ特効ダメージ(475%)",
+		proc: ChainAttrAttack(4.75, 3, [0,0,1,0,0]),
+	},
+	ss1: {
+		desc: "<シャッフル>ジャンルパネルをシャッフル",
+		turn: 1,
+		proc: [ss_panel_shuffle()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(0,100),
+		Statusup(100,0),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Fastskill(1),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Fastskill(1),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで雷属性の敵単体へ特効ダメージ(575%)",
+		proc: ChainAttrAttack(5.75, 3, [0,0,1,0,0]),
+	},
+	ss2: {
+		desc: "<パネル変換>ジャンルパネルを火属性化",
+		turn: 2,
+		proc: [ss_panel_change([1,0,0,0,0])],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

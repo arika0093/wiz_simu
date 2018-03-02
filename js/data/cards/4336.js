@@ -1,0 +1,46 @@
+{
+	name: "現世の美しき花 スゥ・メイラン",
+	cardno: 4336,
+	imageno: 6120,
+	hp: 2672,
+	atk: 2828,
+	cost: 43,
+	attr: [1,-1],
+	species: [1],
+	islegend: true,
+	ape: "DL限定精霊",
+	as1: {
+		desc: "<回復>味方全体のHPを回復、HP50%以下なら更に回復(11%/21%)",
+		proc: [Heal(0.11, [1,1,1,1,1], 0), add_cond(Heal(0.21, [1,1,1,1,1], 0), when_hp_less(0.5))],
+	},
+	ss1: {
+		desc: "<蘇生>味方全体のHPを回復、さらに水属性の味方を蘇生(30%/30%)",
+		turn: 7,
+		proc: [ss_heal(0.3), ss_resurrection([0,1,0,0,0], 0.3)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(0,200),
+		Statusup(200,0),
+		Statusup(200,0),
+		Attr_statusup(100,0, [1,1,1,1,1,]),
+		NEFTJOD(30),
+		Attr_statusup(0,100, [1,1,1,1,1,]),
+		Panel_boost([0,1,0,0,0,],1),
+		Spec_statusup(200,0, [1,]),
+		Spec_statusup(0,200, [1,]),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復、HP50%以下なら更に回復(13%/23%)",
+		proc: [Heal(0.13, [1,1,1,1,1], 0), add_cond(Heal(0.23, [1,1,1,1,1], 0), when_hp_less(0.5))],
+	},
+	ss2: {
+		desc: "<蘇生>味方全体のHPを回復し、さらに水属性の味方を蘇生(50%/50%)",
+		turn: 9,
+		proc: [ss_heal(0.5), ss_resurrection([0,1,0,0,0], 0.5)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

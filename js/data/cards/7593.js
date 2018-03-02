@@ -1,0 +1,47 @@
+{
+	name: "聖ザッパァァーー リルム・ロロット",
+	cardno: 7593,
+	imageno: 9719,
+	hp: 3692,
+	atk: 3343,
+	cost: 55,
+	attr: [0,1],
+	species: [9],
+	disable: true,
+	islegend: true,
+	ape: "Christmas2016",
+	as1: {
+		desc: "<チェイン攻撃>10チェインでダメージアップ(800%)",
+		proc: ChainAttack(8.0, 10),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ25%軽減とスキルチャージプラス1の効果を付与(効果は、SPスキルを使うまで重複しません)",
+		turn: 6,
+		proc: [panel_skillboost(1), panel_attr_guard([1,1,1,1,1], 0.25)],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,200, [0,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+		Awake_noeffect("ドロップアップ",1),
+		Awake_secondfast(3),
+	],
+	as2: {
+		desc: "<チェイン攻撃>10チェインでダメージアップ(900%)",
+		proc: ChainAttack(9.0, 10),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・水属性化し、ダメージ25%軽減とスキルチャージプラス1の効果を付与(効果は、SPスキルを使うまで重複しません)",
+		turn: 8,
+		proc: [ss_panel_change([1,1,0,0,0]), panel_skillboost(1), panel_attr_guard([1,1,1,1,1], 0.25)],
+	},
+	Lawake: [
+		Abstate_invalid("as_sealed"),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+	],
+}

@@ -1,0 +1,45 @@
+{
+	name: "清廉なる竜魔騎 レガート・クロード",
+	cardno: 5826,
+	imageno: 7695,
+	hp: 4636,
+	atk: 4327,
+	cost: 50,
+	attr: [1,-1],
+	species: [0],
+	islegend: true,
+	as1: {
+		desc: "<種族特効>4チェインでダメージアップ、龍族・戦士の敵へさらにダメージアップ(400%/600%)",
+		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [0,8])],
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの70%を使い敵単体へダメージ(380%)",
+		turn: 6,
+		proc: [ss_damage_s(3.8, [1], 1), ss_consume_own(0.70)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Costdown(2),
+		Fastskill(1),
+		Fastskill(2),
+		Spec_statusup(0,500, [0,]),
+		NEFTJOD(30),
+		Spec_statusup(500,0, [0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Awake_noeffect("心眼", 1),
+	],
+	as2: {
+		desc: "<種族特効>4チェインでダメージアップ、龍族・戦士の敵へさらにダメージアップ(500%/700%)",
+		proc: [ChainAttack(5.0, 4), ChainSpecAttack(7.0, 4, [0,8])],
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの70%を使い敵単体へダメージ(600%)",
+		turn: 9,
+		proc: [ss_damage_s(6.0, [1], 1), ss_consume_own(0.70)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "驀進の衝角騎嬢 アビー・パトリシア",
+	cardno: 5574,
+	imageno: 7370,
+	hp: 2807,
+	atk: 5273,
+	cost: 41,
+	attr: [1,-1],
+	species: [8],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<属性特効>3チェインで火属性の敵単体へ特効ダメージ(525%)",
+		proc: ChainAttrAttack(5.25, 3, [1,0,0,0,0]),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(200%/900%)",
+		turn: 9,
+		proc: [ss_damage_all(special_attr([1,0,0,0,0], 9.0, 2.0), [1])],
+	},
+	awakes: [
+		Statusup(300,0),
+		Panel_boost([0,1,0,0,0,],2),
+		Statusup(0,200),
+		Statusup(0,200),
+		Fastskill(1),
+		Attr_relief([0,0,1,0,0,],10),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで火属性の敵単体へ特効ダメージ(625%)",
+		proc: ChainAttrAttack(6.25, 3, [1,0,0,0,0]),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(200%/1200%)",
+		turn: 12,
+		proc: [ss_damage_all(special_attr([1,0,0,0,0], 12.0, 2.0), [1])],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "妖しき夜行の領袖 シド・ハーロック",
+	cardno: 7833,
+	imageno: 6405,
+	hp: 2764,
+	atk: 6232,
+	cost: 56,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<属性特効>味方のMAXHP10%を使い、雷属性の敵単体へ特効ダメージ(850%)",
+		proc: add_cond(ChainAttrAttack(8.5, 0, [0,0,1,0,0]), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(350%)",
+		turn: 7,
+		proc: [ss_damage_all(3.5, [0], 1), ss_consume_own(0.5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Panel_boost([1,0,0,0,0,],3),
+		Fastskill(2),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Abstate_invalid("as_sealed"),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<属性特効>味方のMAXHP10%を使い、雷属性の敵単体へ特効ダメージ(950%)",
+		proc: add_cond(ChainAttrAttack(9.5, 0, [0,0,1,0,0]), as_consume_all(0.1)),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(600%)",
+		turn: 9,
+		proc: [ss_damage_all(6.0, [0], 1), ss_consume_own(0.5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,1000),
+		NEFTJOD(30),
+	],
+}

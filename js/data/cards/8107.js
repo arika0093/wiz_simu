@@ -1,0 +1,47 @@
+{
+	name: "幻魔凱旋スザク",
+	cardno: 8107,
+	imageno: 10241,
+	hp: 4521,
+	atk: 2041,
+	cost: 41,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "大魔道杯 with 英雄凱旋祭(4周年)",
+	is_dist: true,
+	as1: {
+		desc: "<回復・攻撃強化>味方全体のHPを回復(10%)、さらに攻撃力をアップ(30%)",
+		proc: [Heal(0.10, [1,1,1,1,1], 0), ChainEnhance(0.30, [1,1,1,1,1], 0)],
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し(25%)、状態異常を回復する",
+		turn: 6,
+		proc: [ss_heal(0.25), ss_abstate_cure()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Statusup(200,0),
+		Statusup(0,200),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<回復・攻撃強化>味方全体のHPを回復(12%)、さらに攻撃力をアップ(30%)",
+		proc: [Heal(0.12, [1,1,1,1,1], 0), ChainEnhance(0.30, [1,1,1,1,1], 0)],
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 8,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	Lawake: [
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Statusup(300,0),
+	],
+}

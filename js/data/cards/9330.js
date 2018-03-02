@@ -1,0 +1,46 @@
+{
+	name: "唸る激嵐の双舞剣 ロベルト・カウズ",
+	cardno: 9330,
+	imageno: 11471,
+	hp: 2796,
+	atk: 6297,
+	cost: 46,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	alias: ["きしだん"],
+	as1: {
+		desc: "<属性特効連撃>水属性の敵単体へ特効3連撃(400%)",
+		proc: ChainDualAttrAttack(4.0, 0, 3, [0, 1, 0, 0, 0]),
+	},
+	ss1: {
+		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの50%を使い敵単体へ雷属性のダメージ(精霊数×340%)",
+		turn: 11,
+		proc: [ss_damage_s(ss_consume_all_cond(3.4, 0.5), [2], 1), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup(300,0, [0,0,1,0,0,]),
+		Attr_statusup(0,300, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],3),
+		Fastskill(3),
+		Attr_statusup_oattr(0,300, [0,0,1,0,0,]),
+		Attr_statusup_oattr(300,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Awake_noeffect("境界騎士団の覚悟",1),
+	],
+	as2: {
+		desc: "<属性特効連撃>水属性の敵単体へ特効3連撃(500%)",
+		proc: ChainDualAttrAttack(5.0, 0, 3, [0, 1, 0, 0, 0]),
+	},
+	ss2: {
+		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの50%を使い敵単体へ雷属性のダメージ(精霊数×380%)",
+		turn: 13,
+		proc: [ss_damage_s(ss_consume_all_cond(3.8, 0.5), [2], 1), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+	],
+}

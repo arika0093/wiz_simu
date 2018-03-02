@@ -1,0 +1,46 @@
+{
+	name: "時海の航海者 ダム・リフリス",
+	cardno: 8700,
+	imageno: 10876,
+	hp: 4322,
+	atk: 2903,
+	cost: 54,
+	attr: [0,1],
+	species: [9],
+	islegend: true,
+	ape: "エタクロⅠ",
+	as1: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ(30%)、複属性が水属性だとさらにアップ(50%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,1,0,0,0], [1,0,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・水属性化",
+		turn: 3,
+		proc: [ss_panel_change([1,1,0,0,0])],
+	},
+	awakes: [
+		Costdown(20),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ(60%)、複属性が水属性だとさらにアップ(50%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,1,0,0,0], [1,0,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,1,1,0,0])],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,1,0,0,0,]),
+	],
+}

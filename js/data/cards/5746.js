@@ -1,0 +1,46 @@
+{
+	name: "恋そよぐ雅紅華 ツバキ・リンドウ",
+	cardno: 5746,
+	imageno: 7556,
+	hp: 2741,
+	atk: 3612,
+	cost: 47,
+	attr: [2,1],
+	species: [8],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ、複属性が水属性だとさらにアップ(30%/80%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,0,1,0,0], [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/500%)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([0,1,0,0,0], 5.0, 2.0), [2])],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		Statusup(0,200),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Awake_noeffect("心眼", 1),
+		Statusup(200,0),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Costdown(2),
+		Fastskill(2),
+		Spec_statusup(0,200, [8,]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ、複属性が水属性だとさらにアップ(60%/110%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,0,1,0,0], [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/900%)",
+		turn: 9,
+		proc: [ss_damage_all(special_attr([0,1,0,0,0], 9.0, 2.0), [2])],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+	],
+}

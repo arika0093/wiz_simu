@@ -1,0 +1,46 @@
+{
+	name: "眩き天使の夏 ミカエラ・セラフィム",
+	cardno: 4626,
+	imageno: 6404,
+	hp: 2835,
+	atk: 3192,
+	cost: 44,
+	attr: [0, -1],
+	species: [3],
+	disable: true,
+	awakes: [
+		Fastskill(1),
+		Costdown(2),
+		Statusup(200, 0),
+		Panel_boost([1,0,0,0,0], 2),
+		Statusup(0, 200),
+		Fastskill(2),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Fastskill(2),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Spec_statusup(0, 200, [3]),
+	],
+	as1: {
+		desc: "<攻撃強化>火属性の味方の攻撃力をアップ、リーダー時さらにアップ(通常：+40％ / リーダー時：+50％)",
+		proc: [ChainEnhance(0.4, [1,0,0,0,0], 0), add_cond(ChainEnhance(0.5, [1,0,0,0,0], 0), when_leader())],
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ火属性のダメージ(180％)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [0])],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "<攻撃強化>火属性の味方の攻撃力をアップ、リーダー時さらにアップ(通常：+60％ / リーダー時：+70％)",
+		proc: [ChainEnhance(0.6, [1,0,0,0,0], 0), add_cond(ChainEnhance(0.7, [1,0,0,0,0], 0), when_leader())],
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ火属性のダメージ(260％)",
+		turn: 12,
+		proc: [ss_damage_all(2.6, [0])],
+	},
+}

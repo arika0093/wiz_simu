@@ -1,0 +1,46 @@
+{
+	name: "不倒の信仰 エレンディ・トゥオノ",
+	cardno: 7527,
+	imageno: 9566,
+	hp: 4224,
+	atk: 2016,
+	cost: 39,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "エステレラⅠ",
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Attr_relief([0,0,1,0,0,],10),
+		NEFTJOD(30),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "<攻撃強化・ガード>雷属性の味方の攻撃力をアップ(20%)し、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.2, [0,0,1,0,0], 0), as_guard(0.1, [1,1,1,1,1], 0)],
+	},
+	ss1: {
+		desc: "<解答削り>解答選択肢を1つ削り、3チェインを消費し解答を見破る",
+		turn: 4,
+		proc: [ss_chain_cost_skill(3, ss_answer_foresight(), ss_answer_narrow(1))],
+	},
+	as2: {
+		desc: "<攻撃強化・ガード>雷属性の味方の攻撃力をアップ(40%)し、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.4, [0,0,1,0,0], 0), as_guard(0.1, [1,1,1,1,1], 0)],
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 7,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Statusup(400, 0),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+	],
+}

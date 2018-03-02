@@ -1,0 +1,46 @@
+{
+	name: "漆黒の極巨星 アルドベリク・ゴドー(火雷)",
+	cardno: 4579,
+	imageno: 6305,
+	hp: 2341,
+	atk: 2531,
+	cost: 48,
+	attr: [0, 2],
+	species: [2],
+	disable: true,
+	awakes: [
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0], 1),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0]),
+		Panel_boost([1,0,0,0,0], 2),
+		Fastskill(2),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0]),
+		Spec_statusup(200, 0, [2]),
+		Spec_statusup(0, 200, [2]),
+	],
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ/400％",
+		proc: ChainAttack(4, 4.0),
+	},
+	ss1: {
+		desc: "<多弾魔術>MAXHPの50％を使い、敵単体へ火・雷属性の5回連続ダメージ(計250％)",
+		turn: 5,
+		proc: [ss_damage_s(2.5, [0, 2], 5), ss_consume_own(0.5)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 700),
+		Statusup(300, 0),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ/500％",
+		proc: ChainAttack(4, 5.0),
+	},
+	ss2: {
+		desc: "<多弾魔術>MAXHPの50％を使い、敵単体へ火・雷属性の5回連続ダメージ(計450％)",
+		turn: 8,
+		proc: [ss_damage_s(4.5, [0, 2], 5), ss_consume_own(0.5)],
+	},
+}

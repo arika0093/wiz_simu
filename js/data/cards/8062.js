@@ -1,0 +1,47 @@
+{
+	name: "Right and Left ウィジェッタ",
+	cardno: 8062,
+	imageno: 10190,
+	hp: 5915,
+	atk: 1975,
+	cost: 54,
+	attr: [2,1],
+	species: [8],
+	islegend: true,
+	ape: "クロスディライブ",
+	as1: {
+		desc: "<攻撃強化・ガード>10チェインで水・雷属性の味方の攻撃力をアップ(110%)し、全属性のダメージを15％軽減",
+		proc: [ChainEnhance(1.1, [0,1,1,0,0], 10), as_guard(0.15, [1,1,1,1,1], 10)],
+	},
+	ss1: {
+		desc: "<ステータスアップ>8ターン溜めた後、味方全体の攻撃力とHPを3000アップ(上限値:3000)",
+		turn: 3,
+		charged: 8,
+		proc: [ss_statusup_all([3000, 3000], [3000, 3000], -1)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],4),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		NEFTJOD(30),
+		Attr_relief([0,1,1,0,0,],20),
+		Abstate_invalid("all_sealed"),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,1,0,0,0,]),
+		Fastskill(3),
+		Awake_Chainboost(1),
+	],
+	as2: {
+		desc: "<攻撃強化・ガード>10チェインで水・雷属性の味方の攻撃力をアップ(140%)し、全属性のダメージを15％軽減",
+		proc: [ChainEnhance(1.4, [0,1,1,0,0], 10), as_guard(0.15, [1,1,1,1,1], 10)],
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	Lawake: [
+		Attr_statusup(0,300, [0,1,1,0,0,]),
+		Statusup(500,0),
+	],
+}

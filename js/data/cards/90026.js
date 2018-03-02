@@ -1,0 +1,45 @@
+{
+	name: "大いなる荒熊神 シペ・コロ・カムイ",
+	cardno: 90026,
+	imageno: 7461,
+	hp: 6374,
+	atk: 2667,
+	cost: 42,
+	attr: [0,-1],
+	species: [5],
+	islegend: true,
+	as1: {
+		desc: "<種族攻撃強化>火属性の味方の攻撃力をアップ、妖精と亜人はさらにアップ(20%/80%)",
+		proc: [ChainEnhance(0.20, [1,0,0,0,0], 0), ChainSpecEnhance(0.80, [1,0,0,0,0], [4,5], 0)],
+	},
+	ss1: {
+		desc: "<解答削り>解答選択肢を2つ削り、3チェインを消費し解答を見破る",
+		turn: 3,
+		proc: [ss_chain_cost_skill(3, ss_answer_foresight(), ss_answer_narrow(2))],
+	},
+	awakes: [
+		Fastskill(1),
+		NEFTJOD(60),
+		Panel_boost([1,0,0,0,0,],2),
+		Panel_boost([1,0,0,0,0,],2),
+		Statusup(0,200),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Spec_statusup(500,0, [4,5,]),
+		Spec_statusup(0,500, [4,5,]),
+		Fastskill(2),
+		Awake_noeffect("経験値取得量アップ", 2),
+	],
+	as2: {
+		desc: "<種族攻撃強化>火属性の味方の攻撃力をアップ、妖精と亜人はさらにアップ(40%/120%)",
+		proc: [ChainEnhance(0.40, [1,0,0,0,0], 0), ChainSpecEnhance(1.20, [1,0,0,0,0], [4,5], 0)],
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 6,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Statusup(1000,0),
+	],
+}

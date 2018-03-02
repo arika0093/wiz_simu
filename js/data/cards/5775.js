@@ -1,0 +1,47 @@
+{
+	name: "妖精神巫姫 ロレッタ・ミラージュ",
+	cardno: 5775,
+	imageno: 7601,
+	hp: 2522,
+	atk: 1870,
+	cost: 25,
+	attr: [1, 0],
+	species: [9],
+	disable: true,
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<種族攻撃強化>水・火属性の味方の攻撃力をアップ、術士はさらにアップ(20%/40%)",
+		proc: [ChainEnhance(0.20, [1, 1, 0, 0, 0], 0), ChainSpecEnhance(0.40, [1, 1, 0, 0, 0], [9], 0)],
+	},
+	ss1: {
+		desc: "<蘇生>味方全体のHPを回復し(25%)、さらに水属性の味方を蘇生(25%)",
+		turn: 9,
+		proc: [ss_heal(0.25), ss_resurrection([0, 1, 0, 0, 0], 0.25)],
+	},
+	awakes: [
+		Statusup(200, 0),
+		Fastskill(1),
+		Costdown(2),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+		Fastskill(1),
+		Attr_statusup(100, 0, [1, 1, 1, 1, 1, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<種族攻撃強化>水・火属性の味方の攻撃力をアップ、術士はさらにアップ(30%/60%)",
+		proc: [ChainEnhance(0.30, [1, 1, 0, 0, 0], 0), ChainSpecEnhance(0.60, [1, 1, 0, 0, 0], [9], 0)],
+	},
+	ss2: {
+		desc: "<蘇生>味方全体のHPを回復し(50%)、さらに水属性の味方を蘇生(50%)",
+		turn: 11,
+		proc: [ss_heal(0.50), ss_resurrection([0, 1, 0, 0, 0], 0.50)],
+	},
+	Lawake: [
+		Statusup(400, 0),
+		NEFTJOD(30),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "妖精神巫姫 ロレッタ・ミラージュ",
+	cardno: 8033,
+	imageno: 7601,
+	hp: 3944,
+	atk: 2018,
+	cost: 44,
+	attr: [1, 0],
+	species: [9],
+	islegend: true,
+	is_dist: true,
+	ape:"ギルドマスターセレモニーズ",
+	as1: {
+		desc: "<種族攻撃強化>水・火属性の味方の攻撃力をアップ、術士はさらにアップ(30%/80%)",
+		proc: [ChainEnhance(0.30, [1, 1, 0, 0, 0], 0), ChainSpecEnhance(0.80, [1, 1, 0, 0, 0], [9], 0)],
+	},
+	ss1: {
+		desc: "<蘇生>味方全体のHPを回復し(50%)、さらに水属性の味方を蘇生(25%)",
+		turn: 9,
+		proc: [ss_heal(0.50), ss_resurrection([0, 1, 0, 0, 0], 0.25)],
+	},
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Fastskill(2),
+		Costdown(5),
+		NEFTJOD(30),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Attr_statusup(100, 0, [1, 1, 1, 1, 1, ]),
+		Attr_statusup_sattr(100,0,[0,1,0,0,0,],200,0,[1,0,0,0,0,]),
+		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,200,[1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<種族攻撃強化>水・火属性の味方の攻撃力をアップ、術士はさらにアップ(60%/110%)",
+		proc: [ChainEnhance(0.60, [1, 1, 0, 0, 0], 0), ChainSpecEnhance(1.10, [1, 1, 0, 0, 0], [9], 0)],
+	},
+	ss2: {
+		desc: "<蘇生>味方全体のHPを完全回復し、さらに水属性の味方を蘇生(50%)",
+		turn: 11,
+		proc: [ss_heal(1.0), ss_resurrection([0, 1, 0, 0, 0], 0.50)],
+	},
+	Lawake: [
+		Statusup(600, 0),
+		NEFTJOD(30),
+	],
+}

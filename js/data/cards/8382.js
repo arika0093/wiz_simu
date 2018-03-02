@@ -1,0 +1,47 @@
+{
+	name: "ラッキーポッキー！ ユッカ&マール",
+	cardno: 8382,
+	imageno: 7439,
+	hp: 3212,
+	atk: 3951,
+	cost: 58,
+	attr: [2,0],
+	species: [9],
+	islegend: true,
+	ape: "グリコⅢ",
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、HP50%以上でさらにダメージアップ(300%/500%)",
+		proc: [ChainAttack(3.0, 4), add_cond(ChainAttack(5.0, 4), when_hp_more(0.5))],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ軽減・スキルチャージ・チェイン・攻撃力アップの効果をランダムで付与、極稀に当たり(25/65%,1/5,2/10,50/300%)",
+		turn: 4,
+		proc: [panel_attr_guard([1,1,1,1,1], 0.25), panel_skillboost(1), panel_chainplus(2), panel_attackup(0.5)],
+	},
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、HP50%以上でさらにダメージアップ(400%/600%)",
+		proc: [ChainAttack(4.0, 4), add_cond(ChainAttack(6.0, 4), when_hp_more(0.5))],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、ダメージ軽減・スキルチャージ・チェイン・攻撃力アップの効果をランダムで付与、極稀に当たり(25/65%,1/5,2/10,50/300%)",
+		turn: 5,
+		proc: [ss_panel_change([1,0,1,0,0]),panel_attr_guard([1,1,1,1,1], 0.25), panel_skillboost(1), panel_chainplus(2), panel_attackup(0.5)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(200,0,[1,0,1,0,0,]),
+		Attr_statusup(0,200,[1,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Awake_noeffect("ゴールド取得量アップ",5),
+		Awake_noeffect("経験値取得量アップ",2),
+		NEFTJOD(60),
+		Attr_statusup_sattr(100,0,[0,0,1,0,0,],300,0,[1,0,0,0,0,]),
+		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,300,[1,0,0,0,0,]),
+		Fastskill(3),
+	],
+	Lawake: [
+		Attr_statusup(0,200,[1,0,1,0,0,]),
+		Statusup(500,0),
+		Abstate_invalid("ss_sealed"),
+	],
+}

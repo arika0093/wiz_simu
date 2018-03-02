@@ -1,0 +1,46 @@
+{
+	name: "玄武遥神将 シャピア・スーシェン",
+	cardno: 6604,
+	imageno: 8671,
+	hp: 5983,
+	atk: 2512,
+	cost: 53,
+	attr: [1,-1],
+	species: [1],
+	islegend: true,
+	ape: "黄昏の四神書",
+	as1: {
+		desc: "<回復>水属性の味方のHPを回復(13%)、さらに敵のHPを吸収(25%)",
+		proc: add_cond(Heal(0.13, [0,1,0,0,0], 0), as_hp_absorption(0.25)),
+	},
+	ss1: {
+		desc: "<ガード>2ターン全属性のダメージを50%軽減する",
+		turn: 8,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 2)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		Statusup(200,0),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Heal_afterbattle(10),
+		Fastskill(2),
+		Spec_statusup(0,200, [1,]),
+		Spec_statusup(200,0, [1,]),
+	],
+	as2: {
+		desc: "<回復>水属性の味方のHPを回復(16%)、さらに敵のHPを吸収(25%)",
+		proc: add_cond(Heal(0.16, [0,1,0,0,0], 0), as_hp_absorption(0.25)),
+	},
+	ss2: {
+		desc: "<ガード>3ターン全属性のダメージを50%軽減する、さらに味方全体のHPを回復する(25%)",
+		turn: 10,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3), ss_heal(0.25)],
+	},
+	Lawake: [
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

@@ -1,0 +1,45 @@
+{
+	name: "瑠璃光神君　ルリ・アークライト",
+	cardno: 6888,
+	imageno: 8868,
+	hp: 4013,
+	atk: 2513,
+	cost: 40,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<回復>水属性の味方のHPを回復(13%)",
+		proc: Heal(0.13, [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水属性化",
+		turn: 2,
+		proc: [ss_panel_change([0,1,0,0,0])],
+	},
+	awakes: [
+		Costdown(4),
+		Statusup(0,200),
+		Statusup(200,0),
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],3),
+		Heal_afterbattle(10),
+		Spec_statusup(200,0, [9,]),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Fastskill(3),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<回復>水属性の味方のHPを回復(16%)",
+		proc: Heal(0.16, [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水属性化し、ダメージ25%軽減の効果を付与",
+		turn: 7,
+		proc: [ss_panel_change([0,1,0,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+	],
+}

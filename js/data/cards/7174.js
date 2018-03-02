@@ -1,0 +1,47 @@
+{
+	name: "破滅的共時性 ジェネティス",
+	cardno: 7174,
+	imageno: 9137,
+	hp: 2984,
+	atk: 3048,
+	cost: 37,
+	attr: [2,-1],
+	species: [6],
+	islegend: true,
+	ape: "ロストエデンⅡ WWMF",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、HP80%以上でさらにダメージアップ(300%/400%)",
+		proc: [ChainAttack(3.0, 4), add_cond(ChainAttack(4.0, 4), when_hp_more(0.8))],
+	},
+	ss1: {
+		desc: "<無に還す瞳>4ターン後に敵単体を無に還す(一部敵には無効)",
+		turn: 7,
+		proc: [ss_death_limit(4)],
+	},
+	awakes: [
+		Statusup(0,200),
+		NEFTJOD(30),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],1),
+		Spec_statusup(200,0, [6,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Spec_statusup(0,200, [6,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、HP80%以上でさらにダメージアップ(400%/500%)",
+		proc: [ChainAttack(4.0, 4), add_cond(ChainAttack(5.0, 4), when_hp_more(0.8))],
+	},
+	ss2: {
+		desc: "<無に還す瞳>3ターン後に敵単体を無に還す(一部敵には無効)",
+		turn: 10,
+		proc: [ss_death_limit(3)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(0,400),
+	],
+}

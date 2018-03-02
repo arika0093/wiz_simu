@@ -1,0 +1,33 @@
+{
+	name: "極限、それはまだ遠く マッハ",
+	cardno: 5617,
+	imageno: 7389,
+	hp: 2016,
+	atk: 3113,
+	cost: 26,
+	attr: [2, -1],
+	species: [4],
+	islegend: false,
+	is_dist: true,
+	as1: {
+		desc: "<属性特効連撃>水属性の敵単体へ特効5連続ダメージ、HP80%以上でさらにダメージアップ(250%/350%)",
+		proc: [ChainDualAttrAttack(2.5, 0, 5, [0, 1, 0, 0, 0]), add_cond(ChainDualAttrAttack(3.5, 0, 5, [0, 1, 0, 0, 0]), when_hp_more(0.80))],
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
+		turn: 9,
+		proc: [ss_skillboost(2)],
+	},
+	awakes: [
+		Fastskill(2),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Statusup(200, 0),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Spec_statusup(300, 0, [4, ]),
+		Spec_statusup(0, 300, [4, ]),
+		NEFTJOD(90),
+	],
+}

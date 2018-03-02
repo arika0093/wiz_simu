@@ -1,0 +1,47 @@
+{
+	name: "AbCd-Δ: 《魔女 リーベクーヘン》",
+	cardno: 9371,
+	imageno: 11303,
+	hp: 1813,
+	atk: 7041,
+	cost: 45,
+	attr: [2,-1],
+	species: [11],
+	islegend: true,
+	ape: "AbCd",
+	as1: {
+		desc: "<連撃>10チェインで敵単体を3回連続攻撃(200%)、HP20%以下でさらにダメージアップ(1000%)",
+		proc: [ChainDualAttack(2.0, 10, 3), add_cond(ChainDualAttack(12, 10, 3), when_hp_less(0.2))],
+	},
+	ss1: {
+		desc: "<ブースト>味方のMAXHPの70%を使い、5ターンの間、自分のMAXHPを毎ターン15%消費し、攻撃力をアップ(1200%)。さらに極稀にクリティカル",
+		turn: 10,
+		proc: [ss_boost_enhance_s(12.0, 5, 0.15), ss_consume_all(0.70)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_oattr(0,300, [0,0,1,0,0,]),
+		Attr_statusup_oattr(300,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(0,300, [0,0,1,0,0,]),
+		Attr_statusup(300,0, [0,0,1,0,0,]),
+		Fastskill(3),
+		Statusup(0,400),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<連撃>10チェインで敵単体を3回連続攻撃(300%)、HP20%以下でさらにダメージアップ(1000%)",
+		proc: [ChainDualAttack(3.0, 10, 3), add_cond(ChainDualAttack(12, 10, 3), when_hp_less(0.2))],
+	},
+	ss2: {
+		desc: "<ブースト>味方のMAXHPの70%を使い、5ターンの間、自分のMAXHPを毎ターン15%消費し、攻撃力をアップ(1200%)。さらに極稀にクリティカル",
+		turn: 10,
+		proc: [ss_boost_enhance_s(12.0, 5, 0.15), ss_consume_all(0.70)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+		NEFTJOD(30),
+	],
+}

@@ -1,0 +1,48 @@
+{
+	name: "邪教により力を得た皇帝 グルドラン",
+	cardno: 8210,
+	imageno: 10348,
+	hp: 3023,
+	atk: 4732,
+	cost: 48,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "覇眼戦線Ⅲ",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>5チェインで雷属性の敵単体へ特効ダメージ(600%)",
+		proc: ChainAttrAttack(6.0, 5, [0,0,1,0,0]),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの50%を使い、敵全体へダメージ(600%)、3チェインを消費しスキル反射を無視する",
+		turn: 9,
+		proc: [ss_damage_all(6.0, [0]), ss_consume_own(0.5), ss_chain_cost_skill(3, ss_ignore_skillcounter(), null)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(200,0),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup(0,300, [1,0,0,0,0,]),
+		Attr_statusup(300,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<属性特効>5チェインで雷属性の敵単体へ特効ダメージ(700%)",
+		proc: ChainAttrAttack(7.0, 5, [0,0,1,0,0]),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの50%を使い、敵全体へダメージ(825%)、3チェインを消費しスキル反射を無視する",
+		turn: 12,
+		proc: [ss_damage_all(8.25, [0]), ss_consume_own(0.5), ss_chain_cost_skill(3, ss_ignore_skillcounter(), null)],
+	},
+	Lawake: [
+		NEFTJOD(30),
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

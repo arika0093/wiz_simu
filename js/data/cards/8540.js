@@ -1,0 +1,47 @@
+{
+	name: "それは異国の標 ジェスロ・クワトリ",
+	cardno: 8540,
+	imageno: 8820,
+	hp: 2779,
+	atk: 3883,
+	cost: 54,
+	attr: [2,0],
+	species: [1],
+	islegend: true,
+	ape: "八百万神秘譚Ⅲ(Z)",
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(400%)、解答が早いほどさらにアップ(50%)(上限:4段階)",
+		proc: add_cond(ChainAttack(4.0, 5), as_timedep(0.5)),
+	},
+	ss1: {
+		desc: "<ブースト>味方のMAXHP70%と毎ターン10%を使い、5ターンの間、味方の攻撃力をアップ(250%)。さらに極稀にクリティカル",
+		turn: 7,
+		proc: [ss_boost_enhance_all(2.5, 5, 0.1, [1,1,1,1,1]), ss_consume_all(0.7)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [1,0,0,0,0,]),
+		Awake_noeffect("行動見破り",1),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(500%)、解答が早いほどさらにアップ(50%)(上限:4段階)",
+		proc: add_cond(ChainAttack(5.0, 5), as_timedep(0.5)),
+	},
+	ss2: {
+		desc: "<ブースト>味方のMAXHP70%と毎ターン10%を使い、6ターンの間、味方の攻撃力をアップ(300%)。さらに極稀にクリティカル",
+		turn: 10,
+		proc: [ss_boost_enhance_all(3.0, 6, 0.1, [1,1,1,1,1]), ss_consume_all(0.7)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Statusup(0,500),
+		NEFTJOD(30),
+	],
+}

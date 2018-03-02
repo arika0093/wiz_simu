@@ -1,0 +1,45 @@
+{
+	name: "伝説の装備！ ギザ勇者しょこたん",
+	cardno: 3899,
+	imageno: 5579,
+	hp: 2333,
+	atk: 1735,
+	cost: 34,
+	attr: [0, 1],
+	species: [8],
+	awakes: [
+		Statusup(0, 200),
+		Fastskill(1),
+		Statusup(200, 0),
+		Costdown(2),
+		Statusup(200, 0),
+		Panel_boost([1,0,0,0,0], 1),
+		Fastskill(1),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Spec_statusup(0, 200, [8]),
+	],
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、リーダー時さらにアップ(通常：300％ / リーダー時：350％)",
+		proc: [ChainAttack(3.0, 3), ChainAttack_Leader(3.5, 3)],
+	},
+	ss1: {
+		desc: "<蘇生>味方全体のHPを回復し、さらに火・水属性の味方を蘇生(回復：25％ / 蘇生：10％)",
+		turn: 10,
+		proc: [ss_heal(0.25), ss_resurrection([1, 1, 0, 0, 0], 0.10)],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(0, 400),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、リーダー時さらにアップ(通常：400％ / リーダー時：450％)",
+		proc: [ChainAttack(4.0, 3), ChainAttack_Leader(4.5, 3)],
+	},
+	ss2: {
+		desc: "<蘇生>味方全体のHPを回復し、さらに火・水属性の味方を蘇生(回復：25％ / 蘇生：25％)",
+		turn: 14,
+		proc: [ss_heal(0.25), ss_resurrection([1, 1, 0, 0, 0], 0.25)],
+	},
+}

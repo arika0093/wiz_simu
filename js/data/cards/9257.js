@@ -1,0 +1,47 @@
+{
+	name: "光陰の戦 デステリオ&タウルケンド",
+	cardno: 9257,
+	imageno: 11522,
+	hp: 2855,
+	atk: 3645,
+	cost: 52,
+	attr: [2,4],
+	species: [6],
+	islegend: true,
+	ape: "大魔道杯 the GATE",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>HP15%以下で水・光属性の敵単体へ特効ダメージ(2250%)",
+		proc: add_cond(ChainAttrAttack(22.5, 0, [0, 1, 0, 1, 0]), when_hp_less(0.15)),
+	},
+	ss1: {
+		desc: "<特効大魔術>MAXHPの95%を使い敵単体へ雷属性のダメージ(400%)、さらに水・光属性の敵には特効ダメージ(600%)",
+		turn: 5,
+		proc: [ss_damage_s(special_attr([0,1,0,1,0], 10, 4), [2], 1), ss_consume_own(0.95)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(4),
+		NEFTJOD(60),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,200, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 200,0, [0,0,0,0,1,]),
+		Attr_relief([0,1,0,0,0,],20),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<属性特効>HP15%以下で水・光属性の敵単体へ特効ダメージ(3000%)",
+		proc: add_cond(ChainAttrAttack(30.0, 0, [0, 1, 0, 1, 0]), when_hp_less(0.15)),
+	},
+	ss2: {
+		desc: "<特効大魔術>MAXHPの95%を使い敵単体へ雷属性のダメージ(400%)、さらに水・光属性の敵には特効ダメージ(1000%)",
+		turn: 7,
+		proc: [ss_damage_s(special_attr([0,1,0,1,0], 14, 4), [2], 1), ss_consume_own(0.95)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Abstate_invalid("as_sealed"),
+	],
+}

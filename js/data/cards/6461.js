@@ -1,0 +1,47 @@
+{
+	name: "墜月咆哮 リュコス・ヴォーダン",
+	cardno: 6461,
+	imageno: 6112,
+	hp: 3291,
+	atk: 4801,
+	cost: 75,
+	attr: [1,-1],
+	species: [1],
+	islegend: true,
+	ape: "Blader",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>5チェインで火属性の敵単体へ特効ダメージ(650%)",
+		proc: ChainAttrAttack(6.5, 5, [1,0,0,0,0]),
+	},
+	ss1: {
+		desc: "<割合削り>1クエストに1回のみ、敵全体のHPを30%減少させる。",
+		turn: 9,
+		proc: [ss_ratiodamage_all(0.3)],
+	},
+	awakes: [
+		Costdown(2),
+		Fastskill(2),
+		Statusup(200,0),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Costdown(4),
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Spec_statusup(0,200, [1,]),
+		Spec_statusup(200,0, [1,]),
+	],
+	as2: {
+		desc: "<属性特効>5チェインで火属性の敵単体へ特効ダメージ(750%)",
+		proc: ChainAttrAttack(7.5, 5, [1,0,0,0,0]),
+	},
+	ss2: {
+		desc: "<割合削り>1クエストに1回のみ、敵全体のHPを35%減少させる。",
+		turn: 12,
+		proc: [ss_ratiodamage_all(0.35)],
+	},
+	Lawake: [
+		Statusup(0,700),
+		Statusup(300,0),
+	],
+}

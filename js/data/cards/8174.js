@@ -1,0 +1,48 @@
+{
+	name: "戦乱終結の煌眼 リヴェータ・イレ",
+	cardno: 8174,
+	imageno: 10312,
+	hp: 2735,
+	atk: 3905,
+	cost: 54,
+	attr: [0,3],
+	species: [8],
+	islegend: true,
+	ape: "覇眼戦線Ⅲ",
+	as1: {
+		desc: "<連撃・複属性攻撃強化>3チェインで敵単体を3回連続攻撃(350%)、さらに火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(10%/40%)",
+		proc: [ChainDualAttack(3.5, 3, 3), ChainEnhance_SubAttr(0.10, 0.40, [1,0,0,0,0], [0,0,0,1,0], 4)],
+	},
+	ss1: {
+		desc: "<複属性ダメージ強化>5ターンの間、火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(100%/150%) 。さらに味方全体のHPを回復する(50%) ",
+		turn: 8,
+		proc: [ss_enhance_all_subattr(1.0, 1.5, 5, [1,0,0,0,0], [0,0,0,1,0]), ss_heal(0.5)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Fastskill(4),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,0,1,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<連撃・複属性攻撃強化>3チェインで敵単体を3回連続攻撃(450%)、さらに火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(10%/40%)",
+		proc: [ChainDualAttack(4.5, 3, 3), ChainEnhance_SubAttr(0.10, 0.40, [1,0,0,0,0], [0,0,0,1,0], 4)],
+	},
+	ss2: {
+		desc: "<複属性ダメージ強化>5ターンの間、火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(100%/200%) 。さらに味方全体のHPを完全回復する",
+		turn: 10,
+		proc: [ss_enhance_all_subattr(1.0, 2.0, 5, [1,0,0,0,0], [0,0,0,1,0]), ss_heal(1)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(0, 200, [1, 1, 1, 1, 1, ]),
+		Awake_SpecialSkill("ss_heal", 0.5),
+	],
+}

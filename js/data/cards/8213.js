@@ -1,0 +1,47 @@
+{
+	name: "親愛と制御の覇眼 リラ・ゲー",
+	cardno: 8213,
+	imageno: 10351,
+	hp: 4032,
+	atk: 1532,
+	cost: 39,
+	attr: [1,2],
+	species: [8],
+	islegend: true,
+	ape: "覇眼戦線Ⅲ",
+	is_dist: true,
+	as1: {
+		desc: "<回復>水・雷属性の味方の味方を回復、7チェインで更に回復(9%/16%)",
+		proc: [Heal(0.09, [0, 1, 1, 0, 0], 0), Heal(0.16, [0, 1, 1, 0, 0], 7)],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、ダメージ軽減(10%)・スキルチャージ(1)・チェイン(1)・攻撃力アップ(25%)の効果をランダムで付与",
+		turn: 4,
+		proc: [ss_panel_change([0,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.10), panel_skillboost(1), panel_chainplus(1), panel_attackup(0.25)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Awake_noeffect("経験値取得量アップ",1),
+		Panel_boost([0,1,0,0,0,],2),
+		Costdown(10),
+		Fastskill(2),
+		Statusup(300,0),
+		Statusup(0,300),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<回復>水・雷属性の味方の味方を回復、7チェインで更に回復(12%/19%)",
+		proc: [Heal(0.12, [0, 1, 1, 0, 0], 0), Heal(0.19, [0, 1, 1, 0, 0], 7)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、ダメージ軽減(25%)・スキルチャージ(1)・チェイン(2)・攻撃力アップ(50%)の効果をランダムで付与",
+		turn: 7,
+		proc: [ss_panel_change([0,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25), panel_skillboost(1), panel_chainplus(2), panel_attackup(0.5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(0,500),
+	],
+}

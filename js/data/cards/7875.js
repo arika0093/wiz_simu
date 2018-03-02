@@ -1,0 +1,48 @@
+{
+	name: "竹取 タケマスター＝ラディーヌ",
+	cardno: 7875,
+	imageno: 9934,
+	hp: 2543,
+	atk: 2748,
+	cost: 42,
+	attr: [2,1],
+	species: [9],
+	disable: true,
+	islegend: true,
+	is_dist: true,
+	ape: "新説桃娘伝",
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ、5チェインで更にダメージアップ(140%/190%)",
+		proc: [ChainAllAttack(1.4, 0), ChainAllAttack(1.9, 5)],
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水・雷属性の5回連続ダメージ(250%)",
+		turn: 5,
+		proc: [ss_damage_s(2.5, [2,1], 5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Statusup(0,100),
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Costdown(2),
+		Fastskill(2),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(0,200),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ、5チェインで更にダメージアップ(170%/220%)",
+		proc: [ChainAllAttack(1.7, 0), ChainAllAttack(2.2, 5)],
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水・雷属性の5回連続ダメージ(450%)",
+		turn: 7,
+		proc: [ss_damage_s(4.5, [2,1], 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

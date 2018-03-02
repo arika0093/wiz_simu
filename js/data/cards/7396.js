@@ -1,0 +1,46 @@
+{
+	name: "誓いの翼 リティカ・パス",
+	cardno: 7396,
+	imageno: 9451,
+	hp: 6450,
+	atk: 1902,
+	cost: 52,
+	attr: [1,-1],
+	species: [0],
+	islegend: true,
+	ape: "心竜天翔 Rising Dragon",
+	as1: {
+		desc: "<回復>味方全体のHPを回復(14%)",
+		proc: Heal(0.14, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにスキルチャージプラス1の効果を付与(スキルチャージの効果は、SPスキルを使うまで重複しません)",
+		turn: 3,
+		proc: [panel_skillboost(1)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Attr_statusup(0,300, [0,1,0,0,0,]),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Spec_statusup(500,0, [0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(17%)",
+		proc: Heal(0.17, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ25%軽減とスキルチャージプラス1の効果を付与(スキルチャージの効果は、SPスキルを使うまで重複しません)",
+		turn: 6,
+		proc: [panel_skillboost(1), panel_attr_guard([1,1,1,1,1], 0.25)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+	],
+}

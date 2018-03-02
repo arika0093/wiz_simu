@@ -1,0 +1,47 @@
+{
+	name: "絶輝龍降臨 ルシェ・ワダツミ",
+	cardno: 5776,
+	imageno: 7602,
+	hp: 2032,
+	atk: 2454,
+	cost: 25,
+	attr: [1, 3],
+	species: [0],
+	disable: true,
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>火属性以外の敵単体へ特効ダメージ(350%)",
+		proc: ChainAttrAttack(3.5, 0, [0, 1, 1, 1, 1]),
+	},
+	ss1: {
+		desc: "<ガード>3ターン水属性のダメージを50%軽減する",
+		turn: 7,
+		proc: [ss_attr_guard([0,1,0,0,0], 0.5, 3)],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Fastskill(1),
+		Spec_statusup(0, 200, [0, ]),
+		Spec_statusup(200, 0, [0, ]),
+		Fastskill(1),
+		Spec_statusup(0, 300, [0, ]),
+		Spec_statusup(300, 0, [0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<属性特効>火属性以外の敵単体へ特効ダメージ(450%)",
+		proc: ChainAttrAttack(4.5, 0, [0, 1, 1, 1, 1]),
+	},
+	ss2: {
+		desc: "<ガード>3ターン水属性のダメージを75%軽減する",
+		turn: 10,
+		proc: [ss_attr_guard([0,1,0,0,0], 0.75, 3)],
+	},
+	Lawake: [
+		Statusup(0, 400),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+	],
+}

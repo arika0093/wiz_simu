@@ -1,0 +1,47 @@
+{
+	name: "やがて正体を明かす 沖矢昴",
+	cardno: 5312,
+	imageno: 7003,
+	hp: 2415,
+	atk: 2743,
+	cost: 25,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	is_dist: true,
+	ape: "コラボ(コナン)",
+	as1: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(300%)",
+		proc: ChainAttrAttack(3.0, 0, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<ダメージブロック>5ターン300以下の全属性ダメージを無効化する",
+		turn: 8,
+		proc: [ss_damageblock_all(300, 5)],
+	},
+	awakes: [
+		Statusup(0,100),
+		Fastskill(1),
+		Statusup(100,0),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(0,100),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Fastskill(1),
+		Spec_statusup(0,200, [8,]),
+	],
+	as2: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(400%)",
+		proc: ChainAttrAttack(4.0, 0, [0,1,0,0,0]),
+	},
+	ss2: {
+		desc: "<ダメージブロック>7ターン400以下の全属性ダメージを無効化する",
+		turn: 10,
+		proc: [ss_damageblock_all(400, 7)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "聖祭に交わす友誼 ルシェ・ワダツミ",
+	cardno: 5367,
+	imageno: 7210,
+	hp: 2450,
+	atk: 2759,
+	cost: 37,
+	attr: [1,-1],
+	species: [0],
+	disable: true,
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<パネル色数攻撃>ジャンルパネルが2色でダメージアップ、3色でさらにアップ(275%/445%)",
+		proc: ChainPanelsAttack(0, 2.75, 4.45, 0),
+	},
+	ss1: {
+		desc: "<解答削り>解答選択肢を2つ削る",
+		turn: 3,
+		proc: [ss_answer_narrow(2)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(100,0),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		Statusup(0,200),
+		Costdown(2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Spec_statusup(0,500, [0,]),
+		Statusup(0,200),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<パネル色数攻撃>ジャンルパネルが2色でダメージアップ、3色でさらにアップ(375%/545%)",
+		proc: ChainPanelsAttack(0, 3.75, 5.45, 0),
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 6,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Statusup(0,300),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

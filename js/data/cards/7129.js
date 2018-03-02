@@ -1,0 +1,46 @@
+{
+	name: "AbCd-Μμ:《輝煌を拒絶する テルミド》",
+	cardno: 7129,
+	imageno: 6770,
+	hp: 3378,
+	atk: 3532,
+	cost: 55,
+	attr: [0, 4],
+	species: [11],
+	ape: "AbCd",
+	awakes: [
+		NEFTJOD(30),
+		Attr_statusup(0, 200, [1,0,0,0,0]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0], 1),
+		Attr_relief([0, 0, 0, 1, 1], 30),
+		Attr_statusup(200, 0, [1,0,0,0,0]),
+		Panel_boost([1,0,0,0,0], 2),
+		NEFTJOD(30),
+		Attr_statusup(200, 0, [1,0,0,0,0]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "<属性特効・複属性攻撃強化>5チェインで雷・光属性の敵単体へ特効ダメージ(550%)、さらに火属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(10%/40%)",
+		proc: [ChainAttrAttack(5.5, 5, [0,0,1,1,0]), ChainEnhance_SubAttr(0.10, 0.40, [1,0,0,0,0], [0,0,0,0,1], 5)],
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・闇属性の5回連続ダメージ。HP20%以下でさらにダメージアップ(200%/1000%)",
+		turn: 4,
+		proc: [ss_damage_s(ss_hp_less(0.2, 10.0, 2.0), [0, 4], 5), ss_ignore_skillcounter()],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(500, 0),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "<属性特効・複属性攻撃強化>5チェインで雷・光属性の敵単体へ特効ダメージ(650%)、さらに火属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(10%/40%)",
+		proc: [ChainAttrAttack(6.5, 5, [0,0,1,1,0]), ChainEnhance_SubAttr(0.10, 0.40, [1,0,0,0,0], [0,0,0,0,1], 5)],
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・闇属性の5回連続ダメージ。HP20%以下でさらにダメージアップ(400%/1600%)",
+		turn: 6,
+		proc: [ss_damage_s(ss_hp_less(0.2, 16.0, 4.0), [0, 4], 5), ss_ignore_skillcounter()],
+	},
+}

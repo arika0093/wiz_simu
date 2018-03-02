@@ -1,0 +1,46 @@
+{
+	name: "祭フィナーレ ジョージ&エミリア",
+	cardno: 6805,
+	imageno: 8787,
+	hp: 3125,
+	atk: 3550,
+	cost: 53,
+	attr: [0,2],
+	species: [8],
+	islegend: true,
+	ape: "魔道杯(その他)",
+	as1: {
+		desc: "<チェイン攻撃>残りHPが80%以上でダメージアップ、5チェインで更にダメージアップ(300%/550%)",
+		proc: [add_cond(ChainAttack(3.0, 0), when_hp_more(0.8)), add_cond(ChainAttack(5.5, 5), when_hp_more(0.8))],
+	},
+	ss1: {
+		desc: "<継続回復>5ターン自分自身を徐々に回復する(70%)",
+		turn: 10,
+		proc: [ss_regenerate_own(0.7, 5)],
+	},
+	awakes: [
+		Statusup(200,0),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_relief([1,1,1,1,1,],10),
+		NEFTJOD(30),
+		Fastskill(3),
+		Costdown(2),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],2),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<チェイン攻撃>残りHPが80%以上でダメージアップ、5チェインで更にダメージアップ(400%/650%)",
+		proc: [add_cond(ChainAttack(4.0, 0), when_hp_more(0.8)), add_cond(ChainAttack(6.5, 5), when_hp_more(0.8))],
+	},
+	ss2: {
+		desc: "<継続回復>10ターン自分自身を徐々に回復する(70%)",
+		turn: 15,
+		proc: [ss_regenerate_own(0.7, 10)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

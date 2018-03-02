@@ -1,0 +1,45 @@
+{
+	name: "紅き黄昏 クルス・ドラク",
+	cardno: 4576,
+	imageno: 6294,
+	hp: 2701,
+	atk: 2821,
+	cost: 43,
+	attr: [0, -1],
+	species: [2],
+	awakes: [
+		Statusup(0, 100),
+		Costdown(2),
+		Panel_boost([1,0,0,0,0], 1),
+		Statusup(0, 200),
+		Attr_relief([0, 0, 1, 0, 0], 10),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0], 1),
+		Spec_statusup(200, 0, [2]),
+		Spec_statusup(0, 200, [2]),
+	],
+	as1: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ/400％",
+		proc: ChainAttrAttack(4.0, 0, [0,0,1,0,0]),
+	},
+	ss1: {
+		desc: "<蘇生>味方全体のHPを回復し、さらに火属性の味方を30％で蘇生(回復：30％)",
+		turn: 8,
+		proc: [ss_heal(0.3), ss_resurrection([1,0,0,0,0], 0.3)],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Statusup(0, 400),
+	],
+	as2: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ/500％",
+		proc: ChainAttrAttack(5.0, 0, [0,0,1,0,0]),
+	},
+	ss2: {
+		desc: "<蘇生>味方全体のHPを回復し、さらに火属性の味方を50％で蘇生(回復：50％)",
+		turn: 10,
+		proc: [ss_heal(0.5), ss_resurrection([1,0,0,0,0], 0.5)],
+	},
+}

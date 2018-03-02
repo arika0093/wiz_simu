@@ -1,0 +1,47 @@
+{
+	name: "Mark.09 覚醒後",
+	cardno: 6649,
+	imageno: 8597,
+	hp: 2674,
+	atk: 2681,
+	cost: 42,
+	attr: [0,4],
+	species: [3],
+	islegend: true,
+	ape: "コラボ(エヴァⅡ)",
+	is_dist: true,
+	as1: {
+		desc: "<種族数攻撃>5チェインでダメージアップ(350%)、天使の仲間の数だけさらにアップ(370%/390%/410%/430%/450%)",
+		proc: ChainDeckSpecsAttack(0.20, [3], 5, 2.5),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(300%)、10チェインを消費しスキル反射を無視する",
+		turn: 7,
+		proc: [ss_damage_all(3.0, [0]) , ss_chain_cost_skill(10, ss_ignore_skillcounter(), null), ss_consume_own(0.5)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		NEFTJOD(30),
+		Statusup(200,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Fastskill(2),
+		Statusup(0,200),
+		Spec_statusup(0,200, [3,]),
+		Spec_statusup(200,0, [3,]),
+	],
+	as2: {
+		desc: "<種族数攻撃>5チェインでダメージアップ(450%)、天使の仲間の数だけさらにアップ(470%/490%/510%/530%/550%)",
+		proc: ChainDeckSpecsAttack(0.20, [3], 5, 3.5),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(550%)、10チェインを消費しスキル反射を無視する",
+		turn: 9,
+		proc: [ss_damage_all(5.5, [0]) , ss_chain_cost_skill(10, ss_ignore_skillcounter(), null), ss_consume_own(0.5)],
+	},
+	Lawake: [
+		Statusup(0,700),
+		Statusup(300,0),
+	],
+}

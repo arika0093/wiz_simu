@@ -1,0 +1,47 @@
+{
+	name: "無窮自在の大牙 エルロウ・グィーオ",
+	cardno: 8362,
+	imageno: 10506,
+	hp: 2200,
+	atk: 2910,
+	cost: 41,
+	attr: [0,3],
+	species: [8],
+	islegend: true,
+	ape: "喰牙RIZEⅡ",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>10チェインでダメージアップ(700%)",
+		proc: ChainAttack(7.0, 10),
+	},
+	ss1: {
+		desc: "<斬撃大魔術>スキル反射を無視し、火・光属性の4連撃(250%)、さらに連撃数分チェインプラス",
+		turn: 7,
+		proc: [ss_damage_slash(2.5, [0,3], 4), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(10),
+		Statusup(0,200),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(200,0),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,100, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 100,0, [0,0,0,1,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<チェイン攻撃>10チェインでダメージアップ(800%)",
+		proc: ChainAttack(8.0, 10),
+	},
+	ss2: {
+		desc: "<斬撃大魔術>スキル反射を無視し、火・光属性の4連撃(400%)、さらに連撃数分チェインプラス",
+		turn: 10,
+		proc: [ss_damage_slash(4.0, [0,3], 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

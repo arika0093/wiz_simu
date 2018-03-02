@@ -1,0 +1,48 @@
+{
+	name: "Archfiend クロウヴン・フフ",
+	cardno: 8077,
+	imageno: 10205,
+	hp: 2245,
+	atk: 3674,
+	cost: 49,
+	attr: [2,4],
+	species: [6],
+	islegend: true,
+	ape: "クロスディライブ",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>3チェインで味方のMAXHP10%を使い、ダメージアップ(650%)",
+		proc: add_cond(ChainAttack(6.5, 3), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ、さらに水・光属性の敵には特効ダメージ、5チェインを消費しさらに特効ダメージ(200%/700%/1200%)",
+		turn: 6,
+		proc: [ss_chain_cost_skill(5, ss_damage_s(special_attr([0,1,0,1,0], 12.0, 2.0), [2], 1), ss_damage_s(special_attr([0,1,0,1,0], 7.0, 2.0), [2], 1))],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 200,0, [0,0,0,0,1,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,200, [0,0,0,0,1,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインで味方のMAXHP10%を使い、ダメージアップ(750%)",
+		proc: add_cond(ChainAttack(7.5, 3), as_consume_all(0.1)),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ、さらに水・光属性の敵には特効ダメージ、5チェインを消費しさらに特効ダメージ(400%/900%/1900%)",
+		turn: 9,
+		proc: [ss_chain_cost_skill(5, ss_damage_s(special_attr([0,1,0,1,0], 19.0, 4.0), [2], 1), ss_damage_s(special_attr([0,1,0,1,0], 9.0, 4.0), [2], 1))],
+	},
+	Lawake: [
+		NEFTJOD(30),
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

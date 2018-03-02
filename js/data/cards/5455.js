@@ -1,0 +1,45 @@
+{
+	name: "覇刧の魔帝 クィントゥス・ジルヴァ",
+	cardno: 5455,
+	imageno: 7235,
+	hp: 2198,
+	atk: 3540,
+	cost: 36,
+	attr: [0, -1],
+	species: [2],
+	islegend: true,
+	as1: {
+		desc: "<瀕死攻撃>HP35%以下でダメージアップ(1100%)",
+		proc: add_cond(ChainAttack(11.0, 0), when_hp_less(0.35)),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの70%を使い敵単体へダメージ(380%)",
+		turn: 6,
+		proc: [ss_damage_s(3.8, [0], 1), ss_consume_own(0.7)],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Statusup(0, 400),
+		Statusup(400, 0),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Fastskill(1),
+		Attr_statusup(200, 0, [1, 0, 1, 0, 0, ]),
+		Attr_statusup(0, 200, [1, 0, 1, 0, 0, ]),
+		Attr_statusup(200, 0, [1, 0, 1, 0, 0, ]),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<瀕死攻撃>HP35%以下でダメージアップ(1600%)",
+		proc: add_cond(ChainAttack(16.0, 0), when_hp_less(0.35)),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの70%を使い敵単体へダメージ(600%)",
+		turn: 9,
+		proc: [ss_damage_s(6.0, [0], 1), ss_consume_own(0.7)],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		Statusup(0, 400),
+	],
+}

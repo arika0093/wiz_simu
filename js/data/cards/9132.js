@@ -1,0 +1,46 @@
+{
+	name: "炎竜の進撃者 キャナル・エアガイツ",
+	cardno: 9132,
+	imageno: 6478,
+	hp: 2753,
+	atk: 8502,
+	cost: 60,
+	attr: [0,-1],
+	species: [0],
+	islegend: true,
+	ape: "ドルキマスⅠ",
+	as1: {
+		desc: "<属性特効>10チェインで雷属性の敵単体へ特効ダメージ(1200%)",
+		proc: [ChainAttrAttack(12, 10, [0,0,1,0,0])],
+	},
+	ss1: {
+		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(精霊数×200%)",
+		turn: 8,
+		proc: [ss_damage_all(ss_consume_all_cond(2.0, 0.5), [0]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_oattr(0,200, [1,0,0,0,0,]),
+		Attr_statusup_oattr(400,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(60),
+		Fastskill(3),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Spec_statusup(0,400, [0,]),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<属性特効>10チェインで雷属性の敵単体へ特効ダメージ(1300%)",
+		proc: [ChainAttrAttack(13, 10, [0,0,1,0,0])],
+	},
+	ss2: {
+		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(精霊数×240%)",
+		turn: 10,
+		proc: [ss_damage_all(ss_consume_all_cond(2.4, 0.5), [0]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		Statusup(500,0),
+	],
+}

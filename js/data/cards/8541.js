@@ -1,0 +1,48 @@
+{
+	name: "異国情緒と艶やかな変化譚",
+	cardno: 8541,
+	imageno: 8823,
+	hp: 4867,
+	atk: 2687,
+	cost: 56,
+	attr: [1,2],
+	species: [1],
+	islegend: true,
+	ape: "八百万神秘譚Ⅲ(Z)",
+	alias: ["トミ", "マトイ", "ツクヨ", "いこくじょうちょとあでやかなへんげたん"],
+	as1: {
+		desc: "<回復>水・雷属性の味方を回復(14%)、HP20%以下でさらに回復(25%)",
+		proc: [Heal(0.14, [0,1,1,0,0], 0), add_cond(Heal(0.39, [0,1,1,0,0], 0), when_hp_less(0.20))],
+	},
+	ss1: {
+		desc: "<カウンター>3ターンの間、スキルカウンター待機、HP20%以下でさらに多段式カウンター待機",
+		turn: 7,
+		proc: [ss_skillcounter(1.0, 3), ss_hp_less_skill(0.2, ss_dualcounter(3))],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(60),
+		Attr_relief([1,1,1,1,1,],10),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,1,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>水・雷属性の味方を回復(17%)、HP20%以下でさらに回復(25%)",
+		proc: [Heal(0.17, [0,1,1,0,0], 0), add_cond(Heal(0.42, [0,1,1,0,0], 0), when_hp_less(0.20))],
+	},
+	ss2: {
+		desc: "<カウンター>5ターンの間、スキルカウンター待機、HP20%以下でさらに多段式カウンター待機",
+		turn: 10,
+		proc: [ss_skillcounter(1.0, 5), ss_hp_less_skill(0.2, ss_dualcounter(5))],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(1000,0),
+		Abstate_invalid("ss_sealed"),
+	],
+}

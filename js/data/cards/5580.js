@@ -1,0 +1,46 @@
+{
+	name: "宴は甘くて アルティミシア&コリン",
+	cardno: 5580,
+	imageno: 7436,
+	hp: 4709,
+	atk: 2015,
+	cost: 46,
+	attr: [2,0],
+	species: [1],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<回復>火・雷属性の味方のHPを回復、パネルが2色以上でさらに回復(7%/20%)",
+		proc: ChainPanelsHeal(0.07, 0.20, 0.20, [1,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動を1早め、5チェインを消費しさらに1早める",
+		turn: 6,
+		proc: [ss_chain_cost_skill(5, ss_skillboost(2), ss_skillboost(1))],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		Statusup(0,200),
+		Fastskill(1),
+		NEFTJOD(30),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>火・雷属性の味方のHPを回復、パネルが2色以上でさらに回復(10%/23%)",
+		proc: ChainPanelsHeal(0.10, 0.23, 0.23, [1,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動を2早め、5チェインを消費しさらに1早める",
+		turn: 8,
+		proc: [ss_chain_cost_skill(5, ss_skillboost(3), ss_skillboost(2))],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Statusup(500,0),
+	],
+}

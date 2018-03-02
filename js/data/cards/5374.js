@@ -1,0 +1,46 @@
+{
+	name: "永久に愛結ぶ絆 シャロン・イェルグ",
+	cardno: 5374,
+	imageno: 7217,
+	hp: 4201,
+	atk: 3178,
+	cost: 46,
+	attr: [1,-1],
+	species: [3],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<攻撃強化>水属性の味方の攻撃力をアップ、パネルの色が増す度さらにアップ(30%/50%/80%)",
+		proc: ChainPanelsEnhance(0.30, 0.50, 0.80, [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(50%)",
+		turn: 7,
+		proc: [ss_heal(0.50), ss_abstate_cure()],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Heal_afterbattle(10),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(400,0, [3,]),
+		Spec_statusup(0,400, [3,]),
+	],
+	as2: {
+		desc: "<攻撃強化>水属性の味方の攻撃力をアップ、パネルの色が増す度さらにアップ(50%/70%/100%)",
+		proc:  ChainPanelsEnhance(0.50, 0.70, 1.0, [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
+		turn: 9,
+		proc: [ss_heal(1.0), ss_abstate_cure()],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

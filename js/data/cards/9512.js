@@ -1,0 +1,46 @@
+{
+	name: "慧眼無双の大賢者 ノイン・ケーラ",
+	cardno: 9512,
+	imageno: 11772,
+	hp: 2545,
+	atk: 7215,
+	cost: 51,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "エステレラⅡ",
+	as1: {
+		desc: "<属性特効連撃>4チェインで水属性の敵単体へ特効6連撃(550%)、解答が早いほどさらにアップ(70%)（上限:4段階)",
+		proc: add_cond(ChainDualAttrAttack(5.5, 4, 6, [0, 1, 0, 0, 0]), as_timedep(0.7)),
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵単体へ無属性のダメージ(1500%)",
+		turn: 7,
+		proc: [ss_damage_s(15, [-1], 1), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],4),
+		Attr_statusup_oattr(0,400, [0,0,1,0,0,]),
+		Attr_statusup_oattr(400,0, [0,0,1,0,0,]),
+		Attr_relief([0,1,0,0,0,],20),
+		NEFTJOD(60),
+		Attr_statusup(0,400, [0,0,1,0,0,]),
+		Attr_statusup(400,0, [0,0,1,0,0,]),
+		Awake_secondfast(5),
+		Abstate_invalid("ss_sealed"),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<属性特効連撃>4チェインで水属性の敵単体へ特効6連撃(650%)、解答が早いほどさらにアップ(70%)（上限:4段階)",
+		proc: add_cond(ChainDualAttrAttack(6.5, 4, 6, [0, 1, 0, 0, 0]), as_timedep(0.7)),
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵単体へ無属性のダメージ(1500%)",
+		turn: 7,
+		proc: [ss_damage_s(15, [-1], 1), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		Abstate_invalid("discharge"),
+	],
+}

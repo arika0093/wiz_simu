@@ -1,0 +1,46 @@
+{
+	name: "銀河流魂 FIRE BOMBER",
+	cardno: 5966,
+	imageno: 7748,
+	hp: 2004,
+	atk: 2123,
+	cost: 48,
+	attr: [0,3],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(マクロス)",
+	as1: {
+		desc: "<チェイン攻撃>6チェインでダメージアップ(500%)",
+		proc: ChainAttack(5.0, 6),
+	},
+	ss1: {
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(人数×90%)",
+		turn: 8,
+		proc: [ss_damage_all(ss_consume_all_cond(0.90, 0.5), [0])],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ", 1),
+		NEFTJOD(30),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>6チェインでMAXHP15%を使い、ダメージアップ(700%)",
+		proc: ChainAttack_as_consume_own(7.0, 6, 0.15),
+	},
+	ss2: {
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(人数×130%)",
+		turn: 10,
+		proc: [ss_damage_all(ss_consume_all_cond(1.30, 0.5), [0])],
+	},
+	Lawake: [
+		Statusup(3000,0),
+		Statusup(0,3000),
+	],
+}

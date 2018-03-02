@@ -1,0 +1,47 @@
+{
+	name: "東と西の名探偵 コナン&平次",
+	cardno: 5341,
+	imageno: 7032,
+	hp: 2155,
+	atk: 3774,
+	cost: 38,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(コナン)",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効連撃>雷属性の敵単体へ特効3連撃(350%)",
+		proc: ChainDualAttrAttack(3.5, 0, 3, [0,0,1,0,0]),
+	},
+	ss1: {
+		desc: "<効果解除>敵全体のガード&ダメージブロックを解除する",
+		turn: 10,
+		proc: [ss_break_attrguard("all"), ss_break_dblock("all")],
+	},
+	awakes: [
+		Statusup(0,200),
+		Fastskill(1),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_relief([0,0,1,0,0,],10),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		Spec_statusup(0,200, [8,]),
+	],
+	as2: {
+		desc: "<属性特効連撃>雷属性の敵単体へ特効3連撃(450%)",
+		proc: ChainDualAttrAttack(4.5, 0, 3, [0,0,1,0,0]),
+	},
+	ss2: {
+		desc: "<効果解除大魔術>敵全体のガード&ダメージブロックを解除し、火属性のダメージ(180%)。毒状態でさらにスキル反射待機を解除する",
+		turn: 14,
+		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(1.8, [0]), ss_is_poison_own_skill(ss_break_skillcounter("all"))],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(0,500),
+	],
+}

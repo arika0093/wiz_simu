@@ -1,0 +1,46 @@
+{
+	name: "天淵の竜霊神 ナフィーヤ・ロドム",
+	cardno: 7446,
+	imageno: 9431,
+	hp: 5002,
+	atk: 2252,
+	cost: 45,
+	attr: [1,-1],
+	species: [0],
+	islegend: true,
+	ape: "神竜降臨Ⅱ",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化・回復>水属性の味方のHPを回復(12%)、さらに水属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.12, [0,1,0,0,0], 0), ChainEnhance(0.3, [0,1,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<回復>味方全体のHPを回復する(25%)",
+		turn: 2,
+		proc: [ss_heal(0.25)],
+	},
+	awakes: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_relief([0,1,0,0,0,],10),
+		Fastskill(3),
+		Statusup(100,0),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Spec_statusup(0,300, [0,]),
+		Spec_statusup(300,0, [0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>水属性の味方のHPを回復(15%)、さらに水属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.15, [0,1,0,0,0], 0), ChainEnhance(0.3, [0,1,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<回復>チェインプラス1の効果、さらに味方全体のHPを回復する(50%)",
+		turn: 4,
+		proc: [ss_heal(0.5), ss_addchain(1)],
+	},
+	Lawake: [
+		Statusup(1000,0),
+	],
+}

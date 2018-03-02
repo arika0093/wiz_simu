@@ -1,0 +1,47 @@
+{
+	name: "絆の日々 アデレード・シラー",
+	cardno: 8958,
+	imageno: 8255,
+	hp: 5739,
+	atk: 4421,
+	cost: 52,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "GP2016",
+	as1: {
+		desc: "<攻撃強化・ガード>5チェインで火属性の味方の攻撃力をアップ(60%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.6, [1,0,0,0,0], 5), as_guard(0.10, [1,1,1,1,1], 5)],
+	},
+	ss1: {
+		desc: "<ダメージ強化>8ターン溜めた後、30ターン火属性の味方の攻撃力をアップ(250%)",
+		turn: 3,
+		charged: 8,
+		proc: [ss_enhance_all(2.5, 30, [1,0,0,0,0])],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Fastskill(3),
+		Attr_statusup_oattr(0,400, [1,0,0,0,0,]),
+		Attr_statusup_oattr(400,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],4),
+		Spec_statusup(200,0, [8,]),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+		Awake_noeffect("選ばれし者の証",1),
+	],
+	as2: {
+		desc: "<攻撃強化・ガード>5チェインで火属性の味方の攻撃力をアップ(90%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.9, [1,0,0,0,0], 5), as_guard(0.10, [1,1,1,1,1], 5)],
+	},
+	ss2: {
+		desc: "<ダメージブロック>5ターン600以下の全属性ダメージを無効化する、10チェインを消費しさらに25ターン200以下の全属性ダメージを無効化",
+		turn: 10,
+		proc: [ss_chain_cost_skill(10, ss_damageblock_all(800, 30), ss_damageblock_all(600, 5))],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,300, [1,0,0,0,0,]),
+	],
+}

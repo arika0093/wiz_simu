@@ -1,0 +1,47 @@
+{
+	name: "受け継がれていく時空を超える歌声",
+	cardno: 5933,
+	imageno: 7823,
+	hp: 2638,
+	atk: 4079,
+	cost: 45,
+	attr: [2,0],
+	species: [9],
+	islegend: true,
+	ape: "コラボ(マクロス)",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃>4チェインで敵単体へのダメージアップ、パネルの色が増す度さらにアップ(350%/450%/600%)",
+		proc: ChainPanelsAttack(3.5, 4.5, 6.0, 4),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・雷属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,0,1,0,0])],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Statusup(0, 200),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(2),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<攻撃>4チェインで敵単体へのダメージアップ、パネルの色が増す度さらにアップ(450%/550%/700%)",
+		proc: ChainPanelsAttack(4.5, 5.5, 7.0, 4),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、ダメージ10%軽減の効果を付与。HP50%以下でさらにダメージ30%軽減の効果を付与",
+		turn: 7,
+		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], ss_hp_less(0.50, 0.40, 0.10))],
+	},
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+}

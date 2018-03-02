@@ -1,0 +1,45 @@
+{
+	name: "千色麗香の調香師 シーラ・フリール",
+	cardno: 5491,
+	imageno: 7334,
+	hp: 2438,
+	atk: 2259,
+	cost: 42,
+	attr: [2,1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<種族攻撃強化>水・雷属性の味方の攻撃力をアップ、術士はさらにアップ(30%/45%)",
+		proc: [ChainEnhance(0.3, [0,1,1,0,0], 0), ChainSpecEnhance(0.45, [0,1,1,0,0], [9], 0)],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
+		turn: 4,
+		proc: [panel_chainplus(1)],
+	},
+	awakes: [
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(1),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		Spec_statusup(200,0, [9,]),
+		Spec_statusup(0,200, [9,]),
+	],
+	as2: {
+		desc: "<種族攻撃強化>水・雷属性の味方の攻撃力をアップ、術士はさらにアップ(30%/65%)",
+		proc: [ChainEnhance(0.3, [0,1,1,0,0], 0), ChainSpecEnhance(0.65, [0,1,1,0,0], [9], 0)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、チェインがプラス1の効果を付与",
+		turn: 5,
+		proc: [ss_panel_change([0,1,1,0,0]), panel_chainplus(1)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+	],
+}

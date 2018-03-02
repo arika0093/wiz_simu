@@ -1,0 +1,45 @@
+{
+	name: "コナンを見つめる夜の月 毛利蘭",
+	cardno: 5243,
+	imageno: 6938,
+	hp: 2787,
+	atk: 2655,
+	cost: 48,
+	attr: [1,2],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<攻撃強化>5チェインで水・雷属性の味方の攻撃力をアップ(60%)",
+		proc: ChainEnhance(0.60, [0,1,1,0,0], 5),
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全員のHPを回復し、状態異常を回復する(50%)",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Statusup(200,0),
+		Heal_afterbattle(10),
+		Fastskill(2),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+	],
+	as2: {
+		desc: "<攻撃強化>5チェインで水・雷属性の味方の攻撃力をアップ(90%)",
+		proc: ChainEnhance(0.90, [0,1,1,0,0], 5),
+	},
+	ss2: {
+		desc: "<状態異常回復&蘇生>味方全員のHPを回復し、状態異常を回復、さらに水・雷属性の味方を50%で蘇生(50%)",
+		turn: 11,
+		proc: [ss_heal(0.5), ss_abstate_cure(), ss_resurrection([0,1,1,0,0], 0.50)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+	],
+}

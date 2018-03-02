@@ -1,0 +1,46 @@
+{
+	name: "魔杖ポリスメン エターナル・ロア",
+	cardno: 9306,
+	imageno: 11571,
+	hp: 5151,
+	atk: 1092,
+	cost: 42,
+	attr: [0,4],
+	species: [9],
+	islegend: true,
+	ape: "UHG",
+	is_dist: true,
+	as1: {
+		desc: "<回復>味方全体のHPを回復(12%)",
+		proc: Heal(0.12, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<継続回復>チェインプラス1の効果、さらに3ターン味方全体を徐々に回復する(15%)",
+		turn: 6,
+		proc: [ss_addchain(1), ss_regenerate(0.15, 3)],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ",1),
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(1),
+		Statusup(200,0),
+		Panel_boost([1,0,0,0,0,],2),
+		Costdown(10),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(14%)",
+		proc: Heal(0.14, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<継続回復>チェインプラス2の効果、さらに5ターン味方全体を徐々に回復する(20%)",
+		turn: 8,
+		proc: [ss_addchain(2), ss_regenerate(0.20, 5)],
+	},
+	Lawake: [
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+	],
+}

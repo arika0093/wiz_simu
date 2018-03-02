@@ -1,0 +1,47 @@
+{
+	name: "天淵竜爪 イェルノー・ケラス",
+	cardno: 7453,
+	imageno: 9438,
+	hp: 2829,
+	atk: 4022,
+	cost: 42,
+	attr: [2,-1],
+	species: [0],
+	islegend: true,
+	ape: "神竜降臨Ⅱ",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>2チェインでダメージアップ、6チェインで更にダメージアップ(300%/400%)",
+		proc: [ChainAttack(3.0, 2), ChainAttack(4.0, 6)],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、さらに雷属性の敵には特効ダメージ(200%/500%)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([0,0,1,0,0], 5, 2), [2])],
+	},
+	awakes: [
+		Statusup(0,100),
+		Fastskill(1),
+		Costdown(4),
+		Panel_boost([0,0,1,0,0,],1),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Statusup(0,200),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		NEFTJOD(30),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>2チェインでダメージアップ、6チェインで更にダメージアップ(400%/500%)",
+		proc: [ChainAttack(4.0, 2), ChainAttack(5.0, 6)],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、さらに雷属性の敵には特効ダメージ(200%/900%)",
+		turn: 9,
+		proc: [ss_damage_all(special_attr([0,0,1,0,0], 9, 2), [2])],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

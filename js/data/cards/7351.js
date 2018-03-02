@@ -1,0 +1,47 @@
+{
+	name: "〈レベルメア〉反抗の夢",
+	cardno: 7351,
+	imageno: 9376,
+	hp: 3349,
+	atk: 3102,
+	cost: 40,
+	attr: [2,-1],
+	species: [2],
+	islegend: true,
+	ape: "黄昏メアレスⅡ",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効連撃>水属性の敵単体へ特効3連撃(350%)",
+		proc: ChainDualAttrAttack(3.5, 0, 3, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<カウンター>3ターンの間、スキルカウンター待機(100%)",
+		turn: 7,
+		proc: [ss_skillcounter(1, 3)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,100),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(100,0),
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(0,200),
+		Fastskill(2),
+		Statusup(200,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<属性特効連撃>水属性の敵単体へ特効3連撃(450%)",
+		proc: ChainDualAttrAttack(4.5, 0, 3, [0,1,0,0,0]),
+	},
+	ss2: {
+		desc: "<カウンター>5ターンの間、スキルカウンター待機(100%)",
+		turn: 10,
+		proc: [ss_skillcounter(1, 5)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

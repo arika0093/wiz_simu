@@ -1,0 +1,46 @@
+{
+	name: "Ninja Arts ミスティハイド",
+	cardno: 8751,
+	imageno: 10933,
+	hp: 2475,
+	atk: 4097,
+	cost: 54,
+	attr: [0,1],
+	species: [8],
+	islegend: true,
+	ape: "クロスディライブACT2",
+	as1: {
+		desc: "<連撃>敵単体を6回連続攻撃(250%)、解答が早いほどさらにアップ(70%)(上限:4段階)",
+		proc: add_cond(ChainDualAttack(2.5, 0, 6), as_timedep(0.7)),
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・水属性のダメージ(120%)",
+		turn: 4,
+		proc: [ss_damage_all(1.2, [0, 1]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(20),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Abstate_invalid("ss_sealed"),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,1,0,0,0,]),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<連撃>敵単体を6回連続攻撃(350%)、解答が早いほどさらにアップ(70%)(上限:4段階)",
+		proc: add_cond(ChainDualAttack(3.5, 0, 6), as_timedep(0.7)),
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・水属性のダメージ(120%)",
+		turn: 4,
+		proc: [ss_damage_all(1.2, [0, 1]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		NEFTJOD(30),
+		Statusup(0,1500),
+	],
+}

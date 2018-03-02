@@ -1,0 +1,47 @@
+{
+	name: "閃光狙撃、虎の子ファイアー マリ",
+	cardno: 6629,
+	imageno: 8627,
+	hp: 2376,
+	atk: 2115,
+	cost: 30,
+	attr: [2,1],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(エヴァⅡ)",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(350%)",
+		proc: ChainAttack(3.5, 4),
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早め、さらに味方全体のHPを回復する(25%)",
+		turn: 7,
+		proc: [ss_skillboost(1), ss_heal(0.25)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(0,200),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(450%)",
+		proc: ChainAttack(4.5, 4),
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早め、さらに味方全体のHPを回復する(50%)",
+		turn: 9,
+		proc: [ss_skillboost(2), ss_heal(0.50)],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Statusup(0,400),
+	],
+}

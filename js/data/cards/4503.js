@@ -1,0 +1,46 @@
+{
+	name: "闇を宿す氷眸 ユキヤ・コンラッド",
+	cardno: 4503,
+	imageno: 6220,
+	hp: 2657,
+	atk: 2852,
+	cost: 47,
+	attr: [1, -1],
+	species: [9],
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Fastskill(1),
+		Statusup(0, 200),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Spec_statusup(200, 0, [9, ]),
+		Spec_statusup(0, 200, [9, ]),
+	],
+	as1: {
+		desc: "<分散攻撃>3チェインで敵全体へ分散攻撃/300％÷対象数",
+		proc: ChainVarianceAttack(3.0, 3),
+	},
+	ss1: {
+		desc: "<犠牲魔術>味方全体のMAXHPの80％を使い敵全体へダメージ(130％×味方の人数)",
+		turn: 10,
+		proc: [ss_damage_all(ss_consume_all_cond(1.3, 0.8), [1])],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(300, 0),
+	],
+	as2: {
+		desc: "<分散攻撃>3チェインで味方のMAXHP15％を使い、敵全体へ分散攻撃/500％÷対象数",
+		proc: add_cond(ChainVarianceAttack(5.0, 3), as_consume_all(0.15)),
+	},
+	ss2: {
+		desc: "<犠牲魔術>味方全体のMAXHPの80％を使い敵全体へダメージ(150％×味方の人数)",
+		turn: 12,
+		proc: [ss_damage_all(ss_consume_all_cond(1.5, 0.8), [1])],
+	},
+}

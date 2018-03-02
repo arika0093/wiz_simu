@@ -1,0 +1,47 @@
+{
+	name: "漆黒を纏う怪異 ヘクド・アズム",
+	cardno: 6076,
+	imageno: 7903,
+	hp: 2300,
+	atk: 4000,
+	cost: 38,
+	attr: [1,-1],
+	species: [2],
+	islegend: true,
+	ape: "覇眼戦線Ⅱ",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>火属性以外の敵単体へ特効ダメージ(500%)",
+		proc: ChainAttrAttack(5.0, 0, [0,1,1,1,1]),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに水属性の敵には特効ダメージ(200%/500%)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([0,1,0,0,0], 5.0, 2.0), [1])],
+	},
+	awakes: [
+		Statusup(0,200),
+		Fastskill(1),
+		Statusup(0,200),
+		Statusup(400,0),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],1),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Statusup(0,200),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<属性特効>火属性以外の敵単体へ特効ダメージ(600%)",
+		proc: ChainAttrAttack(6.0, 0, [0,1,1,1,1]),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに水属性の敵には特効ダメージ(200%/900%)",
+		turn: 9,
+		proc: [ss_damage_all(special_attr([0,1,0,0,0], 9.0, 2.0), [1])],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "灼角の破壊者 ズローヴァ・ヤガダ",
+	cardno: 3893,
+	imageno: 5571,
+	hp: 2258,
+	atk: 3181,
+	cost: 46,
+	attr: [0, -1],
+	species: [2],
+	disable: true,
+	awakes: [
+		Statusup(0, 100),
+		Statusup(200, 0),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Attr_relief([0, 1, 0, 0, 0], 10),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Panel_boost([1,0,0,0,0], 1),
+		Attr_relief([1,0,0,0,0], 10),
+		Fastskill(2),
+		Spec_statusup(200, 0, [2]),
+		Spec_statusup(0, 200, [2]),
+	],
+	as1: {
+		desc: "<属性特効>5チェインで雷属性の敵単体へ大ダメージ/650％",
+		proc: ChainAttrAttack(6.5, 5, [0,0,1,0,0]),
+	},
+	ss1: {
+		desc: "<大魔術>敵単体へ火属性のダメージ(200％)",
+		turn: 5,
+		proc: [ss_damage_s(2.0, [0], 1)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 400),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "<属性特効>5チェインで雷属性の敵単体へ大ダメージ/750％",
+		proc: ChainAttrAttack(7.5, 5, [0,0,1,0,0]),
+	},
+	ss2: {
+		desc: "<大魔術>敵単体へ火属性のダメージ(400％)",
+		turn: 8,
+		proc: [ss_damage_s(4.0, [0], 1)],
+	},
+}

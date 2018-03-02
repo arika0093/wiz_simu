@@ -1,0 +1,47 @@
+{
+	name: "空虚な傀儡 フォゲット",
+	cardno: 6259,
+	imageno: 8101,
+	hp: 2428,
+	atk: 2615,
+	cost: 42,
+	attr: [2,4],
+	species: [6],
+	islegend: true,
+	ape: "大魔道杯 in 聖サタニック女学院",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(400%)",
+		proc: ChainAttrAttack(4.0, 0, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<解答削り>解答選択肢を1つ削り、4チェインを消費し解答を見破る",
+		turn: 1,
+		proc: [ss_chain_cost_skill(4, ss_answer_foresight(), ss_answer_narrow(1))],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(0,200),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(200,0, [6,]),
+		Spec_statusup(0,200, [6,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(500%)",
+		proc: ChainAttrAttack(5.0, 0, [0,1,0,0,0]),
+	},
+	ss2: {
+		desc: "<解答削り>解答選択肢を1つ削り、3チェインを消費し解答を見破る",
+		turn: 2,
+		proc: [ss_chain_cost_skill(3, ss_answer_foresight(), ss_answer_narrow(1))],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

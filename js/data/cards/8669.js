@@ -1,0 +1,47 @@
+{
+	name: "陽神剣 テタニア・ククリス",
+	cardno: 8669,
+	imageno: 10839,
+	hp: 2703,
+	atk: 4834,
+	cost: 37,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	ape: "エタクロⅢ",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(350%)",
+		proc: ChainAttrAttack(3.5, 0, [0, 1, 0, 0, 0]),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの80%を使い敵全体へダメージ(400%)",
+		turn: 8,
+		proc: [ss_damage_all(4.0, [2]), ss_consume_own(0.80)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(450%)",
+		proc: ChainAttrAttack(4.5, 0, [0, 1, 0, 0, 0]),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの80%を使い敵全体へダメージ(700%)",
+		turn: 10,
+		proc: [ss_damage_all(7.0, [2]), ss_consume_own(0.80)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(400,0),
+	],
+}

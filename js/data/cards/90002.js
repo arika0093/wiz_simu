@@ -1,0 +1,45 @@
+{
+	name: "時空機工師 ユッカ・エンデ",
+	cardno: 90002,
+	imageno: 6595,
+	hp: 2803,
+	atk: 2911,
+	cost: 42,
+	attr: [0, -1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(350%)",
+		proc: ChainAttack(3.5, 3),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ火属性のダメージ(120%)",
+		turn: 4,
+		proc: [ss_damage_all(1.2, [0])],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Costdown(4),
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		Statusup(0, 200),
+		Fastskill(1),
+		NEFTJOD(30),
+		Fastskill(1),
+		Spec_statusup(0, 200, [9, ]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(450%)",
+		proc: ChainAttack(4.5, 3),
+	},
+	ss2: {
+		desc: "<遅延大魔術>攻撃ターンを1遅らせ、敵全体へ火属性のダメージ(120%)",
+		turn: 6,
+		proc: [ss_damage_all(1.2, [0]), ss_delay_all(1)],
+	},
+	Lawake: [
+		Statusup(0, 600),
+		Statusup(300, 0),
+	],
+}

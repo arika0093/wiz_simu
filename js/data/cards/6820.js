@@ -1,0 +1,46 @@
+{
+	name: "生涯ラブ&ピース クルル・オム",
+	cardno: 6820,
+	imageno: 8780,
+	hp: 5176,
+	atk: 2976,
+	cost: 50,
+	attr: [0,-1],
+	species: [9],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<攻撃強化・ガード>5チェインで火属性の味方の攻撃力をアップ(60%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.6, [1,0,0,0,0], 5), as_guard(0.10, [1,1,1,1,1], 0.1)],
+	},
+	ss1: {
+		desc: "<回復>チェインプラス1の効果、さらに味方全体のHPを回復する(50%)",
+		turn: 4,
+		proc: [ss_addchain(1), ss_heal(0.5)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(200,0),
+		Attr_relief([1,1,1,1,1,],10),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Awake_noeffect("精霊交替", 1),
+	],
+	as2: {
+		desc: "<攻撃強化・ガード>5チェインで火属性の味方の攻撃力をアップ(90%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.9, [1,0,0,0,0], 5), as_guard(0.10, [1,1,1,1,1], 0.1)],
+	},
+	ss2: {
+		desc: "<継続回復>チェインプラス2の効果、さらに3ターン味方全体を徐々に回復する(15%)",
+		turn: 6,
+		proc: [ss_addchain(2), ss_regenerate(0.15, 3)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

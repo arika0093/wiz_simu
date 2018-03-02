@@ -1,0 +1,45 @@
+{
+	name: "朧炎の絶技団長 ユアン・エドガー",
+	cardno: 6887,
+	imageno: 8867,
+	hp: 1512,
+	atk: 5613,
+	cost: 44,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<属性特効連撃>雷属性の敵単体へ特効5連撃(400%)",
+		proc: ChainDualAttrAttack(4.0, 0, 5, [0,0,1,0,0]),
+	},
+	ss1: {
+		desc: "<多弾魔術>敵単体へ火属性の10回連続ダメージ(180%)",
+		turn: 5,
+		proc: [ss_damage_s(1.8, [0], 10)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(200,0),
+		Costdown(4),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],3),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(0,200),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<属性特効連撃>雷属性の敵単体へ特効5連撃(500%)",
+		proc: ChainDualAttrAttack(5.0, 0, 5, [0,0,1,0,0]),
+	},
+	ss2: {
+		desc: "<多弾魔術>敵単体へ火属性の10回連続ダメージ、5チェインを消費しさらにダメージアップ(320%/640%)",
+		turn: 8,
+		proc: [ss_damage_s(ss_chain_cost(5, 6.4, 3.2), [0], 10)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "ふんわり世界へ ルシエラ&ミレイユ",
+	cardno: 5598,
+	imageno: 7454,
+	hp: 4454,
+	atk: 2087,
+	cost: 47,
+	attr: [1, 3],
+	species: [3],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<回復>水属性の味方のHPを回復、HP20%以下でさらに回復(13%/38%)",
+		proc: [Heal(0.13, [0, 1, 0, 0, 0], 0), add_cond(Heal(0.38, [0, 1, 0, 0, 0], 0), when_hp_less(0.20))],
+	},
+	ss1: {
+		desc: "<起死回生>2ターン、致死ダメージを受けたら一度だけHP25%で起死回生",
+		turn: 9,
+		proc: [ss_revival(0.25, 2)],
+	},
+	awakes: [
+		Statusup(200, 0),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		NEFTJOD(30),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Spec_statusup(0, 200, [2, 3, ]),
+		Spec_statusup(200, 0, [2, 3, ]),
+		Heal_afterbattle(10),
+		Awake_noeffect("心眼", 1),
+	],
+	as2: {
+		desc: "<回復>水属性の味方のHPを回復、HP20%以下でさらに回復(17%/42%)",
+		proc: [Heal(0.17, [0, 1, 0, 0, 0], 0), add_cond(Heal(0.42, [0, 1, 0, 0, 0], 0), when_hp_less(0.20))],
+	},
+	ss2: {
+		desc: "<起死回生>2ターン、致死ダメージを受けたら一度だけHP25%で起死回生、5チェインを消費しさらに2ターン継続しHP50%で起死回生",
+		turn: 11,
+		proc: [ss_chain_cost_skill(5, ss_revival(0.50, 4), ss_revival(0.25, 2))],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(500, 0),
+	],
+}

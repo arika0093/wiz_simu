@@ -1,0 +1,46 @@
+{
+	name: "未来の大聖女 シャイア・フラクタル",
+	cardno: 5880,
+	imageno: 7697,
+	hp: 4098,
+	atk: 3028,
+	cost: 52,
+	attr: [1, 3],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<種族特効>6チェインでダメージアップ、魔族の敵へさらにダメージアップ(500%/700%)",
+		proc: [ChainAttack(5.0, 6), ChainSpecAttack(7.0, 6, [2])],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水・光属性のダメージ(120%)",
+		turn: 4,
+		proc: [ss_damage_all(1.2, [1, 3]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(2),
+		Statusup(400, 0),
+		Statusup(0, 400),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Fastskill(2),
+		Heal_afterbattle(10),
+		Spec_relief([2], 30),
+		Awake_noeffect("心眼", 1),
+	],
+	as2: {
+		desc: "<種族特効>6チェインでダメージアップ、魔族の敵へさらにダメージアップ(600%/800%)",
+		proc: [ChainAttack(6.0, 6), ChainSpecAttack(8.0, 6, [2])],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水・光属性のダメージ(150%)",
+		turn: 6,
+		proc: [ss_damage_all(1.5, [1, 3]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0, 500),
+		Abstate_invalid("ss_sealed"),
+		Abstate_invalid("as_sealed"),
+	],
+}

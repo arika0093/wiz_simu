@@ -1,0 +1,47 @@
+{
+	name: "秘密のヒーロー バロン・ライオネル",
+	cardno: 5363,
+	imageno: 7213,
+	hp: 2469,
+	atk: 2338,
+	cost: 24,
+	attr: [2,-1],
+	species: [5],
+	disable: true,
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化>雷属性の味方の攻撃力をアップ(30%)",
+		proc: ChainEnhance(0.30, [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ雷属性のダメージ(150%)、さらに味方のHPを回復(20%)",
+		turn: 8,
+		proc: [ss_damage_all(1.5, [0,0,1,0,0]), ss_heal(0.25)],
+	},
+	awakes: [
+		Statusup(100,0),
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		Spec_statusup(0,500, [5,]),
+		Fastskill(2),
+		Awake_noeffect("経験値取得量アップ", 1),
+	],
+	as2: {
+		desc: "<攻撃強化>雷属性の味方の攻撃力をアップ(60%)",
+		proc: ChainEnhance(0.60, [0,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ雷属性のダメージ(220%)、さらに味方のHPを回復(25%)",
+		turn: 11,
+		proc: [ss_damage_all(2.2, [0,0,1,0,0]), ss_heal(0.25)],
+	},
+	Lawake: [
+		Statusup(0,300),
+		Statusup(300,0),
+	],
+}

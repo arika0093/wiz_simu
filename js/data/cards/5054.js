@@ -1,0 +1,45 @@
+{
+	name: "蒼焔風馳の鎌鼬 鬼狩りキュウマ",
+	cardno: 5054,
+	imageno: 6794,
+	hp: 1621,
+	atk: 4029,
+	cost: 46,
+	attr: [0, -1],
+	species: [8],
+	awakes: [
+		Fastskill(1),
+		Costdown(2),
+		NEFTJOD(30),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Fastskill(2),
+		NEFTJOD(30),
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Statusup(0, 200),
+		Spec_statusup(0, 200, [8]),
+	],
+	as1: {
+		desc: "<瀕死攻撃>HP15％以下でダメージアップ/1600％",
+		proc: add_cond(ChainAttack(16.0, 0), when_hp_less(0.15)),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの95％を使い敵全体へダメージ(330％)",
+		turn: 6,
+		proc: [ss_damage_all(3.3, [0]), ss_consume_own(0.95)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<瀕死攻撃>HP15％以下でダメージアップ/2100％",
+		proc: add_cond(ChainAttack(21.0, 0), when_hp_less(0.15)),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの95％を使い敵全体へダメージ(450％)",
+		turn: 10,
+		proc: [ss_damage_all(4.5, [0]), ss_consume_own(0.95)],
+	},
+}

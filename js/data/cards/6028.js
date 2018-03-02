@@ -1,0 +1,46 @@
+{
+	name: "巨大な障壁 バトル・ギャラクシー",
+	cardno: 6028,
+	imageno: 7845,
+	hp: 2083,
+	atk: 3064,
+	cost: 65,
+	attr: [2, 1],
+	species: [6],
+	islegend: true,
+	ape: "コラボ(マクロス)",
+	is_dist: true,
+	as1: {
+		desc: "<快調攻撃>HP全快でダメージアップ(450%)",
+		proc: add_cond(ChainAttack(4.5, 0), when_hp_more(1)),
+	},
+	ss1: {
+		desc: "<大魔術>味方のMAXHP60%を使い、スキル反射を無視し、敵全体へ水・雷属性のダメージ(220%)",
+		turn: 7,
+		proc: [ss_damage_all(2.2, [1, 2]), ss_ignore_skillcounter(), ss_consume_all(0.60)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(200, 0, [0, 1, 1, 0, 0, ]),
+		Attr_statusup(0, 200, [0, 1, 1, 0, 0, ]),
+		Fastskill(2),
+		Spec_relief([6], 20),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<快調攻撃>HP全快でダメージアップ(550%)",
+		proc: add_cond(ChainAttack(5.5, 0), when_hp_more(1)),
+	},
+	ss2: {
+		desc: "<大魔術>味方のMAXHP60%を使い、スキル反射を無視し、敵全体へ水・雷属性のダメージ(260%)",
+		turn: 9,
+		proc: [ss_damage_all(2.6, [1, 2]), ss_ignore_skillcounter(), ss_consume_all(0.60)],
+	},
+	Lawake: [
+		Attr_statusup(0, 200, [0, 1, 1, 0, 0, ]),
+	],
+}

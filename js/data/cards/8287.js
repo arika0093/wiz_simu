@@ -1,0 +1,46 @@
+{
+	name: "甘いBOMB ヴィクトリア・ネルド",
+	cardno: 8287,
+	imageno: 10435,
+	hp: 4225,
+	atk: 3125,
+	cost: 56,
+	attr: [2,3],
+	species: [8],
+	islegend: true,
+	ape: "GW2017",
+	as1: {
+		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(600%)",
+		proc: add_cond(ChainAttack(6.0, 0), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "<ステータスアップ>自身のHPを2000ダウンし、攻撃力を6000アップ(上限値:6000)",
+		turn: 1,
+		proc: [ss_statusup_own([-2000, 6000], [6000, 6000], -1)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],20),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,0,0,1,0,]),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit", "all_sealed"]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(700%)",
+		proc: add_cond(ChainAttack(7.0, 0), as_consume_all(0.1)),
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ(600%)。さらに極稀にクリティカル",
+		turn: 5,
+		proc: [ss_boost_enhance_s(6, 5, 0.15)],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		NEFTJOD(30),
+	],
+}

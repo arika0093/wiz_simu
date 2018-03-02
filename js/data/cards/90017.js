@@ -1,0 +1,46 @@
+{
+	name: "時空激震の年明け ユッカ・エンデ",
+	cardno: 90017,
+	imageno: 7339,
+	hp: 3978,
+	atk: 2731,
+	cost: 50,
+	attr: [0,2],
+	species: [9],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(30% / 80%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.8, [1,0,0,0,0], [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
+		turn: 7,
+		proc: [ss_skillboost(2)],
+	},
+	awakes: [
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Statusup(200,0),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		Spec_statusup(0,200, [9,]),
+		Fastskill(2),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(60% / 110%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [1,0,0,0,0], [0,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを3早める",
+		turn: 10,
+		proc: [ss_skillboost(3)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(500,0),
+	],
+}

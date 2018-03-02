@@ -1,0 +1,46 @@
+{
+	name: "時空激震の年明け ユッカ・エンデ",
+	cardno: 7980,
+	imageno: 7339,
+	hp: 4878,
+	atk: 2731,
+	cost: 56,
+	attr: [0,2],
+	species: [9],
+	islegend: true,
+	ape: "謹賀新年2015",
+	as1: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(30% / 80%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.8, [1,0,0,0,0], [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
+		turn: 7,
+		proc: [ss_skillboost(2)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_sattr(100, 0, [1,0,0,0,0], 300, 0, [0,0,1,0,0]),
+		Attr_statusup_sattr(0, 100, [1,0,0,0,0], 0, 300, [0,0,1,0,0]),
+		Fastskill(4),
+		Abstate_invalid("discharge"),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(60% / 110%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [1,0,0,0,0], [0,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを3早める",
+		turn: 10,
+		proc: [ss_skillboost(3)],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0, 100, [1,0,0,0,0], 0, 200, [0,0,1,0,0]),
+		Statusup(500,0),
+	],
+}

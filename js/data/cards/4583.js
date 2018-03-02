@@ -1,0 +1,46 @@
+{
+	name: "純真の象徴たる白 ルシエラ・フオル",
+	cardno: 4583,
+	imageno: 6309,
+	hp: 2548,
+	atk: 2331,
+	cost: 48,
+	attr: [1, 0],
+	species: [3],
+	disable: true,
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+		Fastskill(1),
+		Attr_statusup(100, 0, [1, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup(100, 0, [1, 1, 0, 0, 0, ]),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+		Fastskill(2),
+		Spec_statusup(200, 0, [3, ]),
+		Spec_statusup(0, 200, [3, ]),
+	],
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ/400％",
+		proc: ChainAttack(4.0, 4),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ火・水属性のダメージ、さらに味方全体のHPを回復する(攻撃：150％ / 回復：20％)",
+		turn: 6,
+		proc: [ss_damage_all(1.5, [0,1]), ss_heal(0.20)],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+		Statusup(600, 0),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ/500％",
+		proc: ChainAttack(5.0, 4),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ火・水属性のダメージ、さらに味方全体のHPを回復する(攻撃：200％ / 回復：25％)",
+		turn: 9,
+		proc: [ss_damage_all(2.0, [0,1]), ss_heal(0.25)],
+	},
+}

@@ -1,0 +1,46 @@
+{
+	name: "万物の龍神姫 ヤヨイ・クシナダ",
+	cardno: 4862,
+	imageno: 6597,
+	hp: 4294,
+	atk: 2530,
+	cost: 45,
+	attr: [1, -1],
+	species: [9],
+	awakes: [
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
+		Statusup(200, 0),
+		Statusup(0, 200),
+		Costdown(4),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup(300, 0, [1,1,1,1,1]),
+		NEFTJOD(30),
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
+		Fastskill(1),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "<回復>味方全体のHPを回復/14％",
+		proc: Heal(0.14, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(回復：50％)",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
+		NEFTJOD(30),
+		Statusup(400, 0),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復/17％",
+		proc: Heal(0.17, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
+		turn: 9,
+		proc: [ss_heal(1.0), ss_abstate_cure()],
+	},
+}

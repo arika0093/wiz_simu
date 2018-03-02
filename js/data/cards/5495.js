@@ -1,0 +1,46 @@
+{
+	name: "大自然の究明者 ベアード・フェサ",
+	cardno: 5495,
+	imageno: 7331,
+	hp: 3033,
+	atk: 2662,
+	cost: 40,
+	attr: [0, 2],
+	species: [9],
+	islegend: true,
+	ape: "天上岬Ⅰ",
+	as1: {
+		desc: "<属性の加護>3チェインでデッキの属性の数だけ攻撃力を大幅アップ(350%/600%/850%)",
+		proc: ChainDeckAttrsAttack(3.5, 6, 8.5, 3),
+	},
+	ss1: {
+		desc: "<解答削り>解答選択肢を2つ削る",
+		turn: 3,
+		proc: [ss_answer_narrow(2)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(200, 0),
+		Attr_relief([0, 0, 1, 0, 0, ], 10),
+		NEFTJOD(30),
+		Fastskill(1),
+		Statusup(0, 200),
+		Attr_statusup(200, 0, [1, 0, 1, 0, 0, ]),
+		Fastskill(1),
+		Attr_statusup(0, 200, [1, 0, 1, 0, 0, ]),
+		Spec_statusup(0, 200, [9, ]),
+	],
+	as2: {
+		desc: "<属性の加護>3チェインでデッキの属性の数だけ攻撃力を大幅アップ(400%/700%/1000%)",
+		proc: ChainDeckAttrsAttack(4, 7, 10, 3),
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 6,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Statusup(300, 0),
+		Statusup(0, 700),
+	],
+}

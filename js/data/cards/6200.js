@@ -1,0 +1,47 @@
+{
+	name: "処刑台の麗花 イーディス・キルティ",
+	cardno: 6200,
+	imageno: 8023,
+	hp: 3056,
+	atk: 3174,
+	cost: 47,
+	attr: [1,4],
+	species: [2],
+	disable: true,
+	islegend: true,
+	ape: "聖サタニック女学院",
+	as1: {
+		desc: "<種族特効>4チェインでダメージアップ、魔族の敵へさらにダメージアップ(400%/600%)",
+		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [2])],
+	},
+	ss1: {
+		desc: "<無に還す瞳>3ターン後に敵単体を無に還す(一部敵には無効)",
+		turn: 10,
+		proc: [ss_death_limit(3)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		NEFTJOD(30),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<種族特効>4チェインでダメージアップ、魔族の敵へさらにダメージアップ(500%/700%)",
+		proc: [ChainAttack(5.0, 4), ChainSpecAttack(7.0, 4, [2])],
+	},
+	ss2: {
+		desc: "<無に還す瞳>2ターン後に敵単体を無に還す(一部敵には無効)",
+		turn: 15,
+		proc: [ss_death_limit(2)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

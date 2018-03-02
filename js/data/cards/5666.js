@@ -1,0 +1,46 @@
+{
+	name: "タフで実直、好青年 咲",
+	cardno: 5666,
+	imageno: 7467,
+	hp: 2702,
+	atk: 2750,
+	cost: 42,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<属性特効連撃>水属性の敵単体へ特効3連撃(350%)",
+		proc: ChainDualAttrAttack(3.5, 0, 3, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<効果解除>敵全体のカウンターを解除する",
+		turn: 8,
+		proc: [ss_break_attackcounter("all")],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(200,0),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Fastskill(2),
+		Spec_statusup(0,200, [9,]),
+		Spec_statusup(200,0, [9,]),
+	],
+	as2: {
+		desc: "<属性特効連撃>水属性の敵単体へ特効3連撃、HP80%以上でさらにダメージアップ(400%/500%)",
+		proc: [ChainDualAttrAttack(4.0, 0, 3, [0,1,0,0,0]), add_cond(ChainDualAttrAttack(5.0, 0, 3, [0,1,0,0,0]), when_hp_more(0.80))],
+	},
+	ss2: {
+		desc: "<効果解除大魔術>敵全体のカウンターを解除し、雷属性のダメージ(180%)",
+		turn: 13,
+		proc: [ss_break_attackcounter("all"), ss_damage_all(1.8, [2])],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(400,0),
+	],
+}

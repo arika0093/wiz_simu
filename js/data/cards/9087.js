@@ -1,0 +1,46 @@
+{
+	name: "歴戦必勝竜撃兵団 キャナル&ライサ",
+	cardno: 9087,
+	imageno: 11329,
+	hp: 2145,
+	atk: 4315,
+	cost: 54,
+	attr: [0,1],
+	species: [0],
+	islegend: true,
+	ape: "ドルキマスⅢ",
+	as1: {
+		desc: "<チェイン攻撃・種族数攻撃>3チェインでダメージアップ(250%)、龍族の仲間の数だけさらにアップ(100%)",
+		proc: ChainDeckSpecsAttack(1.0, [0], 0, 1.5),
+	},
+	ss1: {
+		desc: "<ブースト>1ターンの間、MAXHPを毎ターン35%消費し、攻撃力をアップ(1200%)。さらに極稀にクリティカル",
+		turn: 10,
+		proc: [ss_boost_enhance_s(12.0, 1, 0.35)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Spec_statusup(0,200, [0,]),
+		Fastskill(5),
+		Abstate_invalid("as_sealed"),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,1,0,0,0,]),
+		Fastskill(5),
+	],
+	as2: {
+		desc: "<チェイン攻撃・種族数攻撃>3チェインでダメージアップ(350%)、龍族の仲間の数だけさらにアップ(100%)",
+		proc: ChainDeckSpecsAttack(1.0, [0], 0, 2.5),
+	},
+	ss2: {
+		desc: "<ブースト>1ターンの間、MAXHPを毎ターン35%消費し、攻撃力をアップ(1200%)。さらに極稀にクリティカル",
+		turn: 10,
+		proc: [ss_boost_enhance_s(12.0, 1, 0.35)],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,100, [0,1,0,0,0,]),
+		Attr_relief([1,1,1,1,1,],10),
+	],
+}

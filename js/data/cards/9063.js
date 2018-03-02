@@ -1,0 +1,47 @@
+{
+	name: "冷静な知と情熱の智 ティア&キーラ",
+	cardno: 9063,
+	imageno: 11274,
+	hp: 2215,
+	atk: 3615,
+	cost: 48,
+	attr: [0,1],
+	species: [9],
+	islegend: true,
+	ape: "大魔道杯 感謝",
+	is_dist: true,
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ(150%)、5チェインで更にダメージアップ(50%)",
+		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.0, 5)],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・水属性のダメージ(100%)、さらに味方全体のHPを回復する(25%)",
+		turn: 4,
+		proc: [ss_damage_all(1.0, [0, 1]), ss_ignore_skillcounter(), ss_heal(0.25)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Heal_afterbattle(10),
+		Fastskill(3),
+		NEFTJOD(60),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ(180%)、5チェインで更にダメージアップ(50%)",
+		proc: [ChainAllAttack(1.8, 0), ChainAllAttack(2.3, 5)],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・水属性のダメージ(130%)、さらに味方全体のHPを回復する(25%)",
+		turn: 6,
+		proc: [ss_damage_all(1.3, [0, 1]), ss_ignore_skillcounter(), ss_heal(0.25)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Abstate_invalid("as_sealed"),
+	],
+}

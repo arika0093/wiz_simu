@@ -1,0 +1,47 @@
+{
+	name: "〈ラウズメア〉解き放つ夢",
+	cardno: 7347,
+	imageno: 9372,
+	hp: 4021,
+	atk: 2273,
+	cost: 39,
+	attr: [1,-1],
+	species: [2],
+	islegend: true,
+	ape: "黄昏メアレスⅡ",
+	is_dist: true,
+	as1: {
+		desc: "<回復>味方全体のHPを回復(12%)",
+		proc: Heal(0.12, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<ガード>3ターン火属性のダメージを20%軽減する、3チェインを消費しさらに3ターン軽減",
+		turn: 6,
+		proc: [ss_attr_guard([1,0,0,0,0], 0.2, ss_chain_cost(3, 6, 3))],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],1),
+		Statusup(0,200),
+		Statusup(200,0),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Statusup(0,200),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(14%)",
+		proc: Heal(0.14, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<ガード>4ターン火属性のダメージを30%軽減する、3チェインを消費しさらに3ターン軽減",
+		turn: 10,
+		proc: [ss_attr_guard([1,0,0,0,0], 0.3, ss_chain_cost(3, 7, 3))],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_relief([1,0,0,0,0,],10),
+	],
+}

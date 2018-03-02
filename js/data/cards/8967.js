@@ -1,0 +1,48 @@
+{
+	name: "北斗神拳伝承者 ケンシロウ",
+	cardno: 8967,
+	imageno: 11000,
+	hp: 2505,
+	atk: 3250,
+	cost: 46,
+	attr: [0,3],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(北斗の拳)",
+	is_dist: true,
+	as1: {
+		desc: "<連撃・複属性攻撃強化>3チェインで敵単体を3回連続攻撃(250%)、さらに火属性の攻撃力をアップ(10%)、複属性が光属性だとさらにアップ(30%)",
+		proc: [ChainDualAttack(2.5, 3, 3), ChainEnhance_SubAttr(0.1, 0.4, [1,0,0,0,0], [0,0,0,1,0], 3)],
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・光属性の5回連続ダメージ(250%)",
+		turn: 5,
+		proc: [ss_damage_s(2.5, [0, 3], 5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(10),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 200,0, [0,0,0,1,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<連撃・複属性攻撃強化>3チェインで敵単体を3回連続攻撃(350%)、さらに火属性の攻撃力をアップ(10%)、複属性が光属性だとさらにアップ(30%)",
+		proc: [ChainDualAttack(3.5, 3, 3), ChainEnhance_SubAttr(0.1, 0.4, [1,0,0,0,0], [0,0,0,1,0], 3)],
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・光属性の5回連続ダメージ(450%)",
+		turn: 7,
+		proc: [ss_damage_s(4.5, [0, 3], 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Awake_noeffect("無想転生",1),
+	],
+}

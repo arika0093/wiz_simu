@@ -1,0 +1,46 @@
+{
+	name: "異界の保護者目線 ストリー",
+	cardno: 9484,
+	imageno: 11736,
+	hp: 4015,
+	atk: 2005,
+	cost: 44,
+	attr: [2,3],
+	species: [9],
+	islegend: true,
+	ape: "黒ウィズミュージアム",
+	as1: {
+		desc: "<回復・複属性攻撃強化>雷属性の味方を回復(10%)し、攻撃力もアップ(10%)。複属性が光属性だとさらに攻撃力アップ(50%)",
+		proc: [Heal(0.10, [0,0,1,0,0], 0), ChainEnhance_SubAttr(0.1, 0.6, [0,0,1,0,0], [0,0,0,1,0], 0)],
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方一体のスペシャルスキルの発動ターンを3早める",
+		turn: 8,
+		proc: [ss_toselect_one(ss_skillboost(3))],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Heal_afterbattle(10),
+		Abstate_invalid("all_sealed"),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 200,0, [0,0,0,1,0,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,200, [0,0,0,1,0,]),
+		Fastskill(5),
+	],
+	as2: {
+		desc: "<回復・複属性攻撃強化>雷属性の味方を回復(13%)し、攻撃力もアップ(10%)。複属性が光属性だとさらに攻撃力アップ(50%)",
+		proc: [Heal(0.13, [0,0,1,0,0], 0), ChainEnhance_SubAttr(0.1, 0.6, [0,0,1,0,0], [0,0,0,1,0], 0)],
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方一体のスペシャルスキルの発動ターンを3早める",
+		turn: 8,
+		proc: [ss_toselect_one(ss_skillboost(3))],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Statusup(500,0),
+	],
+}

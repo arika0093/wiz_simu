@@ -1,0 +1,47 @@
+{
+	name: "烈刀激閃 ミハネ・カズラ",
+	cardno: 9036,
+	imageno: 10473,
+	hp: 1955,
+	atk: 8245,
+	cost: 53,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "喰牙RIZEⅠ",
+	as1: {
+		desc: "<分散攻撃>敵全体へ分散攻撃(150%)、デッキに単色の精霊が多いほど、さらにダメージアップ(70%)（上限:5段階)",
+		proc: add_cond(ChainVarianceAttack(1.5, 0), as_singleattr_num(0, 0.7)),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ水属性のダメージ(400%)、さらに火属性の敵には特効ダメージ(400%)",
+		turn: 4,
+		proc: [ss_damage_s(special_attr([1, 0, 0, 0, 0], 8.0, 4.0), [1], 1)],
+	},
+	awakes: [
+		Costdown(20),
+		Panel_boost([0,1,0,0,0,],4),
+		Attr_statusup_oattr(0,400, [0,1,0,0,0,]),
+		Attr_statusup_oattr(400,0, [0,1,0,0,0,]),
+		Abstate_invalid("as_sealed"),
+		Attr_relief([1,1,1,1,1,],20),
+		Fastskill(3),
+		Attr_statusup(0,400, [0,1,0,0,0,]),
+		Attr_statusup(400,0, [0,1,0,0,0,]),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<分散攻撃>敵全体へ分散攻撃(250%)、デッキに単色の精霊が多いほど、さらにダメージアップ(70%)（上限:5段階)",
+		proc: add_cond(ChainVarianceAttack(2.5, 0), as_singleattr_num(0, 0.7)),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ水属性のダメージ(400%)、さらに火属性の敵には特効ダメージ(1000%)",
+		turn: 7,
+		proc: [ss_damage_s(special_attr([1, 0, 0, 0, 0], 10.0, 4.0), [1], 1)],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		NEFTJOD(60),
+	],
+}

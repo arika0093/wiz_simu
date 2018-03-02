@@ -1,0 +1,46 @@
+{
+	name: "星霜の詠人 アリス・スチュアート",
+	cardno: 8699,
+	imageno: 10875,
+	hp: 3598,
+	atk: 3543,
+	cost: 56,
+	attr: [2,0],
+	species: [9],
+	islegend: true,
+	ape: "エタクロⅠ",
+	as1: {
+		desc: "<回復>味方全体のHPを回復(11%)、HP50%以下ならさらに回復(10%)",
+		proc: [Heal(0.11, [1,1,1,1,1], 0), add_cond(Heal(0.21, [1,1,1,1,1], 0), when_hp_less(0.50))],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・雷属性のダメージ(100%)、さらに味方全体のHPを回復する(25%)",
+		turn: 4,
+		proc: [ss_damage_all(1.0, [2,0]), ss_ignore_skillcounter(),ss_heal(0.25)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],4),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [1,0,0,0,0,]),
+		Fastskill(2),
+		NEFTJOD(30),
+		Awake_noeffect("経験値取得量アップ",1),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(13%)、HP50%以下ならさらに回復(10%)",
+		proc: [Heal(0.13, [1,1,1,1,1], 0), add_cond(Heal(0.23, [1,1,1,1,1], 0), when_hp_less(0.50))],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・雷属性のダメージ(130%)、さらに味方全体のHPを回復する(25%)",
+		turn: 6,
+		proc: [ss_damage_all(1.3, [2,0]), ss_ignore_skillcounter(),ss_heal(0.25)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "永劫を超えて アルドベリク・ゴドー",
+	cardno: 9430,
+	imageno: 6868,
+	hp: 3664,
+	atk: 4026,
+	cost: 58,
+	attr: [2,4],
+	species: [2],
+	islegend: true,
+	ape: "ロストエデンⅠ",
+	as1: {
+		desc: "<種族特効>4チェインでダメージアップ(400%)、天使の敵へさらにダメージアップ(400%)",
+		proc: [ChainAttack(4.0, 4), ChainSpecAttack(8.0, 4, [3])],
+	},
+	ss1: {
+		desc: "<ダメージ強化>4ターンの間、味方の攻撃力をアップ(100%)、5チェインを消費しさらにアップ(50%)",
+		turn: 7,
+		proc: [ss_enhance_all(ss_chain_cost(4, 1.5, 1.0), 4, [1,1,1,1,1])],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(3),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,0,0,0,1,]),
+		Abstate_invalid("discharge"),
+	],
+	as2: {
+		desc: "<種族特効>4チェインでダメージアップ(500%)、天使の敵へさらにダメージアップ(400%)",
+		proc: [ChainAttack(5.0, 4), ChainSpecAttack(9.0, 4, [3])],
+	},
+	ss2: {
+		desc: "<ダメージ強化>5ターンの間、味方の攻撃力をアップ(150%)、5チェインを消費しさらにアップ(100%)",
+		turn: 10,
+		proc: [ss_enhance_all(ss_chain_cost(5, 2.5, 1.5), 4, [1,1,1,1,1])],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,1500),
+	],
+}

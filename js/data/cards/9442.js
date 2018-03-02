@@ -1,0 +1,46 @@
+{
+	name: "思考型人造魂魄 シミラル",
+	cardno: 9442,
+	imageno: 9129,
+	hp: 6709,
+	atk: 3499,
+	cost: 53,
+	attr: [0,-1],
+	species: [2],
+	islegend: true,
+	ape: "ロストエデンⅡ WWMF",
+	as1: {
+		desc: "<スキルコピー>左隣の精霊のアンサースキルを発動する",
+		proc: as_copy(),
+	},
+	ss1: {
+		desc: "<鉄壁・極>3ターンの間、攻撃や状態異常攻撃など様々な効果を無効化する(スキル発動中は行動不可)",
+		turn: 5,
+		proc: [ss_impregnable_all(3)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],4),
+		Attr_statusup_oattr(0,400, [1,0,0,0,0,]),
+		Attr_statusup_oattr(400,0, [1,0,0,0,0,]),
+		Awake_noeffect("経験値取得量アップ",2),
+		Fastskill(3),
+		Awake_noeffect("ゴールド取得量アップ",5),
+		Heal_afterbattle(10),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<スキルコピー>左隣の精霊のアンサースキルを発動する",
+		proc: as_copy(),
+	},
+	ss2: {
+		desc: "<鉄壁・極>3ターンの間、攻撃や状態異常攻撃など様々な効果を無効化する(スキル発動中は行動不可)",
+		turn: 5,
+		proc: [ss_impregnable_all(3)],
+	},
+	Lawake: [
+		Attr_statusup(0,300, [1,0,0,0,0,]),
+		NEFTJOD(30),
+	],
+}

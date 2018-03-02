@@ -1,0 +1,47 @@
+{
+	name: "狂妄破滅の艶魔 パッツァ・メレラナ",
+	cardno: 7920,
+	imageno: 10051,
+	hp: 4545,
+	atk: 2004,
+	cost: 47,
+	attr: [2,1],
+	species: [9],
+	islegend: true,
+	ape: "ショコラフォレスト",
+	is_dist: true,
+	as1: {
+		desc: "<回復>水・雷属性の味方のHPを回復(11%)、パネルの色が2色以上でさらに回復(5%)",
+		proc: ChainPanelsHeal(0.11, 0.16, 0.16, [0,1,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
+		turn: 4,
+		proc: [ss_panel_change([0,1,1,0,0])],
+	},
+	awakes: [
+		Statusup(300,0),
+		Statusup(0,300),
+		Fastskill(1),
+		Costdown(10),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,100, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 100,0, [0,1,0,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>水・雷属性の味方のHPを回復(13%)、パネルの色が2色以上でさらに回復(5%)",
+		proc: ChainPanelsHeal(0.13, 0.18, 0.18, [0,1,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 6,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Statusup(600,0),
+		Statusup(0,400),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "迷宮なしの名探偵 江戸川コナン",
+	cardno: 5304,
+	imageno: 6929,
+	hp: 2313,
+	atk: 2305,
+	cost: 25,
+	attr: [2,1],
+	species: [8],
+	islegend: true,
+	is_dist: true,
+	ape: "コラボ(コナン)",
+	as1: {
+		desc: "<回復>雷属性の味方のHPを回復(12%)",
+		proc: Heal(0.12, [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<チェインガード>2ターンの間、チェインを保護する",
+		turn: 6,
+		proc: [ss_chain_protect(2)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],1),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(200,0),
+		Statusup(0,200),
+		Awake_noeffect("ゴールド取得量アップ", 1),
+		Panel_boost([0,0,1,0,0,],2),
+	],
+	as2: {
+		desc: "<回復>雷属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [0,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 7,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

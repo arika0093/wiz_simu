@@ -1,0 +1,47 @@
+{
+	name: "〈スペクタクルム〉 嘘猫のウィズ",
+	cardno: 8438,
+	imageno: 10588,
+	hp: 2025,
+	atk: 4423,
+	cost: 40,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "アイドルキャッツ！",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>敵単体を6回連続攻撃(250%)",
+		proc: ChainDualAttack(2.5, 0, 6),
+	},
+	ss1: {
+		desc: "<反動大魔術・蝕>スキル反射を無視し、敵単体へ雷属性のダメージ(精霊数×200%)(スキル使用後、味方全員が1ターン封印状態に)",
+		turn: 5,
+		proc: [ss_damage_s(ss_seal_all_cond(2.0), [2], 1), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(300,0),
+		Statusup(0,300),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<連撃>敵単体を6回連続攻撃(350%)",
+		proc: ChainDualAttack(3.5, 0, 6),
+	},
+	ss2: {
+		desc: "<反動大魔術・蝕>スキル反射を無視し、敵単体へ雷属性のダメージ(精霊数×240%)(スキル使用後、味方全員が1ターン封印状態に)",
+		turn: 7,
+		proc: [ss_damage_s(ss_seal_all_cond(2.4), [2], 1), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

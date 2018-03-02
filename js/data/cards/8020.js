@@ -1,0 +1,47 @@
+{
+	name: "想いを翼に乗せて 初音ミク",
+	cardno: 8020,
+	imageno: 6615,
+	hp: 5420,
+	atk: 2139,
+	cost: 54,
+	attr: [0,2],
+	species: [9],
+	islegend: true,
+	ape: "コラボ(ミク)",
+	as1: {
+		desc: "<回復>火・雷属性の味方を回復、7チェインで更に回復(10%/17%)",
+		proc: [Heal(0.10, [1,0,1,0,0], 0), Heal(0.17, [1,0,1,0,0], 7)],
+	},
+	ss1: {
+		desc: "<継続回復>チェインプラス2の効果、さらに3ターン味方全体を徐々に回復する(15%)",
+		turn: 5,
+		proc: [ss_addchain(2), ss_regenerate(0.15, 3)],
+	},
+	as2: {
+		desc: "<回復>火・雷属性の味方を回復、5チェインで更に回復(13%/18%)",
+		proc: [Heal(0.13, [1,0,1,0,0], 0), Heal(0.18, [1,0,1,0,0], 5)],
+	},
+	ss2: {
+		desc: "<継続回復>チェインプラス3の効果、さらに5ターン味方全体を徐々に回復する(20%)",
+		turn: 8,
+		proc: [ss_addchain(3), ss_regenerate(0.20, 5)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0],2),
+		Attr_statusup(0,200,[1,0,1,0,0,]),
+		Attr_statusup(200,0,[1,0,1,0,0,]),
+		Panel_boost([1,0,0,0,0],2),
+		Heal_afterbattle(10),
+		Attr_relief([0,1,0,0,0],20),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100,[1,0,0,0,0,],0,300,[0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0,[1,0,0,0,0,],300,0,[0,0,1,0,0,]),
+		Awake_Chainboost(1),
+	],
+	Lawake: [
+		Attr_statusup(0,200,[1,0,1,0,0,]),
+		Statusup(500, 0),
+		Abstate_invalid("ss_sealed"),
+	],
+}

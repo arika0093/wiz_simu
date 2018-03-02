@@ -1,0 +1,47 @@
+{
+	name: "常勝王 ベベル・ヴォルガノン",
+	cardno: 8199,
+	imageno: 10337,
+	hp: 3021,
+	atk: 2224,
+	cost: 40,
+	attr: [0,4],
+	species: [8],
+	islegend: true,
+	ape: "覇眼戦線Ⅲ",
+	is_dist: true,
+	as1: {
+		desc: "<回復・攻撃強化>味方全体のHPを回復(10%)、さらに攻撃力をアップ(20%)",
+		proc: [Heal(0.1, [1,1,1,1,1], 0), ChainEnhance(0.2, [1,1,1,1,1], 0)],
+	},
+	ss1: {
+		desc: "<遅延>敵単体の攻撃ターンを1遅らせる",
+		turn: 4,
+		proc: [ss_delay_s(1)],
+	},
+	awakes: [
+		Statusup(200,0),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(0,200),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,100, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 100,0, [0,0,0,0,1,]),
+	],
+	as2: {
+		desc: "<回復・攻撃強化>味方全体のHPを回復(12%)、さらに攻撃力をアップ(20%)",
+		proc: [Heal(0.12, [1,1,1,1,1], 0), ChainEnhance(0.2, [1,1,1,1,1], 0)],
+	},
+	ss2: {
+		desc: "<遅延>敵単体の攻撃ターンを2遅らせる",
+		turn: 8,
+		proc: [ss_delay_s(2)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(400,0),
+	],
+}

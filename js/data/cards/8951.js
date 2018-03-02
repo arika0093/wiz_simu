@@ -1,0 +1,48 @@
+{
+	name: "空想過激少年 今久留主奇譚",
+	cardno: 8951,
+	imageno: 8717,
+	hp: 2713,
+	atk: 5229,
+	cost: 39,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	ape: "真夏のグレート・クイズ・ウォー",
+	alias: ["いまくるすきたん"],
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ、パネルの色が増す度さらにアップ(300%/450%/550%)",
+		proc: ChainPanelsAttrAttack(3.0, 4.5, 5.5, [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(550%)",
+		turn: 7,
+		proc: [ss_damage_all(5.5, [2]), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Costdown(10),
+		NEFTJOD(30),
+		Attr_statusup(300,0, [0,0,1,0,0,]),
+		Fastskill(3),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0, 300, [0,0,1,0,0,]),
+		Spec_statusup(200,0, [8,]),
+		Spec_statusup(0,200, [8,]),
+		Abstate_invalid("poison"),
+	],
+	as2: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ、パネルの色が増す度さらにアップ(400%/550%/650%)",
+		proc: ChainPanelsAttrAttack(4.0, 5.5, 6.5, [0, 1, 0, 0, 0], 0),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(750%)",
+		turn: 9,
+		proc: [ss_damage_all(7.5, [2]), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

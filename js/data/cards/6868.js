@@ -1,0 +1,47 @@
+{
+	name: "巨体、ゆえに最強 リバティーヌ",
+	cardno: 6868,
+	imageno: 8840,
+	hp: 2612,
+	atk: 3313,
+	cost: 48,
+	attr: [0,4],
+	species: [1],
+	islegend: true,
+	ape: "八百万神秘譚Ⅲ(Z)",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>10チェインでダメージアップ(650%)",
+		proc: ChainAttack(6.5, 10),
+	},
+	ss1: {
+		desc: "<ブースト>5ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ、5チェインを消費しさらに攻撃力をアップ(600%/1200%)。さらに極稀にクリティカル",
+		turn: 10,
+		proc: [ss_boost_enhance_s(ss_chain_cost(5, 12, 6), 5, 0.15)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<チェイン攻撃>10チェインでダメージアップ(750%)",
+		proc: ChainAttack(7.5, 10),
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ、5チェインを消費しさらに攻撃力をアップ(750%/1500%)。さらに極稀にクリティカル",
+		turn: 13,
+		proc: [ss_boost_enhance_s(ss_chain_cost(5, 15, 7.5), 5, 0.15)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(0,500),
+	],
+}

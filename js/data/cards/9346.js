@@ -1,0 +1,46 @@
+{
+	name: "超革命魔道ガール リルム・ロロット(L3)",
+	cardno: 9346,
+	imageno: 6364,
+	hp: 2120,
+	atk: 4321,
+	cost: 54,
+	attr: [1,0],
+	species: [9],
+	islegend: true,
+	ape: "UG",
+	as1: {
+		desc: "<チェイン攻撃・複属性攻撃強化>4チェインでダメージアップ(350%)、さらに水属性の攻撃力をアップ(10%)、複属性が火属性だとさらにアップ(30%)",
+		proc: [ChainAttack(3.5, 4), ChainEnhance_SubAttr(0.1, 0.4, [0,1,0,0,0], [1,0,0,0,0], 4)],
+	},
+	ss1: {
+		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの50%を使い敵全体へ水属性のダメージ(精霊数×240%)",
+		turn: 6,
+		proc: [ss_damage_all(ss_consume_all_cond(2.4, 0.5), [1]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(3),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [1,0,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<チェイン攻撃・複属性攻撃強化>4チェインでダメージアップ(450%)、さらに水属性の攻撃力をアップ(10%)、複属性が火属性だとさらにアップ(30%)",
+		proc: [ChainAttack(4.5, 4), ChainEnhance_SubAttr(0.1, 0.4, [0,1,0,0,0], [1,0,0,0,0], 4)],
+	},
+	ss2: {
+		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの50%を使い敵全体へ水属性のダメージ(精霊数×320%)",
+		turn: 9,
+		proc: [ss_damage_all(ss_consume_all_cond(3.2, 0.5), [1]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+	],
+}

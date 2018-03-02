@@ -1,0 +1,47 @@
+{
+	name: "地球征服ロボ スペースハリネズン",
+	cardno: 6782,
+	imageno: 8736,
+	hp: 2821,
+	atk: 3058,
+	cost: 36,
+	attr: [2,-1],
+	species: [6],
+	islegend: true,
+	ape: "真夏のグレート・クイズ・ウォー",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>敵単体を3回連続攻撃、5チェインで6回連続攻撃になりさらにダメージアップ(250%/350%)",
+		proc: [ChainDualAttack(2.5, 0, 3), ChainDualAttack(3.5, 5, 6)],
+	},
+	ss1: {
+		desc: "<ガード>2ターン水属性のダメージを25%軽減する、3チェインを消費しさらに2ターン軽減",
+		turn: 5,
+		proc: [ss_attr_guard([0,1,0,0,0], 0.25, ss_chain_cost(3,4,2))],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(200,0),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_relief([1,1,1,1,1,],10),
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(200,0),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<連撃>敵単体を3回連続攻撃、5チェインで6回連続攻撃になりさらにダメージアップ(350%/450%)",
+		proc: [ChainDualAttack(3.5, 0, 3), ChainDualAttack(4.5, 5, 6)],
+	},
+	ss2: {
+		desc: "<ガード>3ターン水属性のダメージを25%軽減する、3チェインを消費しさらに2ターン軽減",
+		turn: 9,
+		proc: [ss_attr_guard([0,1,0,0,0], 0.25, ss_chain_cost(3,5,3))],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Statusup(0,400),
+	],
+}

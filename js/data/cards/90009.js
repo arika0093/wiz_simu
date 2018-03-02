@@ -1,0 +1,47 @@
+{
+	name: "聖夜のパティシエ モストロ・シン",
+	cardno: 90009,
+	imageno: 7135,
+	hp: 2032,
+	atk: 3815,
+	cost: 42,
+	attr: [0, -1],
+	species: [8],
+	islegend: true,
+	ape: "大魔道杯 ケーキ",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>HP80%以上で雷属性の敵単体へ特効ダメージ(475%)",
+		proc: add_cond(ChainAttrAttack(4.75, 0, [0, 0, 1, 0, 0]), when_hp_more(0.80)),
+	},
+	ss1: {
+		desc: "<特効大魔術>MAXHPの100%を使い敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(500%/1000%)",
+		turn: 5,
+		proc: [ss_damage_s(special_attr([0, 0, 1, 0, 0], 10.0, 5.0), [0], 1), ss_consume_own(1)],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Fastskill(1),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		Fastskill(2),
+		Attr_statusup(100, 0, [1, 0, 0, 0, 0, ]),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Spec_statusup(0, 200, [8, ]),
+		Spec_statusup(200, 0, [8, ]),
+		Statusup(0, 200),
+	],
+	as2: {
+		desc: "<属性特効>HP80%以上で雷属性の敵単体へ特効ダメージ(575%)",
+		proc: add_cond(ChainAttrAttack(5.75, 0, [0, 0, 1, 0, 0]), when_hp_more(0.80)),
+	},
+	ss2: {
+		desc: "<特効大魔術>MAXHPの100%を使い敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(600%/1200%)",
+		turn: 7,
+		proc: [ss_damage_s(special_attr([0, 0, 1, 0, 0], 12.0, 6.0), [0], 1), ss_consume_own(1)],
+	},
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+	],
+}

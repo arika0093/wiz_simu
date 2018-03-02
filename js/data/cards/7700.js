@@ -1,0 +1,46 @@
+{
+	name: "蒼世界の双牙 クラヴィル・スティ",
+	cardno: 7700,
+	imageno: 9782,
+	hp: 2551,
+	atk: 4021,
+	cost: 54,
+	attr: [1, 4],
+	species: [8],
+	awakes: [
+		Fastskill(2),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Statusup(0, 200),
+		Costdown(10),
+		Spec_statusup(200, 0, [8, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Spec_statusup(0, 200, [8, ]),
+		Fastskill(2),
+		Attr_statusup_sattr(200, 0, [0,1,0,0,0], 200, 0, [0,0,0,0,1]),
+		Attr_statusup_sattr(0,200, [0,1,0,0,0,], 0,200, [0,0,0,0,1,]),
+	],
+	as1: {
+		desc: "<全体攻撃>3チェインで敵全体へダメージ(180％)",
+		proc: ChainAllAttack(1.8, 3),
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早める",
+		turn: 5,
+		proc: [ss_skillboost(1)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(500, 0),
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ(180％)",
+		proc: ChainAllAttack(1.8, 0),
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
+		turn: 8,
+		proc: [ss_skillboost(2)],
+	},
+}

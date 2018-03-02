@@ -1,0 +1,46 @@
+{
+	name: "追憶の聖王 ミカエラ・セラフィム",
+	cardno: 5026,
+	imageno: 6781,
+	hp: 2543,
+	atk: 4583,
+	cost: 43,
+	attr: [0, -1],
+	species: [3],
+	disable: true,
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0], 2),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Statusup(0, 200),
+		Spec_statusup(200, 0, [3]),
+		Spec_statusup(0, 200, [3]),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+	],
+	as1: {
+		desc: "<全体攻撃>3チェインで敵全体へダメージ/180％",
+		proc: ChainAllAttack(1.8, 3),
+	},
+	ss1: {
+		desc: "<犠牲魔術>味方全体のMAXHPの50％を使い敵全体へダメージ(90％×味方の人数)",
+		turn: 8,
+		proc: [ss_damage_all(ss_consume_all_cond(0.9, 0.5), [0])],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 1000),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<全体攻撃>3チェインで敵全体へダメージ/220％",
+		proc: ChainAllAttack(2.2, 3),
+	},
+	ss2: {
+		desc: "<犠牲魔術>味方全体のMAXHPの50％を使い敵全体へダメージ(130％×味方の人数)",
+		turn: 10,
+		proc: [ss_damage_all(ss_consume_all_cond(1.3, 0.5), [0])],
+	},
+}

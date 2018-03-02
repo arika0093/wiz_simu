@@ -1,0 +1,46 @@
+{
+	name: "双蝶ノ夢 ガンダウナー＝ルリアゲハ",
+	cardno: 8574,
+	imageno: 10745,
+	hp: 3345,
+	atk: 6655,
+	cost: 52,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	ape: "黄昏メアレスⅢ",
+	as1: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(300%)、デッキに単色の精霊が多いほど、さらにダメージアップ(60%)（上限:5段階)",
+		proc: add_cond(ChainAttrAttack(3.0, 0, [0,1,0,0,0]), as_singleattr_num(0, 0.6)),
+	},
+	ss1: {
+		desc: "<純属性大魔術>スキル反射を無視し、敵全体へ雷属性のダメージ、雷単色の精霊が多いほどダメージアップ(上限値:1500%)",
+		turn: 7,
+		proc: [ss_damage_all(ss_pureattr_cond(15), [2]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_oattr(0,400, [0,0,1,0,0,]),
+		Attr_statusup_oattr(400,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Abstate_invalid("heal_reverse"),
+		Abstate_invalid("as_sealed"),
+		Fastskill(3),
+		Attr_statusup(0,400, [0,0,1,0,0,]),
+		Attr_statusup(400,0, [0,0,1,0,0,]),
+		Attr_relief([1,1,1,1,1,],10),
+	],
+	as2: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(400%)、デッキに単色の精霊が多いほど、さらにダメージアップ(60%)（上限:5段階)",
+		proc: add_cond(ChainAttrAttack(4.0, 0, [0,1,0,0,0]), as_singleattr_num(0, 0.6)),
+	},
+	ss2: {
+		desc: "<純属性大魔術>スキル反射を無視し、敵全体へ雷属性のダメージ、雷単色の精霊が多いほどダメージアップ(上限値:1800%)",
+		turn: 10,
+		proc: [ss_damage_all(ss_pureattr_cond(18), [2]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		NEFTJOD(60),
+	],
+}

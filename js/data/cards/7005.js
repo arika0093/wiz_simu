@@ -1,0 +1,46 @@
+{
+	name: "常時共闘戦線 エミリア&カエデ",
+	cardno: 7005,
+	imageno: 6212,
+	hp: 3331,
+	atk: 3289,
+	cost: 52,
+	attr: [0,2],
+	species: [9],
+	islegend: true,
+	ape: "クロム・マグナⅤ",
+	as1: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(350%)、パネルが2色以上で5回連続攻撃",
+		proc: [ChainDualAttack(3.5, 3, 3), add_cond(ChainDualAttack(3.5, 3, 5), as_panel_over2())],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ25%軽減の効果を付与",
+		turn: 5,
+		proc: [panel_attr_guard([1,1,1,1,1], 0.25)],
+	},
+	awakes: [
+		Fastskill(1),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		Attr_relief([1,1,1,1,1,],10),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Awake_noeffect("経験値取得量アップ",1),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,200, [0,0,1,0,0,]),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(450%)、パネルが2色以上で5回連続攻撃",
+		proc: [ChainDualAttack(4.5, 3, 3), add_cond(ChainDualAttack(4.5, 3, 5), as_panel_over2())],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ50%軽減の効果を付与",
+		turn: 10,
+		proc: [panel_attr_guard([1,1,1,1,1], 0.50)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Attr_statusup(500,0, [1,0,1,0,0,]),
+	],
+}

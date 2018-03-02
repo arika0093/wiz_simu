@@ -1,0 +1,47 @@
+{
+	name: "聖光覇王 アーサー・キャメロット",
+	cardno: 6428,
+	imageno: 5676,
+	hp: 3556,
+	atk: 3443,
+	cost: 52,
+	attr: [2,1],
+	species: [8],
+	disable: true,
+	islegend: true,
+	ape: "GW2015",
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ、20チェインで更にダメージアップ(450%/1600%)",
+		proc: [ChainAttack(4.5, 5), ChainAttack(16, 20)],
+	},
+	ss1: {
+		desc: "<継続回復>3ターン味方全体を徐々に回復する、20チェインでさらに5ターン味方全体を徐々に回復する(15%/25%)",
+		turn: 5,
+		proc: [ss_chain_cond_skill(20, ss_regenerate(0.25, 8), ss_regenerate(0.15, 3))],
+	},
+	awakes: [
+		Fastskill(1),
+		Abstate_invalid("as_sealed"),
+		Attr_relief([1,0,0,0,0,],20),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup_sattr(200, 0, [0,0,1,0,0], 200, 0, [0,1,0,0,0]),
+		Attr_statusup_sattr(0, 200, [0,0,1,0,0], 0, 200, [0,1,0,0,0]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ、20チェインで更にダメージアップ(550%/1700%)",
+		proc: [ChainAttack(5.5, 5), ChainAttack(17, 20)],
+	},
+	ss2: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する、20チェインでさらに5ターン味方全体を徐々に回復する(20%/30%)",
+		turn: 8,
+		proc: [ss_chain_cond_skill(20, ss_regenerate(0.30, 10), ss_regenerate(0.20, 5))],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+	],
+}

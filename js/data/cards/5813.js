@@ -1,0 +1,46 @@
+{
+	name: "秘園の宝剣姫 コルミナ・エレン",
+	cardno: 5813,
+	imageno: 7630,
+	hp: 3714,
+	atk: 2533,
+	cost: 46,
+	attr: [1,2],
+	species: [4],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<回復>水・雷属性の味方を回復(13%)",
+		proc: Heal(0.13, [0,1,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<斬撃大魔術>スキル反射を無視し、水・雷属性の3連撃・さらに連撃数分チェインプラス(180%)",
+		turn: 8,
+		proc: [ss_damage_slash(1.8, [1,2], 3), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<回復>水・雷属性の味方を回復(16%)",
+		proc: Heal(0.16, [0,1,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<斬撃大魔術>スキル反射を無視し、水・雷属性の5連撃・さらに連撃数分チェインプラス(380%)",
+		turn: 11,
+		proc: [ss_damage_slash(3.8, [1,2], 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

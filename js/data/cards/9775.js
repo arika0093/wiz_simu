@@ -1,0 +1,46 @@
+{
+	name: "サイバーがしゃどくろ ガムシャ",
+	cardno: 9775,
+	imageno: 12089,
+	hp: 4035,
+	atk: 1015,
+	cost: 34,
+	attr: [1,2],
+	species: [6],
+	islegend: true,
+	ape: "新説桃娘伝2",
+	is_dist: true,
+	as1: {
+		desc: "<回復>パネルが2色、3色で水・雷属性の味方のHPを回復(30%、34%)",
+		proc: ChainPanelsHeal(0, 0.30, 0.34, [0,1,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
+		turn: 3,
+		proc: [ss_panel_change([0,1,1,0,0])],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(3),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 200,0, [0,0,1,0,0,]),
+		Spec_statusup(200,0, [6,]),
+		Spec_statusup(0,200, [6,]),
+	],
+	as2: {
+		desc: "<回復>パネルが2色、3色で水・雷属性の味方のHPを回復(34%、40%)",
+		proc: ChainPanelsHeal(0, 0.34, 0.40, [0,1,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,1,1,0,0])],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+	],
+}

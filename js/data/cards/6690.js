@@ -1,0 +1,46 @@
+{
+	name: "姫を守る騎士？ マリ",
+	cardno: 6690,
+	imageno: 8554,
+	hp: 3109,
+	atk: 5323,
+	cost: 52,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(エヴァⅡ)",
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、10チェインで更にダメージアップ(350%/550%)",
+		proc: [ChainAttack(3.5, 4), ChainAttack(5.5, 10)],
+	},
+	ss1: {
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(400%)、さらに6ターンの間、水属性のダメージ(400%)",
+		turn: 13,
+		proc: [ss_continue_damage(4.0, 4.0, [1], 6)],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Statusup(0,300),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、10チェインで更にダメージアップ(450%/650%)",
+		proc: [ChainAttack(4.5, 4), ChainAttack(6.5, 10)],
+	},
+	ss2: {
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(600%)、さらに6ターンの間、水属性のダメージ(600%)",
+		turn: 16,
+		proc: [ss_continue_damage(6.0, 6.0, [1], 6)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

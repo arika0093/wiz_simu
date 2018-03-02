@@ -1,0 +1,45 @@
+{
+	name: "煌眼覇軍の女帝 リヴェータ・イレ",
+	cardno: 7837,
+	imageno: 5885,
+	hp: 3433,
+	atk: 4732,
+	cost: 51,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(400%)",
+		proc: ChainAttrAttack(4.0, 0, [0,0,1,0,0]),
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
+		turn: 10,
+		proc: [ss_delay_all(3)],
+	},
+	awakes: [
+		Statusup(200,0),
+		Fastskill(1),
+		Fastskill(2),
+		Statusup(0,300),
+		Spec_statusup(0,200, [8,]),
+		Panel_boost([1,0,0,0,0,],4),
+		NEFTJOD(30),
+		Attr_relief([1,1,0,0,0,],10),
+		Attr_statusup(300,0, [1,0,0,0,0,]),
+		Attr_statusup(0,300, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(500%)",
+		proc: ChainAttrAttack(5.0, 0, [0,0,1,0,0]),
+	},
+	ss2: {
+		desc: "<遅延大魔術>敵全体の攻撃ターンを3遅らせ、敵全体へ火属性のダメージ(600%)",
+		turn: 15,
+		proc: [ss_damage_all(6.0, [0], 1), ss_delay_all(3)],
+	},
+	Lawake: [
+		Statusup(0,800),
+		Statusup(500,0),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "蘇りし屍人たちの王 ヴァヌスス",
+	cardno: 8207,
+	imageno: 10345,
+	hp: 3021,
+	atk: 2403,
+	cost: 41,
+	attr: [1,4],
+	species: [9],
+	islegend: true,
+	ape: "覇眼戦線Ⅲ",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃・属性特効>4チェインでダメージアップ、光属性の敵だとさらにダメージアップ(300%/450%)",
+		proc: [ChainAttack(3.0, 4), ChainAttrAttack(4.5, 4, [0,0,0,1,0])],
+	},
+	ss1: {
+		desc: "<弱体化大魔術>敵単体へ水属性のダメージ(400%)、さらに5ターンの間、敵の防御力を弱体化(20%)",
+		turn: 7,
+		proc: [ss_damage_s(4.0, [1], 1), ss_attr_weaken_s([1,1,1,1,1], 0.2, 5)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 200,0, [0,0,0,0,1,]),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [0,0,0,0,1,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<チェイン攻撃・属性特効>4チェインでダメージアップ、光属性の敵だとさらにダメージアップ(400%/550%)",
+		proc: [ChainAttack(4.0, 4), ChainAttrAttack(5.5, 4, [0,0,0,1,0])],
+	},
+	ss2: {
+		desc: "<弱体化大魔術>スキル反射を無視し、敵単体へ水属性のダメージ(800%)、さらに10ターンの間、敵の防御力を弱体化(20%)",
+		turn: 12,
+		proc: [ss_damage_s(8.0, [1], 1), ss_attr_weaken_s([1,1,1,1,1], 0.2, 10), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

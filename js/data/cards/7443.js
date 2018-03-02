@@ -1,0 +1,46 @@
+{
+	name: "激竜凄腕 スーチャ・ヨゥン",
+	cardno: 7443,
+	imageno: 9428,
+	hp: 2303,
+	atk: 3871,
+	cost: 51,
+	attr: [1,2],
+	species: [0],
+	islegend: true,
+	ape: "神竜降臨Ⅱ",
+	as1: {
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ、パネルの色が増す度さらにアップ(300%/400%/550%)",
+		proc: add_cond(ChainPanelsAttack(3.0, 4.0, 5.5, 0), when_hp_more(0.8)),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
+		turn: 3,
+		proc: [ss_panel_change([0,1,1,0,0])],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		Costdown(4),
+		Panel_boost([0,1,0,0,0,],2),
+		Statusup(0,200),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_relief([0,1,0,0,0,],10),
+		Attr_statusup_sattr(200,0, [0,1,0,0,0,], 200,0, [0,0,1,0,0,]),
+		Attr_statusup_sattr(0,200, [0,1,0,0,0,], 0,200, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ、パネルの色が増す度さらにアップ(400%/500%/650%)",
+		proc: add_cond(ChainPanelsAttack(4.0, 5.0, 6.5, 0), when_hp_more(0.8)),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、攻撃力アップの効果を付与。HP80%以上でさらに攻撃力アップの効果を付与(50%/125%)",
+		turn: 7,
+		proc: [ss_panel_change([0,1,1,0,0]), panel_attackup(ss_hp_more(0.8, 1.25, 0.5))],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Statusup(0,500),
+	],
+}

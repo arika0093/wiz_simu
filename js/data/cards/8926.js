@@ -1,0 +1,47 @@
+{
+	name: "百火一閃 ラディウス・レヴィス",
+	cardno: 8926,
+	imageno: 11137,
+	hp: 2310,
+	atk: 3899,
+	cost: 51,
+	attr: [0,4],
+	species: [8],
+	islegend: true,
+	ape: "ゴールデンチャレンジ",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ(30%)、複属性が闇属性だとさらにアップ(40%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.7, [1,0,0,0,0], [0,0,0,0,1], 0),
+	},
+	ss1: {
+		desc: "<斬撃大魔術>スキル反射を無視し、火・闇属性の3連撃(360%)、さらに連撃数分チェインプラス",
+		turn: 9,
+		proc: [ss_damage_slash(3.6, [0,4], 3), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(10),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Awake_secondfast(3),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 200,0, [0,0,0,0,1,]),
+		Awake_secondfast(4),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ(60%)、複属性が闇属性だとさらにアップ(40%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.0, [1,0,0,0,0], [0,0,0,0,1], 0),
+	},
+	ss2: {
+		desc: "<斬撃大魔術>スキル反射を無視し、火・闇属性の3連撃(360%)、さらに連撃数分チェインプラス",
+		turn: 9,
+		proc: [ss_damage_slash(3.6, [0,4], 3), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+}

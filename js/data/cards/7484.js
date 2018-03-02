@@ -1,0 +1,47 @@
+{
+	name: "覇眼戦線 リヴェータ&ルドヴィカ",
+	cardno: 7484,
+	imageno: 6128,
+	hp: 3655,
+	atk: 3556,
+	cost: 57,
+	attr: [0, 1],
+	species: [8],
+	ape: "DL限定精霊",
+	awakes: [
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0], 2),
+		Statusup(0, 200),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,200, [0,1,0,0,0,]),
+		Fastskill(1),
+		Statusup(200, 0),
+		NEFTJOD(30),
+		Spec_statusup(0, 300, [8]),
+		Spec_statusup(300, 0, [8]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、リーダー時さらにダメージアップ(350%/500%)",
+		proc: [ChainAttack(3.5, 3), ChainAttack_Leader(5.0, 3)],
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・水属性の5回連続ダメージ(計350％)",
+		turn: 5,
+		proc: [ss_damage_s(3.5, [0, 1], 5), ss_ignore_skillcounter()],
+	},
+	islegend: true,
+	Lawake: [
+		Awake_SpecialSkill("ss_damageblock_all", 400, 5, "ringan"),
+		Attr_statusup(0, 200, [1, 1, 1, 1, 1, ]),
+		Awake_SpecialSkill("ss_heal", 0.5),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、リーダー時さらにダメージアップ(450%/600%)",
+		proc: [ChainAttack(4.5, 3), ChainAttack_Leader(6.0, 3)],
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・水属性の5回連続ダメージ(計650％)",
+		turn: 8,
+		proc: [ss_damage_s(6.5, [0, 1], 5), ss_ignore_skillcounter()],
+	},
+}

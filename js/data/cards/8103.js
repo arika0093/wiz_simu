@@ -1,0 +1,48 @@
+{
+	name: "覇眼凱旋",
+	cardno: 8103,
+	imageno: 10237,
+	hp: 2812,
+	atk: 2254,
+	cost: 36,
+	attr: [1,0],
+	species: [8],
+	islegend: true,
+	ape: "大魔道杯 with 英雄凱旋祭(4周年)",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(30%/70%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.7, [0,1,0,0,0], [1,0,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
+		turn: 5,
+		proc: [ss_panel_change([1,1,1,0,0])],
+	},
+	awakes: [
+		Awake_secondfast(2),
+		Panel_boost([0,1,0,0,0,],1),
+		Awake_secondfast(2),
+		Panel_boost([0,1,0,0,0,],2),
+		Statusup(200,0),
+		NEFTJOD(30),
+		Statusup(0,200),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,100, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 100,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(60%/100%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.0, [0,1,0,0,0], [1,0,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 6,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Awake_SpecialSkill("ss_damageblock_all", 400, 5, "ringan"),
+		Attr_statusup(0, 200, [1, 1, 1, 1, 1, ]),
+		Awake_SpecialSkill("ss_heal", 0.5),
+	],
+}

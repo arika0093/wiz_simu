@@ -1,0 +1,47 @@
+{
+	name: "桜媛と巫女 ヤチヨ&インフローレ",
+	cardno: 6312,
+	imageno: 5296,
+	hp: 4998,
+	atk: 3005,
+	cost: 51,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	disable: true,
+	ape: "幻魔特区スザクⅠ",
+	as1: {
+		desc: "<攻撃強化・回復>水属性の味方のHPを回復(13%)、さらに水属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.13, [0,1,0,0,0], 0), ChainEnhance(0.30, [0,1,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<遅延>攻撃ターンを2遅らせ、20チェインで更に1遅らせる",
+		turn: 8,
+		proc: [ss_delay_all(ss_chain_cond(20, 3, 2))],
+	},
+	awakes: [
+		Fastskill(1),
+		Attr_relief([0,1,0,0,0,],10),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Heal_afterbattle(10),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Attr_relief([0,0,1,0,0,],20),
+		Spec_statusup(200,0, [8,]),
+		Fastskill(2),
+		Spec_statusup(0,200, [8,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>水属性の味方のHPを回復(16%)、さらに水属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.16, [0,1,0,0,0], 0), ChainEnhance(0.30, [0,1,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<遅延>攻撃ターンを3遅らせ、20チェインで更に1遅らせる",
+		turn: 10,
+		proc: [ss_delay_all(ss_chain_cond(20, 4, 3))],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(400,0),
+	],
+}

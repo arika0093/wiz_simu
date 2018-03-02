@@ -1,0 +1,46 @@
+{
+	name: "誓いの凛炎 リンカ・ワイアット",
+	cardno: 7000,
+	imageno: 6197,
+	hp: 2431,
+	atk: 4150,
+	cost: 55,
+	attr: [0,1],
+	species: [8],
+	islegend: true,
+	ape: "クロム・マグナⅤ",
+	as1: {
+		desc: "<チェイン攻撃・攻撃強化>火属性の味方の攻撃力をアップし(30%)、5チェインでダメージアップ(350%)",
+		proc: [ChainEnhance(0.3, [1,0,0,0,0], 0), ChainAttack(3.5, 5)],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(2)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_relief([0,1,0,0,0,],20),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,200, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃・攻撃強化>火属性の味方の攻撃力をアップし(30%)、5チェインでMAXHP15%を使い、ダメージアップ(600%)",
+		proc: [ChainEnhance(0.3, [1,0,0,0,0], 0), add_cond(ChainAttack(6, 5), as_consume_own(0.15))],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス3の効果を付与",
+		turn: 8,
+		proc: [panel_chainplus(3)],
+	},
+	Lawake: [
+		Statusup(0,600),
+		Statusup(400,0),
+	],
+}

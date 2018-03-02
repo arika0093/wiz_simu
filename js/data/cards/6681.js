@@ -1,0 +1,45 @@
+{
+	name: "未来へ繋ぐ希望の旋律 渚カヲル",
+	cardno: 6681,
+	imageno: 8545,
+	hp: 2908,
+	atk: 5303,
+	cost: 51,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(エヴァⅡ)",
+	as1: {
+		desc: "<攻撃強化・属性特効連撃>火属性の味方の攻撃力をアップ(30%)し、6チェインで雷属性の敵単体へ特効4連撃(600%)",
+		proc: [ChainEnhance(0.30, [1,0,0,0,0], 0), ChainDualAttrAttack(6.0, 6, 4, [0,0,1,0,0])],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ火属性のダメージ、さらに火属性の敵には特効ダメージ(800%/2300%)",
+		turn: 9,
+		proc: [ss_damage_s(special_attr([1,0,0,0,0], 23, 8), [0], 1)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		NEFTJOD(30),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<攻撃強化・属性特効連撃>火属性の味方の攻撃力をアップ(30%)し、6チェインで雷属性の敵単体へ特効4連撃(700%)",
+		proc: [ChainEnhance(0.30, [1,0,0,0,0], 0), ChainDualAttrAttack(7.0, 6, 4, [0,0,1,0,0])],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ火属性のダメージ、さらに火属性の敵には特効ダメージ(800%/2800%)",
+		turn: 12,
+		proc: [ss_damage_s(special_attr([1,0,0,0,0], 28, 8), [0], 1)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
+}

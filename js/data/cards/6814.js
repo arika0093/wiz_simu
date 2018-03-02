@@ -1,0 +1,48 @@
+{
+	name: "AbCd-Ξ:《朽ちゆく神骸 テネブル》",
+	cardno: 6814,
+	imageno: 6791,
+	hp: 4410,
+	atk: 3004,
+	cost: 67,
+	attr: [2,3],
+	species: [11],
+	islegend: true,
+	ape: "AbCd",
+	is_dist: true,
+	as1: {
+		desc: "<嘆きの怒り>戦闘不能の仲間の数だけ攻撃力アップ(500%/900%/1300%/1700%/2100%)&敵HPを吸収する(4%)",
+		proc: add_cond(ChainDeckDeadsAttack(4.0, 0), as_hp_absorption(0.04)) ,
+	},
+	ss1: {
+		desc: "<犠牲魔術>味方全体のMAXHPの100%を使い敵全体へ雷属性のダメージ(人数×150%)、HP50%以下でスキル反射を無視する",
+		turn: 7,
+		proc: [ss_damage_all(ss_consume_all_cond(1.5, 1), [2]), ss_hp_less_skill(0.5, ss_ignore_skillcounter())],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,100),
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(200,0),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		NEFTJOD(99, 90),
+	],
+	as2: {
+		desc: "<嘆きの怒り>戦闘不能の仲間の数だけ攻撃力アップ(550%/1000%/1450%/1900%/2350%)&敵HPを吸収する(4%)",
+		proc: add_cond(ChainDeckDeadsAttack(4.5, 0), as_hp_absorption(0.04)) ,
+	},
+	ss2: {
+		desc: "<自己犠牲蘇生>自分を犠牲に全員をHP75%蘇生",
+		turn: 10,
+		proc: [ss_resurrection([1,1,1,1,1], 0.75), ss_consume_own(1)],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+}

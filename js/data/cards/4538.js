@@ -1,0 +1,45 @@
+{
+	name: "獄冥の狂炎 ユリシーズ・ヴィクト",
+	cardno: 4538,
+	imageno: 5881,
+	hp: 2585,
+	atk: 2928,
+	cost: 41,
+	attr: [0, -1],
+	species: [2],
+	awakes: [
+		Statusup(0, 200),
+		Fastskill(1),
+		Costdown(2),
+		Costdown(2),
+		Costdown(2),
+		Panel_boost([1, 0, 0, 0, 0, ], 1),
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		Panel_boost([1, 0, 0, 0, 0, ], 1),
+		Spec_statusup(200, 0, [2, ]),
+		Statusup(0, 200),
+	],
+	as1: {
+		desc: "<回復>火属性の味方のHPを回復、魔族はさらに回復(火：9％ / 火+種族：15％)",
+		proc: [Heal(0.09, [1,0,0,0,0], 0), SpecHeal(0.15, [1,0,0,0,0], [2], 0)],
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(50％)",
+		turn: 8,
+		proc: [ss_heal(0.50), ss_abstate_cure()],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 400),
+		Statusup(400, 0),
+	],
+	as2: {
+		desc: "<回復>火属性の味方のHPを回復、魔族はさらに回復(火：12％ / 火+種族：18％)",
+		proc: [Heal(0.12, [1,0,0,0,0], 0), SpecHeal(0.18, [1,0,0,0,0], [2], 0)],
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
+		turn: 10,
+		proc: [ss_heal(1.0), ss_abstate_cure()],
+	},
+}

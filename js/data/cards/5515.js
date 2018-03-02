@@ -1,0 +1,46 @@
+{
+	name: "非業背負いし宿星 エリーク・ハネス",
+	cardno: 5515,
+	imageno: 7300,
+	hp: 2875,
+	atk: 3354,
+	cost: 40,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<連撃>5チェインで敵単体を5回連続攻撃(400%)",
+		proc: ChainDualAttack(4.0, 5, 5),
+	},
+	ss1: {
+		desc: "<反動大魔術>敵全体へ火属性のダメージ(300%)◆スキル使用後、1ターン封印状態に",
+		turn: 4,
+		proc: [ss_damage_all(3.0, [0]), ss_allsealed_own(1)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Statusup(200,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		NEFTJOD(30),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(0,200),
+	],
+	as2: {
+		desc: "<連撃>5チェインで敵単体を5回連続攻撃(500%)",
+		proc: ChainDualAttack(5.0, 5, 5),
+	},
+	ss2: {
+		desc: "<反動大魔術>敵全体へ火属性のダメージ(500%)◆スキル使用後、1ターン封印状態に",
+		turn: 6,
+		proc: [ss_damage_all(5.0, [0]), ss_allsealed_own(1)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

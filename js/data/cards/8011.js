@@ -1,0 +1,46 @@
+{
+	name: "終わらない未来への旋律 初音ミク",
+	cardno: 8011,
+	imageno: 10140,
+	hp: 5123,
+	atk: 2539,
+	cost: 56,
+	attr: [2,3],
+	species: [9],
+	islegend: true,
+	ape: "コラボ(ミク)",
+	as1: {
+		desc: "<回復・ガード>雷属性の味方のHPを回復(11%)、全属性のダメージを5%軽減。リーダー時さらに全属性のダメージを5%軽減",
+		proc: [Heal(0.11, [0,0,1,0,0], 0), as_guard(0.05, [1,1,1,1,1], 0), add_cond(as_guard(0.10, [1,1,1,1,1], 0), when_leader())],
+	},
+	ss1: {
+		desc: "<複属性ダメージ強化>5ターンの間、雷属性の攻撃力をアップ、複属性が光属性だとさらにアップ(100%/150%)。さらに味方全体のHPを回復する(50%)",
+		turn: 8,
+		proc: [ss_enhance_all_subattr(1.0, 1.5, 5, [0,0,1,0,0], [0,0,0,1,0]), ss_heal(0.5)],
+	},
+	as2: {
+		desc: "<回復・ガード>雷属性の味方を回復、全属性のダメージを10%軽減。リーダー時さらに10%軽減",
+		proc: [Heal(0.13, [0,0,1,0,0], 0), as_guard(0.10, [1,1,1,1,1], 0), add_cond(as_guard(0.20, [1,1,1,1,1], 0), when_leader())],
+	},
+	ss2: {
+		desc: "<複属性ダメージ強化>5ターンの間、雷属性の攻撃力をアップ、複属性が光属性だとさらにアップ(100%/200%)。さらに味方全体のHPを完全回復する",
+		turn: 10,
+		proc: [ss_enhance_all_subattr(1.0, 2.0, 5, [0,0,1,0,0], [0,0,0,1,0]), ss_heal(1.0)],
+	},
+	awakes: [
+		Fastskill(2),
+		Attr_relief([1,1,1,1,1,],10),
+		Panel_boost([0,0,1,0,0],4),
+		Fastskill(2),
+		Heal_afterbattle(10),
+		Attr_statusup(0,200,[0,0,1,0,0,]),
+		Attr_statusup(200,0,[0,0,1,0,0,]),
+		Abstate_invalid("as_sealed"),
+		Attr_statusup_sattr(100,0,[0,0,1,0,0,],300,0,[0,0,0,1,0,]),
+		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,300,[0,0,0,1,0,]),
+	],
+	Lawake: [
+		Statusup(1000,0),
+		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,100,[0,0,0,1,0,]),
+	],
+}

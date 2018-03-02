@@ -1,0 +1,46 @@
+{
+	name: "なめらかで濃密な牧場の恋 ピノ",
+	cardno: 7903,
+	imageno: 10016,
+	hp: 5028,
+	atk: 2576,
+	cost: 56,
+	attr: [2,1],
+	species: [9],
+	islegend: true,
+	ape: "グリコⅡ",
+	as1: {
+		desc: "<回復・攻撃強化>水・雷属性の味方のHPを回復(13%)、さらに水・雷属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.13, [0,1,1,0,0], 0), ChainEnhance(0.30, [0,1,1,0,0], 0)],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、ダメージ25%軽減の効果を付与",
+		turn: 6,
+		proc: [ss_panel_change([0,1,1,0,0]), panel_attr_guard([1,1,1,1,1],0.25)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(0,200,[0,1,1,0,0,]),
+		Attr_statusup(200,0,[0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,300,[0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0,[0,0,1,0,0,],300,0,[0,1,0,0,0,]),
+		Heal_afterbattle(10),
+		Fastskill(3),
+		Abstate_invalid("heal_reverse"),
+	],
+	as2: {
+		desc: "<回復・攻撃強化>水・雷属性の味方のHPを回復(16%)、さらに水・雷属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.16, [0,1,1,0,0], 0), ChainEnhance(0.30, [0,1,1,0,0], 0)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、ダメージ50%軽減の効果を付与",
+		turn: 10,
+		proc: [ss_panel_change([0,1,1,0,0]), panel_attr_guard([1,1,1,1,1],0.5)],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,200,[0,1,0,0,0,]),
+		Attr_relief([1,1,1,1,1,],20),
+	],
+}

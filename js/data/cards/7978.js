@@ -1,0 +1,47 @@
+{
+	name: "初陽にはばたける絆 リティカ・パス",
+	cardno: 7978,
+	imageno: 10088,
+	hp: 5721,
+	atk: 2192,
+	cost: 56,
+	attr: [2,1],
+	species: [0],
+	islegend: true,
+	ape: "謹賀新年2015",
+	as1: {
+		desc: "<回復>味方全体のHPを回復、HP50%以下なら更に回復(11%/21%)",
+		proc: [Heal(0.11, [1,1,1,1,1], 0), add_cond(Heal(0.21, [1,1,1,1,1], 0), when_hp_less(0.5))],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,1,1,0,0])],
+	},
+	as2: {
+		desc: "<回復>味方全体のHPを回復、HP50%以下なら更に回復(13%/23%)",
+		proc: [Heal(0.13, [1,1,1,1,1], 0), add_cond(Heal(0.23, [1,1,1,1,1], 0), when_hp_less(0.5))],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、回復(50%)・ダメージ軽減(25%)・チェイン(2)・スキルチャージ(1)の効果をランダムで付与",
+		turn: 7,
+		proc: [ss_panel_change([1,1,1,0,0]), panel_healally(0.5), panel_attr_guard([1,1,1,1,1], 0.25), panel_chainplus(2), panel_skillboost(1)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],4),
+		NEFTJOD(60),
+		Attr_statusup(0,200,[0,1,1,0,0,]),
+		Attr_statusup(200,0,[0,1,1,0,0,]),
+		Awake_noeffect("経験値取得量アップ",2),
+		Awake_noeffect("ドロップアップ",1),
+		Attr_statusup_sattr(100,0,[0,0,1,0,0,],300,0,[0,1,0,0,0,]),
+		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,300,[0,1,0,0,0,]),
+		Fastskill(4),
+		Heal_afterbattle(10),
+	],
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,200,[0,0,1,0,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "奮迅剣神 ライナー・バルハウス",
+	cardno: 7569,
+	imageno: 9632,
+	hp: 2836,
+	atk: 4381,
+	cost: 45,
+	attr: [2,-1],
+	species: [1],
+	islegend: true,
+	ape: "イタズラ女神とうさぎのおはなし",
+	is_dist: true,
+	as1: {
+		desc: "<分散攻撃>3チェインで敵全体へ分散攻撃、HP80%以下でさらにダメージアップ(350%/450%)",
+		proc: [ChainVarianceAttack(3.5, 3), add_cond(ChainVarianceAttack(4.5, 3), when_hp_less(0.8))],
+	},
+	ss1: {
+		desc: "<ブースト>4ターンの間、味方のMAXHPを20%消費し、味方の攻撃をアップ(150%)。さらに極稀にクリティカル",
+		turn: 9,
+		proc: [ss_boost_enhance_all(1.5, 4, 0.2, [1,1,1,1,1])],
+	},
+	awakes: [
+		Statusup(0,200),
+		Costdown(2),
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(0,200, [1,]),
+		Fastskill(1),
+		Statusup(200,0),
+		NEFTJOD(30),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<分散攻撃>3チェインで敵全体へ分散攻撃、HP80%以下でさらにダメージアップ(450%/550%)",
+		proc: [ChainVarianceAttack(4.5, 3), add_cond(ChainVarianceAttack(5.5, 3), when_hp_less(0.8))],
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間、味方のMAXHPを20%消費し、味方の攻撃をアップ(200%)。さらに極稀にクリティカル",
+		turn: 12,
+		proc: [ss_boost_enhance_all(2.0, 4, 0.2, [1,1,1,1,1])],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Abstate_invalid("ss_sealed"),
+	],
+}

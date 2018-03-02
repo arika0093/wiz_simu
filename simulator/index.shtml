@@ -349,7 +349,7 @@
     <script charset="UTF-8" src="/js/data/skill_crystal.js?      <!--#flastmod virtual='/js/data/skill_crystal.js'-->"></script>
     <script charset="UTF-8" src="/js/data/skill_enemy.js?        <!--#flastmod virtual='/js/data/skill_enemy.js'-->"></script>
     <script charset="UTF-8" src="/js/data/quests.php"></script>
-    <script charset="UTF-8" src="/js/data/cards.js?              <!--#flastmod virtual='/js/data/cards.js'-->"></script>
+    <script charset="UTF-8" src="/js/data/cards.php?              <!--#flastmod virtual='/js/data/cards.php'-->"></script>
 	<!-- 処理群(データ群に依存する) -->
     <script charset="UTF-8" src="/js/deck/deckdata.js?           <!--#flastmod virtual='/js/deck/deckdata.js'-->"></script>
     <script charset="UTF-8" src="/js/deck/decksuggest.js?        <!--#flastmod virtual='/js/deck/decksuggest.js'-->"></script>

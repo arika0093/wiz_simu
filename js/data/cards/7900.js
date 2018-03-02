@@ -1,0 +1,47 @@
+{
+	name: "美味しく目覚める大天使 ミカエラ",
+	cardno: 7900,
+	imageno: 6101,
+	hp: 3836,
+	atk: 3356,
+	cost: 56,
+	attr: [2,1],
+	species: [3],
+	islegend: true,
+	ape: "グリコⅡ",
+	as1: {
+		desc: "<回復>水・雷属性の味方のHPを回復、神族・天使はさらに回復(11%/19%)",
+		proc: [Heal(0.11, [0,1,1,0,0], 0), SpecHeal(0.19, [0,1,1,0,0], [1,3], 0)],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水・雷属性のダメージ(100%)、さらに味方全体のHPを回復する(25%)",
+		turn: 4,
+		proc: [ss_damage_all(1.0, [1,2]), ss_heal(0.25), ss_ignore_skillcounter()],
+	},
+	as2: {
+		desc: "<回復>水・雷属性の味方のHPを回復、神族・天使はさらに回復(13%/21%)",
+		proc: [Heal(0.13, [0,1,1,0,0], 0), SpecHeal(0.21, [0,1,1,0,0], [1,3], 0)],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水・雷属性のダメージ(130%)、さらに味方全体のHPを回復する(25%)",
+		turn: 6,
+		proc: [ss_damage_all(1.3, [1,2]), ss_heal(0.25), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200,[0,1,1,0,0,]),
+		Attr_statusup(200,0,[0,1,1,0,0,]),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(60),
+		Fastskill(2),
+		Attr_statusup_sattr(100,0,[0,0,1,0,0,],300,0,[0,1,0,0,0,]),
+		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,300,[0,1,0,0,0,]),
+		Heal_afterbattle(10),
+	],
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,100,[0,1,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+}

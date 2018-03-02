@@ -1,0 +1,46 @@
+{
+	name: "桃娘伝 スモモ・プルーム",
+	cardno: 6244,
+	imageno: 8113,
+	hp: 3403,
+	atk: 5276,
+	cost: 44,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "桃娘伝Ⅰ",
+	as1: {
+		desc: "<属性特効>3チェインで雷属性の敵単体へ特効ダメージ、12チェインでさらに特効ダメージ(350%/965％)",
+		proc: [ChainAttrAttack(3.5, 3, [0,0,1,0,0]), ChainAttrAttack(9.65, 12, [0,0,1,0,0])],
+	},
+	ss1: {
+		desc: "<割合削り>スキル反射を無視し、敵単体のHPを20%減少させる、5チェインを消費しさらに10%減少させる",
+		turn: 9,
+		proc: [ss_chain_cost_skill(5, ss_ratiodamage_s(0.30), ss_ratiodamage_s(0.20)), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		NEFTJOD(60),
+		Statusup(0,300),
+		Statusup(300,0),
+		Costdown(2),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Spec_statusup(0,200, [8,]),
+		Panel_boost([1,0,0,0,0,],2),
+                Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで雷属性の敵単体へ特効ダメージ、12チェインでさらに特効ダメージ(450%/1065％)",
+		proc: [ChainAttrAttack(4.5, 3, [0,0,1,0,0]), ChainAttrAttack(10.65, 12, [0,0,1,0,0])],
+	},
+	ss2: {
+		desc: "<割合削り>スキル反射を無視し、敵単体のHPを25%減少させる、5チェインを消費しさらに10%減少させる",
+		turn: 11,
+		proc: [ss_chain_cost_skill(5, ss_ratiodamage_s(0.35), ss_ratiodamage_s(0.25)), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

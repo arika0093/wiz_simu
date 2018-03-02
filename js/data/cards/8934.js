@@ -1,0 +1,47 @@
+{
+	name: "成長する心 キワム&クロ",
+	cardno: 8934,
+	imageno: 11145,
+	hp: 5203,
+	atk: 1643,
+	cost: 48,
+	attr: [1,0],
+	species: [8],
+	islegend: true,
+	ape: "ゴールデンチャレンジ",
+	is_dist: true,
+	as1: {
+		desc: "<回復>火・水属性の味方を回復(8%)、HP50%以下ならさらに回復(9%)",
+		proc: [Heal(0.08, [1,1,0,0,0], 0), add_cond(Heal(0.17, [1,1,0,0,0], 0), when_hp_less(0.50))],
+	},
+	ss1: {
+		desc: "<回復>味方全体のHPを回復する(25%)、のろい状態または状態異常時、さらにHPを回復(25%)",
+		turn: 3,
+		proc: [ss_heal(ss_is_abstate_own(0.5, 0.25))],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 200,0, [1,0,0,0,0,]),
+		Fastskill(2),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [1,0,0,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>火・水属性の味方を回復(10%)、HP50%以下ならさらに回復(9%)",
+		proc: [Heal(0.10, [1,1,0,0,0], 0), add_cond(Heal(0.17, [1,1,0,0,0], 0), when_hp_less(0.50))],
+	},
+	ss2: {
+		desc: "<状態異常回復&蘇生>味方全体のHPを回復し(50%)、状態異常を回復、さらに水属性の味方を50%で蘇生",
+		turn: 11,
+		proc: [ss_heal(0.50), ss_abstate_cure(), ss_resurrection([0,1,0,0,0], 0.5)],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Attr_relief([1,0,0,0,0,],10),
+	],
+}

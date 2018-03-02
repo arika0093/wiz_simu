@@ -1,0 +1,45 @@
+{
+	name: "虚実の彼方の魔神竜 ヴシュトナーザ",
+	cardno: 90066,
+	imageno: 9430,
+	hp: 3021,
+	atk: 5221,
+	cost: 51,
+	attr: [2,-1],
+	species: [0],
+	islegend: true,
+	ape: "神竜降臨Ⅱ",
+	as1: {
+		desc: "<種族特効>7チェインでダメージアップ、龍族の敵へさらにダメージアップ(550%/850%)",
+		proc: [ChainAttack(5.5, 7), ChainSpecAttack(8.5, 7, [0])],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ、5チェインを消費しさらに特効ダメージ(200%/1200%/1700%)",
+		turn: 12,
+		proc: [ss_chain_cost_skill(5, ss_damage_all(special_attr([0,1,0,0,0], 17, 2), [1]), ss_damage_all(special_attr([0,1,0,0,0], 12, 2), [1]))],
+	},
+	awakes: [
+		Statusup(0,300),
+		Statusup(200,0),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Awake_noeffect("スキル反射見破り",1),
+	],
+	as2: {
+		desc: "<種族特効>7チェインでダメージアップ、龍族の敵へさらにダメージアップ(650%/950%)",
+		proc: [ChainAttack(6.5, 7), ChainSpecAttack(9.5, 7, [0])],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ、5チェインを消費しさらに特効ダメージ(200%/1500%/2000%)",
+		turn: 15,
+		proc: [ss_chain_cost_skill(5, ss_damage_all(special_attr([0,1,0,0,0], 20, 2), [1]), ss_damage_all(special_attr([0,1,0,0,0], 15, 2), [1]))],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
+}

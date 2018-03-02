@@ -1,0 +1,47 @@
+{
+	name: "悪意の理性 ユング・アーレンス",
+	cardno: 7112,
+	imageno: 9197,
+	hp: 2311,
+	atk: 3866,
+	cost: 38,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "古の森の千年桜",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(400%)",
+		proc: ChainAttack(4.0, 5),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火属性化",
+		turn: 3,
+		proc: [ss_panel_change([1,0,0,0,0])],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Fastskill(2),
+		Costdown(2),
+		Panel_boost([1,0,0,0,0,],1),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		Statusup(200,0),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(500%)",
+		proc: ChainAttack(5.0, 5),
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 7,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(300,0),
+	],
+}

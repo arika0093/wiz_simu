@@ -1,0 +1,46 @@
+{
+	name: "其は深淵の災い キワム&鋼鉄の獣",
+	cardno: 4237,
+	imageno: 5943,
+	hp: 2344,
+	atk: 3120,
+	cost: 47,
+	attr: [0, -1],
+	species: [8],
+	disable: true,
+	awakes: [
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0], 1),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Panel_boost([1,0,0,0,0], 1),
+		NEFTJOD(30),
+		Spec_statusup(200, 0, [8]),
+		Fastskill(2),
+		Spec_statusup(0, 200, [8]),
+	],
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ/450％",
+		proc: ChainAttack(4.5, 5),
+	},
+	ss1: {
+		desc: "<割合削り>敵全体のHPを20％減少させる",
+		turn: 9,
+		proc: [ss_ratiodamage_all(0.2)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでMAXHP15％を使い、ダメージアップ/650％",
+		proc: ChainAttack_as_consume_own(6.5, 5, 0.15),
+	},
+	ss2: {
+		desc: "<割合削り>敵全体のHPを25％減少させる",
+		turn: 12,
+		proc: [ss_ratiodamage_all(0.25)],
+	},
+}

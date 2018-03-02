@@ -1,0 +1,46 @@
+{
+	name: "桃神剣 スモモ・プルーム",
+	cardno: 8318,
+	imageno: 7983,
+	hp: 4201,
+	atk: 4823,
+	cost: 56,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	ape: "GW2016",
+	as1: {
+		desc: "<攻撃強化・属性特効連撃>雷属性の味方の攻撃力をアップ(30%)し、6チェインで水属性の敵単体へ特効4連撃(600%)",
+		proc: [ChainEnhance(0.3, [0,0,1,0,0], 0), ChainDualAttrAttack(6.0, 6, 4, [0,1,0,0,0])],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ(400%)、さらに水属性の敵には特効ダメージ(1500%)",
+		turn: 9,
+		proc: [ss_damage_s(special_attr([0,1,0,0,0], 19.0, 4.0), [2], 1)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(0,200, [8,]),
+		Spec_statusup(200,0, [8,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Awake_Chainboost(1),
+		Fastskill(3),
+		Attr_statusup(0,400, [0,0,1,0,0,]),
+		Attr_statusup(400,0, [0,0,1,0,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<攻撃強化・属性特効連撃>雷属性の味方の攻撃力をアップ(30%)し、6チェインで水属性の敵単体へ特効4連撃(700%)",
+		proc: [ChainEnhance(0.3, [0,0,1,0,0], 0), ChainDualAttrAttack(7.0, 6, 4, [0,1,0,0,0])],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ(400%)、さらに水属性の敵には特効ダメージ(2000%)",
+		turn: 12,
+		proc: [ss_damage_s(special_attr([0,1,0,0,0], 24.0, 4.0), [2], 1)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Statusup(0,1000),
+	],
+}

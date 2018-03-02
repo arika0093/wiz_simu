@@ -1,0 +1,33 @@
+{
+	name: "選択の果てに掴んだ絆 輝&未沙",
+	cardno: 5987,
+	imageno: 7769,
+	hp: 1902,
+	atk: 2014,
+	cost: 26,
+	attr: [2,1],
+	species: [8],
+	islegend: false,
+	ape: "コラボ(マクロス)",
+	as1: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(300%)",
+		proc: ChainDualAttack(3.0, 3, 3),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
+		turn: 4,
+		proc: [panel_chainplus(1)],
+	},
+	awakes: [
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Fastskill(1),
+		Statusup(0,200),
+		Statusup(200,0),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+	],
+}

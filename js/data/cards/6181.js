@@ -1,0 +1,46 @@
+{
+	name: "流れ星に想いを願う ハローラ・タクト",
+	cardno: 6181,
+	imageno: 7968,
+	hp: 4833,
+	atk: 3186,
+	cost: 48,
+	attr: [1, -1],
+	species: [9],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<回復>水属性の味方のHPを回復(10%)し、全属性のダメージを5%軽減。リーダー時さらに5%軽減",
+		proc: [Heal(0.10, [0, 1, 0, 0, 0], 0), as_guard(0.05, [1,1,1,1,1], 0), add_cond(as_guard(0.10, [1,1,1,1,1], 0), when_leader())],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ャンルパネルにスキルチャージプラス2の効果を付与(効果は、SPスキルを使うまで重複しません)",
+		turn: 8,
+		proc: [panel_skillboost(2)],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ", 1),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Statusup(200, 0),
+		Fastskill(2),
+		Attr_statusup(0, 200, [0, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup(200, 0, [0, 1, 0, 0, 0, ]),
+		Fastskill(2),
+		Abstate_invalid("as_sealed"),
+		Awake_noeffect("難易度ダウン", 1),
+	],
+	as2: {
+		desc: "<回復>水属性の味方のHPを回復(12%)し、全属性のダメージを10%軽減。リーダー時さらに10%軽減",
+		proc: [Heal(0.12, [0, 1, 0, 0, 0], 0), as_guard(0.10, [1,1,1,1,1], 0), add_cond(as_guard(0.20, [1,1,1,1,1], 0), when_leader())],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにスキルチャージプラス3の効果を付与(効果は、SPスキルを使うまで重複しません)",
+		turn: 11,
+		proc: [panel_skillboost(3)],
+	},
+	Lawake: [
+		Statusup(0, 300),
+		Statusup(700, 0),
+	],
+}

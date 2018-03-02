@@ -1,0 +1,46 @@
+{
+	name: "あなたへ クレティア＆プリフィカ",
+	cardno: 9514,
+	imageno: 11774,
+	hp: 2755,
+	atk: 4221,
+	cost: 57,
+	attr: [1,0],
+	species: [9],
+	islegend: true,
+	ape: "エステレラⅡ",
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ(150%),5チェインで更にダメージアップ(50%)",
+		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.0, 5)],
+	},
+	ss1: {
+		desc: "<融合大魔術>スキル反射を無視し、敵全体へ水属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:5属性で3000)",
+		turn: 7,
+		proc: [ss_damage_all(ss_multiattr_cond(30), [1]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(3),
+		Attr_statusup(0,300, [1,1,1,1,1,]),
+		Attr_statusup(300,0, [1,1,1,1,1,]),
+		Abstate_invalid("ss_sealed"),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ(180%),5チェインで更にダメージアップ(50%)",
+		proc: [ChainAllAttack(1.8, 0), ChainAllAttack(2.3, 5)],
+	},
+	ss2: {
+		desc: "<融合大魔術>スキル反射を無視し、敵全体へ水属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:5属性で3600)",
+		turn: 10,
+		proc: [ss_damage_all(ss_multiattr_cond(36), [1]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		Attr_relief([1,1,1,1,1,],10),
+	],
+}

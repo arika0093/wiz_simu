@@ -1,0 +1,47 @@
+{
+	name: "反逆の滅叛帝 テスタメント・ヘイル",
+	cardno: 8319,
+	imageno: 7986,
+	hp: 3533,
+	atk: 3588,
+	cost: 56,
+	attr: [1,4],
+	species: [2],
+	islegend: true,
+	ape: "GW2016",
+	as1: {
+		desc: "<種族特効>6チェインでダメージアップ(500%)、天使・魔族の敵へさらにダメージアップ(900%)",
+		proc: [ChainAttack(5.0, 6), ChainSpecAttack(9.0, 6, [3])],
+	},
+	ss1: {
+		desc: "<ブースト>5ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ(1200%)。さらに極稀にクリティカル",
+		turn: 10,
+		proc: [ss_boost_enhance_s(12, 5, 0.15)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Awake_Chainboost(1),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,0,0,1,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<種族特効>6チェインでダメージアップ(600%)、天使・魔族の敵へさらにダメージアップ(1000%)",
+		proc: [ChainAttack(6.0, 6), ChainSpecAttack(10.0, 6, [3])],
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ(1500%)。さらに極稀にクリティカル",
+		turn: 13,
+		proc: [ss_boost_enhance_s(15, 5, 0.15)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Statusup(500,0),
+		Attr_relief([1,1,1,1,1,],20),
+	],
+}

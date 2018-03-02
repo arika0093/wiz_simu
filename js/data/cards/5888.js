@@ -1,0 +1,48 @@
+{
+	name: "聖魔の叙事詩 キーラ&ベルナデッタ",
+	cardno: 5888,
+	imageno: 7705,
+	hp: 3876,
+	atk: 2340,
+	cost: 50,
+	attr: [1,2],
+	species: [9],
+	islegend: true,
+	ape: "大魔道杯 with ギルドマスターズ(3周年)",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(30%/80%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,1,0,0,0], [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<継続回復>5ターン味方を徐々に回復する(15%)",
+		turn: 6,
+		proc: [ss_regenerate(0.15, 5)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Fastskill(2),
+		Abstate_invalid("as_sealed"),
+		Heal_afterbattle(10),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(60%/110%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,1,0,0,0], [0,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<継続回復>2ターン溜めた後、味方HPを完全回復し、さらに5ターン味方全体を徐々に回復する(30%)",
+		turn: 8,
+		charged: 2,
+		proc: [ss_heal(1), ss_regenerate(0.30, 5)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

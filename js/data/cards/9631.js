@@ -1,0 +1,46 @@
+{
+	name: "新たなる救世と正義 レグル&テーラ",
+	cardno: 9631,
+	imageno: 11904,
+	hp: 2575,
+	atk: 4218,
+	cost: 56,
+	attr: [0,2],
+	species: [8],
+	islegend: true,
+	ape: "謹賀新年2018",
+	as1: {
+		desc: "<連撃>敵単体を4回連続攻撃(200%)、10チェインで更にダメージアップ(700%)",
+		proc: [ChainDualAttack(2.0, 0, 4), ChainDualAttack(9.0, 10, 4)],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにスキルチャージプラス1の効果を付与（スキルチャージの効果は、SPスキルを使うまで重複しません）",
+		turn: 4,
+		proc: [panel_skillboost(1)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(4),
+		Attr_relief([1,1,1,1,1,],10),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<連撃>敵単体を4回連続攻撃(300%)、10チェインで更にダメージアップ(700%)",
+		proc: [ChainDualAttack(3.0, 0, 4), ChainDualAttack(10.0, 10, 4)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにスキルチャージプラス1の効果を付与（スキルチャージの効果は、SPスキルを使うまで重複しません）",
+		turn: 4,
+		proc: [panel_skillboost(1)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Statusup(0,1000),
+	],
+}

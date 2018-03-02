@@ -1,0 +1,46 @@
+{
+	name: "神炎の瞳 アスピナ・クリウ",
+	cardno: 8998,
+	imageno: 11206,
+	hp: 1775,
+	atk: 4718,
+	cost: 56,
+	attr: [0,1],
+	species: [9],
+	islegend: true,
+	ape: "喰牙RIZEⅡ",
+	as1: {
+		desc: "<全体攻撃>HP80%以上で敵全体へダメージ(200%)",
+		proc: add_cond(ChainAllAttack(2.0, 0), when_hp_more(0.8)),
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・水属性の5回連続ダメージ(250%)",
+		turn: 4,
+		proc: [ss_damage_s(2.5, [0, 1], 5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(20),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Awake_noeffect("心眼",1),
+		Fastskill(4),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,1,0,0,0,]),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<全体攻撃>HP80%以上で敵全体へダメージ(240%)",
+		proc: add_cond(ChainAllAttack(2.4, 0), when_hp_more(0.8)),
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・水属性の5回連続ダメージ(450%)",
+		turn: 6,
+		proc: [ss_damage_s(4.5, [0, 1], 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		NEFTJOD(60),
+		Statusup(0,1500),
+	],
+}

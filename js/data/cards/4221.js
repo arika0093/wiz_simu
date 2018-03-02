@@ -1,0 +1,47 @@
+{
+	name: "野生の獣撃 ドゥンバ・バ",
+	cardno: 4221,
+	imageno: 5915,
+	hp: 2032,
+	atk: 3035,
+	cost: 44,
+	attr: [0, -1],
+	species: [5],
+	ape: "大魔道杯 ギルドマスターズ",
+	awakes: [
+		Spec_statusup(200, 0, [5]),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0], 1),
+		Fastskill(2),
+		NEFTJOD(30),
+		Spec_statusup(0, 200, [5]),
+		Spec_statusup(200, 0, [5]),
+		Panel_boost([1,0,0,0,0], 1),
+		Fastskill(2),
+		Spec_statusup(0, 200, [5]),
+	],
+	as1: {
+		desc: "<分散攻撃>3チェインで味方のMAXHP15％を使い、敵全体へ分散攻撃/450％÷対象数",
+		proc: add_cond(ChainVarianceAttack(4.5, 3), as_consume_all(0.15)),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ火属性のダメージ(180％)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [0])],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		NEFTJOD(30),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "<分散攻撃>3チェインで味方のMAXHP15％を使い、敵全体へ分散攻撃/550％÷対象数",
+		proc: add_cond(ChainVarianceAttack(5.5, 3), as_consume_all(0.15)),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ火属性のダメージ(260％)",
+		turn: 12,
+		proc: [ss_damage_all(2.6, [0])],
+	},
+}

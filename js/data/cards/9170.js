@@ -1,0 +1,48 @@
+{
+	name: "Ver.GardeniA アサギ＆セルウス",
+	cardno: 9170,
+	imageno: 11406,
+	hp: 1785,
+	atk: 7995,
+	cost: 51,
+	attr: [2,-1],
+	species: [1],
+	islegend: true,
+	ape: "幻魔特区RELOADED",
+	as1: {
+		desc: "<連撃>4チェインで敵単体を3回連続攻撃(300%)、デッキに単色の精霊が多いほど、さらにダメージアップ(60%)（上限:5段階)",
+		proc: add_cond(ChainDualAttack(3.0, 4, 3), as_singleattr_num(0, 0.6)),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ光属性のダメージ(600%)、さらに闇属性の敵には特効ダメージ(900%)、さらに敵にトドメを刺した数だけチェインプラス1",
+		turn: 3,
+		chadd_killing: true,
+		proc: [ss_damage_all(special_attr([0,0,0,0,1], 15, 6), [3])],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_oattr(0,400, [0,0,1,0,0,]),
+		Attr_statusup_oattr(400,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(3),
+		Abstate_invalid("ss_sealed"),
+		NEFTJOD(30),
+		Attr_statusup(0,400, [0,0,1,0,0,]),
+		Attr_statusup(400,0, [0,0,1,0,0,]),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<連撃>4チェインで敵単体を3回連続攻撃(400%)、デッキに単色の精霊が多いほど、さらにダメージアップ(60%)（上限:5段階)",
+		proc: add_cond(ChainDualAttack(4.0, 4, 3), as_singleattr_num(0, 0.6)),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ光属性のダメージ(600%)、さらに闇属性の敵には特効ダメージ(1400%)、さらに敵にトドメを刺した数だけチェインプラス1",
+		turn: 6,
+		chadd_killing: true,
+		proc: [ss_damage_all(special_attr([0,0,0,0,1], 20, 6), [3])],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		NEFTJOD(60),
+	],
+}

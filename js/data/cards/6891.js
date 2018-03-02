@@ -1,0 +1,46 @@
+{
+	name: "追憶の聖王 ミカエラ・セラフィム",
+	cardno: 6891,
+	imageno: 8871,
+	hp: 2563,
+	atk: 4153,
+	cost: 55,
+	attr: [0,3],
+	species: [3],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ、7チェインで更にダメージアップ(150%/250%)",
+		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.5, 7)],
+	},
+	ss1: {
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(120%×人数)",
+		turn: 6,
+		proc: [ss_damage_all(ss_consume_all_cond(1.2, 0.5), [0])],
+	},
+	awakes: [
+		Fastskill(3),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(0,400),
+		Spec_statusup(200,0, [3,]),
+		Spec_statusup(0,200, [3,]),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,200, [0,0,0,1,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ、7チェインで更にダメージアップ(180%/280%)",
+		proc: [ChainAllAttack(1.8, 0), ChainAllAttack(2.8, 7)],
+	},
+	ss2: {
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(180%×人数)",
+		turn: 9,
+		proc: [ss_damage_all(ss_consume_all_cond(1.8, 0.5), [0])],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		NEFTJOD(30),
+	],
+}

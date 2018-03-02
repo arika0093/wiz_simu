@@ -1,0 +1,47 @@
+{
+	name: "契約魔歌仙 コン・センサス",
+	cardno: 7768,
+	imageno: 9850,
+	hp: 2748,
+	atk: 2424,
+	cost: 40,
+	attr: [1,4],
+	species: [9],
+	islegend: true,
+	ape: "魔轟三鉄傑 対 地獄三十六歌仙",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>3チェインで敵単体へのダメージアップ(350%)",
+		proc: ChainAttack(3.5, 3),
+	},
+	ss1: {
+		desc: "<斬撃大魔術>水・闇属性の3連撃(180%)、さらに連撃数分チェインプラス",
+		turn: 8,
+		proc: [ss_damage_slash(1.8, [1,4], 3)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Statusup(200,0),
+		Fastskill(2),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],1),
+		Spec_statusup(0,200, [9,]),
+		Attr_statusup_sattr(0,200, [0,1,0,0,0,], 0,200, [0,0,0,0,1,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインで敵単体へのダメージアップ(450%)",
+		proc: ChainAttack(4.5, 3),
+	},
+	ss2: {
+		desc: "<斬撃大魔術>水・闇属性の5連撃(380%)、さらに連撃数分チェインプラス",
+		turn: 11,
+		proc: [ss_damage_slash(3.8, [1,4], 5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(0,400),
+	],
+}

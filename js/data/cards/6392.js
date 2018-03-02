@@ -1,0 +1,46 @@
+{
+	name: "歴史で遊ぶ神獣 トート・タピーロ",
+	cardno: 6392,
+	imageno: 8139,
+	hp: 5503,
+	atk: 3356,
+	cost: 55,
+	attr: [2,-1],
+	species: [1],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<種族攻撃強化>雷属性の味方の攻撃力をアップ、神族と天使はさらにアップ(30%/100%)",
+		proc: [ChainEnhance(0.30, [0,0,1,0,0], 0), ChainSpecEnhance(1.0, [0,0,1,0,0], [1,3], 0)],
+	},
+	ss1: {
+		desc: "<解答削り>解答選択肢を1つ削り、4チェインを消費し解答を見破る",
+		turn: 1,
+		proc: [ss_chain_cost_skill(4, ss_answer_foresight(), ss_answer_narrow(1))],
+	},
+	awakes: [
+		Costdown(2),
+		Panel_boost([0,0,1,0,0,],1),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		NEFTJOD(30),
+		Spec_statusup(0,400, [1,3,]),
+		Fastskill(2),
+		Spec_statusup(400,0, [1,3,]),
+	],
+	as2: {
+		desc: "<種族攻撃強化>雷属性の味方の攻撃力をアップ、神族と天使はさらにアップ(60%/130%)",
+		proc: [ChainEnhance(0.60, [0,0,1,0,0], 0), ChainSpecEnhance(1.3, [0,0,1,0,0], [1,3], 0)],
+	},
+	ss2: {
+		desc: "<解答削り>解答選択肢を1つ削り、3チェインを消費し解答を見破る",
+		turn: 2,
+		proc: [ss_chain_cost_skill(3, ss_answer_foresight(), ss_answer_narrow(1))],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

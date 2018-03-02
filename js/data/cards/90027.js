@@ -1,0 +1,47 @@
+{
+	name: "穢れの暗君 ゼェール・ギャドラン",
+	cardno: 90027,
+	imageno: 6180,
+	hp: 2160,
+	atk: 2925,
+	cost: 52,
+	attr: [0,4],
+	species: [2],
+	disable: true,
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<分散攻撃>2チェインで敵全体へ分散攻撃(300%)",
+		proc: ChainVarianceAttack(3.0, 2),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの70%を使い敵全体へダメージ(260%)",
+		turn: 7,
+		proc: [ss_consume_own(0.7), ss_damage_all(2.6, [0])],
+	},
+	awakes: [
+		Statusup(0,200),
+		Costdown(2),
+		Statusup(200,0),
+		Fastskill(1),
+		Costdown(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Costdown(2),
+		Statusup(0,200),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<分散攻撃>MAXHPを20%使い、2チェインで敵全体へ分散攻撃(700%)",
+		proc: [ChainVarianceAttack(7.0, 2), as_consume_own(0.20)],
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの70%を使い敵全体へダメージ(330%)",
+		turn: 9,
+		proc: [ss_consume_own(0.7), ss_damage_all(3.3, [0])],
+	},
+	Lawake: [
+		Statusup(0,500),
+		NEFTJOD(60),
+	],
+}

@@ -1,0 +1,33 @@
+{
+	name: "超時空アイドル リン・ミンメイ",
+	cardno: 5984,
+	imageno: 7766,
+	hp: 3035,
+	atk: 2013,
+	cost: 25,
+	attr: [1,-1],
+	species: [9],
+	islegend: false,
+	ape: "コラボ(マクロス)",
+	as1: {
+		desc: "<回復>水属性の味方のHPを回復(11%)",
+		proc: [Heal(0.11, [0,1,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<継続回復>チェインプラス2の効果、さらに3ターン味方全体を徐々に回復する(15%)",
+		turn: 7,
+		proc: [ss_addchain(2), ss_regenerate(0.15, 3)],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],1),
+		Statusup(100,0),
+		Attr_relief([1,0,0,0,0,],10),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Statusup(0,100),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+	],
+}

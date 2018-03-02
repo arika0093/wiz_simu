@@ -1,0 +1,47 @@
+{
+	name: "燦杖少女 エリス=マギア・シャルム",
+	cardno: 9351,
+	imageno: 8432,
+	hp: 5684,
+	atk: 2002,
+	cost: 54,
+	attr: [1,2],
+	species: [9],
+	islegend: true,
+	ape: "USG",
+	as1: {
+		desc: "<回復・複属性攻撃強化>水属性の味方を回復(10%)し、攻撃力もアップ(30%)。複属性が雷属性だとさらに攻撃力アップ(30%)",
+		proc: [Heal(0.10, [0,1,0,0,0], 0), ChainEnhance_SubAttr(0.3, 0.6, [0,1,0,0,0], [0,0,1,0,0], 0)],
+	},
+	ss1: {
+		desc: "<状態異常無効>4ターン溜めた後、10ターン敵の状態異常攻撃を無効化する",
+		turn: 3,
+		charged: 4,
+		proc: [ss_absattack_disable(10)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Heal_afterbattle(10),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<回復・複属性攻撃強化>水属性の味方を回復(10%)し、攻撃力もアップ(30%)。複属性が雷属性だとさらに攻撃力アップ(60%)",
+		proc: [Heal(0.10, [0,1,0,0,0], 0), ChainEnhance_SubAttr(0.3, 0.9, [0,1,0,0,0], [0,0,1,0,0], 0)],
+	},
+	ss2: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20%)",
+		turn: 5,
+		proc: [ss_regenerate(0.20, 5)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Statusup(1000,0),
+	],
+}

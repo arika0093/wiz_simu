@@ -1,0 +1,45 @@
+{
+	name: "鼓動するココロのままに アイ",
+	cardno: 90061,
+	imageno: 6173,
+	hp: 3003,
+	atk: 5999,
+	cost: 56,
+	attr: [2,-1],
+	species: [6],
+	islegend: true,
+	as1: {
+		desc: "<属性特効連撃>水属性の敵単体へ特効5連撃(400%)",
+		proc: ChainDualAttrAttack(4.0, 0, 5, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	awakes: [
+		Fastskill(2),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+		NEFTJOD(30),
+		Costdown(10),
+		Heal_afterbattle(10),
+		Panel_boost([0,0,1,0,0,],2),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Spec_statusup(0,400, [6,]),
+	],
+	as2: {
+		desc: "<属性特効連撃>水属性の敵単体へ特効7連撃(500%)",
+		proc: ChainDualAttrAttack(5.0, 0, 5, [0,1,0,0,0]),
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
+		turn: 9,
+		proc: [ss_heal(1), ss_abstate_cure()],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

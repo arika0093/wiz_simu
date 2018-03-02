@@ -1,0 +1,45 @@
+{
+	name: "ウクレレ百獣王 バロン・ライオネル",
+	cardno: 6599,
+	imageno: 8665,
+	hp: 5013,
+	atk: 3541,
+	cost: 53,
+	attr: [2,-1],
+	species: [5],
+	islegend: true,
+	ape: "魔道杯(その他)",
+	as1: {
+		desc: "<攻撃強化・ガード>7チェインで雷属性の味方の攻撃力をアップ(80%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.8, [0,0,1,0,0], 7), as_guard(0.1, [1,1,1,1,1], 7)],
+	},
+	ss1: {
+		desc: "<遅延>攻撃ターンを2遅らせる。HP20%以下でさらに1遅らせる。",
+		turn: 8,
+		proc: [ss_delay_all(ss_hp_less(0.20, 3, 2))],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_relief([0,0,1,0,0,],10),
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(0,200),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		NEFTJOD(30),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<攻撃強化・ガード>7チェインで雷属性の味方の攻撃力をアップ(100%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(1.0, [0,0,1,0,0], 7), as_guard(0.1, [1,1,1,1,1], 7)],
+	},
+	ss2: {
+		desc: "<遅延>攻撃ターンを3遅らせる。HP20%以下でさらに1遅らせる。",
+		turn: 10,
+		proc: [ss_delay_all(ss_hp_less(0.20, 4, 3))],
+	},
+	Lawake: [
+		Statusup(1000,0),
+	],
+}

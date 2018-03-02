@@ -1,0 +1,47 @@
+{
+	name: "儚き世界の想い プリュム・ノワラン[雷光]",
+	cardno: 7303,
+	imageno: 9324,
+	hp: 2632,
+	atk: 4031,
+	cost: 55,
+	attr: [2,3],
+	species: [3],
+	islegend: true,
+	ape: "訣別のクロニクル",
+	as1: {
+		desc: "<パネル色数攻撃>3チェインかつパネルが2色でダメージアップ、3色でさらにアップ(550%/700%)",
+		proc: ChainPanelsAttack(0, 5.5, 7.0, 3),
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ、5チェインを消費しさらにダメージアップ(150%/300%)",
+		turn: 4,
+		proc: [ss_damage_all(ss_chain_cost(5, 3.0, 1.5), [2, 3]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_relief([1,0,1,0,0,],10),
+		Fastskill(2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(0,300, [3,]),
+		Spec_statusup(300,0, [3,]),
+		Attr_statusup_sattr(0,200, [0,0,1,0,0,], 0,200, [0,0,0,1,0,]),
+	],
+	as2: {
+		desc: "<パネル色数攻撃>3チェインかつパネルが2色でダメージアップ、3色でさらにアップ(650%/800%)",
+		proc: ChainPanelsAttack(0, 6.5, 8.0, 3),
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ、5チェインを消費しさらにダメージアップ(220%/440%)",
+		turn: 9,
+		proc: [ss_damage_all(ss_chain_cost(5, 4.4, 2.2), [2, 3]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		NEFTJOD(30),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+	],
+}

@@ -1,0 +1,48 @@
+{
+	name: "真夏の海にはじける笑顔",
+	cardno: 6380,
+	imageno: 8693,
+	hp: 3108,
+	atk: 5367,
+	cost: 52,
+	attr: [1,-1],
+	species: [8],
+	disable: true,
+	islegend: true,
+	ape: "真夏のグレート・クイズ・ウォー",
+	alias: ["シール"],
+	as1: {
+		desc: "<属性特効・攻撃強化>水属性の味方の攻撃力をアップ(30%)し、4チェインで火属性の敵単体へ特効ダメージ(500%)",
+		proc: [ChainEnhance(0.3, [0,1,0,0,0], 0), ChainAttrAttack(5.0, 4, [1,0,0,0,0])],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ水属性のダメージ、さらに水属性の敵には特効ダメージ(800%/2300%)",
+		turn: 9,
+		proc: [ss_damage_s(special_attr([0,1,0,0,0], 23, 8), [1], 1)],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<属性特効・攻撃強化>水属性の味方の攻撃力をアップ(30%)し、4チェインで火属性の敵単体へ特効ダメージ(600%)",
+		proc: [ChainEnhance(0.3, [0,1,0,0,0], 0), ChainAttrAttack(6.0, 4, [1,0,0,0,0])],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ水属性のダメージ、さらに水属性の敵には特効ダメージ(800%/2800%)",
+		turn: 12,
+		proc: [ss_damage_s(special_attr([0,1,0,0,0], 28, 8), [1], 1)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

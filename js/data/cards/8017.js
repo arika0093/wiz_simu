@@ -1,0 +1,46 @@
+{
+	name: "光を求めるふたり KAITO&MEIKO",
+	cardno: 8017,
+	imageno: 6705,
+	hp: 2423,
+	atk: 2618,
+	cost: 40,
+	attr: [2,0],
+	species: [9],
+	islegend: true,
+	ape: "コラボ(ミク)",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(300%)",
+		proc: ChainDualAttack(3.0, 3, 3),
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・雷属性のダメージ(100%)、さらに味方全体のHPを回復する(25%)",
+		turn: 5,
+		proc: [ss_damage_all(1.0, [2,0]), ss_heal(0.25), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,200, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 200,0, [0,0,0,1,0,]),
+		Fastskill(2),
+		Attr_relief([1,1,1,1,1,],10),
+	],
+	as2: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(400%)",
+		proc: ChainDualAttack(4.0, 3, 3),
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・雷属性のダメージ(130%)、さらに味方全体のHPを回復する(25%)",
+		turn: 7,
+		proc: [ss_damage_all(1.3, [2,0]), ss_heal(0.25), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,1000),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "神戦に導く使徒 エアリル・セレ",
+	cardno: 90063,
+	imageno: 5699,
+	hp: 3304,
+	atk: 3629,
+	cost: 55,
+	attr: [0,1],
+	species: [3],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<連撃>3チェインで敵単体を2回連続攻撃(350%)",
+		proc: ChainDualAttack(3.5, 3, 2),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルに攻撃力アップの効果を付与(60%)",
+		turn: 2,
+		proc: [panel_attackup(0.6)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+		Attr_relief([0,1,0,0,0,],20),
+		Spec_statusup(200,0, [3,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(3),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,200, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<連撃>3チェインで敵単体を2回連続攻撃(450%)",
+		proc: ChainDualAttack(4.5, 3, 2),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルに攻撃力アップの効果を付与(100%)",
+		turn: 4,
+		proc: [panel_attackup(1.0)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+	],
+}

@@ -1,0 +1,45 @@
+{
+	name: "凶空の破壊者 旗艦ネフィリムンド",
+	cardno: 4839,
+	imageno: 6545,
+	hp: 1500,
+	atk: 500,
+	cost: 48,
+	attr: [1, 2],
+	species: [6],
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Statusup(200, 0),
+		Fastskill(1),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+		Fastskill(1),
+		Spec_statusup(200, 0, [6, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(100, 0, [0, 1, 1, 0, 0, ]),
+		Statusup(0, 200),
+		Spec_statusup(0, 200, [6, ]),
+	],
+	as1: {
+		desc: "<分散攻撃>5チェインで敵全体へ分散攻撃/450％÷対象数",
+		proc: ChainVarianceAttack(4.5, 5),
+	},
+	ss1: {
+		desc: "<ダメージブロック>MAXHPの100％を使い、5ターン800以下の全属性ダメージを無効化する",
+		turn: 9,
+		proc: [ss_consume_own(1), ss_damageblock_all(800, 5)],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(1000, 0),
+	],
+	as2: {
+		desc: "<分散攻撃>5チェインで敵全体へ分散攻撃/550％÷対象数",
+		proc: ChainVarianceAttack(5.5, 5),
+	},
+	ss2: {
+		desc: "<ダメージブロック>MAXHPの100％を使い、5ターン1000以下の全属性ダメージを無効化する",
+		turn: 12,
+		proc: [ss_consume_own(1), ss_damageblock_all(1000, 5)],
+	},
+}

@@ -1,0 +1,47 @@
+{
+	name: "いつもより幸せな迎春 ルチル・メイ",
+	cardno: 7976,
+	imageno: 7337,
+	hp: 5054,
+	atk: 2612,
+	cost: 56,
+	attr: [1,0],
+	species: [9],
+	islegend: true,
+	ape: "謹賀新年2015",
+	as1: {
+		desc: "<複属性攻撃強化>7チェインで水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(80%/130%)",
+		proc: ChainEnhance_SubAttr(0.8, 1.3, [0,1,0,0,0], [1,0,0,0,0], 7),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,1,1,0,0])],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],4),
+		NEFTJOD(30),
+		Attr_statusup(0,200, [1,1,1,1,1,]),
+		Attr_statusup(200,0, [1,1,1,1,1,]),
+		Attr_statusup_sattr(100, 0, [0,1,0,0,0], 300, 0, [1,0,0,0,0]),
+		Attr_statusup_sattr(0, 100, [0,1,0,0,0], 0, 300, [1,0,0,0,0]),
+		Fastskill(4),
+		Awake_Chainboost(1),
+		Heal_afterbattle(10),
+		Attr_relief([1,1,1,1,1,],20),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>7チェインで水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(110%/160%)",
+		proc: ChainEnhance_SubAttr(1.1, 1.6, [0,1,0,0,0], [1,0,0,0,0], 7),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、ダメージ35%軽減の効果を付与",
+		turn: 7,
+		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.35)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,1,1,1,1,]),
+		Statusup(500, 0),
+		Abstate_invalid("as_sealed"),
+	],
+}

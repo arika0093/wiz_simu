@@ -1,0 +1,46 @@
+{
+	name: "能ある鷹の隠し爪 ヤエ・クリガラ",
+	cardno: 9756,
+	imageno: 12070,
+	hp: 2775,
+	atk: 7003,
+	cost: 51,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	ape: "新説桃娘伝Ⅱ",
+	as1: {
+		desc: "<分散攻撃>敵全体へ分散攻撃(150%)、デッキに単色の精霊が多いほど、さらにダメージアップ(70%)(上限:5段階)",
+		proc: add_cond(ChainVarianceAttack(1.5, 0), as_singleattr_num(0, 0.7)),
+	},
+	ss1: {
+		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ(150%)、さらに隣接する敵に雷属性のダメージ(800%)",
+		turn: 7,
+		proc: [ss_undefined("炸裂大魔術(隣接威力変動)")],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],4),
+		Attr_statusup_oattr(0,400, [0,0,1,0,0,]),
+		Attr_statusup_oattr(400,0, [0,0,1,0,0,]),
+		Awake_noeffect("行動見破り",1),
+		Awake_secondfast(3),
+		Attr_statusup(0,400, [0,0,1,0,0,]),
+		Attr_statusup(400,0, [0,0,1,0,0,]),
+		Awake_secondfast(3),
+		Abstate_invalid("discharge"),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<分散攻撃>敵全体へ分散攻撃(250%)、デッキに単色の精霊が多いほど、さらにダメージアップ(70%)(上限:5段階)",
+		proc: add_cond(ChainVarianceAttack(2.5, 0), as_singleattr_num(0, 0.7)),
+	},
+	ss2: {
+		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ(150%)、さらに隣接する敵に雷属性のダメージ(1000%)",
+		turn: 9,
+		proc: [ss_undefined("炸裂大魔術(隣接威力変動)")],
+	},
+	Lawake: [
+		NEFTJOD(60),
+		Statusup(0,1500),
+	],
+}

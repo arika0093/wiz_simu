@@ -1,0 +1,46 @@
+{
+	name: "幽玄朧月の霊託 ウルーリカ・モレノ",
+	cardno: 6288,
+	imageno: 8135,
+	hp: 5803,
+	atk: 2432,
+	cost: 58,
+	attr: [1,-1],
+	species: [4],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<回復>味方全体のHPを回復(14%)",
+		proc: Heal(0.14, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<状態異常回復&蘇生>1クエストに1回のみ、味方全体のHPを完全回復し、状態異常を回復、さらに味方を100%で蘇生",
+		turn: 10,
+		proc: [ss_heal(1), ss_abstate_cure(), ss_resurrection([1,1,1,1,1], 1)],
+	},
+	awakes: [
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Costdown(2),
+		Fastskill(5),
+		Attr_relief([1,0,0,0,0,],10),
+		Fastskill(5),
+		Statusup(300,0),
+		Panel_boost([0,1,0,0,0,],4),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Spec_statusup(0,500, [4,]),
+		Spec_statusup(500,0, [4,]),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(17%)",
+		proc: Heal(0.17, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<状態異常回復&蘇生>1クエストに1回のみ、味方全体のHPを完全回復し、状態異常を回復、さらに味方を100%で蘇生",
+		turn: 10,
+		proc: [ss_heal(1), ss_abstate_cure(), ss_resurrection([1,1,1,1,1], 1)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

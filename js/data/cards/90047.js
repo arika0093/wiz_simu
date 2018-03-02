@@ -1,0 +1,46 @@
+{
+	name: "永遠に守り抜く決意 ランカ&ブレラ",
+	cardno: 90047,
+	imageno: 7743,
+	hp: 2810,
+	atk: 3733,
+	cost: 48,
+	attr: [2,0],
+	species: [9],
+	islegend: true,
+	ape: "コラボ(マクロス)",
+	as1: {
+		desc: "<連撃>HP80%以上で敵単体を3回連続攻撃(350%)",
+		proc: add_cond(ChainDualAttack(3.5, 0, 3), when_hp_more(0.80)),
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを1遅らせる",
+		turn: 4,
+		proc: [ss_delay_all(1)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Statusup(0,200),
+		Attr_relief([0,1,0,0,0,],10),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<連撃>HP80%以上で敵単体を3回連続攻撃(450%)",
+		proc: add_cond(ChainDualAttack(4.5, 0, 3), when_hp_more(0.80)),
+	},
+	ss2: {
+		desc: "<遅延大魔術>敵全体の攻撃ターンを1遅らせ、雷属性のダメージ(120%)",
+		turn: 6,
+		proc: [ss_damage_all(1.2, [2]), ss_delay_all(1)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+	],
+}

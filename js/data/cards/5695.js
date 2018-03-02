@@ -1,0 +1,45 @@
+{
+	name: "麗しの園の妖精女王 フレイ・エレン",
+	cardno: 5695,
+	imageno: 7516,
+	hp: 2654,
+	atk: 3819,
+	cost: 43,
+	attr: [1,-1],
+	species: [4],
+	islegend: true,
+	as1: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ、リーダー時さらにアップ(350%/450%)",
+		proc: [ChainAttrAttack(3.5, 0, [1,0,0,0,0]), add_cond(ChainAttrAttack(4.5, 0, [1,0,0,0,0]), when_leader())],
+	},
+	ss1: {
+		desc: "<遅延>攻撃ターンを3遅らせる",
+		turn: 10,
+		proc: [ss_delay_all(3)],
+	},
+	awakes: [
+		Costdown(2),
+		Statusup(0,200),
+		Statusup(0,200),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Spec_statusup(0,500, [4,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ、リーダー時さらにアップ(450%/550%)",
+		proc: [ChainAttrAttack(4.5, 0, [1,0,0,0,0]), add_cond(ChainAttrAttack(5.5, 0, [1,0,0,0,0]), when_leader())],
+	},
+	ss2: {
+		desc: "<遅延大魔術>攻撃ターンを3遅らせ、敵全体へ水属性のダメージ(180%)",
+		turn: 15,
+		proc: [ss_delay_all(3), ss_damage_all(1.8, [1])],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

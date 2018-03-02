@@ -1,0 +1,47 @@
+{
+	name: "あらゆる全てがほしい神様",
+	cardno: 6857,
+	imageno: 8829,
+	hp: 2831,
+	atk: 4012,
+	cost: 42,
+	attr: [2,-1],
+	species: [1],
+	islegend: true,
+	ape: "八百万神秘譚Ⅲ(Z)",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ、HP50%以下でさらにダメージアップ(350%/600%)",
+		proc: [ChainAttack(3.5, 5), add_cond(ChainAttack(6.0, 5), when_hp_less(0.5))],
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(200%)、10チェインを消費しスキル反射を無視する",
+		turn: 8,
+		proc: [ss_damage_all(2.0, [2]), ss_chain_cost_skill(10, ss_ignore_skillcounter(), null), ss_consume_own(0.5)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(200,0),
+		Statusup(0,200),
+		Fastskill(1),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ、HP50%以下でさらにダメージアップ(400%/800%)",
+		proc: [ChainAttack(4, 5), add_cond(ChainAttack(8.0, 5), when_hp_less(0.5))],
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(280%)、10チェインを消費しスキル反射を無視する",
+		turn: 10,
+		proc: [ss_damage_all(2.8, [2]), ss_chain_cost_skill(10, ss_ignore_skillcounter(), null), ss_consume_own(0.5)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(300,0),
+	],
+}

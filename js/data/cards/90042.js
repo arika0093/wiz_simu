@@ -1,0 +1,45 @@
+{
+	name: "そっと絡まる機械の指先 アイ",
+	cardno: 90042,
+	imageno: 7550,
+	hp: 4036,
+	atk: 2711,
+	cost: 48,
+	attr: [2,0],
+	species: [6],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ、複属性が火属性だとさらにアップ(30%/80%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,0,1,0,0], [1,0,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<ダメージ強化>3ターン火・雷属性の味方の攻撃力をアップ、5チェインを消費してさらにアップ(60%/100%)",
+		turn: 7,
+		proc: [ss_chain_cost_skill(5, ss_enhance_all(1.0, 3, [1,0,1,0,0]), ss_enhance_all(0.60, 3, [1,0,1,0,0]))],
+	},
+	awakes: [
+		Statusup(200,0),
+		Costdown(2),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Fastskill(1),
+		Fastskill(2),
+		Spec_statusup(300,0, [6,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(0,300, [6,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ、複属性が火属性だとさらにアップ(60%/110%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,0,1,0,0], [1,0,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<ダメージ強化>3ターン火・雷属性の味方の攻撃力をアップ、5チェインを消費してさらにアップ(120%/180%)",
+		turn: 10,
+		proc: [ss_chain_cost_skill(5, ss_enhance_all(1.8, 3, [1,0,1,0,0]), ss_enhance_all(1.2, 3, [1,0,1,0,0]))],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+	],
+}

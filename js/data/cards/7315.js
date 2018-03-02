@@ -1,0 +1,47 @@
+{
+	name: "墜星銃姫 ガンダウナー=ルリアゲハ",
+	cardno: 7315,
+	imageno: 7639,
+	hp: 3247,
+	atk: 5297,
+	cost: 53,
+	attr: [1, -1],
+	species: [8],
+	disable: true,
+	islegend: true,
+	ape: "黄昏メアレスⅠ",
+	as1: {
+		desc: "<連撃>4チェインで敵単体を3回連続攻撃、HP50%以上でさらにダメージアップ(300%/500%)",
+		proc: [ChainDualAttack(3.0, 4, 3), add_cond(ChainDualAttack(5.0, 4, 3), when_hp_more(0.5))],
+	},
+	ss1: {
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(200%)、さらに3ターンの間、水属性のダメージ(200%)",
+		turn: 6,
+		proc: [ss_continue_damage(2.0, 2.0, [1], 3)],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Fastskill(1),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(0, 300),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup(300, 0, [0, 1, 0, 0, 0, ]),
+		Fastskill(2),
+		Attr_statusup(0, 300, [0, 1, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "<連撃>4チェインで敵単体を3回連続攻撃、HP50%以上でさらにダメージアップ(400%/600%)",
+		proc: [ChainDualAttack(4.0, 4, 3), add_cond(ChainDualAttack(6.0, 4, 3), when_hp_more(0.5))],
+	},
+	ss2: {
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(300%)、さらに3ターンの間、水属性のダメージ(300%)",
+		turn: 9,
+		proc: [ss_continue_damage(3.0, 3.0, [1], 3)],
+	},
+	Lawake: [
+		Abstate_invalid("as_sealed"),
+		Attr_statusup(0, 200, [0, 1, 0, 0, 0, ]),
+	],
+}

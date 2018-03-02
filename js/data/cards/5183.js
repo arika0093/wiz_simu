@@ -1,0 +1,46 @@
+{
+	name: "聖鐘は彼女のために ユッカ・エンデ",
+	cardno: 5183,
+	imageno: 7075,
+	hp: 3362,
+	atk: 3732,
+	cost: 48,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(350%)",
+		proc: ChainAttack(3.5, 3),
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせ、毒状態でさらに1遅らせる",
+		turn: 8,
+		proc: [ss_delay_all(ss_is_poison_own(3,2))],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Costdown(2),
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(1),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Spec_statusup(0,200, [9,]),
+		Fastskill(2),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(450%)",
+		proc: ChainAttack(4.5, 3),
+	},
+	ss2: {
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせ、毒状態でさらに1遅らせる",
+		turn: 12,
+		proc: [ss_delay_all(ss_is_poison_own(4,3))],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

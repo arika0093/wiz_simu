@@ -1,0 +1,47 @@
+{
+	name: "たゆたいの幽姫 コレル・シュケル",
+	cardno: 6225,
+	imageno: 8048,
+	hp: 3354,
+	atk: 2177,
+	cost: 45,
+	attr: [2,1],
+	species: [2],
+	islegend: true,
+	is_dist: true,
+	ape: "聖サタニック女学院",
+	as1: {
+		desc: "<回復>水・雷属性の味方のHPを回復(12%)",
+		proc: Heal(0.12, [0,1,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<割合削り>スキル反射を無視し、敵単体のHPを10%減少させる",
+		turn: 8,
+		proc: [ss_ratiodamage_s(0.10), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>水・雷属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [0,1,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<割合削り>スキル反射を無視し、敵単体のHPを20%減少させる",
+		turn: 10,
+		proc: [ss_ratiodamage_s(0.20), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

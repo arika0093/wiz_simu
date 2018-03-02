@@ -1,0 +1,45 @@
+{
+	name: "南瓜のウィッカ タバサ・カトリーヌ",
+	cardno: 4857,
+	imageno: 6592,
+	hp: 3343,
+	atk: 3457,
+	cost: 42,
+	attr: [2, -1],
+	species: [9],
+	awakes: [
+		Statusup(0, 200),
+		Statusup(400, 0),
+		Statusup(0, 200),
+		Statusup(0, 200),
+		Fastskill(1),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(1),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+	as1: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃/計350％",
+		proc: ChainDualAttack(3.5, 3, 3),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体への雷属性のダメージ(120％)",
+		turn: 4,
+		proc: [ss_damage_all(1.2, [2])],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<連撃>3チェインで敵単体を6回連続攻撃/計450％",
+		proc: ChainDualAttack(4.5, 3, 6),
+	},
+	ss2: {
+		desc: "<効果解除大魔術>敵全体のカウンターを解除し、雷属性のダメージ(180％)",
+		turn: 12,
+		proc: [ss_break_attackcounter("all"), ss_damage_all(1.8, [2])],
+	},
+}

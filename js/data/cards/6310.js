@@ -1,0 +1,47 @@
+{
+	name: "不滅の主従 キワム&アウデアムス",
+	cardno: 6310,
+	imageno: 5284,
+	hp: 2545,
+	atk: 5761,
+	cost: 54,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	disable: true,
+	ape: "幻魔特区スザクⅠ",
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)、10チェインで更にダメージアップ(600%)",
+		proc: [ChainAttack(4.5, 5), ChainAttack(6.0, 10)],
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(350%)",
+		turn: 7,
+		proc: [ss_damage_all(3.5, [0]), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(0,200),
+		Fastskill(1),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		NEFTJOD(30),
+		Spec_statusup(0,200, [8,]),
+		Fastskill(2),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(550%)、10チェインで更にダメージアップ(700%)",
+		proc: [ChainAttack(5.5, 5), ChainAttack(7.0, 10)],
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(600%)",
+		turn: 9,
+		proc: [ss_damage_all(6.0, [0]), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

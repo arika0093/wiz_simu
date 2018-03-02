@@ -1,0 +1,47 @@
+{
+	name: "機哭啾啾 ウォーブリンガー=ミリィ",
+	cardno: 8634,
+	imageno: 9361,
+	hp: 3618,
+	atk: 3350,
+	cost: 54,
+	attr: [0,2],
+	species: [8],
+	islegend: true,
+	ape: "黄昏メアレスⅡ",
+	as1: {
+		desc: "<複属性攻撃強化>10チェインで火属性の攻撃力をアップ(30%)、複属性が雷属性だとさらにアップ(170%)",
+		proc: [ChainEnhance_SubAttr(0.3, 2.0, [1,0,0,0,0], [0,0,1,0,0], 10)],
+	},
+	ss1: {
+		desc: "<斬撃大魔術>3ターン溜めた後、スキル反射を無視し、火・雷属性の3連撃(300%)、さらに連撃数分チェインプラス",
+		turn: 1,
+		charged: 3,
+		proc: [ss_damage_slash(3.0, [0,2], 3), ss_ignore_skillcounter()],
+	},
+	as2: {
+		desc: "<複属性攻撃強化>10チェインで火属性の攻撃力をアップ(60%)、複属性が雷属性だとさらにアップ(170%)",
+		proc: [ChainEnhance_SubAttr(0.6, 2.3, [1,0,0,0,0], [0,0,1,0,0], 10)],
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の5回連続ダメージ(650%)",
+		turn: 6,
+		proc: [ss_damage_s(6.5, [0,2], 5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(20),
+		Fastskill(1),
+		Attr_statusup(0,200,[1,0,1,0,0,]),
+		Attr_statusup(200,0,[1,0,1,0,0,]),
+		Panel_boost([1,0,0,0,0,],4),
+		NEFTJOD(60),
+		Attr_relief([1,0,0,0,0,],20),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,1,0,0,]),
+		Heal_afterbattle(10),
+	],
+	Lawake: [
+		Attr_statusup(200,0,[1,0,1,0,0,]),
+		Attr_statusup(0,200,[1,0,1,0,0,]),
+	],
+}

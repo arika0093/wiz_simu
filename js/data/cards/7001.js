@@ -1,0 +1,46 @@
+{
+	name: "募る想いに彩られ アーシア&ニコラ",
+	cardno: 7001,
+	imageno: 6200,
+	hp: 5540,
+	atk: 1804,
+	cost: 51,
+	attr: [1,2],
+	species: [9],
+	islegend: true,
+	ape: "クロム・マグナⅤ",
+	as1: {
+		desc: "<攻撃強化・回復>水・雷属性の味方のHPを回復(13%)、さらに水・雷属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.13, [0,1,1,0,0], 0), ChainEnhance(0.3, [0,1,1,0,0], 0)],
+	},
+	ss1: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを1早め、敵全体の攻撃ターンを1遅らせる",
+		turn: 6,
+		proc: [ss_skillboost(1), ss_delay_all(1)],
+	},
+	awakes: [
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Heal_afterbattle(10),
+		Fastskill(1),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_sattr(200,0, [0,1,0,0,0,], 200,0, [0,0,1,0,0,]),
+		Attr_statusup_sattr(0,200, [0,1,0,0,0,], 0,200, [0,0,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>水・雷属性の味方のHPを回復(16%)、さらに水・雷属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.16, [0,1,1,0,0], 0), ChainEnhance(0.3, [0,1,1,0,0], 0)],
+	},
+	ss2: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵全体の攻撃ターンを2遅らせる",
+		turn: 9,
+		proc: [ss_skillboost(2), ss_delay_all(2)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Statusup(500,0),
+	],
+}

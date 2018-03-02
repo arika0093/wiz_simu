@@ -1,0 +1,46 @@
+{
+	name: "死界の焔 ヴィヴィ&イザヴェリ",
+	cardno: 4438,
+	imageno: 6132,
+	hp: 3468,
+	atk: 2554,
+	cost: 46,
+	attr: [0, -1],
+	species: [2],
+	disable: true,
+	awakes: [
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0], 1),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Spec_statusup(0, 200, [2, 9]),
+		Panel_boost([1,0,0,0,0], 1),
+		Spec_statusup(200, 0, [2, 9]),
+		Fastskill(2),
+		Spec_statusup(0, 200, [2, 9]),
+		Spec_statusup(200, 0, [2, 9]),
+	],
+	as1: {
+		desc: "<攻撃強化>味方のMAXHP10％を使い、火属性の味方の攻撃力をアップ/+50％",
+		proc: add_cond(ChainEnhance(0.5, [1,0,0,0,0], 0), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(260％)",
+		turn: 7,
+		proc: [ss_damage_all(2.6, [0]), ss_consume_own(0.5)],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<攻撃強化>味方のMAXHP10％を使い、火属性の味方の攻撃力をアップ/+70％",
+		proc: add_cond(ChainEnhance(0.7, [1,0,0,0,0], 0), as_consume_all(0.1)),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(330％)",
+		turn: 9,
+		proc: [ss_damage_all(3.3, [0]), ss_consume_own(0.5)],
+	},
+}

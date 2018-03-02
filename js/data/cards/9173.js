@@ -1,0 +1,46 @@
+{
+	name: "ついに目覚めし戦獣 シロ",
+	cardno: 9173,
+	imageno: 11409,
+	hp: 5101,
+	atk: 794,
+	cost: 39,
+	attr: [1,3],
+	species: [7],
+	islegend: true,
+	ape: "幻魔特区RELOADED",
+	is_dist: true,
+	as1: {
+		desc: "<回復>味方全体のHPを回復(13%)",
+		proc: Heal(0.13, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水・光属性化",
+		turn: 3,
+		proc: [ss_panel_change([0,1,0,1,0])],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ",1),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],2),
+		Statusup(0,200),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(16%)",
+		proc: Heal(0.16, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・光属性化し、攻撃力アップの効果を付与(100%)",
+		turn: 6,
+		proc: [ss_panel_change([0,1,0,1,0]), panel_attackup(1.0)],
+	},
+	Lawake: [
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+	],
+}

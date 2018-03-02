@@ -1,0 +1,48 @@
+{
+	name: "甘くて冷たい微笑み リヴェータ",
+	cardno: 7902,
+	imageno: 6105,
+	hp: 2735,
+	atk: 6455,
+	cost: 57,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	ape: "グリコⅡ",
+	as1: {
+		desc: "<属性特効連撃>水属性の敵単体へ特効5連撃(400%)",
+		proc: ChainDualAttrAttack(4.0, 0, 5, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<ダメージ強化>4ターン全属性の味方の攻撃力をアップ、HP50%以下で更にアップ(50%/150%)",
+		turn: 5,
+		proc: [ss_enhance_all(ss_hp_less(0.5, 1.5, 0.5), 4, [1, 1, 1, 1, 1])],
+	},
+	as2: {
+		desc: "<属性特効連撃>水属性の敵単体へ特効5連撃(500%)",
+		proc: ChainDualAttrAttack(5.0, 0, 5, [0,1,0,0,0]),
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン全属性の味方の攻撃力をアップ、HP50%以下で更にアップ(100%/250%)",
+		turn: 8,
+		proc: [ss_enhance_all(ss_hp_less(0.5, 2.5, 1.0), 4, [1, 1, 1, 1, 1])],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		NEFTJOD(30),
+		Attr_statusup(0,400,[0,0,1,0,0,]),
+		Attr_statusup(400,0,[0,0,1,0,0,]),
+		Fastskill(2),
+		Attr_relief([0,1,0,0,0,],20),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	Lawake: [
+		Attr_statusup(0, 200, [1, 1, 1, 1, 1, ]),
+		Awake_SpecialSkill("ss_heal", 0.5),
+		Statusup(0,1000),
+		Attr_statusup(0,100,[0,0,1,0,0,]),
+	],
+}

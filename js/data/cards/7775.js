@@ -1,0 +1,47 @@
+{
+	name: "ナース機神 メカガトリン -想世-",
+	cardno: 7775,
+	imageno: 9857,
+	hp: 3287,
+	atk: 2427,
+	cost: 43,
+	attr: [0,2],
+	species: [6],
+	islegend: true,
+	ape: "魔轟三鉄傑 対 地獄三十六歌仙",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(30%/70%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.7, [1,0,0,0,0], [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<複属性ダメージ強化>5ターンの間、火属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(80%/130%)、Lモードの精霊の数に応じてさらにアップ(30%)",
+		turn: 11,
+		proc: [ss_enhance_all_subattr(ss_legendnum(0.8, 0.3), ss_legendnum(1.3, 0.3), 5, [1,0,0,0,0], [0,0,1,0,0])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(1),
+		Spec_statusup(200,0, [6,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Spec_statusup(0,200, [6,]),
+		Fastskill(2),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,0,1,0,0,]),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,200, [0,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(60%/100%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.0, [1,0,0,0,0], [0,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<複属性ダメージ強化>5ターンの間、火属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(80%/130%)、Lモードの精霊の数に応じてさらにアップ(30%)",
+		turn: 11,
+		proc: [ss_enhance_all_subattr(ss_legendnum(0.8, 0.3), ss_legendnum(1.3, 0.3), 5, [1,0,0,0,0], [0,0,1,0,0])],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

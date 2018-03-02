@@ -1,0 +1,47 @@
+{
+	name: "決意の太陽 ソラ・デ・エーレ	",
+	cardno: 8686,
+	imageno: 10859,
+	hp: 2853,
+	atk: 4602,
+	cost: 36,
+	attr: [0,-1],
+	species: [1],
+	islegend: true,
+	ape: "エタクロⅢ",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(200%)、デッキに単色の精霊が多いほど、さらにダメージアップ(60%)(上限:5段階)",
+		proc: add_cond(ChainAttrAttack(2.0, 0, [0,0,1,0,0]), as_singleattr_num(0, 0.6)),
+	},
+	ss1: {
+		desc: "<反動大魔術・蝕>スキル反射を無視し、敵単体へ火属性のダメージ(精霊数×200%)(スキル使用後、味方全員が1ターン封印状態に)",
+		turn: 5,
+		proc: [ss_damage_s(ss_seal_all_cond(2.0), [0], 1), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(10),
+		Attr_statusup_oattr(0,200, [1,0,0,0,0,]),
+		Attr_statusup_oattr(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		NEFTJOD(30),
+		Abstate_invalid("as_sealed"),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(300%)、デッキに単色の精霊が多いほど、さらにダメージアップ(60%)(上限:5段階)",
+		proc: add_cond(ChainAttrAttack(3.0, 0, [0,0,1,0,0]), as_singleattr_num(0, 0.6)),
+	},
+	ss2: {
+		desc: "<反動大魔術・蝕>スキル反射を無視し、敵単体へ火属性のダメージ(精霊数×240%)(スキル使用後、味方全員が1ターン封印状態に)",
+		turn: 7,
+		proc: [ss_damage_s(ss_seal_all_cond(2.4), [0], 1), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+}

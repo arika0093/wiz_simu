@@ -1,0 +1,45 @@
+{
+	name: "突撃！改2号機 アスカ",
+	cardno: 6613,
+	imageno: 8644,
+	hp: 4009,
+	atk: 4502,
+	cost: 53,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(エヴァⅠ)",
+	as1: {
+		desc: "<種族攻撃強化・攻撃強化・攻撃>3チェインで火属性の味方の攻撃力をアップ、戦士ならさらにアップ(20%/50%)し、敵単体へのダメージアップ(200%)",
+		proc: [ChainEnhance(0.2, [1,0,0,0,0], 3), ChainSpecEnhance(0.5, [1,0,0,0,0], [9], 3), ChainAttack(2.0, 3)],
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの80%を使い敵全体へダメージ(400%)",
+		turn: 7,
+		proc: [ss_damage_all(4.0, [0]), ss_ignore_skillcounter(), ss_consume_own(0.8)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],3),
+		NEFTJOD(30),
+		Statusup(200,0),
+		Fastskill(3),
+		Statusup(0,200),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Heal_afterbattle(10),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<種族攻撃強化・攻撃強化・攻撃>3チェインで火属性の味方の攻撃力をアップ、戦士ならさらにアップ(40%/70%)し、敵単体へのダメージアップ(200%)",
+		proc: [ChainEnhance(0.4, [1,0,0,0,0], 3), ChainSpecEnhance(0.7, [1,0,0,0,0], [9], 3), ChainAttack(2.0, 3)],
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの80%を使い敵全体へダメージ(700%)",
+		turn: 9,
+		proc: [ss_damage_all(7.0, [0]), ss_ignore_skillcounter(), ss_consume_own(0.8)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+}

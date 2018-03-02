@@ -1,0 +1,46 @@
+{
+	name: "悠の照神 ステイシー・マーキュリー",
+	cardno: 8703,
+	imageno: 5418,
+	hp: 3021,
+	atk: 6734,
+	cost: 50,
+	attr: [0,-1],
+	species: [1],
+	islegend: true,
+	ape: "エタクロⅠ",
+	as1: {
+		desc: "<属性特効連撃>雷属性の敵単体へ特効6連撃(400%)",
+		proc: ChainDualAttrAttack(4.0, 0, 6, [0,0,1,0,0]),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火属性化",
+		turn: 2,
+		proc: [ss_panel_change([1,0,0,0,0])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_oattr(0,400, [1,0,0,0,0,]),
+		Attr_statusup_oattr(400,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(1),
+		Abstate_invalid("as_sealed"),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<属性特効連撃>雷属性の敵単体へ特効6連撃(500%)",
+		proc: ChainDualAttrAttack(5.0, 0, 6, [0,0,1,0,0]),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火属性化し、チェインがプラス2の効果と攻撃力アップの効果を付与(50%)",
+		turn: 5,
+		proc: [ss_panel_change([1,0,0,0,0]), panel_attackup(0.5), panel_chainplus(2)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Statusup(0,1000),
+	],
+}

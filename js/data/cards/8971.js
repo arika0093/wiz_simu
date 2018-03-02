@@ -1,0 +1,47 @@
+{
+	name: "世紀末覇王 ラオウ",
+	cardno: 8971,
+	imageno: 11004,
+	hp: 2045,
+	atk: 3585,
+	cost: 42,
+	attr: [2,4],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(北斗の拳)",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(500%)",
+		proc: add_cond(ChainAttack(5.0, 0), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ(400%)、さらに水・光属性の敵には特効ダメージ(800%)",
+		turn: 7,
+		proc: [ss_damage_s(special_attr([0,1,0,1,0], 12, 4), [2], 1)],
+	},
+	awakes: [
+		Fastskill(1),
+		NEFTJOD(30),
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],3),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Fastskill(2),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 200,0, [0,0,0,0,1,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,200, [0,0,0,0,1,]),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<攻撃>敵単体へのダメージアップ(500%)",
+		proc: ChainAttack(5.0, 0),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ(400%)、さらに水・光属性の敵には特効ダメージ(1500%)",
+		turn: 10,
+		proc: [ss_damage_s(special_attr([0,1,0,1,0], 19, 4), [2], 1)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Awake_noeffect("無想転生",1),
+	],
+}

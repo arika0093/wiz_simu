@@ -1,0 +1,46 @@
+{
+	name: "驀進の衝角騎嬢 アビー・パトリシア",
+	cardno: 8283,
+	imageno: 7370,
+	hp: 3207,
+	atk: 5873,
+	cost: 56,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "DL限定精霊",
+	as1: {
+		desc: "<属性特効>3チェインで火属性の敵単体へ特効ダメージ(525%)",
+		proc: ChainAttrAttack(5.25, 3, [1, 0, 0, 0, 0]),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ水属性のダメージ(400%)、さらに火属性の敵には特効ダメージ(1050%)",
+		turn: 9,
+		proc: [ss_damage_all(special_attr([1,0,0,0,0], 14.5, 4.0), [1])],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_relief([0,0,1,0,0,],20),
+		Fastskill(3),
+		Attr_statusup(0,400, [0,1,0,0,0,]),
+		Attr_statusup(400,0, [0,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+		Awake_noeffect("スキル反射見破り",1),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで火属性の敵単体へ特効ダメージ(625%)",
+		proc: ChainAttrAttack(6.25, 3, [1, 0, 0, 0, 0]),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ水属性のダメージ(400%)、さらに火属性の敵には特効ダメージ(1400%)",
+		turn: 12,
+		proc: [ss_damage_all(special_attr([1,0,0,0,0], 18.0, 4.0), [1])],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+}

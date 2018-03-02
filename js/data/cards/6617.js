@@ -1,0 +1,46 @@
+{
+	name: "槍を掴むMark.06 渚カヲル",
+	cardno: 6617,
+	imageno: 8648,
+	hp: 2921,
+	atk: 3430,
+	cost: 51,
+	attr: [1,2],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(エヴァⅠ)",
+	as1: {
+		desc: "<パネル色数攻撃>7チェインかつパネルが2色でダメージアップ、3色でさらにアップ(750%/900%)",
+		proc: ChainPanelsAttack(0, 7.5, 9.0, 7),
+	},
+	ss1: {
+		desc: "<効果解除>敵全体のガード&ダメージブロックを解除する",
+		turn: 4,
+		proc: [ss_break_attrguard("all"), ss_break_dblock("all")],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Statusup(0,200),
+		Attr_relief([1,1,1,1,1,],10),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<パネル色数攻撃>7チェインかつパネルが2色でダメージアップ、3色でさらにアップ(850%/1000%)",
+		proc: ChainPanelsAttack(0, 8.5, 10.0, 7),
+	},
+	ss2: {
+		desc: "<効果解除大魔術>スキル反射を無視し、敵全体のガード&ダメージブロックを解除し、水属性のダメージ(300%)",
+		turn: 7,
+		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(3.0, [1]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+	],
+}

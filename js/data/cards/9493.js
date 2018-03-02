@@ -1,0 +1,46 @@
+{
+	name: "優しさに囲まれて ルチル・メイ",
+	cardno: 9493,
+	imageno: 7834,
+	hp: 5303,
+	atk: 2245,
+	cost: 54,
+	attr: [1,3],
+	species: [9],
+	islegend: true,
+	ape: "DL限定精霊",
+	as1: {
+		desc: "<回復>味方全体のHPを回復(14%)",
+		proc: Heal(0.14, [1, 1, 1, 1, 1], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,1,1,0,0])],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,1,1,1,]),
+		Attr_statusup(200,0, [1,1,1,1,1,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(5),
+		Attr_relief([1,1,1,1,1,],10),
+		Heal_afterbattle(10),
+		Attr_statusup(0,300, [1,1,1,1,1,]),
+		Attr_statusup(300,0, [1,1,1,1,1,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(17%)",
+		proc: Heal(0.17, [1, 1, 1, 1, 1], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、ダメージ35%軽減の効果を付与",
+		turn: 7,
+		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.35)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,300, [1,1,1,1,1,]),
+	],
+}

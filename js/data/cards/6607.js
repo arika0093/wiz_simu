@@ -1,0 +1,46 @@
+{
+	name: "光線をかわし反撃する 第6の使徒",
+	cardno: 6607,
+	imageno: 8650,
+	hp: 2524,
+	atk: 3521,
+	cost: 37,
+	attr: [2,-1],
+	species: [3],
+	islegend: true,
+	ape: "コラボ(エヴァⅠ)",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(350%)",
+		proc: [ChainAttrAttack(3.5, 0, [0,1,0,0,0])],
+	},
+	ss1: {
+		desc: "<多弾魔術>敵単体へ雷属性の5回連続ダメージ(150%)、5チェインを消費しさらに5回連続ダメージ",
+		turn: 6,
+		proc: [ss_damage_s(1.5, [2], ss_chain_cost(5, 10, 5))],
+	},
+	awakes: [
+		Statusup(0,100),
+		NEFTJOD(30),
+		Statusup(100,0),
+		Fastskill(1),
+		Statusup(0,100),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(450%)",
+		proc: [ChainAttrAttack(4.5, 0, [0,1,0,0,0])],
+	},
+	ss2: {
+		desc: "<多弾魔術>敵単体へ雷属性の5回連続ダメージ(350%)、5チェインを消費しさらに5回連続ダメージ",
+		turn: 9,
+		proc: [ss_damage_s(3.5, [2], ss_chain_cost(5, 10, 5))],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+	],
+}

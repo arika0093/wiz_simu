@@ -1,0 +1,35 @@
+{
+	name: "魔界懲罰師 ベンティーン・シリカ",
+	cardno: 6255,
+	imageno: 8097,
+	hp: 2228,
+	atk: 2815,
+	cost: 26,
+	attr: [1,4],
+	species: [2],
+	islegend: false,
+	ape: "大魔道杯 in 聖サタニック女学院",
+	is_dist: true,
+	as1: {
+		desc: "<全体攻撃>敵の数に関わらず敵全体へダメージアップ(140%)",
+		proc: ChainAllAttack(1.4, 0),
+	},
+	ss1: {
+		desc: "<状態異常回復&蘇生>自分を犠牲に味方全体のHPを完全回復し、状態異常を回復、さらに水属性の味方を50%で蘇生",
+		turn: 12,
+		proc: [ss_heal(1), ss_abstate_cure(), ss_resurrection([0,1,0,0,0], 0.5), ss_consume_own(1)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Statusup(0,200),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Statusup(300,0),
+		Attr_relief([0,0,0,1,1,],10),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_sattr(0, 200, [0,1,0,0,0], 0, 100, [0,0,0,0,1]),
+
+	],
+}

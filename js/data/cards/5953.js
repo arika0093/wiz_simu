@@ -1,0 +1,46 @@
+{
+	name: "永劫の超時空輪舞 シェリル&ランカ",
+	cardno: 5953,
+	imageno: 7735,
+	hp: 3129,
+	atk: 3687,
+	cost: 46,
+	attr: [0,2],
+	species: [9],
+	islegend: true,
+	ape: "コラボ(マクロス)",
+	as1: {
+		desc: "<種族特効>4チェインでダメージアップ、物質の敵へさらにダメージアップ(400%/700%)",
+		proc: [ChainAttack(4.0, 4), ChainSpecAttack(7.0, 4, [6])],
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップし(上限値:2000)、さらに味方全体のHPを回復(25%)",
+		turn: 5,
+		proc: [ss_statusup_all([500, 500], [2000, 2000], -1), ss_heal(0.25)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		Fastskill(2),
+		Spec_relief([6], 30),
+	],
+	as2: {
+		desc: "<種族特効>4チェインでダメージアップ、物質の敵へさらにダメージアップ(500%/800%)",
+		proc: [ChainAttack(5.0, 4), ChainSpecAttack(8.0, 4, [6])],
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを1000アップし(上限値:2000)、さらに味方全体のHPを回復(25%)",
+		turn: 8,
+		proc: [ss_statusup_all([1000, 1000], [2000, 2000], -1), ss_heal(0.25)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+	],
+}

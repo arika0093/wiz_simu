@@ -1,0 +1,46 @@
+{
+	name: "命と心に咲く光 キワム・ハチスカ",
+	cardno: 9219,
+	imageno: 8159,
+	hp: 3659,
+	atk: 3674,
+	cost: 58,
+	attr: [0,2],
+	species: [8],
+	islegend: true,
+	ape: "幻魔特区スザクⅢ",
+	as1: {
+		desc: "<複属性攻撃強化>7チェインで火属性の攻撃力をアップ(80%)、複属性が雷属性だとさらにアップ(50%)",
+		proc: ChainEnhance_SubAttr(0.8, 1.3, [1,0,0,0,0], [0,0,1,0,0], 7),
+	},
+	ss1: {
+		desc: "<カウンター>5ターンの間、スキルカウンター待機(カウンター時、ダメージアップ(300%))",
+		turn: 12,
+		proc: [ss_skillcounter(3.0, 5)],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ",2),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Fastskill(4),
+		Attr_relief([1,1,1,1,1,],10),
+		Panel_boost([1,0,0,0,0,],4),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,1,0,0,]),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+		Awake_Chainboost(1),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>7チェインで火属性の攻撃力をアップ(110%)、複属性が雷属性だとさらにアップ(50%)",
+		proc: ChainEnhance_SubAttr(1.1, 1.6, [1,0,0,0,0], [0,0,1,0,0], 7),
+	},
+	ss2: {
+		desc: "<カウンター>5ターンの間、スキルカウンター待機(カウンター時、ダメージアップ(400%))",
+		turn: 15,
+		proc: [ss_skillcounter(4.0, 5)],
+	},
+	Lawake: [
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Statusup(1000,0),
+	],
+}

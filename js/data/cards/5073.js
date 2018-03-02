@@ -1,0 +1,46 @@
+{
+	name: "求む声に辿り着き コノハ・ヨリヒメ",
+	cardno: 5073,
+	imageno: 6813,
+	hp: 3432,
+	atk: 2558,
+	cost: 45,
+	attr: [1, 0],
+	species: [9],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<攻撃強化>5チェインで火・水属性の味方の攻撃力をアップ、パネルの色が2色以上でさらにアップ(60%/90%)",
+		proc: [ChainPanelsEnhance(0.6,0.9,0.9,[1,1,0,0,0],5)],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>味方全体のMAXHPの50%を使い、ジャンルパネルにチェインがプラス3の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(3), ss_consume_all(0.5)],
+	},
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		NEFTJOD(30),
+		Fastskill(1),
+		Statusup(200, 0),
+		Attr_statusup(200, 0, [1, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_relief([0, 0, 1, 0, 0, ], 20),
+		Fastskill(2),
+		Attr_statusup(200, 0, [1, 1, 0, 0, 0, ]),
+		Spec_statusup(200, 0, [1, 4, 9, ]),
+	],
+	as2: {
+		desc: "<攻撃強化>5チェインで火・水属性の味方の攻撃力をアップ、パネルの色が2色以上でさらにアップ(90%/120%)",
+		proc: [ChainPanelsEnhance(0.9, 1.2, 1.2, [1, 1, 0, 0, 0], 5)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>味方全体のMAXHPの50%を使い、ジャンルパネルにチェインがプラス4の効果を付与",
+		turn: 8,
+		proc: [panel_chainplus(4), ss_consume_all(0.5)],
+	},
+	Lawake: [
+		Statusup(500, 0),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+	],
+}

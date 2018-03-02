@@ -1,0 +1,46 @@
+{
+	name: "聖域に燈る光 シャロン&テオドール",
+	cardno: 9591,
+	imageno: 9723,
+	hp: 3642,
+	atk: 3662,
+	cost: 57,
+	attr: [1,2],
+	species: [3],
+	islegend: true,
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ、7チェインでさらにダメージアップ(150%/250%)",
+		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.5, 7)],
+	},
+	ss1: {
+		desc: "<複属性ダメージ強化>5ターンの間、水属性の攻撃力をアップ、複属性が雷だとさらにアップ(100%/350%)。さらに味方属性のHPを回復する(50%)",
+		turn: 8,
+		proc: [ss_enhance_all_subattr(1.0, 2.5, 5, [0,1,0,0,0], [0,0,1,0,0]), ss_heal(0.5)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,1,1,1,]),
+		Attr_statusup(200,0, [1,1,1,1,1,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(4),
+		Attr_relief([1,1,1,1,1,],20),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,1,0,0,]),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,1,0,0,]),
+		Heal_afterbattle(10),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ、7チェインでさらにダメージアップ(180%/280%)",
+		proc: [ChainAllAttack(1.8, 0), ChainAllAttack(2.8, 7)],
+	},
+	ss2: {
+		desc: "<複属性ダメージ強化>5ターンの間、水属性の攻撃力をアップ、複属性が雷だとさらにアップ(100%/350%)。さらに味方属性のHPを完全回復する",
+		turn: 10,
+		proc: [ss_enhance_all_subattr(1.0, 3.5, 5, [0,1,0,0,0], [0,0,1,0,0]), ss_heal(1)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,200, [1,1,1,1,1,]),
+		NEFTJOD(30),
+	],
+}

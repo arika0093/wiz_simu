@@ -1,0 +1,47 @@
+{
+	name: "超時空生命体 バジュラ",
+	cardno: 6024,
+	imageno: 7841,
+	hp: 2083,
+	atk: 2664,
+	cost: 40,
+	attr: [1, 4],
+	species: [6],
+	islegend: true,
+	ape: "コラボ(マクロス)",
+	is_dist: true,
+	as1: {
+		desc: "<種族特効>種族が物質の敵単体へ特効ダメージ(600%)",
+		proc: ChainSpecAttack(6.0, 0, [6]),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水・闇属性化",
+		turn: 4,
+		proc: [ss_panel_change([0,1,0,0,1])],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_relief([1, 0, 0, 0, 0, ], 10),
+		Statusup(200, 0),
+		Attr_statusup(200, 0, [0, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Statusup(0, 200),
+		Attr_statusup(0, 200, [0, 1, 0, 0, 0, ]),
+		Fastskill(2),
+		Spec_relief([6], 20),
+	],
+	as2: {
+		desc: "<種族特効>種族が物質の敵単体へ特効ダメージ(700%)",
+		proc: ChainSpecAttack(7.0, 0, [6]),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・闇属性化し、攻撃力アップの効果を付与(30%)",
+		turn: 7,
+		proc: [ss_panel_change([0,1,0,0,1]), panel_attackup(0.30)],
+	},
+	Lawake: [
+		Statusup(0, 400),
+		Statusup(400, 0),
+	],
+}

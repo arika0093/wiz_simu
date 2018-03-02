@@ -1,0 +1,45 @@
+{
+	name: "絶淵魔氷帝 シヴァ・ヴィルヘルム",
+	cardno: 6147,
+	imageno: 8000,
+	hp: 2644,
+	atk: 5975,
+	cost: 57,
+	attr: [1, -1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<全体攻撃>残りHPが80%以上で敵の数に関わらず敵全体へダメージアップ(200%)",
+		proc: add_cond(ChainAllAttack(2.0, 0), when_hp_more(0.80)),
+	},
+	ss1: {
+		desc: "<割合削り>敵単体のHPを20%減少させる、5チェインを消費しさらに15%減少させる",
+		turn: 9,
+		proc: [ss_chain_cost_skill(5, ss_ratiodamage_s(0.35), ss_ratiodamage_s(0.20))],
+	},
+	awakes: [
+		Statusup(0, 300),
+		Statusup(300, 0),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Costdown(4),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Fastskill(1),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Fastskill(2),
+		Attr_statusup(0, 200, [0, 1, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "<全体攻撃>残りHPが80%以上で敵の数に関わらず敵全体へダメージアップ(240%)",
+		proc: add_cond(ChainAllAttack(2.4, 0), when_hp_more(0.80)),
+	},
+	ss2: {
+		desc: "<割合削り>敵単体のHPを25%減少させる、5チェインを消費しさらに15%減少させる",
+		turn: 12,
+		proc: [ss_chain_cost_skill(5, ss_ratiodamage_s(0.40), ss_ratiodamage_s(0.25))],
+	},
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+	],
+}

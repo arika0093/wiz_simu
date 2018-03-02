@@ -1,0 +1,47 @@
+{
+	name: "神託の啓示者 レオナ・ライニール",
+	cardno: 7206,
+	imageno: 9235,
+	hp: 3248,
+	atk: 2781,
+	cost: 37,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	ape: "レイド Soul of Kings",
+	is_dist: true,
+	as1: {
+		desc: "<回復>味方全体のHPを回復(12%)",
+		proc: Heal(0.12, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水属性化",
+		turn: 2,
+		proc: [ss_panel_change([0,1,0,0,0])],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ",1),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],1),
+		Statusup(200,0),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_relief([0,1,0,0,0,],10),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(14%)",
+		proc: Heal(0.14, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水属性化し、ダメージ15%軽減の効果を付与",
+		turn: 5,
+		proc: [panel_attr_guard([1,1,1,1,1], 0.15), ss_panel_change([0,1,0,0,0])],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

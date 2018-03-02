@@ -1,0 +1,46 @@
+{
+	name: "無敵の美少女戦士 セーラームーン",
+	cardno: 3995,
+	imageno: 5682,
+	hp: 2259,
+	atk: 1932,
+	cost: 40,
+	attr: [2, -1],
+	species: [8],
+	awakes: [
+		Costdown(2),
+		Statusup(100, 0),
+		Fastskill(1),
+		Statusup(0, 100),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Fastskill(1),
+		Statusup(0, 200),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Spec_statusup(200, 0, [8, ]),
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
+	],
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ/130％",
+		proc: ChainAllAttack(1.3, 0),
+	},
+	ss1: {
+		desc: "<ダメージブロック>6ターン500以下の全属性ダメージを無効化する",
+		turn: 8,
+		proc: [ss_damageblock_all(500, 6)],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ/140％",
+		proc: ChainAllAttack(1.4, 0),
+	},
+	ss2: {
+		desc: "<ダメージブロック>6ターン600以下の全属性ダメージを無効化する",
+		turn: 10,
+		proc: [ss_damageblock_all(600, 6)],
+	},
+}

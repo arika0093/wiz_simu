@@ -1,0 +1,47 @@
+{
+	name: "不滅への方程式 ヴィラム・オルゲン",
+	cardno: 7021,
+	imageno: 6490,
+	hp: 3333,
+	atk: 5233,
+	cost: 53,
+	attr: [2,-1],
+	species: [8],
+	disable: true,
+	islegend: true,
+	ape: "ドルキマスⅠ",
+	as1: {
+		desc: "<攻撃強化・回復>雷属性の味方のHPを回復(11%)、雷属性の味方の攻撃力をアップ(40%)",
+		proc: [Heal(0.11, [0,0,1,0,0], 0), ChainEnhance(0.4, [0,0,1,0,0], 0)],
+	},
+	ss1: {
+		desc: "<遅延>敵単体の攻撃ターンを1遅らせる",
+		turn: 4,
+		proc: [ss_delay_s(1)],
+	},
+	awakes: [
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_relief([0,0,1,0,0,],20),
+	],
+	as2: {
+		desc: "<攻撃強化>味方のMAXHP20%を使い、雷属性の味方の攻撃力をアップ(120%)",
+		proc: [add_cond(ChainEnhance(1.2, [0,0,1,0,0], 0), as_consume_all(0.2))],
+	},
+	ss2: {
+		desc: "<遅延大魔術>敵単体の攻撃ターンを1遅らせ、雷属性のダメージ(300%)",
+		turn: 5,
+		proc: [ss_delay_s(1), ss_damage_s(3.0, [2])],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

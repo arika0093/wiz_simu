@@ -1,0 +1,47 @@
+{
+	name: "漆黒の極巨星 アルドベリク・ゴドー",
+	cardno: 7710,
+	imageno: 6305,
+	hp: 3247,
+	atk: 3449,
+	cost: 53,
+	attr: [0,2],
+	species: [2],
+	islegend: true,
+	ape: "ウィズセレクション",
+	as1: {
+		desc: "<種族特効>4チェインでダメージアップ、天使の敵へさらにダメージアップ(400%/600%)",
+		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [3])],
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、MAXHPの50%を使い敵単体へ火・雷属性の5回連続ダメージ(450%)",
+		turn: 5,
+		proc: [ss_damage_s(4.5, [0,2], 5), ss_consume_own(0.5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,300, [1,0,1,0,0,]),
+		Attr_statusup(300,0, [1,0,1,0,0,]),
+		Abstate_invalid("as_sealed"),
+		Abstate_invalid("discharge"),
+	],
+	as2: {
+		desc: "<種族特効>4チェインでダメージアップ、天使の敵へさらにダメージアップ(500%/700%)",
+		proc: [ChainAttack(5.0, 4), ChainSpecAttack(7.0, 4, [3])],
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、MAXHPの50%を使い敵単体へ火・雷属性の5回連続ダメージ(750%)",
+		turn: 8,
+		proc: [ss_damage_s(7.5, [0,2], 5), ss_consume_own(0.5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,700),
+		Statusup(300,0),
+		NEFTJOD(30),
+	],
+}

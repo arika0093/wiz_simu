@@ -1,0 +1,47 @@
+{
+	name: "死と破壊の覇眼 イリシオス・ゲー",
+	cardno: 6080,
+	imageno: 7907,
+	hp: 2275,
+	atk: 2750,
+	cost: 42,
+	attr: [2,0],
+	species: [8],
+	islegend: true,
+	ape: "覇眼戦線Ⅱ",
+	is_dist: true,
+	as1: {
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(300%)",
+		proc: add_cond(ChainAttack(3.0, 0), when_hp_more(0.80)),
+	},
+	ss1: {
+		desc: "<多弾魔術>味方のMAXHP60%を使い、敵単体へ火・雷属性の10回連続ダメージ(250%)",
+		turn: 5,
+		proc: [ss_consume_all(0.60), ss_damage_s(2.5, [2,0], 10), ],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		NEFTJOD(30),
+		Spec_statusup(0,100, [8,]),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(400%)",
+		proc: add_cond(ChainAttack(4.0, 0), when_hp_more(0.80)),
+	},
+	ss2: {
+		desc: "<多弾魔術>味方のMAXHP60%を使い、敵単体へ火・雷属性の10回連続ダメージ(450%)",
+		turn: 8,
+		proc: [ss_consume_all(0.60), ss_damage_s(4.5, [2,0], 10), ],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+	],
+}

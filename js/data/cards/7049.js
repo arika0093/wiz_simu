@@ -1,0 +1,47 @@
+{
+	name: "月影のエルナ",
+	cardno: 7049,
+	imageno: 9067,
+	hp: 3890,
+	atk: 1456,
+	cost: 33,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "ドルキマスⅡ",
+	is_dist: true,
+	as1: {
+		desc: "<回復>水属性の味方のHPを回復(12%)",
+		proc: Heal(0.12, [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体のHPを500アップ(上限値:2000)、さらにHPを回復(25%)",
+		turn: 6,
+		proc: [ss_statusup_all([500,0], [2000, 2000], -1), ss_heal(0.25)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Awake_noeffect("経験値取得量アップ",1),
+	],
+	as2: {
+		desc: "<回復>水属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体のHPを1000アップ(上限値:2000)、さらにHPを回復(25%)",
+		turn: 9,
+		proc: [ss_statusup_all([1000,0], [2000, 2000], -1), ss_heal(0.25)],
+	},
+	Lawake: [
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

@@ -1,0 +1,45 @@
+{
+	name: "禁断の暴走 バルザック・ファルツァ",
+	cardno: 6306,
+	imageno: 8155,
+	hp: 3765,
+	atk: 4521,
+	cost: 60,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<チェイン攻撃>15チェインでダメージアップ(800%)、さらに敵HPを吸収する(10%)",
+		proc: add_cond(ChainAttack(8.0, 15), as_hp_absorption(0.10)),
+	},
+	ss1: {
+		desc: "<解答削り>解答選択肢を2つ削り、HP100%以上なら解答を見破る",
+		turn: 4,
+		proc: [ss_answer_narrow(2), ss_hp_more_skill(1, ss_answer_foresight())],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],2),
+		Statusup(0,200),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Spec_statusup(0,300, [9,]),
+		Spec_statusup(300,0, [9,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<チェイン攻撃>15チェインでダメージアップ(900%)、さらに敵HPを吸収する(10%)",
+		proc: add_cond(ChainAttack(9.0, 15), as_hp_absorption(0.10)),
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 6,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

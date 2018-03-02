@@ -1,0 +1,47 @@
+{
+	name: "時代が生み出した何か 嘘猫のウィズ",
+	cardno: 8171,
+	imageno: 10308,
+	imageno_prefix: "WkFi5T_",
+	hp: 4141,
+	atk: 999,
+	cost: 32,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<スキルコピー>左隣の精霊のアンサースキルを発動する",
+		proc: as_copy(),
+	},
+	ss1: {
+		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
+		turn: 10,
+		proc: [ss_latest_copy()],
+	},
+	awakes: [
+		Costdown(10),
+		Awake_noeffect("経験値取得量アップ",2),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(2),
+		Costdown(10),
+		Awake_noeffect("ゴールド取得量アップ",2),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Heal_afterbattle(10),
+		Awake_noeffect("行動見破り",1),
+	],
+	as2: {
+		desc: "<スキルコピー>左隣の精霊のアンサースキルを発動する",
+		proc: as_copy(),
+	},
+	ss2: {
+		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
+		turn: 10,
+		proc: [ss_latest_copy()],
+	},
+	Lawake: [
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

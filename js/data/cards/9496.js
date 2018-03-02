@@ -1,0 +1,33 @@
+{
+	name: "天空の聖緋翼 ナレーシャ・ヴィダル",
+	cardno: 9496,
+	imageno: 8004,
+	hp: 6080,
+	atk: 1750,
+	cost: 54,
+	attr: [0,1],
+	species: [3],
+	islegend: false,
+	ape: "DL限定精霊",
+	as1: {
+		desc: "<回復>味方全体のHPを回復(14%)",
+		proc:  Heal(0.14, [1, 1, 1, 1, 1], 0),
+	},
+	ss1: {
+		desc: "<ガード>4ターン火・水属性のダメージを75%軽減する",
+		turn: 5,
+		proc: [ss_attr_guard([1,1,0,0,0], 0.75, 4)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],4),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		NEFTJOD(60),
+		Fastskill(3),
+		Spec_statusup(0,200, [3,]),
+		Spec_statusup(200,0, [3,]),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,1,0,0,0,]),
+		Heal_afterbattle(10),
+	],
+}

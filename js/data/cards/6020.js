@@ -1,0 +1,47 @@
+{
+	name: "星座に導かれて　シェリル&ランカ",
+	cardno: 6020,
+	imageno: 7851,
+	hp: 2818,
+	atk: 2554,
+	cost: 30,
+	attr: [2, 0],
+	species: [9],
+	islegend: true,
+	ape: "コラボ(マクロス)",
+	is_dist: true,
+	as1: {
+		desc: "<回復>パネルの色が2色以上で火・雷属性の味方を回復(17%)",
+		proc: ChainPanelsHeal(0, 0.17, 0.17, [1, 0, 1, 0, 0], 0),
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の2回連続ダメージ(200%)",
+		turn: 4,
+		proc: [ss_damage_s(2.0, [2, 0], 2), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(200, 0),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Statusup(0, 200),
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
+		Attr_statusup(0, 200, [1, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(200, 0, [1, 0, 1, 0, 0, ]),
+		Fastskill(2),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>パネルの色が2色以上で火・雷属性の味方を回復(20%)",
+		proc: ChainPanelsHeal(0, 0.20, 0.20, [1, 0, 1, 0, 0], 0),
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の2回連続ダメージ(400%)",
+		turn: 6,
+		proc: [ss_damage_s(4.0, [2, 0], 2), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(500, 0),
+		Statusup(0, 500),
+	],
+}

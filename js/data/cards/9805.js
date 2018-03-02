@@ -1,0 +1,46 @@
+{
+	name: "繚乱閃雷 ミライ・カエラム",
+	cardno: 9805,
+	imageno: 9907,
+	hp: 2643,
+	atk: 4388,
+	cost: 58,
+	attr: [2,1],
+	species: [5],
+	islegend: true,
+	ape: "新説桃娘伝",
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ(150%)、5チェインで更にダメージアップ(50%)",
+		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.0, 5)],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・水属性のダメージ(80%)、平均解答が早いほどさらにダメージ(40%)(上限値:160%)",
+		turn: 4,
+		proc: [ss_damage_all(ss_answertime(0.8, 0.4), [2, 1]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Abstate_invalid("ss_sealed"),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,1,0,0,0,]),
+		Fastskill(3),
+		Awake_noeffect("経験値取得量アップ",2),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ(180%)、5チェインで更にダメージアップ(50%)",
+		proc: [ChainAllAttack(1.8, 0), ChainAllAttack(2.3, 5)],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・水属性のダメージ(110%)、平均解答が早いほどさらにダメージ(40%)(上限値:160%)",
+		turn: 6,
+		proc: [ss_damage_all(ss_answertime(1.1, 0.4), [2, 1]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		NEFTJOD(30),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "蓋天の神罰者 ラト･ファルネーゼ",
+	cardno: 7696,
+	imageno: 9778,
+	hp: 3444,
+	atk: 3204,
+	cost: 52,
+	attr: [0,4],
+	species: [8],
+	islegend: true,
+	ape: "ウィズセレクション",
+	as1: {
+		desc: "<攻撃・種族数攻撃>敵単体へのダメージアップ、神族と戦士の仲間の数だけさらにアップ(280%/310%/340%/370%/400%)",
+		proc: ChainDeckSpecsAttack(0.3, [1,8], 0, 1.5),
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・闇属性のダメージ(150%)",
+		turn: 6,
+		proc: [ss_damage_all(1.5, [0, 4]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(1),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Statusup(200,0),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		NEFTJOD(30),
+		Spec_statusup(0,300, [1,8,]),
+		Spec_statusup(300,0, [1,8,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<攻撃・種族数攻撃>敵単体へのダメージアップ、神族と戦士の仲間の数だけさらにアップ(380%/410%/440%/470%/500%)",
+		proc: ChainDeckSpecsAttack(0.3, [1,8], 0, 2.5),
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・闇属性のダメージ(220%)",
+		turn: 9,
+		proc: [ss_damage_all(2.2, [0, 4]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		NEFTJOD(30),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(500,0),
+	],
+}

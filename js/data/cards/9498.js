@@ -1,0 +1,46 @@
+{
+	name: "恋に焦がれて奔走 シトラ・ネーブル",
+	cardno: 9498,
+	imageno: 8007,
+	hp: 4556,
+	atk: 2785,
+	cost: 55,
+	attr: [2,0],
+	species: [6],
+	islegend: true,
+	ape: "DL限定精霊",
+	as1: {
+		desc: "<複属性攻撃強化>4チェインで雷属性の攻撃力をアップ(10%)、複属性が火属性だとさらにアップ(110%)",
+		proc: ChainEnhance_SubAttr(0.1, 1.2, [0, 0, 1, 0, 0], [1, 0, 0, 0, 0], 4),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・雷属性化",
+		turn: 3,
+		proc: [ss_panel_change([1,0,1,0,0])],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,300, [1,0,1,0,0,]),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(4),
+		NEFTJOD(30),
+		Spec_statusup(200,0, [6,]),
+		Attr_statusup_sattr(0,200, [0,0,1,0,0,], 0,200, [1,0,0,0,0,]),
+		Attr_statusup_sattr(200,0, [0,0,1,0,0,], 200,0, [1,0,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>4チェインで雷属性の攻撃力をアップ(40%)、複属性が火属性だとさらにアップ(110%)",
+		proc: ChainEnhance_SubAttr(0.4, 1.5, [0, 0, 1, 0, 0], [1, 0, 0, 0, 0], 4),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、チェインがプラス2の効果と攻撃力アップの効果を付与(50%)",
+		turn: 6,
+		proc: [ss_panel_change([1,0,1,0,0]), panel_chainplus(2), panel_attackup(0.5)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Statusup(1000,0),
+	],
+}

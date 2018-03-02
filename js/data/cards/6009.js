@@ -1,0 +1,46 @@
+{
+	name: "麗彩森の春華 ミーナリア・ファリィ",
+	cardno: 6009,
+	imageno: 7835,
+	hp: 2124,
+	atk: 5904,
+	cost: 54,
+	attr: [1, -1],
+	species: [9],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ、8チェインでさらに特効ダメージ(300%/800%)",
+		proc: [ChainAttrAttack(3.0, 0, [1, 0, 0, 0, 0]), ChainAttrAttack(8.0, 8, [1, 0, 0, 0, 0])],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(200%/500%)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 5.0, 2.0), [1])],
+	},
+	awakes: [
+		Attr_relief([0, 0, 1, 0, 0, ], 10),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Costdown(2),
+		Fastskill(1),
+		Statusup(0, 300),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Spec_statusup(0, 200, [9, ]),
+		Fastskill(2),
+		Attr_statusup(0, 200, [0, 1, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ、8チェインでさらに特効ダメージ(400%/900%)",
+		proc: [ChainAttrAttack(4.0, 0, [1, 0, 0, 0, 0]), ChainAttrAttack(9.0, 8, [1, 0, 0, 0, 0])],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(200%/900%)",
+		turn: 9,
+		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 9.0, 2.0), [1])],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(0, 500),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "青龍轟神将 シエン・スーシェン",
+	cardno: 6603,
+	imageno: 8670,
+	hp: 3553,
+	atk: 5012,
+	cost: 53,
+	attr: [1,-1],
+	species: [1],
+	islegend: true,
+	ape: "黄昏の四神書",
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(350%)",
+		proc: ChainAttack(3.5, 3),
+	},
+	ss1: {
+		desc: "<大魔術>3ターン溜めた後、敵単体へ水属性のダメージ(1900%)",
+		turn: 9,
+		charged: 3,
+		proc: [ss_damage_s(19, [1], 1)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Statusup(0,200),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Spec_statusup(0,200, [1,]),
+		Spec_statusup(200,0, [1,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(450%)",
+		proc: ChainAttack(4.5, 3),
+	},
+	ss2: {
+		desc: "<大魔術>3ターン溜めた後、敵単体へ水属性のダメージ(2400%)",
+		turn: 12,
+		charged: 3,
+		proc: [ss_damage_s(24, [1], 1)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+}

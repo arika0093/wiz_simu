@@ -1,0 +1,45 @@
+{
+	name: "降り注ぐ月光の奇跡 クラリス・ルナ",
+	cardno: 4572,
+	imageno: 6296,
+	hp: 3088,
+	atk: 2988,
+	cost: 39,
+	attr: [2, -1],
+	species: [1],
+	awakes: [
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Fastskill(1),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Spec_statusup(0, 200, [1, ]),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Spec_statusup(200, 0, [1, ]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "<回復>雷属性の味方を回復、パネルの色が増す度さらに回復(1色：11％ / 2色：15％ / 3色：17％)",
+		proc: ChainPanelsHeal(0.11, 0.15, 0.17, [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ雷属性のダメージ(180％)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [0,0,1,0,0])],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Statusup(400, 0),
+	],
+	as2: {
+		desc: "<回復>雷属性の味方を回復、パネルの色が増す度さらに回復(1色：13％ / 2色：17％ / 3色：20％)",
+		proc: ChainPanelsHeal(0.13, 0.17, 0.20, [0,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<効果解除大魔術>敵全体のガード&ダメージブロックを解除し、雷属性のダメージ(180％)",
+		turn: 12,
+		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(1.8, [0,0,1,0,0])],
+	},
+}

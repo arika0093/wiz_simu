@@ -1,0 +1,32 @@
+{
+	name: "我と共に凱歌を上げよ 初音ミク",
+	cardno: 4918,
+	imageno: 6637,
+	hp: 2631,
+	atk: 2556,
+	cost: 29,
+	attr: [1,-1],
+	species: [8],
+	islegend: false,
+	as1: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ(300%)",
+		proc: ChainAttrAttack(3.0, 0, [1,0,0,0,0]),
+	},
+	ss1: {
+		desc: "<状態異常無効>2ターン敵の状態異常攻撃を無効化",
+		turn: 8,
+		proc: [ss_absattack_disable(2)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Attr_relief([1,0,0,0,0,],20),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Fastskill(2),
+	],
+}

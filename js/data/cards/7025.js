@@ -1,0 +1,47 @@
+{
+	name: "炎竜の進撃者 キャナル・エアガイツ",
+	cardno: 7025,
+	imageno: 6478,
+	hp: 1553,
+	atk: 7002,
+	cost: 53,
+	attr: [0,-1],
+	species: [0],
+	disable: true,
+	islegend: true,
+	ape: "ドルキマスⅠ",
+	as1: {
+		desc: "<属性特効>10チェインで雷属性の敵単体へ特効ダメージ(965%)",
+		proc: [ChainAttrAttack(9.65, 10, [0,0,1,0,0])],
+	},
+	ss1: {
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へダメージ(160%×人数)",
+		turn: 8,
+		proc: [ss_damage_all(ss_consume_all_cond(1.6, 0.5), [0])],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(2),
+		Spec_statusup(0,400, [0,]),
+		Statusup(0,500),
+	],
+	as2: {
+		desc: "<属性特効>10チェインで雷属性の敵単体へ特効ダメージ(1065%)",
+		proc: [ChainAttrAttack(10.65, 10, [0,0,1,0,0])],
+	},
+	ss2: {
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へダメージ(200%×人数)",
+		turn: 10,
+		proc: [ss_damage_all(ss_consume_all_cond(2.0, 0.5), [0])],
+	},
+	Lawake: [
+		Statusup(0,700),
+		Statusup(300,0),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "ふたりが結ぶ夢と現 ミラノ・サリス",
+	cardno: 6178,
+	imageno: 7998,
+	hp: 4461,
+	atk: 2379,
+	cost: 50,
+	attr: [2,3],
+	species: [9],
+	disable: true,
+	islegend: true,
+	ape: "GW2016",
+	as1: {
+		desc: "<複属性攻撃強化>4チェインで雷属性の攻撃力をアップ、複属性が光属性だとさらにアップ(10%/120%)",
+		proc: ChainEnhance_SubAttr(0.1, 1.2, [0,0,1,0,0], [0,0,0,1,0], 4),
+	},
+	ss1: {
+		desc: "<ダメージブロック>3ターン600以下の全属性ダメージを無効化する、5チェインを消費しさらに2ターン無効化",
+		turn: 6,
+		proc: [ss_chain_cost_skill(5, ss_damageblock_all(600, 5), ss_damageblock_all(600, 3))],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup_sattr(0, 200, [0,0,1,0,0], 0, 200, [0,0,0,1,0]),
+		Awake_noeffect("精霊交替", 1),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>4チェインで雷属性の攻撃力をアップ、複属性が光属性だとさらにアップ(40%/150%)",
+		proc: ChainEnhance_SubAttr(0.4, 1.5, [0,0,1,0,0], [0,0,0,1,0], 4),
+	},
+	ss2: {
+		desc: "<ダメージブロック>3ターン800以下の全属性ダメージを無効化する、5チェインを消費しさらに2ターン無効化",
+		turn: 9,
+		proc: [ss_chain_cost_skill(5, ss_damageblock_all(800, 5), ss_damageblock_all(800, 3))],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+	],
+}

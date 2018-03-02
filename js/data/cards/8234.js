@@ -1,0 +1,47 @@
+{
+	name: "煌眼は勝利へ導く リヴェータ・イレ",
+	cardno: 8234,
+	imageno: 7872,
+	hp: 4356,
+	atk: 4845,
+	cost: 57,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "覇眼戦線Ⅱ",
+	as1: {
+		desc: "<攻撃強化・チェイン攻撃>火属性の味方の攻撃力をアップ(30%)し、6チェインでダメージアップ(400%)",
+		proc: [ChainEnhance(0.30, [1, 0, 0, 0, 0], 0), ChainAttack(4.0, 6)],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ火属性のダメージ(400%)、さらに雷属性の敵には特効ダメージ(1050%)、5チェインを消費しさらに特効ダメージ(300%)",
+		turn: 9,
+		proc: [ss_chain_cost_skill(5, ss_damage_all(special_attr([0, 0, 1, 0, 0], 17.5, 4.0), [0]), ss_damage_all(special_attr([0, 0, 1, 0, 0], 14.5, 4.0), [0]))],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Awake_noeffect("経験値取得量アップ",2),
+		NEFTJOD(60),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+		Abstate_invalid("ss_sealed"),
+		Fastskill(3),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Awake_noeffect("スキル反射見破り",1),
+	],
+	as2: {
+		desc: "<攻撃強化・チェイン攻撃>火属性の味方の攻撃力をアップ(30%)し、6チェインでダメージアップ(500%)",
+		proc: [ChainEnhance(0.30, [1, 0, 0, 0, 0], 0), ChainAttack(5.0, 6)],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ火属性のダメージ(400%)、さらに雷属性の敵には特効ダメージ(1400%)、5チェインを消費しさらに特効ダメージ(300%)",
+		turn: 12,
+		proc: [ss_chain_cost_skill(5, ss_damage_all(special_attr([0, 0, 1, 0, 0], 21, 4.0), [0]), ss_damage_all(special_attr([0, 0, 1, 0, 0], 18, 4.0), [0]))],
+	},
+	Lawake: [
+		Awake_SpecialSkill("ss_heal", 0.5),
+		Attr_statusup(0, 200, [1, 1, 1, 1, 1, ]),
+		Statusup(0,1500),
+	],
+}

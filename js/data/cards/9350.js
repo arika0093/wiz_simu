@@ -1,0 +1,46 @@
+{
+	name: "魔道は海より広く アリエッタ・トワ",
+	cardno: 9350,
+	imageno: 8429,
+	hp: 4047,
+	atk: 6203,
+	cost: 54,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "USG",
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(400%)、10チェインで更にダメージアップ(150%)",
+		proc: [ChainAttack(4.0, 4), ChainAttack(5.5, 10)],
+	},
+	ss1: {
+		desc: "<残滅大魔術>敵全体へ雷属性のダメージ(700%)、さらに10ターンの間、雷属性のダメージ(700%)",
+		turn: 11,
+		proc: [ss_continue_damage(7.0, 7.0, [2], 10)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_oattr(0,400, [0,0,1,0,0,]),
+		Attr_statusup_oattr(400,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(3),
+		NEFTJOD(30),
+		Attr_relief([0,1,0,0,0,],20),
+		Attr_statusup(0,400, [0,0,1,0,0,]),
+		Attr_statusup(400,0, [0,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(500%)、10チェインで更にダメージアップ(150%)",
+		proc: [ChainAttack(5.0, 4), ChainAttack(6.5, 10)],
+	},
+	ss2: {
+		desc: "<残滅大魔術>敵全体へ雷属性のダメージ(1100%)、さらに10ターンの間、雷属性のダメージ(1100%)",
+		turn: 13,
+		proc: [ss_continue_damage(11.0, 11.0, [2], 10)],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		Statusup(500,0),
+	],
+}

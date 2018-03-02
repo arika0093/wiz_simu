@@ -1,0 +1,46 @@
+{
+	name: "酉年は飛躍の年！ トリテン・ココロ",
+	cardno: 9607,
+	imageno: 11877,
+	hp: 5625,
+	atk: 2445,
+	cost: 40,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "酉戌レイド",
+	is_dist: true,
+	as1: {
+		desc: "<回復・攻撃強化>味方全体のHPを回復(12%)、さらに攻撃力をアップ(30%)",
+		proc: [Heal(0.12, [1,1,1,1,1], 0), ChainEnhance(0.3, [1,1,1,1,1], 0)],
+	},
+	ss1: {
+		desc: "<解答削り>解答選択肢を1つ削り,4チェインを消費し解答を見破る",
+		turn: 1,
+		proc: [ss_chain_cost_skill(4, ss_answer_foresight(), ss_answer_narrow(1))],
+	},
+	awakes: [
+		Costdown(20),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup_oattr(0,300, [0,0,1,0,0,]),
+		Attr_statusup_oattr(300,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+		Fastskill(1),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Awake_chainguard(),
+	],
+	as2: {
+		desc: "<回復・攻撃強化>味方全体のHPを回復(15%)、さらに攻撃力をアップ(30%)",
+		proc: [Heal(0.15, [1,1,1,1,1], 0), ChainEnhance(0.3, [1,1,1,1,1], 0)],
+	},
+	ss2: {
+		desc: "<解答削り>解答選択肢を1つ削り,3チェインを消費し解答を見破る",
+		turn: 2,
+		proc: [ss_chain_cost_skill(3, ss_answer_foresight(), ss_answer_narrow(1))],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+	],
+}

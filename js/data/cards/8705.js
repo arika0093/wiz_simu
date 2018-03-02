@@ -1,0 +1,46 @@
+{
+	name: "時の邂逅 アリス・スチュアート",
+	cardno: 8705,
+	imageno: 5397,
+	hp: 6248,
+	atk: 3831,
+	cost: 52,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "エタクロⅡ",
+	as1: {
+		desc: "<種族攻撃強化>雷属性の味方の攻撃力をアップ(30%)、神族と術士はさらにアップ(60%)",
+		proc: [ChainEnhance(0.30, [0,0,1,0,0], 0), ChainSpecEnhance(0.90, [0,0,1,0,0], [1,9], 0)],
+	},
+	as2: {
+		desc: "<種族攻撃強化>雷属性の味方の攻撃力をアップ(60%)、神族と術士はさらにアップ(60%)",
+		proc: [ChainEnhance(0.60, [0,0,1,0,0], 0), ChainSpecEnhance(1.20, [0,0,1,0,0], [1,9], 0)],
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 6,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
+		turn: 8,
+		proc: [ss_heal(1.0), ss_abstate_cure()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(3),
+		Attr_statusup_oattr(0,400,[0,0,1,0,0,]),
+		Attr_statusup_oattr(400,0,[0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],3),
+		NEFTJOD(30),
+		Attr_relief([0,1,0,0,0,],20),
+		Attr_statusup(0,400,[0,0,1,0,0,]),
+		Attr_statusup(400,0,[0,0,1,0,0,]),
+		Heal_afterbattle(10),
+	],
+	Lawake: [
+		Statusup(1000,0),
+		Attr_statusup(0,200,[0,0,1,0,0,]),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "私だけの笑顔 イツキ・マスグレイヴ",
+	cardno: 4618,
+	imageno: 6342,
+	hp: 2921,
+	atk: 3201,
+	cost: 48,
+	attr: [1, -1],
+	species: [8],
+	disable: true,
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Fastskill(1),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Fastskill(2),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Heal_afterbattle(10),
+		Spec_statusup(0, 200, [8, ]),
+		Spec_statusup(200, 0, [8, ]),
+	],
+	as1: {
+		desc: "<属性特効>3チェインで火属性の敵単体へ特効ダメージ/525％",
+		proc: ChainAttrAttack(5.25, 3, [1,0,0,0,0]),
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(回復：50％)",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで火属性の敵単体へ特効ダメージ/625％",
+		proc: ChainAttrAttack(6.25, 3, [1,0,0,0,0]),
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
+		turn: 9,
+		proc: [ss_heal(1.0), ss_abstate_cure()],
+	},
+}

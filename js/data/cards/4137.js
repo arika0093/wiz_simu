@@ -1,0 +1,45 @@
+{
+	name: "世界断絶 キャンディーⅩⅢ",
+	cardno: 4137,
+	imageno: 5815,
+	hp: 2280,
+	atk: 2763,
+	cost: 34,
+	attr: [0, -1],
+	species: [8],
+	awakes: [
+		Statusup(0, 200),
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Costdown(2),
+		Attr_relief([0, 1, 0, 0, 0], 10),
+		Panel_boost([1,0,0,0,0], 1),
+		Fastskill(2),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Panel_boost([1,0,0,0,0], 1),
+		Spec_statusup(0, 200, [8]),
+	],
+	as1: {
+		desc: "<種族数攻撃>戦士の仲間の数だけダメージアップ/100+40％×種族数",
+		proc: ChainDeckSpecsAttack(0.4, [8], 0),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ火属性のダメージ(180％)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [0])],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(400, 0),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "<種族数攻撃>戦士の仲間の数だけダメージアップ/100+60％×種族数",
+		proc: ChainDeckSpecsAttack(0.6, [8], 0),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ火属性のダメージ(260％)",
+		turn: 12,
+		proc: [ss_damage_all(2.6, [0])],
+	},
+}

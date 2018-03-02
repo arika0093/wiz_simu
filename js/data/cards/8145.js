@@ -1,0 +1,46 @@
+{
+	name: "永遠なる愛 アンジェリカ・ヴァイル",
+	cardno: 8145,
+	imageno: 7579,
+	hp: 5534,
+	atk: 2315,
+	cost: 56,
+	attr: [2,3],
+	species: [1],
+	islegend: true,
+	ape: "約束の地",
+	as1: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ、複属性が光属性だとさらにアップ(30%/80%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.8, [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], 0),
+	},
+	ss1: {
+		desc: "<起死回生>3ターン、致死ダメージを受けたら一度だけHP50%で起死回生",
+		turn: 9,
+		proc: [ss_revival(0.5, 3)],
+	},
+	awakes: [
+		Fastskill(5),
+		Panel_boost([0,0,1,0,0,],4),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Heal_afterbattle(10),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,0,0,1,0,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,0,0,1,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ、複属性が光属性だとさらにアップ(60%/110%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], 0),
+	},
+	ss2: {
+		desc: "<起死回生>5ターン、致死ダメージを受けたら一度だけHP50%で起死回生、10チェインを消費しさらに3ターン継続しHP100%で起死回生",
+		turn: 11,
+		proc: [ss_chain_cost_skill(10, ss_revival(1.0, 8), ss_revival(0.5, 5))],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Statusup(1000,0),
+	],
+}

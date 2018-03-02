@@ -1,0 +1,47 @@
+{
+	name: "凛眼に宿る決意 ルドヴィカ・ロア",
+	cardno: 8142,
+	imageno: 7573,
+	hp: 3733,
+	atk: 3289,
+	cost: 54,
+	attr: [1,0],
+	species: [8],
+	islegend: true,
+    	ape: "周年記念精霊(3周年)",
+	as1: {
+		desc: "<複属性攻撃強化>4チェインで水属性の攻撃力をアップ、複属性が火だとさらにアップ(50%/100%)",
+		proc: ChainEnhance_SubAttr(0.5, 1.0, [0, 1, 0, 0, 0], [1, 0, 0, 0, 0], 4),
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体の攻撃力を500アップ(上限値:2000)、さらにHPを回復(50%)",
+		turn: 5,
+		proc: [ss_statusup_all([0, 500], [2000, 2000], -1), ss_heal(0.5)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(3),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,0,0,0,]),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,0,0,0,]),
+		Awake_noeffect("心眼",1),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>4チェインで水属性の攻撃力をアップ、複属性が火だとさらにアップ(80%/130%)",
+		proc: ChainEnhance_SubAttr(0.8, 1.3, [0, 1, 0, 0, 0], [1, 0, 0, 0, 0], 4),
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体の攻撃力を1000アップ(上限値:2000)、さらにHPを完全回復",
+		turn: 8,
+		proc: [ss_statusup_all([0, 1000], [2000, 2000], -1), ss_heal(1.0)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Statusup(500,0),
+		Awake_SpecialSkill("ss_damageblock_all", 400, 5, "ringan"),
+	],
+}

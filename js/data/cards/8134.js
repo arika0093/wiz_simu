@@ -1,0 +1,46 @@
+{
+	name: "恋心捧げる フィリー・ハイウィンド",
+	cardno: 8134,
+	imageno: 7552,
+	hp: 5208,
+	atk: 4022,
+	cost: 54,
+	attr: [1,-1],
+	species: [4],
+	islegend: true,
+	ape: "バレンタイン2014",
+	as1: {
+		desc: "<回復>水属性の味方を回復、HP50%以下ならさらに回復(11%/21%)",
+		proc: [Heal(0.11, [0,1,0,0,0], 0), add_cond(Heal(0.21, [0,1,0,0,0], 0), when_hp_less(0.50))],
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し(20%)、状態異常を回復する",
+		turn: 4,
+		proc: [ss_heal(0.20), ss_abstate_cure()],
+	},
+	as2: {
+		desc: "<回復>水属性の味方を回復、HP50%以下ならさらに回復(13%/23%)",
+		proc: [Heal(0.13, [0,1,0,0,0], 0), add_cond(Heal(0.23, [0,1,0,0,0], 0), when_hp_less(0.50))],
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを回復し(70%)、状態異常を回復する",
+		turn: 7,
+		proc: [ss_heal(0.70), ss_abstate_cure()],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],4),
+		Abstate_invalid("as_sealed"),
+		Abstate_invalid("heal_reverse"),
+		Heal_afterbattle(10),
+		Attr_relief([0,0,1,0,0,],20),
+		Attr_statusup(0,400,[0,1,0,0,0,]),
+		Attr_statusup(400,0,[0,1,0,0,0,]),
+		Fastskill(3),
+		Spec_statusup(0,500, [4,]),
+		Spec_statusup(500,0, [4,]),
+	],
+	Lawake: [
+		Attr_statusup(0,200,[0,1,0,0,0,]),
+		Statusup(1000,0),
+	],
+}

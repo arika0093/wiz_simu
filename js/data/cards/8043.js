@@ -1,0 +1,46 @@
+{
+	name: "新時代の牽引者 ルベリ・クラクス",
+	cardno: 8043,
+	imageno: 10163,
+	hp: 2314,
+	atk: 3421,
+	cost: 47,
+	attr: [1,4],
+	species: [9],
+	islegend: true,
+	ape: "ギルドマスターセレモニーズ",
+	as1: {
+		desc: "<チェイン攻撃・属性特効>5チェインでダメージアップ、光属性の敵だとさらにダメージアップ(400%/600%)",
+		proc: [ChainAttack(4.0, 5), ChainAttrAttack(6.0, 5, [0,0,0,1,0])],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ闇属性のダメージ、さらに光属性の敵には特効ダメージ(200%/1700%)",
+		turn: 3,
+		proc: [ss_damage_all(special_attr([0,0,0,1,0], 17, 2.0), [4])],
+	},
+	as2: {
+		desc: "<チェイン攻撃・属性特効>5チェインでダメージアップ、光属性の敵だとさらにダメージアップ(500%/700%)",
+		proc: [ChainAttack(5.0, 5), ChainAttrAttack(7.0, 5, [0,0,0,1,0])],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ闇属性のダメージ、さらに光属性の敵には特効ダメージ(200%/2200%)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([0,0,0,1,0], 22, 2.0), [4])],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_relief([0,0,0,1,1,],20),
+		Attr_statusup(0,200,[0,1,0,0,0,]),
+		Attr_statusup(200,0,[0,1,0,0,0,]),
+		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,200,[0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0,[0,1,0,0,0,],200,0,[0,0,0,0,1,]),
+		Awake_noeffect("反射見破り",1),
+	],
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,100,[0,0,0,0,1,]),
+	],
+}

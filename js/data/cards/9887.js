@@ -1,0 +1,46 @@
+{
+	name: "マジカルアイドル エリーゼ･ハナエ",
+	cardno: 9887,
+	imageno: 2894,
+	hp: 2895,
+	atk: 7055,
+	cost: 52,
+	attr: [0,-1],
+	species: [4],
+	islegend: true,
+	ape: "DL限定",
+	as1: {
+		desc: "<攻撃・種族数攻撃>敵単体へのダメージアップ(200%)、天使と妖精の仲間の数だけさらにアップ(100%)",
+		proc: ChainDeckSpecsAttack(1.0, [3,4], 0, 1.0),
+	},
+	ss1: {
+		desc: "<割合削り>スキル反射を無視し、敵単体のHPを25%減少させる",
+		turn: 6,
+		proc: [ss_ratiodamage_s(0.25), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Attr_statusup(300,0, [1,0,0,0,0,]),
+		Attr_statusup(0,300, [1,0,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup_oattr(300,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],4),
+		Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
+		Fastskill(2),
+		Spec_statusup(500,0, [3,4,]),
+		Spec_statusup(0,500, [3,4,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<攻撃・種族数攻撃>敵単体へのダメージアップ(300%)、天使と妖精の仲間の数だけさらにアップ(100%)",
+		proc: ChainDeckSpecsAttack(1.0, [3,4], 0, 2.0),
+	},
+	ss2: {
+		desc: "<割合削り>スキル反射を無視し、敵単体のHPを30%減少させる",
+		turn: 8,
+		proc: [ss_ratiodamage_s(0.30), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+}

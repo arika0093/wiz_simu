@@ -1,0 +1,47 @@
+{
+	name: "12支神小槌を振って福進呈 小槌酉",
+	cardno: 7664,
+	imageno: 9739,
+	hp: 3287,
+	atk: 3227,
+	cost: 51,
+	attr: [2,3],
+	species: [1],
+	islegend: true,
+	ape: "レイド Gate Defenders 申(さる)ものは追わず。酉(とり)あえずお餅でもどうぞ。",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効連撃・複属性強化>4チェインで水・闇属性の敵単体へ特効3連撃(400%)、さらに雷属性の攻撃力をアップ、複属性が光属性だとさらにアップ(10%/60%)",
+		proc: [ChainDualAttrAttack(4.0, 4, 3, [0,1,0,0,1]), ChainEnhance_SubAttr(0.1, 0.6, [0,0,1,0,0], [0,0,0,1,0], 4)],
+	},
+	ss1: {
+		desc: "<複属性ダメージ強化>5ターンの間、雷属性の攻撃力をアップ、複属性が光属性だとさらにアップ(80%/130%)、Lモードの精霊の数に応じてさらにアップ(30%)",
+		turn: 11,
+		proc: [ss_enhance_all_subattr(ss_legendnum(0.8, 0.3), ss_legendnum(1.3, 0.3), 5, [0,0,1,0,0], [0,0,0,1,0])],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_relief([0,0,0,0,1,],10),
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup_sattr(200,0, [0,0,1,0,0,], 100,0, [0,0,0,1,0,]),
+		Attr_statusup_sattr(0,200, [0,0,1,0,0,], 0,100, [0,0,0,1,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<属性特効連撃・複属性強化>4チェインで水・闇属性の敵単体へ特効3連撃(500%)、さらに雷属性の攻撃力をアップ、複属性が光属性だとさらにアップ(10%/60%)",
+		proc: [ChainDualAttrAttack(5.0, 4, 3, [0,1,0,0,1]), ChainEnhance_SubAttr(0.1, 0.6, [0,0,1,0,0], [0,0,0,1,0], 4)],
+	},
+	ss2: {
+		desc: "<複属性ダメージ強化>5ターンの間、雷属性の攻撃力をアップ、複属性が光属性だとさらにアップ(80%/130%)、Lモードの精霊の数に応じてさらにアップ(30%)",
+		turn: 11,
+		proc: [ss_enhance_all_subattr(ss_legendnum(0.8, 0.3), ss_legendnum(1.3, 0.3), 5, [0,0,1,0,0], [0,0,0,1,0])],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

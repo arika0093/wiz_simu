@@ -1,0 +1,46 @@
+{
+	name: "やわらかさの極致 ラパパヘヴン",
+	cardno: 3984,
+	imageno: 5680,
+	hp: 3027,
+	atk: 2321,
+	cost: 46,
+	attr: [2,-1],
+	species: [4],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<種族攻撃強化>3チェインで雷属性の味方の攻撃力をアップ、神族・妖精は更にアップ(40%/70%)",
+		proc: [ChainEnhance(0.40, [0,0,1,0,0], 3), ChainSpecEnhance(0.70, [0,0,1,0,0], [1,4], 3)],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを雷属性化",
+		turn: 5,
+		proc: [ss_panel_change([0,0,1,0,0])],
+	},
+	awakes: [
+		Statusup(0,100),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Fastskill(2),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],1),
+		Spec_statusup(200,0, [4,]),
+		Spec_statusup(0,200, [4,]),
+	],
+	as2: {
+		desc: "<種族攻撃強化>3チェインで雷属性の味方の攻撃力をアップ、神族・妖精は更にアップ(50%/90%)",
+		proc: [ChainEnhance(0.50, [0,0,1,0,0], 3), ChainSpecEnhance(0.90, [0,0,1,0,0], [1,4], 3)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを雷属性化し、攻撃力アップの効果を付与(30%)",
+		turn: 7,
+		proc: [ss_panel_change([0,0,1,0,0]), panel_attackup(0.30)],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

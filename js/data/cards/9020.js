@@ -1,0 +1,48 @@
+{
+	name: "付焼刃の聖剣 ジャビー・ユドラム",
+	cardno: 9020,
+	imageno: 11225,
+	hp: 4101,
+	atk: 1634,
+	cost: 41,
+	attr: [2,3],
+	species: [8],
+	islegend: true,
+	ape: "喰牙RIZEⅡ",
+	alias: ["JABEE"],
+	is_dist: true,
+	as1: {
+		desc: "<回復>雷属性の味方を回復(10%)、5チェインで更に回復(4%)",
+		proc: [Heal(0.10, [0,0,1,0,0], 0), Heal(0.14, [0,0,1,0,0], 5)],
+	},
+	ss1: {
+		desc: "<チェインガード>3ターンの間、チェインを保護する",
+		turn: 4,
+		proc: [ss_chain_protect(3)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_relief([0,1,0,0,0,],10),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<回復>雷属性の味方を回復(13%)、5チェインで更に回復(4%)",
+		proc: [Heal(0.13, [0,0,1,0,0], 0), Heal(0.17, [0,0,1,0,0], 5)],
+	},
+	ss2: {
+		desc: "<チェインガード>チェインプラス1の効果、6ターンの間、チェインを保護する",
+		turn: 7,
+		proc: [ss_addchain(1), ss_chain_protect(6)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "未知なる来訪者 瓜転永理",
+	cardno: 8948,
+	imageno: 8711,
+	hp: 2980,
+	atk: 6802,
+	cost: 51,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "真夏のグレート・クイズ・ウォー",
+	alias: ["うりまろびえり"],
+	as1: {
+		desc: "<属性特効>5チェインで雷属性の敵単体へ特効ダメージ(400%)、解答が早いほどさらにアップ(150%)(上限:4段階)",
+		proc: [add_cond(ChainAttrAttack(4.0, 5, [0,0,1,0,0]), as_timedep(1.5))],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ火属性のダメージ(400%)、平均解答が早いほどさらに雷属性の敵には特効ダメージ(200%)(上限値:4段階)",
+		turn: 4,
+		proc: [ss_damage_s(special_attr([0,0,1,0,0], ss_answertime(4.0, 2.0), 4), [0], 1)],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(3),
+		Attr_statusup_oattr(0,400, [1,0,0,0,0,]),
+		Attr_statusup_oattr(400,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<属性特効>5チェインで雷属性の敵単体へ特効ダメージ(500%)、解答が早いほどさらにアップ(150%)(上限:4段階)",
+		proc: [add_cond(ChainAttrAttack(5.0, 5, [0,0,1,0,0]), as_timedep(1.5))],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ火属性のダメージ(800%)、平均解答が早いほどさらに雷属性の敵には特効ダメージ(200%)(上限値:4段階)",
+		turn: 6,
+		proc: [ss_damage_s(special_attr([0,0,1,0,0], ss_answertime(8.0, 2.0), 4), [0], 1)],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

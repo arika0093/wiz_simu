@@ -1,0 +1,46 @@
+{
+	name: "超速の戦姫 ヴィクトリア・ネルド",
+	cardno: 9503,
+	imageno: 11762,
+	hp: 3067,
+	atk: 4005,
+	cost: 57,
+	attr: [2,3],
+	species: [8],
+	islegend: true,
+	ape: "DL限定精霊",
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(300%)、HP80%以上でさらにダメージアップ(250%)",
+		proc: [ChainAttack(3.0, 4), add_cond(ChainAttack(5.5, 4), when_hp_more(0.5))],
+	},
+	ss1: {
+		desc: "<ブースト>5ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ(1200%)。さらに極稀にクリティカル",
+		turn: 10,
+		proc: [ss_boost_enhance_s(12, 5, 0.15)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],5),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],5),
+		Fastskill(5),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],5),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,0,0,1,0,]),
+		Awake_noeffect("ドロップアップ",1),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(400%)、HP80%以上でさらにダメージアップ(250%)",
+		proc: [ChainAttack(4.0, 4), add_cond(ChainAttack(6.5, 4), when_hp_more(0.5))],
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ(1500%)。さらに極稀にクリティカル",
+		turn: 13,
+		proc: [ss_boost_enhance_s(15, 5, 0.15)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+	],
+}

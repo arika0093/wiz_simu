@@ -1,0 +1,46 @@
+{
+	name: "閃解の魔道名探偵 ポワロ・バートン",
+	cardno: 5790,
+	imageno: 7615,
+	hp: 3315,
+	atk: 5150,
+	cost: 49,
+	attr: [1, -1],
+	species: [9],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ、パネルの色が増す度さらにアップ(350%/500%/600%)",
+		proc: ChainPanelsAttrAttack(3.5, 5.0, 6.0, [1, 0, 0, 0, 0], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,1,1,0,0])],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(200, 0),
+		Costdown(2),
+		Fastskill(2),
+		Statusup(0, 200),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup(0, 200, [0, 1, 0, 0, 0, ]),
+		NEFTJOD(30),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Awake_noeffect("心眼", 1),
+	],
+	as2: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ、パネルの色が増す度さらにアップ(450%/600%/700%)",
+		proc: ChainPanelsAttrAttack(4.5, 6.0, 7.0, [1, 0, 0, 0, 0], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、チェインがプラス2の効果を付与",
+		turn: 7,
+		proc: [ss_panel_change([1,1,1,0,0]), panel_chainplus(2)],
+	},
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 200, [0, 1, 0, 0, 0, ]),
+	],
+}

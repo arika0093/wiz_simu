@@ -1,0 +1,47 @@
+{
+	name: "トーテムキマイラ=ミハネ",
+	cardno: 8356,
+	imageno: 10500,
+	hp: 4243,
+	atk: 2231,
+	cost: 47,
+	attr: [1,4],
+	species: [1],
+	islegend: true,
+	ape: "喰牙RIZEⅠ",
+	is_dist: true,
+	as1: {
+		desc: "<回復・攻撃強化>水属性の味方のHPを回復(12%)、さらに水属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.12, [0,1,0,0,0], 0), ChainEnhance(0.3, [0,1,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水・闇属性化",
+		turn: 3,
+		proc: [ss_panel_change([0,1,0,0,1])],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Fastskill(1),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Abstate_invalid("ss_sealed"),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 100,0, [0,0,0,0,1,]),
+	],
+	as2: {
+		desc: "<回復・攻撃強化>水属性の味方のHPを回復(15%)、さらに水属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.15, [0,1,0,0,0], 0), ChainEnhance(0.3, [0,1,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・闇属性化し、攻撃力アップの効果(50%)と回復の効果を付与(20%)",
+		turn: 7,
+		proc: [ss_panel_change([0,1,0,0,1]), panel_attackup(0.5), panel_healally(0.2)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+}

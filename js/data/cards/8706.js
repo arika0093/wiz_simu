@@ -1,0 +1,47 @@
+{
+	name: "時空の聖鑓 ユッカ・エンデ",
+	cardno: 8706,
+	imageno: 5400,
+	hp: 6501,
+	atk: 4011,
+	cost: 55,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "エタクロⅡ",
+	as1: {
+		desc: "<攻撃強化・ガード>7チェインで火属性の味方の攻撃力をアップ(80%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.8, [1,0,0,0,0], 7), as_guard(0.10, [1,1,1,1,1], 7)],
+	},
+	as2: {
+		desc: "<攻撃強化・ガード>7チェインで火属性の味方の攻撃力をアップ(100%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(1.0, [1,0,0,0,0], 7), as_guard(0.10, [1,1,1,1,1], 7)],
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
+		turn: 8,
+		proc: [ss_delay_all(2)],
+	},
+	ss2: {
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
+		turn: 10,
+		proc: [ss_delay_all(3)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],4),
+		Fastskill(4),
+		Attr_statusup_oattr(400,0,[1,0,0,0,0,]),
+		Attr_statusup_oattr(0,400,[1,0,0,0,0,]),
+		NEFTJOD(30),
+		Attr_statusup(0,400,[1,0,0,0,0,]),
+		Attr_statusup(400,0,[1,0,0,0,0,]),
+		Abstate_invalid("as_sealed"),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+		Awake_noeffect("行動見破り",1),
+	],
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+		Attr_statusup(0,200,[1,0,0,0,0,]),
+	],
+}

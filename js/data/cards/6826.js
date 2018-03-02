@@ -1,0 +1,48 @@
+{
+	name: "静々と響く海鳴り セイ・シラナミ",
+	cardno: 6826,
+	imageno: 5801,
+	hp: 4027,
+	atk: 4212,
+	cost: 51,
+	attr: [1,-1],
+	species: [1],
+	disable: true,
+	islegend: true,
+	ape: "八百万神秘譚Ⅰ",
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(350%)",
+		proc: ChainAttack(3.5, 3),
+	},
+	ss1: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを1早め、敵単体の攻撃ターンを1遅らせる",
+		turn: 6,
+		proc: [ss_delay_s(1), ss_skillboost(1)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Fastskill(1),
+		Attr_relief([0,0,1,0,0,],20),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Spec_statusup(200,0, [1,]),
+		Spec_statusup(0,200, [1,]),
+	],
+	as2: {
+		desc: "<回復・攻撃>敵単体へのダメージアップ(350%)、さらに味方のHPを回復(10%)",
+		proc: [ChainAttack(3.5, 0), Heal(0.1, [1,1,1,1,1], 0)],
+	},
+	ss2: {
+		desc: "<遅延>敵単体の攻撃ターンを3遅らせる",
+		turn: 10,
+		proc: [ss_delay_s(3)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+}

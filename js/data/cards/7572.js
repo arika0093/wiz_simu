@@ -1,0 +1,47 @@
+{
+	name: "深炎は刃を超え チェルシー・ネリム",
+	cardno: 7572,
+	imageno: 7109,
+	hp: 3890,
+	atk: 2304,
+	cost: 46,
+	attr: [0,4],
+	species: [9],
+	islegend: true,
+	ape: "チェルシー 舞い降りた異界の姫君",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(30%/60%)、リーダー時さらにアップ(20%)",
+		proc: [ChainEnhance_SubAttr(0.3, 0.6, [1,0,0,0,0], [0,0,0,0,1], 0), add_cond(ChainEnhance_SubAttr(0.5, 0.8, [1,0,0,0,0], [0,0,0,0,1], 0), when_leader())],
+	},
+	ss1: {
+		desc: "<回復>味方全体のHPを回復する(50%)",
+		turn: 4,
+		proc: [ss_heal(0.5)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Heal_afterbattle(10),
+		Fastskill(1),
+		Statusup(200,0),
+		Costdown(10),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Spec_statusup(0,200, [9,]),
+		Spec_statusup(200,0, [9,]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(60%/90%)、リーダー時さらにアップ(20%)",
+		proc: [ChainEnhance_SubAttr(0.6, 0.9, [1,0,0,0,0], [0,0,0,0,1], 0), add_cond(ChainEnhance_SubAttr(0.8, 1.1, [1,0,0,0,0], [0,0,0,0,1], 0), when_leader())],
+	},
+	ss2: {
+		desc: "<回復>チェインプラス2の効果、さらに味方全体のHPを完全に回復する",
+		turn: 8,
+		proc: [ss_addchain(2), ss_heal(1)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(500,0),
+	],
+}

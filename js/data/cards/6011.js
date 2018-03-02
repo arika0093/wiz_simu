@@ -1,0 +1,47 @@
+{
+	name: "黄金を掴みし ドゥーガ師匠",
+	cardno: 6011,
+	imageno: 7837,
+	hp: 1641,
+	atk: 1641,
+	cost: 41,
+	attr: [2, -1],
+	species: [9],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>水属性の敵単体に特効ダメージ(350%)",
+		proc: ChainAttrAttack(3.5, 0, [0, 1, 0, 0, 0]),
+	},
+	ss1: {
+		desc: "<ダメージ強化>2ターン溜めた後、2ターン自分の攻撃力をアップ(1000%)",
+		turn: 3,
+		charged: 2,
+		proc: [ss_enhance_own(10.0, 2)],
+	},
+	awakes: [
+		Statusup(100, 0),
+		Statusup(0, 200),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Statusup(100, 0),
+		Statusup(0, 300),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(3),
+		Statusup(0, 1000),
+		Statusup(1000, 0),
+	],
+	as2: {
+		desc: "<属性特効>水属性の敵単体に特効ダメージ(450%)",
+		proc: ChainAttrAttack(4.5, 0, [0, 1, 0, 0, 0]),
+	},
+	ss2: {
+		desc: "<ダメージ強化>2ターン溜めた後、2ターン自分の攻撃力をアップ(1200%)",
+		turn: 5,
+		charged: 2,
+		proc: [ss_enhance_own(12.0, 2)],
+	},
+	Lawake: [
+		Statusup(0, 400),
+		Statusup(400, 0),
+	],
+}

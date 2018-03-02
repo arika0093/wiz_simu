@@ -1,0 +1,47 @@
+{
+	name: "重なる飛翼と恋心 アルト&ランカ",
+	cardno: 5914,
+	imageno: 7732,
+	hp: 1908,
+	atk: 2498,
+	cost: 30,
+	attr: [2,1],
+	species: [9],
+	islegend: true,
+	ape: "コラボ(マクロス)",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化>3チェインで水・雷属性の味方の攻撃力をアップ(40%)",
+		proc: ChainEnhance(0.40, [0,1,1,0,0], 3),
+	},
+	ss1: {
+		desc: "<残滅大魔術>敵全体へ雷属性のダメージ(100%)、さらに3ターンの間雷属性のダメージ(100%)",
+		turn: 6,
+		proc: [ss_continue_damage(1.0, 1.0, [2], 3)],
+	},
+	awakes: [
+		Statusup(200,0),
+		Statusup(0,200),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Statusup(0,200),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],2),
+	],
+	as2: {
+		desc: "<攻撃強化>3チェインで水・雷属性の味方の攻撃力をアップ(60%)",
+		proc: ChainEnhance(0.60, [0,1,1,0,0], 3),
+	},
+	ss2: {
+		desc: "<残滅大魔術>敵全体へ雷属性のダメージ(200%)、さらに3ターンの間雷属性のダメージ(200%)",
+		turn: 8,
+		proc: [ss_continue_damage(2.0, 2.0, [2], 3)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Statusup(0,400),
+	],
+}

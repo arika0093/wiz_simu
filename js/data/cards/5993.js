@@ -1,0 +1,33 @@
+{
+	name: "命の儚さを胸に抱き クラン・クラン",
+	cardno: 5993,
+	imageno: 7775,
+	hp: 1785,
+	atk: 3304,
+	cost: 28,
+	attr: [0,-1],
+	species: [8],
+	islegend: false,
+	ape: "コラボ(マクロス)",
+	as1: {
+		desc: "<属性特効>4チェインで雷属性の敵単体へ特効ダメージ(500%)",
+		proc: ChainAttrAttack(5.0, 4, [0,0,1,0,0]),
+	},
+	ss1: {
+		desc: "<斬撃大魔術>スキル反射を無視し、火属性の5連撃(180%)、さらに連撃数分チェインプラス",
+		turn: 9,
+		proc: [ss_damage_slash(1.8, [0], 5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Statusup(200,0),
+		Panel_boost([1,0,0,0,0,],2),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(1),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Fastskill(2),
+	],
+}

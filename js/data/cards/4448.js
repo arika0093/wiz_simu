@@ -1,0 +1,46 @@
+{
+	name: "猛き獣の統率者 ヴォルフ・ロイ",
+	cardno: 4448,
+	imageno: 6141,
+	hp: 3406,
+	atk: 2599,
+	cost: 47,
+	attr: [0, -1],
+	species: [8],
+	disable: true,
+	awakes: [
+		Statusup(200, 0),
+		Statusup(200, 0),
+		Statusup(200, 0),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		NEFTJOD(30),
+		Fastskill(1),
+		Fastskill(2),
+		Spec_statusup(0, 200, [8]),
+		Spec_statusup(200, 0, [8]),
+	],
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ、10チェインで更にダメージアップ(5チェイン：350％ / 10チェイン：650％)",
+		proc: [ChainAttack(3.5, 5), ChainAttack(6.5, 10)],
+	},
+	ss1: {
+		desc: "<継続回復>3ターン味方全体を徐々に回復する(15％×3T)",
+		turn: 5,
+		proc: [ss_regenerate(0.15, 3)],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ、10チェインで更にダメージアップ(5チェイン：450％ / 10チェイン：750％)",
+		proc: [ChainAttack(4.5, 5), ChainAttack(7.5, 10)],
+	},
+	ss2: {
+		desc: "<継続回復>味方全体のHPを回復する、さらに5ターン味方全体を徐々に回復する(回復：35％ / 徐々に回復：15％×5T)",
+		turn: 9,
+		proc: [ss_heal(0.35), ss_regenerate(0.15, 5)],
+	},
+}

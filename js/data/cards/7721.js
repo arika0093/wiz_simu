@@ -1,0 +1,45 @@
+{
+	name: "緋霊炎の竜戦士 アデレード・シラー",
+	cardno: 7721,
+	imageno: 7502,
+	hp: 3883,
+	atk: 4676,
+	cost: 53,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<種族特効>4チェインでダメージアップ、龍族の敵へさらにダメージアップ(400%/600%)",
+		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [0])],
+	},
+	ss1: {
+		desc: "<残滅大魔術>敵全体へ火属性のダメージ(200%)、さらに3ターンの間、火属性のダメージ(200%)",
+		turn: 7,
+		proc: [ss_continue_damage(2.0, 2.0, [0], 3)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Spec_relief([0], 30),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Fastskill(1),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,300, [1,0,0,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(0,300, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<種族特効>4チェインでダメージアップ、龍族の敵へさらにダメージアップ(500%/700%)",
+		proc: [ChainAttack(5.0, 4), ChainSpecAttack(7.0, 4, [0])],
+	},
+	ss2: {
+		desc: "<残滅大魔術>敵全体へ火属性のダメージ(300%)、さらに3ターンの間、火属性のダメージ(300%)",
+		turn: 9,
+		proc: [ss_continue_damage(3.0, 3.0, [0], 3)],
+	},
+	Lawake: [
+		Statusup(0,600),
+		Statusup(500,0),
+	],
+}

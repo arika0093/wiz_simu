@@ -1,0 +1,46 @@
+{
+	name: "謳は夢幻を紡ぐ ミコト・ウタヨミ",
+	cardno: 8916,
+	imageno: 11127,
+	hp: 8305,
+	atk: 1705,
+	cost: 52,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "ゴールデンアワード2017",
+	as1: {
+		desc: "<回復>雷属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [0,0,1,0,0], 0),
+	},
+	as2: {
+		desc: "<回復>雷属性の味方のHPを回復(17%)",
+		proc: Heal(0.17, [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復(20%)、さらに敵の状態異常攻撃を無効化(発動中行動不可)",
+		turn: 5,
+		proc: [ss_reinforcement_all(4, [ss_regenerate(0.2, 1, "RF"), ss_absattack_disable(1, "RF")])],
+	},
+	ss2: {
+		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し、さらに攻撃力をアップ(20%,150%)、さらに敵の状態異常攻撃を無効化(発動中行動不可)",
+		turn: 8,
+		proc: [ss_reinforcement_all(4, [ss_regenerate(0.2, 1, "RF"), ss_enhance_all(1.5, 1, [1, 1, 1, 1, 1], "RF"), ss_absattack_disable(1, "RF")])],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_oattr(0,400,[0,0,1,0,0,]),
+		Attr_statusup_oattr(400,0,[0,0,1,0,0,]),
+		Heal_afterbattle(10),
+		Fastskill(3),
+		Awake_noeffect("行動見破り",1),
+		Abstate_invalid("ss_sealed"),
+		Attr_statusup(0,400,[0,0,1,0,0,]),
+		Attr_statusup(400,0,[0,0,1,0,0,]),
+		Awake_noeffect("選ばれし者の証",1),
+	],
+	Lawake: [
+		Attr_statusup(0,300,[0,0,1,0,0,]),
+		NEFTJOD(30),
+	],
+}

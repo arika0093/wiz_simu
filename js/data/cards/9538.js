@@ -1,0 +1,46 @@
+{
+	name: "このへんの海の女神 ミーテ・マレア",
+	cardno: 9538,
+	imageno: 11798,
+	hp: 1895,
+	atk: 3381,
+	cost: 44,
+	attr: [1,0],
+	species: [1],
+	islegend: true,
+	ape: "エステレラⅡ",
+	is_dist: true,
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ(140%),5チェインで更にダメージアップ(50%)",
+		proc: [ChainAllAttack(1.4, 0), ChainAllAttack(1.9, 5)],
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・水属性属性の5回連続ダメージ(250%)",
+		turn: 5,
+		proc: [ss_damage_s(2.5, [1,0], 5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(4),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 200,0, [1,0,0,0,0,]),
+		Spec_statusup(0,200, [1,]),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ(170%),5チェインで更にダメージアップ(50%)",
+		proc: [ChainAllAttack(1.7, 0), ChainAllAttack(2.2, 5)],
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・水属性属性の5回連続ダメージ(450%)",
+		turn: 7,
+		proc: [ss_damage_s(4.5, [1,0], 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
+}

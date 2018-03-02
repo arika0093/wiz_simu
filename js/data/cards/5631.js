@@ -1,0 +1,47 @@
+{
+	name: "「私だよ」 アーモンドグリコ",
+	cardno: 5631,
+	imageno: 7377,
+	hp: 3605,
+	atk: 2721,
+	cost: 45,
+	attr: [2,3],
+	species: [1],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<連撃>4チェインで敵単体を3回連続攻撃(400%)",
+		proc: ChainDualAttack(4.0, 4, 3),
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップ(上限値:2000)。HP20%以下でさらに1500アップ",
+		turn: 7,
+		proc: [ss_statusup_all(ss_hp_less(0.20, [2000, 2000], [500, 500]), [2000, 2000], -1)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(1),
+		Statusup(0,200),
+		Attr_relief([0,1,0,0,0,],10),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Spec_statusup(0,500, [1,6,]),
+		Spec_statusup(500,0, [1,6,]),
+	],
+	as2: {
+		desc: "<連撃>4チェインで敵単体を3回連続攻撃(500%)",
+		proc: ChainDualAttack(5.0, 4, 3),
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップ(上限値:2000)。HP20%以下でさらに1500アップし、HPを完全回復",
+		turn: 9,
+		proc: [ss_statusup_all(ss_hp_less(0.20, [2000, 2000], [500, 500]), [2000, 2000], -1), ss_heal(1.0)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		NEFTJOD(30),
+	],
+}

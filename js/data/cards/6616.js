@@ -1,0 +1,45 @@
+{
+	name: "限界を超越せし初号機 碇シンジ",
+	cardno: 6616,
+	imageno: 8647,
+	hp: 3021,
+	atk: 3366,
+	cost: 51,
+	attr: [2,1],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(エヴァⅠ)",
+	as1: {
+		desc: "<ギャンブル攻撃>3チェインかつパネルが2色以上でダメージがイチかバチかアップ、3色でダメージがイチかバチかアップ(450%~650%/550%~850%)",
+		proc: ChainStakesAttack3(0, 0, 4.5, 6.5, 5.5, 8.5, 3),
+	},
+	ss1: {
+		desc: "<ダメージブロック>5ターン600以下の全属性ダメージを無効化する",
+		turn: 9,
+		proc: [ss_damageblock_all(600, 5)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(0,200),
+		Fastskill(1),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+	],
+	as2: {
+		desc: "<ギャンブル攻撃>3チェインかつパネルが2色以上でダメージがイチかバチかアップ、3色でダメージがイチかバチかアップ(550%~750%/650%~950%)",
+		proc: ChainStakesAttack3(0, 0, 5.5, 7.5, 6.5, 9.5, 3),
+	},
+	ss2: {
+		desc: "<ダメージブロック>7ターン600以下の全属性ダメージを無効化する、5チェインを消費しさらに3ターン無効化",
+		turn: 11,
+		proc: [ss_damageblock_all(600, ss_chain_cost(5, 10, 7))],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

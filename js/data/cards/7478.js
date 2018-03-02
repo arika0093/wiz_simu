@@ -1,0 +1,47 @@
+{
+	name: "天淵自在 イェルノー・ケラス",
+	cardno: 7478,
+	imageno: 9531,
+	hp: 3212,
+	atk: 4152,
+	cost: 46,
+	attr: [2,-1],
+	species: [0],
+	islegend: true,
+	ape: "大魔道杯 in 心竜天翔",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(500%)",
+		proc: add_cond(ChainAttack(5.0, 0), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "<時限大魔術>スキル反射を無視し、4ターン後に敵単体へ雷属性のダメージ(1000%)(上限設置数:5)",
+		turn: 2,
+		proc: [ss_damage_timebomb(10, [2], 1, 4), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Statusup(0,100),
+		Attr_relief([0,0,1,0,0,],10),
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(600%)",
+		proc: add_cond(ChainAttack(6.0, 0), as_consume_all(0.1)),
+	},
+	ss2: {
+		desc: "<時限大魔術>スキル反射を無視し、4ターン後に敵単体へ雷属性のダメージ(2000%)(上限設置数:5)",
+		turn: 3,
+		proc: [ss_damage_timebomb(20, [2], 1, 4), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+}

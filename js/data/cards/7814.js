@@ -1,0 +1,47 @@
+{
+	name: "敵か味方か メカガトリンMk.Ⅱ",
+	cardno: 7814,
+	imageno: 9874,
+	hp: 5021,
+	atk: 1980,
+	cost: 50,
+	attr: [1,4],
+	species: [6],
+	islegend: true,
+	ape: "魔轟三鉄傑 対 地獄三十六歌仙",
+	is_dist: true,
+	as1: {
+		desc: "<回復・攻撃強化>水属性の味方のHPを回復(12%)、さらに水属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.12, [0,1,0,0,0], 0), ChainEnhance(0.3, [0,1,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<ガード>3ターン光属性のダメージを50%軽減する",
+		turn: 5,
+		proc: [ss_attr_guard([0,0,0,1,0], 0.5, 3)],
+	},
+	awakes: [
+		Fastskill(2),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 100,0, [0,0,0,0,1,]),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,100, [0,0,0,0,1,]),
+		Heal_afterbattle(10),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<回復・攻撃強化>水属性の味方のHPを回復(15%)、さらに水属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.15, [0,1,0,0,0], 0), ChainEnhance(0.3, [0,1,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<ガード>6ターン光属性のダメージを50%軽減する",
+		turn: 9,
+		proc: [ss_attr_guard([0,0,0,1,0], 0.5, 6)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

@@ -1,0 +1,45 @@
+{
+	name: "剛腕熱血番長 ジョージ・トドロキ",
+	cardno: 4456,
+	imageno: 6149,
+	hp: 2352,
+	atk: 2433,
+	cost: 57,
+	attr: [0, -1],
+	species: [8],
+	awakes: [
+		Statusup(0, 200),
+		Statusup(0, 200),
+		Costdown(2),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Costdown(2),
+		Panel_boost([1,0,0,0,0], 1),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0], 1),
+		Spec_statusup(0, 200, [8]),
+		Spec_statusup(200, 0, [8]),
+	],
+	as1: {
+		desc: "<連撃>7チェインで敵単体を4回連続攻撃/計450％",
+		proc: ChainDualAttack(4.5, 7, 4),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ火属性のダメージ(180％)",
+		turn: 9,
+		proc: [ss_damage_all(1.8, [0])],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(0, 800),
+	],
+	as2: {
+		desc: "<連撃>7チェインで敵単体を4回連続攻撃/計550％",
+		proc: ChainDualAttack(5.5, 7, 4),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ火属性のダメージ(260％)",
+		turn: 13,
+		proc: [ss_damage_all(2.6, [0])],
+	},
+}

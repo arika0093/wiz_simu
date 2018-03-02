@@ -1,0 +1,45 @@
+{
+	name: "凍徹眼の竜賢者 ザハール・サハロフ",
+	cardno: 7723,
+	imageno: 7508,
+	hp: 3059,
+	atk: 3744,
+	cost: 55,
+	attr: [1,4],
+	species: [0],
+	islegend: true,
+	as1: {
+		desc: "<属性特効>10チェインで火・光属性の敵単体へ特効ダメージ(1100%)",
+		proc: [ChainAttrAttack(11, 10, [1,0,0,1,0])],
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水・闇属性の5回連続ダメージ(350%)",
+		turn: 5,
+		proc: [ss_damage_s(3.5, [1,4], 5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Abstate_invalid("discharge"),
+		Fastskill(1),
+		Spec_statusup(500,0, [0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],2),
+		Spec_statusup(0,500, [0,]),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Abstate_invalid("poison"),
+	],
+	as2: {
+		desc: "<属性特効>10チェインで火・光属性の敵単体へ特効ダメージ(1200%)",
+		proc: [ChainAttrAttack(12, 10, [1,0,0,1,0])],
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水・闇属性の5回連続ダメージ、10チェインを消費しさらにダメージアップ(650%/1300%)",
+		turn: 8,
+		proc: [ss_chain_cost_skill(10, ss_damage_s(13, [1,4], 5), ss_damage_s(6.5, [1,4], 5)), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

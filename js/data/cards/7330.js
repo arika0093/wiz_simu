@@ -1,0 +1,46 @@
+{
+	name: "剣の境地 エッジワース=ゼラード",
+	cardno: 7330,
+	imageno: 9355,
+	hp: 1726,
+	atk: 6935,
+	cost: 54,
+	attr: [0,-1],
+	species: [8],
+	disable: true,
+	islegend: true,
+	ape: "黄昏メアレスⅡ",
+	as1: {
+		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(600%)",
+		proc: add_cond(ChainAttack(6.0, 0), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "<反動大魔術・蝕>スキル反射を無視し、敵単体へ火属性のダメージ(280%×人数)◆スキル使用後、味方全体が1ターン封印状態に",
+		turn: 8,
+		proc: [ss_damage_s(ss_seal_all_cond(2.8), [0], 1), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Statusup(0,200),
+		Attr_relief([1,0,0,0,0,],10),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Fastskill(2),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Spec_statusup(0,400, [8,]),
+	],
+	as2: {
+		desc: "<攻撃>敵単体へのダメージアップ(600%)",
+		proc: ChainAttack(6.0, 0),
+	},
+	ss2: {
+		desc: "<反動大魔術・蝕>スキル反射を無視し、敵単体へ火属性のダメージ(320%×人数)◆スキル使用後、味方全体が1ターン封印状態に",
+		turn: 10,
+		proc: [ss_damage_s(ss_seal_all_cond(3.2), [0], 1), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(1000,0),
+	],
+}

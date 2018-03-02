@@ -1,0 +1,48 @@
+{
+	name: "傷だらけの弾爪 スミオ&トキオ",
+	cardno: 6317,
+	imageno: 5949,
+	hp: 3005,
+	atk: 3566,
+	cost: 53,
+	attr: [2,0],
+	species: [8],
+	islegend: true,
+	disable: true,
+	ape: "幻魔特区スザクⅡ",
+	as1: {
+		desc: "<属性特効>5チェインで水属性の敵単体へ特効ダメージ(650%)",
+		proc: ChainAttrAttack(6.5, 5, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
+		turn: 7,
+		proc: [ss_skillboost(2)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],3),
+		Attr_relief([1,0,1,0,0,],10),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		Statusup(500,0),
+		Fastskill(2),
+		Spec_statusup(0,200, [8,]),
+		Spec_statusup(200,0, [8,]),
+	],
+	as2: {
+		desc: "<属性特効>5チェインで水属性の敵単体へ特効ダメージ(750%)",
+		proc: ChainAttrAttack(7.5, 5, [0,1,0,0,0]),
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを3早める",
+		turn: 10,
+		proc: [ss_skillboost(3)],
+	},
+	Lawake: [
+		Statusup(300,0),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+	],
+}

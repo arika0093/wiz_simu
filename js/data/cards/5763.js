@@ -1,0 +1,46 @@
+{
+	name: "死界を縊る灼炎 イザヴェリ・ヘイズ",
+	cardno: 5763,
+	imageno: 7570,
+	hp: 1998,
+	atk: 4267,
+	cost: 47,
+	attr: [0, 4],
+	species: [2],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<種族特効>4チェインでダメージアップ、魔族・天使の敵へさらにダメージアップ(400%/600%)",
+		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [2, 3])],
+	},
+	ss1: {
+		desc: "<特効大魔術>味方のMAXHP70%を使い、敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(400%/900%)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([0, 0, 1, 0, 0], 9.0, 4.0), [0]), ss_consume_all(0.70)],
+	},
+	awakes: [
+		Statusup(200, 0),
+		Fastskill(1),
+		Statusup(0, 200),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Attr_statusup(0, 200, [1, 0, 0, 0, 0, ]),
+		Attr_statusup(200, 0, [1, 0, 0, 0, 0, ]),
+		Fastskill(2),
+		NEFTJOD(60),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Abstate_invalid("poison"),
+	],
+	as2: {
+		desc: "<種族特効>4チェインで自分のMAXHP20%を使い、ダメージアップ、魔族・天使の敵へさらにダメージアップ(700%/900%)",
+		proc: [add_cond(ChainAttack(7.0, 4), as_consume_own(0.20)), add_cond(ChainSpecAttack(9.0, 4, [2, 3]), as_consume_own(0.20))],
+	},
+	ss2: {
+		desc: "<特効大魔術>味方のMAXHP70%を使い、敵全体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(400%/1300%)",
+		turn: 9,
+		proc: [ss_damage_all(special_attr([0, 0, 1, 0, 0], 13.0, 4.0), [0]), ss_consume_all(0.70)],
+	},
+	Lawake: [
+		Statusup(0, 700),
+		Abstate_invalid("ss_sealed"),
+	],
+}

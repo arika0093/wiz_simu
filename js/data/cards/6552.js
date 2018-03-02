@@ -1,0 +1,48 @@
+{
+	name: "花火の夜に見参！大魔道士！",
+	cardno: 6552,
+	imageno: 8446,
+	hp: 3245,
+	atk: 3356,
+	cost: 52,
+	attr: [2,1],
+	species: [9],
+	disable: true,
+	islegend: true,
+	ape: "USG",
+	alias: ["アリエッタ", "はなび"],
+	as1: {
+		desc: "<攻撃強化・ガード>7チェインで水・雷属性の味方の攻撃力をアップ(80%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.80, [0,1,1,0,0], 7), as_guard(0.10, [0,1,1,0,0], 7)],
+	},
+	ss1: {
+		desc: "<カウンター>10ターンの間、スキルカウンター待機(200%)",
+		turn: 12,
+		proc: [ss_skillcounter(2.0, 10)],
+	},
+	awakes: [
+		Attr_relief([0,0,1,0,0,],20),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Heal_afterbattle(10),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<攻撃強化・ガード>7チェインで水・雷属性の味方の攻撃力をアップ(100%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(1.0, [0,1,1,0,0], 7), as_guard(0.10, [0,1,1,0,0], 7)],
+	},
+	ss2: {
+		desc: "<カウンター>15ターンの間、スキルカウンター待機(250%)",
+		turn: 15,
+		proc: [ss_skillcounter(2.5, 15)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+	],
+}

@@ -1,0 +1,45 @@
+{
+	name: "堕ちた夢の儚さ フレデリカ・グネル",
+	cardno: 6300,
+	imageno: 8149,
+	hp: 2000,
+	atk: 3300,
+	cost: 50,
+	attr: [0,4],
+	species: [2],
+	islegend: true,
+	as1: {
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ、パネルの色が増す度にさらにアップ(300%/400%/550%)",
+		proc: [add_cond(ChainPanelsAttack(3.0, 4.0, 5.5, 0), when_hp_more(0.8))],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火属性化",
+		turn: 2,
+		proc: [ss_panel_change([1,0,0,0,0])],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Spec_statusup(0,500, [2,]),
+	],
+	as2: {
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ、パネルの色が増す度にさらにアップ(400%/500%/650%)",
+		proc: [add_cond(ChainPanelsAttack(4.0, 5.0, 6.5, 0), when_hp_more(0.8))],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・闇属性化し、チェインがプラス1の効果を付与",
+		turn: 6,
+		proc: [ss_panel_change([1,0,0,0,1]), panel_chainplus(1)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

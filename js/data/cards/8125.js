@@ -1,0 +1,47 @@
+{
+	name: "全力成就ANGEL マーガレット・リル",
+	cardno: 8125,
+	imageno: 7480,
+	hp: 2710,
+	atk: 3895,
+	cost: 54,
+	attr: [0,3],
+	species: [3],
+	islegend: true,
+	ape: "バレンタイン2016",
+	as1: {
+		desc: "<連撃>HP80%以上で敵単体を3回連続攻撃(400%)",
+		proc: add_cond(ChainDualAttack(4.0, 0, 3), when_hp_more(0.80)),
+	},
+	ss1: {
+		desc: "<割合削り>スキル反射を無視し、敵単体のHPを15%減少させる、5チェインを消費しさらに10%減少させる",
+		turn: 7,
+		proc: [ss_chain_cost_skill(5, ss_ratiodamage_s(0.25), ss_ratiodamage_s(0.15)), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,0,1,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<連撃>HP80%以上で敵単体を3回連続攻撃(500%)",
+		proc: add_cond(ChainDualAttack(5.0, 0, 3), when_hp_more(0.80)),
+	},
+	ss2: {
+		desc: "<割合削り>スキル反射を無視し、敵単体のHPを20%減少させる、5チェインを消費しさらに10%減少させる",
+		turn: 9,
+		proc: [ss_chain_cost_skill(5, ss_ratiodamage_s(0.30), ss_ratiodamage_s(0.20)), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,300, [1,0,0,0,0,]),
+		Statusup(0,500),
+		NEFTJOD(30),
+	],
+}

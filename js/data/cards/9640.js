@@ -1,0 +1,46 @@
+{
+	name: "ホロビィ作 メカガトリンMk.Ⅱ改",
+	cardno: 9640,
+	imageno: 11918,
+	hp: 5755,
+	atk: 1156,
+	cost: 47,
+	attr: [2,1],
+	species: [6],
+	islegend: true,
+	ape: "黒ウィズチャレンジ",
+	is_dist: true,
+	as1: {
+		desc: "<回復>雷属性の味方を回復(9%)、複属性が水属性だとさらに回復(7%)",
+		proc: [Heal(0.09, [0,0,1,0,0], 0), add_cond(Heal(0.16, [0,0,1,0,0], 0), when_subattr_match([0,0,1,0,0], [0,1,0,0,0]))],
+	},
+	ss1: {
+		desc: "<ガード>3ターン光属性のダメージを35%軽減する",
+		turn: 5,
+		proc: [ss_attr_guard([0,0,0,1,0], 0.35, 3)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 200,0, [0,0,1,0,0,]),
+		Fastskill(5),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+	],
+	as2: {
+		desc: "<回復>雷属性の味方を回復(12%)、複属性が水属性だとさらに回復(7%)",
+		proc: [Heal(0.12, [0,0,1,0,0], 0), add_cond(Heal(0.19, [0,0,1,0,0], 0), when_subattr_match([0,0,1,0,0], [0,1,0,0,0]))],
+	},
+	ss2: {
+		desc: "<ガード>7ターン光属性のダメージを35%軽減する",
+		turn: 8,
+		proc: [ss_attr_guard([0,0,0,1,0], 0.35, 7)],
+	},
+	Lawake: [
+		Attr_statusup(0,300, [0,1,1,0,0,]),
+	],
+}

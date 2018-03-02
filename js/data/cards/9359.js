@@ -1,0 +1,47 @@
+{
+	name: "忌避されし報讐の邪悪 エンラ・プセ",
+	cardno: 9359,
+	imageno: 6121,
+	hp: 2615,
+	atk: 3245,
+	cost: 47,
+	attr: [1,4],
+	species: [2],
+	islegend: true,
+	ape: "オルハレポート",
+	is_dist: true,
+	as1: {
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(350%)",
+		proc: add_cond(ChainAttack(3.5, 0), when_hp_more(0.8)),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ軽減・スキルチャージ・チェイン・攻撃力アップの効果をランダムで付与(25%,1,2,50%)、極稀に当たり(65%,5,10,300%)",
+		turn: 4,
+		proc: [panel_attr_guard([1,1,1,1,1], 0.25), panel_skillboost(1), panel_chainplus(2), panel_attackup(0.5)],
+	},
+	awakes: [
+		Costdown(10),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],3),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 200,0, [0,0,0,0,1,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(450%)",
+		proc: add_cond(ChainAttack(4.5, 0), when_hp_more(0.8)),
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキル発動を1早め、3チェイン消費しさらに1早める",
+		turn: 6,
+		proc: [ss_skillboost(ss_chain_cost(3, 2, 1))],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Abstate_invalid("discharge"),
+	],
+}

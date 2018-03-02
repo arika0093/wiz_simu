@@ -1,0 +1,46 @@
+{
+	name: "Carry the Ball ウィジェッタ",
+	cardno: 8757,
+	imageno: 10939,
+	hp: 2775,
+	atk: 7011,
+	cost: 51,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "クロスディライブACT2",
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ(120%)、デッキに単色の精霊が多いほど、さらにダメージアップ(20%)（上限:5段階)",
+		proc: [add_cond(ChainAllAttack(1.2, 0), as_singleattr_num(0, 0.2))],
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方一人のスペシャルスキルの発動ターンを1早める",
+		turn: 5,
+		proc: [ss_toselect_one(ss_skillboost(1))],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_oattr(0,400, [0,1,0,0,0,]),
+		Attr_statusup_oattr(400,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+		Abstate_invalid("discharge"),
+		Awake_noeffect("経験値取得量アップ",2),
+		Attr_statusup(0,400, [0,1,0,0,0,]),
+		Attr_statusup(400,0, [0,1,0,0,0,]),
+		Fastskill(5),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ(150%)、デッキに単色の精霊が多いほど、さらにダメージアップ(20%)（上限:5段階)",
+		proc: [add_cond(ChainAllAttack(1.5, 0), as_singleattr_num(0, 0.2))],
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方一人のスペシャルスキルの発動ターンを4早める",
+		turn: 8,
+		proc: [ss_toselect_one(ss_skillboost(4))],
+	},
+	Lawake: [
+		Attr_statusup_oattr(0,300, [0,1,0,0,0,]),
+		NEFTJOD(30),
+	],
+}

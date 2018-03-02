@@ -1,0 +1,47 @@
+{
+	name: "夢、ひとひら ツツジ・カミノキ",
+	cardno: 7107,
+	imageno: 9192,
+	hp: 5532,
+	atk: 1921,
+	cost: 53,
+	attr: [0,3],
+	species: [9],
+	islegend: true,
+	ape: "古の森の千年桜",
+	as1: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(30%/80%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.8, [1,0,0,0,0], [0,0,0,1,0], 0),
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し(25%)、状態異常を回復する",
+		turn: 5,
+		proc: [ss_heal(0.25), ss_abstate_cure()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,200, [0,0,0,1,0,]),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,0,0,1,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(60%/110%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [1,0,0,0,0], [0,0,0,1,0], 0),
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		NEFTJOD(30),
+	],
+}

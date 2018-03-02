@@ -1,0 +1,46 @@
+{
+	name: "人格なき悪意",
+	cardno: 4506,
+	imageno: 6215,
+	hp: 3583,
+	atk: 3583,
+	cost: 70,
+	attr: [2, -1],
+	species: [2],
+	awakes: [
+		Spec_statusup(0, 200, [2, ]),
+		Spec_statusup(200, 0, [2, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		NEFTJOD(30),
+		Spec_statusup(0, 200, [2, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		NEFTJOD(30),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Spec_statusup(200, 0, [2, ]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "<種族特効>3チェインで種族が戦士・術士の敵単体へダメージ、リーダー時さらにダメージアップ(3チェイン：450％ / 3チェイン+リーダー時：650％)",
+		proc: [ChainSpecAttack(4.5, 3, [8,9]), add_cond(ChainSpecAttack(6.5, 3, [8,9]), when_leader())],
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(260％)",
+		turn: 7,
+		proc: [ss_damage_all(2.6, [2]), ss_consume_own(0.5) ],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<種族特効>3チェインで種族が戦士・術士の敵単体へダメージ、リーダー時さらにダメージアップ(3チェイン：550％ / 3チェイン+リーダー時：750％)",
+		proc: [ChainSpecAttack(5.5, 3, [8,9]), add_cond(ChainSpecAttack(7.5, 3, [8,9]), when_leader())],
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(330％)",
+		turn: 9,
+		proc: [ss_damage_all(3.3, [2]), ss_consume_own(0.5) ],
+	},
+}

@@ -1,0 +1,46 @@
+{
+	name: "燃盛る不尽焔嶺 スオウ・カグツチ",
+	cardno: 8527,
+	imageno: 10697,
+	hp: 4024,
+	atk: 3091,
+	cost: 54,
+	attr: [0,3],
+	species: [1],
+	islegend: true,
+	ape: "八百万神秘譚Ⅰ",
+	as1: {
+		desc: "<連撃>5チェインで敵単体を3回連続攻撃(450%)",
+		proc: ChainDualAttack(4.5, 5, 3),
+	},
+	ss1: {
+		desc: "<ダメージブロック>5ターン600以下の全属性ダメージを無効化する",
+		turn: 9,
+		proc: [ss_damageblock_all(600, 5)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+		NEFTJOD(30),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,0,1,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<連撃>5チェインで敵単体を3回連続攻撃(550%)",
+		proc: ChainDualAttack(5.5, 5, 3),
+	},
+	ss2: {
+		desc: "<ダメージブロック>5ターン800以下の全属性ダメージを無効化する",
+		turn: 11,
+		proc: [ss_damageblock_all(800, 5)],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Statusup(0,1000),
+	],
+}

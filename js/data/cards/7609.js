@@ -1,0 +1,47 @@
+{
+	name: "聖雪の奇跡 ピノ・マリアンヌ",
+	cardno: 7609,
+	imageno: 9673,
+	hp: 5320,
+	atk: 2103,
+	cost: 53,
+	attr: [1,3],
+	species: [9],
+	disable: true,
+	islegend: true,
+	ape: "Christmas2016",
+	as1: {
+		desc: "<攻撃強化・回復>水属性の味方のHPを回復(13%)、さらに水属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.13, [0,1,0,0,0], 0), ChainEnhance(0.3, [0,1,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(2)],
+	},
+	awakes: [
+		Fastskill(2),
+		NEFTJOD(30),
+		Awake_noeffect("経験値取得量アップ",1),
+		Attr_relief([0,0,0,0,1,],10),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_sattr(200,0, [0,1,0,0,0,], 200,0, [0,0,0,1,0,]),
+		Fastskill(2),
+		Attr_statusup_sattr(0,200, [0,1,0,0,0,], 0,200, [0,0,0,1,0,]),
+		Abstate_invalid("as_sealed"),
+		Awake_noeffect("心眼",1),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>水属性の味方のHPを回復(16%)、さらに水属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.16, [0,1,0,0,0], 0), ChainEnhance(0.3, [0,1,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス3の効果を付与",
+		turn: 8,
+		proc: [panel_chainplus(3)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

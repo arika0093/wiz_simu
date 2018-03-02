@@ -1,0 +1,47 @@
+{
+	name: "魔道科学教師 プシプシ・ニボル",
+	cardno: 6939,
+	imageno: 8933,
+	hp: 3646,
+	atk: 777,
+	cost: 30,
+	attr: [1,2],
+	species: [5],
+	islegend: true,
+	ape: "クロム・マグナ ゼロ",
+	is_dist: true,
+	as1: {
+		desc: "<回復>水・雷属性の味方のHPを回復(12%)",
+		proc: Heal(0.12, [0,1,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
+		turn: 4,
+		proc: [ss_panel_change([0,1,1,0,0])],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ",1),
+		Panel_boost([0,1,0,0,0,],1),
+		Statusup(200,0),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Attr_relief([1,0,0,0,0,],10),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>水・雷属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [0,1,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、ダメージ25%軽減の効果を付与。",
+		turn: 7,
+		proc: [ss_panel_change([0,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+	],
+}

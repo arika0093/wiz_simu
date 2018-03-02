@@ -1,0 +1,46 @@
+{
+	name: "虹色の縦横家 カナメ・バルバロッサ",
+	cardno: 8895,
+	imageno: 8029,
+	hp: 6022,
+	atk: 2304,
+	cost: 59,
+	attr: [2,1],
+	species: [2],
+	islegend: true,
+	ape: "聖サタニック女学院",
+	as1: {
+		desc: "<回復・複属性攻撃強化>雷属性の味方を回復(10%)し、攻撃力もアップ(30%)、複属性が水属性だとさらに攻撃力アップ(30%)",
+		proc: [Heal(0.10, [0,0,1,0,0], 0), ChainEnhance_SubAttr(0.30, 0.60, [0,0,1,0,0], [0,1,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<チェインガード>4ターン溜めた後、50ターンの間、チェインを保護し、味方全体を完全回復",
+		turn: 3,
+		charged: 4,
+		proc: [ss_chain_protect(50), ss_heal(1)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		NEFTJOD(30),
+		Fastskill(3),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,1,0,0,0,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,1,0,0,0,]),
+		Awake_chainguard(),
+		Abstate_invalid("as_sealed"),
+		Awake_noeffect("アンサースキル発動時間延長",5),
+	],
+	as2: {
+		desc: "<回復・複属性攻撃強化>雷属性の味方を回復(13%)し、攻撃力もアップ(30%)、複属性が水属性だとさらに攻撃力アップ(30%)",
+		proc: [Heal(0.13, [0,0,1,0,0], 0), ChainEnhance_SubAttr(0.30, 0.60, [0,0,1,0,0], [0,1,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<AS発動時間延長>15ターンの間、アンサースキル発動時間を15秒延長する(上限値:20秒)",
+		turn: 5,
+		proc: [ss_astime_ext(15, 15)],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,1,0,0,0,]),
+	],
+}

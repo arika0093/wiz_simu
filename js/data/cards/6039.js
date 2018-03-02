@@ -1,0 +1,47 @@
+{
+	name: "勝戦の凛腕 ヤーボ・ブラックモア",
+	cardno: 6039,
+	imageno: 7863,
+	hp: 2699,
+	atk: 3095,
+	cost: 46,
+	attr: [1, -1],
+	species: [8],
+	islegend: true,
+	ape: "覇眼戦線Ⅰ",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(400%)",
+		proc: ChainAttack(4.0, 5),
+	},
+	ss1: {
+		desc: "<回復>味方全体のHPを回復する(50%)",
+		turn: 6,
+		proc: [ss_heal(0.50)],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Statusup(0, 200),
+		Fastskill(1),
+		Statusup(0, 200),
+		Attr_relief([0, 1, 0, 0, 0, ], 10),
+		Statusup(0, 200),
+		Attr_relief([1, 0, 0, 0, 0, ], 10),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<チェイン攻撃・回復>5チェインでダメージアップ(450%)、さらに水属性の味方のHPを回復(5%)",
+		proc: [ChainAttack(4.5, 5), Heal(0.05, [0, 1, 0, 0, 0], 0)],
+	},
+	ss2: {
+		desc: "<回復>チェインプラス2の効果、さらに味方全体のHPを回復する(50%)",
+		turn: 10,
+		proc: [ss_heal(0.50), ss_addchain(2)],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(0, 400),
+	],
+}

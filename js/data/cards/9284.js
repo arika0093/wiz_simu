@@ -1,0 +1,48 @@
+{
+	name: "ふわっと リルム",
+	cardno: 9284,
+	imageno: 11549,
+	hp: 2656,
+	atk: 4392,
+	cost: 34,
+	attr: [1,-1],
+	species: [6],
+	islegend: true,
+	ape: "UHG",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効連撃>火属性の敵単体へ特効3連撃(350%)",
+		proc: ChainDualAttrAttack(3.5, 0, 3, [1,0,0,0,0]),
+	},
+	ss1: {
+		desc: "<シャッフル>ジャンルパネルをシャッフル",
+		turn: 1,
+		proc: [ss_panel_shuffle()],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([0,1,0,0,0,],1),
+		Statusup(200,0),
+		Statusup(0,200),
+		NEFTJOD(30),
+		Attr_relief([1,0,0,0,0,],10),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],1),
+	],
+	as2: {
+		desc: "<属性特効連撃>火属性の敵単体へ特効3連撃(450%)",
+		proc: ChainDualAttrAttack(4.5, 0, 3, [1,0,0,0,0]),
+	},
+	ss2: {
+		desc: "<特効大魔術>1ターン溜めた後、敵単体へ水属性のダメージ(300%)、さらに火属性の敵には特効ダメージ(300%)",
+		turn: 5,
+		charged: 1,
+		proc: [ss_damage_s(special_attr([1, 0, 0, 0, 0], 6.0, 3.0), [1], 1)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

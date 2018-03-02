@@ -1,0 +1,46 @@
+{
+	name: "無限の黒天使 ルシエラ・フオル",
+	cardno: 9432,
+	imageno: 6872,
+	hp: 4865,
+	atk: 2855,
+	cost: 57,
+	attr: [2,4],
+	species: [3],
+	islegend: true,
+	ape: "ロストエデンⅠ",
+	as1: {
+		desc: "<複属性攻撃強化>5チェインで雷属性の攻撃力をアップ(60%)、複属性が闇属性だとさらにアップ(30%)、パネルの色が2色以上だとさらにアップ(60%)",
+		proc: [ChainEnhance_SubAttr(0.6, 0.9, [0,0,1,0,0], [0,0,0,0,1], 5), add_cond(ChainEnhance_SubAttr(1.2, 1.5, [0,0,1,0,0], [0,0,0,0,1], 5), as_panel_over2())],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを雷・闇属性化",
+		turn: 3,
+		proc: [ss_panel_change([0,0,1,0,1])],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(4),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,0,0,0,1,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>5チェインで雷属性の攻撃力をアップ(90%)、複属性が闇属性だとさらにアップ(30%)、パネルの色が2色以上だとさらにアップ(60%)",
+		proc: [ChainEnhance_SubAttr(0.9, 1.2, [0,0,1,0,0], [0,0,0,0,1], 5), add_cond(ChainEnhance_SubAttr(1.5, 1.8, [0,0,1,0,0], [0,0,0,0,1], 5), as_panel_over2())],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを雷・闇属性化し、ダメージ35%軽減の効果を付与",
+		turn: 6,
+		proc: [ss_panel_change([0,0,1,0,1]), panel_attr_guard([1,1,1,1,1], 0.35)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,300, [0,0,1,0,0,]),
+	],
+}

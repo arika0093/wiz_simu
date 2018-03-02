@@ -1,0 +1,48 @@
+{
+	name: "絶対☆恋ANGEL マーガレット・リル",
+	cardno: 9558,
+	imageno: 9550,
+	hp: 1880,
+	atk: 4490,
+	cost: 54,
+	attr: [0,3],
+	species: [3],
+	islegend: true,
+	ape: "エステレラⅠ",
+	as1: {
+		desc: "<属性特効>雷・闇属性の敵単体へ特効ダメージ(350%)、解答が早いほどさらにアップ(70%)(上限:4段階)",
+		proc: add_cond(ChainAttrAttack(3.5, 0, [0,0,1,0,1]), as_timedep(0.7)),
+	},
+	ss1: {
+		desc: "<多弾魔術>1ターン溜めた後、スキル反射を無視し、敵単体へ火・光属性の10回連続ダメージ(450%)",
+		turn: 2,
+		charged: 1,
+		proc: [ss_damage_s(4.5, [0,3], 10), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],4),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		NEFTJOD(30),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,0,1,0,]),
+		Abstate_invalid("discharge"),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+		Awake_noeffect("経験値取得量アップ",2),
+	],
+	as2: {
+		desc: "<属性特効>雷・闇属性の敵単体へ特効ダメージ(450%)、解答が早いほどさらにアップ(70%)(上限:4段階)",
+		proc: add_cond(ChainAttrAttack(4.5, 0, [0,0,1,0,1]), as_timedep(0.7)),
+	},
+	ss2: {
+		desc: "<多弾魔術>1ターン溜めた後、スキル反射を無視し、敵単体へ火・光属性の10回連続ダメージ(650%)",
+		turn: 4,
+		charged: 1,
+		proc: [ss_damage_s(6.5, [0,3], 10), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+}

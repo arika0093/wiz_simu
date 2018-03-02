@@ -1,0 +1,47 @@
+{
+	name: "参上！ スザクロッド自警団！",
+	cardno: 6347,
+	imageno: 8182,
+	hp: 3764,
+	atk: 1005,
+	cost: 19,
+	attr: [2,-1],
+	species: [7],
+	islegend: true,
+	is_dist: true,
+	ape: "幻魔特区スザクⅢ",
+	as1: {
+		desc: "<回復>味方全体のHPを回復(11%)",
+		proc: Heal(0.11, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,1,1,0,0])],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ", 1),
+		Fastskill(1),
+		Statusup(200,0),
+		Costdown(2),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(13%)",
+		proc: Heal(0.13, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、ダメージ25%軽減の効果を付与",
+		turn: 6,
+		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)],
+	},
+	Lawake: [
+		Statusup(0,300),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

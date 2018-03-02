@@ -1,0 +1,46 @@
+{
+	name: "白銀の翼が舞い降りる 初音ミク",
+	cardno: 4874,
+	imageno: 6621,
+	hp: 2843,
+	atk: 3043,
+	cost: 46,
+	attr: [1, 3],
+	species: [3],
+	disable: true,
+	awakes: [
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Fastskill(2),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Spec_statusup(200, 0, [3, ]),
+	],
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ/400％",
+		proc: ChainAttack(4.0, 4),
+	},
+	ss1: {
+		desc: "<チェインガード>3ターンの間、チェインを保護する",
+		turn: 5,
+		proc: [ss_chain_protect(3)],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ/500％",
+		proc: ChainAttack(5.0, 4),
+	},
+	ss2: {
+		desc: "<チェインガード>6ターンの間、チェインを保護する",
+		turn: 8,
+		proc: [ss_chain_protect(6)],
+	},
+}

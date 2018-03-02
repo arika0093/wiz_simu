@@ -1,0 +1,47 @@
+{
+	name: "聖なる激情 ベロニカ・ジマー",
+	cardno: 7566,
+	imageno: 9629,
+	hp: 2631,
+	atk: 3634,
+	cost: 39,
+	attr: [1,-1],
+	species: [2],
+	islegend: true,
+	ape: "イタズラ女神とうさぎのおはなし",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ(300%)&敵HPを吸収する(5%)",
+		proc: add_cond(ChainAttrAttack(3.0, 0, [1,0,0,0,0]), as_hp_absorption(0.05)),
+	},
+	ss1: {
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(9000)",
+		turn: 7,
+		proc: [poison(9000, 4)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Fastskill(2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Spec_statusup(0,200, [2,]),
+		Spec_statusup(200,0, [2,]),
+		Abstate_invalid("poison"),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ(400%)&敵HPを吸収する(5%)",
+		proc: add_cond(ChainAttrAttack(4.0, 0, [1,0,0,0,0]), as_hp_absorption(0.05)),
+	},
+	ss2: {
+		desc: "<毒>5ターン敵全体に毒のダメージを与える(15000)",
+		turn: 11,
+		proc: [poison(15000, 5)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

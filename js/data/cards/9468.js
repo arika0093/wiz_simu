@@ -1,0 +1,47 @@
+{
+	name: "古の呪縛 ヤラ・アンテゴニア",
+	cardno: 9468,
+	imageno: 11695,
+	hp: 3545,
+	atk: 2575,
+	cost: 46,
+	attr: [0,4],
+	species: [1],
+	islegend: true,
+	ape: "ロストエデンⅢ",
+	is_dist: true,
+	as1: {
+		desc: "<連撃・ガード>6チェインで敵単体を3回連続攻撃(350%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainDualAttack(3.5, 6, 3), as_guard(0.1, [1,1,1,1,1], 6)],
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 8,
+		proc: [ss_heal(0.50), ss_abstate_cure()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(5),
+		Attr_relief([0,0,0,0,1,],30),
+		Attr_statusup_sattr(0,100, [1,0,0,0,1,], 0,200, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,1,], 200,0, [0,0,0,0,1,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<連撃・ガード>6チェインで敵単体を3回連続攻撃(450%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainDualAttack(4.5, 6, 3), as_guard(0.1, [1,1,1,1,1], 6)],
+	},
+	ss2: {
+		desc: "<状態異常回復&蘇生>味方全体のHPを回復し(50%)、状態異常を回復、さらに火属性の味方を50%で蘇生",
+		turn: 11,
+		proc: [ss_heal(0.50), ss_abstate_cure(), ss_resurrection([0,1,0,0,0], 0.5)],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

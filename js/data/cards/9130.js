@@ -1,0 +1,46 @@
+{
+	name: "争空に舞う天翼 プルミエ・シエル",
+	cardno: 9130,
+	imageno: 6484,
+	hp: 3175,
+	atk: 3756,
+	cost: 54,
+	attr: [1,2],
+	species: [3],
+	islegend: true,
+	ape: "ドルキマスⅠ",
+	as1: {
+		desc: "<チェイン攻撃・種族数攻撃>4チェインでダメージアップ(300%)、天使の仲間の数だけさらにアップ(100%)",
+		proc: ChainDeckSpecsAttack(1.0, [3], 4, 2.0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
+		turn: 3,
+		proc: [ss_panel_change([0,1,1,0,0])],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(4),
+		Spec_statusup(0,200, [3,]),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,1,0,0,]),
+		Awake_Chainboost(1),
+	],
+	as2: {
+		desc: "<チェイン攻撃・種族数攻撃>4チェインでダメージアップ(400%)、天使の仲間の数だけさらにアップ(100%)",
+		proc: ChainDeckSpecsAttack(1.0, [3], 4, 3.0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、チェインがプラス1の効果を付与、のろい状態または状態異常時、さらにチェインがプラス3の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(ss_is_abstate_own(4, 1)), ss_panel_change([0,1,1,0,0])],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		Statusup(500,0),
+	],
+}

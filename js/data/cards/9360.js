@@ -1,0 +1,47 @@
+{
+	name: "狂狂ト舞ウ闇傀儡 グヴェル・テラー",
+	cardno: 9360,
+	imageno: 6179,
+	hp: 3054,
+	atk: 3029,
+	cost: 48,
+	attr: [2,4],
+	species: [2],
+	islegend: true,
+	ape: "オルハレポート",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>敵単体を3回連続攻撃(275%)",
+		proc: ChainDualAttack(2.75, 0, 3),
+	},
+	ss1: {
+		desc: "<割合削り>スキル反射を無視し、敵単体のHPを15%減少させる、HP50%以下で更に15%減少させる",
+		turn: 9,
+		proc: [ss_ratiodamage_s(ss_hp_less(0.50, 0.30, 0.15)), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([0,0,1,0,0,],1),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Fastskill(3),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,200, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 200,0, [0,0,0,0,1,]),
+		Awake_noeffect("心眼",1),
+	],
+	as2: {
+		desc: "<連撃>敵単体を3回連続攻撃(375%)",
+		proc: ChainDualAttack(3.75, 0, 3),
+	},
+	ss2: {
+		desc: "<割合削り>スキル反射を無視し、敵単体のHPを20%減少させる、HP50%以下で更に20%減少させる",
+		turn: 12,
+		proc: [ss_ratiodamage_s(ss_hp_less(0.50, 0.40, 0.2)), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		NEFTJOD(60),
+		Statusup(0,1000),
+	],
+}

@@ -1,0 +1,45 @@
+{
+	name: "天翔ける鳳凰姫神 ケツァ・カーツァ",
+	cardno: 5882,
+	imageno: 7699,
+	hp: 5112,
+	atk: 3398,
+	cost: 53,
+	attr: [0, -1],
+	species: [5],
+	islegend: true,
+	as1: {
+		desc: "<回復>火属性の味方を回復、7チェインで更に回復(10%/17%)",
+		proc: [Heal(0.10, [1, 0, 0, 0, 0], 0), Heal(0.17, [1, 0, 0, 0, 0], 7)],
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し(60%)、状態異常を回復する",
+		turn: 7,
+		proc: [ss_heal(0.60), ss_abstate_cure()],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Statusup(400, 0),
+		Attr_statusup(200, 0, [1, 0, 0, 0, 0, ]),
+		Fastskill(1),
+		Fastskill(2),
+		Heal_afterbattle(10),
+		Spec_statusup(0, 500, [5, ]),
+		Spec_statusup(500, 0, [5, ]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<回復>火属性の味方を回復、7チェインで更に回復(13%/20%)",
+		proc: [Heal(0.13, [1, 0, 0, 0, 0], 0), Heal(0.20, [1, 0, 0, 0, 0], 7)],
+	},
+	ss2: {
+		desc: "<状態異常回復&蘇生>味方全体のHPを回復し(60%)、状態異常を回復、さらに火属性の味方を50%で蘇生",
+		turn: 10,
+		proc: [ss_heal(0.60), ss_abstate_cure(), ss_resurrection([1, 0, 0, 0, 0], 0.50)],
+	},
+	Lawake: [
+		Statusup(500, 0),
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "すれ違う希望と想い アスカ&シンジ",
+	cardno: 6671,
+	imageno: 8535,
+	hp: 4029,
+	atk: 4121,
+	cost: 50,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(エヴァⅡ)",
+	as1: {
+		desc: "<チェイン攻撃・攻撃強化>火属性の味方の攻撃力をアップ(30%)し、6チェインでダメージアップ(400%)",
+		proc: [ChainEnhance(0.30, [1,0,0,0,0], 0), ChainAttack(4.0, 6)],
+	},
+	ss1: {
+		desc: "<弱体化大魔術>敵単体へ火属性のダメージ(400%)、さらに5ターンの間、敵の防御力を弱体化(30%)",
+		turn: 7,
+		proc: [ss_damage_s(4.0, [0], 1), ss_attr_weaken_s([1,1,1,1,1], 0.3, 5)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		NEFTJOD(30),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃・攻撃強化>火属性の味方の攻撃力をアップ(30%)し、6チェインでダメージアップ(500%)",
+		proc: [ChainEnhance(0.30, [1,0,0,0,0], 0), ChainAttack(5.0, 6)],
+	},
+	ss2: {
+		desc: "<弱体化大魔術>スキル反射を無視し、敵単体へ火属性のダメージ(800%)、さらに10ターンの間、敵の防御力を弱体化(30%)",
+		turn: 12,
+		proc: [ss_damage_s(8.0, [0], 1), ss_attr_weaken_s([1,1,1,1,1], 0.3, 10), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Abstate_invalid("as_sealed"),
+		Abstate_invalid("ss_sealed"),
+		Statusup(0,500),
+	],
+}

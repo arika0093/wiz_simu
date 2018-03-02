@@ -1,0 +1,47 @@
+{
+	name: "静かに祈り願う クリネア・マキア",
+	cardno: 7140,
+	imageno: 6882,
+	hp: 5558,
+	atk: 1876,
+	cost: 52,
+	attr: [1,0],
+	species: [3],
+	disable: true,
+	islegend: true,
+	ape: "ロストエデンⅠ",
+	as1: {
+		desc: "<回復>火・水属性の味方を回復、7チェインで更に回復(10%/17%)",
+		proc: [Heal(0.1, [1,1,0,0,0], 0), Heal(0.17, [1,1,0,0,0], 7)],
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体のHPを500アップ、さらにHPを回復(50%)",
+		turn: 5,
+		proc: [ss_statusup_all([500, 0], [2000, 2000], -1), ss_heal(0.5)],
+	},
+	awakes: [
+		Statusup(200,0),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Heal_afterbattle(10),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_sattr(0,200, [0,1,0,0,0,], 0,200, [1,0,0,0,0,]),
+		NEFTJOD(30),
+		Attr_statusup_sattr(200,0, [0,1,0,0,0,], 200,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<回復>火・水属性の味方を回復、7チェインで更に回復(13%/20%)",
+		proc: [Heal(0.13, [1,1,0,0,0], 0), Heal(0.20, [1,1,0,0,0], 7)],
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体のHPを1000アップ、さらにHPを完全回復",
+		turn: 8,
+		proc: [ss_statusup_all([1000, 0], [2000, 2000], -1), ss_heal(1)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

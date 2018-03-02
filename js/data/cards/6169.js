@@ -1,0 +1,46 @@
+{
+	name: "流星穿つ聖剣士 クラヴィル・スティ",
+	cardno: 6169,
+	imageno: 7989,
+	hp: 3033,
+	atk: 3488,
+	cost: 50,
+	attr: [1,4],
+	species: [8],
+	disable: true,
+	islegend: true,
+	ape: "GW2016",
+	as1: {
+		desc: "<属性特効>4チェインで火・光属性の敵単体へ特効ダメージ(600%)",
+		proc: ChainAttrAttack(6.0, 4, [1,0,0,1,0]),
+	},
+	ss1: {
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(300%)、さらに3ターンの間、水属性のダメージ(300%)",
+		turn: 9,
+		proc: [ss_continue_damage(3.0, 3.0, [1], 3)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Statusup(0,200),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(1),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<属性特効>4チェインで火・光属性の敵単体へ特効ダメージ(700%)",
+		proc: ChainAttrAttack(7.0, 4, [1,0,0,1,0]),
+	},
+	ss2: {
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(300%)、さらに4ターンの間、水属性のダメージ(300%)",
+		turn: 11,
+		proc: [ss_continue_damage(3.0, 3.0, [1], 4)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
+}

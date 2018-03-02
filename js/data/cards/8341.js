@@ -1,0 +1,47 @@
+{
+	name: "ふにゃふわ神柔拳 プグナ・マルカ",
+	cardno: 8341,
+	imageno: 10485,
+	hp: 4815,
+	atk: 2765,
+	cost: 56,
+	attr: [2,0],
+	species: [4],
+	islegend: true,
+	ape: "喰牙RIZEⅠ",
+	as1: {
+		desc: "<攻撃強化>7チェインで火・雷属性の味方の攻撃力をアップ(80%),20チェインでさらにアップ(220%)",
+		proc: [ChainEnhance(0.8, [1,0,1,0,0], 7), ChainEnhance(3.0, [1,0,1,0,0], 20)],
+	},
+	ss1: {
+		desc: "<精霊強化>4ターンの間、味方の攻撃力をアップ(200%)(発動中行動不可)",
+		turn: 4,
+		proc: [ss_reinforcement_all(4, [ss_enhance_all(2, 1, [1, 1, 1, 1, 1], "RF")])],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Abstate_invalid("ss_sealed"),
+		Spec_statusup(0,300, [4,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [1,0,0,0,0,]),
+		Fastskill(3),
+	],
+	as2: {
+		desc: "<攻撃強化>7チェインで火・雷属性の味方の攻撃力をアップ(100%),20チェインでさらにアップ(220%)",
+		proc: [ChainEnhance(1.0, [1,0,1,0,0], 7), ChainEnhance(3.2, [1,0,1,0,0], 20)],
+	},
+	ss2: {
+		desc: "<精霊強化>4ターンの間、味方の攻撃力をアップ(300%)(発動中行動不可)",
+		turn: 7,
+		proc: [ss_reinforcement_all(4, [ss_enhance_all(3, 1, [1, 1, 1, 1, 1], "RF")])],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Statusup(500,0),
+		NEFTJOD(30),
+	],
+}

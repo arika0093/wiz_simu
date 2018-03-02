@@ -1,0 +1,46 @@
+{
+	name: "超革命魔道ガール リルム・ロロット(L2)",
+	cardno: 6529,
+	imageno: 6364,
+	hp: 1920,
+	atk: 4321,
+	cost: 55,
+	attr: [1,0],
+	species: [9],
+	islegend: true,
+	ape: "UG",
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(400%)",
+		proc: ChainAttack(4.0, 4),
+	},
+	ss1: {
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へダメージ(120%×人数)",
+		turn: 6,
+		proc: [ss_damage_all(ss_consume_all_cond(1.2, 0.5), [1])],
+	},
+	awakes: [
+		Fastskill(1),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup_sattr(200, 0, [0,1,0,0,0], 200, 0, [1,0,0,0,0]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_sattr(0, 200, [0,1,0,0,0], 0, 200, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(500%)",
+		proc: ChainAttack(5.0, 4),
+	},
+	ss2: {
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へダメージ(180%×人数)",
+		turn: 9,
+		proc: [ss_damage_all(ss_consume_all_cond(1.8, 0.5), [1])],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Statusup(0,500),
+	],
+}

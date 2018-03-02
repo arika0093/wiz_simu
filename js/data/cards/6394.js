@@ -1,0 +1,47 @@
+{
+	name: "歌は祝福に彩られ ミコト・ウタヨミ",
+	cardno: 6394,
+	imageno: 8249,
+	hp: 3036,
+	atk: 3649,
+	cost: 56,
+	attr: [0,3],
+	species: [1],
+	disable: true,
+	islegend: true,
+	ape: "GP2016",
+	as1: {
+		desc: "<連撃・ガード>6チェインで敵単体を3回連続攻撃(400%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainDualAttack(4.0, 6, 3), as_guard(0.1, [1,1,1,1,1], 6)],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・光属性化",
+		turn: 3,
+		proc: [ss_panel_change([1,0,0,1,0])],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup_sattr(200, 0, [1,0,0,0,0], 200, 0, [0,0,0,1,0]),
+		Attr_statusup_sattr(0, 200, [1,0,0,0,0], 0, 200, [0,0,0,1,0]),
+	],
+	as2: {
+		desc: "<連撃・ガード>6チェインで敵単体を3回連続攻撃(500%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainDualAttack(5.0, 6, 3), as_guard(0.1, [1,1,1,1,1], 6)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・光属性化し、ダメージ25%軽減の効果を付与。HP20%以下でさらにダメージ35%軽減の効果を付与",
+		turn: 6,
+		proc: [ss_panel_change([1,0,0,1,0]), panel_attr_guard([1,1,1,1,1], ss_hp_less(0.2, 0.6, 0.25))],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup_sattr(0, 100, [1,0,0,0,0], 0, 100, [0,0,0,1,0]),
+	],
+}

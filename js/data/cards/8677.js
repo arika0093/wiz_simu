@@ -1,0 +1,46 @@
+{
+	name: "夏に輝く ヨッココ・ルボア",
+	cardno: 8677,
+	imageno: 10850,
+	hp: 2036,
+	atk: 5242,
+	cost: 35,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "エタクロⅢ",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃>味方のMAXHP20%を使い、敵単体へのダメージアップ(600%)",
+		proc: add_cond(ChainAttack(6.0, 0), as_consume_all(0.2)),
+	},
+	ss1: {
+		desc: "<特効大魔術>MAXHPの50%を使い敵単体へ水属性のダメージ(400%)、さらに火属性の敵には特効ダメージ(800%)",
+		turn: 6,
+		proc: [ss_damage_s(special_attr([1, 0, 0, 0, 0], 12.0, 4.0), [1], 1), ss_consume_own(0.50)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Statusup(300,0),
+		Statusup(0,300),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		Abstate_invalid("poison"),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup_oattr(0,200, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<攻撃>敵単体へのダメージアップ(600%)",
+		proc: ChainAttack(6.0, 0),
+	},
+	ss2: {
+		desc: "<特効大魔術>MAXHPの50%を使い敵単体へ水属性のダメージ(400%)、さらに火属性の敵には特効ダメージ(1500%)",
+		turn: 9,
+		proc: [ss_damage_s(special_attr([1, 0, 0, 0, 0], 19.0, 4.0), [1], 1), ss_consume_own(0.50)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
+}

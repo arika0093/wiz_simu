@@ -1,0 +1,45 @@
+{
+	name: "不死不滅倣龍 アルファルド・アリマ",
+	cardno: 6305,
+	imageno: 8154,
+	hp: 3288,
+	atk: 5337,
+	cost: 60,
+	attr: [0,-1],
+	species: [0],
+	islegend: true,
+	as1: {
+		desc: "<チェイン攻撃>15チェインでダメージアップ、20チェインで更にダメージアップ(900%/1100%)",
+		proc: [ChainAttack(9.0, 15), ChainAttack(11, 20)],
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(750%)",
+		turn: 12,
+		proc: [ss_damage_all(7.5, [0]), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	awakes: [
+		Costdown(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([0,1,0,0,0,],10),
+		Statusup(200,0),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		NEFTJOD(30),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>15チェインでダメージアップ、20チェインで更にダメージアップ(1000%/1200%)",
+		proc: [ChainAttack(10.0, 15), ChainAttack(12, 20)],
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(900%)",
+		turn: 15,
+		proc: [ss_damage_all(9.0, [0]), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Abstate_invalid("as_sealed"),
+	],
+}

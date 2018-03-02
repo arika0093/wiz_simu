@@ -1,0 +1,45 @@
+{
+	name: "お茶目怪盗 ヘレス・ブリリアント",
+	cardno: 3905,
+	imageno: 5585,
+	hp: 2775,
+	atk: 2543,
+	cost: 39,
+	attr: [2, -1],
+	species: [2],
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		NEFTJOD(30),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Spec_statusup(0, 200, [2, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Fastskill(2),
+		NEFTJOD(30),
+		Spec_statusup(0, 200, [2, ]),
+		Spec_statusup(200, 0, [2, ]),
+		Awake_noeffect("経験値取得量アップ", 1),
+	],
+	as1: {
+		desc: "<回復>火・雷属性の味方を回復、HP50％以下なら更に回復(通常：11％ / HP50％以下：20％)",
+		proc: [Heal(0.11, [1,0,1,0,0], 0), add_cond(Heal(0.20, [1,0,1,0,0], 0), when_hp_less(0.5))],
+	},
+	ss1: {
+		desc: "<蘇生>味方全体のHPを回復し、さらに火・雷属性の味方を蘇生(回復：25％ / 蘇生：25％)",
+		turn: 7,
+		proc: [ss_heal(0.25), ss_resurrection([1,0,1,0,0], 0.25)],
+	},
+	islegend: true,
+	Lawake: [
+		NEFTJOD(30),
+		Statusup(400, 0),
+	],
+	as2: {
+		desc: "<回復>火・雷属性の味方を回復、HP50％以下なら更に回復(通常：13％ / HP50％以下：22％)",
+		proc: [Heal(0.13, [1,0,1,0,0], 0), add_cond(Heal(0.22, [1,0,1,0,0], 0), when_hp_less(0.5))],
+	},
+	ss2: {
+		desc: "<蘇生>味方全体のHPを回復し、さらに火・雷属性の味方を蘇生(回復：50％ / 蘇生：50％)",
+		turn: 9,
+		proc: [ss_heal(0.50), ss_resurrection([1,0,1,0,0], 0.50)],
+	},
+}

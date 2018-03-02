@@ -1,0 +1,47 @@
+{
+	name: "Both Extremes ラリィ&ダリィ",
+	cardno: 8778,
+	imageno: 10960,
+	hp: 2843,
+	atk: 4866,
+	cost: 38,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	ape: "クロスディライブACT2",
+	is_dist: true,
+	as1: {
+		desc: "<種族特効>敵全体へダメージ(140%)、物質・魔法生物の敵へさらにダメージアップ(50%)",
+		proc: [ChainAllAttack(1.4, 0), ChainAllSpecAttack(1.9, [6,7], 0)],
+	},
+	ss1: {
+		desc: "<詠唱大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ(800%)、クイズに5問回答し、解答時間が早いほどさらにダメージ(400%)(上限4段階)",
+		turn: 10,
+		proc: [ss_damage_s(ss_answertime(8.0, 4.0), [2], 1), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(1),
+		Awake_noeffect("経験値取得量アップ",1),
+		Panel_boost([0,0,1,0,0,],2),
+		Costdown(10),
+		Fastskill(2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Statusup(500,0),
+		Abstate_invalid("poison"),
+	],
+	as2: {
+		desc: "<種族特効>敵全体へダメージ(170%)、物質・魔法生物の敵へさらにダメージアップ(50%)",
+		proc: [ChainAllAttack(1.7, 0), ChainAllSpecAttack(2.2, [6,7], 0)],
+	},
+	ss2: {
+		desc: "<詠唱大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ(1100%)、クイズに5問回答し、解答時間が早いほどさらにダメージ(400%)(上限4段階)",
+		turn: 13,
+		proc: [ss_damage_s(ss_answertime(11.0, 4.0), [2], 1), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(0,500),
+	],
+}

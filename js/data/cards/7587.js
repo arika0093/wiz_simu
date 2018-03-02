@@ -1,0 +1,47 @@
+{
+	name: "心揺れ動く聖夜 オルネ・タンペート",
+	cardno: 7587,
+	imageno: 9650,
+	hp: 2585,
+	atk: 3195,
+	cost: 46,
+	attr: [2,0],
+	species: [9],
+	islegend: true,
+	ape: "ギルドマスターとChristmas",
+	is_dist: true,
+	as1: {
+		desc: "<種族数攻撃>4チェインでダメージアップ(300%)、術士の仲間の数だけさらにアップ(40%)",
+		proc: ChainDeckSpecsAttack(0.4, [9], 4, 3.0),
+	},
+	ss1: {
+		desc: "<大魔術>チェインプラス1の効果、スキル反射を無視し、敵全体へ火・雷属性のダメージ(100%)",
+		turn: 5,
+		proc: [ss_addchain(1), ss_damage_all(1.0, [0,2]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Fastskill(1),
+		Costdown(2),
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(2),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(0,200, [9,]),
+		Guild_statusup(0, 1000),
+		Guild_statusup(1000, 0),
+	],
+	as2: {
+		desc: "<種族数攻撃>4チェインでダメージアップ(400%)、術士の仲間の数だけさらにアップ(50%)",
+		proc: ChainDeckSpecsAttack(0.5, [9], 4, 4.0),
+	},
+	ss2: {
+		desc: "<大魔術>チェインプラス1の効果、スキル反射を無視し、敵全体へ火・雷属性のダメージ(150%)",
+		turn: 7,
+		proc: [ss_addchain(1), ss_damage_all(1.5, [0,2]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

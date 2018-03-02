@@ -1,0 +1,46 @@
+{
+	name: "覚醒の天元魔道士 エステル・モカ",
+	cardno: 4596,
+	imageno: 6301,
+	hp: 2694,
+	atk: 2929,
+	cost: 43,
+	attr: [0, -1],
+	species: [9],
+	disable: true,
+	awakes: [
+		Statusup(0, 200),
+		Fastskill(2),
+		Costdown(2),
+		Panel_boost([1,0,0,0,0], 1),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Panel_boost([1,0,0,0,0], 1),
+		Spec_statusup(200, 0, [9]),
+	],
+	as1: {
+		desc: "<回復>火属性の味方を回復、HP50%以下なら更に回復(通常時:11%/HP50%以下:20%)",
+		proc: multi_as(Heal(0.11, [1,0,0,0,0]), add_cond(Heal(0.20, [1,0,0,0,0]), when_hp_less(0.5))),
+	},
+	ss1: {
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へダメージ(130％×味方の人数)",
+		turn: 11,
+		proc: [ss_damage_all(ss_consume_all_cond(1.3, 0.5), [0])],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(500, 0),
+		Statusup(0, 500),
+	],
+	as2: {
+		desc: "<回復>火属性の味方を回復、HP50%以下なら更に回復(通常時:13%/HP50%以下:22%)",
+		proc: multi_as(Heal(0.13, [1,0,0,0,0]), add_cond(Heal(0.22, [1,0,0,0,0]), when_hp_less(0.5))),
+	},
+	ss2: {
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へダメージ(160％×味方の人数)",
+		turn: 13,
+		proc: [ss_damage_all(ss_consume_all_cond(1.6, 0.5), [0])],
+	},
+}

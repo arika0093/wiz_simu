@@ -1,0 +1,46 @@
+{
+	name: "〈降臨〉魔晶の邪竜 ティアマト",
+	cardno: 5667,
+	imageno: 7468,
+	hp: 2213,
+	atk: 2879,
+	cost: 41,
+	attr: [0,-1],
+	species: [0],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ、HP50%以下でさらにダメージアップ(300%/1050%)",
+		proc: [ChainAttrAttack(3, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(10.5, 0, [0,0,1,0,0]), when_hp_less(0.5))],
+	},
+	ss1: {
+		desc: "<犠牲魔術>味方全体のHPを50%使い敵単体へ火属性のダメージ(220%×人数)",
+		turn: 12,
+		proc: [ss_damage_s(ss_consume_all_cond(2.2, 0.5), [0], 1)],
+	},
+	awakes: [
+		Statusup(0,100),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Statusup(0,200),
+		Statusup(200,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(0,200),
+		Spec_statusup(0,300, [0,]),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Spec_statusup(300,0, [0,]),
+	],
+	as2: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ、HP50%以下でさらにダメージアップ(400%/1400%)",
+		proc: [ChainAttrAttack(4.0, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(14.0, 0, [0,0,1,0,0]), when_hp_less(0.5))],
+	},
+	ss2: {
+		desc: "<犠牲魔術>味方全体のHPを50%使い敵単体へ火属性のダメージ(280%×人数)",
+		turn: 14,
+		proc: [ss_damage_s(ss_consume_all_cond(2.8, 0.5), [0], 1)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

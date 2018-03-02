@@ -1,0 +1,45 @@
+{
+	name: "目指せ1番！ ハルカ・グレイヘヴン",
+	cardno: 5659,
+	imageno: 7462,
+	hp: 4442,
+	atk: 3754,
+	cost: 46,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<種族攻撃強化>水属性の味方の攻撃力をアップ、術士はさらにアップ(25%/45%)",
+		proc: [ChainEnhance(0.25, [0,1,0,0,0], 0), ChainSpecEnhance(0.45, [0,1,0,0,0], [9], 0)],
+	},
+	ss1: {
+		desc: "<継続回復>チェインプラス2の効果、さらに3ターン味方全体を徐々に回復する(15%)",
+		turn: 6,
+		proc: [ss_addchain(2), ss_regenerate(0.15, 3)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		Heal_afterbattle(10),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Fastskill(2),
+		Spec_statusup(200,0, [9,]),
+		Spec_statusup(0,200, [9,]),
+	],
+	as2: {
+		desc: "<種族攻撃強化・回復>水属性の味方の攻撃力をアップ、術士はさらにアップ(25%/45%)し、水属性の味方のHPを回復(5%)",
+		proc: [ChainEnhance(0.25, [0,1,0,0,0], 0), ChainSpecEnhance(0.45, [0,1,0,0,0], [9], 0), Heal(0.05, [0,1,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<継続回復>チェインプラス3の効果、さらに5ターン味方全体を徐々に回復する(20%)",
+		turn: 9,
+		proc: [ss_addchain(3), ss_regenerate(0.20, 3)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

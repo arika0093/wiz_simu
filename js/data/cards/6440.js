@@ -1,0 +1,48 @@
+{
+	name: "詠唱解析専門家 ペシュム・ネム",
+	cardno: 6440,
+	imageno: 8392,
+	hp: 3025,
+	atk: 2064,
+	cost: 42,
+	attr: [1,3],
+	species: [9],
+	islegend: true,
+	is_dist: true,
+	ape: "大魔道杯　爆",
+	is_dist: true,
+	as1: {
+		desc: "<回復>水属性の味方を回復(12%)",
+		proc: Heal(0.12, [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体の状態異常を回復する",
+		turn: 4,
+		proc: [ss_abstate_cure()],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Statusup(200,0),
+		NEFTJOD(30),
+		Attr_relief([0,1,0,0,0,],10),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>水属性の味方を回復(14%)",
+		proc: Heal(0.14, [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・光属性化し、攻撃力アップの効果を付与(50%)",
+		turn: 7,
+		proc: [ss_panel_change([0,1,0,1,0]), panel_attackup(0.50)],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

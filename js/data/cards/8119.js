@@ -1,0 +1,47 @@
+{
+	name: "凱旋のドルキマス",
+	cardno: 8119,
+	imageno: 10253,
+	hp: 2343,
+	atk: 3234,
+	cost: 45,
+	attr: [0,1],
+	species: [8],
+	islegend: true,
+	ape: "大魔道杯 with 英雄凱旋祭(4周年)",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>5チェインで敵単体を3回連続攻撃(450%)",
+		proc: ChainDualAttack(4.5, 5, 3),
+	},
+	ss1: {
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(500%)",
+		turn: 7,
+		proc: [ss_enhance_own(5.0, 3)],
+	},
+	awakes: [
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,1,0,0,0,], 200,0, [0,1,0,0,0,]),
+		Attr_statusup_sattr(0,100, [1,1,0,0,0,], 0,200, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<連撃>5チェインで敵単体を3回連続攻撃(550%)",
+		proc: ChainDualAttack(5.5, 5, 3),
+	},
+	ss2: {
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ、5チェインを消費しさらに3ターン攻撃力をアップ(1000%/2000%)",
+		turn: 11,
+		proc: [ss_chain_cost_skill(5, ss_enhance_own(20.0, 6), ss_enhance_own(10.0, 3))],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

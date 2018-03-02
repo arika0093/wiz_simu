@@ -1,0 +1,47 @@
+{
+	name: "因果の悲しみ ミュウ・レイヴェン",
+	cardno: 8639,
+	imageno: 10813,
+	hp: 5285,
+	atk: 2632,
+	cost: 39,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	is_dist: true,
+	ape: "エタクロⅠ",
+	as1: {
+		desc: "<種族攻撃強化>火属性の味方の攻撃力をアップ(30%)、術士はさらにアップ(30%)",
+		proc: [ChainEnhance(0.3, [1,0,0,0,0], 0), ChainSpecEnhance(0.6, [1,0,0,0,0], [9], 0)],
+	},
+	as2: {
+		desc: "<種族攻撃強化>火属性の味方の攻撃力をアップ(60%)、術士はさらにアップ(30%)",
+		proc: [ChainEnhance(0.6, [1,0,0,0,0], 0), ChainSpecEnhance(0.9, [1,0,0,0,0], [9], 0)],
+	},
+	ss1: {
+		desc: "<ダメージ強化>3ターン火属性の味方の攻撃力をアップ(70%)",
+		turn: 6,
+		proc: [ss_enhance_all(0.7, 3, [1,0,0,0,0])],
+	},
+	ss2: {
+		desc: "<ダメージ強化>3ターン火属性の味方の攻撃力をアップ(100%)",
+		turn: 7,
+		proc: [ss_enhance_all(1.0, 3, [1,0,0,0,0])],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(0,300),
+		Statusup(300,0),
+		Panel_boost([1,0,0,0,0,],2),
+		Abstate_invalid("all_sealed"),
+		Attr_relief([0,0,1,0,0,],10),
+		Attr_statusup(0,200,[1,0,0,0,0,]),
+		Attr_statusup(200,0,[1,0,0,0,0,]),
+		Fastskill(4),
+	],
+	Lawake: [
+		Attr_statusup(0,100,[1,0,0,0,0,]),
+		Statusup(500,0),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "いい歳して覚醒 ドルティ・ローム",
+	cardno: 9541,
+	imageno: 11801,
+	hp: 3244,
+	atk: 5322,
+	cost: 43,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "エステレラⅡ",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(350%)",
+		proc: ChainAttrAttack(3.5, 0, [0,0,1,0,0]),
+	},
+	ss1: {
+		desc: "<純属性強化>4ターンの間、火単色精霊が多いほど、火単色精霊のダメージを強化し(上限値:100%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:500,500)、リーダー時さらにステータスアップ(効果値:500,500)",
+		turn: 4,
+		proc: [ss_statusup_all([ss_pureattr_cond(ss_when_leader(1000, 500)), ss_pureattr_cond(ss_when_leader(1000, 500))], [ss_when_leader(1000, 500), ss_when_leader(1000, 500)], -1, [1,0,0,0,0]), ss_enhance_all(ss_pureattr_cond(1.0), 4, [1,0,0,0,0])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
+		Attr_statusup_oattr(300,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(4),
+		NEFTJOD(30),
+		Abstate_invalid("all_sealed"),
+		Attr_statusup(0,300, [1,0,0,0,0,]),
+		Attr_statusup(300,0, [1,0,0,0,0,]),
+		Awake_noeffect("経験値取得量アップ",2),
+	],
+	as2: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(450%)",
+		proc: ChainAttrAttack(4.5, 0, [0,0,1,0,0]),
+	},
+	ss2: {
+		desc: "<純属性強化>4ターンの間、火単色精霊が多いほど、火単色精霊のダメージを強化し(200%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:1000,1000)、リーダー時さらにステータスアップ(効果値:1000,1000)",
+		turn: 8,
+		proc: [ss_statusup_all([ss_pureattr_cond(ss_when_leader(1000, 500)), ss_pureattr_cond(ss_when_leader(1000, 500))], [ss_when_leader(1000, 500), ss_when_leader(1000, 500)], -1, [1,0,0,0,0]), ss_enhance_all(ss_pureattr_cond(2.0), 4, [1,0,0,0,0])],
+	},
+	Lawake: [
+		Attr_statusup_oattr(0,200, [1,0,0,0,0,]),
+		Statusup(500,0),
+	],
+}

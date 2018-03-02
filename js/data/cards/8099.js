@@ -1,0 +1,47 @@
+{
+	name: "Lost and Gone <アナザー・ワン>",
+	cardno: 8099,
+	imageno: 10231,
+	hp: 5089,
+	atk: 2021,
+	cost: 51,
+	attr: [0,4],
+	species: [6],
+	islegend: true,
+	ape: "クロスディライブ",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ(30%)、複属性が闇属性だとさらにアップ(40%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.7, [1,0,0,0,0], [0,0,0,0,1], 0),
+	},
+	ss1: {
+		desc: "<ダメージ強化>4ターンの間、味方の攻撃力をアップ(50%)、5チェインを消費しさらにアップ(100%)",
+		turn: 7,
+		proc: [ss_enhance_all(ss_chain_cost(5, 1.5, 0.5), 4, [1, 1, 1, 1, 1])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+		Fastskill(2),
+		Attr_statusup_sattr(0,100, [1,0,0,0,1,], 0,200, [0,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,1,], 200,0, [0,0,0,0,0,]),
+		Spec_statusup(400,0, [6,]),
+		Spec_statusup(0,400, [6,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ(60%)、複属性が闇属性だとさらにアップ(40%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.0, [1,0,0,0,0], [0,0,0,0,1], 0),
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターンの間、味方の攻撃力をアップ(50%)、10チェインを消費しさらにアップ(300%)",
+		turn: 12,
+		proc: [ss_enhance_all(ss_chain_cost(10, 3.5, 0.5), 4, [1, 1, 1, 1, 1])],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Statusup(500,0),
+	],
+}

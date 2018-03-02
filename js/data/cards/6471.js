@@ -1,0 +1,46 @@
+{
+	name: "雄魂の魔戦獅子 バロン・ライオネル",
+	cardno: 6471,
+	imageno: 8411,
+	hp: 2514,
+	atk: 3453,
+	cost: 26,
+	attr: [2,-1],
+	species: [5],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<攻撃>敵単体へのダメージアップ、5チェインで更にアップ(250%/400%)",
+		proc: [ChainAttack(2.5, 0), ChainAttack(4.0, 5)],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷属性のダメージ(150%)",
+		turn: 5,
+		proc: [ss_damage_all(1.5, [2]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(4),
+		Statusup(200,0),
+		Statusup(0,200),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Spec_statusup(200,0, [5,]),
+		Spec_statusup(0,200, [5,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Guild_statusup(0, 1000),
+		Guild_statusup(1000, 0),
+	],
+	as2: {
+		desc: "<攻撃>敵単体へのダメージアップ、5チェインで更にアップ(350%/500%)",
+		proc: [ChainAttack(3.5, 0), ChainAttack(5.0, 5)],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷属性のダメージ、5チェインを消費しさらにダメージアップ(300%/500%)",
+		turn: 8,
+		proc: [ss_damage_all(ss_chain_cost(5, 5, 3), [2]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Spec_statusup(0,200, [5,]),
+	],
+}

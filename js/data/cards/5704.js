@@ -1,0 +1,46 @@
+{
+	name: "純仁愛の竜鍼士 イニュー・リェル",
+	cardno: 5704,
+	imageno: 7505,
+	hp: 2682,
+	atk: 3456,
+	cost: 44,
+	attr: [2,3],
+	species: [0],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<属性特効>4チェインで水・闇属性の敵単体へ特効ダメージ(600%)",
+		proc: ChainAttrAttack(6.0, 4, [0,1,0,0,1]) ,
+	},
+	ss1: {
+		desc: "<反動大魔術>敵全体へ雷属性のダメージ(300%)◆スキル使用後、1ターン封印状態に",
+		turn: 3,
+		proc: [ss_damage_all(3.0, [2]), ss_allsealed_own(1)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(0,200),
+		Statusup(200,0),
+		Spec_statusup(300,0, [0,]),
+		Attr_relief([1,0,0,0,0,],10),
+		Fastskill(1),
+		Spec_statusup(0,400, [0,]),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<属性特効>4チェインで水・闇属性の敵単体へ特効ダメージ(700%)",
+		proc: ChainAttrAttack(7.0, 4, [0,1,0,0,1]) ,
+	},
+	ss2: {
+		desc: "<反動大魔術>敵全体へ雷属性のダメージ(500%)◆スキル使用後、1ターン封印状態に",
+		turn: 5,
+		proc: [ss_damage_all(5.0, [2]), ss_allsealed_own(1)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

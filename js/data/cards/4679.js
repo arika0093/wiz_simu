@@ -1,0 +1,45 @@
+{
+	name: "天網妖麗の巫術士 メーベル・テイラー",
+	cardno: 4679,
+	imageno: 6438,
+	hp: 2666,
+	atk: 2854,
+	cost: 36,
+	attr: [2, -1],
+	species: [9],
+	awakes: [
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Costdown(2),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(2),
+		Costdown(2),
+		Spec_statusup(0, 200, [9, ]),
+		Spec_statusup(200, 0, [9, ]),
+	],
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ/450％",
+		proc: ChainAttack(4.5, 5),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ雷属性のダメージ(150％)",
+		turn: 7,
+		proc: [ss_damage_all(1.5, [2])],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ/550％",
+		proc: ChainAttack(5.5, 5),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ雷属性のダメージ(220％)",
+		turn: 10,
+		proc: [ss_damage_all(2.2, [2])],
+	},
+}

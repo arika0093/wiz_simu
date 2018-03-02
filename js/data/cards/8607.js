@@ -1,0 +1,47 @@
+{
+	name: "妖精と魔道士と リピュア&ネブロ",
+	cardno: 8607,
+	imageno: 10778,
+	hp: 4233,
+	atk: 2804,
+	cost: 33,
+	attr: [0,-1],
+	species: [4],
+	islegend: true,
+	ape: "黄昏メアレスⅢ",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化・ガード>5チェインで火属性の味方の攻撃力をアップ(50%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.5, [1,0,0,0,0], 5), as_guard(0.10, [1,1,1,1,1], 5)],
+	},
+	ss1: {
+		desc: "<回復>味方全体のHPを回復する(50%)",
+		turn: 5,
+		proc: [ss_heal(0.5)],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(300,0),
+		Statusup(0,300),
+		Panel_boost([1,0,0,0,0,],2),
+		Awake_noeffect("経験値取得量アップ",2),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<攻撃強化・ガード>5チェインで火属性の味方の攻撃力をアップ(80%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.8, [1,0,0,0,0], 5), as_guard(0.10, [1,1,1,1,1], 5)],
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

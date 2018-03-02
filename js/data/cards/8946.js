@@ -1,0 +1,48 @@
+{
+	name: "出たとこ勝負！聖サタニック女学院",
+	cardno: 8946,
+	imageno: 8702,
+	hp: 3888,
+	atk: 3423,
+	cost: 57,
+	attr: [0,4],
+	species: [2],
+	islegend: true,
+	ape: "真夏のグレート・クイズ・ウォー",
+	alias: ["クルス"],
+	as1: {
+		desc: "<チェイン攻撃>10チェインでダメージアップ(300%)、解答が早いほどさらにアップ(300％)(上限:4段階)",
+		proc: add_cond(ChainAttack(3.0, 10), as_timedep(3.0)),
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体のHPを2000ダウンし、攻撃力を2000アップ(上限値:2000)",
+		turn: 1,
+		proc: [ss_statusup_all([-2000, 2000], [2000, 2000], -1)],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],3),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,0,0,1,]),
+		Fastskill(4),
+		Abstate_invalid("as_sealed"),
+		Awake_noeffect("心眼",1),
+	],
+	as2: {
+		desc: "<チェイン攻撃>10チェインでダメージアップ(400%)、解答が早いほどさらにアップ(300％)(上限:4段階)",
+		proc: add_cond(ChainAttack(4.0, 10), as_timedep(3.0)),
+	},
+	ss2: {
+		desc: "<特効大魔術>4ターン溜めた後、敵単体へ火属性のダメージ(400%)、さらに雷属性の敵には特効ダメージ(2600%)",
+		turn: 5,
+		charged: 4,
+		proc: [ss_damage_s(special_attr([0,0,1,0,0], 30.0, 4.0), [0], 1)],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Statusup(0,1000),
+	],
+}

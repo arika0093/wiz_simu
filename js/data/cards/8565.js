@@ -1,0 +1,48 @@
+{
+	name: "働かない意志を粉砕 モミジ&ナゴミ",
+	cardno: 8565,
+	imageno: 10735,
+	hp: 7315,
+	atk: 2043,
+	cost: 48,
+	attr: [0,-1],
+	species: [1],
+	islegend: true,
+	ape: "大魔道杯 in 八百万Ⅳ",
+	is_dist: true,
+	as1: {
+		desc: "<回復・ガード>火属性の味方のHPを回復(13%)し,7チェインで全属性のダメージを10％軽減",
+		proc: [Heal(0.13, [1,0,0,0,0], 0), as_guard(0.10, [1,1,1,1,1], 7)],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>味方全体のMAXHPの60%を使い、ジャンルパネルにスキルチャージプラス4の効果を付与(効果は、SPスキルを使うまで重複しません) ",
+		turn: 11,
+		proc: [panel_skillboost(4), ss_consume_all(0.6)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_oattr(0,400, [1,0,0,0,0,]),
+		Attr_statusup_oattr(400,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(4),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Abstate_invalid("heal_reverse"),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復・ガード>火属性の味方のHPを回復(16%)し,7チェインで全属性のダメージを10％軽減",
+		proc: [Heal(0.16, [1,0,0,0,0], 0), as_guard(0.10, [1,1,1,1,1], 7)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>味方全体のMAXHPの60%を使い、ジャンルパネルにスキルチャージプラス6の効果を付与(効果は、SPスキルを使うまで重複しません)",
+		turn: 13,
+		proc: [panel_skillboost(6), ss_consume_all(0.6)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		NEFTJOD(30),
+	],
+}

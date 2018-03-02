@@ -1,0 +1,47 @@
+{
+	name: "狂恋の斧少女 マチア・ジェローシェ",
+	cardno: 9652,
+	imageno: 11935,
+	hp: 1935,
+	atk: 4452,
+	cost: 54,
+	attr: [0,4],
+	species: [8],
+	islegend: true,
+	ape: "シュガーレスバンビーナ",
+	as1: {
+		desc: "<連撃>4チェインで敵単体を4回連続攻撃(250%)、デッキ内の精霊が持つ属性数が多いほどさらにアップ(60%)(上限:5段階)",
+		proc: add_cond(ChainDualAttack(2.5, 4, 4), as_deckinattr_num(0, 0.6)),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ闇属性のダメージ(800%)、さらに光属性の敵には特効ダメージ(900%)、さらに敵にトドメを刺した数だけチェインプラス1",
+		turn: 3,
+		chadd_killing: true,
+		proc: [ss_damage_all(special_attr([0,0,0,1,0], 17.0, 8.0), [4])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(3),
+		Abstate_invalid("ss_sealed"),
+		NEFTJOD(60),
+		Attr_statusup(0,300, [1,1,1,1,1,]),
+		Attr_statusup(300,0, [1,1,1,1,1,]),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<連撃>4チェインで敵単体を4回連続攻撃(350%)、デッキ内の精霊が持つ属性数が多いほどさらにアップ(60%)(上限:5段階)",
+		proc: add_cond(ChainDualAttack(3.5, 4, 4), as_deckinattr_num(0, 0.6)),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ闇属性のダメージ(800%)、さらに光属性の敵には特効ダメージ(900%)、さらに敵にトドメを刺した数だけチェインプラス1",
+		turn: 3,
+		chadd_killing: true,
+		proc: [ss_damage_all(special_attr([0,0,0,1,0], 17.0, 8.0), [4])],
+	},
+	Lawake: [
+		Statusup(0,2000),
+	],
+}

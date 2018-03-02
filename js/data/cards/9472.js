@@ -1,0 +1,47 @@
+{
+	name: "双竜天翔 アデレード&ミネバ",
+	cardno: 9472,
+	imageno: 11724,
+	hp: 2845,
+	atk: 4035,
+	cost: 56,
+	attr: [0,3],
+	species: [8],
+	islegend: true,
+	ape: "DL限定精霊",
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ(150%),5チェインで更にダメージアップ(50%)",
+		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.0, 5)],
+	},
+	ss1: {
+		desc: "<融合大魔術>スキル反射を無視し、敵全体へ火属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:5属性で3000%)",
+		turn: 7,
+		proc: [ss_damage_all(ss_multiattr_cond(30), [0]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(3),
+		Attr_statusup(0,300, [1,1,1,1,1,]),
+		Attr_statusup(300,0, [1,1,1,1,1,]),
+		Abstate_invalid("ss_sealed"),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ(180%),5チェインで更にダメージアップ(50%)",
+		proc: [ChainAllAttack(1.8, 0), ChainAllAttack(2.3, 5)],
+	},
+	ss2: {
+		desc: "<融合大魔術>スキル反射を無視し、敵全体へ火属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:5属性で3600%)",
+		turn: 10,
+		proc: [ss_damage_all(ss_multiattr_cond(36), [0]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Awake_dragonmode(2000, 1.5) ,
+		Attr_relief([1,1,1,1,1,],10),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "心竜老君 セト・バハムート",
+	cardno: 7448,
+	imageno: 9433,
+	hp: 3832,
+	atk: 3108,
+	cost: 80,
+	attr: [2,3],
+	species: [0],
+	islegend: true,
+	ape: "神竜降臨Ⅰ",
+	is_dist: true,
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ、7チェインで更にダメージアップ(140%/190%)",
+		proc: [ChainAllAttack(1.4, 0), ChainAllAttack(1.9, 7)],
+	},
+	ss1: {
+		desc: "<反動大魔術・蝕>スキル反射を無視し、味方全体のHPを50%使い敵全体へ雷属性のダメージ(180%×人数)◆スキル使用後、味方全体が1ターン封印状態に",
+		turn: 4,
+		proc: [ss_damage_all(ss_seal_all_cond(1.8), [2]), ss_consume_all(0.5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Statusup(200,0),
+		Costdown(6),
+		Fastskill(1),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Fastskill(2),
+		Spec_statusup(0,100, [0,]),
+		Attr_statusup_sattr(0,200, [0,0,1,0,0,], 0,200, [0,0,0,1,0,]),
+		Attr_statusup_sattr(200,0, [0,0,1,0,0,], 200,0, [0,0,0,1,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ、7チェインで更にダメージアップ(170%/260%)",
+		proc: [ChainAllAttack(1.7, 0), ChainAllAttack(2.6, 7)],
+	},
+	ss2: {
+		desc: "<反動大魔術・蝕>スキル反射を無視し、味方全体のHPを50%使い敵全体へ雷属性のダメージ(220%×人数)◆スキル使用後、味方全体が1ターン封印状態に",
+		turn: 6,
+		proc: [ss_damage_all(ss_seal_all_cond(2.2), [2]), ss_consume_all(0.5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Spec_statusup(200,0, [0,]),
+	],
+}

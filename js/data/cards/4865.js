@@ -1,0 +1,46 @@
+{
+	name: "声が想いを繋ぐ 初音ミク",
+	cardno: 4865,
+	imageno: 6600,
+	hp: 3342,
+	atk: 2538,
+	cost: 43,
+	attr: [2, 0],
+	species: [6],
+	disable: true,
+	awakes: [
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+		NEFTJOD(30),
+		Fastskill(1),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0, ]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+		Fastskill(2),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0, ]),
+	],
+	as1: {
+		desc: "<回復>火・雷属性の味方を回復、5チェインで更に回復(通常：10％ / 5チェイン：15％)",
+		proc: [Heal(0.10, [1,0,1,0,0], 0), Heal(0.15, [1,0,1,0,0], 5)],
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(回復：50％)",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<回復>火・雷属性の味方を回復、5チェインで更に回復(通常：13％ / 5チェイン：18％)",
+		proc: [Heal(0.13, [1,0,1,0,0], 0), Heal(0.18, [1,0,1,0,0], 5)],
+	},
+	ss2: {
+		desc: "<状態異常回復&蘇生>味方全体のHPを回復し、状態異常を回復、さらに火・雷属性の味方を50％で蘇生(回復：50％)",
+		turn: 10,
+		proc: [ss_heal(0.5), ss_abstate_cure(), ss_resurrection([1,0,1,0,0], 0.50)],
+	},
+}

@@ -1,0 +1,46 @@
+{
+	name: "夢の兄弟屋台 イツキ&アキラ",
+	cardno: 4509,
+	imageno: 6191,
+	hp: 1777,
+	atk: 2323,
+	cost: 36,
+	attr: [0,1],
+	species: [8],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃、ジャンルパネルが3色だと6回連続攻撃(300%)",
+		proc: [ChainDualAttack(3, 3, 3), add_cond(ChainDualAttack(3,3,6), as_panel_over3())],
+	},
+	ss1: {
+		desc: "<多弾魔術>敵単体へ火・水属性の5回連続ダメージ(150%)更に味方のHPを回復(25%)",
+		turn: 6,
+		proc: [ss_damage_s(1.5, [0,1], 5), ss_heal(0.25)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Fastskill(2),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],1),
+	],
+	as2: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃、ジャンルパネルが3色だと6回連続攻撃(400%)",
+		proc: [ChainDualAttack(4, 3, 3), add_cond(ChainDualAttack(4,3,6), as_panel_over3())],
+	},
+	ss2: {
+		desc: "<多弾魔術>敵単体へ火・水属性の5回連続ダメージ(300%)更に味方のHPを回復(25%)",
+		turn: 9,
+		proc: [ss_damage_s(3.0, [0,1], 5), ss_heal(0.25)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "罪咎あがなう死の女神 アンジェリカ",
+	cardno: 8247,
+	imageno: 7581,
+	hp: 2561,
+	atk: 4235,
+	cost: 56,
+	attr: [1,4],
+	species: [1],
+	islegend: true,
+	ape: "約束の地",
+	as1: {
+		desc: "<チェイン攻撃>10チェインでダメージアップ(600%)、さらに敵のHPを吸収(3%)",
+		proc: add_cond(ChainAttack(6.0, 10), as_hp_absorption(0.03)),
+	},
+	ss1: {
+		desc: "<特効大魔術>味方のMAXHP70%を使い、敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(400%/1450%)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 14.5, 4.0), [1]), ss_consume_all(0.70)],
+	},
+	awakes: [
+		Fastskill(3),
+		Panel_boost([0,1,0,0,0,],4),
+		NEFTJOD(60),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,0,0,1,]),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,0,0,1,]),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+		Awake_noeffect("スキル反射見破り",1),
+	],
+	as2: {
+		desc: "<チェイン攻撃>10チェインでダメージアップ(700%)、さらに敵のHPを吸収(3%)",
+		proc: add_cond(ChainAttack(7.0, 10), as_hp_absorption(0.03)),
+	},
+	ss2: {
+		desc: "<特効大魔術>味方のMAXHP70%を使い、敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ(400%/1800%)",
+		turn: 9,
+		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 18, 4.0), [1]), ss_consume_all(0.70)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+	],
+}

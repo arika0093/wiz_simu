@@ -1,0 +1,47 @@
+{
+	name: "天下不遜のヤバい奴 ヤエ・クリガラ",
+	cardno: 9808,
+	imageno: 9916,
+	hp: 2845,
+	atk: 4101,
+	cost: 57,
+	attr: [0,1],
+	species: [8],
+	islegend: true,
+	ape: "新説桃娘伝",
+	as1: {
+		desc: "<連撃・複属性攻撃強化>敵単体を3回連続攻撃(250%)、さらに火属性の攻撃力をアップ(10%)、複属性が水だとさらにアップ(30%)",
+		proc: [ChainDualAttack(2.5, 0, 3),ChainEnhance_SubAttr(0.10, 0.40, [1,0,0,0,0], [0,1,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<ブースト>5ターンの間、味方のMAXHPを毎ターン20%消費し、味方の攻撃力をアップ(175%)。さらに極稀にクリティカル",
+		turn: 5,
+		proc: [ss_boost_enhance_all(1.75, 5, 0.2, [1,1,1,1,1])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		Attr_relief([0,0,1,0,0,],10),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,100, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 100,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<連撃・複属性攻撃強化>敵単体を3回連続攻撃(350%)、さらに火属性の攻撃力をアップ(10%)、複属性が水だとさらにアップ(30%)",
+		proc: [ChainDualAttack(3.5, 0, 3),ChainEnhance_SubAttr(0.10, 0.40, [1,0,0,0,0], [0,1,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間、味方のMAXHPを毎ターン15%消費し、味方の攻撃力をアップ(175%)。さらに極稀にクリティカル",
+		turn: 7,
+		proc: [ss_boost_enhance_all(1.75, 5, 0.15, [1,1,1,1,1])],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,1000),
+		Abstate_invalid("ss_sealed"),
+	],
+}

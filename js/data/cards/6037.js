@@ -1,0 +1,46 @@
+{
+	name: "凛歌の金獣 エスメラルダ・アウルム",
+	cardno: 6037,
+	imageno: 7861,
+	hp: 2462,
+	atk: 3066,
+	cost: 30,
+	attr: [0, -1],
+	species: [5],
+	islegend: true,
+	ape: "覇眼戦線Ⅰ",
+	is_dist: true,
+	as1: {
+		desc: "<分散攻撃>敵全体へ分散攻撃(250%)",
+		proc: ChainVarianceAttack(2.5, 0),
+	},
+	ss1: {
+		desc: "<ダメージ強化>3ターン火属性の味方の攻撃力をアップ(50%)",
+		turn: 8,
+		proc: [ss_enhance_all(0.50, 3, [1, 0, 0, 0, 0])],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0, 100),
+		Fastskill(1),
+		Statusup(200, 0),
+		Fastskill(2),
+		Statusup(0, 200),
+		Panel_boost([1, 0, 0, 0, 0, ], 1),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Spec_statusup(0, 500, [5, ]),
+		Spec_statusup(500, 0, [5, ]),
+	],
+	as2: {
+		desc: "<分散攻撃>敵全体へ分散攻撃(350%)",
+		proc: ChainVarianceAttack(3.5, 0),
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン火属性の味方の攻撃力をアップ、5チェインを消費しさらにアップ(120%/180%)",
+		turn: 13,
+		proc: [ss_chain_cost_skill(5, ss_enhance_all(1.80, 4, [1, 0, 0, 0, 0]), ss_enhance_all(1.20, 4, [1, 0, 0, 0, 0]))],
+	},
+	Lawake: [
+		Statusup(0, 500),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "聖夜航路の女神様 シール・サンテ",
+	cardno: 7829,
+	imageno: 7085,
+	hp: 3212,
+	atk: 5732,
+	cost: 55,
+	attr: [1,-1],
+	species: [8],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<属性特効>3チェインで火属性の敵単体へ特効ダメージ(525%)",
+		proc: ChainAttrAttack(5.25, 3, [1,0,0,0,0]),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ水属性のダメージ、平均解答が早いほどさらに火属性の敵には特効ダメージ(基本:300%, 3秒台:500%, 2秒台:700%, 1秒台:900%, 0秒台:1100%)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([1,0,0,0,0], ss_answertime(3.0, 2.0), 3.0), [1], 1)],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup(400,0, [0,1,0,0,0,]),
+		Attr_statusup(0,400, [0,1,0,0,0,]),
+		Abstate_invalid(["ss_sealed", "as_sealed"]),
+		Awake_noeffect("スキル反射見破り",1),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで火属性の敵単体へ特効ダメージ(625%)",
+		proc: ChainAttrAttack(6.25, 3, [1,0,0,0,0]),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ水属性のダメージ、平均解答が早いほどさらに火属性の敵には特効ダメージ(基本:700%, 3秒台:900%, 2秒台:1100%, 1秒台:1300%, 0秒台:1500%)",
+		turn: 9,
+		proc: [ss_damage_all(special_attr([1,0,0,0,0], ss_answertime(7.0, 2.0), 7.0), [1], 1)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Statusup(500,0),
+	],
+}

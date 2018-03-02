@@ -1,0 +1,46 @@
+{
+	name: "南国バーチャルシンガー ミク&ルカ",
+	cardno: 4867,
+	imageno: 6630,
+	hp: 3420,
+	atk: 2021,
+	cost: 45,
+	attr: [1, 0],
+	species: [9],
+	disable: true,
+	awakes: [
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+		NEFTJOD(30),
+		Attr_statusup(100, 0, [1, 1, 0, 0, 0, ]),
+		Fastskill(2),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+	],
+	as1: {
+		desc: "<連撃>5チェインで敵単体を3回連続攻撃/計450％",
+		proc: ChainDualAttack(4.5, 5, 3),
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早める、5チェインを消費しさらに1早める",
+		turn: 6,
+		proc: [ss_skillboost(ss_chain_cost(5, 2, 1))],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(500, 0),
+		Statusup(0, 500),
+	],
+	as2: {
+		desc: "<連撃>5チェインで敵単体を3回連続攻撃/計550％",
+		proc: ChainDualAttack(5.5, 5, 3),
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める、5チェインを消費しさらに1早める",
+		turn: 8,
+		proc: [ss_skillboost(ss_chain_cost(5, 3, 2))],
+	},
+}

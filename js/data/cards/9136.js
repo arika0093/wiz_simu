@@ -1,0 +1,46 @@
+{
+	name: "戦場に戻る右腕 ヴィラム・オルゲン",
+	cardno: 9136,
+	imageno: 9033,
+	hp: 5008,
+	atk: 4702,
+	cost: 50,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "ドルキマスⅡ",
+	as1: {
+		desc: "<チェイン攻撃・種族数攻撃>4チェインでダメージアップ(350%)、戦士の仲間の数だけさらにアップ(50%)",
+		proc: [ChainDeckSpecsAttack(0.5, [8], 4, 2.5)],
+	},
+	ss1: {
+		desc: "<弱体化大魔術>スキル反射を無視し、敵全体へ火属性のダメージ(400%)、さらに5ターンの間、敵の防御力を弱体化(30%)",
+		turn: 11,
+		proc: [ss_damage_all(4.0, [0]), ss_attr_weaken_all(null, 0.3, 5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_oattr(400,0, [1,0,0,0,0,]),
+		Attr_statusup_oattr(0,400, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Abstate_invalid("discharge"),
+		Attr_relief([1,1,1,1,1,],10),
+		Fastskill(3),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<チェイン攻撃・種族数攻撃>4チェインでダメージアップ(450%)、戦士の仲間の数だけさらにアップ(50%)",
+		proc: [ChainDeckSpecsAttack(0.5, [8], 4, 3.5)],
+	},
+	ss2: {
+		desc: "<弱体化大魔術>スキル反射を無視し、敵全体へ火属性のダメージ(700%)、さらに5ターンの間、敵の防御力を弱体化(30%)",
+		turn: 14,
+		proc: [ss_damage_all(7.0, [0]), ss_attr_weaken_all(null, 0.3, 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+	],
+}

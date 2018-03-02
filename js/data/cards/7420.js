@@ -1,0 +1,47 @@
+{
+	name: "儚き忠剣 ミーレン・ドーソン",
+	cardno: 7420,
+	imageno: 9475,
+	hp: 2539,
+	atk: 3484,
+	cost: 37,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "心竜天翔 Rising Dragon",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>3チェインで火属性の敵単体へ特効ダメージ(475%)",
+		proc: ChainAttrAttack(4.75, 3, [1,0,0,0,0]),
+	},
+	ss1: {
+		desc: "<ダメージブロック>5ターン300以下の全属性ダメージを無効化する",
+		turn: 8,
+		proc: [ss_damageblock_all(300, 5)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		NEFTJOD(30),
+		Fastskill(1),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで火属性の敵単体へ特効ダメージ(575%)",
+		proc: ChainAttrAttack(5.75, 3, [1,0,0,0,0]),
+	},
+	ss2: {
+		desc: "<ダメージブロック>7ターン400以下の全属性ダメージを無効化する",
+		turn: 10,
+		proc: [ss_damageblock_all(400, 7)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "聖なる夜の祝福 チェルシー・ネリム",
+	cardno: 5188,
+	imageno: 7107,
+	hp: 3121,
+	atk: 2769,
+	cost: 33,
+	attr: [0,-1],
+	species: [9],
+	disable: true,
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<種族攻撃強化>火属性の味方の攻撃力をアップ、術士はさらにアップ(20%/35%)",
+		proc: [ChainEnhance(0.20, [1,0,0,0,0], 0), ChainSpecEnhance(0.35, [1,0,0,0,0], [9], 0)],
+	},
+	ss1: {
+		desc: "<ガード>2ターン雷属性ダメージを軽減する(50%)",
+		turn: 8,
+		proc: [ss_attr_guard([0,0,1,0,0], 0.5, 2)],
+	},
+	awakes: [
+		Statusup(200,0),
+		Panel_boost([1,0,0,0,0,],2),
+		Statusup(200,0),
+		Fastskill(1),
+		Statusup(200,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Fastskill(2),
+		Spec_statusup(0,200, [9,]),
+		Spec_statusup(200,0, [9,]),
+		Attr_relief([1,1,1,1,1,],10),
+	],
+	as2: {
+		desc: "<種族攻撃強化>火属性の味方の攻撃力をアップ、術士はさらにアップ(25%/45%)",
+		proc: [ChainEnhance(0.25, [1,0,0,0,0], 0), ChainSpecEnhance(0.45, [1,0,0,0,0], [9], 0)],
+	},
+	ss2: {
+		desc: "<ガード>3ターン雷属性ダメージを軽減する(50%)",
+		turn: 10,
+		proc: [ss_attr_guard([0,0,1,0,0], 0.5, 3)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

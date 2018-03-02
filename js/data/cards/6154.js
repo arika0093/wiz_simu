@@ -1,0 +1,45 @@
+{
+	name: "永遠の闇へ デュカーク・フスタル",
+	cardno: 6154,
+	imageno: 8008,
+	hp: 1892,
+	atk: 4776,
+	cost: 47,
+	attr: [2, -1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ（450%）",
+		proc: ChainAttack(4.5, 5),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの70%を使い敵単体へダメージ（600%）",
+		turn: 9,
+		proc: [ss_damage_s(6.0, [2], 1), ss_consume_own(0.7)],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Statusup(0, 400),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 3),
+		Fastskill(2),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+				Abstate_invalid("as_sealed"),
+				Abstate_invalid("ss_sealed"),
+				Awake_noeffect("心眼", 1),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ（550%）",
+		proc: ChainAttack(5.5, 5),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの70%を使い敵単体へダメージ（800%）",
+		turn: 12,
+		proc: [ss_damage_s(8.0, [2], 1), ss_consume_own(0.7)],
+	},
+	Lawake: [
+		Statusup(200, 0),
+		Statusup(0, 700),
+	],
+}

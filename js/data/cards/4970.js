@@ -1,0 +1,47 @@
+{
+	name: "光を求めるふたり KAITO&MEIKO",
+	cardno: 4970,
+	imageno: 6705,
+	hp: 2423,
+	atk: 2008,
+	cost: 36,
+	attr: [2, 0],
+	species: [9],
+	disable: true,
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		NEFTJOD(30),
+		Attr_relief([0, 1, 0, 0, 0, ], 10),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+		Fastskill(2),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+	],
+	as1: {
+		desc: "<連撃>3チェインで敵単体を2回連続攻撃/計300％",
+		proc: ChainDualAttack(3.0, 3, 2),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ火・雷属性のダメージ、さらに味方全体のHPを回復する(攻撃：120％ / 回復：20％)",
+		turn: 6,
+		proc: [ss_damage_all(1.2, [0,2]), ss_heal(0.20)],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(500, 0),
+		Statusup(0, 400),
+	],
+	as2: {
+		desc: "<連撃>3チェインで敵単体を2回連続攻撃/計400％",
+		proc: ChainDualAttack(4.0, 3, 2),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ火・雷属性のダメージ、さらに味方全体のHPを回復する(攻撃：150％ / 回復：20％)",
+		turn: 9,
+		proc: [ss_damage_all(1.5, [0,2]), ss_heal(0.20)],
+	},
+}

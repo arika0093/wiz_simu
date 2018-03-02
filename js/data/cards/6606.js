@@ -1,0 +1,47 @@
+{
+	name: "弾幕をものともしない 第5の使徒",
+	cardno: 6606,
+	imageno: 8649,
+	hp: 2487,
+	atk: 3093,
+	cost: 34,
+	attr: [1,-1],
+	species: [3],
+	islegend: true,
+	ape: "コラボ(エヴァⅠ)",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>敵単体を2回連続攻撃(250%)",
+		proc: ChainDualAttack(2.5, 0, 2),
+	},
+	ss1: {
+		desc: "<ダメージ強化>2ターン水属性の味方の攻撃力をアップ(40%)",
+		turn: 7,
+		proc: [ss_enhance_all(0.4, 2, [0,1,0,0,0])],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],1),
+		Statusup(100,0),
+		Statusup(0,100),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_relief([0,1,0,0,0,],10),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		NEFTJOD(30),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<連撃>敵単体を2回連続攻撃(350%)",
+		proc: ChainDualAttack(3.5, 0, 2),
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン水属性の味方の攻撃力をアップ(60%)",
+		turn: 9,
+		proc: [ss_enhance_all(0.6, 2, [0,1,0,0,0])],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Statusup(0,400),
+	],
+}

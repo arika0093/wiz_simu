@@ -1,0 +1,47 @@
+{
+	name: "AAAヴンダー発進 葛城ミサト",
+	cardno: 6611,
+	imageno: 8655,
+	hp: 2478,
+	atk: 3622,
+	cost: 40,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(エヴァⅠ)",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ、リーダー時さらにアップ(350%/400%)",
+		proc: [ChainAttrAttack(3.5, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(4.0, 0, [0,0,1,0,0]), when_leader())],
+	},
+	ss1: {
+		desc: "<ダメージ強化>2ターン火属性の味方の攻撃力をアップ(40%)",
+		turn: 7,
+		proc: [ss_enhance_all(0.4, 2, [1,0,0,0,0])],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([1,0,0,0,0,],3),
+		Fastskill(1),
+		NEFTJOD(30),
+		Statusup(200,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Spec_statusup(0,200, [8,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ、リーダー時さらにアップ(450%/500%)",
+		proc: [ChainAttrAttack(4.5, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(5.0, 0, [0,0,1,0,0]), when_leader())],
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン火属性の味方の攻撃力をアップ、リーダー時さらにアップ(40%/70%)",
+		turn: 10,
+		proc: [ss_enhance_all(ss_when_leader(0.7, 0.4), 2, [1,0,0,0,0])],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

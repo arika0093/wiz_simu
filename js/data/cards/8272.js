@@ -1,0 +1,45 @@
+{
+	name: "流星滑降少女 サクヤ・クランブル",
+	cardno: 8272,
+	imageno: 6596,
+	hp: 2458,
+	atk: 5858,
+	cost: 51,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<属性特効連撃>火属性の敵単体へ特効5連撃(400%)",
+		proc: ChainDualAttrAttack(4.0, 0, 5, [1, 0, 0, 0, 0]),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
+		turn: 3,
+		proc: [panel_chainplus(1)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Costdown(20),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+		Spec_statusup(0,200, [8,]),
+		Spec_statusup(200,0, [8,]),
+		Attr_statusup(0,300, [0,1,0,0,0,]),
+		Attr_statusup(300,0, [0,1,0,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<属性特効連撃>火属性の敵単体へ特効5連撃(500%)",
+		proc: ChainDualAttrAttack(5.0, 0, 5, [1, 0, 0, 0, 0]),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ水属性のダメージ(400%)、さらに火属性の敵には特効ダメージ(550%)、さらにチェインプラス1の効果",
+		turn: 7,
+		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], 9.5, 4.0), [1]), ss_addchain(1)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Statusup(500,0),
+	],
+}

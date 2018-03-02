@@ -1,0 +1,46 @@
+{
+	name: "黒翼の使徒 イドラ・ダールベルク",
+	cardno: 9888,
+	imageno: 5470,
+	hp: 3716,
+	atk: 5517,
+	cost: 47,
+	attr: [1,-1],
+	species: [1],
+	islegend: true,
+	ape: "DL限定",
+	as1: {
+		desc: "<属性特効>3チェインで火属性の敵単体へ特効ダメージ(350%)、デッキに単色の精霊が多いほど、さらにダメージアップ(110%)(上限:5段階)",
+		proc: add_cond(ChainAttrAttack(3.5, 3, [1,0,0,0,0]), as_singleattr_num(0, 1.1)),
+	},
+	ss1: {
+		desc: "<ステータスアップ>自身のHPを2000ダウンし、攻撃力を6000アップ(上限値:6000)",
+		turn: 1,
+		proc: [ss_statusup_own([-2000, 6000], [6000, 6000], -1)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],4),
+		Fastskill(1),
+		Attr_statusup(300,0, [0,1,0,0,0,]),
+		Attr_statusup(0,300, [0,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+		Attr_statusup_oattr(300,0, [0,1,0,0,0,]),
+		Attr_statusup_oattr(0,300, [0,1,0,0,0,]),
+		Attr_relief([1,1,1,1,1,],20),
+		Spec_statusup(500,0, [1,]),
+		Spec_statusup(0,500, [1,]),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで火属性の敵単体へ特効ダメージ(450%)、デッキに単色の精霊が多いほど、さらにダメージアップ(110%)(上限:5段階)",
+		proc: add_cond(ChainAttrAttack(4.5, 3, [1,0,0,0,0]), as_singleattr_num(0, 1.1)),
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ(600%)。さらに極稀にクリティカル",
+		turn: 5,
+		proc: [ss_boost_enhance_s(6, 5, 0.15)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+}

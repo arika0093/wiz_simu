@@ -1,0 +1,47 @@
+{
+	name: "青春、それは謎めいて ナゾニャーゾ",
+	cardno: 6760,
+	imageno: 8720,
+	hp: 3832,
+	atk: 2264,
+	cost: 38,
+	attr: [0,-1],
+	species: [4],
+	islegend: true,
+	ape: "真夏のグレート・クイズ・ウォー",
+	is_dist: true,
+	as1: {
+		desc: "<回復>火属性の味方を回復、3チェインで更に回復(10%/12%)",
+		proc: [Heal(0.10, [1,0,0,0,0], 0), Heal(0.12, [1,0,0,0,0], 3)],
+	},
+	ss1: {
+		desc: "<解答削り>解答選択肢を1つ削り、3チェインを消費し解答を見破る",
+		turn: 2,
+		proc: [ss_chain_cost_skill(3, ss_answer_foresight(), ss_answer_narrow(1))],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		Statusup(0,100),
+		Statusup(100,0),
+		Panel_boost([1,0,0,0,0,],2),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+	],
+	as2: {
+		desc: "<回復>火属性の味方を回復、3チェインで更に回復(13%/15%)",
+		proc: [Heal(0.13, [1,0,0,0,0], 0), Heal(0.15, [1,0,0,0,0], 3)],
+	},
+	ss2: {
+		desc: "<チェインガード>2ターンの間チェインを保護する",
+		turn: 6,
+		proc: [ss_chain_protect(2)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

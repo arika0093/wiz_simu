@@ -1,0 +1,46 @@
+{
+	name: "果敢の勇将 クラリア・シャルルリエ",
+	cardno: 7033,
+	imageno: 9030,
+	hp: 5005,
+	atk: 2200,
+	cost: 52,
+	attr: [0,2],
+	species: [8],
+	disable: true,
+	islegend: true,
+	ape: "ドルキマスⅡ",
+	as1: {
+		desc: "<回復>味方全体のHPを回復、パネルの色が2色以上だとさらに回復(7%/20%)",
+		proc: ChainPanelsHeal(0.07, 0.2, 0.2, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<ダメージ強化>4ターンの間、味方の攻撃力をアップ(100%)、5チェインを消費しさらにアップ(50%)",
+		turn: 7,
+		proc: [ss_enhance_all(ss_chain_cost(5, 1.5, 1), 4, [1,1,1,1,1])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		Statusup(0,200),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,0,1,0,0,]),
+		Fastskill(2),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,200, [0,0,1,0,0,]),
+		Heal_afterbattle(10),
+		Awake_noeffect("難易度ダウン",1),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復、パネルの色が2色以上だとさらに回復(10%/23%)",
+		proc: ChainPanelsHeal(0.1, 0.23, 0.23, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<ダメージ強化>5ターンの間、味方の攻撃力をアップ(100%)、5チェインを消費しさらにアップ(100%)",
+		turn: 10,
+		proc: [ss_enhance_all(ss_chain_cost(5, 2, 1), 5, [1,1,1,1,1])],
+	},
+	Lawake: [
+		Statusup(1000,0),
+	],
+}

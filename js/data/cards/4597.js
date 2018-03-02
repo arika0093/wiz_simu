@@ -1,0 +1,46 @@
+{
+	name: "唸る激嵐の双舞剣 ロベルト・カウズ",
+	cardno: 4597,
+	imageno: 6302,
+	hp: 2396,
+	atk: 3223,
+	cost: 43,
+	attr: [2, -1],
+	species: [8],
+	disable: true,
+	awakes: [
+		Fastskill(1),
+		Attr_relief([0, 1, 0, 0, 0, ], 10),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Attr_relief([0, 0, 1, 0, 0, ], 10),
+		Fastskill(2),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Spec_statusup(0, 200, [8, ]),
+	],
+	as1: {
+		desc: "<属性特効連撃>水属性の敵単体へ特効3連撃計400％",
+		proc: ChainDualAttrAttack(4.0, 0, 3, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵単体へダメージ(240％×味方の人数)",
+		turn: 11,
+		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.5), [2], 1)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<属性特効連撃>水属性の敵単体へ特効3連撃計500％",
+		proc: ChainDualAttrAttack(5.0, 0, 3, [0,1,0,0,0]),
+	},
+	ss2: {
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵単体へダメージ(300％×味方の人数)",
+		turn: 13,
+		proc: [ss_damage_s(ss_consume_all_cond(3.0, 0.5), [2], 1)],
+	},
+}

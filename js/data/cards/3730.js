@@ -1,0 +1,45 @@
+{
+	name: "不滅の主従 キワム&アウデアムス",
+	cardno: 3730,
+	imageno: 5284,
+	hp: 2457,
+	atk: 3031,
+	cost: 47,
+	attr: [0, -1],
+	species: [8],
+	disable: true,
+	awakes: [
+		Panel_boost([1,0,0,0,0], 1),
+		Statusup(0, 200),
+		Fastskill(1),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Panel_boost([1,0,0,0,0], 1),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		NEFTJOD(30),
+		Spec_statusup(0, 200, [8]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ/450％",
+		proc: ChainAttack(4.5, 5),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(260％)",
+		turn: 7,
+		proc: [ss_damage_all(2.6, [0]), ss_consume_own(0.5)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ/550％",
+		proc: ChainAttack(5.5, 5),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(330％)",
+		turn: 9,
+		proc: [ss_damage_all(3.3, [0]), ss_consume_own(0.5)],
+	},
+}

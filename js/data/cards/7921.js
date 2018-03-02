@@ -1,0 +1,47 @@
+{
+	name: "大慾健啖の美食魔 ムウマ・ホルスト",
+	cardno: 7921,
+	imageno: 10052,
+	hp: 4654,
+	atk: 2090,
+	cost: 49,
+	attr: [0,1],
+	species: [9],
+	islegend: true,
+	ape: "ショコラフォレスト",
+	is_dist: true,
+	as1: {
+		desc: "<回復>火・水属性の味方のHPを回復(12%)",
+		proc: Heal(0.12, [1,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<ガード>2ターン火・水属性のダメージを75%軽減する",
+		turn: 6,
+		proc: [ss_attr_guard([1,1,0,0,0], 0.75, 2)],
+	},
+	awakes: [
+		Statusup(300,0),
+		Statusup(0,300),
+		Costdown(10),
+		Fastskill(3),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,100, [0,1,0,0,0,]),
+		Heal_afterbattle(10),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<回復>火・水属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [1,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<ガード>5ターン火・水属性のダメージを75%軽減する",
+		turn: 10,
+		proc: [ss_attr_guard([1,1,0,0,0], 0.75, 5)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,400),
+	],
+}

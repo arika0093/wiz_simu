@@ -1,0 +1,47 @@
+{
+	name: "虹色の姉妹 サーシャ&シンシア",
+	cardno: 4444,
+	imageno: 5766,
+	hp: 3500,
+	atk: 1500,
+	cost: 35,
+	attr: [1, 2],
+	species: [9],
+	disable: true,
+	awakes: [
+		Statusup(200, 0),
+		Statusup(0, 200),
+		Statusup(0, 200),
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(100, 0, [0, 1, 1, 0, 0, ]),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+		Spec_statusup(200, 0, [9, ]),
+		Fastskill(2),
+		Spec_statusup(0, 200, [9, ]),
+	],
+	as1: {
+		desc: "<回復>水・雷属性の味方のHPを回復/11％",
+		proc: Heal(0.11, [0,1,1,0,0,]),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ水・雷属性のダメージ(180％)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [2,1])],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<回復>水・雷属性の味方のHPを回復/13％",
+		proc: Heal(0.13, [0,1,1,0,0,]),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ水・雷属性のダメージ(260％)",
+		turn: 12,
+		proc: [ss_damage_all(2.6, [2,1])],
+	},
+}

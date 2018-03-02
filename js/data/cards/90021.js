@@ -1,0 +1,33 @@
+{
+	name: "夢色海賊少女 ピレット・チャップ",
+	cardno: 90021,
+	imageno: 5919,
+	hp: 2345,
+	atk: 1989,
+	cost: 34,
+	attr: [1, -1],
+	species: [8],
+	islegend: false,
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化>5チェインで水属性の味方の攻撃力をアップ(60%)",
+		proc: ChainEnhance(0.60, [0, 1, 0, 0, 0], 5),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルを水属性化し、チェインがプラス2の効果を付与",
+		turn: 7,
+		proc: [ss_panel_change([0,1,0,0,0]), panel_chainplus(2)],
+	},
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Fastskill(1),
+		Costdown(2),
+		Statusup(200, 0),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Spec_statusup(200, 0, [8, ]),
+		Fastskill(2),
+		Spec_statusup(0, 200, [8, ]),
+	],
+}

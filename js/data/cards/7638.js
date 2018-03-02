@@ -1,0 +1,48 @@
+{
+	name: "皇界を包む慈愛 シャロン・イェルグ",
+	cardno: 7638,
+	imageno: 9701,
+	hp: 7207,
+	atk: 1225,
+	cost: 56,
+	attr: [1,3],
+	species: [3],
+	disable: true,
+	islegend: true,
+	ape: "その光は淡く碧く 第二章 儚き聖域",
+	is_dist: false,
+	as1: {
+		desc: "<回復・複属性攻撃強化>水属性の味方を回復し(10%)、攻撃力もアップ。複属性が光属性だとさらに攻撃力アップ(30%/60%)",
+		proc: [Heal(0.1, [0,1,0,0,0], 0), ChainEnhance_SubAttr(0.3, 0.6, [0,1,0,0,0], [0,0,0,1,0], 0)],
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップし(上限値:2000)、さらに味方全体のHPを回復(25%)",
+		turn: 5,
+		proc: [ss_statusup_all([500, 500], [2000, 2000], -1), ss_heal(0.25)],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_relief([0,0,0,1,1,],30),
+		Attr_statusup_sattr(0,200, [0,1,0,0,0,], 0,200, [0,0,0,1,0,]),
+		Spec_statusup(300,0, [1,3,]),
+		Attr_statusup_sattr(200,0, [0,1,0,0,0,], 200,0, [0,0,0,1,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(3),
+		Heal_afterbattle(10),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<回復・複属性攻撃強化>水属性の味方を回復し(13%)、攻撃力もアップ。複属性が光属性だとさらに攻撃力アップ(30%/60%)",
+		proc: [Heal(0.13, [0,1,0,0,0], 0), ChainEnhance_SubAttr(0.3, 0.6, [0,1,0,0,0], [0,0,0,1,0], 0)],
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップし(上限値:2000)、さらに味方全体のHPを回復(25%)、Lモードの精霊の数に応じてさらに攻撃力とHPを250アップ",
+		turn: 8,
+		proc: [ss_statusup_all([ss_legendnum(500, 250), ss_legendnum(500, 250)], [2000, 2000], -1), ss_heal(0.25)],
+	},
+	Lawake: [
+		Abstate_invalid(["poison", "attr_weaken", "death_limit", "all_sealed"]),
+		Statusup(500,0),
+	],
+}

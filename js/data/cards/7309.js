@@ -1,0 +1,47 @@
+{
+	name: "突撃侍従長 アクサナ・コルテ",
+	cardno: 7309,
+	imageno: 9329,
+	hp: 2922,
+	atk: 2215,
+	cost: 39,
+	attr: [2,3],
+	species: [3],
+	islegend: true,
+	ape: "訣別のクロニクル",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃>2チェインダメージアップ(300%)",
+		proc: ChainAttack(3.0, 2),
+	},
+	ss1: {
+		desc: "<解答削り>解答選択肢を2つ削り、HP80%以下なら解答を見破る",
+		turn: 5,
+		proc: [ss_answer_narrow(2), ss_hp_less_skill(0.8, ss_answer_foresight())],
+	},
+	awakes: [
+		Fastskill(1),
+		Costdown(2),
+		Fastskill(2),
+		Statusup(100,0),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<攻撃>2チェインダメージアップ(350%)",
+		proc: ChainAttack(3.5, 2),
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 7,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+	],
+}

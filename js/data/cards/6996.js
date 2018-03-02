@@ -1,0 +1,46 @@
+{
+	name: "優しき獣と謳われる ヴォルフ・ロイ",
+	cardno: 6996,
+	imageno: 8994,
+	hp: 3038,
+	atk: 3576,
+	cost: 53,
+	attr: [0,2],
+	species: [8],
+	islegend: true,
+	ape: "クロム・マグナⅣ",
+	as1: {
+		desc: "<ギャンブル攻撃>3チェインかつパネルが2色でダメージがイチかバチかアップ、3色でダメージがイチかバチかアップ(350%~850%/500%~1000%)",
+		proc: [add_cond(ChainStakesAttack(3.5, 8.5, 3), as_panel_over2()), add_cond(ChainStakesAttack(5, 10, 3), as_panel_over3())],
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(350%)",
+		turn: 7,
+		proc: [ss_damage_all(3.5, [0]), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Spec_statusup(0,200, [8,]),
+		Spec_statusup(200,0, [8,]),
+	],
+	as2: {
+		desc: "<ギャンブル攻撃>3チェインかつパネルが2色でダメージがイチかバチかアップ、3色でダメージがイチかバチかアップ(450%~950%/600%~1100%)",
+		proc: [add_cond(ChainStakesAttack(4.5, 9.5, 3), as_panel_over2()), add_cond(ChainStakesAttack(6, 11, 3), as_panel_over3())],
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの75%を使い敵全体へダメージ(600%)、さらに味方全体のHPを回復する(25%)",
+		turn: 10,
+		proc: [ss_damage_all(6.0, [0]), ss_ignore_skillcounter(), ss_consume_own(0.5), ss_heal(0.25)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

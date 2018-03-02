@@ -1,0 +1,47 @@
+{
+	name: "星の彼方に吼える獣 アウデアムス",
+	cardno: 6348,
+	imageno: 8183,
+	hp: 1890,
+	atk: 4560,
+	cost: 19,
+	attr: [0,-1],
+	species: [7],
+	islegend: true,
+	is_dist: true,
+	ape: "幻魔特区スザクⅢ",
+	as1: {
+		desc: "<属性特効>3チェインで雷属性の敵単体へ特効ダメージ(475%)",
+		proc: ChainAttrAttack(4.75, 3, [0,0,1,0,0]),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(200%)",
+		turn: 7,
+		proc: [ss_damage_all(2.0, [0]), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Fastskill(1),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		NEFTJOD(30),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Fastskill(2),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで雷属性の敵単体へ特効ダメージ(575%)",
+		proc: ChainAttrAttack(5.75, 3, [0,0,1,0,0]),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(350%)",
+		turn: 9,
+		proc: [ss_damage_all(3.5, [0]), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	Lawake: [
+		Statusup(0,300),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

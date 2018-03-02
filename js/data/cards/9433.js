@@ -1,0 +1,46 @@
+{
+	name: "協調の神世界 ミカエラ・セラフィム",
+	cardno: 9433,
+	imageno: 6875,
+	hp: 3634,
+	atk: 3353,
+	cost: 54,
+	attr: [0,3],
+	species: [3],
+	islegend: true,
+	ape: "ロストエデンⅠ",
+	as1: {
+		desc: "<種族特効>4チェインでダメージアップ(400%)、天使・魔族の敵へさらにダメージアップ(350%)",
+		proc: [ChainAttack(4.0, 4), ChainSpecAttack(7.5, 4, [2,3])],
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(5),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,0,1,0,]),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit", "all_sealed"]),
+	],
+	as2: {
+		desc: "<種族特効>4チェインでダメージアップ(500%)、天使・魔族の敵へさらにダメージアップ(350%)",
+		proc: [ChainAttack(5.0, 4), ChainSpecAttack(8.5, 4, [2,3])],
+	},
+	ss2: {
+		desc: "<状態異常回復&蘇生>味方全体のHPを回復し(50%)、状態異常を回復、さらに火属性の味方を50%で蘇生",
+		turn: 10,
+		proc: [ss_heal(0.5), ss_abstate_cure(), ss_resurrection([1,0,0,0,0], 0.5)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,300, [1,0,0,0,0,]),
+	],
+}

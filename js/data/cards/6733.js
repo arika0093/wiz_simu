@@ -1,0 +1,45 @@
+{
+	name: "熱火拳聖 ソム・ハンニバル",
+	cardno: 6733,
+	imageno: 8687,
+	hp: 2956,
+	atk: 2871,
+	cost: 46,
+	attr: [0,1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<属性の加護>デッキの属性の数だけ攻撃力アップ(250%/400%/550%)",
+		proc: ChainDeckAttrsAttack(2.5, 4.0, 5.5, 0),
+	},
+	ss1: {
+		desc: "<挑発>3ターン敵の攻撃を自分に集めダメージを50%軽減する",
+		turn: 6,
+		proc: [ss_provocate(0.5, 3)],
+	},
+	awakes: [
+		Statusup(0,400),
+		Statusup(400,0),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Statusup(400,0),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Fastskill(2),
+		Fastskill(2),
+		NEFTJOD(30),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<属性の加護>デッキの属性の数だけ攻撃力アップ(300%/500%/700%)",
+		proc: ChainDeckAttrsAttack(3.0, 5.0, 7.0, 0),
+	},
+	ss2: {
+		desc: "<挑発>3ターン敵の攻撃を自分に集めダメージを75%軽減する、5チェインを消費しさらに25%軽減する",
+		turn: 9,
+		proc: [ss_provocate(ss_chain_cost(5, 1, 0.75), 3)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "海を楽しむ魔道具 エターナル・ロア",
+	cardno: 6557,
+	imageno: 8453,
+	hp: 4647,
+	atk: 487,
+	cost: 32,
+	attr: [1,-1],
+	species: [6],
+	islegend: true,
+	ape: "USG",
+	is_dist: true,
+	as1: {
+		desc: "<回復>水属性の味方のHPを回復(12%)",
+		proc: Heal(0.12, [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<シャッフル>ジャンルパネルをシャッフル",
+		turn: 1,
+		proc: [ss_panel_shuffle()],
+	},
+	awakes: [
+		Costdown(3),
+		Panel_boost([0,1,0,0,0,],1),
+		Statusup(300,0),
+		Statusup(0,300),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Awake_noeffect("経験値取得量アップ", 2),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>水属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<パネル変換>ジャンルパネルを水属性化",
+		turn: 2,
+		proc: [ss_panel_change([0,1,0,0,0])],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+	],
+}

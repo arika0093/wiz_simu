@@ -1,0 +1,46 @@
+{
+	name: "神刻の観察者 イストワーレ・ケイト",
+	cardno: 7306,
+	imageno: 9326,
+	hp: 2505,
+	atk: 3901,
+	cost: 53,
+	attr: [1,0],
+	species: [3],
+	islegend: true,
+	ape: "訣別のクロニクル",
+	as1: {
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ、パネルの色が増す度さらにアップ(300%/400%/550%)",
+		proc: add_cond(ChainPanelsAttack(3.0, 4.0, 5.5, 0), when_hp_more(0.8)),
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水・火属性の5回連続ダメージ(350%)",
+		turn: 5,
+		proc: [ss_damage_s(3.5, [1,0], 5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		NEFTJOD(30),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Fastskill(2),
+		Spec_statusup(0,200, [3,]),
+		Attr_statusup_sattr(200,0, [0,1,0,0,0,], 200,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ、パネルの色が増す度さらにアップ(400%/500%/650%)",
+		proc: add_cond(ChainPanelsAttack(4.0, 5.0, 6.5, 0), when_hp_more(0.8)),
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水・火属性の5回連続ダメージ(650%)",
+		turn: 8,
+		proc: [ss_damage_s(6.5, [1,0], 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "歪みに抗う尊き祈り オルハ・ゲート",
+	cardno: 4595,
+	imageno: 6297,
+	hp: 2844,
+	atk: 2756,
+	cost: 44,
+	attr: [2, -1],
+	species: [9],
+	disable: true,
+	awakes: [
+		Statusup(200, 0),
+		Fastskill(1),
+		Costdown(2),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Heal_afterbattle(10),
+		NEFTJOD(30),
+		Attr_statusup(100, 0, [0,0,1,0,0]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Spec_statusup(200, 0, [9, ]),
+	],
+	as1: {
+		desc: "<回復>雷属性の味方を回復11%、HP20%以下でさらに回復29%",
+		proc: [Heal(0.11, [0,0,1,0,0], 0), add_cond(Heal(0.29, [0,0,1,0,0], 0), when_hp_less(0.20))],
+	},
+	ss1: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20%)",
+		turn: 8,
+		proc: [ss_regenerate(0.20, 5)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<回復>雷属性の味方を回復13%、HP20%以下でさらに回復31%",
+		proc: [Heal(0.13, [0,0,1,0,0], 0), add_cond(Heal(0.31, [0,0,1,0,0], 0), when_hp_less(0.20))],
+	},
+	ss2: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20%)、HP20%未満でさらに回復(40%)",
+		turn: 10,
+		proc: [ss_regenerate(ss_hp_less(0.20, 0.40, 0.20), 5)],
+	},
+}

@@ -1,0 +1,48 @@
+{
+	name: "流星穿つ聖剣士 クラヴィル・スティ",
+	cardno: 8320,
+	imageno: 7989,
+	hp: 3033,
+	atk: 3888,
+	cost: 56,
+	attr: [1,4],
+	species: [8],
+	islegend: true,
+	ape: "GW2016",
+	as1: {
+		desc: "<属性特効>4チェインで火・光属性の敵単体へ特効ダメージ(600%)",
+		proc: ChainAttrAttack(6.0, 4, [1,0,0,1,0]),
+	},
+	ss1: {
+		desc: "<残滅大魔術>3ターン溜めた後、スキル反射を無視し、敵全体へ水属性のダメージ(300%)、さらに10ターンの間、水属性のダメージ(300%)",
+		turn: 4,
+		charged: 3,
+		proc: [ss_continue_damage(3.0, 3.0, [1], 10), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Awake_noeffect("discharge",1),
+		Fastskill(4),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,0,0,1,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<属性特効>4チェインで火・光属性の敵単体へ特効ダメージ(700%)",
+		proc: ChainAttrAttack(7.0, 4, [1,0,0,1,0]),
+	},
+	ss2: {
+		desc: "<残滅大魔術>4ターン溜めた後、スキル反射を無視し、敵全体へ水属性のダメージ(500%)、さらに10ターンの間、水属性のダメージ(500%)",
+		turn: 8,
+		charged: 4,
+		proc: [ss_continue_damage(5.0, 5.0, [1], 10), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+}

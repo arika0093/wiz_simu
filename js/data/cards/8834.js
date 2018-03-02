@@ -1,0 +1,47 @@
+{
+	name: "妖夢は夏に咲く シルビー・タロン",
+	cardno: 8834,
+	imageno: 11044,
+	hp: 3791,
+	atk: 1909,
+	cost: 42,
+	attr: [1,3],
+	species: [2],
+	islegend: true,
+	ape: "聖サタニック女学院2",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ(30%)、複属性が光属性だとさらにアップ(40%)",
+		proc: ChainEnhance_SubAttr(0.30, 0.70, [0,1,0,0,0], [0,0,0,1,0], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水・光属性化",
+		turn: 4,
+		proc: [ss_panel_change([0,1,0,1,0])],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ",1),
+		Fastskill(1),
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],2),
+		Costdown(10),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ(60%)、複属性が光属性だとさらにアップ(40%)",
+		proc: ChainEnhance_SubAttr(0.60, 1.0, [0,1,0,0,0], [0,0,0,1,0], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・光属性化し、回復の効果を付与(25%)",
+		turn: 7,
+		proc: [ss_panel_change([0,1,0,1,0]), panel_healally(0.25)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

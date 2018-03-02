@@ -1,0 +1,47 @@
+{
+	name: "天昇輪廻の真狐 クオン・リムセ",
+	cardno: 4646,
+	imageno: 6137,
+	hp: 2918,
+	atk: 3103,
+	cost: 46,
+	attr: [2,-1],
+	species: [1],
+	disable: true,
+	islegend: true,
+	ape: "ブレイダー",
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(350%)",
+		proc: ChainAttack(3.5, 3),
+	},
+	ss1: {
+		desc: "<ガード>3ターン全属性のダメージを25%軽減する",
+		turn: 5,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)],
+	},
+	awakes: [
+		Costdown(2),
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(0,200),
+		Statusup(200,0),
+		Costdown(2),
+		Attr_relief([0,1,1,0,0,],10),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Spec_statusup(0,200, [1,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(450%)",
+		proc: ChainAttack(4.5, 3),
+	},
+	ss2: {
+		desc: "<ガード>3ターン全属性のダメージを50%軽減する",
+		turn: 9,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.50, 3)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

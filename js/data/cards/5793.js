@@ -1,0 +1,48 @@
+{
+	name: "3周年の女神 トリエテリス",
+	cardno: 5793,
+	imageno: 7618,
+	hp: 4333,
+	atk: 1733,
+	cost: 20,
+	attr: [0,2],
+	species: [1],
+	islegend: true,
+    ape: "周年記念精霊(3周年)",
+	is_dist: true,
+	as1: {
+		desc: "<回復>火・雷属性のHPを回復(13%)",
+		proc: Heal(0.13, [1,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを1遅らせる",
+		turn: 4,
+		proc: [ss_delay_all(1)],
+	},
+	awakes: [
+		Heal_afterbattle(10),
+		Costdown(3),
+		Panel_boost([1,0,0,0,0,],3),
+		Statusup(300,0),
+		Statusup(0,300),
+		Awake_noeffect("ゴールド取得量アップ", 3),
+		Fastskill(3),
+		Attr_statusup(300,0, [1,0,1,0,0,]),
+		Attr_statusup(0,300, [1,0,1,0,0,]),
+		Awake_noeffect("経験値取得量アップ", 3),
+	],
+	as2: {
+		desc: "<回復>火・雷属性のHPを回復(16%)",
+		proc: Heal(0.16, [1,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを1早め、敵全体の攻撃ターンを1遅らせる",
+		turn: 6,
+		proc: [ss_skillboost(1), ss_delay_all(1)],
+	},
+	Lawake: [
+		Abstate_invalid("ss_sealed"),
+		Abstate_invalid("as_sealed"),
+		Abstate_invalid("all_sealed"),
+	],
+}

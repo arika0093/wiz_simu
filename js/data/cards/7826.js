@@ -1,0 +1,46 @@
+{
+	name: "聖刻に祈りを捧げる セティエ・レー",
+	cardno: 7826,
+	imageno: 7216,
+	hp: 6233,
+	atk: 2732,
+	cost: 56,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<回復>雷属性の味方のHPを回復、リーダー時さらに回復(13%/17%)",
+		proc: [Heal(0.13, [0,0,1,0,0], 0), add_cond(Heal(0.17, [0,0,1,0,0], 0), when_leader())],
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
+		turn: 7,
+		proc: [ss_skillboost(2)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(4),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],3),
+		Heal_afterbattle(10),
+		Spec_statusup(300,0, [9,]),
+		Attr_statusup(0,400, [0,0,1,0,0,]),
+		Attr_statusup(400,0, [0,0,1,0,0,]),
+		Abstate_invalid("as_sealed"),
+		Abstate_invalid("discharge"),
+	],
+	as2: {
+		desc: "<回復>雷属性の味方のHPを回復、リーダー時さらに回復(16%/20%)",
+		proc: [Heal(0.16, [0,0,1,0,0], 0), add_cond(Heal(0.20, [0,0,1,0,0], 0), when_leader())],
+	},
+	ss2: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
+		turn: 10,
+		proc: [ss_skillboost(2), ss_delay_s(2)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_relief([1,1,1,1,1,],10),
+	],
+}

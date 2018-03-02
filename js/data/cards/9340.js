@@ -1,0 +1,47 @@
+{
+	name: "荒野を馳せる騎士 ジェガ・ディンガ",
+	cardno: 9340,
+	imageno: 11483,
+	hp: 3345,
+	atk: 4525,
+	cost: 39,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "レイド the GATE",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(300%)、デッキに単色の精霊が多いほど、さらにダメージアップ(50%)（上限:5段階)",
+		proc: add_cond(ChainAttack(3.0, 4), as_singleattr_num(0, 0.5)),
+	},
+	ss1: {
+		desc: "<回復>味方全体のHPを回復する(15%)、デッキに単色の精霊が多いほど、さらに回復(5%)(上限:5段階)",
+		turn: 3,
+		proc: [ss_heal(ss_singleattr_num(0.15, 0.05))],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],3),
+		Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
+		Attr_statusup_oattr(300,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],3),
+		Heal_afterbattle(10),
+		Fastskill(3),
+		Panel_boost([1,0,0,0,0,],3),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(400%)、デッキに単色の精霊が多いほど、さらにダメージアップ(50%)（上限:5段階)",
+		proc: add_cond(ChainAttack(4.0, 4), as_singleattr_num(0, 0.5)),
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを回復し(15%)、状態異常を回復する、デッキに単色の精霊が多いほど、さらに回復(5%)(上限:5段階)",
+		turn: 7,
+		proc: [ss_heal(ss_singleattr_num(0.15, 0.05)), ss_abstate_cure()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

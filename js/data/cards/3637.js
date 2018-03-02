@@ -1,0 +1,46 @@
+{
+	name: "蓋天の神罰者 ラト・ファルネーゼ",
+	cardno: 3637,
+	imageno: 4357,
+	hp: 2508,
+	atk: 2649,
+	cost: 47,
+	attr: [0, -1],
+	species: [8],
+	disable: true,
+	awakes: [
+		Panel_boost([1,0,0,0,0], 1),
+		Fastskill(1),
+		Spec_statusup(0, 100, [1, 8]),
+		Panel_boost([1,0,0,0,0], 1),
+		Statusup(200, 0),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		NEFTJOD(30),
+		Spec_statusup(0, 200, [1, 8]),
+		Spec_statusup(200, 0, [1, 8]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "<種族数攻撃>神族と戦士の仲間の数だけダメージ大アップ+40％×種族数(1体：140% / 2体：180%/ 3体：220% 4体：260% 5体：300%)",
+		proc: ChainDeckSpecsAttack(0.4, [1, 8], 0),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ火属性の究極ダメージ(180％)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [0])],
+	},
+	islegend: true,
+	Lawake: [
+		NEFTJOD(30),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "<種族数攻撃>神族と戦士の仲間の数だけダメージ絶大アップ/+60％×種族数(1体：160% / 2体：220%/ 3体：280% 4体：340% 5体：400%)",
+		proc: ChainDeckSpecsAttack(0.6, [1, 8], 0),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ火属性の超究極ダメージ(260％)",
+		turn: 12,
+		proc: [ss_damage_all(2.6, [0])],
+	},
+}

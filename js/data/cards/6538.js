@@ -1,0 +1,48 @@
+{
+	name: "燦杖少女 エリス=マギア・シャルム",
+	cardno: 6538,
+	imageno: 8432,
+	hp: 5234,
+	atk: 2002,
+	cost: 51,
+	attr: [1,2],
+	species: [9],
+	disable: true,
+	islegend: true,
+	ape: "USG",
+	as1: {
+		desc: "<攻撃強化・回復>5チェインで水・雷属性の味方のHPを回復(10%)、さらに攻撃力をアップ(60%)",
+		proc: [Heal(0.10, [0,1,1,0,0], 5), ChainEnhance(0.60, [0,1,1,0,0], 5)],
+	},
+	ss1: {
+		desc: "<状態異常無効>5ターン溜めた後、10ターン敵の状態異常攻撃を無効化する",
+		turn: 3,
+		charged: 5,
+		proc: [ss_absattack_disable(10)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],2),
+		Heal_afterbattle(10),
+		Fastskill(2),
+		Attr_statusup_sattr(0, 200, [0,1,0,0,0], 0, 200, [0,0,1,0,0]),
+		Attr_statusup_sattr(200, 0, [0,1,0,0,0], 200, 0, [0,0,1,0,0]),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>5チェインで水・雷属性の味方のHPを回復(10%)、さらに攻撃力をアップ(90%)",
+		proc: [Heal(0.10, [0,1,1,0,0], 5), ChainEnhance(0.90, [0,1,1,0,0], 5)],
+	},
+	ss2: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20%)",
+		turn: 8,
+		proc: [ss_regenerate(0.20, 5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Statusup(500,0),
+	],
+}

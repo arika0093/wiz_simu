@@ -1,0 +1,46 @@
+{
+	name: "聖戦の十字星 ティシア・ローム",
+	cardno: 9495,
+	imageno: 7836,
+	hp: 3235,
+	atk: 4454,
+	cost: 63,
+	attr: [2,3],
+	species: [9],
+	islegend: true,
+	ape: "DL限定精霊",
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(300%)、HP80%以上でさらにダメージアップ(250%)",
+		proc: [ChainAttack(3.0, 4), add_cond(ChainAttack(5.5, 4), when_hp_more(0.8))],
+	},
+	ss1: {
+		desc: "<シャッフル>ジャンルパネルをシャッフル",
+		turn: 1,
+		proc: [ss_panel_shuffle()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(3),
+		Awake_Chainboost(1),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,0,0,1,0,]),
+		Awake_noeffect("心眼",1),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(400%)、HP80%以上でさらにダメージアップ(250%)",
+		proc: [ChainAttack(4.0, 4), add_cond(ChainAttack(6.5, 4), when_hp_more(0.8))],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
+		turn: 3,
+		proc: [panel_chainplus(1)],
+	},
+	Lawake: [
+		Attr_statusup(0,300, [0,0,1,0,0,]),
+		Statusup(0,500),
+	],
+}

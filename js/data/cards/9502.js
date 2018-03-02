@@ -1,0 +1,46 @@
+{
+	name: "幽玄朧月の霊託 ウルーリカ・モレノ",
+	cardno: 9502,
+	imageno: 11761,
+	hp: 6103,
+	atk: 1732,
+	cost: 54,
+	attr: [1,0],
+	species: [4],
+	islegend: true,
+	ape: "DL限定精霊",
+	as1: {
+		desc: "<回復>味方全体のHPを回復(14%)",
+		proc: Heal(0.14, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<状態異常回復&蘇生>味方全体のHPを回復し(50%)、状態異常を回復、さらに味方を50%で蘇生",
+		turn: 12,
+		proc: [ss_heal(0.5), ss_abstate_cure(), ss_resurrection([1,1,1,1,1], 0.5)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],4),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Fastskill(4),
+		Attr_relief([1,0,0,0,0,],20),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [1,0,0,0,0,]),
+		Fastskill(4),
+		Spec_statusup(0,300, [4,]),
+		Fastskill(4),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(17%)",
+		proc: Heal(0.16, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<状態異常回復&蘇生>味方全体のHPを完全回復し、状態異常を回復、さらに味方を100%で蘇生",
+		turn: 15,
+		proc: [ss_heal(1), ss_abstate_cure(), ss_resurrection([1,1,1,1,1], 1)],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+	],
+}

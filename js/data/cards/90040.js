@@ -1,0 +1,45 @@
+{
+	name: "淡く甘い想い出 サーヤ・スズカゼ",
+	cardno: 90040,
+	imageno: 7549,
+	hp: 4128,
+	atk: 4177,
+	cost: 50,
+	attr: [1,-1],
+	species: [9],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<回復>味方全体のHPを回復、パネルの色が増す度さらに回復(11%/15%/17%)",
+		proc: ChainPanelsHeal(0.11, 0.15, 0.17, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(200%)、さらに3ターンの間、水属性のダメージ(200%)",
+		turn: 7,
+		proc: [ss_continue_damage(2.0, 2.0, [1], 3)],
+	},
+	awakes: [
+		Statusup(200,0),
+		Statusup(0,200),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Spec_statusup(200,0, [9,]),
+		Spec_statusup(0,200, [9,]),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復、パネルの色が増す度さらに回復(13%/17%/20%)",
+		proc: ChainPanelsHeal(0.13, 0.17, 0.20, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(300%)、さらに3ターンの間、水属性のダメージ(300%)",
+		turn: 9,
+		proc: [ss_continue_damage(3.0, 3.0, [1], 3)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+}

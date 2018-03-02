@@ -1,0 +1,33 @@
+{
+	name: "スカル３ ルカ・アンジェローニ",
+	cardno: 5999,
+	imageno: 7781,
+	hp: 2138,
+	atk: 2976,
+	cost: 25,
+	attr: [2,-1],
+	species: [8],
+	islegend: false,
+	ape: "コラボ(マクロス)",
+	as1: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(300%)",
+		proc: ChainAttrAttack(3.0, 0, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<状態異常無効>2ターン敵の状態異常攻撃を無効化する",
+		turn: 9,
+		proc: [ss_absattack_disable(2)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([0,1,0,0,0,],10),
+		Fastskill(2),
+	],
+}

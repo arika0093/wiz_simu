@@ -1,0 +1,45 @@
+{
+	name: "超越の金剛龍 インフェルナグ",
+	cardno: 3628,
+	imageno: 5208,
+	hp: 2630,
+	atk: 2144,
+	cost: 35,
+	attr: [2, -1],
+	species: [0],
+	awakes: [
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Spec_statusup(0, 200, [0, ]),
+		Spec_statusup(200, 0, [0, ]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージ絶大アップ/250％",
+		proc: ChainAttack(2.5, 3),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ雷属性の究極ダメージ(180％)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [2])],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(0, 300),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージ極大アップ/350%",
+		proc: ChainAttack(3.5, 3),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ雷属性の超究極ダメージ(260％)",
+		turn: 12,
+		proc: [ss_damage_all(2.6, [2])],
+	},
+}

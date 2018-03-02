@@ -1,0 +1,47 @@
+{
+	name: "烈日を裂く血刀 ロギア・ティラ",
+	cardno: 9010,
+	imageno: 11218,
+	hp: 3821,
+	atk: 1851,
+	cost: 41,
+	attr: [0,1],
+	species: [8],
+	islegend: true,
+	ape: "喰牙RIZEⅡ",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>4チェインで火属性の攻撃力をアップ(10%)、複属性が水だとさらにアップ(60%)",
+		proc: ChainEnhance_SubAttr(0.1, 0.7, [0,0,1,0,0], [0,1,0,0,0], 4),
+	},
+	ss1: {
+		desc: "<複属性ダメージ強化>5ターンの間、火属性の攻撃力をアップ(50%)、複属性が水属性だとさらにアップ(150%)",
+		turn: 10,
+		proc: [ss_enhance_all_subattr(0.5, 2.0, 5, [1,0,0,0,0], [0,1,0,0,0])],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(1),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>4チェインで火属性の攻撃力をアップ(40%)、複属性が水だとさらにアップ(60%)",
+		proc: ChainEnhance_SubAttr(0.4, 1.0, [0,0,1,0,0], [0,1,0,0,0], 4),
+	},
+	ss2: {
+		desc: "<複属性ダメージ強化>5ターンの間、火属性の攻撃力をアップ(50%)、複属性が水属性だとさらにアップ(150%)",
+		turn: 10,
+		proc: [ss_enhance_all_subattr(0.5, 2.0, 5, [1,0,0,0,0], [0,1,0,0,0])],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+	],
+}

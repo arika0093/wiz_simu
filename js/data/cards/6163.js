@@ -1,0 +1,46 @@
+{
+	name: "桃神剣 スモモ・ブルーム",
+	cardno: 6163,
+	imageno: 7983,
+	hp: 4201,
+	atk: 4323,
+	cost: 49,
+	attr: [2,-1],
+	species: [8],
+	disable: true,
+	islegend: true,
+	ape: "GW2016",
+	as1: {
+		desc: "<攻撃強化・属性特効連撃>雷属性の味方の攻撃力をアップし(30%)、6チェインで水属性の敵単体へ特効4連撃(600%)",
+		proc: [ChainEnhance(0.3, [0,0,1,0,0], 0), ChainDualAttrAttack(6.0, 6, 4, [0,1,0,0,0])],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(400%/1900%)",
+		turn: 9,
+		proc: [ss_damage_s(special_attr([0,1,0,0,0], 19.0, 4.0), [2], 1)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		NEFTJOD(30),
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<攻撃強化・属性特効連撃>雷属性の味方の攻撃力をアップし(30%)、6チェインで水属性の敵単体へ特効4連撃(700%)",
+		proc: [ChainEnhance(0.3, [0,0,1,0,0], 0), ChainDualAttrAttack(7.0, 6, 4, [0,1,0,0,0])],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(400%/2400%)",
+		turn: 12,
+		proc: [ss_damage_s(special_attr([0,1,0,0,0], 24.0, 4.0), [2], 1)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+	],
+}

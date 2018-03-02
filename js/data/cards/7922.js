@@ -1,0 +1,47 @@
+{
+	name: "奢靡を極めし悪虐 ムウマ・ホルスト",
+	cardno: 7922,
+	imageno: 10053,
+	hp: 2841,
+	atk: 3205,
+	cost: 48,
+	attr: [0,2],
+	species: [9],
+	islegend: true,
+	ape: "ショコラフォレスト",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)",
+		proc: ChainAttack(5, 4.5),
+	},
+	ss1: {
+		desc: "<割合削り>スキル反射を無視し、敵単体のHPを20%減少させる、10チェイン消費しさらに10%減少させる",
+		turn: 10,
+		proc: [ss_ratiodamage_s(ss_chain_cost(10, 0.3, 0.2)), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Statusup(300,0),
+		Statusup(0,300),
+		Costdown(10),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 100,0, [0,0,1,0,0,]),
+		NEFTJOD(30),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(550%)",
+		proc: ChainAttack(5, 5.5),
+	},
+	ss2: {
+		desc: "<割合削り>スキル反射を無視し、敵単体のHPを25%減少させる、10チェイン消費しさらに10%減少させる",
+		turn: 12,
+		proc: [ss_ratiodamage_s(ss_chain_cost(10, 0.35, 0.25)), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Statusup(0,500),
+	],
+}

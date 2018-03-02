@@ -1,0 +1,46 @@
+{
+	name: "絶対的勝者 クラリア・シャルルリエ",
+	cardno: 4772,
+	imageno: 6487,
+	hp: 3091,
+	atk: 2210,
+	cost: 44,
+	attr: [2, 0],
+	species: [8],
+	disable: true,
+	awakes: [
+		NEFTJOD(30),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0, ]),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0, ]),
+		Fastskill(1),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+		Fastskill(2),
+		NEFTJOD(30),
+	],
+	as1: {
+		desc: "<連撃>4チェインで敵単体を4回連続攻撃/計400％",
+		proc: ChainDualAttack(4.0, 4, 4),
+	},
+	ss1: {
+		desc: "<ダメージ強化>味方全体のMAXHPの50％を使い、2ターン火・雷属性の味方の攻撃力をアップ(+70％)",
+		turn: 5,
+		proc: [ss_enhance_all(0.70, 2, [1,0,1,0,0]), ss_consume_all(0.50)],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<連撃>4チェインで敵単体を4回連続攻撃/計500％",
+		proc: ChainDualAttack(5.0, 4, 4),
+	},
+	ss2: {
+		desc: "<ダメージ強化>味方全体のMAXHPの50％を使い、4ターン火・雷属性の味方の攻撃力をアップ(+100％)",
+		turn: 8,
+		proc: [ss_enhance_all(1.00, 4, [1,0,1,0,0]), ss_consume_all(0.50)],
+	},
+}

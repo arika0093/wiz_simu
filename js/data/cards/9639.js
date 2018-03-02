@@ -1,0 +1,47 @@
+{
+	name: "悪魔の台所 ムールス・ゴルジ",
+	cardno: 9639,
+	imageno: 11917,
+	hp: 1315,
+	atk: 4045,
+	cost: 47,
+	attr: [1,2],
+	species: [2],
+	islegend: true,
+	ape: "黒ウィズチャレンジ",
+	is_dist: true,
+	as1: {
+		desc: "<連撃・複属性攻撃強化>3チェインで敵単体を3回連続攻撃(250%)、さらに水属性の攻撃力をアップ(10%)、複属性が雷属性だとさらにアップ(30%)",
+		proc: [ChainDualAttack(2.5, 3, 3), ChainEnhance_SubAttr(0.1, 0.4, [0,1,0,0,0], [0,0,1,0,0], 3)],
+	},
+	ss1: {
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(500%)、さらに10ターンの間、水属性のダメージ(100%)",
+		turn: 4,
+		proc: [ss_continue_damage(5.0, 1.0, [1], 10)],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 200,0, [0,0,1,0,0,]),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+	],
+	as2: {
+		desc: "<連撃・複属性攻撃強化>3チェインで敵単体を3回連続攻撃(350%)、さらに水属性の攻撃力をアップ(10%)、複属性が雷属性だとさらにアップ(30%)",
+		proc: [ChainDualAttack(3.5, 3, 3), ChainEnhance_SubAttr(0.1, 0.4, [0,1,0,0,0], [0,0,1,0,0], 3)],
+	},
+	ss2: {
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(500%)、さらに10ターンの間、水属性のダメージ(100%)",
+		turn: 4,
+		proc: [ss_continue_damage(5.0, 1.0, [1], 10)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Statusup(500,0),
+	],
+}

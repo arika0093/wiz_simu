@@ -1,0 +1,45 @@
+{
+	name: "聖なる森の大賢哲 コポポル",
+	cardno: 6299,
+	imageno: 8148,
+	hp: 3181,
+	atk: 2212,
+	cost: 42,
+	attr: [2,1],
+	species: [4],
+	islegend: true,
+	as1: {
+		desc: "<回復・全体攻撃>敵全体へダメージ(130%)、さらに味方全体を回復(5%)",
+		proc: [ChainAllAttack(1.3, 0), Heal(0.05, [1,1,1,1,1], 0)],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
+		turn: 4,
+		proc: [ss_panel_change([0,1,1,0,0])],
+	},
+	awakes: [
+		Fastskill(1),
+		Attr_relief([1,0,0,0,0,],10),
+		Costdown(2),
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(2),
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復・全体攻撃>敵全体へダメージ(140%)、さらに味方全体を回復(5%)",
+		proc: [ChainAllAttack(1.4, 0), Heal(0.05, [1,1,1,1,1], 0)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、回復の効果を付与(10%)",
+		turn: 6,
+		proc: [ss_panel_change([0,1,1,0,0]), panel_healally(0.10)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

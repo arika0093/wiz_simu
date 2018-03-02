@@ -1,0 +1,46 @@
+{
+	name: "叛逆の大元帥 ディートリヒ・ベルク",
+	cardno: 9133,
+	imageno: 9024,
+	hp: 4401,
+	atk: 3001,
+	cost: 56,
+	attr: [2,0],
+	species: [8],
+	islegend: true,
+	ape: "ドルキマスⅡ",
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、8チェインで更にダメージアップ(350%/500%)",
+		proc: [ChainAttack(3.5, 4), ChainAttack(5.0, 8)],
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体のHPを2000ダウンし、攻撃力を2000アップ(上限値:2000)",
+		turn: 1,
+		proc: [ss_statusup_all([-2000, 2000], [2000, 2000], -1)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [1,0,0,0,0,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [1,0,0,0,0,]),
+		Attr_relief([1,1,1,1,1,],20),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、8チェインで更にダメージアップ(450%/600%)",
+		proc: [ChainAttack(4.5, 4), ChainAttack(6.0, 8)],
+	},
+	ss2: {
+		desc: "<ブースト>4ターンの間、味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ(150%)。さらに極稀にクリティカル",
+		turn: 5,
+		proc: [ss_boost_enhance_all(1.5, 4, 0.1, [1,1,1,1,1])],
+	},
+	Lawake: [
+		Attr_statusup(0,300, [1,0,1,0,0,]),
+		Statusup(500,0),
+	],
+}

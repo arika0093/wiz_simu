@@ -1,0 +1,47 @@
+{
+	name: "知識魔歌仙 バッカレイ・ヴェリティ",
+	cardno: 7764,
+	imageno: 9846,
+	hp: 2834,
+	atk: 3523,
+	cost: 39,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "魔轟三鉄傑 対 地獄三十六歌仙",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ、HP50%以下でさらにダメージアップ(350%/600%)",
+		proc: [ChainAttack(3.5, 5), add_cond(ChainAttack(6.0, 5), when_hp_less(0.5))],
+	},
+	ss1: {
+		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ火属性のダメージ(240%×人数)",
+		turn: 10,
+		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.6), [0], 1), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(200,0),
+		Spec_statusup(0,200, [9,]),
+		Fastskill(2),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ、HP50%以下でさらにダメージアップ(400%/800%)",
+		proc: [ChainAttack(4.0, 5), add_cond(ChainAttack(8.0, 5), when_hp_less(0.5))],
+	},
+	ss2: {
+		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ火属性のダメージ(320%×人数)",
+		turn: 13,
+		proc: [ss_damage_s(ss_consume_all_cond(3.2, 0.6), [0], 1), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(0,400),
+	],
+}

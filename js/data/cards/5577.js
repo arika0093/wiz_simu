@@ -1,0 +1,45 @@
+{
+	name: "戦血に揺らぐ麗剣 プラーミャ・シア",
+	cardno: 5577,
+	imageno: 7373,
+	hp: 2441,
+	atk: 3231,
+	cost: 42,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ、リーダー時さらにアップ(350%/450%)",
+		proc: [ChainAttrAttack(3.5, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(4.5, 0, [0,0,1,0,0]), when_leader())],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・雷属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,0,1,0,0])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Attr_relief([0,0,1,0,0,],10),
+		Spec_statusup(0,200, [8,]),
+	],
+	as2: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ、リーダー時さらにアップ(450%/550%)",
+		proc: [ChainAttrAttack(4.5, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(5.5, 0, [0,0,1,0,0]), when_leader())],
+	},
+	ss2: {
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
+		turn: 6,
+		proc: [ss_panel_change([1,1,1,0,0])],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

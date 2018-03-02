@@ -1,0 +1,48 @@
+{
+	name: "光を求める歌姫 初音ミク",
+	cardno: 8015,
+	imageno: 6697,
+	hp: 3649,
+	atk: 2239,
+	cost: 44,
+	attr: [2,3],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(ミク)",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>3チェインで雷属性の攻撃力をアップ、複属性が光属性だとさらにアップ(40%/90%)",
+		proc: ChainEnhance_SubAttr(0.4, 0.9, [0,0,1,0,0], [0,0,0,1,0], 3),
+	},
+	ss1: {
+		desc: "<状態異常無効>1ターン敵の状態異常攻撃を無効化する",
+		turn: 5,
+		proc: [ss_absattack_disable(1)],
+	},
+	awakes: [
+		Costdown(20),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 200,0, [0,0,0,1,0,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,200, [0,0,0,1,0,]),
+		Fastskill(3),
+		Attr_relief([0,1,0,0,0,],20),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>3チェインで雷属性の攻撃力をアップ、複属性が光属性だとさらにアップ(70%/120%)",
+		proc: ChainEnhance_SubAttr(0.7, 1.2, [0,0,1,0,0], [0,0,0,1,0], 3),
+	},
+	ss2: {
+		desc: "<状態異常無効>2ターン敵の状態異常攻撃を無効化する",
+		turn: 7,
+		proc: [ss_absattack_disable(2)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

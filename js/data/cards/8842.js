@@ -1,0 +1,47 @@
+{
+	name: "見えざる魔の手 マチュー・イニス",
+	cardno: 8842,
+	imageno: 11041,
+	hp: 3775,
+	atk: 3741,
+	cost: 59,
+	attr: [1,4],
+	species: [2],
+	islegend: true,
+	ape: "聖サタニック女学院2",
+	is_dist: true,
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ(140%)、7チェインで更にダメージアップ(90%)",
+		proc: [ChainAllAttack(1.4, 0), ChainAllAttack(2.3, 7)],
+	},
+	ss1: {
+		desc: "<反動大魔術・蝕>スキル反射を無視して敵全体へ水属性のダメージ(精霊数×160%)、3チェイン消費で更にダメージアップ(精霊数×40%) (スキル使用後、味方全体が1ターン封印状態に)",
+		turn: 4,
+		proc: [ss_damage_all(ss_seal_all_cond(ss_chain_cost(3, 2.0, 1.6)), [1]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		Costdown(10),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+		Fastskill(2),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 200,0, [0,0,0,0,1,]),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ(170%)、7チェインで更にダメージアップ(90%)",
+		proc: [ChainAllAttack(1.7, 0), ChainAllAttack(2.6, 7)],
+	},
+	ss2: {
+		desc: "<反動大魔術・蝕>スキル反射を無視して敵全体へ水属性のダメージ(精霊数×200%)、3チェイン消費で更にダメージアップ(精霊数×40%) (スキル使用後、味方全体が1ターン封印状態に)",
+		turn: 6,
+		proc: [ss_damage_all(ss_seal_all_cond(ss_chain_cost(3, 2.4, 2.0)), [1]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

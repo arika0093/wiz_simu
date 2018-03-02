@@ -1,0 +1,46 @@
+{
+	name: "マジェスティック・シャドウ",
+	cardno: 4030,
+	imageno: 5732,
+	hp: 2382,
+	atk: 3046,
+	cost: 44,
+	attr: [1, -1],
+	species: [8],
+	disable: true,
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Fastskill(1),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Fastskill(2),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		NEFTJOD(30),
+		Spec_statusup(200, 0, [8, ]),
+		Spec_statusup(0, 200, [8, ]),
+	],
+	as1: {
+		desc: "<チェイン攻撃>7チェインでダメージアップ/550％",
+		proc: ChainAttack(5.5, 7),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵単体へダメージ(380％)",
+		turn: 7,
+		proc: [ss_damage_s(3.8, [1], 1), ss_consume_own(0.5)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 400),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>7チェインでダメージアップ/650％",
+		proc: ChainAttack(6.5, 7),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵単体へダメージ(500％)",
+		turn: 9,
+		proc: [ss_damage_s(5.0, [1], 1), ss_consume_own(0.5)],
+	},
+}

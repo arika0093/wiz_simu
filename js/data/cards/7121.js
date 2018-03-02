@@ -1,0 +1,46 @@
+{
+	name: "蒼天の奔流 アヴィン・シュミット",
+	cardno: 7121,
+	imageno: 6108,
+	hp: 4035,
+	atk: 4310,
+	cost: 52,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "Blader",
+	as1: {
+		desc: "<種族特効>種族が物質･魔法生物･神族の敵単体へ特効ダメージ、パネルの色が増す度さらにアップ(700%/850%/950%)",
+		proc: ChainPanelsSpecAttack(7.0, 8.5, 9.5, [1, 6, 7], 0),
+	},
+	ss1: {
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(400%)",
+		turn: 6,
+		proc: [ss_enhance_own(4.0, 3)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Fastskill(1),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_relief([0,1,1,0,0,],20),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Spec_statusup(0,400, [8,]),
+	],
+	as2: {
+		desc: "<種族特効>種族が物質･魔法生物･神族の敵単体へ特効ダメージ、パネルの色が増す度さらにアップ(800%/950%/1050%)",
+		proc: ChainPanelsSpecAttack(8.0, 9.5, 10.5, [1, 6, 7], 0),
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン自分の攻撃力をアップ。HP20%以下の時、さらに自分の攻撃力をアップし、味方全体のHPを完全回復(600%/2500%)",
+		turn: 8,
+		proc: [ss_enhance_own(ss_hp_less(0.2, 25, 6), 4), ss_hp_less_skill(0.2, ss_heal(1))],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(0,500),
+	],
+}

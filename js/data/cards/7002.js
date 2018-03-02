@@ -1,0 +1,46 @@
+{
+	name: "機獣の咆哮 シャーリー&ヴォルフ",
+	cardno: 7002,
+	imageno: 6203,
+	hp: 1926,
+	atk: 4235,
+	cost: 52,
+	attr: [2,0],
+	species: [8],
+	islegend: true,
+	ape: "クロム・マグナⅤ",
+	as1: {
+		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(600%)",
+		proc: add_cond(ChainAttack(6.0, 0), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の5回連続ダメージ(350%)",
+		turn: 5,
+		proc: [ss_damage_s(3.5, [2,0], 5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		NEFTJOD(30),
+		Statusup(0,200),
+		Attr_statusup_sattr(0,200, [0,0,1,0,0,], 0,200, [1,0,0,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_sattr(200,0, [0,0,1,0,0,], 200,0, [1,0,0,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<攻撃>敵単体へのダメージアップ(600%)",
+		proc: ChainAttack(6.0, 0),
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の5回連続ダメージ(650%)",
+		turn: 8,
+		proc: [ss_damage_s(6.5, [2,0], 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Statusup(500,0),
+	],
+}

@@ -1,0 +1,45 @@
+{
+	name: "飛べ！ マスク・ザ・ゴールデン",
+	cardno: 8306,
+	imageno: 10454,
+	hp: 1655,
+	atk: 4825,
+	cost: 40,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>3チェインで水属性の敵へ特効ダメージ(475%)",
+		proc: ChainAttrAttack(4.75, 3, [0, 1, 0, 0, 0]),
+	},
+	ss1: {
+		desc: "<反動大魔術・蝕>スキル反射を無視し、敵全体へ雷属性のダメージ(精霊数×100%)(スキル使用後、味方全員が3ターン封印状態に)",
+		turn: 2,
+		proc: [ss_damage_all(ss_seal_all_cond(1.0, 3), [2]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Costdown(10),
+		Awake_noeffect("経験値取得量アップ",2),
+		Awake_noeffect("ゴールド取得量アップ",2),
+		Attr_statusup(0,300, [0,0,1,0,0,]),
+		Attr_statusup(300,0, [0,0,1,0,0,]),
+		Attr_relief([1,1,1,1,1,],10),
+		Fastskill(1),
+		NEFTJOD(30),
+		Abstate_invalid("all_sealed"),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで水属性の敵へ特効ダメージ(575%)",
+		proc: ChainAttrAttack(5.75, 3, [0, 1, 0, 0, 0]),
+	},
+	ss2: {
+		desc: "<反動大魔術・蝕>スキル反射を無視し、敵全体へ雷属性のダメージ(精霊数×120%)(スキル使用後、味方全員が3ターン封印状態に)",
+		turn: 3,
+		proc: [ss_damage_all(ss_seal_all_cond(1.2, 3), [2]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+	],
+}

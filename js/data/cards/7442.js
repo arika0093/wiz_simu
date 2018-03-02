@@ -1,0 +1,46 @@
+{
+	name: "晴眼の竜賢者 クロエ・マッケンジー",
+	cardno: 7442,
+	imageno: 9427,
+	hp: 5292,
+	atk: 2985,
+	cost: 51,
+	attr: [1,-1],
+	species: [0],
+	islegend: true,
+	ape: "神竜降臨Ⅱ",
+	as1: {
+		desc: "<種族攻撃強化>水属性の攻撃力をアップ、龍族はさらにアップ(20%/80%)",
+		proc: [ChainEnhance(0.2, [0,1,0,0,0], 0), ChainSpecEnhance(0.8, [0,1,0,0,0], [0], 0)],
+	},
+	ss1: {
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(9000)",
+		turn: 6,
+		proc: [poison(9000, 4)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		Statusup(200,0),
+		Statusup(0,200),
+		Fastskill(2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		NEFTJOD(30),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Awake_noeffect("スキル反射見破り",1),
+	],
+	as2: {
+		desc: "<種族攻撃強化>水属性の攻撃力をアップ、龍族はさらにアップ(50%/110%)",
+		proc: [ChainEnhance(0.5, [0,1,0,0,0], 0), ChainSpecEnhance(1.1, [0,1,0,0,0], [0], 0)],
+	},
+	ss2: {
+		desc: "<毒>5ターン敵全体に毒のダメージを与える(15000)",
+		turn: 10,
+		proc: [poison(15000, 5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "戦場の冷血 ディートリヒ・ベルク",
+	cardno: 4848,
+	imageno: 6583,
+	hp: 2447,
+	atk: 3213,
+	cost: 45,
+	attr: [2, -1],
+	species: [8],
+	disable: true,
+	awakes: [
+		Statusup(200, 0),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Fastskill(1),
+		Spec_statusup(0, 200, [8, ]),
+		Spec_statusup(200, 0, [8, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+	],
+	as1: {
+		desc: "<全体攻撃>3チェインで敵全体へダメージ/180％",
+		proc: ChainAllAttack(1.8, 3),
+	},
+	ss1: {
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(+150％)",
+		turn: 6,
+		proc: [ss_enhance_own(1.5, 3)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(400, 0),
+		NEFTJOD(30),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<全体攻撃>3チェインで敵全体へダメージ/220％",
+		proc: ChainAllAttack(2.2, 3),
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン自分の攻撃力をアップ(+250％)",
+		turn: 8,
+		proc: [ss_enhance_own(2.5, 3)],
+	},
+}

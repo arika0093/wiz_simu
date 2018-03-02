@@ -1,0 +1,47 @@
+{
+	name: "紅暁賢識者 アレク・ルミナレス",
+	cardno: 5774,
+	imageno: 7600,
+	hp: 2485,
+	atk: 1890,
+	cost: 22,
+	attr: [0, 1],
+	species: [9],
+	disable: true,
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>3チェインで火属性の攻撃力をアップ、複属性が水属性だとさらにアップ(30%/70%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.7, [1, 0, 0, 0, 0], [0, 1, 0, 0, 0], 3),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・水属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,1,0,0,0])],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1, 0, 0, 0, 0, ], 1),
+		Costdown(2),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Fastskill(1),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Attr_statusup(200, 0, [1, 1, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>3チェインで火属性の攻撃力をアップ、複属性が水属性だとさらにアップ(40%/80%)",
+		proc: ChainEnhance_SubAttr(0.4, 0.8, [1, 0, 0, 0, 0], [0, 1, 0, 0, 0], 3),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・水属性化し、チェインがプラス2の効果を付与",
+		turn: 7,
+		proc: [ss_panel_change([1,1,0,0,0]), panel_chainplus(2)],
+	},
+	Lawake: [
+		Statusup(400, 0),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+	],
+}

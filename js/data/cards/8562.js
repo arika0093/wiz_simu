@@ -1,0 +1,48 @@
+{
+	name: "戦神四十六柱首座 カタバ・フツガリ",
+	cardno: 8562,
+	imageno: 10732,
+	hp: 2545,
+	atk: 3316,
+	cost: 47,
+	attr: [0,4],
+	species: [1],
+	islegend: true,
+	ape: "大魔道杯 in 八百万Ⅳ",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>10チェインで敵単体を4回連続攻撃(800%)",
+		proc: ChainDualAttack(8.0, 10, 4),
+	},
+	ss1: {
+		desc: "<斬撃大魔術>3ターン溜めた後、スキル反射を無視し、火・闇属性の3連撃(300%)、さらに連撃数分チェインプラス ",
+		turn: 1,
+		charged: 3,
+		proc: [ss_damage_slash(3.0, [0,4], 3), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Abstate_invalid("death_limit"),
+		Fastskill(1),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 200,0, [0,0,0,0,1,]),
+	],
+	as2: {
+		desc: "<連撃>10チェインで敵単体を4回連続攻撃(900%)",
+		proc: ChainDualAttack(9.0, 10, 4),
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・闇属性の5回連続ダメージ(650%)",
+		turn: 7,
+		proc: [ss_damage_s(6.5, [0,4], 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+}

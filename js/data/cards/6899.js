@@ -1,0 +1,46 @@
+{
+	name: "愛し愛され福の神 サチ",
+	cardno: 6899,
+	imageno: 8960,
+	hp: 3823,
+	atk: 2217,
+	cost: 45,
+	attr: [0,1],
+	species: [1],
+	islegend: true,
+	ape: "大魔道杯 in YAOYORO Z",
+	is_dist: true,
+	as1: {
+		desc: "<回復>火・水属性の味方のHPを回復、パネルの色が増す度さらに回復(11%/15%/17%)",
+		proc: [ChainPanelsHeal(0.11, 0.15, 0.17, [1,1,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>パネルにダメージ軽減(10%/65%)・スキルチャージ(1/5)・チェイン(1/10)・攻撃力アップ(25%/300%)の効果をランダムで付与",
+		turn: 2,
+		proc: [panel_skillboost(1), panel_skillboost(5), panel_chainplus(1), panel_chainplus(10), panel_attackup(0.25), panel_attackup(3), panel_attr_guard([1,1,1,1,1], 0.10), panel_attr_guard([1,1,1,1,1], 0.65)],
+	},
+	awakes: [
+		Statusup(200,0),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([0,1,0,0,0,],10),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Awake_noeffect("ゴールド取得量アップ",3),
+		Awake_noeffect("経験値取得量アップ",2),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>火・水属性の味方のHPを回復、パネルの色が増す度さらに回復(13%/17%/20%)",
+		proc: [ChainPanelsHeal(0.13, 0.17, 0.20, [1,1,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>パネルを火・水属性化し、ダメージ軽減(10%/65%)・スキルチャージ(1/5)・チェイン(1/10)・攻撃力アップ(25%/300%)の効果をランダムで付与",
+		turn: 3,
+		proc: [ss_panel_change([1,1,0,0,0]) ,panel_skillboost(1), panel_skillboost(5), panel_chainplus(1), panel_chainplus(10), panel_attackup(0.25), panel_attackup(3), panel_attr_guard([1,1,1,1,1], 0.10), panel_attr_guard([1,1,1,1,1], 0.65)],
+	},
+	Lawake: [
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+	],
+}

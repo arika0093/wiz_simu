@@ -1,0 +1,46 @@
+{
+	name: "天地分かつ姉弟 ミカエラ&イザーク",
+	cardno: 4744,
+	imageno: 6580,
+	hp: 2213,
+	atk: 3142,
+	cost: 43,
+	attr: [0, 2],
+	species: [3],
+	disable: true,
+	awakes: [
+		Fastskill(2),
+		Statusup(200, 0),
+		Panel_boost([1,0,0,0,0], 1),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
+		Fastskill(2),
+		Attr_relief([1, 0, 1, 0, 0], 10),
+		Panel_boost([1,0,0,0,0], 2),
+		Spec_statusup(0, 200, [3]),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0]),
+		Spec_statusup(200, 0, [3]),
+	],
+	as1: {
+		desc: "<パネル色数攻撃>3チェインかつパネルが2色でダメージアップ、3色で更にアップ(2色：400％ / 3色：550％)",
+		proc: ChainPanelsAttack(0, 4.0, 5.5, 3),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ火・雷属性のダメージ(180％)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [0, 2])],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
+	],
+	as2: {
+		desc: "<パネル色数攻撃>MAXHP15％を使い、3チェインかつパネルが2色でダメージアップ、3色で更にアップ(2色：500％ / 3色：900％)",
+		proc: add_cond(ChainPanelsAttack(0, 5.0, 9.0, 3), as_consume_own(0.15)),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ火・雷属性のダメージ(260％)",
+		turn: 12,
+		proc: [ss_damage_all(2.6, [0, 2])],
+	},
+}

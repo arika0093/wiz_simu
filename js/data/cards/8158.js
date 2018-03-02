@@ -1,0 +1,46 @@
+{
+	name: "セイントナース 聖ガトリン・G・U",
+	cardno: 8158,
+	imageno: 10292,
+	hp: 2675,
+	atk: 3954,
+	cost: 54,
+	attr: [1,3],
+	species: [8],
+	islegend: true,
+	ape: "新人王",
+	as1: {
+		desc: "<連撃>4チェインで敵単体を5回連続攻撃、HP50%以上でさらにダメージアップ(300%/500%)",
+		proc: [ChainDualAttack(3.0, 4, 5), add_cond(ChainDualAttack(5.0, 4, 5), when_hp_more(0.5))],
+	},
+	ss1: {
+		desc: "<複属性ダメージ強化>5ターンの間、水属性の攻撃力をアップ、複属性が光属性だとさらにアップ(100%/150%) 。さらに味方全体のHPを回復する(50%)",
+		turn: 8,
+		proc: [ss_enhance_all_subattr(1.0, 1.5, 5, [0,1,0,0,0], [0,0,0,1,0]), ss_heal(0.5)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],4),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Heal_afterbattle(10),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,0,1,0,]),
+		Fastskill(4),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<連撃>4チェインで敵単体を5回連続攻撃、HP50%以上でさらにダメージアップ(400%/600%)",
+		proc: [ChainDualAttack(4.0, 4, 5), add_cond(ChainDualAttack(6.0, 4, 5), when_hp_more(0.5))],
+	},
+	ss2: {
+		desc: "<複属性ダメージ強化>5ターンの間、水属性の攻撃力をアップ、複属性が光属性だとさらにアップ(100%/200%) 。さらに味方全体のHPを完全回復する",
+		turn: 10,
+		proc: [ss_enhance_all_subattr(1.0, 2, 5, [0,1,0,0,0], [0,0,0,1,0]), ss_heal(1)],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [0,0,0,1,0,]),
+		NEFTJOD(30),
+	],
+}

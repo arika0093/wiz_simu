@@ -1,0 +1,48 @@
+{
+	name: "超絶サマーガール リルム・ロロット",
+	cardno: 6544,
+	imageno: 8438,
+	hp: 4029,
+	atk: 4421,
+	cost: 52,
+	attr: [1,-1],
+	species: [9],
+	disable: true,
+	islegend: true,
+	ape: "USG",
+	as1: {
+		desc: "<チェイン攻撃・攻撃強化>水属性の味方の攻撃力をアップ(30%)し、6チェインでダメージアップ(400%)",
+		proc: [ChainEnhance(0.3, [0,1,0,0,0], 0), ChainAttack(4.0, 6)],
+	},
+	ss1: {
+		desc: "<弱体化大魔術>敵単体へ水属性のダメージ(400%)、さらに5ターンの間、敵の防御力を弱体化(30%)",
+		turn: 7,
+		proc: [ss_damage_s(4.0, [1], 1), ss_attr_weaken_s([1,1,1,1,1], 0.3, 5)],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Statusup(0,300),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃・攻撃強化>水属性の味方の攻撃力をアップ(30%)し、6チェインでダメージアップ(500%)",
+		proc: [ChainEnhance(0.3, [0,1,0,0,0], 0), ChainAttack(5.0, 6)],
+	},
+	ss2: {
+		desc: "<弱体化大魔術>スキル反射を無視し、敵単体へ水属性のダメージ(800%)、さらに10ターンの間、敵の防御力を弱体化(30%)",
+		turn: 12,
+		proc: [ss_damage_s(8.0, [1], 1), ss_attr_weaken_s([1,1,1,1,1], 0.3, 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Abstate_invalid("as_sealed"),
+		Abstate_invalid("ss_sealed"),
+		Statusup(0,500),
+	],
+}

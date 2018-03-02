@@ -1,0 +1,46 @@
+{
+	name: "天意の剣 ルヴァル・アウルム",
+	cardno: 9137,
+	imageno: 9036,
+	hp: 5870,
+	atk: 1853,
+	cost: 54,
+	attr: [1,2],
+	species: [1],
+	islegend: true,
+	ape: "ドルキマスⅡ",
+	as1: {
+		desc: "<回復>味方全体のHPを回復(14%)",
+		proc: Heal(0.14, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<チェインガード>3ターンの間、チェインを保護する",
+		turn: 3,
+		proc: [ss_chain_protect(3)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_relief([0,0,1,0,0,],20),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(4),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,1,0,0,]),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,1,0,0,]),
+		Awake_noeffect("チェイン保護",1),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(17%)",
+		proc: Heal(0.17, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<チェインガード>チェインプラス2の効果、6ターンの間、チェインを保護する",
+		turn: 6,
+		proc: [ss_addchain(2), ss_chain_protect(6)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Statusup(1000,0),
+	],
+}

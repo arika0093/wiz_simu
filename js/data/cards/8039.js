@@ -1,0 +1,46 @@
+{
+	name: "郷愁雪化粧 キーラ・バルバレス",
+	cardno: 8039,
+	imageno: 7598,
+	hp: 4320,
+	atk: 2112,
+	cost: 47,
+	attr: [2,3],
+	species: [9],
+	islegend: true,
+	ape: "ギルドマスターセレモニーズ",
+	as1: {
+		desc: "<回復>雷属性の味方のHPを回復(13%)",
+		proc: Heal(0.13, [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを雷・光属性化",
+		turn: 3,
+		proc: [ss_panel_change([0,0,1,1,0])],
+	},
+	as2: {
+		desc: "<回復>雷属性の味方のHPを回復(16%)",
+		proc: Heal(0.16, [0,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 6,
+		proc: [ss_answer_foresight()],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],3),
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],3),
+		Attr_statusup(100,0,[0,0,1,0,0,]),
+		NEFTJOD(30),
+		Heal_afterbattle(10),
+		Attr_statusup(0,100,[0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0,[0,0,1,0,0,],200,0,[0,0,0,1,0,]),
+		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,200,[0,0,0,1,0,]),
+	],
+	Lawake: [
+		Attr_statusup(0,100,[0,0,1,0,0,]),
+		Statusup(1000,0),
+	],
+}

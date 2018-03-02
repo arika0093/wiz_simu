@@ -1,0 +1,47 @@
+{
+	name: "終の収穫者 タモン&アドヴェリタス",
+	cardno: 6373,
+	imageno: 8199,
+	hp: 2657,
+	atk: 2667,
+	cost: 42,
+	attr: [1,4],
+	species: [2],
+	islegend: true,
+	is_dist: true,
+	ape: "幻魔特区スザクⅢ",
+	as1: {
+		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(350%)",
+		proc: add_cond(ChainAttack(3.5, 0), as_consume_all(0.10)),
+	},
+	ss1: {
+		desc: "<多弾魔術>MAXHPの50%を使い、敵単体へ水・闇属性の5連続ダメージ(200%)",
+		turn: 5,
+		proc: [ss_damage_s(2.0, [1,4], 5), ss_consume_own(0.5)],
+	},
+	awakes: [
+		Fastskill(1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Statusup(0,200),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(200,0),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(450%)",
+		proc: add_cond(ChainAttack(4.5, 0), as_consume_all(0.10)),
+	},
+	ss2: {
+		desc: "<多弾魔術>MAXHPの50%を使い、敵単体へ水・闇属性の5連続ダメージ(400%)",
+		turn: 8,
+		proc: [ss_damage_s(4.0, [1,4], 5), ss_consume_own(0.5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

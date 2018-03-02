@@ -1,0 +1,46 @@
+{
+	name: "牙を継ぐ者 シューラ・リィハ",
+	cardno: 9037,
+	imageno: 10476,
+	hp: 4845,
+	atk: 4423,
+	cost: 47,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "喰牙RIZEⅠ",
+	as1: {
+		desc: "<回復>味方全体のHPを回復(11%)、HP50%以下なら更に回復(10%)",
+		proc: [Heal(0.11, [1,1,1,1,1], 0), add_cond(Heal(0.21, [1,1,1,1,1], 0), when_hp_less(0.50))],
+	},
+	ss1: {
+		desc: "<弱体化大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ(1200%)、さらに3ターンの間、敵の防御力を弱体化(50%)",
+		turn: 10,
+		proc: [ss_damage_s(12.0, [2], 1), ss_attr_weaken_s([1,1,1,1,1], 0.5, 3), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],4),
+		Attr_relief([0,1,0,0,0,],20),
+		Heal_afterbattle(10),
+		Attr_statusup_oattr(0,400, [0,0,1,0,0,]),
+		Attr_statusup_oattr(400,0, [0,0,1,0,0,]),
+		Awake_noeffect("心眼",1),
+		Abstate_invalid("heal_reverse"),
+		Attr_statusup(0,400, [0,0,1,0,0,]),
+		Attr_statusup(400,0, [0,0,1,0,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(13%)、HP50%以下なら更に回復(10%)",
+		proc: [Heal(0.13, [1,1,1,1,1], 0), add_cond(Heal(0.23, [1,1,1,1,1], 0), when_hp_less(0.50))],
+	},
+	ss2: {
+		desc: "<弱体化大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ(1200%)、さらに3ターンの間、敵の防御力を弱体化(50%)",
+		turn: 10,
+		proc: [ss_damage_s(12.0, [2], 1), ss_attr_weaken_s([1,1,1,1,1], 0.5, 3), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,300, [0,0,1,0,0,]),
+		NEFTJOD(30),
+	],
+}

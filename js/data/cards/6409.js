@@ -1,0 +1,47 @@
+{
+	name: "勝戦への疾走 ディートリヒ・ベルク",
+	cardno: 6409,
+	imageno: 8264,
+	hp: 3577,
+	atk: 4623,
+	cost: 54,
+	attr: [2,-1],
+	species: [8],
+	disable: true,
+	islegend: true,
+	ape: "GP2016",
+	as1: {
+		desc: "<属性特効>4チェインで水属性の敵単体へ特効ダメージ、8チェインで更に特効ダメージ(550%/700%)",
+		proc: [ChainAttrAttack(5.5, 4, [0,1,0,0,0]), ChainAttrAttack(7.0, 8, [0,1,0,0,0])],
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(350%)",
+		turn: 7,
+		proc: [ss_damage_all(3.5, [2]), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ", 1),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(0,200),
+		Statusup(200,0),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<属性特効>4チェインで水属性の敵単体へ特効ダメージ、8チェインで更に特効ダメージ(650%/800%)",
+		proc: [ChainAttrAttack(6.5, 4, [0,1,0,0,0]), ChainAttrAttack(8.0, 8, [0,1,0,0,0])],
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(600%)",
+		turn: 9,
+		proc: [ss_damage_all(6.0, [2]), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+}

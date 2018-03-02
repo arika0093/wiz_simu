@@ -1,0 +1,46 @@
+{
+	name: "勇ましき天風鬼神 フウカ・カエラム",
+	cardno: 6242,
+	imageno: 8115,
+	hp: 4615,
+	atk: 3962,
+	cost: 45,
+	attr: [1,-1],
+	species: [5],
+	islegend: true,
+	ape: "桃娘伝Ⅰ",
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(250%)、さらに敵HPを吸収する(12%)",
+		proc: [add_cond(ChainAttack(2.5, 3), as_hp_absorption(0.12))],
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
+		turn: 10,
+		proc: [ss_delay_all(3)],
+	},
+	awakes: [
+		Fastskill(2),
+		Statusup(200,0),
+		Statusup(0,200),
+		Costdown(2),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Spec_statusup(0,400, [5,]),
+		NEFTJOD(30),
+		Spec_statusup(400,0, [5,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(300%)、さらに敵HPを吸収する(15%)",
+		proc: [add_cond(ChainAttack(3.0, 3), as_hp_absorption(0.15))],
+	},
+	ss2: {
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせ、10チェインを消費しさらに1遅らせる",
+		turn: 13,
+		proc: [ss_chain_cost_skill(10, ss_delay_all(4), ss_delay_all(3))],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

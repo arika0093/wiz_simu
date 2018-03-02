@@ -1,0 +1,46 @@
+{
+	name: "ふわり雪舞う エトワール・ブリュネ",
+	cardno: 5381,
+	imageno: 7227,
+	hp: 3431,
+	atk: 3734,
+	cost: 44,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<攻撃強化>7チェインで雷属性の味方の攻撃力をアップ(80%)",
+		proc: ChainEnhance(0.8, [0,0,1,0,0], 7),
+	},
+	ss1: {
+		desc: "<ガード>3ターン全属性のダメージを25%軽減する",
+		turn: 5,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)],
+	},
+	awakes: [
+		Costdown(2),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(1),
+		Attr_relief([1,1,1,1,1,],10),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Fastskill(2),
+		Spec_statusup(0,200, [9,]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<攻撃強化>7チェインで雷属性の味方の攻撃力をアップ(100%)",
+		proc: ChainEnhance(1.0, [0,0,1,0,0], 7),
+	},
+	ss2: {
+		desc: "<ガード>3ターン全属性のダメージを50%軽減する",
+		turn: 9,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

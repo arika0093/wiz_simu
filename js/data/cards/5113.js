@@ -1,0 +1,45 @@
+{
+	name: "拳骨無頼之道 オロチ・ライオネル",
+	cardno: 5113,
+	imageno: 6858,
+	hp: 1391,
+	atk: 6400,
+	cost: 44,
+	attr: [2, -1],
+	species: [5],
+	awakes: [
+		Statusup(0, 200),
+		Costdown(2),
+		Costdown(2),
+		Statusup(0, 200),
+		NEFTJOD(30),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		NEFTJOD(30),
+		Spec_statusup(500, 0, [5, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Spec_statusup(0, 500, [5, ]),
+	],
+	as1: {
+		desc: "<連撃>敵単体を3回連続攻撃/計250％",
+		proc: ChainDualAttack(2.5, 0, 3),
+	},
+	ss1: {
+		desc: "<大魔術>敵単体へ雷属性のダメージ(200％)",
+		turn: 5,
+		proc: [ss_damage_s(2.0, [2], 1)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 700),
+		Statusup(300, 0),
+	],
+	as2: {
+		desc: "<連撃>敵単体を3回連続攻撃、20チェインでさらに3回連続攻撃し、ダメージアップ(通常：計250％ / 20チェイン：計1750％)",
+		proc: [ChainDualAttack(2.5, 0, 3), ChainDualAttack(17.5, 20, 6),],
+	},
+	ss2: {
+		desc: "<大魔術>敵単体へ雷属性のダメージ(400％)",
+		turn: 8,
+		proc: [ss_damage_s(4.0, [2], 1)],
+	},
+}

@@ -1,0 +1,47 @@
+{
+	name: "蒼竜銀の飛閃騎士 ルフレ・ユサール",
+	cardno: 6730,
+	imageno: 8684,
+	hp: 2991,
+	atk: 3873,
+	cost: 40,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)",
+		proc: ChainAttack(4.5, 5),
+	},
+	ss1: {
+		desc: "<ダメージ強化>1ターン溜めた後、1ターン水属性の味方の攻撃力をアップ(150%)",
+		turn: 5,
+		charged: 1,
+		proc: [ss_enhance_all(1.5, 1, [0,1,0,0,0])],
+	},
+	awakes: [
+		Statusup(100,0),
+		Costdown(2),
+		Statusup(0,100),
+		Statusup(0,200),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(3),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(550%)",
+		proc: ChainAttack(5.5, 5),
+	},
+	ss2: {
+		desc: "<ダメージ強化>1ターン溜めた後、1ターン水属性の味方の攻撃力をアップ(200%)",
+		turn: 8,
+		charged: 1,
+		proc: [ss_enhance_all(2.0, 1, [0,1,0,0,0])],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

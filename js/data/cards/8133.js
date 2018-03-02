@@ -1,0 +1,46 @@
+{
+	name: "恋と炎の大爆裂 レナ・イラプション",
+	cardno: 8133,
+	imageno: 6578,
+	hp: 3024,
+	atk: 5976,
+	cost: 56,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "バレンタイン2015",
+	as1: {
+		desc: "<種族攻撃強化・ガード>火属性の味方の攻撃力をアップ(30%)し、全属性のダメージを5%軽減。術士はさらにダメージアップ(90%)",
+		proc: [ChainEnhance(0.3 [1,0,0,0,0], 0), as_guard(0.05, [1,1,1,1,1], 0), ChainSpecEnhance(0.9, [1,0,0,0,0], [9], 0)],
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(650%)",
+		turn: 7,
+		proc: [ss_damage_all(6.5, [0], 1), ss_consume_own(0.5), ss_ignore_skillcounter()],
+	},
+	as2: {
+		desc: "<種族攻撃強化・ガード>火属性の味方の攻撃力をアップ(60%)し、全属性のダメージを10%軽減。術士はさらにダメージアップ(120%)",
+		proc: [ChainEnhance(0.6 [1,0,0,0,0], 0), as_guard(0.1, [1,1,1,1,1], 0), ChainSpecEnhance(1.2, [1,0,0,0,0], [9], 0)],
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(850%)",
+		turn: 9,
+		proc: [ss_damage_all(8.5, [0], 1), ss_consume_own(0.5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(60),
+		Attr_relief([1,0,0,0,0,],20),
+		Panel_boost([1,0,0,0,0,],2),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+		Attr_statusup(0,400,[1,0,0,0,0,]),
+		Attr_statusup(400,0,[1,0,0,0,0,]),
+		Fastskill(3),
+		Spec_statusup(200,0, [9,]),
+		Spec_statusup(0,200, [9,]),
+	],
+	Lawake: [
+		Statusup(0,1500),
+		Statusup(500,0),
+	],
+}

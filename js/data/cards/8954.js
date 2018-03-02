@@ -1,0 +1,46 @@
+{
+	name: "追憶の聖王 ミカエラ・セラフィム",
+	cardno: 8954,
+	imageno: 8871,
+	hp: 3003,
+	atk: 4253,
+	cost: 59,
+	attr: [0,3],
+	species: [3],
+	islegend: true,
+	ape: "GP2014",
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ(150%)、7チェインで更にダメージアップ(100%)",
+		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.5, 7)],
+	},
+	ss1: {
+		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(精霊数×160%)",
+		turn: 6,
+		proc: [ss_damage_all(ss_consume_all_cond(1.6, 0.5), [0])],
+	},
+	awakes: [
+		Fastskill(3),
+		Panel_boost([1,0,0,0,0,],4),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup_sattr(300,0, [1,0,0,0,0,], 300,0, [0,0,0,1,0,]),
+		NEFTJOD(60),
+		Spec_statusup(200,0, [3,]),
+		Spec_statusup(0,200, [3,]),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,200, [0,0,0,1,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+		Awake_noeffect("選ばれし者の証",1),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ(180%)、7チェインで更にダメージアップ(100%)",
+		proc: [ChainAllAttack(1.8, 0), ChainAllAttack(2.5, 7)],
+	},
+	ss2: {
+		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(精霊数×220%)",
+		turn: 9,
+		proc: [ss_damage_all(ss_consume_all_cond(2.2, 0.5), [0])],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,100, [0,0,0,1,0,]),
+	],
+}

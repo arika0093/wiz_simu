@@ -1,0 +1,46 @@
+{
+	name: "嬌艶幻夢 イルメイア・サニエ",
+	cardno: 6804,
+	imageno: 8790,
+	hp: 2815,
+	atk: 2950,
+	cost: 45,
+	attr: [2,4],
+	species: [9],
+	islegend: true,
+	ape: "図鑑報酬",
+	as1: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ、HP80%以上でさらにアップ(20%/40%)、複属性が闇属性だとさらにアップ(50%)",
+		proc: [ChainEnhance_SubAttr(0.2, 0.7, [0,0,1,0,0], [0,0,0,0,1], 0), add_cond(ChainEnhance_SubAttr(0.4, 0.9, [0,0,1,0,0], [0,0,0,0,1], 0), when_hp_more(0.8))],
+	},
+	ss1: {
+		desc: "<残滅大魔術>敵全体へ雷属性のダメージ(200%)、さらに3ターンの間、雷属性のダメージ(200%)",
+		turn: 8,
+		proc: [ss_continue_damage(2.0, 2.0, [2], 3)],
+	},
+	awakes: [
+		Spec_statusup(0,100, [2,9,]),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(100,0, [2,9,]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(0,200, [2,9,]),
+		Fastskill(2),
+		Spec_statusup(200,0, [2,9,]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ、HP80%以上でさらにアップ(50%/70%)、複属性が闇属性だとさらにアップ(50%)",
+		proc: [ChainEnhance_SubAttr(0.5, 1.0, [0,0,1,0,0], [0,0,0,0,1], 0), add_cond(ChainEnhance_SubAttr(0.7, 1.2, [0,0,1,0,0], [0,0,0,0,1], 0), when_hp_more(0.8))],
+	},
+	ss2: {
+		desc: "<残滅大魔術>敵全体へ雷属性のダメージ(300%)、さらに3ターンの間、雷属性のダメージ(300%)",
+		turn: 10,
+		proc: [ss_continue_damage(3.0, 3.0, [2], 3)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(400,0),
+	],
+}

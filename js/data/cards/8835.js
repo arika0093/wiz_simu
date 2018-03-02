@@ -1,0 +1,47 @@
+{
+	name: "老いたる魔獅子 ジェラール・イニス",
+	cardno: 8835,
+	imageno: 11034,
+	hp: 3331,
+	atk: 1893,
+	cost: 39,
+	attr: [2,4],
+	species: [2],
+	islegend: true,
+	ape: "聖サタニック女学院2",
+	is_dist: true,
+	as1: {
+		desc: "<回復>味方全体のHPを回復(13%)",
+		proc: Heal(0.13, [1, 1, 1, 1, 1], 1),
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを1遅らせ、のろい状態または状態異常時、さらに1遅らせる",
+		turn: 5,
+		proc: [ss_delay_all(ss_is_abstate_own(2, 1))],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(300,0),
+		Statusup(0,300),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		Fastskill(2),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,200, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 200,0, [0,0,0,0,1,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(16%)",
+		proc: Heal(0.16, [1, 1, 1, 1, 1], 1),
+	},
+	ss2: {
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせ、のろい状態または状態異常時、さらに1遅らせる",
+		turn: 9,
+		proc: [ss_delay_all(ss_is_abstate_own(3, 2))],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "ふたりでひとつの甘い味 パピコ",
+	cardno: 5714,
+	imageno: 7528,
+	hp: 3025,
+	atk: 2036,
+	cost: 38,
+	attr: [1, 0],
+	species: [8],
+	islegend: true,
+	ape: "大魔道杯 with グリコ",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>水属性の味方の攻撃力をアップ、複属性が火属性だとさらにアップ(30%/70%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.7, [0, 1, 0, 0, 0], [1, 0, 0, 0, 0], 0),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ軽減(25%)、スキルチャージ(1)、チェイン(2)、攻撃力アップ(50%)の効果をランダムで付与",
+		turn: 6,
+		proc: [panel_attr_guard([1,1,1,1,1], 0.25), panel_skillboost(1), panel_chainplus(2), panel_attackup(0.50)],
+	},
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup(100, 0, [1, 1, 0, 0, 0, ]),
+		Fastskill(1),
+		Fastskill(2),
+		Attr_relief([1, 1, 0, 0, 0, ], 10),
+		Attr_statusup(100, 0, [1, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Abstate_invalid("as_sealed"),
+		NEFTJOD(60),
+		Attr_statusup(0, 200, [1, 1, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>水属性の味方の攻撃力をアップ、複属性が火属性だとさらにアップ(60%/100%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.0, [0, 1, 0, 0, 0], [1, 0, 0, 0, 0], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ軽減(50%)、スキルチャージ(2)、チェイン(4)、攻撃力アップ(50%)の効果をランダムで付与",
+		turn: 10,
+		proc: [panel_attr_guard([1,1,1,1,1], 0.50), panel_skillboost(2), panel_chainplus(4), panel_attackup(0.50)],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+		Statusup(500, 0),
+	],
+}

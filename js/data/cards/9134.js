@@ -1,0 +1,46 @@
+{
+	name: "昏き英雄の副官 ローヴィ・フロイセ",
+	cardno: 9134,
+	imageno: 9027,
+	hp: 4044,
+	atk: 5709,
+	cost: 50,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "ドルキマスⅡ",
+	as1: {
+		desc: "<属性特効>4チェインで火属性の敵単体へ特効ダメージ(600%)",
+		proc: ChainAttrAttack(6.0, 4, [1,0,0,0,0]),
+	},
+	ss1: {
+		desc: "<反動大魔術・蝕>スキル反射を無視し、敵単体へ水属性のダメージ(精霊数×260%)(スキル使用後、味方全員が1ターン封印状態に)",
+		turn: 4,
+		proc: [ss_damage_s(ss_seal_all_cond(2.6), [1], 1), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_oattr(400,0, [0,1,0,0,0,]),
+		Attr_statusup_oattr(0,400, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_relief([1,0,0,0,0,],10),
+		Fastskill(4),
+		NEFTJOD(30),
+		Attr_statusup(400,0, [0,1,0,0,0,]),
+		Attr_statusup(0,400, [0,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<属性特効>4チェインで火属性の敵単体へ特効ダメージ(700%)",
+		proc: ChainAttrAttack(7.0, 4, [1,0,0,0,0]),
+	},
+	ss2: {
+		desc: "<反動大魔術・蝕>スキル反射を無視し、敵単体へ水属性のダメージ(精霊数×300%)(スキル使用後、味方全員が1ターン封印状態に)",
+		turn: 6,
+		proc: [ss_damage_s(ss_seal_all_cond(3.0), [1], 1), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+}

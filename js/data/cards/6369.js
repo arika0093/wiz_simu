@@ -1,0 +1,47 @@
+{
+	name: "虚無の収穫者 ヒミカ&アドミローラ",
+	cardno: 6369,
+	imageno: 8195,
+	hp: 3028,
+	atk: 2841,
+	cost: 38,
+	attr: [2,0],
+	species: [2],
+	islegend: true,
+	is_dist: true,
+	ape: "幻魔特区スザクⅢ",
+	as1: {
+		desc: "<回復>火・雷属性の味方のHPを回復(12%)",
+		proc: Heal(0.12, [1,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・雷属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,0,1,0,0])],
+	},
+	awakes: [
+		Statusup(0,200),
+		Fastskill(1),
+		Statusup(0,200),
+		Statusup(200,0),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],1),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(0,300, [2,]),
+		Spec_statusup(300,0, [2,]),
+	],
+	as2: {
+		desc: "<回復>火・雷属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [1,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、ダメージ軽減(25%)・攻撃力アップ(50%)の効果をランダムで付与",
+		turn: 8,
+		proc: [ss_panel_change([1,0,1,0,0]), panel_attackup(0.5), panel_attr_guard([1,1,1,1,1], 0.25)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+	],
+}

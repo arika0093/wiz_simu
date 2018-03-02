@@ -1,0 +1,47 @@
+{
+	name: "約束と結ばれた糸 サーヤ・スズカゼ",
+	cardno: 8144,
+	imageno: 7567,
+	hp: 4068,
+	atk: 3012,
+	cost: 54,
+	attr: [1,2],
+	species: [9],
+	islegend: true,
+	ape: "周年記念精霊(3周年)",
+	as1: {
+		desc: "<連撃>6チェインで敵単体を3回連続攻撃、パネルの色が増す度ダメージアップ(450%/600%/700%)",
+		proc: ChainPanelsDualAttack(4.5, 6, 7.0, 3, 6),
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,1,0,0,]),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,1,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<連撃>6チェインで敵単体を3回連続攻撃、パネルの色が増す度ダメージアップ(550%/700%/800%)",
+		proc: ChainPanelsDualAttack(5.5, 7, 8.0, 3, 6),
+	},
+	ss2: {
+		desc: "<状態異常回復&蘇生>味方全体のHPを回復し(50%)、状態異常を回復、さらに味方全体を50%で蘇生",
+		turn: 10,
+		proc: [ss_heal(0.5), ss_abstate_cure(), ss_resurrection([1, 1, 1, 1, 1], 0.50)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Statusup(500,0),
+		NEFTJOD(30),
+	],
+}

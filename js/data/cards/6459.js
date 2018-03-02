@@ -1,0 +1,47 @@
+{
+	name: "極炎の殲炎 アスモデウス・トビト",
+	cardno: 6459,
+	imageno: 8420,
+	hp: 3210,
+	atk: 3116,
+	cost: 75,
+	attr: [0,4],
+	species: [2],
+	islegend: true,
+	ape: "Blader",
+	is_dist: true,
+	as1: {
+		desc: "<全体攻撃>敵の数に関わらず敵全体へダメージアップ(150%)",
+		proc: ChainAllAttack(1.5, 0),
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・闇属性のダメージ(180%)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [0,4]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Statusup(0,200),
+		Costdown(4),
+		Statusup(200,0),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(0,200, [2,]),
+		Spec_statusup(200,0, [2,]),
+	],
+	as2: {
+		desc: "<全体攻撃>敵の数に関わらず敵全体へダメージアップ(160%)",
+		proc: ChainAllAttack(1.6, 0),
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・闇属性のダメージ(260%)",
+		turn: 12,
+		proc: [ss_damage_all(2.6, [0,4]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,700),
+		Statusup(300,0),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "清冽の焔刃 サユリ・ワイアット",
+	cardno: 6929,
+	imageno: 8884,
+	hp: 3343,
+	atk: 5032,
+	cost: 52,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "クロム・マグナ ゼロ",
+	as1: {
+		desc: "<連撃>4チェインで敵単体を6回連続攻撃(400%)",
+		proc: ChainDualAttack(4.0, 4, 6),
+	},
+	ss1: {
+		desc: "<斬撃大魔術>スキル反射を無視し、火属性の10連撃(700%)、さらに連撃数分チェインプラス",
+		turn: 10,
+		proc: [ss_damage_slash(7, [0], 10), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([0,1,0,0,0,],20),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(300,0, [1,0,0,0,0,]),
+		Attr_statusup(0,300, [1,0,0,0,0,]),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<連撃>4チェインで敵単体を6回連続攻撃(500%)",
+		proc: ChainDualAttack(5.0, 4, 6),
+	},
+	ss2: {
+		desc: "<斬撃大魔術>スキル反射を無視し、火属性の15連撃(1050%)、さらに連撃数分チェインプラス",
+		turn: 12,
+		proc: [ss_damage_slash(10.5, [0], 15), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		OnlyAttr_statusup(500, 500, 0),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

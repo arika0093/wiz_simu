@@ -1,0 +1,46 @@
+{
+	name: "縛眼の檻 エリス＝マギア・シャルム",
+	cardno: 4703,
+	imageno: 6373,
+	hp: 3989,
+	atk: 1986,
+	cost: 45,
+	attr: [1, 2],
+	species: [9],
+	disable: true,
+	awakes: [
+		Fastskill(1),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(100, 0, [0, 1, 1, 0, 0, ]),
+		NEFTJOD(30),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Heal_afterbattle(10),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+		Fastskill(2),
+		Attr_statusup(100, 0, [0, 1, 1, 0, 0, ]),
+	],
+	as1: {
+		desc: "<回復>水・雷属性の味方を回復、7チェインで更に回復(通常：10％ / 7チェイン：17％)",
+		proc: [Heal(0.10, [0,1,1,0,0], 0), Heal(0.17, [0,1,1,0,0], 7)],
+	},
+	ss1: {
+		desc: "<ダメージ強化>味方全体のMAXHPの50％を使い、2ターン水・雷属性の味方の攻撃力をアップ(+70％)",
+		turn: 5,
+		proc: [ss_enhance_all(0.7, 2, [0,1,1,0,0]), ss_consume_all(0.5)],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<回復>水・雷属性の味方を回復、7チェインで更に回復(通常：13％ / 7チェイン：20％)",
+		proc: [Heal(0.13, [0,1,1,0,0], 0), Heal(0.20, [0,1,1,0,0], 7)],
+	},
+	ss2: {
+		desc: "<ダメージ強化>味方全体のMAXHPの50％を使い、4ターン水・雷属性の味方の攻撃力をアップ(+100％)",
+		turn: 8,
+		proc: [ss_enhance_all(1.0, 4, [0,1,1,0,0]), ss_consume_all(0.5)],
+	},
+}

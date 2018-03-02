@@ -1,0 +1,47 @@
+{
+	name: "深哀の冬乙女 アイシャ・ミエヴィル",
+	cardno: 7114,
+	imageno: 9199,
+	hp: 4537,
+	atk: 2489,
+	cost: 43,
+	attr: [1,-1],
+	species: [4],
+	islegend: true,
+	ape: "古の森の千年桜",
+	is_dist: true,
+	as1: {
+		desc: "<回復>水属性の味方のHPを回復(11%)",
+		proc: Heal(0.11, [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<毒>8ターン敵全体に毒のダメージを与える(2500)",
+		turn: 7,
+		proc: [poison(2500, 8)],
+	},
+	awakes: [
+		Fastskill(1),
+		Costdown(2),
+		Attr_relief([0,0,1,0,0,],10),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>水属性の味方のHPを回復(13%)",
+		proc: Heal(0.13, [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<毒>8ターン敵全体に毒のダメージを与える(5000)",
+		turn: 11,
+		proc: [poison(5000, 8)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+	],
+}

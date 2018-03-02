@@ -1,0 +1,47 @@
+{
+	name: "翠翼の蒼蛇姫 テュイル・ククルカン",
+	cardno: 6287,
+	imageno: 8134,
+	hp: 2625,
+	atk: 4036,
+	cost: 55,
+	attr: [1,2],
+	species: [5],
+	disable: true,
+	islegend: true,
+	ape: "DL限定精霊",
+	as1: {
+		desc: "<チェイン攻撃・複属性攻撃強化>4チェインでダメージアップ(400%)、さらに水属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(10%/40%)",
+		proc: [ChainAttack(4.0, 4), ChainEnhance_SubAttr(0.1, 0.4, [0,1,0,0,0], [0,0,1,0,0], 4)],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水・雷属性のダメージ(120%)",
+		turn: 4,
+		proc: [ss_damage_all(1.2, [1,2]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(2),
+		Statusup(200,0),
+		Fastskill(2),
+		Attr_relief([0,1,0,0,0,],10),
+		Fastskill(2),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Spec_statusup(0,500, [5,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃・複属性攻撃強化>4チェインでダメージアップ(500%)、さらに水属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(10%/40%)",
+		proc: [ChainAttack(5.0, 4), ChainEnhance_SubAttr(0.1, 0.4, [0,1,0,0,0], [0,0,1,0,0], 4)],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水・雷属性のダメージ(200%)",
+		turn: 8,
+		proc: [ss_damage_all(2.0, [1,2]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+	],
+}

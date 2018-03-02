@@ -1,0 +1,46 @@
+{
+	name: "互いに特別な相手 ミハエル&クラン",
+	cardno: 90048,
+	imageno: 7757,
+	hp: 2513,
+	atk: 3034,
+	cost: 45,
+	attr: [2,1],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(マクロス)",
+	as1: {
+		desc: "<連撃>5チェインで敵単体を3回連続攻撃(450%)",
+		proc: ChainDualAttack(4.5, 5, 3),
+	},
+	ss1: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動を1ターン早め、敵全体の攻撃ターンを1遅らせる",
+		turn: 6,
+		proc: [ss_skillboost(1), ss_delay_all(1)],
+	},
+	awakes: [
+		Fastskill(1),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Attr_relief([1,0,0,0,0,],10),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Statusup(0,200),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+	],
+	as2: {
+		desc: "<連撃>5チェインで敵単体を3回連続攻撃(550%)",
+		proc: ChainDualAttack(5.5, 5, 3),
+	},
+	ss2: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動を2ターン早め、敵全体の攻撃ターンを2遅らせる",
+		turn: 9,
+		proc: [ss_skillboost(2), ss_delay_all(2)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Statusup(0,500),
+	],
+}

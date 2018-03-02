@@ -1,0 +1,46 @@
+{
+	name: "星と語り合う クレティア・ブライユ",
+	cardno: 7930,
+	imageno: 10033,
+	hp: 3145,
+	atk: 3883,
+	cost: 56,
+	attr: [1,0],
+	species: [9],
+	islegend: true,
+	ape: "バレンタイン2017",
+	as1: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃、20チェインで更にダメージアップ(300%/1600%)",
+		proc: [ChainDualAttack(3.0, 3, 3), ChainDualAttack(16.0, 20, 3)],
+	},
+	ss1: {
+		desc: "<激化大魔術>敵単体へ火・水属性の5回連続ダメージ、発動する度に効果値が2倍アップ(800%/1600%/3200%/6400%)(上限:3段階)",
+		turn: 11,
+		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [1,0], 5)],
+	},
+	as2: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃、20チェインで更にダメージアップ(400%/1700%)",
+		proc: [ChainDualAttack(4.0, 3, 3), ChainDualAttack(17.0, 20, 3)],
+	},
+	ss2: {
+		desc: "<激化大魔術>敵単体へ火・水属性の5回連続ダメージ、発動する度に効果値が2倍アップ(800%/1600%/3200%/6400%)(上限:3段階)",
+		turn: 11,
+		proc: [ss_damage_s(ss_intenselyval(0, 8.0, 64), [1,0], 5)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],4),
+		Awake_secondfast(4),
+		Attr_statusup(0,200,[1,1,0,0,0,]),
+		Attr_statusup(200,0,[1,1,0,0,0,]),
+		Spec_statusup(300,0,[9,]),
+		Attr_statusup_sattr(100,0,[0,1,0,0,0,],300,0,[1,0,0,0,0,]),
+		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,300,[1,0,0,0,0,]),
+		Awake_secondfast(5),
+		Awake_Chainboost(1),
+		Awake_noeffect("反射見破り",1),
+	],
+	Lawake: [
+		Statusup(0,1500),
+		Attr_statusup(0,100,[1,1,0,0,0,]),
+	],
+}

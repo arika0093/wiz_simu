@@ -1,0 +1,46 @@
+{
+	name: "聖なる終戦騎士 セレサ・ラグヌス",
+	cardno: 5376,
+	imageno: 7222,
+	hp: 3256,
+	atk: 4265,
+	cost: 44,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、リーダー時さらにアップ(350%/400%)",
+		proc: [ChainAttack(3.5, 3), add_cond(ChainAttack(4.0, 3), when_leader())],
+	},
+	ss1: {
+		desc: "<ガード>3ターン全属性のダメージを25%軽減する",
+		turn: 5,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],2),
+		Statusup(400,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Spec_statusup(0,200, [8,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、リーダー時さらにアップ(450%/500%)",
+		proc: [ChainAttack(4.5, 3), add_cond(ChainAttack(5.0, 3), when_leader())],
+	},
+	ss2: {
+		desc: "<ガード>3ターン全属性のダメージを50%軽減する",
+		turn: 9,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

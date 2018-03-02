@@ -1,0 +1,47 @@
+{
+	name: "超時空銀河コラボ ミンメイ&バサラ",
+	cardno: 6014,
+	imageno: 7857,
+	hp: 2218,
+	atk: 2309,
+	cost: 22,
+	attr: [0, 1],
+	species: [9],
+	islegend: true,
+	ape: "コラボ(マクロス)",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(300%)",
+		proc: ChainAttack(3.0, 3),
+	},
+	ss1: {
+		desc: "<アンサースキル延長>3ターンの間、アンサースキル発動時間を10秒延長する(上限:20秒)",
+		turn: 5,
+		proc: [ss_astime_ext(10, 3)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1, 0, 0, 0, 0, ], 1),
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Fastskill(1),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Fastskill(2),
+		Attr_statusup(100, 0, [1, 1, 0, 0, 0, ]),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復・攻撃>敵単体へのダメージアップ(300%)、さらに火・水属性の味方のHPを回復(5%)",
+		proc: [ChainAttack(3.0, 0), Heal(0.05, [1, 1, 0, 0, 0], 0)],
+	},
+	ss2: {
+		desc: "<アンサースキル延長>5ターンの間、アンサースキル発動時間を15秒延長する(上限:20秒)、さらに味方全体のHPを回復する(25%)",
+		turn: 7,
+		proc: [ss_astime_ext(20, 5), ss_heal(0.25)],
+	},
+	Lawake: [
+		Statusup(0, 400),
+		Statusup(400, 0),
+	],
+}

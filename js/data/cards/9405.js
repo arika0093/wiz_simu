@@ -1,0 +1,46 @@
+{
+	name: "邪魔主酷人 ドミー",
+	cardno: 9405,
+	imageno: 11654,
+	hp: 4014,
+	atk: 1314,
+	cost: 37,
+	attr: [1,2],
+	species: [2],
+	islegend: true,
+	ape: "ロストエデンⅢ",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化>水・雷属性の味方の攻撃力をアップ(50%)",
+		proc: ChainEnhance(0.5, [0,1,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
+		turn: 3,
+		proc: [ss_panel_change([0,1,1,0,0])],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([0,1,0,0,0,],1),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Statusup(0,200),
+		Statusup(200,0),
+		Attr_relief([1,1,1,1,1,],10),
+		Abstate_invalid("death_limit"),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+	],
+	as2: {
+		desc: "<攻撃強化>水・雷属性の味方の攻撃力をアップ(80%)",
+		proc: ChainEnhance(0.8, [0,1,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、チェインがプラス1の効果と攻撃力アップの効果を付与(50%)",
+		turn: 6,
+		proc: [ss_panel_change([0,1,1,0,0]), panel_chainplus(1), panel_attackup(0.5)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+	],
+}

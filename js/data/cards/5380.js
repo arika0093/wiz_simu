@@ -1,0 +1,47 @@
+{
+	name: "機械の心が求めた光は アイ",
+	cardno: 5380,
+	imageno: 7226,
+	hp: 3567,
+	atk: 3643,
+	cost: 44,
+	attr: [2,-1],
+	species: [6],
+	disable: true,
+	islegend: true,
+	ape: "クリスマス2014",
+	as1: {
+		desc: "<攻撃強化>雷属性の味方の攻撃力をアップ、パネルの色が増す度さらにアップ(30%/50%/80%)",
+		proc: [ChainPanelsEnhance(0.30, 0.50, 0.80, [0,0,1,0,0], 0)],
+	},
+	ss1: {
+		desc: "<ダメージ強化>2ターン雷属性の味方の攻撃力をアップ(50%)",
+		turn: 7,
+		proc: [ss_enhance_all(0.5, 2, [0,0,1,0,0])],
+	},
+	awakes: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		Costdown(2),
+		Attr_relief([1,1,1,1,1,],10),
+		Spec_statusup(300,0, [6,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(0,300, [6,]),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<攻撃強化>雷属性の味方の攻撃力をアップ、パネルの色が増す度さらにアップ(50%/70%/100%)",
+		proc: [ChainPanelsEnhance(0.50, 0.70, 1.0, [0,0,1,0,0], 0)],
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン雷属性の味方の攻撃力をアップ、10チェイン消費しさらにアップ(120%/240%)",
+		turn: 12,
+		proc: [ss_enhance_all(ss_chain_cost(10, 2.4, 1.2), 4, [0,0,1,0,0])],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "学園アイドル伝説 MIU☆MIU",
+	cardno: 4451,
+	imageno: 6144,
+	hp: 2511,
+	atk: 3289,
+	cost: 43,
+	attr: [2, -1],
+	species: [9],
+	disable: true,
+	awakes: [
+		Statusup(0, 200),
+		Fastskill(1),
+		Statusup(0, 200),
+		Statusup(0, 200),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Fastskill(1),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Spec_statusup(200, 0, [9, ]),
+		Spec_statusup(0, 200, [9, ]),
+	],
+	as1: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ/400％",
+		proc: ChainAttrAttack(4.0, 0, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<回復>味方全体のHPを回復する(75％)",
+		turn: 7,
+		proc: [ss_heal(0.75)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ/500％",
+		proc: ChainAttrAttack(5.0, 0, [0,1,0,0,0]),
+	},
+	ss2: {
+		desc: "<ダメージ強化>味方全体のHPを完全に回復し、更に3ターン雷属性の味方の攻撃力をアップ(+30％)",
+		turn: 9,
+		proc: [ss_heal(1.0), ss_enhance_all(0.30, 3, [0,0,1,0,0])],
+	},
+}

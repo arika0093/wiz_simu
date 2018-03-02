@@ -1,0 +1,47 @@
+{
+	name: "魔法の妖精 リピュア・アラト",
+	cardno: 7361,
+	imageno: 9386,
+	hp: 3944,
+	atk: 2013,
+	cost: 37,
+	attr: [1,-1],
+	species: [4],
+	islegend: true,
+	ape: "黄昏メアレスⅡ",
+	is_dist: true,
+	as1: {
+		desc: "<回復>水属性の味方のHPを回復(12%)",
+		proc: Heal(0.12, [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<回復>チェインプラス1の効果、さらに味方全体のHPを回復する(50%)",
+		turn: 5,
+		proc: [ss_heal(0.5), ss_addchain(1)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Costdown(1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(1),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		NEFTJOD(30),
+		Awake_noeffect("ゴールド取得量アップ",1),
+	],
+	as2: {
+		desc: "<回復>水属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<回復>チェインプラス2の効果、さらに味方全体のHPを回復する(50%)",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_addchain(2)],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+	],
+}

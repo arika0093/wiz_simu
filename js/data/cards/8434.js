@@ -1,0 +1,47 @@
+{
+	name: "〈スペクタクルム〉 トラタイガー",
+	cardno: 8434,
+	imageno: 10584,
+	hp: 4053,
+	atk: 1524,
+	cost: 34,
+	attr: [0,-1],
+	species: [5],
+	islegend: true,
+	ape: "アイドルキャッツ！",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化>3チェインで火属性の味方の攻撃力をアップ(50%)",
+		proc: ChainEnhance(0.5, [1,0,0,0,0], 3),
+	},
+	ss1: {
+		desc: "<ダメージ強化>3ターンの間、味方の攻撃力をアップ(70%)、5チェインを消費しさらにアップ(50%)",
+		turn: 7,
+		proc: [ss_enhance_all(ss_chain_cost(5, 1.2, 0.7), 3, [1, 1, 1, 1, 1])],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([1,0,0,0,0,],2),
+		Statusup(200,0),
+		Statusup(0,200),
+		NEFTJOD(30),
+		Attr_relief([0,1,0,0,0,],10),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<攻撃強化>3チェインで火属性の味方の攻撃力をアップ(80%)",
+		proc: ChainEnhance(0.8, [1,0,0,0,0], 3),
+	},
+	ss2: {
+		desc: "<ダメージ強化>3ターンの間、味方の攻撃力をアップ(100%)、5チェインを消費しさらにアップ(50%)",
+		turn: 8,
+		proc: [ss_enhance_all(ss_chain_cost(5, 1.5, 1.0), 3, [1, 1, 1, 1, 1])],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

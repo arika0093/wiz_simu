@@ -1,0 +1,45 @@
+{
+	name: "炎彗騎士 イグニス・ヴォルガノン",
+	cardno: 3626,
+	imageno: 5207,
+	hp: 2232,
+	atk: 2432,
+	cost: 35,
+	attr: [0, -1],
+	species: [8],
+	awakes: [
+		Statusup(200, 0),
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Statusup(0, 200),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Panel_boost([1,0,0,0,0], 1),
+		Fastskill(2),
+		Spec_statusup(0, 200, [8]),
+	],
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージ絶大アップ/250％",
+		proc: ChainAttack(2.5, 3),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ火属性の究極ダメージ(180％)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [0])],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(300, 0),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージ極大アップ/350%",
+		proc: ChainAttack(3.5, 3),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ火属性の超究極ダメージ(260％)",
+		turn: 12,
+		proc: [ss_damage_all(2.6, [0])],
+	},
+}

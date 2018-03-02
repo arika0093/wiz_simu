@@ -1,0 +1,47 @@
+{
+	name: "アーサーと円卓の騎士",
+	cardno: 6736,
+	imageno: 8690,
+	hp: 3772,
+	atk: 3073,
+	cost: 53,
+	attr: [2,3],
+	species: [8],
+	disable: true,
+	islegend: true,
+	ape: "真夏のグレート・クイズ・ウォー",
+	as1: {
+		desc: "<属性特効・攻撃強化>雷属性の味方の攻撃力をアップし(30%)、4チェインで水・闇属性の敵単体へ特効ダメージ(500%)",
+		proc: [ChainEnhance(0.30, [0, 0, 1, 0, 0], 0), ChainAttrAttack(5.0, 4, [0,1,0,0,1])],
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(50%)",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	awakes: [
+		Awake_noeffect("ゴールド取得量アップ", 1),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup_sattr(200, 0, [0,0,1,0,0], 200, 0, [0,0,0,1,0]),
+		Attr_statusup_sattr(0, 200, [0,0,1,0,0], 0, 200, [0,0,0,1,0]),
+	],
+	as2: {
+		desc: "<属性特効・攻撃強化>雷属性の味方の攻撃力をアップし(30%)、4チェインで水・闇属性の敵単体へ特効ダメージ(600%)",
+		proc: [ChainEnhance(0.30, [0, 0, 1, 0, 0], 0), ChainAttrAttack(6.0, 4, [0,1,0,0,1])],
+	},
+	ss2: {
+		desc: "<状態異常回復&蘇生>味方全体のHPを回復し、状態異常を回復(50%)、さらに雷属性の味方を50%で蘇生",
+		turn: 10,
+		proc: [ss_heal(0.50), ss_abstate_cure(), ss_resurrection([0,0,1,0,0], 0.5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(0,500),
+	],
+}

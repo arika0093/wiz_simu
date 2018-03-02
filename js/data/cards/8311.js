@@ -1,0 +1,47 @@
+{
+	name: "絶天鎧装 イーハソラス",
+	cardno: 8311,
+	imageno: 10417,
+	hp: 2342,
+	atk: 6021,
+	cost: 52,
+	attr: [2,-1],
+	species: [6],
+	islegend: true,
+	ape: "VOID ZONE",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(350%)、10チェインで更にダメージアップ(200%)",
+		proc: [ChainAttack(3.5, 4), ChainAttack(5.5, 10)],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵単体へ無属性のダメージ(1600%)",
+		turn: 9,
+		proc: [ss_damage_s(16, [-1], 1), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_relief([0,0,0,1,1,],10),
+		Attr_statusup(0,300, [0,0,1,0,0,]),
+		Attr_statusup(300,0, [0,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(450%)、10チェインで更にダメージアップ(200%)",
+		proc: [ChainAttack(4.5, 4), ChainAttack(6.5, 10)],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵単体へ無属性のダメージ(2000%)",
+		turn: 12,
+		proc: [ss_damage_s(20, [-1], 1), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		NEFTJOD(30),
+	],
+}

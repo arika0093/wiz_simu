@@ -1,0 +1,45 @@
+{
+	name: "求めたのは本当の「自分」 アイ",
+	cardno: 7194,
+	imageno: 5574,
+	hp: 3504,
+	atk: 3529,
+	cost: 55,
+	attr: [2,0],
+	species: [6],
+	islegend: true,
+	as1: {
+		desc: "<チェイン攻撃・種族攻撃強化>3チェインでダメージアップ(350%)、さらに物質の味方の攻撃力をアップ(50%)",
+		proc: [ChainAttack(3.5, 3), ChainSpecEnhance(0.5, [1,1,1,1,1], [6], 3)],
+	},
+	ss1: {
+		desc: "<ブースト>4ターンの間、味方のMAXHPを毎ターン15%消費し攻撃力をアップ(100%)さらに極稀にクリティカル",
+		turn: 5,
+		proc: [ss_boost_enhance_all(1.0, 4, 0.15, [1,1,1,1,1])],
+	},
+	awakes: [
+		Spec_relief([6], 10),
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+		Panel_boost([0,0,1,0,0,],2),
+		Heal_afterbattle(10),
+		Attr_statusup_sattr(0,200, [0,0,1,0,0,], 0,200, [1,0,0,0,0,]),
+		Attr_statusup_sattr(200,0, [0,0,1,0,0,], 200,0, [1,0,0,0,0,]),
+		Spec_statusup(0,200, [6,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃・種族攻撃強化>3チェインでダメージアップ(450%)、さらに物質の味方の攻撃力をアップ(50%)",
+		proc: [ChainAttack(4.5, 3), ChainSpecEnhance(0.5, [1,1,1,1,1], [6], 3)],
+	},
+	ss2: {
+		desc: "<ブースト>4ターンの間、味方のMAXHPを毎ターン10%消費し攻撃力をアップ(175%)さらに極稀にクリティカル",
+		turn: 8,
+		proc: [ss_boost_enhance_all(1.75, 4, 0.1, [1,1,1,1,1])],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+	],
+}

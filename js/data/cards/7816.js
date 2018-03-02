@@ -1,0 +1,46 @@
+{
+	name: "聖鐘は彼女のために ユッカ・エンデ",
+	cardno: 7816,
+	imageno: 9968,
+	hp: 3366,
+	atk: 3643,
+	cost: 56,
+	attr: [0,3],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<チェイン攻撃・複属性攻撃強化>3チェインでダメージアップ(350%)、さらに火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(10%/40%)",
+		proc: [ChainAttack(3.5, 3),ChainEnhance_SubAttr(0.10, 0.40, [1,0,0,0,0], [0,0,0,1,0], 3)],
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせ、状態異常状態でさらに1遅らせる",
+		turn: 8,
+		proc: [ss_delay_all(ss_is_abstate_own(3,2))],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],3),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],3),
+		Fastskill(1),
+		Attr_relief([1,1,1,1,1,],10),
+		Fastskill(2),
+		Spec_statusup(0,300, [9,]),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<チェイン攻撃・複属性攻撃強化>3チェインでダメージアップ(450%)、さらに火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(10%/40%)",
+		proc: [ChainAttack(4.5, 3),ChainEnhance_SubAttr(0.10, 0.40, [1,0,0,0,0], [0,0,0,1,0], 3)],
+	},
+	ss2: {
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせ、状態異常状態でさらに1遅らせる",
+		turn: 12,
+		proc: [ss_delay_all(ss_is_abstate_own(4, 3))],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

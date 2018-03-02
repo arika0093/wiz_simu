@@ -1,0 +1,47 @@
+{
+	name: "〈ドレスメア〉ミリィの夢",
+	cardno: 7364,
+	imageno: 9389,
+	hp: 3084,
+	atk: 2248,
+	cost: 40,
+	attr: [2,0],
+	species: [2],
+	islegend: true,
+	ape: "黄昏メアレスⅡ",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化・回復>5チェインで火・雷属性の味方のHPを回復(10%)、さらに攻撃力をアップ(50%)",
+		proc: [ChainEnhance(0.5, [1,0,1,0,0], 5), Heal(0.1, [1,0,1,0,0], 5)],
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体の攻撃力を500アップ、さらにHPを回復(25%)(上限値:2000)",
+		turn: 5,
+		proc: [ss_statusup_all([0, 500], [2000, 2000], -1), ss_heal(0.25)],
+	},
+	awakes: [
+		Statusup(0,200),
+		NEFTJOD(30),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(1),
+		Attr_relief([1,1,1,1,1,],10),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>5チェインで火・雷属性の味方のHPを回復(10%)、さらに攻撃力をアップ(80%)",
+		proc: [ChainEnhance(0.8, [1,0,1,0,0], 5), Heal(0.1, [1,0,1,0,0], 5)],
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体の攻撃力を1000アップ、さらにHPを回復(50%)(上限値:2000)",
+		turn: 8,
+		proc: [ss_statusup_all([0, 1000], [2000, 2000], -1), ss_heal(0.5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(500,0),
+	],
+}

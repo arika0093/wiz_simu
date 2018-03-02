@@ -1,0 +1,47 @@
+{
+	name: "優麗都雅なる凛黒竜 ゲドゥザ",
+	cardno: 7451,
+	imageno: 9436,
+	hp: 2688,
+	atk: 3321,
+	cost: 37,
+	attr: [2,-1],
+	species: [0],
+	islegend: true,
+	ape: "神竜降臨Ⅱ",
+	is_dist: true,
+	as1: {
+		desc: "<種族特効>敵全体へダメージ、龍族の敵へさらにダメージアップ(130%/160%)",
+		proc: [ChainAllAttack(1.3, 0), ChainAllSpecAttack(1.6, [0], 0)],
+	},
+	ss1: {
+		desc: "<毒>6ターン敵全体に毒のダメージを与える(4000)",
+		turn: 7,
+		proc: [poison(4000, 6)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(100,0),
+		Attr_relief([1,1,1,1,1,],10),
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(0,200),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<種族特効>敵全体へダメージ、龍族の敵へさらにダメージアップ(150%/180%)",
+		proc: [ChainAllAttack(1.5, 0), ChainAllSpecAttack(1.8, [0], 0)],
+	},
+	ss2: {
+		desc: "<毒>6ターン敵全体に毒のダメージを与える(9999)",
+		turn: 11,
+		proc: [poison(9999, 6)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

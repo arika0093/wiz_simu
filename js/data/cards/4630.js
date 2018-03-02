@@ -1,0 +1,46 @@
+{
+	name: "覇眼の水平線 リヴェータ・イレ",
+	cardno: 4630,
+	imageno: 6406,
+	hp: 2626,
+	atk: 3383,
+	cost: 43,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(350%)",
+		proc: ChainAttack(3.5, 3),
+	},
+	ss1: {
+		desc: "<遅延>攻撃ターンを2遅らせる",
+		turn: 8,
+		proc: [ss_delay_all(2)],
+	},
+	awakes: [
+		Costdown(2),
+		Statusup(100,0),
+		Fastskill(1),
+		Attr_relief([1,0,1,0,0,],10),
+		Statusup(0,200),
+		Fastskill(2),
+		Statusup(100,0),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Spec_statusup(0,200, [8,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(450%)",
+		proc: ChainAttack(4.5, 3),
+	},
+	ss2: {
+		desc: "<遅延>攻撃ターンを3遅らせる",
+		turn: 10,
+		proc: [ss_delay_all(3)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

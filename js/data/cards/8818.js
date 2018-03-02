@@ -1,0 +1,48 @@
+{
+	name: "秘めたる野心 イーディス&カナメ",
+	cardno: 8818,
+	imageno: 11017,
+	hp: 6355,
+	atk: 1571,
+	cost: 54,
+	attr: [0,2],
+	species: [2],
+	islegend: true,
+	ape: "聖サタニック女学院2",
+	as1: {
+		desc: "<回復・攻撃強化>火・雷属性の味方のHPを回復(13%)、さらに火・雷属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.13, [1,0,1,0,0], 0), ChainEnhance(0.3, [1,0,1,0,0], 0)],
+	},
+	ss1: {
+		desc: "<ダブルスキル付与>3ターン溜めた後、3ターンの間、デッキ内の味方にSPスキル使用回数+1の効果を付与する(SPスキル使用回数アップの効果は重複しません)",
+		turn: 12,
+		charged: 3,
+		proc: [ss_doubleskill_all(3)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Awake_noeffect("行動見破り",1),
+		Heal_afterbattle(10),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<回復・攻撃強化>火・雷属性の味方のHPを回復(16%)、さらに火・雷属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.16, [1,0,1,0,0], 0), ChainEnhance(0.3, [1,0,1,0,0], 0)],
+	},
+	ss2: {
+		desc: "<ダブルスキル付与>3ターン溜めた後、6ターンの間、デッキ内の味方にSPスキル使用回数+1の効果を付与する(SPスキル使用回数アップの効果は重複しません)",
+		turn: 15,
+		charged: 3,
+		proc: [ss_doubleskill_all(6)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Statusup(1000,0),
+	],
+}

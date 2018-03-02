@@ -1,0 +1,46 @@
+{
+	name: "目醒めし魔竜 ラギカ・バルシス",
+	cardno: 9253,
+	imageno: 11518,
+	hp: 4405,
+	atk: 3035,
+	cost: 36,
+	attr: [1,-1],
+	species: [0],
+	islegend: true,
+	ape: "大魔道杯 the GATE",
+	is_dist: true,
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ(140%)、HP80%以下でさらにダメージアップ(90%)",
+		proc: [ChainAllAttack(1.4, 0), add_cond(ChainAllAttack(2.3, 0), when_hp_less(0.8))],
+	},
+	ss1: {
+		desc: "<解答削り>解答選択肢を2つ削り、HP80%以下なら解答を見破る",
+		turn: 4,
+		proc: [ss_answer_narrow(2), ss_hp_less_skill(0.20, ss_answer_foresight())],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_oattr(0,300, [0,1,0,0,0,]),
+		Attr_statusup_oattr(300,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+		Fastskill(1),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ(170%)、HP80%以下でさらにダメージアップ(90%)",
+		proc: [ChainAllAttack(1.7, 0), add_cond(ChainAllAttack(2.6, 0), when_hp_less(0.8))],
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 6,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+}

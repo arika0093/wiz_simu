@@ -1,0 +1,47 @@
+{
+	name: "禍々しい光を放つ 幾何学生命体",
+	cardno: 6641,
+	imageno: 8589,
+	hp: 2320,
+	atk: 2743,
+	cost: 31,
+	attr: [2,-1],
+	species: [3],
+	islegend: true,
+	ape: "コラボ(エヴァⅡ)",
+	is_dist: true,
+	as1: {
+		desc: "<種族特効>敵の数に関わらず敵全体へダメージアップ、天使の敵へさらにダメージアップ(130%/230%)",
+		proc: [ChainAllAttack(1.3, 0), ChainAllSpecAttack(2.3, [3], 0)],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを雷属性化",
+		turn: 6,
+		proc: [ss_panel_change([0,0,1,0,0])],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_relief([0,1,0,0,0,],10),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Fastskill(2),
+		Spec_statusup(0,100, [3,]),
+		Spec_statusup(100,0, [3,]),
+	],
+	as2: {
+		desc: "<種族特効>敵の数に関わらず敵全体へダメージアップ、天使の敵へさらにダメージアップ(140%/240%)",
+		proc: [ChainAllAttack(1.4, 0), ChainAllSpecAttack(2.4, [3], 0)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを雷属性化し、回復の効果を付与(8%)",
+		turn: 9,
+		proc: [ss_panel_change([0,0,1,0,0]), panel_healally(0.08)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "醜悪なる魔物の顕現 モーノー",
+	cardno: 7523,
+	imageno: 9570,
+	hp: 2538,
+	atk: 3544,
+	cost: 38,
+	attr: [1,-1],
+	species: [7],
+	islegend: true,
+	ape: "エステレラⅠ",
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Statusup(0, 100),
+		Statusup(100, 0),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Fastskill(1),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Fastskill(2),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+	],
+	as1: {
+		desc: "<属性特効連撃>火属性の敵単体へ特効5連撃(350%)",
+		proc: [ChainDualAttrAttack(3.5, 0, 5, [1,0,0,0,0])],
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水属性の10回連続ダメージ(200%)",
+		turn: 6,
+		proc: [ss_damage_s(2.0, [1], 10), ss_ignore_skillcounter()],
+	},
+	as2: {
+		desc: "<属性特効連撃>火属性の敵単体へ特効5連撃(450%)",
+		proc: [ChainDualAttrAttack(4.5, 0, 5, [1,0,0,0,0])],
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水属性の10回連続ダメージ(400%)",
+		turn: 9,
+		proc: [ss_damage_s(4.0, [1], 10), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0, 400),
+		Statusup(400, 0),
+	],
+}

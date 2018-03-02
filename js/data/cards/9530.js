@@ -1,0 +1,46 @@
+{
+	name: "ふくよかを司る 巨大ステラ像",
+	cardno: 9530,
+	imageno: 11790,
+	hp: 2445,
+	atk: 3014,
+	cost: 44,
+	attr: [2,1],
+	species: [7],
+	islegend: true,
+	ape: "エステレラⅡ",
+	is_dist: true,
+	as1: {
+		desc: "<分散攻撃>敵全体へ分散攻撃(250%)、解答が早いほどさらにアップ(70%)（上限:4段階)",
+		proc: add_cond(ChainVarianceAttack(2.5, 0), as_timedep(0.7)),
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早める",
+		turn: 5,
+		proc: [ss_skillboost(1)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(4),
+		Costdown(10),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,200, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 200,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<分散攻撃>敵全体へ分散攻撃(350%)、解答が早いほどさらにアップ(70%)（上限:4段階)",
+		proc: add_cond(ChainVarianceAttack(3.5, 0), as_timedep(0.7)),
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
+		turn: 8,
+		proc: [ss_skillboost(2)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
+}

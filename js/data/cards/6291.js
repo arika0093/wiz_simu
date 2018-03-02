@@ -1,0 +1,45 @@
+{
+	name: "深夢幻猫君子 ジグムント・バウアー",
+	cardno: 6291,
+	imageno: 8138,
+	hp: 2899,
+	atk: 2321,
+	cost: 45,
+	attr: [1,2],
+	species: [5],
+	islegend: true,
+	as1: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(30%/70%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.7, [0,1,0,0,0], [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水属性化",
+		turn: 2,
+		proc: [ss_panel_change([0,1,0,0,0])],
+	},
+	awakes: [
+		Statusup(200,0),
+		Statusup(0,200),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Fastskill(1),
+		Costdown(2),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Spec_statusup(0,500, [5,]),
+		Spec_statusup(500,0, [5,]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(60%/100%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.0, [0,1,0,0,0], [0,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
+		turn: 3,
+		proc: [ss_panel_change([0,1,1,0,0])],
+	},
+	Lawake: [
+		Statusup(300,0),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+	],
+}

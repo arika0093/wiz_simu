@@ -1,0 +1,48 @@
+{
+	name: "揺蕩う星海の光 ソラナ・カルナ",
+	cardno: 7504,
+	imageno: 9547,
+	hp: 5531,
+	atk: 1667,
+	cost: 50,
+	attr: [0,1],
+	species: [9],
+	disable: true,
+	islegend: true,
+	ape: "エステレラⅠ",
+	alias: ["ちっぱい"],
+	as1: {
+		desc: "<攻撃強化・回復>火・水属性の味方のHPを回復(13%)、さらに火・水属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.13, [1,1,0,0,0], 0), ChainEnhance(0.3, [1,1,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルに攻撃力アップの効果を付与(60%)",
+		turn: 2,
+		proc: [panel_attackup(0.6)],
+	},
+	awakes: [
+		Abstate_invalid("death_limit"),
+		Fastskill(1),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Heal_afterbattle(10),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
+		Awake_Chainboost(1),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>火・水属性の味方のHPを回復(16%)、さらに火・水属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.16, [1,1,0,0,0], 0), ChainEnhance(0.3, [1,1,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルに攻撃力アップの効果を付与(100%)",
+		turn: 4,
+		proc: [panel_attackup(1.0)],
+	},
+	Lawake: [
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		NEFTJOD(30),
+	],
+}

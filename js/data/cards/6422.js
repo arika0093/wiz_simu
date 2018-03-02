@@ -1,0 +1,45 @@
+{
+	name: "人生大冒険 ジェニファー・アボット",
+	cardno: 6422,
+	imageno: 8361,
+	hp: 2365,
+	atk: 4535,
+	cost: 41,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<ギャンブル攻撃>4チェインでイチかバチかダメージアップ、10チェインでさらにイチかバチかダメージアップ(0~800%/0~1200%)",
+		proc: [ChainStakesAttack(8.0, 0, 4), ChainStakesAttack(12, 0, 10)],
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
+		turn: 9,
+		proc: [ss_delay_all(2)],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Statusup(400,0),
+		Costdown(4),
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(1),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Awake_noeffect("ゴールド取得量アップ", 1),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<ギャンブル攻撃>4チェインでイチかバチかダメージアップ、10チェインでさらにイチかバチかダメージアップ(0~1000%/0~1400%)",
+		proc: [ChainStakesAttack(10.0, 0, 4), ChainStakesAttack(14, 0, 10)],
+	},
+	ss2: {
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
+		turn: 11,
+		proc: [ss_delay_all(3)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

@@ -1,0 +1,48 @@
+{
+	name: "獅子剣公爵 バロン・ライオネル",
+	cardno: 8031,
+	imageno: 7599,
+	hp: 2431,
+	atk: 3007,
+	cost: 44,
+	attr: [2, 1],
+	species: [5],
+	islegend: true,
+	is_dist: true,
+	ape:"ギルドマスターセレモニーズ",
+	as1: {
+		desc: "<攻撃>敵単体へダメージアップ(250%)",
+		proc: ChainAttack(2.5, 0),
+	},
+	ss1: {
+		desc: "<回復>味方のHPを回復する(50%)",
+		turn: 5,
+		proc: [ss_heal(0.5)],
+	},
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(3),
+		Costdown(2),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Spec_statusup(500, 0, [5, ]),
+		Spec_statusup(0, 500, [5, ]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,200, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 200,0, [0,1,0,0,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<攻撃・種族攻撃強化>敵単体へのダメージアップ(250%)、さらに亜人の味方の攻撃力をアップ(50%)",
+		proc: [ChainAttack(2.5, 0), ChainSpecEnhance(0.5, [1, 1, 1, 1, 1], [5], 0)],
+	},
+	ss2: {
+		desc: "<回復>味方のHPを完全に回復する",
+		turn: 7,
+		proc: [ss_heal(1)],
+	},
+	Lawake: [
+		Statusup(0, 400),
+		Statusup(400, 0),
+		Spec_statusup(0, 500, [5, ]),
+	],
+}

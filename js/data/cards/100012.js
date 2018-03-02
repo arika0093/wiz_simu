@@ -1,0 +1,47 @@
+{
+	name: "AbCd-Ξ:《朽ちゆく神骸 テネブル》",
+	cardno: 100012,
+	imageno: 6791,
+	hp: 4210,
+	atk: 3004,
+	cost: 62,
+	attr: [2, 3],
+	species: [11],
+	awakes: [
+		Fastskill(1),
+		Statusup(0, 100),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Statusup(200, 0),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Fastskill(2),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+		NEFTJOD(99, 90),
+	],
+	as1: {
+		desc: "<嘆きの怒り>戦闘不能の仲間の数だけ攻撃力アップ&敵HPを吸収(戦闘不能人数×400％+100％ / 吸収：4％)(1体：500%/2体：900%/3体：1300%/4体：1700%：2100％)",
+		proc: add_cond(ChainDeckDeadsAttack(4.0, 0), as_hp_absorption(0.04)),
+	},
+	ss1: {
+		desc: "<犠牲魔術>味方全体のMAXHPの100％を使い敵全体へダメージ(150％×味方の人数)",
+		turn: 7,
+		proc: [ss_damage_all(ss_consume_all_cond(1.5, 1.0), [2])],
+	},
+	islegend: true,
+	is_dist: true,
+	disable: true,
+	Lawake: [
+		Statusup(400, 0),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<嘆きの怒り>戦闘不能の仲間の数だけ攻撃力アップ&敵HPを吸収(戦闘不能人数×450％+100％ / 吸収：4％)(1体：550%/2体：1000%/3体：1450%/4体：1900%：2350％)",
+		proc: add_cond(ChainDeckDeadsAttack(4.5, 0), as_hp_absorption(0.04)),
+	},
+	ss2: {
+		desc: "<自己犠牲蘇生>自分を犠牲に全員をHP75％蘇生",
+		turn: 10,
+		proc: [ss_resurrection([1, 1, 1, 1, 1], 0.75), ss_consume_own(1)],
+	},
+}

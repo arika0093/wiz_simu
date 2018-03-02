@@ -1,0 +1,47 @@
+{
+	name: "救亡の聖皇女 メヒティルト・レンツ",
+	cardno: 9093,
+	imageno: 11335,
+	hp: 3911,
+	atk: 1848,
+	cost: 42,
+	attr: [0,2],
+	species: [8],
+	islegend: true,
+	ape: "ドルキマスⅢ",
+	is_dist: true,
+	as1: {
+		desc: "<回復>火属性の味方のHPを回復(11%)",
+		proc: Heal(0.11, [1, 0, 0, 0, 0]),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・雷属性化",
+		turn: 5,
+		proc: [ss_panel_change([1,0,1,0,0])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 200,0, [0,0,1,0,0,]),
+		Awake_secondfast(1),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,0,1,0,0,]),
+		Awake_noeffect("経験値取得量アップ",1),
+		Awake_secondfast(2),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>火属性の味方のHPを回復(13%)",
+		proc: Heal(0.13, [1, 0, 0, 0, 0]),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、攻撃力アップの効果を付与(50%)",
+		turn: 7,
+		proc: [ss_panel_change([1,0,1,0,0]), panel_attackup(0.5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+}

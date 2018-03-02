@@ -1,0 +1,45 @@
+{
+	name: "宵の花鳥風月 ハヅキ・ユメガタリ",
+	cardno: 3985,
+	imageno: 5666,
+	hp: 2211,
+	atk: 3088,
+	cost: 43,
+	attr: [1, -1],
+	species: [8],
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Fastskill(1),
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(0, 200),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		NEFTJOD(30),
+		Fastskill(2),
+		Spec_statusup(0, 200, [8, ]),
+	],
+	as1: {
+		desc: "<連撃>3チェインで敵単体を4回連続攻撃/計350％",
+		proc: ChainDualAttack(3.5, 3, 4),
+	},
+	ss1: {
+		desc: "<ダメージ強化>2ターン水属性の味方の攻撃力をアップ(+40％)",
+		turn: 6,
+		proc: [ss_enhance_all(0.4, 2, [0,1,0,0,0])],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 400),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "<連撃>敵単体を4回連続攻撃/計350％",
+		proc: ChainDualAttack(3.5, 0, 4),
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン水属性の味方の攻撃力をアップ(+60％)",
+		turn: 9,
+		proc: [ss_enhance_all(0.6, 4, [0,1,0,0,0])],
+	},
+}

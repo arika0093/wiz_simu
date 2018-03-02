@@ -1,0 +1,46 @@
+{
+	name: "みんなで毛づくろい ビッグフモーフ",
+	cardno: 5518,
+	imageno: 7303,
+	hp: 2778,
+	atk: 2465,
+	cost: 45,
+	attr: [2,0],
+	species: [4],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<攻撃>7チェインで敵単体へのダメージアップ(550%)",
+		proc: ChainAttack(5.5, 7),
+	},
+	ss1: {
+		desc: "<チェインガード>味方全体のMAXHPの50%を使い、3ターンの間、チェインを保護する",
+		turn: 5,
+		proc: [ss_chain_protect(3), ss_consume_all(0.5)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		Statusup(200,0),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Statusup(0,200),
+		Fastskill(2),
+		Spec_statusup(0,300, [4,]),
+	],
+	as2: {
+		desc: "<攻撃>7チェインで敵単体へのダメージアップ(650%)",
+		proc: ChainAttack(6.5, 7),
+	},
+	ss2: {
+		desc: "<チェインガード>味方全体のMAXHPの50%を使い、6ターンの間、チェインを保護する",
+		turn: 8,
+		proc: [ss_chain_protect(6), ss_consume_all(0.5)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+	],
+}

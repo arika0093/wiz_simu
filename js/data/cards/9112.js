@@ -1,0 +1,47 @@
+{
+	name: "古代魔法同化ゲルトルーデ・リプヒム",
+	cardno: 9112,
+	imageno: 11354,
+	hp: 3056,
+	atk: 2812,
+	cost: 46,
+	attr: [2,0],
+	species: [2],
+	islegend: true,
+	ape: "ドルキマスⅢ",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ(30%)、複属性が火属性だとさらにアップ(40%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.7, [0,0,1,0,0], [1,0,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のMAXHPの60％を使い、味方全体のスペシャルスキルの発動ターンを1早める",
+		turn: 4,
+		proc: [ss_consume_all(0.6), ss_skillboost(1)],
+	},
+	awakes: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,200, [1,0,0,0,0,]),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 200,0, [1,0,0,0,0,]),
+		Abstate_invalid("discharge"),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ(60%)、複属性が火属性だとさらにアップ(40%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.0, [0,0,1,0,0], [1,0,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のMAXHPの60％を使い、味方全体のスペシャルスキルの発動ターンを2早める",
+		turn: 6,
+		proc: [ss_consume_all(0.6), ss_skillboost(2)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

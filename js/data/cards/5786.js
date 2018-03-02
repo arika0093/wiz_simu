@@ -1,0 +1,47 @@
+{
+	name: "郷愁雪化粧 キーラ・バルバレス",
+	cardno: 5786,
+	imageno: 7598,
+	hp: 3650,
+	atk: 2112,
+	cost: 52,
+	attr: [2, 3],
+	species: [9],
+	disable: true,
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<回復>雷属性の味方のHPを回復(12%)",
+		proc: Heal(0.12, [0, 0, 1, 0, 0], 0),
+	},
+	ss1: {
+		desc: "<シャッフル>ジャンルパネルをシャッフル",
+		turn: 1,
+		proc: [ss_panel_shuffle()],
+	},
+	awakes: [
+		Statusup(200, 0),
+		Fastskill(1),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Fastskill(2),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		NEFTJOD(30),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>雷属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [0, 0, 1, 0, 0], 0),
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 6,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Statusup(500, 0),
+	],
+}

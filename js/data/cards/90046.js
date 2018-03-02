@@ -1,0 +1,46 @@
+{
+	name: "超時空シンデレラ ランカ・リー",
+	cardno: 90046,
+	imageno: 7754,
+	hp: 2512,
+	atk: 4726,
+	cost: 46,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "コラボ(マクロス)",
+	as1: {
+		desc: "<属性特効>3チェインで水属性の敵単体へ特効ダメージ(525%)",
+		proc: ChainAttrAttack(5.25, 3, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 7,
+		proc: [ss_heal(0.50), ss_abstate_cure()],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Statusup(0,200),
+		Statusup(200,0),
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで水属性の敵単体へ特効ダメージ(625%)",
+		proc: ChainAttrAttack(6.25, 3, [0,1,0,0,0]),
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
+		turn: 9,
+		proc: [ss_heal(1.0), ss_abstate_cure()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "Joy Ride ラウディダウ",
+	cardno: 8066,
+	imageno: 10194,
+	hp: 2511,
+	atk: 3845,
+	cost: 39,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	ape: "クロスディライブ",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ、HP50%以下でさらにダメージアップ(350%/600%)",
+		proc: [ChainAttack(3.5, 5), add_cond(ChainAttack(6.0, 5), when_hp_less(0.5))],
+	},
+	ss1: {
+		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ雷属性のダメージ(人数×240%)",
+		turn: 10,
+		proc: [ss_damage_s(ss_consume_all_cond(2.4, 0.6), [2], 1), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Statusup(200,0),
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],1),
+		NEFTJOD(30),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(0,200, [8,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ、HP50%以下でさらにダメージアップ(400%/800%)",
+		proc: [ChainAttack(4, 5), add_cond(ChainAttack(8.0, 5), when_hp_less(0.5))],
+	},
+	ss2: {
+		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ雷属性のダメージ(人数×320%)",
+		turn: 13,
+		proc: [ss_damage_s(ss_consume_all_cond(3.2, 0.6), [2], 1), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(0,400),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "恋を運ばない大賢者 ノイン・ケーラ",
+	cardno: 8129,
+	imageno: 7492,
+	hp: 2634,
+	atk: 4062,
+	cost: 55,
+	attr: [0,2],
+	species: [9],
+	islegend: true,
+	ape: "バレンタイン2016",
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、HP50%以上でさらにダメージアップ(300%/500%)",
+		proc: [ChainAttack(3.0, 4), add_cond(ChainAttack(5.0, 4), when_hp_more(0.5))],
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを1遅らせる",
+		turn: 4,
+		proc: [ss_delay_all(1)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Heal_afterbattle(10),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,1,0,0,]),
+		Fastskill(3),
+		Awake_noeffect("心眼",1),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、HP50%以上でさらにダメージアップ(400%/600%)",
+		proc: [ChainAttack(4.0, 4), add_cond(ChainAttack(6.0, 4), when_hp_more(0.5))],
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の5回連続ダメージ、5チェインを消費しさらにダメージアップ(550%/850%)",
+		turn: 7,
+		proc: [ss_chain_cost_skill(5, ss_damage_s(8.5, [0,2], 5), ss_damage_s(5.5, [0,2], 5)), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Statusup(0,1000),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "腸はらわた料理長 モストロ・シン",
+	cardno: 6807,
+	imageno: 8789,
+	hp: 3321,
+	atk: 5225,
+	cost: 53,
+	attr: [0,-1],
+	species: [2],
+	islegend: true,
+	ape: "魔道杯(その他)",
+	as1: {
+		desc: "<チェイン攻撃>10チェインでダメージアップ、HP50%以下でさらにダメージアップ(600%/900%)",
+		proc: [ChainAttack(6.0, 10), add_cond(ChainAttack(9.0, 10), when_hp_less(0.5))],
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(600%)",
+		turn: 9,
+		proc: [ss_damage_all(6.0, [0]), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	awakes: [
+		Statusup(0,100),
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Spec_statusup(0,200, [2,]),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<チェイン攻撃>10チェインでダメージアップ、HP50%以下でさらにダメージアップ(700%/1200%)",
+		proc: [ChainAttack(7.0, 10), add_cond(ChainAttack(12.0, 10), when_hp_less(0.5))],
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(750%)",
+		turn: 12,
+		proc: [ss_damage_all(7.5, [0]), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

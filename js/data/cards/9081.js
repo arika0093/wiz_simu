@@ -1,0 +1,47 @@
+{
+	name: "新王誕生 フェリクス・シェーファー",
+	cardno: 9081,
+	imageno: 11323,
+	hp: 3155,
+	atk: 3645,
+	cost: 54,
+	attr: [1,0],
+	species: [8],
+	islegend: true,
+	ape: "ドルキマスⅢ",
+	as1: {
+		desc: "<連撃・複属性攻撃強化>敵単体を3回連続攻撃(250%)、さらに水属性の攻撃力をアップ(10%)、複属性が火属性だとさらにアップ(30%)",
+		proc: [ChainDualAttack(2.5, 0, 3), ChainEnhance_SubAttr(0.10, 0.40, [0,1,0,0,0], [1,0,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<ブースト>5ターンの間、味方のMAXHPを毎ターン20%消費し、味方の攻撃力をアップ(175%)。さらに極稀にクリティカル",
+		turn: 5,
+		proc: [ss_boost_enhance_all(1.75, 5, 0.2, [1,1,1,1,1])],
+	},
+	awakes: [
+		Costdown(20),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Awake_noeffect("ゴールド取得量アップ",5),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,100, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 100,0, [1,0,0,0,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<連撃・複属性攻撃強化>敵単体を3回連続攻撃(350%)、さらに水属性の攻撃力をアップ(10%)、複属性が火属性だとさらにアップ(30%)",
+		proc: [ChainDualAttack(3.5, 0, 3), ChainEnhance_SubAttr(0.10, 0.40, [0,1,0,0,0], [1,0,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間、味方のMAXHPを毎ターン15%消費し、味方の攻撃力をアップ(175%)。さらに極稀にクリティカル",
+		turn: 7,
+		proc: [ss_boost_enhance_all(1.75, 5, 0.15, [1,1,1,1,1])],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_relief([1,1,1,1,1,],10),
+		NEFTJOD(30),
+	],
+}

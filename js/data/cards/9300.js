@@ -1,0 +1,46 @@
+{
+	name: "これぞ魔道成金 インゴットソフィ",
+	cardno: 9300,
+	imageno: 11565,
+	hp: 5321,
+	atk: 2617,
+	cost: 39,
+	attr: [2,-1],
+	species: [6],
+	islegend: true,
+	ape: "UHG",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化・ガード>雷属性の味方の攻撃力をアップ(20%)し、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.2, [0,0,1,0,0], 0), as_guard(0.1, [1,1,1,1,1], 0)],
+	},
+	ss1: {
+		desc: "<鉄壁・極>4ターンの間、攻撃や状態異常攻撃など様々な効果を無効化する(スキル発動中は行動不可)",
+		turn: 7,
+		proc: [ss_impregnable_all(4)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(300,0),
+		Statusup(0,300),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Awake_noeffect("ゴールド取得量アップ",2),
+	],
+	as2: {
+		desc: "<攻撃強化・ガード>雷属性の味方の攻撃力をアップ(40%)し、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.4, [0,0,1,0,0], 0), as_guard(0.1, [1,1,1,1,1], 0)],
+	},
+	ss2: {
+		desc: "<鉄壁・極>4ターンの間、攻撃や状態異常攻撃など様々な効果を無効化する(スキル発動中は行動不可)",
+		turn: 7,
+		proc: [ss_impregnable_all(4)],
+	},
+	Lawake: [
+		Statusup(1000,0),
+	],
+}

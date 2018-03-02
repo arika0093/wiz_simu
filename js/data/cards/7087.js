@@ -1,0 +1,47 @@
+{
+	name: "暗雲を裂く碧光 リクシス・トラオム",
+	cardno: 7087,
+	imageno: 9093,
+	hp: 3474,
+	atk: 2303,
+	cost: 43,
+	attr: [1,2],
+	species: [0],
+	islegend: true,
+	ape: "大魔道杯 in ドルキマス",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ、複属性が雷だとさらにアップ(30%/70%)",
+		proc: [ChainEnhance_SubAttr(0.3, 0.7, [0,1,0,0,0], [0,0,1,0,0], 0)],
+	},
+	ss1: {
+		desc: "<ガード>3ターン全属性のダメージを20%軽減する",
+		turn: 5,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.2, 3)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Fastskill(2),
+		Abstate_invalid("as_sealed"),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ、複属性が雷だとさらにアップ(60%/100%)",
+		proc: [ChainEnhance_SubAttr(0.6, 1.0, [0,1,0,0,0], [0,0,1,0,0], 0)],
+	},
+	ss2: {
+		desc: "<ガード>3ターン全属性のダメージを軽減、平均解答時間が早いほどさらに軽減(基本:20%, 3秒台:30%, 2秒台:40%, 1秒台:50%, 0秒台:60%)",
+		turn: 9,
+		proc: [ss_attr_guard([1,1,1,1,1], ss_answertime(0.2, 0.1), 3)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

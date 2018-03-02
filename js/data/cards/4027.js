@@ -1,0 +1,46 @@
+{
+	name: "インペリアル・ゾディアーク",
+	cardno: 4027,
+	imageno: 5729,
+	hp: 2644,
+	atk: 2902,
+	cost: 44,
+	attr: [1, -1],
+	species: [8],
+	disable: true,
+	awakes: [
+		Fastskill(1),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		NEFTJOD(30),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Fastskill(2),
+		Spec_statusup(200, 0, [8, ]),
+		Spec_statusup(0, 200, [8, ]),
+	],
+	as1: {
+		desc: "<チェイン攻撃>5チェインで火属性の敵単体へダメージ/650％",
+		proc: ChainAttack(6.5, 5),
+	},
+	ss1: {
+		desc: "<起死回生>1ターン、致死ダメージを受けたら一度だけHP25％で起死回生",
+		turn: 7,
+		proc: [ss_revival(0.25, 1)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(500, 0),
+		Statusup(0, 500),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインで火属性の敵単体へダメージ/750％",
+		proc: ChainAttack(7.5, 5),
+	},
+	ss2: {
+		desc: "<起死回生>2ターン、致死ダメージを受けたら一度だけHP25％で起死回生",
+		turn: 9,
+		proc: [ss_revival(0.25, 2)],
+	},
+}

@@ -1,0 +1,45 @@
+{
+	name: "絶焔真帝 フーフェイ・カーム",
+	cardno: 5688,
+	imageno: 7509,
+	hp: 2922,
+	atk: 2041,
+	cost: 41,
+	attr: [0,1],
+	species: [4],
+	islegend: true,
+	as1: {
+		desc: "<回復>火・水属性の味方のHPを回復(11%)",
+		proc: Heal(0.11, [1,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<回復>火・水属性の味方の味方を完全回復する",
+		turn: 6,
+		proc: [ss_heal(1.0)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Statusup(200,0),
+		Statusup(0,200),
+		Costdown(2),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+	],
+	as2: {
+		desc: "<回復>火・水属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [1,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<蘇生>火・水属性の味方の味方を完全回復し、さらに火・水属性の味方を100%で蘇生",
+		turn: 12,
+		proc: [ss_heal(1.0), ss_resurrection([1,1,0,0,0], 1.0)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

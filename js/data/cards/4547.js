@@ -1,0 +1,47 @@
+{
+	name: "大魔道音楽教授 ミュート・クラッセ",
+	cardno: 4547,
+	imageno: 6269,
+	hp: 2415,
+	atk: 2849,
+	cost: 46,
+	attr: [2, -1],
+	species: [9],
+	ape: "大魔道杯 in クロム・マグナ",
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Costdown(2),
+		Fastskill(1),
+		Costdown(2),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Statusup(0, 200),
+		Spec_statusup(0, 200, [9, ]),
+		Spec_statusup(200, 0, [9, ]),
+	],
+	as1: {
+		desc: "<種族数攻撃>術士の仲間の数だけダメージアップ、5チェインでさらにアップ(通常：+30％×種族数 / 5チェイン：+50％×種族数)",
+		proc: [ChainDeckSpecsAttack(0.30, [9], 0), ChainDeckSpecsAttack(0.50, [9], 5)],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインプラス2の効果を付与",
+		turn: 6,
+		proc: [panel_chainplus(2)],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Statusup(0, 500),
+	],
+	as2: {
+		desc: "<種族数攻撃>術士の仲間の数だけダメージアップ、5チェインでさらにアップ(通常：+50％×種族数 / 5チェイン：+70％×種族数)",
+		proc: [ChainDeckSpecsAttack(0.50, [9], 0), ChainDeckSpecsAttack(0.70, [9], 5)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインプラス3の効果を付与",
+		turn: 9,
+		proc: [panel_chainplus(3)],
+	},
+}

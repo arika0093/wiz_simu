@@ -1,0 +1,45 @@
+{
+	name: "死喰の黒滅者 イザヴェリ・ヘイズ",
+	cardno: 3989,
+	imageno: 5670,
+	hp: 2642,
+	atk: 2647,
+	cost: 46,
+	attr: [0, -1],
+	species: [2],
+	awakes: [
+		Costdown(2),
+		Panel_boost([1,0,0,0,0], 1),
+		Fastskill(1),
+		NEFTJOD(30),
+		Costdown(2),
+		Statusup(0, 200),
+		Fastskill(1),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Spec_statusup(200, 0, [2]),
+	],
+	as1: {
+		desc: "<攻撃強化>3チェインで火属性の味方の攻撃力をアップ/+50％",
+		proc: ChainEnhance(0.5, [1,0,0,0,0], 3),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(260％)",
+		turn: 8,
+		proc: [ss_damage_all(2.6, [0]), ss_consume_own(0.5)],
+	},
+	islegend: true,
+	Lawake: [
+		NEFTJOD(30),
+		Statusup(0, 400),
+	],
+	as2: {
+		desc: "<攻撃強化>3チェインで火属性の味方の攻撃力をアップ/+70％",
+		proc: ChainEnhance(0.7, [1,0,0,0,0], 3),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(330％)",
+		turn: 10,
+		proc: [ss_damage_all(3.3, [0]), ss_consume_own(0.5)],
+	},
+}

@@ -1,0 +1,47 @@
+{
+	name: "嬌艶幻夢 イルメイア・サニエ",
+	cardno: 3674,
+	imageno: 5281,
+	hp: 2467,
+	atk: 2541,
+	cost: 45,
+	attr: [2, -1],
+	species: [9],
+	awakes: [
+		Spec_statusup(0, 100, [2, 9, ]),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Spec_statusup(100, 0, [2, 9, ]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Spec_statusup(200, 0, [2, 9, ]),
+		Fastskill(2),
+		Spec_statusup(0, 200, [2, 9, ]),
+	],
+	as1: {
+		desc: "<攻撃強化>雷属性の味方の攻撃力を大幅アップ、HP80％以上でさらにアップ(80%以下:+30%/80%以上:+40%)",
+		proc: [ChainEnhance(0.30, [0,0,1,0,0], 0), add_cond(ChainEnhance(0.40, [0,0,1,0,0], 0), when_hp_more(0.8))],
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ雷属性の究極ダメージ(180%)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [2])],
+	},
+	islegend: true,
+	is_dist: true,
+	disable: true,
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(400, 0),
+	],
+	as2: {
+		desc: "<攻撃強化>雷属性の味方の攻撃力を超極大アップ、HP80％以上でさらにアップ(80%以下:+60%/80%以上:+70%)",
+		proc: [ChainEnhance(0.60, [0,0,1,0,0], 0), add_cond(ChainEnhance(0.70, [0,0,1,0,0], 0), when_hp_more(0.8))],
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ雷属性の超究極ダメージ(260％)",
+		turn: 12,
+		proc: [ss_damage_all(2.6, [2])],
+	},
+}

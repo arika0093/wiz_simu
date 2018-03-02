@@ -1,0 +1,48 @@
+{
+	name: "世界のために闘う漢 GABANARIO",
+	cardno: 4399,
+	imageno: 6072,
+	hp: 2000,
+	atk: 1500,
+	cost: 50,
+	attr: [2, -1],
+	species: [8],
+	ape: "大魔道杯 in お菓子",
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		NEFTJOD(30),
+		Heal_afterbattle(10),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Statusup(0, 200),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Spec_statusup(0, 200, [8, ]),
+		Spec_statusup(200, 0, [8, ]),
+	],
+	as1: {
+		desc: "<連撃>敵単体を3回連続攻撃、5チェインで更にダメージアップ(通常：計250％ / 5チェイン：計350％)",
+		proc: [ChainDualAttack(2.5, 0, 3), ChainDualAttack(3.5, 5, 3),],
+	},
+	ss1: {
+		desc: "<回復>味方全体のHPを回復(50％)",
+		turn: 7,
+		proc: [ss_heal(0.5)],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(0, 6000),
+		Statusup(2000, 0),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<連撃>敵単体を3回連続攻撃、5チェインで更にダメージアップ(通常：計350％ / 5チェイン：計450％)",
+		proc: [ChainDualAttack(3.5, 0, 3), ChainDualAttack(4.5, 5, 3),],
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ雷属性のダメージ、さらに味方全体のHPを完全に回復する(ダメージ：150％)",
+		turn: 15,
+		proc: [ss_heal(1.0), ss_damage_all(1.5, [0,0,1,0,0])],
+	},
+}

@@ -1,0 +1,47 @@
+{
+	name: "剛武人と共に戦う灼竜 レツィーユ",
+	cardno: 7470,
+	imageno: 9523,
+	hp: 3141,
+	atk: 4021,
+	cost: 44,
+	attr: [0,-1],
+	species: [0],
+	islegend: true,
+	ape: "大魔道杯 in 心竜天翔",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>4チェインで雷属性以外の敵単体へ特効ダメージ(900%)",
+		proc: [ChainAttrAttack(9.0, 4, [1,1,0,1,1])],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ火属性のダメージ、さらに火属性の敵には特効ダメージ(400%/1200%)",
+		turn: 6,
+		proc: [ss_damage_s(special_attr([1,0,0,0,0], 12, 4), [0], 1)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],1),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_relief([1,0,0,0,0,],10),
+		Attr_relief([0,1,0,0,0,],10),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Awake_chainguard(),
+	],
+	as2: {
+		desc: "<属性特効>4チェインで雷属性以外の敵単体へ特効ダメージ(1000%)",
+		proc: [ChainAttrAttack(10.0, 4, [1,1,0,1,1])],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ火属性のダメージ、さらに火属性の敵には特効ダメージ(400%/1900%)",
+		turn: 9,
+		proc: [ss_damage_s(special_attr([1,0,0,0,0], 19, 4), [0], 1)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

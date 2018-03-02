@@ -1,0 +1,47 @@
+{
+	name: "愛される戌年天女 イヌミコ・イヌイ",
+	cardno: 9616,
+	imageno: 11886,
+	hp: 3325,
+	atk: 5215,
+	cost: 43,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "酉戌レイド",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(300%)、デッキに単色の精霊が多いほど、さらにダメージアップ(40%)(上限:5段階)",
+		proc: add_cond(ChainAttrAttack(3.0, 0, [0,0,1,0,0]), as_singleattr_num(0, 0.4)),
+	},
+	ss1: {
+		desc: "<ブースト>2ターンの間、味方一人のMAXHPを毎ターン10％消費し、味方一人の攻撃力をアップ(150%)。さらに極稀にクリティカル",
+		turn: 3,
+		proc: [ss_toselect_one(ss_boost_enhance_s(1.5, 2, 0.10))],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
+		Attr_statusup_oattr(300,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([0,0,1,0,0,],10),
+		Fastskill(3),
+		Attr_statusup(0,300, [1,0,0,0,0,]),
+		Attr_statusup(300,0, [1,0,0,0,0,]),
+		Awake_noeffect("経験値取得量アップ",1),
+	],
+	as2: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(400%)、デッキに単色の精霊が多いほど、さらにダメージアップ(40%)(上限:5段階)",
+		proc: add_cond(ChainAttrAttack(4.0, 0, [0,0,1,0,0]), as_singleattr_num(0, 0.4)),
+	},
+	ss2: {
+		desc: "<ブースト>2ターンの間、味方一人のMAXHPを毎ターン10％消費し、味方一人の攻撃力をアップ(150%)。さらに極稀にクリティカル",
+		turn: 3,
+		proc: [ss_toselect_one(ss_boost_enhance_s(1.5, 2, 0.10))],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Statusup(0,500),
+	],
+}

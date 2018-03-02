@@ -1,0 +1,45 @@
+{
+	name: "素直さを伝えられない呪縛 アスカ",
+	cardno: 6684,
+	imageno: 8548,
+	hp: 3556,
+	atk: 3366,
+	cost: 54,
+	attr: [2,0],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(エヴァⅡ)",
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(400%)",
+		proc: ChainAttack(4.0, 4),
+	},
+	ss1: {
+		desc: "<カウンター>4ターンの間、自身のみ多弾式カウンター待機(100%)",
+		turn: 10,
+		proc: [ss_dualcounter_own(4)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup_sattr(0, 200, [0,0,1,0,0], 0, 200, [1,0,0,0,0]),
+		Attr_statusup_sattr(200, 0, [0,0,1,0,0], 200, 0, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(500%)",
+		proc: ChainAttack(5.0, 4),
+	},
+	ss2: {
+		desc: "<カウンター>6ターンの間、自身のみ多弾式カウンター待機(100%)",
+		turn: 13,
+		proc: [ss_dualcounter_own(6)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
+}

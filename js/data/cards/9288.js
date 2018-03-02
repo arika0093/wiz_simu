@@ -1,0 +1,47 @@
+{
+	name: "ふるすろっとりゃー 爆弾レナ人形",
+	cardno: 9288,
+	imageno: 11553,
+	hp: 2356,
+	atk: 5092,
+	cost: 36,
+	attr: [0,-1],
+	species: [6],
+	islegend: true,
+	ape: "UHG",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(200%)、デッキに単色の精霊が多いほど、さらにダメージアップ(50%)(上限:5段階)",
+		proc: add_cond(ChainAttrAttack(2.0, 0, [0,0,1,0,0]), as_singleattr_num(0, 0.5)),
+	},
+	ss1: {
+		desc: "<時限大魔術>スキル反射を無視し、5ターン後に敵単体へ火属性のダメージ(1500%)(上限設置数:5)",
+		turn: 3,
+		proc: [ss_damage_timebomb(15, [0], 1, 5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Fastskill(1),
+		Costdown(10),
+		Panel_boost([1,0,0,0,0,],1),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([0,0,1,0,0,],10),
+		Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
+		Attr_statusup_oattr(300,0, [1,0,0,0,0,]),
+		Abstate_invalid("poison"),
+	],
+	as2: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(300%)、デッキに単色の精霊が多いほど、さらにダメージアップ(50%)(上限:5段階)",
+		proc: add_cond(ChainAttrAttack(3.0, 0, [0,0,1,0,0]), as_singleattr_num(0, 0.5)),
+	},
+	ss2: {
+		desc: "<時限大魔術>スキル反射を無視し、5ターン後に敵単体へ火属性のダメージ(2500%)(上限設置数:5)",
+		turn: 4,
+		proc: [ss_damage_timebomb(25, [0], 1, 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

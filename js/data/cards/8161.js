@@ -1,0 +1,47 @@
+{
+	name: "変異体 ヴェレフキナ・アマン",
+	cardno: 8161,
+	imageno: 10295,
+	hp: 4735,
+	atk: 2575,
+	cost: 54,
+	attr: [0,2],
+	species: [2],
+	islegend: true,
+	ape: "新人王",
+	as1: {
+		desc: "<複属性攻撃強化>味方のMAXHP10%を使い、火属性の攻撃力をアップ 、複属性が雷属性だとさらにアップ(90%/140%)",
+		proc: add_cond(ChainEnhance_SubAttr(0.9, 1.4, [1,0,0,0,0], [0,0,1,0,0], 0), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにスキルチャージプラス1の効果を付与(効果は、SPスキルを使うまで重複しません)",
+		turn: 3,
+		proc: [panel_skillboost(1)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(60),
+		Awake_noeffect("行動見破り",1),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>味方のMAXHP10%を使い、火属性の攻撃力をアップ 、複属性が雷属性だとさらにアップ(120%/170%)",
+		proc: add_cond(ChainEnhance_SubAttr(1.2, 1.7, [1,0,0,0,0], [0,0,1,0,0], 0), as_consume_all(0.1)),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ25%軽減とスキルチャージプラス1の効果を付与(効果は、SPスキルを使うまで重複しません)",
+		turn: 6,
+		proc: [panel_skillboost(1), panel_attr_guard([1,1,1,1,1], 0.25)],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "炯眼冷徹 ルートヴィッヒ・ロメオ",
+	cardno: 9328,
+	imageno: 11472,
+	hp: 2564,
+	atk: 3551,
+	cost: 50,
+	attr: [0,2],
+	species: [8],
+	islegend: true,
+	alias: ["きしだん"],
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(300%)、HP50%以上でさらにダメージアップ(100%)",
+		proc: [ChainAttack(3.0, 3), add_cond(ChainAttack(4.0, 3), when_hp_more(0.5))],
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の5回連続ダメージ(350%)",
+		turn: 6,
+		proc: [ss_damage_s(3.5, [0,2], 5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(10),
+		Fastskill(1),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 200,0, [0,0,1,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Awake_noeffect("境界騎士団の覚悟",1),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(400%)、HP50%以上でさらにダメージアップ(100%)",
+		proc: [ChainAttack(4.0, 3), add_cond(ChainAttack(5.0, 3), when_hp_more(0.5))],
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の5回連続ダメージ(650%)",
+		turn: 9,
+		proc: [ss_damage_s(6.5, [0,2], 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+}

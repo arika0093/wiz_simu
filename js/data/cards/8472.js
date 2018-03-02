@@ -1,0 +1,46 @@
+{
+	name: "平安願う悠久の歌 ミコト・ウタヨミ",
+	cardno: 8472,
+	imageno: 10633,
+	hp: 3105,
+	atk: 4000,
+	cost: 57,
+	attr: [2,1],
+	species: [9],
+	islegend: true,
+	ape: "八百万神秘譚Ⅳ",
+	as1: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(300%),20チェインで更にダメージアップ(1300%)",
+		proc: [ChainDualAttack(3.0, 3, 3), ChainDualAttack(16.0, 20, 3)],
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ雷・水属性の5回連続ダメージ(400%) 。20チェインでさらに5回連続ダメージ(800%)",
+		turn: 7,
+		proc: [ss_damage_s(ss_chain_cond(20, 12, 4), [2,1], ss_chain_cond(20, 10, 5)), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(60),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,1,0,0,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+		Awake_Chainboost(1),
+		Awake_secondfast(5),
+	],
+	as2: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(400%),20チェインで更にダメージアップ(1300%)",
+		proc: [ChainDualAttack(4.0, 3, 3), ChainDualAttack(17.0, 20, 3)],
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ雷・水属性の5回連続ダメージ(400%) 。20チェインでさらに5回連続ダメージ(800%)",
+		turn: 7,
+		proc: [ss_damage_s(ss_chain_cond(20, 12, 4), [2,1], ss_chain_cond(20, 10, 5)), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		Abstate_invalid("discharge"),
+	],
+}

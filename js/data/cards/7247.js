@@ -1,0 +1,47 @@
+{
+	name: "国家転覆を狙う反逆者 ムスティン",
+	cardno: 7247,
+	imageno: 9269,
+	hp: 3554,
+	atk: 3212,
+	cost: 42,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "追憶のレディアント",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化・回復>味方全体のHPを回復(9%)、さらに攻撃力をアップ(20%)",
+		proc: [Heal(0.09, [1,1,1,1,1], 0), ChainEnhance(0.2, [1,1,1,1,1], 0)],
+	},
+	ss1: {
+		desc: "<挑発>3ターン敵の攻撃を自分に集めダメージを50%軽減する",
+		turn: 6,
+		proc: [ss_provocate(0.5, 3)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(200,0),
+		Costdown(10),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_relief([1,1,1,1,1,],10),
+		Fastskill(2),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>味方全体のHPを回復(11%)、さらに攻撃力をアップ(20%)",
+		proc: [Heal(0.11, [1,1,1,1,1], 0), ChainEnhance(0.2, [1,1,1,1,1], 0)],
+	},
+	ss2: {
+		desc: "<挑発>3ターン敵の攻撃を自分に集めダメージを75%軽減する",
+		turn: 9,
+		proc: [ss_provocate(0.75, 3)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

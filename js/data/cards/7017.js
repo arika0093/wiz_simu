@@ -1,0 +1,48 @@
+{
+	name: "暴魔顕現 グランドガーゴイル",
+	cardno: 7017,
+	imageno: 8953,
+	hp: 4215,
+	atk: 2740,
+	cost: 52,
+	attr: [1,4],
+	species: [6],
+	islegend: true,
+	ape: "クロム・マグナ ゼロ",
+	alias: ["ガーコイル"],
+	is_dist: true,
+	as1: {
+		desc: "<分散攻撃>4チェインで敵全体へ分散攻撃(450%)",
+		proc: ChainVarianceAttack(4.5, 4),
+	},
+	ss1: {
+		desc: "<ダメージブロック>4ターン溜めた後、自分自身のみ20ターン600以下の全属性ダメージを無効化する",
+		turn: 3,
+		charged: 4,
+		proc: [ss_damageblock_own(600, 20)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Abstate_invalid("death_limit"),
+	],
+	as2: {
+		desc: "<分散攻撃>4チェインで敵全体へ分散攻撃(550%)",
+		proc: ChainVarianceAttack(5.5, 4),
+	},
+	ss2: {
+		desc: "<ブースト>味方のMAXHP20%と毎ターン10%を使い、5ターンの間、味方の攻撃力をアップ(150%)。さらに極稀にクリティカル",
+		turn: 7,
+		proc: [ss_boost_enhance_all(1.5, 5, 0.1, [1,1,1,1,1]), ss_consume_all(0.2)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+}

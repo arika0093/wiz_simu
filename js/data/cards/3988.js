@@ -1,0 +1,45 @@
+{
+	name: "其は新しき光 シャロン・イェルグ",
+	cardno: 3988,
+	imageno: 5669,
+	hp: 2878,
+	atk: 2334,
+	cost: 46,
+	attr: [1, -1],
+	species: [3],
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Costdown(2),
+		Fastskill(1),
+		Statusup(200, 0),
+		Attr_statusup(100, 0, [1, 1, 1, 1, 1, ]),
+		Attr_statusup(0, 100, [1, 1, 1, 1, 1, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Spec_statusup(0, 200, [3, ]),
+		Spec_statusup(200, 0, [3, ]),
+	],
+	as1: {
+		desc: "<回復>味方全体のHPを回復/13％",
+		proc: Heal(0.13, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<ダメージ強化>2ターン味方全体の攻撃力をアップ(+50％)",
+		turn: 8,
+		proc: [ss_enhance_all(0.5, 2, [1,1,1,1,1])],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1, 1, 1, 1, 1, ]),
+		Statusup(400, 0),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>味方全体のHPを回復、さらに味方全体の攻撃力をアップ(回復：13％ / 攻撃力アップ：+30％)",
+		proc: [Heal(0.13, [1,1,1,1,1], 0), ChainEnhance(0.3, [1,1,1,1,1], 0)],
+	},
+	ss2: {
+		desc: "<ダメージ強化>2ターン味方全体の攻撃力をアップ(+100％)",
+		turn: 10,
+		proc: [ss_enhance_all(1.0, 2, [1,1,1,1,1])],
+	},
+}

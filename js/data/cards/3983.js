@@ -1,0 +1,46 @@
+{
+	name: "凱旋の聖唱 リース・ヴァレリア",
+	cardno: 3983,
+	imageno: 5679,
+	hp: 2842,
+	atk: 2657,
+	cost: 44,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<回復>火属性の味方のHPを回復(13%)",
+		proc: Heal(0.13, [1,0,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火属性化",
+		turn: 5,
+		proc: [ss_panel_change([1,0,0,0,0])],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(200,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Fastskill(2),
+		Heal_afterbattle(10),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Spec_statusup(200,0, [8,]),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>火属性の味方のHPを回復、さらに火属性の味方の攻撃力をアップ(16%/30%)",
+		proc: [Heal(0.16, [1,0,0,0,0], 0), ChainEnhance(0.30, [1,0,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火属性化し、ダメージ25%軽減の効果を付与",
+		turn: 7,
+		proc: [ss_panel_change([1,0,0,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

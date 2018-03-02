@@ -1,0 +1,47 @@
+{
+	name: "POPO☆RA 日比谷まいみ",
+	cardno: 8949,
+	imageno: 8714,
+	hp: 4897,
+	atk: 3533,
+	cost: 64,
+	attr: [1,3],
+	species: [8],
+	islegend: true,
+	ape: "真夏のグレート・クイズ・ウォー",
+	alias: ["ひびやまいみ"],
+	as1: {
+		desc: "<攻撃強化・ガード>6チェインで水属性の味方の攻撃力をアップ(70%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.70, [0,1,0,0,0], 6), as_guard(0.10, [1,1,1,1,1], 6)],
+	},
+	ss1: {
+		desc: "<効果解除>敵全体の属性吸収を解除する",
+		turn: 4,
+		proc: [ss_break_absorb("all")],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ",1),
+		Heal_afterbattle(10),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Fastskill(3),
+		Panel_boost([0,1,0,0,0,],3),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,0,1,0,]),
+		Attr_relief([1,1,1,1,1,],10),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<攻撃強化・ガード>6チェインで水属性の味方の攻撃力をアップ(100%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(1.0, [0,1,0,0,0], 6), as_guard(0.10, [1,1,1,1,1], 6)],
+	},
+	ss2: {
+		desc: "<効果解除大魔術>スキル反射を無視し、敵全体の属性吸収を解除し、水属性のダメージ(300%)",
+		turn: 7,
+		proc: [ss_break_absorb("all"), ss_damage_all(3.0, [1]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Statusup(1000,0),
+	],
+}

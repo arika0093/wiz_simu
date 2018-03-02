@@ -1,0 +1,47 @@
+{
+	name: "クイズ神 ？？？？？",
+	cardno: 6788,
+	imageno: 8742,
+	hp: 2971,
+	atk: 2801,
+	cost: 45,
+	attr: [2,3],
+	species: [1],
+	islegend: true,
+	ape: "真夏のグレート・クイズ・ウォー",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効連撃>水・闇属性の敵単体へ特効3連撃(300%)、解答が早いほどさらにアップ(効果値:50)",
+		proc: add_cond(ChainDualAttrAttack(3.0, 0, 3, [0,1,0,0,1]), as_timedep(0.5)),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ(300%)、平均解答時間が早いほどさらに水属性の敵には特効ダメージ(効果値:50)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([0,1,0,0,0], ss_answertime(3,0.5), 3), [2])],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<属性特効連撃>水・闇属性の敵単体へ特効3連撃(400%)、解答が早いほどさらにアップ(効果値:50)",
+		proc: add_cond(ChainDualAttrAttack(4.0, 0, 3, [0,1,0,0,1]), as_timedep(0.5)),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ(500%)、平均解答時間が早いほどさらに水属性の敵には特効ダメージ(効果値:100)",
+		turn: 9,
+		proc: [ss_damage_all(special_attr([0,1,0,0,0], ss_answertime(5,1), 5), [2])],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

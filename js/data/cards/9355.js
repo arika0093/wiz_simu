@@ -1,0 +1,47 @@
+{
+	name: "大魔道士の夏色 レナ・イラプション",
+	cardno: 9355,
+	imageno: 8444,
+	hp: 3026,
+	atk: 6702,
+	cost: 50,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "USG",
+	as1: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(350%)、解答が早いほどさらにアップ(70%)(上限:4段階)",
+		proc: [add_cond(ChainAttrAttack(3.5, 0, [0,0,1,0,0]), as_timedep(0.7))],
+	},
+	ss1: {
+		desc: "<ブースト>味方のMAXHP70%と毎ターン10%を使い、5ターンの間、味方の攻撃力をアップ(250%)。さらに極稀にクリティカル",
+		turn: 7,
+		proc: [ss_boost_enhance_all(2.5, 5, 0.10, [1,1,1,1,1]), ss_consume_all(0.7)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_oattr(0,400, [1,0,0,0,0,]),
+		Attr_statusup_oattr(400,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(3),
+		Abstate_invalid("ss_sealed"),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Awake_noeffect("行動見破り",1),
+	],
+	as2: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(450%)、解答が早いほどさらにアップ(70%)(上限:4段階)",
+		proc: [add_cond(ChainAttrAttack(4.5, 0, [0,0,1,0,0]), as_timedep(0.7))],
+	},
+	ss2: {
+		desc: "<ブースト>味方のMAXHP70%と毎ターン10%を使い、6ターンの間、味方の攻撃力をアップ(300%)。さらに極稀にクリティカル",
+		turn: 10,
+		proc: [ss_boost_enhance_all(3.0, 6, 0.10, [1,1,1,1,1]), ss_consume_all(0.7)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "<ミスティックメア>魔道再興の夢",
+	cardno: 5858,
+	imageno: 7664,
+	hp: 2547,
+	atk: 2597,
+	cost: 43,
+	attr: [1,4],
+	species: [2],
+	islegend: true,
+	ape: "黄昏メアレスⅠ",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(300%)",
+		proc: ChainAttack(3.0, 4),
+	},
+	ss1: {
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(100%)、さらに3ターンの間、水属性のダメージ(100%)",
+		turn: 6,
+		proc: [ss_continue_damage(1.0, 1.0, [1], 3)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		NEFTJOD(30),
+		Fastskill(1),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(400%)",
+		proc: ChainAttack(4.0, 4),
+	},
+	ss2: {
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(200%)、さらに3ターンの間、水属性のダメージ(200%)",
+		turn: 8,
+		proc: [ss_continue_damage(2.0, 2.0, [1], 3)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(400,0),
+	],
+}

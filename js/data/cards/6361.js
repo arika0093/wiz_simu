@@ -1,0 +1,47 @@
+{
+	name: "外敵殲滅戦術統御機 ケントゥリオ",
+	cardno: 6361,
+	imageno: 8187,
+	hp: 2650,
+	atk: 3125,
+	cost: 32,
+	attr: [0,-1],
+	species: [6],
+	islegend: true,
+	is_dist: true,
+	ape: "幻魔特区スザクⅢ",
+	as1: {
+		desc: "<連撃>3チェインで敵単体を5回連続攻撃(300%)",
+		proc: ChainDualAttack(3.0, 3, 5),
+	},
+	ss1: {
+		desc: "<回復>味方全体のHPを回復する(50%)",
+		turn: 7,
+		proc: [ss_heal(0.5)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(0,100),
+		Fastskill(1),
+		Statusup(200,0),
+		Statusup(0,200),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(0,300, [6,]),
+		Spec_statusup(300,0, [6,]),
+	],
+	as2: {
+		desc: "<連撃>3チェインで敵単体を5回連続攻撃(400%)",
+		proc: ChainDualAttack(4.0, 3, 5),
+	},
+	ss2: {
+		desc: "<回復>味方全体のHPを完全回復",
+		turn: 9,
+		proc: [ss_heal(1)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(0,300),
+	],
+}

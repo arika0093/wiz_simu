@@ -1,0 +1,46 @@
+{
+	name: "狂い咲く少女の心 ヴィタ・バビーナ",
+	cardno: 9643,
+	imageno: 11926,
+	hp: 4185,
+	atk: 3312,
+	cost: 58,
+	attr: [2,0],
+	species: [8],
+	islegend: true,
+	ape: "シュガーレスバンビーナ",
+	as1: {
+		desc: "<攻撃強化>雷属性の味方の攻撃力をアップ(60%)、解答が早いほどさらにアップ(20%)(上限:4段階)",
+		proc: add_cond(ChainEnhance(0.6, [0,0,1,0,0], 0), as_timedep(0.2)),
+	},
+	ss1: {
+		desc: "<融合強化>デッキ内の精霊が持つ属性数が多いほど、雷属性の味方の攻撃力、HPのステータスをアップ(上限値:2000,2500)",
+		turn: 4,
+		proc: [ss_statusup_all([ss_multiattr_cond(2500), ss_multiattr_cond(2000)], [2500,2500], -1, [0,0,1,0,0])],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(4),
+		Attr_statusup(0,300, [1,1,1,1,1,]),
+		Attr_statusup(300,0, [1,1,1,1,1,]),
+		Abstate_invalid("ss_sealed"),
+		Awake_noeffect("心眼",1),
+	],
+	as2: {
+		desc: "<攻撃強化>雷属性の味方の攻撃力をアップ(90%)、解答が早いほどさらにアップ(20%)(上限:4段階)",
+		proc: add_cond(ChainEnhance(0.9, [0,0,1,0,0], 0), as_timedep(0.2)),
+	},
+	ss2: {
+		desc: "<融合強化>デッキ内の精霊が持つ属性数が多いほど、雷属性の味方の攻撃力、HPのステータスをアップ(上限値:3000,3500)",
+		turn: 8,
+		proc: [ss_statusup_all([ss_multiattr_cond(3500), ss_multiattr_cond(3000)], [3500,3500], -1, [0,0,1,0,0])],
+	},
+	Lawake: [
+		Attr_statusup(0,300, [1,1,1,1,1,]),
+		Statusup(500,0),
+	],
+}

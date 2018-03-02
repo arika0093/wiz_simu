@@ -1,0 +1,46 @@
+{
+	name: "聖光覇王 アーサー・キャメロット",
+	cardno: 3979,
+	imageno: 5676,
+	hp: 2556,
+	atk: 2054,
+	cost: 45,
+	attr: [2,1],
+	species: [8],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)",
+		proc: ChainAttack(4.5, 5),
+	},
+	ss1: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(15%)",
+		turn: 5,
+		proc: [ss_regenerate(0.15, 5)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Attr_relief([1,0,0,0,0,],20),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(2),
+		Spec_statusup(200,0, [8,]),
+		Spec_statusup(0,200, [8,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(550%)",
+		proc: ChainAttack(5.5, 5),
+	},
+	ss2: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20%)",
+		turn: 8,
+		proc: [ss_regenerate(0.20, 5)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+	],
+}

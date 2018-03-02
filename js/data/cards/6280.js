@@ -1,0 +1,46 @@
+{
+	name: "気高き不可侵の光貌 シエオラ",
+	cardno: 6280,
+	imageno: 8127,
+	hp: 2667,
+	atk: 3758,
+	cost: 49,
+	attr: [1,3],
+	species: [9],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、8チェインで更にダメージアップ(350%/500%)",
+		proc: [ChainAttack(3.5, 4), ChainAttack(5.0, 8)],
+	},
+	ss1: {
+		desc: "<ブースト>4ターンの間、味方のMAXHPを毎ターン15%消費し、味方の攻撃力をアップ(100%)。さらに極稀にクリティカル",
+		turn: 5,
+		proc: [ss_boost_enhance_all(1.0, 4, 0.15)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_relief([1,0,0,0,0,],10),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup_sattr(200, 0, [0,1,0,0,0], 200, 0, [0,0,0,1,0]),
+		Attr_statusup_sattr(0, 200, [0,1,0,0,0], 0, 200, [0,0,0,1,0]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、8チェインで更にダメージアップ(450%/600%)",
+		proc: [ChainAttack(4.5, 4), ChainAttack(6.0, 8)],
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間、味方のMAXHPを毎ターン15%消費し、味方の攻撃力をアップ(150%)。さらに極稀にクリティカル",
+		turn: 7,
+		proc: [ss_boost_enhance_all(1.5, 5, 0.15)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(0,500),
+	],
+}

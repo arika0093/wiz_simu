@@ -1,0 +1,46 @@
+{
+	name: "終末の白き音色 ウリシラ・ファーレ",
+	cardno: 8891,
+	imageno: 8017,
+	hp: 5896,
+	atk: 2967,
+	cost: 56,
+	attr: [1,0],
+	species: [3],
+	islegend: true,
+	ape: "聖サタニック女学院",
+	as1: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ(30%)、複属性が火属性だとさらにアップ(50%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,1,0,0,0], [1,0,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復しダメージを軽減(25%,25%)(発動中行動不可)",
+		turn: 4,
+		proc: [ss_reinforcement_all(4, [ss_regenerate(0.25, 1, "RF"), ss_attr_guard([1, 1, 1, 1, 1], 0.25, 1, "RF")])],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],4),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		NEFTJOD(30),
+		Fastskill(3),
+		Attr_relief([1,1,1,1,1,],10),
+		Heal_afterbattle(10),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [1,0,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ(60%)、複属性が火属性だとさらにアップ(50%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,1,0,0,0], [1,0,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復しダメージを軽減、さらに攻撃力をアップ(40%,25%,100%)(発動中行動不可)",
+		turn: 8,
+		proc: [ss_reinforcement_all(4, [ss_regenerate(0.40, 1, "RF"), ss_attr_guard([1, 1, 1, 1, 1], 0.25, 1, "RF"), ss_enhance_all(1.0, 1, [1, 1, 1, 1, 1], "RF")])],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+	],
+}

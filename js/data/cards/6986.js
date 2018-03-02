@@ -1,0 +1,46 @@
+{
+	name: "学園アイドル伝説 MIU☆MIU",
+	cardno: 6986,
+	imageno: 6144,
+	hp: 3245,
+	atk: 5053,
+	cost: 51,
+	attr: [2, -1],
+	species: [9],
+	islegend: true,
+	ape: "クロム・マグナⅡ",
+	as1: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(400%)",
+		proc: ChainAttrAttack(4.0, 0, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<回復>チェインプラス1の効果、さらに味方全体のHPを回復する(50%)",
+		turn: 4,
+		proc: [ss_addchain(1), ss_heal(0.5)],
+	},
+	awakes: [
+		Statusup(0, 600),
+		Fastskill(1),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
+		NEFTJOD(30),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(2),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+		Spec_statusup(200, 0, [9, ]),
+		Spec_statusup(0, 200, [9, ]),
+	],
+	as2: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(500%)",
+		proc: ChainAttrAttack(5.0, 0, [0,1,0,0,0]),
+	},
+	ss2: {
+		desc: "<ブースト>味方全体のHPを完全に回復し、さらに5ターンの間、味方のMAXHPを毎ターン15%消費し、味方の攻撃力をアップ(150%)。さらに極稀にクリティカル",
+		turn: 9,
+		proc: [ss_heal(1.0),ss_boost_enhance_all(1.5, 5, 0.15)],
+	},
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+}

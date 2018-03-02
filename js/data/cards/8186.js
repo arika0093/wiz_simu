@@ -1,0 +1,47 @@
+{
+	name: "天命穿つ覇吼剣 マイア・スティルマ",
+	cardno: 8186,
+	imageno: 10324,
+	hp: 7235,
+	atk: 1535,
+	cost: 54,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "覇眼戦線Ⅲ",
+	as1: {
+		desc: "<攻撃強化・ガード>10チェインで火属性の味方の攻撃力をアップ(110%)、さらに全属性のダメージを15％軽減",
+		proc: [ChainEnhance(1.1, [1,0,0,0,0], 10), as_guard(0.15, [1,1,1,1,1], 10)],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、ダメージ25%軽減と回復の効果を付与(40%)",
+		turn: 10,
+		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25), panel_healally(0.4)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],4),
+		NEFTJOD(30),
+		Abstate_invalid("discharge"),
+		Awake_secondfast(4),
+		Awake_Chainboost(1),
+		Heal_afterbattle(10),
+		Abstate_invalid("heal_reverse"),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Awake_secondfast(4),
+	],
+	as2: {
+		desc: "<攻撃強化・ガード>10チェインで火属性の味方の攻撃力をアップ(140%)、さらに全属性のダメージを15％軽減",
+		proc: [ChainEnhance(1.4, [1,0,0,0,0], 10), as_guard(0.15, [1,1,1,1,1], 10)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、ダメージ25%軽減と回復の効果を付与(40%)",
+		turn: 10,
+		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25), panel_healally(0.4)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		NEFTJOD(30),
+	],
+}

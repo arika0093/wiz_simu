@@ -1,0 +1,46 @@
+{
+	name: "勝ち取った自由 モミジ・カキツバタ",
+	cardno: 5077,
+	imageno: 6817,
+	hp: 2745,
+	atk: 1975,
+	cost: 30,
+	attr: [2, 3],
+	species: [1],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<回復>雷属性の味方を回復(12%)",
+		proc: Heal(0.12, [0, 0, 1, 0, 0], 0),
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早める",
+		turn: 7,
+		proc: [ss_skillboost(1)],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ", 1),
+		Awake_noeffect("ゴールド取得量アップ", 1),
+ 		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Statusup(200, 0),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Fastskill(1),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<回復>雷属性の味方を回復(15%)",
+		proc: Heal(0.15, [0, 0, 1, 0, 0], 0),
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
+		turn: 9,
+		proc: [ss_skillboost(2)],
+	},
+	Lawake: [
+		Statusup(0, 400),
+		Statusup(500, 0),
+	],
+}

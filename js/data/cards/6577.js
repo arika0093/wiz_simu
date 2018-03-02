@@ -1,0 +1,47 @@
+{
+	name: "破滅の魔動王ブブル・アルガムナド",
+	cardno: 6577,
+	imageno: 8473,
+	hp: 2881,
+	atk: 2812,
+	cost: 45,
+	attr: [0,4],
+	species: [2],
+	islegend: true,
+	ape: "USG",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効連撃>雷・光属性の敵単体へ特効3連撃(400%)",
+		proc: ChainDualAttrAttack(4.0, 0, 3, [0,0,1,1,0]),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・闇属性化",
+		turn: 4,
+		proc: [ss_panel_change(1,0,0,0,1)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Spec_statusup(0,200, [2,]),
+	],
+	as2: {
+		desc: "<属性特効連撃>雷・光属性の敵単体へ特効3連撃(500%)",
+		proc: ChainDualAttrAttack(5.0, 0, 3, [0,0,1,1,0]),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・闇属性化し、攻撃力アップの効果を付与(50%)",
+		turn: 7,
+		proc: [ss_panel_change(1,0,0,0,1), panel_attackup(0.5)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

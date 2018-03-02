@@ -1,0 +1,47 @@
+{
+	name: "純真なる甘愛 エトワール・ブリュネ",
+	cardno: 8139,
+	imageno: 10273,
+	hp: 4749,
+	atk: 2575,
+	cost: 54,
+	attr: [2,0],
+	species: [9],
+	islegend: true,
+	ape: "バレンタイン2014",
+	as1: {
+		desc: "<攻撃強化>火・雷属性の味方の攻撃力をアップ、パネルの色が増す度さらにアップ(30%/80%/120%)",
+		proc: ChainPanelsEnhance(0.3, 0.8, 1.2, [1,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<ガード>3ターン全属性のダメージを50%軽減する",
+		turn: 8,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)],
+	},
+	as2: {
+		desc: "<攻撃強化>火・雷属性の味方の攻撃力をアップ、パネルの色が増す度さらにアップ(60%/110%/150%)",
+		proc: ChainPanelsEnhance(0.6, 1.1, 1.5, [1,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<ガード>3ターン全属性のダメージを50%軽減する、5チェインを消費しさらに2ターン軽減",
+		turn: 11,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, ss_chain_cost(5, 5, 3))],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200,[1,0,1,0,0,]),
+		Attr_statusup(200,0,[1,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([1,0,0,0,0,],20),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [1,0,0,0,0,]),
+		Fastskill(3),
+		Abstate_invalid("ss_sealed"),
+	],
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,200,[0,0,1,0,0,]),
+		Attr_relief([1,1,1,1,1,],10),
+	],
+}

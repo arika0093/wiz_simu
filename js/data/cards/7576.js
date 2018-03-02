@@ -1,0 +1,47 @@
+{
+	name: "深闇に届く雷斧 チェルシー・ネリム",
+	cardno: 7576,
+	imageno: 7113,
+	hp: 3091,
+	atk: 3120,
+	cost: 49,
+	attr: [2,4],
+	species: [9],
+	islegend: true,
+	ape: "チェルシー 舞い降りた異界の姫君",
+	is_dist: true,
+	as1: {
+		desc: "<属性の加護>デッキの属性の数だけ攻撃力アップ(320%/540%/760%)",
+		proc: ChainDeckAttrsAttack(3.2, 5.4, 7.6, 0),
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ雷・闇属性の5回連続ダメージ(250%)",
+		turn: 5,
+		proc: [ss_damage_s(2.5, [2,4], 5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Fastskill(2),
+		Costdown(2),
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(0,200),
+		Awake_noeffect("経験値取得量アップ",1),
+		Fastskill(2),
+		Spec_statusup(0,200, [9,]),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(200,0, [9,]),
+	],
+	as2: {
+		desc: "<属性の加護>デッキの属性の数だけ攻撃力アップ(370%/640%/910%)",
+		proc: ChainDeckAttrsAttack(3.7, 6.4, 9.1, 0),
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ雷・闇属性の5回連続ダメージ(450%)",
+		turn: 7,
+		proc: [ss_damage_s(4.5, [2,4], 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(500,0),
+	],
+}

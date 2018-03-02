@@ -1,0 +1,33 @@
+{
+	name: "勝利を告げる凱歌 ミク&メイコ",
+	cardno: 4942,
+	imageno: 6661,
+	hp: 2212,
+	atk: 1998,
+	cost: 35,
+	attr: [1,0],
+	species: [8],
+	islegend: false,
+	ape: "コラボ(ミク)",
+	as1: {
+		desc: "<連撃>3チェインで敵単体を2回連続攻撃(300%)",
+		proc: ChainDualAttack(3.0, 3, 2),
+	},
+	ss1: {
+		desc: "<多弾魔術>敵単体へ火・水属性の5回連続ダメージ(300%)",
+		turn: 9,
+		proc: [ss_damage_s(3.0, [1,0], 5)],
+	},
+	awakes: [
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Attr_relief([1,0,0,0,0,],20),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(2),
+		NEFTJOD(30),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],1),
+	],
+}

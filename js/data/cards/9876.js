@@ -1,0 +1,46 @@
+{
+	name: "暴走悪神 トシュカトル",
+	cardno: 9876,
+	imageno: 12237,
+	hp: 3255,
+	atk: 2897,
+	cost: 48,
+	attr: [2,1],
+	species: [1],
+	islegend: true,
+	ape: "眠れる遺跡のアウトランダー",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>4チェインで雷属性の攻撃力をアップ(10%)、複属性が水属性だとさらにアップ(90%)",
+		proc: ChainEnhance_SubAttr(0.1, 1.0, [0,0,1,0,0], [0,1,0,0,0], 4),
+	},
+	ss1: {
+		desc: "<複属性ダメージ強化>2ターンの間、雷属性の攻撃力をアップ(5%)、複属性が水属性だとさらにアップ(65%)",
+		turn: 8,
+		proc: [ss_enhance_all_subattr(0.05, 0.7, 2, [0,0,1,0,0], [0,1,0,0,0])],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Fastskill(4),
+		Abstate_invalid("ss_sealed"),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,200, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 200,0, [0,1,0,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(4),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>4チェインで雷属性の攻撃力をアップ(40%)、複属性が水属性だとさらにアップ(90%)",
+		proc: ChainEnhance_SubAttr(0.4, 1.3, [0,0,1,0,0], [0,1,0,0,0], 4),
+	},
+	ss2: {
+		desc: "<複属性ダメージ強化>2ターンの間、雷属性の攻撃力をアップ(5%)、複属性が水属性だとさらにアップ(65%)",
+		turn: 8,
+		proc: [ss_enhance_all_subattr(0.05, 0.7, 2, [0,0,1,0,0], [0,1,0,0,0])],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,200, [0,1,0,0,0,]),
+	],
+}

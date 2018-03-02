@@ -1,0 +1,46 @@
+{
+	name: "全力成就ANGEL マーガレット・リル",
+	cardno: 5675,
+	imageno: 7480,
+	hp: 2410,
+	atk: 3533,
+	cost: 45,
+	attr: [0,3],
+	species: [3],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<連撃>HP80%以上で敵単体を3回連続攻撃(350%)",
+		proc: add_cond(ChainDualAttack(3.5, 0, 3), when_hp_more(0.80)),
+	},
+	ss1: {
+		desc: "<割合削り>敵単体のHPを20%減少させる、5チェインを消費しさらに10%減少させる",
+		turn: 7,
+		proc: [ss_chain_cost_skill(5, ss_ratiodamage_s(0.30), ss_ratiodamage_s(0.20))],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Fastskill(2),
+		Abstate_invalid("poison"),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<連撃>HP80%以上で敵単体を3回連続攻撃(450%)",
+		proc: add_cond(ChainDualAttack(4.5, 0, 3), when_hp_more(0.80)),
+	},
+	ss2: {
+		desc: "<割合削り>敵単体のHPを20%減少させる、5チェインを消費しさらに15%減少させる",
+		turn: 9,
+		proc: [ss_chain_cost_skill(5, ss_ratiodamage_s(0.35), ss_ratiodamage_s(0.20))],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(0,500),
+	],
+}

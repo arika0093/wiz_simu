@@ -1,0 +1,47 @@
+{
+	name: "握弾 ライスボーラー＝テオラ",
+	cardno: 7867,
+	imageno: 9926,
+	hp: 2819,
+	atk: 3431,
+	cost: 39,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	is_dist: true,
+	ape: "新説桃娘伝",
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(250%)",
+		proc: [ChainAttack(2.5, 3)],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火属性のダメージ(120%)",
+		turn: 5,
+		proc: [ss_damage_all(1.2, [0]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Fastskill(2),
+		Statusup(0,100),
+		Statusup(100,0),
+		Spec_statusup(0,200,[9,]),
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Statusup(0,200),
+		Spec_statusup(200,0,[9,]),
+		Attr_statusup(0,200,[1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(350%)",
+		proc: [ChainAttack(3.5, 3)],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火属性のダメージ(120%)",
+		turn: 5,
+		proc: [ss_damage_all(1.2, [0]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,100,[1,0,0,0,0,]),
+		Statusup(0,400),
+	],
+}

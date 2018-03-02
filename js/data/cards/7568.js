@@ -1,0 +1,47 @@
+{
+	name: "静心の弓弦 イングリット・レイ",
+	cardno: 7568,
+	imageno: 9631,
+	hp: 2314,
+	atk: 3035,
+	cost: 43,
+	attr: [1,2],
+	species: [1],
+	islegend: true,
+	ape: "イタズラ女神とうさぎのおはなし",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>敵単体を3回連続攻撃、パネルの色が増す度にダメージアップ(300%/400%/450%)",
+		proc: [ChainPanelsDualAttack(3.0, 4.0, 4.5, 3, 0)],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水属性化",
+		turn: 2,
+		proc: [ss_panel_change([0,1,0,0,0])],
+	},
+	awakes: [
+		Statusup(0,100),
+		Fastskill(2),
+		Costdown(2),
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Attr_relief([0,1,1,0,0,],10),
+		Abstate_invalid("ss_sealed"),
+		Spec_statusup(0,300, [1,]),
+	],
+	as2: {
+		desc: "<連撃>敵単体を3回連続攻撃、パネルの色が増す度にダメージアップ(400%/500%/550%)",
+		proc: [ChainPanelsDualAttack(4.0, 5.0, 5.5, 3, 0)],
+	},
+	ss2: {
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
+		turn: 4,
+		proc: [ss_panel_change([0,1,1,0,0])],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(0,400),
+	],
+}

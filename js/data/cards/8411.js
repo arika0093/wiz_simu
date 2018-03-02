@@ -1,0 +1,46 @@
+{
+	name: "超アイドル魔道少女リルム・ロロット",
+	cardno: 8411,
+	imageno: 10561,
+	hp: 3545,
+	atk: 6535,
+	cost: 53,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "アイドルキャッツ！",
+	as1: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(300%)、デッキに単色の精霊が多いほど、さらにダメージアップ(60%)（上限:5段階)",
+		proc: add_cond(ChainAttrAttack(3.0, 0, [0,0,1,0,0]), as_singleattr_num(0, 0.6)),
+	},
+	ss1: {
+		desc: "<純属性大魔術>スキル反射を無視し、敵全体へ火属性のダメージ、火単色の精霊が多いほどダメージアップ(上限値:1500%)",
+		turn: 7,
+		proc: [ss_damage_all(ss_pureattr_cond(15), [0]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_oattr(0, 400, [1,0,0,0,0]),
+		Attr_statusup_oattr(400, 0, [1,0,0,0,0]),
+		Panel_boost([1,0,0,0,0,],2),
+		Abstate_invalid("heal_reverse"),
+		Abstate_invalid("ss_sealed"),
+		Fastskill(3),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(400%)、デッキに単色の精霊が多いほど、さらにダメージアップ(60%)（上限:5段階)",
+		proc: add_cond(ChainAttrAttack(4.0, 0, [0,0,1,0,0]), as_singleattr_num(0, 0.6)),
+	},
+	ss2: {
+		desc: "<純属性大魔術>スキル反射を無視し、敵全体へ火属性のダメージ、火単色の精霊が多いほどダメージアップ(上限値:1800%)",
+		turn: 10,
+		proc: [ss_damage_all(ss_pureattr_cond(18), [0]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		NEFTJOD(60),
+	],
+}

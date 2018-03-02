@@ -1,0 +1,48 @@
+{
+	name: "やわらかさの極致 ラパパヘヴン",
+	cardno: 6433,
+	imageno: 8372,
+	hp: 5505,
+	atk: 2342,
+	cost: 53,
+	attr: [2,3],
+	species: [4],
+	disable: true,
+	islegend: true,
+	ape: "GW2015",
+	as1: {
+		desc: "<種族攻撃強化>3チェインで雷属性の味方の攻撃力をアップ、神族・妖精はさらにアップ(40%/130%)",
+		proc: [ChainEnhance(0.4, [0,0,1,0,0], 3), ChainSpecEnhance(1.3, [0,0,1,0,0], [1,4], 3)],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを雷・光属性化",
+		turn: 3,
+		proc: [ss_panel_change([2,3])],
+	},
+	awakes: [
+		Statusup(0,100),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Fastskill(2),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(400,0, [4,]),
+		Spec_statusup(0,400, [4,]),
+	],
+	as2: {
+		desc: "<種族攻撃強化>3チェインで雷属性の味方の攻撃力をアップ、神族・妖精はさらにアップ(70%/160%)",
+		proc: [ChainEnhance(0.7, [0,0,1,0,0], 3), ChainSpecEnhance(1.6, [0,0,1,0,0], [1,4], 3)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを雷・光属性化し、ダメージ軽減(10%~50%)・SPチャージ(1~2)・チェイン(1~3)・攻撃力アップ(10%~150%)をランダムで付与",
+		turn: 8,
+		proc: [ss_panel_change([2,3]), panel_skillboost(1), panel_skillboost(2), panel_chainplus(1), panel_chainplus(2), panel_chainplus(3), panel_attackup(0.1), panel_attackup(0.4), panel_attackup(0.7), panel_attackup(1.0), panel_attackup(1.3), panel_attackup(1.5), panel_attr_guard([1,1,1,1,1], 0.5)],
+	},
+	Lawake: [
+		Statusup(300,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+	],
+}

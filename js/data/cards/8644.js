@@ -1,0 +1,47 @@
+{
+	name: "遠き夢の幻 エリカ・オイリン",
+	cardno: 8644,
+	imageno: 10874,
+	hp: 2684,
+	atk: 3242,
+	cost: 47,
+	attr: [1,0],
+	species: [9],
+	islegend: true,
+	ape: "エタクロⅠ",
+	is_dist: true,
+	as1: {
+		desc: "<種族数攻撃>術士の仲間の数だけダメージアップ(180%/260%/340%/420%/500%)",
+		proc: ChainDeckSpecsAttack(0.8, [9], 0),
+	},
+	ss1: {
+		desc: "<割合削り>スキル反射を無視し、敵単体のHPを20%減少させる",
+		turn: 7,
+		proc: [ss_ratiodamage_s(0.20), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Abstate_invalid("ss_sealed"),
+		Awake_noeffect("経験値取得量アップ",2),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 200,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<種族数攻撃>術士の仲間の数だけダメージアップ(200%/300%/400%/500%/600%)",
+		proc: ChainDeckSpecsAttack(1.0, [9], 0),
+	},
+	ss2: {
+		desc: "<割合削り>スキル反射を無視し、敵単体のHPを30%減少させる",
+		turn: 9,
+		proc: [ss_ratiodamage_s(0.30), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Statusup(0,500),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "美味しさのその先へ ミコト&ツキミ",
+	cardno: 8376,
+	imageno: 7457,
+	hp: 2976,
+	atk: 4106,
+	cost: 58,
+	attr: [2,3],
+	species: [1],
+	islegend: true,
+	ape: "グリコⅢ",
+	as1: {
+		desc: "<攻撃強化・連撃>雷属性の味方の攻撃力をアップ(30%)し、4チェインで敵単体を3回連続攻撃(350%)",
+		proc: [ChainEnhance(0.3, [0,0,1,0,0], 0), ChainDualAttack(3.5, 4, 3)],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ(100%)、さらに味方全体のHPを回復する(25%)",
+		turn: 4,
+		proc: [ss_damage_all(1.0, [2,3]), ss_ignore_skillcounter(),ss_heal(0.25)],
+	},
+	as2: {
+		desc: "<攻撃強化・連撃>雷属性の味方の攻撃力をアップ(30%)し、4チェインで敵単体を3回連続攻撃(450%)",
+		proc: [ChainEnhance(0.3, [0,0,1,0,0], 0), ChainDualAttack(4.5, 4, 3)],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ(130%)、さらに味方全体のHPを回復する(25%)",
+		turn: 6,
+		proc: [ss_damage_all(1.3, [2,3]), ss_ignore_skillcounter(),ss_heal(0.25)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],4),
+		Attr_statusup(0,200,[0,0,1,0,0,]),
+		Attr_statusup(200,0,[0,0,1,0,0,]),
+		NEFTJOD(30),
+		Attr_relief([0,1,0,0,0,],20),
+		Spec_statusup(300,0,[1,]),
+		Spec_statusup(0,300,[1,]),
+		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,300,[0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0,[0,0,1,0,0,],300,0,[0,0,0,1,0,]),
+		Fastskill(3),
+	],
+	Lawake: [
+		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,100,[0,0,0,1,0,]),
+		Statusup(0,500),
+		Attr_relief([0,0,0,1,1,],30),
+	],
+}

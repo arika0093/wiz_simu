@@ -1,0 +1,48 @@
+{
+	name: "傲慢な火焔王 アブロガンティ",
+	cardno: 7213,
+	imageno: 9225,
+	hp: 2749,
+	atk: 3453,
+	cost: 50,
+	attr: [0,4],
+	species: [0],
+	disable: true,
+	islegend: true,
+	ape: "レイド Soul of Kings",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>4チェインで雷・光属性の敵単体へ特効ダメージ(550%)",
+		proc: ChainAttrAttack(5.5, 4, [0,0,1,1,0]),
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ火・闇属性の5回連続ダメージ(450%)",
+		turn: 4,
+		proc: [ss_damage_s(4.5, [0,4], 5), ss_ignore_skillcounter(), ss_consume_all(0.6)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_relief([0,0,0,1,0,],10),
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,100, [0,0,0,0,1,]),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<属性特効>4チェインで雷・光属性の敵単体へ特効ダメージ(650%)",
+		proc: ChainAttrAttack(6.5, 4, [0,0,1,1,0]),
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、味方全体のMAXHPの60%を使い敵単体へ火・闇属性の5回連続ダメージ(650%)",
+		turn: 6,
+		proc: [ss_damage_s(6.5, [0,4], 5), ss_ignore_skillcounter(), ss_consume_all(0.6)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

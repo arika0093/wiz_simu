@@ -1,0 +1,47 @@
+{
+	name: "刃翼の魔道竜 フェルム",
+	cardno: 6947,
+	imageno: 8894,
+	hp: 2438,
+	atk: 3641,
+	cost: 37,
+	attr: [1,-1],
+	species: [0],
+	islegend: true,
+	ape: "クロム・マグナ ゼロ",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ(350%)",
+		proc: [ChainAttrAttack(3.5, 0, [1,0,0,0,0])],
+	},
+	ss1: {
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(3000)",
+		turn: 4,
+		proc: [poison(3000, 4)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Statusup(200,0),
+		Statusup(0,200),
+		Fastskill(1),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ(450%)",
+		proc: [ChainAttrAttack(4.5, 0, [1,0,0,0,0])],
+	},
+	ss2: {
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(5000)",
+		turn: 7,
+		proc: [poison(5000, 4)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(300,0),
+	],
+}

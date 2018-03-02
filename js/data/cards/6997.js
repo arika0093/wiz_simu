@@ -1,0 +1,46 @@
+{
+	name: "愛と甘美の砲火 シャーリー・コルト",
+	cardno: 6997,
+	imageno: 6160,
+	hp: 3211,
+	atk: 5002,
+	cost: 51,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "クロム・マグナⅣ",
+	as1: {
+		desc: "<属性特効連撃>水属性の敵単体に特効6連撃、HP80%以上でさらにダメージアップ(300%/500%)",
+		proc: [ChainDualAttrAttack(3.0, 0, 6, [0,1,0,0,0]), add_cond(ChainDualAttrAttack(5.0, 0, 6, [0,1,0,0,0]), when_hp_more(0.8))],
+	},
+	ss1: {
+		desc: "<アンサースキル延長>3ターンの間、アンサースキル発動時間を10秒延長する(上限値:20秒)",
+		turn: 3,
+		proc: [ss_astime_ext(15, 3)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(0,400),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Awake_noeffect("心眼",1),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(0,200, [9,]),
+		Fastskill(1),
+	],
+	as2: {
+		desc: "<属性特効連撃>水属性の敵単体に特効6連撃、HP80%以上でさらにダメージアップ(400%/600%)",
+		proc: [ChainDualAttrAttack(4.0, 0, 6, [0,1,0,0,0]), add_cond(ChainDualAttrAttack(6.0, 0, 6, [0,1,0,0,0]), when_hp_more(0.8))],
+	},
+	ss2: {
+		desc: "<アンサースキル延長>5ターンの間、アンサースキル発動時間を15秒延長する(上限値:20秒)",
+		turn: 6,
+		proc: [ss_astime_ext(20, 5)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

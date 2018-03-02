@@ -1,0 +1,47 @@
+{
+	name: "照れ笑い破顔戦線 アシュタル・ラド",
+	cardno: 8904,
+	imageno: 11115,
+	hp: 6375,
+	atk: 1746,
+	cost: 56,
+	attr: [2,3],
+	species: [8],
+	islegend: true,
+	ape: "ゴールデンアワード2017",
+	as1: {
+		desc: "<回復・複属性攻撃強化>雷属性の味方を回復(10%)し、攻撃力もアップ(30%)。複属性が光属性だとさらに攻撃力アップ(30%)",
+		proc: [Heal(0.1, [0,0,1,0,0], 0), ChainEnhance_SubAttr(0.3, 0.6, [0,0,1,0,0], [0,0,0,1,0], 0)],
+	},
+	as2: {
+		desc: "<回復・複属性攻撃強化>雷属性の味方を回復(13)%し、攻撃力もアップ(30%)。複属性が光属性だとさらに攻撃力アップ(30%)",
+		proc: [Heal(0.13, [0,0,1,0,0], 0), ChainEnhance_SubAttr(0.3, 0.6, [0,0,1,0,0], [0,0,0,1,0], 0)],
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップ(上限値:2000)し、さらに味方全体のHPを回復(25%)",
+		turn: 5,
+		proc: [ss_statusup_all([500, 500], [2000, 2000], -1), ss_heal(0.25)],
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップ(上限値:2000)し、さらに味方全体のHPを回復(25%)、Lモードの精霊の数に応じてさらに攻撃力とHPを250アップ",
+		turn: 8,
+		proc: [ss_statusup_all([ss_legendnum(500, 250), ss_legendnum(500, 250)], [2000, 2000], -1), ss_heal(0.25)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],4),
+		Attr_statusup(0,200,[0,0,1,0,0,]),
+		Attr_statusup(200,0,[0,0,1,0,0,]),
+		NEFTJOD(30),
+		Awake_noeffect("経験値取得量アップ",2),
+		Heal_afterbattle(10),
+		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,300,[0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0,[0,0,1,0,0,],300,0,[0,0,0,1,0,]),
+		Fastskill(3),
+		Awake_noeffect("選ばれし者の証",1),
+	],
+	Lawake: [
+		Attr_statusup(0,200,[0,0,1,0,0,]),
+		Statusup(500,0),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+	],
+}

@@ -1,0 +1,45 @@
+{
+	name: "未知なる恋熱 ユニコ・ランドハイア",
+	cardno: 90039,
+	imageno: 7553,
+	hp: 4221,
+	atk: 2578,
+	cost: 46,
+	attr: [0,1],
+	species: [9],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<回復>火・水属性の味方を回復、HP50%以下でさらに回復(11%/21%)",
+		proc: [Heal(0.11, [1,1,0,0,0], 0), add_cond(Heal(0.21, [1,1,0,0,0], 0), when_hp_less(0.50))],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・水属性化",
+		turn: 3,
+		proc: [ss_panel_change([1,1,0,0,0])],
+	},
+	awakes: [
+		Statusup(200,0),
+		Costdown(2),
+		Attr_relief([1,1,0,0,0,],20),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Attr_statusup(0,300, [1,1,0,0,0,]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(200,0, [9,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>火・水属性の味方を回復、HP50%以下でさらに回復(13%/23%)",
+		proc: [Heal(0.13, [1,1,0,0,0], 0), add_cond(Heal(0.23, [1,1,0,0,0], 0), when_hp_less(0.50))],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・水属性化し、ダメージ25%軽減の効果を付与。HP20%以下でさらにダメージ35%軽減の効果を付与",
+		turn: 6,
+		proc: [ss_panel_change([1,1,0,0,0]), panel_attr_guard([1,1,1,1,1], ss_hp_less(0.20, 0.60, 0.25))],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "凶滅を秘めたる者 トランディア",
+	cardno: 6574,
+	imageno: 8470,
+	hp: 4210,
+	atk: 2032,
+	cost: 39,
+	attr: [0,-1],
+	species: [7],
+	islegend: true,
+	ape: "USG",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化>味方のMAXHP10%を使い、火属性の味方の攻撃力をアップ(50%)",
+		proc: add_cond(ChainEnhance(0.5, [1,0,0,0,0], 0), as_consume_all(0.10)),
+	},
+	ss1: {
+		desc: "<無に還す瞳>4ターン後に敵単体を無に還す(一部敵には無効)",
+		turn: 7,
+		proc: [ss_death_limit(4)],
+	},
+	awakes: [
+		Statusup(200,0),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		NEFTJOD(30),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<攻撃強化>味方のMAXHP10%を使い、火属性の味方の攻撃力をアップ(70%)",
+		proc: add_cond(ChainEnhance(0.7, [1,0,0,0,0], 0), as_consume_all(0.10)),
+	},
+	ss2: {
+		desc: "<無に還す瞳>3ターン後に敵単体を無に還す(一部敵には無効)",
+		turn: 10,
+		proc: [ss_death_limit(3)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(500,0),
+	],
+}

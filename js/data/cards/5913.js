@@ -1,0 +1,47 @@
+{
+	name: "ふたりの絆の恋舞 アルト&シェリル",
+	cardno: 5913,
+	imageno: 7731,
+	hp: 2110,
+	atk: 2505,
+	cost: 33,
+	attr: [0,1],
+	species: [9],
+	islegend: true,
+	ape: "コラボ(マクロス)",
+	is_dist: true,
+	as1: {
+		desc: "<回復>火・水属性の味方を回復、5チェインで更に回復(10%/14%)",
+		proc: [Heal(0.10, [1,1,0,0,0], 0), Heal(0.14, [1,1,0,0,0], 0.14)],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・水属性のダメージ(150%)",
+		turn: 7,
+		proc: [ss_damage_all(1.5, [0, 1]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Statusup(0,200),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Statusup(200,0),
+		Fastskill(1),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],1),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>火・水属性の味方を回復、5チェインで更に回復(13%/17%)",
+		proc: [Heal(0.13, [1,1,0,0,0], 0), Heal(0.17, [1,1,0,0,0], 0.14)],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・水属性のダメージ(220%)",
+		turn: 10,
+		proc: [ss_damage_all(2.2, [0, 1]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+	],
+}

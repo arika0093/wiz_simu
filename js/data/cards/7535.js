@@ -1,0 +1,46 @@
+{
+	name: "神の、なれの果て",
+	cardno: 7535,
+	imageno: 9599,
+	hp: 2339,
+	atk: 3312,
+	cost: 46,
+	attr: [0,3],
+	species: [1],
+	islegend: true,
+	ape: "エステレラⅠ",
+	awakes: [
+		Statusup(0, 200),
+		Attr_relief([0,0,0,0,1,],10),
+		Panel_boost([1, 0, 0, 0, 0, ], 1),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Fastskill(2),
+		Spec_statusup(200, 0, [1, ]),
+		Spec_statusup(0, 200, [1, ]),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,100, [0,0,0,1,0,]),
+	],
+	as1: {
+		desc: "<複属性攻撃強化>3チェインで火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(30%/80%)",
+		proc: [ChainEnhance_SubAttr(0.3, 0.8, [1,0,0,0,0], [0,0,0,1,0], 3)],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ、5チェインを消費しさらに特効ダメージ(300%/800%/1300%)",
+		turn: 6,
+		proc: [ss_chain_cost_skill(5, ss_damage_s(special_attr([0,0,1,0,0], 13.0, 3.0), [2], 1), ss_damage_s(special_attr([0,0,1,0,0], 8.0, 3.0), [2], 1))],
+	},
+	as2: {
+		desc: "<複属性攻撃強化>3チェインで火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(60%/110%)",
+		proc: [ChainEnhance_SubAttr(0.6, 1.1, [1,0,0,0,0], [0,0,0,1,0], 3)],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ、5チェインを消費しさらに特効ダメージ(500%/1000%/2000%)",
+		turn: 9,
+		proc: [ss_chain_cost_skill(5, ss_damage_s(special_attr([0,0,1,0,0], 20.0, 5.0), [2], 1), ss_damage_s(special_attr([0,0,1,0,0], 10.0, 5.0), [2], 1))],
+	},
+	Lawake: [
+		Attr_statusup(0, 200, [1, 0, 0, 0, 0, ]),
+		Statusup(0, 400),
+	],
+}

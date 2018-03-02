@@ -1,0 +1,46 @@
+{
+	name: "ロード・オブ・ラグナロク・ゼロ",
+	cardno: 4016,
+	imageno: 5719,
+	hp: 3189,
+	atk: 4004,
+	cost: 71,
+	attr: [0, -1],
+	species: [0],
+	awakes: [
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Costdown(2),
+		Fastskill(1),
+		Costdown(2),
+		Costdown(2),
+		Spec_statusup(0, 200, [0]),
+		Spec_statusup(200, 0, [0]),
+		Spec_statusup(0, 200, [0]),
+		Spec_statusup(200, 0, [0]),
+	],
+	as1: {
+		desc: "<分散攻撃>3チェインで敵全体へ分散攻撃/350％÷対象数",
+		proc: ChainVarianceAttack(3.5, 3),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ火属性のダメージ(180%)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [0])],
+	},
+	islegend: true,
+	Lawake: [
+		NEFTJOD(30),
+		Statusup(500, 0),
+		Statusup(0, 500),
+	],
+	as2: {
+		desc: "<分散攻撃>3チェインで敵全体へ分散攻撃/450％÷対象数",
+		proc: ChainVarianceAttack(4.5, 3),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ火属性のダメージ(260%)",
+		turn: 12,
+		proc: [ss_damage_all(2.6, [0])],
+	},
+}

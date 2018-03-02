@@ -1,0 +1,46 @@
+{
+	name: "原点回帰の不尽焔 スオウ・カグツチ",
+	cardno: 8537,
+	imageno: 8811,
+	hp: 4666,
+	atk: 3077,
+	cost: 58,
+	attr: [0,1],
+	species: [1],
+	islegend: true,
+	ape: "八百万神秘譚Ⅲ(Z)",
+	as1: {
+		desc: "<複属性攻撃強化>4チェインで火属性の攻撃力をアップ(10%)、複属性が水属性だとさらにアップ(110%)",
+		proc: [ChainEnhance_SubAttr(0.1, 1.2, [1,0,0,0,0], [0,1,0,0,0], 4)],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・水属性化",
+		turn: 3,
+		proc: [ss_panel_change([1,1,0,0,0])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(3),
+		NEFTJOD(30),
+		Abstate_invalid("ss_sealed"),
+		Awake_noeffect("精霊交代",1),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,1,0,0,0,]),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>4チェインで火属性の攻撃力をアップ(40%)、複属性が水属性だとさらにアップ(110%)",
+		proc: [ChainEnhance_SubAttr(0.4, 1.5, [1,0,0,0,0], [0,1,0,0,0], 4)],
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 5,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,1,0,0,0,]),
+	],
+}

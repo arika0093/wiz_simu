@@ -1,0 +1,46 @@
+{
+	name: "覇眼戦線 リヴェータ&ルドヴィカ",
+	cardno: 4434,
+	imageno: 6128,
+	hp: 2283,
+	atk: 2575,
+	cost: 52,
+	attr: [0, 1],
+	species: [8],
+	disable: true,
+	awakes: [
+		Attr_statusup(100, 0, [1, 1, 0, 0, 0]),
+		Panel_boost([1,0,0,0,0], 1),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0]),
+		Fastskill(1),
+		Statusup(200, 0),
+		NEFTJOD(30),
+		Spec_statusup(0, 200, [8]),
+		Spec_statusup(200, 0, [8]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、リーダー時さらにアップ(3チェイン：350％ / リーダー時：400％)",
+		proc: [ChainAttack(3.5, 3), ChainAttack_Leader(4.0, 3)],
+	},
+	ss1: {
+		desc: "<多弾魔術>敵単体へ火・水属性の5回連続ダメージ(計180％)",
+		turn: 5,
+		proc: [ss_damage_s(1.8, [0, 1], 5)],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、リーダー時さらにアップ(3チェイン：450％ / リーダー時：500％)",
+		proc: [ChainAttack(4.5, 3), ChainAttack_Leader(5.0, 3)],
+	},
+	ss2: {
+		desc: "<多弾魔術>敵単体へ火・水属性の5回連続ダメージ(計380％)",
+		turn: 8,
+		proc: [ss_damage_s(3.8, [0, 1], 5)],
+	},
+}

@@ -1,0 +1,47 @@
+{
+	name: "宮中伯とメイド ライオット&ミー",
+	cardno: 9597,
+	imageno: 11863,
+	hp: 2345,
+	atk: 3391,
+	cost: 47,
+	attr: [0,1],
+	species: [3],
+	islegend: true,
+	ape: "その光は淡く碧く 最終章 終極の聖祈",
+	is_dist: true,
+	as1: {
+		desc: "<分散攻撃>4チェインで敵全体へ分散攻撃(500%)",
+		proc: ChainVarianceAttack(5.0, 4),
+	},
+	ss1: {
+		desc: "<多弾魔術>敵全体へ火・水属性の5回連続ダメージ(120%)",
+		turn: 4,
+		proc: [ss_damage_all_cons(1.2, [0,1], 5)],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ",1),
+		Costdown(10),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<分散攻撃>4チェインで敵全体へ分散攻撃(600%)",
+		proc: ChainVarianceAttack(6.0, 4),
+	},
+	ss2: {
+		desc: "<多弾魔術>敵全体へ火・水属性の5回連続ダメージ(150%)",
+		turn: 6,
+		proc: [ss_damage_all_cons(1.5, [0,1], 5)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+	],
+}

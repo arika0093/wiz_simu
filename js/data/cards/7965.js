@@ -1,0 +1,47 @@
+{
+	name: "深淵で狂う魔女 パッツァ・メレラナ",
+	cardno: 7965,
+	imageno: 10078,
+	hp: 3021,
+	atk: 5321,
+	cost: 52,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "大魔道杯 in ショコラフォレスト",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>10チェインでダメージアップ(800%)",
+		proc: ChainAttack(8.0, 10),
+	},
+	ss1: {
+		desc: "<反動大魔術・蝕>スキル反射を無視し、味方全体のMAXHPを50%使い敵全体へ火属性のダメージ(240%×人数)◆スキル使用後、味方全員が1ターン封印状態に",
+		turn: 10,
+		proc: [ss_damage_all(ss_seal_all_cond(2.4), [0]), ss_consume_all(0.5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Awake_secondfast(3),
+		Attr_relief([1,1,1,1,1,],10),
+		Awake_secondfast(3),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Awake_secondfast(3),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<チェイン攻撃>10チェインでダメージアップ(900%)",
+		proc: ChainAttack(9.0, 10),
+	},
+	ss2: {
+		desc: "<反動大魔術・蝕>スキル反射を無視し、敵全体へ火属性のダメージ(300%×人数)◆スキル使用後、味方全員が1ターン封印状態に",
+		turn: 13,
+		proc: [ss_damage_all(ss_seal_all_cond(3.0), [0]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Statusup(0,500),
+	],
+}

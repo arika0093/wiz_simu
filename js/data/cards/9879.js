@@ -1,0 +1,45 @@
+{
+	name: "聖巫女天使 クリネア・マキア",
+	cardno: 9879,
+	imageno: 7072,
+	hp: 5373,
+	atk: 2661,
+	cost: 40,
+	attr: [1,-1],
+	species: [3],
+	islegend: true,
+	as1: {
+        desc: "<回復>水属性の味方のHPを回復、天使はさらに回復(13%/15%)",
+		proc: [Heal(0.13, [0, 1, 0, 0, 0], 0),SpecHeal(0.15, [0, 1, 0, 0, 0], [3], 0)],
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	awakes: [
+        Panel_boost([0,1,0,0,0,],4),
+        Attr_statusup_oattr(0,300, [0,1,0,0,0,]),
+        Attr_statusup_oattr(300,0, [0,1,0,0,0,]),
+        Attr_relief([1,1,1,1,1,],10),
+		Fastskill(1),
+        Panel_boost([0,1,0,0,0,],4),
+		Attr_statusup(0,300, [0,1,0,0,0,]),
+		Attr_statusup(300,0, [0,1,0,0,0,]),
+		Heal_afterbattle(10),
+        Fastskill(2),
+	],
+	as2: {
+		desc: "<回復>水属性の味方のHPを回復、天使はさらに回復(16%/18%)",
+		proc: [Heal(0.16, [0,1,0,0,0], 0),SpecHeal(0.18, [0, 1, 0, 0, 0],[3],0)],
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
+		turn: 10,
+		proc: [ss_heal(1.0), ss_abstate_cure()],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Statusup(0,500),
+	],
+}

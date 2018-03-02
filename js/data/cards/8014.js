@@ -1,0 +1,47 @@
+{
+	name: "輝く笑顔に魅せられて 初音ミク",
+	cardno: 8014,
+	imageno: 6693,
+	hp: 4102,
+	atk: 1839,
+	cost: 43,
+	attr: [0,2],
+	species: [9],
+	islegend: true,
+	ape: "コラボ(ミク)",
+	is_dist: true,
+	as1: {
+		desc: "<回復・攻撃強化>火・雷属性の味方HPを回復(12%)、さらに火・雷属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.12, [1,0,1,0,0], 0), ChainEnhance(0.30, [1,0,1,0,0], 0)],
+	},
+	ss1: {
+		desc: "<遅延>敵単体の攻撃ターンを1遅らせる",
+		turn: 4,
+		proc: [ss_delay_s(1)],
+	},
+	awakes: [
+		Costdown(20),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		Panel_boost([1,0,0,0,0,],1),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 200,0, [0,0,1,0,0,]),
+		Heal_afterbattle(10),
+		Fastskill(3),
+	],
+	as2: {
+		desc: "<回復・攻撃強化>火・雷属性の味方HPを回復(15%)、さらに火・雷属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.15, [1,0,1,0,0], 0), ChainEnhance(0.30, [1,0,1,0,0], 0)],
+	},
+	ss2: {
+		desc: "<遅延>敵単体の攻撃ターンを2遅らせる",
+		turn: 8,
+		proc: [ss_delay_s(2)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Statusup(500,0),
+	],
+}

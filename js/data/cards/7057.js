@@ -1,0 +1,47 @@
+{
+	name: "天空山の主 フィルマメント",
+	cardno: 7057,
+	imageno: 9050,
+	hp: 2311,
+	atk: 3845,
+	cost: 38,
+	attr: [0,-1],
+	species: [0],
+	islegend: true,
+	ape: "ドルキマスⅡ",
+	is_dist: true,
+	as1: {
+		desc: "<全体攻撃>敵の数に関わらず敵全体へダメージアップ(140%)",
+		proc: ChainAllAttack(1.4, 0),
+	},
+	ss1: {
+		desc: "<反動大魔術>敵全体へ火属性のダメージ(500%)◆スキル使用後、1ターン封印状態に",
+		turn: 6,
+		proc: [ss_damage_all(5.0, [0]), ss_allsealed_own(1)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(0,200),
+		Statusup(200,0),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Spec_statusup(0,200, [0,]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<全体攻撃>敵の数に関わらず敵全体へダメージアップ(150%)",
+		proc: ChainAllAttack(1.5, 0),
+	},
+	ss2: {
+		desc: "<反動大魔術>敵全体へ火属性のダメージ(700%)◆スキル使用後、1ターン封印状態に",
+		turn: 8,
+		proc: [ss_damage_all(7.0, [0]), ss_allsealed_own(1)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(0,500),
+	],
+}

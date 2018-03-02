@@ -1,0 +1,47 @@
+{
+	name: "深愛なる氷菓の姫君 アイスの実",
+	cardno: 5570,
+	imageno: 7367,
+	hp: 3132,
+	atk: 2611,
+	cost: 46,
+	attr: [1,-1],
+	species: [4],
+	islegend: true,
+	ape: "グリコⅠ",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化>水属性の味方の攻撃力をアップ、リーダー時さらにアップ(30%/40%)",
+		proc: [ChainEnhance(0.30, [0,1,0,0,0], 0), add_cond(ChainEnhance(0.40, [0,1,0,0,0], 0), when_leader())],
+	},
+	ss1: {
+		desc: "<ガード>2ターン火属性のダメージを75%軽減する",
+		turn: 8,
+		proc: [ss_attr_guard([1,0,0,0,0], 0.75, 2)],
+	},
+	awakes: [
+		Attr_relief([1,0,0,0,0,],10),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Costdown(4),
+		Attr_relief([0,1,0,0,0,],10),
+		Panel_boost([0,1,0,0,0,],2),
+		Statusup(200,0),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Spec_statusup(300,0, [4,]),
+	],
+	as2: {
+		desc: "<攻撃強化>水属性の味方の攻撃力をアップ、リーダー時さらにアップ(40%/60%)",
+		proc: [ChainEnhance(0.40, [0,1,0,0,0], 0), add_cond(ChainEnhance(0.60, [0,1,0,0,0], 0), when_leader())],
+	},
+	ss2: {
+		desc: "<ガード>2ターン火属性のダメージを75%軽減する、さらに味方全体のHPを回復する(25%)",
+		turn: 11,
+		proc: [ss_attr_guard([1,0,0,0,0], 0.75, 2), ss_heal(0.25)],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

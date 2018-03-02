@@ -1,0 +1,47 @@
+{
+	name: "乱世至強の凛眼 ルドヴィカ・ロア",
+	cardno: 8177,
+	imageno: 10315,
+	hp: 2385,
+	atk: 4155,
+	cost: 54,
+	attr: [1,3],
+	species: [8],
+	islegend: true,
+	ape: "覇眼戦線Ⅲ",
+	as1: {
+		desc: "<全体攻撃>HP80%以上で敵全体へダメージ(200%)",
+		proc: add_cond(ChainAllAttack(2.0, 0), when_hp_more(0.8)),
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水・光属性の5回連続ダメージ(250%)",
+		turn: 4,
+		proc: [ss_damage_s(2.5, [1, 3], 5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(20),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(4),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,0,1,0,]),
+		Abstate_invalid("as_sealed"),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<全体攻撃>HP80%以上で敵全体へダメージ(240%)",
+		proc: add_cond(ChainAllAttack(2.4, 0), when_hp_more(0.8)),
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水・光属性の5回連続ダメージ(450%)",
+		turn: 6,
+		proc: [ss_damage_s(4.5, [1, 3], 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_relief([1,1,1,1,1,],20),
+		Awake_SpecialSkill("ss_damageblock_all", 400, 5, "ringan"),
+	],
+}

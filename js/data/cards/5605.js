@@ -1,0 +1,47 @@
+{
+	name: "小さなしあわせいらっしゃい ラヴリ",
+	cardno: 5605,
+	imageno: 7433,
+	hp: 3065,
+	atk: 1768,
+	cost: 19,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "グリコⅢ",
+	is_dist: true,
+	as1: {
+		desc: "<回復>火属性の味方のHPを回復(11%)",
+		proc: Heal(0.11, [1,0,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
+		turn: 3,
+		proc: [panel_chainplus(1)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Statusup(200,0),
+		Attr_relief([0,0,1,0,0,],10),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<回復>火属性の味方のHPを回復(13%)",
+		proc: Heal(0.13, [1,0,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(2)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(500,0),
+	],
+}

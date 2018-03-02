@@ -1,0 +1,47 @@
+{
+	name: "焔騎士の忠誠 エルト・ファレンツ",
+	cardno: 7701,
+	imageno: 5568,
+	hp: 4594,
+	atk: 3643,
+	cost: 51,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "ウィズセレクション",
+	as1: {
+		desc: "<種族攻撃強化>3チェインで火属性の味方の攻撃力をアップ、戦士はさらにアップ(50%/100%)",
+		proc: [ChainEnhance(0.5, [1,0,0,0,0], 3), ChainSpecEnhance(1.0, [1,0,0,0,0], [8], 3)],
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルを1ターン早める",
+		turn: 5,
+		proc: [ss_skillboost(1)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		NEFTJOD(30),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Spec_statusup(400,0, [8,]),
+		Fastskill(2),
+		Spec_statusup(0,400, [8,]),
+		Awake_Chainboost(1),
+	],
+	as2: {
+		desc: "<種族攻撃強化>3チェインで火属性の味方の攻撃力をアップ、戦士はさらにアップ(80%/130%)",
+		proc: [ChainEnhance(0.8, [1,0,0,0,0], 3), ChainSpecEnhance(1.3, [1,0,0,0,0], [8], 3)],
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルを2ターン早める",
+		turn: 8,
+		proc: [ss_skillboost(2)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(500,0),
+		NEFTJOD(30),
+	],
+}

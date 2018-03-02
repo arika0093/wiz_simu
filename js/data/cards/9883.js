@@ -1,0 +1,47 @@
+{
+	name: "乱れ咲きの銀吹雪 ツバキ&ハヅキ",
+	cardno: 9883,
+	imageno: 6581,
+	hp: 2135,
+	atk: 4489,
+	cost: 56,
+	attr: [1,2],
+	species: [8],
+	islegend: true,
+	ape: "DL限定",
+	as1: {
+		desc: "<属性特効連撃>3チェインで火属性の敵単体へ特効5連撃(525%)",
+		proc: ChainDualAttrAttack(5.25, 3, 5, [1,0,0,0,0]),
+	},
+	ss1: {
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(400%)",
+		turn: 6,
+		proc: [ss_enhance_own(4.0, 3)],
+	},
+	awakes: [
+		Costdown(20),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Awake_noeffect("経験値取得量アップ",2),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(4),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Spec_statusup(0,200, [8,]),
+		Spec_statusup(200,0, [8,]),
+	],
+	as2: {
+		desc: "<属性特効連撃>3チェインで火属性の敵単体へ特効5連撃(625%)",
+		proc: ChainDualAttrAttack(6.25, 3, 5, [1,0,0,0,0]),
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン自分の攻撃力をアップ(600%)。HP20%以下の時、さらに自分の攻撃力をアップ(1900%)し、味方全体のHPを完全回復",
+		turn: 8,
+		proc: [ss_enhance_own(ss_hp_less(0.20, 25, 6.0), 4), ss_hp_less_skill(0.20, ss_heal(1.0))],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Statusup(0,1000),
+		Abstate_invalid("ss_sealed"),
+	],
+}

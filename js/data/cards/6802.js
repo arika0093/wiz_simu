@@ -1,0 +1,45 @@
+{
+	name: "万科明達の青雲博雅　サピィ・ペンナ",
+	cardno: 6802,
+	imageno: 8785,
+	hp: 4325,
+	atk: 2515,
+	cost: 42,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "図鑑報酬",
+	as1: {
+		desc: "<回復>味方全体のHPを回復(13%)",
+		proc: Heal(0.13, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<割合削り>敵単体のHPを25%減少させる",
+		turn: 9,
+		proc: [ss_ratiodamage_s(0.25)],
+	},
+	awakes: [
+		Fastskill(1),
+		Costdown(2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,1,1,1,1,]),
+		Panel_boost([0,0,1,0,0,],3),
+		Statusup(200,0),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(15%)",
+		proc: Heal(0.15, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<割合削り>敵単体のHPを25%減少させる、15チェインで更に10%減少させる",
+		turn: 12,
+		proc: [ss_ratiodamage_s(ss_chain_cond(15, 0.4, 0.25))],
+	},
+	Lawake: [
+		Statusup(1000,0),
+	],
+}

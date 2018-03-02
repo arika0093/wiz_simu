@@ -1,0 +1,47 @@
+{
+	name: "絶輝龍降臨 ルシェ・ワダツミ",
+	cardno: 8034,
+	imageno: 7602,
+	hp: 2538,
+	atk: 2932,
+	cost: 44,
+	attr: [1, 3],
+	species: [0],
+	islegend: true,
+	is_dist: true,
+	ape:"ギルドマスターセレモニーズ",
+	as1: {
+		desc: "<属性特効>火属性以外の敵単体へ特効ダメージ(500%)",
+		proc: ChainAttrAttack(5.0, 0, [0, 1, 1, 1, 1]),
+	},
+	ss1: {
+		desc: "<ガード>3ターン水属性のダメージを75%軽減する",
+		turn: 6,
+		proc: [ss_attr_guard([0,1,0,0,0], 0.75, 3)],
+	},
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Fastskill(2),
+		Attr_relief([1,1,1,1,1,],10),
+		Spec_statusup(0, 500, [0, ]),
+		Spec_statusup(500, 0, [0, ]),
+		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,200,[0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0,[0,1,0,0,0,],200,0,[0,0,0,1,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<属性特効>火属性以外の敵単体へ特効ダメージ(600%)",
+		proc: ChainAttrAttack(6.0, 0, [0, 1, 1, 1, 1]),
+	},
+	ss2: {
+		desc: "<ガード>6ターン水属性のダメージを75%軽減する",
+		turn: 10,
+		proc: [ss_attr_guard([0,1,0,0,0], 0.75, 6)],
+	},
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+	],
+}

@@ -1,0 +1,45 @@
+{
+	name: "響く歌、遠くまで KAITO&MEIKO",
+	cardno: 4898,
+	imageno: 6612,
+	hp: 2874,
+	atk: 2345,
+	cost: 35,
+	attr: [1, 0],
+	species: [9],
+	awakes: [
+		Attr_statusup(100, 0, [1, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(100, 0, [1, 1, 0, 0, 0, ]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Awake_noeffect("経験値取得量アップ", 1),
+	],
+	as1: {
+		desc: "<攻撃強化>5チェインで火・水属性の味方の攻撃力をアップ/+60％",
+		proc: ChainEnhance(0.60, [1,1,0,0,0], 5),
+	},
+	ss1: {
+		desc: "<効果解除>敵全体のガードを解除する",
+		turn: 6,
+		proc: [ss_break_attrguard("all")],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(500, 0),
+		Statusup(0, 500),
+	],
+	as2: {
+		desc: "<攻撃強化>5チェインで火・水属性の味方の攻撃力をアップ/+90％",
+		proc: ChainEnhance(0.90, [1,1,0,0,0], 5),
+	},
+	ss2: {
+		desc: "<効果解除>敵全体のガード&ダメージブロックを解除する",
+		turn: 8,
+		proc: [ss_break_attrguard("all"), ss_break_dblock("all")],
+	},
+}

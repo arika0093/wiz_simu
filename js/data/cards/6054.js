@@ -1,0 +1,47 @@
+{
+	name: "狂気と怨讐の魔刃 ギンガ・カノン",
+	cardno: 6054,
+	imageno: 7881,
+	hp: 3006,
+	atk: 3502,
+	cost: 50,
+	attr: [2, 4],
+	species: [8],
+	disable: true,
+	islegend: true,
+	ape: "覇眼戦線Ⅱ",
+	as1: {
+		desc: "<属性特効>4チェインで水・光属性の敵単体へ特効ダメージ(600%)",
+		proc: ChainAttrAttack(6.0, 4, [0, 1, 0, 1, 0]),
+	},
+	ss1: {
+		desc: "<ブースト>4ターンの間、味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ(150%)、さらに極稀にクリティカル",
+		turn: 7,
+		proc: [ss_boost_enhance_all(1.5, 4, 0.1)],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
+		Attr_statusup_sattr(0, 200, [0,0,1,0,0], 0, 200, [0,0,0,0,1]),
+	],
+	as2: {
+		desc: "<属性特効>4チェインで水・光属性の敵単体へ特効ダメージ(700%)",
+		proc: ChainAttrAttack(7.0, 4, [0, 1, 0, 1, 0]),
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間、味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ(200%)、さらに極稀にクリティカル",
+		turn: 10,
+		proc: [ss_boost_enhance_all(2.0, 5, 0.1)],
+	},
+	Lawake: [
+		Statusup(500, 0),
+		Statusup(0, 500),
+	],
+}

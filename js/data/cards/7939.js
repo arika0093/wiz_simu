@@ -1,0 +1,46 @@
+{
+	name: "星ショコラの恋歌 ピピア・ショトワ",
+	cardno: 7939,
+	imageno: 10042,
+	hp: 2645,
+	atk: 6350,
+	cost: 56,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "バレンタイン2017",
+	as1: {
+		desc: "<属性特効>HP80%以上で雷属性の敵単体へ特効ダメージ(525%)",
+		proc: add_cond(ChainAttrAttack(5.25, 0, [0,0,1,0,0]), when_hp_more(0.8)),
+	},
+	ss1: {
+		desc: "<多弾魔術>敵全体へ火属性の10回連続ダメージ(120%)",
+		turn: 3,
+		proc: [ss_damage_all_cons(1.2, [0], 10)],
+	},
+	as2: {
+		desc: "<属性特効>HP80%以上で雷属性の敵単体へ特効ダメージ(625%)",
+		proc: add_cond(ChainAttrAttack(6.25, 0, [0,0,1,0,0]), when_hp_more(0.8)),
+	},
+	ss2: {
+		desc: "<多弾魔術>敵全体へ火属性の10回連続ダメージ(150%)",
+		turn: 5,
+		proc: [ss_damage_all_cons(1.5, [0], 10)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Awake_noeffect("経験値取得量アップ",2),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(0,400,[1,0,0,0,0,]),
+		Attr_statusup(400,0,[1,0,0,0,0,]),
+		Fastskill(2),
+		Awake_noeffect("難易度ダウン",1),
+	],
+	Lawake: [
+		Statusup(0,1500),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+}

@@ -1,0 +1,48 @@
+{
+	name: "奇妙タキシード デューラ・パイク",
+	cardno: 6778,
+	imageno: 8732,
+	hp: 3721,
+	atk: 2158,
+	cost: 36,
+	attr: [1,-1],
+	species: [2],
+	islegend: true,
+	ape: "真夏のグレート・クイズ・ウォー",
+	alias: ["デュラはん"],
+	is_dist: true,
+	as1: {
+		desc: "<回復>水属性の味方のHPを回復(12%)",
+		proc: [Heal(0.12, [0,1,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<無に還す瞳>4ターン後に敵単体を無に還す(一部敵には無効)",
+		turn: 7,
+		proc: [ss_death_limit(4)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Statusup(200,0),
+		Statusup(0,200),
+		NEFTJOD(30),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<回復>水属性の味方のHPを回復(14%)",
+		proc: [Heal(0.14, [0,1,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<無に還す瞳>3ターン後に敵単体を無に還す(一部敵には無効)",
+		turn: 10,
+		proc: [ss_death_limit(3)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

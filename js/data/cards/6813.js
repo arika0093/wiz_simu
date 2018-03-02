@@ -1,0 +1,48 @@
+{
+	name: "AbCd-Θ:《万象焦尽天 ラヒルメ》",
+	cardno: 6813,
+	imageno: 6784,
+	hp: 3058,
+	atk: 3131,
+	cost: 65,
+	attr: [0,4],
+	species: [11],
+	islegend: true,
+	ape: "AbCd",
+	is_dist: true,
+	as1: {
+		desc: "<種族数攻撃>AbCdの仲間の数だけダメージアップ(160%/220%/280%/340%/400%)",
+		proc: ChainDeckSpecsAttack(0.6, [11], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・闇属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,0,0,0,1])],
+	},
+	awakes: [
+		Costdown(4),
+		Fastskill(1),
+		Attr_relief([1,1,1,1,1,],10),
+		Panel_boost([1,0,0,0,0,],2),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<種族数攻撃>AbCdの仲間の数だけダメージアップ(180%/260%/340%/420%/500%)",
+		proc: ChainDeckSpecsAttack(0.8, [11], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・闇属性化し、攻撃力アップ(40%)かダメージ25%軽減の効果を付与",
+		turn: 7,
+		proc: [ss_panel_change([1,0,0,0,1]), panel_attackup(0.4), panel_attr_guard(0.25, [1,1,1,1,1])],
+	},
+	Lawake: [
+		NEFTJOD(30),
+		Statusup(0,500),
+		Statusup(400,0),
+	],
+}

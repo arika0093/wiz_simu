@@ -1,0 +1,47 @@
+{
+	name: "No Mercy ファラシー",
+	cardno: 8768,
+	imageno: 10950,
+	hp: 1623,
+	atk: 5842,
+	cost: 36,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "クロスディライブACT2",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>敵単体を6回連続攻撃(150%)、デッキに単色の精霊が多いほど、ダメージがアップ(40%)(上限:5段階)",
+		proc: add_cond(ChainDualAttack(1.5, 0, 6), as_singleattr_num(0, 0.4)),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ水属性のダメージ(300%)、さらに火属性の敵には特効ダメージ(300%)",
+		turn: 5,
+		proc: [ss_damage_s(special_attr([1, 0, 0, 0, 0], 6.0, 3.0), [1], 1)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup_oattr(0,300, [0,1,0,0,0,]),
+		Attr_statusup_oattr(300,0, [0,1,0,0,0,]),
+		Fastskill(1),
+		Costdown(5),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<連撃>敵単体を6回連続攻撃(200%)、デッキに単色の精霊が多いほど、ダメージがアップ(40%)(上限:5段階)",
+		proc: add_cond(ChainDualAttack(2.0, 0, 6), as_singleattr_num(0, 0.4)),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ水属性のダメージ(300%)、さらに火属性の敵には特効ダメージ(900%)",
+		turn: 8,
+		proc: [ss_damage_s(special_attr([1, 0, 0, 0, 0], 12.0, 3.0), [1], 1)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Statusup(0,400),
+	],
+}

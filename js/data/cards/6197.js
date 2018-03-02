@@ -1,0 +1,46 @@
+{
+	name: "モォー烈超魔牛 ミィア・ヤガダ",
+	cardno: 6197,
+	imageno: 8020,
+	hp: 1999,
+	atk: 9021,
+	cost: 58,
+	attr: [0,-1],
+	species: [2],
+	islegend: true,
+	ape: "聖サタニック女学院",
+	as1: {
+		desc: "<属性特効>6チェインで雷属性の敵へ特効ダメージ(800%)",
+		proc: ChainAttrAttack(8.0, 6, [0,0,1,0,0]),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
+		turn: 3,
+		proc: [panel_chainplus(1)],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ", 1),
+		Attr_statusup_oattr(0,400, [1,0,0,0,0,]),
+		Attr_statusup_oattr(400,0, [1,0,0,0,0,]),
+		Attr_relief([0,0,1,0,0,],20),
+		Panel_boost([1,0,0,0,0,],4),
+		NEFTJOD(60),
+		Fastskill(4),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<属性特効>6チェインで雷属性の敵へ特効ダメージ(900%)",
+		proc: ChainAttrAttack(9.0, 6, [0,0,1,0,0]),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与、のろい状態または状態異常状態でさらにチェインがプラス5の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(ss_is_abstate_own(6, 1))],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

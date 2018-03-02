@@ -1,0 +1,47 @@
+{
+	name: "魂を刈り取る廃堕魔神 ザラジュラム",
+	cardno: 6460,
+	imageno: 6111,
+	hp: 3444,
+	atk: 4617,
+	cost: 75,
+	attr: [2,-1],
+	species: [3],
+	islegend: true,
+	ape: "Blader",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化>3チェインで雷属性の味方の攻撃力をアップ、10チェインでさらにアップ(40%/100%)",
+		proc: [ChainEnhance(0.4, [0,0,1,0,0], 3), ChainEnhance(1.0, [0,0,1,0,0], 10)],
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(400%)",
+		turn: 7,
+		proc: [ss_damage_all(4.0, [2]), ss_consume_own(0.5)],
+	},
+	awakes: [
+		Costdown(4),
+		Fastskill(2),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Statusup(200,0),
+		Statusup(0,400),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Spec_statusup(0,200, [3,]),
+		Spec_statusup(200,0, [3,]),
+	],
+	as2: {
+		desc: "<攻撃強化>3チェインで雷属性の味方の攻撃力をアップ、10チェインでさらにアップ(60%/120%)",
+		proc: [ChainEnhance(0.6, [0,0,1,0,0], 3), ChainEnhance(1.2, [0,0,1,0,0], 10)],
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(600%)",
+		turn: 9,
+		proc: [ss_damage_all(6.0, [2]), ss_consume_own(0.5)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

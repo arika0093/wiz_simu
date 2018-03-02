@@ -1,0 +1,47 @@
+{
+	name: "天空の蒼刃 プルミエ・シエル",
+	cardno: 4849,
+	imageno: 6584,
+	hp: 2212,
+	atk: 4422,
+	cost: 47,
+	attr: [1, -1],
+	species: [3],
+	disable: true,
+	awakes: [
+		Attr_relief([1, 0, 0, 0, 0, ], 20),
+		Costdown(2),
+		Spec_statusup(0, 200, [3, ]),
+		Fastskill(2),
+		NEFTJOD(30),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup(0, 200, [0, 1, 0, 0, 0, ]),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Fastskill(2),
+		Heal_afterbattle(10),
+	],
+	as1: {
+		desc: "<連撃>2チェインで敵単体を2回連続攻撃/計350％",
+		proc: ChainDualAttack(3.5, 2, 2),
+	},
+	ss1: {
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(+150％)",
+		turn: 6,
+		proc: [ss_enhance_own(1.5, 3)],
+	},
+	islegend: true,
+	Lawake: [
+		NEFTJOD(30),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(0, 500),
+	],
+	as2: {
+		desc: "<連撃>2チェインで敵単体を2回連続攻撃/計450％",
+		proc: ChainDualAttack(4.5, 2, 2),
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン自分の攻撃力をアップ(+250％)",
+		turn: 8,
+		proc: [ss_enhance_own(2.5, 4)],
+	},
+}

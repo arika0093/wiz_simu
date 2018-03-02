@@ -1,0 +1,46 @@
+{
+	name: "煌眼を支えし片腕 ジミー・デヴィス",
+	cardno: 6032,
+	imageno: 7866,
+	hp: 3003,
+	atk: 4998,
+	cost: 49,
+	attr: [0, -1],
+	species: [8],
+	disable: true,
+	islegend: true,
+	ape: "覇眼戦線Ⅰ",
+	as1: {
+		desc: "<全体攻撃>3チェインで敵全体へダメージ、10チェインで更にダメージアップ(180%/280%)",
+		proc: [ChainAllAttack(1.8, 3), ChainAllAttack(2.8, 10)],
+	},
+	ss1: {
+		desc: "<アンサースキル延長>3ターンの間、アンサースキル発動時間を10秒延長する(上限値:20秒)",
+		turn: 5,
+		proc: [ss_astime_ext(10, 3)],
+	},
+	awakes: [
+		Statusup(200, 0),
+		Fastskill(2),
+		Attr_relief([1, 0, 0, 0, 0, ], 10),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Fastskill(2),
+		Attr_statusup(0, 200, [1, 0, 0, 0, 0, ]),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Fastskill(2),
+		Spec_statusup(0, 200, [8, ]),
+		Awake_noeffect("心眼", 1),
+	],
+	as2: {
+		desc: "<全体攻撃>3チェインで敵全体へダメージ、10チェインで更にダメージアップ(220%/320%)",
+		proc: [ChainAllAttack(2.2, 3), ChainAllAttack(3.2, 10)],
+	},
+	ss2: {
+		desc: "<アンサースキル延長>5ターンの間、アンサースキル発動時間を15秒延長する(上限値:20秒)",
+		turn: 8,
+		proc: [ss_astime_ext(15, 5)],
+	},
+	Lawake: [
+		Attr_statusup(0, 200, [1, 0, 0, 0, 0, ]),
+	],
+}

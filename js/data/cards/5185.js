@@ -1,0 +1,45 @@
+{
+	name: "魂に歌う愛の華 リース・ヴァレリア",
+	cardno: 5185,
+	imageno: 7070,
+	hp: 2775,
+	atk: 2856,
+	cost: 46,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<回復>火・水属性の味方のHPを回復、戦士はさらに回復(11%/15%)",
+		proc: [Heal(0.11, [1,1,0,0,0], 0), SpecHeal(0.15, [1,1,0,0,0], [9], 0)],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・水属性化",
+		turn: 5,
+		proc: [ss_panel_change([1,1,0,0,0])],
+	},
+	awakes: [
+		Statusup(0,100),
+		Statusup(200,0),
+		Costdown(2),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],1),
+		NEFTJOD(30),
+		Spec_statusup(200,0, [8,]),
+		Heal_afterbattle(10),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<回復>火・水属性の味方のHPを回復、戦士はさらに回復(13%/18%)",
+		proc: [Heal(0.13, [1,1,0,0,0], 0), SpecHeal(0.18, [1,1,0,0,0], [9], 0)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・水属性化し、回復の効果を付与(10%)",
+		turn: 8,
+		proc: [ss_panel_change([1,1,0,0,0]), panel_healally(0.1)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(400,0),
+	],
+}

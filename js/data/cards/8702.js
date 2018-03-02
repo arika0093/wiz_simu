@@ -1,0 +1,47 @@
+{
+	name: "刻下の光神 セリーヌ・エヴァンス",
+	cardno: 8702,
+	imageno: 10878,
+	hp: 5073,
+	atk: 2411,
+	cost: 54,
+	attr: [2,3],
+	species: [1],
+	islegend: true,
+	ape: "エタクロⅠ",
+	as1: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ(30%)、複属性が光属性だとさらにアップ(50%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,0,1,0,0], [0,0,0,1,0], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを雷・光属性化",
+		turn: 3,
+		proc: [ss_panel_change([0,0,1,1,0])],
+	},
+	awakes: [
+		Costdown(20),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,0,0,1,0,]),
+		Fastskill(3),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ(60%)、複属性が光属性だとさらにアップ(50%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,0,1,0,0], [0,0,0,1,0], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを雷・光属性化し、攻撃力アップの効果を付与(100%)",
+		turn: 6,
+		proc: [ss_panel_change([0,0,1,1,0]), panel_attackup(1.0)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

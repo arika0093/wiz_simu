@@ -1,0 +1,46 @@
+{
+	name: "AbCd-Μμ:《輝煌を拒絶する テルミド》",
+	cardno: 80005,
+	imageno: 6770,
+	hp: 2778,
+	atk: 3132,
+	cost: 48,
+	attr: [0, 4],
+	species: [11],
+	disable: true,
+	awakes: [
+		NEFTJOD(30),
+		Attr_statusup(0, 200, [1,0,0,0,0]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0], 1),
+		Attr_relief([0, 0, 0, 1, 1], 30),
+		Attr_statusup(200, 0, [1,0,0,0,0]),
+		Panel_boost([1,0,0,0,0], 2),
+		NEFTJOD(30),
+		Attr_statusup(200, 0, [1,0,0,0,0]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "<攻撃強化>5チェインで火属性の味方の攻撃力をアップ、パネルの色が2色以上でさらにアップ(単色：+60％ / 複色：+90％)",
+		proc: ChainPanelsEnhance(0.6, 0.9, 0.9, [1,0,0,0,0], 5),
+	},
+	ss1: {
+		desc: "<多弾魔術>敵単体へ火・闇属性の5回連続ダメージ。HP20％以下でさらにダメージアップ(通常：計180％ / HP20％以下：計360％)",
+		turn: 6,
+		proc: [ss_damage_s(ss_hp_less(0.2, 3.6, 1.8), [0, 4], 5)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(500, 0),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "<攻撃強化>5チェインで火属性の味方の攻撃力をアップ、パネルの色が2色以上でさらにアップ(単色：+90％ / 複色：+120％)",
+		proc: ChainPanelsEnhance(0.9, 1.2, 1.2, [1,0,0,0,0], 5),
+	},
+	ss2: {
+		desc: "<多弾魔術>敵単体へ火・闇属性の5回連続ダメージ。HP20％以下でさらにダメージアップ(通常：計380％ / HP20％以下：計760％)",
+		turn: 9,
+		proc: [ss_damage_s(ss_hp_less(0.2, 7.6, 3.6), [0, 4], 5)],
+	},
+}

@@ -102,7 +102,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "useful", "useful", "{F34AC3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{96B04CAB-98A1-4735-96F8-80788F25C391}"
 	ProjectSection(SolutionItems) = preProject
-		js\data\cards.js = js\data\cards.js
+		js\data\cards.php = js\data\cards.php
 		js\data\skill_ans.js = js\data\skill_ans.js
 		js\data\skill_awake.js = js\data\skill_awake.js
 		js\data\skill_crystal.js = js\data\skill_crystal.js

@@ -1,0 +1,45 @@
+{
+	name: "滅龍冥刃 シャドウ・サーヴァント",
+	cardno: 7199,
+	imageno: 5720,
+	hp: 4391,
+	atk: 4209,
+	cost: 53,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<チェイン攻撃>7チェインでダメージアップ(550%)",
+		proc: ChainAttack(5.5, 7),
+	},
+	ss1: {
+		desc: "<割合削り>敵全体のHPを20%減少させる",
+		turn: 9,
+		proc: [ss_ratiodamage_all(0.2)],
+	},
+	awakes: [
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Statusup(0,400),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Costdown(4),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<攻撃>敵単体へのダメージアップ(550%)",
+		proc: ChainAttack(5.5, 0),
+	},
+	ss2: {
+		desc: "<割合削り>敵全体のHPを25%減少させ、10チェインを消費しスキル反射を無視する",
+		turn: 12,
+		proc: [ss_ratiodamage_all(0.25),  ss_chain_cost_skill(10, ss_ignore_skillcounter(), null)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "上質な愛の時 アーモンドプレミオ",
+	cardno: 4391,
+	imageno: 6064,
+	hp: 2332,
+	atk: 2997,
+	cost: 46,
+	attr: [0, -1],
+	species: [9],
+	ape: "大魔道杯 in お菓子",
+	awakes: [
+		Panel_boost([1,0,0,0,0], 1),
+		Panel_boost([1,0,0,0,0], 1),
+		Fastskill(1),
+		Costdown(2),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Attr_relief([1, 1, 0, 0, 0], 10),
+		Panel_boost([1,0,0,0,0], 1),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Spec_statusup(0, 200, [9]),
+		Spec_statusup(200, 0, [9]),
+	],
+	as1: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ、HP50％以上でさらにダメージアップ(通常：350％ / HP50％以上：400％)",
+		proc: multi_as(ChainAttrAttack(3.5, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(4.0, 0, [0,0,1,0,0]), when_hp_less(0.5))),
+	},
+	ss1: {
+		desc: "<ダメージ強化>味方全体のMAXHPの50％を使い、2ターン火属性の味方の攻撃力をアップ(+60％)",
+		turn: 6,
+		proc: [ss_consume_all(0.5), ss_enhance_all(0.6, 2, [1,0,0,0,0])],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ、HP50％以上でさらにダメージアップ(通常：450％ / HP50％以上：500％)",
+		proc: multi_as(ChainAttrAttack(3.5, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(4.0, 0, [0,0,1,0,0]), when_hp_more(0.5))),
+	},
+	ss2: {
+		desc: "<ダメージ強化>味方全体のMAXHPの50％を使い、4ターン火属性の味方の攻撃力をアップ(+80％)",
+		turn: 9,
+		proc: [ss_consume_all(0.5), ss_enhance_all(0.8, 4, [1,0,0,0,0])],
+	},
+}

@@ -1,0 +1,48 @@
+{
+	name: "我と共に挑め キワム&アウデアムス",
+	cardno: 6323,
+	imageno: 8158,
+	hp: 3107,
+	atk: 5443,
+	cost: 56,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	disable: true,
+	ape: "幻魔特区スザクⅢ",
+	as1: {
+		desc: "<属性特効・攻撃強化>火属性の味方の攻撃力をアップし(30%)、4チェインで雷属性の敵単体へ特効ダメージ(500%)",
+		proc: [ChainEnhance(0.3, [1,0,0,0,0], 0), ChainAttrAttack(5.0, 4, [0,0,1,0,0])],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ火属性のダメージ(400%)、さらに雷属性の敵には特効ダメージ(1200%)",
+		turn: 6,
+		proc: [ss_damage_s(special_attr([0,0,1,0,0], 12, 4), [0], 1)],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ", 1),
+		Statusup(0,200),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(3),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<属性特効・攻撃強化>火属性の味方の攻撃力をアップし(30%)、4チェインで雷属性の敵単体へ特効ダメージ(600%)",
+		proc: [ChainEnhance(0.3, [1,0,0,0,0], 0), ChainAttrAttack(6.0, 4, [0,0,1,0,0])],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ火属性のダメージ(400%)、さらに雷属性の敵には特効ダメージ(1900%)",
+		turn: 9,
+		proc: [ss_damage_s(special_attr([0,0,1,0,0], 19, 4), [0], 1)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+	],
+}

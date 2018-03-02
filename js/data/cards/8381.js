@@ -1,0 +1,46 @@
+{
+	name: "甘味同盟 アリエッタ&シャルロット",
+	cardno: 8381,
+	imageno: 7442,
+	hp: 2854,
+	atk: 4183,
+	cost: 58,
+	attr: [0,2],
+	species: [9],
+	islegend: true,
+	ape: "グリコⅢ",
+	as1: {
+		desc: "<分散攻撃>敵全体へ分散攻撃、4チェインで更にダメージアップ(350%/450%)",
+		proc: [ChainVarianceAttack(3.5, 0), ChainVarianceAttack(4.5, 4)],
+	},
+	ss1: {
+		desc: "<斬撃大魔術>スキル反射を無視し、火・雷属性の4連撃(450%)、さらに連撃数分チェインプラス",
+		turn: 5,
+		proc: [ss_damage_slash(4.5, [0,2], 4), ss_ignore_skillcounter()],
+	},
+	as2: {
+		desc: "<分散攻撃>敵全体へ分散攻撃、4チェインで更にダメージアップ(400%/550%)",
+		proc: [ChainVarianceAttack(4.5, 0), ChainVarianceAttack(5.5, 4)],
+	},
+	ss2: {
+		desc: "<斬撃大魔術>スキル反射を無視し、火・雷属性の5連撃(750%)、さらに連撃数分チェインプラス",
+		turn: 8,
+		proc: [ss_damage_slash(7.5, [0,2], 5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200,[1,0,1,0,0,]),
+		Attr_statusup(200,0,[1,0,1,0,0,]),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_sattr(0,100,[1,0,0,0,0,],0,300,[0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0,[1,0,0,0,0,],300,0,[0,0,1,0,0,]),
+		Fastskill(1),
+		Heal_afterbattle(10),
+		Awake_Chainboost(1),
+	],
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,200,[1,0,1,0,0,]),
+	],
+}

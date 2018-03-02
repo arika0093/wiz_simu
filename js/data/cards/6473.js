@@ -1,0 +1,46 @@
+{
+	name: "聖域の愛し子 ロレッタ・ミラージュ",
+	cardno: 6473,
+	imageno: 8413,
+	hp: 2447,
+	atk: 3703,
+	cost: 37,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<分散攻撃>敵全体へ分散攻撃、6チェインでさらにアップ(250%/500%)",
+		proc: [ChainVarianceAttack(2.5, 0), ChainVarianceAttack(5.0, 6)],
+	},
+	ss1: {
+		desc: "<回復>味方全体のHPを回復する(50%)",
+		turn: 5,
+		proc: [ss_heal(0.5)],
+	},
+	awakes: [
+		Statusup(200,0),
+		Statusup(200,0),
+		Statusup(0,200),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Guild_statusup(0, 1000),
+		Guild_statusup(1000, 0),
+	],
+	as2: {
+		desc: "<分散攻撃>敵全体へ分散攻撃、6チェインでさらにアップ(350%/600%)",
+		proc: [ChainVarianceAttack(3.5, 0), ChainVarianceAttack(6.0, 6)],
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体のHPを750アップ（上限値2000）、さらにHPを完全回復",
+		turn: 8,
+		proc: [ss_statusup_all([750, 0], [2000, 2000], -1), ss_heal(1)],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Statusup(0,400),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "時の守護天使 メティース・ルタン",
+	cardno: 7305,
+	imageno: 9325,
+	hp: 2980,
+	atk: 3630,
+	cost: 53,
+	attr: [0,1],
+	species: [3],
+	islegend: true,
+	ape: "訣別のクロニクル",
+	as1: {
+		desc: "<種族数攻撃>天使の数だけダメージアップ(180%/260%/340%/420%/500%)、魔族の敵へさらにダメージアップ(150%)",
+		proc: ChainDeckSpecsAttack(0.8, [3], 0),
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・水属性のダメージ(200%)、さらに味方全体のHPを回復する(50%)",
+		turn: 8,
+		proc: [ss_heal(0.5), ss_damage_all(2.0, [0,1]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(10),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],1),
+		Heal_afterbattle(10),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Attr_relief([1,0,0,0,0,],10),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(0,300, [3,]),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<種族数攻撃>天使の数だけダメージアップ(210%/320%/430%/540%/650%)、魔族の敵へさらにダメージアップ(150%)",
+		proc: ChainDeckSpecsAttack(1.1, [3], 0),
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・水属性のダメージ(280%)、さらに味方全体のHPを完全回復する",
+		turn: 12,
+		proc: [ss_heal(1), ss_damage_all(2.8, [0,1]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+	],
+}

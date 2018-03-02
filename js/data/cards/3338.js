@@ -1,0 +1,32 @@
+{
+	name: "雷裂拳を持つ格闘家 パワ・コテス",
+	cardno: 3338,
+	imageno: 4287,
+	hp: 2280,
+	atk: 2542,
+	cost: 43,
+	attr: [2, -1],
+	species: [8],
+	islegend: false,
+	is_dist: true,
+	as1: {
+		desc: "<種族数攻撃>戦士の仲間の数だけダメージ大アップ(140%/180%/220%/260%/300%)",
+		proc: ChainDeckSpecsAttack(0.40, [8], 0),
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早める",
+		turn: 6,
+		proc: [ss_skillboost(1)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(100, 0),
+		NEFTJOD(30),
+		Fastskill(1),
+		Statusup(0, 200),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Fastskill(1),
+		Spec_statusup(0, 200, [8, ]),
+	],
+}

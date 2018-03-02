@@ -1,0 +1,45 @@
+{
+	name: "鳳凰迅将 アルル・アーガイル",
+	cardno: 5056,
+	imageno: 6796,
+	hp: 2729,
+	atk: 3292,
+	cost: 43,
+	attr: [0, -1],
+	species: [8],
+	awakes: [
+		Statusup(200, 0),
+		Costdown(2),
+		Statusup(0, 200),
+		Fastskill(1),
+		Statusup(0, 200),
+		Panel_boost([1,0,0,0,0], 2),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Fastskill(2),
+		Statusup(0, 200),
+		Spec_statusup(0, 200, [8]),
+	],
+	as1: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ/400％",
+		proc: ChainAttrAttack(4, 0, [0, 0, 1, 0, 0]),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
+		turn: 4,
+		proc: [panel_chainplus(1)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 700),
+		Statusup(300, 0),
+	],
+	as2: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ/500％",
+		proc: ChainAttrAttack(5, 0, [0, 0, 1, 0, 0]),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、チェインがプラス1の効果を付与",
+		turn: 5,
+		proc: [ss_panel_change([1,0,1,0,0]), panel_chainplus(1)],
+	},
+}

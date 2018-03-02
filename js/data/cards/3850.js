@@ -1,0 +1,46 @@
+{
+	name: "黒翼の使徒 イドラ・ダールベルク",
+	cardno: 3850,
+	imageno: 5470,
+	hp: 2546,
+	atk: 2932,
+	cost: 40,
+	attr: [1, -1],
+	species: [1],
+	disable: true,
+	awakes: [
+		Statusup(0, 200),
+		Fastskill(1),
+		Spec_statusup(0, 200, [1, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Costdown(2),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Fastskill(2),
+		Attr_relief([0, 0, 1, 0, 0, ], 20),
+		Spec_statusup(200, 0, [1, ]),
+		Spec_statusup(0, 200, [1, ]),
+	],
+	as1: {
+		desc: "<属性特効>3チェインで火属性の敵単体へダメージ/525％",
+		proc: ChainAttrAttack(5.25, 3, [1,0,0,0,0]),
+	},
+	ss1: {
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(150％)",
+		turn: 6,
+		proc: [ss_enhance_own(1.5, 3)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで火属性の敵単体へダメージ/625％",
+		proc: ChainAttrAttack(6.25, 3, [1,0,0,0,0]),
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン自分の攻撃力をアップ(250％)",
+		turn: 8,
+		proc: [ss_enhance_own(2.5, 4)],
+	},
+}

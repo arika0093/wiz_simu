@@ -1,0 +1,46 @@
+{
+	name: "歪みに抗う尊き祈り オルハ・ゲート",
+	cardno: 9325,
+	imageno: 11474,
+	hp: 4544,
+	atk: 2256,
+	cost: 50,
+	attr: [2,3],
+	species: [9],
+	islegend: true,
+	alias: ["きしだん"],
+	as1: {
+		desc: "<回復>雷属性の味方を回復(13%)、HP20%以下でさらに回復(20%)",
+		proc: [Heal(0.13, [0,0,1,0,0], 0), add_cond(Heal(0.33, [0,0,1,0,0], 0), when_hp_less(0.20))],
+	},
+	ss1: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20%)",
+		turn: 8,
+		proc: [ss_regenerate(0.20, 5)],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Fastskill(4),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Heal_afterbattle(10),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,100, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 100,0, [0,0,0,1,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Awake_noeffect("境界騎士団の覚悟",1),
+	],
+	as2: {
+		desc: "<回復>雷属性の味方を回復(16%)、HP20%以下でさらに回復(20%)",
+		proc: [Heal(0.16, [0,0,1,0,0], 0), add_cond(Heal(0.36, [0,0,1,0,0], 0), when_hp_less(0.20))],
+	},
+	ss2: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20%)、HP20%以下でさらに回復(30%)",
+		turn: 10,
+		proc: [ss_regenerate(ss_hp_less(0.5, 0.2, 0.2), 5)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+	],
+}

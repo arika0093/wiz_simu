@@ -1,0 +1,46 @@
+{
+	name: "くろねこ四聖賢 ウィズ",
+	cardno: 9044,
+	imageno: 11254,
+	hp: 2445,
+	atk: 1875,
+	cost: 38,
+	attr: [1,0],
+	species: [9],
+	islegend: true,
+	ape: "大魔道杯 感謝",
+	is_dist: true,
+	as1: {
+		desc: "<分散攻撃>4チェインで敵全体へ分散攻撃(500%)",
+		proc: ChainVarianceAttack(5.0, 4),
+	},
+	ss1: {
+		desc: "<多弾魔術>敵全体へ火・水属性の5回連続ダメージ(120%)",
+		turn: 4,
+		proc: [ss_damage_all_cons(1.2, [1,0], 5)],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(3),
+		Awake_noeffect("ドロップアップ",1),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 200,0, [1,0,0,0,0,]),
+		Awake_noeffect("難易度ダウン",1),
+	],
+	as2: {
+		desc: "<分散攻撃>4チェインで敵全体へ分散攻撃(600%)",
+		proc: ChainVarianceAttack(6.0, 4),
+	},
+	ss2: {
+		desc: "<多弾魔術>敵全体へ火・水属性の5回連続ダメージ(150%)",
+		turn: 6,
+		proc: [ss_damage_all_cons(1.5, [1,0], 5)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
+}

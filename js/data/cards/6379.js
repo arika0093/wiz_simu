@@ -1,0 +1,47 @@
+{
+	name: "想いの怪物 キワム・コピー",
+	cardno: 6379,
+	imageno: 8205,
+	hp: 3006,
+	atk: 3202,
+	cost: 50,
+	attr: [2,4],
+	species: [8],
+	islegend: true,
+	is_dist: true,
+	ape: "幻魔特区スザクⅢ",
+	as1: {
+		desc: "<属性特効>4チェインで水・光属性の敵単体へ特効ダメージ(550%)",
+		proc: ChainAttrAttack(5.5, 4, [0,1,0,1,0]),
+	},
+	ss1: {
+		desc: "<ブースト>4ターンの間、味方のMAXHPを毎ターン20%消費し、味方の攻撃力をアップ(150%)、さらに極稀にクリティカル",
+		turn: 8,
+		proc: [ss_boost_enhance_all(1.5, 4, 0.2, [1,1,1,1,1])],
+	},
+	awakes: [
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup_sattr(0, 100, [0,0,1,0,0], 0, 200, [0,0,0,0,1]),
+	],
+	as2: {
+		desc: "<属性特効>4チェインでMAXHP15%を使い、水・光属性の敵単体へ特効ダメージ(850%)",
+		proc: add_cond(ChainAttrAttack(8.5, 4, [0,1,0,1,0]), as_consume_own(0.15)),
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間、味方のMAXHPを毎ターン20%消費し、味方の攻撃力をアップ(200%)、さらに極稀にクリティカル",
+		turn: 11,
+		proc: [ss_boost_enhance_all(2.0, 5, 0.2, [1,1,1,1,1])],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "シンジのために戦う 綾波レイ",
+	cardno: 6612,
+	imageno: 8643,
+	hp: 5338,
+	atk: 3268,
+	cost: 53,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(エヴァⅠ)",
+	as1: {
+		desc: "<攻撃強化・ガード>5チェインで水属性の味方の攻撃力をアップし(60%)、さらに全属性のダメージを軽減(10%)",
+		proc: [ChainEnhance(0.6, [0,1,0,0,0], 5), as_guard(0.10, [1,1,1,1,1], 5)],
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し(25%)、状態異常を回復する",
+		turn: 5,
+		proc: [ss_heal(0.25), ss_abstate_cure()],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<攻撃強化・ガード>5チェインで水属性の味方の攻撃力をアップし(90%)、さらに全属性のダメージを軽減(10%)",
+		proc: [ChainEnhance(0.9, [0,1,0,0,0], 5), as_guard(0.10, [1,1,1,1,1], 5)],
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 7,
+		proc: [ss_heal(0.50), ss_abstate_cure()],
+	},
+	Lawake: [
+		Abstate_invalid("as_sealed"),
+		Statusup(500,0),
+	],
+}

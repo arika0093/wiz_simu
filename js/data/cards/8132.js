@@ -1,0 +1,46 @@
+{
+	name: "恋そよぐ雅紅華 ツバキ・リンドウ",
+	cardno: 8132,
+	imageno: 7556,
+	hp: 2741,
+	atk: 4081,
+	cost: 56,
+	attr: [2,1],
+	species: [8],
+	islegend: true,
+	ape: "バレンタイン2015",
+	as1: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ、複属性が水属性だとさらにアップ(30%/80%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,0,1,0,0], [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(400%/950%)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([0,1,0,0,0], 9.5, 4.0), [2])],
+	},
+	as2: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ、複属性が水属性だとさらにアップ(60%/110%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,0,1,0,0], [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(400%/1450%)",
+		turn: 9,
+		proc: [ss_damage_all(special_attr([0,1,0,0,0], 14.5, 4.0), [2])],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200,[0,1,1,0,0,]),
+		Attr_statusup(200,0,[0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(3),
+		Awake_noeffect("心眼", 1),
+		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,300,[0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0,[0,0,1,0,0,],300,0,[0,1,0,0,0,]),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+		Awake_noeffect("スキル反射見破り",1),
+	],
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,200,[0,1,1,0,0,]),
+	],
+}

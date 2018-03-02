@@ -1,0 +1,45 @@
+{
+	name: "暗きを彷徨する隠の神 ツツノカミ",
+	cardno: 4426,
+	imageno: 6171,
+	hp: 3051,
+	atk: 2272,
+	cost: 36,
+	attr: [2, -1],
+	species: [1],
+	awakes: [
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Costdown(2),
+		Attr_relief([1, 0, 0, 0, 0, ], 10),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Statusup(200, 0),
+		Spec_statusup(0, 200, [1, ]),
+		Spec_statusup(200, 0, [1, ]),
+	],
+	as1: {
+		desc: "<回復>雷属性の味方のHPを回復、さらに吸収(回復：11％ / 吸収：23％)",
+		proc: add_cond(Heal(0.11, [0,0,1,0,0], 0), as_hp_absorption(0.23)),
+	},
+	ss1: {
+		desc: "<自己犠牲蘇生>自分を犠牲に全員をHP50％蘇生",
+		turn: 11,
+		proc: [ss_resurrection([1,1,1,1,1], 0.50), ss_consume_own(1.0)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(500, 0),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>雷属性の味方のHPを回復、雷属性の攻撃力をアップ、さらに吸収(回復：13％ / 攻撃力：+20％ / 吸収：23％)",
+		proc: [add_cond(Heal(0.13, [0,0,1,0,0], 0), as_hp_absorption(0.23)), ChainEnhance(0.20, [0,0,1,0,0], 0)],
+	},
+	ss2: {
+		desc: "<自己犠牲蘇生>自分を犠牲に全員をHP100％蘇生",
+		turn: 12,
+		proc: [ss_resurrection([1,1,1,1,1], 1.0), ss_consume_own(1.0)],
+	},
+}

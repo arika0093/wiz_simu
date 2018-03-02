@@ -1,0 +1,47 @@
+{
+	name: "聖祭に交わす友誼 ルシェ・ワダツミ",
+	cardno: 7584,
+	imageno: 9647,
+	hp: 3050,
+	atk: 2759,
+	cost: 45,
+	attr: [1,2],
+	species: [0],
+	islegend: true,
+	ape: "ギルドマスターとChristmas",
+	is_dist: true,
+	as1: {
+		desc: "<ギャンブル攻撃>3チェインかつパネルが2色でダメージがイチかバチかアップ、3色でダメージがイチかバチかアップ(250%~850%/400%~1000%)",
+		proc: ChainStakesAttack3(0, 0, 2.5, 8.5, 4.0, 10, 3),
+	},
+	ss1: {
+		desc: "<解答削り>解答選択肢を2つ削る",
+		turn: 3,
+		proc: [ss_answer_narrow(2)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(100,0),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],2),
+		Costdown(10),
+		Spec_statusup(500,0, [0,]),
+		Spec_statusup(0,500, [0,]),
+		Guild_statusup(0, 1000),
+		Guild_statusup(1000, 0),
+	],
+	as2: {
+		desc: "<ギャンブル攻撃>3チェインかつパネルが2色でダメージがイチかバチかアップ、3色でダメージがイチかバチかアップ(350%~950%/500%~1100%)",
+		proc: ChainStakesAttack3(0, 0, 3.5, 9.5, 5.0, 11, 3),
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 6,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+	],
+}

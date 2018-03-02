@@ -1,0 +1,45 @@
+{
+	name: "奏でる両者の心 シンジ&カヲル",
+	cardno: 6615,
+	imageno: 8646,
+	hp: 2679,
+	atk: 5828,
+	cost: 53,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(エヴァⅠ)",
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ、5チェインで更にダメージアップ(150%/200%)",
+		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.0, 5)],
+	},
+	ss1: {
+		desc: "<犠牲魔術>味方全体のMAXHPの80%を使い敵全体へ雷属性のダメージ(人数×220%)",
+		turn: 10,
+		proc: [ss_damage_all(ss_consume_all_cond(2.2, 0.8), [2])],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],2),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Statusup(0,200),
+		Fastskill(2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ、5チェインで更にダメージアップ(180%/230%)",
+		proc: [ChainAllAttack(1.8, 0), ChainAllAttack(2.3, 5)],
+	},
+	ss2: {
+		desc: "<犠牲魔術>味方全体のMAXHPの80%を使い敵全体へ雷属性のダメージ(人数×260%)",
+		turn: 12,
+		proc: [ss_damage_all(ss_consume_all_cond(2.6, 0.8), [2])],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
+}

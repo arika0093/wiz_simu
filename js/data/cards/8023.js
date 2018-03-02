@@ -1,0 +1,47 @@
+{
+	name: "歌声よ届け、宇宙の果てに 初音ミク",
+	cardno: 8023,
+	imageno: 6624,
+	hp: 5009,
+	atk: 2239,
+	cost: 52,
+	attr: [1,2],
+	species: [3],
+	islegend: true,
+	ape: "コラボ(ミク)",
+	as1: {
+		desc: "<回復>水・雷属性の味方を回復、HP50%以下なら更に回復(11%/21%)",
+		proc: [Heal(0.11, [0,1,1,0,0], 0), add_cond(Heal(0.21, [0,1,1,0,0], 0), when_hp_less(0.5))],
+	},
+	ss1: {
+		desc: "<ダメージブロック>5ターン600以下の全属性ダメージを無効化する",
+		turn: 9,
+		proc: [ss_damageblock_all(600, 5)],
+	},
+	as2: {
+		desc: "<回復>水・雷属性の味方を回復、HP50%以下なら更に回復(13%/23%)",
+		proc: [Heal(0.13, [0,1,1,0,0], 0), add_cond(Heal(0.23, [0,1,1,0,0], 0), when_hp_less(0.5))],
+	},
+	ss2: {
+		desc: "<ダメージブロック>5ターン800以下の全属性ダメージを無効化する",
+		turn: 11,
+		proc: [ss_damageblock_all(800, 5)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200,[0,1,1,0,0,]),
+		Attr_statusup(200,0,[0,1,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_relief([0,0,1,0,0,],20),
+		Attr_relief([0,1,0,0,0,],20),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,300,[0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0,[0,1,0,0,0,],300,0,[0,0,1,0,0,]),
+		Heal_afterbattle(10),
+	],
+	Lawake: [
+		Statusup(1000,0),
+		Statusup(0,500),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+}

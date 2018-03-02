@@ -1,0 +1,46 @@
+{
+	name: "今日も大漁！ シャーリー・コルト",
+	cardno: 6992,
+	imageno: 6154,
+	hp: 2499,
+	atk: 5720,
+	cost: 51,
+	attr: [2, -1],
+	species: [9],
+	ape: "クロム・マグナⅢ",
+	islegend: true,
+	as1: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ、HP80%以上でさらにダメージアップ(300%/500%)",
+		proc: [ChainAttrAttack(3.0, 0, [0,1,0,0,0]), add_cond(ChainAttrAttack(5.0, 0, [0,1,0,0,0]), when_hp_more(0.80))],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを雷属性化",
+		turn: 2,
+		proc: [ss_panel_change([0,0,1,0,0])],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
+		Fastskill(2),
+		Spec_statusup(200, 0, [9, ]),
+		Spec_statusup(0, 200, [9, ]),
+	],
+	as2: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ、HP80%以上でさらにダメージアップ(400%/600%)",
+		proc: [ChainAttrAttack(4.0, 0, [0,1,0,0,0]), add_cond(ChainAttrAttack(6.0, 0, [0,1,0,0,0]), when_hp_more(0.80))],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを雷属性化し、攻撃力アップの効果を付与(100%)",
+		turn: 6,
+		proc: [ss_panel_change([0,0,1,0,0]), panel_attackup(1.0)],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Statusup(0, 500),
+	],
+}

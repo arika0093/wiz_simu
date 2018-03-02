@@ -1,0 +1,46 @@
+{
+	name: "目的優先・人命軽視 葛城ミサト",
+	cardno: 6693,
+	imageno: 8557,
+	hp: 2862,
+	atk: 4538,
+	cost: 46,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(エヴァⅡ)",
+	as1: {
+		desc: "<属性特効・攻撃強化>雷属性の味方の攻撃力アップ(30%)し、3チェインで水属性の敵単体へ特効ダメージ(425%)",
+		proc: [ChainEnhance(0.3, [0,0,1,0,0], 0), ChainAttrAttack(4.25, 3, [0,1,0,0,0])],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体に雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/400%)",
+		turn: 4,
+		proc: [ss_damage_all(special_attr([0,1,0,0,0], 4, 2), [2])],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ", 1),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(1),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(0,200),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<属性特効・攻撃強化>雷属性の味方の攻撃力アップ(30%)し、3チェインで水属性の敵単体へ特効ダメージ(525%)",
+		proc: [ChainEnhance(0.3, [0,0,1,0,0], 0), ChainAttrAttack(5.25, 3, [0,1,0,0,0])],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体に雷属性のダメージ、さらに水属性の敵には特効ダメージ(300%/600%)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([0,1,0,0,0], 6, 3), [2])],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

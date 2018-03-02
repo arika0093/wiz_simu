@@ -1,0 +1,46 @@
+{
+	name: "魅惑の歌のワンツースリー 鏡音リン",
+	cardno: 4889,
+	imageno: 6603,
+	hp: 3402,
+	atk: 2609,
+	cost: 35,
+	attr: [2, -1],
+	species: [6],
+	disable: true,
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Fastskill(1),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Fastskill(2),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Spec_statusup(0, 200, [6, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+	],
+	as1: {
+		desc: "<回復>雷属性の味方を回復、物質はさらに回復(雷：10％ / 雷+種族：17％)",
+		proc: [Heal(0.10, [0,0,1,0,0], 0), SpecHeal(0.17, [0,0,1,0,0], [6], 0)],
+	},
+	ss1: {
+		desc: "<継続回復>3ターン味方全体を徐々に回復する(15％)",
+		turn: 5,
+		proc: [ss_regenerate(0.15, 3)],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<回復>雷属性の味方を回復、物質はさらに回復(雷：13％ / 雷+種族：20％)",
+		proc: [Heal(0.13, [0,0,1,0,0], 0), SpecHeal(0.20, [0,0,1,0,0], [6], 0)],
+	},
+	ss2: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20％)",
+		turn: 8,
+		proc: [ss_regenerate(0.20, 5)],
+	},
+}

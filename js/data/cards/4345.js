@@ -1,0 +1,46 @@
+{
+	name: "美味しく目覚める大天使 ミカエラ",
+	cardno: 4345,
+	imageno: 6101,
+	hp: 2756,
+	atk: 1924,
+	cost: 46,
+	attr: [2, 1],
+	species: [3],
+	disable: true,
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+		NEFTJOD(30),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		NEFTJOD(30),
+		Attr_statusup(100, 0, [0, 1, 1, 0, 0, ]),
+		Fastskill(2),
+		Spec_statusup(0, 200, [1, 3, ]),
+		Spec_statusup(200, 0, [1, 3, ]),
+	],
+	as1: {
+		desc: "<回復>水・雷属性の味方のHPを回復、神族・天使はさらに回復(水雷：10％ / 水雷+種族：17％)",
+		proc: [Heal(0.10, [0,1,1,0,0], 0), SpecHeal(0.17, [0,1,1,0,0], [1,3], 0)],
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ水・雷属性のダメージ、さらに味方全体のHPを回復する(攻撃：120％ / 回復：15％)",
+		turn: 5,
+		proc: [ss_damage_all(1.2, [1,2]), ss_heal(0.15)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 400),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<回復>水・雷属性の味方のHPを回復、神族・天使はさらに回復(水雷：13％ / 水雷+種族：20％)",
+		proc: [Heal(0.13, [0,1,1,0,0], 0), SpecHeal(0.20, [0,1,1,0,0], [1,3], 0)],
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ水・雷属性のダメージ、さらに味方全体のHPを回復する(攻撃：180％ / 回復：25％)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [1,2]), ss_heal(0.25)],
+	},
+}

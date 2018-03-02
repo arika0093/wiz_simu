@@ -1,0 +1,46 @@
+{
+	name: "喰えない豚男 ベリコ・ピッギ",
+	cardno: 9665,
+	imageno: 11948,
+	hp: 2455,
+	atk: 4615,
+	cost: 34,
+	attr: [0,-1],
+	species: [5],
+	islegend: true,
+	ape: "シュガーレスバンビーナ",
+	is_dist: true,
+	as1: {
+		desc: "<全体攻撃>敵全体にダメージ(140%)、3チェインで更にダメージアップ(30%)",
+		proc: [ChainAllAttack(1.4, 0), ChainAllAttack(1.7, 3)],
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHP50％を使い敵全体へダメージ(450%)",
+		turn: 6,
+		proc: [ss_damage_all(4.5, [0]), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(3),
+		NEFTJOD(30),
+		Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
+		Attr_statusup_oattr(300,0, [1,0,0,0,0,]),
+		Abstate_invalid("all_sealed"),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体にダメージ(170%)、3チェインで更にダメージアップ(30%)",
+		proc: [ChainAllAttack(1.7, 0), ChainAllAttack(2.0, 3)],
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHP50％を使い敵全体へダメージ(650%)",
+		turn: 8,
+		proc: [ss_damage_all(6.5, [0]), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
+}

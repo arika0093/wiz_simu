@@ -1,0 +1,47 @@
+{
+	name: "踊る神々 Mr.ボブ&マドロック",
+	cardno: 8445,
+	imageno: 10595,
+	hp: 5695,
+	atk: 1263,
+	cost: 47,
+	attr: [1,0],
+	species: [1],
+	islegend: true,
+	ape: "アイドルキャッツ！",
+	is_dist: true,
+	as1: {
+		desc: "<回復・複属性攻撃強化>水属性の味方を回復(10%)し、攻撃力もアップ(10%)。複属性が火属性だとさらに攻撃力アップ(50%)",
+		proc: [Heal(0.10, [0, 1, 0, 0, 0], 0), ChainEnhance_SubAttr(0.10, 0.60, [0, 1, 0, 0, 0], [1, 0, 0, 0, 0], 0)],
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体のHPを2000ダウンし、攻撃力を2000アップ(上限値:2000)",
+		turn: 1,
+		proc: [ss_statusup_all([-2000, 2000], [2000, 2000], -1)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Abstate_invalid("death_limit"),
+		Heal_afterbattle(10),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 200,0, [1,0,0,0,0,]),
+		Fastskill(1),
+	],
+	as2: {
+		desc: "<回復・複属性攻撃強化>水属性の味方を回復(13%)し、攻撃力もアップ(10%)。複属性が火属性だとさらに攻撃力アップ(50%)",
+		proc: [Heal(0.13, [0, 1, 0, 0, 0], 0), ChainEnhance_SubAttr(0.10, 0.60, [0, 1, 0, 0, 0], [1, 0, 0, 0, 0], 0)],
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体のHPを1000ダウンし、攻撃力を2000アップ(上限値:2000)",
+		turn: 4,
+		proc: [ss_statusup_all([-1000, 2000], [2000, 2000], -1)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

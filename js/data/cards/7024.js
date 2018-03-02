@@ -1,0 +1,47 @@
+{
+	name: "竜迅百騎将軍 ライサ・ナトゥル",
+	cardno: 7024,
+	imageno: 6475,
+	hp: 3754,
+	atk: 3143,
+	cost: 53,
+	attr: [0,1],
+	species: [0],
+	disable: true,
+	islegend: true,
+	ape: "ドルキマスⅠ",
+	as1: {
+		desc: "<連撃>5チェインで敵単体を3回連続攻撃(450%)",
+		proc: ChainDualAttack(4.5, 5, 3),
+	},
+	ss1: {
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(9000)",
+		turn: 6,
+		proc: [poison(9000, 4)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Spec_statusup(400,0, [0,]),
+		Spec_statusup(0,400, [0,]),
+		Fastskill(2),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,200, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<連撃>5チェインで敵単体を3回連続攻撃(550%)",
+		proc: ChainDualAttack(5.5, 5, 3),
+	},
+	ss2: {
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(15000)",
+		turn: 10,
+		proc: [poison(15000, 4)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

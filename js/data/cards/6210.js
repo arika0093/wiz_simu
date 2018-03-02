@@ -1,0 +1,47 @@
+{
+	name: "ハリキリ魔界生徒 シルビー・タロン",
+	cardno: 6210,
+	imageno: 8033,
+	hp: 2955,
+	atk: 2150,
+	cost: 25,
+	attr: [0,2],
+	species: [2],
+	islegend: true,
+	is_dist: true,
+	ape: "聖サタニック女学院",
+	as1: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(30%/70%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.7, [1,0,0,0,0], [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体の状態異常を回復する",
+		turn: 5,
+		proc: [ss_abstate_cure()],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ", 1),
+		Fastskill(1),
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(60%/100%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.0, [1,0,0,0,0], [0,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 8,
+		proc: [ss_heal(0.5) ,ss_abstate_cure()],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

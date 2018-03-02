@@ -1,0 +1,47 @@
+{
+	name: "神界の征服王 イアデル・セラフィム",
+	cardno: 5162,
+	imageno: 6905,
+	hp: 2278,
+	atk: 2765,
+	cost: 48,
+	attr: [1, 3],
+	species: [3],
+	islegend: true,
+	ape: "ロストエデンⅡ WWMF",
+	is_dist: true,
+	as1: {
+		desc: "<種族特効>3チェインで敵全体へダメージ、魔族・天使・物質の敵へさらにダメージアップ(160%/260%)",
+		proc: [ChainAllAttack(1.6, 3), ChainAllSpecAttack(2.6, [2,3,6], 3)],
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ水・光属性のダメージ、5チェインを消費しさらにダメージアップ(150%/230%)",
+		turn: 6,
+		proc: [ss_damage_all(ss_chain_cost(5, 2.3, 1.5), [1, 3])],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Statusup(200, 0),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		NEFTJOD(30),
+		Statusup(0, 200),
+		Fastskill(2),
+		Spec_statusup(200, 0, [2, 3, ]),
+	],
+	as2: {
+		desc: "<種族特効>3チェインで敵全体へダメージ、魔族・天使・物質の敵へさらにダメージアップ(200%/300%)",
+		proc: [ChainAllAttack(2.0, 3), ChainAllSpecAttack(3.0, [2, 3, 6], 3)],
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ水・光属性のダメージ、5チェインを消費しさらにダメージアップ(220%/300%)",
+		turn: 9,
+		proc: [ss_damage_all(ss_chain_cost(5, 3.0, 2.2), [1, 3])],
+	},
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(500, 0),
+	],
+}

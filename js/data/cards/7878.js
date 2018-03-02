@@ -1,0 +1,47 @@
+{
+	name: "神の一筆 ヨミビトシラズ",
+	cardno: 7878,
+	imageno: 9937,
+	hp: 3097,
+	atk: 4023,
+	cost: 44,
+	attr: [1,-1],
+	species: [1],
+	islegend: true,
+	is_dist: true,
+	ape: "新説桃娘伝",
+	as1: {
+		desc: "<属性特効連撃>火属性の敵単体へ特効3連撃(350%)",
+		proc: [ChainDualAttrAttack(3.5, 0, 3, [1,0,0,0,0])],
+	},
+	ss1: {
+		desc: "<反動大魔術>敵全体へ水属性のダメージ(600%)◆スキル使用後、1ターン封印状態に",
+		turn: 4,
+		proc: [ss_damage_all(6.0, [1]), ss_allsealed_own(1)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		NEFTJOD(30),
+		Spec_statusup(200, 0, [1, ]),
+		Spec_statusup(0, 200, [1, ]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<属性特効連撃>火属性の敵単体へ特効3連撃(450%)",
+		proc: [ChainDualAttrAttack(4.5, 0, 3, [1,0,0,0,0])],
+	},
+	ss2: {
+		desc: "<反動大魔術>敵全体へ水属性のダメージ(800%)◆スキル使用後、1ターン封印状態に",
+		turn: 6,
+		proc: [ss_damage_all(8.0, [1]), ss_allsealed_own(1)],
+	},
+	Lawake: [
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+}

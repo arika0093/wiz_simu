@@ -1,0 +1,45 @@
+{
+	name: "あらぶる森の王様 ポポル",
+	cardno: 4856,
+	imageno: 6591,
+	hp: 3522,
+	atk: 3309,
+	cost: 44,
+	attr: [0, -1],
+	species: [4],
+	awakes: [
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Costdown(2),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0], 2),
+		Heal_afterbattle(10),
+		Fastskill(2),
+		Spec_statusup(0, 200, [4]),
+		Spec_statusup(200, 0, [4]),
+		Spec_statusup(200, 0, [4]),
+	],
+	as1: {
+		desc: "<回復>味方全体のHPを回復、妖精と天使はさらに回復(通常：11％ / 種族：17％)",
+		proc: [Heal(0.11, [1, 1, 1, 1, 1], 0), SpecHeal(0.17, [1, 1, 1, 1, 1], [3, 4], 0)],
+	},
+	ss1: {
+		desc: "<割合削り>敵単体のHPを25％減少させる、HP20％未満で更に15％減少させる",
+		turn: 9,
+		proc: [ss_ratiodamage_s(ss_hp_less(0.2, 0.4, 0.25))],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復、妖精と天使はさらに回復(通常：13％ / 種族：20％)",
+		proc: [Heal(0.13, [1, 1, 1, 1, 1], 0), SpecHeal(0.20, [1, 1, 1, 1, 1], [3, 4], 0)],
+	},
+	ss2: {
+		desc: "<割合削り>敵単体のHPを30％減少させる、HP20％未満で更に20％減少させる",
+		turn: 12,
+		proc: [ss_ratiodamage_s(ss_hp_less(0.2, 0.5, 0.3))],
+	},
+}

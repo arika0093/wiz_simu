@@ -1,0 +1,47 @@
+{
+	name: "海賊鉄髭団団長 ワルダン・ビン",
+	cardno: 8195,
+	imageno: 10333,
+	hp: 3215,
+	atk: 3113,
+	cost: 39,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "覇眼戦線Ⅲ",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(400%)",
+		proc: ChainAttack(4.0, 5),
+	},
+	ss1: {
+		desc: "<回復>味方全体のHPを回復(50%)",
+		turn: 4,
+		proc: [ss_heal(0.5)],
+	},
+	awakes: [
+		Statusup(200,0),
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],1),
+		NEFTJOD(30),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(500%)",
+		proc: ChainAttack(5.0, 5),
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体の攻撃力を500アップ(上限値:2000)、さらにHPを回復(50%)",
+		turn: 6,
+		proc: [ss_statusup_all([0, 500], [2000, 2000], -1), ss_heal(0.5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(0,500),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "黒薔薇の毒棘 アリーサ・ベルゴン",
+	cardno: 6222,
+	imageno: 8045,
+	hp: 2393,
+	atk: 4027,
+	cost: 42,
+	attr: [1,-1],
+	species: [2],
+	islegend: true,
+	is_dist: true,
+	ape: "聖サタニック女学院",
+	as1: {
+		desc: "<種族特効>敵単体へダメージアップ、天使・魔族の敵へさらにダメージアップ(250%/400%)",
+		proc: [ChainAttack(2.5, 0), ChainSpecAttack(4.0, 0, [2,3])],
+	},
+	ss1: {
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(5000×4)",
+		turn: 8,
+		proc: [poison(5000, 4)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],1),
+		Statusup(0,200),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<種族特効>敵単体へダメージアップ、天使・魔族の敵へさらにダメージアップ(350%/500%)",
+		proc: [ChainAttack(3.5, 0), ChainSpecAttack(5.0, 0, [2,3])],
+	},
+	ss2: {
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(9999×4)",
+		turn: 12,
+		proc: [poison(9999, 4)],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

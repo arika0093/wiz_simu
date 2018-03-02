@@ -1,0 +1,47 @@
+{
+	name: "暴陰暴蝕 ベケット・ボウボア",
+	cardno: 9409,
+	imageno: 11658,
+	hp: 4744,
+	atk: 2844,
+	cost: 37,
+	attr: [0,-1],
+	species: [2],
+	islegend: true,
+	ape: "ロストエデンⅢ",
+	is_dist: true,
+	as1: {
+		desc: "<回復>味方全体のHPを回復(10%)、毒状態でさらに回復(30%)",
+		proc: [Heal(0.10, [1,1,1,1,1], 0), add_cond(Heal(0.40, [1,1,1,1,1], 0), when_own_poison())],
+	},
+	ss1: {
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(3000)",
+		turn: 4,
+		proc: [poison(3000, 4)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
+		Attr_statusup_oattr(300,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(3),
+		Abstate_invalid("all_sealed"),
+		NEFTJOD(30),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Attr_relief([1,0,0,0,0,],20),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(13%)、毒状態でさらに回復(30%)",
+		proc: [Heal(0.13, [1,1,1,1,1], 0), add_cond(Heal(0.43, [1,1,1,1,1], 0), when_own_poison())],
+	},
+	ss2: {
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(5000)",
+		turn: 7,
+		proc: [poison(5000, 4)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		NEFTJOD(30),
+	],
+}

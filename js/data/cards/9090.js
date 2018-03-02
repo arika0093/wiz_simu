@@ -1,0 +1,46 @@
+{
+	name: "天譴が下る プルミエ＆ルヴァル",
+	cardno: 9090,
+	imageno: 11332,
+	hp: 2575,
+	atk: 4028,
+	cost: 54,
+	attr: [1,3],
+	species: [1],
+	islegend: true,
+	ape: "ドルキマスⅢ",
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(300%)、6チェインで更にダメージアップ(250%)",
+		proc: [ChainAttack(3.0, 3), ChainAttack(5.5, 6)],
+	},
+	ss1: {
+		desc: "<複属性回復>水属性の味方のHPを回復(40%)、複属性が光属性だとさらに回復(40%)",
+		turn: 3,
+		proc: [ss_heal_subattr([0,1,0,0,0], 0.4, [0,0,0,1,0], 0.8)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,0,1,0,]),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit", "all_sealed"]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(400%)、6チェインで更にダメージアップ(250%)",
+		proc: [ChainAttack(4.0, 3), ChainAttack(6.5, 6)],
+	},
+	ss2: {
+		desc: "<複属性回復>チェインプラス2の効果、さらに水属性の味方のHPを回復(40%)、複属性が光属性だとさらに回復(40%)",
+		turn: 6,
+		proc: [ss_addchain(2), ss_heal_subattr([0,1,0,0,0], 0.4, [0,0,0,1,0], 0.8)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Statusup(1000,0),
+	],
+}

@@ -1,0 +1,45 @@
+{
+	name: "義魂の豪断剣 バルブロ・バリオーニ",
+	cardno: 5823,
+	imageno: 7633,
+	hp: 2292,
+	atk: 4090,
+	cost: 43,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)",
+		proc: ChainAttack(4.5, 5),
+	},
+	ss1: {
+		desc: "<残滅大魔術>敵全体へ雷属性でダメージ(120%)、さらに3ターンの間、雷属性のダメージ(120%)",
+		turn: 5,
+		proc: [ss_continue_damage(1.2, 1.2, [2], 3)],
+	},
+	awakes: [
+		Statusup(0,400),
+		Statusup(200,0),
+		Fastskill(1),
+		Statusup(0,200),
+		Fastskill(2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		NEFTJOD(30),
+		Spec_statusup(0,200, [8,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(550%)",
+		proc: ChainAttack(5.5, 5),
+	},
+	ss2: {
+		desc: "<残滅大魔術>敵全体へ雷属性でダメージ(200%)、さらに3ターンの間、雷属性のダメージ(200%)",
+		turn: 9,
+		proc: [ss_continue_damage(2.0, 2.0, [2], 3)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

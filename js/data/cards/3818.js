@@ -1,0 +1,47 @@
+{
+	name: "星霜の詠人 アリス・スチュアート",
+	cardno: 3818,
+	imageno: 5417,
+	hp: 2798,
+	atk: 2743,
+	cost: 43,
+	attr: [2,-1],
+	species: [9],
+	disable: true,
+	islegend: true,
+	ape: "エタクロⅠ",
+	as1: {
+		desc: "<回復>火・雷属性の味方のHPを回復、HP50%以下ならさらに回復(11%/20%)",
+		proc: [Heal(0.11, [1,0,1,0,0], 0), add_cond(Heal(0.20, [1,0,1,0,0], 0), when_hp_less(0.5))],
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ雷属性のダメージ(180%)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [2])],
+	},
+	awakes: [
+		Statusup(0,200),
+		Costdown(2),
+		Statusup(200,0),
+		Costdown(2),
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(2),
+		Spec_statusup(200,0, [9,]),
+		Heal_afterbattle(10),
+		Spec_statusup(0,200, [9,]),
+	],
+	as2: {
+		desc: "<回復>火・雷属性の味方のHPを回復、HP50%以下ならさらに回復(13%/22%)",
+		proc: [Heal(0.13, [1,0,1,0,0], 0), add_cond(Heal(0.22, [1,0,1,0,0], 0), when_hp_less(0.5))],
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ雷属性のダメージ(260%)",
+		turn: 12,
+		proc: [ss_damage_all(2.6, [2])],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(400,0),
+	],
+}

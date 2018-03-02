@@ -1,0 +1,47 @@
+{
+	name: "深闇に届く雷斧 チェルシー・ネリム",
+	cardno: 5194,
+	imageno: 7113,
+	hp: 2169,
+	atk: 2358,
+	cost: 32,
+	attr: [2,4],
+	species: [9],
+	disable: true,
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<属性の加護>デッキの属性の数だけ攻撃力アップ(230%/360%/490%)",
+		proc: ChainDeckAttrsAttack(2.3, 3.6, 4.9, 0),
+	},
+	ss1: {
+		desc: "<多弾魔術>敵単体へ雷・闇属性の5回連続ダメージ(180%)",
+		turn: 6,
+		proc: [ss_damage_s(1.8, [2,3], 5)],
+	},
+	awakes: [
+		Fastskill(1),
+		Costdown(2),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(0,200),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Fastskill(2),
+		Spec_statusup(0,200, [9,]),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(200,0, [9,]),
+	],
+	as2: {
+		desc: "<属性の加護>デッキの属性の数だけ攻撃力アップ(280%/460%/640%)",
+		proc: ChainDeckAttrsAttack(2.8, 4.6, 6.4, 0),
+	},
+	ss2: {
+		desc: "<多弾魔術>敵単体へ雷・闇属性の5回連続ダメージ(380%)",
+		turn: 9,
+		proc: [ss_damage_s(3.8, [2,3], 5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(500,0),
+	],
+}

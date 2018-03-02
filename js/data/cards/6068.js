@@ -1,0 +1,47 @@
+{
+	name: "進軍し蹂躙せよ メンジャル・アンフ",
+	cardno: 6068,
+	imageno: 7895,
+	hp: 2750,
+	atk: 3025,
+	cost: 32,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	ape: "覇眼戦線Ⅱ",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(300%)",
+		proc: ChainAttack(3.0, 3),
+	},
+	ss1: {
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(5000)",
+		turn: 8,
+		proc: [poison(5000, 4)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(100,0),
+		Fastskill(1),
+		Statusup(200,0),
+		Statusup(0,200),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(0,100, [8,]),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(400%)",
+		proc: ChainAttack(4.0, 3),
+	},
+	ss2: {
+		desc: "<毒>5ターン敵全体に毒のダメージを与える(9999)",
+		turn: 12,
+		proc: [poison(9999, 5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(400,0),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "愛ゆえの暴虐 リヴェータ・イレ",
+	cardno: 5027,
+	imageno: 6782,
+	hp: 2702,
+	atk: 4199,
+	cost: 43,
+	attr: [0, -1],
+	species: [8],
+	disable: true,
+	awakes: [
+		Panel_boost([1,0,0,0,0], 2),
+		Fastskill(1),
+		Statusup(200, 0),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Fastskill(2),
+		Statusup(0, 200),
+		Spec_statusup(0, 200, [8]),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Spec_statusup(200, 0, [8]),
+	],
+	as1: {
+		desc: "<属性特効連撃>3チェインで雷属性の敵単体へ特効3連撃/計525％",
+		proc: ChainDualAttrAttack(5.25, 3, 3, [0,0,1,0,0]),
+	},
+	ss1: {
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(150％)",
+		turn: 6,
+		proc: [ss_enhance_own(1.5, 3)],
+	},
+	islegend: true,
+	Lawake: [
+		NEFTJOD(30),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<属性特効連撃>3チェインで雷属性の敵単体へ特効3連撃/計625％",
+		proc: ChainDualAttrAttack(6.25, 3, 3, [0,0,1,0,0]),
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン自分の攻撃力をアップ。HP20％以下の時、さらに自分の攻撃力をアップ)(通常：200％ / HP20％以下：1200％)",
+		turn: 8,
+		proc: [ss_enhance_own(ss_hp_less(0.2, 12, 2.0), 4)],
+	},
+}

@@ -1,0 +1,47 @@
+{
+	name: "外天の人形師 リツェーレ・トノラ",
+	cardno: 7704,
+	imageno: 5695,
+	hp: 4202,
+	atk: 4108,
+	cost: 51,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "ウィズセレクション",
+	as1: {
+		desc: "<属性特効・攻撃強化>5チェインで水属性の敵単体へ特効ダメージ(450%)、さらに雷属性の味方の攻撃力をアップ(60%)",
+		proc: [ChainAttrAttack(4.5, 5, [0,1,0,0,0]), ChainEnhance(0.6, [0,0,1,0,0], 5)],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ、平均解答が早いほどさらに水属性の敵には特効ダメージ(基本:600%, 3秒台:800%, 2秒台:1000%, 1秒台:1200%, 0秒台:1400%)",
+		turn: 5,
+		proc: [ss_damage_s(special_attr([0, 1, 0, 0, 0], ss_answertime(6.0, 2.0), 6.0), [2], 1)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_relief([1,0,0,0,0,],20),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Spec_statusup(300,0, [9,]),
+		Fastskill(2),
+		Spec_statusup(0,300, [9,]),
+	],
+	as2: {
+		desc: "<属性特効・攻撃強化>5チェインで水属性の敵単体へ特効ダメージ(550%)、さらに雷属性の味方の攻撃力をアップ(60%)",
+		proc: [ChainAttrAttack(5.5, 5, [0,1,0,0,0]), ChainEnhance(0.6, [0,0,1,0,0], 5)],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ、平均解答が早いほどさらに水属性の敵には特効ダメージ(基本:1000%, 3秒台:1200%, 2秒台:1400%, 1秒台:1600%, 0秒台:1800%)",
+		turn: 8,
+		proc: [ss_damage_s(special_attr([0, 1, 0, 0, 0], ss_answertime(10.0, 2.0), 10.0), [2], 1)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+}

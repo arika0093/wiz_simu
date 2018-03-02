@@ -1,0 +1,47 @@
+{
+	name: "魔法の絵の具から誕生 ポポドッグ",
+	cardno: 7971,
+	imageno: 10099,
+	hp: 2222,
+	atk: 2222,
+	cost: 35,
+	attr: [2,0],
+	species: [5],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(350%)",
+		proc: ChainAttack(3, 3.5),
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・火属性のダメージ(120％)",
+		turn: 4,
+		proc: [ss_damage_all(1.2, [2, 0]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Fastskill(2),
+		Awake_noeffect("心眼",1),
+		Awake_noeffect("経験値取得量アップ",2),
+		Awake_noeffect("スキル反射見破り",1),
+		NEFTJOD(60),
+		Awake_noeffect("行動見破り",1),
+		Panel_boost([0,0,1,0,0,],2),
+		Awake_chainguard(),
+		Awake_Chainboost(1),
+		Awake_noeffect("難易度ダウン",1),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(450%)",
+		proc: ChainAttack(3, 4.5),
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・火属性のダメージ(150％)",
+		turn: 6,
+		proc: [ss_damage_all(1.5, [2, 0]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Spec_statusup(200,0, [5,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+	],
+}

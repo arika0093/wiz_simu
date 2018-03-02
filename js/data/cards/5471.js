@@ -1,0 +1,46 @@
+{
+	name: "千の花のひととき フェルチ・リリー",
+	cardno: 5471,
+	imageno: 7328,
+	hp: 3005,
+	atk: 2990,
+	cost: 38,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	alias: ["/rinshandream", "/wiztools", "ちっぱい"],
+	as1: {
+		desc: "<回復>雷属性の味方のHPを回復(13%)",
+		proc: Heal(0.13, [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<回復>味方全体のHPを回復する(50%)",
+		turn: 5,
+		proc: [ss_heal(0.5)],
+	},
+	awakes: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(0,200),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Statusup(0,100),
+		Panel_boost([0,0,1,0,0,],1),
+		Heal_afterbattle(10),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<回復>雷属性の味方のHPを回復(16%)",
+		proc: Heal(0.16, [0,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<回復>チェインプラス2の効果、さらに味方全体のHPを完全に回復",
+		turn: 8,
+		proc: [ss_addchain(2), ss_heal(1.0)],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

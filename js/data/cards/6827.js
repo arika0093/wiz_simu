@@ -1,0 +1,47 @@
+{
+	name: "貫く心のド真ん中 マトイ・ナヒサコ",
+	cardno: 6827,
+	imageno: 5804,
+	hp: 2511,
+	atk: 5789,
+	cost: 51,
+	attr: [1,-1],
+	species: [1],
+	disable: true,
+	islegend: true,
+	ape: "八百万神秘譚Ⅰ",
+	as1: {
+		desc: "<チェイン攻撃>8チェインでダメージアップ(600%)",
+		proc: ChainAttack(6.0, 8),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(2)],
+	},
+	awakes: [
+		Fastskill(2),
+		Statusup(0,200),
+		Spec_statusup(400,0, [1,]),
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Fastskill(2),
+		Spec_statusup(0,200, [1,]),
+		Abstate_invalid("as_sealed"),
+		Awake_noeffect("心眼",1),
+	],
+	as2: {
+		desc: "<チェイン攻撃>8チェインでダメージアップ(700%)",
+		proc: ChainAttack(7.0, 8),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス3の効果を付与",
+		turn: 8,
+		proc: [panel_chainplus(3)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

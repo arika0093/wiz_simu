@@ -1,0 +1,47 @@
+{
+	name: "大義の灼刃 リンカ・ワイアット",
+	cardno: 90052,
+	imageno: 6138,
+	hp: 2780,
+	atk: 3218,
+	cost: 42,
+	attr: [0,-1],
+	species: [8],
+	disable: true,
+	islegend: true,
+	ape: "クロマグⅠ",
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、7チェインで更にダメージアップ(300%/500%)",
+		proc: [ChainAttack(3.0, 3), ChainAttack(5.0, 7)],
+	},
+	ss1: {
+		desc: "<大魔術>敵単体へ火属性ダメージ(150%)",
+		turn: 4,
+		proc: [ss_damage_s(1.5, [0], 1)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(0,100),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Spec_statusup(0,200, [8,]),
+		Spec_statusup(200,0, [8,]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],1),
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、7チェインで更にダメージアップ(400%/600%)",
+		proc: [ChainAttack(4.0, 3), ChainAttack(6.0, 7)],
+	},
+	ss2: {
+		desc: "<大魔術>敵単体へ火属性ダメージ(270%)",
+		turn: 6,
+		proc: [ss_damage_s(2.7, [0], 1)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(0,500),
+	],
+}

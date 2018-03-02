@@ -214,10 +214,6 @@
                         <!--#config sizefmt="bytes" -->
                         登録されている精霊数:
                         <span id="reg_num">----</span>
-                        ( <span id="data_size"><!--#fsize virtual='/js/data/cards.js' --></span> B )
-                        <br/>
-                        精霊データ最終更新日:
-                        <span id="data_latest"><!--#flastmod virtual='/js/data/cards.js'--></span>
                     </dd>
                 </dl>
             </div>
@@ -445,7 +441,7 @@
     <script charset="UTF-8" src="/js/data/skill_spe_body.js"></script>
     <script charset="UTF-8" src="/js/data/skill_awake.js"></script>
     <script charset="UTF-8" src="/js/data/skill_crystal.js"></script>
-    <script charset="UTF-8" src="/js/data/cards.js"></script>
+    <script charset="UTF-8" src="/js/data/cards.php"></script>
     <script charset="UTF-8" src="/js/data/sp_alias.js"></script>
     <!-- other data -->
     <script charset="UTF-8" src="/js/simulator/damage.js"></script>

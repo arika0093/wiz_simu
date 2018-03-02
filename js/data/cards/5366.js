@@ -1,0 +1,47 @@
+{
+	name: "通じ合う想い ロレッタ・ミラージュ",
+	cardno: 5366,
+	imageno: 7212,
+	hp: 2769,
+	atk: 2174,
+	cost: 34,
+	attr: [1,-1],
+	species: [9],
+	disable: true,
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<回復>水属性の味方のHPを回復(12%)",
+		proc: Heal(0.12, [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<多弾魔術>敵単体へ水属性の5回連続ダメージ(180%)",
+		turn: 7,
+		proc: [ss_damage_s(1.8, [1], 5)],
+	},
+	awakes: [
+		Statusup(0,100),
+		Fastskill(1),
+		Statusup(200,0),
+		Statusup(0,200),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<回復>水属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<多弾魔術>チェインプラス1の効果、さらに敵単体へ水属性の5回連続ダメージ(180%)",
+		turn: 9,
+		proc: [ss_damage_s(1.8, [1], 5), ss_addchain(1)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(300,0),
+	],
+}

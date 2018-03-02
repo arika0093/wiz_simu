@@ -1,0 +1,45 @@
+{
+	name: "星空に愛の旋律を ピピア・ショトワ",
+	cardno: 9482,
+	imageno: 11734,
+	hp: 2915,
+	atk: 2676,
+	cost: 43,
+	attr: [1,3],
+	species: [9],
+	islegend: true,
+	ape: "黒ウィズミュージアム",
+	as1: {
+		desc: "<回復>水属性の味方を回復(9%)、10チェインで更に回復(10%)",
+		proc: [Heal(0.09, [0,1,0,0,0], 0), Heal(0.19, [0,1,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
+		turn: 13,
+		proc: [ss_latest_copy()],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Awake_secondfast(3),
+		Heal_afterbattle(10),
+		Awake_secondfast(3),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 200,0, [0,0,0,1,0,]),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [0,0,0,1,0,]),
+		Awake_secondfast(5),
+	],
+	as2: {
+		desc: "<回復>水属性の味方を回復(12%)、10チェインで更に回復(10%)",
+		proc: [Heal(0.12, [0,1,0,0,0], 0), Heal(0.22, [0,1,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
+		turn: 13,
+		proc: [ss_latest_copy()],
+	},
+	Lawake: [
+		Statusup(0,1500),
+	],
+}

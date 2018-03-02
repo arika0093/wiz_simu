@@ -1,0 +1,47 @@
+{
+	name: "王座魔歌仙 スローン・シート",
+	cardno: 7772,
+	imageno: 9854,
+	hp: 4521,
+	atk: 2043,
+	cost: 41,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "魔轟三鉄傑 対 地獄三十六歌仙",
+	is_dist: true,
+	as1: {
+		desc: "<回復>雷属性の味方のHPを回復(12%)",
+		proc: Heal(0.12, [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<ブースト>4ターンの間、味方のMAXHPを毎ターン20%消費し、味方の攻撃力をアップ(150%)。さらに極稀にクリティカル",
+		turn: 8,
+		proc: [ss_boost_enhance_all(1.5, 4, 0.2, [1,1,1,1,1])],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],1),
+		Costdown(2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Fastskill(1),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<回復>雷属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [0,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間、味方のMAXHPを毎ターン20%消費し、味方の攻撃力をアップ(200%)。さらに極稀にクリティカル",
+		turn: 11,
+		proc: [ss_boost_enhance_all(2.0, 5, 0.2, [1,1,1,1,1])],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

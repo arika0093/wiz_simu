@@ -1,0 +1,47 @@
+{
+	name: "桜に狂わされた鬼心 シャラ・カミノ",
+	cardno: 8491,
+	imageno: 10652,
+	hp: 2575,
+	atk: 2238,
+	cost: 37,
+	attr: [2,0],
+	species: [5],
+	islegend: true,
+	ape: "八百万神秘譚Ⅳ",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>4チェインで敵単体を3回連続攻撃(350%)",
+		proc: ChainDualAttack(3.5, 4, 3),
+	},
+	ss1: {
+		desc: "<遅延>敵単体の攻撃ターンを1遅らせる",
+		turn: 5,
+		proc: [ss_delay_s(1)],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([0,0,1,0,0,],1),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(3),
+		Statusup(0,200),
+		Statusup(200,0),
+		NEFTJOD(30),
+		Awake_noeffect("ゴールド取得量アップ",2),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<連撃>4チェインで敵単体を3回連続攻撃(450%)",
+		proc: ChainDualAttack(4.5, 4, 3),
+	},
+	ss2: {
+		desc: "<遅延>敵単体の攻撃ターンを1遅らせる、さらに味方全体のHPを回復する(35%)",
+		turn: 7,
+		proc: [ss_delay_s(1), ss_heal(0.35)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(400,0),
+	],
+}

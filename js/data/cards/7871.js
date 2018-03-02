@@ -1,0 +1,47 @@
+{
+	name: "隣爺 バッドネイバー＝ヒノクルマ",
+	cardno: 7871,
+	imageno: 9930,
+	hp: 2039,
+	atk: 4431,
+	cost: 40,
+	attr: [0,-1],
+	species: [5],
+	islegend: true,
+	is_dist: true,
+	ape: "新説桃娘伝",
+	as1: {
+		desc: "<属性特効>4チェインで雷属性の敵単体へ特効ダメージ(550%)",
+		proc: [ChainAttrAttack(5.5, 4, [0,0,1,0,0])],
+	},
+	ss1: {
+		desc: "<ブースト>5ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ、平均解答時間が早いほどさらにアップ(基本:600%,3秒台:750%,2秒台:900%,1秒台:1050%,0秒台:1200%)",
+		turn: 10,
+		proc: [ss_boost_enhance_s(ss_answertime(6.0, 1.5), 5, 0.15)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(200,0),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(200,0,[1,0,0,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200,[1,0,0,0,0,]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<属性特効>4チェインで雷属性の敵単体へ特効ダメージ(650%)",
+		proc: [ChainAttrAttack(6.5, 4, [0,0,1,0,0])],
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ、平均解答時間が早いほどさらにアップ(基本:600%,3秒台:825%,2秒台:1050%,1秒台:1275%,0秒台:1500%)",
+		turn: 13,
+		proc: [ss_boost_enhance_s(ss_answertime(6.0, 2.25), 5, 0.15)],
+	},
+	Lawake: [
+		Attr_statusup(0,200,[1,0,0,0,0,]),
+		Statusup(0,300),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "裂天の晃竜魔 ミネバ・クロード",
+	cardno: 5757,
+	imageno: 7564,
+	hp: 3047,
+	atk: 3658,
+	cost: 50,
+	attr: [2, 3],
+	species: [0],
+	islegend: true,
+	as1: {
+		desc: "<分散攻撃>4チェインで敵全体へ分散攻撃、10チェインでさらにアップ(400%/600%)",
+		proc: [ChainVarianceAttack(4.0, 4), ChainVarianceAttack(6.0, 10)],
+	},
+	ss1: {
+		desc: "<残滅大魔術>敵全体へ雷属性のダメージ(200%)、さらに3ターンの間、雷属性のダメージ(200%)",
+		turn: 7,
+		proc: [ss_continue_damage(2.0, 2.0, [2], 3)],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(1),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
+		Statusup(0, 300),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Spec_statusup(400, 0, [0, ]),
+		Fastskill(2),
+		Spec_statusup(0, 400, [0, ]),
+	],
+	as2: {
+		desc: "<分散攻撃>4チェインで敵全体へ分散攻撃、10チェインでさらにアップ(500%/700%)",
+		proc: [ChainVarianceAttack(5.0, 4), ChainVarianceAttack(7.0, 10)],
+	},
+	ss2: {
+		desc: "<残滅大魔術>敵全体へ雷属性のダメージ(300%)、さらに3ターンの間、雷属性のダメージ(300%)",
+		turn: 9,
+		proc: [ss_continue_damage(3.0, 3.0, [2], 3)],
+	},
+	Lawake: [
+		Abstate_invalid("as_sealed"),
+		Abstate_invalid("ss_sealed"),
+		Statusup(0, 500),
+	],
+}

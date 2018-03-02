@@ -1,0 +1,46 @@
+{
+	name: "宿命と真理の魔眼 サリエル・エノク",
+	cardno: 5822,
+	imageno: 7632,
+	hp: 4444,
+	atk: 2033,
+	cost: 40,
+	attr: [1,0],
+	species: [2],
+	islegend: true,
+	as1: {
+		desc: "<複属性攻撃強化>3チェインで水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(40%/90%)",
+		proc: ChainEnhance_SubAttr(0.40, 0.90, [0,1,0,0,0], [1,0,0,0,0], 3),
+	},
+	ss1: {
+		desc: "<自己犠牲蘇生>自分を犠牲に全員を50%蘇生",
+		turn: 11,
+		proc: [ss_resurrection([1,1,1,1,1], 0.50), ss_consume_own(1)],
+	},
+	awakes: [
+		Statusup(600,0),
+		Costdown(2),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(2),
+		NEFTJOD(30),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>3チェインで水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(70%/120%)",
+		proc: ChainEnhance_SubAttr(0.70, 1.20, [0,1,0,0,0], [1,0,0,0,0], 3),
+	},
+	ss2: {
+		desc: "<自己犠牲蘇生>自分を犠牲に全員を100%蘇生",
+		turn: 12,
+		proc: [ss_resurrection([1,1,1,1,1], 1), ss_consume_own(1)],
+	},
+	Lawake: [
+		NEFTJOD(30),
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

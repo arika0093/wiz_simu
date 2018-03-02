@@ -1,0 +1,47 @@
+{
+	name: "何度でも蘇る ゾンビエッタ改",
+	cardno: 9324,
+	imageno: 11591,
+	hp: 2565,
+	atk: 6428,
+	cost: 46,
+	attr: [2,-1],
+	species: [6],
+	islegend: true,
+	ape: "UHG",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(500%)",
+		proc: add_cond(ChainAttack(5.0, 0), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "<反動大魔術・蝕>スキル反射を無視し、敵単体へ雷属性のダメージ(精霊数×360%)(スキル使用後、味方全体が3ターン封印状態に)",
+		turn: 8,
+		proc: [ss_damage_s(ss_seal_all_cond(3.6), [2], 1), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_oattr(0,300, [0,0,1,0,0,]),
+		Attr_statusup_oattr(300,0, [0,0,1,0,0,]),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(0,300, [0,0,1,0,0,]),
+		Attr_statusup(300,0, [0,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(600%)",
+		proc: add_cond(ChainAttack(6.0, 0), as_consume_all(0.1)),
+	},
+	ss2: {
+		desc: "<反動大魔術・蝕>スキル反射を無視し、敵単体へ雷属性のダメージ(精霊数×420%)(スキル使用後、味方全体が3ターン封印状態に)",
+		turn: 11,
+		proc: [ss_damage_s(ss_seal_all_cond(4.2), [2], 1), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "金魚を眺む夏の涼 サーヤ･スズカゼ",
+	cardno: 8274,
+	imageno: 6290,
+	hp: 5271,
+	atk: 5171,
+	cost: 65,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	ape: "DL限定精霊",
+	as1: {
+		desc: "<回復・攻撃強化>味方全体のHPを回復(13%)、さらに水属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.13, [1,1,1,1,1], 0), ChainEnhance(0.3, [0,1,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<遅延大魔術>敵全体の攻撃ターンを1遅らせ、敵全体へ水属性のダメージ(400%)",
+		turn: 5,
+		proc: [ss_delay_all(1), ss_damage_all(4.0, [1])],
+	},
+	awakes: [
+		Costdown(20),
+		Attr_statusup(0,200, [1,1,1,1,1,]),
+		Attr_statusup(200,0, [1,1,1,1,1,]),
+		Panel_boost([0,1,0,0,0,],4),
+		NEFTJOD(30),
+		Abstate_invalid("ss_sealed"),
+		Fastskill(3),
+		Attr_statusup(0,200, [1,1,1,1,1,]),
+		Attr_statusup(200,0, [1,1,1,1,1,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復・攻撃強化>味方全体のHPを回復(16%)、さらに水属性の味方の攻撃力をアップ(30%)",
+		proc: [Heal(0.16, [1,1,1,1,1], 0), ChainEnhance(0.3, [0,1,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<遅延大魔術>敵全体の攻撃ターンを1遅らせ、敵全体へ水属性のダメージ(400%)、さらに味方全体のHPを回復する(50%)",
+		turn: 8,
+		proc: [ss_delay_all(1), ss_damage_all(4.0, [1]), ss_heal(0.5)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+		Attr_statusup(0,200, [1,1,1,1,1,]),
+	],
+}

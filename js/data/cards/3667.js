@@ -1,0 +1,46 @@
+{
+	name: "伝説のにくきう キャリン・ミャオ",
+	cardno: 3667,
+	imageno: 5205,
+	hp: 2287,
+	atk: 2431,
+	cost: 25,
+	attr: [2,-1],
+	species: [5],
+	disable: true,
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>水属性の敵単体へ極大ダメージ(275%)",
+		proc: ChainAttrAttack(2.75, 0, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<遅延>攻撃ターンを2遅らせる",
+		turn: 10,
+		proc: [ss_delay_all(2)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(200,0),
+		NEFTJOD(30),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],1),
+		Spec_statusup(0,200, [5,]),
+	],
+	as2: {
+		desc: "<属性特効>水属性の敵単体へ超極大ダメージ(350%)",
+		proc: ChainAttrAttack(3.5, 0, [0,1,0,0,0]),
+	},
+	ss2: {
+		desc: "<遅延>攻撃ターンを3遅らせる",
+		turn: 12,
+		proc: [ss_delay_all(3)],
+	},
+	Lawake: [
+		NEFTJOD(30),
+		Statusup(0,500),
+	],
+}

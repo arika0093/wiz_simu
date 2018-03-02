@@ -1,0 +1,47 @@
+{
+	name: "虹光悠雅風 オルネ・タンペート",
+	cardno: 5779,
+	imageno: 7605,
+	hp: 2450,
+	atk: 3889,
+	cost: 40,
+	attr: [2, -1],
+	species: [9],
+	disable: true,
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ、HP80%以上でさらにダメージアップ(280%/430%)",
+		proc: [ChainAttrAttack(2.8, 0, [0, 1, 0, 0, 0]), add_cond(ChainAttrAttack(4.3, 0, [0, 1, 0, 0, 0]), when_hp_more(0.80))],
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(260%)",
+		turn: 8,
+		proc: [ss_damage_all(2.6, [2]), ss_consume_own(0.50)],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Statusup(0, 200),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(2),
+		Spec_statusup(200, 0, [9, ]),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ、HP80%以上でさらにダメージアップ(380%/530%)",
+		proc: [ChainAttrAttack(3.8, 0, [0, 1, 0, 0, 0]), add_cond(ChainAttrAttack(5.3, 0, [0, 1, 0, 0, 0]), when_hp_more(0.80))],
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(330%)",
+		turn: 10,
+		proc: [ss_damage_all(3.3, [2]), ss_consume_own(0.50)],
+	},
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(400, 0),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "閃雷の銃撃 シャーリー・コルト",
+	cardno: 6984,
+	imageno: 8982,
+	hp: 1996,
+	atk: 4108,
+	cost: 51,
+	attr: [2,0],
+	species: [9],
+	islegend: true,
+	ape: "クロム・マグナⅠ",
+	as1: {
+		desc: "<連撃>3チェインで敵単体を5回連続攻撃(350%)",
+		proc: ChainDualAttack(3.5, 3, 5),
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の5回連続ダメージ(350%)",
+		turn: 5,
+		proc: [ss_damage_s(3.5, [2,0], 5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Statusup(200,0),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Spec_statusup(0,100, [9,]),
+		Attr_statusup_sattr(0,200, [0,0,1,0,0,], 0,200, [1,0,0,0,0,]),
+		Costdown(2),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Fastskill(2),
+		Spec_statusup(0,200, [9,]),
+		Spec_statusup(200,0, [9,]),
+	],
+	as2: {
+		desc: "<連撃>3チェインで敵単体を7回連続攻撃(450%)",
+		proc: ChainDualAttack(4.5, 3, 7),
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・雷属性のダメージ(260%)",
+		turn: 12,
+		proc: [ss_damage_all(2.6, [2,0]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Statusup(0,500),
+	],
+}

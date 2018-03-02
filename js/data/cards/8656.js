@@ -1,0 +1,46 @@
+{
+	name: "想い返す、夏 イレーナ・フリエル",
+	cardno: 8656,
+	imageno: 10829,
+	hp: 7895,
+	atk: 1815,
+	cost: 50,
+	attr: [0,-1],
+	species: [1],
+	islegend: true,
+	ape: "エタクロⅢ",
+	as1: {
+		desc: "<回復>火属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [1,0,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復(20%)、さらに敵の状態異常攻撃を無効化(発動中行動不可)",
+		turn: 5,
+		proc: [ss_reinforcement_all(4, [ss_regenerate(0.2, 1, "RF"), ss_absattack_disable(1, "RF")])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_oattr(0,400, [1,0,0,0,0,]),
+		Attr_statusup_oattr(400,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+		Heal_afterbattle(10),
+		Fastskill(3),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<回復>火属性の味方のHPを回復(17%)",
+		proc: Heal(0.17, [1,0,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し、さらに攻撃力をアップ(20%,150%)、さらに敵の状態異常攻撃を無効化(発動中行動不可)",
+		turn: 8,
+		proc: [ss_reinforcement_all(4, [ss_regenerate(0.2, 1, "RF"), ss_enhance_all(1.5, 1, [1, 1, 1, 1, 1], "RF"), ss_absattack_disable(1, "RF")])],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Statusup(1000,0),
+	],
+}

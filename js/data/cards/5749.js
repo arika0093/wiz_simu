@@ -1,0 +1,46 @@
+{
+	name: "果てなき愛 ルカ・ウァレンティヌス",
+	cardno: 5749,
+	imageno: 7559,
+	hp: 4111,
+	atk: 2655,
+	cost: 43,
+	attr: [0, 1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<回復>火・水属性の味方を回復、7チェインでさらに回復(11%/17%)",
+		proc: [Heal(0.11, [1, 1, 0, 0, 0], 0), Heal(0.17, [1, 1, 0, 0, 0], 7)],
+	},
+	ss1: {
+		desc: "<遅延>攻撃ターンを2遅らせる",
+		turn: 8,
+		proc: [ss_delay_all(2)],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Costdown(2),
+		Attr_statusup(200, 0, [1, 1, 0, 0, 0, ]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(200, 0, [1, 1, 0, 0, 0, ]),
+		Attr_statusup(0, 200, [1, 1, 0, 0, 0, ]),
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
+	],
+	as2: {
+		desc: "<回復>火・水属性の味方を回復、7チェインでさらに回復(14%/20%)",
+		proc: [Heal(0.14, [1, 1, 0, 0, 0], 0), Heal(0.20, [1, 1, 0, 0, 0], 7)],
+	},
+	ss2: {
+		desc: "<遅延>チェインプラス3の効果、さらに攻撃ターンを3遅らせる",
+		turn: 12,
+		proc: [ss_addchain(3), ss_delay_all(3)],
+	},
+	Lawake: [
+		Statusup(400, 0),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+		Abstate_invalid("ss_sealed"),
+	],
+}

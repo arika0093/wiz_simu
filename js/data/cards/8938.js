@@ -1,0 +1,48 @@
+{
+	name: "AbCd-Ιι:《永劫を想う英雄》",
+	cardno: 8938,
+	imageno: 11149,
+	hp: 2673,
+	atk: 5248,
+	cost: 39,
+	attr: [2,-1],
+	species: [11],
+	islegend: true,
+	ape: "ゴールデンチャレンジ",
+	alias: ["ミルドレッド"],
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(350%)",
+		proc: ChainAttrAttack(3.5, 0, [0, 1, 0, 0, 0]),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ(400%)、さらに水属性の敵には特効ダメージ(400%)",
+		turn: 6,
+		proc: [ss_damage_s(special_attr([0, 1, 0, 0, 0], 8.0, 4.0), [2], 1)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_oattr(0,300, [0,0,1,0,0,]),
+		Attr_statusup_oattr(300,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Awake_noeffect("経験値取得量アップ",1),
+		NEFTJOD(30),
+		Attr_statusup(0,300, [0,0,1,0,0,]),
+		Attr_statusup(300,0, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(450%)",
+		proc: ChainAttrAttack(4.5, 0, [0, 1, 0, 0, 0]),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ(400%)、さらに水属性の敵には特効ダメージ(900%)。HP20%以下の時、さらに特効ダメージ(2200%)",
+		turn: 9,
+		proc: [ss_damage_s(special_attr([0, 1, 0, 0, 0], ss_hp_less(0.2, 25, 13), 4.0), [2], 1)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Statusup(0,500),
+	],
+}

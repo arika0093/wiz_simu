@@ -1,0 +1,33 @@
+{
+	name: "素直になれないふたり 小五郎&英理",
+	cardno: 5285,
+	imageno: 6980,
+	hp: 2001,
+	atk: 2009,
+	cost: 32,
+	attr: [1,2],
+	species: [8],
+	islegend: false,
+	ape: "コラボ(コナン)",
+	as1: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(300%)",
+		proc: ChainDualAttack(3.0, 3, 3),
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
+		turn: 9,
+		proc: [ss_skillboost(2)],
+	},
+	awakes: [
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Fastskill(1),
+		Statusup(0,200),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Statusup(200,0),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+	],
+}

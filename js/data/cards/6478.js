@@ -1,0 +1,46 @@
+{
+	name: "叡智の編纂者 ティア・ソピア",
+	cardno: 6478,
+	imageno: 8418,
+	hp: 3103,
+	atk: 2553,
+	cost: 50,
+	attr: [0,3],
+	species: [9],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>7チェインで火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(80%/130%)",
+		proc: ChainEnhance_SubAttr(0.8, 1.3, [1,0,0,0,0], [0,0,0,1,0], 7),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(2)],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(2),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Spec_statusup(0,200, [9,]),
+		Spec_statusup(200,0, [9,]),
+		Guild_statusup(0, 500),
+		Guild_statusup(1000, 0),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>7チェインで火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(110%/160%)",
+		proc: ChainEnhance_SubAttr(1.1, 1.6, [1,0,0,0,0], [0,0,0,1,0], 7),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス3の効果を付与",
+		turn: 8,
+		proc: [panel_chainplus(3)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

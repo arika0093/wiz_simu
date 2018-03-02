@@ -1,0 +1,48 @@
+{
+	name: "聖王たる神髄 ミカエラ・セラフィム",
+	cardno: 90059,
+	imageno: 9120,
+	hp: 3495,
+	atk: 3390,
+	cost: 54,
+	attr: [2,3],
+	species: [3],
+	disable: true,
+	islegend: true,
+	ape: "ロストエデンⅡ WWMF",
+	as1: {
+		desc: "<種族特効>4チェインでダメージアップ、天使・魔族へさらにダメージアップ(400%/550%)",
+		proc: [ChainAttack(4.0, 4), ChainSpecAttack(5.5, 4, [2,3])],
+	},
+	ss1: {
+		desc: "<斬撃大魔術>3ターン溜めた後、スキル反射を無視し、雷・光属性の3連撃、さらに連撃数分チェインプラス(300%)",
+		turn: 1,
+		charged: 3,
+		proc: [ss_damage_slash(3.0, [2,3], 3), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Costdown(5),
+		Spec_statusup(200,0, [3,]),
+		NEFTJOD(30),
+		Attr_relief([1,0,0,0,0,],10),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_sattr(0,200, [0,0,1,0,0,], 0,200, [0,0,0,1,0,]),
+		Attr_statusup_sattr(200,0, [0,0,1,0,0,], 200,0, [0,0,0,1,0,]),
+		Awake_noeffect("スキル反射見破り",1),
+	],
+	as2: {
+		desc: "<種族特効>4チェインでダメージアップ、天使・魔族へさらにダメージアップ(500%/650%)",
+		proc: [ChainAttack(5.0, 4), ChainSpecAttack(6.5, 4, [2,3])],
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、雷・光属性の5回連続ダメージ(650%)",
+		turn: 6,
+		proc: [ss_damage_s(6.5, [2,3], 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

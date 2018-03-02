@@ -1,0 +1,47 @@
+{
+	name: "絶零永久氷界剣 レブン・コルツ",
+	cardno: 7648,
+	imageno: 9708,
+	hp: 2335,
+	atk: 4089,
+	cost: 40,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "その光は淡く碧く 第二章 儚き聖域",
+	is_dist: true,
+	as1: {
+		desc: "<種族数攻撃>戦士の仲間の数だけダメージアップ(150%/200%/250%/300%/350%)",
+		proc: ChainDeckSpecsAttack(0.5, [8], 0, 0),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ水属性のダメージ、さらに水属性の敵には特効ダメージ、5チェインを消費しさらに特効ダメージ(800%/1300%/2300%)",
+		turn: 9,
+		proc: [ss_chain_cost_skill(5, ss_damage_s(special_attr([0,1,0,0,0], 23.0, 8.0), [1], 1), ss_damage_s(special_attr([0,1,0,0,0], 13.0, 8.0), [1], 1))],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Fastskill(1),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],1),
+		Spec_statusup(0,200, [8,]),
+		Spec_statusup(200,0, [8,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<種族数攻撃>戦士の仲間の数だけダメージアップ(170%/240%/310%/380%/450%)",
+		proc: ChainDeckSpecsAttack(0.7, [8], 0, 0),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ水属性のダメージ、さらに水属性の敵には特効ダメージ、5チェインを消費しさらに特効ダメージ(800%/1800%/2800%)",
+		turn: 12,
+		proc: [ss_chain_cost_skill(5, ss_damage_s(special_attr([0,1,0,0,0], 28.0, 8.0), [1], 1), ss_damage_s(special_attr([0,1,0,0,0], 18.0, 8.0), [1], 1))],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

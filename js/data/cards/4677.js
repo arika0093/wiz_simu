@@ -1,0 +1,46 @@
+{
+	name: "全てをいただく交渉術 覚醒のすじこ",
+	cardno: 4677,
+	imageno: 6436,
+	hp: 2304,
+	atk: 2224,
+	cost: 36,
+	attr: [0, 4],
+	species: [9],
+	awakes: [
+		Awake_noeffect("ゴールド取得量アップ", 1),
+		Panel_boost([1,0,0,0,0], 1),
+		Fastskill(1),
+		Statusup(0, 200),
+		Panel_boost([1,0,0,0,0], 2),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Fastskill(2),
+		Costdown(2),
+		Spec_statusup(200, 0, [9]),
+	],
+	as1: {
+		desc: "<種族攻撃強化>火属性の味方の攻撃力をアップ、術士はさらにアップ(火：+20％ / 火+種族：+35％)",
+		proc: [ChainEnhance(0.2, [1,0,0,0,0], 0), ChainSpecEnhance(0.35, [1,0,0,0,0], [9], 0)],
+	},
+	ss1: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(15％×5T)",
+		turn: 8,
+		proc: [ss_regenerate(0.15, 5)],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<種族攻撃強化>火属性の味方の攻撃力をアップ、術士はさらにアップ(火：+25％ / 火+種族：+45％)",
+		proc: [ChainEnhance(0.25, [1,0,0,0,0], 0), ChainSpecEnhance(0.45, [1,0,0,0,0], [9], 0)],
+	},
+	ss2: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20％×5T)",
+		turn: 10,
+		proc: [ss_regenerate(0.20, 5)],
+	},
+}

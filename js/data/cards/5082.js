@@ -1,0 +1,47 @@
+{
+	name: "努々忘れぬ貧の神 カフク・アバラヤ",
+	cardno: 5082,
+	imageno: 6822,
+	hp: 2739,
+	atk: 2019,
+	cost: 33,
+	attr: [0,4],
+	species: [1],
+	islegend: true,
+	is_dist: true,
+	ape: "八百万神秘譚Ⅱ",
+	as1: {
+		desc: "<回復>火属性の味方のHPを回復、神族はさらに回復(3%/17%)",
+		proc: [Heal(0.03, [1,0,0,0,0], 0), SpecHeal(0.17, [1,0,0,0,0], [1], 0)],
+	},
+	ss1: {
+		desc: "<状態異常無効>1ターン敵の状態異常攻撃を無効化する",
+		turn: 5,
+		proc: [ss_absattack_disable(1)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(200,0),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Statusup(0,200),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([0,0,1,0,0,],20),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<回復>火属性の味方のHPを回復、神族はさらに回復(5%/23%)",
+		proc: [Heal(0.05, [1,0,0,0,0], 0), SpecHeal(0.23, [1,0,0,0,0], [1], 0)],
+	},
+	ss2: {
+		desc: "<状態異常無効>2ターン敵の状態異常攻撃を無効化する",
+		turn: 7,
+		proc: [ss_absattack_disable(2)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,400),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "春霞咲く花の歌 ミコト・ウタヨミ",
+	cardno: 4121,
+	imageno: 5795,
+	hp: 2529,
+	atk: 2068,
+	cost: 45,
+	attr: [2, 0],
+	species: [1],
+	disable: true,
+	awakes: [
+		Statusup(0, 200),
+		Fastskill(1),
+		Spec_statusup(200, 0, [1, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Fastskill(1),
+		Spec_statusup(200, 0, [1, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Spec_statusup(0, 200, [1, ]),
+	],
+	as1: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃/計350％",
+		proc: ChainDualAttack(3.5, 3, 3),
+	},
+	ss1: {
+		desc: "<多弾魔術>敵単体へ火・雷属性の5回連続ダメージ(計180％)",
+		turn: 5,
+		proc: [ss_damage_s(1.8, [0,2], 5)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃/計450％",
+		proc: ChainDualAttack(4.5, 3, 3),
+	},
+	ss2: {
+		desc: "<多弾魔術>敵単体へ火・雷属性の5回連続ダメージ(計380％)",
+		turn: 8,
+		proc: [ss_damage_s(3.8, [0,2], 5)],
+	},
+}

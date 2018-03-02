@@ -1,0 +1,46 @@
+{
+	name: "浄き陰陽の輪光 クオン・リムセ",
+	cardno: 7120,
+	imageno: 6394,
+	hp: 3556,
+	atk: 4901,
+	cost: 52,
+	attr: [2,-1],
+	species: [1],
+	islegend: true,
+	ape: "Blader",
+	as1: {
+		desc: "<属性特効>3チェインで水属性の敵単体へ特効ダメージ(525%)",
+		proc: ChainAttrAttack(5.25, 3, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<ダメージブロック>5ターン600以下の全属性ダメージを無効化",
+		turn: 9,
+		proc: [ss_damageblock_all(600, 5)],
+	},
+	awakes: [
+		Fastskill(1),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Heal_afterbattle(10),
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(400,0, [1,]),
+		Spec_statusup(0,400, [1,]),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで水属性の敵単体へ特効ダメージ(625%)",
+		proc: ChainAttrAttack(6.25, 3, [0,1,0,0,0]),
+	},
+	ss2: {
+		desc: "<ダメージブロック>5ターン600以下の全属性ダメージを無効化し、HP20%以下の時、1200以下の全属性ダメージを無効化",
+		turn: 12,
+		proc: [ss_damageblock_all(ss_hp_less(0.2, 1200, 600), 5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(500,0),
+	],
+}

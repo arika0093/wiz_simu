@@ -1,0 +1,47 @@
+{
+	name: "追憶と恒久の巫女 メモリア・リィセ",
+	cardno: 7227,
+	imageno: 9249,
+	hp: 2502,
+	atk: 4434,
+	cost: 58,
+	attr: [2,3],
+	species: [9],
+	islegend: true,
+	ape: "追憶のレディアント",
+	as1: {
+		desc: "<複属性攻撃強化・属性特効連撃>4チェインで水・闇属性の敵単体へ特効3連撃(500%)、さらに雷属性の攻撃力をアップ、複属性が光属性だとさらにアップ(10%/40%)",
+		proc: [ChainDualAttrAttack(5.0, 4, 3, [0,1,0,0,1]), ChainEnhance_SubAttr(0.10, 0.40, [0,0,1,0,0], [0,0,0,1,0], 4)],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ、さらに水・闇属性の敵には特効ダメージ(400%/1200%)",
+		turn: 6,
+		proc: [ss_damage_s(special_attr([0,1,0,0,1], 12, 4), [2], 1)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Awake_noeffect("難易度ダウン",1),
+		Attr_statusup_sattr(0,200, [0,0,1,0,0,], 0,200, [0,0,0,1,0,]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化・属性特効連撃>4チェインで水・闇属性の敵単体へ特効3連撃(600%)、さらに雷属性の攻撃力をアップ、複属性が光属性だとさらにアップ(10%/40%)",
+		proc: [ChainDualAttrAttack(6.0, 4, 3, [0,1,0,0,1]), ChainEnhance_SubAttr(0.10, 0.40, [0,0,1,0,0], [0,0,0,1,0], 4)],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ、さらに水・闇属性の敵には特効ダメージ(400%/1900%)",
+		turn: 9,
+		proc: [ss_damage_s(special_attr([0,1,0,0,1], 19, 4), [2], 1)],
+	},
+	Lawake: [
+		Abstate_invalid("as_sealed", "ss_sealed"),
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

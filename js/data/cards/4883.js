@@ -1,0 +1,46 @@
+{
+	name: "ぼんぼり金魚と舞う夜空 初音ミク",
+	cardno: 4883,
+	imageno: 6627,
+	hp: 3521,
+	atk: 2421,
+	cost: 46,
+	attr: [0, -1],
+	species: [9],
+	disable: true,
+	awakes: [
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Panel_boost([1,0,0,0,0], 1),
+		Fastskill(1),
+		NEFTJOD(30),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Panel_boost([1,0,0,0,0], 1),
+		Attr_relief([0, 0, 1, 0, 0], 20),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0], 2),
+		Attr_statusup(0, 200, [1,0,0,0,0]),
+	],
+	as1: {
+		desc: "<攻撃強化>5チェインで火属性の味方の攻撃力をアップ/+60％",
+		proc: ChainEnhance(0.6, [1,0,0,0,0], 5),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
+		turn: 3,
+		proc: [panel_chainplus(1)],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<攻撃強化>5チェインで火属性の味方の攻撃力をアップ/+90％",
+		proc: ChainEnhance(0.9, [1,0,0,0,0], 5),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(2)],
+	},
+}

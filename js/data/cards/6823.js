@@ -1,0 +1,46 @@
+{
+	name: "心の「共鳴」 ラス・ウォルシュ",
+	cardno: 6823,
+	imageno: 8783,
+	hp: 2363,
+	atk: 3761,
+	cost: 50,
+	attr: [1,2],
+	species: [6],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<攻撃>敵単体へのダメージアップ、10チェインで更にダメージアップ(250%/550%)",
+		proc: [ChainAttack(2.5, 0), ChainAttack(5.5, 10)],
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを3早める",
+		turn: 10,
+		proc: [ss_skillboost(3)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Attr_statusup_sattr(0, 200, [0,1,0,0,0], 0, 200, [0,0,1,0,0]),
+		Awake_noeffect("精霊交替", 1),
+	],
+	as2: {
+		desc: "<攻撃>敵単体へのダメージアップ、10チェインで更にダメージアップ(350%/650%)",
+		proc: [ChainAttack(3.5, 0), ChainAttack(6.5, 10)],
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを4早める",
+		turn: 12,
+		proc: [ss_skillboost(4)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Statusup(0,500),
+	],
+}

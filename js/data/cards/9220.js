@@ -1,0 +1,47 @@
+{
+	name: "風雅なる桜華 ヤチヨ&インフローレ",
+	cardno: 9220,
+	imageno: 8162,
+	hp: 7799,
+	atk: 2223,
+	cost: 52,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "幻魔特区スザクⅢ",
+	as1: {
+		desc: "<回復>水属性の味方を回復(10%)、8チェインで更に回復(8%)",
+		proc: [Heal(0.10, [0,1,0,0,0], 0), Heal(0.18, [0,1,0,0,0], 8)],
+	},
+	ss1: {
+		desc: "<ガード>8ターン溜めた後、30ターン全属性のダメージを40%軽減する",
+		turn: 2,
+		charged: 8,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.40, 30)],
+	},
+	awakes: [
+		Attr_statusup_oattr(0,400, [0,1,0,0,0,]),
+		Attr_statusup_oattr(400,0, [0,1,0,0,0,]),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,400, [0,1,0,0,0,]),
+		Attr_statusup(400,0, [0,1,0,0,0,]),
+		Attr_relief([1,1,1,1,1,],20),
+		Fastskill(3),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>水属性の味方を回復(13%)、8チェインで更に回復(8%)",
+		proc: [Heal(0.13, [0,1,0,0,0], 0), Heal(0.21, [0,1,0,0,0], 8)],
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを1000アップ(上限値2000)し、さらに味方全体のHPを回復(25%)",
+		turn: 8,
+		proc: [ss_statusup_all([1000,1000], [2000,2000], -1), ss_heal(0.25)],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		NEFTJOD(30),
+	],
+}

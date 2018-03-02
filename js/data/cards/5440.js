@@ -1,0 +1,48 @@
+{
+	name: "いつでも大成功！ ユッカ&アリス",
+	cardno: 5440,
+	imageno: 7094,
+	hp: 3242,
+	atk: 2704,
+	cost: 48,
+	attr: [2,3],
+	species: [9],
+	islegend: true,
+	disable: true,
+	ape: "正月2016",
+	as1: {
+		desc: "<回復>雷属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [0,0,1,0,0], 0.14),
+	},
+	ss1: {
+		desc: "<状態異常無効>2ターン敵の状態異常攻撃を無効化する、5チェインを消費さらに2ターン無効化",
+		turn: 7,
+		proc: [ss_absattack_disable(ss_chain_cost(5, 4, 2))],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Statusup(0,200),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<ガード・回復>雷属性の味方のHPを回復(14%)、全属性のダメージを10%軽減。リーダー時さらに10%軽減",
+		proc: [Heal(0.14, [0,0,1,0,0], 0.14), as_guard(0.10, [1,1,1,1,1], 0), add_cond(as_guard(0.20, [1,1,1,1,1], 0), when_leader())],
+	},
+	ss2: {
+		desc: "<状態異常無効>3ターン敵の状態異常攻撃を無効化する、5チェインを消費さらに3ターン無効化",
+		turn: 9,
+		proc: [ss_absattack_disable(ss_chain_cost(5, 6, 3))],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(500,0),
+		NEFTJOD(30),
+	],
+}

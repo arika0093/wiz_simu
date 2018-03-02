@@ -1,0 +1,33 @@
+{
+	name: "My Name is POs-Ca",
+	cardno: 5718,
+	imageno: 7532,
+	hp: 2743,
+	atk: 2476,
+	cost: 25,
+	attr: [2, -1],
+	species: [8],
+	islegend: false,
+	is_dist: true,
+	as1: {
+		desc: "<連撃>5チェインで敵単体を5回連続攻撃(400%)",
+		proc: ChainDualAttack(4.0, 5, 5),
+	},
+	ss1: {
+		desc: "<スキルコピー>直前に発動したスキルを発動する",
+		turn: 9,
+		proc: [ss_latest_copy()],
+	},
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Statusup(0, 200),
+		Fastskill(1),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Statusup(300, 0),
+		Fastskill(1),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_relief([1, 0, 0, 0, 0, ], 10),
+		Abstate_invalid("as_sealed"),
+	],
+}

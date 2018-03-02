@@ -1,0 +1,47 @@
+{
+	name: "峻厳怒涛の激蒼竜 ジャスクス",
+	cardno: 7450,
+	imageno: 9435,
+	hp: 2411,
+	atk: 3421,
+	cost: 36,
+	attr: [1,-1],
+	species: [0],
+	islegend: true,
+	ape: "神竜降臨Ⅱ",
+	is_dist: true,
+	as1: {
+		desc: "<種族攻撃強化>水属性の味方の攻撃力をアップ、龍族はさらにアップ(20%/60%)",
+		proc: [ChainEnhance(0.2, [0,1,0,0,0], 0), ChainSpecEnhance(0.6, [0,1,0,0,0], [0], 0)],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水属性のダメージ(120%)",
+		turn: 5,
+		proc: [ss_damage_all(1.2, [1]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Statusup(0,100),
+		Statusup(100,0),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_relief([0,1,0,0,0,],10),
+		Panel_boost([0,1,0,0,0,],2),
+		Statusup(0,200),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<種族攻撃強化>水属性の味方の攻撃力をアップ、龍族はさらにアップ(40%/80%)",
+		proc: [ChainEnhance(0.4, [0,1,0,0,0], 0), ChainSpecEnhance(0.8, [0,1,0,0,0], [0], 0)],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水属性のダメージ(200%)",
+		turn: 9,
+		proc: [ss_damage_all(2.0, [1]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "破壊と凶滅の祖 アバド・ビジェック",
+	cardno: 4735,
+	imageno: 6466,
+	hp: 2781,
+	atk: 2013,
+	cost: 50,
+	attr: [1, 0],
+	species: [2],
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Statusup(0, 200),
+		Fastskill(1),
+		Statusup(200, 0),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Fastskill(2),
+		Statusup(0, 200),
+		Spec_statusup(200, 0, [2, ]),
+		Spec_statusup(0, 200, [2, ]),
+	],
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ/400％",
+		proc: ChainAttack(4.0, 5),
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める、5チェインを消費してさらに1早める",
+		turn: 8,
+		proc: [ss_skillboost(ss_chain_cost(5, 3, 2))],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ/500％",
+		proc: ChainAttack(5.0, 5),
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを3早める、5チェインを消費してさらに1早める",
+		turn: 11,
+		proc: [ss_skillboost(ss_chain_cost(5, 4, 3))],
+	},
+}

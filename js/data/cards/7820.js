@@ -1,0 +1,46 @@
+{
+	name: "ふわり雪舞う エトワール・ブリュネ",
+	cardno: 7820,
+	imageno: 9972,
+	hp: 4231,
+	atk: 3123,
+	cost: 56,
+	attr: [2,3],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<複属性攻撃強化>7チェインで雷属性の攻撃力をアップ、複属性が光だとさらにアップ(80%/130%)",
+		proc: ChainEnhance_SubAttr(0.8, 1.3, [0,0,1,0,0], [0,0,0,1,0], 7),
+	},
+	ss1: {
+		desc: "<ガード>3ターン全属性のダメージを25%軽減する",
+		turn: 5,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(60),
+		Fastskill(3),
+		Attr_relief([1,1,1,1,1,],10),
+		Panel_boost([0,0,1,0,0,],3),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,0,0,1,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>7チェインで雷属性の攻撃力をアップ、複属性が光だとさらにアップ(110%/160%)",
+		proc: ChainEnhance_SubAttr(1.1, 1.6, [0,0,1,0,0], [0,0,0,1,0], 7),
+	},
+	ss2: {
+		desc: "<ガード>3ターン全属性のダメージを50%軽減する",
+		turn: 9,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "天下滅穿の烈眼 ギルベイン・ルガ",
+	cardno: 6040,
+	imageno: 7864,
+	hp: 2571,
+	atk: 2526,
+	cost: 51,
+	attr: [2, 1],
+	species: [8],
+	islegend: true,
+	ape: "覇眼戦線Ⅰ",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化>デッキに雷属性が3体以下の時、水・雷属性の味方の攻撃力をアップ(80%)",
+		proc: ChainEnhance_attrless(0.8, [0,1,1,0,0], [0,0,1,0,0], 3, 0),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ水・雷属性のダメージ(150%)",
+		turn: 7,
+		proc: [ss_damage_all(1.5, [1, 2])],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Fastskill(1),
+		Statusup(0, 400),
+		Statusup(400, 0),
+		Attr_statusup(100, 0, [0, 1, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(2),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+		Spec_statusup(0, 200, [8, ]),
+	],
+	as2: {
+		desc: "<攻撃強化>デッキに雷属性が3体以下の時、水・雷属性の味方の攻撃力をアップ(110%)",
+		proc: ChainEnhance_attrless(1.1, [0,1,1,0,0], [0,0,1,0,0], 3, 0),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ水・雷属性のダメージ(220%)",
+		turn: 10,
+		proc: [ss_damage_all(2.2, [1, 2])],
+	},
+	Lawake: [
+		Statusup(0, 400),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+	],
+}

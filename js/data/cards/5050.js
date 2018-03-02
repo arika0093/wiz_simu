@@ -1,0 +1,47 @@
+{
+	name: "AbCd-A:《廃絶の鬼神バシレイデ》",
+	cardno: 5050,
+	imageno: 6790,
+	hp: 3431,
+	atk: 2202,
+	cost: 60,
+	attr: [1, 3],
+	species: [11],
+	awakes: [
+		Costdown(4),
+		Statusup(0, 200),
+		Fastskill(1),
+		Statusup(200, 0),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup(0, 200, [0, 1, 0, 0, 0, ]),
+		Attr_statusup(200, 0, [0, 1, 0, 0, 0, ]),
+	],
+	as1: {
+		desc: "<攻撃強化>HP80％以下で水属性の味方の攻撃力をアップ/+80％",
+		proc: add_cond(ChainEnhance(0.80, [0,1,0,0,0], 0), when_hp_less(0.80)),
+	},
+	ss1: {
+		desc: "<ダメージブロック>5ターン600以下の全属性ダメージを無効化する",
+		turn: 9,
+		proc: [ss_damageblock_all(600, 5)],
+	},
+	islegend: true,
+	is_dist: true,
+	disable: true,
+	Lawake: [
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "<攻撃強化>HP80％以下で水属性の味方の攻撃力をアップ/+110％",
+		proc: add_cond(ChainEnhance(1.1, [0,1,0,0,0], 0), when_hp_less(0.80)),
+	},
+	ss2: {
+		desc: "<ダメージブロック>5ターン600以下の全属性ダメージを無効化し、HP20％以下の時、1200以下の全属性ダメージを無効化",
+		turn: 12,
+		proc: [ss_damageblock_all(ss_hp_less(0.2, 1200, 600), 5)],
+	},
+}

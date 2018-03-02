@@ -1,0 +1,48 @@
+{
+	name: "伝説のにくきう キャリン・ミャオ",
+	cardno: 8010,
+	imageno: 5205,
+	hp: 2887,
+	atk: 4221,
+	cost: 25,
+	attr: [2,-1],
+	species: [5],
+	islegend: true,
+        ape: "周年記念精霊(2周年)",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(400%)",
+		proc: ChainAttrAttack(4.0, 0, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
+		turn: 7,
+		proc: [ss_delay_all(2)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [1,1,1,1,1,]),
+		NEFTJOD(60),
+		Attr_relief([0,0,1,0,0,],20),
+		Awake_noeffect("経験値取得量アップ",2),
+		Spec_statusup(0,200, [5,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(500%)",
+		proc: ChainAttrAttack(5.0, 0, [0,1,0,0,0]),
+	},
+	ss2: {
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
+		turn: 10,
+		proc: [ss_delay_all(3)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Statusup(200,0),
+		Statusup(0,200),
+	],
+}

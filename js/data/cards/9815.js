@@ -1,0 +1,47 @@
+{
+	name: "暴風鋼帝 ブリューダイン・ギア",
+	cardno: 9815,
+	imageno: 12234,
+	hp: 2605,
+	atk: 3523,
+	cost: 50,
+	attr: [0,3],
+	species: [1],
+	islegend: true,
+	ape: "レイド Blader",
+	is_dist: true,
+	as1: {
+		desc: "<回復・複属性攻撃強化>火属性の味方を回復(4%)し、攻撃力もアップ(10%)。複属性が光属性だとさらに攻撃力アップ(60%)",
+		proc: [Heal(0.04, [1, 0, 0, 0, 0], 0), ChainEnhance_SubAttr(0.10, 0.70, [1, 0, 0, 0, 0], [0, 0, 0, 1, 0], 0)],
+	},
+	ss1: {
+		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ火・光属性のダメージ(350%)、さらに隣接する敵に火・光属性のダメージ(350%)",
+		turn: 4,
+		proc: [ss_damage_explosion(3.5, [0,3]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Fastskill(1),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 200,0, [0,0,0,1,0,]),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+	],
+	as2: {
+		desc: "<回復・複属性攻撃強化>火属性の味方を回復(4%)し、攻撃力もアップ(40%)。複属性が光属性だとさらに攻撃力アップ(60%)",
+		proc: [Heal(0.04, [1, 0, 0, 0, 0], 0), ChainEnhance_SubAttr(0.40, 1.0, [1, 0, 0, 0, 0], [0, 0, 0, 1, 0], 0)],
+	},
+	ss2: {
+		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ火・光属性のダメージ(550%)、さらに隣接する敵に火・光属性のダメージ(550%)",
+		turn: 6,
+		proc: [ss_damage_explosion(5.5, [0,3]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,100, [0,0,0,1,0,]),
+		Statusup(0,500),
+	],
+}

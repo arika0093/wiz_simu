@@ -1,0 +1,46 @@
+{
+	name: "燃える拳と鉄板 ジョージ&アキラ",
+	cardno: 4495,
+	imageno: 6190,
+	hp: 2005,
+	atk: 3053,
+	cost: 34,
+	attr: [0, -1],
+	species: [8],
+	awakes: [
+		Statusup(0, 200),
+		Panel_boost([1,0,0,0,0], 1),
+		Statusup(200, 0),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0], 1),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Panel_boost([1,0,0,0,0], 1),
+		Fastskill(1),
+		Spec_statusup(100, 0, [8]),
+	],
+	as1: {
+		desc: "<連撃>5チェインで敵単体を6回連続攻撃/計350％",
+		proc: ChainDualAttack(3.5, 5, 6),
+	},
+	ss1: {
+		desc: "<ダメージ強化>MAXHPの60％を使い、3ターン自分の攻撃力をアップ(150％)",
+		turn: 6,
+		proc: [ss_enhance_own(1.5, 3), ss_consume_own(0.6)],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(0, 600),
+		Statusup(200, 0),
+	],
+	as2: {
+		desc: "<連撃>敵単体を6回連続攻撃/計350％",
+		proc: ChainDualAttack(3.5, 0, 6),
+	},
+	ss2: {
+		desc: "<ダメージ強化>MAXHPの60％を使い、4ターン自分の攻撃力をアップ(250％)",
+		turn: 8,
+		proc: [ss_enhance_own(2.5, 4), ss_consume_own(0.6)],
+	},
+}

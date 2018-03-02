@@ -1,0 +1,46 @@
+{
+	name: "超デビル魔道少女 リルム・ロロット",
+	cardno: 7492,
+	imageno: 9620,
+	hp: 2220,
+	atk: 4367,
+	cost: 55,
+	attr: [0,4],
+	species: [9],
+	islegend: true,
+	ape: "ハロウィン2014",
+	as1: {
+		desc: "<属性特効>3チェインかつHP80%以上で雷属性の敵単体へ特効ダメージ(675%)",
+		proc: add_cond(ChainAttrAttack(6.75, 3, [0,0,1,0,0]), when_hp_more(0.8)),
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・闇属性のダメージ(120%)、さらに味方全体のHPを回復(25%)",
+		turn: 5,
+		proc: [ss_damage_all(1.2, [0,4]), ss_heal(0.25), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Heal_afterbattle(10),
+		Attr_relief([1,0,1,0,0,],10),
+		Awake_noeffect("ドロップアップ",1),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		Spec_statusup(0,300, [9,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(0,300, [9,]),
+	],
+	as2: {
+		desc: "<属性特効>3チェインかつHP80%以上で雷属性の敵単体へ特効ダメージ(775%)",
+		proc: add_cond(ChainAttrAttack(7.75, 3, [0,0,1,0,0]), when_hp_more(0.8)),
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・闇属性のダメージ(150%)、さらに味方全体のHPを回復(25%)",
+		turn: 7,
+		proc: [ss_damage_all(1.5, [0,4]), ss_heal(0.25), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "聖星は眠らない アレク・ルミナレス",
+	cardno: 9048,
+	imageno: 11258,
+	hp: 4545,
+	atk: 3515,
+	cost: 40,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "大魔道杯 感謝",
+	is_dist: true,
+	as1: {
+		desc: "<回復・攻撃強化>火属性の味方を回復(12%)し、デッキに単色の精霊が多いほど、攻撃力をアップ(10%)（上限:5段階)",
+		proc: [Heal(0.12, [1,0,0,0,0]), add_cond(ChainEnhance(0, [1,0,0,0,0], 0), as_singleattr_num(0, 0.1))],
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方一人のスペシャルスキルの発動ターンを3早める",
+		turn: 8,
+		proc: [ss_toselect_one(ss_skillboost(3))],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(0,300),
+		Statusup(300,0),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([0,0,1,0,0,],10),
+		Heal_afterbattle(10),
+		Abstate_invalid("death_limit"),
+		Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
+		Attr_statusup_oattr(300,0, [1,0,0,0,0,]),
+		Fastskill(5),
+	],
+	as2: {
+		desc: "<回復・攻撃強化>火属性の味方を回復(15%)し、デッキに単色の精霊が多いほど、攻撃力をアップ(10%)（上限:5段階)",
+		proc: [Heal(0.15, [1,0,0,0,0]), add_cond(ChainEnhance(0, [1,0,0,0,0], 0), as_singleattr_num(0, 0.1))],
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方一人のスペシャルスキルの発動ターンを3早める",
+		turn: 8,
+		proc: [ss_toselect_one(ss_skillboost(3))],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "鉄紅貴心 ノモス・マヌス",
+	cardno: 6600,
+	imageno: 8666,
+	hp: 3832,
+	atk: 4752,
+	cost: 53,
+	attr: [0,-1],
+	species: [6],
+	islegend: true,
+	ape: "魔道杯(その他)",
+	as1: {
+		desc: "<快調攻撃>5チェインかつ残りHP90%以上でダメージアップ(700%)",
+		proc: add_cond(ChainAttack(7.0, 5), when_hp_more(0.9)),
+	},
+	ss1: {
+		desc: "<挑発>3ターン敵の攻撃を自分に集めダメージを50%軽減する",
+		turn: 6,
+		proc: [ss_provocate(0.5, 3)],
+	},
+	awakes: [
+		Attr_relief([1,1,1,1,1,],10),
+		NEFTJOD(30),
+		Fastskill(2),
+		Statusup(0,100),
+		Statusup(200,0),
+		Fastskill(2),
+		Abstate_invalid("poison"),
+		Statusup(0,200),
+		Statusup(200,0),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<快調攻撃>5チェインかつ残りHP90%以上でダメージアップ(800%)",
+		proc: add_cond(ChainAttack(8.0, 5), when_hp_more(0.9)),
+	},
+	ss2: {
+		desc: "<挑発>3ターン敵の攻撃を自分に集めダメージを75%軽減する、さらに味方全体のHPを回復(50%)",
+		turn: 9,
+		proc: [ss_provocate(0.75, 3), ss_heal(0.5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(500,0),
+	],
+}

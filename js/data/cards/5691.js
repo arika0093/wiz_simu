@@ -1,0 +1,45 @@
+{
+	name: "決戦猫ロイド アフロディテ・アレス",
+	cardno: 5691,
+	imageno: 7512,
+	hp: 3412,
+	atk: 2605,
+	cost: 41,
+	attr: [2,-1],
+	species: [6],
+	islegend: true,
+	as1: {
+		desc: "<回復>雷属性の味方のHPを回復(13%)",
+		proc: Heal(0.13, [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 8,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	awakes: [
+		Statusup(0,200),
+		Costdown(2),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+	],
+	as2: {
+		desc: "<回復>雷属性の味方のHPを回復(15%)",
+		proc: Heal(0.15, [0,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
+		turn: 10,
+		proc: [ss_heal(1.0), ss_abstate_cure()],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

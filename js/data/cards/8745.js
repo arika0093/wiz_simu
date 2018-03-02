@@ -1,0 +1,46 @@
+{
+	name: "With All My Heart エニィ",
+	cardno: 8745,
+	imageno: 10927,
+	hp: 3145,
+	atk: 7100,
+	cost: 54,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "クロスディライブACT2",
+	as1: {
+		desc: "<連撃>敵単体を6回連続攻撃(250%) 、解答が早いほどさらにアップ(70%)（上限:4段階)",
+		proc: add_cond(ChainDualAttack(2.5, 0, 6), as_timedep(0.7)),
+	},
+	ss1: {
+		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ火属性のダメージ(650%)、さらに隣接する敵に火属性のダメージ(650%) ",
+		turn: 4,
+		proc: [ss_damage_explosion(6.5, [0]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_oattr(0,400, [1,0,0,0,0,]),
+		Attr_statusup_oattr(400,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(3),
+		Attr_relief([0,0,1,0,0,],20),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<連撃>敵単体を6回連続攻撃(350%) 、解答が早いほどさらにアップ(70%)（上限:4段階)",
+		proc: add_cond(ChainDualAttack(3.5, 0, 6), as_timedep(0.7)),
+	},
+	ss2: {
+		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ火属性のダメージ(850%)、さらに隣接する敵に火属性のダメージ(850%) ",
+		turn: 6,
+		proc: [ss_damage_explosion(8.5, [0]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		NEFTJOD(60),
+	],
+}

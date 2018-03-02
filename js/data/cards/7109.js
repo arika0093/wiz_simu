@@ -1,0 +1,46 @@
+{
+	name: "桜散る千年の舞 ヤヤコ・ミカグラ",
+	cardno: 7109,
+	imageno: 9194,
+	hp: 3909,
+	atk: 4208,
+	cost: 50,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "古の森の千年桜",
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(400%)",
+		proc: ChainAttack(4.0, 4),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火属性化",
+		turn: 2,
+		proc: [ss_panel_change([1,0,0,0,0])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(300,0, [9,]),
+		Spec_statusup(0,300, [9,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(500%)",
+		proc: ChainAttack(5.0, 4),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火属性化し、ダメージ15%軽減の効果を付与",
+		turn: 5,
+		proc: [ss_panel_change([1,0,0,0,0]), panel_attr_guard([1,1,1,1,1], 0.15)],
+	},
+	Lawake: [
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

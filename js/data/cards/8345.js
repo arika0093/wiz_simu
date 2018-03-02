@@ -1,0 +1,47 @@
+{
+	name: "ヘイトレッドイーター=ミハネ",
+	cardno: 8345,
+	imageno: 10489,
+	hp: 2021,
+	atk: 4224,
+	cost: 39,
+	attr: [1,-1],
+	species: [2],
+	islegend: true,
+	ape: "喰牙RIZEⅠ",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ(350%)",
+		proc: ChainAttrAttack(3.5, 5, [1,0,0,0,0]),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの80%を使い敵全体へダメージ(400%)",
+		turn: 8,
+		proc: [ss_damage_all(4.0, [1]), ss_consume_own(0.8)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ(450%)",
+		proc: ChainAttrAttack(4.5, 5, [1,0,0,0,0]),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの80%を使い敵全体へダメージ(700%)",
+		turn: 10,
+		proc: [ss_damage_all(7.0, [1]), ss_consume_own(0.8), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(400,0),
+	],
+}

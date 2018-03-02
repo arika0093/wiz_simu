@@ -1,0 +1,47 @@
+{
+	name: "殺戮の恋人 マッド・ルシエラ",
+	cardno: 7178,
+	imageno: 9141,
+	hp: 2449,
+	atk: 2754,
+	cost: 41,
+	attr: [1,4],
+	species: [3],
+	islegend: true,
+	ape: "ロストエデンⅡ WWMF",
+	is_dist: true,
+	as1: {
+		desc: "<種族特効>5チェインでダメージアップ、魔族の敵へさらにダメージアップ(350%/550%)",
+		proc: [ChainAttack(3.5, 5), ChainSpecAttack(5.5, 5, [2])],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ水属性のダメージ、さらに火属性の敵には特効ダメージ、5チェインを消費しさらに特効ダメージ(400%/900%/1900%)",
+		turn: 9,
+		proc: [ss_chain_cost_skill(5, ss_damage_s(special_attr([1,0,0,0,0], 19.0, 4.0), [1], 1), ss_damage_s(special_attr([1,0,0,0,0], 9.0, 4.0), [1], 1))],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Statusup(200,0),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,200, [0,1,0,0,0,], 0,100, [0,0,0,0,1,]),
+	],
+	as2: {
+		desc: "<種族特効>5チェインでダメージアップ、魔族の敵へさらにダメージアップ(450%/650%)",
+		proc: [ChainAttack(4.5, 5), ChainSpecAttack(6.5, 5, [2])],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ水属性のダメージ、さらに火属性の敵には特効ダメージ、5チェインを消費しさらに特効ダメージ(400%/1400%/2400%)",
+		turn: 12,
+		proc: [ss_chain_cost_skill(5, ss_damage_s(special_attr([1,0,0,0,0], 24.0, 4.0), [1], 1), ss_damage_s(special_attr([1,0,0,0,0], 14.0, 4.0), [1], 1))],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(0,500),
+	],
+}

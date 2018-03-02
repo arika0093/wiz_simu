@@ -1,0 +1,46 @@
+{
+	name: "虹色の恋模様 アーシア・ベネット",
+	cardno: 6995,
+	imageno: 8993,
+	hp: 4625,
+	atk: 2581,
+	cost: 53,
+	attr: [1,0],
+	species: [9],
+	islegend: true,
+	ape: "クロム・マグナⅣ",
+	as1: {
+		desc: "<攻撃強化・回復>火・水属性の味方のHPを回復(8%)し、さらに攻撃力をアップ、さらにパネルの色が増す度さらにアップ(30%/50%/80%)",
+		proc: [Heal(0.08, [1,1,0,0,0], 0), ChainPanelsEnhance(0.3, 0.5, 0.8, [1,1,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<アンサースキル延長>3ターンの間、アンサースキル発動時間を10秒延長する(上限値:20秒)",
+		turn: 3,
+		proc: [ss_astime_ext(15, 3)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Heal_afterbattle(10),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Spec_statusup(200,0, [9,]),
+		Fastskill(2),
+		Spec_statusup(0,200, [9,]),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>火・水属性の味方のHPを回復(8%)し、さらに攻撃力をアップ、さらにパネルの色が増す度さらにアップ(60%/80%/110%)",
+		proc: [Heal(0.08, [1,1,0,0,0], 0), ChainPanelsEnhance(0.6, 0.8, 1.1, [1,1,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 6,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

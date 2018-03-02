@@ -1,0 +1,46 @@
+{
+	name: "夢手折る牙 ダイトメア=ラギト",
+	cardno: 8963,
+	imageno: 8270,
+	hp: 3629,
+	atk: 3579,
+	cost: 57,
+	attr: [2,4],
+	species: [8],
+	islegend: true,
+	ape: "GP2016",
+	as1: {
+		desc: "<属性特効>6チェインで水・光属性の敵単体へ特効ダメージ(800%)",
+		proc: ChainAttrAttack(8.0, 6, [0,1,0,1,0]),
+	},
+	ss1: {
+		desc: "<ブースト>5ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ(1200%)",
+		turn: 10,
+		proc: [ss_boost_enhance_s(12, 5, 0.15)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],4),
+		Fastskill(3),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		NEFTJOD(60),
+		Attr_relief([1,1,1,1,1,],20),
+		Attr_statusup_sattr(0, 100, [0,0,1,0,0], 0, 300, [0,0,0,0,1]),
+		Attr_statusup_sattr(100, 0, [0,0,1,0,0], 300, 0, [0,0,0,0,1]),
+		Awake_Chainboost(1),
+		Awake_noeffect("選ばれし者の証",1),
+	],
+	as2: {
+		desc: "<属性特効>6チェインで水・光属性の敵単体へ特効ダメージ(900%)",
+		proc: ChainAttrAttack(9.0, 6, [0,1,0,1,0]),
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ(1500%)",
+		turn: 13,
+		proc: [ss_boost_enhance_s(15, 5, 0.15)],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Statusup(0,1000),
+	],
+}

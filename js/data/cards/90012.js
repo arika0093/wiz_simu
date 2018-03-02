@@ -1,0 +1,46 @@
+{
+	name: "聖域に燈る光 シャロン&テオドール",
+	cardno: 90012,
+	imageno: 6579,
+	hp: 3542,
+	atk: 3462,
+	cost: 40,
+	attr: [1, -1],
+	species: [3],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<全体攻撃>敵の数に関わらず敵全体へダメージ(150%)",
+		proc: ChainAllAttack(1.5, 0),
+	},
+	ss1: {
+		desc: "<ダメージ強化>2ターン味方全体の攻撃力をアップ(50%)、さらに味方全体のHPを回復する(50%)",
+		turn: 8,
+		proc: [ss_enhance_all(0.5, 2, [1, 1, 1, 1, 1]), ss_heal(0.5)],
+	},
+	awakes: [
+		Fastskill(1),
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(100, 0, [1, 1, 1, 1, 1, ]),
+		Fastskill(1),
+		Heal_afterbattle(10),
+		Spec_statusup(200, 0, [3, ]),
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup(100, 0, [1, 1, 1, 1, 1, ]),
+	],
+	as2: {
+		desc: "<全体攻撃>敵の数に関わらず敵全体へダメージ(160%)",
+		proc: ChainAllAttack(1.6, 0),
+	},
+	ss2: {
+		desc: "<ダメージ強化>2ターン味方全体の攻撃力をアップ(100%)、さらに味方全体のHPを完全回復する",
+		turn: 10,
+		proc: [ss_enhance_all(1.0, 2, [1, 1, 1, 1, 1]), ss_heal(1.0)],
+	},
+	Lawake: [
+		Statusup(500, 0),
+		Attr_statusup(0, 100, [1, 1, 1, 1, 1, ]),
+	],
+}

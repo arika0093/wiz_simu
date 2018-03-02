@@ -1,0 +1,46 @@
+{
+	name: "春霞咲く花の歌 ミコト・ウタヨミ",
+	cardno: 8526,
+	imageno: 5795,
+	hp: 2715,
+	atk: 4243,
+	cost: 57,
+	attr: [2,0],
+	species: [1],
+	islegend: true,
+	ape: "八百万神秘譚Ⅰ",
+	as1: {
+		desc: "<連撃・複属性攻撃強化>3チェインで敵単体を3回連続攻撃(350%)、さらに雷属性の攻撃力をアップ(10%)、複属性が火属性だとさらにアップ(30%)",
+		proc: [ChainDualAttack(3.5, 3, 3), ChainEnhance_SubAttr(0.1, 0.4, [0,0,1,0,0], [1,0,0,0,0], 3)],
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の5回連続ダメージ(250%)",
+		turn: 4,
+		proc: [ss_damage_s(2.5, [2,0], 5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Awake_noeffect("経験値取得量アップ",2),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [1,0,0,0,0,]),
+		NEFTJOD(60),
+		Fastskill(4),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<連撃・複属性攻撃強化>3チェインで敵単体を3回連続攻撃(450%)、さらに雷属性の攻撃力をアップ(10%)、複属性が火属性だとさらにアップ(30%)",
+		proc: [ChainDualAttack(4.5, 3, 3), ChainEnhance_SubAttr(0.1, 0.4, [0,0,1,0,0], [1,0,0,0,0], 3)],
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・雷属性の5回連続ダメージ(450%)",
+		turn: 6,
+		proc: [ss_damage_s(4.5, [2,0], 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+	],
+}

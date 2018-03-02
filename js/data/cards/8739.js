@@ -1,0 +1,47 @@
+{
+	name: "AbCd-A: 《異暁の忌神 バシレイデ》",
+	cardno: 8739,
+	imageno: 7250,
+	hp: 3117,
+	atk: 3425,
+	cost: 77,
+	attr: [1,3],
+	species: [11],
+	islegend: true,
+	ape: "レイド AbCd",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(400%)、HP80%以下でさらにアップ(200%)",
+		proc: [ChainAttack(4.0, 5), add_cond(ChainAttack(6.0, 5), when_hp_less(0.8))],
+	},
+	ss1: {
+		desc: "<状態異常無効>味方全体のMAXHPの50%を使い、1ターン敵の状態異常攻撃を無効化する",
+		turn: 4,
+		proc: [ss_absattack_disable(1), ss_consume_all(0.5)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(60),
+		Attr_relief([1,1,1,1,1,],10),
+		Abstate_invalid("ss_sealed"),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 200,0, [0,0,0,1,0,]),
+		Fastskill(3),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(500%)、HP80%以下でさらにアップ(200%)",
+		proc: [ChainAttack(5.0, 5), add_cond(ChainAttack(7.0, 5), when_hp_less(0.8))],
+	},
+	ss2: {
+		desc: "<状態異常無効>味方全体のMAXHPの50%を使い、2ターン敵の状態異常攻撃を無効化する",
+		turn: 6,
+		proc: [ss_absattack_disable(2), ss_consume_all(0.5)],
+	},
+	Lawake: [
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+}

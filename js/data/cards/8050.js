@@ -1,0 +1,46 @@
+{
+	name: "Sparks Fly Upward グリット",
+	cardno: 8050,
+	imageno: 10178,
+	hp: 2555,
+	atk: 4180,
+	cost: 56,
+	attr: [0,1],
+	species: [8],
+	islegend: true,
+	ape: "クロスディライブ",
+	as1: {
+		desc: "<連撃>HP80%以上で敵単体を3回連続攻撃(400%)",
+		proc: add_cond(ChainDualAttack(4.0, 0, 3), when_hp_more(0.8)),
+	},
+	ss1: {
+		desc: "<カウンター>1ターンの間、スキルカウンター待機(200%)",
+		turn: 5,
+		proc: [ss_skillcounter(2, 1)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		NEFTJOD(60),
+		Panel_boost([1,0,0,0,0,],2),
+		Abstate_invalid("ss_sealed"),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,1,0,0,0,]),
+		Fastskill(3),
+		Attr_relief([1,1,1,1,1,],20),
+	],
+	as2: {
+		desc: "<連撃>HP80%以上で敵単体を3回連続攻撃(500%)",
+		proc: add_cond(ChainDualAttack(5.0, 0, 3), when_hp_more(0.8)),
+	},
+	ss2: {
+		desc: "<カウンター>1ターンの間、スキルカウンター待機(300%)",
+		turn: 7,
+		proc: [ss_skillcounter(3, 1)],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,1,0,0,0,]),
+		Abstate_invalid("all_sealed"),
+	],
+}

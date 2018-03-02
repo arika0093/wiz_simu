@@ -1,0 +1,46 @@
+{
+	name: "歴史の見届け人 アサギ&セルウス",
+	cardno: 4252,
+	imageno: 5955,
+	hp: 2864,
+	atk: 2554,
+	cost: 48,
+	attr: [2, -1],
+	species: [1],
+	disable: true,
+	awakes: [
+		Fastskill(1),
+		Spec_statusup(0, 200, [1, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Statusup(200, 0),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Fastskill(2),
+		NEFTJOD(30),
+		Spec_statusup(200, 0, [1, ]),
+		Spec_statusup(0, 200, [1, ]),
+		Spec_statusup(200, 0, [1, ]),
+	],
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ/350％",
+		proc: ChainAttack(3.5, 3),
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを中回復し、状態異常を回復する",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Statusup(400, 0),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ/450％",
+		proc: ChainAttack(4.5, 3),
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
+		turn: 9,
+		proc: [ss_heal(1.0), ss_abstate_cure()],
+	},
+}

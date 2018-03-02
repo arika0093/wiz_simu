@@ -1,0 +1,46 @@
+{
+	name: "鋼鉄の管理者 アムベル・ケイ",
+	cardno: 4499,
+	imageno: 6224,
+	hp: 2350,
+	atk: 2942,
+	cost: 45,
+	attr: [1, -1],
+	species: [9],
+	awakes: [
+		Fastskill(1),
+		Statusup(200, 0),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Spec_statusup(0, 200, [9, ]),
+		Spec_statusup(200, 0, [9, ]),
+		Fastskill(1),
+		Spec_statusup(0, 200, [9, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+	],
+	as1: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ/350％",
+		proc: ChainAttrAttack(3.5, 0, [1,0,0,0,0]),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルに攻撃力アップの効果を付与(+40％)",
+		turn: 6,
+		proc: [panel_attackup(0.4)],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(0, 200),
+		Statusup(700, 0),
+	],
+	as2: {
+		desc: "<属性特効>MAXHP20％を使い、火属性の敵単体へ特効ダメージ/500％",
+		proc: add_cond(ChainAttrAttack(5.0, 0, [1,0,0,0,0]), as_consume_own(0.20)),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルに攻撃力アップの効果を付与(+80％)",
+		turn: 9,
+		proc: [panel_attackup(0.8)],
+	},
+}

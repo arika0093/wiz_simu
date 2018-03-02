@@ -1,0 +1,48 @@
+{
+	name: "北斗一華麗な技を持つ男 トキ",
+	cardno: 8969,
+	imageno: 11002,
+	hp: 2183,
+	atk: 6279,
+	cost: 42,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(北斗の拳)",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>3チェインで味方のMAXHP10%を使い、ダメージアップ(650%)",
+		proc: add_cond(ChainAttack(6.5, 3), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵単体へダメージ(1000%)",
+		turn: 8,
+		proc: [ss_damage_s(10, [1], 1), ss_consume_own(0.5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],3),
+		Statusup(200,0),
+		NEFTJOD(30),
+		Fastskill(1),
+		Statusup(0,200),
+		Attr_statusup(0,300, [0,1,0,0,0,]),
+		Attr_statusup(300,0, [0,1,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup_oattr(0,300, [0,1,0,0,0,]),
+		Attr_statusup_oattr(300,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインで味方のMAXHP10%を使い、ダメージアップ(750%)",
+		proc: add_cond(ChainAttack(7.5, 3), as_consume_all(0.1)),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵単体へダメージ(1200%)",
+		turn: 10,
+		proc: [ss_damage_s(12, [1], 1), ss_consume_own(0.5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Awake_noeffect("無想転生",1),
+	],
+}

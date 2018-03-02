@@ -1,0 +1,47 @@
+{
+	name: "それは異国の標 ジェスロ・クワトリ",
+	cardno: 6848,
+	imageno: 8820,
+	hp: 2379,
+	atk: 3783,
+	cost: 51,
+	attr: [2,0],
+	species: [1],
+	disable: true,
+	islegend: true,
+	ape: "YAOYORO Z",
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(400%)、解答が早いほどさらにアップ(効果値:50)",
+		proc: add_cond(ChainAttack(4.0, 5), as_timedep(0.5)),
+	},
+	ss1: {
+		desc: "<ブースト>味方のMAXHP70%と毎ターン10%を使い、5ターンの間、味方の攻撃力をアップ(200%)。さらに極稀にクリティカル",
+		turn: 7,
+		proc: [ss_boost_enhance_all(2.0, 5, 0.1, [1,1,1,1,1]), ss_consume_all(0.7)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(500%)、解答が早いほどさらにアップ(効果値:50)",
+		proc: add_cond(ChainAttack(5.0, 5), as_timedep(0.5)),
+	},
+	ss2: {
+		desc: "<ブースト>味方のMAXHP70%と毎ターン10%を使い、6ターンの間、味方の攻撃力をアップ(250%)。さらに極稀にクリティカル",
+		turn: 10,
+		proc: [ss_boost_enhance_all(2.5, 6, 0.1, [1,1,1,1,1]), ss_consume_all(0.7)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Statusup(0,500),
+	],
+}

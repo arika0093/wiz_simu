@@ -1,0 +1,45 @@
+{
+	name: "神雷賢匠 レラ・カムイ",
+	cardno: 6889,
+	imageno: 8869,
+	hp: 4912,
+	atk: 2012,
+	cost: 43,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<回復>雷属性の味方のHPを回復(13%)",
+		proc: Heal(0.13, [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<回復>味方全体のHPを回復する(50%)",
+		turn: 4,
+		proc: [ss_heal(0.5)],
+	},
+	awakes: [
+		Fastskill(1),
+		Fastskill(2),
+		Statusup(400,0),
+		Attr_relief([1,0,0,0,0,],10),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>雷属性の味方のHPを回復(16%)",
+		proc: Heal(0.16, [0,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20%)",
+		turn: 8,
+		proc: [ss_regenerate(0.2, 5)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+	],
+}

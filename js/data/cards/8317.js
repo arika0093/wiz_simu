@@ -1,0 +1,46 @@
+{
+	name: "二人の心は永遠の海に メル&マナ",
+	cardno: 8317,
+	imageno: 5677,
+	hp: 1958,
+	atk: 7008,
+	cost: 56,
+	attr: [1,-1],
+	species: [4],
+	islegend: true,
+	ape: "GW2015",
+	as1: {
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(350%)、7チェインでさらにアップ(300%)",
+		proc: [add_cond(ChainAttack(3.5, 0), when_hp_more(0.8)), add_cond(ChainAttack(6.5, 7), when_hp_more(0.8)),],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ水属性のダメージ(400%)、さらに火属性の敵には特効ダメージ(600%)",
+		turn: 5,
+		proc: [ss_damage_s(special_attr([1,0,0,0,0], 10, 4), [1], 1)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([1,0,0,0,0,],20),
+		Panel_boost([0,1,0,0,0,],3),
+		Spec_statusup(0,500, [4,]),
+		Spec_statusup(500,0, [4,]),
+		Fastskill(3),
+		Attr_statusup(0,400, [0,1,0,0,0,]),
+		Attr_statusup(400,0, [0,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(350%)、7チェインでさらにアップ(400%)",
+		proc: [add_cond(ChainAttack(3.5, 0), when_hp_more(0.8)), add_cond(ChainAttack(7.5, 7), when_hp_more(0.8)),],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ水属性のダメージ(400%)、さらに火属性の敵には特効ダメージ(1200%)",
+		turn: 8,
+		proc: [ss_damage_s(special_attr([1,0,0,0,0], 16, 4), [1], 1)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Statusup(0,1000),
+	],
+}

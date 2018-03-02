@@ -1,0 +1,46 @@
+{
+	name: "乾杯 ディートリヒ&ヴィルフリート",
+	cardno: 5592,
+	imageno: 7448,
+	hp: 4434,
+	atk: 1999,
+	cost: 50,
+	attr: [0,4],
+	species: [8],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(30%/80%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.8, [1,0,0,0,0], [0,0,0,0,1], 0),
+	},
+	ss1: {
+		desc: "<無に還す瞳>3ターン後に敵単体を無に還す(一部敵には無効)",
+		turn: 10,
+		proc: [ss_death_limit(3)],
+	},
+	awakes: [
+		Statusup(200,0),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		NEFTJOD(30),
+		Attr_relief([0,1,0,0,0,],20),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Heal_afterbattle(10),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(60%/110%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [1,0,0,0,0], [0,0,0,0,1], 0),
+	},
+	ss2: {
+		desc: "<無に還す瞳>2ターン後に敵単体を無に還す(一部敵には無効)",
+		turn: 15,
+		proc: [ss_death_limit(2)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		NEFTJOD(30),
+	],
+}

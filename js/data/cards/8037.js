@@ -1,0 +1,46 @@
+{
+	name: "虹光悠雅風 オルネ・タンペート",
+	cardno: 8037,
+	imageno: 7605,
+	hp: 3020,
+	atk: 4321,
+	cost: 45,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "ギルドマスターセレモニーズ",
+	as1: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ、HP80%以上でさらにダメージアップ(280%/430%)",
+		proc: [ChainAttrAttack(2.8, 0, [0,1,0,0,0]), add_cond(ChainAttrAttack(4.3, 0, [0,1,0,0,0]), when_hp_more(0.80))],
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(350%)",
+		turn: 8,
+		proc: [ss_damage_all(3.5, [2]), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	as2: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ、HP80%以上でさらにダメージアップ(380%/530%)",
+		proc: [ChainAttrAttack(3.8, 0, [0,1,0,0,0]), add_cond(ChainAttrAttack(5.3, 0, [0,1,0,0,0]), when_hp_more(0.80))],
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(600%)",
+		turn: 10,
+		proc: [ss_damage_all(6.0, [2]), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(100,0,[0,0,1,0,0,]),
+		Attr_statusup(0,100,[0,0,1,0,0,]),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup(200,0,[0,0,1,0,0,]),
+		Attr_statusup(0,200,[0,0,1,0,0,]),
+	],
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

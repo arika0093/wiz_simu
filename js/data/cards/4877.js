@@ -1,0 +1,46 @@
+{
+	name: "歌声よ届け、宇宙の果てに 初音ミク",
+	cardno: 4877,
+	imageno: 6624,
+	hp: 3009,
+	atk: 2234,
+	cost: 48,
+	attr: [1, 2],
+	species: [3],
+	disable: true,
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+		Attr_relief([0, 0, 1, 0, 0, ], 20),
+		Fastskill(1),
+		Attr_statusup(100, 0, [0, 1, 1, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+		Fastskill(2),
+		Attr_statusup(100, 0, [0, 1, 1, 0, 0, ]),
+		Spec_statusup(0, 200, [3, ]),
+	],
+	as1: {
+		desc: "<回復>水・雷属性の味方を回復、HP50％以下なら更に回復(通常：11％ / HP50％以下：20％)",
+		proc: [Heal(0.11, [0,1,1,0,0], 0), add_cond(Heal(0.20, [0,1,1,0,0], 0), when_hp_less(0.5))],
+	},
+	ss1: {
+		desc: "<ダメージブロック>5ターン600以下の全属性ダメージを無効化する",
+		turn: 9,
+		proc: [ss_damageblock_all(600, 5)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(700, 0),
+		Statusup(0, 300),
+	],
+	as2: {
+		desc: "<回復>水・雷属性の味方を回復、HP50％以下なら更に回復(通常：13％ / HP50％以下：22％)",
+		proc: [Heal(0.13, [0,1,1,0,0], 0), add_cond(Heal(0.22, [0,1,1,0,0], 0), when_hp_less(0.5))],
+	},
+	ss2: {
+		desc: "<ダメージブロック>5ターン800以下の全属性ダメージを無効化する",
+		turn: 12,
+		proc: [ss_damageblock_all(800, 5)],
+	},
+}

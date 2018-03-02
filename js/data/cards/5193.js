@@ -1,0 +1,47 @@
+{
+	name: "輝光に導く雷杖 チェルシー・ネリム",
+	cardno: 5193,
+	imageno: 7112,
+	hp: 2169,
+	atk: 2358,
+	cost: 32,
+	attr: [2,3],
+	species: [9],
+	disable: true,
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<属性の加護>デッキの属性の数だけ攻撃力アップ(230%/360%/490%)",
+		proc: ChainDeckAttrsAttack(2.3, 3.6, 4.9, 0),
+	},
+	ss1: {
+		desc: "<多弾魔術>敵単体へ雷・光属性の5回連続ダメージ、さらに味方全体のHPを回復する(180%/20%)",
+		turn: 7,
+		proc: [ss_damage_s(1.8, [2,3], 5), ss_heal(0.20)],
+	},
+	awakes: [
+		Fastskill(1),
+		Costdown(2),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(0,200),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Fastskill(2),
+		Spec_statusup(0,200, [9,]),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(200,0, [9,]),
+	],
+	as2: {
+		desc: "<属性の加護>デッキの属性の数だけ攻撃力アップ(280%/460%/640%)",
+		proc: ChainDeckAttrsAttack(2.8, 4.6, 6.4, 0),
+	},
+	ss2: {
+		desc: "<多弾魔術>敵単体へ雷・光属性の5回連続ダメージ、さらに味方全体のHPを回復する(380%/25%)",
+		turn: 10,
+		proc: [ss_damage_s(3.8, [2,3], 5), ss_heal(0.25)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(500,0),
+	],
+}

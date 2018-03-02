@@ -1,0 +1,46 @@
+{
+	name: "胸焦がす乙女心 リンカ・ワイアット",
+	cardno: 4464,
+	imageno: 6158,
+	hp: 2718,
+	atk: 3393,
+	cost: 46,
+	attr: [0, -1],
+	species: [8],
+	disable: true,
+	awakes: [
+		Panel_boost([1,0,0,0,0], 1),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0], 1),
+		NEFTJOD(30),
+		Statusup(0, 200),
+		Fastskill(2),
+		Spec_statusup(0, 200, [8]),
+		Spec_statusup(200, 0, [8]),
+	],
+	as1: {
+		desc: "<パネル色数攻撃>3チェインかつパネルが2色でダメージアップ、3色で更にアップ(2色：400％ / 3色：550％)",
+		proc: ChainPanelsAttack(0, 4.0, 5.5, 3),
+	},
+	ss1: {
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(150％)",
+		turn: 6,
+		proc: [ss_enhance_own(1.5, 3)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "<パネル色数攻撃>MAXHP15％を使い、3チェインかつパネルが2色でダメージアップ、3色で更にアップ(2色：500％ / 3色：900％)",
+		proc: add_cond(ChainPanelsAttack(0, 5.0, 9.0, 3), as_consume_own(0.15)),
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン自分の攻撃力をアップ(250％)",
+		turn: 8,
+		proc: [ss_enhance_own(2.5, 4)],
+	},
+}

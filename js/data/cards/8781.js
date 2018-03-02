@@ -1,0 +1,47 @@
+{
+	name: "Grand Slum デライプサバー",
+	cardno: 8781,
+	imageno: 10963,
+	hp: 4343,
+	atk: 1616,
+	cost: 42,
+	attr: [1,4],
+	species: [6],
+	islegend: true,
+	ape: "クロスディライブACT2",
+	is_dist: true,
+	as1: {
+		desc: "<回復>味方全体のHPを回復(6%)、パネルの色が2色以上でさらに回復(12%)",
+		proc: ChainPanelsHeal(0.6, 0.18, 0.18, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<ダメージ強化>3ターンの間、味方の攻撃力をアップ(50%)、5チェインを消費しさらにアップ(50%)",
+		turn: 7,
+		proc: [ss_enhance_all(ss_chain_cost(5, 1.0, 0.5), 3, [1, 1, 1, 1, 1])],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Costdown(10),
+		Statusup(300,0),
+		Statusup(0,300),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 200,0, [0,0,0,0,1,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(9%)、パネルの色が2色以上でさらに回復(12%)",
+		proc: ChainPanelsHeal(0.9, 0.21, 0.21, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターンの間、味方の攻撃力をアップ(50%)、5チェインを消費しさらにアップ(100%)",
+		turn: 10,
+		proc: [ss_enhance_all(ss_chain_cost(5, 1.5, 0.5), 4, [1, 1, 1, 1, 1])],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+	],
+}

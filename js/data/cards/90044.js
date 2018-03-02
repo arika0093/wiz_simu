@@ -1,0 +1,46 @@
+{
+	name: "銀河の妖精 シェリル・ノーム",
+	cardno: 90044,
+	imageno: 7751,
+	hp: 2912,
+	atk: 4326,
+	cost: 46,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "コラボ(マクロス)",
+	as1: {
+		desc: "<属性特効>5チェインで雷属性の敵単体へ特効ダメージ(650%)",
+		proc: [ChainAttrAttack(6.5, 5, [0,0,1,0,0])],
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体のHPを500アップ(上限値:2000)、さらにHPを回復(50%)",
+		turn: 5,
+		proc: [ss_statusup_all([500, 0], [2000, 2000], -1), ss_heal(0.50)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Attr_relief([0,0,1,0,0,],10),
+		NEFTJOD(30),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Fastskill(2),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<属性特効>5チェインで雷属性の敵単体へ特効ダメージ(750%)",
+		proc: [ChainAttrAttack(7.5, 5, [0,0,1,0,0])],
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体のHPを1000アップ(上限値:2000)、さらにHPを完全回復",
+		turn: 8,
+		proc: [ss_statusup_all([1000, 0], [2000, 2000], -1), ss_heal(1)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(500,0),
+	],
+}

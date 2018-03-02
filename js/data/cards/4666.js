@@ -1,0 +1,47 @@
+{
+	name: "大地を穿つ竜魔獣 エスタロス",
+	cardno: 4666,
+	imageno: 6424,
+	hp: 1781,
+	atk: 3898,
+	cost: 50,
+	attr: [0, -1],
+	species: [0],
+	ape: "大魔道杯 with 境界騎士団",
+	awakes: [
+		Fastskill(1),
+		Fastskill(1),
+		Statusup(0, 200),
+		Panel_boost([1,0,0,0,0], 2),
+		Statusup(200, 0),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Fastskill(2),
+		Statusup(0, 200),
+		Spec_statusup(0, 200, [0]),
+	],
+	as1: {
+		desc: "<属性特効連撃>HP全快で雷属性の敵単体へ特効3連撃/計500％",
+		proc: add_cond(ChainDualAttrAttack(5.0, 0, 3, [0,0,1,0,0]), when_hp_more(1)),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ火属性のダメージ(150％)",
+		turn: 7,
+		proc: [ss_damage_all(1.5, [0])],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(0, 400),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "<属性特効連撃>HP全快で雷属性の敵単体へ特効3連撃/計600％",
+		proc: add_cond(ChainDualAttrAttack(6.0, 0, 3, [0,0,1,0,0]), when_hp_more(1)),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ火属性のダメージ(220％)",
+		turn: 10,
+		proc: [ss_damage_all(2.2, [0])],
+	},
+}

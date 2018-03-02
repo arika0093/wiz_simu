@@ -1,0 +1,46 @@
+{
+	name: "炎王の破滅 アブロガンティ",
+	cardno: 9241,
+	imageno: 11506,
+	hp: 2544,
+	atk: 3015,
+	cost: 44,
+	attr: [0,4],
+	species: [0],
+	islegend: true,
+	ape: "大魔道杯 the GATE",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃>敵単体へのダメージアップ(250%)、HP50%以下でさらにダメージアップ(350%)",
+		proc: [ChainAttack(2.5, 0), add_cond(ChainAttack(6.0, 0), when_hp_less(0.5))],
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(350%)",
+		turn: 8,
+		proc: [ss_damage_all(3.5, [0]), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_relief([0,0,1,0,0,],10),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,100, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 100,0, [0,0,0,0,1,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<攻撃>敵単体へのダメージアップ(350%)、HP50%以下でさらにダメージアップ(350%)",
+		proc: [ChainAttack(3.5, 0), add_cond(ChainAttack(7.0, 0), when_hp_less(0.5))],
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(600%)",
+		turn: 10,
+		proc: [ss_damage_all(6.0, [0]), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+}

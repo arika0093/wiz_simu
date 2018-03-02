@@ -1,0 +1,47 @@
+{
+	name: "凶事来たりて災いとなす ザ・マター",
+	cardno: 8643,
+	imageno: 10817,
+	hp: 2635,
+	atk: 2834,
+	cost: 43,
+	attr: [2,1],
+	species: [6],
+	islegend: true,
+	is_dist: true,
+	ape: "エタクロⅡ",
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(400%)",
+		proc: ChainAttack(4.0, 5),
+	},
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(500%)",
+		proc: ChainAttack(5.0, 5),
+	},
+	ss1: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(15%)",
+		turn: 5,
+		proc: [ss_regenerate(0.15, 5)],
+	},
+	ss2: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20%)",
+		turn: 8,
+		proc: [ss_regenerate(0.2, 5)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(300,0),
+		Statusup(0,300),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Abstate_invalid("poison"),
+		Spec_statusup(0,200,[6,]),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,200,[0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0,[0,0,1,0,0,],200,0,[0,1,0,0,0,]),
+	],
+	Lawake: [
+		Attr_statusup(0,100,[0,1,1,0,0,]),
+		Statusup(0,500),
+	],
+}

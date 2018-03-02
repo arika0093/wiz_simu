@@ -1,0 +1,47 @@
+{
+	name: "星空パンプキン レプス&ミツボシ",
+	cardno: 9309,
+	imageno: 11574,
+	hp: 2101,
+	atk: 3329,
+	cost: 45,
+	attr: [1,3],
+	species: [9],
+	islegend: true,
+	ape: "UHG",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ(30%)、複属性が光属性だとさらにアップ(40%)",
+		proc: [ChainEnhance_SubAttr(0.3, 0.7, [0,1,0,0,0], [0,0,0,1,0], 0)],
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方一人のスペシャルスキルの発動ターンを3早める",
+		turn: 8,
+		proc: [ss_toselect_one(ss_skillboost(3))],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Costdown(10),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(4),
+		NEFTJOD(30),
+		Statusup(0,300),
+		Statusup(300,0),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 200,0, [0,0,0,1,0,]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ(60%)、複属性が光属性だとさらにアップ(40%)",
+		proc: [ChainEnhance_SubAttr(0.6, 1.0, [0,1,0,0,0], [0,0,0,1,0], 0)],
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方一人のスペシャルスキルの発動ターンを3早める",
+		turn: 8,
+		proc: [ss_toselect_one(ss_skillboost(3))],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(0,500),
+	],
+}

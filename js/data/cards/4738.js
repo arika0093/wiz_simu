@@ -1,0 +1,45 @@
+{
+	name: "改新の大華焔 レナ・イラプション",
+	cardno: 4738,
+	imageno: 6577,
+	hp: 2238,
+	atk: 4362,
+	cost: 45,
+	attr: [0, -1],
+	species: [9],
+	awakes: [
+		Statusup(0, 100),
+		Costdown(2),
+		Panel_boost([1,0,0,0,0], 1),
+		Panel_boost([1,0,0,0,0], 2),
+		Fastskill(1),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Spec_statusup(0, 200, [9]),
+		Fastskill(2),
+		Attr_relief([0, 0, 1, 0, 0], 20),
+		Spec_statusup(0, 200, [9]),
+	],
+	as1: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ、HP80％以上でさらにダメージアップ(通常：300％ / HP80％以上：450％)",
+		proc: [ChainAttrAttack(3.0, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(4.5, 0, [0,0,1,0,0]), when_hp_more(0.8))],
+	},
+	ss1: {
+		desc: "<割合削り>敵単体のHP20％減少させる、5チェインを消費しさらに15％減少させる",
+		turn: 9,
+		proc: [ss_ratiodamage_s(ss_chain_cost(5, 0.35, 0.25))],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ、HP80％以上でさらにダメージアップ(通常：400％ / HP80％以上：550％)",
+		proc: [ChainAttrAttack(4.0, 0, [0,0,1,0,0]), add_cond(ChainAttrAttack(5.5, 0, [0,0,1,0,0]), when_hp_more(0.8))],
+	},
+	ss2: {
+		desc: "<割合削り>敵単体のHP25％減少させる、5チェインを消費しさらに15％減少させる",
+		turn: 12,
+		proc: [ss_ratiodamage_s(ss_chain_cost(5, 0.40, 0.25))],
+	},
+}

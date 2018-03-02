@@ -1,0 +1,48 @@
+{
+	name: "意志なき贋魔 〈オプスクルム〉",
+	cardno: 9637,
+	imageno: 11913,
+	hp: 2865,
+	atk: 3025,
+	cost: 46,
+	attr: [1,0],
+	species: [2],
+	islegend: true,
+	ape: "黒ウィズチャレンジ",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ(30%)、複属性が火属性だとさらにアップ(40%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.7, [0,1,0,0,0], [1,0,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<一閃斬撃大魔術>5ターン溜めた後、スキル反射を無視し、敵全体へ水属性のダメージ(850%)、さらに攻撃した敵の数が多いほどチェインプラス(上限:5体、最大31チェイン)",
+		turn: 5,
+		charged: 5,
+		proc: [ss_damage_slash_all(8.5, [1]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 200,0, [1,0,0,0,0,]),
+		Fastskill(2),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ(60%)、複属性が火属性だとさらにアップ(40%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.0, [0,1,0,0,0], [1,0,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<一閃斬撃大魔術>5ターン溜めた後、スキル反射を無視し、敵全体へ水属性のダメージ(850%)、さらに攻撃した敵の数が多いほどチェインプラス(上限:5体、最大31チェイン)",
+		turn: 5,
+		charged: 5,
+		proc: [ss_damage_slash_all(8.5, [1]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,300, [1,1,0,0,0,]),
+	],
+}

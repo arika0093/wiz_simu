@@ -1,0 +1,47 @@
+{
+	name: "予定の結末 覚醒した第13号機",
+	cardno: 6725,
+	imageno: 8663,
+	hp: 2318,
+	atk: 3274,
+	cost: 45,
+	attr: [0,3],
+	species: [3],
+	islegend: true,
+	ape: "コラボ(エヴァⅡ)",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効連撃>7チェインで雷・闇属性の敵単体へ特効3連撃(775%)",
+		proc: ChainDualAttrAttack(7.75, 7, 3, [0,0,1,0,1]),
+	},
+	ss1: {
+		desc: "<スキルチャージ&遅延>味方のMAXHP50%を使い、スペシャルスキルの発動ターンを1早め、敵全体の攻撃ターンを1遅らせる",
+		turn: 5,
+		proc: [ss_skillboost(1), ss_delay_all(1), ss_consume_all(0.5)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(0,200),
+		Statusup(200,0),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<属性特効連撃>7チェインで雷・闇属性の敵単体へ特効3連撃(875%)",
+		proc: ChainDualAttrAttack(8.75, 7, 3, [0,0,1,0,1]),
+	},
+	ss2: {
+		desc: "<スキルチャージ&遅延>味方のMAXHP50%を使い、スペシャルスキルの発動ターンを2早め、敵全体の攻撃ターンを2遅らせる",
+		turn: 8,
+		proc: [ss_skillboost(2), ss_delay_all(2), ss_consume_all(0.5)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

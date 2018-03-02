@@ -1,0 +1,47 @@
+{
+	name: "AbCd-X:《黒殻の咆哮 ウラガーン》",
+	cardno: 8737,
+	imageno: 9010,
+	hp: 3126,
+	atk: 3383,
+	cost: 63,
+	attr: [0,4],
+	species: [11],
+	islegend: true,
+	ape: "レイド AbCd",
+	is_dist: true,
+	as1: {
+		desc: "<連撃・属性特効>6チェインで敵単体へ3連撃(500%)、光属性の敵だとさらにダメージアップ(400%)",
+		proc: [ChainDualAttack(5, 6, 3), ChainDualAttrAttack(9, 6, 3, [0,0,0,1,0])],
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のMAXHPの50%を使い、味方全体のスペシャルスキルの発動ターンを5早める",
+		turn: 12,
+		proc: [ss_consume_all(0.5), ss_skillboost(5)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(4),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 200,0, [0,0,0,0,1,]),
+		Abstate_invalid("poison"),
+		Abstate_invalid("discharge"),
+	],
+	as2: {
+		desc: "<連撃・属性特効>6チェインで敵単体へ3連撃(600%)、光属性の敵だとさらにダメージアップ(400%)",
+		proc: [ChainDualAttack(6, 6, 3), ChainDualAttrAttack(10, 6, 3, [0,0,0,1,0])],
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のMAXHPの50%を使い、味方全体のスペシャルスキルの発動ターンを5早める",
+		turn: 12,
+		proc: [ss_consume_all(0.5), ss_skillboost(5)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Abstate_invalid("ss_sealed"),
+	],
+}

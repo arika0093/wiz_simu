@@ -1,0 +1,47 @@
+{
+	name: "調香術の歴史を記す ロニール・クム",
+	cardno: 89004,
+	//cardno: 5490,
+	imageno: 7280,
+	hp: 3888,
+	atk: 2789,
+	cost: 45,
+	attr: [1,2],
+	species: [9],
+	islegend: true,
+	ape: "天上岬Ⅱ",
+	as1: {
+		desc: "<連撃>4チェインで敵単体を3回連続攻撃(400%)",
+		proc: ChainDualAttack(4,4,3),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
+		turn: 3,
+		proc: [ss_panel_change([0,1,1,0,0])],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Fastskill(1),
+		Statusup(200,0),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Attr_relief([1,0,0,0,0,],10),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Spec_statusup(0,200, [9,]),
+		Panel_boost([0,1,0,0,0,],2),
+	],
+	as2: {
+		desc: "<連撃>4チェインで敵単体を3回連続攻撃(500%)",
+		proc: ChainDualAttack(5,4,3),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、ダメージ軽減(25%)・スキルチャージ(1)・チェイン(2)・攻撃力アップ(50%)の効果をランダムで付与",
+		turn: 7,
+		proc: [ss_panel_change([0,1,1,0,0]),panel_attr_guard([1,1,1,1,1], 0.25),panel_skillboost(1), panel_chainplus(2), panel_attackup(0.5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+	],
+}

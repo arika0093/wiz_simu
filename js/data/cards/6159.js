@@ -1,0 +1,45 @@
+{
+	name: "虹色変化紫陽花姫 ドレジア・アンラ",
+	cardno: 6159,
+	imageno: 7980,
+	hp: 3228,
+	atk: 2428,
+	cost: 28,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化・回復>水属性の味方の攻撃力をアップ(20%)し、水属性の味方のHPを回復、HP20%以下ならさらに回復(5%/50%)",
+		proc: [ChainEnhance(0.20, [0,1,0,0,0], 0), Heal(0.05, [0,1,0,0,0], 0), add_cond(Heal(0.50, [0,1,0,0,0], 0), when_hp_less(0.20))],
+	},
+	ss1: {
+		desc: "<ガード>2ターン火属性のダメージを25%軽減する、3チェインを消費しさらに2ターン軽減",
+		turn: 6,
+		proc: [ss_attr_guard([1,0,0,0,0], 0.25, ss_chain_cost(3, 4, 2))],
+	},
+	awakes: [
+		Fastskill(1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],1),
+		NEFTJOD(30),
+		Fastskill(1),
+		Statusup(200,0),
+		Statusup(0,200),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>水属性の味方の攻撃力をアップ(40%)し、水属性の味方のHPを回復、HP20%以下ならさらに回復(5%/50%)",
+		proc: [ChainEnhance(0.40, [0,1,0,0,0], 0), Heal(0.05, [0,1,0,0,0], 0), add_cond(Heal(0.50, [0,1,0,0,0], 0), when_hp_less(0.20))],
+	},
+	ss2: {
+		desc: "<ガード>3ターン火属性のダメージを25%軽減する、3チェインを消費しさらに2ターン軽減",
+		turn: 10,
+		proc: [ss_attr_guard([1,0,0,0,0], 0.25, ss_chain_cost(3, 5, 3))],
+	},
+	Lawake: [
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Statusup(400,0),
+	],
+}

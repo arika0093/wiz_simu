@@ -1,0 +1,47 @@
+{
+	name: "聖星の観象者 アレク・ルミナレス",
+	cardno: 7582,
+	imageno: 7211,
+	hp: 3691,
+	atk: 3590,
+	cost: 45,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "ギルドマスターとChristmas",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(300%)",
+		proc: ChainAttack(3.0, 3),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
+		turn: 5,
+		proc: [ss_panel_change([1,1,1,0,0])],
+	},
+	awakes: [
+		Fastskill(1),
+		Costdown(10),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Guild_statusup(0, 1000),
+		Guild_statusup(1000, 0),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(400%)",
+		proc: ChainAttack(4.0, 3),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、攻撃力アップの効果を付与(20%)",
+		turn: 6,
+		proc: [ss_panel_change([1,1,1,0,0]), panel_attackup(0.2)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

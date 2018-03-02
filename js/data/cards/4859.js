@@ -1,0 +1,46 @@
+{
+	name: "終へ誘う死霊術 セリナ・ナイトメア",
+	cardno: 4859,
+	imageno: 6594,
+	hp: 2825,
+	atk: 2997,
+	cost: 47,
+	attr: [0, -1],
+	species: [2],
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0], 2),
+		Attr_relief([1,0,0,0,0], 10),
+		NEFTJOD(30),
+		Statusup(200, 0),
+		Statusup(0, 200),
+		Fastskill(1),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Spec_statusup(0, 200, [2]),
+		Spec_statusup(200, 0, [2]),
+	],
+	as1: {
+		desc: "<攻撃強化>火属性の味方の攻撃力をアップ/+35％",
+		proc: ChainEnhance(0.35, [1,0,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(5000ダメージ)",
+		turn: 7,
+		proc: [poison(5000, 4)],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<攻撃強化>火属性の味方の攻撃力をアップ/+55％",
+		proc: ChainEnhance(0.55, [1,0,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<毒>4ターン敵全体に毒のダメージを与える(9999ダメージ)",
+		turn: 11,
+		proc: [poison(9999, 4)],
+	},
+}

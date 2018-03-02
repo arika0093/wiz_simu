@@ -1,0 +1,47 @@
+{
+	name: "救奉大聖女 ベルナデッタ・イルマ",
+	cardno: 5778,
+	imageno: 7604,
+	hp: 2483,
+	atk: 2457,
+	cost: 35,
+	attr: [1, 2],
+	species: [9],
+	disable: true,
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<種族特効>種族が魔族・魔法生物の敵単体へダメージ(500%)",
+		proc: ChainSpecAttack(5.0, 0, [2, 7]),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
+		turn: 4,
+		proc: [ss_panel_change([0,1,1,0,0])],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Fastskill(2),
+		Spec_statusup(200, 0, [9, ]),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+		Heal_afterbattle(10),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<種族特効>種族が魔族・魔法生物の敵単体へダメージ(600%)",
+		proc: ChainSpecAttack(6.0, 0, [2, 7]),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、回復の効果を付与、属性弱体化状態だとさらに回復の効果を付与(8%/50%)",
+		turn: 7,
+		proc: [ss_panel_change([0,1,1,0,0]), panel_healally(0.08), panel_healally(0.50)],
+	},
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(400, 0),
+	],
+}

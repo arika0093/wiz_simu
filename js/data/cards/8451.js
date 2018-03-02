@@ -1,0 +1,48 @@
+{
+	name: "天井知らずのうざ女神 トリエテリス",
+	cardno: 8451,
+	imageno: 10601,
+	hp: 5633,
+	atk: 1333,
+	cost: 33,
+	attr: [1,3],
+	species: [1],
+	islegend: true,
+	ape: "アイドルキャッツ！",
+	is_dist: true,
+	as1: {
+		desc: "<回復>味方全体のHPを回復(13%)",
+		proc: Heal(0.13, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<精霊強化>3ターン溜めた後、8ターンの間、味方全体を徐々に回復しダメージを軽減、さらに攻撃力をアップ(30%、20%、100%)(発動中行動不可)",
+		turn: 3,
+		charged: 3,
+		proc: [ss_reinforcement_all(8, [ss_attr_guard([1, 1, 1, 1, 1], 0.20, 1, "RF"), ss_enhance_all(1.0, 1, [1, 1, 1, 1, 1], "RF"), ss_regenerate(0.3, 1, "RF")])],
+	},
+	awakes: [
+		Costdown(30),
+		Panel_boost([0,1,0,0,0,],3),
+		Attr_statusup(0,300, [1,1,1,1,1,]),
+		Attr_statusup(300,0, [1,1,1,1,1,]),
+		Panel_boost([0,1,0,0,0,],3),
+		Fastskill(3),
+		Heal_afterbattle(10),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+		Attr_statusup(300,0, [0,1,0,0,0,]),
+		Awake_noeffect("難易度ダウン",1),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(16%)",
+		proc: Heal(0.16, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<精霊強化>3ターン溜めた後、8ターンの間、味方全体を徐々に回復しダメージを軽減、さらに攻撃力をアップ(30%、20%、100%)(発動中行動不可)",
+		turn: 3,
+		charged: 3,
+		proc: [ss_reinforcement_all(8, [ss_attr_guard([1, 1, 1, 1, 1], 0.20, 1, "RF"), ss_enhance_all(1.0, 1, [1, 1, 1, 1, 1], "RF"), ss_regenerate(0.3, 1, "RF")])],
+	},
+	Lawake: [
+		Attr_statusup(0,300, [0,1,0,0,0,]),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "黄昏魔道 サンセット=リフィル",
+	cardno: 5830,
+	imageno: 7636,
+	hp: 3556,
+	atk: 3076,
+	cost: 47,
+	attr: [2, 0],
+	species: [9],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<種族特効>4チェインでダメージアップ、魔族の敵へさらにダメージアップ(400%/600%)",
+		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [2])],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにスキルチャージプラス2の効果を付与(スキルチャージの効果は、SPスキルを使うまで重複しません)",
+		turn: 8,
+		proc: [panel_skillboost(2)],
+	},
+	awakes: [
+		Fastskill(2),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0, ]),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(2),
+		Attr_statusup(0, 200, [1, 0, 1, 0, 0, ]),
+		Attr_statusup(200, 0, [1, 0, 1, 0, 0, ]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<種族特効>4チェインでダメージアップ、魔族の敵へさらにダメージアップ(500%/700%)",
+		proc: [ChainAttack(5.0, 4), ChainSpecAttack(7.0, 4, [2])],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにスキルチャージプラス3の効果を付与(スキルチャージの効果は、SPスキルを使うまで重複しません)",
+		turn: 11,
+		proc: [panel_skillboost(3)],
+	},
+	Lawake: [
+		Statusup(500, 0),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+	],
+}

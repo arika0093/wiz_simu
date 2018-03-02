@@ -1,0 +1,46 @@
+{
+	name: "純真なる甘愛 エトワール・ブリュネ",
+	cardno: 90043,
+	imageno: 7548,
+	hp: 4749,
+	atk: 3555,
+	cost: 45,
+	attr: [2,-1],
+	species: [9],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<攻撃強化>雷属性の味方の攻撃力をアップ、パネルの色が増す度さらにアップ(30%/50%/80%)",
+		proc: ChainPanelsEnhance(0.30, 0.50, 0.80, [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<ガード>3ターン全属性のダメージを50%軽減する",
+		turn: 8,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_relief([1,0,0,0,0,],10),
+		Fastskill(1),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Spec_statusup(0,200, [9,]),
+		Panel_boost([0,0,1,0,0,],2),
+	],
+	as2: {
+		desc: "<攻撃強化>雷属性の味方の攻撃力をアップ、パネルの色が増す度さらにアップ(50%/70%/100%)",
+		proc: ChainPanelsEnhance(0.50, 0.70, 1.0, [0,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<ガード>3ターン全属性のダメージを50%軽減する、5チェインを消費しさらに2ターン軽減",
+		turn: 12,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, ss_chain_cost(5, 5, 3))],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

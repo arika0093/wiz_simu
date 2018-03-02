@@ -1,0 +1,46 @@
+{
+	name: "全力の恋天使 マーガレット・リル",
+	cardno: 7703,
+	imageno: 9785,
+	hp: 2788,
+	atk: 3640,
+	cost: 52,
+	attr: [0, 3],
+	species: [3],
+	awakes: [
+		Panel_boost([1,0,0,0,0], 2),
+		Fastskill(1),
+		Statusup(200, 0),
+		Attr_statusup(200, 0, [1,0,0,0,0]),
+		NEFTJOD(30),
+		Spec_statusup(0, 200, [3, 4]),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0], 2),
+		Spec_statusup(500, 0, [3, 4]),
+		Spec_statusup(0, 500, [3, 4]),
+	],
+	as1: {
+		desc: "<属性特効連撃>雷・闇属性の敵単体へ特効3連撃(400％)",
+		proc: ChainDualAttrAttack(4.0, 0, 3, [0,0,1,0,1]),
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・光属性の5回連続ダメージ(350％)",
+		turn: 5,
+		proc: [ss_damage_s(3.5, [0,3], 5), ss_ignore_skillcounter()],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(500, 0),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<属性特効連撃>雷・闇属性の敵単体へ特効3連撃(500％)",
+		proc: ChainDualAttrAttack(5.0, 0, 3, [0,0,1,0,1]),
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ火・光属性の5回連続ダメージ(650％)",
+		turn: 8,
+		proc: [ss_damage_s(6.5, [0,3], 5), ss_ignore_skillcounter()],
+	},
+}

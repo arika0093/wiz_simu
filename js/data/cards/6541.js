@@ -1,0 +1,48 @@
+{
+	name: "悠久の大魔道 イーニア・ストラマー",
+	cardno: 6541,
+	imageno: 8435,
+	hp: 6029,
+	atk: 2121,
+	cost: 50,
+	attr: [1,-1],
+	species: [9],
+	disable: true,
+	islegend: true,
+	ape: "USG",
+	as1: {
+		desc: "<攻撃強化・ガード>7チェインで水属性の味方の攻撃力をアップ(80%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.8, [0,1,0,0,0], 7), as_guard(0.10, [1,1,1,1,1], 0)],
+	},
+	ss1: {
+		desc: "<ダメージ強化>8ターン溜めた後、30ターン水属性の味方の攻撃力をアップ(250%)",
+		turn: 3,
+		charged: 8,
+		proc: [ss_enhance_all(2.5, 30, [0,1,0,0,0])],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Fastskill(1),
+		Statusup(200,0),
+		Spec_statusup(200,0, [9,]),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,300, [0,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<攻撃強化・ガード>7チェインで水属性の味方の攻撃力をアップ(100%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(1.0, [0,1,0,0,0], 7), as_guard(0.10, [1,1,1,1,1], 0)],
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

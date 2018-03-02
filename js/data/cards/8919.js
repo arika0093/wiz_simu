@@ -1,0 +1,46 @@
+{
+	name: "黄昏を継ぐ者 サンセット=リフィル",
+	cardno: 8919,
+	imageno: 11130,
+	hp: 2775,
+	atk: 7245,
+	cost: 52,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "ゴールデンアワード2017",
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ(120%)、デッキに単色の精霊が多いほど、さらにダメージアップ(20%)（上限:5段階)",
+		proc: [add_cond(ChainAllAttack(1.2, 0), as_singleattr_num(0, 0.2))],
+	},
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ(150%)、デッキに単色の精霊が多いほど、さらにダメージアップ(20%)（上限:5段階)",
+		proc: [add_cond(ChainAllAttack(1.5, 0), as_singleattr_num(0, 0.2))],
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方一人のスペシャルスキルの発動ターンを1早める",
+		turn: 5,
+		proc: [ss_toselect_one(ss_skillboost(1))],
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方一人のスペシャルスキルの発動ターンを4早める",
+		turn: 8,
+		proc: [ss_toselect_one(ss_skillboost(4))],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],4),
+		Attr_statusup_oattr(0,400,[0,0,1,0,0,]),
+		Attr_statusup_oattr(400,0,[0,0,1,0,0,]),
+		NEFTJOD(30),
+		Attr_relief([0,1,0,0,0,],20),
+		Fastskill(5),
+		Attr_statusup(0,400,[0,0,1,0,0,]),
+		Attr_statusup(400,0,[0,0,1,0,0,]),
+		Awake_noeffect("選ばれし者の証",1),
+		Abstate_invalid("discharge"),
+	],
+	Lawake: [
+		Attr_statusup(0,200,[0,0,1,0,0,]),
+		Statusup(0,1000),
+	],
+}

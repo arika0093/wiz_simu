@@ -1,0 +1,47 @@
+{
+	name: "儚き闇の夜に 初音ミク",
+	cardno: 8021,
+	imageno: 6618,
+	hp: 2903,
+	atk: 3739,
+	cost: 54,
+	attr: [0,4],
+	species: [2],
+	islegend: true,
+	ape: "コラボ(ミク)",
+	as1: {
+		desc: "<チェイン攻撃>10チェインでダメージアップ(800%)",
+		proc: ChainAttack(8.0, 10),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス3の効果を付与",
+		turn: 6,
+		proc: [panel_chainplus(3)],
+	},
+	as2: {
+		desc: "<チェイン攻撃>10チェインでダメージアップ(900%)",
+		proc: ChainAttack(9.0, 10),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス4の効果を付与",
+		turn: 7,
+		proc: [panel_chainplus(4)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0],2),
+		Attr_statusup(0,200,[1,0,0,0,0,]),
+		Attr_statusup(200,0,[1,0,0,0,0,]),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0],2),
+		NEFTJOD(30),
+		Abstate_invalid("as_sealed"),
+		Attr_statusup_sattr(0,100,[1,0,0,0,0,],0,300,[0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0,[1,0,0,0,0,],300,0,[0,0,0,0,1,]),
+		Fastskill(4),
+	],
+	Lawake: [
+		Abstate_invalid("death_limit"),
+		Statusup(0,1000),
+		Statusup(500,0),
+	],
+}

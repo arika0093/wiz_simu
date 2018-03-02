@@ -1,0 +1,47 @@
+{
+	name: "心竜公主 アーリア・バハムート",
+	cardno: 7449,
+	imageno: 9434,
+	hp: 3602,
+	atk: 3302,
+	cost: 54,
+	attr: [2,-1],
+	species: [0],
+	islegend: true,
+	ape: "神竜降臨Ⅰ",
+	is_dist: true,
+	as1: {
+		desc: "<属性の加護>デッキの属性の数だけ攻撃力アップ(300%/500%/700%)、龍族の仲間の数だけさらにアップ(40%)",
+		proc: ChainDeckAttrsAttack(3.0, 5.0, 7.0, 0),
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し(25%)、状態異常を回復する",
+		turn: 5,
+		proc: [ss_heal(0.25), ss_abstate_cure()],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(0,200),
+		Costdown(2),
+		Fastskill(1),
+		Statusup(200,0),
+		Statusup(200,0),
+		Fastskill(2),
+		Spec_statusup(0,400, [0,]),
+		Spec_statusup(400,0, [0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<属性の加護>デッキの属性の数だけ攻撃力アップ(350%/600%/850%)、龍族の仲間の数だけさらにアップ(40%)",
+		proc: ChainDeckAttrsAttack(3.5, 6.0, 8.5, 0),
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 7,
+		proc: [ss_heal(0.5), ss_abstate_cure()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

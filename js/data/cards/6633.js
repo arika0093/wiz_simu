@@ -1,0 +1,47 @@
+{
+	name: "繋げる絆、友情の連弾 カヲル",
+	cardno: 6633,
+	imageno: 8631,
+	hp: 2205,
+	atk: 3317,
+	cost: 39,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(エヴァⅡ)",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>7チェインで火属性の敵単体へ特効ダメージ(725%)",
+		proc: ChainAttrAttack(7.25, 7, [1,0,0,0,0]),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
+		turn: 3,
+		proc: [panel_chainplus(1)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		NEFTJOD(30),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<属性特効>7チェインで火属性の敵単体へ特効ダメージ(825%)",
+		proc: ChainAttrAttack(8.25, 7, [1,0,0,0,0]),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(2)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "光輝く夏の時 ホリー・アマナウ",
+	cardno: 8683,
+	imageno: 10856,
+	hp: 5233,
+	atk: 1808,
+	cost: 34,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	ape: "エタクロⅢ",
+	is_dist: true,
+	as1: {
+		desc: "<回復・攻撃強化>味方全体のHPを回復(10%)、さらに攻撃力をアップ(20%)",
+		proc: [Heal(0.10, [1,1,1,1,1], 0), ChainEnhance(0.2, [1,1,1,1,1], 0)],
+	},
+	ss1: {
+		desc: "<解答削り>解答選択肢を1つ削り、4チェインを消費し解答を見破る",
+		turn: 3,
+		proc: [ss_chain_cost_skill(4, ss_answer_foresight(), ss_answer_narrow(1))],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([0,1,0,0,0,],1),
+		Statusup(300,0),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+		Fastskill(1),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Awake_chainguard(),
+	],
+	as2: {
+		desc: "<回復・攻撃強化>味方全体のHPを回復(12%)、さらに攻撃力をアップ(20%)",
+		proc: [Heal(0.12, [1,1,1,1,1], 0), ChainEnhance(0.2, [1,1,1,1,1], 0)],
+	},
+	ss2: {
+		desc: "<解答削り>解答選択肢を1つ削り、3チェインを消費し解答を見破る",
+		turn: 7,
+		proc: [ss_chain_cost_skill(3, ss_answer_foresight(), ss_answer_narrow(1))],
+	},
+	Lawake: [
+		Statusup(1000,0),
+	],
+}

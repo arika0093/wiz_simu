@@ -1,0 +1,47 @@
+{
+	name: "大聖王 イアデル・セラフィム",
+	cardno: 7308,
+	imageno: 9328,
+	hp: 2854,
+	atk: 2156,
+	cost: 38,
+	attr: [1,3],
+	species: [3],
+	islegend: true,
+	ape: "訣別のクロニクル",
+	is_dist: true,
+	as1: {
+		desc: "<分散攻撃>敵全体へ分散攻撃(250%)",
+		proc: ChainVarianceAttack(2.5, 0),
+	},
+	ss1: {
+		desc: "<蘇生>味方全体のHPを回復し(25%)、さらに水属性の味方を蘇生(25%)",
+		turn: 9,
+		proc: [ss_heal(0.25), ss_resurrection([0,1,0,0,0], 0.25)],
+	},
+	awakes: [
+		Statusup(0,100),
+		Costdown(2),
+		Statusup(100,0),
+		Statusup(0,200),
+		Fastskill(1),
+		Statusup(200,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<分散攻撃>敵全体へ分散攻撃(350%)",
+		proc: ChainVarianceAttack(3.5, 0),
+	},
+	ss2: {
+		desc: "<蘇生>味方全体のHPを回復し(50%)、さらに水属性の味方を蘇生(50%)",
+		turn: 11,
+		proc: [ss_heal(0.5), ss_resurrection([0,1,0,0,0], 0.5)],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Statusup(0,400),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "AbCd-Λ:《冥黙の白鴉 ニレイヌ》",
+	cardno: 7127,
+	imageno: 6792,
+	hp: 3103,
+	atk: 3534,
+	cost: 53,
+	attr: [0, 4],
+	species: [11],
+	ape: "AbCd",
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0], 2),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Statusup(200, 0),
+		Panel_boost([1,0,0,0,0], 2),
+		Spec_statusup(0, 400, [11]),
+		Fastskill(2),
+		Attr_statusup(0, 200, [1,0,0,0,0]),
+	],
+	as1: {
+		desc: "<パネル色数攻撃>3チェインかつパネルが2色でダメージアップ、3色で更にアップ(550%/700%)",
+		proc: ChainPanelsAttack(0, 5.5, 7.0, 3),
+	},
+	ss1: {
+		desc: "<遅延>敵単体の攻撃ターンを2遅らせる。HP20％以下でさらに2遅らせる。",
+		turn: 7,
+		proc: [ss_delay_s(ss_hp_less(0.2, 4, 2))],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "<パネル色数攻撃>パネルが2色でダメージアップ、3色で更にアップ(600%/750%)",
+		proc: ChainPanelsAttack(0, 6.0, 7.5, 0),
+	},
+	ss2: {
+		desc: "<遅延>敵単体の攻撃ターンを3遅らせる。HP20％以下でさらに1遅らせる。",
+		turn: 10,
+		proc: [ss_delay_s(ss_hp_less(0.2, 4, 3))],
+	},
+}

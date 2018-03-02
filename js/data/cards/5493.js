@@ -1,0 +1,46 @@
+{
+	name: "夢見鳥の調香師 アネーロ・フェサ",
+	cardno: 5493,
+	imageno: 7330,
+	hp: 3642,
+	atk: 3414,
+	cost: 46,
+	attr: [2, -1],
+	species: [9],
+	islegend: true,
+	ape: "天上岬Ⅰ",
+	as1: {
+		desc: "<攻撃強化>3チェインで雷属性の味方の攻撃力をアップ(50%)",
+		proc: ChainEnhance(0.5, [0, 0, 1, 0, 0], 3),
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する(50%)",
+		turn: 7,
+		proc: [ss_heal(0.50), ss_abstate_cure()],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Fastskill(1),
+		Statusup(200, 0),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(2),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<攻撃強化>3チェインで雷属性の味方の攻撃力をアップ(70%)",
+		proc: ChainEnhance(0.7, [0, 0, 1, 0, 0], 3),
+	},
+	ss2: {
+		desc: "<状態異常回復&蘇生>味方全体のHPを回復(50%)し、状態異常を回復、さらに雷属性の味方を50%で蘇生",
+		turn: 11,
+		proc: [ss_heal(0.50), ss_abstate_cure(), ss_resurrection([0, 0, 1, 0, 0], 0.5)],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+}

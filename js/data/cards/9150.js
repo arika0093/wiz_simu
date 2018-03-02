@@ -1,0 +1,47 @@
+{
+	name: "妖しき光の王 フーガァー",
+	cardno: 9150,
+	imageno: 9221,
+	hp: 2549,
+	atk: 3901,
+	cost: 53,
+	attr: [2,3],
+	species: [0],
+	islegend: true,
+	ape: "レイド Soul of Kings",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃・属性特効>5チェインでダメージアップ(400%)、闇属性の敵だとさらにダメージアップ(200%)",
+		proc: [ChainAttack(4.0, 5), ChainAttrAttack(6.0, 5, [0,0,0,0,1])],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ(400%)、さらに水属性の敵には特効ダメージ(500%)、5チェインを消費しさらに特効ダメージ(1000%)",
+		turn: 9,
+		proc: [ss_chain_cost_skill(5, ss_damage_s(special_attr([0,1,0,0,0], 19.0, 4.0), [2], 1), ss_damage_s(special_attr([0,1,0,0,0], 9.0, 4.0), [2], 1))],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_relief([0,0,0,0,1,],10),
+		Fastskill(3),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,0,0,1,0,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,0,0,1,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<チェイン攻撃・属性特効>5チェインでダメージアップ(500%)、闇属性の敵だとさらにダメージアップ(200%)",
+		proc: [ChainAttack(5.0, 5), ChainAttrAttack(7.0, 5, [0,0,0,0,1])],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ(400%)、さらに水属性の敵には特効ダメージ(1000%)、5チェインを消費しさらに特効ダメージ(1000%)",
+		turn: 12,
+		proc: [ss_chain_cost_skill(5, ss_damage_s(special_attr([0,1,0,0,0], 24.0, 4.0), [2], 1), ss_damage_s(special_attr([0,1,0,0,0], 14.0, 4.0), [2], 1))],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,1000),
+	],
+}

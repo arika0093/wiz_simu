@@ -1,0 +1,48 @@
+{
+	name: "戦場に響く熱歌 バサラ&ミレーヌ",
+	cardno: 5959,
+	imageno: 7741,
+	hp: 2810,
+	atk: 3233,
+	cost: 49,
+	attr: [0,2],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(マクロス)",
+	as1: {
+		desc: "<連撃>4チェインで敵単体を3回連続攻撃、HP50%以上でさらにダメージアップ(300%/500%)",
+		proc: [ChainDualAttack(3.0, 4, 3), add_cond(ChainDualAttack(5.0, 4, 3), when_hp_more(0.5))],
+	},
+	ss1: {
+		desc: "<多弾魔術>2ターン溜めた後、敵単体へ火・雷属性の7回連続ダメージ(350%)",
+		turn: 3,
+		charged: 2,
+		proc: [ss_damage_s(3.5, [0, 2], 7)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		NEFTJOD(30),
+		Statusup(0,200),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		Attr_relief([1,0,0,0,0,],20),
+		Fastskill(2),
+		Statusup(0,200),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<連撃>4チェインで敵単体を3回連続攻撃、HP50%以上でさらにダメージアップ(400%/600%)",
+		proc: [ChainDualAttack(4.0, 4, 3), add_cond(ChainDualAttack(6.0, 4, 3), when_hp_more(0.5))],
+	},
+	ss2: {
+		desc: "<多弾魔術>2ターン溜めた後、敵単体へ火・雷属性の7回連続ダメージ(560%)",
+		turn: 6,
+		charged: 2,
+		proc: [ss_damage_s(5.6, [0, 2], 7)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Statusup(0,500),
+	],
+}

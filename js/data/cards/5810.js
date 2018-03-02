@@ -1,0 +1,45 @@
+{
+	name: "燦竜貴兵ラモーナ・ハーゼンライン",
+	cardno: 5810,
+	imageno: 7627,
+	hp: 3008,
+	atk: 4089,
+	cost: 45,
+	attr: [0,-1],
+	species: [0],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<種族特効>10チェインでダメージアップ、妖精・亜人の敵へさらにアップ(700%/1100%)",
+		proc: [ChainAttack(7.0, 10), ChainSpecAttack(11.0, 10, [5,6])],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ火属性のダメージ、さらに雷属性には特効ダメージ(100%/300%)",
+		turn: 4,
+		proc: [ss_damage_all(special_attr([0,0,1,0,0], 3.0, 1.0), [0])],
+	},
+	awakes: [
+		Statusup(200,0),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Statusup(0,200),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Fastskill(2),
+		Abstate_invalid("poison"),
+		Spec_statusup(1000,0, [0,]),
+	],
+	as2: {
+		desc: "<種族特効>10チェインでダメージアップ、妖精・亜人の敵へさらにアップ(800%/1200%)",
+		proc: [ChainAttack(8.0, 10), ChainSpecAttack(12.0, 10, [5,6])],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ火属性のダメージ、さらに雷属性には特効ダメージ(200%/500%)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([0,0,1,0,0], 5.0, 2.0), [0])],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+}

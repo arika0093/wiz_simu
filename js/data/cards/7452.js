@@ -1,0 +1,47 @@
+{
+	name: "叡武煉徹の烈晃竜 レツィーユ",
+	cardno: 7452,
+	imageno: 9437,
+	hp: 3594,
+	atk: 3003,
+	cost: 41,
+	attr: [0,-1],
+	species: [0],
+	islegend: true,
+	ape: "神竜降臨Ⅱ",
+	is_dist: true,
+	as1: {
+		desc: "<回復>火属性の味方のHPを回復(12%)",
+		proc: Heal(0.12, [1,0,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<解答削り>解答選択肢を1つ削り、3チェインを消費し解答を見破る",
+		turn: 4,
+		proc: [ss_chain_cost_skill(3, ss_answer_foresight(), ss_answer_narrow(1))],
+	},
+	awakes: [
+		Statusup(0,100),
+		Costdown(2),
+		Statusup(100,0),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(200,0),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<回復>火属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [1,0,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 7,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(400,0),
+	],
+}

@@ -1,0 +1,45 @@
+{
+	name: "死すべき命の導き手 リビー・アルカ",
+	cardno: 5821,
+	imageno: 7631,
+	hp: 1665,
+	atk: 3078,
+	cost: 37,
+	attr: [0,4],
+	species: [2],
+	islegend: true,
+	as1: {
+		desc: "<連撃>HP80%以上で敵単体を3回連続攻撃(350%)",
+		proc: add_cond(ChainDualAttack(3.5, 0, 3), when_hp_more(0.80)),
+	},
+	ss1: {
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(人数×50%)",
+		turn: 6,
+		proc: [ss_damage_all(ss_consume_all_cond(0.50, 0.50), [0])],
+	},
+	awakes: [
+		Statusup(200,0),
+		Fastskill(1),
+		Statusup(0,200),
+		Fastskill(2),
+		Attr_relief([0,1,0,0,0,],10),
+		NEFTJOD(30),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Spec_statusup(200,0, [2,]),
+		Spec_statusup(0,200, [2,]),
+		Panel_boost([1,0,0,0,0,],2),
+	],
+	as2: {
+		desc: "<連撃>HP80%以上で敵単体を3回連続攻撃(450%)",
+		proc: add_cond(ChainDualAttack(4.5, 0, 3), when_hp_more(0.80)),
+	},
+	ss2: {
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(人数×90%)",
+		turn: 9,
+		proc: [ss_damage_all(ss_consume_all_cond(0.90, 0.50), [0])],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

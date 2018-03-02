@@ -1,0 +1,45 @@
+{
+	name: "ドSな天才作家 キリヒメ・ナツノ",
+	cardno: 6726,
+	imageno: 8680,
+	hp: 3583,
+	atk: 5042,
+	cost: 53,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<連撃>敵単体を5回連続攻撃、5チェインで10回連続攻撃になり更にダメージアップ(250%/400%)",
+		proc: [ChainDualAttack(2.5, 0, 5), ChainDualAttack(4.0, 5, 10)],
+	},
+	ss1: {
+		desc: "<遅延>攻撃ターンを1遅らせる",
+		turn: 4,
+		proc: [ss_delay_all(1)],
+	},
+	awakes: [
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Fastskill(1),
+		Statusup(0,100),
+		Costdown(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Fastskill(2),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<連撃>敵単体を5回連続攻撃、5チェインで10回連続攻撃になり更にダメージアップ(350%/500%)",
+		proc: [ChainDualAttack(3.5, 0, 5), ChainDualAttack(5.0, 5, 10)],
+	},
+	ss2: {
+		desc: "<遅延>攻撃ターンを3遅らせる。HP20%以下でさらに1遅らせる。",
+		turn: 10,
+		proc: [ss_delay_all(ss_hp_less(0.20, 4, 3))],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

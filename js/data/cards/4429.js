@@ -1,0 +1,45 @@
+{
+	name: "凛眼戦勝の女帝 ルドヴィカ・ロア",
+	cardno: 4429,
+	imageno: 6174,
+	hp: 2934,
+	atk: 2960,
+	cost: 43,
+	attr: [1, -1],
+	species: [8],
+	awakes: [
+		Costdown(2),
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Statusup(200, 0),
+		Fastskill(1),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Spec_statusup(0, 200, [8, ]),
+	],
+	as1: {
+		desc: "<攻撃強化>水属性の味方の攻撃力をアップ、リーダー時さらにアップ(通常：+30％ / リーダー時：+45％)",
+		proc: [ChainEnhance(0.30, [0,1,0,0,0], 0), add_cond(ChainEnhance(0.45, [0,1,0,0,0], 0), when_leader())],
+	},
+	ss1: {
+		desc: "<ダメージ強化>味方全体の攻撃力をアップ(+50％)",
+		turn: 7,
+		proc: [ss_enhance_all(0.50, 2, [1,1,1,1,1])],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(0, 500),
+	],
+	as2: {
+		desc: "<攻撃強化>水属性の味方の攻撃力をアップ、リーダー時さらにアップ(通常：+40％ / リーダー時：+65％)",
+		proc: [ChainEnhance(0.40, [0,1,0,0,0], 0), add_cond(ChainEnhance(0.65, [0,1,0,0,0], 0), when_leader())],
+	},
+	ss2: {
+		desc: "<ダメージ強化>味方全体の攻撃力をアップ(+70％)",
+		turn: 10,
+		proc: [ss_enhance_all(0.70, 4, [1,1,1,1,1])],
+	},
+}

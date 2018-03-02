@@ -1,0 +1,47 @@
+{
+	name: "不思議な時に薫る歌 巡音ルカ",
+	cardno: 8029,
+	imageno: 6609,
+	hp: 3102,
+	atk: 3435,
+	cost: 52,
+	attr: [0,3],
+	species: [9],
+	islegend: true,
+	ape: "コラボ(ミク)",
+	as1: {
+		desc: "<チェイン攻撃・回復>3チェインでダメージアップ(300%)、さらに火属性の味方のHPを回復(5%)",
+		proc: [ChainAttack(3.0, 3), Heal(0.05, [1,0,0,0,0], 3)],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・光属性のダメージ(100%)、さらに味方全体のHPを回復する(25%)",
+		turn: 4,
+		proc: [ss_damage_all(1.0, [0,3]), ss_ignore_skillcounter(),ss_heal(0.25)],
+	},
+	as2: {
+		desc: "<チェイン攻撃・回復>3チェインでダメージアップ(400%)、さらに火属性の味方のHPを回復(5%)",
+		proc: [ChainAttack(4.0, 3), Heal(0.05, [1,0,0,0,0], 3)],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・光属性のダメージ(130%)、さらに味方全体のHPを回復する(25%)",
+		turn: 6,
+		proc: [ss_damage_all(1.3, [0,3]), ss_ignore_skillcounter(),ss_heal(0.25)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200,[1,0,0,0,0,]),
+		Attr_statusup(200,0,[1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,100,[1,0,0,0,0,],0,300,[0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0,[1,0,0,0,0,],300,0,[0,0,0,1,0,]),
+		Fastskill(2),
+		Abstate_invalid("ss_sealed"),
+	],
+	Lawake: [
+		Attr_statusup(0,200,[1,0,0,0,0,]),
+		Statusup(500,0),
+		NEFTJOD(30),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "師匠サンタ登場 リンリン&ポンタン",
+	cardno: 7827,
+	imageno: 7091,
+	hp: 1872,
+	atk: 4632,
+	cost: 56,
+	attr: [2,1],
+	species: [8],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<属性特効>HP80%以上で水属性の敵単体へ特効ダメージ(525%)",
+		proc: [add_cond(ChainAttrAttack(5.25, 0, [0,1,0,0,0]), when_hp_more(0.8))],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
+		turn: 3,
+		proc: [ss_panel_change([0,1,1,0,0])],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		NEFTJOD(30),
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],3),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,1,0,0,0,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,1,0,0,0,]),
+		Abstate_invalid(["ss_sealed", "as_sealed"]),
+	],
+	as2: {
+		desc: "<属性特効>HP80%以上で水属性の敵単体へ特効ダメージ(625%)",
+		proc: [add_cond(ChainAttrAttack(6.25, 0, [0,1,0,0,0]), when_hp_more(0.8))],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、攻撃力アップの効果を付与(100%)",
+		turn: 6,
+		proc: [ss_panel_change([0,1,1,0,0]), panel_attackup(1.0)],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,200, [0,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

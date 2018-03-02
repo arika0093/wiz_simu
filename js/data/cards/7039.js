@@ -1,0 +1,46 @@
+{
+	name: "天意の剣 ルヴァル・アウルム",
+	cardno: 7039,
+	imageno: 9036,
+	hp: 5670,
+	atk: 1803,
+	cost: 52,
+	attr: [1,2],
+	species: [1],
+	disable: true,
+	islegend: true,
+	ape: "ドルキマスⅡ",
+	as1: {
+		desc: "<回復>味方全体のHPを回復(14%)",
+		proc: Heal(0.14, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<チェインガード>3ターンの間、チェインを保護する",
+		turn: 5,
+		proc: [ss_chain_protect(3)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup_sattr(200,0, [0,1,0,0,0,], 200,0, [0,0,1,0,0,]),
+		Attr_statusup_sattr(0,200, [0,1,0,0,0,], 0,200, [0,0,1,0,0,]),
+		Awake_chainguard(),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(17%)",
+		proc: Heal(0.17, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<チェインガード>6ターンの間、チェインを保護する",
+		turn: 8,
+		proc: [ss_chain_protect(6)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+	],
+}

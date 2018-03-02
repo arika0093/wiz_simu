@@ -1,0 +1,46 @@
+{
+	name: "常夜のこいびと エリアナ・グロス",
+	cardno: 5684,
+	imageno: 7489,
+	hp: 2303,
+	atk: 3422,
+	cost: 42,
+	attr: [1,3],
+	species: [9],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<属性特効>4チェインで火属性の敵単体へ特効ダメージ(600%)",
+		proc: ChainAttrAttack(6.0, 4, [1,0,0,0,0]),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
+		turn: 3,
+		proc: [panel_chainplus(1)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Attr_relief([0,0,1,0,0,],10),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Fastskill(2),
+		NEFTJOD(60),
+	],
+	as2: {
+		desc: "<属性特効>4チェインで火属性の敵単体へ特効ダメージ(700%)",
+		proc: ChainAttrAttack(7.0, 4, [1,0,0,0,0]),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス3の効果を付与",
+		turn: 8,
+		proc: [panel_chainplus(3)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(0,500),
+	],
+}

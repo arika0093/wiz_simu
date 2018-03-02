@@ -1,0 +1,46 @@
+{
+	name: "凶を追う蒼穹 アヴィン・シュミット",
+	cardno: 4643,
+	imageno: 6403,
+	hp: 2323,
+	atk: 4034,
+	cost: 47,
+	attr: [1, -1],
+	species: [8],
+	disable: true,
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Fastskill(1),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Heal_afterbattle(10),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Spec_statusup(200, 0, [8, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Fastskill(2),
+		Spec_statusup(0, 200, [8, ]),
+	],
+	as1: {
+		desc: "<種族特効>種族が物質・魔法生物・神族の敵単体へ特効ダメージ/600％",
+		proc: ChainSpecAttack(6.0, 0, [1,6,7]),
+	},
+	ss1: {
+		desc: "<効果解除>敵単体のカウンターを解除する",
+		turn: 8,
+		proc: [ss_break_attackcounter()],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 1000),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<種族特効>種族が物質・魔法生物・神族の敵単体へ特効ダメージ/700％",
+		proc: ChainSpecAttack(7.0, 0, [1,6,7]),
+	},
+	ss2: {
+		desc: "<効果解除大魔術>敵単体のカウンターを解除し、水属性のダメージ(400％)",
+		turn: 12,
+		proc: [ss_break_attackcounter(), ss_damage_s(4, [1], 1)],
+	},
+}

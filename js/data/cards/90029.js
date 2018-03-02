@@ -1,0 +1,47 @@
+{
+	name: "狂狂ト舞ウ闇傀儡 グヴェル・テラー",
+	cardno: 90029,
+	imageno: 6179,
+	hp: 2250,
+	atk: 2850,
+	cost: 46,
+	attr: [2,4],
+	species: [2],
+	disable: true,
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<連撃>敵単体を3回連続攻撃(275%)",
+		proc: ChainDualAttack(2.75, 0, 3),
+	},
+	ss1: {
+		desc: "<割合削り>敵単体のHPを15%減少させる、HP50%以下でさらに15%減少させる",
+		turn: 9,
+		proc: [ss_ratiodamage_s(ss_hp_less(0.50, 0.30, 0.15))],
+	},
+	awakes: [
+		Statusup(0,100),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(200,0),
+		Statusup(0,200),
+		Fastskill(3),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Awake_noeffect("心眼", 1),
+		Spec_statusup(0, 200, [2, ]),
+	],
+	as2: {
+		desc: "<連撃>敵単体を3回連続攻撃(350%)",
+		proc: ChainDualAttack(3.5, 0, 3),
+	},
+	ss2: {
+		desc: "<割合削り>敵単体のHPを20%減少させる、HP50%以下でさらに20%減少させる",
+		turn: 12,
+		proc: [ss_ratiodamage_s(ss_hp_less(0.5, 0.4, 0.2))],
+	},
+	Lawake: [
+		NEFTJOD(60),
+		Statusup(0,500),
+	],
+}

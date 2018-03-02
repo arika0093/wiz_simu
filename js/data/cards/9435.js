@@ -1,0 +1,46 @@
+{
+	name: "闇に響く哄笑 イザーク・セラフィム",
+	cardno: 9435,
+	imageno: 6879,
+	hp: 2756,
+	atk: 7034,
+	cost: 51,
+	attr: [0,-1],
+	species: [3],
+	islegend: true,
+	ape: "ロストエデンⅠ",
+	as1: {
+		desc: "<属性特効>3チェインで雷属性の敵単体へ特効ダメージ(350%)、デッキに単色の精霊が多いほど、さらにダメージアップ(110%)(上限：5段階)",
+		proc: add_cond(ChainAttrAttack(3.5, 3, [0,0,1,0,0]), as_singleattr_num(0, 1.1)),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ火属性のダメージ(400%)、さらに雷属性の敵には特効ダメージ(550%)",
+		turn: 3,
+		proc: [ss_damage_all(special_attr([0,0,1,0,0], 9.5, 4.0), [0])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_oattr(0,400, [1,0,0,0,0,]),
+		Attr_statusup_oattr(400,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(4),
+		Awake_noeffect("スキル反射見破り",1),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで雷属性の敵単体へ特効ダメージ(450%)、デッキに単色の精霊が多いほど、さらにダメージアップ(110%)(上限：5段階)",
+		proc: add_cond(ChainAttrAttack(4.5, 3, [0,0,1,0,0]), as_singleattr_num(0, 1.1)),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ火属性のダメージ(400%)、さらに雷属性の敵には特効ダメージ(1050%)",
+		turn: 5,
+		proc: [ss_damage_all(special_attr([0,0,1,0,0], 14.5, 4.0), [0])],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		Statusup(500,0),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "AbCd-Φφ: 終端の処刑人 トルテ",
+	cardno: 9363,
+	imageno: 11295,
+	hp: 3075,
+	atk: 7210,
+	cost: 54,
+	attr: [0,-1],
+	species: [11],
+	islegend: true,
+	ape: "AbCd",
+	as1: {
+		desc: "<分散攻撃>敵全体へ分散攻撃(350%)、リーダー時、更にダメージアップ(100%)",
+		proc: [ChainVarianceAttack(3.5, 0), add_cond(ChainVarianceAttack(4.5, 0), when_leader())],
+	},
+	ss1: {
+		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ火属性のダメージ(150%)、さらに隣接する敵に火属性のダメージ(800%)",
+		turn: 7,
+		proc: [ss_undefined("炸裂大魔術(隣接威力変動)")],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],4),
+		Attr_statusup_oattr(0,400, [1,0,0,0,0,]),
+		Attr_statusup_oattr(400,0, [1,0,0,0,0,]),
+		Awake_noeffect("行動見破り",1),
+		Awake_secondfast(3),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Awake_secondfast(3),
+		Attr_relief([0,0,0,1,1,],30),
+		Abstate_invalid("discharge"),
+	],
+	as2: {
+		desc: "<分散攻撃>敵全体へ分散攻撃(450%)、リーダー時、更にダメージアップ(100%)",
+		proc: [ChainVarianceAttack(4.5, 0), add_cond(ChainVarianceAttack(5.5, 0), when_leader())],
+	},
+	ss2: {
+		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ火属性のダメージ(150%)、さらに隣接する敵に火属性のダメージ(1000%)",
+		turn: 9,
+		proc: [ss_undefined("炸裂大魔術(隣接威力変動)")],
+	},
+	Lawake: [
+		NEFTJOD(60),
+		Statusup(0,1500),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "無限を解き放ち ルシエラ・フオル",
+	cardno: 5128,
+	imageno: 6871,
+	hp: 4210,
+	atk: 2456,
+	cost: 41,
+	attr: [2, 3],
+	species: [3],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<回復>味方全体のHPを回復(14%)",
+		proc: Heal(0.14, [1, 1, 1, 1, 1], 0),
+	},
+	ss1: {
+		desc: "<チェインガード>3ターンの間、チェインを保護する",
+		turn: 5,
+		proc: [ss_chain_protect(3)],
+	},
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		NEFTJOD(30),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
+		Fastskill(2),
+		Spec_statusup(200, 0, [2, 3, ]),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(17%)",
+		proc: Heal(0.17, [1, 1, 1, 1, 1], 0),
+	},
+	ss2: {
+		desc: "<チェインガード>6ターンの間、チェインを保護する",
+		turn: 8,
+		proc: [ss_chain_protect(6)],
+	},
+	Lawake: [
+		Statusup(500, 0),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+}

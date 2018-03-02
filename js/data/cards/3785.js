@@ -1,0 +1,45 @@
+{
+	name: "咎魂の断罪鎌 ハクア・デスサイス",
+	cardno: 3785,
+	imageno: 5412,
+	hp: 2391,
+	atk: 2801,
+	cost: 36,
+	attr: [1, -1],
+	species: [8],
+	awakes: [
+		Statusup(0, 200),
+		Attr_relief([0, 0, 1, 0, 0, ], 10),
+		Statusup(100, 0),
+		Statusup(0, 100),
+		Attr_relief([0, 0, 1, 0, 0, ], 10),
+		Fastskill(1),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Fastskill(2),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+	],
+	as1: {
+		desc: "<攻撃>5チェインで敵単体へのダメージアップ/450％",
+		proc: ChainAttack(4.5, 5),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(260％)",
+		turn: 8,
+		proc: [ss_damage_all(2.6, [1]), ss_consume_own(0.5)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 400),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "<攻撃>敵単体へのダメージアップ/450％",
+		proc: ChainAttack(4.5, 0),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(330％)",
+		turn: 12,
+		proc: [ss_damage_all(3,3, [1]), ss_consume_own(0.5)],
+	},
+}

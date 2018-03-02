@@ -1,0 +1,46 @@
+{
+	name: "凛眼に覇道を宿す ルドヴィカ・ロア",
+	cardno: 8235,
+	imageno: 7875,
+	hp: 3989,
+	atk: 3389,
+	cost: 57,
+	attr: [1,0],
+	species: [8],
+	islegend: true,
+	ape: "覇眼戦線Ⅱ",
+	as1: {
+		desc: "<種族特効>4チェインでダメージアップ(400%)、戦士の敵へさらにダメージアップ(800%)",
+		proc: [ChainAttack(4.0, 4), ChainSpecAttack(8.0, 4, [8])],
+	},
+	ss1: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
+		turn: 9,
+		proc: [ss_skillboost(2), ss_delay_s(2)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit", "all_sealed"]),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [1,0,0,0,0,]),
+		Fastskill(4),
+		Awake_noeffect("心眼",1),
+	],
+	as2: {
+		desc: "<種族特効>4チェインでダメージアップ(500%)、戦士の敵へさらにダメージアップ(900%)",
+		proc: [ChainAttack(5.0, 4), ChainSpecAttack(9.0, 4, [8])],
+	},
+	ss2: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを3早め、敵単体の攻撃ターンを3遅らせる",
+		turn: 12,
+		proc: [ss_skillboost(3), ss_delay_s(3)],
+	},
+	Lawake: [
+		Awake_SpecialSkill("ss_damageblock_all", 400, 5, "ringan"),
+		Statusup(0,1500),
+	],
+}

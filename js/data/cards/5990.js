@@ -1,0 +1,33 @@
+{
+	name: "スカル２ ミハエル・ブラン",
+	cardno: 5990,
+	imageno: 7772,
+	hp: 2280,
+	atk: 2654,
+	cost: 29,
+	attr: [2,-1],
+	species: [9],
+	islegend: false,
+	ape: "コラボ(マクロス)",
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(350%)",
+		proc: ChainAttack(3.5, 4),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/500%)",
+		turn: 8,
+		proc: [ss_damage_all(special_attr([0,1,0,0,0], 5.0, 2.0), [2])],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ", 1),
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(1),
+		Statusup(0,100),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(100,0),
+		Attr_relief([0,0,1,0,0,],10),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

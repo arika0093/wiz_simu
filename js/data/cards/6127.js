@@ -1,0 +1,47 @@
+{
+	name: "戦場の不敗神話 メリル・ピスケル",
+	cardno: 6127,
+	imageno: 7947,
+	hp: 2520,
+	atk: 3710,
+	cost: 42,
+	attr: [2, -1],
+	species: [8],
+	islegend: true,
+	ape: "大魔道杯 in 覇眼戦線",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>6チェインで敵単体を3回連続攻撃(450%)",
+		proc: ChainDualAttack(4.5, 6, 3),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>味方全体のMAXHPの50%を使い、ジャンルパネルにチェインがプラス3の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(3), ss_consume_all(0.5)],
+	},
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Statusup(0, 200),
+		NEFTJOD(30),
+		Fastskill(1),
+		Statusup(200, 0),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_relief([0, 1, 0, 0, 0, ], 10),
+		Fastskill(2),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<連撃>6チェインで敵単体を3回連続攻撃(550%)",
+		proc: ChainDualAttack(5.5, 6, 3),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>味方全体のMAXHPの50%を使い、ジャンルパネルにチェインがプラス4の効果を付与",
+		turn: 8,
+		proc: [panel_chainplus(4), ss_consume_all(0.5)],
+	},
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(500, 0),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "アーモンドの融合 ピーク&プレミオ",
+	cardno: 5609,
+	imageno: 7429,
+	hp: 2628,
+	atk: 2439,
+	cost: 30,
+	attr: [1,2],
+	species: [9],
+	islegend: true,
+	ape: "グリコⅢ",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、7チェインで更にダメージアップ(300%/450%)",
+		proc: [ChainAttack(3.0, 3), ChainAttack(4.5, 7)],
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早め、さらに味方全体のHPを回復する(25%)",
+		turn: 7,
+		proc: [ss_skillboost(1), ss_heal(0.25)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],1),
+		Heal_afterbattle(10),
+		Statusup(0,200),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、7チェインで更にダメージアップ(400%/550%)",
+		proc: [ChainAttack(4.0, 3), ChainAttack(5.5, 7)],
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早め、さらに味方全体のHPを回復する(50%)",
+		turn: 9,
+		proc: [ss_skillboost(2), ss_heal(0.50)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+	],
+}

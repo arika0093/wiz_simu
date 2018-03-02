@@ -1,0 +1,46 @@
+{
+	name: "ありうる未来 ガムリン&ミレーヌ",
+	cardno: 5981,
+	imageno: 7763,
+	hp: 3558,
+	atk: 2056,
+	cost: 44,
+	attr: [1,2],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(マクロス)",
+	as1: {
+		desc: "<複属性攻撃強化>4チェインで水属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(50%/100%)",
+		proc: ChainEnhance_SubAttr(0.50, 1.0, [0,1,0,0,0], [0,0,1,0,0], 4),
+	},
+	ss1: {
+		desc: "<チェインガード>2ターンの間、チェインを保護する、3チェインを消費しさらに3ターンの間保護する",
+		turn: 5,
+		proc: [ss_chain_cost_skill(3, ss_chain_protect(5), ss_chain_protect(2))],
+	},
+	awakes: [
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Fastskill(1),
+		Attr_relief([1,0,0,0,0,],10),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Panel_boost([0,1,1,0,0,],2),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>4チェインで水属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(80%/130%)",
+		proc: ChainEnhance_SubAttr(0.80, 1.3, [0,1,0,0,0], [0,0,1,0,0], 4),
+	},
+	ss2: {
+		desc: "<チェインガード>5ターンの間、チェインを保護する、3チェインを消費しさらに3ターンの間保護する",
+		turn: 8,
+		proc: [ss_chain_cost_skill(3, ss_chain_protect(8), ss_chain_protect(5))],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Statusup(500,0),
+	],
+}

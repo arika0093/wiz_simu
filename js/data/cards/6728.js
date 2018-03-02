@@ -1,0 +1,45 @@
+{
+	name: "紅蓮鳳凰炎煌神 ヤオ・パイロン",
+	cardno: 6728,
+	imageno: 8682,
+	hp: 2589,
+	atk: 4177,
+	cost: 42,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(350%)",
+		proc: ChainAttack(3.5, 3),
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火属性のダメージ(120%)",
+		turn: 4,
+		proc: [ss_damage_all(1.2, [0]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Fastskill(2),
+		Statusup(0,200),
+		Statusup(100,0),
+		Costdown(2),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],1),
+		Costdown(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(450%)",
+		proc: ChainAttack(4.5, 3),
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火属性のダメージ(120%)",
+		turn: 4,
+		proc: [ss_damage_all(1.2, [0]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(0,500),
+	],
+}

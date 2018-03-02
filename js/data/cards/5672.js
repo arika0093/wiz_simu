@@ -1,0 +1,46 @@
+{
+	name: "爆裂轟震の魔槌士 ズィーザ・イス",
+	cardno: 5672,
+	imageno: 7477,
+	hp: 2823,
+	atk: 2049,
+	cost: 32,
+	attr: [0,4],
+	species: [9],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<種族特効>4チェインでダメージアップ、術士の敵へさらにダメージアップ(350%/500%)",
+		proc: [ChainAttack(3.5, 4), ChainSpecAttack(5.0, 4, [9])],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ軽減(25%)、スキルチャージ(1)、チェイン(2)、攻撃力アップ(50%)の効果をランダムで付与",
+		turn: 6,
+		proc: [panel_attr_guard([1,1,1,1,1], 0.25), panel_skillboost(1), panel_chainplus(2), panel_attackup(0.50)],
+	},
+	awakes: [
+		Fastskill(1),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Statusup(200,0),
+		Statusup(0,200),
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Panel_boost([1, 0, 0, 0, 0, ], 1),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+	],
+	as2: {
+		desc: "<種族特効>4チェインでダメージアップ、術士の敵へさらにダメージアップ(450%/600%)",
+		proc: [ChainAttack(4.5, 4), ChainSpecAttack(6.0, 4, [9])],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・闇属性化し、ダメージ軽減(25%)、スキルチャージ(1)、チェイン(2)、攻撃力アップ(50%)の効果をランダムで付与",
+		turn: 8,
+		proc: [ss_panel_change([1,0,0,0,1]), panel_attr_guard([1,1,1,1,1], 0.25), panel_skillboost(1), panel_chainplus(2), panel_attackup(0.50)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(400,0),
+	],
+}

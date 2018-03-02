@@ -1,0 +1,45 @@
+{
+	name: "天壌無窮の聖龍 セイクリッドウィル",
+	cardno: 5454,
+	imageno: 7237,
+	hp: 2709,
+	atk: 2809,
+	cost: 40,
+	attr: [0,-1],
+	species: [0],
+	islegend: true,
+	as1: {
+		desc: "<回復>火属性の味方のHPを回復(13%)",
+		proc: Heal(0.13, [1,0,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ火属性のダメージ、さらに味方全体を回復(150%/50%)",
+		turn: 6,
+		proc: [ss_damage_all(1.5, [0]), ss_heal(0.5)],
+	},
+	awakes: [
+		Statusup(0,400),
+		Attr_relief([0,1,0,0,0,],10),
+		Statusup(400,0),
+		Heal_afterbattle(10),
+		Spec_statusup(500,0, [0,]),
+		Attr_relief([0,1,0,0,0,],10),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+	],
+	as2: {
+		desc: "<回復>火属性の味方のHPを回復(15%)",
+		proc: Heal(0.15, [1,0,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ火属性のダメージ、さらに味方全体を回復(200%/50%)",
+		turn: 9,
+		proc: [ss_damage_all(2.0, [0]), ss_heal(0.5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(400,0),
+	],
+}

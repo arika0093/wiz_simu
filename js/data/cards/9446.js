@@ -1,0 +1,46 @@
+{
+	name: "鳳凰経営者 クドラくん",
+	cardno: 9446,
+	imageno: 11699,
+	hp: 2345,
+	atk: 5725,
+	cost: 40,
+	attr: [2,-1],
+	species: [2],
+	islegend: true,
+	ape: "大魔道杯 in ロストエデン",
+	is_dist: true,
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ(140%),3チェインで更にダメージアップ(30%)",
+		proc: [ChainAllAttack(1.4, 0), ChainAllAttack(1.7, 3)],
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの30%を使い敵全体へダメージ(450%)",
+		turn: 6,
+		proc: [ss_damage_all(4.5, [2]), ss_ignore_skillcounter(), ss_consume_own(0.3)],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(3),
+		NEFTJOD(30),
+		Attr_statusup_oattr(0,300, [0,0,1,0,0,]),
+		Attr_statusup_oattr(300,0, [0,0,1,0,0,]),
+		Awake_noeffect("経験値取得量アップ",1),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ(170%),3チェインで更にダメージアップ(30%)",
+		proc: [ChainAllAttack(1.7, 0), ChainAllAttack(2.0, 3)],
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの30%を使い敵全体へダメージ(650%)",
+		turn: 8,
+		proc: [ss_damage_all(6.5, [2]), ss_ignore_skillcounter(), ss_consume_own(0.3)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
+}

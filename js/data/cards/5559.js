@@ -1,0 +1,47 @@
+{
+	name: "麗らかな調香達人 ルィナ・アンシー",
+	cardno: 5559,
+	imageno: 7354,
+	hp: 3538,
+	atk: 2291,
+	cost: 40,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "大魔道杯 in 天上岬",
+	is_dist: true,
+	as1: {
+		desc: "<回復>雷属性の味方のHPを回復、術士はさらに回復(9%/13%)",
+		proc: [Heal(0.09, [0,0,1,0,0], 0), SpecHeal(0.13, [0,0,1,0,0], [9], 0)],
+	},
+	ss1: {
+		desc: "<カウンター>2ターンの間、スキルカウンター待機(100%)",
+		turn: 7,
+		proc: [ss_skillcounter(1.0, 3)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Statusup(200,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Statusup(0,200),
+		Fastskill(1),
+		Spec_statusup(200,0, [9,]),
+	],
+	as2: {
+		desc: "<回復>雷属性の味方のHPを回復、術士はさらに回復(12%/16%)",
+		proc: [Heal(0.12, [0,0,1,0,0], 0), SpecHeal(0.16, [0,0,1,0,0], [9], 0)],
+	},
+	ss2: {
+		desc: "<カウンター>3ターンの間、スキルカウンター待機(100%)、アンサースキル封印状態でさらに多弾式カウンター待機(100%)",
+		turn: 10,
+		proc: [ss_skillcounter(1.0, 3), ss_is_assealed_own_skill(ss_dualcounter(3))],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(500,0),
+	],
+}

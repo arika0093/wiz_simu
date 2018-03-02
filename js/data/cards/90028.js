@@ -1,0 +1,47 @@
+{
+	name: "忌避されし報讐の邪悪 エンラ・プセ",
+	cardno: 90028,
+	imageno: 6121,
+	hp: 2615,
+	atk: 2720,
+	cost: 45,
+	attr: [1,4],
+	species: [2],
+	disable: true,
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(300%)",
+		proc: add_cond(ChainAttack(3.0, 0), when_hp_more(0.8)),
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを1早める",
+		turn: 6,
+		proc: [ss_skillboost(1)],
+	},
+	awakes: [
+		Statusup(0,100),
+		Statusup(100,0),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],2),
+		Statusup(0,200),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(400%)",
+		proc: add_cond(ChainAttack(4.0, 0), when_hp_more(0.8)),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにスキルチャージ(1)、回復(10%)をランダムで付与",
+		turn: 9,
+		proc: [panel_skillboost(1), panel_healally(0.1)],
+	},
+	Lawake: [
+		Abstate_invalid("ss_sealed"),
+		Statusup(0, 500),
+	],
+}

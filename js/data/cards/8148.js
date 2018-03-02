@@ -1,0 +1,46 @@
+{
+	name: "愛と幸せの神姫 ミシェル・ヴァイル",
+	cardno: 8148,
+	imageno: 7584,
+	hp: 4521,
+	atk: 2925,
+	cost: 56,
+	attr: [2,0],
+	species: [1],
+	islegend: true,
+	ape: "約束の地",
+	as1: {
+		desc: "<複属性攻撃強化>4チェインで雷属性の攻撃力をアップ、複属性が火属性だとさらにアップ(50%/100%)",
+		proc: ChainEnhance_SubAttr(0.5, 1.0, [0, 0, 1, 0, 0], [1, 0, 0, 0, 0], 4),
+	},
+	ss1: {
+		desc: "<継続回復>3ターン味方全体を徐々に回復する(15%)",
+		turn: 5,
+		proc: [ss_regenerate(0.15, 3)],
+	},
+	awakes: [
+		Fastskill(4),
+		Panel_boost([0,0,1,0,0,],4),
+		Attr_relief([1,1,1,1,1,],10),
+		Heal_afterbattle(10),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [1,0,0,0,0,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [1,0,0,0,0,]),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+		Awake_noeffect("敵行動見破り",1),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>4チェインで雷属性の攻撃力をアップ、複属性が火属性だとさらにアップ(80%/130%)",
+		proc: ChainEnhance_SubAttr(0.8, 1.3, [0, 0, 1, 0, 0], [1, 0, 0, 0, 0], 4),
+	},
+	ss2: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する、5チェインを消費しさらに回復(15%/30%)",
+		turn: 8,
+		proc: [ss_chain_cost_skill(5, ss_regenerate(0.30, 5), ss_regenerate(0.15, 5))],
+	},
+	Lawake: [
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		NEFTJOD(90),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "偽りの微笑 アレンティノ",
+	cardno: 7417,
+	imageno: 9472,
+	hp: 3194,
+	atk: 3827,
+	cost: 43,
+	attr: [2,-1],
+	species: [0],
+	islegend: true,
+	ape: "心竜天翔 Rising Dragon",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>7チェインで水属性の敵単体へ特効ダメージ(675%)、龍族の仲間の数だけさらにアップ(30%/60%/90%/120%/150%)",
+		proc: [ChainAttrAttack(6.75, 7, [0,1,0,0,0])],
+	},
+	ss1: {
+		desc: "<ブースト>8ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ、5チェインを消費しさらに攻撃力アップ(500%/1000%)。さらに極稀にクリティカル",
+		turn: 10,
+		proc: [ss_boost_enhance_s(ss_chain_cost(5, 10, 5), 8, 0.15)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		NEFTJOD(30),
+		Spec_statusup(200,0, [0,]),
+		Spec_statusup(0,200, [0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<属性特効>7チェインで水属性の敵単体へ特効ダメージ(775%)、龍族の仲間の数だけさらにアップ(30%/60%/90%/120%/150%)",
+		proc: [ChainAttrAttack(7.75, 7, [0,1,0,0,0])],
+	},
+	ss2: {
+		desc: "<ブースト>8ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ、5チェインを消費しさらに攻撃力アップ(900%/1400%)。さらに極稀にクリティカル",
+		turn: 13,
+		proc: [ss_boost_enhance_s(ss_chain_cost(5, 14, 9), 8, 0.15)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+}

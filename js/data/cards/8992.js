@@ -1,0 +1,46 @@
+{
+	name: "幽境の双葬者 イルーシャ＆ファルク",
+	cardno: 8992,
+	imageno: 11200,
+	hp: 6565,
+	atk: 1451,
+	cost: 54,
+	attr: [2,1],
+	species: [2],
+	islegend: true,
+	ape: "喰牙RIZEⅡ",
+	as1: {
+		desc: "<回復>雷属性の味方を回復(9%)、複属性が水属性だとさらに回復(8%)",
+		proc: [Heal(0.09, [0,0,1,0,0], 0), add_cond(Heal(0.17, [0,0,1,0,0], 0), when_subattr_match([0,0,1,0,0], [0,1,0,0,0]))],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにスキルチャージプラス1の効果を付与(効果は、SPスキルを使うまで重複しません) ",
+		turn: 3,
+		proc: [panel_skillboost(1)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Heal_afterbattle(10),
+		Attr_relief([1,1,1,1,1,],10),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<回復>雷属性の味方を回復(12%)、複属性が水属性だとさらに回復(8%)",
+		proc: [Heal(0.12, [0,0,1,0,0], 0), add_cond(Heal(0.20, [0,0,1,0,0], 0), when_subattr_match([0,0,1,0,0], [0,1,0,0,0]))],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ25%軽減とスキルチャージプラス1の効果を付与(効果は、SPスキルを使うまで重複しません)",
+		turn: 6,
+		proc: [panel_skillboost(1), panel_attr_guard([1,1,1,1,1], 0.25)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+}

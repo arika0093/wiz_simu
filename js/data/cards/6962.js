@@ -1,0 +1,46 @@
+{
+	name: "クロム・マグナお兄さん&お姉さん",
+	cardno: 6962,
+	imageno: 8909,
+	hp: 4231,
+	atk: 2189,
+	cost: 47,
+	attr: [2,0],
+	species: [9],
+	islegend: true,
+	ape: "クロム・マグナ ゼロ",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化・ガード>6チェインで火・雷属性の味方の攻撃力をアップ(70%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.7, [1,0,1,0,0], 6), as_guard(0.1, [1,1,1,1,1], 6)],
+	},
+	ss1: {
+		desc: "<起死回生>1ターン、致死ダメージを受けたら一度だけHP10%で起死回生。HP20%以下でHP50%で起死回生",
+		turn: 8,
+		proc: [ss_revival(ss_hp_less(0.2, 0.5, 0.1), 1)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_relief([0,1,0,0,0,],10),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(100,0, [1,0,1,0,0,]),
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup_sattr(0,200, [0,0,1,0,0,], 0,100, [1,0,0,0,0,]),
+		Attr_statusup_sattr(200,0, [0,0,1,0,0,], 100,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<攻撃強化・ガード>6チェインで火・雷属性の味方の攻撃力をアップ(90%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.9, [1,0,1,0,0], 6), as_guard(0.1, [1,1,1,1,1], 6)],
+	},
+	ss2: {
+		desc: "<起死回生>2ターン、致死ダメージを受けたら一度だけHP10%で起死回生。HP20%以下でHP50%で起死回生",
+		turn: 10,
+		proc: [ss_revival(ss_hp_less(0.2, 0.5, 0.1), 2)],
+	},
+	Lawake: [
+		Statusup(1000,0),
+	],
+}

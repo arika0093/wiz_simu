@@ -1,0 +1,47 @@
+{
+	name: "死霊戦士 セルジオ・ムニョス",
+	cardno: 6955,
+	imageno: 8902,
+	hp: 2549,
+	atk: 2731,
+	cost: 42,
+	attr: [1,4],
+	species: [2],
+	islegend: true,
+	ape: "クロム・マグナ ゼロ",
+	is_dist: true,
+	as1: {
+		desc: "<種族特効>種族が神族・天使の敵単体へ特効ダメージ(600%)",
+		proc: ChainSpecAttack(6.0, 0, [1,3]),
+	},
+	ss1: {
+		desc: "<無に還す瞳>4ターン後に敵単体を無に還す(一部敵には無効)",
+		turn: 7,
+		proc: [ss_death_limit(4)],
+	},
+	awakes: [
+		Statusup(0,200),
+		NEFTJOD(30),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],1),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 100,0, [0,0,0,0,1,]),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,100, [0,0,0,0,1,]),
+	],
+	as2: {
+		desc: "<種族特効>種族が神族・天使の敵単体へ特効ダメージ(700%)",
+		proc: ChainSpecAttack(7.0, 0, [1,3]),
+	},
+	ss2: {
+		desc: "<無に還す瞳>3ターン後に敵単体を無に還す(一部敵には無効)",
+		turn: 10,
+		proc: [ss_death_limit(3)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(0,400),
+	],
+}

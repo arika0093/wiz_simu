@@ -1,0 +1,47 @@
+{
+	name: "哄笑の玉座 ヤラ・アンテゴニア",
+	cardno: 9401,
+	imageno: 11650,
+	hp: 2925,
+	atk: 5615,
+	cost: 43,
+	attr: [1,-1],
+	species: [1],
+	islegend: true,
+	ape: "ロストエデンⅢ",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効連撃>火属性の敵単体へ特効5連撃(400%)",
+		proc: ChainDualAttrAttack(4.0, 0, 5, [1,0,0,0,0]),
+	},
+	ss1: {
+		desc: "<純属性大魔術>スキル反射を無視し、敵全体へ水属性のダメージ、水単色の精霊が多いほどダメージアップ(上限値:1300%)",
+		turn: 8,
+		proc: [ss_damage_all(ss_pureattr_cond(13), [1]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup_oattr(0,300, [0,1,0,0,0,]),
+		Attr_statusup_oattr(300,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(3),
+		NEFTJOD(30),
+		Attr_relief([0,0,1,0,0,],20),
+		Attr_statusup(0,300, [0,1,0,0,0,]),
+		Attr_statusup(300,0, [0,1,0,0,0,]),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit"]),
+	],
+	as2: {
+		desc: "<属性特効連撃>火属性の敵単体へ特効5連撃(500%)",
+		proc: ChainDualAttrAttack(5.0, 0, 5, [1,0,0,0,0]),
+	},
+	ss2: {
+		desc: "<純属性大魔術>スキル反射を無視し、敵全体へ水属性のダメージ、水単色の精霊が多いほどダメージアップ(上限値:1600%)",
+		turn: 11,
+		proc: [ss_damage_all(ss_pureattr_cond(16), [1]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(0,1000),
+	],
+}

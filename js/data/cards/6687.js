@@ -1,0 +1,47 @@
+{
+	name: "時の流れに身を委ねる レイ",
+	cardno: 6687,
+	imageno: 8551,
+	hp: 4693,
+	atk: 2094,
+	cost: 49,
+	attr: [0,1],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(エヴァⅡ)",
+	as1: {
+		desc: "<複属性攻撃強化・回復>火属性の味方を回復(5%)し、攻撃力もアップ。複属性が水属性だとさらに攻撃力アップ(30%/50%)",
+		proc: [Heal(0.05, [1,0,0,0,0], 0), ChainEnhance_SubAttr(0.3, 0.5, [1,0,0,0,0], [0,1,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<継続回復>5ターン溜めた後、味方HPを完全回復し、さらに10ターン味方全体を徐々に回復する(30%)",
+		turn: 5,
+		charged: 5,
+		proc: [ss_heal(1), ss_regenerate(0.30, 10)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0], 2),
+		Statusup(0, 200),
+		Fastskill(2),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0], 2),
+		Fastskill(3),
+		Heal_afterbattle(10),
+		Spec_statusup(200, 0, [8]),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0], 2),
+	],
+	as2: {
+		desc: "<複属性攻撃強化・回復>火属性の味方を回復(5%)し、攻撃力もアップ。複属性が水属性だとさらに攻撃力アップ(60%/80%)",
+		proc: [Heal(0.05, [1,0,0,0,0], 0), ChainEnhance_SubAttr(0.6, 0.8, [1,0,0,0,0], [0,1,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<状態異常回復&蘇生>味方全体のHPを回復し(50%)、状態異常を回復、さらに火・水属性の味方を50%で蘇生",
+		turn: 10,
+		proc: [ss_heal(0.5), ss_abstate_cure(), ss_resurrection(0.5, [1,1,0,0,0])],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

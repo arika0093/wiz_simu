@@ -1,0 +1,46 @@
+{
+	name: "夢を描く箒星 ソフィ・ハーネット",
+	cardno: 9347,
+	imageno: 6367,
+	hp: 3702,
+	atk: 3776,
+	cost: 59,
+	attr: [2,1],
+	species: [9],
+	islegend: true,
+	ape: "UG",
+	as1: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(300%)、解答が早いほどさらにアップ(70%)(上限:4段階)",
+		proc: add_cond(ChainDualAttack(3.0, 3, 3), as_timedep(0.7)),
+	},
+	ss1: {
+		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
+		turn: 9,
+		proc: [ss_latest_copy()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,1,0,0,0,]),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit", "all_sealed"]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(400%)、解答が早いほどさらにアップ(70%)(上限:4段階)",
+		proc: add_cond(ChainDualAttack(4.0, 3, 3), as_timedep(0.7)),
+	},
+	ss2: {
+		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
+		turn: 9,
+		proc: [ss_latest_copy()],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,1500),
+	],
+}

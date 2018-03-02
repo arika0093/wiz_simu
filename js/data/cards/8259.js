@@ -1,0 +1,46 @@
+{
+	name: "凛麗な金獅 エスメラルダ・アウルム",
+	cardno: 8259,
+	imageno: 10400,
+	hp: 1702,
+	atk: 3591,
+	cost: 45,
+	attr: [1,2],
+	species: [5],
+	islegend: true,
+	ape: "大魔道杯 in 覇眼戦線Ⅲ",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃>味方のMAXHPの15％を使い、敵単体へのダメージアップ(600％)",
+		proc: add_cond(ChainAttack(6.0, 0), as_consume_all(0.15)),
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水・雷属性の5回連続ダメージ(300%)",
+		turn: 5,
+		proc: [ss_damage_s(3.0, [1,2], 5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 200,0, [0,0,1,0,0,]),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<攻撃>敵単体へのダメージアップ(600％)",
+		proc: ChainAttack(6.0, 0),
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水・雷属性の5回連続ダメージ(600%)",
+		turn: 8,
+		proc: [ss_damage_s(6.0, [1,2], 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
+}

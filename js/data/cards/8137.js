@@ -1,0 +1,47 @@
+{
+	name: "淡く甘い想い出 サーヤ・スズカゼ",
+	cardno: 8137,
+	imageno: 7549,
+	hp: 4128,
+	atk: 4577,
+	cost: 54,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	ape: "バレンタイン2014",
+	as1: {
+		desc: "<回復>味方全体のHPを回復、パネルの色が増す度さらに回復(11%/15%/17%)",
+		proc: ChainPanelsHeal(0.11, 0.15, 0.17, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(200%)、さらに3ターンの間、水属性のダメージ(200%)",
+		turn: 6,
+		proc: [ss_continue_damage(2.0, 2.0, [1], 3)],
+	},
+	as2: {
+		desc: "<回復>味方全体のHPを回復、パネルの色が増す度さらに回復(13%/17%/20%)",
+		proc: ChainPanelsHeal(0.13, 0.17, 0.2, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<残滅大魔術>敵全体へ水属性のダメージ(300%)、さらに3ターンの間、水属性のダメージ(300%)",
+		turn: 9,
+		proc: [ss_continue_damage(3.0, 3.0, [1], 3)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Spec_statusup(0,200, [9,]),
+		Spec_statusup(200,0, [9,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(0,400,[0,1,0,0,0,]),
+		Attr_statusup(400,0,[0,1,0,0,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+		Fastskill(3),
+		Heal_afterbattle(10),
+	],
+	Lawake: [
+		Attr_statusup(0,200,[0,1,0,0,0,]),
+		Statusup(0,500),
+		Attr_relief([1,1,1,1,1,],10),
+	],
+}

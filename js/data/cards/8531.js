@@ -1,0 +1,46 @@
+{
+	name: "牡丹微睡む夕月夜 ミコト・ウタヨミ",
+	cardno: 8531,
+	imageno: 6801,
+	hp: 2771,
+	atk: 4268,
+	cost: 58,
+	attr: [2,1],
+	species: [1],
+	islegend: true,
+	ape: "八百万神秘譚Ⅱ",
+	as1: {
+		desc: "<連撃・複属性攻撃強化>敵単体を3回連続攻撃(250%)、さらに雷属性の攻撃力をアップ(10%)、複属性が水属性だとさらにアップ(30%)",
+		proc: [ChainDualAttack(2.5, 0, 3), ChainEnhance_SubAttr(0.1, 0.4, [0,0,1,0,0], [0,1,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ(400%)、さらに水属性の敵には特効ダメージ(550%)、5チェインを消費してさらに特効ダメージ(300%)",
+		turn: 6,
+		proc: [ss_chain_cost_skill(5, ss_damage_all(special_attr([0,1,0,0,0], 12.5, 4.0), [2]), ss_damage_all(special_attr([0,1,0,0,0], 9.5, 4.0), [2]))],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],4),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Awake_noeffect("経験値取得量アップ",2),
+		NEFTJOD(60),
+		Awake_Chainboost(1),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,1,0,0,0,]),
+		Awake_noeffect("スキル反射見破り",1),
+	],
+	as2: {
+		desc: "<連撃・複属性攻撃強化>敵単体を3回連続攻撃(350%)、さらに雷属性の攻撃力をアップ(10%)、複属性が水属性だとさらにアップ(30%)",
+		proc: [ChainDualAttack(3.5, 0, 3), ChainEnhance_SubAttr(0.1, 0.4, [0,0,1,0,0], [0,1,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ(400%)、さらに水属性の敵には特効ダメージ(1050%)、5チェインを消費してさらに特効ダメージ(300%)",
+		turn: 9,
+		proc: [ss_chain_cost_skill(5, ss_damage_all(special_attr([0,1,0,0,0], 17.5, 4.0), [2]), ss_damage_all(special_attr([0,1,0,0,0], 14.5, 4.0), [2]))],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

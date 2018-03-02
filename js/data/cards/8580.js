@@ -1,0 +1,46 @@
+{
+	name: "願いの刃 ティアライザー＝コピシュ",
+	cardno: 8580,
+	imageno: 10751,
+	hp: 6545,
+	atk: 1445,
+	cost: 54,
+	attr: [1,3],
+	species: [8],
+	islegend: true,
+	ape: "黄昏メアレスⅢ",
+	as1: {
+		desc: "<回復>水属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復(20%)、さらに敵の状態異常攻撃を無効化(発動中行動不可)",
+		turn: 5,
+		proc: [ss_reinforcement_all(4, [ss_regenerate(0.2, 1, "RF"), ss_absattack_disable(1, "RF")])],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Awake_noeffect("経験値取得量アップ",2),
+		Fastskill(3),
+		Abstate_invalid("ss_sealed"),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,0,1,0,]),
+	],
+	as2: {
+		desc: "<回復>水属性の味方のHPを回復(17%)",
+		proc: Heal(0.17, [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復し、さらに攻撃力をアップ(20%,150%)、さらに敵の状態異常攻撃を無効化(発動中行動不可)",
+		turn: 8,
+		proc: [ss_reinforcement_all(4, [ss_regenerate(0.2, 1, "RF"), ss_enhance_all(1.5, 1, [1, 1, 1, 1, 1], "RF"), ss_absattack_disable(1, "RF")])],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [0,0,0,1,0,]),
+		NEFTJOD(30),
+	],
+}

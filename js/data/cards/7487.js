@@ -1,0 +1,46 @@
+{
+	name: "私たち、超無敵の ソフィ&リルム",
+	cardno: 7487,
+	imageno: 6134,
+	hp: 2653,
+	atk: 4004,
+	cost: 55,
+	attr: [1,0],
+	species: [9],
+	islegend: true,
+	ape: "DL限定精霊",
+	as1: {
+		desc: "<種族特効>4チェインでダメージアップ、術士・戦士の敵へさらにダメージアップ(400%/600%)",
+		proc: [ChainAttack(4.0, 4), ChainSpecAttack(6.0, 4, [8,9])],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・水属性のダメージ、5チェインを消費しさらにダメージアップ(150%/300%)",
+		turn: 4,
+		proc: [ss_damage_all(ss_chain_cost(5, 3.0, 1.5), [0,1]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_sattr(0,200, [0,1,0,0,0,], 0,200, [1,0,0,0,0,]),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup_sattr(200,0, [0,1,0,0,0,], 200,0, [1,0,0,0,0,]),
+		Spec_statusup(0,300, [9,]),
+		Spec_statusup(300,0, [9,]),
+	],
+	as2: {
+		desc: "<種族特効>4チェインでダメージアップ、術士・戦士の敵へさらにダメージアップ(500%/700%)",
+		proc: [ChainAttack(5.0, 4), ChainSpecAttack(7.0, 4, [8,9])],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・水属性のダメージ、5チェインを消費しさらにダメージアップ(250%/500%)",
+		turn: 10,
+		proc: [ss_damage_all(ss_chain_cost(5, 5.0, 2.5), [0,1]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

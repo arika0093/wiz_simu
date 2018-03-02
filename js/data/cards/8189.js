@@ -1,0 +1,46 @@
+{
+	name: "信頼と未来の覇眼 アリオテス・ゲー",
+	cardno: 8189,
+	imageno: 10327,
+	hp: 2935,
+	atk: 3779,
+	cost: 54,
+	attr: [2,4],
+	species: [8],
+	islegend: true,
+	ape: "覇眼戦線Ⅲ",
+	as1: {
+		desc: "<連撃>敵単体を3回連続攻撃、解答が早いほどさらにアップ(基本:250%, 3秒台:320%, 2秒台:390%, 1秒台:460%, 0秒台:530%)",
+		proc: add_cond(ChainDualAttack(2.5, 0, 3), as_timedep(0.7)),
+	},
+	ss1: {
+		desc: "<カウンター>1ターンの間、スキルカウンター待機(カウンター時、ダメージアップ(200%)",
+		turn: 5,
+		proc: [ss_skillcounter(2.0, 1)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,0,0,0,1,]),
+		Fastskill(3),
+		Abstate_invalid("ss_sealed"),
+		Awake_noeffect("行動見破り",1),
+	],
+	as2: {
+		desc: "<連撃>敵単体を3回連続攻撃、解答が早いほどさらにアップ(基本:350%, 3秒台:420%, 2秒台:490%, 1秒台:560%, 0秒台:630%)",
+		proc: add_cond(ChainDualAttack(3.5, 0, 3), as_timedep(0.7)),
+	},
+	ss2: {
+		desc: "<カウンター>1ターンの間、スキルカウンター待機(カウンター時、ダメージアップ(300%)",
+		turn: 7,
+		proc: [ss_skillcounter(3.0, 1)],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,200, [0,0,0,0,1,]),
+		Awake_noeffect("剣聖眼",3),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "働かざるもの… モミジ・カキツバタ",
+	cardno: 5078,
+	imageno: 6818,
+	hp: 2015,
+	atk: 2449,
+	cost: 30,
+	attr: [2, 4],
+	species: [1],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(300%)",
+		proc: ChainDualAttack(3.0, 3, 3),
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを1遅らせる",
+		turn: 6,
+		proc: [ss_delay_all(1)],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ", 1),
+		Awake_noeffect("ゴールド取得量アップ", 1),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Statusup(0, 200),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Fastskill(1),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(400%)",
+		proc: ChainDualAttack(4.0, 3, 3),
+	},
+	ss2: {
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
+		turn: 8,
+		proc: [ss_delay_all(2)],
+	},
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(400, 0),
+	],
+}

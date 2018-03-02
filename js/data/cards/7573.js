@@ -1,0 +1,47 @@
+{
+	name: "姫は空より輝く チェルシー・ネリム",
+	cardno: 7573,
+	imageno: 7110,
+	hp: 4023,
+	atk: 2401,
+	cost: 48,
+	attr: [1,3],
+	species: [9],
+	islegend: true,
+	ape: "チェルシー 舞い降りた異界の姫君",
+	is_dist: true,
+	as1: {
+		desc: "<回復>水属性の味方のHPを回復(12%)",
+		proc: Heal(0.12, [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
+		turn: 9,
+		proc: [ss_delay_all(2)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_relief([1,1,1,1,1,],10),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Spec_statusup(200,0, [9,]),
+		Spec_statusup(0,200, [9,]),
+	],
+	as2: {
+		desc: "<回復>水属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせ、HP20%以下でさらに2遅らせる",
+		turn: 12,
+		proc: [ss_delay_all(ss_hp_less(0.2, 4, 2))],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

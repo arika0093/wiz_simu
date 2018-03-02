@@ -1,0 +1,46 @@
+{
+	name: "聖夜を詠む冬咲花 ツバキ・リンドウ",
+	cardno: 7818,
+	imageno: 7073,
+	hp: 3564,
+	atk: 5432,
+	cost: 56,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<属性特効>3チェインで水属性の敵単体へ特効ダメージ(525%)",
+		proc: ChainAttrAttack(5.25, 3, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、平均解答が早いほどさらに水属性の敵には特効ダメージ(基本:300%, 3秒台:500%, 2秒台:700%, 1秒台:900%, 0秒台:1100%)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([0,1,0,0,0], ss_answertime(3.0, 2.0), 3.0), [2], 1)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(3),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Spec_statusup(0,300, [8,]),
+		Spec_statusup(300,0, [8,]),
+		Attr_statusup(0,400, [0,0,1,0,0,]),
+		Attr_statusup(400,0, [0,0,1,0,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+		Awake_noeffect("スキル反射見破り",1),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで水属性の敵単体へ特効ダメージ(625%)",
+		proc: ChainAttrAttack(6.25, 3, [0,1,0,0,0]),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、平均解答が早いほどさらに水属性の敵には特効ダメージ(基本:700%, 3秒台:900%, 2秒台:1100%, 1秒台:1300%, 0秒台:1500%)",
+		turn: 9,
+		proc: [ss_damage_all(special_attr([0,1,0,0,0], ss_answertime(7.0, 2.0), 7.0), [2], 1)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Statusup(0,500),
+		Abstate_invalid("discharge"),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "飛べ☆夏の箒星 ソフィ・ハーネット",
+	cardno: 9354,
+	imageno: 8441,
+	hp: 6301,
+	atk: 2133,
+	cost: 59,
+	attr: [2,1],
+	species: [9],
+	islegend: true,
+	ape: "USG",
+	as1: {
+		desc: "<回復・複属性攻撃強化>雷属性の味方を回復(10%)し、攻撃力もアップ(30%)。複属性が水属性だとさらに攻撃力アップ(30%)",
+		proc: [Heal(0.10, [0,1,1,0,0], 0), ChainEnhance_SubAttr(0.3, 0.6, [0,0,1,0,0], [0,1,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを1遅らせる",
+		turn: 4,
+		proc: [ss_delay_all(1)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(4),
+		Awake_noeffect("ゴールド取得量アップ",3),
+		Awake_noeffect("経験値取得量アップ",3),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,1,0,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復・複属性攻撃強化>雷属性の味方を回復(10%)し、攻撃力もアップ(30%)。複属性が水属性だとさらに攻撃力アップ(60%)",
+		proc: [Heal(0.10, [0,1,1,0,0], 0), ChainEnhance_SubAttr(0.3, 0.9, [0,0,1,0,0], [0,1,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを1早め、敵全体の攻撃ターンを1遅らせる",
+		turn: 6,
+		proc: [ss_skillboost(1), ss_delay_all(1)],
+	},
+	Lawake: [
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+		Statusup(500,0),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+	],
+}

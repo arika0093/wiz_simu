@@ -1,0 +1,46 @@
+{
+	name: "ペンは杖より強し ウィズ",
+	cardno: 5908,
+	imageno: 7725,
+	hp: 2213,
+	atk: 1655,
+	cost: 15,
+	attr: [1,3],
+	species: [9],
+	islegend: true,
+	ape: "大魔道杯 with ギルドマスターズ(3周年)",
+	is_dist: true,
+	as1: {
+		desc: "<回復>水属性の味方のHPを回復(12%)",
+		proc: Heal(0.12, [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップ(上限値:2000)",
+		turn: 6,
+		proc: [ss_statusup_all([500, 500], [2000, 2000], -1)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Fastskill(2),
+		Attr_relief([0,1,0,0,0,],20),
+		Awake_noeffect("経験値取得量アップ", 2),
+		Attr_statusup(200, 0, [0, 1, 0, 0, 0, ]),
+		Panel_boost([0,1,0,0,0,],2),
+	],
+	as2: {
+		desc: "<回復>水属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを750アップ(上限値:2000)",
+		turn: 9,
+		proc: [ss_statusup_all([750, 750], [2000, 2000], -1)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+}

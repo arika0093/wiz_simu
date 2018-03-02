@@ -1,0 +1,48 @@
+{
+	name: "其は終焉の起源なり",
+	cardno: 4021,
+	imageno: 5726,
+	hp: 2789,
+	atk: 3654,
+	cost: 72,
+	attr: [0, -1],
+	species: [0],
+	disable: true,
+	alias: ["しゅうえん"],
+	awakes: [
+		Panel_boost([1,0,0,0,0], 1),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Fastskill(1),
+		Spec_statusup(200, 0, [0]),
+		Panel_boost([1,0,0,0,0], 1),
+		Spec_statusup(0, 100, [0]),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Fastskill(2),
+		Spec_statusup(200, 0, [0]),
+		Spec_statusup(0, 200, [0]),
+	],
+	as1: {
+		desc: "<連撃>5チェインで敵単体を3回連続攻撃、10チェインで更にダメージアップ(5チェイン：計450％ / 10チェイン：計750％)",
+		proc: multi_as(ChainDualAttack(4.5, 5, 3), ChainDualAttack(7.5, 10, 3)),
+	},
+	ss1: {
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へダメージ(130％×味方の人数)",
+		turn: 10,
+		proc: [ss_damage_all(ss_consume_all_cond(1.3, 0.5), [0])],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+	],
+	as2: {
+		desc: "<連撃>5チェインで敵単体を3回連続攻撃、10チェインで更にダメージアップ(5チェイン：計550％ / 10チェイン：計850％)",
+		proc: multi_as(ChainDualAttack(5.5, 5, 3), ChainDualAttack(8.5, 10, 3)),
+	},
+	ss2: {
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へダメージ(160％×味方の人数)",
+		turn: 12,
+		proc: [ss_damage_all(ss_consume_all_cond(1.6, 0.5), [0])],
+	},
+}

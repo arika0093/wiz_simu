@@ -1,0 +1,47 @@
+{
+	name: "フワッとしたアレ ケイトリン・ケイ",
+	cardno: 6943,
+	imageno: 8937,
+	hp: 4047,
+	atk: 1389,
+	cost: 33,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "クロム・マグナ ゼロ",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化・回復>味方全体のHPを回復(10%)、さらに攻撃力をアップ(20%)",
+		proc: [Heal(0.1, [1,1,1,1,1], 0), ChainEnhance(0.2, [1,1,1,1,1], 0)],
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを1遅らせる",
+		turn: 4,
+		proc: [ss_delay_all(1)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(0,200),
+		Statusup(200,0),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Fastskill(2),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>味方全体のHPを回復(12%)、さらに攻撃力をアップ(20%)",
+		proc: [Heal(0.12, [1,1,1,1,1], 0), ChainEnhance(0.2, [1,1,1,1,1], 0)],
+	},
+	ss2: {
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
+		turn: 8,
+		proc: [ss_delay_all(2)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

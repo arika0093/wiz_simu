@@ -1,0 +1,47 @@
+{
+	name: "悪魔の手芸 サリー・ニードルワーク",
+	cardno: 6251,
+	imageno: 8093,
+	hp: 2879,
+	atk: 3343,
+	cost: 40,
+	attr: [0,-1],
+	species: [2],
+	islegend: true,
+	ape: "大魔道杯 in 聖サタニック女学院",
+	is_dist: true,
+	as1: {
+		desc: "<回復>火属性の味方のHPを回復(12%)",
+		proc: Heal(0.12, [1,0,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを1早め、敵単体の攻撃ターンを1遅らせる",
+		turn: 6,
+		proc: [ss_skillboost(1), ss_delay_s(1)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(1),
+		NEFTJOD(30),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>火属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [1,0,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
+		turn: 9,
+		proc: [ss_skillboost(2), ss_delay_s(2)],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

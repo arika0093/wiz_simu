@@ -1,0 +1,46 @@
+{
+	name: "花嫁 in 魔道棺桶 アリエッタ・トワ",
+	cardno: 9265,
+	imageno: 11530,
+	hp: 2925,
+	atk: 4115,
+	cost: 57,
+	attr: [1,0],
+	species: [9],
+	islegend: true,
+	ape: "UHG",
+	as1: {
+		desc: "<連撃>敵単体を4回連続攻撃(200%),10チェインで更にダメージアップ(700%)",
+		proc: [ChainDualAttack(2.0, 0, 4), ChainDualAttack(9.0, 10, 4)],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにスキルチャージプラス1の効果を付与（スキルチャージの効果は、SPスキルを使うまで重複しません）",
+		turn: 4,
+		proc: [panel_skillboost(1)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(4),
+		Attr_relief([1,1,1,1,1,],10),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [1,0,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<連撃>敵単体を4回連続攻撃(300%),10チェインで更にダメージアップ(700%)",
+		proc: [ChainDualAttack(3.0, 0, 4), ChainDualAttack(10.0, 10, 4)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにスキルチャージプラス1の効果を付与（スキルチャージの効果は、SPスキルを使うまで重複しません）",
+		turn: 4,
+		proc: [panel_skillboost(1)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+	],
+}

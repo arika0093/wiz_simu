@@ -1,0 +1,47 @@
+{
+	name: "創痍の叛逆者 モルブ&ソリトゥード",
+	cardno: 9180,
+	imageno: 11416,
+	hp: 4456,
+	atk: 1192,
+	cost: 39,
+	attr: [2,4],
+	species: [-1],
+	islegend: true,
+	ape: "幻魔特区RELOADED",
+	is_dist: true,
+	as1: {
+		desc: "<回復>雷属性の味方を回復(8%)、複属性が闇属性だとさらに回復(8%)",
+		proc: [Heal(0.08, [0,0,1,0,0], 0), add_cond(Heal(0.16, [0,0,1,0,0], 0), when_subattr_match([0,1,0,0,0], [0,0,0,0,1]))],
+	},
+	ss1: {
+		desc: "<回復>味方全体のHPを回復する(25%)",
+		turn: 2,
+		proc: [ss_heal(0.25)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,200, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 200,0, [0,0,0,0,1,]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<回復>雷属性の味方を回復(11%)、複属性が闇属性だとさらに回復(8%)",
+		proc: [Heal(0.11, [0,0,1,0,0], 0), add_cond(Heal(0.19, [0,0,1,0,0], 0), when_subattr_match([0,1,0,0,0], [0,0,0,0,1]))],
+	},
+	ss2: {
+		desc: "<回復>味方全体のHPを回復する(35%)、毒状態でさらに回復(50%)",
+		turn: 4,
+		proc: [ss_heal(ss_is_poison_own(0.85, 0.35))],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

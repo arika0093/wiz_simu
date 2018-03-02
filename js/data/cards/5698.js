@@ -1,0 +1,45 @@
+{
+	name: "星と氷に微笑んで ピピア・ショトワ",
+	cardno: 5698,
+	imageno: 7474,
+	hp: 3517,
+	atk: 3321,
+	cost: 46,
+	attr: [1,3],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ、複属性が光属性だとさらにアップ(30%/80%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,1,0,0,0], [0,0,0,1,0], 0),
+	},
+	ss1: {
+		desc: "<斬撃大魔術>スキル反射を無視し、水・光属性の3連撃、さらに連撃数分チェインプラス(180%)",
+		turn: 7,
+		proc: [ss_damage_slash(1.8, [1,3], 3), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],2),
+		Statusup(300,0),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(3),
+		Attr_relief([0,0,0,1,1,],30),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		NEFTJOD(60),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ、複属性が光属性だとさらにアップ(60%/110%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,1,0,0,0], [0,0,0,1,0], 0),
+	},
+	ss2: {
+		desc: "<斬撃大魔術>スキル反射を無視し、水・光属性の5連撃、さらに連撃数分チェインプラス(380%)",
+		turn: 10,
+		proc: [ss_damage_slash(3.8, [1,3], 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

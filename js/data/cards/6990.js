@@ -1,0 +1,47 @@
+{
+	name: "真夏の熱視線 ニコラ・モーガン",
+	cardno: 6990,
+	imageno: 6152,
+	hp: 4321,
+	atk: 4034,
+	cost: 52,
+	attr: [2, -1],
+	species: [9],
+	islegend: true,
+	ape: "クロム・マグナⅢ",
+	as1: {
+		desc: "<回復>水・雷属性は味方のHPを回復、術士はさらに回復(10%/17%)",
+		proc: [Heal(0.10, [0,1,1,0,0], 0), SpecHeal(0.17, [0,1,1,0,0], [9], 0)],
+	},
+	ss1: {
+		desc: "<遅延>敵単体の攻撃ターンを3遅らせる",
+		turn: 10,
+		proc: [ss_delay_s(3)],
+	},
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_relief([0, 1, 1, 0, 0, ], 10),
+		NEFTJOD(30),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(0, 200, [0, 1, 1, 0, 0, ]),
+		Attr_statusup(200, 0, [0, 1, 1, 0, 0, ]),
+		Fastskill(3),
+		Spec_statusup(200, 0, [9, ]),
+		Spec_statusup(0, 200, [9, ]),
+		Awake_noeffect("スキル反射見破り", 1),
+	],
+	as2: {
+		desc: "<回復>水・雷属性は味方のHPを回復、術士はさらに回復(13%/20%)",
+		proc: [Heal(0.13, [0,1,1,0,0], 0), SpecHeal(0.20, [0,1,1,0,0], [9], 0)],
+	},
+	ss2: {
+		desc: "<遅延大魔術>敵単体の攻撃ターンを3遅らせ、敵単体へ雷属性のダメージ(1000%)",
+		turn: 15,
+		proc: [ss_damage_s(10.0, [2], 1), ss_delay_s(3)],
+	},
+	Lawake: [
+		NEFTJOD(30),
+		Statusup(500, 0),
+		Statusup(0, 300),
+	],
+}

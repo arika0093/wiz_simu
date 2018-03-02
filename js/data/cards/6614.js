@@ -1,0 +1,46 @@
+{
+	name: "狙い撃つ！8号機 マリ",
+	cardno: 6614,
+	imageno: 8645,
+	hp: 2834,
+	atk: 5267,
+	cost: 50,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(エヴァⅠ)",
+	as1: {
+		desc: "<種族数攻撃>3チェインでダメージアップ(300%)、戦士の仲間の数だけさらにアップ(330%/360%/390%/420%/450%)",
+		proc: ChainDeckSpecsAttack(0.3, [8], 3, 2.0),
+	},
+	ss1: {
+		desc: "<ブースト>8ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ(800%)。さらに極稀にクリティカル",
+		turn: 10,
+		proc: [ss_boost_enhance_s(8.0, 8, 0.15)],
+	},
+	awakes: [
+		Statusup(200,0),
+		Fastskill(1),
+		Statusup(0,200),
+		Attr_relief([0,1,0,0,0,],10),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],3),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<種族数攻撃>3チェインでダメージアップ(400%)、戦士の仲間の数だけさらにアップ(430%/460%/490%/520%/550%)",
+		proc: ChainDeckSpecsAttack(0.3, [8], 3, 3.0),
+	},
+	ss2: {
+		desc: "<ブースト>8ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ(1200%)。さらに極稀にクリティカル",
+		turn: 13,
+		proc: [ss_boost_enhance_s(12.0, 8, 0.15)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

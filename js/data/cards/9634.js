@@ -1,0 +1,46 @@
+{
+	name: "謹賀新年・双剣羽 ツバキ＆ハヅキ",
+	cardno: 9634,
+	imageno: 11907,
+	hp: 2245,
+	atk: 4418,
+	cost: 56,
+	attr: [2,1],
+	species: [8],
+	islegend: true,
+	ape: "謹賀新年2018",
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ(150%),5チェインで更にダメージアップ(50%)",
+		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.0, 5)],
+	},
+	ss1: {
+		desc: "<融合大魔術>スキル反射を無視し、敵全体へ雷属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:3000%)",
+		turn: 7,
+		proc: [ss_damage_all(ss_multiattr_cond(30), [2]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Awake_noeffect("ドロップアップ",1),
+		Fastskill(3),
+		Attr_statusup(0,300, [1,1,1,1,1,]),
+		Attr_statusup(300,0, [1,1,1,1,1,]),
+		Abstate_invalid("ss_sealed"),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ(180%),5チェインで更にダメージアップ(50%)",
+		proc: [ChainAllAttack(1.8, 0), ChainAllAttack(2.3, 5)],
+	},
+	ss2: {
+		desc: "<融合大魔術>スキル反射を無視し、敵全体へ雷属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:3600%)",
+		turn: 10,
+		proc: [ss_damage_all(ss_multiattr_cond(36), [2]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		Statusup(500,0),
+	],
+}

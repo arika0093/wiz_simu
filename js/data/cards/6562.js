@@ -1,0 +1,47 @@
+{
+	name: "天球を覆う大魔道 メリィ・ミツボシ",
+	cardno: 6562,
+	imageno: 8458,
+	hp: 3065,
+	atk: 2068,
+	cost: 39,
+	attr: [2,1],
+	species: [9],
+	islegend: true,
+	ape: "USG",
+	is_dist: true,
+	as1: {
+		desc: "<回復>水・雷属性の味方のHPを回復(13%)",
+		proc: Heal(0.13, [0,1,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
+		turn: 3,
+		proc: [panel_chainplus(1)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+	],
+	as2: {
+		desc: "<回復>水・雷属性の味方のHPを回復(15%)",
+		proc: Heal(0.15, [0,1,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(2)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Statusup(500,0),
+	],
+}

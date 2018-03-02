@@ -1,0 +1,47 @@
+{
+	name: "魔界大砂塵 ベリカント・スキゾール",
+	cardno: 9416,
+	imageno: 11665,
+	hp: 2715,
+	atk: 5864,
+	cost: 43,
+	attr: [1,-1],
+	species: [2],
+	islegend: true,
+	ape: "ロストエデンⅢ",
+	is_dist: true,
+	as1: {
+		desc: "<分散攻撃>10チェインで敵全体へ分散攻撃(800%)",
+		proc: ChainVarianceAttack(8.0, 10),
+	},
+	ss1: {
+		desc: "<激化大魔術>敵単体へ水属性の10回連続ダメージ(600%)、発動する度に効果値が2倍アップ(上限値:3段階)",
+		turn: 11,
+		proc: [ss_damage_s(ss_intenselyval(0, 6.0, 48), [1], 10)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_oattr(0,300, [0,1,0,0,0,]),
+		Attr_statusup_oattr(300,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Awake_secondfast(3),
+		NEFTJOD(30),
+		Awake_secondfast(3),
+		Attr_statusup(0,300, [0,1,0,0,0,]),
+		Attr_statusup(300,0, [0,1,0,0,0,]),
+		Awake_secondfast(3),
+	],
+	as2: {
+		desc: "<分散攻撃>10チェインで敵全体へ分散攻撃(900%)",
+		proc: ChainVarianceAttack(9.0, 10),
+	},
+	ss2: {
+		desc: "<激化大魔術>敵単体へ水属性の10回連続ダメージ(600%)、発動する度に効果値が2倍アップ(上限値:3段階)",
+		turn: 11,
+		proc: [ss_damage_s(ss_intenselyval(0, 6.0, 48), [1], 10)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

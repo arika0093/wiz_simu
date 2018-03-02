@@ -1,0 +1,47 @@
+{
+	name: "踊り続ける生ける神話 Mr.ボブ",
+	cardno: 3961,
+	imageno: 5662,
+	hp: 3089,
+	atk: 2249,
+	cost: 42,
+	attr: [2, -1],
+	species: [9],
+	ape: "魔道杯(その他)",
+	awakes: [
+		Statusup(200, 0),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Statusup(200, 0),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Spec_statusup(0, 200, [9, ]),
+		Spec_statusup(200, 0, [9, ]),
+	],
+	as1: {
+		desc: "<回復>雷属性の味方のHPを回復/10％",
+		proc: Heal(0.10, [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの100％を使い敵全体へダメージ(400％)",
+		turn: 8,
+		proc: [ss_damage_all(4.0, [2]), ss_consume_own(1.0)],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>雷属性の味方のHPを回復、さらに雷属性の味方の攻撃力をアップ(回復：12％ / 攻撃力アップ：+30％)",
+		proc: [Heal(0.12, [0,0,1,0,0], 0), ChainEnhance(0.30, [0,0,1,0,0], 0)],
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの100％を使い敵全体へダメージ(800％)",
+		turn: 10,
+		proc: [ss_damage_all(8.0, [2]), ss_consume_own(1.0)],
+	},
+}

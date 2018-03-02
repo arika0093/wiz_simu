@@ -1,0 +1,46 @@
+{
+	name: "無我玉響 ティアライザー=コピシュ",
+	cardno: 7333,
+	imageno: 9358,
+	hp: 3209,
+	atk: 3412,
+	cost: 52,
+	attr: [1,0],
+	species: [8],
+	disable: true,
+	islegend: true,
+	ape: "黄昏メアレスⅡ",
+	as1: {
+		desc: "<連撃・複属性攻撃強化>4チェインで敵単体を4回連続攻撃(350%)、さらに水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(10%/40%)",
+		proc: [ChainDualAttack(3.5, 4, 4), ChainEnhance_SubAttr(0.1, 0.4, [0,1,0,0,0], [1,0,0,0,0], 4)],
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のMAXHPの60%を使い、味方全体のスペシャルスキルの発動ターンを5早める",
+		turn: 11,
+		proc: [ss_skillboost(5), ss_consume_all(0.6)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_sattr(0,200, [0,1,0,0,0,], 0,200, [1,0,0,0,0,]),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],2),
+		Awake_noeffect("経験値取得量アップ",1),
+		Attr_statusup_sattr(200,0, [0,1,0,0,0,], 200,0, [1,0,0,0,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<連撃・複属性攻撃強化>4チェインで敵単体を4回連続攻撃(450%)、さらに水属性の攻撃力をアップ、複属性が火属性だとさらにアップ(10%/40%)",
+		proc: [ChainDualAttack(4.5, 4, 4), ChainEnhance_SubAttr(0.1, 0.4, [0,1,0,0,0], [1,0,0,0,0], 4)],
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のMAXHPの60%を使い、味方全体のスペシャルスキルの発動ターンを5早める",
+		turn: 11,
+		proc: [ss_skillboost(5), ss_consume_all(0.6)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+	],
+}

@@ -1,0 +1,45 @@
+{
+	name: "白銀に高鳴る鼓動 ピノ・マリアンヌ",
+	cardno: 7821,
+	imageno: 9973,
+	hp: 4322,
+	atk: 3021,
+	cost: 56,
+	attr: [1,3],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<複属性攻撃強化>3チェインで水属性の攻撃力をアップ、複属性が光だとさらにアップ(40%/90%)",
+		proc: ChainEnhance_SubAttr(0.4, 0.9, [0,1,0,0,0], [0,0,0,1,0], 3),
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
+		turn: 10,
+		proc: [ss_delay_all(3)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],3),
+		NEFTJOD(30),
+		Fastskill(3),
+		Panel_boost([0,1,0,0,0,],3),
+		NEFTJOD(30),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,0,1,0,]),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,0,1,0,]),
+		Abstate_invalid("discharge"),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>3チェインで水属性の攻撃力をアップ、複属性が光だとさらにアップ(70%/120%)",
+		proc: ChainEnhance_SubAttr(0.7, 1.2, [0,1,0,0,0], [0,0,0,1,0], 3),
+	},
+	ss2: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを3早め、敵全体の攻撃ターンを3遅らせる",
+		turn: 12,
+		proc: [ss_skillboost(3), ss_delay_all(3)],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [0,0,0,1,0,]),
+		Statusup(500,0),
+	],
+}

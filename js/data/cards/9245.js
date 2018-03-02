@@ -1,0 +1,46 @@
+{
+	name: "水葬の王 ヴィロムコ",
+	cardno: 9245,
+	imageno: 11510,
+	hp: 2222,
+	atk: 3333,
+	cost: 45,
+	attr: [1,4],
+	species: [0],
+	islegend: true,
+	ape: "大魔道杯 the GATE",
+	is_dist: true,
+	as1: {
+		desc: "<種族特効>4チェインでダメージアップ(350%)、術士の敵へさらにダメージアップ(200%)",
+		proc: [ChainAttack(3.5, 4), ChainSpecAttack(5.5, 4, [9])],
+	},
+	ss1: {
+		desc: "<特効大魔術>味方のMAXHP70%を使い、敵全体へ水属性のダメージ(400%)、さらに火・光属性の敵には特効ダメージ(1050%)",
+		turn: 7,
+		proc: [ss_damage_all(special_attr([1, 0, 0, 1, 0], 14.5, 4.0), [1]), ss_consume_all(0.70)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Statusup(0,300),
+		Statusup(300,0),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_relief([1,0,0,0,0,],10),
+		NEFTJOD(30),
+		Abstate_invalid("death_limit"),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Fastskill(3),
+	],
+	as2: {
+		desc: "<種族特効>4チェインでダメージアップ(450%)、術士の敵へさらにダメージアップ(200%)",
+		proc: [ChainAttack(4.5, 4), ChainSpecAttack(6.5, 4, [9])],
+	},
+	ss2: {
+		desc: "<特効大魔術>味方のMAXHP70%を使い、敵全体へ水属性のダメージ(400%)、さらに火・光属性の敵には特効ダメージ(1400%)",
+		turn: 10,
+		proc: [ss_damage_all(special_attr([1, 0, 0, 1, 0], 18, 4.0), [1]), ss_consume_all(0.70)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
+}

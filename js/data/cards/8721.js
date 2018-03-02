@@ -1,0 +1,48 @@
+{
+	name: "我ら時の空族 ヴォラール",
+	cardno: 8721,
+	imageno: 10897,
+	hp: 6025,
+	atk: 2425,
+	cost: 42,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "大魔道杯 in エタクロⅢ",
+	is_dist: true,
+	alias: ["ヴァイオレッタ", "ルドルフ"],
+	as1: {
+		desc: "<回復>火属性の味方のHPを回復(13%)",
+		proc: Heal(0.13, [1,0,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<純属性強化>4ターンの間、火単色精霊が多いほど、火単色精霊のダメージを強化し(上限値:100%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:1000,1000)",
+		turn: 4,
+		proc: [ss_statusup_all([ss_pureattr_cond(1000), ss_pureattr_cond(1000)], [1000,1000], -1, [1,0,0,0,0]), ss_enhance_all(ss_pureattr_cond(1.0), 4, [1,0,0,0,0])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
+		Attr_statusup_oattr(300,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Heal_afterbattle(10),
+		Abstate_invalid("ss_sealed"),
+		Fastskill(2),
+		Attr_statusup(0,300, [1,0,0,0,0,]),
+		Attr_statusup(300,0, [1,0,0,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<回復>火属性の味方のHPを回復(16%)",
+		proc: Heal(0.16, [1,0,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<純属性強化>4ターンの間、火単色精霊が多いほど、火単色精霊のダメージを強化し(上限値:200%)、さらに永続ターン、攻撃力、HPのステータスをアップ(上限値:2000,2000)",
+		turn: 8,
+		proc: [ss_statusup_all([ss_pureattr_cond(2000), ss_pureattr_cond(2000)], [2000,2000], -1, [1,0,0,0,0]), ss_enhance_all(ss_pureattr_cond(2.0), 4, [1,0,0,0,0])],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+}

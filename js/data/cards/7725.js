@@ -1,0 +1,46 @@
+{
+	name: "滅魔の武器職人 リギット・ミリアン",
+	cardno: 7725,
+	imageno: 7971,
+	hp: 3859,
+	atk: 3013,
+	cost: 53,
+	attr: [2, 4],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<複属性攻撃強化>4チェインで雷属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(50%/100%)",
+		proc: ChainEnhance_SubAttr(0.50, 1.0, [0, 0, 1, 0, 0], [0, 0, 0, 0, 1], 4),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを雷・闇属性化",
+		turn: 3,
+		proc: [ss_panel_change([0,0,1,0,1])],
+	},
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Statusup(0, 200),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Statusup(200, 0),
+		Fastskill(1),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
+		Fastskill(2),
+		NEFTJOD(30),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>4チェインで雷属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(80%/130%)",
+		proc: ChainEnhance_SubAttr(0.80, 1.3, [0, 0, 1, 0, 0], [0, 0, 0, 0, 1], 4),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを雷・闇属性化し、攻撃力アップの効果を付与(100%)",
+		turn: 6,
+		proc: [ss_panel_change([0,0,1,0,1]), panel_attackup(1.0)],
+	},
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(500, 0),
+		NEFTJOD(30),
+	],
+}

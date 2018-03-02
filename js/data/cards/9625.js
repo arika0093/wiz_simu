@@ -1,0 +1,46 @@
+{
+	name: "夜明けの双星 アイ＆アイ",
+	cardno: 9625,
+	imageno: 11898,
+	hp: 5525,
+	atk: 4518,
+	cost: 52,
+	attr: [2,-1],
+	species: [6],
+	islegend: true,
+	ape: "謹賀新年2018",
+	as1: {
+		desc: "<回復・攻撃強化>雷属性の味方を回復(13%)し、デッキに単色の精霊が多いほど、攻撃力をアップ(15%)（上限:5段階)",
+		proc: [Heal(0.13, [0,0,1,0,0]), add_cond(ChainEnhance(0, [0,0,1,0,0], 0), as_singleattr_num(0, 0.15))],
+	},
+	ss1: {
+		desc: "<スキルチャージ>隣接する精霊のスペシャルスキルの発動ターンを3早める",
+		turn: 8,
+		proc: [ss_toselect_ownside(ss_skillboost(3))],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_oattr(0,400, [0,0,1,0,0,]),
+		Attr_statusup_oattr(400,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Abstate_invalid("as_sealed"),
+		Abstate_invalid("discharge"),
+		Fastskill(4),
+		Attr_statusup(0,400, [0,0,1,0,0,]),
+		Attr_statusup(400,0, [0,0,1,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復・攻撃強化>雷属性の味方を回復(16%)し、デッキに単色の精霊が多いほど、攻撃力をアップ(15%)（上限:5段階)",
+		proc: [Heal(0.16, [0,0,1,0,0]), add_cond(ChainEnhance(0, [0,0,1,0,0], 0), as_singleattr_num(0, 0.15))],
+	},
+	ss2: {
+		desc: "<スキルチャージ>隣接する精霊のスペシャルスキルの発動ターンを4早める",
+		turn: 10,
+		proc: [ss_toselect_ownside(ss_skillboost(4))],
+	},
+	Lawake: [
+		Attr_statusup(0,300, [0,0,1,0,0,]),
+		Attr_relief([1,1,1,1,1,],20),
+	],
+}

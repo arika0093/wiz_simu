@@ -1,0 +1,46 @@
+{
+	name: "天より照らす月光 アルティミシア",
+	cardno: 8475,
+	imageno: 10636,
+	hp: 8005,
+	atk: 1751,
+	cost: 50,
+	attr: [2,-1],
+	species: [1],
+	islegend: true,
+	ape: "八百万神秘譚Ⅳ",
+	as1: {
+		desc: "<回復・攻撃強化>雷属性の味方を回復(13%)し、デッキに単色の精霊が多いほど、攻撃力をアップ(15%)（上限:5段階)",
+		proc: [Heal(0.13, [0,0,1,0,0]), add_cond(ChainEnhance(0, [0,0,1,0,0], 0), as_singleattr_num(0, 0.15))],
+	},
+	ss1: {
+		desc: "<ブースト>4ターンの間、味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ(90%)、平均解答が早いほどさらにアップ(40%)（上限:4段階)。さらに極稀にクリティカル",
+		turn: 7,
+		proc: [ss_boost_enhance_all(ss_answertime(0.9, 0.4), 4, 0.1, [1,1,1,1,1])],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_oattr(0,400, [0,0,1,0,0,]),
+		Attr_statusup_oattr(400,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(3),
+		Attr_relief([0,1,0,0,0,],20),
+		Attr_statusup(0,400, [0,0,1,0,0,]),
+		Attr_statusup(400,0, [0,0,1,0,0,]),
+		Abstate_invalid("heal_reverse"),
+	],
+	as2: {
+		desc: "<回復・攻撃強化>雷属性の味方を回復(16%)し、デッキに単色の精霊が多いほど、攻撃力をアップ(15%)（上限:5段階)",
+		proc: [Heal(0.16, [0,0,1,0,0]), add_cond(ChainEnhance(0, [0,0,1,0,0], 0), as_singleattr_num(0, 0.15))],
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間、味方のMAXHPを毎ターン10%消費し、味方の攻撃力をアップ(140%)、平均解答が早いほどさらにアップ(40%)（上限:4段階)。さらに極稀にクリティカル",
+		turn: 10,
+		proc: [ss_boost_enhance_all(ss_answertime(1.4, 0.4), 5, 0.1, [1,1,1,1,1])],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Attr_statusup_oattr(0,200, [0,0,1,0,0,]),
+	],
+}

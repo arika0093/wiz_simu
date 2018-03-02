@@ -1,0 +1,47 @@
+{
+	name: "お役に立ちたい機械少女 スワン",
+	cardno: 7257,
+	imageno: 9279,
+	hp: 3810,
+	atk: 2078,
+	cost: 43,
+	attr: [0,3],
+	species: [6],
+	islegend: true,
+	ape: "追憶のレディアント",
+	is_dist: true,
+	as1: {
+		desc: "<回復>味方全体のHPを回復(12%)",
+		proc: [Heal(0.12, [1,1,1,1,1], 0)],
+	},
+	ss1: {
+		desc: "<効果解除>敵全体の属性吸収を解除する",
+		turn: 4,
+		proc: [ss_break_absorb("all")],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ",1),
+		Heal_afterbattle(10),
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(200,0),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,200, [0,0,0,1,0,]),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,0,0,1,0,]),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(14%)",
+		proc: [Heal(0.14, [1,1,1,1,1], 0)],
+	},
+	ss2: {
+		desc: "<効果解除大魔術>スキル反射を無視し、敵全体の属性吸収を解除し、火属性のダメージ(300%)",
+		turn: 7,
+		proc: [ss_break_absorb("all"), ss_damage_all(3.0, [0]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

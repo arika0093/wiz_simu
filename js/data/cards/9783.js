@@ -1,0 +1,47 @@
+{
+	name: "次元を超えて来たる 絵の怪物",
+	cardno: 9783,
+	imageno: 12097,
+	hp: 4827,
+	atk: 1010,
+	cost: 39,
+	attr: [0,2],
+	species: [6],
+	islegend: true,
+	ape: "新説桃娘伝2",
+	is_dist: true,
+	as1: {
+		desc: "<スキルコピー>左隣の精霊のアンサースキルを発動する",
+		proc: as_copy(),
+	},
+	ss1: {
+		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
+		turn: 10,
+		proc: [ss_latest_copy()],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 200,0, [0,0,1,0,0,]),
+		Fastskill(2),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<スキルコピー>左隣の精霊のアンサースキルを発動する",
+		proc: as_copy(),
+	},
+	ss2: {
+		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
+		turn: 10,
+		proc: [ss_latest_copy()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Statusup(500,0),
+	],
+}

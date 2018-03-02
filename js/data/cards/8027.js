@@ -1,0 +1,47 @@
+{
+	name: "魅惑の歌のワンツースリー 鏡音リン",
+	cardno: 8027,
+	imageno: 6603,
+	hp: 5602,
+	atk: 3109,
+	cost: 54,
+	attr: [2,-1],
+	species: [6],
+	islegend: true,
+	ape: "コラボ(ミク)",
+	as1: {
+		desc: "<回復>雷属性の味方を回復、物質はさらに回復(13%/20%)",
+		proc: [Heal(0.13, [0,0,1,0,0], 0), SpecHeal(0.20, [0,0,1,0,0], [6], 0)],
+	},
+	ss1: {
+		desc: "<継続回復>3ターン味方全体を徐々に回復する(15%)",
+		turn: 5,
+		proc: [ss_regenerate(0.15, 3)],
+	},
+	as2: {
+		desc: "<回復>雷属性の味方を回復、物質はさらに回復(16%/23%)",
+		proc: [Heal(0.16, [0,0,1,0,0], 0), SpecHeal(0.23, [0,0,1,0,0], [6], 0)],
+	},
+	ss2: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(20%)",
+		turn: 8,
+		proc: [ss_regenerate(0.20, 5)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],4),
+		Attr_statusup(0,400,[0,0,1,0,0,]),
+		Attr_statusup(400,0,[0,0,1,0,0,]),
+		Fastskill(2),
+		Heal_afterbattle(10),
+		Abstate_invalid("heal_reverse"),
+		Fastskill(2),
+		Spec_statusup(500,0,[6,]),
+		Spec_statusup(0,500,[6,]),
+		Awake_Chainboost(1),
+	],
+	Lawake: [
+		Attr_statusup(0,200,[0,0,1,0,0,]),
+		Spec_statusup(0,200,[6,]),
+		Statusup(500,0),
+	],
+}

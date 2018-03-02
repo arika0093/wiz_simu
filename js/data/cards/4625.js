@@ -1,0 +1,46 @@
+{
+	name: "己の道を進む ライ・ハナビシ",
+	cardno: 4625,
+	imageno: 6352,
+	hp: 2521,
+	atk: 2392,
+	cost: 31,
+	attr: [0, -1],
+	species: [9],
+	awakes: [
+		Awake_noeffect("経験値取得量アップ", 1),
+		Fastskill(1),
+		Heal_afterbattle(10),
+		Statusup(200, 0),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0], 2),
+		Statusup(0, 200),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Spec_statusup(0, 100, [9]),
+		Fastskill(1),
+	],
+	as1: {
+		desc: "<分散攻撃>3チェインで敵全体へ分散攻撃/300％÷対象数",
+		proc: ChainVarianceAttack(3.0, 3),
+	},
+	ss1: {
+		desc: "<多弾魔術>敵単体へ火属性の5回連続ダメージ(150％)",
+		turn: 5,
+		proc: [ss_damage_s(1.5, [0], 5)],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(100, 0),
+		Statusup(0, 800),
+	],
+	as2: {
+		desc: "<分散攻撃>3チェインで敵全体へ分散攻撃/400％÷対象数",
+		proc: ChainVarianceAttack(4.0, 3),
+	},
+	ss2: {
+		desc: "<多弾魔術>敵単体へ火属性の5回連続ダメージ(350％)",
+		turn: 8,
+		proc: [ss_damage_s(3.5, [0], 5)],
+	},
+}

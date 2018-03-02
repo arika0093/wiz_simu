@@ -1,0 +1,47 @@
+{
+	name: "撃砕の鉄腕 アトヤ&リベルタス",
+	cardno: 9215,
+	imageno: 11456,
+	hp: 4790,
+	atk: 2845,
+	cost: 57,
+	attr: [1,2],
+	species: [8],
+	islegend: true,
+	ape: "幻魔特区スザクⅡ",
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)",
+		proc: ChainAttack(4.5, 5),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、ダメージ25%軽減の効果を付与",
+		turn: 6,
+		proc: [ss_panel_change([0,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(3),
+		Attr_relief([1,1,1,1,1,],10),
+		Awake_noeffect("難易度ダウン",1),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(550%)",
+		proc: ChainAttack(5.5, 5),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、ダメージ50%軽減の効果を付与",
+		turn: 10,
+		proc: [ss_panel_change([0,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.5)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Statusup(500,0),
+		NEFTJOD(30),
+	],
+}

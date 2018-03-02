@@ -1,0 +1,32 @@
+{
+	name: "金腕雷牙 ドゥーガ･ザムンタール",
+	cardno: 2579,
+	imageno: 3283,
+	hp: 2305,
+	atk: 2771,
+	cost: 41,
+	attr: [2,-1],
+	species: [9],
+	islegend: false,
+	is_dist: true,
+	as1: {
+		desc: "<連撃>敵単体を3回連続攻撃(150%)",
+		proc: ChainDualAttack(1.5, 0, 3),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ雷属性の極大ダメージ(150%)",
+		turn: 7,
+		proc: [ss_damage_all(1.5, [2])],
+	},
+	awakes: [
+		Statusup(200,0),
+		Statusup(0,200),
+		Statusup(200,0),
+		Statusup(0,200),
+		Costdown(2),
+		NEFTJOD(30),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Fastskill(1),
+		Spec_statusup(0,200, [9,]),
+	],
+}

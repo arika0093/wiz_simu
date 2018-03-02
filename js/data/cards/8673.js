@@ -1,0 +1,47 @@
+{
+	name: "夏番長降臨 マッサ・デカント",
+	cardno: 8673,
+	imageno: 10846,
+	hp: 4223,
+	atk: 1342,
+	cost: 39,
+	attr: [0,3],
+	species: [8],
+	islegend: true,
+	ape: "エタクロⅢ",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>4チェインで火属性の攻撃力をアップ(40%)、複属性が光属性だとさらにアップ(50%)",
+		proc: ChainEnhance_SubAttr(0.4, 0.9, [1, 0, 0, 0, 0], [0, 0, 0, 1, 0], 4),
+	},
+	ss1: {
+		desc: "<継続回復>3ターン味方全体を徐々に回復する(15%)",
+		turn: 5,
+		proc: [ss_regenerate(0.15, 3)],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(300,0),
+		Statusup(0,300),
+		Panel_boost([1,0,0,0,0,],1),
+		NEFTJOD(30),
+		Fastskill(1),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,100, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 100,0, [0,0,0,1,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>4チェインで火属性の攻撃力をアップ(70%)、複属性が光属性だとさらにアップ(50%)",
+		proc: ChainEnhance_SubAttr(0.7, 1.2, [1, 0, 0, 0, 0], [0, 0, 0, 1, 0], 4),
+	},
+	ss2: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(15%)、5チェインを消費しさらに回復(20%)",
+		turn: 8,
+		proc: [ss_chain_cost_skill(5, ss_regenerate(0.35, 5), ss_regenerate(0.15, 5))],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+	],
+}

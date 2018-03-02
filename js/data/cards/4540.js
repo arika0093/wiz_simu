@@ -1,0 +1,45 @@
+{
+	name: "理を紡ぐ鋼竜神 ヴァルザイン",
+	cardno: 4540,
+	imageno: 6251,
+	hp: 2807,
+	atk: 2758,
+	cost: 42,
+	attr: [2, -1],
+	species: [0],
+	awakes: [
+		Costdown(2),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Fastskill(1),
+		Attr_relief([0, 1, 0, 0, 0, ], 10),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Fastskill(1),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Spec_statusup(200, 0, [0, ]),
+		Spec_statusup(0, 200, [0, ]),
+	],
+	as1: {
+		desc: "<属性の加護>デッキの属性の数だけ攻撃力アップ(1色：250％ / 2色：400％ / 3色：550％)",
+		proc: ChainDeckAttrsAttack(2.5, 4.0, 5.5, 0),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ雷属性のダメージ(180％)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [2])],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Statusup(0, 500),
+	],
+	as2: {
+		desc: "<属性の加護>デッキの属性の数だけ攻撃力アップ(1色：300％ / 2色：500％ / 3色：700％)",
+		proc: ChainDeckAttrsAttack(3.0, 5.0, 7.0, 0),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ雷属性のダメージ(260％)",
+		turn: 12,
+		proc: [ss_damage_all(2.6, [2])],
+	},
+}

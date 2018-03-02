@@ -1,0 +1,47 @@
+{
+	name: "終わりなき進軍のドルキマス",
+	cardno: 6742,
+	imageno: 8696,
+	hp: 2822,
+	atk: 5528,
+	cost: 52,
+	attr: [0,-1],
+	species: [8],
+	disable: true,
+	islegend: true,
+	ape: "真夏のグレート・クイズ・ウォー",
+	alias: ["ローヴィ"],
+	as1: {
+		desc: "<属性特効>5チェインで雷属性の敵単体へ特効ダメージ(650%)",
+		proc: ChainAttrAttack(6.5, 5, [0,0,1,0,0]),
+	},
+	ss1: {
+		desc: "<犠牲魔術>スキル反射を無視、味方全体のMAXHPの50%を使い敵単体へ火属性のダメージ(280%×人数)",
+		turn: 9,
+		proc: [ss_damage_s(ss_consume_all_cond(2.8, 0.5), [0], 1), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<属性特効>5チェインで雷属性の敵単体へ特効ダメージ(750%)",
+		proc: ChainAttrAttack(7.5, 5, [0,0,1,0,0]),
+	},
+	ss2: {
+		desc: "<犠牲魔術>スキル反射を無視、味方全体のMAXHPの50%を使い敵単体へ火属性のダメージ(360%×人数)",
+		turn: 12,
+		proc: [ss_damage_s(ss_consume_all_cond(3.6, 0.5), [0], 1), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
+}

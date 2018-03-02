@@ -1,0 +1,46 @@
+{
+	name: "太陽とサマー ユッカ・エンデ",
+	cardno: 8647,
+	imageno: 10820,
+	hp: 3205,
+	atk: 7050,
+	cost: 54,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	ape: "エタクロⅢ",
+	as1: {
+		desc: "<連撃>敵単体を6回連続攻撃(250%) 、解答が早いほどさらにアップ(70%)（上限:4段階)",
+		proc: add_cond(ChainDualAttack(2.5, 0, 6), as_timedep(0.7)),
+	},
+	ss1: {
+		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ水属性のダメージ(650%)、さらに隣接する敵に水属性のダメージ(650%)",
+		turn: 4,
+		proc: [ss_damage_explosion(6.5, [1]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_oattr(0,400, [0,1,0,0,0,]),
+		Attr_statusup_oattr(400,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(3),
+		Attr_statusup(0,400, [0,1,0,0,0,]),
+		Attr_statusup(400,0, [0,1,0,0,0,]),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit", "all_sealed"]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<連撃>敵単体を6回連続攻撃(350%) 、解答が早いほどさらにアップ(70%)（上限:4段階)",
+		proc: add_cond(ChainDualAttack(3.5, 0, 6), as_timedep(0.7)),
+	},
+	ss2: {
+		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ水属性のダメージ(850%)、さらに隣接する敵に水属性のダメージ(850%)",
+		turn: 6,
+		proc: [ss_damage_explosion(8.5, [1]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		NEFTJOD(60),
+	],
+}

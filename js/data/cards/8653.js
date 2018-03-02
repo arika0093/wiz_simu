@@ -1,0 +1,46 @@
+{
+	name: "思いの太陽 カヌエ・デ・ヤック",
+	cardno: 8653,
+	imageno: 10826,
+	hp: 2145,
+	atk: 4317,
+	cost: 54,
+	attr: [0,3],
+	species: [1],
+	islegend: true,
+	ape: "エタクロⅢ",
+	as1: {
+		desc: "<連撃>敵単体を3回連続攻撃(250%) 、解答が早いほどさらにアップ(70%)（上限:4段階)",
+		proc: add_cond(ChainDualAttack(2.5, 0, 3), as_timedep(0.7)),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ火属性のダメージ(400%)、さらに雷・闇属性の敵には特効ダメージ(400%) ",
+		turn: 4,
+		proc: [ss_damage_s(special_attr([0, 0, 1, 0, 1], 8.0, 4.0), [0], 1)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,0,1,0,]),
+		Fastskill(3),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<連撃>敵単体を3回連続攻撃(350%) 、解答が早いほどさらにアップ(70%)（上限:4段階)",
+		proc: add_cond(ChainDualAttack(3.5, 0, 3), as_timedep(0.7)),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ火属性のダメージ(400%)、さらに雷・闇属性の敵には特効ダメージ(1000%) ",
+		turn: 7,
+		proc: [ss_damage_s(special_attr([0, 0, 1, 0, 1], 14.0, 4.0), [0], 1)],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		NEFTJOD(30),
+	],
+}

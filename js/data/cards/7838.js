@@ -1,0 +1,45 @@
+{
+	name: "魔道真姫装 ジル・メヴィウス",
+	cardno: 7838,
+	imageno: 9990,
+	hp: 1643,
+	atk: 3212,
+	cost: 41,
+	attr: [2,0],
+	species: [6],
+	islegend: true,
+	as1: {
+		desc: "<連撃>敵単体を6回連続攻撃(250%)",
+		proc: ChainDualAttack(2.5, 0, 6),
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・火属性のダメージ(120%)",
+		turn: 4,
+		proc: [ss_damage_all(1.2, [2,0]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_relief([0,0,1,0,0,],10),
+		Attr_relief([1,0,0,0,0,],20),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(0,200, [6,]),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<連撃>敵単体を6回連続攻撃(350%)",
+		proc: ChainDualAttack(3.5, 0, 6),
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・火属性のダメージ(150%)",
+		turn: 6,
+		proc: [ss_damage_all(1.5, [2,0]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,2000),
+		Statusup(2000,0),
+	],
+}

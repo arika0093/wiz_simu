@@ -1,0 +1,48 @@
+{
+	name: "天靴と天啓 カリン&レオナ",
+	cardno: 9260,
+	imageno: 11525,
+	hp: 6125,
+	atk: 1785,
+	cost: 55,
+	attr: [1,0],
+	species: [9],
+	islegend: true,
+	ape: "大魔道杯 the GATE",
+	is_dist: true,
+	as1: {
+		desc: "<回復>火・水属性の味方を回復(14%)、HP20%以下ならさらに回復(25%)",
+		proc: [Heal(0.14, [1,1,0,0,0], 0), add_cond(Heal(0.39, [1,1,0,0,0], 0), when_hp_less(0.20))],
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体のHPを250アップ、HP20%以下でさらに2750アップ(上限値:4000)し、さらに味方全体のHPを回復(25%)",
+		turn: 4,
+		proc: [ss_statusup_all(ss_hp_less(0.20, [3000, 3000], [250, 250]), [4000, 4000], -1), ss_hp_less_skill(0.2, ss_heal(0.25))],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],4),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Attr_relief([1,1,1,1,1,],10),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [1,0,0,0,0,]),
+		Fastskill(3),
+		Heal_afterbattle(10),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<回復>火・水属性の味方を回復(17%)、HP20%以下ならさらに回復(25%)",
+		proc: [Heal(0.17, [1,1,0,0,0], 0), add_cond(Heal(0.42, [1,1,0,0,0], 0), when_hp_less(0.20))],
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体のHPを500アップ、HP20%以下でさらに3500アップ(上限値:4000)し、さらに味方全体のHPを回復(50%)",
+		turn: 7,
+		proc: [ss_statusup_all(ss_hp_less(0.20, [4000, 4000], [500, 500]), [4000, 4000], -1), ss_hp_less_skill(0.2, ss_heal(0.5))],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		NEFTJOD(30),
+	],
+}

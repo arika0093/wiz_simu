@@ -1,0 +1,46 @@
+{
+	name: "芸術の女神 ヴィヴァーチェ・アルテ",
+	cardno: 9534,
+	imageno: 11794,
+	hp: 2635,
+	atk: 5435,
+	cost: 40,
+	attr: [0,-1],
+	species: [1],
+	islegend: true,
+	ape: "エステレラⅡ",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(350%)",
+		proc: ChainAttrAttack(3.5, 0, [0, 0, 1, 0, 0]),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ火属性のダメージ(400%)、さらに雷属性の敵には特効ダメージ(400%)",
+		turn: 6,
+		proc: [ss_damage_s(special_attr([0, 0, 1, 0, 0], 8.0, 4.0), [0], 1)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(0,300, [1,0,0,0,0,]),
+		Attr_statusup(300,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(3),
+		NEFTJOD(60),
+		Attr_relief([0,0,1,0,0,],20),
+		Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
+		Attr_statusup_oattr(300,0, [1,0,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(450%)",
+		proc: ChainAttrAttack(4.5, 0, [0, 0, 1, 0, 0]),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ火属性のダメージ(400%)、さらに雷属性の敵には特効ダメージ(900%)。HP20%以下の時、さらに特効ダメージ(2200%)",
+		turn: 9,
+		proc: [ss_damage_s(special_attr([0, 0, 1, 0, 0], ss_hp_less(0.2, 35, 13), 4.0), [0], 1)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
+}

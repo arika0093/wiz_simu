@@ -1,0 +1,47 @@
+{
+	name: "夜星は姫を包む チェルシー・ネリム",
+	cardno: 5192,
+	imageno: 7111,
+	hp: 2723,
+	atk: 2001,
+	cost: 32,
+	attr: [1,4],
+	species: [9],
+	disable: true,
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<回復>水属性の味方のHPを回復(12%)",
+		proc: Heal(0.12, [1], 0),
+	},
+	ss1: {
+		desc: "<遅延>攻撃ターンを2遅らせる",
+		turn: 9,
+		proc: [ss_delay_all(2)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Fastskill(1),
+		Attr_relief([1,1,1,1,1,],10),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Spec_statusup(200,0, [9,]),
+		Spec_statusup(0,200, [9,]),
+	],
+	as2: {
+		desc: "<回復>水属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [1], 0),
+	},
+	ss2: {
+		desc: "<遅延大魔術>攻撃ターンを2遅らせ、敵全体へ水属性のダメージ(180%)",
+		turn: 12,
+		proc: [ss_delay_all(2), ss_damage_all(1.8, [1])],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

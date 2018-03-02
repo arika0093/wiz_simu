@@ -1,0 +1,46 @@
+{
+	name: "AbCd-Ω:《天に蠢く憤怒 カイン》",
+	cardno: 5045,
+	imageno: 6785,
+	hp: 2765,
+	atk: 3004,
+	cost: 46,
+	attr: [2, 4],
+	species: [11],
+	disable: true,
+	awakes: [
+		Statusup(200, 0),
+		Fastskill(1),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		NEFTJOD(60),
+		Attr_relief([0, 0, 0, 1, 1, ], 30),
+		Fastskill(2),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_relief([0, 1, 0, 0, 0, ], 10),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
+	],
+	as1: {
+		desc: "<パネル色数攻撃>5チェインかつパネルが2色でダメージアップ、3色で更にアップ(2色：500％ / 3色：650％)",
+		proc: ChainPanelsAttack(0, 5.0, 6.5, 5),
+	},
+	ss1: {
+		desc: "<効果解除>敵全体のガード&ダメージブロックを解除する",
+		turn: 8,
+		proc: [ss_break_attrguard("all"), ss_break_dblock("all")],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<パネル色数攻撃>5チェインかつパネルが2色でダメージアップ、3色で更にアップ(2色：500％ / 3色：900％)",
+		proc: ChainPanelsAttack(0, 5.0, 9.0, 5),
+	},
+	ss2: {
+		desc: "<効果解除大魔術>敵全体のガード&ダメージブロックを解除し、雷属性のダメージ。HP20％以下でさらにダメージアップ(通常：180％ / HP20％以下：400％)",
+		turn: 12,
+		proc: [ss_break_attrguard("all"), ss_break_dblock("all"), ss_damage_all(ss_hp_less(0.20, 4.0, 1.8), [2])],
+	},
+}

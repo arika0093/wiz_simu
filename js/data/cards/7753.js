@@ -1,0 +1,47 @@
+{
+	name: "決意の幻獣 シャティ＝バラキーファ",
+	cardno: 7753,
+	imageno: 9835,
+	hp: 3542,
+	atk: 1623,
+	cost: 37,
+	attr: [1,3],
+	species: [7],
+	islegend: true,
+	ape: "魔轟三鉄傑 対 地獄三十六歌仙",
+	is_dist: true,
+	as1: {
+		desc: "<回復>味方全体のHPを回復、HP50%以下ならさらに回復(10%/18%)",
+		proc: [Heal(0.10, [1,1,1,1,1], 0), add_cond(Heal(0.18, [1,1,1,1,1], 0), when_hp_less(0.50))],
+	},
+	ss1: {
+		desc: "<起死回生>4ターン、致死ダメージを受けたら味方一人を一度だけHP50%で起死回生(対象指定可)",
+		turn: 4,
+		proc: [ss_toselect_one(ss_revival(0.5, 4))],
+	},
+	awakes: [
+		Attr_relief([0,0,0,0,1,],10),
+		Statusup(200,0),
+		Fastskill(2),
+		Awake_noeffect("経験値取得量アップ",1),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],1),
+		Costdown(4),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復、HP50%以下ならさらに回復(12%/20%)",
+		proc: [Heal(0.12, [1,1,1,1,1], 0), add_cond(Heal(0.20, [1,1,1,1,1], 0), when_hp_less(0.50))],
+	},
+	ss2: {
+		desc: "<起死回生>6ターン、致死ダメージを受けたら味方一人を一度だけHP100%で起死回生(対象指定可)",
+		turn: 6,
+		proc: [ss_toselect_one(ss_revival(1.0, 6))],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Statusup(0,400),
+	],
+}

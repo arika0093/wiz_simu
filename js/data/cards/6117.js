@@ -1,0 +1,45 @@
+{
+	name: "驚天の万妖夜行 ミオ・ツヅラオリ",
+	cardno: 6117,
+	imageno: 7937,
+	hp: 2475,
+	atk: 4023,
+	cost: 43,
+	attr: [0, -1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<パネル色数攻撃>3チェインかつパネルが2色でダメージアップ、3色で更にアップ(400%/550%)",
+		proc: ChainPanelsAttack(0, 4.0, 5.5, 3),
+	},
+	ss1: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める、5チェインを消費しさらに1早める",
+		turn: 8,
+		proc: [ss_chain_cost_skill(5, ss_skillboost(3), ss_skillboost(2))],
+	},
+	awakes: [
+		Statusup(200, 0),
+		Fastskill(1),
+		Statusup(0, 200),
+		Panel_boost([1, 0, 0, 0, 0, ], 1),
+		Attr_statusup(100, 0, [1, 0, 0, 0, 0, ]),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		Fastskill(2),
+		Spec_statusup(0, 200, [9, ]),
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "<パネル色数攻撃>3チェインかつパネルが2色でダメージアップ、3色で更にアップ(550%/700%)",
+		proc: ChainPanelsAttack(0, 5.5, 7.0, 3),
+	},
+	ss2: {
+		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを3早める、5チェインを消費しさらに1早める",
+		turn: 11,
+		proc: [ss_chain_cost_skill(5, ss_skillboost(4), ss_skillboost(3))],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+		Statusup(0, 400),
+	],
+}

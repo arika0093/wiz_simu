@@ -1,0 +1,46 @@
+{
+	name: "九天通暁 ノイン・ケーラ",
+	cardno: 5690,
+	imageno: 7511,
+	hp: 4354,
+	atk: 2677,
+	cost: 42,
+	attr: [1,3],
+	species: [9],
+	disable: true,
+	islegend: true,
+	alias: ["/konta_wiz", "/wiztools"],
+	as1: {
+		desc: "<複属性攻撃強化>5チェインで水属性の攻撃力をアップ、複属性が光属性で更にアップ(60%/110%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,1,0,0,0], [0,0,0,1,0], 5),
+	},
+	ss1: {
+		desc: "<解答削り>解答選択肢を2つ削る",
+		turn: 3,
+		proc: [ss_answer_narrow(2)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Fastskill(2),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],2),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_relief([0,0,1,0,0,],10),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>5チェインで水属性の攻撃力をアップ、複属性が光属性で更にアップ(90%/140%)",
+		proc: ChainEnhance_SubAttr(0.9, 1.4, [0,1,0,0,0], [0,0,0,1,0], 5),
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 5,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+}

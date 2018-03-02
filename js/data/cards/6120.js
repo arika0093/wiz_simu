@@ -1,0 +1,46 @@
+{
+	name: "召魔の王者 エンシェント・マロマル",
+	cardno: 6120,
+	imageno: 7940,
+	hp: 2569,
+	atk: 2891,
+	cost: 30,
+	attr: [0, -1],
+	species: [4],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>7チェインでダメージアップ(500%)",
+		proc: ChainAttack(5.0, 7),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(400%/1900%)",
+		turn: 9,
+		proc: [ss_damage_s(special_attr([0, 0, 1, 0, 0], 19, 4.0), [0], 1)],
+	},
+	awakes: [
+		Statusup(200, 0),
+		Costdown(4),
+		Statusup(0, 200),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Fastskill(2),
+		Spec_statusup(0, 500, [4, ]),
+		Spec_statusup(500, 0, [4, ]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<チェイン攻撃>7チェインでダメージアップ(600%)",
+		proc: ChainAttack(6.0, 7),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ火属性のダメージ、さらに雷属性の敵には特効ダメージ(400%/2400%)",
+		turn: 12,
+		proc: [ss_damage_s(special_attr([0, 0, 1, 0, 0], 24, 4.0), [0], 1)],
+	},
+	Lawake: [
+		Statusup(0, 400),
+		Statusup(400, 0),
+	],
+}

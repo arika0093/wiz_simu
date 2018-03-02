@@ -1,0 +1,47 @@
+{
+	name: "夏を制した大災厄 エターナル・ロア",
+	cardno: 6558,
+	imageno: 8454,
+	hp: 4347,
+	atk: 887,
+	cost: 35,
+	attr: [0,1],
+	species: [9],
+	islegend: true,
+	ape: "USG",
+	is_dist: true,
+	as1: {
+		desc: "<回復>火・水属性の味方のHPを回復(12%)",
+		proc: Heal(0.12, [1,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップ(上限値2000)",
+		turn: 6,
+		proc: [ss_statusup_all([500, 500], [2000, 2000], -1)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Fastskill(2),
+		Awake_noeffect("難易度ダウン", 1),
+	],
+	as2: {
+		desc: "<回復>火・水属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [1,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを1000アップ(上限値2000)",
+		turn: 9,
+		proc: [ss_statusup_all([1000, 1000], [2000, 2000], -1)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+	],
+}

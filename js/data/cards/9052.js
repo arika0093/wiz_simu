@@ -1,0 +1,47 @@
+{
+	name: "聖女と野獣 バロン&ベルナデッタ",
+	cardno: 9052,
+	imageno: 11266,
+	hp: 3155,
+	atk: 3145,
+	cost: 49,
+	attr: [0,3],
+	species: [9],
+	islegend: true,
+	ape: "大魔道杯 感謝",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃>敵単体へのダメージアップ(250%)、解答が早いほどさらにアップ(70%)（上限:4段階)",
+		proc: add_cond(ChainAttack(2.5, 0), as_timedep(0.7)),
+	},
+	ss1: {
+		desc: "<精霊強化>4ターンの間、敵の状態異常攻撃を無効化(発動中行動不可)",
+		turn: 5,
+		proc: [ss_reinforcement_all(4, [ss_absattack_disable(1, "RF")])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(3),
+		NEFTJOD(30),
+		Awake_noeffect("経験値取得量アップ",2),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 200,0, [0,0,0,1,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<攻撃>敵単体へのダメージアップ(350%)、解答が早いほどさらにアップ(70%)（上限:4段階)",
+		proc: add_cond(ChainAttack(3.5, 0), as_timedep(0.7)),
+	},
+	ss2: {
+		desc: "<精霊強化>4ターンの間、味方全体を徐々に回復(20%)、さらに敵の状態異常攻撃を無効化(発動中行動不可)",
+		turn: 8,
+		proc: [ss_reinforcement_all(4, [ss_regenerate(0.2, 1, "RF"), ss_absattack_disable(1, "RF")])],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Statusup(1000,0),
+	],
+}

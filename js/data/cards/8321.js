@@ -1,0 +1,48 @@
+{
+	name: "碧天の翼姫 グレイス・シグラー",
+	cardno: 8321,
+	imageno: 10465,
+	hp: 5903,
+	atk: 2067,
+	cost: 56,
+	attr: [0,2],
+	species: [9],
+	islegend: true,
+	ape: "GW2016",
+	alias: ["ちくわ"],
+	as1: {
+		desc: "<回復・複属性攻撃強化>火属性の味方を回復し(10%)、攻撃力もアップ(30%)。複属性が雷属性だとさらに攻撃力アップ(30%)",
+		proc: [Heal(0.1, [1,0,0,0,0], 0), ChainEnhance_SubAttr(0.3, 0.6, [1,0,0,0,0], [0,0,1,0,0], 0)],
+	},
+	ss1: {
+		desc: "<精霊強化>4ターンの間、味方の攻撃力をアップし、ダメージを軽減(150%、20%)(発動中行動不可)",
+		turn: 4,
+		proc: [ss_reinforcement_all(4, [ss_attr_guard([1, 1, 1, 1, 1], 0.2, 1, "RF"), ss_enhance_all(1.5, 1, [1, 1, 1, 1, 1], "RF")])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],4),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Heal_afterbattle(10),
+		NEFTJOD(30),
+		Abstate_invalid("ss_sealed"),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,1,0,0,]),
+		Awake_noeffect("心眼",1),
+	],
+	as2: {
+		desc: "<回復・複属性攻撃強化>火属性の味方を回復し(13%)、攻撃力もアップ(30%)。複属性が雷属性だとさらに攻撃力アップ(30%)",
+		proc: [Heal(0.13, [1,0,0,0,0], 0), ChainEnhance_SubAttr(0.3, 0.6, [1,0,0,0,0], [0,0,1,0,0], 0)],
+	},
+	ss2: {
+		desc: "<精霊強化>4ターンの間、味方の攻撃力をアップし、ダメージを軽減(250%、20%)(発動中行動不可)",
+		turn: 7,
+		proc: [ss_reinforcement_all(4, [ss_attr_guard([1, 1, 1, 1, 1], 0.2, 1, "RF"), ss_enhance_all(2.5, 1, [1, 1, 1, 1, 1], "RF")])],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Statusup(500,0),
+		NEFTJOD(30),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "姫君の目覚め ロレッタ・ミラージュ",
+	cardno: 5900,
+	imageno: 7717,
+	hp: 4267,
+	atk: 2131,
+	cost: 46,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	ape: "大魔道杯 with ギルドマスターズ(3周年)",
+	is_dist: true,
+	as1: {
+		desc: "<回復>味方全体のHPを回復(13%)",
+		proc: Heal(0.13, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,1,1,0,0])],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Attr_statusup(0,100, [1,1,1,1,1,]),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Attr_statusup(100,0, [1,1,1,1,1,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,1,1,1,1,]),
+		Attr_statusup(200,0, [1,1,1,1,1,]),
+		Attr_relief([1,1,1,1,1,],10),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(15%)",
+		proc: Heal(0.15, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し回復の効果を付与、8チェインを消費しさらに効果を付与(5%/50%)",
+		turn: 7,
+		proc: [ss_panel_change([1,1,1,0,0]), ss_chain_cost_skill(8, panel_healally(0.50), panel_healally(0.05))],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

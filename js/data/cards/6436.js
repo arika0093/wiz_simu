@@ -1,0 +1,48 @@
+{
+	name: "無知無垢無謬 プティ・プエルトーニ",
+	cardno: 6436,
+	imageno: 8388,
+	hp: 3737,
+	atk: 2446,
+	cost: 45,
+	attr: [2,1],
+	species: [9],
+	islegend: true,
+	is_dist: true,
+	ape: "大魔道杯　爆",
+	is_dist: true,
+	as1: {
+		desc: "<回復>水・雷属性の味方を回復、20チェインで更に回復(10%/25%)",
+		proc: [Heal(0.10, [0,1,1,0,0], 10), Heal(0.25, [0,1,1,0,0], 20)],
+	},
+	ss1: {
+		desc: "<ダメージ強化>3ターン水・雷属性の味方の攻撃力をアップ、20チェインでさらに3ターンアップ(50%/200%)",
+		turn: 8,
+		proc: [ss_chain_cond_skill(20, ss_enhance_all(2.0, 6, [0,1,1,0,0]), ss_enhance_all(0.5, 3, [0,1,1,0,0]))],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_relief([1,0,1,0,0,],10),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<回復>水・雷属性の味方を回復、20チェインで更に回復(13%/28%)",
+		proc: [Heal(0.13, [0,1,1,0,0], 10), Heal(0.28, [0,1,1,0,0], 20)],
+	},
+	ss2: {
+		desc: "<ダメージ強化>3ターン水・雷属性の味方の攻撃力をアップ、20チェインでさらに3ターンアップ(100%/250%)",
+		turn: 10,
+		proc: [ss_chain_cond_skill(20, ss_enhance_all(2.5, 6, [0,1,1,0,0]), ss_enhance_all(1.0, 3, [0,1,1,0,0]))],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Statusup(500,0),
+	],
+}

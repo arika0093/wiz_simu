@@ -1,0 +1,45 @@
+{
+	name: "暗黒の魔聖女 ミラ・フェンリエッタ",
+	cardno: 90025,
+	imageno: 7458,
+	hp: 3231,
+	atk: 3976,
+	cost: 43,
+	attr: [2,-1],
+	species: [2],
+	islegend: true,
+	as1: {
+		desc: "<種族特効>5チェインで敵全体へダメージ、天使の敵へさらにダメージアップ(220%/320%)",
+		proc: [ChainAllAttack(2.2, 5), ChainAllSpecAttack(3.2, [3], 5)],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷属性のダメージ(120%)、さらに味方全体を回復(25%)",
+		turn: 4,
+		proc: [ss_damage_all(1.2, [2]), ss_ignore_skillcounter(), ss_heal(0.25)],
+	},
+	awakes: [
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		NEFTJOD(30),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Spec_statusup(300,0, [2,]),
+		Fastskill(2),
+		Spec_statusup(0,300, [2,]),
+	],
+	as2: {
+		desc: "<種族特効>5チェインで敵全体へダメージ、天使の敵へさらにダメージアップ(260%/360%)",
+		proc: [ChainAllAttack(2.6, 5), ChainAllSpecAttack(3.6, [3], 5)],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷属性のダメージ(180%)、さらに味方全体を回復(50%)",
+		turn: 7,
+		proc: [ss_damage_all(1.8, [2]), ss_ignore_skillcounter(), ss_heal(0.50)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(500,0),
+	],
+}

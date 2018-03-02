@@ -1,0 +1,46 @@
+{
+	name: "その花はとこしえに エテルネ・ポム",
+	cardno: 5472,
+	imageno: 7329,
+	hp: 2854,
+	atk: 2554,
+	cost: 44,
+	attr: [2,-1],
+	species: [4],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<種族攻撃強化>雷属性の味方の攻撃力をアップ、妖精・亜人はさらにアップ(30%/60%)",
+		proc: [ChainEnhance(0.30, [0,0,1,0,0], 0), ChainSpecEnhance(0.60, [0,0,1,0,0], [4,5], 0)],
+	},
+	ss1: {
+		desc: "<遅延>攻撃ターンを2遅らせる",
+		turn: 8,
+		proc: [ss_delay_all(2)],
+	},
+	awakes: [
+		Costdown(2),
+		Statusup(200,0),
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(400,0, [4,]),
+		Spec_statusup(0,400, [4,]),
+	],
+	as2: {
+		desc: "<種族攻撃強化>雷属性の味方の攻撃力をアップ、妖精・亜人はさらにアップ(60%/90%)",
+		proc: [ChainEnhance(0.60, [0,0,1,0,0], 0), ChainSpecEnhance(0.90, [0,0,1,0,0], [4,5], 0)],
+	},
+	ss2: {
+		desc: "<遅延>攻撃ターンを2遅らせ、3チェインを消費しさらに1遅らせる",
+		turn: 10,
+		proc: [ss_delay_all(ss_chain_cost(3, 3, 2))],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(0,400),
+	],
+}

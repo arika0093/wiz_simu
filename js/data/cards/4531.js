@@ -1,0 +1,46 @@
+{
+	name: "超絶夏ビキニ MIU☆MIU",
+	cardno: 4531,
+	imageno: 6209,
+	hp: 3004,
+	atk: 2990,
+	cost: 49,
+	attr: [2, -1],
+	species: [9],
+	disable: true,
+	awakes: [
+		Heal_afterbattle(10),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
+		Fastskill(1),
+		Spec_statusup(0, 200, [9, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Fastskill(2),
+		Spec_statusup(200, 0, [9, ]),
+	],
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ/350％",
+		proc: ChainAttack(3.5, 3),
+	},
+	ss1: {
+		desc: "<状態異常無効>2ターン敵の状態異常攻撃を無効化する",
+		turn: 7,
+		proc: [ss_absattack_disable(2)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(0, 400),
+		Statusup(600, 0),
+	],
+	as2: {
+		desc: "<回復・攻撃>敵単体へのダメージアップ、さらに雷属性の味方のHPを回復(攻撃：350％ / 回復：5％)",
+		proc: [ChainAttack(3.5, 3), Heal(0.05, [0,0,1,0,0], 0)],
+	},
+	ss2: {
+		desc: "<状態異常無効>3ターン敵の状態異常攻撃を無効化する",
+		turn: 9,
+		proc: [ss_absattack_disable(3)],
+	},
+}

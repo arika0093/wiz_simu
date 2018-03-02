@@ -1,0 +1,46 @@
+{
+	name: "選ばれしさいかわんこ コロン",
+	cardno: 4299,
+	imageno: 6050,
+	hp: 2111,
+	atk: 1888,
+	cost: 30,
+	attr: [2, 0],
+	species: [8],
+	awakes: [
+		Awake_noeffect("経験値取得量アップ", 1),
+		Fastskill(1),
+		Awake_noeffect("ゴールド取得量アップ", 1),
+		Statusup(100, 0),
+		Fastskill(1),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+		Statusup(100, 0),
+		Fastskill(1),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+		Heal_afterbattle(10),
+	],
+	as1: {
+		desc: "<回復>火・雷属性のHPを回復、戦士はさらに回復(火雷：8％ / 火雷+戦士：11％)",
+		proc: [Heal(0.08, [1,0,1,0,0], 0), SpecHeal(0.11, [1,0,1,0,0], [8], 0)],
+	},
+	ss1: {
+		desc: "<蘇生>味方全体のHPを回復し、さらに火・雷属性の味方を蘇生(回復：25％ / 蘇生：10％)",
+		turn: 10,
+		proc: [ss_heal(0.25), ss_resurrection([1,0,1,0,0], 0.10)],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		NEFTJOD(30),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<回復>火・雷属性のHPを回復、戦士はさらに回復(火雷：11％ / 火雷+戦士：16％)",
+		proc: [Heal(0.11, [1,0,1,0,0], 0), SpecHeal(0.16, [1,0,1,0,0], [8], 0)],
+	},
+	ss2: {
+		desc: "<蘇生>味方全体のHPを回復し、さらに火・雷属性の味方を蘇生(回復：25％ / 蘇生：25％)",
+		turn: 14,
+		proc: [ss_heal(0.25), ss_resurrection([1,0,1,0,0], 0.25)],
+	},
+}

@@ -1,0 +1,47 @@
+{
+	name: "浮世離れ聖王 イアデル・セラフィム",
+	cardno: 7181,
+	imageno: 9144,
+	hp: 3620,
+	atk: 2210,
+	cost: 43,
+	attr: [2,3],
+	species: [3],
+	islegend: true,
+	ape: "ロストエデンⅡ WWMF",
+	is_dist: true,
+	as1: {
+		desc: "<回復>味方のHPを回復(13%)",
+		proc: Heal(0.13, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>味方全体のMAXHPの50%を使い、ジャンルパネルにチェインがプラス3の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(3), ss_consume_all(0.5)],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ",1),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_relief([0,0,0,1,1,],10),
+		Statusup(0,200),
+		Fastskill(1),
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_sattr(200,0, [0,0,1,0,0,], 100,0, [0,0,0,1,0,]),
+		Attr_statusup_sattr(0,200, [0,0,1,0,0,], 0,100, [0,0,0,1,0,]),
+		Awake_noeffect("心眼",1),
+	],
+	as2: {
+		desc: "<回復>味方のHPを回復(16%)",
+		proc: Heal(0.16, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>味方全体のMAXHPの50%を使い、ジャンルパネルを雷&光属性化し、チェインがプラス3の効果を付与",
+		turn: 7,
+		proc: [ss_panel_change([0,0,1,1,0]), panel_chainplus(3), ss_consume_all(0.5)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

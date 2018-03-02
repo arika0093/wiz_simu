@@ -1,0 +1,45 @@
+{
+	name: "武闘派熱血系 マーガレット＆リアラ",
+	cardno: 9520,
+	imageno: 11780,
+	hp: 2932,
+	atk: 3814,
+	cost: 54,
+	attr: [0,2],
+	species: [3],
+	islegend: true,
+	ape: "エステレラⅡ",
+	as1: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(300%),20チェインで更にダメージアップ(1300%)",
+		proc: [ChainDualAttack(3.0, 3, 3), ChainDualAttack(16.0, 20, 3)],
+	},
+	ss1: {
+		desc: "<詠唱多弾大魔術>スキル反射を無視し、クイズに正解した数だけ敵単体へ火・雷属性で交互に連続ダメージ(180%)(上限:15段階)",
+		turn: 9,
+		proc: [ss_undefined("詠唱多弾大魔術")],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Abstate_invalid("as_sealed"),
+		Fastskill(4),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,1,0,0,]),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit", "all_sealed"]),
+		Awake_Chainboost(1),
+	],
+	as2: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(400%),20チェインで更にダメージアップ(1300%)",
+		proc: [ChainDualAttack(4.0, 3, 3), ChainDualAttack(17.0, 20, 3)],
+	},
+	ss2: {
+		desc: "<詠唱多弾大魔術>スキル反射を無視し、クイズに正解した数だけ敵単体へ火・雷属性で交互に連続ダメージ(220%)(上限:15段階)",
+		turn: 12,
+		proc: [ss_undefined("詠唱多弾大魔術")],
+	},
+	Lawake: [
+		Statusup(0,2000),
+	],
+}

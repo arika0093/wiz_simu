@@ -1,0 +1,47 @@
+{
+	name: "S.M.Sスカル４ 早乙女アルト",
+	cardno: 5912,
+	imageno: 7730,
+	hp: 2612,
+	atk: 3247,
+	cost: 25,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(マクロス)",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(300%)",
+		proc: ChainAttack(3.0, 4),
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを1遅らせる",
+		turn: 5,
+		proc: [ss_delay_all(1)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],1),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Spec_relief([6], 20),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(400%)",
+		proc: ChainAttack(4.0, 4),
+	},
+	ss2: {
+		desc: "<遅延大魔術>敵全体の攻撃ターンを1遅らせ、水属性のダメージ(120%)",
+		turn: 7,
+		proc: [ss_damage_all(1.2, [1]), ss_delay_all(1)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

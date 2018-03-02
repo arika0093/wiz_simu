@@ -1,0 +1,47 @@
+{
+	name: "心揺れ動く聖夜 オルネ・タンペート",
+	cardno: 90010,
+	imageno: 7207,
+	hp: 2385,
+	atk: 3195,
+	cost: 47,
+	attr: [2,-1],
+	species: [9],
+	disable: true,
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<種族数攻撃>術士の仲間の数だけダメージアップ(40%×精霊数)",
+		proc: ChainDeckSpecsAttack(0.40, [9], 0),
+	},
+	ss1: {
+		desc: "<大魔術>チェインプラス1の効果、敵全体へ雷属性のダメージ(100%)",
+		turn: 4,
+		proc: [ss_addchain(1), ss_damage_all(1.0, [2])],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],1),
+		Fastskill(2),
+		Statusup(200,0),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(0,200, [9,]),
+		Statusup(0,200),
+	],
+	as2: {
+		desc: "<種族数攻撃>術士の仲間の数だけダメージアップ(60%×精霊数)",
+		proc: ChainDeckSpecsAttack(0.60, [9], 0),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ雷属性のダメージ、5チェインでさらにアップ(180%/270%)",
+		turn: 8,
+		proc: [ss_damage_all(ss_chain_cond(5, 2.7, 1.8), [2])],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(300,0),
+	],
+}

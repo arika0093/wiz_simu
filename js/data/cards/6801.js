@@ -1,0 +1,46 @@
+{
+	name: "神奇の魔画師　シュルファス・アーレ",
+	cardno: 6801,
+	imageno: 8784,
+	hp: 3527,
+	atk: 2525,
+	cost: 37,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	ape: "図鑑報酬",
+	as1: {
+		desc: "<攻撃強化>全属性の味方の攻撃力をアップ、パネルの色が増す度にさらにアップ(20%/40%/80%)",
+		proc: ChainPanelsEnhance(0.2, 0.4, 0.8, [1,1,1,1,1], 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,1,1,0,0])],
+	},
+	awakes: [
+		Fastskill(1),
+		Costdown(2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Attr_statusup(0,200, [1,1,1,0,0,]),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],3),
+		Statusup(200,0),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<攻撃強化>全属性の味方の攻撃力をアップ、パネルの色が増す度にさらにアップ(40%/80%/100%)",
+		proc: ChainPanelsEnhance(0.4, 0.8, 1.0, [1,1,1,1,1], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、ダメージ25%軽減の効果を付与",
+		turn: 6,
+		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

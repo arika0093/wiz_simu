@@ -1,0 +1,46 @@
+{
+	name: "黒魔竜師 ウォルバ・ゾナー",
+	cardno: 90067,
+	imageno: 9424,
+	hp: 3632,
+	atk: 4610,
+	cost: 51,
+	attr: [0,-1],
+	species: [0],
+	islegend: true,
+	ape: "神竜降臨Ⅱ",
+	as1: {
+		desc: "<種族特効>3チェインでダメージアップ、龍族の敵へさらにダメージアップ(350%/650%)",
+		proc: [ChainAttack(3.5, 3), ChainSpecAttack(6.5, 3, [0])],
+	},
+	ss1: {
+		desc: "<割合削り>敵全体のHPを15%減少させる",
+		turn: 8,
+		proc: [ss_ratiodamage_all(0.15)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(200,0),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([1,0,0,0,0,],10),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Spec_statusup(400,0, [0,]),
+		Fastskill(2),
+		Spec_statusup(0,400, [0,]),
+	],
+	as2: {
+		desc: "<種族特効>3チェインでダメージアップ、龍族の敵へさらにダメージアップ(450%/750%)",
+		proc: [ChainAttack(4.5, 3), ChainSpecAttack(7.5, 3, [0])],
+	},
+	ss2: {
+		desc: "<割合削り>敵全体のHPを20%減少させ、10チェインを消費しスキル反射を無視する",
+		turn: 11,
+		proc: [ss_ratiodamage_all(0.20), ss_chain_cost_skill(10, ss_ignore_skillcounter(), null)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Abstate_invalid("ss_sealed"),
+	],
+}

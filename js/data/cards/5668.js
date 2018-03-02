@@ -1,0 +1,47 @@
+{
+	name: "仲間たちは果てなき冒険の空へ",
+	cardno: 5668,
+	imageno: 7470,
+	hp: 2384,
+	atk: 2340,
+	cost: 52,
+	attr: [0,1],
+	species: [8],
+	alias: ["白猫"],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<属性の加護>デッキの属性数だけ攻撃力アップ(200%/300%/400%)、パネルの色が増す度さらにアップ(50%,100%)",
+		proc: [ChainDeckAttrsAttack(2.0, 3.0, 4.0, 0),add_cond(ChainDeckAttrsAttack(2.5, 3.5, 4.5, 0), as_panel_over2()),add_cond(ChainDeckAttrsAttack(3.5, 4.5, 5.5, 0), as_panel_over3())],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
+		turn: 7,
+		proc: [ss_panel_change([1,1,1,0,0])],
+	},
+	awakes: [
+		Fastskill(1),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Statusup(200,0),
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(2),
+		Statusup(0,200),
+		Attr_relief([1,1,1,1,1,],10),
+		Statusup(0,200),
+		Spec_statusup(0,200, [8,]),
+		Spec_statusup(200,0, [8,]),
+	],
+	as2: {
+		desc: "<属性の加護>デッキの属性数だけ攻撃力アップ(250%/400%/550%)、パネルの色が増す度さらにアップ(50%,100%)",
+		proc: [ChainDeckAttrsAttack(2.5, 4.0, 5.5, 0),add_cond(ChainDeckAttrsAttack(3.0, 4.5, 6.0, 0), as_panel_over2()),add_cond(ChainDeckAttrsAttack(4.0, 5.5, 7.0, 0), as_panel_over3())],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、ダメージ軽減(20%)・スキルチャージ(1)・回復(8%)の効果をランダムで付与",
+		turn: 9,
+		proc: [ss_panel_change([1,1,1,0,0]), panel_attr_guard([1,1,1,1,1], 0.2), panel_skillboost(1), panel_healally(0.08)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

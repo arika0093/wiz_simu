@@ -1,0 +1,46 @@
+{
+	name: "プリッツを愛する魔法使い グリ",
+	cardno: 4330,
+	imageno: 6045,
+	hp: 2995,
+	atk: 2067,
+	cost: 38,
+	attr: [2, -1],
+	species: [9],
+	ape: "グリコⅠ",
+	awakes: [
+		Statusup(0, 100),
+		Fastskill(1),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Statusup(100, 0),
+		Fastskill(1),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		NEFTJOD(30),
+		Fastskill(1),
+		Spec_statusup(0, 200, [9, ]),
+	],
+	as1: {
+		desc: "<回復>雷属性の味方のHPを回復/11％",
+		proc: Heal(0.11, [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<多弾魔術>敵単体へ雷属性の5回連続ダメージ(計180％)",
+		turn: 6,
+		proc: [ss_damage_s(1.8, [2], 5)],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>雷属性の味方のHPを回復、さらに雷属性の味方の攻撃力をアップ(回復：11％ / 攻撃力：+20％)",
+		proc: [Heal(0.11, [0,0,1,0,0], 0), ChainEnhance(0.20, [0,0,1,0,0], 0)],
+	},
+	ss2: {
+		desc: "<多弾魔術>敵単体へ雷属性の5回連続ダメージ(計380％)",
+		turn: 9,
+		proc: [ss_damage_s(3.8, [2], 5)],
+	},
+}

@@ -1,0 +1,46 @@
+{
+	name: "全てをこの手に スクナ・フルクマ",
+	cardno: 5094,
+	imageno: 6834,
+	hp: 3049,
+	atk: 3029,
+	cost: 38,
+	attr: [2,-1],
+	species: [1],
+	islegend: true,
+	is_dist: true,
+	ape: "八百万神秘譚Ⅱ",
+	as1: {
+		desc: "<連撃>6チェインで敵単体を9回連続攻撃(450%)",
+		proc: ChainDualAttack(4.5, 6, 9),
+	},
+	ss1: {
+		desc: "<回復>味方全体のHPを回復する(50%)",
+		turn: 7,
+		proc: [ss_heal(0.5)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(200,0),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		NEFTJOD(30),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<連撃>6チェインで敵単体を9回連続攻撃(550%)",
+		proc: ChainDualAttack(5.5, 6, 9),
+	},
+	ss2: {
+		desc: "<回復>味方全体のHPを完全に回復する",
+		turn: 9,
+		proc: [ss_heal(1)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

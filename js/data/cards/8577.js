@@ -1,0 +1,46 @@
+{
+	name: "飛鳥放吟 ウォーブリンガー＝ミリィ",
+	cardno: 8577,
+	imageno: 10748,
+	hp: 2775,
+	atk: 3904,
+	cost: 54,
+	attr: [0,3],
+	species: [8],
+	islegend: true,
+	ape: "黄昏メアレスⅢ",
+	as1: {
+		desc: "<属性特効連撃・複属性攻撃強化>雷・闇属性の敵単体へ特効3連撃(300%)、さらに火属性の攻撃力をアップ(10%)、複属性が光属性だとさらにアップ(30%)",
+		proc: [ChainDualAttrAttack(3.0, 0, 3, [0,0,1,0,1]), ChainEnhance_SubAttr(0.1, 0.4, [1,0,0,0,0], [0,0,0,1,0], 0)],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・光属性のダメージ(120%)",
+		turn: 4,
+		proc: [ss_damage_all(1.2, [0,3]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(20),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(60),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,0,1,0,]),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<属性特効連撃・複属性攻撃強化>雷・闇属性の敵単体へ特効3連撃(400%)、さらに火属性の攻撃力をアップ(10%)、複属性が光属性だとさらにアップ(30%)",
+		proc: [ChainDualAttrAttack(4.0, 0, 3, [0,0,1,0,1]), ChainEnhance_SubAttr(0.1, 0.4, [1,0,0,0,0], [0,0,0,1,0], 0)],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・光属性のダメージ(150%)。HP20%以下の時、さらにダメージアップ(1500%)し、味方全体のHPを完全回復",
+		turn: 6,
+		proc: [ss_damage_all(ss_hp_less(0.2, 16.5, 1.5), [0,3]), ss_hp_less_skill(0.2, ss_heal(1)), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

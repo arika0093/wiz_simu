@@ -1,0 +1,48 @@
+{
+	name: "死霊のBONダンス ルルベル",
+	cardno: 8812,
+	imageno: 11011,
+	hp: 2635,
+	atk: 7645,
+	cost: 54,
+	attr: [0,-1],
+	species: [2],
+	islegend: true,
+	ape: "聖サタニック女学院2",
+	as1: {
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(400%)",
+		proc: add_cond(ChainAttack(4.0, 0), when_hp_more(0.8)),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ闇属性のダメージ(600%)、さらに光属性の敵には特効ダメージ(900%)、さらに敵にトドメを刺した数だけチェインプラス1",
+		turn: 3,
+		chadd_killing: 1,
+		proc: [ss_damage_all(special_attr([0,0,0,1,0], 15, 6), [4])],
+	},
+	as2: {
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(500%)",
+		proc: add_cond(ChainAttack(5.0, 0), when_hp_more(0.8)),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ闇属性のダメージ(600%)、さらに光属性の敵には特効ダメージ(1400%)、さらに敵にトドメを刺した数だけチェインプラス1",
+		turn: 6,
+		chadd_killing: 1,
+		proc: [ss_damage_all(special_attr([0,0,0,1,0], 20, 6), [4])],
+	},
+	awakes: [
+		Costdown(20),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_oattr(0,400,[1,0,0,0,0,]),
+		Attr_statusup_oattr(400,0,[1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([0,0,1,0,0,],20),
+		Fastskill(3),
+		Attr_statusup(0,400,[1,0,0,0,0,]),
+		Attr_statusup(400,0,[1,0,0,0,0,]),
+		Awake_damage_multiple(1.1, 500),
+	],
+	Lawake: [
+		Attr_statusup(0,200,[1,0,0,0,0,]),
+		Statusup(0,1000),
+	],
+}

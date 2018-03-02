@@ -1,0 +1,46 @@
+{
+	name: "金猫色の弾痕 ジル・メイシー",
+	cardno: 4858,
+	imageno: 6593,
+	hp: 2714,
+	atk: 3086,
+	cost: 42,
+	attr: [1, -1],
+	species: [5],
+	awakes: [
+		Costdown(2),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Costdown(2),
+		Statusup(0, 200),
+		Fastskill(1),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		NEFTJOD(30),
+		Spec_statusup(0, 200, [5, ]),
+		Fastskill(2),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+	],
+	as1: {
+		desc: "<回復>水・雷属性の味方のHPを回復/11％",
+		proc: Heal(0.11, [0,1,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ水属性のダメージ、さらに味方全体のHPを回復(攻撃：140％ / 回復：20％)",
+		turn: 6,
+		proc: [ss_damage_all(1.4, [1]), ss_heal(0.2)],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Statusup(0, 500),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<回復>水・雷属性の味方のHPを回復/13％",
+		proc: Heal(0.13, [0,1,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ水属性のダメージ、さらに味方全体のHPを回復(攻撃：150％ / 回復：20％)",
+		turn: 7,
+		proc: [ss_damage_all(1.5, [1]), ss_heal(0.2)],
+	},
+}

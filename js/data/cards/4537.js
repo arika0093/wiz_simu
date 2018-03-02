@@ -1,0 +1,45 @@
+{
+	name: "極美の刃 ステファーヌ・ライリー",
+	cardno: 4537,
+	imageno: 5880,
+	hp: 2448,
+	atk: 2935,
+	cost: 40,
+	attr: [1, -1],
+	species: [8],
+	awakes: [
+		Statusup(200, 0),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Statusup(0, 200),
+		Costdown(2),
+		Statusup(0, 100),
+		Fastskill(1),
+		Statusup(0, 200),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Spec_statusup(200, 0, [8, ]),
+		Spec_statusup(0, 200, [8, ]),
+	],
+	as1: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ/400％",
+		proc: ChainAttrAttack(4.0, 0, [1,0,0,0,0]),
+	},
+	ss1: {
+		desc: "<大魔術>敵単体へ水属性のダメージ(200％)",
+		turn: 5,
+		proc: [ss_damage_s(2.0, [1], 0)],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(0, 400),
+	],
+	as2: {
+		desc: "<属性特効>火属性の敵単体へ特効ダメージ/500％",
+		proc: ChainAttrAttack(5.0, 0, [1,0,0,0,0]),
+	},
+	ss2: {
+		desc: "<大魔術>敵単体へ水属性のダメージ(400％)",
+		turn: 8,
+		proc: [ss_damage_s(4.0, [1], 0)],
+	},
+}

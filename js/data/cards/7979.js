@@ -1,0 +1,46 @@
+{
+	name: "迎春の喧嘩花火 ハヅキ・ユメガタリ",
+	cardno: 7979,
+	imageno: 10089,
+	hp: 2983,
+	atk: 3999,
+	cost: 57,
+	attr: [1,0],
+	species: [8],
+	islegend: true,
+	ape: "謹賀新年2015",
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、パネルの色が増す度ダメージアップ(350%/450%/600%)",
+		proc: ChainPanelsAttack(3.5, 4.5, 6.0, 3),
+	},
+	ss1: {
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(500%)",
+		turn: 7,
+		proc: [ss_enhance_own(5.0, 3)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Abstate_invalid("as_sealed"),
+		Attr_statusup_sattr(100, 0, [0,1,0,0,0], 300, 0, [1,0,0,0,0]),
+		Attr_statusup_sattr(0, 100, [0,1,0,0,0], 0, 300, [1,0,0,0,0]),
+		Fastskill(4),
+		Attr_relief([1,1,0,0,0,],20),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、パネルの色が増す度ダメージアップ(450%/550%/700%)",
+		proc: ChainPanelsAttack(4.5, 5.5, 7.0, 3),
+	},
+	ss2: {
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ、5チェインを消費しさらに3ターン攻撃力をアップ(1000%/2000%)",
+		turn: 11,
+		proc: [ss_chain_cost_skill(5, ss_enhance_own(20.0, 6), ss_enhance_own(10.0, 3))],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+}

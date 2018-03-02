@@ -1,0 +1,47 @@
+{
+	name: "いつしか頬もいちご色 テルマ・ラウ",
+	cardno: 5216,
+	imageno: 7127,
+	hp: 2714,
+	atk: 1944,
+	cost: 43,
+	attr: [2,1],
+	species: [9],
+	islegend: true,
+	ape: "大魔道杯 ケーキ",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化>5チェインで水・雷属性の味方の攻撃力をアップ(60%)",
+		proc: ChainEnhance(0.6, [0,1,1,0,0], 5),
+	},
+	ss1: {
+		desc: "<ガード>3ターン火・雷属性ダメージを50%軽減する",
+		turn: 5,
+		proc: [ss_attr_guard([1,0,1,0,0], 0.5, 3)],
+	},
+	awakes: [
+		Statusup(200,0),
+		Statusup(0,200),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],1),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Fastskill(1),
+		Heal_afterbattle(10),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+	],
+	as2: {
+		desc: "<攻撃強化>5チェインで水・雷属性の味方の攻撃力をアップ(90%)",
+		proc: ChainEnhance(0.9, [0,1,1,0,0], 5),
+	},
+	ss2: {
+		desc: "<ガード>6ターン火・雷属性ダメージを50%軽減する",
+		turn: 8,
+		proc: [ss_attr_guard([1,0,1,0,0], 0.5, 6)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+		Statusup(0,400),
+	],
+}

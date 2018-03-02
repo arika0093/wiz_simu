@@ -1,0 +1,46 @@
+{
+	name: "全員集合！少年探偵団",
+	cardno: 90005,
+	imageno: 6947,
+	hp: 2732,
+	atk: 3432,
+	cost: 46,
+	attr: [0,1],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(コナン)",
+	as1: {
+		desc: "<連撃>4チェインで敵単体を3回連続攻撃(400%)",
+		proc: ChainDualAttack(4.0, 4, 3),
+	},
+	ss1: {
+		desc: "<遅延>敵単体の攻撃ターンを2遅らせる",
+		turn: 8,
+		proc: [ss_delay_s(2)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Statusup(0,200),
+		Attr_relief([0,1,0,0,0,],10),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<連撃>4チェインで敵単体を3回連続攻撃(500%)",
+		proc: ChainDualAttack(5.0, 4, 3),
+	},
+	ss2: {
+		desc: "<遅延>敵単体の攻撃ターンを3遅らせる",
+		turn: 10,
+		proc: [ss_delay_s(3)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

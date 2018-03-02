@@ -1,0 +1,45 @@
+{
+	name: "クマさん紳士の心遣い チュレ・ソワ",
+	cardno: 6116,
+	imageno: 7936,
+	hp: 3159,
+	atk: 3341,
+	cost: 40,
+	attr: [1, -1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<攻撃強化>3チェインで水属性の味方の攻撃力をアップ(50%)",
+		proc: ChainEnhance(0.50, [0, 1, 0, 0, 0], 3),
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水属性のダメージ(120%)",
+		turn: 4,
+		proc: [ss_damage_all(1.2, [1]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Statusup(0, 200),
+		Fastskill(2),
+		Costdown(2),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Spec_statusup(0, 200, [9, ]),
+		Fastskill(2),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "<攻撃強化>3チェインで水属性の味方の攻撃力をアップ(70%)",
+		proc: ChainEnhance(0.70, [0, 1, 0, 0, 0], 3),
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ水属性のダメージ(120%)",
+		turn: 4,
+		proc: [ss_damage_all(1.2, [1]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0, 400),
+		Statusup(400, 0),
+	],
+}

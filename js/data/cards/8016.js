@@ -1,0 +1,48 @@
+{
+	name: "煌る命の確率論 レウィス・ジェメル",
+	cardno: 8016,
+	imageno: 10145,
+	hp: 2978,
+	atk: 1953,
+	cost: 37,
+	attr: [0,4],
+	species: [9],
+	islegend: true,
+	ape: "コラボ(ミク)",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が闇だとさらにアップ(30%/70%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.7, [1,0,0,0,0], [0,0,0,0,1], 0),
+	},
+	ss1: {
+		desc: "<AS発動時間延長>10ターンの間、アンサースキル発動時間を5秒延長する(上限値:20秒)",
+		turn: 3,
+		proc: [ss_astime_ext(5, 10)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		NEFTJOD(30),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 200,0, [0,0,0,0,1,]),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,200, [0,0,0,0,1,]),
+		Fastskill(2),
+		Awake_noeffect("アンサースキル発動時間延長",3),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が闇だとさらにアップ(60%/100%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.0, [1,0,0,0,0], [0,0,0,0,1], 0),
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 6,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(500,0),
+		Abstate_invalid("death_limit"),
+	],
+}

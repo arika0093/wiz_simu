@@ -1,0 +1,47 @@
+{
+	name: "光輝く金剛金華 トミ・コトブキ",
+	cardno: 6828,
+	imageno: 5807,
+	hp: 5112,
+	atk: 3215,
+	cost: 52,
+	attr: [2,-1],
+	species: [1],
+	disable: true,
+	islegend: true,
+	ape: "八百万神秘譚Ⅰ",
+	as1: {
+		desc: "<攻撃強化・回復>雷属性の味方のHPを回復(13%)、さらに雷属性の味方の攻撃力をアップ(30%)",
+		proc: [ChainEnhance(0.3, [0,0,1,0,0], 0), Heal(0.13, [0,0,1,0,0], 0)],
+	},
+	ss1: {
+		desc: "<起死回生>1ターン、即死ダメージを受けたら一度だけHP25%で起死回生",
+		turn: 7,
+		proc: [ss_revival(0.25, 1)],
+	},
+	awakes: [
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Statusup(200,0),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Heal_afterbattle(10),
+		Spec_statusup(0,200, [1,]),
+		Spec_statusup(200,0, [1,]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>雷属性の味方のHPを回復(16%)、さらに雷属性の味方の攻撃力をアップ(30%)",
+		proc: [ChainEnhance(0.3, [0,0,1,0,0], 0), Heal(0.16, [0,0,1,0,0], 0)],
+	},
+	ss2: {
+		desc: "<起死回生>2ターン、即死ダメージを受けたら一度だけHP25%で起死回生",
+		turn: 9,
+		proc: [ss_revival(0.25, 2)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

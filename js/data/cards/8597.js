@@ -1,0 +1,48 @@
+{
+	name: "凶夢〈オプスクルム：ピースメア〉",
+	cardno: 8597,
+	imageno: 10768,
+	hp: 4923,
+	atk: 2142,
+	cost: 34,
+	attr: [2,-1],
+	species: [2],
+	islegend: true,
+	ape: "黄昏メアレスⅢ",
+	is_dist: true,
+	as1: {
+		desc: "<回復>味方全体のHPを回復(9%)、HP50%以下なら更に回復(10%)",
+		proc: [Heal(0.09, [1,1,1,1,1], 0), add_cond(Heal(0.19, [1,1,1,1,1], 0), when_hp_less(0.5))],
+	},
+	ss1: {
+		desc: "<継続回復>5ターン味方全体を徐々に回復する(15%)",
+		turn: 7,
+		proc: [ss_regenerate(0.15, 5)],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(300,0),
+		Statusup(0,300),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(1),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復(11%)、HP50%以下なら更に回復(10%)",
+		proc: [Heal(0.11, [1,1,1,1,1], 0), add_cond(Heal(0.21, [1,1,1,1,1], 0), when_hp_less(0.5))],
+	},
+	ss2: {
+		desc: "<継続回復>1ターン溜めた後、味方HPを完全回復し、さらに5ターン味方全体を徐々に回復する(30%)",
+		turn: 9,
+		charged: 1,
+		proc: [ss_heal(1), ss_regenerate(0.30, 5)],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

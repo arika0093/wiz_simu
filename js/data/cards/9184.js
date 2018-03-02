@@ -1,0 +1,47 @@
+{
+	name: "無垢なる殺戮と健啖 メロウ",
+	cardno: 9184,
+	imageno: 11420,
+	hp: 1992,
+	atk: 5323,
+	cost: 35,
+	attr: [0,-1],
+	species: [7],
+	islegend: true,
+	ape: "幻魔特区RELOADED",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃・種族数攻撃>敵単体へのダメージアップ(150%)、魔法生物・魔族の仲間の数だけさらにアップ(80%)",
+		proc: ChainDeckSpecsAttack(0.8, [2,7], 0, 0.5),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ火属性のダメージ(800%)、さらに火属性の敵には特効ダメージ(500%)、5チェインを消費しさらに特効ダメージ(1000%)",
+		turn: 9,
+		proc: [ss_chain_cost_skill(5, ss_damage_s(special_attr([0,0,1,0,0], 23.0, 8.0), [0], 1), ss_damage_s(special_attr([0,0,1,0,0], 13.0, 4.0), [0], 1))],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
+		Attr_statusup_oattr(300,0, [1,0,0,0,0,]),
+		Fastskill(1),
+		Costdown(5),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<攻撃・種族数攻撃>敵単体へのダメージアップ(250%)、魔法生物・魔族の仲間の数だけさらにアップ(100%)",
+		proc: ChainDeckSpecsAttack(1.0, [2,7], 0, 1.5),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ火属性のダメージ(800%)、さらに火属性の敵には特効ダメージ(1000%)、5チェインを消費しさらに特効ダメージ(1000%)",
+		turn: 12,
+		proc: [ss_chain_cost_skill(5, ss_damage_s(special_attr([0,0,1,0,0], 28.0, 8.0), [0], 1), ss_damage_s(special_attr([0,0,1,0,0], 18.0, 4.0), [0], 1))],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

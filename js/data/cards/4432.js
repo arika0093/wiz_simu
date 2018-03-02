@@ -1,0 +1,46 @@
+{
+	name: "双星、芽生えたココロ アイ&アイ",
+	cardno: 4432,
+	imageno: 6126,
+	hp: 2328,
+	atk: 2432,
+	cost: 48,
+	attr: [2, 0],
+	species: [6],
+	disable: true,
+	awakes: [
+		Fastskill(1),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Spec_statusup(200, 0, [6, ]),
+		Spec_statusup(200, 0, [6, ]),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Spec_statusup(0, 200, [6, ]),
+		Spec_statusup(0, 200, [6, ]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ/450％",
+		proc: ChainAttack(4.5, 5),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス2の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(2)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(500, 0),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでMAXHP15％を使い、ダメージアップ/650％",
+		proc: add_cond(ChainAttack(6.5, 5), as_consume_own(0.15)),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス3の効果を付与",
+		turn: 8,
+		proc: [panel_chainplus(3)],
+	},
+}

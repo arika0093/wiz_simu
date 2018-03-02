@@ -1,0 +1,47 @@
+{
+	name: "穢れの暗君 ゼェール・ギャドラン",
+	cardno: 9358,
+	imageno: 6180,
+	hp: 2160,
+	atk: 3584,
+	cost: 47,
+	attr: [0,4],
+	species: [2],
+	islegend: true,
+	ape: "オルハレポート",
+	is_dist: true,
+	as1: {
+		desc: "<分散攻撃>3チェインで敵全体へ分散攻撃(400%)",
+		proc: ChainVarianceAttack(4.0, 3),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの70%を使い敵全体へダメージ(650%)",
+		turn: 7,
+		proc: [ss_consume_own(0.7), ss_damage_all(6.5, [0])],
+	},
+	awakes: [
+		Costdown(10),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 200,0, [0,0,0,0,1,]),
+		NEFTJOD(60),
+	],
+	as2: {
+		desc: "<分散攻撃>味方のMAXHP20%を使い、3チェインで敵全体へ分散攻撃(800%)",
+		proc: add_cond(ChainVarianceAttack(8.0, 2), as_consume_own(0.20)),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの70%を使い敵全体へダメージ(850%)",
+		turn: 9,
+		proc: [ss_consume_own(0.7), ss_damage_all(8.5, [0])],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Abstate_invalid("ss_sealed"),
+	],
+}

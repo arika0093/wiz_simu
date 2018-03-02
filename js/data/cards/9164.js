@@ -1,0 +1,46 @@
+{
+	name: "勇猛精進 タイシ&フォルティス",
+	cardno: 9164,
+	imageno: 11400,
+	hp: 2875,
+	atk: 6845,
+	cost: 50,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "幻魔特区RELOADED",
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ(150%),5チェインで更にダメージアップ(50%)",
+		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.0, 5)],
+	},
+	ss1: {
+		desc: "<反動大魔術・蝕>スキル反射を無視し、敵全体へ火属性のダメージ(精霊数×380%)(スキル使用後、味方全員が3ターン封印状態に)",
+		turn: 10,
+		proc: [ss_damage_all(ss_seal_all_cond(3.8, 3), [0]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_oattr(0,400, [1,0,0,0,0,]),
+		Attr_statusup_oattr(400,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_relief([0,1,0,0,0,],20),
+		Fastskill(3),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit", "all_sealed"]),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ(180%),5チェインで更にダメージアップ(50%)",
+		proc: [ChainAllAttack(1.8, 0), ChainAllAttack(2.3, 5)],
+	},
+	ss2: {
+		desc: "<反動大魔術・蝕>スキル反射を無視し、敵全体へ火属性のダメージ(精霊数×440%)(スキル使用後、味方全員が3ターン封印状態に)",
+		turn: 13,
+		proc: [ss_damage_all(ss_seal_all_cond(4.4, 3), [0]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+}

@@ -1,0 +1,45 @@
+{
+	name: "屍霊の拳鬼 フー・チャパル",
+	cardno: 4536,
+	imageno: 5882,
+	hp: 2074,
+	atk: 3311,
+	cost: 38,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<ギャンブル攻撃>7チェインかつパネルが2色、3色でイチかバチかダメージアップ(0%～1200%/0%～1500%)",
+		proc: ChainStakesAttack3(0, 0, 0, 12.0, 0, 15, 7),
+	},
+	ss1: {
+		desc: "<大魔術>敵単体へ雷属性のダメージ(600%)",
+		turn: 10,
+		proc: [ss_damage_s(6.0, [2], 1)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(0,200),
+		Statusup(0,200),
+		Statusup(0,200),
+		NEFTJOD(30),
+		Statusup(0,200),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],1),
+		Spec_statusup(200,0, [8,]),
+		Spec_statusup(0,200, [8,]),
+	],
+	as2: {
+		desc: "<ギャンブル攻撃>7チェインかつパネルが2色、3色でイチかバチかダメージアップ(0%~1550%/0%~1850%)",
+		proc: ChainStakesAttack3(0, 0, 0, 15.5, 0, 18.5, 7),
+	},
+	ss2: {
+		desc: "<大魔術>敵単体へ雷属性のダメージ(800%)",
+		turn: 13,
+		proc: [ss_damage_s(8.0, [2], 1)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(0,500),
+	],
+}

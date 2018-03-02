@@ -1,0 +1,46 @@
+{
+	name: "大人だけの秘密の魅力 チーザ",
+	cardno: 7906,
+	imageno: 6007,
+	hp: 4332,
+	atk: 3911,
+	cost: 51,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	ape: "グリコⅡ",
+	as1: {
+		desc: "<種族攻撃強化>3チェインで火属性の味方の攻撃力をアップ、術士はさらにアップ(50%/100%)",
+		proc: [ChainEnhance(0.5, [1,0,0,0,0], 3), ChainSpecEnhance(1.0, [1,0,0,0,0], [9], 3)],
+	},
+	ss1: {
+		desc: "<ダメージ強化>3ターンの間、味方の攻撃力をアップ、5チェインを消費しさらにアップ(70%/120%)",
+		turn: 6,
+		proc: [ss_enhance_all(ss_chain_cost(5, 1.2, 0.7), 3, [1, 1, 1, 1, 1])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([1,1,0,0,0,],20),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],4),
+		NEFTJOD(30),
+		Awake_noeffect("経験値取得量アップ",2),
+		Attr_statusup(0,400,[1,0,0,0,0,]),
+		Attr_statusup(400,0,[1,0,0,0,0,]),
+		Fastskill(2),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<種族攻撃強化>3チェインで火属性の味方の攻撃力をアップ、術士はさらにアップ(80%/130%)",
+		proc: [ChainEnhance(0.8, [1,0,0,0,0], 3), ChainSpecEnhance(1.3, [1,0,0,0,0], [9], 3)],
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターンの間、味方の攻撃力をアップ、5チェインを消費しさらにアップ(100%/150%)",
+		turn: 7,
+		proc: [ss_enhance_all(ss_chain_cost(5, 1.5, 1.0), 4, [1, 1, 1, 1, 1])],
+	},
+	Lawake: [
+		Attr_statusup(0,200,[1,0,0,0,0,]),
+		Statusup(500,0),
+	],
+}

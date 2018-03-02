@@ -1,0 +1,46 @@
+{
+	name: "朱雀昴神将 テウティ・スーシェン",
+	cardno: 6601,
+	imageno: 8668,
+	hp: 3511,
+	atk: 5043,
+	cost: 53,
+	attr: [0,-1],
+	species: [1],
+	islegend: true,
+	ape: "黄昏の四神書",
+	as1: {
+		desc: "<チェイン攻撃・攻撃強化>火属性の味方の攻撃力をアップし(30%)、6チェインでダメージアップ(400%)",
+		proc: [ChainEnhance(0.3, [1,0,0,0,0], 0), ChainAttack(4.0, 6)],
+	},
+	ss1: {
+		desc: "<回復>チェインプラス1の効果、さらに味方全体のHPを回復する(50%)",
+		turn: 4,
+		proc: [ss_addchain(1), ss_heal(0.5)],
+	},
+	awakes: [
+		Costdown(4),
+		NEFTJOD(30),
+		Statusup(100,0),
+		Spec_statusup(0,200, [1,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Fastskill(1),
+		Spec_statusup(200,0, [1,]),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],3),
+	],
+	as2: {
+		desc: "<チェイン攻撃・攻撃強化>火属性の味方の攻撃力をアップし(30%)、6チェインでダメージアップ(500%)",
+		proc: [ChainEnhance(0.3, [1,0,0,0,0], 0), ChainAttack(5.0, 6)],
+	},
+	ss2: {
+		desc: "<蘇生>味方全体のHPを回復し(50%)、さらに味方を蘇生(50%)",
+		turn: 10,
+		proc: [ss_heal(0.5), ss_resurrection([1,1,1,1,1], 0.5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(500,0),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "大海の獣と戯れる ヴォルフ・ロイ",
+	cardno: 6993,
+	imageno: 8991,
+	hp: 3038,
+	atk: 3503,
+	cost: 52,
+	attr: [0,1],
+	species: [8],
+	islegend: true,
+	ape: "クロム・マグナⅢ",
+	as1: {
+		desc: "<属性の加護>デッキの属性の数だけ攻撃力アップ(350%/600%/850%)",
+		proc: ChainDeckAttrsAttack(3.5, 6.0, 8.5, 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・水属性化",
+		turn: 3,
+		proc: [ss_panel_change([1,1,0,0,0])],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,400),
+		Costdown(2),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Spec_statusup(0,200, [8,]),
+		Spec_statusup(200,0, [8,]),
+	],
+	as2: {
+		desc: "<属性の加護>デッキの属性の数だけ攻撃力アップ(400%/700%/1000%)",
+		proc: ChainDeckAttrsAttack(4.5, 7.0, 10, 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・水属性化し、ダメージ25%軽減の効果を付与",
+		turn: 6,
+		proc: [ss_panel_change([1,1,0,0,0]), panel_attr_guard([1,1,1,1,1], 0.25)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+	],
+}

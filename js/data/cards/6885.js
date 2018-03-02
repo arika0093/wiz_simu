@@ -1,0 +1,45 @@
+{
+	name: "惨禍なす蛇心 エイラ・ナルヴィ",
+	cardno: 6885,
+	imageno: 8865,
+	hp: 2217,
+	atk: 3252,
+	cost: 45,
+	attr: [2,0],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(350%)",
+		proc: add_cond(ChainAttack(3.5, 0), when_hp_more(0.8)),
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・雷属性のダメージ(120%)",
+		turn: 5,
+		proc: [ss_damage_all(1.2, [0,2]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,300),
+		Statusup(200,0),
+		Costdown(4),
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],3),
+		Spec_statusup(200,0, [9,]),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Awake_noeffect("精霊交替",1),
+	],
+	as2: {
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(450%)",
+		proc: add_cond(ChainAttack(4.5, 0), when_hp_more(0.8)),
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ火・雷属性のダメージ(150%)",
+		turn: 7,
+		proc: [ss_damage_all(1.5, [0,2]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Statusup(0,500),
+	],
+}

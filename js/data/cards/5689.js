@@ -1,0 +1,45 @@
+{
+	name: "真夜の紅蝶姫 タマギク・イオリ",
+	cardno: 5689,
+	imageno: 7510,
+	hp: 3511,
+	atk: 2487,
+	cost: 40,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<回復>火属性の味方のHPを回復(13%)",
+		proc: Heal(0.13, [1,0,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<解答削り>解答選択肢を2つ削る",
+		turn: 3,
+		proc: [ss_answer_narrow(2)],
+	},
+	awakes: [
+		Statusup(200,0),
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(1),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Fastskill(2),
+		Statusup(0,200),
+		Attr_relief([0,1,0,0,0,],10),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<回復>火属性の味方のHPを回復(15%)",
+		proc: Heal(0.15, [1,0,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 6,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

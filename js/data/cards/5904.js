@@ -1,0 +1,48 @@
+{
+	name: "魔法の童話世界 ティア&オルネ",
+	cardno: 5904,
+	imageno: 7721,
+	hp: 3087,
+	atk: 1998,
+	cost: 33,
+	attr: [0,2],
+	species: [9],
+	islegend: true,
+	ape: "大魔道杯 with ギルドマスターズ(3周年)",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(30%/70%)",
+		proc: ChainEnhance_SubAttr(0.30, 0.70, [1,0,0,0,0], [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<多弾魔術>敵単体へ火・雷属性の5回連続ダメージ(180%)",
+		turn: 6,
+		proc: [ss_damage_s(1.8, [0,2], 5)],
+	},
+	awakes: [
+		Statusup(200,0),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],1),
+		NEFTJOD(30),
+		Attr_relief([0,1,0,0,0,],10),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が雷属性だとさらにアップ(60%/100%)",
+		proc: ChainEnhance_SubAttr(0.60, 1.0, [1,0,0,0,0], [0,0,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<多弾魔術>敵単体へ火・雷属性の5回連続ダメージ(380%)",
+		turn: 9,
+		proc: [ss_damage_s(3.8, [0,2], 5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Statusup(0,400),
+		NEFTJOD(30),
+	],
+}

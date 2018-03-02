@@ -1,0 +1,47 @@
+{
+	name: "壊れあった心 スタードであったもの",
+	cardno: 9014,
+	imageno: 11222,
+	hp: 2219,
+	atk: 5712,
+	cost: 39,
+	attr: [1,-1],
+	species: [2],
+	islegend: true,
+	ape: "喰牙RIZEⅡ",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>3チェインで味方のMAXHP10%を使い、ダメージアップ(650%)",
+		proc: add_cond(ChainAttack(6.5, 3), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの50%を使い敵全体へ水属性のダメージ(精霊数×200%)",
+		turn: 10,
+		proc: [ss_damage_all(ss_consume_all_cond(2.0, 0.5), [1])],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		NEFTJOD(30),
+		Attr_statusup_oattr(0,300, [0,1,0,0,0,]),
+		Attr_statusup_oattr(300,0, [0,1,0,0,0,]),
+		Abstate_invalid("poison"),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインで味方のMAXHP10%を使い、ダメージアップ(750%)",
+		proc: add_cond(ChainAttack(7.5, 3), as_consume_all(0.1)),
+	},
+	ss2: {
+		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの50%を使い敵全体へ水属性のダメージ(精霊数×240%)",
+		turn: 12,
+		proc: [ss_damage_all(ss_consume_all_cond(2.4, 0.5), [1])],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+}

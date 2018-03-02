@@ -1,0 +1,47 @@
+{
+	name: "ミラクルツインハート ミミ&ララ",
+	cardno: 8136,
+	imageno: 10270,
+	hp: 2398,
+	atk: 4099,
+	cost: 54,
+	attr: [0,3],
+	species: [3],
+	islegend: true,
+	ape: "バレンタイン2014",
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、パネルの色が増す度ダメージアップ(350%/450%/600%)",
+		proc: ChainPanelsAttack(3.5, 4.5, 6.0, 3),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,1,1,0,0])],
+	},
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、パネルの色が増す度ダメージアップ(450%/550%/700%)",
+		proc: ChainPanelsAttack(4.5, 5.5, 7.0, 3),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、チェインがプラス2の効果と攻撃力アップの効果を付与(50%)",
+		turn: 7,
+		proc: [ss_panel_change([1,1,1,0,0]), panel_chainplus(2), panel_attackup(0.5)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200,[1,1,1,1,1,]),
+		Attr_statusup(200,0,[1,1,1,1,1,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit", "all_sealed"]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup_sattr(0,100,[1,0,0,0,0,],0,300,[0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0,[1,0,0,0,0,],300,0,[0,0,0,1,0,]),
+		Fastskill(2),
+	],
+	Lawake: [
+		Attr_statusup(0,200,[1,1,1,1,1,]),
+		Statusup(0,500),
+		Attr_relief([1,1,1,1,1,],10),
+	],
+}

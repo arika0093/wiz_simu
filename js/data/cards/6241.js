@@ -1,0 +1,45 @@
+{
+	name: "七彩光の魔姫 カナメ・バルバロッサ",
+	cardno: 6241,
+	imageno: 8112,
+	hp: 3303,
+	atk: 2376,
+	cost: 40,
+	attr: [1,0],
+	species: [2],
+	islegend: true,
+	as1: {
+		desc: "<回復>火・水属性の味方を回復、HP50%以下ならさらに回復(11%/20%)",
+		proc: [Heal(0.11, [1,1,0,0,0], 0), add_cond(Heal(0.20, [1,1,0,0,0], 0), when_hp_less(0.50))],
+	},
+	ss1: {
+		desc: "<解答削り>解答選択肢を2つ削り、HP80%以下なら解答を見破る",
+		turn: 4,
+		proc: [ss_answer_narrow(2), ss_hp_less_skill(0.8, ss_answer_foresight())],
+	},
+	awakes: [
+		Statusup(0,400),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Statusup(400,0),
+		Fastskill(1),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>火・水属性の味方を回復、HP50%以下ならさらに回復(13%/22%)",
+		proc: [Heal(0.13, [1,1,0,0,0], 0), add_cond(Heal(0.22, [1,1,0,0,0], 0), when_hp_less(0.50))],
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 6,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Statusup(500,0),
+                Abstate_invalid("ss_sealed"),
+	],
+}

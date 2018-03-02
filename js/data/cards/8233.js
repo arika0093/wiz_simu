@@ -1,0 +1,47 @@
+{
+	name: "迅雷の煌絶剣　アマカド・ヒメザクロ",
+	cardno: 8233,
+	imageno: 7869,
+	hp: 2876,
+	atk: 3832,
+	cost: 54,
+	attr: [2,1],
+	species: [8],
+	islegend: true,
+	ape: "覇眼戦線Ⅰ",
+	as1: {
+		desc: "<種族数攻撃>戦士・亜人の仲間の数だけダメージアップ(180%/260%/340%/420%/500%)",
+		proc: ChainDeckSpecsAttack(0.8, [5,8], 0),
+	},
+	ss1: {
+		desc: "<回復>チェインプラス1の効果、さらに味方全体のHPを回復する(50%)",
+		turn: 4,
+		proc: [ss_addchain(1), ss_heal(0.5)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Abstate_invalid("all_sealed"),
+		Attr_relief([0,1,0,0,0,],20),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,1,0,0,0,]),
+		Fastskill(3),
+	],
+	as2: {
+		desc: "<種族数攻撃>戦士・亜人の仲間の数だけダメージアップ(200%/300%/400%/500%/600%)",
+		proc: ChainDeckSpecsAttack(1.0, [5,8], 0),
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを回復し(50%)、状態異常を回復する",
+		turn: 7,
+		proc: [ss_heal(0.50), ss_abstate_cure()],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Statusup(500,0),
+		Attr_relief([1,1,1,1,1,],10),
+	],
+}

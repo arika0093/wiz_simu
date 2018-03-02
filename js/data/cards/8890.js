@@ -1,0 +1,46 @@
+{
+	name: "完全降臨！邪神 ルルベル",
+	cardno: 8890,
+	imageno: 8014,
+	hp: 3015,
+	atk: 3923,
+	cost: 56,
+	attr: [0,4],
+	species: [2],
+	islegend: true,
+	ape: "聖サタニック女学院",
+	as1: {
+		desc: "<属性特効>4チェインで雷・光属性の敵単体へ特効ダメージ(500%)、パネルの色が2色以上でさらにダメージアップ(300%)",
+		proc: ChainPanelsAttrAttack(5.0, 8.0, 8.0, [0,0,1,1,0], 4),
+	},
+	ss1: {
+		desc: "<ブースト>5ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ(1200%)。さらに極稀にクリティカル",
+		turn: 10,
+		proc: [ss_boost_enhance_s(12, 5, 0.15)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Fastskill(3),
+		Panel_boost([1,0,0,0,0,],2),
+		Abstate_invalid("毒弱体化秒針"),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,0,0,1,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<属性特効>4チェインで雷・光属性の敵単体へ特効ダメージ(600%)、パネルの色が2色以上でさらにダメージアップ(300%)",
+		proc: ChainPanelsAttrAttack(6.0, 9.0, 9.0, [0,0,1,1,0], 4),
+	},
+	ss2: {
+		desc: "<ブースト>5ターンの間、MAXHPを毎ターン15%消費し、攻撃力をアップ(1500%)。さらに極稀にクリティカル",
+		turn: 13,
+		proc: [ss_boost_enhance_s(15, 5, 0.15)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Statusup(0,1000),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "One on the City ディライブサーバー",
+	cardno: 8083,
+	imageno: 10211,
+	hp: 3549,
+	atk: 4029,
+	cost: 47,
+	attr: [0,-1],
+	species: [6],
+	islegend: true,
+	ape: "クロスディライブ",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>10チェインでダメージアップ(600%)",
+		proc: ChainAttack(6.0, 10),
+	},
+	ss1: {
+		desc: "<弱体化大魔術>スキル反射を無視し、敵全体へ火属性のダメージ(400%)、さらに5ターンの間、敵の防御力を弱体化、5チェインを消費しさらに弱体化(20%/30%)",
+		turn: 13,
+		proc: [ss_damage_all(4.0, [0]), ss_attr_weaken_all(null, ss_chain_cost(5, 0.3, 0.2), 5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Spec_statusup(0,400, [6,]),
+		Attr_relief([1,1,0,0,0,],10),
+		NEFTJOD(30),
+		Attr_statusup(300,0, [1,0,0,0,0,]),
+		Attr_statusup(0,300, [1,0,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<チェイン攻撃>10チェインでダメージアップ(700%)",
+		proc: ChainAttack(7.0, 10),
+	},
+	ss2: {
+		desc: "<弱体化大魔術>スキル反射を無視し、敵全体へ火属性のダメージ(700%)、さらに5ターンの間、敵の防御力を弱体化、5チェインを消費しさらに弱体化(20%/30%)",
+		turn: 16,
+		proc: [ss_damage_all(7.0, [0]), ss_attr_weaken_all(null, ss_chain_cost(5, 0.3, 0.2), 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Statusup(0,500),
+	],
+}

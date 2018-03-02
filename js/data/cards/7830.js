@@ -1,0 +1,46 @@
+{
+	name: "夢色の心贈る キワム&クロ",
+	cardno: 7830,
+	imageno: 7082,
+	hp: 3495,
+	atk: 3542,
+	cost: 55,
+	attr: [0,2],
+	species: [8],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<連撃>4チェインで敵単体を4回連続攻撃(400%)",
+		proc: ChainDualAttack(4.0, 4, 4),
+	},
+	ss1: {
+		desc: "<状態異常無効>2ターン敵の状態異常攻撃を無効化し、さらに味方全体のHPを回復(50%)",
+		turn: 7,
+		proc: [ss_absattack_disable(2), ss_heal(0.5)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(3),
+		NEFTJOD(30),
+		Heal_afterbattle(10),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,1,0,0,]),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<連撃>4チェインで敵単体を4回連続攻撃(500%)",
+		proc: ChainDualAttack(5.0, 4, 4),
+	},
+	ss2: {
+		desc: "<状態異常無効>3ターン敵の状態異常攻撃を無効化し、さらに味方全体のHPを回復(50%)",
+		turn: 9,
+		proc: [ss_absattack_disable(3), ss_heal(0.5)],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,0,1,0,0,]),
+		Statusup(500,0),
+	],
+}

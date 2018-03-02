@@ -1,0 +1,46 @@
+{
+	name: "祝祭の流星群 ソフィ・ハーネット",
+	cardno: 7491,
+	imageno: 9619,
+	hp: 2381,
+	atk: 4219,
+	cost: 55,
+	attr: [1,2],
+	species: [9],
+	islegend: true,
+	ape: "ハロウィン2014",
+	as1: {
+		desc: "<パネル色数攻撃>5チェインかつパネルが2色でダメージアップ、3色で更にアップ(700%/850%)",
+		proc: ChainPanelsAttack(0, 7.0, 8.5, 5),
+	},
+	ss1: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水・雷属性の5回連続ダメージ(400%)",
+		turn: 6,
+		proc: [ss_damage_s(4.0, [1,2], 5), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],2),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,400, [0,0,1,0,0,]),
+		Fastskill(2),
+		Spec_statusup(0,300, [9,]),
+		Panel_boost([0,1,0,0,0,],2),
+	],
+	as2: {
+		desc: "<パネル色数攻撃>5チェインかつパネルが2色でダメージアップ、3色で更にアップ(850%/1000%)",
+		proc: ChainPanelsAttack(0, 8.5, 10, 5),
+	},
+	ss2: {
+		desc: "<多弾魔術>スキル反射を無視し、敵単体へ水・雷属性の5回連続ダメージ、10チェインを消費しさらにダメージアップ(700%/1300%)",
+		turn: 9,
+		proc: [ss_damage_s(ss_chain_cost(10, 13, 7), [1,2], 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,100, [0,1,1,0,0,]),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "空の昏き英雄 ディートリヒ・ベルク",
+	cardno: 4754,
+	imageno: 6469,
+	hp: 2104,
+	atk: 3893,
+	cost: 46,
+	attr: [0, 2],
+	species: [8],
+	disable: true,
+	awakes: [
+		Panel_boost([1,0,0,0,0], 1),
+		Attr_relief([0, 1, 0, 0, 0], 20),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0], 1),
+		Attr_statusup(100, 0, [1, 0, 1, 0, 0]),
+		Panel_boost([1,0,0,0,0], 2),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
+		Fastskill(2),
+	],
+	as1: {
+		desc: "<分散攻撃>4チェインで敵全体へ分散攻撃/450％÷対象数",
+		proc: ChainVarianceAttack(4.5, 4),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>味方全体のMAXHPの50％を使い、ジャンルパネルにチェインがプラス3の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(3), ss_consume_all(0.5)],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0]),
+		Statusup(0, 500),
+	],
+	as2: {
+		desc: "<分散攻撃>4チェインで敵全体へ分散攻撃/550％",
+		proc: ChainVarianceAttack(5.5, 4),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>味方全体のMAXHPの50％を使い、ジャンルパネルにチェインがプラス4の効果を付与",
+		turn: 8,
+		proc: [panel_chainplus(4), ss_consume_all(0.5)],
+	},
+}

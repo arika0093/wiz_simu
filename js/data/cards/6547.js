@@ -1,0 +1,48 @@
+{
+	name: "飛べ☆夏の箒星 ソフィ・ハーネット",
+	cardno: 6547,
+	imageno: 8441,
+	hp: 5501,
+	atk: 2133,
+	cost: 54,
+	attr: [2,1],
+	species: [9],
+	disable: true,
+	islegend: true,
+	ape: "USG",
+	as1: {
+		desc: "<攻撃強化・回復>5チェインで水・雷属性の味方のHPを回復(10%)、さらに攻撃力をアップ(60%)",
+		proc:  [Heal(0.10, [0,1,1,0,0], 5), ChainEnhance(0.60, [0,1,1,0,0], 5)],
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを1遅らせる",
+		turn: 4,
+		proc: [ss_delay_all(1)],
+	},
+	awakes: [
+		Heal_afterbattle(10),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(300,0),
+		Fastskill(1),
+		Awake_noeffect("ゴールド取得量アップ", 3),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Attr_statusup_sattr(200, 0, [0,0,1,0,0], 200, 0, [0,1,0,0,0]),
+		Attr_statusup_sattr(0, 200, [0,0,1,0,0], 0, 200, [0,1,0,0,0]),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>5チェインで水・雷属性の味方のHPを回復(10%)、さらに攻撃力をアップ(90%)",
+		proc:  [Heal(0.10, [0,1,1,0,0], 5), ChainEnhance(0.90, [0,1,1,0,0], 5)],
+	},
+	ss2: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを1早め、敵全体の攻撃ターンを1遅らせる",
+		turn: 6,
+		proc: [ss_skillboost(1), ss_delay_all(1)],
+	},
+	Lawake: [
+		Abstate_invalid("ss_sealed"),
+		Abstate_invalid("as_sealed"),
+		Statusup(300,0),
+	],
+}

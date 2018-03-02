@@ -1,0 +1,46 @@
+{
+	name: "寄り添い合う光 アシュタル&ルミア",
+	cardno: 7599,
+	imageno: 9664,
+	hp: 2053,
+	atk: 6220,
+	cost: 56,
+	attr: [2,-1],
+	species: [8],
+	disable: true,
+	islegend: true,
+	ape: "Christmas2016",
+	as1: {
+		desc: "<チェイン攻撃・属性特効>4チェインでダメージアップ、闇属性の敵だとさらにダメージアップ(400%/600%)",
+		proc: [ChainAttack(4.0, 4), ChainAttrAttack(6.0, 4, [0,0,0,0,1])],
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(600%)",
+		turn: 9,
+		proc: [ss_damage_all(6.0, [2]), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Fastskill(1),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],2),
+		Heal_afterbattle(10),
+		Spec_statusup(0,200, [8,]),
+		Spec_statusup(200,0, [8,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<チェイン攻撃・属性特効>4チェインでダメージアップ、闇属性の敵だとさらにダメージアップ(500%/700%)",
+		proc: [ChainAttack(5.0, 4), ChainAttrAttack(7.0, 4, [0,0,0,0,1])],
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50%を使い敵全体へダメージ(825%)",
+		turn: 12,
+		proc: [ss_damage_all(8.25, [2]), ss_ignore_skillcounter(), ss_consume_own(0.5)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
+}

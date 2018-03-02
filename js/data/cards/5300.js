@@ -1,0 +1,33 @@
+{
+	name: "イチョウ色の初恋 阿笠博士",
+	cardno: 5300,
+	imageno: 6995,
+	hp: 2998,
+	atk: 2065,
+	cost: 25,
+	attr: [2,-1],
+	species: [9],
+	islegend: false,
+	ape: "コラボ(コナン)",
+	as1: {
+		desc: "<攻撃強化>雷属性の味方の攻撃力をアップ(30%)",
+		proc: ChainEnhance(0.3, [0,0,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<大魔術>敵単体へ雷属性のダメージ(200%)",
+		turn: 5,
+		proc: [ss_damage_s(2.0, [2], 1)],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ", 1),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(0,200),
+		Statusup(200,0),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],1),
+	],
+}

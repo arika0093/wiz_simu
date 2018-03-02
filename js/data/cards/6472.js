@@ -1,0 +1,46 @@
+{
+	name: "真理をこの手に アレク・ルミナレス",
+	cardno: 6472,
+	imageno: 8412,
+	hp: 3723,
+	atk: 2331,
+	cost: 27,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<攻撃強化・回復>火属性の味方のHPを回復(10%)、さらに火属性の味方の攻撃力をアップ(30%)",
+		proc: [ChainEnhance(0.3, [1,0,0,0,0], 0), Heal(0.10, [1,0,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火属性化",
+		turn: 2,
+		proc: [ss_panel_change([1,0,0,0,0])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],1),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Fastskill(2),
+		NEFTJOD(30),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Spec_statusup(200,0, [9,]),
+		Guild_statusup(0, 1000),
+		Guild_statusup(1000, 0),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>火属性の味方のHPを回復(10%)、さらに火属性の味方の攻撃力をアップ(50%)",
+		proc: [ChainEnhance(0.5, [1,0,0,0,0], 0), Heal(0.10, [1,0,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火属性化し、チェインがプラス1の効果を付与",
+		turn: 5,
+		proc: [ss_panel_change([1,0,0,0,0]), panel_chainplus(1)],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

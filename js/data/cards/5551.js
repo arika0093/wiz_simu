@@ -1,0 +1,47 @@
+{
+	name: "結晶魔道調香師 グラ・アクステンド",
+	cardno: 5551,
+	imageno: 7346,
+	hp: 2319,
+	atk: 2536,
+	cost: 45,
+	attr: [1, 2],
+	species: [9],
+	islegend: true,
+	ape: "大魔道杯 in 天上岬",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃>5チェインで敵単体へのダメージアップ、パネルの色が増す度さらにアップ(350%/500%/600%)",
+		proc: ChainPanelsAttack(3.5, 5.0, 6.0, 5),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
+		turn: 4,
+		proc: [ss_panel_change([0,1,1,0,0])],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Fastskill(1),
+		Attr_statusup(100, 0, [0, 1, 1, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+		NEFTJOD(30),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Fastskill(2),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+	],
+	as2: {
+		desc: "<攻撃>5チェインで敵単体へのダメージアップ、パネルの色が増す度さらにアップ(450%/600%/700%)",
+		proc: ChainPanelsAttack(4.5, 6.0, 7.0, 5),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化。HP50%以下でさらにダメージ40%軽減の効果を付与",
+		turn: 7,
+		proc: [ss_panel_change([1,1,1,0,0]), ss_hp_less_skill(0.5, panel_attr_guard([1,1,1,1,1], 0.4))],
+	},
+	Lawake: [
+		Statusup(0, 400),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+	],
+}

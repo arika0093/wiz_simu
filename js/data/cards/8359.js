@@ -1,0 +1,47 @@
+{
+	name: "誓いの空へ レイル&フレーグ",
+	cardno: 8359,
+	imageno: 10503,
+	hp: 2430,
+	atk: 3693,
+	cost: 38,
+	attr: [2,-1],
+	species: [0],
+	islegend: true,
+	ape: "喰牙RIZEⅠ",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>4チェインで敵単体を6回連続攻撃(300%)、HP50%以上でさらにダメージアップ(100%)",
+		proc: [ChainDualAttack(3.0, 4, 6), add_cond(ChainDualAttack(4.0, 4, 6), when_hp_more(0.5))],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ(400%)、さらに水属性の敵には特効ダメージ(600%)",
+		turn: 7,
+		proc: [ss_damage_s(special_attr([0, 1, 0, 0, 0], 10.0, 4.0), [2], 1)],
+	},
+	awakes: [
+		Fastskill(1),
+		Costdown(10),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(300,0),
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(0,300),
+		Awake_noeffect("ゴールド取得量アップ",1),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<連撃>4チェインで敵単体を6回連続攻撃(400%)、HP50%以上でさらにダメージアップ(100%)",
+		proc: [ChainDualAttack(4.0, 4, 6), add_cond(ChainDualAttack(5.0, 4, 6), when_hp_more(0.5))],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ(400%)、さらに水属性の敵には特効ダメージ(1200%)",
+		turn: 10,
+		proc: [ss_damage_s(special_attr([0, 1, 0, 0, 0], 12.0, 4.0), [2], 1)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(500,0),
+	],
+}

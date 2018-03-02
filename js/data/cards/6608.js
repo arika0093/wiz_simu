@@ -1,0 +1,46 @@
+{
+	name: "刹那の跳躍 第9の使徒",
+	cardno: 6608,
+	imageno: 8651,
+	hp: 3082,
+	atk: 3478,
+	cost: 43,
+	attr: [0,-1],
+	species: [3],
+	islegend: true,
+	ape: "コラボ(エヴァⅠ)",
+	is_dist: true,
+	as1: {
+		desc: "<ギャンブル攻撃>ダメージがイチかバチかアップ(200%~250%)",
+		proc: ChainStakesAttack(2.0, 2.5, 0),
+	},
+	ss1: {
+		desc: "<割合削り>敵単体のHPを20%減少させる",
+		turn: 9,
+		proc: [ss_ratiodamage_s(0.2)],
+	},
+	awakes: [
+		Fastskill(1),
+		Statusup(0,100),
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(0,100),
+		Fastskill(1),
+		Statusup(200,0),
+		Statusup(0,200),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<ギャンブル攻撃>ダメージがイチかバチかアップ(200%~400%)",
+		proc: ChainStakesAttack(2.0, 4.0, 0),
+	},
+	ss2: {
+		desc: "<割合削り>敵単体のHPを25%減少させる",
+		turn: 11,
+		proc: [ss_ratiodamage_s(0.25)],
+	},
+	Lawake: [
+		Statusup(0,800),
+	],
+}

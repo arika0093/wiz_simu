@@ -1,0 +1,48 @@
+{
+	name: "おてんば邪神ガール ルルベル",
+	cardno: 6190,
+	imageno: 8013,
+	hp: 4923,
+	atk: 2346,
+	cost: 48,
+	attr: [0,4],
+	species: [2],
+	disable: true,
+	islegend: true,
+	ape: "聖サタニック女学院",
+	as1: {
+		desc: "<ガード・回復>火属性の味方のHPを回復(11%)し、全属性のダメージを5%軽減。リーダー時さらに5%軽減",
+		proc: [Heal(0.11, [1,0,0,0,0], 0), as_guard(0.05,[1,1,1,1,1]), add_cond(as_guard(0.05,[1,1,1,1,1]), when_leader())],
+	},
+	ss1: {
+		desc: "<ダメージブロック>3ターン600以下の全属性ダメージを無効化する、5チェインを消費しさらに2ターン無効化",
+		turn: 6,
+		proc: [ss_damageblock_all(600, ss_chain_cost(5, 5, 3))],
+	},
+	awakes: [
+		Statusup(200,0),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<ガード・回復>火属性の味方のHPを回復(13%)し、全属性のダメージを10%軽減。リーダー時さらに10%軽減",
+		proc: [Heal(0.13, [1,0,0,0,0], 0), as_guard(0.1,[1,1,1,1,1]), add_cond(as_guard(0.1,[1,1,1,1,1]), when_leader())],
+	},
+	ss2: {
+		desc: "<ダメージブロック>3ターン800以下の全属性ダメージを無効化する、5チェインを消費しさらに2ターン無効化",
+		turn: 9,
+		proc: [ss_damageblock_all(800, ss_chain_cost(5, 5, 3))],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(500,0),
+		Attr_relief([0,0,1,0,0,],10),
+	],
+}

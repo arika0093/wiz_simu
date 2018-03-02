@@ -1,0 +1,45 @@
+{
+	name: "無垢な鮮血ずきん メメリー・ポプン",
+	cardno: 9143,
+	imageno: 11379,
+	hp: 3005,
+	atk: 7285,
+	cost: 54,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	ape: "ウィズセレクション",
+	as1: {
+		desc: "<属性特効>3チェインで水属性の敵単体へ特効ダメージ(450%)、パネルの色が2色以上でさらにアップ(450%)",
+		proc: [ChainPanelsAttrAttack(4.5, 9.0, 9.0, [0,1,0,0,0], 3)],
+	},
+	ss1: {
+		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ(950%)、さらに隣接する敵に雷属性のダメージ(950%)",
+		turn: 7,
+		proc: [ss_damage_explosion(9.5, [2]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_oattr(0,400, [0,0,1,0,0,]),
+		Attr_statusup_oattr(400,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(60),
+		Fastskill(3),
+		Attr_statusup(0,400, [0,0,1,0,0,]),
+		Attr_statusup(400,0, [0,0,1,0,0,]),
+		Attr_relief([0,1,0,0,0,],20),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで水属性の敵単体へ特効ダメージ(550%)、パネルの色が2色以上でさらにアップ(450%)",
+		proc: [ChainPanelsAttrAttack(5.5, 10.0, 10.0, [0,1,0,0,0], 3)],
+	},
+	ss2: {
+		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ(1250%)、さらに隣接する敵に雷属性のダメージ(1250%)",
+		turn: 10,
+		proc: [ss_damage_explosion(12.5, [2]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,2000),
+	],
+}

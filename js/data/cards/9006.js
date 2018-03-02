@@ -1,0 +1,47 @@
+{
+	name: "業業を背負う戦鬼 スタード・クリウ",
+	cardno: 9006,
+	imageno: 11214,
+	hp: 2782,
+	atk: 4620,
+	cost: 36,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	ape: "喰牙RIZEⅡ",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>3チェインで雷属性の敵単体へ特効ダメージ(475%)",
+		proc: ChainAttrAttack(4.75, 3, [0,0,1,0,0]),
+	},
+	ss1: {
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(300%)",
+		turn: 7,
+		proc: [ss_enhance_own(3.0, 3)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Fastskill(1),
+		Costdown(10),
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_relief([0,1,0,0,0,],10),
+		Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
+		Attr_statusup_oattr(300,0, [1,0,0,0,0,]),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで雷属性の敵単体へ特効ダメージ(575%)",
+		proc: ChainAttrAttack(5.75, 3, [0,0,1,0,0]),
+	},
+	ss2: {
+		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(800%)、5チェインを消費しさらに3ターン攻撃力をアップ(1000%)",
+		turn: 11,
+		proc: [ss_chain_cost_skill(5, ss_enhance_own(18, 6), ss_enhance_own(8.0, 3))],
+	},
+	Lawake: [
+		Statusup(400,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

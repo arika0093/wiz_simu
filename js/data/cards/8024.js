@@ -1,0 +1,47 @@
+{
+	name: "幻想に共鳴するメロディ 初音ミク",
+	cardno: 8024,
+	imageno: 6633,
+	hp: 3754,
+	atk: 3439,
+	cost: 56,
+	attr: [2,0],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(ミク)",
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)",
+		proc: ChainAttack(4.5, 5),
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップし(上限値:2000)、さらに味方全体のHPを回復(25%)",
+		turn: 5,
+		proc: [ss_statusup_all([500, 500], [2000, 2000], -1), ss_heal(0.25)],
+	},
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(550%)",
+		proc: ChainAttack(5.5, 5),
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを1000アップし(上限値:2000)、さらに味方全体のHPを回復(25%)",
+		turn: 8,
+		proc: [ss_statusup_all([1000, 1000], [2000, 2000], -1), ss_heal(0.25)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200,[1,0,1,0,0,]),
+		Attr_statusup(200,0,[1,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_relief([0,1,0,0,0,],20),
+		NEFTJOD(30),
+		Abstate_invalid("ss_sealed"),
+		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,300,[1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0,[0,0,1,0,0,],300,0,[1,0,0,0,0,]),
+		Fastskill(3),
+	],
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,1000),
+		NEFTJOD(30),
+	],
+}

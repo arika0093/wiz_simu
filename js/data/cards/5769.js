@@ -1,0 +1,46 @@
+{
+	name: "怪獣、無限の野望 アリエッタ・トワ",
+	cardno: 5769,
+	imageno: 7576,
+	hp: 1987,
+	atk: 4093,
+	cost: 48,
+	attr: [2, 0],
+	species: [9],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<連撃>6チェインで敵単体を3回連続攻撃、HP50%以上でさらにダメージアップ(400%/600%)",
+		proc: [ChainDualAttack(4.0, 6, 3), add_cond(ChainDualAttack(6.0, 6, 3), when_hp_more(0.5))],
+	},
+	ss1: {
+		desc: "<斬撃大魔術>スキル反射を無視し、火・雷属性の3連撃(180%)、さらに連撃数分チェインプラス",
+		turn: 7,
+		proc: [ss_damage_slash(1.8, [0, 2], 3), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_statusup(200, 0, [1, 0, 1, 0, 0, ]),
+		Fastskill(1),
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+		Attr_relief([1, 0, 0, 0, 0, ], 10),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(2),
+		Attr_statusup(0, 200, [1, 0, 1, 0, 0, ]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<連撃>6チェインで敵単体を3回連続攻撃、HP50%以上でさらにダメージアップ(500%/700%)",
+		proc: [ChainDualAttack(5.0, 6, 3), add_cond(ChainDualAttack(7.0, 6, 3), when_hp_more(0.5))],
+	},
+	ss2: {
+		desc: "<斬撃大魔術>スキル反射を無視し、火・雷属性の5連撃(380%)、さらに連撃数分チェインプラス",
+		turn: 10,
+		proc: [ss_damage_slash(3.8, [0, 2], 5), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0, 1000),
+		Statusup(200, 0),
+	],
+}

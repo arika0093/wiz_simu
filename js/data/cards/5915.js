@@ -1,0 +1,47 @@
+{
+	name: "飛翔する天才と孤高 アルト&ブレラ",
+	cardno: 5915,
+	imageno: 7733,
+	hp: 2440,
+	atk: 2674,
+	cost: 38,
+	attr: [1,0],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(マクロス)",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃、7チェインで更にダメージアップ(300%/450%)",
+		proc: [ChainDualAttack(3.0, 3, 3), ChainDualAttack(4.5, 7, 3)],
+	},
+	ss1: {
+		desc: "<多弾魔術>敵単体へ火・水属性の5回連続ダメージ(180%)",
+		turn: 6,
+		proc: [ss_damage_s(1.8, [1,0], 5)],
+	},
+	awakes: [
+		Statusup(0,100),
+		Panel_boost([0,1,0,0,0,],1),
+		Statusup(0,200),
+		Fastskill(1),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃、7チェインで更にダメージアップ(400%/550%)",
+		proc: [ChainDualAttack(4.0, 3, 3), ChainDualAttack(5.5, 7, 3)],
+	},
+	ss2: {
+		desc: "<多弾魔術>敵単体へ火・水属性の5回連続ダメージ(380%)",
+		turn: 9,
+		proc: [ss_damage_s(3.8, [1,0], 5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(0,400),
+	],
+}

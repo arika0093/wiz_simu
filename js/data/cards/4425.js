@@ -1,0 +1,45 @@
+{
+	name: "飛天の神獣皇 ラオ・イーシェン",
+	cardno: 4425,
+	imageno: 6170,
+	hp: 2697,
+	atk: 2623,
+	cost: 45,
+	attr: [0, -1],
+	species: [1],
+	awakes: [
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Costdown(2),
+		Costdown(2),
+		Fastskill(1),
+		Attr_relief([0, 1, 0, 0, 0], 10),
+		Statusup(0, 200),
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Spec_statusup(0, 200, [1]),
+		Spec_statusup(200, 0, [1]),
+	],
+	as1: {
+		desc: "<回復>火属性の味方のHPを回復、神族・天使はさらに回復(火：8％ / 火+種族：15％)",
+		proc: [Heal(0.08, [1,0,0,0,0]), SpecHeal(0.15, [1,0,0,0,0], [1, 3])],
+	},
+	ss1: {
+		desc: "<蘇生>味方全体のHPを回復し、さらに火属性の味方を30％で蘇生(回復：30％)",
+		turn: 8,
+		proc: [ss_heal(0.3), ss_resurrection([1,0,0,0,0], 0.3)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(500, 0),
+		Statusup(0, 400),
+	],
+	as2: {
+		desc: "<回復>火属性の味方のHPを回復、神族・天使はさらに回復(火：11％ / 火+種族：18％)",
+		proc: [Heal(0.11, [1,0,0,0,0]), SpecHeal(0.18, [1,0,0,0,0], [1, 3])],
+	},
+	ss2: {
+		desc: "<蘇生>味方全体のHPを回復し、さらに火属性の味方を50％で蘇生(回復：50％)",
+		turn: 10,
+		proc: [ss_heal(0.5), ss_resurrection([1,0,0,0,0], 0.5)],
+	},
+}

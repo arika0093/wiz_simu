@@ -1,0 +1,45 @@
+{
+	name: "真なる愛の伝道者 パニーラ・アモー",
+	cardno: 5748,
+	imageno: 7558,
+	hp: 3309,
+	atk: 4756,
+	cost: 44,
+	attr: [2, -1],
+	species: [4],
+	islegend: true,
+	as1: {
+		desc: "<属性特効>水属性以外の敵単体へ特効ダメージ(500%)",
+		proc: ChainAttrAttack(5.0, 0, [1, 0, 1, 1, 1, ]),
+	},
+	ss1: {
+		desc: "<回復>味方全体のHPを回復する(70%)",
+		turn: 6,
+		proc: [ss_heal(0.70)],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Costdown(6),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(1),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Fastskill(2),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<属性特効>水属性以外の敵単体へ特効ダメージ(600%)",
+		proc: ChainAttrAttack(6.0, 0, [1, 0, 1, 1, 1, ]),
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを完全回復し、状態異常を回復する",
+		turn: 9,
+		proc: [ss_heal(1.0), ss_abstate_cure()],
+	},
+	Lawake: [
+		Statusup(0, 500),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+	],
+}

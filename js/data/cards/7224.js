@@ -1,0 +1,46 @@
+{
+	name: "亡失の無鉄砲少年 アーデ・トゥイン",
+	cardno: 7224,
+	imageno: 9246,
+	hp: 4356,
+	atk: 4340,
+	cost: 54,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "追憶のレディアント",
+	as1: {
+		desc: "<連撃>4チェインで敵単体を6回連続攻撃(400%)",
+		proc: ChainDualAttack(4.0, 4, 6),
+	},
+	ss1: {
+		desc: "<斬撃大魔術>スキル反射を無視し、雷属性の10連撃(700%)、さらに連撃数分チェインプラス",
+		turn: 10,
+		proc: [ss_damage_slash(7.0, [2], 10), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_relief([1,0,0,0,0,],20),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(300,0, [0,0,1,0,0,]),
+		Attr_statusup(0,300, [0,0,1,0,0,]),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<連撃>4チェインで敵単体を6回連続攻撃(500%)",
+		proc: ChainDualAttack(5.0, 4, 6),
+	},
+	ss2: {
+		desc: "<斬撃大魔術>スキル反射を無視し、雷属性の15連撃(1050%)、さらに連撃数分チェインプラス",
+		turn: 12,
+		proc: [ss_damage_slash(10.5, [2], 15), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

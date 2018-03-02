@@ -1,0 +1,47 @@
+{
+	name: "束の間の静謐 ルベリ・クラクス",
+	cardno: 7580,
+	imageno: 9655,
+	hp: 4309,
+	atk: 2121,
+	cost: 47,
+	attr: [1,4],
+	species: [9],
+	islegend: true,
+	ape: "ギルドマスターとChristmas",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(30%/80%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.8, [0,1,0,0,0], [0,0,0,0,1], 0),
+	},
+	ss1: {
+		desc: "<複属性ダメージ強化>5ターンの間、水属性の攻撃力をアップ、複属性が闇だとさらにアップ(100%/250%)",
+		turn: 10,
+		proc: [ss_enhance_all_subattr(1.0, 2.5, 5, [0,1,0,0,0], [0,0,0,0,1])],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Abstate_invalid("discharge"),
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [0,0,0,0,1,]),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [0,0,0,0,1,]),
+		Fastskill(2),
+		Guild_statusup(0, 1000),
+		Guild_statusup(1000, 0),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>水属性の攻撃力をアップ、複属性が闇属性だとさらにアップ(60%/110%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [0,1,0,0,0], [0,0,0,0,1], 0),
+	},
+	ss2: {
+		desc: "<複属性ダメージ強化>5ターンの間、水属性の攻撃力をアップ、複属性が闇だとさらにアップ(100%/250%)",
+		turn: 10,
+		proc: [ss_enhance_all_subattr(1.0, 2.5, 5, [0,1,0,0,0], [0,0,0,0,1])],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

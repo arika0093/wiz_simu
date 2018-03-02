@@ -1,0 +1,47 @@
+{
+	name: "この味、止まらない！ アボカドーザ",
+	cardno: 5722,
+	imageno: 7536,
+	hp: 2691,
+	atk: 2012,
+	cost: 38,
+	attr: [2, 0],
+	species: [9],
+	islegend: true,
+	ape: "大魔道杯 with グリコ",
+	is_dist: true,
+	as1: {
+		desc: "<回復>火・雷属性の味方を回復(13%)",
+		proc: Heal(0.13, [1, 0, 1, 0, 0], 0),
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体の攻撃力を500ダウンし、味方全体のHPを500アップ(上限値2000)、さらにHPを回復(50%)",
+		turn: 5,
+		proc: [ss_statusup_all([500, -500], [2000, 2000], -1), ss_heal(0.5)],
+	},
+	awakes: [
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Statusup(200, 0),
+		Fastskill(2),
+		Abstate_invalid("poison"),
+		Attr_statusup(200, 0, [1, 0, 1, 0, 0, ]),
+		Statusup(200, 0),
+		Attr_statusup(0, 200, [1, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 2),
+		Attr_relief([1, 1, 1, 1, 1, ], 10),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<回復>火・雷属性の味方を回復(16%)",
+		proc: Heal(0.16, [1, 0, 1, 0, 0], 0),
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体の攻撃力を500ダウンし、味方全体のHPを1000アップ(上限値2000)、さらにHPを回復(50%)",
+		turn: 8,
+		proc: [ss_statusup_all([1000, -500], [2000, 2000], -1), ss_heal(0.5)],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [1, 0, 1, 0, 0, ]),
+		Statusup(400, 0),
+	],
+}

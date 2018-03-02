@@ -1,0 +1,47 @@
+{
+	name: "争空に舞う天翼 プルミエ・シエル",
+	cardno: 7023,
+	imageno: 6484,
+	hp: 2975,
+	atk: 3656,
+	cost: 53,
+	attr: [1,2],
+	species: [3],
+	disable: true,
+	islegend: true,
+	ape: "ドルキマスⅠ",
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(400%)",
+		proc: [ChainAttack(4.0, 4)],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
+		turn: 3,
+		proc: [ss_panel_change([0,1,1,0,0])],
+	},
+	awakes: [
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_sattr(0,200, [0,1,0,0,0,], 0,200, [0,0,1,0,0,]),
+		NEFTJOD(30),
+		Attr_statusup(100,0, [0,1,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(300,0, [3,]),
+		Spec_statusup(0,300, [3,]),
+		Attr_statusup_sattr(200,0, [0,1,0,0,0,], 200,0, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ(500%)",
+		proc: [ChainAttack(5.0, 4)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、チェインがプラス1の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(1), ss_panel_change([0,1,1,0,0])],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

@@ -1,0 +1,47 @@
+{
+	name: "死界の焔 ヴィヴィ&イザヴェリ",
+	cardno: 7485,
+	imageno: 6132,
+	hp: 4056,
+	atk: 4432,
+	cost: 53,
+	attr: [0, -1],
+	species: [2],
+	ape: "DL限定精霊",
+	awakes: [
+		Attr_statusup(100, 0, [1,0,0,0,0]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0], 2),
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Spec_statusup(0, 200, [2, 9]),
+		Panel_boost([1,0,0,0,0], 2),
+		Spec_statusup(200, 0, [2, 9]),
+		Fastskill(2),
+		Spec_statusup(0, 300, [2, 9]),
+		Spec_statusup(300, 0, [2, 9]),
+	],
+	as1: {
+		desc: "<攻撃強化>味方のMAXHP10％を使い、火属性の味方の攻撃力をアップ/+120％",
+		proc: add_cond(ChainEnhance(1.2, [1,0,0,0,0], 0), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50％を使い敵全体へダメージ(350％)",
+		turn: 7,
+		proc: [ss_damage_all(3.5, [0]), ss_consume_own(0.5), ss_ignore_skillcounter()],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [1,0,0,0,0]),
+		Statusup(500, 0),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+	],
+	as2: {
+		desc: "<攻撃強化>味方のMAXHP10％を使い、火属性の味方の攻撃力をアップ/+150％",
+		proc: add_cond(ChainEnhance(1.5, [1,0,0,0,0], 0), as_consume_all(0.1)),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>スキル反射を無視し、MAXHPの50％を使い敵全体へダメージ(600％)",
+		turn: 9,
+		proc: [ss_damage_all(6.0, [0]), ss_consume_own(0.5), ss_ignore_skillcounter()],
+	},
+}

@@ -1,0 +1,47 @@
+{
+	name: "戦の天稟 ウォーブリンガー=ミリィ",
+	cardno: 7317,
+	imageno: 7642,
+	hp: 3254,
+	atk: 5276,
+	cost: 53,
+	attr: [0,-1],
+	species: [8],
+	disable: true,
+	islegend: true,
+	ape: "黄昏メアレスⅠ",
+	as1: {
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(400%)",
+		proc: add_cond(ChainAttack(4.0, 0), when_hp_more(0.8)),
+	},
+	ss1: {
+		desc: "<反動大魔術>スキル反射を無視し、敵全体に火属性のダメージ(750%)◆スキル使用後、1ターン封印状態に",
+		turn: 5,
+		proc: [ss_damage_all(7.5, [0]), ss_allsealed_own(1), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([1,0,0,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(300,0, [1,0,0,0,0,]),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(3),
+		Attr_statusup(0,300, [1,0,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<快調攻撃>残りHPが80%以上でダメージアップ(500%)",
+		proc: add_cond(ChainAttack(5.0, 0), when_hp_more(0.8)),
+	},
+	ss2: {
+		desc: "<反動大魔術>スキル反射を無視し、敵全体に火属性のダメージ(1050%)◆スキル使用後、1ターン封印状態に",
+		turn: 8,
+		proc: [ss_damage_all(10.5, [0]), ss_allsealed_own(1), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+	],
+}

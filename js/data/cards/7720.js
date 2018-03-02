@@ -1,0 +1,45 @@
+{
+	name: "レジェンドナース ガトリン・G・U",
+	cardno: 7720,
+	imageno: 7262,
+	hp: 2554,
+	atk: 4065,
+	cost: 55,
+	attr: [1,2],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(350%)",
+		proc: ChainDualAttack(3.5, 3, 3),
+	},
+	ss1: {
+		desc: "<反動大魔術>敵全体へ水属性のダメージ(600%)◆スキル使用後、1ターン封印状態に",
+		turn: 3,
+		proc: [ss_damage_all(6, [1]), ss_allsealed_own(1)],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([0,1,0,0,0,],2),
+		Abstate_invalid("ss_sealed"),
+		NEFTJOD(30),
+		Abstate_invalid("discharge"),
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(3),
+		Attr_statusup_sattr(0,200, [0,1,0,0,0,], 0,200, [0,0,1,0,0,]),
+		Attr_statusup_sattr(200,0, [0,1,0,0,0,], 200,0, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(450%)",
+		proc: ChainDualAttack(4.5, 3, 3),
+	},
+	ss2: {
+		desc: "<反動大魔術>敵全体へ水属性のダメージ(800%)◆スキル使用後、1ターン封印状態に",
+		turn: 5,
+		proc: [ss_damage_all(8, [1]), ss_allsealed_own(1)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Statusup(0,500),
+	],
+}

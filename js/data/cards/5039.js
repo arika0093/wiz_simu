@@ -1,0 +1,46 @@
+{
+	name: "AbCd-Ψψ:《絢爛の神舞 ニティア》",
+	cardno: 5039,
+	imageno: 6776,
+	hp: 4554,
+	atk: 1987,
+	cost: 47,
+	attr: [1, 3],
+	species: [11],
+	disable: true,
+	awakes: [
+		Fastskill(2),
+		Attr_statusup(0, 200, [0, 1, 0, 0, 0, ]),
+		NEFTJOD(30),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(200, 0, [0, 1, 0, 0, 0, ]),
+		NEFTJOD(30),
+		Attr_relief([0, 0, 0, 1, 1, ], 30),
+		Fastskill(2),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Heal_afterbattle(10),
+	],
+	as1: {
+		desc: "<回復>水属性の味方を回復、HP20％以下でさらに回復(通常：13％ / HP20％以下：38％)",
+		proc: [Heal(0.13, [0,1,0,0,0], 0), add_cond(Heal(0.38, [0,1,0,0,0], 0), when_hp_less(0.20))],
+	},
+	ss1: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを1早め、敵単体の攻撃ターンを1遅らせる",
+		turn: 6,
+		proc: [ss_skillboost(1), ss_delay_s(1)],
+	},
+	islegend: true,
+	Lawake: [
+		Statusup(700, 0),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+	],
+	as2: {
+		desc: "<回復>水属性の味方を回復、HP20％以下でさらに回復(通常：17％ / HP20％以下：42％)",
+		proc: [Heal(0.17, [0,1,0,0,0], 0), add_cond(Heal(0.42, [0,1,0,0,0], 0), when_hp_less(0.20))],
+	},
+	ss2: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
+		turn: 9,
+		proc: [ss_skillboost(2), ss_delay_s(2)],
+	},
+}

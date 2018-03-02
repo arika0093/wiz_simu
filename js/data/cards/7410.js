@@ -1,0 +1,47 @@
+{
+	name: "狂乱の魔刃竜 ケルク＝ナダ",
+	cardno: 7410,
+	imageno: 9465,
+	hp: 2748,
+	atk: 2324,
+	cost: 39,
+	attr: [0,2],
+	species: [0],
+	islegend: true,
+	ape: "心竜天翔 Rising Dragon",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>HP80%以上で敵単体を3回連続攻撃(300%)",
+		proc: add_cond(ChainDualAttack(3.0, 0, 3), when_hp_more(0.8)),
+	},
+	ss1: {
+		desc: "<斬撃大魔術>火・雷属性の3連撃、さらに連撃数分チェインプラス(180%)",
+		turn: 8,
+		proc: [ss_damage_slash(1.8, [0,2], 3)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],1),
+		Statusup(0,200),
+		Statusup(200,0),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		NEFTJOD(30),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Spec_statusup(0,200, [0,]),
+	],
+	as2: {
+		desc: "<連撃>HP80%以上で敵単体を3回連続攻撃(400%)",
+		proc: add_cond(ChainDualAttack(4.0, 0, 3), when_hp_more(0.8)),
+	},
+	ss2: {
+		desc: "<斬撃大魔術>火・雷属性の5連撃、さらに連撃数分チェインプラス(380%)",
+		turn: 11,
+		proc: [ss_damage_slash(3.8, [0,2], 5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,1,0,0,]),
+		Statusup(0,400),
+	],
+}

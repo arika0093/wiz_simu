@@ -1,0 +1,47 @@
+{
+	name: "聖夜に微笑む巫女 アカリ・ヨトバリ",
+	cardno: 5378,
+	imageno: 7224,
+	hp: 3679,
+	atk: 3634,
+	cost: 43,
+	attr: [0,-1],
+	species: [9],
+	islegend: true,
+	disable: true,
+	ape: "クリスマス2014",
+	as1: {
+		desc: "<攻撃強化>火属性の味方の攻撃力をアップ、リーダー時さらにアップ(40%/50%)",
+		proc: [ChainEnhance(0.4, [1,0,0,0,0], 0), add_cond(ChainEnhance(0.5, [1,0,0,0,0], 0), when_leader())],
+	},
+	ss1: {
+		desc: "<ダメージ強化>2ターン火属性の味方の攻撃力をアップ(50%)",
+		turn: 7,
+		proc: [ss_enhance_all(0.5, 2, [1,0,0,0,0])],
+	},
+	awakes: [
+		Costdown(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Statusup(200,0),
+		Fastskill(1),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Statusup(0,400),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(0,300, [9,]),
+	],
+	as2: {
+		desc: "<攻撃強化>火属性の味方の攻撃力をアップ、リーダー時さらにアップ(60%/70%)",
+		proc: [ChainEnhance(0.6, [1,0,0,0,0], 0), add_cond(ChainEnhance(0.7, [1,0,0,0,0], 0), when_leader())],
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターン火属性の味方の攻撃力をアップ、5チェインを消費しさらにアップ(120%/180%)",
+		turn: 12,
+		proc: [ss_enhance_all(ss_chain_cost(5, 1.8, 1.2), 4, [1,0,0,0,0])],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

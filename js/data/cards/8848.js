@@ -1,0 +1,47 @@
+{
+	name: "黒薔薇の夏化粧 アリーサ・ベルゴン",
+	cardno: 8848,
+	imageno: 11047,
+	hp: 3253,
+	atk: 4602,
+	cost: 39,
+	attr: [0,-1],
+	species: [2],
+	islegend: true,
+	ape: "聖サタニック女学院2",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>敵単体を5回連続攻撃(250%)、デッキに単色の精霊が多いほど、連撃数がアップ(1回)（上限:5段階)",
+		proc: ChainDualAttack(2.5, 0, as_singleattr_num(5, 1)),
+	},
+	ss1: {
+		desc: "<カウンター>3ターンの間、スキルカウンター待機、HP20%以下でさらにカウンター時、ダメージアップ(300%)",
+		turn: 7,
+		proc: [ss_skillcounter(ss_hp_less(0.2, 4, 1), 3)],
+	},
+	awakes: [
+		Costdown(10),
+		Attr_statusup(0,300, [1,0,0,0,0,]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(300,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup_oattr(0,200, [1,0,0,0,0,]),
+		Attr_statusup_oattr(200,0, [1,0,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<連撃>敵単体を5回連続攻撃(350%)、デッキに単色の精霊が多いほど、連撃数がアップ(1回)（上限:5段階)",
+		proc: ChainDualAttack(3.5, 0, as_singleattr_num(5, 1)),
+	},
+	ss2: {
+		desc: "<カウンター>5ターンの間、スキルカウンター待機、HP20%以下でさらにカウンター時、ダメージアップ(300%)",
+		turn: 10,
+		proc: [ss_skillcounter(ss_hp_less(0.2, 4, 1), 5)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+	],
+}

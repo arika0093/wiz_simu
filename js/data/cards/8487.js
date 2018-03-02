@@ -1,0 +1,46 @@
+{
+	name: "五星方陣大成祈祷 トウマ&キリエ",
+	cardno: 8487,
+	imageno: 10648,
+	hp: 6845,
+	atk: 1215,
+	cost: 54,
+	attr: [0,1],
+	species: [9],
+	islegend: true,
+	ape: "八百万神秘譚Ⅳ",
+	as1: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ(30%)、複属性が水属性だとさらにアップ(50%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.8, [1,0,0,0,0], [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<精霊強化>4ターンの間、味方の攻撃力をアップ(200%)(発動中行動不可)",
+		turn: 4,
+		proc: [ss_reinforcement_all(4, [ss_enhance_all(2, 1, [1, 1, 1, 1, 1], "RF")])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Awake_noeffect("経験値取得量アップ",2),
+		Heal_afterbattle(10),
+		Abstate_invalid("ss_sealed"),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,1,0,0,0,]),
+		Fastskill(3),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ(60%)、複属性が水属性だとさらにアップ(50%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.1, [1,0,0,0,0], [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<精霊強化>4ターンの間、味方の攻撃力をアップ(300%)(発動中行動不可)",
+		turn: 7,
+		proc: [ss_reinforcement_all(4, [ss_enhance_all(3, 1, [1, 1, 1, 1, 1], "RF")])],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,300, [1,1,0,0,0,]),
+	],
+}

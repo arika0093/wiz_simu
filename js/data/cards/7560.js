@@ -1,0 +1,48 @@
+{
+	name: "天竜合力 セト＝アーリア",
+	cardno: 7560,
+	imageno: 9636,
+	hp: 2865,
+	atk: 3823,
+	cost: 54,
+	attr: [2,3],
+	species: [0],
+	islegend: true,
+	ape: "心竜天翔 Rising Dragon",
+	as1: {
+		desc: "<複属性攻撃強化・属性特効連撃>水・闇属性の敵単体へ特効3連撃(300%)、さらに雷属性に攻撃力をアップ、複属性が光だとさらにアップ(10%/40%)",
+		proc: [ChainDualAttrAttack(3.0, 0, 3, [0,1,0,0,1]), ChainEnhance_SubAttr(0.1, 0.4, [0,0,1,0,0], [0,0,0,1,0], 0)],
+	},
+	ss1: {
+		desc: "<特効大魔術>1ターン溜めた後、敵全体へ雷属性のダメージ、さらに水・闇属性の敵には特効ダメージ(200%/1500%)",
+		turn: 7,
+		charged: 1,
+		proc: [ss_damage_all(special_attr([0,1,0,0,1], 15, 2), [2])],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(0,200),
+		Statusup(200,0),
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],2),
+		Spec_statusup(300,0, [0,]),
+		Spec_relief([0], 10),
+		Attr_statusup_sattr(200,0, [0,0,1,0,0,], 100,0, [0,0,0,1,0,]),
+		Attr_statusup_sattr(0,200, [0,0,1,0,0,], 0,100, [0,0,0,1,0,]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化・属性特効連撃>水・闇属性の敵単体へ特効3連撃(400%)、さらに雷属性に攻撃力をアップ、複属性が光だとさらにアップ(10%/40%)",
+		proc: [ChainDualAttrAttack(4.0, 0, 3, [0,1,0,0,1]), ChainEnhance_SubAttr(0.1, 0.4, [0,0,1,0,0], [0,0,0,1,0], 0)],
+	},
+	ss2: {
+		desc: "<特効大魔術>1ターン溜めた後、敵全体へ雷属性のダメージ、さらに水・闇属性の敵には特効ダメージ(200%/1700%)",
+		turn: 10,
+		charged: 1,
+		proc: [ss_damage_all(special_attr([0,1,0,0,1], 17, 2), [2])],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+}

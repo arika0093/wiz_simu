@@ -1,0 +1,45 @@
+{
+	name: "至愛の屍術 マリー・エヴァレット",
+	cardno: 4289,
+	imageno: 5879,
+	hp: 2433,
+	atk: 2505,
+	cost: 42,
+	attr: [2, -1],
+	species: [2],
+	awakes: [
+		Statusup(0, 200),
+		Fastskill(1),
+		Statusup(200, 0),
+		Statusup(200, 0),
+		Costdown(2),
+		Costdown(2),
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Panel_boost([0, 0, 1, 0, 0, ], 1),
+		Spec_statusup(200, 0, [2, ]),
+		Spec_statusup(200, 0, [2, ]),
+	],
+	as1: {
+		desc: "<攻撃>敵単体へのダメージアップ&敵HPを吸収する(攻撃：250％ / 吸収：5％)",
+		proc: add_cond(ChainAttack(2.5, 0), as_hp_absorption(0.05)),
+	},
+	ss1: {
+		desc: "<蘇生>味方全体のHPを回復し(20％)、さらに雷属性の味方を20％で蘇生",
+		turn: 6,
+		proc: [ss_heal(0.20), ss_resurrection([0,0,1,0,0], 0.20)],
+	},
+	islegend: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Statusup(400, 0),
+	],
+	as2: {
+		desc: "<回復・攻撃>敵単体へのダメージアップ、さらに雷属性の味方のHPを回復&敵HPを吸収する(攻撃：320％ / 回復：2％ / 吸収：5％)",
+		proc: [add_cond(ChainAttack(2.5, 0), as_hp_absorption(0.05)), Heal(0.02, [0,0,1,0,0], 0)],
+	},
+	ss2: {
+		desc: "<蘇生>味方全体のHPを回復し(30％)、さらに雷属性の味方を20％で蘇生",
+		turn: 9,
+		proc: [ss_heal(0.30), ss_resurrection([0,0,1,0,0], 0.20)],
+	},
+}

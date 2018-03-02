@@ -1,0 +1,46 @@
+{
+    name: "優しき獣と謳われる ヴォルフ・ロイ",
+    cardno: 4467,
+    imageno: 6161,
+    hp: 2738,
+    atk: 3276,
+    cost: 48,
+    attr: [0, -1],
+    species: [8],
+	disable: true,
+    awakes: [
+        Fastskill(1),
+        Panel_boost([1, 0, 0, 0, 0, ], 1),
+        NEFTJOD(30),
+        Statusup(200, 0),
+        Attr_statusup(0, 100, [1, 0, 0, 0, 0, ]),
+        Panel_boost([1, 0, 0, 0, 0, ], 1),
+        Fastskill(2),
+        Statusup(0, 200),
+        Spec_statusup(0, 200, [8, ]),
+        Spec_statusup(200, 0, [8, ]),
+    ],
+    as1: {
+    	desc: "<ギャンブル攻撃>3チェインかつパネルが2色でダメージがイチかバチかアップ、3色でダメージがイチかバチかアップ(2色：350％～600％ / 3色：450％～850％)",
+    	proc: ChainStakesAttack3(0, 0, 3.5, 6.0, 4.5, 8.5, 3),
+    },
+    ss1: {
+    	desc: "<自己犠牲魔術>MAXHPの50％を使い敵全体へダメージ(260％)",
+    	turn: 7,
+    	proc: [ss_damage_all(2.6, [0]), ss_consume_own(0.5)],
+    },
+    islegend: true,
+    Lawake: [
+        Statusup(0, 500),
+        Statusup(500, 0),
+    ],
+    as2: {
+    	desc: "<ギャンブル攻撃>3チェインかつパネルが2色でダメージがイチかバチかアップ、3色でダメージがイチかバチかアップ(2色：350％～900％ / 3色：450％～1150％)",
+    	proc: ChainStakesAttack3(0, 0, 3.5, 9.0, 4.5, 11.5, 3),
+    },
+    ss2: {
+    	desc: "<自己犠牲魔術>MAXHPの75％を使い敵全体へダメージ、さらに味方全体のHPを回復する(攻撃：300％ / 回復：25％)",
+    	turn: 10,
+    	proc: [ss_damage_all(3.0, [0]), ss_consume_own(0.75), ss_heal(0.25)],
+    },
+}

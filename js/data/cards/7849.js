@@ -1,0 +1,47 @@
+{
+	name: "繚乱閃雷 ミライ・カエラム",
+	cardno: 7849,
+	imageno: 9907,
+	hp: 2643,
+	atk: 4188,
+	cost: 56,
+	attr: [2,1],
+	species: [5],
+	disable: true,
+	islegend: true,
+	ape: "桃娘伝Ⅱ",
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ、5チェインで更にダメージアップ(150%/200%)",
+		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.0, 5)],
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・水属性のダメージ、平均解答時間が早いほどさらにダメージ(基本:80%, 3秒台:120%, 2秒台:160%, 1秒台:200%, 0秒台:240%)",
+		turn: 4,
+		proc: [ss_damage_all(ss_answertime(0.8, 0.4), [2, 1]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Abstate_invalid("ss_sealed"),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,1,0,0,0,]),
+		Fastskill(3),
+		Awake_noeffect("経験値取得量アップ",2),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ、5チェインで更にダメージアップ(180%/230%)",
+		proc: [ChainAllAttack(1.8, 0), ChainAllAttack(2.3, 5)],
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・水属性のダメージ、平均解答時間が早いほどさらにダメージ(基本:110%, 3秒台:150%, 2秒台:190%, 1秒台:230%, 0秒台:270%)",
+		turn: 6,
+		proc: [ss_damage_all(ss_answertime(1.1, 0.4), [2, 1]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		NEFTJOD(30),
+	],
+}

@@ -1,0 +1,46 @@
+{
+	name: "深謀百出のアマイヤ",
+	cardno: 7402,
+	imageno: 9457,
+	hp: 5197,
+	atk: 3433,
+	cost: 53,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	ape: "心竜天翔 Rising Dragon",
+	as1: {
+		desc: "<攻撃強化・ガード>6チェインで雷属性の味方の攻撃力をアップ(70%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.7, [0,0,1,0,0], 6), as_guard(0.1, [1,1,1,1,1], 6)],
+	},
+	ss1: {
+		desc: "<効果解除>敵全体の属性吸収を解除する",
+		turn: 4,
+		proc: [ss_break_absorb("all")],
+	},
+	awakes: [
+		Awake_noeffect("経験値取得量アップ",1),
+		Heal_afterbattle(10),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(200,0),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Awake_Chainboost(1),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<攻撃強化・ガード>6チェインで雷属性の味方の攻撃力をアップ(90%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.9, [0,0,1,0,0], 6), as_guard(0.1, [1,1,1,1,1], 6)],
+	},
+	ss2: {
+		desc: "<効果解除大魔術>スキル反射を無視し、敵全体の属性吸収を解除し、雷属性のダメージ(300%)",
+		turn: 7,
+		proc: [ss_break_absorb("all"), ss_damage_all(3.0, [2]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(500,0),
+	],
+}

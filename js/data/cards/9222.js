@@ -1,0 +1,46 @@
+{
+	name: "月白の奔蛇 トキオ&エクスアルバ",
+	cardno: 9222,
+	imageno: 8168,
+	hp: 2886,
+	atk: 4054,
+	cost: 57,
+	attr: [0,1],
+	species: [8],
+	islegend: true,
+	ape: "幻魔特区スザクⅢ",
+	as1: {
+		desc: "<連撃>4チェインで敵単体を3回連続攻撃(350%)、8チェインで更にダメージアップ(150%)",
+		proc: [ChainDualAttack(3.5, 4, 3), ChainDualAttack(5.0, 8, 3)],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにスキルチャージプラス2の効果を付与(効果は、SPスキルを使うまで重複しません)",
+		turn: 8,
+		proc: [panel_skillboost(2)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<連撃>4チェインで敵単体を3回連続攻撃(450%)、8チェインで更にダメージアップ(150%)",
+		proc: [ChainDualAttack(4.5, 4, 3), ChainDualAttack(6.0, 8, 3)],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにスキルチャージプラス3の効果を付与(効果は、SPスキルを使うまで重複しません)",
+		turn: 10,
+		proc: [panel_skillboost(3)],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+	],
+}

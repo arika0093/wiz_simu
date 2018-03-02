@@ -1,0 +1,46 @@
+{
+	name: "聖夜に双星、瞬いて シズク&カグヤ",
+	cardno: 5182,
+	imageno: 7074,
+	hp: 2309,
+	atk: 4994,
+	cost: 48,
+	attr: [1, -1],
+	species: [4],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<属性特効連撃>火属性の敵単体へ特効2連撃(400%)",
+		proc: ChainDualAttrAttack(4.0, 0, 2, [1, 0, 0, 0, 0]),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを水・雷属性化",
+		turn: 3,
+		proc: [ss_panel_change([0,1,1,0,0])],
+	},
+	awakes: [
+		Statusup(0, 200),
+		Statusup(200, 0),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Fastskill(3),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		NEFTJOD(30),
+		Spec_statusup(0, 500, [4, ]),
+		Spec_statusup(0, 500, [4, ]),
+	],
+	as2: {
+		desc: "<属性特効連撃>火属性の敵単体へ特効2連撃(500%)",
+		proc: ChainDualAttrAttack(5.0, 0, 2, [1, 0, 0, 0, 0]),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、チェインがプラス2の効果を付与",
+		turn: 7,
+		proc: [ss_panel_change([0,1,1,0,0]), panel_chainplus(2)],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Statusup(500, 0),
+	],
+}

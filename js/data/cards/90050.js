@@ -1,0 +1,47 @@
+{
+	name: "バジュラを統べる バジュラクイーン",
+	cardno: 90050,
+	imageno: 7802,
+	hp: 4000,
+	atk: 2500,
+	cost: 45,
+	attr: [0,1],
+	species: [6],
+	islegend: true,
+	ape: "コラボ(マクロス)",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が水属性だとさらにアップ(30%/80%)",
+		proc: ChainEnhance_SubAttr(0.30, 0.80, [1,0,0,0,0], [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体の攻撃力を2000ダウンし、味方全体のHPを2000アップ(上限値:2000)",
+		turn: 5,
+		proc: [ss_statusup_all([2000, -2000], [2000, 2000], -1)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Statusup(200,0),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Statusup(0,200),
+		Attr_statusup(100,0, [1,1,0,0,0,]),
+		Statusup(200,0),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(3),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>火属性の攻撃力をアップ、複属性が水属性だとさらにアップ(60%/110%)",
+		proc: ChainEnhance_SubAttr(0.60, 1.10, [1,0,0,0,0], [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<犠牲魔術>味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(160%×人数)",
+		turn: 12,
+		proc: [ss_damage_all(ss_consume_all_cond(1.6, 0.5), [0])],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(0,100, [1,1,0,0,0,]),
+	],
+}

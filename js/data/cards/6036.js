@@ -1,0 +1,47 @@
+{
+	name: "冷刻の凛刃 イスルギ・ユスラウメ",
+	cardno: 6036,
+	imageno: 7860,
+	hp: 2310,
+	atk: 2921,
+	cost: 25,
+	attr: [1, -1],
+	species: [8],
+	islegend: true,
+	ape: "覇眼戦線Ⅰ",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>敵単体を5回連続攻撃(250%)",
+		proc: ChainDualAttack(2.5, 0, 5),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ水属性のダメージ(100%)",
+		turn: 5,
+		proc: [ss_damage_all(1.0, [1])],
+	},
+	awakes: [
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Statusup(100, 0),
+		Fastskill(1),
+		Statusup(200, 0),
+		Statusup(0, 200),
+		Attr_statusup(100, 0, [0, 1, 0, 0, 0, ]),
+		Panel_boost([0, 1, 0, 0, 0, ], 2),
+		Fastskill(1),
+		Attr_statusup(0, 100, [0, 1, 0, 0, 0, ]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<連撃>敵単体を10回連続攻撃(300%)",
+		proc: ChainDualAttack(3.0, 0, 10),
+	},
+	ss2: {
+		desc: "<大魔術>敵全体へ水属性のダメージ(150%)",
+		turn: 7,
+		proc: [ss_damage_all(1.5, [1])],
+	},
+	Lawake: [
+		Statusup(0, 400),
+		Statusup(400, 0),
+	],
+}

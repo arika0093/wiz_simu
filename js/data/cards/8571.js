@@ -1,0 +1,46 @@
+{
+	name: "黄昏の旅路 サンセット＝リフィル",
+	cardno: 8571,
+	imageno: 10742,
+	hp: 2905,
+	atk: 7300,
+	cost: 53,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	ape: "黄昏メアレスⅢ",
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(350%)、リーダー時さらにアップ(150%)",
+		proc: [ChainAttack(3.5, 3), ChainAttack_Leader(5.0, 3)],
+	},
+	ss1: {
+		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ(650%)、さらに隣接する敵に雷属性のダメージ(650%)",
+		turn: 4,
+		proc: [ss_damage_explosion(6.5, [2]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_oattr(0,400, [0,0,1,0,0,]),
+		Attr_statusup_oattr(400,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(3),
+		NEFTJOD(60),
+		Attr_statusup(0,400, [0,0,1,0,0,]),
+		Attr_statusup(400,0, [0,0,1,0,0,]),
+		Abstate_invalid(["as_sealed", "ss_sealed"]),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(450%)、リーダー時さらにアップ(150%)",
+		proc: [ChainAttack(4.5, 3), ChainAttack_Leader(6.0, 3)],
+	},
+	ss2: {
+		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ(850%)、さらに隣接する敵に雷属性のダメージ(850%)",
+		turn: 6,
+		proc: [ss_damage_explosion(8.5, [2]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1500),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit", "all_sealed"]),
+	],
+}

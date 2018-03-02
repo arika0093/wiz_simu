@@ -1,0 +1,47 @@
+{
+	name: "怨嗟の刃 ザビーネ・クーン",
+	cardno: 7053,
+	imageno: 9046,
+	hp: 2512,
+	atk: 3545,
+	cost: 37,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	ape: "ドルキマスⅡ",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>3チェインで敵単体を7回連続攻撃(300%)",
+		proc: ChainDualAttack(3.0, 3, 7),
+	},
+	ss1: {
+		desc: "<大魔術>敵全体へ雷属性のダメージ(120%)",
+		turn: 5,
+		proc: [ss_damage_all(1.2, [2])],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(0,100),
+		Statusup(100,0),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Fastskill(2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<連撃>3チェインで敵単体を7回連続攻撃(400%)",
+		proc: ChainDualAttack(4.0, 3, 7),
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ雷属性のダメージ(180%)",
+		turn: 8,
+		proc: [ss_damage_all(1.8, [2]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,300),
+	],
+}

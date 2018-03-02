@@ -1,0 +1,46 @@
+{
+	name: "清廉龍水誓剣 ルシェ・ワダツミ",
+	cardno: 9059,
+	imageno: 11270,
+	hp: 3405,
+	atk: 3235,
+	cost: 31,
+	attr: [1,-1],
+	species: [0],
+	islegend: true,
+	ape: "大魔道杯 感謝",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>4チェインで敵単体を5回連続攻撃(350%)",
+		proc: ChainDualAttack(3.5, 4, 5),
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを1遅らせる",
+		turn: 4,
+		proc: [ss_delay_s(1)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Statusup(0,200),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup_oattr(0,300, [0,1,0,0,0,]),
+		Attr_statusup_oattr(300,0, [0,1,0,0,0,]),
+		Fastskill(1),
+		Abstate_invalid("all_sealed"),
+		Fastskill(2),
+		Awake_noeffect("行動見破り",1),
+	],
+	as2: {
+		desc: "<連撃>4チェインで敵単体を5回連続攻撃(450%)",
+		proc: ChainDualAttack(4.5, 4, 5),
+	},
+	ss2: {
+		desc: "<遅延>敵全体の攻撃ターンを1遅らせ、のろい状態または状態異常時、さらに1遅らせる",
+		turn: 6,
+		proc: [ss_delay_all(ss_is_abstate_own(2, 1))],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+}

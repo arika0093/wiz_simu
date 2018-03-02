@@ -1,0 +1,46 @@
+{
+	name: "白銀に高鳴る鼓動 ピノ・マリアンヌ",
+	cardno: 5379,
+	imageno: 7225,
+	hp: 3994,
+	atk: 3003,
+	cost: 44,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	disable: true,
+	as1: {
+		desc: "<攻撃強化>3チェインで水属性の味方の攻撃力をアップ(55%)",
+		proc: ChainEnhance(0.55, [0,1,0,0,0], 3),
+	},
+	ss1: {
+		desc: "<遅延>攻撃ターンを3遅らせる",
+		turn: 10,
+		proc: [ss_delay_all(3)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Costdown(2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		NEFTJOD(30),
+		Fastskill(1),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(0,200, [9,]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<攻撃強化>3チェインで水属性の味方の攻撃力をアップ(75%)",
+		proc: ChainEnhance(0.75, [0,1,0,0,0], 3),
+	},
+	ss2: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを3早め、敵全体の攻撃ターンを3遅らせる",
+		turn: 15,
+		proc: [ss_skillboost(3), ss_delay_all(3)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

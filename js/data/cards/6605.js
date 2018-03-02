@@ -1,0 +1,46 @@
+{
+	name: "山陵の向こうより襲来 第4の使徒",
+	cardno: 6605,
+	imageno: 8653,
+	hp: 2232,
+	atk: 3022,
+	cost: 32,
+	attr: [1,-1],
+	species: [3],
+	islegend: true,
+	ape: "コラボ(エヴァⅠ)",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃>敵単体へのダメージアップ(250%)",
+		proc: ChainAttack(2.5, 0),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(260%)",
+		turn: 10,
+		proc: [ss_damage_all(2.6, [1]), ss_consume_own(0.5)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Attr_relief([0,0,1,0,0,],10),
+		Panel_boost([0,1,0,0,0,],2),
+		Statusup(200,0),
+		Attr_relief([0,0,1,0,0,],10),
+		Statusup(0,200),
+		Fastskill(2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<攻撃>敵単体へのダメージアップ(350%)",
+		proc: ChainAttack(3.5, 0),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(330%)",
+		turn: 12,
+		proc: [ss_damage_all(3.3, [1]), ss_consume_own(0.5)],
+	},
+	Lawake: [
+		Statusup(0,800),
+	],
+}

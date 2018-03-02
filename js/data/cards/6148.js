@@ -1,0 +1,45 @@
+{
+	name: "大切なものに目覚めた星織姫 メグリ",
+	cardno: 6148,
+	imageno: 8001,
+	hp: 5603,
+	atk: 1942,
+	cost: 54,
+	attr: [0, 1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<回復>火・水属性の味方のHPを回復(14%)",
+		proc: Heal(0.14, [1, 1, 0, 0, 0], 0),
+	},
+	ss1: {
+		desc: "<ガード>7ターン火属性のダメージを50%軽減する",
+		turn: 5,
+		proc: [ss_attr_guard([1,0,0,0,0], 0.5, 7)],
+	},
+	awakes: [
+		Statusup(0, 300),
+		Attr_statusup(200, 0, [1, 1, 0, 0, 0, ]),
+		Statusup(400, 0),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Attr_statusup(0, 200, [1, 1, 0, 0, 0, ]),
+		Fastskill(1),
+		NEFTJOD(30),
+		Panel_boost([1, 0, 0, 0, 0, ], 2),
+		Fastskill(2),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<ガード・回復>火・水属性の味方のHPを回復し(14%)、火属性のダメージを10%軽減。リーダー時さらに20%軽減",
+		proc: [Heal(0.14, [1, 1, 0, 0, 0], 0), as_guard(0.1,[1,0,0,0,0]), add_cond(as_guard(0.2,[1,0,0,0,0]), when_leader())],
+	},
+	ss2: {
+		desc: "<ガード>4ターン火属性のダメージを50%軽減する",
+		turn: 9,
+		proc: [ss_attr_guard([1,0,0,0,0], 0.5, 4)],
+	},
+	Lawake: [
+		Statusup(500, 0),
+		Attr_statusup(0, 100, [1, 1, 0, 0, 0, ]),
+	],
+}

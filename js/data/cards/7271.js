@@ -1,0 +1,45 @@
+{
+	name: "機械の心が求めた光は アイ",
+	cardno: 7271,
+	imageno: 9242,
+	hp: 4467,
+	atk: 2743,
+	cost: 54,
+	attr: [2,1],
+	species: [6],
+	islegend: true,
+	as1: {
+		desc: "<攻撃強化・回復>味方全体のHPを回復(10%)、さらに攻撃力をアップ、パネルの色が増す度さらにアップ(30%/50%/80%)",
+		proc: [Heal(0.10, [1,1,1,1,1], 0), ChainPanelsEnhance(0.3, 0.5, 0.8, [1,1,1,1,1], 0)],
+	},
+	ss1: {
+		desc: "<ダメージ強化>4ターンの間、味方の攻撃力をアップ、5チェインを消費しさらにアップ(100%/150%)",
+		turn: 7,
+		proc: [ss_enhance_all(ss_chain_cost(5, 1.5, 1.0), 4, [1,1,1,1,1])],
+	},
+	awakes: [
+		Attr_statusup_sattr(0,200, [0,0,1,0,0,], 0,200, [0,1,0,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		Costdown(10),
+		Attr_relief([1,1,1,1,1,],10),
+		Spec_statusup(400,0, [6,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(0,400, [6,]),
+		Attr_statusup_sattr(200,0, [0,0,1,0,0,], 200,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>味方全体のHPを回復(10%)、さらに攻撃力をアップ、パネルの色が増す度さらにアップ(60%/80%/110%)",
+		proc: [Heal(0.10, [1,1,1,1,1], 0), ChainPanelsEnhance(0.6, 0.8, 1.1, [1,1,1,1,1], 0)],
+	},
+	ss2: {
+		desc: "<ダメージ強化>4ターンの間、味方の攻撃力をアップ、10チェインを消費しさらにアップ(100%/350%)",
+		turn: 12,
+		proc: [ss_enhance_all(ss_chain_cost(10, 3.5, 1.0), 4, [1,1,1,1,1])],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
+	],
+}

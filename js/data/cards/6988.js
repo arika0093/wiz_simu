@@ -1,0 +1,46 @@
+{
+	name: "真なる鉄壁 カエデ・ジングウジ",
+	cardno: 6988,
+	imageno: 6146,
+	hp: 4004,
+	atk: 4223,
+	cost: 51,
+	attr: [2, -1],
+	species: [8],
+	islegend: true,
+	ape: "クロム・マグナⅡ",
+	as1: {
+		desc: "<連撃>敵単体を4回連続攻撃、8チェインで更にダメージアップ(250%/600%)",
+		proc: [ChainDualAttack(2.5, 0, 4), ChainDualAttack(6.0, 8, 4)],
+	},
+	ss1: {
+		desc: "<ガード>3ターン火属性ダメージを75％軽減する",
+		turn: 5,
+		proc: [ss_attr_guard([1,0,0,0,0], 0.75, 3)],
+	},
+	awakes: [
+		Statusup(0, 400),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+		Statusup(400, 0),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+		Costdown(2),
+		Attr_relief([1, 0, 0, 0, 0, ], 20),
+		Attr_statusup(0, 200, [0, 0, 1, 0, 0, ]),
+		Attr_statusup(200, 0, [0, 0, 1, 0, 0, ]),
+		Spec_statusup(0, 200, [8, ]),
+		Spec_statusup(200, 0, [8, ]),
+	],
+	as2: {
+		desc: "<連撃>敵単体を4回連続攻撃、8チェインで更にダメージアップ(350%/700%)",
+		proc: [ChainDualAttack(3.5, 0, 4), ChainDualAttack(7.0, 8, 4)],
+	},
+	ss2: {
+		desc: "<ガード>3ターン火属性ダメージを100％軽減する",
+		turn: 8,
+		proc: [ss_attr_guard([1,0,0,0,0], 1, 3)],
+	},
+	Lawake: [
+		Attr_statusup(0, 100, [0, 0, 1, 0, 0, ]),
+		Statusup(0, 500),
+	],
+}

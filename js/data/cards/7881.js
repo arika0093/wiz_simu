@@ -1,0 +1,47 @@
+{
+	name: "かわいい豆腐小娘 キヌ",
+	cardno: 7881,
+	imageno: 9940,
+	hp: 4712,
+	atk: 1456,
+	cost: 38,
+	attr: [2,-1],
+	species: [5],
+	islegend: true,
+	is_dist: true,
+	ape: "新説桃娘伝",
+	as1: {
+		desc: "<攻撃強化・ガード>3チェインで雷属性の味方の攻撃力をアップ(40%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.4, [0,0,1,0,0], 3), as_guard(0.1, [1,1,1,1,1], 3)],
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップ(上限値:2000)",
+		turn: 6,
+		proc: [ss_statusup_all([500, 500], [2000, 2000], -1)],
+	},
+	awakes: [
+		Statusup(100,0),
+		Panel_boost([0,0,1,0,0,],1),
+		Costdown(4),
+		Attr_statusup(100,0,[0,0,1,0,0,]),
+		Fastskill(1),
+		Statusup(200,0),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup(0,100,[0,0,1,0,0,]),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<攻撃強化・ガード>3チェインで雷属性の味方の攻撃力をアップ(70%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.7, [0,0,1,0,0], 3), as_guard(0.1, [1,1,1,1,1], 3)],
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを1000アップ(上限値:2000)",
+		turn: 9,
+		proc: [ss_statusup_all([1000, 1000], [2000, 2000], -1)],
+	},
+	Lawake: [
+		Attr_statusup(0,100,[0,0,1,0,0,]),
+		Attr_statusup(100,0,[0,0,1,0,0,]),
+	],
+}

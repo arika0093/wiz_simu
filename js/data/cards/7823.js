@@ -1,0 +1,46 @@
+{
+	name: "新たなる肖像 ミシェル・ヴァイル",
+	cardno: 7823,
+	imageno: 9975,
+	hp: 4034,
+	atk: 3212,
+	cost: 56,
+	attr: [0,3],
+	species: [1],
+	islegend: true,
+	as1: {
+		desc: "<複属性攻撃強化>7チェインで火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(80%/130%)",
+		proc: ChainEnhance_SubAttr(0.8, 1.3, [1,0,0,0,0], [0,0,0,1,0], 7),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルをALL属性化",
+		turn: 4,
+		proc: [ss_panel_change([1,1,1,0,0])],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],4),
+		Fastskill(4),
+		NEFTJOD(30),
+		Spec_statusup(500,0, [1,]),
+		Spec_statusup(0,500, [1,]),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Attr_relief([1,1,1,1,1,],10),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,0,1,0,]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>7チェインで火属性の攻撃力をアップ、複属性が光属性だとさらにアップ(110%/160%)",
+		proc: ChainEnhance_SubAttr(1.1, 1.6, [1,0,0,0,0], [0,0,0,1,0], 7),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、チェインがプラス2の効果と攻撃力アップの効果を付与(50%)",
+		turn: 7,
+		proc: [ss_panel_change([1,1,1,0,0]), panel_chainplus(2), panel_attackup(0.5)],
+	},
+	Lawake: [
+		Attr_relief([1,1,1,1,1,],10),
+		Statusup(0,500),
+		Statusup(1000,0),
+	],
+}

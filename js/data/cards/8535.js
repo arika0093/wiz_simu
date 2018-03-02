@@ -1,0 +1,47 @@
+{
+	name: "求む声に辿り着き コノハ・ヨリヒメ",
+	cardno: 8535,
+	imageno: 6813,
+	hp: 3932,
+	atk: 3102,
+	cost: 54,
+	attr: [1,0],
+	species: [9],
+	islegend: true,
+	ape: "八百万神秘譚Ⅱ",
+	alias: ["/wiz_kamui", "/wiztools"],
+	as1: {
+		desc: "<複属性攻撃強化>5チェインで水属性の攻撃力をアップ(60%)、複属性が火属性だとさらにアップ(30%)、パネルの色が2色以上でさらにアップ(60%)",
+		proc: [ChainEnhance_SubAttr(0.6, 0.9, [0,1,0,0,0], [1,0,0,0,0], 5), add_cond(ChainEnhance_SubAttr(1.2, 1.5, [0,1,0,0,0], [1,0,0,0,0], 5) , as_panel_over2())],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>味方全体のMAXHPの50%を使い、ジャンルパネルにチェインがプラス3の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(3), ss_consume_all(0.5)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_relief([0,0,1,0,0,],20),
+		NEFTJOD(30),
+		Fastskill(4),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [1,0,0,0,0,]),
+		Abstate_invalid(["poison", "attr_weaken", "death_limit", "all_sealed"]),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>5チェインで水属性の攻撃力をアップ(90%)、複属性が火属性だとさらにアップ(30%)、パネルの色が2色以上でさらにアップ(60%)",
+		proc: [ChainEnhance_SubAttr(0.9, 1.2, [0,1,0,0,0], [1,0,0,0,0], 5), add_cond(ChainEnhance_SubAttr(1.5, 1.8, [0,1,0,0,0], [1,0,0,0,0], 5) , as_panel_over2())],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>味方全体のMAXHPの50%を使い、ジャンルパネルにチェインがプラス4の効果を付与",
+		turn: 6,
+		proc: [panel_chainplus(4), ss_consume_all(0.5)],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Statusup(0,1000),
+	],
+}

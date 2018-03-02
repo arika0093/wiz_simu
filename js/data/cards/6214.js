@@ -1,0 +1,47 @@
+{
+	name: "獄闇廊番人衆 ドボス・ズレツキー",
+	cardno: 6214,
+	imageno: 8037,
+	hp: 2625,
+	atk: 3415,
+	cost: 34,
+	attr: [2,-1],
+	species: [2],
+	islegend: true,
+	is_dist: true,
+	ape: "聖サタニック女学院",
+	as1: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(350%)",
+		proc: ChainAttrAttack(3.5, 0, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<ダメージ強化>MAXHPの50%を使い、2ターン自分の攻撃力をアップ(350%)",
+		turn: 6,
+		proc: [ss_consume_own(0.5), ss_enhance_own(3.5, 2)],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([0,0,1,0,0,],1),
+		Statusup(0,200),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Fastskill(2),
+		Spec_statusup(0,200, [2,]),
+		Spec_statusup(200,0, [2,]),
+	],
+	as2: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(450%)",
+		proc: ChainAttrAttack(4.5, 0, [0,1,0,0,0]),
+	},
+	ss2: {
+		desc: "<ダメージ強化>MAXHPの50%を使い、2ターン自分の攻撃力をアップ(500%)",
+		turn: 8,
+		proc: [ss_consume_own(0.5), ss_enhance_own(5.0, 2)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(300,0),
+	],
+}

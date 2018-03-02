@@ -1,0 +1,47 @@
+{
+	name: "妖しい大鎌 スクブス・アリュール",
+	cardno: 7310,
+	imageno: 9330,
+	hp: 2301,
+	atk: 2777,
+	cost: 41,
+	attr: [1,4],
+	species: [2],
+	islegend: true,
+	ape: "訣別のクロニクル",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃>敵単体へのダメージアップ(250%)&敵HPを吸収する(5%)",
+		proc: add_cond(ChainAttack(2.5, 0), as_hp_absorption(0.05)),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(200%)",
+		turn: 8,
+		proc: [ss_damage_all(2.0, [1]), ss_consume_own(0.5)],
+	},
+	awakes: [
+		Statusup(0,100),
+		Fastskill(1),
+		Statusup(200,0),
+		Panel_boost([0,1,0,0,0,],1),
+		Statusup(0,200),
+		NEFTJOD(30),
+		Fastskill(1),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<攻撃>敵単体へのダメージアップ(320%)&敵HPを吸収する(5%)",
+		proc: add_cond(ChainAttack(3.2, 0), as_hp_absorption(0.05)),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(300%)",
+		turn: 10,
+		proc: [ss_damage_all(3.0, [1]), ss_consume_own(0.5)],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

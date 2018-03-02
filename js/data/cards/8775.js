@@ -1,0 +1,47 @@
+{
+	name: "Make or Break デイブレイク",
+	cardno: 8775,
+	imageno: 10957,
+	hp: 3016,
+	atk: 3024,
+	cost: 47,
+	attr: [0,4],
+	species: [6],
+	islegend: true,
+	ape: "クロスディライブACT2",
+	is_dist: true,
+	as1: {
+		desc: "<種族特効>4チェインでダメージアップ(300%)、戦士の敵へさらにダメージアップ(400%)",
+		proc: [ChainAttack(3.0, 4), ChainSpecAttack(7.0, 4, [8])],
+	},
+	ss1: {
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップ(上限値:2000)し、さらに味方全体のHPを回復(25%)",
+		turn: 6,
+		proc: [ss_statusup_all([0, 500], [2000, 2000], -1), ss_heal(0.25)],
+	},
+	awakes: [
+		Costdown(10),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Fastskill(2),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,100, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 100,0, [0,0,0,0,1,]),
+		Abstate_invalid("as_sealed"),
+	],
+	as2: {
+		desc: "<種族特効>4チェインでダメージアップ(400%)、戦士の敵へさらにダメージアップ(400%)",
+		proc: [ChainAttack(4.0, 4), ChainSpecAttack(8.0, 4, [8])],
+	},
+	ss2: {
+		desc: "<ステータスアップ>味方全体の攻撃力とHPを1000アップ(上限値:2000)し、さらに味方全体のHPを回復(25%)",
+		turn: 9,
+		proc: [ss_statusup_all([0, 1000], [2000, 2000], -1), ss_heal(0.25)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Statusup(500,0),
+	],
+}

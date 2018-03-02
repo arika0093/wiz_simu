@@ -1,0 +1,47 @@
+{
+	name: "兄妹正月 クィントゥス&レノックス",
+	cardno: 7983,
+	imageno: 7106,
+	hp: 2654,
+	atk: 4090,
+	cost: 55,
+	attr: [0,2],
+	species: [2],
+	islegend: true,
+	ape: "謹賀新年2016",
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、6チェインで更にダメージアップ(300%/550%)",
+		proc: [ChainAttack(3.0, 3), ChainAttack(5.5, 6)],
+	},
+	ss1: {
+		desc: "<反動大魔術>スキル反射を無視し、敵全体に火属性のダメージ(550%)◆スキル使用後、1ターン封印状態に",
+		turn: 3,
+		proc: [ss_damage_all(5.5, [0]), ss_allsealed_own(1), ss_ignore_skillcounter()],
+	},
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、6チェインで更にダメージアップ(400%/650%)",
+		proc: [ChainAttack(4.0, 3), ChainAttack(6.5, 6)],
+	},
+	ss2: {
+		desc: "<反動大魔術>スキル反射を無視し、敵全体に火属性のダメージ(750%)◆スキル使用後、1ターン封印状態に",
+		turn: 5,
+		proc: [ss_damage_all(7.5, [0]), ss_allsealed_own(1), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0],2),
+		Attr_statusup(200,0, [1, 0, 1, 0, 0]),
+		Attr_statusup(0,200, [1, 0, 1, 0, 0]),
+		Panel_boost([1,0,0,0,0],2),
+		NEFTJOD(60),
+		Awake_noeffect("経験値取得量アップ",2),
+		Fastskill(3),
+		Attr_statusup_sattr(100,0,[1,0,0,0,0,],300,0,[0,0,1,0,0,]),
+		Attr_statusup_sattr(0,100,[1,0,0,0,0,],0,300,[0,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+		Attr_statusup(0,200, [1,0,1,0,0]),
+	],
+}

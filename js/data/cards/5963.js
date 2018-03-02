@@ -1,0 +1,46 @@
+{
+	name: "恋愛唱歌 アルト&シェリル&ランカ",
+	cardno: 5963,
+	imageno: 7745,
+	hp: 3229,
+	atk: 3365,
+	cost: 48,
+	attr: [1,3],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(マクロス)",
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、10チェインで更にダメージアップ(350%/550%)",
+		proc: [ChainAttack(3.5, 4), ChainAttack(5.5, 10)],
+	},
+	ss1: {
+		desc: "<遅延>敵単体の攻撃ターンを3ターン遅らせる",
+		turn: 10,
+		proc: [ss_delay_s(3)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		NEFTJOD(30),
+		Fastskill(2),
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、10チェインで更にダメージアップ(450%/650%)",
+		proc: [ChainAttack(4.5, 4), ChainAttack(6.5, 10)],
+	},
+	ss2: {
+		desc: "<遅延大魔術>敵単体の攻撃ターンを3ターン遅らせ、水属性のダメージ(400%)",
+		turn: 12,
+		proc: [ss_damage_s(4.0, [1], 1), ss_delay_s(3)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

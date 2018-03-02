@@ -1,0 +1,47 @@
+{
+	name: "可憐に咲き誇る アーシア・ベネット",
+	cardno: 4452,
+	imageno: 6145,
+	hp: 3070,
+	atk: 3030,
+	cost: 47,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	disable: true,
+	ape: "クロマグⅠ",
+	as1: {
+		desc: "<回復>味方全体のHPを回復、リーダー時さらに回復(13%/17%)",
+		proc: [Heal(0.13, [1,1,1,1,1], 0), add_cond(Heal(0.17, [1,1,1,1,1], 0), when_leader())],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ25%軽減の効果を付与",
+		turn: 6,
+		proc: [panel_attr_guard([1,1,1,1,1], 0.25)],
+	},
+	awakes: [
+		Costdown(2),
+		Statusup(0,200),
+		Statusup(400,0),
+		Statusup(0,200),
+		Costdown(4),
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Spec_statusup(0,200, [9,]),
+		Spec_statusup(200,0, [9,]),
+	],
+	as2: {
+		desc: "<回復>味方全体のHPを回復、リーダー時さらに回復(16%/20%)",
+		proc: [Heal(0.16, [1,1,1,1,1], 0), add_cond(Heal(0.20, [1,1,1,1,1], 0), when_leader())],
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルにダメージ50%軽減の効果を付与",
+		turn: 10,
+		proc: [panel_attr_guard([1,1,1,1,1], 0.50)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

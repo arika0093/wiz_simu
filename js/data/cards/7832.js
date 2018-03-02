@@ -1,0 +1,47 @@
+{
+	name: "覇眼の水平線 リヴェータ・イレ",
+	cardno: 7832,
+	imageno: 6406,
+	hp: 3542,
+	atk: 5432,
+	cost: 56,
+	attr: [0,-1],
+	species: [8],
+	islegend: true,
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、リーダー時さらにアップ(350%/500%)",
+		proc: [ChainAttack(3.5, 3), ChainAttack_Leader(5.0, 3)],
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
+		turn: 8,
+		proc: [ss_delay_all(2)],
+	},
+	awakes: [
+		Fastskill(1),
+		Attr_relief([1,1,1,1,1,],10),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],4),
+		Spec_statusup(0,300, [8,]),
+		Spec_statusup(300,0, [8,]),
+		Attr_statusup(400,0, [1,0,0,0,0,]),
+		Attr_statusup(0,400, [1,0,0,0,0,]),
+		Abstate_invalid("as_sealed"),
+		Awake_noeffect("スキル反射見破り",1),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ、リーダー時さらにアップ(450%/600%)",
+		proc: [ChainAttack(4.5, 3), ChainAttack_Leader(6.0, 3)],
+	},
+	ss2: {
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
+		turn: 10,
+		proc: [ss_delay_all(3)],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(0, 200, [1, 1, 1, 1, 1, ]),
+		Awake_SpecialSkill("ss_heal", 0.5),
+	],
+}

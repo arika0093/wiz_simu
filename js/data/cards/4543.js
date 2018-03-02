@@ -1,0 +1,47 @@
+{
+	name: "大魔道名誉教授 ニヴァナ・エライト",
+	cardno: 4543,
+	imageno: 6264,
+	hp: 2653,
+	atk: 1947,
+	cost: 51,
+	attr: [1, 2],
+	species: [9],
+	ape: "大魔道杯 in クロム・マグナ",
+	awakes: [
+		Statusup(0, 200),
+		Panel_boost([0, 1, 0, 0, 0, ], 1),
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+		Fastskill(1),
+		Attr_statusup(100, 0, [0, 1, 1, 0, 0, ]),
+		Heal_afterbattle(10),
+		NEFTJOD(30),
+		Fastskill(2),
+		Spec_statusup(0, 200, [9, ]),
+		Spec_statusup(200, 0, [9, ]),
+	],
+	as1: {
+		desc: "<回復>パネルが2色、3色で水・雷属性の味方のHPを回復(2色：30％ / 3色：34％)",
+		proc: ChainPanelsHeal(0, 0.30, 0.34, [0,1,1,0,0], 0),
+	},
+	ss1: {
+		desc: "<ガード>3ターン全属性のダメージを25％軽減する、さらに味方全体のHPを回復する(25％)",
+		turn: 6,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3), ss_heal(0.25)],
+	},
+	islegend: true,
+	is_dist: true,
+	Lawake: [
+		Attr_statusup(0, 100, [0, 1, 1, 0, 0, ]),
+		Statusup(500, 0),
+	],
+	as2: {
+		desc: "<回復>パネルが2色、3色で水・雷属性の味方のHPを回復(2色：34％ / 3色：40％)",
+		proc: ChainPanelsHeal(0, 0.34, 0.40, [0,1,1,0,0], 0),
+	},
+	ss2: {
+		desc: "<ガード>3ターン全属性のダメージを50％軽減する、さらに味方全体のHPを回復する(25％)",
+		turn: 10,
+		proc: [ss_attr_guard([1,1,1,1,1], 0.5, 3), ss_heal(0.25)],
+	},
+}

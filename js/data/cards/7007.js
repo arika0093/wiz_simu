@@ -1,0 +1,46 @@
+{
+	name: "僕を見つめる瞳 アーシア・ベネット",
+	cardno: 7007,
+	imageno: 6345,
+	hp: 5808,
+	atk: 2715,
+	cost: 53,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	ape: "クロム・マグナⅤ",
+	as1: {
+		desc: "<攻撃強化・回復>水属性の味方を回復(14%)、さらに攻撃力をアップ(20%)",
+		proc: [Heal(0.14, [0,1,0,0,0], 0), ChainEnhance(0.2, [0,1,0,0,0], 0)],
+	},
+	ss1: {
+		desc: "<遅延>敵単体の攻撃ターンを1遅らせる",
+		turn: 3,
+		proc: [ss_delay_s(1)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Heal_afterbattle(10),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Attr_relief([0,0,1,0,0,],20),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Spec_statusup(200,0, [9,]),
+		Spec_statusup(0,200, [9,]),
+	],
+	as2: {
+		desc: "<攻撃強化・回復>水属性の味方を回復(17%)、さらに攻撃力をアップ(20%)",
+		proc: [Heal(0.17, [0,1,0,0,0], 0), ChainEnhance(0.2, [0,1,0,0,0], 0)],
+	},
+	ss2: {
+		desc: "<遅延>敵単体の攻撃ターンを2遅らせる",
+		turn: 7,
+		proc: [ss_delay_s(2)],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

@@ -1,0 +1,45 @@
+{
+	name: "救世の英活賢王 ユペール・ポルテ",
+	cardno: 5576,
+	imageno: 7372,
+	hp: 2631,
+	atk: 3464,
+	cost: 41,
+	attr: [2,-1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<全体攻撃>敵の数に関わらず敵全体へダメージアップ(150%)",
+		proc: ChainAllAttack(1.5, 0),
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・雷属性化",
+		turn: 5,
+		proc: [ss_panel_change([1,0,1,0,0])],
+	},
+	awakes: [
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],1),
+		NEFTJOD(30),
+		Fastskill(2),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(0,200),
+		Attr_statusup(100,0, [0,0,1,0,0,]),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+	as2: {
+		desc: "<全体攻撃>敵の数に関わらず敵全体へダメージアップ(160%)",
+		proc: ChainAllAttack(1.6, 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを火・雷属性化し、回復の効果を付与(10%)",
+		turn: 8,
+		proc: [ss_panel_change([1,0,1,0,0]), panel_healally(0.10)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(500,0),
+	],
+}

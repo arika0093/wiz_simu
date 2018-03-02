@@ -1,0 +1,46 @@
+{
+	name: "双つ刃の潜行者 エマ・ユーイング",
+	cardno: 7003,
+	imageno: 6206,
+	hp: 5520,
+	atk: 2745,
+	cost: 51,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	ape: "クロム・マグナⅤ",
+	as1: {
+		desc: "<攻撃強化・ガード>5チェインで水属性の味方の攻撃力をアップ(60%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.6, [0,1,0,0,0], 5), as_guard(0.1, [1,1,1,1,1], 5)],
+	},
+	ss1: {
+		desc: "<毒>4ターンの間、敵全体に毒のダメージを与える(9000)",
+		turn: 6,
+		proc: [poison(9000, 4)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		NEFTJOD(30),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Fastskill(1),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+	],
+	as2: {
+		desc: "<攻撃強化・ガード>5チェインで水属性の味方の攻撃力をアップ(90%)、さらに全属性のダメージを10%軽減",
+		proc: [ChainEnhance(0.9, [0,1,0,0,0], 5), as_guard(0.1, [1,1,1,1,1], 5)],
+	},
+	ss2: {
+		desc: "<毒>5ターンの間、敵全体に毒のダメージを与える(15000)",
+		turn: 10,
+		proc: [poison(15000, 5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(500,0),
+	],
+}

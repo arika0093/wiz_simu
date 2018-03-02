@@ -1,0 +1,48 @@
+{
+	name: "Never-Say-Die Spirit クラン",
+	cardno: 8760,
+	imageno: 10942,
+	hp: 5445,
+	atk: 2145,
+	cost: 54,
+	attr: [2,0],
+	species: [8],
+	islegend: true,
+	ape: "クロスディライブACT2",
+	as1: {
+		desc: "<攻撃強化>4チェインで火・雷属性の味方の攻撃力をアップ(70%)",
+		proc: ChainEnhance(0.7, [1,0,1,0,0], 4),
+	},
+	ss1: {
+		desc: "<ダブルスキル付与>3ターン溜めた後、3ターンの間、デッキ内の味方にSPスキル使用回数+1の効果を付与する(SPスキル使用回数アップの効果は重複しません) ",
+		turn: 12,
+		charged: 3,
+		proc: [ss_doubleskill_all(3)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [1,0,1,0,0,]),
+		Attr_statusup(200,0, [1,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_relief([1,1,1,1,1,],10),
+		Awake_Chainboost(1),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [1,0,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<攻撃強化>4チェインで火・雷属性の味方の攻撃力をアップ(100%)",
+		proc: ChainEnhance(1.0, [1,0,1,0,0], 4),
+	},
+	ss2: {
+		desc: "<ダブルスキル付与>3ターン溜めた後、6ターンの間、デッキ内の味方にSPスキル使用回数+1の効果を付与する(SPスキル使用回数アップの効果は重複しません) ",
+		turn: 15,
+		charged: 3,
+		proc: [ss_doubleskill_all(6)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Statusup(1000,0),
+	],
+}

@@ -1,0 +1,45 @@
+{
+	name: "8号機と改2号機 マリ&アスカ",
+	cardno: 6675,
+	imageno: 8539,
+	hp: 1999,
+	atk: 6421,
+	cost: 52,
+	attr: [1,-1],
+	species: [8],
+	islegend: true,
+	ape: "コラボ(エヴァⅡ)",
+	as1: {
+		desc: "<連撃・攻撃強化>水属性の味方の攻撃力をアップ(30%)、4チェインで敵単体を3回連続攻撃(250%)",
+		proc: [ChainEnhance(0.3, [0,1,0,0,0], 0), ChainDualAttack(2.5, 4, 3)],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ、5チェインを消費しさらに特効ダメージ(200%/1200%/1700%)",
+		turn: 12,
+		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], ss_chain_cost(5, 17, 12), 2.0), [1])],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Panel_boost([0,1,0,0,0,],1),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+	],
+	as2: {
+		desc: "<連撃・攻撃強化>水属性の味方の攻撃力をアップ(30%)、4チェインで敵単体を3回連続攻撃(350%)",
+		proc: [ChainEnhance(0.3, [0,1,0,0,0], 0), ChainDualAttack(3.5, 4, 3)],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ水属性のダメージ、さらに火属性の敵には特効ダメージ、5チェインを消費しさらに特効ダメージ(200%/1500%/2000%)",
+		turn: 15,
+		proc: [ss_damage_all(special_attr([1, 0, 0, 0, 0], ss_chain_cost(5, 20, 15), 2.0), [1])],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
+}

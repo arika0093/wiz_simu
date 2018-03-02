@@ -1,0 +1,47 @@
+{
+	name: "自由なる鏑矢 アトヤ&コベニ",
+	cardno: 9224,
+	imageno: 8174,
+	hp: 2978,
+	atk: 4054,
+	cost: 57,
+	attr: [1,0],
+	species: [8],
+	islegend: true,
+	ape: "幻魔特区スザクⅢ",
+	as1: {
+		desc: "<連撃・複属性攻撃強化>4チェインで敵単体を4回連続攻撃(350%)、さらに水属性の攻撃力をアップ(10%)、複属性が火属性だとさらにアップ(30%)",
+		proc: [ChainDualAttack(3.5, 4, 3), ChainEnhance_SubAttr(0.10, 0.40, [0,1,0,0,0], [1,0,0,0,0], 4)],
+	},
+	ss1: {
+		desc: "<パネル変換>ジャンルパネルを火・水属性化",
+		turn: 3,
+		proc: [ss_panel_change([1,1,0,0,0])],
+	},
+	awakes: [
+		NEFTJOD(30),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(4),
+		Attr_statusup(200,0, [1,1,0,0,0,]),
+		Attr_relief([1,1,1,1,1,],10),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,300, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 300,0, [1,0,0,0,0,]),
+		Fastskill(4),
+	],
+	as2: {
+		desc: "<連撃・複属性攻撃強化>4チェインで敵単体を4回連続攻撃(450%)、さらに水属性の攻撃力をアップ(10%)、複属性が火属性だとさらにアップ(30%)",
+		proc: [ChainDualAttack(4.5, 4, 3), ChainEnhance_SubAttr(0.10, 0.40, [0,1,0,0,0], [1,0,0,0,0], 4)],
+	},
+	ss2: {
+		desc: "<継続回復>3ターン溜めた後、味方HPを完全回復し、さらに10ターン味方全体を徐々に回復する(30%)",
+		turn: 8,
+		charged: 3,
+		proc: [ss_heal(1), ss_regenerate(0.30, 10)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		Attr_statusup(0,200, [1,1,0,0,0,]),
+	],
+}

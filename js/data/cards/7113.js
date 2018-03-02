@@ -1,0 +1,47 @@
+{
+	name: "静寂の凍風姫 アイシャ・ミエヴィル",
+	cardno: 7113,
+	imageno: 9198,
+	hp: 4536,
+	atk: 2489,
+	cost: 43,
+	attr: [1,-1],
+	species: [4],
+	islegend: true,
+	ape: "古の森の千年桜",
+	is_dist: true,
+	as1: {
+		desc: "<回復>水属性の味方のHPを回復(11%)",
+		proc: Heal(0.11, [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<割合削り>敵全体のHPを15%減少させる",
+		turn: 9,
+		proc: [ss_ratiodamage_all(0.15)],
+	},
+	awakes: [
+		Fastskill(1),
+		Costdown(2),
+		Attr_relief([0,0,1,0,0,],10),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Heal_afterbattle(10),
+	],
+	as2: {
+		desc: "<回復>水属性の味方のHPを回復(13%)",
+		proc: Heal(0.13, [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<割合削り>敵全体のHPを20%減少させる、10チェインで更に5%減少させる",
+		turn: 12,
+		proc: [ss_ratiodamage_all(ss_chain_cond(10, 0.25, 0.2))],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+	],
+}

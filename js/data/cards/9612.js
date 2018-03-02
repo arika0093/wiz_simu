@@ -1,0 +1,47 @@
+{
+	name: "12支神混沌もたらす福神 戌居さん",
+	cardno: 9612,
+	imageno: 11882,
+	hp: 3275,
+	atk: 3291,
+	cost: 52,
+	attr: [1,4],
+	species: [1],
+	islegend: true,
+	ape: "酉戌レイド",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>敵単体を3回連続攻撃(200%)、HP20％以下で10回連続攻撃になり更にダメージアップ(1000%)",
+		proc: [ChainDualAttack(2.0, 0, 3), add_cond(ChainDualAttack(12.0, 0, 10), when_hp_less(0.2))],
+	},
+	ss1: {
+		desc: "<融合大魔術>スキル反射を無視し、敵全体へ水属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:5属性で2400%)",
+		turn: 8,
+		proc: [ss_damage_all(ss_multiattr_cond(24), [1]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,0,0,0,]),
+		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(3),
+		Awake_noeffect("ゴールド取得量アップ",3),
+		Attr_statusup(0,200, [1,1,1,1,1,]),
+		Attr_statusup(200,0, [1,1,1,1,1,]),
+		Attr_relief([1,1,1,1,1,],10),
+	],
+	as2: {
+		desc: "<連撃>敵単体を3回連続攻撃(300%)、HP20％以下で10回連続攻撃になり更にダメージアップ(1000%)",
+		proc: [ChainDualAttack(3.0, 0, 3), add_cond(ChainDualAttack(13.0, 0, 10), when_hp_less(0.2))],
+	},
+	ss2: {
+		desc: "<融合大魔術>スキル反射を無視し、敵全体へ水属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:5属性で3000%)",
+		turn: 11,
+		proc: [ss_damage_all(ss_multiattr_cond(30), [1]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+		NEFTJOD(30),
+	],
+}

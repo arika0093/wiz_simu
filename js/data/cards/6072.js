@@ -1,0 +1,47 @@
+{
+	name: "求めた暴虐 ウラジア・カタル",
+	cardno: 6072,
+	imageno: 7899,
+	hp: 3415,
+	atk: 2625,
+	cost: 34,
+	attr: [0,-1],
+	species: [5],
+	islegend: true,
+	ape: "覇眼戦線Ⅱ",
+	is_dist: true,
+	as1: {
+		desc: "<種族数攻撃>4チェインで戦士と亜人の仲間の数だけダメージアップ(100%+50%×数)",
+		proc: ChainDeckSpecsAttack(0.50, [5,8], 4),
+	},
+	ss1: {
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する、3チェインを消費しさらにHPを回復(25%/50%)",
+		turn: 8,
+		proc: [ss_chain_cost_skill(3, ss_heal(0.50), ss_heal(0.25)), ss_abstate_cure()],
+	},
+	awakes: [
+		Statusup(0,200),
+		Panel_boost([1,0,0,0,0,],1),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Attr_relief([1,0,0,0,0,],10),
+		Fastskill(2),
+		Spec_statusup(0,200, [5,]),
+		Spec_statusup(200,0, [5,]),
+		NEFTJOD(30),
+	],
+	as2: {
+		desc: "<種族数攻撃>4チェインで戦士と亜人の仲間の数だけダメージアップ(100%+60%×数)",
+		proc: ChainDeckSpecsAttack(0.60, [5,8], 4),
+	},
+	ss2: {
+		desc: "<状態異常回復>味方全体のHPを回復し、状態異常を回復する、3チェインを消費しさらにHPを回復(50%/100%)",
+		turn: 10,
+		proc: [ss_chain_cost_skill(3, ss_heal(1.0), ss_heal(0.50)), ss_abstate_cure()],
+	},
+	Lawake: [
+		Statusup(500,0),
+		Statusup(0,500),
+	],
+}

@@ -1,0 +1,48 @@
+{
+	name: "恋降る空の祈り手 ソラナ・カルナ",
+	cardno: 8130,
+	imageno: 7555,
+	hp: 4797,
+	atk: 2743,
+	cost: 56,
+	attr: [1,3],
+	species: [9],
+	islegend: true,
+	ape: "バレンタイン2015",
+	alias: ["ちっぱい"],
+	as1: {
+		desc: "<攻撃強化>7チェインで水属性の味方の攻撃力をアップ、20チェインでさらにアップ(80%/300%)",
+		proc: [ChainEnhance(0.8, [0,1,0,0,0], 7), ChainEnhance(3.0, [0,1,0,0,0], 20)],
+	},
+	ss1: {
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
+		turn: 10,
+		proc: [ss_delay_all(3)],
+	},
+	as2: {
+		desc: "<攻撃強化>7チェインで水属性の味方の攻撃力をアップ、20チェインでさらにアップ(100%/320%)",
+		proc: [ChainEnhance(1.0, [0,1,0,0,0], 7), ChainEnhance(3.2, [0,1,0,0,0], 20)],
+	},
+	ss2: {
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる、さらに味方全体のHPを完全回復する。",
+		turn: 12,
+		proc: [ss_delay_all(3), ss_heal(1.0)],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200,[0,1,0,0,0,]),
+		Attr_statusup(200,0,[0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		NEFTJOD(30),
+		Awake_Chainboost(1),
+		Fastskill(4),
+		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,300,[0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0,[0,1,0,0,0,],0,300,[0,0,0,1,0,]),
+		Heal_afterbattle(10),
+	],
+	Lawake: [
+		Attr_statusup(0,200,[0,1,0,0,0,]),
+		Statusup(500,0),
+		NEFTJOD(30),
+	],
+}

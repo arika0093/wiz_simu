@@ -1,0 +1,47 @@
+{
+	name: "星鉄の神鍛士 ミール・ウェイランド",
+	cardno: 8284,
+	imageno: 7617,
+	hp: 3250,
+	atk: 3850,
+	cost: 57,
+	attr: [2,3],
+	species: [8],
+	islegend: true,
+	ape: "DL限定精霊",
+	as1: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(350%)、HP50%以上でさらにダメージアップ(550%)",
+		proc: [ChainAttack(3.5, 5), add_cond(ChainAttack(5.5, 5), when_hp_more(0.5))],
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインプラス2の効果を付与",
+		turn: 5,
+		proc: [panel_chainplus(2)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,0,0,1,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,0,0,1,0,]),
+		Fastskill(4),
+		Abstate_invalid("ss_sealed"),
+		Awake_noeffect("スキル反射見破り",1),
+	],
+	as2: {
+		desc: "<チェイン攻撃>5チェインでダメージアップ(450%)、HP50%以上でさらにダメージアップ(650%)",
+		proc: [ChainAttack(4.5, 5), add_cond(ChainAttack(6.5, 5), when_hp_more(0.5))],
+	},
+	ss2: {
+		desc: "<遅延>チェインプラス3の効果、さらに敵全体の攻撃ターンを3遅らせる",
+		turn: 10,
+		proc: [ss_delay_all(3), ss_addchain(3)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Statusup(0,500),
+		Attr_relief([1,1,1,1,1,],10),
+	],
+}

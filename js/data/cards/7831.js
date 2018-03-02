@@ -1,0 +1,46 @@
+{
+	name: "永劫の白翼 アルドベリク&ルシエラ",
+	cardno: 7831,
+	imageno: 7079,
+	hp: 3543,
+	atk: 3543,
+	cost: 56,
+	attr: [0,3],
+	species: [3],
+	disable: true,
+	islegend: true,
+	as1: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、10チェインで更にダメージアップ(350%/550%)",
+		proc: [ChainAttack(3.5, 4), ChainAttack(5.5, 10)],
+	},
+	ss1: {
+		desc: "<チェインガード>3ターンの間、チェインを保護する",
+		turn: 5,
+		proc: [ss_chain_protect(3)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],3),
+		NEFTJOD(30),
+		Fastskill(3),
+		Heal_afterbattle(10),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,0,1,0,]),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,0,1,0,]),
+		Abstate_invalid("as_sealed"),
+		Awake_chainguard(),
+	],
+	as2: {
+		desc: "<チェイン攻撃>4チェインでダメージアップ、10チェインで更にダメージアップ(450%/650%)",
+		proc: [ChainAttack(4.5, 4), ChainAttack(6.5, 10)],
+	},
+	ss2: {
+		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
+		turn: 9,
+		proc: [ss_skillboost(2), ss_delay_s(2)],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,0,0,1,0,]),
+		Statusup(500,0),
+	],
+}

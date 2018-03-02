@@ -1,0 +1,46 @@
+{
+	name: "鎮魂の白銀騎士 セドリック・ブラン",
+	cardno: 9326,
+	imageno: 11469,
+	hp: 3224,
+	atk: 5837,
+	cost: 46,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	alias: ["きしだん"],
+	as1: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(400%)",
+		proc: ChainAttrAttack(4.0, 0, [0,1,0,0,0]),
+	},
+	ss1: {
+		desc: "<純属性強化>4ターンの間、雷単色精霊が多いほど、雷単色精霊のダメージを強化し、(100%)、さらに永続ターン、攻撃力、HPのステータスをアップ(500,500)、リーダー時さらにステータスアップ(500,500)",
+		turn: 4,
+		proc: [ss_statusup_all([ss_pureattr_cond(ss_when_leader(1000, 500)), ss_pureattr_cond(ss_when_leader(1000, 500))], [ss_when_leader(1000, 500), ss_when_leader(1000, 500)], -1, [0,0,1,0,0]), ss_enhance_all(ss_pureattr_cond(1.0), 4, [0,0,1,0,0])],
+	},
+	awakes: [
+		Attr_relief([0,0,1,0,0,],10),
+		Fastskill(4),
+		Attr_statusup(300,0, [0,0,1,0,0,]),
+		Attr_statusup(0,300, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],1),
+		NEFTJOD(30),
+		Attr_statusup_oattr(0,300, [0,0,1,0,0,]),
+		Attr_statusup_oattr(300,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Awake_noeffect("境界騎士団の覚悟",1),
+	],
+	as2: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(500%)",
+		proc: ChainAttrAttack(5.0, 0, [0,1,0,0,0]),
+	},
+	ss2: {
+		desc: "<純属性強化>4ターンの間、雷単色精霊が多いほど、雷単色精霊のダメージを強化し(200%)、さらに永続ターン、攻撃力、HPのステータスをアップ(1000,1000)、リーダー時さらにステータスアップ(1000,1000)",
+		turn: 8,
+		proc: [ss_statusup_all([ss_pureattr_cond(ss_when_leader(2000, 1000)), ss_pureattr_cond(ss_when_leader(2000, 1000))], [ss_when_leader(2000, 1000), ss_when_leader(2000, 1000)], -1, [0,0,1,0,0]), ss_enhance_all(ss_pureattr_cond(2.0), 4, [0,0,1,0,0])],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+	],
+}

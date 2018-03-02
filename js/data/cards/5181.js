@@ -1,0 +1,47 @@
+{
+	name: "聖夜を詠む冬咲花 ツバキ・リンドウ",
+	cardno: 5181,
+	imageno: 7073,
+	hp: 2134,
+	atk: 5321,
+	cost: 49,
+	attr: [2,-1],
+	species: [8],
+	islegend: true,
+	disable: true,
+	ape: "クリスマス2013",
+	as1: {
+		desc: "<属性特効>3チェインで水属性の敵単体へ特効ダメージ、パネルの色が2色以上でさらにアップ(525%/625%)",
+		proc: [ChainPanelsAttrAttack(5.25, 6.25, 6.25, [0,1,0,0,0], 3)],
+	},
+	ss1: {
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/500%)",
+		turn: 6,
+		proc: [ss_damage_all(special_attr([0,1,0,0,0], 5.0, 2.0), [2])],
+	},
+	awakes: [
+		Statusup(0,100),
+		Costdown(2),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Spec_statusup(0,200, [8,]),
+		Fastskill(2),
+		NEFTJOD(30),
+		Spec_statusup(200,0, [8,]),
+	],
+	as2: {
+		desc: "<属性特効>3チェインで水属性の敵単体へ特効ダメージ、パネルの色が2色以上でさらにアップ(625%/725%)",
+		proc: [ChainPanelsAttrAttack(6.25, 7.25, 7.25, [0,1,0,0,0], 3)],
+	},
+	ss2: {
+		desc: "<特効大魔術>敵全体へ雷属性のダメージ、さらに水属性の敵には特効ダメージ(200%/900%)",
+		turn: 9,
+		proc: [ss_damage_all(special_attr([0,1,0,0,0], 9.0, 2.0), [2])],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [0,0,1,0,0,]),
+		Statusup(0,500),
+	],
+}

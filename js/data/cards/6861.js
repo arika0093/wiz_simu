@@ -1,0 +1,47 @@
+{
+	name: "引き際を知らぬ神 リッキー・リック",
+	cardno: 6861,
+	imageno: 8833,
+	hp: 2631,
+	atk: 2812,
+	cost: 43,
+	attr: [1,4],
+	species: [1],
+	islegend: true,
+	ape: "八百万神秘譚Ⅲ(Z)",
+	is_dist: true,
+	as1: {
+		desc: "<連撃>6チェインで敵単体を3回連続攻撃、パネルの色が増す度ダメージアップ(350%/450%/550%)",
+		proc: ChainPanelsDualAttack(3.5, 4.5, 5.5, 3, 6),
+	},
+	ss1: {
+		desc: "<シャッフル>ジャンルパネルをシャッフル",
+		turn: 1,
+		proc: [ss_panel_shuffle()],
+	},
+	awakes: [
+		Fastskill(2),
+		Panel_boost([0,1,0,0,0,],1),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],1),
+		Statusup(200,0),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Statusup(0,200),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+	],
+	as2: {
+		desc: "<連撃>6チェインで敵単体を3回連続攻撃、パネルの色が増す度ダメージアップ(450%/550%/650%)",
+		proc: ChainPanelsDualAttack(4.5, 5.5, 6.5, 3, 6),
+	},
+	ss2: {
+		desc: "<解答削り>解答を見破る",
+		turn: 7,
+		proc: [ss_answer_foresight()],
+	},
+	Lawake: [
+		Statusup(0,400),
+		Statusup(400,0),
+	],
+}

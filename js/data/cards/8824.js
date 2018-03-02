@@ -1,0 +1,46 @@
+{
+	name: "その血は炎の如く クルス・ドラク",
+	cardno: 8824,
+	imageno: 11023,
+	hp: 2856,
+	atk: 6875,
+	cost: 50,
+	attr: [2,-1],
+	species: [2],
+	islegend: true,
+	ape: "聖サタニック女学院2",
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ(150%),5チェインで更にダメージアップ(50%)",
+		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.0, 5)],
+	},
+	ss1: {
+		desc: "<反動大魔術・蝕>スキル反射を無視し、敵全体へ雷属性のダメージ(精霊数×380%)(スキル使用後、味方全員が3ターン封印状態に)",
+		turn: 10,
+		proc: [ss_damage_all(ss_seal_all_cond(3.8, 3), [2]), ss_ignore_skillcounter()],
+	},
+	as2: {
+		desc: "<全体攻撃>敵全体へダメージ(180%),5チェインで更にダメージアップ(50%)",
+		proc: [ChainAllAttack(1.8, 0), ChainAllAttack(2.3, 5)],
+	},
+	ss2: {
+		desc: "<反動大魔術・蝕>スキル反射を無視し、敵全体へ雷属性のダメージ(精霊数×440%)(スキル使用後、味方全員が3ターン封印状態に)",
+		turn: 13,
+		proc: [ss_damage_all(ss_seal_all_cond(4.4, 3), [2]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_oattr(0,400,[0,0,1,0,0,]),
+		Attr_statusup_oattr(400,0,[0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(3),
+		Attr_statusup(0,400,[0,0,1,0,0,]),
+		Attr_statusup(400,0,[0,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+		Awake_damage_multiple(1.1, 500),
+	],
+	Lawake: [
+		Statusup(0,1500),
+		NEFTJOD(30),
+	],
+}

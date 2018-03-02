@@ -1,0 +1,46 @@
+{
+	name: "恋花を咲かす乙女 パニーラ・アモー",
+	cardno: 8131,
+	imageno: 7557,
+	hp: 2987,
+	atk: 5722,
+	cost: 54,
+	attr: [2,-1],
+	species: [4],
+	islegend: true,
+	ape: "バレンタイン2015",
+	as1: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ、パネルの色が増す度さらにアップ(350%/500%/600%)",
+		proc: ChainPanelsAttrAttack(3.5, 5.0, 6.0, [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<反動大魔術>スキル反射を無視し、敵全体へ雷属性のダメージ(650%) ◆スキル使用後、1ターン封印状態に",
+		turn: 4,
+		proc: [ss_damage_all(6.5, [2]), ss_allsealed_own(1), ss_ignore_skillcounter()],
+	},
+	as2: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ、パネルの色が増す度さらにアップ(450%/600%/700%)",
+		proc: ChainPanelsAttrAttack(4.5, 6.0, 7.0, [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<反動大魔術>スキル反射を無視し、敵全体へ雷属性のダメージ(850%) ◆スキル使用後、1ターン封印状態に",
+		turn: 6,
+		proc: [ss_damage_all(8.5, [2]), ss_allsealed_own(1), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Awake_noeffect("経験値取得量アップ",2),
+		NEFTJOD(30),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,400,[0,0,1,0,0,]),
+		Attr_statusup(400,0,[0,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+		Spec_statusup(400,0, [4,5,]),
+		Spec_statusup(0,400, [4,5,]),
+		Fastskill(3),
+	],
+	Lawake: [
+		Statusup(0,1500),
+		Attr_relief([0,1,0,0,0],20),
+	],
+}

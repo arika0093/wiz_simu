@@ -1,0 +1,46 @@
+{
+	name: "AbCd-Φφ: 《深淵を閉ざす ストル》",
+	cardno: 9366,
+	imageno: 11298,
+	hp: 3355,
+	atk: 3850,
+	cost: 57,
+	attr: [0,4],
+	species: [11],
+	islegend: true,
+	ape: "AbCd",
+	as1: {
+		desc: "<属性特効連撃・複属性攻撃強化>雷・光属性の敵単体へ特効3連撃(300%)、さらに火属性の攻撃力をアップ(10%)、複属性が闇属性だとさらにアップ(30%)",
+		proc: [ChainDualAttrAttack(3.0, 0, 3, [0,0,1,1,0]), ChainEnhance_SubAttr(0.10, 0.40, [1,0,0,0,0], [0,0,0,0,1], 0)],
+	},
+	ss1: {
+		desc: "<行動感知>5ターンの間、自身のみ行動カウンター待機(カウンター時、ダメージアップ(650%)(発動中行動不可))",
+		turn: 10,
+		proc: [ss_undefined("行動感知")],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Awake_noeffect("行動見破り",1),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,0,0,0,1,]),
+		Fastskill(3),
+		Attr_relief([0,0,0,1,1,],30),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<属性特効連撃・複属性攻撃強化>雷・光属性の敵単体へ特効3連撃(400%)、さらに火属性の攻撃力をアップ(10%)、複属性が闇属性だとさらにアップ(30%)",
+		proc: [ChainDualAttrAttack(4.0, 0, 3, [0,0,1,1,0]), ChainEnhance_SubAttr(0.10, 0.40, [1,0,0,0,0], [0,0,0,0,1], 0)],
+	},
+	ss2: {
+		desc: "<行動感知>5ターンの間、自身のみ行動カウンター待機(カウンター時、ダメージアップ(950%)(発動中行動不可))",
+		turn: 13,
+		proc: [ss_undefined("行動感知")],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,0,0,0,1,]),
+		Statusup(500,0),
+	],
+}

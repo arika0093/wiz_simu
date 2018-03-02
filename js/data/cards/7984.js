@@ -1,0 +1,47 @@
+{
+	name: "いつでも大成功！ ユッカ&アリス",
+	cardno: 7984,
+	imageno: 7094,
+	hp: 4832,
+	atk: 2704,
+	cost: 56,
+	attr: [2,3],
+	species: [9],
+	islegend: true,
+	ape: "謹賀新年2016",
+	as1: {
+		desc: "<回復・ガード>雷属性の味方のHPを回復(14%)、リーダー時さらに全属性のダメージを5%軽減",
+		proc: [Heal(0.14, [0,0,1,0,0], 0), add_cond(as_guard(0.05, [1,1,1,1,1], 0), when_leader())],
+	},
+	ss1: {
+		desc: "<状態異常無効>2ターン敵の状態異常攻撃を無効化する、5チェインを消費さらに2ターン無効化",
+		turn: 7,
+		proc: [ss_absattack_disable(ss_chain_cost(5, 4, 2))],
+	},
+	as2: {
+		desc: "<回復・ガード>雷属性の味方のHPを回復(14%)、全属性のダメージを10%軽減。リーダー時さらに10%軽減",
+		proc: [Heal(0.14, [0,0,1,0,0], 0), as_guard(0.10, [1,1,1,1,1], 0), add_cond(as_guard(0.20, [1,1,1,1,1], 0), when_leader())],
+	},
+	ss2: {
+		desc: "<状態異常無効>3ターン敵の状態異常攻撃を無効化する、5チェインを消費さらに3ターン無効化",
+		turn: 9,
+		proc: [ss_absattack_disable(ss_chain_cost(5, 6, 3))],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],3),
+		NEFTJOD(30),
+		Awake_noeffect("経験値取得量アップ", 2),
+		Panel_boost([0,0,1,0,0,],3),
+		Attr_statusup(200,0,[0,0,1,0,0,]),
+		Attr_statusup(0,200,[0,0,1,0,0,]),
+		Abstate_invalid("ss_sealed"),
+		Attr_statusup_sattr(100,0,[0,0,1,0,0,],300,0,[0,0,0,1,0,]),
+		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,300,[0,0,0,1,0,]),
+		Fastskill(3),
+	],
+	Lawake: [
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Statusup(500,0),
+		NEFTJOD(30),
+	],
+}

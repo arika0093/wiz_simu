@@ -1,0 +1,47 @@
+{
+	name: "死界の獄犬 ネブラフィス",
+	cardno: 7170,
+	imageno: 9133,
+	hp: 2011,
+	atk: 3018,
+	cost: 31,
+	attr: [0,-1],
+	species: [2],
+	islegend: true,
+	ape: "ロストエデンⅡ WWMF",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効連撃>3チェインで雷属性の敵単体へ特効3連撃(475%)",
+		proc: ChainDualAttrAttack(4.75, 3, 3, [0,0,1,0,0]),
+	},
+	ss1: {
+		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(200%)",
+		turn: 8,
+		proc: [ss_damage_all(2.0, [0]), ss_consume_own(0.5)],
+	},
+	awakes: [
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		NEFTJOD(30),
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Fastskill(2),
+		Awake_Chainboost(1),
+	],
+	as2: {
+		desc: "<属性特効連撃>3チェインで雷属性の敵単体へ特効3連撃(575%)",
+		proc: ChainDualAttrAttack(5.75, 3, 3, [0,0,1,0,0]),
+	},
+	ss2: {
+		desc: "<自己犠牲魔術>MAXHPの50%を使い敵全体へダメージ(300%)",
+		turn: 10,
+		proc: [ss_damage_all(3.0, [0]), ss_consume_own(0.5)],
+	},
+	Lawake: [
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Statusup(0,400),
+	],
+}

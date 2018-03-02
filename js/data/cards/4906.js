@@ -1,0 +1,33 @@
+{
+	name: "最上級のエンターテイナー 巡音ルカ	",
+	cardno: 4906,
+	imageno: 6685,
+	hp: 2889,
+	atk: 2120,
+	cost: 32,
+	attr: [0,-1],
+	species: [9],
+	islegend: false,
+	ape: "コラボ(ミク)",
+	as1: {
+		desc: "<回復>火属性の味方のHPを回復、術士はさらに回復(9%/14%)",
+		proc: [Heal(0.09, [1,0,0,0,0], 0), SpecHeal(0.14, [1,0,0,0,0], [9], 0)],
+	},
+	ss1: {
+		desc: "<ダメージブロック>4ターン600以下の全属性ダメージを無効化する",
+		turn: 9,
+		proc: [ss_damageblock_all(600, 4)],
+	},
+	awakes: [
+		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Panel_boost([1,0,0,0,0,],1),
+		NEFTJOD(30),
+		Heal_afterbattle(10),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],1),
+		Attr_statusup(0,100, [1,0,0,0,0,]),
+		Awake_noeffect("経験値取得量アップ", 1),
+		Fastskill(2),
+		Panel_boost([1,0,0,0,0,],1),
+	],
+}
