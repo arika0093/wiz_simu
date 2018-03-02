@@ -94626,7 +94626,7 @@ Cards = [{
 	hp: 2345,
 	atk: 3391,
 	cost: 47,
-	attr: [1,3],
+	attr: [0,1],
 	species: [3],
 	islegend: true,
 	ape: "その光は淡く碧く 最終章 終極の聖祈",
