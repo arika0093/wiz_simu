@@ -26063,6 +26063,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "黄昏メアレスⅠ",
+	is_dist: true,
 	as1: {
 		desc: "<回復>雷属性の味方のHPを回復(12%)",
 		proc: Heal(0.12, [0,0,1,0,0], 0),
@@ -81544,7 +81545,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(5.5, 3, 3, [0,0,1,0,0]),
 	},
 	ss1: {
-		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(400%)。HP20%以下の時、さらに自分の攻撃力をアップ(1300%)し、味方全体のHPを完全回復",
+		desc: "<ダメージ強化>4ターン自分の攻撃力をアップ(400%)。HP20%以下の時、さらに自分の攻撃力をアップ(1300%)し、味方全体のHPを完全回復",
 		turn: 6,
 		proc: [ss_enhance_own(ss_hp_less(0.20, 17, 4.0), 4), ss_hp_less_skill(0.20, ss_heal(1.0))],
 	},
@@ -81565,7 +81566,7 @@ Cards = [{
 		proc: ChainDualAttrAttack(6.5, 3, 3, [0,0,1,0,0]),
 	},
 	ss2: {
-		desc: "<ダメージ強化>3ターン自分の攻撃力をアップ(600%)。HP20%以下の時、さらに自分の攻撃力をアップ(1900%)し、味方全体のHPを完全回復",
+		desc: "<ダメージ強化>4ターン自分の攻撃力をアップ(600%)。HP20%以下の時、さらに自分の攻撃力をアップ(1900%)し、味方全体のHPを完全回復",
 		turn: 8,
 		proc: [ss_enhance_own(ss_hp_less(0.20, 25, 6.0), 4), ss_hp_less_skill(0.20, ss_heal(1.0))],
 	},
@@ -92006,9 +92007,7 @@ Cards = [{
 	ss1: {
 		desc: "<特殊パネル変換>ジャンルパネルにチェインとスキルチャージの効果を付与(1,1)、パネルの色が増す度さらにアップ (上限値:3,2)",
 		turn: 3,
-		proc: [	panel_chainplus(1), panel_skillboost(1),
-				panel_chainplus(2), panel_skillboost(2),
-				panel_chainplus(3), panel_skillboost(2)],
+		proc: [panel_multieffect([panel_chainplus(1), panel_skillboost(1)]), panel_multieffect([panel_chainplus(2), panel_skillboost(2)]), panel_multieffect([panel_chainplus(3), panel_skillboost(2)])],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],2),
@@ -92055,9 +92054,7 @@ Cards = [{
 	ss1: {
 		desc: "<特殊パネル変換>ジャンルパネルにチェインとスキルチャージの効果を付与(1,1)、パネルの色が増す度さらにアップ (上限値:3,2)",
 		turn: 3,
-		proc: [	panel_chainplus(1), panel_skillboost(1),
-				panel_chainplus(2), panel_skillboost(2),
-				panel_chainplus(3), panel_skillboost(2)],
+		proc: [panel_multieffect([panel_chainplus(1), panel_skillboost(1)]), panel_multieffect([panel_chainplus(2), panel_skillboost(2)]), panel_multieffect([panel_chainplus(3), panel_skillboost(2)])],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],2),
@@ -92846,7 +92843,7 @@ Cards = [{
 	is_dist: true,
 	as1: {
 		desc: "<攻撃強化・ガード>4チェインで火・雷属性の味方の攻撃力をアップ(40%)、さらに全属性のダメージを10%軽減",
-		proc: [ChainEnhance(0.4, [1,0,1,0,0], 4), as_guard(0.10, [1,1,1,1,1], 10)],
+		proc: [ChainEnhance(0.4, [1,0,1,0,0], 4), as_guard(0.10, [1,1,1,1,1], 4)],
 	},
 	ss1: {
 		desc: "<ブースト>2ターンの間、味方一人のMAXHPを毎ターン10%消費し、味方一人の攻撃力をアップ(150%)。さらに極稀にクリティカル",
@@ -92867,7 +92864,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<攻撃強化・ガード>4チェインで火・雷属性の味方の攻撃力をアップ(60%)、さらに全属性のダメージを10%軽減",
-		proc: [ChainEnhance(0.6, [1,0,1,0,0], 4), as_guard(0.10, [1,1,1,1,1], 10)],
+		proc: [ChainEnhance(0.6, [1,0,1,0,0], 4), as_guard(0.10, [1,1,1,1,1], 4)],
 	},
 	ss2: {
 		desc: "<ブースト>2ターンの間、味方一人のMAXHPを毎ターン10%消費し、味方一人の攻撃力をアップ(150%)。さらに極稀にクリティカル",
@@ -95834,7 +95831,7 @@ Cards = [{
 		Panel_boost([0,0,1,0,0,],2),
 		Fastskill(1),
 		NEFTJOD(30),
-		Fastskill(1),
+		Fastskill(2),
 		Panel_boost([0,0,1,0,0,],3),
 		Attr_statusup(200,0, [0,1,1,0,0,]),
 		Attr_statusup(0,200, [0,1,1,0,0,]),
@@ -96361,6 +96358,141 @@ Cards = [{
 	Lawake: [
 		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,100, [0,0,0,1,0,]),
 		Statusup(0,500),
+	],
+},{
+	name: "千色麗香の調香師シーラ・フリール",
+	cardno: 9925,
+	imageno: 7334,
+	hp: 3588,
+	atk: 3011,
+	cost: 51,
+	attr: [2,1],
+	species: [9],
+	islegend: true,
+	as1: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ(10%)、複属性が水属性だとさらにアップ(90%)",
+		proc: ChainEnhance_SubAttr(0.1, 1.0, [0,0,1,0,0], [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<特殊パネル変換>ジャンルパネルにチェインがプラス1の効果を付与",
+		turn: 3,
+		proc: [panel_chainplus(1)],
+	},
+	awakes: [
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 100,0, [0,1,0,0,0,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,100, [0,1,0,0,0,]),
+		Panel_boost([0,0,1,0,0,],4),
+		Fastskill(3),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Spec_statusup(200,0, [9,]),
+		Spec_statusup(0,200, [9,]),
+		Awake_noeffect("目覚めの輝き",10),
+		Awake_noeffect("目覚めの力",10),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ(40%)、複属性が水属性だとさらにアップ(90%)",
+		proc: ChainEnhance_SubAttr(0.4, 1.3, [0,0,1,0,0], [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<特殊パネル変換>ジャンルパネルを水・雷属性化し、チェインがプラス1の効果を付与",
+		turn: 5,
+		proc: [ss_panel_change([0,1,1,0,0]), panel_chainplus(1)],
+	},
+	Lawake: [
+		Statusup(1000,0),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+	],
+},{
+	name: "聖なる空のエステレラ",
+	cardno: 9896,
+	imageno: 12239,
+	hp: 3865,
+	atk: 3054,
+	cost: 53,
+	attr: [2,1],
+	species: [9],
+	islegend: true,
+	ape: "英雄凱旋大魔道杯",
+	is_dist: true,
+	as1: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ(30%)、複属性が水属性だとさらにアップ(40%)",
+		proc: ChainEnhance_SubAttr(0.3, 0.7, [0,0,1,0,0], [0,1,0,0,0], 0),
+	},
+	ss1: {
+		desc: "<複属性回復>雷属性の味方のHPを回復(30%)、複属性が水属性だとさらに回復(40%)",
+		turn: 3,
+		proc: [ss_heal_subattr([0,0,1,0,0], 0.3, [0,1,0,0,0], 0.7)],
+	},
+	awakes: [
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 200,0, [0,1,0,0,0,]),
+		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,100, [0,1,0,0,0,]),
+		Attr_statusup(0,200, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Fastskill(1),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Attr_relief([0,0,0,1,1,],10),
+		Fastskill(2),
+		Abstate_invalid("ss_sealed"),
+	],
+	as2: {
+		desc: "<複属性攻撃強化>雷属性の攻撃力をアップ(60%)、複属性が水属性だとさらにアップ(40%)",
+		proc: ChainEnhance_SubAttr(0.6, 1.0, [0,0,1,0,0], [0,1,0,0,0], 0),
+	},
+	ss2: {
+		desc: "<複属性回復>雷属性の味方のHPを回復(30%)、複属性が水属性だとさらに回復(40%)",
+		turn: 3,
+		proc: [ss_heal_subattr([0,0,1,0,0], 0.3, [0,1,0,0,0], 0.7)],
+	},
+	Lawake: [
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Statusup(500,0),
+	],
+},{
+	name: "夜会の策謀 ディートリヒ&ローヴィ",
+	cardno: 9952,
+	imageno: -1,
+	hp: 2355,
+	atk: 4611,
+	cost: 59,
+	attr: [0,1],
+	species: [-1],
+	islegend: true,
+	ape: "周年記念精霊(5周年)",
+	as1: {
+		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(600%)",
+		proc: add_cond(ChainAttack(6.0, 0), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "＜AS倍率強化＞3ターンの間、デッキ内の<主属性:火、複属性:水>の精霊のAS攻撃倍率をアップ。同属性の精霊が多いほどさらに倍率が上昇(上限値:3倍)",
+		turn: 4,
+		proc: [ss_asenhance_all(3, [1,0,0,0,0], [0,1,0,0,0], 3)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_sattr(0,200, [1,0,0,0,0,], 0,100, [0,1,0,0,0,]),
+		Attr_statusup_sattr(200,0, [1,0,0,0,0,], 100,0, [0,1,0,0,0,]),
+		Awake_noeffect("心眼・怒",1),
+		Abstate_invalid("as_sealed"),
+		Fastskill(3),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,1,0,0,0,]),
+		Abstate_invalid("ss_sealed"),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(700%)",
+		proc: add_cond(ChainAttack(7.0, 0), as_consume_all(0.1)),
+	},
+	ss2: {
+		desc: "＜AS倍率強化＞3ターンの間、デッキ内の<主属性:火、複属性:水>の精霊のAS攻撃倍率をアップ。同属性の精霊が多いほどさらに倍率が上昇(上限値:3倍)",
+		turn: 4,
+		proc: [ss_asenhance_all(3, [1,0,0,0,0], [0,1,0,0,0], 3)],
+	},
+	Lawake: [
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,100, [0,1,0,0,0,]),
+		Statusup(0,1000),
 	],
 },
 ];
