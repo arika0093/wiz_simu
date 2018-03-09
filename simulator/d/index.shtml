@@ -79,7 +79,7 @@
         <script charset="UTF-8" src="/js/data/skill_crystal.js?      <!--#flastmod virtual='/js/data/skill_crystal.js'-->"></script>
         <script charset="UTF-8" src="/js/data/skill_enemy.js?        <!--#flastmod virtual='/js/data/skill_enemy.js'-->"></script>
         <script charset="UTF-8" src="/js/data/quests.php"></script>
-        <script charset="UTF-8" src="/js/data/cards.php?              <!--#flastmod virtual='/js/data/cards.php'-->"></script>
+        <script charset="UTF-8" src="/js/data/cards.js?              <!--#flastmod virtual='/js/data/cards.js'-->"></script>
         <script charset="UTF-8" src="/js/q_detail/quest_detail.js"></script>
         <script charset="UTF-8" src="/js/share_deck/srdeckview.js"></script>
     </div>
