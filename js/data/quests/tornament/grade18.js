@@ -1,6 +1,6 @@
 {
    id: "grade18",
-   name: "捌式(トーナメント18段))",
+   name: "捌式(トーナメント18段)",
    desc: "",
    overlap: false,
    aprnum: 5,
