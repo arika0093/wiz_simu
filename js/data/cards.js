@@ -17662,6 +17662,7 @@ Cards = [{
 	cost: 42,
 	attr: [2,1],
 	species: [9],
+	disable: true,
 	islegend: true,
 	as1: {
 		desc: "<種族攻撃強化>水・雷属性の味方の攻撃力をアップ、術士はさらにアップ(30%/45%)",
