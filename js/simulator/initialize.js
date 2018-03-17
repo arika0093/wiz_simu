@@ -64,6 +64,9 @@ var Field = {
 		continue_eff: [],
 		// 最後に使用したSS
 		latest_ss: null,
+		// 蓄積系スキルの共通データ
+		accumulate_heal: 0,     // 合計回復値
+		accumulate_dmg: 0,      // 合計ダメージ量
 		// ステアップの上限値保存
 		statusup_max: [2000, 2000],
 		// 助っ人関連
@@ -203,6 +206,8 @@ $(function () {
 				now.upval_hp = 0;
 				now.upval_atk = 0;
 				now.def_attr = card.attr;
+				now.accumulateHealCount = 0;
+				now.accumulateBurnCount = 0;
 				now.target = [];
 				now.flags = {};
 				now.flags.enemy_counter = [];

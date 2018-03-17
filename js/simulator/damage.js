@@ -198,6 +198,9 @@ function damage_ally(fld, dmg, index, neft_check) {
 	var bef = now.nowhp;
 	var aft = Math.floor(bef - dmg);
 	var minhp = 0;
+	
+	// 合計被ダメージに追加
+	fld.Status.accumulate_dmg += dmg;
 	// 死亡寸前発動スキル(e.g.起死回生)の判定
 	if (aft <= 0) {
 		for (var i = 0; i < now.turn_effect.length; i++) {
@@ -257,6 +260,8 @@ function heal_ally(fld, value, index) {
 		}
 		// 回復
 		now.nowhp = Math.min(now.maxhp, now.nowhp + h_val);
+		// 合計回復ダメージに追加
+		fld.Status.accumulate_heal += h_val;
 	}
 	if (now.nowhp <= 0) {
 		// 死んだら全効果を解除

@@ -100,6 +100,47 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
+	// 蓄積大魔術・聖
+	"ss_accumulateDamageOfHeal_all": function (fld, n, cobj, params) {
+		var max_r = params[0];
+		var max_v = params[1];
+		var attrs = params[2];
+
+		var accHeal = fld.Status.accumulate_heal;
+		var now = fld.Allys.Now[n];
+		var accHealCount = now.accumulateHealCount;
+		// 威力計算
+		var acc_p = Math.min((accHeal - accHealCount)/max_v, 1);
+		var rate = (acc_p * max_r) + 1;
+		
+		var sda = ss_damage_all(rate, attrs);
+		ss_object_done(fld, n, sda);
+		// カウントを合わせる
+		now.accumulateHealCount = accHeal;
+		return true;
+	},
+	// -----------------------------
+	// 蓄積大魔術・邪
+	"ss_accumulateDamageOfBurn_all": function (fld, n, cobj, params) {
+		var max_r = params[0];
+		var max_v = params[1];
+		var attrs = params[2];
+		
+		var accBurn = fld.Status.accumulate_dmg;
+		var now = fld.Allys.Now[n];
+		var accBurnCount = now.accumulateBurnCount;
+		// 威力計算
+		var acc_p = Math.min((accBurn - accBurnCount)/max_v, 1);
+		var rate = (acc_p * max_r) + 1;
+		
+		var sda = ss_damage_all(rate, attrs);
+		ss_object_done(fld, n, sda);
+		// カウントを合わせる
+		now.accumulateBurnCount = accBurn;
+		return true;
+	},
+	
+	// -----------------------------
 	// 敵単体に属性ダメージ
 	"ss_damage_explosion": function (fld, n, cobj, params) {
 		var r = params[0];
