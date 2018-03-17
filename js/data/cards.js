@@ -99992,7 +99992,7 @@ Cards = [{
 	hp: 3613,
 	atk: 3613,
 	cost: 57,
-	attr: [1,3],
+	attr: [0,3],
 	species: [3],
 	islegend: true,
 	ape: "Christmas2015",
