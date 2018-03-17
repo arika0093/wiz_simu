@@ -73002,6 +73002,51 @@ Cards = [{
 		Statusup(0,1000),
 	],
 },{
+	name: "全てを食い荒らす者 ペオルタン(L2)",
+	cardno: 9930,
+	imageno: 10592,
+	hp: 1855,
+	atk: 4301,
+	cost: 52,
+	attr: [0,4],
+	species: [2],
+	islegend: true,
+	ape: "アイドルキャッツ！",
+	is_dist: true,
+	as1: {
+		desc: "<攻撃>味方のMAXHP15%を使い、敵単体へのダメージアップ(600%)",
+		proc: add_cond(ChainAttack(6.0, 0), as_consume_all(0.15)),
+	},
+	ss1: {
+		desc: "<特効大魔術>MAXHPの50%を使い敵単体へ火属性のダメージ(400%)、さらに雷・光属性の敵には特効ダメージ(800%)",
+		turn: 6,
+		proc: [ss_damage_s(special_attr([0, 0, 1, 1, 0], 12, 4.0), [0], 1)],
+	},
+	awakes: [
+		Panel_boost([1,0,0,0,0,],2),
+		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 200,0, [0,0,0,0,1,]),
+		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,200, [0,0,0,0,1,]),
+		Panel_boost([1,0,0,0,0,],2),
+		Fastskill(1),
+		Abstate_invalid("poison"),
+		Fastskill(2),
+		Attr_statusup(0,200, [1,0,0,0,0,]),
+		Attr_statusup(200,0, [1,0,0,0,0,]),
+		Attr_relief([0,0,0,1,0,],20),
+	],
+	as2: {
+		desc: "<攻撃>敵単体へのダメージアップ(600%)",
+		proc: ChainAttack(6.0, 0),
+	},
+	ss2: {
+		desc: "<特効大魔術>MAXHPの50%を使い敵単体へ火属性のダメージ(400%)、さらに雷・光属性の敵には特効ダメージ(1500%)",
+		turn: 9,
+		proc: [ss_damage_s(special_attr([0, 0, 1, 1, 0], 19, 4.0), [0], 1)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
+},{
 	name: "〈スペクタクルム〉 嘘猫のウィズ",
 	cardno: 8438,
 	imageno: 10588,
@@ -75769,6 +75814,7 @@ Cards = [{
 	islegend: true,
 	ape: "黄昏メアレスⅢ",
 	is_dist: true,
+	disable:true,
 	as1: {
 		desc: "<属性特効連撃>味方のMAXHP10%を使い、火属性の敵単体へ特効5連撃(600%)",
 		proc: add_cond(ChainDualAttrAttack(6.0, 0, 5, [1,0,0,0,0]), as_consume_all(0.1)),
@@ -75798,6 +75844,51 @@ Cards = [{
 		desc: "<反動大魔術>スキル反射を無視し、敵全体へ水属性のダメージ(900%)(スキル使用後、1ターン封印状態に)",
 		turn: 9,
 		proc: [ss_damage_all(9.0, [1]), ss_allsealed_own(1), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
+},{
+	name: "黎明魔道 ディルクルム",
+	cardno: 9931,
+	imageno: 10772,
+	hp: 3133,
+	atk: 5687,
+	cost: 39,
+	attr: [1,-1],
+	species: [9],
+	islegend: true,
+	ape: "黄昏メアレスⅢ",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効連撃>味方のMAXHP10%を使い、火属性の敵単体へ特効5連撃(600%)",
+		proc: add_cond(ChainDualAttrAttack(6.0, 0, 5, [1,0,0,0,0]), as_consume_all(0.1)),
+	},
+	ss1: {
+		desc: "<反動大魔術>スキル反射を無視し、敵全体へ水属性のダメージ(850%)(スキル使用後、1ターン封印状態に)",
+		turn: 7,
+		proc: [ss_damage_all(8.5, [1]), ss_allsealed_own(1), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([0,1,0,0,0,],3),
+		Attr_statusup(0,300, [0,1,0,0,0,]),
+		Attr_statusup(300,0, [0,1,0,0,0,]),
+		Attr_relief([1,0,0,0,0,],20),
+		Abstate_invalid("poison"),
+		Fastskill(3),
+		Attr_statusup_oattr(0,300, [0,1,0,0,0,]),
+		Attr_statusup_oattr(300,0, [0,1,0,0,0,]),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<属性特効連撃>味方のMAXHP10%を使い、火属性の敵単体へ特効5連撃(700%)",
+		proc: add_cond(ChainDualAttrAttack(7.0, 0, 5, [1,0,0,0,0]), as_consume_all(0.1)),
+	},
+	ss2: {
+		desc: "<反動大魔術>スキル反射を無視し、敵全体へ水属性のダメージ(1050%)(スキル使用後、1ターン封印状態に)",
+		turn: 9,
+		proc: [ss_damage_all(10.5, [1]), ss_allsealed_own(1), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,1000),
@@ -85239,6 +85330,7 @@ Cards = [{
 	islegend: true,
 	ape: "幻魔特区RELOADED",
 	is_dist: true,
+	disable:true,
 	as1: {
 		desc: "<チェイン攻撃>3チェインでダメージアップ(300%)、HP80%以上でさらにダメージアップ(50%)",
 		proc: [ChainAttack(3.0, 3), add_cond(ChainAttack(3.5, 3), when_hp_more(0.8))],
@@ -85264,6 +85356,54 @@ Cards = [{
 	as2: {
 		desc: "<チェイン攻撃>3チェインでダメージアップ(400%)、HP80%以上でさらにダメージアップ(50%)",
 		proc: [ChainAttack(4.0, 3), add_cond(ChainAttack(4.5, 3), when_hp_more(0.8))],
+	},
+	ss2: {
+		desc: "<多弾魔術>1ターン溜めた後、スキル反射を無視し、敵単体へ水・闇属性の7回連続ダメージ(650%)",
+		turn: 5,
+		charged: 1,
+		proc: [ss_damage_s(6.5, [1, 4], 7), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+	],
+},{
+	name: "古の真実 アヴリオ&エゴイプセ",
+	cardno: 9929,
+	imageno: 11424,
+	hp: 3111,
+	atk: 3222,
+	cost: 50,
+	attr: [1,4],
+	species: [2],
+	islegend: true,
+	ape: "幻魔特区RELOADED",
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(300%)、HP80%以上でさらにダメージアップ(100%)",
+		proc: [ChainAttack(3.0, 3), add_cond(ChainAttack(4.0, 3), when_hp_more(0.8))],
+	},
+	ss1: {
+		desc: "<多弾魔術>1ターン溜めた後、スキル反射を無視し、敵単体へ水・闇属性の7回連続ダメージ(450%)",
+		turn: 4,
+		charged: 1,
+		proc: [ss_damage_s(4.5, [1, 4], 7), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Spec_statusup(0,200, [2,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Fastskill(1),
+		Attr_statusup(100,0, [0,1,0,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,100, [0,1,0,0,0,]),
+		Fastskill(2),
+		Attr_statusup_sattr(0,100, [0,1,0,0,0,], 0,200, [0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0, [0,1,0,0,0,], 200,0, [0,0,0,0,1,]),
+		Spec_statusup(200,0, [2,]),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(400%)、HP80%以上でさらにダメージアップ(100%)",
+		proc: [ChainAttack(4.0, 3), add_cond(ChainAttack(5.0, 3), when_hp_more(0.8))],
 	},
 	ss2: {
 		desc: "<多弾魔術>1ターン溜めた後、スキル反射を無視し、敵単体へ水・闇属性の7回連続ダメージ(650%)",
@@ -88887,6 +89027,7 @@ Cards = [{
 	islegend: true,
 	ape: "ロストエデンⅢ",
 	is_dist: true,
+	disable:true,
 	as1: {
 		desc: "<属性特効>水属性の敵単体へ特効ダメージ(300%)、デッキの単色の精霊が多いほど、さらにダメージアップ(40%)(上限値:5段階)",
 		proc: add_cond(ChainAttrAttack(3.0, 0, [0,1,0,0,0]), as_singleattr_num(0, 0.4)),
@@ -88907,6 +89048,53 @@ Cards = [{
 		Fastskill(3),
 		Attr_statusup(0,200, [0,0,1,0,0,]),
 		Attr_statusup(200,0, [0,0,1,0,0,]),
+		Awake_noeffect("経験値取得量アップ",1),
+	],
+	as2: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(400%)、デッキの単色の精霊が多いほど、さらにダメージアップ(40%)(上限値:5段階)",
+		proc: add_cond(ChainAttrAttack(4.0, 0, [0,1,0,0,0]), as_singleattr_num(0, 0.4)),
+	},
+	ss2: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ(400%)、さらに水属性の敵には特効ダメージ(1200%)、さらに敵にトドメを刺した場合チェインプラス3",
+		turn: 10,
+		chadd_killing: 3,
+		proc: [ss_damage_s(special_attr([0, 1, 0, 0, 0], 16.0, 4.0), [2], 1)],
+	},
+	Lawake: [
+		Statusup(0,1000),
+	],
+},{
+	name: "幻惑と魅惑 ティキー",
+	cardno: 9928,
+	imageno: 11662,
+	hp: 2475,
+	atk: 5899,
+	cost: 42,
+	attr: [2,-1],
+	species: [2],
+	islegend: true,
+	ape: "ロストエデンⅢ",
+	is_dist: true,
+	as1: {
+		desc: "<属性特効>水属性の敵単体へ特効ダメージ(300%)、デッキの単色の精霊が多いほど、さらにダメージアップ(40%)(上限値:5段階)",
+		proc: add_cond(ChainAttrAttack(3.0, 0, [0,1,0,0,0]), as_singleattr_num(0, 0.4)),
+	},
+	ss1: {
+		desc: "<特効大魔術>敵単体へ雷属性のダメージ(400%)、さらに水属性の敵には特効ダメージ(400%)、さらに敵にトドメを刺した場合チェインプラス3",
+		turn: 7,
+		chadd_killing: 3,
+		proc: [ss_damage_s(special_attr([0, 1, 0, 0, 0], 8.0, 4.0), [2], 1)],
+	},
+	awakes: [
+		Costdown(10),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup_oattr(0,300, [0,0,1,0,0,]),
+		Attr_statusup_oattr(300,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		NEFTJOD(30),
+		Fastskill(3),
+		Attr_statusup(0,300, [0,0,1,0,0,]),
+		Attr_statusup(300,0, [0,0,1,0,0,]),
 		Awake_noeffect("経験値取得量アップ",1),
 	],
 	as2: {
@@ -96512,8 +96700,8 @@ Cards = [{
     islegend: true,
     ape: "黒ウィズミュージアム 第2館",
     as1: {
-        desc: "<属性特効>水・闇属性の敵単体へ特効ダメージ(250%)",
-        proc: ChainAttrAttack(2.5, 0, [0, 1, 0, 0, 1]),
+        desc: "<属性特効>水・闇属性の敵単体へ特効ダメージ(350%)",
+        proc: ChainAttrAttack(3.5, 0, [0, 1, 0, 0, 1]),
     },
     ss1: {
         desc: "<カウンター>1ターンの間、スキルカウンター待機(100%)",
@@ -96533,8 +96721,8 @@ Cards = [{
         Abstate_invalid("all_sealed"),
     ],
     as2: {
-        desc: "<属性特効>水・闇属性の敵単体へ特効ダメージ(350%)",
-        proc: ChainAttrAttack(3.5, 0, [0, 1, 0, 0, 1]),
+        desc: "<属性特効>水・闇属性の敵単体へ特効ダメージ(450%)",
+        proc: ChainAttrAttack(4.5, 0, [0, 1, 0, 0, 1]),
     },
     ss2:
     {
@@ -96981,8 +97169,8 @@ Cards = [{
     islegend: true,
     ape: "５周年、自分探しの旅",
     as1:{
-		desc: "<チェイン攻撃>5チェインでダメージアップ/300％",
-		proc: ChainAttack(3.0, 5),
+		desc: "<チェイン攻撃>5チェインでダメージアップ/400％",
+		proc: ChainAttack(4.0, 5),
     },
     ss1:{
 		desc: "<ダメージ強化>1ターン溜めた後、1ターン雷属性の味方の攻撃力をアップ(150%)",
@@ -97003,8 +97191,8 @@ Cards = [{
 		Abstate_invalid("as_sealed"),
     ],
     as2:{
-		desc: "<チェイン攻撃>5チェインでダメージアップ/400％",
-		proc: ChainAttack(4.0, 5),
+		desc: "<チェイン攻撃>5チェインでダメージアップ/500％",
+		proc: ChainAttack(5.0, 5),
     },
     ss2:{
 		desc: "<ダメージ強化>1ターン溜めた後、1ターン雷属性の味方の攻撃力をアップ(200%)",
@@ -97030,8 +97218,8 @@ Cards = [{
     islegend: true,
     ape: "５周年、自分探しの旅",
     as1:{
-		desc: "<チェイン攻撃>5チェインでダメージアップ/300％",
-		proc: ChainAttack(3.0, 5),
+		desc: "<チェイン攻撃>5チェインでダメージアップ/400％",
+		proc: ChainAttack(4.0, 5),
     },
     ss1:{
 		desc: "<ダメージ強化>1ターン溜めた後、1ターン雷属性の味方の攻撃力をアップ(150%)",
@@ -97052,8 +97240,8 @@ Cards = [{
 		Abstate_invalid("as_sealed"),
     ],
     as2:{
-		desc: "<チェイン攻撃>5チェインでダメージアップ/400％",
-		proc: ChainAttack(4.0, 5),
+		desc: "<チェイン攻撃>5チェインでダメージアップ/500％",
+		proc: ChainAttack(5.0, 5),
     },
     ss2:{
 		desc: "<ダメージ強化>1ターン溜めた後、1ターン雷属性の味方の攻撃力をアップ(200%)",
@@ -97079,8 +97267,8 @@ Cards = [{
     islegend: true,
     ape: "５周年、自分探しの旅",
     as1:{
-		desc: "<チェイン攻撃>5チェインでダメージアップ/300％",
-		proc: ChainAttack(3.0, 5),
+		desc: "<チェイン攻撃>5チェインでダメージアップ/400％",
+		proc: ChainAttack(4.0, 5),
     },
     ss1:{
 		desc: "<ダメージ強化>1ターン溜めた後、1ターン雷属性の味方の攻撃力をアップ(150%)",
@@ -97101,8 +97289,8 @@ Cards = [{
 		Abstate_invalid("as_sealed"),
     ],
     as2:{
-		desc: "<チェイン攻撃>5チェインでダメージアップ/400％",
-		proc: ChainAttack(4.0, 5),
+		desc: "<チェイン攻撃>5チェインでダメージアップ/500％",
+		proc: ChainAttack(5.0, 5),
     },
     ss2:{
 		desc: "<ダメージ強化>1ターン溜めた後、1ターン雷属性の味方の攻撃力をアップ(200%)",
