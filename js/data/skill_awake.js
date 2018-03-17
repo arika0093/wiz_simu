@@ -92,6 +92,22 @@ function Attr_statusup_oattr(hp, atk, attr) {
 	};
 }
 
+// 複属性ステアップ
+function Attr_statusup_subattr(hp, atk) {
+	return {
+		type: "status_up",
+		attr: [1,1,1,1,1],
+		spec: create_specs(1),
+		up_hp: 0,
+		up_atk: 0,
+		sub_attr: [1,1,1,1,1],
+		up_hp_2: hp,
+		up_atk_2: atk,
+		name: "複属性" + (hp != 0 ? "HP" : "攻撃力") + "アップ" + int2roman(Math.max(hp, atk)/100),
+		desc: "複属性の" + (hp != 0 ? "HP" : "攻撃力") + "をアップ",
+	};
+}
+
 // 味方種族ステアップ
 function Spec_statusup(hp, atk, specs) {
 	return {
@@ -348,7 +364,7 @@ function Awake_ASkillAtknup(upval) {
 		name: "AS連撃数アップ(+" + upval + ")",
 		desc: "ASの連撃数を" + upval + "%アップする",
 		matched_type: "attack",
-		matched_up: "atkn",
+		matched_up: "atkn_crystal",
 	};
 }
 

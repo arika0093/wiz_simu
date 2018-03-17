@@ -56,7 +56,7 @@ function turn_effect_check(fld, is_turn_move, is_ssfin) {
 	for (var te = 0; te < all_turneff.length; te++) {
 		var now = fld.Allys.Now[all_turneff[te].index];
 		var turneff = all_turneff[te].effect;
-		if (!turneff._notfirst || is_turn_move) {
+		if (!turneff._notfirst || turneff.effectAlways || is_turn_move) {
 			// 発動時状況を決める(初回呼び出し時: first, 終了時: end)
 			if (!turneff._notfirst) {
 				var state = "first";
@@ -112,7 +112,7 @@ function enemy_turn_effect_check(fld, is_turn_move) {
 		turneff_break_dual(fld, enemys[i].turn_effect, i, is_turn_move);
 		for (var te = 0; te < enemys[i].turn_effect.length; te++) {
 			var turneff = enemys[i].turn_effect[te];
-			if (!turneff._notfirst || is_turn_move) {
+			if (!turneff._notfirst || turneff.effectAlways || is_turn_move) {
 				// 発動
 				turneff.effect(fld, i, turneff, turneff.lim_turn == 0, is_turn_move, is_allkill(fld));
 				turneff._notfirst = true;
@@ -196,6 +196,10 @@ function turneff_check_skillcounter(fld) {
 			is_counted = true;
 		}
 	});
+	if(is_counted){
+		turn_effect_check(fld, false, is_allkill(fld));
+		enemy_turn_effect_check(fld, false);
+	}
 	return is_counted;
 }
 

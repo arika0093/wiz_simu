@@ -244,11 +244,11 @@ var Awake_crystal_lists = [{
 }, {
 	name: "光のチョコレート(副属性持ちHP+150)",
 	imple: Awake_composite,
-	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 150, 0, [1,1,1,1,1]),
+	param2: Attr_statusup_subattr(150, 0),
 }, {
 	name: "闇のチョコレート(副属性持ちATK+150)",
 	imple: Awake_composite,
-	param2: Attr_statusup_sattr(0, 0, [1,1,1,1,1], 0, 150, [1,1,1,1,1]),
+	param2: Attr_statusup_subattr(0, 150),
 }, {
 	genre: "ステータス変動(味方全体)[敵結晶]",
 	name: "擬態の結晶〈ガーゴイル〉(物質HP+200)",

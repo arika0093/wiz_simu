@@ -791,6 +791,7 @@ var SpSkill = {
 				iscursebreak: true,
 				turn: t,
 				lim_turn: t,
+				effectAlways: true,
 				effect: function(f, oi, teff, state){
 					// 解除条件に当てはまっていた場合、後処理して終了
 					if (["end", "dead", "break"].indexOf(state) >= 0) {

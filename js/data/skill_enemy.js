@@ -664,6 +664,7 @@ function s_enemy_healreverse(rate, tnum) {
 					var card = fld.Allys.Deck[oi];
 					return !(card.attr.indexOf(3) >= 0 || card.attr.indexOf(4) >= 0);
 				},
+				effectAlways: true,
 				effect: function(f, oi, teff, state, is_t, is_b){
 					if(f.Enemys.Data[teff.receveButtle].enemy[teff.fromEnemy].nowhp <= 0){
 						teff.lim_turn = 0;

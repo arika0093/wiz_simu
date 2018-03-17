@@ -317,16 +317,24 @@ function answer_skill(fld, as_arr, panel, as_afters, bef_f) {
 			for (var j = 0; j < as_arr[i].length; j++) {
 				var card = fld.Allys.Deck[i];
 				var as = as_arr[i][j];
-				// atknを増やす関数が指定されているなら実行
+				var an = 0;
+				
+				// 連撃数を取得する
+				if(as.atkn_crystal > 0){
+					an += as.atkn_crystal;
+					as.atkn_crystal = 0;
+				}
 				if(!as.atkn_funcadded && as.atkn && as.atkn.add_atkn){
+					// atknを増やす関数が指定されているなら実行
 					var anf = AsAddRate;
 					var an = 0;
 					$.each(as.atkn.add_atkn, function(aki,e){
 						an += anf[e.func](bef_f, e, j, -1);
 					});
-					as.atkn = an;
 					as.atkn_funcadded = true;
 				}
+				as.atkn = (as.atkn > 0 ? as.atkn : 0) + an;
+				
 				// ASが適用されるならば攻撃数を取得
 				if (as.type == "attack" && is_answer_target(fld, bef_f, as, chain, -1, -1, i, -1, panel)) {
 					var subattr = (card.attr[1] >= 0) ? 2 : 1;
