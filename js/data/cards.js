@@ -100180,7 +100180,7 @@ Cards = [{
 	ss2: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ水・闇属性のダメージ(150%)。HP20%以下の時、さらにダメージアップ(1500%)し、味方全体のHPを完全回復",
 		turn: 6,
-		proc: [ss_damage_all(ss_hp_less(0.2, 16.5, 1.5), [2,4]), ss_hp_less_skill(0.2, ss_heal(1)), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(ss_hp_less(0.2, 16.5, 1.5), [1,4]), ss_hp_less_skill(0.2, ss_heal(1)), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,2000),
