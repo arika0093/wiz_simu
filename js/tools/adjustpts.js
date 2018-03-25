@@ -44,9 +44,13 @@ var PtDatas = [{
 	is_ev: true,
 	is_lo: true,
 }, {
-	name: "漆式",
+	name: "捌式",
 	rank: "1位",
 	pt: 5500,
+}, {
+	name: "漆式",
+	rank: "1位",
+	pt: 4800,
 }, {
 	name: "陸式",
 	rank: "1位",
@@ -64,9 +68,9 @@ var PtDatas = [{
 }, {
 	name: "漆式",
 	rank: "9位以下",
-	pt: 748,
+	pt: 650, //748,
 	is_lo: true,
-	is_dg: true,
+	//is_dg: true,
 }, {
 	name: "陸式",
 	rank: "9位以下",
@@ -77,6 +81,7 @@ var PtDatas = [{
 	rank: "9位以下",
 	pt: 544,
 	is_lo: true,
+	is_dg: true,
 }, {
 	name: "肆式",
 	rank: "9位以下",
