@@ -87058,7 +87058,7 @@ Cards = [{
 	ss1: {
 		desc: "<ダメージブロック>1ターン500以下の全属性ダメージを無効化する,3チェインを消費しさらに1500以下の全属性ダメージを無効化",
 		turn: 3,
-		proc: [ss_chain_cost_skill(5, ss_damageblock_all(2000, 1), ss_damageblock_all(500, 1))],
+		proc: [ss_chain_cost_skill(3, ss_damageblock_all(2000, 1), ss_damageblock_all(500, 1))],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
@@ -87077,7 +87077,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,0,1,0,0], 0), ChainEnhance_SubAttr(0.3, 0.6, [0,0,1,0,0], [1,0,0,0,0], 0)],
 	},
 	ss2: {
-		desc: "<ダメージブロック>1ターン500以下の全属性ダメージを無効化する,3チェインを消費しさらに2500以下の全属性ダメージを無効化",
+		desc: "<ダメージブロック>1ターン500以下の全属性ダメージを無効化する, 5チェインを消費しさらに2500以下の全属性ダメージを無効化",
 		turn: 6,
 		proc: [ss_chain_cost_skill(5, ss_damageblock_all(3000, 1), ss_damageblock_all(500, 1))],
 	},
@@ -93845,7 +93845,7 @@ Cards = [{
 	ss1: {
 		desc: "<ダメージブロック>1ターン500以下の全属性ダメージを無効化する、3チェインを消費しさらに1500以下の全属性ダメージを無効化",
 		turn: 3,
-		proc: [ss_chain_cost_skill(5, ss_damageblock_all(2000, 1), ss_damageblock_all(500, 1))],
+		proc: [ss_chain_cost_skill(3, ss_damageblock_all(2000, 1), ss_damageblock_all(500, 1))],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],2),
