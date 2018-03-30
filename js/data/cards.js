@@ -60580,7 +60580,7 @@ Cards = [{
 		proc: [Heal(0.10, [1,0,1,0,0], 1), Heal(0.17, [1,0,1,0,0], 7)],
 	},
 	ss1: {
-		desc: "<カウンター>3ターンの間、スキルカウンター待機",
+		desc: "<カウンター>3ターンの間、スキルカウンター待機(200%)",
 		turn: 7,
 		proc: [ss_skillcounter(2.0, 3)],
 	},
@@ -60595,7 +60595,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,0,1,0,0], 1), Heal(0.20, [1,0,1,0,0], 7)],
 	},
 	ss2: {
-		desc: "<カウンター>5ターンの間、スキルカウンター待機",
+		desc: "<カウンター>5ターンの間、スキルカウンター待機(200%)",
 		turn: 10,
 		proc: [ss_skillcounter(2.0, 5)],
 	},
@@ -60625,7 +60625,7 @@ Cards = [{
 		proc: [Heal(0.10, [1,0,1,0,0], 1), Heal(0.17, [1,0,1,0,0], 7)],
 	},
 	ss1: {
-		desc: "<カウンター>3ターンの間、スキルカウンター待機",
+		desc: "<カウンター>3ターンの間、スキルカウンター待機(200%)",
 		turn: 7,
 		proc: [ss_skillcounter(2.0, 3)],
 	},
@@ -60640,7 +60640,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,0,1,0,0], 1), Heal(0.20, [1,0,1,0,0], 7)],
 	},
 	ss2: {
-		desc: "<カウンター>5ターンの間、スキルカウンター待機",
+		desc: "<カウンター>5ターンの間、スキルカウンター待機(200%)",
 		turn: 10,
 		proc: [ss_skillcounter(2.0, 5)],
 	},
@@ -77761,7 +77761,7 @@ Cards = [{
 		Statusup(1000,0),
 	],
 },{
-	name: "夏の統治者 ミュウ・フォルトナ",
+	name: "夏の統治者 ミュウ・フォルトゥナ",
 	cardno: 8729,
 	imageno: 10905,
 	hp: 3345,
@@ -86006,7 +86006,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(0.8, 1.3, [1,0,0,0,0], [0,0,1,0,0], 7),
 	},
 	ss1: {
-		desc: "<カウンター>5ターンの間、スキルカウンター待機(カウンター時、ダメージアップ(300%))",
+		desc: "<カウンター>5ターンの間、スキルカウンター待機(300%)",
 		turn: 12,
 		proc: [ss_skillcounter(3.0, 5)],
 	},
@@ -86027,7 +86027,7 @@ Cards = [{
 		proc: ChainEnhance_SubAttr(1.1, 1.6, [1,0,0,0,0], [0,0,1,0,0], 7),
 	},
 	ss2: {
-		desc: "<カウンター>5ターンの間、スキルカウンター待機(カウンター時、ダメージアップ(400%))",
+		desc: "<カウンター>5ターンの間、スキルカウンター待機(400%)",
 		turn: 15,
 		proc: [ss_skillcounter(4.0, 5)],
 	},
@@ -87964,7 +87964,7 @@ Cards = [{
 		proc: [ChainEnhance(0.80, [0,1,1,0,0], 7), as_guard(0.10, [0,1,1,0,0], 7)],
 	},
 	ss1: {
-		desc: "<カウンター>10ターンの間、スキルカウンター待機(カウンター時、ダメージアップ(200%))",
+		desc: "<カウンター>10ターンの間、スキルカウンター待機(200%)",
 		turn: 10,
 		proc: [ss_skillcounter(2.0, 10)],
 	},
@@ -87985,7 +87985,7 @@ Cards = [{
 		proc: [ChainEnhance(1.0, [0,1,1,0,0], 7), as_guard(0.10, [0,1,1,0,0], 7)],
 	},
 	ss2: {
-		desc: "<カウンター>10ターンの間、スキルカウンター待機(カウンター時、ダメージアップ(250%))",
+		desc: "<カウンター>10ターンの間、スキルカウンター待機(250%)",
 		turn: 13,
 		proc: [ss_skillcounter(2.5, 10)],
 	},
@@ -90562,7 +90562,7 @@ Cards = [{
 	atk: 2921,
 	cost: 44,
 	attr: [1,0],
-	species: [-1],
+	species: [9],
 	islegend: true,
 	ape: "黒ウィズミュージアム",
 	is_dist: true,
@@ -94118,7 +94118,7 @@ Cards = [{
 		proc: add_cond(ChainDualAttack(2.5, 0, 3), as_timedep(0.7)),
 	},
 	ss1: {
-		desc: "<カウンター>1ターンの間、スキルカウンター待機(カウンター時、ダメージアップ(200%))",
+		desc: "<カウンター>1ターンの間、スキルカウンター待機(200%)",
 		turn: 5,
 		proc: [ss_skillcounter(2.0, 1)],
 	},
@@ -94139,7 +94139,7 @@ Cards = [{
 		proc: add_cond(ChainDualAttack(3.5, 0, 3), as_timedep(0.7)),
 	},
 	ss2: {
-		desc: "<カウンター>1ターンの間、スキルカウンター待機(カウンター時、ダメージアップ(300%))",
+		desc: "<カウンター>1ターンの間、スキルカウンター待機(300%)",
 		turn: 7,
 		proc: [ss_skillcounter(3.0, 1)],
 	},
@@ -97237,7 +97237,7 @@ Cards = [{
 		proc: ChainAttack(5.0, 5),
     },
     ss2:{
-		desc: "<ダメージ強化>1ターン溜めた後、1ターン雷属性の味方の攻撃力をアップ(200%)",
+		desc: "<ダメージ強化>1ターン溜めた後、1ターン火属性の味方の攻撃力をアップ(200%)",
 		turn: 8,
 		charged: 1,
 		proc: [ss_enhance_all(2.0, 1, [0,0,1,0,0])],
@@ -97287,7 +97287,7 @@ Cards = [{
 		proc: ChainAttack(5.0, 5),
     },
     ss2:{
-		desc: "<ダメージ強化>1ターン溜めた後、1ターン雷属性の味方の攻撃力をアップ(200%)",
+		desc: "<ダメージ強化>1ターン溜めた後、1ターン火属性の味方の攻撃力をアップ(200%)",
 		turn: 8,
 		charged: 1,
 		proc: [ss_enhance_all(2.0, 1, [0,1,0,0,0])],
@@ -97315,7 +97315,7 @@ Cards = [{
 		proc: ChainAttack(4.0, 5),
     },
     ss1:{
-		desc: "<ダメージ強化>1ターン溜めた後、1ターン雷属性の味方の攻撃力をアップ(150%)",
+		desc: "<ダメージ強化>1ターン溜めた後、1ターン火属性の味方の攻撃力をアップ(150%)",
 		turn: 5,
 		charged: 1,
 		proc: [ss_enhance_all(1.5, 1, [1,0,0,0,0])],
@@ -97845,12 +97845,12 @@ Cards = [{
 		proc: [ChainEnhance(0.90, [0,1,1,0,0], 5), as_guard(0.10, [1,1,1,1,1], 5)],
 	},
 	ss1: {
-		desc: "<カウンター>3ターンの間、スキルカウンター待機(カウンター時、ダメージアップ(200%))",
+		desc: "<カウンター>3ターンの間、スキルカウンター待機(200%)",
 		turn: 7,
 		proc: [ss_skillcounter(2.0, 3)],
 	},
 	ss2: {
-		desc: "<カウンター>5ターンの間、スキルカウンター待機(カウンター時、ダメージアップ(200%))、回復反転状態でさらに多段式カウンター待機(カウンター時、ダメージアップ(200%))",
+		desc: "<カウンター>5ターンの間、スキルカウンター待機(200%)、回復反転状態でさらに多段式カウンター待機(200%)",
 		turn: 10,
 		proc: [ss_skillcounter(2.0, 5)],
 		//ss_is_healreverse_own_skill(ss_dualcounter(2.0, 5))],
@@ -98716,7 +98716,7 @@ Cards = [{
 		proc: ChainAttrAttack(4.5, 0, [0,0,1,0,1]),
 	},
 	ss2: {
-		desc: "<カウンター>1ターンの間、スキルカウンター待機(カウンター時、ダメージアップ(200%))",
+		desc: "<カウンター>1ターンの間、スキルカウンター待機(200%)",
 		turn: 8,
 		proc: [ss_skillcounter(2.0, 1)],
 	},
@@ -99151,6 +99151,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	ape: "周年記念精霊(5周年)",
+	alias: ["リヴェータ", "ルドヴィカ", "リヴェルド"],
 	as1: {
 		desc: "<連撃>3チェインで敵単体を3回連続攻撃(300%)、20チェインで更にダメージアップ(1300%)",
 		proc: [ChainDualAttack(3.0, 3, 3), ChainDualAttack(16.0, 20, 3)],
@@ -99199,6 +99200,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "周年記念精霊(5周年)",
+	alias: ["ちっぱい"],
 	as1: {
 		desc: "<回復>火・雷属性の味方を回復(12%)、パネルの色が2色以上でさらに回復(6%)",
 		proc: ChainPanelsHeal(0.12, 0.18, 0.18, [1,0,1,0,0], 0),
@@ -100765,5 +100767,545 @@ Cards = [{
 	Lawake: [
 		Attr_statusup(0,200, [0,0,1,0,0,]),
 	],
+},{
+
+	name: "GZアイドル リルム・ロロット",
+
+	cardno: 10032,
+
+	imageno: 12386,
+
+	hp: 2715,
+
+	atk: 7321,
+
+	cost: 52,
+
+	attr: [0,-1],
+
+	species: [9],
+
+	islegend: true,
+
+	ape: "アイドルキャッツ2",
+
+	as1: {
+		desc: "<全体攻撃>敵全体へダメージ(120%)、デッキに単色の精霊が多いほど、さらにダメージアップ(20%)（上限:5段階)",
+
+		proc: [add_cond(ChainAllAttack(1.2, 0), as_singleattr_num(0, 0.2))],
+
+	},
+
+	ss1: {
+
+		desc: "<スキルチャージ>味方一人のスペシャルスキルの発動ターンを1早める",
+
+		turn: 5,
+
+		proc: [ss_toselect_one(ss_skillboost(1))],
+
+	},
+
+	as2: {
+
+		desc: "<全体攻撃>敵全体へダメージ(150%)、デッキに単色の精霊が多いほど、さらにダメージアップ(20%)（上限:5段階)",
+
+		proc: [add_cond(ChainAllAttack(1.5, 0), as_singleattr_num(0, 0.2))],
+
+	},
+
+	ss2: {
+
+		desc: "<スキルチャージ>味方一人のスペシャルスキルの発動ターンを4早める",
+
+		turn: 8,
+
+		proc: [ss_toselect_one(ss_skillboost(4))],
+
+	},
+
+	awakes: [
+
+		Panel_boost([1,0,0,0,0,],2),
+
+		Attr_statusup_oattr(0,400,[1,0,0,0,0,]),
+
+		Attr_statusup_oattr(400,0,[1,0,0,0,0,]),
+
+		NEFTJOD(30),
+
+		Attr_relief([0,0,1,0,0,],20),
+
+		Fastskill(5),
+
+		Attr_statusup(0,400,[1,0,0,0,0,]),
+
+		Attr_statusup(400,0,[1,0,0,0,0,]),
+
+		Panel_boost([1,0,0,0,0,],2),
+
+		Abstate_invalid("discharge"),
+
+	],
+
+	Lawake: [
+
+		Attr_statusup(0,200,[1,0,0,0,0,]),
+
+		Statusup(0,1000),
+
+	],
+
+},
+{
+
+	name: "エレガントナース ガトリン・G・U",
+
+	cardno: 10034,
+
+	imageno: 12388,
+
+	hp: 2913,
+
+	atk: 7112,
+
+	cost: 52,
+
+	attr: [2,-1],
+
+	species: [8],
+
+	islegend: true,
+
+	ape: "アイドルキャッツ2",
+
+	as1: {
+
+		desc: "<連撃>敵単体を6回連続攻撃(150%)、デッキに単色の精霊が多いほど、ダメージがアップ(70%)(上限:5段階)",
+
+		proc: add_cond(ChainDualAttack(1.5, 0, 6), as_singleattr_num(0, 0.7)),
+
+	},
+
+	ss1: {
+
+		desc: "<純属性大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ、雷単色の精霊が多いほどダメージアップ(上限値:3000%)",
+
+		turn: 7,
+
+		proc: [ss_damage_s(ss_pureattr_cond(30), [2], 1), ss_ignore_skillcounter()],
+
+	},
+
+	as2: {
+
+		desc: "<連撃>敵単体を6回連続攻撃(250%)、デッキに単色の精霊が多いほど、ダメージがアップ(70%)(上限:5段階)",
+
+		proc: add_cond(ChainDualAttack(2.5, 0, 6), as_singleattr_num(0, 0.7)),
+
+	},
+
+	ss2: {
+
+		desc: "<純属性大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ、雷単色の精霊が多いほどダメージアップ(上限値:3600%)",
+
+		turn: 10,
+
+		proc: [ss_damage_s(ss_pureattr_cond(36), [2], 1), ss_ignore_skillcounter()],
+
+	},
+
+	awakes: [
+
+		Costdown(20),
+
+		Panel_boost([0,0,1,0,0,],2),
+
+		Attr_statusup_oattr(0,400,[0,0,1,0,0,]),
+
+		Attr_statusup_oattr(400,0,[0,0,1,0,0,]),
+
+		Panel_boost([0,0,1,0,0,],2),
+
+		Fastskill(3),
+
+		Attr_statusup(0,400,[0,0,1,0,0,]),
+
+		Attr_statusup(400,0,[0,0,1,0,0,]),
+
+		Abstate_invalid("as_sealed"),
+
+		Awake_damage_multiple(1.1, 500),
+
+	],
+
+	Lawake: [
+
+		Statusup(0,1500),
+
+		Abstate_invalid("ss_sealed"),
+
+	],
+
+},
+{
+	name: "純白きゃっつ リリー&エクセリア",
+
+	cardno: 10036,
+
+	imageno: 12390,
+
+	hp: 2325,
+
+	atk: 4318,
+
+	cost: 56,
+
+	attr: [1,3],
+
+	species: [0],
+
+	islegend: true,
+
+	ape: "アイドルキャッツ2",
+
+	as1: {
+
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(200%)、デッキ内の精霊が持つ属性数が多いほどさらにアップ(50%)(上限値:5段階)",
+
+		proc: add_cond(ChainDualAttack(2.0, 3, 3), as_deckinattr_num(0, 0.5)),
+
+	},
+
+	ss1: {
+
+		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ水・光属性のダメージ(700%)、さらに隣接する敵に水・光属性のダメージ(700%)",
+
+		turn: 7,
+
+		proc: [ss_damage_explosion(7.0, [1,3]), ss_ignore_skillcounter()],
+
+	},
+
+	as2: {
+
+		desc: "<連撃>3チェインで敵単体を3回連続攻撃(300%)、デッキ内の精霊が持つ属性数が多いほどさらにアップ(50%)(上限値:5段階)",
+
+		proc: add_cond(ChainDualAttack(3.0, 3, 3), as_deckinattr_num(0, 0.5)),
+
+	},
+
+	ss2: {
+
+		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ水・光属性のダメージ(1000%)、さらに隣接する敵に水・光属性のダメージ(1000%)",
+
+		turn: 10,
+
+		proc: [ss_damage_explosion(10.0, [1,3]), ss_ignore_skillcounter()],
+
+	},
+
+	awakes: [
+
+		Costdown(20),
+
+		Fastskill(2),
+		Attr_statusup(0,200,[0,1,0,0,0,]),
+
+		Attr_statusup(200,0,[0,1,0,0,0,]),
+
+		Panel_boost([0,1,0,0,0,],3),
+
+		Attr_relief([1,1,1,1,1,],10),
+
+		Fastskill(2),
+
+		Attr_statusup_subattr(0,500),
+
+		Attr_statusup_subattr(500,0),
+
+		Abstate_invalid("as_sealed"),
+
+	],
+
+	Lawake: [
+
+		Statusup(0,1500),
+
+		Abstate_invalid("ss_sealed"),
+
+	],
+
+},
+{
+	name: "白線スポーティー アイラ&セラータ",
+
+	cardno: 10038,
+
+	imageno: 12392,
+
+	hp: 5515,
+
+	atk: 2011,
+
+	cost: 53,
+
+	attr: [0,2],
+
+	species: [2],
+
+	islegend: true,
+
+	ape: "アイドルキャッツ2",
+
+	as1: {
+
+		desc: "<回復・複属性攻撃強化>火属性の味方を回復し(10%)、攻撃力もアップ(30%)。複属性が雷属性だとさらに攻撃力アップ(30%)",
+
+		proc: [Heal(0.1, [1,0,0,0,0], 0), ChainEnhance_SubAttr(0.3, 0.6, [1,0,0,0,0], [0,0,1,0,0], 0)],
+	},
+
+	ss1: {
+
+		desc: "<ダメージブロック>1ターン500以下の全属性ダメージを無効化する、3チェインを消費しさらに1500以下の全属性ダメージを無効化",
+
+		turn: 3,
+
+		proc: [ss_chain_cost_skill(3, ss_damageblock_all(2000, 1), ss_damageblock_all(500, 1))],
+
+	},
+
+	as2: {
+
+		desc: "<回復・複属性攻撃強化>火属性の味方を回復し(13%)、攻撃力もアップ(30%)。複属性が雷属性だとさらに攻撃力アップ(30%)",
+
+		proc: [Heal(0.13, [1,0,0,0,0], 0), ChainEnhance_SubAttr(0.3, 0.6, [1,0,0,0,0], [0,0,1,0,0], 0)],
+
+	},
+
+	ss2: {
+
+		desc: "<ダメージブロック>1ターン500以下の全属性ダメージを無効化する、5チェインを消費しさらに2500以下の全属性ダメージを無効化",
+
+		turn: 6,
+
+		proc: [ss_chain_cost_skill(5, ss_damageblock_all(3000, 1), ss_damageblock_all(500, 1))],
+
+	},
+	awakes: [
+
+		Panel_boost([1,0,0,0,0,],2),
+
+		Attr_statusup(0,200,[1,1,0,0,0,]),
+
+		Attr_statusup(200,0,[1,1,0,0,0,]),
+
+		Panel_boost([1,0,0,0,0,],2),
+
+		Fastskill(3),
+
+		Awake_noeffect("行動見破り",1),
+
+		Attr_relief([1,1,1,1,1,],10),
+
+		Attr_statusup_sattr(0,100,[1,0,0,0,0,],0,300,[0,0,1,0,0,]),
+
+		Attr_statusup_sattr(100,0,[1,0,0,0,0,],300,0,[0,0,1,0,0,]),
+
+		Heal_afterbattle(10),
+
+	],
+
+	Lawake: [
+
+		Attr_statusup_sattr(100,0,[1,0,0,0,0,],200,0,[0,0,1,0,0,]),
+
+		Statusup(500,0),
+
+	],
+
+},
+{
+
+	name: "時間厳守アイドル ユッカ・エンデ",
+
+	cardno: 10040,
+
+	imageno: 12394,
+
+	hp: 2625,
+
+	atk: 4207,
+	cost: 56,
+
+	attr: [2,0],
+
+	species: [9],
+
+	islegend: true,
+
+	ape: "アイドルキャッツ2",
+
+	as1: {
+
+		desc: "<連撃>4チェインで敵単体を4回連続攻撃(250%)、デッキ内の精霊が持つ属性数が多いほどさらにアップ(60%)(上限値:5段階)",
+
+		proc: add_cond(ChainDualAttack(2.5, 4, 4), as_deckinattr_num(0, 0.6)),
+
+	},
+
+	ss1: {
+
+		desc: "<ダブルスキル付与>2ターン溜めた後、8ターンの間、味方一人にSPスキル使用回数+1の効果を付与する(SPスキル使用回数アップの効果は重複しません)",
+
+		turn: 8,
+
+		charged: 2,
+
+		proc: [ss_toselect_one(ss_doubleskill_all(8))],
+
+	},
+
+	as2: {
+
+		desc: "<連撃>4チェインで敵単体を4回連続攻撃(350%)、デッキ内の精霊が持つ属性数が多いほどさらにアップ(60%)(上限値:5段階)",
+
+		proc: add_cond(ChainDualAttack(3.5, 4, 4), as_deckinattr_num(0, 0.6)),
+
+	},
+
+	ss2: {
+
+		desc: "<ダブルスキル付与>2ターン溜めた後、8ターンの間、味方一人にSPスキル使用回数+1の効果を付与する(SPスキル使用回数アップの効果は重複しません)",
+		turn: 8,
+
+		charged: 2,
+
+		proc: [ss_toselect_one(ss_doubleskill_all(8))],
+
+	},
+
+	awakes: [
+
+		Abstate_invalid("ss_sealed"),
+
+		Panel_boost([0,0,1,0,0,],2),
+
+		Fastskill(3),
+
+		Attr_statusup(0,200,[1,0,1,0,0,]),
+
+		Attr_statusup(200,0,[1,0,1,0,0,]),
+
+		Panel_boost([0,0,1,0,0,],2),
+
+		Attr_relief([1,1,1,1,1,],20),
+
+		Fastskill(3),
+
+		Attr_statusup_subattr(0,500),
+
+		Attr_statusup_subattr(500,0),
+
+	],
+
+	Lawake: [
+
+		Attr_statusup(0,300,[1,0,1,0,0,]),
+
+		Abstate_invalid("as_sealed"),
+
+	],
+
+},
+{
+
+	name: "男気アイドル ルカ・フォルティス",
+
+	cardno: 10042,
+
+	imageno: 12396,
+
+	hp: 2415,
+
+	atk: 4551,
+
+	cost: 58,
+
+	attr: [1,0],
+
+	species: [3],
+	islegend: true,
+
+	ape: "アイドルキャッツ2",
+
+	as1: {
+
+		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(600%)",
+
+		proc: add_cond(ChainAttack(6.0, 0), as_consume_all(0.1)),
+
+	},
+
+	ss1: {
+
+		desc: "＜AS倍率強化＞3ターンの間、デッキ内の<主属性:水、複属性:火>の精霊のAS攻撃倍率をアップ。同属性の精霊が多いほどさらに倍率が上昇(上限値:3倍)",
+
+		turn: 4,
+
+		proc: [ss_asenhance_all(3, [0,1,0,0,0], [1,0,0,0,0], 3)],
+
+	},
+
+	as2: {
+
+		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(700%)",
+
+		proc: add_cond(ChainAttack(7.0, 0), as_consume_all(0.1)),
+
+	},
+
+	ss2: {
+
+		desc: "＜AS倍率強化＞3ターンの間、デッキ内の<主属性:水、複属性:火>の精霊のAS攻撃倍率をアップ。同属性の精霊が多いほどさらに倍率が上昇(上限値:3倍)",
+
+		turn: 4,
+
+		proc: [ss_asenhance_all(3, [0,1,0,0,0], [1,0,0,0,0], 3)],
+
+	},
+
+	awakes: [
+
+		Panel_boost([0,1,0,0,0,],2),
+
+		Attr_statusup_sattr(0,200,[0,1,0,0,0,],0,100,[1,0,0,0,0,]),
+
+		Attr_statusup_sattr(200,0,[0,1,0,0,0,],100,0,[1,0,0,0,0,]),
+
+		Panel_boost([0,1,0,0,0,],2),
+
+		Abstate_invalid("as_sealed"),
+
+		Fastskill(3),
+
+		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,300,[1,0,0,0,0,]),
+
+		Attr_statusup_sattr(100,0,[0,1,0,0,0,],300,0,[1,0,0,0,0,]),
+
+		Abstate_invalid("ss_sealed"),
+
+		Awake_damage_multiple(1.1, 500),
+
+	],
+
+	Lawake: [
+
+		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,100,[1,0,0,0,0,]),
+
+		Statusup(0,1000),
+
+	],
+
 },
 ];
