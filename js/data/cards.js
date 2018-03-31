@@ -100818,7 +100818,7 @@ Cards = [{
 	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "アイドルキャッツ2",
-	as1: 
+	as1: {
 		desc: "<全体攻撃>敵全体へダメージ(120%)、デッキに単色の精霊が多いほど、さらにダメージアップ(20%)（上限:5段階)",
 		proc: [add_cond(ChainAllAttack(1.2, 0), as_singleattr_num(0, 0.2))],
 	},
