@@ -7592,7 +7592,7 @@ Cards = [{
 	cost: 46,
 	attr: [1, -1],
 	species: [9],
-	alias: ["ちっぱい"],
+	alias: ["巨乳"],
 	awakes: [
 		Costdown(2),
 		Attr_relief([0, 0, 1, 0, 0, ], 10),
@@ -10778,6 +10778,7 @@ Cards = [{
 	cost: 42,
 	attr: [1, -1],
 	species: [1],
+	alias: ["ちっぱい"],
 	awakes: [
 		Costdown(2),
 		Statusup(0, 200),
@@ -11537,7 +11538,7 @@ Cards = [{
 	cost: 33,
 	attr: [2, -1],
 	species: [8],
-	alias: ["ちっぱい"],
+	alias: ["巨乳"],
 	awakes: [
 		Panel_boost([0, 0, 1, 0, 0, ], 1),
 		Fastskill(1),
@@ -12658,6 +12659,7 @@ Cards = [{
 	cost: 38,
 	attr: [2, -1],
 	species: [9],
+	alias: ["ちっぱい"],
 	awakes: [
 		Statusup(200, 0),
 		Fastskill(1),
@@ -13770,7 +13772,7 @@ Cards = [{
 	attr: [2, -1],
 	species: [9],
 	disable: true,
-	alias: ["ちっぱい"],
+	alias: ["巨乳"],
 	awakes: [
 		Attr_statusup(100, 0, [0, 0, 1, 0, 0, ]),
 		Fastskill(3),
@@ -17629,6 +17631,7 @@ Cards = [{
 	cost: 45,
 	attr: [2, -1],
 	species: [9],
+	alias: ["ちっぱい"],
 	islegend: true,
 	as1: {
 		desc: "<属性特効>水属性の敵単体へ特効ダメージ、リーダー時さらにアップ(350%/450%)",
@@ -17902,6 +17905,7 @@ Cards = [{
 	cost: 48,
 	attr: [1,2],
 	species: [9],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "天上岬Ⅱ",
 	as1: {
@@ -17950,7 +17954,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "天上岬Ⅱ",
-	alias: ["ちっぱい"],
+	alias: ["巨乳"],
 	as1: {
 		desc: "<回復>味方全体のHPを回復(14%)",
 		proc: Heal(0.14, [1,1,1,1,1]),
@@ -19930,7 +19934,7 @@ Cards = [{
 	attr: [2,-1],
 	species: [9],
 	islegend: true,
-	alias: ["/rinshandream", "/wiztools", "ちっぱい"],
+	alias: ["/rinshandream", "/wiztools", "巨乳"],
 	as1: {
 		desc: "<回復>雷属性の味方のHPを回復(13%)",
 		proc: Heal(0.13, [0,0,1,0,0], 0),
@@ -49879,7 +49883,7 @@ Cards = [{
 	cost: 58,
 	attr: [2,3],
 	species: [9],
-	alias: ["ちっぱい"],
+	alias: ["巨乳"],
 	islegend: true,
 	ape: "追憶のレディアント",
 	as1: {
@@ -54210,7 +54214,7 @@ Cards = [{
 	attr: [1, 2],
 	species: [9],
 	ape: "DL限定精霊",
-	alias: ["ちっぱい"],
+	alias: ["巨乳"],
 	awakes: [
 		Awake_Chainboost(1),
 		Fastskill(1),
@@ -54441,7 +54445,7 @@ Cards = [{
 	disable: true,
 	islegend: true,
 	ape: "エステレラⅠ",
-	alias: ["ちっぱい"],
+	alias: ["巨乳"],
 	as1: {
 		desc: "<攻撃強化・回復>火・水属性の味方のHPを回復(13%)、さらに火・水属性の味方の攻撃力をアップ(30%)",
 		proc: [Heal(0.13, [1,1,0,0,0], 0), ChainEnhance(0.3, [1,1,0,0,0], 0)],
@@ -56147,6 +56151,7 @@ Cards = [{
 	cost: 46,
 	attr: [1,-1],
 	species: [1],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "イタズラ女神とうさぎのおはなし",
 	is_dist: true,
@@ -58793,6 +58798,7 @@ Cards = [{
 	cost: 53,
 	attr: [0,-1],
 	species: [2],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "Blader",
 	as1: {
@@ -58838,6 +58844,7 @@ Cards = [{
 	cost: 53,
 	attr: [0,-1],
 	species: [2],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "Blader",
 	as1: {
@@ -60429,6 +60436,7 @@ Cards = [{
 	cost: 55,
 	attr: [1,3],
 	species: [9],
+	alias: ["ちっぱい"],
 	islegend: true,
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ、8チェインで更にダメージアップ(350%/500%)",
@@ -62372,6 +62380,7 @@ Cards = [{
 	cost: 59,
 	attr: [0,2],
 	species: [9],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "グリコⅡ",
 	as1: {
@@ -62418,6 +62427,7 @@ Cards = [{
 	cost: 51,
 	attr: [1,-1],
 	species: [5],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "グリコⅡ",
 	as1: {
@@ -63824,6 +63834,7 @@ Cards = [{
 	cost: 56,
 	attr: [0,2],
 	species: [2],
+	alias: ["ちっぱい"],
 	islegend: true,
 	as1: {
 		desc: "<回復>火・雷属性の味方のHPを回復、パネルの色が増す度にさらに回復(11%/15%/17%)",
@@ -68113,6 +68124,7 @@ Cards = [{
 	cost: 54,
 	attr: [0,4],
 	species: [2],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "周年記念精霊(3周年)",
 	as1: {
@@ -68711,7 +68723,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "バレンタイン2015",
-	alias: ["ちっぱい"],
+	alias: ["巨乳"],
 	as1: {
 		desc: "<攻撃強化>7チェインで水属性の味方の攻撃力をアップ、20チェインでさらにアップ(80%/300%)",
 		proc: [ChainEnhance(0.8, [0,1,0,0,0], 7), ChainEnhance(3.0, [0,1,0,0,0], 20)],
@@ -69028,6 +69040,7 @@ Cards = [{
 	cost: 53,
 	attr: [1,3],
 	species: [9],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "バレンタイン2016",
 	as1: {
@@ -69073,6 +69086,7 @@ Cards = [{
 	cost: 54,
 	attr: [2,1],
 	species: [1],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "バレンタイン2016",
 	as1: {
@@ -69258,7 +69272,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "バレンタイン2014",
-	alias: ["ちっぱい"],
+	alias: ["巨乳"],
 	as1: {
 		desc: "<回復>水・雷属性の味方を回復、HP50%以下なら更に回復(11%/21%)",
 		proc: [Heal(0.11, [0,1,1,0,0], 0), add_cond(Heal(0.21, [0,1,1,0,0], 0), when_hp_less(0.5))],
@@ -70278,6 +70292,7 @@ Cards = [{
 	cost: 54,
 	attr: [2,4],
 	species: [8],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "覇眼戦線Ⅱ",
 	as1: {
@@ -70874,6 +70889,7 @@ Cards = [{
 	cost: 51,
 	attr: [1,2],
 	species: [5],
+	alias: ["ちっぱい"],
 	islegend: true,
 	is_dist: true,
 	ape: "覇眼戦線Ⅲ",
@@ -75572,6 +75588,7 @@ Cards = [{
 	cost: 54,
 	attr: [0,3],
 	species: [8],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "黄昏メアレスⅢ",
 	as1: {
@@ -76996,6 +77013,7 @@ Cards = [{
 	cost: 54,
 	attr: [2,0],
 	species: [1],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "エタクロⅢ",
 	as1: {
@@ -78646,6 +78664,7 @@ Cards = [{
 	cost: 51,
 	attr: [0,-1],
 	species: [2],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "聖サタニック女学院2",
 	as1: {
@@ -78872,6 +78891,7 @@ Cards = [{
 	cost: 54,
 	attr: [0,-1],
 	species: [2],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "聖サタニック女学院2",
 	as1: {
@@ -79381,6 +79401,7 @@ Cards = [{
 	cost: 56,
 	attr: [0,4],
 	species: [2],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "聖サタニック女学院",
 	as1: {
@@ -81708,6 +81729,7 @@ Cards = [{
 	cost: 65,
 	attr: [2,3],
 	species: [9],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "GP2014",
 	as1: {
@@ -82214,6 +82236,7 @@ Cards = [{
 	cost: 54,
 	attr: [1,2],
 	species: [9],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "喰牙RIZEⅡ",
 	as1: {
@@ -84587,6 +84610,7 @@ Cards = [{
 	cost: 50,
 	attr: [2,-1],
 	species: [8],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "ドルキマスⅡ",
 	as1: {
@@ -84814,6 +84838,7 @@ Cards = [{
 	cost: 54,
 	attr: [1,4],
 	species: [8],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "幻魔特区RELOADED",
 	as1: {
@@ -84949,6 +84974,7 @@ Cards = [{
 	cost: 59,
 	attr: [0,1],
 	species: [0],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "ドルキマスⅠ",
 	as1: {
@@ -86914,6 +86940,7 @@ Cards = [{
 	cost: 50,
 	attr: [0,-1],
 	species: [9],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "UHG",
 	as1: {
@@ -87004,6 +87031,7 @@ Cards = [{
 	cost: 52,
 	attr: [1,-1],
 	species: [9],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "UHG",
 	as1: {
@@ -87049,6 +87077,7 @@ Cards = [{
 	cost: 54,
 	attr: [2,0],
 	species: [9],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "UHG",
 	as1: {
@@ -90879,6 +90908,7 @@ Cards = [{
 	cost: 56,
 	attr: [0,3],
 	species: [9],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "DL限定精霊",
 	as1: {
@@ -91631,6 +91661,7 @@ Cards = [{
 	cost: 56,
 	attr: [1,4],
 	species: [1],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "エステレラⅡ",
 	as1: {
@@ -91949,6 +91980,7 @@ Cards = [{
 	cost: 54,
 	attr: [2,3],
 	species: [9],
+	alias: ["巨乳"],
 	islegend: true,
 	ape: "エステレラⅡ",
 	as1: {
@@ -92544,6 +92576,7 @@ Cards = [{
 	cost: 50,
 	attr: [2,-1],
 	species: [9],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "エステレラⅠ",
 	as1: {
@@ -92919,6 +92952,7 @@ Cards = [{
 	cost: 56,
 	attr: [1,4],
 	species: [1],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "大魔道杯 in エステレラ",
 	is_dist: true,
@@ -93605,6 +93639,7 @@ Cards = [{
 	cost: 54,
 	attr: [0,2],
 	species: [8],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "シュガーレスバンビーナ",
 	as1: {
@@ -94206,6 +94241,7 @@ Cards = [{
 	cost: 58,
 	attr: [2,1],
 	species: [5],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "新説桃娘伝",
 	as1: {
@@ -94251,6 +94287,7 @@ Cards = [{
 	cost: 47,
 	attr: [2,-1],
 	species: [8],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "新説桃娘伝",
 	as1: {
@@ -96172,6 +96209,7 @@ Cards = [{
 	cost: 54,
 	attr: [2,1],
 	species: [9],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "Christmas2016",
 	alias: ["主上", "しゅじょう", "シエオラ", "セルマ", "リシア"],
@@ -96222,6 +96260,7 @@ Cards = [{
 	cost: 46,
 	attr: [2,-1],
 	species: [9],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "Christmas2016",
 	alias: ["主上", "しゅじょう", "シエオラ", "セルマ", "リシア"],
@@ -99200,7 +99239,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "周年記念精霊(5周年)",
-	alias: ["ちっぱい"],
+	alias: ["巨乳"],
 	as1: {
 		desc: "<回復>火・雷属性の味方を回復(12%)、パネルの色が2色以上でさらに回復(6%)",
 		proc: ChainPanelsHeal(0.12, 0.18, 0.18, [1,0,1,0,0], 0),
@@ -99743,7 +99782,7 @@ Cards = [{
 	cost: 51,
 	attr: [2,-1],
 	species: [9],
-	alias: ["ちっぱい"],
+	alias: ["巨乳"],
 	islegend: true,
 	ape: "DL限定精霊",
 	as1: {
@@ -100768,544 +100807,282 @@ Cards = [{
 		Attr_statusup(0,200, [0,0,1,0,0,]),
 	],
 },{
-
 	name: "GZアイドル リルム・ロロット",
-
 	cardno: 10032,
-
 	imageno: 12386,
-
 	hp: 2715,
-
 	atk: 7321,
-
 	cost: 52,
-
 	attr: [0,-1],
-
 	species: [9],
-
+	alias: ["ちっぱい"],
 	islegend: true,
-
 	ape: "アイドルキャッツ2",
-
-	as1: {
+	as1: 
 		desc: "<全体攻撃>敵全体へダメージ(120%)、デッキに単色の精霊が多いほど、さらにダメージアップ(20%)（上限:5段階)",
-
 		proc: [add_cond(ChainAllAttack(1.2, 0), as_singleattr_num(0, 0.2))],
-
 	},
-
 	ss1: {
-
 		desc: "<スキルチャージ>味方一人のスペシャルスキルの発動ターンを1早める",
-
 		turn: 5,
-
 		proc: [ss_toselect_one(ss_skillboost(1))],
-
 	},
-
 	as2: {
-
 		desc: "<全体攻撃>敵全体へダメージ(150%)、デッキに単色の精霊が多いほど、さらにダメージアップ(20%)（上限:5段階)",
-
 		proc: [add_cond(ChainAllAttack(1.5, 0), as_singleattr_num(0, 0.2))],
-
 	},
-
 	ss2: {
-
 		desc: "<スキルチャージ>味方一人のスペシャルスキルの発動ターンを4早める",
-
 		turn: 8,
-
 		proc: [ss_toselect_one(ss_skillboost(4))],
-
 	},
-
 	awakes: [
-
 		Panel_boost([1,0,0,0,0,],2),
-
 		Attr_statusup_oattr(0,400,[1,0,0,0,0,]),
-
 		Attr_statusup_oattr(400,0,[1,0,0,0,0,]),
-
 		NEFTJOD(30),
-
 		Attr_relief([0,0,1,0,0,],20),
-
 		Fastskill(5),
-
 		Attr_statusup(0,400,[1,0,0,0,0,]),
-
 		Attr_statusup(400,0,[1,0,0,0,0,]),
-
 		Panel_boost([1,0,0,0,0,],2),
-
 		Abstate_invalid("discharge"),
-
 	],
-
 	Lawake: [
-
 		Attr_statusup(0,200,[1,0,0,0,0,]),
-
 		Statusup(0,1000),
-
 	],
-
 },
 {
-
 	name: "エレガントナース ガトリン・G・U",
-
 	cardno: 10034,
-
 	imageno: 12388,
-
 	hp: 2913,
-
 	atk: 7112,
-
 	cost: 52,
-
 	attr: [2,-1],
-
 	species: [8],
-
 	islegend: true,
-
 	ape: "アイドルキャッツ2",
-
 	as1: {
-
 		desc: "<連撃>敵単体を6回連続攻撃(150%)、デッキに単色の精霊が多いほど、ダメージがアップ(70%)(上限:5段階)",
-
 		proc: add_cond(ChainDualAttack(1.5, 0, 6), as_singleattr_num(0, 0.7)),
-
 	},
-
 	ss1: {
-
 		desc: "<純属性大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ、雷単色の精霊が多いほどダメージアップ(上限値:3000%)",
-
 		turn: 7,
-
 		proc: [ss_damage_s(ss_pureattr_cond(30), [2], 1), ss_ignore_skillcounter()],
-
 	},
-
 	as2: {
-
 		desc: "<連撃>敵単体を6回連続攻撃(250%)、デッキに単色の精霊が多いほど、ダメージがアップ(70%)(上限:5段階)",
-
 		proc: add_cond(ChainDualAttack(2.5, 0, 6), as_singleattr_num(0, 0.7)),
-
 	},
-
 	ss2: {
-
 		desc: "<純属性大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ、雷単色の精霊が多いほどダメージアップ(上限値:3600%)",
-
 		turn: 10,
-
 		proc: [ss_damage_s(ss_pureattr_cond(36), [2], 1), ss_ignore_skillcounter()],
-
 	},
-
 	awakes: [
-
 		Costdown(20),
-
 		Panel_boost([0,0,1,0,0,],2),
-
 		Attr_statusup_oattr(0,400,[0,0,1,0,0,]),
-
 		Attr_statusup_oattr(400,0,[0,0,1,0,0,]),
-
 		Panel_boost([0,0,1,0,0,],2),
-
 		Fastskill(3),
-
 		Attr_statusup(0,400,[0,0,1,0,0,]),
-
 		Attr_statusup(400,0,[0,0,1,0,0,]),
-
 		Abstate_invalid("as_sealed"),
-
 		Awake_damage_multiple(1.1, 500),
-
 	],
-
 	Lawake: [
-
 		Statusup(0,1500),
-
 		Abstate_invalid("ss_sealed"),
-
 	],
-
 },
 {
 	name: "純白きゃっつ リリー&エクセリア",
-
 	cardno: 10036,
-
 	imageno: 12390,
-
 	hp: 2325,
-
 	atk: 4318,
-
 	cost: 56,
-
 	attr: [1,3],
-
 	species: [0],
-
 	islegend: true,
-
 	ape: "アイドルキャッツ2",
-
 	as1: {
-
 		desc: "<連撃>3チェインで敵単体を3回連続攻撃(200%)、デッキ内の精霊が持つ属性数が多いほどさらにアップ(50%)(上限値:5段階)",
-
 		proc: add_cond(ChainDualAttack(2.0, 3, 3), as_deckinattr_num(0, 0.5)),
-
 	},
-
 	ss1: {
-
 		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ水・光属性のダメージ(700%)、さらに隣接する敵に水・光属性のダメージ(700%)",
-
 		turn: 7,
-
 		proc: [ss_damage_explosion(7.0, [1,3]), ss_ignore_skillcounter()],
-
 	},
-
 	as2: {
-
 		desc: "<連撃>3チェインで敵単体を3回連続攻撃(300%)、デッキ内の精霊が持つ属性数が多いほどさらにアップ(50%)(上限値:5段階)",
-
 		proc: add_cond(ChainDualAttack(3.0, 3, 3), as_deckinattr_num(0, 0.5)),
-
 	},
-
 	ss2: {
-
 		desc: "<炸裂大魔術>スキル反射を無視し、敵単体へ水・光属性のダメージ(1000%)、さらに隣接する敵に水・光属性のダメージ(1000%)",
-
 		turn: 10,
-
 		proc: [ss_damage_explosion(10.0, [1,3]), ss_ignore_skillcounter()],
-
 	},
-
 	awakes: [
-
 		Costdown(20),
-
 		Fastskill(2),
 		Attr_statusup(0,200,[0,1,0,0,0,]),
-
 		Attr_statusup(200,0,[0,1,0,0,0,]),
-
 		Panel_boost([0,1,0,0,0,],3),
-
 		Attr_relief([1,1,1,1,1,],10),
-
 		Fastskill(2),
-
 		Attr_statusup_subattr(0,500),
-
 		Attr_statusup_subattr(500,0),
-
 		Abstate_invalid("as_sealed"),
-
 	],
-
 	Lawake: [
-
 		Statusup(0,1500),
-
 		Abstate_invalid("ss_sealed"),
-
 	],
-
 },
 {
 	name: "白線スポーティー アイラ&セラータ",
-
 	cardno: 10038,
-
 	imageno: 12392,
-
 	hp: 5515,
-
 	atk: 2011,
-
 	cost: 53,
-
 	attr: [0,2],
-
 	species: [2],
-
 	islegend: true,
-
 	ape: "アイドルキャッツ2",
-
 	as1: {
-
 		desc: "<回復・複属性攻撃強化>火属性の味方を回復し(10%)、攻撃力もアップ(30%)。複属性が雷属性だとさらに攻撃力アップ(30%)",
-
 		proc: [Heal(0.1, [1,0,0,0,0], 0), ChainEnhance_SubAttr(0.3, 0.6, [1,0,0,0,0], [0,0,1,0,0], 0)],
 	},
-
 	ss1: {
-
 		desc: "<ダメージブロック>1ターン500以下の全属性ダメージを無効化する、3チェインを消費しさらに1500以下の全属性ダメージを無効化",
-
 		turn: 3,
-
 		proc: [ss_chain_cost_skill(3, ss_damageblock_all(2000, 1), ss_damageblock_all(500, 1))],
-
 	},
-
 	as2: {
-
 		desc: "<回復・複属性攻撃強化>火属性の味方を回復し(13%)、攻撃力もアップ(30%)。複属性が雷属性だとさらに攻撃力アップ(30%)",
-
 		proc: [Heal(0.13, [1,0,0,0,0], 0), ChainEnhance_SubAttr(0.3, 0.6, [1,0,0,0,0], [0,0,1,0,0], 0)],
-
 	},
-
 	ss2: {
-
 		desc: "<ダメージブロック>1ターン500以下の全属性ダメージを無効化する、5チェインを消費しさらに2500以下の全属性ダメージを無効化",
-
 		turn: 6,
-
 		proc: [ss_chain_cost_skill(5, ss_damageblock_all(3000, 1), ss_damageblock_all(500, 1))],
-
 	},
 	awakes: [
-
 		Panel_boost([1,0,0,0,0,],2),
-
 		Attr_statusup(0,200,[1,1,0,0,0,]),
-
 		Attr_statusup(200,0,[1,1,0,0,0,]),
-
 		Panel_boost([1,0,0,0,0,],2),
-
 		Fastskill(3),
-
 		Awake_noeffect("行動見破り",1),
-
 		Attr_relief([1,1,1,1,1,],10),
-
 		Attr_statusup_sattr(0,100,[1,0,0,0,0,],0,300,[0,0,1,0,0,]),
-
 		Attr_statusup_sattr(100,0,[1,0,0,0,0,],300,0,[0,0,1,0,0,]),
-
 		Heal_afterbattle(10),
-
 	],
-
 	Lawake: [
-
 		Attr_statusup_sattr(100,0,[1,0,0,0,0,],200,0,[0,0,1,0,0,]),
-
 		Statusup(500,0),
-
 	],
-
 },
 {
-
 	name: "時間厳守アイドル ユッカ・エンデ",
-
 	cardno: 10040,
-
 	imageno: 12394,
-
 	hp: 2625,
-
 	atk: 4207,
 	cost: 56,
-
 	attr: [2,0],
-
 	species: [9],
-
 	islegend: true,
-
 	ape: "アイドルキャッツ2",
-
 	as1: {
-
 		desc: "<連撃>4チェインで敵単体を4回連続攻撃(250%)、デッキ内の精霊が持つ属性数が多いほどさらにアップ(60%)(上限値:5段階)",
-
 		proc: add_cond(ChainDualAttack(2.5, 4, 4), as_deckinattr_num(0, 0.6)),
-
 	},
-
 	ss1: {
-
 		desc: "<ダブルスキル付与>2ターン溜めた後、8ターンの間、味方一人にSPスキル使用回数+1の効果を付与する(SPスキル使用回数アップの効果は重複しません)",
-
 		turn: 8,
-
 		charged: 2,
-
 		proc: [ss_toselect_one(ss_doubleskill_all(8))],
-
 	},
-
 	as2: {
-
 		desc: "<連撃>4チェインで敵単体を4回連続攻撃(350%)、デッキ内の精霊が持つ属性数が多いほどさらにアップ(60%)(上限値:5段階)",
-
 		proc: add_cond(ChainDualAttack(3.5, 4, 4), as_deckinattr_num(0, 0.6)),
-
 	},
-
 	ss2: {
-
 		desc: "<ダブルスキル付与>2ターン溜めた後、8ターンの間、味方一人にSPスキル使用回数+1の効果を付与する(SPスキル使用回数アップの効果は重複しません)",
 		turn: 8,
-
 		charged: 2,
-
 		proc: [ss_toselect_one(ss_doubleskill_all(8))],
-
 	},
-
 	awakes: [
-
 		Abstate_invalid("ss_sealed"),
-
 		Panel_boost([0,0,1,0,0,],2),
-
 		Fastskill(3),
-
 		Attr_statusup(0,200,[1,0,1,0,0,]),
-
 		Attr_statusup(200,0,[1,0,1,0,0,]),
-
 		Panel_boost([0,0,1,0,0,],2),
-
 		Attr_relief([1,1,1,1,1,],20),
-
 		Fastskill(3),
-
 		Attr_statusup_subattr(0,500),
-
 		Attr_statusup_subattr(500,0),
-
 	],
-
 	Lawake: [
-
 		Attr_statusup(0,300,[1,0,1,0,0,]),
-
 		Abstate_invalid("as_sealed"),
-
 	],
-
 },
 {
-
 	name: "男気アイドル ルカ・フォルティス",
-
 	cardno: 10042,
-
 	imageno: 12396,
-
 	hp: 2415,
-
 	atk: 4551,
-
 	cost: 58,
-
 	attr: [1,0],
-
 	species: [3],
 	islegend: true,
-
 	ape: "アイドルキャッツ2",
-
 	as1: {
-
 		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(600%)",
-
 		proc: add_cond(ChainAttack(6.0, 0), as_consume_all(0.1)),
-
 	},
-
 	ss1: {
-
 		desc: "＜AS倍率強化＞3ターンの間、デッキ内の<主属性:水、複属性:火>の精霊のAS攻撃倍率をアップ。同属性の精霊が多いほどさらに倍率が上昇(上限値:3倍)",
-
 		turn: 4,
-
 		proc: [ss_asenhance_all(3, [0,1,0,0,0], [1,0,0,0,0], 3)],
-
 	},
-
 	as2: {
-
 		desc: "<攻撃>味方のMAXHP10%を使い、敵単体へのダメージアップ(700%)",
-
 		proc: add_cond(ChainAttack(7.0, 0), as_consume_all(0.1)),
-
 	},
-
 	ss2: {
-
 		desc: "＜AS倍率強化＞3ターンの間、デッキ内の<主属性:水、複属性:火>の精霊のAS攻撃倍率をアップ。同属性の精霊が多いほどさらに倍率が上昇(上限値:3倍)",
-
 		turn: 4,
-
 		proc: [ss_asenhance_all(3, [0,1,0,0,0], [1,0,0,0,0], 3)],
-
 	},
-
 	awakes: [
-
 		Panel_boost([0,1,0,0,0,],2),
-
 		Attr_statusup_sattr(0,200,[0,1,0,0,0,],0,100,[1,0,0,0,0,]),
-
 		Attr_statusup_sattr(200,0,[0,1,0,0,0,],100,0,[1,0,0,0,0,]),
-
 		Panel_boost([0,1,0,0,0,],2),
-
 		Abstate_invalid("as_sealed"),
-
 		Fastskill(3),
-
 		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,300,[1,0,0,0,0,]),
-
 		Attr_statusup_sattr(100,0,[0,1,0,0,0,],300,0,[1,0,0,0,0,]),
-
 		Abstate_invalid("ss_sealed"),
-
 		Awake_damage_multiple(1.1, 500),
-
 	],
-
 	Lawake: [
-
 		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,100,[1,0,0,0,0,]),
-
 		Statusup(0,1000),
-
 	],
-
 },
 ];
