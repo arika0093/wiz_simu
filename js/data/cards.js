@@ -101389,7 +101389,7 @@ Cards = [{
 	ss1: {
 		desc: "<統一大魔術>スキル反射を無視し、敵全体へ水・光属性のダメージ、デッキ内の精霊が持つ水・光属性が多いほどそれぞれがダメージアップ(上限値:750%、750%)",
 		turn: 7,
-		proc: [ss_damage_all(ss_matchattr_cond(7.5, [0,1,0,0,0], [1,1,1,1,1]), [1]), ss_damage_all(ss_matchattr_cond(7.5, [1,1,1,1,1], [0,0,0,1,0]), [3]), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(7.5, [1]), ss_damage_all(7.5, [3]), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],2),
@@ -101410,7 +101410,7 @@ Cards = [{
 	ss2: {
 		desc: "<統一大魔術>スキル反射を無視し、敵全体へ水・光属性のダメージ、デッキ内の精霊が持つ水・光属性が多いほどそれぞれがダメージアップ(上限値:900%、900%)",
 		turn: 10,
-		proc: [ss_damage_all(ss_matchattr_cond(9.0, [0,1,0,0,0], [1,1,1,1,1]), [1]), ss_damage_all(ss_matchattr_cond(9.0, [1,1,1,1,1], [0,0,0,1,0]), [3]), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(9.0, [1]), ss_damage_all(9.0, [3]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,1500),
