@@ -485,6 +485,16 @@ var Awake_crystal_lists = [{
     imple: Awake_composite,
     param2: Spec_relief([0], 10),
 }, {
+	genre: "その他[特定精霊のみに作用]",
+	name: "黄昏の結晶〈デュオ・ニトル〉(ﾒｱﾚｽ精霊を戦後回復)",
+	imple: Awake_composite,
+	param2: Heal_afterbattle(10, "メアレス"),
+}, {
+	genre: "その他[特定精霊のみに作用]",
+	name: "義侠の結晶〈桃一代〉(桃娘伝精霊を戦後回復)",
+	imple: Awake_composite,
+	param2: Heal_afterbattle(10, "桃娘伝"),
+}, {
 	genre: "その他[特殊攻略用]",
 	name: "選ばれし者の証(ボス戦時SPMAX/発動100%)",
 	imple: Awake_composite,

@@ -636,6 +636,7 @@ function answer_enhance(fld, as, i, p, bef_f) {
 function answer_heal(fld, as, i, p, bef_f) {
 	var as_afters = [];
 	var is_afteradded = false;
+	var maxrate = 0;
 	for (var ci = 0; ci < fld.Allys.Deck.length; ci++) {
 		var ass = {rate: 0};
 		var card = fld.Allys.Deck[ci];
@@ -660,13 +661,16 @@ function answer_heal(fld, as, i, p, bef_f) {
 			var heal_val = Math.floor(ass.rate * now.maxhp);
 			var before = now.nowhp;
 			heal_ally(fld, heal_val, ci);
-			fld.log_push("Unit[" + (ci + 1) + "]: HP回復(HP: " + before + "→" + now.nowhp + ")");
+			maxrate = Math.max(maxrate, ass.rate);
 			// 攻撃後処理
 			if (!is_afteradded) {
 				as_afters = answer_afterfunc(fld, as_afters, ass, i, true);
 				is_afteradded = true;
 			}
 		}
+	}
+	if(maxrate > 0){
+		fld.log_push(`Unit[${(i+1)}]: HP回復AS発動(効果値:${Math.floor(maxrate*100)}%)`);
 	}
 	return as_afters;
 }

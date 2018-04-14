@@ -1598,6 +1598,20 @@ function ss_multiattr_cond(max) {
 }
 
 /**
+ * (条件系)デッキ内の(主属性+副属性)が一致する数に応じて効果値を変動させる。
+ * max:	効果値の最大値。
+ **/
+function ss_matchattr_cond(max, m_attr, s_attr) {
+	return ss_condition({
+		name: "ss_matchattr_cond",
+		type: "deckattr",
+		p1: max,
+		p2: m_attr,
+		p3: s_attr
+	});
+}
+
+/**
  * (条件系)チェインが一定以上の場合a,そうでない場合bを返す。
  * ch:	条件チェイン数。
  * a:	条件を満たした時の値。

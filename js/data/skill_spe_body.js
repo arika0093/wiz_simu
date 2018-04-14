@@ -1910,6 +1910,31 @@ var SpCondSkill = {
 		return Number((rate * rate_fix[count]).toFixed(3));
 	},
 	// -----------------------------
+	// 主属性+複属性の一致する数に応じて効果値変動
+	"ss_matchattr_cond": function (fld, oi, cobj, params) {
+		const rate_fix = [0, 0.1, 0.15, 0.25, 0.35, 1];
+		// 使用者の主属性を見て、対象属性を指定(指定漏れ対策)
+		var cards = fld.Allys.Deck;
+		var user_c = cards[oi];
+		var rate = params[0];
+		var target_m_attr = params[1];
+		var target_s_attr = params[2];
+		var count = 0;
+		for(var i=0; i < cards.length; i++){
+			var c = cards[i];
+			var m_attr = c.def_attr ? c.def_attr[0] : c.attr[0];
+			var s_attr = c.def_attr ? c.def_attr[1] : c.attr[1];
+			var now = fld.Allys.Now[i];
+			if(now.nowhp > 0
+				&& target_m_attr[m_attr] >= 0
+				&& target_s_attr[s_attr] >= 0 ){
+				count++;
+			}
+		}
+		count = Math.max(Math.min(count, 5), 0);
+		return Number((rate * rate_fix[count]).toFixed(3));
+	},
+	// -----------------------------
 	// チェイン分岐
 	"ss_chain_cond": function (fld, oi, cobj, params) {
 		var ch = params[0];

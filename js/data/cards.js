@@ -78014,7 +78014,7 @@ Cards = [{
 	ss1: {
 		desc: "<特効大魔術>敵単体へ火属性のダメージ(400%)、さらに雷属性以外の敵には特効ダメージ(1000%)",
 		turn: 7,
-		proc: [ss_damage_s(special_attr([1,1,0,1,1], 14.0, 4.0), [0]), 1],
+		proc: [ss_damage_s(special_attr([1,1,0,1,1], 14.0, 4.0), [0])],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],1),
@@ -101355,7 +101355,7 @@ Cards = [{
 	ss2: {
 		desc: "<統一パネル変換>ジャンルパネルを火・水属性化し、攻撃力アップの効果を付与、〈主属性:火、複属性:水〉の精霊が多いほどさらに効果値アップ(400%)",
 		turn: 7,
-		proc: [ss_panel_change([1,1,0,0,0]), panel_attackup(4.0)],
+		proc: [ss_panel_change([1,1,0,0,0]), panel_attackup(ss_matchattr_cond(4.0, [1,0,0,0,0], [0,1,0,0,0]))],
 	},
 	Lawake: [
 		Abstate_invalid("discharge"),

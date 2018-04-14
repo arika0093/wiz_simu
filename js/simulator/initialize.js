@@ -400,13 +400,15 @@ function nextturn(fld, is_ssfin) {
 	var killed = allkill_check(fld, is_ssfin);
 	if (killed && !f_st.finish) {
 		// 戦後回復処理
-		var abh = cards_heal_afterbattle(fld, fld.Allys.Deck, fld.Allys.Now);
+		var cards = fld.Allys.Deck;
 		var nows = fld.Allys.Now;
-		if (abh > 0) {
-			for (var i = 0; i < fld.Allys.Deck.length; i++) {
+		var abh_r = cards_heal_afterbattle(fld, cards, nows);
+		for(var i=0; i < abh_r.length; i++){
+			var abh = abh_r[i];
+			if (abh > 0) {
 				heal_ally(fld, Math.floor(nows[i].maxhp * abh), i);
-			}
-			fld.log_push("戦後回復: " + (abh * 100) + "%");
+				fld.log_push(`Unit[${i+1}]: 戦後回復: ${abh * 100}%`);
+			};
 		}
 		// 戦闘開始前処理
 		if (fld.Quest.battle_before) {
