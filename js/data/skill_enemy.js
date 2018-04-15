@@ -684,6 +684,43 @@ function s_enemy_healreverse(rate, tnum) {
 	}, makeDesc("回復反転"));
 }
 
+// 盗む(対象数)
+function s_enemy_steal(dmg, tnum) {
+	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
+		// 攻撃対象の取得
+		var tgs = gen_enemytarget_array(fld, tnum, 1, false)[0];
+		// 攻撃部分
+		var sea = s_enemy_attack(dmg, tgs, 1, false);
+		sea.move(fld, n, pnow, is_counter);
+		// 盗む[状態異常]の付与
+		s_enemy_abstate_attack(
+			fld, `盗む[発動敵: ${n+1}]`,
+			"skill_stole", -1, tgs, n, false /* カウンター不可 */, {
+				effectAlways: true,
+				effect: function(f, oi, teff, state, is_t, is_b){
+					var cards = f.Allys.Deck;
+					var nows = f.Allys.Now;
+					var is_dead = f.Enemys.Data[teff.receveButtle].enemy[teff.fromEnemy].nowhp <= 0;
+					if(is_dead || is_b){
+						teff.disabled = false;
+						teff.lim_turn = 0;
+						// L化
+						nows[oi].ss_current = 999;
+						legend_timing_check(f, cards, nows, oi, true);
+					}
+				},
+				// SS発動不可
+				ss_disabled: true,
+				// 発動した敵とか
+				fromEnemy: n,
+				receveButtle: fld.Status.nowbattle-1,
+				// 異常回復不可
+				isabstate: false,
+			}
+		);
+	}, makeDesc("盗む"));
+}
+
 // 呪い(HP低下値, 対象数, 継続ターン)
 function s_enemy_cursed(hpdown, tnum, t, atkdown, isStatusDownOnly) {
 	var txtype = isStatusDownOnly ? "ステータス減少" : "呪い";
