@@ -457,7 +457,9 @@ function sim_show(fld) {
 				"<a target='_blank' href='/search/detail/?id=" + card.cardno + "'>" + card.name + "</a>" +
 				"<a href='javascript:;' style='float:right; display:block' id='opendmgcalc'>ダメージ計算を開く</a>" +
 				"<br/><div style='text-align: right;'>HP: " + now.nowhp + "/" + now.maxhp +
-				"(" + hp_perc.toFixed(2) + "%), ATK: " + now.atk + "</div>");
+				"(" + hp_perc.toFixed(2) + "%), ATK: " + now.atk +
+				
+				"</div>");
 			$("#ally_tefflist").html(li_t);
 			$("#opendmgcalc").off("click");
 			$("#opendmgcalc").on("click", function(){

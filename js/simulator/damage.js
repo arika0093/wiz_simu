@@ -3,13 +3,14 @@
 //	rate: 倍率, atkn: 攻撃回数, pn: 踏んだパネル, ch: チェイン数, rnd: 乱数, 
 //	i: 味方の番号, e: 敵の番号, is_ss: SSかどうか, var_num: 分散対象数(未指定なら通常)
 //  added_frame: ダメージを与えたF数(未指定ならcontを使わず即付与)
-function attack_enemy(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num, added_frame) {
+function attack_enemy(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num, added_frame, option) {
 	var con = enemy.contract_dmgs;
 	var consum_b = sumContractDamages(fld, enemy);
 	var consum = consum_b;
 	var bef_hp = (enemy.nowhp - consum_b);
 	// ダメージ計算
-	var d_dat = calculate_damage(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num, false);
+	var is_noenhance = (option && option.is_noenhance);
+	var d_dat = calculate_damage(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num, false, is_noenhance);
 	var d = d_dat.damage;
 	var bef_ond = d_dat.damage_withoutskill;
 	
@@ -71,11 +72,13 @@ function attack_enemy(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, i
 //	enemy: 敵データ, now: 自身のデータ, atk_atr: 攻撃属性,
 //	rate: 倍率, atkn: 攻撃回数, pn: 踏んだパネル, ch: チェイン数, rnd: 乱数(未使用値),
 //	i: 味方の番号, e: 敵の番号, is_ss: SSかどうか, var_num: 分散対象数(未指定なら通常)
-//	is_simulate: 敵ワンパン判定時のみtrue
-function calculate_damage(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num, is_simulate) {
+//	is_simulate: 敵ワンパン判定の計算時のみtrue
+//  is_noenhance: エンハンスを計算時に加算しない
+function calculate_damage(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd,
+                          i, e, is_ss, var_num, is_simulate, is_noenhance) {
 	var d = 0;
 	// エンハ
-	var {as_enh, ss_enh, bss_enh, rfm_enh} = getEnhanceRate(now);
+	var {as_enh, ss_enh, bss_enh, rfm_enh, total} = getEnhanceRate(now);
 	// 乱数決定
 	var rnd = 0;
 	if(!now.atk_rand){
@@ -89,7 +92,7 @@ function calculate_damage(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, 
 	// 攻撃力
 	d = now.atk / (!is_ss ? 2 : 1);
 	// AS倍率、エンハ
-	d *= (rate + as_enh + ss_enh + bss_enh + rfm_enh);
+	d *= !is_noenhance ? (rate + total) : rate;
 	// チェイン数考慮
 	d *= Number((1 + ch / 100)).toFixed(2);
 	// パネル
@@ -128,8 +131,8 @@ function calculate_damage(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, 
 		damage_withoutskill: d_ws,
 		base_rate: rate,
 		as_enh: as_enh,
-		sst_enh: (ss_enh + bss_enh + rfm_enh),
-		final_rate: (rate + as_enh + ss_enh + bss_enh + rfm_enh),
+		sst_enh: !is_noenhance ? (ss_enh + bss_enh + rfm_enh) : 0,
+		final_rate: (rate + (is_noenhance ? 0 : total)),
 		random: rnd,
 		lst_multi: lst_multi,
 	};

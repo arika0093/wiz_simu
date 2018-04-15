@@ -250,6 +250,10 @@ var Awake_crystal_lists = [{
 	imple: Awake_composite,
 	param2: Attr_statusup_subattr(0, 150),
 }, {
+	name: "〈秘儀糸〉武装:武烈陣(戦士/術士のATK/HP+200)",
+	imple: Awake_composite,
+	param2: Spec_statusup(200, 200, [8,9]),
+}, {
 	genre: "ステータス変動(味方全体)[敵結晶]",
 	name: "擬態の結晶〈ガーゴイル〉(物質HP+200)",
 	imple: Awake_composite,
