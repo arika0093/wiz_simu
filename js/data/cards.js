@@ -100201,6 +100201,7 @@ Cards = [{
 	cost: 55,
 	attr: [1,4],
 	species: [8],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "Birth of New Order",
 	as1: {
