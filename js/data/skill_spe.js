@@ -166,7 +166,7 @@ function ss_damage_explosion(r, attrs, r_side) {
  **/
 function ss_accumulateDamageOfHeal_all(max_r, max_v, attrs) {
 	return ss_template({
-		name: "ss_accumulateDamageOfHeal_all",
+		name: "ss_accumulateDamageOfHeal",
 		type: "damage",
 		target: "all",
 		p1: max_r,
@@ -184,13 +184,41 @@ function ss_accumulateDamageOfHeal_all(max_r, max_v, attrs) {
  **/
 function ss_accumulateDamageOfBurn_all(max_r, max_v, attrs) {
 	return ss_template({
-		name: "ss_accumulateDamageOfBurn_all",
+		name: "ss_accumulateDamageOfBurn",
 		type: "damage",
 		target: "all",
 		p1: max_r,
 		p2: max_v,
 		p3: attrs,
 	});
+}
+
+/**
+ * 統一大魔術【全体】（デッキの属性に応じたダメージを敵に与える）
+ * max_r:	最高威力(ex: 71.0		-> 効果値7100)
+ * attrs:	攻撃属性(ex: [0,1]	-> 火,水)
+ *
+ **/
+function ss_UnificationDamage_all(max_r, attrs) {
+	return ss_template({
+		name: "ss_UnificationDamage",
+		type: "damage",
+		target: "all",
+		p1: max_r,
+		p2: attrs,
+	});
+}
+
+/**
+ * 統一大魔術【単体】（デッキの属性に応じたダメージを敵に与える）
+ * max_r:	最高威力(ex: 71.0		-> 効果値7100)
+ * attrs:	攻撃属性(ex: [0,1]	-> 火,水)
+ *
+ **/
+function ss_UnificationDamage_s(max_r, attrs) {
+	var sud = ss_UnificationDamage_all(max_r, attrs);
+	sud.target = "single";
+	return sud;
 }
 
 

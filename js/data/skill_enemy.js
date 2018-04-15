@@ -558,7 +558,7 @@ function s_enemy_fear(tnum, as_seal_p, ss_seal_p, attr) {
 				// 対象属性以外には無効
 				bef_absattack: function (fld, oi, ei) {
 					var card = fld.Allys.Deck[oi];
-					return !(attr.indexOf(card.attr[0]) >= 0 || attr.indexOf(card.attr[1]) >= 0);
+					return (attr[card.attr[0]] > 0);
 				},
 				// 特定条件でAS封印
 				bef_answer: function (f, as) {

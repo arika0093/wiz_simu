@@ -273,7 +273,8 @@ function pickup_answerskills(fld, attr, type, subtype) {
 						continue;
 					}
 					// value up
-					as[aw.matched_up] += aw.upvalue;
+					var a = as[aw.matched_up], b = aw.upvalue;
+					as[aw.matched_up] = (a || 0) + b;
 				}
 			}
 		}

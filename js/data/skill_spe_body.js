@@ -101,7 +101,7 @@ var SpSkill = {
 	},
 	// -----------------------------
 	// 蓄積大魔術・聖
-	"ss_accumulateDamageOfHeal_all": function (fld, n, cobj, params) {
+	"ss_accumulateDamageOfHeal": function (fld, n, cobj, params) {
 		var max_r = params[0];
 		var max_v = params[1];
 		var attrs = params[2];
@@ -111,17 +111,28 @@ var SpSkill = {
 		var accHealCount = now.accumulateHealCount;
 		// 威力計算
 		var acc_p = Math.min((accHeal - accHealCount)/max_v, 1);
-		var rate = (acc_p * max_r) + 1;
+		var {total} = getEnhanceRate(now);
+		var rate = (acc_p * (max_r + total)) + 1;
 		
-		var sda = ss_damage_all(rate, attrs);
-		ss_object_done(fld, n, sda);
+		var enemys = GetNowBattleEnemys(fld);
+		for (var a = 0; a < attrs.length; a++) {
+			var atr = attrs[a];
+			var t_enemys = ss_get_targetenemy(fld, cobj, n, atr);
+			for (var en = 0; en < t_enemys.length; en++) {
+				// 攻撃
+				var atk_order = enemys.indexOf(t_enemys[en]);
+				var option = { is_noenhance: true };
+				ss_damage(fld, rate, atr, 1, n, atk_order, false, option);
+			}
+		}
+
 		// カウントを合わせる
 		now.accumulateHealCount = accHeal;
 		return true;
 	},
 	// -----------------------------
 	// 蓄積大魔術・邪
-	"ss_accumulateDamageOfBurn_all": function (fld, n, cobj, params) {
+	"ss_accumulateDamageOfBurn": function (fld, n, cobj, params) {
 		var max_r = params[0];
 		var max_v = params[1];
 		var attrs = params[2];
@@ -131,18 +142,28 @@ var SpSkill = {
 		var accBurnCount = now.accumulateBurnCount;
 		// 威力計算
 		var acc_p = Math.min((accBurn - accBurnCount)/max_v, 1);
-		var rate = (acc_p * max_r) + 1;
+		var {total} = getEnhanceRate(now);
+		var rate = (acc_p * (max_r + total)) + 1;
 		
-		var sda = ss_damage_all(rate, attrs);
-		ss_object_done(fld, n, sda);
+		var enemys = GetNowBattleEnemys(fld);
+		for (var a = 0; a < attrs.length; a++) {
+			var atr = attrs[a];
+			var t_enemys = ss_get_targetenemy(fld, cobj, n, atr);
+			for (var en = 0; en < t_enemys.length; en++) {
+				// 攻撃
+				var atk_order = enemys.indexOf(t_enemys[en]);
+				var option = { is_noenhance: true };
+				ss_damage(fld, rate, atr, 1, n, atk_order, false, option);
+			}
+		}
+		
 		// カウントを合わせる
 		now.accumulateBurnCount = accBurn;
 		return true;
 	},
-	
 	// -----------------------------
-	// 敵単体に属性ダメージ
-	"ss_damage_explosion": function (fld, n, cobj, params) {
+	// 蓄積大魔術
+	"ss_UnificationDamage": function (fld, n, cobj, params) {
 		var r = params[0];
 		var attrs = params[1];
 		var enemys = GetNowBattleEnemys(fld);
@@ -153,6 +174,24 @@ var SpSkill = {
 				var atr = attrs[a];
 				var atk_order = enemys.indexOf(t_enemys[en]);
 				ss_damage(fld, r, atr, 1, n, atk_order, false);
+			}
+		}
+		return true;
+	},
+	
+	// -----------------------------
+	// 敵単体に属性ダメージ
+	"ss_damage_explosion": function (fld, n, cobj, params) {
+		var r = params[0];
+		var attrs = params[1];
+		var enemys = GetNowBattleEnemys(fld);
+		for (var a = 0; a < attrs.length; a++) {
+			var atr = attrs[a];
+			var t_enemys = ss_get_targetenemy(fld, cobj, n, atr);
+			for (var en = 0; en < t_enemys.length; en++) {
+				// 攻撃
+				var atk_order = enemys.indexOf(t_enemys[en]);
+				ss_damage(fld, rate, atr, 1, n, atk_order, false);
 			}
 		}
 		return true;
@@ -2069,7 +2108,7 @@ function ss_object_done(fld, n, c_obj, is_check_crs) {
 }
 
 // (内部用)敵にSSダメージ
-function ss_damage(fld, r, atr, atkn, own, tg, isnot_ss) {
+function ss_damage(fld, r, atr, atkn, own, tg, isnot_ss, option) {
 	var enemy = GetNowBattleEnemys(fld, tg);
 	var card = fld.Allys.Deck[own];
 	var now = fld.Allys.Now[own];
@@ -2077,7 +2116,8 @@ function ss_damage(fld, r, atr, atkn, own, tg, isnot_ss) {
 	// 威力が配列で渡されたら取り出す
 	var rate = $.isArray(r) ? r[tg] : r;
 	// 攻撃
-	fld.Status.turn_dmg += attack_enemy(fld, enemy, now, atr, rate, atkn, [atr], fld.Status.chain, rnd, own, tg, true);
+	fld.Status.turn_dmg += attack_enemy(
+		fld, enemy, now, atr, rate, atkn, [atr], fld.Status.chain, rnd, own, tg, true, 0, undefined, option);
 	// SSフラグを立てる
 	enemy.flags.is_ss_attack = (isnot_ss != true);
 }
