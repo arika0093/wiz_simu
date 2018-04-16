@@ -191,7 +191,7 @@ var SpSkill = {
 			for (var en = 0; en < t_enemys.length; en++) {
 				// 攻撃
 				var atk_order = enemys.indexOf(t_enemys[en]);
-				ss_damage(fld, rate, atr, 1, n, atk_order, false);
+				ss_damage(fld, r, atr, 1, n, atk_order, false);
 			}
 		}
 		return true;
