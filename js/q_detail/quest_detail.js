@@ -131,8 +131,10 @@ function makeQD(id) {
 		resStr += "</dd>";
 		if (Quest.revData) {
 			Quest.revData.forEach(function (Enemy, EnemyNum) {
-				resStr += "<dd class='left_min'>" +
-					"<p class='battle_num'>復活後</p><div class='battle_d'>"
+				var e_num = Enemy.length;
+				resStr += `<dd class='left_min' id='res_${EnemyNum+1}'>` +
+					"<p class='battle_num'>復活後</p>" +
+					`<div class='battle_d enum_style ${e_num > 3 ? "enum5" : "enum3"}'>`;
 				resStr += genEnemyHTML(Enemy);
 				resStr += "</div></dd>";
 				return true;
