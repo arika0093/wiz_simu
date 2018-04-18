@@ -1682,7 +1682,7 @@ Cards = [{
 		proc: multi_as(Heal(0.1, [1, 1, 1, 1, 1]), add_cond(Heal(0.13, [1, 1, 1, 1, 1]), when_leader())),
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを2遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
 		turn: 9,
 		proc: [ss_delay_all(2)]
 	},
@@ -1697,7 +1697,7 @@ Cards = [{
 		proc: multi_as(Heal(0.13, [1, 1, 1, 1, 1]), add_cond(Heal(0.16, [1, 1, 1, 1, 1]), when_leader())),
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを2遅らせる、さらに味方全体のHPを回復する(50％)",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる、さらに味方全体のHPを回復する(50％)",
 		turn: 13,
 		proc: [ss_delay_all(2), ss_heal(0.5)],
 	},
@@ -2400,7 +2400,7 @@ Cards = [{
 		proc: ChainEnhance(0.8, [1,0,0,0,0], 7),
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを2遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(2)]
 	},
@@ -2414,7 +2414,7 @@ Cards = [{
 		proc: ChainEnhance(1.0, [1,0,0,0,0], 7),
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)]
 	},
@@ -2490,7 +2490,7 @@ Cards = [{
 		proc: ChainAttrAttack(4.0, 0, [0,0,1,0,0]),
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)]
 	},
@@ -2504,7 +2504,7 @@ Cards = [{
 		proc: ChainAttrAttack(5.0, 0, [0,0,1,0,0]),
 	},
 	ss2: {
-		desc: "<遅延大魔術>攻撃ターンを3遅らせ、敵全体へ火属性のダメージ(180％)",
+		desc: "<遅延大魔術>敵全体の攻撃ターンを3遅らせ、敵全体へ火属性のダメージ(180％)",
 		turn: 15,
 		proc: [ss_delay_all(3), ss_damage_all(1.8, [0])],
 	},
@@ -2939,7 +2939,7 @@ Cards = [{
 		proc: ChainAttack(4.0, 5),
 	},
 	ss1: {
-		desc: "<遅延>敵単体の攻撃ターンを1遅らせる",
+		desc: "<遅延>敵単体の敵全体の攻撃ターンを1遅らせる",
 		turn: 7,
 		proc: [ss_delay_s(1)]
 	},
@@ -3030,7 +3030,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 5, 3),
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを2遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(2)]
 	},
@@ -3044,7 +3044,7 @@ Cards = [{
 		proc: ChainDualAttack(5.5, 5, 3),
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを2遅らせ、20チェインで更に2遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせ、20チェインで更に2遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(ss_chain_cond(20, 4, 2))]
 	},
@@ -6400,7 +6400,7 @@ Cards = [{
 		proc: Heal(0.13, [1,1,1,1,1], 0),
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを2遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(2)]
 	},
@@ -6414,7 +6414,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,1,1,1,1], 0), ChainEnhance(0.30, [0,1,0,0,0], 0)],
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)]
 	},
@@ -6896,7 +6896,7 @@ Cards = [{
 		proc: Heal(0.13, [1,1,1,1,1], 0)
 	},
 	ss1: {
-		desc: "<遅延大魔術>攻撃ターンを1遅らせ、敵全体へ水属性のダメージ(150％)",
+		desc: "<遅延大魔術>敵全体の攻撃ターンを1遅らせ、敵全体へ水属性のダメージ(150％)",
 		turn: 8,
 		proc: [ss_damage_all(1.5, [1]), ss_delay_all(1)],
 	},
@@ -6910,7 +6910,7 @@ Cards = [{
 		proc: [Heal(0.16, [1,1,1,1,1], 0), ChainEnhance(0.30, [0,1,0,0,0], 0)],
 	},
 	ss2: {
-		desc: "<遅延大魔術>攻撃ターンを1遅らせ、敵全体へ水属性のダメージ、さらに味方全体のHPを回復する(攻撃：150％ / 回復：25％)",
+		desc: "<遅延大魔術>敵全体の攻撃ターンを1遅らせ、敵全体へ水属性のダメージ、さらに味方全体のHPを回復する(攻撃：150％ / 回復：25％)",
 		turn: 12,
 		proc: [ss_damage_all(1.5, [1]), ss_heal(0.25), ss_delay_all(1)],
 	},
@@ -7341,7 +7341,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 3),
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)]
 	},
@@ -7355,7 +7355,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 3),
 	},
 	ss2: {
-		desc: "<遅延大魔術>攻撃ターンを3遅らせ、敵全体へ水属性のダメージ(180％)",
+		desc: "<遅延大魔術>敵全体の攻撃ターンを3遅らせ、敵全体へ水属性のダメージ(180％)",
 		turn: 15,
 		proc: [ss_damage_all(1.8, [1]), ss_delay_all(3)],
 	},
@@ -8773,7 +8773,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [0,1,0,0,0], 0), ChainSpecEnhance(0.50, [0,1,0,0,0], [1], 0)],
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを2遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(2)]
 	},
@@ -8787,7 +8787,7 @@ Cards = [{
 		proc: [ChainEnhance(0.40, [0,1,0,0,0], 0), ChainSpecEnhance(0.70, [0,1,0,0,0], [1], 0)],
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)]
 	},
@@ -8861,7 +8861,7 @@ Cards = [{
 		proc: Heal(0.13, [0,1,0,0,0], 0),
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを2遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(2)]
 	},
@@ -8875,7 +8875,7 @@ Cards = [{
 		proc: [Heal(0.16, [0,1,0,0,0], 0), ChainEnhance(0.30, [0,1,0,0,0], 0)],
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)]
 	},
@@ -10358,7 +10358,7 @@ Cards = [{
 		proc: ChainEnhance(0.9, [0,1,1,0,0], 5),
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)]
 	},
@@ -12899,7 +12899,7 @@ Cards = [{
 		proc: Heal(0.13, [0,0,1,0,0], 0),
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)]
 	},
@@ -12913,7 +12913,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,0,1,0,0], 0), ChainEnhance(0.30, [0,0,1,0,0], 0)],
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを3遅らせ、さらに味方全体のHPを回復する(50％)",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせ、さらに味方全体のHPを回復する(50％)",
 		turn: 13,
 		proc: [ss_heal(0.50), ss_delay_all(3)],
 	},
@@ -13521,7 +13521,7 @@ Cards = [{
 		proc: [Heal(0.10, [0,0,1,0,0], 0), Heal(0.15, [0,0,1,0,0], 5)],
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)]
 	},
@@ -13535,7 +13535,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,0,1,0,0], 0), Heal(0.18, [0,0,1,0,0], 5)],
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを3遅らせる、さらに味方全体のHPを回復する(50％)",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる、さらに味方全体のHPを回復する(50％)",
 		turn: 13,
 		proc: [ss_delay_all(3), ss_heal(0.5)],
 	},
@@ -13791,7 +13791,7 @@ Cards = [{
 		proc: ChainEnhance(0.55, [0,0,1,0,0], 3),
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)]
 	},
@@ -13805,7 +13805,7 @@ Cards = [{
 		proc: ChainEnhance(0.75, [0,0,1,0,0], 3),
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを3遅らせ、20チェインで更に1遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせ、20チェインで更に1遅らせる",
 		turn: 13,
 		proc: [ss_delay_all(ss_chain_cond(20, 4, 3))]
 	},
@@ -17640,7 +17640,7 @@ Cards = [{
 		proc: [ChainAttrAttack(3.5, 0, [0, 1, 0, 0, 0]), add_cond(ChainAttrAttack(4.5, 0, [0, 1, 0, 0, 0]), when_leader())],
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)],
 	},
@@ -17661,7 +17661,7 @@ Cards = [{
 		proc: [ChainAttrAttack(4.5, 0, [0, 1, 0, 0, 0]), add_cond(ChainAttrAttack(5.5, 0, [0, 1, 0, 0, 0]), when_leader())],
 	},
 	ss2: {
-		desc: "<遅延大魔術>攻撃ターンを3遅らせ、敵全体へ雷属性のダメージ(180%)",
+		desc: "<遅延大魔術>敵全体の攻撃ターンを3遅らせ、敵全体へ雷属性のダメージ(180%)",
 		turn: 15,
 		proc: [ss_damage_all(1.8, [2]), ss_delay_all(3)],
 	},
@@ -19897,7 +19897,7 @@ Cards = [{
 		proc: [ChainEnhance(0.30, [0,0,1,0,0], 0), ChainSpecEnhance(0.60, [0,0,1,0,0], [4,5], 0)],
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを2遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(2)],
 	},
@@ -19918,7 +19918,7 @@ Cards = [{
 		proc: [ChainEnhance(0.60, [0,0,1,0,0], 0), ChainSpecEnhance(0.90, [0,0,1,0,0], [4,5], 0)],
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを2遅らせ、3チェインを消費しさらに1遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせ、3チェインを消費しさらに1遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(ss_chain_cost(3, 3, 2))],
 	},
@@ -20574,7 +20574,7 @@ Cards = [{
 		proc: ChainDualAttack(7.0, 10, 3),
 	},
 	ss1: {
-		desc: "<遅延>味方のMAXHP50%を使い、攻撃ターンを1遅らせる",
+		desc: "<遅延>味方のMAXHP50%を使い、敵全体の攻撃ターンを1遅らせる",
 		turn: 3,
 		proc: [ss_consume_all(0.5), ss_delay_all(1)],
 	},
@@ -20595,7 +20595,7 @@ Cards = [{
 		proc: ChainDualAttack(8.0, 10, 3),
 	},
 	ss2: {
-		desc: "<遅延大魔術>味方のMAXHP50%を使い、攻撃ターンを1遅らせ、敵全体へ火属性のダメージ(300%)",
+		desc: "<遅延大魔術>味方のMAXHP50%を使い、敵全体の攻撃ターンを1遅らせ、敵全体へ火属性のダメージ(300%)",
 		turn: 5,
 		proc: [ss_consume_all(0.5), ss_damage_all(3.0, [0]), ss_delay_all(1)],
 	},
@@ -21004,7 +21004,7 @@ Cards = [{
 		proc: [ChainAttrAttack(3.5, 0, [1,0,0,0,0]), add_cond(ChainAttrAttack(4.5, 0, [1,0,0,0,0]), when_leader())],
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)],
 	},
@@ -21025,7 +21025,7 @@ Cards = [{
 		proc: [ChainAttrAttack(4.5, 0, [1,0,0,0,0]), add_cond(ChainAttrAttack(5.5, 0, [1,0,0,0,0]), when_leader())],
 	},
 	ss2: {
-		desc: "<遅延大魔術>攻撃ターンを3遅らせ、敵全体へ水属性のダメージ(180%)",
+		desc: "<遅延大魔術>敵全体の攻撃ターンを3遅らせ、敵全体へ水属性のダメージ(180%)",
 		turn: 15,
 		proc: [ss_delay_all(3), ss_damage_all(1.8, [1])],
 	},
@@ -21181,7 +21181,7 @@ Cards = [{
 		proc: Heal(0.13, [0,1,0,0,0], 0),
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを2遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(2)],
 	},
@@ -21202,7 +21202,7 @@ Cards = [{
 		proc: Heal(0.16, [0,1,0,0,0], 0),
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを2遅らせる、さらに味方全体のHPを回復する(50%)",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる、さらに味方全体のHPを回復する(50%)",
 		turn: 10,
 		proc: [ss_delay_all(2), ss_heal(0.5)],
 	},
@@ -22426,7 +22426,7 @@ Cards = [{
 		proc: [Heal(0.11, [1, 1, 0, 0, 0], 0), Heal(0.17, [1, 1, 0, 0, 0], 7)],
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを2遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(2)],
 	},
@@ -22447,7 +22447,7 @@ Cards = [{
 		proc: [Heal(0.14, [1, 1, 0, 0, 0], 0), Heal(0.20, [1, 1, 0, 0, 0], 7)],
 	},
 	ss2: {
-		desc: "<遅延>チェインプラス3の効果、さらに攻撃ターンを3遅らせる",
+		desc: "<遅延>チェインプラス3の効果、さらに敵全体の攻撃ターンを3遅らせる",
 		turn: 12,
 		proc: [ss_addchain(3), ss_delay_all(3)],
 	},
@@ -22897,7 +22897,7 @@ Cards = [{
 		proc: [ChainEnhance(0.80, [0,1,0,0,0], 7), ChainEnhance(1.8, [0,1,0,0,0], 20)],
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)],
 	},
@@ -22918,7 +22918,7 @@ Cards = [{
 		proc: [ChainEnhance(1.0, [0,1,0,0,0], 7), ChainEnhance(2.0, [0,1,0,0,0], 20)],
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを3遅らせる、さらに味方全体のHPを回復する(50%)",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる、さらに味方全体のHPを回復する(50%)",
 		turn: 12,
 		proc: [ss_delay_all(3), ss_heal(0.50)],
 	},
@@ -23430,7 +23430,7 @@ Cards = [{
 		proc: Heal(0.12, [1], 0),
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを2遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
 		turn: 9,
 		proc: [ss_delay_all(2)],
 	},
@@ -23451,7 +23451,7 @@ Cards = [{
 		proc: Heal(0.14, [1], 0),
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを2遅らせ、HP20%以下でさらに2遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせ、HP20%以下でさらに2遅らせる",
 		turn: 12,
 		proc: [ss_delay_all(ss_hp_less(0.2, 4, 2))],
 	},
@@ -23476,7 +23476,7 @@ Cards = [{
 		proc: Heal(0.12, [1], 0),
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを2遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
 		turn: 9,
 		proc: [ss_delay_all(2)],
 	},
@@ -23497,7 +23497,7 @@ Cards = [{
 		proc: Heal(0.14, [1], 0),
 	},
 	ss2: {
-		desc: "<遅延大魔術>攻撃ターンを2遅らせ、敵全体へ水属性のダメージ(180%)",
+		desc: "<遅延大魔術>敵全体の攻撃ターンを2遅らせ、敵全体へ水属性のダメージ(180%)",
 		turn: 12,
 		proc: [ss_delay_all(2), ss_damage_all(1.8, [1])],
 	},
@@ -25205,7 +25205,7 @@ Cards = [{
 		proc: ChainEnhance(0.55, [0,1,0,0,0], 3),
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)],
 	},
@@ -25295,7 +25295,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.11, 0.15, 0.17, [1,0,0,0,0]),
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)],
 	},
@@ -25316,7 +25316,7 @@ Cards = [{
 		proc: ChainPanelsHeal(0.13, 0.17, 0.20, [1,0,0,0,0]),
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを3遅らせ、20チェインで更に1遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせ、20チェインで更に1遅らせる",
 		turn: 13,
 		proc: [ss_delay_all(ss_chain_cond(20, 4, 3))],
 	},
@@ -25498,7 +25498,7 @@ Cards = [{
 		proc: [ChainAttack(4.5, 5), add_cond(ChainAttack(7.0, 5), when_hp_more(0.80))],
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)],
 	},
@@ -33140,7 +33140,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,1,0,0,0], 0), ChainEnhance(0.30, [0,1,0,0,0], 0)],
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを2遅らせ、20チェインで更に1遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせ、20チェインで更に1遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(ss_chain_cond(20, 3, 2))],
 	},
@@ -33161,7 +33161,7 @@ Cards = [{
 		proc: [Heal(0.16, [0,1,0,0,0], 0), ChainEnhance(0.30, [0,1,0,0,0], 0)],
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを3遅らせ、20チェインで更に1遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせ、20チェインで更に1遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(ss_chain_cond(20, 4, 3))],
 	},
@@ -35585,7 +35585,7 @@ Cards = [{
 		proc: ChainAttrAttack(2.75, 0, [0,1,0,0,0]),
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを2遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(2)],
 	},
@@ -35605,7 +35605,7 @@ Cards = [{
 		proc: ChainAttrAttack(3.5, 0, [0,1,0,0,0]),
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 12,
 		proc: [ss_delay_all(3)],
 	},
@@ -35950,7 +35950,7 @@ Cards = [{
 		proc: ChainAttack(3.5, 3),
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを2遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる",
 		turn: 8,
 		proc: [ss_delay_all(2)],
 	},
@@ -35971,7 +35971,7 @@ Cards = [{
 		proc: ChainAttack(4.5, 3),
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)],
 	},
@@ -36084,7 +36084,7 @@ Cards = [{
 		proc: ChainDualAttack(3.5, 4, 3),
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)],
 	},
@@ -36105,7 +36105,7 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 4, 3),
 	},
 	ss2: {
-		desc: "<遅延大魔術>攻撃ターンを3遅らせ、敵全体へ火属性のダメージ(180%)",
+		desc: "<遅延大魔術>敵全体の攻撃ターンを3遅らせ、敵全体へ火属性のダメージ(180%)",
 		turn: 14,
 		proc: [ss_delay_all(3), ss_damage_all(1.8, [0])],
 	},
@@ -39706,7 +39706,7 @@ Cards = [{
 		proc: [ChainEnhance(0.8, [0,0,1,0,0], 7), as_guard(0.1, [1,1,1,1,1], 7)],
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを2遅らせる。HP20%以下でさらに1遅らせる。",
+		desc: "<遅延>敵全体の攻撃ターンを2遅らせる。HP20%以下でさらに1遅らせる。",
 		turn: 8,
 		proc: [ss_delay_all(ss_hp_less(0.20, 3, 2))],
 	},
@@ -39727,7 +39727,7 @@ Cards = [{
 		proc: [ChainEnhance(1.0, [0,0,1,0,0], 7), as_guard(0.1, [1,1,1,1,1], 7)],
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを3遅らせる。HP20%以下でさらに1遅らせる。",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる。HP20%以下でさらに1遅らせる。",
 		turn: 10,
 		proc: [ss_delay_all(ss_hp_less(0.20, 4, 3))],
 	},
@@ -41557,7 +41557,7 @@ Cards = [{
 		proc: [ChainDualAttack(2.5, 0, 5), ChainDualAttack(4.0, 5, 10)],
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを1遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを1遅らせる",
 		turn: 4,
 		proc: [ss_delay_all(1)],
 	},
@@ -41578,7 +41578,7 @@ Cards = [{
 		proc: [ChainDualAttack(3.5, 0, 5), ChainDualAttack(5.0, 5, 10)],
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを3遅らせる。HP20%以下でさらに1遅らせる。",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる。HP20%以下でさらに1遅らせる。",
 		turn: 10,
 		proc: [ss_delay_all(ss_hp_less(0.20, 4, 3))],
 	},
@@ -45575,7 +45575,7 @@ Cards = [{
 		proc: [Heal(0.10, [0,0,1,0,0], 0), Heal(0.15, [0,0,1,0,0], 5)],
 	},
 	ss1: {
-		desc: "<遅延>攻撃ターンを3遅らせる",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる",
 		turn: 10,
 		proc: [ss_delay_all(3)],
 	},
@@ -45596,7 +45596,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,0,1,0,0], 0), Heal(0.18, [0,0,1,0,0], 5)],
 	},
 	ss2: {
-		desc: "<遅延>攻撃ターンを3遅らせる、さらに味方全体のHPを回復する(50%)",
+		desc: "<遅延>敵全体の攻撃ターンを3遅らせる、さらに味方全体のHPを回復する(50%)",
 		turn: 12,
 		proc: [ss_heal(0.5), ss_delay_all(3)],
 	},
@@ -52647,7 +52647,7 @@ Cards = [{
 		proc: [Heal(0.11, [1,1,1,1,1], 0), ChainEnhance(0.20, [1,1,1,1,1], 0)],
 	},
 	ss1: {
-		desc: "<遅延大魔術>攻撃ターンを1遅らせ、敵単体へ火属性のダメージ(300%)",
+		desc: "<遅延大魔術>敵全体の攻撃ターンを1遅らせ、敵単体へ火属性のダメージ(300%)",
 		turn: 4,
 		proc: [ss_delay_s(1), ss_damage_s(3.0, [0], 1)],
 	},
@@ -52668,7 +52668,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,1,1,1,1], 0), ChainEnhance(0.20, [1,1,1,1,1], 0)],
 	},
 	ss2: {
-		desc: "<遅延大魔術>攻撃ターンを1遅らせ、敵単体へ火属性のダメージ(500%)",
+		desc: "<遅延大魔術>敵全体の攻撃ターンを1遅らせ、敵単体へ火属性のダメージ(500%)",
 		turn: 6,
 		proc: [ss_delay_s(1), ss_damage_s(5.0, [0], 1)],
 	},
@@ -103062,7 +103062,7 @@ Cards = [{
 	ss1: {
 		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを1早め、敵単体の攻撃ターンを1遅らせる",
 		turn: 6,
-		proc: [ss_skillboost(1), ss_delay_all(1)],
+		proc: [ss_skillboost(1), ss_delay_s(1)],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],1),
@@ -103083,7 +103083,7 @@ Cards = [{
 	ss2: {
 		desc: "<スキルチャージ&遅延>スペシャルスキルの発動ターンを2早め、敵単体の攻撃ターンを2遅らせる",
 		turn: 9,
-		proc: [ss_skillboost(2), ss_delay_all(2)],
+		proc: [ss_skillboost(2), ss_delay_s(2)],
 	},
 	Lawake: [
 		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,100, [0,0,0,1,0,]),
