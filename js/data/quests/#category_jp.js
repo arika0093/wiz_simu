@@ -53,6 +53,12 @@ category_jp = {
     "": {
 		jp: "未設定",
 	},
+    "mareless4": {
+    	jp: "黄昏メアレス4",
+    	is_dispsim: true,
+    	sim_index: 11,
+		disable_date:"2018/5/14 16:00",
+    },
     "outlander": {
 		is_dispsim: true,
 		sim_index: 11,
