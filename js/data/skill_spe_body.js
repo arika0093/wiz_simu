@@ -257,7 +257,7 @@ var SpSkill = {
 				}
 				// 発動時の攻撃力などをコピーする
 				var f_copy = $.extend(true, {}, f);
-				f_copy.Allys.Now[oi] = now_state;
+				f.Allys.Now[oi] = now_state;
 				// 効果値計算
 				var nowch = Math.min(f.Status.chain, max_ch);
 				var rate = Math.floor((base_r + max_r * Math.pow(nowch / max_ch, exp_c)) * 100) / 100;
@@ -265,13 +265,14 @@ var SpSkill = {
 				f.Status.chain = f_copy.Status.chain = 0;
 				// 攻撃
 				var sda = ss_damage_all(rate, attrs, true);
-				ss_object_done(f_copy, n, sda);
+				ss_object_done(f, n, sda);
 				f.log_push("Unit[" + (n + 1) + "]: 連鎖解放大魔術-発動(効果値: " + (rate * 100) + ")");
 				// SS状況を解除
 				var es = GetNowBattleEnemys(f);
 				for (var i = 0; i < es.length; i++) {
 					es[i].flags.is_ss_attack = false;
 				}
+				f.Allys.Now[oi] = f_copy.Allys.Now[oi];
 				// 継続効果を解除
 				ceff.lim_turn = 0;
 			}
