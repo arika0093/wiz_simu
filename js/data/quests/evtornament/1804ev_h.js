@@ -141,7 +141,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_attr_absorb([0,0,0,0,1], 5, 3))
+                     m_enemy_once(s_enemy_attr_absorb_all([0,0,0,0,1], 5, 3))
                   ],
                   on_move: [
                      s_enemy_attack(50, 5, 1, true)
@@ -205,7 +205,7 @@
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_attr_absorb([0,0,0,1,0], 5, 3))
+                     m_enemy_once(s_enemy_attr_absorb_all([0,0,0,1,0], 5, 3))
                   ],
                   on_move: [
                      s_enemy_attack(50, 5, 1, true)
