@@ -576,7 +576,7 @@ var SpSkill = {
 	// -----------------------------
 	// エンハンス効果を付与
 	"ss_enhance": function (fld, n, cobj, params) {
-		var rate = params[0];
+		var baserate = params[0];
 		var t = params[1];
 		var attr = params[2];
 		var calltype = params[3];
@@ -587,6 +587,7 @@ var SpSkill = {
 		var cds = ss_get_targetally(fld, cobj, fld.Allys.Deck, n);
 		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
+			var rate = baserate;
 			var cd = cds[i];
 			var now = nows[i];
 			var n_index = fld.Allys.Now.indexOf(now);
@@ -596,6 +597,10 @@ var SpSkill = {
 						var isreinforce = true;
 						var isreduce_stg = true;
 						var typestr = "[精霊強化]"
+						var rate_awplusRF = pickup_awakes(fld, fld.Allys.Deck[n], "awake_rateup_enhanceRF", false);
+						$.each(rate_awplusRF, function(i, e){
+							rate += e.upvalue / 100;
+						});
 						break;
 					case "null":
 						return null;
@@ -953,12 +958,20 @@ var SpSkill = {
 			}
 			// 精霊強化が実行関数に未指定ならそれも行う
 			var rate_awplusRF = pickup_awakes(fld, f.Allys.Deck[oi], "awake_rateup_regenerateRF", false);
+			var rate_enhplusRF = pickup_awakes(fld, f.Allys.Deck[oi], "awake_rateup_enhanceRF", false);
 			var isexist_regenerate = $.grep(sss, function(e){
 				return e.name == "ss_regenerate";
+			}).length > 0;
+			var isexist_enhance = $.grep(sss, function(e){
+				return e.name == "ss_enhance";
 			}).length > 0;
 			if(rate_awplusRF.length > 0 && !isexist_regenerate){
 				ss_object_done(f, oi, ss_regenerate(0, 1, "RF"));
 			}
+			if(rate_enhplusRF.length > 0 && !isexist_enhance){
+				ss_object_done(f, oi, ss_enhance_all(0, 1, [1,1,1,1,1] ,"RF"));
+			}
+			
 			// dup-remove
 			var nows = f.Allys.Now;
 			for(n=0; n < nows.length; n++) {

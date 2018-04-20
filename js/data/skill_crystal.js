@@ -104,6 +104,14 @@ var Awake_crystal_lists = [{
 		return asc.proc[1];
 	}(),
 }, {
+	name: "時間厳守の結晶(精霊強化エンハ+50%)",
+	imple: Awake_composite,
+	param2: function () {
+		var asr = Awake_SkillRateup(50);
+		asr.type = "awake_rateup_enhanceRF";
+		return asr;
+	}(),
+}, {
 	name: "大当たりの結晶(多段威力+200/Hit+3)",
 	imple: Awake_composite,
 	param2: Awake_RateAndHitup(200, 3),
