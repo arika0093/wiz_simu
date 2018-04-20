@@ -16,7 +16,7 @@ function ssPushWithParam(fld, n){
 	// SS発動前チェック
 	if (is_ss_active(fld, n) && sscheck_before(fld, ss, n)) {
 		// SSを打つ
-		ss_rst = ss_procdo(fld, ss, now, n);
+		ss_rst = ss_procdo(fld, ss, now, n, false);
 	} else {
 		// チェックを通過しなかったら打ち切る
 		return;
@@ -30,6 +30,7 @@ function ssPushWithParam(fld, n){
 			// SSを保存しておく
 			if (ss.proc && ss.proc[0] && !ss.proc[0].is_skillcopy) {
 				fld.Status.latest_ss = ss;
+				fld.Status.latest_now = now;
 			}
 			// ------------------
 			// ダブルスキル付与状況を確認
@@ -123,7 +124,7 @@ function sscheck_before(fld, ss, n) {
 }
 
 // SSを順番に発動していく関数
-function ss_procdo(fld, ss, now, index) {
+function ss_procdo(fld, ss, now, index, is_skillcopy) {
 	var ss_rst = true;
 	var ss_tmpl_rst = false;
 	if (ss.proc != null) {
@@ -198,7 +199,10 @@ function ss_procdo(fld, ss, now, index) {
 				var skl = now.flags.ss_chargeskl;
 				for (var i = 0; i < skl.length; i++) {
 					if (skl[i]) {
-						ss_tmpl_rst = ss_object_done(fld, index, skl[i], true);
+						ss_tmpl_rst = ss_object_done(fld, index, skl[i], {
+							is_check_crs: true,
+							is_skillcopy,
+						});
 					}
 				}
 				now.flags.ss_chargeskl = null;
@@ -211,7 +215,10 @@ function ss_procdo(fld, ss, now, index) {
 			// チャージでないなら普通に実行
 			for (var i = 0; i < ss.proc.length; i++) {
 				if (ss.proc[i]) {
-					ss_tmpl_rst = ss_object_done(fld, index, ss.proc[i], true);
+					ss_tmpl_rst = ss_object_done(fld, index, ss.proc[i], {
+						is_check_crs: true,
+						is_skillcopy,
+					});
 				}
 			}
 		}

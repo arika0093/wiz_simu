@@ -64,6 +64,7 @@ var Field = {
 		continue_eff: [],
 		// 最後に使用したSS
 		latest_ss: null,
+		latest_now: null,
 		// 蓄積系スキルの共通データ
 		accumulate_heal: 0,     // 合計回復値
 		accumulate_dmg: 0,      // 合計ダメージ量
