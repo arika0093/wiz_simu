@@ -1592,8 +1592,10 @@ var SpSkill = {
 	// SSコピー
 	"ss_latest_copy": function (fld, n, cobj, params) {
 		if (fld.Status.latest_ss) {
+			var last_now = fld.Status.latest_now;
 			var now = fld.Allys.Now[n];
-			return ss_procdo(fld, fld.Status.latest_ss, now, n);
+			now.intensely_val = last_now.intensely_val - 1;
+			return ss_procdo(fld, fld.Status.latest_ss, now, n, true);
 		} else {
 			return false;
 		}
@@ -1793,14 +1795,16 @@ var SpCondSkill = {
 	},
 	// -----------------------------
 	// 激化大魔術
-	"ss_intenselyval": function (fld, oi, cobj, params) {
+	"ss_intenselyval": function (fld, oi, cobj, params, add_obj) {
 		var a = params[0];
 		var b = params[1];
 		var c = params[3];
 		var max = params[2];
 		var now = fld.Allys.Now[oi];
 		var x = (now.intensely_val || 0);
-		now.intensely_val = x + 1;
+		if(!add_obj.is_skillcopy){
+			now.intensely_val = x + 1;
+		}
 		return Math.min(a + b * Math.pow(c,x), max);
 	},
 	// -----------------------------
@@ -2038,7 +2042,12 @@ function ss_toselect_one(skill) {
 
 // ------------------------------------
 // (内部用)実行関数
-function ss_object_done(fld, n, c_obj, is_check_crs) {
+function ss_object_done(fld, n, c_obj, option) {
+	option = option === true ? {is_check_crs: true} : (option || null);
+	var is_check_crs = option ? option.is_check_crs : false;
+	var add_obj = {};
+	add_obj.is_skillcopy = option ? option.is_skillcopy : false;
+	
 	// nullとかが渡されたら何もしない
 	if(!c_obj){
 		return;
@@ -2061,7 +2070,7 @@ function ss_object_done(fld, n, c_obj, is_check_crs) {
 		}
 		// 条件またはスキルなら再帰
 		else if (p.is_cond || p.is_skill) {
-			params[count] = ss_object_done(fld, n, p, is_check_crs);
+			params[count] = ss_object_done(fld, n, p, option);
 		}
 		// 関数なら実行
 		else if ($.isFunction(p)) {
@@ -2073,7 +2082,7 @@ function ss_object_done(fld, n, c_obj, is_check_crs) {
 			for (i = 0; i < p.length; i++) {
 				var is_num = $.isNumeric(p[i]);
 				var isdelay = (c_obj.delaychkparam && c_obj.delaychkparam.indexOf(px) >= 0);
-				params[count][i] = (is_num && !isdelay) ? p[i] : ss_object_done(fld, n, p[i], is_check_crs);
+				params[count][i] = (is_num && !isdelay) ? p[i] : ss_object_done(fld, n, p[i], option);
 			}
 		}
 		// 関数型でないならそのまま
@@ -2104,7 +2113,7 @@ function ss_object_done(fld, n, c_obj, is_check_crs) {
 		}
 	}
 	// 関数実行
-	return skl_list[c_obj.name](fld, n, c_obj, params);
+	return skl_list[c_obj.name](fld, n, c_obj, params, add_obj);
 }
 
 // (内部用)敵にSSダメージ
