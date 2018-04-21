@@ -102065,7 +102065,7 @@ Cards = [{
 	ss2: {
 		desc: "<ステータスアップ>味方全体の攻撃力とHPを500アップ(上限値:3000)し、さらに味方全体のHPを回復(25%)、Lモードの精霊の数に応じてさらに攻撃力とHPを500アップ",
 		turn: 8,
-		proc: [ss_statusup_all([ss_legendnum(500, 500), ss_legendnum(500, 500)], [2000, 2000], -1), ss_heal(0.25)],
+		proc: [ss_statusup_all([ss_legendnum(500, 500), ss_legendnum(500, 500)], [3000, 3000], -1), ss_heal(0.25)],
 	},
 	Lawake: [
 		Attr_statusup(0,300, [1,1,1,1,1,]),

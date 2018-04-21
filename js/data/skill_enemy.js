@@ -1218,7 +1218,7 @@ function s_enemy_attr_absorb(attr, rate, turn) {
 						return 0;
 					}
 					// 吸収
-					var ed = GetNowBattleEnemys(fld, n);
+					var ed = GetNowBattleEnemys(fl, n);
 					ed.nowhp = Math.min(ed.hp, ed.nowhp + dmg * rate);
 					fl.log_push("Enemy[" + (n + 1) + "]: 属性吸収(HP+" + (dmg * rate) + ")");
 					return 0;

@@ -5,16 +5,20 @@ function ss_push(n) {
 
 // SSを発動する
 function ssPushWithParam(fld, n){
+	var ss_rst = true;
 	var card = fld.Allys.Deck[n];
 	var now = fld.Allys.Now[n];
 	var is_l = is_legendmode(fld, card, now);
 	var ss = is_l ? card.ss2 : card.ss1;
-	var ss_rst = true;
-	var is_doubleskill = $.grep(now.turn_effect, (e) => {
-		return e.type == "ss_doubleskill";
-	}).length > 0;
+	var is_doubleskill = $.grep(now.turn_effect, (e) => e.type == "ss_doubleskill" ).length > 0;
+	var is_skillcopy = (ss.proc && ss.proc[0] && ss.proc[0].is_skillcopy);
+	var charged = $.grep(now.turn_effect, (e) => e.type == "ss_charge")[0];
+	var charged_skill = charged ? {proc: charged.charge_skl} : null;
+	
+	var check_ss = (is_skillcopy ? (charged_skill || fld.Status.latest_ss) : ss);
+	
 	// SS発動前チェック
-	if (is_ss_active(fld, n) && sscheck_before(fld, ss, n)) {
+	if (is_ss_active(fld, n) && sscheck_before(fld, check_ss, n)) {
 		// SSを打つ
 		ss_rst = ss_procdo(fld, ss, now, n, false);
 	} else {
