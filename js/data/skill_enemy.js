@@ -692,6 +692,8 @@ function s_enemy_steal(dmg, tnum) {
 		// 攻撃部分
 		var sea = s_enemy_attack(dmg, tgs, 1, false);
 		sea.move(fld, n, pnow, is_counter);
+		
+
 		// 盗む[状態異常]の付与
 		s_enemy_abstate_attack(
 			fld, `盗む[発動敵: ${n+1}]`,
@@ -706,7 +708,17 @@ function s_enemy_steal(dmg, tnum) {
 						teff.lim_turn = 0;
 						// L化
 						nows[oi].ss_current = 999;
-						legend_timing_check(f, cards, nows, oi, true);
+						legend_timing_check(f, cards, nows, oi, false);
+					} else {
+						// スキルの溜め状況を0にリセット、L化を解除
+						var card = cards[oi];
+						var endcharge = card.islegend ? card.ss2.turn : card.ss1.turn;
+						var is_lgmode = card.islegend & endcharge <= nows[oi].ss_current;
+						nows[oi].ss_current = 0;
+						if (is_lgmode) {
+							minus_legend_awake(f, cards, nows, oi);
+							nows[i].islegend = false;
+						}
 					}
 				},
 				// SS発動不可
