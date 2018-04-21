@@ -717,7 +717,7 @@ function s_enemy_steal(dmg, tnum) {
 						nows[oi].ss_current = 0;
 						if (is_lgmode) {
 							minus_legend_awake(f, cards, nows, oi);
-							nows[i].islegend = false;
+							nows[oi].islegend = false;
 						}
 					}
 				},
