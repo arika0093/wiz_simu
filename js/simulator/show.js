@@ -458,7 +458,7 @@ function sim_show(fld) {
 				"<a href='javascript:;' style='float:right; display:block' id='opendmgcalc'>ダメージ計算を開く</a>" +
 				"<br/><div style='text-align: right;'>HP: " + now.nowhp + "/" + now.maxhp +
 				"(" + hp_perc.toFixed(2) + "%), ATK: " + now.atk +
-				
+				calcAndShowAccumulatePercent(fld, n) +
 				"</div>");
 			$("#ally_tefflist").html(li_t);
 			$("#opendmgcalc").off("click");
@@ -729,13 +729,26 @@ function openDamageCalcPage(fld, i){
 		if( a.hp < b.hp ) return 1;
 		return 0;
 	})[0];
+	
+	// 蓄積持ちの打点を計算してあるならそれを使用
+	// ないなら標準
+	var skillrate = 0;
+	var skill_awc_rate = cryst_rateup_val;
+	var enh_rate = Math.floor((now.ss_enhance || 0)*100);
+	var acc_rate = $("div#acc_perc").data("rate");
+	if(acc_rate > 0){
+		skillrate = acc_rate;
+		skill_awc_rate = 0;
+		enh_rate = 0;
+	}
+	
 
 	// クエリ
 	var query = {
 		obj_type: "dmgcalc/query",
 		cond: {
 			find_killatk: false,
-			empty_rate: true,
+			empty_rate: !(skillrate > 0),
 			add_atk: 0,
 			add_awatk: (now.def_awatk - now.def_atk),
 			status_up: (now.atk - now.def_awatk),
@@ -744,10 +757,10 @@ function openDamageCalcPage(fld, i){
 			manaplus: now.mana,
 			is_advawake: has_advawake,
 			as_panel_type: 0,
-			skillrate: "",
-			skill_awc_rate: cryst_rateup_val,
+			skillrate,
+			skill_awc_rate,
+			enh_rate,
 			as_iscritical: false,
-			enh_rate: Math.floor((now.ss_enhance || 0)*100),
 			hit_num: 1,
 			rand: rand,
 			chain: fld.Status.chain,
@@ -774,6 +787,48 @@ function openDamageCalcPage(fld, i){
 		w.location = "/damagecalc/?q=" + js.short;
 	});
 	return;
+}
+
+// 蓄積大魔術の溜まっている%を取得、表示
+function calcAndShowAccumulatePercent(fld, n){
+	var perc = 0;
+	var rate = 0;
+	var card = fld.Allys.Deck[n];
+	var now = fld.Allys.Now[n];
+	var is_l = is_legendmode(fld, card, now);
+	var ss = is_l ? card.ss2 : card.ss1;
+	var target_ss = !ss.proc ? [] : ss.proc.filter((e) => {
+		return e.is_skillcopy || e.is_acc;
+	})[0];
+	
+	if(!target_ss){
+		// 対象のSSがない
+		perc = -1;
+	} else if(target_ss.is_skillcopy){
+		// スキルコピー
+		perc = 0;
+	} else {
+		// 蓄積持ち
+		var isheal = target_ss.name.indexOf("Heal") >= 0;
+		var max_r = target_ss.p1;
+		var max_v = target_ss.p2;
+		var a = !isheal ? fld.Status.accumulate_dmg : fld.Status.accumulate_heal;
+		var b = !isheal ? now.accumulateBurnCount : now.accumulateHealCount;
+		var {total} = getEnhanceRate(now);
+		perc = Math.min((a - b)/max_v, 1);
+		rate = (perc * (max_r + total)) + 1;
+	}
+	
+	if(perc < 0){
+		return "";
+	} else {
+		var p = Math.floor(perc*10000) / 100;
+		var r = Math.floor(rate*10000) / 100;
+		
+		return `<div id="acc_perc" data-percent="${p}" data-rate="${r}">`+
+			`蓄積ゲージ: ${p}% ${rate > 0 ? `[効果値: ${r}]` : ""}</div>`;
+	}
+	
 }
 
 

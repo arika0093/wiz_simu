@@ -84,6 +84,26 @@ function getCardsInfo(ddata){
 	return rst;
 }
 
+function extractedCrystalName(dmax, crds, x){
+	var h = "";
+	for (var i = 0; i < dmax; i++) {
+		var c = crds[i].card;
+		if (!c) {
+			continue;
+		}
+		if (crds[i].crystal.length < (x + 1)) {
+			h += "<td class='c_crystal_none'></td>";
+		} else {
+			var btx = crds[i].crystal[x].name;
+			var rtx = btx.replace(/\((?!仮).*?\)/g, "");
+			rtx = rtx.replace(/\s*<.*?>/g, "");
+			rtx = rtx.replace(/(.+)〈/g, "$1<br/>〈");
+			h += "<td class='c_crystal' title='" + crds[i].crystal[x].display_text + "'>" + rtx + "</td>";
+		}
+	}
+	return h;
+}
+
 // カード情報からtableを作成する
 function createCardDataTable(crds){
 	var h = "<div class='wraptb'><table class='cdtable'>";
@@ -116,38 +136,10 @@ function createCardDataTable(crds){
 	}
 	h += "</tr><tr>"
 	// 結晶[1]
-	for(var i=0; i < dmax; i++){
-		var c = crds[i].card;
-		if(!c){
-			continue;
-		}
-		if(crds[i].crystal.length < 1){
-			h += "<td class='c_crystal_none'></td>";
-		} else {
-			var btx = crds[i].crystal[0].name;
-			var rtx = btx.replace(/\((?!仮).*?\)/g, "");
-			rtx = rtx.replace(/\s*<.*?>/g, "");
-			rtx = rtx.replace(/〈/g, "<br/>〈");
-			h += "<td class='c_crystal' title='" + crds[i].crystal[0].display_text + "'>" + rtx + "</td>";
-		}
-	}
+	h += extractedCrystalName(dmax, crds, 0);
 	h += "</tr><tr>"
 	// 結晶[2]
-	for(var i=0; i < dmax; i++){
-		var c = crds[i].card;
-		if(!c){
-			continue;
-		}
-		if(crds[i].crystal.length < 2){
-			h += "<td class='c_crystal_none'></td>";
-		} else {
-			var btx = crds[i].crystal[1].name;
-			var rtx = btx.replace(/\((?!仮).*?\)/g, "");
-			rtx = rtx.replace(/\s*<.*?>/g, "");
-			rtx = rtx.replace(/〈/g, "<br/>〈");
-			h += "<td class='c_crystal' title='" + crds[i].crystal[1].display_text + "'>" + rtx + "</td>";
-		}
-	}
+	h += extractedCrystalName(dmax, crds, 1);
 	h += "</tr>"
 	h += "</table></div>";
 	return h;

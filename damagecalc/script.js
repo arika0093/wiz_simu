@@ -316,7 +316,9 @@ function select_show(c, seled, v){
 					"ss_damage_all_cons",
 					"ss_damage_slash",
 					"ss_damage_explosion",
-					"ss_continue_damage"
+					"ss_continue_damage",
+					"ss_accumulateDamageOfHeal",
+					"ss_accumulateDamageOfBurn"
 				];
 				return atkss_list.indexOf(e.name) >= 0;
 			});
@@ -332,10 +334,13 @@ function select_show(c, seled, v){
 				// reset
 				$("input[name=ss_attr_col]").prop("checked", false);
 				// check attack-attr
-				if(attack_dual_ss.length > 0 && c.attr[1] >= 0){
+				var is_acc = attack_ss[0].name.indexOf("accumulate") >= 0;
+				if(is_acc || (attack_dual_ss.length > 0 && c.attr[1] >= 0)){
 					$("#ss_attr_col_0" + c.attr[1]).prop("checked", true);
 				}
-				$("#ss_attr_col_0" + c.attr[0]).prop("checked", true);
+				if(!is_acc){
+					$("#ss_attr_col_0" + c.attr[0]).prop("checked", true);
+				}
 				v.cond.ss_atk_attr = $.map($("input[name=ss_attr_col]:checked"), function(e){
 					return $(e).val();
 				});
