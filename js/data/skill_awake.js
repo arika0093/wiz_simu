@@ -399,6 +399,16 @@ function Awake_chargeTurnMinus(n) {
 	};
 }
 
+// 時限T減少
+function Awake_bombTurnMinus(n) {
+	return {
+		type: "Awake_bombTurnMinus",
+		name: "時限発動ターン" + n + "T減少",
+		desc: "時限発動ターン数を" + n + "減少させる",
+		upvalue: -n,
+	};
+}
+
 // 大当たり結晶(威力UP+Hit数UP)
 function Awake_RateAndHitup(r_up, h_up) {
 	var eff1 = Awake_SkillRateup(r_up);

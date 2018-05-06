@@ -137,6 +137,11 @@ var Awake_crystal_lists = [{
 	param1: "{0}",
 	input_required: true,
 }, {
+	name: "時限着火ターン数減少",
+	imple: Awake_bombTurnMinus,
+	param1: "{0}",
+	input_required: true,
+}, {
 	genre: "AS変化",
 	name: "過ぎた夏の名残り(AS回復+2%)",
 	imple: Awake_ASkillRateup,
