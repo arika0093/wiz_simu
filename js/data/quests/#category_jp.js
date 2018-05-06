@@ -79,9 +79,9 @@ category_jp = {
 	},
     "kuugarize": {
 		is_dispsim: true,
-		sim_index: 11,
+		sim_index: 12,
 		jp: "喰牙RIZE",
-		disable_date:"2017/6/16 16:00",
+		disable_date:"2018/6/16 16:00",
 	},
     "1703miku": {
 		is_dispsim: true,
