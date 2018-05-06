@@ -341,6 +341,11 @@ function ss_damage_timebomb(r, attrs, atkn, t) {
 		p2: attrs,
 		p3: atkn,
 		p4: t,
+		c_param: {
+			"Awake_bombTurnMinus": {
+				target: 3,
+			},
+		},
 	});
 }
 
