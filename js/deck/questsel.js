@@ -61,10 +61,14 @@ function sim_start() {
 		}
 		// sort
 		var db = $.extend(true, {}, dd);
+		db.deck = [];
 		var sort_array = $('#allys_sel').sortable('toArray');
-		for (var i = 0; i < 5; i++) {
+		for (var i = 0; i < sort_array.length; i++) {
 			var load_i = Number(sort_array[i].replace("ally0", "")) - 1;
-			db.deck[i] = dd.deck[load_i];
+			if(!dd.deck[load_i]){
+				continue;
+			}
+			db.deck.push(dd.deck[load_i]);
 		}
 		// redirect
 		deckdata_Create(db, function (short) {
