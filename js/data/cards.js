@@ -103946,7 +103946,7 @@ Cards = [{
 	ss1: {
 		desc: "<融合大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:5属性で6000%)",
 		turn: 7,
-		proc: [ss_damage_s(ss_multiattr_cond(60), [2]), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(ss_multiattr_cond(60), [2], 1), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
@@ -103967,7 +103967,7 @@ Cards = [{
 	ss2: {
 		desc: "<融合大魔術>スキル反射を無視し、敵単体へ雷属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:5属性で7200%)",
 		turn: 10,
-		proc: [ss_damage_s(ss_multiattr_cond(72), [2]), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(ss_multiattr_cond(72), [2], 1), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,2000),
