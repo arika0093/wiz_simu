@@ -60,27 +60,13 @@ function getRandomTargetingWithBersek(fld, enemys, own_index, obj_tg){
 		// まずは攻撃ヒット確認
 		var hits = hit_rates[alive_num];
 		if(hits >= Math.random()){
-			// Hit
+			// 仕様変更 at Ver:3.0.9
 			var hit_index = Math.floor(Math.random() * alive_num);
-			var hited_en = alive_en[hit_index];
-			for(var i=0; i < alive_num; i++){
-				var nowhp = hited_en.nowhp - sumContractDamages(fld, hited_en);
-				if(nowhp != hited_en.hp){
-					// 被弾してたら隣にずらす
-					hit_index = (hit_index + 1) % alive_num;
-					hited_en = alive_en[hit_index];
-				} else {
-					// 未被弾精霊ならそれに決定
-					break;
-				}
-			}
-			return es.indexOf(hited_en);
+			return es.indexOf(alive_en[hit_index]);
 		} else {
 			// Miss
 			return NaN;
 		}
-		// old:
-		// return Math.floor(dmg_generate_rand(fld, 0, 3)) % 3;
 	} else {
 		return -1;
 	}
