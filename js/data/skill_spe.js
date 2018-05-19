@@ -218,11 +218,28 @@ function ss_UnificationDamage_all(max_r, attrs) {
  *
  **/
 function ss_UnificationDamage_s(max_r, attrs) {
-	var sud = ss_UnificationDamage_all(max_r, attrs);
-	sud.target = "single";
-	return sud;
+	return ss_toselect_single(
+		ss_UnificationDamage_all(max_r, attrs)
+	);
 }
 
+
+/**
+ * 捕食大魔術【全体】 デッキ内の(自身以外の)正解数カウントを全て消費して効果値を変動させる。
+ * max_r:   効果値の最大値。
+ * max_c:   効果値が最大になる正解数カウントの合計。
+ * attrs:   攻撃属性
+ **/
+function ss_QuizcorrectDamage_all(max_r, max_c, attrs) {
+	return ss_template({
+		name: "ss_QuizcorrectDamage",
+		type: "damage",
+		target: "all",
+		p1: max_r,
+		p2: max_c,
+		p3: attrs,
+	});
+}
 
 /**
  * 敵全体に割合ダメージ

@@ -134,6 +134,7 @@ function panelAnswerWithParam(fld, attr) {
 	for (var i = 0; i < fld.Allys.Deck.length; i++) {
 		var now = fld.Allys.Now[i];
 		if (now.nowhp > 0) {
+			addQuizCorrectNum(fld, i, 1);
 			now.ss_current += 1;
 		}
 	}

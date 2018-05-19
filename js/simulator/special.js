@@ -50,6 +50,7 @@ function ssPushWithParam(fld, n){
 					fld.log_push("Unit[" + (n + 1) + "]: Lモード解除");
 				}
 				// SSターンをリセット
+				now.ss_quizcount = 0;
 				now.ss_current = has_secondfastnum(fld, card);
 				now.ss_isfirst = false;
 				now.ss_isboost = false;
@@ -370,5 +371,36 @@ function is_ss_active(fld, i) {
 		return e.ss_disabled;
 	}).length > 0;
 	return !ss_disabled && (sst[0] == 0 || now.flags.ss_chargefin) && now.nowhp > 0 && !fld.Status.finish;
+}
+
+// 正解数関連
+// 正解数を+1する、上限値に達していたらなにもしない
+function addQuizCorrectNum(fld, c_i, add_v = 1){
+	var crd = fld.Allys.Deck[c_i];
+	var now = fld.Allys.Now[c_i];
+	var max = calcQuizCorrectMax(fld, c_i);
+	var cg = now.ss_current;
+	
+	// SSが上限まで溜まっている場合追加しない
+	if(cg < max){
+		now.ss_quizcount = Math.min(now.ss_quizcount + add_v, max);
+	}
+	return now.ss_quizcount;
+}
+
+// 正解数上限を返却
+function calcQuizCorrectMax(fld, c_i){
+	var card = fld.Allys.Deck[c_i];
+	var now = fld.Allys.Now[c_i];
+	var ss1_def = card.ss1.turn;
+	var ss2_def = (card.islegend ? card.ss2.turn : 0);
+	var is_ssfirst = now.ss_isfirst;
+	var hasfast = has_fastnum(fld, card);
+	var has2fst = has_secondfastnum(fld, card);
+	var fast = is_ssfirst ? hasfast : has2fst;
+	// この実装方法だとディスチャを被弾した際の処理がやや変なことになる気はする……
+	// が、とりあえず実装
+	
+	return Math.max(ss1_def, ss2_def) - fast;
 }
 
