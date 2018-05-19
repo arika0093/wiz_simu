@@ -113,6 +113,7 @@ var SpSkill = {
 		var acc_p = Math.min((accHeal - accHealCount)/max_v, 1);
 		var {total} = getEnhanceRate(now);
 		var rate = (acc_p * (max_r + total)) + 1;
+		fld.log_push(`Unit[${n+1}]: 蓄積大魔術・聖(効果値: ${rate}/蓄積%: ${acc_p})`);
 		
 		var enemys = GetNowBattleEnemys(fld);
 		for (var a = 0; a < attrs.length; a++) {
@@ -144,6 +145,7 @@ var SpSkill = {
 		var acc_p = Math.min((accBurn - accBurnCount)/max_v, 1);
 		var {total} = getEnhanceRate(now);
 		var rate = (acc_p * (max_r + total)) + 1;
+		fld.log_push(`Unit[${n+1}]: 蓄積大魔術・邪(効果値: ${rate}/蓄積%: ${acc_p})`);
 		
 		var enemys = GetNowBattleEnemys(fld);
 		for (var a = 0; a < attrs.length; a++) {
@@ -162,7 +164,7 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
-	// 蓄積大魔術
+	// 統一大魔術
 	"ss_UnificationDamage": function (fld, n, cobj, params) {
 		var r = params[0];
 		var attrs = params[1];
@@ -177,6 +179,38 @@ var SpSkill = {
 			}
 		}
 		return true;
+	},
+	// -----------------------------
+	// 捕食大魔術
+	"ss_QuizcorrectDamage": function(fld, n, cobj, params) {
+		var rate_max = params[0];
+		var count_max = params[1];
+		var attrs = params[2];
+		var correctSum = 0;
+		// 自分以外のSS正解数を全消費
+		var nows = fld.Allys.Now;
+		for(var i=0; i < nows.length; i++){
+			if(n != i){
+				correctSum += nows[i].ss_quizcount;
+				nows[i].ss_quizcount = 0;
+				nows[i].ss_current = 0;         // reset(2ndfast ignore)
+			}
+		}
+		// 効果値を計算
+		var rate = rate_max * Math.min(correctSum/count_max, 1) + 1;
+		fld.log_push(`Unit[${n+1}]: 捕食大魔術(効果値: ${rate}/捕食数: ${correctSum}/${count_max})`);
+		
+		var enemys = GetNowBattleEnemys(fld);
+		for (var a = 0; a < attrs.length; a++) {
+			var atr = attrs[a];
+			var t_enemys = ss_get_targetenemy(fld, cobj, n, atr);
+			for (var en = 0; en < t_enemys.length; en++) {
+				// 攻撃
+				var atk_order = enemys.indexOf(t_enemys[en]);
+				var option = { is_noenhance: true };
+				ss_damage(fld, rate, atr, 1, n, atk_order, false, option);
+			}
+		}
 	},
 	
 	// -----------------------------
@@ -1277,6 +1311,7 @@ var SpSkill = {
 			// スキブ処理
 			if (now.nowhp <= 0) { continue; }
 			if (!now.ss_isboost && !is_legendmode(fld, cd, now)) {
+				addQuizCorrectNum(fld, i, f_rate);
 				now.ss_current += f_rate;
 				now.ss_isboost = true;
 				// L化確認
@@ -1546,6 +1581,7 @@ var SpSkill = {
 					continue;
 				}
 				if (!now.ss_isboost && !is_legendmode(fl, card, now)) {
+					addQuizCorrectNum(fl, i, t);
 					now.ss_current += t;
 					now.ss_isboost = true;
 					// L化確認
@@ -1664,6 +1700,7 @@ var SpSkill = {
 	"spskill_maxcharge": function (fld, n, cobj, params) {
 		nows = fld.Allys.Now;
 		$.each(nows, function (i, e) {
+			// addQuizCorrectNum(fld, i, 999); // ここでは追加しない
 			e.ss_current = 999;
 			// スキブ処理
 			var card = fld.Allys.Deck[i];
@@ -1676,6 +1713,7 @@ var SpSkill = {
 		var spe = params[0]-1;
 		$.each(nows, function (i, e) {
 			if(fld.Allys.Deck[i].species.indexOf(spe)!=-1){
+				// addQuizCorrectNum(fld, i, 999); // ここでは追加しない
 				e.ss_current = 999;
 				// スキブ処理
 				var card = fld.Allys.Deck[i];
@@ -2051,6 +2089,13 @@ function ss_toselect_ownside(skill) {
 // ::使用方法 ss_toselect_one(ss_heal(1))
 function ss_toselect_one(skill) {
 	skill.target = "ally_one";
+	return skill;
+}
+
+// 敵全体対象SSを敵単体指定に変更する用の関数
+// ::使用方法 ss_toselect_one(ss_heal(1))
+function ss_toselect_single(skill) {
+	skill.target = "single";
 	return skill;
 }
 

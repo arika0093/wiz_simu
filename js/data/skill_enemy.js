@@ -707,6 +707,7 @@ function s_enemy_steal(dmg, tnum) {
 						teff.disabled = false;
 						teff.lim_turn = 0;
 						// L化
+						addQuizCorrectNum(fld, i, 999); // 盗むでMAXまで上昇するかは要検証
 						nows[oi].ss_current = 999;
 						legend_timing_check(f, cards, nows, oi, false);
 					} else {
@@ -714,6 +715,7 @@ function s_enemy_steal(dmg, tnum) {
 						var card = cards[oi];
 						var endcharge = card.islegend ? card.ss2.turn : card.ss1.turn;
 						var is_lgmode = card.islegend & endcharge <= nows[oi].ss_current;
+						nows[oi].ss_quizcount = 0;
 						nows[oi].ss_current = 0;
 						if (is_lgmode) {
 							minus_legend_awake(f, cards, nows, oi);
@@ -1801,8 +1803,10 @@ function s_enemy_discharge(tnum, minus_turn) {
 			if (is_abs_guard_aw) {
 				return;
 			}
+			
 			var endcharge = card.islegend ? card.ss2.turn : card.ss1.turn;
 			var is_lgmode = card.islegend & endcharge <= e.ss_current;
+			e.ss_quizcount = Math.max(e.ss_quizcount - minus_turn, 0);
 			e.ss_current = Math.max(Math.min(endcharge, e.ss_current) - minus_turn, 0);
 			// Lモードなら覚醒解除
 			if (is_lgmode) {
@@ -1822,6 +1826,7 @@ function s_enemy_allySkillCharge(tnum, plus_turn) {
 	return m_create_enemy_move(function (fld, n) {
 		var nows = fld.Allys.Now;
 		$.each(nows, function (i, e) {
+			addQuizCorrectNum(fld, i, plus_turn);
 			e.ss_current += plus_turn;
 			// スキブ処理
 			var card = fld.Allys.Deck[i];
