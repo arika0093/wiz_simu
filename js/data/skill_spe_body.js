@@ -970,7 +970,7 @@ var SpSkill = {
 				on_answer_dmg: function(f, oi, dmg){
 					var c = f.Allys.Deck[oi];
 					if(is_match_attr(c)){
-						return dmg * 3;
+						return dmg * rate;
 					} else {
 						return dmg;
 					}
@@ -2021,8 +2021,8 @@ var SpCondSkill = {
 			var s_attr = c.def_attr ? c.def_attr[1] : c.attr[1];
 			var now = fld.Allys.Now[i];
 			if(now.nowhp > 0
-				&& target_m_attr[m_attr] >= 0
-				&& target_s_attr[s_attr] >= 0 ){
+				&& target_m_attr[m_attr] > 0
+				&& target_s_attr[s_attr] > 0 ){
 				count++;
 			}
 		}

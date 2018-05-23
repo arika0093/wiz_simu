@@ -379,12 +379,8 @@ function addQuizCorrectNum(fld, c_i, add_v = 1){
 	var crd = fld.Allys.Deck[c_i];
 	var now = fld.Allys.Now[c_i];
 	var max = calcQuizCorrectMax(fld, c_i);
-	var cg = now.ss_current;
 	
-	// SSが上限まで溜まっている場合追加しない
-	if(cg < max){
-		now.ss_quizcount = Math.min(now.ss_quizcount + add_v, max);
-	}
+	now.ss_quizcount = Math.min(now.ss_quizcount + add_v, max);
 	return now.ss_quizcount;
 }
 
