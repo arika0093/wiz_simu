@@ -107148,7 +107148,7 @@ Cards = [{
 		Statusup(0,1000),
 		Statusup(1000,0),
 	],
-{
+},{
 	name: "女傑族の刺客 シャンプー",
 	cardno: 10141,
 	imageno: 12500,
