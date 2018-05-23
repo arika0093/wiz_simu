@@ -1915,6 +1915,19 @@ function s_enemy_when_after_turn(t) {
 	};
 }
 
+// チェインが一定値以上/以下になった場合にcall
+// 値がマイナスなら無視
+// 例: s_enemy_when_chainValue(-1, 10) なら10ch以下になった時怒り
+function s_enemy_when_chainValue(ch_over, ch_short) {
+	return {
+		func: function (fld, n, is_ss, is_preem) {
+			var ch = fld.Status.chain;
+			return (ch_over >= 0 && ch >= ch_over) || (ch_short >= 0 && ch <= ch_short);
+		},
+		desc: t + "ターン経過"
+	};
+}
+
 // enemy_skillのDescを作る
 // 表示順を変えたいとき、属性特攻を参考にorderを指定してください。
 // IEだと正常に動作しなそうなので、無効にしています。
