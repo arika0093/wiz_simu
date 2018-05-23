@@ -124,6 +124,8 @@ function calculate_damage(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd,
 	}).length > 0;
 	// 敵の攻撃時スキル確認
 	d = checkFunctionOnAttack(fld, enemy, d, atk_atr, is_berserk, is_simulate);
+	// 切り捨て
+	d = Math.floor(d);
 
 	// return object
 	return {
