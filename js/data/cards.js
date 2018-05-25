@@ -104060,6 +104060,7 @@ Cards = [{
 	ss1: {
 		desc: "<特効大魔術>敵全体へ光属性のダメージ(600%)、さらに闇属性の敵には特効ダメージ(900%)、さらに敵にトドメを刺した数だけチェインプラス1",
 		turn: 3,
+		chadd_killing: true,
 		proc: [ss_damage_all(special_attr([0,0,0,0,1], 15, 6), [3])],
 	},
 	awakes: [
@@ -104080,7 +104081,8 @@ Cards = [{
 	},
 	ss2: {
 		desc: "<特効大魔術>敵全体へ光属性のダメージ(600%)、さらに闇属性の敵には特効ダメージ(1400%)、さらに敵にトドメを刺した数だけチェインプラス1",
-		turn: 3,
+		turn: 6,
+		chadd_killing: true,
 		proc: [ss_damage_all(special_attr([0,0,0,0,1], 20, 6), [3])],
 	},
 	Lawake: [
