@@ -86314,7 +86314,7 @@ Cards = [{
 		Panel_boost([0,0,1,0,0,],2),
 		NEFTJOD(60),
 		Panel_boost([0,0,1,0,0,],2),
-		Fastskill(2),
+		Fastskill(3),
 		Attr_statusup(0,200, [1,0,1,0,0,]),
 		Attr_statusup(200,0, [1,0,1,0,0,]),
 		Attr_relief([1,1,1,1,1,],10),
