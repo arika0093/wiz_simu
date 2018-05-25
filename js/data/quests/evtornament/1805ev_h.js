@@ -142,7 +142,7 @@
                move: {
                   on_popup: [
                      m_enemy_once(impregnable(1)),
-                     m_enemy_once(s_enemy_attrguard_own([0,1,0,0,0], 1, 1)
+                     m_enemy_once(s_enemy_attrguard_own([0,1,0,0,0], 1, 1),
                   ],
                   on_move: [
                      s_enemy_attack(50, 5, 1, true)
