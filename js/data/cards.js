@@ -107982,8 +107982,8 @@ Cards = [{
 },{
 	name: "残響dearless",
 	cardno: 10102,
-	imageno: -1,
-//	imageno_prefix: "Ut5EsG_",
+	imageno: 12460,
+	imageno_prefix: "V2qtvK_",
 	hp: 2018,
 	atk: 4262,
 	cost: 53,

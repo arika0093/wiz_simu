@@ -1,9 +1,14 @@
-{
+﻿{
    id: "1805ev_h",
    name: "(18/05)イベントトーナメント 覇級",
    desc: "",
    overlap: false,
    aprnum: 5,
+   battle_before: [{
+      desc: "ch+1",
+	  proc: panel_chainplus(1),
+	  isev: true,
+   }],
    data: [
       {
          appearance: [
