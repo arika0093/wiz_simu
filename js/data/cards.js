@@ -66224,8 +66224,8 @@ Cards = [{
 		Spec_statusup(0,300,[6,]),
 		Spec_statusup(300,0,[6,]),
 		Fastskill(2),
-		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,300,[0,0,1,0,0,]),
-		Attr_statusup_sattr(100,0,[0,1,0,0,0,],300,0,[0,0,1,0,0,]),
+		Attr_statusup_sattr(0,100,[0,0,1,0,0,],0,300,[0,1,0,0,0,]),
+		Attr_statusup_sattr(100,0,[0,0,1,0,0,],300,0,[0,1,0,0,0,]),
 	],
 	Lawake: [
 		Attr_statusup(0,200,[0,1,1,0,0,]),
