@@ -67426,7 +67426,7 @@ Cards = [{
 	],
 	Lawake: [
 		Statusup(0,500),
-		Attr_statusup_sattr(0,100,[0,1,0,0,0,],0,100,[0,0,0,0,1,]),
+		Attr_statusup_sattr(100,0,[0,1,0,0,0,],100,0,[0,0,0,0,1,]),
 	],
 },{
 	name: "菓子道極めし女傑 ムウマ・ホルスト",
@@ -83430,6 +83430,7 @@ Cards = [{
 		Attr_statusup(0,200, [0,0,1,0,0,]),
 		Attr_statusup(200,0, [0,0,1,0,0,]),
 		Attr_relief([0,1,0,0,0,],20),
+		NEFTJOD(30),
 		Attr_statusup_sattr(0,100, [0,0,1,0,0,], 0,300, [0,0,0,0,1,]),
 		Attr_statusup_sattr(100,0, [0,0,1,0,0,], 300,0, [0,0,0,0,1,]),
 		Fastskill(3),
@@ -83873,7 +83874,7 @@ Cards = [{
 	ape: "ドルキマスⅢ",
 	as1: {
 		desc: "<チェイン攻撃・種族数攻撃>3チェインでダメージアップ(250%)、龍族の仲間の数だけさらにアップ(100%)",
-		proc: ChainDeckSpecsAttack(1.0, [0], 0, 1.5),
+		proc: ChainDeckSpecsAttack(1.0, [0], 3, 1.5),
 	},
 	ss1: {
 		desc: "<ブースト>1ターンの間、MAXHPを毎ターン35%消費し、攻撃力をアップ(1200%)。さらに極稀にクリティカル",
@@ -83894,7 +83895,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<チェイン攻撃・種族数攻撃>3チェインでダメージアップ(350%)、龍族の仲間の数だけさらにアップ(100%)",
-		proc: ChainDeckSpecsAttack(1.0, [0], 0, 2.5),
+		proc: ChainDeckSpecsAttack(1.0, [0], 3, 2.5),
 	},
 	ss2: {
 		desc: "<ブースト>1ターンの間、MAXHPを毎ターン35%消費し、攻撃力をアップ(1200%)。さらに極稀にクリティカル",
@@ -90824,7 +90825,7 @@ Cards = [{
 		proc: [Heal(0.10, [0,0,1,0,0], 0), ChainEnhance_SubAttr(0.1, 0.6, [0,0,1,0,0], [0,0,0,1,0], 0)],
 	},
 	ss1: {
-		desc: "<スキルチャージ>味方一体のスペシャルスキルの発動ターンを3早める",
+		desc: "<スキルチャージ>味方一人のスペシャルスキルの発動ターンを3早める",
 		turn: 8,
 		proc: [ss_toselect_one(ss_skillboost(3))],
 	},
@@ -90845,7 +90846,7 @@ Cards = [{
 		proc: [Heal(0.13, [0,0,1,0,0], 0), ChainEnhance_SubAttr(0.1, 0.6, [0,0,1,0,0], [0,0,0,1,0], 0)],
 	},
 	ss2: {
-		desc: "<スキルチャージ>味方一体のスペシャルスキルの発動ターンを3早める",
+		desc: "<スキルチャージ>味方一人のスペシャルスキルの発動ターンを3早める",
 		turn: 8,
 		proc: [ss_toselect_one(ss_skillboost(3))],
 	},
@@ -92524,7 +92525,7 @@ Cards = [{
 },{
 	name: "揺蕩う星海の光 ソラナ・カルナ",
 	cardno: 9557,
-	imageno: -1,
+	imageno: 9547,
 	hp: 6231,
 	atk: 1667,
 	cost: 54,
@@ -98674,7 +98675,7 @@ Cards = [{
 	atk: 1243,
 	cost: 49,
 	attr: [1,4],
-	species: [-1],
+	species: [1],
 	islegend: true,
 	ape: "眠れる遺跡のアウトランダー",
 	is_dist: true,
@@ -105790,8 +105791,8 @@ Cards = [{
 	],
 },{
 	name: "祝福・新春の陽光 アーデ&メモリア",
-	cardno: 7695,
-	imageno: 10174,
+	cardno: 10174,
+	imageno: 9777,
 	hp: 6451,
 	atk: 2145,
 	cost: 53,
@@ -106883,7 +106884,6 @@ Cards = [{
 	name: "無差別格闘早乙女流 早乙女乱馬",
 	cardno: 10135,
 	imageno: 5848,
-	imageno_prefix: "N3zReM_",
 	hp: 2680,
 	atk: 4122,
 	cost: 56,
@@ -106930,7 +106930,6 @@ Cards = [{
 	name: "信頼と絆に結ばれる りんね&桜",
 	cardno: 10134,
 	imageno: 5846,
-	imageno_prefix: "q3Md5V_",
 	hp: 4515,
 	atk: 2897,
 	cost: 56,
@@ -106976,7 +106975,6 @@ Cards = [{
 	name: "明日を見つめるふたり 犬夜叉&かごめ",
 	cardno: 10136,
 	imageno: 5862,
-	imageno_prefix: "q3Md5V_",
 	hp: 3022,
 	atk: 6021,
 	cost: 46,
@@ -107022,7 +107020,6 @@ Cards = [{
 	name: "真の大妖怪 殺生丸",
 	cardno: 10138,
 	imageno: 5864,
-	imageno_prefix: "q3Md5V_",
 	hp: 2240,
 	atk: 6810,
 	cost: 46,
@@ -107069,7 +107066,6 @@ Cards = [{
 	name: "永遠に続く愛 ラム&あたる",
 	cardno: 10137,
 	imageno: 5858,
-	imageno_prefix: "q3Md5V_",
 	hp: 4430,
 	atk: 4535,
 	cost: 46,
