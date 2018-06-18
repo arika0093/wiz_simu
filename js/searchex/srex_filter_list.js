@@ -475,6 +475,15 @@ var SrchFilters = [
 	createSpecialSkillObject("反動大魔術・蝕", "反動・蝕", {
 		alias: ["はんどうしょく"],
 	}),
+	createSpecialSkillObject("蓄積解放大魔術・聖", "蓄積・聖", {
+		alias: ["ちくせき", "せい", "きよし"],
+	}),
+	createSpecialSkillObject("蓄積解放大魔術・邪", "蓄積・邪", {
+		alias: ["ちくせき", "じゃ", "よこし"],
+	}),
+	createSpecialSkillObject("捕食大魔術", "捕食", {
+		alias: ["ほしょく"],
+	}),
 	createSpecialSkillObject("弱体化大魔術", "弱体化", {
 		alias: ["じゃくたいか"],
 	}),

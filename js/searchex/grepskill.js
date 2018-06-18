@@ -38,12 +38,12 @@ function pickUpDamagedSkillFromCardProc(sproc){
 	// 再帰用関数
 	function procRecurrsion(p){
 		// Objectでないなら即返却
-		if(!p || p >= 0 || (!p.is_skill && !p.is_cond)){
+		if(!p || p >= 0 || (!p.is_skill && !p.is_cond && !p.values)){
 			return p;
 		}
 		
 		// まず、条件かどうか確認
-		var cond_obj = checkCondProc(p);
+		var cond_obj = p.values ? p : checkCondProc(p);
 		if(cond_obj){
 			// 各戻り値ごとに比較
 			var vs = cond_obj.values;
@@ -141,9 +141,16 @@ function pickUpDamagedSkillFromCardProc(sproc){
 // 攻撃系のSSなら、効果値etcの変数箇所を示したObjectを返す
 // そうでないなら、null
 function checkDamagedSSproc(proc){
-	var createDmgSSObject = (r_pos, atkn, attr) => {
+	var createDmgSSObject = (r_pos, atkn, attr, rate_dofc) => {
 		var target = proc.target;
-		var rate = (r_pos >= 0 ? r_pos : proc[r_pos]);
+		var rate = -1;
+		if(rate_dofc){
+			rate = rate_dofc(proc);
+		} else if(r_pos >= 0){
+			rate = r_pos;
+		} else {
+			rate = proc[r_pos];
+		}
 		var atk_num = (atkn >= 0 ? atkn : proc[atkn]);
 		var atk_attr = (attr >= 0 ? attr : proc[attr]);
 		return { rate, target, atk_num, atk_attr };
@@ -156,6 +163,35 @@ function checkDamagedSSproc(proc){
 		"ss_damage_slash_all":  createDmgSSObject("p1", 1, "p2"),
 		"ss_damage_explosion":  createDmgSSObject("p1", 1, "p2"),
 		"ss_continue_damage":   createDmgSSObject("p1", 1, "p3"),
+		"ss_accumulateDamageOfHeal": createDmgSSObject(null, 1, "p3", (pr) => {
+			return createCondprocObject(pr,
+				[
+					(p) => (p.p1) + 1
+				],
+				["最大値"],
+			);
+		}),
+		"ss_accumulateDamageOfBurn": createDmgSSObject(null, 1, "p3", (pr) => {
+			return createCondprocObject(pr,
+				[
+					(p) => (p.p1) + 1
+				],
+				["最大値"],
+			);
+		}),
+		"ss_QuizcorrectDamage": createDmgSSObject(null, 1, "p3", (pr) => {
+			if(pr.name == "ss_QuizcorrectDamage"){
+				var SPAN = 5;
+				return createCondprocObject(pr,
+					new Array(pr.p2/SPAN + 1).fill(1).map((e,i) => {
+						return (p) => (p.p1 * (i*SPAN / p.p2)) + 1
+					}),
+					new Array(pr.p2/SPAN + 1).fill(1).map((e,i) => {
+						return (p) => `${i*SPAN}/${p.p2}`
+					}),
+				);
+			}
+		}),
 	};
 	
 	if(targets[proc.name]){
@@ -169,62 +205,40 @@ function checkDamagedSSproc(proc){
 // もし条件指定系なら、効果値や状況を示したObjectを返す
 // そうでないなら、null
 function checkCondProc(proc){
-	// parse用Obj生成関数
-	var createCondprocObject = (vls, dcs, t_attr) => {
-		var values = $.map(vls, (e) => {
-			if($.isFunction(e)){
-				var rst = e(proc);
-				if(Number(rst) >= 0){
-					return rst;
-				} else {
-					return "";
-				}
-			}
-			return proc[e];
-		})
-		var descs = $.map(dcs, (e) => {
-			if($.isFunction(e)){
-				return e(proc);
-			}
-			return dcs;
-		})
-		t_attr = t_attr ? proc[t_attr] : null;
-		return { values, descs, t_attr };
-	};
 	// 各cond_proc定義
 	var p = proc;
 	var targets = {
-		"ss_hp_more": createCondprocObject(
+		"ss_hp_more": createCondprocObject(proc,
 			["p2", "p3"],
 			[
 				(p) => `HP${p.p1*100}%以上`,
 				(p) => `HP${p.p1*100}%未満`
 			]
 		),
-		"ss_hp_less": createCondprocObject(
+		"ss_hp_less": createCondprocObject(proc,
 			["p2", "p3"],
 			[
 				(p) => `HP${p.p1*100}%以下`,
 				(p) => `HP${p.p1*100}%超過`
 			]
 		),
-		"ss_hp_under": createCondprocObject(
+		"ss_hp_under": createCondprocObject(proc,
 			["p2", "p3"],
 			[
 				(p) => `HP${p.p1*100}%未満`,
 				(p) => `HP${p.p1*100}%以上`
 			]
 		),
-		"ss_hp_leader": createCondprocObject(
+		"ss_hp_leader": createCondprocObject(proc,
 			["p2", "p3"],
 			[`リーダー時`, `非リーダー時`]
 		),
-		"special_attr": createCondprocObject(
+		"special_attr": createCondprocObject(proc,
 			["p2", "p3"],
 			[`特効対象`, `非特効対象`],
 			["p1"]
 		),
-		"ss_answertime": createCondprocObject(
+		"ss_answertime": createCondprocObject(proc,
 			[
 				(p) => (p.p1 + p.p2 * 4),
 				(p) => (p.p1 + p.p2 * 3),
@@ -234,7 +248,7 @@ function checkCondProc(proc){
 			],
 			[`～1秒`, `1～2秒`, "2～3秒", "3～4秒", "4秒以上"]
 		),
-		"ss_legendnum": createCondprocObject(
+		"ss_legendnum": createCondprocObject(proc,
 			[
 				(p) => (p.p1 + p.p2 * 5),
 				(p) => (p.p1 + p.p2 * 4),
@@ -245,7 +259,7 @@ function checkCondProc(proc){
 			],
 			[`L精霊[5]`, `L精霊[4]`, "L精霊[3]", "L精霊[2]", "L精霊[1]", "L精霊[0]"]
 		),
-		"ss_singleattr_num": createCondprocObject(
+		"ss_singleattr_num": createCondprocObject(proc,
 			[
 				(p) => (p.p1 + p.p2 * 5),
 				(p) => (p.p1 + p.p2 * 4),
@@ -256,45 +270,49 @@ function checkCondProc(proc){
 			],
 			[`単精霊[5]`, `単精霊[4]`, "単精霊[3]", "単精霊[2]", "単精霊[1]", "単精霊[0]"]
 		),
-		"ss_intenselyval": createCondprocObject(
+		"ss_intenselyval": createCondprocObject(proc,
 			[
-				(p) => (p.p1 + p.p2)
+				(p) => (p.p1 + p.p2),
+				//(p) => (p.p3)
 			],
-			[`最小値`]
-		),
-		"ss_consume_all_cond": createCondprocObject(
 			[
-				(p) => (p.p1 * 5)
-			],
-			[`5体生存時`]
+				`最小値`,
+				//`最大値`
+			]
 		),
-		"ss_seal_all_cond": createCondprocObject(
+		"ss_consume_all_cond": createCondprocObject(proc,
 			[
 				(p) => (p.p1 * 5)
 			],
 			[`5体生存時`]
 		),
-		"ss_is_assealed_own_skill": createCondprocObject(
+		"ss_seal_all_cond": createCondprocObject(proc,
+			[
+				(p) => (p.p1 * 5)
+			],
+			[`5体生存時`]
+		),
+		"ss_is_assealed_own_skill": createCondprocObject(proc,
 			["p1"],
 			[`AS封印時`]
 		),
-		"ss_is_abstate_own": createCondprocObject(
+		"ss_is_abstate_own": createCondprocObject(proc,
 			["p1", "p2"],
 			[`異常時`, `非異常時`]
 		),
-		"ss_is_poison_own": createCondprocObject(
+		"ss_is_poison_own": createCondprocObject(proc,
 			["p1", "p2"],
 			[`(自身)毒時`, `(自身)非毒時`]
 		),
-		"ss_is_cursed_own": createCondprocObject(
+		"ss_is_cursed_own": createCondprocObject(proc,
 			["p1", "p2"],
 			[`呪い時`, `非呪い時`]
 		),
-		"ss_is_poison_enemy": createCondprocObject(
+		"ss_is_poison_enemy": createCondprocObject(proc,
 			["p1", "p2"],
 			[`(相手)毒時`, `(相手)非毒時`]
 		),
-		"ss_pureattr_cond": createCondprocObject(
+		"ss_pureattr_cond": createCondprocObject(proc,
 			[
 				(p) => (p.p1 * 1),
 				(p) => (p.p1 * 0.35),
@@ -304,7 +322,7 @@ function checkCondProc(proc){
 			],
 			[`単属性[5]`, `単属性[4]`, "単属性[3]", "単属性[2]", "単属性[1]"]
 		),
-		"ss_multiattr_cond": createCondprocObject(
+		"ss_multiattr_cond": createCondprocObject(proc,
 			[
 				(p) => (p.p1 * 1),
 				(p) => (p.p1 * 0.35),
@@ -314,14 +332,14 @@ function checkCondProc(proc){
 			],
 			[`複属性[5]`, `複属性[4]`, "複属性[3]", "複属性[2]", "複属性[1]"]
 		),
-		"ss_chain_cond": createCondprocObject(
+		"ss_chain_cond": createCondprocObject(proc,
 			["p2", "p3"],
 			[
 				(p) => `${p.p1}ch以上`,
 				(p) => `${p.p1}ch未満`,
 			]
 		),
-		"ss_chain_cost": createCondprocObject(
+		"ss_chain_cost": createCondprocObject(proc,
 			["p2", "p3"],
 			[
 				(p) => `${p.p1}ch消費`,
@@ -345,6 +363,28 @@ function checkCondProc(proc){
 	}
 }
 
+// parse用Obj生成関数
+var createCondprocObject = (proc, vls, dcs, t_attr) => {
+	var values = $.map(vls, (e) => {
+		if($.isFunction(e)){
+			var rst = e(proc);
+			if(Number(rst) >= 0){
+				return rst;
+			} else {
+				return "";
+			}
+		}
+		return proc[e];
+	})
+	var descs = $.map(dcs, (e) => {
+		if($.isFunction(e)){
+			return e(proc);
+		}
+		return dcs;
+	})
+	t_attr = t_attr ? proc[t_attr] : null;
+	return { values, descs, t_attr };
+};
 
 // 特定のSSのみを持つ精霊データを作成する
 function createCardDataOnlySSkill(base, ss_proc, is_ss2){
@@ -383,6 +423,7 @@ function calcPreDamageAndSort(cs){
 	var is_awake_atk = c_obj ? c_obj.aw_atk : true;     // 攻撃UP潜在
 	var is_cryst_rat = c_obj ? c_obj.cr_rat : true;     // 威力UP結晶
 	var is_cryst_adv = c_obj ? c_obj.cr_adv : false;    // アド結晶
+	var atrats = c_obj ? c_obj.atrats : [1,1,1,1,1];    // 属性効果値補正
 	
 	// まず全精霊に火力計算処理
 	$.each(cs, (ci, c) => {
@@ -454,7 +495,8 @@ function calcPreDamageAndSort(cs){
 			var attr_rates = 0;
 			if(attrs.length > 0){
 				for(var i = 0; i < attrs.length; i++){
-					attr_rates += attr_magnification(attrs[i], e_attr);
+					attr_rates +=
+						attr_magnification(attrs[i], e_attr) * atrats[attrs[i]];
 				}
 				dmg *= attr_rates;
 			}
@@ -507,6 +549,10 @@ function getSdmgObject(){
 	var aw_atk =    true;
 	var cr_rat =    $("#sdmgopt_flg_crrate").prop("checked");
 	var cr_adv =    $("#sdmgopt_flg_cradv").prop("checked");
+	var atrats =    new Array(5).fill(1).map((e,i) => {
+		var t = $(`#sdmgopt_rattr_${i}`).val();
+		return ((t != "" && t >= 0) ? t : 1);
+	})
 	
 	var rand = (rand_v > 0 ? rand_v : 1);
 	
@@ -519,7 +565,8 @@ function getSdmgObject(){
 		aw_adv,
 		aw_atk,
 		cr_rat,
-		cr_adv
+		cr_adv,
+		atrats,
 	}
 }
 

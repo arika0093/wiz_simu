@@ -527,7 +527,7 @@ function checkSkillCrystalUpvalue(desc){
 	var targets = {
 		"大魔術": 2,
 		"多弾魔術": 3,
-		"自己犠牲魔術": 3,
+		"自己犠牲魔術": 6,
 		"犠牲魔術": 3,
 		"遅延大魔術": 3,
 		"効果解除大魔術": 3,
