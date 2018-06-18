@@ -240,6 +240,14 @@
                     <input type="number" id="sdmgopt_statk" class="dlg_input" placeholder="(ステアップ)攻撃力補正">
                     <input type="number" id="sdmgopt_enh" class="dlg_input" placeholder="エンハンス効果値補正">
                     <input type="number" id="sdmgopt_rand" class="dlg_input dlg_input_number" placeholder="乱数" min="0.9" max="1.1">
+                    <div class="sdmg_opt_attrrate">
+                        <label for="sdmgopt_rattr_0">属性倍率:</label>
+                        <input type="number" class="dlg_input" id="sdmgopt_rattr_0" max="1.0" min="0.0" step="0.1" placeholder="火属性" />
+                        <input type="number" class="dlg_input" id="sdmgopt_rattr_1" max="1.0" min="0.0" step="0.1" placeholder="水属性" />
+                        <input type="number" class="dlg_input" id="sdmgopt_rattr_2" max="1.0" min="0.0" step="0.1" placeholder="雷属性" />
+                        <input type="number" class="dlg_input" id="sdmgopt_rattr_3" max="1.0" min="0.0" step="0.1" placeholder="光属性" />
+                        <input type="number" class="dlg_input" id="sdmgopt_rattr_4" max="1.0" min="0.0" step="0.1" placeholder="闇属性" />
+                    </div>
                     <div class="sdmg_opt_controlgroup">
                         <label for="sdmgopt_eattr" class="ui-controlgroup-label">敵属性:</label>
                         <select id="sdmgopt_eattr">
