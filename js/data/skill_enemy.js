@@ -1924,7 +1924,7 @@ function s_enemy_when_chainValue(ch_over, ch_short) {
 			var ch = fld.Status.chain;
 			return (ch_over >= 0 && ch >= ch_over) || (ch_short >= 0 && ch <= ch_short);
 		},
-		desc: t + "ターン経過"
+		desc: ch_over + "ch以上"
 	};
 }
 
