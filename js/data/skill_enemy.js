@@ -1800,7 +1800,7 @@ function s_enemy_discharge(tnum, minus_turn) {
 			// 潜在の状態無効を確認
 			var card = fld.Allys.Deck[i];
 			var is_abs_guard_aw = Awake_AbsInvalid(fld, card, nows[i], "discharge");
-			if (is_abs_guard_aw) {
+			if (nows[i].nowhp <= 0 || is_abs_guard_aw) {
 				return;
 			}
 			

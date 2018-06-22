@@ -228,7 +228,7 @@ function damage_ally(fld, dmg, index, neft_check) {
 	now.nowhp = Math.max(aft, minhp);
 	fld.log_push("Unit[" + (index + 1) + "]: " + dmg + "ダメージ(残: " + now.nowhp + "/" + now.maxhp + ")");
 	// HPが0なら全効果を消す
-	if (now.nowhp <= 0) {
+	if (bef > 0 && now.nowhp <= 0) {
 		turneff_allbreak(fld, now.turn_effect, index, "dead");
 		// L時ならL潜在も消す
 		if(is_legendmode(fld, card, now)){
