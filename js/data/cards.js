@@ -88159,7 +88159,7 @@ Cards = [{
 		Fastskill(3),
 		Attr_statusup(200,0, [0,0,1,0,0,]),
 		Attr_statusup(0,200, [0,0,1,0,0,]),
-		Awake_noeffect("as_sealed",3),
+		Abstate_invalid("as_sealed"),
 		Heal_afterbattle(10),
 		Abstate_invalid("ss_sealed"),
 	],
@@ -90657,6 +90657,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	ape: "DL限定精霊",
+	alias: ["アーサー", "アリオテス"],
 	as1: {
 		desc: "<チェイン攻撃>4チェインでダメージアップ(300%)、HP50%以上でさらにダメージアップ(200%)",
 		proc: [ChainAttack(3.0, 4), add_cond(ChainAttack(5.0, 4), when_hp_more(0.5))],
@@ -94395,7 +94396,7 @@ Cards = [{
 	cost: 47,
 	attr: [2,-1],
 	species: [8],
-	alias: ["デバフ", "巨乳"],
+	alias: ["YUNA","ユウナ","デバフ", "巨乳"],
 	islegend: true,
 	ape: "新説桃娘伝",
 	as1: {
@@ -105736,7 +105737,6 @@ Cards = [{
 	awakes: [
 		Fastskill(1),
 		NEFTJOD(30),
-		Statusup(0,200),
 		Abstate_invalid(["ss_sealed"]),
 		Panel_boost([0,1,0,0,0,],2),
 		Attr_statusup_sattr(200,0, [0,1,0,0,0,], 100,0, [0,0,0,0,1,]),
@@ -110064,13 +110064,13 @@ Cards = [{
 },{
 	name: "『疾風』に秘められた力",
 	cardno: 10348,
-	imageno: 12740,
+	imageno: 12741,
 	imageno_prefix: "S5zpwx_",
 	hp: 1845,
 	atk: 6937,
 	cost: 44,
 	attr: [2,-1],
-	species: [-1],
+	species: [7],
 	islegend: true,
 	ape: "コラボ(カードキャプターさくら)",
 	is_dist: true,
@@ -110081,6 +110081,7 @@ Cards = [{
 	ss1: {
 		desc: "<残滅大魔術>9ターン溜めた後、スキル反射を無視し、敵全体へ雷属性のダメージ(1100%)、さらに10ターンの間、雷属性のダメージ(1100%)",
 		turn: 9,
+		charged: 9,
 		proc: [ss_continue_damage(11.0, 11.0, [2], 10), ss_ignore_skillcounter()],
 	},
 	awakes: [
@@ -110102,6 +110103,7 @@ Cards = [{
 	ss2: {
 		desc: "<残滅大魔術>9ターン溜めた後、スキル反射を無視し、敵全体へ雷属性のダメージ(1100%)、さらに10ターンの間、雷属性のダメージ(1100%)",
 		turn: 9,
+		charged: 9,
 		proc: [ss_continue_damage(11.0, 11.0, [2], 10), ss_ignore_skillcounter()],
 	},
 	Lawake: [
