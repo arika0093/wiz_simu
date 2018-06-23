@@ -135,6 +135,8 @@ function minus_legend_awake(fld, cards, nows, own_no) {
 			}
 		}
 	});
+	// 潜在かけなおす
+	func_reawake(fld, cards, nows);
 }
 
 // 潜在を無効化した後かけ直す関数

@@ -126,6 +126,8 @@ function calculate_damage(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd,
 	d = checkFunctionOnAttack(fld, enemy, d, atk_atr, is_berserk, is_simulate);
 	// 切り捨て
 	d = Math.floor(d);
+	// 0以上固定
+	d = Math.max(d, 0);
 
 	// return object
 	return {
