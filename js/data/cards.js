@@ -1389,7 +1389,7 @@ Cards = [{
 		proc: [ss_astime_ext(15, 5)]
 	},
 }, {
-	name: "陽光の綺麗石 サティサ・テオトリ",
+	name: "陽光の綺石 サティサ・テオトリ",
 	cardno: 80001,
 	imageno: 5373,
 	hp: 2402,
@@ -35739,7 +35739,7 @@ Cards = [{
 		Statusup(0,500),
 	],
 },{
-	name: "現世の美しき花 スゥ・メイラン",
+	name: "現世の美しき花 スウ・メイラン",
 	cardno: 4336,
 	imageno: 6120,
 	hp: 2672,
@@ -66856,7 +66856,7 @@ Cards = [{
 	},
 	awakes: [
 		Statusup(200,0),
-		Fastskill(2),
+		Fastskill(1),
 		Panel_boost([1,0,0,0,0,],1),
 		Attr_statusup(0,100, [1,0,0,0,0,]),
 		Fastskill(2),
@@ -74716,7 +74716,7 @@ Cards = [{
 		Fastskill(3),
 		NEFTJOD(30),
 		Abstate_invalid("ss_sealed"),
-		Awake_noeffect("精霊交代",1),
+		Awake_noeffect("精霊交替",1),
 		Attr_statusup_sattr(100,0, [1,0,0,0,0,], 300,0, [0,1,0,0,0,]),
 		Attr_statusup_sattr(0,100, [1,0,0,0,0,], 0,300, [0,1,0,0,0,]),
 	],
@@ -80649,9 +80649,9 @@ Cards = [{
 		proc: ChainDualAttack(4.5, 4, 6),
 	},
 	ss2: {
-		desc: "<斬撃大魔術>スキル反射を無視し、水属性の10連撃(1050%)、さらに連撃数分チェインプラス",
+		desc: "<斬撃大魔術>スキル反射を無視し、水属性の15連撃(1050%)、さらに連撃数分チェインプラス",
 		turn: 12,
-		proc: [ss_damage_slash(10.5, [1], 10), ss_ignore_skillcounter()],
+		proc: [ss_damage_slash(10.5, [1], 15), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,1000),
@@ -85629,7 +85629,7 @@ Cards = [{
 	atk: 1192,
 	cost: 39,
 	attr: [2,4],
-	species: [2],
+	species: [-1],
 	islegend: true,
 	ape: "幻魔特区RELOADED",
 	is_dist: true,
@@ -85675,7 +85675,7 @@ Cards = [{
 	atk: 3329,
 	cost: 45,
 	attr: [0,4],
-	species: [2],
+	species: [-1],
 	islegend: true,
 	ape: "幻魔特区RELOADED",
 	is_dist: true,
@@ -89557,14 +89557,14 @@ Cards = [{
 		NEFTJOD(30),
 	],
 },{
-	name: "憤怨を喰らう魔人",
+	name: "憤怨を食らう魔人",
 	cardno: 9034,
 	imageno: 11242,
 	hp: 5221,
 	atk: 1812,
 	cost: 50,
 	attr: [1,4],
-	species: [2],
+	species: [-1],
 	islegend: true,
 	ape: "喰牙RIZEⅡ",
 	as1: {
@@ -110207,7 +110207,7 @@ Cards = [{
 },{
 	name: "白日に見る貴方 夢の存在",
 	cardno: 10352,
-	imageno: 12741,
+	imageno: 12743,
 	imageno_prefix: "S5zpwx_",
 	hp: 5625,
 	atk: 3005,
@@ -110370,16 +110370,16 @@ Cards = [{
 		proc: [ChainDualAttack(4.0, 4, 3), add_cond(ChainDualAttack(6.0, 4, 3), when_hp_more(0.5))],
 	},
 	ss1: {
-		desc: "<特効大魔術>敵全体へ闇属性のダメージ(600%)、さらに光属性の敵には特効ダメージ(900%)、さらに敵にトドメを刺した数だけチェインプラス1",
+		desc: "<特効大魔術>敵全体へ光属性のダメージ(600%)、さらに闇属性の敵には特効ダメージ(900%)、さらに敵にトドメを刺した数だけチェインプラス1",
 		turn: 3,
 		chadd_killing: true,
-		proc: [ss_damage_all(special_attr([0,0,0,1,0], 15, 6), [4])],
+		proc: [ss_damage_all(special_attr([0,0,0,0,1], 15, 6), [3])],
 	},
 	ss2: {
-		desc: "<特効大魔術>敵全体へ闇属性のダメージ(600%)、さらに光属性の敵には特効ダメージ(1400%)、さらに敵にトドメを刺した数だけチェインプラス1",
+		desc: "<特効大魔術>敵全体へ光属性のダメージ(600%)、さらに闇属性の敵には特効ダメージ(1400%)、さらに敵にトドメを刺した数だけチェインプラス1",
 		turn: 6,
 		chadd_killing: true,
-		proc: [ss_damage_all(special_attr([0,0,0,1,0], 20, 6), [4])],
+		proc: [ss_damage_all(special_attr([0,0,0,0,1], 20, 6), [3])],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],1),
