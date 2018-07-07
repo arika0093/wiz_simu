@@ -69,7 +69,7 @@ function actl_send_share(fld, id, user, comment, after) {
 }
 
 // AS記録
-function actl_save_answer(fld, attr, as_ign) {
+function actl_save_answer(fld, attr, as_ign, as_pch) {
 	var st = fld.Status;
 	// タゲ保存
 	actl_save_target(fld);
@@ -79,6 +79,7 @@ function actl_save_answer(fld, attr, as_ign) {
 		result: true,
 		attr: attr,
 		asignore: as_ign,
+		as_pch,
 	});
 	// 複色パネルを踏んだかどうかのフラグ
 	st.is_spanel_only = st.is_spanel_only && attr.length <= 1;

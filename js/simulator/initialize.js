@@ -54,6 +54,7 @@ var Field = {
 		// AS処理関連
 		chain_redtask: [],          // チェイン消費タスク
 		hpcons_task: [0,0,0,0,0],   // 全体自傷HPタスク
+		p_chain: 1,                 // パネル連結数
 		// パネル付与関連
 		panel_add: [],
 		panel_guard: {
@@ -105,10 +106,7 @@ var Field = {
 	},
 	detail_log: function (fc, title, text) {
 		var fs = this.Status;
-		fs.d_log.push("#(battle: " + fs.nowbattle +
-			", turn: " + (fs.totalturn+1) +
-			"):{ " + text + "}"
-		);
+		fs.d_log.push(`#${fs.nowbattle}|${fs.totalturn+1}: ${text}`);
 	}
 }
 
@@ -322,10 +320,19 @@ $(function () {
 			enemy_popup_proc(Field);
 			// -------------------------
 			//クエスト依存パネル効果の設定
-			if (Field.Quest.panel_effect) {
+			var fq = Field.Quest;
+			if (fq.panel_effect) {
 				var peff = Field.Quest.panel_effect;
 				for (var i = 0; i < peff.length; i++) {
 					ss_object_done(Field, 0, peff[i]);
+				}
+			}
+			// 連結パネル使用可能なら要素を表示させる
+			if(fq.panelchainEnable) {
+				var pcs = $("#pchain_sel");
+				pcs.show();
+				if(fq.panelchainDefault > 1){
+					pcs.val(fq.panelchainDefault);
 				}
 			}
 			// 魔道杯乱舞方式なら処理を変更

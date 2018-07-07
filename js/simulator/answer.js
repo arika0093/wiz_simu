@@ -1,6 +1,9 @@
 // 解答したときの処理(panel button)
 function panel(attr) {
-	return panelAnswerWithParam(Field, attr);
+	if(Field.Quest.panelchainEnable){
+		var pc = $("#pchain_sel").val() - 0;
+	}
+	return panelAnswerWithParam(Field, attr, pc);
 }
 
 // 誤答したときの処理(panel button)
@@ -9,20 +12,27 @@ function answer_miss() {
 }
 
 // 解答したときの実際の処理
-function panelAnswerWithParam(fld, attr) {
+function panelAnswerWithParam(fld, attr, p_chained) {
 	var st = fld.Status;
 	var cnst_rnd = Number($("#attack_rand_sel").val());
 	var as_ignore = $("#as_ignore").prop('checked');
+	// パネル連結数
+	p_chained = p_chained || 1;
+	if(p_chained > 0){
+		fld.Status.p_chain = p_chained;
+	}
+	
 	// 文字ログ出力
-	fld.log_push("【パネル: " + get_attr_string(attr, ",") + " / チェイン数: " +
-		st.chain + "→" + (st.chain + 1) +
-		" / 乱数: " + (cnst_rnd == -1 ? "Random" : cnst_rnd.toFixed(2)) +
-	 " 】", "orange");
+	fld.log_push(`【パネル: ${get_attr_string(attr, ",")}` +
+		`${p_chained > 1 ? `[連結数: ${p_chained}]` : ""} / ` +
+		`チェイン数: ${st.chain} → ${(st.chain + 1)} / ` +
+		`乱数: ${(cnst_rnd == -1 ? "Random" : cnst_rnd.toFixed(2))}】`, "orange");
+	
 	// 再現用ログ関連
-	actl_save_answer(fld, attr, as_ignore);
-	// チェイン+1
+	actl_save_answer(fld, attr, as_ignore, p_chained);
+	// チェイン+正答数
 	if (st.chain_status >= 0) {
-		st.chain += 1;
+		st.chain += p_chained;
 	}
 	// 付与効果実行
 	var pnladd = Number($("#panel_add_sel").val());
@@ -134,8 +144,8 @@ function panelAnswerWithParam(fld, attr) {
 	for (var i = 0; i < fld.Allys.Deck.length; i++) {
 		var now = fld.Allys.Now[i];
 		if (now.nowhp > 0) {
-			addQuizCorrectNum(fld, i, 1);
-			now.ss_current += 1;
+			addQuizCorrectNum(fld, i, p_chained);
+			now.ss_current += p_chained;
 		}
 	}
 	// 敵スキル処理

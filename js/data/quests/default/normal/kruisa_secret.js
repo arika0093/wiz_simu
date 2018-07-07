@@ -1,9 +1,11 @@
 {
-   id: "kurisa_secret",
-   name: "クルイサSecret 復活",
+   id: "kruisa_secret",
+   name: "クルイサsecret 復活",
    desc: "",
    overlap: false,
    aprnum: 11,
+   panelchainEnable: true,
+   panelchainDefault: 4,
    data: [
       {
          appearance: [
@@ -14,12 +16,13 @@
                name: "ミスティアン",
                hp: 100000,
                imageno: 12040,
+               imageno_prefix: "",
                attr: 3,
                spec: 4,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(500, 5, 1, true)/*nogambits*/
+                     s_enemy_attack(500, 5, 1, true)/* nogambits */
                   ],
                   atrandom: false,
                   turn: 2,
@@ -30,12 +33,13 @@
                name: "狂気のソウルスクリーマー",
                hp: 300000,
                imageno: 12042,
+               imageno_prefix: "",
                attr: 3,
                spec: 4,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(500, 5, 1, true)/*nogambits*/
+                     s_enemy_attack(500, 5, 1, true)/* nogambits */
                   ],
                   atrandom: false,
                   turn: 2,
@@ -46,12 +50,13 @@
                name: "狂気のソウルスクリーマー",
                hp: 100000,
                imageno: 12042,
+               imageno_prefix: "",
                attr: 3,
                spec: 4,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(500, 5, 1, true)/*nogambits*/
+                     s_enemy_attack(500, 5, 1, true)/* nogambits */
                   ],
                   atrandom: false,
                   turn: 2,
@@ -62,6 +67,7 @@
                name: "フォグレンブル",
                hp: 150000,
                imageno: 12041,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
@@ -79,6 +85,7 @@
                name: "陰鬱なソウルスクリーマー",
                hp: 150000,
                imageno: 12043,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
@@ -103,12 +110,13 @@
                name: "陰鬱なソウルスクリーマー",
                hp: 600000,
                imageno: 12043,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(600, 5, 1, true)/*nogambits*/
+                     s_enemy_attack(600, 5, 1, true)/* nogambits */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -119,12 +127,13 @@
                name: "陰鬱なソウルスクリーマー",
                hp: 600000,
                imageno: 12043,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(1000, 5, 1, true)/*nogambits*/
+                     s_enemy_attack(1000, 5, 1, true)/* nogambits */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -135,12 +144,13 @@
                name: "フォグレンブル",
                hp: 600000,
                imageno: 12041,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(600, 5, 1, true)/*nogambits*/
+                     s_enemy_attack(600, 5, 1, true)/* nogambits */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -151,12 +161,13 @@
                name: "ミスティアン",
                hp: 300000,
                imageno: 12040,
+               imageno_prefix: "",
                attr: 3,
                spec: 4,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(500, 5, 1, true)/*nogambits*/
+                     s_enemy_attack(500, 5, 1, true)/* nogambits */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -167,12 +178,13 @@
                name: "ミスティアン",
                hp: 300000,
                imageno: 12040,
+               imageno_prefix: "",
                attr: 3,
                spec: 4,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(500, 5, 1, true)/*nogambits*/
+                     s_enemy_attack(500, 5, 1, true)/* nogambits */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -190,12 +202,13 @@
                name: "陰鬱なソウルスクリーマー",
                hp: 100000,
                imageno: 12043,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(150, 5, 1, true)/*nogambits*/
+                     s_enemy_attack(150, 5, 1, true)/* nogambits */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -206,6 +219,7 @@
                name: "驚天光巧 サプラーディー",
                hp: 100000,
                imageno: 12057,
+               imageno_prefix: "",
                attr: 3,
                spec: 6,
                isStrong: false,
@@ -228,12 +242,13 @@
                name: "フォグレンブル",
                hp: 100000,
                imageno: 12041,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(150, 5, 1, true)/*nogambits*/
+                     s_enemy_attack(150, 5, 1, true)/* nogambits */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -244,6 +259,7 @@
                name: "狂気のソウルスクリーマー",
                hp: 25,
                imageno: 12042,
+               imageno_prefix: "",
                attr: 3,
                spec: 4,
                isStrong: false,
@@ -263,6 +279,7 @@
                name: "狂気のソウルスクリーマー",
                hp: 25,
                imageno: 12042,
+               imageno_prefix: "",
                attr: 3,
                spec: 4,
                isStrong: false,
@@ -289,6 +306,7 @@
                name: "ミスティアン",
                hp: 500000,
                imageno: 12040,
+               imageno_prefix: "",
                attr: 3,
                spec: 4,
                isStrong: false,
@@ -306,6 +324,7 @@
                name: "驚天闇巧 サプラーディー",
                hp: 100000,
                imageno: 12058,
+               imageno_prefix: "",
                attr: 4,
                spec: 6,
                isStrong: false,
@@ -328,6 +347,7 @@
                name: "狂気のソウルスクリーマー",
                hp: 500000,
                imageno: 12042,
+               imageno_prefix: "",
                attr: 3,
                spec: 4,
                isStrong: false,
@@ -345,6 +365,7 @@
                name: "フォグレンブル",
                hp: 500000,
                imageno: 12041,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
@@ -362,6 +383,7 @@
                name: "陰鬱なソウルスクリーマー",
                hp: 500000,
                imageno: 12043,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
@@ -386,6 +408,7 @@
                name: "陰鬱なソウルスクリーマー",
                hp: 1000000,
                imageno: 12043,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
@@ -413,6 +436,7 @@
                name: "驚天雷巧 サプラーディー",
                hp: 3000000,
                imageno: 12003,
+               imageno_prefix: "",
                attr: 2,
                spec: 6,
                isStrong: false,
@@ -441,6 +465,7 @@
                name: "フォグレンブル",
                hp: 1000000,
                imageno: 12041,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
@@ -468,6 +493,7 @@
                name: "フォグレンブル",
                hp: 1000000,
                imageno: 12041,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
@@ -495,6 +521,7 @@
                name: "陰鬱なソウルスクリーマー",
                hp: 1000000,
                imageno: 12043,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
@@ -529,6 +556,7 @@
                name: "フォグレンブル",
                hp: 1000000,
                imageno: 12041,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
@@ -556,6 +584,7 @@
                name: "驚天火巧 サプラーディー",
                hp: 3000000,
                imageno: 12001,
+               imageno_prefix: "",
                attr: 0,
                spec: 6,
                isStrong: false,
@@ -584,6 +613,7 @@
                name: "フォグレンブル",
                hp: 1000000,
                imageno: 12041,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
@@ -611,6 +641,7 @@
                name: "フォグレンブル",
                hp: 1000000,
                imageno: 12041,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
@@ -638,6 +669,7 @@
                name: "フォグレンブル",
                hp: 1000000,
                imageno: 12041,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
@@ -672,6 +704,7 @@
                name: "フォグレンブル",
                hp: 1000000,
                imageno: 12041,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
@@ -699,6 +732,7 @@
                name: "驚天水巧 サプラーディー",
                hp: 3000000,
                imageno: 12002,
+               imageno_prefix: "",
                attr: 1,
                spec: 6,
                isStrong: false,
@@ -727,6 +761,7 @@
                name: "フォグレンブル",
                hp: 1000000,
                imageno: 12041,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
@@ -754,6 +789,7 @@
                name: "陰鬱なソウルスクリーマー",
                hp: 1000000,
                imageno: 12043,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
@@ -781,6 +817,7 @@
                name: "陰鬱なソウルスクリーマー",
                hp: 1000000,
                imageno: 12043,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
@@ -815,6 +852,7 @@
                name: "驚天闇巧 サプラーディー",
                hp: 3000000,
                imageno: 12060,
+               imageno_prefix: "",
                attr: 4,
                spec: 6,
                isStrong: false,
@@ -844,6 +882,7 @@
                name: "驚天闇巧 サプラーディー",
                hp: 3000000,
                imageno: 12059,
+               imageno_prefix: "",
                attr: 4,
                spec: 6,
                isStrong: false,
@@ -873,6 +912,7 @@
                name: "驚天闇巧 サプラーディー",
                hp: 3000000,
                imageno: 12061,
+               imageno_prefix: "",
                attr: 4,
                spec: 6,
                isStrong: false,
@@ -902,6 +942,7 @@
                name: "陰鬱なソウルスクリーマー",
                hp: 1000000,
                imageno: 12043,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
@@ -919,6 +960,7 @@
                name: "フォグレンブル",
                hp: 1000000,
                imageno: 12041,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
@@ -943,6 +985,7 @@
                name: "驚天雷巧 サプラーディー",
                hp: 4000000,
                imageno: 12003,
+               imageno_prefix: "",
                attr: 2,
                spec: 6,
                isStrong: false,
@@ -971,6 +1014,7 @@
                name: "驚天火巧 サプラーディー",
                hp: 4000000,
                imageno: 12001,
+               imageno_prefix: "",
                attr: 0,
                spec: 6,
                isStrong: false,
@@ -999,6 +1043,7 @@
                name: "驚天水巧 サプラーディー",
                hp: 4000000,
                imageno: 12002,
+               imageno_prefix: "",
                attr: 1,
                spec: 6,
                isStrong: false,
@@ -1027,12 +1072,13 @@
                name: "狂気のソウルスクリーマー",
                hp: 1000000,
                imageno: 12042,
+               imageno_prefix: "",
                attr: 3,
                spec: 4,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(250, 5, 1, true)/*nogambits*/
+                     s_enemy_attack(250, 5, 1, true)/* nogambits */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -1043,12 +1089,13 @@
                name: "ミスティアン",
                hp: 1000000,
                imageno: 12040,
+               imageno_prefix: "",
                attr: 3,
                spec: 4,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(250, 5, 1, true)/*nogambits*/
+                     s_enemy_attack(250, 5, 1, true)/* nogambits */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -1066,12 +1113,13 @@
                name: "ミスティアン",
                hp: 100,
                imageno: 12040,
+               imageno_prefix: "",
                attr: 3,
                spec: 4,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(50, 5, 1, true)/*nogambits*/
+                     s_enemy_attack(50, 5, 1, true)/* nogambits */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -1082,6 +1130,7 @@
                name: "光のマジタンポックル",
                hp: 100,
                imageno: 12047,
+               imageno_prefix: "",
                attr: 3,
                spec: 7,
                isStrong: false,
@@ -1101,12 +1150,13 @@
                name: "ミスティアン",
                hp: 100,
                imageno: 12040,
+               imageno_prefix: "",
                attr: 3,
                spec: 4,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(50, 5, 1, true)/*nogambits*/
+                     s_enemy_attack(50, 5, 1, true)/* nogambits */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -1117,12 +1167,13 @@
                name: "狂気のソウルスクリーマー",
                hp: 100,
                imageno: 12042,
+               imageno_prefix: "",
                attr: 3,
                spec: 4,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(50, 5, 1, true)/*nogambits*/
+                     s_enemy_attack(50, 5, 1, true)/* nogambits */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -1133,12 +1184,13 @@
                name: "ミスティアン",
                hp: 100,
                imageno: 12040,
+               imageno_prefix: "",
                attr: 3,
                spec: 4,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(50, 5, 1, true)/*nogambits*/
+                     s_enemy_attack(50, 5, 1, true)/* nogambits */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -1156,6 +1208,7 @@
                name: "フォグレンブル",
                hp: 3000000,
                imageno: 12041,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
@@ -1184,6 +1237,7 @@
                name: "驚天闇巧 サプラーディー",
                hp: 50000000,
                imageno: 12058,
+               imageno_prefix: "",
                attr: 4,
                spec: 6,
                isStrong: true,
@@ -1196,7 +1250,7 @@
                   ],
                   on_angry: [
                      m_enemy_once(s_enemy_attack_ratio(0.5, 5, true)),
-                     s_enemy_attack(2500, 5, 1, true),
+                     m_enemy_once(s_enemy_continue_damage(99, 1500, 1500)),
                      m_enemy_once(impregnable(3))
                   ],
                   on_move_angry: [
@@ -1217,6 +1271,7 @@
                name: "陰鬱なソウルスクリーマー",
                hp: 5000000,
                imageno: 12043,
+               imageno_prefix: "",
                attr: 4,
                spec: 4,
                isStrong: false,
@@ -1245,6 +1300,7 @@
                name: "ミスティアン",
                hp: 2000000,
                imageno: 12040,
+               imageno_prefix: "",
                attr: 3,
                spec: 4,
                isStrong: false,
@@ -1273,6 +1329,7 @@
                name: "狂気のソウルスクリーマー",
                hp: 2000000,
                imageno: 12042,
+               imageno_prefix: "",
                attr: 3,
                spec: 4,
                isStrong: false,

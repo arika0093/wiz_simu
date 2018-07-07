@@ -925,6 +925,45 @@ function s_enemy_attrreverse(t, tnum){
 	}, makeDesc("属性反転"));
 }
 
+// 強制進行
+function s_enemy_forcedProgress(plt) {
+	return m_create_enemy_move(function (fld, n) {
+		var nows = fld.Allys.Now;
+		$.each(nows, function (i, e) {
+			// 潜在の状態無効を確認
+			var card = fld.Allys.Deck[i];
+			var is_abs_guard_aw = Awake_AbsInvalid(fld, card, e, "forcedprogress");
+			// 異常攻撃前効果を発動させ、戻り値がfalseのものが1つ以上あったら無効
+			// ユーザー側の攻撃前効果(ex: 異常無効)
+			var is_abs_guard = $.grep(e.turn_effect, function (e) {
+				return e.bef_absattack && !e.bef_absattack(fld, i, ei);
+			}).length > 0;
+			if (e.nowhp <= 0 || is_abs_guard || is_abs_guard_aw) {
+				return;
+			}
+			
+			// (残りTが指定されている)全turn_effects/chargeに対して残りTを進行させる
+			e.turn_effect.forEach((et,it) => {
+				if(et.lim_turn >= 0){
+					et.lim_turn = Math.max(et.lim_turn - plt, 0);
+				}
+				if(et.charge_turn >= 0){
+					et.charge_turn = Math.max(et.charge_turn - plt, 0);
+					et.ss_disabled = (et.charge_turn > 0);
+					turneff_chargeskill_check(fld);
+				}
+			})
+			
+			// スキルカウンターを有効に
+			e.flags.skill_counter[n] = true;
+		});
+		fld.log_push("Enemy[" + (n + 1) + "]: 強制進行(+" + plt + ")");
+	}, makeDesc(`強制進行(+${plt})`, {
+		plus_turn: plt
+	}));
+}
+
+
 // -----------------------------------
 // 反射/カウンター関係
 // -----------------------------------
