@@ -52,17 +52,18 @@ function attack_enemy(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, i
 	// 詳細ログ
 	fld.detail_log("attack_enemy", "calculate",
 		"Unit[" + (i+1) + "]: " +
-		"攻撃力(" + now.atk + (!is_ss ? "/2" : "") + ")" +
+		"ATK(" + now.atk + (!is_ss ? "/2" : "") + ")" +
 		" * 倍率(" + rate + "+" + d_dat.as_enh + "+" + d_dat.sst_enh + ")" +
-		" * チェイン(" + (1 + ch / 100).toFixed(2) + ")" +
+		" * ch(" + (1 + ch / 100).toFixed(2) + ")" +
 		(!is_ss ? " * パネル(" + (pn.indexOf(atk_atr) >= 0 ? 1 : 0.5) + ")" : "") +
-		" * 属性相性(" + attr_magnification(atk_atr, enemy.attr) + ")" +
+		" * 相性(" + attr_magnification(atk_atr, enemy.attr) + ")" +
 		(d_dat.lst_multi != 1 ? " * 補正値(" + d_dat.lst_multi + ")" : "") +
 		" * 乱数(" + d_dat.random.toFixed(2) + ")" +
 		(atkn > 1 ? " / 攻撃回数(" + atkn + ")" : "") +
 		(var_num ? " / 分散(" + var_num + ")" : "") +
-		((d / bef_ond) != 1 ? " * 攻撃時処理[*" + (d / bef_ond).toFixed(2) + "]" : "") +
-		" = ダメージ(" + d + ") "
+		(d_dat.p_chain > 1 ? ` * 連結(${d_dat.p_chain})` : "") +
+		((d / bef_ond) != 1 ? " * その他[" + (d / bef_ond).toFixed(2) + "]" : "") +
+		" = " + d
 	);
 
 	return d;
@@ -91,6 +92,9 @@ function calculate_damage(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd,
 	var lst_multi = Awake_get_multiple(fld, card, now);
 	// 攻撃力
 	d = now.atk / (!is_ss ? 2 : 1);
+	// 連結パネル数(AS時)
+	var pc = fld.Status.p_chain || 1;
+	d *= !is_ss ? pc : 1;
 	// AS倍率、エンハ
 	d *= !is_noenhance ? (rate + total) : rate;
 	// チェイン数考慮
@@ -137,6 +141,7 @@ function calculate_damage(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd,
 		as_enh: as_enh,
 		sst_enh: !is_noenhance ? (ss_enh + bss_enh + rfm_enh) : 0,
 		final_rate: (rate + (is_noenhance ? 0 : total)),
+		p_chain: pc,
 		random: rnd,
 		lst_multi: lst_multi,
 	};

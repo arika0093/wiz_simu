@@ -60,6 +60,10 @@ p.enemy_stat{
 	text-overflow: ellipsis;
 }
 
+select#pchain_sel{
+	width: auto;
+	display: none;
+}
 input#as_ignore{
 	margin: 1ex 0 0;
 }
