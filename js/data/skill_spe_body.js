@@ -407,12 +407,13 @@ var SpSkill = {
 	// 多段式カウンター待機
 	"ss_dualcounter": function (fld, n, cobj, params) {
 		var turn = params[0];
+		var r = params[1] || 0;
 		var nows = ss_get_targetally(fld, cobj, fld.Allys.Now, n);
 		for (var i = 0; i < nows.length; i++) {
 			var now = nows[i];
 			if (now.nowhp <= 0) { continue; }
 			now.turn_effect.push({
-				desc: "多段式カウンター待機",
+				desc: `多段式カウンター待機(効果値: ${r})`,
 				type: "ss_dual_counter",
 				icon: "attack_counter_dual",
 				isdual: false,
@@ -431,7 +432,7 @@ var SpSkill = {
 					}).length > 0;
 					if (is_t && !is_b && dmg_flag.length > 0) {
 						if (!is_sc_cancel) {
-							f.log_push("Unit[" + (oi + 1) + "]: 多段式カウンター発動");
+							f.log_push(`Unit[${(oi+1)}]: 多段式カウンター発動(効果値: ${r})`);
 							// 多段カウンター対象の敵の数だけ繰り返す
 							for (var sci = 0; sci < dmg_flag.length; sci++) {
 								if (!dmg_flag[sci]) { continue; }
@@ -439,7 +440,7 @@ var SpSkill = {
 								for (var atk_ct = 0; atk_ct < dmg_flag[sci]; atk_ct++) {
 									for (var atri = 0; atri < card.attr.length; atri++) {
 										if (card.attr[atri] >= 0) {
-											ss_damage(f, 1, card.attr[atri], 1, oi, sci, true);
+											ss_damage(f, 1 + r, card.attr[atri], 1, oi, sci, true);
 										}
 									}
 									GetNowBattleEnemys(fld, sci).flags.on_damage = true;
@@ -452,7 +453,7 @@ var SpSkill = {
 				},
 			});
 		}
-		fld.log_push("多段式カウンター待機(" + turn + "t)");
+		fld.log_push(`多段式カウンター待機(効果値: ${r}/${turn}T)`);
 		return true;
 	},
 	// -----------------------------

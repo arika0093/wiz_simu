@@ -288,14 +288,16 @@ function ss_skillcounter(r, t) {
 /**
  * 味方全体多段カウンター待機
  * t: 継続ターン数
+ * r: 効果値
 **/
-function ss_dualcounter(t) {
+function ss_dualcounter(t, r) {
 	return ss_template({
 		name: "ss_dualcounter",
 		type: "turn_effect",
 		subtype: "dual_counter",
 		target: "ally",
 		p1: t,
+		p2: r,
 	});
 }
 
