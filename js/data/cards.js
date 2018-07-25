@@ -111077,7 +111077,7 @@ Cards = [{
 	ss2: {
 		desc: "<統一パネル変換>ジャンルパネルを火・水属性化し、回復とダメージ軽減の効果を付与、〈主属性:水、複属性:火〉の精霊が多いほどさらに効果値アップ(上限値:30%、30%)",
 		turn: 7,
-		proc: [ss_panel_change([1,1,0,0,0]), panel_attr_guard([1,1,1,1,1], panel_multieffect([ss_matchattr_cond(0.3, [0,1,0,0,0], [1,0,0,0,0])), panel_healally(ss_matchattr_cond(0.3, [0,1,0,0,0], [1,0,0,0,0]))])],
+		proc: [ss_panel_change([1,1,0,0,0]), panel_multieffect([panel_attr_guard([1,1,1,1,1], ss_matchattr_cond(0.3, [0,1,0,0,0], [1,0,0,0,0])), panel_healally(ss_matchattr_cond(0.3, [0,1,0,0,0], [1,0,0,0,0]))])],
 	},
 	Lawake: [
 		Statusup(1000,0),
