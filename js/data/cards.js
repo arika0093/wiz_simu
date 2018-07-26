@@ -112411,7 +112411,7 @@ Cards = [{
 		Attr_statusup_subattr(0, 500),
 		Attr_statusup_subattr(500, 0),
 		Abstate_invalid("ss_sealed"),
-		Heal_afterbattle(10),
+		Heal_afterbattle(20),
 	],
 	as2: {
 		desc: "<回復・攻撃強化>火属性の味方のHPを回復(16%)、さらに火属性の味方の攻撃力をアップ(30%)",
