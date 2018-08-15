@@ -447,7 +447,7 @@ var SrchFilters = [
 		alias: ["れんげき"],
 	}),
 	createAnswerSkillDetailObject("味方HP削りAS", "全体自傷AS", /味方のMAXHP[0-9]{2,}[%％]を使/, {
-		alias: ["みかた", "ぜんたい", "けずり", "じしょう"],
+		alias: ["みかた", "ぜんたい", "けずり", "じしょう", "自傷"],
 	}),
 	createAnswerSkillDetailObject("解答時間依存AS", "解答依存AS", /(|平均)解答(|時間)が早いほど/, {
 		alias: ["かいとうじかんいぞん", "かいとういぞん"],
@@ -645,7 +645,7 @@ var SrchFilters = [
 		alias: ["すきるはんしゃむし"],
 	}),
 	createSpecialSkillDetailObject("味方HP削りSS", null, /味方全体の(|MAX)HP(|の)[0-9]{1,3}[%％]を/, {
-		alias: ["みかたHPけずり", "ぜんたいじしょう"],
+		alias: ["みかたHPけずり", "ぜんたいじしょう", "自傷"],
 	}),
 	createSpecialSkillDetailObject("不調SS", null, /HP(|が)[0-9]{1,3}%以下/, {
 		alias: ["HPいぞん", "ふちょう"],
@@ -751,7 +751,7 @@ var SrchFilters = [
 	createAwakeObject("SPスキル封印", "SS封印無効", null, {
 		alias: ["SSふういんむこう", "SPふういんむこう", "すきるふういんむこう"],
 	}),
-	createAwakeObject("封印無効", null, /封印(・|無効)/, {
+	createAwakeObject("封印無効", null, /^封印(・|無効)/, {
 		alias: ["ふういんむこう"],
 	}),
 	createAwakeObject("毒無効", null, /毒(・|無効)/, {

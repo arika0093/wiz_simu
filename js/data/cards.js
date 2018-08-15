@@ -112756,9 +112756,7 @@ Cards = [{
 		Abstate_invalid("ss_sealed"),
 		Awake_noeffect("惺眼",1),
 	],
-},
-/*
-{
+}, {
 	name: "宿業の烈眼継承 オリアンヌ・ルガ",
 	cardno: 10465,
 	imageno: 12881,
@@ -112776,7 +112774,7 @@ Cards = [{
 	ss1: {
 		desc: "<パネル爆破大魔術>スキル反射を無視し、パネルを消費(一部の特殊なパネルを除く)し、消費したパネルの属性の数だけ敵全体へダメージ(200%)",
 		turn: 5,
-		proc: [ss_undefined("パネル爆破大魔術")],
+		proc: [ss_PanelBurningDamage_all(2)],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],2),
@@ -112797,12 +112795,12 @@ Cards = [{
 	ss2: {
 		desc: "<パネル爆破大魔術>スキル反射を無視し、パネルを消費(一部の特殊なパネルを除く)し、消費したパネルの属性の数だけ敵全体へダメージ(500%)",
 		turn: 8,
-		proc: [ss_undefined("パネル爆破大魔術")],
+		proc: [ss_PanelBurningDamage_all(5)],
 	},
 	Lawake: [
 		Statusup(0,1000),
 		Abstate_invalid("ss_sealed"),
-		//烈眼
+		Awake_retsugan(1000),
 	],
 },{
 	name: "礫滅の処断鎌 ハクア・デスサイス",
@@ -112822,7 +112820,7 @@ Cards = [{
 	ss1: {
 		desc: "<蓄積解放大魔術・邪>スキル反射を無視し、敵単体へ闇属性のダメージ(100%)、さらにクエスト中の累計被ダメージ量に応じてダメージアップ(上限値:18万ダメージで14000%)",
 		turn: 10,
-		proc: [ss_accumulateDamageOfBurn_s(140.0, 250000, [4], 1), ss_ignore_skillcounter()],
+		proc: [ss_accumulateDamageOfBurn_s(140.0, 180000, [4], 1), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],2),
@@ -112843,11 +112841,11 @@ Cards = [{
 	ss2: {
 		desc: "<蓄積解放大魔術・邪>スキル反射を無視し、敵単体へ闇属性のダメージ(100%)、さらにクエスト中の累計被ダメージ量に応じてダメージアップ(上限値:18万ダメージで14000%)",
 		turn: 10,
-		proc: [ss_accumulateDamageOfBurn_s(140.0, 250000, [4], 1), ss_ignore_skillcounter()],
+		proc: [ss_accumulateDamageOfBurn_s(140.0, 180000, [4], 1), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,2000),
 	],
-},*/
+},
 
 ];

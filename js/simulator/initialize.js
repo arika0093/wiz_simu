@@ -56,6 +56,7 @@ var Field = {
 		hpcons_task: [0,0,0,0,0],   // 全体自傷HPタスク
 		p_chain: 1,                 // パネル連結数
 		// パネル付与関連
+		panel_color: [],            // パネル色保存
 		panel_add: [],
 		panel_guard: {
 			attr: [],
@@ -428,6 +429,8 @@ function nextturn(fld, is_ssfin) {
 				}
 			}
 		}
+		// パネル状態をリセット
+		fld.Status.panel_color = [];
 		// 出現前にフラグリセット
 		initialize_allys_flags(fld, nows);
 		// ここで新しい敵の処理を行う

@@ -184,15 +184,9 @@ function ss_accumulateDamageOfHeal_all(max_r, max_v, attrs) {
  *
  **/
 function ss_accumulateDamageOfHeal_s(max_r, max_v, attrs) {
-	return ss_template({
-		name: "ss_accumulateDamageOfHeal",
-		type: "damage",
-		target: "single",
-		is_acc: true,
-		p1: max_r,
-		p2: max_v,
-		p3: attrs,
-	});
+	return ss_toselect_single(
+		ss_accumulateDamageOfHeal_all(max_r, max_v, attrs)
+	);
 }
 
 /**
@@ -212,6 +206,19 @@ function ss_accumulateDamageOfBurn_all(max_r, max_v, attrs) {
 		p2: max_v,
 		p3: attrs,
 	});
+}
+
+/**
+ * 蓄積大魔術・邪【単体】（被ダメージ総量に応じたダメージを敵に与える）
+ * max_r:	最高威力(ex: 71.0		-> 効果値7100)
+ * max_v:   最高威力を出すのに必要なダメージ量(ex: 250000  → 25万ダメージ時に最高威力)
+ * attrs:	攻撃属性(ex: [0,1]	-> 火,水)
+ *
+ **/
+function ss_accumulateDamageOfBurn_s(max_r, max_v, attrs) {
+	return ss_toselect_single(
+		ss_accumulateDamageOfBurn_all(max_r, max_v, attrs)
+	);
 }
 
 /**
@@ -242,7 +249,6 @@ function ss_UnificationDamage_s(max_r, attrs) {
 	);
 }
 
-
 /**
  * 捕食大魔術【全体】 デッキ内の(自身以外の)正解数カウントを全て消費して効果値を変動させる。
  * max_r:   効果値の最大値。
@@ -257,6 +263,19 @@ function ss_QuizcorrectDamage_all(max_r, max_c, attrs) {
 		p1: max_r,
 		p2: max_c,
 		p3: attrs,
+	});
+}
+
+/**
+ * パネル爆破大魔術【全体】 現在のパネルをすべて消費して、その属性に応じたダメージを与える。
+ * rate:    攻撃1Hitにおける効果値。
+ **/
+function ss_PanelBurningDamage_all(rate) {
+	return ss_template({
+		name: "ss_PanelBurningDamage",
+		type: "damage",
+		target: "all",
+		p1: rate,
 	});
 }
 
@@ -1093,7 +1112,21 @@ function ss_resurrection(r, p) {
 
 
 // ------------------------------------------------------
-// パネル付与系
+// パネル変換/付与系
+
+/**
+ * パネル変換を行う。
+ * attr: 変換属性。(ex: [1,0,0,0,0] -> 火属性)
+ **/
+function ss_panel_change(attr) {
+	return ss_template({
+		name: "ss_panel_change",
+		type: "panel_change",
+		target: "panel",
+		p1: attr,
+	});
+}
+
 /**
  * 複合パネル付与
  * pnls: 付与したいパネル効果を[]内に書く
@@ -1290,19 +1323,6 @@ function ss_panel_shuffle() {
 		name: "ss_panel_shuffle",
 		type: "panel_change",
 		target: "panel",
-	});
-}
-
-/**
- * パネル変換を行う。
- * attr: 変換属性。(ex: [1,0,0,0,0] -> 火属性)
-**/
-function ss_panel_change(attr) {
-	return ss_template({
-		name: "ss_panel_change",
-		type: "panel_change",
-		target: "panel",
-		p1: attr,
 	});
 }
 
@@ -1839,11 +1859,12 @@ function ss_warning(str) {
 		p1: str,
 	});
 }
-function ss_undefined(str) {
+function ss_undefined(str, text) {
 	return ss_template({
 		name: "ss_undefined",
 		type: "for_internal",
 		p1: str,
+		p2: text,
 	});
 }
 
