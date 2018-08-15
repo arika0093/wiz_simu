@@ -698,6 +698,9 @@ function isStringContainedInCard(t, e){
 	// 精霊名
 	check_cont_str = check_cont_str
 		|| isStringContainCheck(t, e.name);
+	// ape
+	check_cont_str = check_cont_str
+		|| (e.ape && isStringContainCheck(t, e.ape));
 	// alias
 	check_cont_str = check_cont_str || (e.alias
 		&& isStringContainCheck(t, e.alias));

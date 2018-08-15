@@ -1428,7 +1428,10 @@ function s_enemy_multibarrier_own(dmg, turn) {
 			},
 			on_damage: function (fl, d, atr_i, is_berserk, is_sim) {
 				var is_invalid = false;
-				if (this.barr_endurance > 0 && !is_sim) {
+				if(d <= 0) {
+					// ダメージが0以下なら多層は削れない
+					is_invalid = false;
+				} else if (this.barr_endurance > 0 && !is_sim) {
 					// 無効化
 					var bf = this.barr_endurance;
 					var af = this.barr_endurance - 1;

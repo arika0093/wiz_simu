@@ -328,6 +328,19 @@ function Awake_damage_multiple(rate, lowhp) {
 	}
 }
 
+// 烈眼
+function Awake_retsugan(up_atk){
+	return {
+		name: `烈眼の欠片(L時味方ATK+${up_atk},自傷10%)`,
+		type: "status_up",
+		attr: [1, 1, 1, 1, 1],
+		spec: create_specs(1),
+		up_hp: 0,
+		up_atk,
+		is_legend: true,
+	};
+}
+
 // 攻撃力+X、被ダメージ*Y倍、回復効果を受けない
 function Awake_dragonmode(up_atk, up_damaged) {
 	var desc = "攻撃力+" + up_atk + ",被ダメージ" + up_damaged + "倍,回復しない";

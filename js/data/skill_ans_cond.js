@@ -194,7 +194,7 @@ var AsAddRate = {
 // ------------------------------------------------------
 var AsAfter = {
 	// HP吸収
-	"as_hp_absorption": function (fld, aft, oi, g_dmg) {
+	"as_hp_absorption": function (fld, aft, as, oi, g_dmg) {
 		var {r} = aft.param;
 		return function () {
 			var now = fld.Allys.Now[oi];
@@ -204,7 +204,7 @@ var AsAfter = {
 		}
 	},
 	// 全体自傷スキル
-	"as_consume_all": function (fld, aft, oi) {
+	"as_consume_all": function (fld, aft, as, oi) {
 		var {hp} = aft.param;
 		return function () {
 			for (var i = 0; i < fld.Allys.Deck.length; i++) {
@@ -213,7 +213,7 @@ var AsAfter = {
 		}
 	},
 	// 単体自傷スキル
-	"as_consume_own": function (fld, aft, oi) {
+	"as_consume_own": function (fld, aft, as, oi) {
 		var {hp} = aft.param;
 		return function () {
 			fld.Status.hpcons_task[oi] += hp;

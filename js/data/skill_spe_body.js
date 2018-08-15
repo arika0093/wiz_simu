@@ -197,7 +197,8 @@ var SpSkill = {
 			}
 		}
 		// 効果値を計算
-		var rate = rate_max * Math.min(correctSum/count_max, 1) + 1;
+		var {total} = getEnhanceRate(now);
+		var rate = (rate_max + total) * Math.min(correctSum/count_max, 1) + 1;
 		fld.log_push(`Unit[${n+1}]: 捕食大魔術(効果値: ${rate}/捕食数: ${correctSum}/${count_max})`);
 		
 		var enemys = GetNowBattleEnemys(fld);
@@ -212,7 +213,48 @@ var SpSkill = {
 			}
 		}
 	},
-	
+	// -----------------------------
+	// パネル爆破大魔術
+	"ss_PanelBurningDamage": function(fld, n, cobj, params){
+		var rate = params[0];
+		var ps = fld.Status.panel_color;
+		// パネルが4枚指定されている状況なら、パネル選択を省略
+		// そうでない状況なら、暫定的にエラーを出しておく
+		if(ps.length != 4){
+			ss_object_done(fld, n,
+				ss_undefined("パネル爆破大魔術", 
+					"現在、パネル爆破大魔術はパネル変換と併用する前提の実装となっています。" +
+					"実装まで今しばらくお待ち下さい。"
+				)
+			);
+		}
+		else {
+			// 効果値をここで計算
+			var now = fld.Allys.Now[n];
+			var enemys = GetNowBattleEnemys(fld);
+			var {total} = getEnhanceRate(now);
+			var hits = ArrayMath.sum(ps.map((p) => {
+				return ArrayMath.sum(p.filter((e) => e > 0));
+			}));
+			var r = rate + (total / (hits));
+			fld.log_push(`Unit[${n+1}]: パネル爆破大魔術(効果値: ${r * 100}%)`);
+			ps.forEach((p) => {
+				p.forEach((e, atr) => {
+					if(e > 0){
+						// 各パネル色で順に攻撃
+						// 攻撃
+						var t_enemys = ss_get_targetenemy(fld, cobj, n, atr);
+						for (var en = 0; en < t_enemys.length; en++) {
+							var atk_order = enemys.indexOf(t_enemys[en]);
+							var option = { is_noenhance: true };
+							ss_damage(fld, r, atr, 1, n, atk_order, false, option);
+						}
+					}
+				})
+			});
+		}
+		return true;
+	},
 	// -----------------------------
 	// 敵単体に属性ダメージ
 	"ss_damage_explosion": function (fld, n, cobj, params) {
@@ -1502,6 +1544,14 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
+	// パネル変換
+	"ss_panel_change": function (fld, n, cobj, params) {
+		var p_attr = params[0];
+		fld.Status.panel_color = new Array(4).fill(p_attr);
+		fld.log_push(`Unit[${(n + 1)}]: パネル変換(${get_attr_string(p_attr, "/")})`);
+		return true;
+	},
+	// -----------------------------
 	// パネル付与効果(複合用)
 	"panel_multieffect": function (fld, n, cobj, params) {
 		var effs_dat = params[0][0];
@@ -1731,8 +1781,9 @@ var SpSkill = {
 	},
 	"ss_undefined": function (fld, n, cobj, params) {
 		var str = params[0];
+		var text = params[1];
 		fld.log_push(`Unit[${n+1}]: [UNDEFINED] ${str}`, "orange");
-		throw `\n[${str}: スキルが定義されていない精霊です。実装をお待ちください。]`;
+		throw `\n[${str}: ${text || "スキルが定義されていない精霊です。実装をお待ちください。"}]`;
 	},
 	/*
 	// -----------------------------

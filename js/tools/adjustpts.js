@@ -60,6 +60,7 @@ var PtDatas = [{
 	name: "伍式",
 	rank: "1位",
 	pt: 4000,
+	is_dg: true,
 }, {
 	name: "肆式",
 	rank: "1位",
