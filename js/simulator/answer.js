@@ -670,7 +670,7 @@ function answer_heal(fld, as, i, p, bef_f) {
 		}
 		if (ass.rate > 0) {
 			// 回復
-			var heal_val = Math.floor(ass.rate * now.maxhp);
+			var heal_val = Math.ceil(ass.rate * now.maxhp);
 			var before = now.nowhp;
 			heal_ally(fld, heal_val, ci);
 			maxrate = Math.max(maxrate, ass.rate);

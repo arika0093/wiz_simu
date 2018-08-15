@@ -416,7 +416,7 @@ function nextturn(fld, is_ssfin) {
 		for(var i=0; i < abh_r.length; i++){
 			var abh = abh_r[i];
 			if (abh > 0) {
-				heal_ally(fld, Math.floor(nows[i].maxhp * abh), i);
+				heal_ally(fld, Math.ceil(nows[i].maxhp * abh), i);
 				fld.log_push(`Unit[${i+1}]: 戦後回復: ${abh * 100}%`);
 			};
 		}

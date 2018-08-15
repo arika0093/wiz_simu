@@ -320,7 +320,7 @@ function retsugan_check(fld, is_ssfin){
 		}
 	})
 	if(is_retsugan){
-		ss_object_done(fld, 0, ss_consume_all(0.1));
+		ss_object_done(fld, 0, ss_consumeCeil_all(0.1));
 	}
 }
 

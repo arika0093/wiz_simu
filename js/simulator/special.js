@@ -60,6 +60,8 @@ function ssPushWithParam(fld, n){
 			now.flags.ss_chargefin = false;
 		}
 		// ------------------
+		// 攻撃力の再計算を行う
+		func_reawake(fld, fld.Allys.Deck, fld.Allys.Now);
 		// 再現用ログ関連
 		actl_save_special(fld, n);
 		// [進む]を使えないように
@@ -139,6 +141,14 @@ function ss_procdo(fld, ss, now, index, is_skillcopy) {
 		}).length;
 		// チャージスキルの場合
 		if (ss.charged > 0 || now.flags.ss_chargefin) {
+			// L状態なら、L化によって上昇している攻撃力を取得
+			var lup_atk = 0;
+			var card = fld.Allys.Deck[index];
+			if(is_legendmode(fld, card, now)){
+				var os = pickup_awakes(fld,  card, "own_status_up", true);
+				var as = pickup_awakes(fld, card, "status_up", true);
+				lup_atk = ArrayMath.sum([...os, ...as], () => true, "up_atk");
+			}
 			// チャージが終わっているか確認し、終わってないなら追加
 			if (!now.flags.ss_chargefin) {
 				var c_turn = ss.charged;
@@ -188,8 +198,11 @@ function ss_procdo(fld, ss, now, index, is_skillcopy) {
 						var now = fl.Allys.Now[oi];
 						now.flags.ss_chargefin = true;
 						now.flags.ss_chargeskl = this.charge_skl;
+						now.flags.ss_chargelup = this.lup_atk;
 						return;
 					},
+					// L時ATKUPの仮置き
+					lup_atk,
 				});
 				// 全体チャージスキルなら味方全体にnT行動不可効果付与
 				if (ss.isallcharge) {
@@ -202,6 +215,11 @@ function ss_procdo(fld, ss, now, index, is_skillcopy) {
 			// 終わっているなら発動
 			else {
 				var skl = now.flags.ss_chargeskl;
+				// 攻撃力を暫定的にL潜在分だけUPさせる
+				// また、現在L状態ならその分は一時的に無効化する
+				// 発動終了時に再計算されるので、解除については特に記載しない
+				now.atk += now.flags.ss_chargelup || 0;
+				now.atk -= lup_atk || 0;
 				for (var i = 0; i < skl.length; i++) {
 					if (skl[i]) {
 						ss_tmpl_rst = ss_object_done(fld, index, skl[i], {

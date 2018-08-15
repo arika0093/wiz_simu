@@ -73,7 +73,7 @@ function add_awake_ally(fld, cards, nows, own_no, legend_skill, ignorenowhpup) {
 			if(e.attr[cards[t].attr[0]] > 0                     // 現在の属性と一致していて
 			//&& e.attr[nows[t].def_attr[0]] > 0	            // 元々の属性とも一致していて(修正により削除)
 			&& check_spec_inarray(e.spec, cards[t].species)     // 対象種族とも一致していて
-			&& (!e.cond || e.cond(fld, own_no, t))) {         // 潜在固有の条件とも一致する場合反映
+			&& (!e.cond || e.cond(fld, own_no, t))) {           // 潜在固有の条件とも一致する場合反映
 				nows[t].maxhp += e.up_hp;
 				if(!ignorenowhpup){
 					nows[t].nowhp += e.up_hp;

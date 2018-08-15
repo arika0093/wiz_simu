@@ -1514,7 +1514,7 @@ var SpSkill = {
 				effect: function () { },
 				before_dead: function (f, oi) {
 					var now = f.Allys.Now[oi];
-					now.nowhp = Math.floor(now.maxhp * rate);
+					now.nowhp = Math.ceil(now.maxhp * rate);
 					f.log_push("Unit[" + (oi + 1) + "]: 起死回生発動");
 				}
 			});
@@ -1533,7 +1533,7 @@ var SpSkill = {
 			var now = nows[i];
 			if (now.nowhp <= 0 && attr[cd.attr[0]]) {
 				now.nowhp = Math.min((now.maxhp * rate), now.maxhp);
-				now.nowhp = Math.round(now.nowhp);
+				now.nowhp = Math.floor(now.nowhp);
 				// 復活時にLなら死亡時解除の潜在を再適用
 				if(is_legendmode(fld, fld.Allys.Deck[n], fld.Allys.Now[n])){
 					add_awake_ally(fld, fld.Allys.Deck, fld.Allys.Now, i, true);
@@ -1612,7 +1612,7 @@ var SpSkill = {
 		return panel_addition(fld, dsc, function(fl){
 			for (var i = 0; i < fl.Allys.Deck.length; i++) {
 				var now = fl.Allys.Now[i];
-				heal_ally(fl, now.maxhp * r, i);
+				heal_ally(fl, Math.floor(now.maxhp * r), i);
 			}
 			fl.log_push("パネル付与効果発動: " + dsc);
 		}, is_multi);
@@ -1721,6 +1721,22 @@ var SpSkill = {
 		for (var i = 0; i < fld.Allys.Deck.length; i++) {
 			var now = fld.Allys.Now[i];
 			var dmg = Math.floor(p * now.maxhp);
+			if (now.nowhp > 0) {
+				damage_ally(fld, dmg, i);
+				ct++;
+			}
+		}
+		return ct;
+	},
+	// -----------------------------
+	// デメリット系: 味方全体に切り上げの割合ダメージ
+	"ss_consumeCeil_all": function (fld, n, cobj, params) {
+		var p = params[0];
+		var ct = 0;
+		fld.log_push("全体自傷[切り上げ](" + (p * 100) + "%)");
+		for (var i = 0; i < fld.Allys.Deck.length; i++) {
+			var now = fld.Allys.Now[i];
+			var dmg = Math.ceil(p * now.maxhp);
 			if (now.nowhp > 0) {
 				damage_ally(fld, dmg, i);
 				ct++;

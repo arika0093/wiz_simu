@@ -1406,6 +1406,18 @@ function ss_consume_all(p) {
 }
 
 /**
+ * 味方全体に切り上げの割合ダメージを与える。
+ * p: 与えるダメージ(ex. 0.1 -> 10%)
+ **/
+function ss_consumeCeil_all(p) {
+	return ss_template({
+		name: "ss_consumeCeil_all",
+		type: "demerit",
+		p1: p,
+	});
+}
+
+/**
  * 自身を封印状態にする
  * t: 封印ターン数
 **/
