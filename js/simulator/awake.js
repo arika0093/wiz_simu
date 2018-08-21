@@ -382,3 +382,23 @@ function Awake_dospskill(fld, index) {
 		SpSkill[ls.skill](fld, index, null, [ls.p1, ls.p2, ls.p3, ls.p4]);
 	}
 }
+
+
+// 撃破時スキル発動系潜在の関連
+function Awake_KillSpSkill(fld, is_ssfin) {
+	var cards = fld.Allys.Deck;
+	var nows = fld.Allys.Now;
+	cards.forEach((card, i) => {
+		var now = nows[i]
+		pickup_awakes(fld, card, "awake_killskill", false).forEach((aw) => {
+			var kc = now.flags.kill_count || fld.Status.total_kill || 0;
+			var kcr = Math.floor(kc / aw.count);
+			for(var kci = kcr; kci > 0; kci--){
+				SpSkill[aw.skill](fld, i, null, [aw.p1, aw.p2, aw.p3, aw.p4]);
+			}
+			if(kcr > 0){
+				now.flags.kill_count = kc % aw.count;
+			}
+		});
+	})
+}

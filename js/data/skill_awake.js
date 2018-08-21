@@ -497,6 +497,55 @@ function Awake_Skillfast(t){
 	return Awake_composite(desc, eff1, eff2);
 }
 
+// 撃破時エンハ
+
+
+// 撃破時回復
+function Awake_KillHealSkill(count, rate) {
+	return {
+		type: "awake_killskill",
+		skill: "ss_heal",
+		p1: rate,
+		//p2: p2,
+		//p3: p3,
+		//p4: p4,
+		name: `${count}体撃破時HP回復`,
+		desc: `${count}体撃破時にHPを${rate}%回復する`,
+		count: count,
+	};
+}
+
+// 撃破時自傷
+function Awake_KillBurnSkill(count, rate) {
+	return {
+		type: "awake_killskill",
+		skill: "ss_consumeCeil_all",
+		p1: rate,
+		//p2: p2,
+		//p3: p3,
+		//p4: p4,
+		name: `${count}体撃破時HP自傷`,
+		desc: `${count}体撃破時にHPを${rate}%自傷する`,
+		count: count,
+	};
+}
+
+// 撃破時チェイン+
+function Awake_KillChPlusSkill(count, plus) {
+	return {
+		type: "awake_killskill",
+		skill: "ss_addchain",
+		p1: plus,
+		//p2: p2,
+		//p3: p3,
+		//p4: p4,
+		name: `${count}体撃破時Ch付与`,
+		desc: `${count}体撃破時にチェインを${plus}増加する`,
+		count: count,
+	};
+}
+
+
 // -------------------
 // 選ばれし者の証(※潜在結晶用)
 function Awake_skillFC_atBoss(){

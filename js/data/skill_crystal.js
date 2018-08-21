@@ -444,6 +444,19 @@ var Awake_crystal_lists = [{
 		return dm.proc[1];
 	}(),
 }, {
+	genre: "撃破時発動スキル",
+	name: "球体魔匠具〈ホムンクルス〉(3体撃破/1%回復)",
+	imple: Awake_composite,
+	param2: Awake_KillHealSkill(3, 0.01),
+}, {
+	name: "暗器〈不可視の災〉の結晶(3体撃破/5%自傷)",
+	imple: Awake_composite,
+	param2: Awake_KillBurnSkill(3, 0.05),
+}, {
+	name: "魔匠棺〈アルカ〉の結晶(8体撃破/Ch+1)",
+	imple: Awake_composite,
+	param2: Awake_KillChPlusSkill(8, 1),
+}, {
 	genre: "状態異常無効",
 	name: "PTA印の成績表(反転無効)",
 	imple: Awake_composite,
@@ -499,7 +512,6 @@ var Awake_crystal_lists = [{
 	imple: Awake_composite,
 	param2: Heal_afterbattle(10, "メアレス"),
 }, {
-	genre: "その他[特定精霊のみに作用]",
 	name: "義侠の結晶〈桃一代〉(桃娘伝精霊を戦後回復)",
 	imple: Awake_composite,
 	param2: Heal_afterbattle(10, "桃娘伝"),

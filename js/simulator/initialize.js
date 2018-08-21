@@ -384,6 +384,8 @@ function nextturn(fld, is_ssfin) {
 	ss_continue_effect_check(fld, is_ssfin);
 	turn_effect_check(fld, false, is_ssfin);
 	enemy_turn_effect_check(fld, false);
+	// 撃破時潜在結晶
+	Awake_KillSpSkill(fld, is_ssfin);
 	// 烈眼ダメージ
 	retsugan_check(fld, is_ssfin);
 	// 死亡時トリガーを確認
