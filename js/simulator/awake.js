@@ -307,9 +307,16 @@ function cards_heal_afterbattle(fld, cards, nows) {
 			for(var x in cards) {
 				var cx = cards[x];
 				var aw = abh_awakes[j];
-				var ap_cond = aw.append_cond;
-				if (!ap_cond || (cx.ape && cx.ape.indexOf(ap_cond) >= 0)) {
-					r[x] += (aw.perc / 100);
+				var ap_heal = (apc) => {
+					if (!apc || (cx.ape && cx.ape.indexOf(apc) >= 0)) {
+						r[x] += (aw.perc / 100);
+					}
+				}
+				var ap_conds = aw.append_cond;
+				if(ap_conds && $.isArray(ap_conds)){
+					ap_conds.forEach((apc) => ap_heal);
+				} else {
+					ap_heal(ap_conds);
 				}
 			}
 		}
