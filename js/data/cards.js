@@ -113544,7 +113544,7 @@ Cards = [{
 	cost: 44,
 	attr: [1,-1],
 	species: [2],
-	islegend: false,
+	islegend: true,
 	ape: "MARELESS2 夢現の狭間",
 	is_dist: true,
 	as1: {
