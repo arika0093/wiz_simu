@@ -113575,7 +113575,7 @@ Cards = [{
 	ss2: {
 		desc: "<純属性パネル変換>ジャンルパネルをALL属性化し、回復の効果を付与、水単色の精霊が多いほどさらに効果値アップ(上限値:40%)",
 		turn: 12,
-		proc: [ss_panel_change([1,1,1,0,0]), panel_healally(ss_matchattr_cond(0.4, [0,1,0,0,0], [0,1,0,0,0]))],
+		proc: [ss_panel_change([1,1,1,0,0]), panel_healally(0.4)],
 	},
 	Lawake: [
 		Attr_statusup_oattr(0,400, [0,1,0,0,0,]),
