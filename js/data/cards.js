@@ -110729,7 +110729,7 @@ Cards = [{
 		proc: [ss_QuizcorrectDamage_all(90, 40, [0]), ss_ignore_skillcounter()],
 	},
 	Lawake: [
-		Statusup(2000,0),
+		Statusup(0,2000),
 	],
 },{
 	name: "輝く夏の恋天使 マーガレット・リル",
