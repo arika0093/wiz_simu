@@ -253,16 +253,23 @@ function card_paneb(fld, card) {
 }
 
 // ダメージ軽減値を返す
-function card_dmg_relief(fld, card, now, t_attr) {
+function card_dmg_relief(fld, card, now, t_attr, t_spec = -1) {
 	var r = 0;
 	var ar_awakes = pickup_awakes(fld, card, "damage_relief", false);
 	if (is_legendmode_onAnswer(fld, card, now)) {
 		ar_awakes = ar_awakes.concat(pickup_awakes(fld, card, "damage_relief", true));
 	}
 	for (var i = 0; i < ar_awakes.length; i++) {
-		if (ar_awakes[i].attr[t_attr] > 0 &&
-			check_spec_inarray(ar_awakes[i].spec, card.species)) {
-			r += ar_awakes[i].perc;
+		var aw = ar_awakes[i]
+		if (aw.attr[t_attr] > 0) {
+			var specCheck = check_spec_inarray(aw.spec, card.species);
+			var enemySpecCheck = true;
+			if(aw.spec_en){
+				enemySpecCheck = check_spec_inarray(aw.spec_en, t_spec);
+			}
+			if(specCheck && enemySpecCheck){
+				r += ar_awakes[i].perc;
+			}
 		}
 	}
 	$.each(now.turn_effect, function (_i, e) {

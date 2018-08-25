@@ -133,7 +133,7 @@ function _s_enemy_attack(fld, dmg, ei, ai, is_dmg_const, ignore_guard) {
 		// 属性倍率
 		var rate = attr_magnification(e.attr, cd.attr[0]);
 		// 属性軽減取得
-		var relief = !ignore_guard ? card_dmg_relief(fld, cd, now, e.attr) : 0;
+		var relief = !ignore_guard ? card_dmg_relief(fld, cd, now, e.attr, e.spec) : 0;
 		// パネル軽減取得
 		var p_relief = 0;
 		var p_guard = fld.Status.panel_guard;
@@ -1536,6 +1536,31 @@ function impregnable(t) {
 		});
 	}, makeDesc("鉄壁"));
 }
+
+// 逃走
+function s_enemy_escape(t){
+	return m_create_enemy_move(function (fld, n) {
+		var enemy = GetNowBattleEnemys(fld, n);
+		fld.log_push(`Enemy[${(n + 1)}]: 逃走準備`);
+		enemy.turn_effect.push({
+			desc: "逃走準備",
+			type: "escape",
+			icon: "escape",
+			isdual: false,
+			turn: t,
+			lim_turn: t,
+			priority: 2,
+			effect: function (fl, oi, teff, state, is_t, is_b) {
+				var en = GetNowBattleEnemys(fl, oi);
+				if(teff.lim_turn == 0){
+					en.nowhp = 0;
+					fld.log_push(`Enemy[${(oi + 1)}]: 逃走`);
+				}
+			},
+		});
+	}, makeDesc("逃走準備"));
+}
+
 
 // -----------------------------------
 // 敵状態変化 etc.

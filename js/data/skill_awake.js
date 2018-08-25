@@ -163,7 +163,8 @@ function Spec_relief(spec, perc) {
 	return {
 		type: "damage_relief",
 		attr: [1,1,1,1,1],
-		spec: specific_specs(spec),
+		spec: create_specs(1),
+		spec_en: specific_specs(spec),
 		perc: perc,
 		name: get_spec_string(spec) + "ダメージ軽減" + int2roman(perc/10) ,
 		desc: get_spec_string(spec) + "の敵からのダメージを" + perc + "%軽減する" ,
