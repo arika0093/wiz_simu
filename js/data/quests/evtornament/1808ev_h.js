@@ -51,8 +51,8 @@
                      m_enemy_once(s_enemy_escape(2))
                   ],
                   on_move: [
-                     s_enemy_attack(5000, 5, 5, true),
-                     s_enemy_attack(5000, 5, 1, true)
+                     s_enemy_attack(5000, 5, 1, true),
+                     s_enemy_attack(5000, 5, 5, true)
                   ],
                   atrandom: false,
                   turn: 1,
@@ -96,8 +96,8 @@
                      m_enemy_once(s_enemy_escape(2))
                   ],
                   on_move: [
-                     s_enemy_attack(5000, 5, 5, true),
-                     s_enemy_attack(5000, 5, 1, true)
+                     s_enemy_attack(5000, 5, 1, true),
+                     s_enemy_attack(5000, 5, 5, true)
                   ],
                   atrandom: false,
                   turn: 1,
