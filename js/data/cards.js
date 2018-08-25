@@ -114093,7 +114093,7 @@ Cards = [{
 	],
 },{
 	name: "其は終焉の起源なり",
-	cardno: 7915,
+	cardno: 8637,
 	imageno: 5726,
 	hp: 4033,
 	atk: 5321,
