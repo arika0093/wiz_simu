@@ -708,6 +708,7 @@ function s_enemy_steal(dmg, tnum) {
 						teff.lim_turn = 0;
 						// L化
 						addQuizCorrectNum(fld, oi, 999); // 盗むでMAXまで上昇するかは要検証
+						nows[oi].ss_isfirst = false;
 						nows[oi].ss_current = 999;
 						legend_timing_check(f, cards, nows, oi, false);
 					} else {
