@@ -197,7 +197,7 @@ var SpSkill = {
 			}
 		}
 		// 効果値を計算
-		var {total} = getEnhanceRate(now);
+		var {total} = getEnhanceRate(nows[n]);
 		var rate = (rate_max + total) * Math.min(correctSum/count_max, 1) + 1;
 		fld.log_push(`Unit[${n+1}]: 捕食大魔術(効果値: ${rate}/捕食数: ${correctSum}/${count_max})`);
 		
