@@ -107711,7 +107711,7 @@ Cards = [{
 	ss1: {
 		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(精霊数×300%)",
 		turn: 8,
-		proc: [ss_damage_all(ss_consume_all_cond(2.0, 0.5), [0]), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(ss_consume_all_cond(3.0, 0.5), [0]), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Costdown(20),
@@ -107730,7 +107730,7 @@ Cards = [{
 		proc: add_cond(ChainAttrAttack(8.5, 10, [0,0,1,0,0]), as_singleattr_num(0, 1.8)),
 	},
 	ss2: {
-		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(精霊数×240%)",
+		desc: "<犠牲魔術>スキル反射を無視し、味方全体のMAXHPの50%を使い敵全体へ火属性のダメージ(精霊数×340%)",
 		turn: 10,
 		proc: [ss_damage_all(ss_consume_all_cond(3.4, 0.5), [0]), ss_ignore_skillcounter()],
 	},
