@@ -106477,7 +106477,7 @@ Cards = [{
 	},
 	ss1: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ火・水属性のダメージ(120%)、さらに味方全体のHPを回復する(50%)",
-		turn: 6,
+		turn: 4,
 		proc: [ss_damage_all(1.2, [0, 1]), ss_ignore_skillcounter(), ss_heal(0.25)],
 	},
 	awakes: [
@@ -106498,7 +106498,7 @@ Cards = [{
 	},
 	ss2: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ火・水属性のダメージ(180%)、さらに味方全体のHPを回復する(25%)",
-		turn: 4,
+		turn: 6,
 		proc: [ss_damage_all(1.8, [0, 1]), ss_ignore_skillcounter(), ss_heal(0.5)],
 	},
 	Lawake: [
@@ -113586,7 +113586,7 @@ Cards = [{
 		proc: [ss_panel_change([1,1,1,0,0]), panel_healally(0.4)],
 	},
 	Lawake: [
-		Attr_statusup_oattr(0,400, [0,1,0,0,0,]),
+		Attr_statusup_oattr(0,300, [0,1,0,0,0,]),
 	],
 },{
 	name: "解き明かす悪夢 〈スコラメア〉",
