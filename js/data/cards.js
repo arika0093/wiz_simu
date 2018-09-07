@@ -115214,8 +115214,8 @@ Cards = [{
 	],
 },{
 	name: "AbCd-Iι: 《四劫を秘す英雄》",
-	cardno: 10298,
-	imageno: 10590,
+	cardno: 10590,
+	imageno: 10298,
 	hp: 2125,
 	atk: 5005,
 	cost: 61,
@@ -115252,7 +115252,7 @@ Cards = [{
 	ss2: {
 		desc: "<大魔術>スキル反射を無視し、敵全体へ雷・光属性のダメージ(200%)。HP20%以下の時、さらにダメージアップ(2000%)し、味方全体のHPを完全回復",
 		turn: 6,
-		proc: [ss_damage_all(ss_hp_less(0.2, 20.0, 2.0), [2,3]), ss_hp_less_skill(0.2, ss_heal(1)), ss_ignore_skillcounter()],
+		proc: [ss_damage_all(ss_hp_less(0.2, 22.0, 2.0), [2,3]), ss_hp_less_skill(0.2, ss_heal(1)), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,1500),
