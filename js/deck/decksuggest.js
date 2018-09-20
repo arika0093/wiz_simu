@@ -1,6 +1,17 @@
 // 各種情報管理
 var Deckdata = deckdata_DataTemplate();
 
+// 種族マナ実装済み種族
+var Mana400Ables = [
+	1,  // 神族
+	2,  // 魔族
+	3,  // 天使
+	8,  // 戦士
+	9,  // 術士
+	11, // AbCd
+];
+
+
 // deckdataからデッキを読み込んで指定する関数
 function decksgg_loaddeck(data) {
 	// deck select
@@ -177,17 +188,11 @@ $(function () {
 			});
 		},
 		buttons: {
-			"偶数調整": function () {
-				var n = $("#d_mana_index").text();
-				var cd = Cards[n];
-				var mp = cd.hp % 2 == 0 ? 200 : 199;
-				$("#d_mana_edit").spinner("value", mp);
+			"マナ400": function () {
+				$("#d_mana_edit").spinner("value", 400);
 			},
-			"奇数調整": function () {
-				var n = $("#d_mana_index").text();
-				var cd = Cards[n];
-				var mp = cd.hp % 2 == 1 ? 200 : 199;
-				$("#d_mana_edit").spinner("value", mp);
+			"マナ200": function () {
+				$("#d_mana_edit").spinner("value", 200);
 			},
 			"OK": function () {
 				var n = $("#d_mana_index").text();
@@ -623,10 +628,15 @@ function set_autocmp(i) {
 			},
 			select: function (e, dec) {
 				// 表示
-				decksel_show(idx, dec.item.data);
+				var c = dec.item.data;
+				decksel_show(idx, c);
+				// 種族マナが実装されている精霊だったら自動でマナ調整
+				Deckdata.deck[idx-1].mana
+					= Mana400Ables.indexOf(c.species[0]) >= 0 ? 400 : 200;
 				// レベルを調整する
-				Deckdata.deck[idx-1].level = Deckdata.deck[idx-1].level_default
-					= (dec.item.data.islegend ? 110 : 90);
+				Deckdata.deck[idx-1].level
+					= Deckdata.deck[idx-1].level_default
+					= (c.islegend ? 110 : 90);
 				// 閉じる
 				$(".selector").autocomplete("close");
 				// TABキーで次の要素に移動してないなら移動

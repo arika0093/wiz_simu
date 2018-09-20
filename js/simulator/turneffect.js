@@ -309,18 +309,18 @@ function retsugan_check(fld, is_ssfin){
 	if(is_ssfin){
 		return
 	}
-	var is_retsugan=false;
+	var retsugan_count = 0;
 	fld.Allys.Now.forEach(function(ally, n){
 		if(ally.islegend && ally.lgstart_turn != fld.Status.totalturn){
 			fld.Allys.Deck[n].crystal.forEach(function(crstl){
 				if (crstl.name && crstl.name.indexOf("烈眼") != -1) {
-					is_retsugan = true;
+					retsugan_count += 1;
 				}
 			})
 		}
 	})
-	if(is_retsugan){
-		ss_object_done(fld, 0, ss_consumeCeil_all(0.1));
+	if(retsugan_count > 0){
+		ss_object_done(fld, 0, ss_consumeCeil_all(0.1 * retsugan_count));
 	}
 }
 
