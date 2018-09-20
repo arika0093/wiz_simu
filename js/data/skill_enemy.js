@@ -1542,30 +1542,6 @@ function impregnable(t) {
 	}, makeDesc("鉄壁"));
 }
 
-// 逃走
-function s_enemy_escape(t){
-	return m_create_enemy_move(function (fld, n) {
-		var enemy = GetNowBattleEnemys(fld, n);
-		fld.log_push(`Enemy[${(n + 1)}]: 逃走準備`);
-		enemy.turn_effect.push({
-			desc: "逃走準備",
-			type: "escape",
-			icon: "escape",
-			isdual: false,
-			turn: t,
-			lim_turn: t,
-			priority: 2,
-			effect: function (fl, oi, teff, state, is_t, is_b) {
-				var en = GetNowBattleEnemys(fl, oi);
-				if(teff.lim_turn == 0){
-					en.nowhp = 0;
-					fld.log_push(`Enemy[${(oi + 1)}]: 逃走`);
-				}
-			},
-		});
-	}, makeDesc("逃走準備"));
-}
-
 
 // -----------------------------------
 // 敵状態変化 etc.
@@ -1598,6 +1574,31 @@ function s_enemy_division(copyhp) {
 		});
 	}, makeDesc("分裂待機"));
 }
+
+// 逃走
+function s_enemy_escape(t){
+	return m_create_enemy_move(function (fld, n) {
+		var enemy = GetNowBattleEnemys(fld, n);
+		fld.log_push(`Enemy[${(n + 1)}]: 逃走準備`);
+		enemy.turn_effect.push({
+			desc: "逃走準備",
+			type: "escape",
+			icon: "escape",
+			isdual: false,
+			turn: t,
+			lim_turn: t,
+			priority: 2,
+			effect: function (fl, oi, teff, state, is_t, is_b) {
+				var en = GetNowBattleEnemys(fl, oi);
+				if(teff.lim_turn == 0){
+					en.nowhp = 0;
+					fld.log_push(`Enemy[${(oi + 1)}]: 逃走`);
+				}
+			},
+		});
+	}, makeDesc("逃走準備"));
+}
+
 
 // 敵全体を回復
 function s_enemy_heal_all(rate) {
@@ -1784,7 +1785,6 @@ function s_enemy_continue_damage(turn, initialdamage, continuedamage){
 	}, makeDesc("残滅大魔術"));
 }
 
-
 // チェイン解除
 function s_enemy_chain_break() {
 	return m_create_enemy_move(function (fld, n) {
@@ -1853,15 +1853,16 @@ function s_enemy_noeffect(mdesc) {
 
 // パネル変換
 function s_enemy_panelchange(attr) {
-	var sm = 0;
-	$.each(attr, function (i, e) {
-		sm += e;
-	})
-	var text = (sm >= 2) ? "パネルシャッフル" : "パネル変換";
+	//var sm = 0;
+	//$.each(attr, function (i, e) {
+	//	sm += e;
+	//})
+	//var text = (sm >= 2) ? "パネルシャッフル" : "パネル変換";
 	return m_create_enemy_move(function (fld, n) {
-		// log output
-		fld.log_push("Enemy[" + (n + 1) + "]: " + text);
-	}, text);
+		// 変換処理
+		fld.Status.panel_color = new Array(4).fill(attr);
+		fld.log_push(`Enemy[${(n + 1)}]: パネル変換(${get_attr_string(attr, "/")})`);
+	}, makeDesc("パネル変換"));
 }
 
 // スキルディスチャージ
