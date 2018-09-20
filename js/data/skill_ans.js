@@ -851,13 +851,13 @@ function as_legendnum(rate) {
 	}
 }
 
-// 回答時間依存
-// (rate: 解答時間による増え幅)
-function as_timedep(rate) {
+// 解答時間依存
+// (rate: 解答時間による増え幅, under_sec: 解答時間変動が起こる時間[ex: 2秒未満なら1])
+function as_timedep(rate, under_sec = -1) {
 	return {
 		is_afteradd: true,
 		add_f: [{
-			param: {rate},
+			param: {rate, under_sec},
 			func: "as_timedep",
 		}]
 	}

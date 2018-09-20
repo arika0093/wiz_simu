@@ -1690,6 +1690,17 @@ var SpSkill = {
 		return ss_break_template(cobj.target, "attr_absorb")(fld, n);
 	},
 	// -----------------------------
+	// 解答時間延長/停止
+	"ss_astime_ext": function (fld, n, cobj, params) {
+		var longtime = params[0];
+		if(longtime >= 20){
+			// 1秒未満にセット
+			$("#answer_time_sel").val(4);
+			fld.log_push(`Unit[${(n + 1)}]: 解答時間停止`);
+		}
+		return true;
+	},
+	// -----------------------------
 	// SSコピー
 	"ss_latest_copy": function (fld, n, cobj, params) {
 		if (fld.Status.latest_ss) {

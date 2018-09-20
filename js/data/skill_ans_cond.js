@@ -145,7 +145,17 @@ var AsAddRate = {
 	// 回答時間依存
 	"as_timedep": function (fld, addf, oi, ei, p, tgi) {
 		var time = Number($("#answer_time_sel").val());
-		var {rate} = addf.param;
+		var {rate, under_sec} = addf.param;
+		if(under_sec > 0){
+			// 解答時間の下限が指定されている場合
+			// ( 4 - $("#answer_time_sel").val() )で指定されている秒数が取得できるのでそれと比較
+			var sel_sec = (4 - time);
+			if(sel_sec <= under_sec){
+				return rate * (under_sec - sel_sec + 1);
+			} else {
+				return 0;
+			}
+		}
 		return rate * time;
 	},
 	// 単色精霊数依存
