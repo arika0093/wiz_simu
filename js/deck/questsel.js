@@ -70,6 +70,9 @@ function sim_start() {
 			}
 			db.deck.push(dd.deck[load_i]);
 		}
+		if(!!dd.deck[5]){
+			db.deck.push(dd.deck[5]);
+		}
 		// redirect
 		deckdata_Create(db, function (short) {
 			var redirect_url = '/simulator/p/?' + short;

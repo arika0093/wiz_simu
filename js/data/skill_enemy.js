@@ -594,6 +594,8 @@ function s_enemy_fear(tnum, as_seal_p, ss_seal_p, attr) {
 						teff.is_disabled = true;
 					}
 				},
+				// 常時監視
+				effectAlways: true,
 				// 異常回復不可
 				isabstate: false,
 				// 被弾敵/バトル数
@@ -664,6 +666,7 @@ function s_enemy_healreverse(rate, tnum) {
 					var card = fld.Allys.Deck[oi];
 					return !(card.attr.indexOf(3) >= 0 || card.attr.indexOf(4) >= 0);
 				},
+				// 常時監視
 				effectAlways: true,
 				effect: function(f, oi, teff, state, is_t, is_b){
 					if(f.Enemys.Data[teff.receveButtle].enemy[teff.fromEnemy].nowhp <= 0){
@@ -698,6 +701,7 @@ function s_enemy_steal(dmg, tnum) {
 		s_enemy_abstate_attack(
 			fld, `盗む[発動敵: ${n+1}]`,
 			"skill_stole", -1, tgs, n, false /* カウンター不可 */, {
+				// 常時監視
 				effectAlways: true,
 				effect: function(f, oi, teff, state, is_t, is_b){
 					var cards = f.Allys.Deck;
