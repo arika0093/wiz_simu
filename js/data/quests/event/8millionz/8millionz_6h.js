@@ -144,7 +144,7 @@
                      m_enemy_once(attack_counter_dual(1000, 100))
                   ],
                   on_move: [
-                     s_enemy_noeffect("s_enemy_panelchange([1,1,1,0,0])"),
+                     s_enemy_panelchange([1,1,1,0,0]),
                      s_enemy_attack(1000, 5, 1, true)
                   ],
                   atrandom: false,

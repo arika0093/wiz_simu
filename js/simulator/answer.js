@@ -219,6 +219,23 @@ function panelAnswerMissWithParam(fld) {
 
 // アンサースキルから踏んだパネルに応じた特定要素のみを抜き出す
 function pickup_answerskills(fld, attr, type, subtype) {
+	// AS取得
+	const getAnswerSkills = (c, now, is_L) => {
+		var ASkill = is_L ? c.as2 : c.as1;
+		if(ASkill){
+			// 二重配列の場合1つにまとめる
+			var as_proc = [];
+			if (ASkill.proc[0].length) {
+				for (var a = 0; a < ASkill.proc.length; a++) {
+					multi_as(as_proc, ASkill.proc[a]);
+				}
+			} else {
+				as_proc = ASkill.proc;
+			}
+		}
+		return {ASkill, as_proc};
+	}
+
 	var results = [];
 	for (var i = 0; i < fld.Allys.Deck.length; i++) {
 		// カード種類
@@ -237,22 +254,27 @@ function pickup_answerskills(fld, attr, type, subtype) {
 			results.push(null);
 			continue;
 		}
-
-		// AS取得
-		var ASkill = is_legendmode(fld, card, al_now) ? card.as2 : card.as1;
-		// ASがない場合抜き出さない
+		
+		// ASを取得
+		var is_L = is_legendmode(fld, card, al_now);
+		var {ASkill, as_proc} = getAnswerSkills(card, al_now, is_L);
+		// ASコピーかどうか確認する
+		if(ASkill && ASkill.proc && ASkill.proc[0].type == "as_copy"){
+			// ASコピーだった場合は一つ前の精霊のASを取得する
+			// 自身が先頭だった場合はASを取得しないで終了
+			if(i == 0){
+				ASkill = null;
+			} else {
+				var b_c = fld.Allys.Deck[i - 1];
+				var b_n = fld.Allys.Now[i - 1];
+				// L化状況は自身のものを使用する
+				var {ASkill, as_proc} = getAnswerSkills(b_c, b_n, is_L);
+			}
+		}
+		// ASがない場合処理を終了
 		if (!ASkill || !ASkill.proc) {
 			results.push([]);
 			continue;
-		}
-		// 二重配列の場合1つにまとめる
-		var as_proc = [];
-		if (ASkill.proc[0].length) {
-			for (var a = 0; a < ASkill.proc.length; a++) {
-				multi_as(as_proc, ASkill.proc[a]);
-			}
-		} else {
-			as_proc = ASkill.proc;
 		}
 		
 		// 潜在結晶の反映

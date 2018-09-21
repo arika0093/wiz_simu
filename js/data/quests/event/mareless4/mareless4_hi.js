@@ -19,7 +19,7 @@
                isStrong: true,
                move: {
                   on_move: [
-                     s_enemy_noeffect("s_enemy_panelchange([1,0,0,0,0])"),
+                     s_enemy_panelchange([1,0,0,0,0]),
                      s_enemy_attack(500, 5, 1, true)
                   ],
                   atrandom: false,
@@ -144,7 +144,7 @@
                s_enemy_fear(5, 0, 0.9, [1,0,0,0,0])
             ],
             on_move_angry: [
-               s_enemy_noeffect("s_enemy_panelchange([1,0,0,0,0])"),
+               s_enemy_panelchange([1,0,0,0,0]),
                s_enemy_attack_ignoreguard(4000, 5, 1, true),
                attack_counter(3000, 3),
                s_enemy_recoilAttack(5000, 5, [1,0,0,0,0], 5, 2),

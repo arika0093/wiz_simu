@@ -241,7 +241,7 @@
                   ],
                   on_move_angry: [
                      s_enemy_attack(3000, 5, 1, true),
-                     s_enemy_noeffect("s_enemy_panelchange([1,0,0,0,0])"),
+                     s_enemy_panelchange([0,1,0,0,0]),
                      s_enemy_attack(5000, 1, 1, true)
                   ],
                   atrandom: false,

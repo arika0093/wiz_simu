@@ -112,7 +112,7 @@
                isStrong: false,
                move: {
                   on_move: [
-                     m_enemy_once(s_enemy_noeffect("s_enemy_panelchange([1,0,0,0,0])")),
+                     m_enemy_once(s_enemy_panelchange([1,0,0,0,0])),
                      s_enemy_attack(333.25, 5, 1, true)
                   ],
                   atrandom: false,
