@@ -265,18 +265,18 @@
                 <option value="0">5秒以降～</option>
             </select>
 		</div>
-	<!-- Adsense -->
-	<div class="simu_ads">
-		<!-- advertise -->
-		<ins class="adsbygoogle"
-			 style="display:block"
-			 data-ad-client="ca-pub-5156005489853976"
-			 data-ad-slot="6536828444"
-			 data-ad-format="horizontal"></ins>
-		<script>
-			(adsbygoogle = window.adsbygoogle || []).push({});
-		</script>
-	</div>
+		<!-- Adsense -->
+		<div class="simu_ads">
+			<!-- advertise -->
+			<ins class="adsbygoogle"
+				 style="display:block"
+				 data-ad-client="ca-pub-5156005489853976"
+				 data-ad-slot="6536828444"
+				 data-ad-format="horizontal"></ins>
+			<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		</div>
 	</div>
 
 	<!-- Footer -->

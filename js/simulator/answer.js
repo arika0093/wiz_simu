@@ -518,13 +518,6 @@ function answer_skill_proc(fld, as_arr, panel, i, atk_duals, rem_duals, loop_ct,
 		case "as_spskill":
 			rst = answer_spskill(fld, as_arr[i], i, panel, bef_f);
 			break;
-		/*
-		case "as_copy":
-			// 処理的には大したことないのでここに暫定記載
-
-			rst = true;
-			break;
-		*/
 	}
 	// 攻撃後処理に追加
 	if (rst.length > 0) {
