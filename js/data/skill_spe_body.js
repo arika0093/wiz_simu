@@ -164,6 +164,38 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
+	// 蓄積大魔術・破
+	"ss_accumulateDamageOfOverkill": function (fld, n, cobj, params) {
+		var max_r = params[0];
+		var max_v = params[1];
+		var attrs = params[2];
+		
+		var accAsOK = fld.Status.accumulate_asok;
+		var now = fld.Allys.Now[n];
+		var accOverkillCount = now.accumulateASOverkillCount;
+		// 威力計算
+		var acc_p = Math.min((accAsOK - accOverkillCount)/max_v, 1);
+		var {total} = getEnhanceRate(now);
+		var rate = (acc_p * (max_r + total)) + 1;
+		fld.log_push(`Unit[${n+1}]: 蓄積大魔術・破(効果値: ${rate}/蓄積%: ${acc_p})`);
+		
+		var enemys = GetNowBattleEnemys(fld);
+		for (var a = 0; a < attrs.length; a++) {
+			var atr = attrs[a];
+			var t_enemys = ss_get_targetenemy(fld, cobj, n, atr);
+			for (var en = 0; en < t_enemys.length; en++) {
+				// 攻撃
+				var atk_order = enemys.indexOf(t_enemys[en]);
+				var option = { is_noenhance: true };
+				ss_damage(fld, rate, atr, 1, n, atk_order, false, option);
+			}
+		}
+		
+		// カウントを合わせる
+		now.accumulateASOverkillCount = accAsOK;
+		return true;
+	},
+	// -----------------------------
 	// 統一大魔術
 	"ss_UnificationDamage": function (fld, n, cobj, params) {
 		var r = params[0];

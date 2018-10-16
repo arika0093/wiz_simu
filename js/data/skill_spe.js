@@ -222,6 +222,38 @@ function ss_accumulateDamageOfBurn_s(max_r, max_v, attrs) {
 }
 
 /**
+ * 蓄積大魔術・破【全体】（ASオーバーキルダメージに応じたダメージを敵に与える）
+ * max_r:	最高威力(ex: 71.0		-> 効果値7100)
+ * max_v:   最高威力を出すのに必要なOverkillダメージ量(ex: 250000  → 25万超過ダメージ時に最高威力)
+ * attrs:	攻撃属性(ex: [0,1]	-> 火,水)
+ *
+ **/
+function ss_accumulateDamageOfOverkill_all(max_r, max_v, attrs) {
+	return ss_template({
+		name: "ss_accumulateDamageOfOverkill",
+		type: "damage",
+		target: "all",
+		is_acc: true,
+		p1: max_r,
+		p2: max_v,
+		p3: attrs,
+	});
+}
+
+/**
+ * 蓄積大魔術・破【単体】（被ダメージ総量に応じたダメージを敵に与える）
+ * max_r:	最高威力(ex: 71.0		-> 効果値7100)
+ * max_v:   最高威力を出すのに必要なOverkillダメージ量(ex: 250000  → 25万超過ダメージ時に最高威力)
+ * attrs:	攻撃属性(ex: [0,1]	-> 火,水)
+ *
+ **/
+function ss_accumulateDamageOfOverkill_s(max_r, max_v, attrs) {
+	return ss_toselect_single(
+		ss_accumulateDamageOfOverkill_all(max_r, max_v, attrs)
+	);
+}
+
+/**
  * 統一大魔術【全体】（デッキの属性に応じたダメージを敵に与える）
  * max_r:	最高威力(ex: 71.0		-> 効果値7100)
  * attrs:	攻撃属性(ex: [0,1]	-> 火,水)

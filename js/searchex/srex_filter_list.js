@@ -481,6 +481,9 @@ var SrchFilters = [
 	createSpecialSkillObject("蓄積解放大魔術・邪", "蓄積・邪", {
 		alias: ["ちくせき", "じゃ", "よこし"],
 	}),
+	createSpecialSkillObject("蓄積解放大魔術・破", "蓄積・破", {
+		alias: ["ちくせき", "は", "はかい"],
+	}),
 	createSpecialSkillObject("捕食大魔術", "捕食", {
 		alias: ["ほしょく"],
 	}),
@@ -634,6 +637,9 @@ var SrchFilters = [
 	// ---------------------------------
 	createSpecialSkillDetailObject("攻撃系SS", null, /(多弾|大)魔術/, {
 		alias: ["こうげきすきる", "こうげきけい"],
+	}),
+	createSpecialSkillDetailObject("蓄積系統", "蓄積系", /蓄積解放大魔術/, {
+		alias: ["ちくせき", "ちくせきけい"],
 	}),
 	createSpecialSkillDetailObject("多段カウンター", null, /多[弾段](式|)カウンター/, {
 		alias: ["ただん"],

@@ -5,6 +5,11 @@
    overlap: false,
    aprnum: 5,
    panelchainEnable: false,
+   battle_before: [{
+      desc: "ch+1",
+	  proc: panel_chainplus(1),
+	  isev: true,
+   }],
    data: [
       {
          appearance: [
@@ -12,7 +17,7 @@
          ],
          enemy: [
             {
-               name: "がしゃどくろ&lt;呪怨&gt;",
+               name: "がしゃどくろ<呪怨>",
                hp: 10000,
                imageno: 978,
                imageno_prefix: "",
@@ -253,7 +258,7 @@
                isStrong: true,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_fear(5, 0, 0.99, [0,0,0,0,0]))
+                     m_enemy_once(s_enemy_fear(5, 0, 0.99, [0,0,0,0,0], [0,0,0,1,1]))
                   ],
                   on_move: [
                      s_enemy_attack(100, 1, 1, true)

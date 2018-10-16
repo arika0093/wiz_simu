@@ -809,12 +809,25 @@ function calcAndShowAccumulatePercent(fld, n){
 		perc = 0;
 	} else {
 		// 蓄積持ち
-		var isheal = target_ss.name.indexOf("Heal") >= 0;
+		var n = target_ss.name;
 		var max_r = target_ss.p1;
 		var max_v = target_ss.p2;
-		var a = !isheal ? fld.Status.accumulate_dmg : fld.Status.accumulate_heal;
-		var b = !isheal ? now.accumulateBurnCount : now.accumulateHealCount;
 		var {total} = getEnhanceRate(now);
+		var a = 0;
+		var b = 0;
+		if(n.indexOf("Heal") >= 0){
+			// 蓄積聖
+			a = fld.Status.accumulate_heal;
+			b = now.accumulateHealCount;
+		} else if(n.indexOf("Burn") >= 0){
+			// 蓄積邪
+			a = fld.Status.accumulate_dmg;
+			b = now.accumulateBurnCount;
+		} else if(n.indexOf("Overkill") >= 0){
+			// 蓄積破
+			a = fld.Status.accumulate_asok;
+			b = now.accumulateASOverkillCount;
+		}
 		perc = Math.min((a - b)/max_v, 1);
 		rate = (perc * (max_r + total)) + 1;
 	}

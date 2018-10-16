@@ -538,7 +538,8 @@ function s_enemy_all_sealed(tnum, t) {
 
 // 恐怖(対象数, AS封印対象%, SS封印対象%, 効果対象属性)
 // (%に0を指定すると対象外)
-function s_enemy_fear(tnum, as_seal_p, ss_seal_p, attr) {
+function s_enemy_fear(tnum, as_seal_p, ss_seal_p, attr, attr_sub) {
+	attr_sub = attr_sub || [];
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 		var desc = () => {
 			var rst = "恐怖(";
@@ -558,7 +559,7 @@ function s_enemy_fear(tnum, as_seal_p, ss_seal_p, attr) {
 				// 対象属性以外には無効
 				bef_absattack: function (fld, oi, ei) {
 					var card = fld.Allys.Deck[oi];
-					return (attr[card.attr[0]] > 0);
+					return (attr[card.attr[0]] > 0 || (card.attr[1] >= 0 && attr_sub[card.attr[1]] > 0));
 				},
 				// 特定条件でAS封印
 				bef_answer: function (f, as) {
