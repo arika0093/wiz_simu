@@ -10797,7 +10797,7 @@ Cards = [{
 	],
 	as1: {
 		desc: "<回復>水属性の味方を回復/13％",
-		proc: Heal(0.13, [0,1,0,0,0], 0),
+		proc: Heal(0.13, [0,1,0,0,0], 1),
 	},
 	ss1: {
 		desc: "<回復>味方全体のHPを1000回復する",
@@ -10811,7 +10811,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<回復>水属性の味方を回復/15％",
-		proc: Heal(0.15, [0,1,0,0,0], 0),
+		proc: Heal(0.15, [0,1,0,0,0], 1),
 	},
 	ss2: {
 		desc: "<回復>味方全体のHPを2000回復する",
@@ -12692,7 +12692,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<チェイン攻撃・回復>3チェインでダメージアップ、さらに雷属性の味方のHPを回復(攻撃：400％ / 回復：5％)",
-		proc: [ChainAttack(4.0, 3), Heal(0.05, [0,0,1,0,0], 3)],
+		proc: [ChainAttack(4.0, 3), Heal(0.05, [0,0,1,0,0], 0)],
 	},
 	ss2: {
 		desc: "<特殊パネル変換>ジャンルパネルを雷属性化し、チェインプラス2の効果を付与",
@@ -14744,7 +14744,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<連撃>敵単体を5回連続攻撃/計350％",
-		proc: ChainDualAttack(3.5, 0, 5),
+		proc: ChainDualAttack(4.5, 3, 5),
 	},
 	ss2: {
 		desc: "<ダメージ強化>4ターン雷属性の味方の攻撃力をアップ(+60％)",
@@ -52194,7 +52194,6 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	disable: true,
 	ape: "心竜天翔 Rising Dragon",
 	as1: {
 		desc: "<種族特効>4チェインでダメージアップ、龍族の敵へさらにダメージアップ(400%/800%)",
@@ -52241,7 +52240,6 @@ Cards = [{
 	attr: [2,3],
 	species: [0],
 	islegend: true,
-	disable: true,
 	ape: "心竜天翔 Rising Dragon",
 	as1: {
 		desc: "<全体攻撃>敵全体へダメージ、5チェインで更にダメージアップ(150%/200%)",
@@ -52286,7 +52284,6 @@ Cards = [{
 	attr: [0,-1],
 	species: [8],
 	islegend: true,
-	disable: true,
 	ape: "心竜天翔 Rising Dragon",
 	as1: {
 		desc: "<属性特効>雷属性の敵単体へ特効ダメージ、解答が早いほどさらにアップ(基本:350%, 3秒台:400%, 2秒台:450%, 1秒台:500%, 0秒台:550%)",
@@ -52331,7 +52328,6 @@ Cards = [{
 	attr: [1,-1],
 	species: [0],
 	islegend: true,
-	disable: true,
 	ape: "心竜天翔 Rising Dragon",
 	as1: {
 		desc: "<チェイン攻撃>10チェインでダメージアップ(800%)",
@@ -52377,7 +52373,6 @@ Cards = [{
 	attr: [1,-1],
 	species: [0],
 	islegend: true,
-	disable: true,
 	ape: "心竜天翔 Rising Dragon",
 	as1: {
 		desc: "<回復>味方全体のHPを回復(14%)",
@@ -52423,7 +52418,6 @@ Cards = [{
 	attr: [2,-1],
 	species: [8],
 	islegend: true,
-	disable: true,
 	ape: "心竜天翔 Rising Dragon",
 	as1: {
 		desc: "<攻撃強化・ガード>6チェインで雷属性の味方の攻撃力をアップ(70%)、さらに全属性のダメージを10%軽減",
@@ -52469,7 +52463,6 @@ Cards = [{
 	attr: [2,3],
 	species: [0],
 	islegend: true,
-	disable: true,
 	ape: "心竜天翔 Rising Dragon",
 	as1: {
 		desc: "<チェイン攻撃・属性特効>4チェインでダメージアップ、闇属性の敵だとさらにダメージアップ(400%/600%)",
@@ -52705,7 +52698,7 @@ Cards = [{
 		proc: [Heal(0.11, [1,1,1,1,1], 0), ChainEnhance(0.20, [1,1,1,1,1], 0)],
 	},
 	ss1: {
-		desc: "<遅延大魔術>攻撃ターンを1遅らせ、敵単体へ火属性のダメージ(300%)",
+		desc: "<遅延大魔術>敵全体の攻撃ターンを1遅らせ、敵単体へ火属性のダメージ(300%)",
 		turn: 4,
 		proc: [ss_delay_s(1), ss_damage_s(3.0, [0], 1)],
 	},
@@ -52726,7 +52719,7 @@ Cards = [{
 		proc: [Heal(0.13, [1,1,1,1,1], 0), ChainEnhance(0.20, [1,1,1,1,1], 0)],
 	},
 	ss2: {
-		desc: "<遅延大魔術>攻撃ターンを1遅らせ、敵単体へ火属性のダメージ(500%)",
+		desc: "<遅延大魔術>敵全体の攻撃ターンを1遅らせ、敵単体へ火属性のダメージ(500%)",
 		turn: 6,
 		proc: [ss_delay_s(1), ss_damage_s(5.0, [0], 1)],
 	},
@@ -60866,7 +60859,7 @@ Cards = [{
 	islegend: true,
 	as1: {
 		desc: "<攻撃強化・ガード>5チェインで火属性の味方の攻撃力をアップ(60%)、さらに全属性のダメージを10%軽減",
-		proc: [ChainEnhance(0.6, [1,0,0,0,0], 5), as_guard(0.10, [1,1,1,1,1], 5)],
+		proc: [ChainEnhance(0.6, [1,0,0,0,0], 5), as_guard(0.10, [1,1,1,1,1], 0.1)],
 	},
 	ss1: {
 		desc: "<回復>チェインプラス1の効果、さらに味方全体のHPを回復する(50%)",
@@ -60887,7 +60880,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<攻撃強化・ガード>5チェインで火属性の味方の攻撃力をアップ(90%)、さらに全属性のダメージを10%軽減",
-		proc: [ChainEnhance(0.9, [1,0,0,0,0], 5), as_guard(0.10, [1,1,1,1,1], 5)],
+		proc: [ChainEnhance(0.9, [1,0,0,0,0], 5), as_guard(0.10, [1,1,1,1,1], 0.1)],
 	},
 	ss2: {
 		desc: "<継続回復>チェインプラス2の効果、さらに3ターン味方全体を徐々に回復する(15%)",
@@ -70205,7 +70198,7 @@ Cards = [{
 },{
 	name: "咎よ惨禍に散れ ハクア・デスサイス",
 	cardno: 8237,
-	imageno: 10378,
+	imageno: 10378,//7878,
 	hp: 4065,
 	atk: 4017,
 	cost: 64,
@@ -88941,7 +88934,7 @@ Cards = [{
 	is_dist: true,
 	as1: {
 		desc: "<チェイン攻撃・種族数攻撃>4チェインでダメージアップ(250%)、物質・術士の仲間の数だけさらにアップ(60%)",
-		proc: ChainDeckSpecsAttack(0.6, [6,9], 4, 1.5),
+		proc: ChainDeckSpecsAttack(0.6, [6,9], 0, 1.5),
 	},
 	ss1: {
 		desc: "<多弾魔術>スキル反射を無視し、自分自身のMAXHPの50%を使い敵単体へ水・光属性の5回連続ダメージ(400%)",
@@ -88962,7 +88955,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<チェイン攻撃・種族数攻撃>4チェインでダメージアップ(350%)、物質・術士の仲間の数だけさらにアップ(60%)",
-		proc: ChainDeckSpecsAttack(0.6, [6,9], 4, 2.5),
+		proc: ChainDeckSpecsAttack(0.6, [6,9], 0, 2.5),
 	},
 	ss2: {
 		desc: "<多弾魔術>スキル反射を無視し、自分自身のMAXHPの50%を使い敵単体へ水・光属性の5回連続ダメージ(600%)",
@@ -93330,6 +93323,7 @@ Cards = [{
 	species: [3],
 	islegend: true,
 	ape: "その光は淡く碧く 最終章 終極の聖祈",
+	is_dist: true,
 	as1: {
 		desc: "<複属性攻撃強化>水属性の攻撃力をアップ(10%)、複属性が火属性だとさらにアップ(90%)",
 		proc: ChainEnhance_SubAttr(0.1, 1.0, [0,1,0,0,0], [1,0,0,0,0], 0),
@@ -98874,7 +98868,7 @@ Cards = [{
 	is_dist: true,
 	as1: {
 		desc: "<回復・複属性攻撃強化>5チェインで雷属性の味方を回復(10%)し、攻撃力もアップ(40%)、複属性が光属性だとさらに攻撃力アップ(50%)",
-		proc: [Heal(0.10, [0,0,1,0,0], 5), ChainEnhance_SubAttr(0.4, 0.9, [0,0,1,0,0], [0,0,0,1,0], 5)],
+		proc: [Heal(0.10, [0,0,1,0,0], 5), ChainEnhance_SubAttr(0.4, 0.9, [0,0,1,0,0], [0,0,0,1,0], 0)],
 	},
 	ss1: {
 		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
@@ -98895,7 +98889,7 @@ Cards = [{
 	],
 	as2: {
 		desc: "<回復・複属性攻撃強化>5チェインで雷属性の味方を回復(10%)し、攻撃力もアップ(70%)、複属性が光属性だとさらに攻撃力アップ(50%)",
-		proc: [Heal(0.10, [0,0,1,0,0], 5), ChainEnhance_SubAttr(0.7, 1.2, [0,0,1,0,0], [0,0,0,1,0], 5)],
+		proc: [Heal(0.10, [0,0,1,0,0], 5), ChainEnhance_SubAttr(0.7, 1.2, [0,0,1,0,0], [0,0,0,1,0], 0)],
 	},
 	ss2: {
 		desc: "<スキルコピー>直前に発動したスペシャルスキルを発動する",
@@ -102309,6 +102303,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	ape: "アイドルキャッツ！",
+	is_dist: true,
 	as1: {
 		desc: "<回復>味方全体のHPを回復(14%)",
 		proc: Heal(0.14, [1,1,1,1,1], 0),
@@ -113317,7 +113312,7 @@ Cards = [{
 		Attr_relief([1,1,1,1,1,],10),
 		Attr_statusup(0,300, [0,0,1,0,0,]),
 		Attr_statusup(300,0, [0,0,1,0,0,]),
-		Fastskill(1),
+		Fastskill(3),
 	],
 	as2: {
 		desc: "<攻撃>敵単体へのダメージアップ(900%)、ジャンルパネルが3色だとさらにアップ(1000%)",
@@ -113617,7 +113612,7 @@ Cards = [{
 },{
 	name: "強い男 〈スーパースコラメア〉",
 	cardno: 10523,
-	imageno: 12944,
+	imageno: 12945,
 	hp: 7163,
 	atk: 1515,
 	cost: 44,
@@ -113653,7 +113648,7 @@ Cards = [{
 	},
 	ss2: {
 		desc: "<純属性パネル変換>ジャンルパネルをALL属性化し、回復の効果を付与、水単色の精霊が多いほどさらに効果値アップ(上限値:40%)",
-		turn: 7,
+		turn: 12,
 		proc: [ss_panel_change([1,1,1,0,0]), panel_healally(0.4)],
 	},
 	Lawake: [
@@ -114648,7 +114643,7 @@ Cards = [{
 	ss1: {
 		desc: "<弱体化大魔術>スキル反射を無視し、敵単体へ水属性のダメージ(100%)、さらに1ターンの間、敵の水属性に対する防御力を弱体化(50%)",
 		turn: 8,
-		proc: [ss_damage_s(1.0, [1], 1), ss_attr_weaken_s([0,1,0,0,0], 0.5, 1), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(1.0, [1], 1), ss_attr_weaken_s([1,1,1,1,1], 0.5, 1), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],1),
@@ -114669,7 +114664,7 @@ Cards = [{
 	ss2: {
 		desc: "<弱体化大魔術>スキル反射を無視し、敵単体へ水属性のダメージ(100%)、さらに2ターンの間、敵の水属性に対する防御力を弱体化(150%)",
 		turn: 15,
-		proc: [ss_damage_s(1.0, [1], 1), ss_attr_weaken_s([0,1,0,0,0], 1.5, 2), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(1.0, [1], 1), ss_attr_weaken_s([1,1,1,1,1], 1.5, 2), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(1000,0),
@@ -115416,7 +115411,7 @@ Cards = [{
 	atk: 7220,
 	cost: 53,
 	attr: [1,-1],
-	species: [9],
+	species: [8],
 	islegend: true,
 	ape: "クロム・マグナ ゼロ",
 	as1: {
@@ -116070,7 +116065,7 @@ Cards = [{
 		Panel_boost([0,0,1,0,0,],4),
 		NEFTJOD(30),
 		Attr_statusup(400,0, [0,0,1,0,0,]),
-		Abstate_invalid("as_sealed"),
+		Abstate_invalid("as_selaed"),
 		Fastskill(4),
 		Attr_statusup(0,400, [0,0,1,0,0,]),
 		Fastskill(4),
@@ -117557,6 +117552,7 @@ Cards = [{
 	species: [8],
 	islegend: true,
 	ape: "ゴールデンアワード2018",
+	is_dist: true,
 	as1: {
 		desc: "<全体攻撃>敵全体へダメージ(150%)、解答が2秒未満でさらにアップ(75%)(上限:2段階)",
 		proc: add_cond(ChainAllAttack(1.5, 0), as_timedep(0.75, 1)),
@@ -117635,461 +117631,6 @@ Cards = [{
 	Lawake: [
 		Attr_statusup_subattr(0, 200),
 		Statusup(0,1000),
-	],
-},
-{
-	name: "心竜天翔 アデレード・シラー",
-	cardno: 10650,
-	imageno: 9443,
-	hp: 3869,
-	atk: 6631,
-	cost: 55,
-	attr: [0,-1],
-	species: [8],
-	islegend: true,
-	ape: "心竜天翔 Rising Dragon",
-	as1: {
-		desc: "<チェイン攻撃>4チェインでダメージアップ(400%)、10チェインでさらにダメージアップ(300%)、20チェインでさらにダメージアップ(900%)",
-		proc: [ChainAttack(4.0, 4),ChainAttack(7.0, 10),ChainAttack(16.0, 20)],
-	},
-	ss1: {
-		desc: "<残滅大魔術>8ターン溜めた後、スキル反射を無視し、敵全体へ火属性のダメージ(1200%)、さらに10ターンの間、火属性のダメージ(1200%)",
-		turn: 8,
-		charged: 8,
-		proc: [ss_continue_damage(12.0, 12.0, [0], 10), ss_ignore_skillcounter()],
-	},
-	awakes: [
-		Panel_boost([1,0,0,0,0,],4),
-		Abstate_invalid("ss_sealed"),
-		Attr_statusup(400,0, [1,0,0,0,0,]),
-		Fastskill(4),
-		Attr_statusup(0,400, [1,0,0,0,0,]),
-		Attr_statusup_oattr(0,400, [1,0,0,0,0,]),
-		Attr_statusup_oattr(400,0, [1,0,0,0,0,]),
-		NEFTJOD(30),
-		Fastskill(4),
-		Spec_statusup(0,500, [0,8,]),
-	],
-	as2: {
-		desc: "<チェイン攻撃>4チェインでダメージアップ(500%)、10チェインでさらにダメージアップ(300%)、20チェインでさらにダメージアップ(900%)",
-		proc: [ChainAttack(5.0, 4),ChainAttack(8.0, 10),ChainAttack(17.0, 20)],
-	},
-	ss2: {
-		desc: "<残滅大魔術>8ターン溜めた後、スキル反射を無視し、敵全体へ火属性のダメージ(1200%)、さらに10ターンの間、火属性のダメージ(1200%)",
-		turn: 8,
-		charged: 8,
-		proc: [ss_continue_damage(12.0, 12.0, [0], 10), ss_ignore_skillcounter()],
-	},
-	Lawake: [
-		Awake_dragonmode(2000, 1.5) ,
-		Statusup(0,1500),
-	],
-},{
-	name: "黎明の皇竜魔 ミネバ・クロード",
-	cardno: 10652,
-	imageno: 9448,
-	hp: 3644,
-	atk: 4442,
-	cost: 65,
-	attr: [2,3],
-	species: [0],
-	islegend: true,
-	ape: "心竜天翔 Rising Dragon",
-	as1: {
-		desc: "<全体攻撃>敵全体へダメージ(150%)、5チェインで更にダメージアップ(50%)",
-		proc: [ChainAllAttack(1.5, 0), ChainAllAttack(2.0, 5)],
-	},
-	ss1: {
-		desc: "<特効大魔術>敵全体へ光属性のダメージ(800%)、さらに闇属性の敵には特効ダメージ(1100%)",
-		turn: 3,
-		proc: [ss_damage_all(special_attr([0,0,0,0,1], 19, 8), [3])],
-	},
-	awakes: [
-		Attr_statusup_subattr(500, 0),
-		Fastskill(3),
-		Attr_statusup(0,200, [0,0,1,0,0,]),
-		Attr_statusup_subattr(0, 500),
-		Attr_statusup(200,0, [0,0,1,0,0,]),
-		Panel_boost([0,0,1,0,0,],4),
-		Attr_relief([0,0,0,0,1,],20),
-		NEFTJOD(30),
-		Abstate_invalid(["poison", "attr_weaken", "death_limit", "all_sealed"]),
-		Abstate_invalid(["as_sealed", "ss_sealed"]),
-	],
-	as2: {
-		desc: "<全体攻撃>敵全体へダメージ(180%)、5チェインで更にダメージアップ(50%)",
-		proc: [ChainAllAttack(1.8, 0), ChainAllAttack(2.3, 5)],
-	},
-	ss2: {
-		desc: "<特効大魔術>敵全体へ光属性のダメージ(800%)、さらに闇属性の敵には特効ダメージ(2600%)",
-		turn: 6,
-		proc: [ss_damage_all(special_attr([0,0,0,0,1], 34, 8), [3])],
-	},
-	Lawake: [
-		Awake_dragonmode(2000, 1.5) ,
-		Statusup(0,1500),
-	],
-},{
-	name: "炎の絆 アデレード・シラー",
-	cardno: 10649,
-	imageno: 9441,
-	hp: 4109,
-	atk: 6411,
-	cost: 55,
-	attr: [0,-1],
-	species: [8],
-	islegend: true,
-	ape: "心竜天翔 Rising Dragon",
-	as1: {
-		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(350%)、解答が早いほどさらにダメージアップ(70%)(上限:4段階)",
-		proc: add_cond(ChainAttrAttack(3.5, 0, [0,0,1,0,0]), as_timedep(0.7)),
-	},
-	ss1: {
-		desc: "<時限大魔術>スキル反射を無視し、3ターン後に敵単体へ火属性のダメージ(2000%)(上限設置数:5)",
-		turn: 1,
-		proc: [ss_damage_timebomb(20, [0], 1, 3), ss_ignore_skillcounter()],
-	},
-	awakes: [
-		Attr_statusup(400,0, [1,0,0,0,0,]),
-		NEFTJOD(30),
-		Attr_statusup_oattr(400,0, [1,0,0,0,0,]),
-		Panel_boost([1,0,0,0,0,],4),
-		Attr_statusup(0,400, [1,0,0,0,0,]),
-		Fastskill(2),
-		Attr_statusup(0,400, [1,0,0,0,0,]),
-		Attr_relief([1,0,0,0,0,],10),
-		Abstate_invalid("ss_sealed"),
-		Abstate_invalid("discharge"),
-	],
-	as2: {
-		desc: "<属性特効>雷属性の敵単体へ特効ダメージ(450%)、解答が早いほどさらにダメージアップ(70%)(上限:4段階)",
-		proc: add_cond(ChainAttrAttack(4.5, 0, [0,0,1,0,0]), as_timedep(0.7)),
-	},
-	ss2: {
-		desc: "<時限大魔術>スキル反射を無視し、3ターン後に敵単体へ火属性のダメージ(3000%)(上限設置数:5)",
-		turn: 2,
-		proc: [ss_damage_timebomb(30, [0], 1, 3), ss_ignore_skillcounter()],
-	},
-	Lawake: [
-		Attr_statusup(0,200, [1,0,0,0,0,]),
-		Statusup(0,2000),
-	],
-},{
-	name: "逆撃の屠竜者 イケル・ロートレック",
-	cardno: 10654,
-	imageno: 9454,
-	hp: 6222,
-	atk: 4304,
-	cost: 55,
-	attr: [1,-1],
-	species: [0],
-	islegend: true,
-	ape: "心竜天翔 Rising Dragon",
-	as1: {
-		desc: "<チェイン攻撃>10チェインでダメージアップ(800%)、20チェインでさらにダメージアップ(800%)",
-		proc: [ChainAttack(8.0, 10),ChainAttack(16.0, 20)],
-	},
-	ss1: {
-		desc: "<挑発>2ターン溜めた後、30ターン敵の攻撃を自分に集めダメージを50%軽減する",
-		turn: 3,
-		charged: 2,
-		proc: [ss_provocate(0.5, 30)],
-	},
-	awakes: [
-		Attr_statusup(400,0, [0,1,0,0,0,]),
-		Fastskill(3),
-		Panel_boost([0,1,0,0,0,],2),
-		NEFTJOD(30),
-		Awake_noeffect("ゴールド取得量アップ",1),
-		Panel_boost([0,1,0,0,0,],2),
-		Attr_statusup(0,400, [0,1,0,0,0,]),
-		Attr_statusup(400,0, [0,1,0,0,0,]),
-		Attr_statusup(0,400, [0,1,0,0,0,]),
-		Abstate_invalid("as_sealed"),
-	],
-	as2: {
-		desc: "<チェイン攻撃>10チェインでダメージアップ(900%)、20チェインでさらにダメージアップ(800%)",
-		proc: [ChainAttack(9.0, 10),ChainAttack(17.0, 20)],
-	},
-	ss2: {
-		desc: "<鉄壁・極>3ターンの間、攻撃や状態異常攻撃など様々な効果を無効化する(スキル発動中は行動不可)",
-		turn: 5,
-		proc: [ss_impregnable_all(3)],
-	},
-	Lawake: [
-		Attr_statusup(0,400, [0,1,0,0,0,]),
-	],
-},{
-	name: "誓いの翼 リティカ・パス",
-	cardno: 10653,
-	imageno: 9451,
-	hp: 7450,
-	atk: 2852,
-	cost: 54,
-	attr: [1,-1],
-	species: [0],
-	islegend: true,
-	ape: "心竜天翔 Rising Dragon",
-	as1: {
-		desc: "<回復>味方全体のHPを回復(14%)し、デッキに単色の精霊が多いほど、水属性の味方の攻撃力をアップ(10%)(上限:5段階)",
-		proc: [Heal(0.14, [1,1,1,1,1], 0), add_cond(ChainEnhance(0, [0,1,0,0,0], 0), as_singleattr_num(0, 0.1))],
-	},
-	ss1: {
-		desc: "<特殊パネル変換>ジャンルパネルにスキルチャージプラス1の効果を付与(スキルチャージの効果は、SPスキルを使うまで重複しません)",
-		turn: 3,
-		proc: [panel_skillboost(1)],
-	},
-	awakes: [
-		Panel_boost([0,1,0,0,0,],2),
-		Attr_statusup_oattr(0,400, [0,1,0,0,0,]),
-		Attr_statusup(200,0, [0,1,0,0,0,]),
-		Attr_statusup(0,300, [0,1,0,0,0,]),
-		NEFTJOD(30),
-		Panel_boost([0,1,0,0,0,],2),
-		Attr_statusup_oattr(400,0, [0,1,0,0,0,]),
-		Fastskill(3),
-		Spec_statusup(500,0, [0,]),
-		Heal_afterbattle(10),
-	],
-	as2: {
-		desc: "<回復>味方全体のHPを回復(17%)し、デッキに単色の精霊が多いほど、水属性の味方の攻撃力をアップ(10%)(上限:5段階)",
-		proc: [Heal(0.17, [1,1,1,1,1], 0), add_cond(ChainEnhance(0, [0,1,0,0,0], 0), as_singleattr_num(0, 0.1))],
-	},
-	ss2: {
-		desc: "<特殊パネル変換>ジャンルパネルにダメージ25%軽減とスキルチャージプラス1の効果を付与(スキルチャージの効果は、SPスキルを使うまで重複しません)",
-		turn: 6,
-		proc: [panel_skillboost(1), panel_attr_guard([1,1,1,1,1], 0.25)],
-	},
-	Lawake: [
-		Attr_statusup(0,200, [0,1,0,0,0,]),
-		Attr_statusup(200,0, [0,1,0,0,0,]),
-	],
-},{
-	name: "深謀百出のアマイヤ",
-	cardno: 10655,
-	imageno: 9457,
-	hp: 5207,
-	atk: 4833,
-	cost: 52,
-	attr: [2,-1],
-	species: [8],
-	islegend: true,
-	ape: "心竜天翔 Rising Dragon",
-	as1: {
-		desc: "<攻撃強化・ガード>6チェインで雷属性の味方の攻撃力をアップ(70%)、さらに全属性のダメージを10%軽減",
-		proc: [ChainEnhance(0.7, [0,0,1,0,0], 6), as_guard(0.1, [1,1,1,1,1], 6)],
-	},
-	ss1: {
-		desc: "<効果解除>敵全体の属性吸収を解除する",
-		turn: 3,
-		proc: [ss_break_absorb("all")],
-	},
-	awakes: [
-		Awake_noeffect("経験値取得量アップ",1),
-		Heal_afterbattle(10),
-		Attr_statusup_oattr(400,0, [0,0,1,0,0,]),
-		Attr_statusup(0,400, [0,0,1,0,0,]),
-		Attr_statusup_oattr(0,400, [0,0,1,0,0,]),
-		Panel_boost([0,0,1,0,0,],4),
-		Fastskill(3),
-		Attr_statusup(400,0, [0,0,1,0,0,]),
-		Awake_Chainboost(1),
-		Abstate_invalid("ss_sealed"),
-	],
-	as2: {
-		desc: "<攻撃強化・ガード>6チェインで雷属性の味方の攻撃力をアップ(100%)、さらに全属性のダメージを10%軽減",
-		proc: [ChainEnhance(1.0, [0,0,1,0,0], 6), as_guard(0.1, [1,1,1,1,1], 6)],
-	},
-	ss2: {
-		desc: "<効果解除大魔術>スキル反射を無視し、敵全体の属性吸収を解除し、雷属性のダメージ(300%)、HP20%以下でさらにダメージアップ(1200%)",
-		turn: 7,
-		proc: [ss_break_absorb("all"), ss_damage_all(ss_hp_less(0.20, 15.0, 3.0), [2]), ss_ignore_skillcounter()],
-	},
-	Lawake: [
-		Attr_statusup(0,200, [0,0,1,0,0,]),
-		Statusup(1000,0),
-	],
-},{
-	name: "竜の誇りを継ぐ者 ミネバ・クロード",
-	cardno: 10651,
-	imageno: 9446,
-	hp: 3289,
-	atk: 4303,
-	cost: 61,
-	attr: [2,3],
-	species: [0],
-	islegend: true,
-	ape: "心竜天翔 Rising Dragon",
-	as1: {
-		desc: "<チェイン攻撃・属性特効>4チェインでダメージアップ(400%)、闇属性の敵だとさらにダメージアップ(400%)",
-		proc: [ChainAttack(4.0, 4), ChainAttrAttack(8.0, 4, [0,0,0,0,1])],
-	},
-	ss1: {
-		desc: "<特殊パネル変換>ジャンルパネルに攻撃力アップの効果を付与(100%)",
-		turn: 2,
-		proc: [panel_attackup(1.0)],
-	},
-	awakes: [
-		Panel_boost([0,0,1,0,0,],2),
-		Attr_statusup(0,200, [0,0,1,0,0,]),
-		Fastskill(1),
-		Attr_statusup(200,0, [0,0,1,0,0,]),
-		Fastskill(2),
-		Panel_boost([0,0,1,0,0,],2),
-		Awake_noeffect("経験値取得量アップ",1),
-		Attr_statusup_subattr(500, 0),
-		Attr_statusup_subattr(0, 500),
-		Abstate_invalid(["as_sealed", "ss_sealed"])
-	],
-	as2: {
-		desc: "<チェイン攻撃・属性特効>4チェインでダメージアップ(500%)、闇属性の敵だとさらにダメージアップ(400%)",
-		proc: [ChainAttack(5.0, 4), ChainAttrAttack(9.0, 4, [0,0,0,0,1])],
-	},
-	ss2: {
-		desc: "<特殊パネル変換>ジャンルパネルに攻撃力アップの効果を付与(150%)",
-		turn: 4,
-		proc: [panel_attackup(1.5)],
-	},
-	Lawake: [
-		Statusup(0,2000),
-	],
-},{
-	name: "きらめく月影 エルナ・シェンク",
-	cardno: 10657,
-	imageno: 13100,
-	hp: 2005,
-	atk: 3922,
-	cost: 53,
-	attr: [1,2],
-	species: [8],
-	islegend: true,
-	ape: "大魔道杯 in 月夜の思い出",
-	is_dist: true,
-	as1: {
-		desc: "<連撃>敵単体を2回連続攻撃(150%)、デッキ内の精霊が持つ属性数が多いほどさらにダメージアップ(40%)(上限:5段階)",
-		proc: add_cond(ChainDualAttack(1.5, 0, 2), as_deckinattr_num(0, 0.4)),
-	},
-	ss1: {
-		desc: "<融合大魔術>スキル反射を無視し、敵単体へ水属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:5属性で4800%)",
-		turn: 8,
-		proc: [ss_damage_s(ss_multiattr_cond(48), [1], 1), ss_ignore_skillcounter()],
-	},
-	awakes: [
-		Panel_boost([0,1,0,0,0,],1),
-		Attr_statusup(0,200, [0,1,0,0,0,]),
-		Attr_statusup(200,0, [0,1,0,0,0,]),
-		Fastskill(3),
-		Panel_boost([0,1,0,0,0,],2),
-		Attr_statusup_subattr(0, 300),
-		Attr_statusup_subattr(300, 0),
-		NEFTJOD(30),
-		Awake_noeffect("ゴールド取得量アップ",2),
-		Awake_damage_multiple(1.1, 500),
-	],
-	as2: {
-		desc: "<連撃>敵単体を2回連続攻撃(250%)、デッキ内の精霊が持つ属性数が多いほどさらにダメージアップ(40%)(上限:5段階)",
-		proc: add_cond(ChainDualAttack(2.5, 0, 2), as_deckinattr_num(0, 0.4)),
-	},
-	ss2: {
-		desc: "<融合大魔術>スキル反射を無視し、敵単体へ水属性のダメージ、デッキ内の精霊が持つ属性数が多いほどダメージアップ(上限値:5属性で6000%)",
-		turn: 11,
-		proc: [ss_damage_s(ss_multiattr_cond(60), [1], 1), ss_ignore_skillcounter()],
-	},
-	Lawake: [
-		Attr_statusup(0,100, [0,1,0,0,0,]),
-		Statusup(0,1000),
-	],
-},{
-	name: "狼狐の月見酒 リュコス・ヴォーダン",
-	cardno: 10656,
-	imageno: 13104,
-	hp: 7895,
-	atk: 2091,
-	cost: 52,
-	attr: [2,-1],
-	species: [1],
-	islegend: true,
-	ape: "大魔道杯 in 月夜の思い出",
-	is_dist: true,
-	as1: {
-		desc: "<攻撃強化・ガード>10チェインで雷属性の味方の攻撃力をアップ(110%)、さらに全属性のダメージを15%軽減",
-		proc: [ChainEnhance(1.1, [0,0,1,0,0], 10), as_guard(0.15, [1,1,1,1,1], 10)],
-	},
-	ss1: {
-		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、ダメージ25%軽減と回復の効果を付与(40%)",
-		turn: 10,
-		proc: [ss_panel_change([1,1,1,0,0]), panel_multieffect([panel_healally(0.40), panel_attr_guard([1,1,1,1,1], 0.25)])],
-	},
-	awakes: [
-		Panel_boost([0,0,1,0,0,],4),
-		Attr_statusup_oattr(0,400, [0,0,1,0,0,]),
-		Abstate_invalid("discharge"),
-		Awake_secondfast(4),
-		Attr_statusup_oattr(400,0, [0,0,1,0,0,]),
-		Heal_afterbattle(10),
-		Abstate_invalid("heal_reverse"),
-		Attr_statusup(0,400, [0,0,1,0,0,]),
-		Attr_statusup(400,0, [0,0,1,0,0,]),
-		Awake_secondfast(4),
-	],
-	as2: {
-		desc: "<攻撃強化・ガード>10チェインで雷属性の味方の攻撃力をアップ(140%)、さらに全属性のダメージを15%軽減",
-		proc: [ChainEnhance(1.4, [0,0,1,0,0], 10), as_guard(0.15, [1,1,1,1,1], 10)],
-	},
-	ss2: {
-		desc: "<特殊パネル変換>ジャンルパネルをALL属性化し、ダメージ25%軽減と回復の効果を付与(40%)",
-		turn: 10,
-		proc: [ss_panel_change([1,1,1,0,0]), panel_multieffect([panel_healally(0.40), panel_attr_guard([1,1,1,1,1], 0.25)])],
-	},
-	Lawake: [
-		Statusup(500,0),
-		Attr_statusup(0,200, [0,0,1,0,0,]),
-		NEFTJOD(30),
-	],
-},{
-	name: "聖剣の旅路 ジャビー・ユドラム",
-	cardno: 10658,
-	imageno: 13101,
-	hp: 5095,
-	atk: 3001,
-	cost: 40,
-	attr: [0,-1],
-	species: [8],
-	islegend: true,
-	ape: "大魔道杯 in 月夜の思い出",
-	is_dist: true,
-	as1: {
-		desc: "<回復>火属性の味方のHPを回復(12%)",
-		proc: Heal(0.12, [1,0,0,0,0,]),
-	},
-	ss1: {
-		desc: "<弱体化大魔術>スキル反射を無視し、敵単体へ火属性のダメージ(100%)、さらに1ターンの間、敵の火属性に対する防御力を弱体化(50%)",
-		turn: 8,
-		proc: [ss_damage_s(1.0, [0], 1), ss_attr_weaken_s([1,0,0,0,0], 0.5, 1), ss_ignore_skillcounter()],
-	},
-	awakes: [
-		Panel_boost([1,0,0,0,0,],1),
-		Fastskill(1),
-		Abstate_invalid("ss_sealed"),
-		Fastskill(2),
-		Attr_statusup(0,300, [1,0,0,0,0,]),
-		Attr_statusup(300,0, [1,0,0,0,0,]),
-		Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
-		Attr_statusup_oattr(300,0, [1,0,0,0,0,]),
-		NEFTJOD(30),
-	],
-	as2: {
-		desc: "<回復>火属性の味方のHPを回復(15%)",
-		proc: Heal(0.15, [1,0,0,0,0,]),
-	},
-	ss2: {
-		desc: "<弱体化大魔術>スキル反射を無視し、敵単体へ火属性のダメージ(100%)、さらに2ターンの間、敵の火属性に対する防御力を弱体化(150%)",
-		turn: 15,
-		proc: [ss_damage_s(1.0, [0], 1), ss_attr_weaken_s([1,0,0,0,0], 1.5, 2), ss_ignore_skillcounter()],
-	},
-	Lawake: [
-		Statusup(1000,0),
-		Statusup(0,500),
 	],
 },
 ];

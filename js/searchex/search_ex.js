@@ -753,6 +753,9 @@ function isStringContainCheck(base, targets, ignore_roman){
 	var rst = false;
 	for(var i=0; i < targets.length; i++){
 		var t = targets[i];
+		if(!t){
+			continue;
+		}
 		// 正規表現で渡されていたらtest, そうでないならindexOf
 		if(base.test) {
 			rst = rst || base.test(t);

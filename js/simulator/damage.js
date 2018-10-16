@@ -34,6 +34,10 @@ function attack_enemy(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, i
 		turneff_allbreak_enemy(fld, enemy.turn_effect, e);
 		// 撃破カウント
 		fld.Status.total_kill += 1;
+		// AS撃破ならOverkillDmgに加算しておく
+		if(!is_ss){
+			fld.Status.accumulate_asok += Math.floor(d - bef_hp);
+		}
 	}
 	// ダメージフラグ
 	enemy.flags.on_damage = (enemy.flags.on_damage ? enemy.flags.on_damage+1 : 1);
