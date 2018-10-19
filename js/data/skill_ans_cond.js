@@ -168,7 +168,7 @@ var AsAddRate = {
 		}
 		return a + b * num;
 	},
-	// デッキ内属せお数依存
+	// デッキ内属性数依存
 	"as_deckinattr_num": function (fld, addf, oi, ei, p, tgi) {
 		var cards = fld.Allys.Deck;
 		var {a,b} = addf.param;
@@ -181,6 +181,19 @@ var AsAddRate = {
 			});
 		}
 		return a + b * $.grep(match_attr, e => e > 0).length;
+	},
+	// デッキ内特定属性数依存
+	"as_deckinAttrMainSub_num": function (fld, addf, oi, ei, p, tgi) {
+		var cards = fld.Allys.Deck;
+		var {a,b, am, as} = addf.param;
+		var matchNum = 0;
+		for(var i=0; i < cards.length; i++){
+			var contained =
+				am[cards[i].attr[0]] > 0 ||
+				(cards[i].attr[1] >= 0 && as[cards[i].attr[1]] > 0);
+			matchNum += contained ? 1 : 0;
+		}
+		return a + b * matchNum;
 	},
 	// チェインを消費して火力アップ
 	"as_reducechain": function (fld, addf, oi, ei, p, tgi) {
