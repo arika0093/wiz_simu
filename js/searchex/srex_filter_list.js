@@ -1299,11 +1299,13 @@ function convertActiveFilterToJSON(){
 		inp: $("#schbox").val(),
 		af: ActiveSrchFilter,
 	}
-	return JSON.stringify(sv_obj);
+	var sv_str = JSON.stringify(sv_obj);
+	return sv_str.replace(/&/g, "%26");
 }
 
 // JSONからフィルターの中身を復元
 function restoreActiveFilterFromJSON(json){
+	json = json.replace(/%26/g, "&");
 	var restoreRecursion = (obj) => {
 		if(!obj || !obj.id){
 			return {};

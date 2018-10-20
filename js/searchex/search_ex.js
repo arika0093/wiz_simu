@@ -746,11 +746,19 @@ function displayCardDetail(c){
 
 // -----------------------------------
 // 柔軟な文字列含有確認
+var H2kCache = {}, R2kCache = {};
 function isStringContainCheck(base, targets, ignore_roman){
 	if(!$.isArray(targets)){
 		targets = [targets];
 	}
 	var rst = false;
+	if(!base.test){
+		var r2k_base = r2k(base);
+		var h2k_base = h2k(base);
+		R2kCache[base] = r2k_base;
+		H2kCache[base] = h2k_base;
+	}
+	
 	for(var i=0; i < targets.length; i++){
 		var t = targets[i];
 		if(!t){
@@ -762,12 +770,13 @@ function isStringContainCheck(base, targets, ignore_roman){
 		} else if(t.test){
 			rst = rst || t.test(base);
 		} else {
-			var h2k_t = h2k(t);
+			var h2k_t = H2kCache[t] || h2k(t);
+			H2kCache[t] = h2k_t;
 			rst = rst
 				|| t.indexOf(base.toLowerCase()) >= 0
 				|| t.indexOf(base.toUpperCase()) >= 0
-				|| (!ignore_roman && h2k_t.indexOf(r2k(base)) >= 0)
-				|| (!ignore_roman && h2k_t.indexOf(h2k(base)) >= 0)
+				|| (!ignore_roman && h2k_t.indexOf(r2k_base) >= 0)
+				|| (!ignore_roman && h2k_t.indexOf(h2k_base) >= 0)
 		}
 	}
 	return rst;
