@@ -1866,6 +1866,50 @@ function s_enemy_panelchange(attr) {
 	}, makeDesc("パネル変換"));
 }
 
+// パネルリザーブ
+// attr: 変換属性
+//      現状では爆破用なのでランダム付与なら適当に指定しておいてください
+// turn: 継続ターン数
+// added_effects: 付与される効果の配列
+//      ex1: [panel_consume_add(0.2), panel_skillboost(1)]
+//          自傷20%, パネルブースト1のランダム付与(シミュ上では任意選択)
+//      ex2: [panel_multieffect([panel_consume_add(0.2), panel_skillboost(1)]) ]
+//          自傷20%, パネルブースト1の両立パネルを付与
+
+function s_enemy_panelreserve(attr, turn, added_effects) {
+	return m_create_enemy_move(function (fld, n) {
+		var updatePanel = (fld) => {
+			// 変換処理
+			fld.Status.panel_color = new Array(4).fill(attr);
+			// パネル効果上書き
+			fld.Status.panel_add = [];
+			added_effects.forEach(e => {
+				ss_object_done(fld, -1, e);
+			})
+			fld.log_push(`Enemy[${(n + 1)}]: パネルリザーブ(${get_attr_string(attr, "/")})`);
+		} 
+		// 最初に一回
+		updatePanel(fld);
+		
+		ss_continue_effect_add(fld, {
+			type: "panel_reserve_by_enemy",
+			isdemerit: false,       // 確かfalseだったような？要確認
+			turn: turn,
+			lim_turn: turn,
+			effect: function(f, oi, ceff){
+				// 変換
+				updatePanel(f);
+			},
+			// 出現時処理
+			effectOnAppear: function(f, oi, ceff){
+				// 変換
+				updatePanel(f);
+			},
+		});
+		
+	}, makeDesc("パネルリザーブ"));
+}
+
 // スキルディスチャージ
 function s_enemy_discharge(tnum, minus_turn) {
 	return m_create_enemy_move(function (fld, n) {
@@ -2007,7 +2051,7 @@ function s_enemy_when_chainValue(ch_over, ch_short) {
 // IEだと正常に動作しなそうなので、無効にしています。
 function makeDesc(mystr, order){
 	const invalid_props = [
-		"isall", "isStatusDownOnly"
+		"isall", "isStatusDownOnly", "added_effects"
 	];
 	var argObj = getParentArg()
 	if (!argObj) {

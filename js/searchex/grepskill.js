@@ -179,6 +179,14 @@ function checkDamagedSSproc(proc){
 				["最大値"],
 			);
 		}),
+		"ss_accumulateDamageOfOverkill": createDmgSSObject(null, 1, "p3", (pr) => {
+			return createCondprocObject(pr,
+				[
+					(p) => (p.p1) + 1
+				],
+				["最大値"],
+			);
+		}),
 		"ss_QuizcorrectDamage": createDmgSSObject(null, 1, "p3", (pr) => {
 			if(pr.name == "ss_QuizcorrectDamage"){
 				var SPAN = 5;
@@ -188,6 +196,20 @@ function checkDamagedSSproc(proc){
 					}),
 					new Array(pr.p2/SPAN + 1).fill(1).map((e,i) => {
 						return (p) => `${i*SPAN}/${p.p2}`
+					}),
+				);
+			}
+		}),
+		"ss_burst_attack": createDmgSSObject(null, 1, "p4", (pr) => {
+			if(pr.name == "ss_burst_attack"){
+				var SPAN = 10;
+				var crBurstRate = checkSkillCrystalUpvalue("<連鎖解放大魔術>");
+				return createCondprocObject(pr,
+					new Array(pr.p3/SPAN + 1).fill(1).map((e,i) => {
+						return (p) => ((p.p2 + crBurstRate) * (i*SPAN / p.p3)) + p.p1
+					}),
+					new Array(pr.p3/SPAN + 1).fill(1).map((e,i) => {
+						return (p) => `${i*SPAN}Chain`
 					}),
 				);
 			}
@@ -401,7 +423,8 @@ function createCardDataOnlySSkill(base, ss_proc, is_ss2){
 	ss_base.is_ss2 = is_ss2;
 	c_clone.disp_ss = ss_base;
 	// 潜在結晶の効果値を代入しておく
-	if(ss_base.subdesc.indexOf("非特効") < 0){
+	var noTargetSubDescs = ["非特効", "Chain"];
+	if( noTargetSubDescs.every(e => (ss_base.subdesc.indexOf(e) < 0) ) ){
 		ss_base.crystal = checkSkillCrystalUpvalue(ss_base.desc);
 	}
 	ss_base.rateWithCrs = ss_proc.rate + (ss_base.crystal || 0);
@@ -527,6 +550,9 @@ function calcPreDamageAndSort(cs){
 		ss.pre_damage = calcDmg();
 	});
 	
+	// ソート仕事してる？
+	console.log(cs.length);
+	
 	// 仮ダメージ順(降順)に並び替え
 	cs.sort((ac, bc) => {
 		var a = ac.disp_ss;
@@ -551,7 +577,7 @@ function getSdmgObject(){
 	var cr_adv =    $("#sdmgopt_flg_cradv").prop("checked");
 	var atrats =    new Array(5).fill(1).map((e,i) => {
 		var t = $(`#sdmgopt_rattr_${i}`).val();
-		return ((t != "" && t >= 0) ? t : 1);
+		return ((t != "" && t >= 0) ? Number(t) : 1);
 	})
 	
 	var rand = (rand_v > 0 ? rand_v : 1);

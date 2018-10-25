@@ -3,6 +3,7 @@
 // ----------------------------
 var SrchSortOptions = [
 	// 実装順(降順)
+	/*
 	createSortObject({
 		id: "regist",
 		name: "実装順",
@@ -10,6 +11,7 @@ var SrchSortOptions = [
 			return -1 * compareKey("def_index", a, b);
 		}
 	}),
+	*/
 	// 画像順(降順)
 	createSortObject({
 		id: "image",

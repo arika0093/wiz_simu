@@ -1690,6 +1690,17 @@ var SpSkill = {
 		}, is_multi);
 	},
 	// -----------------------------
+	// パネルに自傷効果を付与する
+	"panel_consume_add": function (fld, n, cobj, params) {
+		var rate = params[0];
+		var is_multi = params[1];
+		var dsc = `パネル効果(自傷${(rate * 100)}%)`;
+		return panel_addition(fld, dsc, function(fl){
+			ss_object_done(fld, 0, ss_consume_all(rate));
+			fl.log_push("パネル付与効果発動: " + dsc);
+		}, is_multi);
+	},
+	// -----------------------------
 	// スキル反射無視
 	"ss_ignore_skillcounter": function (fld, n, cobj, params) {
 		var enemys = GetNowBattleEnemys(fld);

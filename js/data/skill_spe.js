@@ -1248,6 +1248,19 @@ function panel_attr_guard(attr, rate) {
 	});
 }
 
+/**
+ * パネルに自傷効果を付与する
+ * rate: 自傷割合。(ex. 0.2 -> 20%)
+ **/
+function panel_consume_add(rate) {
+	return ss_template({
+		name: "panel_consume_add",
+		type: "panel_add",
+		target: "panel",
+		p1: rate,
+	});
+}
+
 // ------------------------------------------------------
 // 解除系
 /**

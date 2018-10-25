@@ -269,6 +269,8 @@ function enemy_popup_proc(fld){
 	turneff_check_skillcounter(fld);
 	// 怒り確認
 	enemy_damage_switch_check(fld, "damage_switch", false, true, false);
+	// 敵出現時の継続効果処理を行う
+	ss_continue_effect_check(fld, false, "effectOnAppear");
 }
 
 // 敵ダメージなどに反応するあれこれの制御

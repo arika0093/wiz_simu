@@ -260,8 +260,8 @@
                         </select>
                         <label for="sdmgopt_flg_awadv">アド潜在</label>
                         <input type="checkbox" id="sdmgopt_flg_awadv" checked />
-                        <label for="sdmgopt_flg_crrate">威力UP結晶</label>
-                        <input type="checkbox" id="sdmgopt_flg_crrate" checked />
+                        <label class="hidden" for="sdmgopt_flg_crrate">威力UP結晶</label>
+                        <input class="hidden" type="checkbox" id="sdmgopt_flg_crrate" checked />
                         <label for="sdmgopt_flg_cradv">アド結晶</label>
                         <input type="checkbox" id="sdmgopt_flg_cradv" />
                     </div>

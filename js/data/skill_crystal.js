@@ -190,6 +190,39 @@ var Awake_crystal_lists = [{
 	param3: [0,0,1,0,0],
 	input_required: true,
 }, {
+	name: "単属性HPUP[火]",
+	imple: Attr_statusup_oattr,
+	param1: "{0}",
+	param2: 0,
+	param3: [1,0,0,0,0],
+	input_required: true,
+}, {
+	name: "単属性HPUP[水]",
+	imple: Attr_statusup_oattr,
+	param1: "{0}",
+	param2: 0,
+	param3: [0,1,0,0,0],
+	input_required: true,
+}, {
+	name: "単属性HPUP[雷]",
+	imple: Attr_statusup_oattr,
+	param1: "{0}",
+	param2: 0,
+	param3: [0,0,1,0,0],
+	input_required: true,
+}, {
+	name: "複属性攻撃力UP",
+	imple: Attr_statusup_subattr,
+	param1: 0,
+	param2: "{0}",
+	input_required: true,
+}, {
+	name: "複属性HPUP",
+	imple: Attr_statusup_subattr,
+	param1: "{0}",
+	param2: 0,
+	input_required: true,
+}, {
 	genre: "ステータス変動(味方全体/固定値)",
 	name: "インフローレ(戦士ATK+200)",
 	imple: Awake_composite,
@@ -535,10 +568,12 @@ function checkSkillCrystalUpvalue(desc){
 		"犠牲魔術": 3,
 		"遅延大魔術": 3,
 		"効果解除大魔術": 3,
-		"反動大魔術": 1.5,
+		"反動大魔術": 4,
 		"残滅大魔術": 1,
 		"特効大魔術": 3,
 		"反動大魔術・蝕": 4,
+		"連鎖解放大魔術": 15,
+		
 	};
 	var types = desc.match(/<.*>/);
 	if(!types){

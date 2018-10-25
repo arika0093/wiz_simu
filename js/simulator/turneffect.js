@@ -286,12 +286,16 @@ function ss_continue_effect_add(fld, eff_obj) {
 }
 
 // 継続効果の確認/発動/除外
-function ss_continue_effect_check(fld, is_ssfin) {
+function ss_continue_effect_check(fld, is_ssfin, callEffectType) {
 	var cont_effs = fld.Status.continue_eff;
 	for (var i = 0; i < cont_effs.length; i++) {
 		var ceff = cont_effs[i];
 		// 発動
-		ceff.effect(fld, ceff.index, ceff, is_ssfin);
+		var eff = callEffectType ? ceff[callEffectType] : ceff.effect;
+		if(!eff){
+			continue;
+		}
+		eff(fld, ceff.index, ceff, is_ssfin);
 		// 敵が全滅していない場合か、デメリット効果なら、ターン数を減らす
 		if (ceff.isdemerit || !is_allkill(fld)) {
 			ceff.lim_turn--;
