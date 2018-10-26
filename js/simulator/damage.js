@@ -13,10 +13,10 @@ function attack_enemy(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, i
 	var d_dat = calculate_damage(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, is_ss, var_num, false, is_noenhance);
 	var d = d_dat.damage;
 	var bef_ond = d_dat.damage_withoutskill;
-	// 最低ダメージを1にする
-	if(d == 0){
-		d = 1;
-	}
+	//  最低ダメージを1にする
+	// if(d == 0){
+	//	d = 1;
+	// }
 	// NowHPから削る
 	if(added_frame === undefined){
 		enemy.nowhp = Math.max(enemy.nowhp - d, 0);
@@ -133,6 +133,8 @@ function calculate_damage(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd,
 	var is_berserk = !is_ss && $.grep(now.turn_effect, function(e){
 		return e.isberserk;
 	}).length > 0;
+	// 最少ダメージを1にする
+	d = Math.max(d, 1);
 	// 敵の攻撃時スキル確認
 	d = checkFunctionOnAttack(fld, enemy, d, atk_atr, is_berserk, is_simulate);
 	// 切り捨て
