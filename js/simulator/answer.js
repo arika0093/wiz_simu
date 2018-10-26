@@ -43,7 +43,7 @@ function panelAnswerWithParam(fld, attr, p_chained) {
 	{
 		var enemys = GetNowBattleEnemys(fld);
 		$.each(enemys, function (i,e) {
-			e.flags.isAliveWhenAnswer = e.nowhp > 0 ? i+1 : false;
+		   	e.flags.isAliveWhenAnswer = e.nowhp > 0 ? i+1 : false;
 		});		
 	}
 	// 自傷する（ダメージパニック用）

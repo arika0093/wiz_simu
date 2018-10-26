@@ -173,13 +173,14 @@ function func_reawake(fld, cards, nows){
 		$.each(ntg.turn_effect, function(j,e){
 			if(e.type == "ss_statusup"){
 				ntg.maxhp = Math.max(ntg.maxhp + e.up_hp, 1);
-				ntg.atk = Math.max(ntg.atk + e.up_atk, 0);
+				ntg.atk = ntg.atk + e.up_atk;
 			}
 			if(e.type == "curse"){
 				ntg.maxhp = Math.max(ntg.maxhp - e.hpdown, 1);
-				ntg.atk = Math.max(ntg.atk - e.atkdown, 0);
+				ntg.atk = ntg.atk - e.atkdown;
 			}
 		});
+		ntg.atk = Math.max(ntg.atk,0)
 	}
 	// 元のHPと比較して修正
 	for(var i=0; i < nows.length; i++){
