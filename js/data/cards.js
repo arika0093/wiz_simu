@@ -12206,7 +12206,7 @@ Cards = [{
 	ss2: {
 		desc: "<大魔術>敵全体へ雷属性のダメージ、さらに味方全体のHPを完全に回復する(ダメージ：150％)",
 		turn: 15,
-		proc: [ss_heal(1.0), ss_damage_all(1.5, [0,0,1,0,0])],
+		proc: [ss_heal(1.0), ss_damage_all(1.5, [2])],
 	},
 }, {
 	name: "浄き陰陽の輪光 クオン・リムゼ",
@@ -45712,8 +45712,8 @@ Cards = [{
 		proc: [ss_attr_guard([1,1,1,1,1], 0.25, 3)],
 	},
 	awakes: [
-		Attr_statusup(0,100, [1,0,0,0,0,]),
-		Attr_statusup(100,0, [1,0,0,0,0,]),
+		Fastskill(1),
+		Panel_boost([1,0,0,0,0,],2),
 		NEFTJOD(30),
 		Attr_statusup(0,200, [1,0,0,0,0,]),
 		Panel_boost([1,0,0,0,0,],2),
@@ -47717,7 +47717,7 @@ Cards = [{
 		Attr_statusup(0,200, [1,0,0,0,0,]),
 	],
 },{
-	name: "勝利を支える翼 べティナ・ロロフ",
+	name: "勝利を支える翼 ベティナ・ロロフ",
 	cardno: 7091,
 	imageno: 9097,
 	hp: 2438,
@@ -67114,7 +67114,7 @@ Cards = [{
 	},
 	ss1: {
 		desc: "<蘇生>味方全体のHPを回復し(50%)、さらに水属性の味方を蘇生(25%)",
-		turn: 9,
+		turn: 8,
 		proc: [ss_heal(0.50), ss_resurrection([0, 1, 0, 0, 0], 0.25)],
 	},
 	awakes: [
@@ -67135,7 +67135,7 @@ Cards = [{
 	},
 	ss2: {
 		desc: "<蘇生>味方全体のHPを完全回復し、さらに水属性の味方を蘇生(50%)",
-		turn: 11,
+		turn: 10,
 		proc: [ss_heal(1.0), ss_resurrection([0, 1, 0, 0, 0], 0.50)],
 	},
 	Lawake: [
