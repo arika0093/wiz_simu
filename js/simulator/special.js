@@ -320,7 +320,7 @@ function legend_timing_check(fld, cards, nows, index, is_ignore_spskill) {
 
 // Lモードに入っているかどうかを判定する
 function is_legendmode(fld, card, now) {
-	return now.islegend = now.ss_current >= card.ss2.turn;
+	return card.ss2 ? now.islegend = now.ss_current >= card.ss2.turn : false;
 }
 
 // Lモードに入っているかどうかを判定する(ゾラス被ダメUP潜在以外用)
