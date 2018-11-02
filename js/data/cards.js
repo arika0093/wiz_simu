@@ -119823,7 +119823,7 @@ Cards = [{
 	ss1: {
 		desc: "<大魔術>スキル反射を無視し、敵単体へ水・光属性のダメージ(240%)",
 		turn: 4,
-		proc: [ss_damage_s(2.4, [1,3]), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(2.4, [1,3], 1), ss_ignore_skillcounter()],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],4),
@@ -119844,7 +119844,7 @@ Cards = [{
 	ss2: {
 		desc: "<大魔術>スキル反射を無視し、敵単体へ水・光属性のダメージ(400%)。HP20%以下の時、さらにダメージアップ(4000%)し、味方全体のHPを完全回復",
 		turn: 6,
-		proc: [ss_damage_all(ss_hp_less(0.2, 40, 4.0), [1,3]), ss_hp_less_skill(0.2, ss_heal(1)), ss_ignore_skillcounter()],
+		proc: [ss_damage_s(ss_hp_less(0.2, 40, 4.0), [1,3], 1), ss_hp_less_skill(0.2, ss_heal(1)), ss_ignore_skillcounter()],
 	},
 	Lawake: [
 		Statusup(0,2000),
