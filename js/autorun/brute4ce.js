@@ -138,16 +138,11 @@ function reOrderFieldAllyData(fld, arr){
 // -------------------
 // test
 function testForBrute4ce(pnl, fstfixed){
-	var nextcheck = (fld, bef_f) => {
-		var bef_battle = bef_f.Status.nowbattle;
-		var aft_battle = fld.Status.nowbattle;
-		return (aft_battle - bef_battle > 0 || fld.Status.finish);
-	}
 	var action = (fld) => {
 		panelAnswerWithParam(fld, pnl);
 	}
 	var bobj = initilizeBrute4ceObject(
-		Field, action, nextcheck, 10, null, 0, false, fstfixed, false
+		Field, action, condNextBattleOrFinish, 10, null, 0, fstfixed, true
 	);
 	brute4ceTestDone(bobj)
 		.done(v => {

@@ -145,11 +145,29 @@ div.img_accept_hover{
 /* rand_checker */
 #randcheck_act{
 	margin-top: 1ex;
-	width: 50%;
+	width: 70%;
 }
 #randcheck_rnum{
 	margin-top: 1ex;
-	width: 75%;
+	/*width: 60%;*/
+	width: 40%;
+}
+#randcheck_nextcheck{
+	margin-top: 1ex;
+	/*width: 60%;*/
+	width: 50%;
+}
+#randcheck_act.hasEdititem {
+	width: 30%;
+}
+
+.rch_edititem {
+	width: 40%;
+	display:none;
+}
+
+select#ordercheck_act {
+	margin-bottom: 0.5ex;
 }
 
 /* Ally info */

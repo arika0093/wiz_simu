@@ -420,7 +420,7 @@ function nextturn(fld, is_ssfin) {
 		for(var i=0; i < abh_r.length; i++){
 			var abh = abh_r[i];
 			if (abh > 0) {
-				heal_ally(fld, Math.ceil(nows[i].maxhp * abh), i);
+				heal_ally(fld, Math.floor(nows[i].maxhp * abh), i);
 				fld.log_push(`Unit[${i+1}]: 戦後回復: ${abh * 100}%`);
 			};
 		}
@@ -445,10 +445,16 @@ function nextturn(fld, is_ssfin) {
 			// GA潜在を誰かが所持しているか確認
 			$.each(fld.Allys.Deck, (i, e) => {
 				var aw_t = pickup_awakes(fld, e, "awake_skillFC_atBoss", false);
+				var aw_db = pickup_awakes(fld, e, "awake_doubleSkill_atBoss", false);
 				if(aw_t.length > 0) {
 					// 発動
 					fld.log_push(`Unit[${i+1}]: 「選ばれし者の証」発動`, "orange");
 					ss_object_done(fld, i, spskill_maxcharge());
+				}
+				if(aw_db.length > 0) {
+					// 発動
+					fld.log_push(`Unit[${i+1}]: 「選ばれし者の名誉」発動`, "orange");
+					ss_object_done(fld, i, ss_doubleskill_all(3));
 				}
 			});
 		}

@@ -553,6 +553,10 @@ var Awake_crystal_lists = [{
 	name: "選ばれし者の証(ボス戦時SPMAX/発動100%)",
 	imple: Awake_composite,
 	param2: Awake_skillFC_atBoss(),
+}, {
+	name: "選ばれし者の名誉(SP回数+1付与/発動100%)",
+	imple: Awake_composite,
+	param2: Awake_skillFC_atBoss(),
 }
 ];
 

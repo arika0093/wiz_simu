@@ -112,9 +112,27 @@ function condNextBattleOrFinish(fld, bef_f){
 	return (aft_battle - bef_battle > 0 || fld.Status.finish);
 }
 
+// 汎用的な終了条件（戦闘終了）
+function condQuestFinish(fld, bef_f){
+	return fld.Status.finish;
+}
+
+// ボス戦に到達しているかチェック
+function condArriveToBoss(fld, bef_f){
+	return fld.Status.nowbattle >= fld.Enemys.Data.length;
+}
 
 // GUIから乱数チェッカを読んだときにtask関数を生成する
 function convertRepeatStr2TaskFunc(){
+	// manual targetting
+	var manualTargetting = (fld, params) => {
+		var [unit, main, sub] = params;
+		fld.Allys.Now[unit - 1].target = [
+			main - 1,
+			sub - 1
+		];
+	};
+	
 	// task list
 	var tobj = {
 		"panel_fire":		[panelAnswerWithParam, [0]],
@@ -124,6 +142,7 @@ function convertRepeatStr2TaskFunc(){
 		"alltarget_left":	[target_allselect, 0],
 		"alltarget_center":	[target_allselect, 1],
 		"alltarget_right":	[target_allselect, 2],
+		"custom_target":	[manualTargetting, "#"],
 		"unit1_ss":			[ssPushWithParam, 0],
 		"unit2_ss":			[ssPushWithParam, 1],
 		"unit3_ss":			[ssPushWithParam, 2],

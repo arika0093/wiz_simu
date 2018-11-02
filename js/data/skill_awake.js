@@ -556,4 +556,11 @@ function Awake_skillFC_atBoss(){
 		desc: "ボス戦突入時にスキチャMAX/特殊攻略用",
 	}
 }
+function Awake_doubleSkill_atBoss(){
+	return {
+		type: "Awake_doubleSkill_atBoss",
+		name: "選ばれし者の名誉",
+		desc: "ボス戦突入時にダブルスキル付与/特殊攻略用",
+	}
+}
 

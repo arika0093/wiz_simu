@@ -60,7 +60,7 @@
 				<a id="sim_share" onclick="tweet_result(null)">結果をツイートする</a>
 				<a id="sim_restart" onclick="load_field(null,0)">始めからやり直す</a>
 				<a id="sim_logview" onclick="log_view()">ログを確認する</a>
-				<!-- <a id="sim_ordview" onclick="rand_checker()">編成順ch</a> -->
+				<a id="sim_ordview" onclick="order_checker()">並び順確認</a> 
                 <a id="sim_rndview" onclick="rand_checker()">乱数確認</a>
 				<a id="sim_decksel" onclick="back_decksel()">デッキ選択画面に戻る</a>
 			</div>
@@ -357,10 +357,11 @@
 		<p>SSを発動しても効果が得られません。</p>
 	</div>
     <div class="dialog_div" id="dialog_randchecker" title="乱数チェッカー">
-        <p>現在のターゲッティングでSS発動/攻撃を任意の回数繰り返し、突破できた回数を表示します。</p>
+        <p>現在の乱数/ターゲッティングでSS発動/攻撃を任意の回数繰り返し、突破できた回数を表示します。</p>
         <div id="randcheck_actdata" class="dialog_div"></div>
-        <select class="sel_indialog" id="randcheck_acts" size="5"></select>
+        <select class="sel_indialog" id="randcheck_acts" size="10"></select>
         <select id="randcheck_act" data-placeholder="(未選択)" onchange="randcheck_selchange();">
+	        <option value="" type="disable">(試行内容を選択)</option>
             <option value="panel_fire">火パネル攻撃</option>
             <option value="panel_water">水パネル攻撃</option>
             <option value="panel_thunder">雷パネル攻撃</option>
@@ -368,21 +369,60 @@
             <option value="alltarget_left">全左タゲ</option>
             <option value="alltarget_center">全中タゲ</option>
             <option value="alltarget_right">全右タゲ</option>
+	        <option value="custom_target" type="showp">カスタムタゲ</option>
             <option value="unit1_ss">Unit[1]:SS発動</option>
             <option value="unit2_ss">Unit[2]:SS発動</option>
             <option value="unit3_ss">Unit[3]:SS発動</option>
             <option value="unit4_ss">Unit[4]:SS発動</option>
             <option value="unit5_ss">Unit[5]:SS発動</option>
         </select>
-		<input style="width:15%;display:none;" title="攻撃属性をコンマ区切りの数字で指定する。例えば、火雷パネルなら0,2。三色なら0,1,2。水光なら1,3。雷闇なら2,4。"
-			   id="rch_editpanel" placeholder="panel" />
+		<input title="攻撃属性をコンマ区切りの数字で指定する。例えば、火雷パネルなら0,2。三色なら0,1,2。水光なら1,3。雷闇なら2,4。"
+		       class="rch_edititem" id="rch_editpanel" data-target="panel_multi" placeholder="Panels[ex: 0,1,2]" />
+	    <input title="ターゲット指定(Unit番号:主属性タゲ:副属性タゲ。ex: 1,2,2 / 2,3,-1 )"
+	           class="rch_edititem" id="rch_edittarget" data-target="custom_target" placeholder="Unit,Main,Sub[ex: 1,2,0]" />
         <button type="button" onclick="randcheck_addact();">追加</button>
         <button type="button" onclick="randcheck_alldelact();">全削除</button>
+	    <select id="randcheck_nextcheck" >
+		    <option value="" type="disable" selected>(成功判定の条件を入力)</option>
+		    <option value="next_wave" >次Wave移行</option>
+		    <option value="clear_quest">クエストクリア</option>
+		    <option value="boss_arrival">ボス戦到達</option>
+	    </select>
         <input type="number" class="edit_indialog" id="randcheck_rnum" placeholder="《試行回数を入力》" />
+	    
+	    
     </div>
     <div class="dialog_div" id="dialog_randchecker_rst" title="結果">
         <p id="randcheck_rsttext"></p>
     </div>
+	<div class="dialog_div" id="dialog_orderchecker" title="乱数チェッカー">
+		<p>現在の乱数/ターゲッティングでAS発動を行い、突破できるパーティーの並び順を提示します。</p>
+		<select id="ordercheck_act">
+			<option value="" type="disable">(攻撃パネル色を選択)</option>
+			<option value="0">火</option>
+			<option value="1">水</option>
+			<option value="2">雷</option>
+			<option value="0,1">火/水</option>
+			<option value="0,2">火/雷</option>
+			<option value="1,2">水/雷</option>
+			<option value="0,1,2">火/水/雷</option>
+			<option value="0,3">火/光</option>
+			<option value="0,4">火/闇</option>
+			<option value="1,3">水/光</option>
+			<option value="1,4">水/闇</option>
+			<option value="2,3">雷/光</option>
+			<option value="2,4">雷/闇</option>
+		</select>
+		<br/>
+		<input id="ordercheck_fixtop" type="checkbox" />
+		<label for="ordercheck_fixtop" >先頭精霊を固定して計算</label>
+		<br/>
+		<input id="ordercheck_fixminrand" type="checkbox" />
+		<label for="ordercheck_fixminrand" >最低乱数許容のみを許容</label>
+	</div>
+	<div class="dialog_div" id="dialog_orderchecker_rst" title="結果">
+		<p id="ordercheck_rsttext"></p>
+	</div>
 	<div class="dialog_div" id="err_dlg" title="ERROR OCCURRED">
 		<div id="err_text"></div>
 	</div>

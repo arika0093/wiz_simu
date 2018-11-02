@@ -40,9 +40,11 @@ function sim_show(fld) {
 	} else if (fld.Status.finish /*&& !fld.Status.isautomode*/) {
 		$("#sim_share").fadeIn("slow");
 		$("#sim_rndview").hide();
+		$("#sim_ordview").hide();
 	} else {
 		$("#sim_share").fadeOut("slow");
 		$("#sim_rndview").fadeIn("slow");
+		$("#sim_ordview").fadeIn("slow");
 	}
 	// sim_restart / logview
 	if (fld.Status.totalturn > 0) {
@@ -628,8 +630,15 @@ function sim_show(fld) {
 					}
 					$("#randcheck_rsttext").html(rst_tx);
 				}
+				// 終了条件
+				var finishCond = {
+					"next_wave": condNextBattleOrFinish,
+					"clear_quest": condQuestFinish,
+					"boss_arrival": condArriveToBoss,
+				};
+				var targetFinishCond = finishCond[ $("#randcheck_nextcheck option:selected").val() ];
 				// test
-				autoRun_RepeatTest(Field, condNextBattleOrFinish, convertRepeatStr2TaskFunc(), loop)
+				autoRun_RepeatTest(Field, targetFinishCond, convertRepeatStr2TaskFunc(), loop)
 					.progress(v => {
 						opdialog(v.matched, v.finished, v.total, false);
 					})
@@ -654,6 +663,95 @@ function sim_show(fld) {
 			},
 		},
 	});
+	// orderchecker
+	$("#dialog_orderchecker").dialog({
+		autoOpen: false,
+		modal: true,
+		width: 450,
+		buttons: {
+			"testrun": function () {
+				var pnl = $("#ordercheck_act option:selected").val().split(",").map(Number);
+				var fstfixed = $("#ordercheck_fixtop").prop("checked");
+				var minrandfixed = $("#ordercheck_fixminrand").prop("checked");
+				var action = (fld) => {
+					panelAnswerWithParam(fld, pnl);
+				}
+				var bobj = initilizeBrute4ceObject(
+					Field, action, condNextBattleOrFinish, 10, null, 0, fstfixed, minrandfixed
+				);
+				// 描画関連処理
+				var opdialog = function(items){
+					const image_width = 56;
+					var rst_tx = "";
+					var n = items.n;
+					if(items.is_fin){
+						var m = items.m;
+						if(m.length > 0){
+							rst_tx += `計算が完了しました。突破できる組み合わせを下に列挙します。<br/>`;
+							rst_tx += `各組み合わせごとに10回テストを行い、全てパスしたものを表示しています。<br/>`;
+							rst_tx += `数字は現時点での位置です。数字の順番に並び変えることで突破率が増加します。<br/>`;
+							rst_tx += `---------------------------------------------<br/>`;
+							rst_tx += `突破可能組み合わせ: ${m.length} / ${n}<br/>`;
+							rst_tx += `---------------------------------------------<br/>`;
+							rst_tx += m.map(e => {
+								var r = "";
+								r += e.map(e2 =>{
+									var c = Field.Allys.Deck[e2];
+									var iurl = get_image_url(c.imageno, c.imageno_prefix);
+									return `<img class="ordercheck_image" style="width: ${image_width}px;" src="${iurl}" title="現在の[${e2 + 1}]番目" />`;
+								}).join(" ")
+								r += ` ... ${e.map(e2 => (e2+1).toString() ).toString() }`;
+								return r;
+							} ).join("<br/>")
+						} else {
+							rst_tx += `計算が完了しました。突破できる並び順はありませんでした…<br/>`;
+							rst_tx += `突破可能組み合わせ: ${m.length} / ${n}<br/>`;
+							rst_tx += `-------------------------------<br/>`;
+							rst_tx += `各組み合わせごとに10回テストを行い、全てパスしたものを計測しています。<br/>`;
+							rst_tx += `そのため、多少の不安定さを許容できるなら突破できる可能性がある場合もあります。<br/>`;
+						}
+					} else {
+						rst_tx += `Calculating... [ Finish: ${n} ]<br/>`;
+						rst_tx += `各組み合わせごとに10回テストを行い、全てパスしたものを計測しています。<br/>`;
+						rst_tx += `そのため、この結果を鵜呑みにするのは多少危険です。ご注意ください。<br/>`;
+					}
+					$("#ordercheck_rsttext").html(rst_tx);
+				}
+				// do check
+				brute4ceTestDone(bobj)
+					.progress(v => {
+						opdialog({ n: Object.keys(v.patterns).length, is_fin: false });
+					})
+					.then(v => {
+						opdialog({
+							m: v.justMatchPatternsToArray(),
+							n: Object.keys(v.patterns).length,
+							is_fin: true
+						});
+					});
+				// open dialog
+				$("#ordercheck_rsttext").html("");
+				$("#dialog_orderchecker_rst").dialog("open");
+			},
+			"close": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
+	// orderchecker-result
+	$("#dialog_orderchecker_rst").dialog({
+		autoOpen: false,
+		modal: true,
+		width: 600,
+		height: 600,
+		buttons: {
+			"close": function () {
+				$(this).dialog("close");
+			},
+		},
+	});
+
+
 	// ss_single_one
 	$("#dialog_ss_selectone").dialog({
 		autoOpen: false,
@@ -962,25 +1060,33 @@ function rand_checker() {
 }
 function randcheck_selchange() {
 	var si = $("#randcheck_act option:selected");
-	if(si.attr("type") == "showp"){
-		$("#rch_editpanel").show();
-	} else {
-		$("#rch_editpanel").hide();
+	$("#rch_editpanel").hide();
+	$("#rch_edittarget").hide();
+	var has_showp = si.attr("type") == "showp";
+	if(has_showp){
+		var target = si.val();
+		$(`.rch_edititem[data-target=${target}]`).show();
 	}
-	
+	$("#randcheck_act").toggleClass("hasEdititem", has_showp);
 }
 function randcheck_addact() {
 	var si = $("#randcheck_act");
 	var si_v = si.val();
-	var pdata = $("#rch_editpanel").val();
+	var si_seled = $("#randcheck_act option:selected");
+	var pdata = $(`.rch_edititem[data-target=${si_seled.val()}]`).val();
 	var add_num = si_v + (pdata ? "|" + pdata.replace(/|/g, "") : "") + "/";
 	$("#randcheck_actdata").append(add_num);
 	$("#randcheck_acts").append("<option>" + $("#randcheck_act option[value=" + si_v + "]").text() + "</option>");
-	$("#rch_editpanel").val("");
+	$(".rch_edititem").val("");
 }
 function randcheck_alldelact() {
 	$("#randcheck_actdata").text("");
 	$("#randcheck_acts").html("");
+}
+
+// orderチェッカー表示
+function order_checker() {
+	$("#dialog_orderchecker").dialog("open");
 }
 
 
