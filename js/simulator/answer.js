@@ -153,10 +153,17 @@ function panelAnswerWithParam(fld, attr, p_chained) {
 			now.ss_current += p_chained;
 		}
 	}
+	// LapTime Guessing
+	guessLapTimes(fld, {
+		target: "answer/correct",
+		paneleff_index: pnladd,
+	});
+	
 	// 敵スキル処理
 	{
 		// 物理カウンター
 		var enemys = GetNowBattleEnemys(fld);
+		var counter_count = 0;
 		$.each(enemys, function (i, e) {
 			for (var n = 0; n < fld.Allys.Deck.length; n++) {
 				if (e.flags.is_as_attack[n] > 0 && e.turn_effect.length > 0) {
@@ -167,9 +174,16 @@ function panelAnswerWithParam(fld, attr, p_chained) {
 						skillct[j].on_attack_damage(fld, i, n);
 					}
 					e.flags.is_as_attack[n] = 0;
+					counter_count++;
 				}
 			}
 		});
+		guessLapTimes(fld, {
+			// ASに対するカウンターの処理
+			target: "enemy/as_counter",
+			counter_count,
+		});
+		
 		// 敵死亡時処理の確認
 		enemy_check_ondead(fld);
 		// 分裂処理
@@ -201,6 +215,11 @@ function panelAnswerMissWithParam(fld) {
 	// 誤答時処理
 	ss_continue_effect_check(fld, false, "effectOnMissAnswer");
 	fld.Allys.Now.forEach((now, i) => turn_effect_check_onlyfirst(fld, now, i) );
+	// LapTime Guessing
+	guessLapTimes(fld, {
+		target: "answer/miss",
+	});
+	
 	// 誤答処理
 	var cg = fld.Status.chain_awguard;
 	if (cg > 0){
@@ -396,6 +415,14 @@ function answer_skill(fld, as_arr, panel, as_afters, bef_f) {
 		for(var i=0; i < as_arr.length; i++){
 			answer_skill_proc(fld, as_arr, panel, i, atk_duals, rem_duals, i, as_afters, bef_f);
 		}
+		// LapTime Guessing
+		guessLapTimes(fld, {
+			// 連撃精霊がいない場合の処理
+			target: "answer/no_calclate_frame",
+			as_arr,
+			rem_duals
+		});
+		
 	} else {
 		// 連撃精霊がいるなら専用の処理に移動
 		cardAttackAndDmgManage(fld, as_arr, panel, as_afters, bef_f, atk_duals, rem_duals);
@@ -461,6 +488,7 @@ function cardAttackAndDmgManage(fld, as_arr, panel, as_afters, bef_f, atk_duals,
 		return ct;
 	}
 	// ------------------------------------------
+	var nf = 0;
 	for(var i = 0; !isAllAtkEndCheck(); i++){
 		// Skip精霊分だけStart位置を補正
 		var cskip = countSkipNum(i)
@@ -477,15 +505,21 @@ function cardAttackAndDmgManage(fld, as_arr, panel, as_afters, bef_f, atk_duals,
 			// 残攻撃回数が0以下なら飛ばす
 			if (rem_duals[j] <= 0) { continue; }
 			// F位置を取得
-			var F = CalcNowFrame(j - cskip, atk_duals[j] - rem_duals[j], as_arr.length - cskip - 1);
+			nf = CalcNowFrame(j - cskip, atk_duals[j] - rem_duals[j], as_arr.length - cskip - 1);
 			// 予約ダメージの反映
-			ReflectContractsList(F);
+			ReflectContractsList(nf);
 			// 攻撃処理へ移行
-			answer_skill_proc(fld, as_arr, panel, j, atk_duals, rem_duals, loop_ct, as_afters, bef_f, F);
+			answer_skill_proc(fld, as_arr, panel, j, atk_duals, rem_duals, loop_ct, as_afters, bef_f, nf);
 		}
 	}
 	// 予約ダメージの全反映
 	ReflectContractsList(-1);
+	
+	// LapTime Guessing
+	guessLapTimes(fld, {
+		target: "answer/calclate_frame",
+		totalframe: nf,
+	});
 }
 
 // アンサースキルの処理

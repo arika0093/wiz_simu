@@ -343,6 +343,12 @@ $(function () {
 				var fs = Field.Status;
 				fs.limit_turn = fs.limit_now = Field.Quest.limitturn;
 			}
+			// GLT処理
+			guessLapTimes(Field, {
+				// 初期化
+				target: "initialize",
+			});
+			
 			// 初期化処理終了
 			Field.Status.is_initialize = false;
 			// 初期状態を保存
