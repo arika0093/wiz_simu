@@ -117577,7 +117577,12 @@ Cards = [{
 	ss1: {
 		desc: "＜AS特殊変化＞3ターンの間、解答時間に特殊な効果を付与(3秒未満で回復(5%)、さらに2秒未満で軽減(10%)、さらに1秒未満でダメージ強化(800%))。エクセレント解答でない場合、味方のMAXHPを10%消費",
 		turn: 6,
-		proc: [ss_enhance_all(8, 3, [1,1,1,1,1])],
+		proc: [ss_aseffectadd(3, {
+			"1": ss_enhance_all(8, 1, [1,1,1,1,1], "aseffect"),
+			"2": ss_attr_guard([1,1,1,1,1], 0.1, 1, "aseffect"),
+			"3": ss_heal(0.05),
+			"no-excellent": ss_consume_all(0.1),
+		})],
 	},
 	awakes: [
 		Panel_boost([1,0,0,0,0,],4),
@@ -117598,7 +117603,12 @@ Cards = [{
 	ss2: {
 		desc: "＜AS特殊変化＞3ターンの間、解答時間に特殊な効果を付与(3秒未満で回復(10%)、さらに2秒未満で軽減(15%)、さらに1秒未満でダメージ強化(1100%))。エクセレント解答でない場合、味方のMAXHPを10%消費",
 		turn: 9,
-		proc: [ss_enhance_all(11, 3, [1,1,1,1,1])],
+		proc: [ss_aseffectadd(3, {
+			"1": ss_enhance_all(11.0, 1, [1,1,1,1,1], "aseffect"),
+			"2": ss_attr_guard([1,1,1,1,1], 0.15, 1, "aseffect"),
+			"3": ss_heal(0.10),
+			"no-excellent": ss_consume_all(0.1),
+		})],
 	},
 	Lawake: [
 		Attr_statusup_subattr(0, 200),
@@ -117622,7 +117632,12 @@ Cards = [{
 	ss1: {
 		desc: "<AS特殊変化>3ターンの間、解答時間に特殊な効果を付与(3秒未満で回復(5%)、さらに2秒未満で軽減(10%)、さらに1秒未満でダメージ強化(800%))。エクセレント解答でない場合、味方のMAXHPを10%消費",
 		turn: 6,
-		proc: [ss_enhance_all(8, 3, [1,1,1,1,1])],
+		proc: [ss_aseffectadd(3, {
+			"1": ss_enhance_all(8.0, 1, [1,1,1,1,1], "aseffect"),
+			"2": ss_attr_guard([1,1,1,1,1], 0.10, 1, "aseffect"),
+			"3": ss_heal(0.05),
+			"no-excellent": ss_consume_all(0.1),
+		})],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],2),
@@ -117643,7 +117658,12 @@ Cards = [{
 	ss2: {
 		desc: "<AS特殊変化>3ターンの間、解答時間に特殊な効果を付与(3秒未満で回復(10%)、さらに2秒未満で軽減(15%)、さらに1秒未満でダメージ強化(1100%))。エクセレント解答でない場合、味方のMAXHPを10%消費",
 		turn: 9,
-		proc: [ss_enhance_all(11, 3, [1,1,1,1,1])],
+		proc: [ss_aseffectadd(3, {
+			"1": ss_enhance_all(11.0, 1, [1,1,1,1,1], "aseffect"),
+			"2": ss_attr_guard([1,1,1,1,1], 0.15, 1, "aseffect"),
+			"3": ss_heal(0.10),
+			"no-excellent": ss_consume_all(0.1),
+		})],
 	},
 	Lawake: [
 		Attr_statusup_subattr(0, 200),
@@ -118639,7 +118659,10 @@ Cards = [{
 	ss1: {
 		desc: "<AS特殊変化>3ターンの間、解答時間に特殊な効果を付与(2秒未満で軽減(25%))。エクセレント解答でない場合、味方のMAXHPを10％消費",
 		turn: 0,
-		proc: null,
+		proc: [ss_aseffectadd(3, {
+			"2": ss_attr_guard([1,1,1,1,1], 0.25, 1, "aseffect"),
+			"no-excellent": ss_consume_all(0.1),
+		})],
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],2),
@@ -118660,7 +118683,11 @@ Cards = [{
 	ss2: {
 		desc: "3ターンの間、解答時間に特殊な効果を付与(2秒未満で軽減(25%)、さらに1秒未満で回復(15%))。エクセレント解答でない場合、味方のMAXHPを10％消費",
 		turn: 0,
-		proc: null,
+		proc: [ss_aseffectadd(3, {
+			"1": ss_heal(0.15),
+			"2": ss_attr_guard([1,1,1,1,1], 0.25, 1, "aseffect"),
+			"no-excellent": ss_consume_all(0.1),
+		})],
 	},
 	Lawake: [
 		Statusup(0,1000),

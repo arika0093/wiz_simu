@@ -297,7 +297,7 @@ function ss_continue_effect_check(fld, is_ssfin, callEffectType) {
 		}
 		eff(fld, ceff.index, ceff, is_ssfin);
 		// 敵が全滅していない場合か、デメリット効果なら、ターン数を減らす
-		if (ceff.isdemerit || !is_allkill(fld)) {
+		if (!callEffectType && (ceff.isdemerit || !is_allkill(fld)) ) {
 			ceff.lim_turn--;
 		}
 		// 残りターンが0以下なら除外
@@ -327,4 +327,3 @@ function retsugan_check(fld, is_ssfin){
 		ss_object_done(fld, 0, ss_consumeCeil_all(0.1 * retsugan_count));
 	}
 }
-

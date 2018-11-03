@@ -15,7 +15,7 @@ function answer_miss() {
 function panelAnswerWithParam(fld, attr, p_chained) {
 	var st = fld.Status;
 	var cnst_rnd = Number($("#attack_rand_sel").val());
-	var as_ignore = $("#as_ignore").prop('checked');
+	var as_ignore = fld.Status.ignoreAnswerSkill = $("#as_ignore").prop('checked');
 	// パネル連結数
 	p_chained = p_chained || 1;
 	if(p_chained > 0){
@@ -38,6 +38,10 @@ function panelAnswerWithParam(fld, attr, p_chained) {
 	var pnladd = Number($("#panel_add_sel").val());
 	if (pnladd != 0) {
 		st.panel_add[pnladd - 1].func(fld);
+	}
+	// AS変化などの適用
+	{
+		ss_continue_effect_check(fld, false, "effectOnAnswer");
 	}
 	// 解答した時点で生存している敵にフラグを建てる（タゲ異常パニック用）
 	{
@@ -193,6 +197,8 @@ function panelAnswerMissWithParam(fld) {
 	fld.log_push("【誤答】");
 	// 再現用ログ関連
 	actl_save_answer_miss(fld);
+	// 誤答時処理
+	ss_continue_effect_check(fld, false, "effectOnMissAnswer");
 	// 誤答処理
 	var cg = fld.Status.chain_awguard;
 	if (cg > 0){

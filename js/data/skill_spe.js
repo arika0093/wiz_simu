@@ -921,6 +921,27 @@ function ss_attr_guard(attr, rate, turn, calltype) {
 	});
 }
 
+
+/**
+ * AS変化スキル
+ * turn: 継続ターン。
+ * effects_obj: 秒数と適用するSSを組みにしたobject.
+ *      ex: {
+ *          "1": ss_enhance(), // 1秒以内でエンハンスをかける
+ *          "no-excellent": ss_consume_all(), // エクセレント逃しをした際に自傷
+ *      }
+ **/
+function ss_aseffectadd(turn, effects_obj) {
+	return ss_template({
+		name: "ss_aseffectadd",
+		type: "turn_effect",
+		subtype: "aseffectadd",
+		target: "field",
+		p1: turn,
+		p2: effects_obj,
+	});
+}
+
 // ------------------------------------------------------
 // フィールド干渉系
 /**

@@ -705,12 +705,16 @@ var SpSkill = {
 				switch (calltype) {
 					case "RF":
 						var isreinforce = true;
-						var isreduce_stg = true;
 						var typestr = "[精霊強化]"
 						var rate_awplusRF = pickup_awakes(fld, fld.Allys.Deck[n], "awake_rateup_enhanceRF", false);
 						$.each(rate_awplusRF, function(i, e){
 							rate += e.upvalue / 100;
 						});
+						break;
+					case "aseffect":
+						var isaseffect = true;
+						var isreduce_stg = true;
+						var typestr = "[AS変化]"
 						break;
 					case "null":
 						return null;
@@ -726,7 +730,9 @@ var SpSkill = {
 					icon: "enhance",
 					isdual: false,
 					iscursebreak: true,
-					isreinforce: isreinforce,
+					isreinforce,
+					isreduce_stg,
+					isaseffect,
 					turn: t,
 					lim_turn: t,
 					target_attr: attr,
@@ -741,21 +747,21 @@ var SpSkill = {
 						} else {
 							teff.desc = desc;
 						}
+						// 対象listup
+						var targetListup = "ss_enhance";
+						if(teff.isreinforce){
+							targetListup = "ss_reinforcement_atk";
+						} else if(teff.isaseffect){
+							targetListup = "ss_aseffect_atk";
+						}
+						
 						// 初回実行時にエンハ値を代入
 						if (state == "first") {
-							if (teff.isreinforce) {
-								f.Allys.Now[oi].ss_reinforcement_atk = rate;
-							} else {
-								f.Allys.Now[oi].ss_enhance = rate;
-							}
+							f.Allys.Now[oi][targetListup] = rate;
 						}
 						// 解除時にエンハ値を0にする(overrideは見ない[別の値代入の恐れがあるため])
 						if (state == "end" || state == "dead" || state == "break") {
-							if (teff.isreinforce) {
-								f.Allys.Now[oi].ss_reinforcement_atk = 0;
-							} else {
-								f.Allys.Now[oi].ss_enhance = 0;
-							}
+							f.Allys.Now[oi][targetListup] = 0;
 						}
 					},
 				});
@@ -783,8 +789,12 @@ var SpSkill = {
 				switch (calltype) {
 					case "RF":
 						var isreinforce = true;
-						var isreduce_stg = true;
 						var typestr = "[精霊強化]"
+						break;
+					case "aseffect":
+						var isaseffect = true;
+						var isreduce_stg = true;
+						var typestr = "[AS変化]"
 						break;
 					case "null":
 						return null;
@@ -802,7 +812,9 @@ var SpSkill = {
 					icon: "enhance",
 					isdual: false,
 					iscursebreak: true,
-					isreinforce: isreinforce,
+					isreinforce,
+					isreduce_stg,
+					isaseffect,
 					turn: t,
 					lim_turn: t,
 					up_rate: rate,
@@ -819,19 +831,21 @@ var SpSkill = {
 						} else {
 							teff.desc = desc;
 						}
-						if (state == "first") {
-							if (teff.isreinforce) {
-								f.Allys.Now[oi].ss_reinforcement_atk = teff.up_rate;
-							} else {
-								f.Allys.Now[oi].ss_enhance = teff.up_rate;
-							}
+						// 対象listup
+						var targetListup = "ss_enhance";
+						if(teff.isreinforce){
+							targetListup = "ss_reinforcement_atk";
+						} else if(teff.isaseffect){
+							targetListup = "ss_aseffect_atk";
 						}
-						else if (state == "end" || state == "dead" || state == "break" || state == "overlay") {
-							if (teff.isreinforce) {
-								f.Allys.Now[oi].ss_reinforcement_atk = 0;
-							} else {
-								f.Allys.Now[oi].ss_enhance = 0;
-							}
+						
+						// 初回実行時にエンハ値を代入
+						if (state == "first") {
+							f.Allys.Now[oi][targetListup] = rate;
+						}
+						// 解除時にエンハ値を0にする(overrideは見ない[別の値代入の恐れがあるため])
+						if (state == "end" || state == "dead" || state == "break") {
+							f.Allys.Now[oi][targetListup] = 0;
 						}
 					},
 				});
@@ -1252,8 +1266,14 @@ var SpSkill = {
 				var typestr = "[AS]"
 				break;
 			case "RF":
-				var isreinforce = true
+				var isreinforce = true;
 				var typestr = "[精霊強化]"
+				break;
+			case "aseffect": 
+				// 乗算処理
+				var is_multiple = true;
+				var isreduce_stg = true;
+				var typestr = "[AS変化]"
 				break;
 			case "SS":
 			default:
@@ -1273,8 +1293,9 @@ var SpSkill = {
 					type: "ss_attr_guard" + calltype,
 					icon: "attr_guard",
 					isguard: true,
-					isdual: isdual,
-					isreduce_stg: isreduce_stg,
+					isdual,
+					is_multiple,
+					isreduce_stg,
 					iscursebreak: true,
 					turn: turn,
 					lim_turn: turn,
@@ -1289,6 +1310,58 @@ var SpSkill = {
 		}
 		return true;
 	},
+	// -----------------------------
+	// AS変化スキル
+	"ss_aseffectadd": function (fld, n, cobj, params){
+		var turn = params[0];
+		var doobj = params[1];
+		
+		var onMissOrIgnoreAnswer = (f, oi, doobj, is_nocollect) => {
+			var targs = Object.keys(doobj).filter(e => e === "no-excellent" || (is_nocollect && e === "no-collect"));
+			targs.forEach(e => {
+				ss_object_done(f, oi, doobj[e]);
+			});
+		}
+		
+		// 継続効果追加
+		ss_continue_effect_add(fld, {
+			type: "aseffect",
+			turn: turn,
+			lim_turn: turn,
+			doObject: doobj,
+			effect: function(f, oi, ceff, is_ssfin){
+				fld.log_push(`Unit[${n+1}]: AS変化: 残り${ceff.lim_turn}T`);
+			},
+			effectOnAnswer: (f, oi, ceff) => {
+				var ignoreAnswer = f.Status.ignoreAnswerSkill;	
+				if(ignoreAnswer){
+					// AS逃し
+					onMissOrIgnoreAnswer(f, oi, ceff.doObject, false);
+				} else {
+					// 正答
+					var time = Number($("#answer_time_sel").val());
+					var sel_sec = (4 - time);
+					Object.keys(ceff.doObject)
+						.filter(e => {
+							var n = Number(e);
+							return n > 0 && sel_sec < n;
+						})
+						.map(e => ceff.doObject[e])
+						.forEach(e => ss_object_done(f, oi, e))
+					
+					console.log(f, time, sel_sec);
+				}
+			},
+			effectOnMissAnswer: (f, oi, ceff) => {
+				// 誤答
+				onMissOrIgnoreAnswer(f, oi, ceff.doObject, true);
+			},
+		});
+		fld.log_push(`Unit[${n+1}]: AS変化付与`);
+		
+		return true;
+	},
+	
 	// -----------------------------
 	// 全体状態異常無効
 	"ss_absattack_disable": function (fld, n, cobj, params) {

@@ -140,6 +140,14 @@ function _s_enemy_attack(fld, dmg, ei, ai, is_dmg_const, ignore_guard) {
 		if (p_guard.attr[e.attr] > 0 && !ignore_guard) {
 			p_relief = p_guard.rate;
 		}
+		// 乗算効果の軽減倍率を取得
+		var mlp_guards = now.turn_effect
+			.filter(et => {
+				return (et.isguard && et.attr[e.attr] && et.is_multiple);
+			})
+			.map(et => et.rate / 100 );
+		p_relief += ArrayMath.sum(mlp_guards);
+		
 		// 攻撃前スキル(主に弱体化)確認
 		$.each(now.turn_effect, function (i, e) {
 			if(e.bef_damage){
@@ -152,7 +160,7 @@ function _s_enemy_attack(fld, dmg, ei, ai, is_dmg_const, ignore_guard) {
 		// 乱数
 		var rnd = damage_rand(fld);
 		// 仮ダメージ
-		var dmg = Math.floor(dmg * (1 - relief) * (1 - p_relief) * rnd * rate);
+		var dmg = Math.floor(dmg * Math.max(1 - relief, 0) * Math.max(1 - p_relief, 0) * rnd * rate);
 		// ダメージブロックなどの確認
 		$.each(now.turn_effect, function (i, e) {
 			if (e.on_damage) {

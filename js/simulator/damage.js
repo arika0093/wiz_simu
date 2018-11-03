@@ -85,7 +85,7 @@ function calculate_damage(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd,
                           i, e, is_ss, var_num, is_simulate, is_noenhance) {
 	var d = 0;
 	// エンハ
-	var {as_enh, ss_enh, bss_enh, rfm_enh, total} = getEnhanceRate(now);
+	var {as_enh, ss_enh, bss_enh, rfm_enh, ass_enh, total} = getEnhanceRate(now);
 	// 乱数決定
 	var rnd = 0;
 	if(!now.atk_rand){
@@ -147,7 +147,7 @@ function calculate_damage(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd,
 		damage_withoutskill: d_ws,
 		base_rate: rate,
 		as_enh: as_enh,
-		sst_enh: !is_noenhance ? (ss_enh + bss_enh + rfm_enh) : 0,
+		sst_enh: !is_noenhance ? (ss_enh + bss_enh + rfm_enh + ass_enh) : 0,
 		final_rate: (rate + (is_noenhance ? 0 : total)),
 		p_chain: pc,
 		random: rnd,
@@ -161,8 +161,9 @@ function getEnhanceRate(now){
 	var ss_enh = now.ss_enhance ? Number(now.ss_enhance.toFixed(2)) : 0;
 	var bss_enh = now.ss_boost_enhance ? Number(now.ss_boost_enhance.toFixed(2)) : 0;
 	var rfm_enh = now.ss_reinforcement_atk ? Number(now.ss_reinforcement_atk.toFixed(2)) : 0;
-	var total = ArrayMath.sum([as_enh, ss_enh, bss_enh, rfm_enh]);
-	return {as_enh, ss_enh, bss_enh, rfm_enh, total};
+	var ass_enh = now.ss_aseffect_atk ? Number(now.ss_aseffect_atk.toFixed(2)) : 0;
+	var total = ArrayMath.sum([as_enh, ss_enh, bss_enh, rfm_enh, ass_enh]);
+	return {as_enh, ss_enh, bss_enh, rfm_enh, ass_enh, total};
 }
 
 // 攻撃時発動スキルのチェック

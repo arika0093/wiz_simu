@@ -274,7 +274,7 @@ function card_dmg_relief(fld, card, now, t_attr, t_spec = -1) {
 		}
 	}
 	$.each(now.turn_effect, function (_i, e) {
-		if (e.isguard && e.attr[t_attr]) {
+		if (e.isguard && e.attr[t_attr] && !e.is_multiple) {
 			r += e.rate;
 		}
 	});
