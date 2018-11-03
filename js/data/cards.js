@@ -118658,7 +118658,7 @@ Cards = [{
 	},
 	ss1: {
 		desc: "<AS特殊変化>3ターンの間、解答時間に特殊な効果を付与(2秒未満で軽減(25%))。エクセレント解答でない場合、味方のMAXHPを10％消費",
-		turn: 0,
+		turn: 6,
 		proc: [ss_aseffectadd(3, {
 			"2": ss_attr_guard([1,1,1,1,1], 0.25, 1, "aseffect"),
 			"no-excellent": ss_consume_all(0.1),
@@ -118682,7 +118682,7 @@ Cards = [{
 	},
 	ss2: {
 		desc: "3ターンの間、解答時間に特殊な効果を付与(2秒未満で軽減(25%)、さらに1秒未満で回復(15%))。エクセレント解答でない場合、味方のMAXHPを10％消費",
-		turn: 0,
+		turn: 9,
 		proc: [ss_aseffectadd(3, {
 			"1": ss_heal(0.15),
 			"2": ss_attr_guard([1,1,1,1,1], 0.25, 1, "aseffect"),

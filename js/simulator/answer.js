@@ -42,6 +42,7 @@ function panelAnswerWithParam(fld, attr, p_chained) {
 	// AS変化などの適用
 	{
 		ss_continue_effect_check(fld, false, "effectOnAnswer");
+		fld.Allys.Now.forEach((now, i) => turn_effect_check_onlyfirst(fld, now, i) );
 	}
 	// 解答した時点で生存している敵にフラグを建てる（タゲ異常パニック用）
 	{
@@ -199,6 +200,7 @@ function panelAnswerMissWithParam(fld) {
 	actl_save_answer_miss(fld);
 	// 誤答時処理
 	ss_continue_effect_check(fld, false, "effectOnMissAnswer");
+	fld.Allys.Now.forEach((now, i) => turn_effect_check_onlyfirst(fld, now, i) );
 	// 誤答処理
 	var cg = fld.Status.chain_awguard;
 	if (cg > 0){
