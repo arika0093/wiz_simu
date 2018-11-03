@@ -204,11 +204,13 @@ function s_enemy_attack(dmg, tnum, atkn, tgtype) {
 		}
 		
 		// 攻撃対象取得
-		var tg = gen_enemytarget_array(fld, tnum, atkn, tgtype, nows);
+		var e = GetNowBattleEnemys(fld)[n];
+		var tg = gen_enemytarget_array(fld, e, tnum, atkn, tgtype, nows);
+		var dmgup = Math.min(tnum, fld.Allys.Deck.length) / tg[0].length;
 		// 攻撃
 		for (var i = 0; i < tg.length; i++) {
 			for (var j = 0; j < tg[i].length; j++) {
-				_s_enemy_attack(fld, dmg * 2, n, tg[i][j]);
+				_s_enemy_attack(fld, dmg * 2 * dmgup, n, tg[i][j]);
 			}
 		}
 	}, makeDesc("攻撃"));
@@ -222,7 +224,9 @@ function s_enemy_attack_attrsp(dmg_s, dmg_n, attr, tnum, atkn, tgtype) {
 			(tnum < fld.Allys.Deck.length ? tnum : "全") + "体属性特攻" +
 			(atkn > 1 ? atkn + "連撃(" : "攻撃(") + dmg_s + ")");
 		// 攻撃対象取得
-		var tg = gen_enemytarget_array(fld, tnum, atkn, tgtype, nows);
+		var e = GetNowBattleEnemys(fld)[n];
+		var tg = gen_enemytarget_array(fld, e, tnum, atkn, tgtype, nows);
+		var dmgup = Math.min(tnum, fld.Allys.Deck.length) / tg[0].length;
 		// 攻撃
 		for (var i = 0; i < tg.length; i++) {
 			for (var j = 0; j < tg[i].length; j++) {
@@ -234,7 +238,7 @@ function s_enemy_attack_attrsp(dmg_s, dmg_n, attr, tnum, atkn, tgtype) {
 				}else{
 					var dmg = (attr[cd.attr[0]]==1) ? dmg_s : dmg_n;
 				}
-				_s_enemy_attack(fld, dmg * 2, n, targ);
+				_s_enemy_attack(fld, dmg * 2 * dmgup, n, targ);
 			}
 		}
 	}, makeDesc("属性特攻",{attr:0,dmg_s:0,dmg_n:0,tnum:0,atkn:0}));
@@ -248,7 +252,8 @@ function s_enemy_attack_ratio(rate, tnum, tgtype) {
 			(tnum < fld.Allys.Deck.length ? tnum : "全") + "体割合攻撃(" +
 			(rate * 100) + "%)");
 		// 攻撃対象取得
-		var tg = gen_enemytarget_array(fld, tnum, 1, tgtype, nows);
+		var e = GetNowBattleEnemys(fld)[n];
+		var tg = gen_enemytarget_array(fld, e, tnum, 1, tgtype, nows);
 		// 攻撃
 		for (var i = 0; i < tg.length; i++) {
 			for (var j = 0; j < tg[i].length; j++) {
@@ -301,11 +306,13 @@ function s_enemy_attack_ignoreguard(dmg, tnum, atkn, tgtype) {
 			(tnum < fld.Allys.Deck.length ? tnum : "全") + "体防御無視" +
 			(atkn > 1 ? atkn + "連撃(" : "攻撃(") + dmg + ")");
 		// 攻撃対象取得
-		var tg = gen_enemytarget_array(fld, tnum, atkn, tgtype, nows);
+		var e = GetNowBattleEnemys(fld)[n];
+		var tg = gen_enemytarget_array(fld, e, tnum, atkn, tgtype, nows);
+		var dmgup = Math.min(tnum, fld.Allys.Deck.length) / tg[0].length;
 		// 攻撃
 		for (var i = 0; i < tg.length; i++) {
 			for (var j = 0; j < tg[i].length; j++) {
-				_s_enemy_attack(fld, dmg * 2, n, tg[i][j], false, true);
+				_s_enemy_attack(fld, dmg * 2 * dmgup, n, tg[i][j], false, true);
 			}
 		}
 	}, makeDesc("防御無視攻撃"));
@@ -356,7 +363,8 @@ function s_enemy_absorb(ratiorate, tnum, healvalue) {
 			(tnum < fld.Allys.Deck.length ? tnum : "全") + "体割合攻撃(" +
 			(ratiorate * 100) + "%)");
 		// 攻撃対象取得
-		var tg = gen_enemytarget_array(fld, tnum, 1, false, nows);
+		var e = GetNowBattleEnemys(fld)[n];
+		var tg = gen_enemytarget_array(fld, e, tnum, 1, false, nows);
 		// 攻撃
 		for (var i = 0; i < tg.length; i++) {
 			for (var j = 0; j < tg[i].length; j++) {
@@ -396,7 +404,8 @@ function s_enemy_delay_attack(dmg, tnum, atkn) {
 // (fld, 説明, 種類, ターン数, 対象, 発動敵番号, 敵のカウンター攻撃かどうか, 追加内容, 異常無効貫通)
 function s_enemy_abstate_attack(fld, desc, type, turn, target, ei, is_counter, f_obj, disable_guard) {
 	var rst = [];
-	var tg = !target.length ? gen_enemytarget_array(fld, target, 1, false)[0] : target;
+	var e = GetNowBattleEnemys(fld)[ei];
+	var tg = !target.length ? gen_enemytarget_array(fld, e, target, 1, false)[0] : target;
 	f_obj = f_obj || {};
 	// effect add
 	for (var i = 0; i < tg.length; i++) {
@@ -692,7 +701,8 @@ function s_enemy_healreverse(rate, tnum) {
 function s_enemy_steal(dmg, tnum) {
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 		// 攻撃対象の取得
-		var tgs = gen_enemytarget_array(fld, tnum, 1, false)[0];
+		var e = GetNowBattleEnemys(fld)[n];
+		var tgs = gen_enemytarget_array(fld, e, tnum, 1, false)[0];
 		// 攻撃部分
 		var sea = s_enemy_attack(dmg, tgs, 1, false);
 		sea.move(fld, n, pnow, is_counter);
@@ -746,7 +756,8 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown, isStatusDownOnly) {
 	var txtype = isStatusDownOnly ? "ステータス減少" : "呪い";
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
 		atkdown = atkdown || 0;
-		var tg = !tnum.length ? gen_enemytarget_array(fld, tnum, 1, false)[0] : tnum;
+		var e = GetNowBattleEnemys(fld)[n];
+		var tg = !tnum.length ? gen_enemytarget_array(fld, e, tnum, 1, false)[0] : tnum;
 		for (var i = 0; i < tg.length; i++) {
 			var card = fld.Allys.Deck[tg[i]];
 			var now = fld.Allys.Now[tg[i]];
@@ -819,7 +830,8 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown, isStatusDownOnly) {
 // 効果解除呪い(対象数)
 function s_enemy_cursed_break(tnum, breaks) {
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
-		var tg = !tnum.length ? gen_enemytarget_array(fld, tnum, 1, false)[0] : tnum;
+		var e = GetNowBattleEnemys(fld)[n];
+		var tg = !tnum.length ? gen_enemytarget_array(fld, e, tnum, 1, false)[0] : tnum;
 		for (var i = 0; i < tg.length; i++) {
 			var card = fld.Allys.Deck[tg[i]];
 			var now = fld.Allys.Now[tg[i]];
@@ -871,7 +883,8 @@ function s_enemy_attrreverse(t, tnum){
 		}
 		
 		// 攻撃ターゲットを取得
-		var tg = gen_enemytarget_array(fld, tnum, 1, false)[0];
+		var e = GetNowBattleEnemys(fld)[n];
+		var tg = gen_enemytarget_array(fld, e, tnum, 1, false)[0];
 		// 状態異常付与(解除時の処理, etc)
 		var rst = s_enemy_abstate_attack(
 			fld, "属性反転",
@@ -1593,6 +1606,7 @@ function s_enemy_escape(t){
 				var en = GetNowBattleEnemys(fl, oi);
 				if(teff.lim_turn == 0){
 					en.nowhp = 0;
+					en.on_dead_execed = true; // 死亡時行動は発動させない
 					fld.log_push(`Enemy[${(oi + 1)}]: 逃走`);
 				}
 			},
@@ -1757,7 +1771,7 @@ function s_enemy_continue_damage(turn, initialdamage, continuedamage){
 	continuedamage *= 2;
 	return m_create_enemy_move(function (fld, n) {
 		fld.log_push("Enemy[" + (n + 1) + "]: 継続ダメージ(ダメージ:" + initialdamage + ", " + continuedamage + ")");
-		var tg = gen_enemytarget_array(fld, 5, 1, false);
+		var tg = gen_enemytarget_array(fld, null, 5, 1, false);
 		for (var i = 0; i < tg[0].length; i++) {
 			_s_enemy_attack(fld, initialdamage, n, tg[0][i], false);
 			// スキルカウンターを有効に
@@ -1775,7 +1789,7 @@ function s_enemy_continue_damage(turn, initialdamage, continuedamage){
 				if (!f.Status.finish && !is_ssfin) {
 					var f_copy = $.extend(true, {}, f);
 					f_copy.Enemys.Data[oi] = ceff.now_state;
-					var tg = gen_enemytarget_array(fld, 5, 1, false);
+					var tg = gen_enemytarget_array(f, null, 5, 1, false);
 					for (var i = 0; i < tg[0].length; i++) {
 						_s_enemy_attack(f_copy, continuedamage, n, tg[0][i], false);
 					}

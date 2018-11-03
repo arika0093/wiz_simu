@@ -104,7 +104,7 @@ function allkill_check(fld, is_ssfinish) {
 }
 
 // 敵攻撃の対象配列を生成する
-function gen_enemytarget_array(fld, tnum, atkn, tgtype, nows) {
+function gen_enemytarget_array(fld, enemy, tnum, atkn, tgtype, nows) {
 	var gen_ar = [];
 	var deck_n = fld.Allys.Deck.length;
 	var tgtype_isfunc = (tgtype !== true && tgtype);
@@ -115,6 +115,24 @@ function gen_enemytarget_array(fld, tnum, atkn, tgtype, nows) {
 			continue;
 		}
 		var tg_arr = [];
+		
+		// 決闘状態になっているなら、その相手だけを返す
+		var is_e_duel = enemy ? enemy.turn_effect.some(e => e.type === "duel") : false;
+		if(is_e_duel){
+			var duel_ally_index = fld.Allys.Now
+				.map((e, i) => {
+					var is_duel = e.turn_effect.some(t => {
+						return t.type === "duel";
+					});
+					return is_duel ? i : -1
+				})
+				.filter(e => e >= 0);
+			if(duel_ally_index.length > 0){
+				gen_ar[an] = duel_ally_index;
+				continue;
+			}
+		}
+
 		// 生きてる味方を追加
 		for (var i = 0; i < deck_n; i++) {
 			var nw = nows ? nows[i] : fld.Allys.Now[i];
@@ -355,6 +373,8 @@ function enemy_check_ondead(fld){
 			});
 			e.on_dead_execed = true;
 			ondead_exist = true;
+			// 効果解除
+			turneff_allbreak_enemy(fld, e.turn_effect, i);
 		}
 	});
 	return ondead_exist;

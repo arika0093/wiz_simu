@@ -1744,6 +1744,81 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
+	// 決闘
+	"ss_duelmode": function (fld, n, cobj, params) {
+		// おい、デュエルしろよ
+		var t = params[0];
+		var guard_rate = params[1];
+		var guard_attr = params[2];
+		// 対象の敵1体を取得
+		var en = ss_get_targetenemy(fld, cobj, n, undefined)[0];
+		var enemy_index = GetNowBattleEnemys(fld).indexOf(en);
+		// 決闘効果を付与
+		en.turn_effect.push({
+			desc: `決闘(to:Unit${n+1})`,
+			type: "duel",
+			icon: "duel",
+			isdual: false,
+			turn: t,
+			lim_turn: t,
+			targetUnit: n,
+			effect: function (f, ei, teff, state, is_t, is_b, is_ss) {
+				// 発動した味方が死んでいるなら、効果を解除する
+				var now_ = f.Allys.Now[n];
+				if(now_.nowhp <= 0){
+					teff.lim_turn = 0;
+				}
+			},
+		});
+
+		// 自身にも決闘効果を付与
+		var now = fld.Allys.Now[n];
+		now.turn_effect.push({
+			desc: `決闘(to:Enemy${enemy_index+1})`,
+			type: "duel",
+			icon: "duel",
+			isdual: false,
+			iscursebreak: false,
+			turn: t,
+			lim_turn: t,
+			targetUnit: n,
+			effectAlways: true,
+			effect: function (f, ei, teff, state, is_t, is_b, is_ss) {
+				// 発動した敵が死んでいるなら、効果を解除する
+				var mv = en.move;
+				if(en.nowhp <= 0 && (!mv || (mv.on_dead && !en.on_dead_execed))){
+					teff.lim_turn = 0;
+				}
+			},
+		});
+		// 味方全体に軽減効果も付与
+		if(guard_rate > 0){
+			var attrstr = get_attr_string(guard_attr, "/");
+			var nows = fld.Allys.Now;
+			for (var i = 0; i < nows.length; i++) {
+				var now = nows[i];
+				if (now.nowhp > 0) {
+					now.turn_effect.push({
+						effect: function(){ },
+						desc: attrstr + "軽減[決闘](" + guard_rate * 100 + "%)",
+						type: "ss_attr_guard_duel",
+						icon: "attr_guard",
+						isguard: true,
+						iscursebreak: false,    // 呪い解除されない
+						turn: t,
+						lim_turn: t,
+						attr: guard_attr,
+						rate: guard_rate * 100,
+						isreinforce: false,
+					});
+				}
+			}
+		}
+		
+		fld.log_push(`Unit[${(n + 1)}]: 決闘付与(to: Enemy[${enemy_index+1}])`);
+		return true;
+	},
+	// -----------------------------
 	// SSコピー
 	"ss_latest_copy": function (fld, n, cobj, params) {
 		if (fld.Status.latest_ss) {

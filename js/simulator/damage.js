@@ -29,8 +29,11 @@ function attack_enemy(fld, enemy, now, atk_atr, rate, atkn, pn, ch, rnd, i, e, i
 	
 	// HPが0になったタイミングに1度だけ処理
 	if (bef_hp <= d && bef_hp > 0) {
-		// 効果解除
-		turneff_allbreak_enemy(fld, enemy.turn_effect, e);
+		// 死亡時行動がないなら
+		if(!enemy.move || !enemy.move.on_dead){
+			// 効果解除
+			turneff_allbreak_enemy(fld, enemy.turn_effect, e);
+		}
 		// 撃破カウント
 		fld.Status.total_kill += 1;
 		// AS撃破ならOverkillDmgに加算しておく

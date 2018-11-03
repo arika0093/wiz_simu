@@ -299,6 +299,19 @@ function ss_QuizcorrectDamage_all(max_r, max_c, attrs) {
 }
 
 /**
+ * 捕食大魔術【単体】 デッキ内の(自身以外の)正解数カウントを全て消費して効果値を変動させる。
+ * max_r:   効果値の最大値。
+ * max_c:   効果値が最大になる正解数カウントの合計。
+ * attrs:   攻撃属性
+ **/
+function ss_QuizcorrectDamage_s(max_r, max_c, attrs) {
+	return ss_toselect_single(
+		ss_QuizcorrectDamage_all(max_r, max_c, attrs)
+	);
+}
+
+
+/**
  * パネル爆破大魔術【全体】 現在のパネルをすべて消費して、その属性に応じたダメージを与える。
  * rate:    攻撃1Hitにおける効果値。
  **/
@@ -309,6 +322,16 @@ function ss_PanelBurningDamage_all(rate) {
 		target: "all",
 		p1: rate,
 	});
+}
+
+/**
+ * パネル爆破大魔術【単体】 現在のパネルをすべて消費して、その属性に応じたダメージを与える。
+ * rate:    攻撃1Hitにおける効果値。
+ **/
+function ss_PanelBurningDamage_s(rate) {
+	return ss_toselect_single(
+		ss_PanelBurningDamage_all(rate)
+	);
 }
 
 /**
@@ -1423,6 +1446,24 @@ function ss_provocate(rate, turn) {
 		target: "own",
 		p1: rate,
 		p2: turn,
+	});
+}
+
+/**
+ * 決闘効果を自身と敵1体に付与する
+ * turn: 効果ターン数
+ * rate: 軽減割合。(軽減効果がない場合は0を指定)
+ * attr: 軽減属性。(軽減効果がない場合は[0,0,0,0,0]を指定)
+ **/
+function ss_duelmode(turn, rate, attr) {
+	return ss_template({
+		name: "ss_duelmode",
+		type: "turn_effect",
+		subtype: "duelmode",
+		target: "single",
+		p1: turn,
+		p2: rate,
+		p3: attr,
 	});
 }
 

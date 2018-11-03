@@ -589,6 +589,22 @@ function Heal(rate, attr, ch) {
 	];
 }
 
+// 自己回復(rate: 割合, ch: チェイン)
+function SelfHeal(rate, ch) {
+	chain = ch ? ch : 0;
+	return [
+		{
+			type: "heal",
+			target: "self",
+			rate: rate,
+			chain: chain,
+			attr: [1,1,1,1,1],
+			spec: create_specs(1),
+			cond: always_true().cond,
+		}
+	];
+}
+
 // 種族回復(rate: 割合, attr: 対象属性, spec: 対象種族, ch: チェイン)
 function SpecHeal(rate, attr, spec, ch) {
 	chain = ch ? ch : 0;
