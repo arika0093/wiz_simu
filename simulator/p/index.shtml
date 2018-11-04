@@ -463,7 +463,7 @@
     <script charset="UTF-8" src="/js/simulator/special.js?       <!--#flastmod virtual='/js/simulator/special.js'-->"></script>
     <script charset="UTF-8" src="/js/simulator/turneffect.js?    <!--#flastmod virtual='/js/simulator/turneffect.js'-->"></script>
     <script charset="UTF-8" src="/js/simulator/actionlog.js?     <!--#flastmod virtual='/js/simulator/actionlog.js'-->"></script>
-	<script charset="UTF-8" src="/js/simulator/laptime.js?       <!--#flastmod virtual='/js/simulator/laptime.js'-->"></script>
+	<script charset="UTF-8" src="/js/data/laptime.js?       <!--#flastmod virtual='/js/simulator/laptime.js'-->"></script>
 	<!-- その他 -->
 	<script charset="UTF-8" src="/js/autorun/repeat.js"></script>
 	<script charset="UTF-8" src="/js/autorun/brute4ce.js"></script>
