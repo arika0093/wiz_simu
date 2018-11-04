@@ -178,11 +178,6 @@ function panelAnswerWithParam(fld, attr, p_chained) {
 				}
 			}
 		});
-		guessLapTimes(fld, {
-			// ASに対するカウンターの処理
-			target: "enemy/as_counter",
-			counter_count,
-		});
 		
 		// 敵死亡時処理の確認
 		enemy_check_ondead(fld);

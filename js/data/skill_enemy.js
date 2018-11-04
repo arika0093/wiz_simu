@@ -221,6 +221,14 @@ function s_enemy_attack(dmg, tnum, atkn, tgtype) {
 				_s_enemy_attack(fld, dmg * 2 * dmgup, n, tg[i][j]);
 			}
 		}
+		
+		// LapTime Guessing
+		guessLapTimes(fld, {
+			target: "enemy/attack",
+			attackNum: tg.length,
+			targetNum: tnum,
+		});
+		
 	}, makeDesc("攻撃"));
 }
 
@@ -249,6 +257,13 @@ function s_enemy_attack_attrsp(dmg_s, dmg_n, attr, tnum, atkn, tgtype) {
 				_s_enemy_attack(fld, dmg * 2 * dmgup, n, targ);
 			}
 		}
+		// LapTime Guessing
+		guessLapTimes(fld, {
+			target: "enemy/attack_attrsp",
+			attackNum: tg.length,
+			targetNum: tnum,
+		});
+		
 	}, makeDesc("属性特攻",{attr:0,dmg_s:0,dmg_n:0,tnum:0,atkn:0}));
 }
 
@@ -275,6 +290,13 @@ function s_enemy_attack_ratio(rate, tnum, tgtype) {
 				}
 			}
 		}
+		// LapTime Guessing
+		guessLapTimes(fld, {
+			target: "enemy/attack_ratio",
+			attackNum: tg.length,
+			targetNum: tnum,
+		});
+		
 	}, makeDesc("割合ダメージ"));
 }
 
@@ -294,6 +316,11 @@ function s_enemy_attack_deadgrudge(r1, r2, r3, tgtype, tnum) {
 			}
 		});
 		fld.log_push("Enemy[" + (n + 1) + "]: 亡者の怨念発動");
+		// LapTime Guessing
+		guessLapTimes(fld, {
+			target: "enemy/attack_deadgrudge",
+		});
+		
 		return s_enemy_attack(rates[deadnum], tnum, 1, tgtype).move(fld, n, nows, is_counter);
 	}, makeDesc("亡者の怨念"), {
 		r1,
@@ -323,6 +350,13 @@ function s_enemy_attack_ignoreguard(dmg, tnum, atkn, tgtype) {
 				_s_enemy_attack(fld, dmg * 2 * dmgup, n, tg[i][j], false, true);
 			}
 		}
+		// LapTime Guessing
+		guessLapTimes(fld, {
+			target: "enemy/attack_ignoreguard",
+			targetNum: tg.length,
+			attackNum: atkn,
+		});
+		
 	}, makeDesc("防御無視攻撃"));
 }
 
@@ -358,6 +392,12 @@ function s_enemy_recoilAttack(dmg, tnum, weak_attr, weak_rate, weak_turn){
 			// 多段カウンターを無効に
 			now.flags.damage_hits[n] = 0;
 		})
+		// LapTime Guessing
+		guessLapTimes(fld, {
+			target: "enemy/recoilAttack",
+			targetNum: tnum,
+		});
+		
 	}, makeDesc("反動攻撃"));
 	return true;
 	
@@ -391,6 +431,15 @@ function s_enemy_absorb(ratiorate, tnum, healvalue) {
 		var heal_v = healvalue;
 		e.nowhp = Math.min(e.nowhp +heal_v, e.hp);
 		fld.log_push("Enemy[" +(n +1) + "]: HP回復(" +heal_v + ")");
+		
+		// LapTime Guessing
+		guessLapTimes(fld, {
+			// 割合と同じと思われるので割合にredirect
+			target: "enemy/attack_ratio",
+			target_subtype: "absorb",
+			targetNum: tnum,
+		});
+		
 	}, makeDesc("吸収"));
 }
 
@@ -482,10 +531,15 @@ function s_enemy_poison(d, tnum, t) {
 					if (is_t && !is_ss && state != "overlay") {
 						f.log_push("Unit[" + (oi + 1) + "]: 毒(" + d + "ダメージ)");
 						damage_ally(f, d, oi, true);
+						// 継続ダメージの分もGLTに追加
+						guessLapTimes(fld, { target: "enemy/poison/effect", });
 					}
 				},
 			}
 		);
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/poison", });
+		
 	}, makeDesc("毒"));
 }
 
@@ -509,6 +563,9 @@ function s_enemy_attr_weaken(attr, rate, tnum, t) {
 				},
 			}
 		);
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/attr_weaken", });
+		
 	}, makeDesc("弱体化"));
 }
 
@@ -522,6 +579,9 @@ function s_enemy_as_sealed(tnum, t) {
 				}
 			}
 		);
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/as_sealed", });
+		
 	}, makeDesc("AS封印"));
 }
 
@@ -533,6 +593,9 @@ function s_enemy_ss_sealed(tnum, t) {
 				ss_disabled: true,
 			}
 		);
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/ss_sealed", });
+		
 	}, makeDesc("SS封印"));
 }
 
@@ -550,6 +613,9 @@ function s_enemy_all_sealed(tnum, t) {
 				ss_disabled: true,
 			}
 		);
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/all_sealed", });
+		
 	}, makeDesc("封印"));
 }
 
@@ -622,6 +688,9 @@ function s_enemy_fear(tnum, as_seal_p, ss_seal_p, attr, attr_sub) {
 				is_disabled: false,
 			}
 		);
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/fear", });
+		
 	}, makeDesc("恐怖"));
 }
 
@@ -641,6 +710,9 @@ function s_enemy_panicshout(damage, tnum, t) {
 					panic_damage: damage,
 				}
 			);
+			// LapTime Guessing
+			guessLapTimes(fld, { target: "enemy/panicshout", target_subtype: "damage" });
+
 		}, makeDesc("パニックシャウト"));
 	}else{
 		// タゲ異常パニック
@@ -651,6 +723,9 @@ function s_enemy_panicshout(damage, tnum, t) {
 					panic_target: true,
 				}
 			);
+			// LapTime Guessing
+			guessLapTimes(fld, { target: "enemy/panicshout", target_subtype: "targetting" });
+
 		}, makeDesc("パニックシャウト タゲ異常"));
 	}
 }
@@ -670,6 +745,9 @@ function s_enemy_deathlimit(tnum, limit) {
 				},
 			}
 		);
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/deathlimit" });
+
 	}, makeDesc("死の秒針"));
 }
 
@@ -702,6 +780,9 @@ function s_enemy_healreverse(rate, tnum) {
 				isabstate: false,
 			}
 		);
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/healreverse" });
+		
 	}, makeDesc("回復反転"));
 }
 
@@ -734,6 +815,9 @@ function s_enemy_steal(dmg, tnum) {
 						addQuizCorrectNum(fld, oi, 999); // 盗むでMAXまで上昇するかは要検証
 						nows[oi].ss_current = 999;
 						legend_timing_check(f, cards, nows, oi, false);
+						// 盗む状態から復帰したとき
+						guessLapTimes(fld, { target: "enemy/stole/break" });
+						
 					} else {
 						// スキルの溜め状況を0にリセット、L化を解除
 						var card = cards[oi];
@@ -756,6 +840,9 @@ function s_enemy_steal(dmg, tnum) {
 				isabstate: false,
 			}
 		);
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/stole" });
+		
 	}, makeDesc("盗む"));
 }
 
@@ -832,6 +919,12 @@ function s_enemy_cursed(hpdown, tnum, t, atkdown, isStatusDownOnly) {
 		turneff_check_skillcounter(fld);
 		// スキル重複確認
 		turn_effect_check(fld, false);
+		// LapTime Guessing
+		guessLapTimes(fld, {
+			target: "enemy/cursed",
+			target_subtype: isStatusDownOnly ? "statusdown" : "normal",
+		});
+		
 	}, makeDesc(txtype));
 }
 
@@ -862,6 +955,12 @@ function s_enemy_cursed_break(tnum, breaks) {
 		turneff_check_skillcounter(fld);
 		// スキル重複確認
 		turn_effect_check(fld, false);
+		// LapTime Guessing
+		guessLapTimes(fld, {
+			target: "enemy/cursed",
+			target_subtype: "breakeffect",
+		});
+		
 	}, makeDesc("効果解除"));
 }
 
@@ -949,6 +1048,9 @@ function s_enemy_attrreverse(t, tnum){
 				}
 			}
 		}
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/attrreverse" });
+		
 	}, makeDesc("属性反転"));
 }
 
@@ -985,6 +1087,9 @@ function s_enemy_forcedProgress(plt) {
 			e.flags.skill_counter[n] = true;
 		});
 		fld.log_push("Enemy[" + (n + 1) + "]: 強制進行(+" + plt + ")");
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/forcedProgress" });
+		
 	}, makeDesc(`強制進行(+${plt})`, {
 		plus_turn: plt
 	}));
@@ -1017,8 +1122,14 @@ function skill_counter(damage, t) {
 				f.Allys.Now[ai].flags.enemy_counter[ei] = true;
 				f.log_push("Enemy[" + (ei + 1) + "]: スキル反射発動(対象: Unit[" + (ai + 1) + "])");
 				damage_ally(fld, damage, ai, true);
+				
+				// LapTime Guessing
+				guessLapTimes(fld, { target: "enemy/skill_counter/damage" });
 			}
 		});
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/skill_counter" });
+		
 	}, makeDesc("スキル反射"));
 }
 
@@ -1059,8 +1170,15 @@ function skill_counter_func(skill, desc, t, is_tgonly, p1, p2, p3, p4) {
 				$.each(nows, function (i, e) {
 					e.flags.skill_counter = [];
 				});
+				
+				// LapTime Guessing
+				guessLapTimes(fld, { target: "enemy/skill_counter/effect" });
+				
 			}
 		});
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/skill_counter" });
+		
 	}, "スキル反射 :"+desc);
 }
 
@@ -1078,6 +1196,9 @@ function skill_response(skill) {
 			on_ss_invoke: function (f, ei) {
 				f.log_push("Enemy[" + (ei + 1) + "]: SS反応スキル発動");
 				skill.move(f, ei);
+				// LapTime Guessing
+				guessLapTimes(fld, { target: "enemy/skill_responce" });
+				
 			}
 		});
 	}, makeDesc("SS反応"));
@@ -1099,8 +1220,14 @@ function attack_counter(damage, t) {
 			on_attack_damage: function (f, ei, ai) {
 				f.log_push("Enemy[" + (ei + 1) + "]: 物理カウンター発動(対象: Unit[" + (ai + 1) + "])");
 				_s_enemy_attack(f, damage, ei, ai, true);
+				// LapTime Guessing
+				guessLapTimes(fld, { target: "enemy/attack_counter/damage" });
+				
 			}
 		});
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/attack_counter" });
+		
 	}, makeDesc("物理カウンター"));
 }
 
@@ -1124,8 +1251,17 @@ function attack_counter_dual(damage, t) {
 				for (var i = 0; i < atk_ct; i++) {
 					_s_enemy_attack(f, damage, ei, ai, true);
 				}
+				// LapTime Guessing
+				guessLapTimes(fld, {
+					target: "enemy/attack_counter_dual/damage",
+					hitcount: atk_ct,
+				});
+				
 			}
 		});
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/attack_counter_dual" });
+		
 	}, makeDesc("多段式カウンター"));
 }
 
@@ -1154,6 +1290,9 @@ function damage_block_own(bl, t) {
 				}
 			}
 		});
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/damageblock", target_subtype: "self" });
+		
 	}, makeDesc("単体ダメブロ"));
 }
 
@@ -1164,6 +1303,9 @@ function damage_block_all(bl, t) {
 		for (var i = 0; i < enemys.length; i++) {
 			damage_block_own(bl, t).move(fld, i);
 		}
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/damageblock", target_subtype: "all" });
+		
 	}, makeDesc("全体ダメブロ"));
 }
 
@@ -1200,6 +1342,9 @@ function s_enemy_attrguard_own(attr, rate, turn) {
 			}
 		});
 		fld.log_push("Enemy[" + (n + 1) + "]: [" + attr_text + "]属性ガード(" + (rate * 100) + "%)");
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/attrguard", target_subtype: "self" });
+		
 	}, makeDesc("単体軽減"));
 }
 
@@ -1210,6 +1355,9 @@ function s_enemy_attrguard_all(attr, rate, turn) {
 		for (var i = 0; i < enemys.length; i++) {
 			s_enemy_attrguard_own(attr, rate, turn).move(fld, i);
 		}
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/attrguard", target_subtype: "all" });
+		
 	}, makeDesc("全体軽減"));
 }
 
@@ -1257,6 +1405,9 @@ function s_enemy_attrIncreaseGuard_own(attr, up_rate, up_max, turn){
 			}
 		});
 		fld.log_push("Enemy[" + (n + 1) + "]: [" + attr_text + "]属性免疫発動(max: " + (up_max * 100) + "%/" + turn + "t)");
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/attrIncreaseGuard", target_subtype: "self" });
+		
 	}, makeDesc("属性免疫[単体]"));
 }
 
@@ -1272,6 +1423,9 @@ function s_enemy_attrIncreaseGuard_all(attr, up_rate, up_max, turn){
 		for (var i = 0; i < enemys.length; i++) {
 			inc_guard.move(fld, i);
 		}
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/attrIncreaseGuard", target_subtype: "all" });
+		
 	}, makeDesc("属性免疫[全体]"));
 }
 
@@ -1308,6 +1462,9 @@ function s_enemy_attr_absorb(attr, rate, turn) {
 			}
 		});
 		fld.log_push("Enemy[" + (n + 1) + "]: " + attr_text + "吸収(" + (rate * 100) + "%/" + turn + "t)");
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/attr_absorb", target_subtype: "self" });
+		
 	}, makeDesc("属性吸収"));
 }
 
@@ -1319,6 +1476,9 @@ function s_enemy_attr_absorb_all(attr, rate, turn) {
 		for (var i = 0; i < enemys.length; i++) {
 			absorb.move(fld, i);
 		}
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/attr_absorb", target_subtype: "all" });
+		
 	}, makeDesc("属性吸収[全体]"));
 }
 
@@ -1366,6 +1526,9 @@ function s_enemy_barrier_own(dmg, turn) {
 			}
 		});
 		fld.log_push("Enemy[" + (n + 1) + "]: バリアウォール(" + dmg + "/" + turn + "t)");
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/barrier", target_subtype: "self" });
+		
 	}, makeDesc("バリアウォール[単]"));
 }
 
@@ -1431,6 +1594,9 @@ function s_enemy_barrier_all(dmg, turn) {
 			enemys[i].turn_effect.push(barr_all);
 		}
 		fld.log_push("Enemy[" + (n + 1) + "]: バリアウォール[全体](" + dmg + "/" + turn + "t)");
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/barrier", target_subtype: "all" });
+		
 	}, makeDesc("バリアウォール[全]"));
 }
 
@@ -1473,6 +1639,9 @@ function s_enemy_multibarrier_own(dmg, turn) {
 			}
 		});
 		fld.log_push("Enemy[" + (n + 1) + "]: 多層バリア(" + dmg + ")");
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/multibarrier", target_subtype: "self" });
+		
 	}, makeDesc("多層バリア[単]"));
 }
 
@@ -1515,6 +1684,9 @@ function s_enemy_multibarrier_all(dmg, turn) {
 			});
 		}
 		fld.log_push("Enemy[" + (n + 1) + "]: 全体多層バリア(" + dmg + ")");
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/multibarrier", target_subtype: "all" });
+		
 	}, makeDesc("多層バリア[全]"));
 }
 
@@ -1534,6 +1706,9 @@ function s_enemy_taunt(turn) {
 		});
 		$("#attack_target_sel").val(n);
 		fld.log_push("Enemy[" + (n + 1) + "]: 挑発(" + turn + "t)");
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/taunt", target_subtype: "self" });
+		
 	}, makeDesc("挑発"));
 }
 
@@ -1561,6 +1736,9 @@ function impregnable(t) {
 				return 1;
 			}
 		});
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/impregnable", target_subtype: "self" });
+		
 	}, makeDesc("鉄壁"));
 }
 
@@ -1580,6 +1758,9 @@ function s_enemy_division(copyhp) {
 			ens[copyto] = $.extend(true, {}, GetNowBattleEnemys(fld, i));
 			ens[copyto].nowhp = ens[copyto].hp * hprate;
 			fld.log_push("Enemy[" + (n + 1) + "]: 分裂");
+			// LapTime Guessing
+			guessLapTimes(fld, { target: "enemy/division" });
+			
 		});
 		delete push_oncond.argObj;
 
@@ -1619,6 +1800,9 @@ function s_enemy_escape(t){
 				}
 			},
 		});
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/escape" });
+
 	}, makeDesc("逃走準備"));
 }
 
@@ -1633,6 +1817,9 @@ function s_enemy_heal_all(rate) {
 			e.nowhp = Math.min(e.nowhp + heal_v, e.hp);
 			fld.log_push("Enemy[" + (i + 1) + "]: HP回復(" + heal_v + ")");
 		})
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/heal", target_subtype: "all" });
+		
 	}, makeDesc("全体回復"));
 }
 
@@ -1644,6 +1831,9 @@ function s_enemy_heal_own(rate) {
 		var heal_v = e.hp * rate;
 		e.nowhp = Math.min(e.nowhp +heal_v, e.hp);
 		fld.log_push("Enemy[" +(n +1) + "]: HP回復(" +heal_v + ")");
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/heal", target_subtype: "self" });
+		
 	}, makeDesc("単体回復")); 
 }
 
@@ -1658,6 +1848,9 @@ function s_enemy_resurrection(rate) {
 			}
 			fld.log_push("Enemy[" + (i + 1) + "]: 蘇生(" + rate + "%)");
 		})
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/resurrection" });
+
 	}, makeDesc("蘇生"));
 }
 
@@ -1676,6 +1869,9 @@ function s_enemy_force_reservoir_ex(force) {
 			force: force,
 			effect: function () { },
 		});
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/force_reservoir" });
+
 	}, makeDesc("力溜め"));
 }
 
@@ -1693,6 +1889,9 @@ function s_enemy_force_reservoir() {
 			lim_turn: -1,
 			effect: function () { },
 		});
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/force_reservoir" });
+		
 	}, makeDesc("力溜め"));
 }
 
@@ -1714,6 +1913,9 @@ function m_enemy_angry() {
 		if (e.move.on_move_angry) {
 			e.move.m_index = 0;
 		}
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/angry" });
+
 	}, makeDesc("怒り"));
 }
 
@@ -1744,6 +1946,10 @@ function s_enemy_statusup(isall, up_rate, turn, up_hp) {
 		} else {
 			stupfc(n);
 		}
+		
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/statusup" });
+		
 	}, makeDesc(`敵ステータスアップ[${isall ? "全体" : "単体"}]`));
 }
 
@@ -1755,6 +1961,10 @@ function attr_change(attr) {
 		e.attr = attr;
 		fld.log_push("Enemy[" + (n + 1) + "]: 属性変化("
 			+ fld.Constants.Attr[bef] + "→" + fld.Constants.Attr[attr] + ")");
+		
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/attr_change" });
+
 	}, makeDesc("属性変化"));
 }
 
@@ -1767,6 +1977,10 @@ function s_enemy_reverse(rev_i) {
 		bdata.rev_used = n;			// 復活処理を発動させた敵の番号
 		bdata.rev_index = rev_i;	// 復活先の番号
 		bdata.rev_check = false;
+		
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/reverseAtAllDeath" });
+
 	}, makeDesc("全滅時復活"));
 }
 
@@ -1802,9 +2016,15 @@ function s_enemy_continue_damage(turn, initialdamage, continuedamage){
 						_s_enemy_attack(f_copy, continuedamage, n, tg[0][i], false);
 					}
 					fld.log_push("Enemy[" + (n + 1) + "]: 継続ダメージ発動(" + continuedamage + "ダメージ) - 残り" + ceff.lim_turn + "t");
+					
+					// LapTime Guessing
+					guessLapTimes(fld, { target: "enemy/continue_eff/effect" });
 				}
 			}
 		});
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/continue_eff" });
+
 	}, makeDesc("残滅大魔術"));
 }
 
@@ -1823,6 +2043,9 @@ function s_enemy_chain_break() {
 		else {
 			fld.log_push("Enemy[" + (n + 1) + "]: チェイン解除(無効)");
 		}
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/chain_break" });
+		
 	}, makeDesc("チェイン解除"));
 }
 
@@ -1841,6 +2064,9 @@ function s_enemy_chainreduce(ch) {
 		else {
 			fld.log_push("Enemy[" + (n + 1) + "]: チェイン減少(無効)");
 		}
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/chain_reduce" });
+		
 	}, makeDesc("チェイン減少"));
 }
 
@@ -1860,6 +2086,9 @@ function s_enemy_chain_sealed(t) {
 		else {
 			fld.log_push("Enemy[" + (n + 1) + "]: チェイン封印(無効)");
 		}
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/chain_sealed" });
+		
 	}, makeDesc("チェイン封印"));
 }
 
@@ -1885,6 +2114,9 @@ function s_enemy_panelchange(attr) {
 		// 変換処理
 		fld.Status.panel_color = new Array(4).fill(attr);
 		fld.log_push(`Enemy[${(n + 1)}]: パネル変換(${get_attr_string(attr, "/")})`);
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/panel_change" });
+		
 	}, makeDesc("パネル変換"));
 }
 
@@ -1909,6 +2141,9 @@ function s_enemy_panelreserve(attr, turn, added_effects) {
 				ss_object_done(fld, -1, e);
 			})
 			fld.log_push(`Enemy[${(n + 1)}]: パネルリザーブ(${get_attr_string(attr, "/")})`);
+			
+			// LapTime Guessing
+			guessLapTimes(fld, { target: "enemy/panel_reserve/effect" });
 		} 
 		// 最初に一回
 		updatePanel(fld);
@@ -1929,6 +2164,9 @@ function s_enemy_panelreserve(attr, turn, added_effects) {
 			},
 		});
 		
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/panel_reserve" });
+
 	}, makeDesc("パネルリザーブ"));
 }
 
@@ -1958,6 +2196,10 @@ function s_enemy_discharge(tnum, minus_turn) {
 			nows[i].flags.skill_counter[n] = true;
 		});
 		fld.log_push("Enemy[" + (n + 1) + "]: スキルディスチャージ(-" + minus_turn + "t)");
+		
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/discharge" });
+		
 	}, makeDesc("スキルディスチャージ"));
 }
 
@@ -1975,6 +2217,10 @@ function s_enemy_allySkillCharge(tnum, plus_turn) {
 			nows[i].flags.skill_counter[n] = true;
 		});
 		fld.log_push("Enemy[" + (n + 1) + "]: スキルチャージ(+" + plus_turn + "t)");
+		
+		// LapTime Guessing
+		guessLapTimes(fld, { target: "enemy/allySkillCharge" });
+		
 	}, makeDesc("スキルチャージ", {
 		plus_turn
 	}));
