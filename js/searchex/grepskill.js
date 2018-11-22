@@ -550,15 +550,14 @@ function calcPreDamageAndSort(cs){
 		ss.pre_damage = calcDmg();
 	});
 	
-	// ソート仕事してる？
-	console.log(cs.length);
-	
 	// 仮ダメージ順(降順)に並び替え
 	cs.sort((ac, bc) => {
 		var a = ac.disp_ss;
 		var b = bc.disp_ss;
-		if(a.pre_damage > b.pre_damage){ return -1; }
-		if(a.pre_damage < b.pre_damage){ return +1; }
+		var admg = a.pre_damage || 0;
+		var bdmg = b.pre_damage || 0;
+		if(admg > bdmg){ return -1; }
+		if(admg < bdmg){ return +1; }
 		return 0;
 	})
 	return cs;
