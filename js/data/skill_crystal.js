@@ -410,13 +410,13 @@ var Awake_crystal_lists = [{
 	},
 }, {
 	name: "烈眼の欠片(L時味方ATK+500,自傷10%)",
-	imple: Awake_retsugan,
-	param1: 500,
+	imple: Awake_composite,
+	param2: Awake_retsugan(500),
 }, {
 	name: "覇色の結晶(L時HP,ATK+500)",
 	imple: Awake_composite,
 	param2: {
-		name: "L時味方攻撃力アップ",
+		name: "L時味方HP/攻撃力アップ",
 		type: "status_up",
 		attr: [1, 1, 1, 1, 1],
 		spec: create_specs(1),

@@ -311,6 +311,10 @@ var SpSkill = {
 		var cont_r = params[1];
 		var attrs = params[2];
 		var turn = params[3];
+		// SS
+		var card = fld.Allys.Deck[n];
+		var now = fld.Allys.Now[n];
+		var ss = is_legendmode(fld, card, now) ? card.ss2 : card.ss1;
 		// 参照用にコピーを取る
 		var init_now = $.extend(true, {}, fld.Allys.Now[n]);
 		// 普通のダメージ
@@ -324,6 +328,7 @@ var SpSkill = {
 			lim_turn: turn,
 			index: n,
 			effect: function(f, oi, ceff){
+				var en_lived = GetNowBattleEnemys(f).filter(e => e.nowhp > 0).length;
 				// 発動時の攻撃力などをコピーする
 				var eff_now = $.extend(true, {}, f.Allys.Now[n]);
 				f.Allys.Now[oi] = init_now;
@@ -333,6 +338,14 @@ var SpSkill = {
 				ss_object_done(f, n, sda);
 				// コピーを解除
 				f.Allys.Now[oi] = eff_now;
+				// Ch+
+				var en_living = GetNowBattleEnemys(f).filter(e => e.nowhp > 0).length;
+				var addch = en_lived - en_living;
+				if(ss.chadd_killing > 0 && (addch > 0)){
+					fld.Status.chain += addch * ss.chadd_killing;
+					fld.log_push("チェイン付与: +" + addch);
+				}
+				
 				// SS状況を解除
 				var es = GetNowBattleEnemys(f);
 				for (var i = 0; i < es.length; i++) {
@@ -1619,7 +1632,7 @@ var SpSkill = {
 				effect: function () { },
 				before_dead: function (f, oi) {
 					var now = f.Allys.Now[oi];
-					now.nowhp = Math.ceil(now.maxhp * rate);
+					now.nowhp = Math.floor(now.maxhp * rate);
 					f.log_push("Unit[" + (oi + 1) + "]: 起死回生発動");
 				}
 			});

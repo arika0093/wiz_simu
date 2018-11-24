@@ -332,7 +332,7 @@ function Awake_damage_multiple(rate, lowhp) {
 // 烈眼
 function Awake_retsugan(up_atk){
 	return {
-		name: `烈眼の欠片(L時味方ATK+${up_atk},自傷10%)`,
+		name: `烈眼${up_atk > 500 ? "" : "の欠片"}(L時味方ATK+${up_atk},自傷10%)`,
 		type: "status_up",
 		attr: [1, 1, 1, 1, 1],
 		spec: create_specs(1),
