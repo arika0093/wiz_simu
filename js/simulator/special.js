@@ -45,7 +45,6 @@ function ssPushWithParam(fld, n){
 			else {
 				// L状態ならL潜在を解除
 				if (is_l) {
-					minus_legend_awake(fld, fld.Allys.Deck, fld.Allys.Now, n);
 					now.islegend = false;
 					fld.log_push("Unit[" + (n + 1) + "]: Lモード解除");
 				}
