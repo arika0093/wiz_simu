@@ -1,6 +1,6 @@
 {
-   id: "1811ev_h",
-   name: "(18/11)イベントトーナメント覇級",
+   id: "grade19",
+   name: "玖式(トーナメント19段)",
    desc: "",
    overlap: false,
    aprnum: 5,
@@ -12,33 +12,16 @@
          ],
          enemy: [
             {
-               name: "光のハルピュイア",
-               hp: 1,
-               imageno: 6,
-               imageno_prefix: "",
-               attr: 2,
-               spec: 5,
-               isStrong: false,
-               move: {
-                  on_move: [
-                     s_enemy_attack(200, 5, 1, true)/* nogambits */
-                  ],
-                  atrandom: false,
-                  turn: 1,
-                  wait: 1
-               }
-            },
-            {
-               name: "ハイ・サンダーファイター",
-               hp: 1,
-               imageno: 12,
-               imageno_prefix: "",
+               name: "黄衣カムシーナ軽兵",
+               hp: 5000,
+               imageno: "13311",
+               imageno_prefix: "r8Xgqs_",
                attr: 2,
                spec: 8,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(200, 5, 1, true)/* nogambits */
+                     s_enemy_attack(100, 5, 1, true)/* nogambits */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -46,33 +29,16 @@
                }
             },
             {
-               name: "光のハルピュイア",
-               hp: 1,
-               imageno: 6,
-               imageno_prefix: "",
-               attr: 2,
-               spec: 5,
-               isStrong: false,
-               move: {
-                  on_move: [
-                     s_enemy_attack(200, 5, 1, true)/* nogambits */
-                  ],
-                  atrandom: false,
-                  turn: 1,
-                  wait: 1
-               }
-            },
-            {
-               name: "迅雷のデビルガンナー",
-               hp: 1,
-               imageno: 18,
-               imageno_prefix: "",
+               name: "黄衣カムシーナ猟兵",
+               hp: 10000,
+               imageno: "13312",
+               imageno_prefix: "r8Xgqs_",
                attr: 2,
                spec: 8,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(200, 5, 1, true)/* nogambits */
+                     s_enemy_attack(100, 5, 1, true)/* nogambits */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -80,16 +46,50 @@
                }
             },
             {
-               name: "迅雷のデビルガンナー",
-               hp: 1,
-               imageno: 18,
-               imageno_prefix: "",
+               name: "黄衣カムシーナ兵",
+               hp: 5000,
+               imageno: "13305",
+               imageno_prefix: "r8Xgqs_",
                attr: 2,
                spec: 8,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(200, 5, 1, true)/* nogambits */
+                     s_enemy_attack(100, 5, 1, true)/* nogambits */
+                  ],
+                  atrandom: false,
+                  turn: 1,
+                  wait: 1
+               }
+            },
+            {
+               name: "黄衣カムシーナ猟兵",
+               hp: 5000,
+               imageno: "13312",
+               imageno_prefix: "r8Xgqs_",
+               attr: 2,
+               spec: 8,
+               isStrong: false,
+               move: {
+                  on_move: [
+                     s_enemy_attack(100, 5, 1, true)/* nogambits */
+                  ],
+                  atrandom: false,
+                  turn: 1,
+                  wait: 1
+               }
+            },
+            {
+               name: "黄衣カムシーナ熟練兵",
+               hp: 5000,
+               imageno: "13306",
+               imageno_prefix: "r8Xgqs_",
+               attr: 2,
+               spec: 8,
+               isStrong: false,
+               move: {
+                  on_move: [
+                     s_enemy_attack(100, 5, 1, true)/* nogambits */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -104,19 +104,16 @@
          ],
          enemy: [
             {
-               name: "光の戦乙女",
-               hp: 150000,
-               imageno: 24,
-               imageno_prefix: "",
+               name: "黄衣カムシーナ兵",
+               hp: 10000,
+               imageno: "13305",
+               imageno_prefix: "r8Xgqs_",
                attr: 2,
                spec: 8,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(200, 5, 1, true)
-                  ],
-                  on_dead: [
-                     s_enemy_cursed(500, 5, 5, 0)
+                     s_enemy_attack(100, 5, 1, true)/* nogambits */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -124,19 +121,19 @@
                }
             },
             {
-               name: "雷斧のケンタウルス",
-               hp: 150000,
-               imageno: 48,
-               imageno_prefix: "",
+               name: "黄衣カムシーナ熟練兵",
+               hp: 10000,
+               imageno: "13306",
+               imageno_prefix: "r8Xgqs_",
                attr: 2,
-               spec: 5,
+               spec: 8,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(200, 5, 1, true)
+                     s_enemy_attack(100, 5, 1, true)
                   ],
                   on_dead: [
-                     s_enemy_discharge(5, 4)
+                     s_enemy_cursed(0, 5, 2, 2000)
                   ],
                   atrandom: false,
                   turn: 1,
@@ -144,16 +141,50 @@
                }
             },
             {
-               name: "光の戦乙女",
-               hp: 150000,
-               imageno: 24,
-               imageno_prefix: "",
+               name: "黄衣カムシーナ兵",
+               hp: 10000,
+               imageno: "13305",
+               imageno_prefix: "r8Xgqs_",
                attr: 2,
                spec: 8,
                isStrong: false,
                move: {
                   on_move: [
-                     s_enemy_attack(200, 5, 1, true)/* nogambits */
+                     s_enemy_attack(100, 5, 1, true)/* nogambits */
+                  ],
+                  atrandom: false,
+                  turn: 1,
+                  wait: 1
+               }
+            },
+            {
+               name: "黄衣カムシーナ軽兵",
+               hp: 10000,
+               imageno: "13311",
+               imageno_prefix: "r8Xgqs_",
+               attr: 2,
+               spec: 8,
+               isStrong: false,
+               move: {
+                  on_move: [
+                     s_enemy_attack(100, 5, 1, true)/* nogambits */
+                  ],
+                  atrandom: false,
+                  turn: 1,
+                  wait: 1
+               }
+            },
+            {
+               name: "黄衣カムシーナ猟兵",
+               hp: 10000,
+               imageno: "13312",
+               imageno_prefix: "r8Xgqs_",
+               attr: 2,
+               spec: 8,
+               isStrong: false,
+               move: {
+                  on_move: [
+                     s_enemy_attack(100, 5, 1, true)/* nogambits */
                   ],
                   atrandom: false,
                   turn: 1,
@@ -168,53 +199,16 @@
          ],
          enemy: [
             {
-               name: "神話を彩る舞踏 ライトフラウ",
-               hp: 25000,
-               imageno: 13363,
-               imageno_prefix: "",
-               attr: 3,
-               spec: 7,
-               isStrong: false,
-               move: {
-                  on_move: [
-                     s_enemy_attack(100, 5, 1, true)/* nogambits */
-                  ],
-                  atrandom: false,
-                  turn: 1,
-                  wait: 1
-               }
-            },
-            {
-               name: "神話を彩る舞踏 ライトフラウ",
-               hp: 25000,
-               imageno: 13363,
-               imageno_prefix: "",
-               attr: 3,
-               spec: 7,
+               name: "黄衣カムシーナ猟兵",
+               hp: 20000,
+               imageno: "13312",
+               imageno_prefix: "r8Xgqs_",
+               attr: 2,
+               spec: 8,
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(s_enemy_attr_absorb_all([0,0,0,1,0], 1, 2))
-                  ],
-                  on_move: [
-                     s_enemy_attack(100, 5, 1, true)
-                  ],
-                  atrandom: false,
-                  turn: 1,
-                  wait: 1
-               }
-            },
-            {
-               name: "神話を彩る舞踏 ライトフラウ",
-               hp: 25000,
-               imageno: 13363,
-               imageno_prefix: "",
-               attr: 3,
-               spec: 7,
-               isStrong: false,
-               move: {
-                  on_popup: [
-                     m_enemy_once(s_enemy_attrguard_all([1,1,1,0,0], 1, 2))
+                     m_enemy_once(s_enemy_attrguard_own([1,1,1,0,0], 0.99, 3))
                   ],
                   on_move: [
                      s_enemy_attack(100, 5, 1, true)
@@ -232,19 +226,59 @@
          ],
          enemy: [
             {
-               name: "プラズマジェム",
-               hp: 12,
-               imageno: 36,
-               imageno_prefix: "",
+               name: "黄衣カムシーナ兵",
+               hp: 5,
+               imageno: "13305",
+               imageno_prefix: "r8Xgqs_",
                attr: 2,
-               spec: 2,
+               spec: 8,
                isStrong: false,
                move: {
                   on_popup: [
-                     m_enemy_once(impregnable(99))
+                     m_enemy_once(impregnable(3))
                   ],
                   on_move: [
-                     s_enemy_attack(200, 5, 1, true)
+                     s_enemy_attack(100, 5, 1, true)
+                  ],
+                  atrandom: false,
+                  turn: 1,
+                  wait: 1
+               }
+            },
+            {
+               name: "黄衣カムシーナ熟練兵",
+               hp: 15,
+               imageno: "13306",
+               imageno_prefix: "r8Xgqs_",
+               attr: 2,
+               spec: 8,
+               isStrong: false,
+               move: {
+                  on_popup: [
+                     m_enemy_once(impregnable(3))
+                  ],
+                  on_move: [
+                     s_enemy_attack(100, 5, 1, true)
+                  ],
+                  atrandom: false,
+                  turn: 1,
+                  wait: 1
+               }
+            },
+            {
+               name: "黄衣カムシーナ軽兵",
+               hp: 5,
+               imageno: "13311",
+               imageno_prefix: "r8Xgqs_",
+               attr: 2,
+               spec: 8,
+               isStrong: false,
+               move: {
+                  on_popup: [
+                     m_enemy_once(impregnable(3))
+                  ],
+                  on_move: [
+                     s_enemy_attack(100, 5, 1, true)
                   ],
                   atrandom: false,
                   turn: 1,
@@ -259,56 +293,23 @@
          ],
          enemy: [
             {
-               name: "神話を彩る舞踏 ライトフラウ",
-               hp: 700000,
-               imageno: 13363,
-               imageno_prefix: "",
-               attr: 3,
-               spec: 7,
-               isStrong: false,
-               move: {
-                  on_popup: [
-                     m_enemy_once(s_enemy_attr_absorb_all([0,0,0,1,0], 1, 2))
-                  ],
-                  on_move: [
-                     s_enemy_attack(100, 5, 1, true)
-                  ],
-                  atrandom: false,
-                  turn: 1,
-                  wait: 1
-               }
-            },
-            {
-               name: "月夜の聖女 サーシャ・スターライト",
-               hp: 2000000,
-               imageno: 13362,
-               imageno_prefix: "",
-               attr: 3,
-               spec: 9,
+               name: "〈リンギオ〉の頭 カルマン",
+               hp: 3000000,
+               imageno: "13291",
+               imageno_prefix: "r8Xgqs_",
+               attr: 2,
+               spec: 8,
                isStrong: true,
                move: {
                   on_popup: [
-                     m_enemy_once(skill_counter_func(s_enemy_attack_ignoreguard, "-", 100, false, 30000, 5, 1, true))
+                     m_enemy_once(skill_counter_func(s_enemy_steal, "-", 100, false, 100, 5)),
+                     m_enemy_once(s_enemy_statusup(false, 0, -1, 15000000)),
+                     m_enemy_once(s_enemy_allySkillCharge(5, 1)),
+                     s_enemy_statusReset(7)
                   ],
                   on_move: [
-                     s_enemy_attack(500, 5, 1, true)
-                  ],
-                  atrandom: false,
-                  turn: 1,
-                  wait: 1
-               }
-            },
-            {
-               name: "神話を彩る舞踏 ライトフラウ",
-               hp: 700000,
-               imageno: 13363,
-               imageno_prefix: "",
-               attr: 3,
-               spec: 7,
-               isStrong: false,
-               move: {
-                  on_move: [
-                     s_enemy_attack(100, 5, 1, true)/* nogambits */
+                     s_enemy_recoilAttack(1000, 5, [1,0,0,0,0], 1, 3),
+                     s_enemy_attack_ratio(0.99, 5, true)
                   ],
                   atrandom: false,
                   turn: 1,

@@ -196,6 +196,12 @@ function _s_enemy_attack(fld, dmg, ei, ai, is_dmg_const, ignore_guard) {
 //   攻撃対象詳細: true: 連撃時攻撃対象を毎回変える / false: 変えない / func(): 条件指定
 function s_enemy_attack(dmg, tnum, atkn, tgtype) {
 	return m_create_enemy_move(function (fld, n, nows) {
+		if(tnum.length > 0){
+			var tg = tnum;
+			tnum = tnum.length;
+		} else {
+			var tg = gen_enemytarget_array(fld, e, tnum, atkn, tgtype, nows);
+		}
 		// ログ出力
 		fld.log_push("Enemy[" + (n + 1) + "]: " +
 			(tnum < fld.Allys.Deck.length ? tnum : "全") + "体" +
@@ -213,7 +219,6 @@ function s_enemy_attack(dmg, tnum, atkn, tgtype) {
 		
 		// 攻撃対象取得
 		var e = GetNowBattleEnemys(fld)[n];
-		var tg = gen_enemytarget_array(fld, e, tnum, atkn, tgtype, nows);
 		var dmgup = Math.min(tnum, fld.Allys.Deck.length) / tg[0].length;
 		// 攻撃
 		for (var i = 0; i < tg.length; i++) {
@@ -337,7 +342,7 @@ function s_enemy_recoilAttack(dmg, tnum, weak_attr, weak_rate, weak_turn){
 		var enemy = GetNowBattleEnemys(fld, n);
 		enemy.turn_effect.push({
 			desc: "[" + get_attr_string(weak_attr, "/") + "]弱体化",
-			type: "attr_weaken",
+			type: "attr_weaken_enemy",
 			icon: "attr_weaken",
 			isdual: false,
 			turn: weak_turn,
@@ -708,13 +713,35 @@ function s_enemy_healreverse(rate, tnum) {
 // 盗む(対象数)
 function s_enemy_steal(dmg, tnum) {
 	return m_create_enemy_move(function (fld, n, pnow, is_counter) {
+		// 敵自身に盗むバフを付与
+		var e = GetNowBattleEnemys(fld, n);
+		e.turn_effect.push({
+			desc: "盗む",
+			type: "skill_stole",
+			icon: "skill_stole",
+			isdual: false,
+			turn: -1,
+			lim_turn: -1,
+			effect: function (fld, ei, teff, is_end, is_t, is_b) {
+				if(is_end === true || is_end === "break"){
+					// 敵の盗むバフが解除されたタイミングで	
+					// 味方の盗むスキルを解除、スキルチャージを実施
+					fld.Allys.Now.forEach((now, i) => {
+						turneff_break_cond(fld, now.turn_effect, i, (teff) => {
+							return teff.type === "skill_stole";
+						}, "stole_break")
+					})
+					
+				}
+			},
+			enemyIndex: n,
+		});
+		
 		// 攻撃対象の取得
-		var e = GetNowBattleEnemys(fld)[n];
 		var tgs = gen_enemytarget_array(fld, e, tnum, 1, false)[0];
 		// 攻撃部分
 		var sea = s_enemy_attack(dmg, tgs, 1, false);
 		sea.move(fld, n, pnow, is_counter);
-		
 
 		// 盗む[状態異常]の付与
 		s_enemy_abstate_attack(
@@ -726,7 +753,7 @@ function s_enemy_steal(dmg, tnum) {
 					var cards = f.Allys.Deck;
 					var nows = f.Allys.Now;
 					var is_dead = f.Enemys.Data[teff.receveButtle].enemy[teff.fromEnemy].nowhp <= 0;
-					if(is_dead || is_b){
+					if(is_dead || is_b || state === "stole_break"){
 						teff.disabled = false;
 						teff.lim_turn = 0;
 						// L化
@@ -1593,8 +1620,50 @@ function s_enemy_division(copyhp) {
 			cond: s_enemy_when_dead_l().func,
 			on_cond: push_oncond,
 			oncond_anytime: true,
+			ignoreStatusResetCount: true,
 		});
 	}, makeDesc("分裂待機"));
+}
+
+// ステータスリセット
+function s_enemy_statusReset(cond_limit) {
+	return m_create_enemy_move(function (fld, n) {
+		var enemy = GetNowBattleEnemys(fld, n);
+		var push_oncond = m_create_enemy_move(function (fld, e_i) {
+			fld.log_push("Enemy[" + (n + 1) + "]: ステータスリセット");
+			var e = GetNowBattleEnemys(fld, e_i);
+			var ts = e.turn_effect;
+			e.turn_effect = ts
+				.reduce((p,e,i) => {
+					if(e.ignoreStatusResetCount){
+						p.push(e)
+					} else {
+						// turneff.effect(fld, i, turneff, turneff.lim_turn == 0, is_turn_move, is_allkill(fld));
+						e.effect(fld, e_i, e, "break", false, false);
+					}
+					return p;
+				}, []);
+		});
+		delete push_oncond.argObj;
+		
+		enemy.turn_effect.push({
+			desc: null,
+			type: "damage_switch", //enemy_statusReset",
+			isdual: false,
+			turn: -1,
+			lim_turn: -1,
+			effect: function () { },
+			cond: (fld, e_i, is_ss, is_preem) => {
+				var e = GetNowBattleEnemys(fld, e_i);
+				return e.turn_effect
+					.filter(e => !e.ignoreStatusResetCount)
+					.length >= cond_limit;
+			},
+			on_cond: push_oncond,
+			oncond_anytime: true,
+			ignoreStatusResetCount: true,
+		});
+	}, makeDesc("ステータスリセット待機"));
 }
 
 // 逃走
@@ -1723,19 +1792,37 @@ function s_enemy_statusup(isall, up_rate, turn, up_hp) {
 		// ステアップ実行関数
 		var stupfc = (n) => {
 			var e = GetNowBattleEnemys(fld, n);
+			// turn_effectに付与する仕様に修正(statusResetの実装に伴う)
+			e.turn_effect.push({
+				desc: "ステータスアップ",
+				type: "enemy_statusup",
+				icon: null,
+				isdual: false,
+				turn: -1,
+				lim_turn: -1,
+				effect: function (f, ei, teff, is_end, is_t, is_b) {
+					var e = GetNowBattleEnemys(f, ei);
+					// 解除されるタイミングでHP/ATKを元の値に戻す
+					if ((is_end === true || is_end === "break") && e.nowhp > 0) {
+						f.log_push("Enemy[" + (ei + 1) + "]: ステータスアップ解除");
+						// 攻撃力↓
+						e.statusup = (e.statusup ? e.statusup - up_rate : e.statusup);
+						// HP↓
+						e.hp = Math.max(e.def_hp, e.hp - up_hp);
+						e.nowhp = Math.max(e.def_hp, e.nowhp - up_hp);
+					}
+				},
+			});
 			// 攻撃力UP
 			e.statusup = (e.statusup ? e.statusup + up_rate : e.statusup);
 			// HPUP
 			if(up_hp > 0){
+				e.def_hp = e.hp;
 				e.nowhp += up_hp;
 				e.hp += up_hp;
 			}
-			logpush(n);
-		}
-		// ログ出力
-		var logpush = (n) => {
 			fld.log_push(`Enemy[${n+1}]: 敵ステータスアップ(ATK: ${up_rate} / ${up_hp ? `HP: ${up_hp}` : ""})`);
-		};
+		}
 		if (isall) {
 			var es = GetNowBattleEnemys(fld);
 			for (var i = 0; i < es.length; i++) {
@@ -1936,27 +2023,32 @@ function s_enemy_panelreserve(attr, turn, added_effects) {
 function s_enemy_discharge(tnum, minus_turn) {
 	return m_create_enemy_move(function (fld, n) {
 		var nows = fld.Allys.Now;
-		$.each(nows, function (i, e) {
-			// 潜在の状態無効を確認
-			var card = fld.Allys.Deck[i];
-			var is_abs_guard_aw = Awake_AbsInvalid(fld, card, nows[i], "discharge");
-			if (nows[i].nowhp <= 0 || is_abs_guard_aw) {
-				return;
+		var e = GetNowBattleEnemys(fld)[n];
+		var tg = gen_enemytarget_array(fld, e, tnum, 1, false, nows);
+		for (var i = 0; i < tg.length; i++) {
+			for (var j = 0; j < tg[i].length; j++) {
+				var targ = tg[i][j];
+				var card = fld.Allys.Deck[targ];
+				var now = fld.Allys.Now[targ];
+				// 潜在の状態無効を確認
+				var is_abs_guard_aw = Awake_AbsInvalid(fld, card, now, "discharge");
+				if (now.nowhp <= 0 || is_abs_guard_aw) {
+					continue;
+				}
+				var endcharge = card.islegend ? card.ss2.turn : card.ss1.turn;
+				var is_lgmode = card.islegend & endcharge <= now.ss_current;
+				now.ss_quizcount = Math.max(now.ss_quizcount - minus_turn, 0);
+				now.ss_current = Math.max(Math.min(endcharge, now.ss_current) - minus_turn, 0);
+				// Lモードなら覚醒解除
+				if (is_lgmode) {
+					minus_legend_awake(fld, fld.Allys.Deck, fld.Allys.Now, targ);
+					nows[targ].islegend = false;
+					fld.log_push("Unit[" + (targ + 1) + "]: Lモード解除");
+				}
+				// スキルカウンターを有効に
+				nows[targ].flags.skill_counter[n] = true;
 			}
-			
-			var endcharge = card.islegend ? card.ss2.turn : card.ss1.turn;
-			var is_lgmode = card.islegend & endcharge <= e.ss_current;
-			e.ss_quizcount = Math.max(e.ss_quizcount - minus_turn, 0);
-			e.ss_current = Math.max(Math.min(endcharge, e.ss_current) - minus_turn, 0);
-			// Lモードなら覚醒解除
-			if (is_lgmode) {
-				minus_legend_awake(fld, fld.Allys.Deck, fld.Allys.Now, i);
-				nows[i].islegend = false;
-				fld.log_push("Unit[" + (i + 1) + "]: Lモード解除");
-			}
-			// スキルカウンターを有効に
-			nows[i].flags.skill_counter[n] = true;
-		});
+		}
 		fld.log_push("Enemy[" + (n + 1) + "]: スキルディスチャージ(-" + minus_turn + "t)");
 	}, makeDesc("スキルディスチャージ"));
 }
@@ -1966,11 +2058,14 @@ function s_enemy_allySkillCharge(tnum, plus_turn) {
 	return m_create_enemy_move(function (fld, n) {
 		var nows = fld.Allys.Now;
 		$.each(nows, function (i, e) {
+			if(e.nowhp <= 0){
+				return;
+			}
 			addQuizCorrectNum(fld, i, plus_turn);
 			e.ss_current += plus_turn;
 			// スキブ処理
 			var card = fld.Allys.Deck[i];
-			legend_timing_check(fld, fld.Allys.Deck, nows, i, true);
+			legend_timing_check(fld, fld.Allys.Deck, nows, i);
 			// スキルカウンターを有効に
 			nows[i].flags.skill_counter[n] = true;
 		});
@@ -2119,6 +2214,7 @@ function makeDesc(mystr, order){
 			toStr = prop != "weak_attr" ? toStr : `${get_attr_string(toStr)}弱体化`
 			toStr = prop != "weak_rate" ? toStr : `${toStr*100}%`
 			toStr = prop != "weak_turn" ? toStr : `${toStr}T`
+			toStr = prop != "cond_limit" ? toStr : `${toStr}個以上`
 			
 			toStr = prop != "healvalue" ? toStr : toStr+"回復"
 			toStr = prop != "ratiorate" ? toStr : toStr * 100 + "％削り"

@@ -1,6 +1,6 @@
 {
    id: "1809ev_h",
-   name: "",
+   name: "(2018/09)イベントトーナメント 覇級",
    desc: "",
    overlap: false,
    aprnum: 5,

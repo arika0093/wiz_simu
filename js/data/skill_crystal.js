@@ -477,6 +477,16 @@ var Awake_crystal_lists = [{
 		return dm.proc[1];
 	}(),
 }, {
+	name: "覇眼の欠片〈剣聖眼〉",
+	imple: Awake_composite,
+	param2: {
+		name: "無に還す瞳(5T)",
+		type: "awake_spskill",
+		skill: "ss_death_limit",
+		p1: 5,
+		is_legend: true,
+	},
+}, {
 	genre: "撃破時発動スキル",
 	name: "球体魔匠具〈ホムンクルス〉(3体撃破/1%回復)",
 	imple: Awake_composite,

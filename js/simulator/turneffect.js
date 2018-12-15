@@ -220,7 +220,7 @@ function turneff_allbreak_enemy(fld, teffs, index) {
 	while (teffs.length > 0) {
 		var teff = teffs[0];
 		// 除外時効果
-		teff.effect(fld, index, teff, false, false, false);
+		teff.effect(fld, index, teff, "break", false, false);
 		turneff_remove_pos(fld, teffs, 0);
 	}
 }

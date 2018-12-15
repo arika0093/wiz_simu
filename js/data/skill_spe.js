@@ -1206,6 +1206,26 @@ function ss_panel_change(attr) {
 }
 
 /**
+ * パネルリザーブ
+ * attr: 変換属性。(ex: [1,0,0,0,0] -> 火属性)
+ * turn: 持続ターン数
+ * added_effects: 追加効果
+ *      ex1: [panel_consume_add(0.2), panel_skillboost(1)]
+ *          自傷20%, パネルブースト1のランダム付与(シミュ上では任意選択)
+ *      ex2: [panel_multieffect([panel_consume_add(0.2), panel_skillboost(1)]) ]
+ *          自傷20%, パネルブースト1の両立パネルを付与
+ **/
+function ss_panel_reserve(attr, turn, added_effects) {
+	return ss_template({
+		name: "ss_panel_reserve",
+		type: "panel_change",
+		target: "panel",
+		p1: attr,
+		p2: turn,
+	});
+}
+
+/**
  * 複合パネル付与
  * pnls: 付与したいパネル効果を[]内に書く
  *  例

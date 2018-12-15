@@ -396,6 +396,8 @@ function Awake_dospskill(fld, index) {
 		var ls = ls_awakes[i];
 		SpSkill[ls.skill](fld, index, null, [ls.p1, ls.p2, ls.p3, ls.p4]);
 	}
+	// 反射解除(剣聖眼用)
+	ss_object_done(fld, index, ss_ignore_skillcounter());
 }
 
 

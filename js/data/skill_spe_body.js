@@ -284,6 +284,10 @@ var SpSkill = {
 					}
 				})
 			});
+			// パネル処理があるならここで実行
+			fld.Status.continue_eff
+				.filter(e => e.type.indexOf("panel_reserve") >= 0)
+				.forEach(e => e.effectOnAppear(fld, -1, e));
 		}
 		return true;
 	},
@@ -431,6 +435,18 @@ var SpSkill = {
 				if (e.move.turn && !e.flags.isdelay) {
 					e.flags.isdelay=true;
 					e.move.turn=e.move.turn+turn;
+					// 遅延デバフを付与
+					e.turn_effect.push({
+						desc: `遅延`,
+						type: "move_delay",
+						icon: null,
+						isdual: false,
+						turn: turn,
+						lim_turn: turn,
+						effect: function(f, ei, teff, is_end, is_t, is_b){
+						}
+						
+					});
 					fld.log_push("Enemy[" + (i + 1) + "]: 遅延(+" + turn + "ターン)");
 				}
 			})();
@@ -601,7 +617,7 @@ var SpSkill = {
 				lim_turn: t,
 				effect: function (f, ei, teff, is_end, is_t, is_b) {
 					// 残りターンが0なら発動
-					if (is_end) {
+					if (is_end === true) {
 						// 発動時の攻撃力などをコピーする
 						var f_copy = $.extend(true, {}, f);
 						var fc_card = f_copy.Allys.Deck[n];
@@ -634,6 +650,7 @@ var SpSkill = {
 	// 無に還す瞳
 	"ss_death_limit": function (fld, n, cobj, params) {
 		var t = params[0];
+		cobj = { "target": "single" };
 		var enemys = ss_get_targetenemy(fld, cobj, n);
 		for (var i = 0; i < enemys.length; i++) {
 			var en = enemys[i];
@@ -648,7 +665,7 @@ var SpSkill = {
 				effect: function (f, ei, teff, is_end, is_t, is_b) {
 					var e = GetNowBattleEnemys(f, ei);
 					// 残りターンが0ならHPを0に
-					if (is_end) {
+					if (is_end === true) {
 						f.log_push("Enemy[" + (ei + 1) + "]: 無に還す瞳 - 残り0t");
 						e.nowhp = 0;
 						// 死亡時行動を実行させる
@@ -1670,6 +1687,45 @@ var SpSkill = {
 		return true;
 	},
 	// -----------------------------
+	// パネルリザーブ
+	"ss_panel_reserve": function (fld, n, cobj, params) {
+		var attr = params[0];
+		var turn = params[1];
+		var added_effects = params[2];
+		
+		var updatePanel = (fld) => {
+			// 変換処理
+			fld.Status.panel_color = new Array(4).fill(attr);
+			// パネル効果上書き
+			fld.Status.panel_add = [];
+			added_effects.forEach(e => {
+				ss_object_done(fld, -1, e);
+			})
+			fld.log_push(`Unit[${(n + 1)}]: パネルリザーブ(${get_attr_string(attr, "/")})`);
+		}
+		// 最初に一回
+		updatePanel(fld);
+		
+		// 付与
+		ss_continue_effect_add(fld, {
+			type: "panel_reserve_by_ally",
+			isdemerit: false,       // 確かfalseだったような？要確認
+			turn: turn,
+			lim_turn: turn,
+			priority: -100,
+			effect: function(f, oi, ceff){
+				// 変換
+				updatePanel(f);
+			},
+			// 出現時処理
+			effectOnAppear: function(f, oi, ceff){
+				// 変換
+				updatePanel(f);
+			},
+		});
+		return true;
+	},
+	// -----------------------------
 	// パネル付与効果(複合用)
 	"panel_multieffect": function (fld, n, cobj, params) {
 		var effs_dat = params[0][0];
@@ -1848,6 +1904,7 @@ var SpSkill = {
 			turn: t,
 			lim_turn: t,
 			targetUnit: n,
+			ignoreStatusResetCount: true,
 			effect: function (f, ei, teff, state, is_t, is_b, is_ss) {
 				// 発動した味方が死んでいるなら、効果を解除する
 				var now_ = f.Allys.Now[n];
@@ -1872,7 +1929,7 @@ var SpSkill = {
 			effect: function (f, ei, teff, state, is_t, is_b, is_ss) {
 				// 発動した敵が死んでいるなら、効果を解除する
 				var mv = en.move;
-				if(en.nowhp <= 0 && (!mv || (mv.on_dead && !en.on_dead_execed))){
+				if(en.nowhp <= 0 && (!mv || (mv.on_dead && en.on_dead_execed))){
 					teff.lim_turn = 0;
 				}
 			},
