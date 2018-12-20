@@ -121675,7 +121675,7 @@ Cards = [{
 		Statusup(1000,0),
 	],
 },{
-	name: "皇女 ナナリー・ヴィ・ブリタニア",
+	name: "皇女 ナナリー・ヴィ・ブリタニア(火)",
 	cardno: 10893,
 	imageno: 13379,
 	imageno_prefix: "T015pK_",
@@ -121722,7 +121722,7 @@ Cards = [{
 		Statusup(500,0),
 	],
 },{
-	name: "皇女 ナナリー・ヴィ・ブリタニア",
+	name: "皇女 ナナリー・ヴィ・ブリタニア(水)",
 	cardno: 10894,
 	imageno: 13380,
 	imageno_prefix: "T015pK_",
@@ -121769,7 +121769,7 @@ Cards = [{
 		Statusup(500,0),
 	],
 },{
-	name: "皇女 ナナリー・ヴィ・ブリタニア",
+	name: "皇女 ナナリー・ヴィ・ブリタニア(雷)",
 	cardno: 10895,
 	imageno: 13381,
 	imageno_prefix: "T015pK_",
