@@ -122833,5 +122833,50 @@ Cards = [{
 		Statusup(0,1000),
 		Statusup(1000,0),
 	],
-}
+},{
+	name: "超魔道聖夜 アリエッタ＆エリス",
+	cardno: 10907,
+	imageno: 13400,
+	imageno_prefix: "Mf5DPw_",
+	hp: 2625,
+	atk: 5221,
+	cost: 66,
+	attr: [1,2],
+	species: [9],
+	islegend: true,
+	ape: "Christmas2018",
+	as1: {
+		desc: "<連撃>敵単体を5回連続攻撃(200%),10チェインで更にダメージアップ(700%)",
+		proc: [ChainDualAttack(2.0, 0, 5), ChainDualAttack(9.0, 10, 5)],
+	},
+	ss1: {
+		desc: "<ダブルAS付与>3ターンの間、デッキ内の〈主属性:水、複属性:雷〉の精霊のAS攻撃回数を＋1し、さらに同属性の攻撃力をアップ(300%)",
+		turn: 4,
+		proc: [ss_undefined("ダブルAS付与")],
+	},
+	awakes: [
+		Panel_boost([0,1,0,0,0,],2),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
+		Panel_boost([0,1,0,0,0,],2),
+		Abstate_invalid("ss_sealed"),
+		Abstate_invalid("as_sealed"),
+		Fastskill(3),
+		Attr_statusup_subattr(0,500, [1,1,1,1,1,]),
+		Attr_statusup_subattr(500,0, [1,1,1,1,1,]),
+		Awake_damage_multiple(1.1, 500),
+	],
+	as2: {
+		desc: "<連撃>敵単体を5回連続攻撃(300%),10チェインで更にダメージアップ(700%)",
+		proc: [ChainDualAttack(3.0, 0, 5), ChainDualAttack(10.0, 10, 5)],
+	},
+	ss2: {
+		desc: "<ダブルAS付与>3ターンの間、デッキ内の〈主属性:水、複属性:雷〉の精霊のAS攻撃回数を＋1し、さらに同属性の攻撃力をアップ(300%)",
+		turn: 4,
+		proc: [ss_undefined("ダブルAS付与")],
+	},
+	Lawake: [
+		Statusup(0,2000),
+	],
+},
 ];
