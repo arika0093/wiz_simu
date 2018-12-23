@@ -44,49 +44,43 @@ var PtDatas = [{
 	is_ev: true,
 	is_lo: true,
 }, {
-	name: "捌式",
+	name: "玖式",
 	rank: "1位",
 	pt: 5500,
 }, {
-	name: "漆式",
+	name: "捌式",
 	rank: "1位",
 	pt: 4800,
 }, {
-	name: "陸式",
+	name: "漆式",
 	rank: "1位",
 	pt: 4200,
 	is_up: true,
 }, {
-	name: "伍式",
+	name: "陸式",
 	rank: "1位",
-	pt: 4000,
+	pt: 3600,
 	is_dg: true,
 }, {
-	name: "肆式",
-	rank: "1位",
-	pt: 3500,
+	name: "玖式",
+	rank: "9位以下",
+	pt: 713, // thanks: https://twitter.com/primula_vulgari/status/1076325790654951432
+	is_lo: true,
 	is_dg: true,
+}, {
+	name: "捌式",
+	rank: "9位以下",
+	pt: 650, // 1位ptと以前の漆式9位からの推測値
+	is_lo: true,
 }, {
 	name: "漆式",
 	rank: "9位以下",
-	pt: 650, //748,
+	pt: 572, // 1位ptと以前の陸式9位からの推測値
 	is_lo: true,
-	//is_dg: true,
 }, {
 	name: "陸式",
 	rank: "9位以下",
-	pt: 572,
-	is_lo: true,
-}, {
-	name: "伍式",
-	rank: "9位以下",
-	pt: 544,
-	is_lo: true,
-	is_dg: true,
-}, {
-	name: "肆式",
-	rank: "9位以下",
-	pt: 475,
+	pt: 490, // thanks: @selilin_wiz
 	is_lo: true,
 	is_dg: true,
 },
