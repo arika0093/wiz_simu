@@ -124005,7 +124005,7 @@ Cards = [{
 	ss1: {
 		desc: "<スキルチャージ>味方全体のスペシャルスキルの発動ターンを2早める",
 		turn: 7,
-		proc: [ss_skillboost(2)],,
+		proc: [ss_skillboost(2)],
 	},
 	awakes: [
 		Panel_boost([0,0,1,0,0,],2),
