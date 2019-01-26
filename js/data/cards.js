@@ -107591,7 +107591,7 @@ Cards = [{
 		Attr_statusup_oattr(0,300, [1,0,0,0,0,]),
 		Attr_statusup_oattr(300,0, [1,0,0,0,0,]),
 		Panel_boost([1,0,0,0,0,],2),
-		Fastskill(2),
+		Fastskill(3),
 		NEFTJOD(30),
 		Attr_statusup(0,300, [1,0,0,0,0,]),
 		Attr_statusup(300,0, [1,0,0,0,0,]),
@@ -123868,7 +123868,7 @@ Cards = [{
 },{
 	name: "超アイドル魔道少女リルム・ロロット",
 	cardno: 10944,
-	imageno: -1,
+	imageno: 10561,
 	hp: 3565,
 	atk: 7015,
 	cost: 56,
@@ -124871,6 +124871,54 @@ Cards = [{
 	Lawake: [
 		Statusup(0,1500),
 		Attr_relief([1,1,1,1,1,],10),
+	],
+},
+
+{
+	name: "きらめきを宿す聖犬 クーシー",
+	cardno: 10014,
+	imageno_prefix: "k2",
+	imageno: 7612,
+	hp: 3355,
+	atk: 3355,
+	cost: 31,
+	attr: [2,-1],
+	species: [4],
+	islegend: true,
+	is_dist: true,
+	as1: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(300%)",
+		proc: ChainAttack(3.0, 3),
+	},
+	ss1: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ無属性のダメージ(100%)",
+		turn: 4,
+		proc: [ss_damage_all(1.0, [-1]), ss_ignore_skillcounter()],
+	},
+	awakes: [
+		Costdown(10),
+		Statusup(200,0),
+		Fastskill(1),
+		Panel_boost([0,0,1,0,0,],2),
+		Attr_statusup(0,300, [0,0,1,0,0,]),
+		Attr_statusup(300,0, [0,0,1,0,0,]),
+		Panel_boost([0,0,1,0,0,],2),
+		Statusup(0,200),
+		Fastskill(2),
+		Abstate_invalid("all_sealed"),
+	],
+	as2: {
+		desc: "<チェイン攻撃>3チェインでダメージアップ(400%)",
+		proc: ChainAttack(4.0, 3),
+	},
+	ss2: {
+		desc: "<大魔術>スキル反射を無視し、敵全体へ無属性のダメージ(100%)",
+		turn: 4,
+		proc: [ss_damage_all(1.0, [-1]), ss_ignore_skillcounter()],
+	},
+	Lawake: [
+		Statusup(0,500),
+		Statusup(500,0),
 	],
 },
 ];
