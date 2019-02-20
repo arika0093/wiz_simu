@@ -69379,7 +69379,7 @@ Cards = [{
 	species: [9],
 	islegend: true,
 	ape: "バレンタイン2014",
-	alias: ["ちっぱい", "ちっぱいビール"],
+	alias: ["ちっぱい"],
 	as1: {
 		desc: "<回復>水・雷属性の味方を回復、HP50%以下なら更に回復(11%/21%)",
 		proc: [Heal(0.11, [0,1,1,0,0], 0), add_cond(Heal(0.21, [0,1,1,0,0], 0), when_hp_less(0.5))],
@@ -125893,6 +125893,7 @@ Cards = [{
 	cost: 53,
 	attr: [2,-1],
 	species: [9],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "天上岬3",
 	as1: {
@@ -125984,6 +125985,7 @@ Cards = [{
 	cost: 53,
 	attr: [1,-1],
 	species: [8],
+	alias: ["ちっぱい"],
 	islegend: true,
 	ape: "シュガーレスバンビーナ2",
 	as1: {
