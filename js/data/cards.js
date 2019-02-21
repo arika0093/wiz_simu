@@ -111343,7 +111343,7 @@ Cards = [{
 	atk: 4021,
 	cost: 36,
 	attr: [1,3],
-	species: [-1],
+	species: [9],
 	islegend: true,
 	ape: "コラボ(魔法少女まどか☆マギカ)",
 	as1: {
@@ -111572,7 +111572,7 @@ Cards = [{
 	atk: 2117,
 	cost: 42,
 	attr: [0,4],
-	species: [-1],
+	species: [7],
 	islegend: true,
 	ape: "コラボ(魔法少女まどか☆マギカ)",
 	is_dist: true,
@@ -121609,7 +121609,7 @@ Cards = [{
 	atk: 1075,
 	cost: 40,
 	attr: [0,-1],
-	species: [-1],
+	species: [8],
 	islegend: true,
 	ape: "コラボ(コードギアス)",
 	is_dist: true,
@@ -123556,7 +123556,7 @@ Cards = [{
 	ape: "FairyChord Prelude",
 	as1: {
 		desc: "<回復・複属性攻撃強化>水・雷属性の味方のHPを回復(10%)し、攻撃力もアップ(30%)、複属性を持つ精霊はさらにアップ(30%)",
-		proc: [Heal(0.10, [0,1,1,0,0], 0), ChainEnhance_SubAttr(0.3, 0.6, [0,1,0,0,0], [1,0,1,1,1], 0)],
+		proc: [Heal(0.10, [0,1,1,0,0], 0), ChainEnhance_SubAttr(0.3, 0.6, [0,1,0,0,0], [1,0,1,1,1], 0, ChainEnhance_SubAttr(0.3, 0.6, [0,0,1,0,0], [1,1,0,1,1], 0)],
 	},
 	ss1: {
 		desc: "	<チェイン犠牲強化>3ターンの間、毎ターン1チェインを消費し、味方の攻撃力をアップ(350%)",
@@ -124923,7 +124923,8 @@ Cards = [{
 },{
 	name: "獣狩りの修羅 キルラ・コルテロ",
 	cardno: 11047,
-	imageno: -1,
+	imageno: 13574,
+	imageno_prefix: "T6zM3t_",
 	hp: 3015,
 	atk: 5355,
 	cost: 70,
@@ -124967,7 +124968,8 @@ Cards = [{
 },{
 	name: "凶愛の純血娘 マチア・ジェローシェ",
 	cardno: 11053,
-	imageno: -1,
+	imageno: 13580,
+	imageno_prefix: "T6zM3t_",
 	hp: 1715,
 	atk: 9003,
 	cost: 56,
@@ -125012,7 +125014,8 @@ Cards = [{
 },{
 	name: "狂熱の復讐者 パスパル・シオーネ",
 	cardno: 11056,
-	imageno: -1,
+	imageno: 13583,
+	imageno_prefix: "T6zM3t_",
 	hp: 3275,
 	atk: 7003,
 	cost: 54,
@@ -125057,7 +125060,8 @@ Cards = [{
 },{
 	name: "狂暴無法少女 ラガッツ・ファンテ",
 	cardno: 11059,
-	imageno: -1,
+	imageno: 13586,
+	imageno_prefix: "T6zM3t_",
 	hp: 2715,
 	atk: 5011,
 	cost: 62,
@@ -125103,7 +125107,8 @@ Cards = [{
 },{
 	name: "獣を喰らう怪物 ヴィタ・バビーナ",
 	cardno: 11044,
-	imageno: -1,
+	imageno: 13571,
+	imageno_prefix: "T6zM3t_",
 	hp: 4505,
 	atk: 3411,
 	cost: 60,
@@ -125520,7 +125525,8 @@ Cards = [{
 },{
 	name: "300年の妄執 コルテロの呪",
 	cardno: 11079,
-	imageno: -1,
+	imageno: 13593,
+	imageno_prefix: "qJ5Mbw_",
 	hp: 1555,
 	atk: 4563,
 	cost: 53,
@@ -125566,7 +125572,8 @@ Cards = [{
 },{
 	name: "怨呪祭司 マディーロ・コルテロ",
 	cardno: 11065,
-	imageno: -1,
+	imageno: 13592,
+	imageno_prefix: "T6zM3t_",
 	hp: 1345,
 	atk: 7155,
 	cost: 43,
@@ -125612,7 +125619,8 @@ Cards = [{
 },{
 	name: "虐殺監獄所長 シャシャ・シォン",
 	cardno: 11063,
-	imageno: -1,
+	imageno: 13590,
+	imageno_prefix: "T6zM3t_",
 	hp: 2005,
 	atk: 6434,
 	cost: 42,
@@ -125657,7 +125665,8 @@ Cards = [{
 },{
 	name: "全てを受容する カティア・イムプレ",
 	cardno: 11061,
-	imageno: -1,
+	imageno: 13588,
+	imageno_prefix: "T6zM3t_",
 	hp: 6355,
 	atk: 1866,
 	cost: 41,
@@ -125979,7 +125988,8 @@ Cards = [{
 },{
 	name: "凶獄の案内嬢 チェチェ・ウルラーレ",
 	cardno: 11050,
-	imageno: -1,
+	imageno: 13577,
+	imageno_prefix: "T6zM3t_",
 	hp: 4125,
 	atk: 6008,
 	cost: 53,
