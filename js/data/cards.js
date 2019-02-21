@@ -127251,7 +127251,7 @@ Cards = [{
 	cost: 42,
 	attr: [2,1],
 	species: [9],
-	islegend: true,
+	islegend: false,
 	ape: "プラチナセレクション",
 	alias: ["ちっぱい"],
 	as1: {
