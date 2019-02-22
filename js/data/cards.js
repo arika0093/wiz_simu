@@ -123590,8 +123590,8 @@ Cards = [{
 	},
 	awakes: [
 		Panel_boost([0,1,0,0,0,],2),
-		Attr_statusup(0,200, [0,1,0,0,0,]),
-		Attr_statusup(200,0, [0,1,0,0,0,]),
+		Attr_statusup(0,200, [0,1,1,0,0,]),
+		Attr_statusup(200,0, [0,1,1,0,0,]),
 		Panel_boost([0,1,0,0,0,],2),
 		Fastskill(1),
 		Attr_statusup_subattr(0,500),
@@ -127251,7 +127251,7 @@ Cards = [{
 	cost: 42,
 	attr: [2,1],
 	species: [9],
-	islegend: true,
+	islegend: false,
 	ape: "プラチナセレクション",
 	alias: ["ちっぱい"],
 	as1: {
