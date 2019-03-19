@@ -1063,7 +1063,12 @@ var SpSkill = {
 			return (target_mattr[c.attr[0]] > 0) && (target_sattr[c.attr[1]] > 0);
 		}
 		
-		const up_rates = [0, 1.2, 1.3, 1.4, 1.5, 3.0];
+		/*
+		 * produce up_rates
+		 * [1, 1.2, 1.3,  1.4, 1.5,  3.0] (rate_max == 3)
+		 * [1, 1.1, 1.15, 1.2, 1.25, 2.0] (rate_max == 2)
+		 */
+		const up_rates = [0, 0.1, 0.15, 0.2, 0.25, 1.0].map(x => x * (rate_max - 1) + 1);
 		var in_attrnum = $.grep(fld.Allys.Deck, is_match_attr).length;
 		var rate = up_rates[in_attrnum];
 		
