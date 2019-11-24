@@ -4,12 +4,12 @@ var PtDatas = [{
 	rank: "1位",
 	pt: 3900,
 	is_ev: true,
-}, {
+}, /* { // 封魔級は廃止されたらしい
 	name: "封魔級",
 	rank: "1位",
 	pt: 2200,
 	is_ev: true,
-}, {
+}, */ {
 	name: "上級",
 	rank: "1位",
 	pt: 1500,
